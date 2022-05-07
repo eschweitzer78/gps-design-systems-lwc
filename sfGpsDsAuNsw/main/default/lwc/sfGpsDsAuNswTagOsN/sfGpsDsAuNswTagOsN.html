@@ -1,0 +1,8 @@
+<template>
+  <div class={computedClassName}>
+    <a if:true={url} class={computedTagClassName} href={url}>{text}</a>
+    <span if:false={url} class={computedTagClassName}>
+      {text}
+    </span>
+  </div>
+</template>

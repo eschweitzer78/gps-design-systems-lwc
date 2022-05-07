@@ -1,0 +1,17 @@
+<template>
+  <c-sf-gps-ds-au-nsw-content-block if:false={_sfGpsErrors} 
+    headline={headline}
+    image={image}
+    image-alt={imageAlt}
+    icon={icon}
+    main-link={_mainLink}
+    links={_links}
+    class-name={className}
+  >
+    <div class="sfGpsMarkdown" lwc:dom="manual">
+    </div>
+  </c-sf-gps-ds-au-nsw-content-block>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

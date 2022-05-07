@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>52.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Global Alert</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property name="title" 
+        type="String" 
+        label="Title"
+        description="."
+        default="Global Alert"></property>
+      <property name="content" 
+        type="String" 
+        label="Content"
+        description="."
+        default="Global alerts display across the top of an entire site to convey important information to users."></property>
+      <property name="as"
+        type="String" 
+        label="As" 
+        description="Style used for the alert."
+        datasource="default,critical,light"
+        default="default"></property>
+      <property name="cta"
+        type="String" 
+        label="Call to action" 
+        description="Inline text link for more information or call to action for the user - in Markdown link format."
+        default="[Call to action](#)"></property>
+      <property name="ctaStyle"
+        type="String" 
+        label="Call to action style" 
+        description="Style used for the Call to action."
+        datasource="link,button"
+        default="link"></property>
+      <property name="className" 
+        type="String" 
+        label="Class name"
+        description="Additional CSS class to be applied."></property>
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

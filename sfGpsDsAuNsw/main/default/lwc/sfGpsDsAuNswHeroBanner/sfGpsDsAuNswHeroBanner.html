@@ -1,0 +1,35 @@
+<template>
+  <div class={computedClassName}>
+    <div class="nsw-hero-banner__container">
+      <div class="nsw-hero-banner__wrapper">
+        <div class="nsw-hero-banner__content nsw-wysiwyg-content">
+          <h1>{title}</h1>
+          <p class="nsw-intro">
+            <slot>
+            </slot>    
+          </p>
+          <div if:true={cta} class="nsw-hero-banner__button">
+            <a href={cta.url} class={computedButtonClassName}>{cta.text}</a>
+          </div>
+        </div>
+
+        <div if:true={links} class="nsw-hero-banner__links">
+          <div class="nsw-hero-banner__list">
+            <div class="nsw-hero-banner__sub-title">{subtitle}</div>
+            <ul>
+              <template for:each={links} for:item="link">
+                <li key={link.index}><a href={link.url}>{link.text}</a></li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      
+        <div class="nsw-hero-banner__box" role="presentation">
+          <img if:true={image} class="nsw-hero-banner__image" src={image.src} alt={image.alt}>
+          <div if:false={image} class="nsw-hero-banner__bg">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</template>

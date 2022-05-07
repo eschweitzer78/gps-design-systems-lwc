@@ -1,0 +1,20 @@
+<template>
+    <nav 
+        class={computedClassName} 
+        aria-label={label}
+    >
+        <ol class={computedListClassName}>
+            <template for:each={items} for:item="item">
+                <li key={item.index}>
+                    <template if:true={item.url}>
+                        <a href={item.url}>{item.text}</a>
+                    </template>
+                    
+                    <template if:false={item.url}>
+                        {item.text}
+                    </template>
+                </li>
+            </template>
+        </ol>   
+    </nav>
+</template>

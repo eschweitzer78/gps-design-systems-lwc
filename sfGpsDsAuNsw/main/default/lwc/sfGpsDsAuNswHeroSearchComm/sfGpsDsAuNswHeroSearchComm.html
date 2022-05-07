@@ -1,0 +1,16 @@
+<template>
+    <c-sf-gps-ds-au-nsw-hero-search if:false={_sfGpsErrors} 
+      title={title}
+      intro={intro} 
+      image={image}
+      links={_links} 
+      class-name={className} 
+      sr-label={srLabel} 
+      sr-search-button-label={srSearchButtonLabel}
+      onsearch={handleSearch}
+    >
+  </c-sf-gps-ds-au-nsw-hero-search>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>  
+</template>

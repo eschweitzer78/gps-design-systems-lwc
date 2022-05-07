@@ -1,0 +1,16 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <div class="page-footer">
+      <div class="snsw-container">
+        <div if:true={title} class="help-title">
+          {title}
+        </div>  
+        <div class="sfGpsMarkdown" lwc:dom="manual">
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

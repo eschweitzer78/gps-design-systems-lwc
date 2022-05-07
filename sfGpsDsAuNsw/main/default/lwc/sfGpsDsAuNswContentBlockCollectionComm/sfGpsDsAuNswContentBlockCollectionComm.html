@@ -1,0 +1,29 @@
+<template>
+  <c-sf-gps-ds-spinner if:true={_isLoading}>
+  </c-sf-gps-ds-spinner>
+
+  <template if:false={_sfGpsErrors}>
+    <div  class={computedClassName}>
+      <template for:each={_items} for:item="block">
+        <div key={block.index} class={computedColClassName}>
+          <c-sf-gps-ds-au-nsw-content-block-comm
+              tag={block.tag} 
+              image={block.image} 
+              image-alt={block.imageAlt} 
+              headline={block.headline} 
+              copy={block.copy} 
+              links={block.footer}
+              main-link={block.mainLink} 
+              use-markup="true">
+          </c-sf-gps-ds-au-nsw-content-block-comm>
+        </div>    
+      </template>
+    </div>
+
+    <c-sf-gps-ds-empty if:true={isEmpty} title="No matching content">
+    </c-sf-gps-ds-empty>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

@@ -1,0 +1,14 @@
+<template>
+  <template if:true={messageText}>
+    <div class="messaging">
+      <c-sf-gps-ds-au-nsw-alert-comm-os if:true={isRequirement} as="error" title={mergedTitleText} content={mergedMessageText}>
+      </c-sf-gps-ds-au-nsw-alert-comm-os>
+      <c-sf-gps-ds-au-nsw-alert-comm-os if:true={isSuccess} as="success" title={mergedTitleText} content={mergedMessageText}>
+      </c-sf-gps-ds-au-nsw-alert-comm-os>
+      <c-sf-gps-ds-au-nsw-alert-comm-os if:true={isWarning} as="warning" title={mergedTitleText} content={mergedMessageText}>
+      </c-sf-gps-ds-au-nsw-alert-comm-os>
+      <c-sf-gps-ds-au-nsw-alert-comm-os if:true={isComment} as="info" title={mergedTitleText} content={mergedMessageText}>
+      </c-sf-gps-ds-au-nsw-alert-comm-os>
+    </div>
+  </template>
+</template>

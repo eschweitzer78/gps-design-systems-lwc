@@ -1,0 +1,22 @@
+<template>
+  <c-sf-gps-ds-au-nsw-header if:false={_sfGpsErrors} 
+    sr-waratah-label={srWaratahLabel}
+    logo={logo}
+    logo-alt={logoAlt}
+    menu-label={menuLabel}
+    site-title={siteTitle}
+    site-descriptor={siteDescriptor}
+    header-url={headerUrl}
+    mobile={mobile}
+    search={search}
+    search-label={searchLabel}
+    class-name={className}
+    onsearch={handleSearch}
+    onopenmenu={handleOpenMenu}
+  >
+  </c-sf-gps-ds-au-nsw-header>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>  
+</template>
+

@@ -1,0 +1,26 @@
+<template>
+    <c-sf-gps-ds-au-nsw-card if:false={_sfGpsErrors} 
+        cstyle={cstyle}
+        tag={tag}
+        date={_date}
+        image={image}
+        image-alt={imageAlt}
+        headline={_headline.text}
+        link={_headline.url}
+        highlight={highlight}
+        class-name={className}
+    >
+
+        <template if:true={copy}>
+            <p class="nsw-card__copy"></p>
+        </template>
+
+        <template if:true={footer}>
+            <hr class="nsw-card__divider"/>
+            <div class="nsw-card__footer"></div>
+        </template>
+    </c-sf-gps-ds-au-nsw-card>
+
+    <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+    </c-sf-gps-ds-configuration-error>
+</template>

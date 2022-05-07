@@ -1,0 +1,23 @@
+<template>
+  <div class={computedClassName}>
+    <template if:true={asCheckboxes}>
+      <template for:each={_tags} for:item="tag">
+        <div key={tag.index} class={tag.className}>
+          <input type="checkbox" id={tag.id} checked={tag.checked}>{tag.text}</a>
+          <label for={tag.id}>
+            {tag.text}
+          </label>
+          </div>
+      </template>  
+    </template>
+
+    <template if:false={asCheckboxes}>
+      <template for:each={_tags} for:item="tag">
+        <a if:true={tag.url} key={tag.index} class={tag.className} href={tag.url}>{tag.text}</a>
+        <span if:false={tag.url} key={tag.index} class={tag.className}>
+          {tag.text}
+        </span>
+      </template>        
+    </template>
+ </div>
+</template>

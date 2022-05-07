@@ -1,0 +1,224 @@
+@import 'c/sfGpsDsAuNswSEmbedCss';
+
+/*
+.servicensw-embed a {
+  -webkit-text-decoration-skip: ink;
+  color: #2e5299;
+  text-decoration-skip-ink: auto;
+}
+
+.servicensw-embed a {
+  background-color: transparent;
+}
+
+.servicensw-embed ul {
+  list-style: none;
+}
+
+.servicensw-embed ul {
+  margin: 1.5rem 0;
+  max-width: 769px;
+  padding: 0;
+}
+
+.servicensw-embed ul li {
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle fill='%23242934' cx='2' cy='2' r='2'/%3E%3C/svg%3E") no-repeat 15px .625rem;
+  padding: 0 0 0 36px;
+}
+
+.servicensw-embed li {
+  margin: 0 0 .75rem;
+}
+
+.servicensw-embed .global-header {
+  background: #fff;
+  border-bottom: 1px solid #ecf1f3;
+  position: relative;
+  z-index: 200;
+}
+
+.servicensw-embed .global-header__top {
+  background: #242934;
+  color: #fff;
+}
+
+.servicensw-embed .global-header__top a {
+  color: #fff;
+  font-size: .875rem;
+}
+
+.servicensw-embed .global-header__top .nsw-container {
+  align-items: center;
+  display: flex;
+  height: 48px;
+  justify-content: flex-end;
+}
+
+.servicensw-embed .global-header__top .inline-nav a {
+  color: #fff;
+  font-size: .875rem;
+}
+
+.servicensw-embed .inline-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  max-width: none;
+}
+
+.servicensw-embed .inline-nav li {
+  background: 0;
+  margin: 0 2rem 0 0;
+  padding: 0;
+}
+
+.servicensw-embed .inline-nav a {
+  color: #242934;
+  display: block;
+  font-size: .875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.servicensw-embed .translate button:after {
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23242934' d='M12 2c0-.1 0-.1-.1-.2L10.3.1c-.1-.1-.3-.1-.4 0L6 4 2.1 0c-.1 0-.3 0-.4.1L.1 1.7c-.1.1-.1.3 0 .4l5.7 5.8c.1.1.3.1.4 0l5.7-5.8c.1 0 .1-.1.1-.1z'/%3E%3C/svg%3E") no-repeat 50%;
+  content: "";
+  height: 12px;
+  margin-top: -5px;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: -webkit-transform .5s ease-in-out;
+  transition: transform .5s ease-in-out;
+  transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
+  width: 12px;
+}
+
+.servicensw-embed .translate--global-header button:after {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M12 2c0-.1 0-.1-.1-.2L10.3.1c-.1-.1-.3-.1-.4 0L6 4 2.1 0c-.1 0-.3 0-.4.1L.1 1.7c-.1.1-.1.3 0 .4l5.7 5.8c.1.1.3.1.4 0l5.7-5.8c.1 0 .1-.1.1-.1z'/%3E%3C/svg%3E");
+}
+
+.servicensw-embed .translate {
+  display: inline-block;
+  height: 40px;
+  position: relative;
+}
+
+.servicensw-embed .global-header__top .translate {
+  line-height: 47px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-bottom: 0;
+  padding-top: 0;
+  z-index: 202;
+}
+
+.servicensw-embed .translate--global-header {
+  height: 48px;
+}
+
+
+.reset--button {
+  background: 0;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.servicensw-embed .translate button {
+  border: 1px solid transparent;
+  border-bottom: 0;
+  color: #242934;
+  font-weight: 500;
+  height: 40px;
+  padding: 7px 34px 7px 16px;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.servicensw-embed .translate--global-header button {
+  align-items: center;
+  background: #242934;
+  border-bottom: 1px solid transparent;
+  color: #fff;
+  display: flex;
+  font-size: .875rem;
+  height: 48px;
+  padding: 0 34px 0 16px;
+}
+
+.servicensw-embed .translate ul[aria-hidden=true] {
+  display: none;
+}
+
+.servicensw-embed .translate--global-header ul {
+  border-color: #dee3e5;
+  top: 48px;
+}
+
+.servicensw-embed .translate ul {
+  background: #fff;
+  border: 1px solid #929ea4;
+  border-top: 0;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
+  left: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: scroll;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  z-index: 101;
+}
+
+
+
+
+
+
+
+.global-header__main .nsw-container {
+  align-items: center;
+  display: flex;
+  height: 64px;
+}
+
+@media (min-width: 1024px) {
+  .global-header__main .nsw-container {
+    height: 78px;
+  }
+}
+
+.global-header__logo-lock-up {
+  align-items: flex-end;
+  background: none;
+  display: flex;
+  flex-shrink: 0;
+  margin: 0 auto;
+  padding: 0;
+  text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+  .global-header__logo-lock-up {
+    margin: 0 2rem 0 0;
+  }
+}
+
+.global-header__logo-lock-up svg {
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.global-header__logo-lock-up span {
+  background: #dee3e5;
+  display: block;
+  flex-shrink: 0;
+  height: 46px;
+  margin: 0 13px;
+  width: 1px;
+}
+*/

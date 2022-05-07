@@ -1,0 +1,14 @@
+<template>
+    <c-sf-gps-ds-au-nsw-accordion if:false={_sfGpsErrors}
+        header={header} 
+        closed={closed} 
+        class-name={className}
+        onexpand={handleExpand}
+        oncollapse={handleCollapse}>
+        <span class="sf-gps-body" lwc:dom="manual">
+        </span>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+    </c-sf-gps-ds-configuration-error>
+</template>

@@ -1,0 +1,14 @@
+<template>
+    <div class={computedClassName}>
+        <div class="nsw-callout__content">
+            <h1 if:true={isH1} class="nsw-callout__title">{title}</h1>
+            <h2 if:true={isH2} class="nsw-callout__title">{title}</h2>
+            <h3 if:true={isH3} class="nsw-callout__title">{title}</h3>
+            <h4 if:true={isH4} class="nsw-callout__title">{title}</h4>
+            <h5 if:true={isH5} class="nsw-callout__title">{title}</h5>
+            <h6 if:true={isH6} class="nsw-callout__title">{title}</h6>
+            <slot>
+            </slot>
+        </div>
+    </div>
+</template>

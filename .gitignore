@@ -10,6 +10,7 @@ deploy-options.json
 
 # LWC VSCode autocomplete
 **/lwc/jsconfig.json
+jsconfig.json
 
 # LWC Jest coverage reports
 coverage/
@@ -36,5 +37,15 @@ ehthumbs.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
 
+# VS code project settings
+.vscode/*
+!.vscode/extensions.json
+
 # Local environment variables
 .env
+
+# non repo temp code
+sfGpsTemp/*
+
+# auto-generated LWCs for Omniscript/Omnistudio
+**/lwc/*Os/**

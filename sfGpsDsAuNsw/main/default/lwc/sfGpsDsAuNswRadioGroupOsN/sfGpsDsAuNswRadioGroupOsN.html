@@ -1,0 +1,49 @@
+<template>
+  <div class="nsw-form__group">
+    <fieldset class="nsw-form__fieldset">
+      <legend>
+        <span class={computedLegendClassName}>
+          {label}
+          <span class="sr-only"> ({requiredLabel})</span>
+        </span>
+        <slot name="label">
+        </slot>            
+        <span id="helper" class="nsw-form__helper">{fieldLevelHelp}</span>
+
+        <span if:true={isRealError}
+          class={computedHelperClassName}
+          aria-live="assertive"
+          id="errorMessageBlock">
+          <span if:true={computedStatusIcon} class="material-icons nsw-material-icons" aria-hidden="true">
+            {computedStatusIcon}
+          </span>
+          {errorMessage}
+        </span>
+      </legend>
+
+      <div>
+        <template for:each={internalOpts} for:item="e" for:index="t">
+          <input key={e.id}
+            class="nsw-form__radio-input"
+            type="radio"
+            tabindex={tabIndex}
+            required={required}
+            disabled={disabled}
+            id={e.id}
+            data-index={t}
+            name={e.name}
+            value={e.value}
+            checked={e.selected}
+            onfocus={handleFocus}
+            onchange={onchangevalue}>
+          <label key={e.id} 
+            class="nsw-form__radio-label" 
+            data-index={t} 
+            for={e.id}>
+            {e.label}
+          </label>
+        </template>
+      </div>
+    </fieldset>
+  </div>
+</template>

@@ -1,0 +1,216 @@
+<template>
+  <nav id="main-nav" 
+    class={computedClassName}
+    aria-label={navAriaLabel}>
+    <div class="nsw-main-nav__header">
+      <div class="nsw-main-nav__title">{navTitle}</div>
+      <button type="button" 
+        class="nsw-icon-button"
+        aria-controls="main-nav"
+        aria-expanded={isActive}
+        onclick={handleMainCloseClick}
+      >
+        <span class="material-icons nsw-material-icons" aria-hidden="true">close</span>
+        <span class="sr-only">{closeMenuLabel}</span>
+      </button>
+    </div>
+    <ul class="nsw-main-nav__list">
+      <template for:each={_navItems} for:item="navItem">
+        <li key={navItem.index}>
+          <a if:false={navItem.subNav} 
+            href={navItem.url} 
+            data-ndx={navItem.index}
+            onclick={handleClick}> <!-- navigate -->
+            <span>{navItem.text}</span>
+            <template if:true={navItem.subNav}>
+              <span 
+                class="material-icons nsw-material-icons nsw-main-nav__link-icon"
+                aria-hidden="true">
+                keyboard_arrow_right
+              </span>
+            </template>
+          </a>
+          
+  
+          <template if:true={navItem.subNav}>
+            <a 
+              href={navItem.url} 
+              class={navItem.className}
+              role="button"
+              aria-expanded={navItem.isActive} 
+              aria-controls={navItem.index} 
+              data-ndx={navItem.index}
+              onclick={handleClick}> <!-- expand -->
+              <span>{navItem.text}</span>
+              <template if:true={navItem.subNav}>
+                <span 
+                  class="material-icons nsw-material-icons nsw-main-nav__link-icon"
+                  aria-hidden="true">
+                  keyboard_arrow_right
+                </span>
+              </template>
+            </a>
+            
+            <!-- SubNav -->
+            <div class={navItem.subNavClassName} id={navItem.index} role="region" aria-label={navItem.text}>
+
+              <!-- SubNavHeader -->
+              <div class="nsw-main-nav__header">
+                <button
+                  type="button"
+                  class="nsw-icon-button nsw-icon-button--flex"
+                  aria-controls={navItem.index}
+                  aria-expanded="true"
+                  data-ndx={navItem.index}
+                  onclick={handleBackClick}
+                >
+                  <span
+                    class="material-icons nsw-material-icons"
+                    aria-hidden="true"
+                  >
+                    keyboard_arrow_left
+                  </span>
+                  <span>
+                    Back
+                    <span class="sr-only"> to previous menu</span>
+                  </span>
+                </button>
+                <button type="button"
+                  class="nsw-icon-button"
+                  aria-controls="main-nav"
+                  aria-expanded={isActive}
+                  onclick={handleMainCloseClick}
+                >
+                  <i class="material-icons nsw-material-icons" aria-hidden="true">close</i>
+                  <span class="sr-only">Close Menu</span>
+                </button>
+              </div>
+
+              <div class="nsw-main-nav__title">
+                <a href={navItem.url}
+                   data-ndx={navItem.index}
+                   onclick={handleClickNavigate}
+                >
+                  <span>{navItem.text}</span> <!-- navigate -->
+                  <span
+                    class="material-icons nsw-material-icons"
+                    aria-hidden="true"
+                  >
+                    east
+                  </span>
+                </a>
+              </div>
+              <div class="nsw-main-nav__description">{navItem.description}</div>
+              <!-- End SubNavHeader -->
+
+              <!-- SubNav -->
+              <ul class="nsw-main-nav__sub-list">
+                <template for:each={navItem.subNav} for:item="subNavItem">
+                  <li key={subNavItem.index}>
+                    <a href={subNavItem.url}
+                      class={subNavItem.className}
+                      role="button"
+                      data-ndx={subNavItem.index}
+                      onclick={handleClick}>  <!-- navigate if no subNav, or expand -->
+                      <span>
+                        {subNavItem.text} 
+                      </span>
+
+                      <span if:true={subNavItem.subNav}
+                        class="material-icons nsw-material-icons nsw-main-nav__link-icon"
+                        aria-hidden="true"
+                      >
+                        keyboard_arrow_right
+                      </span>
+                    </a>
+        
+                    <template if:true={subNavItem.subNav}>
+                      <div
+                        class={subNavItem.subNavClassName}
+                        id={subNavItem.index}
+                        role="region"
+                        aria-label={subNavItem.ariaLabel}
+                      >
+
+                        <!-- SubNavHeader -->
+                        <div class="nsw-main-nav__header">
+                          <button
+                            type="button"
+                            class="nsw-icon-button nsw-icon-button--flex"
+                            aria-controls={subNavItem.index}
+                            aria-expanded="true"
+                            data-ndx={subNavItem.index}
+                            onclick={handleBackClick}          
+                          >
+                            <span
+                              class="material-icons nsw-material-icons"
+                              aria-hidden="true"
+                            >
+                              keyboard_arrow_left
+                            </span>
+                            <span>
+                              Back
+                              <span class="sr-only"> to previous menu</span>
+                            </span>
+                          </button>
+                          <button type="button"
+                            class="nsw-icon-button"
+                            aria-controls="main-nav"
+                            aria-expanded={isActive}
+                            onclick={handleMainCloseClick}
+                          >
+                            <i class="material-icons nsw-material-icons" aria-hidden="true">close</i>
+                            <span class="sr-only">Close Menu</span>
+                          </button>
+                        </div>
+                        <div class="nsw-main-nav__title">
+                          <a href={subNavItem.url}
+                            role="button"
+                            data-ndx={subNavItem.index}
+                            onclick={handleClickNavigate}>
+                            <span>{subNavItem.text}</span> <!-- navigate -->
+                            <span
+                              class="material-icons nsw-material-icons"
+                              aria-hidden="true"
+                            >
+                              east
+                            </span>
+                          </a>
+                        </div>
+                        <div class="nsw-main-nav__description">{navItem.description}</div>
+                        <!-- End SubNavHeader-->
+
+                        <ul class="nsw-main-nav__sub-list">
+                          <template for:each={subNavItem.subNav} for:item="subSubNavItem">                            
+                            <li key={subSubNavItem.index}>
+                              <a href={subSubNavItem.url}
+                                class="nsw-subnavigation__link"
+                                data-ndx={subSubNavItem.index}
+                                onclick={handleClickNavigate}> <!-- navigate -->
+                                <span>z{subSubNavItem.text}</span>
+                                <span if:true={subSubNavItem.subNav}
+                                  class="material-icons nsw-material-icons nsw-main-nav__link-icon"
+                                  aria-hidden="true"
+                                >
+                                  keyboard_arrow_right
+                                </span>
+                              </a>
+                            </li>
+                          </template>
+                        </ul>
+                      </div>
+                    </template>
+
+                  </li>
+                </template>
+              </ul>
+              <!-- End SubNav -->
+
+            </div>
+
+          </template>
+        </li>  
+      </template>
+    </ul>
+  </nav>
+</template>

@@ -1,0 +1,26 @@
+.nsw-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.nsw-list--center {
+  justify-content: center;
+}
+.nsw-list--8 {
+  margin: -0.25rem;
+}
+.nsw-list--8 > * {
+  margin: 0.25rem;
+}
+.nsw-list--16 {
+  margin: -0.5rem;
+}
+.nsw-list--16 > * {
+  margin: 0.5rem;
+}
+.nsw-list--32 {
+  margin: -1rem;
+}
+.nsw-list--32 > * {
+  margin: 1rem;
+}

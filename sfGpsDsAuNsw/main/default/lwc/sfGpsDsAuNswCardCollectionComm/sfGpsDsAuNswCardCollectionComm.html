@@ -1,0 +1,42 @@
+<template>
+  <c-sf-gps-ds-spinner if:true={_isLoading}>
+  </c-sf-gps-ds-spinner>
+
+  <template if:false={_sfGpsErrors}>
+    <div class={computedClassName}>
+      <template for:each={_items} for:item="card">
+        <div key={card.index} class={computedColClassName}>
+          <!-- card -->
+          <c-sf-gps-ds-au-nsw-card-comm if:true={displayDate}
+            cstyle={cstyle} 
+            tag={card.tag} 
+            image={card.image} 
+            image-alt={card.imageAlt} 
+            headline={card.headline} 
+            copy={card.copy} 
+            footer={card.footer}
+            date={card.date}
+            use-markup="true">
+          </c-sf-gps-ds-au-nsw-card-comm>
+
+          <c-sf-gps-ds-au-nsw-card-comm if:false={displayDate}
+            cstyle={cstyle} 
+            tag={card.tag} 
+            image={card.image} 
+            image-alt={card.imageAlt} 
+            headline={card.headline} 
+            copy={card.copy} 
+            footer={card.footer}
+            use-markup="true">
+          </c-sf-gps-ds-au-nsw-card-comm>
+        </div>    
+      </template>
+    </div>
+
+    <c-sf-gps-ds-empty if:true={isEmpty} title="No matching content">
+    </c-sf-gps-ds-empty>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

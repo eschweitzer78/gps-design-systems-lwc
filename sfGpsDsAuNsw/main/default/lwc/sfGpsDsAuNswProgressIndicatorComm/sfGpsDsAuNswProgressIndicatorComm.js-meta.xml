@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>54.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Progress Indicator</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property name="step" 
+        type="Integer" 
+        label="step"
+        description="Current position of the user in the process."
+        min="1"
+        max="25"
+        default="1"></property>
+      <property name="of" 
+        type="Integer" 
+        label="of"
+        description="Total number of steps in the process."
+        min="1"
+        max="25"
+        default="1"></property>
+      <property name="className" 
+        type="String" 
+        label="Class name"
+        description="Additional CSS class to be applied."></property>
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

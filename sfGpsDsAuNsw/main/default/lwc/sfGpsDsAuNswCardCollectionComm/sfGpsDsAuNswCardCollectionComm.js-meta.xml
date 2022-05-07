@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>NSW DS Card Collection</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="cstyle"
+                type="String" 
+                label="Style" 
+                datasource="dark,white,light,highlight" 
+                required="true"></property>
+            <property name="ipName"
+                type="String"
+                label="Integration procedure name"
+                description="Name of the Integration procedure mapping content to this card."></property>
+            <property name="inputJSON" 
+                type="String" 
+                label="Input JSON"
+                description="JSON formatted input parameters for the Integration procedure."></property>
+            <property name="optionsJSON" 
+                type="String" 
+                label="Options JSON"
+                description="JSON formatted options for the Integration procedure."></property>
+            <property name="displayDate"
+                type="Boolean"
+                label="Display date"
+                description="Use the content publication date as the card date."></property>
+            <property name="xsWidth" 
+                type="String"
+                label="XS width" 
+                description="Relative size of a card on a extra-small device (576px or less)."
+                datasource="apex://sfGpsDsResponsiveSizePickList"></property>
+            <property name="smWidth" 
+                type="String" 
+                label="SM width" 
+                description="Relative size of a card on a small device (577-767px)."
+                datasource="apex://sfGpsDsResponsiveSizePickList"></property>
+            <property name="mdWidth"
+                type="String" 
+                label="MD width" 
+                description="Relative size of a card on a medium device (768-991px)."
+                datasource="apex://sfGpsDsResponsiveSizePickList"></property>
+            <property name="lgWidth" 
+                type="String" 
+                label="LG width" 
+                description="Relative size of a card on a large device (992-1199px)."
+                datasource="apex://sfGpsDsResponsiveSizePickList"></property>
+            <property name="xlWidth" 
+                type="String" 
+                label="XL width" 
+                description="Relative size of a card on a extra-large device (1200px or more)."
+                datasource="apex://sfGpsDsResponsiveSizePickList"></property>
+            <property name="className" 
+                type="String" 
+                label="Class name"
+                description="Additional CSS class to be applied."></property>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

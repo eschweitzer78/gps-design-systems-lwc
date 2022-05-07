@@ -1,0 +1,23 @@
+<template>
+  <div if:false={_isClosed} class={computedClassName} role="alert">
+    <div class="nsw-global-alert__wrapper">
+      <div class="nsw-global-alert__content">
+        <div class="nsw-global-alert__title">{title}</div>
+        <p>{content}
+          <template if:true={isCtaLinkStyle}>
+            {space}<a href={ctaHref} class="nsw-sitewide-message__link">{ctaText}</a>
+          </template>
+        </p>
+      </div>
+
+      <p if:true={isCtaButtonStyle}>
+        <a href={ctaHref} class={computedButtonClassName}>{ctaText}</a>
+      </p>
+
+      <button type="button" class="nsw-icon-button" onclick={handleClick}>
+        <span class="material-icons nsw-material-icons" aria-hidden="true">close</span>
+        <span class="sr-only">Close message</span>
+      </button>
+    </div>
+  </div>   
+</template>

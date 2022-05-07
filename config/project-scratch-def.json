@@ -1,13 +1,28 @@
 {
-  "orgName": "eschweitzer company",
-  "edition": "Developer",
-  "features": ["EnableSetPasswordInApi"],
+  "orgName": "Salesforce Global Public Sector Design Systems",
+  "country": "au",
+  "adminEmail": "eschweitzer@salesforce.com",
+  "edition": "Enterprise",
+  "features": [
+      "EnableSetPasswordInApi", 
+      "Communities", 
+      "Interaction",
+      "CMSUnlimitedUse",
+      "OmniStudioDesigner",
+      "OmniStudioRuntime"
+    ],
   "settings": {
+    "communitiesSettings": {
+        "enableNetworksEnabled": true
+    },
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
     },
     "mobileSettings": {
       "enableS1EncryptedStoragePref2": false
+    },
+    "emailAdministrationSettings": {
+        "enableEnhancedEmailEnabled": true
     }
   }
 }

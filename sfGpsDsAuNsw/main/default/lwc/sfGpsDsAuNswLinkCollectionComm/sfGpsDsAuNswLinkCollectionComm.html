@@ -1,0 +1,13 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-au-nsw-link-list links={_items} class-name={className}>
+    </c-sf-gps-ds-au-nsw-link-list>
+    
+    <c-sf-gps-ds-empty if:true={isEmpty} title="No matching content">
+    </c-sf-gps-ds-empty>  
+  </template>
+
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>  
+</template>

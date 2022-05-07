@@ -1,0 +1,17 @@
+<template>
+  <c-sf-gps-ds-au-nsw-hero-banner if:false={_sfGpsErrors}
+    title={title}
+    cta={_cta}
+    cstyle={cstyle}
+    wide={wide}
+    featured={featured}
+    image={computedImage}
+    links={_links}
+    class-name={className}
+  >
+    <div class="sfGpsMarkdown"></div>
+  </c-sf-gps-ds-au-nsw-hero-banner>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>  
+</template>

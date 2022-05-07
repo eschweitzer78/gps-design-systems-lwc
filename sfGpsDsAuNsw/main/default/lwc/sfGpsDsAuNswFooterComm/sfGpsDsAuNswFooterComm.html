@@ -1,0 +1,31 @@
+<template>
+  <footer if:false={_sfGpsErrors} class="nsw-footer">
+
+    <!-- footer-lower -->
+    <div class={computedLowerFooterClassName}>
+      <div class="nsw-container">
+        <p>{statement}</p>
+        <template if:true={_lowerFooterLinks}>
+          <hr>
+          <nav role="navigation" aria-labelledby="lower-footer-links" class="clearfix">
+            <h4 class="sr-only" id="lower-footer-links">Legal &amp; Privacy</h4>
+            <ul class="clearfix nsw-footer-links">
+              <template for:each={_lowerFooterLinks} for:item="link">
+                <li key={link.index} class="nsw-footer-links__item">
+                  <a href={link.url} class="nsw-footer-links__link">{link.text}</a>
+                </li> 
+              </template>
+            </ul>
+          </nav>
+        </template>
+        <div class="nsw-footer__info">
+          <div if:true={copyrightMention} class="nsw-footer__copyright" lwc:dom="manual"></div>
+          <div if:true={builtMention} class="nsw-footer__built" lwc:dom="manual"></div>  
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

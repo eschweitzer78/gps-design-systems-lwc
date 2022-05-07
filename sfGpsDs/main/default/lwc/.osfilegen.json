@@ -1,0 +1,78 @@
+{
+  "sfGpsDsConfigurationError": {
+    "target": "!Os",
+    "!.css": { "target": "!Os.css" },
+    "!.html": { "target": "!Os.html" },
+    "!.js": {
+      "target": "!Os.js",
+      "SfGpsDsConfigurationError": "SfGpsDsConfigurationErrorOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsEmpty": {
+    "target": "!Os",
+    "!.html": { "target": "!Os.html" },
+    "!.js": {
+      "target": "!Os.js",
+      "SfGpsDsEmpty": "SfGpsDsEmptyOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsHelpers": {
+    "target": "!Os",
+    "datetime.js": { "target": "datetime.js"},
+    "dom.js": { "target": "dom.js"},
+    "!.js": { "target": "!Os.js" },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    },
+    "utilities.js": { "target": "utilities.js"}
+
+  },
+  "sfGpsDsMarkdown": {
+    "target": "!Os",
+    "blocks.js": { "target": "blocks.js" },
+    "common.js": { "target": "common.js" },
+    "entitiesDecode.js": { "target": "entitiesDecode.js" },
+    "entitiesDecodeCodepoint.js": { "target": "entitiesDecodeCodepoint.js" },
+    "entitiesMapsDecode.js": { "target": "entitiesMapsDecode.js" },
+    "entitiesMapsEntities.js": { "target": "entitiesMapsEntities.js" },
+    "entitiesMapsLegacy.js": { "target": "entitiesMapsLegacy.js" },
+    "entitiesMapsXml.js": { "target": "entitiesMapsXml.js" },
+    "fromCodePoint.js": { "target": "fromCodePoint.js" },
+    "htmlRenderer.js": { "target": "htmlRenderer.js" },
+    "inlines.js": { "target": "inlines.js" },
+    "mdUrlEncode.js": { "target": "mdUrlEncode.js" },
+    "node.js": { "target": "node.js" },
+    "renderer.js": { "target": "renderer.js" },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers'": "sfGpsDsHelpersOs'",
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsSpinner": {
+    "target": "!Os",
+    "!.css": { "target": "!Os.css" },
+    "!.html": { "target": "!Os.html" },
+    "!.js": {
+      "target": "!Os.js",
+      "SfGpsDsSpinner": "SfGpsDsSpinnerOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  }
+}

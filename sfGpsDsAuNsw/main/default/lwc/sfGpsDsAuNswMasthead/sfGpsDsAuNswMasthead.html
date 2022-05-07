@@ -1,0 +1,13 @@
+<template>
+  <nav class={computedSkipClassName} aria-label={arLabel}>
+    <a href={nav}><span>{navLabel}</span></a>
+    <a href={content}><span>{contentLabel}</span></a>
+  </nav>
+
+  <div class={computedMastheadClassName}>
+    <div class="nsw-container">
+      <slot>
+      </slot>
+    </div>
+  </div>
+</template>
