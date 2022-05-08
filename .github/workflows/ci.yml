@@ -139,6 +139,10 @@ jobs:
       - name: "Deployment Omnistudio"
         run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 10 -r -s=AllUsers
 
+      # Generate omnistudio versions of source
+      - name: "Automatically generate Omnistudio source"
+        run: node ./osfilegen.js
+        
       # Deploy source to scratch org
       - name: "Push source to scratch org"
         run: sfdx force:source:push
