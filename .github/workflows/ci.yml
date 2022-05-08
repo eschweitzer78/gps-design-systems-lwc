@@ -93,7 +93,7 @@ jobs:
         if: steps.pmd-sf-gps-ds-au-nsw.outputs.violations != 0
         run: exit 1
 
-     # Run PMD scan
+      # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNswS"
         uses: pmd/pmd-github-action@v1.2.1
         id: pmd-sf-gps-ds-au-nsw-s
