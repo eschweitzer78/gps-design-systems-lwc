@@ -1,0 +1,31 @@
+@import 'c/sfGpsDsAuNswCoreOs';
+
+:host {
+  font-family: "Gotham A", "Gotham B", Gotham, Helvetica, Arial, sans-serif;
+}
+
+.snsw-completion-tag {
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.5rem;
+
+  padding: 0.125rem 1rem;
+  border: none;
+  border-radius: 2.5rem;
+
+  background: #f4f7f9;
+  color: #242934;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.snsw-completion-tag__complete {
+  background: #00a908;
+  color: #ffffff;
+}
+
+.snsw-completion-tag__incomplete {
+  background: #b81237;
+  color: #ffffff;
+}

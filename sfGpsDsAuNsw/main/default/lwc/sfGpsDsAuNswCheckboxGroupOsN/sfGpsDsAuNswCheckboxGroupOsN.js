@@ -5,8 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import OmnistudioCheckboxGroup from 'omnistudio/checkboxGroup';
-import tmpl from './sfGpsDsAuNswCheckboxGroupOsN.html';
 import { getHelperClassName, getStatusIcon } from 'c/sfGpsDsAuNswFormHelperOsN';
+import tmpl from './sfGpsDsAuNswCheckboxGroupOsN.html';
 
 export default class SfGpsDsAuNswCheckboxGroupOsN extends OmnistudioCheckboxGroup {
   render() {

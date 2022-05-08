@@ -6,8 +6,8 @@
  */
 
 import OmnistudioCombobox from 'omnistudio/combobox';
-import tmpl from './sfGpsDsAuNswComboboxOsN.html';
 import { getHelperClassName, getStatusIcon } from 'c/sfGpsDsAuNswFormHelperOsN';
+import tmpl from './sfGpsDsAuNswComboboxOsN.html';
 
 export default class SfGpsDsAuNswComboboxOsN extends OmnistudioCombobox {
   render() {

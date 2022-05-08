@@ -7,7 +7,9 @@
 
 import { LightningElement, api } from 'lwc';
 
+const defaultTitle = 'There is no data';
+
 export default class SfGpsDsEmpty extends LightningElement {
-  @api title;
+  @api title = defaultTitle;
   @api content;
 }

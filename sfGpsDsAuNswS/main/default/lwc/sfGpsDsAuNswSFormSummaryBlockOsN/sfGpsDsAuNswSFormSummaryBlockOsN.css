@@ -1,0 +1,79 @@
+/*
+  Note: Please make sure that all classes that are specified for the OmniscriptBlock component are also applied to the
+  OmniscriptPreviewBlock component as well in order to align the styling architecture.
+*/
+.omni-block_children {
+  margin-left: 50px;
+}
+
+.omni-block_name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.omni-block_content {
+  padding-left: 1.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.summary-block {
+  background: #ffffff;
+  border: 1px solid #ecf1f3;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+
+  font-family: "Gotham A", "Gotham B", Gotham, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #000000;
+}
+
+.summary-block__title {
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+}
+
+.summary-block__completion {
+  display: inline-block;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+
+  border-radius: 40px;
+  background: #ccc;
+  color: #ffffff;
+
+  font-family: "Gotham A", "Gotham B", Gotham, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+
+  margin-bottom: 0.5rem;
+}
+
+.summary-block__completion-complete {
+  background: #00a908;
+}
+
+.summary-block__completion-incomplete {
+  background: #00a908;
+}
+
+.summary-block__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 0; /*1.5rem 0 0 0;*/
+}
+

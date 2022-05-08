@@ -8,5 +8,5 @@
 import { LightningElement, api } from 'lwc';
 
 export default class SfGpsDsConfigurationError extends LightningElement {
-  @api errors = [];
+  @api errors;
 }
