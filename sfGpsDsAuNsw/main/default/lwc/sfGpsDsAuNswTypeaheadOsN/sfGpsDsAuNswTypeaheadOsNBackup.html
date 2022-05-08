@@ -1,45 +1,57 @@
 <template>
   <div class="slds-form-element slds-is-relative">
     <div class={showProgress}>
-      <omnistudio-progress-bar if:true={remoteSource}
+      <omnistudio-progress-bar
+        if:true={remoteSource}
         data-progress-bar=""
         theme={theme}
-        size="xx-small">
+        size="xx-small"
+      >
       </omnistudio-progress-bar>
     </div>
 
     <div class={errorClass}>
       <div class="slds-grid" data-label="true">
-        <label class="slds-form-element__label slds-show--inline slds-truncate"
+        <label
+          class="slds-form-element__label slds-show--inline slds-truncate"
           style="width: auto"
           aria-label={label}
-          for="inputId">
-          <abbr if:true={required} class="slds-required" title={requiredLabel}>*</abbr>
-          <span style={styleProperties.label.styles}>
-            {label}
-          </span>
+          for="inputId"
+        >
+          <abbr if:true={required} class="slds-required" title={requiredLabel}
+            >*</abbr
+          >
+          <span style={styleProperties.label.styles}> {label} </span>
         </label>
 
-        <omnistudio-tooltip if:true={fieldLevelHelp}
+        <omnistudio-tooltip
+          if:true={fieldLevelHelp}
           data-field-level-help=""
           icon-url={iconUrl}
           content={fieldLevelHelp}
-          arrowposition={fieldLevelHelpPosition}>
+          arrowposition={fieldLevelHelpPosition}
+        >
         </omnistudio-tooltip>
       </div>
 
       <div class="slds-form-element__control">
         <div class="slds-combobox_container">
-          <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click">
+          <div
+            class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
+          >
             <div class={typeaheadFormElementClass} role="none">
-              <span if:true={isLeftIcon} class="slds-icon_container slds-input__icon slds-input__icon_left">
+              <span
+                if:true={isLeftIcon}
+                class="slds-icon_container slds-input__icon slds-input__icon_left"
+              >
                 <slot name="iconLeft">
                   <omnistudio-icon
                     icon-name={iconNameLeft}
                     size={iconSize}
                     baseurl={iconUrl}
                     theme={theme}
-                    alternative-text={_editLabel}>
+                    alternative-text={_editLabel}
+                  >
                   </omnistudio-icon>
                 </slot>
               </span>
@@ -65,16 +77,21 @@
                 oninput={updateValue}
                 onfocus={focusChange}
                 onblur={focusChange}
-                onkeydown={handleKeydown}>
-              <span if:true={isRightIcon}
-                class="slds-icon_container slds-input__icon slds-input__icon_right">
+                onkeydown={handleKeydown}
+              />
+              <span
+                if:true={isRightIcon}
+                class="slds-icon_container slds-input__icon slds-input__icon_right"
+              >
                 <slot name="iconRight">
-                  <omnistudio-icon if:false={hasSlotIconRight}
+                  <omnistudio-icon
+                    if:false={hasSlotIconRight}
                     icon-name={iconNameRight}
                     size={iconSize}
                     baseurl={iconUrl}
                     theme={theme}
-                    alternative-text={_editLabel}>
+                    alternative-text={_editLabel}
+                  >
                   </omnistudio-icon>
                 </slot>
               </span>
@@ -83,41 +100,52 @@
         </div>
 
         <div class="slds-form-element">
-          <div if:true={isLookupVisible}
+          <div
+            if:true={isLookupVisible}
             class={getDropdownClasses}
             id="listboxId"
             role="listbox"
-            onmousedown={handleScrollClick}>
+            onmousedown={handleScrollClick}
+          >
             <ul class="slds-listbox slds-listbox_vertical" role="presentation">
               <template for:each={internaldata} for:item="e" for:index="s">
-                <li key={e.itrKey}
+                <li
+                  key={e.itrKey}
                   style={styleProperties.value.styles}
                   class={e.itemClass}
-                  role="presentation">
+                  role="presentation"
+                >
                   <div
                     class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                     aria-selected={e.selected}
                     id={e.itrKey}
                     role="opion"
                     data-index={s}
-                    onclick={selectOption}>
+                    onclick={selectOption}
+                  >
                     <span class="slds-media__body">
-                      <span class="slds-listbox__option-text slds-listbox__option-text_entity">{e.name}</span>
+                      <span
+                        class="slds-listbox__option-text slds-listbox__option-text_entity"
+                        >{e.name}</span
+                      >
                     </span>
                   </div>
                 </li>
               </template>
 
               <li class={lastItemClass} style={styleProperties.value.styles}>
-                <div 
+                <div
                   class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta"
                   role="option"
                   data-index="last-item"
-                  onclick={selectOption}>
+                  onclick={selectOption}
+                >
                   <span class="slds-media__body">
-                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                    <span
+                      class="slds-listbox__option-text slds-listbox__option-text_entity"
+                    >
                       <slot name="lastItem" onslotchange={lastItemChange}>
-                      </slot>  
+                      </slot>
                     </span>
                   </span>
                 </div>
@@ -126,8 +154,7 @@
           </div>
         </div>
 
-        <div if:true={isError}
-          class="slds-form-element__help">
+        <div if:true={isError} class="slds-form-element__help">
           {errorMessage}
         </div>
       </div>

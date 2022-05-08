@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptTextBlock from 'omnistudio/omniscriptTextBlock';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import { replaceInnerHtml } from 'c/sfGpsDsHelpersOs';
-import tmpl from './sfGpsDsAuNswSFormTextBlockOsN.html';
+import OmniscriptTextBlock from "omnistudio/omniscriptTextBlock";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import { replaceInnerHtml } from "c/sfGpsDsHelpersOs";
+import tmpl from "./sfGpsDsAuNswSFormTextBlockOsN.html";
 
 export default class SfGpsDsAuNswSFormTextBlockOs extends OmniscriptTextBlock {
   render() {
@@ -16,7 +16,7 @@ export default class SfGpsDsAuNswSFormTextBlockOs extends OmniscriptTextBlock {
   }
 
   renderedCallback() {
-    let element = this.template.querySelector('.sfGpsMerge');
+    let element = this.template.querySelector(".sfGpsMerge");
 
     if (element) {
       replaceInnerHtml(

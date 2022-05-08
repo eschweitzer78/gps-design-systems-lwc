@@ -1,5 +1,5 @@
-@import 'c/sfGpsDsAuNswCore';
-@import 'c/sfGpsDsAuNswFormCss';
+@import "c/sfGpsDsAuNswCore";
+@import "c/sfGpsDsAuNswFormCss";
 
 @media (min-width: 48rem) {
   .hero-search {

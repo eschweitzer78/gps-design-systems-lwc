@@ -2,10 +2,7 @@
   <template if:false={isCustomLwc}>
     <div class="nsw-form__group">
       <div if:true={labelVisible} data-label="true">
-        <label
-          class={computedLabelClassName} 
-          style="width: auto" 
-          for={inputId}>
+        <label class={computedLabelClassName} style="width: auto" for={inputId}>
           {label}
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
         </label>
@@ -33,15 +30,15 @@
           value={_value}
           onchange={triggerInputEvent}
           onfocus={triggerEvent}
-          onblur={validateError}>
-        <label
-          class="nsw-form__checkbox-label"
-          for={inputId}
-          data-label="true">
+          onblur={validateError}
+        />
+        <label class="nsw-form__checkbox-label" for={inputId} data-label="true">
           {label}
-          <span if:true={required}
+          <span
+            if:true={required}
             class="nsw-form__required"
-            title={requiredLabel}>
+            title={requiredLabel}
+          >
           </span>
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
         </label>
@@ -51,28 +48,31 @@
       </template>
 
       <div if:true={_isFormula}>
-        <label class="slds-form-element__label slds-show--inline slds-p-top_none" for={inputId}>
+        <label
+          class="slds-form-element__label slds-show--inline slds-p-top_none"
+          for={inputId}
+        >
           {label}
         </label>
         <input
-          class="slds-input" 
-          type="text" 
-          id={inputId} 
-          readonly="" 
-          disabled="" 
+          class="slds-input"
+          type="text"
+          id={inputId}
+          readonly=""
+          disabled=""
           value={inputValue}
           onchange={triggerEvent}
           onfocus={triggerEvent}
           onblur={triggerEvent}
           onkeydown={triggerKeyEvents}
           onkeyup={triggerKeyEvents}
-        >
+        />
       </div>
 
-      <div if:true={isRadio}
-        class="slds-form-element__control">
+      <div if:true={isRadio} class="slds-form-element__control">
         <div class="slds-radio">
-          <input class="vlocity-input"
+          <input
+            class="vlocity-input"
             type={type}
             required={required}
             aria-invalid={isAriaInvalid}
@@ -84,23 +84,29 @@
             onchange={triggerInputEvent}
             onfocus={triggerEvent}
             onblur={closeTooltip}
-          >
+          />
           <label class="slds-radio__label" for={inputId}>
             <span class="slds-radio_faux"></span>
-            <span class="slds-form-element__label slds-show--inline slds-p-top_none">
+            <span
+              class="slds-form-element__label slds-show--inline slds-p-top_none"
+            >
               {label)
             </span>
           </label>
         </div>
       </div>
 
-      <label if:true={isToggle} 
+      <label
+        if:true={isToggle}
         class="slds-checkbox_toggle slds-grid"
-        for={inputId}>
-        <span class="slds-form-element__label slds-show--inline slds-m-bottom_none slds-p-top_none">
+        for={inputId}
+      >
+        <span
+          class="slds-form-element__label slds-show--inline slds-m-bottom_none slds-p-top_none"
+        >
           {label}
         </span>
-        <input 
+        <input
           class="vlocity-input"
           name={name}
           tabindex={tabIndex}
@@ -112,18 +118,11 @@
           onchange={triggerInputEvent}
           onfocus={triggerEvent}
           onblur={closeTooltip}
-        >
-        <span 
-          class="slds-checkbox_faux_container"
-          aria-live="assertive">
-          <span class="slds-checkbox_faux">
-          </span>
-          <span class="slds-checkbox_on">
-            {toggleOnLabel}
-          </span>
-          <span class="slds-checkbox_off">
-            {toggleOffLabel}
-          </span>
+        />
+        <span class="slds-checkbox_faux_container" aria-live="assertive">
+          <span class="slds-checkbox_faux"> </span>
+          <span class="slds-checkbox_on"> {toggleOnLabel} </span>
+          <span class="slds-checkbox_off"> {toggleOffLabel} </span>
         </span>
       </label>
 
@@ -147,21 +146,22 @@
                 onblur={validateError}
                 onchange={triggerInputEvent}
                 onfocus={triggerEvent}
-              >
-              <label 
-                class="slds-file-selector__body" 
-                for={inputId}>
-                <span class="slds-file-selector__button slds-button slds-button_neutral">
-                  <omnistudio-icon 
-                    theme="slds" 
-                    baseurl={iconUrl} 
+              />
+              <label class="slds-file-selector__body" for={inputId}>
+                <span
+                  class="slds-file-selector__button slds-button slds-button_neutral"
+                >
+                  <omnistudio-icon
+                    theme="slds"
+                    baseurl={iconUrl}
                     color={iconColor}
                     parenttype="button"
                     iconposition="left"
                     icon-name="utility:upload"
                     alternative-text={translatedLabels.cmpUpload}
                     size="x-small"
-                    variant="inverse">
+                    variant="inverse"
+                  >
                   </omnistudio-icon>
                   {label}
                 </span>
@@ -169,34 +169,43 @@
             </div>
           </div>
 
-          <ul class="slds-size--1-of-1 slds-p-vertical_small slds-file-selector__files">
+          <ul
+            class="slds-size--1-of-1 slds-p-vertical_small slds-file-selector__files"
+          >
             <template for:each={_value} for:item="item" for:index="i">
-              <li 
+              <li
                 key={item.id}
-                class="slds-pill slds-p-around_xx-small slds-m-right_x-small">{item.filename} ( <i>{item.size}</i> )
+                class="slds-pill slds-p-around_xx-small slds-m-right_x-small"
+              >
+                {item.filename} ( <i>{item.size}</i> )
                 <span class="slds-file-selector__remove-file-icon">
-                  <omnistudio-icon data-index={i} 
-                    theme={theme} 
-                    baseurl={iconUrl} 
-                    iconposition="left" 
+                  <omnistudio-icon
+                    data-index={i}
+                    theme={theme}
+                    baseurl={iconUrl}
+                    iconposition="left"
                     icon-name="action:delete"
                     color={iconColor}
                     alternative-text={translatedLabels.cmpDelete}
                     size="x-small"
-                    onclick={deleteFile}>
+                    onclick={deleteFile}
+                  >
                   </omnistudio-icon>
                 </span>
               </li>
             </template>
           </ul>
-          
-          <span if:true={showPretext}
-            class="slds-form-element__addon">{pretext}</span>
 
-          <span if:true={isIconLeftClickable} 
+          <span if:true={showPretext} class="slds-form-element__addon"
+            >{pretext}</span
+          >
+
+          <span
+            if:true={isIconLeftClickable}
             class="slds-icon_container slds-input__icon slds-input__icon_left slds-input__clickable-icon-left"
-            onclick={iconClickCallback}>
-            <omnistudio-icon 
+            onclick={iconClickCallback}
+          >
+            <omnistudio-icon
               icon-name={iconNameLeft}
               color={iconColor}
               theme={theme}
@@ -206,9 +215,11 @@
             </omnistudio-icon>
           </span>
 
-          <span if:true={isIconLeft}
-            class="slds-icon_container slds-input__icon slds-input__icon_left">
-            <omnistudio-icon 
+          <span
+            if:true={isIconLeft}
+            class="slds-icon_container slds-input__icon slds-input__icon_left"
+          >
+            <omnistudio-icon
               icon-name={iconNameLeft}
               color={iconColor}
               theme={theme}
@@ -217,11 +228,11 @@
             >
             </omnistudio-icon>
           </span>
-
         </div>
       </div>
 
-      <input if:true={isInput}
+      <input
+        if:true={isInput}
         class="vlocity-input nsw-form__input"
         id={inputId}
         tabindex={tabIndex}
@@ -248,9 +259,11 @@
         oninput={triggerInputEvent}
         onchange={triggerEvent}
         onkeydown={triggerKeyEvents}
-        onkeyup={triggerKeyEvents}>
+        onkeyup={triggerKeyEvents}
+      />
 
-      <input if:true={isNumber}
+      <input
+        if:true={isNumber}
         class="hiddenNumber slds-hide"
         required={required}
         aria-invalid={isAriaInvalid}
@@ -258,33 +271,39 @@
         max={max}
         step={step}
         type="number"
-        value={_value}>
+        value={_value}
+      />
 
-      <span if:true={isError}
+      <span
+        if:true={isError}
         class={computedHelperClassName}
         aria-live="assertive"
-        id="errorMessageBlock">
-        <span if:true={computedStatusIcon} class="material-icons nsw-material-icons" aria-hidden="true">
+        id="errorMessageBlock"
+      >
+        <span
+          if:true={computedStatusIcon}
+          class="material-icons nsw-material-icons"
+          aria-hidden="true"
+        >
           {computedStatusIcon}
         </span>
         {errorMessage}
       </span>
 
       <div class="slds-grid">
-        <div if:true={static}
-          class="slds-form-element__static">
+        <div if:true={static} class="slds-form-element__static">
           {inputValue}
         </div>
       </div>
-      
-      <span if:true={inlineHelp} 
-        class="slds-form-element__static">
+
+      <span if:true={inlineHelp} class="slds-form-element__static">
         {inlineHelp}
       </span>
     </div>
   </template>
 
-  <c-sf-gps-ds-au-nsw-date-picker-os-n if:true={isDate}
+  <c-sf-gps-ds-au-nsw-date-picker-os-n
+    if:true={isDate}
     mask={mask}
     placeholder={placeholder}
     theme={theme}
@@ -317,12 +336,13 @@
     pick-year-label={pickYearLabel}
     today-label={todayLabel}
     required-label={requiredLabel}
-    styles={styles}>
-    <slot slot="label" name="label">
-    </slot>
+    styles={styles}
+  >
+    <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-au-nsw-date-picker-os-n>
 
-  <c-sf-gps-ds-au-nsw-time-picker-os-n if:true={isTime}
+  <c-sf-gps-ds-au-nsw-time-picker-os-n
+    if:true={isTime}
     placeholder={placeholder}
     theme={theme}
     label={label}
@@ -347,12 +367,13 @@
     message-when-bad-input={messageWhenBadInput}
     message-when-range-overflow={messageWhenRangeOverflow}
     message-when-range-underflow={messageWhenRangeUnderflow}
-    styles={styles}>
-    <slot slot="label" name="label">
-    </slot>
+    styles={styles}
+  >
+    <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-au-nsw-time-picker-os-n>
 
-  <c-sf-gps-ds-au-nsw-datetime-picker-os-n if:true={isDateTime}
+  <c-sf-gps-ds-au-nsw-datetime-picker-os-n
+    if:true={isDateTime}
     name={name}
     label={label}
     theme={theme}
@@ -390,8 +411,8 @@
     pick-year-label={pickYearLabel}
     today-label={todayLabel}
     required-label={requiredLabel}
-    styles={styles}>
-    <slot slot="label" name="label">
-    </slot>
+    styles={styles}
+  >
+    <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-au-nsw-datetime-picker-os-n>
 </template>

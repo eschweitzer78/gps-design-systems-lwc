@@ -14,12 +14,15 @@
               data-index={t}
               name={e.name}
               value={e.value}
-              checked={e.selected
+              checked="{e.selected"
               onfocus={handleFocus}
-              onchange={onchangevalue}>
+              onchange={onchangevalue}
+            />
             <label class="slds-radio__label" data-index={t} for={e.id}>
               <span class="slds-radio_faux"></span>
-              <span class="slds-form-element__label slds-p-top_none">{e.label}</span>
+              <span class="slds-form-element__label slds-p-top_none"
+                >{e.label}</span
+              >
             </label>
           </span>
         </template>

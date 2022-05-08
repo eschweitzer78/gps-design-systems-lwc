@@ -24,62 +24,82 @@
       value={elementValueLabel}
       remote-source={_useRemoteSource}
       disable-filter={_disableFilter}
-      data-omni-input>
+      data-omni-input
+    >
       <div slot="iconRight">
-        <span class="has-text-link cannot-find-address label-link" role="button" onclick={handleToggle}>
+        <span
+          class="has-text-link cannot-find-address label-link"
+          role="button"
+          onclick={handleToggle}
+        >
           Enter address manually
         </span>
-        <button if:false={_propSetMap.hideEditButton}
-                class="slds-button slds-button_icon nds-button nds-button_icon"
-                aria-expanded={_isEditMode}
-                onclick={toggleEditMode}>
-          <omnistudio-icon icon-name="utility:edit"
-                  extraclass="slds-button__icon nds-button__icon"
-                  size="x-small"
-                  theme={_theme}
-                  alternative-text={_editLabel}>
+        <button
+          if:false={_propSetMap.hideEditButton}
+          class="slds-button slds-button_icon nds-button nds-button_icon"
+          aria-expanded={_isEditMode}
+          onclick={toggleEditMode}
+        >
+          <omnistudio-icon
+            icon-name="utility:edit"
+            extraclass="slds-button__icon nds-button__icon"
+            size="x-small"
+            theme={_theme}
+            alternative-text={_editLabel}
+          >
           </omnistudio-icon>
         </button>
       </div>
 
-      <a slot="lastItem"
-          if:true={_propSetMap.newItemLabel}
-          label={_propSetMap.newItemLabel}>{_propSetMap.newItemLabel}
+      <a
+        slot="lastItem"
+        if:true={_propSetMap.newItemLabel}
+        label={_propSetMap.newItemLabel}
+        >{_propSetMap.newItemLabel}
       </a>
-
     </c-sf-gps-ds-au-nsw-typeahead-os-n>
 
     <template if:false={isSmart}>
       <div class="nsw-form__group">
-
         <div class="sfgpsds-label__group">
           <div class="sfgpsds-label__group_label_container">
             <div if:true={_propSetMap.label} class="sfgpsds-label__group_label">
               <label
-                class={computedLabelClassName} 
+                class={computedLabelClassName}
                 aria-label={label}
-                for="address">
+                for="address"
+              >
                 {mergedLabel}
-                <span if:true={_propSetMap.required} class="sr-only"> ({allCustomLabelsUtil.OmniRequired})</span>
+                <span if:true={_propSetMap.required} class="sr-only">
+                  ({allCustomLabelsUtil.OmniRequired})</span
+                >
               </label>
             </div>
           </div>
-  
+
           <div class="sfgpsds-label__group_action">
             <div>
-              <span class="has-text-link cannot-find-address label-link" role="button" onclick={handleToggle}>
+              <span
+                class="has-text-link cannot-find-address label-link"
+                role="button"
+                onclick={handleToggle}
+              >
                 Smart address lookup
               </span>
-    
-              <button if:false={_propSetMap.hideEditButton}
+
+              <button
+                if:false={_propSetMap.hideEditButton}
                 class="slds-button slds-button_icon nds-button nds-button_icon"
                 aria-expanded={_isEditMode}
-                onclick={toggleEditMode}>
-                <omnistudio-icon icon-name="utility:edit"
+                onclick={toggleEditMode}
+              >
+                <omnistudio-icon
+                  icon-name="utility:edit"
                   extraclass="slds-button__icon nds-button__icon"
                   size="x-small"
                   theme={_theme}
-                  alternative-text={_editLabel}>
+                  alternative-text={_editLabel}
+                >
                 </omnistudio-icon>
               </button>
             </div>
@@ -92,7 +112,7 @@
 
         <div class="nsw-grid">
           <div class="nsw-col nsw-col-12 street">
-            <c-sf-gps-ds-au-nsw-input-os-n 
+            <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
               name="street"
               class=""
@@ -102,10 +122,11 @@
               required-label={allCustomLabelsUtil.OmniRequired}
               field-level-help=""
               placeholder=""
-              value={street}>
+              value={street}
+            >
             </c-sf-gps-ds-au-nsw-input-os-n>
           </div>
-  
+
           <div class="nsw-col nsw-col-md-6 nsw-col-12 suburb">
             <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
@@ -117,10 +138,11 @@
               required-label={allCustomLabelsUtil.OmniRequired}
               field-level-help=""
               placeholder=""
-              value={suburb}>
+              value={suburb}
+            >
             </c-sf-gps-ds-au-nsw-input-os-n>
           </div>
-  
+
           <div class="nsw-col nsw-col-md-3 nsw-col-6 state">
             <c-sf-gps-ds-au-nsw-combobox-os-n
               options={states}
@@ -133,10 +155,11 @@
               field-level-help=""
               data-show-lookup="true"
               message-when-value-missing={_messageWhenValueMissing}
-              searchable="true">
+              searchable="true"
+            >
             </c-sf-gps-ds-au-nsw-combobox-os-n>
           </div>
-  
+
           <div class="nsw-col nsw-col-md-3 nsw-col-6 postalcode">
             <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
@@ -149,11 +172,12 @@
               field-level-help=""
               placeholder=""
               min-length="4"
-              max-length="4" 
-              value={postcode}>
+              max-length="4"
+              value={postcode}
+            >
             </c-sf-gps-ds-au-nsw-input-os-n>
           </div>
-  
+
           <div class="nsw-col nsw-col-12 country">
             <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
@@ -166,13 +190,13 @@
               field-level-help=""
               placeholder=""
               value={country}
-              read-only="true">
+              read-only="true"
+            >
             </c-sf-gps-ds-au-nsw-input-os-n>
           </div>
         </div>
       </div>
     </template>
-
 
     <!--
     <div if:true={errorMessage}
@@ -181,11 +205,17 @@
     </div>
     -->
 
-    <span if:true={errorMessage}
+    <span
+      if:true={errorMessage}
       class={computedHelperClassName}
       aria-live="assertive"
-      id="errorMessageBlock">
-      <span if:true={computedStatusIcon} class="material-icons nsw-material-icons" aria-hidden="true">
+      id="errorMessageBlock"
+    >
+      <span
+        if:true={computedStatusIcon}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
         {computedStatusIcon}
       </span>
       {errorMessage}

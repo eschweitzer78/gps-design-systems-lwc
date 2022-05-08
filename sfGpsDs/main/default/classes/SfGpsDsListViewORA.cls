@@ -1,24 +1,35 @@
 /* Current status: DEV */
 
-global with sharing
-class SfGpsDsListViewORA
-extends SfGpsDsBaseORA
-implements Callable {
+global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements Callable {
   global Object call(String action, Map<String, Object> args) {
     init(args);
 
     switch on action {
       when 'GetRecords' {
         try {
-          String objectName = (String) getTypedFromMap(WhereFrom.INPUT, 'objectName', String.class, false);
-          String listViewId = (String) getTypedFromMap(WhereFrom.INPUT, 'objectName', String.class, true);
-          String listViewName = (String) getTypedFromMap(WhereFrom.INPUT, 'objectName', String.class, true);
+          String objectName = (String) getTypedFromMap(
+            WhereFrom.INPUT,
+            'objectName',
+            String.class,
+            false
+          );
+          String listViewId = (String) getTypedFromMap(
+            WhereFrom.INPUT,
+            'objectName',
+            String.class,
+            true
+          );
+          String listViewName = (String) getTypedFromMap(
+            WhereFrom.INPUT,
+            'objectName',
+            String.class,
+            true
+          );
           getListViewRecords(objectName, listViewId, listViewName);
         } catch (Exception e) {
           setError('Exception in GetRecords');
         }
       }
-
       when else {
         setError('Method ' + action + ' not available');
       }
@@ -31,8 +42,8 @@ implements Callable {
   public static ListViewInfoList getListViews(String objectName) {
     try {
       HttpRequest req = new HttpRequest();
-      String endpointUrl = 
-        'callout:sfGpsDsApi/v52.0/sobjects/' + 
+      String endpointUrl =
+        'callout:sfGpsDsApi/v52.0/sobjects/' +
         objectName +
         '/listviews';
 
@@ -44,10 +55,13 @@ implements Callable {
 
       if (response.getStatusCode() == 200) {
         System.debug(response.getBody());
-        ListViewInfoList listviews = (ListViewInfoList) JSON.deserialize(response.getBody(), ListViewInfoList.class);
+        ListViewInfoList listviews = (ListViewInfoList) JSON.deserialize(
+          response.getBody(),
+          ListViewInfoList.class
+        );
 
         return listviews;
-      } 
+      }
 
       throw new AuraHandledException(response.getStatus());
     } catch (Exception e) {
@@ -58,8 +72,8 @@ implements Callable {
   static String getListViewIdByName(String objectName, String listviewName) {
     try {
       HttpRequest req = new HttpRequest();
-      String endpointUrl = 
-        'callout:sfGpsDsApi/v52.0/sobjects/' + 
+      String endpointUrl =
+        'callout:sfGpsDsApi/v52.0/sobjects/' +
         objectName +
         '/listviews';
 
@@ -71,7 +85,10 @@ implements Callable {
 
       if (response.getStatusCode() == 200) {
         System.debug(response.getBody());
-        ListViewInfoList listviews = (ListViewInfoList) JSON.deserialize(response.getBody(), ListViewInfoList.class);
+        ListViewInfoList listviews = (ListViewInfoList) JSON.deserialize(
+          response.getBody(),
+          ListViewInfoList.class
+        );
 
         for (ListViewInfo info : listviews.listviews) {
           if (info.developerName == listviewName) {
@@ -82,23 +99,27 @@ implements Callable {
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }
-    
+
     return null;
   }
 
   @AuraEnabled(cacheable=true)
-  public static List<sObject> getListViewRecords(String objectName, String listViewId, String listViewName) {
+  public static List<sObject> getListViewRecords(
+    String objectName,
+    String listViewId,
+    String listViewName
+  ) {
     try {
       if ((listViewId == null || listViewId == '') && (listViewName != null)) {
         listViewId = getListViewIdByName(objectName, listViewName);
       }
 
       HttpRequest req = new HttpRequest();
-      String endpointUrl = 
-        'callout:sfGpsDsApi/v52.0/sobjects/' + 
+      String endpointUrl =
+        'callout:sfGpsDsApi/v52.0/sobjects/' +
         objectName +
-        '/listviews/' + 
-        listViewId + 
+        '/listviews/' +
+        listViewId +
         '/describe';
 
       req.setEndpoint(endpointUrl);
@@ -106,14 +127,17 @@ implements Callable {
 
       Http http = new Http();
       HttpResponse response = http.send(req);
-      
+
       if (response.getStatusCode() == 200) {
         System.debug(response.getBody());
-        ListViewDescribe listview = (ListViewDescribe) JSON.deserialize(response.getBody(), ListViewDescribe.class);
+        ListViewDescribe listview = (ListViewDescribe) JSON.deserialize(
+          response.getBody(),
+          ListViewDescribe.class
+        );
         List<sObject> rows = Database.query(listview.query);
 
         return rows;
-      } 
+      }
 
       throw new AuraHandledException(response.getStatus());
     } catch (Exception e) {
@@ -121,7 +145,8 @@ implements Callable {
     }
   }
 
-  public class MalformedCallException extends Exception {}
+  public class MalformedCallException extends Exception {
+  }
 
   public class ListViewColumn {
     public String ascendingLabel; // Z-A, A-Z

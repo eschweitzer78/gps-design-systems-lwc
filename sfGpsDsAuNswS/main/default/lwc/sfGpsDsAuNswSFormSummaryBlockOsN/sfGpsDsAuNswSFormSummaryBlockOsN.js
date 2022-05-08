@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptBlock from 'omnistudio/omniscriptBlock';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswSFormSummaryBlockOsN.html';
+import OmniscriptBlock from "omnistudio/omniscriptBlock";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswSFormSummaryBlockOsN.html";
 
 export default class SfGpsDsAuNswSFormSummaryBlockOsN extends OmniscriptBlock {
   render() {

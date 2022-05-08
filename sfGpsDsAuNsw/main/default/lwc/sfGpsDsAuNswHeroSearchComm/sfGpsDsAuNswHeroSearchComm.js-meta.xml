@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>52.0</apiVersion>
   <isExposed>true</isExposed>
@@ -9,39 +9,53 @@
   </targets>
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property name="title" 
-        type="String" 
+      <property
+        name="title"
+        type="String"
         label="Title"
         description="Clearly identifies the site, service or product."
-        default="Hero Search"></property>
-      <property name="intro" 
-        type="String" 
+        default="Hero Search"
+      />
+      <property
+        name="intro"
+        type="String"
         label="Intro"
         description="Gives additional context when the title alone may not be insufficient."
-        default="Find information, access services and have your say."></property>
-      <property name="image"
-        type="String" 
-        label="Image source" 
-        description="URL of a supporting image."></property>
-      <property name="links" 
-        type="String" 
+        default="Find information, access services and have your say."
+      />
+      <property
+        name="image"
+        type="String"
+        label="Image source"
+        description="URL of a supporting image."
+      />
+      <property
+        name="links"
+        type="String"
         label="Links"
         description="Surfaces access to popular search content."
-        default=""></property>
-      <property name="className" 
-        type="String" 
+        default=""
+      />
+      <property
+        name="className"
+        type="String"
         label="Class name"
-        description="Additional CSS class to be applied."></property>
-      <property name="srLabel"
-        type="String" 
-        label="Screenreader label" 
+        description="Additional CSS class to be applied."
+      />
+      <property
+        name="srLabel"
+        type="String"
+        label="Screenreader label"
         description="Text used to label the search input field on screen-readers."
-        default="Search for:"></property>
-      <property name="srSearchButtonLabel"
-        type="String" 
-        label="Screenreader search button label" 
+        default="Search for:"
+      />
+      <property
+        name="srSearchButtonLabel"
+        type="String"
+        label="Screenreader search button label"
         description="Text used to label the search button on screen-readers."
-        default="Search"></property>
+        default="Search"
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

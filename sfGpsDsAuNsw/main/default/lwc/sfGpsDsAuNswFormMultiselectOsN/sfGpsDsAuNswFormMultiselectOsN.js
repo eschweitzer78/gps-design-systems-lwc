@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptMultiselect from 'omnistudio/omniscriptMultiselect';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormMultiselectOsN.html';
+import OmniscriptMultiselect from "omnistudio/omniscriptMultiselect";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormMultiselectOsN.html";
 
 export default class SfGpsDsAuNswFormMultiselectOsN extends OmniscriptMultiselect {
   render() {

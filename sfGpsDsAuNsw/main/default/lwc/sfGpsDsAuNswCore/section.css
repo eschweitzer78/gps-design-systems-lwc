@@ -4,7 +4,7 @@
 @media (min-width: 48rem) {
   .nsw-section {
     padding: 2rem 0;
- }
+  }
 }
 .nsw-section--half-padding {
   padding: 0;
@@ -12,7 +12,7 @@
 @media (min-width: 48rem) {
   .nsw-section--half-padding {
     padding: 1rem 0;
- }
+  }
 }
 .nsw-section--no-padding {
   padding: 0;
@@ -20,7 +20,7 @@
 @media (min-width: 48rem) {
   .nsw-section--no-padding {
     padding: 0;
- }
+  }
 }
 .nsw-section--image {
   background-size: cover;
@@ -31,7 +31,7 @@
 @media (min-width: 48rem) {
   .nsw-section--image {
     padding: 2rem 0;
- }
+  }
 }
 .nsw-section--box {
   border-radius: var(--nsw-border-radius);
@@ -41,7 +41,7 @@
 @media (min-width: 48rem) {
   .nsw-section--box {
     padding: 1.5rem;
- }
+  }
 }
 .nsw-section--brand-dark {
   background-color: var(--nsw-brand-dark);

@@ -4,10 +4,10 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { api } from 'lwc';
+import { api } from "lwc";
 
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswAccordionGroupComm extends SfGpsDsLwc {
   @api showButtons;
@@ -25,10 +25,10 @@ export default class SfGpsDsAuNswAccordionGroupComm extends SfGpsDsLwc {
     this._content = markdown;
 
     try {
-      let h1s = mdEngine.extractH1s(markdown.replaceAll('\\n', '\n'));
+      let h1s = mdEngine.extractH1s(markdown.replaceAll("\\n", "\n"));
       this._h1s = h1s.map((h1) => ({ ...h1, closed: true }));
     } catch (e) {
-      this.addError('CO-MD', 'Issue when parsing Content markdown');
+      this.addError("CO-MD", "Issue when parsing Content markdown");
     }
   }
 
@@ -61,6 +61,6 @@ export default class SfGpsDsAuNswAccordionGroupComm extends SfGpsDsLwc {
   }
 
   get computedClassName() {
-    return `nsw-nsw-accordion ready ${this.className ? this.className : ''}`;
+    return `nsw-nsw-accordion ready ${this.className ? this.className : ""}`;
   }
 }

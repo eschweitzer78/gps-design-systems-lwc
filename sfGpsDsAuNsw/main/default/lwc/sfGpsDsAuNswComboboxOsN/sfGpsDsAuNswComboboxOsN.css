@@ -1,5 +1,5 @@
-@import 'c/sfGpsDsAuNswCoreOs';
-@import 'c/sfGpsDsAuNswFormCssOs';
+@import "c/sfGpsDsAuNswCoreOs";
+@import "c/sfGpsDsAuNswFormCssOs";
 
 /* Need to adjust this rule as in Omniscript they always be first child */
 /* have same setup as for subsequent children. */
@@ -8,7 +8,7 @@
   margin-top: 1rem;
 }
 
-input[readonly][role=combobox] {
+input[readonly][role="combobox"] {
   border-radius: var(--nsw-border-radius);
   background-color: var(--nsw-white);
   color: var(--nsw-text-dark);
@@ -17,23 +17,30 @@ input[readonly][role=combobox] {
 
 .nsw-form__predictive .nsw-form__input {
   padding-right: 3rem;
-  background: var(--nsw-white) url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E") no-repeat right 1rem center;
+  background: var(--nsw-white)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
   background-size: 1rem auto;
 }
 
 .nsw-form__predictive .nsw-form__input:disabled {
-  background: var(--nsw-off-white) url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E") no-repeat right 1rem center;
+  background: var(--nsw-off-white)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
   background-size: 1rem auto;
 }
 
-.nsw-form__predictive .nsw-form__input[aria-invalid=true]:hover, .nsw-form__predictive .nsw-form__input.has-error:hover {
-  background: var(--nsw-status-error-bg) url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E") no-repeat right 1rem center;
+.nsw-form__predictive .nsw-form__input[aria-invalid="true"]:hover,
+.nsw-form__predictive .nsw-form__input.has-error:hover {
+  background: var(--nsw-status-error-bg)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
   background-size: 1rem auto;
 }
 
 .nsw-form__predictive-list div {
   display: block;
-  padding: .625rem;
+  padding: 0.625rem;
   color: var(--nsw-text-dark);
   font-weight: var(--nsw-font-normal);
 }
@@ -42,11 +49,8 @@ input[readonly][role=combobox] {
   outline-width: 0;
   cursor: pointer;
   background-color: var(--nsw-brand-light);
-  color: var(--nsw-text-dark)
+  color: var(--nsw-text-dark);
 }
-
-
-
 
 .nsw-form__input {
   cursor: pointer;
@@ -98,11 +102,11 @@ input[readonly][role=combobox] {
 .nswds-dropdown-trigger_click .nswds-dropdown {
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity .1s linear,visibility .1s linear;
-  transition: opacity .1s linear,visibility .1s linear;
+  -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
+  transition: opacity 0.1s linear, visibility 0.1s linear;
 }
 
-.nswds-dropdown-trigger_click.nswds-is-open .nswds-dropdown  {
+.nswds-dropdown-trigger_click.nswds-is-open .nswds-dropdown {
   display: block;
   visibility: visible;
   opacity: 1;

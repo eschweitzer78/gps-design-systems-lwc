@@ -5,12 +5,14 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, track } from 'lwc';
-import OmnistudioBaseMixin from 'omnistudio/omniscriptBaseMixin';
+import { LightningElement, track } from "lwc";
+import OmnistudioBaseMixin from "omnistudio/omniscriptBaseMixin";
 
 /* IMPORTANT NOTE: this class is not automatically derived from sfGpsDsLwcOs */
 
-export default class SfGpsDsLwcOsN extends OmnistudioBaseMixin(LightningElement) {
+export default class SfGpsDsLwcOsN extends OmnistudioBaseMixin(
+  LightningElement
+) {
   @track _sfGpsErrors;
 
   addError(code, description) {
@@ -20,10 +22,10 @@ export default class SfGpsDsLwcOsN extends OmnistudioBaseMixin(LightningElement)
       {
         index: errors.length,
         code: code,
-        description: description,
-      },
+        description: description
+      }
     ];
   }
 }
 
-SfGpsDsLwcOsN.PACKAGE_NAME = 'omnistudio';
+SfGpsDsLwcOsN.PACKAGE_NAME = "omnistudio";

@@ -8,7 +8,7 @@
   .nsw-layout {
     margin-left: -1rem;
     margin-right: -1rem;
- }
+  }
 }
 .nsw-layout__main {
   width: 100%;
@@ -17,19 +17,19 @@
 @media (min-width: 48rem) {
   .nsw-layout__main {
     padding: 1rem;
- }
+  }
 }
 @media (min-width: 62rem) {
   .nsw-layout__main:not(:first-child) {
     width: 66.6666666667%;
     max-width: 66.6666666667%;
- }
+  }
 }
 @media (min-width: 62rem) {
   .nsw-layout__main:not(:last-child) {
     width: 66.6666666667%;
     max-width: 66.6666666667%;
- }
+  }
 }
 .nsw-layout__sidebar {
   width: 100%;
@@ -38,23 +38,23 @@
 @media (min-width: 48rem) {
   .nsw-layout__sidebar {
     padding: 1rem;
- }
+  }
 }
 @media (min-width: 62rem) {
   .nsw-layout__sidebar {
     width: 33.3333333333%;
     max-width: 33.3333333333%;
- }
+  }
 }
 @media (min-width: 62rem) {
   .nsw-layout__sidebar:first-child {
     padding-right: 3rem;
- }
+  }
 }
 @media (min-width: 62rem) {
   .nsw-layout__sidebar:last-child {
     padding-left: 3rem;
- }
+  }
 }
 .nsw-layout__sidebar--desktop {
   display: none;
@@ -62,5 +62,5 @@
 @media (min-width: 62rem) {
   .nsw-layout__sidebar--desktop {
     display: block;
- }
+  }
 }

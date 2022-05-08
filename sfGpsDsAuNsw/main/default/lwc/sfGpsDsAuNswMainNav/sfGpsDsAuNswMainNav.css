@@ -1,4 +1,4 @@
-@import 'c/sfGpsDsAuNswCore';
+@import "c/sfGpsDsAuNswCore";
 
 .main-nav-active {
   overflow: hidden;
@@ -17,7 +17,8 @@
   visibility: hidden;
   overflow-y: auto;
 }
-.nsw-main-nav.activating, .nsw-main-nav.active {
+.nsw-main-nav.activating,
+.nsw-main-nav.active {
   transform: translateX(0);
   visibility: visible;
 }
@@ -240,11 +241,11 @@
     width: 32%;
     border-top: solid 1px var(--nsw-grey-04);
   }
-  .nsw-main-nav__sub-nav li:nth-child(3n+2) {
+  .nsw-main-nav__sub-nav li:nth-child(3n + 2) {
     margin-left: 2%;
     margin-right: 2%;
   }
-  .nsw-main-nav__sub-nav li:nth-last-child(-n+3) {
+  .nsw-main-nav__sub-nav li:nth-last-child(-n + 3) {
     border-bottom: solid 1px var(--nsw-grey-04);
   }
   .nsw-main-nav__sub-nav li a {

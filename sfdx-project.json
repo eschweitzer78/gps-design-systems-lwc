@@ -1,55 +1,54 @@
 {
   "packageDirectories": [
-      {
-          "path": "sfGpsDsAuNsw",
-          "default": true,
-          "package": "Salesforce Global Public Sector AU NSW Design System",
-          "versionName": "ver 0.1",
-          "versionNumber": "0.1.0.NEXT",
-          "definitionFile": "config/project-deployment-def.json",
-          "dependencies": [
-              {
-                  "package": "omnistudio 236.3"
-              },
-              {
-                  "package": "Salesforce Global Public Sector Design Systems",
-                  "versionNumber": "0.1.0.LATEST"
-              }
-          ]
-      },
-      {
-          "path": "sfGpsDs",
+    {
+      "path": "sfGpsDsAuNsw",
+      "default": true,
+      "package": "Salesforce Global Public Sector AU NSW Design System",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "definitionFile": "config/project-deployment-def.json",
+      "dependencies": [
+        {
+          "package": "omnistudio 236.3"
+        },
+        {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionName": "ver 0.1",
-          "versionNumber": "0.1.0.NEXT",
-          "default": false
-      },
-      {
-          "path": "sfGpsDsAuNswS",
-          "package": "Salesforce Global Public Sector AU NSW Service Design System",
-          "versionName": "ver 0.1",
-          "versionNumber": "0.1.0.NEXT",
-          "default": false,
-          "dependencies": [
-            {
-                "package": "omnistudio 236.3"
-            },
-            {
-                "package": "Salesforce Global Public Sector Design Systems",
-                "versionNumber": "0.1.0.LATEST"
-            }
-        ]
-
-      }
+          "versionNumber": "0.1.0.LATEST"
+        }
+      ]
+    },
+    {
+      "path": "sfGpsDs",
+      "package": "Salesforce Global Public Sector Design Systems",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false
+    },
+    {
+      "path": "sfGpsDsAuNswS",
+      "package": "Salesforce Global Public Sector AU NSW Service Design System",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "dependencies": [
+        {
+          "package": "omnistudio 236.3"
+        },
+        {
+          "package": "Salesforce Global Public Sector Design Systems",
+          "versionNumber": "0.1.0.LATEST"
+        }
+      ]
+    }
   ],
   "name": "au-design-systems-lwc",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "52.0",
   "packageAliases": {
-      "omnistudio 236.3": "04t4W000002kdlN",
-      "Salesforce Global Public Sector Design Systems": "0Ho5j000000bljgCAA",
-      "Salesforce Global Public Sector AU NSW Design System": "0Ho5j000000bliTCAQ",
-      "Salesforce Global Public Sector AU NSW Service Design System": "0Ho5j000000blmpCAA"
+    "omnistudio 236.3": "04t4W000002kdlN",
+    "Salesforce Global Public Sector Design Systems": "0Ho5j000000bljgCAA",
+    "Salesforce Global Public Sector AU NSW Design System": "0Ho5j000000bliTCAQ",
+    "Salesforce Global Public Sector AU NSW Service Design System": "0Ho5j000000blmpCAA"
   }
 }

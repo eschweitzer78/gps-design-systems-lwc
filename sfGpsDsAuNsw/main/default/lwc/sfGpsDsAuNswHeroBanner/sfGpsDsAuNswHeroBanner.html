@@ -5,8 +5,7 @@
         <div class="nsw-hero-banner__content nsw-wysiwyg-content">
           <h1>{title}</h1>
           <p class="nsw-intro">
-            <slot>
-            </slot>    
+            <slot> </slot>
           </p>
           <div if:true={cta} class="nsw-hero-banner__button">
             <a href={cta.url} class={computedButtonClassName}>{cta.text}</a>
@@ -23,13 +22,17 @@
             </ul>
           </div>
         </div>
-      
+
         <div class="nsw-hero-banner__box" role="presentation">
-          <img if:true={image} class="nsw-hero-banner__image" src={image.src} alt={image.alt}>
-          <div if:false={image} class="nsw-hero-banner__bg">
-          </div>
+          <img
+            if:true={image}
+            class="nsw-hero-banner__image"
+            src={image.src}
+            alt={image.alt}
+          />
+          <div if:false={image} class="nsw-hero-banner__bg"></div>
         </div>
       </div>
     </div>
-  </div>  
+  </div>
 </template>

@@ -11,7 +11,7 @@
     time-placeholder={_propSetMap.timePlaceholder}
     value={elementValue}
     tab-index={tabIndex}
-    output-type='date'
+    output-type="date"
     time-format={_timeFormat}
     date-format={_dateFormat}
     date-time-locale-format={allCustomLabelsUtil.OmniDayJsLocaleFormats}
@@ -38,28 +38,39 @@
     field-level-help={mergedHelpText}
     theme={_theme}
     time-label=""
-    date-label="">
+    date-label=""
+  >
     <template if:true={_propSetMap.repeat}>
-      <span slot="label"
-          style="bottom:7px; right:13px;"
-          class={_styleClasses.repeatContainer}
-          role="group">
-        <button if:true={canRepeat}
-                class={_styleClasses.repeatAdd}
-                onclick={handleAdd}>
-          <omnistudio-icon icon-name="utility:add"
-                  alternative-text="Repeat Date/Time"
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+      <span
+        slot="label"
+        style="bottom: 7px; right: 13px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Date/Time"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
-        <button if:true={canRemove}
-                class={_styleClasses.repeatRemove}
-                onclick={handleRemove}>
-          <omnistudio-icon icon-name="utility:close"
-                  alternative-text="Remove Date/Time"
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Date/Time"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
       </span>

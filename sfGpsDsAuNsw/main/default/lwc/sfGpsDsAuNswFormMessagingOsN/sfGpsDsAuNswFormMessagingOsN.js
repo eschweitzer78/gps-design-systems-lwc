@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptMessaging from 'omnistudio/omniscriptMessaging';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormMessagingOsN.html';
+import OmniscriptMessaging from "omnistudio/omniscriptMessaging";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormMessagingOsN.html";
 
 export default class SfGpsDsAuNswFormMessagingOsN extends OmniscriptMessaging {
   render() {
@@ -15,32 +15,33 @@ export default class SfGpsDsAuNswFormMessagingOsN extends OmniscriptMessaging {
   }
 
   get mergedTitleText() {
-    let splitText = this.messageText.split('\\n');
+    let splitText = this.messageText.split("\\n");
     console.log(splitText.length);
     return splitText.length > 1
       ? omniGetMergedField(this, splitText[0])
       : this.messageType;
   }
   get mergedMessageText() {
-    let splitText = this.messageText.split('\\n');
-    return omniGetMergedField(this,
-      splitText.length > 1 ? splitText.slice(1).join('\\n') : this.messageText
+    let splitText = this.messageText.split("\\n");
+    return omniGetMergedField(
+      this,
+      splitText.length > 1 ? splitText.slice(1).join("\\n") : this.messageText
     );
   }
 
   get isSuccess() {
-    return this.messageType === 'Success';
+    return this.messageType === "Success";
   }
 
   get isRequirement() {
-    return this.messageType === 'Requirement';
+    return this.messageType === "Requirement";
   }
 
   get isComment() {
-    return this.messageType === 'Comment';
+    return this.messageType === "Comment";
   }
 
   get isWarning() {
-    return this.messageType === 'Warning';
+    return this.messageType === "Warning";
   }
 }

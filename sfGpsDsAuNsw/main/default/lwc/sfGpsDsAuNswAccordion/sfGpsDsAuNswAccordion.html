@@ -1,26 +1,24 @@
 <template>
-    <div class={computedClassName}>
-        <button
-            type="button" 
-            aria-expanded={isOpen} 
-            aria-controls="accordion" 
-            class={computedButtonClassName} 
-            onclick={handleClick}>
-            {header}
-            <i 
-                class="material-icons nsw-material-icons nsw-accordion__icon" 
-                aria-hidden="true">
-                keyboard_arrow_right
-            </i>
-        </button>
+  <div class={computedClassName}>
+    <button
+      type="button"
+      aria-expanded={isOpen}
+      aria-controls="accordion"
+      class={computedButtonClassName}
+      onclick={handleClick}
+    >
+      {header}
+      <i
+        class="material-icons nsw-material-icons nsw-accordion__icon"
+        aria-hidden="true"
+      >
+        keyboard_arrow_right
+      </i>
+    </button>
+  </div>
+  <div class="nsw-accordion__content" id="accordion" hidden={computedIsHidden}>
+    <div class="nsw-wysiwyg-content">
+      <slot> </slot>
     </div>
-    <div 
-        class="nsw-accordion__content" 
-        id="accordion"
-        hidden={computedIsHidden}>
-        <div class="nsw-wysiwyg-content">
-            <slot>
-            </slot>
-        </div>
-    </div>
+  </div>
 </template>

@@ -1,4 +1,4 @@
-@import 'c/sfGpsDsAuNswCoreOs';
+@import "c/sfGpsDsAuNswCoreOs";
 
 .nsw-tag {
   font-size: var(--nsw-font-size-xs-mobile);

@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
+import { api, track } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswHeroSearchComm extends NavigationMixin(
   SfGpsDsLwc
@@ -18,8 +18,8 @@ export default class SfGpsDsAuNswHeroSearchComm extends NavigationMixin(
   @api image;
   @api className;
 
-  @api srLabel = 'Search site for:';
-  @api srSearchButtonLabel = 'Search';
+  @api srLabel = "Search site for:";
+  @api srSearchButtonLabel = "Search";
 
   /*
    * links
@@ -42,7 +42,7 @@ export default class SfGpsDsAuNswHeroSearchComm extends NavigationMixin(
         this._links = null;
       }
     } catch (e) {
-      this.addError('LI-MD', 'Issue when parsing Links markdown');
+      this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
 
@@ -51,10 +51,10 @@ export default class SfGpsDsAuNswHeroSearchComm extends NavigationMixin(
 
     // Navigate to search page using lightning/navigation API: https://developer.salesforce.com/docs/component-library/bundle/lightning:navigation/documentation
     this[NavigationMixin.Navigate]({
-      type: 'standard__search',
+      type: "standard__search",
       state: {
-        term: queryTerm,
-      },
+        term: queryTerm
+      }
     });
   }
 }

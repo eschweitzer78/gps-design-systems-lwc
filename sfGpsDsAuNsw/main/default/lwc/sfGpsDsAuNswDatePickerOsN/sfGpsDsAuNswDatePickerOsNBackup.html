@@ -11,32 +11,36 @@
                     <label
                       class="slds-form-element__label slds-show--inline slds-truncate"
                       style={styleProperties.label.style}
-                      for="date-input">
-                      <abbr if:true={required}
+                      for="date-input"
+                    >
+                      <abbr
+                        if:true={required}
                         class="slds-required"
-                        title={requiredLabel}>
-                        <span if:false={hideAsterisk}>
-                          *
-                        </span>
+                        title={requiredLabel}
+                      >
+                        <span if:false={hideAsterisk}> * </span>
                       </abbr>
                       {label}
                     </label>
 
-                    <omnistudio-tooltip if:true={fieldLevelHelp}
+                    <omnistudio-tooltip
+                      if:true={fieldLevelHelp}
                       class="slds-tooltip_container slds-p-right_x-small"
                       data-field-level-help=""
                       icon-url={iconUrl}
                       content={fieldLevelHelp}
                       extrabuttonclass="slds-m-bottom_xx-small"
-                      arrowposition={fieldLevelHelpPosition}>
+                      arrowposition={fieldLevelHelpPosition}
+                    >
                     </omnistudio-tooltip>
-            
-                    <slot name="label">
-                    </slot>
+
+                    <slot name="label"> </slot>
                   </div>
 
-                  <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-                    <input 
+                  <div
+                    class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right"
+                  >
+                    <input
                       class="slds-input"
                       style={styleProperties.value.styles}
                       type={type}
@@ -56,8 +60,9 @@
                       onkeypress={shiftFocus}
                       onkeyup={maskInput}
                       onblur={handleBlur}
-                      onmousedown={toggleDatePicker}>
-                    <button 
+                      onmousedown={toggleDatePicker}
+                    />
+                    <button
                       class="slds-button slds-button_icon slds-input__icon slds-input__icon_right Date"
                       data-id="datePickerBtn"
                       disabled={buttonDisabled}
@@ -65,14 +70,16 @@
                       title={selectDateLabel}
                       type="button"
                       onkeypress={shiftFocus}
-                      onmousedown={toggleDatePicker}>
+                      onmousedown={toggleDatePicker}
+                    >
                       <omnistudio-icon
                         class="Date"
                         icon-name="utility:event"
                         size="x-small"
                         baseurl={iconUrl}
                         theme={theme}
-                        aria-hidden="true">
+                        aria-hidden="true"
+                      >
                       </omnistudio-icon>
                       <span class="slds-assistive-text">
                         {selectDateLabel}
@@ -80,29 +87,35 @@
                     </button>
                   </div>
 
-                  <div if:true={built}
+                  <div
+                    if:true={built}
                     class={getPos}
                     data-id="date-picker-div"
                     role="dialog"
                     aria-hidden="false"
-                    aria-label="Date picker">
+                    aria-label="Date picker"
+                  >
                     <div class="slds-datepicker__filter slds-grid">
-                      <div class="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow">
+                      <div
+                        class="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow"
+                      >
                         <div class="slds-align-middle">
-                          <button 
+                          <button
                             class="slds-button slds-button_icon slds-button_icon-container prevMonth"
                             data-id="prevMonthBtnId"
                             tabindex="0"
                             title={prevMonthLabel}
                             type="button"
                             onmousedown={switchMonth}
-                            onkeydown={shiftFocus}>
+                            onkeydown={shiftFocus}
+                          >
                             <omnistudio-icon
                               class="prevMonth"
                               icon-name="utility:left"
                               size="x-small"
                               baseurl={iconUrl}
-                              theme={theme}>
+                              theme={theme}
+                            >
                             </omnistudio-icon>
                             <span class="slds-assistive-text">
                               {prevMonthLabel}
@@ -110,47 +123,53 @@
                           </button>
                         </div>
 
-                        <h2 
+                        <h2
                           class="slds-align-middle"
                           aria-atomic="true"
                           aria-live="assertive"
                           data-id="selected_month"
-                          id="month">
+                          id="month"
+                        >
                           {selectedMonth}
                         </h2>
                         <div class="slds-align-middle">
-                          <button 
+                          <button
                             class="slds-button slds-button_icon slds-button_icon-container"
                             data-id="nextMonthBtnId"
                             tabindex="0"
                             title={nextMonthLabel}
                             type="button"
                             onmousedown={switchMonth}
-                            onkeydown={shiftFocus}>
+                            onkeydown={shiftFocus}
+                          >
                             <omnistudio-icon
                               class="nextMonth"
                               icon-name="utility:right"
                               size="x-small"
                               baseurl={iconUrl}
-                              theme={theme}>
-                            </omnistudio-icon> 
+                              theme={theme}
+                            >
+                            </omnistudio-icon>
                             <span class="slds-assistive-text">
                               {nextMonthLabel}
-                            </span>                          
+                            </span>
                           </button>
                         </div>
                       </div>
 
                       <div class="slds-shrink-none">
-                        <label class="slds-assistive-text" for="select-01">{pickYearLabel}</label>
+                        <label class="slds-assistive-text" for="select-01"
+                          >{pickYearLabel}</label
+                        >
                         <div class="slds-select_container">
-                          <select 
+                          <select
                             class="slds-select"
                             tabindex="0"
                             data-id="select-01"
                             id="select-01"
                             onchange={yearSelected}
-                            onkeydown={shiftFocus}>
+                            onkeydown={shiftFocus}
+                          >
                             <template for:each={years} for:item="e">
                               <option key={e.value}>
                                 <span>{e.value}</span>
@@ -161,21 +180,22 @@
                       </div>
                     </div>
 
-                    <table 
+                    <table
                       class="slds-datepicker__month"
                       aria-labelledby="month"
                       aria-multiselectable="true"
-                      role="grid">
+                      role="grid"
+                    >
                       <thead>
                         <tr data-id="weekdays">
                           <template for:each={daysTitle} for:item="e">
-                            <th 
+                            <th
                               key={e.name}
                               class="slds-disabled-text"
                               data-id={e.name}
                               tabindex="-1"
-                              scope="col">          
-                            </th>
+                              scope="col"
+                            ></th>
                           </template>
                         </tr>
                       </thead>
@@ -184,14 +204,16 @@
                         <template for:each={DayArray} for:item="week">
                           <tr key={week.id}>
                             <template for:each={week} for:item="e">
-                              <td key={e.id}
+                              <td
+                                key={e.id}
                                 class={e.class}
                                 data-id={e.id}
                                 aria-selected="false"
                                 tabindex="0"
                                 role="gridcell"
                                 onkeydown={shiftFocus}
-                                onmousedown={selectDate}>
+                                onmousedown={selectDate}
+                              >
                                 <span class="slds-day">{e.value}</span>
                               </td>
                             </template>
@@ -200,24 +222,25 @@
                       </tbody>
                     </table>
 
-                    <button 
+                    <button
                       class="slds-button slds-align_absolute-center slds-text-link currentDate"
                       data-id="current-date"
                       tabindex="0"
                       type="button"
                       onkeydown={shiftFocus}
-                      onmousedown={currentDate}>
+                      onmousedown={currentDate}
+                    >
                       {todayLabel}
                     </button>
                   </div>
                 </div>
 
-                <div if:true={isError}
-                  class="slds-has-error">
-                  <span 
+                <div if:true={isError} class="slds-has-error">
+                  <span
                     id="errorMessageBlock"
                     class="slds-form-element__help"
-                    aria-live="polite">
+                    aria-live="polite"
+                  >
                     {errorMessage}
                   </span>
                 </div>

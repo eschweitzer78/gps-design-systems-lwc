@@ -1,5 +1,6 @@
 <template>
-  <c-sf-gps-ds-au-nsw-header if:false={_sfGpsErrors} 
+  <c-sf-gps-ds-au-nsw-header
+    if:false={_sfGpsErrors}
     sr-waratah-label={srWaratahLabel}
     logo={logo}
     logo-alt={logoAlt}
@@ -17,6 +18,5 @@
   </c-sf-gps-ds-au-nsw-header>
 
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>  
+  </c-sf-gps-ds-configuration-error>
 </template>
-

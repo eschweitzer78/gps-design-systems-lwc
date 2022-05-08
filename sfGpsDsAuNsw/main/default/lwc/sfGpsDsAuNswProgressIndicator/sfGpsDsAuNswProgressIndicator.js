@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
   @api step = 1;
@@ -19,7 +19,7 @@ export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
       arr.push({
         index: i,
         isActive: i === this.step,
-        className: i === this.step ? 'active' : '',
+        className: i === this.step ? "active" : ""
       });
     }
 
@@ -27,6 +27,6 @@ export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
   }
 
   get computedClassName() {
-    return `nsw-progress-indicator ${this.className ? this.className : ''}`;
+    return `nsw-progress-indicator ${this.className ? this.className : ""}`;
   }
 }

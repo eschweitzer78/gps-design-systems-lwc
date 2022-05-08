@@ -1,5 +1,6 @@
 <template>
-  <c-sf-gps-ds-au-nsw-input-os-n if:false={_isMasked}
+  <c-sf-gps-ds-au-nsw-input-os-n
+    if:false={_isMasked}
     type={_inputType}
     class={_styleClasses.input}
     label={mergedLabel}
@@ -24,34 +25,46 @@
     autocomplete={_autocomplete}
     value={elementValue}
     name={_name}
-    data-omni-input>
+    data-omni-input
+  >
     <template if:true={_propSetMap.repeat}>
-      <span slot="label"
-            style="bottom:7px; right:-11px;"
-            class={_styleClasses.repeatContainer}
-            role="group">
-        <button if:true={canRepeat}
-                class={_styleClasses.repeatAdd}
-                onclick={handleAdd}>
-          <omnistudio-icon icon-name="utility:add"
-                  alternative-text={_repeatAlternativeText}
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+      <span
+        slot="label"
+        style="bottom: 7px; right: -11px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text={_repeatAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
-        <button if:true={canRemove}
-                class={_styleClasses.repeatRemove}
-                onclick={handleRemove}>
-          <omnistudio-icon icon-name="utility:close"
-                  alternative-text={_removeAlternativeText}
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text={_removeAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
       </span>
     </template>
   </c-sf-gps-ds-au-nsw-input-os-n>
-  <c-sf-gps-ds-au-nsw-masked-input-os-n if:true={_isMasked}
+  <c-sf-gps-ds-au-nsw-masked-input-os-n
+    if:true={_isMasked}
     class={_styleClasses.input}
     type={_inputType}
     label={_propSetMap.label}
@@ -80,28 +93,39 @@
     value={elementValue}
     autocomplete={_autocomplete}
     name={_name}
-    data-omni-input>
+    data-omni-input
+  >
     <template if:true={_propSetMap.repeat}>
-      <span slot="label"
-            style="bottom:7px; right:-11px;"
-            class={_styleClasses.repeatContainer}
-            role="group">
-        <button if:true={canRepeat}
-                class={_styleClasses.repeatAdd}
-                onclick={handleAdd}>
-          <omnistudio-icon icon-name="utility:add"
-                  alternative-text={_repeatAlternativeText}
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+      <span
+        slot="label"
+        style="bottom: 7px; right: -11px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text={_repeatAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
-        <button if:true={canRemove}
-                class={_styleClasses.repeatRemove}
-                onclick={handleRemove}>
-          <omnistudio-icon icon-name="utility:close"
-                  alternative-text={_removeAlternativeText}
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text={_removeAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
       </span>

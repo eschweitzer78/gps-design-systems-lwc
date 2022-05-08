@@ -1,5 +1,5 @@
 /* eslint-disable header/header */
-'use strict';
+"use strict";
 
 let encodeCache = {};
 
@@ -23,7 +23,7 @@ function getEncodeCache(exclude) {
       // always allow unencoded alphanumeric characters
       cache.push(ch);
     } else {
-      cache.push('%' + ('0' + i.toString(16).toUpperCase()).slice(-2));
+      cache.push("%" + ("0" + i.toString(16).toUpperCase()).slice(-2));
     }
   }
 
@@ -47,15 +47,15 @@ function encode(string, exclude, keepEscaped) {
     code,
     nextCode,
     cache,
-    result = '';
+    result = "";
 
-  if (typeof exclude !== 'string') {
+  if (typeof exclude !== "string") {
     // encode(string, keepEscaped)
     keepEscaped = exclude;
     exclude = encode.defaultChars;
   }
 
-  if (typeof keepEscaped === 'undefined') {
+  if (typeof keepEscaped === "undefined") {
     keepEscaped = true;
   }
 
@@ -86,7 +86,7 @@ function encode(string, exclude, keepEscaped) {
           continue;
         }
       }
-      result += '%EF%BF%BD';
+      result += "%EF%BF%BD";
       continue;
     }
 

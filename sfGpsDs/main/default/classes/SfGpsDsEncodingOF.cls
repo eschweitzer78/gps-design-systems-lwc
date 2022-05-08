@@ -14,7 +14,7 @@ global class SfGpsDsEncodingOF implements Callable {
     Map<String, Object> options = (Map<String, Object>) args.get('options');
 
     Object argumentsObject = input.get('arguments');
-    
+
     if (!(argumentsObject instanceof List<Object>) || argumentsObject == null) {
       setError(output, 'ARGLIST-001');
       return false;
@@ -34,7 +34,10 @@ global class SfGpsDsEncodingOF implements Callable {
           return false;
         }
 
-        output.put('result', EncodingUtil.urlEncode((String) arguments[0], 'UTF-8'));
+        output.put(
+          'result',
+          EncodingUtil.urlEncode((String) arguments[0], 'UTF-8')
+        );
         return true;
       }
       when 'UrlDecode' {
@@ -48,7 +51,10 @@ global class SfGpsDsEncodingOF implements Callable {
           return false;
         }
 
-        output.put('result', EncodingUtil.urlDecode((String) arguments[0], 'UTF-8'));
+        output.put(
+          'result',
+          EncodingUtil.urlDecode((String) arguments[0], 'UTF-8')
+        );
         return true;
       }
       when else {
@@ -58,5 +64,6 @@ global class SfGpsDsEncodingOF implements Callable {
     }
   }
 
-  public class MalformedCallException extends Exception {}
+  public class MalformedCallException extends Exception {
+  }
 }

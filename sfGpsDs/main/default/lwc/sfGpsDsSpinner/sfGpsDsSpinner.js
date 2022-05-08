@@ -4,13 +4,13 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class SfGpsDsSpinner extends LightningElement {
   @api animationDuration = 1250;
   @api size = 65;
   @api squaresNum = 4;
-  @api color = '#555';
+  @api color = "#555";
 
   get squareStyle() {
     return {
@@ -18,7 +18,7 @@ export default class SfGpsDsSpinner extends LightningElement {
       width: `${(this.size * 0.25) / 1.3}px`,
       animationDuration: `${this.animationDuration}ms`,
       borderWidth: `${(this.size * 0.04) / 1.3}px`,
-      borderColor: this.color,
+      borderColor: this.color
     };
   }
 
@@ -28,7 +28,7 @@ export default class SfGpsDsSpinner extends LightningElement {
     for (let i = 1; i <= this.squaresNum; i++) {
       squaresStyles.push({
         style: this.squareStyle,
-        index: i,
+        index: i
       });
     }
     return squaresStyles;

@@ -1,59 +1,59 @@
 /* eslint-disable header/header */
-'use strict';
+"use strict";
 
-import encode from './mdUrlEncode';
-import { decodeHTML } from './entitiesDecode';
+import encode from "./mdUrlEncode";
+import { decodeHTML } from "./entitiesDecode";
 
 let C_BACKSLASH = 92;
 
-let ENTITY = '&(?:#x[a-f0-9]{1,6}|#[0-9]{1,7}|[a-z][a-z0-9]{1,31});';
+let ENTITY = "&(?:#x[a-f0-9]{1,6}|#[0-9]{1,7}|[a-z][a-z0-9]{1,31});";
 
-let TAGNAME = '[A-Za-z][A-Za-z0-9-]*';
-let ATTRIBUTENAME = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
-let UNQUOTEDVALUE = '[^"\'=<>`\\x00-\\x20]+';
+let TAGNAME = "[A-Za-z][A-Za-z0-9-]*";
+let ATTRIBUTENAME = "[a-zA-Z_:][a-zA-Z0-9:._-]*";
+let UNQUOTEDVALUE = "[^\"'=<>`\\x00-\\x20]+";
 let SINGLEQUOTEDVALUE = "'[^']*'";
 let DOUBLEQUOTEDVALUE = '"[^"]*"';
 let ATTRIBUTEVALUE =
-  '(?:' +
+  "(?:" +
   UNQUOTEDVALUE +
-  '|' +
+  "|" +
   SINGLEQUOTEDVALUE +
-  '|' +
+  "|" +
   DOUBLEQUOTEDVALUE +
-  ')';
-let ATTRIBUTEVALUESPEC = '(?:\\s*=\\s*' + ATTRIBUTEVALUE + ')';
-let ATTRIBUTE = '(?:\\s+' + ATTRIBUTENAME + ATTRIBUTEVALUESPEC + '?)';
-let OPENTAG = '<' + TAGNAME + ATTRIBUTE + '*\\s*/?>';
-let CLOSETAG = '</' + TAGNAME + '\\s*[>]';
-let HTMLCOMMENT = '<!---->|<!--(?:-?[^>-])(?:-?[^-])*-->';
-let PROCESSINGINSTRUCTION = '[<][?][\\s\\S]*?[?][>]';
-let DECLARATION = '<![A-Z]+\\s+[^>]*>';
-let CDATA = '<!\\[CDATA\\[[\\s\\S]*?\\]\\]>';
+  ")";
+let ATTRIBUTEVALUESPEC = "(?:\\s*=\\s*" + ATTRIBUTEVALUE + ")";
+let ATTRIBUTE = "(?:\\s+" + ATTRIBUTENAME + ATTRIBUTEVALUESPEC + "?)";
+let OPENTAG = "<" + TAGNAME + ATTRIBUTE + "*\\s*/?>";
+let CLOSETAG = "</" + TAGNAME + "\\s*[>]";
+let HTMLCOMMENT = "<!---->|<!--(?:-?[^>-])(?:-?[^-])*-->";
+let PROCESSINGINSTRUCTION = "[<][?][\\s\\S]*?[?][>]";
+let DECLARATION = "<![A-Z]+\\s+[^>]*>";
+let CDATA = "<!\\[CDATA\\[[\\s\\S]*?\\]\\]>";
 let HTMLTAG =
-  '(?:' +
+  "(?:" +
   OPENTAG +
-  '|' +
+  "|" +
   CLOSETAG +
-  '|' +
+  "|" +
   HTMLCOMMENT +
-  '|' +
+  "|" +
   PROCESSINGINSTRUCTION +
-  '|' +
+  "|" +
   DECLARATION +
-  '|' +
+  "|" +
   CDATA +
-  ')';
-let reHtmlTag = new RegExp('^' + HTMLTAG);
+  ")";
+let reHtmlTag = new RegExp("^" + HTMLTAG);
 
 let reBackslashOrAmp = /[\\&]/;
 
-let ESCAPABLE = '[!"#$%&\'()*+,./:;<=>?@[\\\\\\]^_`{|}~-]';
+let ESCAPABLE = "[!\"#$%&'()*+,./:;<=>?@[\\\\\\]^_`{|}~-]";
 
-let reEntityOrEscapedChar = new RegExp('\\\\' + ESCAPABLE + '|' + ENTITY, 'gi');
+let reEntityOrEscapedChar = new RegExp("\\\\" + ESCAPABLE + "|" + ENTITY, "gi");
 
 let XMLSPECIAL = '[&<>"]';
 
-let reXmlSpecial = new RegExp(XMLSPECIAL, 'g');
+let reXmlSpecial = new RegExp(XMLSPECIAL, "g");
 
 let unescapeChar = function (s) {
   if (s.charCodeAt(0) === C_BACKSLASH) {
@@ -80,14 +80,14 @@ let normalizeURI = function (uri) {
 
 let replaceUnsafeChar = function (s) {
   switch (s) {
-    case '&':
-      return '&amp;';
-    case '<':
-      return '&lt;';
-    case '>':
-      return '&gt;';
+    case "&":
+      return "&amp;";
+    case "<":
+      return "&lt;";
+    case ">":
+      return "&gt;";
     case '"':
-      return '&quot;';
+      return "&quot;";
     default:
       return s;
   }
@@ -108,5 +108,5 @@ export {
   OPENTAG,
   CLOSETAG,
   ENTITY,
-  ESCAPABLE,
+  ESCAPABLE
 };

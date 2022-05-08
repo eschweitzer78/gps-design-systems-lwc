@@ -1,6 +1,6 @@
 <template>
   <div class="omni-typeahead-container">
-    <c-sf-gps-ds-au-nsw-typeahead-os-n 
+    <c-sf-gps-ds-au-nsw-typeahead-os-n
       if:false={_propSetMap.enableLookup}
       type="text"
       field-level-help={mergedHelpText}
@@ -23,23 +23,30 @@
       value={elementValue}
       remote-source={_useRemoteSource}
       disable-filter={_disableFilter}
-      data-omni-input>
-      <button if:false={_propSetMap.hideEditButton}
-              class="slds-button slds-button_icon nds-button nds-button_icon"
-              slot="iconRight"
-              aria-expanded={_isEditMode}
-              onclick={toggleEditMode}>
-        <omnistudio-icon icon-name="utility:edit"
-                extraclass="slds-button__icon nds-button__icon"
-                size="x-small"
-                theme={_theme}
-                alternative-text={_editLabel}></omnistudio-icon>
+      data-omni-input
+    >
+      <button
+        if:false={_propSetMap.hideEditButton}
+        class="slds-button slds-button_icon nds-button nds-button_icon"
+        slot="iconRight"
+        aria-expanded={_isEditMode}
+        onclick={toggleEditMode}
+      >
+        <omnistudio-icon
+          icon-name="utility:edit"
+          extraclass="slds-button__icon nds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={_editLabel}
+        ></omnistudio-icon>
       </button>
 
-      <a slot="lastItem"
-          if:true={_propSetMap.newItemLabel}
-          label={_propSetMap.newItemLabel}>{_propSetMap.newItemLabel}</a>
-
+      <a
+        slot="lastItem"
+        if:true={_propSetMap.newItemLabel}
+        label={_propSetMap.newItemLabel}
+        >{_propSetMap.newItemLabel}</a
+      >
     </c-sf-gps-ds-au-nsw-typeahead-os-n>
 
     <c-sf-gps-ds-au-nsw-typeahead-os-n
@@ -64,13 +71,15 @@
       value={elementValue}
       remote-source
       disable-filter={_disableFilter}
-      data-omni-input>
+      data-omni-input
+    >
     </c-sf-gps-ds-au-nsw-typeahead-os-n>
 
-    <div if:true={errorMessage}
-          class="slds-has-error nds-has-error">
-      <span class="slds-form-element__help nds-form-element__help nds-form-element__help_text-transform__none">{errorMessage}</span>
+    <div if:true={errorMessage} class="slds-has-error nds-has-error">
+      <span
+        class="slds-form-element__help nds-form-element__help nds-form-element__help_text-transform__none"
+        >{errorMessage}</span
+      >
     </div>
-
   </div>
 </template>

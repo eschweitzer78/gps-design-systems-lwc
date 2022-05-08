@@ -1,5 +1,5 @@
 /* eslint-disable header/header */
-import decodeMap from './entitiesMapsDecode.js';
+import decodeMap from "./entitiesMapsDecode.js";
 
 // Adapted from https://github.com/mathiasbynens/he/blob/master/src/he.js#L94-L119
 
@@ -7,7 +7,7 @@ const fromCodePoint =
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   String.fromCodePoint ||
   function (codePoint) {
-    let output = '';
+    let output = "";
 
     if (codePoint > 0xffff) {
       codePoint -= 0x10000;
@@ -21,7 +21,7 @@ const fromCodePoint =
 
 export default function decodeCodePoint(codePoint) {
   if ((codePoint >= 0xd800 && codePoint <= 0xdfff) || codePoint > 0x10ffff) {
-    return '\uFFFD';
+    return "\uFFFD";
   }
 
   if (codePoint in decodeMap) {

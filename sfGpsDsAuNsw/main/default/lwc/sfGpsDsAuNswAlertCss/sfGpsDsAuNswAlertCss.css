@@ -1,85 +1,85 @@
-@import 'c/sfGpsDsAuNswCore';
+@import "c/sfGpsDsAuNswCore";
 
 /* stylelint-disable declaration-no-important */
 /* stylelint-enable declaration-no-important */
 .nsw-in-page-alert {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    position: relative;
-    border-left: solid 4px var(--nsw-brand-accent);
-    background-color: var(--nsw-grey-04);
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  position: relative;
+  border-left: solid 4px var(--nsw-brand-accent);
+  background-color: var(--nsw-grey-04);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .nsw-in-page-alert:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 @media (min-width: 48rem) {
-    .nsw-in-page-alert {
-        margin-top: 2rem;
-   }
+  .nsw-in-page-alert {
+    margin-top: 2rem;
+  }
 }
 @media (min-width: 48rem) {
-    .nsw-in-page-alert {
-        padding: 1.5rem 1.5rem 1.5rem 1rem;
-   }
+  .nsw-in-page-alert {
+    padding: 1.5rem 1.5rem 1.5rem 1rem;
+  }
 }
 .nsw-section--invert .nsw-in-page-alert {
-    color: var(--nsw-text-dark);
+  color: var(--nsw-text-dark);
 }
 .nsw-section--invert .nsw-in-page-alert a {
-    color: var(--nsw-brand-dark);
+  color: var(--nsw-brand-dark);
 }
 .nsw-section--invert .nsw-in-page-alert a:hover {
-    background-color: var(--nsw-text-hover);
-    outline-color: var(--nsw-text-hover);
+  background-color: var(--nsw-text-hover);
+  outline-color: var(--nsw-text-hover);
 }
 .nsw-section--invert .nsw-in-page-alert a:focus {
-    outline-color: var(--nsw-focus);
+  outline-color: var(--nsw-focus);
 }
 .nsw-section--invert .nsw-in-page-alert a:visited {
-    color: var(--nsw-text-visited);
+  color: var(--nsw-text-visited);
 }
 .nsw-in-page-alert__icon {
-    font-size: 1.875rem;
-    margin-right: 1rem;
-    margin-top: -0.125rem;
+  font-size: 1.875rem;
+  margin-right: 1rem;
+  margin-top: -0.125rem;
 }
 .nsw-in-page-alert--info {
-    background-color: var(--nsw-status-info-bg);
-    border-color: var(--nsw-status-info);
+  background-color: var(--nsw-status-info-bg);
+  border-color: var(--nsw-status-info);
 }
 .nsw-in-page-alert--info .nsw-in-page-alert__icon {
-    color: var(--nsw-status-info);
+  color: var(--nsw-status-info);
 }
 .nsw-in-page-alert--success {
-    background-color: var(--nsw-status-success-bg);
-    border-color: var(--nsw-status-success);
+  background-color: var(--nsw-status-success-bg);
+  border-color: var(--nsw-status-success);
 }
 .nsw-in-page-alert--success .nsw-in-page-alert__icon {
-    color: var(--nsw-status-success);
+  color: var(--nsw-status-success);
 }
 .nsw-in-page-alert--warning {
-    background-color: var(--nsw-status-warning-bg);
-    border-color: var(--nsw-status-warning);
+  background-color: var(--nsw-status-warning-bg);
+  border-color: var(--nsw-status-warning);
 }
 .nsw-in-page-alert--warning .nsw-in-page-alert__icon {
-    color: var(--nsw-status-warning);
+  color: var(--nsw-status-warning);
 }
 .nsw-in-page-alert--error {
-    background-color: var(--nsw-status-error-bg);
-    border-color: var(--nsw-status-error);
+  background-color: var(--nsw-status-error-bg);
+  border-color: var(--nsw-status-error);
 }
 .nsw-in-page-alert--error .nsw-in-page-alert__icon {
-    color: var(--nsw-status-error);
+  color: var(--nsw-status-error);
 }
 .nsw-in-page-alert--compact {
-    padding: 0.5rem;
-    border: 0;
+  padding: 0.5rem;
+  border: 0;
 }
 .nsw-in-page-alert--compact .nsw-in-page-alert__icon {
-    font-size: 1.25rem;
-    margin-right: 0.5rem;
-    margin-top: 0;
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+  margin-top: 0;
 }

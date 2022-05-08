@@ -1,10 +1,10 @@
 /* eslint-disable header/header */
-'use strict';
+"use strict";
 
-import Node from './node';
-import * as common from './common';
-import fromCodePoint from './fromCodePoint';
-import { decodeHTML } from './entitiesDecode';
+import Node from "./node";
+import * as common from "./common";
+import fromCodePoint from "./fromCodePoint";
+import { decodeHTML } from "./entitiesDecode";
 //import "string.prototype.repeat"; // Polyfill for String.prototype.repeat
 
 let normalizeURI = common.normalizeURI;
@@ -31,7 +31,7 @@ let C_DOUBLEQUOTE = 34;
 // Some regexps used in inline parser:
 
 let ESCAPABLE = common.ESCAPABLE;
-let ESCAPED_CHAR = '\\\\' + ESCAPABLE;
+let ESCAPED_CHAR = "\\\\" + ESCAPABLE;
 
 let ENTITY = common.ENTITY;
 let reHtmlTag = common.reHtmlTag;
@@ -44,20 +44,20 @@ let reLinkTitle = new RegExp(
   '^(?:"(' +
     ESCAPED_CHAR +
     '|[^"\\x00])*"' +
-    '|' +
+    "|" +
     "'(" +
     ESCAPED_CHAR +
     "|[^'\\x00])*'" +
-    '|' +
-    '\\((' +
+    "|" +
+    "\\((" +
     ESCAPED_CHAR +
-    '|[^()\\x00])*\\))'
+    "|[^()\\x00])*\\))"
 );
 
 /* eslint-disable */
 let reLinkDestinationBraces = /^(?:<(?:[^<>\n\\\x00]|\\.)*>)/;
-let reEscapable = new RegExp('^' + ESCAPABLE);
-let reEntityHere = new RegExp('^' + ENTITY, 'i');
+let reEscapable = new RegExp("^" + ESCAPABLE);
+let reEntityHere = new RegExp("^" + ENTITY, "i");
 let reTicks = /`+/;
 let reTicksHere = /^`+/;
 let reEllipses = /\.\.\./g;
@@ -78,7 +78,7 @@ let reLinkLabel = /^\[(?:[^\\\[\]]|\\.){0,1000}\]/s;
 let reMain = /^[^\n`[\]\\!<&*_'"]+/m;
 
 let text = function (s) {
-  let node = new Node('text');
+  let node = new Node("text");
   node._literal = s;
   return node;
 };
@@ -90,7 +90,7 @@ let normalizeReference = function (string) {
   return string
     .slice(1, string.length - 1)
     .trim()
-    .replace(/[ \t\r\n]+/, ' ')
+    .replace(/[ \t\r\n]+/, " ")
     .toLowerCase()
     .toUpperCase();
 };
@@ -144,15 +144,15 @@ let parseBackticks = function (block) {
   let contents;
   while ((matched = this.match(reTicks)) !== null) {
     if (matched === ticks) {
-      node = new Node('code');
+      node = new Node("code");
       contents = this.subject
         .slice(afterOpenTicks, this.pos - ticks.length)
-        .replace(/\n/gm, ' ');
+        .replace(/\n/gm, " ");
       if (
         contents.length > 0 &&
         contents.match(/[^ ]/) !== null &&
-        contents[0] === ' ' &&
-        contents[contents.length - 1] === ' '
+        contents[0] === " " &&
+        contents[contents.length - 1] === " "
       ) {
         node._literal = contents.slice(1, contents.length - 1);
       } else {
@@ -178,13 +178,13 @@ let parseBackslash = function (block) {
   this.pos += 1;
   if (this.peek() === C_NEWLINE) {
     this.pos += 1;
-    node = new Node('linebreak');
+    node = new Node("linebreak");
     block.appendChild(node);
   } else if (reEscapable.test(subj.charAt(this.pos))) {
     block.appendChild(text(subj.charAt(this.pos)));
     this.pos += 1;
   } else {
-    block.appendChild(text('\\'));
+    block.appendChild(text("\\"));
   }
   return true;
 };
@@ -196,17 +196,17 @@ let parseAutolink = function (block) {
   let node;
   if ((m = this.match(reEmailAutolink))) {
     dest = m.slice(1, m.length - 1);
-    node = new Node('link');
-    node._destination = normalizeURI('mailto:' + dest);
-    node._title = '';
+    node = new Node("link");
+    node._destination = normalizeURI("mailto:" + dest);
+    node._title = "";
     node.appendChild(text(dest));
     block.appendChild(node);
     return true;
   } else if ((m = this.match(reAutolink))) {
     dest = m.slice(1, m.length - 1);
-    node = new Node('link');
+    node = new Node("link");
     node._destination = normalizeURI(dest);
-    node._title = '';
+    node._title = "";
     node.appendChild(text(dest));
     block.appendChild(node);
     return true;
@@ -220,7 +220,7 @@ let parseHtmlTag = function (block) {
   if (m === null) {
     return false;
   }
-  let node = new Node('html_inline');
+  let node = new Node("html_inline");
   node._literal = m;
   block.appendChild(node);
   return true;
@@ -254,11 +254,11 @@ let scanDelims = function (cc) {
     return null;
   }
 
-  char_before = startpos === 0 ? '\n' : this.subject.charAt(startpos - 1);
+  char_before = startpos === 0 ? "\n" : this.subject.charAt(startpos - 1);
 
   cc_after = this.peek();
   if (cc_after === -1) {
-    char_after = '\n';
+    char_after = "\n";
   } else {
     char_after = fromCodePoint(cc_after);
   }
@@ -300,9 +300,9 @@ let handleDelim = function (cc, block) {
 
   this.pos += numdelims;
   if (cc === C_SINGLEQUOTE) {
-    contents = '\u2019';
+    contents = "\u2019";
   } else if (cc === C_DOUBLEQUOTE) {
-    contents = '\u201C';
+    contents = "\u201C";
   } else {
     contents = this.subject.slice(startpos, this.pos);
   }
@@ -322,7 +322,7 @@ let handleDelim = function (cc, block) {
       previous: this.delimiters,
       next: null,
       can_open: res.can_open,
-      can_close: res.can_close,
+      can_close: res.can_close
     };
     if (this.delimiters.previous !== null) {
       this.delimiters.previous.next = this.delimiters;
@@ -421,7 +421,7 @@ let processEmphasis = function (stack_bottom) {
           );
 
           // build contents for new emph element
-          let emph = new Node(use_delims === 1 ? 'emph' : 'strong');
+          let emph = new Node(use_delims === 1 ? "emph" : "strong");
 
           tmp = opener_inl._next;
           while (tmp && tmp !== closer_inl) {
@@ -450,15 +450,15 @@ let processEmphasis = function (stack_bottom) {
           }
         }
       } else if (closercc === C_SINGLEQUOTE) {
-        closer.node._literal = '\u2019';
+        closer.node._literal = "\u2019";
         if (opener_found) {
-          opener.node._literal = '\u2018';
+          opener.node._literal = "\u2018";
         }
         closer = closer.next;
       } else if (closercc === C_DOUBLEQUOTE) {
-        closer.node._literal = '\u201D';
+        closer.node._literal = "\u201D";
         if (opener_found) {
-          opener.node.literal = '\u201C';
+          opener.node.literal = "\u201C";
         }
         closer = closer.next;
       }
@@ -556,7 +556,7 @@ let parseOpenBracket = function (block) {
   let startpos = this.pos;
   this.pos += 1;
 
-  let node = text('[');
+  let node = text("[");
   block.appendChild(node);
 
   // Add entry to stack for this opener
@@ -572,13 +572,13 @@ let parseBang = function (block) {
   if (this.peek() === C_OPEN_BRACKET) {
     this.pos += 1;
 
-    let node = text('![');
+    let node = text("![");
     block.appendChild(node);
 
     // Add entry to stack for this opener
     this.addBracket(node, startpos + 1, true);
   } else {
-    block.appendChild(text('!'));
+    block.appendChild(text("!"));
   }
   return true;
 };
@@ -604,13 +604,13 @@ let parseCloseBracket = function (block) {
 
   if (opener === null) {
     // no matched opener, just return a literal
-    block.appendChild(text(']'));
+    block.appendChild(text("]"));
     return true;
   }
 
   if (!opener.active) {
     // no matched opener, just return a literal
-    block.appendChild(text(']'));
+    block.appendChild(text("]"));
     // take opener off brackets stack
     this.removeBracket();
     return true;
@@ -672,9 +672,9 @@ let parseCloseBracket = function (block) {
   }
 
   if (matched) {
-    let node = new Node(is_image ? 'image' : 'link');
+    let node = new Node(is_image ? "image" : "link");
     node._destination = dest;
-    node._title = title || '';
+    node._title = title || "";
 
     let tmp, next;
     tmp = opener.node._next;
@@ -708,7 +708,7 @@ let parseCloseBracket = function (block) {
 
   this.removeBracket(); // remove this opener from stack
   this.pos = startpos;
-  block.appendChild(text(']'));
+  block.appendChild(text("]"));
   return true;
 };
 
@@ -722,7 +722,7 @@ let addBracket = function (node, index, image) {
     previousDelimiter: this.delimiters,
     index: index,
     image: image,
-    active: true,
+    active: true
   };
 };
 
@@ -748,7 +748,7 @@ let parseString = function (block) {
     if (this.options.smart) {
       block.appendChild(
         text(
-          m.replace(reEllipses, '\u2026').replace(reDash, function (chars) {
+          m.replace(reEllipses, "\u2026").replace(reDash, function (chars) {
             let enCount = 0;
             let emCount = 0;
             if (chars.length % 3 === 0) {
@@ -766,7 +766,7 @@ let parseString = function (block) {
               enCount = 2;
               emCount = (chars.length - 4) / 3;
             }
-            return '\u2014'.repeat(emCount) + '\u2013'.repeat(enCount);
+            return "\u2014".repeat(emCount) + "\u2013".repeat(enCount);
           })
         )
       );
@@ -786,14 +786,14 @@ let parseNewline = function (block) {
   let lastc = block._lastChild;
   if (
     lastc &&
-    lastc.type === 'text' &&
-    lastc._literal[lastc._literal.length - 1] === ' '
+    lastc.type === "text" &&
+    lastc._literal[lastc._literal.length - 1] === " "
   ) {
-    let hardbreak = lastc._literal[lastc._literal.length - 2] === ' ';
-    lastc._literal = lastc._literal.replace(reFinalSpace, '');
-    block.appendChild(new Node(hardbreak ? 'linebreak' : 'softbreak'));
+    let hardbreak = lastc._literal[lastc._literal.length - 2] === " ";
+    lastc._literal = lastc._literal.replace(reFinalSpace, "");
+    block.appendChild(new Node(hardbreak ? "linebreak" : "softbreak"));
   } else {
-    block.appendChild(new Node('softbreak'));
+    block.appendChild(new Node("softbreak"));
   }
   this.match(reInitialSpace); // gobble leading spaces in next line
   return true;
@@ -839,7 +839,7 @@ let parseReference = function (s, refmap) {
     title = this.parseLinkTitle();
   }
   if (title === null) {
-    title = '';
+    title = "";
     // rewind before spaces
     this.pos = beforetitle;
   }
@@ -847,13 +847,13 @@ let parseReference = function (s, refmap) {
   // make sure we're at line end:
   let atLineEnd = true;
   if (this.match(reSpaceAtEndOfLine) === null) {
-    if (title === '') {
+    if (title === "") {
       atLineEnd = false;
     } else {
       // the potential title we found is not at the line end,
       // but it could still be a legal link reference if we
       // discard the title
-      title = '';
+      title = "";
       // rewind before spaces
       this.pos = beforetitle;
       // and instead check if the link URL is at the line end
@@ -867,7 +867,7 @@ let parseReference = function (s, refmap) {
   }
 
   let normlabel = normalizeReference(rawlabel);
-  if (normlabel === '') {
+  if (normlabel === "") {
     // label must contain non-whitespace characters
     this.pos = startpos;
     return 0;
@@ -950,7 +950,7 @@ let parseInlines = function (block) {
 // The InlineParser object.
 function InlineParser(options) {
   return {
-    subject: '',
+    subject: "",
     delimiters: null, // used by handleDelim method
     brackets: null,
     pos: 0,
@@ -980,7 +980,7 @@ function InlineParser(options) {
     processEmphasis: processEmphasis,
     removeDelimiter: removeDelimiter,
     options: options || {},
-    parse: parseInlines,
+    parse: parseInlines
   };
 }
 

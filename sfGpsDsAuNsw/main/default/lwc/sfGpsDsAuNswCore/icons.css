@@ -60,7 +60,7 @@
   .nsw-icon-button {
     font-size: var(--nsw-font-size-sm-desktop);
     line-height: var(--nsw-line-height-sm-desktop);
- }
+  }
 }
 .nsw-icon-button:hover {
   background-color: var(--nsw-text-hover);
@@ -70,7 +70,8 @@
   outline: solid 3px var(--nsw-focus);
   outline-offset: 0;
 }
-.nsw-icon-button .nsw-material-icons, .nsw-icon-button svg {
+.nsw-icon-button .nsw-material-icons,
+.nsw-icon-button svg {
   display: block;
 }
 a.nsw-icon-button {

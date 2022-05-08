@@ -11,9 +11,9 @@
       icon-name="utility:info" not supported
 */
 
-import OmniscriptPassword from 'omnistudio/omniscriptPassword';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormPasswordOsN.html';
+import OmniscriptPassword from "omnistudio/omniscriptPassword";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormPasswordOsN.html";
 
 export default class SfGpsDsAuNswFormPasswordOsN extends OmniscriptPassword {
   render() {

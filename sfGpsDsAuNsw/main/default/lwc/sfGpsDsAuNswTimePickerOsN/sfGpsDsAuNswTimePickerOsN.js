@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from 'lwc';
-import OmnistudioTimePicker from 'omnistudio/timePicker';
-import { getHelperClassName, getStatusIcon } from 'c/sfGpsDsAuNswFormHelperOsN';
-import tmpl from './sfGpsDsAuNswTimePickerOsN.html';
+import { api } from "lwc";
+import OmnistudioTimePicker from "omnistudio/timePicker";
+import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import tmpl from "./sfGpsDsAuNswTimePickerOsN.html";
 
 export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioTimePicker {
   @api hideFormGroup = false;
@@ -18,18 +18,18 @@ export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioTimePicker {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? 'nsw-form__required' : ''}`;
+    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
   }
 
   get computedFormGroupClass() {
-    return this.hideFormGroup ? '' : 'nsw-form__group';
+    return this.hideFormGroup ? "" : "nsw-form__group";
   }
 
   get computedHelperClassName() {
-    return getHelperClassName('invalid');
+    return getHelperClassName("invalid");
   }
 
   get computedStatusIcon() {
-    return getStatusIcon('invalid');
+    return getStatusIcon("invalid");
   }
 }

@@ -23,28 +23,39 @@
     message-when-range-underflow={_messageWhenRangeUnderflow}
     message-when-step-mismatch={_messageWhenStepMismatch}
     message-when-type-mismatch={_messageWhenTypeMismatch}
-    data-omni-input>
+    data-omni-input
+  >
     <template if:true={_propSetMap.repeat}>
-      <span slot="label"
+      <span
+        slot="label"
         class={_styleClasses.repeatContainer}
-        style="bottom:7px; right:-11px;"
-        role="group">
-        <button if:true={canRepeat}
-              class={_styleClasses.repeatAdd}
-              onclick={handleAdd}>
-          <omnistudio-icon icon-name="utility:add"
-                  alternative-text="Repeat URL"
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+        style="bottom: 7px; right: -11px"
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat URL"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
-        <button if:true={canRemove}
-                class={_styleClasses.repeatRemove}
-                onclick={handleRemove}>
-          <omnistudio-icon icon-name="utility:close"
-                  alternative-text="Remove URL"
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove URL"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
       </span>

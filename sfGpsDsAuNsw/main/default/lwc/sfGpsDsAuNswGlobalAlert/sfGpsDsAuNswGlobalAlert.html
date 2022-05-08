@@ -3,9 +3,12 @@
     <div class="nsw-global-alert__wrapper">
       <div class="nsw-global-alert__content">
         <div class="nsw-global-alert__title">{title}</div>
-        <p>{content}
+        <p>
+          {content}
           <template if:true={isCtaLinkStyle}>
-            {space}<a href={ctaHref} class="nsw-sitewide-message__link">{ctaText}</a>
+            {space}<a href={ctaHref} class="nsw-sitewide-message__link"
+              >{ctaText}</a
+            >
           </template>
         </p>
       </div>
@@ -15,9 +18,11 @@
       </p>
 
       <button type="button" class="nsw-icon-button" onclick={handleClick}>
-        <span class="material-icons nsw-material-icons" aria-hidden="true">close</span>
+        <span class="material-icons nsw-material-icons" aria-hidden="true"
+          >close</span
+        >
         <span class="sr-only">Close message</span>
       </button>
     </div>
-  </div>   
+  </div>
 </template>

@@ -11,9 +11,9 @@
       icon-name="utility:info" not supported
 */
 
-import OmniscriptTime from 'omnistudio/omniscriptTime';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormTimeOsN.html';
+import OmniscriptTime from "omnistudio/omniscriptTime";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormTimeOsN.html";
 
 export default class SfGpsDsAuNswFormTimeOsN extends OmniscriptTime {
   render() {

@@ -12,9 +12,9 @@
   alignment={_horizontalMode} not supported
 */
 
-import OmniscriptRadio from 'omnistudio/omniscriptRadio';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormRadioOsN.html';
+import OmniscriptRadio from "omnistudio/omniscriptRadio";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormRadioOsN.html";
 
 export default class SfGpsDsAuNswFormRadioOsN extends OmniscriptRadio {
   render() {

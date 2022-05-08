@@ -5,34 +5,34 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from 'lwc';
-import OmniscriptTypeahead from 'omnistudio/omniscriptTypeahead';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import { getHelperClassName, getStatusIcon } from 'c/sfGpsDsAuNswFormHelperOsN';
-import { debounce } from 'omnistudio/utility';
-import tmpl from './sfGpsDsAuNswFormAddressTypeaheadOsN.html';
+import { api, track } from "lwc";
+import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { debounce } from "omnistudio/utility";
+import tmpl from "./sfGpsDsAuNswFormAddressTypeaheadOsN.html";
 
-const STATUS_TYPING = 'typing';
-const STATUS_SELECTED = 'selected';
-const STATUS_RESOLVED = 'resolved';
-const MODE_SMART = 'smart';
-const MODE_MANUAL = 'manual';
+const STATUS_TYPING = "typing";
+const STATUS_SELECTED = "selected";
+const STATUS_RESOLVED = "resolved";
+const MODE_SMART = "smart";
+const MODE_MANUAL = "manual";
 
 export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypeahead {
   @api street;
   @api suburb;
-  @api state = 'NSW';
+  @api state = "NSW";
   @api postcode;
-  @api country = 'Australia';
+  @api country = "Australia";
   @api states = [
-    { label: 'ACT', value: 'ACT' },
-    { label: 'NSW', value: 'NSW' },
-    { label: 'NT', value: 'NT' },
-    { label: 'QLD', value: 'QLD' },
-    { label: 'SA', value: 'SA' },
-    { label: 'TAS', value: 'TAS' },
-    { label: 'VIC', value: 'VIC' },
-    { label: 'WA', value: 'WA' },
+    { label: "ACT", value: "ACT" },
+    { label: "NSW", value: "NSW" },
+    { label: "NT", value: "NT" },
+    { label: "QLD", value: "QLD" },
+    { label: "SA", value: "SA" },
+    { label: "TAS", value: "TAS" },
+    { label: "VIC", value: "VIC" },
+    { label: "WA", value: "WA" }
   ];
 
   @track isSmart = true;
@@ -43,18 +43,18 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
   // EVENT HANDLING
 
   handleToggle() {
-    this.setElementValue('', false, false);
+    this.setElementValue("", false, false);
     this.dispatchOmniEventUtil(
       this,
       this.createAggregateNode(),
-      'omniaggregate'
+      "omniaggregate"
     );
 
     this.options = [];
     this.elementValueLabel = null;
     this.elementValueValue = null;
     this.elementValueStatus = STATUS_TYPING;
-    this.dispatchOmniEventUtil(this, { item: '$Vlocity.nullify' }, 'select');
+    this.dispatchOmniEventUtil(this, { item: "$Vlocity.nullify" }, "select");
 
     if (this.isSmart) {
       this.isSmart = false;
@@ -74,7 +74,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   handleFieldBlur(event) {
     switch (event.target.name) {
-      case 'street':
+      case "street":
         if (this.street !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.street = event.target.value;
@@ -83,7 +83,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
         break;
 
-      case 'suburb':
+      case "suburb":
         if (this.suburb !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.suburb = event.target.value;
@@ -92,7 +92,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
         break;
 
-      case 'postcode':
+      case "postcode":
         if (this.postcode !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.postcode = event.target.value;
@@ -101,7 +101,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
         break;
 
-      case 'country':
+      case "country":
         if (this.country !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.country = event.target.value;
@@ -122,14 +122,14 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   setManualValue() {
     let fullAddress =
-      (this.street ? this.street : '') +
-      (this.street && (this.suburb || this.state || this.postcode) ? ',' : '') +
-      (this.street && this.suburb ? ' ' : '') +
-      (this.suburb ? this.suburb : '') +
-      ((this.street || this.suburb) && this.state ? ' ' : '') +
-      (this.state ? this.state : '') +
-      ((this.street || this.suburb || this.state) && this.postcode ? ' ' : '') +
-      (this.postcode ? this.postcode : '');
+      (this.street ? this.street : "") +
+      (this.street && (this.suburb || this.state || this.postcode) ? "," : "") +
+      (this.street && this.suburb ? " " : "") +
+      (this.suburb ? this.suburb : "") +
+      ((this.street || this.suburb) && this.state ? " " : "") +
+      (this.state ? this.state : "") +
+      ((this.street || this.suburb || this.state) && this.postcode ? " " : "") +
+      (this.postcode ? this.postcode : "");
 
     fullAddress = fullAddress ? fullAddress.toUpperCase() : null;
 
@@ -141,12 +141,12 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
             suburb: this.suburb,
             state: this.state,
             postcode: this.postcode,
-            country: this.country,
+            country: this.country
           },
-          address: fullAddress,
+          address: fullAddress
         },
         mode: MODE_MANUAL,
-        label: fullAddress,
+        label: fullAddress
       },
       false
     );
@@ -157,7 +157,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       label: this.elementValueLabel,
       value: this.elementValueValue,
       status: this.elementValueStatus,
-      mode: MODE_SMART,
+      mode: MODE_SMART
     };
 
     return value;
@@ -183,7 +183,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
             this.dispatchOmniEventUtil(
               this,
               this.createAggregateNode(),
-              'omniaggregate'
+              "omniaggregate"
             );
 
             if (t === null) {
@@ -200,8 +200,8 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
             this.dispatchOmniEventUtil(
               this,
-              { item: '$Vlocity.nullify' },
-              'select'
+              { item: "$Vlocity.nullify" },
+              "select"
             );
           }
         }, this._propSetMap.callFrequency);
@@ -215,8 +215,8 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     this.elementValueLabel = event.target.value;
     let proxyEvent = {
       target: {
-        value: this.getSmartValue(),
-      },
+        value: this.getSmartValue()
+      }
     };
 
     super.handleBlur(proxyEvent);
@@ -229,9 +229,9 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
     let proxyEvent = {
       target: {
-        value: this.getSmartValue(),
+        value: this.getSmartValue()
       },
-      detail: event.detail,
+      detail: event.detail
     };
 
     super.handleSelect(proxyEvent);
@@ -270,7 +270,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
-        'omniaggregate'
+        "omniaggregate"
       );
     }
   }
@@ -279,20 +279,20 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get computedLabelClassName() {
     return `nsw-form__label ${
-      this._propSetMap.required ? 'nsw-form__required' : ''
+      this._propSetMap.required ? "nsw-form__required" : ""
     }`;
   }
 
   get computedHelperClassName() {
-    return getHelperClassName('invalid');
+    return getHelperClassName("invalid");
   }
 
   get computedStatusIcon() {
-    return getStatusIcon('invalid');
+    return getStatusIcon("invalid");
   }
 
   get computedTypeaheadClass() {
-    return this.isSmart ? '' : 'sfgpsds-hide';
+    return this.isSmart ? "" : "sfgpsds-hide";
   }
 
   get mergedLabel() {

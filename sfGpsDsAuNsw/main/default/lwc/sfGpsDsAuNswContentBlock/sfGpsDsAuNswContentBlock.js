@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class SfGpsDsAuNswContentBlock extends LightningElement {
   @api headline;
@@ -20,6 +20,6 @@ export default class SfGpsDsAuNswContentBlock extends LightningElement {
   @api className;
 
   get computedClassName() {
-    return `nsw-content-block ${this.className ? this.className : ''}`;
+    return `nsw-content-block ${this.className ? this.className : ""}`;
   }
 }

@@ -1,7 +1,11 @@
 <template>
-  <c-sf-gps-ds-au-nsw-tags if:false={_sfGpsErrors} tags={_links} class-name={className}>
+  <c-sf-gps-ds-au-nsw-tags
+    if:false={_sfGpsErrors}
+    tags={_links}
+    class-name={className}
+  >
   </c-sf-gps-ds-au-nsw-tags>
 
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>  
+  </c-sf-gps-ds-configuration-error>
 </template>

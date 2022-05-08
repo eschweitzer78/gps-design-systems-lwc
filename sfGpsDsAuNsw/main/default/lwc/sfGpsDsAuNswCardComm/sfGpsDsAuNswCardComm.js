@@ -5,14 +5,14 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from 'lwc';
-import { parseIso8601, replaceInnerHtml } from 'c/sfGpsDsHelpers';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
+import { api, track } from "lwc";
+import { parseIso8601, replaceInnerHtml } from "c/sfGpsDsHelpers";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
   // ADJUSTED: style is a reserved keyword in lwc
-  @api cstyle = 'white'; // PropTypes.oneOf(['dark', 'light', 'white']),
+  @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']),
   // END ADJUSTED
   @api tag;
   @api image;
@@ -42,7 +42,7 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     try {
       this._headline = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
-      this.addError('HL-MD', 'Issue when parsing Headline markdown');
+      this.addError("HL-MD", "Issue when parsing Headline markdown");
     }
   }
 
@@ -89,7 +89,7 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
         this._copyHtml = null;
       }
     } catch (e) {
-      this.addError('CO-MD', 'Issue when parsing Copy markdown');
+      this.addError("CO-MD", "Issue when parsing Copy markdown");
     }
   }
 
@@ -111,7 +111,7 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
         this._footerHtml = null;
       }
     } catch (e) {
-      this.addError('FO-MD', 'Issue when parsing Footer markdown');
+      this.addError("FO-MD", "Issue when parsing Footer markdown");
     }
   }
 
@@ -119,22 +119,22 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     let element;
 
     if (this.copy) {
-      if ((element = this.template.querySelector('.nsw-card__copy'))) {
+      if ((element = this.template.querySelector(".nsw-card__copy"))) {
         replaceInnerHtml(element, this._copyHtml);
       } else {
         this.addError(
-          'RC-PHC',
+          "RC-PHC",
           "Couldn't find internal copy markdown placeholder"
         );
       }
     }
 
     if (this.footer) {
-      if ((element = this.template.querySelector('.nsw-card__footer'))) {
+      if ((element = this.template.querySelector(".nsw-card__footer"))) {
         replaceInnerHtml(element, this._footerHtml);
       } else {
         this.addError(
-          'RC-PHF',
+          "RC-PHF",
           "Couldn't find internal footer markdown placeholder"
         );
       }

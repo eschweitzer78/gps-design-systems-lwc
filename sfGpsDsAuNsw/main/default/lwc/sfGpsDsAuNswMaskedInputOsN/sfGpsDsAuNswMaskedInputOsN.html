@@ -1,44 +1,39 @@
 <template>
-  <div if:false={isCustomLwc} 
-    class={errorClass}>
+  <div if:false={isCustomLwc} class={errorClass}>
     <div class="nsw-form__group">
       <div if:true={labelVisible} data-label="true">
-        <label 
-          class={computedLabelClassName} 
-          style="width: auto"
-          for={inputId}>
+        <label class={computedLabelClassName} style="width: auto" for={inputId}>
           {label}
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
         </label>
 
-
-        <slot name="label">
-        </slot>
+        <slot name="label"> </slot>
       </div>
-      <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper">{fieldLevelHelp}</span>
+      <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper"
+        >{fieldLevelHelp}</span
+      >
 
       <!-- formula -->
       <div if:true={_isFormula}>
-        <label
-          class={computedLabelClassName}
-          for={inputId}>
+        <label class={computedLabelClassName} for={inputId}>
           {label}
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
         </label>
 
         <input
-          class="slds-input" 
+          class="slds-input"
           type="text"
           readonly=""
           disabled=""
           id={inputId}
-          value={maskedValue}>
+          value={maskedValue}
+        />
       </div>
 
-      <div if:false={static}
-        class={pretextClass}>
+      <div if:false={static} class={pretextClass}>
         <template if:true={isCurrencySFlocale}>
-          <input if:true={isInput}
+          <input
+            if:true={isInput}
             class="vlocity-input nsw-form__input nsw-form__input--number"
             id={inputId}
             tabindex={tabIndex}
@@ -62,11 +57,13 @@
             onblur={handleBlur}
             oninput={handleInput}
             onkeyup={handleKeyup}
-            onchange={handleChange}>
+            onchange={handleChange}
+          />
         </template>
 
         <template if:false={isCurrencySFlocale}>
-          <input if:true={isNumber}
+          <input
+            if:true={isNumber}
             class="hiddenNumber slds-hide"
             required={required}
             min={min}
@@ -74,9 +71,10 @@
             step={step}
             type="number"
             value={value}
-          >
+          />
 
-          <input if:true={isInput}
+          <input
+            if:true={isInput}
             class="vlocity-input nsw-form__input"
             id={inputId}
             tabindex={tabIndex}
@@ -101,11 +99,19 @@
             oninput={handleInput}
             onkeyup={handleKeyup}
             onchange={handleChange}
-          >
+          />
         </template>
-        
-        <span id="errorMessageBlock" if:true={isError} class={computedHelperClassName}>
-          <span if:true={computedStatusIcon} class="material-icons nsw-material-icons" aria-hidden="true">
+
+        <span
+          id="errorMessageBlock"
+          if:true={isError}
+          class={computedHelperClassName}
+        >
+          <span
+            if:true={computedStatusIcon}
+            class="material-icons nsw-material-icons"
+            aria-hidden="true"
+          >
             {computedStatusIcon}
           </span>
           {errorMessage}
@@ -113,12 +119,10 @@
       </div>
 
       <div class="slds-grid">
-        <div if:true={static}
-          class="slds-form-element__static">
+        <div if:true={static} class="slds-form-element__static">
           {maskedValue}
         </div>
-        <span if:true={inlineHelp}
-          class="slds-form-element__static">
+        <span if:true={inlineHelp} class="slds-form-element__static">
           {inlineHelp}
         </span>
       </div>

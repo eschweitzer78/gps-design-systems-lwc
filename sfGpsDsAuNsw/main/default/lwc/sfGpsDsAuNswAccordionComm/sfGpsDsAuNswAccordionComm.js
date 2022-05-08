@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from 'lwc';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import { replaceInnerHtml } from 'c/sfGpsDsHelpers';
+import { api } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   @api index; // only used if part of a group
@@ -31,11 +31,11 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
     if (!this._rendered) {
       let element;
 
-      if ((element = this.template.querySelector('.sf-gps-body'))) {
+      if ((element = this.template.querySelector(".sf-gps-body"))) {
         replaceInnerHtml(element, this.content);
       } else {
         this.addError(
-          'CO-PH',
+          "CO-PH",
           "Couldn't find internal Content markdown placeholder"
         );
       }
@@ -45,10 +45,10 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   }
 
   handleExpand() {
-    this.dispatchEvent(new CustomEvent('expand'));
+    this.dispatchEvent(new CustomEvent("expand"));
   }
 
   handleCollapse() {
-    this.dispatchEvent(new CustomEvent('collapse'));
+    this.dispatchEvent(new CustomEvent("collapse"));
   }
 }

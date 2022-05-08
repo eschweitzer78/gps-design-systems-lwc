@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import SfGpsDsIpLwc from 'c/sfGpsDsIpLwc';
+import { api } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
 export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
   SfGpsDsIpLwc
@@ -45,7 +45,7 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
     return data.map((item) => ({
       ...item,
       text: item.text,
-      url: item.url,
+      url: item.url
     }));
   }
 

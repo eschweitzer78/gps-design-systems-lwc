@@ -5,16 +5,16 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from 'lwc';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import { NavigationMixin } from 'lightning/navigation';
+import { api } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import { NavigationMixin } from "lightning/navigation";
 
 export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
-  @api srWaratahLabel = 'NSW Government';
+  @api srWaratahLabel = "NSW Government";
   @api logo;
   @api logoAlt;
-  @api menuLabel = 'menu';
-  @api searchLabel = 'Search site for:';
+  @api menuLabel = "menu";
+  @api searchLabel = "Search site for:";
 
   @api siteTitle;
   @api siteDescriptor;
@@ -31,15 +31,15 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
     // https://developer.salesforce.com/docs/component-library/bundle/lightning:navigation/documentation
 
     this[NavigationMixin.Navigate]({
-      type: 'standard__search',
+      type: "standard__search",
       state: {
-        term: queryTerm,
-      },
+        term: queryTerm
+      }
     });
   }
 
   handleOpenMenu() {
-    const openMenuEvent = new CustomEvent('openmenu');
+    const openMenuEvent = new CustomEvent("openmenu");
     this.dispatchEvent(openMenuEvent);
   }
 }

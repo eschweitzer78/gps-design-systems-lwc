@@ -5,16 +5,16 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from 'lwc';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
-import { replaceInnerHtml } from 'c/sfGpsDsHelpers';
+import { api } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   @api title;
-  @api className = '';
+  @api className = "";
   @api alt = false;
-  @api as = 'info';
+  @api as = "info";
   @api compact = false;
 
   _content;
@@ -25,7 +25,7 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
     try {
       this._contentHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
-      this.addError('CO-MD', 'Issue when parsing Content markdown');
+      this.addError("CO-MD", "Issue when parsing Content markdown");
     }
   }
 
@@ -37,7 +37,7 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
 
   renderedCallback() {
     if (this._rendered === false) {
-      let element = this.template.querySelector('.sf-gps-markdown');
+      let element = this.template.querySelector(".sf-gps-markdown");
       if (element) {
         /*
          * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
@@ -47,12 +47,11 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
 
         replaceInnerHtml(
           element,
-          (this.title ? `<span></span>` : '') +
-            this._contentHtml
+          (this.title ? `<span></span>` : "") + this._contentHtml
         );
       } else {
         this.addError(
-          'CO-PH',
+          "CO-PH",
           "Couldn't find internal Content markdown placeholder"
         );
       }

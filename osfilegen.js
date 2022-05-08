@@ -1,7 +1,6 @@
-let fs = require('fs').promises;
-let path = require('path');
-const fileRegEx=/!/
-
+let fs = require("fs").promises;
+let path = require("path");
+const fileRegEx = /!/;
 
 function replaceFile(filename, replacements) {
   return new Promise((resolve) => {
@@ -10,20 +9,20 @@ function replaceFile(filename, replacements) {
     for (const [searchFor, replaceTo] of Object.entries(replacements)) {
       console.log(`    replace ${searchFor} by ${replaceTo}`);
       regExes.push({
-        regEx: new RegExp(searchFor, 'gm'), // global and multiline
+        regEx: new RegExp(searchFor, "gm"), // global and multiline
         replaceTo: replaceTo
       });
     }
 
-    fs.readFile(filename, 'utf8')
+    fs.readFile(filename, "utf8")
       .then((contents) => {
-        regExes.forEach(entry => {
+        regExes.forEach((entry) => {
           contents = contents.replace(entry.regEx, entry.replaceTo);
         });
 
         resolve(contents);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   });
@@ -33,12 +32,12 @@ async function* walk(dir) {
   for await (const d of await fs.opendir(dir)) {
     const entry = path.join(dir, d.name);
     if (d.isDirectory()) yield* walk(entry);
-    else if (d.isFile() && d.name === '.osfilegen.json') yield entry;
+    else if (d.isFile() && d.name === ".osfilegen.json") yield entry;
   }
 }
 
 async function main() {
-  for await (const p of walk('.')) {
+  for await (const p of walk(".")) {
     console.log(`handling ${p}`);
 
     fs.readFile(p)
@@ -49,42 +48,50 @@ async function main() {
         console.log(`dot ${dot}`);
 
         for (const [directory, instructions] of Object.entries(config)) {
-          let targetDirectory = instructions.target.replace(fileRegEx, directory);
+          let targetDirectory = instructions.target.replace(
+            fileRegEx,
+            directory
+          );
           delete instructions.target;
 
           //console.log(`Looking at directory ${directory}`);
 
-          fs.mkdir(dot +'/' + targetDirectory, { recursive: true })
-          .then(() => {
-            for (const [file, replacements] of Object.entries(instructions)) {
-              let targetFile = replacements.target;
-              delete replacements.target;
+          fs.mkdir(dot + "/" + targetDirectory, { recursive: true })
+            .then(() => {
+              for (const [file, replacements] of Object.entries(instructions)) {
+                let targetFile = replacements.target;
+                delete replacements.target;
 
-              console.log(`  Looking at file ${directory}/${file} --> ${targetFile}`);
+                console.log(
+                  `  Looking at file ${directory}/${file} --> ${targetFile}`
+                );
 
-              let nFile = file.replace(fileRegEx, directory);
-              let nTargetFile = targetFile.replace(fileRegEx, directory);
+                let nFile = file.replace(fileRegEx, directory);
+                let nTargetFile = targetFile.replace(fileRegEx, directory);
 
-
-              replaceFile(dot + '/' + directory + '/' + nFile, replacements)
-                .then(content => {
-                  fs.writeFile(dot + '/' + targetDirectory + '/' + nTargetFile, content, (err) => {
-                    if (err) throw err;
+                replaceFile(dot + "/" + directory + "/" + nFile, replacements)
+                  .then((content) => {
+                    fs.writeFile(
+                      dot + "/" + targetDirectory + "/" + nTargetFile,
+                      content,
+                      (err) => {
+                        if (err) throw err;
+                      }
+                    );
+                  })
+                  .catch((error) => {
+                    console.log(error);
                   });
-                })
-                .catch(error => {
-                  console.log(error);
-                });
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          })
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       })
-    .catch((err) => {
-      console.log(err);
-    });
+      .catch((err) => {
+        console.log(err);
+      });
   }
 }
 

@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptDateTime from 'omnistudio/omniscriptDateTime';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormDateTimeOsN.html';
+import OmniscriptDateTime from "omnistudio/omniscriptDateTime";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormDateTimeOsN.html";
 
 export default class SfGpsDsAuNswFormDateTimeOsN extends OmniscriptDateTime {
   render() {

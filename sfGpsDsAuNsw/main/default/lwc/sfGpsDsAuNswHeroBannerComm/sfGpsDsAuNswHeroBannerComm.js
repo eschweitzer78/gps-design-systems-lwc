@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from 'lwc';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
-import { replaceInnerHtml } from 'c/sfGpsDsHelpers';
+import { api, track } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
   @api title;
@@ -36,7 +36,7 @@ export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
     try {
       this._cta = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
-      this.addError('CTA-MD', 'Issue when parsing Call to action markdown');
+      this.addError("CTA-MD", "Issue when parsing Call to action markdown");
     }
   }
 
@@ -61,7 +61,7 @@ export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
         this._links = null;
       }
     } catch (e) {
-      this.addError('LI-MD', 'Issue when parsing Links markdown');
+      this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
 
@@ -79,11 +79,9 @@ export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
   set intro(markdown) {
     this._intro = markdown;
     try {
-      this._introHtml = markdown
-        ? mdEngine.render(markdown)
-        : '';
+      this._introHtml = markdown ? mdEngine.render(markdown) : "";
     } catch (e) {
-      this.addError('IN-MD', 'Issue when parsing Intro markdown');
+      this.addError("IN-MD", "Issue when parsing Intro markdown");
     }
   }
 
@@ -98,11 +96,11 @@ export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
       let element;
 
       if (this.intro) {
-        if ((element = this.template.querySelector('.sfGpsMarkdown'))) {
+        if ((element = this.template.querySelector(".sfGpsMarkdown"))) {
           replaceInnerHtml(element, this._introHtml);
         } else {
           this.addError(
-            'CO-PH',
+            "CO-PH",
             "Couldn't find internal intro markdown placeholder"
           );
         }

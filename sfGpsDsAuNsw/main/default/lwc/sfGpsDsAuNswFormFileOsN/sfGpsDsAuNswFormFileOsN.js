@@ -4,10 +4,10 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import OmniscriptFile from 'omnistudio/omniscriptFile';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import { getHelperClassName, getStatusIcon } from 'c/sfGpsDsAuNswFormHelperOsN';
-import tmpl from './sfGpsDsAuNswFormFileOsN.html';
+import OmniscriptFile from "omnistudio/omniscriptFile";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import tmpl from "./sfGpsDsAuNswFormFileOsN.html";
 
 // TODO: there is seemingly a bug in SDLS when the hover colors for neutral buttons are not derived from variables
 //       raise with appropriate team.
@@ -23,16 +23,16 @@ export default class SfGpsDsAuNswFormFileOsN extends OmniscriptFile {
 
   get computedLabelClassName() {
     return `nsw-form__label ${
-      this._propSetMap.required ? 'nsw-form__required' : ''
+      this._propSetMap.required ? "nsw-form__required" : ""
     }`;
   }
 
   get computedHelperClassName() {
-    return getHelperClassName('invalid');
+    return getHelperClassName("invalid");
   }
 
   get computedStatusIcon() {
-    return getStatusIcon('invalid');
+    return getStatusIcon("invalid");
   }
 
   get mergedLabel() {

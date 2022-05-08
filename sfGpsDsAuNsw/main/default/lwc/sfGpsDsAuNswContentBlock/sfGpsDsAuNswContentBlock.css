@@ -1,4 +1,4 @@
-@import 'c/sfGpsDsAuNswCore';
+@import "c/sfGpsDsAuNswCore";
 
 /* stylelint-disable declaration-no-important */
 /* stylelint-enable declaration-no-important */
@@ -11,7 +11,7 @@
   .nsw-content-block__title {
     font-size: var(--nsw-font-size-lg-desktop);
     line-height: var(--nsw-line-height-lg-desktop);
- }
+  }
 }
 .nsw-content-block__list {
   padding: 0;
@@ -23,7 +23,7 @@
   position: relative;
 }
 .nsw-content-block__list li::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 0.25rem;
   height: 0.25rem;

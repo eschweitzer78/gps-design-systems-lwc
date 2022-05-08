@@ -1,7 +1,12 @@
 <template>
-  <c-sf-gps-ds-au-nsw-progress-indicator if:false={_sfGpsErrors} step={step} of={of} class-name={className}>
+  <c-sf-gps-ds-au-nsw-progress-indicator
+    if:false={_sfGpsErrors}
+    step={step}
+    of={of}
+    class-name={className}
+  >
   </c-sf-gps-ds-au-nsw-progress-indicator>
 
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>  
+  </c-sf-gps-ds-configuration-error>
 </template>

@@ -1,8 +1,8 @@
 /* eslint-disable */
-'use strict';
+"use strict";
 
-import { escapeXml } from './common.js';
-import Renderer from './renderer.js';
+import { escapeXml } from "./common.js";
+import Renderer from "./renderer.js";
 
 let reUnsafeProtocol = /^javascript:|vbscript:|file:|data:/i;
 let reSafeDataProtocol = /^data:image\/(?:png|gif|jpeg|webp)/i;
@@ -16,30 +16,30 @@ function tag(name, attrs, selfclosing) {
   if (this.disableTags > 0) {
     return;
   }
-  this.buffer += '<' + name;
+  this.buffer += "<" + name;
   if (attrs && attrs.length > 0) {
     let i = 0;
     let attrib;
     while ((attrib = attrs[i]) !== undefined) {
-      if (attrib[1] === '' || attrib[1] === attrib[0]) {
-        this.buffer += ' ' + attrib[0];
+      if (attrib[1] === "" || attrib[1] === attrib[0]) {
+        this.buffer += " " + attrib[0];
       } else {
-        this.buffer += ' ' + attrib[0] + '="' + attrib[1] + '"';
+        this.buffer += " " + attrib[0] + '="' + attrib[1] + '"';
       }
       i++;
     }
   }
   if (selfclosing) {
-    this.buffer += ' /';
+    this.buffer += " /";
   }
-  this.buffer += '>';
-  this.lastOut = '>';
+  this.buffer += ">";
+  this.lastOut = ">";
 }
 
 function HtmlRenderer(options) {
   options = options || {};
   // by default, soft breaks are rendered as newlines in HTML
-  options.softbreak = options.softbreak || '\n';
+  options.softbreak = options.softbreak || "\n";
   // set to "<br />" to make them hard breaks
   // set to " " if you want to ignore line wrapping in source
   this.esc = options.esc || escapeXml;
@@ -47,7 +47,7 @@ function HtmlRenderer(options) {
   // else use escapeXml
 
   this.disableTags = 0;
-  this.lastOut = '\n';
+  this.lastOut = "\n";
   this.options = options;
 }
 
@@ -62,7 +62,7 @@ function softbreak() {
 }
 
 function linebreak(node, entering, attribute) {
-  this.tag('br', entering && attribute ? [[attribute, '']] : [], true);
+  this.tag("br", entering && attribute ? [[attribute, ""]] : [], true);
   this.cr();
 }
 
@@ -70,17 +70,17 @@ function link(node, entering, attribute) {
   let attrs = this.attrs(node);
   if (entering) {
     if (!(this.options.safe && potentiallyUnsafe(node.destination))) {
-      attrs.push(['href', this.esc(node.destination)]);
+      attrs.push(["href", this.esc(node.destination)]);
     }
     if (node.title) {
-      attrs.push(['title', this.esc(node.title)]);
+      attrs.push(["title", this.esc(node.title)]);
     }
     if (attribute) {
-      attrs.push([attribute, '']);
+      attrs.push([attribute, ""]);
     }
-    this.tag('a', attrs);
+    this.tag("a", attrs);
   } else {
-    this.tag('/a');
+    this.tag("/a");
   }
 }
 
@@ -88,9 +88,13 @@ function image(node, entering, attribute) {
   if (entering) {
     if (this.disableTags === 0) {
       if (this.options.safe && potentiallyUnsafe(node.destination)) {
-        this.lit(`<img ${attribute ? attribute + ' ' : ''}src="" alt="`);
+        this.lit(`<img ${attribute ? attribute + " " : ""}src="" alt="`);
       } else {
-        this.lit(`<img ${attribute ? attribute + ' ' : ''}src="${this.esc(node.destination)}" alt="`);
+        this.lit(
+          `<img ${attribute ? attribute + " " : ""}src="${this.esc(
+            node.destination
+          )}" alt="`
+        );
       }
     }
     this.disableTags += 1;
@@ -107,22 +111,22 @@ function image(node, entering, attribute) {
 
 function emph(node, entering, attribute) {
   this.tag(
-    entering ? 'em' : '/em',
-    entering && attribute ? [[attribute, '']] : null
+    entering ? "em" : "/em",
+    entering && attribute ? [[attribute, ""]] : null
   );
 }
 
 function strong(node, entering, attribute) {
   this.tag(
-    entering ? 'strong' : '/strong',
-    entering && attribute ? [[attribute, '']] : null
+    entering ? "strong" : "/strong",
+    entering && attribute ? [[attribute, ""]] : null
   );
 }
 
 function paragraph(node, entering, attribute) {
   let grandparent = node.parent.parent,
     attrs = this.attrs(node);
-  if (grandparent !== null && grandparent.type === 'list') {
+  if (grandparent !== null && grandparent.type === "list") {
     if (grandparent.listTight) {
       return;
     }
@@ -130,51 +134,51 @@ function paragraph(node, entering, attribute) {
   if (entering) {
     this.cr();
     if (attribute) {
-      attrs.push([attribute, '']);
+      attrs.push([attribute, ""]);
     }
-    this.tag('p', attrs);
+    this.tag("p", attrs);
   } else {
-    this.tag('/p');
+    this.tag("/p");
     this.cr();
   }
 }
 
 function heading(node, entering, attribute) {
-  let tagname = 'h' + node.level,
+  let tagname = "h" + node.level,
     attrs = this.attrs(node);
   if (entering) {
     this.cr();
     if (attribute) {
-      attrs.push([attribute, '']);
+      attrs.push([attribute, ""]);
     }
     this.tag(tagname, attrs);
   } else {
-    this.tag('/' + tagname);
+    this.tag("/" + tagname);
     this.cr();
   }
 }
 
 function code(node, entering, attribute) {
-  this.tag('code', attribute ? [[attribute, '']] : null);
+  this.tag("code", attribute ? [[attribute, ""]] : null);
   this.out(node.literal);
-  this.tag('/code');
+  this.tag("/code");
 }
 
 function code_block(node, entering, attribute) {
   let info_words = node.info ? node.info.split(/\s+/) : [],
     attrs = this.attrs(node);
   if (info_words.length > 0 && info_words[0].length > 0) {
-    attrs.push(['class', 'language-' + this.esc(info_words[0])]);
+    attrs.push(["class", "language-" + this.esc(info_words[0])]);
   }
   if (attribute) {
-    attrs.push([attribute, '']);
+    attrs.push([attribute, ""]);
   }
   this.cr();
-  this.tag('pre', attribute ? [[attribute, '']] : null);
-  this.tag('code', attrs);
+  this.tag("pre", attribute ? [[attribute, ""]] : null);
+  this.tag("code", attrs);
   this.out(node.literal);
-  this.tag('/code');
-  this.tag('/pre');
+  this.tag("/code");
+  this.tag("/pre");
   this.cr();
 }
 
@@ -182,9 +186,9 @@ function thematic_break(node, entering, attribute) {
   let attrs = this.attrs(node);
   this.cr();
   if (attribute) {
-    attrs.push([attribute, '']);
+    attrs.push([attribute, ""]);
   }
-  this.tag('hr', attrs, true);
+  this.tag("hr", attrs, true);
   this.cr();
 }
 
@@ -193,35 +197,35 @@ function block_quote(node, entering, attribute) {
   if (entering) {
     this.cr();
     if (attribute) {
-      attrs.push([attribute, '']);
+      attrs.push([attribute, ""]);
     }
-    this.tag('blockquote', attrs);
+    this.tag("blockquote", attrs);
     this.cr();
   } else {
     this.cr();
-    this.tag('/blockquote');
+    this.tag("/blockquote");
     this.cr();
   }
 }
 
 function list(node, entering, attribute) {
-  let tagname = node.listType === 'bullet' ? 'ul' : 'ol',
+  let tagname = node.listType === "bullet" ? "ul" : "ol",
     attrs = this.attrs(node);
 
   if (entering) {
     let start = node.listStart;
     if (start !== null && start !== 1) {
-      attrs.push(['start', start.toString()]);
+      attrs.push(["start", start.toString()]);
     }
     this.cr();
     if (attribute) {
-      attrs.push([attribute, '']);
+      attrs.push([attribute, ""]);
     }
     this.tag(tagname, attrs);
     this.cr();
   } else {
     this.cr();
-    this.tag('/' + tagname);
+    this.tag("/" + tagname);
     this.cr();
   }
 }
@@ -230,18 +234,18 @@ function item(node, entering, attribute) {
   let attrs = this.attrs(node);
   if (entering) {
     if (attribute) {
-      attrs.push([attribute, '']);
+      attrs.push([attribute, ""]);
     }
-    this.tag('li', attrs);
+    this.tag("li", attrs);
   } else {
-    this.tag('/li');
+    this.tag("/li");
     this.cr();
   }
 }
 
 function html_inline(node) {
   if (this.options.safe) {
-    this.lit('<!-- raw HTML omitted -->');
+    this.lit("<!-- raw HTML omitted -->");
   } else {
     this.lit(node.literal);
   }
@@ -250,7 +254,7 @@ function html_inline(node) {
 function html_block(node) {
   this.cr();
   if (this.options.safe) {
-    this.lit('<!-- raw HTML omitted -->');
+    this.lit("<!-- raw HTML omitted -->");
   } else {
     this.lit(node.literal);
   }
@@ -288,13 +292,13 @@ function attrs(node) {
     let pos = node.sourcepos;
     if (pos) {
       att.push([
-        'data-sourcepos',
+        "data-sourcepos",
         String(pos[0][0]) +
-          ':' +
+          ":" +
           String(pos[0][1]) +
-          '-' +
+          "-" +
           String(pos[1][0]) +
-          ':' +
+          ":" +
           String(pos[1][1])
       ]);
     }

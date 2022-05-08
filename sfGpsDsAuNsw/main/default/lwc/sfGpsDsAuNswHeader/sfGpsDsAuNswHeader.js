@@ -5,14 +5,14 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api, track } from "lwc";
 
 export default class SfGpsDsAuNswHeader extends LightningElement {
-  @api srWaratahLabel = 'NSW Government';
+  @api srWaratahLabel = "NSW Government";
   @api logo;
   @api logoAlt;
-  @api menuLabel = 'menu';
-  @api searchLabel = 'Search site for:';
+  @api menuLabel = "menu";
+  @api searchLabel = "Search site for:";
 
   @api siteTitle;
   @api siteDescriptor;
@@ -20,15 +20,15 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   @api mobile = false;
   @api search = false;
 
-  @api searchAriaLabel = 'search';
+  @api searchAriaLabel = "search";
   @api className;
 
   @track isSearchOpen = false;
-  @api value = '';
+  @api value = "";
 
   setSearchVisible(visible) {
     this.isSearchOpen = visible;
-    let element = this.template.querySelector('.nsw-header__search-area');
+    let element = this.template.querySelector(".nsw-header__search-area");
 
     if (element) {
       element.hidden = !visible;
@@ -43,9 +43,9 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
     this.setSearchVisible(true);
 
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-    this.value = '';
+    this.value = "";
 
-    let element = this.template.querySelector('.nsw-header__input');
+    let element = this.template.querySelector(".nsw-header__input");
     if (element) {
       element.focus();
     }
@@ -62,16 +62,16 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
     event.preventDefault();
     this.setSearchVisible(false);
 
-    const searchEvent = new CustomEvent('search');
+    const searchEvent = new CustomEvent("search");
     this.dispatchEvent(searchEvent);
   }
 
   handleOpenMenu() {
-    const openMenuEvent = new CustomEvent('openmenu');
+    const openMenuEvent = new CustomEvent("openmenu");
     this.dispatchEvent(openMenuEvent);
   }
 
   get computedClassName() {
-    return `nsw-header ${this.className ? this.className : ''}`;
+    return `nsw-header ${this.className ? this.className : ""}`;
   }
 }

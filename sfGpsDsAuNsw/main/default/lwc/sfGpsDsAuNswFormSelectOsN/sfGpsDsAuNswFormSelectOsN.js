@@ -11,9 +11,9 @@
   theme={_theme} not supported
 */
 
-import OmniscriptSelect from 'omnistudio/omniscriptSelect';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormSelectOsN.html';
+import OmniscriptSelect from "omnistudio/omniscriptSelect";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormSelectOsN.html";
 
 export default class SfGpsDsAuNswFormSelecOsN extends OmniscriptSelect {
   render() {
@@ -36,7 +36,7 @@ export default class SfGpsDsAuNswFormSelecOsN extends OmniscriptSelect {
       this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
-        'omniaggregate'
+        "omniaggregate"
       );
     }
   }

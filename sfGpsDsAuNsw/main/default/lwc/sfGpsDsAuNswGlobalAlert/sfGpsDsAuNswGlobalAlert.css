@@ -1,4 +1,4 @@
-@import 'c/sfGpsDsAuNswCore';
+@import "c/sfGpsDsAuNswCore";
 
 .nsw-global-alert {
   padding: 1.5rem 0;
@@ -37,7 +37,7 @@
   .nsw-global-alert__title {
     font-size: var(--nsw-font-size-md-desktop);
     line-height: var(--nsw-line-height-md-desktop);
- }
+  }
 }
 .nsw-global-alert__content {
   margin-right: 2.25rem;

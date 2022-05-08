@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>52.0</apiVersion>
   <isExposed>true</isExposed>
@@ -9,78 +9,110 @@
   </targets>
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property name="ipName"
+      <property
+        name="ipName"
         type="String"
         label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this nav."></property>
-      <property name="inputJSON" 
-        type="String" 
+        description="Name of the Integration procedure mapping content to this nav."
+      />
+      <property
+        name="inputJSON"
+        type="String"
         label="Input JSON"
-        description="JSON formatted input parameters for the Integration procedure."></property>
-      <property name="optionsJSON" 
-        type="String" 
+        description="JSON formatted input parameters for the Integration procedure."
+      />
+      <property
+        name="optionsJSON"
+        type="String"
         label="Options JSON"
-        description="JSON formatted options for the Integration procedure."></property>
-      <property name="srWaratahLabel" 
-        type="String" 
+        description="JSON formatted options for the Integration procedure."
+      />
+      <property
+        name="srWaratahLabel"
+        type="String"
         label="Screenreader Waratah Label"
         description="x"
-        default="NSW Government"></property>
-      <property name="logo" 
-        type="String" 
+        default="NSW Government"
+      />
+      <property
+        name="logo"
+        type="String"
         label="Logo"
-        description="Logo URL for co-brand"></property>
-      <property name="logoAlt"
-        type="String" 
-        label="Alternative text to co-brand logo"></property>
-      <property name="siteTitle" 
-        type="String" 
+        description="Logo URL for co-brand"
+      />
+      <property
+        name="logoAlt"
+        type="String"
+        label="Alternative text to co-brand logo"
+      />
+      <property
+        name="siteTitle"
+        type="String"
         label="Site title"
         description="Provides user context of the product or service."
-        default=""></property>
-      <property name="siteDescriptor"
-        type="String" 
+        default=""
+      />
+      <property
+        name="siteDescriptor"
+        type="String"
         label="Site descriptor"
         description="Provides user context of the cluster/department/agency if required."
-        default=""></property>
-      <property name="headerUrl" 
-        type="String" 
+        default=""
+      />
+      <property
+        name="headerUrl"
+        type="String"
         label="content"
         description="Href to content."
-        default="/"></property>
-      <property name="mobile" 
-        type="String" 
+        default="/"
+      />
+      <property
+        name="mobile"
+        type="String"
         label="mobile"
         description="Show a responsive menu on mobile."
-        default="true"></property>
-      <property name="search" 
-        type="Boolean" 
+        default="true"
+      />
+      <property
+        name="search"
+        type="Boolean"
         label="Show search bar"
         description="Provides user with easy access to a targeted search."
-        default="true"></property>
-      <property name="menuLabel" 
-        type="String" 
+        default="true"
+      />
+      <property
+        name="menuLabel"
+        type="String"
         label="Menu label"
         description="."
-        default="menu"></property>
-      <property name="searchLabel" 
-        type="String" 
+        default="menu"
+      />
+      <property
+        name="searchLabel"
+        type="String"
         label="Search label"
         description="."
-        default="Search site for:"></property>
-      <property name="headerClassName" 
-        type="String" 
+        default="Search site for:"
+      />
+      <property
+        name="headerClassName"
+        type="String"
         label="Class name"
-        description="Additional CSS class to be applied to header."></property>
-      <property name="megaMenu" 
-        type="Boolean" 
+        description="Additional CSS class to be applied to header."
+      />
+      <property
+        name="megaMenu"
+        type="Boolean"
         label="Mega menu"
         description="x."
-        default="false"></property>
-      <property name="mainNavClassName" 
-        type="String" 
+        default="false"
+      />
+      <property
+        name="mainNavClassName"
+        type="String"
         label="Class name"
-        description="Additional CSS class to be applied to main nav."></property>
+        description="Additional CSS class to be applied to main nav."
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

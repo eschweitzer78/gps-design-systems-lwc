@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmnistudioRadioGroup from 'omnistudio/radioGroup';
-import { getHelperClassName, getStatusIcon } from 'c/sfGpsDsAuNswFormHelperOsN';
-import tmpl from './sfGpsDsAuNswRadioGroupOsN.html';
+import OmnistudioRadioGroup from "omnistudio/radioGroup";
+import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import tmpl from "./sfGpsDsAuNswRadioGroupOsN.html";
 
 export default class SfGpsDsAuNswRadioGroupOsN extends OmnistudioRadioGroup {
   render() {
@@ -19,19 +19,19 @@ export default class SfGpsDsAuNswRadioGroupOsN extends OmnistudioRadioGroup {
   }
 
   get computedAriaDescribedBy() {
-    return this.isError === 'invalid' ? 'errorMessageBlock helper' : 'helper';
+    return this.isError === "invalid" ? "errorMessageBlock helper" : "helper";
   }
 
   get computedLegendClassName() {
-    return `nsw-form__legend ${this.required ? 'nsw-form__required' : ''}`;
+    return `nsw-form__legend ${this.required ? "nsw-form__required" : ""}`;
   }
 
   get computedHelperClassName() {
-    return getHelperClassName('invalid');
+    return getHelperClassName("invalid");
   }
 
   get computedStatusIcon() {
-    return getStatusIcon('invalid');
+    return getStatusIcon("invalid");
   }
 
   get isRealError() {

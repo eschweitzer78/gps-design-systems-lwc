@@ -5,22 +5,22 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from 'lwc';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
-import { replaceInnerHtml } from 'c/sfGpsDsHelpers';
+import { api } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
-  @api arLabel = 'Skip to links';
+  @api arLabel = "Skip to links";
   @api nav;
-  @api navLabel = 'Skip to navigation';
+  @api navLabel = "Skip to navigation";
   @api content;
-  @api contentLabel = 'Skip to content';
+  @api contentLabel = "Skip to content";
   @api cstyle;
   @api className;
 
   _mastheadLabelHtml;
-  _mastheadLabel = 'A NSW Government website';
+  _mastheadLabel = "A NSW Government website";
 
   @api get mastheadLabel() {
     return this._mastheadLabel;
@@ -32,7 +32,7 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
     try {
       this._mastheadLabelHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
-      this.addError('ML-MD', 'Issue when parsing Masthead label markdown');
+      this.addError("ML-MD", "Issue when parsing Masthead label markdown");
     }
   }
 
@@ -41,7 +41,7 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
   renderedCallback() {
     let element;
     if (
-      (element = this.template.querySelector('.sf-gps-ds-markdown')) &&
+      (element = this.template.querySelector(".sf-gps-ds-markdown")) &&
       this._mastheadLabelHtml
     ) {
       replaceInnerHtml(element, this._mastheadLabelHtml);

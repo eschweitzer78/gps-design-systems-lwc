@@ -9,7 +9,7 @@ export const focusObjectGenerator = (arr) => {
     all: arr,
     first: arr[0],
     last: arr[arr.length - 1],
-    length: arr.length,
+    length: arr.length
   };
 
   return focusableElements;
@@ -64,12 +64,12 @@ export const trapTabKey = (event, focusObject) => {
 };
 
 export const whichTransitionEvent = () => {
-  const el = document.createElement('fakeelement');
+  const el = document.createElement("fakeelement");
   const transitions = {
-    transition: 'transitionend',
-    OTransition: 'oTransitionEnd',
-    MozTransition: 'transitionend',
-    WebkitTransition: 'webkitTransitionEnd',
+    transition: "transitionend",
+    OTransition: "oTransitionEnd",
+    MozTransition: "transitionend",
+    WebkitTransition: "webkitTransitionEnd"
   };
 
   const found = Object.keys(transitions).filter(
@@ -79,7 +79,7 @@ export const whichTransitionEvent = () => {
 };
 
 export const uniqueId = (prefix) => {
-  const prefixValue = prefix === undefined ? 'nsw' : prefix;
+  const prefixValue = prefix === undefined ? "nsw" : prefix;
   return `${prefixValue}-${Math.random().toString(36).substr(2, 16)}`;
 };
 
@@ -89,7 +89,7 @@ export const popupWindow = (url, width, height) => {
 
   window.open(
     url,
-    '',
+    "",
     `toolbar=no,location=no,directories=no, status=no,
       menubar=no, scrollbars=no, resizable=no, copyhistory=no,
       width=${width}, height=${height}, top=${y}, left=${x}`

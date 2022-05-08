@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptInput from 'omnistudio/input';
-import { getHelperClassName, getStatusIcon } from 'c/sfGpsDsAuNswFormHelperOsN';
-import tmpl from './sfGpsDsAuNswInputOsN.html';
+import OmniscriptInput from "omnistudio/input";
+import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import tmpl from "./sfGpsDsAuNswInputOsN.html";
 
 export default class SfGpsDsAuNswInputOsN extends OmniscriptInput {
   render() {
@@ -18,16 +18,16 @@ export default class SfGpsDsAuNswInputOsN extends OmniscriptInput {
     super.initOptions();
 
     switch (this._innerElement) {
-      case 'c-time-picker':
-        this._innerElement = 'c-sf-gps-ds-au-nsw-time-picker-os-n';
+      case "c-time-picker":
+        this._innerElement = "c-sf-gps-ds-au-nsw-time-picker-os-n";
         break;
 
-      case 'c-date-picker':
-        this._innerElement = 'c-sf-gps-ds-au-nsw-date-picker-os-n';
+      case "c-date-picker":
+        this._innerElement = "c-sf-gps-ds-au-nsw-date-picker-os-n";
         break;
 
-      case 'c-datetime-picker':
-        this._innerElement = 'c-sf-gps-ds-au-nsw-datetime-picker-os-n';
+      case "c-datetime-picker":
+        this._innerElement = "c-sf-gps-ds-au-nsw-datetime-picker-os-n";
         break;
 
       default:
@@ -35,14 +35,14 @@ export default class SfGpsDsAuNswInputOsN extends OmniscriptInput {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? 'nsw-form__required' : ''}`;
+    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
   }
 
   get computedHelperClassName() {
-    return getHelperClassName('invalid');
+    return getHelperClassName("invalid");
   }
 
   get computedStatusIcon() {
-    return getStatusIcon('invalid');
+    return getStatusIcon("invalid");
   }
 }

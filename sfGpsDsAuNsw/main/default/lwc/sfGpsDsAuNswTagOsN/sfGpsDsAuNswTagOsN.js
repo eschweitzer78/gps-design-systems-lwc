@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class SfGpsDsAuNswTagOsN extends LightningElement {
   @api tagClassName;
@@ -14,10 +14,10 @@ export default class SfGpsDsAuNswTagOsN extends LightningElement {
   @api className;
 
   get computedClassName() {
-    return `nsw-list nsw-list--8 ${this.className ? this.className : ''}`;
+    return `nsw-list nsw-list--8 ${this.className ? this.className : ""}`;
   }
 
   get computedTagClassName() {
-    return `nsw-tag ${this.tagClassName ? this.tagClassName : ''}`;
+    return `nsw-tag ${this.tagClassName ? this.tagClassName : ""}`;
   }
 }

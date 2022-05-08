@@ -16,28 +16,39 @@
     label-classes={labelClasses}
     message-when-value-missing={_messageWhenValueMissing}
     data-omni-input
-    searchable="true">
+    searchable="true"
+  >
     <template if:true={_propSetMap.repeat}>
-      <span slot="label"
-            style="bottom:7px; right:7px;"
-            class={_styleClasses.repeatContainer}
-            role="group">
-        <button if:true={canRepeat}
-                class={_styleClasses.repeatAdd}
-                onclick={handleAdd}>
-          <omnistudio-icon icon-name="utility:add"
-                  alternative-text="Repeat Select"
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+      <span
+        slot="label"
+        style="bottom: 7px; right: 7px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Select"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
-        <button if:true={canRemove}
-                class={_styleClasses.repeatRemove}
-                onclick={handleRemove}>
-          <omnistudio-icon icon-name="utility:close"
-                  alternative-text="Remove Select"
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Select"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
       </span>

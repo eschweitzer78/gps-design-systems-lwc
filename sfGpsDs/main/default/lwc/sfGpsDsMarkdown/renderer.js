@@ -1,5 +1,5 @@
 /* eslint-disable header/header */
-'use strict';
+"use strict";
 
 function Renderer() {}
 
@@ -13,8 +13,8 @@ function render(ast, attribute) {
     event,
     type;
 
-  this.buffer = '';
-  this.lastOut = '\n';
+  this.buffer = "";
+  this.lastOut = "\n";
 
   while ((event = walker.next())) {
     type = event.node.type;
@@ -39,8 +39,8 @@ function lit(str) {
  *  Output a newline to the buffer.
  */
 function cr() {
-  if (this.lastOut !== '\n') {
-    this.lit('\n');
+  if (this.lastOut !== "\n") {
+    this.lit("\n");
   }
 }
 

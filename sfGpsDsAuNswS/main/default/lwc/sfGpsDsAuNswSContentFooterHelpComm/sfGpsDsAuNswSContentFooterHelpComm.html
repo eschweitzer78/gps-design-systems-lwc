@@ -2,11 +2,8 @@
   <template if:false={_sfGpsErrors}>
     <div class="page-footer">
       <div class="snsw-container">
-        <div if:true={title} class="help-title">
-          {title}
-        </div>  
-        <div class="sfGpsMarkdown" lwc:dom="manual">
-        </div>
+        <div if:true={title} class="help-title">{title}</div>
+        <div class="sfGpsMarkdown" lwc:dom="manual"></div>
       </div>
     </div>
   </template>

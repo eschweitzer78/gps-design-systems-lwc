@@ -4,10 +4,10 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { api } from 'lwc';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
-import { replaceInnerHtml } from 'c/sfGpsDsHelpers';
+import { api } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswSContentFooterHelpComm extends SfGpsDsLwc {
   @api title;
@@ -23,9 +23,9 @@ export default class SfGpsDsAuNswSContentFooterHelpComm extends SfGpsDsLwc {
     this._text = markdown;
 
     try {
-      this._textHtml = markdown ? mdEngine.render(markdown) : '';
+      this._textHtml = markdown ? mdEngine.render(markdown) : "";
     } catch (e) {
-      this.addError('IN-MD', 'Issue when parsing Text markdown');
+      this.addError("IN-MD", "Issue when parsing Text markdown");
     }
   }
 
@@ -36,11 +36,11 @@ export default class SfGpsDsAuNswSContentFooterHelpComm extends SfGpsDsLwc {
       let element;
 
       if (this.text) {
-        if ((element = this.template.querySelector('.sfGpsMarkdown'))) {
+        if ((element = this.template.querySelector(".sfGpsMarkdown"))) {
           replaceInnerHtml(element, this._textHtml);
         } else {
           this.addError(
-            'CO-PH',
+            "CO-PH",
             "Couldn't find internal intro markdown placeholder"
           );
         }

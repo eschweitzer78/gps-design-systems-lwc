@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from 'lwc';
-import { NavigationMixin } from 'lightning/navigation';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
+import { api, track } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswTagsComm extends NavigationMixin(SfGpsDsLwc) {
   @api className;
@@ -34,7 +34,7 @@ export default class SfGpsDsAuNswTagsComm extends NavigationMixin(SfGpsDsLwc) {
         this._links = null;
       }
     } catch (e) {
-      this.addError('LI-MD', 'Issue when parsing Links markdown');
+      this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
 }

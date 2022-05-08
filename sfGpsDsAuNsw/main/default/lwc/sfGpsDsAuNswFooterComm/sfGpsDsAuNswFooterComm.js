@@ -4,10 +4,10 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { api, track } from 'lwc';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
-import { replaceInnerHtml } from 'c/sfGpsDsHelpers';
+import { api, track } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
   @api statement;
@@ -29,7 +29,7 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
     try {
       this._lowerFooterLinks = markdown ? mdEngine.extractLinks(markdown) : [];
     } catch (e) {
-      this.addError('LFL-MD', 'Issue when parsing Lower footer links markdown');
+      this.addError("LFL-MD", "Issue when parsing Lower footer links markdown");
     }
   }
 
@@ -37,7 +37,7 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
 
   get computedLowerFooterClassName() {
     return `nsw-footer__lower ${
-      this.lowerFooterClassName ? this.lowerFooterClassName : ''
+      this.lowerFooterClassName ? this.lowerFooterClassName : ""
     }`;
   }
 
@@ -54,7 +54,7 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
     try {
       this._copyrightMentionHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
-      this.addError('CM-MD', 'Issue when parsing Copyright mention markdown');
+      this.addError("CM-MD", "Issue when parsing Copyright mention markdown");
     }
   }
 
@@ -71,7 +71,7 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
     try {
       this._builtMentionHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
-      this.addError('BM-MD', 'Issue when parsing Built mention markdown');
+      this.addError("BM-MD", "Issue when parsing Built mention markdown");
     }
   }
 
@@ -80,14 +80,14 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
   renderedCallback() {
     let element;
     if (
-      (element = this.template.querySelector('.nsw-footer__copyright')) &&
+      (element = this.template.querySelector(".nsw-footer__copyright")) &&
       this._copyrightMentionHtml
     ) {
       replaceInnerHtml(element, this._copyrightMentionHtml);
     }
 
     if (
-      (element = this.template.querySelector('.nsw-footer__built')) &&
+      (element = this.template.querySelector(".nsw-footer__built")) &&
       this._builtMentionHtml
     ) {
       replaceInnerHtml(element, this._builtMentionHtml);

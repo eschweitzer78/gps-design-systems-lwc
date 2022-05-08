@@ -1,7 +1,7 @@
 {
   "sfGpsDsAuNswAccordion": {
     "target": "!Os",
-    "!.css": { 
+    "!.css": {
       "target": "!Os.css",
       "sfGpsDsAuNswAccordionCss": "sfGpsDsAuNswAccordionCssOs"
     },
@@ -38,7 +38,7 @@
   },
   "sfGpsDsAuNswAccordionGroupComm": {
     "target": "!Os",
-    "!.css": { 
+    "!.css": {
       "target": "!Os.css",
       "sfGpsDsAuNswAccordionCss": "sfGpsDsAuNswAccordionCssOs"
     },
@@ -61,7 +61,7 @@
   },
   "sfGpsDsAuNswAccordionCss": {
     "target": "!Os",
-    "!.css": { 
+    "!.css": {
       "target": "!Os.css",
       "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
     },
@@ -72,7 +72,7 @@
   },
   "sfGpsDsAuNswAlert": {
     "target": "!Os",
-    "!.css": { 
+    "!.css": {
       "target": "!Os.css",
       "sfGpsDsAuNswAlertCss": "sfGpsDsAuNswAlertCssOs"
     },
@@ -90,7 +90,7 @@
   },
   "sfGpsDsAuNswAlertComm": {
     "target": "!Os",
-    "!.css": { 
+    "!.css": {
       "target": "!Os.css",
       "sfGpsDsAuNswAlertCss": "sfGpsDsAuNswAlertCssOs"
     },
@@ -114,7 +114,7 @@
   },
   "sfGpsDsAuNswAlertCss": {
     "target": "!Os",
-    "!.css": { 
+    "!.css": {
       "target": "!Os.css",
       "c/sfGpsDsAuNswCore": "c/sfGpsDsAuNswCoreOs"
     },
@@ -125,7 +125,7 @@
   },
   "sfGpsDsAuNswButton": {
     "target": "!Os",
-    "!.css": { 
+    "!.css": {
       "target": "!Os.css",
       "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
     },
@@ -143,7 +143,7 @@
   },
   "sfGpsDsAuNswCallout": {
     "target": "!Os",
-    "!.css": { 
+    "!.css": {
       "target": "!Os.css",
       "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
     },

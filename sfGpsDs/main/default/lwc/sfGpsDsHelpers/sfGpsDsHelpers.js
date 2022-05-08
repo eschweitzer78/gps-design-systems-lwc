@@ -12,8 +12,8 @@ export {
   whichTransitionEvent,
   uniqueId,
   popupWindow
-} from './utilities';
+} from "./utilities";
 
-export { parseIso8601 } from './datetime';
+export { parseIso8601 } from "./datetime";
 
-export { htmlDecode, replaceInnerHtml, getFirstChild } from './dom';
+export { htmlDecode, replaceInnerHtml, getFirstChild } from "./dom";

@@ -18,10 +18,10 @@
  *
  */
 
-import { api, track } from 'lwc';
-import SfGpsDsLwc from 'c/sfGpsDsLwc';
-import mdEngine from 'c/sfGpsDsMarkdown';
-import { replaceInnerHtml } from 'c/sfGpsDsHelpers';
+import { api, track } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+import mdEngine from "c/sfGpsDsMarkdown";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
   @api headline;
@@ -54,7 +54,7 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
         this._links = null;
       }
     } catch (e) {
-      this.addError('LI-MD', 'Issue when parsing Links markdown');
+      this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
 
@@ -80,7 +80,7 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
         this._copyHtml = null;
       }
     } catch (e) {
-      this.addError('CO-MD', 'Issue when parsing Copy markdown');
+      this.addError("CO-MD", "Issue when parsing Copy markdown");
     }
   }
 
@@ -101,7 +101,7 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
     try {
       this._mainLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
-      this.addError('ML-MD', 'Issue when parsing MainLink markdown');
+      this.addError("ML-MD", "Issue when parsing MainLink markdown");
     }
   }
 
@@ -112,11 +112,11 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
       let element;
 
       if (this.copy) {
-        if ((element = this.template.querySelector('.sfGpsMarkdown'))) {
+        if ((element = this.template.querySelector(".sfGpsMarkdown"))) {
           replaceInnerHtml(element, this._copyHtml);
         } else {
           this.addError(
-            'CO-PH',
+            "CO-PH",
             "Couldn't find internal copy markdown placeholder"
           );
         }

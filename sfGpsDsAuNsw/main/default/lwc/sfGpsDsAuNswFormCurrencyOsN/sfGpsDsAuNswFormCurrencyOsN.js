@@ -11,9 +11,9 @@
       icon-name="utility:info" not supported
 */
 
-import OmniscriptCurrency from 'omnistudio/omniscriptCurrency';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormCurrencyOsN.html';
+import OmniscriptCurrency from "omnistudio/omniscriptCurrency";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormCurrencyOsN.html";
 
 export default class SfGpsDsAuNswFormCurrencyOsN extends OmniscriptCurrency {
   render() {

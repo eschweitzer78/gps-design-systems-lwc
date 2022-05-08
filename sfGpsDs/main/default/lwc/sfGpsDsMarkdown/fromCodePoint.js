@@ -1,5 +1,5 @@
 /* eslint-disable header/header */
-'use strict';
+"use strict";
 
 // derived from https://github.com/mathiasbynens/String.fromCodePoint
 /*! http://mths.be/fromcodepoint v0.2.1 by @mathias */
@@ -32,9 +32,9 @@ if (String.fromCodePoint) {
     let index = -1;
     let length = arguments.length;
     if (!length) {
-      return '';
+      return "";
     }
-    let result = '';
+    let result = "";
     while (++index < length) {
       let codePoint = Number(arguments[index]);
       if (

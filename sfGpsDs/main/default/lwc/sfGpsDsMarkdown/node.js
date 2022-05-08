@@ -1,20 +1,20 @@
 /* eslint-disable header/header */
-'use strict';
+"use strict";
 
 function isContainer(node) {
   switch (node._type) {
-    case 'document':
-    case 'block_quote':
-    case 'list':
-    case 'item':
-    case 'paragraph':
-    case 'heading':
-    case 'emph':
-    case 'strong':
-    case 'link':
-    case 'image':
-    case 'custom_inline':
-    case 'custom_block':
+    case "document":
+    case "block_quote":
+    case "list":
+    case "item":
+    case "paragraph":
+    case "heading":
+    case "emph":
+    case "strong":
+    case "link":
+    case "image":
+    case "custom_inline":
+    case "custom_block":
       return true;
     default:
       return false;
@@ -63,7 +63,7 @@ let NodeWalker = function (root) {
     root: root,
     entering: true,
     next: next,
-    resumeAt: resumeAt,
+    resumeAt: resumeAt
   };
 };
 
@@ -95,151 +95,151 @@ let Node = function (nodeType, sourcepos) {
 
 let proto = Node.prototype;
 
-Object.defineProperty(proto, 'isContainer', {
+Object.defineProperty(proto, "isContainer", {
   get: function () {
     return isContainer(this);
-  },
+  }
 });
 
-Object.defineProperty(proto, 'type', {
+Object.defineProperty(proto, "type", {
   get: function () {
     return this._type;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'firstChild', {
+Object.defineProperty(proto, "firstChild", {
   get: function () {
     return this._firstChild;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'lastChild', {
+Object.defineProperty(proto, "lastChild", {
   get: function () {
     return this._lastChild;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'next', {
+Object.defineProperty(proto, "next", {
   get: function () {
     return this._next;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'prev', {
+Object.defineProperty(proto, "prev", {
   get: function () {
     return this._prev;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'parent', {
+Object.defineProperty(proto, "parent", {
   get: function () {
     return this._parent;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'sourcepos', {
+Object.defineProperty(proto, "sourcepos", {
   get: function () {
     return this._sourcepos;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'literal', {
+Object.defineProperty(proto, "literal", {
   get: function () {
     return this._literal;
   },
   set: function (s) {
     this._literal = s;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'destination', {
+Object.defineProperty(proto, "destination", {
   get: function () {
     return this._destination;
   },
   set: function (s) {
     this._destination = s;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'title', {
+Object.defineProperty(proto, "title", {
   get: function () {
     return this._title;
   },
   set: function (s) {
     this._title = s;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'info', {
+Object.defineProperty(proto, "info", {
   get: function () {
     return this._info;
   },
   set: function (s) {
     this._info = s;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'level', {
+Object.defineProperty(proto, "level", {
   get: function () {
     return this._level;
   },
   set: function (s) {
     this._level = s;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'listType', {
+Object.defineProperty(proto, "listType", {
   get: function () {
     return this._listData.type;
   },
   set: function (t) {
     this._listData.type = t;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'listTight', {
+Object.defineProperty(proto, "listTight", {
   get: function () {
     return this._listData.tight;
   },
   set: function (t) {
     this._listData.tight = t;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'listStart', {
+Object.defineProperty(proto, "listStart", {
   get: function () {
     return this._listData.start;
   },
   set: function (n) {
     this._listData.start = n;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'listDelimiter', {
+Object.defineProperty(proto, "listDelimiter", {
   get: function () {
     return this._listData.delimiter;
   },
   set: function (delim) {
     this._listData.delimiter = delim;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'onEnter', {
+Object.defineProperty(proto, "onEnter", {
   get: function () {
     return this._onEnter;
   },
   set: function (s) {
     this._onEnter = s;
-  },
+  }
 });
 
-Object.defineProperty(proto, 'onExit', {
+Object.defineProperty(proto, "onExit", {
   get: function () {
     return this._onExit;
   },
   set: function (s) {
     this._onExit = s;
-  },
+  }
 });
 
 Node.prototype.appendChild = function (child) {

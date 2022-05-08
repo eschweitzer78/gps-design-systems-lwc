@@ -1,11 +1,10 @@
 <template>
   <div class="nsw-form__group">
-    <label
-      class="nsw-form__label" 
-      style="width: auto"
-      for="frt">
+    <label class="nsw-form__label" style="width: auto" for="frt">
       {mergedLabel}
-      <span if:true={_propSetMap.required} class="sr-only"> ({allCustomLabelsUtil.OmniRequired})</span>
+      <span if:true={_propSetMap.required} class="sr-only">
+        ({allCustomLabelsUtil.OmniRequired})</span
+      >
     </label>
 
     <div class="nsw-disclosure">
@@ -25,7 +24,8 @@
           checked={elementValue}
           message-when-value-missing={_messageWhenValueMissing}
           tab-index={tabIndex}
-          onchange={handleChange}>
+          onchange={handleChange}
+        >
         </c-sf-gps-ds-au-nsw-input-os-n>
       </div>
     </div>

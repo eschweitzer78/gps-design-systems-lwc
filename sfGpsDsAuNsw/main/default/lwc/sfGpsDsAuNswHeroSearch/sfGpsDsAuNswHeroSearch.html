@@ -7,11 +7,28 @@
             <h1>{title}</h1>
             <p class="nsw-intro">{intro}</p>
             <div role="search" class="hero-search__form">
-              <form class="nsw-form__input-group nsw-form__input-group--icon nsw-form__input-group--large">
+              <form
+                class="nsw-form__input-group nsw-form__input-group--icon nsw-form__input-group--large"
+              >
                 <label class="sr-only" for="form-input-group">{srLabel}</label>
-                <input class="nsw-form__input" type="text" id="form-input-group" name="form-input-group" value={value} onchange={handleChange} onkeyup={handleKeyUp}>
-                <button class="nsw-button nsw-button--white nsw-button--flex" onclick={handleClick}>
-                  <span class="material-icons nsw-material-icons" aria-hidden="true">search</span>
+                <input
+                  class="nsw-form__input"
+                  type="text"
+                  id="form-input-group"
+                  name="form-input-group"
+                  value={value}
+                  onchange={handleChange}
+                  onkeyup={handleKeyUp}
+                />
+                <button
+                  class="nsw-button nsw-button--white nsw-button--flex"
+                  onclick={handleClick}
+                >
+                  <span
+                    class="material-icons nsw-material-icons"
+                    aria-hidden="true"
+                    >search</span
+                  >
                   <span class="sr-only">{srSearchButtonLabel}</span>
                 </button>
               </form>

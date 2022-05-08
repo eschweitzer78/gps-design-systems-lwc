@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class SfGpsDsAuNswMainNavComm extends LightningElement {
   @api megaMenu = false;
@@ -14,48 +14,47 @@ export default class SfGpsDsAuNswMainNavComm extends LightningElement {
 
   _navItems = [
     {
-      text: 'About DPC',
-      url: '#',
-      description: 'blablah1',
+      text: "About DPC",
+      url: "#",
+      description: "blablah1",
       subNav: [
         {
-          text: 'level2 1-1',
-          url: '#',
-        },
-      ],
+          text: "level2 1-1",
+          url: "#"
+        }
+      ]
     },
     {
-      text: 'Updates',
-      url: '#',
-      description: 'blablah2',
+      text: "Updates",
+      url: "#",
+      description: "blablah2",
       subNav: [
         {
-          text: 'level2 2-1x',
-          url: '#',
+          text: "level2 2-1x",
+          url: "#",
           subNav: [
             {
-              text: 'level3 2-1-1',
-              url: '#',
-            },
-          ],
+              text: "level3 2-1-1",
+              url: "#"
+            }
+          ]
         },
         {
-          text: 'level2 2-2',
-          url: '#',
-        },
-      ],
-    },
+          text: "level2 2-2",
+          url: "#"
+        }
+      ]
+    }
   ];
 
   @api get navItems() {
     return this._navItems;
   }
 
-  set navItems(value) {
-  }
+  set navItems(value) {}
 
   handleCloseMenu() {
-    const closeMenuEvent = new CustomEvent('closemenu');
+    const closeMenuEvent = new CustomEvent("closemenu");
     this.dispatchEvent(closeMenuEvent);
   }
 }

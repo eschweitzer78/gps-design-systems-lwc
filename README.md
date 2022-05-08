@@ -1,6 +1,6 @@
 # au-design-systems-lwc
-Salesforce LWCs for Australian Governments' Design Systems
 
+Salesforce LWCs for Australian Governments' Design Systems
 
 ## Installing the app using an Unlocked Package
 
@@ -11,4 +11,3 @@ Make sure to start from a brand-new environment to avoid conflicts with previous
 1. Log in to your org
 
 1. Click [this link](https://login.salesforce.com/packaging/installPackage.apexp?p0=04t3t000001sOaxAAE) to install the sfGpsDs unlocked package in your org.
-

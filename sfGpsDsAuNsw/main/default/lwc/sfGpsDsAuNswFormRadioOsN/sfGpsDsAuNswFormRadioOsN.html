@@ -16,27 +16,34 @@
     data-refresh={refresh}
     alignment={_horizontalMode}
     message-when-value-missing={_messageWhenValueMissing}
-    data-omni-input>
+    data-omni-input
+  >
     <template if:true={_propSetMap.repeat}>
-      <span slot="label"
-            class={_styleClasses.repeatContainer}
-            role="group">
-        <button if:true={canRepeat}
-                class={_styleClasses.repeatAdd}
-                onclick={handleAdd}>
-          <omnistudio-icon icon-name="utility:add"
-                  alternative-text="Repeat Radio"
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+      <span slot="label" class={_styleClasses.repeatContainer} role="group">
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Radio"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
-        <button if:true={canRemove}
-                class={_styleClasses.repeatRemove}
-                onclick={handleRemove}>
-          <omnistudio-icon icon-name="utility:close"
-                  alternative-text="Remove Radio"
-                  extraclass={_styleClasses.repeatIcons}
-                  size="xx-small">
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Radio"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
           </omnistudio-icon>
         </button>
       </span>

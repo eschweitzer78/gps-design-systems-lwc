@@ -13,12 +13,12 @@ export function replaceInnerHtml(element, markup) {
 }
 
 export function htmlDecode(markup) {
-  let htmlDoc = parser.parseFromString(markup, 'text/html');
-  let rn = htmlDoc.querySelector('body');
+  let htmlDoc = parser.parseFromString(markup, "text/html");
+  let rn = htmlDoc.querySelector("body");
 
-  return rn.childNodes.length === 0 ? '' : rn.childNodes[0].nodeValue;
+  return rn.childNodes.length === 0 ? "" : rn.childNodes[0].nodeValue;
 }
 
 export function getFirstChild(markup) {
-  return parser.parseFromString(markup, 'text/html').body.firstElementChild;
+  return parser.parseFromString(markup, "text/html").body.firstElementChild;
 }

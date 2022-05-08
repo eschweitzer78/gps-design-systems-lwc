@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsLwcOsN from 'c/sfGpsDsLwcOsN';
-import { api, track } from 'lwc';
+import SfGpsDsLwcOsN from "c/sfGpsDsLwcOsN";
+import { api, track } from "lwc";
 
-//import communityId from '@salesforce/community/Id'; 
+//import communityId from '@salesforce/community/Id';
 
-const omnistudio_ns = 'omnistudio__';
+const omnistudio_ns = "omnistudio__";
 
 export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
   _ipName;
@@ -40,14 +40,14 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
     this._originalInputJSON = value;
 
     try {
-      let input = JSON.parse(value || '{}');
+      let input = JSON.parse(value || "{}");
       //this._input = { ...input, communityId: communityId };
       // TODO: there is no easy way to get that in omni
       this._input = input;
       this.refreshContent();
     } catch (e) {
       this._options = {};
-      this.addError('IJ-BF', 'JSON for input is malformed.');
+      this.addError("IJ-BF", "JSON for input is malformed.");
     }
   }
 
@@ -62,11 +62,11 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
     this._originalOptionsJSON = value;
 
     try {
-      this._options = JSON.parse(value || '{}');
+      this._options = JSON.parse(value || "{}");
       this.refreshContent();
     } catch (e) {
       this._options = {};
-      this.addError('OJ-BF', 'JSON for options is malformed.');
+      this.addError("OJ-BF", "JSON for options is malformed.");
     }
   }
 
@@ -77,13 +77,15 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
       return;
     }
 
-
-    this.omniRemoteCall({
-      sClassName: `${omnistudio_ns}IntegrationProcedureService`,
-      sMethodName: this._ipName,
-      input: JSON.stringify(this._input),
-      options: JSON.stringify(this._options),
-    }, false)
+    this.omniRemoteCall(
+      {
+        sClassName: `${omnistudio_ns}IntegrationProcedureService`,
+        sMethodName: this._ipName,
+        input: JSON.stringify(this._input),
+        options: JSON.stringify(this._options)
+      },
+      false
+    )
 
       .then((data) => {
         try {
@@ -91,8 +93,8 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
             if (!Array.isArray(data)) {
               if (data.hasError || data.error) {
                 this.addError(
-                  'CK-ER',
-                  'Integration procedure error: ' +
+                  "CK-ER",
+                  "Integration procedure error: " +
                     (data.errorMessage || data.error)
                 );
 
@@ -107,15 +109,15 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
           }
 
           this.didLoadOnce = true;
-        } catch(e) {
-          this.addError('CK-EX', 'Issue getting the content collection');
+        } catch (e) {
+          this.addError("CK-EX", "Issue getting the content collection");
           this._items = [];
         } finally {
           this._isLoading = false;
         }
       })
       .catch((error) => {
-        this.addError('CK-EX', `Issue getting the content collection ${error}`);
+        this.addError("CK-EX", `Issue getting the content collection ${error}`);
         this._items = [];
         this._isLoading = false;
       });
@@ -127,7 +129,7 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
 
   connectedCallback() {
     if (!this._ipName) {
-      this.addError('IP-NV', 'Integration procedure name is required.');
+      this.addError("IP-NV", "Integration procedure name is required.");
     }
   }
 }

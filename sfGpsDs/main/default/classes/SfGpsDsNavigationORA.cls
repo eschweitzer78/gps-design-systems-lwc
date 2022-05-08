@@ -1,27 +1,35 @@
-global
-class SfGpsDsNavigationORA
-extends SfGpsDsBaseORA
-implements Callable {
+global class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements Callable {
   global Object call(String action, Map<String, Object> args) {
     init(args);
 
     switch on action {
       when 'GetNavigation' {
-        String developerName = (String) getTypedFromMap(WhereFrom.INPUT, 'developerName', String.class, false);
+        String developerName = (String) getTypedFromMap(
+          WhereFrom.INPUT,
+          'developerName',
+          String.class,
+          false
+        );
         List<NavigationMenuItem> lnmi = getNavigationItems(developerName);
         output.put('items', JSON.deserializeUntyped(JSON.serialize(lnmi)));
       }
-
       when 'GetHierarchicalNavigation' {
-        String developerName = (String) getTypedFromMap(WhereFrom.INPUT, 'developerName', String.class, false);
+        String developerName = (String) getTypedFromMap(
+          WhereFrom.INPUT,
+          'developerName',
+          String.class,
+          false
+        );
         List<NavigationMenuItem> lnmi = getNavigationItems(developerName);
-        Map<String, NavigationMenuItem> mnmi = new Map<String,NavigationMenuItem>();
+        Map<String, NavigationMenuItem> mnmi = new Map<String, NavigationMenuItem>();
 
         for (NavigationMenuItem nmi : lnmi) {
           mnmi.put(nmi.Id, nmi);
         }
 
-        Map<String, Object> items = (Map<String, Object>) JSON.deserializeUntyped(JSON.serialize(mnmi));
+        Map<String, Object> items = (Map<String, Object>) JSON.deserializeUntyped(
+          JSON.serialize(mnmi)
+        );
         List<Object> rootItems = new List<Object>();
 
         for (Object o : items.values()) {
@@ -31,7 +39,9 @@ implements Callable {
           if (parentId == null) {
             rootItems.add(item);
           } else {
-            Map<String, Object> parent = (Map<String, Object>) items.get(parentId);
+            Map<String, Object> parent = (Map<String, Object>) items.get(
+              parentId
+            );
 
             List<Object> children = (List<Object>) parent.get('children');
             if (children == null) {
@@ -45,12 +55,9 @@ implements Callable {
 
         output.put('rootItems', rootItems);
       }
-
-
       when 'GetBaseUrl' {
         output.put('url', getBaseUrl());
       }
-
       when else {
         throw new MalformedCallException('Method not implemented');
       }
@@ -60,11 +67,21 @@ implements Callable {
   }
 
   @AuraEnabled(cacheable=true)
-  public static List<NavigationMenuItem> getNavigationItems(String developerName) {
+  public static List<NavigationMenuItem> getNavigationItems(
+    String developerName
+  ) {
     try {
       return [
-        SELECT Id,
-               AccessRestriction, Label, ParentId, Position, Status, Target, TargetPrefs, Type
+        SELECT
+          Id,
+          AccessRestriction,
+          Label,
+          ParentId,
+          Position,
+          Status,
+          Target,
+          TargetPrefs,
+          Type
         FROM NavigationMenuItem
         WHERE NavigationLinkSet.DeveloperName = :developerName
       ];
@@ -75,8 +92,9 @@ implements Callable {
 
   @AuraEnabled(cacheable=true)
   public static String getBaseUrl() {
-    return URL.getSalesforceBaseUrl().toExternalForm(); 
+    return URL.getSalesforceBaseUrl().toExternalForm();
   }
 
-  public class MalformedCallException extends Exception {}
+  public class MalformedCallException extends Exception {
+  }
 }

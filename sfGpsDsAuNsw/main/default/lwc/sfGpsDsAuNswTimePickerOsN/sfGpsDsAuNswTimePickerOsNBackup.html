@@ -1,35 +1,41 @@
 <template>
   <div class={errorClass}>
     <div class="slds-grid" data-label="true">
-      <label class="slds-form-element__label slds-show--inline slds-truncate" for="time-input">
+      <label
+        class="slds-form-element__label slds-show--inline slds-truncate"
+        for="time-input"
+      >
         <abbr if:true={required} class="slds-required" title={requiredLabel}>
           <span if:false={hideAsterisk}>*</span>
         </abbr>
         {label}
       </label>
-      <omnistudio-tooltip if:true={fieldLevelHelp}
+      <omnistudio-tooltip
+        if:true={fieldLevelHelp}
         class="slds-tooltip_container slds-p-right_x-small"
         data-field-level-help=""
         icon-url={iconUrl}
         content={fieldLevelHelp}
         extrabuttonclass="slds-m-bottom_xx-small"
-        arrowposition={fieldLevelHelpPosition}>
+        arrowposition={fieldLevelHelpPosition}
+      >
       </omnistudio-tooltip>
 
-      <slot name="label">
-      </slot>
+      <slot name="label"> </slot>
     </div>
 
     <div class="slds-form-element__control">
       <div class="slds-combobox_container">
-        <div 
+        <div
           class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist slds-timepicker"
           aria-expanded="false"
           aria-haspopup="listbox"
-          role="combobox">
+          role="combobox"
+        >
           <div
             class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
-            role="none">
+            role="none"
+          >
             <input
               class="slds-input slds-combobox__input slds-combobox__input-value"
               style={styleProperties.value.styles}
@@ -52,22 +58,28 @@
               onchange={onInputChange}
               onkeydown={handleKeyboardEvent}
               onkeyup={handleKeyUp}
-              onmousedown={showLookup}>
-              <span if:false={hideIconVal}
-                class="slds-icon_container slds-icon-utility-clock slds-input__icon slds-input__icon_right">
-                <omnistudio-icon
-                  icon-name="utility:clock"
-                  size="x-small"
-                  baseurl={iconUrl}
-                  theme={theme}
-                  alternative-text={clockIconLabel}>
-                </omnistudio-icon>
-              </span>             
+              onmousedown={showLookup}
+            />
+            <span
+              if:false={hideIconVal}
+              class="slds-icon_container slds-icon-utility-clock slds-input__icon slds-input__icon_right"
+            >
+              <omnistudio-icon
+                icon-name="utility:clock"
+                size="x-small"
+                baseurl={iconUrl}
+                theme={theme}
+                alternative-text={clockIconLabel}
+              >
+              </omnistudio-icon>
+            </span>
           </div>
 
-          <ul if:true={_isOpen}
+          <ul
+            if:true={_isOpen}
             class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-5"
-            role="listbox">
+            role="listbox"
+          >
             <template for:each={options} for:item="e" for:index="s">
               <li
                 key={e.id}
@@ -79,22 +91,22 @@
                 data-val={e.value}
                 role="option"
                 aria-selected={e.selected}
-                onmousedown={selectOption}>
+                onmousedown={selectOption}
+              >
                 <span class="slds-media__figure">
-                  <omnistudio-icon if:true={e.selected}
+                  <omnistudio-icon
+                    if:true={e.selected}
                     icon-name="utility:check"
                     extraclass="slds-listbox__icon-selected"
                     size="x-small"
                     baseurl={iconUrl}
                     theme={theme}
-                    alternative-text="selected">
+                    alternative-text="selected"
+                  >
                   </omnistudio-icon>
                 </span>
                 <span class="slds-media__body">
-                  <span class="slds-truncate"
-                    title={e.value}>
-                    {e.value}
-                  </span>
+                  <span class="slds-truncate" title={e.value}> {e.value} </span>
                 </span>
               </li>
             </template>
@@ -103,12 +115,13 @@
       </div>
     </div>
 
-    <div if:true={isError}
+    <div
+      if:true={isError}
       id="errorMessageBlock"
       class="slds-form-element__help"
-      aria-live="polite">
+      aria-live="polite"
+    >
       {errorMessage}
     </div>
-
-  </div>  
+  </div>
 </template>

@@ -1,36 +1,38 @@
 <template>
-    <div class={computedClassName}>
-        <div if:true={image} class="nsw-content-block__image">
-            <img src={image} alt={imageAlt} class="nsw-content-block__image">
-        </div>
+  <div class={computedClassName}>
+    <div if:true={image} class="nsw-content-block__image">
+      <img src={image} alt={imageAlt} class="nsw-content-block__image" />
+    </div>
 
-        <!-- originally icon as embedded/slotted markup
+    <!-- originally icon as embedded/slotted markup
         <div if:true={icon} class="nsw-content-block__image">
           <span class="nsw-content-block__icon">{icon}</span>
         </div>
         -->
 
-        <div if:true={icon} class="nsw-content-block__image">
-            <span class="material-icons nsw-material-icons nsw-material-icons--36 nsw-content-block__icon">{icon}</span>
-        </div>
-
-        <div class="nsw-content-block__content">
-            <h2 if:true={headline} class="nsw-content-block__title">{headline}</h2>
-
-            <p class="nsw-content-block__copy">
-                <slot>
-                </slot>
-            </p>
-
-            <ul class="nsw-content-block__list">
-                <template for:each={links} for:item="link">
-                    <li key={link.index}><a href={link.url}>{link.text}</a></li>
-                </template>
-            </ul>
-
-            <div if:true={mainLink} class="nsw-content-block__link">
-              <a href={mainLink.url}>{mainLink.text}</a>
-            </div>
-        </div>
+    <div if:true={icon} class="nsw-content-block__image">
+      <span
+        class="material-icons nsw-material-icons nsw-material-icons--36 nsw-content-block__icon"
+        >{icon}</span
+      >
     </div>
+
+    <div class="nsw-content-block__content">
+      <h2 if:true={headline} class="nsw-content-block__title">{headline}</h2>
+
+      <p class="nsw-content-block__copy">
+        <slot> </slot>
+      </p>
+
+      <ul class="nsw-content-block__list">
+        <template for:each={links} for:item="link">
+          <li key={link.index}><a href={link.url}>{link.text}</a></li>
+        </template>
+      </ul>
+
+      <div if:true={mainLink} class="nsw-content-block__link">
+        <a href={mainLink.url}>{mainLink.text}</a>
+      </div>
+    </div>
+  </div>
 </template>

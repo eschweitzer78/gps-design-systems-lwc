@@ -5,13 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api, track } from 'lwc';
-import { parseIso8601 } from 'c/sfGpsDsHelpers';
+import { LightningElement, api, track } from "lwc";
+import { parseIso8601 } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswCard extends LightningElement {
   @api link;
   // ADJUSTED: style is a reserved keyword in lwc
-  @api cstyle = 'white'; // PropTypes.oneOf(['dark', 'light', 'white']),
+  @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']),
   // END ADJUSTED
   @api tag;
   @api image;
@@ -51,9 +51,9 @@ export default class SfGpsDsAuNswCard extends LightningElement {
 
   get computedClassName() {
     return `nsw-card nsw-card--${this.cstyle} ${
-      this.className ? ' ' + this.className : ''
-    } ${this.headline ? 'nsw-card--headline' : ''} ${
-      this.highlight ? 'nsw-card--highlight' : ''
+      this.className ? " " + this.className : ""
+    } ${this.headline ? "nsw-card--headline" : ""} ${
+      this.highlight ? "nsw-card--highlight" : ""
     }`;
   }
 }

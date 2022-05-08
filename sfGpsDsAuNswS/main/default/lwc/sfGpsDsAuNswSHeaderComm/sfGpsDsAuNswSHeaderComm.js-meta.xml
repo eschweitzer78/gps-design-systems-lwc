@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>52.0</apiVersion>
     <isExposed>true</isExposed>
@@ -9,11 +9,13 @@
     </targets>
     <targetConfigs>
       <targetConfig targets="lightningCommunity__Default">
-        <property name="headerUrl" 
-          type="String" 
-          label="content"
-          description="Href to content."
-          default="/"></property>
+        <property
+        name="headerUrl"
+        type="String"
+        label="content"
+        description="Href to content."
+        default="/"
+      />
       </targetConfig>
     </targetConfigs>
   </LightningComponentBundle>

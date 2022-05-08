@@ -9,9 +9,9 @@
 // in omniscript designer, go to setup tab and in the Element Type To LWC Component Mapping section
 // set Step as the ElementType and this LWC as the Lightning Web Component
 
-import OmniscriptStep from 'omnistudio/omniscriptStep';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormStepOsN.html';
+import OmniscriptStep from "omnistudio/omniscriptStep";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormStepOsN.html";
 
 export default class SfGpsDsAuNswFormStepOsN extends OmniscriptStep {
   render() {

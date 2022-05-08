@@ -1,10 +1,6 @@
 <template>
   <span class={computedClassName}>
-    <template if:true={isComplete}>
-      Complete
-    </template>
-    <template if:false={isComplete}>
-      In progress
-    </template>
+    <template if:true={isComplete}> Complete </template>
+    <template if:false={isComplete}> In progress </template>
   </span>
 </template>

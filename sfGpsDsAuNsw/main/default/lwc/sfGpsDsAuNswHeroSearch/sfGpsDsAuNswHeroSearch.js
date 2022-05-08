@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   @api title;
@@ -13,17 +13,17 @@ export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   @api image;
   @api links;
   @api className;
-  @api value = ''; // ADJUSTED: added value public attribute
+  @api value = ""; // ADJUSTED: added value public attribute
 
-  @api srLabel = 'Search site for:';
-  @api srSearchButtonLabel = 'Search';
+  @api srLabel = "Search site for:";
+  @api srSearchButtonLabel = "Search";
 
   get computedSectionStyle() {
-    return this.image ? `background-image: url(${this.image});` : '';
+    return this.image ? `background-image: url(${this.image});` : "";
   }
 
   get computedClassName() {
-    return `hero-search ${this.className ? this.className : ''}`;
+    return `hero-search ${this.className ? this.className : ""}`;
   }
 
   handleChange(event) {
@@ -34,7 +34,7 @@ export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   handleKeyUp(event) {
     const isEnterKey = event.keyCode === 13;
     if (isEnterKey) {
-      const searchEvent = new CustomEvent('search');
+      const searchEvent = new CustomEvent("search");
       this.dispatchEvent(searchEvent);
     }
 
@@ -42,7 +42,7 @@ export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   }
 
   handleClick() {
-    const searchEvent = new CustomEvent('search');
+    const searchEvent = new CustomEvent("search");
     this.dispatchEvent(searchEvent);
   }
 }

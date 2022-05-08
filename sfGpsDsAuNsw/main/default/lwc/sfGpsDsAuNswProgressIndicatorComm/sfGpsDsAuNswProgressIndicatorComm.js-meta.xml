@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>54.0</apiVersion>
   <isExposed>true</isExposed>
@@ -9,24 +9,30 @@
   </targets>
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property name="step" 
-        type="Integer" 
+      <property
+        name="step"
+        type="Integer"
         label="step"
         description="Current position of the user in the process."
         min="1"
         max="25"
-        default="1"></property>
-      <property name="of" 
-        type="Integer" 
+        default="1"
+      />
+      <property
+        name="of"
+        type="Integer"
         label="of"
         description="Total number of steps in the process."
         min="1"
         max="25"
-        default="1"></property>
-      <property name="className" 
-        type="String" 
+        default="1"
+      />
+      <property
+        name="className"
+        type="String"
         label="Class name"
-        description="Additional CSS class to be applied."></property>
+        description="Additional CSS class to be applied."
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

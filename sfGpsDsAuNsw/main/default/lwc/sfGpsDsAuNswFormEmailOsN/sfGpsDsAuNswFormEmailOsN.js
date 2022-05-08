@@ -11,9 +11,9 @@
       icon-name="utility:info" not supported
 */
 
-import OmniscriptEmail from 'omnistudio/omniscriptEmail';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormEmailOsN.html';
+import OmniscriptEmail from "omnistudio/omniscriptEmail";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormEmailOsN.html";
 
 export default class SfGpsDsAuNswFormEmailOsN extends OmniscriptEmail {
   render() {
@@ -40,7 +40,7 @@ export default class SfGpsDsAuNswFormEmailOsN extends OmniscriptEmail {
       this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
-        'omniaggregate'
+        "omniaggregate"
       );
     }
   }

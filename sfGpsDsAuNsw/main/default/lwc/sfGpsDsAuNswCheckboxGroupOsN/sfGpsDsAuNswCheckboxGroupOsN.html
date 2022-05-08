@@ -6,15 +6,20 @@
           {label}
           <span class="sr-only"> ({requiredLabel})</span>
         </span>
-        <slot name="label">
-        </slot>            
+        <slot name="label"> </slot>
         <span id="helper" class="nsw-form__helper">{fieldLevelHelp}</span>
 
-        <span if:true={isRealError}
+        <span
+          if:true={isRealError}
           class={computedHelperClassName}
           aria-live="assertive"
-          id="errorMessageBlock">
-          <span if:true={computedStatusIcon} class="material-icons nsw-material-icons" aria-hidden="true">
+          id="errorMessageBlock"
+        >
+          <span
+            if:true={computedStatusIcon}
+            class="material-icons nsw-material-icons"
+            aria-hidden="true"
+          >
             {computedStatusIcon}
           </span>
           {errorMessage}
@@ -23,7 +28,8 @@
 
       <div>
         <template for:each={internalOpts} for:item="e" for:index="index">
-          <input key={e.id}
+          <input
+            key={e.id}
             class="nsw-form__checkbox-input"
             type="checkbox"
             required={required}
@@ -37,15 +43,18 @@
             aria-invalid={isAriaInvalid}
             aria-describedby={computedAriaDescribedBy}
             onfocus={handleFocus}
-            onchange={onchangevalue}>
-          <label key={e.id} 
-            class="nsw-form__checkbox-label" 
-            data-index={index} 
-            for={e.id}>
+            onchange={onchangevalue}
+          />
+          <label
+            key={e.id}
+            class="nsw-form__checkbox-label"
+            data-index={index}
+            for={e.id}
+          >
             {e.label}
           </label>
         </template>
       </div>
     </fieldset>
-  </div> 
+  </div>
 </template>

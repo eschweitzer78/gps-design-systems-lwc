@@ -9,9 +9,9 @@
 // in omniscript designer, go to setup tab and in the Element Type To LWC Component Mapping section
 // set Step as the ElementType and this LWC as the Lightning Web Component
 
-import OmniscriptStep from 'omnistudio/omniscriptStep';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswSFormStepOsN.html';
+import OmniscriptStep from "omnistudio/omniscriptStep";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswSFormStepOsN.html";
 
 export default class SfGpsDsAuNswSFormStepOs extends OmniscriptStep {
   render() {
@@ -22,11 +22,11 @@ export default class SfGpsDsAuNswSFormStepOs extends OmniscriptStep {
     e.stopPropagation();
 
     this.dispatchEvent(
-      new CustomEvent('omniautoadvance', {
+      new CustomEvent("omniautoadvance", {
         bubbles: true,
         detail: {
-          moveToStep: 'next',
-        },
+          moveToStep: "next"
+        }
       })
     );
   }
@@ -35,11 +35,11 @@ export default class SfGpsDsAuNswSFormStepOs extends OmniscriptStep {
     e.stopPropagation();
 
     this.dispatchEvent(
-      new CustomEvent('omniautoadvance', {
+      new CustomEvent("omniautoadvance", {
         bubbles: true,
         detail: {
-          moveToStep: 'previous',
-        },
+          moveToStep: "previous"
+        }
       })
     );
   }
@@ -52,11 +52,11 @@ export default class SfGpsDsAuNswSFormStepOs extends OmniscriptStep {
     }
 
     this.dispatchEvent(
-      new CustomEvent('omnisaveforlater', {
+      new CustomEvent("omnisaveforlater", {
         bubbles: true,
         detail: {
-          auto: false,
-        },
+          auto: false
+        }
       })
     );
   }

@@ -27,7 +27,7 @@ const decode = {
   155: 8250,
   156: 339,
   158: 382,
-  159: 376,
+  159: 376
 };
 
 export default decode;

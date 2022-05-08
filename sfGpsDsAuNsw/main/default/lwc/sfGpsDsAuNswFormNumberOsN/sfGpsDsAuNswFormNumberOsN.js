@@ -11,9 +11,9 @@
       icon-name="utility:info" not supported
 */
 
-import OmniscriptNumber from 'omnistudio/omniscriptNumber';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormNumberOsN.html';
+import OmniscriptNumber from "omnistudio/omniscriptNumber";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormNumberOsN.html";
 
 export default class SfGpsDsAuNswFormNumberOsN extends OmniscriptNumber {
   render() {

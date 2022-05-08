@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class SfGpsDsAuNswButton extends LightningElement {
   @api link;
@@ -17,12 +17,12 @@ export default class SfGpsDsAuNswButton extends LightningElement {
 
   get computedClassName() {
     return `nsw-button nsw-button--${this.cstyle}${
-      this.block ? ' nsw-button--block' : ''
-    }${this.className ? ' ' + this.className : ''}`;
+      this.block ? " nsw-button--block" : ""
+    }${this.className ? " " + this.className : ""}`;
   }
 
   handleClick() {
-    const clickEvent = new CustomEvent('click');
+    const clickEvent = new CustomEvent("click");
     this.dispatchEvent(clickEvent);
   }
 }

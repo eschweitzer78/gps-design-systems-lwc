@@ -1,5 +1,6 @@
 <template>
-  <c-sf-gps-ds-au-nsw-hero-banner if:false={_sfGpsErrors}
+  <c-sf-gps-ds-au-nsw-hero-banner
+    if:false={_sfGpsErrors}
     title={title}
     cta={_cta}
     cstyle={cstyle}
@@ -13,5 +14,5 @@
   </c-sf-gps-ds-au-nsw-hero-banner>
 
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>  
+  </c-sf-gps-ds-configuration-error>
 </template>

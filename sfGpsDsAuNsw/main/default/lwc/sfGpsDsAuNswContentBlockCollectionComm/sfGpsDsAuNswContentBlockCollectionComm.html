@@ -1,22 +1,22 @@
 <template>
-  <c-sf-gps-ds-spinner if:true={_isLoading}>
-  </c-sf-gps-ds-spinner>
+  <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
 
   <template if:false={_sfGpsErrors}>
-    <div  class={computedClassName}>
+    <div class={computedClassName}>
       <template for:each={_items} for:item="block">
         <div key={block.index} class={computedColClassName}>
           <c-sf-gps-ds-au-nsw-content-block-comm
-              tag={block.tag} 
-              image={block.image} 
-              image-alt={block.imageAlt} 
-              headline={block.headline} 
-              copy={block.copy} 
-              links={block.footer}
-              main-link={block.mainLink} 
-              use-markup="true">
+            tag={block.tag}
+            image={block.image}
+            image-alt={block.imageAlt}
+            headline={block.headline}
+            copy={block.copy}
+            links={block.footer}
+            main-link={block.mainLink}
+            use-markup="true"
+          >
           </c-sf-gps-ds-au-nsw-content-block-comm>
-        </div>    
+        </div>
       </template>
     </div>
 

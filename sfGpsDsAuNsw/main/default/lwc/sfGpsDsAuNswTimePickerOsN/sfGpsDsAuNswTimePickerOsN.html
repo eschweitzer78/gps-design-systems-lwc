@@ -1,14 +1,10 @@
 <template>
   <div class={computedFormGroupClass}>
-    <label
-      class={computedLabelClassName} 
-      style="width: auto" 
-      for={comboboxId}>
+    <label class={computedLabelClassName} style="width: auto" for={comboboxId}>
       {label}
       <span if:true={required} class="sr-only"> ({requiredLabel})</span>
     </label>
-    <slot name="label">
-    </slot>
+    <slot name="label"> </slot>
 
     <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper">
       {fieldLevelHelp}
@@ -16,11 +12,12 @@
 
     <div class="nsw-form__predictive">
       <div class="sfgpsds-combobox_container">
-        <div 
+        <div
           class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
           aria-expanded="false"
           aria-haspopup="listbox"
-          role="combobox">
+          role="combobox"
+        >
           <div class="" role="none">
             <input
               class="nsw-form__input timeinput"
@@ -43,12 +40,15 @@
               onchange={onInputChange}
               onkeydown={handleKeyboardEvent}
               onkeyup={handleKeyUp}
-              onmousedown={showLookup}>
+              onmousedown={showLookup}
+            />
           </div>
 
-          <ul if:true={_isOpen}
+          <ul
+            if:true={_isOpen}
             class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 nsw-form__predictive-list"
-            role="listbox">
+            role="listbox"
+          >
             <template for:each={options} for:item="e" for:index="s">
               <li
                 key={e.id}
@@ -59,16 +59,20 @@
                 data-val={e.value}
                 role="option"
                 aria-selected={e.selected}
-                onmousedown={selectOption}>
+                onmousedown={selectOption}
+              >
                 <span class="media__figure">
-                  <span if:true={e.selected} class="material-icons nsw-material-icons sfgpsds-icon-small" aria-hidden="true">
+                  <span
+                    if:true={e.selected}
+                    class="material-icons nsw-material-icons sfgpsds-icon-small"
+                    aria-hidden="true"
+                  >
                     check
                   </span>
                 </span>
 
                 <span class="sfgpsds-media__body">
-                  <span class="sfgpsds-truncate"
-                    title={e.value}>
+                  <span class="sfgpsds-truncate" title={e.value}>
                     {e.value}
                   </span>
                 </span>
@@ -79,11 +83,17 @@
       </div>
     </div>
 
-    <span if:true={isError}
+    <span
+      if:true={isError}
       class={computedHelperClassName}
       aria-live="assertive"
-      id="errorMessageBlock">
-      <span if:true={computedStatusIcon} class="material-icons nsw-material-icons" aria-hidden="true">
+      id="errorMessageBlock"
+    >
+      <span
+        if:true={computedStatusIcon}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
         {computedStatusIcon}
       </span>
       {errorMessage}

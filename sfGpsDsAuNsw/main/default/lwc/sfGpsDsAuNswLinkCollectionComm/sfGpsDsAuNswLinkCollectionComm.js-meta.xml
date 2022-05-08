@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>54.0</apiVersion>
   <isExposed>true</isExposed>
@@ -9,22 +9,30 @@
   </targets>
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property name="ipName"
+      <property
+        name="ipName"
         type="String"
         label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this list."></property>
-      <property name="inputJSON" 
-        type="String" 
+        description="Name of the Integration procedure mapping content to this list."
+      />
+      <property
+        name="inputJSON"
+        type="String"
         label="Input JSON"
-        description="JSON formatted input parameters for the Integration procedure."></property>
-      <property name="optionsJSON" 
-        type="String" 
+        description="JSON formatted input parameters for the Integration procedure."
+      />
+      <property
+        name="optionsJSON"
+        type="String"
         label="Options JSON"
-        description="JSON formatted options for the Integration procedure."></property>
-      <property name="className" 
-        type="String" 
+        description="JSON formatted options for the Integration procedure."
+      />
+      <property
+        name="className"
+        type="String"
         label="Class name"
-        description="Additional CSS class to be applied."></property>
+        description="Additional CSS class to be applied."
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

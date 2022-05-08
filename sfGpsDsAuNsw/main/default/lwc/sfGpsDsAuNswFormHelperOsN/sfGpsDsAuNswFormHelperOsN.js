@@ -6,15 +6,15 @@
  */
 
 const helperClasses = {
-  default: 'nsw-form__helper',
-  invalid: 'nsw-form__helper nsw-form__helper--error',
-  valid: 'nsw-form__helper nsw-form__helper--valid',
+  default: "nsw-form__helper",
+  invalid: "nsw-form__helper nsw-form__helper--error",
+  valid: "nsw-form__helper nsw-form__helper--valid"
 };
 
 const statusIcons = {
-  default: '',
-  invalid: 'cancel',
-  valid: 'check_circle',
+  default: "",
+  invalid: "cancel",
+  valid: "check_circle"
 };
 
 function getHelperClassName(status) {

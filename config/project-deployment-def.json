@@ -3,10 +3,16 @@
   "country": "au",
   "adminEmail": "eschweitzer@salesforce.com",
   "edition": "Enterprise",
-  "features": ["Communities", "Interaction", "PublicSectorAccess", "OmniStudioDesigner", "OmniStudioRuntime"],
+  "features": [
+    "Communities",
+    "Interaction",
+    "PublicSectorAccess",
+    "OmniStudioDesigner",
+    "OmniStudioRuntime"
+  ],
   "settings": {
     "communitiesSettings": {
-        "enableNetworksEnabled": true
+      "enableNetworksEnabled": true
     },
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true

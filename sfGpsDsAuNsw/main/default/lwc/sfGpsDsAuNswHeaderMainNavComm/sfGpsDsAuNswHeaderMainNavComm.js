@@ -5,8 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from 'lwc';
-import SfGpsDsIpLwc from 'c/sfGpsDsIpLwc';
+import { api, track } from "lwc";
+import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
 import { NavigationMixin } from "lightning/navigation";
 import isGuest from "@salesforce/user/isGuest";
@@ -42,11 +42,11 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
 
   // Header
 
-  @api srWaratahLabel = 'NSW Government';
+  @api srWaratahLabel = "NSW Government";
   @api logo;
   @api logoAlt;
-  @api menuLabel = 'menu';
-  @api searchLabel = 'Search site for:';
+  @api menuLabel = "menu";
+  @api searchLabel = "Search site for:";
 
   @api siteTitle;
   @api siteDescriptor;
@@ -79,8 +79,8 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
     let isP = this.isPreview;
     data = data.filter(
       (item) =>
-        item.Status === (isP ? 'Draft' : 'Live') &&
-        (item.AccessRestriction === 'None' || !isGuest)
+        item.Status === (isP ? "Draft" : "Live") &&
+        (item.AccessRestriction === "None" || !isGuest)
     );
 
     // create a map by Id
@@ -89,8 +89,8 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
       m[item.Id] = item;
       adaptedMap[item.Id] = {
         text: item.Label,
-        url: '#',
-        index: item.Id,
+        url: "#",
+        index: item.Id
       };
 
       return m;

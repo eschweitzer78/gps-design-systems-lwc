@@ -6,12 +6,12 @@
  */
 
 // TODO: handle issue with level2 menus on desktop vs mobile -- how do we know when to navigate vs expand?
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api, track } from "lwc";
 
 export default class SfGpsDsAuNswMainNav extends LightningElement {
-  @api navAriaLabel = 'Main Navigation';
-  @api navTitle = 'Menu';
-  @api closeMenuLabel = 'Close Menu';
+  @api navAriaLabel = "Main Navigation";
+  @api navTitle = "Menu";
+  @api closeMenuLabel = "Close Menu";
 
   @track _isActivating;
   @track _isClosing;
@@ -52,8 +52,8 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         index: `${parentIndex}-${index++}`,
         level: parentLevel + 1,
         isActive: false,
-        className: '',
-        subNavClassName: 'nsw-main-nav__sub-nav',
+        className: "",
+        subNavClassName: "nsw-main-nav__sub-nav"
       };
 
       if (item.subNav) {
@@ -78,7 +78,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     let map = {};
 
     this._originalNavItems = items;
-    this._navItems = items ? this.mapItems('navitem', 0, map, items) : null;
+    this._navItems = items ? this.mapItems("navitem", 0, map, items) : null;
     this._mapItems = map;
   }
 
@@ -87,12 +87,14 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
   get computedClassName() {
     // eslint-disable-next-line prettier/prettier
-    return 'nsw-main-nav' +
-      (this.isActivating ? ' activating' : '') +
-      (this.isActive ? ' active' : '') +
-      (this.isClosing ? ' closing' : '') +
+    return (
+      "nsw-main-nav" +
+      (this.isActivating ? " activating" : "") +
+      (this.isActive ? " active" : "") +
+      (this.isClosing ? " closing" : "") +
       // eslint-disable-next-line prettier/prettier
-      (this.className ? ' ' + this.className : '');
+      (this.className ? " " + this.className : "")
+    );
   }
 
   handleClickNavigate(event) {
@@ -103,7 +105,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
     // TODO implement navigate
     let index = event.currentTarget.dataset.ndx;
-    console.log('@@@ navigate to ', index);
+    console.log("@@@ navigate to ", index);
   }
 
   handleClick(event) {
@@ -131,10 +133,10 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         item.isActive = false;
       }
 
-      item.className = item.isActive ? 'active' : '';
+      item.className = item.isActive ? "active" : "";
       item.subNavClassName = item.isActive
-        ? 'nsw-main-nav__sub-nav active'
-        : 'nsw-main-nav__sub-nav';
+        ? "nsw-main-nav__sub-nav active"
+        : "nsw-main-nav__sub-nav";
     }
 
     this._navItems = [...this._navItems];
@@ -148,13 +150,13 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     for (let prop in this._mapItems) {
       let item = this._mapItems[prop];
       item.isActive = false;
-      item.className = '';
-      item.subNavClassName = 'nsw-main-nav__sub-nav';
+      item.className = "";
+      item.subNavClassName = "nsw-main-nav__sub-nav";
     }
 
     this._navItems = [...this._navItems];
 
-    const closeMenuEvent = new CustomEvent('closemenu');
+    const closeMenuEvent = new CustomEvent("closemenu");
     this.dispatchEvent(closeMenuEvent);
   }
 

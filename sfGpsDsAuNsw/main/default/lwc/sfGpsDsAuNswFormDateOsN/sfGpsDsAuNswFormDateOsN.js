@@ -11,9 +11,9 @@
       icon-name="utility:info" not supported
 */
 
-import OmniscriptDate from 'omnistudio/omniscriptDate';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormDateOsN.html';
+import OmniscriptDate from "omnistudio/omniscriptDate";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormDateOsN.html";
 
 export default class SfGpsDsAuNswFormDateOsN extends OmniscriptDate {
   render() {

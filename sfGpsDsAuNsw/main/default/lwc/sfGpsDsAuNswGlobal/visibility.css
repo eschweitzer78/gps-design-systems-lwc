@@ -23,7 +23,7 @@
 @media (min-width: 0rem) {
   .nsw-show-xs {
     display: block;
- }
+  }
 }
 .nsw-show-sm {
   display: none;
@@ -31,7 +31,7 @@
 @media (min-width: 36rem) {
   .nsw-show-sm {
     display: block;
- }
+  }
 }
 .nsw-show-md {
   display: none;
@@ -39,7 +39,7 @@
 @media (min-width: 48rem) {
   .nsw-show-md {
     display: block;
- }
+  }
 }
 .nsw-show-lg {
   display: none;
@@ -47,7 +47,7 @@
 @media (min-width: 62rem) {
   .nsw-show-lg {
     display: block;
- }
+  }
 }
 .nsw-show-xl {
   display: none;
@@ -55,30 +55,30 @@
 @media (min-width: 75rem) {
   .nsw-show-xl {
     display: block;
- }
+  }
 }
 @media (min-width: 0rem) {
   .nsw-hide-xs {
     display: none;
- }
+  }
 }
 @media (min-width: 36rem) {
   .nsw-hide-sm {
     display: none;
- }
+  }
 }
 @media (min-width: 48rem) {
   .nsw-hide-md {
     display: none;
- }
+  }
 }
 @media (min-width: 62rem) {
   .nsw-hide-lg {
     display: none;
- }
+  }
 }
 @media (min-width: 75rem) {
   .nsw-hide-xl {
     display: none;
- }
+  }
 }

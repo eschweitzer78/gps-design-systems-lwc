@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptCheckbox from 'omnistudio/omniscriptCheckbox';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormCheckboxOsN.html';
+import OmniscriptCheckbox from "omnistudio/omniscriptCheckbox";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormCheckboxOsN.html";
 
 export default class SfGpsDsAuNswFormCheckboxOsN extends OmniscriptCheckbox {
   get _options() {
@@ -15,8 +15,8 @@ export default class SfGpsDsAuNswFormCheckboxOsN extends OmniscriptCheckbox {
     return [
       {
         label: mergedLabel,
-        value: mergedLabel,
-      },
+        value: mergedLabel
+      }
     ];
   }
 
@@ -40,11 +40,11 @@ export default class SfGpsDsAuNswFormCheckboxOsN extends OmniscriptCheckbox {
       this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
-        'omniaggregate'
+        "omniaggregate"
       );
     }
   }
-  
+
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.checkLabel);
   }

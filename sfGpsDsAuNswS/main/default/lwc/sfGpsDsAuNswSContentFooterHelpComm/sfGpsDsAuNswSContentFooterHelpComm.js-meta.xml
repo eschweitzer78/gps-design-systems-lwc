@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>54.0</apiVersion>
   <isExposed>true</isExposed>
@@ -9,14 +9,18 @@
   </targets>
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property name="title"
+      <property
+        name="title"
         type="String"
         label="Title"
-        description="Title of the help section."></property>
-      <property name="text" 
-        type="String" 
+        description="Title of the help section."
+      />
+      <property
+        name="text"
+        type="String"
         label="Text"
-        description="Help text in Markdown format."></property>
+        description="Help text in Markdown format."
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

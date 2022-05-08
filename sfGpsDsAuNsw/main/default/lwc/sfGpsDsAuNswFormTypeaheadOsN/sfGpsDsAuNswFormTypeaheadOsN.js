@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptTypeahead from 'omnistudio/omniscriptTypeahead';
-import { omniGetMergedField } from 'c/sfGpsDsOmniHelpersOsN';
-import tmpl from './sfGpsDsAuNswFormTypeaheadOsN.html';
+import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import tmpl from "./sfGpsDsAuNswFormTypeaheadOsN.html";
 
 export default class sfGpsDsAuNswFormTypeaheadOsN extends OmniscriptTypeahead {
   render() {

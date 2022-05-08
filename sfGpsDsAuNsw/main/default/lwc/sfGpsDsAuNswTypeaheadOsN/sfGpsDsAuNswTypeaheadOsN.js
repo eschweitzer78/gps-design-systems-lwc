@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmnistudioTypeahead from 'omnistudio/typeahead';
-import { getHelperClassName, getStatusIcon } from 'c/sfGpsDsAuNswFormHelperOsN';
-import tmpl from './sfGpsDsAuNswTypeaheadOsN.html';
+import OmnistudioTypeahead from "omnistudio/typeahead";
+import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import tmpl from "./sfGpsDsAuNswTypeaheadOsN.html";
 
 export default class SfGpsDsAuNswTypeaheadOs extends OmnistudioTypeahead {
   render() {
@@ -15,14 +15,14 @@ export default class SfGpsDsAuNswTypeaheadOs extends OmnistudioTypeahead {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? 'nsw-form__required' : ''}`;
+    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
   }
 
   get computedHelperClassName() {
-    return getHelperClassName('invalid');
+    return getHelperClassName("invalid");
   }
 
   get computedStatusIcon() {
-    return getStatusIcon('invalid');
+    return getStatusIcon("invalid");
   }
 }

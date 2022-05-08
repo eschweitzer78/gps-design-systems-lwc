@@ -4,16 +4,16 @@
   "adminEmail": "eschweitzer@salesforce.com",
   "edition": "Enterprise",
   "features": [
-      "EnableSetPasswordInApi", 
-      "Communities", 
-      "Interaction",
-      "CMSUnlimitedUse",
-      "OmniStudioDesigner",
-      "OmniStudioRuntime"
-    ],
+    "EnableSetPasswordInApi",
+    "Communities",
+    "Interaction",
+    "CMSUnlimitedUse",
+    "OmniStudioDesigner",
+    "OmniStudioRuntime"
+  ],
   "settings": {
     "communitiesSettings": {
-        "enableNetworksEnabled": true
+      "enableNetworksEnabled": true
     },
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
@@ -22,7 +22,7 @@
       "enableS1EncryptedStoragePref2": false
     },
     "emailAdministrationSettings": {
-        "enableEnhancedEmailEnabled": true
+      "enableEnhancedEmailEnabled": true
     }
   }
 }

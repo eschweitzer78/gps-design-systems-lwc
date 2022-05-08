@@ -1,12 +1,11 @@
 <template>
-    <div class={computedClassName}>
-        <span class="material-icons nsw-material-icons nsw-in-page-alert__icon">
-            {computedIconName}
-        </span>
-        <div class="nsw-in-page-alert__content">
-            <h5>{title}</h5>
-            <slot>
-            </slot>
-        </div>
+  <div class={computedClassName}>
+    <span class="material-icons nsw-material-icons nsw-in-page-alert__icon">
+      {computedIconName}
+    </span>
+    <div class="nsw-in-page-alert__content">
+      <h5>{title}</h5>
+      <slot> </slot>
     </div>
+  </div>
 </template>

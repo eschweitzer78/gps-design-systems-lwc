@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { getFirstChild } from 'c/sfGpsDsHelpers';
-import Parser from './blocks.js';
-import HtmlRenderer from './htmlRenderer.js';
+import { getFirstChild } from "c/sfGpsDsHelpers";
+import Parser from "./blocks.js";
+import HtmlRenderer from "./htmlRenderer.js";
 
 class sfGpsDsMarkdown {
   reader = new Parser();
@@ -23,7 +23,7 @@ class sfGpsDsMarkdown {
   }
 
   renderEscaped(markdown, attribute) {
-    let parsed = this.reader.parse(markdown.replaceAll('\\n', '\n'));
+    let parsed = this.reader.parse(markdown.replaceAll("\\n", "\n"));
     return this.writer.render(parsed, attribute);
   }
 
@@ -36,15 +36,15 @@ class sfGpsDsMarkdown {
       walker = ast.walker(),
       event,
       type,
-      html = '';
+      html = "";
 
     while ((event = walker.next())) {
       type = event.node.type;
-      if (type === 'link' && event.entering) {
+      if (type === "link" && event.entering) {
         if (event.node.attrs == null) {
           event.node.attrs = [];
         }
-        html += `<li ${attribute ? ' ' + attribute : ''}>${this.renderNode(
+        html += `<li ${attribute ? " " + attribute : ""}>${this.renderNode(
           event.node,
           attribute
         )}</li>`;
@@ -64,17 +64,17 @@ class sfGpsDsMarkdown {
 
     while ((event = walker.next())) {
       type = event.node.type;
-      if (type === 'link' && event.entering) {
+      if (type === "link" && event.entering) {
         if (event.node.attrs == null) {
           event.node.attrs = [];
         }
 
         const node = new DOMParser().parseFromString(
           this.renderNode(event.node),
-          'text/html'
+          "text/html"
         ).body.firstElementChild;
         links.push({
-          url: node.getAttribute('href'),
+          url: node.getAttribute("href"),
           text: node.textContent,
           index: index++
         });
@@ -94,10 +94,10 @@ class sfGpsDsMarkdown {
     while ((event = walker.next())) {
       type = event.node.type;
 
-      if (type === 'link' && event.entering) {
+      if (type === "link" && event.entering) {
         const node = getFirstChild(this.renderNode(event.node));
         return {
-          url: node.getAttribute('href'),
+          url: node.getAttribute("href"),
           text: node.textContent
         };
       }
@@ -113,7 +113,7 @@ class sfGpsDsMarkdown {
       event,
       type,
       level,
-      html = '',
+      html = "",
       index = 0,
       h1s = [],
       h1,
@@ -124,7 +124,7 @@ class sfGpsDsMarkdown {
       level = event.node.level;
 
       if (event.entering) {
-        if (type === 'heading' && level === 1) {
+        if (type === "heading" && level === 1) {
           if (event.node.attrs == null) {
             event.node.attrs = [];
           }
@@ -142,7 +142,7 @@ class sfGpsDsMarkdown {
             index: index++
           };
 
-          html = '';
+          html = "";
           currentNode = event.node;
         } else if (h1 && !currentNode) {
           currentNode = event.node;

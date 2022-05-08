@@ -1,9 +1,9 @@
 /* eslint-disable header/header */
-'use strict';
+"use strict";
 
-import Node from './node.js';
-import { unescapeString, OPENTAG, CLOSETAG } from './common.js';
-import InlineParser from './inlines.js';
+import Node from "./node.js";
+import { unescapeString, OPENTAG, CLOSETAG } from "./common.js";
+import InlineParser from "./inlines.js";
 
 let CODE_INDENT = 4;
 
@@ -22,7 +22,7 @@ let reHtmlBlockOpen = [
   /^<![A-Z]/,
   /^<!\[CDATA\[/,
   /^<[/]?(?:address|article|aside|base|basefont|blockquote|body|caption|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption|figure|footer|form|frame|frameset|h[123456]|head|header|hr|html|iframe|legend|li|link|main|menu|menuitem|nav|noframes|ol|optgroup|option|p|param|section|source|summary|table|tbody|td|tfoot|th|thead|title|tr|track|ul)(?:\s|[/]?[>]|$)/i,
-  new RegExp('^(?:' + OPENTAG + '|' + CLOSETAG + ')\\s*$', 'i'),
+  new RegExp("^(?:" + OPENTAG + "|" + CLOSETAG + ")\\s*$", "i")
 ];
 
 let reHtmlBlockClose = [
@@ -31,7 +31,7 @@ let reHtmlBlockClose = [
   /-->/,
   /\?>/,
   />/,
-  /\]\]>/,
+  /\]\]>/
 ];
 
 let reThematicBreak = /^(?:\*[ \t]*){3,}$|^(?:_[ \t]*){3,}$|^(?:-[ \t]*){3,}$/;
@@ -82,7 +82,7 @@ let endsWithBlankLine = function (block) {
       return true;
     }
     let t = block.type;
-    if (!block._lastLineChecked && (t === 'list' || t === 'item')) {
+    if (!block._lastLineChecked && (t === "list" || t === "item")) {
       block._lastLineChecked = true;
       block = block._lastChild;
     } else {
@@ -100,9 +100,9 @@ let addLine = function () {
     this.offset += 1; // skip over tab
     // add space characters:
     let charsToTab = 4 - (this.column % 4);
-    this.tip._string_content += ' '.repeat(charsToTab);
+    this.tip._string_content += " ".repeat(charsToTab);
   }
-  this.tip._string_content += this.currentLine.slice(this.offset) + '\n';
+  this.tip._string_content += this.currentLine.slice(this.offset) + "\n";
 };
 
 // Add block of type tag as a child of the tip.  If the tip can't
@@ -116,9 +116,9 @@ let addChild = function (tag, offset) {
   let column_number = offset + 1; // offset 0 = column 1
   let newBlock = new Node(tag, [
     [this.lineNumber, column_number],
-    [0, 0],
+    [0, 0]
   ]);
-  newBlock._string_content = '';
+  newBlock._string_content = "";
   this.tip.appendChild(newBlock);
   this.tip = newBlock;
   return newBlock;
@@ -139,19 +139,19 @@ let parseListMarker = function (parser, container) {
     start: null,
     delimiter: null,
     padding: null,
-    markerOffset: parser.indent,
+    markerOffset: parser.indent
   };
   if (parser.indent >= 4) {
     return null;
   }
   if ((match = rest.match(reBulletListMarker))) {
-    data.type = 'bullet';
+    data.type = "bullet";
     data.bulletChar = match[0][0];
   } else if (
     (match = rest.match(reOrderedListMarker)) &&
-    (container.type !== 'paragraph' || match[1] === 1)
+    (container.type !== "paragraph" || match[1] === 1)
   ) {
-    data.type = 'ordered';
+    data.type = "ordered";
     data.start = parseInt(match[1], 10);
     data.delimiter = match[2];
   } else {
@@ -165,7 +165,7 @@ let parseListMarker = function (parser, container) {
 
   // if it interrupts paragraph, make sure first line isn't blank
   if (
-    container.type === 'paragraph' &&
+    container.type === "paragraph" &&
     !parser.currentLine
       .slice(parser.nextNonspace + match[0].length)
       .match(reNonSpace)
@@ -233,9 +233,9 @@ let blocks = {
     },
     finalize: function () {},
     canContain: function (t) {
-      return t !== 'item';
+      return t !== "item";
     },
-    acceptsLines: false,
+    acceptsLines: false
   },
   list: {
     continue: function () {
@@ -263,9 +263,9 @@ let blocks = {
       }
     },
     canContain: function (t) {
-      return t === 'item';
+      return t === "item";
     },
-    acceptsLines: false,
+    acceptsLines: false
   },
   block_quote: {
     continue: function (parser) {
@@ -283,9 +283,9 @@ let blocks = {
     },
     finalize: function () {},
     canContain: function (t) {
-      return t !== 'item';
+      return t !== "item";
     },
-    acceptsLines: false,
+    acceptsLines: false
   },
   item: {
     continue: function (parser, container) {
@@ -310,9 +310,9 @@ let blocks = {
     },
     finalize: function () {},
     canContain: function (t) {
-      return t !== 'item';
+      return t !== "item";
     },
-    acceptsLines: false,
+    acceptsLines: false
   },
   heading: {
     continue: function () {
@@ -323,7 +323,7 @@ let blocks = {
     canContain: function () {
       return false;
     },
-    acceptsLines: false,
+    acceptsLines: false
   },
   thematic_break: {
     continue: function () {
@@ -334,7 +334,7 @@ let blocks = {
     canContain: function () {
       return false;
     },
-    acceptsLines: false,
+    acceptsLines: false
   },
   code_block: {
     continue: function (parser, container) {
@@ -375,21 +375,21 @@ let blocks = {
         // fenced
         // first line becomes info string
         let content = block._string_content;
-        let newlinePos = content.indexOf('\n');
+        let newlinePos = content.indexOf("\n");
         let firstLine = content.slice(0, newlinePos);
         let rest = content.slice(newlinePos + 1);
         block.info = unescapeString(firstLine.trim());
         block._literal = rest;
       } else {
         // indented
-        block._literal = block._string_content.replace(/(\n *)+$/, '\n');
+        block._literal = block._string_content.replace(/(\n *)+$/, "\n");
       }
       block._string_content = null; // allow GC
     },
     canContain: function () {
       return false;
     },
-    acceptsLines: true,
+    acceptsLines: true
   },
   html_block: {
     continue: function (parser, container) {
@@ -399,13 +399,13 @@ let blocks = {
         : 0;
     },
     finalize: function (parser, block) {
-      block._literal = block._string_content.replace(/(\n *)+$/, '');
+      block._literal = block._string_content.replace(/(\n *)+$/, "");
       block._string_content = null; // allow GC
     },
     canContain: function () {
       return false;
     },
-    acceptsLines: true,
+    acceptsLines: true
   },
   paragraph: {
     continue: function (parser) {
@@ -433,8 +433,8 @@ let blocks = {
     canContain: function () {
       return false;
     },
-    acceptsLines: true,
-  },
+    acceptsLines: true
+  }
 };
 
 // block start functions.  Return values:
@@ -455,7 +455,7 @@ let blockStarts = [
         parser.advanceOffset(1, true);
       }
       parser.closeUnmatchedBlocks();
-      parser.addChild('block_quote', parser.nextNonspace);
+      parser.addChild("block_quote", parser.nextNonspace);
       return 1;
     }
     return 0;
@@ -473,13 +473,13 @@ let blockStarts = [
       parser.advanceNextNonspace();
       parser.advanceOffset(match[0].length, false);
       parser.closeUnmatchedBlocks();
-      let container = parser.addChild('heading', parser.nextNonspace);
+      let container = parser.addChild("heading", parser.nextNonspace);
       container.level = match[0].trim().length; // number of #s
       // remove trailing ###s:
       container._string_content = parser.currentLine
         .slice(parser.offset)
-        .replace(/^[ \t]*#+[ \t]*$/, '')
-        .replace(/[ \t]+#+[ \t]*$/, '');
+        .replace(/^[ \t]*#+[ \t]*$/, "")
+        .replace(/[ \t]+#+[ \t]*$/, "");
       parser.advanceOffset(parser.currentLine.length - parser.offset);
       return 2;
     }
@@ -495,7 +495,7 @@ let blockStarts = [
     ) {
       let fenceLength = match[0].length;
       parser.closeUnmatchedBlocks();
-      let container = parser.addChild('code_block', parser.nextNonspace);
+      let container = parser.addChild("code_block", parser.nextNonspace);
       container._isFenced = true;
       container._fenceLength = fenceLength;
       container._fenceChar = match[0][0];
@@ -520,17 +520,17 @@ let blockStarts = [
         if (
           reHtmlBlockOpen[blockType].test(s) &&
           (blockType < 7 ||
-            (container.type !== 'paragraph' &&
+            (container.type !== "paragraph" &&
               !(
                 !parser.allClosed &&
                 !parser.blank &&
-                parser.tip.type === 'paragraph'
+                parser.tip.type === "paragraph"
               ))) // maybe lazy
         ) {
           parser.closeUnmatchedBlocks();
           // We don't adjust parser.offset;
           // spaces are part of the HTML block:
-          let b = parser.addChild('html_block', parser.offset);
+          let b = parser.addChild("html_block", parser.offset);
           b._htmlBlockType = blockType;
           return 2;
         }
@@ -545,7 +545,7 @@ let blockStarts = [
     let match;
     if (
       !parser.indented &&
-      container.type === 'paragraph' &&
+      container.type === "paragraph" &&
       (match = parser.currentLine
         .slice(parser.nextNonspace)
         .match(reSetextHeadingLine))
@@ -563,8 +563,8 @@ let blockStarts = [
         container._string_content = container._string_content.slice(pos);
       }
       if (container._string_content.length > 0) {
-        let heading = new Node('heading', container.sourcepos);
-        heading.level = match[0][0] === '=' ? 1 : 2;
+        let heading = new Node("heading", container.sourcepos);
+        heading.level = match[0][0] === "=" ? 1 : 2;
         heading._string_content = container._string_content;
         container.insertAfter(heading);
         container.unlink();
@@ -584,7 +584,7 @@ let blockStarts = [
       reThematicBreak.test(parser.currentLine.slice(parser.nextNonspace))
     ) {
       parser.closeUnmatchedBlocks();
-      parser.addChild('thematic_break', parser.nextNonspace);
+      parser.addChild("thematic_break", parser.nextNonspace);
       parser.advanceOffset(parser.currentLine.length - parser.offset, false);
       return 2;
     }
@@ -596,22 +596,22 @@ let blockStarts = [
     let data;
 
     if (
-      (!parser.indented || container.type === 'list') &&
+      (!parser.indented || container.type === "list") &&
       (data = parseListMarker(parser, container))
     ) {
       parser.closeUnmatchedBlocks();
 
       // add the list if needed
       if (
-        parser.tip.type !== 'list' ||
+        parser.tip.type !== "list" ||
         !listsMatch(container._listData, data)
       ) {
-        container = parser.addChild('list', parser.nextNonspace);
+        container = parser.addChild("list", parser.nextNonspace);
         container._listData = data;
       }
 
       // add the list item
-      container = parser.addChild('item', parser.nextNonspace);
+      container = parser.addChild("item", parser.nextNonspace);
       container._listData = data;
       return 1;
     }
@@ -620,15 +620,15 @@ let blockStarts = [
 
   // indented code block
   function (parser) {
-    if (parser.indented && parser.tip.type !== 'paragraph' && !parser.blank) {
+    if (parser.indented && parser.tip.type !== "paragraph" && !parser.blank) {
       // indented code
       parser.advanceOffset(CODE_INDENT, true);
       parser.closeUnmatchedBlocks();
-      parser.addChild('code_block', parser.offset);
+      parser.addChild("code_block", parser.offset);
       return 2;
     }
     return 0;
-  },
+  }
 ];
 
 let advanceOffset = function (count, columns) {
@@ -636,7 +636,7 @@ let advanceOffset = function (count, columns) {
   let charsToTab, charsToAdvance;
   let c;
   while (count > 0 && (c = currentLine[this.offset])) {
-    if (c === '\t') {
+    if (c === "\t") {
       charsToTab = 4 - (this.column % 4);
       if (columns) {
         this.partiallyConsumedTab = charsToTab > count;
@@ -671,18 +671,18 @@ let findNextNonspace = function () {
   let cols = this.column;
   let c;
 
-  while ((c = currentLine.charAt(i)) !== '') {
-    if (c === ' ') {
+  while ((c = currentLine.charAt(i)) !== "") {
+    if (c === " ") {
       i++;
       cols++;
-    } else if (c === '\t') {
+    } else if (c === "\t") {
       i++;
       cols += 4 - (cols % 4);
     } else {
       break;
     }
   }
-  this.blank = c === '\n' || c === '\r' || c === '';
+  this.blank = c === "\n" || c === "\r" || c === "";
   this.nextNonspace = i;
   this.nextNonspaceColumn = cols;
   this.indent = this.nextNonspaceColumn - this.column;
@@ -705,8 +705,8 @@ let incorporateLine = function (ln) {
   this.lineNumber += 1;
 
   // replace NUL characters for security
-  if (ln.indexOf('\u0000') !== -1) {
-    ln = ln.replace(/\0/g, '\uFFFD');
+  if (ln.indexOf("\u0000") !== -1) {
+    ln = ln.replace(/\0/g, "\uFFFD");
   }
 
   this.currentLine = ln;
@@ -730,8 +730,8 @@ let incorporateLine = function (ln) {
         return;
       default:
         /* eslint-disable */
-        throw 'continue returned illegal value, must be 0, 1, or 2';
-        /* eslint-enable */
+        throw "continue returned illegal value, must be 0, 1, or 2";
+      /* eslint-enable */
     }
     if (!all_matched) {
       container = container._parent; // back up to last matching block
@@ -743,7 +743,7 @@ let incorporateLine = function (ln) {
   this.lastMatchedContainer = container;
 
   let matchedLeaf =
-    container.type !== 'paragraph' && blocks[container.type].acceptsLines;
+    container.type !== "paragraph" && blocks[container.type].acceptsLines;
   let starts = this.blockStarts;
   let startsLen = starts.length;
   // Unless last matched container is a code block, try new container starts,
@@ -783,7 +783,7 @@ let incorporateLine = function (ln) {
   // appropriate container.
 
   // First check for a lazy paragraph continuation:
-  if (!this.allClosed && !this.blank && this.tip.type === 'paragraph') {
+  if (!this.allClosed && !this.blank && this.tip.type === "paragraph") {
     // lazy paragraph continuation
     this.addLine();
   } else {
@@ -804,9 +804,9 @@ let incorporateLine = function (ln) {
     let lastLineBlank =
       this.blank &&
       !(
-        t === 'block_quote' ||
-        (t === 'code_block' && container._isFenced) ||
-        (t === 'item' &&
+        t === "block_quote" ||
+        (t === "code_block" && container._isFenced) ||
+        (t === "item" &&
           !container._firstChild &&
           container.sourcepos[0][0] === this.lineNumber)
       );
@@ -822,7 +822,7 @@ let incorporateLine = function (ln) {
       this.addLine();
       // if HtmlBlock, check for end condition
       if (
-        t === 'html_block' &&
+        t === "html_block" &&
         container._htmlBlockType >= 1 &&
         container._htmlBlockType <= 5 &&
         reHtmlBlockClose[container._htmlBlockType].test(
@@ -834,7 +834,7 @@ let incorporateLine = function (ln) {
       }
     } else if (this.offset < ln.length && !this.blank) {
       // create paragraph container for line
-      container = this.addChild('paragraph', this.offset);
+      container = this.addChild("paragraph", this.offset);
       this.advanceNextNonspace();
       this.addLine();
     }
@@ -867,16 +867,16 @@ let processInlines = function (block) {
   while ((event = walker.next())) {
     node = event.node;
     t = node.type;
-    if (!event.entering && (t === 'paragraph' || t === 'heading')) {
+    if (!event.entering && (t === "paragraph" || t === "heading")) {
       this.inlineParser.parse(node);
     }
   }
 };
 
 let Document = function () {
-  let doc = new Node('document', [
+  let doc = new Node("document", [
     [1, 1],
-    [0, 0],
+    [0, 0]
   ]);
   return doc;
 };
@@ -891,9 +891,9 @@ let parse = function (input) {
   this.offset = 0;
   this.column = 0;
   this.lastMatchedContainer = this.doc;
-  this.currentLine = '';
+  this.currentLine = "";
   if (this.options.time) {
-    console.time('preparing input');
+    console.time("preparing input");
   }
   let lines = input.split(reLineEnding);
   let len = lines.length;
@@ -902,10 +902,10 @@ let parse = function (input) {
     len -= 1;
   }
   if (this.options.time) {
-    console.timeEnd('preparing input');
+    console.timeEnd("preparing input");
   }
   if (this.options.time) {
-    console.time('block parsing');
+    console.time("block parsing");
   }
   for (let i = 0; i < len; i++) {
     this.incorporateLine(lines[i]);
@@ -914,14 +914,14 @@ let parse = function (input) {
     this.finalize(this.tip, len);
   }
   if (this.options.time) {
-    console.timeEnd('block parsing');
+    console.timeEnd("block parsing");
   }
   if (this.options.time) {
-    console.time('inline parsing');
+    console.time("inline parsing");
   }
   this.processInlines(this.doc);
   if (this.options.time) {
-    console.timeEnd('inline parsing');
+    console.timeEnd("inline parsing");
   }
   return this.doc;
 };
@@ -934,7 +934,7 @@ function Parser(options) {
     blockStarts: blockStarts,
     tip: this.doc,
     oldtip: this.doc,
-    currentLine: '',
+    currentLine: "",
     lineNumber: 0,
     offset: 0,
     column: 0,
@@ -959,7 +959,7 @@ function Parser(options) {
     processInlines: processInlines,
     closeUnmatchedBlocks: closeUnmatchedBlocks,
     parse: parse,
-    options: options || {},
+    options: options || {}
   };
 }
 

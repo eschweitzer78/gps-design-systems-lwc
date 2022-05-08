@@ -10,33 +10,32 @@
   <p>cachedValue: {_cachedValue}</p>
   <p>inputValue: {inputValue}</p>
 
-  <div if:false={isCustomLwc} 
-    class={errorClass}>
-
+  <div if:false={isCustomLwc} class={errorClass}>
     <div class="slds-grid">
-      <label if:true={labelVisible}
-        class="slds-form-element__label slds-show--inline" 
+      <label
+        if:true={labelVisible}
+        class="slds-form-element__label slds-show--inline"
         style="width: auto"
-        for={inputId}>
-        <abbr if:true={required}
-          class="slds-required" 
-          title={requiredLabel}>
+        for={inputId}
+      >
+        <abbr if:true={required} class="slds-required" title={requiredLabel}>
           *
         </abbr>
         {label}
       </label>
 
-      <omnistudio-tooltip if:true={fieldLevelHelp} 
+      <omnistudio-tooltip
+        if:true={fieldLevelHelp}
         class="slds-tooltip_container slds-p-right_x-small slds-p-top_xx-small"
         data-field-level-help=""
         icon-url={iconUrl}
         content={fieldLevelHelp}
         extrabuttonclass="slds-m-bottom_xx-small"
-        arrowposition={fieldLevelHelpPosition}>
+        arrowposition={fieldLevelHelpPosition}
+      >
       </omnistudio-tooltip>
 
-      <slot name="label">
-      </slot>
+      <slot name="label"> </slot>
     </div>
 
     <!-- formula -->
@@ -44,39 +43,43 @@
       <div class="slds-grid">
         <label
           class="slds-form-element__label slds-show--inline"
-          style="width: auto;"
-          for={inputId}>
+          style="width: auto"
+          for={inputId}
+        >
           {label}
         </label>
       </div>
       <input
-        class="slds-input" 
+        class="slds-input"
         type="text"
         readonly=""
         disabled=""
         id={inputId}
-        value={maskedValue}>
+        value={maskedValue}
+      />
     </div>
 
-    <div if:false={static}
-      class={pretextClass}>
-      <span if:true={pretext}
-        class="slds-form-element__addon">
+    <div if:false={static} class={pretextClass}>
+      <span if:true={pretext} class="slds-form-element__addon">
         {pretext}
       </span>
-      <span if:true={isIconLeft}
-        class="slds-icon_container slds-input__icon_left">
+      <span
+        if:true={isIconLeft}
+        class="slds-icon_container slds-input__icon_left"
+      >
         <omnistudio-icon
           icon-name={iconNameLeft}
           color={iconColor}
           theme={theme}
           size={size}
           baseurl={iconUrl}
-          extraclass="slds-input__icon">
+          extraclass="slds-input__icon"
+        >
         </omnistudio-icon>
       </span>
       <template if:true={isCurrencySFlocale}>
-        <input if:true={isInput}
+        <input
+          if:true={isInput}
           class="vlocity-input slds-input"
           id={inputId}
           tabindex={tabIndex}
@@ -100,11 +103,13 @@
           onblur={handleBlur}
           oninput={handleInput}
           onkeyup={handleKeyup}
-          onchange={handleChange}>
+          onchange={handleChange}
+        />
       </template>
 
       <template if:false={isCurrencySFlocale}>
-        <input if:true={isNumber}
+        <input
+          if:true={isNumber}
           class="hiddenNumber slds-hide"
           required={required}
           min={min}
@@ -112,9 +117,10 @@
           step={step}
           type="number"
           value={value}
-        >
+        />
 
-        <input if:true={isInput}
+        <input
+          if:true={isInput}
           class="vlocity-input slds-input"
           id={inputId}
           tabindex={tabIndex}
@@ -139,10 +145,12 @@
           oninput={handleInput}
           onkeyup={handleKeyup}
           onchange={handleChange}
-        >
+        />
       </template>
-      <span if:true={isIconRight}
-        class="slds-icon_container slds-input__icon_right">
+      <span
+        if:true={isIconRight}
+        class="slds-icon_container slds-input__icon_right"
+      >
         <omnistudio-icon
           icon-name={iconNameRight}
           color={iconColor}
@@ -152,23 +160,19 @@
           extraclass="slds-input__icon"
         ></omnistudio-icon>
       </span>
-      <span if:true={posttext}
-        class="slds-form-element__addon">
+      <span if:true={posttext} class="slds-form-element__addon">
         {posttext}
       </span>
-      <div if:true={isError}
-        class="slds-form-element__help">
+      <div if:true={isError} class="slds-form-element__help">
         {errorMessage}
       </div>
     </div>
 
     <div class="slds-grid">
-      <div if:true={static}
-        class="slds-form-element__static">
+      <div if:true={static} class="slds-form-element__static">
         {maskedValue}
       </div>
-      <span if:true={inlineHelp}
-        class="slds-form-element__static">
+      <span if:true={inlineHelp} class="slds-form-element__static">
         {inlineHelp}
       </span>
     </div>
