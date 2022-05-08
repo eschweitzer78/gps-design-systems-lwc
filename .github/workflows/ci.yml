@@ -57,6 +57,7 @@ jobs:
         uses: codecov/codecov-action@v2.0.2
         with:
           flags: LWC
+          token: ${{ secrets.CODECOV_TOKEN }}
 
   scratch-org-test:
     runs-on: ubuntu-latest
@@ -136,7 +137,7 @@ jobs:
 
       # Deploy omnistudio to scratch org
       - name: "Deployment Omnistudio"
-        run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 5
+        run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 5 -r -s=AllUsers
 
       # Deploy source to scratch org
       - name: "Push source to scratch org"
