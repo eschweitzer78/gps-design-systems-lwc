@@ -1,4 +1,3 @@
-/* eslint-disable header/header */
 const legacy = {
   Aacute: "Á",
   aacute: "á",

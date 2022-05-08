@@ -1,10 +1,8 @@
-/* eslint-disable header/header */
 import decodeMap from "./entitiesMapsDecode.js";
 
 // Adapted from https://github.com/mathiasbynens/he/blob/master/src/he.js#L94-L119
 
 const fromCodePoint =
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   String.fromCodePoint ||
   function (codePoint) {
     let output = "";

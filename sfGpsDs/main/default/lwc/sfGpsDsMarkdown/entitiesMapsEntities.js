@@ -1,4 +1,3 @@
-/* eslint-disable header/header */
 const entities = {
   Aacute: "Á",
   aacute: "á",

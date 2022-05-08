@@ -1,4 +1,3 @@
-/* eslint-disable header/header */
 import entityMap from "./entitiesMapsEntities.js";
 import legacyMap from "./entitiesMapsLegacy.js";
 import xmlMap from "./entitiesMapsXml.js";
@@ -57,7 +56,7 @@ function getReplacer(map) {
       }
       return decodeCodePoint(parseInt(str.substr(2), 10));
     }
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+
     return map[str.slice(1, -1)] || str;
   };
 }

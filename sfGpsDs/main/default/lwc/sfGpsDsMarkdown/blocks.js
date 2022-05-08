@@ -1,4 +1,3 @@
-/* eslint-disable header/header */
 "use strict";
 
 import Node from "./node.js";

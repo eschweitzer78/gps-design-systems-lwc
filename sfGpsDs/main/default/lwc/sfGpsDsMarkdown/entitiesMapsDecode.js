@@ -1,4 +1,3 @@
-/* eslint-disable header/header */
 const decode = {
   0: 65533,
   128: 8364,

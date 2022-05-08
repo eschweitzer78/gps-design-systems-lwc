@@ -1,4 +1,3 @@
-/* eslint-disable header/header */
 "use strict";
 
 // derived from https://github.com/mathiasbynens/String.fromCodePoint
