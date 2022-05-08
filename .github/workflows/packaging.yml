@@ -6,6 +6,11 @@ on:
   repository_dispatch:
     types: [start-packaging]
 
+permissions:
+      issues: write
+      pull-requests: write
+      contents: write
+
 # Jobs to be executed
 jobs:
   release-package-version:
@@ -86,7 +91,7 @@ jobs:
           fi
           exit $status
 
-      - name: "Create package version sfGpsAuNswS"
+      - name: "Create package version sfGpsDsAuNswS"
         id: createPackageVersion-sfGpsDsAuNswS
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
@@ -141,7 +146,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\) to install the sfGpsDs "
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\)\" title=\"sfGpsDs\""
           newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
@@ -150,7 +155,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\) to install the sfGpsDsAuNsw "
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\)\" title=\"sfGpsDsAuNsw\""
           newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
@@ -159,7 +164,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\) to install the sfGpsDsDsAuNswS "
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\)\" title=\"sfGpsDsAuNswS\""
           newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
