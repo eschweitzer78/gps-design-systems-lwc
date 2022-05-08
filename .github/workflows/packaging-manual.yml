@@ -1,0 +1,33 @@
+# Unique name for this workflow
+name: packaging-manual
+
+# Definition when the workflow should run
+on:
+  workflow_dispatch:
+
+# Jobs to be executed
+jobs:
+  trigger-packaging:
+    runs-on: ubuntu-latest
+    steps:
+      # Check for package changes using git diff
+      - name: "Check for package changes"
+        id: checkForChanges
+        run: |
+          hasChanges='true'
+          hasChangesSfGpsDs='true'
+          hasChangesSfGpsDsAuNsw='true'
+          hasChangesSfGpsDsAuNswS='true'
+          echo "::set-output name=hasChanges::$hasChanges"
+          echo "::set-output name=hasChangesSfGpsDs::$hasChangesSfGpsDs"
+          echo "::set-output name=hasChangesSfGpsDsAuNsw::$hasChangesSfGpsDsAuNsw"
+          echo "::set-output name=hasChangesSfGpsDsAuNswS::$hasChangesSfGpsDsAuNswS"
+
+      # Trigger packaging workflow if needed
+      - name: "Trigger packaging workflow if needed"
+        uses: peter-evans/repository-dispatch@v1.1.0
+        if: ${{ steps.checkForChanges.outputs.hasChanges == 'true' }}
+        with:
+          token: ${{ secrets.BOT_ACCESS_TOKEN }}
+          event-type: start-packaging
+          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}" }'
