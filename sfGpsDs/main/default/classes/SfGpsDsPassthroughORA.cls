@@ -1,5 +1,3 @@
-/* Current status: DEV */
-
 global with sharing class SfGpsDsPassthroughORA implements Callable {
   global Object call(String action, map<String, Object> args) {
     switch on action {

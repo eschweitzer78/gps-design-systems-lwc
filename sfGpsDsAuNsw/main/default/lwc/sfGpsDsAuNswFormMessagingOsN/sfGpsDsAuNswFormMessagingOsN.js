@@ -16,7 +16,6 @@ export default class SfGpsDsAuNswFormMessagingOsN extends OmniscriptMessaging {
 
   get mergedTitleText() {
     let splitText = this.messageText.split("\\n");
-    console.log(splitText.length);
     return splitText.length > 1
       ? omniGetMergedField(this, splitText[0])
       : this.messageType;
