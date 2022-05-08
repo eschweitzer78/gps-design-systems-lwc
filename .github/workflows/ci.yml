@@ -68,11 +68,37 @@ jobs:
         uses: actions/checkout@v2
 
       # Run PMD scan
-      - name: "Run PMD scan"
+      - name: "Run PMD scan for sfGpsDs"
         uses: pmd/pmd-github-action@v1.2.1
         id: pmd
         with:
-          sourcePath: "force-app"
+          sourcePath: "sfGpsDs"
+          rulesets: "ruleset.xml"
+
+      # Check for PMD violations
+      - name: "Check for PMD violations"
+        if: steps.pmd.outputs.violations != 0
+        run: exit 1
+
+      # Run PMD scan
+      - name: "Run PMD scan for sfGpsDsAuNsw"
+        uses: pmd/pmd-github-action@v1.2.1
+        id: pmd
+        with:
+          sourcePath: "sfGpsDsAuNsw"
+          rulesets: "ruleset.xml"
+
+      # Check for PMD violations
+      - name: "Check for PMD violations"
+        if: steps.pmd.outputs.violations != 0
+        run: exit 1
+
+     # Run PMD scan
+      - name: "Run PMD scan for sfGpsDsAuNswS"
+        uses: pmd/pmd-github-action@v1.2.1
+        id: pmd
+        with:
+          sourcePath: "sfGpsDsAuNswS"
           rulesets: "ruleset.xml"
 
       # Check for PMD violations
@@ -107,6 +133,10 @@ jobs:
       # Create scratch org
       - name: "Create scratch org"
         run: sfdx force:org:create -f config/project-scratch-def.json -a scratch-org -s -d 1
+
+      # Deploy omnistudio to scratch org
+      - name: "Deployment Omnistudio"
+        run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 5
 
       # Deploy source to scratch org
       - name: "Push source to scratch org"
