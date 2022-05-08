@@ -7,9 +7,9 @@ on:
     types: [start-packaging]
 
 permissions:
-      issues: write
-      pull-requests: write
-      contents: write
+  issues: write
+  pull-requests: write
+  contents: write
 
 # Jobs to be executed
 jobs:
