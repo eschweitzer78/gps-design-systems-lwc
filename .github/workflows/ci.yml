@@ -137,7 +137,7 @@ jobs:
 
       # Deploy omnistudio to scratch org
       - name: "Deployment Omnistudio"
-        run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 5 -r -s=AllUsers
+        run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 10 -r -s=AllUsers
 
       # Deploy source to scratch org
       - name: "Push source to scratch org"
@@ -153,7 +153,7 @@ jobs:
 
       # Run Apex tests in scratch org
       - name: "Run Apex tests"
-        run: sfdx force:apex:test:run -c -r human -d ./tests/apex -w 20
+        run: sfdx force:apex:test:run -c -r human -d ./tests/apex -w 20 --testlevel RunLocalTests
 
       # Delete temporary test file that Codecov is unable to parse
       - name: "Delete coverage file (temporary step)"
