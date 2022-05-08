@@ -136,7 +136,7 @@ jobs:
         run: sfdx force:org:create -f config/project-scratch-def.json -a scratch-org -s -d 1
 
       # Deploy omnistudio to scratch org
-      - name: "Deployment Omnistudio"
+      - name: "Deploy Omnistudio"
         run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 10 -r -s=AllUsers
 
       # Generate omnistudio versions of source
@@ -168,6 +168,7 @@ jobs:
         uses: codecov/codecov-action@v2.0.2
         with:
           flags: Apex
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       # Housekeeping
       - name: "Delete scratch org"
@@ -190,8 +191,20 @@ jobs:
           changedPaths=$( git diff-tree --name-only ${{ github.event.before }} $GITHUB_SHA )
           set +e
           hasChanges='false'
-          if [ $(echo "$changedPaths" | grep -c '^force-app') == 1 ]; then
+          hasChangesSfGpsDs='false'
+          hasChangesSfGpsDsAuNsw='false'
+          hasChangesSfGpsDsAuNswS='false'
+          if [ $(echo "$changedPaths" | grep -c '^sfGpsDs$') == 1 ]; then
               hasChanges='true'
+              hasChangesSfGpsDs='true'
+          fi
+          if [ $(echo "$changedPaths" | grep -c '^sfGpsDsAuNsw$') == 1 ]; then
+              hasChanges='true'
+              hasChangesSfGpsDsAuNsw='true'
+          fi
+          if [ $(echo "$changedPaths" | grep -c '^sfGpsDsAuNswS$') == 1 ]; then
+              hasChanges='true'
+              hasChangesSfGpsDsAuNswS='true'
           fi
           echo "::set-output name=hasChanges::$hasChanges"
 
@@ -202,4 +215,6 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
           event-type: start-packaging
-          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}" }'
+          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}" }'
+
+

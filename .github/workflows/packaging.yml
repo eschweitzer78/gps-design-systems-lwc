@@ -26,11 +26,30 @@ jobs:
         with:
           ref: ${{ github.event.client_payload.ref }}
 
+      # Install Volta to enforce proper node and package manager versions
+      - name: "Install Volta"
+        uses: volta-cli/action@v1
+
+      # Cache node_modules to speed up the process
+      - name: "Restore node_modules cache"
+        id: cache-npm
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-${{ env.cache-name }}-
+            npm-
+
+      # Generate omnistudio versions of source
+      - name: "Automatically generate Omnistudio source"
+        run: node ./osfilegen.js
+
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"
         shell: bash
         run: |
-          echo ${{ secrets.DEVHUB_SFDX_URL}} > ./DEVHUB_SFDX_URL.txt
+          echo ${{ secrets.DEVHUB_SFDX_URL }} > ./DEVHUB_SFDX_URL.txt
           secretFileSize=$(wc -c "./DEVHUB_SFDX_URL.txt" | awk '{print $1}')
           if [ $secretFileSize == 1 ]; then
               echo "Missing DEVHUB_SFDX_URL secret. Is this workflow running on a fork?";
@@ -46,11 +65,44 @@ jobs:
         run: rm -f ./DEVHUB_SFDX_URL.txt
 
       # Create package version and extract its id
-      - name: "Create package version"
-        id: createPackageVersion
+      - name: "Create package version sfGpsDs"
+        id: createPackageVersion-sfGpsDs
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -p sfGpsDs -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx force:package:version:create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --json)
+          echo $json
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "::set-output name=packageVersionId::$packageVersionId"
+          else
+              echo "sfdx force:package:version:create failed"
+          fi
+          exit $status
+
+      - name: "Create package version sfGpsDsAuNsw"
+        id: createPackageVersion-sfGpsDsAuNsw
+        if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx force:package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --json)
+          echo $json
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "::set-output name=packageVersionId::$packageVersionId"
+          else
+              echo "sfdx force:package:version:create failed"
+          fi
+          exit $status
+
+      - name: "Create package version sfGpsAuNswS"
+        id: createPackageVersion-sfGpsDsAuNswS
+        if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx force:package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
@@ -71,27 +123,66 @@ jobs:
       - name: "Create scratch org"
         run: sfdx force:org:create -f config/project-scratch-def.json -a scratch-org -s -d 1
 
-      # Install new package in scratch org
-      - name: "Install new package version in scratch org"
-        run: sfdx force:package:install -p ${{ steps.createPackageVersion.outputs.packageVersionId }} -w 10 -u scratch-org -r
+      # Deploy omnistudio to scratch org
+      - name: "Deploy Omnistudio"
+        run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 10 -r -s=AllUsers
 
-      # Update package install link in readme
-      - name: "Update package install link in readme"
+      # Install new sfGpsDs package in scratch org
+      - name: "Install new sfGpsDs package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} -w 10 -u scratch-org -r
+
+      # Install old sfGpsDs package in scratch org
+      - name: "Install new sfGpsDs package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
+        run: sfdx force:package:install -p "Salesforce Global Public Sector Design Systems" -w 10 -u scratch-org -r
+
+      # Install new sfGpsDsAuNsw package in scratch org
+      - name: "Install new sfGpsDsAuNsw package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} -w 10 -u scratch-org -r
+
+      # Install new sfGpsDsAuNswS package in scratch org
+      - name: "Install new sfGpsDsAuNswS package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 10 -u scratch-org -r
+
+      # Update sfGpsDs package install link in readme
+      - name: "Update package sfGpsDs install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          packageVersionId="${{ steps.createPackageVersion.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}"
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\) to install the sfGpsDs "
           newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
-      # Create PR for new package version
+      # Update sfGpsDsAuNsw package install link in readme
+      - name: "Update package sfGpsDsAuNsw install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\) to install the sfGpsDsAuNsw "
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Update sfGpsDsAuNswS package install link in readme
+      - name: "Update package sfGpsDsAuNswS install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\) to install the sfGpsDsDsAuNswS "
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create PR for new package version(s)
       - name: "Create PR for new package version"
         id: create-pr
         uses: peter-evans/create-pull-request@v3
         with:
-          title: "Released new package version ${{ steps.createPackageVersion.outputs.packageVersionId }}"
-          body: "Released new package version ${{ steps.createPackageVersion.outputs.packageVersionId }}"
-          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          commit-message: "Released new package version ${{ steps.createPackageVersion.outputs.packageVersionId }}"
+          title: "Released new package version(s)"
+          body: "Released new package version(s)"
+          author: eschweitzer78-bot <eschweitzer78-bot@users.noreply.github.com>
+          commit-message: "Released new package version(s)"
           branch: "auto/release-package-version"
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
 
