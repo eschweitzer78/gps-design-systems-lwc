@@ -113,12 +113,12 @@ jobs:
               run: sfdx force:source:push
 
             # Assign permissionset
-            - name: 'Assign permissionset to default user'
-              run: sfdx force:user:permset:assign -n recipes
+            # - name: 'Assign permissionset to default user'
+            #  run: sfdx force:user:permset:assign -n recipes
 
             # Import sample data
-            - name: 'Import sample data'
-              run: sfdx force:data:tree:import -p ./data/data-plan.json
+            # - name: 'Import sample data'
+            #  run: sfdx force:data:tree:import -p ./data/data-plan.json
 
             # Run Apex tests in scratch org
             - name: 'Run Apex tests'

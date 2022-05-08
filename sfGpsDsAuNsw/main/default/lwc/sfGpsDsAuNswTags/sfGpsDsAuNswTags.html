@@ -3,7 +3,7 @@
     <template if:true={asCheckboxes}>
       <template for:each={_tags} for:item="tag">
         <div key={tag.index} class={tag.className}>
-          <input type="checkbox" id={tag.id} checked={tag.checked}>{tag.text}</a>
+          <input type="checkbox" id={tag.id} checked={tag.checked}>
           <label for={tag.id}>
             {tag.text}
           </label>
