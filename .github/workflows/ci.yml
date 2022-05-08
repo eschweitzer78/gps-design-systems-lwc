@@ -70,40 +70,40 @@ jobs:
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
         uses: pmd/pmd-github-action@v1.2.1
-        id: pmd
+        id: pmd-sf-gps-ds
         with:
           sourcePath: "sfGpsDs"
           rulesets: "ruleset.xml"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
-        if: steps.pmd.outputs.violations != 0
+        if: steps.pmd-sf-gps-ds.outputs.violations != 0
         run: exit 1
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNsw"
         uses: pmd/pmd-github-action@v1.2.1
-        id: pmd
+        id: pmd-sf-gps-ds-au-nsw
         with:
           sourcePath: "sfGpsDsAuNsw"
           rulesets: "ruleset.xml"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
-        if: steps.pmd.outputs.violations != 0
+        if: steps.pmd-sf-gps-ds-au-nsw.outputs.violations != 0
         run: exit 1
 
      # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNswS"
         uses: pmd/pmd-github-action@v1.2.1
-        id: pmd
+        id: pmd-sf-gps-ds-au-nsw-s
         with:
           sourcePath: "sfGpsDsAuNswS"
           rulesets: "ruleset.xml"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
-        if: steps.pmd.outputs.violations != 0
+        if: steps.pmd-sf-gps-ds-au-nsw-s.outputs.violations != 0
         run: exit 1
 
       # Install Salesforce CLI
