@@ -1,6 +1,7 @@
 @isTest
 private class SfGpsDsResponsiveSizePickList_Test {
-  static @isTest void validateOptions() {
+  static @isTest
+  void validateOptions() {
     SfGpsDsResponsiveSizePickList pl = new SfGpsDsResponsiveSizePickList();
 
     VisualEditor.DataRow dr = pl.getDefaultValue();

@@ -15,6 +15,9 @@ jsconfig.json
 # LWC Jest coverage reports
 coverage/
 
+# Apex coverage reports
+tests/
+
 # Logs
 logs
 *.log
