@@ -8,7 +8,7 @@
 import { api, track } from "lwc";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
-import { NavigationMixin } from "lightning/navigation";
+// import { NavigationMixin } from "lightning/navigation";
 import isGuest from "@salesforce/user/isGuest";
 import cBasePath from "@salesforce/community/basePath";
 

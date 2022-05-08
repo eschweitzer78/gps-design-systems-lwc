@@ -11,6 +11,7 @@ let potentiallyUnsafe = function (url) {
 };
 
 // Helper function to produce an HTML tag.
+// eslint-disable-next-line no-shadow
 function tag(name, attrs, selfclosing) {
   if (this.disableTags > 0) {
     return;
@@ -66,6 +67,7 @@ function linebreak(node, entering, attribute) {
 }
 
 function link(node, entering, attribute) {
+  // eslint-disable-next-line no-shadow
   let attrs = this.attrs(node);
   if (entering) {
     if (!(this.options.safe && potentiallyUnsafe(node.destination))) {
@@ -124,6 +126,7 @@ function strong(node, entering, attribute) {
 
 function paragraph(node, entering, attribute) {
   let grandparent = node.parent.parent,
+    // eslint-disable-next-line no-shadow
     attrs = this.attrs(node);
   if (grandparent !== null && grandparent.type === "list") {
     if (grandparent.listTight) {
@@ -144,6 +147,7 @@ function paragraph(node, entering, attribute) {
 
 function heading(node, entering, attribute) {
   let tagname = "h" + node.level,
+    // eslint-disable-next-line no-shadow
     attrs = this.attrs(node);
   if (entering) {
     this.cr();
@@ -165,6 +169,7 @@ function code(node, entering, attribute) {
 
 function code_block(node, entering, attribute) {
   let info_words = node.info ? node.info.split(/\s+/) : [],
+    // eslint-disable-next-line no-shadow
     attrs = this.attrs(node);
   if (info_words.length > 0 && info_words[0].length > 0) {
     attrs.push(["class", "language-" + this.esc(info_words[0])]);
@@ -182,6 +187,7 @@ function code_block(node, entering, attribute) {
 }
 
 function thematic_break(node, entering, attribute) {
+  // eslint-disable-next-line no-shadow
   let attrs = this.attrs(node);
   this.cr();
   if (attribute) {
@@ -192,6 +198,7 @@ function thematic_break(node, entering, attribute) {
 }
 
 function block_quote(node, entering, attribute) {
+  // eslint-disable-next-line no-shadow
   let attrs = this.attrs(node);
   if (entering) {
     this.cr();
@@ -209,6 +216,7 @@ function block_quote(node, entering, attribute) {
 
 function list(node, entering, attribute) {
   let tagname = node.listType === "bullet" ? "ul" : "ol",
+    // eslint-disable-next-line no-shadow
     attrs = this.attrs(node);
 
   if (entering) {
@@ -230,6 +238,7 @@ function list(node, entering, attribute) {
 }
 
 function item(node, entering, attribute) {
+  // eslint-disable-next-line no-shadow
   let attrs = this.attrs(node);
   if (entering) {
     if (attribute) {

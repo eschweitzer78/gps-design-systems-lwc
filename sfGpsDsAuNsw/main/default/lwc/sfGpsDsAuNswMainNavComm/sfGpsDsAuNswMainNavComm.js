@@ -51,7 +51,10 @@ export default class SfGpsDsAuNswMainNavComm extends LightningElement {
     return this._navItems;
   }
 
-  set navItems(value) {}
+  set navItems(value) {
+    // TODO: implement
+    this._navItems = value;
+  }
 
   handleCloseMenu() {
     const closeMenuEvent = new CustomEvent("closemenu");

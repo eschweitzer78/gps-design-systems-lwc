@@ -2,10 +2,10 @@
   "packageDirectories": [
     {
       "path": "sfGpsDsAuNsw",
-      "default": true,
       "package": "Salesforce Global Public Sector AU NSW Design System",
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
+      "default": true,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {

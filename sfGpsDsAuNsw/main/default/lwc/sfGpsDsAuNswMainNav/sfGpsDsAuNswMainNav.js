@@ -86,13 +86,11 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   @api className;
 
   get computedClassName() {
-    // eslint-disable-next-line prettier/prettier
     return (
       "nsw-main-nav" +
       (this.isActivating ? " activating" : "") +
       (this.isActive ? " active" : "") +
       (this.isClosing ? " closing" : "") +
-      // eslint-disable-next-line prettier/prettier
       (this.className ? " " + this.className : "")
     );
   }
