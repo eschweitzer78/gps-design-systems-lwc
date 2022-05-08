@@ -207,6 +207,9 @@ jobs:
               hasChangesSfGpsDsAuNswS='true'
           fi
           echo "::set-output name=hasChanges::$hasChanges"
+          echo "::set-output name=hasChangesSfGpsDs::$hasChangesSfGpsDs"
+          echo "::set-output name=hasChangesSfGpsDsAuNsw::$hasChangesSfGpsDsAuNsw"
+          echo "::set-output name=hasChangesSfGpsDsAuNswS::$hasChangesSfGpsDsAuNswS"
 
       # Trigger packaging workflow if needed
       - name: "Trigger packaging workflow if needed"

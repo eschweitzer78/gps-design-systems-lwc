@@ -30,17 +30,6 @@ jobs:
       - name: "Install Volta"
         uses: volta-cli/action@v1
 
-      # Cache node_modules to speed up the process
-      - name: "Restore node_modules cache"
-        id: cache-npm
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            npm-${{ env.cache-name }}-
-            npm-
-
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
         run: node ./osfilegen.js
