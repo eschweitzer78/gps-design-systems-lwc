@@ -146,8 +146,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\)\" title=\"sfGpsDs\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDs\""
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDs\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsAuNsw package install link in readme
@@ -155,8 +155,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\)\" title=\"sfGpsDsAuNsw\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNsw\""
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNsw\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsAuNswS package install link in readme
@@ -164,8 +164,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\)\" title=\"sfGpsDsAuNswS\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswS\""
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswS\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create PR for new package version(s)
