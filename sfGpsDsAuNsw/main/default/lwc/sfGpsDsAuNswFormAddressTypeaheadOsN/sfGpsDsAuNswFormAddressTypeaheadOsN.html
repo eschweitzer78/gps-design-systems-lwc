@@ -59,7 +59,7 @@
       </a>
     </c-sf-gps-ds-au-nsw-typeahead-os-n>
 
-    <template if:false={isSmart}>
+    <div class={computedManualClassName}>
       <div class="nsw-form__group">
         <div class="sfgpsds-label__group">
           <div class="sfgpsds-label__group_label_container">
@@ -115,7 +115,7 @@
             <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
               name="street"
-              class=""
+              class="manual-field"
               label="Street Address"
               onblur={handleFieldBlur}
               required={_propSetMap.required}
@@ -131,7 +131,7 @@
             <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
               name="suburb"
-              class=""
+              class="manual-field"
               label="Suburb"
               onblur={handleFieldBlur}
               required={_propSetMap.required}
@@ -145,6 +145,8 @@
 
           <div class="nsw-col nsw-col-md-3 nsw-col-6 state">
             <c-sf-gps-ds-au-nsw-combobox-os-n
+              name="state"
+              class="manual-field"
               options={states}
               label="State"
               required={_propSetMap.required}
@@ -164,7 +166,7 @@
             <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
               name="postcode"
-              class=""
+              class="manual-field"
               label="Postcode"
               onblur={handleFieldBlur}
               required={_propSetMap.required}
@@ -174,6 +176,7 @@
               min-length="4"
               max-length="4"
               value={postcode}
+              gps-ds-manual-input=""
             >
             </c-sf-gps-ds-au-nsw-input-os-n>
           </div>
@@ -182,7 +185,7 @@
             <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
               name="country"
-              class=""
+              class="manual-field"
               label="Country"
               onblur={handleFieldBlur}
               required={_propSetMap.required}
@@ -196,14 +199,7 @@
           </div>
         </div>
       </div>
-    </template>
-
-    <!--
-    <div if:true={errorMessage}
-      class="slds-has-error nds-has-error">
-      <span class="slds-form-element__help nds-form-element__help nds-form-element__help_text-transform__none">{errorMessage}</span>
     </div>
-    -->
 
     <span
       if:true={errorMessage}

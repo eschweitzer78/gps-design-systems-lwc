@@ -62,6 +62,8 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     } else {
       this.isSmart = true;
     }
+
+    this.checkValidity();
   }
 
   handleStateBlur(event) {
@@ -69,6 +71,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       // eslint-disable-next-line @lwc/lwc/no-api-reassignments
       this.state = event.target.value;
       this.setManualValue();
+      this.checkValidity();
     }
   }
 
@@ -112,6 +115,8 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
       default:
     }
+
+    this.checkValidity();
   }
 
   handleLookup() {
@@ -208,6 +213,11 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       }
 
       this.typeaheadFn(event);
+
+      // solve an issue with validation with the original widget
+      // when entering text, not selecting an item and choosing next
+      // which shows a validation error when it should not
+      this.checkValidity();
     }
   }
 
@@ -246,6 +256,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
         this.elementValueValue = Array.isArray(e) ? e[0] : e;
         this.elementValueStatus = STATUS_RESOLVED;
         this.applyCallResp(this.getSmartValue());
+        this.checkValidity();
       })
       .catch((e) => this.handleError(e));
   }
@@ -275,6 +286,111 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     }
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+
+    if (this.elementValue) {
+      this.isSmart = this.elementValue.mode
+        ? this.elementValue.mode === MODE_SMART
+        : true;
+      this.elementValueLabel = this.elementValue.label;
+      this.elementValueValue = { ...this.elementValue.value };
+      this.elementValueStatus = this.elementValue.status;
+
+      if (!this.isSmart && this.elementValueValue.addressDetails) {
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+        this.street = this.elementValueValue.addressDetails.street;
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+        this.suburb = this.elementValueValue.addressDetails.suburb;
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+        this.state = this.elementValueValue.addressDetails.state;
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+        this.postcode = this.elementValueValue.addressDetails.postcode;
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+        this.country = this.elementValueValue.addressDetails.country;
+      }
+    } else {
+      this.isSmart = true;
+      this.elementValueLabel = null;
+      this.elementValueValue = null;
+      this.elementValueStatus = STATUS_TYPING;
+    }
+  }
+
+  _manualChildInputs;
+
+  get manualChildInputs() {
+    if (!this._manualChildInputs) {
+      this._manualChildInputs = this.template.querySelectorAll(".manual-field");
+    }
+    return this._manualChildInputs;
+  }
+
+  @api checkValidity() {
+    try {
+      if (this.isSmart) {
+        let cv = true;
+
+        if (
+          this.elementValueStatus !== STATUS_RESOLVED &&
+          this._propSetMap.required
+        ) {
+          cv = false;
+          this.isValid = false;
+        } else {
+          cv = super.checkValidity();
+        }
+
+        return cv;
+      }
+
+      let validity = true;
+      this.manualChildInputs.forEach((i) => {
+        let v = i.checkValidity();
+        validity = validity && v;
+      });
+
+      this.isValid = validity;
+      return this.isValid;
+    } catch (t) {
+      return true;
+    }
+  }
+
+  @api reportValidity() {
+    try {
+      if (this.isSmart) {
+        let rv = super.reportValidity();
+
+        if (
+          this.elementValueStatus !== STATUS_RESOLVED &&
+          this._propSetMap.required &&
+          this.elementValueLabel
+        ) {
+          // There is a condition on this.elementValueLabel as we do not want to show an error message when
+          // there is no text as the child input will do it.
+
+          rv = false;
+          this.isValid = false;
+          this.errorMessage = this._messageWhenValueMissing;
+        }
+
+        return rv;
+      }
+
+      let validity = true;
+      this.manualChildInputs.forEach((i) => {
+        let v = i.reportValidity();
+        validity = validity && v;
+      });
+
+      this.isValid = validity;
+      return this.isValid;
+    } catch (t) {
+      return true;
+    }
+  }
+
   // STYLE EXPRESSIONS
 
   get computedLabelClassName() {
@@ -293,6 +409,10 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get computedTypeaheadClass() {
     return this.isSmart ? "" : "sfgpsds-hide";
+  }
+
+  get computedManualClassName() {
+    return this.isSmart ? "sfgpsds-hide" : "";
   }
 
   get mergedLabel() {
