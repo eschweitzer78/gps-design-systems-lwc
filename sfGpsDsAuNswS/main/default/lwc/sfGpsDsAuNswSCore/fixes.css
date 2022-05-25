@@ -1,9 +1,9 @@
 input:focus {
   outline: 2px solid var(--nsw-s-focus, #2e5299);
-  outline-offset: 2px
+  outline-offset: 2px;
 }
 
 input:focus:not(.focus-visible) {
   outline: 2px solid var(--nsw-s-focus, #2e5299);
-  outline-offset: 2px
+  outline-offset: 2px;
 }

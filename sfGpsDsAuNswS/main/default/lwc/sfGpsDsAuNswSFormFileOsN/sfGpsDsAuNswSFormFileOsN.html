@@ -12,11 +12,11 @@
   <slot>
     <div class={_containerClasses} aria-labelledby="fileUpload" tabindex="0">
       <div class="form__group">
-        <label
-          id="fileUpload"
-          class={computedLabelClassName}>
+        <label id="fileUpload" class={computedLabelClassName}>
           {mergedLabel}
-          <span if:true={_propSetMap.required}> ({allCustomLabelsUtil.OmniRequired})</span>
+          <span if:true={_propSetMap.required}>
+            ({allCustomLabelsUtil.OmniRequired})</span
+          >
         </label>
         <span if:true={_propSetMap.help} id="helper" class="form__help">
           {mergedHelpText}

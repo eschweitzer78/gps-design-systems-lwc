@@ -1,26 +1,32 @@
 <template>
   <template if:true={auto}>
     <template if:true={hasResult}>
-      <div class="copy-container slds-is-absolute slds-z_-1" lwc:dom="manual">
-      </div>
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
 
       <c-sf-gps-ds-au-nsw-alert-os
         as="success"
         title="Your application is saved for later. "
         compact="true"
       >
-        {_bSflLabels.OmniScriptResumeLink} <a onclick={copyLinkToClipboard}>
-          {_bSflLabels.OmniCopyLink}
-        </a> or&nbsp;<a href={emailLink} target="_blank" rel="noopener">{_bSflLabels.OmniEmailMe}</a>.
-       </c-sf-gps-ds-au-nsw-alert-os>
+        {_bSflLabels.OmniScriptResumeLink}
+        <a onclick={copyLinkToClipboard}> {_bSflLabels.OmniCopyLink} </a>
+        or&nbsp;<a href={emailLink} target="_blank" rel="noopener"
+          >{_bSflLabels.OmniEmailMe}</a
+        >.
+      </c-sf-gps-ds-au-nsw-alert-os>
     </template>
   </template>
 
   <template if:false={auto}>
     <template if:true={hasResult}>
-      <div class="copy-container slds-is-absolute slds-z_-1" lwc:dom="manual">
-      </div>
-      
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
+
       <div class="nsw-container">
         <c-sf-gps-ds-au-nsw-alert-os
           as="success"
@@ -30,7 +36,10 @@
           <p>{_bSflLabels.OmniResume}:</p>
           <p><a href={resumeLink} target="_blank">{resumeLink}</a></p>
           <br />
-          <p><a onclick={copyLinkToClipboard}>{_bSflLabels.OmniCopyLink}</a> or <a onclick={openEmail}>{_bSflLabels.OmniEmailMe}</a></p>
+          <p>
+            <a onclick={copyLinkToClipboard}>{_bSflLabels.OmniCopyLink}</a> or
+            <a onclick={openEmail}>{_bSflLabels.OmniEmailMe}</a>
+          </p>
         </c-sf-gps-ds-au-nsw-alert-os>
       </div>
     </template>

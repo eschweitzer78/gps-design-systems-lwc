@@ -8,146 +8,147 @@
   font-weight: 500;
   height: auto;
   line-height: 1.5rem;
-  padding: calc(22px - .75rem) .75rem;
+  padding: calc(22px - 0.75rem) 0.75rem;
   text-align: center;
   text-decoration: none;
-  transition: border-color .5s ease, background-color .5s ease, color .5s ease;
-  width: 100%
+  transition: border-color 0.5s ease, background-color 0.5s ease,
+    color 0.5s ease;
+  width: 100%;
 }
 
-@media (min-width:480px) {
+@media (min-width: 480px) {
   .button {
     min-width: 200px;
-    width: auto
+    width: auto;
   }
 }
 
 .button:focus {
   outline: 2px solid #2e5299;
-  outline-offset: 2px
+  outline-offset: 2px;
 }
 
 .button:focus:not(.focus-visible) {
-  outline: none
+  outline: none;
 }
 
 .button.focus-visible {
-  -moz-outline-radius: 8px
+  -moz-outline-radius: 8px;
 }
 
 .button.button--disabled,
 .button.is-disabled,
 .button:disabled {
   cursor: not-allowed;
-  opacity: .3;
-  transition: none
+  opacity: 0.3;
+  transition: none;
 }
 
 .button--primary {
   background-color: #c60c30;
   border: 2px solid #a71930;
-  color: #fff
+  color: #fff;
 }
 
 .button--primary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
   background-color: #e80229;
   border-color: transparent;
-  color: #fff
+  color: #fff;
 }
 
 .button--primary.is-active,
 .button--primary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
   background-color: #a71930;
   border-color: transparent;
-  color: #fff
+  color: #fff;
 }
 
 @media print {
   .button--primary {
     background: #fff;
     border: 2px solid #c60c30;
-    color: #c60c30
+    color: #c60c30;
   }
 }
 
 .button--secondary {
   background-color: #f9fdff;
   border: 2px solid #c4d0d6;
-  color: #2e5299
+  color: #2e5299;
 }
 
 .button--secondary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
   background-color: #fff;
   border-color: #deeaf0;
-  color: #2e5299
+  color: #2e5299;
 }
 
 .button--secondary.is-active,
 .button--secondary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
   background-color: #e0e4e6;
   border-color: #929fa4;
-  color: #002664
+  color: #002664;
 }
 
 @media print {
   .button--secondary {
     background: #fff;
     border: 2px solid #929fa4;
-    color: #2e5299
+    color: #2e5299;
   }
 }
 
 .button--tertiary {
   background-color: #2e5299;
   border: 2px solid #274a8f;
-  color: #fff
+  color: #fff;
 }
 
 .button--tertiary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
   background-color: #5272b1;
   border-color: transparent;
-  color: #fff
+  color: #fff;
 }
 
 .button--tertiary.is-active,
 .button--tertiary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
   background-color: #002664;
   border-color: transparent;
-  color: #fff
+  color: #fff;
 }
 
 @media print {
   .button--tertiary {
     background: #fff;
     border: 2px solid #2e5299;
-    color: #2e5299
+    color: #2e5299;
   }
 }
 
 .button--white {
   background-color: #fff;
   border: 2px solid #c4d0d6;
-  color: #242934
+  color: #242934;
 }
 
 .button--white:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
   background-color: #fff;
   border-color: #deeaf0;
-  color: #242934
+  color: #242934;
 }
 
 .button--white.is-active,
 .button--white:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
   background-color: #fff;
   border-color: #929fa4;
-  color: #242934
+  color: #242934;
 }
 
 @media print {
   .button--white {
     background: #fff;
     border: 2px solid #929fa4;
-    color: #2e5299
+    color: #2e5299;
   }
 }
 
@@ -158,153 +159,154 @@
   min-width: 0;
   padding-left: 0;
   padding-right: 0;
-  text-align: left
+  text-align: left;
 }
 
 .button--link.focus-visible {
-  -moz-outline-radius: 0
+  -moz-outline-radius: 0;
 }
 
-@media (max-width:479px) {
+@media (max-width: 479px) {
   .button--link {
     min-width: 0;
-    width: auto
+    width: auto;
   }
 }
 
 .button--link.button--arrow {
   padding-right: 40px;
-  position: relative
+  position: relative;
 }
 
 .button--link.button--arrow:before {
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='19' height='14' xmlns='http://www.w3.org/2000/svg' fill='%232e5299'%3E%3Cpath d='m10.033 1.61 4.084 4.027H0v2.301h14.117l-4.084 4.027 1.634 1.61 7-6.787-7-6.788z'/%3E%3C/svg%3E") no-repeat 100%;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='19' height='14' xmlns='http://www.w3.org/2000/svg' fill='%232e5299'%3E%3Cpath d='m10.033 1.61 4.084 4.027H0v2.301h14.117l-4.084 4.027 1.634 1.61 7-6.787-7-6.788z'/%3E%3C/svg%3E")
+    no-repeat 100%;
   content: "";
   height: 14px;
   margin-top: -7px;
   position: absolute;
   right: 14px;
   top: 50%;
-  transition: transform .5s ease-in-out;
-  width: 19px
+  transition: transform 0.5s ease-in-out;
+  width: 19px;
 }
 
 .button--link.button--arrow:hover:before {
-  transform: translateX(14px)
+  transform: translateX(14px);
 }
 
 .button--link.button--arrow.is-external,
-.button--link.button--arrow[href^=http]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
-  padding-right: 40px
+.button--link.button--arrow[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
+  padding-right: 40px;
 }
 
 .button--link.button--arrow.is-external:after,
-.button--link.button--arrow[href^=http]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
-  display: none
+.button--link.button--arrow[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+  display: none;
 }
 
 .button--small {
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 1em;
-  padding-bottom: calc(16px - .5em);
-  padding-top: calc(16px - .5em)
+  padding-bottom: calc(16px - 0.5em);
+  padding-top: calc(16px - 0.5em);
 }
 
 .button--large {
-  padding-bottom: calc(22px - .75rem);
-  padding-top: calc(22px - .75rem)
+  padding-bottom: calc(22px - 0.75rem);
+  padding-top: calc(22px - 0.75rem);
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .button--large {
     font-size: 1.125rem;
-    padding-bottom: calc(26px - .75rem);
-    padding-top: calc(26px - .75rem)
+    padding-bottom: calc(26px - 0.75rem);
+    padding-top: calc(26px - 0.75rem);
   }
 }
 
 .button--xlarge {
-  padding-bottom: calc(22px - .75rem);
-  padding-top: calc(22px - .75rem)
+  padding-bottom: calc(22px - 0.75rem);
+  padding-top: calc(22px - 0.75rem);
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .button--xlarge {
     font-size: 1.125rem;
-    padding-bottom: calc(26px - .75rem);
-    padding-top: calc(26px - .75rem)
+    padding-bottom: calc(26px - 0.75rem);
+    padding-top: calc(26px - 0.75rem);
   }
 }
 
 .button--xxlarge {
-  padding-bottom: calc(22px - .75rem);
-  padding-top: calc(22px - .75rem)
+  padding-bottom: calc(22px - 0.75rem);
+  padding-top: calc(22px - 0.75rem);
 }
 
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .button--xxlarge {
     border-radius: 10px;
     font-size: 1.375rem;
     line-height: 2rem;
     padding-bottom: calc(38px - 1rem);
-    padding-top: calc(38px - 1rem)
+    padding-top: calc(38px - 1rem);
   }
 }
 
-@media (max-width:767px) and (min-width:768px) {
+@media (max-width: 767px) and (min-width: 768px) {
   .button--xxlarge {
-    font-size: 1.25rem
+    font-size: 1.25rem;
   }
 }
 
 .button--medium {
   font-size: 1rem;
   line-height: 1.5rem;
-  padding-bottom: calc(22px - .75rem);
-  padding-top: calc(22px - .75rem)
+  padding-bottom: calc(22px - 0.75rem);
+  padding-top: calc(22px - 0.75rem);
 }
 
 .button--short {
   min-width: 0;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  width: auto
+  width: auto;
 }
 
 .button--external,
 .button.is-external,
-.button[href^=http]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
+.button[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
   background-image: none;
-  padding-right: .5rem
+  padding-right: 0.5rem;
 }
 
 .button--external:after,
 .button.is-external:after,
-.button[href^=http]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+.button[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
   content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
   display: inline-block;
   height: 12px;
   margin-left: 4px;
-  width: 12px
+  width: 12px;
 }
 
 .button--external.button--link:after,
 .button--external.button--secondary:after,
-.button.button--link[href^=http]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
-.button.button--secondary[href^=http]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
+.button.button--link[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
+.button.button--secondary[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
 .button.is-external.button--link:after,
 .button.is-external.button--secondary:after {
-  content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%232e5299' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E")
+  content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%232e5299' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
 }
 
 .button--external.button--white:after,
-.button.button--white[href^=http]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
+.button.button--white[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
 .button.is-external.button--white:after {
-  content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%23646974' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E")
+  content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%23646974' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
 }
 
 .button--external.is-unstyled:after,
 .button.is-external.is-unstyled:after,
-.button.is-unstyled[href^=http]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
-  display: none
+.button.is-unstyled[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+  display: none;
 }

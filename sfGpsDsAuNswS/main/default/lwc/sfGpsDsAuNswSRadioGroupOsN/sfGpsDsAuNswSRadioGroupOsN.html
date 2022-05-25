@@ -7,7 +7,9 @@
           <span if:true={required}> ({requiredLabel})</span>
         </span>
         <slot name="label"></slot>
-        <span if:true={fieldLevelHelp} id="helper" class="form-help">{fieldLevelHelp}</span>
+        <span if:true={fieldLevelHelp} id="helper" class="form-help"
+          >{fieldLevelHelp}</span
+        >
       </legend>
 
       <div class="form__radios">
@@ -27,12 +29,7 @@
               onfocus={handleFocus}
               onchange={onchangevalue}
             />
-            <label
-              data-index={t}
-              for={e.id}
-            >
-              {e.label}
-            </label>
+            <label data-index={t} for={e.id}> {e.label} </label>
           </div>
         </template>
       </div>
@@ -45,7 +42,6 @@
       >
         {errorMessage}
       </span>
-
     </fieldset>
   </div>
 </template>

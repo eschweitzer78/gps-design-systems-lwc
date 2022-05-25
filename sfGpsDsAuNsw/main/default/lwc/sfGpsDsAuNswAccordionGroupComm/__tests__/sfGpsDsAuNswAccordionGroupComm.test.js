@@ -2,14 +2,15 @@ import { createElement } from "lwc";
 import SfGpsDsAuNswAccordionGroupComm from "c/sfGpsDsAuNswAccordionGroupComm";
 
 const tag = "c-sf-gps-ds-au-nsw-accordion-group-comm";
-const childTag = "c-sf-gps-ds-au-nsw-accordion-comm"
+const childTag = "c-sf-gps-ds-au-nsw-accordion-comm";
 const expandAllLabel = "Expand all";
 const collapseAllLabel = "Collapse all";
 const simpleContent = "# Accordion\n\nHow are you?";
-const compositeContent = "# Accordion\n\nHow are you?\n\n# Accordion2\n\nVery well thank you!";
+const compositeContent =
+  "# Accordion\n\nHow are you?\n\n# Accordion2\n\nVery well thank you!";
 const enabledBtnSelect = "button:not([disabled])";
 const disabledBtnSelect = "button:disabled";
-const toggleClassSelect = ".nsw-accordion__toggle"
+const toggleClassSelect = ".nsw-accordion__toggle";
 
 describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
   afterEach(() => {
@@ -18,7 +19,6 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
       document.body.removeChild(document.body.firstChild);
     }
   });
-
 
   it("is does not have the expand/collapse all buttons by default", () => {
     const element = createElement(tag, {
@@ -41,8 +41,10 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
     document.body.appendChild(element);
 
     const childAccordions = element.shadowRoot.querySelectorAll(childTag);
-    childAccordions.forEach(childAccordion => expect(childAccordion.closed).toBe(true));
-});
+    childAccordions.forEach((childAccordion) =>
+      expect(childAccordion.closed).toBe(true)
+    );
+  });
 
   it("is does have the expand/collapse all buttons when configured to", () => {
     const element = createElement(tag, {
@@ -65,12 +67,11 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
     expect(collapsedAll.textContent).toBe(collapseAllLabel);
   });
 
-
   it("is fully expanded when someone clicks on expand all", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordionGroupComm
     });
-    
+
     element.content = compositeContent;
     element.showButtons = true;
     document.body.appendChild(element);
@@ -81,7 +82,9 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
 
     return Promise.resolve().then(() => {
       const childAccordions = element.shadowRoot.querySelectorAll(childTag);
-      childAccordions.forEach(childAccordion => expect(childAccordion.closed).toBe(false));
+      childAccordions.forEach((childAccordion) =>
+        expect(childAccordion.closed).toBe(false)
+      );
 
       // now the expand all button should be disabled
       expandAll = element.shadowRoot.querySelector(disabledBtnSelect);
@@ -92,7 +95,6 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
       const collapseAll = element.shadowRoot.querySelector(enabledBtnSelect);
       expect(collapseAll).not.toBeNull();
       expect(collapseAll.textContent).toBe(collapseAllLabel);
-  
     });
   });
 
@@ -100,7 +102,7 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordionGroupComm
     });
-    
+
     element.content = compositeContent;
     element.showButtons = true;
     document.body.appendChild(element);
@@ -117,7 +119,9 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
 
       return Promise.resolve().then(() => {
         const childAccordions = element.shadowRoot.querySelectorAll(childTag);
-        childAccordions.forEach(childAccordion => expect(childAccordion.closed).toBe(true));
+        childAccordions.forEach((childAccordion) =>
+          expect(childAccordion.closed).toBe(true)
+        );
       });
     });
   });
@@ -126,7 +130,7 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordionGroupComm
     });
-    
+
     element.content = compositeContent;
     element.showButtons = true;
     document.body.appendChild(element);
@@ -138,7 +142,7 @@ describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordionGroupComm
     });
-    
+
     element.content = compositeContent;
     element.showButtons = true;
     document.body.appendChild(element);

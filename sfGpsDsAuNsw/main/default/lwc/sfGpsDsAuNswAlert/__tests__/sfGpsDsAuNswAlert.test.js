@@ -13,7 +13,6 @@ describe("c-sf-gps-ds-au-nsw-alert", () => {
     }
   });
 
-
   it("has an info, non-compact rendering by default", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAlert
@@ -64,7 +63,7 @@ describe("c-sf-gps-ds-au-nsw-alert", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAlert
     });
-    
+
     element.title = defaultTitle;
     document.body.appendChild(element);
 
@@ -75,7 +74,7 @@ describe("c-sf-gps-ds-au-nsw-alert", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAlert
     });
-    
+
     element.title = defaultTitle;
     element.compact = true;
     document.body.appendChild(element);

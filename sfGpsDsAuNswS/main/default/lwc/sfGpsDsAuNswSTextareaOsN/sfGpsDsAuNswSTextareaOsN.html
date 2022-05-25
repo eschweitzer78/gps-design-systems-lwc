@@ -1,5 +1,5 @@
 <template>
-  <div class="form__item" style="width: auto;">
+  <div class="form__item" style="width: auto">
     <div if:true={labelVisible} data-label="true">
       <label id="textarealabel" class={computedLabelClassName} for="textareaId">
         {label}
@@ -36,11 +36,7 @@
     >
     </textarea>
 
-    <span
-      id="errorMessageBlock"
-      if:true={isError}
-      class="form__error"
-    >
+    <span id="errorMessageBlock" if:true={isError} class="form__error">
       {errorMessage}
     </span>
   </div>

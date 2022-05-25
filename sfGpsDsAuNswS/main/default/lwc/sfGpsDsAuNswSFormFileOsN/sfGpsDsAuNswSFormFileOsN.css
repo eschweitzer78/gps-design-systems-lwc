@@ -13,5 +13,5 @@
   --slds-c-button-spacing-block-end: 0.5rem;
   --slds-c-button-neutral-spacing-inline-start: 1.375rem;
   --slds-c-button-neutral-spacing-inline-end: 1.375rem;
-  font-weight: var(--nsw-s-font-bold)
+  font-weight: var(--nsw-s-font-bold);
 }

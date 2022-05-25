@@ -9,7 +9,6 @@ describe("c-sf-gps-ds-ip-lwc", () => {
     }
   });
 
-
   it("has no error to start with", () => {
     const element = createElement("c-sf-gps-ds-lwc", {
       is: SfGpsDsLwc

@@ -7,12 +7,14 @@ input {
   max-width: inherit; /* otherwise inputs do not take all the width available in omni */
 }
 
-label.form-required::after { /* otherwise there is no indication of mandatory fields */
+label.form-required::after {
+  /* otherwise there is no indication of mandatory fields */
   content: " *";
   color: var(--nsw-s-error);
 }
 
-legend.form-required::after { /* otherwise there is no indication of mandatory fields */
+legend.form-required::after {
+  /* otherwise there is no indication of mandatory fields */
   content: " *";
   color: var(--nsw-s-error);
 }
@@ -54,7 +56,6 @@ legend span span {
 
 /* end radios and checkboxes */
 /* ------------------------- */
-
 
 .form__radios .form__item,
 .form__checkboxes .form__item {

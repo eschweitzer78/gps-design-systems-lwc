@@ -1,6 +1,5 @@
 @import "c/sfGpsDsAuNswSFormCssOs";
 
-
 .disclosure {
   margin-top: 0.5rem;
   padding-left: 1rem;
@@ -20,7 +19,11 @@ a {
 
 /* to redress the slds styling that removes it */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--nsw-s-font-family, "Gotham, Arial, sans-serif")
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--nsw-s-font-family, "Gotham, Arial, sans-serif");
 }
-

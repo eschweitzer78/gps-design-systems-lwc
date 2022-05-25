@@ -1,20 +1,26 @@
 <template>
   <template if:false={isCustomLwc}>
-    <div class="form__item" style="width: auto;">
+    <div class="form__item" style="width: auto">
       <template if:true={labelVisible}>
-        <legend if:true={useLegend} 
-          class={computedLegendClassName} for={inputId}>
+        <legend
+          if:true={useLegend}
+          class={computedLegendClassName}
+          for={inputId}
+        >
           <span>
             {label}
-            <span if:true={required}> ({requiredLabel})</span> <!-- TODO: check required graphical cue -->
+            <span if:true={required}> ({requiredLabel})</span>
+            <!-- TODO: check required graphical cue -->
           </span>
           <span if:true={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
         </legend>
-        <label if:false={useLegend}
+        <label
+          if:false={useLegend}
           class={computedLabelClassName}
-          for={inputId}>
+          for={inputId}
+        >
           {label}
           <span if:true={required}> ({requiredLabel})</span>
         </label>
@@ -22,7 +28,6 @@
           {fieldLevelHelp}
         </span>
       </template>
-
 
       <template if:true={isCheckbox}>
         <div class="form__checkboxes">
@@ -42,7 +47,12 @@
               onfocus={triggerEvent}
               onblur={validateError}
             />
-            <label if:true={required} class="form-required" for={inputId} data-label="true">
+            <label
+              if:true={required}
+              class="form-required"
+              for={inputId}
+              data-label="true"
+            >
               {label}
               <span title={requiredLabel}> ({requiredLabel})</span>
             </label>
@@ -54,7 +64,8 @@
         </div>
 
         <!-- fieldLevelHelp for checkboxes? -->
-      </template> <!-- isCheckbox -->
+      </template>
+      <!-- isCheckbox -->
 
       <div if:true={_isFormula}>
         <label
@@ -76,7 +87,8 @@
           onkeydown={triggerKeyEvents}
           onkeyup={triggerKeyEvents}
         />
-      </div> <!-- isFormula -->
+      </div>
+      <!-- isFormula -->
 
       <div if:true={isRadio} class="slds-form-element__control">
         <div class="slds-radio">
@@ -103,9 +115,11 @@
             </span>
           </label>
         </div>
-      </div> <!-- isRadio -->
+      </div>
+      <!-- isRadio -->
 
-      <label if:true={isToggle}
+      <label
+        if:true={isToggle}
         class="slds-checkbox_toggle slds-grid"
         for={inputId}
       >
@@ -132,7 +146,8 @@
           <span class="slds-checkbox_on"> {toggleOnLabel} </span>
           <span class="slds-checkbox_off"> {toggleOffLabel} </span>
         </span>
-      </label> <!-- isToggle -->
+      </label>
+      <!-- isToggle -->
 
       <div if:false={static} class={pretextClass}>
         <div if:true={isFile} class="slds-form-element__control">
@@ -236,8 +251,10 @@
             >
             </omnistudio-icon>
           </span>
-        </div> <!-- isFile -->
-      </div> <!-- static -->
+        </div>
+        <!-- isFile -->
+      </div>
+      <!-- static -->
 
       <input
         if:true={isInput}
@@ -300,8 +317,9 @@
       <span if:true={inlineHelp} class="slds-form-element__static">
         {inlineHelp}
       </span>
-    </div>  
-  </template> <!-- customLwc -->
+    </div>
+  </template>
+  <!-- customLwc -->
 
   <c-sf-gps-ds-au-nsw-s-date-picker-os-n
     if:true={isDate}

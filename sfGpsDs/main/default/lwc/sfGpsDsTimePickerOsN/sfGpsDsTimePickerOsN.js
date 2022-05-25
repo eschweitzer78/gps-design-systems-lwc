@@ -13,7 +13,9 @@ export default class SfGpsDsTimePickerOsN extends OmnistudioTimePicker {
   showDropdown() {
     super.showDropdown();
 
-    let e = this.template.querySelector(`.${this.theme}-dropdown-trigger_click`);
+    let e = this.template.querySelector(
+      `.${this.theme}-dropdown-trigger_click`
+    );
     e.classList.add(`${this.theme}-is-open`);
   }
 
@@ -22,13 +24,13 @@ export default class SfGpsDsTimePickerOsN extends OmnistudioTimePicker {
   showLookup(e) {
     if (!this.readOnly) {
       if ("mousedown" === e.type) {
-          if (this._isOpen) {
-            this.hideDropdown();
-          } else {
-            this.showDropdown();
-          }
-          
-          return;
+        if (this._isOpen) {
+          this.hideDropdown();
+        } else {
+          this.showDropdown();
+        }
+
+        return;
       }
     }
 

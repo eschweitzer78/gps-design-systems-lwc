@@ -39,7 +39,7 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
   }
 
   get helperId() {
-    return "helper"
+    return "helper";
   }
 
   get computedLegendClassName() {

@@ -94,8 +94,8 @@ input[readonly][role="combobox"] {
   min-width: auto;
 }
 
-.gpsds-dropdown [role=combobox] input[readonly],
-.gpsds-dropdown input[readonly][role=combobox] {
+.gpsds-dropdown [role="combobox"] input[readonly],
+.gpsds-dropdown input[readonly][role="combobox"] {
   padding-left: 0.75rem;
   font-weight: var(--nsw-s-font-normal);
 }
@@ -120,7 +120,6 @@ input[readonly][role="combobox"]:focus {
 }
 
 /* end */
-
 
 .gpsds-listbox__option-text_entity {
   max-width: 100%;

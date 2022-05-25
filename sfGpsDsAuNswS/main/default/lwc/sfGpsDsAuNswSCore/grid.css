@@ -1,94 +1,94 @@
-@media (min-width:768px) {
+@media (min-width: 768px) {
   .grid {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -.75rem;
-    margin-right: -.75rem
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
   }
 
   .grid__col {
-    margin-bottom: .75rem;
-    padding-left: .75rem;
-    padding-right: .75rem
+    margin-bottom: 0.75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 
   .grid--9-col {
-    width: 75%
+    width: 75%;
   }
 
   .grid--8-col {
-    width: 66.6667%
+    width: 66.6667%;
   }
 
   .grid--6-col {
-    width: 50%
+    width: 50%;
   }
 
   .grid--4-col {
-    width: 33.3333%
+    width: 33.3333%;
   }
 
   .grid--3-col {
-    width: 25%
+    width: 25%;
   }
 }
 
-@media (min-width:768px) {
-  @supports (display:grid) {
+@media (min-width: 768px) {
+  @supports (display: grid) {
     .grid {
       grid-gap: 1.5rem;
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
       grid-template-rows: 1fr;
       margin-left: 0;
-      margin-right: 0
+      margin-right: 0;
     }
 
     .grid__col {
       margin-bottom: 0;
       padding-left: 0;
-      padding-right: 0
+      padding-right: 0;
     }
 
     .grid--9-col {
       grid-column: auto/span 9;
-      width: auto
+      width: auto;
     }
 
     .grid--8-col {
       grid-column: auto/span 8;
-      width: auto
+      width: auto;
     }
 
     .grid--6-col {
       grid-column: auto/span 6;
-      width: auto
+      width: auto;
     }
 
     .grid--4-col {
       grid-column: auto/span 4;
-      width: auto
+      width: auto;
     }
 
     .grid--3-col {
       grid-column: auto/span 3;
-      width: auto
+      width: auto;
     }
   }
 }
 
 @media print {
   .grid {
-    display: block
+    display: block;
   }
 
   .grid,
   .grid__col {
     margin-left: 0;
-    margin-right: 0
+    margin-right: 0;
   }
 
   .grid__col {
-    width: 100%
+    width: 100%;
   }
 }

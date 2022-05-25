@@ -1,20 +1,22 @@
 <template>
   <template if:false={isCustomLwc}>
-    <div class="form__item" style="width: auto;">
+    <div class="form__item" style="width: auto">
       <template if:true={labelVisible}>
-        <legend if:true={useLegend} 
-          class={computedLegendClass} for={inputId}>
-          <span>
-            {label}
-          </span>
-          <span if:true={required} class="visually-hidden"> ({requiredLabel})</span> <!-- TODO: not sure required can be depicted -->
+        <legend if:true={useLegend} class={computedLegendClass} for={inputId}>
+          <span> {label} </span>
+          <span if:true={required} class="visually-hidden">
+            ({requiredLabel})</span
+          >
+          <!-- TODO: not sure required can be depicted -->
           <span if:true={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
         </legend>
-        <label if:false={useLegend}
+        <label
+          if:false={useLegend}
           class={computedLabelClassName}
-          for={inputId}>
+          for={inputId}
+        >
           {label}
           <span if:true={required}> ({requiredLabel})</span>
         </label>

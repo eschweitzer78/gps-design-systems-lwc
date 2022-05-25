@@ -17,7 +17,7 @@ export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioDatePicker {
   get computedFormItemClassName() {
     return "form__item " + this.errorClass;
   }
-  
+
   get computedLabelClassName() {
     return this.required ? "form-required" : "";
   }

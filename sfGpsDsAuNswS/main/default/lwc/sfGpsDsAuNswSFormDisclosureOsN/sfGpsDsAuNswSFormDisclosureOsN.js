@@ -18,10 +18,7 @@ export default class SfGpsDsAuNswSFormDisclosureOsN extends SfGpsDsFormDisclosur
     let element = this.template.querySelector(".sfGpsMerge");
 
     if (element) {
-      replaceInnerHtml(
-        element,
-        omniGetMergedField(this, this._dText)
-      );
+      replaceInnerHtml(element, omniGetMergedField(this, this._dText));
     }
   }
 }

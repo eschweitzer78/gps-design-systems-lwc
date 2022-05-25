@@ -18,7 +18,7 @@ export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
   }
 
   get helperId() {
-    return "helper"
+    return "helper";
   }
 
   get computedLegendClassName() {
@@ -30,6 +30,8 @@ export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
   }
 
   get computedInputInputClassName() {
-    return `vlocity-input nsw-form__text nsw-form__number ${this.isError ? "error" : ""}`;
+    return `vlocity-input nsw-form__text nsw-form__number ${
+      this.isError ? "error" : ""
+    }`;
   }
 }

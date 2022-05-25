@@ -7,5 +7,4 @@
 
 import SfGpsDsFormTextBlockOsN from "c/sfGpsDsFormTextBlockOsN";
 
-export default class SfGpsDsAuNswSFormTextBlockOsN extends SfGpsDsFormTextBlockOsN {
-}
+export default class SfGpsDsAuNswSFormTextBlockOsN extends SfGpsDsFormTextBlockOsN {}

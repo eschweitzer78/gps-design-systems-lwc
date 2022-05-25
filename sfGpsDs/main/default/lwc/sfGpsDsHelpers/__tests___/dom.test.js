@@ -30,9 +30,11 @@ describe("c-sf-gps-ds-helpers.dom", () => {
     let div = document.createElement("div");
 
     paragraph.appendChild(content);
-    fragment.appendChild(paragraph);    
+    fragment.appendChild(paragraph);
     fragment.appendChild(div);
 
-    expect(getFirstChild(fragment.innerHTML).outerHTML).toBe(paragraph.outerHTML);
+    expect(getFirstChild(fragment.innerHTML).outerHTML).toBe(
+      paragraph.outerHTML
+    );
   });
 });

@@ -17,8 +17,8 @@ const STATUS_SELECTED = "selected";
 const STATUS_RESOLVED = "resolved";
 const MODE_SMART = "smart";
 const MODE_MANUAL = "manual";
-const DEFAULT_STATE = 'NSW';
-const DEFAULT_COUNTRY = 'Australia';
+const DEFAULT_STATE = "NSW";
+const DEFAULT_COUNTRY = "Australia";
 
 export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypeahead {
   @api street;
@@ -50,7 +50,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     this.dispatchOmniEventUtil(
       this,
       this.createAggregateNode(),
-      'omniaggregate'
+      "omniaggregate"
     );
 
     this.checkValidity();
@@ -64,7 +64,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
-        'omniaggregate'
+        "omniaggregate"
       );
 
       this.checkValidity();
@@ -73,7 +73,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   handleFieldBlur(event) {
     switch (event.target.name) {
-      case 'street':
+      case "street":
         if (this.street !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.street = event.target.value;
@@ -81,7 +81,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
         break;
 
-      case 'suburb':
+      case "suburb":
         if (this.suburb !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.suburb = event.target.value;
@@ -89,7 +89,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
         break;
 
-      case 'postcode':
+      case "postcode":
         if (this.postcode !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.postcode = event.target.value;
@@ -97,7 +97,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
         break;
 
-      case 'country':
+      case "country":
         if (this.country !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.country = event.target.value;
@@ -111,7 +111,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     this.dispatchOmniEventUtil(
       this,
       this.createAggregateNode(),
-      'omniaggregate'
+      "omniaggregate"
     );
 
     this.checkValidity();
@@ -140,7 +140,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
-        'omniaggregate'
+        "omniaggregate"
       );
 
       if (t === null) {
@@ -155,7 +155,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
         }
       }
 
-      this.dispatchOmniEventUtil(this, { item: '$Vlocity.nullify' }, 'select');
+      this.dispatchOmniEventUtil(this, { item: "$Vlocity.nullify" }, "select");
     }
   }
 
@@ -182,8 +182,8 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     this.elementValueLabel = event.target.value;
     let proxyEvent = {
       target: {
-        value: this.elementValue,
-      },
+        value: this.elementValue
+      }
     };
 
     super.handleBlur(proxyEvent);
@@ -195,10 +195,10 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
         value: this.getSmartValue({
           elementValueLabel: event.target.value,
           elementValueValue: event.detail.item,
-          elementValueStatus: STATUS_SELECTED,
-        }),
+          elementValueStatus: STATUS_SELECTED
+        })
       },
-      detail: event.detail,
+      detail: event.detail
     });
 
     // for some reason this is otherwise not (never?) refreshed
@@ -211,7 +211,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
         this.applyCallResp({
           ...this.elementValue,
           value: Array.isArray(e) ? e[0] : e,
-          status: STATUS_RESOLVED,
+          status: STATUS_RESOLVED
         });
 
         this.checkValidity();
@@ -239,7 +239,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
-        'omniaggregate'
+        "omniaggregate"
       );
     }
   }
@@ -264,12 +264,12 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
   }
 
   ingest(v) {
-    if (v && (typeof v === 'string' || v instanceof String)) {
+    if (v && (typeof v === "string" || v instanceof String)) {
       this.isSmart = true;
       this.elementValueLabel = v;
       this.elementValueValue = {};
       this.elementValueStatus = STATUS_TYPING;
-    } else if (v && typeof v === 'object') {
+    } else if (v && typeof v === "object") {
       this.isSmart = v.mode ? v.mode === MODE_SMART : true;
       this.elementValueLabel = v.label;
       this.elementValueValue = { ...v.value };
@@ -285,11 +285,12 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
         this.postcode = this.elementValueValue.addressDetails.postcode;
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-        this.country = this.elementValueValue.addressDetails.country || DEFAULT_COUNTRY;
+        this.country =
+          this.elementValueValue.addressDetails.country || DEFAULT_COUNTRY;
       }
     } else {
       this.isSmart = true;
-      this.elementValueLabel = '';
+      this.elementValueLabel = "";
       this.elementValueValue = {};
       this.elementValueStatus = STATUS_TYPING;
     }
@@ -306,14 +307,14 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   getManualValue() {
     let fullAddress =
-      (this.street ? this.street : '') +
-      (this.street && (this.suburb || this.state || this.postcode) ? ',' : '') +
-      (this.street && this.suburb ? ' ' : '') +
-      (this.suburb ? this.suburb : '') +
-      ((this.street || this.suburb) && this.state ? ' ' : '') +
-      (this.state ? this.state : '') +
-      ((this.street || this.suburb || this.state) && this.postcode ? ' ' : '') +
-      (this.postcode ? this.postcode : '');
+      (this.street ? this.street : "") +
+      (this.street && (this.suburb || this.state || this.postcode) ? "," : "") +
+      (this.street && this.suburb ? " " : "") +
+      (this.suburb ? this.suburb : "") +
+      ((this.street || this.suburb) && this.state ? " " : "") +
+      (this.state ? this.state : "") +
+      ((this.street || this.suburb || this.state) && this.postcode ? " " : "") +
+      (this.postcode ? this.postcode : "");
 
     fullAddress = fullAddress ? fullAddress.toUpperCase() : null;
 
@@ -324,12 +325,12 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
           suburb: this.suburb,
           state: this.state,
           postcode: this.postcode,
-          country: this.country,
+          country: this.country
         },
-        address: fullAddress,
+        address: fullAddress
       },
       mode: MODE_MANUAL,
-      label: fullAddress,
+      label: fullAddress
     };
   }
 
@@ -338,7 +339,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       label: (ev ? ev : this).elementValueLabel,
       value: (ev ? ev : this).elementValueValue,
       status: (ev ? ev : this).elementValueStatus,
-      mode: MODE_SMART,
+      mode: MODE_SMART
     };
 
     return value;
@@ -358,7 +359,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
         Promise.resolve().then(() => {
           this.handleSelect({
             target: { value: v[0].name },
-            detail: v[0],
+            detail: v[0]
           });
         });
       }
@@ -376,7 +377,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
           this._didTypeahead = true;
           this.handleSelect({
             target: { value: this.elementValueLabel },
-            detail: { item: this.elementValueValue },
+            detail: { item: this.elementValueValue }
           });
         } else {
           this._didTypeahead = true;
@@ -389,7 +390,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get manualChildInputs() {
     if (!this._manualChildInputs) {
-      this._manualChildInputs = this.template.querySelectorAll('.manual-field');
+      this._manualChildInputs = this.template.querySelectorAll(".manual-field");
     }
     return this._manualChildInputs;
   }
@@ -463,24 +464,24 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get computedLabelClassName() {
     return `nsw-form__label ${
-      this._propSetMap.required ? 'nsw-form__required' : ''
+      this._propSetMap.required ? "nsw-form__required" : ""
     }`;
   }
 
   get computedHelperClassName() {
-    return getHelperClassName('invalid');
+    return getHelperClassName("invalid");
   }
 
   get computedStatusIcon() {
-    return getStatusIcon('invalid');
+    return getStatusIcon("invalid");
   }
 
   get computedTypeaheadClass() {
-    return this.isSmart ? '' : 'sfgpsds-hide';
+    return this.isSmart ? "" : "sfgpsds-hide";
   }
 
   get computedManualClassName() {
-    return this.isSmart ? 'sfgpsds-hide' : '';
+    return this.isSmart ? "sfgpsds-hide" : "";
   }
 
   get complete() {

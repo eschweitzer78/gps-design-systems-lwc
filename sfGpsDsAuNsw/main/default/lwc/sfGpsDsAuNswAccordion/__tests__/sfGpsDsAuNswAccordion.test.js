@@ -12,7 +12,6 @@ describe("c-sf-gps-ds-au-nsw-accordion", () => {
     }
   });
 
-
   it("is closed to start with", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordion
@@ -37,7 +36,7 @@ describe("c-sf-gps-ds-au-nsw-accordion", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordion
     });
-    
+
     element.header = "Accordion";
     document.body.appendChild(element);
 
@@ -60,7 +59,7 @@ describe("c-sf-gps-ds-au-nsw-accordion", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordion
     });
-    
+
     element.header = "Accordion";
     document.body.appendChild(element);
 

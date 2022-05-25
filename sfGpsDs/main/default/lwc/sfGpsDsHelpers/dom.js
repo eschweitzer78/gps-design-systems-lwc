@@ -9,8 +9,8 @@ const parser = new DOMParser();
 
 /**
  * Replaces the element innerHTML with a new markup provided as a string.
- * 
- * @param {Element} element 
+ *
+ * @param {Element} element
  * @param {String} markup - markup to place as the element's innerHtml
  */
 
@@ -22,7 +22,7 @@ export function replaceInnerHtml(element, markup) {
 /**
  * Decodes espaced html, e.g. what's store in Salesforce's CMS Rich Text fields into normal markup
  * for instance &lt;p;gt& to <p>.
- * 
+ *
  * @param {String} markup escaped markup
  * @returns {String} unescaped markup
  */
@@ -37,8 +37,8 @@ export function htmlDecode(markup) {
 /**
  * Returns the first element child of a parsed markup's body, e.g. "<div>a</div><p>Hello</p>" returns
  * "<div>a</div>"
- * 
- * @param {String} markup 
+ *
+ * @param {String} markup
  * @returns {Element} first element child node
  */
 
