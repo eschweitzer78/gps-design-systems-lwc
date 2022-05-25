@@ -4,9 +4,9 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { LightningElement, track } from "lwc";
+import { LightningElement, api, track } from "lwc";
 
-/* IMPORTANT NOTE: if you modify this class, you have to update sfGpsDsLwcO
+/* IMPORTANT NOTE: if you modify this class, you have to update sfGpsDsLwcOsN
    as it's not automatically derived */
 
 export default class SfGpsDsLwc extends LightningElement {
@@ -22,6 +22,12 @@ export default class SfGpsDsLwc extends LightningElement {
         description: description
       }
     ];
+  }
+
+  // For testing purposes only
+
+  @api getErrors() {
+    return this._sfGpsErrors;
   }
 }
 

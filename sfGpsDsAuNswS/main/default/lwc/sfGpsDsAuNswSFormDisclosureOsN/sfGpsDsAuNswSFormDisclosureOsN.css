@@ -1,0 +1,26 @@
+@import "c/sfGpsDsAuNswSFormCssOs";
+
+
+.disclosure {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-left: solid 4px var(--nsw-s-brand-dark);
+}
+
+.disclosure:first-child {
+  margin-top: 0;
+}
+
+/* to redress the slds styling that removes it */
+
+a {
+  text-decoration: underline;
+}
+
+/* to redress the slds styling that removes it */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--nsw-s-font-family, "Gotham, Arial, sans-serif")
+}
+

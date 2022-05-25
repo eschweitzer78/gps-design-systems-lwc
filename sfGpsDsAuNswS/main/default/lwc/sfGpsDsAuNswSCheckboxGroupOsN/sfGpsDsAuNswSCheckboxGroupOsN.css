@@ -1,0 +1,11 @@
+@import "c/sfGpsDsAuNswSFormCssOs";
+
+/* Override css settings for omniscript */
+
+input {
+  max-width: 100%;
+}
+
+input.form--small {
+  max-width: 100%;
+}

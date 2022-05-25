@@ -6,11 +6,11 @@
  */
 
 import { api } from "lwc";
-import OmnistudioTimePicker from "omnistudio/timePicker";
+import SfGpsDsTimePickerOsN from "c/sfGpsDsTimePickerOsN";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
 import tmpl from "./sfGpsDsAuNswTimePickerOsN.html";
 
-export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioTimePicker {
+export default class SfGpsDsAuNswTimePickerOsN extends SfGpsDsTimePickerOsN {
   @api hideFormGroup = false;
 
   render() {

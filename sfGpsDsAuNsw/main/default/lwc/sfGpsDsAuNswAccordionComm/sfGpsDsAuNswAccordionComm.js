@@ -13,7 +13,10 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   @api index; // only used if part of a group
   @api header;
 
+  // closed
+
   _closed = true;
+
   @api get closed() {
     return this._closed;
   }
@@ -45,10 +48,12 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   }
 
   handleExpand() {
+    this._closed = false;
     this.dispatchEvent(new CustomEvent("expand"));
   }
 
   handleCollapse() {
+    this._closed = true;
     this.dispatchEvent(new CustomEvent("collapse"));
   }
 }

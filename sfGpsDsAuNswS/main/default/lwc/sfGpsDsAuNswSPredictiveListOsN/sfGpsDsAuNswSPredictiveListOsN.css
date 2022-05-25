@@ -1,0 +1,181 @@
+/* Start: equivalent of NSW's */
+
+.form__predictive {
+  position: relative;
+}
+.form__predictive-list {
+  z-index: 110; /* changed from NSW DS since there is a z-index of 100 for the underlying field in NSW_S */
+  border-radius: var(--nsw-s-border-radius);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: var(--nsw-s-white);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+}
+.form__predictive-list--large {
+  top: 3.625rem;
+}
+.form__predictive-list li {
+  padding: 0;
+  margin: 0;
+}
+.form__predictive-list a {
+  display: block;
+  padding: 0.625rem;
+  color: var(--nsw-s-text-dark);
+  font-weight: var(--nsw-s-font-normal);
+}
+.form__predictive-list a:hover {
+  outline-width: 0;
+}
+.form__predictive-list a:focus {
+  outline-width: 3px;
+  outline-offset: -3px;
+}
+.form__predictive-list a span {
+  font-weight: var(--nsw-s-font-bold);
+}
+
+ul.form__predictive-list li {
+  background: none;
+}
+
+/* End: equivalent of NSW's */
+
+input[readonly][role="combobox"] {
+  /*border-radius: var(--nsw-s-border-radius);
+  background-color: var(--nsw-s-white);
+  color: var(--nsw-s-text-dark);
+  border: 1px solid var(--nsw-grey-01);*/
+}
+
+.form__predictive .form__input {
+  padding-right: 3rem;
+  background: var(--nsw-s-white)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.form__predictive .form__input:disabled {
+  background: var(--nsw-s-off-white-1)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.form__predictive .form__input[aria-invalid="true"]:hover,
+.form__predictive .form__input.has-error:hover {
+  background: var(--nsw-s-error)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.form__predictive-list .sfgpsds-listbox__option {
+  display: block;
+  padding: 0.625rem;
+  color: var(--nsw-s-text-dark);
+  font-weight: var(--nsw-s-font-normal);
+}
+
+.form__predictive-list .sfgpsds-listbox__option:hover {
+  outline-width: 0;
+  cursor: pointer;
+  background-color: var(--nsw-s-focus);
+  color: var(--nsw-text-dark);
+}
+
+.form__input {
+  cursor: pointer;
+}
+
+.sfgpsds-listbox__option-text_entity {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.125rem;
+  overflow: hidden;
+}
+
+.sfgpsds-listbox_selection-group {
+  height: auto;
+}
+
+.sfgpsds-dropdown-container {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.sfgpsds-listbox__flex {
+  display: flex;
+}
+.sfgpsds-listbox__flex .sfgpsds-listbox-item {
+  overflow: hidden;
+}
+
+.sfgpsds-dropdown_fluid {
+  min-width: auto;
+}
+
+.sfgpsds-dropdown_length-5,
+.sfgpsds-dropdown_length--5 {
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(((1rem * 1.5) + 1rem) * 5);
+  overflow-y: auto;
+}
+
+.form__predictive-list.sfgpsds-dropdown_length-5,
+.form__predictive-list.sfgpsds-dropdown_length--5 {
+  max-height: calc((1.5rem + 1.25rem) * 5);
+}
+
+.sfgpsds-combobox_container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sfgpsds-combobox {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.sfgpsds-media_center,
+.sfgpsds-media--center {
+  align-items: center;
+}
+
+.sfgpsds-media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sfgpsds-media_small .sfgpsds-media__figure,
+.sfgpsds-media--small .sfgpsds-media__figure {
+  margin-right: 0.25rem;
+}
+
+.sfgpsds-media__body,
+.sfgpsds-media__body > :last-child {
+  margin-bottom: 0;
+}
+
+.sfgpsds-listbox__option .slds-truncate {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sfgpsds-icon-small {
+  font-size: inherit;
+}

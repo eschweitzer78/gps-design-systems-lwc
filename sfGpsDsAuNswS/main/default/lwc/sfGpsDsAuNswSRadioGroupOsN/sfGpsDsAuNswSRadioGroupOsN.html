@@ -1,0 +1,51 @@
+<template>
+  <div class="">
+    <fieldset class="" aria-invalid={computedAriaInvalid}>
+      <legend class={computedLegendClassName}>
+        <span>
+          {label}
+          <span if:true={required}> ({requiredLabel})</span>
+        </span>
+        <slot name="label"></slot>
+        <span if:true={fieldLevelHelp} id="helper" class="form-help">{fieldLevelHelp}</span>
+      </legend>
+
+      <div class="form__radios">
+        <template for:each={internalOpts} for:item="e" for:index="t">
+          <div key={e.id} class="form__item">
+            <input
+              class={computedInputClassName}
+              type="radio"
+              tabindex={tabIndex}
+              required={required}
+              disabled={disabled}
+              id={e.id}
+              data-index={t}
+              name={e.name}
+              value={e.value}
+              checked={e.selected}
+              onfocus={handleFocus}
+              onchange={onchangevalue}
+            />
+            <label
+              data-index={t}
+              for={e.id}
+            >
+              {e.label}
+            </label>
+          </div>
+        </template>
+      </div>
+
+      <span
+        if:true={isRealError}
+        class="form__error"
+        aria-live="assertive"
+        id="errorMessageBlock"
+      >
+        {errorMessage}
+      </span>
+
+    </fieldset>
+  </div>
+</template>

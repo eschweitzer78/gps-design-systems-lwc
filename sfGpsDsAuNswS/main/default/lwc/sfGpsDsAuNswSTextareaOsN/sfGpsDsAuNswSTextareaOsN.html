@@ -1,0 +1,47 @@
+<template>
+  <div class="form__item" style="width: auto;">
+    <div if:true={labelVisible} data-label="true">
+      <label id="textarealabel" class={computedLabelClassName} for="textareaId">
+        {label}
+        <span if:true={required}> ({requiredLabel})</span>
+      </label>
+    </div>
+
+    <span if:true={fieldLevelHelp} id="helper" class="form__help"
+      >{fieldLevelHelp}
+    </span>
+
+    <textarea
+      class={computedInputInputClassName}
+      tabindex={tabIndex}
+      minlength={minLength}
+      maxlength={maxLength}
+      readonly={readOnly}
+      accesskey={accessKey}
+      name={name}
+      disabled={disabled}
+      required={required}
+      placeholder={placeholder}
+      id="textareaId"
+      autocomplete={autocomplete}
+      oninput={updateValue}
+      onblur={validateError}
+      onfocus={triggerEvent}
+      onchange={triggerEvent}
+      onkeyup={keyCallbacks}
+      onkeydown={keyCallbacks}
+      aria-labelledby="textarealabel"
+      aria-describedby={ariaDescribedBy}
+      aria-invalid={isError}
+    >
+    </textarea>
+
+    <span
+      id="errorMessageBlock"
+      if:true={isError}
+      class="form__error"
+    >
+      {errorMessage}
+    </span>
+  </div>
+</template>

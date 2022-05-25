@@ -33,7 +33,7 @@
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
-      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
     }
   },
   "sfGpsDsAuNswAccordionGroupComm": {
@@ -56,7 +56,7 @@
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
-      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
     }
   },
   "sfGpsDsAuNswAccordionCss": {
@@ -109,7 +109,7 @@
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
-      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
     }
   },
   "sfGpsDsAuNswAlertCss": {

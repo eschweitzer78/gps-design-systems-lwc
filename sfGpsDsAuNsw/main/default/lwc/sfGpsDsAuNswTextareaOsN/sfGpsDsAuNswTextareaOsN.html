@@ -1,7 +1,7 @@
 <template>
   <div class="nsw-form__group">
     <div if:true={labelVisible} data-label="true">
-      <label id="textarealabel" class={computedLabelClassName} for={textareaId}>
+      <label id="textarealabel" class={computedLabelClassName} for="textareaId">
         {label}
         <span if:true={required} class="sr-only"> ({requiredLabel})</span>
       </label>
@@ -22,7 +22,7 @@
       disabled={disabled}
       required={required}
       placeholder={placeholder}
-      id={textareaId}
+      id="textareaId"
       autocomplete={autocomplete}
       oninput={updateValue}
       onblur={validateError}

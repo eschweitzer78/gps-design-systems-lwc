@@ -1,0 +1,177 @@
+@import "c/sfGpsDsAuNswSFormCssOs";
+
+input[readonly][role="combobox"] {
+  border: 2px solid var(--nsw-s-border);
+  border-radius: var(--nsw-s-border-radius);
+  background-color: var(--nsw-s-white);
+  color: var(--nsw-s-text-dark);
+}
+
+.form__predictive .form__input {
+  padding-right: 3rem;
+  background: var(--nsw-s-white)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.form__predictive .form__input:disabled {
+  background: var(--nsw-s-off-white-1)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.form__predictive .form__input[aria-invalid="true"]:hover,
+.form__predictive .form__input.error:hover {
+}
+
+.form__predictive-list div {
+  display: block;
+  padding: 0.625rem;
+  color: var(--nsw-s-text-dark);
+  font-weight: var(--nsw-s-font-normal);
+}
+
+.form__predictive-list div:hover {
+  outline-width: 0;
+  cursor: pointer;
+  background-color: var(--nsw-s-off-white-1);
+  color: var(--nsw-s-text-light);
+}
+
+.form__input {
+  cursor: pointer;
+}
+
+/* adding what's the nsw ds equivalent */
+
+.form__predictive {
+  position: relative;
+}
+
+.form__predictive-list {
+  z-index: 100;
+  border-radius: var(--nsw-s-border-radius, 0.25rem);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: var(--nsw-s-white);
+  box-shadow: 0 4px 12px 0 rgba(var(--nsw-s-black-rgb), 0.15);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.form__predictive-list li {
+  padding: 0;
+  margin: 0;
+}
+
+/* slds replica */
+
+.gpsds-combobox {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.gpsds-combobox_container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.gpsds-dropdown {
+}
+
+.gpsds-dropdown_fluid {
+  min-width: auto;
+}
+
+.gpsds-dropdown [role=combobox] input[readonly],
+.gpsds-dropdown input[readonly][role=combobox] {
+  padding-left: 0.75rem;
+  font-weight: var(--nsw-s-font-normal);
+}
+
+/* end slds replica */
+
+/* begin undoing some of the default nsw s styling */
+
+.gpsds-combobox ul li {
+  background: none;
+}
+
+/* end */
+
+/* begin undoing some of the default slds styling */
+
+input[readonly][role="combobox"]:focus {
+  outline: 2px solid var(--nsw-s-focus, #2e5299);
+  outline-offset: 2px;
+  border: 2px solid var(--nsw-s-border);
+  box-shadow: none;
+}
+
+/* end */
+
+
+.gpsds-listbox__option-text_entity {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.125rem;
+  overflow: hidden;
+}
+
+.gpsds-listbox_selection-group {
+  height: auto;
+}
+
+.gpsds-dropdown-container {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.gpsds-listbox__flex {
+  display: flex;
+}
+
+.gpsds-listbox__flex .slds-listbox-item,
+.gpsds-listbox__flex .gpsds-listbox-item {
+  overflow: hidden;
+}
+
+.gpsds-listbox__flex .slds-pill__label,
+.gpsds-listbox__flex .gpsds-pill__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gpsds-dropdown-trigger--click .gpsds-dropdown,
+.gpsds-dropdown-trigger--click:hover .gpsds-dropdown,
+.gpsds-dropdown-trigger_click .gpsds-dropdown,
+.gpsds-dropdown-trigger_click:hover .gpsds-dropdown {
+  display: none;
+}
+
+.gpsds-dropdown-trigger_click .gpsds-dropdown {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
+  transition: opacity 0.1s linear, visibility 0.1s linear;
+}
+
+.gpsds-dropdown-trigger_click.gpsds-is-open .gpsds-dropdown {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}

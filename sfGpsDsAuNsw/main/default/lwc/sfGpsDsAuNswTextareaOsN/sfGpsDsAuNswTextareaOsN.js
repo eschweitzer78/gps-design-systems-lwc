@@ -4,11 +4,11 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import OmniscriptTextarea from "omnistudio/textarea";
+import OmnistudioTextarea from "omnistudio/textarea";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
 import tmpl from "./sfGpsDsAuNswTextareaOsN.html";
 
-export default class SfGpsDsAuNswTextareaOsN extends OmniscriptTextarea {
+export default class SfGpsDsAuNswTextareaOsN extends OmnistudioTextarea {
   render() {
     return tmpl;
   }

@@ -1,0 +1,107 @@
+label {
+  font-weight: var(--nsw-s-font-medium);
+  margin-bottom: 0;
+}
+
+input {
+  max-width: inherit; /* otherwise inputs do not take all the width available in omni */
+}
+
+label.form-required::after { /* otherwise there is no indication of mandatory fields */
+  content: " *";
+  color: var(--nsw-s-error);
+}
+
+legend.form-required::after { /* otherwise there is no indication of mandatory fields */
+  content: " *";
+  color: var(--nsw-s-error);
+}
+/* ------------------------- */
+/* for radios and checkboxes */
+
+fieldset {
+  margin-top: 1rem;
+}
+
+legend,
+.slds-scope fieldset legend {
+  max-width: 769px;
+  width: 100%;
+}
+
+legend span,
+.slds-scope fieldset legend span {
+  font-weight: var(--nsw-s-font-medium);
+}
+
+/* screen reader text for required */
+legend span span {
+  display: none;
+}
+
+.form__item {
+  margin: 0.5rem 0;
+}
+
+.form__radios .form__item label,
+.form__checkboxes .form__item label {
+  font-weight: var(--nsw-s-font-normal);
+}
+
+.form__item {
+  margin: 0.5rem 0; /* otherwise there is too much spacing in omni */
+}
+
+/* end radios and checkboxes */
+/* ------------------------- */
+
+
+.form__radios .form__item,
+.form__checkboxes .form__item {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.form__radios input,
+.form__checkboxes input {
+  position: absolute;
+  opacity: 0;
+  width: 2rem;
+  height: 2rem;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  cursor: pointer;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.form__radios label,
+.form__checkboxes label {
+  position: relative;
+  padding: 0.25rem 0rem 0.25rem 3rem;
+  margin: 0;
+}
+
+.form__radios label:before,
+.form__checkboxes label:before {
+  position: absolute;
+  content: "";
+  top: 0px;
+  left: 0px;
+  border: 2px solid var(--nsw-s-border, rgb(100, 105, 116));
+  background-color: var(--nsw-s-white, rgb(255, 255, 255));
+  width: 2rem;
+  height: 2rem;
+}
+
+/* ----- */
+
+.form__help {
+  display: block;
+  margin: 0;
+}
+
+.form__error {
+  display: block;
+}

@@ -1,0 +1,140 @@
+<template>
+  <div class="form__group">
+    <div class={errorClass}>
+      <!-- necessary for dropdown to work -->
+      <div if:false={isLabelHidden}>
+        <label
+          class={computedLabelClassName}
+          style="width: auto"
+          for="comboboxId"
+        >
+          {label}
+          <span if:true={required}> ({requiredLabel})</span>
+        </label>
+        <slot name="label"> </slot>
+      </div>
+
+      <span if:true={fieldLevelHelp} id="helper" class="form-help">
+        {fieldLevelHelp}
+      </span>
+
+      <div class="form__predictive">
+        <div class="gpsds-combobox_container">
+          <div class="" role="none">
+            <input
+              class="form__input gpsds-listbox__option-text_entity"
+              aria-expanded={isOpen}
+              aria-haspopup="listbox"
+              role="combobox"
+              data-value={valueMap}
+              type={type}
+              disabled={disabled}
+              required={required}
+              placeholder={placeholder}
+              tabindex={tabIndex}
+              readonly={isNotInput}
+              autocomplete="new-password"
+              id="comboboxId"
+              aria-activedescendant={activeDescendant}
+              value={valueCopy}
+              onblur={showLookup}
+              onmouseup={showLookup}
+              onkeydown={preventKeyDown}
+              onkeyup={handleKeyUp}
+            />
+          </div>
+        </div>
+
+        <div
+          class="gpsds-dropdown gpsds-dropdown_fluid"
+          role="listbox"
+          onmousedown={preventLookupClose}
+          onmouseleave={preventLookupOpen}
+          onmouseup={preventLookupOpen}
+        >
+          <ul
+            class="gpsds-dropdown-container gpsds-listbox gpsds-listbox_vertical form__predictive-list"
+            style={dropdownStyle}
+            role="presentation"
+          >
+            <template for:each={internalOptionsCopy} for:item="e">
+              <li
+                if:true={isGrouped}
+                class="gpsds-listbox__item gpsds-listbox__option"
+                key={e.optId}
+              >
+                <h3 role="presentation">{e.group}</h3>
+              </li>
+              <li key={e.optId} class="gpsds-listbox__item">
+                <div
+                  class="gpsds-listbox__option gpsds-listbox__option_plain gpsds-listbox__option-text gpsds-listbox__option-text_entity gpsds-is-selected"
+                  data-value={e.value}
+                  data-label={e.label}
+                  data-option-id={e.optId}
+                  role="option"
+                  id={e.optId}
+                  onmouseup={selectOption}
+                  onmouseover={handleMouseOver}
+                  onmouseout={handleMouseOut}
+                >
+                  {e.label}
+                </div>
+              </li>
+            </template>
+          </ul>
+
+          <footer
+            if:false={hidefooter}
+            class={footerClass}
+            onmousedown={preventTrigger}
+          >
+            <slot name="footer"> </slot>
+          </footer>
+        </div>
+      </div>
+
+      <span
+        if:true={isError}
+        class="form__error"
+        aria-live="assertive"
+        id="errorMessageBlock"
+      >
+        {errorMessage}
+      </span>
+
+      <template if:true={multiple}>
+        <div if:true={inputLabels.length} class="slds-listbox_selection-group">
+          <ul
+            class={pillWrapperClass}
+            aria-label="Selected Options:"
+            aria-orientation="horizontal"
+          >
+            <template for:each={inputLabels} for:item="e">
+              <li key={e} class="slds-listbox-item" role="presentation">
+                <span
+                  class="slds-pill"
+                  style={styleProperties.value.styles}
+                  role="option"
+                  tabindex="0"
+                  aria-selected="true"
+                >
+                  <span class="slds-pill__label" title={e}> {e} </span>
+                  <omnistudio-icon
+                    if:true={showDelIcon}
+                    data-label={e}
+                    icon-name="utility:close"
+                    baseurl={iconUrl}
+                    size="xx-small"
+                    theme={theme}
+                    onclick={deleteThisLabel}
+                  >
+                  </omnistudio-icon>
+                </span>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

@@ -11,20 +11,11 @@
       icon-name="utility:info" not supported
 */
 
-import OmniscriptTextarea from "omnistudio/omniscriptTextarea";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormTextareaOsN from "c/sfGpsDsFormTextareaOsN";
 import tmpl from "./sfGpsDsAuNswFormTextareaOsN.html";
 
-export default class SfGpsDsAuNswFormTextAreaOsN extends OmniscriptTextarea {
+export default class SfGpsDsAuNswFormTextAreaOsN extends SfGpsDsFormTextareaOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

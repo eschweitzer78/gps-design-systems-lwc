@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, track } from "lwc";
+import { LightningElement, api, track } from "lwc";
 import OmnistudioBaseMixin from "omnistudio/omniscriptBaseMixin";
 
 /* IMPORTANT NOTE: this class is not automatically derived from sfGpsDsLwcOs */
@@ -25,6 +25,12 @@ export default class SfGpsDsLwcOsN extends OmnistudioBaseMixin(
         description: description
       }
     ];
+  }
+
+  // For testing purposes only
+
+  @api getErrors() {
+    return this._sfGpsErrors;
   }
 }
 

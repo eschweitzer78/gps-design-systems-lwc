@@ -17,13 +17,15 @@ const STATUS_SELECTED = "selected";
 const STATUS_RESOLVED = "resolved";
 const MODE_SMART = "smart";
 const MODE_MANUAL = "manual";
+const DEFAULT_STATE = 'NSW';
+const DEFAULT_COUNTRY = 'Australia';
 
 export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypeahead {
   @api street;
   @api suburb;
-  @api state = "NSW";
+  @api state = DEFAULT_STATE;
   @api postcode;
-  @api country = "Australia";
+  @api country = DEFAULT_COUNTRY;
   @api states = [
     { label: "ACT", value: "ACT" },
     { label: "NSW", value: "NSW" },
@@ -43,25 +45,13 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
   // EVENT HANDLING
 
   handleToggle() {
-    this.setElementValue("", false, false);
+    this.isSmart = !this.isSmart;
+
     this.dispatchOmniEventUtil(
       this,
       this.createAggregateNode(),
-      "omniaggregate"
+      'omniaggregate'
     );
-
-    this.options = [];
-    this.elementValueLabel = null;
-    this.elementValueValue = null;
-    this.elementValueStatus = STATUS_TYPING;
-    this.dispatchOmniEventUtil(this, { item: "$Vlocity.nullify" }, "select");
-
-    if (this.isSmart) {
-      this.isSmart = false;
-      this.setManualValue();
-    } else {
-      this.isSmart = true;
-    }
 
     this.checkValidity();
   }
@@ -70,51 +60,59 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     if (this.state !== event.target.value) {
       // eslint-disable-next-line @lwc/lwc/no-api-reassignments
       this.state = event.target.value;
-      this.setManualValue();
+
+      this.dispatchOmniEventUtil(
+        this,
+        this.createAggregateNode(),
+        'omniaggregate'
+      );
+
       this.checkValidity();
     }
   }
 
   handleFieldBlur(event) {
     switch (event.target.name) {
-      case "street":
+      case 'street':
         if (this.street !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.street = event.target.value;
-          this.setManualValue();
         }
 
         break;
 
-      case "suburb":
+      case 'suburb':
         if (this.suburb !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.suburb = event.target.value;
-          this.setManualValue();
         }
 
         break;
 
-      case "postcode":
+      case 'postcode':
         if (this.postcode !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.postcode = event.target.value;
-          this.setManualValue();
         }
 
         break;
 
-      case "country":
+      case 'country':
         if (this.country !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
           this.country = event.target.value;
-          this.setManualValue();
         }
 
         break;
 
       default:
     }
+
+    this.dispatchOmniEventUtil(
+      this,
+      this.createAggregateNode(),
+      'omniaggregate'
+    );
 
     this.checkValidity();
   }
@@ -125,53 +123,40 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     }
   }
 
-  setManualValue() {
-    let fullAddress =
-      (this.street ? this.street : "") +
-      (this.street && (this.suburb || this.state || this.postcode) ? "," : "") +
-      (this.street && this.suburb ? " " : "") +
-      (this.suburb ? this.suburb : "") +
-      ((this.street || this.suburb) && this.state ? " " : "") +
-      (this.state ? this.state : "") +
-      ((this.street || this.suburb || this.state) && this.postcode ? " " : "") +
-      (this.postcode ? this.postcode : "");
-
-    fullAddress = fullAddress ? fullAddress.toUpperCase() : null;
-
-    this.applyCallResp(
-      {
-        value: {
-          addressDetails: {
-            street: this.street,
-            suburb: this.suburb,
-            state: this.state,
-            postcode: this.postcode,
-            country: this.country
-          },
-          address: fullAddress
-        },
-        mode: MODE_MANUAL,
-        label: fullAddress
-      },
-      false
-    );
-  }
-
-  getSmartValue() {
-    let value = {
-      label: this.elementValueLabel,
-      value: this.elementValueValue,
-      status: this.elementValueStatus,
-      mode: MODE_SMART
-    };
-
-    return value;
-  }
-
   // Render/Callbacks/Override
 
   render() {
     return tmpl;
+  }
+
+  performTypeahead(e, testValue = true) {
+    this._didTypeahead = true;
+    const t = e.value || null;
+    this.elementValueLabel = t;
+
+    if (!testValue || this.elementValue !== t) {
+      this.setElementValue(this.getSmartValue(), false, false);
+
+      this.dispatchOmniEventUtil(
+        this,
+        this.createAggregateNode(),
+        'omniaggregate'
+      );
+
+      if (t === null) {
+        this.options = [];
+      } else {
+        if (this._propSetMap.useDataJson) {
+          this.getOptionsDataJson();
+        } else {
+          Promise.resolve().then(() => {
+            this.getOptions(this._propSetMap.taAction);
+          });
+        }
+      }
+
+      this.dispatchOmniEventUtil(this, { item: '$Vlocity.nullify' }, 'select');
+    }
   }
 
   handleTypeahead(event) {
@@ -180,35 +165,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
       if (!this.typeaheadFn) {
         this.typeaheadFn = debounce((e) => {
-          const t = e.value || null;
-          this.elementValueLabel = t;
-          if (this.elementValue !== t) {
-            this.setElementValue(this.getSmartValue(), false, false);
-
-            this.dispatchOmniEventUtil(
-              this,
-              this.createAggregateNode(),
-              "omniaggregate"
-            );
-
-            if (t === null) {
-              this.options = [];
-            } else {
-              if (this._propSetMap.useDataJson) {
-                this.getOptionsDataJson();
-              } else {
-                Promise.resolve().then(() => {
-                  this.getOptions(this._propSetMap.taAction);
-                });
-              }
-            }
-
-            this.dispatchOmniEventUtil(
-              this,
-              { item: "$Vlocity.nullify" },
-              "select"
-            );
-          }
+          this.performTypeahead(e);
         }, this._propSetMap.callFrequency);
       }
 
@@ -225,26 +182,24 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     this.elementValueLabel = event.target.value;
     let proxyEvent = {
       target: {
-        value: this.getSmartValue()
-      }
+        value: this.elementValue,
+      },
     };
 
     super.handleBlur(proxyEvent);
   }
 
   handleSelect(event) {
-    this.elementValueLabel = event.target.value;
-    this.elementValueValue = event.detail.item;
-    this.elementValueStatus = STATUS_SELECTED;
-
-    let proxyEvent = {
+    super.handleSelect({
       target: {
-        value: this.getSmartValue()
+        value: this.getSmartValue({
+          elementValueLabel: event.target.value,
+          elementValueValue: event.detail.item,
+          elementValueStatus: STATUS_SELECTED,
+        }),
       },
-      detail: event.detail
-    };
-
-    super.handleSelect(proxyEvent);
+      detail: event.detail,
+    });
 
     // for some reason this is otherwise not (never?) refreshed
     this.jsonDataStr = JSON.stringify(this._jsonData);
@@ -253,9 +208,12 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       .then((e) => this.handleResponse(e))
       .then((e) => this.dataProcessorHook(e))
       .then((e) => {
-        this.elementValueValue = Array.isArray(e) ? e[0] : e;
-        this.elementValueStatus = STATUS_RESOLVED;
-        this.applyCallResp(this.getSmartValue());
+        this.applyCallResp({
+          ...this.elementValue,
+          value: Array.isArray(e) ? e[0] : e,
+          status: STATUS_RESOLVED,
+        });
+
         this.checkValidity();
       })
       .catch((e) => this.handleError(e));
@@ -273,7 +231,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
         return;
       }
 
-      if (this.lodashUtil.isEqual(this.elementValue, e)) {
+      if (this.lodashUtil.isEqual(this.elementValue || {}, e)) {
         return;
       }
 
@@ -281,21 +239,41 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
-        "omniaggregate"
+        'omniaggregate'
       );
     }
   }
 
+  _didTypeahead = false;
+  _didGetValue = false;
+
   connectedCallback() {
+    this._didTypeahead = false;
+    this._didGetValue = false;
     super.connectedCallback();
 
     if (this.elementValue) {
-      this.isSmart = this.elementValue.mode
-        ? this.elementValue.mode === MODE_SMART
-        : true;
-      this.elementValueLabel = this.elementValue.label;
-      this.elementValueValue = { ...this.elementValue.value };
-      this.elementValueStatus = this.elementValue.status;
+      // eslint-disable-next-line no-self-assign
+      this.ingest(this.elementValue);
+    } else {
+      this.isSmart = true;
+      this.elementValueLabel = null;
+      this.elementValueValue = {};
+      this.elementValueStatus = STATUS_TYPING;
+    }
+  }
+
+  ingest(v) {
+    if (v && (typeof v === 'string' || v instanceof String)) {
+      this.isSmart = true;
+      this.elementValueLabel = v;
+      this.elementValueValue = {};
+      this.elementValueStatus = STATUS_TYPING;
+    } else if (v && typeof v === 'object') {
+      this.isSmart = v.mode ? v.mode === MODE_SMART : true;
+      this.elementValueLabel = v.label;
+      this.elementValueValue = { ...v.value };
+      this.elementValueStatus = v.status ? v.status : STATUS_TYPING;
 
       if (!this.isSmart && this.elementValueValue.addressDetails) {
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
@@ -307,13 +285,103 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
         this.postcode = this.elementValueValue.addressDetails.postcode;
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-        this.country = this.elementValueValue.addressDetails.country;
+        this.country = this.elementValueValue.addressDetails.country || DEFAULT_COUNTRY;
       }
     } else {
       this.isSmart = true;
-      this.elementValueLabel = null;
-      this.elementValueValue = null;
+      this.elementValueLabel = '';
+      this.elementValueValue = {};
       this.elementValueStatus = STATUS_TYPING;
+    }
+  }
+
+  get elementValue() {
+    return this.isSmart ? this.getSmartValue() : this.getManualValue();
+  }
+
+  set elementValue(v) {
+    this._didGetValue = true;
+    this.ingest(v);
+  }
+
+  getManualValue() {
+    let fullAddress =
+      (this.street ? this.street : '') +
+      (this.street && (this.suburb || this.state || this.postcode) ? ',' : '') +
+      (this.street && this.suburb ? ' ' : '') +
+      (this.suburb ? this.suburb : '') +
+      ((this.street || this.suburb) && this.state ? ' ' : '') +
+      (this.state ? this.state : '') +
+      ((this.street || this.suburb || this.state) && this.postcode ? ' ' : '') +
+      (this.postcode ? this.postcode : '');
+
+    fullAddress = fullAddress ? fullAddress.toUpperCase() : null;
+
+    return {
+      value: {
+        addressDetails: {
+          street: this.street,
+          suburb: this.suburb,
+          state: this.state,
+          postcode: this.postcode,
+          country: this.country,
+        },
+        address: fullAddress,
+      },
+      mode: MODE_MANUAL,
+      label: fullAddress,
+    };
+  }
+
+  getSmartValue(ev = null) {
+    let value = {
+      label: (ev ? ev : this).elementValueLabel,
+      value: (ev ? ev : this).elementValueValue,
+      status: (ev ? ev : this).elementValueStatus,
+      mode: MODE_SMART,
+    };
+
+    return value;
+  }
+
+  _ath_options;
+
+  get options() {
+    return this._ath_options;
+  }
+  set options(v) {
+    this._ath_options = v;
+
+    if (v && Array.isArray(v)) {
+      if (v.length === 1 && v[0].name) {
+        // simulate selection after all asynchronous activities are done
+        Promise.resolve().then(() => {
+          this.handleSelect({
+            target: { value: v[0].name },
+            detail: v[0],
+          });
+        });
+      }
+    }
+  }
+
+  renderedCallback() {
+    super.renderedCallback();
+
+    if (!this._didTypeahead && this._didGetValue) {
+      if (this.isSmart) {
+        if (this.elementValueStatus === STATUS_TYPING) {
+          this.performTypeahead({ value: this.elementValueLabel }, false);
+        } else if (this.elementValueStatus === STATUS_SELECTED) {
+          this._didTypeahead = true;
+          this.handleSelect({
+            target: { value: this.elementValueLabel },
+            detail: { item: this.elementValueValue },
+          });
+        } else {
+          this._didTypeahead = true;
+        }
+      }
     }
   }
 
@@ -321,7 +389,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get manualChildInputs() {
     if (!this._manualChildInputs) {
-      this._manualChildInputs = this.template.querySelectorAll(".manual-field");
+      this._manualChildInputs = this.template.querySelectorAll('.manual-field');
     }
     return this._manualChildInputs;
   }
@@ -395,24 +463,28 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get computedLabelClassName() {
     return `nsw-form__label ${
-      this._propSetMap.required ? "nsw-form__required" : ""
+      this._propSetMap.required ? 'nsw-form__required' : ''
     }`;
   }
 
   get computedHelperClassName() {
-    return getHelperClassName("invalid");
+    return getHelperClassName('invalid');
   }
 
   get computedStatusIcon() {
-    return getStatusIcon("invalid");
+    return getStatusIcon('invalid');
   }
 
   get computedTypeaheadClass() {
-    return this.isSmart ? "" : "sfgpsds-hide";
+    return this.isSmart ? '' : 'sfgpsds-hide';
   }
 
   get computedManualClassName() {
-    return this.isSmart ? "sfgpsds-hide" : "";
+    return this.isSmart ? 'sfgpsds-hide' : '';
+  }
+
+  get complete() {
+    return this.isSmart ? this.elementValueStatus === STATUS_RESOLVED : false;
   }
 
   get mergedLabel() {
