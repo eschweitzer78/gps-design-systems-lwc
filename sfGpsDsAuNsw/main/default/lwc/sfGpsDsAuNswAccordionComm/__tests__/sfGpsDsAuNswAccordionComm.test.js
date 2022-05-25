@@ -3,7 +3,6 @@ import SfGpsDsAuNswAccordionComm from "c/sfGpsDsAuNswAccordionComm";
 
 const tag = "c-sf-gps-ds-au-nsw-accordion-comm";
 const childTag = "c-sf-gps-ds-au-nsw-accordion";
-const contentClassSelector = ".nsw-accordion__content";
 const defaultHeader = "Accordion";
 
 describe("c-sf-gps-ds-au-nsw-accordion-comm", () => {

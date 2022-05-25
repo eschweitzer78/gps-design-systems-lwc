@@ -10,8 +10,7 @@ export {
   //  getFocusableElementBySelector,
   trapTabKey,
   whichTransitionEvent,
-  uniqueId,
-  popupWindow
+  uniqueId
 } from "./utilities";
 
 export { parseIso8601 } from "./datetime";
