@@ -11,9 +11,6 @@
   --nsw-s-off-white-2: #ecf1f3; /* hero search border */
   --nsw-s-off-white-1: #f4f7f9; /* autocomplete hover */
 
-  --nsw-s-brand-dark: #2e5299;
-  --nsw-s-border: #646974;
-
   --nsw-s-font-family: Gotham, Arial, sans-serif;
   --nsw-s-font-size: 16px;
   --nsw-s-font-size-sm-mobile: 0.875rem;
@@ -31,4 +28,7 @@
   --nsw-s-form-input-max-width: 372px;
   --nsw-s-form-input-max-width-sm: 174px;
   --nsw-s-form-input-max-width-lg: 570px;
+
+  --nsw-s-brand-dark: #2e5299;
+  --nsw-s-border: #646974;
 }
