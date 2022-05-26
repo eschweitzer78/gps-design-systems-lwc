@@ -13,6 +13,6 @@ export {
   uniqueId
 } from "./utilities";
 
-export { parseIso8601 } from "./datetime";
+export { parseIso8601 } from "./datetimeutil";
 
-export { htmlDecode, replaceInnerHtml, getFirstChild } from "./dom";
+export { htmlDecode, replaceInnerHtml, getFirstChild } from "./domutil";
