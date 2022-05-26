@@ -26,8 +26,8 @@
   },
   "sfGpsDsHelpers": {
     "target": "!Os",
-    "datetime.js": { "target": "datetime.js" },
-    "dom.js": { "target": "dom.js" },
+    "datetimeutil.js": { "target": "datetimeutil.js" },
+    "domutil.js": { "target": "domutil.js" },
     "!.js": { "target": "!Os.js" },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

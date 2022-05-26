@@ -1,4 +1,4 @@
-global with sharing class SfGpsDsGetManagedContentCollectionORA implements Callable {
+global with sharing class SfGpsDsGetManagedContentCollORA implements Callable {
   global Object call(String action, map<String, Object> args) {
     switch on action {
       when 'GetManagedContentCollection' {
