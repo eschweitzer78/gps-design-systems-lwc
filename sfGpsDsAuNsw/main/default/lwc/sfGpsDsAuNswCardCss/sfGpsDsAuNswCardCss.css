@@ -1,7 +1,5 @@
 @import "c/sfGpsDsAuNswCore";
 
-/* stylelint-disable declaration-no-important */
-/* stylelint-enable declaration-no-important */
 .nsw-card {
   position: relative;
   display: flex;
