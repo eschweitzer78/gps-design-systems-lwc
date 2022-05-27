@@ -137,7 +137,7 @@ jobs:
       # Install old sfGpsDs package in scratch org
       - name: "Install current sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: sfdx force:package:install -p ${{ steps.currentSfGpsDsPack..outputs.packageVersionId }} -w 10 -u scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.currentSfGpsDsPack.outputs.packageVersionId }} -w 10 -u scratch-org -r
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
