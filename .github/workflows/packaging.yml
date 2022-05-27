@@ -130,12 +130,14 @@ jobs:
       - name: "Get current sfGpsDs package version"
         id: currentSfGpsDsPack
         if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: latestVersion=$(sfdx force:package:version:list -p "Salesforce Global Public Sector Design Systems" -o CreatedDate --concise | tail -1 | awk '{print $3}')
+        run: |
+          packageVersionId=$(sfdx force:package:version:list -p 'Salesforce Global Public Sector Design Systems' -o CreatedDate --concise | tail -1 | awk '{print $3}')
+          echo "::set-output name=packageVersionId::$packageVersionId"
 
       # Install old sfGpsDs package in scratch org
       - name: "Install current sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: sfdx force:package:install -p ${{ steps.currentSfGpsDsPack.latestVersion }} -w 10 -u scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.currentSfGpsDsPack..outputs.packageVersionId }} -w 10 -u scratch-org -r
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
