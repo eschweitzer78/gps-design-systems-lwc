@@ -4,11 +4,9 @@
 
 Salesforce LWCs for Australian Governments' Design Systems
 
-## Installing the app using an Unlocked Package
+## Installing the beta version using Unlocked Packages
 
-Follow this set of instructions if you want to deploy the app to a more permanent environment than a Scratch org or if you don't want to install the local developement tools. You can use a non source-tracked orgs such as a free [Developer Edition Org](https://developer.salesforce.com/signup) or a [Trailhead Playground](https://trailhead.salesforce.com/).
-
-Make sure to start from a brand-new environment to avoid conflicts with previous work you may have done.
+Follow this set of instructions if you want to deploy the app to a more permanent environment than a Scratch org or if you don't want to install the local developement tools. You can use a non source-tracked orgs such as a free [Developer Edition Org](https://developer.salesforce.com/signup) or a [Trailhead Playground](https://trailhead.salesforce.com/), or one of your sandboxes.
 
 1. Log in to your org
 
@@ -17,3 +15,15 @@ Make sure to start from a brand-new environment to avoid conflicts with previous
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000IIv4AAG" title="sfGpsDsAuNsw">this link</a> to install the sfGpsDsAuNsw unlocked package in your org.
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000IIufAAG" title="sfGpsDsAuNswS">this link</a> to install the sfGpsDsAuNswS unlocked package in your org.
+
+## Installing the production version using Unlocked Packages
+
+Kindly note that the packages might be the same as for non-production orgs (see above) if the latest successful build has alreay been promoted for production.
+
+1. Log in to your org
+
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000IIw7AAG">this link</a> to install the sfGpsDs unlocked package in your production org.
+
+1. The sfGpsDsAuNsw unlocked package is not yet available for installation in your production org.
+
+1. The sfGpsDsAuNswS unlocked package in not yet available for installation in your production org.
