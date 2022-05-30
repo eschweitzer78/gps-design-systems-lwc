@@ -1,6 +1,10 @@
 /* Current status: DEV */
+// TODO: progress to prod quality
 
-global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements Callable {
+global with sharing
+class SfGpsDsListViewORA 
+extends SfGpsDsBaseORA 
+implements Callable {
   global Object call(String action, Map<String, Object> args) {
     init(args);
 
@@ -15,17 +19,20 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
           );
           String listViewId = (String) getTypedFromMap(
             WhereFrom.INPUT,
-            'objectName',
+            'listViewId',
             String.class,
             true
           );
           String listViewName = (String) getTypedFromMap(
             WhereFrom.INPUT,
-            'objectName',
+            'listViewName',
             String.class,
             true
           );
-          getListViewRecords(objectName, listViewId, listViewName);
+
+          List<sObject> recordList = getListViewRecords(objectName, listViewId, listViewName);
+
+          putOutput('records', recordList);
         } catch (Exception e) {
           setError('Exception in GetRecords');
         }
@@ -43,7 +50,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
     try {
       HttpRequest req = new HttpRequest();
       String endpointUrl =
-        'callout:sfGpsDsApi/v52.0/sobjects/' +
+        'callout:sfGpsDsApiPerUser/v52.0/sobjects/' +
         objectName +
         '/listviews';
 
@@ -54,7 +61,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
       HttpResponse response = http.send(req);
 
       if (response.getStatusCode() == 200) {
-        System.debug(response.getBody());
+        debug200(response.getBody());
         ListViewInfoList listviews = (ListViewInfoList) JSON.deserialize(
           response.getBody(),
           ListViewInfoList.class
@@ -69,11 +76,12 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
     }
   }
 
+  @TestVisible
   static String getListViewIdByName(String objectName, String listviewName) {
     try {
       HttpRequest req = new HttpRequest();
       String endpointUrl =
-        'callout:sfGpsDsApi/v52.0/sobjects/' +
+        'callout:sfGpsDsApiPerUser/v52.0/sobjects/' +
         objectName +
         '/listviews';
 
@@ -84,7 +92,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
       HttpResponse response = http.send(req);
 
       if (response.getStatusCode() == 200) {
-        System.debug(response.getBody());
+        debug200(response.getBody());
         ListViewInfoList listviews = (ListViewInfoList) JSON.deserialize(
           response.getBody(),
           ListViewInfoList.class
@@ -116,7 +124,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
 
       HttpRequest req = new HttpRequest();
       String endpointUrl =
-        'callout:sfGpsDsApi/v52.0/sobjects/' +
+        'callout:sfGpsDsApiPerUser/v52.0/sobjects/' +
         objectName +
         '/listviews/' +
         listViewId +
@@ -129,7 +137,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
       HttpResponse response = http.send(req);
 
       if (response.getStatusCode() == 200) {
-        System.debug(response.getBody());
+        debug200(response.getBody());
         ListViewDescribe listview = (ListViewDescribe) JSON.deserialize(
           response.getBody(),
           ListViewDescribe.class
@@ -192,5 +200,12 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
     public String nextRecordsUrl;
     public Integer size;
     public String sobjectType;
+  }
+
+  static void debug200(String e) {
+    Integer size = e.length();
+    for (Integer i = 0; i < size; i += 200) {
+      System.debug(e.mid(i, 200));
+    }
   }
 }

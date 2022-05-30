@@ -3,23 +3,45 @@ abstract public class SfGpsDsBaseORA {
   protected Map<String, Object> output;
   protected Map<String, Object> options;
 
+  public static final String ERROR_KEY = 'error';
+  public static final String ERROR_KEY_KO_VALUE = 'KO';
+  public static final String ERROR_CODE_KEY = 'errorCode';
+
   public enum WhereFrom {
     INPUT,
     OPTIONS
   }
 
-  protected void setError(String errorCode) {
-    //output.put('error', 'KO');
-    //output.put('errorCode', errorCode);
+  protected @TestVisible
+  void setError(String errorCode) {
+    output.put(ERROR_KEY, ERROR_KEY_KO_VALUE);
+    output.put(ERROR_CODE_KEY, errorCode);
     return;
   }
 
-  protected Object getTypedFromMap(WhereFrom wf, String key, Type type) {
+  public Boolean hasError() {
+    return output.containsKey(ERROR_KEY);
+  }
+
+  public String getErrorCode() {
+    return output.containsKey(ERROR_KEY) ? (String) output.get(ERROR_CODE_KEY) : null;
+  }
+
+  protected @TestVisible
+  void putOutput(String key, Object value) {
+    if (output != null) {
+      output.put(key, value);
+    }
+  }
+
+  protected @TestVisible
+  Object getTypedFromMap(WhereFrom wf, String key, Type type) {
     return getTypedFromMap(wf, key, type, false);
   }
 
   // limitation: apply only on primitive types
-  protected Object getTypedFromMap(
+  protected @TestVisible
+  Object getTypedFromMap(
     WhereFrom wf,
     String key,
     Type type,
@@ -34,46 +56,59 @@ abstract public class SfGpsDsBaseORA {
     }
 
     String typeName = 'Object'; // if we can't find out anything, we will return 'Object'
-    if (untyped instanceof SObject)
+    if (untyped instanceof SObject) {
       typeName =
         ((SObject) untyped).getSObjectType().getDescribe().getName() + '';
-    else if (untyped instanceof Boolean)
+    } else if (untyped instanceof Boolean) {
       typeName = 'Boolean';
-    else if (untyped instanceof Id)
+    } else if (untyped instanceof Id) {
       typeName = 'Id';
-    else if (untyped instanceof String)
+    } else if (untyped instanceof String) {
       typeName = 'String';
-    else if (untyped instanceof Blob)
+    } else if (untyped instanceof Blob) {
       typeName = 'Blob';
-    else if (untyped instanceof Date)
+    } else if (untyped instanceof Date) {
       typeName = 'Date';
-    else if (untyped instanceof Datetime)
+    } else if (untyped instanceof Datetime) {
       typeName = 'Datetime';
-    else if (untyped instanceof Time)
+    } else if (untyped instanceof Time) {
       typeName = 'Time';
-    else if (untyped instanceof Integer)
+    } else if (untyped instanceof Integer) {
       typeName = 'Integer';
-    else if (untyped instanceof Long)
+    } else if (untyped instanceof Long) {
       typeName = 'Long';
-    else if (untyped instanceof Decimal)
+    } else if (untyped instanceof Decimal) {
       typeName = 'Decimal';
-    else if (untyped instanceof Double)
+    } else if (untyped instanceof Double) {
       typeName = 'Double';
-    else if (untyped instanceof List<Object>)
-      typeName = 'List';
+    } else if (untyped instanceof List<Object>) {
+      typeName = 'List<ANY>';
+    }
 
-    if (typeName != type.getName()) {
-      String errorText =
-        ((wf == WhereFrom.INPUT) ? 'Input' : 'Options') +
-        ' parameter ' +
-        key +
-        ' should be of type ' +
-        type.getName() +
-        ' vs. ' +
-        typeName;
+    String currentTypeName = type.getName();
+    System.debug('expected ' + typeName + ', present ' + currentTypeName);
 
-      setError(errorText);
-      throw new TypeException(errorText);
+    if (typeName != currentTypeName) {
+      // It turns out Double and Decimal both return true when applying
+      // instanceof on a Double/Decimal
+
+      if (
+        (typeName != 'Double' && typeName != 'Decimal') ||
+        (typeName == 'Double' && currentTypeName != 'Decimal') ||
+        (typeName == 'Decimal' && currentTypeName != 'Double')
+       ) {
+        String errorText =
+          ((wf == WhereFrom.INPUT) ? 'Input' : 'Options') +
+          ' parameter ' +
+          key +
+          ' should be of type ' +
+          currentTypeName +
+          ' vs. ' +
+          typeName;
+
+        setError(errorText);
+        throw new TypeException(errorText);
+      }
     }
 
     return untyped;
@@ -83,8 +118,15 @@ abstract public class SfGpsDsBaseORA {
     input = (Map<String, Object>) args.get('input');
     output = (Map<String, Object>) args.get('output');
     options = (Map<String, Object>) args.get('options');
+
+    if (output == null) {
+      throw new ArgsException('Output is null');
+    }
   }
 
   public class TypeException extends Exception {
+  }
+
+  public class ArgsException extends Exception {
   }
 }
