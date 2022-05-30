@@ -1,4 +1,4 @@
-global class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements Callable {
+global with sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements Callable {
   global Object call(String action, Map<String, Object> args) {
     init(args);
 
@@ -84,6 +84,7 @@ global class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements Callable {
           Type
         FROM NavigationMenuItem
         WHERE NavigationLinkSet.DeveloperName = :developerName
+        WITH SECURITY_ENFORCED
       ];
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
