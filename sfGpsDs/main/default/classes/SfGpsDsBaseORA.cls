@@ -24,7 +24,9 @@ abstract public class SfGpsDsBaseORA {
   }
 
   public String getErrorCode() {
-    return output.containsKey(ERROR_KEY) ? (String) output.get(ERROR_CODE_KEY) : null;
+    return output.containsKey(ERROR_KEY)
+      ? (String) output.get(ERROR_CODE_KEY)
+      : null;
   }
 
   protected @TestVisible
@@ -93,10 +95,13 @@ abstract public class SfGpsDsBaseORA {
       // instanceof on a Double/Decimal
 
       if (
-        (typeName != 'Double' && typeName != 'Decimal') ||
-        (typeName == 'Double' && currentTypeName != 'Decimal') ||
-        (typeName == 'Decimal' && currentTypeName != 'Double')
-       ) {
+        (typeName != 'Double' &&
+        typeName != 'Decimal') ||
+        (typeName == 'Double' &&
+        currentTypeName != 'Decimal') ||
+        (typeName == 'Decimal' &&
+        currentTypeName != 'Double')
+      ) {
         String errorText =
           ((wf == WhereFrom.INPUT) ? 'Input' : 'Options') +
           ' parameter ' +

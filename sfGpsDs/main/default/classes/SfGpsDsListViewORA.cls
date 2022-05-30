@@ -1,10 +1,7 @@
 /* Current status: DEV */
 // TODO: progress to prod quality
 
-global with sharing
-class SfGpsDsListViewORA 
-extends SfGpsDsBaseORA 
-implements Callable {
+global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements Callable {
   global Object call(String action, Map<String, Object> args) {
     init(args);
 
@@ -30,7 +27,11 @@ implements Callable {
             true
           );
 
-          List<sObject> recordList = getListViewRecords(objectName, listViewId, listViewName);
+          List<sObject> recordList = getListViewRecords(
+            objectName,
+            listViewId,
+            listViewName
+          );
 
           putOutput('records', recordList);
         } catch (Exception e) {
