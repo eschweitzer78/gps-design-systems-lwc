@@ -27,6 +27,10 @@ export default class SfGpsDsLwcOsN extends OmnistudioBaseMixin(
     ];
   }
 
+  clearErrors() {
+    this._sfGpsErrors = null;
+  }
+  
   // For testing purposes only
 
   @api getErrors() {

@@ -14,7 +14,7 @@ export default class SfGpsDsLwc extends LightningElement {
   @track _sfGpsErrors;
 
   addError(code, description) {
-    let errors = this._sfGpsErrors ? this._sfGpsErrors : [];
+    let errors = this._sfGpsErrors || [];
     this._sfGpsErrors = [
       ...errors,
       {
@@ -23,6 +23,10 @@ export default class SfGpsDsLwc extends LightningElement {
         description: description
       }
     ];
+  }
+
+  clearErrors() {
+    this._sfGpsErrors = null;
   }
 
   // For testing purposes only

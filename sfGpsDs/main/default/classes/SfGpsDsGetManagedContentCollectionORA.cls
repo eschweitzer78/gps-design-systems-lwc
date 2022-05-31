@@ -1,4 +1,9 @@
 global with sharing class SfGpsDsGetManagedContentCollectionORA implements Callable {
+  final static String DEFAULT_LANGUAGE = 'es_US';
+  final static Integer DEFAULT_PAGE_PARAM = 0;
+  final static Integer DEFAULT_PAGE_SIZE = 25;
+  final static Boolean DEFAULT_FULL_URL = false;
+
   global Object call(String action, map<String, Object> args) {
     switch on action {
       when 'GetManagedContentCollection' {
@@ -37,20 +42,15 @@ global with sharing class SfGpsDsGetManagedContentCollectionORA implements Calla
       if (options == null) {
         options = new GetManagedContentCollectionOptions();
       }
-      /*      
-      if (options.pageParam == null) { options.pageParam = 0; }
-      if (options.pagesize == null) { options.pageSize = 25; }
-      if (options.fullUrl == null) { options.fullUrl = false; }
-      */
 
       ConnectApi.ManagedContentVersionCollection coll = ConnectApi.ManagedContent.getManagedContentByContentKeys(
         input.communityId,
         input.contentKeys,
-        options.pageParam,
-        options.pageSize,
-        input.language,
+        options.pageParam == null ? DEFAULT_PAGE_PARAM : options.pageParam,
+        options.pageSize == null ? DEFAULT_PAGE_SIZE : options.pageSize,
+        input.language == null ? DEFAULT_LANGUAGE : input.language,
         input.managedContentType,
-        options.fullUrl
+        options.fullUrl == null ? DEFAULT_FULL_URL : options.fullUrl
       );
 
       /* for some funny reason an OmniStudio Transform DR will fail if the data is returned as above */
@@ -72,7 +72,7 @@ global with sharing class SfGpsDsGetManagedContentCollectionORA implements Calla
     public String language;
 
     public GetManagedContentCollectionInput() {
-      this.language = 'es_US';
+      this.language = DEFAULT_LANGUAGE;
     }
   }
 
@@ -82,9 +82,9 @@ global with sharing class SfGpsDsGetManagedContentCollectionORA implements Calla
     public Boolean fullUrl;
 
     public GetManagedContentCollectionOptions() {
-      this.pageParam = 0;
-      this.pageSize = 25;
-      this.fullUrl = false;
+      this.pageParam = DEFAULT_PAGE_PARAM;
+      this.pageSize = DEFAULT_PAGE_SIZE;
+      this.fullUrl = DEFAULT_FULL_URL;
     }
   }
 

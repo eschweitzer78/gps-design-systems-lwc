@@ -20,13 +20,11 @@ textfield,
 select {
   font-family: var(--nsw-font-family);
 }
-p,
-ul,
-ol,
-dl {
+/* 
+p, ul, ol, dl {
   margin: 0;
 }
-/* * + p, * + ul, * + ol, * + dl { // TODO: DOES NOT WORK WITH LWC, MOVE TO COMMUNITY STYLING 
+* + p, * + ul, * + ol, * + dl { // TODO: DOES NOT WORK WITH LWC, MOVE TO COMMUNITY STYLING 
     margin-top: 1rem;
 }
 */
