@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>52.0</apiVersion>
-    <isExposed>true</isExposed>
-    <masterLabel>NSW DS In Page Alert</masterLabel>
-    <targets>
-        <target>lightningCommunity__Page</target>
-        <target>lightningCommunity__Default</target>
-    </targets>
-    <targetConfigs>
-        <targetConfig targets="lightningCommunity__Default">
-            <property
+  <apiVersion>52.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS In-Page Alert</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
         name="title"
         type="String"
         label="Title"
         description="Context of the alert."
         default="In-page alert"
       />
-            <property
+      <property
         name="content"
         type="String"
         label="Content"
         description="Content that provides further details of the alert and actionable steps in Markdown format."
         default="In-page alerts are used to contextually inform users of **important** information or status of an interaction."
       />
-            <property
+      <property
         name="as"
         type="String"
         label="As"
@@ -31,18 +31,18 @@
         datasource="info,warning,error,success"
         required="true"
       />
-            <property
+      <property
         name="compact"
         type="Boolean"
         label="Compact"
         description="Renders the alert in compact form"
       />
-            <property
+      <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
       />
-        </targetConfig>
-    </targetConfigs>
+    </targetConfig>
+  </targetConfigs>
 </LightningComponentBundle>

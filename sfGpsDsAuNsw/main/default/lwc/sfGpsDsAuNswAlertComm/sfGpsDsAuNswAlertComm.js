@@ -13,7 +13,6 @@ import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   @api title;
   @api className = "";
-  @api alt = false;
   @api as = "info";
   @api compact = false;
 

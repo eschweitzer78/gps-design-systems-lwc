@@ -53,7 +53,7 @@
     "renderer.js": { "target": "renderer.js" },
     "!.js": {
       "target": "!Os.js",
-      "sfGpsDsHelpers'": "sfGpsDsHelpersOs'",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "sfGpsDsMarkdown": "sfGpsDsMarkdownOs"
     },
     "!.js-meta.xml": {

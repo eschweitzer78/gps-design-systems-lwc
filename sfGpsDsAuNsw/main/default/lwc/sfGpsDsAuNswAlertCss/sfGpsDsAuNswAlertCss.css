@@ -10,9 +10,11 @@
   flex-direction: row;
   flex-wrap: nowrap;
 }
-.nsw-in-page-alert:first-child {
+/* TODO: Actually nevers applies in LWC as its always the first child of widget */
+/*.nsw-in-page-alert:first-child {
   margin-top: 0;
 }
+*/
 @media (min-width: 48rem) {
   .nsw-in-page-alert {
     margin-top: 2rem;
