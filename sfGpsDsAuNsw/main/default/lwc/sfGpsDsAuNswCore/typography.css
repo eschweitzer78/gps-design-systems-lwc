@@ -376,7 +376,8 @@ a:visited {
   }
 }
 
-:host, html {
+:host,
+html {
   --nsw-font-size-xxs: var(--nsw-font-size-xxs-mobile);
   --nsw-font-height-xxs: var(--nsw-font-height-xxs-mobile);
   --nsw-font-size-xs: var(--nsw-font-size-xs-mobile);
@@ -393,43 +394,50 @@ a:visited {
   --nsw-font-height-xxl: var(--nsw-font-height-xxl-mobile);
 }
 @media (min-width: 62rem) {
-  :host, html {
+  :host,
+  html {
     --nsw-font-size-xxs: var(--nsw-font-size-xxs-desktop);
     --nsw-font-height-xxs: var(--nsw-font-height-xxs-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :host, html {
+  :host,
+  html {
     --nsw-font-size-xs: var(--nsw-font-size-xs-desktop);
     --nsw-font-height-xs: var(--nsw-font-height-xs-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :host, html {
+  :host,
+  html {
     --nsw-font-size-sm: var(--nsw-font-size-sm-desktop);
     --nsw-font-height-sm: var(--nsw-font-height-sm-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :host, html {
+  :host,
+  html {
     --nsw-font-size-md: var(--nsw-font-size-md-desktop);
     --nsw-font-height-md: var(--nsw-font-height-md-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :host, html {
+  :host,
+  html {
     --nsw-font-size-lg: var(--nsw-font-size-lg-desktop);
     --nsw-font-height-lg: var(--nsw-font-height-lg-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :host, html {
+  :host,
+  html {
     --nsw-font-size-xl: var(--nsw-font-size-xl-desktop);
     --nsw-font-height-xl: var(--nsw-font-height-xl-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :host, html {
+  :host,
+  html {
     --nsw-font-size-xxl: var(--nsw-font-size-xxl-desktop);
     --nsw-font-height-xxl: var(--nsw-font-height-xxl-desktop);
   }

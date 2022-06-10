@@ -30,7 +30,7 @@ export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
   clearErrors() {
     this._sfGpsErrors = null;
   }
-  
+
   // For testing purposes only
 
   @api getErrors() {

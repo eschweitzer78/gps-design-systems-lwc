@@ -75,8 +75,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   }
 
   refreshContent() {
-    if (this._ipName == null ||
-        this._input == null) {
+    if (this._ipName == null || this._input == null) {
       return;
     }
 

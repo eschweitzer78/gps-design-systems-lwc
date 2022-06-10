@@ -1,4 +1,5 @@
-:host, html {
+:host,
+html {
   --nsw-palette-grey-01: #22272b;
   --nsw-palette-grey-02: #495054;
   --nsw-palette-grey-03: #cdd3d6;
