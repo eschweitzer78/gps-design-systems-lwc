@@ -26,7 +26,12 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
   }
 
   @track _items = [];
-  @track _isLoading;
+
+  _nLoading = 0;
+  get _isLoading() {
+    return this._nLoading > 0;
+  }
+
   @track _didLoadOnce;
 
   _input = {};
@@ -40,10 +45,7 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
     this._originalInputJSON = value;
 
     try {
-      let input = JSON.parse(value || "{}");
-      //this._input = { ...input, communityId: communityId };
-      // TODO: there is no easy way to get that in omni
-      this._input = input;
+      this._input = JSON.parse(value || "{}");
       this.refreshContent();
     } catch (e) {
       this._options = {};
@@ -71,17 +73,19 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
   }
 
   refreshContent() {
-    this._isLoading = true;
-
-    if (this._ipName == null) {
+    if (this._ipName == null || this._input == null) {
       return;
     }
+
+    this._nLoading++;
 
     this.omniRemoteCall(
       {
         sClassName: `${omnistudio_ns}IntegrationProcedureService`,
         sMethodName: this._ipName,
         input: JSON.stringify(this._input),
+        //input: { ...this._input, communityId: communityId },
+        // TODO: there is no easy way to get that in omni
         options: JSON.stringify(this._options)
       },
       false
@@ -109,17 +113,18 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
           }
 
           this.didLoadOnce = true;
+          this.clearErrors();
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection");
           this._items = [];
         } finally {
-          this._isLoading = false;
+          this._nLoading--;
         }
       })
       .catch((error) => {
         this.addError("CK-EX", `Issue getting the content collection ${error}`);
         this._items = [];
-        this._isLoading = false;
+        this._nLoading--;
       });
   }
 
@@ -130,6 +135,10 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
   connectedCallback() {
     if (!this._ipName) {
       this.addError("IP-NV", "Integration procedure name is required.");
+    }
+
+    if (!this._input) {
+      this.addError("IJ-NV", "Input is required.");
     }
   }
 }

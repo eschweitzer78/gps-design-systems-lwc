@@ -57,7 +57,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx force:package:version:create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
@@ -73,7 +73,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx force:package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
@@ -89,7 +89,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx force:package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
@@ -119,10 +119,18 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} -w 10 -u scratch-org -r
 
+      # Get current sfGpsDs package version
+      - name: "Get current sfGpsDs package version"
+        id: currentSfGpsDsPack
+        if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
+        run: |
+          packageVersionId=$(sfdx force:package:version:list -p 'Salesforce Global Public Sector Design Systems' -o CreatedDate --concise | tail -1 | awk '{print $3}')
+          echo "::set-output name=packageVersionId::$packageVersionId"
+
       # Install old sfGpsDs package in scratch org
       - name: "Install current sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: sfdx force:package:install -p "Salesforce Global Public Sector Design Systems" -w 10 -u scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.currentSfGpsDsPack.outputs.packageVersionId }} -w 10 -u scratch-org -r
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"

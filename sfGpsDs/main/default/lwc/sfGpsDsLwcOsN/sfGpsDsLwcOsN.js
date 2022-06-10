@@ -6,11 +6,11 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import OmnistudioBaseMixin from "omnistudio/omniscriptBaseMixin";
+import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 
 /* IMPORTANT NOTE: this class is not automatically derived from sfGpsDsLwcOs */
 
-export default class SfGpsDsLwcOsN extends OmnistudioBaseMixin(
+export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
   LightningElement
 ) {
   @track _sfGpsErrors;
@@ -25,6 +25,10 @@ export default class SfGpsDsLwcOsN extends OmnistudioBaseMixin(
         description: description
       }
     ];
+  }
+
+  clearErrors() {
+    this._sfGpsErrors = null;
   }
 
   // For testing purposes only

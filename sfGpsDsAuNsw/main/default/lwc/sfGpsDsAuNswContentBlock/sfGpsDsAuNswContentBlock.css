@@ -1,7 +1,5 @@
 @import "c/sfGpsDsAuNswCore";
 
-/* stylelint-disable declaration-no-important */
-/* stylelint-enable declaration-no-important */
 .nsw-content-block__title {
   font-size: var(--nsw-font-size-lg-mobile);
   line-height: var(--nsw-line-height-lg-mobile);

@@ -1,0 +1,115 @@
+@import "c/sfGpsDsAuNswCore";
+
+.nsw-hero-banner-alt__title a:visited {
+  color: var(--nsw-text-dark);
+}
+
+.nsw-hero-banner-alt {
+  overflow: hidden;
+  color: var(--nsw-text-dark);
+  position: relative;
+}
+@media (min-width: 48em) {
+  .nsw-hero-banner-alt {
+    height: 23.75rem;
+    overflow: hidden;
+  }
+}
+/*
+.nsw-hero-banner-alt__image-area {  ESC counter nsw-container 
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+*/
+@media (min-width: 48em) {
+  .nsw-hero-banner-alt__image-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
+.nsw-hero-banner-alt__image {
+  width: 100vw;
+  position: relative;
+  /*    left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  */
+  height: auto;
+  display: block;
+}
+@media (min-width: 48em) {
+  .nsw-hero-banner-alt__image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-bottom: 0;
+  }
+}
+.nsw-hero-banner-alt__title {
+  font-weight: 600;
+  font-size: 1.625rem;
+  margin: 0;
+}
+.nsw-hero-banner-alt__icon {
+  margin: 1rem 0 0;
+}
+.nsw-hero-banner-alt__link {
+  text-decoration: none;
+  color: var(--nsw-text-dark);
+}
+.nsw-hero-banner-alt__link:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.nsw-hero-banner-alt__content-area {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+@media (min-width: 48em) {
+  .nsw-hero-banner-alt__content-area {
+    width: auto;
+    position: static;
+    margin-left: auto;
+    margin-right: auto;
+    left: auto;
+    right: auto;
+    height: 23.75rem;
+    background-color: transparent;
+    width: 100%;
+  }
+}
+.nsw-hero-banner-alt__content {
+  border-top: 6px solid var(--nsw-brand-dark); /* TODO: check change of brand colour #d7153a; */
+  font-weight: 400;
+  font-size: 1.125rem;
+  padding: 2rem; /* ESC 1rem; */
+  background-color: #e4e4e6; /* TODO: name colour */
+}
+@media (min-width: 48em) {
+  .nsw-hero-banner-alt__content {
+    padding: 1rem 1.5rem;
+    position: relative;
+    top: 50%;
+    background-color: hsla(0, 0%, 100%, 0.8);
+    transform: translateY(-50%);
+    max-width: 37.5rem;
+    left: -1rem;
+  }
+}
+@media (min-width: 62em) {
+  .nsw-hero-banner-alt__content {
+    font-size: 1.25rem;
+  }
+}
