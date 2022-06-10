@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from "lwc";
+import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
