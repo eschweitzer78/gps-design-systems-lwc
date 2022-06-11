@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>52.0</apiVersion>
-    <isExposed>true</isExposed>
-    <masterLabel>NSW DS Callout</masterLabel>
-    <targets>
-        <target>lightningCommunity__Page</target>
-        <target>lightningCommunity__Default</target>
-    </targets>
-    <targetConfigs>
-        <targetConfig targets="lightningCommunity__Default">
-            <property
+  <apiVersion>54.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Callout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
         name="title"
         type="String"
         label="Title"
         description="Overview of the callout if required"
         default="Callout"
       />
-            <property
+      <property
         name="level"
         type="String"
         label="Title level"
@@ -25,19 +25,19 @@
         required="true"
         default="4"
       />
-            <property
+      <property
         name="content"
         type="String"
         label="Content"
         description="Callout message in Markdown format"
         default="Callouts are text excerpts, used as a *visual* cue to draw attention to the text. They're used to help direct users toward an **important** piece of information."
       />
-            <property
+      <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
       />
-        </targetConfig>
-    </targetConfigs>
+    </targetConfig>
+  </targetConfigs>
 </LightningComponentBundle>
