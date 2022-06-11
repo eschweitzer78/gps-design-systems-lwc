@@ -9,21 +9,7 @@
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "path": "sfGpsDsAuNsw",
-          "package": "Salesforce Global Public Sector AU NSW Design System",
-          "versionName": "2022.05.26.1841",
-          "versionNumber": "1.1.0.NEXT",
-          "default": true,
-          "definitionFile": "config/project-deployment-def.json",
-          "dependencies": [
-            {
-              "package": "omnistudio 236.3"
-            },
-            {
-              "package": "Salesforce Global Public Sector Design Systems",
-              "versionNumber": "1.0.0.LATEST"
-            }
-          ]
+          "package": "omnistudio 236.3"
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
