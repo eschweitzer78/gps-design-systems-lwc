@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>52.0</apiVersion>
-    <isExposed>true</isExposed>
-    <masterLabel>NSW DS Masthead</masterLabel>
-    <targets>
-      <target>lightningCommunity__Page</target>
-      <target>lightningCommunity__Default</target>
-    </targets>
-    <targetConfigs>
-      <targetConfig targets="lightningCommunity__Default">
-        <property
+  <apiVersion>54.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Masthead</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
         name="mastheadLabel"
         type="String"
         label="Masthead label"
         description="Text that indentifies connection to NSW Government, in markdown format."
         default="A NSW Government website"
       />
-        <property
+      <property
         name="cstyle"
         type="String"
         label="Style"
         datasource="default,light"
         default="default"
       />
-        <property
+      <property
         name="arLabel"
         type="String"
         label="Aria label for Skip-to Links"
         description="Aria label for the section containing links to skip."
         default="Skip to links"
       />
-        <property
+      <property
         name="navLabel"
         type="String"
         label="Label for Skip to nav link"
         default="Skip to navigation"
       />
-        <property
+      <property
         name="nav"
         type="String"
         label="nav"
         description="Href to navigation."
         default="#nav"
       />
-        <property
+      <property
         name="contentLabel"
         type="String"
         label="Label for Skip to content link"
         default="Skip to content"
       />
-        <property
+      <property
         name="content"
         type="String"
         label="content"
         description="Href to content."
         default="#content"
       />
-        <property
+      <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
       />
-      </targetConfig>
-    </targetConfigs>
-  </LightningComponentBundle>
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

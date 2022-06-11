@@ -1,49 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>51.0</apiVersion>
-    <isExposed>true</isExposed>
-    <masterLabel>NSW DS Hero Banner (Alt)</masterLabel>
-    <description
+  <apiVersion>54.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Hero Banner (Alt)</masterLabel>
+  <description
   >An alternative hero banner in the NSW Government Design System</description>
-    <targets>
-        <target>lightningCommunity__Page</target>
-        <target>lightningCommunity__Default</target>
-    </targets>
-    <targetConfigs>
-        <targetConfig targets="lightningCommunity__Default">
-            <property
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
         name="titleLink"
         type="String"
         label="Title link"
         description="Clearly identifies he primary purpose or action of the site, service or product and acts as call to action for the user - in Markdown link format."
         default="[Hero banner](#)"
       />
-            <property
+      <property
         name="content"
         type="String"
         label="Content"
         description="Gives additional context when the title alone would be insufficient - in Markdown format."
         default="The hero banner (*alt*) reflects the goals or purpose of the site, service or product."
       />
-
-            <property
+      <property
         name="imageSrc"
         type="String"
         label="Image source"
         description="URL of a supporting image."
       />
-            <property
+      <property
         name="imageAlt"
         type="String"
         label="Image alt"
         description="Text used should there be an issue displaying the image."
       />
-            <property
+      <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
       />
-        </targetConfig>
-    </targetConfigs>
+    </targetConfig>
+  </targetConfigs>
 </LightningComponentBundle>
