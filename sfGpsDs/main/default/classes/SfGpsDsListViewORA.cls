@@ -52,10 +52,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
   public static ListViewInfoList getListViews(String objectName) {
     try {
       HttpRequest req = new HttpRequest();
-      String endpointUrl =
-        CALLOUT_BASE +
-        objectName +
-        '/listviews';
+      String endpointUrl = CALLOUT_BASE + objectName + '/listviews';
 
       req.setEndpoint(endpointUrl);
       req.setMethod('GET');
@@ -83,10 +80,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
   static String getListViewIdByName(String objectName, String listviewName) {
     try {
       HttpRequest req = new HttpRequest();
-      String endpointUrl =
-        CALLOUT_BASE +
-        objectName +
-        '/listviews';
+      String endpointUrl = CALLOUT_BASE + objectName + '/listviews';
 
       req.setEndpoint(endpointUrl);
       req.setMethod('GET');
