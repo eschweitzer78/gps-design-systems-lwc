@@ -2,6 +2,8 @@
 // TODO: progress to prod quality
 
 global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements Callable {
+  static final String CALLOUT_BASE = 'callout:sfGpsDsApiPerUser/v54.0/sobjects/';
+
   global Object call(String action, Map<String, Object> args) {
     init(args);
 
@@ -51,7 +53,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
     try {
       HttpRequest req = new HttpRequest();
       String endpointUrl =
-        'callout:sfGpsDsApiPerUser/v52.0/sobjects/' +
+        CALLOUT_BASE +
         objectName +
         '/listviews';
 
@@ -82,7 +84,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
     try {
       HttpRequest req = new HttpRequest();
       String endpointUrl =
-        'callout:sfGpsDsApiPerUser/v52.0/sobjects/' +
+        CALLOUT_BASE +
         objectName +
         '/listviews';
 
@@ -125,7 +127,7 @@ global with sharing class SfGpsDsListViewORA extends SfGpsDsBaseORA implements C
 
       HttpRequest req = new HttpRequest();
       String endpointUrl =
-        'callout:sfGpsDsApiPerUser/v52.0/sobjects/' +
+        CALLOUT_BASE +
         objectName +
         '/listviews/' +
         listViewId +
