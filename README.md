@@ -22,8 +22,8 @@ Kindly note that the packages might be the same as for non-production orgs (see 
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000IIw7AAG">this link</a> to install the sfGpsDs unlocked package in your production org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000IJ1qAAG">this link</a> to install the sfGpsDs unlocked package in your production org (v1.1.1.1 on 13/06/2022).
 
-1. The sfGpsDsAuNsw unlocked package is not yet available for installation in your production org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000IJ1vAAG">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v1.1.1.1 on 13/06/2022).
 
-1. The sfGpsDsAuNswS unlocked package in not yet available for installation in your production org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000IJ20AAG">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v1.1.1.1 on 13/06/2022).
