@@ -6,9 +6,14 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import { NavigationMixin } from "lightning/navigation";
 
-export default class SfGpsDsAuNswHeader extends LightningElement {
-  @api srWaratahLabel = "NSW Government";
+export default class SfGpsDsAuNswHeader extends NavigationMixin(
+  LightningElement
+) {
+  @api masterbrand;
+  @api masterbrandAlt;
+  @api srMasterbrandLabel = "NSW Government";
   @api logo;
   @api logoAlt;
   @api menuLabel = "menu";
@@ -69,6 +74,22 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   handleOpenMenu() {
     const openMenuEvent = new CustomEvent("openmenu");
     this.dispatchEvent(openMenuEvent);
+  }
+
+  handleLogoClick(event) {
+    if (this.headerUrl) {
+      return;
+    }
+
+    event.preventDefault();
+
+    this[NavigationMixin.Navigate]({
+      // Pass in pageReference
+      type: "standard__namedPage",
+      attributes: {
+        pageName: "home"
+      }
+    });
   }
 
   get computedClassName() {

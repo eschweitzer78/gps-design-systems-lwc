@@ -1,5 +1,21 @@
 @import "c/sfGpsDsAuNswCore";
 
+/* Added to manage co-logo size */
+
+.nsw-header__name svg,
+.nsw-header__name img {
+  height: 3rem;
+  display: block;
+}
+@media (min-width: 62rem) {
+  .nsw-header__name svg,
+  .nsw-header__name img {
+    height: 4.75rem;
+  }
+}
+
+/* standard */
+
 .nsw-header {
   background-color: var(--nsw-white);
   position: relative;
@@ -140,12 +156,16 @@
     padding: 0;
   }
 }
-.nsw-header__waratah svg {
+.nsw-header__waratah svg,
+.nsw-header__waratah img {
+  /* img added to cater to masterbrand override */
   height: 3rem;
   display: block;
 }
 @media (min-width: 62rem) {
-  .nsw-header__waratah svg {
+  /* img added to cater to masterbrand override */
+  .nsw-header__waratah svg,
+  .nsw-header__waratah img {
     height: 4.75rem;
   }
 }
@@ -186,11 +206,15 @@
     left: 0;
   }
 }
-.nsw-header__waratah a svg:not(:first-child) {
+.nsw-header__waratah a svg:not(:first-child),
+.nsw-header__waratah a img:not(:first-child) {
+  /* img added to cater to img co-logo */
   margin-left: 1.5rem;
 }
 @media (min-width: 62rem) {
-  .nsw-header__waratah a svg:not(:first-child) {
+  .nsw-header__waratah a svg:not(:first-child),
+  .nsw-header__waratah a img:not(:first-child) {
+    /* img added to cater to img co-logo */
     margin-left: 2.5rem;
   }
 }

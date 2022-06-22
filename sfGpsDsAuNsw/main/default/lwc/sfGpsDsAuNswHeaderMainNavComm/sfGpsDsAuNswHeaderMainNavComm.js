@@ -42,7 +42,9 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
 
   // Header
 
-  @api srWaratahLabel = "NSW Government";
+  @api masterbrand;
+  @api masterbrandAlt;
+  @api srMasterbrandLabel = "NSW Government";
   @api logo;
   @api logoAlt;
   @api menuLabel = "menu";

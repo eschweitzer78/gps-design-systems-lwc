@@ -26,33 +26,34 @@
       <property
         name="arLabel"
         type="String"
-        label="Aria label for Skip-to Links"
+        label="Aria label for Skip to Links"
         description="Aria label for the section containing links to skip."
         default="Skip to links"
       />
       <property
         name="navLabel"
         type="String"
-        label="Label for Skip to nav link"
+        label="Skip to nav label"
         default="Skip to navigation"
       />
       <property
         name="nav"
         type="String"
-        label="nav"
+        label="Nav Href"
         description="Href to navigation."
         default="#nav"
       />
       <property
         name="contentLabel"
         type="String"
-        label="Label for Skip to content link"
+        label="Skip to content label"
+        description="Label for Skip to content link."
         default="Skip to content"
       />
       <property
         name="content"
         type="String"
-        label="content"
+        label="Content Href"
         description="Href to content."
         default="#content"
       />

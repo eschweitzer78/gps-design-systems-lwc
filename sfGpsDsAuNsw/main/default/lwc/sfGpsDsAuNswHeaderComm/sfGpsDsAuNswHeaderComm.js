@@ -10,7 +10,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { NavigationMixin } from "lightning/navigation";
 
 export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
-  @api srWaratahLabel = "NSW Government";
+  @api masterbrand;
+  @api masterbrandAlt;
+  @api srMasterbrandLabel = "NSW Government";
   @api logo;
   @api logoAlt;
   @api menuLabel = "menu";
