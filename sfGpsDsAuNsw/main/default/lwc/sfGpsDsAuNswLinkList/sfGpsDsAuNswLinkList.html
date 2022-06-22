@@ -1,6 +1,6 @@
 <template>
-  <div class="nsw-link-list">
-    <ul class={computedClassName}>
+  <div class={computedClassName}>
+    <ul class="nsw-link-list__list">
       <template for:each={links} for:item="item">
         <li key={item.index} class="nsw-link-list__item">
           <a if:true={item.url} href={item.url}>

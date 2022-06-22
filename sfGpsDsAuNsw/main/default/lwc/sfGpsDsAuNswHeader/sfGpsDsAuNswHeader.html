@@ -4,8 +4,14 @@
       <div class="nsw-header__inner">
         <div class="nsw-header__main">
           <div class="nsw-header__waratah">
-            <a href={headerUrl} class="nsw-header__logo-link">
+            <a
+              href={headerUrl}
+              class="nsw-header__logo-link"
+              onclick={handleLogoClick}
+            >
               <svg
+                if:false={masterbrand}
+                class="nsw-header__waratah-gov"
                 viewBox="0 0 295 311"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -31,19 +37,31 @@
                   fill="#D7153A"
                 ></path>
               </svg>
-              <span class="sr-only">{srWaratahLabel}</span>
+              <img
+                if:true={masterbrand}
+                src={masterbrand}
+                alt={masterbrandAlt}
+              />
+
+              <span if:true={srMasterbrandLabel} class="sr-only"
+                >{srMasterbrandLabel}</span
+              >
             </a>
           </div>
 
           <div if:true={logo} class="nsw-header__name">
             <img src={logo} alt={logoAlt} />
-            <span class="sr-only">{siteTitle}</span>
-            <span class="sr-only">{siteDescriptor}</span>
+            <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
+            <span if:true={siteDescriptor} class="sr-only"
+              >{siteDescriptor}</span
+            >
           </div>
 
           <div if:false={logo} class="nsw-header__name">
-            <div class="nsw-header__title">{siteTitle}</div>
-            <div class="nsw-header__description">{siteDescriptor}</div>
+            <div if:true={siteTitle} class="nsw-header__title">{siteTitle}</div>
+            <div if:true={siteDescriptor} class="nsw-header__description">
+              {siteDescriptor}
+            </div>
           </div>
         </div>
 

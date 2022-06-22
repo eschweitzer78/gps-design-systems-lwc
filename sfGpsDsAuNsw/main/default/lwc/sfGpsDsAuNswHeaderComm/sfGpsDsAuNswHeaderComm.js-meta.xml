@@ -10,22 +10,37 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
-        name="srWaratahLabel"
+        name="masterbrand"
         type="String"
-        label="Screenreader Waratah Label"
-        description="x"
+        label="Masterbrand"
+        description="Logo URL for masterbrand, leave empty to keep NSW Government Waratah logo."
+        default=""
+      />
+      <property
+        name="masterbrandAlt"
+        type="String"
+        label="Masterbrand alternative text"
+        description="Alternative text to masterbrand logo."
+        default=""
+      />
+      <property
+        name="srMasterbrandLabel"
+        type="String"
+        label="Screenreader masterbrand label"
+        description="Label used on screenreaders for the masterbrand logo."
         default="NSW Government"
       />
       <property
         name="logo"
         type="String"
         label="Logo"
-        description="Logo URL for co-brand"
+        description="Logo URL for co-brand."
       />
       <property
         name="logoAlt"
         type="String"
-        label="Alternative text to co-brand logo"
+        label="Logo alternative text"
+        description="Alternative text to co-brand logo."
       />
       <property
         name="siteTitle"
@@ -44,14 +59,13 @@
       <property
         name="headerUrl"
         type="String"
-        label="content"
-        description="Href to content."
-        default="/"
+        label="Home page URL"
+        description="URL to alternative home page, leave blank otherwise."
       />
       <property
         name="mobile"
         type="String"
-        label="mobile"
+        label="Mobile"
         description="Show a responsive menu on mobile."
         default="true"
       />
@@ -59,21 +73,21 @@
         name="search"
         type="Boolean"
         label="Show search bar"
-        description="Provides user with easy access to a targeted search."
+        description="Provide user with easy access to a targeted search."
         default="true"
       />
       <property
         name="menuLabel"
         type="String"
-        label="Menu label"
-        description="."
+        label="Menu icon name"
+        description="Name of the Google Material icon used to render the menu waffle on mobile."
         default="menu"
       />
       <property
         name="searchLabel"
         type="String"
-        label="Search label"
-        description="."
+        label="Screenreader search label"
+        description="Accessibility label used for the search box with screen readers"
         default="Search site for:"
       />
       <property
