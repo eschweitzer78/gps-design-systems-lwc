@@ -49,7 +49,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     return items.map((item) => {
       let result = {
         ...item,
-        index: `${parentIndex}-${index++}`,
+        index: item.index || `${parentIndex}-${index++}`,
         level: parentLevel + 1,
         isActive: false,
         className: "",
@@ -101,9 +101,8 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isActive = true;
 
-    // TODO implement navigate
     let index = event.currentTarget.dataset.ndx;
-    console.log("@@@ navigate to ", index);
+    this.dispatchEvent(new CustomEvent("navigate", { detail: index }));
   }
 
   handleClick(event) {
@@ -114,6 +113,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     let index = event.currentTarget.dataset.ndx;
 
     // If there is no subNav to expand, we're really navigating
+    // TODO: sort out level-2 nav on mobile as there is a subNav - it's just not visible
     if (!this._mapItems[index]?.subNav) {
       this.handleClickNavigate(event);
       return;

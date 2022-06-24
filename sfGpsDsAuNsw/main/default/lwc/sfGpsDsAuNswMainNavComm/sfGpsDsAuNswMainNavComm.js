@@ -60,4 +60,9 @@ export default class SfGpsDsAuNswMainNavComm extends LightningElement {
     const closeMenuEvent = new CustomEvent("closemenu");
     this.dispatchEvent(closeMenuEvent);
   }
+
+  handleNavigate(event) {
+    const navigateEvent = new CustomEvent("navigate", { detail: event.detail });
+    this.dispatchEvent(navigateEvent);
+  }
 }

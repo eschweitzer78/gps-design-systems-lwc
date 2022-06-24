@@ -6,11 +6,8 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { NavigationMixin } from "lightning/navigation";
 
-export default class SfGpsDsAuNswHeader extends NavigationMixin(
-  LightningElement
-) {
+export default class SfGpsDsAuNswHeader extends LightningElement {
   @api masterbrand;
   @api masterbrandAlt;
   @api srMasterbrandLabel = "NSW Government";
@@ -83,13 +80,8 @@ export default class SfGpsDsAuNswHeader extends NavigationMixin(
 
     event.preventDefault();
 
-    this[NavigationMixin.Navigate]({
-      // Pass in pageReference
-      type: "standard__namedPage",
-      attributes: {
-        pageName: "home"
-      }
-    });
+    const homeEvent = new CustomEvent("home");
+    this.dispatchEvent(homeEvent);
   }
 
   get computedClassName() {
