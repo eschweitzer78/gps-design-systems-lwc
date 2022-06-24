@@ -44,4 +44,14 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
     const openMenuEvent = new CustomEvent("openmenu");
     this.dispatchEvent(openMenuEvent);
   }
+
+  handleHome() {
+    this[NavigationMixin.Navigate]({
+      // Pass in pageReference
+      type: "standard__namedPage",
+      attributes: {
+        pageName: "home"
+      }
+    });
+  }
 }

@@ -8,7 +8,6 @@
 import { api, track } from "lwc";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
-// import { NavigationMixin } from "lightning/navigation";
 import isGuest from "@salesforce/user/isGuest";
 import cBasePath from "@salesforce/community/basePath";
 
@@ -63,16 +62,6 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
   @api megaMenu = false;
   @api mainNavClassName;
 
-  //@track navItems = [
-
-  handleOpenMenu() {
-    this.menuActive = true;
-  }
-
-  handleCloseMenu() {
-    this.menuActive = false;
-  }
-
   _map = {};
 
   mapIpData(data) {
@@ -91,8 +80,9 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
       m[item.Id] = item;
       adaptedMap[item.Id] = {
         text: item.Label,
-        url: "#",
-        index: item.Id
+        url: cBasePath + item.Target || "#",
+        index: item.Id,
+        position: item.Position
       };
 
       return m;
@@ -113,12 +103,12 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
     data.forEach((item) => {
       let subNav = adaptedMap[item.Id].subNav;
       if (subNav) {
-        subNav.sort((a, b) => (a.Position > b.Position ? 1 : -1));
+        subNav.sort((a, b) => (a.position > b.position ? 1 : -1));
       }
     });
 
     // sort rootItems by position
-    return rootItems.sort((a, b) => (a.Position > b.Position ? 1 : -1));
+    return rootItems.sort((a, b) => (a.position > b.position ? 1 : -1));
   }
 
   get isEmpty() {
@@ -129,6 +119,24 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
 
   get isPreview() {
     return !document.URL.startsWith(cBasePath);
+  }
+
+  // Events
+
+  handleOpenMenu() {
+    this.menuActive = true;
+  }
+
+  handleCloseMenu() {
+    this.menuActive = false;
+  }
+
+  handleNavigate(event) {
+    let nav = this.template.querySelector("c-sf-gps-ds-navigation");
+
+    if (nav && this._map && event.detail) {
+      nav.navigateNavMenu(this._map[event.detail]);
+    }
   }
 
   connectedCallback() {

@@ -89,6 +89,15 @@ global with sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }
+
+    /* TODO: deal with NavigationTopics
+        public static ConnectAPI.ManagedTopicCollection getNavigationTopics(){
+        return ConnectAPI.ManagedTopics.getManagedTopics('YourCommunityId', 
+        ConnectApi.ManagedTopicType.Navigational);
+    } 
+    when a topic is selected in a nav topic menu, goes to page
+    .../topic/[topicId]/[topicName]
+    */
   }
 
   @AuraEnabled(cacheable=true)
