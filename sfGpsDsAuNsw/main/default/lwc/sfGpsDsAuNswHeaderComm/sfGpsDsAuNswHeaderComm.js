@@ -53,6 +53,5 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
         pageName: "home"
       }
     });
-
   }
 }

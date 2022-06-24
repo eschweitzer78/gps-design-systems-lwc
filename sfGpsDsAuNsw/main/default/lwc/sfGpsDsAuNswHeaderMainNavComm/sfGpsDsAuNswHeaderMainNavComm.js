@@ -62,7 +62,6 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
   @api megaMenu = false;
   @api mainNavClassName;
 
-
   _map = {};
 
   mapIpData(data) {
@@ -74,7 +73,7 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIpLwc {
         item.Status === (isP ? "Draft" : "Live") &&
         (item.AccessRestriction === "None" || !isGuest)
     );
-    
+
     // create a map by Id
     let adaptedMap = {};
     this._map = data.reduce((m, item) => {

@@ -27,5 +27,4 @@ export default class SfGpsDsAuNswFormLookupOsN extends OmniscriptLookup {
   get computedStatusIcon() {
     return getStatusIcon("invalid");
   }
-
 }

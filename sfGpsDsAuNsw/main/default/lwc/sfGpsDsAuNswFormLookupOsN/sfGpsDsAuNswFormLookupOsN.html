@@ -5,7 +5,6 @@
   -->
   <div class="slds-container_fluid">
     <div class="nsw-form__group">
-    
       <div class="sfgpsds-label__group">
         <div class="sfgpsds-label__group_label_container">
           <div class="sfgpsds-label__group_label">
@@ -58,16 +57,18 @@
 
         <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
           {mergedHelpText}
-        </span>  
+        </span>
       </div>
 
       <div class="nsw-form__predictive">
         <div class="sfgps-combobox_container">
-          <div class="sfgps-combobox sfgps-dropdown-trigger sfgps-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
-                aria-expanded={show}
-                aria-haspopup="listbox"
-                role="combobox">
-            <input 
+          <div
+            class="sfgps-combobox sfgps-dropdown-trigger sfgps-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
+            aria-expanded={show}
+            aria-haspopup="listbox"
+            role="combobox"
+          >
+            <input
               class="nsw-form__input vlocity-input sfgpsds-input lookup"
               type="text"
               value={lookupDisplay}
@@ -81,44 +82,58 @@
               aria-controls="lookup"
               id="lookupId"
               placeholder={_propSetMap.placeholder}
-              data-omni-input />
-        <div class="sfgps-dropdown sfgps-dropdown_fluid nsw-form__predictive-list"
-          role="listbox"
-          id="lookup"
-          onmousedown={handleKeyDown}
-          onmouseleave={handleKeyDown}
-          onmouseup={handleKeyDown}>
-          <ul 
-            class="sfgps-listbox sfgps-listbox_vertical"
-            role="presentation">
-            <template for:each={options} for:item="optionItem" for:index="optionIndex">
-              <li 
-                key={optionItem.key}
+              data-omni-input
+            />
+            <div
+              class="sfgps-dropdown sfgps-dropdown_fluid nsw-form__predictive-list"
+              role="listbox"
+              id="lookup"
+              onmousedown={handleKeyDown}
+              onmouseleave={handleKeyDown}
+              onmouseup={handleKeyDown}
+            >
+              <ul
+                class="sfgps-listbox sfgps-listbox_vertical"
                 role="presentation"
-                onmouseup={selectOption}
-                onmouseover={mouseOverFocus}
-                class="sfgps-listbox__item">
-                <div 
-                  class="sfgps-media sfgps-listbox__option sfgps-listbox__option_entity sfgps-listbox__option_has-meta"
-                  id={optionItem.id}
-                  role="option"
-                  data-option-index={optionIndex}
-                  aria-selected={optionItem.selected}>
-                  <span class="sfgps-media__body" data-option-index={optionIndex}>
-                    <span 
-                      class="sfgps-listbox__option-text sfgps-listbox__option-text_entity"
-                      data-option-index={optionIndex}>
-                      {optionItem.value}
-                    </span>
-                  </span>
-                </div>
-              </li>
-            </template>
-          </ul>
+              >
+                <template
+                  for:each={options}
+                  for:item="optionItem"
+                  for:index="optionIndex"
+                >
+                  <li
+                    key={optionItem.key}
+                    role="presentation"
+                    onmouseup={selectOption}
+                    onmouseover={mouseOverFocus}
+                    class="sfgps-listbox__item"
+                  >
+                    <div
+                      class="sfgps-media sfgps-listbox__option sfgps-listbox__option_entity sfgps-listbox__option_has-meta"
+                      id={optionItem.id}
+                      role="option"
+                      data-option-index={optionIndex}
+                      aria-selected={optionItem.selected}
+                    >
+                      <span
+                        class="sfgps-media__body"
+                        data-option-index={optionIndex}
+                      >
+                        <span
+                          class="sfgps-listbox__option-text sfgps-listbox__option-text_entity"
+                          data-option-index={optionIndex}
+                        >
+                          {optionItem.value}
+                        </span>
+                      </span>
+                    </div>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
       <span
         if:true={hasError}
@@ -137,9 +152,11 @@
       </span>
 
       <template if:true={isPageLoading}>
-        <omnistudio-spinner variant="brand"
-                    alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
-                    size="small">
+        <omnistudio-spinner
+          variant="brand"
+          alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+          size="small"
+        >
         </omnistudio-spinner>
       </template>
     </div>

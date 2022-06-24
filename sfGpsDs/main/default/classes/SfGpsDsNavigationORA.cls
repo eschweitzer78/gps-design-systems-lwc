@@ -98,7 +98,6 @@ global with sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements
     when a topic is selected in a nav topic menu, goes to page
     .../topic/[topicId]/[topicName]
     */
-
   }
 
   @AuraEnabled(cacheable=true)
