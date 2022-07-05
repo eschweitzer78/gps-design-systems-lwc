@@ -83,7 +83,9 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
   navItemsMapping() {
     let map = {};
-    this._navItems = this._originalNavItems ? this.mapItems("navitem", 0, map, this._originalNavItems) : null;
+    this._navItems = this._originalNavItems
+      ? this.mapItems("navitem", 0, map, this._originalNavItems)
+      : null;
     this._mapItems = map;
   }
 
@@ -92,7 +94,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   @api get megaMenu() {
     return this._megaMenu;
   }
-  
+
   set megaMenu(value) {
     this._megaMenu = value;
     this.navItemsMapping();

@@ -38,7 +38,7 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsIpLwc {
   set optionsJSON(value) {
     super.optionsJSON = value;
   }
-  
+
   //
 
   @api megaMenu = false;

@@ -1,0 +1,80 @@
+<aura:component
+  implements="forceCommunity:themeLayout"
+  access="global"
+  description="sfGpsDs Teheme Layout"
+>
+  <aura:attribute
+    name="header"
+    type="Aura.Component[]"
+    required="false"
+  ></aura:attribute>
+  <aura:attribute
+    name="profileMenu"
+    type="Aura.Component[]"
+    required="false"
+  ></aura:attribute>
+  <aura:attribute
+    name="sidebar"
+    type="Aura.Component[]"
+    required="false"
+  ></aura:attribute>
+  <aura:attribute
+    name="sidebarAlt"
+    type="Aura.Component[]"
+    required="false"
+  ></aura:attribute>
+  <aura:attribute
+    name="footer"
+    type="Aura.Component[]"
+    required="false"
+  ></aura:attribute>
+
+  <aura:attribute
+    name="hideHeader"
+    type="Boolean"
+    required="false"
+    default="false"
+  ></aura:attribute>
+  <aura:attribute
+    name="navId"
+    type="String"
+    required="false"
+    default="nav"
+  ></aura:attribute>
+  <aura:attribute
+    name="contentId"
+    type="Boolean"
+    required="false"
+    default="content"
+  ></aura:attribute>
+
+  <div>
+    <div aria-labelledby="sf-gps-ds-header-title" class="sf-gps-ds-header">
+      <h1 id="sf-gps-ds-header-title" class="sr-only">Header</h1>
+
+      <div class="sf-gps-ds-header-top">{!v.header}</div>
+
+      <div id="{!v.navId}" class="sf-gps-ds-header-center">
+        <div class="sf-gps-ds-header-center_content">{!v.sidebar}</div>
+        <div class="sf-gps-ds-header-center_profile">{!v.profileMenu}</div>
+      </div>
+
+      <div class="sf-gps-ds-header-bottom">{!v.sidebarAlt}</div>
+    </div>
+
+    <div
+      id="{!v.contentId}"
+      role="main"
+      aria-labelledby="sf-gps-ds-content-title"
+      class="sf-gps-ds-content"
+    >
+      <h1 id="sf-gps-ds-content-title" class="sr-only">Content</h1>
+      {!v.body}
+    </div>
+
+    <div aria-labelledby="sf-gps-ds-footer-title" class="sf-gps-ds-footer">
+      <h1 id="sf-gps-ds-footer-title" class="sr-only">Footer</h1>
+      {!v.footer}
+    </div>
+  </div>
+</aura:component>
