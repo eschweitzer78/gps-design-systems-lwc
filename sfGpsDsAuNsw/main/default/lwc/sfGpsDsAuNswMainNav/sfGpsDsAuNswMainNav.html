@@ -104,6 +104,7 @@
 
               <div class="nsw-main-nav__title">
                 <a
+                  if:true={navItem.url}
                   href={navItem.url}
                   data-ndx={navItem.index}
                   onclick={handleClickNavigate}
@@ -117,6 +118,7 @@
                     east
                   </span>
                 </a>
+                <span if:false={navItem.url}>{navItem.text}</span>
               </div>
               <div class="nsw-main-nav__description">{navItem.description}</div>
               <!-- End SubNavHeader -->

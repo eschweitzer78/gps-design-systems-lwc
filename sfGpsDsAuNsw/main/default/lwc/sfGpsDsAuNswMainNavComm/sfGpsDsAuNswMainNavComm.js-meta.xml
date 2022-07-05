@@ -10,6 +10,24 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration procedure mapping content to this nav."
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Input JSON"
+        description="JSON formatted input parameters for the Integration procedure."
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Options JSON"
+        description="JSON formatted options for the Integration procedure."
+      />
+      <property
         name="megaMenu"
         type="Boolean"
         label="Mega menu"

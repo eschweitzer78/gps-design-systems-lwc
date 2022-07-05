@@ -1,0 +1,9 @@
+<design:component >
+  <design:attribute name="hideHeader" label="Hide Main Header" description="Hides the standard header.">
+  </design:attribute>
+  <design:attribute name="navId" label="navId" description="Id to set on nav region.">
+  </design:attribute>
+  <design:attribute name="contentId" label="contentId" description="Id to set on content region.">
+  </design:attribute>
+
+</design:component>

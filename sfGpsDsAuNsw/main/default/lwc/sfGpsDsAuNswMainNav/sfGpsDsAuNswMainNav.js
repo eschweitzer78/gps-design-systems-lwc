@@ -56,7 +56,9 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         subNavClassName: "nsw-main-nav__sub-nav"
       };
 
-      if (item.subNav) {
+      if (!this.megaMenu) {
+        delete result.subNav;
+      } else if (item.subNav) {
         result.subNav = this.mapItems(
           result.index,
           parentLevel + 1,
@@ -75,14 +77,29 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   }
 
   set navItems(items) {
-    let map = {};
-
     this._originalNavItems = items;
-    this._navItems = items ? this.mapItems("navitem", 0, map, items) : null;
+    this.navItemsMapping();
+  }
+
+  navItemsMapping() {
+    let map = {};
+    this._navItems = this._originalNavItems
+      ? this.mapItems("navitem", 0, map, this._originalNavItems)
+      : null;
     this._mapItems = map;
   }
 
-  @api megaMenu = false;
+  _megaMenu = false;
+
+  @api get megaMenu() {
+    return this._megaMenu;
+  }
+
+  set megaMenu(value) {
+    this._megaMenu = value;
+    this.navItemsMapping();
+  }
+
   @api className;
 
   get computedClassName() {
