@@ -47,6 +47,7 @@
     "entitiesMapsXml.js": { "target": "entitiesMapsXml.js" },
     "fromCodePoint.js": { "target": "fromCodePoint.js" },
     "htmlRenderer.js": { "target": "htmlRenderer.js" },
+    "htmlUnpackFirstPRenderer.js": { "target": "htmlUnpackFirstPRenderer.js" },
     "inlines.js": { "target": "inlines.js" },
     "mdUrlEncode.js": { "target": "mdUrlEncode.js" },
     "node.js": { "target": "node.js" },

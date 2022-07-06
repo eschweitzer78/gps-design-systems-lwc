@@ -35,4 +35,8 @@ export default class SfGpsDsAuNswAlert extends LightningElement {
   get computedIconName() {
     return icons[this.as];
   }
+
+  get space() {
+    return " ";
+  }
 }

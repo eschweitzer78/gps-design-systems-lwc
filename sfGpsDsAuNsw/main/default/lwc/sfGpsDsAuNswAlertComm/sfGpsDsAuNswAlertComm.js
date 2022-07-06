@@ -22,8 +22,11 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   @api set content(markdown) {
     this._content = markdown;
     try {
-      this._contentHtml = mdEngine.renderEscaped(markdown);
+      this._contentHtml = this.compact
+        ? mdEngine.renderEscapedUnpackFirstP(markdown)
+        : mdEngine.renderEscaped(markdown);
     } catch (e) {
+      console.log(e);
       this.addError("CO-MD", "Issue when parsing Content markdown");
     }
   }
@@ -37,6 +40,7 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   renderedCallback() {
     if (this._rendered === false) {
       let element = this.template.querySelector(".sf-gps-markdown");
+
       if (element) {
         /*
          * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
@@ -46,7 +50,8 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
 
         replaceInnerHtml(
           element,
-          (this.title ? `<span></span>` : "") + this._contentHtml
+          (this.title && !this.compact ? `<span></span>` : "") +
+            this._contentHtml
         );
       } else {
         this.addError(
