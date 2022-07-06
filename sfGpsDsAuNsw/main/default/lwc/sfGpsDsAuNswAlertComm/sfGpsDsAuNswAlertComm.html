@@ -1,6 +1,7 @@
 <template>
   <template if:false={_sfGpsErrors}>
-    <c-sf-gps-ds-au-nsw-alert if:true={compact}
+    <c-sf-gps-ds-au-nsw-alert
+      if:true={compact}
       title={title}
       class-name={className}
       as={as}
@@ -9,7 +10,8 @@
       <span class="sf-gps-markdown" slot="compact" lwc:dom="manual"> </span>
     </c-sf-gps-ds-au-nsw-alert>
 
-    <c-sf-gps-ds-au-nsw-alert if:false={compact}
+    <c-sf-gps-ds-au-nsw-alert
+      if:false={compact}
       title={title}
       class-name={className}
       as={as}

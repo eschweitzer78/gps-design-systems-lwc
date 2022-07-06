@@ -5,15 +5,15 @@
     </span>
     <div class="nsw-in-page-alert__content">
       <template if:true={compact}>
-        <p if:true={compact} class="nsw-small"><strong>{title}</strong>{space}
-          <slot name="compact">
-          </slot>
+        <p if:true={compact} class="nsw-small">
+          <strong>{title}</strong>{space}
+          <slot name="compact"> </slot>
         </p>
       </template>
 
       <template if:false={compact}>
         <h5>{title}</h5>
-        <slot name="regular"></slot>        
+        <slot name="regular"></slot>
       </template>
     </div>
   </div>

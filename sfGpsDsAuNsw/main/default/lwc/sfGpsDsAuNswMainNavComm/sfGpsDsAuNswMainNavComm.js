@@ -67,7 +67,7 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsIpLwc {
         text: item.Label,
         url: item.Type === "MenuLabel" ? null : "#menu-" + item.Id,
         index: item.Id,
-        position: item.Position,
+        position: item.Position
       };
 
       return m;

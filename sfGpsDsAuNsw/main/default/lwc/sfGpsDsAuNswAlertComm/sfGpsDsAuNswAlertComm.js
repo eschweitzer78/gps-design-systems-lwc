@@ -22,8 +22,7 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   @api set content(markdown) {
     this._content = markdown;
     try {
-      this._contentHtml = 
-        this.compact
+      this._contentHtml = this.compact
         ? mdEngine.renderEscapedUnpackFirstP(markdown)
         : mdEngine.renderEscaped(markdown);
     } catch (e) {
@@ -51,7 +50,8 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
 
         replaceInnerHtml(
           element,
-          (this.title && !this.compact ? `<span></span>` : "") + this._contentHtml
+          (this.title && !this.compact ? `<span></span>` : "") +
+            this._contentHtml
         );
       } else {
         this.addError(

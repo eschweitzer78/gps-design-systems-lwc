@@ -39,7 +39,8 @@ function render(ast, attribute) {
 // quick browser-compatible inheritance
 HtmlUnpackFirstPRenderer.prototype = Object.create(HtmlRenderer.prototype);
 HtmlUnpackFirstPRenderer.prototype.paragraph = paragraph;
-HtmlUnpackFirstPRenderer.prototype.parentRender = HtmlUnpackFirstPRenderer.prototype.render;
+HtmlUnpackFirstPRenderer.prototype.parentRender =
+  HtmlUnpackFirstPRenderer.prototype.render;
 HtmlUnpackFirstPRenderer.prototype.render = render;
 
 export default HtmlUnpackFirstPRenderer;
