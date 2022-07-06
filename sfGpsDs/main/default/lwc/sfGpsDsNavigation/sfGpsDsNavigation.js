@@ -67,6 +67,7 @@ export default class SfGpsDsNavigation extends NavigationMixin(
 
       default:
         // SystemLink -> Safe to ignore
+        // MenuLabel -> Safe to ignore
         break;
     }
   }

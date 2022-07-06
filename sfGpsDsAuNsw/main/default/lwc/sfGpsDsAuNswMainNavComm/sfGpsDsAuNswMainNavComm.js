@@ -66,7 +66,8 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsIpLwc {
       adaptedMap[item.Id] = {
         text: item.Label,
         url: item.Type === "MenuLabel" ? null : "#menu-" + item.Id,
-        index: item.Id
+        index: item.Id,
+        position: item.Position,
       };
 
       return m;
@@ -87,12 +88,12 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsIpLwc {
     data.forEach((item) => {
       let subNav = adaptedMap[item.Id].subNav;
       if (subNav) {
-        subNav.sort((a, b) => (a.Position > b.Position ? 1 : -1));
+        subNav.sort((a, b) => (a.position > b.position ? 1 : -1));
       }
     });
 
     // sort rootItems by position
-    return rootItems.sort((a, b) => (a.Position > b.Position ? 1 : -1));
+    return rootItems.sort((a, b) => (a.position > b.position ? 1 : -1));
   }
 
   get isEmpty() {

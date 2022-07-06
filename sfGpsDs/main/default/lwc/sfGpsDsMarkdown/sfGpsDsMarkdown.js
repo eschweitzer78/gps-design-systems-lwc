@@ -8,6 +8,7 @@
 import { getFirstChild } from "c/sfGpsDsHelpers";
 import Parser from "./blocks.js";
 import HtmlRenderer from "./htmlRenderer.js";
+import HtmlUnpackFirstPRenderer from "./htmlUnpackFirstPRenderer.js";
 
 class sfGpsDsMarkdown {
   reader = new Parser();
@@ -25,6 +26,12 @@ class sfGpsDsMarkdown {
   renderEscaped(markdown, attribute) {
     let parsed = this.reader.parse(markdown.replaceAll("\\n", "\n"));
     return this.writer.render(parsed, attribute);
+  }
+
+  renderEscapedUnpackFirstP(markdown, attribute) {
+    let tmpWriter = new HtmlUnpackFirstPRenderer();
+    let parsed = this.reader.parse(markdown.replaceAll("\\n", "\n"));
+    return tmpWriter.render(parsed, attribute);
   }
 
   renderNode(node, attribute) {
