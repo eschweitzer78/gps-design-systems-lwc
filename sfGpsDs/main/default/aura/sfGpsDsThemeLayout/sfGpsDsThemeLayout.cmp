@@ -10,9 +10,19 @@
   <!-- this works with Citizen, Cypress, Ember, Jepson, Stella, Webster themes but *not* Customer Service -->
   <aura:attribute name="themeHeader" type="Aura.Component[]" required="false" />
 
-  <aura:attribute name="hideHeader" type="Boolean" required="false" default="true" />
+  <aura:attribute
+    name="hideHeader"
+    type="Boolean"
+    required="false"
+    default="true"
+  />
   <aura:attribute name="navId" type="String" required="false" default="nav" />
-  <aura:attribute name="contentId" type="String" required="false" default="content" />
+  <aura:attribute
+    name="contentId"
+    type="String"
+    required="false"
+    default="content"
+  />
 
   <div>
     <div aria-labelledby="sf-gps-ds-header-title" class="sf-gps-ds-header">

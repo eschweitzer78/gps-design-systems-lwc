@@ -18,10 +18,10 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   _compact = false;
 
   @api set compact(value) {
-    this._compact = (value === true || value === "true");
+    this._compact = value === true || value === "true";
     this.generateContentHtml();
   }
-  
+
   get compact() {
     return this._compact;
   }

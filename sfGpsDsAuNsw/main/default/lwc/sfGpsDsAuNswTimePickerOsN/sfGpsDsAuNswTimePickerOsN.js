@@ -19,7 +19,9 @@ export default class SfGpsDsAuNswTimePickerOsN extends SfGpsDsTimePickerOsN {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required && !this.hideAsterisk ? "nsw-form__required" : ""}`;
+    return `nsw-form__label ${
+      this.required && !this.hideAsterisk ? "nsw-form__required" : ""
+    }`;
   }
 
   get computedFormGroupClass() {

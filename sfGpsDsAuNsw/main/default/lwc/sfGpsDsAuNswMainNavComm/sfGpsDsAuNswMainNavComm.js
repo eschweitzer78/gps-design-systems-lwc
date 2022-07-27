@@ -8,7 +8,6 @@
 import { api } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 
-
 export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
   @api
   get ipName() {

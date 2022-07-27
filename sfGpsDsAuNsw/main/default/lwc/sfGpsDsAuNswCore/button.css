@@ -167,7 +167,10 @@ a.nsw-icon-button {
   color: var(--nsw-text-light);
   background-color: var(--nsw-brand-dark);
   border-color: transparent;
-  background-image: linear-gradient(rgba(var(--nsw-white-rgb),.15),rgba(var(--nsw-white-rgb),.15))
+  background-image: linear-gradient(
+    rgba(var(--nsw-white-rgb), 0.15),
+    rgba(var(--nsw-white-rgb), 0.15)
+  );
 }
 .nsw-section--invert .nsw-button--dark:hover .nsw-material-icons,
 .nsw-button--dark:hover .nsw-material-icons {
@@ -276,7 +279,10 @@ a.nsw-icon-button {
   color: var(--nsw-text-dark);
   background-color: var(--nsw-brand-light);
   border-color: transparent;
-  background-image: linear-gradient(rgba(var(--nsw-black-rgb),.07),rgba(var(--nsw-black-rgb),.07));
+  background-image: linear-gradient(
+    rgba(var(--nsw-black-rgb), 0.07),
+    rgba(var(--nsw-black-rgb), 0.07)
+  );
 }
 .nsw-section--invert .nsw-button--light:hover .nsw-material-icons,
 .nsw-button--light:hover .nsw-material-icons {
@@ -349,7 +355,10 @@ a.nsw-icon-button {
   color: var(--nsw-text-dark);
   background-color: var(--nsw-white);
   border-color: transparent;
-  background-image: linear-gradient(rgba(var(--nsw-black-rgb),.07),rgba(var(--nsw-black-rgb),.07));
+  background-image: linear-gradient(
+    rgba(var(--nsw-black-rgb), 0.07),
+    rgba(var(--nsw-black-rgb), 0.07)
+  );
 }
 .nsw-section--invert .nsw-button--white:hover .nsw-material-icons,
 .nsw-button--white:hover .nsw-material-icons {

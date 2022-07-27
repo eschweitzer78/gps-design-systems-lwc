@@ -14,10 +14,10 @@ input[readonly][role="combobox"] {
 }
 
 .nsw-form__predictive .nsw-form__input:hover {
-  background: 
-    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
-    no-repeat right 1rem center, linear-gradient(var(--nsw-text-hover), var(--nsw-text-hover));
-  background-size: 1rem auto,auto;
+  background: url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+      no-repeat right 1rem center,
+    linear-gradient(var(--nsw-text-hover), var(--nsw-text-hover));
+  background-size: 1rem auto, auto;
   background-color: var(--nsw-white);
 }
 

@@ -113,7 +113,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   }
 
   handleClickNavigate(event) {
-    console.log('handleClickNavigate', event.currentTarget.dataset.ndx);
+    console.log("handleClickNavigate", event.currentTarget.dataset.ndx);
     event.preventDefault();
 
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
@@ -124,7 +124,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   }
 
   handleClick(event) {
-    console.log('handleClick', event.currentTarget.dataset.ndx);
+    console.log("handleClick", event.currentTarget.dataset.ndx);
     event.preventDefault();
 
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
