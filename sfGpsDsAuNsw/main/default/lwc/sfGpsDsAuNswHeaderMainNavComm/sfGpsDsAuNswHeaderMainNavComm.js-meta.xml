@@ -82,7 +82,7 @@
       />
       <property
         name="mobile"
-        type="String"
+        type="Boolean"
         label="Mobile"
         description="Show a responsive menu on mobile."
         default="true"
