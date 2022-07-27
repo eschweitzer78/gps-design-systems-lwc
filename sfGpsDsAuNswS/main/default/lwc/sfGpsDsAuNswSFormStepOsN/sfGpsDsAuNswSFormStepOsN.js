@@ -62,27 +62,27 @@ export default class SfGpsDsAuNswSFormStepOs extends OmniscriptStep {
   }
 
   get mergedLabel() {
-    return omniGetMergedField(this._propSetMap.label);
+    return omniGetMergedField(this, this._propSetMap.label);
   }
 
   get mergedChartLabel() {
-    return omniGetMergedField(this._propSetMap.chartLabel);
+    return omniGetMergedField(this, this._propSetMap.chartLabel);
   }
 
   get mergedCancelLabel() {
-    return omniGetMergedField(this._propSetMap.cancelLabel);
+    return omniGetMergedField(this, this._propSetMap.cancelLabel);
   }
 
-  get mergeSaveLabel() {
-    return omniGetMergedField(this._propSetMap.saveLabel);
+  get mergedSaveLabel() {
+    return omniGetMergedField(this, this._propSetMap.saveLabel);
   }
 
   get mergedPreviousLabel() {
-    return omniGetMergedField(this._propSetMap.previousLabel);
+    return omniGetMergedField(this, this._propSetMap.previousLabel);
   }
 
   get mergedNextLabel() {
-    return omniGetMergedField(this._propSetMap.nextLabel);
+    return omniGetMergedField(this, this._propSetMap.nextLabel);
   }
 
   get showSave() {
