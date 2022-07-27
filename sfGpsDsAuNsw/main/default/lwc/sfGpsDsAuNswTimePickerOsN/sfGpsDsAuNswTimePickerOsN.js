@@ -12,13 +12,14 @@ import tmpl from "./sfGpsDsAuNswTimePickerOsN.html";
 
 export default class SfGpsDsAuNswTimePickerOsN extends SfGpsDsTimePickerOsN {
   @api hideFormGroup = false;
+  @api hideAsterisk = false;
 
   render() {
     return tmpl;
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
+    return `nsw-form__label ${this.required && !this.hideAsterisk ? "nsw-form__required" : ""}`;
   }
 
   get computedFormGroupClass() {
