@@ -20,7 +20,7 @@
         name="intro"
         type="String"
         label="Intro"
-        description="Gives additional context when the title alone may not be insufficient."
+        description="Gives additional context for the search when the title alone may not be insufficient."
         default="Find information, access services and have your say."
       />
       <property
@@ -33,14 +33,8 @@
         name="links"
         type="String"
         label="Links"
-        description="Surfaces access to popular search content."
+        description="Surfaces access to popular search content - as a series of Markdown links."
         default=""
-      />
-      <property
-        name="className"
-        type="String"
-        label="Class name"
-        description="Additional CSS class to be applied."
       />
       <property
         name="srLabel"
@@ -55,6 +49,12 @@
         label="Screenreader search button label"
         description="Text used to label the search button on screen-readers."
         default="Search"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
       />
     </targetConfig>
   </targetConfigs>
