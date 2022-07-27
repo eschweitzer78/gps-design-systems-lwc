@@ -13,7 +13,7 @@
         name="links"
         type="String"
         label="Links"
-        description="List of tags in Markdown link format"
+        description="List of tags in Markdown link format."
         default="[Digital](#)[Discovery](#)"
       />
       <property
