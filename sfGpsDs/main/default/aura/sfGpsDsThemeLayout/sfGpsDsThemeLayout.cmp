@@ -1,52 +1,18 @@
 <aura:component
   implements="forceCommunity:themeLayout"
   access="global"
-  description="sfGpsDs Teheme Layout"
+  description="sfGpsDs Theme Layout"
 >
-  <aura:attribute
-    name="header"
-    type="Aura.Component[]"
-    required="false"
-  ></aura:attribute>
-  <aura:attribute
-    name="profileMenu"
-    type="Aura.Component[]"
-    required="false"
-  ></aura:attribute>
-  <aura:attribute
-    name="sidebar"
-    type="Aura.Component[]"
-    required="false"
-  ></aura:attribute>
-  <aura:attribute
-    name="sidebarAlt"
-    type="Aura.Component[]"
-    required="false"
-  ></aura:attribute>
-  <aura:attribute
-    name="footer"
-    type="Aura.Component[]"
-    required="false"
-  ></aura:attribute>
+  <aura:attribute name="header" type="Aura.Component[]" required="false" />
+  <aura:attribute name="sidebar" type="Aura.Component[]" required="false" />
+  <aura:attribute name="footer" type="Aura.Component[]" required="false" />
 
-  <aura:attribute
-    name="hideHeader"
-    type="Boolean"
-    required="false"
-    default="false"
-  ></aura:attribute>
-  <aura:attribute
-    name="navId"
-    type="String"
-    required="false"
-    default="nav"
-  ></aura:attribute>
-  <aura:attribute
-    name="contentId"
-    type="Boolean"
-    required="false"
-    default="content"
-  ></aura:attribute>
+  <!-- this works with Citizen, Cypress, Ember, Jepson, Stella, Webster themes but *not* Customer Service -->
+  <aura:attribute name="themeHeader" type="Aura.Component[]" required="false" />
+
+  <aura:attribute name="hideHeader" type="Boolean" required="false" default="true" />
+  <aura:attribute name="navId" type="String" required="false" default="nav" />
+  <aura:attribute name="contentId" type="String" required="false" default="content" />
 
   <div>
     <div aria-labelledby="sf-gps-ds-header-title" class="sf-gps-ds-header">
@@ -56,10 +22,10 @@
 
       <div id="{!v.navId}" class="sf-gps-ds-header-center">
         <div class="sf-gps-ds-header-center_content">{!v.sidebar}</div>
-        <div class="sf-gps-ds-header-center_profile">{!v.profileMenu}</div>
+        <aura:if isTrue="{! !v.hideHeader }">
+          <div class="sf-gps-ds-header-center_profile">{!v.themeHeader}</div>
+        </aura:if>
       </div>
-
-      <div class="sf-gps-ds-header-bottom">{!v.sidebarAlt}</div>
     </div>
 
     <div
