@@ -20,7 +20,7 @@
         name="ipName"
         type="String"
         label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this card."
+        description="Name of the Integration procedure mapping content to this collection."
       />
       <property
         name="inputJSON"
@@ -44,7 +44,7 @@
         name="xsWidth"
         type="String"
         label="XS width"
-        description="Relative size of a card on a extra-small device (576px or less)."
+        description="Relative size of a card on an extra-small device (576px or less)."
         datasource="apex://sfGpsDsResponsiveSizePickList"
       />
       <property
@@ -72,7 +72,7 @@
         name="xlWidth"
         type="String"
         label="XL width"
-        description="Relative size of a card on a extra-large device (1200px or more)."
+        description="Relative size of a card on an extra-large device (1200px or more)."
         datasource="apex://sfGpsDsResponsiveSizePickList"
       />
       <property

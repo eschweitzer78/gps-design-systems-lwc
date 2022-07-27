@@ -42,7 +42,7 @@
         name="date"
         type="String"
         label="Date"
-        description="Specifies a date context for the content, e.g. a publication date - in ISO8601 format"
+        description="Specifies a date context for the content, e.g. a publication date - in ISO8601 format."
       />
       <property
         name="image"

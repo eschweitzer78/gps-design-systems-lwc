@@ -13,14 +13,14 @@
         name="title"
         type="String"
         label="Title"
-        description="Overview of the callout if required"
+        description="Overview of the callout if required."
         default="Callout"
       />
       <property
         name="level"
         type="String"
         label="Title level"
-        description="Level of header tag used for the title"
+        description="Level of header tag used for the title."
         datasource="1,2,3,4,5,6"
         required="true"
         default="4"
@@ -29,7 +29,7 @@
         name="content"
         type="String"
         label="Content"
-        description="Callout message in Markdown format"
+        description="Callout message in Markdown format."
         default="Callouts are text excerpts, used as a *visual* cue to draw attention to the text. They're used to help direct users toward an **important** piece of information."
       />
       <property
