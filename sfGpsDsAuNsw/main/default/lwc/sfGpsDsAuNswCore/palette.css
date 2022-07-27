@@ -55,8 +55,8 @@ html {
   --nsw-palette-off-white: #f2f2f2;
 
   --nsw-palette-focus: #0085b3;
-  --nsw-palette-hover: rgba(#0085b3, 0.2); /*#{rgba(#0085b3, 0.2)};*/
-  --nsw-palette-hover-light: rgba(#ffffff, 0.2); /*#{rgba(#ffffff, 0.2)};*/
+  --nsw-palette-hover: rgba(0, 133, 179, 0.2); /*#{rgba(#0085b3, 0.2)};*/
+  --nsw-palette-hover-light: rgba(255, 255, 255, 0.2); /*#{rgba(#ffffff, 0.2)};*/
   --nsw-palette-visited: #551a8b;
 
   --nsw-palette-info-blue: #2e5299;
