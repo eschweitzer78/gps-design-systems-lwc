@@ -20,7 +20,7 @@ const buttonStyles = {
 
 export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
   @api title;
-  @api content;
+  @api copy;
   @api ctaText;
   @api ctaHref;
   @api ctaStyle = "link"; // link or button

@@ -14,25 +14,41 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   @api title;
   @api className = "";
   @api as = "info";
-  @api compact = false;
+
+  _compact = false;
+
+  @api set compact(value) {
+    this._compact = value === true || value === "true";
+    this.generateContentHtml();
+  }
+
+  get compact() {
+    return this._compact;
+  }
 
   _content;
   _contentHtml;
 
   @api set content(markdown) {
     this._content = markdown;
-    try {
-      this._contentHtml = this.compact
-        ? mdEngine.renderEscapedUnpackFirstP(markdown)
-        : mdEngine.renderEscaped(markdown);
-    } catch (e) {
-      console.log(e);
-      this.addError("CO-MD", "Issue when parsing Content markdown");
-    }
+    this.generateContentHtml();
   }
 
   get content() {
     return this._content;
+  }
+
+  generateContentHtml() {
+    try {
+      if (this._content) {
+        this._contentHtml = this._compact
+          ? mdEngine.renderEscapedUnpackFirstP(this._content)
+          : mdEngine.renderEscaped(this._content);
+      }
+    } catch (e) {
+      console.log(e);
+      this.addError("CO-MD", "Issue when parsing Content markdown");
+    }
   }
 
   _rendered = false;

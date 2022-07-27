@@ -12,13 +12,16 @@ import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
 
 export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioDatePicker {
   @api hideFormGroup = false;
+  @api hideAsterisk = false;
 
   render() {
     return tmpl;
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
+    return `nsw-form__label ${
+      this.required && !this.hideAsterisk ? "nsw-form__required" : ""
+    }`;
   }
 
   get computedFormGroupClass() {

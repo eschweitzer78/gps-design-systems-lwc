@@ -1,3 +1,56 @@
+.nsw-icon-button {
+  font-size: var(--nsw-font-size-sm-mobile);
+  line-height: var(--nsw-line-height-sm-mobile);
+  border-radius: var(--nsw-border-radius);
+  font-weight: var(--nsw-font-bold);
+  color: var(--nsw-brand-dark);
+  background: none;
+  border: 0;
+  text-decoration: none;
+  padding: 0.5rem;
+  display: inline-block;
+}
+@media (min-width: 62rem) {
+  .nsw-icon-button {
+    font-size: var(--nsw-font-size-sm-desktop);
+    line-height: var(--nsw-line-height-sm-desktop);
+  }
+}
+.nsw-icon-button:hover {
+  background-color: var(--nsw-text-hover);
+  outline-width: 0;
+}
+.nsw-icon-button:focus {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
+}
+.nsw-icon-button .nsw-material-icons,
+.nsw-icon-button svg {
+  display: block;
+}
+a.nsw-icon-button {
+  cursor: pointer;
+}
+
+.nsw-icon-button--flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nsw-section--invert .nsw-icon-button {
+  color: var(--nsw-text-light);
+}
+.nsw-section--invert .nsw-icon-button:hover {
+  background-color: var(--nsw-text-hover-light);
+  outline-color: var(--nsw-text-hover-light);
+}
+.nsw-section--invert .nsw-icon-button:focus {
+  outline-color: var(--nsw-white);
+}
+.nsw-section--invert .nsw-icon-button:visited {
+  color: var(--nsw-text-light);
+}
+
 .nsw-button {
   font-size: var(--nsw-font-size-sm-mobile);
   line-height: var(--nsw-line-height-sm-mobile);
@@ -114,7 +167,10 @@
   color: var(--nsw-text-light);
   background-color: var(--nsw-brand-dark);
   border-color: transparent;
-  background-image: linear-gradient(rgba(0, 0, 0), rgba(0, 0, 0));
+  background-image: linear-gradient(
+    rgba(var(--nsw-white-rgb), 0.15),
+    rgba(var(--nsw-white-rgb), 0.15)
+  );
 }
 .nsw-section--invert .nsw-button--dark:hover .nsw-material-icons,
 .nsw-button--dark:hover .nsw-material-icons {
@@ -223,7 +279,10 @@
   color: var(--nsw-text-dark);
   background-color: var(--nsw-brand-light);
   border-color: transparent;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.07), rgba(0, 0, 0, 0.07));
+  background-image: linear-gradient(
+    rgba(var(--nsw-black-rgb), 0.07),
+    rgba(var(--nsw-black-rgb), 0.07)
+  );
 }
 .nsw-section--invert .nsw-button--light:hover .nsw-material-icons,
 .nsw-button--light:hover .nsw-material-icons {
@@ -296,7 +355,10 @@
   color: var(--nsw-text-dark);
   background-color: var(--nsw-white);
   border-color: transparent;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15));
+  background-image: linear-gradient(
+    rgba(var(--nsw-black-rgb), 0.07),
+    rgba(var(--nsw-black-rgb), 0.07)
+  );
 }
 .nsw-section--invert .nsw-button--white:hover .nsw-material-icons,
 .nsw-button--white:hover .nsw-material-icons {

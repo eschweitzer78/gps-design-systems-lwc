@@ -11,7 +11,7 @@ import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswGlobalAlertComm extends SfGpsDsLwc {
   @api title;
-  @api content;
+  @api copy;
   @api as = "default";
   @api className;
 
@@ -32,7 +32,7 @@ export default class SfGpsDsAuNswGlobalAlertComm extends SfGpsDsLwc {
     try {
       this._cta = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
-      this.addError("CTA-MD", "Issue when parsing Lower footer links markdown");
+      this.addError("CTA-MD", "Issue when parsing cta markdown");
     }
   }
 

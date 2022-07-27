@@ -36,7 +36,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
 
   @track _didLoadOnce;
 
-  _input = {};
+  _input;
   _originalInputJSON;
 
   @api get inputJSON() {
@@ -46,8 +46,10 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   set inputJSON(value) {
     this._originalInputJSON = value;
 
+    if (value == null) return;
+
     try {
-      this._input = JSON.parse(value || "{}");
+      this._input = JSON.parse(value);
       this.refreshContent();
     } catch (e) {
       this._options = {};
@@ -55,7 +57,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
     }
   }
 
-  _options = {};
+  _options;
   _originalOptionsJSON;
 
   @api get optionsJSON() {
@@ -65,8 +67,10 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   set optionsJSON(value) {
     this._originalOptionsJSON = value;
 
+    if (value == null) return;
+
     try {
-      this._options = JSON.parse(value || "{}");
+      this._options = JSON.parse(value);
       this.refreshContent();
     } catch (e) {
       this._options = {};
@@ -124,7 +128,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       });
   }
 
-  mapIpDate(data) {
+  mapIpData(data) {
     return data;
   }
 

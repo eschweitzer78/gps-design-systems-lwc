@@ -22,7 +22,7 @@
         type="String"
         label="Main link"
         description="A link displayed at the bottom of the block - in Markdown link format"
-        default="(View more)[#]"
+        default="[View more](#)"
       />
       <property
         name="copy"

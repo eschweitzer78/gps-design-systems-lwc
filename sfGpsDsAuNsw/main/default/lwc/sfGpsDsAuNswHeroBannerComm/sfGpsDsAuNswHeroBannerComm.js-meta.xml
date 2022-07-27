@@ -20,7 +20,7 @@
         name="intro"
         type="String"
         label="Intro"
-        description="Gives additional context when the title alone would be insufficient."
+        description="Gives additional context when the title alone would be insufficient - in Markdown format."
         default="The hero banner reflects the goals or purpose of the site, service or product."
       />
       <property
@@ -49,7 +49,7 @@
         name="wide"
         type="Boolean"
         label="Wide"
-        description="Grants extra horizontal space."
+        description="Grants extra horizontal space for the primary content."
         default="false"
       />
       <property

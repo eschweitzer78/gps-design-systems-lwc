@@ -1,76 +1,57 @@
 <template>
   <template if:true={jsonDef.bAccordionActive}>
-    <!-- knowledge container not supported
-    <div>
-      <div class="vlc-slds-knowledge--container"
-           if:true={articleBodyResults.articleTitle}>
-        <h3 class='vlc-slds-knowledge--header'
-            visible={visible}>
-          <a href={articleBodyResults.articleLink}
-             target="_blank"
-             tabindex="0">{articleBodyResults.articleTitle}</a>
-          <button class="slds-button"
-                  aria-expanded={visible}
-                  aria-label={_toggleArticleLabel}
-                  onclick={toggleArticle}>
-            <c-icon class="vlc-slds-collapse slds-button__icon slds-button__icon--large"
-                    variant="default"
-                    size="small"
-                    icon-name="utility:chevrondown"
-                    theme={_theme}></c-icon>
-            <c-icon class="vlc-slds-expand slds-button__icon slds-button__icon--large"
-                    variant="default"
-                    size="small"
-                    icon-name="utility:chevronup"
-                    theme={_theme}></c-icon>
-          </button>
-
-        </h3>
-
-        <div class='vlc-slds-knowledge--body'
-             if:true={visible}>
-          <c-omniscript-formatted-rich-text value={articleBodyResults.articleBody}>
-          </c-omniscript-formatted-rich-text>
-        </div>
-
-        <button class="slds-button close-button"
-                aria-label={scriptHeaderDef.allCustomLabels.OmniStepCloseDetails}
-                onclick={closeArticle}>
-          <c-icon class="slds-icon_container slds-button__icon slds-button__icon--large"
-                  variant="default"
-                  size="small"
-                  icon-name="action:remove"
-                  theme={_theme}></c-icon>
-        </button>
-      </div>
-    </div>
-    -->
-
-    <!-- replaced by sfGpsDsAuNswProgressIndicator
-    <h1 class="slds-page-header__title slds-p-horizontal_medium slds-text-heading--medium slds-m-top_medium os-step-label">
-      {_propSetMap.label}
-    </h1>
-    -->
     <h1 class="nsw-h1 slds-p-horizontal_medium slds-m-top_medium os-step-label">
       {mergedLabel}
     </h1>
 
-    <!--
-    <div class="vlc-separator slds-border_top slds-m-top_x-small slds-m-bottom_xx-small slds-m-horizontal_medium"
-    </div>
-    -->
-
     <div
-      class="vlc-separator slds-m-top_x-small slds-m-bottom_xx-small slds-m-horizontal_medium"
+      class="vlc-separator slds-m-top_medium slds-m-bottom_medium slds-m-horizontal_medium"
     ></div>
 
-    <div
-      class="slds-grid slds-wrap slds-p-vertical_small omniscript-step__body"
-    >
-      <slot class="slds-grid slds-wrap slds-size_1-of-1 slds-p-left_medium">
-      </slot>
-    </div>
+    <div class="nsw-container">
+      <div class="slds-grid slds-wrap omniscript-step__body">
+        <slot class="slds-grid slds-wrap slds-size_1-of-1"> </slot>
+      </div>
 
-    <!-- add replacement buttons here -->
+      <hr class="sepbutton" />
+
+      <div class="form-actions">
+        <!-- add replacement buttons here -->
+        <input
+          if:true={showNext}
+          class="nsw-button nsw-button--dark"
+          type="button"
+          value={mergedNextLabel}
+          onclick={handleNext}
+        />
+        <input
+          if:true={showSave}
+          class="nsw-button nsw-button--dark-outline"
+          type="button"
+          value={mergedSaveLabel}
+          onclick={handleSave}
+        />
+        <div if:true={showPrev} style="display: flex">
+          <div style="margin-top: 2rem; margin-bottom: 1.5rem">
+            <button class="back-button" type="button" onclick={handleBack}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="#242934"
+                aria-hidden="true"
+                width="16"
+                height="16"
+                color="darkGrey"
+                focusable="false"
+              >
+                <path
+                  d="M9 16a1 1 0 00.71-1.71L3.41 8l6.3-6.29A1.004 1.004 0 008.29.29l-7 7a1 1 0 000 1.42l7 7A1 1 0 009 16z"
+                ></path></svg
+              >{mergedPreviousLabel}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </template>
 </template>

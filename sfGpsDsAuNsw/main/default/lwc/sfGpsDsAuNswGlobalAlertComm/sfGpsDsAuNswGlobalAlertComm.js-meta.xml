@@ -13,14 +13,14 @@
         name="title"
         type="String"
         label="Title"
-        description="."
+        description="Key message of the alert."
         default="Global Alert"
       />
       <property
-        name="content"
+        name="copy"
         type="String"
-        label="Content"
-        description="."
+        label="Copy"
+        description="Further description to guide and inform users."
         default="Global alerts display across the top of an entire site to convey important information to users."
       />
       <property

@@ -18,7 +18,86 @@ export default class SfGpsDsAuNswFormStepOsN extends OmniscriptStep {
     return tmpl;
   }
 
+  handleNext(e) {
+    e.stopPropagation();
+
+    this.dispatchEvent(
+      new CustomEvent("omniautoadvance", {
+        bubbles: true,
+        detail: {
+          moveToStep: "next"
+        }
+      })
+    );
+  }
+
+  handleBack(e) {
+    e.stopPropagation();
+
+    this.dispatchEvent(
+      new CustomEvent("omniautoadvance", {
+        bubbles: true,
+        detail: {
+          moveToStep: "previous"
+        }
+      })
+    );
+  }
+
+  handleSave(e) {
+    e.stopPropagation();
+
+    if (!this._propSetMap.allowSaveForLater) {
+      return;
+    }
+
+    this.dispatchEvent(
+      new CustomEvent("omnisaveforlater", {
+        bubbles: true,
+        detail: {
+          auto: false
+        }
+      })
+    );
+  }
+
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.label);
+  }
+
+  get mergedChartLabel() {
+    return omniGetMergedField(this, this._propSetMap.chartLabel);
+  }
+
+  get mergedCancelLabel() {
+    return omniGetMergedField(this, this._propSetMap.cancelLabel);
+  }
+
+  get mergedSaveLabel() {
+    return omniGetMergedField(this, this._propSetMap.saveLabel);
+  }
+
+  get mergedPreviousLabel() {
+    return omniGetMergedField(this, this._propSetMap.previousLabel);
+  }
+
+  get mergedNextLabel() {
+    return omniGetMergedField(this, this._propSetMap.nextLabel);
+  }
+
+  get showSave() {
+    return this._propSetMap.allowSaveForLater && this._propSetMap.saveLabel;
+  }
+
+  get showNext() {
+    return this._propSetMap.nextWidth > 0 && this._propSetMap.nextLabel;
+  }
+
+  get showPrev() {
+    return (
+      this.scriptHeaderDef.asIndex > this.scriptHeaderDef.firstStepIndex &&
+      this._propSetMap.previousWidth > 0 &&
+      this._propSetMap.previousLabel
+    );
   }
 }
