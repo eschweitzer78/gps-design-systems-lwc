@@ -5,19 +5,23 @@
   -->
   <div class="slds-container_fluid">
     <div class="nsw-form__group">
+<!--
       <div class="sfgpsds-label__group">
         <div class="sfgpsds-label__group_label_container">
           <div class="sfgpsds-label__group_label">
+-->
             <label
               class={computedLabelClassName}
               aria-label={mergedLabel}
               for="inputId"
             >
               {mergedLabel}
-              <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+              <span if:true={_propSetMap.required} class="sr-only"> ({requiredLabel})</span>
             </label>
+<!--
           </div>
         </div>
+-->
 
         <template if:true={_propSetMap.repeat}>
           <span
@@ -58,7 +62,9 @@
         <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
           {mergedHelpText}
         </span>
+<!--
       </div>
+-->
 
       <div class="nsw-form__predictive">
         <div class="sfgps-combobox_container">

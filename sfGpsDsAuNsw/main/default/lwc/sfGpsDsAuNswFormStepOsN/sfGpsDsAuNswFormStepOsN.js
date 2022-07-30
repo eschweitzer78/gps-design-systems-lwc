@@ -15,10 +15,14 @@ import tmpl from "./sfGpsDsAuNswFormStepOsN.html";
 
 export default class SfGpsDsAuNswFormStepOsN extends OmniscriptStep {
   render() {
+    console.log('jsonDef=', JSON.stringify(this.jsonDef));
+    console.log('scriptHeaderDef=', JSON.stringify(this.scriptHeaderDef));
     return tmpl;
   }
 
   handleNext(e) {
+    console.log('jsonDef=', JSON.stringify(this.jsonDef));
+    console.log('scriptHeaderDef=', JSON.stringify(this.scriptHeaderDef));
     e.stopPropagation();
 
     this.dispatchEvent(

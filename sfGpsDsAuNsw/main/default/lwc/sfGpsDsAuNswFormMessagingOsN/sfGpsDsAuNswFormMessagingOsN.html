@@ -4,6 +4,7 @@
       <c-sf-gps-ds-au-nsw-alert-comm-os
         if:true={isRequirement}
         as="error"
+        compact={isCompact}
         title={mergedTitleText}
         content={mergedMessageText}
       >
@@ -11,6 +12,7 @@
       <c-sf-gps-ds-au-nsw-alert-comm-os
         if:true={isSuccess}
         as="success"
+        compact={isCompact}
         title={mergedTitleText}
         content={mergedMessageText}
       >
@@ -18,6 +20,7 @@
       <c-sf-gps-ds-au-nsw-alert-comm-os
         if:true={isWarning}
         as="warning"
+        compact={isCompact}
         title={mergedTitleText}
         content={mergedMessageText}
       >
@@ -25,6 +28,7 @@
       <c-sf-gps-ds-au-nsw-alert-comm-os
         if:true={isComment}
         as="info"
+        compact={isCompact}
         title={mergedTitleText}
         content={mergedMessageText}
       >

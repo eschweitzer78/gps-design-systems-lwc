@@ -27,4 +27,8 @@ export default class SfGpsDsAuNswFormTextOsN extends OmniscriptText {
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
   }
+
+  get mergedPlaceholder() {
+    return omniGetMergedField(this, this._placeholder);
+  }
 }

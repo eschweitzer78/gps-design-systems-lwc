@@ -6,6 +6,7 @@
           {label}
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
         </label>
+        <slot name="label"></slot>
       </div>
 
       <template if:false={isCheckbox}>
@@ -44,7 +45,7 @@
         </label>
         <slot name="label"></slot>
 
-        <!-- fieldLevelHelp for checkboxes? -->
+        <!-- TODO: fieldLevelHelp for checkboxes? -->
       </template>
 
       <div if:true={_isFormula}>

@@ -17,7 +17,7 @@ export default class SfGpsDsAuNswFormLookupOsN extends OmniscriptLookup {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
+    return `nsw-form__label ${this._propSetMap.required ? "nsw-form__required" : ""}`;
   }
 
   get computedHelperClassName() {

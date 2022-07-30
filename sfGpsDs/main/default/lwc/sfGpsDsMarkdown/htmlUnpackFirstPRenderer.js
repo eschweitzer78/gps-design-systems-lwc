@@ -25,8 +25,11 @@ function paragraph(node, entering, attribute) {
     this.pIndex++;
   } else {
     this.pIndex--;
-    if (this.pIndex === 0) this.pIndex++; // so that it's 0 only once!
-    if (this.pIndex) this.tag("/p");
+    if (this.pIndex) {
+      this.tag("/p");
+    } else {
+      this.pIndex++; // so that it's 0 only once!
+    }
     this.cr();
   }
 }
