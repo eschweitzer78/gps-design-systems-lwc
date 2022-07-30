@@ -16,7 +16,7 @@ export default class SfGpsDsAuNswSaveForLaterAckOsN extends OmniscriptSaveForLat
   get trueVal() {
     return true;
   }
-  
+
   get falseVal() {
     return false;
   }

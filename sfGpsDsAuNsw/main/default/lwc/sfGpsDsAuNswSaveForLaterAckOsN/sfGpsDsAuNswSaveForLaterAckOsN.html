@@ -11,11 +11,12 @@
         title="Your application is saved for later. "
         compact={trueVal}
         class-name="nsw-scope"
-        >
+      >
         <span slot="compact">
           {_bSflLabels.OmniScriptResumeLink}
           <a onclick={copyLinkToClipboard}> {_bSflLabels.OmniCopyLink} </a>
-          or <a href={emailLink} target="_blank" rel="noopener"
+          or
+          <a href={emailLink} target="_blank" rel="noopener"
             >{_bSflLabels.OmniEmailMe}</a
           >.
         </span>
@@ -43,7 +44,8 @@
             <p><a href={resumeLink} target="_blank">{resumeLink}</a></p>
             <br />
             <p>
-              <a onclick={copyLinkToClipboard}>{_bSflLabels.OmniCopyLink}</a> or <a onclick={openEmail}>{_bSflLabels.OmniEmailMe}</a>
+              <a onclick={copyLinkToClipboard}>{_bSflLabels.OmniCopyLink}</a> or
+              <a onclick={openEmail}>{_bSflLabels.OmniEmailMe}</a>
             </p>
           </span>
         </c-sf-gps-ds-au-nsw-alert-os>
