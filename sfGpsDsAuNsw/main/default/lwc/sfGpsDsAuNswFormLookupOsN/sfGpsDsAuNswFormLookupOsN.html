@@ -5,60 +5,68 @@
   -->
   <div class="slds-container_fluid">
     <div class="nsw-form__group">
+      <!--
       <div class="sfgpsds-label__group">
         <div class="sfgpsds-label__group_label_container">
           <div class="sfgpsds-label__group_label">
-            <label
-              class={computedLabelClassName}
-              aria-label={mergedLabel}
-              for="inputId"
-            >
-              {mergedLabel}
-              <span if:true={required} class="sr-only"> ({requiredLabel})</span>
-            </label>
+-->
+      <label
+        class={computedLabelClassName}
+        aria-label={mergedLabel}
+        for="inputId"
+      >
+        {mergedLabel}
+        <span if:true={_propSetMap.required} class="sr-only">
+          ({requiredLabel})</span
+        >
+      </label>
+      <!--
           </div>
         </div>
+-->
 
-        <template if:true={_propSetMap.repeat}>
-          <span
-            slot="label"
-            style="bottom: 7px; right: -11px"
-            class={_styleClasses.repeatContainer}
-            role="group"
+      <template if:true={_propSetMap.repeat}>
+        <span
+          slot="label"
+          style="bottom: 7px; right: -11px"
+          class={_styleClasses.repeatContainer}
+          role="group"
+        >
+          <button
+            if:true={canRepeat}
+            class={_styleClasses.repeatAdd}
+            onclick={handleAdd}
           >
-            <button
-              if:true={canRepeat}
-              class={_styleClasses.repeatAdd}
-              onclick={handleAdd}
+            <omnistudio-icon
+              icon-name="utility:add"
+              alternative-text={_repeatAlternativeText}
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
             >
-              <omnistudio-icon
-                icon-name="utility:add"
-                alternative-text={_repeatAlternativeText}
-                extraclass={_styleClasses.repeatIcons}
-                size="xx-small"
-              >
-              </omnistudio-icon>
-            </button>
-            <button
-              if:true={canRemove}
-              class={_styleClasses.repeatRemove}
-              onclick={handleRemove}
+            </omnistudio-icon>
+          </button>
+          <button
+            if:true={canRemove}
+            class={_styleClasses.repeatRemove}
+            onclick={handleRemove}
+          >
+            <omnistudio-icon
+              icon-name="utility:close"
+              alternative-text={_removeAlternativeText}
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
             >
-              <omnistudio-icon
-                icon-name="utility:close"
-                alternative-text={_removeAlternativeText}
-                extraclass={_styleClasses.repeatIcons}
-                size="xx-small"
-              >
-              </omnistudio-icon>
-            </button>
-          </span>
-        </template>
-
-        <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
-          {mergedHelpText}
+            </omnistudio-icon>
+          </button>
         </span>
+      </template>
+
+      <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
+        {mergedHelpText}
+      </span>
+      <!--
       </div>
+-->
 
       <div class="nsw-form__predictive">
         <div class="sfgps-combobox_container">

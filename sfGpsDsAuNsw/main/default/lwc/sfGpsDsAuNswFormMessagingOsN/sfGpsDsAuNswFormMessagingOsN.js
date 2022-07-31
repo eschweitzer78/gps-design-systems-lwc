@@ -28,6 +28,10 @@ export default class SfGpsDsAuNswFormMessagingOsN extends OmniscriptMessaging {
     );
   }
 
+  get isCompact() {
+    return this.messageText.split("\\n").length <= 2;
+  }
+
   get isSuccess() {
     return this.messageType === "Success";
   }
