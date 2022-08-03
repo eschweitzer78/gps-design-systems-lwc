@@ -8,8 +8,8 @@ covers Salesforce Experience Cloud as well as Salesforce Communities for Public 
 ## Structure
 
 * sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project
-* sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia
-* sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia
+* sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nsw.dsforce.dev)
+* sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
 
 ## Installing beta versions using Unlocked Packages
 
