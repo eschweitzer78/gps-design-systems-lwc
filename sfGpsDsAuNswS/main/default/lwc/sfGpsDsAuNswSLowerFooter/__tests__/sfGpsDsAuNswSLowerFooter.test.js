@@ -15,6 +15,75 @@ describe("c-sf-gps-ds-au-nsw-s-lower-footer", () => {
       is: SfGpsDsAuNswSLowerFooter
     });
 
+    element.navItems = [
+      {
+        Id: "0Mi5i000000gCEnCAM",
+        AccessRestriction: "LoginRequired",
+        Label: "My Service Catalog Requests",
+        Position: 2,
+        Status: "Draft",
+        Target: "SvcCatalogRequest",
+        TargetPrefs: "None",
+        Type: "SalesforceObject",
+        NavigationLinkSetId: "0Lm5i000000XbnYCAS"
+      },
+      {
+        Id: "0Mi5i000000gCEoCAM",
+        AccessRestriction: "LoginRequired",
+        Label: "Service Catalog",
+        Position: 1,
+        Status: "Draft",
+        Target: "/service-catalog-categories",
+        TargetPrefs: "None",
+        Type: "InternalLink",
+        NavigationLinkSetId: "0Lm5i000000XbnYCAS"
+      },
+      {
+        Id: "0Mi5i000000gCEpCAM",
+        AccessRestriction: "LoginRequired",
+        Label: "My Tickets",
+        Position: 3,
+        Status: "Draft",
+        Target: "Case",
+        TargetPrefs: "None",
+        Type: "SalesforceObject",
+        NavigationLinkSetId: "0Lm5i000000XbnYCAS"
+      },
+      {
+        Id: "0Mi5i000000gCEqCAM",
+        AccessRestriction: "LoginRequired",
+        Label: "Service Catalog",
+        Position: 1,
+        Status: "Live",
+        Target: "/service-catalog-categories",
+        TargetPrefs: "None",
+        Type: "InternalLink",
+        NavigationLinkSetId: "0Lm5i000000XbnYCAS"
+      },
+      {
+        Id: "0Mi5i000000gCErCAM",
+        AccessRestriction: "LoginRequired",
+        Label: "My Service Catalog Requests",
+        Position: 2,
+        Status: "Live",
+        Target: "SvcCatalogRequest",
+        TargetPrefs: "None",
+        Type: "SalesforceObject",
+        NavigationLinkSetId: "0Lm5i000000XbnYCAS"
+      },
+      {
+        Id: "0Mi5i000000gCEsCAM",
+        AccessRestriction: "LoginRequired",
+        Label: "My Tickets",
+        Position: 3,
+        Status: "Live",
+        Target: "Case",
+        TargetPrefs: "None",
+        Type: "SalesforceObject",
+        NavigationLinkSetId: "0Lm5i000000XbnYCAS"
+      }
+    ];
+
     // Act
     document.body.appendChild(element);
 
