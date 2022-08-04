@@ -15,15 +15,19 @@ import tmpl from "./sfGpsDsAuNswFormStepOsN.html";
 
 export default class SfGpsDsAuNswFormStepOsN extends OmniscriptStep {
   render() {
-    console.log("jsonDef=", JSON.stringify(this.jsonDef));
-    console.log("scriptHeaderDef=", JSON.stringify(this.scriptHeaderDef));
     return tmpl;
   }
 
   handleNext(e) {
-    console.log("jsonDef=", JSON.stringify(this.jsonDef));
-    console.log("scriptHeaderDef=", JSON.stringify(this.scriptHeaderDef));
     e.stopPropagation();
+
+    // TODO:
+    // temporary fix to solve the sfGpsDsAuNswFormSelect issue of having an invalidated value when
+    // configured as dependent picklist. It looks like it's actually an issue with the original
+    // omnistudioSelect not updating the validation state of its parent when options are updated
+    // asynchronously as part of the dependent picklist mechanism. It prevents moving to the next
+    // screen even though the widget is actually in valid state, requiring you to hit next twice.
+    this.reportValidity();
 
     this.dispatchEvent(
       new CustomEvent("omniautoadvance", {
