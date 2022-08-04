@@ -1,11 +1,10 @@
 <template>
   <template if:true={jsonDef.bAccordionActive}>
-    <div class="page-header">
+    <div class="page-header page-header--bottom">
       <div class="snsw-container">
-        <div if:true={_propSetMap.chartLabel} class="breadcrumb">
-          {mergedChartLabel}
-        </div>
         <h1 class="snsw-h1 os-step-label">{mergedLabel}</h1>
+
+        <p if:true={_propSetMap.chartLabel}>{mergedChartLabel}</p>
       </div>
     </div>
 

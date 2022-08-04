@@ -2,16 +2,19 @@
   <div class="form__date">
     <div class={computedFormItemClassName}>
       <label
+        if:true={label}
         class={computedLabelClassName}
         style="width: auto"
         for="date-input"
       >
         {label}
-        <span if:true={required}> ({requiredLabel})</span>
+        <span if:true={required} class="visually-hidden">
+          ({requiredLabel})</span
+        >
       </label>
       <slot name="label"> </slot>
 
-      <span if:true={fieldLevelHelp} id="helper" class="form-help">
+      <span if:true={fieldLevelHelp} id="helper" class="form__help">
         {fieldLevelHelp}
       </span>
 

@@ -24,8 +24,9 @@ label {
   color: var(--nsw-s-text-dark);
   display: block;
   margin: 0 0 0.75rem;
+  padding-right: 0.5rem;
   max-width: 769px;
-  width: 100%;
+  /*width: 100%;*/
 }
 
 label.form-required span,

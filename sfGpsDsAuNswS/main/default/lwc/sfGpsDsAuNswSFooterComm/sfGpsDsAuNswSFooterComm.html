@@ -1,22 +1,5 @@
 <template>
   <div class="servicensw-embed">
-    <div id="block-global-footer-acknowledgement">
-      <div class="aoc">
-        <div class="container">
-          <div class="aoc__layout">
-            <div class="aoc__message">
-              <h3>Acknowledgement of Country</h3>
-              <p>
-                We acknowledge the Traditional Custodians of NSW, and their
-                continued connection to land, water and culture. We pay our
-                respects to Elders past, present and emerging.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <footer class="global-footer">
       <div if:false={hideMainFooter} class="global-footer__main">
         <div class="container">
@@ -313,58 +296,17 @@
           </div>
         </div>
       </div>
-      <div class="global-footer__bottom">
-        <div class="container">
-          <nav
-            role="navigation"
-            aria-label="Global footer secondary menu"
-            id="block-global-footer-secondary-menu"
-          >
-            <div class="inline-nav">
-              <ul>
-                <li>
-                  <a
-                    href="https://www.service.nsw.gov.au/accessibility"
-                    class="is-internal"
-                    >Accessibility</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.service.nsw.gov.au/privacy"
-                    class="is-internal"
-                    >Privacy</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.service.nsw.gov.au/terms-use"
-                    class="is-internal"
-                    >Terms of use</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.service.nsw.gov.au/copyright-and-disclaimer"
-                    class="is-internal"
-                    >Copyright and disclaimer</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://www.service.nsw.gov.au/accessing-information"
-                    class="is-internal"
-                    >Accessing information</a
-                  >
-                </li>
-                <li>
-                  <a href="https://www.nsw.gov.au">NSW Government</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-      </div>
+
+      <c-sf-gps-ds-au-nsw-s-lower-footer-p
+        ip-name={ipName}
+        input-j-s-o-n={lfInputJSON}
+        options-j-s-o-n={lfOptionsJSON}
+        lf-class-name={lfClassName}
+        onnavigate={handleNavigate}
+      >
+      </c-sf-gps-ds-au-nsw-s-lower-footer-p>
     </footer>
   </div>
+
+  <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
 </template>

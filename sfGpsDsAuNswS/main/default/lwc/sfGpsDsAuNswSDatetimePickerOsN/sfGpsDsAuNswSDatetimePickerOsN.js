@@ -24,7 +24,11 @@ export default class SfGpsDsAuNswSDatetimePickerOsN extends OmnistudioDatetimePi
   }
 
   get computedFormGroupClassName() {
-    return "form__datetime" + this.hideFormGroup ? "" : " form__group";
+    return "form__datetime" + (this.hideFormGroup ? "" : " form__group");
+  }
+
+  get computedFormItemClassName() {
+    return "form__item";
   }
 
   get timeEl() {

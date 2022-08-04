@@ -1,0 +1,27 @@
+<template>
+  <div class={computedClassName}>
+    <div class="global-footer__bottom">
+      <div class="container">
+        <nav role="navigation" aria-label={footerAriaLabel}>
+          <div class="inline-nav">
+            <ul>
+              <template for:each={_navItems} for:item="navItem">
+                <li key={navItem.index}>
+                  <!-- class="is-internal" -->
+                  <a
+                    href={navItem.url}
+                    data-ndx={navItem.index}
+                    onclick={handleClick}
+                    class={navItem.className}
+                  >
+                    {navItem.text}
+                  </a>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</template>

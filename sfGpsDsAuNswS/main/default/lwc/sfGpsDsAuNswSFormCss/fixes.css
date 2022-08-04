@@ -1,6 +1,7 @@
 label {
   font-weight: var(--nsw-s-font-medium);
   margin-bottom: 0;
+  display: inline-block;
 }
 
 input {
@@ -13,10 +14,14 @@ label.form-required::after {
   color: var(--nsw-s-error);
 }
 
-legend.form-required::after {
+legend.form-required span:first-child::after {
   /* otherwise there is no indication of mandatory fields */
   content: " *";
   color: var(--nsw-s-error);
+}
+
+legend span:first-child {
+  margin-right: 0.5rem;
 }
 /* ------------------------- */
 /* for radios and checkboxes */

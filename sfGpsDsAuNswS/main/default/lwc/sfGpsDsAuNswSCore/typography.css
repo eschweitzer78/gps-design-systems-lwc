@@ -176,8 +176,6 @@ template {
   font-family: var(--nsw-s-font-family, "Gotham, Arial, sans-serif");
   font-size: var(--nsw-s-font-size, 100%);
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 @media print {

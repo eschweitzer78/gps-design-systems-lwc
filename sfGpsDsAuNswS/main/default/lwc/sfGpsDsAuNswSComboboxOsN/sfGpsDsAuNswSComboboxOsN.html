@@ -1,7 +1,8 @@
 <template>
-  <div class="form__group">
+  <div class="form__item">
+    <!-- used to be form__group -->
     <div class={errorClass}>
-      <!-- necessary for dropdown to work -->
+      <!-- errorClass necessary for dropdown to work -->
       <div if:false={isLabelHidden}>
         <label
           class={computedLabelClassName}
@@ -9,7 +10,9 @@
           for="comboboxId"
         >
           {label}
-          <span if:true={required}> ({requiredLabel})</span>
+          <span if:true={required} class="visually-hidden">
+            ({requiredLabel})</span
+          >
         </label>
         <slot name="label"> </slot>
       </div>
