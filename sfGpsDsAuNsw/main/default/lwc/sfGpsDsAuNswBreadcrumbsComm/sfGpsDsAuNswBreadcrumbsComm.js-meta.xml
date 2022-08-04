@@ -12,7 +12,7 @@
       <property
         name="label"
         type="String"
-        label="Label"
+        label="Aria label"
         description="Label used for accessibility."
         required="true"
         default="Breadcrumbs"
