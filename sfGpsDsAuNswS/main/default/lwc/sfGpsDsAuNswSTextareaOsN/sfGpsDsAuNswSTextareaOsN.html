@@ -5,6 +5,7 @@
         {label}
         <span if:true={required}> ({requiredLabel})</span>
       </label>
+      <slot name="label"></slot>
     </div>
 
     <span if:true={fieldLevelHelp} id="helper" class="form__help"

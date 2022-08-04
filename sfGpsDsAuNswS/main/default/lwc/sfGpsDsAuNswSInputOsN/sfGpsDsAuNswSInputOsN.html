@@ -12,21 +12,21 @@
             <span if:true={required}> ({requiredLabel})</span>
             <!-- TODO: check required graphical cue -->
           </span>
+          <slot name="label"></slot>
           <span if:true={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
         </legend>
-        <label
-          if:false={useLegend}
-          class={computedLabelClassName}
-          for={inputId}
-        >
-          {label}
-          <span if:true={required}> ({requiredLabel})</span>
-        </label>
-        <span if:true={fieldLevelHelp} id={helperId} class="form__help">
-          {fieldLevelHelp}
-        </span>
+        <template if:false={useLegend}>
+          <label class={computedLabelClassName} for={inputId}>
+            {label}
+            <span if:true={required}> ({requiredLabel})</span>
+          </label>
+          <slot name="label"></slot>
+          <span if:true={fieldLevelHelp} id={helperId} class="form__help">
+            {fieldLevelHelp}
+          </span>
+        </template>
       </template>
 
       <template if:true={isCheckbox}>

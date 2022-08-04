@@ -7,10 +7,10 @@
           <span if:true={required}> ({requiredLabel})</span>
         </span>
         <slot name="label"></slot>
-        <span if:true={fieldLevelHelp} id="helper" class="form-help"
-          >{fieldLevelHelp}</span
-        >
       </legend>
+      <span if:true={fieldLevelHelp} id="helper" class="form-help"
+        >{fieldLevelHelp}</span
+      >
 
       <div class="form__radios">
         <template for:each={internalOpts} for:item="e" for:index="t">

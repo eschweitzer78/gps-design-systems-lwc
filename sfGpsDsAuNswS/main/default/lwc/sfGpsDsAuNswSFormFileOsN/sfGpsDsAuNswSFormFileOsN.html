@@ -12,51 +12,53 @@
   <slot>
     <div class={_containerClasses} aria-labelledby="fileUpload" tabindex="0">
       <div class="form__group">
-        <label id="fileUpload" class={computedLabelClassName}>
-          {mergedLabel}
-          <span if:true={_propSetMap.required}>
-            ({allCustomLabelsUtil.OmniRequired})</span
+        <div class="form__item">
+          <label id="fileUpload" class={computedLabelClassName}>
+            {mergedLabel}
+            <span if:true={_propSetMap.required}>
+              ({allCustomLabelsUtil.OmniRequired})</span
+            >
+          </label>
+          <span if:true={_propSetMap.help} id="helper" class="form__help">
+            {mergedHelpText}
+          </span>
+
+          <div class="slds-grid omni-file-input">
+            <template if:true={scriptHeaderDef.isGuestUser}>
+              <lightning-file-upload
+                label=" "
+                name={jsonDef.lwcId}
+                onuploadfinished={handleUploadFinished}
+                multiple
+                data-omni-input
+                record-id={scriptHeaderDef.sOmniScriptId}
+                class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+              >
+              </lightning-file-upload>
+            </template>
+
+            <template if:false={scriptHeaderDef.isGuestUser}>
+              <lightning-file-upload
+                label=" "
+                name={jsonDef.lwcId}
+                onuploadfinished={handleUploadFinished}
+                multiple
+                data-omni-input
+                class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+              >
+              </lightning-file-upload>
+            </template>
+          </div>
+
+          <p
+            if:true={_showValidation}
+            class="form__error"
+            aria-live="assertive"
+            id="errorMessageBlock"
           >
-        </label>
-        <span if:true={_propSetMap.help} id="helper" class="form__help">
-          {mergedHelpText}
-        </span>
-
-        <div class="slds-grid omni-file-input">
-          <template if:true={scriptHeaderDef.isGuestUser}>
-            <lightning-file-upload
-              label=" "
-              name={jsonDef.lwcId}
-              onuploadfinished={handleUploadFinished}
-              multiple
-              data-omni-input
-              record-id={scriptHeaderDef.sOmniScriptId}
-              class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
-            >
-            </lightning-file-upload>
-          </template>
-
-          <template if:false={scriptHeaderDef.isGuestUser}>
-            <lightning-file-upload
-              label=" "
-              name={jsonDef.lwcId}
-              onuploadfinished={handleUploadFinished}
-              multiple
-              data-omni-input
-              class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
-            >
-            </lightning-file-upload>
-          </template>
+            {errorMessage}
+          </p>
         </div>
-
-        <p
-          if:true={_showValidation}
-          class="form__error"
-          aria-live="assertive"
-          id="errorMessageBlock"
-        >
-          {errorMessage}
-        </p>
       </div>
     </div>
   </slot>

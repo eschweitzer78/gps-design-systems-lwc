@@ -1,0 +1,23 @@
+<template>
+  <div class={computedClassName}>
+    <div class="container">
+      <div class="breadcrumb" role="navigation" aria-label={label}>
+        <ol>
+          <template for:each={_itemsArray} for:item="item">
+            <li if:true={item.url} key={item.index} class={item.className}>
+              <a href={item.url}>{item.text}</a>
+            </li>
+            <li if:false={item.url} key={item.index} class={item.className}>
+              {item.text}
+            </li>
+          </template>
+        </ol>
+      </div>
+
+      <template if:true={title}>
+        <h1 tabindex="-1">{title}</h1>
+        <p if:true={legend}>{legend}</p>
+      </template>
+    </div>
+  </div>
+</template>

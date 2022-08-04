@@ -1,0 +1,90 @@
+@import "c/sfGpsDsAuNswSEmbedCss";
+
+.page-header {
+  background: #f4f7f9;
+  padding-block: 2rem;
+  font-size: 1rem;
+}
+
+.page-header--top {
+  padding-block-end: 0rem;
+}
+
+.page-header--bottom {
+  background: #f4f7f9;
+  padding-block-end: 2rem;
+}
+
+.page-header h1 {
+  margin: 0;
+}
+
+.page-header p {
+  margin-block-start: 0.5rem;
+}
+
+.page-header .notice:last-of-type,
+.page-header p {
+  margin-block-end: 0;
+}
+
+.breadcrumb {
+  font-size: 0.875rem;
+  padding-block-end: 1rem; /* margin-block-end: 1rem; we need padding vs. margin */
+}
+
+.breadcrumb a {
+  color: #242934;
+  text-decoration: underline;
+}
+
+.breadcrumb li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 480px) {
+  .breadcrumb li:after {
+    content: "/";
+    display: inline-block;
+    font-size: 0.875rem;
+    margin-inline: 0.4rem;
+  }
+
+  .breadcrumb li:last-child:after {
+    display: none;
+  }
+}
+
+.breadcrumb li.breadcrumb__back a {
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23242934' d='m7 10.6-1.2 1.2L0 6 5.8.2 7 1.4 2.4 6 7 10.6z'/%3E%3C/svg%3E")
+    no-repeat 0;
+  padding-inline-start: 17px;
+  text-decoration: underline;
+}
+
+@media (max-width: 479px) {
+  .breadcrumb li {
+    display: none;
+  }
+
+  .breadcrumb li.breadcrumb__previous,
+  .breadcrumb li.breadcrumb__back {
+    display: block;
+  }
+
+  .breadcrumb li.breadcrumb__previous a {
+    background: url("data:image/svg+xml;charset=utf-8,%3Csvg width='7' height='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23242934' d='m7 10.6-1.2 1.2L0 6 5.8.2 7 1.4 2.4 6 7 10.6z'/%3E%3C/svg%3E")
+      no-repeat 7px;
+    padding-inline-start: 26px;
+  }
+}
+
+.breadcrumb ol,
+.breadcrumb ul {
+  list-style: none;
+  margin: 0;
+  max-inline-size: none;
+  padding: 0;
+}
