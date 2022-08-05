@@ -113,18 +113,18 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   }
 
   handleClickNavigate(event) {
-    console.log("handleClickNavigate", event.currentTarget.dataset.ndx);
     event.preventDefault();
 
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-    this.isActive = true;
+    //this.isActive = true;
+    const closeMenuEvent = new CustomEvent("closemenu");
+    this.dispatchEvent(closeMenuEvent);
 
     let index = event.currentTarget.dataset.ndx;
     this.dispatchEvent(new CustomEvent("navigate", { detail: index }));
   }
 
   handleClick(event) {
-    console.log("handleClick", event.currentTarget.dataset.ndx);
     event.preventDefault();
 
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments

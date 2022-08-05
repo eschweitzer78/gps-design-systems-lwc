@@ -60,6 +60,15 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
     this.value = event.target.value;
   }
 
+  handleKeyUp(event) {
+    const isEnterKey = event.keyCode === 13;
+    if (isEnterKey) {
+      this.handleSearch(event);
+    }
+
+    return false; // avoid submission of form
+  }
+
   handleSearch(event) {
     event.preventDefault();
     this.setSearchVisible(false);
