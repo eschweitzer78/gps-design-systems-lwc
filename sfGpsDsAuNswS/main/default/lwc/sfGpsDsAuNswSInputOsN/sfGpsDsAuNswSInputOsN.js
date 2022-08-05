@@ -21,7 +21,6 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
 
     switch (this._innerElement) {
       case "c-time-picker":
-        // TODO replace by NSWS version
         this._innerElement = "c-sf-gps-ds-au-nsw-s-time-picker-os-n";
         break;
 
@@ -30,7 +29,6 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
         break;
 
       case "c-datetime-picker":
-        // TODO replace by NSWS version
         this._innerElement = "c-sf-gps-ds-au-nsw-s-datetime-picker-os-n";
         break;
 

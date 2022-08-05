@@ -183,18 +183,18 @@
 
 .servicensw-embed .is-external,
 .servicensw-embed
-  [href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
+  [href^="http"]:not([href*="service.nsw.gov.au"], .is-internal) {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%232e5299' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
-  background-position: 100% 50%;
+  background-position: 100%;
   background-repeat: no-repeat;
   background-size: 12px;
-  padding-right: 16px;
+  padding-inline-end: 16px;
 }
 
 @media screen and (-ms-high-contrast: active) {
   .servicensw-embed .is-external,
   .servicensw-embed
-    [href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
+    [href^="http"]:not([href*="service.nsw.gov.au"], .is-internal) {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
   }
 }
@@ -202,7 +202,7 @@
 @media screen and (-ms-high-contrast: black-on-white) {
   .servicensw-embed .is-external,
   .servicensw-embed
-    [href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
+    [href^="http"]:not([href*="service.nsw.gov.au"], .is-internal) {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
   }
 }
@@ -210,14 +210,14 @@
 @media print {
   .servicensw-embed .is-external,
   .servicensw-embed
-    [href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
+    [href^="http"]:not([href*="service.nsw.gov.au"], .is-internal) {
     background-image: none;
     padding-right: 0;
   }
 
   .servicensw-embed .is-external:after,
   .servicensw-embed
-    [href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+    [href^="http"]:not([href*="service.nsw.gov.au"], .is-internal):after {
     content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%232e5299' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
     display: inline-block;
     height: 12px;
@@ -1850,7 +1850,7 @@
 
 .servicensw-embed
   .social-nav
-  [href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
+  [href^="http"]:not([href*="service.nsw.gov.au"], .is-internal) {
   background: none;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -1881,77 +1881,6 @@
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='33' height='23'%3E%3Cpath fill='%23FFF' d='M32.079 3.953c-.305-1.58-1.759-2.732-3.446-3.091C26.11.359 21.438 0 16.383 0 11.332 0 6.586.36 4.058.862 2.375 1.222.918 2.299.613 3.953.305 5.75 0 8.266 0 11.5s.305 5.75.688 7.547c.308 1.58 1.761 2.732 3.445 3.091 2.68.503 7.274.862 12.328.862 5.054 0 9.648-.36 12.328-.862 1.684-.36 3.137-1.437 3.445-3.091.305-1.797.688-4.386.766-7.547-.156-3.234-.538-5.75-.921-7.547zM12.25 16.531V6.47l9.34 5.031-9.34 5.031z'/%3E%3C/svg%3E") !important;
   background-size: 32px 28px !important;
   width: 32px !important;
-}
-
-.servicensw-embed .global-footer__bottom {
-  background: #242934;
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
-}
-
-@media (min-width: 830px) {
-  .servicensw-embed .global-footer__bottom {
-    padding-bottom: 9px;
-    padding-top: 9px;
-  }
-}
-
-.servicensw-embed .global-footer__bottom .container {
-  align-items: flex-end;
-  display: flex;
-}
-
-@media (min-width: 768px) {
-  .servicensw-embed .global-footer__bottom .container {
-    align-items: center;
-  }
-
-  .servicensw-embed .global-footer__bottom nav {
-    flex-grow: 1;
-  }
-}
-
-.servicensw-embed .global-footer__bottom .inline-nav ul {
-  display: block;
-}
-
-@media (min-width: 830px) {
-  .servicensw-embed .global-footer__bottom .inline-nav ul {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    height: 66px;
-    justify-content: space-between;
-    max-width: 1045px;
-  }
-}
-
-@media (max-width: 829px) {
-  .servicensw-embed .global-footer__bottom .inline-nav li {
-    margin: 0 0 1rem;
-  }
-
-  .servicensw-embed .global-footer__bottom .inline-nav li:last-child {
-    margin-bottom: 0;
-  }
-}
-
-.servicensw-embed .global-footer__bottom .inline-nav a {
-  font-size: 0.875rem;
-}
-
-@media (max-width: 829px) {
-  .servicensw-embed .global-footer__bottom .inline-nav a {
-    display: inline;
-  }
-}
-
-.servicensw-embed
-  .global-footer__bottom
-  .inline-nav
-  [href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
-  padding-right: 16px;
 }
 
 .servicensw-embed .myservicensw-account a {
@@ -2011,61 +1940,4 @@
 .servicensw-embed .global-footer__flags svg {
   display: inline-block;
   margin-right: 14px;
-}
-
-.servicensw-embed .aoc {
-  background: #dee3e5;
-  font-size: 0.875rem;
-  padding: 20px 0;
-}
-
-.servicensw-embed .aoc h2,
-.servicensw-embed .aoc h3,
-.servicensw-embed .aoc h4,
-.servicensw-embed .aoc h5,
-.servicensw-embed .aoc h6 {
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin: 0 0 1rem;
-  text-transform: uppercase;
-}
-
-.servicensw-embed .aoc p {
-  margin: 0 0 1rem;
-  max-width: none;
-}
-
-@media (min-width: 1024px) {
-  .servicensw-embed .aoc__layout {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    max-width: 1065px;
-  }
-}
-
-.servicensw-embed .aoc__message :last-child {
-  margin-bottom: 0;
-}
-
-.servicensw-embed .aoc__message :first-child {
-  margin-top: 0;
-}
-
-.servicensw-embed .aoc__flags {
-  display: flex;
-  height: 23px;
-  margin-bottom: 0.5rem;
-}
-
-@media (min-width: 1024px) {
-  .servicensw-embed .aoc__flags {
-    flex-shrink: 0;
-    margin-bottom: 0;
-  }
-}
-
-.servicensw-embed .aoc__flags svg {
-  display: inline-block;
-  margin-right: 20px;
 }

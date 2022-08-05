@@ -5,10 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmnistudioDatePicker from "omnistudio/datePicker";
 import tmpl from "./sfGpsDsAuNswSDatePickerOsN.html";
 
-export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioDatePicker {
+export default class SfGpsDsAuNswDatePickerOsN extends OmnistudioDatePicker {
+  @api hideAsterisk = false;
+
   render() {
     return tmpl;
   }
@@ -18,7 +21,7 @@ export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioDatePicker {
   }
 
   get computedLabelClassName() {
-    return this.required ? "form-required" : "";
+    return this.required && !this.hideAsterisk ? "form-required" : "";
   }
 
   get computedInputClassName() {

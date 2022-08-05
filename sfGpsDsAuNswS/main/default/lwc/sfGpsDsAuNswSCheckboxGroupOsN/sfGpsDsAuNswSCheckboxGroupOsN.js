@@ -19,10 +19,10 @@ export default class SfGpsDsAuNswNCheckboxGroupOsN extends OmnistudioCheckboxGro
 
   get computedAriaDescribedBy() {
     if (this.fieldLevelHelp) {
-      return this.isError === "invalid" ? "errorMessageBlock helper" : "helper";
+      return this.isError ? "errorMessageBlock helper" : "helper";
     }
 
-    return this.isError === "invalid" ? "errorMessageBlock" : "";
+    return this.isError ? "errorMessageBlock" : "";
   }
 
   get computedLegendClassName() {

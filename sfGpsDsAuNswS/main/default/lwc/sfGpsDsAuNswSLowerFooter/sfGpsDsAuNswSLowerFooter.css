@@ -1,0 +1,88 @@
+@import "c/sfGpsDsAuNswSEmbedCss";
+
+.global-footer__bottom,
+.global-footer--bottom {
+  background: #242934;
+  padding-block: 1.5rem;
+}
+
+@media (min-width: 830px) {
+  .global-footer__bottom,
+  .global-footer--bottom {
+    padding-block: 9px;
+  }
+}
+
+.global-footer__bottom .container,
+.global-footer--bottom .container {
+  align-items: flex-end;
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .global-footer__bottom .container,
+  .global-footer--bottom .container {
+    align-items: center;
+  }
+
+  .global-footer__bottom nav,
+  .global-footer--bottom nav {
+    flex-grow: 1;
+  }
+}
+
+.global-footer__bottom .inline-nav ul,
+.global-footer--bottom .inline-nav ul {
+  display: block;
+}
+
+@media (min-width: 830px) {
+  .global-footer__bottom .inline-nav ul,
+  .global-footer--bottom .inline-nav ul {
+    align-items: center;
+    block-size: 66px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-inline-size: 1045px;
+  }
+}
+
+@media (max-width: 829px) {
+  .global-footer__bottom .inline-nav a,
+  .global-footer--bottom .inline-nav a {
+    display: inline;
+  }
+}
+
+@media (max-width: 829px) {
+  .global-footer__bottom .inline-nav li,
+  .global-footer--bottom .inline-nav li {
+    margin: 0 0 1rem;
+  }
+
+  .global-footer__bottom .inline-nav li:last-child,
+  .global-footer--bottom .inline-nav li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.global-footer__bottom .inline-nav .is-external,
+.global-footer--bottom .inline-nav .is-external,
+.global-footer__bottom
+  .inline-nav
+  [href^="http"]:not([href*="service.nsw.gov.au"], .is-internal),
+.global-footer--bottom
+  .inline-nav
+  [href^="http"]:not([href*="service.nsw.gov.au"], .is-internal) {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
+  padding-inline-end: 16px;
+}
+
+/* originally for .global-footer but it's out of the containment relationship */
+.global-footer__bottom .inline-nav a,
+.global-footer--bottom .inline-nav a {
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 400;
+}

@@ -1,1 +1,5 @@
 @import "c/sfGpsDsAuNswSFormCssOs";
+
+.dt-container {
+  margin-top: -0.5rem; /* to counter-balance for dt element top margin */
+}

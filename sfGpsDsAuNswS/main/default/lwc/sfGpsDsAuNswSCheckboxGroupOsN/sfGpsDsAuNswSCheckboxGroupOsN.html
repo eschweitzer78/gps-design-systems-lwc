@@ -1,20 +1,21 @@
 <template>
-  <div class="">
-    <fieldset if:true={isCheckbox} class="" aria-invalid={computedAriaInvalid}>
+  <div>
+    <fieldset if:true={isCheckbox} aria-invalid={computedAriaInvalid}>
       <legend class={computedLegendClassName}>
         <span>
           {label}
           <span if:true={required}> ({requiredLabel})</span>
         </span>
         <slot name="label"> </slot>
-        <span id="helper" class="form-help">{fieldLevelHelp}</span>
       </legend>
+      <span if:true={fieldLevelHelp} id="helper" class="form__help"
+        >{fieldLevelHelp}</span
+      >
 
       <div class="form__checkboxes">
         <template for:each={internalOpts} for:item="e" for:index="index">
           <div key={e.id} class="form__item">
             <input
-              key={e.id}
               class={computedInputClassName}
               type="checkbox"
               required={required}
@@ -30,7 +31,7 @@
               onfocus={handleFocus}
               onchange={onchangevalue}
             />
-            <label key={e.id} data-index={index} for={e.id}> {e.label} </label>
+            <label data-index={index} for={e.id}> {e.label} </label>
           </div>
         </template>
       </div>

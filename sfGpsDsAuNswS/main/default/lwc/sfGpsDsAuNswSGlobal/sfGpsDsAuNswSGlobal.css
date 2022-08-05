@@ -1,51 +1,13 @@
 @import "./theme.css";
 
 @font-face {
-  font-family: Gotham A;
-  src: url(https://fonts.service.nsw.gov.au/Gotham-Book_Web.woff2)
-      format("woff2"),
-    url(https://fonts.service.nsw.gov.au/Gotham-Book_Web.woff) format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Gotham A;
-  src: url(https://fonts.service.nsw.gov.au/Gotham-BookItalic_Web.woff2)
-      format("woff2"),
-    url(https://fonts.service.nsw.gov.au/Gotham-BookItalic_Web.woff)
-      format("woff");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Gotham A;
-  src: url(https://fonts.service.nsw.gov.au/Gotham-Medium_Web.woff2)
-      format("woff2"),
-    url(https://fonts.service.nsw.gov.au/Gotham-Medium_Web.woff) format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Gotham A;
-  src: url(https://fonts.service.nsw.gov.au/Gotham-Bold_Web.woff2)
-      format("woff2"),
-    url(https://fonts.service.nsw.gov.au/Gotham-Bold_Web.woff) format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: Gotham;
-  src: url(https://fonts.service.nsw.gov.au/Gotham-Book_Web.woff2)
+  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Book_Web.woff2)
       format("woff2"),
-    url(https://fonts.service.nsw.gov.au/Gotham-Book_Web.woff) format("woff");
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Book_Web.woff)
+      format("woff"),
+    url(/resource/sfGpsDsAuNswS/fonts/Gotham-Book_Web.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuNswS/fonts/Gotham-Book_Web.woff) format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -53,10 +15,13 @@
 
 @font-face {
   font-family: Gotham;
-  src: url(https://fonts.service.nsw.gov.au/Gotham-BookItalic_Web.woff2)
+  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-BookItalic_Web.woff2)
       format("woff2"),
-    url(https://fonts.service.nsw.gov.au/Gotham-BookItalic_Web.woff)
-      format("woff");
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-BookItalic_Web.woff)
+      format("woff"),
+    url(/resource/sfGpsDsAuNswS/fonts/Gotham-BookItalic_Web.woff2)
+      format("woff2"),
+    url(/resource/sfGpsDsAuNswS/fonts/Gotham-BookItalic_Web.woff) format("woff");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -64,9 +29,12 @@
 
 @font-face {
   font-family: Gotham;
-  src: url(https://fonts.service.nsw.gov.au/Gotham-Medium_Web.woff2)
+  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Medium_Web.woff2)
       format("woff2"),
-    url(https://fonts.service.nsw.gov.au/Gotham-Medium_Web.woff) format("woff");
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Medium_Web.woff)
+      format("woff"),
+    url(/resource/sfGpsDsAuNswS/fonts/Gotham-Medium_Web.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuNswS/fonts/Gotham-Medium_Web.woff) format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -74,9 +42,12 @@
 
 @font-face {
   font-family: Gotham;
-  src: url(https://fonts.service.nsw.gov.au/Gotham-Bold_Web.woff2)
+  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fontsGotham-Bold_Web.woff2)
       format("woff2"),
-    url(https://fonts.service.nsw.gov.au/Gotham-Bold_Web.woff) format("woff");
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fontsGotham-Bold_Web.woff)
+      format("woff"),
+    url(/resource/sfGpsDsAuNswS/fontsGotham-Bold_Web.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuNswS/fontsGotham-Bold_Web.woff) format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

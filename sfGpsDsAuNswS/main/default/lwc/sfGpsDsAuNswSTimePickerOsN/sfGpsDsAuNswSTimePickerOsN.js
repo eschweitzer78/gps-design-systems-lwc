@@ -5,10 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import SfGpsDsTimePickerOsN from "c/sfGpsDsTimePickerOsN";
 import tmpl from "./sfGpsDsAuNswSTimePickerOsN.html";
 
 export default class SfGpsDsAuNswSTimePickerOsN extends SfGpsDsTimePickerOsN {
+  @api hideAsterisk = false;
+
   render() {
     return tmpl;
   }
@@ -18,7 +21,7 @@ export default class SfGpsDsAuNswSTimePickerOsN extends SfGpsDsTimePickerOsN {
   }
 
   get computedLabelClassName() {
-    return this.required ? "form-required" : "";
+    return this.required && !this.hideAsterisk ? "form-required" : "";
   }
 
   get computedInputInputClassName() {

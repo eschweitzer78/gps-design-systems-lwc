@@ -10,6 +10,30 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration procedure mapping content to this nav."
+      />
+      <property
+        name="lfInputJSON"
+        type="String"
+        label="Lower footer input JSON"
+        description="JSON formatted input parameters for the Integration procedure (lower footer)."
+      />
+      <property
+        name="lfOptionsJSON"
+        type="String"
+        label="Lower footer options JSON"
+        description="JSON formatted options for the Integration procedure (lower footer)."
+      />
+      <property
+        name="lfClassName"
+        type="String"
+        label="Lower footer class name"
+        description="Additional CSS class to be applied."
+      />
+      <property
         name="hideMainFooter"
         type="Boolean"
         label="Hide main footer"

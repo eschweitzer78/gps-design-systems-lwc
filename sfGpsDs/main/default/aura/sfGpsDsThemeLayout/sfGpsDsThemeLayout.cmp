@@ -25,7 +25,7 @@
   />
 
   <div>
-    <div aria-labelledby="sf-gps-ds-header-title" class="sf-gps-ds-header">
+    <div class="sf-gps-ds-header">
       <h1 id="sf-gps-ds-header-title" class="sr-only">Header</h1>
 
       <div class="sf-gps-ds-header-top">{!v.header}</div>
@@ -48,7 +48,7 @@
       {!v.body}
     </div>
 
-    <div aria-labelledby="sf-gps-ds-footer-title" class="sf-gps-ds-footer">
+    <div class="sf-gps-ds-footer">
       <h1 id="sf-gps-ds-footer-title" class="sr-only">Footer</h1>
       {!v.footer}
     </div>

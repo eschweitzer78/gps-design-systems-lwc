@@ -13,16 +13,20 @@ export default class SfGpsDsAuNswSRadioGroupOsN extends OmnistudioRadioGroup {
     return tmpl;
   }
 
+  renderedCallback() {
+    // Fixing issue #19
+  }
+
   get computedAriaInvalid() {
     return this.isError;
   }
 
   get computedAriaDescribedBy() {
     if (this.fieldLevelHelp) {
-      return this.isError === "invalid" ? "errorMessageBlock helper" : "helper";
+      return this.isError ? "errorMessageBlock helper" : "helper";
     }
 
-    return this.isError === "invalid" ? "errorMessageBlock" : "";
+    return this.isError ? "errorMessageBlock" : "";
   }
 
   get computedLegendClassName() {

@@ -3,18 +3,19 @@
     <div class={computedFormItemClassName}>
       <label if:true={label} class={computedLabelClassName} style="width: auto">
         {label}
-        <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+        <span if:true={required} class="visually-hidden">
+          ({requiredLabel})</span
+        >
       </label>
       <slot name="label"> </slot>
 
-      <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper">
+      <span if:true={fieldLevelHelp} id="helper" class="form__help">
         {fieldLevelHelp}
       </span>
 
-      <div class="grid">
+      <div class="grid dt-container">
         <div class="grid__col grid--6-col">
           <c-sf-gps-ds-au-nsw-s-date-picker-os-n
-            hide-form-group="true"
             hide-asterisk="true"
             placeholder={datePlaceholder}
             theme={theme}
@@ -51,7 +52,6 @@
         </div>
         <div class="grid__col grid--6-col">
           <c-sf-gps-ds-au-nsw-s-time-picker-os-n
-            hide-form-group="true"
             hide-asterisk="true"
             placeholder={timePlaceholder}
             theme="sfgpsds"
