@@ -10,6 +10,8 @@ covers Salesforce Experience Cloud as well as Salesforce Communities for Public 
 - sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project
 - sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nsw.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
+- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia (alpha)
+- sfGpsDsAuVic is the folder for code and assets to the Design System of the United Kingdom (alpha)
 
 ## Installing beta versions using Unlocked Packages
 
@@ -22,6 +24,10 @@ Follow this set of instructions if you want to deploy the library in its most re
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000kuO7AAI" title="sfGpsDsAuNsw">this link</a> to install the sfGpsDsAuNsw unlocked package in your org.
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000kuULAAY" title="sfGpsDsAuNswS">this link</a> to install the sfGpsDsAuNswS unlocked package in your org.
+
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=000000000000000000" title="sfGpsDsAuVic">this link</a> to install the sfGpsDsAuVic unlocked package in your org.
+
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=000000000000000000" title="sfGpsDsUkGov">this link</a> to install the sfGpsDsUkGov unlocked package in your org.
 
 ## Installing the production version using Unlocked Packages
 

@@ -100,6 +100,38 @@ jobs:
           fi
           exit $status
 
+      - name: "Create package version sfGpsDsAuVic"
+        id: createPackageVersion-sfGpsDsAuVic
+        if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx force:package:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          echo $json
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "::set-output name=packageVersionId::$packageVersionId"
+          else
+              echo "sfdx force:package:version:create failed"
+          fi
+          exit $status
+
+      - name: "Create package version sfGpsDsUkGov"
+        id: createPackageVersion-sfGpsDsUkGov
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx force:package:version:create -d sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          echo $json
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "::set-output name=packageVersionId::$packageVersionId"
+          else
+              echo "sfdx force:package:version:create failed"
+          fi
+          exit $status
+
       # Wait for package replication
       - name: "Wait for package replication"
         uses: maddox/actions/sleep@master
@@ -142,6 +174,16 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 10 -u scratch-org -r
 
+      # Install new sfGpsDsAuVic package in scratch org
+      - name: "Install new sfGpsDsAuVic package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} -w 10 -u scratch-org -r
+
+      # Install new sfGpsDsUkGov package in scratch org
+      - name: "Install new sfGpsDsUkGov package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} -w 10 -u scratch-org -r
+
       # Update sfGpsDs package install link in readme
       - name: "Update package sfGpsDs install link in readme"
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
@@ -168,6 +210,27 @@ jobs:
           packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswS\""
           newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswS\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Update sfGpsDsAuVic package install link in readme
+      - name: "Update package sfGpsDsAuVic install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuVic\""
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuVic\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Update sfGpsDsUkGov package install link in readme
+      - name: "Update package sfGpsDsUkGov install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGov\""
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGov\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # TODO: run prettier on sfdx-package.json
+      #
 
       # Housekeeping
       - name: "Delete scratch org"

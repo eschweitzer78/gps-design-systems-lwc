@@ -100,6 +100,38 @@ jobs:
           fi
           exit $status
 
+      - name: "Create package version sfGpsDsAuVic"
+        id: createPackageVersion-sfGpsDsAuVic
+        if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx force:package:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          echo $json
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "::set-output name=packageVersionId::$packageVersionId"
+          else
+              echo "sfdx force:package:version:create failed"
+          fi
+          exit $status
+
+      - name: "Create package version sfGpsDsUkGov"
+        id: createPackageVersion-sfGpsDsUkGov
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx force:package:version:create -d sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          echo $json
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "::set-output name=packageVersionId::$packageVersionId"
+          else
+              echo "sfdx force:package:version:create failed"
+          fi
+          exit $status
+
       # Wait for package replication
       - name: "Wait for package replication"
         uses: maddox/actions/sleep@master
@@ -133,6 +165,16 @@ jobs:
       - name: "Install new sfGpsDsAuNswS package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 10 -u scratch-org -r
+
+      # Install new sfGpsDsAuVic package in scratch org
+      - name: "Install new sfGpsDsAuVic package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} -w 10 -u scratch-org -r
+
+      # Install new sfGpsDsUkGov package in scratch org
+      - name: "Install new sfGpsDsUkGov package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} -w 10 -u scratch-org -r
 
       # Housekeeping
       - name: "Delete scratch org"
