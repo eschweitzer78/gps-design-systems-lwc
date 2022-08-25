@@ -1,6 +1,6 @@
 <template>
   <nav class={computedClassName} aria-label={label}>
-    <ol class={computedListClassName}>
+    <ol class="nsw-breadcrumb__list nsw-breadcrumb__list--inline">
       <template for:each={items} for:item="item">
         <li key={item.index}>
           <template if:true={item.url}>

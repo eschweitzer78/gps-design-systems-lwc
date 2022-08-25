@@ -25,7 +25,7 @@
       </p>
 
       <ul class="nsw-content-block__list">
-        <template for:each={links} for:item="link">
+        <template if:true={links} for:each={links} for:item="link">
           <li key={link.index}><a href={link.url}>{link.text}</a></li>
         </template>
       </ul>

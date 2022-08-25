@@ -8,16 +8,11 @@
 import { LightningElement, api } from "lwc";
 
 export default class SfGpsDsAuNswBreadcrumbs extends LightningElement {
-  @api label;
-  @api linkComponent = "a";
+  @api label = "breadcrumbs";
   @api className = "";
   @api items = [];
 
   get computedClassName() {
     return `nsw-breadcrumbs ${this.className}`;
-  }
-
-  get computedListClassName() {
-    return `nsw-breadcrumb__list nsw-breadcrumb__list--inline`;
   }
 }

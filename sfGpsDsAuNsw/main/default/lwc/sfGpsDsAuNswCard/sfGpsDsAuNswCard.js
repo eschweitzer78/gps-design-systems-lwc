@@ -6,12 +6,14 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { parseIso8601 } from "c/sfGpsDsHelpers";
+import { parseIso8601, computeClass } from "c/sfGpsDsHelpers";
+
+const DATE_STYLE_DEFAULT = "medium" // one of short medium long full, defaults to full
 
 export default class SfGpsDsAuNswCard extends LightningElement {
   @api link;
   // ADJUSTED: style is a reserved keyword in lwc
-  @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']),
+  @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']), defaults to white
   // END ADJUSTED
   @api tag;
   @api image;
@@ -19,6 +21,8 @@ export default class SfGpsDsAuNswCard extends LightningElement {
   @api headline;
   @api highlight = false;
   @api className;
+
+  @api dateStyle = DATE_STYLE_DEFAULT; // one of: short medium long full
 
   /*
    * date
@@ -46,14 +50,18 @@ export default class SfGpsDsAuNswCard extends LightningElement {
   }
 
   get _dateLocaleString() {
-    return this._date ? this._date.toLocaleDateString() : null;
+    return this._date ? this._date.toLocaleDateString(undefined, { dateStyle: this.dateStyle || DATE_STYLE_DEFAULT }) : null;
   }
 
   get computedClassName() {
-    return `nsw-card nsw-card--${this.cstyle} ${
-      this.className ? " " + this.className : ""
-    } ${this.headline ? "nsw-card--headline" : ""} ${
-      this.highlight ? "nsw-card--highlight" : ""
-    }`;
+    return computeClass({
+      "nsw-card": true,
+      "nsw-card--dark": this.cstyle === "dark",
+      "nsw-card--light": this.cstyle === "light",
+      "nsw-card--white": this.cstyle === "white",
+      "nsw-card--headline": this.headline,
+      "nsw-card--highlight": this.highlight,
+    }) 
+    + (this.className ? " " + this.className : "");
   }
 }

@@ -26,7 +26,7 @@ export default class SfGpsDsAuNswSRadioGroupOsN extends OmnistudioRadioGroup {
       return this.isError ? "errorMessageBlock helper" : "helper";
     }
 
-    return this.isError ? "errorMessageBlock" : "";
+    return this.isError ? "errorMessageBlock" : null;
   }
 
   get computedLegendClassName() {

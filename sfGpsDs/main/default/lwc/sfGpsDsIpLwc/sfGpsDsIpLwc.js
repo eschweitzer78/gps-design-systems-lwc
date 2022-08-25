@@ -114,7 +114,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
           this.didLoadOnce = true;
           this.clearErrors();
         } catch (e) {
-          this.addError("CK-EX", "Issue getting the content collection");
+          this.addError("CK-EX", "Issue getting the content collection.");
           this._items = [];
         } finally {
           this._nLoading--;
@@ -122,7 +122,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       })
       // eslint-disable-next-line no-unused-vars
       .catch((error) => {
-        this.addError("CK-RD", "Issue getting the content collection");
+        this.addError("CK-RD", "Issue getting the content collection.");
         this._items = [];
         this._nLoading--;
       });

@@ -7,6 +7,7 @@
 
 import OmnistudioRadioGroup from "omnistudio/radioGroup";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswRadioGroupOsN.html";
 
 export default class SfGpsDsAuNswRadioGroupOsN extends OmnistudioRadioGroup {
@@ -23,15 +24,17 @@ export default class SfGpsDsAuNswRadioGroupOsN extends OmnistudioRadioGroup {
   }
 
   get computedAriaDescribedBy() {
-    if (this.fieldLevelHelp) {
-      return this.isError ? "errorMessageBlock helper" : "helper";
-    }
-
-    return this.isError ? "errorMessageBlock" : "";
+    return computeClass({
+      "helper": this.fieldLevelHelp,
+      "errorMessageBlock": this.isError
+    });
   }
 
   get computedLegendClassName() {
-    return `nsw-form__legend ${this.required ? "nsw-form__required" : ""}`;
+    return computeClass({
+      "nsw-form__legend": true,
+      "nsw-form__required": this.required
+    });
   }
 
   get computedHelperClassName() {

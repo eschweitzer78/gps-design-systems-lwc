@@ -24,10 +24,24 @@
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     }
   },
+  "sfGpsDsFocusTrap": {
+    "target": "!Os",
+    "!.js": { 
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
   "sfGpsDsHelpers": {
     "target": "!Os",
     "datetimeutil.js": { "target": "datetimeutil.js" },
     "domutil.js": { "target": "domutil.js" },
+    "focus.js": { "target": "focus.js" },
+    "jsutil.js": { "target": "jsutil.js" },
+    "nextTick.js": { "target": "nextTick.js" },
     "!.js": { "target": "!Os.js" },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
@@ -70,6 +84,14 @@
       "target": "!Os.js",
       "SfGpsDsSpinner": "SfGpsDsSpinnerOs"
     },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsTransition": {
+    "target": "!Os",
+    "!.js": { "target": "!Os.js" },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"

@@ -85,7 +85,7 @@
     "name": "au-design-systems-lwc",
     "namespace": "",
     "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "54.0",
+    "sourceApiVersion": "55.0",
     "packageAliases": {
         "omnistudio 236.3": "04t4W000002kdlN",
         "Salesforce Global Public Sector Design Systems": "0Ho5j000000bljgCAA",
@@ -120,8 +120,8 @@
         "Salesforce Global Public Sector Design Systems@1.2.0-1": "04t5j000000kuO2AAI",
         "Salesforce Global Public Sector AU NSW Design System@1.2.0-1": "04t5j000000kuO7AAI",
         "Salesforce Global Public Sector AU NSW Service Design System@1.2.0-3": "04t5j000000kuULAAY",
-        "sfGpsDsAuVic": "0Ho5j0000008OVYCA2",
-        "sfGpsDsUkGov": "0Ho5j0000008OVdCAM",
+        "Salesforce Global Public Sector AU VIC Design System": "0Ho5j0000008OVYCA2",
+        "Salesforce Global Public Sector GOV.UK Design System": "0Ho5j0000008OVdCAM",
         "Salesforce Global Public Sector Design Systems@1.2.0-4": "04t5j000000kuUQAAY",
         "Salesforce Global Public Sector AU NSW Design System@1.2.0-4": "04t5j000000kuUVAAY",
         "Salesforce Global Public Sector AU NSW Service Design System@1.2.0-4": "04t5j000000kuUaAAI"

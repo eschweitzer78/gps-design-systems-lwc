@@ -3,8 +3,9 @@ import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
 import isGuest from "@salesforce/user/isGuest";
 import cBasePath from "@salesforce/community/basePath";
+import { NavigationMixin } from "lightning/navigation"
 
-export default class SfGpsDsNavigation extends SfGpsDsIpLwc {
+export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
   @api
   get ipName() {
     return super.ipName;
@@ -50,7 +51,7 @@ export default class SfGpsDsNavigation extends SfGpsDsIpLwc {
       m[item.Id] = item;
       adaptedMap[item.Id] = {
         text: item.Label,
-        url: item.Type === "MenuLabel" ? null : item.Target,
+        url: this.resolveUrl(item),
         index: item.Id,
         position: item.Position
       };
@@ -79,6 +80,10 @@ export default class SfGpsDsNavigation extends SfGpsDsIpLwc {
 
     // sort rootItems by position
     return rootItems.sort((a, b) => (a.position > b.position ? 1 : -1));
+  }
+
+  resolveUrl(item) {
+    return item.Type === "MenuLabel" ? null : item.Target;
   }
 
   get isEmpty() {

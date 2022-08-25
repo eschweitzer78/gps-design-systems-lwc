@@ -4,35 +4,40 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { api, track } from "lwc";
-import SfGpsDsLwc from "c/sfGpsDsLwc";
-import mdEngine from "c/sfGpsDsMarkdown";
+import { api } from "lwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import SfGpsDsNavigation from "c/sfGpsDsNavigation";
+import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
+export default class SfGpsDsAuNswFooterComm extends SfGpsDsNavigation {
+  @api
+  get ipName() {
+    return super.ipName;
+  }
+
+  set ipName(value) {
+    super.ipName = value;
+  }
+
+  @api
+  get inputJSON() {
+    return super.inputJSON;
+  }
+
+  set inputJSON(value) {
+    super.inputJSON = value;
+  }
+
+  @api
+  get optionsJSON() {
+    return super.optionsJSON;
+  }
+
+  set optionsJSON(value) {
+    super.optionsJSON = value;
+  }
+
   @api statement;
-
-  /*
-   * links
-   */
-
-  @track _lowerFooterLinks;
-  _originalLowerFooterLinks;
-
-  @api get lowerFooterLinks() {
-    return this._originalLowerFooterLinks;
-  }
-
-  set lowerFooterLinks(markdown) {
-    this._originalLowerFooterLinks = markdown;
-
-    try {
-      this._lowerFooterLinks = markdown ? mdEngine.extractLinks(markdown) : [];
-    } catch (e) {
-      this.addError("LFL-MD", "Issue when parsing Lower footer links markdown");
-    }
-  }
-
   @api lowerFooterClassName;
 
   get computedLowerFooterClassName() {
@@ -72,6 +77,20 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
       this._builtMentionHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("BM-MD", "Issue when parsing Built mention markdown");
+    }
+  }
+
+  handleClick(event) {
+    if (this._map) {
+      event.preventDefault();
+    
+      let index = event.currentTarget.dataset.ndx;
+      let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+
+      if (nav && index) {
+        nav.navigateNavMenu(this._map[index]);
+      }
+  
     }
   }
 

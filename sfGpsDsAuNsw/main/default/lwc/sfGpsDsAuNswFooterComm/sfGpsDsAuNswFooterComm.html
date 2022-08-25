@@ -3,8 +3,8 @@
     <!-- footer-lower -->
     <div class={computedLowerFooterClassName}>
       <div class="nsw-container">
-        <p>{statement}</p>
-        <template if:true={_lowerFooterLinks}>
+        <p if:true={statement}>{statement}</p>
+        <template if:true={_items}>
           <hr />
           <nav
             role="navigation"
@@ -13,9 +13,9 @@
           >
             <h4 class="sr-only" id="lower-footer-links">Legal &amp; Privacy</h4>
             <ul class="clearfix nsw-footer-links">
-              <template for:each={_lowerFooterLinks} for:item="link">
+              <template for:each={_items} for:item="link">
                 <li key={link.index} class="nsw-footer-links__item">
-                  <a href={link.url} class="nsw-footer-links__link"
+                  <a href={link.url} class="nsw-footer-links__link" data-ndx={link.index} onclick={handleClick}
                     >{link.text}</a
                   >
                 </li>
@@ -39,6 +39,7 @@
     </div>
   </footer>
 
+  <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
   </c-sf-gps-ds-configuration-error>
 </template>

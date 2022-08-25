@@ -22,7 +22,7 @@ export default class SfGpsDsAuNswCheckboxGroupOsN extends OmnistudioCheckboxGrou
       return this.isError ? "errorMessageBlock helper" : "helper";
     }
 
-    return this.isError ? "errorMessageBlock" : "";
+    return this.isError ? "errorMessageBlock" : null;
   }
 
   get computedLegendClassName() {

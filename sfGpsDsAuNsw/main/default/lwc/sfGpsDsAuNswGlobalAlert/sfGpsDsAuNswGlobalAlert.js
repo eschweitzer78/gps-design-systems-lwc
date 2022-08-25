@@ -33,13 +33,13 @@ export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
   }
 
   get computedClassName() {
-    return `nsw-global-alert ${this.className ? this.className : ""} ${
-      options[this.as]
+    return `nsw-global-alert${this.className ? " " + this.className : ""} ${
+      options[this.as || "default"]
     }`;
   }
 
   get computedButtonClassName() {
-    return this.as ? buttonStyles[this.as] : buttonStyles.default;
+    return buttonStyles[this.as || "default"];
   }
 
   get hasCta() {
