@@ -1,5 +1,5 @@
 import { LightningElement, api, track } from "lwc";
-import { nextTick } from "c/sfGpsDsHelpers";
+// import { nextTick } from "c/sfGpsDsHelpers";
 
 /* Mimicking vue.js' Transition */
 
@@ -30,7 +30,7 @@ export default class SfGpsDsTransition extends LightningElement {
   @api disabled = false;
   @track className;
 
-  handleSlotChange(event) {
+  handleSlotChange() {
     if (this.disabled) {
       return;
     }
@@ -41,6 +41,7 @@ export default class SfGpsDsTransition extends LightningElement {
     // nextTick(() => { this.enterTo(); });
     // TODO for some reason nextTick does not seem to work as required either
 
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
     setTimeout(() => {
       this.enterTo();
     }, 1);

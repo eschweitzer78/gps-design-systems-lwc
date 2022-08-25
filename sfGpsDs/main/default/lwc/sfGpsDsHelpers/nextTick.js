@@ -8,7 +8,7 @@ function isNative(Ctor) {
   return typeof Ctor === "function" && /native code/.test(Ctor.toString());
 }
 
-function noop(a, b, c) {}
+function noop(_a, _b, _c) {}
 
 let isUsingMicroTask = false;
 
@@ -53,6 +53,7 @@ if (typeof Promise !== "undefined" && isNative(Promise)) {
     // microtask queue but the queue isn't being flushed, until the browser
     // needs to do some other work, e.g. handle a timer. Therefore we can
     // "force" the microtask queue to be flushed by adding an empty timer.
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
     if (isIOS) setTimeout(noop);
   };
   isUsingMicroTask = true;
@@ -76,17 +77,21 @@ if (typeof Promise !== "undefined" && isNative(Promise)) {
     counter = (counter + 1) % 2;
     textNode.data = String(counter);
   };
+  // eslint-disable-next-line no-unused-vars
   isUsingMicroTask = true;
+// eslint-disable-next-line no-undef
 } else if (typeof setImmediate !== "undefined" && isNative(setImmediate)) {
   // Fallback to setImmediate.
   // Technically it leverages the (macro) task queue,
   // but it is still a better choice than setTimeout.
   timerFunc = () => {
+    // eslint-disable-next-line no-undef
     setImmediate(flushCallbacks);
   };
 } else {
   // Fallback to setTimeout.
   timerFunc = () => {
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
     setTimeout(flushCallbacks, 0);
   };
 }
@@ -95,6 +100,7 @@ function handleError(e, ctx, funcName) {
   console.log("Error", e, ctx, funcName);
 }
 
+// eslint-disable-next-line consistent-return
 export function nextTick(cb, ctx) {
   // ?function, ?object
   let _resolve;
