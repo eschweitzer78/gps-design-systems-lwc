@@ -27,7 +27,12 @@
       </legend>
 
       <div>
-        <template if:true={internalOpts} for:each={internalOpts} for:item="e" for:index="t">
+        <template
+          if:true={internalOpts}
+          for:each={internalOpts}
+          for:item="e"
+          for:index="t"
+        >
           <input
             key={e.id}
             class="nsw-form__radio-input"

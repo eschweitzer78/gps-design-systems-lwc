@@ -15,7 +15,11 @@
             <ul class="clearfix nsw-footer-links">
               <template for:each={_items} for:item="link">
                 <li key={link.index} class="nsw-footer-links__item">
-                  <a href={link.url} class="nsw-footer-links__link" data-ndx={link.index} onclick={handleClick}
+                  <a
+                    href={link.url}
+                    class="nsw-footer-links__link"
+                    data-ndx={link.index}
+                    onclick={handleClick}
                     >{link.text}</a
                   >
                 </li>

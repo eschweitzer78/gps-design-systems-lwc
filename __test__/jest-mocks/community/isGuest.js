@@ -1,3 +1,5 @@
-export default const isGuest = () => {
+const isGuest = () => {
   return true;
 };
+
+export default isGuest;

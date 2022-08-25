@@ -25,8 +25,8 @@ export default class SfGpsDsAuNswRadioGroupOsN extends OmnistudioRadioGroup {
 
   get computedAriaDescribedBy() {
     return computeClass({
-      "helper": this.fieldLevelHelp,
-      "errorMessageBlock": this.isError
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
     });
   }
 

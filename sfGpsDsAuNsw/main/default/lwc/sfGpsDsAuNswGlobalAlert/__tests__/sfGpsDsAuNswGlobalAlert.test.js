@@ -46,9 +46,11 @@ describe("c-sf-gps-ds-au-nsw-global-alert", () => {
     expect(tElement).not.toBeNull();
     expect(tElement.innerHTML).toBe(title);
 
-    let cElement = element.shadowRoot.querySelector(".nsw-global-alert__content > p");
+    let cElement = element.shadowRoot.querySelector(
+      ".nsw-global-alert__content > p"
+    );
     expect(cElement).not.toBeNull();
-    expect(cElement.innerHTML).toContain(copy)
+    expect(cElement.innerHTML).toContain(copy);
   });
 
   it("closes when clicked", () => {
@@ -75,7 +77,6 @@ describe("c-sf-gps-ds-au-nsw-global-alert", () => {
       expect(tElement).toBeNull();
     });
   });
-
 
   it("is accessible", async () => {
     const element = createElement(tag, {

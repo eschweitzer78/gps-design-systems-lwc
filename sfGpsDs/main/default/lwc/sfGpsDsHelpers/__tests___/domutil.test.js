@@ -1,5 +1,11 @@
 /* eslint-disable @lwc/lwc/no-inner-html */
-import { replaceInnerHtml, htmlDecode, getFirstChild, computeClass, HtmlSanitizer } from "c/sfGpsDsHelpers";
+import {
+  replaceInnerHtml,
+  htmlDecode,
+  getFirstChild,
+  computeClass,
+  HtmlSanitizer
+} from "c/sfGpsDsHelpers";
 
 describe("c-sf-gps-ds-helpers.domutil", () => {
   afterEach(() => {});
@@ -40,8 +46,8 @@ describe("c-sf-gps-ds-helpers.domutil", () => {
 
   it("computes conditional classes correctly", () => {
     let cc = computeClass({
-      "a": true,
-      "b": false
+      a: true,
+      b: false
     });
 
     expect(cc).toBe("a");

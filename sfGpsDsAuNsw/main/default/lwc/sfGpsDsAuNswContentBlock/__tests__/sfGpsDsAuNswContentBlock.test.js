@@ -35,10 +35,11 @@ describe("c-sf-gps-ds-au-nsw-content-block", () => {
     });
 
     element.headline = "Headline";
-    element.image = "https://images.unsplash.com/photo-1581813589367-a150bfc03cd0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
+    element.image =
+      "https://images.unsplash.com/photo-1581813589367-a150bfc03cd0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80";
     element.imageAlt = "Newcastle Beach";
     element.links = [];
-  
+
     document.body.appendChild(element);
 
     let div = element.shadowRoot.querySelector(".nsw-content-block");
@@ -57,13 +58,16 @@ describe("c-sf-gps-ds-au-nsw-content-block", () => {
     });
 
     element.headline = "Headline";
-    element.image = "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80";
-    element.imageAlt = "Alt text"
-    element.links = [{
-      index: 1,
-      text: "text",
-      url: "https://www.salesforce.com/"
-    }];
+    element.image =
+      "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80";
+    element.imageAlt = "Alt text";
+    element.links = [
+      {
+        index: 1,
+        text: "text",
+        url: "https://www.salesforce.com/"
+      }
+    ];
 
     document.body.appendChild(element);
 

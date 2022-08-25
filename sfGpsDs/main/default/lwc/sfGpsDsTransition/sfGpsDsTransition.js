@@ -35,13 +35,15 @@ export default class SfGpsDsTransition extends LightningElement {
       return;
     }
 
-    // this.enterTo(); 
+    // this.enterTo();
     // For some reason this does not seem to work as required
 
     // nextTick(() => { this.enterTo(); });
     // TODO for some reason nextTick does not seem to work as required either
 
-    setTimeout(() => { this.enterTo(); }, 1);
+    setTimeout(() => {
+      this.enterTo();
+    }, 1);
   }
 
   handleTransitionEnd() {

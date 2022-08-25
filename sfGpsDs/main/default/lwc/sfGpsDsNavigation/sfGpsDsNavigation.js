@@ -3,7 +3,7 @@ import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
 import isGuest from "@salesforce/user/isGuest";
 import cBasePath from "@salesforce/community/basePath";
-import { NavigationMixin } from "lightning/navigation"
+import { NavigationMixin } from "lightning/navigation";
 
 export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
   @api

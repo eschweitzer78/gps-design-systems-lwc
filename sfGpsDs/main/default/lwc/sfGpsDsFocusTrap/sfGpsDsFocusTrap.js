@@ -1,10 +1,5 @@
-import {
-  api,
-  LightningElement
-} from "lwc";
-import {
-  findAllTabbableElements
-} from 'c/sfGpsDsHelpers';
+import { api, LightningElement } from "lwc";
+import { findAllTabbableElements } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsFocusTrap extends LightningElement {
   static delegatesFocus = true;

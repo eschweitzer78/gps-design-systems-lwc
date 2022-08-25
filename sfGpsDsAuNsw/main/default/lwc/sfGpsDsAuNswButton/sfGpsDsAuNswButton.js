@@ -17,18 +17,19 @@ export default class SfGpsDsAuNswButton extends LightningElement {
   @api label;
 
   get computedClassName() {
-    return computeClass({
-      "nsw-button": true,
-      "nsw-button-dark": this.cstyle === "dark",
-      "nsw-button-dark-outline": this.cstyle === "dark-outline",
-      "nsw-button-dark-outline-solid": this.cstyle === "dark-outline-solid",
-      "nsw-button-light": this.cstyle === "light",
-      "nsw-button-light-outline": this.cstyle === "light-outline",
-      "nsw-button-white": this.cstyle === "white",
-      "nsw-button-danger": this.cstyle === "danger",
-      "nsw-button-block": this.block,
-    }) +
-    (this.className ? " " + this.className : "");
+    return (
+      computeClass({
+        "nsw-button": true,
+        "nsw-button-dark": this.cstyle === "dark",
+        "nsw-button-dark-outline": this.cstyle === "dark-outline",
+        "nsw-button-dark-outline-solid": this.cstyle === "dark-outline-solid",
+        "nsw-button-light": this.cstyle === "light",
+        "nsw-button-light-outline": this.cstyle === "light-outline",
+        "nsw-button-white": this.cstyle === "white",
+        "nsw-button-danger": this.cstyle === "danger",
+        "nsw-button-block": this.block
+      }) + (this.className ? " " + this.className : "")
+    );
   }
 
   handleClick() {

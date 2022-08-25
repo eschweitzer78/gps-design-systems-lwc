@@ -8,19 +8,19 @@
  * @returns {Array} Tabbable elements.
  */
 export function findAllTabbableElements(container) {
-    const result = [];
+  const result = [];
 
-    traverseActiveTreeRecursively(container, (element) => {
-        // Remove the try/catch once https://github.com/salesforce/lwc/issues/1421 is fixed
-        try {
-            if (isTabbable({ element, rootContainer: container })) {
-                result.push(element);
-            }
-        } catch (e) {
-            console.warn(e);
-        }
-    });
-    return result;
+  traverseActiveTreeRecursively(container, (element) => {
+    // Remove the try/catch once https://github.com/salesforce/lwc/issues/1421 is fixed
+    try {
+      if (isTabbable({ element, rootContainer: container })) {
+        result.push(element);
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+  });
+  return result;
 }
 
 const FOCUSABLE_NODES = /^input$|^select$|^textarea$|^a$|^button$/;
@@ -37,13 +37,13 @@ const FOCUSABLE_NODES = /^input$|^select$|^textarea$|^a$|^button$/;
  * @returns {Array} Focusable elements.
  */
 export function findAllFocusableNodes(container) {
-    const result = [];
-    traverseActiveTreeRecursively(container, (element) => {
-        if (FOCUSABLE_NODES.test(element.tagName.toLowerCase())) {
-            result.push(element);
-        }
-    });
-    return result;
+  const result = [];
+  traverseActiveTreeRecursively(container, (element) => {
+    if (FOCUSABLE_NODES.test(element.tagName.toLowerCase())) {
+      result.push(element);
+    }
+  });
+  return result;
 }
 
 /**
@@ -52,30 +52,29 @@ export function findAllFocusableNodes(container) {
  * @returns {Element} Element that has focus.
  */
 export function getElementWithFocus() {
-    let currentFocusedElement = document.activeElement;
-    while (currentFocusedElement) {
-        if (currentFocusedElement.shadowRoot) {
-            let nextFocusedElement =
-                currentFocusedElement.shadowRoot.activeElement;
-            if (nextFocusedElement) {
-                currentFocusedElement = nextFocusedElement;
-            } else {
-                return currentFocusedElement;
-            }
-        } else if (currentFocusedElement.contentDocument) {
-            let nextFocusedElement =
-                currentFocusedElement.contentDocument.activeElement;
-            if (nextFocusedElement) {
-                currentFocusedElement = nextFocusedElement;
-            } else {
-                return currentFocusedElement;
-            }
-        } else {
-            return currentFocusedElement;
-        }
+  let currentFocusedElement = document.activeElement;
+  while (currentFocusedElement) {
+    if (currentFocusedElement.shadowRoot) {
+      let nextFocusedElement = currentFocusedElement.shadowRoot.activeElement;
+      if (nextFocusedElement) {
+        currentFocusedElement = nextFocusedElement;
+      } else {
+        return currentFocusedElement;
+      }
+    } else if (currentFocusedElement.contentDocument) {
+      let nextFocusedElement =
+        currentFocusedElement.contentDocument.activeElement;
+      if (nextFocusedElement) {
+        currentFocusedElement = nextFocusedElement;
+      } else {
+        return currentFocusedElement;
+      }
+    } else {
+      return currentFocusedElement;
     }
+  }
 
-    return undefined;
+  return undefined;
 }
 
 /**
@@ -85,115 +84,115 @@ export function getElementWithFocus() {
  * @param {Function} callback Function to call on each node element.
  */
 function traverseActiveTreeRecursively(node, callback) {
-    if (!node) {
-        return;
+  if (!node) {
+    return;
+  }
+  if (node.nodeType === Node.ELEMENT_NODE) {
+    // inert is only supported by Chrome for now (behind a flag)
+    if (node.hasAttribute("inert")) {
+      return;
     }
-    if (node.nodeType === Node.ELEMENT_NODE) {
-        // inert is only supported by Chrome for now (behind a flag)
-        if (node.hasAttribute('inert')) {
-            return;
-        }
-        if (isIframe(node)) {
-            if (isIframeOfSameOrigin(node)) {
-                // for a same-origin iframe, we don't want to include the
-                // iframe itself in the list, since we can see any of the
-                // frames focusable children. So, skip calling callback on
-                // the iframe node, and proceed to traverse it's children.
-                traverseActiveTreeRecursively(node.contentDocument, callback);
-            } else {
-                // a non same-origin iframe is totally opaque, so include the
-                // iframe in the results, but do no try to traverse into the
-                // iframes children
-                if (callback) {
-                    callback(node);
-                }
-            }
-            return;
-        }
+    if (isIframe(node)) {
+      if (isIframeOfSameOrigin(node)) {
+        // for a same-origin iframe, we don't want to include the
+        // iframe itself in the list, since we can see any of the
+        // frames focusable children. So, skip calling callback on
+        // the iframe node, and proceed to traverse it's children.
+        traverseActiveTreeRecursively(node.contentDocument, callback);
+      } else {
+        // a non same-origin iframe is totally opaque, so include the
+        // iframe in the results, but do no try to traverse into the
+        // iframes children
         if (callback) {
-            callback(node);
+          callback(node);
         }
-        // If the element has a shadow root, traverse that
-        if (node.shadowRoot) {
-            traverseActiveTreeRecursively(node.shadowRoot, callback);
-            return;
-        }
-        // if it's a slot element, get all assigned nodes and traverse them
-        if (node.localName === 'slot') {
-            const slottedNodes = node.assignedNodes({ flatten: true });
-            for (let i = 0; i < slottedNodes.length; i++) {
-                traverseActiveTreeRecursively(slottedNodes[i], callback);
-            }
-            return;
-        }
+      }
+      return;
     }
-    let child = node.firstChild;
-    while (child !== null) {
-        traverseActiveTreeRecursively(child, callback);
-        child = child.nextSibling;
+    if (callback) {
+      callback(node);
     }
+    // If the element has a shadow root, traverse that
+    if (node.shadowRoot) {
+      traverseActiveTreeRecursively(node.shadowRoot, callback);
+      return;
+    }
+    // if it's a slot element, get all assigned nodes and traverse them
+    if (node.localName === "slot") {
+      const slottedNodes = node.assignedNodes({ flatten: true });
+      for (let i = 0; i < slottedNodes.length; i++) {
+        traverseActiveTreeRecursively(slottedNodes[i], callback);
+      }
+      return;
+    }
+  }
+  let child = node.firstChild;
+  while (child !== null) {
+    traverseActiveTreeRecursively(child, callback);
+    child = child.nextSibling;
+  }
 }
 
 // returns true if iframe is same origin, and therefore, can focus its internal elements
 function isIframe(node) {
-    return node.tagName === 'IFRAME' || node instanceof HTMLIFrameElement;
+  return node.tagName === "IFRAME" || node instanceof HTMLIFrameElement;
 }
 
 function isIframeOfSameOrigin(iframe) {
-    // if we can access contentDocument (is not null) on the iframe, then it is of same origin
-    return !!iframe.contentDocument;
+  // if we can access contentDocument (is not null) on the iframe, then it is of same origin
+  return !!iframe.contentDocument;
 }
 
 const ELEMENTS_WITH_DISABLED_ATTRIBUTE = [
-    'button',
-    'select',
-    'textarea',
-    'input',
+  "button",
+  "select",
+  "textarea",
+  "input"
 ];
 
 // https://html.spec.whatwg.org/multipage/interaction.html#dom-tabindex
 const ELEMENTS_WITH_TABINDEX_ZERO_BY_DEFAULT = [
-    'a',
-    'select',
-    'textarea',
-    'input',
-    'button',
-    'iframe',
-    'object',
-    'area',
-    'frame',
+  "a",
+  "select",
+  "textarea",
+  "input",
+  "button",
+  "iframe",
+  "object",
+  "area",
+  "frame"
 ];
 
 function isTabbable({ element, rootContainer }) {
-    const elementLocalName = element.localName;
+  const elementLocalName = element.localName;
 
-    if (elementLocalName === 'input' && elementLocalName.type === 'hidden') {
-        return false;
-    }
+  if (elementLocalName === "input" && elementLocalName.type === "hidden") {
+    return false;
+  }
 
-    const tabIndexAttribute = element.getAttribute('tabindex');
-    if (tabIndexAttribute === '-1') {
-        return false;
-    }
+  const tabIndexAttribute = element.getAttribute("tabindex");
+  if (tabIndexAttribute === "-1") {
+    return false;
+  }
 
-    if (
-        element.disabled &&
-        ELEMENTS_WITH_DISABLED_ATTRIBUTE.includes(element.localName)
-    ) {
-        return false;
-    }
+  if (
+    element.disabled &&
+    ELEMENTS_WITH_DISABLED_ATTRIBUTE.includes(element.localName)
+  ) {
+    return false;
+  }
 
-    // Either the attribute was set directly to '0' or it's an element that has tabIndex zero by default
-    const hasTabIndexZero =
-        tabIndexAttribute === '0' ||
-        (element.tabIndex === 0 &&
-            ELEMENTS_WITH_TABINDEX_ZERO_BY_DEFAULT.includes(element.localName));
+  // Either the attribute was set directly to '0' or it's an element that has tabIndex zero by default
+  const hasTabIndexZero =
+    tabIndexAttribute === "0" ||
+    (element.tabIndex === 0 &&
+      ELEMENTS_WITH_TABINDEX_ZERO_BY_DEFAULT.includes(element.localName));
 
-    return (
-        hasTabIndexZero &&
-        isElementVisible(element) &&
-        isParentCustomElementTabbable({ element, rootContainer })
-    );
+  return (
+    hasTabIndexZero &&
+    isElementVisible(element) &&
+    isParentCustomElementTabbable({ element, rootContainer })
+  );
 }
 
 /**
@@ -203,49 +202,45 @@ function isTabbable({ element, rootContainer }) {
  * @returns {Array} Tabbable elements.
  */
 export function filterTooltips(elemsArray) {
-    // reference SLDS tooltip patterns && global focus in focusFirstElement
-    // TODO discovery if there are common CSS classes for tooltips as Salesforce
-    // https://www.lightningdesignsystem.com/accessibility/patterns/tooltip/
-    const elemIsNotTooltip = (elem) => {
-        if (!elem) {
-            return false;
-        }
-        const elemRole = elem.getAttribute('role');
-        return elemRole !== 'tooltip';
-    };
-    return elemsArray && Array.isArray(elemsArray) && elemsArray.length > 0
-        ? elemsArray.filter(elemIsNotTooltip)
-        : [];
+  // reference SLDS tooltip patterns && global focus in focusFirstElement
+  // TODO discovery if there are common CSS classes for tooltips as Salesforce
+  // https://www.lightningdesignsystem.com/accessibility/patterns/tooltip/
+  const elemIsNotTooltip = (elem) => {
+    if (!elem) {
+      return false;
+    }
+    const elemRole = elem.getAttribute("role");
+    return elemRole !== "tooltip";
+  };
+  return elemsArray && Array.isArray(elemsArray) && elemsArray.length > 0
+    ? elemsArray.filter(elemIsNotTooltip)
+    : [];
 }
 
 function isElementVisible(element) {
-    const { width, height } = element.getBoundingClientRect();
-    const nonZeroSize = width > 0 || height > 0;
-    return nonZeroSize && getComputedStyle(element).visibility !== 'hidden';
+  const { width, height } = element.getBoundingClientRect();
+  const nonZeroSize = width > 0 || height > 0;
+  return nonZeroSize && getComputedStyle(element).visibility !== "hidden";
 }
 
 function isParentCustomElementTabbable({ element, rootContainer }) {
-    const parentRoot = rootContainer.getRootNode();
-    const ownerDocument = element.ownerDocument;
-    let root = element.getRootNode();
-    while (root !== parentRoot && root !== ownerDocument) {
-        const host = root.host;
-        if (host.getAttribute('tabindex') === '-1') {
-            return false;
-        }
-        root = host && host.getRootNode();
-
-        /* In LWC rootContainer might not be reachable due to shadow */
-        if (!root) {
-          return false;
-        }
+  const parentRoot = rootContainer.getRootNode();
+  const ownerDocument = element.ownerDocument;
+  let root = element.getRootNode();
+  while (root !== parentRoot && root !== ownerDocument) {
+    const host = root.host;
+    if (host.getAttribute("tabindex") === "-1") {
+      return false;
     }
-    return true;
+    root = host && host.getRootNode();
+
+    /* In LWC rootContainer might not be reachable due to shadow */
+    if (!root) {
+      return false;
+    }
+  }
+  return true;
 }
-
-
-
-
 
 /****** TODO: check this dead code and delete as required  *****/
 /*

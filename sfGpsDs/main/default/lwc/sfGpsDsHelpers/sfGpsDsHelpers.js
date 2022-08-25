@@ -11,34 +11,27 @@ export {
   //trapTabKey,
   //whichTransitionEvent,
   uniqueId,
-  isIPadPro,
+  isIPadPro
 } from "./utilities";
 
-export { 
-  parseIso8601 
-} from "./datetimeutilv2";
+export { parseIso8601 } from "./datetimeutilv2";
 
-export { 
-  htmlDecode, 
-  replaceInnerHtml, 
-  getFirstChild, 
-  computeClass, 
-  isRTL, 
-  HtmlSanitizer,
+export {
+  htmlDecode,
+  replaceInnerHtml,
+  getFirstChild,
+  computeClass,
+  isRTL,
+  HtmlSanitizer
 } from "./domutilv2";
 
 export {
   findAllTabbableElements,
   findAllFocusableNodes,
   getElementWithFocus,
-  filterTooltips,
+  filterTooltips
 } from "./focus";
 
-export {
-  deepCopy,
-  arraysEqual
-} from "./jsutilv2";
+export { deepCopy, arraysEqual } from "./jsutilv2";
 
-export {
-  nextTick
-} from "./nextTick";
+export { nextTick } from "./nextTick";

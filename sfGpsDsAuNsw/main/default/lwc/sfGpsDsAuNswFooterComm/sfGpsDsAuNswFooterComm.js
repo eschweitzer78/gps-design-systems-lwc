@@ -83,14 +83,13 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsNavigation {
   handleClick(event) {
     if (this._map) {
       event.preventDefault();
-    
+
       let index = event.currentTarget.dataset.ndx;
       let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
 
       if (nav && index) {
         nav.navigateNavMenu(this._map[index]);
       }
-  
     }
   }
 

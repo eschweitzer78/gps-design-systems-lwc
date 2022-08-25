@@ -36,9 +36,13 @@ describe("c-sf-gps-ds-au-nsw-breadcrumb", () => {
     const target = "https://www.salesforce.com/";
 
     element.label = oal;
-    element.items = [{
-      index: 1, url: target, text: "Salesforce.com"
-    }];
+    element.items = [
+      {
+        index: 1,
+        url: target,
+        text: "Salesforce.com"
+      }
+    ];
 
     document.body.appendChild(element);
 
@@ -50,7 +54,7 @@ describe("c-sf-gps-ds-au-nsw-breadcrumb", () => {
     expect(list).not.toBeNull();
     let a = list.querySelector("a");
     expect(a).not.toBeNull();
-    expect(a.href).toBe(target)
+    expect(a.href).toBe(target);
   });
 
   it("is accessible", async () => {
@@ -58,9 +62,13 @@ describe("c-sf-gps-ds-au-nsw-breadcrumb", () => {
       is: SfGpsDsAuNswBreadcrumbs
     });
 
-    element.items = [{
-      index: 1, url: "https://www.salesforce.com/", text: "Salesforce.com"
-    }];
+    element.items = [
+      {
+        index: 1,
+        url: "https://www.salesforce.com/",
+        text: "Salesforce.com"
+      }
+    ];
     document.body.appendChild(element);
 
     await expect(element).toBeAccessible();

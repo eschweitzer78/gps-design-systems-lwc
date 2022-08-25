@@ -14,8 +14,12 @@ export const isIPadPro = () => {
   // No god way to tell iPad Pro, this may will not work after years.
   // https://stackoverflow.com/a/58017456/1212791
   // TODO revisit
-  if (navigator.userAgent.match(/Mac/) && navigator.maxTouchPoints && navigator.maxTouchPoints > 2) {
-    return true
+  if (
+    navigator.userAgent.match(/Mac/) &&
+    navigator.maxTouchPoints &&
+    navigator.maxTouchPoints > 2
+  ) {
+    return true;
   }
-  return false
-}
+  return false;
+};
