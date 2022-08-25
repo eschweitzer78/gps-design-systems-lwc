@@ -8,7 +8,8 @@ function isNative(Ctor) {
   return typeof Ctor === "function" && /native code/.test(Ctor.toString());
 }
 
-function noop(_a, _b, _c) {}
+// eslint-disable-next-line no-unused-vars
+function noop(a, b, c) {}
 
 let isUsingMicroTask = false;
 
