@@ -79,7 +79,7 @@ if (typeof Promise !== "undefined" && isNative(Promise)) {
   };
   // eslint-disable-next-line no-unused-vars
   isUsingMicroTask = true;
-// eslint-disable-next-line no-undef
+  // eslint-disable-next-line no-undef
 } else if (typeof setImmediate !== "undefined" && isNative(setImmediate)) {
   // Fallback to setImmediate.
   // Technically it leverages the (macro) task queue,
