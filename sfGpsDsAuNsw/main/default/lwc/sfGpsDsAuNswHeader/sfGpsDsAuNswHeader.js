@@ -18,7 +18,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
 
   @api siteTitle;
   @api siteDescriptor;
-  @api headerUrl;
+  @api headerUrl = "#";
   @api mobile = false;
   @api search = false;
 

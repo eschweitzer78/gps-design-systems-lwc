@@ -1,6 +1,6 @@
 import { parseIso8601 } from "c/sfGpsDsHelpers";
 
-describe("c-sf-gps-ds-helpers.datetime", () => {
+describe("c-sf-gps-ds-helpers.datetimeutil", () => {
   afterEach(() => {});
 
   it("parses a hypen delimited date as UTC", () => {

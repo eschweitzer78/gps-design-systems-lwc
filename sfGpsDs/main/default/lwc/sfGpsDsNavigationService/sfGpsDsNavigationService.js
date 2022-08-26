@@ -79,4 +79,69 @@ export default class SfGpsDsNavigationService extends NavigationMixin(
       state: state
     });
   }
+
+  @api generateUrlNavMenu(menuEntry) {
+    switch (menuEntry.Type) {
+      case "ExternalLink":
+        // TODO check menuEntry.TargetPrefs === "OpenExternalLinkInSameTab"
+        return this.generateUrl("standard__webPage", {
+          url: menuEntry.Target
+        });
+
+      case "GlobalAction":
+        // menuEntry.Target => name of Global Action
+        // TODO handle
+        return "#";
+
+      case "Event":
+        switch (menuEntry.Target) {
+          case "Login":
+            return this.generateUrl("comm__loginPage", {
+              actionName: "login"
+            });
+
+          case "Logout":
+            return this.generateUrl("comm__loginPage", {
+              actionName: "logout"
+            });
+
+          default:
+            return "#";
+        }
+
+      case "InternalLink":
+        return this.generateUrl("standard__webPage", {
+          url: cBasePath + menuEntry.Target
+        });
+
+      case "NavigationalTopic":
+        // TODO handle
+        return "#";
+
+      case "SalesforceObject":
+        return this.generateUrl(
+          "standard__objectPage",
+          {
+            objectApiName: menuEntry.Target,
+            actionName: "list"
+          },
+          {
+            filterName: menuEntry.DefaultListViewId
+          }
+        );
+
+      default:
+        // SystemLink -> Safe to ignore
+        // MenuLabel -> Safe to ignore
+        return "#";
+    }
+  }
+
+  @api generateUrl(type, config, state = null) {
+    return this[NavigationMixin.GenerateUrl]({
+      type: type,
+      attributes: config,
+      state: state
+    });
+  }
 }

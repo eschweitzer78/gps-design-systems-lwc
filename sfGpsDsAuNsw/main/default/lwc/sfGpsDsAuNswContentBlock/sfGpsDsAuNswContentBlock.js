@@ -16,7 +16,7 @@ export default class SfGpsDsAuNswContentBlock extends LightningElement {
   @api imageAlt;
   @api icon;
   @api mainLink;
-  @api links;
+  @api links = [];
   @api className;
 
   get computedClassName() {

@@ -15,7 +15,7 @@ import OmniscriptSelect from "omnistudio/omniscriptSelect";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsAuNswFormSelectOsN.html";
 
-export default class SfGpsDsAuNswFormSelecOsN extends OmniscriptSelect {
+export default class SfGpsDsAuNswFormSelectOsN extends OmniscriptSelect {
   render() {
     return tmpl;
   }

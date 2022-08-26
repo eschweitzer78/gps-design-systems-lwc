@@ -4,81 +4,22 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-export const focusObjectGenerator = (arr) => {
-  const focusableElements = {
-    all: arr,
-    first: arr[0],
-    last: arr[arr.length - 1],
-    length: arr.length
-  };
-
-  return focusableElements;
-};
-
-export const getFocusableElement = (el) => {
-  const elementArr = [].slice.call(
-    el.querySelectorAll(`a[href],button:not([disabled]),
-    area[href],input:not([disabled]):not([type=hidden]),
-    select:not([disabled]),textarea:not([disabled]),
-    iframe,object,embed,*:not(.is-draggabe)[tabindex],
-    *[contenteditable]`)
-  );
-
-  return focusObjectGenerator(elementArr);
-};
-
-/*
-export const getFocusableElementBySelector = (id, selectorArr) => {
-  const elements = [];
-  for (let i = 0; i < selectorArr.length; i += 1) {
-    elements.push(
-      [].slice.call(document.querySelectorAll(`#${id} ${selectorArr[i]}`))
-    );
-  }
-
-  const mergedElementArr = [].concat(...elements);
-
-  return focusObjectGenerator(mergedElementArr);
-};
-*/
-
-export const trapTabKey = (event, focusObject) => {
-  const { activeElement } = document;
-  const focusableElement = focusObject;
-
-  if (event.keyCode !== 9) {
-    return false;
-  }
-
-  if (focusableElement.length === 1) {
-    event.preventDefault();
-  } else if (event.shiftKey && activeElement === focusableElement.first) {
-    focusableElement.last.focus();
-    event.preventDefault();
-  } else if (!event.shiftKey && activeElement === focusableElement.last) {
-    focusableElement.first.focus();
-    event.preventDefault();
-  }
-
-  return true;
-};
-
-export const whichTransitionEvent = () => {
-  const el = document.createElement("fakeelement");
-  const transitions = {
-    transition: "transitionend",
-    OTransition: "oTransitionEnd",
-    MozTransition: "transitionend",
-    WebkitTransition: "webkitTransitionEnd"
-  };
-
-  const found = Object.keys(transitions).filter(
-    (key) => el.style[key] !== undefined
-  );
-  return transitions[found[0]];
-};
 
 export const uniqueId = (prefix) => {
   const prefixValue = prefix === undefined ? "sfGpsDs" : prefix;
   return `${prefixValue}-${Math.random().toString(36).substring(2, 18)}`;
+};
+
+export const isIPadPro = () => {
+  // No god way to tell iPad Pro, this may will not work after years.
+  // https://stackoverflow.com/a/58017456/1212791
+  // TODO revisit
+  if (
+    navigator.userAgent.match(/Mac/) &&
+    navigator.maxTouchPoints &&
+    navigator.maxTouchPoints > 2
+  ) {
+    return true;
+  }
+  return false;
 };

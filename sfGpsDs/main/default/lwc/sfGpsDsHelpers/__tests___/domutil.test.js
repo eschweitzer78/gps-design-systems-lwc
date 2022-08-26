@@ -1,7 +1,13 @@
 /* eslint-disable @lwc/lwc/no-inner-html */
-import { replaceInnerHtml, htmlDecode, getFirstChild } from "c/sfGpsDsHelpers";
+import {
+  replaceInnerHtml,
+  htmlDecode,
+  getFirstChild,
+  computeClass,
+  HtmlSanitizer
+} from "c/sfGpsDsHelpers";
 
-describe("c-sf-gps-ds-helpers.dom", () => {
+describe("c-sf-gps-ds-helpers.domutil", () => {
   afterEach(() => {});
 
   it("replaces innerHtml", () => {
@@ -36,5 +42,29 @@ describe("c-sf-gps-ds-helpers.dom", () => {
     expect(getFirstChild(fragment.innerHTML).outerHTML).toBe(
       paragraph.outerHTML
     );
+  });
+
+  it("computes conditional classes correctly", () => {
+    let cc = computeClass({
+      a: true,
+      b: false
+    });
+
+    expect(cc).toBe("a");
+  });
+
+  it("sanitises HTML correctly", () => {
+    let html = "<div><script>alert('xss');</script></div>";
+
+    let shtml = HtmlSanitizer.sanitize(html);
+    expect(shtml).toBe("<div></div>");
+
+    html = "<a onclick=\"alert('xss')\"></a>";
+    shtml = HtmlSanitizer.sanitize(html);
+    expect(shtml).toBe("<a></a>");
+
+    html = "<a href=\"javascript:alert('xss')\"></a>";
+    shtml = HtmlSanitizer.sanitize(html);
+    expect(shtml).toBe("<a></a>");
   });
 });
