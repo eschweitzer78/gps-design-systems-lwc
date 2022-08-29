@@ -377,7 +377,7 @@ export { HtmlSanitizer };
  * @param {Element} container The element to search for tabbable element.
  * @returns {Array} Tabbable elements.
  */
- export function findAllTabbableElements(container) {
+export function findAllTabbableElements(container) {
   const result = [];
 
   traverseActiveTreeRecursively(container, (element) => {
