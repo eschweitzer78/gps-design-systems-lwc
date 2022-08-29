@@ -14,7 +14,7 @@ export {
   isIPadPro
 } from "./utilities";
 
-export { parseIso8601 } from "./datetimeutil";
+export { parseIso8601 } from "./datetimeutilv3";
 
 export {
   htmlDecode,
@@ -23,7 +23,7 @@ export {
   computeClass,
   isRTL,
   HtmlSanitizer
-} from "./domutil";
+} from "./domutilv3";
 
 export {
   findAllTabbableElements,
@@ -32,6 +32,6 @@ export {
   filterTooltips
 } from "./focus";
 
-export { deepCopy, arraysEqual } from "./jsutil";
+export { deepCopy, arraysEqual } from "./jsutilv3";
 
 export { nextTick } from "./nextTick";
