@@ -23,7 +23,11 @@ export {
   computeClass,
   isRTL,
   HtmlSanitizer
+<<<<<<< HEAD
 } from "./domutilv3";
+=======
+} from "./domutil";
+>>>>>>> main
 
 export {
   findAllTabbableElements,
@@ -32,6 +36,10 @@ export {
   filterTooltips
 } from "./focus";
 
+<<<<<<< HEAD
 export { deepCopy, arraysEqual } from "./jsutilv3";
+=======
+export { deepCopy, arraysEqual } from "./jsutil";
+>>>>>>> main
 
 export { nextTick } from "./nextTick";
