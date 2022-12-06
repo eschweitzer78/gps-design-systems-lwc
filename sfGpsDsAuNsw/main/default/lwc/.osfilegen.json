@@ -10,6 +10,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "class SfGpsDsAuNswAccordion": "class SfGpsDsAuNswAccordionOs"
     },
     "!.js-meta.xml": {
@@ -81,6 +82,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "class SfGpsDsAuNswAlert": "class SfGpsDsAuNswAlertOs"
     },
     "!.js-meta.xml": {
@@ -134,6 +136,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsAuNswButton": "SfGpsDsAuNswButtonOs"
     },
     "!.js-meta.xml": {
@@ -152,6 +155,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsAuNswCallout": "SfGpsDsAuNswCalloutOs"
     },
     "!.js-meta.xml": {
@@ -269,6 +273,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsAuNswContentBlock": "SfGpsDsAuNswContentBlockOs"
     },
     "!.js-meta.xml": {
@@ -365,6 +370,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsAuNswGlobalAlert": "SfGpsDsAuNswGlobalAlertOs"
     },
     "!.js-meta.xml": {
@@ -402,6 +408,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsAuNswHeroBanner": "SfGpsDsAuNswHeroBannerOs"
     },
     "!.js-meta.xml": {
@@ -459,6 +466,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsAuNswLinkList": "SfGpsDsAuNswLinkListOs"
     },
     "!.js-meta.xml": {
@@ -485,6 +493,47 @@
       "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
     }
   },
+  "sfGpsDsAuNswListItem": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsAuNswListItem": "SfGpsDsAuNswListItemOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },  
+  "sfGpsDsAuNswPagination": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
+    },
+    "pagination.css": {
+      "target": "pagination.css"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsAuNswPagination": "SfGpsDsAuNswPaginationOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
   "sfGpsDsAuNswProgressIndicator": {
     "target": "!Os",
     "!.css": {
@@ -496,6 +545,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsAuNswProgressIndicator": "SfGpsDsAuNswProgressIndicatorOs"
     },
     "!.js-meta.xml": {
@@ -519,6 +569,28 @@
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
       "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsAuNswResultsBar": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
+    },
+    "results-bar.css": {
+      "target": "results-bar.css"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsAuNswResultsBar": "SfGpsDsAuNswResultsBarOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     }
   }
 }

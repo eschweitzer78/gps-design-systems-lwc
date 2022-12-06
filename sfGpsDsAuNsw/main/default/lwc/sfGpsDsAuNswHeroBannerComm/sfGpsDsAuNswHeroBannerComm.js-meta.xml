@@ -13,7 +13,7 @@
         name="title"
         type="String"
         label="Title"
-        description="Clearly identifies he primary purpose or action of the site, service or product."
+        description="Clearly identifies the primary purpose or action of the site, service or product."
         default="Hero Banner"
       />
       <property
@@ -63,6 +63,13 @@
         type="String"
         label="Image alt"
         description="Text used should there be an issue displaying the image."
+      />
+      <property
+        name="subtitle"
+        type="String"
+        label="Subtitle"
+        description="Text that clearly identifies the nature of the listed links."
+        default="Subtitle"
       />
       <property
         name="links"

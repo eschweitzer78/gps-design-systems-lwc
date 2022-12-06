@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
   @api step = 1;
@@ -27,6 +28,9 @@ export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
   }
 
   get computedClassName() {
-    return `nsw-progress-indicator ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-progress-indicator": true,
+      [this.className]: this.className,
+    });
   }
 }

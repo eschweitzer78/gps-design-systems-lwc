@@ -42,6 +42,7 @@
     "focus.js": { "target": "focus.js" },
     "jsutil.js": { "target": "jsutil.js" },
     "nextTick.js": { "target": "nextTick.js" },
+    "normaliseOps.js": { "target": "normaliseOps.js" },
     "!.js": { "target": "!Os.js" },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

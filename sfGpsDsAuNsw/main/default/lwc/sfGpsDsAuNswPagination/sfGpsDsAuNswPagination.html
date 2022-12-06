@@ -1,0 +1,67 @@
+<template>
+  <nav class={computedClassName} aria-label={ariaLabel}>
+    <ul>
+      <li>
+        <a class="nsw-icon-button" href="#" onclick={handlePreviousClick}>
+          <span class="material-icons nsw-material-icons" focusable="false" aria-hidden="true">keyboard_arrow_left</span>
+          <span class="sr-only">{srOnlyPrevious}</span>
+        </a>  
+      </li>
+
+      <li if:true={showFirstPage}>
+        <a href="#first-page" onclick={handleFirstPageClick}>
+          <span class="sr-only">{srOnlyPre}</span>
+          {firstPage}
+          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+        </a>
+      </li>
+
+      <li if:true={showPrevEllipsis}>
+        <span>…</span>
+      </li>
+
+      <li if:true={showPrevPage}>
+        <a href="#prev-page" onclick={handlePreviousPageClick}>
+          <span if:true={srOnlyPre} class="sr-only">{srOnlyPre}</span>
+          {prevPage}
+          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+        </a>
+      </li>
+
+      <li if:true={showActivePage}>
+        <a class="active">
+          <span class="sr-only">{srOnlyPre}</span>
+          {activePage}
+          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+        </a>
+      </li>
+
+      <li if:true={showNextPage}>
+        <a href="#next-page" onclick={handleNextPageClick}>
+          <span if:true={srOnlyPre} class="sr-only">{srOnlyPre}</span>
+          {nextPage}
+          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+        </a>
+      </li>
+
+      <li if:true={showNextEllipsis}>
+        <span>…</span>
+      </li>
+
+      <li if:true={showLastPage}>
+        <a href="#last-page" onclick={handleLastPageClick}>
+          <span if:true={srOnlyPre} class="sr-only">{srOnlyPre}</span>
+          {lastPage}
+          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+        </a>
+      </li>
+
+      <li>
+        <a class="nsw-icon-button" href="#" onclick={handleNextClick}>
+          <span class="material-icons nsw-material-icons" focusable="false" aria-hidden="true">keyboard_arrow_right</span>
+          <span class="sr-only">{srOnlyNext}</span>
+        </a>  
+      </li>
+    </ul>
+  </nav>
+</template>

@@ -6,12 +6,16 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswLinkList extends LightningElement {
   @api links;
   @api className;
 
   get computedClassName() {
-    return `nsw-link-list ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-link-list": true,
+      [this.className]: this.className,
+    });
   }
 }
