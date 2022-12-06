@@ -1,4 +1,4 @@
-import { normaliseBoolean } from "../normalise";
+import { normaliseBoolean } from "../normaliseOps";
 
 describe("c-sf-gps-ds-helpers.normalise", () => {
   afterEach(() => {});
