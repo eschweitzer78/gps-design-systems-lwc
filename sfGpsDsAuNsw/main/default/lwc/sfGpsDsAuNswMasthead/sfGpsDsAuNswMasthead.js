@@ -30,7 +30,7 @@ export default class SfGpsDsAuNswSkipTo extends LightningElement {
   get computedSkipClassName() {
     return computeClass({
       "nsw-skip": true,
-      [skipOptions[this.cstyle] || skipOptions.default]: true,
+      [skipOptions[this.cstyle] || skipOptions.default]: true
     });
   }
 
@@ -38,7 +38,7 @@ export default class SfGpsDsAuNswSkipTo extends LightningElement {
     return computeClass({
       "nsw-masthead": true,
       [mastheadOptions[this.cstyle] || mastheadOptions.default]: true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

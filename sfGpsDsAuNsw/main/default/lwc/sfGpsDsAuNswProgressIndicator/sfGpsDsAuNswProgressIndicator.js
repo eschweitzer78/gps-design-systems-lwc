@@ -30,7 +30,7 @@ export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-progress-indicator": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

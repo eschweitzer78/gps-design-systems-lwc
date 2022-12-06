@@ -15,7 +15,7 @@ export default class SfGpsDsAuNswLinkList extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-link-list": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

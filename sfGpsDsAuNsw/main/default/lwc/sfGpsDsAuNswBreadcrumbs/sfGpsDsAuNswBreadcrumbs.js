@@ -16,7 +16,7 @@ export default class SfGpsDsAuNswBreadcrumbs extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-breadcrumbs": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

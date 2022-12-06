@@ -8,8 +8,8 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
   @api ariaLabel = "Pagination";
   @api srOnlyPre = "Page ";
   @api srOnlyPost;
-  @api srOnlyPrevious = "Back"
-  @api srOnlyNext = "Next"
+  @api srOnlyPrevious = "Back";
+  @api srOnlyNext = "Next";
 
   @api className;
 
@@ -64,14 +64,16 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-pagination": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 
   handlePreviousClick(event) {
     event.preventDefault();
     if (this.activePage > 1) {
-      this.dispatchEvent(new CustomEvent("pagechange", { detail: this.activePage - 1 }));
+      this.dispatchEvent(
+        new CustomEvent("pagechange", { detail: this.activePage - 1 })
+      );
     }
   }
 
@@ -82,24 +84,32 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
 
   handlePrevPageClick(event) {
     event.preventDefault();
-    this.dispatchEvent(new CustomEvent("pagechange", { detail: this.activePage - 1 }));
+    this.dispatchEvent(
+      new CustomEvent("pagechange", { detail: this.activePage - 1 })
+    );
   }
 
   handleNextPageClick(event) {
     event.preventDefault();
-    this.dispatchEvent(new CustomEvent("pagechange", { detail: this.activePage + 1 }));
+    this.dispatchEvent(
+      new CustomEvent("pagechange", { detail: this.activePage + 1 })
+    );
   }
 
   handleLastPageClick(event) {
     event.preventDefault();
-    this.dispatchEvent(new CustomEvent("pagechange", { detail: this.lastPage }));
+    this.dispatchEvent(
+      new CustomEvent("pagechange", { detail: this.lastPage })
+    );
   }
 
   handleNextClick(event) {
     event.preventDefault();
 
     if (this.activePage < this.lastPage) {
-      this.dispatchEvent(new CustomEvent("pagechange", { detail: this.activePage + 1 }));
+      this.dispatchEvent(
+        new CustomEvent("pagechange", { detail: this.activePage + 1 })
+      );
     }
   }
 }

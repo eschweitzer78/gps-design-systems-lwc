@@ -19,7 +19,7 @@ export default class SfGpsDsAuNswMaskedInputOsN extends maskedInput {
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this.required,
+      "nsw-form__required": this.required
     });
   }
 

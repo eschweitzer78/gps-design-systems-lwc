@@ -16,21 +16,21 @@ export default class SfGpsDsAuNswSTextareaOsN extends OmniscriptTextarea {
 
   get computedLabelClassName() {
     return computeClass({
-      "form-required": this.required,
+      "form-required": this.required
     });
   }
 
   get computedInputInputClassName() {
     return computeClass({
-      "form__textarea": true,
-      "error": this.isError,
+      form__textarea: true,
+      error: this.isError
     });
   }
 
   get ariaDescribedBy() {
     return computeClass({
-      "textarealabel": true,
-      "errorMessageBlock": this.isError,
+      textarealabel: true,
+      errorMessageBlock: this.isError
     });
   }
 }

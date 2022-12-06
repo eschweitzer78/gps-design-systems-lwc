@@ -11,12 +11,8 @@
 
     <template if:false={asCheckboxes}>
       <template for:each={_tags} for:item="tag">
-        <a
-          if:true={tag.url}
-          key={tag.key}
-          class={tag.className}
-          href={tag.url}
-        >{tag.text}</a
+        <a if:true={tag.url} key={tag.key} class={tag.className} href={tag.url}
+          >{tag.text}</a
         >
         <span if:false={tag.url} key={tag.index} class={tag.className}>
           {tag.text}

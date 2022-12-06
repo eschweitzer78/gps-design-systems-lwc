@@ -20,7 +20,8 @@ describe("c-sf-gps-ds-au-nsw-hero-banner-alt", () => {
 
     element.titleLabel = "Hero Banner";
     element.titleUrl = "#";
-    element.imageSrc = "https://images.unsplash.com/photo-1523608401-53eb5741c1a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80";
+    element.imageSrc =
+      "https://images.unsplash.com/photo-1523608401-53eb5741c1a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80";
     element.imageAlt = "Sydney Rushcutters Bay";
 
     document.body.appendChild(element);
@@ -41,7 +42,8 @@ describe("c-sf-gps-ds-au-nsw-hero-banner-alt", () => {
 
     element.titleLabel = "Hero Banner";
     element.titleUrl = "#";
-    element.imageSrc = "https://images.unsplash.com/photo-1523608401-53eb5741c1a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80";
+    element.imageSrc =
+      "https://images.unsplash.com/photo-1523608401-53eb5741c1a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80";
     element.imageAlt = "Sydney Rushcutters Bay";
 
     document.body.appendChild(element);

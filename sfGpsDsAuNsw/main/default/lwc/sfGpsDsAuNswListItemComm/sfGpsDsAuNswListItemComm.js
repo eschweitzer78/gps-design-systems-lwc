@@ -15,7 +15,7 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
   // This is not exposed in Experience Builder and is used by cardCollectionComm
   @api useMarkup = false;
 
-    /*
+  /*
    * headline and link
    */
 
@@ -32,7 +32,7 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
     try {
       this._headline = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
-      this._headline = { text: null, link: null }
+      this._headline = { text: null, link: null };
       this.addError("HL-MD", "Issue when parsing Headline markdown");
     }
   }
@@ -108,7 +108,6 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
       this.addError("LI-MD", "Issue when parsing Tags markdown");
     }
   }
-
 
   renderedCallback() {
     let element;

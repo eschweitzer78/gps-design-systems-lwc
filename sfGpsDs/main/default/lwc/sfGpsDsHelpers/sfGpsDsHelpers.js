@@ -5,15 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-export {
-  uniqueId,
-  isIPadPro,
-  isMacPlatform
-} from "./utilities";
+export { uniqueId, isIPadPro, isMacPlatform } from "./utilities";
 
-export { 
-  parseIso8601 
-} from "./datetimeutil";
+export { parseIso8601 } from "./datetimeutil";
 
 export {
   htmlDecode,
@@ -31,19 +25,13 @@ export {
   filterTooltips
 } from "./focus";
 
-export { 
-  deepCopy, 
-  arraysEqual, 
-  debounce 
-} from "./jsutil";
+export { deepCopy, arraysEqual, debounce } from "./jsutil";
 
-export { 
-  nextTick 
-} from "./nextTick";
+export { nextTick } from "./nextTick";
 
-export { 
-  normaliseBoolean, 
-  normaliseArray, 
-  normaliseAriaAttribute, 
+export {
+  normaliseBoolean,
+  normaliseArray,
+  normaliseAriaAttribute,
   normaliseString
 } from "./normaliseOps";

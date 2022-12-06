@@ -32,11 +32,15 @@ describe("c-sf-gps-ds-helpers.normalise", () => {
   });
 
   it("normalises empty string to fallback value with accept string", () => {
-    expect(normaliseBoolean("", { acceptString: true, fallbackValue: true })).toEqual(true);
+    expect(
+      normaliseBoolean("", { acceptString: true, fallbackValue: true })
+    ).toEqual(true);
   });
 
   it("normalises random string to fallback value with accept string", () => {
-    expect(normaliseBoolean("random", { acceptString: true, fallbackValue: false })).toEqual(false);
+    expect(
+      normaliseBoolean("random", { acceptString: true, fallbackValue: false })
+    ).toEqual(false);
   });
 
   it("normalises non-empty array to true", () => {

@@ -32,8 +32,7 @@ export default class SfGpsDsAuNswAlert extends LightningElement {
       "nsw-in-page-alert": true,
       "nsw-in-page-alert--compact": this.compact,
       [options[this.as]]: true,
-      [this.className]: this.className,
-
+      [this.className]: this.className
     });
   }
 

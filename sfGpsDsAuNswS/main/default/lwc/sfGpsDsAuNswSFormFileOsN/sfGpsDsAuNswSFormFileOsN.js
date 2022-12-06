@@ -23,7 +23,7 @@ export default class SfGpsDsAuNswSFormFileOsN extends OmniscriptFile {
 
   get computedLabelClassName() {
     return computeClass({
-      "form-required": this._propSetMap.required,
+      "form-required": this._propSetMap.required
     });
   }
 

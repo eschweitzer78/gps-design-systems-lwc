@@ -13,8 +13,8 @@ const DATE_STYLE_DEFAULT = "medium"; // one of short medium long full, defaults 
 const styleClass = {
   dark: "nsw-card--dark",
   light: "nsw-card--light",
-  white: "nsw-card--white",
-}
+  white: "nsw-card--white"
+};
 export default class SfGpsDsAuNswCard extends LightningElement {
   @api link;
   // ADJUSTED: style is a reserved keyword in lwc
@@ -68,7 +68,7 @@ export default class SfGpsDsAuNswCard extends LightningElement {
       "nsw-card--headline": this.headline,
       "nsw-card--highlight": this.highlight,
       [styleClass[this.cstyle]]: this.cstyle,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

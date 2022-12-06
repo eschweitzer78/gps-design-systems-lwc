@@ -3,9 +3,14 @@
     <ul>
       <li>
         <a class="nsw-icon-button" href="#" onclick={handlePreviousClick}>
-          <span class="material-icons nsw-material-icons" focusable="false" aria-hidden="true">keyboard_arrow_left</span>
+          <span
+            class="material-icons nsw-material-icons"
+            focusable="false"
+            aria-hidden="true"
+            >keyboard_arrow_left</span
+          >
           <span class="sr-only">{srOnlyPrevious}</span>
-        </a>  
+        </a>
       </li>
 
       <li if:true={showFirstPage}>
@@ -58,9 +63,14 @@
 
       <li>
         <a class="nsw-icon-button" href="#" onclick={handleNextClick}>
-          <span class="material-icons nsw-material-icons" focusable="false" aria-hidden="true">keyboard_arrow_right</span>
+          <span
+            class="material-icons nsw-material-icons"
+            focusable="false"
+            aria-hidden="true"
+            >keyboard_arrow_right</span
+          >
           <span class="sr-only">{srOnlyNext}</span>
-        </a>  
+        </a>
       </li>
     </ul>
   </nav>

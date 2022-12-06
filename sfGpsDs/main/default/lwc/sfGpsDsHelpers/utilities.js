@@ -26,4 +26,4 @@ export const isIPadPro = () => {
 
 export const isMacPlatform = () => {
   return navigator.userAgent.match(/Mac/);
-}
+};

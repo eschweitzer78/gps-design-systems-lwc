@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <OmniDataTransform xmlns="http://soap.sforce.com/2006/04/metadata">
     <active>false</active>
     <assignmentRulesUsed>false</assignmentRulesUsed>
@@ -218,7 +218,8 @@
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
         <globalKey>SfGpsDsAuNswCmsCardToLwcCard5754378337606285</globalKey>
-        <inputFieldName>collection:items:contentNodes:headlineV2</inputFieldName>
+        <inputFieldName
+    >collection:items:contentNodes:headlineV2</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsCardToLwcCard</name>
@@ -232,7 +233,8 @@
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
         <globalKey>SfGpsDsAuNswCmsCardToLwcCard8722471729407886</globalKey>
-        <inputFieldName>collection:items:contentNodes:image:unauthenticatedUrl</inputFieldName>
+        <inputFieldName
+    >collection:items:contentNodes:image:unauthenticatedUrl</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsCardToLwcCard</name>
@@ -246,7 +248,8 @@
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
         <globalKey>SfGpsDsAuNswCmsCardToLwcCard9429902226807563</globalKey>
-        <inputFieldName>collection:items:contentNodes:name:value</inputFieldName>
+        <inputFieldName
+    >collection:items:contentNodes:name:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsCardToLwcCard</name>
@@ -259,9 +262,12 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <formulaConverted>| &apos;[&apos; var:collection:items:contentNodes:headline:value &apos;](&apos; var:collection:items:contentNodes:Link:value &apos;)&apos; CONCAT</formulaConverted>
-        <formulaExpression>CONCAT(&apos;[&apos;,%collection:items:contentNodes:headline:value%,&apos;](&apos;, collection:items:contentNodes:Link:value,&apos;)&apos;)</formulaExpression>
-        <formulaResultPath>collection:items:contentNodes:headlineV2</formulaResultPath>
+        <formulaConverted
+    >| &apos;[&apos; var:collection:items:contentNodes:headline:value &apos;](&apos; var:collection:items:contentNodes:Link:value &apos;)&apos; CONCAT</formulaConverted>
+        <formulaExpression
+    >CONCAT(&apos;[&apos;,%collection:items:contentNodes:headline:value%,&apos;](&apos;, collection:items:contentNodes:Link:value,&apos;)&apos;)</formulaExpression>
+        <formulaResultPath
+    >collection:items:contentNodes:headlineV2</formulaResultPath>
         <formulaSequence>1.0</formulaSequence>
         <globalKey>SfGpsDsAuNswCmsCardToLwcCard2155741793164061</globalKey>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
@@ -291,7 +297,8 @@
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
         <globalKey>SfGpsDsAuNswCmsCardToLwcCard6772745154624997</globalKey>
-        <inputFieldName>collection:items:contentNodes:copy:value</inputFieldName>
+        <inputFieldName
+    >collection:items:contentNodes:copy:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsCardToLwcCard</name>
@@ -305,7 +312,8 @@
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
         <globalKey>SfGpsDsAuNswCmsCardToLwcCard2791678841699601</globalKey>
-        <inputFieldName>collection:items:contentNodes:image:altText</inputFieldName>
+        <inputFieldName
+    >collection:items:contentNodes:image:altText</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsCardToLwcCard</name>
@@ -319,7 +327,8 @@
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
         <globalKey>SfGpsDsAuNswCmsCardToLwcCard8405870847464831</globalKey>
-        <inputFieldName>collection:items:contentNodes:date:value</inputFieldName>
+        <inputFieldName
+    >collection:items:contentNodes:date:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsCardToLwcCard</name>

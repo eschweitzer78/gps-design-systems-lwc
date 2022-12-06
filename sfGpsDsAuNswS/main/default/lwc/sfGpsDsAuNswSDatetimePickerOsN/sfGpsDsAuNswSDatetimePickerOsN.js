@@ -22,14 +22,14 @@ export default class SfGpsDsAuNswSDatetimePickerOsN extends OmnistudioDatetimePi
 
   get computedLabelClassName() {
     return computeClass({
-      "form-required": this.required,
+      "form-required": this.required
     });
   }
 
   get computedFormGroupClassName() {
     return computeClass({
-      "form__datetime": true,
-      "form__group": !this.hideFormGroup,
+      form__datetime: true,
+      form__group: !this.hideFormGroup
     });
   }
 

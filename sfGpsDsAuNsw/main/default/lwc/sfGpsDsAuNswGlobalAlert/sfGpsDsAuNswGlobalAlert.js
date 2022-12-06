@@ -38,7 +38,7 @@ export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
     return computeClass({
       "nsw-global-alert": true,
       [options[this.as] || options.default]: true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 

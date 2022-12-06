@@ -17,7 +17,7 @@ export default class SfGpsDsAuNswTextareaOsN extends OmnistudioTextarea {
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this.required,
+      "nsw-form__required": this.required
     });
   }
 
@@ -31,8 +31,8 @@ export default class SfGpsDsAuNswTextareaOsN extends OmnistudioTextarea {
 
   get ariaDescribedBy() {
     return computeClass({
-      "textarealabel": true,
-      "errorMessageBlock": this.isError,
+      textarealabel: true,
+      errorMessageBlock: this.isError
     });
   }
 }

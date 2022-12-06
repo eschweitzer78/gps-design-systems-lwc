@@ -1,5 +1,5 @@
-import { createElement } from 'lwc';
-import SfGpsDsAuNswListItem from 'c/sfGpsDsAuNswListItem';
+import { createElement } from "lwc";
+import SfGpsDsAuNswListItem from "c/sfGpsDsAuNswListItem";
 
 const tag = "c-sf-gps-ds-au-nsw-list-item";
 const labelSelector = ".nsw-list-item__label";
@@ -16,7 +16,7 @@ describe("c-sf-gps-ds-au-nsw-list-item", () => {
     }
   });
 
-  it('displays the right info when provided with only title and link', () => {
+  it("displays the right info when provided with only title and link", () => {
     // Arrange
     const element = createElement(tag, {
       is: SfGpsDsAuNswListItem
@@ -84,8 +84,9 @@ describe("c-sf-gps-ds-au-nsw-list-item", () => {
     element.title = "Title";
     element.link = "#link";
     element.tags = [{ text: "tagtext", url: "tagurl" }];
-    element.image = "https://images.unsplash.com/photo-1669554108285-dc5c2786ed61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1915&q=80";
-    element.imageAlt = "Colourful 2023";    
+    element.image =
+      "https://images.unsplash.com/photo-1669554108285-dc5c2786ed61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1915&q=80";
+    element.imageAlt = "Colourful 2023";
 
     document.body.appendChild(element);
 

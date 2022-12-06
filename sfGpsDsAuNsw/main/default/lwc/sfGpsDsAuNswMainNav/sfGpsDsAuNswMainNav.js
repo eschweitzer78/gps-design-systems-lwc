@@ -106,10 +106,10 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-main-nav": true,
-      "activating": this.isActivating,
-      "active": this.isActive,
-      "closing": this.isClosing,
-      [this.className]: this.className,
+      activating: this.isActivating,
+      active: this.isActive,
+      closing: this.isClosing,
+      [this.className]: this.className
     });
   }
 

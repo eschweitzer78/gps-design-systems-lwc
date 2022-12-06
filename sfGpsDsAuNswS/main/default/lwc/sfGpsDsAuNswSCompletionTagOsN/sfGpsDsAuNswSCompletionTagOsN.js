@@ -24,7 +24,7 @@ export default class SfGpsDsAuNswTagOsN extends LightningElement {
       "snsw-completion-tag": true,
       "snsw-completion-tag__complete": complete === "true",
       "snsw-completion-tag__incomplete": complete !== "true",
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

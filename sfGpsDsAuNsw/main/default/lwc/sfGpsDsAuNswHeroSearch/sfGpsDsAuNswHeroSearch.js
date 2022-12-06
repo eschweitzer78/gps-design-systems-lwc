@@ -26,7 +26,7 @@ export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   get computedClassName() {
     return computeClass({
       "hero-search": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 

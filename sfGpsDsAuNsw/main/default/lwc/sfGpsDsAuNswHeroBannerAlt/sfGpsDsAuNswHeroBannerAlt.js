@@ -12,7 +12,7 @@ export default class SfGpsDsAuNswHeroBannerAlt extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-hero-banner-alt": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 

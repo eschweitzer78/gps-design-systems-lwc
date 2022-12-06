@@ -46,7 +46,7 @@ describe("c-sf-gps-ds-au-nsw-results-bar", () => {
       { label: "Label A", value: "Value A" },
       { label: "Label B", value: "Value B" }
     ];
-    element.value = "Value B"
+    element.value = "Value B";
 
     document.body.appendChild(element);
 
@@ -73,11 +73,9 @@ describe("c-sf-gps-ds-au-nsw-results-bar", () => {
       expect(handler).toHaveBeenCalledTimes(1);
       expect(handler.mock.calls[0][0].detail).toEqual(sorting.value);
     });
-
   });
 
   it("is accessible", async () => {
-
     // Arrange
     const element = createElement(tag, {
       is: SfGpsDsAuNswResultsBar
@@ -91,11 +89,10 @@ describe("c-sf-gps-ds-au-nsw-results-bar", () => {
       { label: "Label A", value: "Value A" },
       { label: "Label B", value: "Value B" }
     ];
-    element.value = "Value B"
+    element.value = "Value B";
 
     document.body.appendChild(element);
 
     await expect(element).toBeAccessible();
   });
-
 });

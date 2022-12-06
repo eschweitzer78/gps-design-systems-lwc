@@ -1,7 +1,6 @@
 import { LightningElement, api, track } from "lwc";
 
 export default class SfGpsDsAuNswPaginationComm extends LightningElement {
-
   /* activePage: Integer */
 
   @track _currentActivePage;
@@ -15,7 +14,6 @@ export default class SfGpsDsAuNswPaginationComm extends LightningElement {
   get activePage() {
     return this._activePage;
   }
-
 
   /* lastPage: Integer */
 
@@ -35,16 +33,14 @@ export default class SfGpsDsAuNswPaginationComm extends LightningElement {
     return this._lastPage;
   }
 
-
   /* className */
 
   @api className;
 
-
   /*************/
 
   handlePageChange(event) {
-    if ((event.detail > 0) && (event.detail <= this.lastPage)) {
+    if (event.detail > 0 && event.detail <= this.lastPage) {
       // eslint-disable-next-line @lwc/lwc/no-api-reassignments
       this.activePage = event.detail;
     }

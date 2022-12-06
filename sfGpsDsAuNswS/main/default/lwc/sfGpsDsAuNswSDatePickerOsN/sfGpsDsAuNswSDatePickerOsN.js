@@ -19,20 +19,20 @@ export default class SfGpsDsAuNswDatePickerOsN extends OmnistudioDatePicker {
 
   get computedFormItemClassName() {
     return computeClass({
-      "form__item": true,
-      [this.errorClass]: this.errorClass,
+      form__item: true,
+      [this.errorClass]: this.errorClass
     });
   }
 
   get computedLabelClassName() {
     return computeClass({
-      "form-required": this.required && !this.hideAsterisk,
+      "form-required": this.required && !this.hideAsterisk
     });
   }
 
   get computedInputClassName() {
     return computeClass({
-      "error": this.isError 
+      error: this.isError
     });
   }
 }

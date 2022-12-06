@@ -36,7 +36,7 @@ export default class SfGpsDsAuNswTags extends LightningElement {
     return computeClass({
       "nsw-list": true,
       "nsw-list--8": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

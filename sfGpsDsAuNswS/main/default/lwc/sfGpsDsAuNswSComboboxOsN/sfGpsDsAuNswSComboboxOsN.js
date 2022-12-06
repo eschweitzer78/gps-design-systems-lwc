@@ -16,7 +16,7 @@ export default class SfGpsDsAuNswSComboboxOsN extends OmnistudioCombobox {
 
   get computedLabelClassName() {
     return computeClass({
-      "form-required": this.required,
+      "form-required": this.required
     });
   }
 }

@@ -24,21 +24,21 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-accordion__title": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 
   get computedButtonClassName() {
     return computeClass({
       "nsw-accordion__button": true,
-      "active": this.isOpen,
+      active: this.isOpen
     });
   }
 
   get computedIsHidden() {
     return computeClass({
-      "hidden": !this.isOpen,
-    })
+      hidden: !this.isOpen
+    });
   }
 
   handleClick() {

@@ -22,13 +22,13 @@ export default class SfGpsDsAuNswTimePickerOsN extends SfGpsDsTimePickerOsN {
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this.required && !this.hideAsterisk,
+      "nsw-form__required": this.required && !this.hideAsterisk
     });
   }
 
   get computedFormGroupClass() {
     return computeClass({
-      "nsw-form__group": !this.hideFormGroup,
+      "nsw-form__group": !this.hideFormGroup
     });
   }
 

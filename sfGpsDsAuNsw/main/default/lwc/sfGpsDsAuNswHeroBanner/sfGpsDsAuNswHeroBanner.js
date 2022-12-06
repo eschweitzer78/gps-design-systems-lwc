@@ -40,10 +40,9 @@ export default class SfGpsDsAuNswHeroBanner extends LightningElement {
     return this.links
       ? this.links.map((link, index) => ({
           ...link,
-          index: link.index ? link.index : `link-${index + 1}`,
+          index: link.index ? link.index : `link-${index + 1}`
         }))
-      :
-        null;
+      : null;
   }
 
   get computedClassName() {
@@ -52,7 +51,7 @@ export default class SfGpsDsAuNswHeroBanner extends LightningElement {
       "nsw-hero-banner--wide": this.wide,
       "nsw-hero-banner--featured": this.featured,
       [options[this.cstyle] || options.default]: true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 

@@ -15,8 +15,8 @@ const styleClass = {
   light: "nsw-button-light",
   "light-outline": "nsw-button-light-outline",
   white: "nsw-button-white",
-  danger: "nsw-button-danger",
-}
+  danger: "nsw-button-danger"
+};
 export default class SfGpsDsAuNswButton extends LightningElement {
   @api link;
   @api cstyle = "dark"; // oneOf(['dark', 'dark-outline', 'dark-outline-solid', 'light', 'light-outline','white','danger']
@@ -30,7 +30,7 @@ export default class SfGpsDsAuNswButton extends LightningElement {
       "nsw-button": true,
       "nsw-button-block": this.block,
       [styleClass[this.cstyle]]: this.cstyle,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 

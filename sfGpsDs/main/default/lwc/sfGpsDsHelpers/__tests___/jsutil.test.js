@@ -40,5 +40,4 @@ describe("c-sf-gps-ds-helpers.jsutil", () => {
 
     expect(arraysEqual(arr1, arr2)).toBe(false);
   });
-
 });

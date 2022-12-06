@@ -56,7 +56,7 @@ export default class SfGpsDsAuNswListItem extends LightningElement {
       "nsw-list-item": true,
       "nsw-list-item--block": this.isBlock,
       "nsw-list-item--reversed": this.isReversed,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

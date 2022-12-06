@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <OmniDataTransform xmlns="http://soap.sforce.com/2006/04/metadata">
     <active>false</active>
     <assignmentRulesUsed>false</assignmentRulesUsed>
@@ -137,8 +137,10 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsContentBlockToLwcContentBlock7467857113909886</globalKey>
-        <inputFieldName>collection:items:contentNodes:image:altText</inputFieldName>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock7467857113909886</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:image:altText</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
@@ -151,8 +153,10 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsContentBlockToLwcContentBlock6619356964546077</globalKey>
-        <inputFieldName>collection:items:contentNodes:name:value</inputFieldName>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock6619356964546077</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:name:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
@@ -165,8 +169,10 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsContentBlockToLwcContentBlock40964600281087593</globalKey>
-        <inputFieldName>collection:items:contentNodes:headline:value</inputFieldName>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock40964600281087593</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:headline:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
@@ -179,8 +185,10 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsContentBlockToLwcContentBlock515254981368318</globalKey>
-        <inputFieldName>collection:items:contentNodes:image:unauthenticatedUrl</inputFieldName>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock515254981368318</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:image:unauthenticatedUrl</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
@@ -193,8 +201,10 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsContentBlockToLwcContentBlock20219630077943962</globalKey>
-        <inputFieldName>collection:items:contentNodes:mainLink:value</inputFieldName>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock20219630077943962</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:mainLink:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
@@ -207,8 +217,10 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsContentBlockToLwcContentBlock8340398974214791</globalKey>
-        <inputFieldName>collection:items:contentNodes:links:value</inputFieldName>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock8340398974214791</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:links:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
@@ -221,8 +233,10 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsContentBlockToLwcContentBlock10613637038616153</globalKey>
-        <inputFieldName>collection:items:contentNodes:copy:value</inputFieldName>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock10613637038616153</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:copy:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>

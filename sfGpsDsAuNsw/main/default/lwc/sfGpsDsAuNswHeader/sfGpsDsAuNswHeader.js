@@ -97,7 +97,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-header": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

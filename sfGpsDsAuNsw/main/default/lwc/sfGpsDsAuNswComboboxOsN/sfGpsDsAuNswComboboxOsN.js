@@ -18,7 +18,7 @@ export default class SfGpsDsAuNswComboboxOsN extends OmnistudioCombobox {
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this.required,
+      "nsw-form__required": this.required
     });
   }
 

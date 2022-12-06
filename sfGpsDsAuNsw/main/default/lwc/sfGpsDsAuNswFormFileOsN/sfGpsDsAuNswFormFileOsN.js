@@ -25,8 +25,8 @@ export default class SfGpsDsAuNswFormFileOsN extends OmniscriptFile {
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this._propSetMap.required,
-    })
+      "nsw-form__required": this._propSetMap.required
+    });
   }
 
   get computedHelperClassName() {

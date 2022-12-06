@@ -23,7 +23,7 @@ export default class SfGpsDsAuNswContentBlock extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-content-block": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
 }

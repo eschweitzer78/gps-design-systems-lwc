@@ -466,7 +466,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this._propSetMap.required,
+      "nsw-form__required": this._propSetMap.required
     });
   }
 
@@ -480,13 +480,13 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get computedTypeaheadClass() {
     return computeClass({
-      "sfgpsds-hide": !this.isSmart,
-    })
+      "sfgpsds-hide": !this.isSmart
+    });
   }
 
   get computedManualClassName() {
     return computeClass({
-      "sfgpsds-hide": this.isSmart,
+      "sfgpsds-hide": this.isSmart
     });
   }
 

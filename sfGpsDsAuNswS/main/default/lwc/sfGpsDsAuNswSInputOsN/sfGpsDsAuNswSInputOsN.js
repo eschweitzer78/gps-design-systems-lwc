@@ -47,15 +47,15 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
 
   get computedLabelClassName() {
     return computeClass({
-      "form-required": this.required,
+      "form-required": this.required
     });
   }
 
   get computedInputInputClassName() {
     return computeClass({
       "vlocity-input": true,
-      "form__text": true,
-      "error": this.isError,
+      form__text: true,
+      error: this.isError
     });
   }
 }

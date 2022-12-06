@@ -18,14 +18,14 @@ export default class SfGpsDsAuNswTagOsN extends LightningElement {
     return computeClass({
       "nsw-list": true,
       "nsw-list-8": true,
-      [this.className]: this.className,
-    })
+      [this.className]: this.className
+    });
   }
 
   get computedTagClassName() {
     return computeClass({
       "nsw-tag": true,
-      [this.tagClassName]: this.tagClassName,
+      [this.tagClassName]: this.tagClassName
     });
   }
 }

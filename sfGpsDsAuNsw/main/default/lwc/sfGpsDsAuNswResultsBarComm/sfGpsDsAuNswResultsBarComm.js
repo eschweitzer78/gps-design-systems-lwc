@@ -22,10 +22,14 @@ export default class SfGpsDsAuNswResultsBarComm extends LightningElement {
 
     try {
       this._sortOptions = JSON.parse(value);
-    } catch(e) {
-      this._sortOptions = value.toString().split(";").map((option) => ({
-        value: option, label: option,
-      }));
+    } catch (e) {
+      this._sortOptions = value
+        .toString()
+        .split(";")
+        .map((option) => ({
+          value: option,
+          label: option
+        }));
     }
 
     if (Array.isArray(this._sortOptions)) {

@@ -16,7 +16,7 @@ export default class SfGpsDsAuNswCallout extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-callout": true,
-      [this.className] : this.className,
+      [this.className]: this.className
     });
   }
 

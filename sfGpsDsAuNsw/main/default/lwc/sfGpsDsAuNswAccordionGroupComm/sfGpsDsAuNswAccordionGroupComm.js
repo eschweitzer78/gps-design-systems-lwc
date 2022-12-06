@@ -63,8 +63,8 @@ export default class SfGpsDsAuNswAccordionGroupComm extends SfGpsDsLwc {
   get computedClassName() {
     return computeClass({
       "nsw-nsw-accordion": true,
-      "ready": true,
-      [this.className]: this.className,
+      ready: true,
+      [this.className]: this.className
     });
   }
 }

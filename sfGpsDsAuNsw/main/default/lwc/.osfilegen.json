@@ -511,7 +511,7 @@
       "target": "!Os.js-meta.xml",
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     }
-  },  
+  },
   "sfGpsDsAuNswPagination": {
     "target": "!Os",
     "!.css": {

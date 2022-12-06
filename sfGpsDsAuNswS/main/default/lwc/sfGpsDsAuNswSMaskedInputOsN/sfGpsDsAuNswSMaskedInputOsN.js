@@ -27,7 +27,7 @@ export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
 
   get computedLabelClassName() {
     return computeClass({
-      "form-required": this.required,
+      "form-required": this.required
     });
   }
 
@@ -36,7 +36,7 @@ export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
       "vlocity-input": true,
       "nsw-form__text": true,
       "nsw-form__number": true,
-      "error": this.isError,
+      error: this.isError
     });
   }
 }

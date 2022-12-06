@@ -29,7 +29,7 @@ export default class SfGpsDsAuNswCheckboxGroupOsN extends OmnistudioCheckboxGrou
   get computedLegendClassName() {
     return computeClass({
       "nsw-form__legend": true,
-      "nsw-form__required":  this.required,
+      "nsw-form__required": this.required
     });
   }
 

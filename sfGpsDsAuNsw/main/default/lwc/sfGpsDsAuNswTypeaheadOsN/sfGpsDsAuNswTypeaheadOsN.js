@@ -18,7 +18,7 @@ export default class SfGpsDsAuNswTypeaheadOs extends OmnistudioTypeahead {
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this.required,
+      "nsw-form__required": this.required
     });
   }
 

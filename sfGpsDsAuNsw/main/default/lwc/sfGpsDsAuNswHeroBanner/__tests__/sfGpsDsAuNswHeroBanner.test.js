@@ -47,16 +47,16 @@ describe("c-sf-gps-ds-au-nsw-hero-banner", () => {
 
     element.title = "Hero Banner";
     element.cstyle = "light";
-    element.cta = { text: "Call to action",  url: "#" };
+    element.cta = { text: "Call to action", url: "#" };
     element.subtitle = "Links";
     element.links = [
-      { text: "link1", url: "#link1"},  
+      { text: "link1", url: "#link1" },
       { text: "link2", url: "#link2" }
     ];
     element.image = {
       src: "https://images.unsplash.com/photo-1523608401-53eb5741c1a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-      alt: "Sydney Rushcutters Bay",
-    }
+      alt: "Sydney Rushcutters Bay"
+    };
 
     document.body.appendChild(element);
 
@@ -66,7 +66,7 @@ describe("c-sf-gps-ds-au-nsw-hero-banner", () => {
     let ctaA = element.shadowRoot.querySelector(ctaASelector);
     expect(ctaA).not.toBeNull();
     expect(ctaA.href).toBe(`http://localhost/${element.cta.url}`);
-    expect(ctaA.className).toBe("nsw-button nsw-button--dark")
+    expect(ctaA.className).toBe("nsw-button nsw-button--dark");
 
     let links = element.shadowRoot.querySelector(linksSelector);
     expect(links).not.toBeNull();
@@ -93,16 +93,16 @@ describe("c-sf-gps-ds-au-nsw-hero-banner", () => {
 
     element.title = "Hero Banner";
     element.cstyle = "light";
-    element.cta = { text: "Call to action",  url: "#" };
+    element.cta = { text: "Call to action", url: "#" };
     element.subtitle = "Links";
     element.links = [
-      { text: "link1", url: "#link1"},  
+      { text: "link1", url: "#link1" },
       { text: "link2", url: "#link2" }
     ];
     element.image = {
       src: "https://images.unsplash.com/photo-1523608401-53eb5741c1a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-      alt: "Sydney Rushcutters Bay",
-    }
+      alt: "Sydney Rushcutters Bay"
+    };
 
     document.body.appendChild(element);
 

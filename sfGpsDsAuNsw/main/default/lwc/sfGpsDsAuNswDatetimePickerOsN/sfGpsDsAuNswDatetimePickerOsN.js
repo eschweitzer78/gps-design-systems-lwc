@@ -21,7 +21,7 @@ export default class SfGpsDsAuNswDatetimePickerOsN extends OmnistudioDatetimePic
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this.required,
+      "nsw-form__required": this.required
     });
   }
 

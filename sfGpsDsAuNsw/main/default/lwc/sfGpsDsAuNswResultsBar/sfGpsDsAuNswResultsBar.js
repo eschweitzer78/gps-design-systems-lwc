@@ -8,7 +8,7 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
   @api total;
 
   _originalValue;
-  _value; 
+  _value;
   @api set value(value) {
     this._originalValue = value;
     this._value = value;
@@ -25,7 +25,7 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
   @track _visibleSortOptions;
 
   @api set sortOptions(value) {
-    console.log('sortOptions', JSON.stringify(value));
+    console.log("sortOptions", JSON.stringify(value));
     this._originalSortOptions = value;
 
     if (value == null) {
@@ -35,17 +35,16 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
     } else if (Array.isArray(value)) {
       this._sortOptions = value;
     } else {
-      this._sortOptions = [ value ];
+      this._sortOptions = [value];
     }
 
     this.reconcileValueOptions();
   }
 
-    
   get sortOptions() {
     return this._originalSortOptions;
   }
-   
+
   @api noResultText = "Sorry, no results found for your search";
   @api resultsText = "Showing results {from} - {to} of {total} results";
   @api className;
@@ -53,11 +52,9 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-results-bar": true,
-      [this.className]: this.className,
+      [this.className]: this.className
     });
   }
-
-
 
   /**********/
 
@@ -71,9 +68,9 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
       this._value = this._sortOptions[0].value;
     }
 
-    this._visibleSortOptions = this._sortOptions.map((option) => ({ 
-      ...option, 
-      selected: option.value === this._value,
+    this._visibleSortOptions = this._sortOptions.map((option) => ({
+      ...option,
+      selected: option.value === this._value
     }));
   }
 
@@ -93,7 +90,8 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
 
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.value = event.target.value;
-    this.dispatchEvent(new CustomEvent("change", { detail: event.target.value }));
-
+    this.dispatchEvent(
+      new CustomEvent("change", { detail: event.target.value })
+    );
   }
 }
