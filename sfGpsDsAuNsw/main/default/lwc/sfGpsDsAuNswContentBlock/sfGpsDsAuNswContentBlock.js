@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswContentBlock extends LightningElement {
   @api headline;
@@ -20,6 +21,9 @@ export default class SfGpsDsAuNswContentBlock extends LightningElement {
   @api className;
 
   get computedClassName() {
-    return `nsw-content-block ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-content-block": true,
+      [this.className]: this.className,
+    });
   }
 }

@@ -2,9 +2,9 @@
   <div class={computedClassName}>
     <template if:true={asCheckboxes}>
       <template for:each={_tags} for:item="tag">
-        <div key={tag.index} class={tag.className}>
-          <input type="checkbox" id={tag.id} checked={tag.checked} />
-          <label for={tag.id}> {tag.text} </label>
+        <div key={tag.key} class={tag.className}>
+          <input type="checkbox" id={tag.key} checked={tag.checked} />
+          <label for={tag.key}> {tag.text} </label>
         </div>
       </template>
     </template>
@@ -13,10 +13,10 @@
       <template for:each={_tags} for:item="tag">
         <a
           if:true={tag.url}
-          key={tag.index}
+          key={tag.key}
           class={tag.className}
           href={tag.url}
-          >{tag.text}</a
+        >{tag.text}</a
         >
         <span if:false={tag.url} key={tag.index} class={tag.className}>
           {tag.text}

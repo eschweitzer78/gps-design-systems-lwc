@@ -8,7 +8,7 @@
             <slot> </slot>
           </p>
           <div if:true={cta} class="nsw-hero-banner__button">
-            <a href={cta.url} class={computedButtonClassName}>{cta.text}</a>
+            <a href={cta.url} class={computedButtonClassName} onclick={handleCtaClick}>{cta.text}</a>
           </div>
         </div>
 
@@ -16,8 +16,8 @@
           <div class="nsw-hero-banner__list">
             <div class="nsw-hero-banner__sub-title">{subtitle}</div>
             <ul>
-              <template for:each={links} for:item="link">
-                <li key={link.index}><a href={link.url}>{link.text}</a></li>
+              <template for:each={_links} for:item="link">
+                <li key={link.index}><a href={link.url} onclick={handleLinkClick}>{link.text}</a></li>
               </template>
             </ul>
           </div>

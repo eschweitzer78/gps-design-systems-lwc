@@ -5,12 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from "lwc";
+import { LightningElement, api, track } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswTags extends LightningElement {
   @api asCheckboxes = false;
 
-  _tags;
+  @track _tags;
   _originalTags;
 
   @api
@@ -22,7 +23,7 @@ export default class SfGpsDsAuNswTags extends LightningElement {
     this._originalTags = value;
     this._tags = value.map((tag) => ({
       ...tag,
-      id: `checkbox${tag.index}`,
+      key: `checkbox${tag.index}`,
       className: `${
         this.asCheckboxes ? "nsw-tag nsw-tag--checkbox" : "nsw-tag"
       } ${tag.className ? tag.className : ""}`
@@ -32,6 +33,10 @@ export default class SfGpsDsAuNswTags extends LightningElement {
   @api className;
 
   get computedClassName() {
-    return `nsw-list nsw-list--8 ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-list": true,
+      "nsw-list--8": true,
+      [this.className]: this.className,
+    });
   }
 }

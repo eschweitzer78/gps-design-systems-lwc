@@ -7,6 +7,7 @@
 
 import OmnistudioCombobox from "omnistudio/combobox";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswComboboxOsN.html";
 
 export default class SfGpsDsAuNswComboboxOsN extends OmnistudioCombobox {
@@ -15,7 +16,10 @@ export default class SfGpsDsAuNswComboboxOsN extends OmnistudioCombobox {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this.required,
+    });
   }
 
   get computedHelperClassName() {

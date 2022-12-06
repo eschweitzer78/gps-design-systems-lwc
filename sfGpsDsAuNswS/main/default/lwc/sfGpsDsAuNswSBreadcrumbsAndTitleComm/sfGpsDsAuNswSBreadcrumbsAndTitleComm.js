@@ -8,6 +8,7 @@
 import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswSBreadcrumbsAndTitleComm extends SfGpsDsLwc {
   @api label = "Breadcrumbs";
@@ -50,10 +51,11 @@ export default class SfGpsDsAuNswSBreadcrumbsAndTitleComm extends SfGpsDsLwc {
   }
 
   get computedClassName() {
-    return (
-      "page-header servicensw-embed" +
-      (this.title ? "" : " page-header--top") +
-      (this.className ? " " + this.className : "")
-    );
+    return computeClass({
+      "page-header": true,
+      "servicensw-embed": true,
+      "page-header--top": this.title,
+      [this.className]: this.className,
+    });
   }
 }

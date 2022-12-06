@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswCallout extends LightningElement {
   @api title;
@@ -13,7 +14,10 @@ export default class SfGpsDsAuNswCallout extends LightningElement {
   @api className;
 
   get computedClassName() {
-    return `nsw-callout ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-callout": true,
+      [this.className] : this.className,
+    });
   }
 
   get isH1() {

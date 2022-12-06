@@ -7,6 +7,7 @@
 import OmniscriptFile from "omnistudio/omniscriptFile";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormFileOsN.html";
 
 // TODO: there is seemingly a bug in SDLS when the hover colors for neutral buttons are not derived from variables
@@ -22,9 +23,10 @@ export default class SfGpsDsAuNswFormFileOsN extends OmniscriptFile {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${
-      this._propSetMap.required ? "nsw-form__required" : ""
-    }`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this._propSetMap.required,
+    })
   }
 
   get computedHelperClassName() {

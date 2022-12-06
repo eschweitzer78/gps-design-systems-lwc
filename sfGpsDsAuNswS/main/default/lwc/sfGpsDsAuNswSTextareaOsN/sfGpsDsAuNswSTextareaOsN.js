@@ -6,6 +6,7 @@
  */
 
 import OmniscriptTextarea from "omnistudio/textarea";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSTextareaOsN.html";
 
 export default class SfGpsDsAuNswSTextareaOsN extends OmniscriptTextarea {
@@ -14,14 +15,22 @@ export default class SfGpsDsAuNswSTextareaOsN extends OmniscriptTextarea {
   }
 
   get computedLabelClassName() {
-    return this.required ? "form-required" : "";
+    return computeClass({
+      "form-required": this.required,
+    });
   }
 
   get computedInputInputClassName() {
-    return `form__textarea ${this.isError ? "error" : ""}`;
+    return computeClass({
+      "form__textarea": true,
+      "error": this.isError,
+    });
   }
 
   get ariaDescribedBy() {
-    return this.isError ? "textarealabel errorMessageBlock" : "textarealabel";
+    return computeClass({
+      "textarealabel": true,
+      "errorMessageBlock": this.isError,
+    });
   }
 }

@@ -8,6 +8,7 @@
 import { api } from "lwc";
 import SfGpsDsTimePickerOsN from "c/sfGpsDsTimePickerOsN";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswTimePickerOsN.html";
 
 export default class SfGpsDsAuNswTimePickerOsN extends SfGpsDsTimePickerOsN {
@@ -19,13 +20,16 @@ export default class SfGpsDsAuNswTimePickerOsN extends SfGpsDsTimePickerOsN {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${
-      this.required && !this.hideAsterisk ? "nsw-form__required" : ""
-    }`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this.required && !this.hideAsterisk,
+    });
   }
 
   get computedFormGroupClass() {
-    return this.hideFormGroup ? "" : "nsw-form__group";
+    return computeClass({
+      "nsw-form__group": !this.hideFormGroup,
+    });
   }
 
   get computedHelperClassName() {

@@ -6,6 +6,7 @@
  */
 import OmnistudioCheckboxGroup from "omnistudio/checkboxGroup";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswCheckboxGroupOsN.html";
 
 export default class SfGpsDsAuNswCheckboxGroupOsN extends OmnistudioCheckboxGroup {
@@ -26,7 +27,10 @@ export default class SfGpsDsAuNswCheckboxGroupOsN extends OmnistudioCheckboxGrou
   }
 
   get computedLegendClassName() {
-    return `nsw-form__legend ${this.required ? "nsw-form__required" : ""}`;
+    return computeClass({
+      "nsw-form__legend": true,
+      "nsw-form__required":  this.required,
+    });
   }
 
   get computedHelperClassName() {

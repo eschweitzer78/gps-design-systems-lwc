@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeader extends LightningElement {
   @api masterbrand;
@@ -94,6 +95,9 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   }
 
   get computedClassName() {
-    return `nsw-header ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-header": true,
+      [this.className]: this.className,
+    });
   }
 }

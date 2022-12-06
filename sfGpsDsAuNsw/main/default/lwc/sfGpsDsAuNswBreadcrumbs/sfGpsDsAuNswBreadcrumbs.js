@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswBreadcrumbs extends LightningElement {
   @api label = "breadcrumbs";
@@ -13,6 +14,9 @@ export default class SfGpsDsAuNswBreadcrumbs extends LightningElement {
   @api items = [];
 
   get computedClassName() {
-    return `nsw-breadcrumbs ${this.className}`;
+    return computeClass({
+      "nsw-breadcrumbs": true,
+      [this.className]: this.className,
+    });
   }
 }

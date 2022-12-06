@@ -6,6 +6,7 @@
  */
 
 import OmnistudioCombobox from "omnistudio/combobox";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSComboboxOsN.html";
 
 export default class SfGpsDsAuNswSComboboxOsN extends OmnistudioCombobox {
@@ -14,6 +15,8 @@ export default class SfGpsDsAuNswSComboboxOsN extends OmnistudioCombobox {
   }
 
   get computedLabelClassName() {
-    return this.required ? "form-required" : "";
+    return computeClass({
+      "form-required": this.required,
+    });
   }
 }

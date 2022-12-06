@@ -8,6 +8,7 @@
 import OmnistudioDatetimePicker from "omnistudio/datetimePicker";
 import tmpl from "./sfGpsDsAuNswDatetimePickerOsN.html";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 
 const timeQueryClass = "c-sf-gps-ds-au-nsw-time-picker-os-n";
 const dateQueryClass = "c-sf-gps-ds-au-nsw-date-picker-os-n";
@@ -18,7 +19,10 @@ export default class SfGpsDsAuNswDatetimePickerOsN extends OmnistudioDatetimePic
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this.required,
+    });
   }
 
   get computedHelperClassName() {

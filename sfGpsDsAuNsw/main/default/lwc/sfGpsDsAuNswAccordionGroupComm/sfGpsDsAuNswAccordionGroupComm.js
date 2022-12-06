@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { api } from "lwc";
-
+import { computeClass } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
@@ -61,6 +61,10 @@ export default class SfGpsDsAuNswAccordionGroupComm extends SfGpsDsLwc {
   }
 
   get computedClassName() {
-    return `nsw-nsw-accordion ready ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-nsw-accordion": true,
+      "ready": true,
+      [this.className]: this.className,
+    });
   }
 }

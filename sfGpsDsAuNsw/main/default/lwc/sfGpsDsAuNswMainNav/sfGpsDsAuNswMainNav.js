@@ -7,6 +7,7 @@
 
 // TODO: handle issue with level2 menus on desktop vs mobile -- how do we know when to navigate vs expand?
 import { LightningElement, api, track } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswMainNav extends LightningElement {
   @api navAriaLabel = "Main Navigation";
@@ -103,13 +104,13 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   @api className;
 
   get computedClassName() {
-    return (
-      "nsw-main-nav" +
-      (this.isActivating ? " activating" : "") +
-      (this.isActive ? " active" : "") +
-      (this.isClosing ? " closing" : "") +
-      (this.className ? " " + this.className : "")
-    );
+    return computeClass({
+      "nsw-main-nav": true,
+      "activating": this.isActivating,
+      "active": this.isActive,
+      "closing": this.isClosing,
+      [this.className]: this.className,
+    });
   }
 
   handleClickNavigate(event) {

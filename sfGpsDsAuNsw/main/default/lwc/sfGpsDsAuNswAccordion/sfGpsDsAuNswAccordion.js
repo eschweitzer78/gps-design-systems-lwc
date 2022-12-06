@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { LightningElement, api, track } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswAccordion extends LightningElement {
   @api header;
@@ -21,15 +22,23 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
   @track isOpen = false;
 
   get computedClassName() {
-    return `nsw-accordion__title ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-accordion__title": true,
+      [this.className]: this.className,
+    });
   }
 
   get computedButtonClassName() {
-    return `nsw-accordion__button ${this.isOpen ? "active" : ""}`;
+    return computeClass({
+      "nsw-accordion__button": true,
+      "active": this.isOpen,
+    });
   }
 
   get computedIsHidden() {
-    return this.isOpen ? "" : "hidden";
+    return computeClass({
+      "hidden": !this.isOpen,
+    })
   }
 
   handleClick() {
