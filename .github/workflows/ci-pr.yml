@@ -76,7 +76,6 @@ jobs:
     steps:
       # Install Chrome dev for puppeteer
       - name: "Install Chrome dev"
-        run: apt-get update \
         run: |
           sudo apt-get update
           sudo apt-get install -yq libgconf-2-4
