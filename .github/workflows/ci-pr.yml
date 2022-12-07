@@ -74,20 +74,6 @@ jobs:
     needs: format-lint-lwc-tests
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
-      # Install Chrome dev for puppeteer
-      - name: "Install Chrome dev"
-        run: |
-          sudo apt-get update
-          sudo apt-get install -yq libgconf-2-4
-          sudo apt-get install -y wget --no-install-recommends
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable --no-install-recommends
-          sudo rm -rf /var/lib/apt/lists/*
-          export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-          export PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
-
       # Checkout the source code
       - name: "Checkout source code"
         uses: actions/checkout@v2
@@ -114,7 +100,10 @@ jobs:
 
       # Activate metadata for omnistudio on scratch org
       - name: "Enable OmniStudio metadata xx"
-        run: node ./configure-omnistudio-metadata scratch-org
+        run: |
+          cd ./node_modules/puppeteer
+          npm run install
+          node ./configure-omnistudio-metadata scratch-org
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
