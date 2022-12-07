@@ -98,14 +98,6 @@ jobs:
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci
 
-      # Activate metadata for omnistudio on scratch org
-      - name: "Enable OmniStudio metadata xx"
-        run: |
-          cd ./node_modules/puppeteer
-          npm run postinstall
-          cd ../..
-          node ./configure-omnistudio-metadata scratch-org
-
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
         uses: pmd/pmd-github-action@v1.2.1
@@ -205,7 +197,12 @@ jobs:
 
       # Activate metadata for omnistudio on scratch org
       - name: "Enable OmniStudio metadata"
-        run: node ./configure-omnistudio-metadata scratch-org
+        run: |
+          cd ./node_modules/puppeteer
+          npm run postinstall
+          cd ../..
+          node ./configure-omnistudio-metadata scratch-org
+
 
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
