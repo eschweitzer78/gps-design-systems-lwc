@@ -85,6 +85,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable --no-install-recommends
           sudo rm -rf /var/lib/apt/lists/*
+          export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+          export PUPPETEER_EXECUTABLE_PATH /usr/bin/google-chrome-stable
 
       # Checkout the source code
       - name: "Checkout source code"
@@ -109,6 +111,10 @@ jobs:
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci
+
+      # Activate metadata for omnistudio on scratch org
+      - name: "Enable OmniStudio metadata xx"
+        run: node ./configure-omnistudio-metadata scratch-org
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
