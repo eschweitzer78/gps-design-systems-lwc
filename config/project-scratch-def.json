@@ -9,8 +9,7 @@
     "Interaction",
     "CMSUnlimitedUse",
     "OmniStudioDesigner",
-    "StandardOmniStudioRuntime",
-    "OmniStudioMetadata"
+    "OmniStudioRuntime"
   ],
   "settings": {
     "communitiesSettings": {

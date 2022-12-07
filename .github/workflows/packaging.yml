@@ -153,6 +153,10 @@ jobs:
       - name: "Deploy Omnistudio"
         run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 10 -r -s=AllUsers
 
+      # Activate metadata for omnistudio on scratch org
+      - name: "Enable OmniStudio metadata"
+        run: node ./configure-omnistudio-metadata scratch-org
+
       # Install new sfGpsDs package in scratch org
       - name: "Install new sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
