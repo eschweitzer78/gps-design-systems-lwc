@@ -30,7 +30,7 @@ const utils = require("./utils");
     frontdoor = await utils.runSFDXCommand(`sfdx force:org:open -r --json`);
   }
 
-  console.log(frontdoor.result.url);
+  console.log("target login url:", frontdoor.result.url);
 
   const regex = /.my.salesforce.com(.)*/;
 
@@ -43,16 +43,24 @@ const utils = require("./utils");
   page.setDefaultTimeout(60000);
   await page.goto(`${frontdoor.result.url}`);
 
-  //await page.waitFor(10000);
-  //go to /lightning/setup/OmniStudioSettings/home
-  let targetOSSettings = `https://${fqdn}.lightning.force.com/lightning/setup/OmniStudioSettings/home`;
-  console.log(targetOSSettings);
+  console.log("logged in");
 
-  await Promise.all([
+  // go to /lightning/setup/OmniStudioSettings/home
+  let targetOSSettings = `https://${fqdn}.lightning.force.com/lightning/setup/OmniStudioSettings/home`;
+  console.log("target settings url:", targetOSSettings);
+
+  /*  await page.waitForNavigation({ timeout: timeout, waitUntil: "load" });
+  console.log('did load');*/
+  /*  await page.waitForNavigation({ timeout: timeout, waitUntil: "networkidle2" });
+  console.log('did idle2');*/
+  await page.goto(targetOSSettings);
+  console.log("natigated to setup");
+  /*await Promise.all([
     page.waitForNavigation({ timeout: timeout, waitUntil: "load" }),
     page.waitForNavigation({ timeout: timeout, waitUntil: "networkidle2" }),
     page.goto(targetOSSettings)
   ]);
+  */
 
   await page.setViewport({ width: 1200, height: 837 });
   await utils.sleep(10000);
