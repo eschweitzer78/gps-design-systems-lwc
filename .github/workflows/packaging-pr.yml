@@ -62,7 +62,7 @@ jobs:
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
-              echo "::set-output name=packageVersionId::$packageVersionId"
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx force:package:version:create failed"
           fi
@@ -78,7 +78,7 @@ jobs:
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
-              echo "::set-output name=packageVersionId::$packageVersionId"
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx force:package:version:create failed"
           fi
@@ -94,7 +94,7 @@ jobs:
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
-              echo "::set-output name=packageVersionId::$packageVersionId"
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx force:package:version:create failed"
           fi
@@ -110,7 +110,7 @@ jobs:
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
-              echo "::set-output name=packageVersionId::$packageVersionId"
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx force:package:version:create failed"
           fi
@@ -126,7 +126,7 @@ jobs:
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
-              echo "::set-output name=packageVersionId::$packageVersionId"
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx force:package:version:create failed"
           fi
@@ -157,7 +157,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
         run: |
           packageVersionId=$(sfdx force:package:version:list -p 'Salesforce Global Public Sector Design Systems' -o CreatedDate --concise | tail -1 | awk '{print $3}')
-          echo "::set-output name=packageVersionId::$packageVersionId"
+          echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
 
       # Install old sfGpsDs package in scratch org
       - name: "Install current sfGpsDs package version in scratch org"

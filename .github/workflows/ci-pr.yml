@@ -280,12 +280,12 @@ jobs:
               hasChanges='true'
               hasChangesSfGpsDsUkGov='true'
           fi
-          echo "::set-output name=hasChanges::$hasChanges"
-          echo "::set-output name=hasChangesSfGpsDs::$hasChangesSfGpsDs"
-          echo "::set-output name=hasChangesSfGpsDsAuNsw::$hasChangesSfGpsDsAuNsw"
-          echo "::set-output name=hasChangesSfGpsDsAuNswS::$hasChangesSfGpsDsAuNswS"
-          echo "::set-output name=hasChangesSfGpsDsAuVic::$hasChangesSfGpsDsAuVic"
-          echo "::set-output name=hasChangesSfGpsDsUkGov::$hasChangesSfGpsDsUkGov"
+          echo "hasChanges=$hasChanges" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDs=$hasChangesSfGpsDs" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDsAuNsw=$hasChangesSfGpsDsAuNsw" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDsAuNswS=$hasChangesSfGpsDsAuNswS" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDsAuVic=$hasChangesSfGpsDsAuVic" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDsUkGov=$hasChangesSfGpsDsUkGov" >> $GITHUB_OUTPUT
 
       # Trigger packaging workflow if needed
       - name: "Trigger packaging workflow if needed"
