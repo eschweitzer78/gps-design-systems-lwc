@@ -32,11 +32,11 @@ const utils = require("./utils");
 
   console.log(frontdoor.result.url);
 
+  const regex = /.my.salesforce.com(.)*/;
+
   let urlData = frontdoor.result.url,
     scubbedUrl = urlData.replace("https://", ""),
-    parsedUrl = scubbedUrl.split("/"),
-    fqdn = parsedUrl[0],
-    parsedFqdn = fqdn.split(".");
+    fqdn = scubbedUrl.replace(regex, "");
 
   const timeout = 30000;
   const page = await browser.newPage();
@@ -45,12 +45,12 @@ const utils = require("./utils");
 
   //await page.waitFor(10000);
   //go to /lightning/setup/OmniStudioSettings/home
-  let targetOSSettings = `https://${parsedFqdn[0]}.lightning.force.com/lightning/setup/OmniStudioSettings/home`;
+  let targetOSSettings = `https://${fqdn}.lightning.force.com/lightning/setup/OmniStudioSettings/home`;
   console.log(targetOSSettings);
 
   await Promise.all([
     page.waitForNavigation({ timeout: timeout, waitUntil: "load" }),
-    page.waitForNavigation({ timeout: timeout, waitUntil: "networkidle2" }),
+    page.waitForNavigation({ timeout: timeout, waitUntil: "networkidle2" }).catch(e => void 0),
     page.goto(targetOSSettings)
   ]);
 
