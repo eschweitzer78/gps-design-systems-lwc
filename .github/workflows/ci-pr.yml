@@ -203,7 +203,6 @@ jobs:
           cd ../..
           node ./configure-omnistudio-metadata scratch-org
 
-
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
         run: node ./osfilegen.js
