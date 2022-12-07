@@ -18,16 +18,16 @@ jobs:
     steps:
       # Checkout the source code
       - name: "Checkout source code"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Install Volta to enforce proper node and package manager versions
       - name: "Install Volta"
-        uses: volta-cli/action@v1
+        uses: volta-cli/action@v3
 
       # Cache node_modules to speed up the process
       - name: "Restore node_modules cache"
         id: cache-npm
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: npm-${{ hashFiles('**/package-lock.json') }}
@@ -54,7 +54,7 @@ jobs:
 
       # Upload code coverage data
       - name: "Upload code coverage for LWC to Codecov.io"
-        uses: codecov/codecov-action@v2.0.2
+        uses: codecov/codecov-action@v3
         with:
           flags: LWC
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -64,30 +64,18 @@ jobs:
     needs: format-lint-lwc-tests
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
-      # Install Chrome dev for puppeteer
-      - name: "Install Chrome dev"
-        run: |
-          sudo apt-get update
-          sudo apt-get install -yq libgconf-2-4
-          sudo apt-get install -y wget --no-install-recommends
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable --no-install-recommends
-          sudo rm -rf /var/lib/apt/lists/*
-
       # Checkout the source code
       - name: "Checkout source code"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Install Volta to enforce proper node and package manager versions
       - name: "Install Volta"
-        uses: volta-cli/action@v1
+        uses: volta-cli/action@v3
 
       # Cache node_modules to speed up the process
       - name: "Restore node_modules cache"
         id: cache-npm
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: npm-${{ hashFiles('**/package-lock.json') }}
@@ -199,7 +187,11 @@ jobs:
 
       # Activate metadata for omnistudio on scratch org
       - name: "Enable OmniStudio metadata"
-        run: node ./configure-omnistudio-metadata scratch-org
+        run: |
+          cd ./node_modules/puppeteer
+          npm run postinstall
+          cd ../..
+          node ./configure-omnistudio-metadata scratch-org
 
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
@@ -207,7 +199,7 @@ jobs:
 
       # Deploy source to scratch org
       - name: "Push source to scratch org"
-        run: sfdx force:source:push
+        run: sfdx force:source:push -u scratch-org
 
       # Assign permissionset
       # - name: 'Assign permissionset to default user'
@@ -227,7 +219,7 @@ jobs:
 
       # Upload code coverage data
       - name: "Upload code coverage for Apex to Codecov.io"
-        uses: codecov/codecov-action@v2.0.2
+        uses: codecov/codecov-action@v3
         with:
           flags: Apex
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -243,7 +235,7 @@ jobs:
     steps:
       # Checkout the source code
       - name: "Checkout source code"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Check for package changes using git diff
       - name: "Check for package changes"
