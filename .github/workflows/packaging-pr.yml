@@ -22,11 +22,11 @@ jobs:
 
       # Checkout the source code
       - name: "Checkout source code"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # Install Volta to enforce proper node and package manager versions
       - name: "Install Volta"
-        uses: volta-cli/action@v1
+        uses: volta-cli/action@v3
 
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
