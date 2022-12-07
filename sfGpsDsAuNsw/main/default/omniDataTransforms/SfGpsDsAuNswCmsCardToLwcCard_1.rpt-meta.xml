@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OmniDataTransform xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <assignmentRulesUsed>false</assignmentRulesUsed>
+    <deletedOnSuccess>false</deletedOnSuccess>
+    <errorIgnored>false</errorIgnored>
+    <expectedInputJson>{
+  &quot;error&quot; : &quot;OK&quot;,
+  &quot;collection&quot; : {
+    &quot;totalTypes&quot; : 1,
+    &quot;items&quot; : [ {
+      &quot;title&quot; : &quot;Priority to lift literacy and numeracy&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswCard&quot;,
+      &quot;unauthenticatedUrl&quot; : null,
+      &quot;publishedDate&quot; : &quot;2022-06-21T13:57:27.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;Link&quot; : {
+          &quot;value&quot; : &quot;#&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;New Premier&amp;#39;s Priority to lift literacy and numeracy standards&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;Tag&quot; : {
+          &quot;value&quot; : &quot;Education&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;The NSW Government will redouble its efforts to lift literacy and numeracy standards across NSW public schools to ensure students are given every opportunity to be their best.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;Priority to lift literacy and numeracy&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        },
+        &quot;image&quot; : {
+          &quot;thumbnailUrl&quot; : null,
+          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MC23NT3NKYNVGD7D4G2KARQZAJZI&quot;,
+          &quot;nodeType&quot; : &quot;Media&quot;,
+          &quot;title&quot; : &quot;alif-caesar-rizqi-pratama-loUlSOXL81c-unsplash&quot;,
+          &quot;unauthenticatedUrl&quot; : null,
+          &quot;mimeType&quot; : &quot;image/jpeg&quot;,
+          &quot;mediaType&quot; : &quot;Image&quot;,
+          &quot;altText&quot; : &quot;Book&quot;,
+          &quot;resourceUrl&quot; : &quot;/services/data/v52.0/connect/cms/delivery/channels/0ap5i0000008Wy4/media/MC23NT3NKYNVGD7D4G2KARQZAJZI/content&quot;,
+          &quot;contentKey&quot; : &quot;MC23NT3NKYNVGD7D4G2KARQZAJZI&quot;,
+          &quot;fileName&quot; : &quot;alif-caesar-rizqi-pratama-loUlSOXL81c-unsplash.jpg&quot;
+        },
+        &quot;date&quot; : {
+          &quot;value&quot; : &quot;2019-02-20&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Card&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000TsDXEA0&quot;,
+      &quot;contentUrlName&quot; : &quot;priority-to-lift-literacy-and-numeracy&quot;,
+      &quot;contentKey&quot; : &quot;MCLHMJCXV7KVDXFKBHN5Z245ZT3Y&quot;
+    }, {
+      &quot;title&quot; : &quot;Quality green spaces&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswCard&quot;,
+      &quot;unauthenticatedUrl&quot; : null,
+      &quot;publishedDate&quot; : &quot;2022-06-21T13:53:14.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;Link&quot; : {
+          &quot;value&quot; : &quot;#&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;Quality green spaces and a million more trees for NSW&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;Tag&quot; : {
+          &quot;value&quot; : &quot;Environment&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;The NSW Government will create more quality green spaces and increase the tree canopy in Sydney by 2022.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;Quality green spaces&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        },
+        &quot;image&quot; : {
+          &quot;thumbnailUrl&quot; : null,
+          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MCHMI6M7SNYZAMHI2PESJIVOJAHY&quot;,
+          &quot;nodeType&quot; : &quot;Media&quot;,
+          &quot;title&quot; : &quot;mitchell-luo--_ayGhKMUtA-unsplash&quot;,
+          &quot;unauthenticatedUrl&quot; : null,
+          &quot;mimeType&quot; : &quot;image/jpeg&quot;,
+          &quot;mediaType&quot; : &quot;Image&quot;,
+          &quot;altText&quot; : &quot;Green space in Sydney&quot;,
+          &quot;resourceUrl&quot; : &quot;/services/data/v52.0/connect/cms/delivery/channels/0ap5i0000008Wy4/media/MCHMI6M7SNYZAMHI2PESJIVOJAHY/content&quot;,
+          &quot;contentKey&quot; : &quot;MCHMI6M7SNYZAMHI2PESJIVOJAHY&quot;,
+          &quot;fileName&quot; : &quot;mitchell-luo--_ayGhKMUtA-unsplash.jpg&quot;
+        },
+        &quot;date&quot; : {
+          &quot;value&quot; : &quot;2019-03-01&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Card&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000TsDQEA0&quot;,
+      &quot;contentUrlName&quot; : &quot;quality-green-spaces&quot;,
+      &quot;contentKey&quot; : &quot;MC6JWFQN3ZGBG3BP5FBSFITPYX3E&quot;
+    }, {
+      &quot;title&quot; : &quot;Green Globe Awards 2019&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswCard&quot;,
+      &quot;unauthenticatedUrl&quot; : null,
+      &quot;publishedDate&quot; : &quot;2022-06-21T13:49:23.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;Link&quot; : {
+          &quot;value&quot; : &quot;#&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;Nominations open for Green Globe Awards 2019&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;Tag&quot; : {
+          &quot;value&quot; : &quot;Community&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;The annual awards will recognise individuals and organisations for their leadership, commitment and innovation in sustainability across NSW.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;Green Globe Awards 2019&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        },
+        &quot;image&quot; : {
+          &quot;thumbnailUrl&quot; : null,
+          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MCKNAHV65EWBFAPEQHHGZOMKXYEU&quot;,
+          &quot;nodeType&quot; : &quot;Media&quot;,
+          &quot;title&quot; : &quot;daniel-olah-IAJNzZhDADQ-unsplash&quot;,
+          &quot;unauthenticatedUrl&quot; : null,
+          &quot;mimeType&quot; : &quot;image/jpeg&quot;,
+          &quot;mediaType&quot; : &quot;Image&quot;,
+          &quot;altText&quot; : &quot;Green Globe&quot;,
+          &quot;resourceUrl&quot; : &quot;/services/data/v52.0/connect/cms/delivery/channels/0ap5i0000008Wy4/media/MCKNAHV65EWBFAPEQHHGZOMKXYEU/content&quot;,
+          &quot;contentKey&quot; : &quot;MCKNAHV65EWBFAPEQHHGZOMKXYEU&quot;,
+          &quot;fileName&quot; : &quot;daniel-olah-IAJNzZhDADQ-unsplash.jpg&quot;
+        },
+        &quot;date&quot; : {
+          &quot;value&quot; : &quot;2019-03-09&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Card&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000TsDIEA0&quot;,
+      &quot;contentUrlName&quot; : &quot;green-globe-awards-2019&quot;,
+      &quot;contentKey&quot; : &quot;MCSIT5Z3ASOBCK7PKOZCQF6N7EXE&quot;
+    } ],
+    &quot;managedContentTypes&quot; : {
+      &quot;sfGpsDsAuNswCard&quot; : {
+        &quot;nodeTypes&quot; : {
+          &quot;Link&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Link&quot;,
+            &quot;name&quot; : &quot;Link&quot;
+          },
+          &quot;headline&quot; : {
+            &quot;nodeType&quot; : &quot;Text&quot;,
+            &quot;label&quot; : &quot;Headline&quot;,
+            &quot;name&quot; : &quot;headline&quot;
+          },
+          &quot;Tag&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Tag&quot;,
+            &quot;name&quot; : &quot;Tag&quot;
+          },
+          &quot;copy&quot; : {
+            &quot;nodeType&quot; : &quot;RichText&quot;,
+            &quot;label&quot; : &quot;Copy&quot;,
+            &quot;name&quot; : &quot;copy&quot;
+          },
+          &quot;name&quot; : {
+            &quot;nodeType&quot; : &quot;NameField&quot;,
+            &quot;label&quot; : &quot;Name&quot;,
+            &quot;name&quot; : &quot;name&quot;
+          },
+          &quot;footer&quot; : {
+            &quot;nodeType&quot; : &quot;RichText&quot;,
+            &quot;label&quot; : &quot;Footer&quot;,
+            &quot;name&quot; : &quot;footer&quot;
+          },
+          &quot;image&quot; : {
+            &quot;nodeType&quot; : &quot;Media&quot;,
+            &quot;label&quot; : &quot;Image&quot;,
+            &quot;name&quot; : &quot;image&quot;
+          },
+          &quot;date&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Date&quot;,
+            &quot;name&quot; : &quot;date&quot;
+          }
+        },
+        &quot;label&quot; : &quot;NSW DS Card&quot;,
+        &quot;name&quot; : &quot;sfGpsDsAuNswCard&quot;
+      }
+    },
+    &quot;total&quot; : 3,
+    &quot;currentPageUrl&quot; : &quot;/services/data/v52.0/connect/communities/0DB5i000000XZo7GAG/managed-content/delivery?contentKeys=MCSIT5Z3ASOBCK7PKOZCQF6N7EXE%2CMC6JWFQN3ZGBG3BP5FBSFITPYX3E%2CMCLHMJCXV7KVDXFKBHN5Z245ZT3Y&amp;language=es_US&amp;managedContentType=sfGpsDsAuNswCard&amp;page=0&amp;pageSize=25&quot;
+  },
+  &quot;hasError&quot; : false,
+  &quot;errorCode&quot; : &quot;INVOKE-200&quot;
+}</expectedInputJson>
+    <fieldLevelSecurityEnabled>false</fieldLevelSecurityEnabled>
+    <inputType>JSON</inputType>
+    <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+    <nullInputsIncludedInOutput>false</nullInputsIncludedInOutput>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard5754378337606285</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:headlineV2</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>headline</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard8722471729407886</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:image:unauthenticatedUrl</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>image</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard9429902226807563</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:name:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>name</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <formulaConverted
+    >| &apos;[&apos; var:collection:items:contentNodes:headline:value &apos;](&apos; var:collection:items:contentNodes:Link:value &apos;)&apos; CONCAT</formulaConverted>
+        <formulaExpression
+    >CONCAT(&apos;[&apos;,%collection:items:contentNodes:headline:value%,&apos;](&apos;, collection:items:contentNodes:Link:value,&apos;)&apos;)</formulaExpression>
+        <formulaResultPath
+    >collection:items:contentNodes:headlineV2</formulaResultPath>
+        <formulaSequence>1.0</formulaSequence>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard2155741793164061</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>Formula</outputFieldName>
+        <outputObjectName>Formula</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard5805141845735662</globalKey>
+        <inputFieldName>collection:items:contentNodes:Tag:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>tag</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard6772745154624997</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:copy:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>copy</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard2791678841699601</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:image:altText</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>imageAlt</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard8405870847464831</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:date:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>date</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard1502234254188286</globalKey>
+        <inputFieldName>headline</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>headline</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <outputType>JSON</outputType>
+    <previewJsonData>{
+  &quot;error&quot; : &quot;OK&quot;,
+  &quot;collection&quot; : {
+    &quot;totalTypes&quot; : 1,
+    &quot;items&quot; : [ {
+      &quot;title&quot; : &quot;Priority to lift literacy and numeracy&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswCard&quot;,
+      &quot;unauthenticatedUrl&quot; : null,
+      &quot;publishedDate&quot; : &quot;2022-06-21T13:57:27.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;Link&quot; : {
+          &quot;value&quot; : &quot;#&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;New Premier&amp;#39;s Priority to lift literacy and numeracy standards&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;Tag&quot; : {
+          &quot;value&quot; : &quot;Education&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;The NSW Government will redouble its efforts to lift literacy and numeracy standards across NSW public schools to ensure students are given every opportunity to be their best.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;Priority to lift literacy and numeracy&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        },
+        &quot;image&quot; : {
+          &quot;thumbnailUrl&quot; : null,
+          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MC23NT3NKYNVGD7D4G2KARQZAJZI&quot;,
+          &quot;nodeType&quot; : &quot;Media&quot;,
+          &quot;title&quot; : &quot;alif-caesar-rizqi-pratama-loUlSOXL81c-unsplash&quot;,
+          &quot;unauthenticatedUrl&quot; : null,
+          &quot;mimeType&quot; : &quot;image/jpeg&quot;,
+          &quot;mediaType&quot; : &quot;Image&quot;,
+          &quot;altText&quot; : &quot;Book&quot;,
+          &quot;resourceUrl&quot; : &quot;/services/data/v52.0/connect/cms/delivery/channels/0ap5i0000008Wy4/media/MC23NT3NKYNVGD7D4G2KARQZAJZI/content&quot;,
+          &quot;contentKey&quot; : &quot;MC23NT3NKYNVGD7D4G2KARQZAJZI&quot;,
+          &quot;fileName&quot; : &quot;alif-caesar-rizqi-pratama-loUlSOXL81c-unsplash.jpg&quot;
+        },
+        &quot;date&quot; : {
+          &quot;value&quot; : &quot;2019-02-20&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Card&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000TsDXEA0&quot;,
+      &quot;contentUrlName&quot; : &quot;priority-to-lift-literacy-and-numeracy&quot;,
+      &quot;contentKey&quot; : &quot;MCLHMJCXV7KVDXFKBHN5Z245ZT3Y&quot;
+    }, {
+      &quot;title&quot; : &quot;Quality green spaces&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswCard&quot;,
+      &quot;unauthenticatedUrl&quot; : null,
+      &quot;publishedDate&quot; : &quot;2022-06-21T13:53:14.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;Link&quot; : {
+          &quot;value&quot; : &quot;#&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;Quality green spaces and a million more trees for NSW&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;Tag&quot; : {
+          &quot;value&quot; : &quot;Environment&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;The NSW Government will create more quality green spaces and increase the tree canopy in Sydney by 2022.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;Quality green spaces&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        },
+        &quot;image&quot; : {
+          &quot;thumbnailUrl&quot; : null,
+          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MCHMI6M7SNYZAMHI2PESJIVOJAHY&quot;,
+          &quot;nodeType&quot; : &quot;Media&quot;,
+          &quot;title&quot; : &quot;mitchell-luo--_ayGhKMUtA-unsplash&quot;,
+          &quot;unauthenticatedUrl&quot; : null,
+          &quot;mimeType&quot; : &quot;image/jpeg&quot;,
+          &quot;mediaType&quot; : &quot;Image&quot;,
+          &quot;altText&quot; : &quot;Green space in Sydney&quot;,
+          &quot;resourceUrl&quot; : &quot;/services/data/v52.0/connect/cms/delivery/channels/0ap5i0000008Wy4/media/MCHMI6M7SNYZAMHI2PESJIVOJAHY/content&quot;,
+          &quot;contentKey&quot; : &quot;MCHMI6M7SNYZAMHI2PESJIVOJAHY&quot;,
+          &quot;fileName&quot; : &quot;mitchell-luo--_ayGhKMUtA-unsplash.jpg&quot;
+        },
+        &quot;date&quot; : {
+          &quot;value&quot; : &quot;2019-03-01&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Card&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000TsDQEA0&quot;,
+      &quot;contentUrlName&quot; : &quot;quality-green-spaces&quot;,
+      &quot;contentKey&quot; : &quot;MC6JWFQN3ZGBG3BP5FBSFITPYX3E&quot;
+    }, {
+      &quot;title&quot; : &quot;Green Globe Awards 2019&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswCard&quot;,
+      &quot;unauthenticatedUrl&quot; : null,
+      &quot;publishedDate&quot; : &quot;2022-06-21T13:49:23.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;Link&quot; : {
+          &quot;value&quot; : &quot;#&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;Nominations open for Green Globe Awards 2019&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;Tag&quot; : {
+          &quot;value&quot; : &quot;Community&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;The annual awards will recognise individuals and organisations for their leadership, commitment and innovation in sustainability across NSW.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;Green Globe Awards 2019&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        },
+        &quot;image&quot; : {
+          &quot;thumbnailUrl&quot; : null,
+          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MCKNAHV65EWBFAPEQHHGZOMKXYEU&quot;,
+          &quot;nodeType&quot; : &quot;Media&quot;,
+          &quot;title&quot; : &quot;daniel-olah-IAJNzZhDADQ-unsplash&quot;,
+          &quot;unauthenticatedUrl&quot; : null,
+          &quot;mimeType&quot; : &quot;image/jpeg&quot;,
+          &quot;mediaType&quot; : &quot;Image&quot;,
+          &quot;altText&quot; : &quot;Green Globe&quot;,
+          &quot;resourceUrl&quot; : &quot;/services/data/v52.0/connect/cms/delivery/channels/0ap5i0000008Wy4/media/MCKNAHV65EWBFAPEQHHGZOMKXYEU/content&quot;,
+          &quot;contentKey&quot; : &quot;MCKNAHV65EWBFAPEQHHGZOMKXYEU&quot;,
+          &quot;fileName&quot; : &quot;daniel-olah-IAJNzZhDADQ-unsplash.jpg&quot;
+        },
+        &quot;date&quot; : {
+          &quot;value&quot; : &quot;2019-03-09&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Card&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000TsDIEA0&quot;,
+      &quot;contentUrlName&quot; : &quot;green-globe-awards-2019&quot;,
+      &quot;contentKey&quot; : &quot;MCSIT5Z3ASOBCK7PKOZCQF6N7EXE&quot;
+    } ],
+    &quot;managedContentTypes&quot; : {
+      &quot;sfGpsDsAuNswCard&quot; : {
+        &quot;nodeTypes&quot; : {
+          &quot;Link&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Link&quot;,
+            &quot;name&quot; : &quot;Link&quot;
+          },
+          &quot;headline&quot; : {
+            &quot;nodeType&quot; : &quot;Text&quot;,
+            &quot;label&quot; : &quot;Headline&quot;,
+            &quot;name&quot; : &quot;headline&quot;
+          },
+          &quot;Tag&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Tag&quot;,
+            &quot;name&quot; : &quot;Tag&quot;
+          },
+          &quot;copy&quot; : {
+            &quot;nodeType&quot; : &quot;RichText&quot;,
+            &quot;label&quot; : &quot;Copy&quot;,
+            &quot;name&quot; : &quot;copy&quot;
+          },
+          &quot;name&quot; : {
+            &quot;nodeType&quot; : &quot;NameField&quot;,
+            &quot;label&quot; : &quot;Name&quot;,
+            &quot;name&quot; : &quot;name&quot;
+          },
+          &quot;footer&quot; : {
+            &quot;nodeType&quot; : &quot;RichText&quot;,
+            &quot;label&quot; : &quot;Footer&quot;,
+            &quot;name&quot; : &quot;footer&quot;
+          },
+          &quot;image&quot; : {
+            &quot;nodeType&quot; : &quot;Media&quot;,
+            &quot;label&quot; : &quot;Image&quot;,
+            &quot;name&quot; : &quot;image&quot;
+          },
+          &quot;date&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Date&quot;,
+            &quot;name&quot; : &quot;date&quot;
+          }
+        },
+        &quot;label&quot; : &quot;NSW DS Card&quot;,
+        &quot;name&quot; : &quot;sfGpsDsAuNswCard&quot;
+      }
+    },
+    &quot;total&quot; : 3,
+    &quot;currentPageUrl&quot; : &quot;/services/data/v52.0/connect/communities/0DB5i000000XZo7GAG/managed-content/delivery?contentKeys=MCSIT5Z3ASOBCK7PKOZCQF6N7EXE%2CMC6JWFQN3ZGBG3BP5FBSFITPYX3E%2CMCLHMJCXV7KVDXFKBHN5Z245ZT3Y&amp;language=es_US&amp;managedContentType=sfGpsDsAuNswCard&amp;page=0&amp;pageSize=25&quot;
+  },
+  &quot;hasError&quot; : false,
+  &quot;errorCode&quot; : &quot;INVOKE-200&quot;
+}</previewJsonData>
+    <processSuperBulk>false</processSuperBulk>
+    <responseCacheTtlMinutes>0.0</responseCacheTtlMinutes>
+    <rollbackOnError>false</rollbackOnError>
+    <sourceObject>json</sourceObject>
+    <sourceObjectDefault>false</sourceObjectDefault>
+    <synchronousProcessThreshold>0.0</synchronousProcessThreshold>
+    <type>Transform</type>
+    <uniqueName>SfGpsDsAuNswCmsCardToLwcCard_1</uniqueName>
+    <versionNumber>1.0</versionNumber>
+    <xmlDeclarationRemoved>false</xmlDeclarationRemoved>
+</OmniDataTransform>

@@ -13,18 +13,14 @@ module.exports = {
   },
   moduleNameMapper: {
     "^@salesforce/apex$": "<rootDir>/__test__/jest-mocks/apex",
-    "^@salesforce/community/basePath$":
-      "<rootDir>/__test__/jest-mocks/community/basePath",
-    "^@salesforce/community/isGuest$":
-      "<rootDir>/__test__/jest-mocks/community/isGuest",
-    "^@salesforce/community/Id$": "<rootDir>/__test__/jest-mocks/community/Id",
-    "^lightning/navigation$":
-      "<rootDir>/__test__/jest-mocks/lightning/navigation",
-    "^lightning/uiRecordApi$":
-      "<rootDir>/__test__/jest-mocks/lightning/uiRecordApi",
+    "^@salesforce/community/(.*)": "<rootDir>/__test__/jest-mocks/community/$1",
     "^omnistudio/omniscriptBaseMixin$":
       "<rootDir>/__test__/jest-mocks/omnistudio/omniscriptBaseMixin",
     "^omnistudio/radioGroup$":
-      "<rootDir>/__test__/jest-mocks/omnistudio/radioGroup"
+      "<rootDir>/__test__/jest-mocks/omnistudio/radioGroup",
+    "^lightning/combobox$":
+      "<rootDir>/__test__/jest-mocks/lightning/combobox/combobox",
+    "^lightning/(.*)":
+      "<rootDir>/node_modules/@salesforce/sfdx-lwc-jest/src/lightning-stubs/$1/$1"
   }
 };

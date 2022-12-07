@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>55.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Results Bar (Demo)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="from"
+        type="Integer"
+        label="From index"
+        description="Index of the first displayed item."
+        default="1"
+      />
+      <property
+        name="to"
+        type="Integer"
+        label="To index"
+        description="Index of the last displayed item."
+        default="1"
+      />
+      <property
+        name="total"
+        type="Integer"
+        label="Total number of items"
+        description="Number of items in the results list."
+        default="1"
+      />
+      <property
+        name="sortOptions"
+        type="String"
+        label="Sort options"
+        description="List of options for the sort dropdown either semi-colon separated or as a JSON array of value and label."
+        default="Relevance;Most popular;Most recent"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

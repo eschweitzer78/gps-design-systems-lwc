@@ -1,6 +1,7 @@
 import OmniscriptLookup from "omnistudio/omniscriptLookup";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormLookupOsN.html";
 
 export default class SfGpsDsAuNswFormLookupOsN extends OmniscriptLookup {
@@ -17,9 +18,10 @@ export default class SfGpsDsAuNswFormLookupOsN extends OmniscriptLookup {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${
-      this._propSetMap.required ? "nsw-form__required" : ""
-    }`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this._propSetMap.required
+    });
   }
 
   get computedHelperClassName() {

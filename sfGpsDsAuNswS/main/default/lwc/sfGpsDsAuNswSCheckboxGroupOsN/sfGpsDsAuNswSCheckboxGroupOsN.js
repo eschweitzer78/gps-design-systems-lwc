@@ -7,6 +7,7 @@
 
 import OmnistudioCheckboxGroup from "omnistudio/checkboxGroup";
 import tmpl from "./sfGpsDsAuNswSCheckboxGroupOsN.html";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 
 export default class SfGpsDsAuNswNCheckboxGroupOsN extends OmnistudioCheckboxGroup {
   render() {
@@ -18,19 +19,22 @@ export default class SfGpsDsAuNswNCheckboxGroupOsN extends OmnistudioCheckboxGro
   }
 
   get computedAriaDescribedBy() {
-    if (this.fieldLevelHelp) {
-      return this.isError ? "errorMessageBlock helper" : "helper";
-    }
-
-    return this.isError ? "errorMessageBlock" : null;
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
+    });
   }
 
   get computedLegendClassName() {
-    return this.required ? "form-required" : "";
+    return computeClass({
+      "form-required": this.required
+    });
   }
 
   get computedInputClassName() {
-    return this.isError ? "error" : "";
+    return computeClass({
+      error: this.isError
+    });
   }
 
   get isRealError() {

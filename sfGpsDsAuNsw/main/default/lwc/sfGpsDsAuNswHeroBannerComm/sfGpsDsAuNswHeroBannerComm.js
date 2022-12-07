@@ -12,6 +12,7 @@ import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
   @api title;
+  @api subtitle;
   @api cstyle;
   @api wide;
   @api featured;

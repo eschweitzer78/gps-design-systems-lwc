@@ -6,6 +6,7 @@
  */
 import OmnistudioTextarea from "omnistudio/textarea";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswTextareaOsN.html";
 
 export default class SfGpsDsAuNswTextareaOsN extends OmnistudioTextarea {
@@ -14,7 +15,10 @@ export default class SfGpsDsAuNswTextareaOsN extends OmnistudioTextarea {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this.required
+    });
   }
 
   get computedHelperClassName() {
@@ -26,6 +30,9 @@ export default class SfGpsDsAuNswTextareaOsN extends OmnistudioTextarea {
   }
 
   get ariaDescribedBy() {
-    return this.isError ? "textarealabel errorMessageBlock" : "textarealabel";
+    return computeClass({
+      textarealabel: true,
+      errorMessageBlock: this.isError
+    });
   }
 }

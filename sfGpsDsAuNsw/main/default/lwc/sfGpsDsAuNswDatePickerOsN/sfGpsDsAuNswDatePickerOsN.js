@@ -9,6 +9,7 @@ import { api } from "lwc";
 import OmnistudioDatePicker from "omnistudio/datePicker";
 import tmpl from "./sfGpsDsAuNswDatePickerOsN.html";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 
 export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioDatePicker {
   @api hideFormGroup = false;
@@ -19,13 +20,16 @@ export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioDatePicker {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${
-      this.required && !this.hideAsterisk ? "nsw-form__required" : ""
-    }`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this.required && !this.hideAsterisk
+    });
   }
 
   get computedFormGroupClass() {
-    return this.hideFormGroup ? "" : "nsw-form__group";
+    return computeClass({
+      "nsw-form__group": !this.hideFormGroup
+    });
   }
 
   get computedHelperClassName() {

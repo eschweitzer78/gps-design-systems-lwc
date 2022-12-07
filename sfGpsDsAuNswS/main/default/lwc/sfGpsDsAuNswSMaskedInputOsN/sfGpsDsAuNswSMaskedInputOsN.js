@@ -7,7 +7,7 @@
 
 import { api } from "lwc";
 import maskedInput from "omnistudio/maskedInput";
-
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSMaskedInputOsN.html";
 
 export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
@@ -26,12 +26,17 @@ export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
   }
 
   get computedLabelClassName() {
-    return this.required ? "form-required" : "";
+    return computeClass({
+      "form-required": this.required
+    });
   }
 
   get computedInputInputClassName() {
-    return `vlocity-input nsw-form__text nsw-form__number ${
-      this.isError ? "error" : ""
-    }`;
+    return computeClass({
+      "vlocity-input": true,
+      "nsw-form__text": true,
+      "nsw-form__number": true,
+      error: this.isError
+    });
   }
 }

@@ -27,10 +27,17 @@ describe("c-sf-gps-ds-helpers.jsutil", () => {
     expect(obj.set.size).toBe(2);
   });
 
-  it("compares arrays well", () => {
+  it("compares similar arrays well", () => {
     let arr1 = ["A", "B", "D"];
     let arr2 = ["A", "B", "D"];
 
     expect(arraysEqual(arr1, arr2)).toBe(true);
+  });
+
+  it("catches differences in arrays", () => {
+    let arr1 = ["A", "B", "C"];
+    let arr2 = ["A", "B", "D"];
+
+    expect(arraysEqual(arr1, arr2)).toBe(false);
   });
 });

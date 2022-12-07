@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OmniDataTransform xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <assignmentRulesUsed>false</assignmentRulesUsed>
+    <deletedOnSuccess>false</deletedOnSuccess>
+    <errorIgnored>false</errorIgnored>
+    <expectedInputJson>{
+  &quot;error&quot; : &quot;OK&quot;,
+  &quot;collection&quot; : {
+    &quot;totalTypes&quot; : 1,
+    &quot;items&quot; : [ {
+      &quot;title&quot; : &quot;Energy&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswContentBlock&quot;,
+      &quot;unauthenticatedUrl&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/v52.0/0DB5i000000XZo7GAG/contents/20Y5i000000U8fyEAC?oid=00D5i000003M12qEAC&quot;,
+      &quot;publishedDate&quot; : &quot;2022-07-22T00:57:30.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;Energy&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;Save money on energy bills, ways to reduce energy use in business and the future of renewable energy in NSW.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;links&quot; : {
+          &quot;value&quot; : &quot;[Household energy saving](#)[Energy management for business](#)[Renewable energy](#)[Australian and NSW energy market](#)&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;mainLink&quot; : {
+          &quot;value&quot; : &quot;[View more](#)&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;Energy&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        },
+        &quot;image&quot; : {
+          &quot;thumbnailUrl&quot; : null,
+          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MC6SVWBO5F4JF6DOUT5R5SCWWKLE&quot;,
+          &quot;nodeType&quot; : &quot;Media&quot;,
+          &quot;title&quot; : &quot;Wind turbines&quot;,
+          &quot;unauthenticatedUrl&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MC6SVWBO5F4JF6DOUT5R5SCWWKLE&quot;,
+          &quot;mimeType&quot; : &quot;image/jpeg&quot;,
+          &quot;mediaType&quot; : &quot;Image&quot;,
+          &quot;altText&quot; : &quot;Wind turbines at sunset&quot;,
+          &quot;resourceUrl&quot; : &quot;/services/data/v52.0/connect/cms/delivery/channels/0ap5i0000008Wy4/media/MC6SVWBO5F4JF6DOUT5R5SCWWKLE/content&quot;,
+          &quot;contentKey&quot; : &quot;MC6SVWBO5F4JF6DOUT5R5SCWWKLE&quot;,
+          &quot;fileName&quot; : &quot;jason-blackeye--s1w1SguZTI-unsplash.jpg&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Content Block&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000U8fyEAC&quot;,
+      &quot;contentUrlName&quot; : &quot;energy&quot;,
+      &quot;contentKey&quot; : &quot;MCDE3E7YHK7BCW5AAXQ25OMBALTQ&quot;
+    }, {
+      &quot;title&quot; : &quot;PageContent&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswContentBlock&quot;,
+      &quot;unauthenticatedUrl&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/v52.0/0DB5i000000XZo7GAG/contents/20Y5i000000TgObEAK?oid=00D5i000003M12qEAC&quot;,
+      &quot;publishedDate&quot; : &quot;2022-06-21T13:27:33.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;Page content&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;Components for displaying specialised type of content.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;links&quot; : {
+          &quot;value&quot; : &quot;[Accordion](/sfgpsdsaunsw/s/page-content/accordion)\n[Callout](/sfgpsdsaunsw/s/page-content/callout)\n[Card](/sfgpsdsaunsw/s/page-content/card)\n[Content block](/sfgpsdsaunsw/s/page-content/content-block)&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;mainLink&quot; : {
+          &quot;value&quot; : &quot;[View more](/sfgpsdsaunsw/s/page-content)&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;PageContent&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Content Block&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000TgObEAK&quot;,
+      &quot;contentUrlName&quot; : &quot;pagecontent&quot;,
+      &quot;contentKey&quot; : &quot;MCNJBCV7A5ZFFVPIKBN6UZBEPC5I&quot;
+    } ],
+    &quot;managedContentTypes&quot; : {
+      &quot;sfGpsDsAuNswContentBlock&quot; : {
+        &quot;nodeTypes&quot; : {
+          &quot;headline&quot; : {
+            &quot;nodeType&quot; : &quot;Text&quot;,
+            &quot;label&quot; : &quot;Headline&quot;,
+            &quot;name&quot; : &quot;headline&quot;
+          },
+          &quot;copy&quot; : {
+            &quot;nodeType&quot; : &quot;RichText&quot;,
+            &quot;label&quot; : &quot;Copy&quot;,
+            &quot;name&quot; : &quot;copy&quot;
+          },
+          &quot;links&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Links&quot;,
+            &quot;name&quot; : &quot;links&quot;
+          },
+          &quot;mainLink&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Main link&quot;,
+            &quot;name&quot; : &quot;mainLink&quot;
+          },
+          &quot;name&quot; : {
+            &quot;nodeType&quot; : &quot;NameField&quot;,
+            &quot;label&quot; : &quot;Name&quot;,
+            &quot;name&quot; : &quot;name&quot;
+          },
+          &quot;image&quot; : {
+            &quot;nodeType&quot; : &quot;Media&quot;,
+            &quot;label&quot; : &quot;Image&quot;,
+            &quot;name&quot; : &quot;image&quot;
+          }
+        },
+        &quot;label&quot; : &quot;NSW DS Content Block&quot;,
+        &quot;name&quot; : &quot;sfGpsDsAuNswContentBlock&quot;
+      }
+    },
+    &quot;total&quot; : 2,
+    &quot;currentPageUrl&quot; : &quot;/services/data/v52.0/connect/communities/0DB5i000000XZo7GAG/managed-content/delivery?contentKeys=MCDE3E7YHK7BCW5AAXQ25OMBALTQ%2CMCNJBCV7A5ZFFVPIKBN6UZBEPC5I&amp;language=es_US&amp;managedContentType=sfGpsDsAuNswContentBlock&amp;page=0&amp;pageSize=25&quot;
+  },
+  &quot;hasError&quot; : false,
+  &quot;errorCode&quot; : &quot;INVOKE-200&quot;
+}</expectedInputJson>
+    <fieldLevelSecurityEnabled>false</fieldLevelSecurityEnabled>
+    <inputType>JSON</inputType>
+    <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+    <nullInputsIncludedInOutput>false</nullInputsIncludedInOutput>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock7467857113909886</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:image:altText</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>imageAlt</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock6619356964546077</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:name:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>name</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock40964600281087593</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:headline:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>headline</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock515254981368318</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:image:unauthenticatedUrl</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>image</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock20219630077943962</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:mainLink:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>mainLink</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock8340398974214791</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:links:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>links</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock10613637038616153</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:copy:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>copy</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <outputType>JSON</outputType>
+    <previewJsonData>{
+  &quot;error&quot; : &quot;OK&quot;,
+  &quot;collection&quot; : {
+    &quot;totalTypes&quot; : 1,
+    &quot;items&quot; : [ {
+      &quot;title&quot; : &quot;Energy&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswContentBlock&quot;,
+      &quot;unauthenticatedUrl&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/v52.0/0DB5i000000XZo7GAG/contents/20Y5i000000U8fyEAC?oid=00D5i000003M12qEAC&quot;,
+      &quot;publishedDate&quot; : &quot;2022-07-22T00:57:30.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;Energy&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;Save money on energy bills, ways to reduce energy use in business and the future of renewable energy in NSW.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;links&quot; : {
+          &quot;value&quot; : &quot;[Household energy saving](#)[Energy management for business](#)[Renewable energy](#)[Australian and NSW energy market](#)&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;mainLink&quot; : {
+          &quot;value&quot; : &quot;[View more](#)&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;Energy&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        },
+        &quot;image&quot; : {
+          &quot;thumbnailUrl&quot; : null,
+          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MC6SVWBO5F4JF6DOUT5R5SCWWKLE&quot;,
+          &quot;nodeType&quot; : &quot;Media&quot;,
+          &quot;title&quot; : &quot;Wind turbines&quot;,
+          &quot;unauthenticatedUrl&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MC6SVWBO5F4JF6DOUT5R5SCWWKLE&quot;,
+          &quot;mimeType&quot; : &quot;image/jpeg&quot;,
+          &quot;mediaType&quot; : &quot;Image&quot;,
+          &quot;altText&quot; : &quot;Wind turbines at sunset&quot;,
+          &quot;resourceUrl&quot; : &quot;/services/data/v52.0/connect/cms/delivery/channels/0ap5i0000008Wy4/media/MC6SVWBO5F4JF6DOUT5R5SCWWKLE/content&quot;,
+          &quot;contentKey&quot; : &quot;MC6SVWBO5F4JF6DOUT5R5SCWWKLE&quot;,
+          &quot;fileName&quot; : &quot;jason-blackeye--s1w1SguZTI-unsplash.jpg&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Content Block&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000U8fyEAC&quot;,
+      &quot;contentUrlName&quot; : &quot;energy&quot;,
+      &quot;contentKey&quot; : &quot;MCDE3E7YHK7BCW5AAXQ25OMBALTQ&quot;
+    }, {
+      &quot;title&quot; : &quot;PageContent&quot;,
+      &quot;type&quot; : &quot;sfGpsDsAuNswContentBlock&quot;,
+      &quot;unauthenticatedUrl&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/v52.0/0DB5i000000XZo7GAG/contents/20Y5i000000TgObEAK?oid=00D5i000003M12qEAC&quot;,
+      &quot;publishedDate&quot; : &quot;2022-06-21T13:27:33.000Z&quot;,
+      &quot;contentNodes&quot; : {
+        &quot;headline&quot; : {
+          &quot;value&quot; : &quot;Page content&quot;,
+          &quot;nodeType&quot; : &quot;Text&quot;
+        },
+        &quot;copy&quot; : {
+          &quot;value&quot; : &quot;&amp;lt;p&amp;gt;Components for displaying specialised type of content.&amp;lt;/p&amp;gt;&quot;,
+          &quot;nodeType&quot; : &quot;RichText&quot;
+        },
+        &quot;links&quot; : {
+          &quot;value&quot; : &quot;[Accordion](/sfgpsdsaunsw/s/page-content/accordion)\n[Callout](/sfgpsdsaunsw/s/page-content/callout)\n[Card](/sfgpsdsaunsw/s/page-content/card)\n[Content block](/sfgpsdsaunsw/s/page-content/content-block)&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;mainLink&quot; : {
+          &quot;value&quot; : &quot;[View more](/sfgpsdsaunsw/s/page-content)&quot;,
+          &quot;nodeType&quot; : &quot;MultilineText&quot;
+        },
+        &quot;name&quot; : {
+          &quot;value&quot; : &quot;PageContent&quot;,
+          &quot;nodeType&quot; : &quot;NameField&quot;
+        }
+      },
+      &quot;language&quot; : &quot;en_US&quot;,
+      &quot;typeLabel&quot; : &quot;NSW DS Content Block&quot;,
+      &quot;managedContentId&quot; : &quot;20Y5i000000TgObEAK&quot;,
+      &quot;contentUrlName&quot; : &quot;pagecontent&quot;,
+      &quot;contentKey&quot; : &quot;MCNJBCV7A5ZFFVPIKBN6UZBEPC5I&quot;
+    } ],
+    &quot;managedContentTypes&quot; : {
+      &quot;sfGpsDsAuNswContentBlock&quot; : {
+        &quot;nodeTypes&quot; : {
+          &quot;headline&quot; : {
+            &quot;nodeType&quot; : &quot;Text&quot;,
+            &quot;label&quot; : &quot;Headline&quot;,
+            &quot;name&quot; : &quot;headline&quot;
+          },
+          &quot;copy&quot; : {
+            &quot;nodeType&quot; : &quot;RichText&quot;,
+            &quot;label&quot; : &quot;Copy&quot;,
+            &quot;name&quot; : &quot;copy&quot;
+          },
+          &quot;links&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Links&quot;,
+            &quot;name&quot; : &quot;links&quot;
+          },
+          &quot;mainLink&quot; : {
+            &quot;nodeType&quot; : &quot;MultilineText&quot;,
+            &quot;label&quot; : &quot;Main link&quot;,
+            &quot;name&quot; : &quot;mainLink&quot;
+          },
+          &quot;name&quot; : {
+            &quot;nodeType&quot; : &quot;NameField&quot;,
+            &quot;label&quot; : &quot;Name&quot;,
+            &quot;name&quot; : &quot;name&quot;
+          },
+          &quot;image&quot; : {
+            &quot;nodeType&quot; : &quot;Media&quot;,
+            &quot;label&quot; : &quot;Image&quot;,
+            &quot;name&quot; : &quot;image&quot;
+          }
+        },
+        &quot;label&quot; : &quot;NSW DS Content Block&quot;,
+        &quot;name&quot; : &quot;sfGpsDsAuNswContentBlock&quot;
+      }
+    },
+    &quot;total&quot; : 2,
+    &quot;currentPageUrl&quot; : &quot;/services/data/v52.0/connect/communities/0DB5i000000XZo7GAG/managed-content/delivery?contentKeys=MCDE3E7YHK7BCW5AAXQ25OMBALTQ%2CMCNJBCV7A5ZFFVPIKBN6UZBEPC5I&amp;language=es_US&amp;managedContentType=sfGpsDsAuNswContentBlock&amp;page=0&amp;pageSize=25&quot;
+  },
+  &quot;hasError&quot; : false,
+  &quot;errorCode&quot; : &quot;INVOKE-200&quot;
+}</previewJsonData>
+    <processSuperBulk>false</processSuperBulk>
+    <responseCacheTtlMinutes>0.0</responseCacheTtlMinutes>
+    <rollbackOnError>false</rollbackOnError>
+    <sourceObject>json</sourceObject>
+    <sourceObjectDefault>false</sourceObjectDefault>
+    <synchronousProcessThreshold>0.0</synchronousProcessThreshold>
+    <type>Transform</type>
+    <uniqueName>SfGpsDsAuNswCmsContentBlockToLwcContentBlock_1</uniqueName>
+    <versionNumber>1.0</versionNumber>
+    <xmlDeclarationRemoved>false</xmlDeclarationRemoved>
+</OmniDataTransform>

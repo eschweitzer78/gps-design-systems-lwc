@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { LightningElement, api, track } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 const options = {
   default: "",
@@ -24,6 +25,7 @@ export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
   @api ctaText;
   @api ctaHref;
   @api ctaStyle = "link"; // link or button
+  @api ctaPreventDefault = false;
   @api as = "default";
   @api className;
   @track _isClosed;
@@ -33,13 +35,15 @@ export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
   }
 
   get computedClassName() {
-    return `nsw-global-alert${this.className ? " " + this.className : ""} ${
-      options[this.as || "default"]
-    }`;
+    return computeClass({
+      "nsw-global-alert": true,
+      [options[this.as] || options.default]: true,
+      [this.className]: this.className
+    });
   }
 
   get computedButtonClassName() {
-    return buttonStyles[this.as || "default"];
+    return buttonStyles[this.as] || buttonStyles.default;
   }
 
   get hasCta() {
@@ -54,7 +58,16 @@ export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
     return this.ctaStyle === "button";
   }
 
-  handleClick() {
+  handleCtaClick(event) {
+    if (this.ctaPreventDefault) {
+      event.preventDefault();
+    }
+
+    this.dispatchEvent(new CustomEvent("click"));
+  }
+  handleCloseClick(event) {
+    event.preventDefault();
     this._isClosed = true;
+    this.dispatchEvent(new CustomEvent("close"));
   }
 }

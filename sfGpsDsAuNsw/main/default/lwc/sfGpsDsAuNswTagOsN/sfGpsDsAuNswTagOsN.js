@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 
 export default class SfGpsDsAuNswTagOsN extends LightningElement {
   @api tagClassName;
@@ -14,10 +15,17 @@ export default class SfGpsDsAuNswTagOsN extends LightningElement {
   @api className;
 
   get computedClassName() {
-    return `nsw-list nsw-list--8 ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-list": true,
+      "nsw-list-8": true,
+      [this.className]: this.className
+    });
   }
 
   get computedTagClassName() {
-    return `nsw-tag ${this.tagClassName ? this.tagClassName : ""}`;
+    return computeClass({
+      "nsw-tag": true,
+      [this.tagClassName]: this.tagClassName
+    });
   }
 }

@@ -7,6 +7,7 @@
 
 import { api } from "lwc";
 import OmniscriptInput from "omnistudio/input";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSInputOsN.html";
 
 export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
@@ -45,10 +46,16 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
   }
 
   get computedLabelClassName() {
-    return this.required ? "form-required" : "";
+    return computeClass({
+      "form-required": this.required
+    });
   }
 
   get computedInputInputClassName() {
-    return `vlocity-input form__text ${this.isError ? "error" : ""}`;
+    return computeClass({
+      "vlocity-input": true,
+      form__text: true,
+      error: this.isError
+    });
   }
 }

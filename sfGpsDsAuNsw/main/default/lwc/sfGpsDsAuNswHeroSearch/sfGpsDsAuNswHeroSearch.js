@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   @api title;
@@ -23,7 +24,10 @@ export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   }
 
   get computedClassName() {
-    return `hero-search ${this.className ? this.className : ""}`;
+    return computeClass({
+      "hero-search": true,
+      [this.className]: this.className
+    });
   }
 
   handleChange(event) {
@@ -34,15 +38,13 @@ export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   handleKeyUp(event) {
     const isEnterKey = event.keyCode === 13;
     if (isEnterKey) {
-      const searchEvent = new CustomEvent("search");
-      this.dispatchEvent(searchEvent);
+      this.dispatchEvent(new CustomEvent("search"));
     }
 
     return false; // avoid submission of form
   }
 
   handleClick() {
-    const searchEvent = new CustomEvent("search");
-    this.dispatchEvent(searchEvent);
+    this.dispatchEvent(new CustomEvent("search"));
   }
 }

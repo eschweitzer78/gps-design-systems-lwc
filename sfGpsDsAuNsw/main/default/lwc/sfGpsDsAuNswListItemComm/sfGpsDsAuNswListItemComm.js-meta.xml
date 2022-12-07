@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>54.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS List Item</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="Indicates the category of a topic or theme to further group content."
+      />
+      <property
+        name="headline"
+        type="String"
+        label="Headline"
+        description="Provides a snapshot of the content combined with a URL the items leads to in Markdown link format."
+        required="true"
+        default="[Link item](#)"
+      />
+      <property
+        name="copy"
+        type="String"
+        label="Copy"
+        description="Provides further details where the headline alone may not be sufficient - in Markdown format."
+        default="Use list items to display a list of results to users surfacing key information."
+      />
+      <property
+        name="date"
+        type="String"
+        label="Date"
+        description="Specifies a date context for the content, e.g. a publication date - in ISO8601 format."
+      />
+      <property
+        name="image"
+        type="String"
+        label="Image source"
+        description="Allows for different content to stand out and provide additional context - as an URL."
+      />
+      <property
+        name="imageAlt"
+        type="String"
+        label="Image alt"
+        description="Specifies an alternate text for the image, if the image cannot be displayed."
+      />
+      <property
+        name="tags"
+        type="String"
+        label="Tags"
+        description="Tags in Markdown URL format to further group content."
+        default=""
+      />
+      <property
+        name="showLink"
+        type="Boolean"
+        label="Show link"
+        description="Indicates that the link information should be displayed."
+        default="false"
+      />
+      <property
+        name="isBlock"
+        type="Boolean"
+        label="Is block"
+        description="The link applies to the whole list item vs. only the headline."
+        default="true"
+      />
+      <property
+        name="isReversed"
+        type="Boolean"
+        label="Is reversed"
+        description="The image, if any, should be displayed on the left hand side."
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional classes"
+        description="Additional CSS classes to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

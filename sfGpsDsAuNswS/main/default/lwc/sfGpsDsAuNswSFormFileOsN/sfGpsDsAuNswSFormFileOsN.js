@@ -6,6 +6,7 @@
  */
 import OmniscriptFile from "omnistudio/omniscriptFile";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSFormFileOsN.html";
 
 // TODO: there is seemingly a bug in SDLS when the hover colors for neutral buttons are not derived from variables
@@ -21,7 +22,9 @@ export default class SfGpsDsAuNswSFormFileOsN extends OmniscriptFile {
   }
 
   get computedLabelClassName() {
-    return this._propSetMap.required ? "form-required" : "";
+    return computeClass({
+      "form-required": this._propSetMap.required
+    });
   }
 
   get mergedLabel() {

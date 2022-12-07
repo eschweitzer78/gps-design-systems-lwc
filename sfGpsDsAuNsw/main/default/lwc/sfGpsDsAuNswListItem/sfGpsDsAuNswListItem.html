@@ -1,0 +1,26 @@
+<template>
+  <div class={computedClassName}>
+    <div class="nsw-list-item__content">
+      <div if:true={label} class="nsw-list-item__label">{label}</div>
+
+      <div if:true={_date} class="nsw-list-item__info">
+        <time datetime={_dateISOString}>{_dateLocaleString}</time>
+      </div>
+
+      <div class="nsw-list-item__title">
+        <a href={link}>{title}</a>
+      </div>
+      <div if:true={showLink} class="nsw-list-item__info">{link}</div>
+
+      <slot> </slot>
+
+      <div if:true={tags} class="nsw-list-item__tags">
+        <c-sf-gps-ds-au-nsw-tags tags={tags}> </c-sf-gps-ds-au-nsw-tags>
+      </div>
+    </div>
+
+    <div if:true={image} class="nsw-list-item__image">
+      <img src={image} alt={imageAlt} />
+    </div>
+  </div>
+</template>

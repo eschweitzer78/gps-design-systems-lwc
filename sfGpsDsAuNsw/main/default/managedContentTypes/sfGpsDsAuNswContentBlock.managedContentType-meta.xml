@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ManagedContentType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>A content block for the NSW DS</description>
+    <developerName>sfGpsDsAuNswContentBlock</developerName>
+    <managedContentNodeTypes>
+        <helpText>Name</helpText>
+        <isLocalizable>false</isLocalizable>
+        <isRequired>true</isRequired>
+        <nodeLabel>Name</nodeLabel>
+        <nodeName>name</nodeName>
+        <nodeType>NAMEFIELD</nodeType>
+        <placeholderText>Name</placeholderText>
+    </managedContentNodeTypes>
+    <managedContentNodeTypes>
+        <helpText>Headline</helpText>
+        <isLocalizable>true</isLocalizable>
+        <isRequired>true</isRequired>
+        <nodeLabel>Headline</nodeLabel>
+        <nodeName>headline</nodeName>
+        <nodeType>TEXT</nodeType>
+        <placeholderText>Headline</placeholderText>
+    </managedContentNodeTypes>
+    <managedContentNodeTypes>
+        <helpText>Main link in Markdown format</helpText>
+        <isLocalizable>false</isLocalizable>
+        <isRequired>false</isRequired>
+        <nodeLabel>Main link</nodeLabel>
+        <nodeName>mainLink</nodeName>
+        <nodeType>MTEXT</nodeType>
+        <placeholderText>Main link</placeholderText>
+    </managedContentNodeTypes>
+    <managedContentNodeTypes>
+        <helpText>Copy</helpText>
+        <isLocalizable>true</isLocalizable>
+        <isRequired>false</isRequired>
+        <nodeLabel>Copy</nodeLabel>
+        <nodeName>copy</nodeName>
+        <nodeType>RTE</nodeType>
+        <placeholderText>Copy</placeholderText>
+    </managedContentNodeTypes>
+    <managedContentNodeTypes>
+        <helpText>Image</helpText>
+        <isLocalizable>false</isLocalizable>
+        <isRequired>false</isRequired>
+        <nodeLabel>Image</nodeLabel>
+        <nodeName>image</nodeName>
+        <nodeType>IMG</nodeType>
+    </managedContentNodeTypes>
+    <managedContentNodeTypes>
+        <helpText>Links in Markdown format</helpText>
+        <isLocalizable>true</isLocalizable>
+        <isRequired>false</isRequired>
+        <nodeLabel>Links</nodeLabel>
+        <nodeName>links</nodeName>
+        <nodeType>MTEXT</nodeType>
+        <placeholderText>Links</placeholderText>
+    </managedContentNodeTypes>
+    <masterLabel>NSW DS Content Block</masterLabel>
+</ManagedContentType>

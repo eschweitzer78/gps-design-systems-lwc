@@ -7,6 +7,7 @@
 
 import { api } from "lwc";
 import OmnistudioDatePicker from "omnistudio/datePicker";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSDatePickerOsN.html";
 
 export default class SfGpsDsAuNswDatePickerOsN extends OmnistudioDatePicker {
@@ -17,14 +18,21 @@ export default class SfGpsDsAuNswDatePickerOsN extends OmnistudioDatePicker {
   }
 
   get computedFormItemClassName() {
-    return "form__item " + this.errorClass;
+    return computeClass({
+      form__item: true,
+      [this.errorClass]: this.errorClass
+    });
   }
 
   get computedLabelClassName() {
-    return this.required && !this.hideAsterisk ? "form-required" : "";
+    return computeClass({
+      "form-required": this.required && !this.hideAsterisk
+    });
   }
 
   get computedInputClassName() {
-    return this.isError ? "error" : "";
+    return computeClass({
+      error: this.isError
+    });
   }
 }

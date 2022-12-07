@@ -1,0 +1,21 @@
+<template>
+  <c-sf-gps-ds-au-nsw-list-item
+    label={label}
+    title={_headline.text}
+    link={_headline.url}
+    copy={copy}
+    image={image}
+    image-alt={imageAlt}
+    date={_date}
+    tags={_links}
+    show-link={showLink}
+    is-block={isBlock}
+    is-reversed={isReversed}
+    class-name={className}
+  >
+    <template if:true={copy}>
+      <span></span>
+      <p class="nsw-list-item__copy"></p>
+    </template>
+  </c-sf-gps-ds-au-nsw-list-item>
+</template>

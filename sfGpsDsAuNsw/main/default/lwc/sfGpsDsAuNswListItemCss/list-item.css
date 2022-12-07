@@ -1,0 +1,104 @@
+/* 
+  Based on
+  digitalnsw/nsw-design-system/src/components/list-item/_list-item.scss
+  5e4c4c2  on Oct 13, 2021
+*/
+/* stylelint-disable declaration-no-important  */
+/* stylelint-enable declaration-no-important  */
+.nsw-list-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--nsw-grey-04);
+}
+.nsw-list-item:first-child {
+  border-top: 1px solid var(--nsw-grey-04);
+}
+.nsw-list-item__title {
+  font-size: var(--nsw-font-size-md-mobile);
+  line-height: var(--nsw-line-height-md-mobile);
+  font-weight: var(--nsw-font-bold);
+}
+@media (min-width: 62rem) {
+  .nsw-list-item__title {
+    font-size: var(--nsw-font-size-md-desktop);
+    line-height: var(--nsw-line-height-md-desktop);
+  }
+}
+.nsw-list-item__content {
+  width: 100%;
+}
+.nsw-list-item__label,
+.nsw-list-item__info,
+.nsw-list-item__title,
+.nsw-list-item__copy,
+.nsw-list-item__tags {
+  margin-top: 0.5rem;
+}
+.nsw-list-item__label:first-child,
+.nsw-list-item__info:first-child,
+.nsw-list-item__title:first-child,
+.nsw-list-item__copy:first-child,
+.nsw-list-item__tags:first-child {
+  margin: 0;
+}
+.nsw-list-item__label,
+.nsw-list-item__info {
+  font-size: var(--nsw-font-size-xs-mobile);
+  line-height: var(--nsw-line-height-xs-mobile);
+}
+@media (min-width: 62rem) {
+  .nsw-list-item__label,
+  .nsw-list-item__info {
+    font-size: var(--nsw-font-size-xs-desktop);
+    line-height: var(--nsw-line-height-xs-desktop);
+  }
+}
+.nsw-list-item__label {
+  font-weight: var(--nsw-font-bold);
+}
+.nsw-list-item__image {
+  min-width: 15.625rem;
+  width: 15.625rem;
+  margin: 0 0 0 1.5rem;
+  display: none;
+}
+@media (min-width: 62rem) {
+  .nsw-list-item__image {
+    display: block;
+  }
+}
+.nsw-list-item__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.nsw-list-item--block:focus-within {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
+}
+.nsw-list-item--block:hover .nsw-list-item__title a {
+  background-color: var(--nsw-text-hover);
+}
+.nsw-list-item--block .nsw-list-item__title a::after {
+  z-index: 100;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.nsw-list-item--block .nsw-list-item__title a:focus {
+  outline: none;
+}
+.nsw-list-item--reversed {
+  flex-direction: row-reverse;
+}
+.nsw-list-item--reversed .nsw-list-item__image {
+  margin: 0 1.5rem 0 0;
+}
+
+/*# sourceMappingURL=sfGpsDsAuNswListItem.css.map */

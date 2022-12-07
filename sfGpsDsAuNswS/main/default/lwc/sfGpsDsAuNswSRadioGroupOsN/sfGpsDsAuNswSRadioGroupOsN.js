@@ -6,6 +6,7 @@
  */
 
 import OmnistudioRadioGroup from "omnistudio/radioGroup";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSRadioGroupOsN.html";
 
 export default class SfGpsDsAuNswSRadioGroupOsN extends OmnistudioRadioGroup {
@@ -22,19 +23,22 @@ export default class SfGpsDsAuNswSRadioGroupOsN extends OmnistudioRadioGroup {
   }
 
   get computedAriaDescribedBy() {
-    if (this.fieldLevelHelp) {
-      return this.isError ? "errorMessageBlock helper" : "helper";
-    }
-
-    return this.isError ? "errorMessageBlock" : null;
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
+    });
   }
 
   get computedLegendClassName() {
-    return this.required ? "form-required" : "";
+    return computeClass({
+      "form-required": this.required
+    });
   }
 
   get computedInputClassName() {
-    return this.isError ? "error" : "";
+    return computeClass({
+      error: this.isError
+    });
   }
 
   get isRealError() {

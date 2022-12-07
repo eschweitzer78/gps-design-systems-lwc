@@ -7,6 +7,7 @@
 
 import OmniscriptInput from "omnistudio/input";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswInputOsN.html";
 
 export default class SfGpsDsAuNswInputOsN extends OmniscriptInput {
@@ -35,7 +36,10 @@ export default class SfGpsDsAuNswInputOsN extends OmniscriptInput {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this.required
+    });
   }
 
   get computedHelperClassName() {

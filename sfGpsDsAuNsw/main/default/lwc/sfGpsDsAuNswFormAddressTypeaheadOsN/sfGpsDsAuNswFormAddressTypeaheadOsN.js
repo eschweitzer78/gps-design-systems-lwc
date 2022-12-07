@@ -10,6 +10,7 @@ import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
 import { debounce } from "omnistudio/utility";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormAddressTypeaheadOsN.html";
 
 const STATUS_TYPING = "typing";
@@ -463,9 +464,10 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
   // STYLE EXPRESSIONS
 
   get computedLabelClassName() {
-    return `nsw-form__label ${
-      this._propSetMap.required ? "nsw-form__required" : ""
-    }`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this._propSetMap.required
+    });
   }
 
   get computedHelperClassName() {
@@ -477,11 +479,15 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
   }
 
   get computedTypeaheadClass() {
-    return this.isSmart ? "" : "sfgpsds-hide";
+    return computeClass({
+      "sfgpsds-hide": !this.isSmart
+    });
   }
 
   get computedManualClassName() {
-    return this.isSmart ? "sfgpsds-hide" : "";
+    return computeClass({
+      "sfgpsds-hide": this.isSmart
+    });
   }
 
   get complete() {

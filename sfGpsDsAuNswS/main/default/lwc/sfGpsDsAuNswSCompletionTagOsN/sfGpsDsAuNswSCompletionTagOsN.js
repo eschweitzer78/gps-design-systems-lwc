@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 
 export default class SfGpsDsAuNswTagOsN extends LightningElement {
   @api complete = false;
@@ -19,10 +20,11 @@ export default class SfGpsDsAuNswTagOsN extends LightningElement {
   get computedClassName() {
     let complete = this.complete ? this.complete.toString() : "false";
 
-    return `snsw-completion-tag ${
-      complete === "true"
-        ? "snsw-completion-tag__complete"
-        : "snsw-completion-tag__incomplete"
-    } ${this.className ? this.className : ""}`;
+    return computeClass({
+      "snsw-completion-tag": true,
+      "snsw-completion-tag__complete": complete === "true",
+      "snsw-completion-tag__incomplete": complete !== "true",
+      [this.className]: this.className
+    });
   }
 }

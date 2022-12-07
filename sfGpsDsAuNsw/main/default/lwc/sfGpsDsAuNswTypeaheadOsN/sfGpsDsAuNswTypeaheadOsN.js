@@ -7,6 +7,7 @@
 
 import OmnistudioTypeahead from "omnistudio/typeahead";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswTypeaheadOsN.html";
 
 export default class SfGpsDsAuNswTypeaheadOs extends OmnistudioTypeahead {
@@ -15,7 +16,10 @@ export default class SfGpsDsAuNswTypeaheadOs extends OmnistudioTypeahead {
   }
 
   get computedLabelClassName() {
-    return `nsw-form__label ${this.required ? "nsw-form__required" : ""}`;
+    return computeClass({
+      "nsw-form__label": true,
+      "nsw-form__required": this.required
+    });
   }
 
   get computedHelperClassName() {

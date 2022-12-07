@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { LightningElement, api } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 const options = {
   info: "nsw-in-page-alert--info",
@@ -27,9 +28,12 @@ export default class SfGpsDsAuNswAlert extends LightningElement {
   @api compact = false;
 
   get computedClassName() {
-    return `nsw-in-page-alert ${this.className} ${options[this.as]} ${
-      this.compact ? "nsw-in-page-alert--compact" : ""
-    }`;
+    return computeClass({
+      "nsw-in-page-alert": true,
+      "nsw-in-page-alert--compact": this.compact,
+      [options[this.as]]: true,
+      [this.className]: this.className
+    });
   }
 
   get computedIconName() {

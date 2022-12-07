@@ -14,10 +14,15 @@
       </div>
 
       <p if:true={isCtaButtonStyle}>
-        <a href={ctaHref} class={computedButtonClassName}>{ctaText}</a>
+        <a
+          href={ctaHref}
+          class={computedButtonClassName}
+          onclick={handleCtaClick}
+          >{ctaText}</a
+        >
       </p>
 
-      <button type="button" class="nsw-icon-button" onclick={handleClick}>
+      <button type="button" class="nsw-icon-button" onclick={handleCloseClick}>
         <span class="material-icons nsw-material-icons" aria-hidden="true"
           >close</span
         >
