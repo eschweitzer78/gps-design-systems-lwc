@@ -50,9 +50,7 @@ const utils = require("./utils");
 
   await Promise.all([
     page.waitForNavigation({ timeout: timeout, waitUntil: "load" }),
-    page
-      .waitForNavigation({ timeout: timeout, waitUntil: "networkidle2" })
-      .catch((e) => void 0),
+    page.waitForNavigation({ timeout: timeout, waitUntil: "networkidle2" }),
     page.goto(targetOSSettings)
   ]);
 
