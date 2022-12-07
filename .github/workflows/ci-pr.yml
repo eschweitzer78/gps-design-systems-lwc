@@ -98,6 +98,26 @@ jobs:
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci
 
+      # Install Volta to enforce proper node and package manager versions
+      - name: "Install Volta"
+        uses: volta-cli/action@v1
+
+      # Cache node_modules to speed up the process
+      - name: "Restore node_modules cache"
+        id: cache-npm
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: npm-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-${{ env.cache-name }}-
+            npm-
+
+      # Install npm dependencies for Prettier and Jest
+      - name: "Install npm dependencies"
+        if: steps.cache-npm.outputs.cache-hit != 'true'
+        run: npm ci
+
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
         uses: pmd/pmd-github-action@v1.2.1
