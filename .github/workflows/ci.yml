@@ -64,10 +64,12 @@ jobs:
     needs: format-lint-lwc-tests
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
+      - uses: browser-actions/setup-chrome@latest
+      
       # Checkout the source code
       - name: "Checkout source code"
         uses: actions/checkout@v2
-
+          
       # Install Volta to enforce proper node and package manager versions
       - name: "Install Volta"
         uses: volta-cli/action@v1

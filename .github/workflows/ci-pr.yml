@@ -74,6 +74,8 @@ jobs:
     needs: format-lint-lwc-tests
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
+      - uses: browser-actions/setup-chrome@latest
+
       # Checkout the source code
       - name: "Checkout source code"
         uses: actions/checkout@v2
