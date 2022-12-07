@@ -41,7 +41,7 @@ const utils = require("./utils");
   const timeout = 30000;
   const page = await browser.newPage();
   page.setDefaultTimeout(60000);
-  await page.goto(`${frontdoor.result.url}`);
+  await page.goto(`${frontdoor.result.url}`, { waitUntil: 'networkidle2' });
 
   console.log("logged in");
 
@@ -53,8 +53,8 @@ const utils = require("./utils");
   console.log('did load');*/
   /*  await page.waitForNavigation({ timeout: timeout, waitUntil: "networkidle2" });
   console.log('did idle2');*/
-  await page.goto(targetOSSettings);
-  console.log("natigated to setup");
+  await page.goto(targetOSSettings, { waitUntil: 'networkidle2' });
+  console.log("navigated to setup");
   /*await Promise.all([
     page.waitForNavigation({ timeout: timeout, waitUntil: "load" }),
     page.waitForNavigation({ timeout: timeout, waitUntil: "networkidle2" }),
