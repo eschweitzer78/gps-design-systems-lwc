@@ -64,18 +64,6 @@ jobs:
     needs: format-lint-lwc-tests
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
-      # Install Chrome dev for puppeteer
-      - name: "Install Chrome dev"
-        run: |
-          sudo apt-get update
-          sudo apt-get install -yq libgconf-2-4
-          sudo apt-get install -y wget --no-install-recommends
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable --no-install-recommends
-          sudo rm -rf /var/lib/apt/lists/*
-
       # Checkout the source code
       - name: "Checkout source code"
         uses: actions/checkout@v3
@@ -83,26 +71,6 @@ jobs:
       # Install Volta to enforce proper node and package manager versions
       - name: "Install Volta"
         uses: volta-cli/action@v3
-
-      # Cache node_modules to speed up the process
-      - name: "Restore node_modules cache"
-        id: cache-npm
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: npm-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            npm-${{ env.cache-name }}-
-            npm-
-
-      # Install npm dependencies for Prettier and Jest
-      - name: "Install npm dependencies"
-        if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm ci
-
-      # Install Volta to enforce proper node and package manager versions
-      - name: "Install Volta"
-        uses: volta-cli/action@v1
 
       # Cache node_modules to speed up the process
       - name: "Restore node_modules cache"
