@@ -19,3 +19,9 @@ package.xml
 **/scss
 **/*.scss
 **/*.map
+
+# unfortunately OmniStudio assets cannot be packaged for now, so removing these from deployment
+**/omniIntegrationProcedure/**
+**/omniIntegrationProcedures/**
+**/omniDataTransform/**
+**/omniDataTransforms/**
