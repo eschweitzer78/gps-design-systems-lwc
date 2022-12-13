@@ -68,7 +68,7 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
     });
   }
 
-  handlePreviousClick(event) {
+  handlePreviousPageClick(event) {
     event.preventDefault();
     if (this.activePage > 1) {
       this.dispatchEvent(
@@ -82,20 +82,6 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
     this.dispatchEvent(new CustomEvent("pagechange", { detail: 1 }));
   }
 
-  handlePrevPageClick(event) {
-    event.preventDefault();
-    this.dispatchEvent(
-      new CustomEvent("pagechange", { detail: this.activePage - 1 })
-    );
-  }
-
-  handleNextPageClick(event) {
-    event.preventDefault();
-    this.dispatchEvent(
-      new CustomEvent("pagechange", { detail: this.activePage + 1 })
-    );
-  }
-
   handleLastPageClick(event) {
     event.preventDefault();
     this.dispatchEvent(
@@ -103,7 +89,7 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
     );
   }
 
-  handleNextClick(event) {
+  handleNextPageClick(event) {
     event.preventDefault();
 
     if (this.activePage < this.lastPage) {

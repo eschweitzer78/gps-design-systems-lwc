@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-export { uniqueId, isIPadPro, isMacPlatform } from "./utilities";
+export { uniqueId, isIPadPro, isMacPlatform } from "./utilities_v4";
 
-export { parseIso8601 } from "./datetimeutil";
+export { parseIso8601 } from "./datetimeutil_v4";
 
 export {
   htmlDecode,
@@ -16,22 +16,22 @@ export {
   computeClass,
   isRTL,
   HtmlSanitizer
-} from "./domutil";
+} from "./domutil_v4";
 
 export {
   findAllTabbableElements,
   findAllFocusableNodes,
   getElementWithFocus,
   filterTooltips
-} from "./focus";
+} from "./focus_v4";
 
-export { deepCopy, arraysEqual, debounce } from "./jsutil";
+export { deepCopy, arraysEqual, debounce } from "./jsutil_v4";
 
-export { nextTick } from "./nextTick";
+export { nextTick } from "./nextTick_v4";
 
 export {
   normaliseBoolean,
   normaliseArray,
   normaliseAriaAttribute,
   normaliseString
-} from "./normaliseOps";
+} from "./normalise_v4";

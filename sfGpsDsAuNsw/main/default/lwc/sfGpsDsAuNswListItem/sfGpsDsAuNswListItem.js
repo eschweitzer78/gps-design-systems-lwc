@@ -59,4 +59,8 @@ export default class SfGpsDsAuNswListItem extends LightningElement {
       [this.className]: this.className
     });
   }
+
+  renderedCallback() {
+    console.log('tag', JSON.stringify(this.tags));
+  }
 }
