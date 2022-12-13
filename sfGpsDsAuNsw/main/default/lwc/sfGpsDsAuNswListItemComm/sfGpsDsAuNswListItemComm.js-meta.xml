@@ -46,7 +46,7 @@
         name="imageAlt"
         type="String"
         label="Image alt"
-        description="Specifies an alternate text for the image, if the image cannot be displayed."
+        description="Specifies an alternate text for the image used if the image cannot be displayed."
       />
       <property
         name="tags"
