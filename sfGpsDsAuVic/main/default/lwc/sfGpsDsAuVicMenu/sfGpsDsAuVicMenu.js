@@ -242,18 +242,14 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
   openItem(index) {
     if (this._menu && this._menu[index]) {
       this._menu[index].open = true;
-      this._menu = [
-        ...this._menu
-      ];
+      this._menu = [...this._menu];
     }
   }
 
   closeItem(index) {
     if (this._menu && this._menu[index]) {
       this._menu[index].open = false;
-      this._menu = [
-        ...this._menu
-      ];
+      this._menu = [...this._menu];
     }
   }
 

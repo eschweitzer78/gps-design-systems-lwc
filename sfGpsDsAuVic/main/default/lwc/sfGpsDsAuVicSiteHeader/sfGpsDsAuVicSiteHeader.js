@@ -274,7 +274,6 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
 
     // TODO
     // this.dispatchEvent(new CustomEvent("search", { detail: this.searchTerms }));
-
   }
 
   handleRootMenuClicked(event) {
