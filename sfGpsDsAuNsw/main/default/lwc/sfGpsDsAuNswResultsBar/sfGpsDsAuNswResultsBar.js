@@ -25,7 +25,6 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
   @track _visibleSortOptions;
 
   @api set sortOptions(value) {
-    console.log("sortOptions", JSON.stringify(value));
     this._originalSortOptions = value;
 
     if (value == null) {

@@ -1,0 +1,53 @@
+<template>
+  <div class={className}>
+    <template if:false={_sfGpsErrors}>
+      <div class={titleClassName}>{_name}</div>
+
+      <template if:true={_isLoading}>
+        <c-sf-gps-ds-spinner></c-sf-gps-ds-spinner>
+      </template>
+
+      <template if:true={_records}>
+        <c-sf-gps-ds-au-nsw-results-bar
+          from={_itemsFrom}
+          to={_itemsTo}
+          total={_itemsTotal}
+          value={_sortValue}
+          sort-options={_sortOptions}
+          onchange={handleResultsBarChange}
+        >
+        </c-sf-gps-ds-au-nsw-results-bar>
+
+        <template for:each={_records} for:item="record">
+          <c-sf-gps-ds-au-nsw-list-view-item
+            key={record.Id}
+            class="item"
+            display-columns={_displayColumns}
+            label-column={labelColumn}
+            title-column={titleColumn}
+            date-column={dateColumn}
+            tags-column={tagsColumn}
+            image-column={imageColumn}
+            image-alt-column={imageAltColumn}
+            record={record}
+            onnavigate={handleItemNavigate}
+          >
+          </c-sf-gps-ds-au-nsw-list-view-item>
+        </template>
+
+        <c-sf-gps-ds-au-nsw-pagination
+          active-page={_activePage}
+          last-page={_lastPage}
+          onpagechange={handlePageChange}
+        >
+        </c-sf-gps-ds-au-nsw-pagination>
+
+        <c-sf-gps-ds-navigation-service>
+        </c-sf-gps-ds-navigation-service>
+      </template>
+    </template>
+
+    <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+    </c-sf-gps-ds-configuration-error>  
+  </div>
+</template>

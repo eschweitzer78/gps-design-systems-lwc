@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>55.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS List View</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="objectApiName"
+        type="String"
+        label="Object name"
+        description="API Name of the target object."
+      />
+      <property
+        name="filterName"
+        type="String"
+        label="Filter name"
+        description="Name of the list view filter."
+      />
+      <property
+        name="pageSize"
+        type="Integer"
+        label="Page size"
+        description="Number of items to display per page."
+      />
+      <property
+        name="labelColumn"
+        type="String"
+        label="Label field"
+        description="API name of the field used for label; leave blank otherwise."
+      />
+      <property
+        name="titleColumn"
+        type="String"
+        label="Title field"
+        description="API name of the field used for title."
+      />
+      <property
+        name="dateColumn"
+        type="String"
+        label="Date field"
+        description="API name of the field used for date."
+      />
+      <property
+        name="tagsColumn"
+        type="String"
+        label="Tags field"
+        description="API name of the field used for tags (which must be picklist style, i.e. separated by semi-colons)."
+      />
+      <property
+        name="imageColumn"
+        type="String"
+        label="Image field"
+        description="API name of the field used for image."
+      />
+      <property
+        name="imageAltColumn"
+        type="String"
+        label="Image alt field"
+        description="API name of the field used for image alt."
+      />
+      <property
+        name="titleClassName"
+        type="String"
+        label="Title CSS class name"
+        description="CSS class to be used for the list view title."
+        default="nsw-h1"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

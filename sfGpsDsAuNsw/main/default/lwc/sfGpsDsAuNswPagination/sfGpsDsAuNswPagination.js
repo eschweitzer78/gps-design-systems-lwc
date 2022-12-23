@@ -68,6 +68,14 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
     });
   }
 
+  get previousDisabled() {
+    return !this.showPrevious;
+  }
+
+  get nextDisabled() {
+    return !this.showNext;
+  }
+
   handlePreviousPageClick(event) {
     event.preventDefault();
     if (this.activePage > 1) {

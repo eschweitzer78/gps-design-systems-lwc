@@ -64,4 +64,14 @@
   color: var(--nsw-text-light);
 }
 
+/* TODO deal with inverted section colour scheme */
+/* DEVIATION: introducing disabled for back/next buttons */
+.nsw-pagination a[aria-disabled=true] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.nsw-pagination a[aria-disabled=true]:hover {
+  background-color: transparent;
+}
+
 /*# sourceMappingURL=pagination.css.map */

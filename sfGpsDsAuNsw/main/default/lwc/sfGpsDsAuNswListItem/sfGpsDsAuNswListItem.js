@@ -17,6 +17,7 @@ export default class SfGpsDsAuNswListItem extends LightningElement {
   @api tags;
 
   @api className;
+  @api preventClickDefault = false;
 
   /*
    * date
@@ -60,7 +61,11 @@ export default class SfGpsDsAuNswListItem extends LightningElement {
     });
   }
 
-  renderedCallback() {
-    console.log("tag", JSON.stringify(this.tags));
+  handleClick(event) {
+    if (this.preventClickDefault) {
+      event.preventDefault();
+    }
+
+    this.dispatchEvent(new CustomEvent("navigate", { detail: this.link }));
   }
 }
