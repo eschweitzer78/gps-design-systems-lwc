@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>55.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC DS Site Footer</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration procedure mapping content to this nav."
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Input JSON"
+        description="JSON formatted input parameters for the Integration procedure."
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Options JSON"
+        description="JSON formatted options for the Integration procedure."
+      />
+      <property
+        name="acknowledgement"
+        type="String"
+        label="Acknowlegement"
+        description="Text displayed as acknowlegement to country."
+        default="The Victorian Government acknowledges Aboriginal and Torres Strait Islander people as the Traditional Custodians of the land and acknowledges and pays respect to their Elders, past and present."
+      />
+      <property
+        name="caption"
+        type="String"
+        label="Caption"
+        description="Caption for hero banner."
+        default=""
+      />
+      <property
+        name="copyright"
+        type="String"
+        label="Copyright"
+        description="Copyright text."
+        default="© Copyright State Government of Victoria"
+      />
+      <property
+        name="masterbrand"
+        type="String"
+        label="Masterbrand logo"
+        description="URL for the masterbrand logo."
+        default="/sfsites/c/resource/sfGpsDsAuVic/images/vic-logo.svg"
+      />
+      <property
+        name="masterbrandAlt"
+        type="String"
+        label="Masterbrand alternative text"
+        description="Text displayed when the logo cannot be loaded."
+        default="Victoria – logo – Victoria Government - home"
+      />
+      <property
+        name="masterbrandUrl"
+        type="String"
+        label="Masterbrand target url"
+        description="Target URL when clicking on the masterbrand logo."
+        default="https://vic.gov.au"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

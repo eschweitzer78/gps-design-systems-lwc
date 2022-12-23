@@ -1,0 +1,41 @@
+:host {
+  --rpl-text-link-light-underline-hover: var(--rpl-color-mid_neutral_2);
+  --rpl-text-link-dark-underline-hover: var(--rpl-color-white);
+  --rpl-text-link-text-color-hover: var(--rpl_color-primary);
+  --rpl-text-link-dark-text-color-hover: var(--rpl-color-white);
+}
+
+.rpl-text-link--underline.rpl-link:hover,
+.rpl-text-link--underline.rpl-link:focus {
+  text-decoration: none;
+}
+
+.rpl-text-link--dark:focus {
+  outline: var(--rpl-focus-dark);
+}
+
+.rpl-text-link:hover,
+.rpl-text-link:focus {
+  color: var(--rpl-text-link-dark-text-color-hover, #0052c2);
+}
+
+.rpl-text-link:hover .rpl-text-label,
+.rpl-text-link:focus .rpl-text-label {
+  color: inherit;
+}
+
+.rpl-text-link:hover .rpl-text-label--small--underline,
+.rpl-text-link:focus .rpl-text-label--small--underline {
+  border-bottom-color: var(--rpl-text-link-light-underline-hover, #e8ebee);
+}
+
+.rpl-text-link:hover .rpl-text-label--large--underline,
+.rpl-text-link:focus .rpl-text-label--large--underline {
+  border-bottom-color: var(--rpl-text-link-light-underline-hover, #e8ebee);
+}
+
+.rpl-text-link:hover .rpl-text-label--dark--underline,
+.rpl-text-link:focus .rpl-text-label--dark--underline {
+  color: var(--rpl-text-link-dark-text-color-hover, #fff);
+  border-bottom-color: var(--rpl-text-link-light-underline-hover, #fff);
+}

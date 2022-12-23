@@ -1,0 +1,38 @@
+.rpl-links-and-copyright__links {
+  margin: 0;
+}
+@media print {
+  .rpl-links-and-copyright__links {
+    display: none;
+  }
+}
+.rpl-links-and-copyright__links li {
+  display: inline-block;
+  border-left: 1px solid #fff;
+  padding: 0 0.75rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.rpl-links-and-copyright__links li:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.rpl-links-and-copyright__copyright {
+  margin: 0 0 1rem;
+}
+.rpl-links-and-copyright__copyright p {
+  margin-top: 0;
+}
+@media screen and (min-width: 992px) {
+  .rpl-links-and-copyright__copyright {
+    margin-bottom: 0.5rem;
+  }
+}
+@media print {
+  .rpl-links-and-copyright__copyright {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-top: 2rem;
+  }
+}

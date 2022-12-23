@@ -1,0 +1,156 @@
+@font-face {
+  font-family: "VIC-Regular";
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff) format("woff");
+  display: swap;
+}
+
+@font-face {
+  font-family: "VIC-Medium";
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff) format("woff");
+  display: swap;
+}
+
+@font-face {
+  font-family: "VIC-SemiBold";
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff) format("woff");
+  display: swap;
+}
+
+@font-face {
+  font-family: "VIC-Bold";
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff) format("woff");
+  display: swap;
+}
+
+:root {
+  --rpl-font-family-regular: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  --rpl-font-family-medium: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  --rpl-font-family-semibold: "VIC-SemiBold", "Arial", "Helvetica", "sans-serif";
+  --rpl-font-family-bold: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+
+  --rpl-font-size-tera: 3.5rem;
+  --rpl-font-size-xgiga: 3rem;
+  --rpl-font-size-giga: 2.25rem;
+  --rpl-font-size-mega: 1.75rem;
+  --rpl-font-size-xl: 1.5rem;
+  --rpl-font-size-l: 1.25rem;
+  --rpl-font-size-m: 1.125rem;
+  --rpl-font-size-s: 1rem;
+  --rpl-font-size-xs: 0.875rem;
+  --rpl-font-size-xxs: 0.75rem;
+
+  --rpl-font-display-background-line-height-tera: 5rem; /* rem(76px + 4px); */
+  --rpl-font-display-background-line-height-xgiga: 4.3125rem; /* rem(65px + 4px) */
+  --rpl-font-display-background-line-height-giga: 3.3125rem; /* rem(49px + 4px) */
+  --rpl-font-display-background-line-height-mega: 2.5625rem; /* rem(38px + 3px) */
+  --rpl-font-display-background-line-height-xl: 2.25rem; /* rem(33px + 3px) */
+  --rpl-font-display-background-line-height-l: 1.8125rem; /* rem(27px + 2px) */
+  --rpl-font-display-background-line-height-m: 1.6875rem; /* rem(25px + 2px) */
+  --rpl-font-display-background-line-height-s: 1.5rem; /* rem(22px + 2px) */
+  --rpl-font-display-background-line-height-xs: 1.3125rem; /* rem(19px + 2px) */
+  --rpl-font-display-background-line-height-xxs: 1.1875rem; /* rem(17px + 2px) */
+
+  --rpl-font-display-background-padding-tera: 1rem;
+  --rpl-font-display-background-padding-xgiga: 1rem;
+  --rpl-font-display-background-padding-giga: 1rem;
+  --rpl-font-display-background-padding-mega: 0.625rem;
+  --rpl-font-display-background-padding-xl: 0.5rem;
+  --rpl-font-display-background-padding-l: 0.5rem;
+  --rpl-font-display-background-padding-m: 0.5rem;
+  --rpl-font-display-background-padding-s: 0.5rem;
+  --rpl-font-display-background-padding-xs: 0.5rem;
+  --rpl-font-display-background-padding-xxs: 0.5rem;
+
+  /* rpl-colors-core */
+  --rpl-color-primary: #0052c2;
+  --rpl-color-dark_primary: #023b89;
+  --rpl-color-secondary: #0095ec;
+  --rpl-color-extra_dark_neutral: #011a3c;
+  --rpl-color-dark_neutral: #465870;
+  --rpl-color-dark_neutral_1: #546a7c;
+  --rpl-color-mid_neutral_1: #d7dbe0;
+  --rpl-color-mid_neutral_2: #e8ebee;
+  --rpl-color-light_neutral: #f6f6f9;
+  --rpl-color-danger: #af272f;
+  --rpl-color-danger-rgb: 175, 39, 47;
+  --rpl-color-warning: #ca4c21;
+  --rpl-color-warning-rgb: 202 76 33;
+  --rpl-color-success: #027a83;
+  --rpl-color-success-rgb: 2, 122, 131;
+  --rpl-color-white: #fff;
+  --rpl-color-black: #000;
+
+  --rpl-success-bg-color: rgba(var(--rpl-color-success-rgb), .07);
+  --rpl-warning-bg-color: rgba(var(--rpl-color-warning-rgb), .07);
+  --rpl-damger-bg-color: rgba(var(--rpl-color-danger-rgb), .07);
+  --rpl-success-color: var(--rpl-color-success);
+  --rpl-warning-color: var(--rpl-color-warning);
+  --rpl-danger-color: var(--rpl-color-danger);
+
+  --rpl-gradient-primary_gradient: linear-gradient(90deg, var(--rpl-color-primary) 0%, var(--rpl-color-secondary) 100%);
+  --rpl-gradient-primary_gradient_90: linear-gradient(180deg, var(--rpl-color-primary) 0%, var(--rpl-color-secondary) 100%);
+  --rpl-gradient-primary_gradient_0: linear-gradient(0deg, var(--rpl-color-primary) 0%, var(--rpl-color-secondary) 100%);
+  --rpl-gradient-decorative_gradient: linear-gradient(-90deg, var(--rpl-color-primary) 0%, #825dff 12%, #ef4a81 23%, #e57200 37%, #ffc166 51%, #f9e062 81%);
+  --rpl-gradient-decorative_gradient_0: linear-gradient(0deg, var(--rpl-color-primary) 0%, #825dff 12%, #ef4a81 23%, #e57200 37%, #ffc166 51%, #f9e062 81%);
+  --rpl-gradient-decorative_gradient_90: linear-gradient(-180deg, var(--rpl-color-primary) 0%, #825dff 12%, #ef4a81 23%, #e57200 37%, #ffc166 51%, #f9e062 81%);
+  --rpl-gradient-decorative_gradient_180: linear-gradient(90deg, var(--rpl-color-primary) 0%, #825dff 12%, #ef4a81 23%, #e57200 37%, #ffc166 51%, #f9e062 81%);
+
+  /* spacing */
+
+  --rpl-space: 0.25rem;
+  --rpl-space-2: 0.5rem;
+  --rpl-space-3: 0.75rem;
+  --rpl-space-4: 1rem;
+  --rpl-space-5: 1.25rem;
+
+  /* layout */
+
+  --rpl-layout-site_padding-m: 2rem;
+  --rpl-layout-site_padding-l: 4.25rem;
+  --rpl-layout-site_padding-xl: 5.75remrem;
+  --rpl-layout-site_padding-xxl: 17rem;
+
+  --rpl-layout-site_max_width-xl: 66rem;
+  --rpl-layout-site_max_width-xxxl: 88.75rem;
+
+  --rpl-content-max-width: 37.875rem;
+
+  /* breakpoints */
+
+  --rpl-breakpoints-xs: 0;
+  --rpl-breakpoints-s: 576px;
+  --rpl-breakpoints-m: 768px;
+  --rpl-breakpoints-l: 992px;
+  --rpl-breakpoints-xl: 1200px;
+  --rpl-breakpoints-xxl: 1600px;
+  --rpl-breakpoints-xxxl: 2560px;
+
+  /* others */
+
+  --rpl-dropshadow: 0 2px 8px 0 rgba(0, 0, 0, 0.14);
+  --rpl-focus-dark: 1px solid var(--rpl-color-white); /* for outlines */
+
+
+  --rpl-external-links-in-new-window: false;
+}
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}

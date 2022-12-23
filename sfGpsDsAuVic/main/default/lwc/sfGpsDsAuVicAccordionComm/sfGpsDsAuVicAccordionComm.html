@@ -1,0 +1,41 @@
+<template>
+  <div if:false={_sfGpsErrors} class={computedClass}>
+    <h2 if:true={title} class="rpl-accordion__title-top">{title}</h2>
+    <div if:true={showButtons} class="rpl-accordion__collapse">
+      <button class="rpl-accordion__collapse-btn" onclick={handleExpandAll}>
+        Open all
+      </button>
+      <button class="rpl-accordion__collapse-btn" onclick={handleCollapseAll}>
+        Collapse all
+      </button>
+    </div>
+
+    <ol if:true={isNumbered} class="rpl-accordion__list">
+      <template for:each={_h1s} for:item="accordion">
+        <c-sf-gps-ds-au-vic-accordion-item-comm
+          key={accordion.index}
+          index={accordion.index}
+          closed={accordion.closed}
+          title={accordion.title}
+          content={accordion.html}
+        >
+        </c-sf-gps-ds-au-vic-accordion-item-comm>
+      </template>
+    </ol>
+
+    <ul if:false={isNumbered} class="rpl-accordion__list">
+      <template for:each={_h1s} for:item="accordion">
+        <c-sf-gps-ds-au-vic-accordion-item-comm
+          key={accordion.index}
+          closed={accordion.closed}
+          title={accordion.title}
+          content={accordion.html}
+        >
+        </c-sf-gps-ds-au-vic-accordion-item-comm>
+      </template>
+    </ul>
+  </div>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

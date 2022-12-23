@@ -1,0 +1,26 @@
+:host {
+  --rpl-text-link-before-margin: auto var(--rpl-space) auto auto;
+  --rpl-text-link-after-margin: auto auto auto var(--rpl-space);
+  --rpl-text-link-before-margin-rtl: auto auto auto var(--rpl-space-2);
+  --rpl-text-link-after-margin-rtl: auto var(--rpl-space-2) auto auto;
+}
+
+.rpl-text-icon__group {
+  white-space: normal;
+}
+
+.rpl-text-icon--before {
+  margin: var(--rpl-text-link-before-margin);
+}
+
+.rpl-text-icon--after {
+  margin: var(--rpl-text-link-after-margin);
+}
+
+[dir="rtl"] .rpl-text-icon--before {
+  margin: var(--rpl-text-link-before-margin-rtl);
+}
+
+[dir="rtl"] .rpl-text-icon--after {
+  margin: var(--rpl-text-link-after-margin-rtl);
+}

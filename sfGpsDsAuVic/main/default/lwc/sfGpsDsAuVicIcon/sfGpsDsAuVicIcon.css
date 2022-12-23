@@ -1,0 +1,55 @@
+.rpl-icon--color_primary {
+  fill: var(--rpl-color-primary, #0052c2);
+}
+
+.rpl-icon--color_dark_primary {
+  fill: var(--rpl-color-dark_primary, #023b89);
+}
+
+.rpl-icon--color_secondary {
+  fill: var(--rpl-color-secondary, #0095ec);
+}
+
+.rpl-icon--color_extra_dark_neutral {
+  fill: var(--rpl-color-extra_dark_neutral, #011a3c);
+}
+
+.rpl-icon--color_dark_neutral {
+  fill: var(--rpl-color-dark_neutral, #465870);
+}
+
+.rpl-icon--color_dark_neutral_1 {
+  fill: var(--rpl-color-dark_neutral_1, #546a7c);
+}
+
+.rpl-icon--color_mid_neutral_1 {
+  fill: var(--rpl-color-mid_neutral_1, #d7dbe0);
+}
+
+.rpl-icon--color_mid_neutral_2 {
+  fill: var(--rpl-color-mid_neutral_2, #e8ebee);
+}
+
+.rpl-icon--color_light_neutral {
+  fill: var(--rpl-color-light_neutral, #f6f6f9);
+}
+
+.rpl-icon--color_danger {
+  fill: var(--rpl-color-danger, #af272f);
+}
+
+.rpl-icon--color_warning {
+  fill: var(--rpl-color-warning, #ca4c21);
+}
+
+.rpl-icon--color_success {
+  fill: var(--rpl-color-success, #027a83);
+}
+
+.rpl-icon--color_white {
+  fill: var(--rpl-color-white, #fff);
+}
+
+.rpl-icon--color_black {
+  fill: var(--rpl-color-black, #000);
+}

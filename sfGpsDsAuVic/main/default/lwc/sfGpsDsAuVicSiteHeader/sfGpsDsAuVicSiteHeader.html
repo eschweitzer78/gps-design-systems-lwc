@@ -1,0 +1,121 @@
+<template>
+  <!-- <c-sf-gps-ds-transition name="rpl-header-fade" class={className}> WAS ONLY FOR DISMOUNT ANYWAY -->
+  <div class={className}>
+    <c-sf-gps-ds-focus-trap disabled={isMenuContentClosed}>
+      <div
+        if:true={headerVisible}
+        class={computedSiteHeaderClass}
+        onkeydown={handleKeyDown}
+      >
+        <div class="rpl-site-header__inner">
+          <!-- Top Bar -->
+          <div class="rpl-site-header__top">
+            <div class="rpl-site-header__logo-container">
+              <div class="rpl-site-header__logo-container-inner">
+                <!-- Menu Button -->
+                <button
+                  if:true={showMenuButton}
+                  class={computedMenuButtonClass}
+                  aria-label={label}
+                  aria-expanded={isMenuOpen}
+                  onclick={handleMenuClick}
+                >
+                  <c-sf-gps-ds-au-vic-icon
+                    symbol={activeMenuButton.icon}
+                    color="white"
+                  >
+                  </c-sf-gps-ds-au-vic-icon>
+                  <span>{activeMenuButton.text}</span>
+                </button>
+                <div
+                  if:true={showMenuButton}
+                  class={computedDividerVicClass}
+                ></div>
+
+                <!-- Primary vic.gov.au Logo -->
+                <div
+                  if:true={isVicLogoVisible}
+                  class={computedLogoContainerClass}
+                >
+                  <!--Only apply vic-logo cobrand class if there is a coBrand logo-->
+                  <img src={imageSrc} alt={imageAlt} />
+                </div>
+
+                <div class={computedDividerCobrandClass}></div>
+                <!--Co brand logo if it exists-->
+                <div if:true={isCobrandVisible} class="rpl-site-header__title">
+                  <!--Render element if taxonomy includes a cobrand logo-->
+                  <img src={cobrandImageSrc} alt={cobrandImageAlt} />
+                </div>
+              </div>
+            </div>
+
+            <!-- Top Menu -->
+            <div
+              if:true={isMenuContainerVisible}
+              class={computedMenuContainerClass}
+            >
+              <div class="rpl-site-header__menu">
+                <c-sf-gps-ds-au-vic-menu
+                  menu={_navItems}
+                  layout={menuLayout}
+                  title={title}
+                  open={isMenuOpen}
+                  onrootmenuclicked={handleRootMenuClicked}
+                  onnavigate={handleNavigate}
+                  index="root"
+                >
+                </c-sf-gps-ds-au-vic-menu>
+              </div>
+            </div>
+
+            <div id="search-container" class="rpl-site-header__btn-container">
+              <!-- Logout button -->
+              <button
+                if:true={showLogout}
+                class={computedLogoutButtonClass}
+                onclick={handleLogoutClick}
+              >
+                <span>{logoutButton.text}</span>
+                <c-sf-gps-ds-au-vic-icon
+                  symbol={logoutButton.icon}
+                  color="white"
+                  class="rpl-icon"
+                >
+                  <!-- c-sfgpsdsauvicmainnavigation_sfgpsdsauvicmainnavigation  -->
+                </c-sf-gps-ds-au-vic-icon>
+              </button>
+
+              <!-- Search Button -->
+              <button
+                if:true={showSearch}
+                onclick={handleSearchClick}
+                class={computedSearchButtonClass}
+                aria-expanded={isSearchOpen}
+              >
+                <span>{activeSearchButton.text}</span>
+                <c-sf-gps-ds-au-vic-icon
+                  symbol={activeSearchButton.icon}
+                  color="white"
+                  class="rpl-icon"
+                >
+                  <!-- c-sfgpsdsauvicmainnavigation_sfgpsdsauvicmainnavigation  -->
+                </c-sf-gps-ds-au-vic-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- Search Content -->
+          <div
+            if:true={showSearchContainer}
+            class="rpl-site-header__search-container"
+          >
+            <div>Search Container TODO</div>
+            <!-- <c-vic-d-s-rpl-search terms={searchTerms} onsearch={handleSearch}></c-vic-d-s-rpl-search> -->
+          </div>
+        </div>
+      </div>
+    </c-sf-gps-ds-focus-trap>
+  </div>
+  <!-- </c-sf-gps-ds-transition> -->
+</template>

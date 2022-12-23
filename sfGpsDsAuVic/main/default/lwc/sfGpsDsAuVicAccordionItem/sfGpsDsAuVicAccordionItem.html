@@ -1,0 +1,37 @@
+<template>
+  <li if:false={_sfGpsErrors} class={computedClass}>
+    <h2 class={computedTitleClass}>
+      <button
+        class={computedButtonClass}
+        onclick={handleClick}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+      >
+        <span
+          if:true={index}
+          aria-hidden="true"
+          class="rpl-accordion__title-number"
+          >{index}</span
+        >
+        <span class={computedAccordionButtonTextClass}>{title}</span>
+        <c-sf-gps-ds-au-vic-icon
+          symbol="arrow_down_tertiary"
+          color="primary"
+          class={computedIconClass}
+        >
+        </c-sf-gps-ds-au-vic-icon>
+      </button>
+    </h2>
+
+    <div id="content" class="rpl-accordion__content" style={computedStyle}>
+      <c-sf-gps-ds-au-vic-markup
+        html={content}
+        class="rpl-accordion__content-inner"
+      >
+      </c-sf-gps-ds-au-vic-markup>
+    </div>
+  </li>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

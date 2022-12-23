@@ -1,0 +1,24 @@
+<template>
+  <c-sf-gps-ds-au-vic-link
+    if:true={url}
+    class={computedClass}
+    href={url}
+    inner-wrap={innerWrap}
+  >
+    <c-sf-gps-ds-au-vic-text-label
+      theme={theme}
+      size={size}
+      underline={underline}
+      emphasis={emphasis}
+    >
+      <c-sf-gps-ds-au-vic-text-icon
+        text={textDecoded}
+        symbol={iconSymbolFinal}
+        color={iconColor}
+        placement={iconPlacement}
+        size={iconSize}
+      >
+      </c-sf-gps-ds-au-vic-text-icon>
+    </c-sf-gps-ds-au-vic-text-label>
+  </c-sf-gps-ds-au-vic-link>
+</template>

@@ -1,0 +1,62 @@
+<template>
+  <ul class="rpl-footer-nav">
+    <template if:true={_nav} for:each={_nav} for:item="item">
+      <li key={item.key} class={item.class}>
+        <h2
+          class="rpl-footer-nav__heading"
+          data-key={item.key}
+          onclick={handleClick}
+        >
+          <a href={item.url} target={item.target} class="rpl-link"
+            >{item.text}</a
+          >
+          <template if:true={minimize}>
+            <template if:true={item.children}>
+              <c-sf-gps-ds-au-vic-icon
+                if:true={item.active}
+                symbol="up"
+                color="white"
+                size="m"
+              >
+              </c-sf-gps-ds-au-vic-icon>
+              <c-sf-gps-ds-au-vic-icon
+                if:false={item.active}
+                symbol="down"
+                color="white"
+                size="m"
+              >
+              </c-sf-gps-ds-au-vic-icon>
+            </template>
+          </template>
+        </h2>
+        <c-sf-gps-ds-transition name="rpl-accordion">
+          <ul if:true={item.active} class="rpl-footer-nav__submenu-item">
+            <template
+              if:true={item.children}
+              for:each={item.children}
+              for:item="child"
+            >
+              <li key={child.key}>
+                <a href={child.url} target={child.target} class="rpl-link"
+                  >{child.text}</a
+                >
+              </li>
+            </template>
+          </ul>
+        </c-sf-gps-ds-transition>
+      </li>
+    </template>
+
+    <!-- TODO 
+    <c-sf-gps-ds-au-vic-footer-social-links
+      if:true={computedShowSocialLinks}
+      links={socialLinks}
+      nav-index={nav.length}
+      visible-item-index={visibleItemIndex}
+      minimize={minimize}
+      toggle={toggle}
+    >
+    </c-sf-gps-ds-au-vic-footer-social-links>
+    -->
+  </ul>
+</template>

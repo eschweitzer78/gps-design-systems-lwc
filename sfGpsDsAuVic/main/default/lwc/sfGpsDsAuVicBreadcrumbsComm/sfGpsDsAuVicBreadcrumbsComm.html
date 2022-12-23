@@ -1,0 +1,29 @@
+<template>
+  <div if:false={_sfGpsErrors} class={className}>
+    <div class="rpl-breadcrumbs">
+      <div class="rpl-breadcrumbs__row">
+        <nav aria-label={label}>
+          <ul class="rpl-breadcrumbs__items" if:true={_itemsArray}>
+            <!-- Desktop items -->
+            <template for:each={_itemsArray} for:item="item">
+              <li class="rpl-breadcrumbs__item" key={item.index}>
+                <a
+                  if:false={item.isLast}
+                  class="rpl-link rpl-breadcrumbs__link"
+                  href={item.url}
+                  >{item.text}</a
+                >
+                <span if:true={item.isLast} class="rpl-breadcrumbs__text"
+                  >{item.text}</span
+                >
+              </li>
+            </template>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

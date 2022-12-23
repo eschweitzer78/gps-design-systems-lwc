@@ -1,0 +1,24 @@
+<template>
+  <div class="rpl-related-links">
+    <div class="rpl-related-links__row">
+      <h2 class="rpl-related-links__title">{title}</h2>
+    </div>
+    <div class="rpl-related-links__row">
+      <ul if:true={links} class="rpl-related-links__items">
+        <template for:each={links} for:item="item">
+          <li key={item.key} class="rpl-related-links__item">
+            <c-sf-gps-ds-au-vic-text-link
+              url={item.url}
+              icon-color="white"
+              text={item.text}
+              underline="true"
+              size="small"
+              theme="dark"
+            >
+            </c-sf-gps-ds-au-vic-text-link>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </div>
+</template>

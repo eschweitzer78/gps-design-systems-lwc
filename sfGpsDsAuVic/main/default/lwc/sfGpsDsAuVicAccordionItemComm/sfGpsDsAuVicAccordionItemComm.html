@@ -1,0 +1,16 @@
+<template>
+  <c-sf-gps-ds-au-vic-accordion-item
+    if:false={_sfGpsErrors}
+    index={index}
+    title={title}
+    closed={closed}
+    content={content}
+    class-name={className}
+    onexpand={handleExpand}
+    oncollapse={handleCollapse}
+  >
+  </c-sf-gps-ds-au-vic-accordion-item>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

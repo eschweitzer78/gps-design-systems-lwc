@@ -1,0 +1,49 @@
+<template>
+  <span if:true={showBefore}>
+    <span if:true={hasMultipleWords} class="rpl-text-icon__group">
+      <c-sf-gps-ds-au-vic-icon
+        symbol={symbol}
+        color={color}
+        size={size}
+        class={computedIconClass}
+      >
+      </c-sf-gps-ds-au-vic-icon
+      >>{textFirstWord}
+    </span>
+    <span if:true={hasMultipleWords}>{textWithoutFirstWord}</span>
+    <span if:false={hasMultipleWords} class="rpl-text-icon__group">
+      <c-sf-gps-ds-au-vic-icon
+        symbol={symbol}
+        color={color}
+        size={size}
+        class={computedIconClass}
+      >
+      </c-sf-gps-ds-au-vic-icon
+      >{text}
+    </span>
+  </span>
+  <span if:true={showAfter}>
+    <span if:true={hasMultipleWords}>{textWithoutLastWord}</span>
+    <span if:true={hasMultipleWords} class="rpl-text-icon__group">
+      {textLastWord}
+      <c-sf-gps-ds-au-vic-icon
+        symbol={symbol}
+        color={color}
+        size={size}
+        class={computedIconClass}
+      >
+      </c-sf-gps-ds-au-vic-icon>
+    </span>
+    <span if:false={hasMultipleWords} class="rpl-text-icon__group"
+      >{text}
+      <c-sf-gps-ds-au-vic-icon
+        symbol={symbol}
+        color={color}
+        size={size}
+        class={computedIconClass}
+      >
+      </c-sf-gps-ds-au-vic-icon>
+    </span>
+  </span>
+  <span if:true={showOtherwise}>{text}</span>
+</template>
