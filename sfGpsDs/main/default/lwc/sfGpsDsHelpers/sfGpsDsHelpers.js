@@ -27,7 +27,7 @@ export {
 
 export { deepCopy, arraysEqual, debounce } from "./jsutil_v6";
 
-export { nextTick } from "./nextTick_v5";
+export { nextTick } from "./nextTick_v6";
 
 export {
   normaliseBoolean,
