@@ -83,7 +83,7 @@ export default class SfGpsDsAuVicAccordionItem extends SfGpsDsLwc {
     return null;
   }
 
-  handleClick(event) {
+  handleClick() {
     this.dispatchEvent(new CustomEvent(this.isOpen ? "collapse" : "expand"));
     this.isOpen = !this.isOpen;
   }

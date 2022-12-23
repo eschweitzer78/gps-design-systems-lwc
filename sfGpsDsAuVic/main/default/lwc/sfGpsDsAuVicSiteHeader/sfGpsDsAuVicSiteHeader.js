@@ -5,6 +5,10 @@ import { disableBodyScroll, clearAllBodyScrollLocks } from "./bodyScrollLock";
 
 const CLOSE_MENU = "Close menu";
 const CLOSE_SEARCH_LABEL = "Close search";
+const LOGOUT_LABEL = "Logout";
+const MENU_LABEL = "Menu";
+const SEARCH_LABEL = "Search";
+const TITLE_LABEL = "Main Menu";
 
 export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
   @api imageSrc;
@@ -15,13 +19,13 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
   @api breakpoint = 992; // Number
   @api sticky;
 
-  @api label = "Menu"; // Menu Aria label
-  @api title = "Main Menu"; // Menu title
-  @api menuLabel = "Menu";
-  @api closeMenuLabel = "Close menu";
-  @api searchLabel = "Search";
-  @api closeSearchLabel = "Close search";
-  @api logoutLabel = "Logout";
+  @api label = MENU_LABEL; // Menu Aria label
+  @api title = TITLE_LABEL; // Menu title
+  @api menuLabel = MENU_LABEL;
+  @api closeMenuLabel = CLOSE_MENU;
+  @api searchLabel = SEARCH_LABEL;
+  @api closeSearchLabel = CLOSE_SEARCH_LABEL;
+  @api logoutLabel = LOGOUT_LABEL;
 
   @api className;
 
@@ -260,17 +264,23 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
     return `rpl-site-header__divider--${hasMenu}${hasVic}${hasCobrand}`;
   }
 
-  handleSearchClick(event) {
+  handleSearchClick() {
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isMenuContentOpen = !(
       this.isMenuContentOpen && this.searchState === "opened"
     );
     this.searchState = this.isMenuContentOpen ? "opened" : "closed";
     this.menuState = "closed";
+
+    // TODO
+    // this.dispatchEvent(new CustomEvent("search", { detail: this.searchTerms }));
+
   }
 
   handleRootMenuClicked(event) {
     let rootMenuIndex = event.detail.index;
 
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isMenuContentOpen = !(
       this.isMenuContentOpen && this.lastRootMenuClicked === rootMenuIndex
     );
@@ -286,6 +296,7 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
   }
 
   handleNavigate(event) {
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isMenuContentOpen = false;
     this.menuState = "closed";
     this.closeAllMenus();
@@ -297,7 +308,8 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
     );
   }
 
-  handleMenuClick(event) {
+  handleMenuClick() {
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isMenuContentOpen = !(
       this.isMenuContentOpen && this.menuState === "opened"
     );
@@ -341,7 +353,7 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
     }
   }
 
-  windowResize(e) {
+  windowResize() {
     // TODO consider using resizeObserver
     let w = window.innerWidth || document.documentElement.clientWidth;
 
@@ -357,6 +369,7 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
       // Close menu on vertical -> horizontal: avoids incorrect display if vertical is on root.
       if (this.menuState === "opened" && this.isMenuContentOpen) {
         this.menuState = "closed";
+        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
         this.isMenuContentOpen = false;
         this.closeAllMenus();
       }
@@ -381,18 +394,12 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
     }));
   }
 
-  handleSearchClick(event) {
-    // TODO
-    //this.$emit('search', event)
-  }
-
-  handleLogoutClick(event) {
-    // TODO
-    //this.$emit('logout')
+  handleLogoutClick() {
+    this.dispatchEvent(new CustomEvent("logout"));
   }
 
   handleKeyDown(event) {
-    if (event.keyCode == 27) {
+    if (event.keyCode === 27) {
       this.closeModalMenu();
     }
   }

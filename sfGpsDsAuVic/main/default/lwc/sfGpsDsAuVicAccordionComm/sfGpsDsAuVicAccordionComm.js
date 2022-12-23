@@ -41,7 +41,7 @@ export default class SfGpsDsAuNswAccordionGroupComm extends SfGpsDsLwc {
   }
 
   get computedClass() {
-    computeClass({
+    return computeClass({
       "rpl-accordion": true,
       "rpl-accordion--rtl": isRTL()
     });

@@ -1,4 +1,4 @@
-import { LightningElement, api } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 const socialIconScale = {

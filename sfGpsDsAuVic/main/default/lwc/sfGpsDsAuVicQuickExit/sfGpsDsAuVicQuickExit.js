@@ -47,8 +47,8 @@ export default class SfGpsDsAuVicQuickExit extends LightningElement {
     const elStyle = getComputedStyle(
       this.template.querySelector(".rpl-quick-exit__button")
     );
-    const elTop = parseInt(elStyle.top) || 0;
-    const elMargin = isScrollingUp ? parseInt(elStyle.marginTop) : 0;
+    const elTop = parseInt(elStyle.top, 10) || 0;
+    const elMargin = isScrollingUp ? parseInt(elStyle.marginTop, 10) : 0;
     const elStickPoint =
       this.template.querySelector(".rpl-quick-exit").offsetTop -
       elMargin -

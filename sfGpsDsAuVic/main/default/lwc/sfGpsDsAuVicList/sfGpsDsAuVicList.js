@@ -1,4 +1,4 @@
-import { LightningElement, api } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
@@ -19,7 +19,9 @@ export default class SfGpsDsAuVicRplList extends SfGpsDsLwc {
       try {
         value = JSON.parse(value);
         if (!Array.isArray(value)) value = [value];
-      } catch (e) {}
+      } catch (e) {
+        console.log(e);
+      }
     }
 
     if (!Array.isArray(value) || value == null) {

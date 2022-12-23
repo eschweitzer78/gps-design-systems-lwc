@@ -15,7 +15,7 @@ export default class sfGpsDsAuVicBreadcrumbsComm extends SfGpsDsLwc {
       let itemsArray = mdEngine.extractLinks(markdown);
       this._itemsArray = itemsArray.map((item, index) => ({
         ...item,
-        isLast: index == itemsArray.length - 1
+        isLast: index === itemsArray.length - 1
       }));
     } catch (e) {
       this.addError("IT-MD", "Issue when parsing Items markdown");

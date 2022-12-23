@@ -127,9 +127,9 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
       return;
     }
 
-    this.menu = this._menu.map((entry) => ({
+    this._menu = this._menu.map((entry) => ({
       ...entry,
-      open: entry.index == index ? true : false,
+      open: entry.index === index ? true : false,
       children:
         entry.index === index && entry.children
           ? entry.children.map((entry2) => ({
@@ -151,6 +151,7 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
     );
 
     if (this.isRoot) {
+      // eslint-disable-next-line @lwc/lwc/no-api-reassignments
       this.rootVerticalDepth = 1;
     }
   }
@@ -181,6 +182,7 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
     );
 
     this.visibleDepth = event.detail.depth;
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.rootVerticalDepth = this.visibleDepth; // ESC
   }
 
@@ -222,7 +224,7 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
 
   closeAllItems() {
     if (this._menu) {
-      this.menu = this._menu.map((element) => ({
+      this._menu = this._menu.map((element) => ({
         ...element,
         open: false
       }));
@@ -240,14 +242,18 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
   openItem(index) {
     if (this._menu && this._menu[index]) {
       this._menu[index].open = true;
-      this.menu = this._menu;
+      this._menu = [
+        ...this._menu
+      ];
     }
   }
 
   closeItem(index) {
     if (this._menu && this._menu[index]) {
       this._menu[index].open = false;
-      this.menu = this._menu;
+      this._menu = [
+        ...this._menu
+      ];
     }
   }
 
@@ -266,7 +272,7 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
         "rpl-menu--vertical": this.isVerticalLayout, //(this.isRoot && this.isVerticalLayout), deal with css containment
         "rpl-menu--horizontal": !this.isVerticalLayout, //(this.isRoot && !this.isVerticalLayout), deal with css containment
         "rpl-menu--horizontal-floating-wrapper":
-          !this.isVerticalLayout && this.depth == 1,
+          !this.isVerticalLayout && this.depth === 1,
         "rpl-menu--subs": !this.isVerticalLayout && this.depth > 1
       }) + (this.className ? " " + this.className : "")
     );
@@ -291,7 +297,7 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
 
   get computedMenuHeadingClass() {
     return computeClass({
-      "rpl-menu__heading": this.depth == 1,
+      "rpl-menu__heading": this.depth === 1,
       "rpl-menu__heading--horizontal-sub":
         !this.isVerticalLayout && this.depth > 1,
       "rpl-link rpl-menu__item-link rpl-menu__item-link--parent":

@@ -322,7 +322,7 @@ export default class SfGpsDsAuVicIcon extends SfGpsDsLwc {
 
   get computedBox() {
     if (!this.icon || !this.icon.width || !this.icon.height) {
-      return;
+      return null;
     }
 
     return `0 0 ${this.icon.width} ${this.icon.height}`;

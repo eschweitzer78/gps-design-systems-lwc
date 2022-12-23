@@ -34,7 +34,7 @@ export default class SfGpsDsAuVicMarkup extends SfGpsDsLwc {
   _rendered = false;
 
   renderedCallback() {
-    if (this._rendered == false) {
+    if (this._rendered === false) {
       let element = this.template.querySelector(".rpl-markup__inner");
       if (element) {
         replaceInnerHtml(element, this._escapedHtml);

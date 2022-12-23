@@ -30,7 +30,9 @@ export default class sfGpsDsAuVicLink extends SfGpsDsLwc {
   }
 
   get linkTarget() {
-    if (!this.target) return null;
+    if (!this.target) {
+      return null;
+    }
 
     if (this.target.length === 0 && this.externalLinksInNewWindow) {
       if (this.isExternalUrl(this.href)) {
@@ -39,6 +41,8 @@ export default class sfGpsDsAuVicLink extends SfGpsDsLwc {
     } else {
       return this.target.length > 0 ? this.target : false;
     }
+
+    return null;
   }
 
   handleFocus() {
