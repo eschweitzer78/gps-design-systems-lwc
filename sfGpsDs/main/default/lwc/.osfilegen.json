@@ -37,18 +37,18 @@
   },
   "sfGpsDsHelpers": {
     "target": "!Os",
-    "datetimeutil_v4.js": { "target": "datetimeutil_v4.js" },
-    "domutil_v4.js": { "target": "domutil_v4.js" },
-    "focus_v4.js": { "target": "focus_v4.js" },
-    "jsutil_v4.js": { "target": "jsutil_v4.js" },
-    "nextTick_v4.js": { "target": "nextTick_v4.js" },
-    "normalise_v4.js": { "target": "normalise_v4.js" },
+    "datetimeutil_v6.js": { "target": "datetimeutil_v6.js" },
+    "domutil_v6.js": { "target": "domutil_v6.js" },
+    "focus_v6.js": { "target": "focus_v6.js" },
+    "jsutil_v6.js": { "target": "jsutil_v6.js" },
+    "nextTick_v6.js": { "target": "nextTick_v6.js" },
+    "normalise_v6.js": { "target": "normalise_v6.js" },
     "!.js": { "target": "!Os.js" },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     },
-    "utilities_v4.js": { "target": "utilities_v4.js" }
+    "utilities_v6.js": { "target": "utilities_v6.js" }
   },
   "sfGpsDsMarkdown": {
     "target": "!Os",
