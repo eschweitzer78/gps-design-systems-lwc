@@ -31,14 +31,18 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
   @api imageAltColumn;
   @api link;
 
-
   @track _reconciledRecord;
 
   reconcile() {
     if (this._record && this._displayColumns) {
-      console.log('reconcile', JSON.stringify(this._displayColumns), JSON.stringify(this._record));
+      console.log(
+        "reconcile",
+        JSON.stringify(this._displayColumns),
+        JSON.stringify(this._record)
+      );
       this._reconciledRecord = this._displayColumns.map((column) => {
-        let { value, displayValue, dataType, relationshipId } = this.getColumnDetails(column.fieldApiName);
+        let { value, displayValue, dataType, relationshipId } =
+          this.getColumnDetails(column.fieldApiName);
         let rv = {
           ...column,
           value: value,
@@ -54,23 +58,25 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
           isPhone: dataType === "PHONE",
           isPicklist: ["PICKLIST", "MULTIPICKLIST"].includes(dataType),
           isReference: dataType === "REFERENCE",
-          isString: ["ENCRYPTEDSTRING", "ID", "STRING", null].includes(dataType),
+          isString: ["ENCRYPTEDSTRING", "ID", "STRING", null].includes(
+            dataType
+          ),
           isTextArea: dataType === "TEXTAREA",
           isTime: dataType === "TIME",
-          isURL: dataType === "URL",
+          isURL: dataType === "URL"
         };
 
-        switch(dataType) {
+        switch (dataType) {
           case "EMAIL":
-            rv.link = `mailto:${value}`; 
+            rv.link = `mailto:${value}`;
             break;
 
           case "PHONE":
-            rv.link = `tel:${value}`; 
+            rv.link = `tel:${value}`;
             break;
 
           case "URL":
-            rv.link = value; 
+            rv.link = value;
             break;
 
           case "STRING":
@@ -147,7 +153,7 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
         dataType: null,
         relationshipObjectApiName: null,
         relationshipId: null
-      }
+      };
     }
 
     let field = this._record.columns[fieldApiName];
@@ -157,10 +163,12 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
       dataType: field?.dataType,
       relationshipObjectApiName: field?.relationshipObjectApiName,
       relationshipId: field?.relationshipId
-    }
+    };
   }
 
   handleNavigate() {
-    this.dispatchEvent(new CustomEvent("navigate", { detail: this._record?.columns?.Id?.value }));
+    this.dispatchEvent(
+      new CustomEvent("navigate", { detail: this._record?.columns?.Id?.value })
+    );
   }
 }

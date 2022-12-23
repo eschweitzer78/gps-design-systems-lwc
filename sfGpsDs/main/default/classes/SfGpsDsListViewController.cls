@@ -257,7 +257,15 @@ public with sharing class SfGpsDsListViewController {
         )
       : null;
 
-    return getRecords(objectApiName, xdisplayColumns, filterLogicString, xfilterByInfo, xorderedByInfo, offset, pageSize);
+    return getRecords(
+      objectApiName,
+      xdisplayColumns,
+      filterLogicString,
+      xfilterByInfo,
+      xorderedByInfo,
+      offset,
+      pageSize
+    );
   }
 
   public class EnhancedRecordColumn {
@@ -335,11 +343,11 @@ public with sharing class SfGpsDsListViewController {
           hasRecordTypeId = true;
         } */
       }
-        
+
       if (!hasId) {
         xdisplayColumns.add(new ListColumn(ID_FIELDNAME, 'Id', false));
       }
-        
+
       /*
       if (!hasRecordTypeId) {
         xdisplayColumns.add(new ListColumn(RECORDTYPEID_FIELDNAME, 'Record Type Id', false));
@@ -393,7 +401,8 @@ public with sharing class SfGpsDsListViewController {
             sObject so = record.getSObject(sObjectApiName);
             System.debug('xx rel');
             System.debug(so);
-            value = so?.get(sFieldApiName); /* Might be a null-valued relationship */
+            value = so
+              ?.get(sFieldApiName); /* Might be a null-valued relationship */
             relationshipId = String.valueOf(so?.get('Id'));
           } else {
             sFieldApiName = fqApiName;
@@ -418,39 +427,34 @@ public with sharing class SfGpsDsListViewController {
             when Boolean {
               displayValue = String.valueOf(value);
             }
-
             when Currency {
               displayValue = value != null ? ((Decimal) value).format() : null;
             }
-
             when Date {
               displayValue = value != null ? ((Date) value).format() : null;
             }
-
             when DateTime {
-              displayValue = value != null ? ((DateTime) value).formatLong() : null;
+              displayValue = value != null
+                ? ((DateTime) value).formatLong()
+                : null;
             }
-
             when Double {
               displayValue = value != null ? ((Double) value).format() : null;
             }
-
             when Email, EncryptedString, Id, String, TextArea, Url {
               displayValue = String.valueOf(value);
             }
-
             when Integer {
               displayValue = value != null ? ((Integer) value).format() : null;
             }
-
             when Long {
               displayValue = value != null ? ((Long) value).format() : null;
             }
-
             when Percent {
-              displayValue = value != null ? ((Decimal) value).format() + '%' : null;
+              displayValue = value != null
+                ? ((Decimal) value).format() + '%'
+                : null;
             }
-
             when PickList, MultiPickList {
               String stringValue = value != null ? (String) value : '';
               List<String> sValueList = stringValue.split(';');
@@ -467,11 +471,9 @@ public with sharing class SfGpsDsListViewController {
               }
               displayValue = String.join(displayValueList, ';');
             }
-
             when Time {
               displayValue = String.valueOf(value);
             }
-
             when else {
               displayValue = value != null ? value.toString() : null;
             }
@@ -596,10 +598,13 @@ public with sharing class SfGpsDsListViewController {
     EnhancedTypeInfo objectInfo;
     Schema.DescribeFieldResult fieldDescription;
 
-    EnhancedFieldInfo(EnhancedTypeInfo objectInfo, Schema.DescribeFieldResult fieldDescription) {
+    EnhancedFieldInfo(
+      EnhancedTypeInfo objectInfo,
+      Schema.DescribeFieldResult fieldDescription
+    ) {
       this.objectInfo = objectInfo;
       this.fieldDescription = fieldDescription;
-    } 
+    }
   }
 
   public class EnhancedTypeInfos {
@@ -645,10 +650,7 @@ public with sharing class SfGpsDsListViewController {
       return typeInfo;
     }
 
-    EnhancedFieldInfo getFieldDesc(
-      String objectApiName,
-      String fieldApiName
-    ) {
+    EnhancedFieldInfo getFieldDesc(String objectApiName, String fieldApiName) {
       EnhancedTypeInfo typeInfo;
 
       if (objectApiName != null) {
@@ -658,7 +660,9 @@ public with sharing class SfGpsDsListViewController {
         typeInfo = getTypeInfo();
       }
 
-      return typeInfo != null ? new EnhancedFieldInfo(typeInfo, typeInfo.getFieldDesc(fieldApiName)) : null;
+      return typeInfo != null
+        ? new EnhancedFieldInfo(typeInfo, typeInfo.getFieldDesc(fieldApiName))
+        : null;
     }
 
     Map<String, Schema.PicklistEntry> getFieldPicklistEntries(

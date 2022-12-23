@@ -26,7 +26,6 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
   _originalFilterName;
   _filterName;
 
-
   @api set filterName(value) {
     this._originalFilterName = value;
 
@@ -74,18 +73,18 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
           this._itemsFrom = 1;
           this._isLoading = false;
           this._orderedByInfo = this._listInfo.orderedByInfo;
-    
+
           let sortOptions = this._listInfo.displayColumns
             .filter((column) => column.sortable)
             .map((column) => ({
               label: column.label,
               value: column.fieldApiName
-            }));  
+            }));
 
           this._sortOptions = [
             { label: "List view default", value: LISTVIEW_SETTINGS },
-            ...sortOptions,
-          ]
+            ...sortOptions
+          ];
 
           this._sortValue = LISTVIEW_SETTINGS;
 
@@ -130,10 +129,7 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
   @track _orderedByInfo; // current orderedBy clause
 
   updateRecords() {
-    if (
-      this._listInfo == null ||
-      this._itemsTotal === 0
-    ) {
+    if (this._listInfo == null || this._itemsTotal === 0) {
       this._rawRecords = null;
       this.updateVisibleRecords();
       return;
@@ -169,10 +165,7 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
   }
 
   updateVisibleRecords() {
-    if (
-      this._rawRecords == null ||
-      this._listInfo == null
-    ) {
+    if (this._rawRecords == null || this._listInfo == null) {
       this._records = null;
       return;
     }
@@ -212,9 +205,9 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
         if (dc[i].fieldApiName === fieldApiName) {
           this._orderedByInfo = [
             {
-              "fieldApiName": fieldApiName,
-              "isAscending": true,
-              "label": dc[i].label,
+              fieldApiName: fieldApiName,
+              isAscending: true,
+              label: dc[i].label
             }
           ];
 
@@ -247,17 +240,22 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
     let items = this.template.querySelectorAll(".item");
     let navsvc = this.template.querySelector("c-sf-gps-ds-navigation-service");
 
-    if (navsvc == null || items.length === 0 || items.length !== this._records.length) {
+    if (
+      navsvc == null ||
+      items.length === 0 ||
+      items.length !== this._records.length
+    ) {
       return;
     }
 
     for (let i = 0; i < this._records.length; i++) {
       if (this._records[i]?.columns?.Id?.value) {
-        navsvc.generateUrl("standard__recordPage", {
-          objectApiName: this.objectApiName,
-          recordId: this._records[i].columns.Id.value,
-          actionName: "view"
-        })
+        navsvc
+          .generateUrl("standard__recordPage", {
+            objectApiName: this.objectApiName,
+            recordId: this._records[i].columns.Id.value,
+            actionName: "view"
+          })
           .then((url) => {
             items[i].link = url;
           });
