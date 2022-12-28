@@ -9,7 +9,7 @@
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 236.3"
+          "package": "omnistudio 240.4"
         }
       ]
     },
