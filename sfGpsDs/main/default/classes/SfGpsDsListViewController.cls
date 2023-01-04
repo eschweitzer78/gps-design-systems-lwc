@@ -162,6 +162,7 @@ public with sharing class SfGpsDsListViewController {
         SELECT Id, NamespacePrefix, DeveloperName
         FROM ListView
         WHERE Id = :id
+        WITH USER_MODE
       ];
 
       if (lvList.size() > 0) {
@@ -222,7 +223,7 @@ public with sharing class SfGpsDsListViewController {
         xorderedByInfo
       );
 
-      return Database.query(rv);
+      return Database.query(rv, AccessLevel.USER_MODE);
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }
@@ -399,8 +400,6 @@ public with sharing class SfGpsDsListViewController {
             sObjectApiName = elements.get(0);
             sFieldApiName = elements.get(1);
             sObject so = record.getSObject(sObjectApiName);
-            System.debug('xx rel');
-            System.debug(so);
             value = so
               ?.get(sFieldApiName); /* Might be a null-valued relationship */
             relationshipId = String.valueOf(so?.get('Id'));
@@ -416,11 +415,6 @@ public with sharing class SfGpsDsListViewController {
 
           Schema.DescribeFieldResult fDesc = efDesc?.fieldDescription;
           String displayValue = null;
-
-          System.debug('xx field ');
-          System.debug(efDesc?.objectInfo.getApiName());
-          System.debug(efDesc?.fieldDescription);
-          System.debug(value);
 
           Schema.DisplayType fType = (fDesc != null) ? fDesc.getType() : null;
           switch on fType {
