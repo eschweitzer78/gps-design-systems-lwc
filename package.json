@@ -1,24 +1,40 @@
 {
-  "name": "salesforce-app",
-  "private": true,
+  "name": "au-design-systems-lwc",
+  "private": false,
   "version": "1.0.0",
-  "description": "Salesforce App",
+  "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
     "lint": "eslint **/{aura,lwc}/**",
     "test": "npm run test:unit",
-    "test:unit": "sfdx-lwc-jest",
-    "test:unit:watch": "sfdx-lwc-jest --watch",
-    "test:unit:debug": "sfdx-lwc-jest --debug",
-    "test:unit:coverage": "sfdx-lwc-jest --coverage",
+    "test:unit": "sfdx-lwc-jest --skipApiVersionCheck",
+    "test:unit:watch": "sfdx-lwc-jest --watch --skipApiVersionCheck",
+    "test:unit:debug": "sfdx-lwc-jest --debug --skipApiVersionCheck",
+    "test:unit:coverage": "sfdx-lwc-jest --coverage --skipApiVersionCheck",
     "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
     "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
     "postinstall": "husky install",
     "precommit": "lint-staged",
     "osfilegen": "node osfilegen.js"
   },
+  "lint-staged": {
+    "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [
+      "prettier --write"
+    ],
+    "**/{aura,lwc}/**": [
+      "eslint"
+    ],
+    "**/lwc/**": [
+      "sfdx-lwc-jest --skipApiVersionCheck -- --bail --findRelatedTests --passWithNoTests"
+    ]
+  },
+  "author": "Emmanuel Schweitzer at salesforce.com",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eschweitzer78/gps-design-systems-lwc"
+  },
   "devDependencies": {
     "@lwc/eslint-plugin-lwc": "^1.0.1",
-    "@lwc/jest-transformer": "^11.4.0",
     "@prettier/plugin-xml": "^0.13.1",
     "@sa11y/jest": "^3.1.0",
     "@salesforce/eslint-config-lwc": "^2.0.0",
@@ -32,15 +48,9 @@
     "lint-staged": "^11.0.0",
     "nsw-design-system": "^3.2.4",
     "prettier": "^2.3.2",
-    "prettier-plugin-apex": "^1.10.0",
-    "puppeteer": "^19.3.0"
+    "prettier-plugin-apex": "^1.10.0"
   },
-  "lint-staged": {
-    "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [
-      "prettier --write"
-    ],
-    "**/{aura,lwc}/**": [
-      "eslint"
-    ]
+  "devDependencies2": {
+    "puppeteer": "^19.3.0"
   }
 }
