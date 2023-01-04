@@ -364,7 +364,9 @@ a {
 /* TODO: replace href */
 @media print {
   .is-external.is-unstyled:after,
-  .is-unstyled[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+  .is-unstyled[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+      .is-internal
+    ):after {
     display: none;
   }
 }
