@@ -1443,9 +1443,7 @@
     line-height: 1.31579;
   }
 }
-.govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(
-    .govuk-fieldset__legend--l
-  ):not(.govuk-fieldset__legend--xl)
+.govuk-fieldset__legend:not(.govuk-fieldset__legend--m):not(.govuk-fieldset__legend--l):not(.govuk-fieldset__legend--xl)
   + .govuk-hint,
 .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl)
   + .govuk-hint,

@@ -51,10 +51,10 @@ public with sharing class SfGpsDsListViewController {
           for (String label : operandLabels) {
             rv.add(
               fieldApiName +
-                opNameToOpMap.get(this.operator) +
-                '\'' +
-                label +
-                '\''
+              opNameToOpMap.get(this.operator) +
+              '\'' +
+              label +
+              '\''
             );
           }
 
