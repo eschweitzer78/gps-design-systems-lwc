@@ -1,0 +1,58 @@
+<template>
+  <div id="radiogroup-os-n" class={computedFormGroupClass}>
+    <fieldset
+      class="govuk-fieldset"
+      aria-describedby={computedAriaDescribedBy}
+      role="radiogroup"
+      aria-required={required}
+      aria-invalid={computedAriaInvalid}
+    >
+      <legend class="govuk-fieldset__legend">{label}</legend>
+      <slot name="label"></slot>
+      <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+        {fieldLevelHelp}
+      </div>
+      <p
+        if:true={isRealError}
+        id="errorMessageBlock"
+        aria-live="assertive"
+        class="govuk-error-message"
+      >
+        <span class="govuk-visually-hidden">{errorSrLabel}</span>{errorMessage}
+      </p>
+      <div class={computedRadiosClass}>
+        <template
+          if:true={internalOpts}
+          for:each={internalOpts}
+          for:item="e"
+          for:index="t"
+        >
+          <div key={e.id} class="govuk-radios__item">
+            <input
+              class="govuk-radios__input"
+              type="radio"
+              tabindex={tabIndex}
+              required={required}
+              disabled={disabled}
+              id={e.id}
+              data-index={t}
+              name={e.name}
+              value={e.value}
+              checked={e.selected}
+              onfocus={handleFocus}
+              onchange={onchangevalue}
+              aria-invalid={computedAriaInvalid}
+            />
+            <label
+              class="govuk-label govuk-radios__label"
+              data-index={t}
+              for={e.id}
+            >
+              {e.label}
+            </label>
+          </div>
+        </template>
+      </div>
+    </fieldset>
+  </div>
+</template>

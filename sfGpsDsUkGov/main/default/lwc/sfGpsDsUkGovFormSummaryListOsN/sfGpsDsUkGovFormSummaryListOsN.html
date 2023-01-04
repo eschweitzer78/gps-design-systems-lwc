@@ -1,0 +1,24 @@
+<template>
+  <dl class="govuk-summary-list">
+    <template if:true={_items} for:each={_items} for:item="item">
+      <div key={item.key} class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">{item.key}</dt>
+        <dd class="govuk-summary-list__value">
+          {item.value}
+          <!-- TODO: may need to be transformed to allow multi-line
+               or breaking up in multiple p's with govuk-body class -->
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a
+            href="#"
+            class="govuk-link"
+            data-id={item.key}
+            onclick={handleClick}
+          >
+            Change<span class="govuk-visually-hidden"> {item.key}</span>
+          </a>
+        </dd>
+      </div>
+    </template>
+  </dl>
+</template>

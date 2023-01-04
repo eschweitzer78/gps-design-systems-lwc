@@ -1,0 +1,81 @@
+<template>
+  <template if:true={jsonDef.bAccordionActive}>
+    <h2 class="nsw-h2 slds-m-top_medium os-step-label">{mergedLabel}</h2>
+    <!-- slds-p-horizontal_medium  -->
+
+    <div class="vlc-separator slds-m-top_medium slds-m-bottom_medium"></div>
+    <!--  slds-m-horizontal_medium -->
+
+    <div>
+      <!-- class="nsw-container" -->
+
+      <!-- Error summary -->
+      <div
+        if:true={_errorMessages}
+        class="govuk-error-summary"
+        aria-labelledby="error-summary-title"
+        role="alert"
+      >
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <template for:each={_errorMessages} for:item="error">
+              <li key={error.id}>
+                <a
+                  href={error.href}
+                  data-id={error.id}
+                  onclick={handleErrorClick}
+                  >{error.message}</a
+                >
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slds-grid slds-wrap omniscript-step__body">
+        <slot class="slds-grid slds-wrap slds-size_1-of-1"></slot>
+      </div>
+
+      <!-- <hr class="sepbutton" /> -->
+
+      <div class="form-actions">
+        <div class="govuk-button-group">
+          <button
+            if:true={showNext}
+            class="govuk-button"
+            value={mergedNextLabel}
+            onclick={handleNext}
+          >
+            {mergedNextLabel}
+          </button>
+          <button
+            if:true={showSave}
+            class="govuk-button govuk-button--secondary"
+            onclick={handleSave}
+          >
+            {mergedSaveLabel}
+          </button>
+          <a if:true={showPrev} class="govuk-link" onclick={handleBack}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              fill="#242934"
+              aria-hidden="true"
+              width="16"
+              height="16"
+              color="darkGrey"
+              focusable="false"
+            >
+              <path
+                d="M9 16a1 1 0 00.71-1.71L3.41 8l6.3-6.29A1.004 1.004 0 008.29.29l-7 7a1 1 0 000 1.42l7 7A1 1 0 009 16z"
+              ></path></svg
+            >{mergedPreviousLabel}</a
+          >
+        </div>
+      </div>
+    </div>
+  </template>
+</template>
