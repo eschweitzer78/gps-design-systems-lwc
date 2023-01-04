@@ -52,6 +52,7 @@
       "target": "!Os.js",
       "SfGpsDsLwc": "SfGpsDsLwcOsN",
       "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
       "SfGpsDsAuNswAccordionGroupComm": "SfGpsDsAuNswAccordionGroupCommOs"
     },
