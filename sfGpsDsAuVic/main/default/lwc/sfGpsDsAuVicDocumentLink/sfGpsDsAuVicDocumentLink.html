@@ -1,0 +1,36 @@
+<template lwc:render-mode="light">
+  <figure class={computedClassName}>
+    <a
+      class="rpl-document-link__link"
+      aria-label={computedAriaLabel}
+      href={url}
+      download={computedDownload}
+      target={computedTarget}
+    >
+      <c-sf-gps-ds-au-vic-icon
+        class-name="rpl-document-link__icon"
+        symbol={icon}
+        color="primary"
+        size="l"
+      >
+      </c-sf-gps-ds-au-vic-icon>
+
+      <div class="rpl-document-link__info">
+        <span class="rpl-document-link__title">{name}</span>
+        <div class="rpl-document-link__meta">
+          <span if:true={extension} class="rpl-document-link__type"
+            >{extension}</span
+          >
+          <span if:true={filesize} class={computedFilesizeClassName}
+            >{filesize}</span
+          >
+          <span class="rpl-document-link__last-updated">{lastUpdated}</span>
+        </div>
+      </div>
+    </a>
+
+    <figcaption class="rpl-document-link__caption">
+      <slot></slot>
+    </figcaption>
+  </figure>
+</template>

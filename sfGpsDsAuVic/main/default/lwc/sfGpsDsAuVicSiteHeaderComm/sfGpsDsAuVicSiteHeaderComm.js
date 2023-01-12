@@ -38,8 +38,10 @@ export default class sfGpsDsAuVicSiteHeaderComm extends SfGpsDsNavigation {
 
   @api masterbrand;
   @api masterbrandAlt;
+  @api masterbrandLink;
   @api logo;
   @api logoAlt;
+  @api logoLink;
 
   @api breakpoint = 992; // Number
   @api sticky;
@@ -67,18 +69,43 @@ export default class sfGpsDsAuVicSiteHeaderComm extends SfGpsDsNavigation {
   }
 
   get computedMasterbrandAlt() {
-    return this.masterbrand
-      ? this.masterbrandAlt
-      : "Government of Victoria logo";
+    return this.masterbrandAlt || "Government of Victoria logo";
+  }
+
+  _navService;
+
+  get navService() {
+    if (!this._navService) {
+      this._navService = this.template.querySelector(
+        "c-sf-gps-ds-navigation-service"
+      );
+    }
+
+    return this._navService;
   }
 
   // Events
 
   handleNavigate(event) {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+    let nav = this.navService;
 
     if (nav && this._map && event.detail) {
       nav.navigateNavMenu(this._map[event.detail]);
     }
+  }
+
+  handleImageClick() {
+    let nav = this.navService;
+    if (nav?.navigateHome) nav.navigateHome();
+  }
+
+  handleCobrandImageClick() {
+    let nav = this.navService;
+    if (nav?.navigateHome) nav.navigateHome();
+  }
+
+  handleLogoutClick() {
+    let nav = this.navService;
+    if (nav?.navigateHome) nav.logout();
   }
 }

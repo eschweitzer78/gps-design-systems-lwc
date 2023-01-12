@@ -3,13 +3,11 @@
   margin-left: auto;
   z-index: 1070;
 }
-
 @media print {
   .rpl-quick-exit {
     display: none;
   }
 }
-
 .rpl-quick-exit--sticky::before {
   content: attr(data-text);
   color: #fff;
@@ -27,7 +25,6 @@
   pointer-events: none;
   opacity: 0;
 }
-
 @media screen and (min-width: 0) {
   .rpl-quick-exit--sticky::before {
     font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
@@ -36,7 +33,6 @@
     font-weight: normal;
   }
 }
-
 @media screen and (min-width: 768px) {
   .rpl-quick-exit--sticky::before {
     font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
@@ -44,19 +40,16 @@
     line-height: 1em;
   }
 }
-
 @media print {
   .rpl-quick-exit--sticky::before {
     color: #000;
   }
 }
-
 @media screen and (min-width: 992px) {
   .rpl-quick-exit--sticky::before {
     padding: 1rem 1.5rem;
   }
 }
-
 .rpl-quick-exit__button {
   color: #fff;
   border-radius: 0.25rem;
@@ -73,7 +66,6 @@
   color: #fff;
   background-color: #af272f;
 }
-
 @media screen and (min-width: 0) {
   .rpl-quick-exit__button {
     font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
@@ -82,7 +74,6 @@
     font-weight: normal;
   }
 }
-
 @media screen and (min-width: 768px) {
   .rpl-quick-exit__button {
     font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
@@ -90,57 +81,50 @@
     line-height: 1em;
   }
 }
-
 @media print {
   .rpl-quick-exit__button {
     color: #000;
   }
 }
-
 @media screen and (min-width: 992px) {
   .rpl-quick-exit__button {
     padding: 1rem 1.5rem;
   }
 }
-
 @media print {
   .rpl-quick-exit__button {
     color: #000;
   }
 }
-
 .rpl-quick-exit__button--stickable {
   z-index: 1060;
   top: 0.625rem;
   right: 0.625rem;
 }
-
 @media screen and (min-width: 576px) {
   .rpl-quick-exit__button--stickable {
     top: 1.25rem;
     right: 1.25rem;
   }
 }
-
 .rpl-quick-exit__button--sticky {
   position: fixed;
   transition: margin ease-in 0.3s;
   left: auto;
 }
-
 .rpl-quick-exit__button--header-visible {
   transition: margin ease-out 0.2s;
   margin-top: 3.25rem;
 }
-
 @media screen and (min-width: 768px) {
   .rpl-quick-exit__button--header-visible {
     margin-top: 4.125rem;
   }
 }
-
 .rpl-quick-exit__button:hover,
 .rpl-quick-exit__button:focus {
   text-decoration: none;
   background-color: #c42c35;
 }
+
+/*# sourceMappingURL=sfGpsDsAuVicQuickExit.css.map */

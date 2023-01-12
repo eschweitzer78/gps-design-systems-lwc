@@ -1,121 +1,56 @@
-@import "c/sfGpsDsAuVicCore";
-
-:host {
-  --rpl-contact-background: transparent;
-
-  /* ('l', 1.2em, 'bold') */
-  --rpl-contact-title-font-family: var(--rpl-font-family-bold);
-  --rpl-contact-title-font-size: var(--rpl-font-size-l);
-  --rpl-contact-title-line-height: 1.2em;
-
-  --rpl-contact-title-margin: 0 0 var(--rpl-space-4);
-  --rpl-contact-title-color: var(--rpl-color-extra_dark_neutral);
-  --rpl-contact-text-color: var(--rpl-color-extra_dark_neutral);
-  --rpl-contact-link-color: var(--rpl-color-extra_dark_neutral);
-
-  --rpl-contact-name-font-family: var(--rpl-font-family-medium);
-  --rpl-contact-name-font-size: var(--rpl-font-size-xs);
-  --rpl-contact-name-line-height: 1.4em;
-
-  --rpl-contact-font-family: var(--rpl-font-family-regular);
-  --rpl-contact-font-size: var(--rpl-font-size-xs);
-  --rpl-contact-line-height: 1.4em;
-
-  /* ('xs', 1.4em, 'regular'); */
-  --rpl-contact-department-font-family: var(--rpl-font-family-regular);
-  --rpl-contact-department-font-size: var(--rpl-font-size-xs);
-  --rpl-contact-department-line-height: 1.4em;
-
-  /* ('xs', 1.4em, 'regular'); */
-  --rpl-contact-postal-font-family: var(--rpl-font-family-regular);
-  --rpl-contact-postal-font-size: var(--rpl-font-size-xs);
-  --rpl-contact-postal-line-height: 1.4em;
-
-  /* ('xs', 1em, 'medium'); */
-  --rpl-contact-list-font-family: var(--rpl-font-family-medium);
-  --rpl-contact-list-font-size: var(--rpl-font-size-xs);
-  --rpl-contact-list-line-height: 1em;
-
-  --rpl-contact-details-padding: 0 0 0 var(--rpl-space-5);
-  --rpl-contact-details-border-image: var(
-    --rpl-gradient-decorative_gradient_90
-  );
-  --rpl-contact-paragraph-margin: var(--rpl-space-4) 0;
-}
-
 .rpl-contact {
-  color: var(--rpl-contact-text-color);
-  padding-top: var(--rpl-space-4);
-  background: var(--rpl-contact-background);
+  color: #011a3c;
+  padding-top: 1rem;
+  background: transparent;
   position: relative;
 }
-
 @media print {
   .rpl-contact {
-    color: var(--rpl-contact-text-color);
+    color: #000;
   }
 }
-
 @media print {
   .rpl-contact {
     page-break-inside: avoid;
   }
 }
-
 .rpl-contact__title {
-  font-family: var(--rpl-contact-title-font-family);
-  font-size: var(--rpl-contact-title-font-size);
-  line-height: var(--rpl-contact-title-line-height);
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1.25rem;
+  line-height: 1.2em;
   font-weight: normal;
-  color: var(--rpl-contact-title-color);
-  margin: var(--rpl-contact-title-margin);
+  color: #011a3c;
+  margin: 0 0 1rem;
 }
-
 @media print {
   .rpl-contact__title {
-    color: var(--rpl-contact-title-color);
+    color: #000;
   }
 }
-
-/*
 .rpl-contact .rpl-list__list-item {
-  font-family: var(--rpl-contact-list-font-family);
-  font-size: var(--rpl-contact-list-font-size);
-  line-height: var(--rpl-contact-list-line-height);
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1em;
   font-weight: normal;
 }
-
 .rpl-contact .rpl-list__text {
-  font-family: var(--rpl-contact-list-font-family);
-  font-size: var(--rpl-contact-list-font-size);
-  line-height: var(--rpl-contact-list-line-height);
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1em;
   font-weight: normal;
-  margin: var(--rpl-contact-paragraph-margin);
+  margin: 1rem 0;
   vertical-align: bottom;
 }
-*/
-
-/*
-.rpl-contact c-sf-gps-ds-au-vic-list {
-  --rpl-list-text-normal-font-family: var(--rpl-contact-list-font-family);
-  --rpl-list-text-normal-font-size: var(--rpl-contact-list-font-size);
-  --rpl-list-text-normal-line-height: var(--rpl-contact-list-line-height);
-  --rpl-list-text-margin: 1rem 0;
-}
-*/
-
 .rpl-contact__contact-details {
   position: relative;
-  padding: var(--rpl-contact-details-padding);
-  margin: var(--rpl-contact-paragraph-margin);
+  padding: 0 0 0 1.25rem;
+  margin: 1rem 0;
 }
-
 @media print {
   .rpl-contact__contact-details {
     padding: 0;
   }
 }
-
 .rpl-contact__contact-details::before {
   content: "";
   display: inline-block;
@@ -124,45 +59,49 @@
   bottom: 0;
   left: 0;
   width: 0.25rem;
-  background-image: var(--rpl-contact-details-border-image);
+  background-image: linear-gradient(
+    -180deg,
+    #0052c2 0%,
+    #825dff 12%,
+    #ef4a81 23%,
+    #e57200 37%,
+    #ffc166 51%,
+    #f9e062 81%
+  );
 }
-
 @media print {
   .rpl-contact__contact-details::before {
     display: none;
   }
 }
-
 .rpl-contact__name {
-  font-family: var(--rpl-contact-name-font-family);
-  font-size: var(--rpl-contact-name-font-size);
-  line-height: var(--rpl-contact-name-line-height);
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.4em;
   font-weight: normal;
   display: block;
 }
-
 .rpl-contact__department {
-  font-family: var(--rpl-contact-department-font-family);
-  font-size: var(--rpl-contact-department-font-size);
-  line-height: var(--rpl-contact-department-line-height);
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.4em;
   font-weight: normal;
   display: block;
 }
-
 .rpl-contact__postal {
-  font-family: var(--rpl-contact-postal-font-family);
-  font-size: var(--rpl-contact-postal-font-size);
-  line-height: var(--rpl-contact-postal-line-height);
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.4em;
   font-weight: normal;
   display: block;
 }
-
 .rpl-contact .rpl-link {
-  color: var(--rpl-contact-link-color);
+  color: #011a3c;
 }
-
 @media print {
   .rpl-contact .rpl-link {
-    color: var(--rpl-contact-link-color);
+    color: #000;
   }
 }
+
+/*# sourceMappingURL=sfGpsDsAuVicContactComm.css.map */

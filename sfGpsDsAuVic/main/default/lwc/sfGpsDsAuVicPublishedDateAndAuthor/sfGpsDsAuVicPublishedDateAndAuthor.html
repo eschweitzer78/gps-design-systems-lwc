@@ -1,0 +1,11 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <div if:true={date} class="rpl-publish-date-and-author__date-location">
+      {formattedDate}
+      <span if:true={location}> {locationPrefix} {location}</span>
+    </div>
+    <div if:true={author} class="rpl-publish-date-and-author__author">
+      {authorPrefix} {author}
+    </div>
+  </div>
+</template>

@@ -1,0 +1,10 @@
+@import "../../../../../node_modules/@dpc-sdp/ripple-global/scss/settings";
+@import "../../../../../node_modules/@dpc-sdp/ripple-global/scss/tools";
+
+.rpl-row {
+  @include rpl_grid_row;
+}
+
+.rpl-row--gutter {
+  @include rpl_grid_row_gutter;
+}

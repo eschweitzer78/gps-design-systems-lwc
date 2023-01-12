@@ -1,6 +1,8 @@
 import { LightningElement, api, track } from "lwc";
 
 export default class SfGpsDsAuVicSiteFooter extends LightningElement {
+  static renderMode = "light";
+
   @api nav; // [{ text, url, children [] }]
   @api socialLinks; // obj { title, children [ { title uri icon } ]}
   @api acknowledgement; // string

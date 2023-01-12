@@ -3,8 +3,9 @@
   <apiVersion>55.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>VIC DS Contact</masterLabel>
-  <description
-  >A contact widget in the VIC Government Design System</description>
+  <description>
+    A contact widget in the VIC Government Design System
+  </description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
@@ -16,52 +17,63 @@
         name="title"
         type="String"
         description="Title of the contact card."
-      >
-      </property>
+        default="Contact us"
+      />
       <property
         label="Contact name"
         name="name"
         type="String"
         description="Main contact, usually as first name, last name and title."
-      >
-      </property>
+        default="Mr. Daniel Andrews (Premier)"
+      />
       <property
         label="Department"
         name="department"
         type="String"
         description="Department"
-      >
-      </property>
-      <property label="Postal address" name="postal" type="String">
-      </property>
+        default="Department of Premier and Cabinet"
+      />
+      <property
+        label="Postal address"
+        name="postal"
+        type="String"
+        description="Postal address."
+        default=""
+      />
       <property
         label="Address"
         name="address"
         type="String"
         description="Full street address for the contact card."
-      >
-      </property>
+        default="1 Treasury Place, Melbourne VIC 3002"
+      />
       <property
         label="Phone"
         name="phone"
         type="String"
         description="Telephone number in JSON format as an array of number and title."
-      >
-      </property>
+        default="{&quot;number&quot;:&quot;03 9651 5111&quot;}"
+      />
       <property
         label="Email"
         name="email"
         type="String"
         description="Email address."
-      >
-      </property>
+        default="contact@dpc.vic.gov.au"
+      />
       <property
         label="Social"
         name="social"
         type="String"
         description="Social details in JSON format as an array of icon, title and url."
-      >
-      </property>
+        default="[{&quot;icon&quot;:&quot;linkedin&quot;,&quot;title&quot;:&quot;Department of Premier and Cabinet (Vic)&quot;,&quot;url&quot;:&quot;https://www.linkedin.com/company/department-of-premier-and-cabinet-vic-?trk=vsrp_companies_res_name&amp;trkInfo=VSRPsearchId%3A1803639241454555092663%2CVSRPtargetId%3A670222%2CVSRPcmpt%3Aprimary&quot;},{&quot;icon&quot;:&quot;youtube_channel&quot;,&quot;title&quot;:&quot;Department of Premier and Cabinet Victoria&quot;,&quot;url&quot;:&quot;https://www.youtube.com/user/DPCMultimedia&quot;}]"
+      />
+      <property
+        label="Class name"
+        name="className"
+        type="String"
+        description="Additional CSS class(es) to apply."
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

@@ -1,6 +1,6 @@
 import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import { isIPadPro, computeClass, nextTick } from "c/sfGpsDsHelpers";
+import { isIPadPro, computeClass, nextTick, uniqueId } from "c/sfGpsDsHelpers";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "./bodyScrollLock";
 
 const CLOSE_MENU = "Close menu";
@@ -9,12 +9,18 @@ const LOGOUT_LABEL = "Logout";
 const MENU_LABEL = "Menu";
 const SEARCH_LABEL = "Search";
 const TITLE_LABEL = "Main Menu";
+const QUICK_EXIT_LABEL = "Quick exit";
+const QUICK_EXIT_TARGET = "https://www.google.com";
 
 export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api imageSrc;
   @api imageAlt;
+  @api imageLink;
   @api cobrandImageSrc;
   @api cobrandImageAlt;
+  @api cobrandImageLink;
 
   @api breakpoint = 992; // Number
   @api sticky;
@@ -26,6 +32,9 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
   @api searchLabel = SEARCH_LABEL;
   @api closeSearchLabel = CLOSE_SEARCH_LABEL;
   @api logoutLabel = LOGOUT_LABEL;
+
+  @api quickExitLabel = QUICK_EXIT_LABEL;
+  @api quickExitTarget = QUICK_EXIT_TARGET;
 
   @api className;
 
@@ -264,6 +273,18 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
     return `rpl-site-header__divider--${hasMenu}${hasVic}${hasCobrand}`;
   }
 
+  _searchContainerId;
+
+  get computedSearchContainerId() {
+    if (!this._searchContainerId) {
+      this._searchContainerId = uniqueId(
+        "sf-gps-ds-au-vic-site-header-search-container"
+      );
+    }
+
+    return this._searchContainerId;
+  }
+
   handleSearchClick() {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isMenuContentOpen = !(
@@ -338,9 +359,7 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
   toggleBodyScroll() {
     if (this.isMenuContentOpen) {
       let nextTickFunc = function () {
-        let menuEl = this.template.querySelector(
-          ".rpl-site-header__menu-container"
-        );
+        let menuEl = this.querySelector(".rpl-site-header__menu-container");
         if (menuEl) {
           disableBodyScroll(menuEl);
         }
@@ -393,6 +412,18 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
     }));
   }
 
+  handleImageClick() {
+    if (!this.imageLink) {
+      this.dispatchEvent(new CustomEvent("imageclick"));
+    }
+  }
+
+  handleCobrandImageClick() {
+    if (!this.cobrandImageLink) {
+      this.dispatchEvent(new CustomEvent("cobrandimageclick"));
+    }
+  }
+
   handleLogoutClick() {
     this.dispatchEvent(new CustomEvent("logout"));
   }
@@ -404,7 +435,7 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
   }
 
   scroll() {
-    let rootElement = this.template.firstElementChild;
+    let rootElement = this.querySelector("[data-sfgpsdsauvicsiteheader]");
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (this.stickyActive === false && scrollTop > rootElement.offsetTop) {

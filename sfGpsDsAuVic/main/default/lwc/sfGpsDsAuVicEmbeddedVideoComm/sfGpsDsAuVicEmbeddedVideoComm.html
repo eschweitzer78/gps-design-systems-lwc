@@ -1,0 +1,20 @@
+<template>
+  <c-sf-gps-ds-au-vic-embedded-video
+    if:false={_sfGpsErrors}
+    title={title}
+    width={width}
+    height={height}
+    src={src}
+    variant={variant}
+    url={url}
+    transcript={transcript}
+    media-link={_mediaLink}
+    display-transcript={displayTranscript}
+    class-name={className}
+  >
+    <div class="sfGpsMarkdown"></div>
+  </c-sf-gps-ds-au-vic-embedded-video>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

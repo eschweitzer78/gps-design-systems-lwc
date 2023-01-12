@@ -1,8 +1,8 @@
-<template>
+<template lwc:render-mode="light">
   <template if:false={_sfGpsErros}>
     <div if:true={html} class={computedClass}>
       <!-- Use dynamic component to render string template in runtime -->
-      <div class="rpl-markup__inner" lwc:dom="manual"></div>
+      <div class="rpl-markup__inner"></div>
     </div>
   </template>
 

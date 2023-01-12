@@ -1,0 +1,55 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName} style={heroBannerStyles}>
+    <c-sf-gps-ds-au-vic-row if:true={logo}>
+      <div class="rpl-hero-banner__left">
+        <img class="rpl-hero-banner__logo" src={logo.src} alt={logo.alt} />
+      </div>
+    </c-sf-gps-ds-au-vic-row>
+    <c-sf-gps-ds-au-vic-row>
+      <div class="rpl-hero-banner__left">
+        <h1 if:true={title} class={computedTitleClassName}>
+          <span>{title}</span>
+        </h1>
+        <p if:true={introText} class={computedDescriptionClassName}>
+          {introText}
+        </p>
+        <slot name="leftbottom"></slot>
+      </div>
+
+      <div if:true={showLinks} class="rpl-hero-banner__right">
+        <h2 if:true={linkHeading} class={computedLinkHeadingClassName}>
+          {linkHeading}
+        </h2>
+        <ul if:true={showLinkList} class="rpl-hero-banner__link-list">
+          <template for:each={links} for:item="item">
+            <li key={item.key} class="rpl-hero-banner__link-list-item">
+              <c-sf-gps-ds-au-vic-text-link
+                class="rpl-hero-banner__link"
+                link={item}
+                icon-symbol="arrow_right_primary"
+                icon-color="primary"
+                underline="true"
+                theme={theme}
+                size={textLinkSize}
+              >
+              </c-sf-gps-ds-au-vic-text-link>
+            </li>
+          </template>
+          <li if:true={moreLink} class="rpl-hero-banner__link-list-item">
+            <c-sf-gps-ds-au-vic-text-link
+              class="rpl-hero-banner__more-link"
+              link={moreLink}
+              icon-symbol="arrow_right_primary"
+              icon-color="primary"
+              underline="true"
+              theme={theme}
+              emphasis="true"
+              size={textLinkSize}
+            >
+            </c-sf-gps-ds-au-vic-text-link>
+          </li>
+        </ul>
+      </div>
+    </c-sf-gps-ds-au-vic-row>
+  </div>
+</template>

@@ -58,3 +58,31 @@ export function parseIso8601(date) {
 
   return new Date(timestamp);
 }
+
+const DATE_STYLE_DEFAULT = "medium";
+const RANGE_DIVIDER_DEFAULT = " to ";
+
+export function formatDate(date, dateStyle = DATE_STYLE_DEFAULT) {
+  let rv = "Invalid date";
+
+  try {
+    rv = date.toLocaleDateString(undefined, {
+      dateStyle: dateStyle
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  return rv;
+}
+
+export function formatDateRange(
+  dateStart,
+  dateEnd,
+  dateStyle = DATE_STYLE_DEFAULT
+) {
+  return `${formatDate(
+    dateStart,
+    dateStyle
+  )}${RANGE_DIVIDER_DEFAULT}${formatDate(dateEnd, dateStyle)}`;
+}

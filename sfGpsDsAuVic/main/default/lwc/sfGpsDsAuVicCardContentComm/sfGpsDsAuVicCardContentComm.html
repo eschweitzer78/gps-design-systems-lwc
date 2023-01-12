@@ -1,0 +1,17 @@
+<template>
+  <c-sf-gps-ds-au-vic-card-content
+    link={_link}
+    image={image}
+    focal-point={_focalPoint}
+    width={width}
+    height={height}
+    border={border}
+    center={center}
+    type={type}
+    class-name={className}
+  >
+    <template if:true={content}>
+      <div class="sfGpsDsMarkdown"></div>
+    </template>
+  </c-sf-gps-ds-au-vic-card-content>
+</template>

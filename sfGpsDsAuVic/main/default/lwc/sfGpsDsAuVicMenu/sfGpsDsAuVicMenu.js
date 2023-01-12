@@ -1,11 +1,12 @@
 import { LightningElement, api, track } from "lwc";
-
 import { computeClass } from "c/sfGpsDsHelpers";
 
-const hasQuickExit = true;
-
 export default class SfGpsDsAuVicMenu extends LightningElement {
+  static renderMode = "light";
+
   @api depth;
+
+  /* api: layout */
 
   _layout = "horizontal";
 
@@ -23,20 +24,21 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
 
   @track visibleDepth = 0;
 
-  _originalMenu;
+  /* api: menu */
+  _menuOriginal;
   @track _menu;
 
   @api get menu() {
-    return this._originalMenu;
+    return this._menuOriginal;
   }
 
   set menu(value) {
-    this._originalMenu = value;
+    this._menuOriginal = value;
     this.refreshContents();
   }
 
   refreshContents() {
-    let value = this._originalMenu;
+    let value = this._menuOriginal;
 
     if (value == null || !Array.isArray(value)) {
       this._menu = [];
@@ -109,6 +111,84 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
   }
 
   @api rootVerticalDepth = 0;
+
+  @api quickExitLabel;
+  @api quickExitTarget;
+
+  get computedClass() {
+    return (
+      computeClass({
+        "rpl-menu": true,
+        "rpl-menu--open": this.open,
+        "rpl-menu--root": this.isRoot,
+        "rpl-menu--vertical": this.isVerticalLayout, //(this.isRoot && this.isVerticalLayout), deal with css containment
+        "rpl-menu--horizontal": !this.isVerticalLayout, //(this.isRoot && !this.isVerticalLayout), deal with css containment
+        "rpl-menu--horizontal-floating-wrapper":
+          !this.isVerticalLayout && this.depth === 1,
+        "rpl-menu--subs": !this.isVerticalLayout && this.depth > 1
+      }) + (this.className ? " " + this.className : "")
+    );
+  }
+
+  get hasQuickExit() {
+    return this.quickExitLabel && this.quickExitTarget;
+  }
+
+  get computedShowQuickExit() {
+    return (
+      this.hasQuickExit &&
+      this.open &&
+      ((!this.isVerticalLayout && this.depth === 1) || this.isVerticalLayout)
+    );
+  }
+
+  get computedShowCloseMenu() {
+    return !this.isRoot && this.isVerticalLayout;
+  }
+
+  get computedShowMenuHeading() {
+    let showMenuHeading = !this.isVerticalLayout && this.depth === 1;
+    return showMenuHeading && this.parent;
+  }
+
+  get computedMenuHeadingClass() {
+    return computeClass({
+      "rpl-menu__heading": this.depth === 1,
+      "rpl-menu__heading--horizontal-sub":
+        !this.isVerticalLayout && this.depth > 1,
+      "rpl-link rpl-menu__item-link rpl-menu__item-link--parent":
+        !this.isVerticalLayout && this.depth > 1
+    });
+  }
+
+  get computedShowMenuItem() {
+    return this.isRoot && this.isVerticalLayout;
+  }
+
+  get computedMenuItemsClass() {
+    return computeClass({
+      "rpl-menu__items": true,
+      "rpl-menu__items--root": this.isRoot
+    });
+  }
+
+  get computedSubMenuDepth() {
+    return this.depth ? this.depth + 1 : 1;
+  }
+
+  get computedVisibleDepth() {
+    return this.isRoot ? this.visibleDepth : null;
+  }
+
+  get computedRootVerticalDepth() {
+    return this.isRoot ? this.rootVerticalDepth : null;
+  }
+
+  get computedShowParentLink() {
+    return (
+      (this.isVerticalLayout && this.parent) || (this.depth > 1 && this.parent)
+    );
+  }
 
   handleMenuLinkClick(event) {
     event.preventDefault();
@@ -251,76 +331,5 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
       this._menu[index].open = false;
       this._menu = [...this._menu];
     }
-  }
-
-  get computedShowParentLink() {
-    return (
-      (this.isVerticalLayout && this.parent) || (this.depth > 1 && this.parent)
-    );
-  }
-
-  get computedClass() {
-    return (
-      computeClass({
-        "rpl-menu": true,
-        "rpl-menu--open": this.open,
-        "rpl-menu--root": this.isRoot,
-        "rpl-menu--vertical": this.isVerticalLayout, //(this.isRoot && this.isVerticalLayout), deal with css containment
-        "rpl-menu--horizontal": !this.isVerticalLayout, //(this.isRoot && !this.isVerticalLayout), deal with css containment
-        "rpl-menu--horizontal-floating-wrapper":
-          !this.isVerticalLayout && this.depth === 1,
-        "rpl-menu--subs": !this.isVerticalLayout && this.depth > 1
-      }) + (this.className ? " " + this.className : "")
-    );
-  }
-
-  get computedShowQuickExit() {
-    return (
-      hasQuickExit &&
-      this.open &&
-      ((!this.isVerticalLayout && this.depth === 1) || this.isVerticalLayout)
-    );
-  }
-
-  get computedShowCloseMenu() {
-    return !this.isRoot && this.isVerticalLayout;
-  }
-
-  get computedShowMenuHeading() {
-    let showMenuHeading = !this.isVerticalLayout && this.depth === 1;
-    return showMenuHeading && this.parent;
-  }
-
-  get computedMenuHeadingClass() {
-    return computeClass({
-      "rpl-menu__heading": this.depth === 1,
-      "rpl-menu__heading--horizontal-sub":
-        !this.isVerticalLayout && this.depth > 1,
-      "rpl-link rpl-menu__item-link rpl-menu__item-link--parent":
-        !this.isVerticalLayout && this.depth > 1
-    });
-  }
-
-  get computedShowMenuItem() {
-    return this.isRoot && this.isVerticalLayout;
-  }
-
-  get computedMenuItemsClass() {
-    return computeClass({
-      "rpl-menu__items": true,
-      "rpl-menu__items--root": this.isRoot
-    });
-  }
-
-  get computedSubMenuDepth() {
-    return this.depth ? this.depth + 1 : 1;
-  }
-
-  get computedVisibleDepth() {
-    return this.isRoot ? this.visibleDepth : null;
-  }
-
-  get computedRootVerticalDepth() {
-    return this.isRoot ? this.rootVerticalDepth : null;
   }
 }

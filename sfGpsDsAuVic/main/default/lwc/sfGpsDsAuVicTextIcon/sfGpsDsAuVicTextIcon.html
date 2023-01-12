@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <span if:true={showBefore}>
     <span if:true={hasMultipleWords} class="rpl-text-icon__group">
       <c-sf-gps-ds-au-vic-icon
@@ -7,8 +7,8 @@
         size={size}
         class={computedIconClass}
       >
-      </c-sf-gps-ds-au-vic-icon
-      >>{textFirstWord}
+      </c-sf-gps-ds-au-vic-icon>
+      {textFirstWord}{space}
     </span>
     <span if:true={hasMultipleWords}>{textWithoutFirstWord}</span>
     <span if:false={hasMultipleWords} class="rpl-text-icon__group">
@@ -25,7 +25,7 @@
   <span if:true={showAfter}>
     <span if:true={hasMultipleWords}>{textWithoutLastWord}</span>
     <span if:true={hasMultipleWords} class="rpl-text-icon__group">
-      {textLastWord}
+      {space}{textLastWord}
       <c-sf-gps-ds-au-vic-icon
         symbol={symbol}
         color={color}

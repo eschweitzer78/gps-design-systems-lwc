@@ -1,0 +1,81 @@
+.rpl-hero-banner--cta__left-bottom {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .rpl-hero-banner--cta__left-bottom {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+@media print {
+  .rpl-hero-banner--cta__left-bottom {
+    display: block;
+  }
+}
+.rpl-hero-banner--cta__secondary {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .rpl-hero-banner--cta__secondary {
+    align-items: center;
+    flex-direction: row;
+  }
+}
+@media screen and (min-width: 768px) {
+  .rpl-hero-banner--cta__secondary {
+    margin-left: 1.5rem;
+  }
+}
+@media print {
+  .rpl-hero-banner--cta__secondary {
+    display: none;
+  }
+}
+.rpl-hero-banner--cta__secondary-text {
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-weight: normal;
+  color: #011a3c;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+@media print {
+  .rpl-hero-banner--cta__secondary-text {
+    color: #000;
+  }
+}
+.rpl-hero-banner--cta-dark .rpl-hero-banner--cta__secondary-text {
+  color: white;
+}
+@media screen and (min-width: 0) {
+  .rpl-hero-banner--cta__secondary-link {
+    font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+    font-size: 1rem;
+    line-height: 1.7em;
+    font-weight: normal;
+  }
+}
+@media screen and (min-width: 768px) {
+  .rpl-hero-banner--cta__secondary-link {
+    font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+    font-size: 1.125rem;
+    line-height: 1.2em;
+  }
+}
+.rpl-hero-banner--cta-dark .rpl-hero-banner--cta__secondary-link {
+  color: white;
+}
+.rpl-hero-banner--cta__secondary-link .rpl-text-label {
+  text-decoration: underline;
+}
+@media print {
+  .rpl-hero-banner--cta__primary.rpl-button {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicHeroBannerCta.css.map */

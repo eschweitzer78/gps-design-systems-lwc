@@ -5,6 +5,27 @@ import cBasePath from "@salesforce/community/basePath";
 export default class SfGpsDsNavigationService extends NavigationMixin(
   LightningElement
 ) {
+  @api navigateTo(type, config, state = null) {
+    this[NavigationMixin.Navigate]({
+      type: type,
+      attributes: config,
+      state: state
+    });
+  }
+
+  @api logout() {
+    this.navigateTo("comm__loginPage", {
+      actionName: "logout"
+    });
+  }
+
+  @api navigateHome() {
+    // for some reason comm__namedPage+Home does not seem to work at all.
+    this.navigateTo("standard__namedPage", {
+      pageName: "home"
+    });
+  }
+
   @api navigateNavMenu(menuEntry) {
     switch (menuEntry.Type) {
       case "ExternalLink":
@@ -48,7 +69,10 @@ export default class SfGpsDsNavigationService extends NavigationMixin(
         break;
 
       case "NavigationalTopic":
-        console.log("navtopic", JSON.stringify(menuEntry));
+        console.log(
+          "sfGpsDsNavigationService.navtopic",
+          JSON.stringify(menuEntry)
+        );
         // TODO handle
         break;
 
@@ -70,14 +94,6 @@ export default class SfGpsDsNavigationService extends NavigationMixin(
         // MenuLabel -> Safe to ignore
         break;
     }
-  }
-
-  @api navigateTo(type, config, state = null) {
-    this[NavigationMixin.Navigate]({
-      type: type,
-      attributes: config,
-      state: state
-    });
   }
 
   @api generateUrlNavMenu(menuEntry) {

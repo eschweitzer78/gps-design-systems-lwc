@@ -1,0 +1,173 @@
+.rpl-card-promo {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border: 1px solid #d7dbe0;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+.rpl-card-promo:hover,
+.rpl-card-promo:focus {
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.14);
+}
+.rpl-card-promo:hover.rpl-link,
+.rpl-card-promo:focus.rpl-link {
+  text-decoration: none;
+}
+.rpl-card-promo:hover .rpl-card-promo__title,
+.rpl-card-promo:focus .rpl-card-promo__title {
+  color: #0052c2;
+  text-decoration: underline;
+}
+.rpl-card-promo__meta {
+  margin: 0 0 0.8125rem 0;
+}
+.rpl-card-promo__date,
+.rpl-card-promo__year,
+.rpl-card-promo__fv-status {
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.75rem;
+  line-height: 0.75em;
+  font-weight: normal;
+  display: inline;
+  color: #465870;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+}
+.rpl-card-promo__topic {
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.75rem;
+  line-height: 0.75em;
+  font-weight: normal;
+  display: inline-block;
+  color: #465870;
+  text-transform: uppercase;
+  padding: 0.25rem 0.25rem 0.25rem 0;
+}
+.rpl-card-promo__content-type {
+  display: inline-block;
+  color: #011a3c;
+  background-color: #e8ebee;
+  padding: 0.16rem 0.5rem;
+}
+@media screen and (min-width: 0) {
+  .rpl-card-promo__content-type {
+    font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+    font-size: 0.875rem;
+    line-height: 0.875em;
+    font-weight: normal;
+  }
+}
+@media screen and (min-width: 576px) {
+  .rpl-card-promo__content-type {
+    font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+    font-size: 0.875rem;
+    line-height: 1em;
+  }
+}
+.rpl-card-promo__content-type::first-letter {
+  text-transform: capitalize;
+}
+.rpl-card-promo__status {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0.25rem;
+}
+.rpl-card-promo__status span {
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.75rem;
+  line-height: 0.75em;
+  font-weight: normal;
+  padding-left: 0.25rem;
+  color: #465870;
+  text-transform: uppercase;
+  padding-left: 1rem;
+}
+.rpl-card-promo__status-icon {
+  position: absolute;
+}
+.rpl-card-promo__title {
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1.25rem;
+  line-height: 1.2em;
+  font-weight: normal;
+  color: #011a3c;
+  margin: 0 0 0.5625rem 0;
+}
+.rpl-card-promo__summary {
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.4em;
+  font-weight: normal;
+  color: #011a3c;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .rpl-card-promo__summary {
+    margin: 0;
+  }
+}
+.rpl-card-promo__title,
+.rpl-card-promo__summary {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.rpl-card-promo__content {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  max-width: 37.875rem;
+}
+.rpl-card-promo--noimage .rpl-card-promo__content {
+  padding-top: 1.5rem;
+}
+.rpl-card-promo--noimage.rpl-card-promo--hide-rainbow .rpl-card-promo__content {
+  padding-top: 1.25rem;
+}
+.rpl-card-promo--thumbnail .rpl-card-promo__content {
+  padding-top: 1rem;
+}
+.rpl-card-promo--profile .rpl-card-promo__content {
+  padding-top: 1.25rem;
+}
+.rpl-card-promo--thumbnail .rpl-card-promo__image {
+  border-radius: 0.25rem 0.25rem 0 0;
+  height: 12.5rem;
+}
+.rpl-card-promo--noimage {
+  background-image: linear-gradient(
+    -90deg,
+    #0052c2 0%,
+    #825dff 12%,
+    #ef4a81 23%,
+    #e57200 37%,
+    #ffc166 51%,
+    #f9e062 81%
+  );
+  background-size: 100% 0.5rem;
+  background-repeat: no-repeat;
+}
+.rpl-card-promo--noimage.rpl-card-promo--hide-rainbow {
+  background-image: none;
+}
+.rpl-card-promo--profile .rpl-card-promo__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  max-width: none;
+}
+.rpl-card-promo--profile .rpl-card-promo__content .rpl-card-promo__title,
+.rpl-card-promo--profile .rpl-card-promo__content .rpl-card-promo__summary {
+  max-width: 37.875rem;
+}
+.rpl-card-promo--profile .rpl-card-promo__image {
+  margin-top: 3.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  display: block;
+  width: 9.25rem;
+  height: 9.25rem;
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicCardPromo.css.map */

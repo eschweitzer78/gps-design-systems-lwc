@@ -1,13 +1,17 @@
 <template>
   <c-sf-gps-ds-au-vic-site-footer
+    if:false={_sfGpsErrors}
     nav={nav}
     social-links={socialLinks}
     acknowledgement={acknowledgement}
     caption={caption}
-    links={links}
+    links={_items}
     copyright={copyright}
-    footer-logos={footerLogos}
+    footer-logos={_footerLogos}
     masterbrand={_masterbrand}
   >
   </c-sf-gps-ds-au-vic-site-footer>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
 </template>

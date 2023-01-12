@@ -70,6 +70,13 @@
         default="https://vic.gov.au"
       />
       <property
+        name="footerLogos"
+        type="String"
+        label="Footer logos"
+        description="Images for footer logos as a JSON array of { src, alt, url }."
+        default=""
+      />
+      <property
         name="className"
         type="String"
         label="Class name"

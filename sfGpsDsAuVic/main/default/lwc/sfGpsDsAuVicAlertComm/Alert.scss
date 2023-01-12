@@ -1,0 +1,26 @@
+@import "../../../../../node_modules/@dpc-sdp/ripple-global/scss/settings";
+@import "../../../../../node_modules/@dpc-sdp/ripple-global/scss/tools";
+
+.rpl-alert {
+  &__title {
+    margin-right: $rpl-space-2;
+  }
+
+  &__link {
+    margin-top: $rpl-space;
+    display: block;
+
+    @include rpl_breakpoint('s') {
+      margin: auto;
+      display: inline;
+    }
+
+    &.rpl-text-link {
+      text-decoration: underline;
+
+      &:focus, &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

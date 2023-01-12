@@ -2,6 +2,8 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 export default class SfGpsDsAuVicLinksAndCopyright extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api links; //: Array,
   @api copyright; //: String
 

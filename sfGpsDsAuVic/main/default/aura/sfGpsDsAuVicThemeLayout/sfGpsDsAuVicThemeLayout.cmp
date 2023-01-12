@@ -1,0 +1,105 @@
+<aura:component
+  implements="forceCommunity:themeLayout"
+  access="global"
+  description="VIC Theme Layout"
+>
+  <aura:attribute name="header" type="Aura.Component[]" required="false" />
+  <aura:attribute name="sidebar" type="Aura.Component[]" required="false" />
+  <aura:attribute name="footer" type="Aura.Component[]" required="false" />
+
+  <!-- this works with Citizen, Cypress, Ember, Jepson, Stella, Webster themes but *not* Customer Service -->
+  <aura:attribute name="themeHeader" type="Aura.Component[]" required="false" />
+
+  <aura:attribute
+    name="hideHeader"
+    type="Boolean"
+    required="false"
+    default="true"
+  />
+
+  <aura:attribute
+    name="skipLinkId"
+    type="String"
+    required="true"
+    default="rpl-skip-link"
+  />
+  <aura:attribute
+    name="navId"
+    type="String"
+    required="true"
+    default="rpl-nav"
+  />
+  <aura:attribute
+    name="contentId"
+    type="String"
+    required="true"
+    default="rpl-main"
+  />
+
+  <aura:attribute
+    name="skipToMainTitle"
+    type="String"
+    required="true"
+    default="Skip to main content"
+  />
+  <aura:attribute
+    name="backToTopShow"
+    type="Boolean"
+    required="true"
+    default="true"
+  />
+
+  <aura:attribute
+    name="backgroundImage"
+    type="String"
+    default="/sfsites/c/resource/sfGpsDsAuVic/images/bggraphic.png"
+  />
+
+  <div class="rpl-site-layout">
+    <!-- alert -->
+
+    <!-- skipLink -->
+    <c:sfGpsDsAuVicSkipLink
+      title="{! v.skipToMainTitle}"
+      skipLinkId="{! v.skipLinkId }"
+      contentId="{! v.contentId }"
+    />
+
+    <!-- header -->
+    <header class="rpl-site-header-container">
+      <h1 id="rpl-site-header-title" class="sr-only">Header</h1>
+      <div class="rpl-site-header-top">{! v.header }</div>
+
+      <div id="{!v.navId}" class="rpl-site-header-center">
+        <div class="rpl-site-header-center_content">{! v.sidebar }</div>
+        <aura:if isTrue="{! !v.hideHeader }">
+          <div class="rpl-site-header-center_profile">{! v.themeHeader }</div>
+        </aura:if>
+      </div>
+    </header>
+
+    <!-- body -->
+
+    <div
+      id="{! v.contentId }"
+      role="main"
+      aria-labelledby="rpl-site-content-title"
+      class="rpl-site-content-container"
+      style="{! 'background-image: url(' + v.backgroundImage + ')' }"
+    >
+      <h1 id="rpl-site-content-title" class="sr-only">Content</h1>
+      {! v.body }
+    </div>
+
+    <!-- back-to-top -->
+    <aura:if isTrue="{! v.backToTopShow }">
+      <c:sfGpsDsAuVicBackToTop skipLinkId="{! v.skipLinkId }" />
+    </aura:if>
+
+    <!-- footer -->
+    <footer class="rpl-site-footer-container">
+      <h1 id="rpl-site-footer-title" class="sr-only">Footer</h1>
+      {!v.footer}
+    </footer>
+  </div>
+</aura:component>

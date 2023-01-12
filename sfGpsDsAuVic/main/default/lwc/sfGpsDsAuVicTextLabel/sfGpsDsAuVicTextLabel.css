@@ -1,89 +1,51 @@
-:host {
-  --rpl-text-link-light-underline: var(--rpl-color-mid_neutral_2);
-  --rpl-text-link-dark-underline: var(--rpl-color-secondary);
-
-  --rpl-text-link-underline-small: 0.125rem; /* rem(2px) */
-  --rpl-text-link-underline-large: 0.1875rem; /* rem(3px) */
-
-  --rpl-text-link-text-color: var(--rpl-color-extra_dark_neutral);
-  --rpl-text-link-dark-text-color: var(--rpl-color-white);
-
-  /* ('xs', 1.7em, 'medium') */
-  --rpl-text-link-small-font-family: var(--rpl-font-family-medium);
-  --rpl-text-link-small-font-size: var(--rpl-font-size-xs);
-  --rpl-text-link-small-line-height: 1.7em;
-
-  /* ('l', 1.7em, 'medium') */
-  --rpl-text-link-large-font-family: var(--rpl-font-family-medium);
-  --rpl-text-link-large-font-size: var(--rpl-font-size-l);
-  --rpl-text-link-large-line-height: 1.7em;
-
-  /* ('xs', 1.7em, 'bold') */
-  --rpl-text-link-small-emphasis-font-family: var(--rpl-font-family-bold);
-  --rpl-text-link-small-emphasis-font-size: var(--rpl-font-size-xs);
-  --rpl-text-link-small-emphasis-line-height: 1.7em;
-
-  /* ('l', 1.7em, 'bold') */
-  --rpl-text-link-large-emphasis-font-family: var(--rpl-font-family-bold);
-  --rpl-text-link-large-emphasis-font-size: var(--rpl-font-size-l);
-  --rpl-text-link-large-emphasis-line-height: 1.7em;
-}
-
 .rpl-text-label {
-  color: var(--rpl-text-link-text-color);
+  color: #011a3c;
   text-decoration: none;
 }
-
 @media print {
   .rpl-text-label {
-    color: var(--rpl-text-link-text-color);
+    color: #000;
   }
 }
-
 .rpl-text-label--small {
-  font-family: var(--rpl-text-link-small-font-family);
-  font-size: var(--rpl-text-link-small-font-size);
-  line-height: var(--rpl-text-link-small-line-height);
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.7em;
   font-weight: normal;
 }
-
 .rpl-text-label--small--underline {
   border-bottom-style: solid;
-  border-bottom-color: var(--rpl-text-link-light-underline);
-  border-bottom-width: var(--rpl-text-link-underline-small);
+  border-bottom-color: #e8ebee;
+  border-bottom-width: 0.125rem;
 }
-
 .rpl-text-label--large {
-  font-family: var(--rpl-text-link-large-font-family);
-  font-size: var(--rpl-text-link-large-font-size);
-  line-height: var(--rpl-text-link-large-emphasis-line-height);
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 1.25rem;
+  line-height: 1.7em;
   font-weight: normal;
 }
-
 .rpl-text-label--large--underline {
   border-bottom-style: solid;
-  border-bottom-color: var(--rpl-text-link-light-underline);
-  border-bottom-width: var(--rpl-text-link-underline-large);
+  border-bottom-color: #e8ebee;
+  border-bottom-width: 0.1875rem;
 }
-
 .rpl-text-label--emphasis.rpl-text-label--small {
-  font-family: var(--rpl-text-link-small-emphasis-font-family);
-  font-size: var(--rpl-text-link-small-emphasis-font-size);
-  line-height: var(--rpl-text-link-small-emphasis-line-height);
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.7em;
   font-weight: normal;
 }
-
 .rpl-text-label--emphasis.rpl-text-label--large {
-  font-family: var(--rpl-text-link-large-emphasis-font-family);
-  font-size: var(--rpl-text-link-large-emphasis-font-size);
-  line-height: var(--rpl-text-link-large-emphasis-line-height);
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1.25rem;
+  line-height: 1.7em;
   font-weight: normal;
 }
-
 .rpl-text-label--dark {
-  color: var(--rpl-text-link-dark-text-color);
+  color: #fff;
+}
+.rpl-text-label--dark--underline {
+  border-bottom-color: #0095ec;
 }
 
-.rpl-text-label--dark--underline {
-  border-bottom-color: var(--rpl-text-link-dark-underline);
-}
+/*# sourceMappingURL=sfGpsDsAuVicTextLabel.css.map */

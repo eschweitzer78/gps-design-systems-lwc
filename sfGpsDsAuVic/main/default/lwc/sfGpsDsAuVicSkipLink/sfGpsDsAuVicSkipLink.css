@@ -1,0 +1,34 @@
+.rpl-skip-link__link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+  pointer-events: none;
+}
+.rpl-skip-link__link--show,
+.rpl-skip-link__link:focus {
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1rem;
+  line-height: 1em;
+  font-weight: normal;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.14);
+  background: #0095ec;
+  color: #fff;
+  z-index: 1060;
+  padding: 1rem 1.25rem;
+  border-radius: 0 0 0.25rem 0;
+  width: auto;
+  height: auto;
+  margin: auto;
+  clip: auto;
+  pointer-events: auto;
+  text-decoration: none;
+  top: 0;
+  left: 0;
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicSkipLink.css.map */

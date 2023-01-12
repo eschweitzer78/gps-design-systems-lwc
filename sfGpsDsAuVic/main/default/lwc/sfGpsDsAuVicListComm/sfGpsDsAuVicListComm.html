@@ -1,0 +1,15 @@
+<template>
+  <c-sf-gps-ds-au-vic-list
+    if:false={_sfGpsErrors}
+    title={_titleLink.text}
+    link={_titleLink.url}
+    size={size}
+    icon-scale={iconScale}
+    icon-color={iconColor}
+    list={_list}
+  >
+  </c-sf-gps-ds-au-vic-list>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

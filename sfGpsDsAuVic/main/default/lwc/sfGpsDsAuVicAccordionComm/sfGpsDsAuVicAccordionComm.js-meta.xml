@@ -10,11 +10,26 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title used as a header to the accordion set."
+        default="Accordion set"
+      />
+      <property
         name="content"
         type="String"
         label="Content"
         description="Content in Markdown format, which will be split by H1 header."
         default="# Accordion\nAn accordion is a series of expandable vertical panels, designed to save page on a page by hiding content and revealing it as required.\n# Second Accordion\nUsing *styling*."
+      />
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="Indicates the type of accordion."
+        default="default"
+        datasource="default,ordered"
       />
       <property
         name="showButtons"

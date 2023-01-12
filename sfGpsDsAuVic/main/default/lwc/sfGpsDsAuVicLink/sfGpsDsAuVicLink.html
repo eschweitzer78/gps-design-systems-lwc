@@ -1,14 +1,14 @@
-<template>
+<template lwc:render-mode="light">
   <a
-    class="rpl-link"
+    class={computedClassName}
     href={href}
     target={linkTarget}
     data-print-url={printUrl}
     onfocus={handleFocus}
   >
-    <span if:true={innerWrap} class="rpl-link__inner">
+    <span if:true={_innerWrap} class="rpl-link__inner">
       {text}<slot></slot>
     </span>
-    <template if:false={innerWrap}> {text}<slot></slot> </template>
+    <template if:false={_innerWrap}> {text}<slot></slot> </template>
   </a>
 </template>

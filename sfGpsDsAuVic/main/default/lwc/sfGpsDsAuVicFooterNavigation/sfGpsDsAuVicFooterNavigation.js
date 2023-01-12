@@ -1,10 +1,12 @@
 import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
-import Breakpoint from "c/sfGpsDsAuVicBreakpoint";
+import BreakpointMixin from "c/sfGpsDsAuVicBreakpointMixin";
 
-export default class SfGpsDsAuVicFooterNavigation extends Breakpoint(
+export default class SfGpsDsAuVicFooterNavigation extends BreakpointMixin(
   LightningElement
 ) {
+  static renderMode = "light";
+
   _nav = []; //:array
   _originalNav;
 
@@ -50,12 +52,12 @@ export default class SfGpsDsAuVicFooterNavigation extends Breakpoint(
     });
   }
 
-  connectedCallback() {
-    this.breakpoint$connectedCallback();
+  disconnectedCallback() {
+    this.breakpointDisconnectedCallback();
   }
 
-  disconnectedCallback() {
-    this.breakpoint$disconnectedCallback();
+  connectedCallback() {
+    this.breakpointConnectedCallback();
   }
 
   _socialLinks;

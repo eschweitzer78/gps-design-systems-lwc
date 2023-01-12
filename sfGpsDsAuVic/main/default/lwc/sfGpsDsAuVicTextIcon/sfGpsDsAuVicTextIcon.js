@@ -2,10 +2,12 @@ import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 export default class SfGpsDsAuVicTextIcon extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api symbol;
-  @api color;
-  @api placement;
-  @api size;
+  @api color = "primary";
+  @api placement = "after";
+  @api size = "m";
 
   _text;
   @api get text() {
@@ -41,7 +43,7 @@ export default class SfGpsDsAuVicTextIcon extends SfGpsDsLwc {
   }
 
   get trimmedText() {
-    return this.text.trim();
+    return this.text ? this.text.trim() : "";
   }
 
   get textWithoutLastWord() {
@@ -62,5 +64,9 @@ export default class SfGpsDsAuVicTextIcon extends SfGpsDsLwc {
 
   get computedIconClass() {
     return `rpl-text-icon--${this.placement}`;
+  }
+
+  get space() {
+    return " ";
   }
 }

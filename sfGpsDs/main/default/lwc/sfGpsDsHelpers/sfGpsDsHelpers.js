@@ -5,9 +5,15 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-export { uniqueId, isIPadPro, isMacPlatform } from "./utilities_v6";
+export {
+  uniqueId,
+  isIPadPro,
+  isMacPlatform,
+  isExternalUrl,
+  truncateText
+} from "./utilities_v6";
 
-export { parseIso8601 } from "./datetimeutil_v6";
+export { parseIso8601, formatDate, formatDateRange } from "./datetimeutil_v6";
 
 export {
   htmlDecode,

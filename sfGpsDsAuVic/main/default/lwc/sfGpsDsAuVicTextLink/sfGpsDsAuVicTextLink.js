@@ -3,12 +3,14 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVicTextLink extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api iconSymbol; // String
   @api iconColor = "primary";
   @api iconPlacement = "after";
   @api iconSize = "m";
-  @api text; // String
-  @api url; // String
+  @api link; // {text: String, url: String }
+  @api className;
 
   _innerWrap = true;
   @api get innerWrap() {
@@ -24,12 +26,36 @@ export default class SfGpsDsAuVicTextLink extends SfGpsDsLwc {
   @api size; // String
   @api emphasis = false;
 
+  /* api: text, alternative way of setting link */
+
+  @api get text() {
+    return this.link?.text;
+  }
+
+  set text(value) {
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+    this.link = { ...this.link, text: value };
+  }
+
+  /* api: url, alternative way of setting link */
+
+  @api get url() {
+    return this.link?.url;
+  }
+
+  set url(value) {
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+    this.link = { ...this.link, url: value };
+  }
+
   get textDecoded() {
-    return this.text;
+    return this.link ? this.link.text : "";
   }
 
   get iconSymbolFinal() {
-    return this.isExternalUrl(this.url) ? "external_link" : this.iconSymbol;
+    return this.isExternalUrl(this.link?.url)
+      ? "external_link"
+      : this.iconSymbol;
   }
 
   isExternalUrl(url) {
@@ -38,11 +64,12 @@ export default class SfGpsDsAuVicTextLink extends SfGpsDsLwc {
     return tmp.host !== window.location.host;
   }
 
-  get computedClass() {
+  get computedClassName() {
     return computeClass({
       "rpl-text-link": true,
       "rpl-text-link--underline": this.underline,
-      "rpl-text-link--dark": this.theme === "dark"
+      "rpl-text-link--dark": this.theme === "dark",
+      [this.className]: this.className
     });
   }
 }

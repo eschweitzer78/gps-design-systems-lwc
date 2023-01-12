@@ -1,10 +1,9 @@
-<template>
+<template lwc:render-mode="light">
   <div class={computedClass}>
     <h2 if:true={title} class="rpl-list__title">
       <c-sf-gps-ds-au-vic-text-link
         if:true={link}
-        url={link}
-        text={title}
+        link={computedLink}
         class="rpl-list__title-inner"
       >
       </c-sf-gps-ds-au-vic-text-link>

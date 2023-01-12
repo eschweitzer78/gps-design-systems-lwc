@@ -1,0 +1,11 @@
+<template>
+  <c-sf-gps-ds-au-vic-related-links
+    if:false={_sfGpsErrors}
+    title={title}
+    links={_links}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-related-links>
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

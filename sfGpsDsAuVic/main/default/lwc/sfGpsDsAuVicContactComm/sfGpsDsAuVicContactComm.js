@@ -1,5 +1,6 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 const socialIconScale = {
   facebook: 1,
@@ -11,11 +12,14 @@ const socialIconScale = {
 };
 
 export default class SfGpsDsAuVicContactComm extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api title; //: String,
   @api name; //: String,
   @api department; //: String,
   @api postal; //: String,
   @api address; //: String,
+  @api className; //: String
 
   /* phone: Array({ title, number }) */
   _phone; //: Array,
@@ -38,7 +42,7 @@ export default class SfGpsDsAuVicContactComm extends SfGpsDsLwc {
         value = [];
         this.addError(
           "JS-PH",
-          "The phone attribute must be in JSON array format."
+          "The phone attribute must be in JSON array format { title, number }."
         );
       }
     }
@@ -49,10 +53,15 @@ export default class SfGpsDsAuVicContactComm extends SfGpsDsLwc {
   @api email; //: String,
 
   /* social: Array({ icon, url, title }) */
+
   _social;
   _originalSocial;
 
-  @api set social(value) {
+  @api get social() {
+    return this._originalSocial;
+  }
+
+  set social(value) {
     this._originalSocial = value;
 
     if (typeof value === "string") {
@@ -71,10 +80,6 @@ export default class SfGpsDsAuVicContactComm extends SfGpsDsLwc {
     }
 
     this._social = value;
-  }
-
-  get social() {
-    return this._originalSocial;
   }
 
   get showList() {
@@ -128,5 +133,12 @@ export default class SfGpsDsAuVicContactComm extends SfGpsDsLwc {
 
   get addressLink() {
     return `https://www.google.com.au/maps?q=${encodeURI(this.address)}`;
+  }
+
+  get computedClassName() {
+    return computeClass({
+      "rpl-contact": true,
+      [this.className]: this.className
+    });
   }
 }
