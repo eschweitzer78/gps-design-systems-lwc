@@ -1,5 +1,5 @@
-<template>
-  <div if:false={_sfGpsErrors} class="rpl-contact">
+<template lwc:render-mode="light">
+  <div if:false={_sfGpsErrors} class={computedClassName}>
     <c-sf-gps-ds-au-vic-list if:true={showList} title={title} list={list}>
       <p slot="above-list" class="rpl-contact__contact-details">
         <span if:true={name} class="rpl-contact__name">{name}</span>

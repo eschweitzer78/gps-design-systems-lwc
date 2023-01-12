@@ -1,0 +1,83 @@
+.rpl-document-link {
+  margin: 0.5rem 0;
+  max-width: 37.875rem;
+}
+.rpl-document-link__link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  line-height: 1;
+  text-decoration: none;
+}
+.rpl-document-link__link:hover .rpl-document-link__title,
+.rpl-document-link__link:focus .rpl-document-link__title {
+  color: #0052c2;
+  text-decoration: underline;
+}
+@media print {
+  .rpl-document-link__link:hover .rpl-document-link__title,
+  .rpl-document-link__link:focus .rpl-document-link__title {
+    color: #000;
+  }
+}
+.rpl-document-link__title {
+  font-family: "VIC-SemiBold", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1em;
+  font-weight: normal;
+  color: #011a3c;
+}
+@media print {
+  .rpl-document-link__title {
+    color: #000;
+  }
+}
+.rpl-document-link__icon {
+  flex: 0 0 1.875rem;
+}
+.rpl-document-link__info {
+  margin-left: 0.6875rem;
+}
+.rpl-document-link__meta {
+  font-family: "VIC-Medium", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.75rem;
+  line-height: 1em;
+  font-weight: normal;
+  color: #53647a;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+@media print {
+  .rpl-document-link__meta {
+    color: #000;
+  }
+}
+.rpl-document-link__size--seperator::before {
+  color: #dadee2;
+  content: "|";
+  padding: 0 0.25rem;
+}
+@media print {
+  .rpl-document-link__size--seperator::before {
+    color: #000;
+  }
+}
+.rpl-document-link__caption {
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.4em;
+  font-weight: normal;
+  color: #011a3c;
+  margin-top: 0.5rem;
+}
+@media print {
+  .rpl-document-link__caption {
+    color: #000;
+  }
+}
+.rpl-document-link--rtl .rpl-document-link__info {
+  margin-left: 0;
+  margin-right: 0.6875rem;
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicDocumentLink.css.map */

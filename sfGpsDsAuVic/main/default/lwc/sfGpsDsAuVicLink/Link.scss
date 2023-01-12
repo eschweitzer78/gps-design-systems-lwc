@@ -1,0 +1,28 @@
+@import "../../../../../node_modules/@dpc-sdp/ripple-global/scss/settings";
+@import "../../../../../node_modules/@dpc-sdp/ripple-global/scss/tools";
+
+.rpl-link {
+  text-decoration: none;
+
+  @include rpl_print {
+    &[href]:after {
+      content: ' <' attr(data-print-url) '> ';
+    }
+    &[href^="tel:"]:after {
+      content: "";
+    }
+  }
+
+  &__inner {
+    display: inline;
+
+    @include rpl_print {
+      text-decoration: underline;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}

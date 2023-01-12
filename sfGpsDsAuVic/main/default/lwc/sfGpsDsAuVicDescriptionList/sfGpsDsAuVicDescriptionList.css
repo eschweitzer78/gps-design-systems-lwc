@@ -1,0 +1,25 @@
+.rpl-description-list {
+  color: #011a3c;
+  margin: 0;
+  display: table;
+}
+@media print {
+  .rpl-description-list {
+    color: #000;
+  }
+}
+.rpl-description-list__row {
+  display: table-row;
+}
+.rpl-description-list__cell {
+  display: table-cell;
+}
+.rpl-description-list__term {
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-weight: normal;
+  padding-right: 0.5rem;
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicDescriptionList.css.map */

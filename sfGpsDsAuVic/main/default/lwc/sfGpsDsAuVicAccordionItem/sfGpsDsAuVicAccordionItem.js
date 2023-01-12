@@ -1,65 +1,71 @@
-import { api, track } from "lwc";
-import SfGpsDsLwc from "c/sfGpsDsLwc";
-import { computeClass, isRTL } from "c/sfGpsDsHelpers";
+import { LightningElement, api, track } from "lwc";
+import { computeClass, isRTL, uniqueId } from "c/sfGpsDsHelpers";
 
-const accordionButtonTextClass = isRTL()
+const CONTENTID_PREFIX = "sf-gps-ds-au-vic-accordion-item-content";
+
+const buttonTextClass = isRTL()
   ? "rpl-accordion__button-text--rtl"
-  : "";
+  : "rpl-accordion__button-text";
 
-export default class SfGpsDsAuVicAccordionItem extends SfGpsDsLwc {
+export default class SfGpsDsAuVicAccordionItem extends LightningElement {
+  static renderMode = "light";
+
   @api index;
   @api title;
+  @api type;
   @api content;
 
+  /* api: closed */
+
+  @track _isOpen = false;
+
   @api get closed() {
-    return !this.isOpen;
+    return !this._isOpen;
   }
 
   set closed(value) {
-    this.isOpen = !value;
+    this._isOpen = !value;
   }
 
-  @track isOpen = false;
+  /* computed: computedClassName */
 
-  get computedClass() {
+  get computedClassName() {
     return computeClass({
       "rpl-accordion__list-item": true,
-      "rpl-accordion__list-item--expanded": this.isOpen
+      "rpl-accordion__list-item--expanded": this._isOpen
     });
   }
 
-  get computedTitleClass() {
+  get computedTitleClassName() {
     return computeClass({
       "rpl-accordion__title": true,
-      "rpl-accordion__title--expanded": this.isOpen
+      "rpl-accordion__title--expanded": this._isOpen
     });
   }
 
-  get computedButtonClass() {
+  get computedButtonClassName() {
     return computeClass({
       "rpl-accordion__button": true,
-      "rpl-accordion__button--expanded": this.isOpen
+      "rpl-accordion__button--expanded": this._isOpen
     });
   }
 
-  get computedIconClass() {
+  get computedIconClassName() {
     return computeClass({
       "rpl-accordion__icon": true,
-      "rpl-accordion__icon--expanded": this.isOpen
+      "rpl-accordion__icon--expanded": this._isOpen
     });
   }
 
-  get computedAccordionButtonTextClass() {
-    return accordionButtonTextClass;
+  get computedButtonTextClassName() {
+    return buttonTextClass;
   }
 
   _contentElement;
 
   get contentElement() {
     if (!this._contentElement) {
-      this._contentElement = this.template.querySelector(
-        ".rpl-accordion__content"
-      );
+      this._contentElement = this.querySelector(".rpl-accordion__content");
     }
 
     return this._contentElement;
@@ -68,23 +74,31 @@ export default class SfGpsDsAuVicAccordionItem extends SfGpsDsLwc {
   get computedStyle() {
     let contentElement = this._contentElement;
 
-    return contentElement && this.isOpen
+    return contentElement && this._isOpen
       ? `height: auto; visibility: visible`
       : "";
   }
 
-  get contentId() {
-    let element = this.contentElement;
+  /* computed: contentId */
 
-    if (element) {
-      return (this._contentId = element.id);
+  _contentId;
+
+  get computedContentId() {
+    if (!this._contentId) {
+      this._contentId = uniqueId(CONTENTID_PREFIX);
     }
 
-    return null;
+    return this._contentId;
+  }
+  /* computed: isNumbered */
+
+  get isNumbered() {
+    return this.type === "numbered";
   }
 
+  /* event management */
+
   handleClick() {
-    this.dispatchEvent(new CustomEvent(this.isOpen ? "collapse" : "expand"));
-    this.isOpen = !this.isOpen;
+    this.dispatchEvent(new CustomEvent(this._isOpen ? "collapse" : "expand"));
   }
 }

@@ -65,3 +65,14 @@
     display: block;
   }
 }
+
+/* from _transition */
+.rpl-accordion-enter-active {
+  transition: transform ease-out 0.3s, opacity ease-out 0.3s;
+}
+.rpl-accordion-enter {
+  transform: translateY(-1.5rem);
+  opacity: 0;
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicFooterNavigation.css.map */

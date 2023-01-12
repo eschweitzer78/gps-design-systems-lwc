@@ -1,0 +1,15 @@
+<template>
+  <c-sf-gps-ds-au-vic-call-to-action
+    class="rpl-content"
+    cstyle={cstyle}
+    title={title}
+    link={_link}
+    image={_image}
+    class-name={className}
+  >
+    <div class="sfGpsMarkdown" lwc:dom="manual"></div>
+  </c-sf-gps-ds-au-vic-call-to-action>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

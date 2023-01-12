@@ -1,0 +1,279 @@
+.rpl-accordion__collapse {
+  text-align: right;
+  padding: 0.625rem 0;
+}
+.rpl-accordion__collapse-btn {
+  text-decoration: none;
+  color: #0052c2;
+  background: none;
+  border: none;
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1em;
+  font-weight: normal;
+}
+.rpl-accordion__collapse-btn:hover {
+  text-decoration: underline;
+}
+.rpl-accordion__title-top {
+  margin-top: 0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media screen and (min-width: 576px) {
+  .rpl-accordion__title-top {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+}
+@media print {
+  .rpl-accordion__title-top {
+    padding: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .rpl-accordion__title-top {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+.rpl-accordion__list {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+@media print {
+  .rpl-accordion__list {
+    margin: 1rem 0;
+  }
+}
+.rpl-accordion__list-item {
+  list-style: none;
+  position: relative;
+  border: 1px solid #d7dbe0;
+  border-bottom: 0;
+}
+.rpl-accordion__list-item::before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  background-image: linear-gradient(0deg, #0052c2 0%, #0095ec 100%);
+  transition: width 0.25s;
+}
+@media print {
+  .rpl-accordion__list-item::before {
+    display: none;
+  }
+}
+.rpl-accordion__list-item--expanded::before {
+  width: 0.5rem;
+}
+.rpl-accordion__list-item:last-child {
+  border-bottom: 1px solid #d7dbe0;
+}
+.rpl-accordion__button {
+  color: #011a3c;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+@media screen and (min-width: 0) {
+  .rpl-accordion__button {
+    font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+    font-size: 1rem;
+    line-height: 1.5em;
+    font-weight: normal;
+  }
+}
+@media screen and (min-width: 576px) {
+  .rpl-accordion__button {
+    font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+    font-size: 1.25rem;
+    line-height: 1.2em;
+  }
+}
+@media print {
+  .rpl-accordion__button {
+    color: #000;
+  }
+}
+@media screen and (min-width: 0) {
+  .rpl-accordion__button {
+    padding: 1rem 1.25rem;
+  }
+}
+@media screen and (min-width: 576px) {
+  .rpl-accordion__button {
+    padding: 1.75rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .rpl-accordion__button {
+    padding: 1.75rem 2.25rem;
+  }
+}
+@media print {
+  .rpl-accordion__button {
+    padding: 0.75rem 1.25rem;
+  }
+}
+.rpl-accordion__button:hover,
+.rpl-accordion__button:focus {
+  color: #0052c2;
+}
+@media print {
+  .rpl-accordion__button:hover,
+  .rpl-accordion__button:focus {
+    color: #000;
+  }
+}
+.rpl-accordion__button--expanded {
+  color: #0095ec;
+}
+@media print {
+  .rpl-accordion__button--expanded {
+    color: #000;
+  }
+}
+.rpl-accordion__button-text {
+  width: 100%;
+  box-sizing: border-box;
+}
+@media screen and (min-width: 0) {
+  .rpl-accordion__button-text {
+    padding: 0 1.25rem 0 0;
+  }
+}
+@media screen and (min-width: 576px) {
+  .rpl-accordion__button-text {
+    padding: 0 1.75rem 0 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .rpl-accordion__button-text {
+    padding: 0 2.25rem 0 0;
+  }
+}
+.rpl-accordion__button-text--rtl {
+  text-align: right;
+}
+.rpl-accordion__title-number {
+  color: #546a7c;
+  margin: 0 1.25rem 0 0;
+}
+@media print {
+  .rpl-accordion__title-number {
+    color: #000;
+  }
+}
+.rpl-accordion__title {
+  margin: 0;
+}
+.rpl-accordion__content {
+  color: #011a3c;
+  box-sizing: border-box;
+  visibility: hidden;
+  overflow: auto;
+  height: 0;
+  transition: height 0.5s, visibility 0.5s;
+}
+@media screen and (min-width: 0) {
+  .rpl-accordion__content {
+    font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+    font-size: 0.875rem;
+    line-height: 1.4em;
+    font-weight: normal;
+  }
+}
+@media screen and (min-width: 576px) {
+  .rpl-accordion__content {
+    font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+    font-size: 1rem;
+    line-height: 1.5em;
+  }
+}
+@media print {
+  .rpl-accordion__content {
+    color: #000;
+  }
+}
+@media screen and (min-width: 0) {
+  .rpl-accordion__content {
+    padding: 0 1.25rem;
+  }
+}
+@media screen and (min-width: 576px) {
+  .rpl-accordion__content {
+    padding: 0 1.75rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .rpl-accordion__content {
+    padding: 0 2.25rem;
+  }
+}
+@media print {
+  .rpl-accordion__content {
+    display: block !important;
+    padding: 0 1.25rem;
+    visibility: visible;
+    height: auto;
+  }
+}
+.rpl-accordion__content-inner {
+  padding: 0 0 3.5625rem;
+}
+@media print {
+  .rpl-accordion__content-inner {
+    display: block !important;
+    padding: 0 0 1.25rem;
+  }
+}
+.rpl-accordion__icon {
+  margin-left: auto;
+  transition: transform 0.25s;
+}
+@media print {
+  .rpl-accordion__icon {
+    fill: #000;
+  }
+}
+.rpl-accordion__icon--expanded {
+  transform: rotate(-180deg);
+}
+@media print {
+  .rpl-accordion__icon--expanded {
+    transform: rotate(0deg);
+  }
+}
+.rpl-accordion--rtl .rpl-accordion__icon {
+  margin-left: 0;
+  margin-right: auto;
+}
+.rpl-accordion--rtl .rpl-accordion__list-item::before {
+  left: auto;
+  right: 0;
+}
+.rpl-accordion--rtl .rpl-accordion__title-number {
+  margin: 0 0 0 1.25rem;
+}
+
+.rpl-accordion__title-top {
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1.75rem;
+  line-height: 1.3em;
+  font-weight: normal;
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicAccordion.css.map */

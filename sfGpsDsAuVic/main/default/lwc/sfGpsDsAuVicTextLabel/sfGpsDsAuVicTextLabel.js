@@ -3,6 +3,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVicTextLabel extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api underline = false;
   @api theme = "light";
   @api size; //String

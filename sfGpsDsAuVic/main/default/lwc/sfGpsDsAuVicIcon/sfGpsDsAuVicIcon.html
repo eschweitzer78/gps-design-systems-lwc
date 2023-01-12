@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <template if:true={isIcon}>
     <svg
       class={iconClass}
@@ -12,15 +12,25 @@
         <!-- Use both xlink:href and href for browser support https://css-tricks.com/on-xlinkhref-being-deprecated-in-svg/ -->
         <use xlink:href={computedHref} href={computedHref}></use>
       </template>
+
       <template if:false={legacyIcon}>
         <template if:true={icon}>
           <template if:true={icon.paths}>
-            <template for:each={icon.paths} for:item="path" for:index="i">
-              <path key={path.key} d={path.value.d}></path>
+            <template for:each={icon.paths} for:item="path">
+              <path
+                key={path.key}
+                d={path.value.d}
+                clip-rule={path.value.clipRule}
+                fill-rule={path.value.fillRule}
+                transform={path.value.transform}
+                stroke={path.value.stroke}
+                stroke-width={path.value.strokeWidth}
+                fill={path.value.fill}
+              ></path>
             </template>
           </template>
           <template if:true={icon.polygons}>
-            <template for:each={icon.polygons} for:item="polygon" for:index="i">
+            <template for:each={icon.polygons} for:item="polygon">
               <polygon key={polygon.key} points={polygon.points}></polygon>
             </template>
           </template>

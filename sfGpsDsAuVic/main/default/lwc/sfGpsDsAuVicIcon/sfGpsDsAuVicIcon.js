@@ -232,6 +232,8 @@ const sizes = {
 };
 
 export default class SfGpsDsAuVicIcon extends SfGpsDsLwc {
+  static renderMode = "light";
+
   _symbol;
 
   @api set symbol(value) {
@@ -301,6 +303,7 @@ export default class SfGpsDsAuVicIcon extends SfGpsDsLwc {
     let size =
       sizes[this.size] === undefined ? parseFloat(this.size) : sizes[this.size];
     size = isNaN(size) ? 1 : size;
+
     return `width: ${width * size}px; height: ${height * size}px`;
   }
 
@@ -309,7 +312,7 @@ export default class SfGpsDsAuVicIcon extends SfGpsDsLwc {
   }
 
   get computedAriaHidden() {
-    return (!this.icon && !this.legacyIcon) || this.symbol === "external_link";
+    return (!this.icon && !this.legacyIcon) || this.symbol !== "external_link";
   }
 
   get computedTitle() {

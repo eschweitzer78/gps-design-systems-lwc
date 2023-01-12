@@ -1,0 +1,27 @@
+.rpl-publish-date-and-author__date-location {
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1em;
+  font-weight: normal;
+  color: #011a3c;
+}
+@media print {
+  .rpl-publish-date-and-author__date-location {
+    color: #000;
+  }
+}
+.rpl-publish-date-and-author__author {
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.4em;
+  font-weight: normal;
+  color: #011a3c;
+  margin: 0.25rem 0 0 0;
+}
+@media print {
+  .rpl-publish-date-and-author__author {
+    color: #000;
+  }
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicPublishedDateAndAuthor.css.map */

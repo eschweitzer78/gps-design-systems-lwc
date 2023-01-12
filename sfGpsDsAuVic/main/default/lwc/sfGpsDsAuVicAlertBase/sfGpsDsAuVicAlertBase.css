@@ -1,0 +1,201 @@
+.rpl-alert-base {
+  background-color: #465870;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+}
+@media print {
+  .rpl-alert-base {
+    display: none;
+  }
+}
+.rpl-alert-base--color-primary {
+  background-color: #0052c2;
+}
+.rpl-alert-base--color-dark_primary {
+  background-color: #023b89;
+}
+.rpl-alert-base--color-secondary {
+  background-color: #0095ec;
+}
+.rpl-alert-base--color-extra_dark_neutral {
+  background-color: #011a3c;
+}
+.rpl-alert-base--color-dark_neutral {
+  background-color: #465870;
+}
+.rpl-alert-base--color-dark_neutral_1 {
+  background-color: #546a7c;
+}
+.rpl-alert-base--color-mid_neutral_1 {
+  background-color: #d7dbe0;
+}
+.rpl-alert-base--color-mid_neutral_2 {
+  background-color: #e8ebee;
+}
+.rpl-alert-base--color-light_neutral {
+  background-color: #f6f6f9;
+}
+.rpl-alert-base--color-danger {
+  background-color: #af272f;
+}
+.rpl-alert-base--color-warning {
+  background-color: #ca4c21;
+}
+.rpl-alert-base--color-success {
+  background-color: #027a83;
+}
+.rpl-alert-base--color-white {
+  background-color: #fff;
+}
+.rpl-alert-base--color-black {
+  background-color: #000;
+}
+.rpl-alert-base__icon {
+  margin: 0 1rem 0 0;
+}
+.rpl-alert-base__content {
+  color: #fff;
+}
+@media screen and (min-width: 0) {
+  .rpl-alert-base__content {
+    font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+    font-size: 0.875rem;
+    line-height: 1em;
+    font-weight: normal;
+  }
+}
+@media screen and (min-width: 576px) {
+  .rpl-alert-base__content {
+    font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+    font-size: 1rem;
+    line-height: 1em;
+  }
+}
+.rpl-alert-base__content--color-primary {
+  color: #0052c2;
+}
+.rpl-alert-base__content--color-dark_primary {
+  color: #023b89;
+}
+.rpl-alert-base__content--color-secondary {
+  color: #0095ec;
+}
+.rpl-alert-base__content--color-extra_dark_neutral {
+  color: #011a3c;
+}
+.rpl-alert-base__content--color-dark_neutral {
+  color: #465870;
+}
+.rpl-alert-base__content--color-dark_neutral_1 {
+  color: #546a7c;
+}
+.rpl-alert-base__content--color-mid_neutral_1 {
+  color: #d7dbe0;
+}
+.rpl-alert-base__content--color-mid_neutral_2 {
+  color: #e8ebee;
+}
+.rpl-alert-base__content--color-light_neutral {
+  color: #f6f6f9;
+}
+.rpl-alert-base__content--color-danger {
+  color: #af272f;
+}
+.rpl-alert-base__content--color-warning {
+  color: #ca4c21;
+}
+.rpl-alert-base__content--color-success {
+  color: #027a83;
+}
+.rpl-alert-base__content--color-white {
+  color: #fff;
+}
+.rpl-alert-base__content--color-black {
+  color: #000;
+}
+.rpl-alert-base__content a {
+  color: #fff;
+}
+.rpl-alert-base__content--color-primary a {
+  color: #0052c2;
+}
+
+.rpl-alert-base__content--color-dark_primary a {
+  color: #023b89;
+}
+
+.rpl-alert-base__content--color-secondary a {
+  color: #0095ec;
+}
+
+.rpl-alert-base__content--color-extra_dark_neutral a {
+  color: #011a3c;
+}
+
+.rpl-alert-base__content--color-dark_neutral a {
+  color: #465870;
+}
+
+.rpl-alert-base__content--color-dark_neutral_1 a {
+  color: #546a7c;
+}
+
+.rpl-alert-base__content--color-mid_neutral_1 a {
+  color: #d7dbe0;
+}
+
+.rpl-alert-base__content--color-mid_neutral_2 a {
+  color: #e8ebee;
+}
+
+.rpl-alert-base__content--color-light_neutral a {
+  color: #f6f6f9;
+}
+
+.rpl-alert-base__content--color-danger a {
+  color: #af272f;
+}
+
+.rpl-alert-base__content--color-warning a {
+  color: #ca4c21;
+}
+
+.rpl-alert-base__content--color-success a {
+  color: #027a83;
+}
+
+.rpl-alert-base__content--color-white a {
+  color: #fff;
+}
+
+.rpl-alert-base__content--color-black a {
+  color: #000;
+}
+
+.rpl-alert-base__content a.rpl-text-link:hover,
+.rpl-alert-base__content a.rpl-text-link:focus {
+  color: inherit;
+}
+.rpl-alert-base__close {
+  background: transparent;
+  border: 0;
+  margin-left: auto;
+  cursor: pointer;
+}
+.rpl-alert-base__close svg {
+  display: block;
+}
+.rpl-alert-base__close span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicAlert.css.map */

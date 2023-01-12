@@ -1,0 +1,19 @@
+<template>
+  <c-sf-gps-ds-au-vic-responsive-img
+    if:false={_sfGpsErrors}
+    src={src}
+    alt={alt}
+    focal-point={_focalPoint}
+    src-set={srcSet}
+    src-set-qs={srcSetQs}
+    sizes={sizes}
+    height={height}
+    width={width}
+    fit={fit}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-responsive-img>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

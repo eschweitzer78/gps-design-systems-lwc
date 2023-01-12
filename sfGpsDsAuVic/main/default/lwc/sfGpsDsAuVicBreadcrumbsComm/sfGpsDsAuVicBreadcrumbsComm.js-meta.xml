@@ -29,6 +29,7 @@
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        default="rpl-above-content__top"
       />
     </targetConfig>
   </targetConfigs>

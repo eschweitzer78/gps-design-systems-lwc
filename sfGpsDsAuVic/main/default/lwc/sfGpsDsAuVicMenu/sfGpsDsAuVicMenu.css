@@ -1,22 +1,4 @@
-/* Fixed due to CSS scoping in LWCs, replaced .rpl-icon with c-sf-gps-ds-au-vic-icon */
-.rpl-menu--vertical .rpl-menu__item-link c-sf-gps-ds-au-vic-icon,
-.rpl-menu--horizontal-floating-wrapper
-  .rpl-menu__item-link
-  c-sf-gps-ds-au-vic-icon,
-.rpl-menu--horizontal
-  .rpl-menu--subs
-  .rpl-menu__item-link
-  c-sf-gps-ds-au-vic-icon {
-  margin: auto 0.5rem auto;
-  margin-left: auto;
-  min-width: 5px;
-}
-
-/* Fixed due to CSS scoping in LWCs, replaced .rpl-icon with c-sf-gps-ds-au-vic-icon */
-.rpl-menu--vertical .rpl-menu__back c-sf-gps-ds-au-vic-icon {
-  margin: auto 0.25rem auto 0;
-}
-
+/*@import "./fixes.scss";*/
 .rpl-menu--vertical.rpl-menu--root {
   position: relative;
   margin: 1.5rem auto auto;

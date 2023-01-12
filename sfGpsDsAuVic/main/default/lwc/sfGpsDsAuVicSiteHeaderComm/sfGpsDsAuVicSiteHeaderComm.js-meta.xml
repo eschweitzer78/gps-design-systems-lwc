@@ -42,6 +42,12 @@
         default=""
       />
       <property
+        name="masterbrandLink"
+        type="String"
+        label="Masterbrand link"
+        description="Target URL when clicking on the masterbrand. Leave empty for community home."
+      />
+      <property
         name="logo"
         type="String"
         label="Logo"
@@ -52,6 +58,12 @@
         type="String"
         label="Logo alternative text"
         description="Alternative text to co-brand logo."
+      />
+      <property
+        name="logoLink"
+        type="String"
+        label="Logo link"
+        description="Target URL when clicking on the co-brand logo. Leave empty for community home."
       />
       <property
         name="breakpoint"
@@ -128,7 +140,7 @@
         type="String"
         label="Quick exit label"
         description="Label displayed in the quick exit button (to leave the website). Leave empty to hide."
-        default="true"
+        default="Quick exit"
       />
       <property
         name="quickExitTarget"

@@ -8,6 +8,8 @@ import {
 } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVicMarkup extends SfGpsDsLwc {
+  static renderMode = "light";
+
   _originalHtml;
   _espacedHtml;
 
@@ -31,18 +33,12 @@ export default class SfGpsDsAuVicMarkup extends SfGpsDsLwc {
     );
   }
 
-  _rendered = false;
-
   renderedCallback() {
-    if (this._rendered === false) {
-      let element = this.template.querySelector(".rpl-markup__inner");
-      if (element) {
-        replaceInnerHtml(element, this._escapedHtml);
-      } else {
-        this.addError("MU-PH", "Couldn't find internal markup placeholder");
-      }
-
-      this._rendered = true;
+    let element = this.querySelector(".rpl-markup__inner"); //this.template.querySelector(".rpl-markup__inner");
+    if (element) {
+      replaceInnerHtml(element, this._escapedHtml);
+    } else {
+      this.addError("MU-PH", "Couldn't find internal markup placeholder");
     }
   }
 }

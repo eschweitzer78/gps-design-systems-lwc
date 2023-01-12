@@ -1,0 +1,37 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-au-vic-hero-banner
+    title={title}
+    theme={theme}
+    intro-text={introText}
+    class-name={computedClassName}
+  >
+    <div
+      if:true={linkPrimary}
+      slot="leftbottom"
+      class="rpl-hero-banner--cta__left-bottom"
+    >
+      <c-sf-gps-ds-au-vic-button
+        class-name="rpl-hero-banner--cta__primary"
+        href={linkPrimary.url}
+        theme={computedButtonTheme}
+      >
+        {linkPrimary.text}
+      </c-sf-gps-ds-au-vic-button>
+      <div if:true={showSecondary} class="rpl-hero-banner--cta__secondary">
+        <p if:true={ctaText} class="rpl-hero-banner--cta__secondary-text">
+          {ctaText}
+        </p>
+        <c-sf-gps-ds-au-vic-text-link
+          if:true={linkSecondary}
+          class="rpl-hero-banner--cta__secondary-link"
+          text={linkSecondary.text}
+          icon-symbol="right"
+          icon-color={computedIconColor}
+          url={linkSecondary.url}
+          theme={computedButtonTheme}
+        >
+        </c-sf-gps-ds-au-vic-text-link>
+      </div>
+    </div>
+  </c-sf-gps-ds-au-vic-hero-banner>
+</template>

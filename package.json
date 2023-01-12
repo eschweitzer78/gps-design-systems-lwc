@@ -34,6 +34,7 @@
     "url": "git+https://github.com/eschweitzer78/gps-design-systems-lwc"
   },
   "devDependencies": {
+    "@dpc-sdp/ripple-global": "^1.33.0",
     "@lwc/eslint-plugin-lwc": "^1.0.1",
     "@prettier/plugin-xml": "^0.13.1",
     "@sa11y/jest": "^3.1.0",

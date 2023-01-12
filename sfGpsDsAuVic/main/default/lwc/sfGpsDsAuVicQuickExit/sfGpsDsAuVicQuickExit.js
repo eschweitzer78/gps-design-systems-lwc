@@ -2,13 +2,15 @@ import { LightningElement, api, track } from "lwc";
 
 import { computeClass } from "c/sfGpsDsHelpers";
 
-const quickExitUrl = "https://www.google.com";
+const QUICK_EXIT_URL = "https://www.google.com";
 
 export default class SfGpsDsAuVicQuickExit extends LightningElement {
+  static renderMode = "light";
+
   @api text = "Quick exit";
+  @api escapeUrl = QUICK_EXIT_URL;
   @api isSticky;
 
-  @track _escapeUrl = quickExitUrl;
   @track _menuStickyActive = false;
   @track _stickyActive = false;
   @track _headerVisible = true;
@@ -33,8 +35,10 @@ export default class SfGpsDsAuVicQuickExit extends LightningElement {
     });
   }
 
-  handleClick() {
-    const newTab = window.open(this._escapeURL, "_blank");
+  handleClick(event) {
+    event.preventDefault();
+
+    const newTab = window.open(this.escapeUrl, "_blank");
     if (newTab) {
       newTab.focus();
     }
@@ -45,14 +49,12 @@ export default class SfGpsDsAuVicQuickExit extends LightningElement {
       window.pageYOffset || document.documentElement.scrollTop;
     const isScrollingUp = pageScrollTop <= this._lastPageScrollTop;
     const elStyle = getComputedStyle(
-      this.template.querySelector(".rpl-quick-exit__button")
+      this.querySelector(".rpl-quick-exit__button")
     );
     const elTop = parseInt(elStyle.top, 10) || 0;
     const elMargin = isScrollingUp ? parseInt(elStyle.marginTop, 10) : 0;
     const elStickPoint =
-      this.template.querySelector(".rpl-quick-exit").offsetTop -
-      elMargin -
-      elTop;
+      this.querySelector(".rpl-quick-exit").offsetTop - elMargin - elTop;
     const menuStickPoint = this._menuOffsetElement
       ? this._menuOffsetElement.offsetTop
       : 0;
@@ -72,14 +74,14 @@ export default class SfGpsDsAuVicQuickExit extends LightningElement {
         this.menuOffsetSelector
       );
 
-      this._listenForScoll = this.scroll.bind(this);
-      window.addEventListener("scroll", this._listenForScoll);
+      this._listenForScroll = this.scroll.bind(this);
+      window.addEventListener("scroll", this._listenForScroll);
     }
   }
 
   disconnectedCallback() {
     if (this.isSticky) {
-      window.removeEventListener("scroll", this._listenForScoll);
+      window.removeEventListener("scroll", this._listenForScroll);
     }
   }
 }

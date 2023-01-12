@@ -265,4 +265,15 @@
   display: inline;
 }
 
+/* from _transition */
+.rpl-header-fade-enter-active,
+.rpl-header-fade-leave-active {
+  transition: transform ease-out 0.3s, opacity ease-out 0.3s;
+}
+.rpl-header-fade-enter,
+.rpl-header-fade-leave-to {
+  transform: translateY(-1.5rem);
+  opacity: 0;
+}
+
 /*# sourceMappingURL=sfGpsDsAuVicSiteHeader.css.map */

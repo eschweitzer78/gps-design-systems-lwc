@@ -1,0 +1,13 @@
+<template>
+  <c-sf-gps-ds-au-vic-figure
+    if:false={_sfGpsErrors}
+    image={_image}
+    caption={caption}
+    source={source}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-figure>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

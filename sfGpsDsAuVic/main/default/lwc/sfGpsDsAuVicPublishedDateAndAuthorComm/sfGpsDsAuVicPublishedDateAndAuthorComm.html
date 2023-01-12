@@ -1,0 +1,15 @@
+<template>
+  <c-sf-gps-ds-au-vic-published-date-and-author
+    if:false={_sfGpsErrors}
+    date={date}
+    location={location}
+    author={author}
+    location-prefix={locationPrefix}
+    author-prefix={authorPrefix}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-published-date-and-author>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

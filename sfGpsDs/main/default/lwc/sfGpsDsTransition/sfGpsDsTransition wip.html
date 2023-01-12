@@ -1,0 +1,9 @@
+<template>
+  <div
+    class={className}
+    ontransitionstart={handleTransitionStart}
+    ontransitionend={handleTransitionEnd}
+  >
+    <slot onslotchange={handleSlotChange}> </slot>
+  </div>
+</template>

@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <div
     class={computedClass}
     data-depth={depth}
@@ -10,6 +10,8 @@
         <c-sf-gps-ds-au-vic-quick-exit
           if:true={computedShowQuickExit}
           class="rpl-menu__quickexit"
+          text={quickExitLabel}
+          escape-url={quickExitTarget}
         >
         </c-sf-gps-ds-au-vic-quick-exit>
 
@@ -93,8 +95,6 @@
                   <c-sf-gps-ds-au-vic-icon
                     symbol={list.parentIcon}
                     color="white"
-                    c-sfgpsdsauvicmenu_sfgpsdsauvicmenu
-                    class="rpl-icon"
                   >
                   </c-sf-gps-ds-au-vic-icon>
                 </button>
@@ -108,6 +108,8 @@
                   open={list.open}
                   layout={layout}
                   title={list.text}
+                  quick-exit-label={quickExitLabel}
+                  quick-exit-target={quickExitTarget}
                   back-title={title}
                   shared-control={sharedControl}
                   parent={list}

@@ -3,6 +3,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class sfGpsDsAuVicBreadcrumbsComm extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api label = "Breadcrumbs";
   @api className;
 
@@ -24,5 +26,27 @@ export default class sfGpsDsAuVicBreadcrumbsComm extends SfGpsDsLwc {
 
   get items() {
     return this._items;
+  }
+
+  get mobileCrumbTextLong() {
+    const parentText = this._itemsArray[this._itemsArray.length - 2]?.text;
+    return parentText || "Home";
+  }
+
+  get mobileCrumbTextShort() {
+    let parentText = this.mobileCrumbTextLong;
+
+    // Truncate the mobile breadcrumb text if it is longer than 25 characters.
+    if (parentText?.length > 25) {
+      parentText = parentText.substring(0, 25) + "...";
+    }
+
+    return parentText;
+  }
+
+  get mobileCrumbUrl() {
+    const parentUrl = this._itemsArray[this._itemsArray.length - 2]?.url;
+
+    return parentUrl || "/"; // TODO: put home URL
   }
 }

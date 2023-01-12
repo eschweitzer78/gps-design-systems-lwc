@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>55.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC DS Hero Banner CTA</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Clearly identifies the primary purpose or action of the site, service or product."
+        default="Hero CTA"
+      />
+      <property
+        name="introText"
+        type="String"
+        label="Intro text"
+        description="Gives additional context when the title alone would be insufficient - in Markdown format."
+        default="The hero reflects the goals or purpose of the site, service or product."
+      />
+      <property
+        name="theme"
+        type="String"
+        label="Theme"
+        description="Theme."
+        default="light"
+        datasource="light,dark"
+      />
+      <property
+        name="linkPrimary"
+        type="String"
+        label="Primary link"
+        description="Primary link in Markdown format."
+        default="[Find out more](#)"
+      />
+      <property
+        name="ctaText"
+        type="String"
+        label="Call To Action text"
+        description="Gives an indication of the context for the call to action."
+        default="Not ready yet?"
+      />
+      <property
+        name="linkSecondary"
+        type="String"
+        label="Secondary link"
+        description="Secondary link (for CTA) in Markdown format."
+        default="[Subscribe for tips to prepare](#)"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
