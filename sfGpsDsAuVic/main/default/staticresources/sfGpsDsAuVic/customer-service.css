@@ -2,6 +2,14 @@
   padding: 0;
 }
 
+.siteforceContentArea .forceCommunitySection .cb-section_column:first-child {
+  padding-left: 0;
+}
+
+.siteforceContentArea .forceCommunitySection .cb-section_column:last-child {
+  padding-right: 0;
+}
+
 /* mimic rpl-site-constrain--on-all, partial width */
 /* does it on all sections but first section will be overriden below */
 
@@ -60,31 +68,31 @@
 /* mimic rpl-content, adds padding after hero and prior to footer */
 
 @media screen and (min-width: 0) {
-.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) {
+.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row {
     padding-top: 1rem;
   }
-.siteforceContentArea .siteforceDesignTimeSection:last-child {
+.siteforceContentArea .siteforceDesignTimeSection:last-child .cb-section_row {
     padding-bottom: 0;
   }
 }
 
 @media screen and (min-width: 768px) {
-.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) {
+.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row {
     padding-top: 2.5rem;
   }
 }
 
 @media screen and (min-width: 992px) {
-.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) {
+.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row {
     padding-top: 4.25rem;
   }
-.siteforceContentArea .siteforceDesignTimeSection:last-child {
+.siteforceContentArea .siteforceDesignTimeSection:last-child .cb-section_row {
     padding-bottom: 2.75rem;
   }
 }
 
 @media screen and (min-width: 1200px) {
-.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) {
+.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row {
     padding-top: 5rem;
   }
 }
@@ -99,4 +107,9 @@ p {
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
+}
+
+img {
+  max-width: none;
+  vertical-align: baseline;
 }
