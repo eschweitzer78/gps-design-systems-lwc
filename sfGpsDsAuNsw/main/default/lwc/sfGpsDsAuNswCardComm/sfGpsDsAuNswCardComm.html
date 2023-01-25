@@ -12,12 +12,12 @@
     class-name={className}
   >
     <template if:true={copy}>
-      <p class="nsw-card__copy"></p>
+      <p class="nsw-card__copy" lwc:dom="manual"></p>
     </template>
 
     <template if:true={footer}>
       <hr class="nsw-card__divider" />
-      <div class="nsw-card__footer"></div>
+      <div class="nsw-card__footer" lwc:dom="manual"></div>
     </template>
   </c-sf-gps-ds-au-nsw-card>
 

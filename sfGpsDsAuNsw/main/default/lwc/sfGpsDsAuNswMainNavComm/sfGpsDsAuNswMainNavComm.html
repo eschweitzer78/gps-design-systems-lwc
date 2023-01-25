@@ -1,12 +1,18 @@
 <template>
-  <c-sf-gps-ds-au-nsw-main-nav
-    nav-items={_items}
-    is-active={isActive}
-    mega-menu={megaMenu}
-    class-name={className}
-    onclosemenu={handleCloseMenu}
-    onnavigate={handleNavigate}
-  >
-  </c-sf-gps-ds-au-nsw-main-nav>
-  <c-sf-gps-ds-navigation-service></c-sf-gps-ds-navigation-service>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-au-nsw-main-nav
+      nav-items={_items}
+      is-active={isActive}
+      mega-menu={megaMenu}
+      class-name={className}
+      onclosemenu={handleCloseMenu}
+      onnavigate={handleNavigate}
+    >
+    </c-sf-gps-ds-au-nsw-main-nav>
+
+    <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
 </template>
