@@ -84,7 +84,7 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
         sClassName: `${omnistudio_ns}IntegrationProcedureService`,
         sMethodName: this._ipName,
         input: JSON.stringify(this._input),
-        //input: { ...this._input, communityId: communityId },
+        //input: { ...this._input, communityId: communityId, communityPreview:... },
         // TODO: there is no easy way to get that in omni
         options: JSON.stringify(this._options)
       },

@@ -1,19 +1,69 @@
-global with sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements Callable {
+global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements Callable {
   global Object call(String action, Map<String, Object> args) {
     init(args);
 
     switch on action {
       when 'GetNavigation' {
+        System.debug('> get navigation');
         String developerName = (String) getTypedFromMap(
           WhereFrom.INPUT,
           'developerName',
           String.class,
           false
         );
+
+        Id communityId = (Id) getTypedFromMap(
+          WhereFrom.INPUT,
+          'communityId',
+          Id.class,
+          false
+        );
+
+        Boolean communityPreview = (Boolean) getTypedFromMap(
+          WhereFrom.INPUT,
+          'communityPreview',
+          Boolean.class,
+          true
+        );
+
+        if (communityPreview == null) {
+          communityPreview = false;
+        }
+
         List<NavigationMenuItem> lnmi = getNavigationItems(developerName);
-        output.put('items', JSON.deserializeUntyped(JSON.serialize(lnmi)));
+        System.debug('get navigation found ' + JSON.serialize(lnmi));
+        //output.put('items', JSON.deserializeUntyped(JSON.serialize(lnmi)));
+
+        List<NavigationMenuItem> items = [
+          SELECT Id, Label, NavigationLinkSetId
+          FROM NavigationMenuItem
+        ];
+
+        System.debug('found ' + items.size() + ' items');
+        for (NavigationMenuItem i : items) {
+          System.debug(
+            'LinkSet --> ' +
+            i.Id +
+            ' / ' +
+            i.Label +
+            ' ' +
+            i.NavigationLinkSetId +
+            ' <--'
+          );
+        }
+
+        List<ConnectApi.NavigationMenuItem> lcnmi = getNavigationItems2(
+          communityId,
+          developerName,
+          communityPreview
+        );
+        System.debug('getCommunityNavigationMenu2 ' + lcnmi);
+        output.put('items', JSON.deserializeUntyped(JSON.serialize(lcnmi)));
+
+        System.debug('< get navigation');
       }
       when 'GetHierarchicalNavigation' {
+        System.debug('> get hierarchical navigation');
         String developerName = (String) getTypedFromMap(
           WhereFrom.INPUT,
           'developerName',
@@ -54,6 +104,7 @@ global with sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements
         }
 
         output.put('rootItems', rootItems);
+        System.debug('< get hierarchical navigation');
       }
       when 'GetBaseUrl' {
         output.put('url', getBaseUrl());
@@ -66,7 +117,7 @@ global with sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements
     return args;
   }
 
-  @AuraEnabled(cacheable=true)
+  @AuraEnabled(cacheable=false)
   public static List<NavigationMenuItem> getNavigationItems(
     String developerName
   ) {
@@ -84,7 +135,6 @@ global with sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements
           Type
         FROM NavigationMenuItem
         WHERE NavigationLinkSet.DeveloperName = :developerName
-        WITH SECURITY_ENFORCED
       ];
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
@@ -98,6 +148,32 @@ global with sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA implements
     when a topic is selected in a nav topic menu, goes to page
     .../topic/[topicId]/[topicName]
     */
+  }
+
+  @AuraEnabled(cacheable=false)
+  public static List<ConnectApi.NavigationMenuItem> getNavigationItems2(
+    String communityId,
+    String developerName,
+    Boolean communityPreview
+  ) {
+    System.debug('getNavigationItems2 ' + communityId + ' ' + developerName);
+    try {
+      ConnectApi.NavigationMenuItemCollection coll = ConnectApi.NavigationMenu.getCommunityNavigationMenu(
+        communityId,
+        null,
+        developerName,
+        communityPreview
+          ? ConnectApi.PublishStatus.Draft
+          : ConnectApi.PublishStatus.Live,
+        false,
+        false,
+        null
+      );
+
+      return coll.menuItems;
+    } catch (Exception e) {
+      throw new AuraHandledException(e.getMessage());
+    }
   }
 
   @AuraEnabled(cacheable=true)

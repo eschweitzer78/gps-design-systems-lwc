@@ -1,7 +1,6 @@
 import { api } from "lwc";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
-import isGuest from "@salesforce/user/isGuest";
 import cBasePath from "@salesforce/community/basePath";
 import { NavigationMixin } from "lightning/navigation";
 
@@ -35,51 +34,61 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
 
   _map = {};
 
-  mapIpData(data) {
-    // remove draft entries in published, and live in exp builder
-    // remove non guest entries if guest
-    let isP = this.isPreview;
-    data = data.filter(
-      (item) =>
-        item.Status === (isP ? "Draft" : "Live") &&
-        (item.AccessRestriction === "None" || !isGuest)
-    );
+  /**
+   * 2023-01-30
+   * We moved from SOQL-based data to ConnectApi-based due to slight but annoying changes in guest user
+   * SOQL data access for NavigationMenuItem, even in not sharing mode that made some rows not accessible.
+   *
+   * Formats and data points differ quite a bit and we want to keep compatibility hence the re-mapping
+   * on map[itemKey]
+   */
 
-    // create a map by Id
-    let adaptedMap = {};
-    this._map = data.reduce((m, item) => {
-      m[item.Id] = item;
-      adaptedMap[item.Id] = {
-        text: item.Label,
-        url: this.resolveUrl(item),
-        index: item.Id,
-        position: item.Position
+  menuReducer(data, key, map, adaptedMap) {
+    return data.reduce((m, item, index) => {
+      let itemKey = `${key}-${index + 1}`;
+      let amik = {
+        text: item.label,
+        url: item.actionValue,
+        index: itemKey,
+        position: index
+      };
+
+      let subNav = this.menuReducer(item.subMenu, itemKey, map, adaptedMap);
+      if (subNav && subNav.length) {
+        amik.subNav = subNav;
+      }
+
+      adaptedMap[itemKey] = amik;
+      m.push(amik);
+
+      map[itemKey] = {
+        Type:
+          item.actionType === "InternalLink" &&
+          item.actionValue === null &&
+          item.subMenu
+            ? "MenuLabel"
+            : item.actionType,
+        TargetPrefs: item.target === "NewWindow" ? "OpenInExternalTab" : "None",
+        Target:
+          item.actionValue && item.actionType === "InternalLink"
+            ? item.actionValue.replace(cBasePath, "")
+            : item.actionValue,
+        Label: item.label
       };
 
       return m;
-    }, {});
+    }, []);
+  }
 
-    let rootItems = [];
-    // decorate with children array
-    data.forEach((item) => {
-      if (item.ParentId) {
-        let parent = adaptedMap[item.ParentId];
-        (parent.subNav || (parent.subNav = [])).push(adaptedMap[item.Id]);
-      } else {
-        rootItems.push(adaptedMap[item.Id]);
-      }
-    });
+  mapIpData(data) {
+    // soql: label, target, targetPrefs, type
+    // connectApi: label, actionType, actionValue, target, subMenu
+    let adaptedMap = {};
+    let map = {};
 
-    // sort subNav by position
-    data.forEach((item) => {
-      let subNav = adaptedMap[item.Id].subNav;
-      if (subNav) {
-        subNav.sort((a, b) => (a.position > b.position ? 1 : -1));
-      }
-    });
-
-    // sort rootItems by position
-    return rootItems.sort((a, b) => (a.position > b.position ? 1 : -1));
+    let rv = this.menuReducer(data, "menu", map, adaptedMap);
+    this._map = map;
+    return rv;
   }
 
   resolveUrl(item) {

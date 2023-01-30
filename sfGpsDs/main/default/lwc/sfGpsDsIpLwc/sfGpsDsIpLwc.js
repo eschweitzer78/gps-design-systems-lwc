@@ -12,6 +12,8 @@ import { api, track } from "lwc";
    as it's not automatically derived */
 
 import communityId from "@salesforce/community/Id";
+import cBasePath from "@salesforce/community/basePath";
+
 import runIntegrationProcedure from "@salesforce/apex/sfGpsDsIntegrationProcController.runIntegrationProcedure";
 
 export default class SfGpsDsIpLwc extends SfGpsDsLwc {
@@ -85,12 +87,19 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
 
     this._nLoading++;
 
+    console.log("about to run ip", this._ipName);
+
     runIntegrationProcedure({
       ipName: this._ipName,
-      input: { ...this._input, communityId: communityId },
+      input: {
+        ...this._input,
+        communityId: communityId,
+        communityPreview: this.isPreview
+      },
       options: this._options
     })
       .then((data) => {
+        console.log("ip ok", JSON.stringify(data));
         try {
           if (data) {
             if (!Array.isArray(data)) {
@@ -115,6 +124,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
           this.clearErrors();
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection.");
+          console.log(e);
           this._items = [];
         } finally {
           this._nLoading--;
@@ -122,6 +132,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       })
       // eslint-disable-next-line no-unused-vars
       .catch((error) => {
+        console.log("ip error", JSON.stringify(error));
         this.addError("CK-RD", "Issue getting the content collection.");
         this._items = [];
         this._nLoading--;
@@ -130,6 +141,10 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
 
   mapIpData(data) {
     return data;
+  }
+
+  get isPreview() {
+    return !document.URL.startsWith(cBasePath);
   }
 
   connectedCallback() {
