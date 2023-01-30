@@ -4,7 +4,6 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
 
     switch on action {
       when 'GetNavigation' {
-        System.debug('> get navigation');
         String developerName = (String) getTypedFromMap(
           WhereFrom.INPUT,
           'developerName',
@@ -30,37 +29,13 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
           communityPreview = false;
         }
 
-        List<NavigationMenuItem> lnmi = getNavigationItems(developerName);
-        System.debug('get navigation found ' + JSON.serialize(lnmi));
-        //output.put('items', JSON.deserializeUntyped(JSON.serialize(lnmi)));
-
-        List<NavigationMenuItem> items = [
-          SELECT Id, Label, NavigationLinkSetId
-          FROM NavigationMenuItem
-        ];
-
-        System.debug('found ' + items.size() + ' items');
-        for (NavigationMenuItem i : items) {
-          System.debug(
-            'LinkSet --> ' +
-            i.Id +
-            ' / ' +
-            i.Label +
-            ' ' +
-            i.NavigationLinkSetId +
-            ' <--'
-          );
-        }
-
-        List<ConnectApi.NavigationMenuItem> lcnmi = getNavigationItems2(
+        List<ConnectApi.NavigationMenuItem> lcnmi = getNavigationItems(
           communityId,
           developerName,
           communityPreview
         );
-        System.debug('getCommunityNavigationMenu2 ' + lcnmi);
-        output.put('items', JSON.deserializeUntyped(JSON.serialize(lcnmi)));
 
-        System.debug('< get navigation');
+        output.put('items', JSON.deserializeUntyped(JSON.serialize(lcnmi)));
       }
       when 'GetHierarchicalNavigation' {
         System.debug('> get hierarchical navigation');
@@ -118,45 +93,11 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
   }
 
   @AuraEnabled(cacheable=false)
-  public static List<NavigationMenuItem> getNavigationItems(
-    String developerName
-  ) {
-    try {
-      return [
-        SELECT
-          Id,
-          AccessRestriction,
-          Label,
-          ParentId,
-          Position,
-          Status,
-          Target,
-          TargetPrefs,
-          Type
-        FROM NavigationMenuItem
-        WHERE NavigationLinkSet.DeveloperName = :developerName
-      ];
-    } catch (Exception e) {
-      throw new AuraHandledException(e.getMessage());
-    }
-
-    /* TODO: deal with NavigationTopics
-        public static ConnectAPI.ManagedTopicCollection getNavigationTopics(){
-        return ConnectAPI.ManagedTopics.getManagedTopics('YourCommunityId', 
-        ConnectApi.ManagedTopicType.Navigational);
-    } 
-    when a topic is selected in a nav topic menu, goes to page
-    .../topic/[topicId]/[topicName]
-    */
-  }
-
-  @AuraEnabled(cacheable=false)
-  public static List<ConnectApi.NavigationMenuItem> getNavigationItems2(
+  public static List<ConnectApi.NavigationMenuItem> getNavigationItems(
     String communityId,
     String developerName,
     Boolean communityPreview
   ) {
-    System.debug('getNavigationItems2 ' + communityId + ' ' + developerName);
     try {
       ConnectApi.NavigationMenuItemCollection coll = ConnectApi.NavigationMenu.getCommunityNavigationMenu(
         communityId,
