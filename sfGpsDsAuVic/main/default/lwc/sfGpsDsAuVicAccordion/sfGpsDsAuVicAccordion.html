@@ -23,7 +23,7 @@
     <ol if:true={isNumbered} class="rpl-accordion__list">
       <template for:each={_accordions} for:item="accordion">
         <c-sf-gps-ds-au-vic-accordion-item
-          key={accordion.index}
+          key={accordion.key}
           index={accordion.index}
           type={type}
           title={accordion.title}
@@ -39,7 +39,7 @@
     <ul if:false={isNumbered} class="rpl-accordion__list">
       <template for:each={_accordions} for:item="accordion">
         <c-sf-gps-ds-au-vic-accordion-item
-          key={accordion.index}
+          key={accordion.key}
           index={accordion.index}
           type={type}
           title={accordion.title}

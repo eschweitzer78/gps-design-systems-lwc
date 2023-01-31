@@ -29,7 +29,7 @@
         label="Type"
         description="Indicates the type of accordion."
         default="default"
-        datasource="default,ordered"
+        datasource="default,numbered"
       />
       <property
         name="showButtons"

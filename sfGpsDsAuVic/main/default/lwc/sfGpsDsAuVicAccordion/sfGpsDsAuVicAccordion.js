@@ -42,6 +42,7 @@ export default class SfGpsDsAuVicAccordion extends LightningElement {
             return {
               ...item,
               index: index + 1,
+              key: `item-${index + 1}`,
               closed: closed
             };
           })
@@ -67,7 +68,8 @@ export default class SfGpsDsAuVicAccordion extends LightningElement {
   get computedClassName() {
     return computeClass({
       "rpl-accordion": true,
-      "rpl-accordion--rtl": isRTL()
+      "rpl-accordion--rtl": isRTL(),
+      [this.className]: this.className
     });
   }
 
@@ -80,14 +82,14 @@ export default class SfGpsDsAuVicAccordion extends LightningElement {
   /* event management */
 
   handleExpand(event) {
-    let index = event.target.index;
+    let index = event.target.index - 1;
     this._accordions[index].closed = false;
     this._numberOpen++;
     this.dispatchEvent(new CustomEvent("expand", { detail: index }));
   }
 
   handleCollapse(event) {
-    let index = event.target.index;
+    let index = event.target.index - 1;
     this._accordions[index].closed = true;
     this._numberOpen--;
     this.dispatchEvent(new CustomEvent("collapse", { detail: index }));

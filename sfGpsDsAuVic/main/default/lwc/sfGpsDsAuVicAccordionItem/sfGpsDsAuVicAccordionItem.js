@@ -72,9 +72,7 @@ export default class SfGpsDsAuVicAccordionItem extends LightningElement {
   }
 
   get computedStyle() {
-    let contentElement = this._contentElement;
-
-    return contentElement && this._isOpen
+    return this.contentElement && this._isOpen
       ? `height: auto; visibility: visible`
       : "";
   }

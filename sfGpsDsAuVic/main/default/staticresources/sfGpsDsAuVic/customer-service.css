@@ -13,29 +13,40 @@
 /* mimic rpl-site-constrain--on-all, partial width */
 /* does it on all sections but first section will be overriden below */
 
-.siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection {
+.siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection,
+.siteforceContentArea div > .ui-widget .forceCommunitySection {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
 
 @media screen and (min-width: 768px) {
-.siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection {
+.siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection,
+.siteforceContentArea div > .ui-widget .forceCommunitySection {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
 
 @media screen and (min-width: 992px) {
-.siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection {
+.siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection,
+.siteforceContentArea div > .ui-widget .forceCommunitySection {
     padding-left: 4.25rem;
     padding-right: 4.25rem;
   }
 }
 
 @media screen and (min-width: 1200px) {
-.siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection {
-    padding-left: calc(50% - 33rem);
-    padding-right: calc(50% - 33rem);
+  .siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection,
+  .siteforceContentArea div > .ui-widget .forceCommunitySection {
+    padding-left: calc((100% - 66rem) / 2) /*!important*/;
+    padding-right: calc((100% - 66rem) / 2) /*!important*/;
+  }
+}
+@media screen and (min-width: 2560px) {
+  .siteforceContentArea .siteforceDesignTimeSection .forceCommunitySection,
+  .siteforceContentArea div > .ui-widget .forceCommunitySection {
+    padding-left: calc((100% - 88.75rem) / 2) /*!important*/;
+    padding-right: calc((100% - 88.75rem) / 2) /*!important*/;
   }
 }
 
@@ -43,56 +54,65 @@
 /* first child is for breadcrumbs hero and campaign - full width */
 
 @media screen and (min-width: 0px) { 
-.siteforceContentArea .siteforceDesignTimeSection:first-child .forceCommunitySection {
-  padding-top: 3.875rem;
-  padding-bottom: 0;
-      padding-left: 0;
-      padding-right: 0;
-   }
+  .siteforceContentArea .siteforceDesignTimeSection:first-child .forceCommunitySection,
+  .siteforceContentArea div > .ui-widget:first-child .forceCommunitySection {
+    padding-top: 3.875rem;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 @media screen and (min-width: 576px) {
-.siteforceContentArea .siteforceDesignTimeSection:first-child .forceCommunitySection {
-  padding-top: 4.5rem;
+  .siteforceContentArea .siteforceDesignTimeSection:first-child .forceCommunitySection,
+  .siteforceContentArea div > .ui-widget:first-child .forceCommunitySection {
+    padding-top: 4.5rem;
      padding-bottom: 0;
-}
+  }
 }
 
 @media screen and (min-width: 768px) {
-.siteforceContentArea .siteforceDesignTimeSection:first-child .forceCommunitySection {
-  padding-top: 5.375rem;
-  padding-bottom: 0;
- }
+  .siteforceContentArea .siteforceDesignTimeSection:first-child .forceCommunitySection,
+  .siteforceContentArea div > .ui-widget:first-child .forceCommunitySection {
+    padding-top: 5.375rem;
+    padding-bottom: 0;
+  }
 }
 
 /* mimic rpl-content, adds padding after hero and prior to footer */
 
 @media screen and (min-width: 0) {
-.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row {
+  .siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row,
+  .siteforceContentArea div > .ui-widget:nth-child(2) .cb-section_row {
     padding-top: 1rem;
   }
-.siteforceContentArea .siteforceDesignTimeSection:last-child .cb-section_row {
+  .siteforceContentArea .siteforceDesignTimeSection:last-child .cb-section_row,
+  .siteforceContentArea div > .ui-widget:last-child .cb-section_row {
     padding-bottom: 0;
   }
 }
 
 @media screen and (min-width: 768px) {
-.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row {
+  .siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row,
+  .siteforceContentArea div > .ui-widget:nth-child(2) .cb-section_row {
     padding-top: 2.5rem;
   }
 }
 
 @media screen and (min-width: 992px) {
-.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row {
+  .siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row,
+  .siteforceContentArea div > .ui-widget:nth-child(2) .cb-section_row {
     padding-top: 4.25rem;
   }
-.siteforceContentArea .siteforceDesignTimeSection:last-child .cb-section_row {
+  .siteforceContentArea .siteforceDesignTimeSection:last-child .cb-section_row,
+  .siteforceContentArea div > .ui-widget:last-child .cb-section_row {
     padding-bottom: 2.75rem;
   }
 }
 
 @media screen and (min-width: 1200px) {
-.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row {
+  .siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .cb-section_row,
+  .siteforceContentArea div > .ui-widget:nth-child(2) .cb-section_row {
     padding-top: 5rem;
   }
 }

@@ -46,13 +46,13 @@ export default class SfGpsDsAuVicAnchorLinks extends LightningElement {
     let index = event.currentTarget.dataset.ndx;
     let href = event.currentTarget.getAttribute("href");
 
-    this.dispatchEvent("openpanel", {
-      detail: {
-        url: href,
-        index: index
-      }
-    });
-
-    console.log("openpanel", href, index);
+    this.dispatchEvent(
+      new CustomEvent("openpanel", {
+        detail: {
+          url: href,
+          index: index
+        }
+      })
+    );
   }
 }
