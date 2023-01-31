@@ -45,7 +45,30 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
           String.class,
           false
         );
-        List<NavigationMenuItem> lnmi = getNavigationItems(developerName);
+
+        Id communityId = (Id) getTypedFromMap(
+          WhereFrom.INPUT,
+          'communityId',
+          Id.class,
+          false
+        );
+
+        Boolean communityPreview = (Boolean) getTypedFromMap(
+          WhereFrom.INPUT,
+          'communityPreview',
+          Boolean.class,
+          true
+        );
+
+        if (communityPreview == null) {
+          communityPreview = false;
+        }
+
+        List<NavigationMenuItem> lnmi = getNavigationItems(
+          developerName,
+          communityId,
+          communityPreview
+        );
         Map<String, NavigationMenuItem> mnmi = new Map<String, NavigationMenuItem>();
 
         for (NavigationMenuItem nmi : lnmi) {
