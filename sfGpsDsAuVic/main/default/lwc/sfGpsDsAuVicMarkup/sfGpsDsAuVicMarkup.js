@@ -11,18 +11,18 @@ export default class SfGpsDsAuVicMarkup extends SfGpsDsLwc {
   static renderMode = "light";
 
   _originalHtml;
-  _espacedHtml;
+  _escapedHtml;
 
-  @api set html(value) {
+  @api get html() {
+    return this._originalHtml;
+  }
+
+  set html(value) {
     this._originalHtml = value;
     this._escapedHtml = value ? HtmlSanitizer.sanitize(value) : null;
   }
 
   @api className;
-
-  get html() {
-    return this._originalHtml;
-  }
 
   get computedClass() {
     return (

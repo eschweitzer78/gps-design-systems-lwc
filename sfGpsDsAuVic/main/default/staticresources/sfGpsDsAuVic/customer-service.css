@@ -123,6 +123,10 @@
  min-height: 0 !important;
 }
 
+a {
+  text-decoration: underline;
+}
+
 p {
   display: block;
   margin-block-start: 1em;

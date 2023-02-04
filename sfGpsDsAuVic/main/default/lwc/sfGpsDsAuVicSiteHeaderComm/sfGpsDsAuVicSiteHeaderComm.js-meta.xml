@@ -13,7 +13,7 @@
         name="ipName"
         type="String"
         label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this nav."
+        description="Name of the Integration procedure mapping content to this header nav."
       />
       <property
         name="inputJSON"
@@ -76,27 +76,27 @@
         name="sticky"
         type="Boolean"
         label="Is sticky"
-        description="Indicates that the menu bar is stays at the top of the viewport when content is moving."
+        description="Indicates that the menu bar is to stay at the top of the viewport when scrolling."
         default="true"
       />
       <property
         name="hideOnScroll"
         type="Boolean"
         label="Hide on scroll"
-        description="Indicates that the menu bar disappears when scrolling down and reappears when scrolling up."
+        description="Indicates that the menu bar is to disappear when scrolling down and reappear when scrolling up."
         default="true"
       />
       <property
         name="label"
         type="String"
         label="Aria label"
-        description="Text use as the aria label for the menu."
+        description="Text used as the aria label for the menu."
         default="Main menu"
       />
       <property
         name="title"
         type="String"
-        label="title"
+        label="Title"
         description="Menu title used both for visually hidden accessible text and the back button label on next-level submenus."
         default="Main menu"
       />

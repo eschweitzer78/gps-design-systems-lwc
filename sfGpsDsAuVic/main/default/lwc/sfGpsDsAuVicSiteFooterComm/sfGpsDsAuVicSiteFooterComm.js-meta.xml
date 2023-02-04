@@ -38,7 +38,7 @@
         name="caption"
         type="String"
         label="Caption"
-        description="Caption for hero banner."
+        description="Caption text."
         default=""
       />
       <property

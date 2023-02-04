@@ -16,13 +16,6 @@
         description="Publication date in ISO8601 format."
       />
       <property
-        name="location"
-        type="String"
-        label="Location"
-        description="Location the data was published from."
-        default="Melbourne"
-      />
-      <property
         name="locationPrefix"
         type="String"
         label="Location prefix"
@@ -30,11 +23,11 @@
         default="from"
       />
       <property
-        name="author"
+        name="location"
         type="String"
-        label="Author"
-        description="Name of the person(s) the data was published by."
-        default="Daniel Andrews"
+        label="Location"
+        description="Location the data was published from."
+        default="Melbourne"
       />
       <property
         name="authorPrefix"
@@ -42,6 +35,13 @@
         label="Author prefix"
         description="Prefix used prior to author."
         default="Published by"
+      />
+      <property
+        name="author"
+        type="String"
+        label="Author"
+        description="Name of the person(s) the data was published by."
+        default="Daniel Andrews"
       />
       <property
         name="className"

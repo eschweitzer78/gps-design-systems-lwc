@@ -91,11 +91,14 @@ export default class SfGpsDsAuVicRplList extends SfGpsDsLwc {
     });
   }
 
+  @api className;
+
   get computedClass() {
     return computeClass({
       "rpl-list": true,
       "rpl-list--normal": this.size === "normal",
-      "rpl-list--large": this.size === "large"
+      "rpl-list--large": this.size === "large",
+      [this.className]: this.className
     });
   }
 

@@ -73,6 +73,7 @@
         type="String"
         label="Background graphic"
         description="Background graphic."
+        default="/sfsites/c/resource/sfGpsDsAuVic/images/bggraphiclower.png"
       />
       <property
         name="className"

@@ -87,8 +87,6 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
 
     this._nLoading++;
 
-    console.log("about to run ip", this._ipName);
-
     runIntegrationProcedure({
       ipName: this._ipName,
       input: {
@@ -99,7 +97,6 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       options: this._options
     })
       .then((data) => {
-        console.log("ip ok", JSON.stringify(data));
         try {
           if (data) {
             if (!Array.isArray(data)) {

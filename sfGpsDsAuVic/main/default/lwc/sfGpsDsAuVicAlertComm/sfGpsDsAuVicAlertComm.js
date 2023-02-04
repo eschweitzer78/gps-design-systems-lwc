@@ -83,7 +83,6 @@ export default class SfGpsDsAuVicAlertComm extends SfGpsDsLwc {
   /* computed: computedClassName */
 
   get computedClassName() {
-    "rpl-alert";
     return computeClass({
       "rpl-alert": true,
       [this.className]: this.className

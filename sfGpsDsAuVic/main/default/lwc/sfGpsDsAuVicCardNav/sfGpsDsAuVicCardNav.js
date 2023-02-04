@@ -14,7 +14,7 @@ export default class SfGpsDsAuVicCardContent extends SfGpsDsAuVicCard {
   @api showMeta = false;
   @api authors;
   @api inductionYear;
-  @api fvRecommendations;
+  @api fvRecommendationStatus;
   @api className;
 
   get computedClassName() {
@@ -38,6 +38,10 @@ export default class SfGpsDsAuVicCardContent extends SfGpsDsAuVicCard {
     return this.summary ? truncateText(this.summary, summaryLength) : "";
   }
 
+  get topicLabel() {
+    return !this.contentType && this.topic ? this.topic : "";
+  }
+
   get showImageSection() {
     return this.image && this.displayStyle !== "noImage";
   }
@@ -58,7 +62,7 @@ export default class SfGpsDsAuVicCardContent extends SfGpsDsAuVicCard {
     return this.formattedDate && !this.isContentTypeGrant;
   }
 
-  get showPromoYear() {
+  get showYear() {
     return this.inductionYear && !this.isContentTypeGrant;
   }
 
