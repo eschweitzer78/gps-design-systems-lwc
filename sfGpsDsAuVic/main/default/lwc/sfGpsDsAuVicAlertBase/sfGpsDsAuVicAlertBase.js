@@ -10,6 +10,7 @@ export default class SfGpsDsAuVicAlert extends LightningElement {
   @api iconSymbol = "alert_information";
   @api closeText = "Close";
   @api closeIconColor = "white";
+  @api className;
 
   @track visible = true;
 
@@ -23,7 +24,8 @@ export default class SfGpsDsAuVicAlert extends LightningElement {
     return computeClass({
       "rpl-alert-base": true,
       [`rpl-alert-base--color-${this.backgroundColor?.replace(/\s/g, "")}`]:
-        this.backgroundColor
+        this.backgroundColor,
+      [this.className]: this.className
     });
   }
 

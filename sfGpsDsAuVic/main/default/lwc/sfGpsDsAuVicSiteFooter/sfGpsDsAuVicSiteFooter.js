@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVicSiteFooter extends LightningElement {
   static renderMode = "light";
@@ -9,6 +10,8 @@ export default class SfGpsDsAuVicSiteFooter extends LightningElement {
   @api caption; // string
   @api links; // [{ text url }]
   @api copyright; // string
+
+  /* footer logos */
 
   _originalFooterLogos;
   @track _footerLogos;
@@ -22,6 +25,8 @@ export default class SfGpsDsAuVicSiteFooter extends LightningElement {
   get footerLogos() {
     return this._originalFooterLogos;
   }
+
+  /* masterbrand */
 
   _masterbrand = {
     src: "/sfsites/c/resource/sfGpsDsAuVic/images/vic-logo.svg",
@@ -52,5 +57,14 @@ export default class SfGpsDsAuVicSiteFooter extends LightningElement {
     }
 
     this._footerLogos = value;
+  }
+
+  @api className;
+
+  get computedClassName() {
+    return computeClass({
+      "rpl-site-footer": true,
+      [this.className]: this.className
+    });
   }
 }

@@ -18,16 +18,16 @@
         default="Embedded video"
       />
       <property
-        name="height"
-        type="Integer"
-        label="Height"
-        description="Height."
-      />
-      <property
         name="width"
         type="Integer"
         label="Width"
         description="Width."
+      />
+      <property
+        name="height"
+        type="Integer"
+        label="Height"
+        description="Height."
       />
       <property
         name="src"

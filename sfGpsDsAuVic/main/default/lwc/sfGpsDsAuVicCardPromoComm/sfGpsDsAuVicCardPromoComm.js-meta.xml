@@ -42,7 +42,7 @@
         name="contentType"
         type="String"
         description="Content type."
-        datasource="Event,Grant,News,Publication,Profile: Aboriginal Honour Roll,Profile: Australia Day Ambassador,Profile: Victorian Design Review Panel,Profile: Women's Honour Roll,Recommendation - Family Violence"
+        datasource=",Event,Grant,News,Publication,Profile: Aboriginal Honour Roll,Profile: Australia Day Ambassador,Profile: Victorian Design Review Panel,Profile: Women's Honour Roll,Recommendation - Family Violence"
       />
       <property label="Topic" name="topic" type="String" description="Topic." />
       <property

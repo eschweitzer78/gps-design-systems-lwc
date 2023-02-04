@@ -2,6 +2,8 @@ import { LightningElement, api, track } from "lwc";
 import { computeClass, isRTL } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVicAnchorLinks extends LightningElement {
+  static renderMode = "light";
+
   @api title; // string
 
   /* api: links [{text: string, url: string, type: string with h3 being indent, use h2 otherwise }] */
@@ -38,7 +40,8 @@ export default class SfGpsDsAuVicAnchorLinks extends LightningElement {
   get computedClassName() {
     return computeClass({
       "rpl-anchor-links": true,
-      "rpl-anchor-links--rtl": isRTL()
+      "rpl-anchor-links--rtl": isRTL(),
+      [this.className]: this.className
     });
   }
 

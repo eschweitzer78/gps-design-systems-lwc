@@ -42,6 +42,10 @@ export default class SfGpsDsAuVicCardPromo extends SfGpsDsAuVicCard {
     return this.summary ? truncateText(this.summary, summaryLength) : "";
   }
 
+  get topicLabel() {
+    return !this.contentType && this.topic ? this.topic : "";
+  }
+
   get showImageSection() {
     return this.image;
   }

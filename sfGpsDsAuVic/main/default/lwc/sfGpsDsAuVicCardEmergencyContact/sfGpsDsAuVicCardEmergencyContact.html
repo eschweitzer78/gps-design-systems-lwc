@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <div class={computedClassName}>
     <div class="rpl-card-emergency__content">
       <div if:true={subtitle} class="rpl-card-emergency__subtitle">
@@ -24,7 +24,7 @@
           size="1.05"
         >
         </c-sf-gps-ds-au-vic-icon>
-        <span if:true={link.test} class="rpl-card-emergency__cta-link-text">
+        <span if:true={link.text} class="rpl-card-emergency__cta-link-text">
           {link.text}
         </span>
       </c-sf-gps-ds-au-vic-link>

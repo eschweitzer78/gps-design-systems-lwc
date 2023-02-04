@@ -1,0 +1,20 @@
+<template>
+  <c-sf-gps-ds-au-vic-alert-base
+    if:false={_sfGpsErrors}
+    role="alert"
+    close-text="Dismiss alert"
+    data-alert-type={type}
+    background-color={backgroundColor}
+    icon-symbol={iconSymbol}
+    icon-color={iconColor}
+    close-icon-color={closeIconColor}
+    onclose={handleClose}
+    aria-live="assertive"
+    class-name={className}
+  >
+    <span if:true={content} class="sfGpsMarkdown" lwc:dom="manual"> </span>
+  </c-sf-gps-ds-au-vic-alert-base>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

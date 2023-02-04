@@ -2,6 +2,8 @@ import { LightningElement, api } from "lwc";
 import { uniqueId, isExternalUrl, computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVicCardEmergencyContact extends LightningElement {
+  static renderMode = "light";
+
   @api title;
   @api subtitle;
   @api summary;
@@ -19,13 +21,18 @@ export default class SfGpsDsAuVicCardEmergencyContact extends LightningElement {
   }
 
   get iconSymbol() {
-    if (this.link.url.indexOf("tel:") > -1) {
-      return "phone_number";
+    let rv = "arrow_right_primary";
+    let linkUrl = this.link?.url;
+
+    if (typeof linkUrl === "string") {
+      if (linkUrl.indexOf("tel:") > -1) {
+        rv = "phone_number";
+      } else if (isExternalUrl(linkUrl)) {
+        rv = "external_link";
+      }
     }
 
-    return isExternalUrl(this.linkUrl)
-      ? "external_link"
-      : "arrow_right_primary";
+    return rv;
   }
 
   get filterLink() {
