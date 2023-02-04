@@ -137,3 +137,47 @@ img {
   max-width: none;
   vertical-align: baseline;
 }
+
+.app-wysiwyg,
+.forceCommunityRichText .app-wysiwyg {
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-weight: 400;
+}
+
+.app-wysiwyg p,
+.forceCommunityRichText .app-wysiwyg p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.app-wysiwyg h1,
+.forceCommunityRichText .app-wysiwyg h2 {
+    font-size: 2rem;
+    margin-bottom: 0.67em;
+    margin-top: 0.67em;
+}
+
+.app-wysiwyg h2,
+.forceCommunityRichText .app-wysiwyg h2 {
+  font-size: 1.75rem;
+  line-height: 1.3em;
+  margin-top: 0.83rem;
+  margin-bottom: 0.83rem;
+}
+
+.app-wysiwyg h3,
+.forceCommunityRichText .app-wysiwyg h3 {
+  font-size: 1.5rem;
+  line-height: 1.2em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.app-wysiwyg h4,
+.forceCommunityRichText .app-wysiwyg h4 {
+    font-size: 1.25rem;
+    line-height: 1.2em;
+    margin-bottom: 1.33em;
+    margin-top: 1.33em;
+}
