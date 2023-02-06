@@ -11,7 +11,7 @@ covers Salesforce Experience Cloud as well as Salesforce Communities for Public 
 - sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nsw.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
 - sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia (pilot, no production); check the [documentation website](https://vic.dsforce.dev)
-- sfGpsDsAuVic is the folder for code and assets to the Design System of the United Kingdom (alpha, no production)
+- sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (alpha, no production)
 
 ## Installing beta versions using Unlocked Packages
 
