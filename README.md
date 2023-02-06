@@ -5,6 +5,8 @@
 A collection of Salesforce Lightning Web Components (LWCs) for Australian Governments' Design Systems. The collection
 covers Salesforce Experience Cloud as well as Salesforce Communities for Public Sector Solutions (Omnistudio), and may be extended in the future to help with Salesforce Flows provided they're surfaced via an Experience Cloud community.
 
+Note that at this stage there is a dependency on Omnistudio 240.
+
 ## Structure
 
 - sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project
