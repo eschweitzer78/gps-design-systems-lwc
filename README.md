@@ -10,8 +10,8 @@ covers Salesforce Experience Cloud as well as Salesforce Communities for Public 
 - sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project
 - sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nsw.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
-- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia (alpha)
-- sfGpsDsAuVic is the folder for code and assets to the Design System of the United Kingdom (alpha)
+- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia (pilot, no production); check the [documentation website](https://vic.dsforce.dev)
+- sfGpsDsAuVic is the folder for code and assets to the Design System of the United Kingdom (alpha, no production)
 
 ## Installing beta versions using Unlocked Packages
 
@@ -35,8 +35,8 @@ Kindly note that the packages might be the same as for non-production orgs (see 
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000kuUQAAY">this link</a> to install the sfGpsDs unlocked package in your production org (v1.2.0.4 on 30/07/2022).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNFtAAO">this link</a> to install the sfGpsDs unlocked package in your production org (v1.4.0.1 on 04/02/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000kuUVAAY">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v1.2.0.4 on 30/07/2022).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNFyAAO">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v1.4.0.1 on 04/02/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000kuUaAAI">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v1.2.0.4 on 30/07/2022).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNG3AAO">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v1.4.0.1 on 04/02/2023).
