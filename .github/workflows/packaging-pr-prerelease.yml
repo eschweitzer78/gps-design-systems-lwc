@@ -57,7 +57,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:beta:version:create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx force:package:version:create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
@@ -73,7 +73,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:beta:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx force:package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
@@ -89,7 +89,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:beta:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx force:package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
@@ -105,7 +105,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:beta:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          json=$(sfdx force:package:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
@@ -144,37 +144,37 @@ jobs:
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx force:package:beta:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 13 -r -s=AllUsers
+        run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 13 -r -s=AllUsers
 
       # Install new sfGpsDs package in scratch org
       - name: "Install new sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
-        run: sfdx force:package:beta:install -p ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} -w 13 -u scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Install old sfGpsDs package in scratch org
       - name: "Install current sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: sfdx force:package:beta:install -p "Salesforce Global Public Sector Design Systems" -w 13 -u scratch-org -r
+        run: sfdx force:package:install -p "Salesforce Global Public Sector Design Systems" -w 13 -u scratch-org -r
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
-        run: sfdx force:package:beta:install -p ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} -w 13 -u scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Install new sfGpsDsAuNswS package in scratch org
       - name: "Install new sfGpsDsAuNswS package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
-        run: sfdx force:package:beta:install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 13 -u scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Install new sfGpsDsAuVic package in scratch org
       - name: "Install new sfGpsDsAuVic package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
-        run: sfdx force:package:beta:install -p ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} -w 13 -u scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Install new sfGpsDsUkGov package in scratch org
       - name: "Install new sfGpsDsUkGov package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
-        run: sfdx force:package:beta:install -p ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} -w 13 -u scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Housekeeping
       - name: "Delete scratch org"
