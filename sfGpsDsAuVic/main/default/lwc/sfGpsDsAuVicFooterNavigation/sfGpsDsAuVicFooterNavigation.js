@@ -1,4 +1,4 @@
-import { LightningElement, api } from "lwc";
+import { LightningElement, api, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 import BreakpointMixin from "c/sfGpsDsAuVicBreakpointMixin";
 
@@ -7,7 +7,7 @@ export default class SfGpsDsAuVicFooterNavigation extends BreakpointMixin(
 ) {
   static renderMode = "light";
 
-  _nav = []; //:array
+  @track _nav; //:array
   _originalNav;
 
   @api get nav() {
@@ -25,9 +25,9 @@ export default class SfGpsDsAuVicFooterNavigation extends BreakpointMixin(
     this._nav = value.map((item, index) => ({
       ...item,
       children: item.children
-        ? item.children.map((child) => ({
+        ? item.children.map((child, cIndex) => ({
             ...child,
-            key: `child-${index + 1}`
+            key: `nav-${index + 1}-${cIndex + 1}`
           }))
         : [],
       key: `nav-${index + 1}`,
@@ -47,9 +47,10 @@ export default class SfGpsDsAuVicFooterNavigation extends BreakpointMixin(
     event.preventDefault();
     let key = event.currentTarget.dataset.key;
 
-    this._nav = this._nav.forEach((item) => {
-      item.active = item.key === key ? !item.active : false;
-    });
+    this._nav = this._nav.map((item) => ({
+      ...item,
+      active: item.key === key ? !item.active : false
+    }));
   }
 
   disconnectedCallback() {

@@ -39,9 +39,15 @@
 /* Correct logo */
 
 header .rpl-site-header__logo-container--vic-logo-primary img {
-  width: 4rem !important;
+  width: 3rem;
+}
+
+@media (min-width: 992px) {
+  header .rpl-site-header__logo-container--vic-logo-primary img {
+    width: 3.5rem;
+  }  
 }
 
 footer .rpl-site-footer__logo img {
-  width: 4rem;
+  width: 3rem;
 }
