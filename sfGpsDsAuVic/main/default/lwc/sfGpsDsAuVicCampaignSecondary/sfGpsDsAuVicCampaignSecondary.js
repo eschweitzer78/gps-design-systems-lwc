@@ -22,6 +22,10 @@ export default class SfGpsDsAuVicCampaignSecondary extends LightningElement {
     return this.image || this.video;
   }
 
+  get showVideo() {
+    return !this.image && this.video;
+  }
+
   get computedVideoVariant() {
     return this.video?.mediaLink ? "link" : false;
   }

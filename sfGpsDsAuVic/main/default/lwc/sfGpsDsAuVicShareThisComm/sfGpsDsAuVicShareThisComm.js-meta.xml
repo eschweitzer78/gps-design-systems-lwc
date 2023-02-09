@@ -25,8 +25,8 @@
       <property
         name="label"
         type="String"
-        label="Label"
-        description="Aria label for accessibility."
+        label="Aria abel"
+        description="Label used for accessibility."
         default="Share this page on social networks"
       />
       <property
@@ -41,7 +41,7 @@
         type="String"
         label="Email body"
         description="Body of the sharing email, or leave subject and body blank to remove the email option."
-        default="I though you might find this page interesting."
+        default="I thought you might find this page interesting."
       />
       <property
         name="networks"

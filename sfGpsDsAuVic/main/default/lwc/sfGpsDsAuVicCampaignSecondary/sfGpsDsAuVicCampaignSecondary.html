@@ -3,7 +3,7 @@
     <div class="rpl-campaign-secondary__row">
       <div if:true={hasMedia} class="rpl-campaign-secondary__left">
         <div class="rpl-campaign-secondary__content">
-          <template lwc:if={image}>
+          <template if:true={image}>
             <c-sf-gps-ds-au-vic-responsive-img
               src={image.src}
               alt={image.alt}
@@ -11,7 +11,7 @@
             >
             </c-sf-gps-ds-au-vic-responsive-img>
           </template>
-          <template lwc:elseif={video}>
+          <template if:true={showVideo}>
             <c-sf-gps-ds-au-vic-embedded-video
               variant={computedVideoVariant}
               src={video.src}
