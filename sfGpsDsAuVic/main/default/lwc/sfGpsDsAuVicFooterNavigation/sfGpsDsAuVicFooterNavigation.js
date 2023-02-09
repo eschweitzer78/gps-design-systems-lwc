@@ -47,8 +47,7 @@ export default class SfGpsDsAuVicFooterNavigation extends BreakpointMixin(
   @api socialLinks;
 
   get minimize() {
-    let value = this.$breakpoint.l === false;
-    return value;
+    return this.$breakpoint.l === false;
   }
 
   handleClick(event) {
@@ -61,7 +60,7 @@ export default class SfGpsDsAuVicFooterNavigation extends BreakpointMixin(
     }));
   }
 
-  handleSocialClick() {
+  handleSocialToggle() {
     this._socialActive = !this._socialActive;
   }
 

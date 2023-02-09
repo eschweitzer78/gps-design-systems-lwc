@@ -5,8 +5,9 @@ export default class SfGpsDsAuVicFooterSocialLinks extends LightningElement {
 
   @api links;
   @api active;
+  @api minimize;
 
-  get computedHeadingShowLink() {
+  get computedShowHeadingLink() {
     return this.minimize && this.links?.children;
   }
 
@@ -30,10 +31,6 @@ export default class SfGpsDsAuVicFooterSocialLinks extends LightningElement {
   }
 
   handleClick() {
-    this.dispatchEvent(new CustomEvent("click"));
-  }
-
-  renderedCallback() {
-    console.log("socialLinks rendered", JSON.stringify(this.links));
+    this.dispatchEvent(new CustomEvent("toggle"));
   }
 }
