@@ -1,5 +1,6 @@
 <template>
   <c-sf-gps-ds-au-vic-campaign-primary
+    if:false={_sfGpsErrors}
     title={title}
     link={_link}
     image={_image}
@@ -8,4 +9,7 @@
   >
     <div class="sfGpsMarkdown" lwc:dom="manual"></div>
   </c-sf-gps-ds-au-vic-campaign-primary>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
 </template>
