@@ -1,5 +1,66 @@
 # Change log
 
+## 09 Feb 2023
+
+We progressed or implemented the following items:
+
+### VIC DS Site Footer
+
+Refer to `sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicSiteFooterComm`, `sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicSiteFooterInternal` and `sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFooterSocialLinks`.
+
+We added configurability of Nav for the VIC DS Site Footer, plugged the masonry logic for the Nav items,
+and implemented the Social Links component.
+
+### VIC DS Campaign Secondary
+
+Refer to `sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicCampaignSecondaryComm`.
+
+Full implementation.
+
+### VIC DS Meta Tags
+
+Refer to `sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicMetaTagsComm`.
+
+Full implementation.
+
+### VIC DS Share This
+
+Refer to `sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicShareThisComm`.
+
+Full implementation.
+
+## 04 Feb 2023
+
+We introduced the following items:
+
+### Victoria DS
+
+We released a major update of the Victoria DS, taking it to pilot stage after a series of improvements
+since mid December 2022.
+
+## 30 Jan 2023
+
+We made the following changes:
+
+### Changes in Navigation APEX
+
+Refer to `sfGpsDs/main/default/classes/sfGpsDsNavigationORA.cls`.
+
+We took into account a not well documented change in Spring'23 that makes querying NavMenuItems by a
+relationship query using the Navigation name fail. Replaced SOQL by the use of the ConnectApi.
+This had ripple effects on the sfGpsDsIpLwc and sfGpsDsNAvigation LWCs.
+
+## 23 Dec 2022
+
+We introduced the following items:
+
+### NSW DS List View
+
+Refer to `sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm/sfGpsDsAuNswListViewComm` and `sfGpsDs/main/default/classes/SfGpsDsListViewController.cls`.
+
+We added an experimental record list back-end logic for use with the NSW DS List View displaying record details
+based on object and list view names.
+
 ## 30 Nov 2022
 
 We introduced the following items:

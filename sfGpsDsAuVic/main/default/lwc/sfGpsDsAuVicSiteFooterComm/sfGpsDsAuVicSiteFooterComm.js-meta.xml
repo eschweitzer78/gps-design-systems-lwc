@@ -12,20 +12,38 @@
       <property
         name="ipName"
         type="String"
-        label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this nav."
+        label="Links Integration procedure name"
+        description="Name of the Integration procedure mapping content to the links."
       />
       <property
         name="inputJSON"
         type="String"
-        label="Input JSON"
-        description="JSON formatted input parameters for the Integration procedure."
+        label="Links Input JSON"
+        description="JSON formatted input parameters for the links Integration procedure."
       />
       <property
         name="optionsJSON"
         type="String"
-        label="Options JSON"
-        description="JSON formatted options for the Integration procedure."
+        label="Links Options JSON"
+        description="JSON formatted options for the links Integration procedure."
+      />
+      <property
+        name="navIpName"
+        type="String"
+        label="Nav Integration procedure name"
+        description="Name of the Integration procedure mapping content to the nav."
+      />
+      <property
+        name="navInputJSON"
+        type="String"
+        label="Nav Input JSON"
+        description="JSON formatted input parameters for the nav Integration procedure."
+      />
+      <property
+        name="navOptionsJSON"
+        type="String"
+        label="Nav Options JSON"
+        description="JSON formatted options for the nav Integration procedure."
       />
       <property
         name="acknowledgement"

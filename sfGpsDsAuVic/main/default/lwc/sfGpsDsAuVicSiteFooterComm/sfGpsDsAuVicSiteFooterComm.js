@@ -24,16 +24,35 @@ export default class SfGpsDsAuVicSiteFooterComm extends SfGpsDsNavigation {
         text: "Your Services",
         url: "",
         children: [
-          { text: "Grant awards and assistance", url: "" },
-          { text: "Law and safety", url: "" }
+          { text: "Coronavirus (COVID-19) information", url: "" },
+          { text: "Grants and programs", url: "" },
+          { text: "Jobs and careers", url: "" },
+          { text: "Arts and sports", url: "" },
+          { text: "Business and the workplace", url: "" },
+          { text: "Communities", url: "" },
+          { text: "Education", url: "" },
+          { text: "Environment, water and energcy", url: "" },
+          { text: "Health and social support", url: "" },
+          { text: "Housing and property", url: "" },
+          { text: "Law and justice", url: "" },
+          { text: "Safety and emergencies", url: "" },
+          { text: "Traffic and transport", url: "" },
+          { text: "Working in the Victorian Government", url: "" }
         ]
       },
       {
         text: "About VIC Government",
         url: "",
         children: [
-          { text: "Grant awards and assistance", url: "" },
-          { text: "Law and safety", url: "" }
+          { text: "Victoria Government Directory", url: "" },
+          { text: "The Premier and ministers", url: "" },
+          { text: "Departments and agencies", url: "" },
+          { text: "Standards and guidelines", url: "" },
+          { text: "Budget, procurement and funding", url: "" },
+          { text: "Using Victoria's data", url: "" },
+          { text: "Strategies and policies", url: "" },
+          { text: "Inquiries and royal commissions", url: "" },
+          { text: "Victoria's free public wi-fi", url: "" }
         ]
       },
       { text: "News", url: "", children: [] },
@@ -46,8 +65,10 @@ export default class SfGpsDsAuVicSiteFooterComm extends SfGpsDsNavigation {
       title: "Connect with us",
       children: [
         { title: "DFFH Twitter", uri: "#", icon: "twitter" },
+        { title: "DH Twitter", uri: "#", icon: "twitter" },
         { title: "DFFH LinkedIn", uri: "#", icon: "linkedin" },
-        { title: "DFFH Facebook", uri: "#", icon: "facebook" }
+        { title: "DFFH Facebook", uri: "#", icon: "facebook" },
+        { title: "Youtube", uri: "#", icon: "youtube_channel" }
       ]
     };
   }
@@ -112,4 +133,8 @@ export default class SfGpsDsAuVicSiteFooterComm extends SfGpsDsNavigation {
   set optionsJSON(value) {
     super.optionsJSON = value;
   }
+
+  @api navIpName;
+  @api navInputJSON;
+  @api navOptionsJSON;
 }

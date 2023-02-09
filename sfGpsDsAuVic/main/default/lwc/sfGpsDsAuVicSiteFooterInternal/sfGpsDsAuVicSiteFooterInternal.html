@@ -1,19 +1,17 @@
 <template>
-  <c-sf-gps-ds-au-vic-site-footer-internal
+  <c-sf-gps-ds-au-vic-site-footer
     if:false={_sfGpsErrors}
+    nav={_nav}
     social-links={socialLinks}
     acknowledgement={acknowledgement}
     caption={caption}
-    links={_items}
+    links={links}
     copyright={copyright}
-    footer-logos={_footerLogos}
-    masterbrand={_masterbrand}
-    ip-name={navIpName}
-    input-j-s-o-n={navInputJSON}
-    options-j-s-o-n={navOptionsJSON}
+    footer-logos={footerLogos}
+    masterbrand={masterbrand}
     class-name={className}
   >
-  </c-sf-gps-ds-au-vic-site-footer-internal>
+  </c-sf-gps-ds-au-vic-site-footer>
 
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
   </c-sf-gps-ds-configuration-error>
