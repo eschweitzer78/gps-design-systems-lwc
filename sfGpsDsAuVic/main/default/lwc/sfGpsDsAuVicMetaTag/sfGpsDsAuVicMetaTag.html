@@ -1,11 +1,11 @@
 <template>
   <div if:true={linkText} class={themeClass}>
-    <template lwc:if={linkUrl}>
+    <template if:true={linkUrl}>
       <c-sf-gps-ds-au-vic-link class="rpl-meta-tag__link" href={linkUrl}>
         <span class="rpl-meta-tag__text">{linkText}</span>
       </c-sf-gps-ds-au-vic-link>
     </template>
-    <template lwc:else>
+    <template if:false={linkUrl}>
       <div class="rpl-meta-tag__link">
         <span class="rpl-meta-tag__text">{linkText}</span>
       </div>

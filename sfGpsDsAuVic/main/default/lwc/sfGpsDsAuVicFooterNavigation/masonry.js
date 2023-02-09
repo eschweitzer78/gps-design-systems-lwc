@@ -4,7 +4,7 @@
 import Outlayer from "./outlayer";
 import getSize from "./get-size";
 
-/* from desandro/masory */
+/* from desandro/masonry */
 
 /*!
  * Masonry v4.2.2

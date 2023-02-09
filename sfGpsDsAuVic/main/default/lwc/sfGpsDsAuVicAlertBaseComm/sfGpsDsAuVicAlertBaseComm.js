@@ -28,8 +28,6 @@ export default class SfGpsDsAuVicAlertBaseComm extends SfGpsDsLwc {
   @api className;
 
   renderedCallback() {
-    console.log("renderedCallback");
-
     if (this.content) {
       let element = this.template.querySelector(".sfGpsMarkdown");
       if (element) {

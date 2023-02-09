@@ -32,4 +32,8 @@ export default class SfGpsDsAuVicFooterSocialLinks extends LightningElement {
   handleClick() {
     this.dispatchEvent(new CustomEvent("click"));
   }
+
+  renderedCallback() {
+    console.log("socialLinks rendered", JSON.stringify(this.links));
+  }
 }

@@ -1,7 +1,7 @@
 <template lwc:render-mode="light">
   <ul class="rpl-footer-nav">
-    <template lwc:if={minimize}>
-      <template lwc:if={_nav} for:each={_nav} for:item="item">
+    <template if:true={minimize}>
+      <template if:true={_nav} for:each={_nav} for:item="item">
         <li key={item.key} class={item.class}>
           <h2
             class="rpl-footer-nav__heading"
@@ -9,24 +9,24 @@
             onclick={handleClick}
           >
             <a
-              lwc:if={item.url}
+              if:true={item.url}
               href={item.url}
               target={item.target}
               class="rpl-link"
             >
               <span class="rpl-link__inner">{item.text}</span>
             </a>
-            <span lwc:else>{item.text}</span>
-            <template lwc:if={item.children}>
+            <span if:false={item.url}>{item.text}</span>
+            <template if:true={item.children}>
               <c-sf-gps-ds-au-vic-icon
-                lwc:if={item.active}
+                if:true={item.active}
                 symbol="up"
                 color="white"
                 size="m"
               >
               </c-sf-gps-ds-au-vic-icon>
               <c-sf-gps-ds-au-vic-icon
-                lwc:else
+                if:false={item.active}
                 symbol="down"
                 color="white"
                 size="m"
@@ -35,9 +35,9 @@
             </template>
           </h2>
           <c-sf-gps-ds-transition name="rpl-accordion">
-            <ul lwc:if={item.active} class="rpl-footer-nav__submenu-item">
+            <ul if:true={item.active} class="rpl-footer-nav__submenu-item">
               <template
-                lwc:if={item.children}
+                if:true={item.children}
                 for:each={item.children}
                 for:item="child"
               >
@@ -53,8 +53,8 @@
       </template>
     </template>
 
-    <template lwc:else>
-      <template lwc:if={_nav} for:each={_nav} for:item="item">
+    <template if:false={minimize}>
+      <template if:true={_nav} for:each={_nav} for:item="item">
         <li key={item.key} class={item.class}>
           <h2
             class="rpl-footer-nav__heading"
@@ -62,19 +62,19 @@
             onclick={handleClick}
           >
             <a
-              lwc:if={item.url}
+              if:true={item.url}
               href={item.url}
               target={item.target}
               class="rpl-link"
             >
               <span class="rpl-link__inner">{item.text}</span>
             </a>
-            <span lwc:else>{item.text}</span>
+            <span if:false={item.url}>{item.text}</span>
           </h2>
           <c-sf-gps-ds-transition name="rpl-accordion">
             <ul class="rpl-footer-nav__submenu-item">
               <template
-                lwc:if={item.children}
+                if:true={item.children}
                 for:each={item.children}
                 for:item="child"
               >

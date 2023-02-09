@@ -102,6 +102,7 @@ export default class SfGpsDsAuVicFooterNavigation extends BreakpointMixin(
           transitionDuration: 0,
           root: this
         });
+
         this._performLayout = false;
       }
     }

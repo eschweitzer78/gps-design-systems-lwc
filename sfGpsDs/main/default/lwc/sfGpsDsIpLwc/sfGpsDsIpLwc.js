@@ -69,10 +69,8 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   set optionsJSON(value) {
     this._originalOptionsJSON = value;
 
-    if (value == null) return;
-
     try {
-      this._options = JSON.parse(value);
+      this._options = JSON.parse(value || "{}");
       this.refreshContent();
     } catch (e) {
       this._options = {};
@@ -118,10 +116,9 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
           }
 
           this.didLoadOnce = true;
-          this.clearErrors();
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection.");
-          console.log(e);
+          console.log("CK-EX", e);
           this._items = [];
         } finally {
           this._nLoading--;
@@ -129,7 +126,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       })
       // eslint-disable-next-line no-unused-vars
       .catch((error) => {
-        console.log("ip error", JSON.stringify(error));
+        console.log("CK-RD ip error", JSON.stringify(error));
         this.addError("CK-RD", "Issue getting the content collection.");
         this._items = [];
         this._nLoading--;

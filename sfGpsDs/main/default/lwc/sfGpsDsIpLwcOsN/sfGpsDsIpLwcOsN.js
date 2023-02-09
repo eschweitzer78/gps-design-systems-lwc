@@ -113,7 +113,6 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
           }
 
           this.didLoadOnce = true;
-          this.clearErrors();
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection");
           this._items = [];
