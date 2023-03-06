@@ -10,7 +10,7 @@ Note that at this stage there is a dependency on Omnistudio 240.
 ## Structure
 
 - sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project
-- sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nsw.dsforce.dev)
+- sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nswds.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
 - sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia (pilot, no production); check the [documentation website](https://vic.dsforce.dev)
 - sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (alpha, no production)
