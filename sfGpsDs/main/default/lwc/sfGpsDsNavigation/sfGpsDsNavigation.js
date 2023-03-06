@@ -35,7 +35,7 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
   _map = {};
 
   /**
-   * 2023-01-30
+   * 2023-01-30 ESC
    * We moved from SOQL-based data to ConnectApi-based due to slight but annoying changes in guest user
    * SOQL data access for NavigationMenuItem, even in not sharing mode that made some rows not accessible.
    *
