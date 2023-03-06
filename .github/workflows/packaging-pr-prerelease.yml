@@ -176,6 +176,11 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
         run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
+      # run prettier as sfdx-package.json gets overwritten in a non-prettier way
+      - name: "Run prettier"
+        run: |
+          npm run prettier
+
       # Housekeeping
       - name: "Delete scratch org"
         if: always()

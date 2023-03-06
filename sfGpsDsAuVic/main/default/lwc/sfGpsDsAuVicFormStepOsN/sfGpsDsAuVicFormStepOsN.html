@@ -1,0 +1,46 @@
+<template>
+  <template if:true={jsonDef.bAccordionActive}>
+    <div class="rpl-form">
+      <h3 class="rpl-form__title slds-m-top_medium os-step-label">
+        {mergedLabel}
+      </h3>
+      <!-- slds-p-horizontal_medium  -->
+
+      <div class="vlc-separator slds-m-top_medium slds-m-bottom_medium"></div>
+      <!--  slds-m-horizontal_medium -->
+
+      <div>
+        <div class="slds-grid slds-wrap omniscript-step__body">
+          <slot class="slds-grid slds-wrap slds-size_1-of-1"> </slot>
+        </div>
+
+        <hr class="sepbutton" />
+
+        <div class="form-actions">
+          <!-- add replacement buttons here -->
+          <input
+            if:true={showPrev}
+            class="rpl-button rpl-button--secondary next-button"
+            type="button"
+            value={mergedPreviousLabel}
+            onclick={handleBack}
+          />
+          <input
+            if:true={showSave}
+            class="rpl-button rpl-button--secondary save-button"
+            type="button"
+            value={mergedSaveLabel}
+            onclick={handleSave}
+          />
+          <input
+            if:true={showNext}
+            class="rpl-button rpl-button--primary back-button"
+            type="button"
+            value={mergedNextLabel}
+            onclick={handleNext}
+          />
+        </div>
+      </div>
+    </div>
+  </template>
+</template>

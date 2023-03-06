@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>56.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC DS Icon</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="symbol"
+        type="String"
+        label="Symbol"
+        description="Icon symbol."
+      />
+      <property
+        name="color"
+        type="String"
+        label="Colour"
+        description="Icon colour."
+        datasource="primary,dark_primary,secondary,extra_dark_neutral,dark_neutral,dark_neutral_1,mid_neutral_1,mid_neutral_2,light_neutral,danger,warning,success,white,black"
+      />
+      <property
+        name="size"
+        type="String"
+        label="Size"
+        description="Icon size."
+        datasource="s,m,l,xl,xxl"
+        default="xxl"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

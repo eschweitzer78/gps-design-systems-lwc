@@ -22,6 +22,7 @@ export default class SfGpsDsAuVicAlertBaseComm extends SfGpsDsLwc {
   }
 
   @api backgroundColor;
+  @api textColor;
   @api iconSymbol;
   @api iconColor;
   @api closeIconColor;

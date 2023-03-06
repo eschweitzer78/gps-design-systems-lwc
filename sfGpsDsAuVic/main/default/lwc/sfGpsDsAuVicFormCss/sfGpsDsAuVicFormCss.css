@@ -1,0 +1,723 @@
+.rpl-checkbox,
+.rpl-form-input,
+.rpl-form__prepend-icon .wrapper {
+  position: relative;
+}
+.rpl-select__listitem--focussed,
+.rpl-select__listitem--selected {
+  outline: 0;
+}
+@font-face {
+  font-family: VIC-Regular;
+  src: url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff2)
+      format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff) format("woff");
+  display: swap;
+}
+@font-face {
+  font-family: VIC-Medium;
+  src: url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff2)
+      format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff) format("woff");
+  display: swap;
+}
+@font-face {
+  font-family: VIC-SemiBold;
+  src: url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff2)
+      format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff) format("woff");
+  display: swap;
+}
+@font-face {
+  font-family: VIC-Bold;
+  src: url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff2)
+      format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff) format("woff");
+  display: swap;
+}
+.rpl-form {
+  max-width: 37.875rem;
+  font-family: VIC-Regular, Arial, Helvetica, "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.3em;
+  font-weight: 400;
+}
+.rpl-form__title {
+  color: #011a3c;
+  margin-top: 0;
+}
+.rpl-form label:not(.rpl-option-button__label) {
+  font-family: VIC-Bold, Arial, Helvetica, "sans-serif";
+  font-size: 1rem;
+  line-height: 1em;
+  font-weight: 400;
+  color: #011a3c;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.rpl-checkbox__inline-label,
+.rpl-form .radio-list label {
+  font-family: VIC-Regular, Arial, Helvetica, "sans-serif";
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.rpl-form input:not([type]),
+.rpl-form input[type="color"],
+.rpl-form input[type="date"],
+.rpl-form input[type="datetime-local"],
+.rpl-form input[type="datetime"],
+.rpl-form input[type="email"],
+.rpl-form input[type="month"],
+.rpl-form input[type="number"],
+.rpl-form input[type="password"],
+.rpl-form input[type="search"],
+.rpl-form input[type="tel"],
+.rpl-form input[type="text"],
+.rpl-form input[type="time"],
+.rpl-form input[type="url"],
+.rpl-form input[type="week"] {
+  background-color: #f6f6f9;
+  border: 1px solid #d7dbe0;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #011a3c;
+  height: auto;
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+}
+.rpl-form input:not([type])::placeholder,
+.rpl-form input[type="color"]::placeholder,
+.rpl-form input[type="date"]::placeholder,
+.rpl-form input[type="datetime-local"]::placeholder,
+.rpl-form input[type="datetime"]::placeholder,
+.rpl-form input[type="email"]::placeholder,
+.rpl-form input[type="month"]::placeholder,
+.rpl-form input[type="number"]::placeholder,
+.rpl-form input[type="password"]::placeholder,
+.rpl-form input[type="search"]::placeholder,
+.rpl-form input[type="tel"]::placeholder,
+.rpl-form input[type="text"]::placeholder,
+.rpl-form input[type="time"]::placeholder,
+.rpl-form input[type="url"]::placeholder,
+.rpl-form input[type="week"]::placeholder {
+  color: #011a3c;
+}
+.rpl-form-input--with-icon-before .rpl-form-input__input[type="text"],
+.rpl-form__prepend-icon .wrapper input {
+  padding-left: 2.5rem;
+}
+.rpl-form input:not([type]):focus,
+.rpl-form input[type="color"]:focus,
+.rpl-form input[type="date"]:focus,
+.rpl-form input[type="datetime-local"]:focus,
+.rpl-form input[type="datetime"]:focus,
+.rpl-form input[type="email"]:focus,
+.rpl-form input[type="month"]:focus,
+.rpl-form input[type="number"]:focus,
+.rpl-form input[type="password"]:focus,
+.rpl-form input[type="search"]:focus,
+.rpl-form input[type="tel"]:focus,
+.rpl-form input[type="text"]:focus,
+.rpl-form input[type="time"]:focus,
+.rpl-form input[type="url"]:focus,
+.rpl-form input[type="week"]:focus,
+.rpl-form textarea:focus {
+  border-color: #0052c2;
+}
+.rpl-form input[type="checkbox"] + label,
+.rpl-form input[type="radio"]:not(.rpl-option-button__radio) + label {
+  display: inline-block;
+  margin: 0;
+}
+.rpl-form__prepend-icon .wrapper:before {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 1rem;
+  height: 1rem;
+  background-repeat: no-repeat;
+  content: "";
+}
+.rpl-form .buttons button,
+.rpl-form [type="submit"] {
+  text-align: center;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+.rpl-form__prepend-icon--search .wrapper:before {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.99 9.243c1.597-2.45 1.224-5.82-1.133-7.833C7.59-.526 4.137-.46 1.94 1.557a6 6 0 00-.19 8.653c2.043 2.045 5.205 2.293 7.527.757.031-.02.102-.083.198-.173l4.343 4.195a.941.941 0 101.308-1.354l-4.324-4.176c.098-.106.166-.184.188-.216zm-8.023-.25a4.274 4.274 0 010-6.035 4.266 4.266 0 016.03 0 4.274 4.274 0 010 6.034 4.266 4.266 0 01-6.03 0z' fill='%23FF465870'/%3E%3C/svg%3E");
+}
+.rpl-form textarea {
+  background-color: #f6f6f9;
+  border: 1px solid #d7dbe0;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #011a3c;
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+  height: 11.25rem;
+}
+.rpl-form textarea::placeholder {
+  color: #011a3c;
+}
+.rpl-form .radio-list label {
+  line-height: 1.3em;
+  display: flex;
+  align-items: center;
+}
+.rpl-form .radio-list input[type="radio"]:not(.rpl-option-button__radio) {
+  margin-right: 0.5rem;
+}
+[dir="rtl"]
+  .rpl-form
+  .radio-list
+  input[type="radio"]:not(.rpl-option-button__radio) {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  .rpl-form input[type="radio"]:not(.rpl-option-button__radio) {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: 0;
+    border-radius: 100%;
+    background-color: #f6f6f9;
+    border: 1px solid #546a7c;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  @media screen and (min-width: 576px) {
+    .rpl-form input[type="radio"]:not(.rpl-option-button__radio) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .rpl-form input[type="radio"]:not(.rpl-option-button__radio)::before {
+    content: "";
+    display: block;
+    width: calc(5px + 1px);
+    height: calc(5px + 1px);
+    border-radius: 50%;
+    transition: background-color 0.2s;
+  }
+  .rpl-form input[type="radio"]:not(.rpl-option-button__radio):checked {
+    border: 1px solid #0095ec;
+  }
+  .rpl-form input[type="radio"]:not(.rpl-option-button__radio):checked::before {
+    background-color: #0095ec;
+  }
+  .rpl-form input[type="radio"]:not(.rpl-option-button__radio):focus {
+    border: 3px solid #0052c2;
+  }
+}
+.rpl-form [type="submit"] {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #0052c2;
+}
+.rpl-form [type="submit"]:focus,
+.rpl-form [type="submit"]:hover {
+  text-decoration: none;
+  background-color: #0095ec;
+  color: #fff;
+}
+.rpl-form .buttons button:active,
+.rpl-form [type="submit"]:active {
+  background-color: transparent;
+  background-image: linear-gradient(180deg, #0052c2 0, #0095ec 100%);
+  color: #fff;
+}
+.multiselect__element:nth-child(2n),
+.multiselect__tags {
+  background-color: #f6f6f9;
+}
+.rpl-form .buttons button {
+  color: #fff;
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+@media screen and (min-width: 0) {
+  .rpl-form .buttons button,
+  .rpl-form [type="submit"] {
+    font-family: VIC-Bold, Arial, Helvetica, "sans-serif";
+    font-size: 0.875rem;
+    line-height: 1em;
+    font-weight: 400;
+  }
+}
+@media screen and (min-width: 576px) {
+  .rpl-form .buttons button,
+  .rpl-form [type="submit"] {
+    width: auto;
+  }
+}
+@media print {
+  .rpl-form [type="submit"] {
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+    color: #000;
+    background-color: transparent;
+  }
+  .rpl-form .buttons button,
+  .rpl-form [type="submit"]:active {
+    color: #000;
+  }
+  .rpl-form .buttons button {
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+  }
+}
+.rpl-form .buttons button:focus,
+.rpl-form .buttons button:hover {
+  text-decoration: none;
+}
+.rpl-form .hint {
+  color: #011a3c;
+  margin-bottom: 0.5rem;
+}
+.rpl-form .error .form-control,
+.rpl-form .error .multiselect__tags,
+.rpl-form .error input,
+.rpl-form .error textarea {
+  border-color: #af272f;
+  background-color: rgba(175, 39, 47, 0.07);
+}
+.rpl-form .help-block {
+  margin-top: 0.75rem;
+}
+.rpl-form .help-block.errors {
+  order: 2;
+  margin-bottom: 0.5rem;
+  color: #af272f;
+}
+.rpl-form--full-width {
+  max-width: 100%;
+}
+.rpl-form > fieldset,
+.vue-form-generator > fieldset {
+  padding: 0;
+  border-width: 0;
+}
+.rpl-form .form-group,
+.vue-form-generator .form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.vue-form-generator .form-group.required .field-wrap > label:after,
+.vue-form-generator .form-group.required > label:after {
+  margin-left: 0.25rem;
+  font-family: VIC-Regular, Arial, Helvetica, "sans-serif";
+  font-size: 0.875rem;
+  line-height: 0.8em;
+  font-weight: 400;
+  color: #af272f;
+  content: " (Required)";
+}
+.rpl-form .form-group label,
+.vue-form-generator .form-group label {
+  order: 1;
+}
+.rpl-form .form-group .hint,
+.vue-form-generator .form-group .hint {
+  order: 2;
+}
+.rpl-form .form-group .field-wrap,
+.vue-form-generator .form-group .field-wrap {
+  order: 3;
+}
+.multiselect__tags {
+  border: 1px solid #d7dbe0;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  color: #011a3c;
+  height: auto;
+  width: 100%;
+  padding: 1rem 2.5rem 1rem 1rem;
+  margin: 0;
+}
+.multiselect__tags::placeholder {
+  color: #011a3c;
+}
+.multiselect__tags:focus {
+  border-color: #0052c2;
+}
+.multiselect__placeholder {
+  margin-bottom: 0;
+  padding: 0;
+  color: #011a3c;
+}
+.multiselect__single {
+  background: 0 0;
+  margin-bottom: 0;
+}
+.multiselect__element:nth-child(odd) {
+  background-color: #fff;
+}
+.multiselect__option--selected {
+  color: #0095ec;
+}
+.multiselect__option--highlight {
+  color: #fff;
+  background: #0095ec;
+}
+.multiselect__option--highlight.multiselect__option--selected {
+  background-color: #af272f;
+}
+.rpl-checkbox {
+  text-indent: -2.0625rem;
+  padding-left: 2.0625rem;
+}
+.rpl-checkbox input[type="checkbox"] {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  opacity: 0;
+}
+.rpl-checkbox input[type="checkbox"]:focus + .rpl-checkbox__box {
+  border: 0.1875rem solid #0052c2;
+  width: 0.875rem;
+  height: 0.875rem;
+}
+.rpl-checkbox__inline-label {
+  line-height: 1em;
+  margin-left: 0.5rem;
+}
+.rpl-checkbox__box {
+  display: inline-block;
+  vertical-align: middle;
+  border: 0.0625rem solid #546a7c;
+  border-radius: 0.25rem;
+  background-color: #f6f6f9;
+  width: 1.125rem;
+  height: 1.125rem;
+  position: relative;
+}
+.rpl-checkbox__box .rpl-icon {
+  display: none;
+}
+.rpl-checkbox__box--checked {
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+.rpl-checkbox__box--checked .rpl-icon {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.rpl-fieldset legend {
+  display: flex;
+  flex: 0 1 100%;
+  font-family: VIC-Bold, Arial, Helvetica, "sans-serif";
+  font-size: 1.125rem;
+  line-height: 1.2em;
+  font-weight: 400;
+  margin: 0 0 1rem 0.75rem;
+  color: #011a3c;
+}
+.rpl-fieldset__inner {
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+.rpl-fieldset--pad {
+  margin: 1rem 0;
+}
+.rpl-fieldset .form-group {
+  flex: 0 1 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media screen and (min-width: 768px) {
+  .multiselect__tags,
+  .rpl-form input:not([type]),
+  .rpl-form input[type="color"],
+  .rpl-form input[type="date"],
+  .rpl-form input[type="datetime-local"],
+  .rpl-form input[type="datetime"],
+  .rpl-form input[type="email"],
+  .rpl-form input[type="month"],
+  .rpl-form input[type="number"],
+  .rpl-form input[type="password"],
+  .rpl-form input[type="search"],
+  .rpl-form input[type="tel"],
+  .rpl-form input[type="text"],
+  .rpl-form input[type="time"],
+  .rpl-form input[type="url"],
+  .rpl-form input[type="week"],
+  .rpl-form textarea {
+    padding: 1rem 1.25rem;
+  }
+  .rpl-form textarea {
+    height: 4.6875rem;
+  }
+  .rpl-form .buttons button,
+  .rpl-form [type="submit"] {
+    font-family: VIC-Bold, Arial, Helvetica, "sans-serif";
+    font-size: 1rem;
+    line-height: 1em;
+  }
+  .vue-form-generator .form-group {
+    margin-bottom: 1.75rem;
+  }
+  .rpl-fieldset .form-group--col-two {
+    flex-basis: calc(50% - (0.75rem * 2));
+  }
+  .rpl-fieldset .form-group--col-three {
+    flex-basis: calc(33.3% - (0.75rem * 2));
+  }
+}
+.rpl-fieldset .form-group--inline {
+  flex: initial;
+}
+.rpl-form-input--with-icon-after .rpl-form-input__input[type="text"] {
+  padding-right: 2.5rem;
+}
+.rpl-form-input__btn {
+  border: none;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  text-align: inherit;
+  background: 0 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  position: absolute;
+  top: calc(50% - 0.5rem);
+}
+.rpl-select__listitem,
+.rpl-select__trigger {
+  line-height: 1em;
+  cursor: default;
+  font-family: VIC-Regular, Arial, Helvetica, "sans-serif";
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+.rpl-form-input__btn::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+.rpl-form-input__btn-before {
+  left: 0.75rem;
+}
+.rpl-form-input__btn-after {
+  right: 0.75rem;
+}
+.rpl-form-input__icon {
+  width: 1rem !important;
+  height: 1rem !important;
+}
+.rpl-select__trigger {
+  position: relative;
+  background-color: #f6f6f9;
+  border: 1px solid #d7dbe0;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  padding: 1rem;
+  margin: 0;
+  color: #011a3c;
+}
+.rpl-select__trigger::placeholder {
+  color: #011a3c;
+}
+.rpl-select__trigger:focus {
+  border-color: #0052c2;
+}
+.rpl-select__trigger-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 1rem;
+  margin: auto;
+  transition: transform 0.25s;
+  height: 0.46875rem !important;
+  width: 0.75rem !important;
+}
+.rpl-select--open .rpl-select__trigger-icon {
+  transform: rotate(-180deg);
+}
+.rpl-select__label-count {
+  color: #0052c2;
+}
+.rpl-select__label-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+  pointer-events: none;
+}
+.rpl-select__dropdown {
+  top: 0;
+  background-color: #f6f6f9;
+  position: relative;
+  width: calc(100% - 2px);
+  margin: auto;
+}
+.rpl-select__listbox {
+  outline: 0;
+  position: absolute;
+  top: -1px;
+  z-index: 1;
+  background: #f6f6f9;
+  left: -1px;
+  width: 100%;
+  border: 1px solid #d7dbe0;
+  border-radius: 0 0 0.25rem 0.25rem;
+  border-top: 1px solid #d7dbe0;
+  max-height: 18.375rem;
+  overflow-y: auto;
+}
+.rpl-select__listbox::-webkit-scrollbar {
+  appearance: none;
+  width: 10px;
+}
+.rpl-select__listbox::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #d7dbe0;
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+.rpl-select__listitem {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 2.625rem;
+  background: #f6f6f9;
+  color: #011a3c;
+}
+.rpl-select__listitem:not(.rpl-select__listitem--selected):not(.rpl-select__listitem--focussed):nth-child(odd) {
+  background-color: #fff;
+}
+.rpl-select__listitem--focussed,
+.rpl-select__listitem--selected,
+.rpl-select__listitem:not(.rpl-select__listitem--selected):not(.rpl-select__listitem--focussed):hover {
+  color: #fff;
+  background-color: #0052c2;
+}
+.rpl-select__listitem-label {
+  padding-top: 2px;
+}
+.rpl-select__checkbox {
+  float: left;
+  margin-right: 0;
+}
+.rpl-select--disabled .rpl-select__trigger {
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: #fafafc;
+  color: #d7dbe0;
+}
+.rpl-select--disabled .rpl-select__trigger-icon {
+  fill: #d7dbe0;
+}
+.rpl-select--open .rpl-select__trigger {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border: 1px solid #0052c2;
+}
+.rpl-select--open .rpl-select__listbox {
+  border: 1px solid #0052c2;
+  border-top: none;
+}
+.rpl-form {
+  max-width: none;
+}
+.rpl-form .required {
+  float: none;
+}
+.rpl-form .form-group.form-group__mid-margin-bottom {
+  margin-bottom: 1rem;
+}
+.rpl-form .form-group.form-group__low-margin-bottom {
+  margin-bottom: 0.5rem;
+}
+.rpl-form .form-group.form-group__no-margin-bottom {
+  margin-bottom: 0;
+}
+@media screen and (min-width: 768px) {
+  .rpl-select__trigger {
+    padding: 1rem 1.25rem;
+  }
+  .rpl-select__listitem {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .rpl-form .form-group {
+    margin-bottom: 1.75rem;
+  }
+  .rpl-form .form-group.form-group__mid-margin-bottom {
+    margin-bottom: 1rem;
+  }
+  .rpl-form .form-group.form-group__low-margin-bottom {
+    margin-bottom: 0.5rem;
+  }
+  .rpl-form .form-group.form-group__no-margin-bottom {
+    margin-bottom: 0;
+  }
+}
+.rpl-form .form-group.required > label > span:after {
+  font-family: VIC-Regular, Arial, Helvetica, "sans-serif";
+  font-size: 0.875rem;
+  line-height: 0.8em;
+  font-weight: 400;
+  color: #af272f;
+  content: " (Required)";
+}
+.rpl-form .help-block {
+  font-family: VIC-Regular, Arial, Helvetica, "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.3em;
+  font-weight: 400;
+}
+.rpl-form .help-block.errors {
+  order: 4;
+}
+.rpl-form label.label--small {
+  font-size: 0.875rem;
+}
+.form-group > label > span {
+  margin-right: 0.25rem;
+}

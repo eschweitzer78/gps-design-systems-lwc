@@ -1,0 +1,150 @@
+{
+  "sfGpsDsAuVicColCss": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsAuVicFormCss": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsAuVicIcon": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "SfGpsDsLwc": "SfGpsDsLwcOsN",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "SfGpsDsAuVicIcon": "SfGpsDsAuVicIconOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    },
+    "icons/accessible.js": {},
+    "icons/addition.js": {},
+    "icons/ai.js": {},
+    "icons/alert_fire.js": {},
+    "icons/alert_flood.js": {},
+    "icons/alert_high_temperature.js": {},
+    "icons/alert_information.js": {},
+    "icons/alert_lightning.js": {},
+    "icons/alert_medical.js": {},
+    "icons/alert_smoke.js": {},
+    "icons/alert_transport.js": {},
+    "icons/arrow_down_primary.js": {},
+    "icons/arrow_down_tertiary.js": {},
+    "icons/arrow_left_primary.js": {},
+    "icons/arrow_left_secondary.js": {},
+    "icons/arrow_right_primary_s.js": {},
+    "icons/arrow_right_primary.js": {},
+    "icons/arrow_right_secondary.js": {},
+    "icons/arrow_up_primary.js": {},
+    "icons/attach.js": {},
+    "icons/blank_solid.js": {},
+    "icons/browser.js": {},
+    "icons/calendar.js": {},
+    "icons/child_friendly.js": {},
+    "icons/close.js": {},
+    "icons/cross_circle.js": {},
+    "icons/csv.js": {},
+    "icons/doc.js": {},
+    "icons/document_transparent.js": {},
+    "icons/document.js": {},
+    "icons/docx.js": {},
+    "icons/dollar_negative.js": {},
+    "icons/dot.js": {},
+    "icons/dotm.js": {},
+    "icons/dotx.js": {},
+    "icons/down.js": {},
+    "icons/download.js": {},
+    "icons/email_solid.js": {},
+    "icons/email_transparent.js": {},
+    "icons/enlarge_screen.js": {},
+    "icons/eps.js": {},
+    "icons/external_link.js": {},
+    "icons/facebook.js": {},
+    "icons/free.js": {},
+    "icons/fullscreen.js": {},
+    "icons/hamburger.js": {},
+    "icons/help.js": {},
+    "icons/home.js": {},
+    "icons/ics.js": {},
+    "icons/indd.js": {},
+    "icons/instagram.js": {},
+    "icons/left.js": {},
+    "icons/link_65.js": {},
+    "icons/link_90.js": {},
+    "icons/link.js": {},
+    "icons/linkedin.js": {},
+    "icons/list_indent.js": {},
+    "icons/list.js": {},
+    "icons/loading_star.js": {},
+    "icons/lock.js": {},
+    "icons/map-marker.js": {},
+    "icons/menu-home.js": {},
+    "icons/microphone.js": {},
+    "icons/pause.js": {},
+    "icons/pdf.js": {},
+    "icons/phone-number.js": {},
+    "icons/play.js": {},
+    "icons/ppt.js": {},
+    "icons/pptx.js": {},
+    "icons/print.js": {},
+    "icons/right.js": {},
+    "icons/search.js": {},
+    "icons/senior.js": {},
+    "icons/share_alternative.js": {},
+    "icons/share.js": {},
+    "icons/spotify.js": {},
+    "icons/star.js": {},
+    "icons/stop.js": {},
+    "icons/success.js": {},
+    "icons/table.js": {},
+    "icons/tick.js": {},
+    "icons/tif.js": {},
+    "icons/trash.js": {},
+    "icons/twitter.js": {},
+    "icons/txt.js": {},
+    "icons/up.js": {},
+    "icons/upload.js": {},
+    "icons/user.js": {},
+    "icons/view.js": {},
+    "icons/webinar.js": {},
+    "icons/wechat.js": {},
+    "icons/whatsapp.js": {},
+    "icons/xls.js": {},
+    "icons/xlsm.js": {},
+    "icons/xlsx.js": {},
+    "icons/youtube_channel.js": {},
+    "icons/zip.js": {},
+    "icons/zoom_in.js": {},
+    "icons/zoom_out.js": {}
+  },
+  "sfGpsDsAuVicRowCss": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  }
+}

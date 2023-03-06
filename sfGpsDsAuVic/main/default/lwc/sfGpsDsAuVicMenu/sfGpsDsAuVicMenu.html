@@ -66,7 +66,11 @@
             </li>
 
             <!-- Menu items -->
-            <template for:each={_menu} for:item="list" for:index="index">
+            <template
+              for:each={_decoratedMenu}
+              for:item="list"
+              for:index="index"
+            >
               <!-- decoratedMenu -->
               <li key={list.key} class={list.liClass}>
                 <!-- removed onfocus={handleItemFocus} -->

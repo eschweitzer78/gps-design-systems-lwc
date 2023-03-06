@@ -53,5 +53,7 @@
 .rpl-icon--color_black {
   fill: #000;
 }
-
+svg.rpl-icon {
+  overflow: visible;
+}
 /*# sourceMappingURL=sfGpsDsAuVicIcon.css.map */

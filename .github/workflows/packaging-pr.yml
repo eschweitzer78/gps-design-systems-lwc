@@ -229,8 +229,10 @@ jobs:
           newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGov\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
-      # TODO: run prettier on sfdx-package.json
-      #
+      # run prettier as sfdx-package.json gets overwritten in a non-prettier way
+      - name: "Run prettier"
+        run: |
+          npm run prettier
 
       # Housekeeping
       - name: "Delete scratch org"

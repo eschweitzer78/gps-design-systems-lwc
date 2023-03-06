@@ -1,8 +1,13 @@
+.siteforceContentArea .forceCommunitySection {
+  overflow-x: clip;
+}
+
 .siteforceContentArea .forceCommunitySection .cb-section_column,
 .siteforceContentArea .forceCommunitySection .cb-section_column:first-child,
 .siteforceContentArea .forceCommunitySection .cb-section_column:last-child {
   padding-left: 8px;
   padding-right: 8px;
+  padding-bottom: 0;
 }
 
 .siteforceContentArea .forceCommunitySection .cb-section_row {
@@ -140,7 +145,7 @@ p {
 }
 
 .rpl-site-layout img {
-  max-width: none;
+  /*max-width: none; NOT SURE WE NEED THIS */
   vertical-align: baseline;
 }
 
@@ -255,4 +260,31 @@ p {
 .rpl-footer-nav__heading {
   margin-bottom: 0.83em;
   margin-top: 0.83em;
+}
+
+/* hide ommniscript features */
+
+.omniscript-sfl-actions,
+.omniscript-button-position,
+.omniscript-btn-next,
+.omniscript-btn-previous,
+.omniscript-btn-save-for-later {
+    display: none !important;
+}
+
+.omniscript-article.slds-card {
+    border: none;
+}
+
+.omniscript-body.slds-card__body {
+    padding: 0;
+}
+
+.omniscript-body {
+    border: none;
+}
+
+.slds-omniscript_stepform {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
 }

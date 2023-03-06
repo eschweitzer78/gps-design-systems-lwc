@@ -35,7 +35,7 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
   _map = {};
 
   /**
-   * 2023-01-30
+   * 2023-01-30 ESC
    * We moved from SOQL-based data to ConnectApi-based due to slight but annoying changes in guest user
    * SOQL data access for NavigationMenuItem, even in not sharing mode that made some rows not accessible.
    *
@@ -44,6 +44,18 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
    */
 
   menuReducer(data, key, map, adaptedMap) {
+    if (data === null || data === undefined) {
+      return null;
+    }
+
+    if (!Array.isArray(data)) {
+      console.log(
+        "SfGpsDsNavigation.menuReducer not an array",
+        JSON.stringify(data)
+      );
+      return null;
+    }
+
     return data.reduce((m, item, index) => {
       let itemKey = `${key}-${index + 1}`;
       let amik = {
@@ -88,6 +100,7 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
 
     let rv = this.menuReducer(data, "menu", map, adaptedMap);
     this._map = map;
+
     return rv;
   }
 

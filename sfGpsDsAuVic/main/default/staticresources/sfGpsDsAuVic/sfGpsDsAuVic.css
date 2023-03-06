@@ -38,6 +38,12 @@
   display: swap;
 }
 
+/* deal with "body .required" styling in community */
+
+.rpl-form .form-group.required {
+  color: #011a3c;
+}
+
 :root {
   --rpl-font-family-regular: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
   --rpl-font-family-medium: "VIC-Medium", "Arial", "Helvetica", "sans-serif";

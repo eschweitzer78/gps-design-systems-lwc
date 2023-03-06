@@ -64,7 +64,7 @@ import iconLock from "./icons/lock";
 import iconMapMarker from "./icons/map-marker";
 import iconMenuHome from "./icons/menu-home";
 import iconMicropohone from "./icons/microphone";
-import iconPause from "./icons/menu-home";
+import iconPause from "./icons/pause";
 import iconPdf from "./icons/pdf";
 import iconPhoneNumber from "./icons/phone-number";
 import iconPlay from "./icons/play";

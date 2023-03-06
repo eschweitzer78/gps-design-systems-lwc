@@ -1,0 +1,167 @@
+<template>
+  <div class="rpl-form">
+    <fieldset class="rpl-fieldset">
+      <div class={computedFormGroupClassName}>
+        <div class={errorClass}>
+          <!-- necessary for dropdown to work! -->
+          <label
+            if:false={isLabelHidden}
+            style="width: auto"
+            id="combobox-label"
+            for="comboboxId"
+            class={labelClassName}
+          >
+            <span>{label}</span>
+            <slot name="label"> </slot>
+          </label>
+
+          <div if:true={fieldLevelHelp} id="helper" class="hint">
+            {fieldLevelHelp}
+          </div>
+
+          <div class="field-wrap">
+            <div>
+              <div class="sfgpsds-combobox_container">
+                <input
+                  class="sfgpsds-listbox__option-text_entity"
+                  aria-describedby={ariaDescribedBy}
+                  aria-expanded={isOpen}
+                  aria-haspopup="listbox"
+                  aria-controls="combobox-list"
+                  role="combobox"
+                  data-value={valueMap}
+                  type={type}
+                  disabled={disabled}
+                  required={required}
+                  placeholder={placeholder}
+                  tabindex={tabIndex}
+                  readonly={isNotInput}
+                  autocomplete="off"
+                  id="comboboxId"
+                  aria-activedescendant={activeDescendant}
+                  aria-invalid={isError}
+                  value={valueCopy}
+                  onblur={showLookup}
+                  onmouseup={showLookup}
+                  onkeydown={preventKeyDown}
+                  onkeyup={handleKeyUp}
+                />
+              </div>
+
+              <!-- rpl-select__dropdown -->
+              <div
+                id="combobox-list"
+                aria-labelledby="combobox-label"
+                class="sfgpsds-dropdown sfgpsds-dropdown_fluid"
+                role="listbox"
+                onmousedown={preventLookupClose}
+                onmouseleave={preventLookupOpen}
+                onmouseup={preventLookupOpen}
+              >
+                <!-- rpl-select__trigger // removed nsw-form__predictive-list -->
+                <ul
+                  class="dropdown-container listbox sfgpsds-listbox sfgpsds-listbox_vertical"
+                  style={dropdownStyle}
+                  role="presentation"
+                >
+                  <template for:each={internalOptionsCopy} for:item="e">
+                    <!-- rpl-select__listitem -->
+                    <li
+                      if:true={isGrouped}
+                      key={e.optId}
+                      class="sfgpsds-listbox__item"
+                    >
+                      <div
+                        class="slds-media slds-media_small slds-listbox__option slds-listbox__option-plain"
+                      >
+                        <h3 role="presentation">{e.group}</h3>
+                      </div>
+                    </li>
+
+                    <li key={e.optId} class="sfgpsds-listbox__item">
+                      <div
+                        class="sfgpsds-media sfgpsds-media_small sfgpsds-listbox__option sfgpsds-listbox__option_plain"
+                        data-value={e.value}
+                        data-label={e.label}
+                        data-option-id={e.optId}
+                        role="option"
+                        id={e.optId}
+                        onmouseup={selectOption}
+                        onmouseover={handleMouseOver}
+                        onmouseout={handleMouseOut}
+                      >
+                        <span class="sfgpsds-media__body">
+                          <span
+                            class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
+                            title={e.value}
+                          >
+                            {e.label}
+                          </span>
+                        </span>
+                      </div>
+                    </li>
+                  </template>
+                </ul>
+
+                <footer
+                  if:false={hidefooter}
+                  class={footerClass}
+                  onmousedown={preventTrigger}
+                >
+                  <slot name="footer"> </slot>
+                </footer>
+              </div>
+            </div>
+          </div>
+
+          <div
+            if:true={isError}
+            class="errors help-block"
+            role="alert"
+            aria-live="assertive"
+            id="errorMessageBlock"
+          >
+            <span>{errorMessage}</span>
+          </div>
+
+          <template if:true={multiple}>
+            <div
+              if:true={inputLabels.length}
+              class="slds-listbox_selection-group"
+            >
+              <ul
+                class={pillWrapperClass}
+                aria-label="Selected Options:"
+                aria-orientation="horizontal"
+              >
+                <template for:each={inputLabels} for:item="e">
+                  <li key={e} class="slds-listbox-item" role="presentation">
+                    <span
+                      class="slds-pill"
+                      style={styleProperties.value.styles}
+                      role="option"
+                      tabindex="0"
+                      aria-selected="true"
+                    >
+                      <span class="slds-pill__label" title={e}> {e} </span>
+                      <omnistudio-icon
+                        if:true={showDelIcon}
+                        data-label={e}
+                        icon-name="utility:close"
+                        baseurl={iconUrl}
+                        size="xx-small"
+                        theme={theme}
+                        onclick={deleteThisLabel}
+                      >
+                      </omnistudio-icon>
+                    </span>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </template>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</template>
