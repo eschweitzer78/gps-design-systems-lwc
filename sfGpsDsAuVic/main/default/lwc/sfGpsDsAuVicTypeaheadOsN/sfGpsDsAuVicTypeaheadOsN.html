@@ -1,0 +1,133 @@
+<template>
+  <div class="slds-form-element slds-is-relative rpl-form">
+    <div class="rpl-fieldset">
+      <div class={computedFormGroupClassName}>
+        <div class="sfgpsds-label__group">
+          <div class="sfgpsds-label__group_label_container">
+            <div class="sfgpsds-label__group_label">
+              <label aria-label={label} for="inputId"> {label} </label>
+            </div>
+          </div>
+
+          <div class="sfgpsds-label__group_action">
+            <slot name="iconRight"> </slot>
+          </div>
+        </div>
+
+        <div if:true={fieldLevelHelp} id="helper" class="hint">
+          {fieldLevelHelp}
+        </div>
+
+        <div class="sfgpsds-predictive field-wrap">
+          <div class={showProgress}>
+            <omnistudio-progress-bar
+              if:true={remoteSource}
+              data-progress-bar
+              theme="slds"
+              size="xx-small"
+            >
+            </omnistudio-progress-bar>
+          </div>
+
+          <div class="sfgpsds-combobox_container">
+            <div
+              class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
+            >
+              <div class="" role="none">
+                <input
+                  class="sfgpsds-typeahead__input typeahead"
+                  type={type}
+                  placeholder={placeholder}
+                  disabled={disabled}
+                  required={required}
+                  tabindex={tabIndex}
+                  maxlength={maxLength}
+                  id="inputId"
+                  autocomplete="off"
+                  aria-activedescendant={activeDescendant}
+                  aria-autocomplete="list"
+                  aria-owns="listboxId"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  role="combobox"
+                  value={_value}
+                  onkeyup={searchOptions}
+                  oninput={updateValue}
+                  onfocus={focusChange}
+                  onblur={focusChange}
+                  onkeydown={handleKeydown}
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- {getDropdownClasses} to "sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 nsw-form__predictive-list" -->
+          <div
+            if:true={isLookupVisible}
+            class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 sfgps-predictive__list"
+            id="listboxId"
+            role="listbox"
+            onmousedown={handleScrollClick}
+          >
+            <ul
+              class="sfgpsds-listbox sfgpsds-listbox_vertical"
+              role="presentation"
+            >
+              <template for:each={internaldata} for:item="e" for:index="s">
+                <li
+                  key={e.itrKey}
+                  style={styleProperties.value.styles}
+                  class={e.itemClass}
+                  role="presentation"
+                >
+                  <div
+                    class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
+                    aria-selected={e.selected}
+                    id={e.itrKey}
+                    role="opion"
+                    data-index={s}
+                    onclick={selectOption}
+                  >
+                    <span class="sfgpsds-media__body">
+                      <span
+                        class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
+                        >{e.name}</span
+                      >
+                    </span>
+                  </div>
+                </li>
+              </template>
+
+              <li class={lastItemClass} style={styleProperties.value.styles}>
+                <div
+                  class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
+                  role="option"
+                  data-index="last-item"
+                  onclick={selectOption}
+                >
+                  <span class="sfgpsds-media__body">
+                    <span
+                      class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
+                    >
+                      <slot name="lastItem" onslotchange={lastItemChange}>
+                      </slot>
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            if:true={isRealError}
+            class="errors help-block"
+            aria-live="assertive"
+            id="errorMessageBlock"
+          >
+            <span>{errorMessage}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

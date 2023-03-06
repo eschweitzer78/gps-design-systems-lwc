@@ -6,7 +6,7 @@
     <div class="rpl-anchor-links__row">
       <ul class="rpl-anchor-links__items">
         <template for:each={_links} for:item="item" for:index="index">
-          <li key={_links.key} class={_links.className}>
+          <li key={_links.key} class={item.className}>
             <c-sf-gps-ds-au-vic-icon
               if:true={item.showIndent}
               class-name="rpl-anchor-links__item--indent-icon"

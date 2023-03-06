@@ -1,0 +1,58 @@
+<template>
+  <div class="rpl-form">
+    <fieldset class="rpl-fieldset">
+      <div class={computedFormGroupClassName}>
+        <label
+          if:true={labelVisible}
+          id="textarealabel"
+          data-label="true"
+          for="textareaId"
+        >
+          <span>{label}</span>
+          <slot name="label"> </slot>
+        </label>
+
+        <div if:true={fieldLevelHelp} id="helper" class="hint">
+          {fieldLevelHelp}
+        </div>
+
+        <div class="field-wrap">
+          <textarea
+            class="form-control"
+            tabindex={tabIndex}
+            minlength={minLength}
+            maxlength={maxLength}
+            readonly={readOnly}
+            accesskey={accessKey}
+            name={name}
+            disabled={disabled}
+            required={required}
+            placeholder={placeholder}
+            id="textareaId"
+            autocomplete={autocomplete}
+            oninput={updateValue}
+            onblur={validateError}
+            onfocus={triggerEvent}
+            onchange={triggerEvent}
+            onkeyup={keyCallbacks}
+            onkeydown={keyCallbacks}
+            aria-labelledby="textarealabel"
+            aria-describedby={ariaDescribedBy}
+            aria-invalid={isError}
+          >
+            {_val}
+          </textarea>
+
+          <div
+            if:true={isRealError}
+            class="errors help-block"
+            aria-live="assertive"
+            id="errorMessageBlock"
+          >
+            <span>{errorMessage}</span>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</template>

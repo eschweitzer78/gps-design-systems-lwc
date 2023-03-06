@@ -1,0 +1,6 @@
+.sfGpsMarkdown p:not(:first-child) {
+  margin-top: 0.5rem;
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+}
+
+/*# sourceMappingURL=sfGpsDsAuVicAlertBase.css.map */

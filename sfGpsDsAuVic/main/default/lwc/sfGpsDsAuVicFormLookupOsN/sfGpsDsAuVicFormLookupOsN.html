@@ -1,0 +1,144 @@
+<template>
+  <div class="slds-container_fluid rpl-form">
+    <div class="rpl-fieldset">
+      <div class={computedFormGroupClassName}>
+        <label aria-label={mergedLabel} for="inputId">
+          <span>{mergedLabel}</span>
+
+          <template if:true={_propSetMap.repeat}>
+            <span
+              slot="label"
+              style="bottom: 7px; right: -11px"
+              class={_styleClasses.repeatContainer}
+              role="group"
+            >
+              <button
+                if:true={canRepeat}
+                class={_styleClasses.repeatAdd}
+                onclick={handleAdd}
+              >
+                <omnistudio-icon
+                  icon-name="utility:add"
+                  alternative-text={_repeatAlternativeText}
+                  extraclass={_styleClasses.repeatIcons}
+                  size="xx-small"
+                >
+                </omnistudio-icon>
+              </button>
+              <button
+                if:true={canRemove}
+                class={_styleClasses.repeatRemove}
+                onclick={handleRemove}
+              >
+                <omnistudio-icon
+                  icon-name="utility:close"
+                  alternative-text={_removeAlternativeText}
+                  extraclass={_styleClasses.repeatIcons}
+                  size="xx-small"
+                >
+                </omnistudio-icon>
+              </button>
+            </span>
+          </template>
+        </label>
+
+        <div if:true={mergedHelpText} id="helper" class="hint">
+          {mergedHelpText}
+        </div>
+
+        <div class="sfgpsds-predictive field-wrap">
+          <div class="sfgpsds-combobox_container">
+            <div
+              class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
+              aria-expanded={show}
+              aria-haspopup="listbox"
+              role="combobox"
+            >
+              <input
+                class="sfgpsds-lookup__input vlocity-input sfgpsds-input lookup"
+                type="text"
+                value={lookupDisplay}
+                disabled={_propSetMap.readOnly}
+                required={_propSetMap.required}
+                readonly
+                onblur={hideOptions}
+                onkeydown={handleKeyDown}
+                onkeyup={handleKeyUp}
+                onmouseup={showLookup}
+                aria-controls="lookup"
+                id="lookupId"
+                placeholder={_propSetMap.placeholder}
+                data-omni-input
+              />
+              <div
+                class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpscx-predictive__list"
+                role="listbox"
+                id="lookup"
+                onmousedown={handleKeyDown}
+                onmouseleave={handleKeyDown}
+                onmouseup={handleKeyDown}
+              >
+                <ul
+                  class="sfgpsds-listbox sfgpds-listbox_vertical"
+                  role="presentation"
+                >
+                  <template
+                    for:each={options}
+                    for:item="optionItem"
+                    for:index="optionIndex"
+                  >
+                    <li
+                      key={optionItem.key}
+                      role="presentation"
+                      onmouseup={selectOption}
+                      onmouseover={mouseOverFocus}
+                      class="sfgps-listbox__item"
+                    >
+                      <div
+                        class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
+                        id={optionItem.id}
+                        role="option"
+                        data-option-index={optionIndex}
+                        aria-selected={optionItem.selected}
+                      >
+                        <span
+                          class="sfgpsds-media__body"
+                          data-option-index={optionIndex}
+                        >
+                          <span
+                            class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
+                            data-option-index={optionIndex}
+                          >
+                            {optionItem.value}
+                          </span>
+                        </span>
+                      </div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          if:true={hasError}
+          class="errors help-block"
+          aria-live="assertive"
+          id="errorMessageBlock"
+        >
+          <span>{errorMessage}</span>
+        </div>
+
+        <template if:true={isPageLoading}>
+          <omnistudio-spinner
+            variant="brand"
+            alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+            size="small"
+          >
+          </omnistudio-spinner>
+        </template>
+      </div>
+    </div>
+  </div>
+</template>

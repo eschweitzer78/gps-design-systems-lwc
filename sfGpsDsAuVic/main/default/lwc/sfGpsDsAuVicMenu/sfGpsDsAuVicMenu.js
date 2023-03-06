@@ -68,7 +68,7 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
     }));
   }
 
-  get decoratedMenu() {
+  get _decoratedMenu() {
     if (this._menu == null) {
       return [];
     }

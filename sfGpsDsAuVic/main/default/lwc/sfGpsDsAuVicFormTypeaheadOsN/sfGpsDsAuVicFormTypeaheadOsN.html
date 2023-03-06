@@ -1,0 +1,85 @@
+<template>
+  <div class="omni-typeahead-container">
+    <c-sf-gps-ds-au-vic-typeahead-os-n
+      if:false={_propSetMap.enableLookup}
+      type="text"
+      field-level-help={mergedHelpText}
+      label={mergedLabel}
+      onblur={handleBlur}
+      onlastitemclick={enterEditMode}
+      onselect={handleSelect}
+      onclear={handleClear}
+      icon-name-right="utility:empty"
+      options={options}
+      placeholder={_placeholder}
+      required={_propSetMap.required}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      message-when-value-missing={_messageWhenValueMissing}
+      message-when-too-short={_messageWhenTooShort}
+      message-when-too-long={_messageWhenTooLong}
+      theme="sfgpsds"
+      value={elementValue}
+      remote-source={_useRemoteSource}
+      disable-filter={_disableFilter}
+      data-omni-input
+    >
+      <button
+        if:false={_propSetMap.hideEditButton}
+        class="slds-button slds-button_icon nds-button nds-button_icon"
+        slot="iconRight"
+        aria-expanded={_isEditMode}
+        onclick={toggleEditMode}
+      >
+        <omnistudio-icon
+          icon-name="utility:edit"
+          extraclass="slds-button__icon nds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={_editLabel}
+        ></omnistudio-icon>
+      </button>
+
+      <a
+        slot="lastItem"
+        if:true={_propSetMap.newItemLabel}
+        label={_propSetMap.newItemLabel}
+        >{_propSetMap.newItemLabel}</a
+      >
+    </c-sf-gps-ds-au-vic-typeahead-os-n>
+
+    <c-sf-gps-ds-au-vic-typeahead-os-n
+      if:true={_propSetMap.enableLookup}
+      type="text"
+      field-level-help={_handleHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
+      label={mergedLabel}
+      onblur={handleBlur}
+      onselect={handleSelect}
+      icon-name-right="utility:down"
+      options={options}
+      placeholder={_placeholder}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      message-when-value-missing={_messageWhenValueMissing}
+      message-when-too-short={_messageWhenTooShort}
+      message-when-too-long={_messageWhenTooLong}
+      theme="sfgpsds"
+      value={elementValue}
+      remote-source
+      disable-filter={_disableFilter}
+      data-omni-input
+    >
+    </c-sf-gps-ds-au-vic-typeahead-os-n>
+
+    <div if:true={errorMessage} class="slds-has-error nds-has-error">
+      <span
+        class="slds-form-element__help nds-form-element__help nds-form-element__help_text-transform__none"
+        >{errorMessage}</span
+      >
+    </div>
+  </div>
+</template>

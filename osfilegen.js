@@ -59,7 +59,7 @@ async function main() {
           fs.mkdir(dot + "/" + targetDirectory, { recursive: true })
             .then(() => {
               for (const [file, replacements] of Object.entries(instructions)) {
-                let targetFile = replacements.target;
+                let targetFile = replacements.target || file; // by default keep filename
                 delete replacements.target;
 
                 console.log(
@@ -71,13 +71,34 @@ async function main() {
 
                 replaceFile(dot + "/" + directory + "/" + nFile, replacements)
                   .then((content) => {
-                    fs.writeFile(
-                      dot + "/" + targetDirectory + "/" + nTargetFile,
-                      content,
-                      (err) => {
-                        if (err) throw err;
-                      }
-                    );
+                    let lastIndex = targetFile.includes("/")
+                      ? nTargetFile.lastIndexOf("/")
+                      : -1;
+                    if (lastIndex >= 0) {
+                      let ndir =
+                        dot +
+                        "/" +
+                        targetDirectory +
+                        "/" +
+                        nTargetFile.slice(0, lastIndex);
+                      fs.mkdir(ndir, { recursive: true }).then(() => {
+                        fs.writeFile(
+                          dot + "/" + targetDirectory + "/" + nTargetFile,
+                          content,
+                          (err) => {
+                            if (err) throw err;
+                          }
+                        );
+                      });
+                    } else {
+                      fs.writeFile(
+                        dot + "/" + targetDirectory + "/" + nTargetFile,
+                        content,
+                        (err) => {
+                          if (err) throw err;
+                        }
+                      );
+                    }
                   })
                   .catch((error) => {
                     console.log(error);

@@ -1,7 +1,7 @@
 import { LightningElement, api, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVicAlert extends LightningElement {
+export default class SfGpsDsAuVicAlertBase extends LightningElement {
   static renderMode = "light";
 
   @api backgroundColor = "dark_neutral";
@@ -35,5 +35,9 @@ export default class SfGpsDsAuVicAlert extends LightningElement {
       [`rpl-alert-base__content--color-${this.textColor?.replace(/\s/g, "")}`]:
         this.textColor
     });
+  }
+
+  get showCloseIcon() {
+    return this.closeIconColor !== "hide";
   }
 }
