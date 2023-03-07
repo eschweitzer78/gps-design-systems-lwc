@@ -64,14 +64,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          json=$(sfdx package:version:create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx force:package:version:create failed"
+              echo "sfdx package:version:create failed"
           fi
           exit $status
 
@@ -80,14 +80,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          json=$(sfdx package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx force:package:version:create failed"
+              echo "sfdx package:version:create failed"
           fi
           exit $status
 
@@ -96,14 +96,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          json=$(sfdx package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx force:package:version:create failed"
+              echo "sfdx package:version:create failed"
           fi
           exit $status
 
@@ -112,14 +112,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          json=$(sfdx package:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx force:package:version:create failed"
+              echo "sfdx package:version:create failed"
           fi
           exit $status
 
@@ -128,14 +128,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
         run: |
           set +e
-          json=$(sfdx force:package:version:create -d sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          json=$(sfdx package:version:create -d sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx force:package:version:create failed"
+              echo "sfdx package:version:create failed"
           fi
           exit $status
 
@@ -248,6 +248,7 @@ jobs:
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
       - name: "Run prettier"
         run: |
+          npm ci
           npm run prettier
 
       # Create PR for new package version(s)
