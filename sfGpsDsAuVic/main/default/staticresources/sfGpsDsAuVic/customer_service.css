@@ -281,7 +281,7 @@ p {
 }
 
 .omniscript-body {
-    border: none;
+    border: none !important;
 }
 
 .slds-omniscript_stepform {

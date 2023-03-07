@@ -51,3 +51,101 @@ header .rpl-site-header__logo-container--vic-logo-primary img {
 footer .rpl-site-footer__logo img {
   width: 3rem;
 }
+
+/* HERO BANNER */
+
+@media screen and (min-width: 0px) { 
+  .comm-page-custom-hero-bannner .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-bannner .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-banner .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-banner .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection {
+    padding-left: 0;
+    padding-right: 0;
+  }
+    
+  .comm-page-custom-hero-bannner .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection .cb-section_column .ui-widget,
+  .comm-page-custom-hero-bannner .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection .cb-section_column .ui-widget,
+  .comm-page-custom-hero-banner .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection .cb-section_column .ui-widget,
+  .comm-page-custom-hero-banner .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection .cb-section_column .ui-widget {
+      margin-bottom: 0;
+  }
+    
+  .comm-page-custom-hero-bannner .siteforceContentArea .siteforceDesignTimeSection:nth-child(6) .forceCommunitySection,
+  .comm-page-custom-hero-bannner .siteforceContentArea div > .ui-widget:nth-child(6) .forceCommunitySection,
+  .comm-page-custom-hero-banner .siteforceContentArea .siteforceDesignTimeSection:nth-child(6) .forceCommunitySection,
+  .comm-page-custom-hero-banner .siteforceContentArea div > .ui-widget:nth-child(6) .forceCommunitySection {
+      padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* HERO BANNER CTA */
+
+@media screen and (min-width: 0px) { 
+  .comm-page-custom-hero-banner-cta .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-banner-cta .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection {
+    padding-left: 0;
+    padding-right: 0;
+      
+    background-image: url(https://content.vic.gov.au/sites/default/files/2022-01/JTM-banner-top-left-corner.png);
+    background-repeat: no-repeat;
+    background-position: -0.5rem -9rem;
+    background-size: 18rem;
+  }
+       
+  .comm-page-custom-hero-banner-cta .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection .cb-section_column .ui-widget,
+  .comm-page-custom-hero-banner-cta .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection .cb-section_column .ui-widget {
+    margin-bottom: 0;
+  }
+    
+  .comm-page-custom-hero-banner-cta .siteforceContentArea .siteforceDesignTimeSection:nth-child(6) .forceCommunitySection,
+  .comm-page-custom-hero-banner-cta .siteforceContentArea div > .ui-widget:nth-child(6) .forceCommunitySection {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .comm-page-custom-hero-banner-cta .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-banner-cta .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection {
+    background-position: -1rem -8.5rem;
+    background-size: 20rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .comm-page-custom-hero-banner-cta .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-banner-cta .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection {
+    background-position: -1rem -6.5rem;
+  }
+}
+@media screen and (min-width: 992px) {
+  .comm-page-custom-hero-banner-cta .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-banner-cta .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection {
+    background-position: -1.5rem -4.5rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .comm-page-custom-hero-banner-cta .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-banner-cta .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection {
+    background-position: left -4.5rem;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .comm-page-custom-hero-banner-cta .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-hero-banner-cta .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection {
+    background-position: calc(50.001% - 43rem) -13rem;
+    background-size: 40rem;
+  }
+}
+ 
+/* SITE HEADER */
+
+@media screen and (min-width: 0px) { 
+  .comm-page-custom-site-header .siteforceContentArea .siteforceDesignTimeSection:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-site-header .siteforceContentArea div > .ui-widget:nth-child(3) .forceCommunitySection,
+  .comm-page-custom-site-header .siteforceContentArea .siteforceDesignTimeSection:nth-child(5) .forceCommunitySection,
+  .comm-page-custom-site-header .siteforceContentArea div > .ui-widget:nth-child(5) .forceCommunitySection {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
