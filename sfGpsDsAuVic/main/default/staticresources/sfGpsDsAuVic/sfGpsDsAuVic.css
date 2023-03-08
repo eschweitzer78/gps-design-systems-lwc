@@ -42,6 +42,7 @@
 
 .rpl-form .form-group.required {
   color: #011a3c;
+  font-weight: 400;
 }
 
 :root {
