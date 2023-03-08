@@ -67,6 +67,7 @@ input[readonly][role="combobox"] {
   height: auto;
 }
 
+/* TODO never used */
 .sfgpsds-dropdown-container {
   max-height: 300px;
   overflow-y: scroll;

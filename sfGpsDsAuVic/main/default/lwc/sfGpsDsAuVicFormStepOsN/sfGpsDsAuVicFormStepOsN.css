@@ -13,12 +13,17 @@
 .form-actions {
   display: flex;
   flex-direction: column-reverse;
+  padding-right: var(--lwc-spacingSmall, 0.75rem);
 }
 
 @media (min-width: 992px) {
   .form-actions input {
     margin-top: 0;
-    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  .form-actions input:first-child {
+    margin-left: none;
   }
 
   .form-actions {

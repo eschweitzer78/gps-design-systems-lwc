@@ -85,10 +85,12 @@
   }
 }
 
+/*
 .siteforceContentArea .siteforceDesignTimeSection:first-child .forceCommunitySection .cb-section_column,
 .siteforceContentArea div > .ui-widget:first-child .forceCommunitySection .cb-section_column {
   padding-top: 0;
 }
+*/
 
 /* mimic rpl-content, adds padding after hero and prior to footer */
 
@@ -131,7 +133,7 @@
 
 
 .cb-section_row {
- min-height: 0 !important;
+  min-height: 0 !important;
 }
 
 a {
@@ -145,7 +147,7 @@ p {
 }
 
 .rpl-site-layout img {
-  /*max-width: none; NOT SURE WE NEED THIS */
+  max-width: none;
   vertical-align: baseline;
 }
 
