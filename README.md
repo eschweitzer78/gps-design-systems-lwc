@@ -35,6 +35,8 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 Kindly note that the packages might be the same as for non-production orgs (see above) if the latest successful build has alreay been promoted for production.
 
+Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECURITY.md) implications of installing those assets in production. The applicable [license](./LICENSE.md) has also wide-ranging disclaimer provisions.
+
 1. Log in to your org
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNFtAAO">this link</a> to install the sfGpsDs unlocked package in your production org (v1.4.0.1 on 04/02/2023).
@@ -42,3 +44,12 @@ Kindly note that the packages might be the same as for non-production orgs (see 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNFyAAO">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v1.4.0.1 on 04/02/2023).
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNG3AAO">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v1.4.0.1 on 04/02/2023).
+
+## Support, security, contributions and code of conduct
+
+Do read our other guidelines:
+
+- [support](./SUPPORT.md)
+- [security](./SECURITY.md)
+- [contribution](./CONTRIBUTION.md)
+- [code of conduct](./CODE_OF_CONDUCT.md)

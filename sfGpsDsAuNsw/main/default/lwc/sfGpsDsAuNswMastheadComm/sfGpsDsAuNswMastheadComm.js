@@ -39,11 +39,8 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
   // ---- rendering
 
   renderedCallback() {
-    let element;
-    if (
-      (element = this.template.querySelector(".sf-gps-ds-markdown")) &&
-      this._mastheadLabelHtml
-    ) {
+    let element = this.template.querySelector(".sfGpsMarkdown");
+    if (element && this._mastheadLabelHtml) {
       replaceInnerHtml(element, this._mastheadLabelHtml);
     }
   }
