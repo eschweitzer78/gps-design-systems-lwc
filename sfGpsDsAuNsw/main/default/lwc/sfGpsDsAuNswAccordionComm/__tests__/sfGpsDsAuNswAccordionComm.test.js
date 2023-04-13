@@ -42,7 +42,7 @@ describe("c-sf-gps-ds-au-nsw-accordion-comm", () => {
     const childAccordion = element.shadowRoot.querySelector(childTag);
     expect(childAccordion).not.toBeNull();
 
-    let button = childAccordion.shadowRoot.querySelector("button");
+    let button = childAccordion.querySelector("button");
     button.click();
 
     return Promise.resolve().then(() => {
@@ -67,7 +67,7 @@ describe("c-sf-gps-ds-au-nsw-accordion-comm", () => {
     const childAccordion = element.shadowRoot.querySelector(childTag);
     expect(childAccordion).not.toBeNull();
 
-    let button = childAccordion.shadowRoot.querySelector("button");
+    let button = childAccordion.querySelector("button");
     button.click();
     button.click();
 

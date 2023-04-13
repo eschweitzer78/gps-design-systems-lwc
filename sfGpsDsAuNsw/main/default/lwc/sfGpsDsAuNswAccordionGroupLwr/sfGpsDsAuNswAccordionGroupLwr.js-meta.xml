@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS LWR Accordion Group</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="item1title"
+        type="String"
+        label="Title item 1"
+        description="Text used as the label for item 1."
+        default="HomeBuilder program"
+        required="true"
+      />
+      <property
+        name="item2title"
+        type="String"
+        label="Title item 2"
+        description="Text used as the label for item 2, leave blank to remove accordion."
+        default="First Home Buyer Assistance Program (FHBAS)"
+      />
+      <property
+        name="item3title"
+        type="String"
+        label="Title item 3"
+        description="Text used as the label for item 3, leave blank to remove accordion."
+      />
+      <property
+        name="item4title"
+        type="String"
+        label="Title item 4"
+        description="Text used as the label for item 4, leave blank to remove accordion."
+      />
+      <property
+        name="item5title"
+        type="String"
+        label="Title item 5"
+        description="Text used as the label for item 5, leave blank to remove accordion."
+      />
+      <property
+        name="item6title"
+        type="String"
+        label="Title item 6"
+        description="Text used as the label for item 6, leave blank to remove accordion."
+      />
+      <property
+        name="item7title"
+        type="String"
+        label="Title item 7"
+        description="Text used as the label for item 7, leave blank to remove accordion."
+      />
+      <property
+        name="item8title"
+        type="String"
+        label="Title item 8"
+        description="Text used as the label for item 8, leave blank to remove accordion."
+      />
+      <property
+        name="item9title"
+        type="String"
+        label="Title item 9"
+        description="Text used as the label for item 9, leave blank to remove accordion."
+      />
+      <property
+        name="item10title"
+        type="String"
+        label="Title item 10"
+        description="Text used as the label for item 10, leave blank to remove accordion."
+      />
+      <property
+        name="item11title"
+        type="String"
+        label="Title item 11"
+        description="Text used as the label for item 9, leave blank to remove accordion."
+      />
+      <property
+        name="item12title"
+        type="String"
+        label="Title item 12"
+        description="Text used as the label for item 10, leave blank to remove accordion."
+      />
+      <property
+        name="showButtons"
+        type="Boolean"
+        label="Show buttons"
+        description="Show expand and collapse all buttons."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

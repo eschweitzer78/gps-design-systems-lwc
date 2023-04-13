@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Accordion Group</masterLabel>
   <targets>
@@ -14,7 +14,7 @@
         type="String"
         label="Content"
         description="Content in Markdown format, which will be split by H1 header."
-        default="# Accordion\nAn accordion is a series of expandable vertical panels, designed to save page on a page by hiding content and revealing it as required.\n# Second Accordion\nUsing *styling*."
+        default="# HomeBuilder program\nIf you are building a new home, you could also be able to apply to the Australian Government grant of $25,000. To be eligible you must:\n* sign the contract between 4 June 2020 and 31 December 2020\n* commence within 3  months of the contract date.\n\nHomeBuilder complements the NSW Government's existing First Home Owner Grant and stamp duty concessions.\n# First Home Buyer Assistance Scheme (FHBAS)\nThe NSW Government recently announced increased thresholds for purchases of new homes and vacant land to build a new home from 1 August 2020. The threshold for existing home purchases remains unchanged."
       />
       <property
         name="showButtons"

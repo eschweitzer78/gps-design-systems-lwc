@@ -34,6 +34,18 @@ export default class SfGpsDsLwc extends LightningElement {
   @api getErrors() {
     return this._sfGpsErrors;
   }
+
+  /* lifecycle */
+
+  _isConnected = false;
+
+  connectedCallback() {
+    this._isConnected = true;
+  }
+
+  disconnectedCallback() {
+    this._isConnected = false;
+  }
 }
 
 SfGpsDsLwc.PACKAGE_NAME = "c";

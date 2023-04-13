@@ -1,0 +1,155 @@
+<template lwc:render-mode="shadow">
+  <div if:false={_sfGpsErrors} class={computedClassName}>
+    <div if:true={showButtons} class="nsw-accordion__toggle">
+      <button
+        disabled={isFullyExpanded}
+        type="button"
+        onclick={handleExpandAll}
+      >
+        Expand all
+      </button>
+      <button
+        disabled={isFullyCollapsed}
+        type="button"
+        onclick={handleCollapseAll}
+      >
+        Collapse all
+      </button>
+    </div>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item1title}
+      index="0"
+      header={item1title}
+      closed={item1closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region1"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item2title}
+      index="1"
+      header={item2title}
+      closed={item2closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region2"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item3title}
+      index="2"
+      header={item3title}
+      closed={item3closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region3"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item4title}
+      index="3"
+      header={item4title}
+      closed={item4closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region4"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item5title}
+      index="4"
+      header={item5title}
+      closed={item5closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region5"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item6title}
+      index="5"
+      header={item6title}
+      closed={item6closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region6"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item7title}
+      index="6"
+      header={item7title}
+      closed={item7closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region7"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item8title}
+      index="7"
+      header={item8title}
+      closed={item8closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region8"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item9title}
+      index="8"
+      header={item9title}
+      closed={item9closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region9"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item10title}
+      index="9"
+      header={item10title}
+      closed={item10closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region10"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item11title}
+      index="10"
+      header={item11title}
+      closed={item11closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region11"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+
+    <c-sf-gps-ds-au-nsw-accordion
+      if:true={item12title}
+      index="11"
+      header={item12title}
+      closed={item12closed}
+      onexpand={handleExpand}
+      oncollapse={handleCollapse}
+    >
+      <slot name="region12"></slot>
+    </c-sf-gps-ds-au-nsw-accordion>
+  </div>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

@@ -20,13 +20,13 @@ describe("c-sf-gps-ds-au-nsw-accordion", () => {
     element.header = "Accordion";
     document.body.appendChild(element);
 
-    let button = element.shadowRoot.querySelector("button");
+    let button = element.querySelector("button");
 
     expect(button).not.toBeNull();
     expect(button.className).not.toContain("active");
     expect(button.ariaExpanded).toBe("false");
 
-    let content = element.shadowRoot.querySelector(contentClassSelector);
+    let content = element.querySelector(contentClassSelector);
 
     expect(content).not.toBeNull();
     expect(content.hidden).toBeTruthy();
@@ -40,7 +40,7 @@ describe("c-sf-gps-ds-au-nsw-accordion", () => {
     element.header = "Accordion";
     document.body.appendChild(element);
 
-    let button = element.shadowRoot.querySelector("button");
+    let button = element.querySelector("button");
     expect(button).not.toBeNull();
     button.click();
 
@@ -48,7 +48,7 @@ describe("c-sf-gps-ds-au-nsw-accordion", () => {
       expect(button.className).toContain("active");
       expect(button.ariaExpanded).toBe("true");
 
-      let content = element.shadowRoot.querySelector(contentClassSelector);
+      let content = element.querySelector(contentClassSelector);
 
       expect(content).not.toBe(null);
       expect(content.hidden).toBeFalsy();
