@@ -8,29 +8,19 @@
 import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
-const options = {
-  default: "",
-  dark: "nsw-hero-banner--dark",
-  light: "nsw-hero-banner--light",
-  white: "nsw-hero-banner--white"
-};
-
-const buttonStyles = {
-  default: "",
-  dark: "nsw-button nsw-button--white",
-  light: "nsw-button nsw-button--dark",
-  white: "nsw-button nsw-button--dark"
-};
-
 export default class SfGpsDsAuNswHeroBanner extends LightningElement {
+  static renderMode = "light";
+
   @api title;
   @api subtitle;
   //@api intro; // replaced by default slot
   @api cta;
   @api ctaPreventDefault = false;
   @api cstyle = "dark";
+  @api bstyle = "default";
   @api wide;
   @api featured;
+  @api lines;
   @api image;
   @api links;
   @api linksPreventDefault = false;
@@ -50,13 +40,21 @@ export default class SfGpsDsAuNswHeroBanner extends LightningElement {
       "nsw-hero-banner": true,
       "nsw-hero-banner--wide": this.wide,
       "nsw-hero-banner--featured": this.featured,
-      [options[this.cstyle] || options.default]: true,
+      "nsw-hero-banner--dark": this.cstyle === "dark",
+      "nsw-hero-banner--light": this.cstyle === "light",
+      "nsw-hero-banner--white": this.cstyle === "white",
+      "nsw-hero-banner--off-white": this.cstyle === "off-white",
+      "nsw-hero-banner--lines": this.lines,
       [this.className]: this.className
     });
   }
 
   get computedButtonClassName() {
-    return buttonStyles[this.cstyle] || buttonStyles.default;
+    return computeClass({
+      "nsw-button": true,
+      "nsw-button--white": this.cstyle === "dark",
+      "nsw-button--dark": ["light", "white", "off-white"].includes(this.cstyle)
+    });
   }
 
   handleCtaClick(event) {

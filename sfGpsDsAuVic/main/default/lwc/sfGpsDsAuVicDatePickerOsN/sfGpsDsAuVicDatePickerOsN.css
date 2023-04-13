@@ -52,6 +52,6 @@
 }
 
 .slds-datepicker.slds-dropdown {
-  border: 1px solid #0052c2;
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   margin-top: -1px;
 }

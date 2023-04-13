@@ -120,65 +120,51 @@
 .rpl-alert-base__content--color-primary a {
   color: #0052c2;
 }
-
 .rpl-alert-base__content--color-dark_primary a {
   color: #023b89;
 }
-
 .rpl-alert-base__content--color-secondary a {
   color: #0095ec;
 }
-
 .rpl-alert-base__content--color-extra_dark_neutral a {
   color: #011a3c;
 }
-
 .rpl-alert-base__content--color-dark_neutral a {
   color: #465870;
 }
-
 .rpl-alert-base__content--color-dark_neutral_1 a {
   color: #546a7c;
 }
-
 .rpl-alert-base__content--color-mid_neutral_1 a {
   color: #d7dbe0;
 }
-
 .rpl-alert-base__content--color-mid_neutral_2 a {
   color: #e8ebee;
 }
-
 .rpl-alert-base__content--color-light_neutral a {
   color: #f6f6f9;
 }
-
 .rpl-alert-base__content--color-danger a {
   color: #af272f;
 }
-
 .rpl-alert-base__content--color-warning a {
   color: #ca4c21;
 }
-
 .rpl-alert-base__content--color-success a {
   color: #027a83;
 }
-
 .rpl-alert-base__content--color-white a {
   color: #fff;
 }
-
 .rpl-alert-base__content--color-black a {
   color: #000;
 }
-
 .rpl-alert-base__content a.rpl-text-link:hover,
 .rpl-alert-base__content a.rpl-text-link:focus {
   color: inherit;
 }
 .rpl-alert-base__close {
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   border: 0;
   margin-left: auto;
   cursor: pointer;
@@ -197,5 +183,3 @@
   border: 0;
   pointer-events: none;
 }
-
-/*# sourceMappingURL=sfGpsDsAuVicAlert.css.map */

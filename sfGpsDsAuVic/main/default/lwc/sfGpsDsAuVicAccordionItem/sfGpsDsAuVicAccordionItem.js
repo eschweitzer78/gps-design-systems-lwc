@@ -12,7 +12,7 @@ export default class SfGpsDsAuVicAccordionItem extends LightningElement {
 
   @api index;
   @api title;
-  @api type;
+  @api type = "default"; // one of default, numbered
   @api content;
 
   /* api: closed */

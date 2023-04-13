@@ -132,6 +132,8 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
   }
 
   connectedCallback() {
+    super.connectedCallback();
+
     if (!this._ipName) {
       this.addError("IP-NV", "Integration procedure name is required.");
     }

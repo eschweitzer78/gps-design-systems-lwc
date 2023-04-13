@@ -5,5 +5,5 @@
 }
 
 .rpl-icon--color_primary {
-  fill: #0052c2;
+  fill: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }

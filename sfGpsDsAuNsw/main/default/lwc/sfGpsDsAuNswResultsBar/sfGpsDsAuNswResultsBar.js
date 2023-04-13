@@ -2,6 +2,8 @@ import { LightningElement, api, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswResultsBar extends LightningElement {
+  static renderMode = "light";
+
   @api name;
   @api from;
   @api to;
@@ -84,11 +86,15 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
       .replace("{total}", this.total.toString());
   }
 
+  /* events */
+
   handleSelectChange(event) {
     event.preventDefault();
+    event.stopPropagation();
 
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.value = event.target.value;
+
     this.dispatchEvent(
       new CustomEvent("change", { detail: event.target.value })
     );

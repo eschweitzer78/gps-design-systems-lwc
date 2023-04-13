@@ -100,7 +100,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.0
         id: pmd-sf-gps-ds
         with:
           sourcePath: "sfGpsDs"
@@ -113,7 +113,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNsw"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.0
         id: pmd-sf-gps-ds-au-nsw
         with:
           sourcePath: "sfGpsDsAuNsw"
@@ -126,7 +126,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNswS"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.0
         id: pmd-sf-gps-ds-au-nsw-s
         with:
           sourcePath: "sfGpsDsAuNswS"
@@ -139,7 +139,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuVic"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.0
         id: pmd-sf-gps-ds-au-vic
         with:
           sourcePath: "sfGpsDsAuVic"
@@ -152,7 +152,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsUkGov"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.0
         id: pmd-sf-gps-ds-uk-gov
         with:
           sourcePath: "sfGpsDsUkGov"
@@ -203,6 +203,10 @@ jobs:
       #    npm run postinstall
       #    cd ../..
       #    node ./configure-omnistudio-metadata scratch-org
+
+      # Generate css from scss
+      - name: "Automatically generate css"
+        run: node ./cssgen.js
 
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"

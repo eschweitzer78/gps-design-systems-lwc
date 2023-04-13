@@ -7,7 +7,7 @@
   text-decoration: none;
   width: 100%;
   padding: 1rem 3rem;
-  border: 1px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 0.25rem;
   cursor: pointer;
 }
@@ -48,7 +48,7 @@
   text-decoration: none;
 }
 .rpl-button:active {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
   color: #fff;
 }
@@ -63,7 +63,7 @@
 }
 @media print {
   .rpl-button--primary {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 .rpl-button--primary:hover,
@@ -73,7 +73,7 @@
 }
 .rpl-button--primary:active {
   color: #fff;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
 }
 @media print {
@@ -92,7 +92,7 @@
 }
 @media print {
   .rpl-button--secondary {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 .rpl-button--secondary:hover,
@@ -102,7 +102,7 @@
 }
 .rpl-button--secondary:active {
   color: #fff;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
 }
 @media print {
@@ -114,7 +114,7 @@
   color: #465870;
   cursor: default;
   pointer-events: none;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   background-image: none;
   border: 1px solid #465870;
 }
@@ -129,5 +129,3 @@
 .rpl-button--secondary.rpl-link:focus {
   text-decoration: none;
 }
-
-/*# sourceMappingURL=Button.css.map */

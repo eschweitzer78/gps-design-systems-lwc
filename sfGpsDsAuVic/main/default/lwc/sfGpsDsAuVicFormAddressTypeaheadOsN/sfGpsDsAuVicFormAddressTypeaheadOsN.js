@@ -150,6 +150,8 @@ export default class sfGpsDsAuVicFormAddressTypeaheadOsN extends OmniscriptTypea
           this.getOptionsDataJson();
         } else {
           Promise.resolve().then(() => {
+            // for some reason this is otherwise not (never?) refreshed
+            this.jsonDataStr = JSON.stringify(this._jsonData);
             this.getOptions(this._propSetMap.taAction);
           });
         }
@@ -348,6 +350,7 @@ export default class sfGpsDsAuVicFormAddressTypeaheadOsN extends OmniscriptTypea
   get options() {
     return this._ath_options;
   }
+
   set options(v) {
     this._ath_options = v;
 

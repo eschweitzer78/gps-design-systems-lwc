@@ -1,5 +1,5 @@
 @import "c/sfGpsDsAuNswCoreOs";
-@import "c/sfGpsDsAuNswFormCssOs";
+@import "c/sfGpsDsAuNswFormOs";
 
 .nsw-form__group:first-child {
   margin-top: 1rem;

@@ -4,7 +4,7 @@ import SfGpsDsAuVicCard from "c/sfGpsDsAuVicCard";
 
 import tmpl from "./sfGpsDsAuVicCardNav.html";
 
-export default class SfGpsDsAuVicCardContent extends SfGpsDsAuVicCard {
+export default class SfGpsDsAuVicCardNav extends SfGpsDsAuVicCard {
   static renderMode = "light";
 
   @api link; // { text url }

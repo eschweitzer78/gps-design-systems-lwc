@@ -9,6 +9,8 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   @api index; // only used if part of a group
   @api header;
@@ -34,7 +36,7 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
     if (!this._rendered) {
       let element;
 
-      if ((element = this.template.querySelector(".sf-gps-body"))) {
+      if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
         replaceInnerHtml(element, this.content);
       } else {
         this.addError(
@@ -55,5 +57,12 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   handleCollapse() {
     this._closed = true;
     this.dispatchEvent(new CustomEvent("collapse"));
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }

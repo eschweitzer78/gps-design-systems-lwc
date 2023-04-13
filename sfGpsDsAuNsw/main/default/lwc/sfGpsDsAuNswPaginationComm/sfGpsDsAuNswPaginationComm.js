@@ -1,6 +1,7 @@
-import { LightningElement, api, track } from "lwc";
+import { api, track } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuNswPaginationComm extends LightningElement {
+export default class SfGpsDsAuNswPaginationComm extends SfGpsDsLwc {
   /* activePage: Integer */
 
   @track _currentActivePage;
@@ -37,7 +38,14 @@ export default class SfGpsDsAuNswPaginationComm extends LightningElement {
 
   @api className;
 
-  /*************/
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
+  /* events */
 
   handlePageChange(event) {
     if (event.detail > 0 && event.detail <= this.lastPage) {

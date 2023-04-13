@@ -923,14 +923,18 @@
 }
 
 .servicensw-embed
-  .button--primary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+  .button--primary:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #e80229;
   border-color: transparent;
   color: #fff;
 }
 
 .servicensw-embed
-  .button--primary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+  .button--primary:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #a71930;
   border-color: transparent;
   color: #fff;
@@ -945,42 +949,54 @@
 }
 
 .servicensw-embed
-  .button--secondary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+  .button--secondary:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #fff;
   border-color: #deeaf0;
   color: #2e5299;
 }
 
 .servicensw-embed
-  .button--secondary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+  .button--secondary:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #e0e4e6;
   border-color: #929fa4;
   color: #002664;
 }
 
 .servicensw-embed
-  .button--tertiary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+  .button--tertiary:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #5272b1;
   border-color: transparent;
   color: #fff;
 }
 
 .servicensw-embed
-  .button--tertiary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+  .button--tertiary:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #002664;
   border-color: transparent;
   color: #fff;
 }
 
 .servicensw-embed
-  .button--white:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+  .button--white:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #fff;
   border-color: #deeaf0;
   color: #242934;
 }
 
 .servicensw-embed
-  .button--white:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+  .button--white:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #fff;
   border-color: #929fa4;
   color: #242934;

@@ -35,8 +35,6 @@ export default class SfGpsDsAuVicShareThisComm extends SfGpsDsLwc {
         if (!Array.isArray(value)) {
           value = [value];
         }
-
-        this._networks = value;
       } catch (e) {
         value = [];
         this.addError(
@@ -44,7 +42,11 @@ export default class SfGpsDsAuVicShareThisComm extends SfGpsDsLwc {
           "The networks attribute must be in JSON array format { name, label, iconName, iconSize }."
         );
       }
+    } else {
+      value = [];
     }
+
+    this._networks = value;
   }
 
   @api emailSubject;

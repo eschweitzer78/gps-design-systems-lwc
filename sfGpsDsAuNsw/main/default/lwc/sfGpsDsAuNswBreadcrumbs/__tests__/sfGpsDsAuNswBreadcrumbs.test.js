@@ -19,11 +19,11 @@ describe("c-sf-gps-ds-au-nsw-breadcrumb", () => {
 
     document.body.appendChild(element);
 
-    let widget = element.shadowRoot.querySelector(childSelector);
+    let widget = element.querySelector(childSelector);
     expect(widget).not.toBeNull();
     expect(widget.ariaLabel).toBe("breadcrumbs");
 
-    let list = element.shadowRoot.querySelector("li");
+    let list = element.querySelector("li");
     expect(list).toBeNull();
   });
 
@@ -46,11 +46,11 @@ describe("c-sf-gps-ds-au-nsw-breadcrumb", () => {
 
     document.body.appendChild(element);
 
-    let widget = element.shadowRoot.querySelector(childSelector);
+    let widget = element.querySelector(childSelector);
     expect(widget).not.toBeNull();
     expect(widget.ariaLabel).toBe(oal);
 
-    let list = element.shadowRoot.querySelector("li");
+    let list = element.querySelector("li");
     expect(list).not.toBeNull();
     let a = list.querySelector("a");
     expect(a).not.toBeNull();

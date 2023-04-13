@@ -1,0 +1,28 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <template for:each={_items} for:item="item">
+      <c-sf-gps-ds-au-nsw-list-item-comm
+        key={item.key}
+        label={item.label}
+        headline={item.headline}
+        copy={item.copy}
+        image={item.image}
+        image-alt={item.imageAlt}
+        tags={item.tags}
+        date={item.date}
+        is-block={isBlock}
+        is-reversed={isReversed}
+        show-link={showLink}
+        date-style={dateStyle}
+        class-name={className}
+      >
+      </c-sf-gps-ds-au-nsw-list-item-comm>
+    </template>
+
+    <c-sf-gps-ds-empty if:true={isEmpty} title="No matching content">
+    </c-sf-gps-ds-empty>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

@@ -23,6 +23,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
   @api headline;
   @api image;
@@ -105,6 +107,13 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
     }
   }
 
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
   _rendered = false;
 
   renderedCallback() {
@@ -112,7 +121,7 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
       let element;
 
       if (this.copy) {
-        if ((element = this.template.querySelector(".sfGpsMarkdown"))) {
+        if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
           replaceInnerHtml(element, this._copyHtml);
         } else {
           this.addError(

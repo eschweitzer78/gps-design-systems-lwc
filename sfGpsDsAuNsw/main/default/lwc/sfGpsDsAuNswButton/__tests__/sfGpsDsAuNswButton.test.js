@@ -18,7 +18,7 @@ describe("c-sf-gps-ds-au-nsw-button", () => {
 
     document.body.appendChild(element);
 
-    let widget = element.shadowRoot.querySelector("button");
+    let widget = element.querySelector("button");
     expect(widget).not.toBeNull();
   });
 
@@ -32,10 +32,10 @@ describe("c-sf-gps-ds-au-nsw-button", () => {
 
     document.body.appendChild(element);
 
-    let button = element.shadowRoot.querySelector("button");
+    let button = element.querySelector("button");
     expect(button).toBeNull();
 
-    let a = element.shadowRoot.querySelector("a");
+    let a = element.querySelector("a");
     expect(a).not.toBeNull();
     expect(a.href).toBe("https://www.salesforce.com/");
   });
@@ -46,15 +46,13 @@ describe("c-sf-gps-ds-au-nsw-button", () => {
     });
 
     element.link = "https://www.salesforce.com/";
-    element.block = true;
     element.cstyle = "light";
     element.label = "Go";
 
     document.body.appendChild(element);
 
-    let a = element.shadowRoot.querySelector("a");
+    let a = element.querySelector("a");
     expect(a).not.toBeNull();
-    expect(a.className).toContain("block");
     expect(a.className).toContain("light");
   });
 

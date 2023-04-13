@@ -3,6 +3,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuVicCampaignPrimaryComm extends SfGpsDsLwc {
   @api title;
   @api caption;
@@ -62,7 +64,7 @@ export default class SfGpsDsAuVicCampaignPrimaryComm extends SfGpsDsLwc {
 
   renderedCallback() {
     if (!this._rendered) {
-      let element = this.template.querySelector(".sfGpsMarkdown");
+      let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
       if (element) {
         replaceInnerHtml(element, this._summaryHtml);

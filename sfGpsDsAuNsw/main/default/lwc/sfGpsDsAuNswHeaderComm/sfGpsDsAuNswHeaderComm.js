@@ -26,6 +26,15 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
 
   @api className;
 
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
+  /* events */
+
   handleSearch(event) {
     const queryTerm = event.target.value;
 

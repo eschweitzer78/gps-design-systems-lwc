@@ -125,14 +125,18 @@
   color: #fff;
 }
 
-.button--primary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+.button--primary:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #e80229;
   border-color: transparent;
   color: #fff;
 }
 
 .button--primary.is-active,
-.button--primary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+.button--primary:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #a71930;
   border-color: transparent;
   color: #fff;
@@ -152,14 +156,18 @@
   color: #2e5299;
 }
 
-.button--secondary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+.button--secondary:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #fff;
   border-color: #deeaf0;
   color: #2e5299;
 }
 
 .button--secondary.is-active,
-.button--secondary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+.button--secondary:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #e0e4e6;
   border-color: #929fa4;
   color: #002664;

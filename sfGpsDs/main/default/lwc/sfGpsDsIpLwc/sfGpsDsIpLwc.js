@@ -137,11 +137,17 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
     return data;
   }
 
+  get communityBasePath() {
+    return cBasePath;
+  }
+
   get isPreview() {
     return !document.URL.startsWith(cBasePath);
   }
 
   connectedCallback() {
+    super.connectedCallback();
+
     if (!this._ipName) {
       this.addError("IP-NV", "Integration procedure name is required.");
     }

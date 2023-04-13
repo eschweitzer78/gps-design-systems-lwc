@@ -1,7 +1,7 @@
 .rpl-contact {
   color: #011a3c;
   padding-top: 1rem;
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   position: relative;
 }
 @media print {
@@ -103,5 +103,3 @@
     color: #000;
   }
 }
-
-/*# sourceMappingURL=sfGpsDsAuVicContactComm.css.map */

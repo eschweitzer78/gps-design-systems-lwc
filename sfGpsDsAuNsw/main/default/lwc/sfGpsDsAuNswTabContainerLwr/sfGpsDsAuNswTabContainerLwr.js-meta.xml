@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>56.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS LWR Tabs</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="tab1Label"
+        type="String"
+        label="Tab 1 Label"
+        description="Tab 1 Label"
+        default="Tab 1"
+        required="true"
+      />
+      <property
+        name="tab2Label"
+        type="String"
+        label="Tab 2 Label"
+        description="Tab 2 Label, leave empty to hide"
+        default="Tab 2"
+      />
+      <property
+        name="tab3Label"
+        type="String"
+        label="Tab 3 Label"
+        description="Tab 3 Label, leave empty to hide"
+        default="Tab 3"
+      />
+      <property
+        name="tab4Label"
+        type="String"
+        label="Tab 4 Label"
+        description="Tab 4 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab5Label"
+        type="String"
+        label="Tab 5 Label"
+        description="Tab 5 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab6Label"
+        type="String"
+        label="Tab 6 Label"
+        description="Tab 6 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab7Label"
+        type="String"
+        label="Tab 7 Label"
+        description="Tab 7 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab8Label"
+        type="String"
+        label="Tab 8 Label"
+        description="Tab 8 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab9Label"
+        type="String"
+        label="Tab 9 Label"
+        description="Tab 9 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab10Label"
+        type="String"
+        label="Tab 10 Label"
+        description="Tab 10 Label, leave empty to hide"
+        default=""
+      />
+      <property name="title" type="String" label="Title" description="Title" />
+      <property
+        name="tabPaddingStyle"
+        type="String"
+        label="Tab padding style"
+        datasource="full,side-flush,flush"
+      />
+      <property
+        name="tabBorderStyle"
+        type="String"
+        label="Tab border style"
+        datasource="border,no-border"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

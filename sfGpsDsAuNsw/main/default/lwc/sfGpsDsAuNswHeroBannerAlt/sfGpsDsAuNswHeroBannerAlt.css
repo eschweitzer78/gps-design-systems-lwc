@@ -57,7 +57,8 @@
 .nsw-hero-banner-alt__icon {
   margin: 1rem 0 0;
 }
-.nsw-hero-banner-alt__link {
+.nsw-hero-banner-alt__link,
+.nsw-scope .nsw-hero-banner-alt__link {
   text-decoration: none;
   color: var(--nsw-text-dark);
 }

@@ -10,6 +10,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
   @api arLabel = "Skip to links";
   @api nav;
@@ -36,12 +38,28 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
     }
   }
 
-  // ---- rendering
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
+  _rendered = false;
 
   renderedCallback() {
-    let element = this.template.querySelector(".sfGpsMarkdown");
-    if (element && this._mastheadLabelHtml) {
-      replaceInnerHtml(element, this._mastheadLabelHtml);
+    if (!this._rendered && this.mastheadLabel) {
+      let element = this.template.querySelector(MARKDOWN_SELECTOR);
+      if (element) {
+        replaceInnerHtml(element, this._mastheadLabelHtml);
+      } else {
+        this.addError(
+          "ML-PH",
+          "Couldn't find internal masthead label markdown placeholder"
+        );
+      }
+
+      this._rendered = true;
     }
   }
 }

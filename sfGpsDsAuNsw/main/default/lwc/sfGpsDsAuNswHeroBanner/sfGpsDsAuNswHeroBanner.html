@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <div class={computedClassName}>
     <div class="nsw-hero-banner__container">
       <div class="nsw-hero-banner__wrapper">
@@ -31,13 +31,14 @@
         </div>
 
         <div class="nsw-hero-banner__box" role="presentation">
+          <div if:true={lines} class="nsw-hero-banner__lines"></div>
           <img
             if:true={image}
             class="nsw-hero-banner__image"
             src={image.src}
             alt={image.alt}
           />
-          <div if:false={image} class="nsw-hero-banner__bg"></div>
+          <!--<div if:false={image} class="nsw-hero-banner__bg"></div>-->
         </div>
       </div>
     </div>

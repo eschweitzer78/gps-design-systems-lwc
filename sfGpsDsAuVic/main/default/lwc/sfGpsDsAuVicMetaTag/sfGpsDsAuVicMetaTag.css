@@ -94,8 +94,6 @@
   line-height: 1.28em;
   font-weight: normal;
 }
-
-/* Make sure the link text is also in the right colour */
 .rpl-meta-tag--solid .rpl-meta-tag__text {
   color: #fff;
 }
@@ -104,5 +102,3 @@
     color: #000;
   }
 }
-
-/*# sourceMappingURL=sfGpsDsAuVicMetaTag.css.map */

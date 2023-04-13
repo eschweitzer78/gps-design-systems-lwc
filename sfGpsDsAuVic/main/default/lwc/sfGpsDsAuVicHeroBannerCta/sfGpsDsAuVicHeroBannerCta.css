@@ -49,7 +49,7 @@
   }
 }
 .rpl-hero-banner--cta-dark .rpl-hero-banner--cta__secondary-text {
-  color: white;
+  color: #fff;
 }
 @media screen and (min-width: 0) {
   .rpl-hero-banner--cta__secondary-link {
@@ -67,7 +67,7 @@
   }
 }
 .rpl-hero-banner--cta-dark .rpl-hero-banner--cta__secondary-link {
-  color: white;
+  color: #fff;
 }
 .rpl-hero-banner--cta__secondary-link .rpl-text-label {
   text-decoration: underline;
@@ -80,6 +80,5 @@
 .rpl-hero-banner--cta-dark
   .rpl-hero-banner--cta__secondary-link
   .rpl-text-label {
-  color: white;
+  color: #fff;
 }
-/*# sourceMappingURL=sfGpsDsAuVicHeroBannerCta.css.map */

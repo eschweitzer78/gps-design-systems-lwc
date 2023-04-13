@@ -1,16 +1,27 @@
 <template lwc:render-mode="light">
-  <table if:true={isVisible} class="rpl-table">
+  <table if:true={isVisible} class={computedClassName}>
     <thead if:true={_headers}>
-      <template for:each={_headers} for:item="header">
-        <tr key={header.key}>
-          <th></th>
-        </tr>
-      </template>
+      <tr>
+        <template for:each={_headers} for:item="header">
+          <th
+            key={header.key}
+            abbr={header.abbr}
+            colspan={header.colspan}
+            rowspan={header.rowspan}
+          >
+            {header.content}
+          </th>
+        </template>
+      </tr>
     </thead>
     <tbody if:true={_rows}>
       <template for:each={_rows} for:item="row">
         <tr key={row.key}>
-          <td></td>
+          <template for:each={row.cols} for:item="col">
+            <td key={col.key} colspan={col.colspan} rowspan={col.rowspan}>
+              {col.content}
+            </td>
+          </template>
         </tr>
       </template>
     </tbody>

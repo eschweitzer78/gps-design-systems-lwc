@@ -14,6 +14,7 @@
   margin-left: -8px;
   margin-right: -8px;
   max-width: calc(100% + 16px) !important;
+  margin-top: -16px;
 }
 
 /* mimic rpl-site-constrain--on-all, partial width */
@@ -146,10 +147,12 @@ p {
   margin-block-end: 1em;
 }
 
+/*
 .rpl-site-layout img {
   max-width: none;
   vertical-align: baseline;
 }
+*/
 
 .app-wysiwyg,
 .forceCommunityRichText .app-wysiwyg {

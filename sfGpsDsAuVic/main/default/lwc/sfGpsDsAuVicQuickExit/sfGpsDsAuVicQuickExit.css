@@ -12,7 +12,7 @@
   content: attr(data-text);
   color: #fff;
   border-radius: 0.25rem;
-  border: 1px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
@@ -53,7 +53,7 @@
 .rpl-quick-exit__button {
   color: #fff;
   border-radius: 0.25rem;
-  border: 1px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
@@ -126,5 +126,3 @@
   text-decoration: none;
   background-color: #c42c35;
 }
-
-/*# sourceMappingURL=sfGpsDsAuVicQuickExit.css.map */

@@ -8,17 +8,9 @@
 import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
-const skipOptions = {
-  light: "nsw-skip--light",
-  default: ""
-};
-
-const mastheadOptions = {
-  light: "nsw-masthead--light",
-  default: ""
-};
-
 export default class SfGpsDsAuNswSkipTo extends LightningElement {
+  static renderMode = "light";
+
   @api arLabel = "Skip to links";
   @api nav;
   @api navLabel = "Skip to navigation";
@@ -30,14 +22,14 @@ export default class SfGpsDsAuNswSkipTo extends LightningElement {
   get computedSkipClassName() {
     return computeClass({
       "nsw-skip": true,
-      [skipOptions[this.cstyle] || skipOptions.default]: true
+      "nsw-skip--light": this.cstyle === "light"
     });
   }
 
   get computedMastheadClassName() {
     return computeClass({
       "nsw-masthead": true,
-      [mastheadOptions[this.cstyle] || mastheadOptions.default]: true,
+      "nsw-masthead--light": this.cstyle === "light",
       [this.className]: this.className
     });
   }

@@ -10,6 +10,8 @@ import { LightningElement, api, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswMainNav extends LightningElement {
+  static renderMode = "light";
+
   @api navAriaLabel = "Main Navigation";
   @api navTitle = "Menu";
   @api closeMenuLabel = "Close Menu";

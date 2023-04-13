@@ -11,15 +11,12 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
-  // ADJUSTED: style is a reserved keyword in lwc
   @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']),
-  // END ADJUSTED
+  @api orientation = "vertical"; // oneOf 'vertical' 'horizontal'
+  @api dateStyle = "medium"; // oneOf short medium long full
   @api tag;
   @api image;
   @api imageAlt;
-  // ADJUSTED: incorporate highlight into cstyle
-  // @api highlight = false;
-  // END ADJUSTED
   @api className;
 
   // This is not exposed in Experience Builder and is used by cardCollectionComm
@@ -44,6 +41,14 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Headline markdown");
     }
+  }
+
+  get _headlineText() {
+    return this._headline?.text;
+  }
+
+  get _headlineUrl() {
+    return this._headline?.url;
   }
 
   /*
@@ -113,6 +118,17 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     } catch (e) {
       this.addError("FO-MD", "Issue when parsing Footer markdown");
     }
+  }
+
+  get highlight() {
+    return this.cstyle === "highlight";
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 
   renderedCallback() {

@@ -247,6 +247,7 @@
               if:true={isInput}
               class="vlocity-input"
               id={inputId}
+              name={name}
               tabindex={tabIndex}
               accesskey={accessKey}
               pattern={pattern}
@@ -266,13 +267,23 @@
               aria-label={ariaLabel}
               autocomplete={autocomplete}
               value={inputValue}
-              onfocus={handleFocus}
+              onblur={_handleOnBlur}
+              onchange={_handleOnChange}
+              onfocus={_handleOnFocus}
+              onkeydown={_handleKeyDown}
+              onkeypress={_handleKeyPress}
+              onkeyup={_handleKeyUp}
+              oninput={_handleOnInput}
+              onpaste={_handleOnPaste}
+            />
+            <!--
               onblur={validateError}
+              onfocus={handleFocus}
               oninput={triggerInputEvent}
               onchange={triggerEvent}
               onkeydown={triggerKeyEvents}
               onkeyup={triggerKeyEvents}
-            />
+            />-->
 
             <input
               if:true={isNumber}

@@ -1,23 +1,12 @@
 <template>
   <template if:false={_sfGpsErrors}>
     <c-sf-gps-ds-au-nsw-alert
-      if:true={compact}
       title={title}
       class-name={className}
       as={as}
       compact={_compact}
     >
-      <span class="sf-gps-markdown" slot="compact" lwc:dom="manual"> </span>
-    </c-sf-gps-ds-au-nsw-alert>
-
-    <c-sf-gps-ds-au-nsw-alert
-      if:false={compact}
-      title={title}
-      class-name={className}
-      as={as}
-      compact={_compact}
-    >
-      <span class="sf-gps-markdown" slot="regular" lwc:dom="manual"> </span>
+      <span class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
     </c-sf-gps-ds-au-nsw-alert>
   </template>
 

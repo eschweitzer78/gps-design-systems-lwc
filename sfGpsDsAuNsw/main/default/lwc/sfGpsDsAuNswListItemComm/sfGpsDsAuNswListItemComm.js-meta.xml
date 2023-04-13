@@ -37,6 +37,14 @@
         description="Specifies a date context for the content, e.g. a publication date - in ISO8601 format."
       />
       <property
+        name="dateStyle"
+        type="String"
+        label="Date style"
+        description="Styling to be applie to the date."
+        datasource="short,medium,long,full"
+        default="medium"
+      />
+      <property
         name="image"
         type="String"
         label="Image source"

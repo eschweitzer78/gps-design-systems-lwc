@@ -1,0 +1,6 @@
+@import "c/sfGpsDsAuNswCore";
+@import "c/sfGpsDsAuNswAccordionGroupCss";
+
+slot {
+  min-height: 32px;
+}

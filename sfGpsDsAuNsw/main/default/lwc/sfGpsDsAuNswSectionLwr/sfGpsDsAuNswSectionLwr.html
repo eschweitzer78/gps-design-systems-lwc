@@ -1,0 +1,17 @@
+<template lwc:render-mode="light">
+  <template if:false={_sfGpsErrors}>
+    <section class={computedClassName} style={computedStyle}>
+      <template if:true={withContainer}>
+        <div class="nsw-container">
+          <slot name="Content-Region">Content Region</slot>
+        </div>
+      </template>
+      <template if:false={withContainer}>
+        <slot name="Content-Region">Content Region</slot>
+      </template>
+    </section>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

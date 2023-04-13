@@ -77,7 +77,7 @@
 }
 .rpl-accordion__button {
   color: #011a3c;
-  background: transparent;
+  background: rgba(0, 0, 0, 0);
   border: 0;
   width: 100%;
   box-sizing: border-box;
@@ -268,12 +268,9 @@
 .rpl-accordion--rtl .rpl-accordion__title-number {
   margin: 0 0 0 1.25rem;
 }
-
 .rpl-accordion__title-top {
   font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
   font-size: 1.75rem;
   line-height: 1.3em;
   font-weight: normal;
 }
-
-/*# sourceMappingURL=sfGpsDsAuVicAccordion.css.map */

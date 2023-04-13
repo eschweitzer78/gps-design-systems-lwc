@@ -1,0 +1,28 @@
+.nsw-header__waratah {
+  img {
+    height: 3rem;
+  } 
+}
+
+.nsw-header__name {
+  svg,
+  img {
+    height: 3rem;
+    display: block;
+  }
+}
+
+@media (min-width: 62rem) {
+  .nsw-header__waratah {
+    img {
+      height: 4.75rem;
+    } 
+  }
+
+  .nsw-header__name {
+    svg,
+    img {
+      height: 4.75rem;
+    }
+  }
+}

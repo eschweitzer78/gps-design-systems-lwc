@@ -1,8 +1,7 @@
 <template>
-  <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
-
   <template if:false={_sfGpsErrors}>
-    <div class={computedClassName}>
+    <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
+    <div if:false={_isLoading} class={computedClassName}>
       <template for:each={_items} for:item="card">
         <div key={card.index} class={computedColClassName}>
           <!-- card -->
@@ -16,6 +15,7 @@
             copy={card.copy}
             footer={card.footer}
             date={card.date}
+            date-style={dateStyle}
             use-markup="true"
           >
           </c-sf-gps-ds-au-nsw-card-comm>

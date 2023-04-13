@@ -9,6 +9,8 @@ import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
+  static renderMode = "light";
+
   @api step = 1;
   @api of = 1;
   @api className;

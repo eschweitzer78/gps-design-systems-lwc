@@ -6,7 +6,7 @@
  */
 
 import { api } from "lwc";
-import { htmlDecode } from "c/sfGpsDsHelpers";
+import { htmlDecode, computeClass } from "c/sfGpsDsHelpers";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
 export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
@@ -38,7 +38,9 @@ export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
   }
 
   @api cstyle = "white";
+  @api orientation = "vertical";
   @api displayDate = false;
+  @api dateStyle = "medium";
 
   @api xsWidth = "12";
   @api smWidth = "12";
@@ -48,15 +50,20 @@ export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
   @api className;
 
   mapIpData(data) {
-    return data.map((card) => ({
-      ...card,
-      copy: card.copy ? htmlDecode(card.copy) : null,
-      footer: card.footer ? htmlDecode(card.footer) : null
-    }));
+    return data && Array.isArray(data)
+      ? data.map((card) => ({
+          ...card,
+          copy: card.copy ? htmlDecode(card.copy) : null,
+          footer: card.footer ? htmlDecode(card.footer) : null
+        }))
+      : null;
   }
 
   get computedClassName() {
-    return `nsw-grid ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-grid": true,
+      [this.className]: this.className
+    });
   }
 
   get computedColClassName() {
@@ -73,7 +80,11 @@ export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
     );
   }
 
+  /* lifecycle */
+
   connectedCallback() {
     super.connectedCallback();
+
+    this.classList.add("nsw-scope");
   }
 }

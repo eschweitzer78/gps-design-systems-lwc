@@ -11,6 +11,7 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswTagsComm extends NavigationMixin(SfGpsDsLwc) {
+  @api asCheckboxes = false;
   @api className;
 
   /*
@@ -36,5 +37,12 @@ export default class SfGpsDsAuNswTagsComm extends NavigationMixin(SfGpsDsLwc) {
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
     }
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }

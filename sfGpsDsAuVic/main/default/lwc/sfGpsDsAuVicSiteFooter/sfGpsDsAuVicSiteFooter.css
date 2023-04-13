@@ -37,7 +37,7 @@
 @media print {
   .rpl-site-footer {
     background-image: none;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 .rpl-site-footer a {
@@ -70,7 +70,6 @@
     margin: 1rem 0 -1rem;
   }
 }
-
 .rpl-site-footer__main {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -143,13 +142,12 @@
     padding-bottom: 2rem;
   }
 }
-
 .rpl-site-footer__bottom {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-left: 1.25rem !important;
   padding-right: 1.25rem !important;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   padding-top: 0.75rem;
   padding-bottom: 1rem;
 }
@@ -222,10 +220,9 @@
 }
 @media print {
   .rpl-site-footer__bottom {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
-
 @media screen and (max-width: 991px) {
   .rpl-footer-nav {
     height: auto !important;
@@ -272,7 +269,6 @@
     display: block;
   }
 }
-
 .rpl-links-and-copyright__links {
   margin: 0;
 }
@@ -292,7 +288,6 @@
   border-left: 0;
   padding-left: 0;
 }
-
 .rpl-links-and-copyright__copyright {
   margin: 0 0 1rem;
 }
@@ -311,7 +306,6 @@
     margin-top: 2rem;
   }
 }
-
 .rpl-site-footer__logos {
   display: flex;
   flex-wrap: nowrap;
@@ -324,7 +318,6 @@
     margin-left: auto;
   }
 }
-
 .rpl-site-footer__logo {
   display: flex;
   align-items: center;
@@ -362,5 +355,3 @@
     max-height: 3.25rem;
   }
 }
-
-/*# sourceMappingURL=sfGpsDsAuVicSiteFooter.css.map */

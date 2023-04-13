@@ -12,6 +12,8 @@ import mdEngine from "c/sfGpsDsMarkdownOs";
 
 import tmpl from "./sfGpsDsAuVicFormMessagingOsN.html";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuVicFormMessagingOsN extends OmniscriptMessaging {
   render() {
     return tmpl;
@@ -89,7 +91,7 @@ export default class SfGpsDsAuVicFormMessagingOsN extends OmniscriptMessaging {
 
     if (mth) {
       console.log(this.template);
-      if ((element = this.template.querySelector(".sfGpsMarkdown"))) {
+      if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
         replaceInnerHtml(element, mth);
       } else {
         console.log(

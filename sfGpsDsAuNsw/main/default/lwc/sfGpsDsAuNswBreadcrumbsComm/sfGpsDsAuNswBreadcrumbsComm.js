@@ -28,4 +28,11 @@ export default class SfGpsDsAuNswBreadcrumbsComm extends SfGpsDsLwc {
   get items() {
     return this._items;
   }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 }

@@ -9,6 +9,8 @@ import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswCallout extends LightningElement {
+  static renderMode = "light";
+
   @api title;
   @api level = 4;
   @api className;
@@ -41,6 +43,6 @@ export default class SfGpsDsAuNswCallout extends LightningElement {
   }
 
   get isH6() {
-    return this.level === 6;
+    return this.level >= 6;
   }
 }

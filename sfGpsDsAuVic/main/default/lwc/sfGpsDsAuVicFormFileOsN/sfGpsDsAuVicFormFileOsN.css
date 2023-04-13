@@ -22,10 +22,19 @@
 
 .omni-file-input {
   --lwc-spacingXxxSmall: 0.5rem;
-  --lwc-colorBorder: #0052c2;
-  --slds-c-button-neutral-color-background: #0052c2;
-  --slds-c-button-neutral-color-background-hover: #0095ec;
-  --slds-g-color-neutral-base-95: #0095ec;
+  --lwc-colorBorder: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  --slds-c-button-neutral-color-background: var(
+    --sf-gps-ds-au-vic-color-primary,
+    #0052c2
+  );
+  --slds-c-button-neutral-color-background-hover: var(
+    --sf-gps-ds-au-vic-color-secondary,
+    #0095ec
+  );
+  --slds-g-color-neutral-base-95: var(
+    --sf-gps-ds-au-vic-color-secondary,
+    #0095ec
+  );
   --slds-c-button-neutral-color-border: transparent;
   --slds-c-button-neutral-color-border-hover: transparent;
   --slds-c-button-text-color: #fff;
@@ -46,4 +55,8 @@
 
 .omni-file-input {
   order: 2;
+}
+
+.errors.help-block {
+  order: 3;
 }

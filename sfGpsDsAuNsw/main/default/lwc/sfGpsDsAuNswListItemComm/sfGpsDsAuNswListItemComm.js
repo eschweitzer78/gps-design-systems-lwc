@@ -6,13 +6,13 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
   @api isBlock = false;
   @api isReversed = false;
   @api showLink = false;
-
+  @api dateStyle = "medium";
   @api label;
   @api image;
   @api imageAlt;
   @api className;
 
-  // This is not exposed in Experience Builder and is used by cardCollectionComm
+  // This is not exposed in Experience Builder and is used by listItemCollectionComm
   @api useMarkup = false;
 
   /*
@@ -107,6 +107,13 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Tags markdown");
     }
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 
   renderedCallback() {

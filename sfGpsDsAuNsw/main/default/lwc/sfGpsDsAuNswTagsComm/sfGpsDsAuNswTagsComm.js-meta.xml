@@ -10,6 +10,13 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="asCheckboxes"
+        type="Boolean"
+        label="As checkboxes"
+        description="Makes the tags checkable."
+        default="false"
+      />
+      <property
         name="links"
         type="String"
         label="Links"

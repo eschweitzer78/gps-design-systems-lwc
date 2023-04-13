@@ -234,6 +234,13 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
     }
   }
 
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
   _rendered = false;
 
   renderedCallback() {

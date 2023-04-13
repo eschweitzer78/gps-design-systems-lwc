@@ -12,4 +12,11 @@ export default class SfGpsDsAuNswProgressIndicatorComm extends SfGpsDsLwc {
   @api step = 1;
   @api of = 1;
   @api className;
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 }

@@ -8,7 +8,7 @@ export default class SfGpsDsAuVicFooterNavigation extends BreakpointMixin(
 ) {
   static renderMode = "light";
 
-  @track _nav; //:array
+  @track _nav = []; //:array
   _originalNav;
   _performLayout;
 

@@ -1,23 +1,36 @@
-import { LightningElement, api } from "lwc";
+import { LightningElement, api, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVicDescriptionList extends LightningElement {
-  @api list; // [{ term: string, description: string }]
+  static renderMode = "light";
+
   @api divider = ":";
   @api className;
 
-  get showList() {
-    return this.list && this.list.length > 0;
+  _listOriginal;
+  @track _list;
+
+  /* api list { term: string, description: string }] */
+
+  @api
+  get list() {
+    return this._listOriginal;
   }
 
-  get _list() {
-    return this.list && Array.isArray(this.list)
-      ? this.list.map((item, index) => ({
-          ...item,
-          key: `item-${index + 1}`
-        }))
-      : null;
+  set list(value) {
+    this._listOriginal = value;
+
+    if (value && Array.isArray(value)) {
+      this._list = value.map((item, index) => ({
+        ...item,
+        key: `item-${index + 1}`
+      }));
+    } else {
+      this._list = null;
+    }
   }
+
+  /* computed */
 
   get computedClassName() {
     return computeClass({

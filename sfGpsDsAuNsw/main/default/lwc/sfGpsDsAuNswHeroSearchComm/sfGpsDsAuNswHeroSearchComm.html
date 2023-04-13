@@ -1,17 +1,33 @@
 <template>
-  <c-sf-gps-ds-au-nsw-hero-search
-    if:false={_sfGpsErrors}
-    title={title}
-    intro={intro}
-    image={image}
-    links={_links}
-    class-name={className}
-    sr-label={srLabel}
-    sr-search-button-label={srSearchButtonLabel}
-    onsearch={handleSearch}
-  >
-  </c-sf-gps-ds-au-nsw-hero-search>
-
+  <template if:false={_sfGpsErrors}>
+    <div
+      if:true={image}
+      class="nsw-section nsw-section--image"
+      style={computedStyle}
+    >
+      <c-sf-gps-ds-au-nsw-hero-search
+        title={title}
+        intro={intro}
+        links={_links}
+        class-name={className}
+        sr-label={srLabel}
+        sr-search-button-label={srSearchButtonLabel}
+        onsearch={handleSearch}
+      >
+      </c-sf-gps-ds-au-nsw-hero-search>
+    </div>
+    <c-sf-gps-ds-au-nsw-hero-search
+      if:false={image}
+      title={title}
+      intro={intro}
+      links={_links}
+      class-name={className}
+      sr-label={srLabel}
+      sr-search-button-label={srSearchButtonLabel}
+      onsearch={handleSearch}
+    >
+    </c-sf-gps-ds-au-nsw-hero-search>
+  </template>
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
   </c-sf-gps-ds-configuration-error>
 </template>

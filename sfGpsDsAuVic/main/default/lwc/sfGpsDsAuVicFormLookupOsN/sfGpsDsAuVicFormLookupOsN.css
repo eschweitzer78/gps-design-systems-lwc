@@ -59,7 +59,7 @@ input {
 .sfgpsds-listbox__option.sfgpsds-has-focus {
   outline-width: 0;
   cursor: pointer;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #fff;
 }
 
@@ -138,7 +138,7 @@ input {
   overflow: hidden;
   outline: 0;
   width: 100%;
-  border: 1px solid #0052c2;
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-top: none;
   border-radius: 0.25rem;
   border-top-left-radius: 0;
@@ -197,7 +197,7 @@ li:nth-child(odd) {
 
 /*
 @import "c/sfGpsDsAuNswCoreOs";
-@import "c/sfGpsDsAuNswFormCssOs";
+@import "c/sfGpsDsAuNswFormOs";
 @import "c/sfGpsDsAuNswPredictiveListOsN";
 
 

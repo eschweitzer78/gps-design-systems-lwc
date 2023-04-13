@@ -12,8 +12,8 @@ export default class SfGpsDsAuVicCardEmergencyContact extends LightningElement {
 
   _labelId;
 
-  get computedLabelId() {
-    if (this._labelId === undefined) {
+  get computedAriaLabelledById() {
+    if (!this._labelId) {
       this._labelId = uniqueId("sf-gps-ds-au-vic-card-emergency-card-label");
     }
 
