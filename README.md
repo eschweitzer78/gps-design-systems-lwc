@@ -1,8 +1,8 @@
-# au-design-systems-lwc
+# gps-design-systems-lwc
 
-[![CI Workflow](https://github.com/eschweitzer78/au-design-systems-lwc/workflows/CI/badge.svg)](https://github.com/eschwetzer78/au-design-systems-lwc/actions?query=workflow%3ACI) [![Packaging Workflow](https://github.com/eschweitzer78/au-design-systems-lwc/workflows/Packaging/badge.svg)](https://github.com/eschweitzer78/au-design-systems-lwc/actions?query=workflow%3A%22Packaging%22) [![codecov](https://codecov.io/gh/eschweitzer78/au-design-systems-lwc/branch/main/graph/badge.svg)](https://codecov.io/gh/eschweitzer78/au-design-systems-lwc)
+[![CI Workflow](https://github.com/eschweitzer78/gps-design-systems-lwc/workflows/CI/badge.svg)](https://github.com/eschweitzer78/gps-design-systems-lwc/actions?query=workflow%3ACI) [![Packaging Workflow](https://github.com/eschweitzer78/gps-design-systems-lwc/workflows/Packaging/badge.svg)](https://github.com/eschweitzer78/gps-design-systems-lwc/actions?query=workflow%3A%22Packaging%22) [![codecov](https://codecov.io/gh/eschweitzer78/gps-design-systems-lwc/branch/main/graph/badge.svg)](https://codecov.io/gh/eschweitzer78/gps-design-systems-lwc)
 
-A collection of Salesforce Lightning Web Components (LWCs) for Australian Governments' Design Systems. The collection
+A collection of Salesforce Lightning Web Components (LWCs) for selected Governments' Design Systems. The collection
 covers Salesforce Experience Cloud as well as Salesforce Communities for Public Sector Solutions (Omnistudio), and may be extended in the future to help with Salesforce Flows provided they're surfaced via an Experience Cloud community.
 
 Note that at this stage there is a dependency on Omnistudio 240.
@@ -21,9 +21,9 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNMpAAO" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNNTAA4" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNMuAAO" title="sfGpsDsAuNsw">this link</a> to install the sfGpsDsAuNsw unlocked package in your org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNNYAA4" title="sfGpsDsAuNsw">this link</a> to install the sfGpsDsAuNsw unlocked package in your org.
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNMVAA4" title="sfGpsDsAuNswS">this link</a> to install the sfGpsDsAuNswS unlocked package in your org.
 
