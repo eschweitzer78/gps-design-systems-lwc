@@ -2,6 +2,8 @@ import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVicDescriptionListIcon extends LightningElement {
+  static renderMode = "light";
+
   @api list; // [{ icon: string, heading: string, content: string }]  content is html markup
   @api className;
 

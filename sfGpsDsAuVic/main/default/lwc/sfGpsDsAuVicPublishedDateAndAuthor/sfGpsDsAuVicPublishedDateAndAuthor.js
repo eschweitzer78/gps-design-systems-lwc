@@ -1,5 +1,12 @@
 import { LightningElement, api } from "lwc";
-import { formatDate, computeClass, parseIso8601 } from "c/sfGpsDsHelpers";
+import {
+  formatDate,
+  computeClass,
+  parseIso8601,
+  getUserLocale
+} from "c/sfGpsDsHelpers";
+
+const DATE_STYLE_DEFAULT = "long"; // one of short medium long full, defaults to long
 
 export default class SfGpsDsAuVicPublishedDateAndAuthor extends LightningElement {
   static renderMode = "light";
@@ -27,7 +34,7 @@ export default class SfGpsDsAuVicPublishedDateAndAuthor extends LightningElement
         break;
     }
 
-    return date ? formatDate(date) : null;
+    return date ? formatDate(date, DATE_STYLE_DEFAULT, this._userLocale) : null;
   }
 
   get computedClassName() {
@@ -35,5 +42,11 @@ export default class SfGpsDsAuVicPublishedDateAndAuthor extends LightningElement
       "rpl-publish-date-and-author": true,
       [this.className]: this.className
     });
+  }
+
+  _userLocale;
+
+  connectedCallback() {
+    this._userLocale = getUserLocale();
   }
 }

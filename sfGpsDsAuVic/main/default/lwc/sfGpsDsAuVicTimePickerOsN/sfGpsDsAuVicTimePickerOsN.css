@@ -265,7 +265,7 @@
 }
 
 .sfgpsds-is-open .sfgpsds-listbox {
-  border: 1px solid #0052c2;
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-top: none;
 }
 
@@ -297,7 +297,7 @@
 }
 
 .sfgpsds-listbox__item:hover {
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #fff;
 }
 
@@ -312,13 +312,13 @@
 .sfgpsds-listbox--vertical .slds-listbox__option.sfgpsds-has-focus {
   outline: 0;
   color: #fff;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 
 .sfgpsds-listbox__option.sfgpsds-is-selected,
 .sfgpsds-listbox_vertical .sfgpsds-listbox__option.sfgpsds-is-selected {
   outline: 0;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #fff;
 }
 
@@ -332,7 +332,7 @@
   /* it's typed for the date picker, :not([type]) for select { */
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border: 1px solid #0052c2;
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-bottom: 0;
 }
 

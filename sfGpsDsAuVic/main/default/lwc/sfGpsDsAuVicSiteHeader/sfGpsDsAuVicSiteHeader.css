@@ -168,7 +168,7 @@
   display: flex;
 }
 .rpl-site-header__btn {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   border: 0;
   padding: 0;
   display: flex;
@@ -236,7 +236,10 @@
 }
 .rpl-site-header__btn--logout {
   border-radius: 0.25rem;
-  background-color: #012557;
+  background-color: var(
+    --sf-gps-ds-au-vic-site-header-logout-btn-background-color-mobile,
+    #012557
+  );
   display: none;
   margin-right: 1rem;
   padding: 0.5rem 0.625rem;
@@ -264,8 +267,6 @@
 .rpl-site-header__btn .rpl-icon {
   display: inline;
 }
-
-/* from _transition */
 .rpl-header-fade-enter-active,
 .rpl-header-fade-leave-active {
   transition: transform ease-out 0.3s, opacity ease-out 0.3s;
@@ -275,5 +276,3 @@
   transform: translateY(-1.5rem);
   opacity: 0;
 }
-
-/*# sourceMappingURL=sfGpsDsAuVicSiteHeader.css.map */

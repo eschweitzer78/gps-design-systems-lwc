@@ -6,7 +6,7 @@ export default class SfGpsDsAuVicAnchorLinks extends LightningElement {
 
   @api title; // string
 
-  /* api: links [{text: string, url: string, type: string with h3 being indent, use h2 otherwise }] */
+  /* api: links [{text: string, url: string, type: string with h3 being indented, use h2 otherwise }] */
 
   _linksOriginal;
   @track _links;
@@ -43,19 +43,5 @@ export default class SfGpsDsAuVicAnchorLinks extends LightningElement {
       "rpl-anchor-links--rtl": isRTL(),
       [this.className]: this.className
     });
-  }
-
-  handleClick(event) {
-    let index = event.currentTarget.dataset.ndx;
-    let href = event.currentTarget.getAttribute("href");
-
-    this.dispatchEvent(
-      new CustomEvent("openpanel", {
-        detail: {
-          url: href,
-          index: index
-        }
-      })
-    );
   }
 }

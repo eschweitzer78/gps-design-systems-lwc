@@ -117,7 +117,6 @@
     margin: 0 0 0 0.25rem;
   }
 }
-
 .rpl-back-to-top__fade-enter-active,
 .rpl-back-to-top__fade-leave-active {
   transition: transform ease-out 0.3s, opacity ease-out 0.3s;
@@ -127,5 +126,3 @@
   transform: translateY(1.5rem);
   opacity: 0;
 }
-
-/*# sourceMappingURL=sfGpsDsAuVicBackToTop.css.map */

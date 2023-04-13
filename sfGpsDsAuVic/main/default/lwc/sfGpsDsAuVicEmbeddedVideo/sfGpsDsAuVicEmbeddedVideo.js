@@ -9,9 +9,8 @@ export default class SfGpsDsAuVicEmbeddedVideo extends LightningElement {
   @api height; // number
   @api src; // string
   @api variant; // string: link, full
-  @api url; // string
   @api transcript; // string
-  @api mediaLink; //   { iconSymbol: String, iconColor: string, iconPlacement: string, iconSize: string; link: string }
+  @api mediaLink; //   { iconSymbol: String, iconColor: string, iconPlacement: string, iconSize: string; text: string, link: string }
   @api displayTranscript; // boolean
   @api className;
 

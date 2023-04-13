@@ -55,7 +55,28 @@
     default="/sfsites/c/resource/sfGpsDsAuVic/images/bggraphic.png"
   />
 
-  <div class="rpl-site-layout">
+  <aura:attribute name="primaryColor" type="String" default="#0052c2" />
+  <aura:attribute name="darkPrimaryColor" type="String" default="#023b89" />
+  <aura:attribute name="secondaryColor" type="String" default="#0095ec" />
+
+  <aura:handler
+    name="change"
+    value="{! v.primaryColor }"
+    action="{! c.setColors }"
+  />
+  <aura:handler
+    name="change"
+    value="{! v.darkPrimaryColor }"
+    action="{! c.setColors }"
+  />
+  <aura:handler
+    name="change"
+    value="{! v.secondaryColor }"
+    action="{! c.setColors }"
+  />
+  <aura:handler name="init" value="{! this }" action="{!c.setColors}" />
+
+  <div class="rpl-site-layout" aura:id="site-layout">
     <!-- alert -->
 
     <!-- skipLink -->

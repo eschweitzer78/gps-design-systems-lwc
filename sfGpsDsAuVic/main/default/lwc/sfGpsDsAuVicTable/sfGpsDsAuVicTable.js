@@ -38,9 +38,13 @@ export default class SfGpsDsAuVicTable extends LightningElement {
       return;
     }
 
-    this._rows = value.map((row, index) => ({
+    this._rows = value.map((row, rindex) => ({
       ...row,
-      key: `row-${index + 1}`
+      key: `row-${rindex + 1}`,
+      cols: row.map((col, cindex) => ({
+        ...col,
+        key: `cell-${rindex + 1}-${cindex + 1}`
+      }))
     }));
   }
 

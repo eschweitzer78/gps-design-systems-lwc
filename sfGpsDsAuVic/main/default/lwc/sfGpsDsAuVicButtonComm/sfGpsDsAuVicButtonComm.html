@@ -1,0 +1,15 @@
+<template>
+  <c-sf-gps-ds-au-vic-button
+    if:false={_sfGpsErrors}
+    href={href}
+    target={target}
+    theme={theme}
+    disabled={disabled}
+    class-name={className}
+  >
+    {label}
+  </c-sf-gps-ds-au-vic-button>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

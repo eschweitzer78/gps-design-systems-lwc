@@ -45,7 +45,7 @@ input {
 .sfgpsds-listbox__option.sfgpsds-has-focus {
   outline-width: 0;
   cursor: pointer;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #fff;
 }
 
@@ -124,7 +124,7 @@ input {
   overflow: hidden;
   outline: 0;
   width: 100%;
-  border: 1px solid #0052c2;
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-top: none;
   border-radius: 0.25rem;
   border-top-left-radius: 0;
@@ -407,7 +407,7 @@ li:nth-child(odd) {
 }
 
 .sfgpsds-is-open .sfgpsds-listbox {
-  border: 1px solid #0052c2;
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-top: none;
 }
 
@@ -441,7 +441,7 @@ li:nth-child(odd) {
 
 
 .sfgpsds-item:hover {
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #fff;
 }
 
@@ -456,13 +456,13 @@ li:nth-child(odd) {
 .sfgpsds-listbox--vertical .slds-listbox__option.sfgpsds-has-focus {
   outline: 0;
   color: #fff;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 
 .sfgpsds-listbox__option.sfgpsds-is-selected,
 .sfgpsds-listbox_vertical .sfgpsds-listbox__option.sfgpsds-is-selected {
   outline: 0;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #fff;
 }
 

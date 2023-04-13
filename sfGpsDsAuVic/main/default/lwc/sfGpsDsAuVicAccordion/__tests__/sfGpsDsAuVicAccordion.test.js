@@ -51,7 +51,7 @@ describe("c-sf-gps-ds-au-vic-accordion", () => {
     );
   });
 
-  it("does have the expand all button when configured for that", () => {
+  it("does have the expand all button when configured for that and is accessible", async () => {
     const element = createElement(tag, {
       is: SfGpsDsAuVicAccordion
     });
@@ -66,6 +66,8 @@ describe("c-sf-gps-ds-au-vic-accordion", () => {
     const expandAll = expandAllButtons[0];
     expect(expandAll).not.toBeNull();
     expect(expandAll.textContent).toBe(expandAllLabel);
+
+    await expect(element).toBeAccessible();
   });
 
   it("is fully expanded when someone clicks on expand all", () => {

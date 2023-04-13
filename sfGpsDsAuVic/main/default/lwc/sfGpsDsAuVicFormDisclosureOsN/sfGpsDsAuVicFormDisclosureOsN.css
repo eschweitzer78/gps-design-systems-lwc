@@ -3,7 +3,7 @@
 .vic-disclosure {
   margin-top: 0.5rem;
   padding: 1rem;
-  border-left: solid 4px #0052c2;
+  border-left: solid 4px var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   order: 2;
 }
 

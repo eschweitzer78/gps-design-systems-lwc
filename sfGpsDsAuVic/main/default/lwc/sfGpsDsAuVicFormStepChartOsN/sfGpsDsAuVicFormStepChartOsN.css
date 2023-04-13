@@ -4,7 +4,7 @@
 }
 
 .slds-progress-bar {
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 
 .sfgpsds-omniscript_stepform {
@@ -56,7 +56,7 @@
 }
 
 .sfgpsds-progress_vertical .sfgpsds-progress__line {
-  border: 1px solid #0052c2;
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 
 .sfgpsds-progress_vertical .sfgpsds-progress__list {

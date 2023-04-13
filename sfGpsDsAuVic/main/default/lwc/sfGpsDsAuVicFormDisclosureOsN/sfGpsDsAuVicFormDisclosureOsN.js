@@ -18,7 +18,7 @@ export default class SfGpsDsAuVicFormDisclosureOsN extends SfGpsDsFormDisclosure
       "form-group": true,
       valid: !this.isError,
       invalid: this.isError,
-      required: this.required
+      required: this._propSetMap.required
     });
   }
 

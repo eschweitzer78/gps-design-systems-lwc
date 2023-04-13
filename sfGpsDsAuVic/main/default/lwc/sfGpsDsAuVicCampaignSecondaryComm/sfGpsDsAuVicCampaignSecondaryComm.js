@@ -92,7 +92,7 @@ export default class SfGpsDsAuVicCampaignSecondaryComm extends SfGpsDsLwc {
 
   renderedCallback() {
     if (!this._rendered) {
-      let element = this.template.querySelector(".sfGpsMarkdown");
+      let element = this.template.querySelector(".sf-gps-ds-markdown");
 
       if (element) {
         replaceInnerHtml(element, this._summaryHtml);

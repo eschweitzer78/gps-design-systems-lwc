@@ -6,7 +6,7 @@
   align-items: center;
   min-width: 32px;
   min-height: 32px;
-  border: 2px solid #0052c2;
+  border: 2px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-radius: 100px;
   font-size: 19px;
   z-index: 2;
@@ -37,17 +37,17 @@
 
 .step-container__completed .step-id,
 .step-container__in-progress .step-id {
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #ffffff;
 }
 
 .step-container__pristine .step-id {
   background-color: #ffffff;
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 
 .step-container__nonpristine .step-id {
-  background-color: #0095ec;
+  background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
   color: #ffffff;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .step-container__in-progress .step-label {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
 }
 

@@ -52,9 +52,11 @@ export default class SfGpsDsAuVicRplList extends SfGpsDsLwc {
     if (typeof value === "string") {
       try {
         value = JSON.parse(value);
-        if (!Array.isArray(value)) value = [value];
+        if (!Array.isArray(value)) {
+          value = [value];
+        }
       } catch (e) {
-        console.log(e);
+        this.addError("LI-JP", "Issue when parsing list JSON content");
       }
     }
 

@@ -8,7 +8,7 @@
 }
 
 .rpl-alert-base--color-primary {
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 
 .rpl-alert-base--color-success {

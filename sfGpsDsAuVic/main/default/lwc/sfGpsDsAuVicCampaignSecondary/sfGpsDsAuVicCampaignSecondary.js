@@ -8,6 +8,7 @@ export default class SfGpsDsAuVicCampaignSecondary extends LightningElement {
   @api link;
   @api video;
   @api image;
+  @api className;
 
   // replaced summary attribute by slot
 

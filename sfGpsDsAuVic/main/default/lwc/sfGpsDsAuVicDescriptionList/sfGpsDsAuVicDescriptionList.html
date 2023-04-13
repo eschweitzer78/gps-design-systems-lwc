@@ -1,6 +1,6 @@
-<template>
-  <dl if:true={showList} class={computedClassName}>
-    <template for:each={list} for:item="item">
+<template lwc:render-mode="light">
+  <dl if:true={_list} class={computedClassName}>
+    <template for:each={_list} for:item="item">
       <div class="rpl-description-list__row" key={item.key}>
         <dt class="rpl-description-list__cell rpl-description-list__term">
           {item.term}{divider}
