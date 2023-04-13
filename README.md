@@ -21,15 +21,15 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNNTAA4" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0VBAAY" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNNYAA4" title="sfGpsDsAuNsw">this link</a> to install the sfGpsDsAuNsw unlocked package in your org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0VGAAY" title="sfGpsDsAuNsw">this link</a> to install the sfGpsDsAuNsw unlocked package in your org.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNMVAA4" title="sfGpsDsAuNswS">this link</a> to install the sfGpsDsAuNswS unlocked package in your org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0VLAAY" title="sfGpsDsAuNswS">this link</a> to install the sfGpsDsAuNswS unlocked package in your org.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNMzAAO" title="sfGpsDsAuVic">this link</a> to install the sfGpsDsAuVic unlocked package in your org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0VQAAY" title="sfGpsDsAuVic">this link</a> to install the sfGpsDsAuVic unlocked package in your org.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000MNMfAAO" title="sfGpsDsUkGov">this link</a> to install the sfGpsDsUkGov unlocked package in your org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0VVAAY" title="sfGpsDsUkGov">this link</a> to install the sfGpsDsUkGov unlocked package in your org.
 
 ## Installing the production version using Unlocked Packages
 
