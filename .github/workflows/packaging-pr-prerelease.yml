@@ -28,6 +28,10 @@ jobs:
       - name: "Install Volta"
         uses: volta-cli/action@v3
 
+      # Generate css from scss
+      - name: "Automatically generate css"
+        run: node ./cssgen.js
+
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
         run: node ./osfilegen.js
