@@ -194,6 +194,10 @@ jobs:
       #    cd ../..
       #    node ./configure-omnistudio-metadata scratch-org
 
+      # Generate css from scss
+      - name: "Automatically generate css"
+        run: node ./cssgen.js
+
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
         run: node ./osfilegen.js
