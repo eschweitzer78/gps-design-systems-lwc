@@ -22,6 +22,7 @@
   "sfGpsDsAuNswPagination/pagination",
   "sfGpsDsAuNswProgressIndicator/progress-indicator",
   "sfGpsDsAuNswResultsBar/results-bar",
+  "sfGpsDsAuNswSaveForLaterAckOsN/in-page-alert",
   "sfGpsDsAuNswSideNav/side-nav",
   "sfGpsDsAuNswStatusLabel/status-labels",
   "sfGpsDsAuNswTags/tag"
