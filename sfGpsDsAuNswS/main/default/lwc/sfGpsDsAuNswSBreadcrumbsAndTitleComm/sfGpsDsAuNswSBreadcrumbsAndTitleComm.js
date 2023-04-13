@@ -54,7 +54,7 @@ export default class SfGpsDsAuNswSBreadcrumbsAndTitleComm extends SfGpsDsLwc {
     return computeClass({
       "page-header": true,
       "servicensw-embed": true,
-      "page-header--top": this.title,
+      "page-header--top": !this.title,
       [this.className]: this.className
     });
   }

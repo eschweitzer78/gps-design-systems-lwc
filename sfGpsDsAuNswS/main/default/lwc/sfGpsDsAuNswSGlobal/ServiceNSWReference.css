@@ -361,7 +361,9 @@ a {
 
 @media print {
   .is-external.is-unstyled:after,
-  .is-unstyled[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+  .is-unstyled[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+      .is-internal
+    ):after {
     display: none;
   }
 }
@@ -1042,14 +1044,18 @@ blockquote :last-child {
   color: #fff;
 }
 
-.button--primary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+.button--primary:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #e80229;
   border-color: transparent;
   color: #fff;
 }
 
 .button--primary.is-active,
-.button--primary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+.button--primary:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #a71930;
   border-color: transparent;
   color: #fff;
@@ -1069,14 +1075,18 @@ blockquote :last-child {
   color: #2e5299;
 }
 
-.button--secondary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+.button--secondary:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #fff;
   border-color: #deeaf0;
   color: #2e5299;
 }
 
 .button--secondary.is-active,
-.button--secondary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+.button--secondary:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #e0e4e6;
   border-color: #929fa4;
   color: #002664;
@@ -1096,14 +1106,18 @@ blockquote :last-child {
   color: #fff;
 }
 
-.button--tertiary:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+.button--tertiary:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #5272b1;
   border-color: transparent;
   color: #fff;
 }
 
 .button--tertiary.is-active,
-.button--tertiary:active:not(:disabled):not(.button--disabled):not(.is-disabled) {
+.button--tertiary:active:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ) {
   background-color: #002664;
   border-color: transparent;
   color: #fff;
@@ -1123,7 +1137,9 @@ blockquote :last-child {
   color: #242934;
 }
 
-.button--white:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+.button--white:hover:not(:disabled):not(.button--disabled):not(
+    .is-disabled
+  ):not(.is-active) {
   background-color: #fff;
   border-color: #deeaf0;
   color: #242934;
@@ -1188,12 +1204,16 @@ blockquote :last-child {
 }
 
 .button--link.button--arrow.is-external,
-.button--link.button--arrow[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal) {
+.button--link.button--arrow[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+    .is-internal
+  ) {
   padding-right: 40px;
 }
 
 .button--link.button--arrow.is-external:after,
-.button--link.button--arrow[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+.button--link.button--arrow[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+    .is-internal
+  ):after {
   display: none;
 }
 
@@ -1274,7 +1294,9 @@ blockquote :last-child {
 
 .button--external:after,
 .button.is-external:after,
-.button[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+.button[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+    .is-internal
+  ):after {
   content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
   display: inline-block;
   height: 12px;
@@ -1284,22 +1306,30 @@ blockquote :last-child {
 
 .button--external.button--link:after,
 .button--external.button--secondary:after,
-.button.button--link[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
-.button.button--secondary[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
+.button.button--link[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+    .is-internal
+  ):after,
+.button.button--secondary[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+    .is-internal
+  ):after,
 .button.is-external.button--link:after,
 .button.is-external.button--secondary:after {
   content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%232e5299' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
 }
 
 .button--external.button--white:after,
-.button.button--white[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after,
+.button.button--white[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+    .is-internal
+  ):after,
 .button.is-external.button--white:after {
   content: url("data:image/svg+xml;charset=utf-8,%3Csvg height='12' width='12' fill='%23646974' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0v12h12V0H0zm10.9 10.9H1.1V1.1h9.8v9.8z'/%3E%3Cpath d='M4.4 2.7v1.1h3L2.3 8.9l.8.8 5.1-5.1v3h1.1V2.7H4.4z'/%3E%3C/svg%3E");
 }
 
 .button--external.is-unstyled:after,
 .button.is-external.is-unstyled:after,
-.button.is-unstyled[href^="http"]:not([href*="service.nsw.gov.au"]):not(.is-internal):after {
+.button.is-unstyled[href^="http"]:not([href*="service.nsw.gov.au"]):not(
+    .is-internal
+  ):after {
   display: none;
 }
 
@@ -4696,7 +4726,9 @@ a[id^="liveagent_button_online"]:disabled {
 
 @media (max-width: 767px) {
   .back-to-top
-    .button:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(.is-active) {
+    .button:hover:not(:disabled):not(.button--disabled):not(.is-disabled):not(
+      .is-active
+    ) {
     background-color: #2e5299;
   }
 }
