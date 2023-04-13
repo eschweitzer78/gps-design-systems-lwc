@@ -103,14 +103,7 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
     this._errorMessages
       .filter((message) => message.id === targetId)
       .forEach((message) => {
-        console.log(
-          "found target",
-          targetId,
-          message.elt.getErrorDetails,
-          message.elt.scrollTo
-        );
         if (message.elt.scrollTo) {
-          console.log("target has scrollTo");
           message.elt.scrollTo();
         }
       });
