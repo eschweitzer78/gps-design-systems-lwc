@@ -1,0 +1,16 @@
+/* Experience Cloud does not have a link for menu labels, hence no a element */
+.nsw-footer__heading {
+  font-weight: var(--nsw-font-bold);
+  color: var(--nsw-text-link);
+}
+
+/* Added the notion of 'built on' */
+.nsw-footer__built {
+  flex: 0 0 12.5rem;
+  margin: 0.75rem 0;
+}
+@media (min-width: 48rem) {
+  .nsw-footer__built {
+    text-align: right;
+  }
+}

@@ -42,7 +42,14 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
   @api className;
   @api isActive = false;
 
-  // Events
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
+  /* events */
 
   handleCloseMenu() {
     const closeMenuEvent = new CustomEvent("closemenu");

@@ -19,13 +19,13 @@ describe("c-sf-gps-ds-au-nsw-content-block", () => {
 
     document.body.appendChild(element);
 
-    let div = element.shadowRoot.querySelector(".nsw-content-block");
+    let div = element.querySelector(".nsw-content-block");
     expect(div).not.toBeNull();
 
-    let img = element.shadowRoot.querySelector(".nsw-content-block__image");
+    let img = element.querySelector(".nsw-content-block__image");
     expect(img).toBeNull();
 
-    let title = element.shadowRoot.querySelector(".nsw-content-block__title");
+    let title = element.querySelector(".nsw-content-block__title");
     expect(title).toBeNull();
   });
 
@@ -42,13 +42,13 @@ describe("c-sf-gps-ds-au-nsw-content-block", () => {
 
     document.body.appendChild(element);
 
-    let div = element.shadowRoot.querySelector(".nsw-content-block");
+    let div = element.querySelector(".nsw-content-block");
     expect(div).not.toBeNull();
 
-    let img = element.shadowRoot.querySelector(".nsw-content-block__image");
+    let img = element.querySelector(".nsw-content-block__image");
     expect(img).not.toBeNull();
 
-    let title = element.shadowRoot.querySelector(".nsw-content-block__title");
+    let title = element.querySelector(".nsw-content-block__title");
     expect(title).not.toBeNull();
   });
 

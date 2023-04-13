@@ -46,14 +46,26 @@ export default class SfGpsDsAuNswHeroSearchComm extends NavigationMixin(
     }
   }
 
-  handleSearch(event) {
-    const queryTerm = event.target.value;
+  get computedStyle() {
+    return `background-image: url(${this.image})`;
+  }
 
-    // Navigate to search page using lightning/navigation API: https://developer.salesforce.com/docs/component-library/bundle/lightning:navigation/documentation
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
+  /* events */
+
+  handleSearch(event) {
+    // Navigate to search page using lightning/navigation API:
+    // https://developer.salesforce.com/docs/component-library/bundle/lightning:navigation/documentation
     this[NavigationMixin.Navigate]({
       type: "standard__search",
       state: {
-        term: queryTerm
+        term: event.target.value
       }
     });
   }

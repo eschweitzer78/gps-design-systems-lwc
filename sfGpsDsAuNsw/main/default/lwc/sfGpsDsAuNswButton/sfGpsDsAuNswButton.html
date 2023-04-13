@@ -1,11 +1,11 @@
-<template>
-  <template if:true={link}>
+<template lwc:render-mode="light">
+  <template if:true={isAnchor}>
     <a class={computedClassName} href={link}>
       <slot></slot>
     </a>
   </template>
 
-  <template if:false={link}>
+  <template if:true={isButton}>
     <button type={type} class={computedClassName} onclick={handleClick}>
       {label}
     </button>

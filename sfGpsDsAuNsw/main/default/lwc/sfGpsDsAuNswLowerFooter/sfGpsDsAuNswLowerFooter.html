@@ -1,0 +1,35 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <div class="nsw-container">
+      <p if:true={statement}>{statement}</p>
+
+      <template if:true={items}>
+        <hr />
+        <nav
+          role="navigation"
+          aria-labelledby="lower-footer-links"
+          class="clearfix"
+        >
+          <h4 class="sr-only" id="lower-footer-links">Legal &amp; Privacy</h4>
+          <ul class="clearfix nsw-footer-links">
+            <template for:each={items} for:item="link">
+              <li key={link.index} class="nsw-footer-links__item">
+                <a
+                  href={link.url}
+                  class="nsw-footer-links__link"
+                  data-ndx={link.index}
+                  onclick={handleClick}
+                  >{link.text}</a
+                >
+              </li>
+            </template>
+          </ul>
+        </nav>
+      </template>
+
+      <div class="nsw-footer__info">
+        <slot></slot>
+      </div>
+    </div>
+  </div>
+</template>

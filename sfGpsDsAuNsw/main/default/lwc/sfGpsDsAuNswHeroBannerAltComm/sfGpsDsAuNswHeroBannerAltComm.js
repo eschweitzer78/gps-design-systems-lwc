@@ -18,7 +18,7 @@ export default class SfGpsDsAuNswHeroBannerAltComm extends SfGpsDsLwc {
       this._titleUrl = url;
       this._titleLabel = text;
     } catch (e) {
-      console.log("Exception: " + JSON.stringify(e));
+      this.addError("TL-MD", "Issue when parsing titleLink markdown");
     }
   }
 
@@ -55,7 +55,12 @@ export default class SfGpsDsAuNswHeroBannerAltComm extends SfGpsDsLwc {
 
   @api className;
 
-  // ---- rendered
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 
   _rendered = false;
 

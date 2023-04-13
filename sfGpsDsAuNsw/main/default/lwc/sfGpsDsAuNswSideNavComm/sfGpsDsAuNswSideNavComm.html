@@ -1,0 +1,17 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-au-nsw-side-nav
+      title={_title}
+      url={_url}
+      nav-items={_items}
+      class-name={className}
+      onnavigate={handleNavigate}
+    >
+    </c-sf-gps-ds-au-nsw-side-nav>
+
+    <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

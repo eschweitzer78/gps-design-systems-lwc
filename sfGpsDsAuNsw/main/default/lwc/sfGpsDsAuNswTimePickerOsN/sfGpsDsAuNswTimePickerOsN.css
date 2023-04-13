@@ -1,5 +1,5 @@
 @import "c/sfGpsDsAuNswCoreOs";
-@import "c/sfGpsDsAuNswFormCssOs";
+@import "c/sfGpsDsAuNswFormOs";
 @import "c/sfGpsDsAuNswPredictiveListOsN";
 
 /* Need to adjust this rule as in Omniscript they always be first child */

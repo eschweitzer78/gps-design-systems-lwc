@@ -9,6 +9,8 @@ import { LightningElement, api, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeader extends LightningElement {
+  static renderMode = "light";
+
   @api masterbrand;
   @api masterbrandAlt;
   @api srMasterbrandLabel = "NSW Government";

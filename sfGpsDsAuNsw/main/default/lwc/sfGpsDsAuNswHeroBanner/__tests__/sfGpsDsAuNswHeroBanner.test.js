@@ -5,7 +5,6 @@ const tag = "c-sf-gps-ds-au-nsw-hero-banner";
 const ctaSelector = ".nsw-hero-banner__button";
 const ctaASelector = ".nsw-hero-banner__button a";
 const linksSelector = ".nsw-hero-banner__links";
-const bannerBgSelector = ".nsw-hero-banner__bg";
 const subtitleSelector = ".nsw-hero-banner__list .nsw-hero-banner__sub-title";
 const linkListSelector = ".nsw-hero-banner__list li a";
 const bannerImageSelector = ".nsw-hero-banner__image";
@@ -18,7 +17,6 @@ describe("c-sf-gps-ds-au-nsw-hero-banner", () => {
     }
   });
 
-  // TODO flesh out
   it("renders as expected with minimal info", async () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswBanner
@@ -27,17 +25,14 @@ describe("c-sf-gps-ds-au-nsw-hero-banner", () => {
     element.title = "Hero Banner";
     document.body.appendChild(element);
 
-    let cta = element.shadowRoot.querySelector(ctaSelector);
+    let cta = element.querySelector(ctaSelector);
     expect(cta).toBeNull();
 
-    let links = element.shadowRoot.querySelector(linksSelector);
+    let links = element.querySelector(linksSelector);
     expect(links).toBeNull();
 
-    let bannerImage = element.shadowRoot.querySelector(bannerImageSelector);
+    let bannerImage = element.querySelector(bannerImageSelector);
     expect(bannerImage).toBeNull();
-
-    let bannerBg = element.shadowRoot.querySelector(bannerBgSelector);
-    expect(bannerBg).not.toBeNull();
   });
 
   it("renders as expected with full info", async () => {
@@ -60,30 +55,27 @@ describe("c-sf-gps-ds-au-nsw-hero-banner", () => {
 
     document.body.appendChild(element);
 
-    let cta = element.shadowRoot.querySelector(ctaSelector);
+    let cta = element.querySelector(ctaSelector);
     expect(cta).not.toBeNull();
 
-    let ctaA = element.shadowRoot.querySelector(ctaASelector);
+    let ctaA = element.querySelector(ctaASelector);
     expect(ctaA).not.toBeNull();
     expect(ctaA.href).toBe(`http://localhost/${element.cta.url}`);
     expect(ctaA.className).toBe("nsw-button nsw-button--dark");
 
-    let links = element.shadowRoot.querySelector(linksSelector);
+    let links = element.querySelector(linksSelector);
     expect(links).not.toBeNull();
 
-    let subtitle = element.shadowRoot.querySelectorAll(subtitleSelector);
+    let subtitle = element.querySelectorAll(subtitleSelector);
     expect(subtitle).not.toBeNull();
 
-    let linkList = element.shadowRoot.querySelectorAll(linkListSelector);
+    let linkList = element.querySelectorAll(linkListSelector);
     expect(linkList).not.toBeNull();
     expect(linkList.length).toEqual(2);
     expect(linkList[0].textContent).toBe(element.links[0].text);
 
-    let bannerImage = element.shadowRoot.querySelector(bannerImageSelector);
+    let bannerImage = element.querySelector(bannerImageSelector);
     expect(bannerImage).not.toBeNull();
-
-    let bannerBg = element.shadowRoot.querySelector(bannerBgSelector);
-    expect(bannerBg).toBeNull();
   });
 
   it("is accessible", async () => {

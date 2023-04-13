@@ -1,46 +1,44 @@
-<template>
-  <div class="nsw-section nsw-section--image" style={computedSectionStyle}>
-    <div class={computedClassName}>
-      <div class="nsw-container">
-        <div class="hero-search__wrapper">
-          <div class="hero-search__content">
-            <h1>{title}</h1>
-            <p class="nsw-intro">{intro}</p>
-            <div role="search" class="hero-search__form">
-              <form
-                class="nsw-form__input-group nsw-form__input-group--icon nsw-form__input-group--large"
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <div class="nsw-container">
+      <div class="hero-search__wrapper">
+        <div class="hero-search__content">
+          <h1>{title}</h1>
+          <p class="nsw-intro">{intro}</p>
+          <div role="search" class="hero-search__form">
+            <form
+              class="nsw-form__input-group nsw-form__input-group--icon nsw-form__input-group--large"
+            >
+              <label class="sr-only" for="form-input-group">{srLabel}</label>
+              <input
+                class="nsw-form__input"
+                type="text"
+                id="form-input-group"
+                name="form-input-group"
+                value={value}
+                onchange={handleChange}
+                onkeyup={handleKeyUp}
+              />
+              <button
+                class="nsw-button nsw-button--white nsw-button--flex"
+                onclick={handleClick}
               >
-                <label class="sr-only" for="form-input-group">{srLabel}</label>
-                <input
-                  class="nsw-form__input"
-                  type="text"
-                  id="form-input-group"
-                  name="form-input-group"
-                  value={value}
-                  onchange={handleChange}
-                  onkeyup={handleKeyUp}
-                />
-                <button
-                  class="nsw-button nsw-button--white nsw-button--flex"
-                  onclick={handleClick}
+                <span
+                  class="material-icons nsw-material-icons"
+                  aria-hidden="true"
+                  >search</span
                 >
-                  <span
-                    class="material-icons nsw-material-icons"
-                    aria-hidden="true"
-                    >search</span
-                  >
-                  <span class="sr-only">{srSearchButtonLabel}</span>
-                </button>
-              </form>
-            </div>
+                <span class="sr-only">{srSearchButtonLabel}</span>
+              </button>
+            </form>
+          </div>
 
-            <div if:true={links} class="hero-search__suggested">
-              <ul>
-                <template for:each={links} for:item="link">
-                  <li key={link.index}><a href={link.url}>{link.text}</a></li>
-                </template>
-              </ul>
-            </div>
+          <div if:true={links} class="hero-search__suggested">
+            <ul>
+              <template for:each={links} for:item="link">
+                <li key={link.index}><a href={link.url}>{link.text}</a></li>
+              </template>
+            </ul>
           </div>
         </div>
       </div>

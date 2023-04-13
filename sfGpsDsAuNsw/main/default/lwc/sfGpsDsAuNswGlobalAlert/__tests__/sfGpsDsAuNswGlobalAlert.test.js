@@ -19,7 +19,7 @@ describe("c-sf-gps-ds-au-nsw-global-alert", () => {
 
     document.body.appendChild(element);
 
-    let widget = element.shadowRoot.querySelector(".nsw-global-alert");
+    let widget = element.querySelector(".nsw-global-alert");
     expect(widget).not.toBeNull();
     expect(widget.className).toBe("nsw-global-alert");
   });
@@ -38,17 +38,15 @@ describe("c-sf-gps-ds-au-nsw-global-alert", () => {
 
     document.body.appendChild(element);
 
-    let widget = element.shadowRoot.querySelector(".nsw-global-alert");
+    let widget = element.querySelector(".nsw-global-alert");
     expect(widget).not.toBeNull();
     expect(widget.className).toContain("--critical");
 
-    let tElement = element.shadowRoot.querySelector(".nsw-global-alert__title");
+    let tElement = element.querySelector(".nsw-global-alert__title");
     expect(tElement).not.toBeNull();
     expect(tElement.innerHTML).toBe(title);
 
-    let cElement = element.shadowRoot.querySelector(
-      ".nsw-global-alert__content > p"
-    );
+    let cElement = element.querySelector(".nsw-global-alert__content > p");
     expect(cElement).not.toBeNull();
     expect(cElement.innerHTML).toContain(copy);
   });
@@ -67,13 +65,13 @@ describe("c-sf-gps-ds-au-nsw-global-alert", () => {
 
     document.body.appendChild(element);
 
-    let button = element.shadowRoot.querySelector("button");
+    let button = element.querySelector("button");
     expect(button).not.toBeNull();
 
     button.click();
 
     return Promise.resolve().then(() => {
-      let tElement = element.shadowRoot.querySelector(".nsw-global-alert");
+      let tElement = element.querySelector(".nsw-global-alert");
       expect(tElement).toBeNull();
     });
   });

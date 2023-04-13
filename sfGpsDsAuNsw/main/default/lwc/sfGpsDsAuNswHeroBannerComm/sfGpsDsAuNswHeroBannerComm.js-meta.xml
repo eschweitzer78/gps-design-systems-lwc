@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Hero Banner</masterLabel>
   <targets>
@@ -28,7 +28,7 @@
         type="String"
         label="Style"
         description="Style used for the hero banner."
-        datasource="dark,light,white"
+        datasource="dark,light,white,off-white"
         default="dark"
       />
       <property
@@ -43,6 +43,13 @@
         type="Boolean"
         label="Featured"
         description="Sets a minimum height."
+        default="false"
+      />
+      <property
+        name="lines"
+        type="Boolean"
+        label="Supporting lines"
+        description="Adds supporting lines."
         default="false"
       />
       <property

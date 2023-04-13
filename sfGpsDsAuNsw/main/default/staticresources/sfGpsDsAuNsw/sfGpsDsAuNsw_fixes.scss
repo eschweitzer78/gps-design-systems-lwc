@@ -1,0 +1,11 @@
+.nsw-scope .nsw-grid--flush {
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+@media (min-width: 48rem) {
+  .nsw-scope .nsw-grid--flush {
+      margin-top: -1rem;
+      margin-bottom: -1rem;
+  }
+}

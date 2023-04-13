@@ -17,6 +17,13 @@
         required="true"
       />
       <property
+        name="orientation"
+        type="String"
+        label="Orientation"
+        datasource="vertical,horizontal"
+        default="vertical"
+      />
+      <property
         name="ipName"
         type="String"
         label="Integration procedure name"
@@ -39,6 +46,13 @@
         type="Boolean"
         label="Display date"
         description="Use the content publication date as the card date."
+      />
+      <property
+        name="dateStyle"
+        type="String"
+        label="Date style"
+        datasource="short,medium,long,full"
+        default="medium"
       />
       <property
         name="xsWidth"

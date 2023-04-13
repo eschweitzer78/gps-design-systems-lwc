@@ -1,0 +1,63 @@
+<template lwc:render-mode="light">
+  <nav class={computedClassName} aria-labelledby={computedAriaLabelledById}>
+    <div
+      if:true={title}
+      class="nsw-side-nav__header"
+      id={computedAriaLabelledById}
+    >
+      <a href={url}>{title}</a>
+    </div>
+    <ul if:true={_navItems}>
+      <template for:each={_navItems} for:item="navItem">
+        <!-- level 2 -->
+        <li key={navItem.index} class={navItem.className}>
+          <a
+            href={navItem.url}
+            data-ndx={navItem.index}
+            class={navItem.anchorClassName}
+            aria-current={navItem.ariaCurrent}
+            onclick={handleClick}
+          >
+            {navItem.text}
+          </a>
+          <template
+            if:true={navItem.subNav}
+            for:each={navItem.subNav}
+            for:item="subNavItem"
+          >
+            <!-- level 3-->
+            <li key={subNavItem.index} class={subNavItem.className}>
+              <a
+                href={subNavItem.url}
+                data-ndx={subNavItem.index}
+                class={subNavItem.anchorClassName}
+                aria-current={subNavItem.ariaCurrent}
+                onclick={handleClick}
+              >
+                {subNavItem.text}
+              </a>
+              <template
+                if:true={subNavItem.subNav}
+                for:each={subNavItem.subNav}
+                for:item="subSubNavItem"
+              >
+                <!-- level 4 -->
+                <li key={subSubNavItem.index} class={subSubNavItem.className}>
+                  <a
+                    href={subSubNavItem.url}
+                    data-ndx={subSubNavItem.index}
+                    class={subSubNavItem.anchorClassName}
+                    aria-current={subNavNavItem.ariaCurrent}
+                    onclick={handleClick}
+                  >
+                    {subSubNavItem.text}
+                  </a>
+                </li>
+              </template>
+            </li>
+          </template>
+        </li>
+      </template>
+    </ul>
+  </nav>
+</template>

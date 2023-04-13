@@ -1,0 +1,17 @@
+.nsw-card--light {
+  .nsw-card__divider {
+    background-color: var(--nsw-text-dark);
+  }
+}
+
+.nsw-scope {
+  .nsw-card__copy {
+    margin-top: 1rem;
+  }
+
+  .nsw-card__date,
+  .nsw-card__tag
+  {
+    margin-bottom: 1rem;
+  }
+}

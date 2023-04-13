@@ -6,20 +6,21 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { parseIso8601, computeClass } from "c/sfGpsDsHelpers";
+import {
+  parseIso8601,
+  computeClass,
+  getUserLocale,
+  formatDate
+} from "c/sfGpsDsHelpers";
 
-const DATE_STYLE_DEFAULT = "medium"; // one of short medium long full, defaults to full
+const DATE_STYLE_DEFAULT = "medium"; // one of short medium long full, defaults to medium
 
-const styleClass = {
-  dark: "nsw-card--dark",
-  light: "nsw-card--light",
-  white: "nsw-card--white"
-};
 export default class SfGpsDsAuNswCard extends LightningElement {
+  static renderMode = "light";
+
   @api link;
-  // ADJUSTED: style is a reserved keyword in lwc
   @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']), defaults to white
-  // END ADJUSTED
+  @api orientation = "vertical"; // oneOf vertical horizontal
   @api tag;
   @api image;
   @api imageAlt;
@@ -56,9 +57,11 @@ export default class SfGpsDsAuNswCard extends LightningElement {
 
   get _dateLocaleString() {
     return this._date
-      ? this._date.toLocaleDateString(undefined, {
-          dateStyle: this.dateStyle || DATE_STYLE_DEFAULT
-        })
+      ? formatDate(
+          this._date,
+          this.dateStyle || DATE_STYLE_DEFAULT,
+          this._userLocale
+        )
       : null;
   }
 
@@ -67,8 +70,17 @@ export default class SfGpsDsAuNswCard extends LightningElement {
       "nsw-card": true,
       "nsw-card--headline": this.headline,
       "nsw-card--highlight": this.highlight,
-      [styleClass[this.cstyle]]: this.cstyle,
+      "nsw-card--dark": this.cstyle === "dark",
+      "nsw-card--light": this.cstyle === "light",
+      "nsw-card--white": this.cstyle === "white",
+      "nsw-card--horizontal": this.orientation === "horizontal",
       [this.className]: this.className
     });
+  }
+
+  _userLocale;
+
+  connectedCallback() {
+    this._userLocale = getUserLocale();
   }
 }

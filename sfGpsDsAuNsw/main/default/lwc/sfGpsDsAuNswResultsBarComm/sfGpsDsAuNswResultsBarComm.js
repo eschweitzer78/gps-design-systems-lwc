@@ -1,6 +1,7 @@
-import { LightningElement, api, track } from "lwc";
+import { api, track } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuNswResultsBarComm extends LightningElement {
+export default class SfGpsDsAuNswResultsBarComm extends SfGpsDsLwc {
   @api from = 1;
   @api to = 10;
   @api total = 5917;
@@ -40,6 +41,15 @@ export default class SfGpsDsAuNswResultsBarComm extends LightningElement {
   get sortOptions() {
     return this._originalSortOptions;
   }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
+  /* events */
 
   handleChange(event) {
     this._value = event.detail;

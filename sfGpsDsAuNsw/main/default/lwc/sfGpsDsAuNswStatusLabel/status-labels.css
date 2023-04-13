@@ -1,0 +1,36 @@
+.nsw-status-label {
+  font-size: var(--nsw-font-size-xs-mobile);
+  line-height: var(--nsw-line-height-xs-mobile);
+  padding: 0.125rem 1rem;
+  border: solid 1px var(--nsw-off-white);
+  background-color: var(--nsw-off-white);
+  border-radius: 1.5rem;
+  color: var(--nsw-text-dark);
+  display: inline-block;
+}
+@media (min-width: 62rem) {
+  .nsw-status-label {
+    font-size: var(--nsw-font-size-xs-desktop);
+    line-height: var(--nsw-line-height-xs-desktop);
+  }
+}
+.nsw-status-label--info {
+  border-color: var(--nsw-status-info);
+  background-color: var(--nsw-status-info);
+  color: var(--nsw-white);
+}
+.nsw-status-label--success {
+  border-color: var(--nsw-status-success);
+  background-color: var(--nsw-status-success);
+  color: var(--nsw-white);
+}
+.nsw-status-label--warning {
+  border-color: var(--nsw-status-warning);
+  background-color: var(--nsw-status-warning);
+  color: var(--nsw-white);
+}
+.nsw-status-label--error {
+  border-color: var(--nsw-status-error);
+  background-color: var(--nsw-status-error);
+  color: var(--nsw-white);
+}

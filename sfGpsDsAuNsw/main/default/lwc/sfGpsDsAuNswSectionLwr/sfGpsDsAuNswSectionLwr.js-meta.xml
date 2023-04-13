@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS LWR Section</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        label="Colour style"
+        name="colorStyle"
+        type="String"
+        default="none"
+        datasource="none,brand-dark,brand-light,brand-supplementary,black,white,off-white,grey-01,grey-02,grey-03,grey-04"
+      />
+      <property
+        label="Padding style"
+        name="paddingStyle"
+        type="String"
+        default="full"
+        datasource="full,half,none"
+      />
+      <property
+        label="Container"
+        name="withContainer"
+        type="Boolean"
+        default="true"
+      />
+      <property label="Box" name="withBox" type="Boolean" default="false" />
+      <property
+        label="Invert"
+        name="withInvert"
+        type="Boolean"
+        default="false"
+      />
+      <property label="Image Src" name="imageSrc" type="String" />
+      <property label="Additional CSS class" name="className" type="String" />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

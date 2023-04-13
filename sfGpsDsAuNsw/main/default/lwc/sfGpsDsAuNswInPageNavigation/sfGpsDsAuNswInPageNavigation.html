@@ -1,0 +1,14 @@
+<template lwc:render-mode="light">
+  <nav class={computedClassName} aria-labelledby={computedAriaLabelledById}>
+    <div id={computedAriaLabelledById} class="nsw-in-page-nav__title">
+      On this page
+    </div>
+    <ul>
+      <template if:true={items} for:each={items} for:item="item">
+        <li key={item.index}>
+          <a href={item.url}>{item.text}</a>
+        </li>
+      </template>
+    </ul>
+  </nav>
+</template>

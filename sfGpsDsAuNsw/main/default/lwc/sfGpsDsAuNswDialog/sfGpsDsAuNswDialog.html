@@ -1,0 +1,44 @@
+<template lwc:render-mode="light">
+  <div
+    class={computedClassName}
+    role="dialog"
+    aria-labelledby={computedAriaLabelledById}
+    aria-expanded={isOpen}
+  >
+    <div class="nsw-dialog__wrapper">
+      <div class="nsw-dialog__container">
+        <div class="nsw-dialog__top">
+          <div class="nsw-dialog__title">
+            <h2 id={computedAriaLabelledById}>{title}</h2>
+          </div>
+          <div if:true={isDismissible} class="nsw-dialog__close">
+            <button class="nsw-icon-button" onclick={handleCloseClick}>
+              <span class="material-icons nsw-material-icons" aria-hidden="true"
+                >close</span
+              >
+              <span class="sr-only">Close</span>
+            </button>
+          </div>
+        </div>
+        <div class="nsw-dialog__content">
+          <slot></slot>
+        </div>
+      </div>
+      <div class="nsw-dialog__bottom">
+        <button
+          class={computedPrimaryButtonClassName}
+          onclick={handlePrimaryClick}
+        >
+          {primaryButtonText}
+        </button>
+        <button
+          if:true={secondaryButtonText}
+          class="nsw-button nsw-button--dark-outline-solid"
+          onclick={handleSecondaryClick}
+        >
+          {secondaryButtonText}
+        </button>
+      </div>
+    </div>
+  </div>
+</template>

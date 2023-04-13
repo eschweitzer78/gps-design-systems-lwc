@@ -1,0 +1,8 @@
+.nsw-scope {
+  .nsw-button,
+  .nsw-button:hover,
+  &.nsw-button,
+  &.nsw-button:hover {
+    text-decoration: none;
+  }
+}

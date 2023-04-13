@@ -39,4 +39,11 @@ export default class SfGpsDsAuNswLinkListComm extends NavigationMixin(
       this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 }

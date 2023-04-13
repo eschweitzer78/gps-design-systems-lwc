@@ -30,21 +30,21 @@ describe("c-sf-gps-ds-au-nsw-list-item", () => {
 
     // Assert
 
-    let label = element.shadowRoot.querySelector(labelSelector);
+    let label = element.querySelector(labelSelector);
     expect(label).toBeNull();
 
-    let dateOrLink = element.shadowRoot.querySelector(dateOrLinkSelector);
+    let dateOrLink = element.querySelector(dateOrLinkSelector);
     expect(dateOrLink).toBeNull();
 
-    let titleAnchor = element.shadowRoot.querySelector(titleSelectorAnchor);
+    let titleAnchor = element.querySelector(titleSelectorAnchor);
     expect(titleAnchor).not.toBeNull();
     expect(titleAnchor.href).toBe(`http://localhost/${element.link}`);
     expect(titleAnchor.textContent).toBe(element.title);
 
-    let tags = element.shadowRoot.querySelector(tagsSelector);
+    let tags = element.querySelector(tagsSelector);
     expect(tags).toBeNull();
 
-    let image = element.shadowRoot.querySelector(imageSelector);
+    let image = element.querySelector(imageSelector);
     expect(image).toBeNull();
   });
 
@@ -64,10 +64,10 @@ describe("c-sf-gps-ds-au-nsw-list-item", () => {
 
     // Assert
 
-    let label = element.shadowRoot.querySelector(labelSelector);
+    let label = element.querySelector(labelSelector);
     expect(label).toBeNull();
 
-    let dateOrLink = element.shadowRoot.querySelectorAll(dateOrLinkSelector);
+    let dateOrLink = element.querySelectorAll(dateOrLinkSelector);
     expect(dateOrLink).not.toBeNull();
     expect(dateOrLink.length).toBe(2); // once for data, once for the link
   });
@@ -92,22 +92,22 @@ describe("c-sf-gps-ds-au-nsw-list-item", () => {
 
     // Assert
 
-    let label = element.shadowRoot.querySelector(labelSelector);
+    let label = element.querySelector(labelSelector);
     expect(label).not.toBeNull();
 
-    let dateOrLink = element.shadowRoot.querySelectorAll(dateOrLinkSelector);
+    let dateOrLink = element.querySelectorAll(dateOrLinkSelector);
     expect(dateOrLink).not.toBeNull();
     expect(dateOrLink.length).toBe(1); // once for data, but not for link (as showLink wasn't set)
 
-    let titleAnchor = element.shadowRoot.querySelector(titleSelectorAnchor);
+    let titleAnchor = element.querySelector(titleSelectorAnchor);
     expect(titleAnchor).not.toBeNull();
     expect(titleAnchor.href).toBe(`http://localhost/${element.link}`);
     expect(titleAnchor.textContent).toBe(element.title);
 
-    let tags = element.shadowRoot.querySelector(tagsSelector);
+    let tags = element.querySelector(tagsSelector);
     expect(tags).not.toBeNull();
 
-    let image = element.shadowRoot.querySelector(imageSelector + " img");
+    let image = element.querySelector(imageSelector + " img");
     expect(image).not.toBeNull();
     image.src = element.image;
     image.alt = element.imageAlt;

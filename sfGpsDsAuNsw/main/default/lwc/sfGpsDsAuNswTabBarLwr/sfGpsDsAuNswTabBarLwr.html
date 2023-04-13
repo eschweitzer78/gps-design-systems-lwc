@@ -1,0 +1,33 @@
+<template lwc:render-mode="light">
+  <div class="nsw-tabs__list-wrapper">
+    <ul class="nsw-tabs__list" role="tablist" onkeydown={handleKeyDown}>
+      <template for:each={_tabs} for:item="tab">
+        <template if:true={tab.label}>
+          <li
+            key={tab.value}
+            class={tab.className}
+            onclick={handleTabClick}
+            title={tab.title}
+            role="presentation"
+            data-label={tab.label}
+            data-tab-value={tab.value}
+          >
+            <a
+              class={tab.linkClassName}
+              role="tab"
+              href="javascript:void(0)"
+              onblur={handleBlur}
+              onfocus={handleFocus}
+              tabindex={tab.tabIndex}
+              aria-selected={tab.ariaSelected}
+              data-tab-value={tab.value}
+              data-label={tab.label}
+            >
+              {tab.label}
+            </a>
+          </li>
+        </template>
+      </template>
+    </ul>
+  </div>
+</template>

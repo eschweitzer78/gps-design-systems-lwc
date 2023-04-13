@@ -9,19 +9,16 @@ import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeroSearch extends LightningElement {
+  static renderMode = "light";
+
   @api title;
   @api intro;
-  @api image;
   @api links;
   @api className;
   @api value = ""; // ADJUSTED: added value public attribute
 
   @api srLabel = "Search site for:";
   @api srSearchButtonLabel = "Search";
-
-  get computedSectionStyle() {
-    return this.image ? `background-image: url(${this.image});` : "";
-  }
 
   get computedClassName() {
     return computeClass({

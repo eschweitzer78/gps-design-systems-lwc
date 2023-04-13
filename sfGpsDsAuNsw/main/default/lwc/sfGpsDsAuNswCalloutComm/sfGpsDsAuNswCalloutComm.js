@@ -48,11 +48,18 @@ export default class SfGpsDsAuNswCalloutComm extends SfGpsDsLwc {
     }
   }
 
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
   _rendered = false;
 
   renderedCallback() {
     if (this._rendered === false) {
-      let element = this.template.querySelector(".sf-gps-markdown");
+      let element = this.template.querySelector(".sf-gps-ds-markdown");
       if (element) {
         /*
          * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar

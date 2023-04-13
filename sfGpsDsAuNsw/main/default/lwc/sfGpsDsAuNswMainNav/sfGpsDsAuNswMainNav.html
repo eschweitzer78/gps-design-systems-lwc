@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <nav id="main-nav" class={computedClassName} aria-label={navAriaLabel}>
     <div class="nsw-main-nav__header">
       <div class="nsw-main-nav__title">{navTitle}</div>
@@ -58,7 +58,7 @@
               </template>
             </a>
 
-            <!-- SubNav -->
+            <!-- SubNav TODO change id -->
             <div
               class={navItem.subNavClassName}
               id={navItem.index}
@@ -118,6 +118,7 @@
                     east
                   </span>
                 </a>
+
                 <span if:false={navItem.url}>{navItem.text}</span>
               </div>
               <div class="nsw-main-nav__description">{navItem.description}</div>

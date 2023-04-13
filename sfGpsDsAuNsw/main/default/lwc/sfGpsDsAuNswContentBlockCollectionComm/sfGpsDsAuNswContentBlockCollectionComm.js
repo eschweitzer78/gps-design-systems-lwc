@@ -6,7 +6,7 @@
  */
 
 import { api } from "lwc";
-import { htmlDecode } from "c/sfGpsDsHelpers";
+import { htmlDecode, computeClass } from "c/sfGpsDsHelpers";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
 export default class SfGpsDsAuNswContentBlockCollectionComm extends SfGpsDsIpLwc {
@@ -45,14 +45,19 @@ export default class SfGpsDsAuNswContentBlockCollectionComm extends SfGpsDsIpLwc
   @api className;
 
   mapIpData(data) {
-    return data.map((block) => ({
-      ...block,
-      copy: block.copy ? htmlDecode(block.copy) : null
-    }));
+    return data && Array.isArray(data)
+      ? data.map((block) => ({
+          ...block,
+          copy: block.copy ? htmlDecode(block.copy) : null
+        }))
+      : null;
   }
 
   get computedClassName() {
-    return `nsw-grid ${this.className ? this.className : ""}`;
+    return computeClass({
+      "nsw-grid": true,
+      [this.className]: this.className
+    });
   }
 
   get computedColClassName() {
@@ -69,7 +74,10 @@ export default class SfGpsDsAuNswContentBlockCollectionComm extends SfGpsDsIpLwc
     );
   }
 
+  /* lifecycle */
+
   connectedCallback() {
     super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }
