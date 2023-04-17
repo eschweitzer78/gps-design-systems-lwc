@@ -2490,7 +2490,7 @@ a:visited {
   }
 }
 .forceCommunityRichText .nsw-scope,
-.nsw-scope {
+.slds-rich-text-editor__output .nsw-scope {
   margin: 0;
   font-size: var(--nsw-font-size-sm-mobile);
   line-height: var(--nsw-line-height-sm-mobile);
@@ -2501,7 +2501,7 @@ a:visited {
   color: var(--nsw-text-dark);
 }
 .forceCommunityRichText .nsw-scope html,
-.nsw-scope html {
+.slds-rich-text-editor__output .nsw-scope html {
   font-size: 100%;
   line-height: var(--nsw-line-height);
   box-sizing: border-box;
@@ -2509,18 +2509,18 @@ a:visited {
 .forceCommunityRichText .nsw-scope *,
 .forceCommunityRichText .nsw-scope *::before,
 .forceCommunityRichText .nsw-scope *::after,
-.nsw-scope *,
-.nsw-scope *::before,
-.nsw-scope *::after {
+.slds-rich-text-editor__output .nsw-scope *,
+.slds-rich-text-editor__output .nsw-scope *::before,
+.slds-rich-text-editor__output .nsw-scope *::after {
   box-sizing: inherit;
 }
 @media print {
   .forceCommunityRichText .nsw-scope *,
   .forceCommunityRichText .nsw-scope *::before,
   .forceCommunityRichText .nsw-scope *::after,
-  .nsw-scope *,
-  .nsw-scope *::before,
-  .nsw-scope *::after {
+  .slds-rich-text-editor__output .nsw-scope *,
+  .slds-rich-text-editor__output .nsw-scope *::before,
+  .slds-rich-text-editor__output .nsw-scope *::after {
     background: rgba(0, 0, 0, 0) !important;
     color: var(--nsw-black) !important;
     box-shadow: none !important;
@@ -2528,63 +2528,63 @@ a:visited {
   }
   .forceCommunityRichText .nsw-scope a,
   .forceCommunityRichText .nsw-scope a:visited,
-  .nsw-scope a,
-  .nsw-scope a:visited {
+  .slds-rich-text-editor__output .nsw-scope a,
+  .slds-rich-text-editor__output .nsw-scope a:visited {
     text-decoration: underline;
   }
   .forceCommunityRichText .nsw-scope a[href]::after,
-  .nsw-scope a[href]::after {
+  .slds-rich-text-editor__output .nsw-scope a[href]::after {
     content: " (" attr(href) ")";
   }
   .forceCommunityRichText .nsw-scope a[href^="#"]::after,
   .forceCommunityRichText .nsw-scope a[href^="javascript:"]::after,
-  .nsw-scope a[href^="#"]::after,
-  .nsw-scope a[href^="javascript:"]::after {
+  .slds-rich-text-editor__output .nsw-scope a[href^="#"]::after,
+  .slds-rich-text-editor__output .nsw-scope a[href^="javascript:"]::after {
     content: "";
   }
   .forceCommunityRichText .nsw-scope abbr[title]::after,
-  .nsw-scope abbr[title]::after {
+  .slds-rich-text-editor__output .nsw-scope abbr[title]::after {
     content: " (" attr(title) ")";
   }
   .forceCommunityRichText .nsw-scope pre,
-  .nsw-scope pre {
+  .slds-rich-text-editor__output .nsw-scope pre {
     white-space: pre-wrap !important;
   }
   .forceCommunityRichText .nsw-scope pre,
   .forceCommunityRichText .nsw-scope blockquote,
-  .nsw-scope pre,
-  .nsw-scope blockquote {
+  .slds-rich-text-editor__output .nsw-scope pre,
+  .slds-rich-text-editor__output .nsw-scope blockquote {
     border: 1px solid var(--nsw-black);
     page-break-inside: avoid;
   }
   .forceCommunityRichText .nsw-scope thead,
-  .nsw-scope thead {
+  .slds-rich-text-editor__output .nsw-scope thead {
     display: table-header-group;
   }
   .forceCommunityRichText .nsw-scope tr,
   .forceCommunityRichText .nsw-scope img,
-  .nsw-scope tr,
-  .nsw-scope img {
+  .slds-rich-text-editor__output .nsw-scope tr,
+  .slds-rich-text-editor__output .nsw-scope img {
     page-break-inside: avoid;
   }
   .forceCommunityRichText .nsw-scope p,
   .forceCommunityRichText .nsw-scope h2,
   .forceCommunityRichText .nsw-scope h3,
-  .nsw-scope p,
-  .nsw-scope h2,
-  .nsw-scope h3 {
+  .slds-rich-text-editor__output .nsw-scope p,
+  .slds-rich-text-editor__output .nsw-scope h2,
+  .slds-rich-text-editor__output .nsw-scope h3 {
     orphans: 3;
     widows: 3;
   }
   .forceCommunityRichText .nsw-scope h2,
   .forceCommunityRichText .nsw-scope h3,
-  .nsw-scope h2,
-  .nsw-scope h3 {
+  .slds-rich-text-editor__output .nsw-scope h2,
+  .slds-rich-text-editor__output .nsw-scope h3 {
     page-break-after: avoid;
   }
 }
 .forceCommunityRichText .nsw-scope .sr-only,
-.nsw-scope .sr-only {
+.slds-rich-text-editor__output .nsw-scope .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important;
   clip-path: inset(50%) !important;
@@ -2596,7 +2596,7 @@ a:visited {
   white-space: nowrap !important;
 }
 .forceCommunityRichText .nsw-scope .sr-only-focusable:focus,
-.nsw-scope .sr-only-focusable:focus {
+.slds-rich-text-editor__output .nsw-scope .sr-only-focusable:focus {
   clip: auto !important;
   clip-path: none !important;
   height: auto !important;
@@ -2606,7 +2606,7 @@ a:visited {
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope,
-  .nsw-scope {
+  .slds-rich-text-editor__output .nsw-scope {
     font-size: var(--nsw-font-size-sm-desktop);
     line-height: var(--nsw-line-height-sm-desktop);
   }
@@ -2616,51 +2616,51 @@ a:visited {
 .forceCommunityRichText .nsw-scope textarea,
 .forceCommunityRichText .nsw-scope textfield,
 .forceCommunityRichText .nsw-scope select,
-.nsw-scope button,
-.nsw-scope input,
-.nsw-scope textarea,
-.nsw-scope textfield,
-.nsw-scope select {
+.slds-rich-text-editor__output .nsw-scope button,
+.slds-rich-text-editor__output .nsw-scope input,
+.slds-rich-text-editor__output .nsw-scope textarea,
+.slds-rich-text-editor__output .nsw-scope textfield,
+.slds-rich-text-editor__output .nsw-scope select {
   font-family: var(--nsw-font-family);
 }
 .forceCommunityRichText .nsw-scope p,
 .forceCommunityRichText .nsw-scope ul,
 .forceCommunityRichText .nsw-scope ol,
 .forceCommunityRichText .nsw-scope dl,
-.nsw-scope p,
-.nsw-scope ul,
-.nsw-scope ol,
-.nsw-scope dl {
+.slds-rich-text-editor__output .nsw-scope p,
+.slds-rich-text-editor__output .nsw-scope ul,
+.slds-rich-text-editor__output .nsw-scope ol,
+.slds-rich-text-editor__output .nsw-scope dl {
   margin: 0;
 }
 .forceCommunityRichText .nsw-scope * + p,
 .forceCommunityRichText .nsw-scope * + ul,
 .forceCommunityRichText .nsw-scope * + ol,
 .forceCommunityRichText .nsw-scope * + dl,
-.nsw-scope * + p,
-.nsw-scope * + ul,
-.nsw-scope * + ol,
-.nsw-scope * + dl {
+.slds-rich-text-editor__output .nsw-scope * + p,
+.slds-rich-text-editor__output .nsw-scope * + ul,
+.slds-rich-text-editor__output .nsw-scope * + ol,
+.slds-rich-text-editor__output .nsw-scope * + dl {
   margin-top: 1rem;
 }
 .forceCommunityRichText .nsw-scope ul li,
 .forceCommunityRichText .nsw-scope ol li,
-.nsw-scope ul li,
-.nsw-scope ol li {
+.slds-rich-text-editor__output .nsw-scope ul li,
+.slds-rich-text-editor__output .nsw-scope ol li {
   margin-top: 0.5rem;
 }
 .forceCommunityRichText .nsw-scope dt,
-.nsw-scope dt {
+.slds-rich-text-editor__output .nsw-scope dt {
   margin-top: 0.5rem;
 }
 .forceCommunityRichText .nsw-scope small,
-.nsw-scope small {
+.slds-rich-text-editor__output .nsw-scope small {
   font-size: var(--nsw-font-size-xs-mobile);
   line-height: var(--nsw-line-height-xs-mobile);
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope small,
-  .nsw-scope small {
+  .slds-rich-text-editor__output .nsw-scope small {
     font-size: var(--nsw-font-size-xs-desktop);
     line-height: var(--nsw-line-height-xs-desktop);
   }
@@ -2668,14 +2668,14 @@ a:visited {
 .forceCommunityRichText .nsw-scope abbr,
 .forceCommunityRichText .nsw-scope abbr[title],
 .forceCommunityRichText .nsw-scope acronym,
-.nsw-scope abbr,
-.nsw-scope abbr[title],
-.nsw-scope acronym {
+.slds-rich-text-editor__output .nsw-scope abbr,
+.slds-rich-text-editor__output .nsw-scope abbr[title],
+.slds-rich-text-editor__output .nsw-scope acronym {
   text-decoration: none;
   border-bottom: 1px var(--nsw-brand-dark) dashed;
 }
 .forceCommunityRichText .nsw-scope blockquote,
-.nsw-scope blockquote {
+.slds-rich-text-editor__output .nsw-scope blockquote {
   font-size: var(--nsw-font-size-lg-mobile);
   line-height: var(--nsw-line-height-lg-mobile);
   margin-top: 1.5rem;
@@ -2687,31 +2687,31 @@ a:visited {
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope blockquote,
-  .nsw-scope blockquote {
+  .slds-rich-text-editor__output .nsw-scope blockquote {
     font-size: var(--nsw-font-size-lg-desktop);
     line-height: var(--nsw-line-height-lg-desktop);
   }
 }
 .forceCommunityRichText .nsw-scope blockquote:first-child,
-.nsw-scope blockquote:first-child {
+.slds-rich-text-editor__output .nsw-scope blockquote:first-child {
   margin-top: 0;
 }
 @media (min-width: 48rem) {
   .forceCommunityRichText .nsw-scope blockquote,
-  .nsw-scope blockquote {
+  .slds-rich-text-editor__output .nsw-scope blockquote {
     margin-top: 2rem;
   }
 }
 @media (min-width: 48rem) {
   .forceCommunityRichText .nsw-scope blockquote,
-  .nsw-scope blockquote {
+  .slds-rich-text-editor__output .nsw-scope blockquote {
     margin-left: auto;
     margin-right: auto;
     max-width: 75%;
   }
 }
 .forceCommunityRichText .nsw-scope table,
-.nsw-scope table {
+.slds-rich-text-editor__output .nsw-scope table {
   margin-top: 1.5rem;
   border: 0;
   border-collapse: collapse;
@@ -2719,24 +2719,24 @@ a:visited {
   caption-side: bottom;
 }
 .forceCommunityRichText .nsw-scope table:first-child,
-.nsw-scope table:first-child {
+.slds-rich-text-editor__output .nsw-scope table:first-child {
   margin-top: 0;
 }
 @media (min-width: 48rem) {
   .forceCommunityRichText .nsw-scope table,
-  .nsw-scope table {
+  .slds-rich-text-editor__output .nsw-scope table {
     margin-top: 2rem;
   }
 }
 .forceCommunityRichText .nsw-scope table caption,
-.nsw-scope table caption {
+.slds-rich-text-editor__output .nsw-scope table caption {
   padding: 0.75rem 0.5rem;
   text-align: left;
 }
 .forceCommunityRichText .nsw-scope table th,
 .forceCommunityRichText .nsw-scope table td,
-.nsw-scope table th,
-.nsw-scope table td {
+.slds-rich-text-editor__output .nsw-scope table th,
+.slds-rich-text-editor__output .nsw-scope table td {
   padding: 0.75rem 0.5rem;
   text-align: left;
   vertical-align: baseline;
@@ -2745,21 +2745,21 @@ a:visited {
 .forceCommunityRichText .nsw-scope table th,
 .forceCommunityRichText .nsw-scope table thead td,
 .forceCommunityRichText .nsw-scope table tfoot td,
-.nsw-scope table th,
-.nsw-scope table thead td,
-.nsw-scope table tfoot td {
+.slds-rich-text-editor__output .nsw-scope table th,
+.slds-rich-text-editor__output .nsw-scope table thead td,
+.slds-rich-text-editor__output .nsw-scope table tfoot td {
   font-weight: var(--nsw-font-bold);
 }
 .forceCommunityRichText .nsw-scope table thead,
-.nsw-scope table thead {
+.slds-rich-text-editor__output .nsw-scope table thead {
   border-bottom: solid 2px var(--nsw-grey-01);
 }
 .forceCommunityRichText .nsw-scope .nsw-section--invert table thead,
-.nsw-scope .nsw-section--invert table thead {
+.slds-rich-text-editor__output .nsw-scope .nsw-section--invert table thead {
   border-color: var(--nsw-white);
 }
 .forceCommunityRichText .nsw-scope cite,
-.nsw-scope cite {
+.slds-rich-text-editor__output .nsw-scope cite {
   font-size: var(--nsw-font-size-sm-mobile);
   line-height: var(--nsw-line-height-sm-mobile);
   margin-top: 1rem;
@@ -2768,17 +2768,17 @@ a:visited {
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope cite,
-  .nsw-scope cite {
+  .slds-rich-text-editor__output .nsw-scope cite {
     font-size: var(--nsw-font-size-sm-desktop);
     line-height: var(--nsw-line-height-sm-desktop);
   }
 }
 .forceCommunityRichText .nsw-scope cite::before,
-.nsw-scope cite::before {
+.slds-rich-text-editor__output .nsw-scope cite::before {
   content: "— ";
 }
 .forceCommunityRichText .nsw-scope hr,
-.nsw-scope hr {
+.slds-rich-text-editor__output .nsw-scope hr {
   border: 0;
   height: 1px;
   background-color: var(--nsw-grey-04);
@@ -2790,97 +2790,97 @@ a:visited {
 .forceCommunityRichText .nsw-scope h4,
 .forceCommunityRichText .nsw-scope h5,
 .forceCommunityRichText .nsw-scope h6,
-.nsw-scope h1,
-.nsw-scope h2,
-.nsw-scope h3,
-.nsw-scope h4,
-.nsw-scope h5,
-.nsw-scope h6 {
+.slds-rich-text-editor__output .nsw-scope h1,
+.slds-rich-text-editor__output .nsw-scope h2,
+.slds-rich-text-editor__output .nsw-scope h3,
+.slds-rich-text-editor__output .nsw-scope h4,
+.slds-rich-text-editor__output .nsw-scope h5,
+.slds-rich-text-editor__output .nsw-scope h6 {
   font-weight: var(--nsw-font-bold);
   margin: 0;
 }
 .forceCommunityRichText .nsw-scope h1,
-.nsw-scope h1 {
+.slds-rich-text-editor__output .nsw-scope h1 {
   font-size: var(--nsw-font-size-xxl-mobile);
   line-height: var(--nsw-line-height-xxl-mobile);
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope h1,
-  .nsw-scope h1 {
+  .slds-rich-text-editor__output .nsw-scope h1 {
     font-size: var(--nsw-font-size-xxl-desktop);
     line-height: var(--nsw-line-height-xxl-desktop);
   }
 }
 .forceCommunityRichText .nsw-scope h2,
-.nsw-scope h2 {
+.slds-rich-text-editor__output .nsw-scope h2 {
   font-size: var(--nsw-font-size-xl-mobile);
   line-height: var(--nsw-line-height-xl-mobile);
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope h2,
-  .nsw-scope h2 {
+  .slds-rich-text-editor__output .nsw-scope h2 {
     font-size: var(--nsw-font-size-xl-desktop);
     line-height: var(--nsw-line-height-xl-desktop);
   }
 }
 .forceCommunityRichText .nsw-scope h3,
-.nsw-scope h3 {
+.slds-rich-text-editor__output .nsw-scope h3 {
   font-size: var(--nsw-font-size-lg-mobile);
   line-height: var(--nsw-line-height-lg-mobile);
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope h3,
-  .nsw-scope h3 {
+  .slds-rich-text-editor__output .nsw-scope h3 {
     font-size: var(--nsw-font-size-lg-desktop);
     line-height: var(--nsw-line-height-lg-desktop);
   }
 }
 .forceCommunityRichText .nsw-scope h4,
-.nsw-scope h4 {
+.slds-rich-text-editor__output .nsw-scope h4 {
   font-size: var(--nsw-font-size-md-mobile);
   line-height: var(--nsw-line-height-md-mobile);
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope .nsw-scope h4,
-  .nsw-scope .nsw-scope h4 {
+  .slds-rich-text-editor__output .nsw-scope .nsw-scope h4 {
     font-size: var(--nsw-font-size-md-desktop);
     line-height: var(--nsw-line-height-md-desktop);
   }
 }
 .forceCommunityRichText .nsw-scope h5,
 .forceCommunityRichText .nsw-scope h6,
-.nsw-scope h5,
-.nsw-scope h6 {
+.slds-rich-text-editor__output .nsw-scope h5,
+.slds-rich-text-editor__output .nsw-scope h6 {
   font-size: var(--nsw-font-size-sm-mobile);
   line-height: var(--nsw-line-height-sm-mobile);
 }
 @media (min-width: 62rem) {
   .forceCommunityRichText .nsw-scope h5,
   .forceCommunityRichText .nsw-scope h6,
-  .nsw-scope h5,
-  .nsw-scope h6 {
+  .slds-rich-text-editor__output .nsw-scope h5,
+  .slds-rich-text-editor__output .nsw-scope h6 {
     font-size: var(--nsw-font-size-sm-desktop);
     line-height: var(--nsw-line-height-sm-desktop);
   }
 }
 .forceCommunityRichText .nsw-scope * + h1,
-.nsw-scope * + h1 {
+.slds-rich-text-editor__output .nsw-scope * + h1 {
   margin-top: 4rem;
 }
 .forceCommunityRichText .nsw-scope * + h2,
-.nsw-scope * + h2 {
+.slds-rich-text-editor__output .nsw-scope * + h2 {
   margin-top: 3rem;
 }
 .forceCommunityRichText .nsw-scope * + h3,
-.nsw-scope * + h3 {
+.slds-rich-text-editor__output .nsw-scope * + h3 {
   margin-top: 2rem;
 }
 .forceCommunityRichText .nsw-scope * + h4,
 .forceCommunityRichText .nsw-scope * + h5,
 .forceCommunityRichText .nsw-scope * + h6,
-.nsw-scope * + h4,
-.nsw-scope * + h5,
-.nsw-scope * + h6 {
+.slds-rich-text-editor__output .nsw-scope * + h4,
+.slds-rich-text-editor__output .nsw-scope * + h5,
+.slds-rich-text-editor__output .nsw-scope * + h6 {
   margin-top: 1.5rem;
 }
 a:not(.nsw-button) {
@@ -2900,7 +2900,7 @@ a:visited:not(.nsw-button) {
   color: var(--nsw-text-visited);
 }
 .forceCommunityRichText .nsw-scope ul,
-.nsw-scope ul {
+.slds-rich-text-editor__output .nsw-scope ul {
   list-style-type: disc;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -2909,11 +2909,37 @@ a:visited:not(.nsw-button) {
   padding-inline-start: 40px;
 }
 .forceCommunityRichText .nsw-scope ol,
-.nsw-scope ol {
+.slds-rich-text-editor__output .nsw-scope ol {
   list-style-type: decimal;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding-inline-start: 40px;
+}
+.forceCommunityRichText .nsw-scope ol > li,
+.slds-rich-text-editor__output .nsw-scope ol > li {
+  list-style-type: decimal;
+}
+.forceCommunityRichText .nsw-scope ul > li,
+.slds-rich-text-editor__output .nsw-scope ul > li {
+  list-style-type: disc;
+}
+.forceCommunityRichText .nsw-scope ul > li,
+.forceCommunityRichText .nsw-scope ol > li,
+.slds-rich-text-editor__output .nsw-scope ul > li,
+.slds-rich-text-editor__output .nsw-scope ol > li {
+  padding-left: 0;
+}
+.forceCommunityRichText .nsw-scope li:before,
+.slds-rich-text-editor__output .nsw-scope li:before {
+  display: inline-block;
+  margin-right: none;
+  width: 0;
+}
+.forceCommunityRichText .nsw-scope ol li:before,
+.forceCommunityRichText .nsw-scope ul > li:before,
+.slds-rich-text-editor__output .nsw-scope ol li:before,
+.slds-rich-text-editor__output .nsw-scope ul > li:before {
+  content: none;
 }

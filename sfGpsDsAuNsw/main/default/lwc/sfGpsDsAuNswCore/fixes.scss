@@ -5,7 +5,7 @@
   */
 
 .forceCommunityRichText .nsw-scope,
-.nsw-scope {
+.slds-rich-text-editor__output .nsw-scope {
   html {
     font-size: 100%;
     line-height: var(--nsw-line-height);
@@ -34,9 +34,11 @@
     a:visited {
       text-decoration: underline;
     }
+
     a[href]::after {
       content: " (" attr(href) ")";
     }
+
     a[href^="#"]::after,
     a[href^="javascript:"]::after {
       content: "";
@@ -379,7 +381,7 @@ a:visited:not(.nsw-button) {
   /* A FEW MORE FIXES FOR EXP CLOUD CUSTOMER SERVICE */
 
 .forceCommunityRichText .nsw-scope,
-.nsw-scope {
+.slds-rich-text-editor__output .nsw-scope {
   ul {
     list-style-type: disc;
     margin-block-start: 1em;
@@ -396,5 +398,29 @@ a:visited:not(.nsw-button) {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
+  }
+
+  ol>li {
+    list-style-type: decimal;
+  }
+
+  ul>li {
+    list-style-type: disc;
+  }
+
+  ul>li,
+  ol>li {
+    padding-left: 0;
+  }
+
+  li:before {
+    display: inline-block;
+    margin-right: none;
+    width: 0;
+  }
+
+  ol li:before,
+  ul>li:before {
+    content: none;
   }
 }
