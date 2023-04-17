@@ -25,6 +25,13 @@
         default="[First home buyer grant and assistance](#)[Buying and selling property](#)[Building or renovating a home](#)"
       />
       <property
+        name="firstChild"
+        type="Boolean"
+        label="Render as first child"
+        description="Render as first child for margin purposes."
+        default="false"
+      />
+      <property
         name="className"
         type="String"
         label="Class name"

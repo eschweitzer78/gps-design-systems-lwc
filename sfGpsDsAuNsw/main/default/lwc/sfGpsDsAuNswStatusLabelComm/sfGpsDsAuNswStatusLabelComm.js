@@ -8,7 +8,6 @@ export default class SfGpsDsAuNswStatusLabelComm extends LightningElement {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
     this.classList.add("nsw-scope");
   }
 }

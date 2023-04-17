@@ -10,7 +10,8 @@ import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswInPageNavigationComm extends SfGpsDsLwc {
   @api title;
-  @api className = "";
+  @api firstChild = false;
+  @api className;
 
   _items;
   @track _itemsArray = [];

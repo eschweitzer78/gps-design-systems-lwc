@@ -9,6 +9,10 @@ export default class SfGpsDsAuNswButtonComm extends NavigationMixin(
   @api cstyle;
   @api rendering;
   @api type;
+  @api disabled = false;
+  @api iconStyle; // one of none, before, after
+  @api iconName;
+  @api mobileFullWidth = false;
   @api className;
 
   /*

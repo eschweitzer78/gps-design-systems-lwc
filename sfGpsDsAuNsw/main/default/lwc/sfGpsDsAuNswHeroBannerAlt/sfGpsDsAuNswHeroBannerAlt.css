@@ -15,12 +15,7 @@
     overflow: hidden;
   }
 }
-/*
-.nsw-hero-banner-alt__image-area {  ESC counter nsw-container 
-  margin-left: -1rem;
-  margin-right: -1rem;
-}
-*/
+
 @media (min-width: 48em) {
   .nsw-hero-banner-alt__image-area {
     position: absolute;
@@ -33,11 +28,10 @@
 .nsw-hero-banner-alt__image {
   width: 100vw;
   position: relative;
-  /*    left: 50%;
+  left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  */
   height: auto;
   display: block;
 }

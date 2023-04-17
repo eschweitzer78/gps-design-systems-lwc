@@ -16,6 +16,10 @@ export default class SfGpsDsAuNswButton extends LightningElement {
   @api cstyle = "dark"; // oneOf(['dark', 'dark-outline', 'dark-outline-solid', 'light', 'light-outline','white','danger']
   @api type = "button";
   @api rendering = "button";
+  @api disabled = false;
+  @api iconStyle = "none"; // one of none, before, after
+  @api iconName;
+  @api mobileFullWidth = false;
   @api className;
 
   /* deprecated */
@@ -35,6 +39,7 @@ export default class SfGpsDsAuNswButton extends LightningElement {
       "nsw-button--white": this.cstyle === "white",
       "nsw-button--danger": this.cstyle === "danger",
       "nsw-button--info": this.cstyle === "info",
+      "nsw-button--full-width": this.mobileFullWidth,
       [this.className]: this.className
     });
   }
@@ -45,6 +50,22 @@ export default class SfGpsDsAuNswButton extends LightningElement {
 
   get isButton() {
     return this.rendering === "button" && this.link == null;
+  }
+
+  get _disabled() {
+    return this.disabled ? "true" : null;
+  }
+
+  get hasIconBefore() {
+    return this.iconStyle === "before";
+  }
+
+  get hasIconAfter() {
+    return this.iconStyle === "after";
+  }
+
+  get hasIcon() {
+    return this.hasIconBefore || this.hasIconAfter;
   }
 
   handleClick() {
