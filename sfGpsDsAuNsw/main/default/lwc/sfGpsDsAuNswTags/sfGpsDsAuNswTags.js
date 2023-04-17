@@ -92,13 +92,13 @@ export default class SfGpsDsAuNswTags extends LightningElement {
     }
 
     let tag = this._tags[targetIndex];
-    tag.checked = !tag.checked;
+    //tag.checked = !tag.checked;
 
     this.dispatchEvent(
       new CustomEvent("change", {
         detail: {
           index: targetIndex,
-          checked: tag.checked
+          checked: !tag.checked
         }
       })
     );

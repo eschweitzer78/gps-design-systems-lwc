@@ -9,15 +9,27 @@
   </targets>
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property label="Label" name="label" type="String" />
+      <property
+        label="Label"
+        name="label"
+        type="String"
+        default="Status label"
+        description="Text used as a label"
+      />
       <property
         label="Status"
         name="status"
         type="String"
         default="neutral"
         datasource="info,success,warning,error,neutral"
+        description="Denotes the severity of the status to be rendered."
       />
-      <property label="Additional CSS class" name="className" type="String" />
+      <property
+        label="CSS Class"
+        name="className"
+        type="String"
+        description="Additional CSS class to be applied."
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

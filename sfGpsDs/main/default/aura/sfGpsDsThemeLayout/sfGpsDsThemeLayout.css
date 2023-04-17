@@ -10,3 +10,14 @@
 .THIS .sf-gps-ds-header-center_profile {
   min-width: 14rem;
 }
+
+.THIS.sf-gps-ds-widget--no-margin
+  .siteforceContentArea
+  .comm-layout-column
+  .ui-widget:not(:last-child),
+.THIS.sf-gps-ds-widget--no-margin
+  .siteforceContentArea
+  .cb-section_column
+  .ui-widget:not(:last-child) {
+  margin-bottom: 0;
+}

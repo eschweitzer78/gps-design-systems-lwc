@@ -39,6 +39,13 @@ export default class SfGpsDsAuNswTagsComm extends NavigationMixin(SfGpsDsLwc) {
     }
   }
 
+  handleChange(event) {
+    let links = [...this._links];
+    links[event.detail.index].checked = event.detail.checked;
+
+    this._links = links;
+  }
+
   /* lifecycle */
 
   connectedCallback() {

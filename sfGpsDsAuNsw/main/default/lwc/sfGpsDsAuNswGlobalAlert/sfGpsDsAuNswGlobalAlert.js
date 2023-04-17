@@ -56,9 +56,10 @@ export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
   handleCtaClick(event) {
     if (this.ctaPreventDefault) {
       event.preventDefault();
+      event.stopPropagation();
     }
 
-    this.dispatchEvent(new CustomEvent("click"));
+    this.dispatchEvent(new CustomEvent("ctaclick"));
   }
 
   handleCloseClick(event) {

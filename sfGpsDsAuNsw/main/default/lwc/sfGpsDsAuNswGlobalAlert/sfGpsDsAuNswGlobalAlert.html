@@ -6,7 +6,10 @@
         <p>
           {copy}
           <template if:true={isCtaLinkStyle}>
-            {space}<a href={ctaHref} class="nsw-sitewide-message__link"
+            {space}<a
+              href={ctaHref}
+              class="nsw-sitewide-message__link"
+              onclick={handleCtaClick}
               >{ctaText}</a
             >
           </template>

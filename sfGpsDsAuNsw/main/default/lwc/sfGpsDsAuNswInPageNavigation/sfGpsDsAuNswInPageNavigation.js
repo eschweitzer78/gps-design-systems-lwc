@@ -6,6 +6,7 @@ export default class SfGpsDsAuNswInPageNavigation extends LightningElement {
 
   @api title;
   @api items = []; // Array<{index, text, url}>
+  @api firstChild;
   @api className;
 
   get computedClassName() {

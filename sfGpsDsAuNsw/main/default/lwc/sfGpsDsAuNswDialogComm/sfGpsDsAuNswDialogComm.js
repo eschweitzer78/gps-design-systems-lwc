@@ -25,9 +25,9 @@ export default class SfGpsDsAuNswDialogComm extends SfGpsDsLwc {
   set content(markdown) {
     this._content = markdown;
     try {
-      this._contentHtml = markdown ? mdEngine.render(markdown) : "";
+      this._contentHtml = markdown ? mdEngine.renderEscaped(markdown) : "";
     } catch (e) {
-      this.addError("IN-MD", "Issue when parsing Intro markdown");
+      this.addError("IN-MD", "Issue when parsing Content markdown");
     }
   }
 

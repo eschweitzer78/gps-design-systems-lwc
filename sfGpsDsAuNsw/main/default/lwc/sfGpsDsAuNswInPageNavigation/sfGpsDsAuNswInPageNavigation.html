@@ -1,7 +1,8 @@
 <template lwc:render-mode="light">
+  <div if:false={firstChild}></div>
   <nav class={computedClassName} aria-labelledby={computedAriaLabelledById}>
     <div id={computedAriaLabelledById} class="nsw-in-page-nav__title">
-      On this page
+      {title}
     </div>
     <ul>
       <template if:true={items} for:each={items} for:item="item">

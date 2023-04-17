@@ -37,21 +37,29 @@ export default class SfGpsDsAuNswAccordionGroup extends SfGpsDsLwc {
   handleExpand(event) {
     this._h1s[event.target.index].closed = false;
     this._numberOpen++;
+    this.dispatchEvent(
+      new CustomEvent("expand", { detail: event.target.index })
+    );
   }
 
   handleCollapse(event) {
     this._h1s[event.target.index].closed = true;
     this._numberOpen--;
+    this.dispatchEvent(
+      new CustomEvent("collapse", { detail: event.target.index })
+    );
   }
 
   handleExpandAll() {
     this._numberOpen = this._h1s.length;
     this._h1s.forEach((h1) => (h1.closed = false));
+    this.dispatchEvent(new CustomEvent("expand", { detail: "all" }));
   }
 
   handleCollapseAll() {
     this._numberOpen = 0;
     this._h1s.forEach((h1) => (h1.closed = true));
+    this.dispatchEvent(new CustomEvent("collapse", { detail: "all" }));
   }
 
   get isFullyExpanded() {
