@@ -26,12 +26,12 @@ describe("c-sf-gps-ds-au-nsw-hero-banner-alt", () => {
 
     document.body.appendChild(element);
 
-    let title = element.shadowRoot.querySelector(titleSelector);
+    let title = element.querySelector(titleSelector);
     expect(title).not.toBeNull();
     expect(title.href).toBe(`http://localhost/${element.titleUrl}`);
     expect(title.textContent).toBe(element.titleLabel);
 
-    let bannerImage = element.shadowRoot.querySelector(bannerImageSelector);
+    let bannerImage = element.querySelector(bannerImageSelector);
     expect(bannerImage).not.toBeNull();
   });
 
