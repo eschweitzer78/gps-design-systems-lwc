@@ -9,6 +9,8 @@ export default class SfGpsDsAuNswDialogComm extends SfGpsDsLwc {
   @api secondaryButtonText;
   @api bstyle; // one of dark, danger
   @api isDismissible = false;
+  @api className;
+
   @track _isOpen = false;
 
   /*
