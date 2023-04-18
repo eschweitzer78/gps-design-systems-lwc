@@ -2,6 +2,13 @@
 @import "c/sfGpsDsAuNswFormOs";
 @import "c/sfGpsDsAuNswPredictiveListOsN";
 
+/* For repeatable icons in omni */
+
+.nsw-form__label {
+  display: inline;
+  margin-right: 0.5rem;
+}
+
 /* slds fix */
 
 .nsw-form__predictive .nsw-form__input.lookup {

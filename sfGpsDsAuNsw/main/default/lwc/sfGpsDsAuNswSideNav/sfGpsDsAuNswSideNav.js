@@ -47,7 +47,7 @@ export default class SfGpsDsAuNswSideNav extends LightningElement {
 
         // Assuming parent label will be hierarchical in exp cloud navs -- which have no attached urls */
         if (
-          !result.url &&
+          !item.url &&
           result.subNav.filter((subNavItem) => subNavItem.isActive).length
         ) {
           result.className = "active";
