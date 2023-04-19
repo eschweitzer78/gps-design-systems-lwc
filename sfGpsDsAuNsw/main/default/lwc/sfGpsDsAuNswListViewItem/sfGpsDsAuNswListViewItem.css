@@ -2,9 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-left: -0.25rem;
+  margin-left: -0.5rem;
 }
 
 .list-view__field {
-  margin: 0.25rem;
+  margin: 0.5rem;
 }
