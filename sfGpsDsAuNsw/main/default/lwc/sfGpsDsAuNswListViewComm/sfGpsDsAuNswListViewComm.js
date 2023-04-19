@@ -227,8 +227,8 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
     let navsvc = this.template.querySelector("c-sf-gps-ds-navigation-service");
     if (navsvc) {
       navsvc.navigateTo("standard__recordPage", {
-        objectApiName: this.objectApiName,
-        recordId: event.detail,
+        objectApiName: event.detail.objectApiName || this.objectApiName,
+        recordId: event.detail.recordId,
         actionName: "view"
       });
     }

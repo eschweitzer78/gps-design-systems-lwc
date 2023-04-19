@@ -50,6 +50,8 @@ export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
   @api className;
 
   mapIpData(data) {
+    console.log("mapIpData", JSON.stringify(data));
+
     return data && Array.isArray(data)
       ? data.map((card) => ({
           ...card,

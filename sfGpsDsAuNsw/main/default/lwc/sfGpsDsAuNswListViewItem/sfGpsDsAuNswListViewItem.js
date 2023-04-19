@@ -1,5 +1,7 @@
 import { LightningElement, api, track } from "lwc";
 
+const DEBUG = false;
+
 export default class SfGpsDsAuNswListViewItem extends LightningElement {
   _displayColumns;
 
@@ -35,14 +37,20 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
 
   reconcile() {
     if (this._record && this._displayColumns) {
-      console.log(
-        "reconcile",
-        JSON.stringify(this._displayColumns),
-        JSON.stringify(this._record)
-      );
+      if (DEBUG)
+        console.log(
+          "reconcile",
+          JSON.stringify(this._displayColumns),
+          JSON.stringify(this._record)
+        );
       this._reconciledRecord = this._displayColumns.map((column) => {
-        let { value, displayValue, dataType, relationshipId } =
-          this.getColumnDetails(column.fieldApiName);
+        let {
+          value,
+          displayValue,
+          dataType,
+          relationshipObjectApiName,
+          relationshipId
+        } = this.getColumnDetails(column.fieldApiName);
         let rv = {
           ...column,
           value: value,
@@ -82,6 +90,8 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
           case "STRING":
             if (relationshipId) {
               rv.link = `#${relationshipId}`;
+              rv.relationshipId = relationshipId;
+              rv.relationshipObjectApiName = relationshipObjectApiName;
             }
             break;
 
@@ -134,6 +144,10 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
     return this.getColumnDetails(this.imageAltColumn).displayValue;
   }
 
+  get space() {
+    return " ";
+  }
+
   isUsedForMapping(fieldApiName) {
     return [
       this.labelColumn,
@@ -166,9 +180,28 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
     };
   }
 
+  handleRelationshipNavigate(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.dispatchEvent(
+      new CustomEvent("navigate", {
+        detail: {
+          objectApiName: event.target.dataset.object,
+          recordId: event.target.dataset.rid
+        }
+      })
+    );
+  }
+
   handleNavigate() {
     this.dispatchEvent(
-      new CustomEvent("navigate", { detail: this._record?.columns?.Id?.value })
+      new CustomEvent("navigate", {
+        detail: {
+          // leaving objectApiName for parent to apply
+          recordId: this._record?.columns?.Id?.value
+        }
+      })
     );
   }
 }

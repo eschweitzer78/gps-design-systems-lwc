@@ -108,8 +108,8 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
                 return;
               }
 
-              // the record must have an index property or its deemed empty
-              data = data.index ? [data] : [];
+              // IPs tend to send 1 item arrays as an object
+              data = [data];
             }
 
             this._items = this.mapIpData(data);
