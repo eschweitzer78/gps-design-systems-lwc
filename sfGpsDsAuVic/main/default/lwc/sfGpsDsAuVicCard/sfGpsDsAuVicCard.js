@@ -68,7 +68,7 @@ export default class SfGpsDsAuVicCard extends LightningElement {
   @api displayStyle = "noImage"; // noImage, thumbnail, profile, featured
 
   modifiers(classPrefix = "rpl-card") {
-    return `${classPrefix}--${this.displayStyle
+    return `${classPrefix}--${(this.displayStyle || "")
       .replace(/\s/g, "")
       .toLowerCase()}`;
   }
