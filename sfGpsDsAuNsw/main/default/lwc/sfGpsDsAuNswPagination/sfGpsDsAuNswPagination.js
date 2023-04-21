@@ -10,7 +10,7 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
   @api ariaLabel = "Pagination";
   @api srOnlyPre = "Page ";
   @api srOnlyPost;
-  @api srOnlyPrevious = "Back";
+  @api srOnlyPrevious = "Previous";
   @api srOnlyNext = "Next";
 
   @api className;

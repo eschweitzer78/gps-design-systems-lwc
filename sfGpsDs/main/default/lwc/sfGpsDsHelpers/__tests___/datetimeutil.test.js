@@ -10,7 +10,7 @@ describe("c-sf-gps-ds-helpers.datetimeutil", () => {
   });
 
   it("does not parse a non-delimited date", () => {
-    expect(parseIso8601("20221009").getTime()).toEqual(new Date(NaN).getTime());
+    expect(parseIso8601("20221009")).toEqual(null);
   });
 
   it("parses a hypen delimited date and time with ms", () => {
@@ -31,10 +31,8 @@ describe("c-sf-gps-ds-helpers.datetimeutil", () => {
     );
   });
 
-  it("does not parses a hypen delimited date and time with mins", () => {
-    expect(parseIso8601("2022-10-09T10").getTime()).toEqual(
-      new Date(NaN).getTime()
-    );
+  it("does not parse a hypen delimited date and time with mins", () => {
+    expect(parseIso8601("2022-10-09T10")).toEqual(null);
   });
 
   it("parses a hypen delimited date and time with hour/min and Z as UTC", () => {
