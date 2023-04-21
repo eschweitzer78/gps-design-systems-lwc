@@ -258,4 +258,4 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org delete scratch -p --target-org scratch-org
+        run: sfdx org delete scratch -p -o scratch-org
