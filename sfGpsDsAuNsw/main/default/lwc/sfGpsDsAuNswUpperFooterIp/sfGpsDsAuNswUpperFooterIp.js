@@ -30,4 +30,12 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
   }
 
   @api className;
+
+  handleClick(event) {
+    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+
+    if (nav && this._map && event.detail) {
+      nav.navigateNavMenu(this._map[event.detail]);
+    }
+  }
 }

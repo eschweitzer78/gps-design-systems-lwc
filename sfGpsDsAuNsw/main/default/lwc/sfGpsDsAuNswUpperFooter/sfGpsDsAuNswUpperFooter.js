@@ -62,6 +62,7 @@ export default class SfGpsDsAuNswUpperFooter extends LightningElement {
 
   handleClick(event) {
     event.preventDefault();
+    event.stopPropagation();
 
     this.dispatchEvent(
       new CustomEvent("click", {

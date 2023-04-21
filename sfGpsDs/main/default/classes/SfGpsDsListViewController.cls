@@ -28,7 +28,7 @@ public with sharing class SfGpsDsListViewController {
     'Excludes' => 'EXCLUDES'
   };
 
-  public class ListFilterByInfo {
+  public class ListFilteredByInfo {
     public @AuraEnabled
     String fieldApiName;
     public @AuraEnabled
@@ -121,7 +121,7 @@ public with sharing class SfGpsDsListViewController {
     String objectApiName,
     List<ListColumn> displayColumns,
     String filterLogicString,
-    List<ListFilterByInfo> filterByInfo,
+    List<ListFilteredByInfo> filteredByInfo,
     List<ListOrderedByInfo> orderedByInfo
   ) {
     List<String> dcList = new List<String>();
@@ -132,8 +132,8 @@ public with sharing class SfGpsDsListViewController {
     }
 
     List<String> fbiList = new List<String>();
-    if (filterByInfo != null) {
-      for (ListFilterByInfo fbi : filterByInfo) {
+    if (filteredByInfo != null) {
+      for (ListFilteredByInfo fbi : filteredByInfo) {
         fbiList.add(fbi.getSOQL());
       }
     }
@@ -182,12 +182,12 @@ public with sharing class SfGpsDsListViewController {
   public static Integer getCount(
     String objectApiName,
     String filterLogicString,
-    String filterByInfo
+    String filteredByInfo
   ) {
-    List<ListFilterByInfo> xfilterByInfo = filterByInfo != null
-      ? (List<ListFilterByInfo>) JSON.deserialize(
-          filterByInfo,
-          List<ListFilterByInfo>.class
+    List<ListFilteredByInfo> xfilteredByInfo = filteredByInfo != null
+      ? (List<ListFilteredByInfo>) JSON.deserialize(
+          filteredByInfo,
+          List<ListFilteredByInfo>.class
         )
       : null;
 
@@ -196,7 +196,7 @@ public with sharing class SfGpsDsListViewController {
         objectApiName,
         null,
         filterLogicString,
-        xfilterByInfo,
+        xfilteredByInfo,
         null
       );
       return Database.countQuery(rv);
@@ -209,7 +209,7 @@ public with sharing class SfGpsDsListViewController {
     String objectApiName,
     List<ListColumn> xdisplayColumns,
     String filterLogicString,
-    List<ListFilterByInfo> xfilterByInfo,
+    List<ListFilteredByInfo> xfilteredByInfo,
     List<ListOrderedByInfo> xorderedByInfo,
     Integer offset,
     Integer pageSize
@@ -219,7 +219,7 @@ public with sharing class SfGpsDsListViewController {
         objectApiName,
         xdisplayColumns,
         filterLogicString,
-        xfilterByInfo,
+        xfilteredByInfo,
         xorderedByInfo
       );
 
@@ -234,7 +234,7 @@ public with sharing class SfGpsDsListViewController {
     String objectApiName,
     String displayColumns,
     String filterLogicString,
-    String filterByInfo,
+    String filteredByInfo,
     String orderedByInfo,
     Integer offset,
     Integer pageSize
@@ -245,10 +245,10 @@ public with sharing class SfGpsDsListViewController {
           List<ListColumn>.class
         )
       : null;
-    List<ListFilterByInfo> xfilterByInfo = filterByInfo != null
-      ? (List<ListFilterByInfo>) JSON.deserialize(
-          filterByInfo,
-          List<ListFilterByInfo>.class
+    List<ListFilteredByInfo> xfilteredByInfo = filteredByInfo != null
+      ? (List<ListFilteredByInfo>) JSON.deserialize(
+          filteredByInfo,
+          List<ListFilteredByInfo>.class
         )
       : null;
     List<ListOrderedByInfo> xorderedByInfo = orderedByInfo != null
@@ -262,7 +262,7 @@ public with sharing class SfGpsDsListViewController {
       objectApiName,
       xdisplayColumns,
       filterLogicString,
-      xfilterByInfo,
+      xfilteredByInfo,
       xorderedByInfo,
       offset,
       pageSize
@@ -320,7 +320,7 @@ public with sharing class SfGpsDsListViewController {
     String objectApiName,
     String displayColumns,
     String filterLogicString,
-    String filterByInfo,
+    String filteredByInfo,
     String orderedByInfo,
     Integer offset,
     Integer pageSize
@@ -356,10 +356,10 @@ public with sharing class SfGpsDsListViewController {
       */
     }
 
-    List<ListFilterByInfo> xfilterByInfo = filterByInfo != null
-      ? (List<ListFilterByInfo>) JSON.deserialize(
-          filterByInfo,
-          List<ListFilterByInfo>.class
+    List<ListFilteredByInfo> xfilteredByInfo = filteredByInfo != null
+      ? (List<ListFilteredByInfo>) JSON.deserialize(
+          filteredByInfo,
+          List<ListFilteredByInfo>.class
         )
       : null;
 
@@ -374,7 +374,7 @@ public with sharing class SfGpsDsListViewController {
       objectApiName,
       xdisplayColumns,
       filterLogicString,
-      xfilterByInfo,
+      xfilteredByInfo,
       xorderedByInfo,
       offset,
       pageSize

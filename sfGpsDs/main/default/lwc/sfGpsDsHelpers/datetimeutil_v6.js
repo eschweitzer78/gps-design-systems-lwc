@@ -56,7 +56,8 @@ export function parseIso8601(date) {
     timestamp = Date.parse(date);
   }
 
-  return new Date(timestamp);
+  let rv = new Date(timestamp);
+  return isNaN(rv) ? null : rv;
 }
 
 const DATE_STYLE_DEFAULT = "medium";
@@ -104,7 +105,7 @@ export function formatDate(
   dateStyle = DATE_STYLE_DEFAULT,
   userLocale = "en-AU"
 ) {
-  let rv = "Invalid date";
+  let rv = null;
 
   try {
     rv = date.toLocaleDateString(userLocale, {
