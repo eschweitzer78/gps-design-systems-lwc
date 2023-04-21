@@ -24,7 +24,7 @@ const utils = require("./utils");
   var frontdoor = null;
   if (targetUsername) {
     frontdoor = await utils.runSFDXCommand(
-      `sfdx force:org:open -u ${targetUsername} -r --json`
+      `sfdx force org open -u ${targetUsername} -r --json`
     );
   } else {
     frontdoor = await utils.runSFDXCommand(`sfdx force:org:open -r --json`);
