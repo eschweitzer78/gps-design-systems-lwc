@@ -65,7 +65,7 @@ jobs:
 
       # Authenticate dev hub
       - name: "Authenticate Dev Hub"
-        run: sfdx auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
+        run: sfdx auth sfdxurl store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
 
       # Remove auth file
       - name: "Remove auth file"
@@ -77,14 +77,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx package version create -d sfGpsDs -x -w 20 -f config/project-scratch-def.json --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package:version:create failed"
+              echo "sfdx package version create failed"
           fi
           exit $status
 
@@ -93,14 +93,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx package version create --package sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package:version:create failed"
+              echo "sfdx package version create failed"
           fi
           exit $status
 
@@ -109,14 +109,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --json)
+          json=$(sfdx package version create --package sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package:version:create failed"
+              echo "sfdx package version create failed"
           fi
           exit $status
 
@@ -125,14 +125,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          json=$(sfdx package version create --package sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package:version:create failed"
+              echo "sfdx package version create failed"
           fi
           exit $status
 
@@ -141,14 +141,14 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          json=$(sfdx package version create --package sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
           echo $json
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package:version:create failed"
+              echo "sfdx package version create failed"
           fi
           exit $status
 
@@ -160,41 +160,41 @@ jobs:
 
       # Create scratch org
       - name: "Create scratch org"
-        run: sfdx force:org:create -f config/project-scratch-def.json -a scratch-org -s -d 1 release=Preview
+        run: sfdx force org create -f config/project-scratch-def.json -a scratch-org -s -d 1 release=Preview
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} --target-org scratch-org -w 13 -r -s=AllUsers
+        run: sfdx package install -p ${{ vars.OMNISTUDIO_PACKAGEID }} --target-org scratch-org -w 13 -r -s=AllUsers
 
       # Install new sfGpsDs package in scratch org
       - name: "Install new sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
-        run: sfdx package:install -p ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx package install -p ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
 
       # Install old sfGpsDs package in scratch org
       - name: "Install current sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: sfdx package:install -p "Salesforce Global Public Sector Design Systems" -w 13 --target-org scratch-org -r
+        run: sfdx package install -p "Salesforce Global Public Sector Design Systems" -w 13 --target-org scratch-org -r
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
-        run: sfdx package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} -w 13--target-org scratch-org -r
+        run: sfdx package install -p ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} -w 13--target-org scratch-org -r
 
       # Install new sfGpsDsAuNswS package in scratch org
       - name: "Install new sfGpsDsAuNswS package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
-        run: sfdx package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx package install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
 
       # Install new sfGpsDsAuVic package in scratch org
       - name: "Install new sfGpsDsAuVic package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
-        run: sfdx package:install -p ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx package install -p ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
 
       # Install new sfGpsDsUkGov package in scratch org
       - name: "Install new sfGpsDsUkGov package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
-        run: sfdx package:install -p ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx package install -p ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
 
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
       - name: "Run prettier"
@@ -205,4 +205,4 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org:delete:scratch -p --target-org scratch-org
+        run: sfdx org delete scratch -p -o scratch-org

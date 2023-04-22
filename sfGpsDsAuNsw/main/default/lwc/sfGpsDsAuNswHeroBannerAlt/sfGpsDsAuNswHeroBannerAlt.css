@@ -9,10 +9,18 @@
   color: var(--nsw-text-dark);
   position: relative;
 }
+
 @media (min-width: 48em) {
   .nsw-hero-banner-alt {
     height: 23.75rem;
     overflow: hidden;
+  }
+}
+
+@media (max-width: 48em) {
+  .nsw-hero-banner-alt__image-area {
+    margin-left: -1rem;
+    width: calc(100% + 2rem);
   }
 }
 
