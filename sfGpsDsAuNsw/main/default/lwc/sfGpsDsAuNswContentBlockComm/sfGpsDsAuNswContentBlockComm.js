@@ -114,24 +114,12 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
     this.classList.add("nsw-scope");
   }
 
-  _rendered = false;
-
   renderedCallback() {
-    if (this._rendered === false) {
-      let element;
-
-      if (this.copy) {
-        if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
-          replaceInnerHtml(element, this._copyHtml);
-        } else {
-          this.addError(
-            "CO-PH",
-            "Couldn't find internal copy markdown placeholder"
-          );
-        }
+    if (this.copy) {
+      let element = this.template.querySelector(MARKDOWN_SELECTOR);
+      if (element) {
+        replaceInnerHtml(element, this._copyHtml);
       }
-
-      this._rendered = true;
     }
   }
 }

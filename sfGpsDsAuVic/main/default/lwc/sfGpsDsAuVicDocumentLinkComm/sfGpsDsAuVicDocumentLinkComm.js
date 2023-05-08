@@ -57,22 +57,13 @@ export default class SfGpsDsAuVicDocumentLinkComm extends SfGpsDsLwc {
 
   /* lifecycle */
 
-  _rendered;
-
   renderedCallback() {
-    if (!this._rendered) {
+    if (this.caption) {
       let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
       if (element) {
         replaceInnerHtml(element, this._captionHtml);
-      } else {
-        this.addError(
-          "CO-PH",
-          "Couldn't find internal Caption markdown placeholder"
-        );
       }
-
-      this._rendered = true;
     }
   }
 }

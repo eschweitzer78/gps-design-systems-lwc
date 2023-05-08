@@ -33,19 +33,10 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   _rendered = false;
 
   renderedCallback() {
-    if (!this._rendered) {
-      let element;
+    let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
-      if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
-        replaceInnerHtml(element, this.content);
-      } else {
-        this.addError(
-          "CO-PH",
-          "Couldn't find internal Content markdown placeholder"
-        );
-      }
-
-      this._rendered = true;
+    if (element) {
+      replaceInnerHtml(element, this.content);
     }
   }
 

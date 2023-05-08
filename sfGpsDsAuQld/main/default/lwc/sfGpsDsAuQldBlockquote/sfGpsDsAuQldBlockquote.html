@@ -1,0 +1,13 @@
+<template lwc:render-mode="light">
+  <blockquote if:true={reference} cite={reference.url} class={className}>
+    <slot></slot>
+    <footer>
+      <cite>
+        <p if:true={reference.url}>
+          <a href={reference.url}>{reference.text}</a>
+        </p>
+        <p if:false={reference.url}>{reference.text}</p>
+      </cite>
+    </footer>
+  </blockquote>
+</template>

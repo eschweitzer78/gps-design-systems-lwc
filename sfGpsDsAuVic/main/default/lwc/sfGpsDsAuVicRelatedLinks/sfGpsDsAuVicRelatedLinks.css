@@ -1,6 +1,6 @@
 .rpl-related-links {
   padding: 1.75rem 1.5rem;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   background-position: top right;
   background-repeat: no-repeat;
   position: relative;

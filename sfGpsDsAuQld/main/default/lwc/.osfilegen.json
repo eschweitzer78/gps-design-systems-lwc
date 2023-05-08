@@ -1,0 +1,12 @@
+{
+  "sfGpsDsUkGovCore": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  }
+}

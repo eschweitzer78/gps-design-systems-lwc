@@ -137,22 +137,12 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     if (this.copy) {
       if ((element = this.template.querySelector(".nsw-card__copy"))) {
         replaceInnerHtml(element, this._copyHtml);
-      } else {
-        this.addError(
-          "RC-PHC",
-          "Couldn't find internal copy markdown placeholder"
-        );
       }
     }
 
     if (this.footer) {
       if ((element = this.template.querySelector(".nsw-card__footer"))) {
         replaceInnerHtml(element, this._footerHtml);
-      } else {
-        this.addError(
-          "RC-PHF",
-          "Couldn't find internal footer markdown placeholder"
-        );
       }
     }
   }

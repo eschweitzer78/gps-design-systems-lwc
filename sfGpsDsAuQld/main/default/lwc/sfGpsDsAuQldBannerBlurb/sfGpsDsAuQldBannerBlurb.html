@@ -1,0 +1,22 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName} style={computedBannerStyle}>
+    <div class="blurb">
+      <h1 if:true={title}>{title}</h1>
+      <slot></slot>
+      <p>
+        <button
+          if:true={linkPrimary}
+          type="button"
+          class="qg-btn btn-primary mt-3"
+          onclick={handlePrimaryClick}
+        >
+          {linkPrimary.text}
+        </button>
+
+        <a if:true={linkSecondary} href={linkSecondary.url}
+          >{linkSecondary.text}</a
+        >
+      </p>
+    </div>
+  </div>
+</template>

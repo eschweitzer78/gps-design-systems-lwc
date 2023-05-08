@@ -45,11 +45,10 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
     this.classList.add("nsw-scope");
   }
 
-  _rendered = false;
-
   renderedCallback() {
-    if (!this._rendered && this.mastheadLabel) {
+    if (this.mastheadLabel) {
       let element = this.template.querySelector(MARKDOWN_SELECTOR);
+
       if (element) {
         replaceInnerHtml(element, this._mastheadLabelHtml);
       } else {
@@ -58,8 +57,6 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
           "Couldn't find internal masthead label markdown placeholder"
         );
       }
-
-      this._rendered = true;
     }
   }
 }

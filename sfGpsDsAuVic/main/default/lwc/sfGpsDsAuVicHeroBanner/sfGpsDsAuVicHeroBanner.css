@@ -194,7 +194,7 @@
   }
 }
 .rpl-hero-banner__title {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   word-wrap: break-word;
   margin: 0;
 }
@@ -252,7 +252,7 @@
     font-weight: normal;
   }
   .rpl-hero-banner__title--dark span {
-    background-color: #0095ec;
+    background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
     color: #fff;
     display: inline;
     line-height: 2.5625rem;

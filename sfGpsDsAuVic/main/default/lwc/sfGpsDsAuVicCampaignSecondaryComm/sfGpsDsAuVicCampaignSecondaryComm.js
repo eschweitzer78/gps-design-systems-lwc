@@ -88,22 +88,13 @@ export default class SfGpsDsAuVicCampaignSecondaryComm extends SfGpsDsLwc {
 
   /* lifecycle */
 
-  _rendered;
-
   renderedCallback() {
-    if (!this._rendered) {
+    if (this.summary) {
       let element = this.template.querySelector(".sf-gps-ds-markdown");
 
       if (element) {
         replaceInnerHtml(element, this._summaryHtml);
-      } else {
-        this.addError(
-          "CO-PH",
-          "Couldn't find internal Summary markdown placeholder"
-        );
       }
-
-      this._rendered = true;
     }
   }
 }

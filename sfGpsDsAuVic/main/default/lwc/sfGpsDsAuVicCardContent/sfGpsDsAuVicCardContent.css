@@ -18,7 +18,7 @@
 }
 .rpl-card-content:hover .rpl-card-content__link,
 .rpl-card-content:focus .rpl-card-content__link {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 @media screen and (min-width: 768px) {
   .rpl-card-content--default {
@@ -57,7 +57,7 @@
 .rpl-card-content--has-border {
   background-image: linear-gradient(
     -90deg,
-    #0052c2 0%,
+    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
     #825dff 12%,
     #ef4a81 23%,
     #e57200 37%,

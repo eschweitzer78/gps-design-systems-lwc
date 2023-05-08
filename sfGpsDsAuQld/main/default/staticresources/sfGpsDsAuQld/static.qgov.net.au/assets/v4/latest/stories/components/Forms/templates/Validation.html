@@ -1,0 +1,38 @@
+<form class="qg-forms-v2" novalidate="true">
+  <ol class="questions">
+    <li class="invalid">
+      <label for="Email address"
+        ><span class="label">Email address</span><abbr title="(required)" class="required">*</abbr
+        ><em class="alert">Must be a qld.gov.au email address</em></label
+      >
+      <input
+        type="email"
+        class="form-control"
+        id="customer-email"
+        name="emailField"
+        required="required"
+      />
+    </li>
+  </ol>
+</form>
+<script>
+  $("#email").bind("change", function () {
+    var emailPattern = /\.qld\.gov\.au$/,
+      emailField = $("#email"),
+      value = emailField.val();
+    // if there is no value
+    if (value === "") {
+      // clear the custom error
+      emailField[0].setCustomValidity("");
+      // required field validation will kick in
+
+      // test if value matches pattern
+    } else if (emailPattern.test(value)) {
+      // valid
+      emailField[0].setCustomValidity("");
+    } else {
+      // invalid
+      emailField[0].setCustomValidity("Must be a .qld.gov.au email address");
+    }
+  });
+</script>

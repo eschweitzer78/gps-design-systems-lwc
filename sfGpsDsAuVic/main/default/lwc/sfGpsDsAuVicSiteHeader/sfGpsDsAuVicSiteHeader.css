@@ -17,7 +17,7 @@
 }
 .rpl-site-header__inner {
   overflow: hidden;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-radius: 0.25rem;
   transition: height 0.25s;
   height: 3rem;
@@ -39,7 +39,7 @@
 .rpl-site-header--open .rpl-site-header__inner {
   margin: 0;
   border-radius: 0.25rem;
-  background-color: #023b89;
+  background-color: var(--sf-gps-ds-au-vic-color-dark-primary, #023b89);
   height: 100%;
 }
 .rpl-site-header__top {
@@ -152,7 +152,7 @@
 }
 .rpl-site-header__search-container {
   position: relative;
-  background-color: #023b89;
+  background-color: var(--sf-gps-ds-au-vic-color-dark-primary, #023b89);
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -249,7 +249,7 @@
 }
 @media screen and (min-width: 768px) {
   .rpl-site-header__btn--logout {
-    background-color: #023b89;
+    background-color: var(--sf-gps-ds-au-vic-color-dark-primary, #023b89);
     display: inline-block;
     padding: 0.625rem;
   }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <masterLabel>QLD DS Card</masterLabel>
+  <isExposed>true</isExposed>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="titleLink"
+        type="String"
+        label="Title link"
+        description="Clearly identifies the primary purpose or action of the site, service or product as a Markdown link - leave URL empty for non-clickable title."
+        default="[National Road Safety Week](#)"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Gives additional context when the title alone would be insufficient - in Markdown format."
+        default="From 14-21 May, take the pledge and look for ways you can drive so others survive."
+      />
+      <property
+        name="theme"
+        type="String"
+        label="Colour theme"
+        description="Colour theme applied to the background of the callout."
+        default="dark"
+        datasource="light,dark"
+      />
+      <property
+        name="ctaLink"
+        type="String"
+        label="Call to Action link"
+        description="Link used for a Call to Action button in Markdown format - leave blank for no CTA."
+        default="[Take the pledge](#)"
+      />
+      <property
+        name="ctaStyle"
+        type="String"
+        label="Call to Action style"
+        description="Style applied to the CTA button."
+        default="secondary"
+        datasource="secondary,outline-dark,link"
+      />
+      <property
+        name="imageSrc"
+        type="String"
+        label="Image"
+        description="Image used as a further illustration - leave blank for no image."
+        default="https://images.unsplash.com/photo-1516432887776-cf02336463c7?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=468&amp;q=80"
+      />
+      <property
+        name="imageAlt"
+        type="String"
+        label="Image alternative text"
+        description="Text used as an alternative should there be an issue with the image."
+        default="Brisbane story bridge at night"
+      />
+      <property
+        name="isThumbnail"
+        type="Boolean"
+        label="Image as thumbnail"
+        description="Check to have the image displayed as a thumbnail."
+        default="false"
+      />
+       <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <masterLabel>QLD DS Aside</masterLabel>
+  <isExposed>true</isExposed>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="iconName"
+        type="String"
+        label="Icon name"
+        description="Name of the icon in the fontawesome collection"
+        default="lightbulb-o"
+      />
+      <property
+        name="iconSize"
+        type="String"
+        label="Icon size"
+        description="Size of the icon as per fontawesome"
+        default="1x"
+        datasource="2xs,xs,sm,lg,xl,2xl,1x,2x,3x,4x,5x,6x,7x,8x,9x,10x"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Tile"
+        description="Title."
+        default="Online services"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Content of the alert in Markdown format."
+        default="We have a range of services that you can access online. You can\n* [take the practice road rules test](#)\n* [book a practical driving test](#)\n* [take the motorcycle knowledge test](#)."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

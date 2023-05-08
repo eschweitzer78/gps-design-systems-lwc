@@ -11,7 +11,7 @@
 }
 .rpl-document-link__link:hover .rpl-document-link__title,
 .rpl-document-link__link:focus .rpl-document-link__title {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   text-decoration: underline;
 }
 @media print {

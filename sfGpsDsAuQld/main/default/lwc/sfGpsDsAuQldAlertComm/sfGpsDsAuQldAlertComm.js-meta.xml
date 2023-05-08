@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <masterLabel>QLD DS Alert</masterLabel>
+  <isExposed>true</isExposed>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="Type of alert."
+        default="warning"
+        datasource="info,success,warning,danger"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Text used as a title"
+        default="We will only send an infrigement notice by email if:"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Content of the alert in Markdown format."
+        default="* you are pulled over by a Queensland Police Officer or Transport Inspector and are issued a fine\n\n* you agree to receive the infringement by email."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

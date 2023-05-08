@@ -62,10 +62,8 @@ export default class SfGpsDsAuNswHeroBannerAltComm extends SfGpsDsLwc {
     this.classList.add("nsw-scope");
   }
 
-  _rendered = false;
-
   renderedCallback() {
-    if (this._rendered === false) {
+    if (this.content) {
       let element = this.template.querySelector(
         ".nsw-hero-banner-alt__content_internal"
       );
@@ -81,11 +79,7 @@ export default class SfGpsDsAuNswHeroBannerAltComm extends SfGpsDsLwc {
         let markup = (this._titleLabel ? span : "") + (this._contentHtml || "");
 
         replaceInnerHtml(element, markup);
-      } else {
-        this.addError("RC-PH", "Couldn't find internal markdown placeholder");
       }
-
-      this._rendered = true;
     }
   }
 }

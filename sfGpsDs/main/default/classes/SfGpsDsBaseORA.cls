@@ -88,7 +88,6 @@ abstract public class SfGpsDsBaseORA {
     }
 
     String currentTypeName = type.getName();
-    System.debug('expected ' + typeName + ', present ' + currentTypeName);
 
     if (typeName != currentTypeName) {
       // It turns out Double and Decimal both return true when applying

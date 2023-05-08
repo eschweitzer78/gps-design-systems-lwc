@@ -35,10 +35,9 @@ export default class SfGpsDsAuVicMarkup extends SfGpsDsLwc {
   renderedCallback() {
     if (this.html) {
       let element = this.querySelector(".rpl-markup__inner");
+
       if (element && this._htmlSanitized) {
         replaceInnerHtml(element, this._htmlSanitized);
-      } else {
-        this.addError("MU-PH", "Couldn't find internal markup placeholder");
       }
     }
   }
