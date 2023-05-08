@@ -3,8 +3,8 @@
     {
       "path": "sfGpsDs",
       "package": "Salesforce Global Public Sector Design Systems",
-      "versionName": "2023.04.21.1500",
-      "versionNumber": "1.5.2.NEXT",
+      "versionName": "2023.05.08.2000",
+      "versionNumber": "1.6.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -16,8 +16,8 @@
     {
       "path": "sfGpsDsAuNsw",
       "package": "Salesforce Global Public Sector AU NSW Design System",
-      "versionName": "2023.04.21.1500",
-      "versionNumber": "1.5.2.NEXT",
+      "versionName": "2023.05.08.2000",
+      "versionNumber": "1.6.0.NEXT",
       "default": true,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -26,7 +26,7 @@
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.5.0.LATEST"
+          "versionNumber": "1.6.0.LATEST"
         }
       ]
     },
@@ -50,8 +50,8 @@
     {
       "path": "sfGpsDsAuVic",
       "package": "Salesforce Global Public Sector AU VIC Design System",
-      "versionName": "2023.04.20.2100",
-      "versionNumber": "1.5.1.NEXT",
+      "versionName": "2023.05.08.2000",
+      "versionNumber": "1.6.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -60,7 +60,7 @@
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.5.0.LATEST"
+          "versionNumber": "1.6.0.LATEST"
         }
       ]
     },
@@ -78,6 +78,23 @@
         {
           "package": "Salesforce Global Public Sector Design Systems",
           "versionNumber": "1.5.0.LATEST"
+        }
+      ]
+    },
+    {
+      "path": "sfGpsDsAuQld",
+      "package": "Salesforce Global Public Sector QLD Design System",
+      "versionName": "2023.05.08.2000",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "definitionFile": "config/project-deployment-def.json",
+      "dependencies": [
+        {
+          "package": "omnistudio 242.11"
+        },
+        {
+          "package": "Salesforce Global Public Sector Design Systems",
+          "versionNumber": "1.6.0.LATEST"
         }
       ]
     }

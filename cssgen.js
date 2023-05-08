@@ -4,7 +4,10 @@ let sass = require("sass");
 const fileRegEx = /!/;
 
 function genFile(filename) {
-  return sass.compile(filename, { style: "compressed" });
+  return sass.compile(filename, {
+    style: "compressed",
+    loadPaths: ["./"]
+  });
 }
 
 async function* walk(dir) {
@@ -26,16 +29,20 @@ async function main() {
 
         console.log(`dot ${dot}`);
 
-        for (const directory of config) {
+        for (const directory in config) {
           console.log(`Looking at directory ${directory}`);
           let file = directory; // scss and css file will be name just like their containing folder
           let fileInDirectory = directory.indexOf("/") >= 0;
 
-          const content = genFile(
+          let content = genFile(
             fileInDirectory
               ? `${dot}/${file}.scss`
               : `${dot}/${directory}/${file}.scss`
           ).css;
+
+          for (const replacement of config[directory]) {
+            content = content.replaceAll(replacement.from, replacement.to);
+          }
 
           fs.writeFile(
             fileInDirectory
