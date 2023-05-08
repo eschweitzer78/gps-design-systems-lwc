@@ -62,22 +62,13 @@ export default class SfGpsDsAuVicCallToActionComm extends SfGpsDsLwc {
 
   /* lifecycle */
 
-  _rendered;
-
   renderedCallback() {
-    if (!this._rendered) {
+    if (this.summary) {
       let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
       if (element) {
         replaceInnerHtml(element, this._summaryHtml);
-      } else {
-        this.addError(
-          "CO-PH",
-          "Couldn't find internal Summary markdown placeholder"
-        );
       }
-
-      this._rendered = true;
     }
   }
 }

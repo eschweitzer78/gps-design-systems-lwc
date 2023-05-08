@@ -35,11 +35,6 @@ export default class SfGpsDsAuVicAlertBaseComm extends SfGpsDsLwc {
       let element = this.template.querySelector(MARKDOWN_SELECTOR);
       if (element) {
         replaceInnerHtml(element, this._contentHtml);
-      } else {
-        this.addError(
-          "CO-PH",
-          "Couldn't find internal content markup placeholder"
-        );
       }
     }
   }

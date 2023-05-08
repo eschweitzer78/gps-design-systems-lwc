@@ -49,12 +49,16 @@
 }
 .rpl-button:active {
   background-color: rgba(0, 0, 0, 0);
-  background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
+  background-image: linear-gradient(
+    180deg,
+    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
+    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
+  );
   color: #fff;
 }
 .rpl-button--primary {
   color: #fff;
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 @media print {
   .rpl-button--primary {
@@ -68,13 +72,17 @@
 }
 .rpl-button--primary:hover,
 .rpl-button--primary:focus {
-  background-color: #0095ec;
+  background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
   color: #fff;
 }
 .rpl-button--primary:active {
   color: #fff;
   background-color: rgba(0, 0, 0, 0);
-  background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
+  background-image: linear-gradient(
+    180deg,
+    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
+    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
+  );
 }
 @media print {
   .rpl-button--primary:active {
@@ -83,7 +91,7 @@
 }
 .rpl-button--secondary {
   color: #fff;
-  background-color: #0095ec;
+  background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
 }
 @media print {
   .rpl-button--secondary {
@@ -97,13 +105,17 @@
 }
 .rpl-button--secondary:hover,
 .rpl-button--secondary:focus {
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #fff;
 }
 .rpl-button--secondary:active {
   color: #fff;
   background-color: rgba(0, 0, 0, 0);
-  background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
+  background-image: linear-gradient(
+    180deg,
+    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
+    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
+  );
 }
 @media print {
   .rpl-button--secondary:active {

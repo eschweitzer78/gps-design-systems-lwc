@@ -75,25 +75,13 @@ export default class SfGpsDsAuVicEmbeddedVideoComm extends SfGpsDsLwc {
   }
 
   /* lifecycle */
-
-  _rendered;
-
   renderedCallback() {
-    if (!this._rendered) {
-      if (this.showTranscriptSection) {
-        let element = this.template.querySelector(MARKDOWN_SELECTOR);
+    if (this.showTranscriptSection) {
+      let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
-        if (element) {
-          replaceInnerHtml(element, this._transcriptHtml);
-        } else {
-          this.addError(
-            "CO-PH",
-            "Couldn't find internal Caption markdown placeholder"
-          );
-        }
+      if (element) {
+        replaceInnerHtml(element, this._transcriptHtml);
       }
-
-      this._rendered = true;
     }
   }
 }

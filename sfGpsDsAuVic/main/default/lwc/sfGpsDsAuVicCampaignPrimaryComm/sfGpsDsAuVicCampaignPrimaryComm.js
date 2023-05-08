@@ -60,10 +60,8 @@ export default class SfGpsDsAuVicCampaignPrimaryComm extends SfGpsDsLwc {
 
   /* lifecycle */
 
-  _rendered;
-
   renderedCallback() {
-    if (!this._rendered) {
+    if (this.summary) {
       let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
       if (element) {
@@ -74,8 +72,6 @@ export default class SfGpsDsAuVicCampaignPrimaryComm extends SfGpsDsLwc {
           "Couldn't find internal Summary markdown placeholder"
         );
       }
-
-      this._rendered = true;
     }
   }
 }
