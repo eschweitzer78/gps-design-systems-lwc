@@ -421,7 +421,7 @@ body {
     display: none;
   }
 }
-:root {
+:host {
   --nsw-palette-grey-01: #22272b;
   --nsw-palette-grey-02: #495054;
   --nsw-palette-grey-03: #cdd3d6;
@@ -531,7 +531,7 @@ body {
   --nsw-palette-error-red-rgb: 184, 18, 55;
   --nsw-palette-error-red-bg-rgb: 247, 231, 235;
 }
-:root {
+:host {
   --nsw-brand-dark: var(--nsw-palette-blue-01);
   --nsw-brand-light: var(--nsw-palette-blue-04);
   --nsw-brand-accent: var(--nsw-palette-red-02);
@@ -2431,7 +2431,7 @@ a:visited {
     padding-top: 1rem;
   }
 }
-:root {
+:host {
   --nsw-font-size-xxs: var(--nsw-font-size-xxs-mobile);
   --nsw-font-height-xxs: var(--nsw-font-height-xxs-mobile);
   --nsw-font-size-xs: var(--nsw-font-size-xs-mobile);
@@ -2448,43 +2448,43 @@ a:visited {
   --nsw-font-height-xxl: var(--nsw-font-height-xxl-mobile);
 }
 @media (min-width: 62rem) {
-  :root {
+  :host {
     --nsw-font-size-xxs: var(--nsw-font-size-xxs-desktop);
     --nsw-font-height-xxs: var(--nsw-font-height-xxs-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :root {
+  :host {
     --nsw-font-size-xs: var(--nsw-font-size-xs-desktop);
     --nsw-font-height-xs: var(--nsw-font-height-xs-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :root {
+  :host {
     --nsw-font-size-sm: var(--nsw-font-size-sm-desktop);
     --nsw-font-height-sm: var(--nsw-font-height-sm-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :root {
+  :host {
     --nsw-font-size-md: var(--nsw-font-size-md-desktop);
     --nsw-font-height-md: var(--nsw-font-height-md-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :root {
+  :host {
     --nsw-font-size-lg: var(--nsw-font-size-lg-desktop);
     --nsw-font-height-lg: var(--nsw-font-height-lg-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :root {
+  :host {
     --nsw-font-size-xl: var(--nsw-font-size-xl-desktop);
     --nsw-font-height-xl: var(--nsw-font-height-xl-desktop);
   }
 }
 @media (min-width: 62rem) {
-  :root {
+  :host {
     --nsw-font-size-xxl: var(--nsw-font-size-xxl-desktop);
     --nsw-font-height-xxl: var(--nsw-font-height-xxl-desktop);
   }

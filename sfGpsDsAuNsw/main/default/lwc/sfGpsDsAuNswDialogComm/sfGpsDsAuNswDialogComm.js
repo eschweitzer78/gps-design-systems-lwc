@@ -44,24 +44,13 @@ export default class SfGpsDsAuNswDialogComm extends SfGpsDsLwc {
     this.classList.add("nsw-scope");
   }
 
-  _rendered = false;
-
   renderedCallback() {
-    if (this._rendered === false) {
+    if (this.content) {
       let element = this.template.querySelector(".sf-gps-ds-markdown");
 
-      if (this.content) {
-        if (element) {
-          replaceInnerHtml(element, this._contentHtml);
-        } else {
-          this.addError(
-            "CO-PH",
-            "Couldn't find internal content markdown placeholder"
-          );
-        }
+      if (element) {
+        replaceInnerHtml(element, this._contentHtml);
       }
-
-      this._rendered = true;
     }
   }
 

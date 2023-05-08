@@ -117,16 +117,11 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
   }
 
   renderedCallback() {
-    let element;
-
     if (this.copy) {
-      if ((element = this.template.querySelector(".nsw-list-item__copy"))) {
+      let element = this.template.querySelector(".nsw-list-item__copy");
+
+      if (element) {
         replaceInnerHtml(element, this._copyHtml);
-      } else {
-        this.addError(
-          "RC-PHC",
-          "Couldn't find internal copy markdown placeholder"
-        );
       }
     }
   }

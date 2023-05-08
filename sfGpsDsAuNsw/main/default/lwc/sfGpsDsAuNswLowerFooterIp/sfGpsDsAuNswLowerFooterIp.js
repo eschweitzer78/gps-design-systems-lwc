@@ -77,19 +77,18 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
   }
 
   renderedCallback() {
-    let element;
-    if (
-      (element = this.template.querySelector(".nsw-footer__copyright")) &&
-      this._copyrightMentionHtml
-    ) {
-      replaceInnerHtml(element, this._copyrightMentionHtml);
+    if (this._copyrightMention) {
+      let element = this.template.querySelector(".nsw-footer__copyright");
+      if (element) {
+        replaceInnerHtml(element, this._copyrightMentionHtml);
+      }
     }
 
-    if (
-      (element = this.template.querySelector(".nsw-footer__built")) &&
-      this._builtMentionHtml
-    ) {
-      replaceInnerHtml(element, this._builtMentionHtml);
+    if (this._builtMention) {
+      let element = this.template.querySelector(".nsw-footer__built");
+      if (element) {
+        replaceInnerHtml(element, this._builtMentionHtml);
+      }
     }
   }
 }

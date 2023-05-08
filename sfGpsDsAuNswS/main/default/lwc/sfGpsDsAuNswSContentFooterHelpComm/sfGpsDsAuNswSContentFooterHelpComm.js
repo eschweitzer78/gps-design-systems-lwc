@@ -32,24 +32,18 @@ export default class SfGpsDsAuNswSContentFooterHelpComm extends SfGpsDsLwc {
     }
   }
 
-  _rendered = false;
-
   renderedCallback() {
-    if (this._rendered === false) {
-      let element;
+    if (this.text) {
+      let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
-      if (this.text) {
-        if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
-          replaceInnerHtml(element, this._textHtml);
-        } else {
-          this.addError(
-            "CO-PH",
-            "Couldn't find internal intro markdown placeholder"
-          );
-        }
+      if (element) {
+        replaceInnerHtml(element, this._textHtml);
+      } else {
+        this.addError(
+          "CO-PH",
+          "Couldn't find internal intro markdown placeholder"
+        );
       }
-
-      this._rendered = true;
     }
   }
 }
