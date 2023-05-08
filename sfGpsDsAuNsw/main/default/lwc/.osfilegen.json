@@ -313,8 +313,8 @@
   },
   "sfGpsDsAuNswCore": {
     "target": "!Os",
-    "core_patched.css": {
-      "target": "core_patched.css"
+    "core.css": {
+      "target": "core.css"
     },
     "!.css": {
       "target": "!Os.css"
