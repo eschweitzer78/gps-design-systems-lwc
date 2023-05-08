@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Breadcrumbs</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="label"
+        type="String"
+        label="Aria label"
+        description="Label used for accessibility."
+        required="true"
+        default="Breadcrumbs"
+      />
+      <property
+        name="labelExpand"
+        type="String"
+        label="Aria expand label"
+        description="Label use for accessibility of the breadcrumb expand button."
+        default="Expand the breadcrumbs"
+      />
+      <property
+        name="items"
+        type="String"
+        label="Items"
+        description="Links to parent and current pages in Markdown format."
+        default="[Home](#)[Parent](#)[Current page]()"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

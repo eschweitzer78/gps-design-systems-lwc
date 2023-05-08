@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Butterfly lightbox test page</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.js"></script>
+<script type='text/javascript' src='jquery.resize-events.js'></script>
+<script type='text/javascript' src='jquery.history.js'></script>
+<script type='text/javascript' src='jquery.pxToEm.js'></script>
+<script type='text/javascript' src='jquery.butterfly.js'></script>
+<script type="text/javascript">
+$(function(){
+	/* Enhance all image links, and internal (relative) links only */
+	//$('a:not([href^="http://"]), a[href$=".jpg"], a[href$=".jpeg"], a[href$=".png"], a[href$=".gif"]').butterfly(options={
+	$('#examples a').not('.image').butterfly(options={
+		contentDefaultWidth: '50em', // for content
+		contentDefaultHeight: '100%', // for content
+		mediaMaxWidth: '100%', // for images
+		mediaMaxHeight: '100%', // for images
+		lightBoxMargin: '2em', // margin around screen (can be em, % or px)
+		animateResize: true,
+		//animationSpeed: 250, // in ms
+		//preloadNextGalleryImage: false,
+		//reuseFragment: true,
+		//closeButton: true,
+		//closeButtonImage: 'close.png',
+		//galleryMode: 'all',
+		//galleryLoops: true,
+		galleryContainers: '.gallery-test', // can specify more than one, i.e.  '#gallery-container, .gallery-test'
+		preloadLoadingImage: 'loading-black-on-white.gif',
+		preloadGalleryControlsSprite: 'gallery-controls-sprite.png'
+	});
+	
+	options.treatAsImage = true;
+	$('#examples a.image').butterfly(options);
+});
+</script>
+<link type="text/css" rel="stylesheet" href="butterfly.css" />
+<!--[if lt IE 9]>
+	<link type="text/css" rel="stylesheet" href="butterfly-ie.css" />
+<![endif]-->
+<style type="text/css">
+	/*
+		Styles for this page
+	*/
+	body {
+		font-family: Helvetica, Arial, sans-serif;
+		background: #efefef;
+		color: #000;
+	}
+	#page-container {
+		width: 48em;
+		padding: 1em;
+		margin: 1em auto;
+		background: #fff;
+	}
+	
+	.butterfly-gallery-demo {
+		overflow: hidden;
+		clear: both;
+	}
+	.butterfly-gallery-demo ul {
+		overflow: hidden;
+		clear: both;
+		background: #000;
+		float: left;
+		padding: 0 1em;
+	}
+	.butterfly-gallery-demo li {
+		list-style-type: none;
+		float: left;
+		margin: 1em;
+		padding: 0;
+	}
+	.butterfly-gallery-demo li a {
+		display: block;
+		float: left;
+	}
+	.butterfly-gallery-demo li a:hover,
+	.butterfly-gallery-demo li a:focus {
+		outline: 2px solid #fff;
+	}
+
+</style>
+</head>
+
+<body>
+
+<div id="page-container">
+    
+    <h1>Butterfly lightbox test page</h1>
+    <p>This page demonstrates <a href="http://irama.org/web/dhtml/butterfly/"><em>Butterfly</em>, a robust, flexible and fully accessible lightbox solution</a>.</p>
+    
+    <p>Note: This lightbox effect will not work in IE6, but the fallback (linked content) is still accessible and usable to visitors using IE6.</p>
+    <p>Butterfly has been tested and works in Internet Explorer 7&ndash;9, Safari 5, Chrome 11, Opera 11 and Firefox 3&ndash;4.</p>
+    
+    <div id="examples">
+        <p>Butterfly can link to any content, for example:</p>
+        <ul class="gallery-test">
+            <li><a href="butterfly.jpg" rel="gallery" title="The Cairns Birdwing butterfly">An image (with a caption)</a></li>
+            <li><a href="#same-page-fragment" rel="gallery">A fragment of content from the same page</a></li>
+            <li><a href="external.html" rel="gallery">Another page of content (using Ajax)</a></li>
+            <li><a href="external.html#external-fragment" rel="gallery">A fragment from within the external content page</a></li>
+            <li><a href="http://en.wikipedia.org/wiki/Cairns_Birdwing" rel="gallery">External domain, via iframe</a></li>
+        </ul>
+        
+        <p>Test also:</p>
+        <ul>
+            <li>An image with thumbnail (at right) <a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-1.jpg" style="float: right;"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-1-preview.jpg" alt="test image" /></a></li>
+            <li><a href="external.html#another-fragment">Another fragment from the external content page</a></li>
+            <li>Try resizing the window and making it quite narrow or short (or change the text size)!</li>
+            <li><a class="image" href="http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl=http://irama.org/web/dhtml/butterfly/">Link to an image without an image file extension (option set to treat as imnage anyway).</a></li>
+        </ul>
+       
+        <div class="section" id="gallery">
+            <h2>Gallery</h2>
+            <p>A gallery can be created using a container element or by specifying links with the same <code>rel</code> attribute.</p>
+            <div class="butterfly-gallery-demo">
+            <ul>
+                <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-1.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-1-preview.jpg" alt="Cairns Birdwing" /></a></li>
+                <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-2.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-2-preview.jpg" alt="Orange butterfly" /></a></li>
+                <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-3.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-3-preview.jpg" alt="Blue butterfly" /></a></li>
+                <li><a href="http://irama.org/assets/images/dhtml/butterfly/butterfly-4.jpg" rel="butterflies"><img src="http://irama.org/assets/images/dhtml/butterfly/butterfly-4-preview.jpg" alt="Green butterfly" /></a></li>
+            </ul>
+            </div>
+        </div>
+        
+        <div class="section" id="same-page-fragment">
+            <h2>A fragment of this page</h2>
+            The <a href="butterfly.jpg">Cairns Birdwing</a> (<em>Ornithoptera euphorion</em>) is Australia's  largest endemic butterfly species, with females reaching a wingspan of  up to 16 cm. Males are usually a few centimeters smaller. A closely  allied species, the New Guinea or Priam's Birdwing (<em>Ornithoptera priamus</em>)  reaches 19 cm and is the largest butterfly species found in Australia,  but it is not endemic. Cairns Birdwings are found southwards from Mount  Webb and Cooktown to Mackay in Queensland. Its favoured habitat is  primary rainforest, although the species will breed readily in a home  garden if the correct larval host plants are grown. (via <a href="http://en.wikipedia.org/wiki/Cairns_Birdwing">Wikipedia</a>)</div>
+            
+            <div class="section" id="error-handling">
+                <h2>Error handling</h2>
+                <p>These links are all broken:</p>
+                <ul>
+                    <li><a href="butterfly-error.jpg">A broken image</a></li>
+                    <li><a href="#fragment-error">A non-existent fragment</a></li>
+                    <li><a href="external-error.html">A non-page</a></li>
+                    <li><a href="external.html#fragment-error">A non-existent fragment from within a real external content page</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

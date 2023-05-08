@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <masterLabel>QLD DS Banner</masterLabel>
+  <isExposed>true</isExposed>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Clearly identifies the primary purpose or action of the site, service or product."
+        default="National Road Safety Week"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Gives additional context when the title alone would be insufficient - in Markdown format."
+        default="From 14-21 May, take the pledge and look for ways you can drive so others survive."
+      />
+      <property
+        name="linkPrimary"
+        type="String"
+        label="Primary link"
+        description="Link used for the primary button in Markdown format."
+        default="[Take the pledge](#)"
+      />
+      <property
+        name="linkSecondary"
+        type="String"
+        label="Secondary link"
+        description="Link used for the secondary anchor in Markdown format."
+        default="[Read more](#)"
+      />
+      <property
+        name="backgroundGraphic"
+        type="String"
+        label="Background graphic"
+        description="Background graphic."
+        default="https://images.unsplash.com/photo-1516432887776-cf02336463c7?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80"
+      />
+       <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
