@@ -16,15 +16,6 @@ jobs:
   release-package-version:
     runs-on: ubuntu-latest
     steps:
-      # Install Salesforce CLI
-      - name: "Install Salesforce CLI"
-        run: |
-          wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
-          mkdir ~/sfdx
-          tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
-          echo "$HOME/sfdx/bin" >> $GITHUB_PATH
-          ~/sfdx/bin/sfdx version
-
       # Checkout the source code
       - name: "Checkout source code"
         uses: actions/checkout@v3
@@ -45,6 +36,14 @@ jobs:
           restore-keys: |
             npm-${{ env.cache-name }}-
             npm-
+
+      # Install Salesforce CLI
+      - name: "Install Salesforce CLI"
+        run: |
+          npm install sfdx-cli@7.198 --location=global
+          nodeInstallPath=$(npm config get prefix)
+          echo "$nodeInstallPath/bin" >> $GITHUB_PATH
+          sfdx --version
 
       # Install npm dependencies for cssgen
       - name: "Install npm dependencies"
