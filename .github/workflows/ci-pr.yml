@@ -166,11 +166,10 @@ jobs:
       # Install Salesforce CLI
       - name: "Install Salesforce CLI"
         run: |
-          wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
-          mkdir ~/sfdx
-          tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
-          echo "$HOME/sfdx/bin" >> $GITHUB_PATH
-          ~/sfdx/bin/sfdx version
+          npm install sfdx-cli@7.191.3 --location=global
+          nodeInstallPath=$(npm config get prefix)
+          echo "$nodeInstallPath/bin" >> $GITHUB_PATH
+          sfdx --version
 
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"
@@ -185,15 +184,15 @@ jobs:
 
       # Authenticate dev hub
       - name: "Authenticate Dev Hub"
-        run: sfdx auth sfdxurl store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
+        run: sfdx auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
 
       # Create scratch org
       - name: "Create scratch org"
-        run: sfdx force org create -f config/project-scratch-def.json -a scratch-org -s -d 1
+        run: sfdx force:org:create -f config/project-scratch-def.json -a scratch-org -s -d 1
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx package install -p ${{ vars.OMNISTUDIO_PACKAGEID }} -o scratch-org -w 13 -r -s=AllUsers
+        run: sfdx package:install -p ${{ vars.OMNISTUDIO_PACKAGEID }} --target-org scratch-org -w 13 -r -s=AllUsers
 
       # Activate metadata for omnistudio on scratch org
       # (removed as OmniStudio metadata cannot be packaged fo now)
@@ -214,7 +213,7 @@ jobs:
 
       # Deploy source to scratch org
       - name: "Push source to scratch org"
-        run: sfdx project deploy start --target-org scratch-org
+        run: sfdx force:source:push -u scratch-org
 
       # Assign permissionset
       # - name: 'Assign permissionset to default user'
@@ -226,7 +225,7 @@ jobs:
 
       # Run Apex tests in scratch org
       - name: "Run Apex tests"
-        run: sfdx apex test run -c -r human -d ./tests/apex -w 20 -l RunLocalTests
+        run: sfdx apex:test:run -c -r human -d ./tests/apex -w 20 --test-level RunLocalTests
 
       # Delete temporary test file that Codecov is unable to parse
       #- name: "Delete coverage file (temporary step)"
@@ -242,7 +241,7 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org delete scratch -p -o scratch-org
+        run: sfdx org:delete:scratch -p --target-org scratch-org
 
   trigger-packaging:
     runs-on: ubuntu-latest
