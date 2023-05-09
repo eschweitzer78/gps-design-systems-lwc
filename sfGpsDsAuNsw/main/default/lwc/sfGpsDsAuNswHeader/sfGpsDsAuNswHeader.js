@@ -33,7 +33,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
 
   setSearchVisible(visible) {
     this.isSearchOpen = visible;
-    let element = this.template.querySelector(".nsw-header__search-area");
+    let element = this.querySelector(".nsw-header__search-area");
 
     if (element) {
       element.hidden = !visible;
@@ -50,7 +50,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.value = "";
 
-    let element = this.template.querySelector(".nsw-header__input");
+    let element = this.querySelector(".nsw-header__input");
     if (element) {
       element.focus();
     }
