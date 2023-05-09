@@ -78,6 +78,11 @@ jobs:
       - name: "Remove auth file"
         run: rm -f ./DEVHUB_SFDX_URL.txt
 
+      # List package versions
+      - name: "List package versions"
+        id: listPackageVersions
+        run: sfdx package version list
+
       # Create package version and extract its id
       - name: "Create package version sfGpsDs"
         id: createPackageVersion-sfGpsDs
@@ -100,8 +105,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
-          echo "package:version:create output:"
+          json=$(sfdx package version create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
           echo $json
           echo "----"
           status=$(echo $json | jq '.status')
@@ -118,8 +123,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
-          echo "package:version:create output:"
+          json=$(sfdx package version create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
           echo $json
           echo "----"
           status=$(echo $json | jq '.status')
@@ -136,8 +141,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
-          echo "package:version:create output:"
+          json=$(sfdx package version create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
           echo $json
           echo "----"
           status=$(echo $json | jq '.status')
@@ -154,8 +159,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
         run: |
           set +e
-          json=$(sfdx package:version:create -d sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
-          echo "package:version:create output:"
+          json=$(sfdx package version create -d sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
           echo $json
           echo "----"
           status=$(echo $json | jq '.status')
@@ -163,7 +168,7 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package:version:create failed"
+              echo "sfdx package version create failed"
           fi
           exit $status
 
