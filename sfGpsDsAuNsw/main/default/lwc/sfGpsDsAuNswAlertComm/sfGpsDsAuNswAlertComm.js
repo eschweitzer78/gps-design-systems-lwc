@@ -26,24 +26,24 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
     return this._compact;
   }
 
-  _content;
+  _contentOriginal;
   _contentHtml;
 
   @api set content(markdown) {
-    this._content = markdown;
+    this._contentOriginal = markdown;
     this.generateContentHtml();
   }
 
   get content() {
-    return this._content;
+    return this._contentOriginal;
   }
 
   generateContentHtml() {
     try {
-      if (this._content) {
+      if (this._contentOriginal) {
         this._contentHtml = this._compact
-          ? mdEngine.renderEscapedUnpackFirstP(this._content)
-          : mdEngine.renderEscaped(this._content);
+          ? mdEngine.renderEscapedUnpackFirstP(this._contentOriginal)
+          : mdEngine.renderEscaped(this._contentOriginal);
       }
     } catch (e) {
       console.log(e);
