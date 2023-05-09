@@ -164,7 +164,7 @@ jobs:
         run: exit 1
 
       # Install Salesforce CLI
-      - name: "Install Salesforce CLI"
+      - name: "Install Salesforce CLI v7.191.3"
         run: |
           npm install sfdx-cli@7.191.3 --location=global
           nodeInstallPath=$(npm config get prefix)
