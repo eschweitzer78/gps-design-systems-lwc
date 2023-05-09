@@ -100,8 +100,10 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           set +e
-          json=$(sfdx package version create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          json=$(sfdx package:version:create -d sfGpsDsAuNsw -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          echo "package:version:create output:"
           echo $json
+          echo "----"
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
@@ -116,8 +118,10 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           set +e
-          json=$(sfdx package version create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          json=$(sfdx package:version:create -d sfGpsDsAuNswS -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          echo "package:version:create output:"
           echo $json
+          echo "----"
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
@@ -133,7 +137,9 @@ jobs:
         run: |
           set +e
           json=$(sfdx package:version:create -d sfGpsDsAuVic -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          echo "package:version:create output:"
           echo $json
+          echo "----"
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
@@ -149,7 +155,9 @@ jobs:
         run: |
           set +e
           json=$(sfdx package:version:create -d sfGpsDsUkGov -x -w 20 -f config/project-scratch-def.json --code-coverage --json)
+          echo "package:version:create output:"
           echo $json
+          echo "----"
           status=$(echo $json | jq '.status')
           if [ $status == "0" ]; then
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
