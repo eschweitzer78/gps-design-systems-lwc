@@ -6,7 +6,7 @@
   border-right: 0;
   border-image: linear-gradient(
       0deg,
-      var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
+      #0052c2 0%,
       #825dff 12%,
       #ef4a81 23%,
       #e57200 37%,

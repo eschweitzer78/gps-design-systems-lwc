@@ -94,7 +94,7 @@
 }
 .rpl-back-to-top__button:hover,
 .rpl-back-to-top__button:focus {
-  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #0052c2;
 }
 @media screen and (max-width: 991px) {
   .rpl-back-to-top__text {
