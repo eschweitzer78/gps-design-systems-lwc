@@ -61,5 +61,8 @@
     "bootstrap": "^4.6.2",
     "font-awesome": "^4.7.0",
     "web-template-release": "^4.1.0"
+  },
+  "engines": {
+    "node": "18.14.2"
   }
 }
