@@ -173,12 +173,12 @@ jobs:
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx force:package:install -p ${{ vars.OMNISTUDIO_PACKAGEID }} --target-org scratch-org -w 13 -r -s=AllUsers
+        run: sfdx force:package:install -p ${{ vars.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 13 -r -s=AllUsers
 
       # Install new sfGpsDs package in scratch org
       - name: "Install new sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
-        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Get current sfGpsDs package version
       - name: "Get current sfGpsDs package version"
@@ -191,22 +191,22 @@ jobs:
       # Install old sfGpsDs package in scratch org
       - name: "Install current sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: sfdx force:package:install -p ${{ steps.currentSfGpsDsPack.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.currentSfGpsDsPack.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
-        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Install new sfGpsDsAuNswS package in scratch org
       - name: "Install new sfGpsDsAuNswS package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
-        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Install new sfGpsDsAuVic package in scratch org
       - name: "Install new sfGpsDsAuVic package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
-        run: sfdx force:force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} -w 13 --target-org scratch-org -r
+        run: sfdx force:force:package:install -p ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} -w 13 -u scratch-org -r
 
       # Install new sfGpsDsUkGov package in scratch org
       - name: "Install new sfGpsDsUkGov package version in scratch org"
@@ -267,4 +267,4 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org:delete:scratch -p --target-org scratch-org
+        run: sfdx org:delete:scratch -p -u scratch-org
