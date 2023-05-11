@@ -1,5 +1,13 @@
 ## Change log
 
+### 11 May 2023
+
+We released a version of the base `sfGpsDs` library to fix an issue occuring in Summer'23 at LWC compile time for modules importing `sfGpsDsMarkdown`.
+
+## 13 Apr 2023
+
+We released a new version of NSW DS aligning with the official v3.5 release by digital.NSW. It adds an alpha version of a record list view, status labels, tabs, side nav, in-page navigation as well as modal dialog capabilities.
+
 ### 07 Mar 2023
 
 We released VIC DS support for OmniStudio overrides and improved a few widgets.
