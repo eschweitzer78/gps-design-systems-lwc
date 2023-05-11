@@ -19,7 +19,7 @@ Refer to `sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicAlertBaseComm`
 Added support for separation of title and content from the same attribute by
 using the double carriage return marker.
 
-### VIC DS Hero Banner CTA
+#### VIC DS Hero Banner CTA
 
 Refer to `sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicHeroBannerCtaComm`
 
