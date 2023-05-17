@@ -1,0 +1,50 @@
+<template>
+  <!-- TODO image group not supported-->
+  <c-sf-gps-ds-uk-gov-checkbox-group-os-n
+    name={jsonDef.name}
+    options={_realtimeOptions}
+    value={elementValue}
+    label={mergedLabel}
+    onchange={handleChange}
+    required={_propSetMap.required}
+    tab-index={tabIndex}
+    theme={_theme}
+    alignment={_horizontalMode}
+    field-level-help={mergedHelpText}
+    data-refresh={refresh}
+    message-when-value-missing={_messageWhenValueMissing}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    data-omni-input
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span slot="label" class={_styleClasses.repeatContainer} role="group">
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Multiselect"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Multiselect"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-uk-gov-checkbox-group-os-n>
+</template>
