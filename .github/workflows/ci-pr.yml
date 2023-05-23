@@ -167,18 +167,22 @@ jobs:
       - name: "Install Salesforce CLI v7.182.1"
         run: |
           npm install sfdx-cli@7.182.1 --location=global
-          echo "+++"
+          echo "+++ result of npm config get prefix"
           npm config get prefix
           nodeInstallPath=$(npm config get prefix)
-          echo "---"
+          echo "--- GITHUB_PATH file prior"
           cat $GITHUB_PATH
-          echo "==="
+          echo "=== listing files in npm bin folder and adding folder to GITHUB_PATH"
           echo "$nodeInstallPath/bin"
           ls $nodeInstallPath/bin
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
-          echo "---"
+          echo "--- GITHUB_PATH file now"
           cat $GITHUB_PATH
           echo "==="
+
+      # Install Salesforce CLI
+      - name: "Confirm Salesforce CLI version"
+        run: |
           sfdx --version
 
       # Store secret for dev hub
