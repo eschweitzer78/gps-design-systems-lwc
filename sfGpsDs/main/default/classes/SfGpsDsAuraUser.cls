@@ -9,6 +9,7 @@ public with sharing class SfGpsDsAuraUser {
           SELECT Id, UrlPathPrefix
           FROM Network
           WHERE Id = :networkId
+          WITH USER_MODE
         ]
       : null;
 
