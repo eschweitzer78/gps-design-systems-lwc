@@ -12,7 +12,7 @@
 }
 .rpl-meta-tag--light .rpl-meta-tag__link,
 .rpl-meta-tag--dark .rpl-meta-tag__link {
-  border: 2px solid #0052c2;
+  border: 2px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-radius: 2.5rem;
   padding: 0.25rem 1.25rem;
 }
@@ -23,7 +23,7 @@
   }
 }
 .rpl-meta-tag--light .rpl-meta-tag__link {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 @media print {
   .rpl-meta-tag--light .rpl-meta-tag__link {
@@ -31,10 +31,10 @@
   }
 }
 .rpl-meta-tag--light .rpl-meta-tag__link:hover {
-  background: #0052c2;
+  background: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 .rpl-meta-tag--dark .rpl-meta-tag__link {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   border-color: #fff;
 }
 @media print {
@@ -65,7 +65,7 @@
   text-transform: uppercase;
 }
 .rpl-meta-tag--light .rpl-meta-tag__text {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 @media print {
   .rpl-meta-tag--light .rpl-meta-tag__text {
