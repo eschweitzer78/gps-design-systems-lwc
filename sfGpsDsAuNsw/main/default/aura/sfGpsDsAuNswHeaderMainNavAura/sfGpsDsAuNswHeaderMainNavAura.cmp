@@ -22,7 +22,7 @@
   <aura:attribute name="searchLabel" type="String" default="Search site for:" />
   <aura:attribute name="siteTitle" type="String" />
   <aura:attribute name="siteDescriptor" type="String" />
-  <aura:attribute name="headerUrl" type="String" default="#" />
+  <aura:attribute name="headerUrl" type="String" default="" />
   <aura:attribute name="mobile" type="Boolean" default="false" />
   <aura:attribute name="search" type="Boolean" default="false" />
 

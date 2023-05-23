@@ -17,6 +17,7 @@ public with sharing class SfGpsDsAuraUser {
       SELECT Id, Alias
       FROM User
       WHERE Id = :UserInfo.getUserId()
+      WITH USER_MODE
     ];
 
     ud.userAlias = u.Alias;
