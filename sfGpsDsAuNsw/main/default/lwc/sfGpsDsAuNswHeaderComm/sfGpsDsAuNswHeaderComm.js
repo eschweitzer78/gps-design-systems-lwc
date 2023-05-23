@@ -5,9 +5,14 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import { api, track, wire } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { NavigationMixin } from "lightning/navigation";
+
+import userId from "@salesforce/user/Id";
+import isGuest from "@salesforce/user/isGuest";
+import { getRecord } from "lightning/uiRecordApi";
+import userAliasField from "@salesforce/schema/User.Alias";
 
 export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
   @api masterbrand;
@@ -23,8 +28,28 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
   @api headerUrl;
   @api mobile = false;
   @api search = false;
+  @api profile = false;
+
+  @api profileIpName;
+  @api profileInputJSON;
+  @api profileOptionsJSON;
 
   @api className;
+
+  @track userAlias;
+
+  @wire(getRecord, { recordId: userId, fields: [userAliasField] })
+  getUserDetails({ error, data }) {
+    if (data) {
+      this.userAlias = data.fields.Alias.value;
+    } else if (error) {
+      console.log(error);
+    }
+  }
+
+  get isGuest() {
+    return isGuest;
+  }
 
   /* lifecycle */
 

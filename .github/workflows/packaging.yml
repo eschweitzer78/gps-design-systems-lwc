@@ -43,6 +43,10 @@ jobs:
           npm install sfdx-cli@7.182.1 --location=global
           nodeInstallPath=$(npm config get prefix)
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
+
+      # Install Salesforce CLI
+      - name: "Confirm Salesforce CLI version"
+        run: |
           sfdx --version
 
       # Install npm dependencies for cssgen

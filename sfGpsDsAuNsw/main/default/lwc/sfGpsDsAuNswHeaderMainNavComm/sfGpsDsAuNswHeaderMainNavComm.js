@@ -29,6 +29,10 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIp {
   @api mobile = false;
   @api search = false;
 
+  @api profileIpName;
+  @api profileInputJSON;
+  @api profileOptionsJSON;
+
   @api headerClassName;
   @track menuActive = false;
 

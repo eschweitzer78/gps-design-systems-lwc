@@ -7,7 +7,7 @@
 }
 .rpl-text-link:hover,
 .rpl-text-link:focus {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 .rpl-text-link:hover .rpl-text-label,
 .rpl-text-link:focus .rpl-text-label {

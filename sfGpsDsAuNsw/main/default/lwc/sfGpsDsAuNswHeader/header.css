@@ -356,3 +356,25 @@
     height: 4.75rem;
   }
 }
+.nsw-header__search {
+  display: flex;
+  align-items: center;
+}
+.nsw-header__search button[hidden] {
+  display: none;
+}
+.nsw-header__search-area {
+  right: 0;
+}
+@media (min-width: 62rem) {
+  .nsw-header__has-profile .nsw-header__search-area {
+    right: 11rem;
+    z-index: 201;
+  }
+}
+.nsw-header__profile {
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

@@ -24,12 +24,23 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   @api headerUrl = "#";
   @api mobile = false;
   @api search = false;
+  @api profile = false;
 
   @api searchAriaLabel = "search";
   @api className;
 
   @track isSearchOpen = false;
   @api value = "";
+
+  get computedClassName() {
+    return computeClass({
+      "nsw-header": true,
+      "nsw-header__has-profile": this.profile,
+      [this.className]: this.className
+    });
+  }
+
+  /* helpers */
 
   setSearchVisible(visible) {
     this.isSearchOpen = visible;
@@ -39,6 +50,8 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
       element.hidden = !visible;
     }
   }
+
+  /* Event handling */
 
   handleCloseSearch() {
     this.setSearchVisible(false);
@@ -94,12 +107,5 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
 
     const homeEvent = new CustomEvent("home");
     this.dispatchEvent(homeEvent);
-  }
-
-  get computedClassName() {
-    return computeClass({
-      "nsw-header": true,
-      [this.className]: this.className
-    });
   }
 }

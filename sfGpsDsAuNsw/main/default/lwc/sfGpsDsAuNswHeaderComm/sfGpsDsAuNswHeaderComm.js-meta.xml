@@ -77,6 +77,24 @@
         default="true"
       />
       <property
+        name="profileIpName"
+        type="String"
+        label="Profile integration procedure name"
+        description="Name of the Integration procedure mapping content to this nav. Leave empty for if no profile menu is required."
+      />
+      <property
+        name="profileInputJSON"
+        type="String"
+        label="Profile input JSON"
+        description="JSON formatted input parameters for the profile integration procedure."
+      />
+      <property
+        name="profileOptionsJSON"
+        type="String"
+        label="Profile options JSON"
+        description="JSON formatted options for the Profile integration procedure."
+      />
+      <property
         name="menuLabel"
         type="String"
         label="Menu icon name"

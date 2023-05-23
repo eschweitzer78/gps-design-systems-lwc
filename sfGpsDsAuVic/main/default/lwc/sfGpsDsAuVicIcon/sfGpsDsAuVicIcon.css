@@ -1,11 +1,11 @@
 .rpl-icon--color_primary {
-  fill: #0052c2;
+  fill: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 .rpl-icon--color_dark_primary {
-  fill: #023b89;
+  fill: var(--sf-gps-ds-au-vic-color-dark-primary, #023b89);
 }
 .rpl-icon--color_secondary {
-  fill: #0095ec;
+  fill: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
 }
 .rpl-icon--color_extra_dark_neutral {
   fill: #011a3c;

@@ -2,6 +2,10 @@
   .nsw-main-nav {
     li {
       margin: 0;
+
+      a:visited {
+        color: var(--nsw-text-dark);
+      }
     }
   }
 

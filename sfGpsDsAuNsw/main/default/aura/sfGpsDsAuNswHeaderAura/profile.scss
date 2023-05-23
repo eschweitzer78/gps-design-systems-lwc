@@ -1,0 +1,22 @@
+.nsw-header__search {
+  display: flex;
+  align-items: center;
+
+  button[hidden] {
+    display: none;
+  }
+}
+
+.nsw-header__has-profile .nsw-header__search-area {
+  @media(min-width: 62rem) {
+    right: 11rem;
+    z-index: 201;
+  }
+}
+
+.nsw-header__profile {
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}

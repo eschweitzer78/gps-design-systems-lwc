@@ -12,20 +12,38 @@
       <property
         name="ipName"
         type="String"
-        label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this nav."
+        label="Nav integration procedure name"
+        description="Name of the integration procedure mapping content to this nav."
       />
       <property
         name="inputJSON"
         type="String"
-        label="Input JSON"
-        description="JSON formatted input parameters for the Integration procedure."
+        label="Nav input JSON"
+        description="JSON formatted input parameters for the nav integration procedure."
       />
       <property
         name="optionsJSON"
         type="String"
-        label="Options JSON"
-        description="JSON formatted options for the Integration procedure."
+        label="Nav options JSON"
+        description="JSON formatted options for the nav integration procedure."
+      />
+      <property
+        name="profileIpName"
+        type="String"
+        label="Profile integration procedure name"
+        description="Name of the integration procedure mapping content to the profile menu. Leave empty for if no profile menu is required."
+      />
+      <property
+        name="profileInputJSON"
+        type="String"
+        label="Profile input JSON"
+        description="JSON formatted input parameters for the profile integration procedure."
+      />
+      <property
+        name="profileOptionsJSON"
+        type="String"
+        label="Profile options JSON"
+        description="JSON formatted options for the profile integration procedure."
       />
       <property
         name="masterbrand"
@@ -118,6 +136,7 @@
         name="megaMenu"
         type="Boolean"
         label="Mega menu"
+        description="Indicates that the menu should be rendered as a multi-level mega-menu"
         default="false"
       />
       <property
