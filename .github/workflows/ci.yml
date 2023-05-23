@@ -159,6 +159,10 @@ jobs:
           npm install sfdx-cli@7.182.1 --location=global
           nodeInstallPath=$(npm config get prefix)
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
+
+      # Install Salesforce CLI
+      - name: "Confirm Salesforce CLI version"
+        run: |
           sfdx --version
 
       # Store secret for dev hub
@@ -215,7 +219,7 @@ jobs:
 
       # Run Apex tests in scratch org
       - name: "Run Apex tests"
-        run: sfdx force:apex:test:run -c -r human -d ./tests/apex -w 20 -l RunLocalTests
+        run: sfdx force:apex:test:run -c -r human -d ./tests/apex -w 20 --testLevel RunLocalTests
 
       # Delete temporary test file that Codecov is unable to parse
       #- name: "Delete coverage file (temporary step)"
