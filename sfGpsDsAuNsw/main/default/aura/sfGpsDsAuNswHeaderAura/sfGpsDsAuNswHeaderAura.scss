@@ -22,6 +22,8 @@ $nsw-icon-colors: (
 
 $nsw-icon-angles: (90, 180, 270);
 
-@import "node_modules/nsw-design-system/src/components/header/header";
-@import "./fixes";
-@import "./profile";
+.THIS {
+  @import "node_modules/nsw-design-system/src/components/header/header";
+  @import "./fixes";
+  @import "./profile";
+}

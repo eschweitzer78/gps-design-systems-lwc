@@ -46,12 +46,14 @@ export default class SfGpsDsNavigationService extends NavigationMixin(
       case "Event":
         switch (menuEntry.Target) {
           case "Login":
+          case "selfService:doLogin":
             this.navigateTo("comm__loginPage", {
               actionName: "login"
             });
             break;
 
           case "Logout":
+          case "force:logout":
             this.navigateTo("comm__loginPage", {
               actionName: "logout"
             });
@@ -112,11 +114,13 @@ export default class SfGpsDsNavigationService extends NavigationMixin(
       case "Event":
         switch (menuEntry.Target) {
           case "Login":
+          case "selfService:doLogin":
             return this.generateUrl("comm__loginPage", {
               actionName: "login"
             });
 
           case "Logout":
+          case "force:logout":
             return this.generateUrl("comm__loginPage", {
               actionName: "logout"
             });

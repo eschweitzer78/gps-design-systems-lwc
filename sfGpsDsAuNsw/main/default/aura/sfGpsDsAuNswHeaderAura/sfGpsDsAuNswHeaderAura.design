@@ -1,0 +1,22 @@
+<design:component label="NSW DS Header (Aura)">
+  <design:attribute name="masterbrand" label="Masterbrand" description="Logo URL for masterbrand, leave empty to keep NSW Government Waratah logo." />
+  <design:attribute name="masterbrandAlt" label="Masterbrand alternative text" description="Alternative text to masterbrand logo." />
+  <design:attribute name="srMasterbrandLabel" label="Screenreader masterbrand label" description="Label used on screenreaders for the masterbrand logo."/>
+  <design:attribute name="logo" label="Logo" description="Logo URL for co-brand."/>
+  <design:attribute name="logoAlt" label="Logo alternative text" description="Alternative text to co-brand logo."/>
+
+  <design:attribute name="siteTitle" label="Site title" description="Provides user context of the product or service."/>
+  <design:attribute name="siteDescriptor" label="Site descriptor" description="Provides user context of the cluster/department/agency if required."/>
+  <design:attribute name="headerUrl" label="Home page URL" description="URL to alternative home page, leave blank otherwise."/>
+  <design:attribute name="mobile" label="Mobile" description="Show a responsive menu on mobile."/>
+  <design:attribute name="search" label="Show search bar" description="Provide user with easy access to a targeted search."/>
+
+  <design:attribute name="profileIpName" label="Profile integration procedure name" description="Name of the Integration procedure mapping content to this nav. Leave empty for if no profile menu is required."/>
+  <design:attribute name="profileInputJSON" label="Profile input JSON" description="JSON formatted input parameters for the profile integration procedure."/>
+  <design:attribute name="profileOptionsJSON" label="Profile options JSON" description="JSON formatted options for the Profile integration procedure."/>
+
+  <design:attribute name="menuLabel" label="Menu icon name" description="Name of the Google Material icon used to render the menu waffle on mobile."/>
+  <design:attribute name="searchLabel" label="Screenreader search label" description="Accessibility label used for the search box with screen readers"/>
+
+  <design:attribute name="className" label="Class name" description="Additional CSS class to be applied."/>
+</design:component>
