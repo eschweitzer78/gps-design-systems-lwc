@@ -167,6 +167,8 @@ jobs:
       - name: "Install Salesforce CLI v7.182.1"
         run: |
           npm install sfdx-cli@7.182.1 --location=global
+          echo "+++"
+          npm config get prefix
           nodeInstallPath=$(npm config get prefix)
           echo "---"
           cat $GITHUB_PATH
