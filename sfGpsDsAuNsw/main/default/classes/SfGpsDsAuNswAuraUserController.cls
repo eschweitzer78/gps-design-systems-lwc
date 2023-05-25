@@ -1,4 +1,4 @@
-public with sharing class SfGpsDsAuraUserController {
+public with sharing class SfGpsDsAuNswAuraUserController {
   @AuraEnabled(cacheable=true)
   public static UserDetails getUser() {
     Id networkId = Network.getNetworkId();
