@@ -1,6 +1,6 @@
 <aura:component
   implements="forceCommunity:availableForAllPageTypes"
-  controller="SfGpsDsAuraUser"
+  controller="SfGpsDsAuraUserController"
   access="global"
 >
   <aura:attribute name="masterbrand" type="String" />
