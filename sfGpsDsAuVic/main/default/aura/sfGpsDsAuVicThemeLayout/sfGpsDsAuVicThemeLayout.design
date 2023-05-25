@@ -14,5 +14,4 @@
   <design:attribute name="primaryColor" label="Primary colour" description="Main theme colour." type="Color"/>
   <design:attribute name="darkPrimaryColor" label="Dark primary colour" description="Colour used when a darker version of the primary colour is required." type="Color"/>
   <design:attribute name="secondaryColor" label="Secondary colour" description="Secondary theme colour." type="Color"/>
-
 </design:component>
