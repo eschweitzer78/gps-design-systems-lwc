@@ -10,13 +10,13 @@
   }
 }
 .rpl-alert-base--color-primary {
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #0052c2;
 }
 .rpl-alert-base--color-dark_primary {
-  background-color: var(--sf-gps-ds-au-vic-color-dark-primary, #023b89);
+  background-color: #023b89;
 }
 .rpl-alert-base--color-secondary {
-  background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  background-color: #0095ec;
 }
 .rpl-alert-base--color-extra_dark_neutral {
   background-color: #011a3c;
@@ -73,13 +73,13 @@
   }
 }
 .rpl-alert-base__content--color-primary {
-  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #0052c2;
 }
 .rpl-alert-base__content--color-dark_primary {
-  color: var(--sf-gps-ds-au-vic-color-dark-primary, #023b89);
+  color: #023b89;
 }
 .rpl-alert-base__content--color-secondary {
-  color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  color: #0095ec;
 }
 .rpl-alert-base__content--color-extra_dark_neutral {
   color: #011a3c;
@@ -118,13 +118,13 @@
   color: #fff;
 }
 .rpl-alert-base__content--color-primary a {
-  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #0052c2;
 }
 .rpl-alert-base__content--color-dark_primary a {
-  color: var(--sf-gps-ds-au-vic-color-dark-primary, #023b89);
+  color: #023b89;
 }
 .rpl-alert-base__content--color-secondary a {
-  color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  color: #0095ec;
 }
 .rpl-alert-base__content--color-extra_dark_neutral a {
   color: #011a3c;

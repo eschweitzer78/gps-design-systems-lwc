@@ -4,7 +4,7 @@
   line-height: 1em;
   font-weight: normal;
   color: #fff;
-  background-color: var(--sf-gps-ds-au-vic-color-dark-primary, #023b89);
+  background-color: #023b89;
 }
 @media screen {
   .rpl-site-footer {
@@ -75,7 +75,7 @@
   padding-right: 1.25rem;
   padding-left: 1.25rem !important;
   padding-right: 1.25rem !important;
-  border-bottom: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-bottom: 1px solid #0052c2;
   padding-top: 0.25rem;
 }
 @media screen and (min-width: 576px) {
@@ -229,7 +229,7 @@
   }
 }
 .rpl-footer-nav__menu-item {
-  border-bottom: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-bottom: 1px solid #0052c2;
 }
 @media screen and (min-width: 992px) {
   .rpl-footer-nav__menu-item {

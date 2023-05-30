@@ -144,7 +144,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  background-color: #0095ec;
   background-image: none;
 }
 .rpl-menu--horizontal
@@ -169,11 +169,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-image: linear-gradient(
-    90deg,
-    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
-    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
-  );
+  background-image: linear-gradient(90deg, #0052c2 0%, #0095ec 100%);
 }
 .rpl-menu--horizontal .rpl-menu__quickexit {
   margin-bottom: 1.5rem;
@@ -370,7 +366,7 @@
   border-top: 0;
 }
 .rpl-menu--vertical .rpl-menu__item {
-  border-top: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-top: 1px solid #0052c2;
 }
 .rpl-menu--vertical .rpl-menu__item:first-child {
   border-top: 0;
@@ -381,7 +377,7 @@
 }
 .rpl-menu--horizontal-floating-wrapper .rpl-menu__item,
 .rpl-menu--horizontal .rpl-menu--subs .rpl-menu__item {
-  border-top: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-top: 1px solid #0052c2;
 }
 .rpl-menu--horizontal-floating-wrapper .rpl-menu__item:first-child,
 .rpl-menu--horizontal .rpl-menu--subs .rpl-menu__item:first-child {
@@ -458,16 +454,12 @@
 .rpl-menu--vertical .rpl-menu__item-link:focus,
 .rpl-menu--horizontal-floating-wrapper .rpl-menu__item-link:focus,
 .rpl-menu--horizontal .rpl-menu--subs .rpl-menu__item-link:focus {
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #0052c2;
 }
 .rpl-menu--vertical .rpl-menu__item-link--active,
 .rpl-menu--horizontal-floating-wrapper .rpl-menu__item-link--active,
 .rpl-menu--horizontal .rpl-menu--subs .rpl-menu__item-link--active {
-  background-image: linear-gradient(
-    90deg,
-    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
-    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
-  );
+  background-image: linear-gradient(90deg, #0052c2 0%, #0095ec 100%);
   background-color: rgba(0, 0, 0, 0);
   color: #fff;
 }
@@ -477,7 +469,7 @@
   align-items: center;
   padding: 1rem 1.25rem;
   color: #fff;
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #0052c2;
 }
 .rpl-menu--horizontal-floating-wrapper .rpl-menu__item-link:hover span,
 .rpl-menu--horizontal .rpl-menu--subs .rpl-menu__item-link:hover span {

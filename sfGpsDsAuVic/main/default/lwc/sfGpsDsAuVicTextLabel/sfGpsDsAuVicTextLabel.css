@@ -45,5 +45,5 @@
   color: #fff;
 }
 .rpl-text-label--dark--underline {
-  border-bottom-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  border-bottom-color: #0095ec;
 }
