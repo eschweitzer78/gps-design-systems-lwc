@@ -130,7 +130,7 @@
 .rpl-form input[type="tel"]:focus,
 .rpl-form input[type="color"]:focus,
 .rpl-form input:not([type]):focus {
-  border-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-color: #0052c2;
 }
 .rpl-form input[type="radio"]:not(.rpl-option-button__radio) + label,
 .rpl-form input[type="checkbox"] + label {
@@ -176,7 +176,7 @@
   }
 }
 .rpl-form textarea:focus {
-  border-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-color: #0052c2;
 }
 @media screen and (min-width: 768px) {
   .rpl-form textarea {
@@ -232,13 +232,13 @@
     transition: background-color 0.2s ease;
   }
   .rpl-form input[type="radio"]:not(.rpl-option-button__radio):checked {
-    border: solid 1px var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+    border: solid 1px #0095ec;
   }
   .rpl-form input[type="radio"]:not(.rpl-option-button__radio):checked::before {
-    background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+    background-color: #0095ec;
   }
   .rpl-form input[type="radio"]:not(.rpl-option-button__radio):focus {
-    border: solid 3px var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+    border: solid 3px #0052c2;
   }
 }
 .rpl-form [type="submit"] {
@@ -254,7 +254,7 @@
   border-radius: 0.25rem;
   cursor: pointer;
   color: #fff;
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #0052c2;
 }
 @media screen and (min-width: 0) {
   .rpl-form [type="submit"] {
@@ -294,11 +294,7 @@
 }
 .rpl-form [type="submit"]:active {
   background-color: rgba(0, 0, 0, 0);
-  background-image: linear-gradient(
-    180deg,
-    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
-    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
-  );
+  background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
   color: #fff;
 }
 @media print {
@@ -313,17 +309,13 @@
 }
 .rpl-form [type="submit"]:hover,
 .rpl-form [type="submit"]:focus {
-  background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  background-color: #0095ec;
   color: #fff;
 }
 .rpl-form [type="submit"]:active {
   color: #fff;
   background-color: rgba(0, 0, 0, 0);
-  background-image: linear-gradient(
-    180deg,
-    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
-    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
-  );
+  background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
 }
 @media print {
   .rpl-form [type="submit"]:active {
@@ -381,11 +373,7 @@
 }
 .rpl-form .buttons button:active {
   background-color: rgba(0, 0, 0, 0);
-  background-image: linear-gradient(
-    180deg,
-    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
-    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
-  );
+  background-image: linear-gradient(180deg, #0052c2 0%, #0095ec 100%);
   color: #fff;
 }
 .rpl-form .hint {
@@ -468,7 +456,7 @@
   }
 }
 .multiselect__tags:focus {
-  border-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-color: #0052c2;
 }
 .multiselect__placeholder {
   margin-bottom: 0;
@@ -486,11 +474,11 @@
   background-color: #fff;
 }
 .multiselect__option--selected {
-  color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  color: #0095ec;
 }
 .multiselect__option--highlight {
   color: #fff;
-  background: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  background: #0095ec;
 }
 .multiselect__option--highlight.multiselect__option--selected {
   background-color: #af272f;
@@ -507,7 +495,7 @@
   opacity: 0;
 }
 .rpl-checkbox input[type="checkbox"]:focus + .rpl-checkbox__box {
-  border: 0.1875rem solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border: 0.1875rem solid #0052c2;
   width: 0.875rem;
   height: 0.875rem;
 }
@@ -650,7 +638,7 @@
   }
 }
 .rpl-select__trigger:focus {
-  border-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-color: #0052c2;
 }
 .rpl-select__trigger-icon {
   position: absolute;
@@ -666,7 +654,7 @@
   transform: rotate(-180deg);
 }
 .rpl-select__label-count {
-  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #0052c2;
 }
 .rpl-select__label-visually-hidden {
   position: absolute;
@@ -739,18 +727,18 @@
 .rpl-select__listitem:not(.rpl-select__listitem--selected):not(
     .rpl-select__listitem--focussed
   ):hover {
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #0052c2;
   color: #fff;
 }
 .rpl-select__listitem--selected {
   outline: 0;
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #0052c2;
   color: #fff;
 }
 .rpl-select__listitem--focussed {
   outline: 0;
   color: #fff;
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #0052c2;
 }
 .rpl-select__listitem-label {
   padding-top: 2px;
@@ -771,10 +759,10 @@
 .rpl-select--open .rpl-select__trigger {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border: 1px solid #0052c2;
 }
 .rpl-select--open .rpl-select__listbox {
-  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border: 1px solid #0052c2;
   border-top: none;
 }
 .rpl-form {

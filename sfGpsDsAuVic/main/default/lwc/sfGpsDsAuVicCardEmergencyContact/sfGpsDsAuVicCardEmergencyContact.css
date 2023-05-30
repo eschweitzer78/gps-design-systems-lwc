@@ -1,6 +1,6 @@
 .rpl-card-emergency {
   background-color: #fff;
-  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border: 1px solid #0052c2;
   border-radius: 0.25rem;
   box-sizing: border-box;
   display: flex;
@@ -9,7 +9,7 @@
   padding: 1.25rem;
 }
 .rpl-card-emergency:hover {
-  border: 1px solid rgba(var(--sf-gps-ds-au-vic-color-primary, #0052c2), 0.2);
+  border: 1px solid rgba(0, 82, 194, 0.2);
 }
 .rpl-card-emergency:hover .rpl-card-emergency__subtitle {
   background-color: #d7dbe0;
@@ -22,7 +22,7 @@
   font-size: 0.875rem;
   line-height: 1.357em;
   font-weight: normal;
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #0052c2;
   box-sizing: border-box;
   display: inline-block;
   margin: 0 0 0.75rem 0;
@@ -73,7 +73,7 @@
   font-size: 1rem;
   line-height: 1.5em;
   font-weight: normal;
-  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #0052c2;
   display: inline-block;
   margin: 0.75rem 0 0;
 }

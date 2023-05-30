@@ -215,7 +215,7 @@
   }
 }
 .rpl-campaign-secondary__summary a {
-  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #0052c2;
   text-decoration: none;
 }
 .rpl-campaign-secondary__summary a:focus,
