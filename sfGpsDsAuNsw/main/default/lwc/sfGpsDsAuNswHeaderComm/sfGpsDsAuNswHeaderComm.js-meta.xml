@@ -80,7 +80,7 @@
         name="profileIpName"
         type="String"
         label="Profile integration procedure name"
-        description="Name of the Integration procedure mapping content to this nav. Leave empty for if no profile menu is required."
+        description="Name of the Integration procedure mapping content to profile menu. Leave empty for if no profile menu is required."
       />
       <property
         name="profileInputJSON"

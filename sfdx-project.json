@@ -26,7 +26,7 @@
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.6.0.LATEST"
+          "versionNumber": "1.7.0.LATEST"
         }
       ]
     },
@@ -60,7 +60,7 @@
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.6.0.LATEST"
+          "versionNumber": "1.7.0.LATEST"
         }
       ]
     },
@@ -217,6 +217,11 @@
     "Salesforce Global Public Sector GOV.UK Design System@0.3.1-4": "04t5j000000h0b9AAA",
     "Salesforce Global Public Sector AU NSW Design System@1.6.0-4": "04t5j000000h0dUAAQ",
     "Salesforce Global Public Sector AU VIC Design System@1.6.0-4": "04t5j000000h0dZAAQ",
-    "Salesforce Global Public Sector GOV.UK Design System@0.3.1-5": "04t5j000000h0deAAA"
+    "Salesforce Global Public Sector GOV.UK Design System@0.3.1-5": "04t5j000000h0deAAA",
+    "Salesforce Global Public Sector Design Systems@1.7.0-2": "04t5j000000h0g4AAA",
+    "Salesforce Global Public Sector Design Systems@1.7.0-3": "04t5j000000h0g9AAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.0-1": "04t5j000000h0gEAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.0-1": "04t5j000000h0gJAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.0-2": "04t5j000000h0gTAAQ"
   }
 }

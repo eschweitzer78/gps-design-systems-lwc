@@ -1,4 +1,4 @@
-<design:component >
+<design:component label="Salesforce Global Public Sector Design Systems Theme Layout">
   <design:attribute name="hideHeader" label="Hide main header" description="Hides the standard header.">
   </design:attribute>
   <design:attribute name="noWidgetMargin" label="No widget margin" description="Removes the standard widget margin.">

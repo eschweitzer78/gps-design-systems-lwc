@@ -10,6 +10,8 @@ export default class SfGpsDsAuVicAcknowledgement extends LightningElement {
   @api torresStraitIslanderFlagAltText = "Torres Strait Islander flag";
   @api className;
 
+  /* computed */
+
   get computedClassName() {
     return computeClass({
       "rpl-acknowledgement": true,

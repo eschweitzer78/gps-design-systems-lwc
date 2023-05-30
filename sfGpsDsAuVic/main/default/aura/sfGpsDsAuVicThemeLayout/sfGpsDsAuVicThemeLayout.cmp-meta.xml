@@ -2,5 +2,5 @@
 <AuraDefinitionBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>57.0</apiVersion>
   <masterLabel>VIC Theme Layout</masterLabel>
-  <description>A Lightning Component Bundle</description>
+  <description>Theme Layout for the VIC Design System</description>
 </AuraDefinitionBundle>

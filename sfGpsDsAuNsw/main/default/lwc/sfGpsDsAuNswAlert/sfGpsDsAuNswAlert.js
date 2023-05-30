@@ -29,6 +29,8 @@ export default class SfGpsDsAuNswAlert extends LightningElement {
   @api as = "info";
   @api compact = false;
 
+  /* computed */
+
   get computedClassName() {
     return computeClass({
       "nsw-in-page-alert": true,
