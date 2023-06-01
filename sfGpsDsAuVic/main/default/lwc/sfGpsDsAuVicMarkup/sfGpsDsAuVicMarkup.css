@@ -54,7 +54,7 @@
   font-weight: normal;
 }
 .rpl-markup a:not(.rpl-button) .rpl-text-label {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 @media print {
   .rpl-markup a:not(.rpl-button) .rpl-text-label {
@@ -301,7 +301,7 @@
 .rpl-markup .callout-wrapper {
   padding: 0.75rem 1.5rem 1.5rem 1.5rem;
   border-left: 0.25rem solid;
-  border-color: #0095ec;
+  border-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
   background-color: var(
     --sf-gps-ds-au-vic-callout-wrapper-background-color,
     #e6f4fd
@@ -328,7 +328,7 @@
 .rpl-markup--rtl .callout-wrapper {
   border-left: 0;
   border-right: 0.25rem solid;
-  border-color: #0095ec;
+  border-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
   padding: 1.5rem 1.5rem 0.75rem 1.5rem;
 }
 .rpl-markup--rtl + .rpl-markup__callout-wrapper + ul,
