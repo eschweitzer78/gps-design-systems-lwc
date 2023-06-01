@@ -20,12 +20,14 @@
         type="String"
         label="Input JSON"
         description="JSON formatted input parameters for the Integration Procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
         label="Options JSON"
         description="JSON formatted options for the Integration Procedure."
+        default="{}"
       />
       <property name="column1Content" type="String" label="Column 1 content" />
       <property name="column2Content" type="String" label="Column 2 content" />

@@ -20,12 +20,14 @@
         type="String"
         label="Nav input JSON"
         description="JSON formatted input parameters for the nav integration procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
         label="Nav options JSON"
         description="JSON formatted options for the nav integration procedure."
+        default="{}"
       />
       <property
         name="profileIpName"
@@ -38,12 +40,14 @@
         type="String"
         label="Profile input JSON"
         description="JSON formatted input parameters for the profile integration procedure."
+        default="{}"
       />
       <property
         name="profileOptionsJSON"
         type="String"
         label="Profile options JSON"
         description="JSON formatted options for the profile integration procedure."
+        default="{}"
       />
       <property
         name="masterbrand"

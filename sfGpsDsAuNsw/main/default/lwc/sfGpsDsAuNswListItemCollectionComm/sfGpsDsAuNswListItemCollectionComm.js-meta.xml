@@ -20,12 +20,14 @@
         type="String"
         label="Input JSON"
         description="JSON formatted input parameters for the Integration procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
         label="Options JSON"
         description="JSON formatted options for the Integration procedure."
+        default="{}"
       />
       <property
         name="dateStyle"

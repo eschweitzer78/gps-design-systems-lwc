@@ -20,12 +20,14 @@
         type="String"
         label="Links Input JSON"
         description="JSON formatted input parameters for the links Integration procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
         label="Links Options JSON"
         description="JSON formatted options for the links Integration procedure."
+        default="{}"
       />
       <property
         name="navIpName"
@@ -38,12 +40,14 @@
         type="String"
         label="Nav Input JSON"
         description="JSON formatted input parameters for the nav Integration procedure."
+        default="{}"
       />
       <property
         name="navOptionsJSON"
         type="String"
         label="Nav Options JSON"
         description="JSON formatted options for the nav Integration procedure."
+        default="{}"
       />
       <property
         name="socialLinksTitle"

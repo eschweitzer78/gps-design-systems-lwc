@@ -22,8 +22,8 @@
   <aura:attribute name="search" type="Boolean" default="false" />
 
   <aura:attribute name="profileIpName" type="String" />
-  <aura:attribute name="profileInputJSON" type="String" />
-  <aura:attribute name="profileOptionsJSON" type="String" />
+  <aura:attribute name="profileInputJSON" type="String" default="{}" />
+  <aura:attribute name="profileOptionsJSON" type="String" default="{}" />
 
   <aura:attribute name="searchAriaLabel" type="String" default="search" />
   <aura:attribute name="className" type="String" />

@@ -3,11 +3,11 @@
   access="global"
 >
   <aura:attribute name="ipName" type="String" />
-  <aura:attribute name="inputJSON" type="String" />
-  <aura:attribute name="optionsJSON" type="String" />
+  <aura:attribute name="inputJSON" type="String" default="{}" />
+  <aura:attribute name="optionsJSON" type="String" default="{}" />
   <aura:attribute name="profileIpName" type="String" />
-  <aura:attribute name="profileInputJSON" type="String" />
-  <aura:attribute name="profileOptionsJSON" type="String" />
+  <aura:attribute name="profileInputJSON" type="String" default="{}" />
+  <aura:attribute name="profileOptionsJSON" type="String" default="{}" />
 
   <aura:attribute name="masterbrand" type="String" />
   <aura:attribute name="masterbrandAlt" type="String" />
