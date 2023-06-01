@@ -46,17 +46,34 @@
               <span if:true={srMasterbrandLabel} class="sr-only"
                 >{srMasterbrandLabel}</span
               >
+
+              <template if:true={areLogosHorizontallyStacked}>
+                <!-- if logo and horizontal stacked -->
+                <template if:true={logo}>
+                  <img src={logo} alt={logoAlt} />
+                  <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
+                  <span if:true={siteDescriptor} class="sr-only"
+                    >{siteDescriptor}</span
+                  >
+                </template>
+              </template>
             </a>
           </div>
 
-          <div if:true={logo} class="nsw-header__name">
-            <img src={logo} alt={logoAlt} />
-            <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
-            <span if:true={siteDescriptor} class="sr-only"
-              >{siteDescriptor}</span
-            >
-          </div>
+          <template if:true={areLogosVerticallyStacked}>
+            <!-- if logo and vertical stacked -->
+            <div if:true={logo} class="nsw-header__name">
+              <div class="nsw-header__logo">
+                <img src={logo} alt={logoAlt} />
+                <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
+                <span if:true={siteDescriptor} class="sr-only"
+                  >{siteDescriptor}</span
+                >
+              </div>
+            </div>
+          </template>
 
+          <!-- if no logo -->
           <div if:false={logo} class="nsw-header__name">
             <div if:true={siteTitle} class="nsw-header__title">{siteTitle}</div>
             <div if:true={siteDescriptor} class="nsw-header__description">

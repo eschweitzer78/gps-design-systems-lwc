@@ -2,6 +2,17 @@
   img {
     height: 3rem;
   } 
+
+  /* Add this as standard stylesheet only supports svg tags */
+  a {
+    img:not(:first-child) {
+      margin-left: 1.5rem;
+
+      @media (min-width: 62rem) {
+        margin-left: 2.5rem;
+      }
+    }
+  }
 }
 
 .nsw-header__name {

@@ -106,6 +106,14 @@
         default="true"
       />
       <property
+        name="mobileLogoStacking"
+        type="String"
+        label="Mobile logo stacking"
+        description="Stacking direction of the masterbrand and logo on mobile."
+        default="horizontal"
+        datasource="horizontal,vertical"
+      />
+      <property
         name="search"
         type="Boolean"
         label="Show search bar"

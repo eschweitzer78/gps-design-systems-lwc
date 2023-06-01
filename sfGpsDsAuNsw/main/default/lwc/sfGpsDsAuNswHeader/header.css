@@ -342,6 +342,14 @@
 .nsw-header__waratah img {
   height: 3rem;
 }
+.nsw-header__waratah a img:not(:first-child) {
+  margin-left: 1.5rem;
+}
+@media (min-width: 62rem) {
+  .nsw-header__waratah a img:not(:first-child) {
+    margin-left: 2.5rem;
+  }
+}
 .nsw-header__name svg,
 .nsw-header__name img {
   height: 3rem;
