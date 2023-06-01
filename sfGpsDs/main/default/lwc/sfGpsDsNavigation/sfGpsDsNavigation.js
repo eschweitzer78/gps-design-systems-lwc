@@ -48,14 +48,6 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
       return null;
     }
 
-    if (!Array.isArray(data)) {
-      console.log(
-        "SfGpsDsNavigation.menuReducer not an array",
-        JSON.stringify(data)
-      );
-      return null;
-    }
-
     return data.reduce((m, item, index) => {
       let itemKey = `${key}-${index + 1}`;
       let amik = {

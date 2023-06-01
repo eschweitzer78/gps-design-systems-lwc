@@ -245,7 +245,7 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org:delete:scratch -p -u scratch-org
+        run: sfdx force:org:delete -p -u scratch-org
 
   trigger-packaging:
     runs-on: ubuntu-latest
