@@ -7,6 +7,8 @@ covers Salesforce Experience Cloud as well as Salesforce Communities for Public 
 
 Note that at this stage there is a dependency on Omnistudio 242.
 
+Do read our [change log](./CHANGELOG.md) if you plan on updating already installed packages in order to check for changes in behaviour or configuration changes.
+
 ## Structure
 
 - sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project; it must be installed as a first step.
