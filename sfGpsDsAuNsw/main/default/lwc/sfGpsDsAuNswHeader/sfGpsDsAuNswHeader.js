@@ -23,6 +23,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   @api siteDescriptor;
   @api headerUrl = "#";
   @api mobile = false;
+  @api mobileLogoStacking = "horizontal"; // one of horizontal, vertical
   @api search = false;
   @api profile = false;
 
@@ -38,6 +39,14 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
       "nsw-header__has-profile": this.profile,
       [this.className]: this.className
     });
+  }
+
+  get areLogosHorizontallyStacked() {
+    return (this.mobileLogoStacking || "horizontal") === "horizontal";
+  }
+
+  get areLogosVerticallyStacked() {
+    return this.mobileLogoStacking === "vertical";
   }
 
   /* helpers */

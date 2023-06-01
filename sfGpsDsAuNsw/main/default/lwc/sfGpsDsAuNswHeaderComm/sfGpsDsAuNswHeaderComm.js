@@ -27,6 +27,7 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
   @api siteDescriptor;
   @api headerUrl;
   @api mobile = false;
+  @api mobileLogoStacking = "horizontal";
   @api search = false;
   @api profile = false;
 

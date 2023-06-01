@@ -27,6 +27,7 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIp {
   @api siteDescriptor;
   @api headerUrl;
   @api mobile = false;
+  @api mobileLogoStacking = "horizontal";
   @api search = false;
 
   @api profileIpName;
