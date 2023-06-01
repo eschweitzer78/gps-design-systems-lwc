@@ -37,6 +37,40 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
 
         output.put('items', JSON.deserializeUntyped(JSON.serialize(lcnmi)));
       }
+      when 'GetNavigationV2' {
+        String developerName = (String) getTypedFromMap(
+          WhereFrom.INPUT,
+          'developerName',
+          String.class,
+          false
+        );
+
+        Id communityId = (Id) getTypedFromMap(
+          WhereFrom.INPUT,
+          'communityId',
+          Id.class,
+          false
+        );
+
+        Boolean communityPreview = (Boolean) getTypedFromMap(
+          WhereFrom.INPUT,
+          'communityPreview',
+          Boolean.class,
+          true
+        );
+
+        if (communityPreview == null) {
+          communityPreview = false;
+        }
+
+        GetNavigationItemsResp resp = getNavigationItemsV2(
+          communityId,
+          developerName,
+          communityPreview
+        );
+
+        output.put('response', JSON.deserializeUntyped(JSON.serialize(resp)));
+      }
       when 'GetBaseUrl' {
         output.put('url', getBaseUrl());
       }
@@ -46,6 +80,40 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
     }
 
     return args;
+  }
+
+  public class GetNavigationItemsResp {
+    public List<ConnectApi.NavigationMenuItem> items;
+    public String errorMessage;
+  }
+
+  @AuraEnabled(cacheable=false)
+  public static GetNavigationItemsResp getNavigationItemsV2(
+    String communityId,
+    String developerName,
+    Boolean communityPreview
+  ) {
+    GetNavigationItemsResp resp = new GetNavigationItemsResp();
+
+    try {
+      ConnectApi.NavigationMenuItemCollection coll = ConnectApi.NavigationMenu.getCommunityNavigationMenu(
+        communityId,
+        null,
+        developerName,
+        communityPreview
+          ? ConnectApi.PublishStatus.Draft
+          : ConnectApi.PublishStatus.Live,
+        false,
+        false,
+        null
+      );
+
+      resp.items = coll.menuItems;
+    } catch (Exception e) {
+      resp.errorMessage = e.getMessage();
+    }
+
+    return resp;
   }
 
   @AuraEnabled(cacheable=false)

@@ -100,7 +100,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
-        uses: pmd/pmd-github-action@v1.4.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds
         with:
           sourcePath: "sfGpsDs"
@@ -113,7 +113,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNsw"
-        uses: pmd/pmd-github-action@v1.4.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-au-nsw
         with:
           sourcePath: "sfGpsDsAuNsw"
@@ -126,7 +126,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNswS"
-        uses: pmd/pmd-github-action@v1.4.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-au-nsw-s
         with:
           sourcePath: "sfGpsDsAuNswS"
@@ -139,7 +139,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuVic"
-        uses: pmd/pmd-github-action@v1.4.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-au-vic
         with:
           sourcePath: "sfGpsDsAuVic"
@@ -152,7 +152,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsUkGov"
-        uses: pmd/pmd-github-action@v1.4.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-uk-gov
         with:
           sourcePath: "sfGpsDsUkGov"
@@ -245,7 +245,7 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org:delete:scratch -p -u scratch-org
+        run: sfdx force:org:delete -p -u scratch-org
 
   trigger-packaging:
     runs-on: ubuntu-latest

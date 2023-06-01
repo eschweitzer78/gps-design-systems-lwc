@@ -79,7 +79,15 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   }
 
   refreshContent() {
-    if (this._ipName == null || this._input == null) {
+    console.log(
+      "refreshContent",
+      this._ipName,
+      JSON.stringify(this._input),
+      JSON.stringify(this._options)
+    );
+
+    if (this._ipName == null || this._input == null || this._options == null) {
+      /* 2023-06-01 ESC: do not bother running if not all of ipName, input and options aren't set */
       return;
     }
 
@@ -98,7 +106,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
         try {
           if (data) {
             if (!Array.isArray(data)) {
-              if (data.hasError || data.error) {
+              if (data.hasError || data.error || data.errorMessage) {
                 this.addError(
                   "CK-ER",
                   "Integration procedure error: " +
