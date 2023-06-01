@@ -79,13 +79,6 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   }
 
   refreshContent() {
-    console.log(
-      "refreshContent",
-      this._ipName,
-      JSON.stringify(this._input),
-      JSON.stringify(this._options)
-    );
-
     if (this._ipName == null || this._input == null || this._options == null) {
       /* 2023-06-01 ESC: do not bother running if not all of ipName, input and options aren't set */
       return;
