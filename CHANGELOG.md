@@ -4,13 +4,13 @@
 
 #### Better Integration Procedure error handling, in particular for navs
 
-We added better error handling for navigation widgets and general OmniStudio Integration Procedure integration. Any singular payload returned by an IP with
-values set for the `hasError`, `error` and `errorMessage` attributes will be taken as an indication that the IP execution did not end gracefully and the
-error message will be made available to the consuming LWC for display.
+We added better error handling for navigation widgets and general OmniStudio Integration Procedure integration. Any singular payload returned by an IP with values set for the `hasError`, `error` and `errorMessage` attributes will be taken as an indication that the IP execution did not end gracefully and the error message will be made available to the consuming LWC for display.
 
-Refer to `sfGpsDs/main/default/lwc/sfGpsDsIpLwc` and `sfGpsDs/main/default/lwc/sfGpsDsIpLwcOsN`.
+**Important behaviour change**: from this release, the `optionsJSON` attribute must be set for the IP to be invoked. This has a ripple effect on every widget that leverages an IP.
 
-This has an implication with the `sfGpsDs_CommunityNav` pre-canned IP and the supporting Apex class `sfGpsDs/main/default/classes/SfGpsDsNavigationORA.cls`.
+Refer to [`sfGpsDs/main/default/lwc/sfGpsDsIpLwc`](./sfGpsDs/main/default/lwc/sfGpsDsIpLwc) and [`sfGpsDs/main/default/lwc/sfGpsDsIpLwcOsN`](./sfGpsDs/main/default/lwc/sfGpsDsIpLwcOsN).
+
+This also has an implication with the `sfGpsDs_CommunityNav` pre-canned IP and the supporting Apex class [`sfGpsDs/main/default/classes/SfGpsDsNavigationORA.cls`](./sfGpsDs/main/default/classes/SfGpsDsNavigationORA.cls). It has been updated in this release to issue better error information, in particular when the nav API name is incorrect.
 
 #### Support for vertical logo stacking in NSW DS Header
 
@@ -27,13 +27,13 @@ with the first cab of the rank being the NSW DS.
 
 Refer to [`sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswHeaderAura`](./sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswHeaderAura) and [`sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswHeaderMainNavAura`](./sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswHeaderMainNavAura).
 
-Support for the profile menu has also been added in LWC (no notifications though as there is platform support for them); refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderProfile`](./), [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeader`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeader) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderComm).
+Support for the profile menu has also been added in LWC (no notifications though as there is platform support for them); refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderProfile`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderProfile), [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeader`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeader) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderComm).
 
 #### Permission sets for community users
 
 Permissions sets have been added to make the process of getting authenticated and guest community users access to the right assets easier.
 
-Refer to [`sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuNswUser.permissionset-meta.xml`](./sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuNswUser.permissionset-meta.xml), [`sfGpsDsAuNswS/main/default/permissionsets/sfGpsDsAuNswSUser.permissionset-meta.xml`](./sfGpsDsAuNswS/main/default/permissionsets/sfGpsDsAuNswSUser.permissionset-meta.xml), [`sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuQldUser.permissionset-meta.xml`](./sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuQldUser.permissionset-meta.xml), [`sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuVicUser.permissionset-meta.xml`](./sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuVicUser.permissionset-meta.xml) and [`sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsUkGovUser.permissionset-meta.xml`](./sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsUkGovUser.permissionset-meta.xml).
+Refer to [`sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuNswUser.permissionset-meta.xml`](./sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuNswUser.permissionset-meta.xml), [`sfGpsDsAuNswS/main/default/permissionsets/sfGpsDsAuNswSUser.permissionset-meta.xml`](./sfGpsDsAuNswS/main/default/permissionsets/sfGpsDsAuNswSUser.permissionset-meta.xml), [`sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuQldUser.permissionset-meta.xml`](./sfGpsDsAuQld/main/default/permissionsets/sfGpsDsAuQldUser.permissionset-meta.xml), [`sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsAuVicUser.permissionset-meta.xml`](./sfGpsDsAuVic/main/default/permissionsets/sfGpsDsAuVicUser.permissionset-meta.xml) and [`sfGpsDsAuNsw/main/default/permissionsets/sfGpsDsUkGovUser.permissionset-meta.xml`](./sfGpsDsUkGov/main/default/permissionsets/sfGpsDsUkGovUser.permissionset-meta.xml).
 
 ### 11 May 2023
 
@@ -47,7 +47,7 @@ We released a new version of NSW DS aligning with the official v3.5 release by d
 
 #### NSW DS Record List View
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm) and [sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewItem](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewItem).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewItem`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewItem).
 
 #### NSW DS Status Label
 
@@ -163,12 +163,12 @@ As such it is supposed to be used in a composite object along with a Pagination 
 
 #### NSW Card Managed Content Type
 
-Refer to [`sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCard`](./sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCard).
+Refer to [`sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCard`](./sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCard.managedContentType-meta.xml).
 
 While you would normally map content in whichever format you have in the CMS to the NSW DS Card using an integration procedure, we have conveniently introduced a type that aligns 1-to-1 with the attributes of the card for demo purposes.
 
 #### NSW Content Block Managed Content Type
 
-Refer to [`sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCard`](./sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCard).
+Refer to [`sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswBlock`](./sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswContentBlock.managedContentType-meta.xml).
 
 While you would normally map content in whichever format you have in the CMS to the NSW DS Content Block using an integration procedure, we have conveniently introduced a type that aligns 1-to-1 with the attributes of the content block for demo purposes.
