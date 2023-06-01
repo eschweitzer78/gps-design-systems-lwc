@@ -16,7 +16,7 @@
   line-height: 1em;
   font-weight: normal;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.14);
-  background: #0095ec;
+  background: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
   color: #fff;
   z-index: 1060;
   padding: 1rem 1.25rem;

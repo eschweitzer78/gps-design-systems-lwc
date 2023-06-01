@@ -24,11 +24,11 @@
 }
 .rpl-card-nav:hover .rpl-card-nav__link,
 .rpl-card-nav:focus .rpl-card-nav__link {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 .rpl-card-nav:hover .rpl-card-nav__title,
 .rpl-card-nav:focus .rpl-card-nav__title {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   text-decoration: underline;
 }
 .rpl-card-nav__image {
@@ -249,7 +249,7 @@
 }
 .rpl-card-nav--featured:hover .rpl-card-nav__title span,
 .rpl-card-nav--featured:focus .rpl-card-nav__title span {
-  background-color: #0095ec;
+  background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
 }
 .rpl-card-nav--featured .rpl-card-nav__image-wrapper {
   padding: 0;
@@ -292,7 +292,7 @@
     font-weight: normal;
   }
   .rpl-card-nav--featured .rpl-card-nav__title span {
-    background-color: #0095ec;
+    background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
     color: #fff;
     display: inline;
     line-height: 2.5625rem;
@@ -317,7 +317,7 @@
   }
 }
 .rpl-card-nav--featured .rpl-card-nav__title span {
-  background-color: #0052c2;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   color: #fff;
   line-height: 1.5em;
   padding: 0 9px;

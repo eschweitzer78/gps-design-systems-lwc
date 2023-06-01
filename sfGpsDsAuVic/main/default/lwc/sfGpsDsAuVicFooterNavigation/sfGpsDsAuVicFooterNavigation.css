@@ -16,7 +16,7 @@
   }
 }
 .rpl-footer-nav__menu-item {
-  border-bottom: 1px solid #0052c2;
+  border-bottom: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 @media screen and (min-width: 992px) {
   .rpl-footer-nav__menu-item {

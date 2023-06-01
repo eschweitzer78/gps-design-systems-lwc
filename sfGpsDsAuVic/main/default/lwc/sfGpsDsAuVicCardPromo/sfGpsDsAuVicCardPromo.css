@@ -16,7 +16,7 @@
 }
 .rpl-card-promo:hover .rpl-card-promo__title,
 .rpl-card-promo:focus .rpl-card-promo__title {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   text-decoration: underline;
 }
 .rpl-card-promo__meta {
@@ -135,7 +135,7 @@
 .rpl-card-promo--noimage {
   background-image: linear-gradient(
     -90deg,
-    #0052c2 0%,
+    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
     #825dff 12%,
     #ef4a81 23%,
     #e57200 37%,
