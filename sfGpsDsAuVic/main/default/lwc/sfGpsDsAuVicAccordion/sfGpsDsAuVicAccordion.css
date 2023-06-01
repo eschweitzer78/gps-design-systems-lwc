@@ -4,7 +4,7 @@
 }
 .rpl-accordion__collapse-btn {
   text-decoration: none;
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   background: none;
   border: none;
   font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
@@ -61,7 +61,11 @@
   top: 0;
   left: 0;
   width: 0;
-  background-image: linear-gradient(0deg, #0052c2 0%, #0095ec 100%);
+  background-image: linear-gradient(
+    0deg,
+    var(--sf-gps-ds-au-vic-color-primary, #0052c2) 0%,
+    var(--sf-gps-ds-au-vic-color-secondary, #0095ec) 100%
+  );
   transition: width 0.25s;
 }
 @media print {
@@ -130,7 +134,7 @@
 }
 .rpl-accordion__button:hover,
 .rpl-accordion__button:focus {
-  color: #0052c2;
+  color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
 }
 @media print {
   .rpl-accordion__button:hover,
@@ -139,7 +143,7 @@
   }
 }
 .rpl-accordion__button--expanded {
-  color: #0095ec;
+  color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
 }
 @media print {
   .rpl-accordion__button--expanded {
