@@ -11,7 +11,7 @@ import tmpl from "./sfGpsDsAuNswDatePickerOsN.html";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
-export default class SfGpsDsAuNswTimePickerOsN extends OmnistudioDatePicker {
+export default class SfGpsDsAuNswDatePickerOsN extends OmnistudioDatePicker {
   @api hideFormGroup = false;
   @api hideAsterisk = false;
 

@@ -48,4 +48,12 @@ export default class SfGpsDsAuNswHeaderProfileIp extends SfGpsDsNavigation {
       nav.navigateNavMenu(this._map[event.detail]);
     }
   }
+
+  handleLogin() {
+    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+
+    if (nav) {
+      nav.login();
+    }
+  }
 }

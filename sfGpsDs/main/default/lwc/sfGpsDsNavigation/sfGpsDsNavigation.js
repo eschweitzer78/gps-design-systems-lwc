@@ -68,7 +68,7 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
       map[itemKey] = {
         Type:
           item.actionType === "InternalLink" &&
-          item.actionValue === null &&
+          (item.actionValue === null || item.actionValue === undefined) &&
           item.subMenu
             ? "MenuLabel"
             : item.actionType,

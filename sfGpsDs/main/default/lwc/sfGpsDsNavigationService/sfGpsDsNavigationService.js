@@ -13,6 +13,12 @@ export default class SfGpsDsNavigationService extends NavigationMixin(
     });
   }
 
+  @api login() {
+    this.navigateTo("comm__loginPage", {
+      actionName: "login"
+    });
+  }
+
   @api logout() {
     this.navigateTo("comm__loginPage", {
       actionName: "logout"

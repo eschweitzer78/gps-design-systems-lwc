@@ -20,12 +20,14 @@
         type="String"
         label="Upper footer input JSON"
         description="JSON formatted input parameters for the upper footer Integration Procedure."
+        default="{}"
       />
       <property
         name="upperFooterOptionsJSONN"
         type="String"
         label="Upper footer options JSON"
         description="JSON formatted options for the upper footer Integration Procedure."
+        default="{}"
       />
       <property
         name="ipName"
@@ -38,12 +40,14 @@
         type="String"
         label="Lower footer input JSON"
         description="JSON formatted input parameters for the lower footer Integration Procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
         label="Lower footer options JSON"
         description="JSON formatted options for the lower footer Integration Procedure."
+        default="{}"
       />
       <property
         name="statement"

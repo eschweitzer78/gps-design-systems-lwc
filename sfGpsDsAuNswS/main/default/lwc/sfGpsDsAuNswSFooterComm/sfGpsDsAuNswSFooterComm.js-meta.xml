@@ -20,12 +20,14 @@
         type="String"
         label="Lower footer input JSON"
         description="JSON formatted input parameters for the Integration procedure (lower footer)."
+        default="{}"
       />
       <property
         name="lfOptionsJSON"
         type="String"
         label="Lower footer options JSON"
         description="JSON formatted options for the Integration procedure (lower footer)."
+        default="{}"
       />
       <property
         name="lfClassName"
