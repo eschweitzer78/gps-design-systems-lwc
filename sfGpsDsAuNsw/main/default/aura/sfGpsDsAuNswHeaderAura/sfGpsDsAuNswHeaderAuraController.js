@@ -54,6 +54,7 @@
   },
   handleSearch: function (component, event, helper) {
     event.preventDefault();
+
     helper.setSearchVisible(component, false);
 
     var searchEvent = component.getEvent("searchEvt");

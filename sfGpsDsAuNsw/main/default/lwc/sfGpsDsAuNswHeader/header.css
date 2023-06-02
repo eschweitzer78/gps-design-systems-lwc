@@ -342,6 +342,11 @@
 .nsw-header__waratah img {
   height: 3rem;
 }
+@media (min-width: 62rem) {
+  .nsw-header__waratah img {
+    height: 4.75rem;
+  }
+}
 .nsw-header__waratah a img:not(:first-child) {
   margin-left: 1.5rem;
 }
@@ -356,33 +361,81 @@
   display: block;
 }
 @media (min-width: 62rem) {
-  .nsw-header__waratah img {
-    height: 4.75rem;
-  }
   .nsw-header__name svg,
   .nsw-header__name img {
     height: 4.75rem;
   }
 }
-.nsw-header__search {
-  display: flex;
-  align-items: center;
+.nsw-header__has-profile .nsw-header__search {
+  right: 6.75rem;
 }
-.nsw-header__search button[hidden] {
-  display: none;
-}
-.nsw-header__search-area {
-  right: 0;
+@media (max-width: 62rem) {
+  .nsw-header__has-profile .nsw-header__search {
+    position: absolute;
+    top: 0.75rem;
+    left: 2.875rem;
+    right: auto;
+  }
 }
 @media (min-width: 62rem) {
   .nsw-header__has-profile .nsw-header__search-area {
-    right: 11rem;
+    right: 7.75rem;
     z-index: 201;
   }
 }
 .nsw-header__profile {
-  width: 10rem;
+  width: 6.25rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: absolute;
+  top: 0.75rem;
+  right: -0.25rem;
+}
+@media (min-width: 62rem) {
+  .nsw-header__profile {
+    right: 0;
+    top: 50%;
+    margin-top: -1.5rem;
+  }
+}
+.nsw-header__profile button,
+.nsw-header__profile a {
+  font-size: var(--nsw-font-size-xxs-mobile);
+  line-height: var(--nsw-line-height-xxs-mobile);
+  font-weight: var(--nsw-font-bold);
+  border-radius: var(--nsw-border-radius);
+  color: var(--nsw-brand-dark);
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 62rem) {
+  .nsw-header__profile button,
+  .nsw-header__profile a {
+    font-size: var(--nsw-font-size-xxs-desktop);
+    line-height: var(--nsw-line-height-xxs-desktop);
+  }
+}
+.nsw-header__profile button:hover,
+.nsw-header__profile a:hover {
+  background-color: var(--nsw-text-hover);
+}
+.nsw-header__profile button:focus,
+.nsw-header__profile a:focus {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
+  outline-offset: 3px;
+}
+.nsw-header__profile button .nsw-material-icons,
+.nsw-header__profile a .nsw-material-icons {
+  font-size: 1.5rem;
 }

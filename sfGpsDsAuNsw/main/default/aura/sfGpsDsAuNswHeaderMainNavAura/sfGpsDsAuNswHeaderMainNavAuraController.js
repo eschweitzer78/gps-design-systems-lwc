@@ -30,5 +30,15 @@
         pageName: "home"
       }
     });
+  },
+  handleLogin: function (component) {
+    var navService = component.find("navService");
+
+    navService.navigate({
+      type: "comm__loginPage",
+      attributes: {
+        actionName: "login"
+      }
+    });
   }
 });

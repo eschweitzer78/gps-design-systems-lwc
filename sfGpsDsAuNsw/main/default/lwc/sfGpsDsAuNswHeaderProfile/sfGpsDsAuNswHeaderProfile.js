@@ -1,18 +1,13 @@
 import { LightningElement, api, track } from "lwc";
-import cBasePath from "@salesforce/community/basePath";
 
 export default class SfGpsDsAuNswHeaderProfile extends LightningElement {
-  @api signInLabel = "Log in or sign up";
+  @api signInLabel = "Log in";
   @api isGuest;
   @api userAlias;
   @api navItems;
   @api className;
 
   @track isOpen = false;
-
-  get computedLoginUrl() {
-    return cBasePath + "/login";
-  }
 
   _justOpened;
 
@@ -23,6 +18,10 @@ export default class SfGpsDsAuNswHeaderProfile extends LightningElement {
 
   handleCloseProfile() {
     this.isOpen = false;
+  }
+
+  handleLogin() {
+    this.dispatchEvent(new CustomEvent("login"));
   }
 
   handleClickNavigate(event) {

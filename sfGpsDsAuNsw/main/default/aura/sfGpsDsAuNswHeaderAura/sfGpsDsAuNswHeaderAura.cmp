@@ -18,7 +18,7 @@
   <aura:attribute name="siteTitle" type="String" />
   <aura:attribute name="siteDescriptor" type="String" />
   <aura:attribute name="headerUrl" type="String" default="" />
-  <aura:attribute name="mobile" type="Boolean" default="false" />
+  <aura:attribute name="mobile" type="Boolean" default="true" />
   <aura:attribute name="search" type="Boolean" default="false" />
 
   <aura:attribute name="profileIpName" type="String" />
@@ -152,23 +152,23 @@
                 <span><span class="sr-only">Show </span>Search</span>
               </button>
             </aura:if>
-
-            <!-- Sign-in / User Profile -->
-            <aura:if isTrue="{! v.profileIpName }">
-              <div class="nsw-header__profile">
-                <aura:if isTrue="{! !v.isGuest }">
-                  <forceCommunity:notifications />
-                </aura:if>
-                <c:sfGpsDsAuNswHeaderProfileIp
-                  ipName="{! v.profileIpName }"
-                  inputJSON="{! v.profileInputJSON }"
-                  optionsJSON="{! v.profileOptionsJSON }"
-                  isGuest="{! v.isGuest }"
-                  userAlias="{! v.userAlias }"
-                />
-              </div>
-            </aura:if>
           </div>
+
+          <!-- Sign-in / User Profile -->
+          <aura:if isTrue="{! v.profileIpName }">
+            <div class="nsw-header__profile">
+              <aura:if isTrue="{! !v.isGuest }">
+                <forceCommunity:notifications />
+              </aura:if>
+              <c:sfGpsDsAuNswHeaderProfileIp
+                ipName="{! v.profileIpName }"
+                inputJSON="{! v.profileInputJSON }"
+                optionsJSON="{! v.profileOptionsJSON }"
+                isGuest="{! v.isGuest }"
+                userAlias="{! v.userAlias }"
+              />
+            </div>
+          </aura:if>
         </div>
 
         <aura:if isTrue="{! v.search }">

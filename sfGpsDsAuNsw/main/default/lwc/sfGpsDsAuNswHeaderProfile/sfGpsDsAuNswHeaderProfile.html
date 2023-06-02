@@ -1,12 +1,12 @@
 <template>
   <div class="nsw-header__profile-container">
     <template if:true={isGuest}>
-      <a class="nsw-header__profile-login" href={computedLoginUrl}>
+      <button class="nsw-header__profile-login" onclick={handleLogin}>
         <i class="material-icons nsw-material-icons" aria-hidden="true">
           account_circle
         </i>
         {signInLabel}
-      </a>
+      </button>
     </template>
 
     <template if:false={isGuest}>

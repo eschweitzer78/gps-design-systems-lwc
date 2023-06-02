@@ -23,7 +23,7 @@
   <aura:attribute name="siteTitle" type="String" />
   <aura:attribute name="siteDescriptor" type="String" />
   <aura:attribute name="headerUrl" type="String" default="" />
-  <aura:attribute name="mobile" type="Boolean" default="false" />
+  <aura:attribute name="mobile" type="Boolean" default="true" />
   <aura:attribute name="search" type="Boolean" default="false" />
 
   <aura:attribute name="headerClassName" type="String" />
@@ -35,20 +35,17 @@
   <aura:handler
     name="openmenuEvt"
     event="c:sfGpsDsAuNswHeaderOpenMenu"
-    action="{! c.handleOpenMenu }"
-    includeFacets="true"
+    action="{!c.handleOpenMenu}"
   />
   <aura:handler
     name="searchEvt"
     event="c:sfGpsDsAuNswHeaderSearch"
-    action="{! c.handleSearch }"
-    includeFacets="true"
+    action="{!c.handleSearch}"
   />
   <aura:handler
     name="homeEvt"
     event="c:sfGpsDsAuNswHeaderHome"
-    action="{! c.handleHome }"
-    includeFacets="true"
+    action="{!c.handleHome}"
   />
 
   <c:sfGpsDsAuNswHeaderAura
