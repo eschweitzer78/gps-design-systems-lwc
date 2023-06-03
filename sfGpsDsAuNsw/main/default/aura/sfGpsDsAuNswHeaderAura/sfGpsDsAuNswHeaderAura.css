@@ -366,11 +366,11 @@
     height: 4.75rem;
   }
 }
-.THIS .nsw-header__has-profile .THIS .nsw-header__search {
+.THIS .nsw-header__has-profile .nsw-header__search {
   right: 6.75rem;
 }
 @media (max-width: 62rem) {
-  .THIS .nsw-header__has-profile .THIS .nsw-header__search {
+  .THIS .nsw-header__has-profile .nsw-header__search {
     position: absolute;
     top: 0.75rem;
     left: 2.875rem;
