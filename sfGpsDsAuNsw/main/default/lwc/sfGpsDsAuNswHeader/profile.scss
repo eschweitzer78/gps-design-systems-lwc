@@ -23,8 +23,7 @@
     margin-top: -1.5rem;
   }
 
-  button,
-  a {      
+  button {      
     @include font-size('xxs');
     font-weight: var(--nsw-font-bold);
     border-radius: var(--nsw-border-radius);
