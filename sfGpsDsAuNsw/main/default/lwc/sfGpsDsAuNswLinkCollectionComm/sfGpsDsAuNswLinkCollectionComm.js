@@ -42,13 +42,19 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
   @api className;
 
   mapIpData(data) {
-    return data && Array.isArray(data)
-      ? data.map((item) => ({
-          ...item,
-          text: item.text,
-          url: item.url
-        }))
-      : null;
+    if (!data) {
+      return null;
+    }
+
+    if (!Array.isArray(data)) {
+      data = [data];
+    }
+
+    return data.map((item) => ({
+      ...item,
+      text: item.text,
+      url: item.url
+    }));
   }
 
   get isEmpty() {

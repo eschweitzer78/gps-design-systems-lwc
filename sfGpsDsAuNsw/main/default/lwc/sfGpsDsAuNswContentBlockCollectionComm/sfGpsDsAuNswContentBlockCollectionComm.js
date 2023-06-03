@@ -45,12 +45,18 @@ export default class SfGpsDsAuNswContentBlockCollectionComm extends SfGpsDsIpLwc
   @api className;
 
   mapIpData(data) {
-    return data && Array.isArray(data)
-      ? data.map((block) => ({
-          ...block,
-          copy: block.copy ? htmlDecode(block.copy) : null
-        }))
-      : null;
+    if (!data) {
+      return null;
+    }
+
+    if (!Array.isArray(data)) {
+      data = [data];
+    }
+
+    return data.map((block) => ({
+      ...block,
+      copy: block.copy ? htmlDecode(block.copy) : null
+    }));
   }
 
   get computedClassName() {

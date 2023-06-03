@@ -50,13 +50,19 @@ export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
   @api className;
 
   mapIpData(data) {
-    return data && Array.isArray(data)
-      ? data.map((card) => ({
-          ...card,
-          copy: card.copy ? htmlDecode(card.copy) : null,
-          footer: card.footer ? htmlDecode(card.footer) : null
-        }))
-      : null;
+    if (!data) {
+      return null;
+    }
+
+    if (!Array.isArray(data)) {
+      data = [data];
+    }
+
+    return data.map((card) => ({
+      ...card,
+      copy: card.copy ? htmlDecode(card.copy) : null,
+      footer: card.footer ? htmlDecode(card.footer) : null
+    }));
   }
 
   get computedClassName() {

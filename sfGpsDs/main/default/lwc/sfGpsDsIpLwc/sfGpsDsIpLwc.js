@@ -110,7 +110,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
               }
 
               // IPs tend to send 1 item arrays as an object
-              data = [data];
+              // data = [data];
             }
 
             this._items = this.mapIpData(data);
