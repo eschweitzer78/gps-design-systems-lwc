@@ -1,0 +1,42 @@
+<template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <c-sf-gps-ds-spinner lwc:if={_isLoading}> </c-sf-gps-ds-spinner>
+
+    <template lwc:else>
+      <c-sf-gps-ds-au-nsw-results-bar
+        if:true={_showResultsBar}
+        name="sort"
+        from={_from}
+        to={_to}
+        total={_totalRows}
+        sort-options={_visibleSortOptions}
+        onchange={handleSortChange}
+      >
+      </c-sf-gps-ds-au-nsw-results-bar>
+
+      <c-sf-gps-ds-au-nsw-table
+        caption={caption}
+        caption-location={captionLocation}
+        content={_content}
+        headers={_headers}
+        offset={_offset}
+        limit={pageSize}
+        is-striped={isStriped}
+        is-bordered={isBordered}
+        class-name={className}
+      >
+      </c-sf-gps-ds-au-nsw-table>
+
+      <c-sf-gps-ds-au-nsw-pagination
+        if:true={pageSize}
+        active-page={_activePage}
+        last-page={_lastPage}
+        onpagechange={handlePageChange}
+      >
+      </c-sf-gps-ds-au-nsw-pagination>
+    </template>
+  </template>
+</template>

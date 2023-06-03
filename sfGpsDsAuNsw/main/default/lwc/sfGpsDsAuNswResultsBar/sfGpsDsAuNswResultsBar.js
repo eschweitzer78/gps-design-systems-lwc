@@ -1,5 +1,5 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswResultsBar extends LightningElement {
   static renderMode = "light";
@@ -9,8 +9,10 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
   @api to;
   @api total;
 
+  /* api value */
   _originalValue;
   _value;
+
   @api set value(value) {
     this._originalValue = value;
     this._value = value;
@@ -22,8 +24,11 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
     return this._originalValue;
   }
 
+  /* api sortOptions */
+
   _originalSortOptions;
   _sortOptions;
+
   @track _visibleSortOptions;
 
   @api set sortOptions(value) {
@@ -55,6 +60,16 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
       "nsw-results-bar": true,
       [this.className]: this.className
     });
+  }
+
+  _selectId;
+
+  get computedSelectId() {
+    if (this._selectId === undefined) {
+      this._selectId = uniqueId("sf-gps-ds-au-nsw-results-bar-select");
+    }
+
+    return this._selectId;
   }
 
   /**********/
