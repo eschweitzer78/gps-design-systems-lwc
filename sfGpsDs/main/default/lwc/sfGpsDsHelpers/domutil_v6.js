@@ -20,7 +20,8 @@ export function replaceInnerHtml(element, markup) {
     element.innerHTML = markup;
   } catch (error) {
     console.log(
-      element.toString ? element.toString() : "",
+      "Error in replaceInnerHtml",
+      element && element.toString ? element.toString() : "",
       JSON.stringify(element),
       error
     );
