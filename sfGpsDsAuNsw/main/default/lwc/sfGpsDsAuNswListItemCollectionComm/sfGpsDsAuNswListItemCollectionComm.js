@@ -47,17 +47,23 @@ export default class SfGpsDsAuNswListItemCollectionComm extends NavigationMixin(
   @api className;
 
   mapIpData(data) {
-    return data && Array.isArray(data)
-      ? data.map((item, index) => ({
-          ...item,
-          headline:
-            item.headline ||
-            `[${item.title}](${this.isRelative ? this.communityBasePath : ""}${
-              item.link
-            })`,
-          key: item.key || `item-${index + 1}`
-        }))
-      : null;
+    if (!data) {
+      return null;
+    }
+
+    if (!Array.isArray(data)) {
+      data = [data];
+    }
+
+    return data.map((item, index) => ({
+      ...item,
+      headline:
+        item.headline ||
+        `[${item.title}](${this.isRelative ? this.communityBasePath : ""}${
+          item.link
+        })`,
+      key: item.key || `item-${index + 1}`
+    }));
   }
 
   get isEmpty() {

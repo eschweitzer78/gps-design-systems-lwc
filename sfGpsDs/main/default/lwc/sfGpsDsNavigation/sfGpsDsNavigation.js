@@ -90,6 +90,10 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
     let adaptedMap = {};
     let map = {};
 
+    if (data && !Array.isArray(data)) {
+      data = [data];
+    }
+
     let rv = this.menuReducer(data, "menu", map, adaptedMap);
     this._map = map;
 
