@@ -399,8 +399,7 @@
     margin-top: -1.5rem;
   }
 }
-.THIS .nsw-header__profile button,
-.THIS .nsw-header__profile a {
+.THIS .nsw-header__profile button {
   font-size: var(--nsw-font-size-xxs-mobile);
   line-height: var(--nsw-line-height-xxs-mobile);
   font-weight: var(--nsw-font-bold);
@@ -419,23 +418,19 @@
   justify-content: center;
 }
 @media (min-width: 62rem) {
-  .THIS .nsw-header__profile button,
-  .THIS .nsw-header__profile a {
+  .THIS .nsw-header__profile button {
     font-size: var(--nsw-font-size-xxs-desktop);
     line-height: var(--nsw-line-height-xxs-desktop);
   }
 }
-.THIS .nsw-header__profile button:hover,
-.THIS .nsw-header__profile a:hover {
+.THIS .nsw-header__profile button:hover {
   background-color: var(--nsw-text-hover);
 }
-.THIS .nsw-header__profile button:focus,
-.THIS .nsw-header__profile a:focus {
+.THIS .nsw-header__profile button:focus {
   outline: solid 3px var(--nsw-focus);
   outline-offset: 0;
   outline-offset: 3px;
 }
-.THIS .nsw-header__profile button .nsw-material-icons,
-.THIS .nsw-header__profile a .nsw-material-icons {
+.THIS .nsw-header__profile button .nsw-material-icons {
   font-size: 1.5rem;
 }
