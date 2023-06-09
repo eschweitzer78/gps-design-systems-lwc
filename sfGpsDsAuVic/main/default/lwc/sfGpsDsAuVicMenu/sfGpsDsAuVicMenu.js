@@ -48,6 +48,7 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
     //this._menu = value;
     this._menu = value.map((entry, index) => ({
       ...entry,
+      id: `${this.index}-${entry.index}`,
       parentIcon:
         this.isRoot && !this.isVerticalLayout
           ? entry.open
@@ -73,8 +74,11 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
       return [];
     }
 
+    return this._menu;
+    /*
     let result = this._menu.map((entry, index) => ({
       ...entry,
+      index: `${this.index}-${entry.index}`,
       parentIcon:
         this.isRoot && !this.isVerticalLayout
           ? entry.open
@@ -94,7 +98,7 @@ export default class SfGpsDsAuVicMenu extends LightningElement {
       })
     }));
 
-    return result;
+    return result;*/
   }
 
   @api open;

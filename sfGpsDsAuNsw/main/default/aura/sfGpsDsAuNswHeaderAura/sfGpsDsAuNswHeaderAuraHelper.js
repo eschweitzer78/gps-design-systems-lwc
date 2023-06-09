@@ -48,6 +48,6 @@
     component.set("v.computedClassName", computedClassNameArray.join(" "));
   },
   setSearchVisible: function (component, visible) {
-    component.set("v.isSearchOpen", visible);
+    component.set("v.searchIsOpen", visible);
   }
 });

@@ -85,8 +85,8 @@
         <div if:true={mobile} class="nsw-header__menu">
           <button
             type="button"
-            aria-expanded="false"
-            aria-controls="main-nav"
+            aria-expanded={mainNavIsOpen}
+            aria-controls={mainNavId}
             onclick={handleOpenMenu}
           >
             <span class="material-icons nsw-material-icons" aria-hidden="true">
@@ -101,8 +101,8 @@
           <button
             if:true={search}
             type="button"
-            aria-expanded={isSearchOpen}
-            aria-controls="header-search"
+            aria-expanded={searchIsOpen}
+            aria-controls={computedHeaderSearchId}
             onclick={handleOpenSearch}
           >
             <span class="material-icons nsw-material-icons" aria-hidden="true">
@@ -119,13 +119,13 @@
       </div>
 
       <template if:true={search}>
-        <div id="header-search" class="nsw-header__search-area" hidden>
+        <div id={computedHeaderSearchId} class="nsw-header__search-area" hidden>
           <form role="search">
-            <label for="nsw-header-input" class="sr-only">
+            <label for={computedHeaderInputId} class="sr-only">
               {searchLabel}
             </label>
             <input
-              id="nsw-header-input"
+              id={computedHeaderInputId}
               autocomplete="off"
               class="nsw-header__input"
               name="searchInput"
@@ -151,8 +151,8 @@
 
           <button
             class="nsw-icon-button"
-            aria-expanded={isSearchOpen}
-            aria-controls="header-search"
+            aria-expanded={searchIsOpen}
+            aria-controls={computedHeaderSearchId}
             onclick={handleCloseSearch}
           >
             <span

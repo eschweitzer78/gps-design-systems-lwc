@@ -1,11 +1,11 @@
 <template lwc:render-mode="light">
-  <nav id="main-nav" class={computedClassName} aria-label={navAriaLabel}>
+  <nav id={mainNavId} class={computedClassName} aria-label={navAriaLabel}>
     <div class="nsw-main-nav__header">
       <div class="nsw-main-nav__title">{navTitle}</div>
       <button
         type="button"
         class="nsw-icon-button"
-        aria-controls="main-nav"
+        aria-controls={mainNavId}
         aria-expanded={isActive}
         onclick={handleMainCloseClick}
       >
@@ -89,7 +89,7 @@
                 <button
                   type="button"
                   class="nsw-icon-button"
-                  aria-controls="main-nav"
+                  aria-controls={mainNavId}
                   aria-expanded={isActive}
                   onclick={handleMainCloseClick}
                 >
@@ -178,7 +178,7 @@
                           <button
                             type="button"
                             class="nsw-icon-button"
-                            aria-controls="main-nav"
+                            aria-controls={mainNavId}
                             aria-expanded={isActive}
                             onclick={handleMainCloseClick}
                           >
@@ -225,7 +225,7 @@
                                 onclick={handleClickNavigate}
                               >
                                 <!-- navigate -->
-                                <span>z{subSubNavItem.text}</span>
+                                <span>{subSubNavItem.text}</span>
                                 <span
                                   if:true={subSubNavItem.subNav}
                                   class="material-icons nsw-material-icons nsw-main-nav__link-icon"

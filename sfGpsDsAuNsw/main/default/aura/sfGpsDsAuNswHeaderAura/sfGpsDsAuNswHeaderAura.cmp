@@ -28,8 +28,10 @@
   <aura:attribute name="searchAriaLabel" type="String" default="search" />
   <aura:attribute name="className" type="String" />
 
+  <aura:attribute name="mainNavId" type="String" />
+  <aura:attribute name="mainNavIsOpen" type="Boolean" default="false" />
   <aura:attribute
-    name="isSearchOpen"
+    name="searchIsOpen"
     type="Boolean"
     default="false"
     access="private"
@@ -119,8 +121,8 @@
             <div class="nsw-header__menu">
               <button
                 type="button"
-                aria-expanded="false"
-                aria-controls="main-nav"
+                aria-expanded="{! v.mainNavIsOpen }"
+                aria-controls="{! v.mainNavId }"
                 onclick="{! c.handleOpenMenu }"
               >
                 <span
@@ -139,7 +141,7 @@
             <aura:if isTrue="{! v.search }">
               <button
                 type="button"
-                aria-expanded="{! v.isSearchOpen }"
+                aria-expanded="{! v.searchIsOpen }"
                 aria-controls="{! globalId + '_header-search' }"
                 onclick="{! c.handleOpenSearch }"
               >
@@ -176,7 +178,7 @@
             id="{! globalId + '_header-search' }"
             aura:id="header-search"
             class="nsw-header__search-area"
-            hidden="{! !v.isSearchOpen }"
+            hidden="{! !v.searchIsOpen }"
           >
             <form role="search">
               <label for="{! globalId + '_header-input' }" class="sr-only">
@@ -209,7 +211,7 @@
 
             <button
               class="nsw-icon-button"
-              aria-expanded="{! v.isSearchOpen }"
+              aria-expanded="{! v.searchIsOpen }"
               aria-controls="{! globalId + '_header-search' }"
               onclick="{! c.handleCloseSearch}"
             >
