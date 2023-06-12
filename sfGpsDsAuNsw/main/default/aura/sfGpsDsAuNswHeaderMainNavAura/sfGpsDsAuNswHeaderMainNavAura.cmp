@@ -65,6 +65,8 @@
     profileInputJSON="{! v.profileInputJSON }"
     profileOptionsJSON="{! v.profileOptionsJSON }"
     className="{! v.headerClassName }"
+    mainNavIsOpen="{! v.menuActive }"
+    mainNavId="{! globalId + '_main-nav' }"
   />
   <c:sfGpsDsAuNswMainNavComm
     ipName="{! v.ipName }"
@@ -73,6 +75,7 @@
     megaMenu="{! v.megaMenu }"
     className="{! v.mainNavClassName }"
     isActive="{! v.menuActive }"
+    mainNavId="{! globalId + '_main-nav' }"
     onclosemenu="{! c.handleCloseMenu }"
     onnavigate="{! c.handleNavigate }"
   />

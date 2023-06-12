@@ -41,6 +41,7 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
   @api megaMenu = false;
   @api className;
   @api isActive = false;
+  @api mainNavId;
 
   /* lifecycle */
 

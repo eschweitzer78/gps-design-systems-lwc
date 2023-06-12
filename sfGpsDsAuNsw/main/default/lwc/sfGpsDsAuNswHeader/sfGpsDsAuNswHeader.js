@@ -6,7 +6,7 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeader extends LightningElement {
   static renderMode = "light";
@@ -30,8 +30,12 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   @api searchAriaLabel = "search";
   @api className;
 
-  @track isSearchOpen = false;
+  @track searchIsOpen = false;
   @api value = "";
+
+  /* hidden when used stand alone */
+  @api mainNavId;
+  @api mainNavIsOpen = false;
 
   get computedClassName() {
     return computeClass({
@@ -39,6 +43,26 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
       "nsw-header__has-profile": this.profile,
       [this.className]: this.className
     });
+  }
+
+  _headerSearchId;
+
+  get computedHeaderSearchId() {
+    if (this._headerSearchId == null) {
+      this._headerSearchId = uniqueId("sf-gps-ds-au-nsw-header-search");
+    }
+
+    return this._headerSearchId;
+  }
+
+  _headerInputId;
+
+  get computedHeaderInputId() {
+    if (this._headerInputId == null) {
+      this._headerInputId = uniqueId("sf-gps-ds-au-nsw-header-search");
+    }
+
+    return this._headerInputId;
   }
 
   get areLogosHorizontallyStacked() {
@@ -52,7 +76,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   /* helpers */
 
   setSearchVisible(visible) {
-    this.isSearchOpen = visible;
+    this.searchIsOpen = visible;
     let element = this.querySelector(".nsw-header__search-area");
 
     if (element) {

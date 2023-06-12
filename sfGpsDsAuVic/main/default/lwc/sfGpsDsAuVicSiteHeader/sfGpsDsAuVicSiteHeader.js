@@ -38,6 +38,8 @@ export default class SfGpsDsAuVicSiteHeader extends SfGpsDsLwc {
 
   @api className;
 
+  @track root = uniqueId("sf-gps-ds-au-vic-site-header-root");
+
   get menuButton() {
     return {
       opened: {

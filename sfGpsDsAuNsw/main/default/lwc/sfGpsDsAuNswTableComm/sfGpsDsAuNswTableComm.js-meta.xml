@@ -76,7 +76,7 @@
         name="isBordered"
         type="Boolean"
         default="false"
-        description="Add a border."
+        description="Add an external border."
       />
       <property
         label="CSS Class"
