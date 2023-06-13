@@ -31,7 +31,8 @@ async function main() {
 
         for (const directory in config) {
           console.log(`Looking at directory ${directory}`);
-          let file = directory; // scss and css file will be name just like their containing folder
+          let hasStar = directory.endsWith("*");
+          let file = hasStar ? directory.slice(0, -1) : directory; // scss and css file will be name just like their containing folder
           let fileInDirectory = directory.indexOf("/") >= 0;
 
           let content = genFile(
@@ -46,8 +47,8 @@ async function main() {
 
           fs.writeFile(
             fileInDirectory
-              ? `${dot}/${file}.css`
-              : `${dot}/${directory}/${file}.css`,
+              ? `${dot}/${file}${hasStar ? "" : ".gen"}.css`
+              : `${dot}/${directory}/${file}${hasStar ? "" : ".gen"}.css`,
             content,
             (err) => {
               if (err) throw err;
@@ -57,6 +58,7 @@ async function main() {
       })
       .catch((err) => {
         console.log(err);
+        process.exit(1);
       });
   }
 }

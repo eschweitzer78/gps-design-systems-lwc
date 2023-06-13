@@ -70,8 +70,8 @@
   },
   "sfGpsDsAuNswAccordionGroupCss": {
     "target": "!Os",
-    "accordion.css": {
-      "target": "accordion.css"
+    "accordion.gen.css": {
+      "target": "accordion.gen.css"
     },
     "!.css": {
       "target": "!Os.css"
@@ -83,8 +83,8 @@
   },
   "sfGpsDsAuNswAlert": {
     "target": "!Os",
-    "in-page-alert.css": {
-      "target": "in-page-alert.css"
+    "in-page-alert.gen.css": {
+      "target": "in-page-alert.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -140,8 +140,8 @@
   },
   "sfGpsDsAuNswButtonCss": {
     "target": "!Os",
-    "button.css": {
-      "target": "button.css"
+    "button.gen.css": {
+      "target": "button.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -154,8 +154,8 @@
   },
   "sfGpsDsAuNswCallout": {
     "target": "!Os",
-    "callout.css": {
-      "target": "callout.css"
+    "callout.gen.css": {
+      "target": "callout.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -193,8 +193,8 @@
   },
   "sfGpsDsAuNswCard": {
     "target": "!Os",
-    "card.css": {
-      "target": "card.css"
+    "card.gen.css": {
+      "target": "card.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -251,8 +251,8 @@
   },
   "sfGpsDsAuNswContentBlock": {
     "target": "!Os",
-    "content-block.css": {
-      "target": "content-block.css"
+    "content-block.gen.css": {
+      "target": "content-block.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -313,8 +313,8 @@
   },
   "sfGpsDsAuNswCore": {
     "target": "!Os",
-    "core.css": {
-      "target": "core.css"
+    "core.gen.css": {
+      "target": "core.gen.css"
     },
     "!.css": {
       "target": "!Os.css"
@@ -326,8 +326,8 @@
   },
   "sfGpsDsAuNswDialog": {
     "target": "!Os",
-    "dialog.css": {
-      "target": "dialog.css"
+    "dialog.gen.css": {
+      "target": "dialog.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -347,8 +347,8 @@
   },
   "sfGpsDsAuNswForm": {
     "target": "!Os",
-    "form.css": {
-      "target": "form.css"
+    "form.gen.css": {
+      "target": "form.gen.css"
     },
     "!.css": {
       "target": "!Os.css"
@@ -360,8 +360,8 @@
   },
   "sfGpsDsAuNswGlobalAlert": {
     "target": "!Os",
-    "global-alert.css": {
-      "target": "global-alert.css"
+    "global-alert.gen.css": {
+      "target": "global-alert.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -399,8 +399,8 @@
   },
   "sfGpsDsAuNswHeroBanner": {
     "target": "!Os",
-    "hero-banner.css": {
-      "target": "hero-banner.css"
+    "hero-banner.gen.css": {
+      "target": "hero-banner.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -456,8 +456,8 @@
   },
   "sfGpsDsAuNswLinkList": {
     "target": "!Os",
-    "link-list.css": {
-      "target": "link-list.css"
+    "link-list.gen.css": {
+      "target": "link-list.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -494,8 +494,8 @@
   },
   "sfGpsDsAuNswListItem": {
     "target": "!Os",
-    "list-item.css": {
-      "target": "list-item.css"
+    "list-item.gen.css": {
+      "target": "list-item.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -515,8 +515,8 @@
   },
   "sfGpsDsAuNswPagination": {
     "target": "!Os",
-    "pagination.css": {
-      "target": "pagination.css"
+    "pagination.gen.css": {
+      "target": "pagination.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -536,8 +536,8 @@
   },
   "sfGpsDsAuNswProgressIndicator": {
     "target": "!Os",
-    "progress-indicator.css": {
-      "target": "progress-indicator.css"
+    "progress-indicator.gen.css": {
+      "target": "progress-indicator.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -573,8 +573,8 @@
   },
   "sfGpsDsAuNswResultsBar": {
     "target": "!Os",
-    "results-bar.css": {
-      "target": "results-bar.css"
+    "results-bar.gen.css": {
+      "target": "results-bar.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -594,8 +594,8 @@
   },
   "sfGpsDsAuNswStatusLabel": {
     "target": "!Os",
-    "status-labels.css": {
-      "target": "status-labels.css"
+    "status-labels.gen.css": {
+      "target": "status-labels.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -615,8 +615,8 @@
   },
   "sfGpsDsAuNswTags": {
     "target": "!Os",
-    "tag.css": {
-      "target": "tag.css"
+    "tag.gen.css": {
+      "target": "tag.gen.css"
     },
     "!.css": {
       "target": "!Os.css",

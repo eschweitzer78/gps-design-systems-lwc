@@ -52,3 +52,7 @@ sfGpsTemp/*
 
 # auto-generated LWCs for Omniscript/Omnistudio
 **/lwc/*Os/**
+
+**/lwc/**/*.gen.css
+**/aura/**/*.gen.css
+**/staticresources/**/*.gen.css
