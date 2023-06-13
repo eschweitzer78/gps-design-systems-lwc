@@ -21,7 +21,7 @@
         type="String"
         label="Content"
         description="Content in Markdown format, which will be split by H1 header."
-        default="# Accordion\nAn accordion is a series of expandable vertical panels, designed to save page on a page by hiding content and revealing it as required.\n# Second Accordion\nUsing *styling*."
+        default="# Accordion\nAn accordion is a series of expandable vertical panels, designed to save space on a page by hiding content and revealing it as required.\n# Second Accordion\nUsing *styling*."
       />
       <property
         name="type"
