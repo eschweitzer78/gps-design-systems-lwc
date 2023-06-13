@@ -42,7 +42,7 @@
               class={navItem.className}
               role="button"
               aria-expanded={navItem.isActive}
-              aria-controls={navItem.index}
+              aria-controls={navItem.id}
               data-ndx={navItem.index}
               onclick={handleClick}
             >
@@ -61,7 +61,7 @@
             <!-- SubNav TODO change id -->
             <div
               class={navItem.subNavClassName}
-              id={navItem.index}
+              id={navItem.id}
               role="region"
               aria-label={navItem.text}
             >
@@ -70,7 +70,7 @@
                 <button
                   type="button"
                   class="nsw-icon-button nsw-icon-button--flex"
-                  aria-controls={navItem.index}
+                  aria-controls={navItem.id}
                   aria-expanded="true"
                   data-ndx={navItem.index}
                   onclick={handleBackClick}
@@ -150,7 +150,7 @@
                     <template if:true={subNavItem.subNav}>
                       <div
                         class={subNavItem.subNavClassName}
-                        id={subNavItem.index}
+                        id={subNavItem.id}
                         role="region"
                         aria-label={subNavItem.ariaLabel}
                       >
@@ -159,7 +159,7 @@
                           <button
                             type="button"
                             class="nsw-icon-button nsw-icon-button--flex"
-                            aria-controls={subNavItem.index}
+                            aria-controls={subNavItem.id}
                             aria-expanded="true"
                             data-ndx={subNavItem.index}
                             onclick={handleBackClick}

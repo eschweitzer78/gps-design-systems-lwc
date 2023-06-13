@@ -53,12 +53,15 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     return items.map((item) => {
       let result = {
         ...item,
-        index: `${parentIndex}-${index++}`,
+        id: `${parentIndex}-${index}`,
+        index: item.index || `${parentIndex}-${index}`,
         level: parentLevel + 1,
         isActive: false,
         className: "",
         subNavClassName: "nsw-main-nav__sub-nav"
       };
+
+      index++;
 
       if (!this.megaMenu) {
         delete result.subNav;
