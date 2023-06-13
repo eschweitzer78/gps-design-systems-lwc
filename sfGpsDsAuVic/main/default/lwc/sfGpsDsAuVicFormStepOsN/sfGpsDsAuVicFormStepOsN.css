@@ -1,5 +1,5 @@
 @import "c/sfGpsDsAuVicFormCssOs";
-@import "./Button.css";
+@import "./Button.gen.css";
 
 .sepbutton {
   display: none;

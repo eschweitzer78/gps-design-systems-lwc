@@ -1,4 +1,1 @@
-.sf-gps-ds-markdown p:not(:first-child) {
-  margin-top: 0.5rem;
-  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
-}
+@import "./AlertBase.gen.css";
