@@ -17,6 +17,13 @@
         default="Application complete"
       />
       <property
+        name="headingLevel"
+        type="String"
+        label="Heading level"
+        default="1"
+        datasource="1,2,3,4,5,6"
+      />
+      <property
         name="content"
         type="String"
         label="Details"

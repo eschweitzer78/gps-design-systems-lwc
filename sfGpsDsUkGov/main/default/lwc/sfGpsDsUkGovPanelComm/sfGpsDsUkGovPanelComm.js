@@ -12,6 +12,7 @@ import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsUkGovPanelComm extends SfGpsDsLwc {
   @api title;
+  @api headingLevel;
   @api className;
 
   _contentOriginal;
