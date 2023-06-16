@@ -15,13 +15,15 @@
 
       <!-- formula -->
       <div if:true={_isFormula}>
-        <label class={computedLabelClassName} for={inputId}>
-          {label}
-          <span if:true={required} class="sr-only"> ({requiredLabel})</span>
-        </label>
+        <div>
+          <label class={computedLabelClassName} for={inputId}>
+            {label}
+            <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+          </label>
+        </div>
 
         <input
-          class="slds-input"
+          class="vlocity-input nsw-form__input"
           type="text"
           readonly=""
           disabled=""
