@@ -10,18 +10,20 @@
       </button>
     </div>
 
-    <template if:true={_accordions} for:each={_accordions} for:item="accordion">
-      <c-sf-gps-ds-au-qld-accordion-item
-        key={accordion.key}
-        index={accordion.index}
-        title={accordion.title}
-        subtitle={accordion.subtitle}
-        closed={accordion.closed}
-        content={accordion.html}
-        oncollapse={handleCollapse}
-        onexpand={handleExpand}
-      >
-      </c-sf-gps-ds-au-qld-accordion-item>
+    <template if:true={_accordions}>
+      <template for:each={_accordions} for:item="accordion">
+        <c-sf-gps-ds-au-qld-accordion-item
+          key={accordion.key}
+          index={accordion.index}
+          title={accordion.title}
+          subtitle={accordion.subtitle}
+          closed={accordion.closed}
+          content={accordion.html}
+          oncollapse={handleCollapse}
+          onexpand={handleExpand}
+        >
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </template>
     </template>
   </section>
 </template>

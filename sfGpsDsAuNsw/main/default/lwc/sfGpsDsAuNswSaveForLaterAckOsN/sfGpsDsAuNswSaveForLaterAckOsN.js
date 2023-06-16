@@ -12,12 +12,4 @@ export default class SfGpsDsAuNswSaveForLaterAckOsN extends OmniscriptSaveForLat
   render() {
     return tmpl;
   }
-
-  get trueVal() {
-    return true;
-  }
-
-  get falseVal() {
-    return false;
-  }
 }

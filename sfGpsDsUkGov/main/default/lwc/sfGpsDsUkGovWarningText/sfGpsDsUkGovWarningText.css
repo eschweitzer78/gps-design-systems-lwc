@@ -1,0 +1,10 @@
+@import "c/sfGpsDsUkGovCore";
+@import "./warning-text.gen.css";
+
+.govuk-warning-text--error .govuk-warning-text__icon {
+  line-height: 24px;
+}
+
+.govuk-warning-text--success .govuk-warning-text__icon {
+  font-size: 20px;
+}

@@ -1,14 +1,19 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2023, Benedict Sefa Ziorklui, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmnistudioCheckboxGroup from "omnistudio/checkboxGroup";
+import OmniscriptCheckboxGroup from "omnistudio/checkboxGroup";
+import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovCheckboxGroupOsN.html";
 
-export default class SfGpsDsUkGovCheckboxGroupOsN extends OmnistudioCheckboxGroup {
+export default class SfGpsDsUkGovCheckboxGroupOsN extends SfGpsDsUkGovLabelMixin(
+  OmniscriptCheckboxGroup,
+  "large"
+) {
   render() {
     return tmpl;
   }
@@ -18,11 +23,12 @@ export default class SfGpsDsUkGovCheckboxGroupOsN extends OmnistudioCheckboxGrou
   }
 
   get computedAriaDescribedBy() {
-    if (this.fieldLevelHelp) {
-      return this.isError ? "errorMessageBlock helper" : "helper";
-    }
+    let isRealError = this.isRealError;
 
-    return this.isError ? "errorMessageBlock" : null;
+    return computeClass({
+      errorMessageBlock: isRealError,
+      helper: isRealError && this.fieldLevelHelp
+    });
   }
 
   get isRealError() {

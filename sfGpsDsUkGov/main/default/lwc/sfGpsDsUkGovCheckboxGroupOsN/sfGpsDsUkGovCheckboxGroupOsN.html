@@ -5,14 +5,14 @@
       class="govuk-fieldset"
       aria-describedby={computedAriaDescribedBy}
     >
-      <legend class="govuk-fieldset__legend">
-        {label}
-        <!--
-        <span class="sr-only"> ({requiredLabel})</span>-->
+      <legend class={computedLegendClassName}>
+        <h1 class="govuk-fieldset__heading">{label}</h1>
         <slot name="label"> </slot>
       </legend>
 
-      <div id="helper" class="govuk-hint">{fieldLevelHelp}</div>
+      <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+        {fieldLevelHelp}
+      </div>
 
       <p
         if:true={isRealError}
@@ -20,7 +20,7 @@
         aria-live="assertive"
         id="errorMessageBlock"
       >
-        <span class="govuk-visually-hidden">Error: </span>
+        <span class="govuk-visually-hidden">{errorSrLabel}</span>
         {errorMessage}
       </p>
 

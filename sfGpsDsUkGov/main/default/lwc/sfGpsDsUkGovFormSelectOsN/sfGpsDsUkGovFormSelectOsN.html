@@ -1,0 +1,55 @@
+<template>
+  <c-sf-gps-ds-uk-gov-select-os-n
+    options={_realtimeOptions}
+    label={mergedLabel}
+    class={_styleClasses.input}
+    required={_propSetMap.required}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    tab-index={tabIndex}
+    onchange={handleChange}
+    value={elementValue}
+    field-level-help={mergedHelpText}
+    data-refresh={refresh}
+    read-only={_readOnly}
+    disabled={_readOnly}
+    data-show-lookup="true"
+    message-when-value-missing={_messageWhenValueMissing}
+    data-omni-input
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span
+        slot="label"
+        style="bottom: 7px; right: 7px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Select"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Select"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-uk-gov-select-os-n>
+</template>

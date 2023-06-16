@@ -31,6 +31,7 @@ export default class SfGpsDsAuNswHeaderProfileIp extends SfGpsDsNavigation {
 
   @api isGuest;
   @api userAlias;
+  @api className;
 
   /* lifecycle */
 

@@ -1,0 +1,8 @@
+@import "c/sfGpsDsUkGovCoreOs";
+
+/* Need to adjust this rule as in Omniscript they always be first child */
+/* have same setup as for subsequent children. */
+
+.govuk-form-group:first-child {
+  margin-top: 1rem;
+}

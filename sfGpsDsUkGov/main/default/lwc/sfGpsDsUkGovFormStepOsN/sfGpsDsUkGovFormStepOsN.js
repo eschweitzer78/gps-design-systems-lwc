@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2023, Benedict Sefa Ziorklui, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -24,8 +24,7 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
   handleNext(e) {
     e.stopPropagation();
 
-    // TODO:
-    // temporary fix to solve the sfGpsDsAuNswFormSelect issue of having an invalidated value when
+    // temporary fix to solve the sfGpsDs...FormSelect issue of having an invalidated value when
     // configured as dependent picklist. It looks like it's actually an issue with the original
     // omnistudioSelect not updating the validation state of its parent when options are updated
     // asynchronously as part of the dependent picklist mechanism. It prevents moving to the next

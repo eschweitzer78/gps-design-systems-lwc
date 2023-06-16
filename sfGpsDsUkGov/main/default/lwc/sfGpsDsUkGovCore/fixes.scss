@@ -1,0 +1,122 @@
+$govuk-link-underline-thickness: unquote("max(1px, .0625rem)") !default;
+
+/* fixes clash between GOVUK GDS and SLDS */
+
+h1.govuk-fieldset__heading {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.forceCommunityRichText .govuk-scope,
+.slds-rich-text-editor__output .govuk-scope {
+  html {
+    font-size: 100%; // ok
+    line-height: 1.5;
+    box-sizing: border-box; // ok
+  }
+
+  h1 {
+    @extend %govuk-heading-xl;
+  }
+
+  h2 {
+    @extend %govuk-heading-l;
+  }
+
+  h3 {
+    @extend %govuk-heading-m;
+  }
+
+  h4 {
+    @extend %govuk-heading-s;
+  }
+
+  p {
+    @extend %govuk-body-m;
+  }
+
+  strong,
+  b {
+    @include govuk-typography-weight-bold;
+  }
+
+  ul,
+  ol {
+    @extend %govuk-list;
+  }
+
+  ol {
+    @extend %govuk-list--number;
+  }
+
+  ul {
+    @extend %govuk-list--bullet;
+  }
+
+  a {
+    @extend %govuk-link;
+  }
+
+  hr {
+    @extend %govuk-section-break;
+    @extend %govuk-section-break--visible;
+    @extend %govuk-section-break--xl;
+  }
+
+  pre + h2 {
+    padding-top: govuk-spacing(4);
+  }
+
+  pre + h3,
+  pre + h4 {
+    padding-top: govuk-spacing(2);
+  }
+}
+
+/* A FEW MORE FIXES FOR EXP CLOUD CUSTOMER SERVICE */
+  
+.forceCommunityRichText .govuk-scope,
+.slds-rich-text-editor__output .govuk-scope {
+  ul {
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  ol>li {
+    list-style-type: decimal;
+  }
+
+  ul>li {
+    list-style-type: disc;
+  }
+
+  ul>li,
+  ol>li {
+    padding-left: 0;
+  }
+
+  li:before {
+    display: inline-block;
+    margin-right: none;
+    width: 0;
+  }
+
+  ol li:before,
+  ul>li:before {
+    content: none;
+  }
+}
+

@@ -5,12 +5,15 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmniscriptInput from "omnistudio/input";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswInputOsN.html";
 
 export default class SfGpsDsAuNswInputOsN extends OmniscriptInput {
+  @api labelClassName;
+
   render() {
     return tmpl;
   }
@@ -38,7 +41,8 @@ export default class SfGpsDsAuNswInputOsN extends OmniscriptInput {
   get computedLabelClassName() {
     return computeClass({
       "nsw-form__label": true,
-      "nsw-form__required": this.required
+      "nsw-form__required": this.required,
+      [this.labelClassName]: this.labelClassName
     });
   }
 

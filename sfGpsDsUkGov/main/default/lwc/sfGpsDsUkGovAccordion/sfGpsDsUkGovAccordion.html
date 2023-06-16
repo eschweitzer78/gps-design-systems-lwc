@@ -1,0 +1,48 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <div class="govuk-accordion__controls">
+      <button
+        if:false={isFullyExpanded}
+        class="govuk-accordion__show-all"
+        aria-expanded="false"
+        onclick={handleExpandAll}
+      >
+        <span
+          class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+        >
+        </span>
+        <span class="govuk-accordion__show-all-text">
+          {i18n.showAllSectionsLabel}
+        </span>
+      </button>
+      <button
+        if:true={isFullyExpanded}
+        class="govuk-accordion__show-all"
+        aria-expanded={isFullyExpanded}
+        onclick={handleCollapseAll}
+      >
+        <span
+          class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+        >
+        </span>
+        <span class="govuk-accordion__show-all-text">
+          {i18n.hideAllSectionsLabel}
+        </span>
+      </button>
+    </div>
+
+    <template for:each={_accordions} for:item="accordion">
+      <c-sf-gps-ds-uk-gov-accordion-section-comm
+        key={accordion.key}
+        index={accordion.index}
+        data-index={accordion.index}
+        header={accordion.title}
+        closed={accordion.closed}
+        content={accordion.html}
+        oncollapse={handleCollapse}
+        onexpand={handleExpand}
+      >
+      </c-sf-gps-ds-uk-gov-accordion-section-comm>
+    </template>
+  </div>
+</template>

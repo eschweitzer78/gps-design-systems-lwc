@@ -4,7 +4,6 @@
     class={_styleClasses.input}
     label={mergedLabel}
     data-id={jsonDef.name}
-    onblur={handleBlur}
     value={elementValue}
     pattern={_emailPattern}
     theme={_theme}
@@ -25,6 +24,7 @@
     icon-name="utility:info"
     autocomplete={_autocomplete}
     data-omni-input
+    onblur={handleBlur}
   >
     <template if:true={_propSetMap.repeat}>
       <span

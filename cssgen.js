@@ -42,7 +42,8 @@ async function main() {
           ).css;
 
           for (const replacement of config[directory]) {
-            content = content.replaceAll(replacement.from, replacement.to);
+            let regexFrom = new RegExp(replacement.from, "gm");
+            content = content.replaceAll(regexFrom, replacement.to);
           }
 
           fs.writeFile(

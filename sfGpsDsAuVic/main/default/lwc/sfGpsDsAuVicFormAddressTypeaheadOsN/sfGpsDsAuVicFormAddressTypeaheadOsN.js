@@ -227,20 +227,17 @@ export default class sfGpsDsAuVicFormAddressTypeaheadOsN extends OmniscriptTypea
     } else {
       e = this.treatResp(e);
 
-      if (e === null) {
-        return;
+      if (
+        e !== undefined &&
+        !this.lodashUtil.isEqual(this.elementValue || {}, e)
+      ) {
+        this.setElementValue(e, t, i);
+        this.dispatchOmniEventUtil(
+          this,
+          this.createAggregateNode(),
+          "omniaggregate"
+        );
       }
-
-      if (this.lodashUtil.isEqual(this.elementValue || {}, e)) {
-        return;
-      }
-
-      this.setElementValue(e, t, i);
-      this.dispatchOmniEventUtil(
-        this,
-        this.createAggregateNode(),
-        "omniaggregate"
-      );
     }
   }
 

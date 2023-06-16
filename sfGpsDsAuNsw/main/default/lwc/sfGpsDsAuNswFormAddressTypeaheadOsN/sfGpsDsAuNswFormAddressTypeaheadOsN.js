@@ -209,39 +209,37 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       .then((e) => this.handleResponse(e))
       .then((e) => this.dataProcessorHook(e))
       .then((e) => {
-        this.applyCallResp({
-          ...this.elementValue,
-          value: Array.isArray(e) ? e[0] : e,
-          status: STATUS_RESOLVED
-        });
+        this.applyCallResp(
+          {
+            ...this.elementValue,
+            value: Array.isArray(e) ? e[0] : e,
+            status: STATUS_RESOLVED
+          },
+          true
+        );
 
         this.checkValidity();
       })
       .catch((e) => this.handleError(e));
   }
 
-  applyCallResp(e, t = false, i = false) {
-    /* TODO: investigate: for some reason super.applyCallResp(e, t, i) does not set elementValue */
-
-    if (i) {
-      this.setCustomValidation(e);
+  applyCallResp(json, bApi = false, bValidation = false) {
+    if (bValidation) {
+      this.setCustomValidation(json);
     } else {
-      e = this.treatResp(e);
+      json = this.treatResp(json);
 
-      if (e === null) {
-        return;
+      if (
+        json !== undefined &&
+        !this.lodashUtil.isEqual(this.elementValue || {}, json)
+      ) {
+        this.setElementValue(json, bApi, bValidation);
+        this.dispatchOmniEventUtil(
+          this,
+          this.createAggregateNode(),
+          "omniaggregate"
+        );
       }
-
-      if (this.lodashUtil.isEqual(this.elementValue || {}, e)) {
-        return;
-      }
-
-      this.setElementValue(e, t, i);
-      this.dispatchOmniEventUtil(
-        this,
-        this.createAggregateNode(),
-        "omniaggregate"
-      );
     }
   }
 
