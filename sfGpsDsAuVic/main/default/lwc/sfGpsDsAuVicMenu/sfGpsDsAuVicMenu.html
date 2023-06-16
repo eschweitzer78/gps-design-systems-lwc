@@ -1,6 +1,6 @@
 <template lwc:render-mode="light">
   <div
-    id={index}
+    id={id}
     class={computedClass}
     data-depth={depth}
     data-vpos={computedRootVerticalDepth}
@@ -20,7 +20,7 @@
           <div class="rpl-menu__header">
             <button
               if:true={computedShowCloseMenu}
-              aria-controls={index}
+              aria-controls={id}
               aria-expanded={open}
               class="rpl-menu__back"
               onclick={handleVerticalGoBack}
