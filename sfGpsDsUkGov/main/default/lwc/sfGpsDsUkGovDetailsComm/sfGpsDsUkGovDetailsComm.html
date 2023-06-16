@@ -1,0 +1,12 @@
+<template>
+  <c-sf-gps-ds-uk-gov-details
+    if:false={_sfGpsErrors}
+    summary={summary}
+    class-name={className}
+  >
+    <div class="sf-gps-ds-markdown" lwc:dom="manual"></div>
+  </c-sf-gps-ds-uk-gov-details>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

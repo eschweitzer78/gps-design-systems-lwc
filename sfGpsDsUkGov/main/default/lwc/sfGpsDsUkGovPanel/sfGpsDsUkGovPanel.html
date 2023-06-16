@@ -1,0 +1,14 @@
+<template>
+  <div class={computedClassName}>
+    <h1 if:true={isH1} class="govuk-panel__title">{title}</h1>
+    <h2 if:true={isH2} class="govuk-panel__title">{title}</h2>
+    <h3 if:true={isH3} class="govuk-panel__title">{title}</h3>
+    <h4 if:true={isH4} class="govuk-panel__title">{title}</h4>
+    <h5 if:true={isH5} class="govuk-panel__title">{title}</h5>
+    <h6 if:true={isH6} class="govuk-panel__title">{title}</h6>
+
+    <div class="govuk-panel__body">
+      <slot> </slot>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,52 @@
+<template>
+  <div class={computedFormGroupClassName}>
+    <div if:true={labelVisible} data-label="true">
+      <h1 class="govuk-label-wrapper">
+        <label
+          id="textarealabel"
+          class={computedLabelClassName}
+          for="textareaId"
+        >
+          {label}
+          <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
+        </label>
+      </h1>
+      <slot name="label"> </slot>
+    </div>
+
+    <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+      {fieldLevelHelp}
+    </div>
+
+    <p if:true={isError} id="errorMessageBlock" class="govuk-error-message">
+      <span class="govuk-visually-hidden">{errorSrLabel}</span>
+      {errorMessage}
+    </p>
+
+    <textarea
+      class={computedTextAreaError}
+      tabindex={tabIndex}
+      minlength={minLength}
+      maxlength={maxLength}
+      readonly={readOnly}
+      accesskey={accessKey}
+      name={name}
+      disabled={disabled}
+      required={required}
+      placeholder={placeholder}
+      id="textareaId"
+      autocomplete={autocomplete}
+      oninput={updateValue}
+      onblur={validateError}
+      onfocus={triggerEvent}
+      onchange={triggerEvent}
+      onkeyup={keyCallbacks}
+      onkeydown={keyCallbacks}
+      aria-labelledby="textarealabel"
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={isError}
+    >
+      {_val}
+    </textarea>
+  </div>
+</template>

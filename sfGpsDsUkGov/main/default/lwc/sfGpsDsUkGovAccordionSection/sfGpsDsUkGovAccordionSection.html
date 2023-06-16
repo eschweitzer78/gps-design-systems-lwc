@@ -1,0 +1,62 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <div class="govuk-accordion__section-header">
+      <h2 class="govuk-accordion__section-heading">
+        <button
+          class="govuk-accordion__section-button"
+          onclick={handleClick}
+          aria-expanded={_isOpen}
+          aria-controls={computedContentId}
+          aria-label={computedAriaLabel}
+        >
+          <span
+            id={computedHeadingTextId}
+            class="govuk-accordion__section-heading-text"
+          >
+            <span class="govuk-accordion__section-heading-text-focus">
+              {header}
+            </span>
+          </span>
+          <span
+            class="govuk-visually-hidden govuk-accordion__section-heading-divider"
+            >,
+          </span>
+          <span class="govuk-accordion__section-toggle" data-nosnippet>
+            <span class="govuk-accordion__section-toggle-focus">
+              <span class={computedChevronClassName}></span>
+              <span
+                lwc:if={_isOpen}
+                class="govuk-accordion__section-toggle-text"
+                >{i18n.hideSectionLabel}</span
+              >
+              <span lwc:else class="govuk-accordion__section-toggle-text"
+                >{i18n.showSectionLabel}</span
+              >
+            </span>
+          </span>
+        </button>
+      </h2>
+    </div>
+
+    <template lwc:if={_allowAriaLabelledby}>
+      <!-- reported as W3-ARIA non-compliant by AXE -->
+      <div
+        id={computedContentId}
+        class="govuk-accordion__section-content"
+        aria-labelledby={computedHeadingTextId}
+        hidden={_isHidden}
+      >
+        <slot></slot>
+      </div>
+    </template>
+    <template lwc:else>
+      <div
+        id={computedContentId}
+        class="govuk-accordion__section-content"
+        hidden={_isHidden}
+      >
+        <slot></slot>
+      </div>
+    </template>
+  </div>
+</template>

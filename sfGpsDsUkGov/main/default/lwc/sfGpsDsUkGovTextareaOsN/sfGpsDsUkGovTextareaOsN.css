@@ -1,0 +1,14 @@
+@import "c/sfGpsDsUkGovCoreOs";
+@import "./textarea.gen.css";
+
+[data-label] {
+  display: table;
+}
+
+[data-label] .govuk-label-wrapper {
+  margin-right: 0.5rem;
+}
+
+[data-label] slot {
+  display: table-cell;
+}

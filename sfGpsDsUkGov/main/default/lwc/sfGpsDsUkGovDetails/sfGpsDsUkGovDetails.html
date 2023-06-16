@@ -1,0 +1,10 @@
+<template lwc:render-mode="light">
+  <details class={computedClassName}>
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text"> {summary} </span>
+    </summary>
+    <div class="govuk-details__text">
+      <slot> </slot>
+    </div>
+  </details>
+</template>

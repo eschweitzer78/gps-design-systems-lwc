@@ -1,0 +1,50 @@
+<template>
+  <div class={computedFormGroupClassName}>
+    <label
+      style="width: auto"
+      id="select-label"
+      for="select"
+      class="govuk-label"
+    >
+      <span>{label}</span>
+      <slot name="label"> </slot>
+    </label>
+
+    <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+      {fieldLevelHelp}
+    </div>
+
+    <div
+      if:true={isError}
+      class="govuk-error-message"
+      role="alert"
+      aria-live="assertive"
+      id="errorMessageBlock"
+    >
+      <span>{errorMessage}</span>
+    </div>
+
+    <select
+      id="select"
+      class="govuk-select"
+      disabled={computedDisabled}
+      required={required}
+      tabindex={tabIndex}
+      multiple={multiple}
+      onchange={handleChange}
+      onblur={handleBlur}
+      onfocus={handleFocus}
+    >
+      <template for:each={_displayOptions} for:item="e">
+        <option
+          key={e.index}
+          data-index={e.index}
+          value={e.value}
+          selected={e.selected}
+        >
+          {e.label}
+        </option>
+      </template>
+    </select>
+  </div>
+</template>
