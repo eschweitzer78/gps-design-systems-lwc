@@ -287,10 +287,8 @@
   h1 {
     font-size: var(--nsw-font-size-xxl-mobile);
     line-height: var(--nsw-line-height-xxl-mobile);
-  }
 
-  @media (min-width: 62rem) {
-    h1 {
+    @media (min-width: 62rem) {
       font-size: var(--nsw-font-size-xxl-desktop);
       line-height: var(--nsw-line-height-xxl-desktop);
     }
@@ -299,9 +297,8 @@
   h2 {
     font-size: var(--nsw-font-size-xl-mobile);
     line-height: var(--nsw-line-height-xl-mobile);
-  }
-  @media (min-width: 62rem) {
-    h2 {
+
+    @media (min-width: 62rem) {
       font-size: var(--nsw-font-size-xl-desktop);
       line-height: var(--nsw-line-height-xl-desktop);
     }
@@ -310,9 +307,8 @@
   h3 {
     font-size: var(--nsw-font-size-lg-mobile);
     line-height: var(--nsw-line-height-lg-mobile);
-  }
-  @media (min-width: 62rem) {
-    h3 {
+
+    @media (min-width: 62rem) {
       font-size: var(--nsw-font-size-lg-desktop);
       line-height: var(--nsw-line-height-lg-desktop);
     }
@@ -321,9 +317,8 @@
   h4 {
     font-size: var(--nsw-font-size-md-mobile);
     line-height: var(--nsw-line-height-md-mobile);
-  }
-  @media (min-width: 62rem) {
-    .nsw-scope h4 {
+
+    @media (min-width: 62rem) {
       font-size: var(--nsw-font-size-md-desktop);
       line-height: var(--nsw-line-height-md-desktop);
     }
@@ -333,10 +328,8 @@
   h6 {
     font-size: var(--nsw-font-size-sm-mobile);
     line-height: var(--nsw-line-height-sm-mobile);
-  }
-  @media (min-width: 62rem) {
-    h5,
-    h6 {
+
+    @media (min-width: 62rem) {
       font-size: var(--nsw-font-size-sm-desktop);
       line-height: var(--nsw-line-height-sm-desktop);
     }
