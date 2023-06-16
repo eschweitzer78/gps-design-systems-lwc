@@ -21,6 +21,13 @@ export default class SfGpsDsUkGovRadioGroupOsN extends OmnistudioRadioGroup {
     /* parent makes a few assumptions on markup which we circumvent */
   }
 
+  get computedFormGroupClassName() {
+    return computeClass({
+      "govuk-form-group": true,
+      "govuk-form-group--error": this.isError
+    });
+  }
+
   get computedLegendClassName() {
     return computeClass({
       "govuk-fieldset__legend": true,
@@ -39,18 +46,11 @@ export default class SfGpsDsUkGovRadioGroupOsN extends OmnistudioRadioGroup {
     });
   }
 
-  get computedFormGroupClassName() {
-    return computeClass({
-      "govuk-form-group": true,
-      "govuk-form-group--error": this.isError
-    });
-  }
-
   get computedRadiosClass() {
-    return (
-      "govuk-radios" +
-      (this.alignment === "horizontal" ? " govuk-radios--inline" : "")
-    );
+    return computeClass({
+      "govuk-radios": true,
+      "govuk-radios--inline": this.alignment === "horizontal"
+    });
   }
 
   get errorSrLabel() {
