@@ -1,11 +1,9 @@
 <template>
+  <p>form readonly: {_propSetMap.readOnly}</p>
   <c-sf-gps-ds-au-nsw-input-os-n
     type="time"
-    data-omni-input
     label={mergedLabel}
-    class={_styleClasses.input}
-    onblur={handleBlur}
-    onchange={handleChange}
+    read-only={_propSetMap.readOnly}
     value={elementValue}
     tab-index={tabIndex}
     output-type={_propSetMap.timeType}
@@ -30,6 +28,10 @@
     placeholder={_propSetMap.placeholder}
     field-level-help={mergedHelpText}
     theme="sfgpsds"
+    class={_styleClasses.input}
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
   >
     <template if:true={_propSetMap.repeat}>
       <span

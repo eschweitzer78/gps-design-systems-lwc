@@ -1,12 +1,9 @@
 <template>
   <c-sf-gps-ds-au-nsw-input-os-n
     type="datetime"
-    class={_styleClasses.input}
-    data-omni-input
     label={mergedLabel}
-    onblur={handleBlur}
-    onchange={handleChange}
     required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
     date-placeholder={_propSetMap.datePlaceholder}
     time-placeholder={_propSetMap.timePlaceholder}
     value={elementValue}
@@ -39,6 +36,10 @@
     theme={_theme}
     time-label=""
     date-label=""
+    class={_styleClasses.input}
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
   >
     <template if:true={_propSetMap.repeat}>
       <span
