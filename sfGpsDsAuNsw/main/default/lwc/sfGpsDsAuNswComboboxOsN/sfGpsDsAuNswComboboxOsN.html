@@ -4,6 +4,7 @@
       <!-- necessary for dropdown to work! -->
       <div if:false={isLabelHidden}>
         <label
+          id="combobox-label"
           class={computedLabelClassName}
           style="width: auto"
           for="comboboxId"
@@ -20,11 +21,13 @@
 
       <div class="nsw-form__predictive">
         <div class="nswds-combobox_container">
-          <div class="" role="none">
+          <div class="nswds-combobox__form-element" role="none">
             <input
               class="nsw-form__input nswds-listbox__option-text_entity"
+              aria-describedby={computedAriaDescribedBy}
               aria-expanded={isOpen}
               aria-haspopup="listbox"
+              aria-controls="combobox-list"
               role="combobox"
               data-value={valueMap}
               type={type}
@@ -33,9 +36,10 @@
               placeholder={placeholder}
               tabindex={tabIndex}
               readonly={isNotInput}
-              autocomplete="new-password"
+              autocomplete="off"
               id="comboboxId"
               aria-activedescendant={activeDescendant}
+              aria-invalid={isError}
               value={valueCopy}
               onblur={showLookup}
               onmouseup={showLookup}
@@ -46,7 +50,9 @@
         </div>
 
         <div
+          id="combobox-list"
           class="nswds-dropdown nswds-dropdown_fluid"
+          aria-labelledby="combobox-label"
           role="listbox"
           onmousedown={preventLookupClose}
           onmouseleave={preventLookupOpen}
@@ -95,9 +101,10 @@
 
       <span
         if:true={isError}
+        id="errorMessageBlock"
         class={computedHelperClassName}
         aria-live="assertive"
-        id="errorMessageBlock"
+        role="alert"
       >
         <span
           if:true={computedStatusIcon}
@@ -112,9 +119,10 @@
       <template if:true={multiple}>
         <div if:true={inputLabels.length} class="slds-listbox_selection-group">
           <ul
-            class={pillWrapperClass}
+            role="listbox"
             aria-label="Selected Options:"
             aria-orientation="horizontal"
+            class={pillWrapperClass}
           >
             <template for:each={inputLabels} for:item="e">
               <li key={e} class="slds-listbox-item" role="presentation">
@@ -123,7 +131,6 @@
                   style={styleProperties.value.styles}
                   role="option"
                   tabindex="0"
-                  aria-selected="true"
                 >
                   <span class="slds-pill__label" title={e}> {e} </span>
                   <omnistudio-icon
