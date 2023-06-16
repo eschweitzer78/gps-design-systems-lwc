@@ -4,7 +4,7 @@
       <caption if:true={computedShowCaption}>
         {caption}
       </caption>
-      <thead>
+      <thead if:true={_tableHeaders}>
         <tr>
           <template for:each={_tableHeaders} for:item="header">
             <th key={header.name} width={header.width} class={header.className}>
@@ -13,10 +13,10 @@
           </template>
         </tr>
       </thead>
-      <tbody>
+      <tbody if:true={_tableRows}>
         <template for:each={_tableRows} for:item="row">
           <tr key={row._key}>
-            <template for:each={row._cols} for:item="cell">
+            <template if:true={row._cols} for:each={row._cols} for:item="cell">
               <td
                 lwc:if={cell._isMarkdown}
                 key={cell._key}
