@@ -11,7 +11,7 @@ h1.govuk-fieldset__heading {
 .slds-rich-text-editor__output .govuk-scope {
   html {
     font-size: 100%; // ok
-    line-height: var(--nsw-line-height);
+    line-height: 1.5;
     box-sizing: border-box; // ok
   }
 
