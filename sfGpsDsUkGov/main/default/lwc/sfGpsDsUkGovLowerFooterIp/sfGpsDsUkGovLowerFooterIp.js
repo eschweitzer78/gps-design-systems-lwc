@@ -111,18 +111,6 @@ export default class SfGpsUkGovLowerFooterIp extends SfGpsDsNavigation {
       }
     }
 
-    if (this._copyrightMentionOriginal) {
-      let element = this.template.querySelector(".govuk-footer__copyright");
-      if (element) {
-        replaceInnerHtml(element, this._copyrightMentionHtml);
-
-        const As = element.querySelectorAll("a");
-        As.forEach((a) => {
-          a.classList.add("govuk-footer__link");
-        });
-      }
-    }
-
     if (this._builtMentionOriginal) {
       let element = this.template.querySelector(".govuk-footer__built");
       if (element) {

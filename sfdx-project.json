@@ -17,7 +17,7 @@
       "path": "sfGpsDsAuNsw",
       "package": "Salesforce Global Public Sector AU NSW Design System",
       "versionName": "2023.06.13.2330",
-      "versionNumber": "1.8.NEXT",
+      "versionNumber": "1.8.0.NEXT",
       "default": true,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -34,7 +34,7 @@
       "path": "sfGpsDsAuNswS",
       "package": "Salesforce Global Public Sector AU NSW Service Design System",
       "versionName": "2023.06.04.0500",
-      "versionNumber": "1.8.NEXT",
+      "versionNumber": "1.8.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -51,7 +51,7 @@
       "path": "sfGpsDsAuVic",
       "package": "Salesforce Global Public Sector AU VIC Design System",
       "versionName": "2023.06.13.2330",
-      "versionNumber": "1.8.NEXT",
+      "versionNumber": "1.8.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -68,7 +68,7 @@
       "path": "sfGpsDsUkGov",
       "package": "Salesforce Global Public Sector GOV.UK Design System",
       "versionName": "2023.06.01.1500",
-      "versionNumber": "0.8.NEXT",
+      "versionNumber": "0.8.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -85,7 +85,7 @@
       "path": "sfGpsDsAuQld",
       "package": "Salesforce Global Public Sector QLD Design System",
       "versionName": "2023.06.01.1500",
-      "versionNumber": "0.8.NEXT",
+      "versionNumber": "0.8.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
