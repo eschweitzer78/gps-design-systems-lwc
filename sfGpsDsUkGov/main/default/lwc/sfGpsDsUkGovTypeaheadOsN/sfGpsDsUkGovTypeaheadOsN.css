@@ -1,10 +1,12 @@
+/*.Copyright (c) 2023, Benedict Sefa Ziorklui, Emmanuel Schweitzer*/
+
 @import "c/sfGpsDsUkGovCoreOs";
 
+/*.sfgpsds-predictive*/
 .sfgpsds-predictive {
   position: relative;
 }
 
-/*.sfgpsds-predictive*/
 input {
   border-radius: 0.25rem;
   color: #011a3c;
@@ -40,13 +42,19 @@ input {
   }
 }
 
+.sfgpsds-listbox__option:hover {
+  outline-width: 0;
+  cursor: pointer;
+  background-color: #f3f2f1;
+  color: #0b0c0c;
+}
+
 .sfgpsds-listbox__option:focus,
-.sfgpsds-listbox__option:hover,
 .sfgpsds-listbox__option.sfgpsds-has-focus {
   outline-width: 0;
   cursor: pointer;
-  background-color: #1d70b8;
-  color: #fff;
+  background-color: #fd0;
+  color: #0b0c0c;
 }
 
 .sfgpsds-listbox__option-text_entity {
@@ -124,7 +132,7 @@ input {
   overflow: hidden;
   outline: 0;
   width: 100%;
-  border: 1px solid #0052c2;
+  border: 1px solid #1d70b8;
   border-top: none;
   border-radius: 0.25rem;
   border-top-left-radius: 0;

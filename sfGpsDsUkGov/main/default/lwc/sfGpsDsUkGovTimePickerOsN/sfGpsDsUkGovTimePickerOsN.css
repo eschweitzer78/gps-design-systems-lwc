@@ -153,7 +153,11 @@
   margin-right: 0.25rem;
 }
 
-.rpl-form .form-group.required > .sfgpsds-combobox > label > span:after {
+/* Not required but keeping for tracking */
+.govuk-form-group.govuk-form-group--error
+  > .sfgpsds-combobox
+  > label
+  > span:after {
   /* margin-left: $rpl-space; */ /* message already has space */
   font-family: "GDS Transport", "Arial", "Helvetica", "sans-serif";
   font-size: 0.875rem;
@@ -216,7 +220,7 @@
 }
 
 .sfgpsds-is-open .sfgpsds-listbox {
-  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border: 1px solid #1d70b8;
   border-top: none;
 }
 
@@ -226,7 +230,7 @@
   font-family: "GDS Transport", "Arial", "Helvetica", "sans-serif";
   line-height: 1em;
   font-weight: normal;
-  color: #011a3c;
+  color: #0b0c0c;
   cursor: default;
 
   font-size: 0.875rem;
@@ -248,28 +252,33 @@
 }
 
 .sfgpsds-listbox__item:hover {
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
-  color: #fff;
+  background-color: #f3f2f1;
+  color: #0b0c0c;
+}
+
+.sfgpsds-listbox__option:hover,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option:hover,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option:hover {
+  outline: 0;
+  background-color: #f3f2f1;
+  color: #0b0c0c;
 }
 
 .sfgpsds-listbox__option:focus,
-.sfgpsds-listbox__option:hover,
 .sfgpsds-listbox__option.sfgpsds-has-focus,
 .sfgpsds-listbox_vertical .sfgpsds-listbox__option:focus,
-.sfgpsds-listbox_vertical .sfgpsds-listbox__option:hover,
 .sfgpsds-listbox_vertical .sfgpsds-listbox__option.sfgpsds-has-focus,
 .sfgpsds-listbox--vertical .sfgpsds-listbox__option:focus,
-.sfgpsds-listbox--vertical .sfgpsds-listbox__option:hover,
 .sfgpsds-listbox--vertical .slds-listbox__option.sfgpsds-has-focus {
   outline: 0;
-  color: #fff;
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #0b0c0c;
+  background-color: #fd0;
 }
 
 .sfgpsds-listbox__option.sfgpsds-is-selected,
 .sfgpsds-listbox_vertical .sfgpsds-listbox__option.sfgpsds-is-selected {
   outline: 0;
-  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  background-color: #1d70b8;
   color: #fff;
 }
 
