@@ -1,0 +1,55 @@
+{
+  "sfGpsDsUkGovAccordion/accordion": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovBreadcrumbs/breadcrumbs": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovCheckboxGroupOsN/checkboxes": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovCore/core": [{ "from": ":root", "to": ":host" }],
+  "sfGpsDsUkGovDatePickerOsN/date-input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovDetails/details": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFooterCss/footer": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    {
+      "from": "\"/assets",
+      "to": "\"https://cdn.jsdelivr.net/npm/govuk-frontend/govuk/assets"
+    }
+  ],
+  "sfGpsDsUkGovHeader/header": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovInputOsN/input": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
+  "sfGpsDsUkGovInsetText/inset-text": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovMaskedInputOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovNotificationBanner/notification-banner": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovPanel/panel": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
+  "sfGpsDsUkGovRadioGroupOsN/radios": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovSelectOsN/select": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovTextAreaOsN/textarea": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovWarningText/warning-text": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ]
+}
