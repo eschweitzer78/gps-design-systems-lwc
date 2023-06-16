@@ -247,7 +247,6 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
   _didGetValue = false;
 
   connectedCallback() {
-    console.log("ATOsN connected callback");
     this._didTypeahead = false;
     this._didGetValue = false;
     super.connectedCallback();
