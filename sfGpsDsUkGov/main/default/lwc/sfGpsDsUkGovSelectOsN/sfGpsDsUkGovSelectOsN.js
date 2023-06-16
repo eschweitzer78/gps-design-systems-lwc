@@ -45,9 +45,9 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
             if (val.indexOf("]") !== -1) {
               let parsedValue = JSON.parse(val);
               if (Array.isArray(parsedValue)) {
-                parsedValue.map((item) =>
-                  typeof item === "string" ? item : String(item)
-                );
+                parsedValue.map((item) => {
+                  return typeof item === "string" ? item : String(item);
+                });
               } else {
                 return parsedValue;
               }
@@ -76,9 +76,9 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
         this._value = t(value);
       } else {
         if (Array.isArray(value)) {
-          this._value = value.map((e) =>
-            typeof e === "string" ? e : String(e)
-          );
+          this._value = value.map((e) => {
+            return typeof e === "string" ? e : String(e);
+          });
         } else {
           this._value = [...value];
         }
