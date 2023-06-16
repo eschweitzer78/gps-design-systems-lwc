@@ -1,0 +1,30 @@
+.govuk-ext-progress-indicator {
+  margin-top: 1.5rem;
+}
+.govuk-ext-progress-indicator:first-child {
+  margin-top: 0;
+}
+@media (min-width: 48rem) {
+  .govuk-ext-progress-indicator {
+    margin-top: 2rem;
+  }
+}
+.govuk-ext-progress-indicator__count {
+  font-size: 1.5rem;
+  line-height: 1.04167;
+}
+.govuk-ext-progress-indicator__bar {
+  display: flex;
+  padding-top: 0.5rem;
+}
+.govuk-ext-progress-indicator__bar div {
+  height: 0.25rem;
+  width: 100%;
+  background-color: #f8f8f8;
+}
+.govuk-ext-progress-indicator__bar div:not(:first-child) {
+  margin-left: 0.25rem;
+}
+.govuk-ext-progress-indicator__bar div.active {
+  background-color: #1d70b8;
+}
