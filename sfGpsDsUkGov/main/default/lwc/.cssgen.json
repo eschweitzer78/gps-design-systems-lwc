@@ -46,7 +46,7 @@
   "sfGpsDsUkGovSelectOsN/select": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
-  "sfGpsDsUkGovTextAreaOsN/textarea": [
+  "sfGpsDsUkGovTextareaOsN/textarea": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
   "sfGpsDsUkGovWarningText/warning-text": [
