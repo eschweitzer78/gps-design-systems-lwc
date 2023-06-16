@@ -6,6 +6,7 @@ export default class SfGpsDsAuQldAside extends LightningElement {
 
   @api iconName;
   @api iconSize;
+  @api className;
 
   get computedClassName() {
     return computeClass({
