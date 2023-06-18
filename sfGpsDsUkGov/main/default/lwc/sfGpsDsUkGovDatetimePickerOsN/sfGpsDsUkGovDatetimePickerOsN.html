@@ -13,8 +13,6 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-half">
         <c-sf-gps-ds-uk-gov-date-picker-os-n
-          hide-form-group="true"
-          hide-asterisk="true"
           placeholder={datePlaceholder}
           theme={theme}
           label={dateLabel}
@@ -50,8 +48,7 @@
       </div>
       <div class="govuk-grid-column-one-half">
         <c-sf-gps-ds-uk-gov-time-picker-os-n
-          hide-form-group="true"
-          hide-asterisk="true"
+          field-label={i18n.timeLabel}
           placeholder={timePlaceholder}
           theme="sfgpsds"
           label={timeLabel}

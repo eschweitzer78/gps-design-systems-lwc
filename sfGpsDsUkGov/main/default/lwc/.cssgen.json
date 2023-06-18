@@ -14,6 +14,9 @@
   "sfGpsDsUkGovDatePickerOsN/date-input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
+  "sfGpsDsUkGovDatetimePickerOsN/label": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
   "sfGpsDsUkGovDetails/details": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
@@ -47,6 +50,9 @@
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
   "sfGpsDsUkGovTextareaOsN/textarea": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovTimePickerOsN/input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
   "sfGpsDsUkGovWarningText/warning-text": [

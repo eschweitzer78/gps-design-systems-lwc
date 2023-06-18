@@ -12,6 +12,10 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 const timeQueryClass = "c-sf-gps-ds-uk-gov-time-picker-os-n";
 const dateQueryClass = "c-sf-gps-ds-uk-gov-date-picker-os-n";
 
+const I18N = {
+  timeLabel: "Time"
+};
+
 export default class SfGpsDsUkGovDatetimePickerOsN extends OmnistudioDatetimePicker {
   render() {
     return tmpl;
@@ -45,6 +49,10 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends OmnistudioDatetimePic
     }
 
     return this._dateEl;
+  }
+
+  get i18n() {
+    return I18N;
   }
 
   setCustomValidity(e) {

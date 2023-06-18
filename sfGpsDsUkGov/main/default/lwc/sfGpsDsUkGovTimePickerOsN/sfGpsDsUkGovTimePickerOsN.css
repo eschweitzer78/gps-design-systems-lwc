@@ -1,4 +1,5 @@
 @import "c/sfGpsDsUkGovCoreOs";
+@import "./input.gen.css";
 
 /* inspired from slds */
 /* ------------------ */
@@ -168,33 +169,11 @@
 }
 
 /* specific */
-/* -------- */
-
-.sfgpsds-input {
-  position: relative;
-  cursor: default;
-  background-color: #f6f6f9;
-  border: 1px solid #d7dbe0;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  color: #011a3c;
-  height: auto;
-  width: 100%;
-  font-family: "GDS Transport", "Arial", "Helvetica", "sans-serif";
-  font-size: 0.875rem;
-  line-height: 1em;
-  font-weight: normal;
-  color: #011a3c;
-}
 
 .sfgpsds-dropdown {
-  top: 0;
-  background-color: #f6f6f9;
+  top: -30px;
   position: relative;
   margin: auto;
-  /*  font-size: 0.875rem;
-  padding-top: 0;
-  padding-bottom: 0;*/
 }
 
 .sfgpsds-dropdown_fluid,
@@ -205,28 +184,22 @@
 .sfgpsds-listbox {
   outline: 0;
   position: absolute;
-  top: -1px;
+  top: -30px;
   z-index: 1;
-  background: #f6f6f9;
-  /*left: -1px;*/
   width: 100%;
-  border: 1px solid #d7dbe0;
-  border-radius: 0.25rem;
-  /*border-top: 1px solid #d7dbe0;*/
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
   max-height: 18.375rem;
   overflow-y: auto;
+  border: 2px solid #0b0c0c;
 }
 
 .sfgpsds-is-open .sfgpsds-listbox {
-  border: 1px solid #1d70b8;
+  /*border: 1px solid #1d70b8;*/
   border-top: none;
 }
 
 .sfgpsds-listbox__item {
   height: 2.625rem;
-  background: #f6f6f9;
+  background: #fff;
   font-family: "GDS Transport", "Arial", "Helvetica", "sans-serif";
   line-height: 1em;
   font-weight: normal;

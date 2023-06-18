@@ -28,7 +28,7 @@ Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN`](./sfGpsDsAuNsw
 
 #### Introducing the NSW DS Table widget with client side pagination
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable) and  [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm). 
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable) and [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm).
 
 ### 1 June 2023
 
