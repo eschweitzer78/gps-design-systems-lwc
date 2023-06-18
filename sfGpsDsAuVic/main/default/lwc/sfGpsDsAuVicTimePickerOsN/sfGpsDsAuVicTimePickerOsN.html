@@ -64,13 +64,14 @@
                   <template for:each={options} for:item="e" for:index="s">
                     <li key={e.id} class="sfgpsds-listbox__item">
                       <div
-                        class="sfgpsds-media sfgpsds-media_small sfgpsds-media_center sfgpsds-listbox__option sfgpsds-listbox__option_plain"
                         id={e.id}
                         data-index={s}
                         data-selected={e.selected}
                         data-val={e.value}
+                        data-timepicker-option
                         role="option"
                         aria-selected={e.selected}
+                        class="sfgpsds-media sfgpsds-media_small sfgpsds-media_center sfgpsds-listbox__option sfgpsds-listbox__option_plain"
                         onmousedown={selectOption}
                       >
                         <span class="sfgpsds-media__figure">
