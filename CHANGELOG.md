@@ -12,7 +12,7 @@ NSW DS Header and VIC DS Menu had accessibility issues due to some element IDs n
 
 #### Fixing some validation issues for Address lookup in NSW DS and VIC DS
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormAddressTypeaheadOsN`)(./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormAddressTypeaheadOsN) and [`sfGpsDsAuVic/main/default/sfGpsDsAuVicFormAddressTypeaheadOsN`)(./sfGpsDsAuVic/main/default/sfGpsDsAuVicFormAddressTypeaheadOsN).
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormAddressTypeaheadOsN`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormAddressTypeaheadOsN) and [`sfGpsDsAuVic/main/default/sfGpsDsAuVicFormAddressTypeaheadOsN`](./sfGpsDsAuVic/main/default/sfGpsDsAuVicFormAddressTypeaheadOsN).
 
 #### Fixing some validation issues for other widgets in NSW DS and VIC DS
 
@@ -22,13 +22,13 @@ Includes checkbox and most text-based and number-based input fields.
 
 An override now exists to display Omnistudio formula field with the NSW DS look and feel.
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN`)(./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN).
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN).
 
 ### 4 June 2023
 
 #### Introducing the NSW DS Table widget with client side pagination
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable`)(./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable) and  [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm`)(./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableCoom) 
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable) and  [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm). 
 
 ### 1 June 2023
 
