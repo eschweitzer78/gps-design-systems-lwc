@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import SfGpsDsTimePickerOsN from "c/sfGpsDsTimePickerOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
@@ -14,6 +15,8 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
   SfGpsDsTimePickerOsN,
   "large"
 ) {
+  @api fieldLabel;
+
   render() {
     return tmpl;
   }
@@ -37,6 +40,10 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.isError
     });
+  }
+
+  get computedInputId() {
+    return "time-input";
   }
 
   connectedCallback() {
