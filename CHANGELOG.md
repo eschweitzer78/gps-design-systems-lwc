@@ -1,5 +1,35 @@
 ## Change log
 
+### 16 June 2023
+
+#### Fixing an issue on Date, Date Time and Time widgets for Omnistudio in all Design Systems
+
+Fields that were marked as read-only still enabled to click, get the drop-down menu and change the value.
+
+#### Fixing some accessibility issues
+
+NSW DS Header and VIC DS Menu had accessibility issues due to some element IDs not being generated properly.
+
+#### Fixing some validation issues for Address lookup in NSW DS and VIC DS
+
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormAddressTypeaheadOsN`)(./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormAddressTypeaheadOsN) and [`sfGpsDsAuVic/main/default/sfGpsDsAuVicFormAddressTypeaheadOsN`)(./sfGpsDsAuVic/main/default/sfGpsDsAuVicFormAddressTypeaheadOsN).
+
+#### Fixing some validation issues for other widgets in NSW DS and VIC DS
+
+Includes checkbox and most text-based and number-based input fields.
+
+#### Added support for Omnistudio formula in NSW DS
+
+An override now exists to display Omnistudio formula field with the NSW DS look and feel.
+
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN`)(./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN).
+
+### 4 June 2023
+
+#### Introducing the NSW DS Table widget with client side pagination
+
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable`)(./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable) and  [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm`)(./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableCoom) 
+
 ### 1 June 2023
 
 #### Better Integration Procedure error handling, in particular for navs
