@@ -75,15 +75,15 @@ export default class SfGpsDsAuNswTable extends LightningElement {
 
   /* api headers */
 
-  _originalHeaders;
+  _headersOriginal;
   _headers;
 
   @api get headers() {
-    return this._originalHeaders;
+    return this._headersOriginal;
   }
 
   set headers(value) {
-    this._originalHeaders = value;
+    this._headersOriginal = value;
 
     if (!Array.isArray(value)) {
       value = null;
