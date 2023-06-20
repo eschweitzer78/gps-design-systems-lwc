@@ -3,9 +3,13 @@ private class SfGpsDsListViewORA_Test {
   private static final String OBJECT_NAME = 'Account';
   private static final String LISTVIEW_NAME = 'RecentlyViewedAccounts';
 
-  /* I know a static ID looks wrong, but the ID returned by the listviews API is actually
-     consistently the same no matter what the org is, and it is NOT a record
-     in the ListView table at all. */
+  /** 2023-06-20 ESC
+   *
+   * I know a static ID looks wrong, but the ID returned by the listviews API is actually
+   * consistently the same no matter what the org is, and it is NOT a record
+   * in the ListView table at all.
+   */
+
   private static final String LV_ID = '00B5j00000GK7a9EAD';
 
   @IsTest
