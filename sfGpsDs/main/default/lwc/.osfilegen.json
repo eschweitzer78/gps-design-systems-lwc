@@ -77,6 +77,21 @@
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     }
   },
+  "sfGpsDsMarkdownElement": {
+    "target": "!Os",
+    "!.html": { "target": "!Os.html" },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsMarkdown\"": "sfGpsDsMarkdownOs\"",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsMarkdownElement": "sfGpsDsMarkdownElementOs",
+      "SfGpsDsMarkdownElement": "SfGpsDsMarkdownElementOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
   "sfGpsDsSpinner": {
     "target": "!Os",
     "!.css": { "target": "!Os.css" },
