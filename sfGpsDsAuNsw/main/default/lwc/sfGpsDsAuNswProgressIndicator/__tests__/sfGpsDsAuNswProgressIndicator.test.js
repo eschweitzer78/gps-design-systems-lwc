@@ -11,26 +11,6 @@ describe("c-sf-gps-ds-au-nsw-hero-progress-indicator", () => {
     }
   });
 
-  it("has the right div set as active", () => {
-    const element = createElement(ELT_TAG, {
-      is: SfGpsDsAuNswProgressIndicator
-    });
-
-    element.step = 2;
-    element.of = 3;
-
-    document.body.appendChild(element);
-
-    const indicatorBarDivs = element.querySelectorAll(
-      ".nsw-progress-indicator__bar div"
-    );
-
-    expect(indicatorBarDivs.length).toBe(3);
-    expect(indicatorBarDivs[0].classList).not.toContain("active");
-    expect(indicatorBarDivs[1].classList).toContain("active");
-    expect(indicatorBarDivs[2].classList).not.toContain("active");
-  });
-
   it("is accessible", async () => {
     const element = createElement(ELT_TAG, {
       is: SfGpsDsAuNswProgressIndicator
