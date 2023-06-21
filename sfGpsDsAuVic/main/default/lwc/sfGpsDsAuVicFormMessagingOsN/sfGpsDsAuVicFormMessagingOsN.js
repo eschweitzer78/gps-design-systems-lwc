@@ -87,10 +87,8 @@ export default class SfGpsDsAuVicFormMessagingOsN extends OmniscriptMessaging {
 
     let element;
     let mth = this._messageTextHtml;
-    console.log(mth, this.messageText);
 
     if (mth) {
-      console.log(this.template);
       if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
         replaceInnerHtml(element, mth);
       } else {
