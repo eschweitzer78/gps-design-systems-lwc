@@ -34,23 +34,6 @@ export default class SfGpsDsAuVicTimePickerOsN extends SfGpsDsTimePickerOsN {
     });
   }
 
-  /*
-  get decoratedOptions() {
-    console.log("options", JSON.stringify(this.options));
-    console.log("-------------");
-
-    return this.options ? this.options.map((option) => ({
-      ...option,
-      className: computeClass({
-        "vicds-listbox__item": true,
-        "vicds-listbox__option": true,
-        "vicds-media vicds-media_small vicds-media_center": true,
-        "vicds-is-selected": option.selected
-      })
-    })) :  null;
-  } 
-  */
-
   connectedCallback() {
     this.hideIcon = "false"; // We always want to show an icon and there is no setting in the wizard for that
     super.connectedCallback();
