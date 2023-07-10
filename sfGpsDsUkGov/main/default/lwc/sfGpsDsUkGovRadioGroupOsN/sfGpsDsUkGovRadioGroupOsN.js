@@ -7,31 +7,28 @@
 
 import { api } from "lwc";
 import OmnistudioRadioGroup from "omnistudio/radioGroup";
+import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovRadioGroupOsN.html";
 
 const errorSrLabel = "Error: ";
 
-export default class SfGpsDsUkGovRadioGroupOsN extends OmnistudioRadioGroup {
+export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
+  OmnistudioRadioGroup,
+  "large"
+) {
   render() {
     return tmpl;
   }
 
   renderedCallback() {
-    /* parent makes a few assumptions on markup which we circumvent */
+    /* parent makes a few assumptions on markup which we circumvent by not calling parent method */
   }
 
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": true,
       "govuk-form-group--error": this.isError
-    });
-  }
-
-  get computedLegendClassName() {
-    return computeClass({
-      "govuk-fieldset__legend": true,
-      "govuk-fieldset__legend--l": true
     });
   }
 

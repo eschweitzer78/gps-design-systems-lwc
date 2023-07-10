@@ -72,22 +72,22 @@
           role="combobox"
         >
           <input
-            class={computedLookUpInputError}
+            id="lookupId"
             type="text"
+            class={computedLookUpInputError}
             value={lookupDisplay}
             disabled={_propSetMap.readOnly}
             required={_propSetMap.required}
             readonly
+            aria-invalid={isAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
+            aria-controls="lookup"
+            placeholder={_propSetMap.placeholder}
+            data-omni-input
             onblur={hideOptions}
             onkeydown={handleKeyDown}
             onkeyup={handleKeyUp}
             onmouseup={showLookup}
-            aria-invalid={isAriaInvalid}
-            aria-describedby={computedAriaDescribedBy}
-            aria-controls="lookup"
-            id="lookupId"
-            placeholder={_propSetMap.placeholder}
-            data-omni-input
           />
           <div
             class="sfgps-dropdown sfgps-dropdown_fluid govuk-form--predictive-list"

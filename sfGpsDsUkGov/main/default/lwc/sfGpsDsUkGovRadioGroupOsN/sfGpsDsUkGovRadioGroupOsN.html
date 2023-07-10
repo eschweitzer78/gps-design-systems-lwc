@@ -9,8 +9,8 @@
     >
       <legend class={computedLegendClassName}>
         <h1 class="govuk-fieldset__heading">{label}</h1>
+        <slot name="label"></slot>
       </legend>
-      <slot name="label"></slot>
       <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
         {fieldLevelHelp}
       </div>

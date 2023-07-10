@@ -42,7 +42,7 @@ export default class SfGpsDsUkGovWarningTextComm extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    // super.connectedCallback();
+    super.connectedCallback();
     this.classList.add("govuk-scope");
   }
 

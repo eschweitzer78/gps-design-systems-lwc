@@ -24,4 +24,14 @@ describe("c-sf-gps-ds-uk-gov-lower-footer", () => {
     );
     expect(p).toBeNull();
   });
+
+  it("is accessible", async () => {
+    const element = createElement(tag, {
+      is: SfGpsDsUkGovLowerFooterComm
+    });
+
+    document.body.appendChild(element);
+
+    await expect(element).toBeAccessible();
+  });
 });

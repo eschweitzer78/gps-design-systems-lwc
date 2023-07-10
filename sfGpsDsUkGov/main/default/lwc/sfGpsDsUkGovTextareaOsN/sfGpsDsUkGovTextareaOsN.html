@@ -24,7 +24,7 @@
     </p>
 
     <textarea
-      class={computedTextAreaError}
+      class={computedTextAreaCharacterCountError}
       tabindex={tabIndex}
       minlength={minLength}
       maxlength={maxLength}
@@ -39,14 +39,21 @@
       oninput={updateValue}
       onblur={validateError}
       onfocus={triggerEvent}
-      onchange={triggerEvent}
-      onkeyup={keyCallbacks}
+      onkeyup={handleKeyUp}
       onkeydown={keyCallbacks}
-      aria-labelledby="textarealabel"
+      aria-labelledby="textarealabel exceeding-characters-info exceeding-characters-error"
       aria-describedby={computedAriaDescribedBy}
       aria-invalid={isError}
     >
       {_val}
     </textarea>
+
+    <div
+      id="character-count-text"
+      class={computedCharacterCountError}
+      if:true={_showCharacterCount}
+    >
+      {characterCountText}
+    </div>
   </div>
 </template>

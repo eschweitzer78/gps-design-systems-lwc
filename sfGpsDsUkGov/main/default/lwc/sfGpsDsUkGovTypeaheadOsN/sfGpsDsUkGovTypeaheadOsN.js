@@ -11,9 +11,10 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 
 import tmpl from "./sfGpsDsUkGovTypeaheadOsN.html";
 
+// Uses DEFAULT label Mixin ("medium")
 export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
   OmnistudioTypeahead,
-  "large"
+  "small"
 ) {
   /* TODO: handle
     messageWhenValueMissing
@@ -35,6 +36,7 @@ export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
   get computedTypeAheadInputError() {
     return computeClass({
       "govuk-input": true,
+      typeahead: true,
       "govuk-input--error": this.isError
     });
   }
