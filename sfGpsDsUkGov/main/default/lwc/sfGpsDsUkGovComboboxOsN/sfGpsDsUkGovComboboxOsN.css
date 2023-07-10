@@ -1,0 +1,121 @@
+@import "c/sfGpsDsUkGovCoreOs";
+@import "./input.gen.css";
+
+/* Need to adjust this rule as in Omniscript they always be first child */
+/* have same setup as for subsequent children. */
+
+.govuk-form-group:first-child {
+  margin-top: 1rem;
+}
+
+input[readonly][role="combobox"] {
+  border-radius: 0.25rem;
+  background-color: #fff;
+  color: #011a3c;
+  border: 1px solid #d7dbe0;
+}
+
+.govuk-input {
+  cursor: pointer;
+}
+
+.sfgpsds-predictive .govuk-input {
+  padding-right: 3rem;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.sfgpsds-predictive .govuk-input:hover {
+  background: url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+      no-repeat right 1rem center,
+    linear-gradient(rgba(0, 38, 100, 0.1), rgba(0, 38, 100, 0.1));
+  background-size: 1rem auto, auto;
+  background-color: #fff;
+}
+
+.sfgpsds-predictive .govuk-input:disabled {
+  background: #f6f6f9
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.sfgpsds-predictive .govuk-input[aria-invalid="true"]:hover,
+.sfgpsds-predictive .govuk-input.has-error:hover {
+  background: #f7e7eb
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.sfgpsds-predictive-list div {
+  display: block;
+  padding: 0.625rem;
+  color: #011a3c;
+  font-weight: normal;
+}
+
+.sfgpsds-predictive-list div:hover {
+  outline-width: 0;
+  cursor: pointer;
+  background-color: #fd0;
+  color: #011a3c;
+}
+
+.sfgpsds-listbox__option-text_entity {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.125rem;
+  overflow: hidden;
+}
+
+.sfgpsds-dropdown_fluid {
+  min-width: auto;
+}
+
+.sfgpsds-listbox_selection-group {
+  height: auto;
+}
+
+.sfgpsds-dropdown-container {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.sfgpsds-listbox__flex {
+  display: flex;
+}
+
+.sfgpsds-listbox__flex .slds-listbox-item {
+  overflow: hidden;
+}
+
+.sfgpsds-listbox__flex .slds-pill__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sfgpsds-dropdown-trigger--click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger--click:hover .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click:hover .sfgpsds-dropdown {
+  display: none;
+}
+
+.sfgpsds-dropdown-trigger_click .sfgpsds-dropdown {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
+  transition: opacity 0.1s linear, visibility 0.1s linear;
+}
+
+.sfgpsds-dropdown-trigger_click.sfgpsds-is-open .sfgpsds-dropdown {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}

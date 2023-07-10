@@ -10,6 +10,10 @@
     { "from": "@font-face\\{[^}]*\\}", "to": "" },
     { "from": ".js-enabled", "to": "" }
   ],
+  "sfGpsDsUkGovComboboxOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
   "sfGpsDsUkGovCore/core": [{ "from": ":root", "to": ":host" }],
   "sfGpsDsUkGovDatePickerOsN/date-input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }

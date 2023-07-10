@@ -3,7 +3,6 @@
 @import "c/sfGpsDsUkGovCoreOs";
 @import "./input.gen.css";
 
-/*.sfgpsds-predictive*/
 .sfgpsds-predictive {
   position: relative;
 }
@@ -174,7 +173,6 @@ input {
   min-width: 100%;
 }
 
-/* .nsw-form__predictive .nsw-form__input.typeahead */
 .sfgpsds-predictive .govuk-input.typeahead {
   padding-right: 3rem;
   background: #fff
