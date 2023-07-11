@@ -94,7 +94,7 @@
   }
 }
 .nsw-hero-banner-alt__content {
-  border-top: 6px solid var(--nsw-brand-dark); /* TODO: check change of brand colour #d7153a; */
+  border-top: 6px solid var(--nsw-brand-accent);
   font-weight: 400;
   font-size: 1.125rem;
   padding: 2rem; /* ESC 1rem; */
