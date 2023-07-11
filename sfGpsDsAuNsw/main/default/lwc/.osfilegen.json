@@ -504,7 +504,7 @@
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
-      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
     }
   },
   "sfGpsDsAuNswListItem": {
@@ -593,7 +593,8 @@
     },
     "!.css": {
       "target": "!Os.css",
-      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs",
+      "sfGpsDsAuNswForm": "sfGpsDsAuNswFormOs"
     },
     "!.html": {
       "target": "!Os.html"

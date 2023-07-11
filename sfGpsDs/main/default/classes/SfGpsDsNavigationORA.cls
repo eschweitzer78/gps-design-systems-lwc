@@ -35,7 +35,12 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
           communityPreview
         );
 
-        output.put('items', JSON.deserializeUntyped(JSON.serialize(lcnmi)));
+        List<Object> rv = (List<Object>) JSON.deserializeUntyped(
+          JSON.serialize(lcnmi)
+        );
+        handleNavigationItemsEntities(rv);
+
+        output.put('items', rv);
       }
       when 'GetNavigationV2' {
         String developerName = (String) getTypedFromMap(
@@ -69,7 +74,11 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
           communityPreview
         );
 
-        output.put('response', JSON.deserializeUntyped(JSON.serialize(resp)));
+        Map<String, Object> rv = (Map<String, Object>) JSON.deserializeUntyped(
+          JSON.serialize(resp)
+        );
+        handleNavigationItemsEntities((List<Object>) rv.get('items'));
+        output.put('response', rv);
       }
       when 'GetBaseUrl' {
         output.put('url', getBaseUrl());
@@ -139,6 +148,25 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }
+  }
+
+  static List<Object> handleNavigationItemsEntities(List<Object> items) {
+    if (items != null) {
+      for (Object item : items) {
+        Map<String, Object> mapItem = (Map<String, Object>) item;
+
+        if (mapItem.containsKey('label')) {
+          mapItem.put('label', ((String) mapItem.get('label')).unescapeHtml4());
+          if (mapItem.containsKey('subMenu')) {
+            handleNavigationItemsEntities(
+              (List<Object>) mapItem.get('subMenu')
+            );
+          }
+        }
+      }
+    }
+
+    return items;
   }
 
   @AuraEnabled(cacheable=true)

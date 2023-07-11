@@ -15,11 +15,9 @@
     margin-right: auto;
   }
 
-  padding-left: 1rem;
-  padding-right: 1rem;
+  //padding-left: 1rem;
+  //padding-right: 1rem;
 }
-
-/*
 
 /* SECOND SECTION SHOULD BE FULL-WIDTH
    AND BE FLUSH WITH PREVIOUS AND NEXT SECTION */
@@ -30,8 +28,8 @@
   padding-left: 0;
   padding-right: 0;
 
-  margin-top: -1rem;
-  margin-bottom: -1rem;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
 }
 
 /* GRID */
@@ -39,19 +37,19 @@
 .siteforceContentArea .forceCommunitySection .cb-section_column,
 .siteforceContentArea .forceCommunitySection .cb-section_column:first-child,
 .siteforceContentArea .forceCommunitySection .cb-section_column:last-child {
-  padding: 15px;
+  padding: 0.5rem;
 }
 
 .siteforceContentArea .forceCommunitySection .cb-section_row {
-  margin: 15px;
-  max-width: calc(100% + 30px) !important;
+  margin: -0.5rem;
+  max-width: calc(100% + 1rem) !important;
 }
 
 .siteforceContentArea .forceCommunitySection .cb-section_background,
 .siteforceContentArea .forceCommunitySection .cb-section_backgroundOverlay {
-  height: calc(100% - 30px);
-  top: 15px;
-  bottom: 15px;
+  height: calc(100% - 1rem);
+  top: 0.5rem;
+  bottom: 0.5rem;
 
   left: 0;
   right: 0;

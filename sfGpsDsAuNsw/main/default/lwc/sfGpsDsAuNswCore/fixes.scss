@@ -5,13 +5,15 @@
   */
 
 .forceCommunityRichText .nsw-scope,
-.slds-rich-text-editor__output .nsw-scope,
-.nsw-scope {
+.slds-rich-text-editor__output .nsw-scope/*,
+.nsw-scope*/ {
+  /*
   html {
     font-size: 100%;
     line-height: var(--nsw-line-height);
     box-sizing: border-box;
   }
+  */
 
   *,
   *::before,
@@ -354,23 +356,25 @@
   }
 }
 
-a:not(.nsw-button) {
-  font-weight: var(--nsw-font-bold);
-  color: var(--nsw-text-link);
-  text-decoration: underline;
+.forceCommunityRichText .nsw-scope,
+.slds-rich-text-editor__output .nsw-scope {
+  a:not(.nsw-button) {
+    font-weight: var(--nsw-font-bold);
+    color: var(--nsw-text-link);
+    text-decoration: underline;
+  }
+  a:hover:not(.nsw-button) {
+    background-color: var(--nsw-text-link-hover);
+    outline: 2px solid var(--nsw-text-link-hover);
+  }
+  a:focus:not(.nsw-button) {
+    outline: solid 3px var(--nsw-focus);
+    outline-offset: 0;
+  }
+  a:visited:not(.nsw-button) {
+    color: var(--nsw-text-visited);
+  }
 }
-a:hover:not(.nsw-button) {
-  background-color: var(--nsw-text-link-hover);
-  outline: 2px solid var(--nsw-text-link-hover);
-}
-a:focus:not(.nsw-button) {
-  outline: solid 3px var(--nsw-focus);
-  outline-offset: 0;
-}
-a:visited:not(.nsw-button) {
-  color: var(--nsw-text-visited);
-}
-
   
   /* A FEW MORE FIXES FOR EXP CLOUD CUSTOMER SERVICE */
 
