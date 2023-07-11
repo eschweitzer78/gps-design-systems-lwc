@@ -58,10 +58,11 @@ export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
       data = [data];
     }
 
-    return data.map((card) => ({
+    return data.map((card, index) => ({
       ...card,
       copy: card.copy ? htmlDecode(card.copy) : null,
-      footer: card.footer ? htmlDecode(card.footer) : null
+      footer: card.footer ? htmlDecode(card.footer) : null,
+      index: card.index || `card-${index + 1}`
     }));
   }
 
