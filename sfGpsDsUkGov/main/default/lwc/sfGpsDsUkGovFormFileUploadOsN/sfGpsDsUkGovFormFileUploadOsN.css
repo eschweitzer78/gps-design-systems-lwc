@@ -1,4 +1,5 @@
 @import "c/sfGpsDsUkGovCoreOs";
+@import "./file-upload.gen.css";
 
 /* Need to adjust this rule as in Omniscript they always be first child */
 /* have same setup as for subsequent children. */
@@ -7,9 +8,13 @@
   margin-top: 1rem;
 }
 
+.govuk-file-upload {
+  background: #efefef;
+}
+
 .omni-file-input {
   --lwc-spacingXxxSmall: 0.5rem;
-  --slds-c-button-neutral-color-background-hover: #002664d9;
+  --slds-c-button-neutral-color-background-hover: #f3f2f1;
   --slds-c-button-neutral-color-border: transparent;
   --slds-c-button-neutral-color-border-hover: transparent;
   --slds-c-button-spacing-block-start: 0.5rem; /* Found by trial & error, due to lightning primitive icon height */

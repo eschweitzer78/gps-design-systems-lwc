@@ -6,6 +6,7 @@
  */
 
 import OmnistudioDatetimePicker from "omnistudio/datetimePicker";
+import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovDatetimePickerOsN.html";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
@@ -16,7 +17,10 @@ const I18N = {
   timeLabel: "Time"
 };
 
-export default class SfGpsDsUkGovDatetimePickerOsN extends OmnistudioDatetimePicker {
+export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixin(
+  OmnistudioDatetimePicker,
+  "large"
+) {
   render() {
     return tmpl;
   }
@@ -25,13 +29,6 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends OmnistudioDatetimePic
     return computeClass({
       "govuk-form-group": true,
       "govuk-form-group--error": this.isError
-    });
-  }
-
-  get computedLabelClassName() {
-    return computeClass({
-      "govuk-label": true,
-      "govuk-label--l": true
     });
   }
 

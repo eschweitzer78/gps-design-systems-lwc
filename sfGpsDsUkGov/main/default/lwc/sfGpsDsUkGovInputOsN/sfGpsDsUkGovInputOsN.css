@@ -1,5 +1,6 @@
 @import "c/sfGpsDsUkGovCoreOs";
 @import "./input.gen.css";
+@import "./checkboxes.gen.css";
 
 /* repeat icons */
 
@@ -12,5 +13,13 @@
 }
 
 [data-label] slot {
+  display: table-cell;
+}
+
+.govuk-checkboxes__item {
+  display: table;
+}
+
+.govuk-checkboxes__item slot {
   display: table-cell;
 }

@@ -1,12 +1,18 @@
 <template>
   <div class={computedFormGroupClassName}>
     <div class="sfgpsds-label__group">
-      <h1 class="govuk-label-wrapper">
-        <label class={computedLabelClassName} aria-label={label} for="inputId">
-          {label}
-          <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
-        </label>
-      </h1>
+      <div class="sfgpsds-label__group_label_container">
+        <div class="sfgpsds-label__group_label">
+          <label
+            class={computedLabelClassName}
+            aria-label={label}
+            for="inputId"
+          >
+            {label}
+            <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
+          </label>
+        </div>
+      </div>
 
       <div class="sfgpsds-label__group_action">
         <slot name="iconRight"> </slot>

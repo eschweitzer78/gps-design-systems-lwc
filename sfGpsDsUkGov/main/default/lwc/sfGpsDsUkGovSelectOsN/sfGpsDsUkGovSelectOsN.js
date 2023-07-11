@@ -6,6 +6,7 @@ import OmniscriptSalesforceUtils from "omnistudio/salesforceUtils";
 const I18N = {};
 
 const ELEMENT_SELECTOR = "select";
+const NONE = "none";
 
 export default class SfGpsDsUkGovSelect extends LightningElement {
   @api label;
@@ -32,7 +33,7 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
   get value() {
     let rv = this._displayOptions
       .filter((item) => item.selected)
-      .map((item) => (item.value === "none" ? "" : item.value));
+      .map((item) => (item.value === NONE ? "" : item.value));
 
     return rv.length === 1 ? rv[0] : rv;
   }
@@ -98,7 +99,7 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
   @api
   get options() {
     return this._options.map((item) => {
-      if (item.value === "none") {
+      if (item.value === NONE) {
         item.value = "";
       }
 
@@ -125,7 +126,7 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
       ...item,
       value:
         item.value === ""
-          ? "none"
+          ? NONE
           : typeof item.value === "boolean"
           ? String(item.value)
           : item.value,

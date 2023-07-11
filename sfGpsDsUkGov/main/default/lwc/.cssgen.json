@@ -10,6 +10,10 @@
     { "from": "@font-face\\{[^}]*\\}", "to": "" },
     { "from": ".js-enabled", "to": "" }
   ],
+  "sfGpsDsUkGovComboboxOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
   "sfGpsDsUkGovCore/core": [{ "from": ":root", "to": ":host" }],
   "sfGpsDsUkGovDatePickerOsN/date-input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
@@ -27,7 +31,40 @@
       "to": "\"https://cdn.jsdelivr.net/npm/govuk-frontend/govuk/assets"
     }
   ],
+  "sfGpsDsUkGovFormAddressTypeaheadOsN/checkboxes": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovFormAddressTypeaheadOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFormFileUploadOsN/file-upload": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFormLookupOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFormStepOsN/back-link": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovFormStepOsN/button": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovFormStepOsN/error-summary": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovFormSummaryListOsN/summary-list": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
   "sfGpsDsUkGovHeader/header": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovInputOsN/checkboxes": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" },
     { "from": ".js-enabled", "to": "" }
   ],
@@ -46,13 +83,22 @@
     { "from": "@font-face\\{[^}]*\\}", "to": "" },
     { "from": ".js-enabled", "to": "" }
   ],
+  "sfGpsDsUkGovSaveForLaterAckOsN/warning-text": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
   "sfGpsDsUkGovSelectOsN/select": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovTextareaOsN/character-count": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
   "sfGpsDsUkGovTextareaOsN/textarea": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
   "sfGpsDsUkGovTimePickerOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovTypeaheadOsN/input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
   "sfGpsDsUkGovWarningText/warning-text": [

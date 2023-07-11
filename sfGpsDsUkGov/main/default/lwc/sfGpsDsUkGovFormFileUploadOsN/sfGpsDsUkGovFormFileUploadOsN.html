@@ -11,7 +11,7 @@
   </template>
   <slot>
     <div class={_containerClasses} aria-labelledby="fileUpload" tabindex="0">
-      <div class="govuk-form-group">
+      <div class={computedFormGroupClassName}>
         <label class={computedLabelClassName} style="width: auto" for="frt">
           {mergedLabel}
           <span if:true={_propSetMap.required} class="sr-only">
@@ -23,16 +23,26 @@
           {mergedHelpText}
         </div>
 
+        <p
+          if:true={_showValidation}
+          class="govuk-error-message"
+          aria-live="assertive"
+          id="errorMessageBlock"
+        >
+          <span class="govuk-visually-hidden">Error:</span>
+          {errorMessage}
+        </p>
+
         <div class="slds-grid omni-file-input">
           <template if:true={scriptHeaderDef.isGuestUser}>
             <lightning-file-upload
-              label=" "
+              label={computedLabelClassName}
               name={jsonDef.lwcId}
               onuploadfinished={handleUploadFinished}
               multiple
               data-omni-input
               record-id={scriptHeaderDef.sOmniScriptId}
-              class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+              class={computedFileUploadError}
             >
             </lightning-file-upload>
           </template>
@@ -49,16 +59,6 @@
             </lightning-file-upload>
           </template>
         </div>
-
-        <p
-          if:true={_showValidation}
-          class="govuk-error-message"
-          aria-live="assertive"
-          id="errorMessageBlock"
-        >
-          <span class="govuk-visually-hidden">Error:</span>
-          {errorMessage}
-        </p>
       </div>
     </div>
   </slot>
