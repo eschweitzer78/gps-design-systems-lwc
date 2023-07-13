@@ -38,6 +38,9 @@
   "sfGpsDsUkGovFormAddressTypeaheadOsN/input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
+  "sfGpsDsUkGovFormDisclosureOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
   "sfGpsDsUkGovFormFileUploadOsN/file-upload": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
