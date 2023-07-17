@@ -75,9 +75,6 @@
   "sfGpsDsUkGovInsetText/inset-text": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
-  "sfGpsDsUkGovLinkList/button": [
-    { "from": "@font-face\\{[^}]*\\}", "to": "" }
-  ],
   "sfGpsDsUkGovMaskedInputOsN/input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
