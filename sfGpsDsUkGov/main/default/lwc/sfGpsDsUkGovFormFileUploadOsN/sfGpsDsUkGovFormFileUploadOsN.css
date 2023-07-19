@@ -8,15 +8,20 @@
   margin-top: 1rem;
 }
 
-.govuk-file-upload {
-  background: #efefef;
-}
-
 .omni-file-input {
+  font-family: "GDS Transport", "Arial", "sans-serif";
+  font-size: 1rem;
+  font-weight: normal;
   --lwc-spacingXxxSmall: 0.5rem;
-  --slds-c-button-neutral-color-background-hover: #f3f2f1;
+  --lwc-colorBorder: #4c2c92;
+  --slds-c-button-neutral-color-background: #1d70b8;
+  --slds-c-button-neutral-color-background-hover: #003078;
+  --slds-g-color-neutral-base-95: #003078;
   --slds-c-button-neutral-color-border: transparent;
   --slds-c-button-neutral-color-border-hover: transparent;
+  --slds-c-button-text-color: #fff;
+  --slds-c-button-neutral-text-color-hover: #fff;
+  --slds-c-button-text-color-hover: #fff;
   --slds-c-button-spacing-block-start: 0.5rem; /* Found by trial & error, due to lightning primitive icon height */
   --slds-c-button-spacing-block-end: 0.5rem;
   --slds-c-button-neutral-spacing-inline-start: 1.375rem;

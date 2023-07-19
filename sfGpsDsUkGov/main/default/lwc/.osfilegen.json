@@ -186,7 +186,8 @@
     "target": "!Os",
     "!.html": {
       "target": "!Os.html",
-      "c-sf-gps-ds-uk-gov-panel": "c-sf-gps-ds-uk-gov-panel-os"
+      "c-sf-gps-ds-uk-gov-panel": "c-sf-gps-ds-uk-gov-panel-os",
+      "c-sf-gps-ds-configuration-error-os": "c-sf-gps-ds-configuration-error-os"
     },
     "!.js": {
       "target": "!Os.js",
