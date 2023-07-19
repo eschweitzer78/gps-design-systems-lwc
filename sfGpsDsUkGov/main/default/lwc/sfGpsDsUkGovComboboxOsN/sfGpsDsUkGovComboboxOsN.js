@@ -7,10 +7,13 @@
 
 import { api } from "lwc";
 import OmnistudioCombobox from "omnistudio/combobox";
+import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovComboboxOsN.html";
 
-export default class SfGpsDsUkGovComboboxOsN extends OmnistudioCombobox {
+export default class SfGpsDsUkGovComboboxOsN extends SfGpsDsUkGovLabelMixin(
+  OmnistudioCombobox
+) {
   @api labelClassName;
 
   render() {
