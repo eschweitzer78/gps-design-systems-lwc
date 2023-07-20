@@ -30,9 +30,7 @@
   }
 }
 .THIS .nsw-header__menu button,
-.THIS .nsw-header__menu a,
-.THIS .nsw-header__search button,
-.THIS .nsw-header__search a {
+.THIS .nsw-header__search button {
   font-size: var(--nsw-font-size-xxs-mobile);
   line-height: var(--nsw-line-height-xxs-mobile);
   font-weight: var(--nsw-font-bold);
@@ -52,31 +50,23 @@
 }
 @media (min-width: 62rem) {
   .THIS .nsw-header__menu button,
-  .THIS .nsw-header__menu a,
-  .THIS .nsw-header__search button,
-  .THIS .nsw-header__search a {
+  .THIS .nsw-header__search button {
     font-size: var(--nsw-font-size-xxs-desktop);
     line-height: var(--nsw-line-height-xxs-desktop);
   }
 }
 .THIS .nsw-header__menu button:hover,
-.THIS .nsw-header__menu a:hover,
-.THIS .nsw-header__search button:hover,
-.THIS .nsw-header__search a:hover {
+.THIS .nsw-header__search button:hover {
   background-color: var(--nsw-text-hover);
 }
 .THIS .nsw-header__menu button:focus,
-.THIS .nsw-header__menu a:focus,
-.THIS .nsw-header__search button:focus,
-.THIS .nsw-header__search a:focus {
+.THIS .nsw-header__search button:focus {
   outline: solid 3px var(--nsw-focus);
   outline-offset: 0;
   outline-offset: 3px;
 }
 .THIS .nsw-header__menu button .nsw-material-icons,
-.THIS .nsw-header__menu a .nsw-material-icons,
-.THIS .nsw-header__search button .nsw-material-icons,
-.THIS .nsw-header__search a .nsw-material-icons {
+.THIS .nsw-header__search button .nsw-material-icons {
   font-size: 1.5rem;
 }
 .THIS .nsw-header__menu {
