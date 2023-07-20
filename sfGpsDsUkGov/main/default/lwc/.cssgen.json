@@ -95,6 +95,10 @@
   "sfGpsDsUkGovSelectOsN/select": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
+  "sfGpsDsUkGovSkipLink/skip-link": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
   "sfGpsDsUkGovTextareaOsN/character-count": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
