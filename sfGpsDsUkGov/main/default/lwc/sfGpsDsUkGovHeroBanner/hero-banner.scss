@@ -1,0 +1,15 @@
+@import "../sfGpsDsUkGovCore/fonts-path.scss";
+
+.app-masthead {
+  $root: &;
+  position: relative;
+  background-repeat: no-repeat;
+
+
+  @media print {
+    padding: 0;
+    border: 0;
+    background-image: none !important; // Needs to override inline definition.
+  }
+
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>GOV.UK Hero Banner</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Clearly identifies the primary purpose or action of the site, service or product."
+        default="Hero banner"
+      />
+      <property
+        name="introText"
+        type="String"
+        label="Intro text"
+        description="Gives additional context when the title alone would be insufficient - in Markdown format."
+        default="The hero reflects the goals or purpose of the site, service or product."
+      />
+      <property
+        name="theme"
+        type="String"
+        label="Theme"
+        description="Theme."
+        default="light"
+        datasource="light,dark"
+      />
+      <property
+        name="linkHeading"
+        type="String"
+        label="Link heading"
+        description="Text used as a heading in the links section."
+      />
+      <property
+        name="links"
+        type="String"
+        label="Links"
+        description="Links in Markdown format."
+      />
+      <property
+        name="moreLink"
+        type="String"
+        label="More link"
+        description="More link in Markdown format."
+      />
+      <property
+        name="showLinks"
+        type="Boolean"
+        label="Show links"
+        description="Show links."
+        default="true"
+      />
+      <property
+        name="logo"
+        type="String"
+        label="Logo source"
+        description="URL of logo image."
+      />
+      <property
+        name="logoAlt"
+        type="String"
+        label="Logo alternative text"
+        description="Text used should there be an issue displaying the logo image."
+      />
+      <property
+        name="backgroundGraphic"
+        type="String"
+        label="Background graphic"
+        description="Background graphic."
+        default="/sfsites/c/resource/sfGpsDsAuVic/images/bggraphiclower.png"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        default="govuk-scope"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
