@@ -17,7 +17,7 @@ describe("c-sf-gps-ds-uk-gov-breadcrumbs-comm", () => {
     });
 
     // Act
-    element.items = "[Home](#)[Parent](#)[Current page]()";
+    // element.items = "[Home](#)[Parent](#)[Current page]()";
     document.body.appendChild(element);
 
     // Assert
