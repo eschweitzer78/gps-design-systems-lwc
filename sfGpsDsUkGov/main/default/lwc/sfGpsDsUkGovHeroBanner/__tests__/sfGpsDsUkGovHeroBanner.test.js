@@ -1,5 +1,5 @@
 import { createElement } from "lwc";
-import SfGpsDsUkGovHeroBanner from "c/SfGpsDsUkGovHeroBanner";
+import SfGpsDsUkGovHeroBanner from "c/sfGpsDsUkGovHeroBanner";
 
 describe("c-sf-gps-ds-uk-gov-hero-banner", () => {
   afterEach(() => {
