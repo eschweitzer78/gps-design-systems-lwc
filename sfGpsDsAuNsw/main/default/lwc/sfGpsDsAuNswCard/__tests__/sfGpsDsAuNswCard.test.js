@@ -42,21 +42,20 @@ describe("c-sf-gps-ds-au-nsw-card", () => {
     expect(div.className).toContain("--headline");
   });
 
-  /* TODO: find out why this is hanging
-  it("is accessible", async () => {
-    const element = createElement(tag, {
-      is: SfGpsDsAuNswCard
-    });
+  /* TODO: find out why this is hanging -- Commented out top level // it("is accessible", async () => { */
 
-    element.cstyle = "light";
-    element.headline = "Headline";
-    element.image =
-      "./someimage";
-    element.imageAlt = "Alt text";
+  //   const element = createElement(tag, {
+  //     is: SfGpsDsAuNswCard
+  //   });
 
-    document.body.appendChild(element);
+  //   element.cstyle = "light";
+  //   element.headline = "Headline";
+  //   element.image =
+  //     "./someimage";
+  //   element.imageAlt = "Alt text";
 
-    await expect(element).toBeAccessible();
-  });
-  */
+  //   document.body.appendChild(element);
+
+  //   await expect(element).toBeAccessible();
+  // });
 });

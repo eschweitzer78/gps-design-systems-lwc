@@ -1,0 +1,35 @@
+@import "../sfGpsDsUkGovCore/fonts-path.scss";
+@import "node_modules/govuk-frontend/govuk/components/button/button";
+
+// Preserve for BLUE version of Get Started Button
+// .govuk-button--inverse {
+//     background-color: #fff;
+//     box-shadow: 0 2px 0 #144e81;
+
+//     &,
+//     &:link,
+//     &:visited,
+//     &:active,
+//     &:hover {
+//       color: #1d70b8;
+//     }
+
+//     // alphagov/govuk_template includes a specific a:link:focus selector
+//     // designed to make unvisited links a slightly darker blue when focussed, so
+//     // we need to override the text colour for that combination of selectors so
+//     // so that unvisited links styled as buttons do not end up with dark blue
+//     // text when focussed.
+//     @include _govuk-compatibility(govuk_template) {
+//       &:link:focus {
+//         color: #1d70b8;
+//       }
+//     }
+
+//     &:hover {
+//       background-color: #e8f1f8;
+
+//       &[disabled] {
+//         background-color: #fff;
+//       }
+//     }
+// }
