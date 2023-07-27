@@ -50,6 +50,9 @@ $RECYCLE.BIN/
 # non repo temp code
 sfGpsTemp/*
 
+# non repo UkGovFull
+sfGpsDsUkGovFull/*
+
 # auto-generated LWCs for Omniscript/Omnistudio
 **/lwc/*Os/**
 
