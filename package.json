@@ -16,7 +16,8 @@
     "precommit": "lint-staged",
     "osfilegen": "node osfilegen.js",
     "cssgen": "node cssgen.js",
-    "prep": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss"
+    "prep-ci": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss;mkdir -p sfGpsDsUkGovFull",
+    "prep-pa": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss;mkdir -p sfGpsDsUkGovFull;cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull"
   },
   "lint-staged": {
     "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [

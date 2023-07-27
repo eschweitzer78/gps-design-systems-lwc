@@ -97,6 +97,19 @@
           "versionNumber": "1.7.3.LATEST"
         }
       ]
+    },
+    {
+      "path": "sfGpsDsUkGovFull",
+      "package": "Salesforce Global Public Sector GOV.UK Design System (Full)",
+      "versionName": "2023.06.16.2330",
+      "versionNumber": "0.8.0.NEXT",
+      "default": false,
+      "definitionFile": "config/project-deployment-def.json",
+      "dependencies": [
+        {
+          "package": "omnistudio 242.11"
+        }
+      ]
     }
   ],
   "name": "au-design-systems-lwc",
@@ -283,6 +296,8 @@
     "Salesforce Global Public Sector AU NSW Design System@1.8.2-9": "04t5j000000pRlRAAU",
     "Salesforce Global Public Sector GOV.UK Design System@0.8.1-9": "04t5j000000pRlWAAU",
     "Salesforce Global Public Sector GOV.UK Design System@0.8.1-14": "04t5j000000pVuJAAU",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)": "0Ho5j000000KyzYCAS",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@0.8.0-1": "04t5j000000paq9AAA",
     "Salesforce Global Public Sector GOV.UK Design System@0.8.1-16": "04t5j000000pa9oAAA"
   }
 }

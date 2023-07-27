@@ -49,7 +49,7 @@ jobs:
 
       # Prep
       - name: "Prepare repo"
-        run: npm run prep
+        run: npm run prep-pa
 
         # Generate css from scss
       - name: "Automatically generate css"
@@ -169,6 +169,24 @@ jobs:
           fi
           exit $status
 
+      - name: "Create package version sfGpsDsUkGovFull"
+        id: createPackageVersion-sfGpsDsUkGovFull
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx force:package:version:create -d sfGpsDsUkGovFull -x -w 20 -f config/project-scratch-def.json --codecoverage --json)
+          echo "force:package:version:create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sfdx force:package:version:create failed"
+          fi
+          exit $status
+
       # Wait for package replication
       - name: "Wait for package replication"
         uses: maddox/actions/sleep@master
@@ -264,6 +282,15 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGov\""
           newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGov\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Update sfGpsDsUkGovFull force:force:package:install link in readme
+      - name: "Update package sfGpsDsUkGov install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsUkGovFull.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGovFull\""
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGovFull\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
