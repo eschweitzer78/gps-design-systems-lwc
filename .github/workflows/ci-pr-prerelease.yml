@@ -90,7 +90,7 @@ jobs:
 
       # Prep
       - name: "Prepare repo"
-        run: npm run prep
+        run: npm run prep-ci
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"

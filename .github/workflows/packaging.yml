@@ -56,7 +56,7 @@ jobs:
 
       # Prep
       - name: "Prepare repo"
-        run: npm run prep
+        run: npm run prep-pa
 
         # Generate css from scss
       - name: "Automatically generate css"
