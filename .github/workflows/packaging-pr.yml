@@ -284,6 +284,15 @@ jobs:
           newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGov\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
+      # Update sfGpsDsUkGovFull force:force:package:install link in readme
+      - name: "Update package sfGpsDsUkGov install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsUkGovFull.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGovFull\""
+          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGovFull\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
       - name: "Run prettier"
         run: |

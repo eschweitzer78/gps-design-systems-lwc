@@ -88,6 +88,10 @@ jobs:
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci
 
+      # Prep
+      - name: "Prepare repo"
+        run: npm run prep
+
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
         uses: pmd/pmd-github-action@v1.4.1
@@ -196,11 +200,8 @@ jobs:
       #    npm run postinstall
       #    cd ../..
       #    node ./configure-omnistudio-metadata scratch-org
-      # Prep
-      - name: "Prepare repo"
-        run: npm run prep
 
-        # Generate css from scss
+      # Generate css from scss
       - name: "Automatically generate css"
         run: npm run cssgen
 
