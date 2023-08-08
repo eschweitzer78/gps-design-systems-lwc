@@ -85,6 +85,9 @@
   "sfGpsDsUkGovMaskedInputOsN/input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
+  "sfGpsDsUkGovMultiInputOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
   "sfGpsDsUkGovNotificationBanner/notification-banner": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],

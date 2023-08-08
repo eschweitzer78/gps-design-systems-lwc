@@ -9,11 +9,10 @@ import { api } from "lwc";
 import OmniscriptInput from "omnistudio/input";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
-import tmpl from "./sfGpsDsUkGovInputOsN.html";
+import tmpl from "./sfGpsDsUkGovMultiInputOsN.html";
 
-export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptInput,
-  "large"
+export default class SfGpsDsUkGovMultiInputOsN extends SfGpsDsUkGovLabelMixin(
+  OmniscriptInput
 ) {
   render() {
     return tmpl;

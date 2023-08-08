@@ -95,4 +95,20 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
       this.value = event.target.value;
     }
   }
+
+  // Introduce Error Summary Container
+  @api getErrorDetails() {
+    let elt = this.template.querySelector(".govuk-form-group");
+
+    return elt
+      ? {
+          id: elt.id,
+          errorMessage: this.errorMessage
+        }
+      : null;
+  }
+
+  @api scrollTo() {
+    console.log("scrollTo called v2!");
+  }
 }

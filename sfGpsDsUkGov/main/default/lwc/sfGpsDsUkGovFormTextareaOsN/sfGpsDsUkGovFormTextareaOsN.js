@@ -11,11 +11,37 @@
       icon-name="utility:info" not supported
 */
 
+import { api } from "lwc";
 import SfGpsDsFormTextareaOsN from "c/sfGpsDsFormTextareaOsN";
 import tmpl from "./sfGpsDsUkGovFormTextareaOsN.html";
 
 export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsFormTextareaOsN {
   render() {
     return tmpl;
+  }
+
+  @api getErrorDetails() {
+    let elt = this.template.querySelector("[data-omni-input]");
+
+    if (elt) {
+      if (elt.getErrorDetails) {
+        return elt.getErrorDetails();
+      }
+
+      console.log("child does not have getErrorDetails api");
+    }
+
+    console.log("child not found");
+    return null;
+  }
+
+  @api scrollTo() {
+    console.log("scrollTo called!");
+    const input = this.template.querySelector("[data-omni-input]");
+    input.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest"
+    });
   }
 }
