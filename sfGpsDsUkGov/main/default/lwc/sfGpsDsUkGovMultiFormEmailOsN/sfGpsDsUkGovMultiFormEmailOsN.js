@@ -12,12 +12,38 @@
 */
 
 import { api } from "lwc";
-import OmniscriptText from "omnistudio/omniscriptText";
+import OmniscriptEmail from "omnistudio/omniscriptEmail";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
-import tmpl from "./sfGpsDsUkGovFormTextOsN.html";
-export default class SfGpsDsUkGovFormTextOsN extends OmniscriptText {
+import tmpl from "./sfGpsDsUkGovMultiFormEmailOsN.html";
+
+export default class SfGpsDsUkGovMultiFormEmailOsN extends OmniscriptEmail {
   render() {
     return tmpl;
+  }
+
+  handleBlur(event) {
+    this.applyCallResp(event.target.value);
+  }
+
+  applyCallResp(e, t = false, i = false) {
+    /* TODO: investigate: for some reason super.applyCallResp(e, t, i) does not set elementValue */
+
+    if (i) {
+      this.setCustomValidation(e);
+    } else {
+      e = this.treatResp(e);
+
+      if (this.lodashUtil.isEqual(this.elementValue, e)) {
+        return;
+      }
+
+      this.setElementValue(e, t, i);
+      this.dispatchOmniEventUtil(
+        this,
+        this.createAggregateNode(),
+        "omniaggregate"
+      );
+    }
   }
 
   get mergedLabel() {
@@ -26,10 +52,6 @@ export default class SfGpsDsUkGovFormTextOsN extends OmniscriptText {
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
-  }
-
-  get mergedPlaceholder() {
-    return omniGetMergedField(this, this._placeholder);
   }
 
   @api getErrorDetails() {

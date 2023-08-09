@@ -12,10 +12,11 @@
 */
 
 import { api } from "lwc";
-import OmniscriptText from "omnistudio/omniscriptText";
+import OmniscriptPassword from "omnistudio/omniscriptPassword";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
-import tmpl from "./sfGpsDsUkGovFormTextOsN.html";
-export default class SfGpsDsUkGovFormTextOsN extends OmniscriptText {
+import tmpl from "./sfGpsDsUkGovMultiFormPasswordOsN.html";
+
+export default class SfGpsDsUkGovMultiFormPasswordOsN extends OmniscriptPassword {
   render() {
     return tmpl;
   }
@@ -26,10 +27,6 @@ export default class SfGpsDsUkGovFormTextOsN extends OmniscriptText {
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
-  }
-
-  get mergedPlaceholder() {
-    return omniGetMergedField(this, this._placeholder);
   }
 
   @api getErrorDetails() {

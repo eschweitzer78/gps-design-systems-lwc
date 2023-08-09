@@ -14,8 +14,8 @@
 import { api } from "lwc";
 import OmniscriptText from "omnistudio/omniscriptText";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
-import tmpl from "./sfGpsDsUkGovFormTextOsN.html";
-export default class SfGpsDsUkGovFormTextOsN extends OmniscriptText {
+import tmpl from "./sfGpsDsUkGovMultiFormTextOsN.html";
+export default class SfGpsDsUkGovMultiFormTextOsN extends OmniscriptText {
   render() {
     return tmpl;
   }

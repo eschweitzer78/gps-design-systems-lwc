@@ -85,6 +85,16 @@
   "sfGpsDsUkGovMaskedInputOsN/input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
+  "sfGpsDsUkGovMaskedMultiInputOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovMultiInputOsN/checkboxes": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovMultiInputOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
   "sfGpsDsUkGovNotificationBanner/notification-banner": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
