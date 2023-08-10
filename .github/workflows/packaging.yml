@@ -191,6 +191,7 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx force:package:version:create failed"
+              ls -lR sfGpsDsUkGovFull/main/default/lwc
           fi
           exit $status
 
