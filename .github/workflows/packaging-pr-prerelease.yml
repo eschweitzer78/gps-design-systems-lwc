@@ -49,7 +49,7 @@ jobs:
 
       # Prep
       - name: "Prepare repo"
-        run: npm run prep-pa
+        run: npm run prep
 
         # Generate css from scss
       - name: "Automatically generate css"
@@ -58,6 +58,10 @@ jobs:
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
         run: npm run osfilegen
+
+      # Copy UkGovFull
+      - name: "Copy UkGovFull"
+        run: npm run ukgov-copy
 
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"
