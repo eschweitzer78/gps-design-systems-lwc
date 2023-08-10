@@ -11,6 +11,8 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovInputOsN.html";
 
+const ERROR_ID_SELECTOR = "[omni-input]";
+
 export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
   OmniscriptInput,
   "large"
@@ -54,7 +56,15 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
   }
 
   @api getErrorDetails() {
-    let elt = this.template.querySelector(".govuk-form-group");
+    let elt = this.template.querySelector(ERROR_ID_SELECTOR);
+
+    if (this.isCustomLwc) {
+      if (elt.getErrorDetails) {
+        return elt.getErrorDetails();
+      }
+      console.log("child input does not have getErrorDetails");
+      return null;
+    }
 
     return elt
       ? {
@@ -62,9 +72,5 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
           errorMessage: this.errorMessage
         }
       : null;
-  }
-
-  @api scrollTo() {
-    console.log("scrollTo called v2!");
   }
 }

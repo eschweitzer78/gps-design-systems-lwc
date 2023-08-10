@@ -1,6 +1,10 @@
 <template>
   <template if:false={isCustomLwc}>
-    <div class={computedFormGroupClassName}>
+    <div
+      id="sf-gps-ds-uk-gov-input-form-group"
+      omni-input
+      class={computedFormGroupClassName}
+    >
       <div if:true={labelVisible} data-label="true">
         <h1 class="govuk-label-wrapper">
           <label
@@ -317,6 +321,7 @@
 
   <c-sf-gps-ds-uk-gov-date-picker-os-n
     if:true={isDate}
+    omni-input
     mask={mask}
     placeholder={placeholder}
     theme={theme}
@@ -356,6 +361,7 @@
 
   <c-sf-gps-ds-uk-gov-time-picker-os-n
     if:true={isTime}
+    omni-input
     placeholder={placeholder}
     theme={theme}
     label={label}
@@ -388,6 +394,7 @@
 
   <c-sf-gps-ds-uk-gov-datetime-picker-os-n
     if:true={isDateTime}
+    omni-input
     name={name}
     label={label}
     theme={theme}
