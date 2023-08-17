@@ -42,12 +42,12 @@
 
 @font-face {
   font-family: Gotham;
-  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fontsGotham-Bold_Web.woff2)
+  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Bold_Web.woff2)
       format("woff2"),
-    url(/sfsites/c/resource/sfGpsDsAuNswS/fontsGotham-Bold_Web.woff)
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Bold_Web.woff)
       format("woff"),
-    url(/resource/sfGpsDsAuNswS/fontsGotham-Bold_Web.woff2) format("woff2"),
-    url(/resource/sfGpsDsAuNswS/fontsGotham-Bold_Web.woff) format("woff");
+    url(/resource/sfGpsDsAuNswS/fonts/Gotham-Bold_Web.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuNswS/fonts/Gotham-Bold_Web.woff) format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

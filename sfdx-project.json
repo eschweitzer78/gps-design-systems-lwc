@@ -33,8 +33,8 @@
     {
       "path": "sfGpsDsAuNswS",
       "package": "Salesforce Global Public Sector AU NSW Service Design System",
-      "versionName": "2023.06.16.2330",
-      "versionNumber": "1.8.0.NEXT",
+      "versionName": "2023.08.17.2330",
+      "versionNumber": "1.8.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -43,7 +43,7 @@
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.7.3.LATEST"
+          "versionNumber": "1.8.2.LATEST"
         }
       ]
     },
