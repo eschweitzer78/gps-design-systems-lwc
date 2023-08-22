@@ -11,7 +11,8 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovInputOsN.html";
 
-const ERROR_ID_SELECTOR = "[omni-input]";
+const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
+const DEBUG = false;
 
 export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
   OmniscriptInput,
@@ -56,21 +57,37 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
   }
 
   @api getErrorDetails() {
-    let elt = this.template.querySelector(ERROR_ID_SELECTOR);
+    let rv = null;
+    if (DEBUG) console.log("> sfGpsDsUkGovInputOsN.getErrorDetails");
 
-    if (this.isCustomLwc) {
-      if (elt.getErrorDetails) {
-        return elt.getErrorDetails();
+    try {
+      let elt = this.template.querySelector(ERROR_ID_SELECTOR);
+
+      if (elt == null) {
+        if (DEBUG) console.log("sfGpsDsUkGovInputOsN: cannot find child input");
+      } else if (this.isCustomLwc) {
+        if (elt.getErrorDetails) {
+          rv = elt.getErrorDetails();
+        } else {
+          if (DEBUG)
+            console.log(
+              "sfGpsDsUkGovInputOsN: child input does not have getErrorDetails"
+            );
+        }
+      } else {
+        rv = elt
+          ? {
+              id: elt.id,
+              errorMessage: this.errorMessage
+            }
+          : null;
       }
-      console.log("child input does not have getErrorDetails");
-      return null;
+    } catch (e) {
+      if (DEBUG) console.log("sfGpsDsUkGovInputOsN: exception ", e);
     }
 
-    return elt
-      ? {
-          id: elt.id,
-          errorMessage: this.errorMessage
-        }
-      : null;
+    if (DEBUG)
+      console.log("< sfGpsDsUkGovInputOsN.getErrorDetails", JSON.stringify(rv));
+    return rv;
   }
 }

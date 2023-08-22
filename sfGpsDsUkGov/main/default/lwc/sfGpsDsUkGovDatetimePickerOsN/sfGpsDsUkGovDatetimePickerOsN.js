@@ -10,8 +10,10 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovDatetimePickerOsN.html";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
-const timeQueryClass = "c-sf-gps-ds-uk-gov-time-picker-os-n";
-const dateQueryClass = "c-sf-gps-ds-uk-gov-date-picker-os-n";
+const TIME_SELECTOR = "c-sf-gps-ds-uk-gov-time-picker-os-n";
+const DATE_SELECTOR = "c-sf-gps-ds-uk-gov-date-picker-os-n";
+// const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
+// const DEBUG = false;
 
 const I18N = {
   timeLabel: "Time"
@@ -34,7 +36,7 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
 
   get timeEl() {
     if (!this._timeEl) {
-      this._timeEl = this.template.querySelector(timeQueryClass);
+      this._timeEl = this.template.querySelector(TIME_SELECTOR);
     }
 
     return this._timeEl;
@@ -42,7 +44,7 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
 
   get dateEl() {
     if (!this._dateEl) {
-      this._dateEl = this.template.querySelector(dateQueryClass);
+      this._dateEl = this.template.querySelector(DATE_SELECTOR);
     }
 
     return this._dateEl;
@@ -53,7 +55,7 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
   }
 
   setCustomValidity(e) {
-    this.template.querySelector(dateQueryClass).setCustomValidity(e);
-    this.template.querySelector(timeQueryClass).setCustomValidity(e);
+    this.template.querySelector(DATE_SELECTOR).setCustomValidity(e);
+    this.template.querySelector(TIME_SELECTOR).setCustomValidity(e);
   }
 }

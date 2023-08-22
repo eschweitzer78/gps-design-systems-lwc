@@ -1,5 +1,9 @@
 <template>
-  <div class={computedFormGroupClassName}>
+  <div
+    id="sf-gps-ds-uk-gov-datetime-picker-form-group"
+    data-sf-gps-uk-gov-error-input
+    class={computedFormGroupClassName}
+  >
     <label if:true={label} class={computedLabelClassName} style="width: auto">
       {label}
       <span if:true={required} class="sr-only"> ({requiredLabel})</span>
@@ -36,7 +40,7 @@
           message-when-bad-input={messageWhenBadInput}
           prev-month-label={prevMonthLabel}
           next-month-label={nextMonthLabel}
-          pick-yea-label={pickYearLabel}
+          pick-year-label={pickYearLabel}
           today-label={todayLabel}
           required-label={requiredLabel}
           hide-icon={hideIcon}
@@ -52,7 +56,7 @@
           placeholder={timePlaceholder}
           theme="sfgpsds"
           label={timeLabel}
-          ari-label={timeAriaLabel}
+          aria-label={timeAriaLabel}
           name={timeName}
           icon-url={iconUrl}
           format={timeFormat}
@@ -70,7 +74,7 @@
           interval={interval}
           output-type="date"
           message-when-bad-input={messageWhenBadInput}
-          message-whe-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-underflow={messageWhenRangeUnderflow}
           message-when-range-overflow={messageWhenRangeOverflow}
           hide-icon={hideIcon}
           styles={styles}

@@ -11,6 +11,9 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovTimePickerOsN.html";
 
+const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
+const DEBUG = false;
+
 export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
   SfGpsDsTimePickerOsN,
   "large"
@@ -48,5 +51,34 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
 
   connectedCallback() {
     super.connectedCallback();
+  }
+
+  @api
+  getErrorDetails() {
+    let rv = null;
+
+    let elt = this.template.querySelector(ERROR_ID_SELECTOR);
+
+    if (elt == null) {
+      if (DEBUG)
+        console.log("sfGpsDsUkGovTimePicker: cannot find input element");
+    } else if (this.isCustomLwc) {
+      if (elt.getErrorDetails) {
+        rv = elt.getErrorDetails();
+      } else {
+        if (DEBUG)
+          console.log(
+            "sfGpsDsUkGovTimePicker: child input does not have getErrorDetails"
+          );
+      }
+    }
+    rv = elt
+      ? {
+          id: elt.id,
+          errorMessage: this.errorMessage
+        }
+      : null;
+
+    return rv;
   }
 }
