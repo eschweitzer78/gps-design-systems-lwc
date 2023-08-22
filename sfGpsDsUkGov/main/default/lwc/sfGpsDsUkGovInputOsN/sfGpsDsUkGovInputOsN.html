@@ -2,7 +2,7 @@
   <template if:false={isCustomLwc}>
     <div
       id="sf-gps-ds-uk-gov-input-form-group"
-      omni-input
+      data-sf-gps-uk-gov-error-input
       class={computedFormGroupClassName}
     >
       <div if:true={labelVisible} data-label="true">
@@ -321,7 +321,7 @@
 
   <c-sf-gps-ds-uk-gov-date-picker-os-n
     if:true={isDate}
-    omni-input
+    data-sf-gps-uk-gov-error-input
     mask={mask}
     placeholder={placeholder}
     theme={theme}
@@ -361,7 +361,7 @@
 
   <c-sf-gps-ds-uk-gov-time-picker-os-n
     if:true={isTime}
-    omni-input
+    data-sf-gps-uk-gov-error-input
     placeholder={placeholder}
     theme={theme}
     label={label}
@@ -394,7 +394,7 @@
 
   <c-sf-gps-ds-uk-gov-datetime-picker-os-n
     if:true={isDateTime}
-    omni-input
+    data-sf-gps-uk-gov-error-input
     name={name}
     label={label}
     theme={theme}
