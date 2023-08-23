@@ -78,7 +78,7 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
         rv = elt
           ? {
               id: elt.id,
-              errorMessage: this.errorMessage
+              errorMessage: this._errorMessage
             }
           : null;
       }
@@ -89,5 +89,9 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
     if (DEBUG)
       console.log("< sfGpsDsUkGovInputOsN.getErrorDetails", JSON.stringify(rv));
     return rv;
+  }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
   }
 }

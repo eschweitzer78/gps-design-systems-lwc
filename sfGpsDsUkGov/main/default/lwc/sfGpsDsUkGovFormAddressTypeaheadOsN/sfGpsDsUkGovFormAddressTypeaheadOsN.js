@@ -445,7 +445,7 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
 
           rv = false;
           this.isValid = false;
-          this.errorMessage = this._messageWhenValueMissing;
+          this._errorMessage = this._messageWhenValueMissing;
         }
 
         return rv;
@@ -501,5 +501,9 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
+  }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
   }
 }

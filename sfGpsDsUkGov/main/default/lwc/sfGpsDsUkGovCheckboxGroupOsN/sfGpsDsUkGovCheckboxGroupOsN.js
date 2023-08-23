@@ -32,6 +32,10 @@ export default class SfGpsDsUkGovCheckboxGroupOsN extends SfGpsDsUkGovLabelMixin
   }
 
   get isRealError() {
-    return this.isError && this.errorMessage;
+    return this.isError && this._errorMessage;
+  }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
   }
 }

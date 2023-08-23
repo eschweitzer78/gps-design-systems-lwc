@@ -47,4 +47,8 @@ export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
       errorMessageBlock: this.isError
     });
   }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
+  }
 }

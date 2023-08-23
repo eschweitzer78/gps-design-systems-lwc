@@ -75,10 +75,14 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
     rv = elt
       ? {
           id: elt.id,
-          errorMessage: this.errorMessage
+          errorMessage: this._errorMessage
         }
       : null;
 
     return rv;
+  }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
   }
 }
