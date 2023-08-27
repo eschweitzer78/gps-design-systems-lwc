@@ -1,7 +1,15 @@
 <template>
-  <div class="">
-    <fieldset class="" aria-invalid={computedAriaInvalid}>
-      <legend class={computedLegendClassName}>
+  <div>
+    <fieldset
+      aria-required={required}
+      aria-labelledby="sf-sgps-ds-au-nsw-s-radio-group-legend"
+      aria-invalid={computedAriaInvalid}
+      aria-describedby={computedAriaDescribedBy}
+    >
+      <legend
+        id="sf-sgps-ds-au-nsw-s-radio-group-legend"
+        class={computedLegendClassName}
+      >
         <span>
           {label}
           <span if:true={required}> ({requiredLabel})</span>
