@@ -1,7 +1,14 @@
 <template>
   <div class="nsw-form__group">
-    <fieldset class="nsw-form__fieldset">
-      <legend>
+    <fieldset
+      class="nsw-form__fieldset"
+      role="radiogroup"
+      aria-required={required}
+      aria-labelledby="sf-gps-au-nsw-radio-group-legend"
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={computedAriaInvalid}
+    >
+      <legend id="sf-gps-au-nsw-radio-group-legend">
         <span class={computedLegendClassName}>
           {label}
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
