@@ -58,12 +58,12 @@ export default class SfGpsDsUkGovMultiInputOsN extends SfGpsDsUkGovLabelMixin(
     return elt
       ? {
           id: elt.id,
-          errorMessage: this.errorMessage
+          errorMessage: this._errorMessage
         }
       : null;
   }
 
-  @api scrollTo() {
-    console.log("scrollTo called v2!");
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
   }
 }

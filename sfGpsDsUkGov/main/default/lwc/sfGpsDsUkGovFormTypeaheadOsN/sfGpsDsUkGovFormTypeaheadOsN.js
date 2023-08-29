@@ -21,4 +21,8 @@ export default class sfGpsDsUkGovFormTypeaheadOsN extends OmniscriptTypeahead {
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
   }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
+  }
 }

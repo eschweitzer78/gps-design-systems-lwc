@@ -40,4 +40,8 @@ export default class SfGpsDsUkGovComboboxOsN extends SfGpsDsUkGovLabelMixin(
       [this.labelClassName]: this.labelClassName
     });
   }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
+  }
 }

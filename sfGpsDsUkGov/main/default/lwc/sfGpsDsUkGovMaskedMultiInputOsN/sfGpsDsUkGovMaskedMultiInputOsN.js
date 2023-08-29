@@ -32,4 +32,8 @@ export default class SfGpsDsUkGovMaskedMultiInputOsN extends SfGpsDsUkGovLabelMi
       "govuk-input--error": this.isError
     });
   }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
+  }
 }
