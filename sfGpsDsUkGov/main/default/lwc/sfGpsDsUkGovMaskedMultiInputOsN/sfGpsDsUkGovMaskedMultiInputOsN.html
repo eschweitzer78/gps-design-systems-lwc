@@ -2,17 +2,17 @@
   <div if:false={isCustomLwc} class={errorClass}>
     <div class={computedFormGroupClassName}>
       <div if:true={labelVisible} data-label="true">
-        <h1 class="govuk-label-wrapper">
-          <label
-            class={computedMultiLabelClassName}
-            style="width: auto"
-            for={inputId}
-          >
-            {label}
-            <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
-          </label>
-          <slot name="label"> </slot>
-        </h1>
+        <!-- <h1 class="govuk-label-wrapper"> -->
+        <label
+          class={computedMultiLabelClassName}
+          style="width: auto"
+          for={inputId}
+        >
+          {label}
+          <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
+        </label>
+        <slot name="label"> </slot>
+        <!-- </h1> -->
       </div>
 
       <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">

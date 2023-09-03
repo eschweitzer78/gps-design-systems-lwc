@@ -5,7 +5,7 @@
 A collection of Salesforce Lightning Web Components (LWCs) for selected Governments' Design Systems. The collection
 covers Salesforce Experience Cloud as well as Salesforce Communities for Public Sector Solutions (Omnistudio), and may be extended in the future to help with Salesforce Flows provided they're surfaced via an Experience Cloud community.
 
-Note that at this stage there is a dependency on Omnistudio 242.
+Note that at this stage there is a dependency on Omnistudio **242.11 (at the minimum)**.
 
 Do read our [change log](./CHANGELOG.md) if you plan on updating already installed packages in order to check for changes in behaviour or configuration changes.
 
@@ -50,6 +50,12 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000lMgFAAU">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v1.8.3.3 on 28/08/2023).
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0tnAAA">this link</a> to install the sfGpsDsAuVic unlocked package in your production org (v1.8.0.2 on 16/06/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000HzyGAAS
+   " title="sfGpsDsUkGov">this link</a> to install the sfGpsDsUkGov unlocked package in your org.
+
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=0055j000005KB7aAAG
+   " title="sfGpsDsUkGovFull">this link</a> to install the full sfGpsDsUkGov unlocked package in your org (including sfGpsDs).
 
 ## Support, security, contributions and code of conduct
 
