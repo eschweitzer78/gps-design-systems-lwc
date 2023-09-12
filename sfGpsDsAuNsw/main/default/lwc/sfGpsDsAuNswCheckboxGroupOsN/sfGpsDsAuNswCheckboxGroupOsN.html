@@ -13,6 +13,7 @@
           if:true={isRealError}
           class={computedHelperClassName}
           aria-live="assertive"
+          role="alert"
           id="errorMessageBlock"
         >
           <span
@@ -27,31 +28,32 @@
       </legend>
 
       <div>
-        <template for:each={internalOpts} for:item="e" for:index="index">
+        <template for:each={internalOpts} for:item="option" for:index="index">
           <input
-            key={e.id}
+            key={option.id}
             class="nsw-form__checkbox-input"
             type="checkbox"
             required={required}
             disabled={disabled}
-            id={e.id}
+            id={option.id}
             data-index={index}
             tabindex={tabIndex}
             name={name}
-            checked={e.selected}
-            value={e.value}
-            aria-invalid={isAriaInvalid}
+            checked={option.selected}
+            value={option.value}
+            aria-invalid={isError}
             aria-describedby={computedAriaDescribedBy}
             onfocus={handleFocus}
             onchange={onchangevalue}
+            onkeydown={handleKeyDownEvent}
           />
           <label
-            key={e.id}
+            key={option.id}
             class="nsw-form__checkbox-label"
             data-index={index}
-            for={e.id}
+            for={option.id}
           >
-            {e.label}
+            {option.label}
           </label>
         </template>
       </div>

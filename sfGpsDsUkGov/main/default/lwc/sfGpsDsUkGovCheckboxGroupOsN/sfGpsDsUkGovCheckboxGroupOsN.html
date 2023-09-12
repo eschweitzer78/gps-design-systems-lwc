@@ -18,6 +18,7 @@
         if:true={isRealError}
         class="govuk-error-message"
         aria-live="assertive"
+        role="alert"
         id="errorMessageBlock"
       >
         <span class="govuk-visually-hidden">{errorSrLabel}</span>
@@ -25,30 +26,31 @@
       </p>
 
       <div class="govuk-checkboxes">
-        <template for:each={internalOpts} for:item="e" for:index="index">
-          <div class="govuk-checkboxes__item" key={e.id}>
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <div class="govuk-checkboxes__item" key={option.id}>
             <input
               class="govuk-checkboxes__input"
               type="checkbox"
               required={required}
               disabled={disabled}
-              id={e.id}
+              id={option.id}
               data-index={index}
               tabindex={tabIndex}
               name={name}
-              checked={e.selected}
-              value={e.value}
-              aria-invalid={isAriaInvalid}
+              checked={option.selected}
+              value={option.value}
+              aria-invalid={isError}
               aria-describedby={computedAriaDescribedBy}
               onfocus={handleFocus}
               onchange={onchangevalue}
+              onkeydown={handleKeyDownEvent}
             />
             <label
               class="govuk-label govuk-checkboxes__label"
               data-index={index}
-              for={e.id}
+              for={option.id}
             >
-              {e.label}
+              {option.label}
             </label>
           </div>
         </template>
