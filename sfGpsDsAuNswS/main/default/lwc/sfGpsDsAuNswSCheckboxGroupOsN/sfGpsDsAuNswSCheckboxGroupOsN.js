@@ -14,10 +14,6 @@ export default class SfGpsDsAuNswNCheckboxGroupOsN extends OmnistudioCheckboxGro
     return tmpl;
   }
 
-  get computedAriaInvalid() {
-    return this.isError;
-  }
-
   get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
