@@ -265,8 +265,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDs\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDs\""
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDs\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDs\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsAuNsw force:force:package:install link in readme
@@ -274,8 +274,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNsw\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNsw\""
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNsw\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNsw\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsAuNswS force:force:package:install link in readme
@@ -283,8 +283,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswS\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswS\""
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswS\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswS\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsAuVic force:force:package:install link in readme
@@ -292,8 +292,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuVic\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuVic\""
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuVic\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuVic\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsUkGov force:force:package:install link in readme
@@ -301,8 +301,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGov\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGov\""
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGov\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGov\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsUkGovFull force:force:package:install link in readme
@@ -310,8 +310,8 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsUkGovFull.outputs.packageVersionId }}"
-          packageLinkRegex="https:\/\/login\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGovFull\""
-          newPackageLink="https://login.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGovFull\""
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGovFull\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGovFull\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
