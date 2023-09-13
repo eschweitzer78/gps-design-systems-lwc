@@ -1,0 +1,46 @@
+.slds-input {
+  cursor: pointer;
+}
+
+.slds-listbox__option-text_entity {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.125rem;
+  overflow: hidden;
+}
+
+label.slds-form-element__label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.slds-dropdown_fluid {
+  min-width: auto;
+}
+
+.slds-listbox_selection-group {
+  height: auto;
+}
+
+.dropdown-container {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.slds-listbox__flex {
+  display: flex;
+}
+
+.slds-listbox__flex .slds-listbox-item {
+  overflow: hidden;
+}
+
+.slds-listbox__flex .slds-pill__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
