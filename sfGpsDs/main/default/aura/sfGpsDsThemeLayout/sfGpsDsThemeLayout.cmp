@@ -16,6 +16,12 @@
     required="false"
     default="true"
   />
+  <aura:attribute
+    name="noWidgetMargin"
+    type="Boolean"
+    required="false"
+    default="false"
+  />
   <aura:attribute name="navId" type="String" required="false" default="nav" />
   <aura:attribute
     name="contentId"
@@ -24,7 +30,7 @@
     default="content"
   />
 
-  <div>
+  <div class="{! v.noWidgetMargin ? 'sf-gps-ds-widget--no-margin' : '' }">
     <div class="sf-gps-ds-header">
       <h1 id="sf-gps-ds-header-title" class="sr-only">Header</h1>
 

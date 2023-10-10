@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Footer</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration Procedure."
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Input JSON"
+        description="JSON formatted input parameters for the Integration Procedure."
+        default="{}"
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Options JSON"
+        description="JSON formatted options for the Integration Procedure."
+        default="{}"
+      />
+      <property name="column1Content" type="String" label="Column 1 content" />
+      <property name="column2Content" type="String" label="Column 2 content" />
+      <property name="column3Content" type="String" label="Column 3 content" />
+      <property
+        name="copyrightMention"
+        type="String"
+        label="Copyright mention"
+        description="Copyright text in Markdown format"
+        default="Copyright © 2023"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

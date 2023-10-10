@@ -1,0 +1,12 @@
+<template>
+  <c-sf-gps-ds-au-vic-description-list
+    if:false={_sfGpsErrors}
+    list={_list}
+    divider={divider}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-description-list>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

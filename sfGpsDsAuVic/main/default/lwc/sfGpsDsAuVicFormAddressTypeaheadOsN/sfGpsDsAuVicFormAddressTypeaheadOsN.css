@@ -1,0 +1,53 @@
+@import "c/sfGpsDsAuVicFormCssOs";
+@import "c/sfGpsDsAuVicColCssOs";
+@import "c/sfGpsDsAuVicRowCssOs";
+
+.rpl-col.street,
+.rpl-col.suburb,
+.rpl-col.state,
+.rpl-col.postalcode,
+.rpl-col.country {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.has-text-link {
+  cursor: pointer;
+}
+
+.label-link {
+  text-decoration: underline;
+  color: #2e5299;
+}
+
+.has-text-link {
+  color: #3273dc !important;
+}
+
+.address-container input {
+  text-transform: capitalize;
+}
+
+.sfgpsds-hide {
+  display: none;
+}
+
+.sfgpsds-label__group {
+  display: flex;
+}
+
+.sfgpsds-label__group_label_container {
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+}
+.sfgpsds-label__group_label {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.sfgpsds-label__group_action {
+  min-width: 0;
+}

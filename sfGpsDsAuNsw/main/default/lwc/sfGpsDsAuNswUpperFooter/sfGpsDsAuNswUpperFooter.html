@@ -1,0 +1,38 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <div class="nsw-container">
+      <template if:true={_items}>
+        <template for:each={_items} for:item="navItem">
+          <div key={navItem.index} class="nsw-footer__group">
+            <div class="nsw-footer__heading">
+              <template if:true={navItem.url}>
+                <a
+                  href={navItem.url}
+                  data-ndx={navItem.index}
+                  onclick={handleClick}
+                >
+                  {navItem.text}
+                </a>
+              </template>
+              <template if:false={navItem.url}>{navItem.text}</template>
+            </div>
+
+            <ul if:true={navItem.subNav}>
+              <template for:each={navItem.subNav} for:item="subNavItem">
+                <li key={subNavItem.index}>
+                  <a
+                    href={subNavItem.url}
+                    data-ndx={subNavItem.index}
+                    onclick={handleClick}
+                  >
+                    {subNavItem.text}
+                  </a>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </template>
+      </template>
+    </div>
+  </div>
+</template>

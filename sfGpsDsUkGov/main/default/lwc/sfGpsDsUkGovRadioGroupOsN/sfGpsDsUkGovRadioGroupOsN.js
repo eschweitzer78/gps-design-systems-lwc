@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2023, Benedict Sefa Ziorklui, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -7,17 +7,29 @@
 
 import { api } from "lwc";
 import OmnistudioRadioGroup from "omnistudio/radioGroup";
+import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovRadioGroupOsN.html";
 
 const errorSrLabel = "Error: ";
 
-export default class SfGpsDsUkGovRadioGroupOsN extends OmnistudioRadioGroup {
+export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
+  OmnistudioRadioGroup,
+  "large"
+) {
   render() {
     return tmpl;
   }
 
   renderedCallback() {
-    /* parent makes a few assumptions on markup which we circumvent */
+    /* parent makes a few assumptions on markup which we circumvent by not calling parent method */
+  }
+
+  get computedFormGroupClassName() {
+    return computeClass({
+      "govuk-form-group": true,
+      "govuk-form-group--error": this.isError
+    });
   }
 
   get computedAriaInvalid() {
@@ -25,28 +37,17 @@ export default class SfGpsDsUkGovRadioGroupOsN extends OmnistudioRadioGroup {
   }
 
   get computedAriaDescribedBy() {
-    if (this.fieldLevelHelp) {
-      return this.isError ? "errorMessageBlock helper" : "helper";
-    }
-
-    return this.isError ? "errorMessageBlock" : null;
-  }
-
-  get computedFormGroupClass() {
-    return (
-      "govuk-form-group" + (this.isError ? " govuk-form-group--error" : "")
-    );
+    return computeClass({
+      helper: this._handleHelpText,
+      errorMessageBlock: this.isError
+    });
   }
 
   get computedRadiosClass() {
-    return (
-      "govuk-radios" +
-      (this.alignment === "horizontal" ? " govuk-radios--inline" : "")
-    );
-  }
-
-  get isRealError() {
-    return this.isError && this.errorMessage;
+    return computeClass({
+      "govuk-radios": true,
+      "govuk-radios--inline": this.alignment === "horizontal"
+    });
   }
 
   get errorSrLabel() {
@@ -71,12 +72,16 @@ export default class SfGpsDsUkGovRadioGroupOsN extends OmnistudioRadioGroup {
     return elt
       ? {
           id: elt.id,
-          errorMessage: this.errorMessage
+          errorMessage: this._errorMessage
         }
       : null;
   }
 
   @api scrollTo() {
     console.log("scrollTo called v2!");
+  }
+
+  get _errorMessage() {
+    return this.errorMessage?.replace("Error: ", "");
   }
 }

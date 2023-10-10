@@ -1,0 +1,23 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName} aria-label={label}>
+    <ol class="govuk-breadcrumbs__list">
+      <template for:each={items} for:item="item">
+        <li
+          lwc:if={item.url}
+          key={item.index}
+          class="govuk-breadcrumbs__list-item"
+        >
+          <a href={item.url} class="govuk-breadcrumbs__link">{item.text}</a>
+        </li>
+        <li
+          lwc:else
+          key={item.index}
+          class="govuk-breadcrumbs__list-item"
+          aria-current="page"
+        >
+          {item.text}
+        </li>
+      </template>
+    </ol>
+  </div>
+</template>

@@ -1,0 +1,22 @@
+.forceCommunityRecordListCompact.forceCommunityObjectHome {
+  .filterListPlaceholder .listTitle {
+    font-size: 1.625rem;
+    font-weight: bold;
+    line-height: var(--lwc-fcLineHeightText, 1.5);
+    text-transform: none;
+  }
+
+  .viewAllLink {
+    font-size: 1rem;
+  }
+}
+
+.forceCommunityRecordListCompactCard.forceRecordLayout {
+  .primaryField {
+    font-size: 1.25rem;
+  }
+
+  .secondaryFields {
+    font-size: 1rem;
+  }
+}

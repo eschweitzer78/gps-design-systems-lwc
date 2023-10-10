@@ -1,0 +1,152 @@
+<template>
+  <div class={computedFormGroupClassName}>
+    <h1 class="govuk-label-wrapper">
+      <label
+        class={computedLabelClassName}
+        aria-label={mergedLabel}
+        for="inputId"
+      >
+        {mergedLabel}
+        <!-- <span if:true={_propSetMap.required} class="sr-only">
+          ({requiredLabel})</span
+        > -->
+      </label>
+    </h1>
+
+    <div if:true={mergedHelpText} id="helper" class="govuk-hint">
+      {mergedHelpText}
+    </div>
+
+    <p
+      if:true={isError}
+      class="govuk-error-message"
+      aria-live="assertive"
+      id="errorMessageBlock"
+    >
+      <span class="govuk-visually-hidden">{errorSrLabel}</span>
+      {_errorMessage}
+    </p>
+
+    <template if:true={_propSetMap.repeat}>
+      <span
+        slot="label"
+        style="bottom: 7px; right: -11px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text={_repeatAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text={_removeAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+      </span>
+    </template>
+
+    <div class="govuk-form--predictive">
+      <div class="sfgps-combobox_container">
+        <div
+          class="sfgps-combobox sfgps-dropdown-trigger sfgps-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
+          aria-expanded={show}
+          aria-haspopup="listbox"
+          role="combobox"
+        >
+          <input
+            id="lookupId"
+            type="text"
+            class={computedLookUpInputError}
+            value={lookupDisplay}
+            disabled={_propSetMap.readOnly}
+            required={_propSetMap.required}
+            readonly
+            aria-invalid={isAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
+            aria-controls="lookup"
+            placeholder={_propSetMap.placeholder}
+            data-omni-input
+            onblur={hideOptions}
+            onkeydown={handleKeyDown}
+            onkeyup={handleKeyUp}
+            onmouseup={showLookup}
+          />
+          <div
+            class="sfgps-dropdown sfgps-dropdown_fluid govuk-form--predictive-list"
+            role="listbox"
+            id="lookup"
+            onmousedown={handleKeyDown}
+            onmouseleave={handleKeyDown}
+            onmouseup={handleKeyDown}
+          >
+            <ul
+              class="sfgps-listbox sfgps-listbox_vertical"
+              role="presentation"
+            >
+              <template
+                for:each={options}
+                for:item="optionItem"
+                for:index="optionIndex"
+              >
+                <li
+                  key={optionItem.key}
+                  role="presentation"
+                  onmouseup={selectOption}
+                  onmouseover={mouseOverFocus}
+                  class="sfgps-listbox__item"
+                >
+                  <div
+                    class="sfgps-media sfgps-listbox__option sfgps-listbox__option_entity sfgps-listbox__option_has-meta"
+                    id={optionItem.id}
+                    role="option"
+                    data-option-index={optionIndex}
+                    aria-selected={optionItem.selected}
+                  >
+                    <span
+                      class="sfgps-media__body"
+                      data-option-index={optionIndex}
+                    >
+                      <span
+                        class="sfgps-listbox__option-text sfgps-listbox__option-text_entity"
+                        data-option-index={optionIndex}
+                      >
+                        {optionItem.value}
+                      </span>
+                    </span>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <template if:true={isPageLoading}>
+      <omnistudio-spinner
+        variant="brand"
+        alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+        size="small"
+      >
+      </omnistudio-spinner>
+    </template>
+  </div>
+</template>

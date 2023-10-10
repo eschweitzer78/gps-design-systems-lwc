@@ -1,0 +1,136 @@
+<template>
+  <div class={computedFormGroupClassName}>
+    <div class="sfgpsds-label__group">
+      <div class="sfgpsds-label__group_label_container">
+        <div class="sfgpsds-label__group_label">
+          <label
+            class={computedLabelClassName}
+            aria-label={label}
+            for="inputId"
+          >
+            {label}
+            <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
+          </label>
+        </div>
+      </div>
+
+      <div class="sfgpsds-label__group_action">
+        <slot name="iconRight"> </slot>
+      </div>
+    </div>
+
+    <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+      {fieldLevelHelp}
+    </div>
+
+    <p
+      if:true={isError}
+      class="govuk-error-message"
+      aria-live="assertive"
+      id="errorMessageBlock"
+    >
+      <span class="govuk-visually-hidden">{errorSrLabel}</span>
+      {_errorMessage}
+    </p>
+
+    <div class="sfgpsds-predictive">
+      <div class={showProgress}>
+        <omnistudio-progress-bar
+          if:true={remoteSource}
+          data-progress-bar
+          theme="slds"
+          size="xx-small"
+        >
+        </omnistudio-progress-bar>
+      </div>
+
+      <div class="sfgpsds-combobox_container">
+        <div
+          class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
+        >
+          <div class="" role="none">
+            <input
+              class={computedTypeAheadInputError}
+              type={type}
+              placeholder={placeholder}
+              disabled={disabled}
+              required={required}
+              tabindex={tabIndex}
+              maxlength={maxLength}
+              id="inputId"
+              autocomplete="off"
+              aria-activedescendant={activeDescendant}
+              aria-describedby={computedAriaDescribedBy}
+              aria-autocomplete="list"
+              aria-owns="listboxId"
+              aria-haspopup="true"
+              aria-expanded="false"
+              role="combobox"
+              value={_value}
+              onkeyup={searchOptions}
+              oninput={updateValue}
+              onfocus={focusChange}
+              onblur={focusChange}
+              onkeydown={handleKeydown}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div
+        if:true={isLookupVisible}
+        class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5"
+        id="listboxId"
+        role="listbox"
+        onmousedown={handleScrollClick}
+      >
+        <ul
+          class="sfgpsds-listbox sfgpsds-listbox_vertical"
+          role="presentation"
+        >
+          <template for:each={internaldata} for:item="e" for:index="s">
+            <li
+              key={e.itrKey}
+              style={styleProperties.value.styles}
+              class={e.itemClass}
+              role="presentation"
+            >
+              <div
+                class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
+                aria-selected={e.selected}
+                id={e.itrKey}
+                role="option"
+                data-index={s}
+                onclick={selectOption}
+              >
+                <span class="sfgpsds-media__body">
+                  <span
+                    class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
+                    >{e.name}</span
+                  >
+                </span>
+              </div>
+            </li>
+          </template>
+
+          <li class={lastItemClass} style={styleProperties.value.styles}>
+            <div
+              class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
+              role="option"
+              data-index="last-item"
+              onclick={selectOption}
+            >
+              <span class="sfgpsds-media__body">
+                <span
+                  class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
+                >
+                  <slot name="lastItem" onslotchange={lastItemChange}> </slot>
+                </span>
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,14 @@
+<template>
+  <c-sf-gps-ds-au-qld-aside
+    if:false={_sfGpsErrors}
+    icon-name={iconName}
+    icon-size={iconSize}
+    title={title}
+    class-name={className}
+  >
+    <span if:true={content} class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
+  </c-sf-gps-ds-au-qld-aside>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

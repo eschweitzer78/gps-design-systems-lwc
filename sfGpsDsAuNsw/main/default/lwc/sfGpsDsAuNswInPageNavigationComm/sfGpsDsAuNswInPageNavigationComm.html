@@ -1,0 +1,13 @@
+<template>
+  <c-sf-gps-ds-au-nsw-in-page-navigation
+    if:false={_sfGpsErrors}
+    title={title}
+    items={_itemsArray}
+    first-child={firstChild}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-nsw-in-page-navigation>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

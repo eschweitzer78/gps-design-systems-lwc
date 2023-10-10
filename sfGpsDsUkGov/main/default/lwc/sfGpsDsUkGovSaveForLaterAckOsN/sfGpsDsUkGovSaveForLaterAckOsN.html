@@ -1,0 +1,62 @@
+<template>
+  <template if:true={auto}>
+    <template if:true={hasResult}>
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
+
+      <c-sf-gps-ds-uk-gov-warning-text-os
+        as="success"
+        title="Your application is saved for later."
+      >
+        <span>
+          {_bSflLabels.OmniScriptResumeLink}
+          <a onclick={copyLinkToClipboard} class="govuk-link"
+            >{_bSflLabels.OmniCopyLink}</a
+          >
+          or
+          <a href={emailLink} target="_blank" rel="noopener" class="govuk-link"
+            >{_bSflLabels.OmniEmailMe}</a
+          >.
+        </span>
+      </c-sf-gps-ds-uk-gov-warning-text-os>
+    </template>
+  </template>
+
+  <template if:false={auto}>
+    <template if:true={hasResult}>
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
+
+      <div class="govuk-template__body">
+        <c-sf-gps-ds-uk-gov-warning-text-os
+          as="success"
+          title="Your application is saved for later."
+        >
+          <span>
+            <span></span>
+            <p>{_bSflLabels.OmniResume}:</p>
+            <p>
+              <a href={resumeLink} target="_blank" class="govuk-link"
+                >{resumeLink}</a
+              >
+            </p>
+            <br />
+            <p>
+              <a onclick={copyLinkToClipboard} class="govuk-link"
+                >{_bSflLabels.OmniCopyLink}</a
+              >
+              or
+              <a onclick={openEmail} class="govuk-link"
+                >{_bSflLabels.OmniEmailMe}</a
+              >
+            </p>
+          </span>
+        </c-sf-gps-ds-uk-gov-warning-text-os>
+      </div>
+    </template>
+  </template>
+</template>

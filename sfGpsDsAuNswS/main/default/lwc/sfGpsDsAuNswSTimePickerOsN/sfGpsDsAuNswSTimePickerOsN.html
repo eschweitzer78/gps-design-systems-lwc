@@ -60,13 +60,14 @@
               <template for:each={options} for:item="e" for:index="s">
                 <li
                   key={e.id}
-                  class="sfgpsds-media sfgpsds-listbox__option sfgpsds-media_small sfgpsds-media_center"
                   id={e.id}
                   data-index={s}
                   data-selected={e.selected}
                   data-val={e.value}
+                  data-timepicker-option
                   role="option"
                   aria-selected={e.selected}
+                  class="sfgpsds-media sfgpsds-listbox__option sfgpsds-media_small sfgpsds-media_center"
                   onmousedown={selectOption}
                 >
                   <span class="media__figure">

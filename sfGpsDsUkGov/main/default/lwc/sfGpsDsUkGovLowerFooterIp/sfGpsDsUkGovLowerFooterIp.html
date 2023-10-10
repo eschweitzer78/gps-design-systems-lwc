@@ -1,0 +1,23 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
+    <c-sf-gps-ds-uk-gov-lower-footer
+      if:false={_isLoading}
+      items={_items}
+      copyright-mention-link={_copyrightMentionLink}
+      class-name={className}
+      onclick={handleClick}
+    >
+      <div class="govuk-footer__built" slot="built" lwc:dom="manual"></div>
+      <span
+        class="govuk-footer__licence-description"
+        slot="licence"
+        lwc:dom="manual"
+      ></span>
+    </c-sf-gps-ds-uk-gov-lower-footer>
+  </template>
+
+  <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

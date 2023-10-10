@@ -1,12 +1,12 @@
 {
-  "name": "au-design-systems-lwc",
+  "name": "gps-design-systems-lwc",
   "private": false,
   "version": "1.0.0",
   "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
     "lint": "eslint **/{aura,lwc}/**",
     "test": "npm run test:unit",
-    "test:unit": "sfdx-lwc-jest --skipApiVersionCheck",
+    "test:unit": "sfdx-lwc-jest --skipApiVersionCheck --verbose",
     "test:unit:watch": "sfdx-lwc-jest --watch --skipApiVersionCheck",
     "test:unit:debug": "sfdx-lwc-jest --debug --skipApiVersionCheck",
     "test:unit:coverage": "sfdx-lwc-jest --coverage --skipApiVersionCheck",
@@ -14,7 +14,10 @@
     "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
     "postinstall": "husky install",
     "precommit": "lint-staged",
-    "osfilegen": "node osfilegen.js"
+    "osfilegen": "node osfilegen.js",
+    "cssgen": "node cssgen.js",
+    "prep": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss;mkdir -p sfGpsDsUkGovFull",
+    "ukgov-copy": "cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull"
   },
   "lint-staged": {
     "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [
@@ -41,17 +44,30 @@
     "@salesforce/eslint-config-lwc": "^2.0.0",
     "@salesforce/eslint-plugin-aura": "^2.0.0",
     "@salesforce/eslint-plugin-lightning": "^0.1.1",
-    "@salesforce/sfdx-lwc-jest": "^1.1.2",
+    "@salesforce/sfdx-lwc-jest": "^1.4.1",
     "eslint": "^7.29.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jest": "^24.3.6",
+    "govuk-frontend": "^4.6.0",
     "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
-    "nsw-design-system": "^3.2.4",
+    "nsw-design-system": "^3.8.0",
     "prettier": "^2.3.2",
-    "prettier-plugin-apex": "^1.10.0"
+    "prettier-plugin-apex": "^1.12.0",
+    "sass": "^1.59.3"
   },
   "devDependencies2": {
     "puppeteer": "^19.3.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.6.2",
+    "font-awesome": "^4.7.0",
+    "web-template-release": "^4.1.0"
+  },
+  "engines": {
+    "node": "18.16.0"
+  },
+  "volta": {
+    "node": "18.16.0"
   }
 }

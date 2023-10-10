@@ -5,9 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { uniqueId, computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswAccordion extends LightningElement {
+  static renderMode = "light";
+
   @api header;
   @api className;
 
@@ -39,6 +41,16 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
     return computeClass({
       hidden: !this.isOpen
     });
+  }
+
+  _controlsId;
+
+  get computedAriaControlsId() {
+    if (this._controlsId === undefined) {
+      this._controlsId = uniqueId("sf-gps-ds-au-nsw-accordion");
+    }
+
+    return this._controlsId;
   }
 
   handleClick() {

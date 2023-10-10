@@ -1,15 +1,10 @@
 <template>
   <div class="omni-typeahead-container">
     <c-sf-gps-ds-au-nsw-typeahead-os-n
-      class={computedTypeaheadClass}
       type="text"
       field-level-help={mergedHelpText}
       field-level-help-position={_propSetMap.helpTextPos}
       label={mergedLabel}
-      onblur={handleBlur}
-      onlastitemclick={enterEditMode}
-      onselect={handleSelect}
-      onclear={handleClear}
       icon-name-right="utility:empty"
       options={options}
       placeholder={_placeholder}
@@ -22,10 +17,14 @@
       message-when-too-long={_messageWhenTooLong}
       theme="sfgpsds"
       value={elementValueLabel}
-      complete={complete}
       remote-source={_useRemoteSource}
       disable-filter={_disableFilter}
       data-omni-input
+      class={computedTypeaheadClass}
+      onblur={handleBlur}
+      onlastitemclick={enterEditMode}
+      onselect={handleSelect}
+      onclear={handleClear}
     >
       <div slot="iconRight">
         <span
@@ -107,8 +106,8 @@
           </div>
         </div>
 
-        <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper">
-          {fieldLevelHelp}
+        <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
+          {mergedHelpText}
         </span>
 
         <div class="nsw-grid">

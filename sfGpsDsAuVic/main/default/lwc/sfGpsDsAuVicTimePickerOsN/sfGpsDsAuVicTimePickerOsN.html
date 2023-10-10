@@ -1,0 +1,125 @@
+<template>
+  <div class="rpl-form">
+    <fieldset class="rpl-fieldset">
+      <div class={computedFormGroupClassName}>
+        <div
+          class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
+        >
+          <label
+            if:true={label}
+            style={styleProperties.label.styles}
+            id="combobox-label"
+            for="time-input"
+          >
+            <span>{label}</span>
+            <slot name="label"> </slot>
+          </label>
+
+          <div if:true={fieldLevelHelp} id="helper" class="hint">
+            {fieldLevelHelp}
+          </div>
+
+          <div class="field-wrap">
+            <div>
+              <div class="sfgpsds-combobox_container">
+                <input
+                  class="sfgpsds-input sfgpsds-combobox__input sfgpsds-combobox__input-value"
+                  style={styleProperties.value.styles}
+                  autocomplete="off"
+                  id="time-input"
+                  aria-label={ariaLabel}
+                  role="textbox"
+                  type="text"
+                  name={name}
+                  disabled={disabled}
+                  required={required}
+                  aria-invalid={isAriaInvalid}
+                  readonly={readOnly}
+                  placeholder={placeholder}
+                  tabindex={tabIndex}
+                  aria-autocomplete="both"
+                  aria-describedby={ariaDescribedBy}
+                  value={_displayValue}
+                  onblur={showLookup}
+                  onchange={onInputChange}
+                  onkeydown={handleKeyboardEvent}
+                  onkeyup={handleKeyUp}
+                  onmousedown={showLookup}
+                />
+              </div>
+
+              <div
+                id="combobox-list"
+                aria-labelledby="combobox-label"
+                class="sfgpsds-dropdown sfgpsds-dropdown_fluid"
+                aria-haspopup="listbox"
+                role="listbox"
+                onblur={handleComponentLosesFocus}
+              >
+                <ul
+                  class="dropdown-container listbox sfgpsds-listbox sfgpsds-listbox_vertical"
+                  role="presentation"
+                  onmousedown={scrollerClickOnList}
+                >
+                  <template for:each={options} for:item="e" for:index="s">
+                    <li key={e.id} class="sfgpsds-listbox__item">
+                      <div
+                        id={e.id}
+                        data-index={s}
+                        data-selected={e.selected}
+                        data-val={e.value}
+                        data-timepicker-option
+                        role="option"
+                        aria-selected={e.selected}
+                        class="sfgpsds-media sfgpsds-media_small sfgpsds-media_center sfgpsds-listbox__option sfgpsds-listbox__option_plain"
+                        onmousedown={selectOption}
+                      >
+                        <span class="sfgpsds-media__figure">
+                          <span
+                            if:true={e.selected}
+                            class="sfgpsds-icon-small"
+                            aria-hidden="true"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="#fff"
+                              height="14"
+                              width="14"
+                              viewBox="0 96 960 960"
+                            >
+                              <path
+                                d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+
+                        <span class="sfgpsds-media__body">
+                          <span
+                            class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
+                            title={e.value}
+                          >
+                            {e.value}
+                          </span>
+                        </span>
+                      </div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div
+            if:true={errorMessage}
+            class="errors help-block"
+            aria-live="assertive"
+            id="errorMessageBlock"
+          >
+            <span>{errorMessage}</span>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</template>

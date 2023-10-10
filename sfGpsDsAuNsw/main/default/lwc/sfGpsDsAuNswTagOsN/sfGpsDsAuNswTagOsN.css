@@ -1,5 +1,7 @@
 @import "c/sfGpsDsAuNswCoreOs";
+@import "./tag.gen.css";
 
+/*
 .nsw-tag {
   font-size: var(--nsw-font-size-xs-mobile);
   line-height: var(--nsw-line-height-xs-mobile);
@@ -89,3 +91,4 @@
   background-color: var(--nsw-brand-dark);
   color: var(--nsw-text-light);
 }
+*/

@@ -26,24 +26,24 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
     return this._compact;
   }
 
-  _content;
+  _contentOriginal;
   _contentHtml;
 
   @api set content(markdown) {
-    this._content = markdown;
+    this._contentOriginal = markdown;
     this.generateContentHtml();
   }
 
   get content() {
-    return this._content;
+    return this._contentOriginal;
   }
 
   generateContentHtml() {
     try {
-      if (this._content) {
+      if (this._contentOriginal) {
         this._contentHtml = this._compact
-          ? mdEngine.renderEscapedUnpackFirstP(this._content)
-          : mdEngine.renderEscaped(this._content);
+          ? mdEngine.renderEscapedUnpackFirstP(this._contentOriginal)
+          : mdEngine.renderEscaped(this._contentOriginal);
       }
     } catch (e) {
       console.log(e);
@@ -51,31 +51,27 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
     }
   }
 
-  _rendered = false;
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 
   renderedCallback() {
-    if (this._rendered === false) {
-      let element = this.template.querySelector(".sf-gps-markdown");
+    let element = this.template.querySelector(".sf-gps-ds-markdown");
 
-      if (element) {
-        /*
-         * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
-         * as the react component would have one for the title in the same scope,
-         * but here we have the title markup in a different css scope
-         */
+    if (element) {
+      /*
+       * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
+       * as the react component would have one for the title in the same scope,
+       * but here we have the title markup in a different css scope
+       */
 
-        replaceInnerHtml(
-          element,
-          (this.title && !this.compact ? `<span></span>` : "") +
-            this._contentHtml
-        );
-      } else {
-        this.addError(
-          "CO-PH",
-          "Couldn't find internal Content markdown placeholder"
-        );
-      }
-      this._rendered = true;
+      replaceInnerHtml(
+        element,
+        (this.title && !this.compact ? `<span></span>` : "") + this._contentHtml
+      );
     }
   }
 }

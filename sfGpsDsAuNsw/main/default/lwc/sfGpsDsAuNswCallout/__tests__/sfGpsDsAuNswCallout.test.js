@@ -21,7 +21,7 @@ describe("c-sf-gps-ds-au-nsw-callout", () => {
 
     document.body.appendChild(element);
 
-    let h4 = element.shadowRoot.querySelector("h4");
+    let h4 = element.querySelector(".nsw-h4");
     expect(h4).not.toBeNull();
     expect(h4.innerHTML).toBe(element.title);
   });
@@ -36,10 +36,10 @@ describe("c-sf-gps-ds-au-nsw-callout", () => {
 
     document.body.appendChild(element);
 
-    let h4 = element.shadowRoot.querySelector("h4");
+    let h4 = element.querySelector(".nsw-h4");
     expect(h4).toBeNull();
 
-    let h1 = element.shadowRoot.querySelector("h1");
+    let h1 = element.querySelector(".nsw-h1");
     expect(h1).not.toBeNull();
     expect(h1.innerHTML).toBe(element.title);
   });

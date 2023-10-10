@@ -1,0 +1,16 @@
+<template>
+  <c-sf-gps-ds-au-qld-callout
+    if:false={_sfGpsErrors}
+    title={title}
+    theme={theme}
+    button-link={_buttonLink}
+    image-src={imageSrc}
+    image-alt={imageAlt}
+    class-name={className}
+  >
+    <span class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
+  </c-sf-gps-ds-au-qld-callout>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

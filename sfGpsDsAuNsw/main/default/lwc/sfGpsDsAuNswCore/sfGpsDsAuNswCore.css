@@ -1,16 +1,1 @@
-/* Global from original scss */
-@import "./palette.css";
-@import "./theme.css";
-@import "./visibility.css";
-@import "./fixes.css";
-@import "./fonts.css";
-
-/* Core from original scss */
-@import "./grid.css";
-@import "./icons.css";
-@import "./layout.css";
-@import "./section.css";
-@import "./spacing.css";
-@import "./typography.css";
-@import "./button.css";
-@import "./list.css";
+@import "./core.gen.css";

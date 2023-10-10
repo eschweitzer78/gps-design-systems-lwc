@@ -42,8 +42,8 @@
           >
           </span>
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+          <slot name="label"></slot>
         </label>
-        <slot name="label"></slot>
 
         <!-- TODO: fieldLevelHelp for checkboxes? -->
       </template>
@@ -91,7 +91,7 @@
             <span
               class="slds-form-element__label slds-show--inline slds-p-top_none"
             >
-              {label)
+              {label}
             </span>
           </label>
         </div>
@@ -353,6 +353,7 @@
     max={max}
     value={inputValue}
     tab-index={tabIndex}
+    read-only={readOnly}
     format={format}
     locale-format={dateTimeLocaleFormat}
     locale-format-invali-error={localeFormatInvalidError}

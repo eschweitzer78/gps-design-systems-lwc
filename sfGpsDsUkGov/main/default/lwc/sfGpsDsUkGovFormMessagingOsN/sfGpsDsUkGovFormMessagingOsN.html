@@ -1,0 +1,30 @@
+<template>
+  <template if:true={messageText}>
+    <div class="messaging">
+      <c-sf-gps-ds-uk-gov-warning-text-comm-os
+        if:true={isRequirement}
+        as="error"
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-uk-gov-warning-text-comm-os>
+      <c-sf-gps-ds-uk-gov-warning-text-comm-os
+        if:true={isSuccess}
+        as="success"
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-uk-gov-warning-text-comm-os>
+      <c-sf-gps-ds-uk-gov-warning-text-comm-os
+        if:true={isWarning}
+        as="warning"
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-uk-gov-warning-text-comm-os>
+      <c-sf-gps-ds-uk-gov-warning-text-comm-os
+        if:true={isComment}
+        as="info"
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-uk-gov-warning-text-comm-os>
+    </div>
+  </template>
+</template>

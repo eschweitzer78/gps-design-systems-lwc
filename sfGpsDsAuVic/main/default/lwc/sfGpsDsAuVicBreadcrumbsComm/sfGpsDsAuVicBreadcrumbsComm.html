@@ -31,7 +31,10 @@
                 >
                   {item.text}
                 </a>
-                <span if:true={item.isLast} class="rpl-breadcrumbs__text"
+                <span
+                  if:true={item.isLast}
+                  class="rpl-breadcrumbs__text"
+                  aria-current="page"
                   >{item.text}</span
                 >
               </li>

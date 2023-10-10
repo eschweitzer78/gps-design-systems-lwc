@@ -1,0 +1,21 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-uk-gov-header
+      masterbrand={masterbrand}
+      masterbrand-label={masterbrandLabel}
+      header-url={headerUrl}
+      service-name={serviceName}
+      service-url={serviceUrl}
+      nav-items={_items}
+      class-name={className}
+      onclosemenu={handleCloseMenu}
+      onnavigate={handleNavigate}
+    >
+    </c-sf-gps-ds-uk-gov-header>
+
+    <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

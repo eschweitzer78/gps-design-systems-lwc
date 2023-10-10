@@ -48,26 +48,26 @@ export default class SfGpsDsAuNswCalloutComm extends SfGpsDsLwc {
     }
   }
 
-  _rendered = false;
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 
   renderedCallback() {
-    if (this._rendered === false) {
-      let element = this.template.querySelector(".sf-gps-markdown");
-      if (element) {
-        /*
-         * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
-         * as the react component would have one for the title in the same scope,
-         * but here our containment hierarchy is a bit different.
-         */
+    let element = this.template.querySelector(".sf-gps-ds-markdown");
+    if (element) {
+      /*
+       * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
+       * as the react component would have one for the title in the same scope,
+       * but here our containment hierarchy is a bit different.
+       */
 
-        let span = this.title ? `<span></span>` : "";
-        let markup = (this.title ? span : "") + this._contentHtml;
+      let span = this.title ? `<span></span>` : "";
+      let markup = (this.title ? span : "") + this._contentHtml;
 
-        replaceInnerHtml(element, markup);
-      } else {
-        this.addError("RC-PH", "Couldn't find internal markdown placeholder");
-      }
-      this._rendered = true;
+      replaceInnerHtml(element, markup);
     }
   }
 }

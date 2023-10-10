@@ -1,0 +1,12 @@
+<template>
+  <div class={computedClassName}>
+    <span class="govuk-warning-text__icon" aria-hidden="true"
+      >{computedIconText}</span
+    >
+    <strong class="govuk-warning-text__text">
+      <span class="govuk-warning-text__assistive">{as}</span>
+      <template if:true={title}>{title}{space}</template>
+      <slot></slot>
+    </strong>
+  </div>
+</template>

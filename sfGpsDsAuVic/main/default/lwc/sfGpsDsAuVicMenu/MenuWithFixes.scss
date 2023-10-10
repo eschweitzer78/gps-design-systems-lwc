@@ -1,0 +1,9 @@
+@import "./Menu";
+
+.rpl-menu--vertical .rpl-menu__item-link c-sf-gps-ds-au-vic-icon, 
+.rpl-menu--horizontal-floating-wrapper .rpl-menu__item-link c-sf-gps-ds-au-vic-icon, 
+.rpl-menu--horizontal .rpl-menu--subs .rpl-menu__item-link c-sf-gps-ds-au-vic-icon {
+  margin: auto 0.5rem auto;
+  margin-left: auto;
+  min-width: 5px;
+}

@@ -1,0 +1,16 @@
+<template>
+  <c-sf-gps-ds-au-vic-share-this
+    if:false={_sfGpsErrors}
+    url={_url}
+    title={title}
+    label={label}
+    networks={_networks}
+    email-subject={emailSubject}
+    email-body={emailBody}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-share-this>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

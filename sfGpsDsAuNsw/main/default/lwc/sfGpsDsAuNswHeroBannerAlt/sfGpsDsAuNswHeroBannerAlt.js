@@ -2,6 +2,8 @@ import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeroBannerAlt extends LightningElement {
+  static renderMode = "light";
+
   @api titleUrl;
   @api titleLabel;
   @api titlePreventDefault = false;

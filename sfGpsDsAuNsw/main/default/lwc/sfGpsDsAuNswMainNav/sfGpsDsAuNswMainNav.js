@@ -7,9 +7,12 @@
 
 // TODO: handle issue with level2 menus on desktop vs mobile -- how do we know when to navigate vs expand?
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswMainNav extends LightningElement {
+  static renderMode = "light";
+
+  @api mainNavId = uniqueId("sf-gps-ds-au-nsw-main-nav");
   @api navAriaLabel = "Main Navigation";
   @api navTitle = "Menu";
   @api closeMenuLabel = "Close Menu";
@@ -50,12 +53,15 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     return items.map((item) => {
       let result = {
         ...item,
-        index: item.index || `${parentIndex}-${index++}`,
+        id: `${parentIndex}-${index}`,
+        index: item.index || `${parentIndex}-${index}`,
         level: parentLevel + 1,
         isActive: false,
         className: "",
         subNavClassName: "nsw-main-nav__sub-nav"
       };
+
+      index++;
 
       if (!this.megaMenu) {
         delete result.subNav;
@@ -82,10 +88,12 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     this.navItemsMapping();
   }
 
+  _navItemId = uniqueId("sf-gps-ds-au-nsw-main-nav-item");
+
   navItemsMapping() {
     let map = {};
     this._navItems = this._originalNavItems
-      ? this.mapItems("navitem", 0, map, this._originalNavItems)
+      ? this.mapItems(this._navItemId, 0, map, this._originalNavItems)
       : null;
     this._mapItems = map;
   }

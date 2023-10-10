@@ -1,0 +1,62 @@
+@import "c/sfGpsDsAuVicFormCssOs";
+
+/* Leave space next to label for label slot  */
+.form-group > .slds-form-element > label > span {
+  margin-right: 0.25rem;
+  font-weight: normal;
+}
+
+.rpl-form .form-group.required > div > label > span:after {
+  /* margin-left: $rpl-space; */ /* message already has space */
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 0.8em;
+  font-weight: normal;
+  color: #af272f;
+  content: " (Required)";
+}
+
+.hint {
+  font-weight: normal;
+}
+
+.omni-file-input {
+  --lwc-spacingXxxSmall: 0.5rem;
+  --lwc-colorBorder: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  --slds-c-button-neutral-color-background: var(
+    --sf-gps-ds-au-vic-color-primary,
+    #0052c2
+  );
+  --slds-c-button-neutral-color-background-hover: var(
+    --sf-gps-ds-au-vic-color-secondary,
+    #0095ec
+  );
+  --slds-g-color-neutral-base-95: var(
+    --sf-gps-ds-au-vic-color-secondary,
+    #0095ec
+  );
+  --slds-c-button-neutral-color-border: transparent;
+  --slds-c-button-neutral-color-border-hover: transparent;
+  --slds-c-button-text-color: #fff;
+  --slds-c-button-neutral-text-color-hover: #fff;
+  --slds-c-button-text-color-hover: #fff;
+  --slds-c-button-spacing-block-start: 0.5rem; /* Found by trial & error, due to lightning primitive icon height */
+  --slds-c-button-spacing-block-end: 0.5rem;
+  --slds-c-button-neutral-spacing-inline-start: 1.375rem;
+  --slds-c-button-neutral-spacing-inline-end: 1.375rem;
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.rpl-form {
+  -webkit-font-smoothing: antialiased;
+}
+
+.omni-file-input {
+  order: 2;
+}
+
+.errors.help-block {
+  order: 3;
+}

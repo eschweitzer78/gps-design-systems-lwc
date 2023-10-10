@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <div if:false={_isClosed} class={computedClassName} role="alert">
     <div class="nsw-global-alert__wrapper">
       <div class="nsw-global-alert__content">
@@ -6,7 +6,10 @@
         <p>
           {copy}
           <template if:true={isCtaLinkStyle}>
-            {space}<a href={ctaHref} class="nsw-sitewide-message__link"
+            {space}<a
+              href={ctaHref}
+              class="nsw-sitewide-message__link"
+              onclick={handleCtaClick}
               >{ctaText}</a
             >
           </template>

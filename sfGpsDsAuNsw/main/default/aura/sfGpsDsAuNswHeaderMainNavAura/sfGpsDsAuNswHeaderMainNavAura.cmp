@@ -1,0 +1,84 @@
+<aura:component
+  implements="forceCommunity:availableForAllPageTypes"
+  access="global"
+>
+  <aura:attribute name="ipName" type="String" />
+  <aura:attribute name="inputJSON" type="String" default="{}" />
+  <aura:attribute name="optionsJSON" type="String" default="{}" />
+  <aura:attribute name="profileIpName" type="String" />
+  <aura:attribute name="profileInputJSON" type="String" default="{}" />
+  <aura:attribute name="profileOptionsJSON" type="String" default="{}" />
+
+  <aura:attribute name="masterbrand" type="String" />
+  <aura:attribute name="masterbrandAlt" type="String" />
+  <aura:attribute
+    name="srMasterbrandLabel"
+    type="String"
+    default="NSW Government"
+  />
+  <aura:attribute name="logo" type="String" />
+  <aura:attribute name="logoAlt" type="String" />
+  <aura:attribute name="menuLabel" type="String" default="menu" />
+  <aura:attribute name="searchLabel" type="String" default="Search site for:" />
+  <aura:attribute name="siteTitle" type="String" />
+  <aura:attribute name="siteDescriptor" type="String" />
+  <aura:attribute name="headerUrl" type="String" default="" />
+  <aura:attribute name="mobile" type="Boolean" default="true" />
+  <aura:attribute name="search" type="Boolean" default="false" />
+
+  <aura:attribute name="headerClassName" type="String" />
+  <aura:attribute name="megaMenu" type="Boolean" />
+  <aura:attribute name="mainNavClassName" type="String" />
+
+  <aura:attribute name="menuActive" type="Boolean" default="false" />
+
+  <aura:handler
+    name="openmenuEvt"
+    event="c:sfGpsDsAuNswHeaderOpenMenu"
+    action="{!c.handleOpenMenu}"
+  />
+  <aura:handler
+    name="searchEvt"
+    event="c:sfGpsDsAuNswHeaderSearch"
+    action="{!c.handleSearch}"
+  />
+  <aura:handler
+    name="homeEvt"
+    event="c:sfGpsDsAuNswHeaderHome"
+    action="{!c.handleHome}"
+  />
+
+  <c:sfGpsDsAuNswHeaderAura
+    masterbrand="{! v.masterbrand }"
+    masterbrandAlt="{! v.masterbrandAlt }"
+    srMasterbrandLabel="{! v.srMasterbrandLabel }"
+    logo="{! v.logo }"
+    logoAlt="{! v.logoAlt }"
+    menuLabel="{! v.menuLabel }"
+    searchLabel="{! v.searchLabel }"
+    siteTitle="{! v.siteTitle }"
+    siteDescriptor="{! v.siteDescriptor}"
+    headerUrl="{! v.headerUrl}"
+    mobile="{! v.mobile }"
+    search="{! v.search }"
+    profileIpName="{! v.profileIpName }"
+    profileInputJSON="{! v.profileInputJSON }"
+    profileOptionsJSON="{! v.profileOptionsJSON }"
+    className="{! v.headerClassName }"
+    mainNavIsOpen="{! v.menuActive }"
+    mainNavId="{! globalId + '_main-nav' }"
+  />
+  <c:sfGpsDsAuNswMainNavComm
+    ipName="{! v.ipName }"
+    inputJSON="{! v.inputJSON }"
+    optionsJSON="{! v.optionsJSON }"
+    megaMenu="{! v.megaMenu }"
+    className="{! v.mainNavClassName }"
+    isActive="{! v.menuActive }"
+    mainNavId="{! globalId + '_main-nav' }"
+    onclosemenu="{! c.handleCloseMenu }"
+    onnavigate="{! c.handleNavigate }"
+  />
+
+  <lightning:navigation aura:id="navService" />
+</aura:component>

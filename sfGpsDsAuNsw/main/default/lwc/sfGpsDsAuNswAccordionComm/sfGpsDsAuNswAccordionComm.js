@@ -9,6 +9,8 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   @api index; // only used if part of a group
   @api header;
@@ -31,19 +33,10 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   _rendered = false;
 
   renderedCallback() {
-    if (!this._rendered) {
-      let element;
+    let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
-      if ((element = this.template.querySelector(".sf-gps-body"))) {
-        replaceInnerHtml(element, this.content);
-      } else {
-        this.addError(
-          "CO-PH",
-          "Couldn't find internal Content markdown placeholder"
-        );
-      }
-
-      this._rendered = true;
+    if (element) {
+      replaceInnerHtml(element, this.content);
     }
   }
 
@@ -55,5 +48,12 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   handleCollapse() {
     this._closed = true;
     this.dispatchEvent(new CustomEvent("collapse"));
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }

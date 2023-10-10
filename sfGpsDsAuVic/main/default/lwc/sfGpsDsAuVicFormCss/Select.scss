@@ -1,0 +1,151 @@
+@import "node_modules/@dpc-sdp/ripple-global/scss/settings";
+@import "node_modules/@dpc-sdp/ripple-global/scss/tools";
+@import "./Form";
+
+$rpl-select-item-height: rem(42px) !default;
+$rpl-select-dropdown-height: $rpl-select-item-height * 7 !default;
+$rpl-select-focus-bg-color: rpl-color("primary") !default;
+$rpl-select-focus-color: rpl-color("white") !default;
+$rpl-select-hover-bg-color: rpl-color("primary") !default;
+$rpl-select-hover-color: rpl-color("white") !default;
+$rpl-select-selected-bg-color: rpl-color("primary") !default;
+$rpl-select-selected-color: rpl-color("white") !default;
+$rpl-select-icon-h: rem(7.5px) !important !default;
+$rpl-select-icon-w: rem(12px) !important !default;
+$rpl-select-active-border: 1px solid rpl-color('primary') !default;
+$rpl-select-disabled-bg-color: #fafafc !default;
+$rpl-select-disabled-color: rpl-color('mid_neutral_1') !default;
+$rpl-select-checkbox-margin: 0 !default;
+
+.rpl-select {
+  $root: &;
+
+  &__trigger {
+    position: relative;
+    cursor: default;
+    @include rpl_form_text_element;
+    @include rpl_form_text;
+    &-icon {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 1rem;
+      margin: auto;
+      transition: transform .25s;
+      height: $rpl-select-icon-h;
+      width: $rpl-select-icon-w;
+      #{$root}--open & {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  &__label-count {
+    color: rpl-color('primary');
+  }
+
+  &__label-visually-hidden {
+    @include rpl_visually_hidden;
+  }
+
+  &__dropdown {
+    top: 0;
+    background-color: $rpl-form-element-bg-color;
+    position: relative;
+    width: calc(100% - 2px);
+    margin: auto;
+  }
+
+  &__listbox {
+    outline: 0;
+    position: absolute;
+    top: -1px;
+    z-index: 1;
+    background: $rpl-form-element-bg-color;
+    left: -1px;
+    width: 100%;
+    border: 1px solid $rpl-form-element-border-color;
+    border-radius: $rpl-form-element-border-radius;
+    border-top: 1px solid $rpl-form-element-border-color;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    max-height: $rpl-select-dropdown-height;
+    overflow-y: auto;
+    /* Always display scrollbar */
+    &::-webkit-scrollbar {
+      appearance: none;
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background-color: rpl-color('mid_neutral_1');
+      box-shadow: 0 0 1px rgba(255,255,255,.5);
+    }
+  }
+
+  &__listitem {
+    display: flex;
+    align-items: center;
+    padding-left: $rpl-form-element-padding-s-horizontal;
+    padding-right: $rpl-form-element-padding-s-horizontal;
+    @include rpl_breakpoint(m) {
+      padding-left: $rpl-form-element-padding-m-horizontal;
+      padding-right: $rpl-form-element-padding-m-horizontal;
+    }
+    height: $rpl-select-item-height;
+    background: $rpl-form-element-bg-color;
+    @include rpl_form_text;
+    cursor: default;
+    &:not(#{$root}__listitem--selected):not(#{$root}__listitem--focussed) {
+      &:nth-child(odd) {
+        background-color: rpl-color("white");
+      }
+      &:hover {
+        background-color: $rpl-select-hover-bg-color;
+        color: $rpl-select-hover-color;
+      }
+    }
+
+    &--selected {
+      outline: 0;
+      background-color: $rpl-select-selected-bg-color;
+      color: $rpl-select-selected-color;
+    }
+
+    &--focussed {
+      outline: 0;
+      color: $rpl-select-focus-color;
+      background-color: $rpl-select-focus-bg-color;
+    }
+
+    &-label {
+      padding-top: 2px;
+    }
+  }
+
+  &__checkbox {
+    float: left;
+    margin-right: $rpl-select-checkbox-margin;
+  }
+  &--disabled {
+    #{$root}__trigger {
+      cursor: not-allowed;
+      pointer-events: none;
+      background-color: $rpl-select-disabled-bg-color;
+      color: $rpl-select-disabled-color;
+      &-icon {
+        fill: $rpl-select-disabled-color;
+      }
+    }
+  }
+  &--open {
+    #{$root}__trigger {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border: $rpl-select-active-border;
+    }
+    #{$root}__listbox {
+      border: $rpl-select-active-border;
+      border-top: none;
+    }
+  }
+}

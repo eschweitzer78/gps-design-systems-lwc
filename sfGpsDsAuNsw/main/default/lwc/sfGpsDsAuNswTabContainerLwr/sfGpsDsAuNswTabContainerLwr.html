@@ -1,0 +1,41 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-au-nsw-tab-set-lwr
+    if:false={_sfGpsErrors}
+    title={title}
+    tab-class-name={_tabClassName}
+  >
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab1Label} label={tab1Label}
+      ><slot name="tab1"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab2Label} label={tab2Label}
+      ><slot name="tab2"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab3Label} label={tab3Label}
+      ><slot name="tab3"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab4Label} label={tab4Label}
+      ><slot name="tab4"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab5Label} label={tab5Label}
+      ><slot name="tab5"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab6Label} label={tab6Label}
+      ><slot name="tab6"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab7Label} label={tab7Label}
+      ><slot name="tab7"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab8Label} label={tab8Label}
+      ><slot name="tab8"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab9Label} label={tab9Label}
+      ><slot name="tab9"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+    <c-sf-gps-ds-au-nsw-tab-lwr if:true={tab10Label} label={tab10Label}
+      ><slot name="tab10"></slot
+    ></c-sf-gps-ds-au-nsw-tab-lwr>
+  </c-sf-gps-ds-au-nsw-tab-set-lwr>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

@@ -12,6 +12,10 @@ package.xml
 **/__tests__/**
 **/test/**
 
+# File gen files
+.osfilegen.json
+.cssgen.json
+
 # documentation, etc 
 **/docs
 

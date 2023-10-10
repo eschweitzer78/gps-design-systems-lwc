@@ -1,0 +1,66 @@
+<aura:component
+  implements="forceCommunity:themeLayout"
+  access="global"
+  description="sfGpsDs Theme Layout"
+>
+  <aura:attribute name="header" type="Aura.Component[]" required="false" />
+  <aura:attribute name="portalLinks" type="Aura.Component[]" required="false" />
+  <aura:attribute name="nav" type="Aura.Component[]" required="false" />
+  <aura:attribute name="footer" type="Aura.Component[]" required="false" />
+
+  <!-- this works with Citizen, Cypress, Ember, Jepson, Stella, Webster themes but *not* Customer Service -->
+  <aura:attribute name="themeHeader" type="Aura.Component[]" required="false" />
+
+  <aura:attribute
+    name="noWidgetMargin"
+    type="Boolean"
+    required="false"
+    default="false"
+  />
+  <aura:attribute name="wide" type="Boolean" required="false" default="true" />
+
+  <section id="qg-access" role="navigation" aria-labelledby="landmark-label">
+    <h2 id="landmark-label" tabindex="1">Skip links and keyboard navigation</h2>
+    <ul>
+      <li>
+        <a id="skip-to-content" href="#qg-primary-content" tabindex="1">
+          Skip to content
+        </a>
+      </li>
+      <li id="access-instructions">
+        <a
+          href="https://www.qld.gov.au/help/keyboard#section-aria-keyboard-navigation"
+          tabindex="1"
+        >
+          Use tab and cursor keys to move around the page (more information)
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <div class="{! v.noWidgetMargin ? 'sf-gps-ds-widget--no-margin' : '' }">
+    <header class="qg-site-header sticky">
+      <div class="container-fluid qg-site-width qg-site-header-top">
+        {!v.header}
+      </div>
+
+      <div id="qg-portal-links" class="qg-portal-links qg-navigation collapse">
+        {!v.portalLinks}
+      </div>
+
+      <div class="container-fluid qg-site-width qg-site-header-bottom">
+        {!v.nav}
+      </div>
+    </header>
+
+    <div
+      id="qg-content"
+      role="main"
+      class="{! v.wide ? 'qg-content qg-wide' : 'qg-content' }"
+    >
+      <div id="qg-primary-content">{!v.body}</div>
+    </div>
+
+    <div>{!v.footer}</div>
+  </div>
+</aura:component>

@@ -1,0 +1,13 @@
+<template>
+  <c-sf-gps-ds-au-qld-alert
+    if:false={_sfGpsErrors}
+    type={type}
+    title={title}
+    class-name={className}
+  >
+    <span if:true={content} class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
+  </c-sf-gps-ds-au-qld-alert>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

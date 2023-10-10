@@ -1,13 +1,54 @@
-<template>
-  <template if:true={link}>
+<template lwc:render-mode="light">
+  <template if:true={isAnchor}>
     <a class={computedClassName} href={link}>
-      <slot></slot>
+      <span
+        if:true={hasIconBefore}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {iconName}
+      </span>
+      <template if:true={hasIcon}>
+        <span><slot></slot></span>
+      </template>
+      <template if:false={hasIcon}>
+        <slot></slot>
+      </template>
+      <span
+        if:true={hasIconAfter}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {icon}
+      </span>
     </a>
   </template>
 
-  <template if:false={link}>
-    <button type={type} class={computedClassName} onclick={handleClick}>
-      {label}
+  <template if:true={isButton}>
+    <button
+      type={type}
+      disabled={_disabled}
+      class={computedClassName}
+      onclick={handleClick}
+    >
+      <span
+        if:true={hasIconBefore}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {iconName}
+      </span>
+      <template if:true={hasIcon}>
+        <span>{label}</span>
+      </template>
+      <template if:false={hasIcon}> {label} </template>
+      <span
+        if:true={hasIconAfter}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {iconName}
+      </span>
     </button>
   </template>
 </template>

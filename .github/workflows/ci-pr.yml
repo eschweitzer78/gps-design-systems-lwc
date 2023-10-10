@@ -85,13 +85,17 @@ jobs:
       # Cache node_modules to speed up the process
       - name: "Restore node_modules cache"
         id: cache-npm
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             npm-${{ env.cache-name }}-
             npm-
+
+      # Prep
+      - name: "Prepare repo"
+        run: npm run prep
 
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
@@ -100,7 +104,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds
         with:
           sourcePath: "sfGpsDs"
@@ -113,7 +117,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNsw"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-au-nsw
         with:
           sourcePath: "sfGpsDsAuNsw"
@@ -126,7 +130,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNswS"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-au-nsw-s
         with:
           sourcePath: "sfGpsDsAuNswS"
@@ -139,7 +143,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuVic"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-au-vic
         with:
           sourcePath: "sfGpsDsAuVic"
@@ -152,7 +156,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsUkGov"
-        uses: pmd/pmd-github-action@v1.3.0
+        uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-uk-gov
         with:
           sourcePath: "sfGpsDsUkGov"
@@ -164,13 +168,16 @@ jobs:
         run: exit 1
 
       # Install Salesforce CLI
-      - name: "Install Salesforce CLI"
+      - name: "Install Salesforce CLI v7.182.1"
         run: |
-          wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
-          mkdir ~/sfdx
-          tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
-          echo "$HOME/sfdx/bin" >> $GITHUB_PATH
-          ~/sfdx/bin/sfdx version
+          npm install sfdx-cli@7.182.1 --location=global
+          nodeInstallPath=$(npm config get prefix)
+          echo "$nodeInstallPath/bin" >> $GITHUB_PATH
+
+      # Install Salesforce CLI
+      - name: "Confirm Salesforce CLI version"
+        run: |
+          sfdx --version
 
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"
@@ -193,7 +200,7 @@ jobs:
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx force:package:install -p ${{ secrets.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 13 -r -s=AllUsers
+        run: sfdx force:package:install -p ${{ vars.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 20 -r -s=AllUsers
 
       # Activate metadata for omnistudio on scratch org
       # (removed as OmniStudio metadata cannot be packaged fo now)
@@ -204,9 +211,13 @@ jobs:
       #    cd ../..
       #    node ./configure-omnistudio-metadata scratch-org
 
+      # Generate css from scss
+      - name: "Automatically generate css"
+        run: npm run cssgen
+
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"
-        run: node ./osfilegen.js
+        run: npm run osfilegen
 
       # Deploy source to scratch org
       - name: "Push source to scratch org"
@@ -225,8 +236,8 @@ jobs:
         run: sfdx force:apex:test:run -c -r human -d ./tests/apex -w 20 --testlevel RunLocalTests
 
       # Delete temporary test file that Codecov is unable to parse
-      - name: "Delete coverage file (temporary step)"
-        run: rm ./tests/apex/test-result-707*-codecoverage.json
+      #- name: "Delete coverage file (temporary step)"
+      #  run: rm ./tests/apex/test-result-707*-codecoverage.json
 
       # Upload code coverage data
       - name: "Upload code coverage for Apex to Codecov.io"
@@ -290,7 +301,7 @@ jobs:
 
       # Trigger packaging workflow if needed
       - name: "Trigger packaging workflow if needed"
-        uses: peter-evans/repository-dispatch@v1.1.0
+        uses: peter-evans/repository-dispatch@v2
         if: ${{ steps.checkForChanges.outputs.hasChanges == 'true' }}
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}

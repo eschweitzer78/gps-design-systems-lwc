@@ -8,30 +8,64 @@
 import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
-const styleClass = {
-  dark: "nsw-button-dark",
-  "dark-outline": "nsw-button-dark-outline",
-  "dark-outline-solid": "nsw-button-dark-outline-solid",
-  light: "nsw-button-light",
-  "light-outline": "nsw-button-light-outline",
-  white: "nsw-button-white",
-  danger: "nsw-button-danger"
-};
 export default class SfGpsDsAuNswButton extends LightningElement {
+  static renderMode = "light";
+
+  @api label;
   @api link;
   @api cstyle = "dark"; // oneOf(['dark', 'dark-outline', 'dark-outline-solid', 'light', 'light-outline','white','danger']
-  @api type;
-  @api block = false;
+  @api type = "button";
+  @api rendering = "button";
+  @api disabled = false;
+  @api iconStyle = "none"; // one of none, before, after
+  @api iconName;
+  @api mobileFullWidth = false;
   @api className;
-  @api label;
+
+  /* deprecated */
+
+  @api block;
+
+  /* computed */
 
   get computedClassName() {
     return computeClass({
       "nsw-button": true,
-      "nsw-button-block": this.block,
-      [styleClass[this.cstyle]]: this.cstyle,
+      "nsw-button--dark": this.cstyle === "dark",
+      "nsw-button--dark-outline": this.cstyle === "dark-outline",
+      "nsw-button--dark-outline-solid": this.cstyle === "dark-outline-solid",
+      "nsw-button--light": this.cstyle === "light",
+      "nsw-button--light-outline": this.cstyle === "light-outline",
+      "nsw-button--white": this.cstyle === "white",
+      "nsw-button--danger": this.cstyle === "danger",
+      "nsw-button--info": this.cstyle === "info",
+      "nsw-button--full-width": this.mobileFullWidth,
       [this.className]: this.className
     });
+  }
+
+  get isAnchor() {
+    return this.rendering === "a" || this.link;
+  }
+
+  get isButton() {
+    return this.rendering === "button" && this.link == null;
+  }
+
+  get _disabled() {
+    return this.disabled ? "true" : null;
+  }
+
+  get hasIconBefore() {
+    return this.iconStyle === "before";
+  }
+
+  get hasIconAfter() {
+    return this.iconStyle === "after";
+  }
+
+  get hasIcon() {
+    return this.hasIconBefore || this.hasIconAfter;
   }
 
   handleClick() {

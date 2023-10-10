@@ -1,0 +1,20 @@
+.forceHighlightsPanel,
+.forcePageBlock,
+.forceActionsDropDownMenuList {
+  --lwc-inputStaticFontSize: 1rem;
+  --lwc-formLabelFontSize: 0.875rem;
+  --lwc-fontSizeMedium: 1rem;
+
+  a {
+    text-decoration: none;
+    font-weight: normal;
+  }
+
+  ul {
+    margin-top: initial;
+
+    li {
+      margin-top: initial;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+<template>
+  <div
+    id="sf-gps-ds-uk-gov-datetime-picker-form-group"
+    data-sf-gps-uk-gov-error-input
+    class={computedFormGroupClassName}
+  >
+    <label if:true={label} class={computedLabelClassName} style="width: auto">
+      {label}
+      <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+    </label>
+    <slot name="label"> </slot>
+
+    <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+      {fieldLevelHelp}
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <c-sf-gps-ds-uk-gov-date-picker-os-n
+          placeholder={datePlaceholder}
+          theme={theme}
+          label={dateLabel}
+          aria-label={dateAriaLabel}
+          format={dateFormat}
+          locale-format={localeFormat}
+          locale-format-invalid-error={localeFormatInvalidError}
+          name={dateName}
+          icon-url={iconUrl}
+          read-only={readOnly}
+          message-when-value-missing={messageWhenValueMissing}
+          min={dateMin}
+          max={dateMax}
+          value={_value}
+          tab-index={tabIndex}
+          disabled={disabled}
+          required={required}
+          output-type="date"
+          message-when-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-overflow={messageWhenRangeOverflow}
+          message-when-bad-input={messageWhenBadInput}
+          prev-month-label={prevMonthLabel}
+          next-month-label={nextMonthLabel}
+          pick-year-label={pickYearLabel}
+          today-label={todayLabel}
+          required-label={requiredLabel}
+          hide-icon={hideIcon}
+          styles={styles}
+          select-date-label={selectDateLabel}
+          onchange={setTime}
+        >
+        </c-sf-gps-ds-uk-gov-date-picker-os-n>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <c-sf-gps-ds-uk-gov-time-picker-os-n
+          field-label={i18n.timeLabel}
+          placeholder={timePlaceholder}
+          theme="sfgpsds"
+          label={timeLabel}
+          aria-label={timeAriaLabel}
+          name={timeName}
+          icon-url={iconUrl}
+          format={timeFormat}
+          locale-format={localeFormat}
+          locale-format-invalid-error={localeFormatInvalidError}
+          min={timeMin}
+          max={timeMax}
+          value={_value}
+          tab-index={tabIndex}
+          read-only={readOnly}
+          disabled={disabled}
+          required={required}
+          required-label={requiredLabel}
+          message-when-value-missing={messageWhenValueMissing}
+          interval={interval}
+          output-type="date"
+          message-when-bad-input={messageWhenBadInput}
+          message-when-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-overflow={messageWhenRangeOverflow}
+          hide-icon={hideIcon}
+          styles={styles}
+        >
+        </c-sf-gps-ds-uk-gov-time-picker-os-n>
+      </div>
+    </div>
+  </div>
+</template>

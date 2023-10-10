@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <header class={computedClassName}>
     <div class="nsw-header__container">
       <div class="nsw-header__inner">
@@ -46,17 +46,34 @@
               <span if:true={srMasterbrandLabel} class="sr-only"
                 >{srMasterbrandLabel}</span
               >
+
+              <template if:true={areLogosHorizontallyStacked}>
+                <!-- if logo and horizontal stacked -->
+                <template if:true={logo}>
+                  <img src={logo} alt={logoAlt} />
+                  <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
+                  <span if:true={siteDescriptor} class="sr-only"
+                    >{siteDescriptor}</span
+                  >
+                </template>
+              </template>
             </a>
           </div>
 
-          <div if:true={logo} class="nsw-header__name">
-            <img src={logo} alt={logoAlt} />
-            <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
-            <span if:true={siteDescriptor} class="sr-only"
-              >{siteDescriptor}</span
-            >
-          </div>
+          <template if:true={areLogosVerticallyStacked}>
+            <!-- if logo and vertical stacked -->
+            <div if:true={logo} class="nsw-header__name">
+              <div class="nsw-header__logo">
+                <img src={logo} alt={logoAlt} />
+                <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
+                <span if:true={siteDescriptor} class="sr-only"
+                  >{siteDescriptor}</span
+                >
+              </div>
+            </div>
+          </template>
 
+          <!-- if no logo -->
           <div if:false={logo} class="nsw-header__name">
             <div if:true={siteTitle} class="nsw-header__title">{siteTitle}</div>
             <div if:true={siteDescriptor} class="nsw-header__description">
@@ -68,9 +85,8 @@
         <div if:true={mobile} class="nsw-header__menu">
           <button
             type="button"
-            class="js-open-nav"
-            aria-expanded="false"
-            aria-controls="main-nav"
+            aria-expanded={mainNavIsOpen}
+            aria-controls={mainNavId}
             onclick={handleOpenMenu}
           >
             <span class="material-icons nsw-material-icons" aria-hidden="true">
@@ -80,66 +96,75 @@
           </button>
         </div>
 
-        <div if:true={search} class="nsw-header__search">
+        <div class="nsw-header__search">
+          <!-- Open Search -->
           <button
+            if:true={search}
             type="button"
-            aria-expanded={isSearchOpen}
-            aria-controls="header-search"
+            aria-expanded={searchIsOpen}
+            aria-controls={computedHeaderSearchId}
             onclick={handleOpenSearch}
           >
             <span class="material-icons nsw-material-icons" aria-hidden="true">
               search
             </span>
-            <span class="nsw-header-btn__sub">
-              <span class="sr-only">Show</span> Search
-            </span>
+            <span> <span class="sr-only">Show</span> Search </span>
           </button>
+        </div>
+
+        <!-- Sign-in / User Profile -->
+        <div if:true={profile} class="nsw-header__profile">
+          <slot></slot>
         </div>
       </div>
 
-      <div
-        if:true={search}
-        id="header-search"
-        class="nsw-header__search-area"
-        hidden
-      >
-        <form role="search">
-          <label for="nsw-header-input" class="sr-only"> {searchLabel} </label>
-          <input
-            id="nsw-header-input"
-            autocomplete="off"
-            class="nsw-header__input"
-            name="searchInput"
-            type="text"
-            value={value}
-            onchange={handleChange}
-            onkeyup={handleKeyUp}
-          />
+      <template if:true={search}>
+        <div id={computedHeaderSearchId} class="nsw-header__search-area" hidden>
+          <form role="search">
+            <label for={computedHeaderInputId} class="sr-only">
+              {searchLabel}
+            </label>
+            <input
+              id={computedHeaderInputId}
+              autocomplete="off"
+              class="nsw-header__input"
+              name="searchInput"
+              type="text"
+              value={value}
+              onchange={handleChange}
+              onkeyup={handleKeyUp}
+            />
+            <button
+              class="nsw-icon-button nsw-icon-button--flex"
+              aria-label={searchAriaLabel}
+              onclick={handleSearch}
+            >
+              <span
+                class="material-icons nsw-material-icons"
+                aria-hidden="true"
+              >
+                search
+              </span>
+              <span class="sr-only">Search</span>
+            </button>
+          </form>
+
           <button
-            class="nsw-icon-button nsw-icon-button--flex"
-            aria-label={searchAriaLabel}
-            onclick={handleSearch}
+            class="nsw-icon-button"
+            aria-expanded={searchIsOpen}
+            aria-controls={computedHeaderSearchId}
+            onclick={handleCloseSearch}
           >
-            <span class="material-icons nsw-material-icons" aria-hidden="true">
-              search
+            <span
+              class="material-icons nsw-material-icons nsw-search__close-icon"
+              aria-hidden="true"
+            >
+              close
             </span>
+            <span class="sr-only">Close search</span>
           </button>
-        </form>
-        <button
-          class="nsw-icon-button"
-          aria-expanded={isSearchOpen}
-          aria-controls="header-search"
-          onclick={handleCloseSearch}
-        >
-          <span
-            class="material-icons nsw-material-icons nsw-search__close-icon"
-            aria-hidden="true"
-          >
-            close
-          </span>
-          <span class="sr-only">Close search</span>
-        </button>
-      </div>
+        </div>
+      </template>
     </div>
   </header>
 </template>

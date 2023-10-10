@@ -1,5 +1,5 @@
 @import "c/sfGpsDsAuNswCoreOs";
-@import "c/sfGpsDsAuNswFormCssOs";
+@import "c/sfGpsDsAuNswFormOs";
 @import "c/sfGpsDsAuNswPredictiveListOsN";
 
 /* Need to adjust this rule as in Omniscript they always be first child */
@@ -18,7 +18,7 @@
 }
 
 .nsw-form__predictive .nsw-form__input.timeinput:hover {
-  background: url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32px' height='32px' viewBox='0 0 24 24' %3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/%3E%3C/svg%3E")
       no-repeat right 1rem center,
     linear-gradient(var(--nsw-text-hover), var(--nsw-text-hover));
   background-size: 1rem auto, auto;

@@ -1,0 +1,261 @@
+@import "c/sfGpsDsUkGovCoreOs";
+@import "./input.gen.css";
+
+/* inspired from slds */
+/* ------------------ */
+
+.sfgpsds-dropdown {
+  position: absolute;
+  z-index: 7000;
+  left: 50%;
+  float: left;
+  min-width: 6rem;
+  max-width: 20rem;
+  margin-top: 0.125rem;
+  margin-bottom: 0.125rem;
+  font-size: 0.75rem;
+  background: rgb(255, 255, 255);
+  transform: translateX(-50%);
+  color: rgb(3, 45, 96);
+}
+
+.sfgpsds-dropdown-trigger .sfgpsds-dropdown {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
+  transition: opacity 0.1s linear, visibility 0.1s linear;
+}
+
+.sfgpsds-dropdown-trigger .sfgpsds-dropdown {
+  top: 100%;
+}
+
+.sfgpsds-dropdown-trigger--click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger--click:hover .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click:hover .sfgpsds-dropdown {
+  display: none;
+}
+
+.sfgpsds-dropdown-trigger_click.sfgpsds-is-open .sfgpsds-dropdown {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.sfgpsds-dropdown_fluid,
+.sfgpsds-dropdown--fluid {
+  min-width: 12rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+.sfgpsds-dropdown_length-5,
+.sfgpsds-dropdown--length-5 {
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(((1rem * 1.5) + 1rem) * 5);
+  overflow-y: auto;
+}
+
+.sfgpsds-dropdown_length-7,
+.sfgpsds-dropdown--length-7 {
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(((1rem * 1.5) + 1rem) * 7);
+  overflow-y: auto;
+}
+
+.sfgpsds-dropdown_length-10,
+.sfgpsds-dropdown--length-10 {
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(((1rem * 1.5) + 1rem) * 10);
+  overflow-y: auto;
+}
+
+.sfgpsds-input {
+  padding-top: 0;
+  padding-right: 1rem;
+  padding-bottom: 0;
+  padding-left: 0.75rem;
+  width: 100%;
+  line-height: 1.875rem;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 0.25rem;
+  background-color: rgb(255, 255, 255);
+  color: rbg(3, 45, 96);
+  transition: border 0.1s linear, background-color 0.1s linear;
+  display: inline-block;
+}
+
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option_plain,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option--plain,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option_plain,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option--plain {
+  padding: 0.5rem 0.75rem;
+}
+
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option:focus,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option:hover,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option.sfgpsds-has-focus,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option:focus,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option:hover,
+.sfgpsds-listbox--vertical .slds-listbox__option.sfgpsds-has-focus {
+  background-color: rgb(243, 243, 243);
+  text-decoration: none;
+}
+
+.sfgpsds-media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sfgpsds-media_center,
+.sfgpsds-media--center {
+  align-items: center;
+}
+
+.sfgpsds-media__figure {
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+}
+
+.sfgpsds-media_small .sfgpsds-media__figure,
+.sfgpsds-media--small .sfgpsds-media__figure {
+  margin-right: 0.25rem;
+}
+
+.sfgpsds-media__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.sfgpsds-media__body,
+.sfgpsds-media__body > :last-child {
+  margin-bottom: 0;
+}
+
+/* end slds */
+/* -------- */
+
+/* omnistudio slds additions + our addition for input */
+
+.sfgpsds-listbox__option-text_entity,
+.sfgpsds-input {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+}
+
+/* end slds */
+/* -------- */
+
+.sfgpsds-combobox > label > span {
+  margin-right: 0.25rem;
+}
+
+/* Not required but keeping for tracking */
+.govuk-form-group.govuk-form-group--error
+  > .sfgpsds-combobox
+  > label
+  > span:after {
+  /* margin-left: $rpl-space; */ /* message already has space */
+  font-family: "GDS Transport", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 0.8em;
+  font-weight: normal;
+  color: #af272f;
+  content: " (Required)";
+}
+
+/* specific */
+
+.sfgpsds-dropdown {
+  top: -30px;
+  position: relative;
+  margin: auto;
+}
+
+.sfgpsds-dropdown_fluid,
+.sfgpsds-dropdown--fluid {
+  min-width: auto;
+}
+
+.sfgpsds-listbox {
+  outline: 0;
+  position: absolute;
+  top: -30px;
+  z-index: 1;
+  width: 100%;
+  max-height: 18.375rem;
+  overflow-y: auto;
+  border: 2px solid #0b0c0c;
+}
+
+.sfgpsds-is-open .sfgpsds-listbox {
+  /*border: 1px solid #1d70b8;*/
+  border-top: none;
+}
+
+.sfgpsds-listbox__item {
+  height: 2.625rem;
+  background: #fff;
+  font-family: "GDS Transport", "Arial", "Helvetica", "sans-serif";
+  line-height: 1em;
+  font-weight: normal;
+  color: #0b0c0c;
+  cursor: default;
+
+  font-size: 0.875rem;
+}
+
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option {
+  padding: 0.875rem 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .sfgpsds-listbox_vertical .sfgpsds-listbox__option {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+.sfgpsds-listbox__item:nth-child(odd) {
+  background-color: #fff;
+}
+
+.sfgpsds-listbox__item:hover {
+  background-color: #f3f2f1;
+  color: #0b0c0c;
+}
+
+.sfgpsds-listbox__option:hover,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option:hover,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option:hover {
+  outline: 0;
+  background-color: #f3f2f1;
+  color: #0b0c0c;
+}
+
+.sfgpsds-listbox__option:focus,
+.sfgpsds-listbox__option.sfgpsds-has-focus,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option:focus,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option.sfgpsds-has-focus,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option:focus,
+.sfgpsds-listbox--vertical .slds-listbox__option.sfgpsds-has-focus {
+  outline: 0;
+  color: #0b0c0c;
+  background-color: #fd0;
+}
+
+.sfgpsds-listbox__option.sfgpsds-is-selected,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option.sfgpsds-is-selected {
+  outline: 0;
+  background-color: #1d70b8;
+  color: #fff;
+}
+
+.dropdown-container {
+  max-height: 300px;
+  overflow-y: scroll;
+}

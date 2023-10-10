@@ -1,0 +1,140 @@
+<template>
+  <div
+    id="sf-gps-ds-uk-gov-date-picker-form-group"
+    data-sf-gps-uk-gov-error-input
+    class={computedFormGroupClass}
+  >
+    <fieldset
+      class="govuk-fieldset"
+      role="group"
+      aria-describedby={computedAriaDescribedBy}
+    >
+      <legend class={computedLegendClassName}>
+        <h1 class="govuk-fieldset__heading">{label}</h1>
+        <slot name="label"></slot>
+      </legend>
+
+      <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+        {fieldLevelHelp}
+      </div>
+
+      <p
+        if:true={isError}
+        class="govuk-error-message"
+        aria-live="assertive"
+        id="errorMessageBlock"
+      >
+        <span class="govuk-visually-hidden">{errorSrLabel}</span>{_errorMessage}
+      </p>
+
+      <div class="govuk-date-input" id="date-input">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label
+              class="govuk-label govuk-date-input__label"
+              for="date-input-day"
+            >
+              {dayLabel}
+            </label>
+
+            <input
+              class={computedDateDayInputClass}
+              type="text"
+              id="date-input-day"
+              aria-label={ariaLabel}
+              tabindex={tabIndex}
+              readonly={readOnly}
+              required={required}
+              placeholder={placeholder}
+              disabled={disabled}
+              inputmode="numeric"
+              name="date-input-day"
+              value={dayValue}
+              aria-invalid={ariaInvalid}
+              aria-describedby="errorMessageBlock"
+              onkeyup={handleDayChange}
+              onchange={handleDayChange}
+              onblur={handleDateBlur}
+              onfocus={handleDateFocus}
+            />
+          </div>
+        </div>
+
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label
+              class="govuk-label govuk-date-input__label"
+              for="date-input-month"
+            >
+              {monthLabel}
+            </label>
+
+            <input
+              class={computedDateMonthInputClass}
+              type="text"
+              id="date-input-month"
+              value={monthValue}
+              aria-label={ariaLabel}
+              tabindex={tabIndex}
+              readonly={readOnly}
+              required={required}
+              placeholder={placeholder}
+              disabled={disabled}
+              inputmode="numeric"
+              name="date-input-month"
+              aria-invalid={ariaInvalid}
+              aria-describedby="errorMessageBlock"
+              onkeyup={handleMonthChange}
+              onchange={handleMonthChange}
+              onblur={handleDateBlur}
+              onfocus={handleDateFocus}
+            />
+          </div>
+        </div>
+
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label
+              class="govuk-label govuk-date-input__label"
+              for="date-input-year"
+            >
+              {yearLabel}
+            </label>
+
+            <input
+              class={computedDateYearInputClass}
+              type="text"
+              id="date-input-year"
+              value={yearValue}
+              aria-label={ariaLabel}
+              tabindex={tabIndex}
+              readonly={readOnly}
+              required={required}
+              placeholder={placeholder}
+              disabled={disabled}
+              inputmode="numeric"
+              name="date-input-year"
+              aria-invalid={ariaInvalid}
+              aria-describedby="errorMessageBlock"
+              onkeyup={handleYearChange}
+              onchange={handleYearChange}
+              onblur={handleDateBlur}
+              onfocus={handleDateFocus}
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- hidden input for original widget -->
+      <div class="slds-form-element__control">
+        <input
+          type={type}
+          data-id="date-picker-slds-input"
+          value={_displayValue}
+          required={required}
+          hidden
+        />
+      </div>
+    </fieldset>
+  </div>
+</template>

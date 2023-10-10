@@ -1,0 +1,48 @@
+<template>
+  <div class={computedClassName} tabindex="0">
+    <table>
+      <caption if:true={computedShowCaption}>
+        {caption}
+      </caption>
+      <thead if:true={_tableHeaders}>
+        <tr>
+          <template for:each={_tableHeaders} for:item="header">
+            <th key={header.name} width={header.width} class={header.className}>
+              {header.label}
+            </th>
+          </template>
+        </tr>
+      </thead>
+      <tbody if:true={_tableRows}>
+        <template for:each={_tableRows} for:item="row">
+          <tr key={row._key}>
+            <template if:true={row._cols} for:each={row._cols} for:item="cell">
+              <td
+                lwc:if={cell._isMarkdown}
+                key={cell._key}
+                class={cell.className}
+              >
+                <c-sf-gps-ds-au-nsw-markdown-element-comm
+                  content={cell.value}
+                  class-name={cell.className}
+                >
+                </c-sf-gps-ds-au-nsw-markdown-element-comm>
+              </td>
+              <td
+                lwc:elseif={cell._isBoolean}
+                key={cell._key}
+                class={cell.className}
+              >
+                <template lwc:if={cell.value}> Yes </template>
+                <template lwc:else> No </template>
+              </td>
+              <td lwc:else key={cell.key} class={cell.className}>
+                {cell.value}
+              </td>
+            </template>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</template>

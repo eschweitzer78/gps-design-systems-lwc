@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
-  <masterLabel>NSW DS Header</masterLabel>
+  <masterLabel>NSW DS Header (Demo)</masterLabel>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
@@ -70,11 +70,39 @@
         default="true"
       />
       <property
+        name="mobileLogoStacking"
+        type="String"
+        label="Mobile logo stacking"
+        description="Stacking direction of the masterbrand and logo on mobile."
+        default="horizontal"
+        datasource="horizontal,vertical"
+      />
+      <property
         name="search"
         type="Boolean"
         label="Show search bar"
         description="Provide user with easy access to a targeted search."
         default="true"
+      />
+      <property
+        name="profileIpName"
+        type="String"
+        label="Profile integration procedure name"
+        description="Name of the Integration procedure mapping content to profile menu. Leave empty for if no profile menu is required."
+      />
+      <property
+        name="profileInputJSON"
+        type="String"
+        label="Profile input JSON"
+        description="JSON formatted input parameters for the profile integration procedure."
+        default="{}"
+      />
+      <property
+        name="profileOptionsJSON"
+        type="String"
+        label="Profile options JSON"
+        description="JSON formatted options for the Profile integration procedure."
+        default="{}"
       />
       <property
         name="menuLabel"

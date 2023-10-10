@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>GOV.UK Panel</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title text that provides details of the confirmation or results pages to highlight important content."
+        default="Application complete"
+      />
+      <property
+        name="headingLevel"
+        type="String"
+        label="Heading level"
+        default="1"
+        datasource="1,2,3,4,5,6"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Details"
+        description="Used to give the user further context - in markdown format."
+        default="Your reference number is **HDJ2123FF**"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

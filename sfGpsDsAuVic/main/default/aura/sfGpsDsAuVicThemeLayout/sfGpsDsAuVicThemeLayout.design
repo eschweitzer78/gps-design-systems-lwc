@@ -1,4 +1,4 @@
-<design:component >
+<design:component label="VIC Design System Theme Layout">
   <design:attribute name="hideHeader" label="Hide Main Header" description="Hides the standard header.">
   </design:attribute>
   <design:attribute name="backToTopShow" label="Show Back to top" description="Indicates that the sticky Back to top button should be shown towards the bottom of the page.">
@@ -11,5 +11,7 @@
   </design:attribute>
   <design:attribute name="contentId" label="Content Id" description="Id to set on content region.">
   </design:attribute>
-
+  <design:attribute name="primaryColor" label="Primary colour" description="Main theme colour." type="Color"/>
+  <design:attribute name="darkPrimaryColor" label="Dark primary colour" description="Colour used when a darker version of the primary colour is required." type="Color"/>
+  <design:attribute name="secondaryColor" label="Secondary colour" description="Secondary theme colour." type="Color"/>
 </design:component>

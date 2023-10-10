@@ -1,9 +1,13 @@
 <template>
   <c-sf-gps-ds-au-nsw-pagination
+    if:false={_sfGpsErrors}
     active-page={_currentActivePage}
     last-page={_currentLastPage}
     onpagechange={handlePageChange}
     class-name={className}
   >
   </c-sf-gps-ds-au-nsw-pagination>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
 </template>

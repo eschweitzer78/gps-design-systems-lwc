@@ -24,11 +24,11 @@ describe("c-sf-gps-ds-au-nsw-results-bar", () => {
     document.body.appendChild(element);
 
     // Assert
-    const info = element.shadowRoot.querySelector(infoSelector);
+    const info = element.querySelector(infoSelector);
     expect(info).not.toBeNull();
     expect(info.textContent).toMatch(element.noResultText);
 
-    const sorting = element.shadowRoot.querySelector(sortingSelector);
+    const sorting = element.querySelector(sortingSelector);
     expect(sorting).toBeNull();
   });
 
@@ -51,18 +51,18 @@ describe("c-sf-gps-ds-au-nsw-results-bar", () => {
     document.body.appendChild(element);
 
     // Assert
-    const info = element.shadowRoot.querySelector(infoSelector);
+    const info = element.querySelector(infoSelector);
     expect(info).not.toBeNull();
     expect(info.textContent).toMatch("Showing results 1 - 20 of 42 results");
 
-    const sorting = element.shadowRoot.querySelector(sortingSelector);
+    const sorting = element.querySelector(sortingSelector);
     expect(sorting).not.toBeNull();
     expect(sorting.selectedIndex).toBe(1);
 
     const handler = jest.fn();
     element.addEventListener("change", handler);
 
-    let firstOption = element.shadowRoot.querySelector(firstOptionSelector);
+    let firstOption = element.querySelector(firstOptionSelector);
     expect(firstOption).not.toBeNull();
 
     sorting.value = element.sortOptions[0].value;

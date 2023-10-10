@@ -25,15 +25,15 @@
       placeholder={placeholder}
       id="textareaId"
       autocomplete={autocomplete}
+      aria-labelledby="textarealabel"
+      aria-describedby={ariaDescribedBy}
+      aria-invalid={isError}
       oninput={updateValue}
       onblur={validateError}
       onfocus={triggerEvent}
       onchange={triggerEvent}
       onkeyup={keyCallbacks}
       onkeydown={keyCallbacks}
-      aria-labelledby="textarealabel"
-      aria-describedby={ariaDescribedBy}
-      aria-invalid={isError}
     >
       {_val}
     </textarea>

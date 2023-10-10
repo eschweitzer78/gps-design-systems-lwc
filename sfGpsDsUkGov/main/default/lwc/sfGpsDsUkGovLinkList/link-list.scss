@@ -1,0 +1,30 @@
+@import "../sfGpsDsUkGovCore/fonts-path.scss";
+
+.govuk-scope {
+  .govuk-link-list {
+    li {
+      margin: 0;
+    }
+  }
+}
+
+.govuk-link-list {
+  &__item {
+    border-top: 1px solid #b1b4b6;
+    margin: 0;
+  }
+  &__text:hover {
+    border-bottom: 3px solid #003078;
+  }
+}
+
+.govuk-link-list a {
+  align-items: center;
+  color: #1d70b8;
+  display: flex;
+  font-size: 1.25rem;
+  font-weight: 600;
+  justify-content: space-between;
+  padding: 1rem;
+  text-decoration: none;
+}

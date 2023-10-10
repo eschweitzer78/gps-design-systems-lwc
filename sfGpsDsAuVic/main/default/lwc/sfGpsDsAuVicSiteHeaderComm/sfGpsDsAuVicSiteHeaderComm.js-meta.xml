@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>VIC DS Site Header</masterLabel>
   <targets>
@@ -20,12 +20,14 @@
         type="String"
         label="Input JSON"
         description="JSON formatted input parameters for the Integration procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
         label="Options JSON"
         description="JSON formatted options for the Integration procedure."
+        default="{}"
       />
       <property
         name="masterbrand"

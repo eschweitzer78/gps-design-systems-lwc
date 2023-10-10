@@ -18,38 +18,42 @@ export default class SfGpsDsAuVicSiteFooterComm extends SfGpsDsNavigation {
     };
   }
 
-  get nav() {
-    return [
-      {
-        text: "Your Services",
-        url: "",
-        children: [
-          { text: "Grant awards and assistance", url: "" },
-          { text: "Law and safety", url: "" }
-        ]
-      },
-      {
-        text: "About VIC Government",
-        url: "",
-        children: [
-          { text: "Grant awards and assistance", url: "" },
-          { text: "Law and safety", url: "" }
-        ]
-      },
-      { text: "News", url: "", children: [] },
-      { text: "Events", url: "", children: [] }
-    ];
+  @api socialLinksTitle;
+
+  /* api socialLinks */
+
+  _socialLinksOriginal;
+  _socialLinksArray;
+
+  @api get socialLinks() {
+    return this._socialLinksOriginal;
   }
 
-  get socialLinks() {
-    return {
-      title: "Connect with us",
-      children: [
-        { title: "DFFH Twitter", uri: "#", icon: "twitter" },
-        { title: "DFFH LinkedIn", uri: "#", icon: "linkedin" },
-        { title: "DFFH Facebook", uri: "#", icon: "facebook" }
-      ]
-    };
+  set socialLinks(value) {
+    this._socialLinksOriginal = value;
+
+    if (!value) {
+      this._socialLinksArray = null;
+      return;
+    }
+
+    try {
+      let sl = JSON.parse(value);
+
+      if (Array.isArray(sl)) {
+        this._socialLinksArray = sl;
+      } else {
+        this.addError("SL-JA", "Social Links JSON must be an array");
+        this._socialLinksArray = null;
+      }
+    } catch (e) {
+      this.addError("SL-JF", "Issue when parsing Social Links JSON");
+      this._socialLinksArray = null;
+    }
+  }
+
+  get _socialLinks() {
+    return { title: this.socialLinksTitle, children: this._socialLinksArray };
   }
 
   /* api: footerLogos array { src, alt, url } */
@@ -112,4 +116,8 @@ export default class SfGpsDsAuVicSiteFooterComm extends SfGpsDsNavigation {
   set optionsJSON(value) {
     super.optionsJSON = value;
   }
+
+  @api navIpName;
+  @api navInputJSON;
+  @api navOptionsJSON;
 }

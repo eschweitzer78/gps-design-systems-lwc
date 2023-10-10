@@ -1,49 +1,28 @@
 <template>
-  <footer if:false={_sfGpsErrors} class="nsw-footer">
-    <!-- footer-lower -->
-    <div class={computedLowerFooterClassName}>
-      <div class="nsw-container">
-        <p if:true={statement}>{statement}</p>
-        <template if:true={_items}>
-          <hr />
-          <nav
-            role="navigation"
-            aria-labelledby="lower-footer-links"
-            class="clearfix"
-          >
-            <h4 class="sr-only" id="lower-footer-links">Legal &amp; Privacy</h4>
-            <ul class="clearfix nsw-footer-links">
-              <template for:each={_items} for:item="link">
-                <li key={link.index} class="nsw-footer-links__item">
-                  <a
-                    href={link.url}
-                    class="nsw-footer-links__link"
-                    data-ndx={link.index}
-                    onclick={handleClick}
-                    >{link.text}</a
-                  >
-                </li>
-              </template>
-            </ul>
-          </nav>
-        </template>
-        <div class="nsw-footer__info">
-          <div
-            if:true={copyrightMention}
-            class="nsw-footer__copyright"
-            lwc:dom="manual"
-          ></div>
-          <div
-            if:true={builtMention}
-            class="nsw-footer__built"
-            lwc:dom="manual"
-          ></div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <template if:false={_sfGpsErrors}>
+    <div class={computedClassName}>
+      <c-sf-gps-ds-au-nsw-upper-footer-ip
+        if:true={upperFooterIpName}
+        ip-name={upperFooterIpName}
+        input-j-s-o-n={upperFooterInputJSON}
+        options-j-s-o-n={upperFooterOptionsJSON}
+        class-name={upperFooterClassName}
+      >
+      </c-sf-gps-ds-au-nsw-upper-footer-ip>
 
-  <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+      <c-sf-gps-ds-au-nsw-lower-footer-ip
+        ip-name={ipName}
+        input-j-s-o-n={inputJSON}
+        options-j-s-o-n={optionsJSON}
+        statement={statement}
+        copyright-mention={copyrightMention}
+        built-mention={builtMention}
+        class-name={lowerFooterClassName}
+      >
+      </c-sf-gps-ds-au-nsw-lower-footer-ip>
+    </div>
+  </template>
+
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
   </c-sf-gps-ds-configuration-error>
 </template>

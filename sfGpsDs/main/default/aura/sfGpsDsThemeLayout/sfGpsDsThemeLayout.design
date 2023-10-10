@@ -1,5 +1,7 @@
-<design:component >
-  <design:attribute name="hideHeader" label="Hide Main Header" description="Hides the standard header.">
+<design:component label="Salesforce Global Public Sector Design Systems Theme Layout">
+  <design:attribute name="hideHeader" label="Hide main header" description="Hides the standard header.">
+  </design:attribute>
+  <design:attribute name="noWidgetMargin" label="No widget margin" description="Removes the standard widget margin.">
   </design:attribute>
   <design:attribute name="navId" label="navId" description="Id to set on nav region.">
   </design:attribute>

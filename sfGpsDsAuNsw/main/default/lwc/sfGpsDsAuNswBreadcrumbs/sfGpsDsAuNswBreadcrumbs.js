@@ -9,6 +9,8 @@ import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswBreadcrumbs extends LightningElement {
+  static renderMode = "light";
+
   @api label = "breadcrumbs";
   @api className = "";
   @api items = [];

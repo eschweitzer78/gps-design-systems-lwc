@@ -1,0 +1,16 @@
+@import "c/sfGpsDsUkGovCoreOs";
+@import "./select.gen.css";
+
+/* repeat icons */
+
+label.govuk-label {
+  display: block; /* UK Gov uses block but "inline" can be used if required to make the + appear next to the label  */
+}
+
+label span {
+  margin-right: 0.5rem;
+}
+
+label slot {
+  display: table-cell;
+}

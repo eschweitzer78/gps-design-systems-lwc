@@ -56,33 +56,177 @@ export function parseIso8601(date) {
     timestamp = Date.parse(date);
   }
 
-  return new Date(timestamp);
+  let rv = new Date(timestamp);
+  return isNaN(rv) ? null : rv;
 }
 
 const DATE_STYLE_DEFAULT = "medium";
-const RANGE_DIVIDER_DEFAULT = " to ";
 
-export function formatDate(date, dateStyle = DATE_STYLE_DEFAULT) {
-  let rv = "Invalid date";
+const MONTH_NAMES_LONG = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+const MONTH_NAMES_SHORT = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+];
+const WEEKDAY_NAMES = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+export function formatDate(
+  date,
+  dateStyle = DATE_STYLE_DEFAULT,
+  userLocale = "en-AU"
+) {
+  let rv = null;
 
   try {
-    rv = date.toLocaleDateString(undefined, {
+    rv = date.toLocaleDateString(userLocale, {
       dateStyle: dateStyle
     });
   } catch (error) {
-    console.log(error);
+    // TODO: improve toLocaleDateString polyfill
+    // fallback, very likely that the browser does not support toLocaleDateString
+    // will disregard locale and deliver in en-AU
+    switch (dateStyle) {
+      case "full":
+        rv = `${WEEKDAY_NAMES[date.getDay()]} ${date.getDate()} ${
+          MONTH_NAMES_LONG[date.getMonth()]
+        } ${date.getFullYear()}`;
+        break;
+
+      case "long":
+        rv = `${date.getDate()} ${
+          MONTH_NAMES_LONG[date.getMonth()]
+        } ${date.getFullYear()}`;
+        break;
+
+      case "medium":
+        rv = `${date.getDate()} ${
+          MONTH_NAMES_SHORT[date.getMonth()]
+        } ${date.getFullYear()}`;
+        break;
+
+      default:
+        rv = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+    }
   }
 
   return rv;
 }
 
+const fdrOptions = {
+  full: {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  },
+  long: {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  },
+  medium: {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  },
+  short: {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric"
+  }
+};
+
 export function formatDateRange(
   dateStart,
   dateEnd,
-  dateStyle = DATE_STYLE_DEFAULT
+  dateStyle = DATE_STYLE_DEFAULT,
+  userLocale = "en-AU"
 ) {
-  return `${formatDate(
-    dateStart,
-    dateStyle
-  )}${RANGE_DIVIDER_DEFAULT}${formatDate(dateEnd, dateStyle)}`;
+  if (dateStart === null) {
+    return formatDate(dateEnd, dateStyle, userLocale);
+  }
+
+  if (dateEnd === null) {
+    return formatDate(dateStart, dateStyle, userLocale);
+  }
+
+  // eslint-disable-next-line @salesforce/lightning/prefer-i18n-service
+  const fmt = new Intl.DateTimeFormat(
+    userLocale,
+    fdrOptions[dateStyle] || fdrOptions[DATE_STYLE_DEFAULT]
+  );
+
+  return fmt.formatRange(dateStart, dateEnd);
+}
+
+export function getUserLocale(
+  useFallbackLocale = true,
+  fallbackLocale = "en-AU"
+) {
+  return getUserLocales(useFallbackLocale, fallbackLocale)[0] || null;
+}
+
+export function getUserLocales(
+  useFallbackLocale = true,
+  fallbackLocale = "en-AU"
+) {
+  let languageList = [];
+
+  if (typeof navigator !== "undefined") {
+    languageList = languageList.concat(navigator.languages, navigator.language);
+  }
+
+  if (useFallbackLocale) {
+    languageList.push(fallbackLocale);
+  }
+
+  return uniqDefined(languageList).map(normalizeLocale);
+}
+
+function uniqDefined(arr) {
+  return arr.filter((el, index) => el && arr.indexOf(el) === index);
+}
+
+function isAllLowerCase(el) {
+  return el.toLowerCase() === el;
+}
+
+function normalizeLocale(el) {
+  if (!el || el.indexOf("-") === -1 || !isAllLowerCase(el)) {
+    return el;
+  }
+
+  const [splitEl1 = "", splitEl2 = ""] = el.split("-");
+
+  return `${splitEl1}-${splitEl2.toUpperCase()}`;
 }

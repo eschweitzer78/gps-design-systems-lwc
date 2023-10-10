@@ -23,6 +23,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
   @api headline;
   @api image;
@@ -105,24 +107,19 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
     }
   }
 
-  _rendered = false;
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 
   renderedCallback() {
-    if (this._rendered === false) {
-      let element;
-
-      if (this.copy) {
-        if ((element = this.template.querySelector(".sfGpsMarkdown"))) {
-          replaceInnerHtml(element, this._copyHtml);
-        } else {
-          this.addError(
-            "CO-PH",
-            "Couldn't find internal copy markdown placeholder"
-          );
-        }
+    if (this.copy) {
+      let element = this.template.querySelector(MARKDOWN_SELECTOR);
+      if (element) {
+        replaceInnerHtml(element, this._copyHtml);
       }
-
-      this._rendered = true;
     }
   }
 }

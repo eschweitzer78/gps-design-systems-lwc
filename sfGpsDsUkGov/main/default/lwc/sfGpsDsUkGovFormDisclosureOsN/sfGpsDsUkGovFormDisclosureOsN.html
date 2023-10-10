@@ -1,0 +1,33 @@
+<template>
+  <div class="govuk-form-group">
+    <label class="govuk-label" style="width: auto" for="frt">
+      {mergedLabel}
+      <span if:true={_propSetMap.required} class="sr-only">
+        ({allCustomLabelsUtil.OmniRequired})</span
+      >
+    </label>
+
+    <div class="govuk-disclosure">
+      <div class="govuk-disclosure__content">
+        <omnistudio-omniscript-formatted-rich-text id="frt" value={_dText}>
+        </omnistudio-omniscript-formatted-rich-text>
+      </div>
+
+      <div class="govuk-disclosure__consent">
+        <c-sf-gps-ds-uk-gov-input-os-n
+          data-omni-input=""
+          type="checkbox"
+          label={mergedCheckLabel}
+          required={_propSetMap.required}
+          required-label={allCustomLabelsUtil.OmniRequired}
+          theme={_theme}
+          checked={elementValue}
+          message-when-value-missing={_messageWhenValueMissing}
+          tab-index={tabIndex}
+          onchange={handleChange}
+        >
+        </c-sf-gps-ds-uk-gov-input-os-n>
+      </div>
+    </div>
+  </div>
+</template>

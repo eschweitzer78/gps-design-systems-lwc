@@ -1,5 +1,6 @@
 <template lwc:render-mode="light">
   <div
+    id={index}
     class={computedClass}
     data-depth={depth}
     data-vpos={computedRootVerticalDepth}
@@ -9,7 +10,7 @@
       <div class="rpl-menu__inner_root">
         <c-sf-gps-ds-au-vic-quick-exit
           if:true={computedShowQuickExit}
-          class="rpl-menu__quickexit"
+          class-name="rpl-menu__quickexit"
           text={quickExitLabel}
           escape-url={quickExitTarget}
         >
@@ -19,6 +20,8 @@
           <div class="rpl-menu__header">
             <button
               if:true={computedShowCloseMenu}
+              aria-controls={index}
+              aria-expanded={open}
               class="rpl-menu__back"
               onclick={handleVerticalGoBack}
             >
@@ -66,7 +69,11 @@
             </li>
 
             <!-- Menu items -->
-            <template for:each={_menu} for:item="list" for:index="index">
+            <template
+              for:each={_decoratedMenu}
+              for:item="list"
+              for:index="index"
+            >
               <!-- decoratedMenu -->
               <li key={list.key} class={list.liClass}>
                 <!-- removed onfocus={handleItemFocus} -->
@@ -88,7 +95,7 @@
                   class={list.buttonClass}
                   onclick={handleMenuLinkClick}
                   aria-expanded={list.open}
-                  aria-controls={list.index}
+                  aria-controls={list.id}
                   data-menu-index={list.index}
                 >
                   <span>{list.text}</span>
@@ -102,7 +109,6 @@
                 <!-- removed onfocus={handleInnerItemFocus} -->
                 <c-sf-gps-ds-au-vic-menu
                   if:false={list.displayAsLink}
-                  id={list.index}
                   menu={list.children}
                   depth={computedSubMenuDepth}
                   open={list.open}
@@ -119,7 +125,7 @@
                   onopenmenu={handleOpenMenu}
                   onnavigate={handleNavigate}
                   data-menu-index={list.index}
-                  index={list.index}
+                  index={list.id}
                 >
                 </c-sf-gps-ds-au-vic-menu>
               </li>

@@ -1,0 +1,230 @@
+<aura:component
+  implements="forceCommunity:availableForAllPageTypes"
+  controller="SfGpsDsAuNswUserController"
+  access="global"
+>
+  <aura:attribute name="masterbrand" type="String" />
+  <aura:attribute name="masterbrandAlt" type="String" />
+  <aura:attribute
+    name="srMasterbrandLabel"
+    type="String"
+    default="NSW Government"
+  />
+  <aura:attribute name="logo" type="String" />
+  <aura:attribute name="logoAlt" type="String" />
+  <aura:attribute name="menuLabel" type="String" default="menu" />
+  <aura:attribute name="searchLabel" type="String" default="Search site for:" />
+
+  <aura:attribute name="siteTitle" type="String" />
+  <aura:attribute name="siteDescriptor" type="String" />
+  <aura:attribute name="headerUrl" type="String" default="" />
+  <aura:attribute name="mobile" type="Boolean" default="true" />
+  <aura:attribute name="search" type="Boolean" default="false" />
+
+  <aura:attribute name="profileIpName" type="String" />
+  <aura:attribute name="profileInputJSON" type="String" default="{}" />
+  <aura:attribute name="profileOptionsJSON" type="String" default="{}" />
+
+  <aura:attribute name="searchAriaLabel" type="String" default="search" />
+  <aura:attribute name="className" type="String" />
+
+  <aura:attribute name="mainNavId" type="String" />
+  <aura:attribute name="mainNavIsOpen" type="Boolean" default="false" />
+  <aura:attribute
+    name="searchIsOpen"
+    type="Boolean"
+    default="false"
+    access="private"
+  />
+  <aura:attribute name="value" type="String" default="" />
+
+  <aura:attribute name="isGuest" type="Boolean" access="private" />
+  <aura:attribute name="userAlias" type="String" access="private" />
+  <aura:attribute name="cBasePath" type="String" default="#" access="private" />
+  <aura:attribute name="waratahSvg" type="String" access="private" />
+  <aura:attribute name="computedClassName" type="String" access="private" />
+  <aura:attribute name="error" type="String" access="private" />
+
+  <aura:handler name="init" value="{! this }" action="{! c.handleInit }" />
+  <aura:handler
+    name="change"
+    value="{! v.profile }"
+    action="{! c.handleProfileChange }"
+  />
+  <aura:handler
+    name="change"
+    value="{! v.className }"
+    action="{! c.handleClassNameChange }"
+  />
+
+  <aura:registerEvent name="searchEvt" type="c:sfGpsDsAuNswHeaderSearch" />
+  <aura:registerEvent name="openmenuEvt" type="c:sfGpsDsAuNswHeaderOpenMenu" />
+  <aura:registerEvent name="homeEvt" type="c:sfGpsDsAuNswHeaderHome" />
+
+  <div>
+    <aura:if isTrue="{! v.error }">
+      <!-- TODO: better error handling -->
+      <p>Error: {! v.error }</p>
+    </aura:if>
+
+    <header class="{! v.computedClassName }">
+      <div class="nsw-header__container">
+        <div class="nsw-header__inner">
+          <div class="nsw-header__main">
+            <div class="nsw-header__waratah">
+              <a
+                href="{! v.headerUrl ? v.headerUrl : v.cBasePath }"
+                class="nsw-header__logo-link"
+                onclick="{! c.handleLogoClick }"
+              >
+                <aura:if isTrue="{! v.masterbrand }">
+                  <img src="{! v.masterbrand }" alt="{! v.masterbrandAlt }" />
+
+                  <aura:set attribute="else">
+                    <aura:unescapedHtml value="{! v.waratahSvg }" />
+                  </aura:set>
+                </aura:if>
+
+                <aura:if isTrue="{! v.srMasterbrandLabel }">
+                  <span class="sr-only">{! v.srMasterbrandLabel }</span>
+                </aura:if>
+              </a>
+            </div>
+
+            <aura:if isTrue="{! v.logo }">
+              <div class="nsw-header__name">
+                <img src="{! v.logo }" alt="{! v.logoAlt }" />
+                <aura:if isTrue="{! v.siteTitle}">
+                  <span class="sr-only">{! v.siteTitle }</span>
+                </aura:if>
+                <aura:if isTrue="{! v.siteDescriptor}">
+                  <span class="sr-only"> {! v.siteDescriptor } </span>
+                </aura:if>
+              </div>
+
+              <aura:set attribute="else">
+                <div class="nsw-header__name">
+                  <aura:if isTrue="{! v.siteTitle}">
+                    <div class="nsw-header__title">{! v.siteTitle }</div>
+                  </aura:if>
+                  <aura:if isTrue="{! v.siteDescriptor}">
+                    <div class="nsw-header__description">
+                      {! v.siteDescriptor }
+                    </div>
+                  </aura:if>
+                </div>
+              </aura:set>
+            </aura:if>
+          </div>
+
+          <aura:if isTrue="{! v.mobile }">
+            <div class="nsw-header__menu">
+              <button
+                type="button"
+                aria-expanded="{! v.mainNavIsOpen }"
+                aria-controls="{! v.mainNavId }"
+                onclick="{! c.handleOpenMenu }"
+              >
+                <span
+                  class="material-icons nsw-material-icons"
+                  aria-hidden="true"
+                >
+                  {! v.menuLabel }
+                </span>
+                <span><span class="sr-only">Open </span>Menu</span>
+              </button>
+            </div>
+          </aura:if>
+
+          <div class="nsw-header__search">
+            <!-- Open Search -->
+            <aura:if isTrue="{! v.search }">
+              <button
+                type="button"
+                aria-expanded="{! v.searchIsOpen }"
+                aria-controls="{! globalId + '_header-search' }"
+                onclick="{! c.handleOpenSearch }"
+              >
+                <span
+                  class="material-icons nsw-material-icons"
+                  aria-hidden="true"
+                >
+                  search
+                </span>
+                <span><span class="sr-only">Show </span>Search</span>
+              </button>
+            </aura:if>
+          </div>
+
+          <!-- Sign-in / User Profile -->
+          <aura:if isTrue="{! v.profileIpName }">
+            <div class="nsw-header__profile">
+              <aura:if isTrue="{! !v.isGuest }">
+                <forceCommunity:notifications />
+              </aura:if>
+              <c:sfGpsDsAuNswHeaderProfileIp
+                ipName="{! v.profileIpName }"
+                inputJSON="{! v.profileInputJSON }"
+                optionsJSON="{! v.profileOptionsJSON }"
+                isGuest="{! v.isGuest }"
+                userAlias="{! v.userAlias }"
+              />
+            </div>
+          </aura:if>
+        </div>
+
+        <aura:if isTrue="{! v.search }">
+          <div
+            id="{! globalId + '_header-search' }"
+            aura:id="header-search"
+            class="nsw-header__search-area"
+            hidden="{! !v.searchIsOpen }"
+          >
+            <form role="search">
+              <label for="{! globalId + '_header-input' }" class="sr-only">
+                {! v.searchLabel }
+              </label>
+              <input
+                id="{! globalId + '_header-input' }"
+                aura:id="header-input"
+                autocomplete="off"
+                class="nsw-header__input"
+                name="searchInput"
+                type="text"
+                value="{! v.value }"
+                onchange="{! c.handleChange }"
+                onkeyup="{! c.handleKeyUp }"
+              />
+              <button
+                class="nsw-icon-button nsw-icon-button--flex"
+                aria-label="{! v.searchAriaLabel }"
+                onclick="{! c.handleSearch }"
+              >
+                <span
+                  class="material-icons nsw-material-icons"
+                  aria-hidden="true"
+                  >search</span
+                >
+                <span class="sr-only">Search</span>
+              </button>
+            </form>
+
+            <button
+              class="nsw-icon-button"
+              aria-expanded="{! v.searchIsOpen }"
+              aria-controls="{! globalId + '_header-search' }"
+              onclick="{! c.handleCloseSearch}"
+            >
+              <span
+                class="material-icons nsw-material-icons nsw-search__close-icon"
+                aria-hidden="true"
+                >close</span
+              >
+              <span class="sr-only">Close search</span>
+            </button>
+          </div>
+        </aura:if>
+      </div>
+    </header>
+  </div>
+</aura:component>

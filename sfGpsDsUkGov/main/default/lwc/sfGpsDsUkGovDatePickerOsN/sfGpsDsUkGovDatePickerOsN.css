@@ -1,0 +1,12 @@
+@import "c/sfGpsDsUkGovCoreOs";
+@import "./date-input.gen.css";
+
+/* repeat icons */
+
+.govuk-fieldset__legend .govuk-fieldset__heading {
+  margin-right: 0.5rem;
+}
+
+.govuk-fieldset__legend slot {
+  display: table-cell;
+}

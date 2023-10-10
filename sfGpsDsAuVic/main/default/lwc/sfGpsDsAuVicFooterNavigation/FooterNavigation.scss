@@ -1,5 +1,5 @@
-@import "../../../../../node_modules/@dpc-sdp/ripple-global/scss/settings";
-@import "../../../../../node_modules/@dpc-sdp/ripple-global/scss/tools";
+@import "node_modules/@dpc-sdp/ripple-global/scss/settings";
+@import "node_modules/@dpc-sdp/ripple-global/scss/tools";
 
 /* ADDED copy from SiteFooter */
 $rpl-footer-breakpoint: 'l' !default;
@@ -11,9 +11,9 @@ $rpl-footer-border-color: rpl-color('primary') !default;
   padding: 0;
 
   /* ADDED */
-  & .rpl-link {
+  /*& .rpl-link {
     color: var(--rpl-link-a-color)
-  }
+  }*/
   /* END ADDED */
 }
 

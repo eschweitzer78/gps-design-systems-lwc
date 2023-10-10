@@ -1,0 +1,55 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <h2 if:true={title} class="rpl-share-this__title">{title}</h2>
+
+    <ul class="rpl-share-this__list" aria-label={label}>
+      <template if:true={networks}>
+        <template for:each={networks} for:item="network">
+          <li key={network.name}>
+            <c-sf-gps-ds-social-sharing
+              network={network.name}
+              url={url}
+              title={network.title}
+              description={network.description}
+              quote={network.quote}
+              hashtags={network.hashtags}
+              twitter-user={network.twitterUser}
+              media={network.media}
+              class-name="rpl-share-this__social rpl-share-this__button"
+            >
+              <span class="rpl-share-this__icon">
+                <c-sf-gps-ds-au-vic-icon
+                  symbol={network.iconName}
+                  color="primary"
+                  size={network.iconSize}
+                >
+                </c-sf-gps-ds-au-vic-icon>
+              </span>
+              {network.label}
+              <span class="rpl-share-this__hint">, opens a new window</span>
+            </c-sf-gps-ds-social-sharing>
+          </li>
+        </template>
+      </template>
+
+      <li if:true={emailEnabled}>
+        <c-sf-gps-ds-au-vic-link
+          href={emailUrl}
+          inner-wrap="false"
+          class-name="rpl-share-this__social rpl-share-this__button"
+        >
+          <span class="rpl-share-this__icon">
+            <c-sf-gps-ds-au-vic-icon
+              symbol="email_solid"
+              color="primary"
+              size="0.65"
+            >
+            </c-sf-gps-ds-au-vic-icon>
+          </span>
+          Email
+          <span class="rpl-share-this__hint">, opens a new window</span>
+        </c-sf-gps-ds-au-vic-link>
+      </li>
+    </ul>
+  </div>
+</template>

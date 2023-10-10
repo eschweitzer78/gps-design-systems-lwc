@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>VIC DS Site Footer</masterLabel>
   <targets>
@@ -12,20 +12,55 @@
       <property
         name="ipName"
         type="String"
-        label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this nav."
+        label="Links Integration procedure name"
+        description="Name of the Integration procedure mapping content to the links."
       />
       <property
         name="inputJSON"
         type="String"
-        label="Input JSON"
-        description="JSON formatted input parameters for the Integration procedure."
+        label="Links Input JSON"
+        description="JSON formatted input parameters for the links Integration procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
-        label="Options JSON"
-        description="JSON formatted options for the Integration procedure."
+        label="Links Options JSON"
+        description="JSON formatted options for the links Integration procedure."
+        default="{}"
+      />
+      <property
+        name="navIpName"
+        type="String"
+        label="Nav Integration procedure name"
+        description="Name of the Integration procedure mapping content to the nav."
+      />
+      <property
+        name="navInputJSON"
+        type="String"
+        label="Nav Input JSON"
+        description="JSON formatted input parameters for the nav Integration procedure."
+        default="{}"
+      />
+      <property
+        name="navOptionsJSON"
+        type="String"
+        label="Nav Options JSON"
+        description="JSON formatted options for the nav Integration procedure."
+        default="{}"
+      />
+      <property
+        name="socialLinksTitle"
+        type="String"
+        label="Social links title"
+        description="Text used as level-2 header for social links."
+      />
+      <property
+        name="socialLinks"
+        type="String"
+        label="Social links"
+        description="Social links as a JSON array of { title, uri, icon }."
+        default="[{&quot;title&quot;:&quot;@VicGovAu&quot;,&quot;uri&quot;:&quot;https://twitter.com/VicGovAu&quot;,&quot;icon&quot;:&quot;twitter&quot;},{&quot;title&quot;:&quot;Victoria Government&quot;,&quot;uri&quot;:&quot;https://au.linkedin.com/company/victoria-government&quot;,&quot;icon&quot;:&quot;linkedin&quot;},{&quot;title&quot;:&quot;Victorian Government News&quot;,&quot;uri&quot;:&quot;https://www.facebook.com/VicGovernmentNews&quot;,&quot;icon&quot;:&quot;facebook&quot;}]"
       />
       <property
         name="acknowledgement"

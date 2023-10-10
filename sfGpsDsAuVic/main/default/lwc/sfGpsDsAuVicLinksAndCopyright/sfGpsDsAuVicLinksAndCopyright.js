@@ -1,7 +1,6 @@
-import { api } from "lwc";
-import SfGpsDsLwc from "c/sfGpsDsLwc";
+import { LightningElement, api } from "lwc";
 
-export default class SfGpsDsAuVicLinksAndCopyright extends SfGpsDsLwc {
+export default class SfGpsDsAuVicLinksAndCopyright extends LightningElement {
   static renderMode = "light";
 
   @api links; //: Array,

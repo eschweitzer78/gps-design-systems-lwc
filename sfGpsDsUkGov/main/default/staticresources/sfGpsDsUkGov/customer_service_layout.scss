@@ -1,0 +1,59 @@
+.siteforceContentArea .forceCommunitySection {
+  overflow-x: clip;
+  max-width: 960px;
+  margin-right: 15px;
+  margin-left: 15px;
+
+  @media(min-width: 40.0625em) {
+    margin-right: 30px;
+    margin-left: 30px
+  }
+
+  @media(min-width: 1020px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  //padding-left: 1rem;
+  //padding-right: 1rem;
+}
+
+/* SECOND SECTION SHOULD BE FULL-WIDTH
+   AND BE FLUSH WITH PREVIOUS AND NEXT SECTION */
+
+.siteforceContentArea .siteforceDesignTimeSection:nth-child(2) .forceCommunitySection,
+.siteforceContentArea > div > .ui-widget:nth-child(2) .forceCommunitySection {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+/* GRID */
+
+.siteforceContentArea .forceCommunitySection .cb-section_column,
+.siteforceContentArea .forceCommunitySection .cb-section_column:first-child,
+.siteforceContentArea .forceCommunitySection .cb-section_column:last-child {
+  padding: 0.5rem;
+}
+
+.siteforceContentArea .forceCommunitySection .cb-section_row {
+  margin: -0.5rem;
+  max-width: calc(100% + 1rem) !important;
+}
+
+.siteforceContentArea .forceCommunitySection .cb-section_background,
+.siteforceContentArea .forceCommunitySection .cb-section_backgroundOverlay {
+  height: calc(100% - 1rem);
+  top: 0.5rem;
+  bottom: 0.5rem;
+
+  left: 0;
+  right: 0;
+}
+
+.cb-section_row {
+  min-height: 0 !important;
+}

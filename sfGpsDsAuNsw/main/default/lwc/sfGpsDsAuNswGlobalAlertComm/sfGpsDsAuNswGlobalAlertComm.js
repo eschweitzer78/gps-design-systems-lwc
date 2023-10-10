@@ -37,4 +37,11 @@ export default class SfGpsDsAuNswGlobalAlertComm extends SfGpsDsLwc {
   }
 
   @api ctaStyle = "link";
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 }

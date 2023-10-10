@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>58.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Table</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration procedure mapping content to this table."
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Input JSON"
+        description="JSON formatted input parameters for the Integration procedure."
+        default="{}"
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Options JSON"
+        description="JSON formatted options for the Integration procedure."
+        default="{}"
+      />
+      <property
+        label="Headers"
+        name="headers"
+        type="String"
+        description="Semi-colon separated list of headers formatted as name:label:width."
+      />
+      <property
+        label="Results bar style"
+        name="resultsBarStyle"
+        type="String"
+        description="Define the style of the results bar."
+        default="full"
+        datasource="none,no sort,full"
+      />
+      <property
+        label="Page size"
+        name="pageSize"
+        type="Integer"
+        description="Number of visible rows per page."
+      />
+      <property
+        label="Caption text"
+        name="caption"
+        type="String"
+        default="Table caption"
+        description="Caption adding context to the table content."
+      />
+      <property
+        label="Caption location"
+        name="captionLocation"
+        type="String"
+        default="bottom"
+        datasource="bottom,top,none"
+        description="Location of the caption text."
+      />
+      <property
+        label="Stripes"
+        name="isStriped"
+        type="Boolean"
+        default="false"
+        description="Add alternating colour stripes."
+      />
+      <property
+        label="Borders"
+        name="isBordered"
+        type="Boolean"
+        default="false"
+        description="Add an external border."
+      />
+      <property
+        label="CSS Class"
+        name="className"
+        type="String"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

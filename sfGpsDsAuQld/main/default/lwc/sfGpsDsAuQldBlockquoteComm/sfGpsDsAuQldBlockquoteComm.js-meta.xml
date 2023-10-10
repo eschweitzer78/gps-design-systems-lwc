@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <masterLabel>QLD DS Blockquote</masterLabel>
+  <isExposed>true</isExposed>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Content of the quote - in Markdown format."
+        default="The terms *inspection*, *custody*, *storage*, *repair* or *other treatment* shall include, where applicable, the transport or towing of any goods to the premises used or appropriated by the bailee for acceptance for any such inspection, custody, storage, repair or other treatment as the case may be."
+      />
+      <property
+        name="reference"
+        type="String"
+        label="Reference"
+        description="Link used for the reference in Markdown format - leave url blank if no link is available."
+        default="[Disposal of Uncollected Act 1967](#)"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

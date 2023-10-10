@@ -6,13 +6,13 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
   @api isBlock = false;
   @api isReversed = false;
   @api showLink = false;
-
+  @api dateStyle = "medium";
   @api label;
   @api image;
   @api imageAlt;
   @api className;
 
-  // This is not exposed in Experience Builder and is used by cardCollectionComm
+  // This is not exposed in Experience Builder and is used by listItemCollectionComm
   @api useMarkup = false;
 
   /*
@@ -109,17 +109,19 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
     }
   }
 
-  renderedCallback() {
-    let element;
+  /* lifecycle */
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
+  renderedCallback() {
     if (this.copy) {
-      if ((element = this.template.querySelector(".nsw-list-item__copy"))) {
+      let element = this.template.querySelector(".nsw-list-item__copy");
+
+      if (element) {
         replaceInnerHtml(element, this._copyHtml);
-      } else {
-        this.addError(
-          "RC-PHC",
-          "Couldn't find internal copy markdown placeholder"
-        );
       }
     }
   }

@@ -1,0 +1,87 @@
+.slds-icon_container.slds-icon-utility-error.slds-progress__marker.slds-progress__marker_icon.omni-stepchart-button.omni-stepchart-error-button {
+  margin-left: 0;
+  box-shadow: none;
+}
+
+.slds-progress-bar {
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+}
+
+.sfgpsds-omniscript_stepform {
+  color: #011a3c;
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 1.3em;
+  font-weight: normal;
+  margin-bottom: var(--lwc-spacingMedium, 1rem);
+  margin-top: var(--lwc-spacingMedium, 1rem);
+  padding-right: var(--lwc-spacingMedium, 1rem);
+  padding-left: var(--lwc-spacingMedium, 1rem);
+}
+
+.omni-stepchart-heading {
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1.5rem;
+  line-height: 1.2em;
+  font-weight: normal;
+  margin-top: var(--lwc-spacingMedium, 1rem);
+  margin-bottom: var(--lwc-spacingMedium, 1rem);
+}
+
+.sfgpsds-progress_vertical {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.sfgpsds-progress_vertical .sfgpsds-progress__line-container {
+  position: relative;
+  display: flex;
+  align-self: flex-start;
+  left: 16px;
+  height: 64px;
+}
+
+.sfgpsds-progress_vertical
+  .sfgpsds-progress__item:first-child
+  .sfgpsds-progress__line-container {
+  padding-top: 16px;
+}
+
+.sfgpsds-progress_vertical
+  .sfgpsds-progress__item:last-child
+  .sfgpsds-progress__line-container {
+  padding-bottom: 16px;
+}
+
+.sfgpsds-progress_vertical .sfgpsds-progress__line {
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+}
+
+.sfgpsds-progress_vertical .sfgpsds-progress__list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.sfgpsds-progress_vertical .sfgpsds-progress__item {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+}
+
+.sfgpsds-assistive-text {
+  border: 0px;
+  clip: rect(0px, 0px, 0px, 0px);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+}

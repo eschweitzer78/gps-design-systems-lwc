@@ -1,0 +1,446 @@
+.THIS .nsw-header {
+  background-color: var(--nsw-white);
+  position: relative;
+  border-bottom: solid 1px var(--nsw-grey-04);
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header {
+    border-bottom: 0;
+  }
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header--simple {
+    border-bottom: solid 1px var(--nsw-grey-04);
+  }
+}
+.THIS .nsw-header__container {
+  max-width: var(--nsw-container-width);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.THIS .nsw-header__inner {
+  position: relative;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__inner {
+    display: flex;
+  }
+}
+.THIS .nsw-header__menu button,
+.THIS .nsw-header__menu a,
+.THIS .nsw-header__search button,
+.THIS .nsw-header__search a {
+  font-size: var(--nsw-font-size-xxs-mobile);
+  line-height: var(--nsw-line-height-xxs-mobile);
+  font-weight: var(--nsw-font-bold);
+  border-radius: var(--nsw-border-radius);
+  color: var(--nsw-brand-dark);
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__menu button,
+  .THIS .nsw-header__menu a,
+  .THIS .nsw-header__search button,
+  .THIS .nsw-header__search a {
+    font-size: var(--nsw-font-size-xxs-desktop);
+    line-height: var(--nsw-line-height-xxs-desktop);
+  }
+}
+.THIS .nsw-header__menu button:hover,
+.THIS .nsw-header__menu a:hover,
+.THIS .nsw-header__search button:hover,
+.THIS .nsw-header__search a:hover {
+  background-color: var(--nsw-text-hover);
+}
+.THIS .nsw-header__menu button:focus,
+.THIS .nsw-header__menu a:focus,
+.THIS .nsw-header__search button:focus,
+.THIS .nsw-header__search a:focus {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
+  outline-offset: 3px;
+}
+.THIS .nsw-header__menu button .nsw-material-icons,
+.THIS .nsw-header__menu a .nsw-material-icons,
+.THIS .nsw-header__search button .nsw-material-icons,
+.THIS .nsw-header__search a .nsw-material-icons {
+  font-size: 1.5rem;
+}
+.THIS .nsw-header__menu {
+  position: absolute;
+  top: 0.75rem;
+  left: -0.375rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__menu button {
+    display: none;
+  }
+}
+.THIS .nsw-header__search {
+  position: absolute;
+  top: 0.75rem;
+  right: -0.25rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__search {
+    right: 0;
+    top: 50%;
+    margin-top: -1.5rem;
+  }
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__search button > span:last-child {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+  }
+  .THIS .nsw-header__search button .nsw-material-icons {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__main {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1.25rem 4.5rem 1.25rem 0;
+  }
+  .THIS .nsw-header__main:focus-within {
+    outline: solid 3px var(--nsw-focus);
+    outline-offset: 0;
+    outline-offset: 3px;
+  }
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__main .nsw-header__rectangular-logo {
+    height: 3.75rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+.THIS .nsw-header__waratah {
+  padding: 0.75rem 3rem;
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah {
+    padding: 0;
+  }
+}
+.THIS .nsw-header__waratah svg {
+  height: 3rem;
+  display: block;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah svg {
+    height: 4.75rem;
+  }
+}
+.THIS .nsw-header__waratah svg.nsw-header__waratah-gov {
+  height: 3.4375rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah svg.nsw-header__waratah-gov {
+    height: 4.75rem;
+  }
+}
+.THIS .nsw-header__waratah a {
+  display: flex;
+  color: var(--nsw-brand-dark);
+  text-decoration: none;
+  align-items: center;
+}
+.THIS .nsw-header__waratah a:hover {
+  background: rgba(0, 0, 0, 0);
+  outline-width: 0;
+}
+.THIS .nsw-header__waratah a:focus {
+  outline-width: 3px;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah a:focus {
+    outline: none;
+  }
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah a::after {
+    z-index: 100;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+.THIS .nsw-header__waratah a svg:not(:first-child) {
+  margin-left: 1.5rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah a svg:not(:first-child) {
+    margin-left: 2.5rem;
+  }
+}
+.THIS .nsw-header__waratah-gov {
+  margin-bottom: -0.4375rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah-gov {
+    margin-bottom: 0;
+  }
+}
+.THIS .nsw-header__waratah-gov .hide {
+  display: none;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah-gov .hide {
+    display: inline;
+  }
+}
+.THIS .nsw-header__name {
+  padding: 0.75rem 0;
+  color: var(--nsw-brand-dark);
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__name {
+    padding: 0;
+    margin-left: 2.5rem;
+  }
+}
+.THIS .nsw-header__title {
+  font-size: var(--nsw-font-size-lg-mobile);
+  line-height: var(--nsw-line-height-lg-mobile);
+  font-weight: var(--nsw-font-bold);
+  color: var(--nsw-brand-dark);
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__title {
+    font-size: var(--nsw-font-size-lg-desktop);
+    line-height: var(--nsw-line-height-lg-desktop);
+  }
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__title {
+    line-height: 1.75rem;
+  }
+}
+.THIS .nsw-header__title .nsw-tag {
+  margin-left: 1.5rem;
+}
+.THIS .nsw-header__description {
+  font-size: var(--nsw-font-size-xs-mobile);
+  line-height: var(--nsw-line-height-xs-mobile);
+  color: var(--nsw-brand-dark);
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__description {
+    font-size: var(--nsw-font-size-xs-desktop);
+    line-height: var(--nsw-line-height-xs-desktop);
+  }
+}
+.THIS .nsw-header__logo {
+  display: flex;
+  justify-content: center;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__logo {
+    justify-content: flex-start;
+  }
+}
+.THIS .nsw-header__logo svg {
+  height: 3rem;
+  display: block;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__logo svg {
+    height: 4.75rem;
+  }
+}
+.THIS .nsw-header__search-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__search-area {
+    width: 24.625rem;
+    left: auto;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.THIS .nsw-header__search-area button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.THIS .nsw-header__search-area > button {
+  border-radius: 0;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__search-area > button {
+    display: none;
+  }
+}
+.THIS .nsw-header__search-area form button {
+  display: none;
+  padding: 0;
+  width: 3rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__search-area form button {
+    display: flex;
+  }
+}
+.THIS .nsw-header__search-area form .nsw-material-icons {
+  font-size: 2.25rem;
+}
+.THIS .nsw-header__search-area input {
+  font-size: var(--nsw-font-size-md-mobile);
+  line-height: var(--nsw-line-height-md-mobile);
+  background: var(--nsw-off-white);
+  padding: 0.5rem 4.5rem 0.5rem 1rem;
+  color: var(--nsw-text-dark);
+  width: 100%;
+  appearance: none;
+  border: 0;
+  height: 4.5rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__search-area input {
+    font-size: var(--nsw-font-size-md-desktop);
+    line-height: var(--nsw-line-height-md-desktop);
+  }
+}
+.THIS .nsw-header__search-area input:focus {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__search-area input {
+    border-radius: var(--nsw-border-radius);
+    height: 3rem;
+    padding: 0 1rem;
+  }
+}
+.THIS .nsw-header__waratah img {
+  height: 3rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah img {
+    height: 4.75rem;
+  }
+}
+.THIS .nsw-header__waratah a img:not(:first-child) {
+  margin-left: 1.5rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__waratah a img:not(:first-child) {
+    margin-left: 2.5rem;
+  }
+}
+.THIS .nsw-header__name svg,
+.THIS .nsw-header__name img {
+  height: 3rem;
+  display: block;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__name svg,
+  .THIS .nsw-header__name img {
+    height: 4.75rem;
+  }
+}
+.THIS .nsw-header__has-profile .nsw-header__search {
+  right: 6.75rem;
+}
+@media (max-width: 62rem) {
+  .THIS .nsw-header__has-profile .nsw-header__search {
+    position: absolute;
+    top: 0.75rem;
+    left: 2.875rem;
+    right: auto;
+  }
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__has-profile .nsw-header__search-area {
+    right: 7.75rem;
+    z-index: 201;
+  }
+}
+.THIS .nsw-header__profile {
+  width: 6.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0.75rem;
+  right: -0.25rem;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__profile {
+    right: 0;
+    top: 50%;
+    margin-top: -1.5rem;
+  }
+}
+.THIS .nsw-header__profile button {
+  font-size: var(--nsw-font-size-xxs-mobile);
+  line-height: var(--nsw-line-height-xxs-mobile);
+  font-weight: var(--nsw-font-bold);
+  border-radius: var(--nsw-border-radius);
+  color: var(--nsw-brand-dark);
+  width: 3rem;
+  height: 3rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 62rem) {
+  .THIS .nsw-header__profile button {
+    font-size: var(--nsw-font-size-xxs-desktop);
+    line-height: var(--nsw-line-height-xxs-desktop);
+  }
+}
+.THIS .nsw-header__profile button:hover {
+  background-color: var(--nsw-text-hover);
+}
+.THIS .nsw-header__profile button:focus {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
+  outline-offset: 3px;
+}
+.THIS .nsw-header__profile button .nsw-material-icons {
+  font-size: 1.5rem;
+}

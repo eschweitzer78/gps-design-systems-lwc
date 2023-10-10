@@ -32,12 +32,12 @@ export default class sfGpsDsAuVicLink extends SfGpsDsLwc {
   externalLinksInNewWindow = false;
 
   renderedCallback() {
-    /* TODO: find alternative
-    let elt = this.template.querySelector("a");
-    let value = window
-      .getComputedStyle(elt)
-      .getPropertyValue("--rpl-external-links-in-new-window");
-    this.externalLinksInNewWindow = value && value.includes("true");
+    /* TODO: find alternative as this does not work, at least in JEST
+    let elt = this.querySelector("a");
+    let value = getComputedStyle(elt).getPropertyValue("--rpl-external-links-in-new-window");
+    this.externalLinksInNewWindow = value && value === "true";
+
+    elt.target = this.linkTarget;
     */
   }
 

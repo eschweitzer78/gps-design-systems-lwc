@@ -24,27 +24,6 @@ export default class SfGpsDsAuNswSFormCheckboxOsN extends OmniscriptCheckbox {
     return tmpl;
   }
 
-  applyCallResp(e, t = false, i = false) {
-    /* TODO: investigate: for some reason super.applyCallResp(e, t, i) does not set elementValue */
-
-    if (i) {
-      this.setCustomValidation(e);
-    } else {
-      e = this.treatResp(e);
-
-      if (this.lodashUtil.isEqual(this.elementValue, e)) {
-        return;
-      }
-
-      this.setElementValue(e, t, i);
-      this.dispatchOmniEventUtil(
-        this,
-        this.createAggregateNode(),
-        "omniaggregate"
-      );
-    }
-  }
-
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.checkLabel);
   }

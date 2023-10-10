@@ -16,7 +16,11 @@
       <slot></slot>
     </div>
 
-    <button onclick={handleClick} class="rpl-alert-base__close">
+    <button
+      if:true={showCloseIcon}
+      onclick={handleClick}
+      class="rpl-alert-base__close"
+    >
       <c-sf-gps-ds-au-vic-icon symbol="close" color={closeIconColor}>
       </c-sf-gps-ds-au-vic-icon>
       <span>{closeText}</span>

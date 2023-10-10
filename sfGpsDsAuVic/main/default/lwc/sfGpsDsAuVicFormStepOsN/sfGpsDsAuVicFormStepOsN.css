@@ -1,0 +1,50 @@
+@import "c/sfGpsDsAuVicFormCssOs";
+@import "./Button.gen.css";
+
+.sepbutton {
+  display: none;
+}
+
+.form-actions input {
+  margin-top: var(--lwc-spacingXSmall, 0.5rem);
+  margin-bottom: var(--lwc-spacingXSmall, 0.5rem);
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-right: var(--lwc-spacingSmall, 0.75rem);
+}
+
+@media (min-width: 992px) {
+  .form-actions input {
+    margin-top: 0;
+    margin-left: 0.5rem;
+  }
+
+  .form-actions input:first-child {
+    margin-left: none;
+  }
+
+  .form-actions {
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    align-items: flex-end;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-direction: row;
+  }
+}
+
+h3 {
+  font-family: "VIC-Bold", "Arial", "Helvetica", "sans-serif";
+  font-size: 1.5rem;
+  line-height: 1.2em;
+  font-weight: normal;
+
+  margin-bottom: 1em;
+}
+
+h3.rpl-form__title {
+  margin-top: var(--lwc-spacingMedium, 1rem);
+}

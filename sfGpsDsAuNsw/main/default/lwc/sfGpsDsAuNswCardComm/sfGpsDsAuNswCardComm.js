@@ -11,15 +11,12 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
-  // ADJUSTED: style is a reserved keyword in lwc
   @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']),
-  // END ADJUSTED
+  @api orientation = "vertical"; // oneOf 'vertical' 'horizontal'
+  @api dateStyle = "medium"; // oneOf short medium long full
   @api tag;
   @api image;
   @api imageAlt;
-  // ADJUSTED: incorporate highlight into cstyle
-  // @api highlight = false;
-  // END ADJUSTED
   @api className;
 
   // This is not exposed in Experience Builder and is used by cardCollectionComm
@@ -44,6 +41,14 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Headline markdown");
     }
+  }
+
+  get _headlineText() {
+    return this._headline?.text;
+  }
+
+  get _headlineUrl() {
+    return this._headline?.url;
   }
 
   /*
@@ -115,28 +120,29 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     }
   }
 
+  get highlight() {
+    return this.cstyle === "highlight";
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
+
   renderedCallback() {
     let element;
 
     if (this.copy) {
       if ((element = this.template.querySelector(".nsw-card__copy"))) {
         replaceInnerHtml(element, this._copyHtml);
-      } else {
-        this.addError(
-          "RC-PHC",
-          "Couldn't find internal copy markdown placeholder"
-        );
       }
     }
 
     if (this.footer) {
       if ((element = this.template.querySelector(".nsw-card__footer"))) {
         replaceInnerHtml(element, this._footerHtml);
-      } else {
-        this.addError(
-          "RC-PHF",
-          "Couldn't find internal footer markdown placeholder"
-        );
       }
     }
   }

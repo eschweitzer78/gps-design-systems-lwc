@@ -10,6 +10,7 @@ export default class SfGpsDsAuVicQuickExit extends LightningElement {
   @api text = "Quick exit";
   @api escapeUrl = QUICK_EXIT_URL;
   @api isSticky;
+  @api className;
 
   @track _menuStickyActive = false;
   @track _stickyActive = false;
@@ -18,14 +19,15 @@ export default class SfGpsDsAuVicQuickExit extends LightningElement {
   @track _lastPageScrollTop = 0;
   @track _menuOffsetElement;
 
-  get computedClass() {
+  get computedClassName() {
     return computeClass({
       "rpl-quick-exit": true,
-      "rpl-quick-exit--sticky": this._stickyActive
+      "rpl-quick-exit--sticky": this._stickyActive,
+      [this.className]: this.className
     });
   }
 
-  get computedAnchorClass() {
+  get computedAnchorClassName() {
     return computeClass({
       "rpl-quick-exit__button": true,
       "rpl-quick-exit__button--stickable": this.isSticky,

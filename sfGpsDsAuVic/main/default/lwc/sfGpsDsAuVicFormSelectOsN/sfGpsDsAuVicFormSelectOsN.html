@@ -1,0 +1,57 @@
+<template>
+  <c-sf-gps-ds-au-vic-combobox-os-n
+    options={_realtimeOptions}
+    label={mergedLabel}
+    required={_propSetMap.required}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    tab-index={tabIndex}
+    theme="sfgpsds"
+    value={elementValue}
+    field-level-help={mergedHelpText}
+    read-only={_readOnly}
+    searchable={searchable}
+    label-classes={labelClasses}
+    message-when-value-missing={_messageWhenValueMissing}
+    data-refresh={refresh}
+    data-show-lookup="true"
+    data-omni-input
+    class={_styleClasses.input}
+    onchange={handleChange}
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span
+        slot="label"
+        style="bottom: 7px; right: 7px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Select"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Select"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic-combobox-os-n>
+</template>

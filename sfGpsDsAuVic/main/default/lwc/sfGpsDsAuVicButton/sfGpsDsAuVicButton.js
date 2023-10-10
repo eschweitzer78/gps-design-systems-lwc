@@ -12,7 +12,7 @@ export default class SfGpsDsAuVicButton extends LightningElement {
 
   @api href;
   @api target;
-  @api theme = "primary";
+  @api theme;
   @api disabled = false;
 
   get computedButtonClassName() {

@@ -1,1 +1,2 @@
-@import "c/sfGpsDsAuNswMastheadCss";
+@import "c/sfGpsDsAuNswCore";
+@import "./masthead.gen.css";

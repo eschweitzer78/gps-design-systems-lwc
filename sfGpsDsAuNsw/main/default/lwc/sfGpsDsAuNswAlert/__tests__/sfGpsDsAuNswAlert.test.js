@@ -21,7 +21,7 @@ describe("c-sf-gps-ds-au-nsw-alert", () => {
     element.title = defaultTitle;
     document.body.appendChild(element);
 
-    let widget = element.shadowRoot.querySelector(childSelector);
+    let widget = element.querySelector(childSelector);
 
     expect(widget).not.toBeNull();
     expect(widget.className).toContain("info");
@@ -37,7 +37,7 @@ describe("c-sf-gps-ds-au-nsw-alert", () => {
     element.title = "Warning";
     document.body.appendChild(element);
 
-    let widget = element.shadowRoot.querySelector(childSelector);
+    let widget = element.querySelector(childSelector);
 
     expect(widget).not.toBeNull();
     expect(widget.className).toContain("warning");
@@ -53,7 +53,7 @@ describe("c-sf-gps-ds-au-nsw-alert", () => {
     element.title = defaultTitle;
     document.body.appendChild(element);
 
-    let widget = element.shadowRoot.querySelector(childSelector);
+    let widget = element.querySelector(childSelector);
 
     expect(widget).not.toBeNull();
     expect(widget.className).toContain("compact");

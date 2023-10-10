@@ -6,9 +6,11 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeader extends LightningElement {
+  static renderMode = "light";
+
   @api masterbrand;
   @api masterbrandAlt;
   @api srMasterbrandLabel = "NSW Government";
@@ -21,22 +23,68 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   @api siteDescriptor;
   @api headerUrl = "#";
   @api mobile = false;
+  @api mobileLogoStacking = "horizontal"; // one of horizontal, vertical
   @api search = false;
+  @api profile = false;
 
   @api searchAriaLabel = "search";
   @api className;
 
-  @track isSearchOpen = false;
+  @track searchIsOpen = false;
   @api value = "";
 
+  /* hidden when used stand alone */
+  @api mainNavId;
+  @api mainNavIsOpen = false;
+
+  get computedClassName() {
+    return computeClass({
+      "nsw-header": true,
+      "nsw-header__has-profile": this.profile,
+      [this.className]: this.className
+    });
+  }
+
+  _headerSearchId;
+
+  get computedHeaderSearchId() {
+    if (this._headerSearchId == null) {
+      this._headerSearchId = uniqueId("sf-gps-ds-au-nsw-header-search");
+    }
+
+    return this._headerSearchId;
+  }
+
+  _headerInputId;
+
+  get computedHeaderInputId() {
+    if (this._headerInputId == null) {
+      this._headerInputId = uniqueId("sf-gps-ds-au-nsw-header-search");
+    }
+
+    return this._headerInputId;
+  }
+
+  get areLogosHorizontallyStacked() {
+    return (this.mobileLogoStacking || "horizontal") === "horizontal";
+  }
+
+  get areLogosVerticallyStacked() {
+    return this.mobileLogoStacking === "vertical";
+  }
+
+  /* helpers */
+
   setSearchVisible(visible) {
-    this.isSearchOpen = visible;
-    let element = this.template.querySelector(".nsw-header__search-area");
+    this.searchIsOpen = visible;
+    let element = this.querySelector(".nsw-header__search-area");
 
     if (element) {
       element.hidden = !visible;
     }
   }
+
+  /* Event handling */
 
   handleCloseSearch() {
     this.setSearchVisible(false);
@@ -48,7 +96,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.value = "";
 
-    let element = this.template.querySelector(".nsw-header__input");
+    let element = this.querySelector(".nsw-header__input");
     if (element) {
       element.focus();
     }
@@ -92,12 +140,5 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
 
     const homeEvent = new CustomEvent("home");
     this.dispatchEvent(homeEvent);
-  }
-
-  get computedClassName() {
-    return computeClass({
-      "nsw-header": true,
-      [this.className]: this.className
-    });
   }
 }

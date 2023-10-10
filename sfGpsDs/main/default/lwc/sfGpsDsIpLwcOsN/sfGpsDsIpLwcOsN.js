@@ -8,8 +8,6 @@
 import SfGpsDsLwcOsN from "c/sfGpsDsLwcOsN";
 import { api, track } from "lwc";
 
-//import communityId from '@salesforce/community/Id';
-
 const omnistudio_ns = "omnistudio__";
 
 export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
@@ -73,7 +71,8 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
   }
 
   refreshContent() {
-    if (this._ipName == null || this._input == null) {
+    if (this._ipName == null || this._input == null || this._options == null) {
+      /* 2023-06-01 ESC: do not bother running if not all of ipName, input and options aren't set */
       return;
     }
 
@@ -95,7 +94,7 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
         try {
           if (data) {
             if (!Array.isArray(data)) {
-              if (data.hasError || data.error) {
+              if (data.hasError || data.error || data.errorMessage) {
                 this.addError(
                   "CK-ER",
                   "Integration procedure error: " +
@@ -113,7 +112,6 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
           }
 
           this.didLoadOnce = true;
-          this.clearErrors();
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection");
           this._items = [];
@@ -133,6 +131,8 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
   }
 
   connectedCallback() {
+    super.connectedCallback();
+
     if (!this._ipName) {
       this.addError("IP-NV", "Integration procedure name is required.");
     }

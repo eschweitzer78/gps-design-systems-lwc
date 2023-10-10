@@ -1,5 +1,5 @@
 <template>
-  <div id="radiogroup-os-n" class={computedFormGroupClass}>
+  <div id="radiogroup-os-n" class={computedFormGroupClassName}>
     <fieldset
       class="govuk-fieldset"
       aria-describedby={computedAriaDescribedBy}
@@ -7,18 +7,20 @@
       aria-required={required}
       aria-invalid={computedAriaInvalid}
     >
-      <legend class="govuk-fieldset__legend">{label}</legend>
-      <slot name="label"></slot>
+      <legend class={computedLegendClassName}>
+        <h1 class="govuk-fieldset__heading">{label}</h1>
+        <slot name="label"></slot>
+      </legend>
       <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
         {fieldLevelHelp}
       </div>
       <p
-        if:true={isRealError}
+        if:true={isError}
         id="errorMessageBlock"
         aria-live="assertive"
         class="govuk-error-message"
       >
-        <span class="govuk-visually-hidden">{errorSrLabel}</span>{errorMessage}
+        <span class="govuk-visually-hidden">{errorSrLabel}</span>{_errorMessage}
       </p>
       <div class={computedRadiosClass}>
         <template

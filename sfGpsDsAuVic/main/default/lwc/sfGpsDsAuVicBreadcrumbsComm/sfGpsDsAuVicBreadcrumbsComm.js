@@ -1,6 +1,7 @@
 import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
+import cBasePath from "@salesforce/community/basePath";
 
 export default class sfGpsDsAuVicBreadcrumbsComm extends SfGpsDsLwc {
   static renderMode = "light";
@@ -38,7 +39,7 @@ export default class sfGpsDsAuVicBreadcrumbsComm extends SfGpsDsLwc {
 
     // Truncate the mobile breadcrumb text if it is longer than 25 characters.
     if (parentText?.length > 25) {
-      parentText = parentText.substring(0, 25) + "...";
+      parentText = parentText.substring(0, 25) + "…";
     }
 
     return parentText;
@@ -46,7 +47,6 @@ export default class sfGpsDsAuVicBreadcrumbsComm extends SfGpsDsLwc {
 
   get mobileCrumbUrl() {
     const parentUrl = this._itemsArray[this._itemsArray.length - 2]?.url;
-
-    return parentUrl || "/"; // TODO: put home URL
+    return parentUrl || cBasePath;
   }
 }

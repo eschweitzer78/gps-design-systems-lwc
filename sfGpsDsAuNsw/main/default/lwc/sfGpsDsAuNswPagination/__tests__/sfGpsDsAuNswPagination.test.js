@@ -30,17 +30,17 @@ describe("c-sf-gps-ds-au-nsw-pagination", () => {
 
     // Assert
 
-    let prevButton = element.shadowRoot.querySelector(
+    let prevButton = element.querySelector(
       ".nsw-pagination ul li:first-child .nsw-icon-button"
     );
     expect(prevButton).not.toBeNull();
 
-    let nextButton = element.shadowRoot.querySelector(
+    let nextButton = element.querySelector(
       ".nsw-pagination ul li:last-child .nsw-icon-button"
     );
     expect(nextButton).not.toBeNull();
 
-    let anchors = element.shadowRoot.querySelectorAll(pageNumberSelector);
+    let anchors = element.querySelectorAll(pageNumberSelector);
     expect(anchors.length).toBe(1);
   });
 
@@ -59,10 +59,10 @@ describe("c-sf-gps-ds-au-nsw-pagination", () => {
 
     // Assert
 
-    let buttons = element.shadowRoot.querySelectorAll(buttonSelector);
+    let buttons = element.querySelectorAll(buttonSelector);
     expect(buttons.length).toBe(2);
 
-    let anchors = element.shadowRoot.querySelectorAll(ellAndPageNumberSelector);
+    let anchors = element.querySelectorAll(ellAndPageNumberSelector);
     expect(anchors.length - buttons.length).toBe(3);
   });
 
@@ -81,16 +81,16 @@ describe("c-sf-gps-ds-au-nsw-pagination", () => {
 
     // Assert
 
-    let buttons = element.shadowRoot.querySelectorAll(buttonSelector);
+    let buttons = element.querySelectorAll(buttonSelector);
     expect(buttons.length).toBe(2);
 
-    let ellipses = element.shadowRoot.querySelectorAll(ellipsisSelector);
+    let ellipses = element.querySelectorAll(ellipsisSelector);
     expect(ellipses.length).toBe(0);
 
-    let anchors = element.shadowRoot.querySelectorAll(ellAndPageNumberSelector);
+    let anchors = element.querySelectorAll(ellAndPageNumberSelector);
     expect(anchors.length - buttons.length - ellipses.length).toBe(5);
 
-    let active = element.shadowRoot.querySelector(activeSelector);
+    let active = element.querySelector(activeSelector);
     expect(active).not.toBeNull();
     expect(active.textContent).toBe(
       `${element.srOnlyPre}${element.activePage}`
@@ -112,16 +112,16 @@ describe("c-sf-gps-ds-au-nsw-pagination", () => {
 
     // Assert
 
-    let buttons = element.shadowRoot.querySelectorAll(buttonSelector);
+    let buttons = element.querySelectorAll(buttonSelector);
     expect(buttons.length).toBe(2);
 
-    let ellipses = element.shadowRoot.querySelectorAll(ellipsisSelector);
+    let ellipses = element.querySelectorAll(ellipsisSelector);
     expect(ellipses.length).toBe(2);
 
-    let anchors = element.shadowRoot.querySelectorAll(ellAndPageNumberSelector);
+    let anchors = element.querySelectorAll(ellAndPageNumberSelector);
     expect(anchors.length - buttons.length - ellipses.length).toBe(5);
 
-    let active = element.shadowRoot.querySelector(activeSelector);
+    let active = element.querySelector(activeSelector);
     expect(active).not.toBeNull();
     expect(active.textContent).toBe(
       `${element.srOnlyPre}${element.activePage}`
@@ -144,7 +144,7 @@ describe("c-sf-gps-ds-au-nsw-pagination", () => {
     const handler = jest.fn();
     element.addEventListener("pagechange", handler);
 
-    let prevButton = element.shadowRoot.querySelector(
+    let prevButton = element.querySelector(
       ".nsw-pagination ul li:first-child .nsw-icon-button"
     );
     expect(prevButton).not.toBeNull();
@@ -173,7 +173,7 @@ describe("c-sf-gps-ds-au-nsw-pagination", () => {
     const handler = jest.fn();
     element.addEventListener("pagechange", handler);
 
-    let nextButton = element.shadowRoot.querySelector(
+    let nextButton = element.querySelector(
       ".nsw-pagination ul li:last-child .nsw-icon-button"
     );
     expect(nextButton).not.toBeNull();
@@ -202,7 +202,7 @@ describe("c-sf-gps-ds-au-nsw-pagination", () => {
     const handler = jest.fn();
     element.addEventListener("pagechange", handler);
 
-    let nextButton = element.shadowRoot.querySelector(
+    let nextButton = element.querySelector(
       ".nsw-pagination ul li:last-child .nsw-icon-button"
     );
     expect(nextButton).not.toBeNull();

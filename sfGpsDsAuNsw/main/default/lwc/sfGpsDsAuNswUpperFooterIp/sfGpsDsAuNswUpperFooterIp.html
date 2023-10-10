@@ -1,0 +1,16 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
+    <c-sf-gps-ds-au-nsw-upper-footer
+      if:false={_isLoading}
+      items={_items}
+      class-name={className}
+      onclick={handleClick}
+    >
+    </c-sf-gps-ds-au-nsw-upper-footer>
+  </template>
+
+  <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

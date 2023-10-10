@@ -55,7 +55,7 @@ describe("c-sf-gps-ds-configuration-error", () => {
     expect(contentEl.textContent).toContain(CONTENT.description);
   });
 
-  it("is accessible when erros are passed", async () => {
+  it("is accessible when errors are passed", async () => {
     const CONTENT1 = {
       index: "x1",
       code: "CO01",

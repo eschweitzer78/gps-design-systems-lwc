@@ -1,20 +1,2 @@
 @import "c/sfGpsDsAuNswCore";
-
-/* stylelint-disable declaration-no-important */
-/* stylelint-enable declaration-no-important */
-.nsw-callout {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  border-left: solid 4px var(--nsw-brand-dark);
-}
-.nsw-callout:first-child {
-  margin-top: 0;
-}
-@media (min-width: 48rem) {
-  .nsw-callout {
-    margin-top: 2rem;
-  }
-}
-.nsw-section--invert .nsw-callout {
-  border-color: var(--nsw-brand-light);
-}
+@import "./callout.gen.css";

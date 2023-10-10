@@ -1,0 +1,15 @@
+@import "./MetaTag";
+
+/* Make sure the link text is also in the right colour */
+
+.rpl-meta-tag {
+  $root: &;
+
+  &__text {
+    #{$root}--solid & {
+      @include rpl_text_color($rpl-meta-tag-solid-text-color);
+    }
+  }
+}
+
+/* TODO hover in dark and solid mode not address in original ds */

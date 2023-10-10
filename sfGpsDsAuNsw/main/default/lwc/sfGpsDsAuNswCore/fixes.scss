@@ -1,0 +1,424 @@
+
+/**
+  * FIX: trying to make styling for general items quite scoped for NSW DS widgets
+  * so as not to collide with SLDS
+  */
+
+.forceCommunityRichText .nsw-scope,
+.slds-rich-text-editor__output .nsw-scope/*,
+.nsw-scope*/ {
+  /*
+  html {
+    font-size: 100%;
+    line-height: var(--nsw-line-height);
+    box-sizing: border-box;
+  }
+  */
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  margin: 0;
+
+  @media print {
+    *,
+    *::before,
+    *::after {
+      background: transparent !important;
+      color: var(--nsw-black) !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
+
+    a[href]::after {
+      content: " (" attr(href) ")";
+    }
+
+    a[href^="#"]::after,
+    a[href^="javascript:"]::after {
+      content: "";
+    }
+
+    abbr[title]::after {
+      content: " (" attr(title) ")";
+    }
+
+    pre {
+      white-space: pre-wrap !important;
+    }
+
+    pre,
+    blockquote {
+      border: 1px solid var(--nsw-black);
+      page-break-inside: avoid;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tr,
+    img {
+      page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2,
+    h3 {
+      page-break-after: avoid;
+    }
+  }
+
+  .sr-only {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+  }
+
+  .sr-only-focusable:focus {
+    clip: auto !important;
+    clip-path: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    width: auto !important;
+    white-space: normal !important;
+  }
+
+
+  font-size: var(--nsw-font-size-sm-mobile);
+  line-height: var(--nsw-line-height-sm-mobile);
+  font-family: var(--nsw-font-family);
+  font-weight: var(--nsw-font-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--nsw-text-dark);
+
+  @media (min-width: 62rem) {
+    font-size: var(--nsw-font-size-sm-desktop);
+      line-height: var(--nsw-line-height-sm-desktop);
+  }
+
+  button,
+  input,
+  textarea,
+  textfield,
+  select {
+    font-family: var(--nsw-font-family);
+  }
+
+  p,
+  ul,
+  ol,
+  dl {
+    margin: 0;
+  } 
+
+  * + p,
+  * + ul,
+  * + ol,
+  * + dl {
+    margin-top: 1rem;
+  }
+
+  ul li,
+  ol li {
+    margin-top: 0.5rem; 
+  }
+
+  dt {
+    margin-top: 0.5rem;
+  }
+
+  small {
+    font-size: var(--nsw-font-size-xs-mobile);
+    line-height: var(--nsw-line-height-xs-mobile);
+  }
+
+  @media (min-width: 62rem) {
+    small {
+      font-size: var(--nsw-font-size-xs-desktop);
+      line-height: var(--nsw-line-height-xs-desktop);
+    }
+  }
+
+  /* stylelint-disable selector-no-qualifying-type */
+  abbr,
+  abbr[title],
+  acronym {
+    text-decoration: none;
+    border-bottom: 1px var(--nsw-brand-dark) dashed;
+  }
+
+  /* stylelint-enable selector-no-qualifying-type */
+  blockquote {
+    font-size: var(--nsw-font-size-lg-mobile);
+    line-height: var(--nsw-line-height-lg-mobile);
+    margin-top: 1.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    border-left: solid 2px var(--nsw-brand-accent);
+    padding: 1.25rem 1.5rem;
+  }
+
+  @media (min-width: 62rem) {
+    blockquote {
+      font-size: var(--nsw-font-size-lg-desktop);
+      line-height: var(--nsw-line-height-lg-desktop);
+    }
+  }
+
+  blockquote:first-child {
+    margin-top: 0;
+  }
+
+  @media (min-width: 48rem) {
+    blockquote {
+      margin-top: 2rem;
+    }
+  }
+
+  @media (min-width: 48rem) {
+    blockquote {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 75%;
+    }
+  }
+
+  table {
+    margin-top: 1.5rem;
+    border: 0;
+    border-collapse: collapse;
+    width: 100%;
+    caption-side: bottom;
+  }
+
+  table:first-child {
+    margin-top: 0;
+  }
+
+  @media (min-width: 48rem) {
+    table {
+      margin-top: 2rem;
+    }
+  }
+
+  table caption {
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+  }
+
+  table th,
+  table td {
+    padding: 0.75rem 0.5rem;
+    text-align: left;
+    vertical-align: baseline;
+    border-bottom: solid 1px var(--nsw-grey-01);
+  }
+
+  table th,
+  table thead td,
+  table tfoot td {
+    font-weight: var(--nsw-font-bold);
+  }
+
+  table thead {
+    border-bottom: solid 2px var(--nsw-grey-01);
+  }
+  .nsw-section--invert table thead {
+    border-color: var(--nsw-white);
+  }
+
+  cite {
+    font-size: var(--nsw-font-size-sm-mobile);
+    line-height: var(--nsw-line-height-sm-mobile);
+    margin-top: 1rem;
+    display: block;
+    font-style: normal;
+  }
+
+  @media (min-width: 62rem) {
+    cite {
+      font-size: var(--nsw-font-size-sm-desktop);
+      line-height: var(--nsw-line-height-sm-desktop);
+    }
+  }
+
+  cite::before {
+    content: "— ";
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--nsw-grey-04);
+    margin: 1rem 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: var(--nsw-font-bold);
+    margin: 0;
+  }
+
+  h1 {
+    font-size: var(--nsw-font-size-xxl-mobile);
+    line-height: var(--nsw-line-height-xxl-mobile);
+
+    @media (min-width: 62rem) {
+      font-size: var(--nsw-font-size-xxl-desktop);
+      line-height: var(--nsw-line-height-xxl-desktop);
+    }
+  }
+
+  h2 {
+    font-size: var(--nsw-font-size-xl-mobile);
+    line-height: var(--nsw-line-height-xl-mobile);
+
+    @media (min-width: 62rem) {
+      font-size: var(--nsw-font-size-xl-desktop);
+      line-height: var(--nsw-line-height-xl-desktop);
+    }
+  }
+
+  h3 {
+    font-size: var(--nsw-font-size-lg-mobile);
+    line-height: var(--nsw-line-height-lg-mobile);
+
+    @media (min-width: 62rem) {
+      font-size: var(--nsw-font-size-lg-desktop);
+      line-height: var(--nsw-line-height-lg-desktop);
+    }
+  }
+
+  h4 {
+    font-size: var(--nsw-font-size-md-mobile);
+    line-height: var(--nsw-line-height-md-mobile);
+
+    @media (min-width: 62rem) {
+      font-size: var(--nsw-font-size-md-desktop);
+      line-height: var(--nsw-line-height-md-desktop);
+    }
+  }
+
+  h5,
+  h6 {
+    font-size: var(--nsw-font-size-sm-mobile);
+    line-height: var(--nsw-line-height-sm-mobile);
+
+    @media (min-width: 62rem) {
+      font-size: var(--nsw-font-size-sm-desktop);
+      line-height: var(--nsw-line-height-sm-desktop);
+    }
+  }
+
+  * + h1 {
+    margin-top: 4rem;
+  }
+
+  * + h2 {
+    margin-top: 3rem;
+  }
+
+  * + h3 {
+    margin-top: 2rem;
+  }
+
+  * + h4,
+  * + h5,
+  * + h6 {
+    margin-top: 1.5rem;
+  }
+}
+
+.forceCommunityRichText .nsw-scope,
+.slds-rich-text-editor__output .nsw-scope {
+  a:not(.nsw-button) {
+    font-weight: var(--nsw-font-bold);
+    color: var(--nsw-text-link);
+    text-decoration: underline;
+  }
+  a:hover:not(.nsw-button) {
+    background-color: var(--nsw-text-link-hover);
+    outline: 2px solid var(--nsw-text-link-hover);
+  }
+  a:focus:not(.nsw-button) {
+    outline: solid 3px var(--nsw-focus);
+    outline-offset: 0;
+  }
+  a:visited:not(.nsw-button) {
+    color: var(--nsw-text-visited);
+  }
+}
+  
+  /* A FEW MORE FIXES FOR EXP CLOUD CUSTOMER SERVICE */
+
+.forceCommunityRichText .nsw-scope,
+.slds-rich-text-editor__output .nsw-scope {
+  ul {
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+  }
+
+  ol>li {
+    list-style-type: decimal;
+  }
+
+  ul>li {
+    list-style-type: disc;
+  }
+
+  ul>li,
+  ol>li {
+    padding-left: 0;
+  }
+
+  li:before {
+    display: inline-block;
+    margin-right: none;
+    width: 0;
+  }
+
+  ol li:before,
+  ul>li:before {
+    content: none;
+  }
+}

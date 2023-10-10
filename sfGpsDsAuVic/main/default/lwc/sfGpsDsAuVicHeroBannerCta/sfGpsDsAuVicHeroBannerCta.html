@@ -11,9 +11,9 @@
       class="rpl-hero-banner--cta__left-bottom"
     >
       <c-sf-gps-ds-au-vic-button
-        class-name="rpl-hero-banner--cta__primary"
-        href={linkPrimary.url}
         theme={computedButtonTheme}
+        href={linkPrimary.url}
+        class-name="rpl-hero-banner--cta__primary"
       >
         {linkPrimary.text}
       </c-sf-gps-ds-au-vic-button>
@@ -23,7 +23,7 @@
         </p>
         <c-sf-gps-ds-au-vic-text-link
           if:true={linkSecondary}
-          class="rpl-hero-banner--cta__secondary-link"
+          class-name="rpl-hero-banner--cta__secondary-link"
           text={linkSecondary.text}
           icon-symbol="right"
           icon-color={computedIconColor}

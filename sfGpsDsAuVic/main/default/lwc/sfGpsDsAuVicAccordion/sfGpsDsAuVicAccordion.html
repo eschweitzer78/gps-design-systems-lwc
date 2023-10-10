@@ -3,6 +3,7 @@
     <h2 if:true={title} class="rpl-accordion__title-top" id={computedTitleId}>
       {title}
     </h2>
+
     <div if:true={computedShowButtons} class="rpl-accordion__collapse">
       <button
         if:false={isFullyExpanded}

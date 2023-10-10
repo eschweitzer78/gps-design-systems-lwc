@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Dialog (Demo)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Label used as a title at the top of the dialog."
+        required="true"
+        default="Your submission was successful"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Dialog content in Markdown format."
+        default="Thank you for your submission, it has been successfully received. We aim to respond within 3 business days by your preferred contact method. You can now make another submission or view your active submission."
+      />
+      <property
+        name="primaryButtonText"
+        type="String"
+        label="Primary button text"
+        description="Text used as a label for the primary button."
+        default="Make new submission"
+        required="true"
+      />
+      <property
+        name="bstyle"
+        type="String"
+        label="Button style"
+        description="Style to be applied to the primary button."
+        default="dark"
+        required="true"
+        datasource="dark,danger"
+      />
+      <property
+        name="secondaryButtonText"
+        type="String"
+        label="Secondary button text"
+        description="Text used as a label for the secondary button - leave empty to remove secondary button."
+        default="View submissions"
+      />
+      <property
+        name="isDismissible"
+        type="Boolean"
+        label="Is dismissible"
+        description="Dialog can be dismissed via the close button."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

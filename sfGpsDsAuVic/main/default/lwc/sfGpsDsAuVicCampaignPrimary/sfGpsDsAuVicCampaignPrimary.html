@@ -32,15 +32,15 @@
       class="rpl-campaign-primary__image-outer rpl-campaign-primary__image-outer--small"
     >
       <img
-        if:true={hasAlt}
+        if:false={hasAlt}
         src={image.src}
-        alt={image.alt}
         role="presentational"
         class="rpl-campaign-primary__image"
       />
       <img
-        if:false={hasAlt}
+        if:true={hasAlt}
         src={image.src}
+        alt={image.alt}
         class="rpl-campaign-primary__image"
       />
     </div>
@@ -55,8 +55,8 @@
         </div>
         <c-sf-gps-ds-au-vic-button
           if:true={link}
-          href={link.url}
           theme="primary"
+          href={link.url}
           class-name="rpl-campaign-primary__call-to-action"
         >
           {link.text}

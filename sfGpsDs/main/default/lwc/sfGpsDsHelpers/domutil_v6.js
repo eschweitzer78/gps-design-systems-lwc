@@ -15,8 +15,17 @@ const parser = new DOMParser();
  */
 
 export function replaceInnerHtml(element, markup) {
-  // eslint-disable-next-line @lwc/lwc/no-inner-html
-  element.innerHTML = markup;
+  try {
+    // eslint-disable-next-line @lwc/lwc/no-inner-html
+    element.innerHTML = markup;
+  } catch (error) {
+    console.log(
+      "Error in replaceInnerHtml",
+      element && element.toString ? element.toString() : "",
+      JSON.stringify(element),
+      error
+    );
+  }
 }
 
 /**

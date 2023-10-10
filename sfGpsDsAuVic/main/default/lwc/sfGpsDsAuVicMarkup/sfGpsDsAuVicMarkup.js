@@ -10,35 +10,35 @@ import {
 export default class SfGpsDsAuVicMarkup extends SfGpsDsLwc {
   static renderMode = "light";
 
-  _originalHtml;
-  _escapedHtml;
+  _htmlOriginal;
+  _htmlSanitized;
 
   @api get html() {
-    return this._originalHtml;
+    return this._htmlOriginal;
   }
 
   set html(value) {
-    this._originalHtml = value;
-    this._escapedHtml = value ? HtmlSanitizer.sanitize(value) : null;
+    this._htmlOriginal = value;
+    this._htmlSanitized = value ? HtmlSanitizer.sanitize(value) : null;
   }
 
   @api className;
 
-  get computedClass() {
-    return (
-      computeClass({
-        "rpl-markup": true,
-        "rpl-markup--rtl": isRTL()
-      }) + (this.className ? " " + this.className : "")
-    );
+  get computedClassName() {
+    return computeClass({
+      "rpl-markup": true,
+      "rpl-markup--rtl": isRTL(),
+      [this.className]: this.className
+    });
   }
 
   renderedCallback() {
-    let element = this.querySelector(".rpl-markup__inner"); //this.template.querySelector(".rpl-markup__inner");
-    if (element) {
-      replaceInnerHtml(element, this._escapedHtml);
-    } else {
-      this.addError("MU-PH", "Couldn't find internal markup placeholder");
+    if (this.html) {
+      let element = this.querySelector(".rpl-markup__inner");
+
+      if (element && this._htmlSanitized) {
+        replaceInnerHtml(element, this._htmlSanitized);
+      }
     }
   }
 }

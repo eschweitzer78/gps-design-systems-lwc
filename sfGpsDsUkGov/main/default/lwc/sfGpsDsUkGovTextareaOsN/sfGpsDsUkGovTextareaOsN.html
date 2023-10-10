@@ -1,0 +1,59 @@
+<template>
+  <div class={computedFormGroupClassName}>
+    <div if:true={labelVisible} data-label="true">
+      <h1 class="govuk-label-wrapper">
+        <label
+          id="textarealabel"
+          class={computedLabelClassName}
+          for="textareaId"
+        >
+          {label}
+          <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
+        </label>
+      </h1>
+      <slot name="label"> </slot>
+    </div>
+
+    <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+      {fieldLevelHelp}
+    </div>
+
+    <p if:true={isError} id="errorMessageBlock" class="govuk-error-message">
+      <span class="govuk-visually-hidden">{errorSrLabel}</span>
+      {_errorMessage}
+    </p>
+
+    <textarea
+      class={computedTextAreaCharacterCountError}
+      tabindex={tabIndex}
+      minlength={minLength}
+      maxlength={maxLength}
+      readonly={readOnly}
+      accesskey={accessKey}
+      name={name}
+      disabled={disabled}
+      required={required}
+      placeholder={placeholder}
+      id="textareaId"
+      autocomplete={autocomplete}
+      oninput={updateValue}
+      onblur={validateError}
+      onfocus={triggerEvent}
+      onkeyup={handleKeyUp}
+      onkeydown={keyCallbacks}
+      aria-labelledby="textarealabel exceeding-characters-info exceeding-characters-error"
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={isError}
+    >
+      {_val}
+    </textarea>
+
+    <div
+      id="character-count-text"
+      class={computedCharacterCountError}
+      if:true={_showCharacterCount}
+    >
+      {characterCountText}
+    </div>
+  </div>
+</template>

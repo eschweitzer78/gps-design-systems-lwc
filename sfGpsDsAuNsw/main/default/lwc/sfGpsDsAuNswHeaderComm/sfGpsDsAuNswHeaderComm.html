@@ -11,13 +11,23 @@
     site-descriptor={siteDescriptor}
     header-url={headerUrl}
     mobile={mobile}
+    mobile-logo-stacking={mobileLogoStacking}
     search={search}
+    profile={profileIpName}
     search-label={searchLabel}
     class-name={className}
     onsearch={handleSearch}
     onopenmenu={handleOpenMenu}
     onhome={handleHome}
   >
+    <c-sf-gps-ds-au-nsw-header-profile-ip
+      ip-name={profileIpName}
+      input-j-s-o-n={profileInputJSON}
+      options-j-s-o-n={profileOptionsJSON}
+      is-guest={isGuest}
+      user-alias={userAlias}
+    >
+    </c-sf-gps-ds-au-nsw-header-profile-ip>
   </c-sf-gps-ds-au-nsw-header>
 
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>

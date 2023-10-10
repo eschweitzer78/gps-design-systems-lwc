@@ -3,13 +3,15 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { normaliseBoolean, replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuVicEmbeddedVideoComm extends SfGpsDsLwc {
   @api title; // string
   @api width; // number
   @api height; // number
   @api src; // string
   @api variant; // string: link, full
-  @api url; // string
+  @api url; // string -- unused
 
   /* api: mediaLink, string in link markdown format */
 
@@ -62,7 +64,7 @@ export default class SfGpsDsAuVicEmbeddedVideoComm extends SfGpsDsLwc {
 
   set displayTranscript(value) {
     this._displayTranscriptOriginal = value;
-    this._displayTranscript = normaliseBoolean({
+    this._displayTranscript = normaliseBoolean(value, {
       acceptString: true,
       fallbackValue: false
     });
@@ -73,25 +75,13 @@ export default class SfGpsDsAuVicEmbeddedVideoComm extends SfGpsDsLwc {
   }
 
   /* lifecycle */
-
-  _rendered;
-
   renderedCallback() {
-    if (!this._rendered) {
-      if (this.showTranscriptSection) {
-        let element = this.template.querySelector(".sfGpsMarkdown");
+    if (this.showTranscriptSection) {
+      let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
-        if (element) {
-          replaceInnerHtml(element, this._transcriptHtml);
-        } else {
-          this.addError(
-            "CO-PH",
-            "Couldn't find internal Caption markdown placeholder"
-          );
-        }
+      if (element) {
+        replaceInnerHtml(element, this._transcriptHtml);
       }
-
-      this._rendered = true;
     }
   }
 }

@@ -1,0 +1,10 @@
+<template>
+  <div class={computedClassName}>
+    <div class="govuk-ext-progress-indicator__count">Step {step} of {of}</div>
+    <div class="govuk-ext-progress-indicator__bar">
+      <template for:each={steps} for:item="item">
+        <div key={item.index} class={item.className}></div>
+      </template>
+    </div>
+  </div>
+</template>

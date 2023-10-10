@@ -1,0 +1,15 @@
+<template>
+  <c-sf-gps-ds-au-qld-banner-blurb
+    if:false={_sfGpsErrors}
+    title={title}
+    link-primary={_linkPrimary}
+    link-secondary={_linkSecondary}
+    background-graphic={backgroundGraphic}
+    class-name={className}
+  >
+    <span class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
+  </c-sf-gps-ds-au-qld-banner-blurb>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

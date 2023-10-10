@@ -1,0 +1,131 @@
+{
+  "sfGpsDsUkGovAccordion/accordion": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovBreadcrumbs/breadcrumbs": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovCheckboxGroupOsN/checkboxes": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovComboboxOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovCore/core": [{ "from": ":root", "to": ":host" }],
+  "sfGpsDsUkGovDatePickerOsN/date-input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovDatetimePickerOsN/label": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovDetails/details": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFooterCss/footer": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    {
+      "from": "\"/assets",
+      "to": "\"https://cdn.jsdelivr.net/npm/govuk-frontend/govuk/assets"
+    }
+  ],
+  "sfGpsDsUkGovFormAddressTypeaheadOsN/checkboxes": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovFormAddressTypeaheadOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFormDisclosureOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFormFileUploadOsN/file-upload": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFormLookupOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFormStepOsN/back-link": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovFormStepOsN/button": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovFormStepOsN/error-summary": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovFormSummaryListOsN/summary-list": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovHeader/header": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
+  "sfGpsDsUkGovHeroBanner/button": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovHeroBanner/hero-banner": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovInputOsN/checkboxes": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovInputOsN/input": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
+  "sfGpsDsUkGovInsetText/inset-text": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovLinkList/link-list": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovMaskedInputOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovMaskedMultiInputOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovMultiInputOsN/checkboxes": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovMultiInputOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovNotificationBanner/notification-banner": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovPanel/panel": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
+  "sfGpsDsUkGovRadioGroupOsN/radios": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovSaveForLaterAckOsN/warning-text": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovSelectOsN/select": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovSkipLink/skip-link": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovTextareaOsN/character-count": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovTextareaOsN/textarea": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovTimePickerOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovTypeaheadOsN/input": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovWarningText/warning-text": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ]
+}

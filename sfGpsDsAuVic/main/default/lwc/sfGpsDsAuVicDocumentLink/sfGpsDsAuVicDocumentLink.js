@@ -3,8 +3,11 @@ import {
   computeClass,
   isRTL,
   formatDate,
-  isExternalUrl
+  isExternalUrl,
+  getUserLocale
 } from "c/sfGpsDsHelpers";
+
+const DATE_STYLE_DEFAULT = "long"; // one of short medium long full, defaults to long
 
 export default class SfGpsDsAuVicDocumentLink extends LightningElement {
   static renderMode = "light";
@@ -47,7 +50,11 @@ export default class SfGpsDsAuVicDocumentLink extends LightningElement {
   get lastUpdated() {
     if (this.updated) {
       const updatedText = " | Updated: ";
-      const updatedDate = formatDate(this.updated);
+      const updatedDate = formatDate(
+        this.updated,
+        DATE_STYLE_DEFAULT,
+        this._userLocale
+      );
       return updatedDate.length > 0 ? updatedText + updatedDate : "";
     }
 
@@ -85,5 +92,11 @@ export default class SfGpsDsAuVicDocumentLink extends LightningElement {
       "rpl-document-link__size": true,
       "rpl-document-link__size--seperator": this.extension && this.filesize
     });
+  }
+
+  _userLocale;
+
+  connectedCallback() {
+    this._userLocale = getUserLocale();
   }
 }

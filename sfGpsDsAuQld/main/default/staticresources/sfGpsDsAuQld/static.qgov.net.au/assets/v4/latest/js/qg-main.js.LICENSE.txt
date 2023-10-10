@@ -1,0 +1,24 @@
+/*! SWE 4.1.0 2023023T1010 */
+/*!
+ * Stickyfill -- `position: sticky` polyfill
+ * v. 1.1.1 | https://github.com/wilddeer/stickyfill
+ * Copyright Oleg Korsunsky | http://wd.dizaina.net/
+ *
+ * MIT License
+ */
+
+/*! Form validation - v1.1.1 - 2014-04-09
+ * https://github.com/bboyle/form-validation
+ * Copyright (c) 2014 Ben Boyle; Licensed MIT */
+
+/*! Generate ID - v1.0.3 - 2014-09-18
+ * https://github.com/bboyle/Generate-ID
+ * Copyright (c) 2014 Ben Boyle; Licensed MIT */
+
+/*! HTML5 constraintValidationAPI - v1.0.7 - 2015-02-19
+ * https://github.com/bboyle/html5-constraint-validation-API
+ * Copyright (c) 2015 Ben Boyle; Licensed MIT */
+
+/*! relevance - v2.1.0 - 2015-03-04
+            * https://github.com/bboyle/relevance
+            * Copyright (c) 2015 Ben Boyle; Licensed MIT */

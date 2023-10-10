@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Service NSW Footer</masterLabel>
   <targets>
@@ -20,12 +20,14 @@
         type="String"
         label="Lower footer input JSON"
         description="JSON formatted input parameters for the Integration procedure (lower footer)."
+        default="{}"
       />
       <property
         name="lfOptionsJSON"
         type="String"
         label="Lower footer options JSON"
         description="JSON formatted options for the Integration procedure (lower footer)."
+        default="{}"
       />
       <property
         name="lfClassName"

@@ -1,0 +1,39 @@
+.nsw-scope {
+  .nsw-main-nav {
+    li {
+      margin: 0;
+
+      a:visited {
+        color: var(--nsw-text-dark);
+      }
+    }
+  }
+
+  .nsw-main-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 62rem) {
+    .nsw-main-nav__list {
+      max-width: var(--nsw-container-width);
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .nsw-main-nav__sub-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  @media (min-width: 62rem) {
+    .nsw-main-nav__sub-nav li:nth-child(3n+2) {
+      margin-left: 2%;
+      margin-right: 2%;
+    }
+  }
+}

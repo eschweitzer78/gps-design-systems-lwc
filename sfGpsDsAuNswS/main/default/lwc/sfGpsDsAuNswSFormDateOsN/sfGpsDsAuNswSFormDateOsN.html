@@ -4,8 +4,8 @@
     data-omni-input
     label={mergedLabel}
     class={_styleClasses.input}
-    onchange={handleChange}
     required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
     placeholder={_propSetMap.placeholder}
     theme={_theme}
     value={elementValue}
@@ -33,6 +33,9 @@
     min={_min}
     max={_max}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
+    onblur={handleOnBlur}
+    onchange={handleChange}
   >
     <template if:true={_propSetMap.repeat}>
       <span

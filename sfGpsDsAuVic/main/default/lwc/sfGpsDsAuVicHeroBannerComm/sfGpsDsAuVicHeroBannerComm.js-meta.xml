@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>VIC DS Hero Banner</masterLabel>
   <targets>
@@ -14,7 +14,7 @@
         type="String"
         label="Title"
         description="Clearly identifies the primary purpose or action of the site, service or product."
-        default="Hero"
+        default="Hero banner"
       />
       <property
         name="introText"
@@ -35,7 +35,7 @@
         name="linkHeading"
         type="String"
         label="Link heading"
-        description="Text used as a heading in the links sectiosn."
+        description="Text used as a heading in the links section."
       />
       <property
         name="links"
@@ -65,7 +65,7 @@
       <property
         name="logoAlt"
         type="String"
-        label="Logo alt"
+        label="Logo alternative text"
         description="Text used should there be an issue displaying the logo image."
       />
       <property

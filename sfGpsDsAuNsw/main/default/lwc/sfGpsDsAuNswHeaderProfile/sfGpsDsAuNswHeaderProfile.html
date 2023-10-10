@@ -1,0 +1,81 @@
+<template>
+  <div class="nsw-header__profile-container">
+    <template if:true={isGuest}>
+      <button class="nsw-header__profile-login" onclick={handleLogin}>
+        <i class="material-icons nsw-material-icons" aria-hidden="true">
+          account_circle
+        </i>
+        {signInLabel}
+      </button>
+    </template>
+
+    <template if:false={isGuest}>
+      <button class="nsw-header__profile-button" onclick={handleOpenProfile}>
+        <i class="material-icons nsw-material-icons" aria-hidden="true">
+          account_circle
+        </i>
+        {userAlias}
+      </button>
+
+      <div
+        if:true={isOpen}
+        role="dialog"
+        aria-labelledby="nsw-header__profile-panel--content-name"
+        tabindex="-1"
+        class="nsw-header__profile-panel uiPanel positioned south open active"
+        aria-hidden="false"
+        onclick={ignore}
+      >
+        <div class="container">
+          <div class="panel-header">
+            <button
+              aria-live="off"
+              type="button"
+              title="Close Profile Menu"
+              class="slds-button slds-button-neutral closeBtn uiButton"
+              aria-label="Close"
+              onclick={handleCloseProfile}
+            >
+              <span dir="ltr" class="label bBody">Close Profile Menu</span>
+              ×
+            </button>
+          </div>
+
+          <div class="panel-content">
+            <div class="nsw-header__profile-panel--content">
+              <div class="titleContainer">
+                <h2
+                  id="nsw-header__profile-panel--content-name"
+                  class="titleName"
+                >
+                  Profile
+                </h2>
+              </div>
+
+              <div>
+                <ul>
+                  <template for:each={navItems} for:item="navItem">
+                    <li
+                      key={navItem.index}
+                      class="nsw-header__profile-panel--content-item"
+                    >
+                      <a
+                        href={navItem.url}
+                        data-ndx={navItem.index}
+                        onclick={handleClickNavigate}
+                      >
+                        <span>{navItem.text}</span>
+                      </a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pointer"></div>
+      </div>
+    </template>
+  </div>
+</template>

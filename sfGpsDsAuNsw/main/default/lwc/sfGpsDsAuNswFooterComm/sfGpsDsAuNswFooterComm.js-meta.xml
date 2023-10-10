@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Footer</masterLabel>
   <targets>
@@ -10,22 +10,44 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="upperFooterIpName"
+        type="String"
+        label="Upper footer integration procedure name"
+        description="Name of the Integration Procedure mapping content to the upper footer nav."
+      />
+      <property
+        name="upperFooterInputJSON"
+        type="String"
+        label="Upper footer input JSON"
+        description="JSON formatted input parameters for the upper footer Integration Procedure."
+        default="{}"
+      />
+      <property
+        name="upperFooterOptionsJSONN"
+        type="String"
+        label="Upper footer options JSON"
+        description="JSON formatted options for the upper footer Integration Procedure."
+        default="{}"
+      />
+      <property
         name="ipName"
         type="String"
-        label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this footer's nav."
+        label="Lower footer integration procedure name"
+        description="Name of the Integration Procedure mapping content to the lower footer nav."
       />
       <property
         name="inputJSON"
         type="String"
-        label="Input JSON"
-        description="JSON formatted input parameters for the Integration procedure."
+        label="Lower footer input JSON"
+        description="JSON formatted input parameters for the lower footer Integration Procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
-        label="Options JSON"
-        description="JSON formatted options for the Integration procedure."
+        label="Lower footer options JSON"
+        description="JSON formatted options for the lower footer Integration Procedure."
+        default="{}"
       />
       <property
         name="statement"
@@ -49,10 +71,30 @@
         default="Built with [Experience Cloud](https://www.salesforce.com/products/experience-cloud/overview/)"
       />
       <property
+        name="cstyle"
+        type="String"
+        label="Colour style"
+        description="Denotes the colour style applied to the footer."
+        default="default"
+        datasource="default,dark,light,custom"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+      <property
+        name="upperFooterClassName"
+        type="String"
+        label="Upper footer class name"
+        description="Additional CSS class to be applied to upper footer."
+      />
+      <property
         name="lowerFooterClassName"
         type="String"
         label="Lower footer class name"
-        description="Additional CSS class to be applied."
+        description="Additional CSS class to be applied to lower footer."
       />
     </targetConfig>
   </targetConfigs>

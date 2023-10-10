@@ -1,0 +1,19 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
+    <c-sf-gps-ds-au-nsw-lower-footer
+      if:false={_isLoading}
+      items={_items}
+      statement={statement}
+      class-name={className}
+      onclick={handleClick}
+    >
+      <div class="nsw-footer__copyright" lwc:dom="manual"></div>
+      <div class="nsw-footer__built" lwc:dom="manual"></div>
+    </c-sf-gps-ds-au-nsw-lower-footer>
+  </template>
+
+  <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

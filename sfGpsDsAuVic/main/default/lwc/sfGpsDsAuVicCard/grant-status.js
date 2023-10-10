@@ -1,5 +1,7 @@
 import { formatDate } from "c/sfGpsDsHelpers";
 
+const DATE_STYLE_DEFAULT = "long"; // one of short medium long full, defaults to long
+
 export const defaultStatusTerms = {
   open: "Open",
   closed: "Closed",
@@ -23,7 +25,8 @@ export default function calcStatus(
   startDate,
   endDate,
   displaySoon = true,
-  statusTerms = defaultStatusTerms
+  statusTerms = defaultStatusTerms,
+  userLocale = "en-AU"
 ) {
   if (!statusTerms) {
     statusTerms = defaultStatusTerms;
@@ -57,7 +60,9 @@ export default function calcStatus(
       if (now > monthAgo && now < startDate) {
         return !displaySoon
           ? statusTerms.openingSoon()
-          : statusTerms.openingSoon(formatDate(startDate));
+          : statusTerms.openingSoon(
+              formatDate(startDate, DATE_STYLE_DEFAULT, userLocale)
+            );
       }
 
       // displays status as "Closed" when current date is more than one month of startdate

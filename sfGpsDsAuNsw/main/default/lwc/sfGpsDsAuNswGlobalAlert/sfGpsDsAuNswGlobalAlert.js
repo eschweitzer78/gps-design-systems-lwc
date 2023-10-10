@@ -7,19 +7,9 @@
 import { LightningElement, api, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
-const options = {
-  default: "",
-  critical: "nsw-global-alert--critical",
-  light: "nsw-global-alert--light"
-};
-
-const buttonStyles = {
-  default: "nsw-button nsw-button--white",
-  critical: "nsw-button nsw-button--white",
-  light: "nsw-button nsw-button--dark"
-};
-
 export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
+  static renderMode = "light";
+
   @api title;
   @api copy;
   @api ctaText;
@@ -37,13 +27,18 @@ export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-global-alert": true,
-      [options[this.as] || options.default]: true,
+      "nsw-global-alert--light": this.as === "light",
+      "nsw-global-alert--critical": this.as === "critical",
       [this.className]: this.className
     });
   }
 
   get computedButtonClassName() {
-    return buttonStyles[this.as] || buttonStyles.default;
+    return computeClass({
+      "nsw-button": true,
+      "nsw-button--dark": this.as === "light",
+      "nsw-button--white": this.as === "default" || this.as === "critical"
+    });
   }
 
   get hasCta() {
@@ -61,10 +56,12 @@ export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
   handleCtaClick(event) {
     if (this.ctaPreventDefault) {
       event.preventDefault();
+      event.stopPropagation();
     }
 
-    this.dispatchEvent(new CustomEvent("click"));
+    this.dispatchEvent(new CustomEvent("ctaclick"));
   }
+
   handleCloseClick(event) {
     event.preventDefault();
     this._isClosed = true;

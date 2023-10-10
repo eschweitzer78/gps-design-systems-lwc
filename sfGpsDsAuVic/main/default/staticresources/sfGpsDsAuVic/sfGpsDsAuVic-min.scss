@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "VIC-Regular";
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Regular.woff) format("woff");
+  display: swap;
+}
+
+@font-face {
+  font-family: "VIC-Medium";
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Medium.woff) format("woff");
+  display: swap;
+}
+
+@font-face {
+  font-family: "VIC-SemiBold";
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-SemiBold.woff) format("woff");
+  display: swap;
+}
+
+@font-face {
+  font-family: "VIC-Bold";
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff2) format("woff2"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff2) format("woff2"),
+    url(/sfsites/c/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff) format("woff"),
+    url(/resource/sfGpsDsAuVic/fonts/VIC-Bold.woff) format("woff");
+  display: swap;
+}
+
+/* deal with "body .required" styling in community */
+
+.rpl-form .form-group.required {
+  color: #011a3c;
+  font-weight: 400;
+}
+
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}

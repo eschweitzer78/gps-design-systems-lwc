@@ -36,6 +36,18 @@ export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
   @api getErrors() {
     return this._sfGpsErrors;
   }
+
+  /* lifecycle */
+
+  _isConnected = false;
+
+  connectedCallback() {
+    this._isConnected = true;
+  }
+
+  disconnectedCallback() {
+    this._isConnected = false;
+  }
 }
 
 SfGpsDsLwcOsN.PACKAGE_NAME = "omnistudio";

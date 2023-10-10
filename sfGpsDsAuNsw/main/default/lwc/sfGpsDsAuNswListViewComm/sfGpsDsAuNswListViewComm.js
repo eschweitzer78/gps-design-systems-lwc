@@ -7,6 +7,7 @@ import getRecords from "@salesforce/apex/SfGpsDsListViewController.getEnhancedRe
 
 const LISTVIEW_OBJECTID = "00B";
 const LISTVIEW_SETTINGS = "*#$LISTVIEW_SETTINGS";
+const DEBUG = false;
 
 export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
   @api objectApiName;
@@ -34,9 +35,13 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
         .then((result) => {
           this._filterName = result;
         })
-        .catch(() => {
+        .catch((error) => {
           this.addError("CO-LV", "Error while getting list view name.");
           this._filterName = null;
+
+          if (DEBUG) {
+            console.log("CO-LV", JSON.stringify(error));
+          }
         });
     } else {
       this._filterName = value;
@@ -62,7 +67,7 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
       getCount({
         objectApiName: this._listInfo.listReference.objectApiName,
         filterLogicString: this._listInfo.filterLogicString,
-        filterByInfo: JSON.stringify(this._listInfo.filterByInfo)
+        filteredByInfo: JSON.stringify(this._listInfo.filteredByInfo)
       })
         .then((result) => {
           this._error = null;
@@ -141,7 +146,7 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
       objectApiName: this._listInfo.listReference.objectApiName,
       displayColumns: JSON.stringify(this._listInfo.displayColumns),
       filterLogicString: this._listInfo.filterLogicString,
-      filterByInfo: JSON.stringify(this._listInfo.filterByInfo),
+      filteredByInfo: JSON.stringify(this._listInfo.filteredByInfo),
       orderedByInfo: JSON.stringify(this._orderedByInfo),
       offset: this._itemsFrom - 1,
       pageSize: this._pageSize
@@ -227,11 +232,18 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
     let navsvc = this.template.querySelector("c-sf-gps-ds-navigation-service");
     if (navsvc) {
       navsvc.navigateTo("standard__recordPage", {
-        objectApiName: this.objectApiName,
-        recordId: event.detail,
+        objectApiName: event.detail.objectApiName || this.objectApiName,
+        recordId: event.detail.recordId,
         actionName: "view"
       });
     }
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 
   _rendered = false;

@@ -1,15 +1,14 @@
-<template>
-  <nav class={computedClassName} aria-label={label}>
-    <ol class="nsw-breadcrumb__list nsw-breadcrumb__list--inline">
-      <template for:each={items} for:item="item">
-        <li key={item.index}>
-          <template if:true={item.url}>
+<template lwc:render-mode="light">
+  <div class="nsw-p-bottom-xs nsw-m-bottom-sm">
+    <nav class={computedClassName} aria-label={label}>
+      <ol class="nsw-breadcrumb__list nsw-breadcrumb__list--inline">
+        <template for:each={items} for:item="item">
+          <li lwc:if={item.url} key={item.index}>
             <a href={item.url}>{item.text}</a>
-          </template>
-
-          <template if:false={item.url}> {item.text} </template>
-        </li>
-      </template>
-    </ol>
-  </nav>
+          </li>
+          <li lwc:else key={item.index} aria-current="page">{item.text}</li>
+        </template>
+      </ol>
+    </nav>
+  </div>
 </template>

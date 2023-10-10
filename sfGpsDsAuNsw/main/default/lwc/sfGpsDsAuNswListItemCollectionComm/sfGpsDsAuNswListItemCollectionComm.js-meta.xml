@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS List Item Collection</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration procedure mapping content to this list."
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Input JSON"
+        description="JSON formatted input parameters for the Integration procedure."
+        default="{}"
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Options JSON"
+        description="JSON formatted options for the Integration procedure."
+        default="{}"
+      />
+      <property
+        name="dateStyle"
+        type="String"
+        label="Date style"
+        description="Styling to be applie to the date."
+        datasource="short,medium,long,full"
+        default="medium"
+      />
+      <property
+        name="showLink"
+        type="Boolean"
+        label="Show link"
+        description="Indicates that the link information should be displayed."
+        default="false"
+      />
+      <property
+        name="isBlock"
+        type="Boolean"
+        label="Is block"
+        description="The link applies to the whole list item vs. only the headline."
+        default="true"
+      />
+      <property
+        name="isReversed"
+        type="Boolean"
+        label="Is reversed"
+        description="The image, if any, should be displayed on the left hand side."
+        default="false"
+      />      
+      <property
+        name="isRelative"
+        type="Boolean"
+        label="Is relative to Community base"
+        description="The link URL is relative to the community base URL."
+        default="true"
+      />      
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

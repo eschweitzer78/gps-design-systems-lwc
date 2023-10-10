@@ -1,18 +1,1 @@
-.rpl-text-icon__group {
-  white-space: normal;
-}
-.rpl-text-icon--before {
-  margin: auto 0.25rem auto auto;
-}
-.rpl-text-icon--after {
-  margin: auto auto auto 0.25rem;
-}
-
-[dir="rtl"] .rpl-text-icon--before {
-  margin: auto auto auto 0.5rem;
-}
-[dir="rtl"] .rpl-text-icon--after {
-  margin: auto 0.5rem auto auto;
-}
-
-/*# sourceMappingURL=sfGpsDsAuVicTextIcon.css.map */
+@import "./TextIcon.gen.css";

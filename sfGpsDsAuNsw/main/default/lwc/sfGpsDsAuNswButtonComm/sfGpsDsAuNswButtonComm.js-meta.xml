@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Button</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="link"
+        type="String"
+        label="Link"
+        description="Link in Markdown format; url is not relevant for button renderings."
+        required="true"
+        default="[Read more](#)"
+      />
+      <property
+        name="cstyle"
+        type="String"
+        label="Colour style"
+        description="Colour theme style used for rendering."
+        datasource="dark,dark-outline,dark-outline-solid,light,light-outline,white,danger,info"
+        default="dark"
+        required="true"
+      />
+      <property
+        name="rendering"
+        type="String"
+        label="Rendering"
+        description="HTML element used to render the link."
+        datasource="a,button"
+        required="true"
+        default="button"
+      />
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="Type attribute used if rendered as a button."
+        datasource="button,submit,reset"
+        default="button"
+      />
+      <property
+        name="disabled"
+        type="Boolean"
+        label="Disabled"
+        description="Render button as disabled, only revelant with button rendering."
+        default="false"
+      />
+      <property
+        name="iconStyle"
+        type="String"
+        label="Icon style"
+        description="Indicates whether there is an icon and where."
+        datasource="none,before,after"
+        default="none"
+      />
+      <property
+        name="iconName"
+        type="String"
+        label="Icon name"
+        description="Name of the icon in the Google Material collection."
+      />
+      <property
+        name="mobileFullWidth"
+        type="String"
+        label="Mobile full width"
+        description="Setting this attribute will render the button in full width on smaller devices."
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

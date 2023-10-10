@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Header and Main Nav</masterLabel>
   <targets>
@@ -12,20 +12,42 @@
       <property
         name="ipName"
         type="String"
-        label="Integration procedure name"
-        description="Name of the Integration procedure mapping content to this nav."
+        label="Nav integration procedure name"
+        description="Name of the integration procedure mapping content to this nav."
       />
       <property
         name="inputJSON"
         type="String"
-        label="Input JSON"
-        description="JSON formatted input parameters for the Integration procedure."
+        label="Nav input JSON"
+        description="JSON formatted input parameters for the nav integration procedure."
+        default="{}"
       />
       <property
         name="optionsJSON"
         type="String"
-        label="Options JSON"
-        description="JSON formatted options for the Integration procedure."
+        label="Nav options JSON"
+        description="JSON formatted options for the nav integration procedure."
+        default="{}"
+      />
+      <property
+        name="profileIpName"
+        type="String"
+        label="Profile integration procedure name"
+        description="Name of the integration procedure mapping content to the profile menu. Leave empty for if no profile menu is required."
+      />
+      <property
+        name="profileInputJSON"
+        type="String"
+        label="Profile input JSON"
+        description="JSON formatted input parameters for the profile integration procedure."
+        default="{}"
+      />
+      <property
+        name="profileOptionsJSON"
+        type="String"
+        label="Profile options JSON"
+        description="JSON formatted options for the profile integration procedure."
+        default="{}"
       />
       <property
         name="masterbrand"
@@ -88,6 +110,14 @@
         default="true"
       />
       <property
+        name="mobileLogoStacking"
+        type="String"
+        label="Mobile logo stacking"
+        description="Stacking direction of the masterbrand and logo on mobile."
+        default="horizontal"
+        datasource="horizontal,vertical"
+      />
+      <property
         name="search"
         type="Boolean"
         label="Show search bar"
@@ -118,6 +148,7 @@
         name="megaMenu"
         type="Boolean"
         label="Mega menu"
+        description="Indicates that the menu should be rendered as a multi-level mega-menu"
         default="false"
       />
       <property

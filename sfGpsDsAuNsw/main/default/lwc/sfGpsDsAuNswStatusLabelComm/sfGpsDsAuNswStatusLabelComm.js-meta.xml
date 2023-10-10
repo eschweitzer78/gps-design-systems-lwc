@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>57.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Status Label</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        label="Label"
+        name="label"
+        type="String"
+        default="Status label"
+        description="Text used as a label"
+      />
+      <property
+        label="Status"
+        name="status"
+        type="String"
+        default="neutral"
+        datasource="info,success,warning,error,neutral"
+        description="Denotes the severity of the status to be rendered."
+      />
+      <property
+        label="CSS Class"
+        name="className"
+        type="String"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

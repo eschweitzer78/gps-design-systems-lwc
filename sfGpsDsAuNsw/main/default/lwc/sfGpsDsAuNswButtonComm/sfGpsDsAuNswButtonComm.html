@@ -1,0 +1,35 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-au-nsw-button
+      if:true={isButton}
+      label={_link.text}
+      cstyle={cstyle}
+      rendering={rendering}
+      type={type}
+      disabled={disabled}
+      icon-style={iconStyle}
+      icon-name={iconName}
+      mobile-full-width={mobileFullWidth}
+      class-name={className}
+    >
+    </c-sf-gps-ds-au-nsw-button>
+    <c-sf-gps-ds-au-nsw-button
+      if:false={isButton}
+      link={_link.url}
+      cstyle={cstyle}
+      rendering={rendering}
+      type={type}
+      disabled={disabled}
+      icon-style={iconStyle}
+      icon-name={iconName}
+      mobile-full-width={mobileFullWidth}
+      class-name={className}
+      onclick={handleClick}
+    >
+      {_link.text}
+    </c-sf-gps-ds-au-nsw-button>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

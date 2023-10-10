@@ -1,9 +1,16 @@
 import { LightningElement, api, track } from "lwc";
-import { parseIso8601, computeClass } from "c/sfGpsDsHelpers";
+import {
+  parseIso8601,
+  computeClass,
+  getUserLocale,
+  formatDate
+} from "c/sfGpsDsHelpers";
 
-const DATE_STYLE_DEFAULT = "medium"; // one of short medium long full, defaults to full
+const DATE_STYLE_DEFAULT = "medium"; // one of short medium long full, defaults to medium
 
 export default class SfGpsDsAuNswListItem extends LightningElement {
+  static renderMode = "light";
+
   @api isBlock = false;
   @api isReversed = false;
   @api showLink = false;
@@ -13,7 +20,7 @@ export default class SfGpsDsAuNswListItem extends LightningElement {
   @api title;
   @api image;
   @api imageAlt;
-
+  @api dateStyle;
   @api tags;
 
   @api className;
@@ -45,10 +52,19 @@ export default class SfGpsDsAuNswListItem extends LightningElement {
   }
 
   get _dateLocaleString() {
+    /*
     return this._date
-      ? this._date.toLocaleDateString(undefined, {
+      ? this._date.toLocaleDateString(this._userLocale, {
           dateStyle: this.dateStyle || DATE_STYLE_DEFAULT
         })
+      : null;
+    */
+    return this._date
+      ? formatDate(
+          this._date,
+          this.dateStyle || DATE_STYLE_DEFAULT,
+          this._userLocale
+        )
       : null;
   }
 
@@ -67,5 +83,11 @@ export default class SfGpsDsAuNswListItem extends LightningElement {
     }
 
     this.dispatchEvent(new CustomEvent("navigate", { detail: this.link }));
+  }
+
+  _userLocale;
+
+  connectedCallback() {
+    this._userLocale = getUserLocale();
   }
 }

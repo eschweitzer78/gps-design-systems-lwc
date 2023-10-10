@@ -19,7 +19,7 @@
         >
           <!-- BOOLEAN -->
           <span if:true={column.isBoolean}
-            >{column.label}:
+            >{column.label}:{space}
             <i
               if:true={column.value}
               class="material-icons nsw-material-icons"
@@ -38,75 +38,81 @@
 
           <!-- CURRENCY -->
           <span if:true={column.isCurrency}
-            >{column.label} [CURRENCY]: {column.value}</span
+            >{column.label}: {column.displayValue}</span
           >
 
           <!-- DATE -->
           <span if:true={column.isDate}
-            >{column.label} [DATE]: {column.value}</span
+            >{column.label}: {column.displayValue}</span
           >
 
           <!-- DATE -->
           <span if:true={column.isDateTime}
-            >{column.label} [DATETIME]: {column.value}</span
+            >{column.label}: {column.displayValue}</span
           >
 
           <!-- EMAIL -->
           <span if:true={column.isEmail}
-            >{column.label} [EMAIL]:
-            <a href={column.link}>{column.value}</a></span
+            >{column.label}:{space}
+            <a href={column.link}>{column.displayValue}</a></span
           >
 
           <!-- NUMBER -->
           <span if:true={column.isNumber}
-            >{column.label} [NUMBER]: {column.value}</span
+            >{column.label}: {column.displayValue}</span
           >
 
           <!-- PERCENT -->
           <span if:true={column.isPercent}
-            >{column.label} [PCT]: {column.value}</span
+            >{column.label}: {column.displayValue}</span
           >
 
           <!-- PHONE -->
           <span if:true={column.isPhone}
-            >{column.label} [PHONE]:
-            <a href={column.link}>{column.value}</a></span
+            >{column.label}:{space}
+            <a href={column.link}>{column.displayValue}</a></span
           >
 
           <!-- PICKLIST -->
           <span if:true={column.isPicklist}
-            >{column.label} [PICKLIST]: {column.value}</span
+            >{column.label}: {column.displayValue}</span
           >
 
           <!-- REFERENCE -->
           <span if:true={column.isReference}
-            >{column.label} [REFERENCE]: {column.value}</span
+            >{column.label}: {column.value}</span
           >
 
           <!-- STRING -->
           <span if:true={column.isString}
-            >{column.label}:
+            >{column.label}:{space}
             <template if:true={column.link}>
-              <a href={column.link}>{column.value}</a>
+              <a
+                href={column.link}
+                data-object={column.relationshipObjectApiName}
+                data-rid={column.relationshipId}
+                onclick={handleRelationshipNavigate}
+                >{column.value}</a
+              >
             </template>
-            <template if:false={column.link}> {column.value} </template>
+            <template if:false={column.link}>{column.value} </template>
           </span>
 
           <!-- TEXTAREA -->
           <span if:true={column.isTextArea}
-            >{column.label} [TEXTAREA]: {column.value}</span
+            >{column.label}: {column.value}</span
           >
 
           <!-- TIME -->
           <span if:true={column.isTime}
-            >{column.label} [TIME]: {column.value}</span
+            >{column.label}: {column.displayValue}</span
           >
 
           <!-- URL -->
           <span if:true={column.isURL}
-            >{column.label} [URL]:
-            <a href={column.link}>{column.value}</a></span
-          >
+            >{column.label}:{space}
+            <a href={column.link}>{column.value}</a>
+          </span>
         </span>
       </template>
     </div>

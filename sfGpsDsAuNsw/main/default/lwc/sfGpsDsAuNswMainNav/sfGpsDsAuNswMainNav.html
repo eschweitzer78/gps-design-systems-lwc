@@ -1,11 +1,11 @@
-<template>
-  <nav id="main-nav" class={computedClassName} aria-label={navAriaLabel}>
+<template lwc:render-mode="light">
+  <nav id={mainNavId} class={computedClassName} aria-label={navAriaLabel}>
     <div class="nsw-main-nav__header">
       <div class="nsw-main-nav__title">{navTitle}</div>
       <button
         type="button"
         class="nsw-icon-button"
-        aria-controls="main-nav"
+        aria-controls={mainNavId}
         aria-expanded={isActive}
         onclick={handleMainCloseClick}
       >
@@ -42,7 +42,7 @@
               class={navItem.className}
               role="button"
               aria-expanded={navItem.isActive}
-              aria-controls={navItem.index}
+              aria-controls={navItem.id}
               data-ndx={navItem.index}
               onclick={handleClick}
             >
@@ -58,10 +58,10 @@
               </template>
             </a>
 
-            <!-- SubNav -->
+            <!-- SubNav TODO change id -->
             <div
               class={navItem.subNavClassName}
-              id={navItem.index}
+              id={navItem.id}
               role="region"
               aria-label={navItem.text}
             >
@@ -70,7 +70,7 @@
                 <button
                   type="button"
                   class="nsw-icon-button nsw-icon-button--flex"
-                  aria-controls={navItem.index}
+                  aria-controls={navItem.id}
                   aria-expanded="true"
                   data-ndx={navItem.index}
                   onclick={handleBackClick}
@@ -89,7 +89,7 @@
                 <button
                   type="button"
                   class="nsw-icon-button"
-                  aria-controls="main-nav"
+                  aria-controls={mainNavId}
                   aria-expanded={isActive}
                   onclick={handleMainCloseClick}
                 >
@@ -118,6 +118,7 @@
                     east
                   </span>
                 </a>
+
                 <span if:false={navItem.url}>{navItem.text}</span>
               </div>
               <div class="nsw-main-nav__description">{navItem.description}</div>
@@ -149,7 +150,7 @@
                     <template if:true={subNavItem.subNav}>
                       <div
                         class={subNavItem.subNavClassName}
-                        id={subNavItem.index}
+                        id={subNavItem.id}
                         role="region"
                         aria-label={subNavItem.ariaLabel}
                       >
@@ -158,7 +159,7 @@
                           <button
                             type="button"
                             class="nsw-icon-button nsw-icon-button--flex"
-                            aria-controls={subNavItem.index}
+                            aria-controls={subNavItem.id}
                             aria-expanded="true"
                             data-ndx={subNavItem.index}
                             onclick={handleBackClick}
@@ -177,7 +178,7 @@
                           <button
                             type="button"
                             class="nsw-icon-button"
-                            aria-controls="main-nav"
+                            aria-controls={mainNavId}
                             aria-expanded={isActive}
                             onclick={handleMainCloseClick}
                           >
@@ -224,7 +225,7 @@
                                 onclick={handleClickNavigate}
                               >
                                 <!-- navigate -->
-                                <span>z{subSubNavItem.text}</span>
+                                <span>{subSubNavItem.text}</span>
                                 <span
                                   if:true={subSubNavItem.subNav}
                                   class="material-icons nsw-material-icons nsw-main-nav__link-icon"

@@ -1,7 +1,1 @@
-@media screen {
-  .rpl-container {
-    overflow-x: hidden;
-  }
-}
-
-/*# sourceMappingURL=sfGpsDsAuVicContainer.css.map */
+@import "./Container.gen.css";

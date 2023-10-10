@@ -1,0 +1,36 @@
+<template lwc:render-mode="light">
+  <div if:false={_sfGpsErrors} class={computedClassName}>
+    <div if:true={showButtons} class="nsw-accordion__toggle">
+      <button
+        disabled={isFullyExpanded}
+        type="button"
+        onclick={handleExpandAll}
+      >
+        Expand all
+      </button>
+      <button
+        disabled={isFullyCollapsed}
+        type="button"
+        onclick={handleCollapseAll}
+      >
+        Collapse all
+      </button>
+    </div>
+
+    <template for:each={_h1s} for:item="item">
+      <c-sf-gps-ds-au-nsw-accordion-comm
+        key={item.index}
+        index={item.index}
+        header={item.title}
+        content={item.html}
+        closed={item.closed}
+        onexpand={handleExpand}
+        oncollapse={handleCollapse}
+      >
+      </c-sf-gps-ds-au-nsw-accordion-comm>
+    </template>
+  </div>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

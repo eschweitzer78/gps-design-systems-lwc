@@ -4,7 +4,11 @@
       <div if:true={subtitle} class="rpl-card-emergency__subtitle">
         <span> {subtitle} </span>
       </div>
-      <h2 if:true={title} class="rpl-card-emergency__title" id={labelId}>
+      <h2
+        if:true={title}
+        class="rpl-card-emergency__title"
+        id={computedAriaLabelledById}
+      >
         {title}
       </h2>
       <p if:true={summary} class="rpl-card-emergency__summary">{summary}</p>
@@ -16,7 +20,7 @@
         class-name="rpl-card-emergency__cta-link"
         href={filterLink}
         inner-wrap="false"
-        aria-labelledby={labelId}
+        aria-labelledby={computedAriaLabelledById}
       >
         <c-sf-gps-ds-au-vic-icon
           symbol={iconSymbol}

@@ -1,0 +1,17 @@
+<template lwc:render-mode="light">
+  <article class={className}>
+    <button
+      class={computedButtonClassName}
+      onclick={handleClick}
+      aria-expanded={_isOpen}
+      aria-controls={computedContentId}
+    >
+      <a class="qg-accordion--ga">
+        <!-- icon -->
+        <span if:true={title} class="title">{title}</span>
+        <span if:true={subtitle} class="subtitle">{subtitle}</span>
+      </a>
+    </button>
+    <div class="collapsing-section" id={computedContentId}></div>
+  </article>
+</template>

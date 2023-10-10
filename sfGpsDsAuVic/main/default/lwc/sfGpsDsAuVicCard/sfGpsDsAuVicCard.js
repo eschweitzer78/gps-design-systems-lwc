@@ -1,6 +1,13 @@
 import { LightningElement, api } from "lwc";
-import { truncateText, formatDate, formatDateRange } from "c/sfGpsDsHelpers";
+import {
+  truncateText,
+  formatDate,
+  formatDateRange,
+  getUserLocale
+} from "c/sfGpsDsHelpers";
 import grantStatus from "./grant-status";
+
+const DATE_STYLE_DEFAULT = "long"; // one of short medium long full, defaults to medium
 
 const statusTerms = {
   open: {
@@ -61,7 +68,7 @@ export default class SfGpsDsAuVicCard extends LightningElement {
   @api displayStyle = "noImage"; // noImage, thumbnail, profile, featured
 
   modifiers(classPrefix = "rpl-card") {
-    return `${classPrefix}--${this.displayStyle
+    return `${classPrefix}--${(this.displayStyle || "")
       .replace(/\s/g, "")
       .toLowerCase()}`;
   }
@@ -88,8 +95,13 @@ export default class SfGpsDsAuVicCard extends LightningElement {
     }
 
     return this.dateStart && this.dateEnd
-      ? formatDateRange(this.dateStart, this.dateEnd)
-      : formatDate(this.dateStart);
+      ? formatDateRange(
+          this.dateStart,
+          this.dateEnd,
+          DATE_STYLE_DEFAULT,
+          this._userLocale
+        )
+      : formatDate(this.dateStart, DATE_STYLE_DEFAULT, this._userLocale);
   }
 
   get isValidContentType() {
@@ -148,5 +160,11 @@ export default class SfGpsDsAuVicCard extends LightningElement {
       this.formattedDate ||
       this.inductionYear
     );
+  }
+
+  _userLocale;
+
+  connectedCallback() {
+    this._userLocale = getUserLocale();
   }
 }

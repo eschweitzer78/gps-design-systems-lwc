@@ -1,0 +1,27 @@
+<template lwc:render-mode="light">
+  <section class={computedClassName}>
+    <div if:true={title} class="qg-callout__header col-12">
+      <h2 class="qg-callout__title">{title}</h2>
+    </div>
+
+    <div class="qg-callout__content col-12">
+      <div class={computedAlignmentClass}>
+        <div class="qg-callout__description">
+          <slot></slot>
+        </div>
+
+        <a
+          if:true={showButton}
+          class="qg-btn btn-primary qg-callout__cta"
+          href={buttonLink.url}
+        >
+          {buttonLink.text}
+        </a>
+
+        <div if:true={showImage} class="qg-callout__image">
+          <img src={imageSrc} alt={imageAlt} />
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

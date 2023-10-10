@@ -1,0 +1,45 @@
+.nsw-header {
+  &__waratah {
+    img {
+      height: 3rem;
+
+      @media (min-width: 62rem) {
+        height: 4.75rem;
+      }
+    } 
+
+    /* Add this as standard stylesheet only supports svg tags */
+    a {
+      img:not(:first-child) {
+        margin-left: 1.5rem;
+
+        @media (min-width: 62rem) {
+          margin-left: 2.5rem;
+        }
+      }
+    }
+  }
+
+  &__name {
+    svg,
+    img {
+      height: 3rem;
+      display: block;
+
+      @media (min-width: 62rem) {
+        height: 4.75rem;
+      }
+    }
+  }
+
+  &__has-profile .nsw-header__search {
+    right: 6.75rem;
+
+    @media (max-width: 62rem) {
+      position: absolute;
+      top: 0.75rem;
+      left: 2.875rem;
+      right: auto;
+    }
+  }
+}

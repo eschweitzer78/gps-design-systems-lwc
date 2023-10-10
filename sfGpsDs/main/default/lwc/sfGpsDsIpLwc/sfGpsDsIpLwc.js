@@ -69,10 +69,8 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   set optionsJSON(value) {
     this._originalOptionsJSON = value;
 
-    if (value == null) return;
-
     try {
-      this._options = JSON.parse(value);
+      this._options = JSON.parse(value || "{}");
       this.refreshContent();
     } catch (e) {
       this._options = {};
@@ -81,7 +79,8 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   }
 
   refreshContent() {
-    if (this._ipName == null || this._input == null) {
+    if (this._ipName == null || this._input == null || this._options == null) {
+      /* 2023-06-01 ESC: do not bother running if not all of ipName, input and options aren't set */
       return;
     }
 
@@ -100,7 +99,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
         try {
           if (data) {
             if (!Array.isArray(data)) {
-              if (data.hasError || data.error) {
+              if (data.hasError || data.error || data.errorMessage) {
                 this.addError(
                   "CK-ER",
                   "Integration procedure error: " +
@@ -110,18 +109,17 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
                 return;
               }
 
-              // the record must have an index property or its deemed empty
-              data = data.index ? [data] : [];
+              // IPs tend to send 1 item arrays as an object
+              // data = [data];
             }
 
             this._items = this.mapIpData(data);
           }
 
           this.didLoadOnce = true;
-          this.clearErrors();
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection.");
-          console.log(e);
+          console.log("CK-EX", e);
           this._items = [];
         } finally {
           this._nLoading--;
@@ -129,7 +127,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       })
       // eslint-disable-next-line no-unused-vars
       .catch((error) => {
-        console.log("ip error", JSON.stringify(error));
+        console.log("CK-RD ip error", JSON.stringify(error));
         this.addError("CK-RD", "Issue getting the content collection.");
         this._items = [];
         this._nLoading--;
@@ -140,11 +138,17 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
     return data;
   }
 
+  get communityBasePath() {
+    return cBasePath;
+  }
+
   get isPreview() {
     return !document.URL.startsWith(cBasePath);
   }
 
   connectedCallback() {
+    super.connectedCallback();
+
     if (!this._ipName) {
       this.addError("IP-NV", "Integration procedure name is required.");
     }

@@ -1,8 +1,10 @@
 <template>
   <c-sf-gps-ds-au-nsw-tags
     if:false={_sfGpsErrors}
+    as-checkboxes={asCheckboxes}
     tags={_links}
     class-name={className}
+    onchange={handleChange}
   >
   </c-sf-gps-ds-au-nsw-tags>
 

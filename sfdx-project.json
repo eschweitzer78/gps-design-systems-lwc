@@ -3,81 +3,111 @@
     {
       "path": "sfGpsDs",
       "package": "Salesforce Global Public Sector Design Systems",
-      "versionName": "2023.02.04.1730",
-      "versionNumber": "1.4.0.NEXT",
+      "versionName": "2023.08.28.0700",
+      "versionNumber": "1.8.3.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 240.4"
+          "package": "omnistudio 242.11"
         }
       ]
     },
     {
       "path": "sfGpsDsAuNsw",
       "package": "Salesforce Global Public Sector AU NSW Design System",
-      "versionName": "2023.02.04.1730",
-      "versionNumber": "1.4.0.NEXT",
+      "versionName": "2023.08.28.0700",
+      "versionNumber": "1.8.3.NEXT",
       "default": true,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 240.4"
+          "package": "omnistudio 242.11"
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.4.0.LATEST"
+          "versionNumber": "1.8.2.LATEST"
         }
       ]
     },
     {
       "path": "sfGpsDsAuNswS",
       "package": "Salesforce Global Public Sector AU NSW Service Design System",
-      "versionName": "2023.02.04.1730",
-      "versionNumber": "1.4.0.NEXT",
+      "versionName": "2023.08.28.0700",
+      "versionNumber": "1.8.3.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 240.4"
+          "package": "omnistudio 242.11"
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.4.0.LATEST"
+          "versionNumber": "1.8.2.LATEST"
         }
       ]
     },
     {
       "path": "sfGpsDsAuVic",
       "package": "Salesforce Global Public Sector AU VIC Design System",
-      "versionName": "2023.02.04.1730",
-      "versionNumber": "1.2.0.NEXT",
+      "versionName": "2023.06.16.2330",
+      "versionNumber": "1.8.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 240.4"
+          "package": "omnistudio 242.11"
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.4.0.LATEST"
+          "versionNumber": "1.7.3.LATEST"
         }
       ]
     },
     {
       "path": "sfGpsDsUkGov",
       "package": "Salesforce Global Public Sector GOV.UK Design System",
-      "versionName": "2023.02.04.1730",
-      "versionNumber": "0.2.0.NEXT",
+      "versionName": "2023.08.23.1100",
+      "versionNumber": "0.8.2.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 240.4"
+          "package": "omnistudio 242.11"
         },
         {
           "package": "Salesforce Global Public Sector Design Systems",
-          "versionNumber": "1.4.0.LATEST"
+          "versionNumber": "1.8.2.LATEST"
+        }
+      ]
+    },
+    {
+      "path": "sfGpsDsAuQld",
+      "package": "Salesforce Global Public Sector QLD Design System",
+      "versionName": "2023.06.16.2330",
+      "versionNumber": "0.8.0.NEXT",
+      "default": false,
+      "definitionFile": "config/project-deployment-def.json",
+      "dependencies": [
+        {
+          "package": "omnistudio 242.11"
+        },
+        {
+          "package": "Salesforce Global Public Sector Design Systems",
+          "versionNumber": "1.7.3.LATEST"
+        }
+      ]
+    },
+    {
+      "path": "sfGpsDsUkGovFull",
+      "package": "Salesforce Global Public Sector GOV.UK Design System (Full)",
+      "versionName": "2023.08.23.1100",
+      "versionNumber": "0.8.0.NEXT",
+      "default": false,
+      "definitionFile": "config/project-deployment-def.json",
+      "dependencies": [
+        {
+          "package": "omnistudio 242.11"
         }
       ]
     }
@@ -85,10 +115,11 @@
   "name": "au-design-systems-lwc",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "56.0",
+  "sourceApiVersion": "57.0",
   "packageAliases": {
     "omnistudio 236.3": "04t4W000002kdlN",
     "omnistudio 240.4": "04t4W000002kevmQAA",
+    "omnistudio 242.11": "04t4W000002g3gJQAQ",
     "Salesforce Global Public Sector Design Systems": "0Ho5j000000bljgCAA",
     "Salesforce Global Public Sector Design Systems@1.0.0-3": "04t5j000000IIUPAA4",
     "Salesforce Global Public Sector Design Systems@1.0.0-5": "04t5j000000IIthAAG",
@@ -113,6 +144,13 @@
     "Salesforce Global Public Sector Design Systems@1.3.1-2": "04t5j000000MNB3AAO",
     "Salesforce Global Public Sector Design Systems@1.3.1-3": "04t5j000000MNBIAA4",
     "Salesforce Global Public Sector Design Systems@1.3.1-4": "04t5j000000MNCuAAO",
+    "Salesforce Global Public Sector Design Systems@1.3.1-5": "04t5j000000MNFeAAO",
+    "Salesforce Global Public Sector Design Systems@1.4.0-1": "04t5j000000MNFtAAO",
+    "Salesforce Global Public Sector Design Systems@1.4.0-3": "04t5j000000MNH6AAO",
+    "Salesforce Global Public Sector Design Systems@1.4.0-4": "04t5j000000MNIsAAO",
+    "Salesforce Global Public Sector Design Systems@1.4.0-5": "04t5j000000MNLXAA4",
+    "Salesforce Global Public Sector Design Systems@1.4.0-7": "04t5j000000MNMLAA4",
+    "Salesforce Global Public Sector Design Systems@1.4.1-1": "04t5j000000MNMpAAO",
     "Salesforce Global Public Sector AU NSW Design System": "0Ho5j000000blmzCAA",
     "Salesforce Global Public Sector AU NSW Design System@1.0.0-3": "04t5j000000IIUUAA4",
     "Salesforce Global Public Sector AU NSW Design System@1.1.0-5": "04t5j000000IIv4AAG",
@@ -130,6 +168,12 @@
     "Salesforce Global Public Sector AU NSW Design System@1.3.1-1": "04t5j000000MN8nAAG",
     "Salesforce Global Public Sector AU NSW Design System@1.3.1-2": "04t5j000000MNB8AAO",
     "Salesforce Global Public Sector AU NSW Design System@1.3.1-3": "04t5j000000MNBNAA4",
+    "Salesforce Global Public Sector AU NSW Design System@1.3.1-4": "04t5j000000MNFjAAO",
+    "Salesforce Global Public Sector AU NSW Design System@1.4.0-1": "04t5j000000MNFyAAO",
+    "Salesforce Global Public Sector AU NSW Design System@1.4.0-4": "04t5j000000MNHBAA4",
+    "Salesforce Global Public Sector AU NSW Design System@1.4.0-5": "04t5j000000MNLcAAO",
+    "Salesforce Global Public Sector AU NSW Design System@1.4.0-6": "04t5j000000MNMQAA4",
+    "Salesforce Global Public Sector AU NSW Design System@1.4.1-1": "04t5j000000MNMuAAO",
     "Salesforce Global Public Sector AU NSW Service Design System": "0Ho5j000000blmpCAA",
     "Salesforce Global Public Sector AU NSW Service Design System@1.1.0-1": "04t5j000000IIufAAG",
     "Salesforce Global Public Sector AU NSW Service Design System@1.1.0-2": "04t5j000000IIwMAAW",
@@ -143,24 +187,127 @@
     "Salesforce Global Public Sector AU NSW Service Design System@1.3.0-3": "04t5j000000MN8sAAG",
     "Salesforce Global Public Sector AU NSW Service Design System@1.3.0-4": "04t5j000000MNBDAA4",
     "Salesforce Global Public Sector AU NSW Service Design System@1.3.0-5": "04t5j000000MNBSAA4",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.4.0-1": "04t5j000000MNG3AAO",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.4.0-3": "04t5j000000MNHGAA4",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.4.0-4": "04t5j000000MNLhAAO",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.4.0-5": "04t5j000000MNMVAA4",
     "Salesforce Global Public Sector AU VIC Design System": "0Ho5j0000008OVYCA2",
     "Salesforce Global Public Sector AU VIC Design System@0.1.0-1": "04t5j000000MN8dAAG",
     "Salesforce Global Public Sector AU VIC Design System@1.0.0-1": "04t5j000000MNBXAA4",
     "Salesforce Global Public Sector AU VIC Design System@1.0.0-2": "04t5j000000MNCzAAO",
+    "Salesforce Global Public Sector AU VIC Design System@1.1.0-1": "04t5j000000MNFoAAO",
+    "Salesforce Global Public Sector AU VIC Design System@1.2.0-1": "04t5j000000MNG8AAO",
+    "Salesforce Global Public Sector AU VIC Design System@1.2.0-3": "04t5j000000MNHLAA4",
+    "Salesforce Global Public Sector AU VIC Design System@1.2.0-4": "04t5j000000MNIxAAO",
+    "Salesforce Global Public Sector AU VIC Design System@1.2.0-5": "04t5j000000MNLmAAO",
+    "Salesforce Global Public Sector AU VIC Design System@1.3.0-4": "04t5j000000MNMaAAO",
+    "Salesforce Global Public Sector AU VIC Design System@1.4.0-1": "04t5j000000MNMzAAO",
     "Salesforce Global Public Sector GOV.UK Design System": "0Ho5j0000008OVdCAM",
     "Salesforce Global Public Sector GOV.UK Design System@0.1.0-1": "04t5j000000MNBcAAO",
-    "Salesforce Global Public Sector Design Systems@1.3.1-5": "04t5j000000MNFeAAO",
-    "Salesforce Global Public Sector AU NSW Design System@1.3.1-4": "04t5j000000MNFjAAO",
-    "Salesforce Global Public Sector AU VIC Design System@1.1.0-1": "04t5j000000MNFoAAO",
-    "Salesforce Global Public Sector Design Systems@1.4.0-1": "04t5j000000MNFtAAO",
-    "Salesforce Global Public Sector AU NSW Design System@1.4.0-1": "04t5j000000MNFyAAO",
-    "Salesforce Global Public Sector AU NSW Service Design System@1.4.0-1": "04t5j000000MNG3AAO",
-    "Salesforce Global Public Sector AU VIC Design System@1.2.0-1": "04t5j000000MNG8AAO",
     "Salesforce Global Public Sector GOV.UK Design System@0.2.0-1": "04t5j000000MNGDAA4",
-    "Salesforce Global Public Sector Design Systems@1.4.0-3": "04t5j000000MNH6AAO",
-    "Salesforce Global Public Sector AU NSW Design System@1.4.0-4": "04t5j000000MNHBAA4",
-    "Salesforce Global Public Sector AU NSW Service Design System@1.4.0-3": "04t5j000000MNHGAA4",
-    "Salesforce Global Public Sector AU VIC Design System@1.2.0-3": "04t5j000000MNHLAA4",
-    "Salesforce Global Public Sector GOV.UK Design System@0.2.0-2": "04t5j000000MNHQAA4"
+    "Salesforce Global Public Sector GOV.UK Design System@0.2.0-2": "04t5j000000MNHQAA4",
+    "Salesforce Global Public Sector GOV.UK Design System@0.2.0-3": "04t5j000000MNLrAAO",
+    "Salesforce Global Public Sector GOV.UK Design System@0.2.0-4": "04t5j000000MNMfAAO",
+    "Salesforce Global Public Sector Design Systems@1.5.0-1": "04t5j000000h0VBAAY",
+    "Salesforce Global Public Sector AU NSW Design System@1.5.0-1": "04t5j000000h0VGAAY",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.5.0-1": "04t5j000000h0VLAAY",
+    "Salesforce Global Public Sector AU VIC Design System@1.5.0-1": "04t5j000000h0VQAAY",
+    "Salesforce Global Public Sector GOV.UK Design System@0.3.0-1": "04t5j000000h0VVAAY",
+    "Salesforce Global Public Sector Design Systems@1.5.0-3": "04t5j000000h0VuAAI",
+    "Salesforce Global Public Sector AU NSW Design System@1.5.0-3": "04t5j000000h0VzAAI",
+    "Salesforce Global Public Sector AU NSW Design System@1.5.0-5": "04t5j000000h0WEAAY",
+    "Salesforce Global Public Sector Design Systems@1.5.0-4": "04t5j000000h0WJAAY",
+    "Salesforce Global Public Sector AU NSW Design System@1.5.0-6": "04t5j000000h0WOAAY",
+    "Salesforce Global Public Sector AU VIC Design System@1.5.0-2": "04t5j000000h0WiAAI",
+    "Salesforce Global Public Sector AU NSW Design System@1.5.0-7": "04t5j000000h0WnAAI",
+    "Salesforce Global Public Sector AU VIC Design System@1.6.0-1": "04t5j000000h0YoAAI",
+    "Salesforce Global Public Sector Design Systems@1.5.2-2": "04t5j000000h0XWAAY",
+    "Salesforce Global Public Sector AU NSW Design System@1.5.2-2": "04t5j000000h0XbAAI",
+    "Salesforce Global Public Sector Design Systems@1.6.0-12": "04t5j000000h0apAAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.6.0-3": "04t5j000000h0auAAA",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.5.1-9": "04t5j000000h0azAAA",
+    "Salesforce Global Public Sector AU VIC Design System@1.6.0-3": "04t5j000000h0b4AAA",
+    "Salesforce Global Public Sector GOV.UK Design System@0.3.1-4": "04t5j000000h0b9AAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.6.0-4": "04t5j000000h0dUAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.6.0-4": "04t5j000000h0dZAAQ",
+    "Salesforce Global Public Sector GOV.UK Design System@0.3.1-5": "04t5j000000h0deAAA",
+    "Salesforce Global Public Sector Design Systems@1.7.0-2": "04t5j000000h0g4AAA",
+    "Salesforce Global Public Sector Design Systems@1.7.0-3": "04t5j000000h0g9AAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.0-1": "04t5j000000h0gEAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.0-1": "04t5j000000h0gJAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.0-2": "04t5j000000h0gTAAQ",
+    "Salesforce Global Public Sector Design Systems@1.7.0-5": "04t5j000000h0iAAAQ",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.0-4": "04t5j000000h0iFAAQ",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.5.1-11": "04t5j000000h0iKAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.0-4": "04t5j000000h0iPAAQ",
+    "Salesforce Global Public Sector Design Systems@1.7.0-7": "04t5j000000h0osAAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.0-6": "04t5j000000h0oxAAA",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.7.0-1": "04t5j000000h0p2AAA",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.0-5": "04t5j000000h0p7AAA",
+    "Salesforce Global Public Sector GOV.UK Design System@0.4.0-1": "04t5j000000h0pCAAQ",
+    "Salesforce Global Public Sector Design Systems@1.7.0-8": "04t5j000000h0pMAAQ",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.0-7": "04t5j000000h0pRAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.0-6": "04t5j000000h0pWAAQ",
+    "Salesforce Global Public Sector Design Systems@1.7.1-1": "04t5j000000h0pgAAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.1-1": "04t5j000000h0plAAA",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.7.0-2": "04t5j000000h0pqAAA",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.0-7": "04t5j000000h0pvAAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.2-1": "04t5j000000h0q0AAA",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.1-1": "04t5j000000h0q5AAA",
+    "Salesforce Global Public Sector Design Systems@1.7.1-2": "04t5j000000h0qAAAQ",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.2-2": "04t5j000000h0qFAAQ",
+    "Salesforce Global Public Sector Design Systems@1.7.3-1": "04t5j000000h0qKAAQ",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.3-1": "04t5j000000h0qPAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.3-1": "04t5j000000h0qUAAQ",
+    "Salesforce Global Public Sector GOV.UK Design System@0.7.3-1": "04t5j000000h0qZAAQ",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.7.3-1": "04t5j000000h0qeAAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.4-2": "04t5j000000h0t4AAA",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.7.3-3": "04t5j000000h0t9AAA",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.4-2": "04t5j000000h0tEAAQ",
+    "Salesforce Global Public Sector AU NSW Design System@1.7.5-1": "04t5j000000h0tOAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.7.5-1": "04t5j000000h0tTAAQ",
+    "Salesforce Global Public Sector AU NSW Design System@1.8.0-1": "04t5j000000h0tdAAA",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.8.0-1": "04t5j000000h0tiAAA",
+    "Salesforce Global Public Sector AU VIC Design System@1.8.0-2": "04t5j000000h0tnAAA",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.0-1": "04t5j000000h0tsAAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.8.1-1": "04t5j000000h0txAAA",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.8.0-2": "04t5j000000h0u2AAA",
+    "Salesforce Global Public Sector AU VIC Design System@1.8.0-3": "04t5j000000h0u7AAA",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-1": "04t5j000000h0uCAAQ",
+    "Salesforce Global Public Sector Design Systems@1.8.2-1": "04t5j000000h0uWAAQ",
+    "Salesforce Global Public Sector AU NSW Design System@1.8.2-1": "04t5j000000h0ubAAA",
+    "Salesforce Global Public Sector Design Systems@1.8.2-2": "04t5j000000h0v0AAA",
+    "Salesforce Global Public Sector AU NSW Design System@1.8.2-3": "04t5j000000h0v5AAA",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.8.0-3": "04t5j000000h0vAAAQ",
+    "Salesforce Global Public Sector AU VIC Design System@1.8.0-4": "04t5j000000h0vFAAQ",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-2": "04t5j000000h0vKAAQ",
+    "Salesforce Global Public Sector Design Systems@1.8.2-3": "04t5j000000pPZbAAM",
+    "Salesforce Global Public Sector AU NSW Design System@1.8.2-5": "04t5j000000pPZgAAM",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.8.0-4": "04t5j000000pPZlAAM",
+    "Salesforce Global Public Sector AU VIC Design System@1.8.0-6": "04t5j000000pPZqAAM",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-4": "04t5j000000pPZvAAM",
+    "Salesforce Global Public Sector Design Systems@1.8.2-4": "04t5j000000pQXfAAM",
+    "Salesforce Global Public Sector AU NSW Design System@1.8.2-6": "04t5j000000pQXkAAM",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.8.0-5": "04t5j000000pQXpAAM",
+    "Salesforce Global Public Sector AU VIC Design System@1.8.0-7": "04t5j000000pQXuAAM",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-6": "04t5j000000pQXzAAM",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-7": "04t5j000000pQY4AAM",
+    "Salesforce Global Public Sector Design Systems@1.8.2-7": "04t5j000000pRlMAAU",
+    "Salesforce Global Public Sector AU NSW Design System@1.8.2-9": "04t5j000000pRlRAAU",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-9": "04t5j000000pRlWAAU",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-14": "04t5j000000pVuJAAU",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)": "0Ho5j000000KyzYCAS",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@0.8.0-1": "04t5j000000paq9AAA",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-16": "04t5j000000pa9oAAA",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@0.8.0-2": "04t5j000000lCR3AAM",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.8.1-4": "04t5j000000lJ3IAAU",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.1-22": "04t5j000000lKE4AAM",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@0.8.0-3": "04t5j000000lKE9AAM",
+    "Salesforce Global Public Sector AU NSW Design System@1.8.3-3": "04t5j000000lMg5AAE",
+    "Salesforce Global Public Sector AU NSW Service Design System@1.8.3-3": "04t5j000000lMgFAAU",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.2-1": "04t5j000000lNQIAA2",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@0.8.0-4": "04t5j000000lNQNAA2",
+    "Salesforce Global Public Sector GOV.UK Design System@0.8.2-2": "04t5j000000lPZXAA2",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@0.8.0-5": "04t5j000000lPZcAAM"
   }
 }

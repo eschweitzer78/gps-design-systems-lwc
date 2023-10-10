@@ -5,6 +5,7 @@
     close-text="Dismiss alert"
     data-alert-type={type}
     background-color={backgroundColor}
+    text-color={textColor}
     icon-symbol={iconSymbol}
     icon-color={iconColor}
     close-icon-color={closeIconColor}
@@ -12,7 +13,7 @@
     aria-live="assertive"
     class-name={className}
   >
-    <span if:true={content} class="sfGpsMarkdown" lwc:dom="manual"> </span>
+    <span if:true={content} class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
   </c-sf-gps-ds-au-vic-alert-base>
 
   <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>

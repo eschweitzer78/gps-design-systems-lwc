@@ -2,159 +2,6 @@ public with sharing class SfGpsDsListViewController {
   static final String ID_FIELDNAME = 'Id';
   static final String RECORDTYPEID_FIELDNAME = 'RecordTypeId';
 
-  public class ListColumn {
-    public @AuraEnabled
-    String fieldApiName;
-    public @AuraEnabled
-    String label;
-    public @AuraEnabled
-    Boolean sortable;
-
-    public ListColumn(String fieldApiName, String label, Boolean sortable) {
-      this.fieldApiName = fieldApiName;
-      this.label = label;
-      this.sortable = sortable;
-    }
-  }
-
-  static Map<String, String> opNameToOpMap = new Map<String, String>{
-    'Equals' => '=',
-    'GreaterOrEqual' => '>=',
-    'GreaterThan' => '>',
-    'LessOrEqual' => '<=',
-    'LessThan' => '<',
-    'NotEqual' => '<>',
-    'Includes' => 'INCLUDES',
-    'Excludes' => 'EXCLUDES'
-  };
-
-  public class ListFilterByInfo {
-    public @AuraEnabled
-    String fieldApiName;
-    public @AuraEnabled
-    String label;
-    public @AuraEnabled
-    String[] operandLabels;
-    public @AuraEnabled
-    String operator;
-
-    public String getSOQL() {
-      switch on this.operator {
-        when 'Equals',
-          'GreaterOrEqual',
-          'GreaterThan',
-          'LessOrEqual',
-          'LessThan',
-          'NotEqual' {
-          List<String> rv = new List<String>();
-
-          for (String label : operandLabels) {
-            rv.add(
-              fieldApiName +
-              opNameToOpMap.get(this.operator) +
-              '\'' +
-              label +
-              '\''
-            );
-          }
-
-          return String.join(rv, ' OR ');
-        }
-        when 'Contains', 'NotContain' {
-          List<String> rv = new List<String>();
-
-          for (String label : operandLabels) {
-            rv.add(fieldApiName + ' LIKE \'%' + label + '%\'');
-          }
-
-          return this.operator == 'Contains'
-            ? String.join(rv, ' OR ')
-            : 'NOT(' + String.join(rv, ' OR ') + ')';
-        }
-        when 'Excludes', 'Includes' {
-          List<String> rv = new List<String>();
-
-          for (String label : operandLabels) {
-            rv.add('\'' + label + '\'');
-          }
-
-          return fieldApiName +
-            ' ' +
-            opNameToOpMap.get(this.operator) +
-            '(' +
-            String.join(rv, ';') +
-            ')';
-        }
-        when 'StartsWith' {
-          List<String> rv = new List<String>();
-
-          for (String label : operandLabels) {
-            rv.add(fieldApiName + ' LIKE \'' + label + '%\'');
-          }
-          return String.join(rv, ' OR ');
-        }
-        when 'Within' {
-          return '';
-        }
-        when else {
-          return '';
-        }
-      }
-    }
-  }
-
-  public class ListOrderedByInfo {
-    public @AuraEnabled
-    String fieldApiName;
-    public @AuraEnabled
-    Boolean isAscending;
-    public @AuraEnabled
-    String label;
-
-    public String getSOQL() {
-      String rv = this.fieldApiName + (this.isAscending ? ' ASC' : ' DESC');
-      return rv;
-    }
-  }
-
-  static String getSOQL(
-    String objectApiName,
-    List<ListColumn> displayColumns,
-    String filterLogicString,
-    List<ListFilterByInfo> filterByInfo,
-    List<ListOrderedByInfo> orderedByInfo
-  ) {
-    List<String> dcList = new List<String>();
-    if (displayColumns != null) {
-      for (ListColumn c : displayColumns) {
-        dcList.add(c.fieldApiName);
-      }
-    }
-
-    List<String> fbiList = new List<String>();
-    if (filterByInfo != null) {
-      for (ListFilterByInfo fbi : filterByInfo) {
-        fbiList.add(fbi.getSOQL());
-      }
-    }
-
-    List<String> obiList = new List<String>();
-    if (orderedByInfo != null) {
-      for (ListOrderedByInfo obi : orderedByInfo) {
-        obiList.add(obi.getSOQL());
-      }
-    }
-
-    return 'SELECT ' +
-      ((dcList.size() > 0) ? String.join(dcList, ',') : 'COUNT()') +
-      ' ' +
-      'FROM ' +
-      objectApiName +
-      ((fbiList.size() > 0) ? ' WHERE ' + String.join(fbiList, ' AND ') : '') +
-      ((obiList.size() > 0) ? ' ORDER BY ' + String.join(obiList, ',') : '') +
-      ((dcList.size() > 0) ? ' LIMIT :pageSize OFFSET :offset' : '');
-  }
-
   @AuraEnabled(cacheable=true)
   public static String getListViewNameById(String id) {
     try {
@@ -182,21 +29,22 @@ public with sharing class SfGpsDsListViewController {
   public static Integer getCount(
     String objectApiName,
     String filterLogicString,
-    String filterByInfo
+    String filteredByInfo
   ) {
-    List<ListFilterByInfo> xfilterByInfo = filterByInfo != null
-      ? (List<ListFilterByInfo>) JSON.deserialize(
-          filterByInfo,
-          List<ListFilterByInfo>.class
+    List<SfGpsDsListViewUtils.ListFilteredByInfo> xfilteredByInfo = filteredByInfo !=
+      null
+      ? (List<SfGpsDsListViewUtils.ListFilteredByInfo>) JSON.deserialize(
+          filteredByInfo,
+          List<SfGpsDsListViewUtils.ListFilteredByInfo>.class
         )
       : null;
 
     try {
-      String rv = getSOQL(
+      String rv = SfGpsDsListViewUtils.getSOQL(
         objectApiName,
         null,
         filterLogicString,
-        xfilterByInfo,
+        xfilteredByInfo,
         null
       );
       return Database.countQuery(rv);
@@ -207,19 +55,19 @@ public with sharing class SfGpsDsListViewController {
 
   static List<sObject> getRecords(
     String objectApiName,
-    List<ListColumn> xdisplayColumns,
+    List<SfGpsDsListViewUtils.ListColumn> xdisplayColumns,
     String filterLogicString,
-    List<ListFilterByInfo> xfilterByInfo,
-    List<ListOrderedByInfo> xorderedByInfo,
+    List<SfGpsDsListViewUtils.ListFilteredByInfo> xfilteredByInfo,
+    List<SfGpsDsListViewUtils.ListOrderedByInfo> xorderedByInfo,
     Integer offset,
     Integer pageSize
   ) {
     try {
-      String rv = getSOQL(
+      String rv = SfGpsDsListViewUtils.getSOQL(
         objectApiName,
         xdisplayColumns,
         filterLogicString,
-        xfilterByInfo,
+        xfilteredByInfo,
         xorderedByInfo
       );
 
@@ -234,27 +82,30 @@ public with sharing class SfGpsDsListViewController {
     String objectApiName,
     String displayColumns,
     String filterLogicString,
-    String filterByInfo,
+    String filteredByInfo,
     String orderedByInfo,
     Integer offset,
     Integer pageSize
   ) {
-    List<ListColumn> xdisplayColumns = displayColumns != null
-      ? (List<ListColumn>) JSON.deserialize(
+    List<SfGpsDsListViewUtils.ListColumn> xdisplayColumns = displayColumns !=
+      null
+      ? (List<SfGpsDsListViewUtils.ListColumn>) JSON.deserialize(
           displayColumns,
-          List<ListColumn>.class
+          List<SfGpsDsListViewUtils.ListColumn>.class
         )
       : null;
-    List<ListFilterByInfo> xfilterByInfo = filterByInfo != null
-      ? (List<ListFilterByInfo>) JSON.deserialize(
-          filterByInfo,
-          List<ListFilterByInfo>.class
+    List<SfGpsDsListViewUtils.ListFilteredByInfo> xfilteredByInfo = filteredByInfo !=
+      null
+      ? (List<SfGpsDsListViewUtils.ListFilteredByInfo>) JSON.deserialize(
+          filteredByInfo,
+          List<SfGpsDsListViewUtils.ListFilteredByInfo>.class
         )
       : null;
-    List<ListOrderedByInfo> xorderedByInfo = orderedByInfo != null
-      ? (List<ListOrderedByInfo>) JSON.deserialize(
+    List<SfGpsDsListViewUtils.ListOrderedByInfo> xorderedByInfo = orderedByInfo !=
+      null
+      ? (List<SfGpsDsListViewUtils.ListOrderedByInfo>) JSON.deserialize(
           orderedByInfo,
-          List<ListOrderedByInfo>.class
+          List<SfGpsDsListViewUtils.ListOrderedByInfo>.class
         )
       : null;
 
@@ -262,7 +113,7 @@ public with sharing class SfGpsDsListViewController {
       objectApiName,
       xdisplayColumns,
       filterLogicString,
-      xfilterByInfo,
+      xfilteredByInfo,
       xorderedByInfo,
       offset,
       pageSize
@@ -320,15 +171,16 @@ public with sharing class SfGpsDsListViewController {
     String objectApiName,
     String displayColumns,
     String filterLogicString,
-    String filterByInfo,
+    String filteredByInfo,
     String orderedByInfo,
     Integer offset,
     Integer pageSize
   ) {
-    List<ListColumn> xdisplayColumns = displayColumns != null
-      ? (List<ListColumn>) JSON.deserialize(
+    List<SfGpsDsListViewUtils.ListColumn> xdisplayColumns = displayColumns !=
+      null
+      ? (List<SfGpsDsListViewUtils.ListColumn>) JSON.deserialize(
           displayColumns,
-          List<ListColumn>.class
+          List<SfGpsDsListViewUtils.ListColumn>.class
         )
       : null;
 
@@ -336,7 +188,7 @@ public with sharing class SfGpsDsListViewController {
       Boolean hasId = false;
       Boolean hasRecordTypeId = false;
 
-      for (ListColumn lc : xdisplayColumns) {
+      for (SfGpsDsListViewUtils.ListColumn lc : xdisplayColumns) {
         // Note: In Apex string comparison is case insensitive
         if (lc.fieldApiName == ID_FIELDNAME) {
           hasId = true;
@@ -346,7 +198,9 @@ public with sharing class SfGpsDsListViewController {
       }
 
       if (!hasId) {
-        xdisplayColumns.add(new ListColumn(ID_FIELDNAME, 'Id', false));
+        xdisplayColumns.add(
+          new SfGpsDsListViewUtils.ListColumn(ID_FIELDNAME, 'Id', false)
+        );
       }
 
       /*
@@ -356,17 +210,19 @@ public with sharing class SfGpsDsListViewController {
       */
     }
 
-    List<ListFilterByInfo> xfilterByInfo = filterByInfo != null
-      ? (List<ListFilterByInfo>) JSON.deserialize(
-          filterByInfo,
-          List<ListFilterByInfo>.class
+    List<SfGpsDsListViewUtils.ListFilteredByInfo> xfilteredByInfo = filteredByInfo !=
+      null
+      ? (List<SfGpsDsListViewUtils.ListFilteredByInfo>) JSON.deserialize(
+          filteredByInfo,
+          List<SfGpsDsListViewUtils.ListFilteredByInfo>.class
         )
       : null;
 
-    List<ListOrderedByInfo> xorderedByInfo = orderedByInfo != null
-      ? (List<ListOrderedByInfo>) JSON.deserialize(
+    List<SfGpsDsListViewUtils.ListOrderedByInfo> xorderedByInfo = orderedByInfo !=
+      null
+      ? (List<SfGpsDsListViewUtils.ListOrderedByInfo>) JSON.deserialize(
           orderedByInfo,
-          List<ListOrderedByInfo>.class
+          List<SfGpsDsListViewUtils.ListOrderedByInfo>.class
         )
       : null;
 
@@ -374,7 +230,7 @@ public with sharing class SfGpsDsListViewController {
       objectApiName,
       xdisplayColumns,
       filterLogicString,
-      xfilterByInfo,
+      xfilteredByInfo,
       xorderedByInfo,
       offset,
       pageSize
@@ -388,7 +244,7 @@ public with sharing class SfGpsDsListViewController {
 
       for (sObject record : records) {
         EnhancedRecord er = new EnhancedRecord();
-        for (ListColumn lc : xdisplayColumns) {
+        for (SfGpsDsListViewUtils.ListColumn lc : xdisplayColumns) {
           String fqApiName = lc.fieldApiName;
           List<String> elements = fqApiName.split('\\.');
           String sObjectApiName;

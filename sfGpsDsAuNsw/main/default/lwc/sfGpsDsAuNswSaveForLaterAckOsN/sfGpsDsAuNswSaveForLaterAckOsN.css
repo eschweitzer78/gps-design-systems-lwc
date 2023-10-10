@@ -1,1 +1,2 @@
-@import "c/sfGpsDsAuNswAlertCssOs";
+@import "c/sfGpsDsAuNswCoreOs";
+@import "./in-page-alert.gen.css";

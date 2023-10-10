@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>56.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC DS Share this</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="url"
+        type="String"
+        label="URL"
+        description="URL to be shared, leave blank for the current page."
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title text used as a level-2 header."
+        default="Share this"
+      />
+      <property
+        name="label"
+        type="String"
+        label="Aria abel"
+        description="Label used for accessibility."
+        default="Share this page on social networks"
+      />
+      <property
+        name="emailSubject"
+        type="String"
+        label="Email subject"
+        description="Subject of the sharing email, or leave subject and body blank to remove the email option."
+        default="Sharing a page"
+      />
+      <property
+        name="emailBody"
+        type="String"
+        label="Email body"
+        description="Body of the sharing email, or leave subject and body blank to remove the email option."
+        default="I thought you might find this page interesting."
+      />
+      <property
+        name="networks"
+        type="String"
+        label="Networks"
+        description="Target networks as a JSON array of { name, label, iconName, iconSize }."
+        default="[{&quot;name&quot;:&quot;twitter&quot;,&quot;label&quot;:&quot;Twitter&quot;,&quot;iconName&quot;:&quot;twitter&quot;,&quot;iconSize&quot;:&quot;0.81&quot;},{&quot;name&quot;:&quot;facebook&quot;,&quot;label&quot;:&quot;Facebook&quot;,&quot;iconName&quot;:&quot;facebook&quot;,&quot;iconSize&quot;:&quot;1&quot;},{&quot;name&quot;:&quot;linkedin&quot;,&quot;label&quot;:&quot;LinkedIn&quot;,&quot;iconName&quot;:&quot;linkedin&quot;,&quot;iconSize&quot;:&quot;0.81&quot;}]"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

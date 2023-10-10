@@ -1,0 +1,108 @@
+@import "c/sfGpsDsUkGovCoreOs";
+@import "./input.gen.css";
+
+/* slds fix */
+
+.govuk-form--predictive .govuk-input.lookup {
+  border: 2px solid #0b0c0c;
+  border-radius: 0;
+  font-size: 1rem;
+}
+
+.sfgps-combobox.sfgps-dropdown-trigger {
+  display: block;
+}
+
+/* end */
+
+.sfgps-dropdown {
+  visibility: hidden;
+}
+
+.sfgps-is-open .sfgps-dropdown,
+.slds-is-open .sfgps-dropdown {
+  visibility: visible;
+}
+
+/* Need to adjust this rule as in Omniscript they always be first child */
+/* have same setup as for subsequent children. */
+
+.govuk-form-group:first-child {
+  margin-top: 1rem;
+}
+
+.cmp-pointer-disabled {
+  pointer-events: none;
+}
+
+.vloc-reset-minwidth {
+  min-width: 100%;
+}
+
+.govuk-form--predictive .govuk-input.lookup {
+  padding-right: 3rem;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'  %3E%3Cg%3E%3Cpath d='M0,0h24v24H0V0z' fill='none'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M7,9H2V7h5V9z M7,12H2v2h5V12z M20.59,19l-3.83-3.83C15.96,15.69,15.02,16,14,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5 c0,1.02-0.31,1.96-0.83,2.75L22,17.59L20.59,19z M17,11c0-1.65-1.35-3-3-3s-3,1.35-3,3s1.35,3,3,3S17,12.65,17,11z M2,19h10v-2H2 V19z'/%3E%3C/g%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.govuk-form--predictive .govuk-input.lookup:hover {
+  background: url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+      no-repeat right 1rem center,
+    linear-gradient(#f6f6f9, #f6f6f9);
+  background-size: 1rem auto, auto;
+  background-color: #fff;
+}
+
+.govuk-form--predictive .govuk-input.lookup:disabled {
+  background: #fff
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'  %3E%3Cg%3E%3Cpath d='M0,0h24v24H0V0z' fill='none'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M7,9H2V7h5V9z M7,12H2v2h5V12z M20.59,19l-3.83-3.83C15.96,15.69,15.02,16,14,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5 c0,1.02-0.31,1.96-0.83,2.75L22,17.59L20.59,19z M17,11c0-1.65-1.35-3-3-3s-3,1.35-3,3s1.35,3,3,3S17,12.65,17,11z M2,19h10v-2H2 V19z'/%3E%3C/g%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.govuk-form--predictive .govuk-input.lookup[aria-invalid="true"]:hover,
+.govuk-form--predictive .govuk-input--error:hover {
+  background: #d4351c
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'  %3E%3Cg%3E%3Cpath d='M0,0h24v24H0V0z' fill='none'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M7,9H2V7h5V9z M7,12H2v2h5V12z M20.59,19l-3.83-3.83C15.96,15.69,15.02,16,14,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5 c0,1.02-0.31,1.96-0.83,2.75L22,17.59L20.59,19z M17,11c0-1.65-1.35-3-3-3s-3,1.35-3,3s1.35,3,3,3S17,12.65,17,11z M2,19h10v-2H2 V19z'/%3E%3C/g%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+  border: 2px solid #d4351c;
+}
+
+.govuk-form--predictive-list div {
+  display: block;
+  padding: 0.625rem;
+  color: #22272b;
+  font-weight: 400;
+}
+
+.govuk-form--predictive-list div:hover {
+  outline-width: 0;
+  cursor: pointer;
+  background-color: #f6f6f9;
+  color: #22272b;
+  /* background-color: #1d70b8 /;
+  color: #fff; */
+}
+
+.sfgpsds-hide {
+  display: none;
+}
+
+.sfgpsds-label__group {
+  display: flex;
+}
+
+.sfgpsds-label__group_label_container {
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+}
+.sfgpsds-label__group_label {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  min-width: 0;
+}

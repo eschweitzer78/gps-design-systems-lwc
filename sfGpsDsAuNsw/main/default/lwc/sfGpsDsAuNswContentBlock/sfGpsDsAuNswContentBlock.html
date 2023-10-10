@@ -1,14 +1,14 @@
-<template>
+<template lwc:render-mode="light">
   <div class={computedClassName}>
     <div if:true={image} class="nsw-content-block__image">
       <img src={image} alt={imageAlt} class="nsw-content-block__image" />
     </div>
 
     <!-- originally icon as embedded/slotted markup
-        <div if:true={icon} class="nsw-content-block__image">
-          <span class="nsw-content-block__icon">{icon}</span>
-        </div>
-        -->
+      <div if:true={icon} class="nsw-content-block__image">
+        <span class="nsw-content-block__icon">{icon}</span>
+      </div>
+    -->
 
     <div if:true={icon} class="nsw-content-block__image">
       <span

@@ -8,7 +8,7 @@ module.exports = {
   verbose: true,
   modulePathIgnorePatterns: ["<rootDir>/.localdevserver"],
   setupFilesAfterEnv,
-  moduleFileExtensions: ["js", "html"],
+  moduleFileExtensions: ["js", "html", "css"],
   transform: {
     "^.+\\.(js|html|css)$": "@lwc/jest-transformer"
   },

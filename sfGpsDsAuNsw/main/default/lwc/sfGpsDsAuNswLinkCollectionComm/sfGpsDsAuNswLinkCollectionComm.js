@@ -42,6 +42,14 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
   @api className;
 
   mapIpData(data) {
+    if (!data) {
+      return null;
+    }
+
+    if (!Array.isArray(data)) {
+      data = [data];
+    }
+
     return data.map((item) => ({
       ...item,
       text: item.text,
@@ -55,7 +63,10 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
     );
   }
 
+  /* lifecycle */
+
   connectedCallback() {
     super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }

@@ -1,0 +1,134 @@
+<template>
+  <div if:false={isCustomLwc} class={errorClass}>
+    <div class={computedFormGroupClassName}>
+      <div if:true={labelVisible} data-label="true">
+        <h1 class="govuk-label-wrapper">
+          <label
+            class={computedLabelClassName}
+            style="width: auto"
+            for={inputId}
+          >
+            {label}
+            <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
+          </label>
+          <slot name="label"> </slot>
+        </h1>
+      </div>
+
+      <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+        {fieldLevelHelp}
+      </div>
+
+      <!-- formula -->
+      <div if:true={_isFormula}>
+        <label class={computedLabelClassName} for={inputId}>
+          {label}
+          <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+        </label>
+
+        <input
+          class={computedHelperClassName}
+          type="text"
+          readonly=""
+          disabled=""
+          id={inputId}
+          value={maskedValue}
+          aria-describedby={inputId}
+        />
+      </div>
+
+      <div if:false={static} class={pretextClass}>
+        <p
+          if:true={isError}
+          class="govuk-error-message"
+          aria-live="assertive"
+          id="errorMessageBlock"
+        >
+          <span class="govuk-visually-hidden">{errorSrLabel}</span>
+          {_errorMessage}
+        </p>
+
+        <template if:true={isCurrencySFlocale}>
+          <input
+            if:true={isInput}
+            class="vlocity-input govuk-input"
+            id={inputId}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            step={step}
+            min={min}
+            max={max}
+            maxlength={maxLength}
+            minlength={minLength}
+            type={type}
+            inputmode={inputmode}
+            disabled={disabled}
+            required={required}
+            readonly={readOnly}
+            placeholder={placeholder}
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={ariaDescribedBy}
+            aria-label={ariaLabel}
+            value={_currencyVal}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            oninput={handleInput}
+            onkeyup={handleKeyup}
+            onchange={handleChange}
+          />
+        </template>
+
+        <template if:false={isCurrencySFlocale}>
+          <input
+            if:true={isNumber}
+            class="hiddenNumber slds-hide"
+            required={required}
+            min={min}
+            max={max}
+            step={step}
+            type="number"
+            value={value}
+          />
+
+          <input
+            if:true={isInput}
+            class={computedInputError}
+            id={inputId}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            step={step}
+            min={min}
+            max={max}
+            maxlength={maxLength}
+            minlength={minLength}
+            type={type}
+            inputmode={inputmode}
+            disabled={disabled}
+            required={required}
+            readonly={readOnly}
+            placeholder={placeholder}
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={ariaDescribedBy}
+            aria-label={ariaLabel}
+            autocomplete={autocomplete}
+            name={name}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            oninput={handleInput}
+            onkeyup={handleKeyup}
+            onchange={handleChange}
+          />
+        </template>
+      </div>
+
+      <div class="slds-grid">
+        <div if:true={static} class="slds-form-element__static">
+          {maskedValue}
+        </div>
+        <span if:true={inlineHelp} class="slds-form-element__static">
+          {inlineHelp}
+        </span>
+      </div>
+    </div>
+  </div>
+</template>

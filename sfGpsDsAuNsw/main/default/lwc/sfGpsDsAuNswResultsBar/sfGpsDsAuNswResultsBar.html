@@ -1,14 +1,14 @@
-<template>
+<template lwc:render-mode="light">
   <div class={computedClassName}>
     <div if:false={total} class="nsw-results-bar__info">{noResultText}</div>
 
     <template if:true={total}>
       <div class="nsw-results-bar__info">{_resultsText}</div>
       <div if:true={sortOptions} class="nsw-results-bar__sorting">
-        <label class="nsw-form__label" for="results-sort">Sort by:</label>
+        <label class="nsw-form__label" for={computedSelectId}>Sort by:</label>
         <select
           class="nsw-form__select"
-          id="results-sort"
+          id={computedSelectId}
           name={name}
           onchange={handleSelectChange}
         >

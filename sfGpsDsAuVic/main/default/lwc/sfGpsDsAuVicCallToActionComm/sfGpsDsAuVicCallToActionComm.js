@@ -3,6 +3,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
+
 export default class SfGpsDsAuVicCallToActionComm extends SfGpsDsLwc {
   @api cstyle; // string: wide, narrow
   @api title;
@@ -60,22 +62,13 @@ export default class SfGpsDsAuVicCallToActionComm extends SfGpsDsLwc {
 
   /* lifecycle */
 
-  _rendered;
-
   renderedCallback() {
-    if (!this._rendered) {
-      let element = this.template.querySelector(".sfGpsMarkdown");
+    if (this.summary) {
+      let element = this.template.querySelector(MARKDOWN_SELECTOR);
 
       if (element) {
         replaceInnerHtml(element, this._summaryHtml);
-      } else {
-        this.addError(
-          "CO-PH",
-          "Couldn't find internal Summary markdown placeholder"
-        );
       }
-
-      this._rendered = true;
     }
   }
 }

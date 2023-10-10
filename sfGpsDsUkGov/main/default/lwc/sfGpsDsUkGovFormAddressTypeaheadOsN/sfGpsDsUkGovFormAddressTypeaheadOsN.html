@@ -1,0 +1,220 @@
+<template>
+  <div class="omni-typeahead-container">
+    <c-sf-gps-ds-uk-gov-typeahead-os-n
+      class={computedTypeaheadClass}
+      type="text"
+      field-level-help={mergedHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
+      label={mergedLabel}
+      onblur={handleBlur}
+      onlastitemclick={enterEditMode}
+      onselect={handleSelect}
+      onclear={handleClear}
+      icon-name-right="utility:empty"
+      options={options}
+      placeholder={_placeholder}
+      required={_propSetMap.required}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      message-when-value-missing={_messageWhenValueMissing}
+      message-when-too-short={_messageWhenTooShort}
+      message-when-too-long={_messageWhenTooLong}
+      theme="sfgpsds"
+      value={elementValueLabel}
+      complete={complete}
+      remote-source={_useRemoteSource}
+      disable-filter={_disableFilter}
+      data-omni-input
+    >
+      <div slot="iconRight">
+        <span
+          class="govuk-link cannot-find-address label-link"
+          role="button"
+          onclick={handleToggle}
+        >
+          Enter address manually
+        </span>
+        <button
+          if:false={_propSetMap.hideEditButton}
+          class="slds-button slds-button_icon nds-button nds-button_icon"
+          aria-expanded={_isEditMode}
+          onclick={toggleEditMode}
+        >
+          <omnistudio-icon
+            icon-name="utility:edit"
+            extraclass="slds-button__icon nds-button__icon"
+            size="x-small"
+            theme={_theme}
+            alternative-text={_editLabel}
+          >
+          </omnistudio-icon>
+        </button>
+      </div>
+
+      <a
+        slot="lastItem"
+        if:true={_propSetMap.newItemLabel}
+        label={_propSetMap.newItemLabel}
+        >{_propSetMap.newItemLabel}
+      </a>
+    </c-sf-gps-ds-uk-gov-typeahead-os-n>
+
+    <div class={computedManualClassName}>
+      <div class={computedFormGroupClassName}>
+        <div class="sfgpsds-label__group">
+          <div class="sfgpsds-label__group_label_container">
+            <div if:true={_propSetMap.label} class="sfgpsds-label__group_label">
+              <label
+                class={computedLabelClassName}
+                aria-label={label}
+                for="address"
+              >
+                {mergedLabel}
+                <span if:true={_propSetMap.required} class="sr-only">
+                  ({allCustomLabelsUtil.OmniRequired})</span
+                >
+              </label>
+            </div>
+          </div>
+
+          <div class="sfgpsds-label__group_action">
+            <div>
+              <span
+                class="govuk-link cannot-find-address label-link"
+                role="button"
+                onclick={handleToggle}
+              >
+                Smart address lookup
+              </span>
+
+              <button
+                if:false={_propSetMap.hideEditButton}
+                class="slds-button slds-button_icon nds-button nds-button_icon"
+                aria-expanded={_isEditMode}
+                onclick={toggleEditMode}
+              >
+                <omnistudio-icon
+                  icon-name="utility:edit"
+                  extraclass="slds-button__icon nds-button__icon"
+                  size="x-small"
+                  theme={_theme}
+                  alternative-text={_editLabel}
+                >
+                </omnistudio-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div if:true={mergedHelpText} id="helper" class="govuk-hint">
+          {mergedHelpText}
+        </div>
+
+        <p
+          if:true={isError}
+          class="govuk-error-message"
+          aria-live="assertive"
+          id="errorMessageBlock"
+        >
+          <span class="govuk-visually-hidden">{errorSrLabel}</span>
+          {_errorMessage}
+        </p>
+
+        <div class="govuk-grid">
+          <div class="govuk-col govuk-col-12 street">
+            <c-sf-gps-ds-uk-gov-input-os-n
+              type="text"
+              name="street"
+              class="manual-field"
+              label="Street Address"
+              label-class-name="govuk-label govuk-label--s"
+              onblur={handleFieldBlur}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              field-level-help=""
+              placeholder=""
+              value={street}
+            >
+            </c-sf-gps-ds-uk-gov-input-os-n>
+          </div>
+
+          <div class="govuk-col govuk-col-md-6 govuk-col-12 suburb">
+            <c-sf-gps-ds-uk-gov-input-os-n
+              type="text"
+              name="suburb"
+              class="manual-field"
+              label="Suburb"
+              label-class-name="govuk-label govuk-label--s"
+              onblur={handleFieldBlur}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              field-level-help=""
+              placeholder=""
+              value={suburb}
+            >
+            </c-sf-gps-ds-uk-gov-input-os-n>
+          </div>
+
+          <div class="govuk-col govuk-col-md-3 govuk-col-6 state">
+            <c-sf-gps-ds-uk-gov-combobox-os-n
+              name="state"
+              class="manual-field"
+              options={states}
+              label="State"
+              label-class-name="govuk-label govuk-label--s"
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              read-only="true"
+              onchange={handleStateBlur}
+              theme="sfgpsds"
+              value={state}
+              field-level-help=""
+              data-show-lookup="true"
+              message-when-value-missing={_messageWhenValueMissing}
+              searchable="false"
+            >
+            </c-sf-gps-ds-uk-gov-combobox-os-n>
+          </div>
+
+          <div class="govuk-col govuk-col-md-3 govuk-col-6 postalcode">
+            <c-sf-gps-ds-uk-gov-input-os-n
+              type="text"
+              name="postcode"
+              class="manual-field"
+              label="Postcode"
+              label-class-name="govuk-label govuk-label--s"
+              onblur={handleFieldBlur}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              field-level-help=""
+              placeholder=""
+              min-length="4"
+              max-length="4"
+              value={postcode}
+            >
+            </c-sf-gps-ds-uk-gov-input-os-n>
+          </div>
+
+          <div class="govuk-col govuk-col-12 country">
+            <c-sf-gps-ds-uk-gov-input-os-n
+              type="text"
+              name="country"
+              class="manual-field"
+              label="Country"
+              label-class-name="govuk-label govuk-label--s"
+              onblur={handleFieldBlur}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              field-level-help=""
+              placeholder=""
+              value={country}
+              read-only="true"
+            >
+            </c-sf-gps-ds-uk-gov-input-os-n>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

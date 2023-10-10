@@ -1,0 +1,29 @@
+@import "c/sfGpsDsUkGovCoreOs";
+@import "./character-count.gen.css";
+@import "./textarea.gen.css";
+
+.govuk-form-group:first-child {
+  margin-top: 1rem;
+}
+
+/* Override bottom margin ONLY when using Text character counter */
+.govuk-textarea.govuk-js-character-count {
+  margin-bottom: 5px;
+}
+
+/* Show the character error message in red */
+.govuk-character-count__message.govuk-error-message {
+  color: #d4351c;
+}
+
+[data-label] {
+  display: table;
+}
+
+[data-label] .govuk-label-wrapper {
+  margin-right: 0.5rem;
+}
+
+[data-label] slot {
+  display: table-cell;
+}

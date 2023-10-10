@@ -1,0 +1,18 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-au-nsw-header-profile
+      is-guest={isGuest}
+      user-alias={userAlias}
+      nav-items={_items}
+      class-name={className}
+      onnavigate={handleNavigate}
+      onlogin={handleLogin}
+    >
+    </c-sf-gps-ds-au-nsw-header-profile>
+
+    <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+  </template>
+
+  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+</template>

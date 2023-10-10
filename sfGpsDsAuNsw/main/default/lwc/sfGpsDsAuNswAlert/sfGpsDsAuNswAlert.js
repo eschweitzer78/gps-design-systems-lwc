@@ -22,16 +22,20 @@ const icons = {
 };
 
 export default class SfGpsDsAuNswAlert extends LightningElement {
+  static renderMode = "light";
+
   @api title;
   @api className = "";
   @api as = "info";
   @api compact = false;
 
+  /* computed */
+
   get computedClassName() {
     return computeClass({
       "nsw-in-page-alert": true,
       "nsw-in-page-alert--compact": this.compact,
-      [options[this.as]]: true,
+      [options[this.as]]: this.as,
       [this.className]: this.className
     });
   }

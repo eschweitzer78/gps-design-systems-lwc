@@ -1,0 +1,58 @@
+<template>
+  <div class="govuk-form-group">
+    <fieldset
+      if:true={isCheckbox}
+      class="govuk-fieldset"
+      aria-describedby={computedAriaDescribedBy}
+    >
+      <legend class={computedLegendClassName}>
+        <h1 class="govuk-fieldset__heading">{label}</h1>
+        <slot name="label"> </slot>
+      </legend>
+
+      <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
+        {fieldLevelHelp}
+      </div>
+
+      <p
+        if:true={isRealError}
+        class="govuk-error-message"
+        aria-live="assertive"
+        id="errorMessageBlock"
+      >
+        <span class="govuk-visually-hidden">{errorSrLabel}</span>
+        {_errorMessage}
+      </p>
+
+      <div class="govuk-checkboxes">
+        <template for:each={internalOpts} for:item="e" for:index="index">
+          <div class="govuk-checkboxes__item" key={e.id}>
+            <input
+              class="govuk-checkboxes__input"
+              type="checkbox"
+              required={required}
+              disabled={disabled}
+              id={e.id}
+              data-index={index}
+              tabindex={tabIndex}
+              name={name}
+              checked={e.selected}
+              value={e.value}
+              aria-invalid={isAriaInvalid}
+              aria-describedby={computedAriaDescribedBy}
+              onfocus={handleFocus}
+              onchange={onchangevalue}
+            />
+            <label
+              class="govuk-label govuk-checkboxes__label"
+              data-index={index}
+              for={e.id}
+            >
+              {e.label}
+            </label>
+          </div>
+        </template>
+      </div>
+    </fieldset>
+  </div>
+</template>

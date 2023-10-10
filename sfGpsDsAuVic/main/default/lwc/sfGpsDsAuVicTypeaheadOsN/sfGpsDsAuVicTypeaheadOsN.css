@@ -1,0 +1,200 @@
+@import "c/sfGpsDsAuVicFormCssOs";
+
+.sfgpsds-predictive {
+  position: relative;
+}
+
+/*.sfgpsds-predictive*/
+input {
+  border-radius: 0.25rem;
+  color: #011a3c;
+  border: 1px solid #d7dbe0;
+  padding-right: 3rem;
+  background: #f6f6f9
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.sfgpsds-is-open input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 0;
+  background: #f6f6f9
+    url("data:image/svg+xml,%3Csvg transform='scale(1 -1)' fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.sfgpsds-listbox__option {
+  display: block;
+  padding: 0.875rem 1rem;
+  color: #011a3c;
+  /*font-weight: normal;*/
+}
+
+@media screen and (min-width: 768px) {
+  .sfgpsds-listbox__option {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+.sfgpsds-listbox__option:focus,
+.sfgpsds-listbox__option:hover,
+.sfgpsds-listbox__option.sfgpsds-has-focus {
+  outline-width: 0;
+  cursor: pointer;
+  background-color: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #fff;
+}
+
+.sfgpsds-listbox__option-text_entity {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.125rem; /* ? */
+  overflow: hidden;
+}
+
+.sfgpsds-listbox_selection-group {
+  height: auto;
+}
+
+.sfgpsds-listbox__flex {
+  display: flex;
+}
+
+.sfgpsds-listbox__flex .sfgpsds-listbox-item {
+  overflow: hidden;
+}
+
+.sfgpsds-combobox_container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.sfgpsds-combobox {
+  position: static;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.sfgpsds-media_center,
+.sfgpsds-media--center {
+  align-items: center;
+}
+
+.sfgpsds-media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sfgpsds-media_small .sfgpsds-media__figure,
+.sfgpsds-media--small .sfgpsds-media__figure {
+  margin-right: 0.25rem;
+}
+
+.sfgpsds-media__body,
+.sfgpsds-media__body > :last-child {
+  margin-bottom: 0;
+}
+
+.sfgpsds-listbox__option .slds-truncate {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sfgpsds-icon-small {
+  font-size: inherit;
+}
+
+.sfgpsds-dropdown {
+  z-index: 100;
+  background-color: #f6f6f9;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+  outline: 0;
+  width: 100%;
+  border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  border-top: none;
+  border-radius: 0.25rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  max-height: 18.375rem;
+  overflow-y: auto;
+}
+
+.sfgpsds-dropdown_length-5,
+.sfgpsds-dropdown--length-5 {
+  -webkit-overflow-scrolling: touch;
+  max-height: calc((0.875rem + 1em + 0.875rem) * 5);
+  overflow-y: auto;
+}
+
+.sfgpsds-label__group_label_container {
+  margin-right: 0.25rem;
+}
+
+.required .sfgpsds-label__group_label > label:after {
+  font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";
+  font-size: 0.875rem;
+  line-height: 0.8em;
+  font-weight: normal;
+  color: #af272f;
+  content: " (Required)";
+}
+
+.cmp-pointer-disabled {
+  pointer-events: none;
+}
+
+[data-progress-bar] {
+  position: absolute;
+  top: 2.5rem;
+  left: 0.9rem;
+  right: 1rem;
+  width: auto;
+  z-index: 100;
+}
+
+.vloc-reset-minwidth {
+  min-width: 100%;
+}
+
+.sfgpsds-hide {
+  display: none;
+}
+
+.sfgpsds-label__group {
+  display: flex;
+}
+
+.sfgpsds-label__group_label_container {
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.sfgpsds-label__group_label {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+li {
+  line-height: 1em;
+}
+
+li:nth-child(odd) {
+  background-color: #fff;
+}

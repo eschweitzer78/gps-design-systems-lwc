@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>55.0</apiVersion>
+  <apiVersion>57.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS List Item</masterLabel>
   <targets>
@@ -35,6 +35,14 @@
         type="String"
         label="Date"
         description="Specifies a date context for the content, e.g. a publication date - in ISO8601 format."
+      />
+      <property
+        name="dateStyle"
+        type="String"
+        label="Date style"
+        description="Styling to be applie to the date."
+        datasource="short,medium,long,full"
+        default="medium"
       />
       <property
         name="image"

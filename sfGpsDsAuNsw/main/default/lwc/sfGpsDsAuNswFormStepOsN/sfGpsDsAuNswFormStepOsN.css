@@ -1,4 +1,5 @@
 @import "c/sfGpsDsAuNswCoreOs";
+@import "c/sfGpsDsAuNswButtonCssOs";
 
 .nsw-h1 {
   font-family: var(--nsw-font-family);

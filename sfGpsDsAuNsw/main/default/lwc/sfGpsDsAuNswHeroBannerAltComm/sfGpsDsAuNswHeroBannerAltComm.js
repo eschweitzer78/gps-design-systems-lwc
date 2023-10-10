@@ -18,7 +18,7 @@ export default class SfGpsDsAuNswHeroBannerAltComm extends SfGpsDsLwc {
       this._titleUrl = url;
       this._titleLabel = text;
     } catch (e) {
-      console.log("Exception: " + JSON.stringify(e));
+      this.addError("TL-MD", "Issue when parsing titleLink markdown");
     }
   }
 
@@ -55,12 +55,15 @@ export default class SfGpsDsAuNswHeroBannerAltComm extends SfGpsDsLwc {
 
   @api className;
 
-  // ---- rendered
+  /* lifecycle */
 
-  _rendered = false;
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
+  }
 
   renderedCallback() {
-    if (this._rendered === false) {
+    if (this.content) {
       let element = this.template.querySelector(
         ".nsw-hero-banner-alt__content_internal"
       );
@@ -76,11 +79,7 @@ export default class SfGpsDsAuNswHeroBannerAltComm extends SfGpsDsLwc {
         let markup = (this._titleLabel ? span : "") + (this._contentHtml || "");
 
         replaceInnerHtml(element, markup);
-      } else {
-        this.addError("RC-PH", "Couldn't find internal markdown placeholder");
       }
-
-      this._rendered = true;
     }
   }
 }

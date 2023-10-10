@@ -1,13 +1,1 @@
-.rpl-responsive-image {
-  width: 100%;
-}
-.rpl-responsive-image--fit-cover {
-  object-fit: cover;
-  font-family: "object-fit:cover";
-}
-.rpl-responsive-image--fit-contain {
-  object-fit: contain;
-  font-family: "object-fit:contain";
-}
-
-/*# sourceMappingURL=sfGpsDsAuVicResponsiveImg.css.map */
+@import "./ResponsiveImg.gen.css";
