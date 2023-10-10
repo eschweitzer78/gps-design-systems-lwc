@@ -18,6 +18,8 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
   OmniscriptInput,
   "large"
 ) {
+  @api labelClassName;
+
   render() {
     return tmpl;
   }

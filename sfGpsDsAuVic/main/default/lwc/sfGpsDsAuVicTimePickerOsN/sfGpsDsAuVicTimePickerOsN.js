@@ -27,7 +27,7 @@ export default class SfGpsDsAuVicTimePickerOsN extends SfGpsDsTimePickerOsN {
     });
   }
 
-  get ariaDescribedBy() {
+  get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.isError

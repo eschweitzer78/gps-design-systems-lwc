@@ -34,7 +34,7 @@
           name={name}
           autocomplete="off"
           aria-invalid={ariaInvalid}
-          aria-describedby="errorMessageBlock"
+          aria-describedby={computedAriaDescribedBy}
           value={_displayValue}
           onkeypress={shiftFocus}
           onkeyup={maskInput}

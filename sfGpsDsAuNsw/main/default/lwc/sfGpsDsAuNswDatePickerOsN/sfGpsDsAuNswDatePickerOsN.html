@@ -2,12 +2,15 @@
   <div class={computedFormGroupClass}>
     <div class={errorClass}>
       <label
+        lwc:if={label}
         class={computedLabelClassName}
         style="width: auto"
         for="date-input"
       >
         {label}
-        <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+        <template if:false={hideAsterisk}>
+          <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+        </template>
       </label>
       <slot name="label"> </slot>
 
@@ -31,7 +34,7 @@
           name={name}
           autocomplete="off"
           aria-invalid={ariaInvalid}
-          aria-describedby="errorMessageBlock"
+          aria-describedby={computedAriaDescribedBy}
           value={_displayValue}
           onkeypress={shiftFocus}
           onkeyup={maskInput}

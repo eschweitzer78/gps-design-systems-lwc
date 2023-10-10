@@ -37,6 +37,8 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
     invalidIds.forEach((invalidId) => {
       let elt = this.invalidElements[invalidId];
 
+      console.log("invalid id", invalidId, elt);
+
       // Only do it for widgets that have getErrorDetails
       if (elt.getErrorDetails) {
         let errorDetails = elt.getErrorDetails();
@@ -47,6 +49,8 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
           message: errorDetails.errorMessage,
           elt: elt
         });
+      } else {
+        console.log("does not have getErrorDetails");
       }
     });
 

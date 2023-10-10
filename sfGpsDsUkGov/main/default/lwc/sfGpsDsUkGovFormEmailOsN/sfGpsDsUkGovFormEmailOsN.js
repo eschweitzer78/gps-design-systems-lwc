@@ -11,6 +11,7 @@
       icon-name="utility:info" not supported
 */
 
+import { api } from "lwc";
 import OmniscriptEmail from "omnistudio/omniscriptEmail";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormEmailOsN.html";
@@ -51,5 +52,29 @@ export default class SfGpsDsUkGovFormEmailOsN extends OmniscriptEmail {
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
+  }
+
+  @api getErrorDetails() {
+    let elt = this.template.querySelector("[data-omni-input]");
+
+    if (elt) {
+      if (elt.getErrorDetails) {
+        return elt.getErrorDetails();
+      }
+
+      console.log("child does not have getErrorDetails api");
+    }
+
+    console.log("child not found");
+    return null;
+  }
+
+  @api scrollTo() {
+    const input = this.template.querySelector("[data-omni-input]");
+    input.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest"
+    });
   }
 }

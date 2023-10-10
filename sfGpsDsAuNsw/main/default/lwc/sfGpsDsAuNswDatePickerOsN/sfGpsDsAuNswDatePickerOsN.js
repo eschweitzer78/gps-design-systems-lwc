@@ -6,12 +6,12 @@
  */
 
 import { api } from "lwc";
-import OmnistudioDatePicker from "omnistudio/datePicker";
+import SfGpsDsDatePickerOsN from "c/sfGpsDsDatePickerOsN";
 import tmpl from "./sfGpsDsAuNswDatePickerOsN.html";
 import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
-export default class SfGpsDsAuNswDatePickerOsN extends OmnistudioDatePicker {
+export default class SfGpsDsAuNswDatePickerOsN extends SfGpsDsDatePickerOsN {
   @api hideFormGroup = false;
   @api hideAsterisk = false;
 
@@ -23,6 +23,13 @@ export default class SfGpsDsAuNswDatePickerOsN extends OmnistudioDatePicker {
     return computeClass({
       "nsw-form__label": true,
       "nsw-form__required": this.required && !this.hideAsterisk
+    });
+  }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      errorMessageBlock: this.isError,
+      helper: this.fieldLevelHelp
     });
   }
 

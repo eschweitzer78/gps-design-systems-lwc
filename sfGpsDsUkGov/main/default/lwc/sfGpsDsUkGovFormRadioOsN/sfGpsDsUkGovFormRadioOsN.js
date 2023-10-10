@@ -38,15 +38,16 @@ export default class SfGpsDsUkGovFormRadioOsN extends OmniscriptRadio {
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      console.log(
+        "SfGpsDsUkGovFormRadioOsN: child does not have getErrorDetails api"
+      );
     }
 
-    console.log("child not found");
+    console.log("SfGpsDsUkGovFormRadioOsN: child not found");
     return null;
   }
 
   @api scrollTo() {
-    console.log("scrollTo called!");
     const input = this.template.querySelector("[data-omni-input]");
     input.scrollIntoView({
       behavior: "smooth",

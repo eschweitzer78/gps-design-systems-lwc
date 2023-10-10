@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmniscriptMaskedInput from "omnistudio/maskedInput";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
@@ -31,6 +32,17 @@ export default class SfGpsDsUkGovMaskedMultiInputOsN extends SfGpsDsUkGovLabelMi
       "govuk-input": true,
       "govuk-input--error": this.isError
     });
+  }
+
+  @api getErrorDetails() {
+    let elt = this.template.querySelector(".govuk-form-group");
+
+    return elt
+      ? {
+          id: elt.id,
+          errorMessage: this._errorMessage
+        }
+      : null;
   }
 
   get _errorMessage() {

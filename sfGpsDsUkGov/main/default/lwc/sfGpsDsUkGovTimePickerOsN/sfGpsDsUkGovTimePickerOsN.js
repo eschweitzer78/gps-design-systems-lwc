@@ -62,22 +62,15 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
     if (elt == null) {
       if (DEBUG)
         console.log("sfGpsDsUkGovTimePicker: cannot find input element");
-    } else if (this.isCustomLwc) {
-      if (elt.getErrorDetails) {
-        rv = elt.getErrorDetails();
-      } else {
-        if (DEBUG)
-          console.log(
-            "sfGpsDsUkGovTimePicker: child input does not have getErrorDetails"
-          );
-      }
     }
-    rv = elt
-      ? {
-          id: elt.id,
-          errorMessage: this._errorMessage
-        }
-      : null;
+
+    rv =
+      elt && this.isError
+        ? {
+            id: elt.id,
+            errorMessage: this._errorMessage
+          }
+        : null;
 
     return rv;
   }

@@ -48,7 +48,6 @@ export default class SfGpsDsUkGovFormTextOsN extends OmniscriptText {
   }
 
   @api scrollTo() {
-    console.log("scrollTo called!");
     const input = this.template.querySelector("[data-omni-input]");
     input.scrollIntoView({
       behavior: "smooth",

@@ -11,6 +11,7 @@
   theme={_theme} not supported
 */
 
+import { api } from "lwc";
 import OmniscriptSelect from "omnistudio/omniscriptSelect";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormSelectOsN.html";
@@ -26,5 +27,29 @@ export default class SfGpsDsUkGovFormSelectOsN extends OmniscriptSelect {
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
+  }
+
+  @api getErrorDetails() {
+    let elt = this.template.querySelector("[data-omni-input]");
+
+    if (elt) {
+      if (elt.getErrorDetails) {
+        return elt.getErrorDetails();
+      }
+
+      console.log("child does not have getErrorDetails api");
+    }
+
+    console.log("child not found");
+    return null;
+  }
+
+  @api scrollTo() {
+    const input = this.template.querySelector("[data-omni-input]");
+    input.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest"
+    });
   }
 }

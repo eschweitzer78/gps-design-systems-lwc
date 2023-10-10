@@ -48,7 +48,7 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
   get computedTextAreaCharacterCountError() {
     return computeClass({
       "govuk-textarea": true,
-      "govuk-js-character-count": true,
+      "govuk-js-character-count": this._showCharacterCount,
       "govuk-textarea--error": this.isError
     });
   }
@@ -106,10 +106,6 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
           errorMessage: this._errorMessage
         }
       : null;
-  }
-
-  @api scrollTo() {
-    console.log("scrollTo called v2!");
   }
 
   get _errorMessage() {

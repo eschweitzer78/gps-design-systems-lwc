@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmnistudioDatetimePicker from "omnistudio/datetimePicker";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovDatetimePickerOsN.html";
@@ -52,6 +53,36 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
 
   get i18n() {
     return I18N;
+  }
+
+  @api getErrorDetails() {
+    let elt = this.template.querySelector("[data-omni-date-input]");
+
+    if (elt) {
+      if (elt.getErrorDetails) {
+        const ed = elt.getErrorDetails();
+        if (ed) return ed;
+      } else {
+        console.log("date child does not have getErrorDetails api");
+      }
+    } else {
+      console.log("date child not found");
+    }
+
+    elt = this.template.querySelector("[data-omni-time-input]");
+
+    if (elt) {
+      if (elt.getErrorDetails) {
+        const ed = elt.getErrorDetails();
+        if (ed) return ed;
+      } else {
+        console.log("time child does not have getErrorDetails api");
+      }
+    } else {
+      console.log("time child not found");
+    }
+
+    return null;
   }
 
   setCustomValidity(e) {

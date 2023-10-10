@@ -9,7 +9,7 @@
       role="group"
       aria-describedby={computedAriaDescribedBy}
     >
-      <legend class={computedLegendClassName}>
+      <legend if:true={label} class={computedLegendClassName}>
         <h1 class="govuk-fieldset__heading">{label}</h1>
         <slot name="label"></slot>
       </legend>

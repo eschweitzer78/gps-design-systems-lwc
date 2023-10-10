@@ -1,8 +1,15 @@
 <template>
   <div class={computedFormGroupClass}>
-    <label class={computedLabelClassName} style="width: auto" for="time-input">
+    <label
+      lwc:if={label}
+      class={computedLabelClassName}
+      style="width: auto"
+      for="time-input"
+    >
       {label}
-      <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+      <template if:false={hideAsterisk}>
+        <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+      </template>
     </label>
     <slot name="label"> </slot>
 
@@ -34,7 +41,7 @@
               placeholder={placeholder}
               tabindex={tabIndex}
               aria-autocomplete="both"
-              aria-describedby="errorMessageBlock"
+              aria-describedby={computedAriaDescribedBy}
               value={_displayValue}
               onblur={showLookup}
               onchange={onInputChange}

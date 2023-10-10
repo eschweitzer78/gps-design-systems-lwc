@@ -1,6 +1,6 @@
 @import "c/sfGpsDsUkGovCoreOs";
-@import "./character-count.gen.css";
 @import "./textarea.gen.css";
+@import "./character-count.gen.css";
 
 .govuk-form-group:first-child {
   margin-top: 1rem;

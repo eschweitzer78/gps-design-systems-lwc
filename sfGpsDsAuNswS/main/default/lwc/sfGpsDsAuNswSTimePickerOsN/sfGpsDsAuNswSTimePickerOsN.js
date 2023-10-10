@@ -7,6 +7,7 @@
 
 import { api } from "lwc";
 import SfGpsDsTimePickerOsN from "c/sfGpsDsTimePickerOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSTimePickerOsN.html";
 
 export default class SfGpsDsAuNswSTimePickerOsN extends SfGpsDsTimePickerOsN {
@@ -17,14 +18,27 @@ export default class SfGpsDsAuNswSTimePickerOsN extends SfGpsDsTimePickerOsN {
   }
 
   get computedFormItemClassName() {
-    return "form__item"; // + " " + this.errorClass;
+    return "form__item";
   }
 
   get computedLabelClassName() {
-    return this.required && !this.hideAsterisk ? "form-required" : "";
+    return computeClass({
+      "form-required": this.required && !this.hideAsterisk
+    });
+  }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      errorMessageBlock: this.isError,
+      helper: this.fieldLevelHelp
+    });
   }
 
   get computedInputInputClassName() {
-    return `form__input timeinput ${this.isError ? "error" : ""}`;
+    return computeClass({
+      form__input: true,
+      timeinput: true,
+      error: this.isError
+    });
   }
 }

@@ -26,6 +26,13 @@ export default class SfGpsDsAuNswTimePickerOsN extends SfGpsDsTimePickerOsN {
     });
   }
 
+  get computedAriaDescribedBy() {
+    return computeClass({
+      errorMessageBlock: this.isError,
+      helper: this.fieldLevelHelp
+    });
+  }
+
   get computedFormGroupClass() {
     return computeClass({
       "nsw-form__group": !this.hideFormGroup

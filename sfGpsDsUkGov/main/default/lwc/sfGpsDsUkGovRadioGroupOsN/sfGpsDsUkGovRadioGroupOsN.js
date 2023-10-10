@@ -77,10 +77,6 @@ export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
       : null;
   }
 
-  @api scrollTo() {
-    console.log("scrollTo called v2!");
-  }
-
   get _errorMessage() {
     return this.errorMessage?.replace("Error: ", "");
   }

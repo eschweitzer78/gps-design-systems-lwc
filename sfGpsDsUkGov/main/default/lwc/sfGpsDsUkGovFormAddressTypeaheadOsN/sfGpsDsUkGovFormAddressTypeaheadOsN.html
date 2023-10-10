@@ -71,9 +71,9 @@
                 for="address"
               >
                 {mergedLabel}
-                <span if:true={_propSetMap.required} class="sr-only">
-                  ({allCustomLabelsUtil.OmniRequired})</span
-                >
+                <!--
+                  <span if:true={_propSetMap.required} class="sr-only"> ({allCustomLabelsUtil.OmniRequired})</span>
+                -->
               </label>
             </div>
           </div>
@@ -129,7 +129,7 @@
               name="street"
               class="manual-field"
               label="Street Address"
-              label-class-name="govuk-label govuk-label--s"
+              label-size=""
               onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
@@ -146,7 +146,7 @@
               name="suburb"
               class="manual-field"
               label="Suburb"
-              label-class-name="govuk-label govuk-label--s"
+              label-size=""
               onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
@@ -163,7 +163,7 @@
               class="manual-field"
               options={states}
               label="State"
-              label-class-name="govuk-label govuk-label--s"
+              label-size=""
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
               read-only="true"
@@ -184,7 +184,7 @@
               name="postcode"
               class="manual-field"
               label="Postcode"
-              label-class-name="govuk-label govuk-label--s"
+              label-size=""
               onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
@@ -203,7 +203,7 @@
               name="country"
               class="manual-field"
               label="Country"
-              label-class-name="govuk-label govuk-label--s"
+              label-size=""
               onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}

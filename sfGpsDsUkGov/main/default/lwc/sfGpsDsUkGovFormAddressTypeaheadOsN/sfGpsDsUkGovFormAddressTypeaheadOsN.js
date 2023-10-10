@@ -475,7 +475,8 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
 
   get computedLabelClassName() {
     return computeClass({
-      "govuk-label": true
+      "govuk-label": true,
+      "govuk-label--s": true
     });
   }
 
@@ -501,6 +502,30 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
+  }
+
+  @api getErrorDetails() {
+    let elt = this.template.querySelector("[data-omni-input]");
+
+    if (elt) {
+      if (elt.getErrorDetails) {
+        return elt.getErrorDetails();
+      }
+
+      console.log("child does not have getErrorDetails api");
+    }
+
+    console.log("child not found");
+    return null;
+  }
+
+  @api scrollTo() {
+    const input = this.template.querySelector("[data-omni-input]");
+    input.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest"
+    });
   }
 
   get _errorMessage() {
