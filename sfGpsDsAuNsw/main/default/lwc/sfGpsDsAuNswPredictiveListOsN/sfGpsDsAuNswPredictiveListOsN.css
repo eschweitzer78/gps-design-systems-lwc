@@ -43,10 +43,11 @@ input[readonly][role="combobox"] {
   font-weight: var(--nsw-font-normal);
 }
 
-.nsw-form__predictive-list .sfgpsds-listbox__option:hover {
+/*.nsw-form__predictive-list .sfgpsds-listbox__option:hover,*/
+.nsw-form__predictive-list .sfgpsds-listbox__option.sfgpsds-has-focus {
   outline-width: 0;
   cursor: pointer;
-  background-color: var(--nsw-brand-light);
+  background-color: var(--nsw-text-hover);
   color: var(--nsw-text-dark);
 }
 
@@ -91,9 +92,28 @@ input[readonly][role="combobox"] {
   overflow-y: auto;
 }
 
+.nsw-form__predictive-list {
+  line-height: var(--nsw-line-height-sm-mobile);
+}
+
 .nsw-form__predictive-list.sfgpsds-dropdown_length-5,
 .nsw-form__predictive-list.sfgpsds-dropdown_length--5 {
-  max-height: calc((1.5rem + 1.25rem) * 5);
+  /* corrected to 1.5em + 2 times padding at 0.625rem */
+  /* max-height: calc((var(--nsw-line-height-sm-mobile) + 1.25rem) * 5); -- does not work with var */
+  max-height: calc((1.5em + 1.25rem) * 5);
+}
+
+@media (min-width: 62rem) {
+  .nsw-form__predictive-list {
+    line-height: var(--nsw-line-height-sm-desktop);
+  }
+
+  .nsw-form__predictive-list.sfgpsds-dropdown_length-5,
+  .nsw-form__predictive-list.sfgpsds-dropdown_length--5 {
+    /* corrected to 1.5em + 2 times padding at 0.625rem */
+    /* max-height: calc((var(--nsw-line-height-sm-desktop) + 1.25rem) * 5); -- does not work with var */
+    max-height: calc((1.5em + 1.25rem) * 5);
+  }
 }
 
 .sfgpsds-combobox_container {
@@ -137,3 +157,32 @@ input[readonly][role="combobox"] {
 .sfgpsds-icon-small {
   font-size: inherit;
 }
+
+/* fixing margin for dropdown with *+p, *+ul... to match that of date picker */
+
+* + ul.sfgpsds-dropdown {
+  margin-top: 0;
+}
+
+/* START: dealing with the new styling in omnistudio__OmniLwcUtilsCss in omni246 */
+
+.nsw-form__predictive
+  input.nsw-form__input[readonly]:not([type="range"]):not(
+    [type="checkbox"]
+  ):not([type="radio"]) {
+  color: var(--nsw-text-dark);
+  font-size: var(--nsw-font-size-sm-mobile);
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 62rem) {
+  .nsw-form__predictive
+    input.nsw-form__input[readonly]:not([type="range"]):not(
+      [type="checkbox"]
+    ):not([type="radio"]) {
+    font-size: var(--nsw-font-size-sm-desktop);
+  }
+}
+
+/* END */
