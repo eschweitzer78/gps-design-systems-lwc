@@ -12,12 +12,27 @@
   alignment={_horizontalMode} not supported
 */
 
-import { api } from "lwc";
+import { api, track } from "lwc";
 import OmniscriptRadio from "omnistudio/omniscriptRadio";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormRadioOsN.html";
 
+const DEFAULT_LABEL_SIZE = "large";
+
 export default class SfGpsDsUkGovFormRadioOsN extends OmniscriptRadio {
+  @track labelSize = DEFAULT_LABEL_SIZE;
+
+  initCompVariables() {
+    super.initCompVariables();
+
+    this.labelSize =
+      this.jsonDef &&
+      this._propSetMap &&
+      this._propSetMap.labelSize !== undefined
+        ? this._propSetMap.labelSize
+        : DEFAULT_LABEL_SIZE;
+  }
+
   render() {
     return tmpl;
   }

@@ -6,7 +6,7 @@
       class={computedFormGroupClassName}
     >
       <div if:true={labelVisible} data-label="true">
-        <h1 class="govuk-label-wrapper">
+        <h3 class="govuk-label-wrapper">
           <label
             class={computedLabelClassName}
             style="width: auto"
@@ -15,7 +15,7 @@
             {label}
             <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
           </label>
-        </h1>
+        </h3>
         <slot name="label"></slot>
       </div>
 
@@ -327,6 +327,7 @@
     placeholder={placeholder}
     theme={theme}
     label={label}
+    label-size={labelSize}
     name={name}
     icon-url={iconUrl}
     min={min}
@@ -366,6 +367,7 @@
     placeholder={placeholder}
     theme={theme}
     label={label}
+    label-size={labelSize}
     name={name}
     icon-url={iconUrl}
     min={min}
@@ -398,6 +400,7 @@
     data-sf-gps-uk-gov-error-input
     name={name}
     label={label}
+    label-size={labelSize}
     theme={theme}
     icon-url={iconUrl}
     min={min}

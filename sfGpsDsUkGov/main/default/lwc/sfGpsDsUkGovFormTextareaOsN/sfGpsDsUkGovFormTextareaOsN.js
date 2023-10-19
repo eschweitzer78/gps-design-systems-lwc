@@ -42,13 +42,9 @@ export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsFormTextareaOsN 
       this._propSetMap.labelSize !== undefined
         ? this._propSetMap.labelSize
         : DEFAULT_LABEL_SIZE;
-
-    console.log("showCharacterCount", this.showCharacterCount);
-    console.log("labelSize", this.labelSize);
   }
 
   @api getErrorDetails() {
-    console.log("sfGpsDDsUkGovFormTextArea getErrorDetails");
     let elt = this.template.querySelector("[data-omni-input]");
 
     if (elt) {

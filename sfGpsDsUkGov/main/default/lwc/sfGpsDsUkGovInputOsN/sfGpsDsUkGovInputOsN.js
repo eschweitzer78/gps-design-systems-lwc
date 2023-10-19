@@ -8,17 +8,37 @@
 import { api } from "lwc";
 import OmniscriptInput from "omnistudio/input";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
+import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovInputOsN.html";
 
 const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
 const DEBUG = false;
+const DEFAULT_LABEL_SIZE = "large";
 
 export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
   OmniscriptInput,
-  "large"
+  DEFAULT_LABEL_SIZE
 ) {
   @api labelClassName;
+
+  /* api hideFormGroup */
+
+  _hideFormGroup = false;
+  _hideFormGroupOriginal = false;
+
+  @api
+  get hideFormGroup() {
+    return this._hideFormGroupOriginal;
+  }
+
+  set hideFormGroup(value) {
+    this._hideFormGroupOriginal = value;
+
+    this._hideFormGroup = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+  }
 
   render() {
     return tmpl;
@@ -46,8 +66,8 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
 
   get computedFormGroupClassName() {
     return computeClass({
-      "govuk-form-group": true,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group": !this._hideFormGroup,
+      "govuk-form-group--error": !this._hideFormGroup && this.isError
     });
   }
 

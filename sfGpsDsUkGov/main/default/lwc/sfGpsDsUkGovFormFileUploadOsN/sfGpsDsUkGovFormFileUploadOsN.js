@@ -21,10 +21,23 @@ const DEBUG = false;
 //  background-color: rgb(243, 243, 243); -> var(--slds-c-button-neutral-color-background-hover)
 //  border-color: rgb(201, 201, 201); -> var(--slds-c-button-neutral-color-border-hover)
 
+const DEFAULT_LABEL_SIZE = "large";
+
 export default class SfGpsDsUkGovFormFileUploadOsN extends SfGpsDsUkGovLabelMixin(
   OmniscriptFile,
-  "large"
+  DEFAULT_LABEL_SIZE
 ) {
+  initCompVariables() {
+    super.initCompVariables();
+
+    this.labelSize =
+      this.jsonDef &&
+      this._propSetMap &&
+      this._propSetMap.labelSize !== undefined
+        ? this._propSetMap.labelSize
+        : DEFAULT_LABEL_SIZE;
+  }
+
   render() {
     return tmpl;
   }
@@ -33,12 +46,6 @@ export default class SfGpsDsUkGovFormFileUploadOsN extends SfGpsDsUkGovLabelMixi
     return computeClass({
       "govuk-form-group": true,
       "govuk-form-group--error": this.isError
-    });
-  }
-
-  get computedLabelClassName() {
-    return computeClass({
-      "govuk-label": true
     });
   }
 

@@ -10,10 +10,23 @@ import SfGpsDsFormDisclosureOsN from "c/sfGpsDsFormDisclosureOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormDisclosureOsN.html";
 
+const DEFAULT_LABEL_SIZE = "large";
+
 export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsUkGovLabelMixin(
   SfGpsDsFormDisclosureOsN,
-  "small"
+  DEFAULT_LABEL_SIZE
 ) {
+  initCompVariables() {
+    super.initCompVariables();
+
+    this.labelSize =
+      this.jsonDef &&
+      this._propSetMap &&
+      this._propSetMap.labelSize !== undefined
+        ? this._propSetMap.labelSize
+        : DEFAULT_LABEL_SIZE;
+  }
+
   render() {
     return tmpl;
   }

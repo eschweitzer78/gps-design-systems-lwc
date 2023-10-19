@@ -14,9 +14,9 @@
       <div class={computedFormGroupClassName}>
         <label class={computedLabelClassName} style="width: auto" for="frt">
           {mergedLabel}
-          <span if:true={_propSetMap.required} class="sr-only">
-            ({allCustomLabelsUtil.OmniRequired})</span
-          >
+          <!--
+            <span if:true={_propSetMap.required} class="sr-only"> ({allCustomLabelsUtil.OmniRequired})</span>
+          -->
         </label>
 
         <div if:true={_propSetMap.help} id="helper" class="govuk-hint">

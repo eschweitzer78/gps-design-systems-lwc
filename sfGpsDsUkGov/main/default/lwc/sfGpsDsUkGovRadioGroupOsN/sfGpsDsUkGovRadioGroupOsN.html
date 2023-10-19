@@ -8,7 +8,7 @@
       aria-invalid={computedAriaInvalid}
     >
       <legend class={computedLegendClassName}>
-        <h1 class="govuk-fieldset__heading">{label}</h1>
+        <h3 class="govuk-fieldset__heading">{label}</h3>
         <slot name="label"></slot>
       </legend>
       <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
