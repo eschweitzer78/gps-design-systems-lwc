@@ -73,6 +73,10 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
     return this.mobileLogoStacking === "vertical";
   }
 
+  get computedHeaderUrl() {
+    return this.headerUrl || "#";
+  }
+
   /* helpers */
 
   setSearchVisible(visible) {

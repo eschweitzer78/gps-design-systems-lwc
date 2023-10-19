@@ -37,6 +37,9 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
 
   @api className;
 
+  @api mainNavId;
+  @api mainNavIsOpen = false;
+
   @track userAlias;
 
   @wire(getRecord, { recordId: userId, fields: [userAliasField] })
