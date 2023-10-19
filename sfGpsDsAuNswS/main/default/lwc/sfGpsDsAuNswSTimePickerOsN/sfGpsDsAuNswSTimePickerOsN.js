@@ -41,4 +41,11 @@ export default class SfGpsDsAuNswSTimePickerOsN extends SfGpsDsTimePickerOsN {
       error: this.isError
     });
   }
+
+  /* override parent as it does not set describedBy for field level help */
+
+  synchronizeA11y() {
+    this.aria_describedBy = this.computedAriaDescribedBy;
+    super.synchronizeA11y();
+  }
 }

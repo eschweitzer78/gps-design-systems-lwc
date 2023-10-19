@@ -5,7 +5,7 @@
         if:true={label}
         class={computedLabelClassName}
         style="width: auto"
-        for="date-input"
+        for="time-input"
       >
         {label}
         <span if:true={required} class="visually-hidden">
@@ -25,24 +25,25 @@
             aria-expanded={_isOpen}
             aria-haspopup="listbox"
             role="combobox"
+            onblur={handleComponentLosesFocus}
           >
-            <div class="" role="none">
+            <div class="sfgpsds-combobox__form-element" role="none">
               <input
                 class={computedInputInputClassName}
                 autocomplete="off"
                 id="time-input"
-                aria-label={ariaLabel}
                 role="textbox"
                 type="text"
                 name={name}
                 disabled={disabled}
                 required={required}
-                aria-invalid={isAriaInvalid}
                 readonly={readOnly}
+                aria-readonly={readOnly}
+                aria-invalid={isAriaInvalid}
                 placeholder={placeholder}
                 tabindex={tabIndex}
                 aria-autocomplete="both"
-                aria-describedby="errorMessageBlock"
+                aria-describedby={computedAriaDescribedBy}
                 value={_displayValue}
                 onblur={showLookup}
                 onchange={onInputChange}
@@ -55,24 +56,26 @@
             <ul
               if:true={_isOpen}
               class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 form__predictive-list"
+              id="time_picker_ul"
               role="listbox"
+              onmousedown={scrollerClickOnList}
             >
-              <template for:each={options} for:item="e" for:index="s">
+              <template for:each={options} for:item="item" for:index="index">
                 <li
-                  key={e.id}
-                  id={e.id}
-                  data-index={s}
-                  data-selected={e.selected}
-                  data-val={e.value}
+                  key={item.id}
+                  id={item.id}
+                  data-index={index}
+                  data-selected={item.selected}
+                  data-val={item.value}
                   data-timepicker-option
                   role="option"
-                  aria-selected={e.selected}
+                  aria-selected={item.selected}
                   class="sfgpsds-media sfgpsds-listbox__option sfgpsds-media_small sfgpsds-media_center"
                   onmousedown={selectOption}
                 >
-                  <span class="media__figure">
+                  <span class="sfgpsds-media__figure">
                     <span
-                      if:true={e.selected}
+                      if:true={item.selected}
                       class="sfgpsds-icon-small"
                       aria-hidden="true"
                     >
@@ -90,8 +93,8 @@
                   </span>
 
                   <span class="sfgpsds-media__body">
-                    <span class="sfgpsds-truncate" title={e.value}>
-                      {e.value}
+                    <span class="sfgpsds-truncate" title={item.value}>
+                      {item.value}
                     </span>
                   </span>
                 </li>
@@ -105,6 +108,7 @@
     <span
       if:true={isError}
       class="form__error"
+      data-timepicker-error-block
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
