@@ -15,6 +15,11 @@ input[readonly][role="combobox"] {
   background-size: 1rem auto;
 }
 
+/* nothing specific for hover
+.form__predictive .form__input:hover {
+}
+*/
+
 .form__predictive .form__input:disabled {
   background: var(--nsw-s-off-white-1)
     url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
@@ -22,22 +27,25 @@ input[readonly][role="combobox"] {
   background-size: 1rem auto;
 }
 
+/* nothing specific for invalid/error and hover
 .form__predictive .form__input[aria-invalid="true"]:hover,
 .form__predictive .form__input.error:hover {
 }
+*/
 
-.form__predictive-list div {
+.form__predictive-list .sfgpsds-listbox__option {
   display: block;
   padding: 0.625rem;
   color: var(--nsw-s-text-dark);
   font-weight: var(--nsw-s-font-normal);
 }
 
-.form__predictive-list div:hover {
+.form__predictive-list .sfgpsds-listbox__option:hover,
+.form__predictive-list .sfgpsds-listbox__option.sfgpsds-has-focus {
   outline-width: 0;
   cursor: pointer;
-  background-color: var(--nsw-s-off-white-1);
-  color: var(--nsw-s-text-light);
+  background-color: var(--nsw-s-focus, #2e5299);
+  color: var(--nsw-s-white);
 }
 
 .form__input {
@@ -72,39 +80,9 @@ input[readonly][role="combobox"] {
   margin: 0;
 }
 
-/* slds replica */
-
-.gpsds-combobox {
-  position: static;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-}
-
-.gpsds-combobox_container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.gpsds-dropdown {
-}
-
-.gpsds-dropdown_fluid {
-  min-width: auto;
-}
-
-.gpsds-dropdown [role="combobox"] input[readonly],
-.gpsds-dropdown input[readonly][role="combobox"] {
-  padding-left: 0.75rem;
-  font-weight: var(--nsw-s-font-normal);
-}
-
-/* end slds replica */
-
 /* begin undoing some of the default nsw s styling */
 
-.gpsds-combobox ul li {
+.sfgpsds-combobox ul li {
   background: none;
 }
 
@@ -112,7 +90,7 @@ input[readonly][role="combobox"] {
 
 /* begin undoing some of the default slds styling */
 
-input[readonly][role="combobox"]:focus {
+.nsw-form__predictive input[readonly][role="combobox"]:focus {
   outline: 2px solid var(--nsw-s-focus, #2e5299);
   outline-offset: 2px;
   border: 2px solid var(--nsw-s-border);
@@ -121,56 +99,73 @@ input[readonly][role="combobox"]:focus {
 
 /* end */
 
-.gpsds-listbox__option-text_entity {
+.sfgpsds-listbox__option-text_entity {
   max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;
-  margin-bottom: 0.125rem;
   overflow: hidden;
 }
 
-.gpsds-listbox_selection-group {
+.sfgpsds-listbox_selection-group {
   height: auto;
 }
 
-.gpsds-dropdown-container {
+.sfgpsds-dropdown-container {
   max-height: 300px;
   overflow-y: scroll;
 }
 
-.gpsds-listbox__flex {
+.sfgpsds-listbox__flex {
   display: flex;
 }
 
-.gpsds-listbox__flex .slds-listbox-item,
-.gpsds-listbox__flex .gpsds-listbox-item {
+.sfgpsds-listbox__flex .slds-listbox-item,
+.sfgpsds-listbox__flex .sfgpsds-listbox-item {
   overflow: hidden;
 }
 
-.gpsds-listbox__flex .slds-pill__label,
-.gpsds-listbox__flex .gpsds-pill__label {
+.sfgpsds-listbox__flex .slds-pill__label,
+.sfgpsds-listbox__flex .sfgpsds-pill__label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.gpsds-dropdown-trigger--click .gpsds-dropdown,
-.gpsds-dropdown-trigger--click:hover .gpsds-dropdown,
-.gpsds-dropdown-trigger_click .gpsds-dropdown,
-.gpsds-dropdown-trigger_click:hover .gpsds-dropdown {
+.sfgpsds-dropdown-trigger--click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger--click:hover .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click:hover .sfgpsds-dropdown {
   display: none;
 }
 
-.gpsds-dropdown-trigger_click .gpsds-dropdown {
+.sfgpsds-dropdown-trigger_click .sfgpsds-dropdown {
   visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
   transition: opacity 0.1s linear, visibility 0.1s linear;
 }
 
-.gpsds-dropdown-trigger_click.gpsds-is-open .gpsds-dropdown {
+.sfgpsds-dropdown-trigger_click.sfgpsds-is-open .sfgpsds-dropdown {
   display: block;
   visibility: visible;
   opacity: 1;
 }
+
+/* adding not allowed cursor when disabled */
+
+.form__input:disabled {
+  cursor: not-allowed;
+}
+
+/* START: dealing with the new styling in omnistudio__OmniLwcUtilsCss in omni246 */
+
+.form__predictive
+  input.nsw-form__input[readonly]:not([type="range"]):not(
+    [type="checkbox"]
+  ):not([type="radio"]) {
+  color: var(--nsw-s-text-dark);
+  font-size: var(--nsw-s-font-size);
+}
+
+/* END */

@@ -1,8 +1,6 @@
 <template>
   <div class="form__item">
-    <!-- used to be form__group -->
     <div class={errorClass}>
-      <!-- errorClass necessary for dropdown to work -->
       <div if:false={isLabelHidden}>
         <label
           id="combobox-label"
@@ -23,10 +21,10 @@
       </span>
 
       <div class="form__predictive">
-        <div class="gpsds-combobox_container">
-          <div class="gpsds-combobox__form-element" role="none">
+        <div class="sfgpsds-combobox_container">
+          <div class="sfgpsds-combobox__form-element" role="none">
             <input
-              class="form__input gpsds-listbox__option-text_entity"
+              class="form__input sfgpsds-listbox__option-text_entity"
               aria-describedby={computedAriaDescribedBy}
               aria-expanded={isOpen}
               aria-haspopup="listbox"
@@ -54,7 +52,7 @@
 
         <div
           id="combobox-list"
-          class="gpsds-dropdown gpsds-dropdown_fluid"
+          class="sfgpsds-dropdown sfgpsds-dropdown_fluid"
           aria-labelledby="combobox-label"
           role="listbox"
           onmousedown={preventLookupClose}
@@ -62,31 +60,31 @@
           onmouseup={preventLookupOpen}
         >
           <ul
-            class="gpsds-dropdown-container gpsds-listbox gpsds-listbox_vertical form__predictive-list"
+            class="sfgpsds-dropdown-container sfgpsds-listbox sfgpsds-listbox_vertical form__predictive-list"
             style={dropdownStyle}
             role="presentation"
           >
-            <template for:each={internalOptionsCopy} for:item="e">
+            <template for:each={internalOptionsCopy} for:item="item">
               <li
                 if:true={isGrouped}
-                class="gpsds-listbox__item gpsds-listbox__option"
-                key={e.optId}
+                class="sfgpsds-listbox__item sfgpsds-listbox__option"
+                key={item.optId}
               >
-                <h3 role="presentation">{e.group}</h3>
+                <h3 role="presentation">{item.group}</h3>
               </li>
-              <li key={e.optId} class="gpsds-listbox__item">
+              <li key={item.optId} class="sfgpsds-listbox__item">
                 <div
-                  class="gpsds-listbox__option gpsds-listbox__option_plain gpsds-listbox__option-text gpsds-listbox__option-text_entity gpsds-is-selected"
-                  data-value={e.value}
-                  data-label={e.label}
-                  data-option-id={e.optId}
+                  class="sfgpsds-listbox__option sfgpsds-listbox__option_plain sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity sfgpsds-is-selected"
+                  data-value={item.value}
+                  data-label={item.label}
+                  data-option-id={item.optId}
                   role="option"
-                  id={e.optId}
+                  id={item.optId}
                   onmouseup={selectOption}
                   onmouseover={handleMouseOver}
                   onmouseout={handleMouseOut}
                 >
-                  {e.label}
+                  {item.label}
                 </div>
               </li>
             </template>
@@ -120,22 +118,22 @@
             aria-orientation="horizontal"
             class={pillWrapperClass}
           >
-            <template for:each={inputLabels} for:item="e">
-              <li key={e} class="slds-listbox-item" role="presentation">
+            <template for:each={inputLabels} for:item="item">
+              <li key={item} class="slds-listbox-item" role="presentation">
                 <span
                   class="slds-pill"
                   style={styleProperties.value.styles}
                   role="option"
                   tabindex="0"
                 >
-                  <span class="slds-pill__label" title={e}> {e} </span>
+                  <span class="slds-pill__label" title={item}> {item} </span>
                   <omnistudio-icon
                     if:true={showDelIcon}
-                    data-label={e}
+                    data-label={item}
                     icon-name="utility:close"
                     baseurl={iconUrl}
                     size="xx-small"
-                    theme={theme}
+                    theme="slds"
                     onclick={deleteThisLabel}
                   >
                   </omnistudio-icon>
