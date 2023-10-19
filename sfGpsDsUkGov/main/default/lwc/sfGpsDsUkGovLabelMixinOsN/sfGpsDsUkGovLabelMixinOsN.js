@@ -34,17 +34,6 @@ let SfGpsUkGovLabelMixin = (base, defaultLabelSize = "medium") =>
       });
     }
 
-    get computedMultiLabelClassName() {
-      return this.computeMultiLabelClassName();
-    }
-
-    computeMultiLabelClassName(className) {
-      return computeClass({
-        "govuk-label": true,
-        [className]: className
-      });
-    }
-
     get computedLegendClassName() {
       return computeClass({
         "govuk-fieldset__legend": true,
