@@ -4,7 +4,9 @@
       <legend class={computedLegendClassName}>
         <span>
           {label}
-          <span if:true={required}> ({requiredLabel})</span>
+          <span if:true={required} class="visually-hidden">
+            ({requiredLabel})</span
+          >
         </span>
         <slot name="label"> </slot>
       </legend>
@@ -47,5 +49,7 @@
         {errorMessage}
       </span>
     </fieldset>
+
+    <!-- TODO: support button and icon -->
   </div>
 </template>
