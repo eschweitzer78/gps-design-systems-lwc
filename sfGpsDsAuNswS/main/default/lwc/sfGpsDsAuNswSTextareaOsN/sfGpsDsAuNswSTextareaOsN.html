@@ -1,9 +1,11 @@
 <template>
   <div class="form__item" style="width: auto">
     <div if:true={labelVisible} data-label="true">
-      <label id="textarealabel" class={computedLabelClassName} for="textareaId">
+      <label class={computedLabelClassName} for="textareaId">
         {label}
-        <span if:true={required}> ({requiredLabel})</span>
+        <span if:true={required} class="visually-hidden">
+          ({requiredLabel})</span
+        >
       </label>
       <slot name="label"></slot>
     </div>
@@ -18,6 +20,7 @@
       minlength={minLength}
       maxlength={maxLength}
       readonly={readOnly}
+      aria-readonly={readOnly}
       accesskey={accessKey}
       name={name}
       disabled={disabled}
@@ -31,14 +34,18 @@
       onchange={triggerEvent}
       onkeyup={keyCallbacks}
       onkeydown={keyCallbacks}
-      aria-labelledby="textarealabel"
-      aria-describedby={ariaDescribedBy}
+      aria-describedby={computedAriaDescribedBy}
       aria-invalid={isError}
     >
       {_val}
     </textarea>
 
-    <span id="errorMessageBlock" if:true={isError} class="form__error">
+    <span
+      id="errorMessageBlock"
+      if:true={isError}
+      class="form__error"
+      role="alert"
+    >
       {errorMessage}
     </span>
   </div>
