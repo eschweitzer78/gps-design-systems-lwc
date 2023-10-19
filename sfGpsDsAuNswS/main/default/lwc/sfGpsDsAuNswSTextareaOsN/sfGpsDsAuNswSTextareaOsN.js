@@ -27,10 +27,10 @@ export default class SfGpsDsAuNswSTextareaOsN extends OmniscriptTextarea {
     });
   }
 
-  get ariaDescribedBy() {
+  get computedAriaDescribedBy() {
     return computeClass({
-      textarealabel: true,
-      errorMessageBlock: this.isError
+      errorMessageBlock: this.isError,
+      helper: this.fieldLevelHelp
     });
   }
 }
