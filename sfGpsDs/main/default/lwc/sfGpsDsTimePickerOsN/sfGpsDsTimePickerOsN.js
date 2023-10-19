@@ -36,4 +36,20 @@ export default class SfGpsDsTimePickerOsN extends OmnistudioTimePicker {
 
     super.showLookup(e);
   }
+
+  /* override scrollByIndex as the implementation in ommni246 makes assumptions about option line-height */
+
+  // eslint-disable-next-line no-unused-vars
+  scrollByIndex(isUp) {
+    let option = this.template.querySelector(
+      `[data-index="${this._currentSelectedIndex}"]`
+    );
+    if (!option) return;
+
+    if (option.scrollIntoView) {
+      option.scrollIntoView({
+        block: "nearest"
+      });
+    }
+  }
 }
