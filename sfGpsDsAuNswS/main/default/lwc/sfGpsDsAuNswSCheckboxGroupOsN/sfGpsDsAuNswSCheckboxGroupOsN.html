@@ -23,18 +23,18 @@
               required={required}
               disabled={disabled}
               id={option.id}
-              data-index={index}
               tabindex={tabIndex}
               name={name}
-              checked={option.selected}
-              value={option.value}
               aria-invalid={isError}
               aria-describedby={computedAriaDescribedBy}
+              checked={option.selected}
+              value={option.value}
+              data-index={index}
               onfocus={handleFocus}
               onchange={onchangevalue}
               onkeydown={handleKeyDownEvent}
             />
-            <label data-index={index} for={option.id}> {option.label} </label>
+            <label data-index={index} for={option.id}>{option.label}</label>
           </div>
         </template>
       </div>
