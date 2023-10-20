@@ -5,20 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import SfGpsDsFormDisclosureOsN from "c/sfGpsDsFormDisclosureOsN";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
-import { replaceInnerHtml } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSFormDisclosureOsN.html";
 
 export default class SfGpsDsAuNswSFormDisclosureOsN extends SfGpsDsFormDisclosureOsN {
   render() {
     return tmpl;
-  }
-
-  renderedCallback() {
-    let element = this.template.querySelector(".sfGpsMerge");
-
-    if (element) {
-      replaceInnerHtml(element, omniGetMergedField(this, this._dText));
-    }
   }
 }

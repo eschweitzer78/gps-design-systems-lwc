@@ -1,16 +1,19 @@
 <template>
   <div class="form__input-group">
     <div class="form__item" style="width: auto">
-      <label for="frt"> {mergedLabel} </label>
+      <label for="frt">{mergedLabel}</label>
+      <span if:true={_propSetMap.required} class="visually-hidden">
+        ({allCustomLabelsUtil.OmniRequired})</span
+      >
 
       <div class="disclosure">
         <div class="disclosure__content">
-          <div class="sfGpsMerge" lwc:dom="manual"></div>
+          <omnistudio-omniscript-formatted-rich-text id="frt" value={_dText}>
+          </omnistudio-omniscript-formatted-rich-text>
         </div>
 
         <div class="disclosure__consent">
           <c-sf-gps-ds-au-nsw-s-input-os-n
-            data-omni-input
             type="checkbox"
             label={mergedCheckLabel}
             required={_propSetMap.required}
@@ -19,6 +22,7 @@
             checked={elementValue}
             message-when-value-missing={_messageWhenValueMissing}
             tab-index={tabIndex}
+            data-omni-input
             onchange={handleChange}
           >
           </c-sf-gps-ds-au-nsw-s-input-os-n>
