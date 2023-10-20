@@ -355,3 +355,9 @@
     no-repeat right 1rem center;
   background-size: 1rem auto;
 }
+
+/* adding not allowed cursor when disabled */
+
+.sfgpsds-input:disabled {
+  cursor: not-allowed;
+}

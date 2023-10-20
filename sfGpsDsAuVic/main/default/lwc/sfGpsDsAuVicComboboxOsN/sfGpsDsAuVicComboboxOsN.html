@@ -6,10 +6,10 @@
           <!-- necessary for dropdown to work! -->
           <label
             if:false={isLabelHidden}
-            style="width: auto"
+            class={labelClassName}
             id="combobox-label"
             for="comboboxId"
-            class={labelClassName}
+            style="width: auto"
           >
             <span>{label}</span>
             <slot name="label"> </slot>
@@ -23,8 +23,8 @@
             <div>
               <div class="sfgpsds-combobox_container">
                 <input
-                  class="sfgpsds-listbox__option-text_entity"
-                  aria-describedby={ariaDescribedBy}
+                  class="sfgpsds-input sfgpsds-listbox__option-text_entity"
+                  aria-describedby={computedAriaDescribedBy}
                   aria-expanded={isOpen}
                   aria-haspopup="listbox"
                   aria-controls="combobox-list"
@@ -48,7 +48,6 @@
                 />
               </div>
 
-              <!-- rpl-select__dropdown -->
               <div
                 id="combobox-list"
                 aria-labelledby="combobox-label"
@@ -58,32 +57,30 @@
                 onmouseleave={preventLookupOpen}
                 onmouseup={preventLookupOpen}
               >
-                <!-- rpl-select__trigger // removed nsw-form__predictive-list -->
                 <ul
                   class="dropdown-container listbox sfgpsds-listbox sfgpsds-listbox_vertical"
                   style={dropdownStyle}
                   role="presentation"
                 >
-                  <template for:each={internalOptionsCopy} for:item="e">
-                    <!-- rpl-select__listitem -->
+                  <template for:each={internalOptionsCopy} for:item="item">
                     <li
                       if:true={isGrouped}
-                      key={e.optId}
+                      key={item.optId}
                       class="sfgpsds-listbox__item"
                     >
                       <div
                         class="slds-media slds-media_small slds-listbox__option slds-listbox__option-plain"
                       >
-                        <h3 role="presentation">{e.group}</h3>
+                        <h3 role="presentation">{item.group}</h3>
                       </div>
                     </li>
 
-                    <li key={e.optId} class="sfgpsds-listbox__item">
+                    <li key={item.optId} class="sfgpsds-listbox__item">
                       <div
                         class="sfgpsds-media sfgpsds-media_small sfgpsds-listbox__option sfgpsds-listbox__option_plain"
-                        data-value={e.value}
-                        data-label={e.label}
-                        data-option-id={e.optId}
+                        data-value={item.value}
+                        data-label={item.label}
+                        data-option-id={item.optId}
                         role="option"
                         id={e.optId}
                         onmouseup={selectOption}
@@ -93,9 +90,9 @@
                         <span class="sfgpsds-media__body">
                           <span
                             class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
-                            title={e.value}
+                            title={item.label}
                           >
-                            {e.label}
+                            {item.label}
                           </span>
                         </span>
                       </div>
@@ -134,16 +131,15 @@
                 aria-label="Selected Options:"
                 aria-orientation="horizontal"
               >
-                <template for:each={inputLabels} for:item="e">
-                  <li key={e} class="slds-listbox-item" role="presentation">
+                <template for:each={inputLabels} for:item="item">
+                  <li key={item} class="slds-listbox-item" role="presentation">
                     <span
                       class="slds-pill"
                       style={styleProperties.value.styles}
                       role="option"
                       tabindex="0"
-                      aria-selected="true"
                     >
-                      <span class="slds-pill__label" title={e}> {e} </span>
+                      <span class="slds-pill__label" title={item}>{item}</span>
                       <omnistudio-icon
                         if:true={showDelIcon}
                         data-label={e}
