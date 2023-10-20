@@ -42,10 +42,22 @@ export default class SfGpsDsAuNswSTimePickerOsN extends SfGpsDsTimePickerOsN {
     });
   }
 
-  /* override parent as it does not set describedBy for field level help */
+  get computedAriaControls() {
+    return this._isOpen ? "time_picker_ul" : null;
+  }
+
+  /* we're doing it mostly via template */
 
   synchronizeA11y() {
-    this.aria_describedBy = this.computedAriaDescribedBy;
-    super.synchronizeA11y();
+    this.inputEle = this.inputEle
+      ? this.inputEle
+      : this.template.querySelector("input");
+    if (!this.inputEle) {
+      return;
+    }
+
+    this.setElementAttribute(this.inputEle, {
+      "aria-activedescendant": this._isOpen ? this.aria_activedescendant : null
+    });
   }
 }

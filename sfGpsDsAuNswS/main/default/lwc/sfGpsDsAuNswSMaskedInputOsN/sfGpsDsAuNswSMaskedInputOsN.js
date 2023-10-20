@@ -50,6 +50,6 @@ export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
   /* original maskedInput widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
-    return this.computedAriaDescribedBy();
+    return this.computedAriaDescribedBy;
   }
 }
