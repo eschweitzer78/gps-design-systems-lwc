@@ -19,8 +19,8 @@ export default class SfGpsDsAuNswSComboboxOsN extends OmnistudioCombobox {
 
   get computedAriaDescribedBy() {
     return computeClass({
-      errorMessageBlock: this.isError,
-      helper: this.fieldLevelHelp
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
     });
   }
 

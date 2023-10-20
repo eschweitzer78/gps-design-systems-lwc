@@ -1,7 +1,7 @@
 <template>
   <template if:false={isCustomLwc}>
     <div class="form__item" style="width: auto">
-      <template if:true={labelVisible}>
+      <template lwc:if={labelVisible}>
         <legend
           if:true={useLegend}
           class={computedLegendClassName}
@@ -37,6 +37,13 @@
               {fieldLevelHelp}
             </span>
           </template>
+        </template>
+      </template>
+      <template lwc:else>
+        <template if:false={isCheckbox}>
+          <span if:true={fieldLevelHelp} id={helperId} class="form__help">
+            {fieldLevelHelp}
+          </span>
         </template>
       </template>
 

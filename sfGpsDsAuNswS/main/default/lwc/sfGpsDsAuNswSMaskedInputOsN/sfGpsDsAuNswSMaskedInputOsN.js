@@ -42,8 +42,8 @@ export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
 
   get computedAriaDescribedBy() {
     return computeClass({
-      errorMessageBlock: this.isError,
-      helper: this.fieldLevelHelp
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
     });
   }
 
