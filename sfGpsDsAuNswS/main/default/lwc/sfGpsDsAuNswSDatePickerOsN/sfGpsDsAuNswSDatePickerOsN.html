@@ -27,6 +27,7 @@
           aria-label={ariaLabel}
           tabindex={tabIndex}
           readonly={readOnly}
+          aria-readonly={readOnly}
           required={required}
           placeholder={placeholder}
           disabled={disabled}
@@ -73,7 +74,7 @@
                   theme={theme}
                 >
                 </omnistudio-icon>
-                <span class="slds-assistive-text"> {prevMonthLabel} </span>
+                <span class="slds-assistive-text">{prevMonthLabel}</span>
               </button>
             </div>
 
@@ -104,7 +105,7 @@
                   theme={theme}
                 >
                 </omnistudio-icon>
-                <span class="slds-assistive-text"> {nextMonthLabel} </span>
+                <span class="slds-assistive-text">{nextMonthLabel}</span>
               </button>
             </div>
           </div>
@@ -122,9 +123,9 @@
                 onchange={yearSelected}
                 onkeydown={shiftFocus}
               >
-                <template for:each={years} for:item="e">
-                  <option key={e.value}>
-                    <span>{e.value}</span>
+                <template for:each={years} for:item="year">
+                  <option key={year.value}>
+                    <span>{year.value}</span>
                   </option>
                 </template>
               </select>
@@ -140,33 +141,38 @@
         >
           <thead>
             <tr data-id="weekdays">
-              <template for:each={daysTitle} for:item="e">
+              <template for:each={daysTitle} for:item="day">
                 <th
-                  key={e.name}
+                  key={day.name}
                   class="slds-disabled-text"
-                  data-id={e.name}
+                  data-id={day.name}
                   tabindex="-1"
                   scope="col"
-                ></th>
+                >
+                  <abbr title={day.name}>{day.name}</abbr>
+                </th>
               </template>
             </tr>
           </thead>
 
           <tbody>
-            <template for:each={DayArray} for:item="week">
-              <tr key={week.id}>
-                <template for:each={week} for:item="e">
+            <template for:each={DayArray} for:item="days">
+              <tr key={days.id}>
+                <template for:each={days} for:item="day">
                   <td
-                    key={e.id}
-                    class={e.class}
-                    data-id={e.id}
+                    key={day.id}
+                    class={day.class}
+                    data-id={day.id}
+                    data-type="date"
                     aria-selected="false"
                     tabindex="0"
                     role="gridcell"
                     onkeydown={shiftFocus}
                     onmousedown={selectDate}
                   >
-                    <span class="slds-day">{e.value}</span>
+                    <span class="slds-day" aria-label={day.ariaLabel}
+                      >{day.value}</span
+                    >
                   </td>
                 </template>
               </tr>
