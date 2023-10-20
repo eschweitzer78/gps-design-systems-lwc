@@ -28,8 +28,8 @@
       placeholder={placeholder}
       id="textareaId"
       autocomplete={autocomplete}
-      aria-describedby={computedAriaDescribedBy}
       aria-invalid={isError}
+      aria-describedby={computedAriaDescribedBy}
       oninput={updateValue}
       onblur={validateError}
       onfocus={triggerEvent}
@@ -41,9 +41,10 @@
     </textarea>
 
     <span
-      id="errorMessageBlock"
       if:true={isError}
+      id="errorMessageBlock"
       class="form__error"
+      aria-live="assertive"
       role="alert"
     >
       {errorMessage}
