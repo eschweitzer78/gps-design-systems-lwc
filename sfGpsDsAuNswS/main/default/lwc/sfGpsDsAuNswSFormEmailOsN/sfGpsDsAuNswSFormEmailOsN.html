@@ -1,5 +1,6 @@
 <template>
   <c-sf-gps-ds-au-nsw-s-input-os-n
+    class={_styleClasses.input}
     type="email"
     label={mergedLabel}
     value={elementValue}
@@ -10,6 +11,7 @@
     read-only={_propSetMap.readOnly}
     tab-index={tabIndex}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     placeholder={_propSetMap.placeholder}
     message-when-value-missing={_messageWhenValueMissing}
     message-when-pattern-mismatch={_messageWhenPatternMismatch}
@@ -24,7 +26,6 @@
     autocomplete={_autocomplete}
     data-id={jsonDef.name}
     data-omni-input
-    class={_styleClasses.input}
     onblur={handleBlur}
   >
     <template if:true={_propSetMap.repeat}>
