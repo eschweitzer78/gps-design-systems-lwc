@@ -75,12 +75,12 @@
               for:index="index"
             >
               <!-- decoratedMenu -->
-              <li key={list.key} class={list.liClass}>
+              <li key={list.id} class={list.liClass}>
                 <!-- removed onfocus={handleItemFocus} -->
                 <a
                   if:true={list.displayAsLink}
                   class="rpl-menu__item-link"
-                  href=""
+                  href="#"
                   target={list.target}
                   onclick={handleItemClick}
                   data-menu-index={list.index}
