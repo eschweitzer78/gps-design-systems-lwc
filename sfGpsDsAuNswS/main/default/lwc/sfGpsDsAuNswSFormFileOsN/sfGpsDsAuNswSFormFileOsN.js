@@ -4,6 +4,8 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
+
+import { track } from "lwc";
 import OmniscriptFile from "omnistudio/omniscriptFile";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
@@ -35,8 +37,12 @@ export default class SfGpsDsAuNswSFormFileOsN extends OmniscriptFile {
     return omniGetMergedField(this, this._handleHelpText);
   }
 
-  get computedAriaDescribedBy() {
-    return [
+  @track computedAriaDescribedBy;
+
+  renderedCallback() {
+    if (super.renderedCallback) super.renderedCallback();
+
+    this.computedAriaDescribedBy = [
       this.template.querySelector(".form__help")?.id,
       this.template.querySelector(".form__error")?.id
     ]
