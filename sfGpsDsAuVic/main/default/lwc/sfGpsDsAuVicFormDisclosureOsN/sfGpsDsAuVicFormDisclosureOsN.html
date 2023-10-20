@@ -7,20 +7,6 @@
           <slot name="label"> </slot>
         </label>
 
-        <div if:true={fieldLevelHelp} id="helper" class="hint">
-          {fieldLevelHelp}
-        </div>
-
-        <div
-          if:true={isRealError}
-          class="errors help-block"
-          aria-live="assertive"
-          role="alert"
-          id="errorMessageBlock"
-        >
-          <span>{errorMessage}</span>
-        </div>
-
         <div class="vic-disclosure">
           <div class="vic-disclosure__content">
             <omnistudio-omniscript-formatted-rich-text id="frt" value={_dText}>
@@ -29,7 +15,6 @@
 
           <div class="vic-disclosure__consent">
             <c-sf-gps-ds-au-vic-input-os-n
-              data-omni-input=""
               type="checkbox"
               label={mergedCheckLabel}
               required={_propSetMap.required}
@@ -39,6 +24,7 @@
               message-when-value-missing={_messageWhenValueMissing}
               tab-index={tabIndex}
               form-group-addl-class-name="form-group__no-margin-bottom"
+              data-omni-input
               onchange={handleChange}
             >
             </c-sf-gps-ds-au-vic-input-os-n>
