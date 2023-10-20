@@ -55,111 +55,14 @@ export default class SfGpsDsAuVicInputOsN extends OmniscriptInput {
     });
   }
 
-  get isRealError() {
-    return this.isError && this.errorMessage;
-  }
+  /* original maskedInput widget does a JS update of aria-describedby when validating */
 
-  /* event center */
-  _handleOnBlur(e) {
-    super.validateError(e);
-    this.dispatchEvent(
-      new CustomEvent("internalblur", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnChange(e) {
-    super.triggerEvent(e);
-    this.dispatchEvent(
-      new CustomEvent("internalchange", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnFocus(e) {
-    super.handleFocus(e);
-    this.dispatchEvent(
-      new CustomEvent("internalfocus", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnKeyDown(e) {
-    super.triggerKeyEvents(e);
-    this.dispatchEvent(
-      new CustomEvent("internalkeydown", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnInput(e) {
-    super.triggerInputEvent(e);
-    this.dispatchEvent(
-      new CustomEvent("internalinput", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnKeyPress(e) {
-    this.dispatchEvent(
-      new CustomEvent("internalkeypress", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnKeyUp(e) {
-    super.triggerKeyEvents(e);
-    this.dispatchEvent(
-      new CustomEvent("internalkeyup", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnPaste(e) {
-    this.dispatchEvent(
-      new CustomEvent("internalpaste", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
+  resolveAriaDescribedBy() {
+    return [
+      this.template.querySelector(".hint")?.id,
+      this.template.querySelector(".help-block")?.id
+    ]
+      .filter((item) => item)
+      .join(" ");
   }
 }
