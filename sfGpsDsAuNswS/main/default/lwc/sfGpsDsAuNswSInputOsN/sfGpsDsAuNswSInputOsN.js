@@ -69,6 +69,6 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
   /* original input widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
-    return this.computedAriaDescribedBy();
+    return this.computedAriaDescribedBy;
   }
 }
