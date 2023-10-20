@@ -10,44 +10,34 @@
     </omnistudio-spinner>
   </template>
   <slot>
-    <div class={_containerClasses} aria-labelledby="fileUpload" tabindex="0">
+    <div class={_containerClasses} aria-labelledby="fileUpload">
       <div class="form__group">
         <div class="form__item">
           <label id="fileUpload" class={computedLabelClassName}>
             {mergedLabel}
-            <span if:true={_propSetMap.required}>
+            <span if:true={_propSetMap.required} class="visually-hidden">
               ({allCustomLabelsUtil.OmniRequired})</span
             >
           </label>
+
           <span if:true={_propSetMap.help} id="helper" class="form__help">
             {mergedHelpText}
           </span>
 
           <div class="slds-grid omni-file-input">
-            <template if:true={scriptHeaderDef.isGuestUser}>
-              <lightning-file-upload
-                label=" "
-                name={jsonDef.lwcId}
-                onuploadfinished={handleUploadFinished}
-                multiple
-                data-omni-input
-                record-id={scriptHeaderDef.sOmniScriptId}
-                class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
-              >
-              </lightning-file-upload>
-            </template>
-
-            <template if:false={scriptHeaderDef.isGuestUser}>
-              <lightning-file-upload
-                label=" "
-                name={jsonDef.lwcId}
-                onuploadfinished={handleUploadFinished}
-                multiple
-                data-omni-input
-                class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
-              >
-              </lightning-file-upload>
-            </template>
+            <lightning-file-upload
+              class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+              label=" "
+              name={jsonDef.lwcId}
+              multiple
+              record-id={parentRecordId}
+              aria-invalid={_showValidation}
+              aria-described-by={computedAriaDescribedBy}
+              data-omni-input
+              onuploadfinished={handleUploadFinished}
+              onfocusout={handleFocusOut}
+            >
+            </lightning-file-upload>
           </div>
 
           <p
@@ -63,6 +53,7 @@
       </div>
     </div>
   </slot>
+
   <slot name="files">
     <span id="upload-status" class="slds-assistive-text"
       >{ariaLiveStatusText}</span
@@ -86,9 +77,9 @@
                 <button
                   class="slds-button slds-button_icon"
                   title={item.deleteLabel}
-                  onclick={deleteFile}
                   data-index={index}
                   data-id={item.data}
+                  onclick={deleteFile}
                 >
                   <omnistudio-icon
                     theme={_theme}

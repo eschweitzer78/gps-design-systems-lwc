@@ -34,4 +34,11 @@ export default class SfGpsDsAuNswSFormFileOsN extends OmniscriptFile {
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
   }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this._propSetMap.help,
+      errorMessageBlock: this._showValidation
+    });
+  }
 }
