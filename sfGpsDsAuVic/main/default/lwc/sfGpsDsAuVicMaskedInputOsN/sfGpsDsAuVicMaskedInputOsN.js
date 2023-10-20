@@ -24,11 +24,25 @@ export default class SfGpsDsAuVicMaskedInputOsN extends maskedInput {
     });
   }
 
-  get isRealError() {
-    return this.isError && this.errorMessage;
-  }
-
   get showGrid() {
     return this.static || this.inlineHelp;
+  }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      errorMessageBlock: this.isError,
+      helper: this.fieldLevelHelp
+    });
+  }
+
+  /* original maskedInput widget does a JS update of aria-describedby when validating */
+
+  resolveAriaDescribedBy() {
+    return [
+      this.template.querySelector(".hint")?.id,
+      this.template.querySelector(".help-block")?.id
+    ]
+      .filter((item) => item)
+      .join(" ");
   }
 }
