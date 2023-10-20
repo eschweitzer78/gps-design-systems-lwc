@@ -4,12 +4,13 @@
     class={_styleClasses.input}
     min-length={_propSetMap.minLength}
     max-length={_propSetMap.maxLength}
-    data-id={jsonDef.name}
-    onblur={handleBlur}
     required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
     tab-index={tabIndex}
     value={elementValue}
+    theme={_theme}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     placeholder={_propSetMap.placeholder}
     message-when-value-missing={_messageWhenValueMissing}
     message-when-too-short={_messageWhenTooShort}
@@ -17,7 +18,9 @@
     message-when-bad-input={_messageWhenBadInput}
     required-label={allCustomLabelsUtil.OmniRequired}
     autocomplete={_autocomplete}
+    data-id={jsonDef.name}
     data-omni-input
+    onblur={handleBlur}
   >
     <template if:true={_propSetMap.repeat}>
       <span

@@ -22,14 +22,10 @@ export default class SfGpsDsAuVicTextareaOsN extends OmnistudioTextarea {
     });
   }
 
-  get isRealError() {
-    return this.isError && this.errorMessage;
-  }
-
-  get ariaDescribedBy() {
+  get computedAriaDescribedBy() {
     return computeClass({
-      hint: this.fieldLevelHelp,
-      errorMessageBlock: this.isRealError
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
     });
   }
 }

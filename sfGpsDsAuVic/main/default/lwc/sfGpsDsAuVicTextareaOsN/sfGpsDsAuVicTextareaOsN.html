@@ -23,6 +23,7 @@
             minlength={minLength}
             maxlength={maxLength}
             readonly={readOnly}
+            aria-readonly={readOnly}
             accesskey={accessKey}
             name={name}
             disabled={disabled}
@@ -30,21 +31,20 @@
             placeholder={placeholder}
             id="textareaId"
             autocomplete={autocomplete}
+            aria-invalid={isError}
+            aria-describedby={computedAriaDescribedBy}
             oninput={updateValue}
             onblur={validateError}
             onfocus={triggerEvent}
             onchange={triggerEvent}
             onkeyup={keyCallbacks}
             onkeydown={keyCallbacks}
-            aria-labelledby="textarealabel"
-            aria-describedby={ariaDescribedBy}
-            aria-invalid={isError}
           >
             {_val}
           </textarea>
 
           <div
-            if:true={isRealError}
+            if:true={isError}
             class="errors help-block"
             aria-live="assertive"
             role="alert"
