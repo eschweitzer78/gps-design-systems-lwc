@@ -3,10 +3,10 @@
     <div class={errorClass}>
       <div if:false={isLabelHidden}>
         <label
-          id="combobox-label"
           class={computedLabelClassName}
-          style="width: auto"
           for="comboboxId"
+          id="combobox-label"
+          style="width: auto"
         >
           {label}
           <span if:true={required} class="visually-hidden">
