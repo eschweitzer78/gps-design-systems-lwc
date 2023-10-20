@@ -7,6 +7,7 @@
             if:true={labelVisible}
             data-label="true"
             class={labelClassName}
+            for={inputId}
           >
             <span>{label}</span>
             <slot name="label"> </slot>
@@ -18,9 +19,11 @@
             </div>
           </template>
 
-          <!-- pretext? -->
-
           <div class="field-wrap">
+            <div if:true={pretext}>
+              <span if:true={isCheckbox}>{pretext}</span>
+            </div>
+
             <template if:true={isCheckbox}>
               <label class="rpl-checkbox" for={inputId} data-label="true">
                 <input
@@ -28,7 +31,10 @@
                   tabindex={tabIndex}
                   required={required}
                   aria-invalid={isAriaInvalid}
+                  aria-describedby={computedAriaDescribedBy}
                   disabled={disabled}
+                  readonly={readOnly}
+                  aria-readonly={readOnly}
                   type={type}
                   name={name}
                   id={inputId}
@@ -66,12 +72,14 @@
               >
                 {label}
               </label>
+
               <input
                 class="slds-input"
                 type="text"
                 id={inputId}
-                readonly=""
-                disabled=""
+                readonly
+                disabled
+                aria-describedby={computedAriaDescribedBy}
                 value={inputValue}
                 onchange={triggerEvent}
                 onfocus={triggerEvent}
@@ -80,6 +88,7 @@
                 onkeyup={triggerKeyEvents}
               />
             </div>
+            <!-- isFormula -->
 
             <div if:true={isRadio} class="slds-form-element__control">
               <div class="slds-radio">
@@ -88,7 +97,10 @@
                   type={type}
                   required={required}
                   aria-invalid={isAriaInvalid}
+                  aria-describedby={computedAriaDescribedBy}
                   disabled={disabled}
+                  readonly={readOnly}
+                  aria-readonly={readOnly}
                   name={name}
                   id={inputId}
                   checked={checked}
@@ -102,11 +114,12 @@
                   <span
                     class="slds-form-element__label slds-show--inline slds-p-top_none"
                   >
-                    {label)
+                    {label}
                   </span>
                 </label>
               </div>
             </div>
+            <!-- isRadio -->
 
             <label
               if:true={isToggle}
@@ -120,9 +133,11 @@
               </span>
               <input
                 class="vlocity-input"
+                id={inputId}
                 name={name}
                 tabindex={tabIndex}
                 disabled={disabled}
+                readonly={readOnly}
                 type="checkbox"
                 aria-describedby={inputId}
                 checked={checked}
@@ -133,10 +148,11 @@
               />
               <span class="slds-checkbox_faux_container" aria-live="assertive">
                 <span class="slds-checkbox_faux"> </span>
-                <span class="slds-checkbox_on"> {toggleOnLabel} </span>
-                <span class="slds-checkbox_off"> {toggleOffLabel} </span>
+                <span class="slds-checkbox_on">{toggleOnLabel}</span>
+                <span class="slds-checkbox_off">{toggleOffLabel}</span>
               </span>
             </label>
+            <!-- isToggle -->
 
             <div if:false={static} class={pretextClass}>
               <div if:true={isFile} class="slds-form-element__control">
@@ -152,7 +168,9 @@
                       disabled={disabled}
                       required={required}
                       aria-invalid={isAriaInvalid}
+                      aria-describedby={computedAriaDescribedBy}
                       readonly={readOnly}
+                      aria-readonly={readOnly}
                       aria-labelledby="file-selector-primary-label file-selector-secondary-label"
                       accept={accept}
                       onblur={validateError}
@@ -184,7 +202,7 @@
                 <ul
                   class="slds-size--1-of-1 slds-p-vertical_small slds-file-selector__files"
                 >
-                  <template for:each={_value} for:item="item" for:index="i">
+                  <template for:each={_value} for:item="item" for:index="index">
                     <li
                       key={item.id}
                       class="slds-pill slds-p-around_xx-small slds-m-right_x-small"
@@ -192,7 +210,7 @@
                       {item.filename} ( <i>{item.size}</i> )
                       <span class="slds-file-selector__remove-file-icon">
                         <omnistudio-icon
-                          data-index={i}
+                          data-index={index}
                           theme={theme}
                           baseurl={iconUrl}
                           iconposition="left"
@@ -241,13 +259,14 @@
                   </omnistudio-icon>
                 </span>
               </div>
+              <!-- isFile -->
             </div>
+            <!-- static -->
 
             <input
               if:true={isInput}
               class="vlocity-input"
               id={inputId}
-              name={name}
               tabindex={tabIndex}
               accesskey={accessKey}
               pattern={pattern}
@@ -261,29 +280,22 @@
               disabled={disabled}
               required={required}
               aria-invalid={isAriaInvalid}
+              aria-describedby={computedAriaDescribedBy}
               readonly={readOnly}
+              aria-readonly={readOnly}
               placeholder={placeholder}
               aria-labelledby={ariaLabelledBy}
               aria-label={ariaLabel}
               autocomplete={autocomplete}
+              name={name}
               value={inputValue}
-              onblur={_handleOnBlur}
-              onchange={_handleOnChange}
-              onfocus={_handleOnFocus}
-              onkeydown={_handleKeyDown}
-              onkeypress={_handleKeyPress}
-              onkeyup={_handleKeyUp}
-              oninput={_handleOnInput}
-              onpaste={_handleOnPaste}
-            />
-            <!--
-              onblur={validateError}
               onfocus={handleFocus}
+              onblur={validateError}
               oninput={triggerInputEvent}
               onchange={triggerEvent}
               onkeydown={triggerKeyEvents}
               onkeyup={triggerKeyEvents}
-            />-->
+            />
 
             <input
               if:true={isNumber}
@@ -294,9 +306,43 @@
               max={max}
               step={step}
               type="number"
+              aria-describedby={computedAriaDescribedBy}
               value={_value}
             />
           </div>
+
+          <span
+            if:true={isIconRightClickable}
+            class="slds-icon_container slds-input__icon slds-input__icon_right slds-input__clickable-icon-right"
+            onclick={iconClickCallback}
+          >
+            <omnistudio-icon
+              icon-name={iconNameRight}
+              color={iconColor}
+              theme="slds"
+              size={size}
+              baseurl={iconUrl}
+            >
+            </omnistudio-icon>
+          </span>
+
+          <span
+            if:true={isIconRight}
+            class="slds-icon_container slds-input__icon slds-input__icon_right"
+          >
+            <omnistudio-icon
+              icon-name={iconNameRight}
+              color={iconColor}
+              theme="slds"
+              size={size}
+              baseurl={iconUrl}
+            >
+            </omnistudio-icon>
+          </span>
+
+          <span if:true={posttext} class="slds-form-element__addon">
+            {posttext}
+          </span>
 
           <div
             if:true={isRealError}
