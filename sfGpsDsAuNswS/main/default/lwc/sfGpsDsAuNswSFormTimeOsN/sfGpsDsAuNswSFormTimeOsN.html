@@ -1,5 +1,6 @@
 <template>
   <c-sf-gps-ds-au-nsw-s-input-os-n
+    class={_styleClasses.input}
     type="time"
     label={mergedLabel}
     read-only={_propSetMap.readOnly}
@@ -26,8 +27,8 @@
     required={_propSetMap.required}
     placeholder={_propSetMap.placeholder}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     theme="sfgpsds"
-    class={_styleClasses.input}
     data-omni-input
     onblur={handleBlur}
     onchange={handleChange}
