@@ -28,14 +28,14 @@
       placeholder={placeholder}
       id="textareaId"
       autocomplete={autocomplete}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={isError}
       oninput={updateValue}
       onblur={validateError}
       onfocus={triggerEvent}
       onchange={triggerEvent}
       onkeyup={keyCallbacks}
       onkeydown={keyCallbacks}
-      aria-describedby={computedAriaDescribedBy}
-      aria-invalid={isError}
     >
       {_val}
     </textarea>
