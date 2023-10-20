@@ -1,9 +1,8 @@
 <template>
   <c-sf-gps-ds-au-nsw-s-input-os-n
-    type="date"
-    data-omni-input
-    label={mergedLabel}
     class={_styleClasses.input}
+    type="date"
+    label={mergedLabel}
     required={_propSetMap.required}
     read-only={_propSetMap.readOnly}
     placeholder={_propSetMap.placeholder}
@@ -34,6 +33,7 @@
     max={_max}
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
+    data-omni-input
     onblur={handleOnBlur}
     onchange={handleChange}
   >
