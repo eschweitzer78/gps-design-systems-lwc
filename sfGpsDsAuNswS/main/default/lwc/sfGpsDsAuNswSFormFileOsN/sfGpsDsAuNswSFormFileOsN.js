@@ -36,9 +36,11 @@ export default class SfGpsDsAuNswSFormFileOsN extends OmniscriptFile {
   }
 
   get computedAriaDescribedBy() {
-    return computeClass({
-      helper: this._propSetMap.help,
-      errorMessageBlock: this._showValidation
-    });
+    return [
+      this.template.querySelector(".form__help")?.id,
+      this.template.querySelector(".form__error")?.id
+    ]
+      .filter((item) => item)
+      .join(" ");
   }
 }
