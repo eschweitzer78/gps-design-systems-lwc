@@ -57,21 +57,22 @@
               <input
                 class="sfgpsds-lookup__input vlocity-input sfgpsds-input lookup"
                 type="text"
-                value={lookupDisplay}
                 disabled={_propSetMap.readOnly}
                 required={_propSetMap.required}
-                readonly
+                readonly={_propSetMap.readOnly}
+                aria-controls="lookup"
+                id="lookupId"
+                placeholder={_propSetMap.placeholder}
+                aria-invalid={hasError}
+                value={lookupDisplay}
+                data-omni-input
                 onblur={hideOptions}
                 onkeydown={handleKeyDown}
                 onkeyup={handleKeyUp}
                 onmouseup={showLookup}
-                aria-controls="lookup"
-                id="lookupId"
-                placeholder={_propSetMap.placeholder}
-                data-omni-input
               />
               <div
-                class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpscx-predictive__list"
+                class={computedListboxClassName}
                 role="listbox"
                 id="lookup"
                 onmousedown={handleKeyDown}
@@ -79,7 +80,7 @@
                 onmouseup={handleKeyDown}
               >
                 <ul
-                  class="sfgpsds-listbox sfgpds-listbox_vertical"
+                  class="sfgpsds-listbox sfgpsds-listbox_vertical"
                   role="presentation"
                 >
                   <template
@@ -92,7 +93,7 @@
                       role="presentation"
                       onmouseup={selectOption}
                       onmouseover={mouseOverFocus}
-                      class="sfgps-listbox__item"
+                      class="sfgpsds-listbox__item"
                     >
                       <div
                         class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
@@ -135,6 +136,7 @@
           <omnistudio-spinner
             variant="brand"
             alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+            theme="slds"
             size="small"
           >
           </omnistudio-spinner>
