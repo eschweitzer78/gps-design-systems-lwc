@@ -9,25 +9,40 @@
         >
           <span>
             {label}
-            <span if:true={required}> ({requiredLabel})</span>
-            <!-- TODO: check required graphical cue -->
+            <span if:true={required} class="visually-hidden">
+              ({requiredLabel})</span
+            >
           </span>
           <slot name="label"></slot>
-          <span if:true={fieldLevelHelp} id={helperId} class="form__help">
-            {fieldLevelHelp}
-          </span>
+
+          <template if:false={isCheckbox}>
+            <span if:true={fieldLevelHelp} id={helperId} class="form__help">
+              {fieldLevelHelp}
+            </span>
+          </template>
         </legend>
+
         <template if:false={useLegend}>
           <label class={computedLabelClassName} for={inputId}>
             {label}
-            <span if:true={required}> ({requiredLabel})</span>
+            <span if:true={required} class="visually-hidden">
+              ({requiredLabel})</span
+            >
           </label>
+
           <slot name="label"></slot>
-          <span if:true={fieldLevelHelp} id={helperId} class="form__help">
-            {fieldLevelHelp}
-          </span>
+
+          <template if:false={isCheckbox}>
+            <span if:true={fieldLevelHelp} id={helperId} class="form__help">
+              {fieldLevelHelp}
+            </span>
+          </template>
         </template>
       </template>
+
+      <div if:true={pretext}>
+        <span if:true={isCheckbox}>{pretext}</span>
+      </div>
 
       <template if:true={isCheckbox}>
         <div class="form__checkboxes">
@@ -37,7 +52,10 @@
               tabindex={tabIndex}
               required={required}
               aria-invalid={isAriaInvalid}
+              aria-describedby={computedAriaDescribedBy}
               disabled={disabled}
+              readonly={readOnly}
+              aria-readonly={readOnly}
               type={type}
               name={name}
               id={inputId}
@@ -54,7 +72,9 @@
               data-label="true"
             >
               {label}
-              <span title={requiredLabel}> ({requiredLabel})</span>
+              <span title={requiredLabel} class="visually-hidden">
+                ({requiredLabel})</span
+              >
             </label>
             <label if:false={required} for={inputId} data-label="true">
               {label}
@@ -74,12 +94,14 @@
         >
           {label}
         </label>
+
         <input
           class="slds-input"
           type="text"
           id={inputId}
-          readonly=""
-          disabled=""
+          readonly
+          disabled
+          aria-describedby={computedAriaDescribedBy}
           value={inputValue}
           onchange={triggerEvent}
           onfocus={triggerEvent}
@@ -97,7 +119,10 @@
             type={type}
             required={required}
             aria-invalid={isAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
             disabled={disabled}
+            readonly={readOnly}
+            aria-readonly={readOnly}
             name={name}
             id={inputId}
             checked={checked}
@@ -111,7 +136,7 @@
             <span
               class="slds-form-element__label slds-show--inline slds-p-top_none"
             >
-              {label)
+              {label}
             </span>
           </label>
         </div>
@@ -129,10 +154,13 @@
           {label}
         </span>
         <input
+          id={inputId}
           class="vlocity-input"
           name={name}
           tabindex={tabIndex}
           disabled={disabled}
+          readonly={readOnly}
+          aria-readonly={readOnly}
           type="checkbox"
           aria-describedby={inputId}
           checked={checked}
@@ -142,9 +170,9 @@
           onblur={closeTooltip}
         />
         <span class="slds-checkbox_faux_container" aria-live="assertive">
-          <span class="slds-checkbox_faux"> </span>
-          <span class="slds-checkbox_on"> {toggleOnLabel} </span>
-          <span class="slds-checkbox_off"> {toggleOffLabel} </span>
+          <span class="slds-checkbox_faux"></span>
+          <span class="slds-checkbox_on">{toggleOnLabel}</span>
+          <span class="slds-checkbox_off">{toggleOffLabel}</span>
         </span>
       </label>
       <!-- isToggle -->
@@ -163,7 +191,9 @@
                 disabled={disabled}
                 required={required}
                 aria-invalid={isAriaInvalid}
+                aria-describedby={computedAriaDescribedBy}
                 readonly={readOnly}
+                aria-readonly={readOnly}
                 aria-labelledby="file-selector-primary-label file-selector-secondary-label"
                 accept={accept}
                 onblur={validateError}
@@ -175,7 +205,7 @@
                   class="slds-file-selector__button slds-button slds-button_neutral"
                 >
                   <omnistudio-icon
-                    theme="slds"
+                    theme={theme}
                     baseurl={iconUrl}
                     color={iconColor}
                     parenttype="button"
@@ -195,7 +225,7 @@
           <ul
             class="slds-size--1-of-1 slds-p-vertical_small slds-file-selector__files"
           >
-            <template for:each={_value} for:item="item" for:index="i">
+            <template for:each={_value} for:item="item" for:index="index">
               <li
                 key={item.id}
                 class="slds-pill slds-p-around_xx-small slds-m-right_x-small"
@@ -203,7 +233,7 @@
                 {item.filename} ( <i>{item.size}</i> )
                 <span class="slds-file-selector__remove-file-icon">
                   <omnistudio-icon
-                    data-index={i}
+                    data-index={index}
                     theme={theme}
                     baseurl={iconUrl}
                     iconposition="left"
@@ -273,11 +303,14 @@
         disabled={disabled}
         required={required}
         aria-invalid={isAriaInvalid}
+        aria-describedby={computedAriaDescribedBy}
         readonly={readOnly}
+        aria-readonly={readOnly}
         placeholder={placeholder}
         aria-labelledby={ariaLabelledBy}
         aria-label={ariaLabel}
         autocomplete={autocomplete}
+        name={name}
         value={inputValue}
         onfocus={handleFocus}
         onblur={validateError}
@@ -296,8 +329,42 @@
         max={max}
         step={step}
         type="number"
+        aria-describedby={computedAriaDescribedBy}
         value={_value}
       />
+
+      <span
+        if:true={isIconRightClickable}
+        class="slds-icon_container slds-input__icon slds-input__icon_right slds-input__clickable-icon-right"
+        onclick={iconClickCallback}
+      >
+        <omnistudio-icon
+          icon-name={iconNameRight}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+        >
+        </omnistudio-icon>
+      </span>
+
+      <span
+        if:true={isIconRight}
+        class="slds-icon_container slds-input__icon slds-input__icon_right"
+      >
+        <omnistudio-icon
+          icon-name={iconNameRight}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+        >
+        </omnistudio-icon>
+      </span>
+
+      <span if:true={posttext} class="slds-form-element__addon">
+        {posttext}
+      </span>
 
       <p
         if:true={isError}

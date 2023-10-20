@@ -58,4 +58,17 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
       error: this.isError
     });
   }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      errorMessageBlock: this.isError,
+      helper: this.fieldLevelHelp
+    });
+  }
+
+  /* original input widget does a JS update of aria-describedby when validating */
+
+  resolveAriaDescribedBy() {
+    return this.computedAriaDescribedBy();
+  }
 }

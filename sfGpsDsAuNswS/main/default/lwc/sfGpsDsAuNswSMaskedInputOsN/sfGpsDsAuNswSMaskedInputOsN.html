@@ -3,21 +3,28 @@
     <div class="form__item" style="width: auto">
       <template if:true={labelVisible}>
         <legend if:true={useLegend} class={computedLegendClass} for={inputId}>
-          <span> {label} </span>
-          <span if:true={required} class="visually-hidden">
-            ({requiredLabel})</span
-          >
-          <!-- TODO: not sure required can be depicted -->
+          <span
+            >{label}
+            <span if:true={required} class="visually-hidden">
+              ({requiredLabel})</span
+            >
+          </span>
+
           <span if:true={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
         </legend>
+
         <template if:false={useLegend}>
           <label class={computedLabelClassName} for={inputId}>
             {label}
-            <span if:true={required}> ({requiredLabel})</span>
+            <span if:true={required} class="visually-hidden">
+              ({requiredLabel})</span
+            >
           </label>
+
           <slot name="label"> </slot>
+
           <span if:true={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
@@ -26,17 +33,26 @@
 
       <!-- formula -->
       <div if:true={_isFormula}>
+        <label class={computedLabelClassName} for={inputId}>
+          {label}
+          <span if:true={required} class="visually-hidden">
+            ({requiredLabel})</span
+          >
+        </label>
+
         <input
           class="slds-input"
           type="text"
-          readonly=""
-          disabled=""
+          readonly
+          disabled
           id={inputId}
           value={maskedValue}
         />
       </div>
 
       <div if:false={static} class={pretextClass}>
+        <span if:true={pretext}> {pretext} </span>
+
         <template if:true={isCurrencySFlocale}>
           <input
             if:true={isInput}
@@ -55,9 +71,11 @@
             required={required}
             readonly={readOnly}
             placeholder={placeholder}
+            aria-readonly={readOnly}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
+            aria-invalid={isError}
             value={_currencyVal}
             onfocus={handleFocus}
             onblur={handleBlur}
@@ -90,16 +108,19 @@
             max={max}
             maxlength={maxLength}
             minlength={minLength}
-            type={type}
+            type={inputType}
             inputmode={inputmode}
             disabled={disabled}
             required={required}
             readonly={readOnly}
+            aria-readonly={readOnly}
             placeholder={placeholder}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
             autocomplete={autocomplete}
+            name={name}
+            aria-invalid={isError}
             onfocus={handleFocus}
             onblur={handleBlur}
             oninput={handleInput}
@@ -108,12 +129,16 @@
           />
         </template>
 
+        <span if:true={posttext} class="sfgpsds-form-element__addon">
+          {posttext}
+        </span>
+
         <p
           if:true={isError}
+          id="errorMessageBlock"
           class="form__error"
           aria-live="assertive"
           role="alert"
-          id="errorMessageBlock"
         >
           {errorMessage}
         </p>
