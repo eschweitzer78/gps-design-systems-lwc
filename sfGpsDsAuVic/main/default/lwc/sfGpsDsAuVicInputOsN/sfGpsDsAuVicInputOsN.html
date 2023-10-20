@@ -132,12 +132,13 @@
                 {label}
               </span>
               <input
-                class="vlocity-input"
                 id={inputId}
+                class="vlocity-input"
                 name={name}
                 tabindex={tabIndex}
                 disabled={disabled}
                 readonly={readOnly}
+                aria-readonly={readOnly}
                 type="checkbox"
                 aria-describedby={inputId}
                 checked={checked}
@@ -211,7 +212,7 @@
                       <span class="slds-file-selector__remove-file-icon">
                         <omnistudio-icon
                           data-index={index}
-                          theme={theme}
+                          theme="slds"
                           baseurl={iconUrl}
                           iconposition="left"
                           icon-name="action:delete"
@@ -238,7 +239,7 @@
                   <omnistudio-icon
                     icon-name={iconNameLeft}
                     color={iconColor}
-                    theme={theme}
+                    theme="slds"
                     size={size}
                     baseurl={iconUrl}
                   >
@@ -252,7 +253,7 @@
                   <omnistudio-icon
                     icon-name={iconNameLeft}
                     color={iconColor}
-                    theme={theme}
+                    theme="slds"
                     size={size}
                     baseurl={iconUrl}
                   >

@@ -30,8 +30,8 @@ export default class SfGpsDsAuVicMaskedInputOsN extends maskedInput {
 
   get computedAriaDescribedBy() {
     return computeClass({
-      errorMessageBlock: this.isError,
-      helper: this.fieldLevelHelp
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
     });
   }
 

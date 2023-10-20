@@ -55,6 +55,13 @@ export default class SfGpsDsAuVicInputOsN extends OmniscriptInput {
     });
   }
 
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
+    });
+  }
+
   /* original maskedInput widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
