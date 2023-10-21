@@ -5,7 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
+/* 19-OCT-2023: omni246.5 added a readOnly mapping to the contained typeahead but that attribute apparently
+   does not exist in the original widget anyway. Keeping for alignment, though.  */
+
+import OmniscriptTypeahead from "omnistudio/omniscriptTypeaheadOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsAuVicFormTypeaheadOsN.html";
 
