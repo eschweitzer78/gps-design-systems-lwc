@@ -4,11 +4,8 @@
       if:false={_propSetMap.enableLookup}
       type="text"
       field-level-help={mergedHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
       label={mergedLabel}
-      onblur={handleBlur}
-      onlastitemclick={enterEditMode}
-      onselect={handleSelect}
-      onclear={handleClear}
       icon-name-right="utility:empty"
       options={options}
       placeholder={_placeholder}
@@ -23,11 +20,16 @@
       value={elementValue}
       remote-source={_useRemoteSource}
       disable-filter={_disableFilter}
+      read-only={_propSetMap.readOnly}
       data-omni-input
+      onblur={handleBlur}
+      onlastitemclick={enterEditMode}
+      onselect={handleSelect}
+      onclear={handleClear}
     >
       <button
         if:false={_propSetMap.hideEditButton}
-        class="slds-button slds-button_icon nds-button nds-button_icon"
+        class="slds-button slds-button_icon"
         slot="iconRight"
         aria-expanded={_isEditMode}
         onclick={toggleEditMode}
@@ -41,11 +43,8 @@
         ></omnistudio-icon>
       </button>
 
-      <a
-        slot="lastItem"
-        if:true={_propSetMap.newItemLabel}
-        label={_propSetMap.newItemLabel}
-        >{_propSetMap.newItemLabel}</a
+      <a slot="lastItem" if:true={_newItemLabel} label={_newItemLabel}
+        >{_newItemLabel}</a
       >
     </c-sf-gps-ds-au-vic-typeahead-os-n>
 
@@ -55,8 +54,6 @@
       field-level-help={_handleHelpText}
       field-level-help-position={_propSetMap.helpTextPos}
       label={mergedLabel}
-      onblur={handleBlur}
-      onselect={handleSelect}
       icon-name-right="utility:down"
       options={options}
       placeholder={_placeholder}
@@ -72,7 +69,26 @@
       remote-source
       disable-filter={_disableFilter}
       data-omni-input
+      onblur={handleBlur}
+      onselect={handleSelect}
+      onlookupfocus={handleLookupFocus}
     >
+      <button
+        class="slds-button slds-button_icon"
+        slot="iconRight"
+        aria-expanded={_showLookupOptions}
+        onkeydown={handleLookupButtonKeyDown}
+        onclick={handleLookupButtonDropdownClick}
+      >
+        <omnistudio-icon
+          icon-name="utility:down"
+          extraclass="slds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={allCustomLabelsUtil.OmniTypeaheadDropdownIcon}
+        >
+        </omnistudio-icon>
+      </button>
     </c-sf-gps-ds-au-vic-typeahead-os-n>
 
     <div if:true={errorMessage} class="slds-has-error nds-has-error">

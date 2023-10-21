@@ -5,7 +5,7 @@
         <div class="sfgpsds-label__group">
           <div class="sfgpsds-label__group_label_container">
             <div class="sfgpsds-label__group_label">
-              <label aria-label={label} for="inputId"> {label} </label>
+              <label id="typeaheadLabelId" for="inputId">{label}</label>
             </div>
           </div>
 
@@ -21,10 +21,10 @@
         <div class="sfgpsds-predictive field-wrap">
           <div class={showProgress}>
             <omnistudio-progress-bar
-              if:true={remoteSource}
-              data-progress-bar
+              lwc:if={remoteSource}
               theme="slds"
               size="xx-small"
+              data-progress-bar
             >
             </omnistudio-progress-bar>
           </div>
@@ -33,13 +33,15 @@
             <div
               class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
             >
-              <div class="" role="none">
+              <div class="sfgpsds-combobox__form-element" role="none">
                 <input
-                  class="sfgpsds-typeahead__input typeahead"
+                  class="sfgpsds-input sfgpsds-typeahead__input typeahead"
                   type={type}
                   placeholder={placeholder}
                   disabled={disabled}
                   required={required}
+                  readonly={_readOnly}
+                  aria-readonly={_readOnly}
                   tabindex={tabIndex}
                   maxlength={maxLength}
                   id="inputId"
@@ -49,6 +51,7 @@
                   aria-owns="listboxId"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  aria-describedby={computedAriaDescribedBy}
                   role="combobox"
                   value={_value}
                   onkeyup={searchOptions}
@@ -61,11 +64,11 @@
             </div>
           </div>
 
-          <!-- {getDropdownClasses} to "sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 nsw-form__predictive-list" -->
           <div
-            if:true={isLookupVisible}
-            class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 sfgps-predictive__list"
+            lwc:if={isLookupVisible}
+            class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 sfgpsds-predictive__list"
             id="listboxId"
+            aria-labelledby="typeaheadLabelId"
             role="listbox"
             onmousedown={handleScrollClick}
           >
@@ -73,34 +76,39 @@
               class="sfgpsds-listbox sfgpsds-listbox_vertical"
               role="presentation"
             >
-              <template for:each={internaldata} for:item="e" for:index="s">
+              <template
+                for:each={_sfGpsDsInternalData}
+                for:item="item"
+                for:index="index"
+              >
                 <li
-                  key={e.itrKey}
+                  key={item.itrKey}
                   style={styleProperties.value.styles}
-                  class={e.itemClass}
+                  class="sfgpsds-item"
                   role="presentation"
+                  data-itrkey={item.itrKey}
                 >
                   <div
-                    class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
-                    aria-selected={e.selected}
-                    id={e.itrKey}
-                    role="opion"
-                    data-index={s}
+                    class={item.itemClass}
+                    aria-selected={item.selected}
+                    id={item.itrKey}
+                    role="option"
+                    data-index={index}
                     onclick={selectOption}
                   >
                     <span class="sfgpsds-media__body">
                       <span
                         class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
-                        >{e.name}</span
+                        >{item.name}</span
                       >
                     </span>
                   </div>
                 </li>
               </template>
 
-              <li class={lastItemClass} style={styleProperties.value.styles}>
+              <li class="sfgpsds-item" style={styleProperties.value.styles}>
                 <div
-                  class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
+                  class={_sfGpsDsLastItemClass}
                   role="option"
                   data-index="last-item"
                   onclick={selectOption}
@@ -119,11 +127,11 @@
           </div>
 
           <div
-            if:true={isRealError}
+            if:true={isError}
             class="errors help-block"
+            id="errorMessageBlock"
             aria-live="assertive"
             role="alert"
-            id="errorMessageBlock"
           >
             <span>{errorMessage}</span>
           </div>

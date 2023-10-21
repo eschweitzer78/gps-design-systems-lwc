@@ -5,11 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmnistudioTypeahead from "omnistudio/typeahead";
+import SfGpsDsTypeahead from "c/sfGpsDsTypeaheadOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVicTypeaheadOsN.html";
 
-export default class SfGpsDsAuVicTypeaheadOs extends OmnistudioTypeahead {
+export default class SfGpsDsAuVicTypeaheadOsN extends SfGpsDsTypeahead {
   /* TODO: handle
     messageWhenValueMissing
     messageWhenTooLong
@@ -29,7 +29,10 @@ export default class SfGpsDsAuVicTypeaheadOs extends OmnistudioTypeahead {
     });
   }
 
-  get isRealError() {
-    return this.isError && this.errorMessage;
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
+    });
   }
 }
