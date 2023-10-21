@@ -34,8 +34,23 @@ export default class SfGpsDsAuVicTimePickerOsN extends SfGpsDsTimePickerOsN {
     });
   }
 
-  connectedCallback() {
-    this.hideIcon = "false"; // We always want to show an icon and there is no setting in the wizard for that
-    super.connectedCallback();
+  /* we're doing it mostly via template */
+
+  synchronizeA11y() {
+    console.log("> synchronizeA11y");
+
+    this.inputEle = this.inputEle ? this.inputEle : this.inputElement;
+
+    if (this.inputEle) {
+      this.setElementAttribute(this.inputEle, {
+        "aria-activedescendant": this.aria_activedescendant
+      });
+    }
+
+    console.log("< synchronizeA11y");
+  }
+
+  get _safeOptions() {
+    return this.options || [];
   }
 }
