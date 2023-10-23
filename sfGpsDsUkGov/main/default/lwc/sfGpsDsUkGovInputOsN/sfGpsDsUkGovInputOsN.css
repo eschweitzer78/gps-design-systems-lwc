@@ -23,3 +23,8 @@
 .govuk-checkboxes__item slot {
   display: table-cell;
 }
+
+/* added to align with omnistudio darkenining the background of read only widgets wholesale */
+.govuk-checkboxes__label:before {
+  background: white;
+}

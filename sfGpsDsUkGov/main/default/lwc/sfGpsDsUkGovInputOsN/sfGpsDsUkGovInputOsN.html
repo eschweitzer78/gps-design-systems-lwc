@@ -33,6 +33,7 @@
           {fieldLevelHelp}
         </div> -->
 
+        <!-- added readOnly -->
         <div class="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
             <input
@@ -50,6 +51,7 @@
               onfocus={triggerEvent}
               onblur={validateError}
               aria-describedby={inputId}
+              readonly={readOnly}
             />
             <label
               class="govuk-label govuk-checkboxes__label"
