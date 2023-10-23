@@ -9,8 +9,8 @@
             for={inputId}
           >
             {label}
-            <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
           </label>
+
           <slot name="label"> </slot>
         </h3>
       </div>
@@ -29,8 +29,8 @@
         <input
           class={computedHelperClassName}
           type="text"
-          readonly=""
-          disabled=""
+          readonly
+          disabled
           id={inputId}
           value={maskedValue}
           aria-describedby={inputId}
@@ -50,6 +50,8 @@
           {_errorMessage}
         </p>
 
+        <span if:true={pretext}> {pretext} </span>
+
         <template if:true={isCurrencySFlocale}>
           <input
             if:true={isInput}
@@ -68,9 +70,11 @@
             required={required}
             readonly={readOnly}
             placeholder={placeholder}
+            aria-readonly={readOnly}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
+            aria-invalid={isError}
             value={_currencyVal}
             onfocus={handleFocus}
             onblur={handleBlur}
@@ -104,25 +108,30 @@
             max={max}
             maxlength={maxLength}
             minlength={minLength}
-            type={type}
+            type={inputType}
             inputmode={inputmode}
             disabled={disabled}
             required={required}
             readonly={readOnly}
+            aria-readonly={readOnly}
             placeholder={placeholder}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
             autocomplete={autocomplete}
             name={name}
+            aria-invalid={isError}
             onfocus={handleFocus}
             onblur={handleBlur}
             oninput={handleInput}
             onkeyup={handleKeyup}
             onchange={handleChange}
-            data-omni-input
           />
         </template>
+
+        <span if:true={posttext} class="sfgpsds-form-element__addon">
+          {posttext}
+        </span>
       </div>
 
       <div class="slds-grid">

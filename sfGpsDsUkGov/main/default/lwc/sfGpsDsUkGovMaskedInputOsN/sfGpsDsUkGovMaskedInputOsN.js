@@ -34,6 +34,24 @@ export default class SfGpsDsUkGovMaskedInputOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
+    });
+  }
+
+  /* original maskedInput widget does a JS update of aria-describedby when validating */
+
+  resolveAriaDescribedBy() {
+    return [
+      this.template.querySelector(".govuk-hint")?.id,
+      this.template.querySelector(".govuk-error-message")?.id
+    ]
+      .filter((item) => item)
+      .join(" ");
+  }
+
   @api getErrorDetails() {
     let elt = this.template.querySelector(".govuk-form-group");
 
