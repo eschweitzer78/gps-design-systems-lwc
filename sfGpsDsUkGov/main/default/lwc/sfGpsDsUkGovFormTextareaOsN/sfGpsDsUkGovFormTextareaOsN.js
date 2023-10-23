@@ -11,37 +11,13 @@
       icon-name="utility:info" not supported
 */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsFormTextareaOsN from "c/sfGpsDsFormTextareaOsN";
 import tmpl from "./sfGpsDsUkGovFormTextareaOsN.html";
 
-const DEFAULT_SHOW_CHARACTER_COUNT = false;
-const DEFAULT_LABEL_SIZE = "large";
-
 export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsFormTextareaOsN {
-  @track showCharacterCount = DEFAULT_SHOW_CHARACTER_COUNT;
-  @track labelSize = DEFAULT_LABEL_SIZE;
-
   render() {
     return tmpl;
-  }
-
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.showCharacterCount =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.showCharacterCount !== undefined
-        ? this._propSetMap.showCharacterCount === true ||
-          this._propSetMap.showCharacterCount === "true"
-        : DEFAULT_SHOW_CHARACTER_COUNT;
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
   }
 
   @api getErrorDetails() {

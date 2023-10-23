@@ -5,17 +5,38 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import OmnistudioTextarea from "omnistudio/textarea";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpersOs";
+import {
+  computeClass,
+  normaliseBoolean,
+  formatTemplate
+} from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovTextareaOsN.html";
+
+const CHAR_LIMIT_REMAINING_TMPL = "{charRemaining} characters remaining";
+const CHAR_LIMIT_CHARACTERS_TMPL = "{charCount} characters";
 
 export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
   OmnistudioTextarea,
   "large"
 ) {
-  @api characterLimit;
+  @api characterLimitRemainingTemplate = CHAR_LIMIT_REMAINING_TMPL;
+
+  get _characterLimitRemainingTemplate() {
+    return this.characterLimitRemainingTemplate == null
+      ? CHAR_LIMIT_REMAINING_TMPL
+      : this.characterLimitRemainingTemplate;
+  }
+
+  @api characterLimitCharactersTemplate = CHAR_LIMIT_CHARACTERS_TMPL;
+
+  get _characterLimitCharactersTemplate() {
+    return this.characterLimitCharactersTemplate == null
+      ? CHAR_LIMIT_CHARACTERS_TMPL
+      : this.characterLimitCharactersTemplate;
+  }
 
   _showCharacterCount = true;
   _showCharacterCountOriginal;
@@ -31,8 +52,6 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
       fallbackValue: false
     });
   }
-
-  @track displayCharacterLimit;
 
   render() {
     return tmpl;
@@ -64,9 +83,8 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
 
   get computedAriaDescribedBy() {
     return computeClass({
-      textarealabel: this._showCharacterCount,
+      "character-count-text": this._showCharacterCount,
       helper: this.fieldLevelHelp,
-      "exceeding-characters-error": this.isError,
       errorMessageBlock: this.isError
     });
   }
@@ -79,10 +97,14 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
   get characterCountText() {
     if (this._showCharacterCount) {
       let charCount = this.value.length;
-      // console.log("***showCount***", charCount, this.maxLength);
+
+      let values = {
+        charRemaining: this.maxLength - charCount,
+        charCount: charCount
+      };
       return this.maxLength
-        ? `${this.maxLength - charCount} characters remaining`
-        : `${charCount} characters`;
+        ? formatTemplate(this._characterLimitRemainingTemplate, values)
+        : formatTemplate(this._characterLimitCharactersTemplate, values);
     }
 
     return null;

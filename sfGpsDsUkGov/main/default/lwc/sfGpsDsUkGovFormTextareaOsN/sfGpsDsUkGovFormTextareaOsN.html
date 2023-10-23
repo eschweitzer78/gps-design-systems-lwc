@@ -1,7 +1,9 @@
 <template>
   <c-sf-gps-ds-uk-gov-textarea-os-n
-    show-character-count={showCharacterCount}
-    label-size={labelSize}
+    show-character-count={_propSetMap.showCharacterCount}
+    character-limit-remaining-template={_propSetMap.characterLimitRemainingTemplate}
+    character-limit-characters-template={_propSetMap.characterLimitCharactersTemplate}
+    label-size={_propSetMap.labelSize}
     label={mergedLabel}
     class={_styleClasses.input}
     min-length={_propSetMap.minLength}

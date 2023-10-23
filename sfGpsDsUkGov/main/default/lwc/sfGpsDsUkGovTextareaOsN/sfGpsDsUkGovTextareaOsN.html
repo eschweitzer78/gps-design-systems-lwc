@@ -1,6 +1,6 @@
 <template>
   <div class={computedFormGroupClassName}>
-    <div if:true={labelVisible} data-label="true">
+    <div if:true={labelVisible} data-label="true" for="textAreaId">
       <h3 class="govuk-label-wrapper">
         <label
           id="textarealabel"
@@ -29,6 +29,7 @@
       minlength={minLength}
       maxlength={maxLength}
       readonly={readOnly}
+      aria-readonly={readOnly}
       accesskey={accessKey}
       name={name}
       disabled={disabled}
@@ -36,14 +37,14 @@
       placeholder={placeholder}
       id="textareaId"
       autocomplete={autocomplete}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={isError}
       oninput={updateValue}
       onblur={validateError}
       onfocus={triggerEvent}
+      onchange={triggerEvent}
       onkeyup={handleKeyUp}
       onkeydown={keyCallbacks}
-      aria-labelledby="textarealabel exceeding-characters-info exceeding-characters-error"
-      aria-describedby={computedAriaDescribedBy}
-      aria-invalid={isError}
     >
       {_val}
     </textarea>
