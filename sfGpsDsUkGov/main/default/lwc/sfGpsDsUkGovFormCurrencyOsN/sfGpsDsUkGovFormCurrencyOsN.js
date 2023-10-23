@@ -11,27 +11,12 @@
       icon-name="utility:info" not supported
 */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import OmniscriptCurrency from "omnistudio/omniscriptCurrency";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormCurrencyOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
 export default class SfGpsDsUkGovFormCurrencyOsN extends OmniscriptCurrency {
-  @track labelSize;
-
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
-  }
-
   render() {
     return tmpl;
   }
