@@ -4,7 +4,6 @@ import OmniscriptPubSub from "omnistudio/pubsub";
 import OmniscriptSalesforceUtils from "omnistudio/salesforceUtils";
 
 const I18N = {};
-
 const ELEMENT_SELECTOR = "select";
 const NONE = "none";
 
@@ -180,8 +179,22 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
     });
   }
 
+  get computedSelectClassName() {
+    return computeClass({
+      "govuk-select": true,
+      "govuk-select--error": this.isError
+    });
+  }
+
   get computedDisabled() {
     return this.disabled || this.readOnly;
+  }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
+    });
   }
 
   /* methods */
