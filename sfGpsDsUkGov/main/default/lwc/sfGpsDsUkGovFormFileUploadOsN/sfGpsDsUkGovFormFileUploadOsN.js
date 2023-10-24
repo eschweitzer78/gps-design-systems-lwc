@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import { api, track } from "lwc";
 import OmniscriptFile from "omnistudio/omniscriptFile";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
@@ -27,17 +27,6 @@ export default class SfGpsDsUkGovFormFileUploadOsN extends SfGpsDsUkGovLabelMixi
   OmniscriptFile,
   DEFAULT_LABEL_SIZE
 ) {
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
-  }
-
   render() {
     return tmpl;
   }
@@ -61,6 +50,19 @@ export default class SfGpsDsUkGovFormFileUploadOsN extends SfGpsDsUkGovLabelMixi
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
+  }
+
+  @track computedAriaDescribedBy;
+
+  renderedCallback() {
+    if (super.renderedCallback) super.renderedCallback();
+
+    this.computedAriaDescribedBy = [
+      this.template.querySelector(".govuk-hint")?.id,
+      this.template.querySelector(".govuk-error-message")?.id
+    ]
+      .filter((item) => item)
+      .join(" ");
   }
 
   @api
