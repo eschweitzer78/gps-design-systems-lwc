@@ -19,6 +19,7 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
   "large"
 ) {
   @api fieldLabel;
+  @api hideFormGroup = false;
 
   render() {
     return tmpl;
@@ -27,7 +28,7 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": !this.hideFormGroup,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group--error": this.isError && !this.hideFormGroup
     });
   }
 

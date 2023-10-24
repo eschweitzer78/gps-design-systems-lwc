@@ -20,6 +20,8 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
   OmnistudioDatePicker,
   "large"
 ) {
+  @api hideFormGroup;
+
   @api dayLabel = "Day";
   @track dayValue = "";
   @track hasDayError = false;
@@ -43,8 +45,8 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
 
   get computedFormGroupClass() {
     return computeClass({
-      "govuk-form-group": true,
-      "govuk-form-group--error": this.hasAnyError
+      "govuk-form-group": !this.hideFormGroup,
+      "govuk-form-group--error": this.hasAnyError && !this.hideFormGroup
     });
   }
 

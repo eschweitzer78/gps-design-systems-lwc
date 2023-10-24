@@ -18,7 +18,7 @@
   "sfGpsDsUkGovDatePickerOsN/date-input": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
-  "sfGpsDsUkGovDatetimePickerOsN/label": [
+  "sfGpsDsUkGovDatetimePickerOsN/date-time": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
   ],
   "sfGpsDsUkGovDetails/details": [

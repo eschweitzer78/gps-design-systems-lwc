@@ -10,6 +10,8 @@ import OmniscriptDateTime from "omnistudio/omniscriptDateTime";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormDateTimeOsN.html";
 
+const DEBUG = false;
+
 export default class SfGpsDsUkGovFormDateTimeOsN extends OmniscriptDateTime {
   render() {
     return tmpl;
@@ -31,10 +33,10 @@ export default class SfGpsDsUkGovFormDateTimeOsN extends OmniscriptDateTime {
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 

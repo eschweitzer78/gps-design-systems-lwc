@@ -35,6 +35,12 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
     });
   }
 
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp
+    });
+  }
+
   get timeEl() {
     if (!this._timeEl) {
       this._timeEl = this.template.querySelector(TIME_SELECTOR);
