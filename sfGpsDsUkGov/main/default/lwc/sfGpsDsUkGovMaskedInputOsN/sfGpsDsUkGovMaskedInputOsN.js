@@ -12,9 +12,12 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 
 import tmpl from "./sfGpsDsUkGovMaskedInputOsN.html";
 
+const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
+const DEFAULT_LABEL_SIZE = "large";
+
 export default class SfGpsDsUkGovMaskedInputOsN extends SfGpsDsUkGovLabelMixin(
   OmniscriptMaskedInput,
-  "large"
+  DEFAULT_LABEL_SIZE
 ) {
   render() {
     return tmpl;
@@ -27,7 +30,7 @@ export default class SfGpsDsUkGovMaskedInputOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedInputError() {
+  get computedInputClassName() {
     return computeClass({
       "govuk-input": true,
       "govuk-input--error": this.isError
@@ -53,7 +56,7 @@ export default class SfGpsDsUkGovMaskedInputOsN extends SfGpsDsUkGovLabelMixin(
   }
 
   @api getErrorDetails() {
-    let elt = this.template.querySelector(".govuk-form-group");
+    let elt = this.template.querySelector(ERROR_ID_SELECTOR);
 
     return elt
       ? {

@@ -1,18 +1,15 @@
 <template>
-  <div if:false={isCustomLwc} class={errorClass}>
-    <div class={computedFormGroupClassName}>
+  <div if:false={isCustomLwc}>
+    <div
+      id="sf-gps-ds-uk-gov-masked-input-form-group"
+      data-sf-gps-uk-gov-error-input
+      class={computedFormGroupClassName}
+    >
       <div if:true={labelVisible} data-label="true">
         <h3 class="govuk-label-wrapper">
-          <label
-            class={computedLabelClassName}
-            style="width: auto"
-            for={inputId}
-          >
-            {label}
-          </label>
-
-          <slot name="label"> </slot>
+          <label class={computedLabelClassName} for={inputId}> {label} </label>
         </h3>
+        <slot name="label"> </slot>
       </div>
 
       <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
@@ -27,14 +24,13 @@
         </label>
 
         <input
-          class={computedHelperClassName}
+          class="govuk-input"
           type="text"
           readonly
           disabled
           id={inputId}
           value={maskedValue}
-          aria-describedby={inputId}
-          data-omni-input
+          aria-describedby={computedAriaDescribedBy}
         />
       </div>
 
@@ -50,7 +46,7 @@
           {_errorMessage}
         </p>
 
-        <span if:true={pretext}> {pretext} </span>
+        <span if:true={pretext} class={pretextClass}>{pretext}</span>
 
         <template if:true={isCurrencySFlocale}>
           <input
@@ -99,7 +95,7 @@
 
           <input
             if:true={isInput}
-            class={computedInputError}
+            class={computedInputClassName}
             id={inputId}
             tabindex={tabIndex}
             accesskey={accessKey}

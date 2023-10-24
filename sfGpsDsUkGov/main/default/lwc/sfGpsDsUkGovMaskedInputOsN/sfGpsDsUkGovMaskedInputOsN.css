@@ -3,7 +3,7 @@
 
 /* repeat icons */
 
-[data-label="true"] .govuk-label-wrapper {
+[data-label="true"] {
   display: table;
 }
 
