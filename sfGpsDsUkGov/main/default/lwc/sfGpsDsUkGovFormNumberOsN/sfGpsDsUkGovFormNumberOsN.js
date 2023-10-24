@@ -11,27 +11,17 @@
       icon-name="utility:info" not supported
 */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import OmniscriptNumber from "omnistudio/omniscriptNumber";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormNumberOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
+const DEBUG = false;
 
-export default class SfGpsDsUkGovFormNumberOsN extends OmniscriptNumber {
-  @track labelSize = DEFAULT_LABEL_SIZE;
-
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
-  }
-
+export default class SfGpsDsUkGovFormNumberOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptNumber
+) {
   render() {
     return tmpl;
   }
@@ -52,10 +42,10 @@ export default class SfGpsDsUkGovFormNumberOsN extends OmniscriptNumber {
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 
