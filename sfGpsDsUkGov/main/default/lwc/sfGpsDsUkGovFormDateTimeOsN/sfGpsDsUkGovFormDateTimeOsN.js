@@ -7,12 +7,15 @@
 
 import { api } from "lwc";
 import OmniscriptDateTime from "omnistudio/omniscriptDateTime";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormDateTimeOsN.html";
 
 const DEBUG = false;
 
-export default class SfGpsDsUkGovFormDateTimeOsN extends OmniscriptDateTime {
+export default class SfGpsDsUkGovFormDateTimeOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptDateTime
+) {
   render() {
     return tmpl;
   }
