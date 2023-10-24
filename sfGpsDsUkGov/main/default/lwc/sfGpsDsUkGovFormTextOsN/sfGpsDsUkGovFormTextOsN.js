@@ -5,17 +5,16 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-/* notes
-      field-level-help-position={_propSetMap.helpTextPos} not supported
-      required-label={allCustomLabelsUtil.OmniRequired} not suppported
-      icon-name="utility:info" not supported
-*/
-
 import { api } from "lwc";
 import OmniscriptText from "omnistudio/omniscriptText";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormTextOsN.html";
-export default class SfGpsDsUkGovFormTextOsN extends OmniscriptText {
+
+const DEBUG = false;
+export default class SfGpsDsUkGovFormTextOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptText
+) {
   render() {
     return tmpl;
   }
@@ -40,10 +39,10 @@ export default class SfGpsDsUkGovFormTextOsN extends OmniscriptText {
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 
