@@ -13,9 +13,14 @@
 
 import { api } from "lwc";
 import SfGpsDsFormTextareaOsN from "c/sfGpsDsFormTextareaOsN";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormTextareaOsN.html";
 
-export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsFormTextareaOsN {
+const DEBUG = false;
+
+export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  SfGpsDsFormTextareaOsN
+) {
   render() {
     return tmpl;
   }
@@ -28,10 +33,10 @@ export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsFormTextareaOsN 
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 
