@@ -21,9 +21,11 @@ const MODE_MANUAL = "manual";
 const DEFAULT_STATE = "NSW";
 const DEFAULT_COUNTRY = "Australia";
 
+const DEFAULT_LABEL_SIZE = "large";
+
 export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLabelMixin(
   OmniscriptTypeahead,
-  "small"
+  DEFAULT_LABEL_SIZE
 ) {
   @api street;
   @api suburb;
@@ -45,6 +47,17 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
   @track elementValueLabel;
   @track elementValueValue;
   @track elementValueStatus = STATUS_TYPING;
+
+  initCompVariables() {
+    super.initCompVariables();
+
+    this.labelSize =
+      this.jsonDef &&
+      this._propSetMap &&
+      this._propSetMap.labelSize !== undefined
+        ? this._propSetMap.labelSize
+        : DEFAULT_LABEL_SIZE;
+  }
 
   // EVENT HANDLING
 
@@ -470,13 +483,6 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
     return computeClass({
       "govuk-form-group": true,
       "govuk-form-group--error": this._propSetMap.required //this.isError
-    });
-  }
-
-  get computedLabelClassName() {
-    return computeClass({
-      "govuk-label": true,
-      "govuk-label--s": true
     });
   }
 

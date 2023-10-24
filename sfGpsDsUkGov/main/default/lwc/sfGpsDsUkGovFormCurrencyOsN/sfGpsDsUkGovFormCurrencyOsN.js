@@ -13,10 +13,13 @@
 
 import { api } from "lwc";
 import OmniscriptCurrency from "omnistudio/omniscriptCurrency";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormCurrencyOsN.html";
 
-export default class SfGpsDsUkGovFormCurrencyOsN extends OmniscriptCurrency {
+export default class SfGpsDsUkGovFormCurrencyOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptCurrency
+) {
   render() {
     return tmpl;
   }
