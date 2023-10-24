@@ -1,20 +1,24 @@
 <template>
   <c-sf-gps-ds-uk-gov-select-os-n
+    class={_styleClasses.input}
     options={_realtimeOptions}
     label={mergedLabel}
-    class={_styleClasses.input}
     required={_propSetMap.required}
     required-label={allCustomLabelsUtil.OmniRequired}
     tab-index={tabIndex}
-    onchange={handleChange}
+    theme="sfgpsds"
     value={elementValue}
     field-level-help={mergedHelpText}
-    data-refresh={refresh}
+    field-level-help-position={_propSetMap.helpTextPos}
     read-only={_readOnly}
+    searchable={searchable}
     disabled={_readOnly}
+    label-classes={labelClasses}
+    message-when-value-missing={sfGpsDsMessageWhenValueMissing}
+    data-refresh={refresh}
     data-show-lookup="true"
-    message-when-value-missing={_messageWhenValueMissing}
     data-omni-input
+    onchange={handleChange}
   >
     <template if:true={_propSetMap.repeat}>
       <span

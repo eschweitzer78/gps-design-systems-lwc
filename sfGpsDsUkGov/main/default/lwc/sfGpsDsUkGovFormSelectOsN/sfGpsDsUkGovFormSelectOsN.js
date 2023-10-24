@@ -11,27 +11,15 @@
   theme={_theme} not supported
 */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import OmniscriptSelect from "omnistudio/omniscriptSelect";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormSelectOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
-export default class SfGpsDsUkGovFormSelectOsN extends OmniscriptSelect {
-  @track labelSize = DEFAULT_LABEL_SIZE;
-
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
-  }
-
+export default class SfGpsDsUkGovFormSelectOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptSelect
+) {
   render() {
     return tmpl;
   }
