@@ -8,14 +8,14 @@
 import { api } from "lwc";
 import SfGpsDsFormDisclosureOsN from "c/sfGpsDsFormDisclosureOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormDisclosureOsN.html";
 
 const DEFAULT_LABEL_SIZE = "large";
 const DEBUG = false;
 
-export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsOmniErrorMsgConfigMixin(
-  SfGpsDsUkGovLabelMixin(SfGpsDsFormDisclosureOsN, DEFAULT_LABEL_SIZE)
+export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsUkGovLabelMixin(
+  SfGpsDsFormDisclosureOsN,
+  DEFAULT_LABEL_SIZE
 ) {
   render() {
     return tmpl;
