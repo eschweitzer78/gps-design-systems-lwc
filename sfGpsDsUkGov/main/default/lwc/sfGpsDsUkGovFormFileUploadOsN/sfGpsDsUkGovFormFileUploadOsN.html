@@ -14,9 +14,6 @@
       <div class={computedFormGroupClassName}>
         <label class={computedLabelClassName} style="width: auto" for="frt">
           {mergedLabel}
-          <!--
-            <span if:true={_propSetMap.required} class="sr-only"> ({allCustomLabelsUtil.OmniRequired})</span>
-          -->
         </label>
 
         <div if:true={_propSetMap.help} id="helper" class="govuk-hint">
@@ -35,34 +32,24 @@
         </p>
 
         <div class="slds-grid omni-file-input">
-          <template if:true={scriptHeaderDef.isGuestUser}>
-            <lightning-file-upload
-              label={computedLabelClassName}
-              name={jsonDef.lwcId}
-              onuploadfinished={handleUploadFinished}
-              multiple
-              data-omni-input
-              record-id={scriptHeaderDef.sOmniScriptId}
-              class={computedFileUploadError}
-            >
-            </lightning-file-upload>
-          </template>
-
-          <template if:false={scriptHeaderDef.isGuestUser}>
-            <lightning-file-upload
-              label=" "
-              name={jsonDef.lwcId}
-              onuploadfinished={handleUploadFinished}
-              multiple
-              data-omni-input
-              class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
-            >
-            </lightning-file-upload>
-          </template>
+          <lightning-file-upload
+            class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+            label=" "
+            name={jsonDef.lwcId}
+            multiple
+            record-id={parentRecordId}
+            aria-invalid={_showValidation}
+            aria-described-by={computedAriaDescribedBy}
+            data-omni-input
+            onuploadfinished={handleUploadFinished}
+            onfocusout={handleFocusOut}
+          >
+          </lightning-file-upload>
         </div>
       </div>
     </div>
   </slot>
+
   <slot name="files">
     <span id="upload-status" class="slds-assistive-text"
       >{ariaLiveStatusText}</span
@@ -86,9 +73,9 @@
                 <button
                   class="slds-button slds-button_icon"
                   title={item.deleteLabel}
-                  onclick={deleteFile}
                   data-index={index}
                   data-id={item.data}
+                  onclick={deleteFile}
                 >
                   <omnistudio-icon
                     theme={_theme}
