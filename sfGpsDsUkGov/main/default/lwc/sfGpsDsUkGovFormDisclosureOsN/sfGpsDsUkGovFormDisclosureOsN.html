@@ -2,9 +2,6 @@
   <div class="govuk-form-group">
     <label class={computedLabelClassName} style="width: auto" for="frt">
       {mergedLabel}
-      <!--
-        <span if:true={_propSetMap.required} class="sr-only"> ({allCustomLabelsUtil.OmniRequired})</span>
-      -->
     </label>
 
     <div class="govuk-disclosure">
@@ -15,17 +12,18 @@
 
       <div class="govuk-disclosure__consent">
         <c-sf-gps-ds-uk-gov-input-os-n
-          data-omni-input
-          hide-form-group="true"
           type="checkbox"
           label={mergedCheckLabel}
+          label-size={_propSetMap.labelSize}
           required={_propSetMap.required}
           required-label={allCustomLabelsUtil.OmniRequired}
           theme={_theme}
           checked={elementValue}
-          message-when-value-missing={_messageWhenValueMissing}
+          message-when-value-missing={sfGpsDsMessageWhenValueMissing}
           tab-index={tabIndex}
+          data-omni-input
           onchange={handleChange}
+          hide-form-group="true"
         >
         </c-sf-gps-ds-uk-gov-input-os-n>
       </div>

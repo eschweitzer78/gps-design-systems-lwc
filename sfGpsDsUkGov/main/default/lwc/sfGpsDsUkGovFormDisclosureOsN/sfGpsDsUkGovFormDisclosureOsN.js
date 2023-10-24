@@ -8,25 +8,15 @@
 import { api } from "lwc";
 import SfGpsDsFormDisclosureOsN from "c/sfGpsDsFormDisclosureOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormDisclosureOsN.html";
 
 const DEFAULT_LABEL_SIZE = "large";
+const DEBUG = false;
 
-export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormDisclosureOsN,
-  DEFAULT_LABEL_SIZE
+export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  SfGpsDsUkGovLabelMixin(SfGpsDsFormDisclosureOsN, DEFAULT_LABEL_SIZE)
 ) {
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
-  }
-
   render() {
     return tmpl;
   }
@@ -39,10 +29,10 @@ export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsUkGovLabelMixi
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 
