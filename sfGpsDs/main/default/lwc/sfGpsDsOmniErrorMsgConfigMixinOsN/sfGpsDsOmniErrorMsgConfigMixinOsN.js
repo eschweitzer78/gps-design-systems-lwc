@@ -14,9 +14,9 @@ let SfGpsDsOmniErrorMsgConfigMixin = (base) =>
       );
     }
 
-    get sfGpsDsMessageWhenPatternMismatchng() {
+    get sfGpsDsMessageWhenPatternMismatch() {
       return (
-        this._propSetMap.messageWhenValueMissing ||
+        this._propSetMap.messageWhenPatternMismatch ||
         this._messageWhenPatternMismatch
       );
     }

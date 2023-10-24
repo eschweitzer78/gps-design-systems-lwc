@@ -11,27 +11,15 @@
       icon-name="utility:info" not supported
 */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import OmniscriptEmail from "omnistudio/omniscriptEmail";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormEmailOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
-export default class SfGpsDsUkGovFormEmailOsN extends OmniscriptEmail {
-  @track labelSize = DEFAULT_LABEL_SIZE;
-
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
-  }
-
+export default class SfGpsDsUkGovFormEmailOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptEmail
+) {
   render() {
     return tmpl;
   }

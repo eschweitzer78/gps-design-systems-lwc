@@ -13,7 +13,6 @@
             for={inputId}
           >
             {label}
-            <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
           </label>
         </h3>
         <slot name="label"></slot>
@@ -26,13 +25,11 @@
         </div>
       </template>
 
-      <!-- pretext? -->
+      <div if:true={pretext}>
+        <span if:true={isCheckbox}>{pretext}</span>
+      </div>
 
       <template if:true={isCheckbox}>
-        <!-- <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
-          {fieldLevelHelp}
-        </div> -->
-
         <!-- added readOnly -->
         <div class="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
@@ -66,7 +63,6 @@
                 title={requiredLabel}
               >
               </span>
-              <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
             </label>
             <slot name="label"></slot>
           </div>
@@ -80,21 +76,23 @@
         >
           {label}
         </label>
+
         <input
           class={computedInputError}
           type="text"
           id={inputId}
-          readonly=""
-          disabled=""
+          readonly
+          disabled
+          aria-describedby={computedAriaDescribedBy}
           value={inputValue}
           onchange={triggerEvent}
           onfocus={triggerEvent}
           onblur={triggerEvent}
           onkeydown={triggerKeyEvents}
           onkeyup={triggerKeyEvents}
-          aria-describedby={inputId}
         />
       </div>
+      <!-- isFormula -->
 
       <div if:true={isRadio} class="govuk-radios">
         <div class="govuk-radios">
@@ -103,7 +101,10 @@
             type={type}
             required={required}
             aria-invalid={isAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
             disabled={disabled}
+            readonly={readOnly}
+            aria-readonly={readOnly}
             name={name}
             id={inputId}
             checked={checked}
@@ -122,6 +123,7 @@
           </label>
         </div>
       </div>
+      <!-- isRadio -->
 
       <label
         if:true={isToggle}
@@ -135,9 +137,11 @@
         </span>
         <input
           class="govuk-checkboxes__input"
+          id={inputId}
           name={name}
           tabindex={tabIndex}
           disabled={disabled}
+          readonly={readOnly}
           type="checkbox"
           aria-describedby={inputId}
           checked={checked}
@@ -147,11 +151,12 @@
           onblur={closeTooltip}
         />
         <span class="slds-checkbox_faux_container" aria-live="assertive">
-          <span class="slds-checkbox_faux"> </span>
-          <span class="slds-checkbox_on"> {toggleOnLabel} </span>
-          <span class="slds-checkbox_off"> {toggleOffLabel} </span>
+          <span class="slds-checkbox_faux"></span>
+          <span class="slds-checkbox_on">{toggleOnLabel}</span>
+          <span class="slds-checkbox_off">{toggleOffLabel}</span>
         </span>
       </label>
+      <!-- isToggle -->
 
       <div if:false={static} class={pretextClass}>
         <div if:true={isFile} class="slds-form-element__control">
@@ -167,7 +172,9 @@
                 disabled={disabled}
                 required={required}
                 aria-invalid={isAriaInvalid}
+                aria-describedby={computedAriaDescribedBy}
                 readonly={readOnly}
+                aria-readonly={readOnly}
                 aria-labelledby="file-selector-primary-label file-selector-secondary-label"
                 accept={accept}
                 onblur={validateError}
@@ -199,7 +206,7 @@
           <ul
             class="slds-size--1-of-1 slds-p-vertical_small slds-file-selector__files"
           >
-            <template for:each={_value} for:item="item" for:index="i">
+            <template for:each={_value} for:item="item" for:index="index">
               <li
                 key={item.id}
                 class="slds-pill slds-p-around_xx-small slds-m-right_x-small"
@@ -207,7 +214,7 @@
                 {item.filename} ( <i>{item.size}</i> )
                 <span class="slds-file-selector__remove-file-icon">
                   <omnistudio-icon
-                    data-index={i}
+                    data-index={index}
                     theme={theme}
                     baseurl={iconUrl}
                     iconposition="left"
@@ -256,7 +263,9 @@
             </omnistudio-icon>
           </span>
         </div>
+        <!-- isFile -->
       </div>
+      <!-- static -->
 
       <p
         if:true={isError}
@@ -285,11 +294,14 @@
         disabled={disabled}
         required={required}
         aria-invalid={isAriaInvalid}
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledBy}
+        aria-describedby={computedAriaDescribedBy}
         readonly={readOnly}
+        aria-readonly={readOnly}
         placeholder={placeholder}
+        aria-labelledby={ariaLabelledBy}
+        aria-label={ariaLabel}
         autocomplete={autocomplete}
+        name={name}
         value={inputValue}
         onfocus={handleFocus}
         onblur={validateError}
@@ -308,8 +320,42 @@
         max={max}
         step={step}
         type="number"
+        aria-describedby={computedAriaDescribedBy}
         value={_value}
       />
+
+      <span
+        if:true={isIconRightClickable}
+        class="slds-icon_container slds-input__icon slds-input__icon_right slds-input__clickable-icon-right"
+        onclick={iconClickCallback}
+      >
+        <omnistudio-icon
+          icon-name={iconNameRight}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+        >
+        </omnistudio-icon>
+      </span>
+
+      <span
+        if:true={isIconRight}
+        class="slds-icon_container slds-input__icon slds-input__icon_right"
+      >
+        <omnistudio-icon
+          icon-name={iconNameRight}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+        >
+        </omnistudio-icon>
+      </span>
+
+      <span if:true={posttext} class="slds-form-element__addon">
+        {posttext}
+      </span>
 
       <div class="slds-grid">
         <div if:true={static} class="slds-form-element__static">
@@ -380,7 +426,7 @@
     read-only={readOnly}
     format={format}
     locale-format={dateTimeLocaleFormat}
-    locale-format-invali-error={localeFormatInvalidError}
+    locale-format-invalid-error={localeFormatInvalidError}
     disabled={disabled}
     required={required}
     required-label={requiredLabel}
