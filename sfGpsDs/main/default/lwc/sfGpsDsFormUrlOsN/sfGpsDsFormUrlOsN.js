@@ -6,12 +6,15 @@
  */
 
 import OmniscriptUrl from "omnistudio/omniscriptUrl";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 
 /* replacement pattern for URL as original does not perform well IMHO */
 const PATTERN =
   "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?:(?:[a-zA-Z\\u00a1-\\uffff0-9]+-?)*[a-zA-Z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-zA-Z\\u00a1-\\uffff0-9]+-?)*[a-zA-Z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-zA-Z\\u00a1-\\uffff]{2,}))(?::\\d{2,5})?(?:\\/[^\\s]*)?";
 
-export default class SfGpsDsFormUrlOsN extends OmniscriptUrl {
+export default class SfGpsDsFormUrlOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptUrl
+) {
   get _sfGpsDsPattern() {
     return PATTERN;
   }

@@ -6,9 +6,12 @@
  */
 
 import OmniscriptTextarea from "omnistudio/omniscriptTextarea";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 
-export default class SfGpsDsFormTextAreaOsN extends OmniscriptTextarea {
+export default class SfGpsDsFormTextAreaOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptTextarea
+) {
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.label);
   }
