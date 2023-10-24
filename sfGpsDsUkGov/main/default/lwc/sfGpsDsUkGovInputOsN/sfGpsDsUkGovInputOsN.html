@@ -41,7 +41,10 @@
               tabindex={tabIndex}
               required={required}
               aria-invalid={isAriaInvalid}
+              aria-describedby={computedAriaDescribedBy}
               disabled={disabled}
+              readonly={readOnly}
+              aria-readonly={readOnly}
               type={type}
               name={name}
               id={inputId}
@@ -50,8 +53,6 @@
               onchange={triggerInputEvent}
               onfocus={triggerEvent}
               onblur={validateError}
-              aria-describedby={inputId}
-              readonly={readOnly}
             />
             <label
               class="govuk-label govuk-checkboxes__label"

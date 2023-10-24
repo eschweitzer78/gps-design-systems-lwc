@@ -4,15 +4,15 @@
 
 /* repeat icons */
 
-[data-label] {
+[data-label="true"] .govuk-label-wrapper {
   display: table;
 }
 
-[data-label] .govuk-label-wrapper {
+[data-label="true"] .govuk-label {
   margin-right: 0.5rem;
 }
 
-[data-label] slot {
+[data-label="true"] slot {
   display: table-cell;
 }
 

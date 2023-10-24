@@ -8,9 +8,11 @@
       class="govuk-fieldset"
       role="group"
       aria-describedby={computedAriaDescribedBy}
+      onblur={handleDateBlur}
+      onfocus={handleDateFocus}
     >
       <legend if:true={label} class={computedLegendClassName}>
-        <h1 class="govuk-fieldset__heading">{label}</h1>
+        <h3 class="govuk-fieldset__heading">{label}</h3>
         <slot name="label"></slot>
       </legend>
 
@@ -55,8 +57,6 @@
               aria-describedby="errorMessageBlock"
               onkeyup={handleDayChange}
               onchange={handleDayChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
             />
           </div>
         </div>
@@ -87,8 +87,6 @@
               aria-describedby="errorMessageBlock"
               onkeyup={handleMonthChange}
               onchange={handleMonthChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
             />
           </div>
         </div>
@@ -119,8 +117,6 @@
               aria-describedby="errorMessageBlock"
               onkeyup={handleYearChange}
               onchange={handleYearChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
             />
           </div>
         </div>

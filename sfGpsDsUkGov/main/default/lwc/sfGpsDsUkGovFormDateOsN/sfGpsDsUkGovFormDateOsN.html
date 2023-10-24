@@ -1,9 +1,9 @@
 <template>
   <c-sf-gps-ds-uk-gov-input-os-n
-    type="date"
-    data-omni-input
-    label={mergedLabel}
     class={_styleClasses.input}
+    type="date"
+    label={mergedLabel}
+    label-size={_propSetMap.labelSize}
     required={_propSetMap.required}
     read-only={_propSetMap.readOnly}
     placeholder={_propSetMap.placeholder}
@@ -21,19 +21,20 @@
     pick-year-label={allCustomLabelsUtil.OmniPickYr}
     today-label={allCustomLabelsUtil.OmniToday}
     required-label={allCustomLabelsUtil.OmniRequired}
-    message-when-value-missing={_messageWhenValueMissing}
-    message-when-pattern-mismatch={_messageWhenPatternMismatch}
-    message-when-too-short={_messageWhenTooShort}
-    message-when-too-long={_messageWhenTooLong}
-    message-when-bad-input={_messageWhenBadInput}
-    message-when-range-overflow={_messageWhenRangeOverflow}
-    message-when-range-underflow={_messageWhenRangeUnderflow}
-    message-when-step-mismatch={_messageWhenStepMismatch}
-    message-when-type-mismatch={_messageWhenTypeMismatch}
+    message-when-value-missing={sfGpsDsMessageWhenValueMissing}
+    message-when-pattern-mismatch={sfGpsDsMessageWhenPatternMismatch}
+    message-when-too-short={sfGpsDsMessageWhenTooShort}
+    message-when-too-long={sfGpsDsMessageWhenTooLong}
+    message-when-bad-input={sfGpsDsMessageWhenBadInput}
+    message-when-range-overflow={sfGpsDsMessageWhenRangeOverflow}
+    message-when-range-underflow={sfGpsDsMessageWhenRangeUnderflow}
+    message-when-step-mismatch={sfGpsDsMessageWhenStepMismatch}
+    message-when-type-mismatch={sfGpsDsMessageWhenTypeMismatch}
     min={_min}
     max={_max}
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
+    data-omni-input
     onblur={handleOnBlur}
     onchange={handleChange}
   >

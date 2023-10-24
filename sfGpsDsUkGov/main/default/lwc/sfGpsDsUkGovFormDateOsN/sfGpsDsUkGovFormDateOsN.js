@@ -13,10 +13,13 @@
 
 import { api } from "lwc";
 import OmniscriptDate from "omnistudio/omniscriptDate";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormDateOsN.html";
 
-export default class SfGpsDsUkGovFormDateOsN extends OmniscriptDate {
+export default class SfGpsDsUkGovFormDateOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptDate
+) {
   render() {
     return tmpl;
   }
