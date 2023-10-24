@@ -6,11 +6,11 @@
  */
 
 import { api } from "lwc";
-import OmniscriptUrl from "omnistudio/omniscriptUrl";
+import SfGpsDsFormUrl from "c/sfGpsDsFormUrlOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormUrlOsN.html";
 
-export default class SfGpsDsUkGovFormUrlOsN extends OmniscriptUrl {
+export default class SfGpsDsUkGovFormUrlOsN extends SfGpsDsFormUrl {
   render() {
     return tmpl;
   }
