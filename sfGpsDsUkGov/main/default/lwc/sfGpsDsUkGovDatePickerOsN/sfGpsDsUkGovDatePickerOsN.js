@@ -181,7 +181,6 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
 
   // override
   handleDateBlur() {
-    console.log("blur");
     this.dispatchEvent(
       new CustomEvent("blur", {
         bubbles: true,
@@ -191,7 +190,6 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
   }
 
   handleDateFocus() {
-    console.log("focus");
     this.dispatchEvent(
       new CustomEvent("focus", {
         bubbles: true,
