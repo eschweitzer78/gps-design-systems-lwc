@@ -12,13 +12,14 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovTimePickerOsN.html";
 
 const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
+const DEFAULT_LABEL_SIZE = "large";
 const DEBUG = false;
 
 export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
   SfGpsDsTimePickerOsN,
-  "large"
+  DEFAULT_LABEL_SIZE
 ) {
-  @api fieldLabel;
+  //@api fieldLabel;
   @api hideFormGroup = false;
 
   render() {
@@ -32,26 +33,41 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedTimePickerInputError() {
+  get computedInputClassName() {
     return computeClass({
       "govuk-input": true,
-      "govuk-input--error": this.isError
+      "govuk-input--error": this.isError,
+      "sfgpsds-combobox__input": true
     });
   }
 
-  get ariaDescribedBy() {
+  get computedItemFormGroupClassName() {
+    return computeClass({
+      "govuk-form-group": !this.hideFormGroup
+    });
+  }
+
+  get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.isError
     });
   }
 
-  get computedInputId() {
-    return "time-input";
+  /* we're doing it mostly via template */
+
+  synchronizeA11y() {
+    this.inputEle = this.inputEle ? this.inputEle : this.inputElement;
+
+    if (this.inputEle) {
+      this.setElementAttribute(this.inputEle, {
+        "aria-activedescendant": this.aria_activedescendant
+      });
+    }
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  get _safeOptions() {
+    return this.options || [];
   }
 
   @api

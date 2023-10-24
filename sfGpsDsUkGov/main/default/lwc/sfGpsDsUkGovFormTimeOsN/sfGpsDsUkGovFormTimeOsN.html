@@ -1,7 +1,9 @@
 <template>
   <c-sf-gps-ds-uk-gov-input-os-n
+    class={_styleClasses.input}
     type="time"
     label={mergedLabel}
+    label-size={_propSetMap.labelSize}
     read-only={_propSetMap.readOnly}
     value={elementValue}
     tab-index={tabIndex}
@@ -10,15 +12,15 @@
     format={_timeFormat}
     date-time-locale-format={allCustomLabelsUtil.OmniDayJsLocaleFormats}
     date-time-locale-format-invalid-error={allCustomLabelsUtil.OmniLocaleFormatsInvalid}
-    message-when-value-missing={_messageWhenValueMissing}
-    message-when-pattern-mismatch={_messageWhenPatternMismatch}
-    message-when-too-short={_messageWhenTooShort}
-    message-when-too-long={_messageWhenTooLong}
-    message-when-bad-input={_messageWhenBadInput}
-    message-when-range-overflow={_messageWhenRangeOverflow}
-    message-when-range-underflow={_messageWhenRangeUnderflow}
-    message-when-step-mismatch={_messageWhenStepMismatch}
-    message-when-type-mismatch={_messageWhenTypeMismatch}
+    message-when-value-missing={sfGpsDsMessageWhenValueMissing}
+    message-when-pattern-mismatch={sfGpsDsMessageWhenPatternMismatch}
+    message-when-too-short={sfGpsDsMessageWhenTooShort}
+    message-when-too-long={sfGpsDsMessageWhenTooLong}
+    message-when-bad-input={sfGpsDsMessageWhenBadInput}
+    message-when-range-overflow={sfGpsDsMessageWhenRangeOverflow}
+    message-when-range-underflow={sfGpsDsMessageWhenRangeUnderflow}
+    message-when-step-mismatch={sfGpsDsMessageWhenStepMismatch}
+    message-when-type-mismatch={sfGpsDsMessageWhenTypeMismatch}
     required-label={allCustomLabelsUtil.OmniRequired}
     min={_min}
     max={_max}
@@ -26,8 +28,8 @@
     required={_propSetMap.required}
     placeholder={_propSetMap.placeholder}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     theme="sfgpsds"
-    class={_styleClasses.input}
     data-omni-input
     onblur={handleBlur}
     onchange={handleChange}

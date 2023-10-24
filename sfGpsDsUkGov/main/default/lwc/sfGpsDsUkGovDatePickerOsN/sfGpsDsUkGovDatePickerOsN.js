@@ -57,6 +57,12 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
+  get computedAriaLabelledBy() {
+    return computeClass({
+      "fieldset-label": this.label
+    });
+  }
+
   get computedItemFormGroupClassName() {
     return computeClass({
       "govuk-form-group": !this.hideFormGroup

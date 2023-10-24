@@ -7,10 +7,15 @@
 
 import { api } from "lwc";
 import OmniscriptTime from "omnistudio/omniscriptTime";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormTimeOsN.html";
 
-export default class SfGpsDsUkGovFormTimeOsN extends OmniscriptTime {
+const DEBUG = true;
+
+export default class SfGpsDsUkGovFormTimeOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptTime
+) {
   render() {
     return tmpl;
   }
@@ -31,10 +36,10 @@ export default class SfGpsDsUkGovFormTimeOsN extends OmniscriptTime {
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 

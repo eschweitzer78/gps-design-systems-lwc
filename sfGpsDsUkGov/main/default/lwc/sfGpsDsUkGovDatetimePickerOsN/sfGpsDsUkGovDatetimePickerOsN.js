@@ -57,8 +57,8 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
     return this._dateEl;
   }
 
-  get i18n() {
-    return I18N;
+  get sfGpsDsTimeLabel() {
+    return this.timeLabel == null ? I18N.timeLabel : this.timeLabel;
   }
 
   @api getErrorDetails() {

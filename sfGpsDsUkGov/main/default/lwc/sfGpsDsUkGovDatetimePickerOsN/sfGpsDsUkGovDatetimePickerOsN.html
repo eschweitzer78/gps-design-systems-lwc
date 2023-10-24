@@ -25,6 +25,7 @@
             placeholder={datePlaceholder}
             theme={theme}
             label={dateLabel}
+            label-size=""
             aria-label={dateAriaLabel}
             format={dateFormat}
             locale-format={localeFormat}
@@ -59,10 +60,10 @@
         </div>
         <div class="govuk-grid-column-one-half">
           <c-sf-gps-ds-uk-gov-time-picker-os-n
-            field-label={i18n.timeLabel}
             placeholder={timePlaceholder}
             theme="sfgpsds"
-            label={timeLabel}
+            label={sfGpsDsTimeLabel}
+            label-size=""
             aria-label={timeAriaLabel}
             name={timeName}
             icon-url={iconUrl}
