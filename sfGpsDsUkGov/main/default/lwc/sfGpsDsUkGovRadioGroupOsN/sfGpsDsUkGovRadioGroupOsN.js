@@ -11,7 +11,7 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovRadioGroupOsN.html";
 
-const errorSrLabel = "Error: ";
+const ERROR_SR_LABEL = "Error: ";
 
 export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
   OmnistudioRadioGroup,
@@ -38,7 +38,7 @@ export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
 
   get computedAriaDescribedBy() {
     return computeClass({
-      helper: this._handleHelpText,
+      helper: this.fieldLevelHelp,
       errorMessageBlock: this.isError
     });
   }
@@ -51,19 +51,15 @@ export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
   }
 
   get errorSrLabel() {
-    return errorSrLabel;
+    return ERROR_SR_LABEL;
   }
 
   @api reportValidity() {
-    let r = super.reportValidity();
-    console.log("reportValidity", r, this.errorMessage);
-    return r;
+    return super.reportValidity();
   }
 
   @api checkValidity() {
-    let r = super.checkValidity();
-    console.log("checkValidity", r, this.errorMessage);
-    return r;
+    return super.checkValidity();
   }
 
   @api getErrorDetails() {

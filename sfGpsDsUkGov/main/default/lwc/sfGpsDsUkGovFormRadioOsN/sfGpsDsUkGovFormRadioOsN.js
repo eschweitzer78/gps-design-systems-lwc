@@ -5,34 +5,17 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-/*
-  required-label={allCustomLabelsUtil.OmniRequired} not supported
-  field-level-help-position={_propSetMap.helpTextPos} not supported
-  theme={_theme} not supported
-  alignment={_horizontalMode} not supported
-*/
-
-import { api, track } from "lwc";
+import { api } from "lwc";
 import OmniscriptRadio from "omnistudio/omniscriptRadio";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormRadioOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
+const DEBUG = false;
 
-export default class SfGpsDsUkGovFormRadioOsN extends OmniscriptRadio {
-  @track labelSize = DEFAULT_LABEL_SIZE;
-
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
-  }
-
+export default class SfGpsDsUkGovFormRadioOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptRadio
+) {
   render() {
     return tmpl;
   }
@@ -53,12 +36,13 @@ export default class SfGpsDsUkGovFormRadioOsN extends OmniscriptRadio {
         return elt.getErrorDetails();
       }
 
-      console.log(
-        "SfGpsDsUkGovFormRadioOsN: child does not have getErrorDetails api"
-      );
+      if (DEBUG)
+        console.log(
+          "SfGpsDsUkGovFormRadioOsN: child does not have getErrorDetails api"
+        );
     }
 
-    console.log("SfGpsDsUkGovFormRadioOsN: child not found");
+    if (DEBUG) console.log("SfGpsDsUkGovFormRadioOsN: child not found");
     return null;
   }
 
