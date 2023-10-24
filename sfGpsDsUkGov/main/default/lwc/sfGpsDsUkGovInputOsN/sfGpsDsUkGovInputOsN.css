@@ -24,7 +24,7 @@
   display: table-cell;
 }
 
-/* added to align with omnistudio darkenining the background of read only widgets wholesale */
+/* added to align with omnistudio 246 darkenining the background of read only widgets wholesale */
 .govuk-checkboxes__label:before {
   background: white;
 }

@@ -123,7 +123,8 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
           : null;
       }
     } catch (e) {
-      if (DEBUG) console.log("sfGpsDsUkGovInputOsN: exception ", e);
+      if (DEBUG)
+        console.log("sfGpsDsUkGovInputOsN.getErrorDetails: exception ", e);
     }
 
     if (DEBUG)

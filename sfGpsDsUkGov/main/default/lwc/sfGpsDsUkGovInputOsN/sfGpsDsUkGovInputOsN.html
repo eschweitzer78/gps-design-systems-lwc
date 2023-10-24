@@ -7,13 +7,7 @@
     >
       <div if:true={labelVisible} data-label="true">
         <h3 class="govuk-label-wrapper">
-          <label
-            class={computedLabelClassName}
-            style="width: auto"
-            for={inputId}
-          >
-            {label}
-          </label>
+          <label class={computedLabelClassName} for={inputId}> {label} </label>
         </h3>
         <slot name="label"></slot>
       </div>
