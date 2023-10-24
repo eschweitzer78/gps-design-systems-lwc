@@ -5,27 +5,17 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import OmniscriptMultiselect from "omnistudio/omniscriptMultiselect";
+import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormMultiselectOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
+const DEBUG = false;
 
-export default class SfGpsDsUkGovFormMultiselectOsN extends OmniscriptMultiselect {
-  @track labelSize = DEFAULT_LABEL_SIZE;
-
-  initCompVariables() {
-    super.initCompVariables();
-
-    this.labelSize =
-      this.jsonDef &&
-      this._propSetMap &&
-      this._propSetMap.labelSize !== undefined
-        ? this._propSetMap.labelSize
-        : DEFAULT_LABEL_SIZE;
-  }
-
+export default class SfGpsDsUkGovFormMultiselectOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+  OmniscriptMultiselect
+) {
   render() {
     return tmpl;
   }
@@ -46,10 +36,10 @@ export default class SfGpsDsUkGovFormMultiselectOsN extends OmniscriptMultiselec
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 

@@ -19,16 +19,10 @@ export default class SfGpsDsUkGovCheckboxGroupOsN extends SfGpsDsUkGovLabelMixin
   }
 
   get computedAriaDescribedBy() {
-    let isRealError = this.isRealError;
-
     return computeClass({
-      errorMessageBlock: isRealError,
-      helper: isRealError && this.fieldLevelHelp
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
     });
-  }
-
-  get isRealError() {
-    return this.isError && this._errorMessage;
   }
 
   get _errorMessage() {

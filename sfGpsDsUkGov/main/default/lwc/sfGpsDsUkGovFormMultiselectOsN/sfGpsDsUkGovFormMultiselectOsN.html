@@ -5,16 +5,18 @@
     options={_realtimeOptions}
     value={elementValue}
     label={mergedLabel}
-    onchange={handleChange}
+    label-size={_propSetMap.labelSize}
     required={_propSetMap.required}
     tab-index={tabIndex}
     theme={_theme}
     alignment={_horizontalMode}
     field-level-help={mergedHelpText}
-    data-refresh={refresh}
-    message-when-value-missing={_messageWhenValueMissing}
+    field-level-help-position={_propSetMap.helpTextPos}
+    message-when-value-missing={sfGpsDsMessageWhenValueMissing}
     required-label={allCustomLabelsUtil.OmniRequired}
+    data-refresh={refresh}
     data-omni-input
+    onchange={handleChange}
   >
     <template if:true={_propSetMap.repeat}>
       <span slot="label" class={_styleClasses.repeatContainer} role="group">

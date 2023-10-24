@@ -6,7 +6,7 @@
       aria-describedby={computedAriaDescribedBy}
     >
       <legend class={computedLegendClassName}>
-        <h1 class="govuk-fieldset__heading">{label}</h1>
+        <h3 class="govuk-fieldset__heading">{label}</h3>
         <slot name="label"> </slot>
       </legend>
 
@@ -15,7 +15,7 @@
       </div>
 
       <p
-        if:true={isRealError}
+        if:true={isError}
         class="govuk-error-message"
         aria-live="assertive"
         role="alert"
@@ -34,13 +34,13 @@
               required={required}
               disabled={disabled}
               id={option.id}
-              data-index={index}
               tabindex={tabIndex}
               name={name}
-              checked={option.selected}
-              value={option.value}
               aria-invalid={isError}
               aria-describedby={computedAriaDescribedBy}
+              checked={option.selected}
+              value={option.value}
+              data-index={index}
               onfocus={handleFocus}
               onchange={onchangevalue}
               onkeydown={handleKeyDownEvent}
@@ -56,5 +56,7 @@
         </template>
       </div>
     </fieldset>
+
+    <!-- TODO: support button and icon -->
   </div>
 </template>
