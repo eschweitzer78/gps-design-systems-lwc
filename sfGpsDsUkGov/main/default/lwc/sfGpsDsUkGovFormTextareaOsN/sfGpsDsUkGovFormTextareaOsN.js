@@ -13,14 +13,11 @@
 
 import { api } from "lwc";
 import SfGpsDsFormTextareaOsN from "c/sfGpsDsFormTextareaOsN";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormTextareaOsN.html";
 
 const DEBUG = false;
 
-export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsOmniErrorMsgConfigMixin(
-  SfGpsDsFormTextareaOsN
-) {
+export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsFormTextareaOsN {
   render() {
     return tmpl;
   }
