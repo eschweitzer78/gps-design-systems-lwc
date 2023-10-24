@@ -43,7 +43,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     return tmpl;
   }
 
-  get computedFormGroupClass() {
+  get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": !this.hideFormGroup,
       "govuk-form-group--error": this.hasAnyError && !this.hideFormGroup
@@ -57,7 +57,13 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedDateDayInputClass() {
+  get computedItemFormGroupClassName() {
+    return computeClass({
+      "govuk-form-group": !this.hideFormGroup
+    });
+  }
+
+  get computedDateDayInputClassName() {
     return computeClass({
       "govuk-input": true,
       "govuk-date-input__input": true,
@@ -68,7 +74,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedDateMonthInputClass() {
+  get computedDateMonthInputClassName() {
     return computeClass({
       "govuk-input": true,
       "govuk-date-input__input": true,
@@ -79,7 +85,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedDateYearInputClass() {
+  get computedDateYearInputClassName() {
     return computeClass({
       "govuk-input": true,
       "govuk-date-input__input": true,

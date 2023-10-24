@@ -2,7 +2,7 @@
   <div
     id="sf-gps-ds-uk-gov-date-picker-form-group"
     data-sf-gps-uk-gov-error-input
-    class={computedFormGroupClass}
+    class={computedFormGroupClassName}
   >
     <fieldset
       class="govuk-fieldset"
@@ -31,7 +31,7 @@
 
       <div class="govuk-date-input" id="date-input">
         <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
+          <div class={computedItemFormGroupClassName}>
             <label
               class="govuk-label govuk-date-input__label"
               for="date-input-day"
@@ -40,7 +40,7 @@
             </label>
 
             <input
-              class={computedDateDayInputClass}
+              class={computedDateDayInputClassName}
               type="text"
               id="date-input-day"
               aria-label={ariaLabel}
@@ -62,7 +62,7 @@
         </div>
 
         <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
+          <div class={computedItemFormGroupClassName}>
             <label
               class="govuk-label govuk-date-input__label"
               for="date-input-month"
@@ -71,7 +71,7 @@
             </label>
 
             <input
-              class={computedDateMonthInputClass}
+              class={computedDateMonthInputClassName}
               type="text"
               id="date-input-month"
               value={monthValue}
@@ -93,7 +93,7 @@
         </div>
 
         <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
+          <div class={computedItemFormGroupClassName}>
             <label
               class="govuk-label govuk-date-input__label"
               for="date-input-year"
@@ -102,7 +102,7 @@
             </label>
 
             <input
-              class={computedDateYearInputClass}
+              class={computedDateYearInputClassName}
               type="text"
               id="date-input-year"
               value={yearValue}
