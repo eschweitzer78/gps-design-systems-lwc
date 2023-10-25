@@ -5,67 +5,30 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+const ERROR_PROP_NAMES = [
+  "messageWhenValueMissing",
+  "messageWhenTooShort",
+  "messageWhenTooLong",
+  "messageWhenBadInput",
+  "messageWhenRangeOverflow",
+  "messageWhenRangeUnderflow",
+  "messageWhenStepMismatch",
+  "messageWhenTypeMismatch",
+  "messageWhenMaskIncomplete"
+];
+
 let SfGpsDsOmniErrorMsgConfigMixin = (base) =>
   class extends base {
-    get sfGpsDsMessageWhenValueMissing() {
-      return (
-        this._propSetMap.messageWhenValueMissing ||
-        this._messageWhenValueMissing
-      );
-    }
+    initCompVariables() {
+      super.initCompVariables();
 
-    get sfGpsDsMessageWhenPatternMismatch() {
-      return (
-        this._propSetMap.messageWhenPatternMismatch ||
-        this._messageWhenPatternMismatch
-      );
-    }
-
-    get sfGpsDsMessageWhenTooShort() {
-      return this._propSetMap.messageWhenTooShort || this._messageWhenTooShort;
-    }
-
-    get sfGpsDsMessageWhenTooLong() {
-      return this._propSetMap.messageWhenTooLong || this._messageWhenTooLong;
-    }
-
-    get sfGpsDsMessageWhenBadInput() {
-      return this._propSetMap.messageWhenBadInput || this._messageWhenBadInput;
-    }
-
-    get sfGpsDsMessageWhenRangeOverflow() {
-      return (
-        this._propSetMap.messageWhenRangeOverflow ||
-        this._messageWhenRangeOverflow
-      );
-    }
-
-    get sfGpsDsMessageWhenRangeUnderflow() {
-      return (
-        this._propSetMap.messageWhenRangeUnderflow ||
-        this._messageWhenRangeUnderflow
-      );
-    }
-
-    get sfGpsDsMessageWhenStepMismatch() {
-      return (
-        this._propSetMap.messageWhenStepMismatch ||
-        this._messageWhenStepMismatch
-      );
-    }
-
-    get sfGpsDsMessageWhenTypeMismatch() {
-      return (
-        this._propSetMap.messageWhenTypeMismatch ||
-        this._messageWhenTypeMismatch
-      );
-    }
-
-    get sfGpsDsMessageWhenMaskIncomplete() {
-      return (
-        this._propSetMap.messageWhenMaskIncomplete ||
-        this._messageWhenMaskIncomplete
-      );
+      // Note: messageWhenPatternMismatch is already configurable through the ptrnErrText prop */
+      ERROR_PROP_NAMES.forEach((item) => {
+        let propSetValValue = this._propSetMap[item];
+        if (propSetValValue) {
+          this[`_${item}`] = propSetValValue;
+        }
+      });
     }
   };
 
