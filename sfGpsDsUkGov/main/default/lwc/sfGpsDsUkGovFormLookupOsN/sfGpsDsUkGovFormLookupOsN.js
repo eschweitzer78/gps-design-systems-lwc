@@ -33,7 +33,9 @@ export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
   get computedInputClassName() {
     return computeClass({
       "govuk-input": true,
-      "govuk-input--error": this.isError
+      "govuk-input--error": this.isError,
+      "sfgpsds-input": true,
+      "sfgpsds-combobox__input": true
     });
   }
 
