@@ -59,6 +59,28 @@
   flex: 1 1 auto;
 }
 
+.sfgpsds-combobox__input {
+  padding-right: 3rem;
+  background: #ffff
+    url("data:image/svg+xml,%3Csvg fill='%230b0c0c' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32px' height='32px' viewBox='0 0 24 24' %3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto, auto;
+}
+
+.sfgpsds-combobox__input:hover {
+  background: #ffff
+    url("data:image/svg+xml,%3Csvg fill='%230b0c0c' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto, auto;
+}
+
+.sfgpsds-is-open .sfgpsds-combobox__input:hover {
+  background: #ffff
+    url("data:image/svg+xml,%3Csvg transform='scale(1 -1)' fill='%230b0c0c' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto, auto;
+}
+
 .sfgpsds-dropdown {
   position: absolute;
   z-index: 1000;

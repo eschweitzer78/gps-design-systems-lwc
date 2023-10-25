@@ -6,15 +6,18 @@
  */
 
 import { api } from "lwc";
-import OmniscriptLookup from "omnistudio/omniscriptLookup";
+import SfGpsDsFormLookup from "c/sfGpsDsFormLookupOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormLookupOsN.html";
 
+const DEFAULT_LABEL_SIZE = "large";
+const DEBUG = false;
+
 export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptLookup,
-  "large"
+  SfGpsDsFormLookup,
+  DEFAULT_LABEL_SIZE
 ) {
   render() {
     return tmpl;
@@ -27,10 +30,9 @@ export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedLookUpInputError() {
+  get computedInputClassName() {
     return computeClass({
       "govuk-input": true,
-      lookup: true,
       "govuk-input--error": this.isError
     });
   }
@@ -44,6 +46,10 @@ export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
       helper: this._handleHelpText,
       errorMessageBlock: this.isError
     });
+  }
+
+  get computedOptions() {
+    return this.options || [];
   }
 
   get mergedLabel() {
@@ -62,10 +68,10 @@ export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 

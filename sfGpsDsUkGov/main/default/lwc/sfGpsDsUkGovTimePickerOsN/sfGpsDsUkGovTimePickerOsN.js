@@ -37,6 +37,7 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
     return computeClass({
       "govuk-input": true,
       "govuk-input--error": this.isError,
+      "sfgpsds-input_faux": true,
       "sfgpsds-combobox__input": true
     });
   }

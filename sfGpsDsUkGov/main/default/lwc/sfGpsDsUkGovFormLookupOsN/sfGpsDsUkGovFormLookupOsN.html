@@ -1,17 +1,14 @@
 <template>
   <div class={computedFormGroupClassName}>
-    <h1 class="govuk-label-wrapper">
+    <h3 class="govuk-label-wrapper">
       <label
         class={computedLabelClassName}
         aria-label={mergedLabel}
         for="inputId"
       >
         {mergedLabel}
-        <!-- <span if:true={_propSetMap.required} class="sr-only">
-          ({requiredLabel})</span
-        > -->
       </label>
-    </h1>
+    </h3>
 
     <div if:true={mergedHelpText} id="helper" class="govuk-hint">
       {mergedHelpText}
@@ -64,69 +61,72 @@
       </span>
     </template>
 
-    <div class="govuk-form--predictive">
-      <div class="sfgps-combobox_container">
+    <div class="sfgpsds-form-element__control">
+      <div class="sfgpsds-combobox_container">
         <div
-          class="sfgps-combobox sfgps-dropdown-trigger sfgps-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
-          aria-expanded={show}
-          aria-haspopup="listbox"
-          role="combobox"
+          class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
         >
-          <input
-            id="lookupId"
-            type="text"
-            class={computedLookUpInputError}
-            value={lookupDisplay}
-            disabled={_propSetMap.readOnly}
-            required={_propSetMap.required}
-            readonly
-            aria-invalid={isAriaInvalid}
-            aria-describedby={computedAriaDescribedBy}
-            aria-controls="lookup"
-            placeholder={_propSetMap.placeholder}
-            data-omni-input
-            onblur={hideOptions}
-            onkeydown={handleKeyDown}
-            onkeyup={handleKeyUp}
-            onmouseup={showLookup}
-          />
+          <div class="sfgps-combobox__form-element" role="none">
+            <input
+              class={computedInputClassName}
+              type="text"
+              value={lookupDisplay}
+              disabled={_propSetMap.readOnly}
+              required={_propSetMap.required}
+              readonly={_propSetMap.readOnly}
+              aria-controls="lookup"
+              id="lookupId"
+              placeholder={_propSetMap.placeholder}
+              aria-invalid={isAriaInvalid}
+              aria-describedby={computedAriaDescribedBy}
+              data-omni-input
+              onblur={hideOptions}
+              onkeydown={handleKeyDown}
+              onkeyup={handleKeyUp}
+              onmouseup={showLookup}
+              role="combobox"
+              aria-expanded={show}
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+            />
+          </div>
           <div
-            class="sfgps-dropdown sfgps-dropdown_fluid govuk-form--predictive-list"
-            role="listbox"
+            class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid"
             id="lookup"
+            role="listbox"
             onmousedown={handleKeyDown}
             onmouseleave={handleKeyDown}
             onmouseup={handleKeyDown}
           >
             <ul
-              class="sfgps-listbox sfgps-listbox_vertical"
+              class="sfgpsds-listbox sfgpsds-listbox_vertical"
               role="presentation"
             >
               <template
-                for:each={options}
+                for:each={computedOptions}
                 for:item="optionItem"
                 for:index="optionIndex"
               >
+                <!-- removed onmouseover=mouseOverFocus-->
                 <li
                   key={optionItem.key}
+                  class="sfgpsds-listbox__item"
                   role="presentation"
                   onmouseup={selectOption}
-                  onmouseover={mouseOverFocus}
-                  class="sfgps-listbox__item"
                 >
                   <div
-                    class="sfgps-media sfgps-listbox__option sfgps-listbox__option_entity sfgps-listbox__option_has-meta"
+                    class="sfgpsds-listbox__option sfgpsds-listbox__option_has-meta"
                     id={optionItem.id}
                     role="option"
                     data-option-index={optionIndex}
                     aria-selected={optionItem.selected}
                   >
                     <span
-                      class="sfgps-media__body"
+                      class="sfgpsds-media__body"
                       data-option-index={optionIndex}
                     >
                       <span
-                        class="sfgps-listbox__option-text sfgps-listbox__option-text_entity"
+                        class="sfgpsds-listbox__option-text"
                         data-option-index={optionIndex}
                       >
                         {optionItem.value}
