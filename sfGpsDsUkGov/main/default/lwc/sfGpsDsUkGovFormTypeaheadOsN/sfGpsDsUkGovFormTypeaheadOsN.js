@@ -6,21 +6,19 @@
  */
 
 import { api } from "lwc";
-import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormTypeahead from "c/sfGpsDsFormTypeaheadOsN";
+import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormTypeaheadOsN.html";
 
-export default class sfGpsDsUkGovFormTypeaheadOsN extends OmniscriptTypeahead {
+const DEFAULT_LABEL_SIZE = "large";
+const DEBUG = false;
+
+export default class sfGpsDsUkGovFormTypeaheadOsN extends SfGpsDsUkGovLabelMixin(
+  SfGpsDsFormTypeahead,
+  DEFAULT_LABEL_SIZE
+) {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 
   @api getErrorDetails() {
@@ -31,10 +29,10 @@ export default class sfGpsDsUkGovFormTypeaheadOsN extends OmniscriptTypeahead {
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 

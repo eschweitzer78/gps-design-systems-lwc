@@ -5,23 +5,18 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmnistudioTypeahead from "omnistudio/typeahead";
+import SfGpsDsTypeahead from "c/sfGpsDsTypeaheadOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
 import tmpl from "./sfGpsDsUkGovTypeaheadOsN.html";
 
-// Uses DEFAULT label Mixin ("medium")
-export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
-  OmnistudioTypeahead,
-  "small"
-) {
-  /* TODO: handle
-    messageWhenValueMissing
-    messageWhenTooLong
-    messageWhenTooShort
-  */
+const DEFAULT_LABEL_SIZE = "large";
 
+export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
+  SfGpsDsTypeahead,
+  DEFAULT_LABEL_SIZE
+) {
   render() {
     return tmpl;
   }
@@ -33,11 +28,12 @@ export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedTypeAheadInputError() {
+  get computedInputClassName() {
     return computeClass({
       "govuk-input": true,
-      typeahead: true,
-      "govuk-input--error": this.isError
+      "govuk-input--error": this.isError,
+      "sfgpsds-input": true,
+      "sfgpsds-combobox__input": true
     });
   }
 
