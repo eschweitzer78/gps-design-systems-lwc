@@ -54,6 +54,9 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
+  /* obsolete */
+  @api characterLimit;
+
   render() {
     return tmpl;
   }
