@@ -11,6 +11,7 @@ import { computeClass } from "c/sfGpsDsHelpers";
 export default class SfGpsDsUkGovBreadcrumbs extends LightningElement {
   static renderMode = "light";
 
+  @api label;
   @api items = [];
   @api className;
 
