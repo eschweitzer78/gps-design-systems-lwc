@@ -12,24 +12,14 @@
 */
 
 import { api } from "lwc";
-import OmniscriptCurrency from "omnistudio/omniscriptCurrency";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormCurrencyOsN from "c/sfGpsDsFormCurrencyOsN";
 import tmpl from "./sfGpsDsUkGovFormCurrencyOsN.html";
 
-export default class SfGpsDsUkGovFormCurrencyOsN extends SfGpsDsOmniErrorMsgConfigMixin(
-  OmniscriptCurrency
-) {
+const DEBUG = false;
+
+export default class SfGpsDsUkGovFormCurrencyOsN extends SfGpsDsFormCurrencyOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 
   @api getErrorDetails() {
@@ -40,10 +30,10 @@ export default class SfGpsDsUkGovFormCurrencyOsN extends SfGpsDsOmniErrorMsgConf
         return elt.getErrorDetails();
       }
 
-      console.log("child does not have getErrorDetails api");
+      if (DEBUG) console.log("child does not have getErrorDetails api");
     }
 
-    console.log("child not found");
+    if (DEBUG) console.log("child not found");
     return null;
   }
 

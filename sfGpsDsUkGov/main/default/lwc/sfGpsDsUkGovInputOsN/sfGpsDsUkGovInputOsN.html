@@ -351,10 +351,9 @@
         {posttext}
       </span>
 
-      <div class="slds-grid">
-        <div if:true={static} class="slds-form-element__static">
-          {inputValue}
-        </div>
+      <!-- shifted testing static one level up to avoid the empty div -->
+      <div if:true={static} class="slds-grid">
+        <div class="slds-form-element__static">{inputValue}</div>
       </div>
 
       <span if:true={inlineHelp} class="slds-form-element__static">

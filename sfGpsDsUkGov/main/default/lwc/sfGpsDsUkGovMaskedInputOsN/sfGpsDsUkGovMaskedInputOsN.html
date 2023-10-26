@@ -130,15 +130,14 @@
         </span>
       </div>
 
-      <div class="slds-grid">
-        <div if:true={static} class="slds-form-element__static">
-          {maskedValue}
-        </div>
-
-        <span if:true={inlineHelp} class="slds-form-element__static">
-          {inlineHelp}
-        </span>
+      <!-- shifted testing static one level up to avoid the empty div -->
+      <div if:true={static} class="slds-grid">
+        <div class="slds-form-element__static">{maskedValue}</div>
       </div>
+
+      <span if:true={inlineHelp} class="slds-form-element__static">
+        {inlineHelp}
+      </span>
     </div>
   </div>
 </template>
