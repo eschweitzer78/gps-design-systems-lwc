@@ -6,11 +6,10 @@
  */
 
 import { api, track } from "lwc";
-import OmniscriptFile from "omnistudio/omniscriptFile";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
-import tmpl from "./sfGpsDsUkGovFormFileUploadOsN.html";
+import tmpl from "./sfGpsDsUkGovFormFileOsN.html";
 
 const DEBUG = false;
 
@@ -23,8 +22,8 @@ const DEBUG = false;
 
 const DEFAULT_LABEL_SIZE = "large";
 
-export default class SfGpsDsUkGovFormFileUploadOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptFile,
+export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
+  SfGpsDsFormFileOsN,
   DEFAULT_LABEL_SIZE
 ) {
   render() {
@@ -42,14 +41,6 @@ export default class SfGpsDsUkGovFormFileUploadOsN extends SfGpsDsUkGovLabelMixi
     return computeClass({
       "govuk-file-upload--error": this.isError
     });
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 
   @track computedAriaDescribedBy;
