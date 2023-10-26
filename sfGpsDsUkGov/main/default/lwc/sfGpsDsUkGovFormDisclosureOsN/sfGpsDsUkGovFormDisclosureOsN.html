@@ -1,8 +1,10 @@
 <template>
   <div class="govuk-form-group">
-    <label class={computedLabelClassName} style="width: auto" for="frt">
-      {mergedLabel}
-    </label>
+    <h3 class="govuk-label-wrapper">
+      <label class={computedLabelClassName} aria-label={mergedLabel} for="frt">
+        {mergedLabel}
+      </label>
+    </h3>
 
     <div class="govuk-disclosure">
       <div class="govuk-disclosure__content">
@@ -14,12 +16,11 @@
         <c-sf-gps-ds-uk-gov-input-os-n
           type="checkbox"
           label={mergedCheckLabel}
-          label-size={_propSetMap.labelSize}
           required={_propSetMap.required}
           required-label={allCustomLabelsUtil.OmniRequired}
           theme={_theme}
           checked={elementValue}
-          message-when-value-missing={sfGpsDsMessageWhenValueMissing}
+          message-when-value-missing={_messageWhenValueMissing}
           tab-index={tabIndex}
           data-omni-input
           onchange={handleChange}
