@@ -19,8 +19,10 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
   SfGpsDsTimePickerOsN,
   DEFAULT_LABEL_SIZE
 ) {
-  //@api fieldLabel;
   @api hideFormGroup = false;
+
+  /* obsolote */
+  @api fieldLabel;
 
   render() {
     return tmpl;
