@@ -8,16 +8,16 @@
 import { api, track } from "lwc";
 import OmnistudioDatePicker from "omnistudio/datePicker";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
+import SfGpsDsUkGovInputErrorMgtMixinOsN from "c/sfGpsDsUkGovInputErrorMgtMixinOsN";
 import tmpl from "./sfGpsDsUkGovDatePickerOsN.html";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
 const ORIGINAL_INPUT_SELECTOR = "input[hidden]";
 const DAY_INPUT_SELECTOR = "input[name='date-input-day']";
-const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
-const DEBUG = false;
+const INPUT_SELECTOR = "[data-sfgpsds-input]";
 
 export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioDatePicker,
+  SfGpsDsUkGovInputErrorMgtMixinOsN(OmnistudioDatePicker, INPUT_SELECTOR),
   "large"
 ) {
   @api hideFormGroup;
@@ -261,31 +261,5 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
       this.hasMonthError ||
       this.hasYearError
     );
-  }
-
-  @api
-  getErrorDetails() {
-    let rv = null;
-
-    let elt = this.template.querySelector(ERROR_ID_SELECTOR);
-
-    if (elt == null) {
-      if (DEBUG)
-        console.log("sfGpsDsUkGovDatePicker: cannot find input element");
-    }
-
-    rv =
-      elt && this.isError
-        ? {
-            id: elt.id,
-            errorMessage: this._errorMessage
-          }
-        : null;
-
-    return rv;
-  }
-
-  get _errorMessage() {
-    return this.errorMessage?.replace("Error: ", "");
   }
 }

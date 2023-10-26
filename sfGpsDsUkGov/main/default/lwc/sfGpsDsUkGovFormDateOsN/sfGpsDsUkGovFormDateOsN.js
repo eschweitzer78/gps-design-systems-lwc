@@ -11,48 +11,14 @@
       icon-name="utility:info" not supported
 */
 
-import { api } from "lwc";
-import OmniscriptDate from "omnistudio/omniscriptDate";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormDateOsN from "c/sfGpsDsFormDateOsN";
+import SfGpsDsUkGovFormErrorMgtMixin from "c/sfGpsDsUkGovFormErrorMgtMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormDateOsN.html";
 
-export default class SfGpsDsUkGovFormDateOsN extends SfGpsDsOmniErrorMsgConfigMixin(
-  OmniscriptDate
+export default class SfGpsDsUkGovFormDateOsN extends SfGpsDsUkGovFormErrorMgtMixin(
+  SfGpsDsFormDateOsN
 ) {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
-  }
-
-  @api getErrorDetails() {
-    let elt = this.template.querySelector("[data-omni-input]");
-
-    if (elt) {
-      if (elt.getErrorDetails) {
-        return elt.getErrorDetails();
-      }
-
-      console.log("child does not have getErrorDetails api");
-    }
-
-    console.log("child not found");
-    return null;
-  }
-
-  @api scrollTo() {
-    const input = this.template.querySelector("[data-omni-input]");
-    input.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "nearest"
-    });
   }
 }
