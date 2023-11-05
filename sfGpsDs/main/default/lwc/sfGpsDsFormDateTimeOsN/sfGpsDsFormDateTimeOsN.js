@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptCurrency from "omnistudio/omniscriptCurrency";
+import OmniscriptDateTime from "omnistudio/omniscriptDateTime";
 import SfGpsDsOmniHasValidationMixin from "c/sfGpsDsOmniHasValidationMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 
-export default class SfGpsDsFormCheckboxOsN extends SfGpsDsOmniHasValidationMixin(
-  OmniscriptCurrency
+export default class sfGpsDsFormDateTimeOsN extends SfGpsDsOmniHasValidationMixin(
+  OmniscriptDateTime
 ) {
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.label);
@@ -20,7 +20,15 @@ export default class SfGpsDsFormCheckboxOsN extends SfGpsDsOmniHasValidationMixi
     return omniGetMergedField(this, this._handleHelpText);
   }
 
-  get mergedPlaceholder() {
-    return omniGetMergedField(this, this._propSetMap.placeholder);
+  get mergedDatePlaceholder() {
+    return omniGetMergedField(this, this._propSetMap.datePlaceholder);
+  }
+
+  get mergedTimePlaceholder() {
+    return omniGetMergedField(this, this._propSetMap.timePlaceholder);
+  }
+
+  get mergedTimeLabel() {
+    return omniGetMergedField(this, this._propSetMap.timeLabel);
   }
 }

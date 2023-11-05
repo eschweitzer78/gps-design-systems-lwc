@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptTextarea from "omnistudio/omniscriptTextarea";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import OmniscriptText from "omnistudio/omniscriptText";
 import SfGpsDsOmniHasValidationMixin from "c/sfGpsDsOmniHasValidationMixinOsN";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 
-export default class SfGpsDsFormTextAreaOsN extends SfGpsDsOmniHasValidationMixin(
-  OmniscriptTextarea
+export default class SfGpsDsFormTextOsN extends SfGpsDsOmniHasValidationMixin(
+  OmniscriptText
 ) {
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.label);
@@ -21,6 +21,6 @@ export default class SfGpsDsFormTextAreaOsN extends SfGpsDsOmniHasValidationMixi
   }
 
   get mergedPlaceholder() {
-    return omniGetMergedField(this, this._propSetMap.placeholder);
+    return omniGetMergedField(this, this._placeholder);
   }
 }

@@ -6,10 +6,10 @@
  */
 
 import OmniscriptCheckbox from "omnistudio/omniscriptCheckbox";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
+import SfGpsDsOmniHasValidationMixin from "c/sfGpsDsOmniHasValidationMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 
-export default class SfGpsDsFormCheckboxOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+export default class SfGpsDsFormCheckboxOsN extends SfGpsDsOmniHasValidationMixin(
   OmniscriptCheckbox
 ) {
   get mergedLabel() {
@@ -18,5 +18,10 @@ export default class SfGpsDsFormCheckboxOsN extends SfGpsDsOmniErrorMsgConfigMix
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
+  }
+
+  handleChange(event) {
+    this.sfGpsDsClearCustomValidation(false);
+    super.handleChange(event);
   }
 }

@@ -6,10 +6,10 @@
  */
 
 import OmniscriptEmail from "omnistudio/omniscriptEmail";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
+import SfGpsDsOmniHasValidationMixin from "c/sfGpsDsOmniHasValidationMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 
-export default class SfGpsDsFormEmailOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+export default class SfGpsDsFormEmailOsN extends SfGpsDsOmniHasValidationMixin(
   OmniscriptEmail
 ) {
   get mergedLabel() {
@@ -18,5 +18,9 @@ export default class SfGpsDsFormEmailOsN extends SfGpsDsOmniErrorMsgConfigMixin(
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
+  }
+
+  get mergedPlaceholder() {
+    return omniGetMergedField(this, this._propSetMap.placeholder);
   }
 }

@@ -6,10 +6,10 @@
  */
 
 import OmniscriptDate from "omnistudio/omniscriptDate";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
+import SfGpsDsOmniHasValidationMixin from "c/sfGpsDsOmniHasValidationMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 
-export default class SfGpsDsFormCheckboxOsN extends SfGpsDsOmniErrorMsgConfigMixin(
+export default class SfGpsDsFormCheckboxOsN extends SfGpsDsOmniHasValidationMixin(
   OmniscriptDate
 ) {
   get mergedLabel() {

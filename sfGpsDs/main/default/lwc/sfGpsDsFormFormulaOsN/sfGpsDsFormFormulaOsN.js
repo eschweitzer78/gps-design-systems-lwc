@@ -1,16 +1,16 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptTextarea from "omnistudio/omniscriptTextarea";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import OmniscriptFormula from "omnistudio/omniscriptFormula";
 import SfGpsDsOmniHasValidationMixin from "c/sfGpsDsOmniHasValidationMixinOsN";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 
-export default class SfGpsDsFormTextAreaOsN extends SfGpsDsOmniHasValidationMixin(
-  OmniscriptTextarea
+export default class SfGpsDsFormFormulaOsN extends SfGpsDsOmniHasValidationMixin(
+  OmniscriptFormula
 ) {
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.label);
@@ -18,9 +18,5 @@ export default class SfGpsDsFormTextAreaOsN extends SfGpsDsOmniHasValidationMixi
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
-  }
-
-  get mergedPlaceholder() {
-    return omniGetMergedField(this, this._propSetMap.placeholder);
   }
 }
