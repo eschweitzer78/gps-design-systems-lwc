@@ -31,6 +31,5 @@ export default class SfGpsDsAuNswDatetimePickerOsN extends SfGpsDsAuNswStatusHel
 
   @api sfGpsDsClearCustomValidation() {
     this.dateEl.sfGpsDsClearCustomValidation();
-    this.timeEl.sfGpsDsClearCustomValidation();
   }
 }

@@ -6,13 +6,13 @@
  */
 
 import { api } from "lwc";
-import OmnistudioDatePiccker from "c/sfGpsDsOmniDatePickerOsN";
+import OmnistudioDatePicker from "c/sfGpsDsOmniDatePickerOsN";
 import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import tmpl from "./sfGpsDsAuNswDatePickerOsN.html";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
 export default class SfGpsDsAuNswDatePickerOsN extends SfGpsDsAuNswStatusHelperMixin(
-  OmnistudioDatePiccker
+  OmnistudioDatePicker
 ) {
   @api hideFormGroup = false;
   @api hideAsterisk = false;
