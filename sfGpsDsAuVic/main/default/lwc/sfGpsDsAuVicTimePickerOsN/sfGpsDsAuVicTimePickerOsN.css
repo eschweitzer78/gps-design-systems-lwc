@@ -1,7 +1,16 @@
 @import "c/sfGpsDsAuVicFormCssOs";
+@import "c/sfGpsDsAuVicPredictiveCssOsN";
 
+.rpl-form input[type="text"].sfgpsds-combobox__input.timeinput {
+  padding-right: 3rem;
+  background: #f6f6f9
+    url("data:image/svg+xml,%3Csvg fill='%230052c2' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32px' height='32px' viewBox='0 0 24 24' %3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+/*
 .rpl-form {
-  /*font-family: "VIC-Regular", "Arial", "Helvetica", "sans-serif";*/
   font-size: 0.875rem;
   line-height: 1em;
   font-weight: normal;
@@ -79,7 +88,6 @@
 }
 
 .rpl-form input.sfgpsds-combobox__input[type="text"] {
-  /* it's typed for the date picker, :not([type]) for combobox/select { */
   padding-right: 3rem;
   background: #f6f6f9
     url("data:image/svg+xml,%3Csvg fill='%230052c2' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32px' height='32px' viewBox='0 0 24 24' %3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/%3E%3C/svg%3E")
@@ -88,10 +96,8 @@
 }
 
 .rpl-form .sfgpsds-is-open input.sfgpsds-combobox__input[type="text"] {
-  /* it's typed for the date picker, :not([type]) for select { */
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  /* border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2); */
   border-bottom: 0;
 }
 
@@ -101,12 +107,8 @@
   left: 50%;
   float: left;
   min-width: 6rem;
-  /* max-width: 20rem; */
-  margin-top: 0; /* .125rem; */
-  margin-bottom: 0; /* .125rem; */
-
-  /* padding: .25rem 0; */
-  /* background: #fff; */
+  margin-top: 0;
+  margin-bottom: 0;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
@@ -147,17 +149,6 @@
   overflow-y: auto;
 }
 
-.sfgpsds-dropdown-trigger .sfgpsds-dropdown {
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
-  transition: opacity 0.1s linear, visibility 0.1s linear;
-}
-
-.sfgpsds-dropdown-trigger .sfgpsds-dropdown {
-  top: 100%;
-}
-
 .sfgpsds-dropdown-trigger--click .sfgpsds-dropdown,
 .sfgpsds-dropdown-trigger--click:hover .sfgpsds-dropdown,
 .sfgpsds-dropdown-trigger_click .sfgpsds-dropdown,
@@ -179,8 +170,6 @@
   opacity: 1;
 }
 
-/* items */
-
 .sfgpsds-listbox__item {
   background: #f6f6f9;
 }
@@ -188,8 +177,6 @@
 .sfgpsds-listbox__item:nth-child(odd) {
   background: #fff;
 }
-
-/* media and options */
 
 .sfgpsds-media {
   display: -webkit-box;
@@ -281,3 +268,4 @@
     padding-right: 1.25rem;
   }
 }
+*/

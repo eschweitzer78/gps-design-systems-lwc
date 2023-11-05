@@ -1,11 +1,10 @@
 <template>
   <c-sf-gps-ds-au-vic-input-os-n
-    class={_styleClasses.input}
     type="date"
     label={mergedLabel}
     required={_propSetMap.required}
     read-only={_propSetMap.readOnly}
-    placeholder={_propSetMap.placeholder}
+    placeholder={mergedPlaceholder}
     theme={_theme}
     value={elementValue}
     tab-index={tabIndex}

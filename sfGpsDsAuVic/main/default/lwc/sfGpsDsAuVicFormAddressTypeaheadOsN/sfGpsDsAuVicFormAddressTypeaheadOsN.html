@@ -1,5 +1,6 @@
 <template>
   <div class="omni-typeahead-container">
+    <!-- removed readonly={_propSetMap.readOnly} as it's not an attr in the original omnistudio typeahead -->
     <c-sf-gps-ds-au-vic-typeahead-os-n
       class={computedTypeaheadClass}
       type="text"
@@ -8,7 +9,7 @@
       label={mergedLabel}
       icon-name-right="utility:empty"
       options={options}
-      placeholder={_placeholder}
+      placeholder={mergedPlaceholder}
       required={_propSetMap.required}
       min-length={_propSetMap.minLength}
       max-length={_propSetMap.maxLength}
@@ -20,7 +21,6 @@
       value={elementValueLabel}
       remote-source={_useRemoteSource}
       disable-filter={_disableFilter}
-      read-only={_propSetMap.readOnly}
       data-omni-input
       onblur={handleBlur}
       onlastitemclick={enterEditMode}

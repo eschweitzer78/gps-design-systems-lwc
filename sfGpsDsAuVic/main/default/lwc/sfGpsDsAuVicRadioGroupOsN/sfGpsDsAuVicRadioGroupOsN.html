@@ -12,20 +12,20 @@
         </div>
 
         <div
-          if:true={isRealError}
+          if:true={sfGpsDsIsError}
           class="errors help-block"
           aria-live="assertive"
           role="alert"
           id="errorMessageBlock"
         >
-          <span>{errorMessage}</span>
+          <span>{sfGpsDsErrorMessage}</span>
         </div>
 
         <div class="field-wrap">
           <div class="radio-list">
             <template
               if:true={internalOpts}
-              for:each={_decoratedInternalOpts}
+              for:each={sfGpsDsInternalOpts}
               for:item="option"
               for:index="index"
             >
@@ -47,7 +47,8 @@
                   checked={option.selected}
                   data-index={index}
                   onfocus={handleFocus}
-                  onchange={onchangevalue}
+                  onblur={handleBlur}
+                  onchange={sfGpsDsOnChangeValue}
                   onkeydown={handleKeyDownEvent}
                 />
                 {option.label}

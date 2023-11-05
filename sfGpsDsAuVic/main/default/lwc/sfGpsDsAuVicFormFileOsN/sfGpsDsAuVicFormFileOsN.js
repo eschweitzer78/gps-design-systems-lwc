@@ -1,13 +1,12 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { track } from "lwc";
-import OmniscriptFile from "omnistudio/omniscriptFile";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVicFormFileOsN.html";
 
@@ -18,7 +17,7 @@ import tmpl from "./sfGpsDsAuVicFormFileOsN.html";
 //  background-color: rgb(243, 243, 243); -> var(--slds-c-button-neutral-color-background-hover)
 //  border-color: rgb(201, 201, 201); -> var(--slds-c-button-neutral-color-border-hover)
 
-export default class SfGpsDsAuVicFormFileOsN extends OmniscriptFile {
+export default class SfGpsDsAuVicFormFileOsN extends SfGpsDsFormFileOsN {
   render() {
     return tmpl;
   }
@@ -30,14 +29,6 @@ export default class SfGpsDsAuVicFormFileOsN extends OmniscriptFile {
       valid: !this._showValidation,
       required: this._propSetMap.required
     });
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 
   @track computedAriaDescribedBy;

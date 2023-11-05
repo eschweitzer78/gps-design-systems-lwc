@@ -1,7 +1,6 @@
 <template>
   <c-sf-gps-ds-au-vic-textarea-os-n
     label={mergedLabel}
-    class={_styleClasses.input}
     min-length={_propSetMap.minLength}
     max-length={_propSetMap.maxLength}
     required={_propSetMap.required}
@@ -11,7 +10,7 @@
     theme={_theme}
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
-    placeholder={_propSetMap.placeholder}
+    placeholder={mergedPlaceholder}
     message-when-value-missing={_messageWhenValueMissing}
     message-when-too-short={_messageWhenTooShort}
     message-when-too-long={_messageWhenTooLong}

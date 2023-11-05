@@ -1,10 +1,11 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import OmnistudioCheckboxGroup from "omnistudio/checkboxGroup";
+
+import OmnistudioCheckboxGroup from "c/sfGpsDsOmniCheckboxGroupOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVicCheckboxGroupOsN.html";
 
@@ -19,20 +20,20 @@ export default class SfGpsDsAuVicCheckboxGroupOsN extends OmnistudioCheckboxGrou
   get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
-      errorMessageBlock: this.fieldLevelHelp && this.isError
+      errorMessageBlock: this.fieldLevelHelp && this.sfGpsDsIsError
     });
   }
 
   get computedFormGroupClassName() {
     return computeClass({
       "form-group": true,
-      valid: !this.isError,
-      invalid: this.isError,
+      valid: !this.sfGpsDsIsError,
+      invalid: this.sfGpsDsIsError,
       required: this.required
     });
   }
 
-  get _decoratedInternalOpts() {
+  get sfGpsDsInternalOpts() {
     return this.internalOpts.map((item) => ({
       ...item,
       boxClassName: computeClass({
@@ -40,9 +41,5 @@ export default class SfGpsDsAuVicCheckboxGroupOsN extends OmnistudioCheckboxGrou
         "rpl-checkbox__box--checked": item.selected
       })
     }));
-  }
-
-  get isRealError() {
-    return this.isError && this.errorMessage;
   }
 }

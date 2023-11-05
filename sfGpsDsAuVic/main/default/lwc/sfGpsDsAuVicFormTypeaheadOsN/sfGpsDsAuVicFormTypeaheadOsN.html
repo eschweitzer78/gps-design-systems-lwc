@@ -8,7 +8,7 @@
       label={mergedLabel}
       icon-name-right="utility:empty"
       options={options}
-      placeholder={_placeholder}
+      placeholder={mergedPlaceholder}
       required={_propSetMap.required}
       min-length={_propSetMap.minLength}
       max-length={_propSetMap.maxLength}
@@ -56,7 +56,7 @@
       label={mergedLabel}
       icon-name-right="utility:down"
       options={options}
-      placeholder={_placeholder}
+      placeholder={mergedPlaceholder}
       required={_propSetMap.required}
       required-label={allCustomLabelsUtil.OmniRequired}
       min-length={_propSetMap.minLength}
@@ -91,11 +91,8 @@
       </button>
     </c-sf-gps-ds-au-vic-typeahead-os-n>
 
-    <div if:true={errorMessage} class="slds-has-error nds-has-error">
-      <span
-        class="slds-form-element__help nds-form-element__help nds-form-element__help_text-transform__none"
-        >{errorMessage}</span
-      >
+    <div if:true={errorMessage} class="slds-has-error">
+      <span class="slds-form-element__help">{errorMessage}</span>
     </div>
   </div>
 </template>

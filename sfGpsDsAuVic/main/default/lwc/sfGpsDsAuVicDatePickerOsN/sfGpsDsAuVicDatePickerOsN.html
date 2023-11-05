@@ -15,7 +15,6 @@
           <div class="field-wrapper">
             <div class="slds-form-element__control">
               <input
-                style={styleProperties.value.styles}
                 type={type}
                 id="date-input"
                 aria-label={ariaLabel}
@@ -193,13 +192,13 @@
         </div>
 
         <div
-          if:true={isError}
+          if:true={sfGpsDsIsError}
           class="errors help-block"
           aria-live="assertive"
           role="alert"
           id="errorMessageBlock"
         >
-          <span>{errorMessage}</span>
+          <span>{sfGpsDsErrorMessage}</span>
         </div>
       </div>
     </div>

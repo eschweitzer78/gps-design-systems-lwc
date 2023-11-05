@@ -3,12 +3,7 @@
     <div class="rpl-form">
       <div class="rpl-fieldset">
         <div class={computedFormGroupClassName}>
-          <label
-            if:true={labelVisible}
-            data-label="true"
-            style="width: auto"
-            for={inputId}
-          >
+          <label if:true={labelVisible} for={inputId}>
             <span>{label}</span>
             <slot name="label"> </slot>
           </label>
@@ -25,22 +20,21 @@
               </label>
 
               <input
-                class="slds-input"
                 type="text"
                 readonly
                 disabled
                 id={inputId}
                 value={maskedValue}
+                aria-describedby={computedAriaDescribedBy}
               />
             </div>
 
             <div if:false={static} class={pretextClass}>
-              <span if:true={pretext}> {pretext} </span>
+              <span if:true={pretext}>{pretext}</span>
 
               <template if:true={isCurrencySFlocale}>
                 <input
                   if:true={isInput}
-                  class="vlocity-input"
                   id={inputId}
                   tabindex={tabIndex}
                   accesskey={accessKey}
@@ -59,7 +53,7 @@
                   aria-labelledby={ariaLabelledBy}
                   aria-describedby={computedAriaDescribedBy}
                   aria-label={ariaLabel}
-                  aria-invalid={isError}
+                  aria-invalid={sfGpsDsIsError}
                   value={_currencyVal}
                   onfocus={handleFocus}
                   onblur={handleBlur}
@@ -83,7 +77,6 @@
 
                 <input
                   if:true={isInput}
-                  class="vlocity-input"
                   id={inputId}
                   tabindex={tabIndex}
                   accesskey={accessKey}
@@ -104,7 +97,7 @@
                   aria-label={ariaLabel}
                   autocomplete={autocomplete}
                   name={name}
-                  aria-invalid={isError}
+                  aria-invalid={sfGpsDsIsError}
                   onfocus={handleFocus}
                   onblur={handleBlur}
                   oninput={handleInput}
@@ -120,24 +113,24 @@
           </span>
 
           <div
-            if:true={isError}
+            if:true={sfGpsDsIsError}
             id="errorMessageBlock"
             class="errors help-block"
             aria-live="assertive"
             role="alert"
           >
-            <span>{errorMessage}</span>
+            <span>{sfGpsDsErrorMessage}</span>
           </div>
         </div>
 
-        <div if:true={showGrid} class="slds-grid">
-          <div if:true={static} class="slds-form-element__static">
-            {maskedValue}
-          </div>
-          <span if:true={inlineHelp} class="slds-form-element__static">
-            {inlineHelp}
-          </span>
+        <!-- shifted testing static one level up to avoid the empty div -->
+        <div if:true={static} class="slds-grid">
+          <div class="slds-form-element__static">{maskedValue}</div>
         </div>
+
+        <span if:true={inlineHelp} class="slds-form-element__static">
+          {inlineHelp}
+        </span>
       </div>
     </div>
   </div>

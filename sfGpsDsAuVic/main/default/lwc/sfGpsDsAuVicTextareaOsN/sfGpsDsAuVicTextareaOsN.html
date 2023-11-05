@@ -2,12 +2,7 @@
   <div class="rpl-form">
     <fieldset class="rpl-fieldset">
       <div class={computedFormGroupClassName}>
-        <label
-          if:true={labelVisible}
-          id="textarealabel"
-          data-label="true"
-          for="textareaId"
-        >
+        <label if:true={labelVisible} data-label="true" for="textareaId">
           <span>{label}</span>
           <slot name="label"> </slot>
         </label>
@@ -31,7 +26,7 @@
             placeholder={placeholder}
             id="textareaId"
             autocomplete={autocomplete}
-            aria-invalid={isError}
+            aria-invalid={sfGpsDsIsError}
             aria-describedby={computedAriaDescribedBy}
             oninput={updateValue}
             onblur={validateError}
@@ -39,18 +34,19 @@
             onchange={triggerEvent}
             onkeyup={keyCallbacks}
             onkeydown={keyCallbacks}
+            data-sfgpsds-input
           >
             {_val}
           </textarea>
 
           <div
-            if:true={isError}
+            if:true={sfGpsDsIsError}
             class="errors help-block"
             aria-live="assertive"
             role="alert"
             id="errorMessageBlock"
           >
-            <span>{errorMessage}</span>
+            <span>{sfGpsDsErrorMessage}</span>
           </div>
         </div>
       </div>

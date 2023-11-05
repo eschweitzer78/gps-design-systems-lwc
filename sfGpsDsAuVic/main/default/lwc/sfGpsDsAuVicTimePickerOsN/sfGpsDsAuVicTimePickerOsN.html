@@ -5,7 +5,6 @@
         <label
           if:true={label}
           class="sfgpsds-form-element__label"
-          style={styleProperties.label.styles}
           id="combobox-label"
           for="time-input"
         >
@@ -27,8 +26,7 @@
             >
               <div class="sfgpsds-combobox__form-element" role="none">
                 <input
-                  class="sfgpsds-input sfgpsds-combobox__input"
-                  style={styleProperties.value.styles}
+                  class="sfgpsds-input sfgpsds-combobox__input timeinput"
                   autocomplete="off"
                   id="time-input"
                   role="combobox"
@@ -53,84 +51,88 @@
                   onkeydown={handleKeyboardEvent}
                   onkeyup={handleKeyUp}
                   onmousedown={showLookup}
+                  data-sfgpsds-input
                 />
-              </div>
 
-              <div
-                id="dropdown"
-                class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 sfgpsds-predictive__list"
-                role="listbox"
-              >
-                <ul
-                  class="sfgpsds-listbox sfgpsds-listbox_vertical"
-                  id="time_picker_ul"
-                  role="presentation"
-                  onmousedown={scrollerClickOnList}
+                <div
+                  id="dropdown"
+                  class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 sfgpsds-predictive__list"
+                  role="listbox"
                 >
-                  <template
-                    for:each={_safeOptions}
-                    for:item="item"
-                    for:index="index"
+                  <ul
+                    id="time_picker_ul"
+                    class="sfgpsds-listbox sfgpsds-listbox_vertical"
+                    role="presentation"
+                    onmousedown={scrollerClickOnList}
                   >
-                    <li key={item.id} class="sfgpsds-listbox__item">
-                      <div
-                        id={item.id}
-                        data-index={index}
-                        data-selected={item.selected}
-                        data-val={item.value}
-                        data-timepicker-option
-                        role="option"
-                        aria-selected={item.selected}
-                        class="sfgpsds-media sfgpsds-media_small sfgpsds-media_center sfgpsds-listbox__option sfgpsds-listbox__option_plain"
-                        onmousedown={selectOption}
+                    <template
+                      for:each={computedSafeOptions}
+                      for:item="item"
+                      for:index="index"
+                    >
+                      <li
+                        key={item.id}
+                        class="sfgpsds-listbox__item"
+                        role="presentation"
                       >
-                        <span
-                          class="sfgpsds-media__figure slds-listbox__option-icon"
+                        <div
+                          id={item.id}
+                          data-index={index}
+                          data-selected={item.selected}
+                          data-val={item.value}
+                          data-timepicker-option
+                          role="option"
+                          aria-selected={item.selected}
+                          class="sfgpsds-media sfgpsds-media_small sfgpsds-media_center sfgpsds-listbox__option sfgpsds-listbox__option_plain"
+                          onmousedown={selectOption}
                         >
                           <span
-                            if:true={item.selected}
-                            class="sfgpsds-icon-small"
-                            aria-hidden="true"
+                            class="sfgpsds-media__figure sfgpsds-listbox__option-icon"
                           >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="#fff"
-                              height="14"
-                              width="14"
-                              viewBox="0 96 960 960"
+                            <span
+                              if:true={item.selected}
+                              class="sfgpsds-icon-small"
+                              aria-hidden="true"
                             >
-                              <path
-                                d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"
-                              />
-                            </svg>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="14"
+                                width="14"
+                                viewBox="0 96 960 960"
+                              >
+                                <path
+                                  d="M378 810 154 586l43-43 181 181 384-384 43 43-427 427Z"
+                                />
+                              </svg>
+                            </span>
                           </span>
-                        </span>
 
-                        <span class="sfgpsds-media__body">
-                          <span
-                            class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
-                            title={item.value}
-                          >
-                            {item.value}
+                          <span class="sfgpsds-media__body">
+                            <span
+                              class="sfgpsds-listbox__option-text"
+                              title={item.value}
+                            >
+                              {item.value}
+                            </span>
                           </span>
-                        </span>
-                      </div>
-                    </li>
-                  </template>
-                </ul>
+                        </div>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div
-          if:true={isError}
+          if:true={sfGpsDsIsError}
           class="errors help-block"
           aria-live="assertive"
           role="alert"
           id="errorMessageBlock"
         >
-          <span>{errorMessage}</span>
+          <span>{sfGpsDsErrorMessage}</span>
         </div>
       </div>
     </fieldset>
