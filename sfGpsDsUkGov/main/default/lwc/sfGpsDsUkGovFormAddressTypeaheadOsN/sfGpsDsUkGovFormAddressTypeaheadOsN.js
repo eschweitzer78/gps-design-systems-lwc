@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -7,7 +7,6 @@
 
 import { api, track } from "lwc";
 import SfGpsDsFormTypeahead from "c/sfGpsDsFormTypeaheadOsN";
-import SfGpsDsUkGovFormErrorMgtMixin from "c/sfGpsDsUkGovFormErrorMgtMixinOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { debounce } from "omnistudio/utility";
 import { computeClass } from "c/sfGpsDsHelpersOs";
@@ -23,7 +22,7 @@ const MODE_MANUAL = "manual";
 const DEFAULT_COUNTRY = "United Kingdom";
 
 export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsUkGovFormErrorMgtMixin(SfGpsDsFormTypeahead),
+  SfGpsDsFormTypeahead,
   DEFAULT_LABEL_SIZE
 ) {
   @api street;
@@ -158,7 +157,7 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
       // solve an issue with validation with the original widget
       // when entering text, not selecting an item and choosing next
       // which shows a validation error when it should not
-      this.checkValidity();
+      // this.checkValidity();
     }
   }
 
@@ -203,28 +202,25 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
       .catch((e) => this.handleError(e));
   }
 
-  applyCallResp(e, t = false, i = false) {
-    /* TODO: investigate: for some reason super.applyCallResp(e, t, i) does not set elementValue */
+  /* Override, we don't want all the fancy stuff */
 
-    if (i) {
-      this.setCustomValidation(e);
+  applyCallResp(json, bApi = false, bValidation = false) {
+    if (bValidation) {
+      this.setCustomValidation(json);
     } else {
-      e = this.treatResp(e);
+      json = this.treatResp(json);
 
-      if (e === null) {
-        return;
+      if (
+        json !== undefined &&
+        !this.lodashUtil.isEqual(this.elementValue || {}, json)
+      ) {
+        this.setElementValue(json, bApi, bValidation);
+        this.dispatchOmniEventUtil(
+          this,
+          this.createAggregateNode(),
+          "omniaggregate"
+        );
       }
-
-      if (this.lodashUtil.isEqual(this.elementValue || {}, e)) {
-        return;
-      }
-
-      this.setElementValue(e, t, i);
-      this.dispatchOmniEventUtil(
-        this,
-        this.createAggregateNode(),
-        "omniaggregate"
-      );
     }
   }
 

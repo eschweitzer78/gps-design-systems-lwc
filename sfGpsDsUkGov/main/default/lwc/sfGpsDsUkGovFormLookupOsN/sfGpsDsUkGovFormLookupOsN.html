@@ -10,88 +10,88 @@
           {mergedLabel}
         </label>
       </h3>
+
+      <template if:true={_propSetMap.repeat}>
+        <span
+          style="bottom: 7px; right: -11px"
+          class={_styleClasses.repeatContainer}
+          role="group"
+        >
+          <button
+            if:true={canRepeat}
+            class={_styleClasses.repeatAdd}
+            onclick={handleAdd}
+          >
+            <omnistudio-icon
+              icon-name="utility:add"
+              alternative-text={_repeatAlternativeText}
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </omnistudio-icon>
+          </button>
+          <button
+            if:true={canRemove}
+            class={_styleClasses.repeatRemove}
+            onclick={handleRemove}
+          >
+            <omnistudio-icon
+              icon-name="utility:close"
+              alternative-text={_removeAlternativeText}
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </omnistudio-icon>
+          </button>
+        </span>
+      </template>
     </div>
 
     <div if:true={mergedHelpText} id="helper" class="govuk-hint">
       {mergedHelpText}
     </div>
 
-    <template if:true={_propSetMap.repeat}>
-      <span
-        slot="label"
-        style="bottom: 7px; right: -11px"
-        class={_styleClasses.repeatContainer}
-        role="group"
-      >
-        <button
-          if:true={canRepeat}
-          class={_styleClasses.repeatAdd}
-          onclick={handleAdd}
-        >
-          <omnistudio-icon
-            icon-name="utility:add"
-            alternative-text={_repeatAlternativeText}
-            extraclass={_styleClasses.repeatIcons}
-            size="xx-small"
-          >
-          </omnistudio-icon>
-        </button>
-        <button
-          if:true={canRemove}
-          class={_styleClasses.repeatRemove}
-          onclick={handleRemove}
-        >
-          <omnistudio-icon
-            icon-name="utility:close"
-            alternative-text={_removeAlternativeText}
-            extraclass={_styleClasses.repeatIcons}
-            size="xx-small"
-          >
-          </omnistudio-icon>
-        </button>
-      </span>
-    </template>
-
     <p
-      if:true={isError}
+      if:true={sfGpsDsIsError}
       class="govuk-error-message"
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
     >
-      <span class="govuk-visually-hidden">{errorSrLabel}</span>
-      {_errorMessage}
+      <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span>
+      {sfGpsDsErrorMessage}
     </p>
 
     <div class="sfgpsds-form-element__control">
       <div class="sfgpsds-combobox_container">
         <div
-          class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
+          class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger_click"
         >
           <div class="sfgps-combobox__form-element" role="none">
             <input
               class={computedInputClassName}
               type="text"
-              value={lookupDisplay}
               disabled={_propSetMap.readOnly}
               required={_propSetMap.required}
               readonly={_propSetMap.readOnly}
               aria-controls="lookup"
               id="lookupId"
-              placeholder={_propSetMap.placeholder}
+              placeholder={mergedPlaceholder}
               aria-invalid={isAriaInvalid}
+              aria-expanded={show}
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              value={lookupDisplay}
               aria-describedby={computedAriaDescribedBy}
+              role="combobox"
               data-omni-input
               onblur={hideOptions}
               onkeydown={handleKeyDown}
               onkeyup={handleKeyUp}
               onmouseup={showLookup}
-              role="combobox"
-              aria-expanded={show}
-              aria-haspopup="listbox"
-              aria-autocomplete="list"
             />
           </div>
+
           <div
             class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid"
             id="lookup"
@@ -114,25 +114,17 @@
                   key={optionItem.key}
                   class="sfgpsds-listbox__item"
                   role="presentation"
+                  data-option-index={optionIndex}
                   onmouseup={selectOption}
                 >
                   <div
-                    class="sfgpsds-listbox__option sfgpsds-listbox__option_has-meta"
+                    class="sfgpsds-listbox__option sfgpsds-listbox__option--plain"
                     id={optionItem.id}
                     role="option"
-                    data-option-index={optionIndex}
                     aria-selected={optionItem.selected}
                   >
-                    <span
-                      class="sfgpsds-media__body"
-                      data-option-index={optionIndex}
-                    >
-                      <span
-                        class="sfgpsds-listbox__option-text"
-                        data-option-index={optionIndex}
-                      >
-                        {optionItem.value}
-                      </span>
+                    <span class="sfgpsds-listbox__option-text">
+                      {optionItem.value}
                     </span>
                   </div>
                 </li>

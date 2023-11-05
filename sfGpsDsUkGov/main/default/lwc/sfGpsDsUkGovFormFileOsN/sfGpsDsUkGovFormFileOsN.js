@@ -5,13 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { track } from "lwc";
 import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormFileOsN.html";
-
-const DEBUG = false;
 
 // TODO: there is seemingly a bug in SDLS when the hover colors for neutral buttons are not derived from variables
 //       raise with appropriate team.
@@ -30,16 +28,22 @@ export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
     return tmpl;
   }
 
+  initCompVariables() {
+    super.initCompVariables();
+
+    this.labelSize = this._propSetMap.labelSize;
+  }
+
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": true,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group--error": this.sfGpsDsIsError
     });
   }
 
   get computedFileUploadError() {
     return computeClass({
-      "govuk-file-upload--error": this.isError
+      "govuk-file-upload--error": this.sfGpsDsIsError
     });
   }
 
@@ -54,38 +58,5 @@ export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
     ]
       .filter((item) => item)
       .join(" ");
-  }
-
-  @api
-  getErrorDetails() {
-    let rv = null;
-    let elt = this.template.querySelector(".govuk-form-group");
-
-    if (elt == null) {
-      if (DEBUG) console.log("sfGpsDsUkGovFormFile: cannot find input element");
-    }
-
-    rv =
-      elt && this._showValidation
-        ? {
-            id: elt.id,
-            errorMessage: this._errorMessage
-          }
-        : null;
-
-    return rv;
-  }
-
-  @api scrollTo() {
-    const input = this.template.querySelector(".govuk-form-group");
-    input.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "nearest"
-    });
-  }
-
-  get _errorMessage() {
-    return this.errorMessage?.replace("Error: ", "");
   }
 }

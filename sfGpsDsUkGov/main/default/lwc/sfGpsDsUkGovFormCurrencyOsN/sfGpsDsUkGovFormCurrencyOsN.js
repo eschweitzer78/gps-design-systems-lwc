@@ -5,19 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-/* notes
-      field-level-help-position={_propSetMap.helpTextPos} not supported
-      required-label={allCustomLabelsUtil.OmniRequired} not suppported
-      icon-name="utility:info" not supported
-*/
-
 import SfGpsDsFormCurrencyOsN from "c/sfGpsDsFormCurrencyOsN";
-import SfGpsDsUkGovFormErrorMgtMixin from "c/sfGpsDsUkGovFormErrorMgtMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormCurrencyOsN.html";
 
-export default class SfGpsDsUkGovFormCurrencyOsN extends SfGpsDsUkGovFormErrorMgtMixin(
-  SfGpsDsFormCurrencyOsN
-) {
+export default class SfGpsDsUkGovFormCurrencyOsN extends SfGpsDsFormCurrencyOsN {
   render() {
     return tmpl;
   }

@@ -1,5 +1,9 @@
 <template>
-  <div class="govuk-form-group">
+  <div
+    id="sf-gps-ds-uk-gov-checkbox-group-os-n"
+    class={computedFormGroupClassName}
+    data-sfgpsds-input
+  >
     <fieldset
       if:true={isCheckbox}
       class="govuk-fieldset"
@@ -15,14 +19,14 @@
       </div>
 
       <p
-        if:true={isError}
+        if:true={sfGpsDsIsError}
         class="govuk-error-message"
         aria-live="assertive"
         role="alert"
         id="errorMessageBlock"
       >
-        <span class="govuk-visually-hidden">{errorSrLabel}</span>
-        {_errorMessage}
+        <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span>
+        {sfGpsDsErrorMessage}
       </p>
 
       <div class="govuk-checkboxes">
@@ -42,7 +46,7 @@
               value={option.value}
               data-index={index}
               onfocus={handleFocus}
-              onchange={onchangevalue}
+              onchange={sfGpsDsOnChangeValue}
               onkeydown={handleKeyDownEvent}
             />
             <label

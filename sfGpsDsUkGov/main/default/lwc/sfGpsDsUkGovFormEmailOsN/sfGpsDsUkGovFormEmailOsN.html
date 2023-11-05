@@ -1,6 +1,5 @@
 <template>
   <c-sf-gps-ds-uk-gov-input-os-n
-    class={_styleClasses.input}
     type="email"
     label={mergedLabel}
     label-size={_propSetMap.labelSize}
@@ -12,7 +11,7 @@
     tab-index={tabIndex}
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
-    placeholder={_propSetMap.placeholder}
+    placeholder={mergedPlaceholder}
     message-when-value-missing={_messageWhenValueMissing}
     message-when-pattern-mismatch={_messageWhenPatternMismatch}
     message-when-too-short={_messageWhenTooShort}

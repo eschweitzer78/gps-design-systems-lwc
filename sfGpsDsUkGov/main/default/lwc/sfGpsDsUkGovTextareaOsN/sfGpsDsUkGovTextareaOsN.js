@@ -6,7 +6,7 @@
  */
 
 import { api } from "lwc";
-import OmnistudioTextarea from "omnistudio/textarea";
+import OmnistudioTextarea from "c/sfGpsDsOmniTextareaOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import {
   computeClass,
@@ -64,7 +64,7 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": true,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group--error": this.sfGpsDsIsError
     });
   }
 
@@ -72,7 +72,7 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
     return computeClass({
       "govuk-textarea": true,
       "govuk-js-character-count": this._showCharacterCount,
-      "govuk-textarea--error": this.isError
+      "govuk-textarea--error": this.sfGpsDsIsError
     });
   }
 
@@ -81,7 +81,7 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
       "govuk-character-count__message": true,
       "govuk-character-count__status ": true,
       "govuk-hint": true,
-      "govuk-error-message": this.isError
+      "govuk-error-message": this.sfGpsDsIsError
     });
   }
 
@@ -89,13 +89,8 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
     return computeClass({
       "character-count-text": this._showCharacterCount,
       helper: this.fieldLevelHelp,
-      errorMessageBlock: this.isError
+      errorMessageBlock: this.sfGpsDsIsError
     });
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.classList.add("govuk-scope");
   }
 
   get characterCountText() {
@@ -120,21 +115,5 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
     if (this.maxLength == null || charCount <= this.maxLength) {
       this.value = event.target.value;
     }
-  }
-
-  // Introduce Error Summary Container
-  @api getErrorDetails() {
-    let elt = this.template.querySelector(".govuk-form-group");
-
-    return elt
-      ? {
-          id: elt.id,
-          errorMessage: this._errorMessage
-        }
-      : null;
-  }
-
-  get _errorMessage() {
-    return this.errorMessage?.replace("Error: ", "");
   }
 }

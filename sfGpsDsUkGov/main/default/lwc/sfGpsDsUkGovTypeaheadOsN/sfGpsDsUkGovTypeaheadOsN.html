@@ -23,23 +23,23 @@
     </div>
 
     <p
-      if:true={isError}
+      if:true={sfGpsDsIsError}
       class="govuk-error-message"
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
     >
-      <span class="govuk-visually-hidden">{errorSrLabel}</span>
-      {_errorMessage}
+      <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span>
+      {sfGpsDsErrorMessage}
     </p>
 
     <div class="sfgpsds-form-element__control">
       <div class={showProgress}>
         <omnistudio-progress-bar
           if:true={remoteSource}
-          data-progress-bar
           theme="slds"
           size="xx-small"
+          data-progress-bar
         >
         </omnistudio-progress-bar>
       </div>
@@ -74,6 +74,7 @@
               onfocus={focusChange}
               onblur={focusChange}
               onkeydown={handleKeydown}
+              data-omni-input
             />
           </div>
 
@@ -94,7 +95,6 @@
               >
                 <li
                   key={item.itrKey}
-                  style={styleProperties.value.styles}
                   class="sfgpsds-listbox__item"
                   role="presentation"
                   data-itrkey={item.itrKey}
@@ -104,7 +104,7 @@
                     aria-selected={item.selected}
                     id={item.itrKey}
                     role="option"
-                    data-index={indext}
+                    data-index={index}
                     onclick={selectOption}
                   >
                     <span class="sfgpsds-media__body">
@@ -116,10 +116,7 @@
                 </li>
               </template>
 
-              <li
-                class="sfgpsds-listbox__item"
-                style={styleProperties.value.styles}
-              >
+              <li class="sfgpsds-listbox__item">
                 <div
                   class={_sfGpsDsLastItemClass}
                   role="option"

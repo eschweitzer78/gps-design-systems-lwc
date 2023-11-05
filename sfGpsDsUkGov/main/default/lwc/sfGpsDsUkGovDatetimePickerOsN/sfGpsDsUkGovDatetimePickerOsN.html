@@ -53,8 +53,9 @@
             styles={styles}
             select-date-label={selectDateLabel}
             onchange={setTime}
-            data-omni-date-input
+            data-sfgpsds-date-picker
             hide-form-group="true"
+            force-error={sfGpsDsIsError}
           >
           </c-sf-gps-ds-uk-gov-date-picker-os-n>
         </div>
@@ -86,8 +87,9 @@
             message-when-range-overflow={messageWhenRangeOverflow}
             hide-icon={hideIcon}
             styles={styles}
-            data-omni-time-input
+            data-sfgpsds-time-picker
             hide-form-group="true"
+            force-error={sfGpsDsIsError}
           >
           </c-sf-gps-ds-uk-gov-time-picker-os-n>
         </div>

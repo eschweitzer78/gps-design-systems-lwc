@@ -1,6 +1,5 @@
 <template>
   <c-sf-gps-ds-uk-gov-input-os-n
-    class={_styleClasses.input}
     label={mergedLabel}
     label-size={_propSetMap.labelSize}
     value={elementValue}
@@ -12,7 +11,7 @@
     theme={_theme}
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPosition}
-    placeholder={_propSetMap.placeholder}
+    placeholder={mergedPlaceholder}
     icon-name="utility:info"
     pattern={sfGpsDsUrlPattern}
     message-when-value-missing={_messageWhenValueMissing}

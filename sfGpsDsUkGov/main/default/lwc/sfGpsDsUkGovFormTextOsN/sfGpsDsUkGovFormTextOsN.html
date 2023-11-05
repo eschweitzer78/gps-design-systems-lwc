@@ -1,7 +1,6 @@
 <template>
   <c-sf-gps-ds-uk-gov-input-os-n
     if:false={_isMasked}
-    class={_styleClasses.input}
     type={_inputType}
     label={mergedLabel}
     label-size={_propSetMap.labelSize}
@@ -11,6 +10,7 @@
     max-length={_maxLength}
     min-length={_minLength}
     pattern={_patternVal}
+    theme={_theme}
     tab-index={tabIndex}
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
@@ -69,7 +69,6 @@
   </c-sf-gps-ds-uk-gov-input-os-n>
   <c-sf-gps-ds-uk-gov-masked-input-os-n
     if:true={_isMasked}
-    class={_styleClasses.input}
     type={_inputType}
     label={_propSetMap.label}
     label-size={_propSetMap.labelSize}
@@ -81,7 +80,7 @@
     imask={_imaskTextAttributes}
     theme={_theme}
     tab-index={tabIndex}
-    field-level-help={_handleHelpText}
+    field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
     placeholder={_placeholder}
     message-when-value-missing={_messageWhenValueMissing}

@@ -1,5 +1,9 @@
 <template>
-  <div id="radiogroup-os-n" class={computedFormGroupClassName}>
+  <div
+    id="radiogroup-os-n"
+    class={computedFormGroupClassName}
+    data-sfgpsds-input
+  >
     <fieldset
       class="govuk-fieldset"
       aria-describedby={computedAriaDescribedBy}
@@ -15,43 +19,46 @@
         {fieldLevelHelp}
       </div>
       <p
-        if:true={isError}
+        if:true={sfGpsDsIsError}
         id="errorMessageBlock"
         aria-live="assertive"
         role="alert"
         class="govuk-error-message"
       >
-        <span class="govuk-visually-hidden">{errorSrLabel}</span>{_errorMessage}
+        <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span
+        >{sfGpsDsErrorMessage}
       </p>
       <div class={computedRadiosClass}>
         <template
           if:true={internalOpts}
           for:each={internalOpts}
-          for:item="e"
-          for:index="t"
+          for:item="option"
+          for:index="index"
         >
-          <div key={e.id} class="govuk-radios__item">
+          <div key={option.id} class="govuk-radios__item">
             <input
               class="govuk-radios__input"
               type="radio"
               tabindex={tabIndex}
               required={required}
               disabled={disabled}
-              id={e.id}
-              data-index={t}
-              name={e.name}
-              value={e.value}
-              checked={e.selected}
-              onfocus={handleFocus}
-              onchange={onchangevalue}
+              id={option.id}
+              name={option.name}
               aria-invalid={computedAriaInvalid}
+              value={option.value}
+              checked={option.selected}
+              data-index={index}
+              onfocus={handleFocus}
+              onblur={handleBlur}
+              onchange={sfGpsDsOnChangeValue}
+              onkeydown={handleKeyDownEvent}
             />
             <label
               class="govuk-label govuk-radios__label"
-              data-index={t}
-              for={e.id}
+              data-index={index}
+              for={option.id}
             >
-              {e.label}
+              {option.label}
             </label>
           </div>
         </template>

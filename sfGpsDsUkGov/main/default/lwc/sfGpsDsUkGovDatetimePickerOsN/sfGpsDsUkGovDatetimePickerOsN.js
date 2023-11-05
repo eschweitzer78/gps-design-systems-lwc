@@ -6,20 +6,12 @@
  */
 
 import { api } from "lwc";
-import OmnistudioDatetimePicker from "omnistudio/datetimePicker";
+import OmnistudioDatetimePicker from "c/sfGpsDsOmniDatetimePickerOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovDatetimePickerOsN.html";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
-const TIME_SELECTOR = "c-sf-gps-ds-uk-gov-time-picker-os-n";
-const DATE_SELECTOR = "c-sf-gps-ds-uk-gov-date-picker-os-n";
-// const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
-// const DEBUG = false;
-
-const I18N = {
-  timeLabel: "Time"
-};
-
+const ZWSP_CHAR = "​"; // this is the zero width space character, great for forcing a div/span to display with some height.
 export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixin(
   OmnistudioDatetimePicker,
   "large"
@@ -31,7 +23,7 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": true,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group--error": this.sfGpsDsIsError
     });
   }
 
@@ -41,58 +33,13 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
     });
   }
 
-  get timeEl() {
-    if (!this._timeEl) {
-      this._timeEl = this.template.querySelector(TIME_SELECTOR);
-    }
-
-    return this._timeEl;
+  @api setCustomValidation(message) {
+    this.dateEl.setCustomValidation(message);
+    this.timeEl.setCustomValidation(ZWSP_CHAR); // zwsp - zero width space
   }
 
-  get dateEl() {
-    if (!this._dateEl) {
-      this._dateEl = this.template.querySelector(DATE_SELECTOR);
-    }
-
-    return this._dateEl;
-  }
-
-  get sfGpsDsTimeLabel() {
-    return this.timeLabel == null ? I18N.timeLabel : this.timeLabel;
-  }
-
-  @api getErrorDetails() {
-    let elt = this.template.querySelector("[data-omni-date-input]");
-
-    if (elt) {
-      if (elt.getErrorDetails) {
-        const ed = elt.getErrorDetails();
-        if (ed) return ed;
-      } else {
-        console.log("date child does not have getErrorDetails api");
-      }
-    } else {
-      console.log("date child not found");
-    }
-
-    elt = this.template.querySelector("[data-omni-time-input]");
-
-    if (elt) {
-      if (elt.getErrorDetails) {
-        const ed = elt.getErrorDetails();
-        if (ed) return ed;
-      } else {
-        console.log("time child does not have getErrorDetails api");
-      }
-    } else {
-      console.log("time child not found");
-    }
-
-    return null;
-  }
-
-  setCustomValidity(e) {
-    this.template.querySelector(DATE_SELECTOR).setCustomValidity(e);
-    this.template.querySelector(TIME_SELECTOR).setCustomValidity(e);
+  @api sfGpsDsClearCustomValidation() {
+    this.dateEl.sfGpsDsClearCustomValidation();
+    this.timeEl.sfGpsDsClearCustomValidation();
   }
 }

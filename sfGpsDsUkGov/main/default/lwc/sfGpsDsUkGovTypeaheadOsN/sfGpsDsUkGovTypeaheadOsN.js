@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsTypeahead from "c/sfGpsDsTypeaheadOsN";
+import { api } from "lwc";
+import SfGpsDsTypeahead from "c/sfGpsDsOmniTypeaheadOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
-
 import tmpl from "./sfGpsDsUkGovTypeaheadOsN.html";
 
 const DEFAULT_LABEL_SIZE = "large";
@@ -24,14 +24,14 @@ export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": true,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group--error": this.sfGpsDsIsError
     });
   }
 
   get computedInputClassName() {
     return computeClass({
       "govuk-input": true,
-      "govuk-input--error": this.isError,
+      "govuk-input--error": this.sfGpsDsIsError,
       "sfgpsds-input": true,
       "sfgpsds-combobox__input": true
     });
@@ -40,11 +40,13 @@ export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
   get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
-      errorMessageBlock: this.isError
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 
-  get _errorMessage() {
-    return this.errorMessage?.replace("Error: ", "");
+  @api
+  get validationMessage() {
+    const rv = this.sfGpsDsErrorMessage;
+    return rv;
   }
 }

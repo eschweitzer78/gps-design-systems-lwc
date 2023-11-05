@@ -1,8 +1,34 @@
 <template>
   <template if:true={jsonDef.bAccordionActive}>
+    <div
+      if:true={sfGpsDsErrorMessages}
+      class="govuk-error-summary"
+      aria-labelledby="error-summary-title"
+      role="alert"
+    >
+      <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+      </h2>
+
+      <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+          <template for:each={sfGpsDsErrorMessages} for:item="error">
+            <li key={error.key}>
+              <a
+                href={error.href}
+                data-errorkey={error.key}
+                onclick={handleErrorClick}
+                >{error.message}</a
+              >
+            </li>
+          </template>
+        </ul>
+      </div>
+    </div>
+
     <h2 class="slds-m-top_medium os-step-label">{mergedLabel}</h2>
 
-    <a href="#" if:true={showPrev} class="govuk-back-link" onclick={handleBack}
+    <a href if:true={showPrev} class="govuk-back-link" onclick={handleBack}
       >{mergedPreviousLabel}</a
     >
 
@@ -12,33 +38,6 @@
 
     <div>
       <!-- class="govuk-width-container" -->
-
-      <!-- Error summary -->
-      <div
-        if:true={_errorMessages}
-        class="govuk-error-summary"
-        aria-labelledby="error-summary-title"
-        role="alert"
-      >
-        <h2 class="govuk-error-summary__title" id="error-summary-title">
-          There is a problem
-        </h2>
-
-        <div class="govuk-error-summary__body">
-          <ul class="govuk-list govuk-error-summary__list">
-            <template for:each={_errorMessages} for:item="error">
-              <li key={error.id}>
-                <a
-                  href={error.href}
-                  data-id={error.id}
-                  onclick={handleErrorClick}
-                  >{error.message}</a
-                >
-              </li>
-            </template>
-          </ul>
-        </div>
-      </div>
 
       <div class="slds-grid slds-wrap omniscript-step__body">
         <slot class="slds-grid slds-wrap slds-size_1-of-1"></slot>

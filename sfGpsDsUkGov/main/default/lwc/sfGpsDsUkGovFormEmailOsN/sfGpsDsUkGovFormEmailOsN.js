@@ -6,12 +6,9 @@
  */
 
 import SfGpsDsFormEmailOsN from "c/sfGpsDsFormEmailOsN";
-import SfGpsDsUkGovFormErrorMgtMixin from "c/sfGpsDsUkGovFormErrorMgtMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormEmailOsN.html";
 
-export default class SfGpsDsUkGovFormEmailOsN extends SfGpsDsUkGovFormErrorMgtMixin(
-  SfGpsDsFormEmailOsN
-) {
+export default class SfGpsDsUkGovFormEmailOsN extends SfGpsDsFormEmailOsN {
   render() {
     return tmpl;
   }

@@ -1,18 +1,17 @@
 <template>
   <template if:false={isCustomLwc}>
     <div
-      id="sf-gps-ds-uk-gov-input-form-group"
-      data-sf-gps-uk-gov-error-input
+      id="sf-gps-ds-uk-gov-input-os-n"
+      data-sfgpsds-input
       class={computedFormGroupClassName}
     >
       <div if:true={labelVisible} data-label="true">
         <h3 class="govuk-label-wrapper">
-          <label class={computedLabelClassName} for={inputId}> {label} </label>
+          <label class={computedLabelClassName} for={inputId}>{label}</label>
         </h3>
         <slot name="label"></slot>
       </div>
 
-      <!-- fieldLevelHelp for non-checkboxes?  -->
       <template if:false={isCheckbox}>
         <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
           {fieldLevelHelp}
@@ -24,26 +23,35 @@
       </div>
 
       <template if:true={isCheckbox}>
-        <!-- added readOnly -->
+        <p
+          if:true={sfGpsDsIsError}
+          class="govuk-error-message"
+          aria-live="assertive"
+          role="alert"
+          id={computedErrorMessageBlockId}
+        >
+          <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span
+          >{sfGpsDsErrorMessage}
+        </p>
+
         <div class="govuk-checkboxes">
           <div class="govuk-checkboxes__item">
             <input
-              class="govuk-checkboxes__input"
+              class={computedInputClassName}
               tabindex={tabIndex}
               required={required}
               aria-invalid={isAriaInvalid}
               aria-describedby={computedAriaDescribedBy}
               disabled={disabled}
-              readonly={readOnly}
               aria-readonly={readOnly}
               type={type}
               name={name}
               id={inputId}
               checked={checked}
               value={_value}
-              onchange={triggerInputEvent}
+              onchange={sfGpsDsTriggerInputEvent}
               onfocus={triggerEvent}
-              onblur={validateError}
+              onblur={sfGpsDsValidateError}
             />
             <label
               class="govuk-label govuk-checkboxes__label"
@@ -72,7 +80,7 @@
         </label>
 
         <input
-          class={computedInputError}
+          class={computedInputClassName}
           type="text"
           id={inputId}
           readonly
@@ -91,7 +99,7 @@
       <div if:true={isRadio} class="govuk-radios">
         <div class="govuk-radios">
           <input
-            class="govuk-radios__item"
+            class={computedInputClassName}
             type={type}
             required={required}
             aria-invalid={isAriaInvalid}
@@ -103,7 +111,7 @@
             id={inputId}
             checked={checked}
             value={_value}
-            onchange={triggerInputEvent}
+            onchange={sfGpsDsTriggerInputEvent}
             onfocus={triggerEvent}
             onblur={closeTooltip}
           />
@@ -130,7 +138,7 @@
           {label}
         </span>
         <input
-          class="govuk-checkboxes__input"
+          class={computedInputClassName}
           id={inputId}
           name={name}
           tabindex={tabIndex}
@@ -140,7 +148,7 @@
           aria-describedby={inputId}
           checked={checked}
           value={_value}
-          onchange={triggerInputEvent}
+          onchange={sfGpsDsTriggerInputEvent}
           onfocus={triggerEvent}
           onblur={closeTooltip}
         />
@@ -157,7 +165,7 @@
           <div class="slds-file-selector slds-file-selector_files">
             <div class="slds-file-selector__dropzone">
               <input
-                class="govuk-file-upload slds-assistive-text"
+                class={computedInputClassName}
                 id={inputId}
                 multiple={multiple}
                 tabindex={tabIndex}
@@ -171,8 +179,8 @@
                 aria-readonly={readOnly}
                 aria-labelledby="file-selector-primary-label file-selector-secondary-label"
                 accept={accept}
-                onblur={validateError}
-                onchange={triggerInputEvent}
+                onblur={sfGpsDsValidateError}
+                onchange={sfGpsDsTriggerInputEvent}
                 onfocus={triggerEvent}
               />
               <label class="govuk-label slds-file-selector__body" for={inputId}>
@@ -180,7 +188,7 @@
                   class="slds-file-selector__button slds-button slds-button_neutral"
                 >
                   <omnistudio-icon
-                    theme="slds"
+                    theme={theme}
                     baseurl={iconUrl}
                     color={iconColor}
                     parenttype="button"
@@ -261,49 +269,52 @@
       </div>
       <!-- static -->
 
-      <p
-        if:true={isError}
-        class="govuk-error-message"
-        aria-live="assertive"
-        role="alert"
-        id="errorMessageBlock"
-      >
-        <span class="govuk-visually-hidden">{errorSrLabel}</span>{_errorMessage}
-      </p>
+      <template if:true={isInput}>
+        <p
+          if:true={sfGpsDsIsError}
+          class="govuk-error-message"
+          aria-live="assertive"
+          role="alert"
+          id={computedErrorMessageBlockId}
+        >
+          <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span
+          >{sfGpsDsErrorMessage}
+        </p>
 
-      <input
-        if:true={isInput}
-        class={computedInputError}
-        id={inputId}
-        tabindex={tabIndex}
-        accesskey={accessKey}
-        pattern={pattern}
-        step={step}
-        min={min}
-        max={max}
-        maxlength={maxLength}
-        minlength={minLength}
-        type={type}
-        data-isnumber={isNumber}
-        disabled={disabled}
-        required={required}
-        aria-invalid={isAriaInvalid}
-        aria-describedby={computedAriaDescribedBy}
-        readonly={readOnly}
-        aria-readonly={readOnly}
-        placeholder={placeholder}
-        aria-labelledby={ariaLabelledBy}
-        aria-label={ariaLabel}
-        autocomplete={autocomplete}
-        name={name}
-        value={inputValue}
-        onfocus={handleFocus}
-        onblur={validateError}
-        oninput={triggerInputEvent}
-        onchange={triggerEvent}
-        onkeydown={triggerKeyEvents}
-        onkeyup={triggerKeyEvents}
-      />
+        <!-- class was resolvedInputClass -->
+        <input
+          class={computedInputClassName}
+          id={inputId}
+          tabindex={tabIndex}
+          accesskey={accessKey}
+          pattern={pattern}
+          step={step}
+          min={min}
+          max={max}
+          maxlength={maxLength}
+          minlength={minLength}
+          type={type}
+          data-isnumber={isNumber}
+          disabled={disabled}
+          required={required}
+          aria-invalid={isAriaInvalid}
+          aria-describedby={computedAriaDescribedBy}
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          placeholder={placeholder}
+          aria-labelledby={ariaLabelledBy}
+          aria-label={ariaLabel}
+          autocomplete={autocomplete}
+          name={name}
+          value={inputValue}
+          onfocus={handleFocus}
+          onblur={sfGpsDsValidateError}
+          oninput={sfGpsDsTriggerInputEvent}
+          onchange={triggerEvent}
+          onkeydown={triggerKeyEvents}
+          onkeyup={triggerKeyEvents}
+        />
+      </template>
 
       <input
         if:true={isNumber}
@@ -364,7 +375,6 @@
 
   <c-sf-gps-ds-uk-gov-date-picker-os-n
     if:true={isDate}
-    data-sf-gps-uk-gov-error-input
     mask={mask}
     placeholder={placeholder}
     theme={theme}
@@ -399,13 +409,13 @@
     today-label={todayLabel}
     required-label={requiredLabel}
     styles={styles}
+    data-sfgpsds-input
   >
     <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-uk-gov-date-picker-os-n>
 
   <c-sf-gps-ds-uk-gov-time-picker-os-n
     if:true={isTime}
-    data-sf-gps-uk-gov-error-input
     placeholder={placeholder}
     theme={theme}
     label={label}
@@ -433,13 +443,13 @@
     message-when-range-overflow={messageWhenRangeOverflow}
     message-when-range-underflow={messageWhenRangeUnderflow}
     styles={styles}
+    data-sfgpsds-input
   >
     <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-uk-gov-time-picker-os-n>
 
   <c-sf-gps-ds-uk-gov-datetime-picker-os-n
     if:true={isDateTime}
-    data-sf-gps-uk-gov-error-input
     name={name}
     label={label}
     label-size={labelSize}
@@ -479,6 +489,7 @@
     today-label={todayLabel}
     required-label={requiredLabel}
     styles={styles}
+    data-sfgpsds-input
   >
     <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-uk-gov-datetime-picker-os-n>

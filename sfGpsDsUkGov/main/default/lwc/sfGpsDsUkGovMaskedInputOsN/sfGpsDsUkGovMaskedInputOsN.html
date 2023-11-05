@@ -1,13 +1,13 @@
 <template>
-  <div if:false={isCustomLwc}>
+  <div if:false={isCustomLwc} onmouseover={debug}>
     <div
       id="sf-gps-ds-uk-gov-masked-input-form-group"
-      data-sf-gps-uk-gov-error-input
+      data-sfgpsds-input
       class={computedFormGroupClassName}
     >
       <div if:true={labelVisible} data-label="true">
         <h3 class="govuk-label-wrapper">
-          <label class={computedLabelClassName} for={inputId}> {label} </label>
+          <label class={computedLabelClassName} for={inputId}>{label}</label>
         </h3>
         <slot name="label"> </slot>
       </div>
@@ -33,17 +33,18 @@
           aria-describedby={computedAriaDescribedBy}
         />
       </div>
+      <!-- formula -->
 
       <div if:false={static} class={pretextClass}>
         <p
-          if:true={isError}
+          if:true={sfGpsDsIsError}
           class="govuk-error-message"
           aria-live="assertive"
           role="alert"
           id="errorMessageBlock"
         >
-          <span class="govuk-visually-hidden">{errorSrLabel}</span>
-          {_errorMessage}
+          <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span>
+          {sfGpsDsErrorMessage}
         </p>
 
         <span if:true={pretext} class={pretextClass}>{pretext}</span>
@@ -51,7 +52,7 @@
         <template if:true={isCurrencySFlocale}>
           <input
             if:true={isInput}
-            class="vlocity-input govuk-input"
+            class={computedInputClassName}
             id={inputId}
             tabindex={tabIndex}
             accesskey={accessKey}
@@ -70,14 +71,13 @@
             aria-labelledby={ariaLabelledBy}
             aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
-            aria-invalid={isError}
+            aria-invalid={sfGpsDsIsError}
             value={_currencyVal}
             onfocus={handleFocus}
             onblur={handleBlur}
             oninput={handleInput}
             onkeyup={handleKeyup}
             onchange={handleChange}
-            data-omni-input
           />
         </template>
 
@@ -116,7 +116,7 @@
             aria-label={ariaLabel}
             autocomplete={autocomplete}
             name={name}
-            aria-invalid={isError}
+            aria-invalid={sfGpsDsIsError}
             onfocus={handleFocus}
             onblur={handleBlur}
             oninput={handleInput}

@@ -5,50 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
-import OmniscriptTime from "omnistudio/omniscriptTime";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormTimeOsN from "c/sfGpsDsFormTimeOsN";
 import tmpl from "./sfGpsDsUkGovFormTimeOsN.html";
 
-const DEBUG = true;
-
-export default class SfGpsDsUkGovFormTimeOsN extends SfGpsDsOmniErrorMsgConfigMixin(
-  OmniscriptTime
-) {
+export default class SfGpsDsUkGovFormTimeOsN extends SfGpsDsFormTimeOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
-  }
-
-  @api getErrorDetails() {
-    let elt = this.template.querySelector("[data-omni-input]");
-
-    if (elt) {
-      if (elt.getErrorDetails) {
-        return elt.getErrorDetails();
-      }
-
-      if (DEBUG) console.log("child does not have getErrorDetails api");
-    }
-
-    if (DEBUG) console.log("child not found");
-    return null;
-  }
-
-  @api scrollTo() {
-    const input = this.template.querySelector("[data-omni-input]");
-    input.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "nearest"
-    });
   }
 }

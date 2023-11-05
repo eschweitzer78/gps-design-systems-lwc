@@ -20,13 +20,14 @@
       </div>
 
       <p
-        if:true={isError}
+        if:true={computedShowErrorMessageBlock}
         class="govuk-error-message"
         aria-live="assertive"
         role="alert"
         id="errorMessageBlock"
       >
-        <span class="govuk-visually-hidden">{errorSrLabel}</span>{_errorMessage}
+        <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span
+        >{sfGpsDsErrorMessage}
       </p>
 
       <div class="govuk-date-input" id="date-input">
@@ -46,6 +47,7 @@
               aria-label={ariaLabel}
               tabindex={tabIndex}
               readonly={readOnly}
+              aria-readonly={readOnly}
               required={required}
               placeholder={placeholder}
               disabled={disabled}
@@ -53,10 +55,10 @@
               name="date-input-day"
               value={dayValue}
               aria-invalid={ariaInvalid}
-              onkeyup={handleDayChange}
-              onchange={handleDayChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
+              onkeyup={sfGpsDsHandleDayChange}
+              onchange={sfGpsDsHandleDayChange}
+              onblur={sfGpsDsHandleDateBlur}
+              onfocus={sfGpsDsHandleDateFocus}
             />
           </div>
         </div>
@@ -78,16 +80,17 @@
               aria-label={ariaLabel}
               tabindex={tabIndex}
               readonly={readOnly}
+              aria-readonly={readOnly}
               required={required}
               placeholder={placeholder}
               disabled={disabled}
               inputmode="numeric"
               name="date-input-month"
               aria-invalid={ariaInvalid}
-              onkeyup={handleMonthChange}
-              onchange={handleMonthChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
+              onkeyup={sfGpsDsHandleMonthChange}
+              onchange={sfGpsDsHandleMonthChange}
+              onblur={sfGpsDsHandleDateBlur}
+              onfocus={sfGpsDsHandleDateFocus}
             />
           </div>
         </div>
@@ -109,16 +112,17 @@
               aria-label={ariaLabel}
               tabindex={tabIndex}
               readonly={readOnly}
+              aria-readonly={readOnly}
               required={required}
               placeholder={placeholder}
               disabled={disabled}
               inputmode="numeric"
               name="date-input-year"
               aria-invalid={ariaInvalid}
-              onkeyup={handleYearChange}
-              onchange={handleYearChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
+              onkeyup={sfGpsDsHandleYearChange}
+              onchange={sfGpsDsHandleYearChange}
+              onblur={sfGpsDsHandleDateBlur}
+              onfocus={sfGpsDsHandleDateFocus}
             />
           </div>
         </div>

@@ -1,26 +1,31 @@
 <template>
   <div class="sfgpsds-form-element">
-    <div
-      id="sf-gps-ds-uk-gov-time-picker-form-group"
-      data-sf-gps-uk-gov-error-input
-      class={computedFormGroupClassName}
-    >
+    <div class={computedFormGroupClassName}>
+      <!-- placement of errorMessageBlock when hiding Form Group -->
+      <template if:true={hideFormGroup}>
+        <p
+          if:true={computedShowErrorMessageBlock}
+          class="govuk-error-message"
+          aria-live="assertive"
+          role="alert"
+          id={computedErrorMessageBlockId}
+        >
+          <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span
+          >{computedErrorMessage}
+        </p>
+      </template>
+
       <div data-label="true">
         <label
           lwc:if={hideFormGroup}
           class={computedLabelClassName}
-          style={styleProperties.label.styles}
           for="time-input"
         >
           {label}
         </label>
 
         <h3 lwc:else class="govuk-label-wrapper">
-          <label
-            class={computedLabelClassName}
-            style={styleProperties.label.styles}
-            for="time-input"
-          >
+          <label class={computedLabelClassName} for="time-input">
             {label}
           </label>
         </h3>
@@ -31,15 +36,20 @@
         {fieldLevelHelp}
       </div>
 
-      <p
-        if:true={isError}
-        class="govuk-error-message"
-        aria-live="assertive"
-        role="alert"
-        id="errorMessageBlock"
-      >
-        <span class="govuk-visually-hidden">{errorSrLabel}</span>{_errorMessage}
-      </p>
+      <!-- regular placement of errorMessageBlock -->
+      <template if:false={hideFormGroup}>
+        <p
+          if:true={computedShowErrorMessageBlock}
+          class="govuk-error-message"
+          aria-live="assertive"
+          role="alert"
+          id={computedErrorMessageBlockId}
+          data-timepicker-error-block
+        >
+          <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span
+          >{sfGpsDsErrorMessage}
+        </p>
+      </template>
 
       <div class="sfgpsds-form-element__control sfgpsds-predictive">
         <div class="sfgpsds-combobox_container">
@@ -50,7 +60,6 @@
             <div class="sfgpsds-combobox__form-element" role="none">
               <input
                 class={computedInputClassName}
-                style={styleProperties.value.styles}
                 autocomplete="off"
                 id="time-input"
                 role="combobox"
@@ -75,6 +84,7 @@
                 onkeydown={handleKeyboardEvent}
                 onkeyup={handleKeyUp}
                 onmousedown={showLookup}
+                data-sfgpsds-input
               />
             </div>
 
@@ -90,7 +100,7 @@
                 onmousedown={scrollerClickOnList}
               >
                 <template
-                  for:each={_safeOptions}
+                  for:each={computedSafeOptions}
                   for:item="item"
                   for:index="index"
                 >

@@ -27,6 +27,6 @@
   margin-right: 0.5rem;
 }
 
-[data-label] slot {
+[data-label] span {
   display: table-cell;
 }

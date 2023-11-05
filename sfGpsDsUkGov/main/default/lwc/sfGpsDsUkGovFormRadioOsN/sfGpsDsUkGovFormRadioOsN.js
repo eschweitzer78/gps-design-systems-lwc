@@ -5,53 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
-import OmniscriptRadio from "omnistudio/omniscriptRadio";
-import SfGpsDsOmniErrorMsgConfigMixin from "c/sfGpsDsOmniErrorMsgConfigMixinOsN";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormRadioOsN from "c/sfGpsDsFormRadioOsN";
 import tmpl from "./sfGpsDsUkGovFormRadioOsN.html";
 
-const DEBUG = false;
-
-export default class SfGpsDsUkGovFormRadioOsN extends SfGpsDsOmniErrorMsgConfigMixin(
-  OmniscriptRadio
-) {
+export default class SfGpsDsUkGovFormRadioOsN extends SfGpsDsFormRadioOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
-  }
-
-  @api getErrorDetails() {
-    let elt = this.template.querySelector("[data-omni-input]");
-
-    if (elt) {
-      if (elt.getErrorDetails) {
-        return elt.getErrorDetails();
-      }
-
-      if (DEBUG)
-        console.log(
-          "SfGpsDsUkGovFormRadioOsN: child does not have getErrorDetails api"
-        );
-    }
-
-    if (DEBUG) console.log("SfGpsDsUkGovFormRadioOsN: child not found");
-    return null;
-  }
-
-  @api scrollTo() {
-    const input = this.template.querySelector("[data-omni-input]");
-    input.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "nearest"
-    });
   }
 }

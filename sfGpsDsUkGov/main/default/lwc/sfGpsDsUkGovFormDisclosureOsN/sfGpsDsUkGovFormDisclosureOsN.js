@@ -7,13 +7,12 @@
 
 import SfGpsDsFormDisclosureOsN from "c/sfGpsDsFormDisclosureOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
-import SfGpsDsUkGovFormErrorMgtMixin from "c/sfGpsDsUkGovFormErrorMgtMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormDisclosureOsN.html";
 
 const DEFAULT_LABEL_SIZE = "large";
 
 export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsUkGovFormErrorMgtMixin(SfGpsDsFormDisclosureOsN),
+  SfGpsDsFormDisclosureOsN,
   DEFAULT_LABEL_SIZE
 ) {
   render() {

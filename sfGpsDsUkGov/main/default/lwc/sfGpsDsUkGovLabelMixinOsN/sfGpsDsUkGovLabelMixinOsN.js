@@ -19,7 +19,7 @@ let SfGpsUkGovLabelMixin = (base, defaultLabelSize = "medium") =>
       return this.labelSize == null ? defaultLabelSize : this.labelSize;
     }
 
-    get errorSrLabel() {
+    get sfGpsDsErrorSrLabel() {
       return ERROR_SR_LABEL;
     }
 

@@ -6,21 +6,22 @@
  */
 
 import { api, track } from "lwc";
-import OmnistudioDatePicker from "omnistudio/datePicker";
+import OmnistudioDatePicker from "c/sfGpsDsOmniDatePickerOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
-import SfGpsDsUkGovInputErrorMgtMixinOsN from "c/sfGpsDsUkGovInputErrorMgtMixinOsN";
 import tmpl from "./sfGpsDsUkGovDatePickerOsN.html";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsUkGovDatePickerOsN";
 const ORIGINAL_INPUT_SELECTOR = "input[hidden]";
-const DAY_INPUT_SELECTOR = "input[name='date-input-day']";
-const INPUT_SELECTOR = "[data-sfgpsds-input]";
+const DAY_INPUT_SELECTOR = 'input[name="date-input-day"]';
 
 export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsUkGovInputErrorMgtMixinOsN(OmnistudioDatePicker, INPUT_SELECTOR),
+  OmnistudioDatePicker,
   "large"
 ) {
   @api hideFormGroup;
+  @api forceError;
 
   @api dayLabel = "Day";
   @track dayValue = "";
@@ -46,13 +47,13 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": !this.hideFormGroup,
-      "govuk-form-group--error": this.hasAnyError && !this.hideFormGroup
+      "govuk-form-group--error": this.sfGpsDsHasAnyError && !this.hideFormGroup
     });
   }
 
   get computedAriaDescribedBy() {
     return computeClass({
-      errorMessageBlock: this.hasAnyError,
+      errorMessageBlock: this.sfGpsDsHasAnyError,
       helper: this.fieldLevelHelp
     });
   }
@@ -76,7 +77,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
       "govuk-input--width-2": true,
       "govuk-input--error":
         this.hasDayError ||
-        (this.isError && !(this.hasMonthError || this.hasYearError))
+        (this.sfGpsDsIsError && !(this.hasMonthError || this.hasYearError))
     });
   }
 
@@ -87,7 +88,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
       "govuk-input--width-2": true,
       "govuk-input--error":
         this.hasMonthError ||
-        (this.isError && !(this.hasDayError || this.hasYearError))
+        (this.sfGpsDsIsError && !(this.hasDayError || this.hasYearError))
     });
   }
 
@@ -98,8 +99,12 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
       "govuk-input--width-4": true,
       "govuk-input--error":
         this.hasYearError ||
-        (this.isError && !(this.hasDayError || this.hasMonthError))
+        (this.sfGpsDsIsError && !(this.hasDayError || this.hasMonthError))
     });
+  }
+
+  get computedShowErrorMessageBlock() {
+    return this.sfGpsDsIsError || this.forceError;
   }
 
   // override
@@ -194,7 +199,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
   clickHandler() {}
 
   // override
-  handleDateBlur() {
+  sfGpsDsHandleDateBlur() {
     this.dispatchEvent(
       new CustomEvent("blur", {
         bubbles: true,
@@ -203,7 +208,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     );
   }
 
-  handleDateFocus() {
+  sfGpsDsHandleDateFocus() {
     this.dispatchEvent(
       new CustomEvent("focus", {
         bubbles: true,
@@ -214,34 +219,49 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
 
   // override setValue so we can capture changes
   setValue(value) {
+    if (DEBUG) console.log(CLASS_NAME, "> setValue", value, typeof value);
+    if (DEBUG)
+      console.log(CLASS_NAME, "setValue", "outputFormat: " + this.outputFormat);
+
     super.setValue(value);
 
     if (this._value) {
       let parsedValue = this.parseValue(this._value, true);
+      if (DEBUG)
+        console.log(CLASS_NAME, "setValue", "parsedValue: " + parsedValue);
       if (parsedValue && !isNaN(parsedValue)) {
         this.dayValue = parsedValue.getDate();
         this.monthValue = parsedValue.getMonth() + 1;
         this.yearValue = parsedValue.getFullYear();
       }
     }
+
+    if (DEBUG)
+      console.log(
+        CLASS_NAME,
+        "< setValue",
+        "dayValue: " + this.dayValue,
+        "monthValue: " + this.monthValue,
+        "yearValue: " + this.yearValue
+      );
   }
 
-  handleDayChange(event) {
+  sfGpsDsHandleDayChange(event) {
     this.dayValue = event.target.value;
-    this.updateValue();
+    this.sfGpsDsUpdateValue();
   }
 
-  handleMonthChange(event) {
+  sfGpsDsHandleMonthChange(event) {
     this.monthValue = event.target.value;
-    this.updateValue();
+    this.sfGpsDsUpdateValue();
   }
 
-  handleYearChange(event) {
+  sfGpsDsHandleYearChange(event) {
     this.yearValue = event.target.value;
-    this.updateValue();
+    this.sfGpsDsUpdateValue();
   }
 
-  updateValue() {
+  sfGpsDsUpdateValue() {
     if (this.dayValue && this.monthValue && this.yearValue) {
       let day = parseInt(this.dayValue, 10);
       let month = parseInt(this.monthValue, 10);
@@ -254,12 +274,24 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     }
   }
 
-  get hasAnyError() {
+  get sfGpsDsHasAnyError() {
     return (
-      this.isError ||
+      this.sfGpsDsIsError ||
       this.hasDayError ||
       this.hasMonthError ||
       this.hasYearError
     );
+  }
+
+  /* Override, the UK Gov date picker needs to address missing fields */
+
+  get validationMessage() {
+    const rv = this._constraint.validationMessage;
+    if (DEBUG) console.log(CLASS_NAME, "validationMessage", rv);
+    return rv
+      ? rv
+      : this.hasDayError || this.hasMonthError || this.hasYearError
+      ? this.errorMessage || ""
+      : "";
   }
 }

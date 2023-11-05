@@ -1,13 +1,12 @@
 <template>
   <c-sf-gps-ds-uk-gov-input-os-n
-    class={_styleClasses.input}
     type="datetime"
     label={mergedLabel}
     label-size={_propSetMap.labelSize}
     required={_propSetMap.required}
     read-only={_propSetMap.readOnly}
-    date-placeholder={_propSetMap.datePlaceholder}
-    time-placeholder={_propSetMap.timePlaceholder}
+    date-placeholder={mergedDatePlaceholder}
+    time-placeholder={mergedTimePlaceholder}
     value={elementValue}
     tab-index={tabIndex}
     output-type="date"
@@ -22,21 +21,21 @@
     today-label={allCustomLabelsUtil.OmniToday}
     required-label={allCustomLabelsUtil.OmniRequired}
     min={_min}
-    message-when-value-missing={sfGpsDsMessageWhenValueMissing}
-    message-when-pattern-mismatch={sfGpsDsMessageWhenPatternMismatch}
-    message-when-too-short={sfGpsDsMessageWhenTooShort}
-    message-when-too-long={sfGpsDsMessageWhenTooLong}
-    message-when-bad-input={sfGpsDsMessageWhenBadInput}
-    message-when-range-overflow={sfGpsDsMessageWhenRangeOverflow}
-    message-when-range-underflow={sfGpsDsMessageWhenRangeUnderflow}
-    message-when-step-mismatch={sfGpsDsMessageWhenStepMismatch}
-    message-when-type-mismatch={sfGpsDsMessageWhenTypeMismatch}
+    message-when-value-missing={_messageWhenValueMissing}
+    message-when-pattern-mismatch={_messageWhenPatternMismatch}
+    message-when-too-short={_messageWhenTooShort}
+    message-when-too-long={_messageWhenTooLong}
+    message-when-bad-input={_messageWhenBadInput}
+    message-when-range-overflow={_messageWhenRangeOverflow}
+    message-when-range-underflow={_messageWhenRangeUnderflow}
+    message-when-step-mismatch={_messageWhenStepMismatch}
+    message-when-type-mismatch={_messageWhenTypeMismatch}
     max={_max}
     timezone={_timezone}
     interval={_timeInterval}
     field-level-help={mergedHelpText}
     theme={_theme}
-    time-label={_propSetMap.timeLabel}
+    time-label={mergedTimeLabel}
     date-label=""
     data-omni-input
     onblur={handleBlur}

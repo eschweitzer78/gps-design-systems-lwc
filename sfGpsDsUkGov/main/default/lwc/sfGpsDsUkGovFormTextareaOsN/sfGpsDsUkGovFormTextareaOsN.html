@@ -1,20 +1,18 @@
 <template>
   <c-sf-gps-ds-uk-gov-textarea-os-n
-    show-character-count={_propSetMap.showCharacterCount}
-    character-limit-remaining-template={_propSetMap.characterLimitRemainingTemplate}
-    character-limit-characters-template={_propSetMap.characterLimitCharactersTemplate}
-    label-size={_propSetMap.labelSize}
     label={mergedLabel}
-    class={_styleClasses.input}
+    label-size={_propSetMap.labelSize}
     min-length={_propSetMap.minLength}
     max-length={_propSetMap.maxLength}
     data-id={jsonDef.name}
-    onblur={handleBlur}
     required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
     tab-index={tabIndex}
     value={elementValue}
+    theme={_theme}
     field-level-help={mergedHelpText}
-    placeholder={_propSetMap.placeholder}
+    field-level-help-position={_propSetMap.helpTextPos}
+    placeholder={mergedPlaceholder}
     message-when-value-missing={_messageWhenValueMissing}
     message-when-too-short={_messageWhenTooShort}
     message-when-too-long={_messageWhenTooLong}
@@ -22,6 +20,10 @@
     required-label={allCustomLabelsUtil.OmniRequired}
     autocomplete={_autocomplete}
     data-omni-input
+    onblur={handleBlur}
+    show-character-count={_propSetMap.showCharacterCount}
+    character-limit-remaining-template={_propSetMap.characterLimitRemainingTemplate}
+    character-limit-characters-template={_propSetMap.characterLimitCharactersTemplate}
   >
     <template if:true={_propSetMap.repeat}>
       <span
