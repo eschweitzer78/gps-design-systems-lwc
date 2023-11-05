@@ -2,6 +2,7 @@
   <c-sf-gps-ds-uk-gov-input-os-n
     type="time"
     label={mergedLabel}
+    label-size={_propSetMap.labelSize}
     read-only={_propSetMap.readOnly}
     value={elementValue}
     tab-index={tabIndex}
@@ -24,10 +25,10 @@
     max={_max}
     interval={_timeInterval}
     required={_propSetMap.required}
-    placeholder={_propSetMap.placeholder}
+    placeholder={mergedPlaceholder}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     theme="sfgpsds"
-    class={_styleClasses.input}
     data-omni-input
     onblur={handleBlur}
     onchange={handleChange}

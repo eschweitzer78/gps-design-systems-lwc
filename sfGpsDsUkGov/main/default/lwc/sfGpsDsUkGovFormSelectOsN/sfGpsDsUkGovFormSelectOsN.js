@@ -5,26 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-/*
-  required-label={allCustomLabelsUtil.OmniRequired} not supported
-  field-level-help-position={_propSetMap.helpTextPos} not supported
-  theme={_theme} not supported
-*/
-
-import OmniscriptSelect from "omnistudio/omniscriptSelect";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormSelectOsN from "c/sfGpsDsFormSelectOsN";
 import tmpl from "./sfGpsDsUkGovFormSelectOsN.html";
 
-export default class SfGpsDsUkGovFormSelectOsN extends OmniscriptSelect {
+export default class SfGpsDsUkGovFormSelectOsN extends SfGpsDsFormSelectOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

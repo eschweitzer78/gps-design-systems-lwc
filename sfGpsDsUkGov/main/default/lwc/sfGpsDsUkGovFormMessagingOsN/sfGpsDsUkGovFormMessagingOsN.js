@@ -5,11 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptMessaging from "omnistudio/omniscriptMessaging";
+import SfGpsDsFormMessagingOsN from "c/sfGpsDsFormMessagingOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormMessagingOsN.html";
 
-export default class SfGpsDsUkGovFormMessagingOsN extends OmniscriptMessaging {
+export default class SfGpsDsUkGovFormMessagingOsN extends SfGpsDsFormMessagingOsN {
   render() {
     return tmpl;
   }

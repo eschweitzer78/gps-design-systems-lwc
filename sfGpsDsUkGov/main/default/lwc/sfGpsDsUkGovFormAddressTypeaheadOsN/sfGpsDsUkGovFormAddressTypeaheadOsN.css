@@ -2,46 +2,12 @@
 @import "./checkboxes.gen.css";
 @import "./input.gen.css";
 
-/* Custom Styles **govuk-col** is not part of GovUK-Frontend */
-.govuk-form__group:first-child {
-  margin-top: 1rem;
-}
-
-.govuk-col.street,
-.govuk-col.suburb,
-.govuk-col.state,
-.govuk-col.postalcode,
-.govuk-col.country {
+.street,
+.locality,
+.postalcode,
+.country {
   padding-top: 0;
   padding-bottom: 0;
-}
-
-.govuk-grid {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-}
-
-@media (min-width: 48rem) {
-  .govuk-grid {
-    margin-left: -1rem;
-    margin-right: -1rem;
-  }
-}
-
-.govuk-col {
-  width: 100%;
-  padding: 0.5rem;
-}
-@media (min-width: 48rem) {
-  .govuk-col {
-    padding: 1rem;
-  }
-}
-.govuk-col-12 {
-  width: 100%;
-  max-width: 100%;
 }
 
 .address-container input {

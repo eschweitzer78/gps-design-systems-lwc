@@ -113,3 +113,28 @@ legend span span {
 .form__error {
   display: block;
 }
+
+/* fix for read-only checkboxes omnistudio 246 */
+
+.form__checkbox :checked ~ label:before,
+.form__checkboxes :checked ~ label:before {
+  background-color: var(--nsw-s-white);
+}
+
+/* fix for read-only radios omnistudio 246 */
+
+.form__radios :checked ~ label:before {
+  background-color: var(--nsw-s-white);
+}
+
+/* fix focus for radios checkboxes */
+
+.form__radios input.focus-visible ~ label:before,
+.form__radios input:focus ~ label:before,
+.form__checkbox input.focus-visible ~ label:before,
+.form__checkbox input:focus ~ label:before,
+.form__checkboxes input.focus-visible ~ label:before,
+.form__checkboxes input:focus ~ label:before {
+  box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px,
+    var(--nsw-s-focus, rgb(46, 82, 153)) 0px 0px 0px 3px;
+}

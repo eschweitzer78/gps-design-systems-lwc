@@ -86,11 +86,12 @@ input[readonly][role="combobox"] {
   font-weight: var(--nsw-s-font-normal);
 }
 
-.form__predictive-list .sfgpsds-listbox__option:hover {
+.form__predictive-list .sfgpsds-listbox__option:hover,
+.form__predictive-list .sfgpsds-listbox__option.sfgpsds-has-focus {
   outline-width: 0;
   cursor: pointer;
   background-color: var(--nsw-s-focus);
-  color: var(--nsw-text-dark);
+  color: var(--nsw-s-white);
 }
 
 .form__input {
@@ -102,7 +103,7 @@ input[readonly][role="combobox"] {
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;
-  margin-bottom: 0.125rem;
+  /* margin-bottom: 0.125rem; */
   overflow: hidden;
 }
 
@@ -164,6 +165,17 @@ input[readonly][role="combobox"] {
 .sfgpsds-media_small .sfgpsds-media__figure,
 .sfgpsds-media--small .sfgpsds-media__figure {
   margin-right: 0.25rem;
+}
+
+.form__predictive-list
+  .sfgpsds-listbox__option.sfgpsds-is-selected:hover
+  .sfgpsds-media__figure
+  svg,
+.form__predictive-list
+  .sfgpsds-listbox__option.sfgpsds-is-selected.sfgpsds-has-focus
+  .sfgpsds-media__figure
+  svg {
+  fill: var(--nsw-s-white);
 }
 
 .sfgpsds-media__body,

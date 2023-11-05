@@ -7,12 +7,15 @@
           <span class="sr-only"> ({requiredLabel})</span>
         </span>
         <slot name="label"> </slot>
-        <span id="helper" class="nsw-form__helper">{fieldLevelHelp}</span>
+        <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper"
+          >{fieldLevelHelp}</span
+        >
 
         <span
-          if:true={isRealError}
+          if:true={sfGpsDsIsError}
           class={computedHelperClassName}
           aria-live="assertive"
+          role="alert"
           id="errorMessageBlock"
         >
           <span
@@ -22,39 +25,42 @@
           >
             {computedStatusIcon}
           </span>
-          {errorMessage}
+          {sfGpsDsErrorMessage}
         </span>
       </legend>
 
       <div>
-        <template for:each={internalOpts} for:item="e" for:index="index">
+        <template for:each={internalOpts} for:item="option" for:index="index">
           <input
-            key={e.id}
+            key={option.id}
             class="nsw-form__checkbox-input"
             type="checkbox"
             required={required}
             disabled={disabled}
-            id={e.id}
-            data-index={index}
+            id={option.id}
             tabindex={tabIndex}
             name={name}
-            checked={e.selected}
-            value={e.value}
-            aria-invalid={isAriaInvalid}
+            aria-invalid={sfGpsDsIsError}
             aria-describedby={computedAriaDescribedBy}
+            checked={option.selected}
+            value={option.value}
+            data-index={index}
             onfocus={handleFocus}
-            onchange={onchangevalue}
+            onchange={sfGpsDsOnChangeValue}
+            onkeydown={handleKeyDownEvent}
           />
           <label
-            key={e.id}
+            key={option.id}
             class="nsw-form__checkbox-label"
             data-index={index}
-            for={e.id}
+            for={option.id}
           >
-            {e.label}
+            {option.label}
           </label>
         </template>
       </div>
     </fieldset>
+
+    <!-- TODO: support button and icon -->
   </div>
 </template>

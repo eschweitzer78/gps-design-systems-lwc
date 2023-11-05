@@ -1,23 +1,30 @@
 <template>
   <template if:false={isCustomLwc}>
-    <div class="form__item" style="width: auto">
+    <div class="form__item">
       <template if:true={labelVisible}>
         <legend if:true={useLegend} class={computedLegendClass} for={inputId}>
-          <span> {label} </span>
-          <span if:true={required} class="visually-hidden">
-            ({requiredLabel})</span
-          >
-          <!-- TODO: not sure required can be depicted -->
+          <span
+            >{label}
+            <span if:true={required} class="visually-hidden">
+              ({requiredLabel})</span
+            >
+          </span>
+
           <span if:true={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
         </legend>
+
         <template if:false={useLegend}>
           <label class={computedLabelClassName} for={inputId}>
             {label}
-            <span if:true={required}> ({requiredLabel})</span>
+            <span if:true={required} class="visually-hidden">
+              ({requiredLabel})</span
+            >
           </label>
+
           <slot name="label"> </slot>
+
           <span if:true={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
@@ -26,21 +33,31 @@
 
       <!-- formula -->
       <div if:true={_isFormula}>
+        <label class={computedLabelClassName} for={inputId}>
+          {label}
+          <span if:true={required} class="visually-hidden">
+            ({requiredLabel})</span
+          >
+        </label>
+
         <input
           class="slds-input"
           type="text"
-          readonly=""
-          disabled=""
+          readonly
+          disabled
           id={inputId}
           value={maskedValue}
+          aria-describedby={computedAriaDescribedBy}
         />
       </div>
 
       <div if:false={static} class={pretextClass}>
+        <span if:true={pretext}> {pretext} </span>
+
         <template if:true={isCurrencySFlocale}>
           <input
             if:true={isInput}
-            class={computedInputInputClassName}
+            class={computedInputClassName}
             id={inputId}
             tabindex={tabIndex}
             accesskey={accessKey}
@@ -55,9 +72,11 @@
             required={required}
             readonly={readOnly}
             placeholder={placeholder}
+            aria-readonly={readOnly}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
+            aria-invalid={sfGpsDsIsError}
             value={_currencyVal}
             onfocus={handleFocus}
             onblur={handleBlur}
@@ -90,16 +109,19 @@
             max={max}
             maxlength={maxLength}
             minlength={minLength}
-            type={type}
+            type={inputType}
             inputmode={inputmode}
             disabled={disabled}
             required={required}
             readonly={readOnly}
+            aria-readonly={readOnly}
             placeholder={placeholder}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
             autocomplete={autocomplete}
+            name={name}
+            aria-invalid={sfGpsDsIsError}
             onfocus={handleFocus}
             onblur={handleBlur}
             oninput={handleInput}
@@ -108,24 +130,29 @@
           />
         </template>
 
+        <span if:true={posttext} class="sfgpsds-form-element__addon">
+          {posttext}
+        </span>
+
         <p
-          if:true={isError}
+          if:true={sfGpsDsIsError}
+          id="errorMessageBlock"
           class="form__error"
           aria-live="assertive"
-          id="errorMessageBlock"
+          role="alert"
         >
-          {errorMessage}
+          {sfGpsDsErrorMessage}
         </p>
       </div>
 
-      <div class="slds-grid">
-        <div if:true={static} class="slds-form-element__static">
-          {maskedValue}
-        </div>
-        <span if:true={inlineHelp} class="slds-form-element__static">
-          {inlineHelp}
-        </span>
+      <!-- shifted testing static one level up to avoid the empty div -->
+      <div if:true={static} class="slds-grid">
+        <div class="slds-form-element__static">{maskedValue}</div>
       </div>
+
+      <span if:true={inlineHelp} class="slds-form-element__static">
+        {inlineHelp}
+      </span>
     </div>
   </template>
 </template>

@@ -1,13 +1,12 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { api, track } from "lwc";
-import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormTypeaheadOsN from "c/sfGpsDsFormTypeaheadOsN";
 import { debounce } from "omnistudio/utility";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVicFormAddressTypeaheadOsN.html";
@@ -20,7 +19,7 @@ const MODE_MANUAL = "manual";
 const DEFAULT_STATE = "VIC";
 const DEFAULT_COUNTRY = "Australia";
 
-export default class sfGpsDsAuVicFormAddressTypeaheadOsN extends OmniscriptTypeahead {
+export default class sfGpsDsAuVicFormAddressTypeaheadOsN extends SfGpsDsFormTypeaheadOsN {
   @api street;
   @api suburb;
   @api state = DEFAULT_STATE;
@@ -221,17 +220,19 @@ export default class sfGpsDsAuVicFormAddressTypeaheadOsN extends OmniscriptTypea
       .catch((e) => this.handleError(e));
   }
 
-  applyCallResp(e, t = false, i = false) {
-    if (i) {
-      this.setCustomValidation(e);
+  /* Override, we don't want all the fancy stuff */
+
+  applyCallResp(json, bApi = false, bValidation = false) {
+    if (bValidation) {
+      this.setCustomValidation(json);
     } else {
-      e = this.treatResp(e);
+      json = this.treatResp(json);
 
       if (
-        e !== undefined &&
-        !this.lodashUtil.isEqual(this.elementValue || {}, e)
+        json !== undefined &&
+        !this.lodashUtil.isEqual(this.elementValue || {}, json)
       ) {
-        this.setElementValue(e, t, i);
+        this.setElementValue(json, bApi, bValidation);
         this.dispatchOmniEventUtil(
           this,
           this.createAggregateNode(),
@@ -474,13 +475,5 @@ export default class sfGpsDsAuVicFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get complete() {
     return this.isSmart ? this.elementValueStatus === STATUS_RESOLVED : false;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

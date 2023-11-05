@@ -1,9 +1,8 @@
 @import "c/sfGpsDsAuNswCoreOs";
 @import "c/sfGpsDsAuNswFormOs";
+@import "c/sfGpsDsAuNswPredictiveListOsN";
 
-/* Need to adjust this rule as in Omniscript they always be first child */
-/* have same setup as for subsequent children. */
-
+/*
 .nsw-form__group:first-child {
   margin-top: 1rem;
 }
@@ -24,11 +23,10 @@ input[readonly][role="combobox"] {
 }
 
 .nsw-form__predictive .nsw-form__input:hover {
-  background: url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
-      no-repeat right 1rem center,
-    linear-gradient(var(--nsw-text-hover), var(--nsw-text-hover));
-  background-size: 1rem auto, auto;
-  background-color: var(--nsw-white);
+  background: var(--nsw-text-hover)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
 }
 
 .nsw-form__predictive .nsw-form__input:disabled {
@@ -46,76 +44,113 @@ input[readonly][role="combobox"] {
   background-size: 1rem auto;
 }
 
-.nsw-form__predictive-list div {
+
+.nsw-form__predictive-list .sfgpsds-listbox__option {
   display: block;
   padding: 0.625rem;
   color: var(--nsw-text-dark);
   font-weight: var(--nsw-font-normal);
 }
 
-.nsw-form__predictive-list div:hover {
+.nsw-form__predictive-list .sfgpsds-listbox__option:hover {
   outline-width: 0;
   cursor: pointer;
-  background-color: var(--nsw-brand-light);
+  background-color: var(--nsw-text-hover);
   color: var(--nsw-text-dark);
+}
+
+.nsw-form__predictive-list .sfgpsds-listbox__option.sfgpsds-is-selected {
+  outline-width: 0;
+  background-color: var(--nsw-brand-dark);
+  color: var(--nsw-text-light);
+}
+
+.nsw-form__predictive-list .sfgpsds-listbox__option.sfgpsds-has-focus,
+.nsw-form__predictive-list .sfgpsds-listbox__option:focus {
+  outline-offset: -3px;
+  outline-width: 3px;
+  outline: solid 3px var(--nsw-focus);
 }
 
 .nsw-form__input {
   cursor: pointer;
 }
 
-.nswds-listbox__option-text_entity {
+.sfgpsds-listbox__option-text {
   max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;
-  margin-bottom: 0.125rem;
   overflow: hidden;
 }
 
-.nswds-dropdown_fluid {
+.sfgpsds-dropdown_fluid {
   min-width: auto;
 }
 
-.nswds-listbox_selection-group {
+.sfgpsds-listbox_selection-group {
   height: auto;
 }
 
-.nswds-dropdown-container {
+.sfgpsds-dropdown-container {
   max-height: 300px;
   overflow-y: scroll;
 }
 
-.nswds-listbox__flex {
+.sfgpsds-listbox__flex {
   display: flex;
 }
 
-.nswds-listbox__flex .slds-listbox-item {
+.sfgpsds-listbox__flex .slds-listbox-item {
   overflow: hidden;
 }
 
-.nswds-listbox__flex .slds-pill__label {
+.sfgpsds-listbox__flex .slds-pill__label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.nswds-dropdown-trigger--click .nswds-dropdown,
-.nswds-dropdown-trigger--click:hover .nswds-dropdown,
-.nswds-dropdown-trigger_click .nswds-dropdown,
-.nswds-dropdown-trigger_click:hover .nswds-dropdown {
+.sfgpsds-dropdown-trigger--click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger--click:hover .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click:hover .sfgpsds-dropdown {
   display: none;
 }
 
-.nswds-dropdown-trigger_click .nswds-dropdown {
+.sfgpsds-dropdown-trigger--click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click .sfgpsds-dropdown {
   visibility: hidden;
   opacity: 0;
   -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
   transition: opacity 0.1s linear, visibility 0.1s linear;
 }
 
-.nswds-dropdown-trigger_click.nswds-is-open .nswds-dropdown {
+.sfgpsds-dropdown-trigger_click.sfgpsds-is-open .sfgpsds-dropdown {
   display: block;
   visibility: visible;
   opacity: 1;
 }
+*/
+/* add not allow cursor if disabled */
+
+.nsw-form__input:disabled {
+  cursor: not-allowed;
+}
+
+/* START: dealing with the new styling in omnistudio__OmniLwcUtilsCss in omni246 */
+/*
+.nsw-form__predictive input.nsw-form__input[readonly]:not([type=range]):not([type=checkbox]):not([type=radio]) {
+  color: var(--nsw-text-dark);
+  font-size: var(--nsw-font-size-sm-mobile);
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 62rem) {
+  .nsw-form__predictive input.nsw-form__input[readonly]:not([type=range]):not([type=checkbox]):not([type=radio]) {
+    font-size: var(--nsw-font-size-sm-desktop);
+  }
+}
+*/
+/* END */

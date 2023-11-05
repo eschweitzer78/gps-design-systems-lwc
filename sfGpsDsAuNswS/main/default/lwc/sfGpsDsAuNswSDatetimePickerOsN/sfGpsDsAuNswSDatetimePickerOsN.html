@@ -1,7 +1,7 @@
 <template>
   <div class={computedFormGroupClassName}>
     <div class={computedFormItemClassName}>
-      <label if:true={label} class={computedLabelClassName} style="width: auto">
+      <label if:true={label} class={computedLabelClassName}>
         {label}
         <span if:true={required} class="visually-hidden">
           ({requiredLabel})</span
@@ -16,7 +16,6 @@
       <div class="grid dt-container">
         <div class="grid__col grid--6-col">
           <c-sf-gps-ds-au-nsw-s-date-picker-os-n
-            hide-asterisk="true"
             placeholder={datePlaceholder}
             theme={theme}
             label={dateLabel}
@@ -40,19 +39,20 @@
             message-when-bad-input={messageWhenBadInput}
             prev-month-label={prevMonthLabel}
             next-month-label={nextMonthLabel}
-            pick-yea-label={pickYearLabel}
+            pick-year-label={pickYearLabel}
             today-label={todayLabel}
             required-label={requiredLabel}
             hide-icon={hideIcon}
             styles={styles}
             select-date-label={selectDateLabel}
+            data-sfgpsds-date-picker
             onchange={setTime}
+            hide-asterisk="true"
           >
           </c-sf-gps-ds-au-nsw-s-date-picker-os-n>
         </div>
         <div class="grid__col grid--6-col">
           <c-sf-gps-ds-au-nsw-s-time-picker-os-n
-            hide-asterisk="true"
             placeholder={timePlaceholder}
             theme="sfgpsds"
             label={timeLabel}
@@ -78,19 +78,12 @@
             message-when-range-overflow={messageWhenRangeOverflow}
             hide-icon={hideIcon}
             styles={styles}
+            data-sfgpsds-time-picker
+            hide-asterisk="true"
           >
           </c-sf-gps-ds-au-nsw-s-time-picker-os-n>
         </div>
       </div>
     </div>
-
-    <span
-      if:true={isError}
-      class="form__error"
-      aria-live="assertive"
-      id="errorMessageBlock"
-    >
-      {errorMessage}
-    </span>
   </div>
 </template>

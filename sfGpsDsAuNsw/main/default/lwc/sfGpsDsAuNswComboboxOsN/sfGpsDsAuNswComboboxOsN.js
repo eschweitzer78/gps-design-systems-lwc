@@ -1,17 +1,19 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { api } from "lwc";
-import OmnistudioCombobox from "omnistudio/combobox";
-import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import OmnistudioCombobox from "c/sfGpsDsOmniComboboxOsN";
+import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswComboboxOsN.html";
 
-export default class SfGpsDsAuNswComboboxOsN extends OmnistudioCombobox {
+export default class SfGpsDsAuNswComboboxOsN extends SfGpsDsAuNswStatusHelperMixin(
+  OmnistudioCombobox
+) {
   @api labelClassName;
 
   render() {
@@ -20,8 +22,8 @@ export default class SfGpsDsAuNswComboboxOsN extends OmnistudioCombobox {
 
   get computedAriaDescribedBy() {
     return computeClass({
-      errorMessageBlock: this.isError,
-      helper: this.fieldLevelHelp
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 
@@ -31,13 +33,5 @@ export default class SfGpsDsAuNswComboboxOsN extends OmnistudioCombobox {
       "nsw-form__required": this.required,
       [this.labelClassName]: this.labelClassName
     });
-  }
-
-  get computedHelperClassName() {
-    return getHelperClassName("invalid");
-  }
-
-  get computedStatusIcon() {
-    return getStatusIcon("invalid");
   }
 }

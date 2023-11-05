@@ -1,9 +1,15 @@
-import OmniscriptLookup from "omnistudio/omniscriptLookup";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+/*
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+import SfGpsDsFormLookupOsN from "c/sfGpsDsFormLookupOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVicFormLookupOsN.html";
 
-export default class SfGpsDsAuVicFormLookupOsN extends OmniscriptLookup {
+export default class SfGpsDsAuVicFormLookupOsN extends SfGpsDsFormLookupOsN {
   render() {
     return tmpl;
   }
@@ -11,17 +17,24 @@ export default class SfGpsDsAuVicFormLookupOsN extends OmniscriptLookup {
   get computedFormGroupClassName() {
     return computeClass({
       "form-group": true,
-      invalid: this.invalid,
-      valid: !this.invalid,
+      invalid: this.sfGpsDsIsError,
+      valid: !this.sfGpsDsIsError,
       required: this._propSetMap.required
     });
   }
 
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
+  get computedAriaInvalid() {
+    return this.sfGpsDsIsError;
   }
 
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this._handleHelpText,
+      errorMessageBlock: this.sfGpsDsIsError
+    });
+  }
+
+  get debug() {
+    return JSON.stringify(this.computedOptions);
   }
 }

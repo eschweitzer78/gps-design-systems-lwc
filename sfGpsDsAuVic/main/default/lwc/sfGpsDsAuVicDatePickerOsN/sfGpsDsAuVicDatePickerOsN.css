@@ -55,3 +55,24 @@
   border: 1px solid var(--sf-gps-ds-au-vic-color-primary, #0052c2);
   margin-top: -1px;
 }
+
+/* adjust hover selected and current date backgground colours to match NSW DS */
+
+.slds-datepicker tbody > tr > td.slds-is-today > .slds-day {
+  background-color: var(--sf-gps-ds-au-vic-color-secondary, #0095ec);
+  color: #fff;
+}
+
+.slds-datepicker tbody > tr > td:hover > .slds-day {
+  background: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #fff;
+}
+
+.slds-datepicker tbody > tr > td.slds-is-selected > .slds-day {
+  background: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
+  color: #fff;
+}
+
+.nsw-form__input:disabled {
+  cursor: not-allowed;
+}

@@ -1,54 +1,62 @@
 <template>
   <div>
     <fieldset
+      role="radiogroup"
       aria-required={required}
-      aria-labelledby="sf-sgps-ds-au-nsw-s-radio-group-legend"
+      aria-labelledby="sfgpsds-aunsws-radio-group-legend"
       aria-invalid={computedAriaInvalid}
       aria-describedby={computedAriaDescribedBy}
     >
       <legend
-        id="sf-sgps-ds-au-nsw-s-radio-group-legend"
+        id="sfsgpsds-aunsws-radio-group-legend"
         class={computedLegendClassName}
       >
         <span>
           {label}
-          <span if:true={required}> ({requiredLabel})</span>
+          <span if:true={required} class="visually-hidden">
+            ({requiredLabel})</span
+          >
         </span>
         <slot name="label"></slot>
       </legend>
+
       <span if:true={fieldLevelHelp} id="helper" class="form-help"
         >{fieldLevelHelp}</span
       >
 
       <div class="form__radios">
-        <template for:each={internalOpts} for:item="e" for:index="t">
-          <div key={e.id} class="form__item">
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <div key={option.id} class="form__item">
             <input
               class={computedInputClassName}
               type="radio"
               tabindex={tabIndex}
               required={required}
               disabled={disabled}
-              id={e.id}
-              data-index={t}
-              name={e.name}
-              value={e.value}
-              checked={e.selected}
+              id={option.id}
+              name={option.name}
+              aria-invalid={computedAriaInvalid}
+              value={option.value}
+              checked={option.selected}
+              data-index={index}
               onfocus={handleFocus}
+              onblur={handleBlur}
               onchange={onchangevalue}
+              onkeydown={handleKeyDownEvent}
             />
-            <label data-index={t} for={e.id}> {e.label} </label>
+            <label data-index={index} for={option.id}>{option.label}</label>
           </div>
         </template>
       </div>
 
       <span
-        if:true={isRealError}
+        if:true={sfGpsDsIsError}
         class="form__error"
         aria-live="assertive"
+        role="alert"
         id="errorMessageBlock"
       >
-        {errorMessage}
+        {sfGpsDsErrorMessage}
       </span>
     </fieldset>
   </div>

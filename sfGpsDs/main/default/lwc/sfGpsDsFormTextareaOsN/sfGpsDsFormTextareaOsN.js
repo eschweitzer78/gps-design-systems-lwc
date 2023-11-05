@@ -7,13 +7,20 @@
 
 import OmniscriptTextarea from "omnistudio/omniscriptTextarea";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsOmniHasValidationMixin from "c/sfGpsDsOmniHasValidationMixinOsN";
 
-export default class SfGpsDsFormTextAreaOsN extends OmniscriptTextarea {
+export default class SfGpsDsFormTextAreaOsN extends SfGpsDsOmniHasValidationMixin(
+  OmniscriptTextarea
+) {
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.label);
   }
 
   get mergedHelpText() {
     return omniGetMergedField(this, this._handleHelpText);
+  }
+
+  get mergedPlaceholder() {
+    return omniGetMergedField(this, this._propSetMap.placeholder);
   }
 }

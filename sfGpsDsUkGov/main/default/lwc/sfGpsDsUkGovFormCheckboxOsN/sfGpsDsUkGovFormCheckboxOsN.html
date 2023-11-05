@@ -1,12 +1,18 @@
 <template>
+  <!-- added readOnly -->
   <c-sf-gps-ds-uk-gov-input-os-n
     type="checkbox"
     label={mergedLabel}
-    onchange={handleChange}
+    label-size={_propSetMap.labelSize}
+    theme={_theme}
+    icon-name="utility:info"
     checked={elementValue}
     tab-index={tabIndex}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     data-omni-input
+    onchange={handleChange}
+    read-only={_propSetMap.readOnly}
   >
     <template if:true={_propSetMap.repeat}>
       <span slot="label" class={_styleClasses.repeatContainer} role="group">

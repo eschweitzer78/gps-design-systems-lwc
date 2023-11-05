@@ -1,45 +1,39 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { api, track } from "lwc";
-import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
+import SfGpsDsFormTypeahead from "c/sfGpsDsFormTypeaheadOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import { debounce } from "omnistudio/utility";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormAddressTypeaheadOsN.html";
+
+const DEFAULT_LABEL_SIZE = "large";
 
 const STATUS_TYPING = "typing";
 const STATUS_SELECTED = "selected";
 const STATUS_RESOLVED = "resolved";
 const MODE_SMART = "smart";
 const MODE_MANUAL = "manual";
-const DEFAULT_STATE = "NSW";
-const DEFAULT_COUNTRY = "Australia";
+const DEFAULT_COUNTRY = "United Kingdom";
 
 export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptTypeahead,
-  "small"
+  SfGpsDsFormTypeahead,
+  DEFAULT_LABEL_SIZE
 ) {
   @api street;
-  @api suburb;
-  @api state = DEFAULT_STATE;
+  @api locality;
   @api postcode;
   @api country = DEFAULT_COUNTRY;
-  @api states = [
-    { label: "ACT", value: "ACT" },
-    { label: "NSW", value: "NSW" },
-    { label: "NT", value: "NT" },
-    { label: "QLD", value: "QLD" },
-    { label: "SA", value: "SA" },
-    { label: "TAS", value: "TAS" },
-    { label: "VIC", value: "VIC" },
-    { label: "WA", value: "WA" }
-  ];
+
+  /* obsolete */
+  @api suburb;
+  @api state;
+  @api states;
 
   @track isSmart = true;
   @track elementValueLabel;
@@ -60,21 +54,6 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
     this.checkValidity();
   }
 
-  handleStateBlur(event) {
-    if (this.state !== event.target.value) {
-      // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-      this.state = event.target.value;
-
-      this.dispatchOmniEventUtil(
-        this,
-        this.createAggregateNode(),
-        "omniaggregate"
-      );
-
-      this.checkValidity();
-    }
-  }
-
   handleFieldBlur(event) {
     switch (event.target.name) {
       case "street":
@@ -85,10 +64,10 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
 
         break;
 
-      case "suburb":
-        if (this.suburb !== event.target.value) {
+      case "locality":
+        if (this.locality !== event.target.value) {
           // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-          this.suburb = event.target.value;
+          this.locality = event.target.value;
         }
 
         break;
@@ -178,7 +157,7 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
       // solve an issue with validation with the original widget
       // when entering text, not selecting an item and choosing next
       // which shows a validation error when it should not
-      this.checkValidity();
+      // this.checkValidity();
     }
   }
 
@@ -223,28 +202,25 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
       .catch((e) => this.handleError(e));
   }
 
-  applyCallResp(e, t = false, i = false) {
-    /* TODO: investigate: for some reason super.applyCallResp(e, t, i) does not set elementValue */
+  /* Override, we don't want all the fancy stuff */
 
-    if (i) {
-      this.setCustomValidation(e);
+  applyCallResp(json, bApi = false, bValidation = false) {
+    if (bValidation) {
+      this.setCustomValidation(json);
     } else {
-      e = this.treatResp(e);
+      json = this.treatResp(json);
 
-      if (e === null) {
-        return;
+      if (
+        json !== undefined &&
+        !this.lodashUtil.isEqual(this.elementValue || {}, json)
+      ) {
+        this.setElementValue(json, bApi, bValidation);
+        this.dispatchOmniEventUtil(
+          this,
+          this.createAggregateNode(),
+          "omniaggregate"
+        );
       }
-
-      if (this.lodashUtil.isEqual(this.elementValue || {}, e)) {
-        return;
-      }
-
-      this.setElementValue(e, t, i);
-      this.dispatchOmniEventUtil(
-        this,
-        this.createAggregateNode(),
-        "omniaggregate"
-      );
     }
   }
 
@@ -283,9 +259,7 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
         this.street = this.elementValueValue.addressDetails.street;
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-        this.suburb = this.elementValueValue.addressDetails.suburb;
-        // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-        this.state = this.elementValueValue.addressDetails.state;
+        this.locality = this.elementValueValue.addressDetails.locality;
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
         this.postcode = this.elementValueValue.addressDetails.postcode;
         // eslint-disable-next-line @lwc/lwc/no-api-reassignments
@@ -312,12 +286,10 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
   getManualValue() {
     let fullAddress =
       (this.street ? this.street : "") +
-      (this.street && (this.suburb || this.state || this.postcode) ? "," : "") +
-      (this.street && this.suburb ? " " : "") +
-      (this.suburb ? this.suburb : "") +
-      ((this.street || this.suburb) && this.state ? " " : "") +
-      (this.state ? this.state : "") +
-      ((this.street || this.suburb || this.state) && this.postcode ? " " : "") +
+      (this.street && (this.locality || this.postcode) ? "," : "") +
+      (this.street && this.locality ? " " : "") +
+      (this.locality ? this.locality : "") +
+      ((this.street || this.locality) && this.postcode ? " " : "") +
       (this.postcode ? this.postcode : "");
 
     fullAddress = fullAddress ? fullAddress.toUpperCase() : null;
@@ -326,8 +298,7 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
       value: {
         addressDetails: {
           street: this.street,
-          suburb: this.suburb,
-          state: this.state,
+          locality: this.locality,
           postcode: this.postcode,
           country: this.country
         },
@@ -469,13 +440,7 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": true,
-      "govuk-form-group--error": this._propSetMap.required //this.isError
-    });
-  }
-
-  get computedLabelClassName() {
-    return computeClass({
-      "govuk-label": true
+      "govuk-form-group--error": this.isError
     });
   }
 
@@ -495,15 +460,16 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
     return this.isSmart ? this.elementValueStatus === STATUS_RESOLVED : false;
   }
 
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
-  }
-
+  /* This removes the standard OmniScript error pretext, typically "Error: " */
   get _errorMessage() {
     return this.errorMessage?.replace("Error: ", "");
+  }
+
+  @track labelSize;
+
+  initCompVariables() {
+    super.initCompVariables();
+
+    this.labelSize = this._propSetMap.labelSize;
   }
 }

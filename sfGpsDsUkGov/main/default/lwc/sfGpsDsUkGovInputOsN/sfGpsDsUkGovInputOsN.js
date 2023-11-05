@@ -6,18 +6,43 @@
  */
 
 import { api } from "lwc";
-import OmniscriptInput from "omnistudio/input";
+import OmniscriptInput from "c/sfGpsDsOmniInputOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
+import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovInputOsN.html";
 
-const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
 const DEBUG = false;
+const CLASS_NAME = "sfGpsDsUkGovInputOsN";
+const DEFAULT_LABEL_SIZE = "large";
 
 export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
   OmniscriptInput,
-  "large"
+  DEFAULT_LABEL_SIZE
 ) {
+  @api labelClassName;
+
+  /* api hideFormGroup */
+
+  _hideFormGroup = false;
+  _hideFormGroupOriginal = false;
+
+  @api
+  get hideFormGroup() {
+    return this._hideFormGroupOriginal;
+  }
+
+  set hideFormGroup(value) {
+    this._hideFormGroupOriginal = value;
+
+    this._hideFormGroup = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+  }
+
+  /* Methods */
+  /* ------- */
+
   render() {
     return tmpl;
   }
@@ -40,58 +65,57 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
 
       default:
     }
+
+    if (DEBUG) console.log(CLASS_NAME, "initOptions", this._innerElement);
   }
+
+  /* original maskedInput widget does a JS update of aria-describedby when validating
+     and calls resolveAriaDescribedBy to do so. */
+
+  resolveAriaDescribedBy() {
+    return [
+      this.template.querySelector(".govuk-hint")?.id,
+      this.template.querySelector(".govuk-error-message")?.id
+    ]
+      .filter((item) => item)
+      .join(" ");
+  }
+
+  /* Getters */
+  /* ------- */
 
   get computedFormGroupClassName() {
     return computeClass({
-      "govuk-form-group": true,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group": !this._hideFormGroup,
+      "govuk-form-group--error": !this._hideFormGroup && this.sfGpsDsIsError
     });
   }
 
-  get computedInputError() {
+  get computedInputClassName() {
+    /**
+     * vlocity-input used to be this.isCheckbox || this.isRadio || this.isToggle || this.isFile || this.isInput
+     * but setting it it only matters for nds theme
+     **/
+
     return computeClass({
-      "govuk-input": true,
-      "govuk-input--error": this.isError
+      "govuk-checkboxes__input": this.isCheckbox || this.isToggle,
+      "govuk-radios__item": this.isRadio,
+      "govuk-file-upload": this.isFile,
+      "govuk-input": this.isInput || this._isFormula,
+      "govuk-input--error":
+        (this.isInput || this._isFormula) && this.sfGpsDsIsError,
+      "vlocity-input": false
     });
   }
 
-  @api getErrorDetails() {
-    let rv = null;
-    if (DEBUG) console.log("> sfGpsDsUkGovInputOsN.getErrorDetails");
-
-    try {
-      let elt = this.template.querySelector(ERROR_ID_SELECTOR);
-
-      if (elt == null) {
-        if (DEBUG) console.log("sfGpsDsUkGovInputOsN: cannot find child input");
-      } else if (this.isCustomLwc) {
-        if (elt.getErrorDetails) {
-          rv = elt.getErrorDetails();
-        } else {
-          if (DEBUG)
-            console.log(
-              "sfGpsDsUkGovInputOsN: child input does not have getErrorDetails"
-            );
-        }
-      } else {
-        rv = elt
-          ? {
-              id: elt.id,
-              errorMessage: this._errorMessage
-            }
-          : null;
-      }
-    } catch (e) {
-      if (DEBUG) console.log("sfGpsDsUkGovInputOsN: exception ", e);
-    }
-
-    if (DEBUG)
-      console.log("< sfGpsDsUkGovInputOsN.getErrorDetails", JSON.stringify(rv));
-    return rv;
+  get computedErrorMessageBlockId() {
+    return "errorMessageBlock";
   }
 
-  get _errorMessage() {
-    return this.errorMessage?.replace("Error: ", "");
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
+    });
   }
 }

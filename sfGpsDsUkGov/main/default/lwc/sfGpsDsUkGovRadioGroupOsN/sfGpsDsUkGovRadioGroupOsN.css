@@ -10,3 +10,8 @@
 .govuk-fieldset__legend slot {
   display: table-cell;
 }
+
+/* added to align with omnistudio 246 darkenining the background of read only widgets wholesale */
+.govuk-radios__label:before {
+  background: white;
+}

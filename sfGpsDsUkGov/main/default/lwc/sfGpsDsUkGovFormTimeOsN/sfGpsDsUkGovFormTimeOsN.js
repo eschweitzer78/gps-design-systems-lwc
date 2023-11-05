@@ -5,20 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptTime from "omnistudio/omniscriptTime";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormTimeOsN from "c/sfGpsDsFormTimeOsN";
 import tmpl from "./sfGpsDsUkGovFormTimeOsN.html";
 
-export default class SfGpsDsUkGovFormTimeOsN extends OmniscriptTime {
+export default class SfGpsDsUkGovFormTimeOsN extends SfGpsDsFormTimeOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

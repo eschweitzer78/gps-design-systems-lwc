@@ -1,176 +1,156 @@
 <template>
-  <!--
-  <div class={_styleClasses.container}>
-    <fieldset class={errorClass}>
-  -->
-  <div class="slds-container_fluid">
-    <div class="nsw-form__group">
-      <!--
-      <div class="sfgpsds-label__group">
-        <div class="sfgpsds-label__group_label_container">
-          <div class="sfgpsds-label__group_label">
--->
-      <label
-        class={computedLabelClassName}
-        aria-label={mergedLabel}
-        for="inputId"
+  <div class="nsw-form__group">
+    <label
+      class={computedLabelClassName}
+      aria-label={mergedLabel}
+      for="inputId"
+    >
+      {mergedLabel}
+      <span if:true={_propSetMap.required} class="sr-only">
+        ({requiredLabel})</span
       >
-        {mergedLabel}
-        <span if:true={_propSetMap.required} class="sr-only">
-          ({requiredLabel})</span
-        >
-      </label>
-      <!--
-          </div>
-        </div>
--->
+    </label>
 
-      <template if:true={_propSetMap.repeat}>
-        <span
-          slot="label"
-          style="bottom: 7px; right: -11px"
-          class={_styleClasses.repeatContainer}
-          role="group"
+    <template if:true={_propSetMap.repeat}>
+      <span
+        slot="label"
+        style="bottom: 7px; right: -11px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          if:true={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
         >
-          <button
-            if:true={canRepeat}
-            class={_styleClasses.repeatAdd}
-            onclick={handleAdd}
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text={_repeatAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
           >
-            <omnistudio-icon
-              icon-name="utility:add"
-              alternative-text={_repeatAlternativeText}
-              extraclass={_styleClasses.repeatIcons}
-              size="xx-small"
-            >
-            </omnistudio-icon>
-          </button>
-          <button
-            if:true={canRemove}
-            class={_styleClasses.repeatRemove}
-            onclick={handleRemove}
+          </omnistudio-icon>
+        </button>
+        <button
+          if:true={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text={_removeAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
           >
-            <omnistudio-icon
-              icon-name="utility:close"
-              alternative-text={_removeAlternativeText}
-              extraclass={_styleClasses.repeatIcons}
-              size="xx-small"
-            >
-            </omnistudio-icon>
-          </button>
-        </span>
-      </template>
-
-      <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
-        {mergedHelpText}
+          </omnistudio-icon>
+        </button>
       </span>
-      <!--
-      </div>
--->
+    </template>
 
-      <div class="nsw-form__predictive">
-        <div class="sfgps-combobox_container">
-          <div
-            class="sfgps-combobox sfgps-dropdown-trigger sfgps-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
-            aria-expanded={show}
-            aria-haspopup="listbox"
-            role="combobox"
-          >
+    <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
+      {mergedHelpText}
+    </span>
+
+    <div class="sfgpsds-form-element__control nsw-form__predictive">
+      <div class="sfgpsds-combobox_container">
+        <div
+          class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger_click"
+        >
+          <div class="sfgpsds-combobox__form-element" role="none">
             <input
-              class="nsw-form__input vlocity-input sfgpsds-input lookup"
+              class="nsw-form__input sfgpsds-input sfgpsds-combobox__input lookup"
               type="text"
-              value={lookupDisplay}
               disabled={_propSetMap.readOnly}
               required={_propSetMap.required}
-              readonly
+              readonly={_propSetMap.readOnly}
+              aria-controls="lookup"
+              id="lookupId"
+              placeholder={mergedPlaceholder}
+              aria-invalid={isAriaInvalid}
+              aria-expanded={show}
+              aria-haspopup="listbox"
+              value={lookupDisplay}
+              aria-describedby={computedAriaDescribedBy}
+              role="combobox"
+              data-omni-input
               onblur={hideOptions}
               onkeydown={handleKeyDown}
               onkeyup={handleKeyUp}
               onmouseup={showLookup}
-              aria-controls="lookup"
-              id="lookupId"
-              placeholder={_propSetMap.placeholder}
-              data-omni-input
             />
-            <div
-              class="sfgps-dropdown sfgps-dropdown_fluid nsw-form__predictive-list"
-              role="listbox"
-              id="lookup"
-              onmousedown={handleKeyDown}
-              onmouseleave={handleKeyDown}
-              onmouseup={handleKeyDown}
+          </div>
+
+          <div
+            class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid nsw-form__predictive-list"
+            id="lookup"
+            role="listbox"
+            onmousedown={handleKeyDown}
+            onmouseleave={handleKeyDown}
+            onmouseup={handleKeyDown}
+          >
+            <ul
+              class="sfgpsds-listbox sfgpsds-listbox_vertical"
+              role="presentation"
             >
-              <ul
-                class="sfgps-listbox sfgps-listbox_vertical"
-                role="presentation"
+              <template
+                for:each={computedOptions}
+                for:item="optionItem"
+                for:index="optionIndex"
               >
-                <template
-                  for:each={options}
-                  for:item="optionItem"
-                  for:index="optionIndex"
+                <!-- removed onmouseover={mouseOverFocus} -->
+                <li
+                  key={optionItem.key}
+                  class="sfgpsds-listbox__item"
+                  role="presentation"
+                  data-option-index={optionIndex}
+                  onmouseup={selectOption}
                 >
-                  <li
-                    key={optionItem.key}
-                    role="presentation"
-                    onmouseup={selectOption}
-                    onmouseover={mouseOverFocus}
-                    class="sfgps-listbox__item"
+                  <div
+                    class="sfgpsds-listbox__option sfgpsds-listbox__option--plain"
+                    id={optionItem.id}
+                    role="option"
+                    aria-selected={optionItem.selected}
                   >
-                    <div
-                      class="sfgps-media sfgps-listbox__option sfgps-listbox__option_entity sfgps-listbox__option_has-meta"
-                      id={optionItem.id}
-                      role="option"
-                      data-option-index={optionIndex}
-                      aria-selected={optionItem.selected}
+                    <span
+                      class="sfgpsds-listbox__option-text"
+                      title={optionItem.value}
                     >
-                      <span
-                        class="sfgps-media__body"
-                        data-option-index={optionIndex}
-                      >
-                        <span
-                          class="sfgps-listbox__option-text sfgps-listbox__option-text_entity"
-                          data-option-index={optionIndex}
-                        >
-                          {optionItem.value}
-                        </span>
-                      </span>
-                    </div>
-                  </li>
-                </template>
-              </ul>
-            </div>
+                      {optionItem.value}
+                    </span>
+                  </div>
+                </li>
+              </template>
+            </ul>
           </div>
         </div>
       </div>
-
-      <span
-        if:true={hasError}
-        class={computedHelperClassName}
-        aria-live="assertive"
-        id="errorMessageBlock"
-      >
-        <span
-          if:true={computedStatusIcon}
-          class="material-icons nsw-material-icons"
-          aria-hidden="true"
-        >
-          {computedStatusIcon}
-        </span>
-        {errorMessage}
-      </span>
-
-      <template if:true={isPageLoading}>
-        <omnistudio-spinner
-          variant="brand"
-          alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
-          size="small"
-        >
-        </omnistudio-spinner>
-      </template>
     </div>
+
+    <span
+      if:true={sfGpsDsIsError}
+      class={computedHelperClassName}
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <span
+        if:true={computedStatusIcon}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {computedStatusIcon}
+      </span>
+      {sfGpsDsErrorMessage}
+    </span>
+
+    <template if:true={isPageLoading}>
+      <omnistudio-spinner
+        variant="brand"
+        alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+        theme="slds"
+        size="small"
+      >
+      </omnistudio-spinner>
+    </template>
   </div>
-  <!--
-    </fieldset>
-  </div>
-  -->
 </template>

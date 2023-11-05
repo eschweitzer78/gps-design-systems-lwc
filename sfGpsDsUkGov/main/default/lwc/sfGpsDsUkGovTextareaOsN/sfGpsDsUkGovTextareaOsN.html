@@ -1,16 +1,15 @@
 <template>
   <div class={computedFormGroupClassName}>
     <div if:true={labelVisible} data-label="true">
-      <h1 class="govuk-label-wrapper">
+      <h3 class="govuk-label-wrapper">
         <label
           id="textarealabel"
           class={computedLabelClassName}
           for="textareaId"
         >
           {label}
-          <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
         </label>
-      </h1>
+      </h3>
       <slot name="label"> </slot>
     </div>
 
@@ -18,9 +17,13 @@
       {fieldLevelHelp}
     </div>
 
-    <p if:true={isError} id="errorMessageBlock" class="govuk-error-message">
-      <span class="govuk-visually-hidden">{errorSrLabel}</span>
-      {_errorMessage}
+    <p
+      if:true={sfGpsDsIsError}
+      id="errorMessageBlock"
+      class="govuk-error-message"
+    >
+      <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span>
+      {sfGpsDsErrorMessage}
     </p>
 
     <textarea
@@ -29,6 +32,7 @@
       minlength={minLength}
       maxlength={maxLength}
       readonly={readOnly}
+      aria-readonly={readOnly}
       accesskey={accessKey}
       name={name}
       disabled={disabled}
@@ -36,14 +40,15 @@
       placeholder={placeholder}
       id="textareaId"
       autocomplete={autocomplete}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={sfGpsDsIsError}
       oninput={updateValue}
       onblur={validateError}
       onfocus={triggerEvent}
+      onchange={triggerEvent}
       onkeyup={handleKeyUp}
       onkeydown={keyCallbacks}
-      aria-labelledby="textarealabel exceeding-characters-info exceeding-characters-error"
-      aria-describedby={computedAriaDescribedBy}
-      aria-invalid={isError}
+      data-sfgpsds-input
     >
       {_val}
     </textarea>

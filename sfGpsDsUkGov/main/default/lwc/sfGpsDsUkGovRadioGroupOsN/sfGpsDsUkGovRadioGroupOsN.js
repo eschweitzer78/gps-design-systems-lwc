@@ -5,13 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
-import OmnistudioRadioGroup from "omnistudio/radioGroup";
+import OmnistudioRadioGroup from "c/sfGpsDsOmniRadioGroupOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovRadioGroupOsN.html";
-
-const errorSrLabel = "Error: ";
 
 export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
   OmnistudioRadioGroup,
@@ -28,18 +25,18 @@ export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": true,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group--error": this.sfGpsDsIsError
     });
   }
 
   get computedAriaInvalid() {
-    return this.isError;
+    return this.sfGpsDsIsError;
   }
 
   get computedAriaDescribedBy() {
     return computeClass({
-      helper: this._handleHelpText,
-      errorMessageBlock: this.isError
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 
@@ -48,40 +45,5 @@ export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
       "govuk-radios": true,
       "govuk-radios--inline": this.alignment === "horizontal"
     });
-  }
-
-  get errorSrLabel() {
-    return errorSrLabel;
-  }
-
-  @api reportValidity() {
-    let r = super.reportValidity();
-    console.log("reportValidity", r, this.errorMessage);
-    return r;
-  }
-
-  @api checkValidity() {
-    let r = super.checkValidity();
-    console.log("checkValidity", r, this.errorMessage);
-    return r;
-  }
-
-  @api getErrorDetails() {
-    let elt = this.template.querySelector(".govuk-form-group");
-
-    return elt
-      ? {
-          id: elt.id,
-          errorMessage: this._errorMessage
-        }
-      : null;
-  }
-
-  @api scrollTo() {
-    console.log("scrollTo called v2!");
-  }
-
-  get _errorMessage() {
-    return this.errorMessage?.replace("Error: ", "");
   }
 }

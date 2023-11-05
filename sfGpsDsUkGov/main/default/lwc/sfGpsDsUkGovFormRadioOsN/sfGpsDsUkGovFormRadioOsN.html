@@ -1,22 +1,24 @@
 <template>
   <c-sf-gps-ds-uk-gov-radio-group-os-n
-    key={jsonDef.name}
     name={jsonDef.name}
     label={mergedLabel}
+    label-size={_propSetMap.labelSize}
     options={_realtimeOptions}
     value={elementValue}
-    onchange={handleChange}
-    onfocus={handleFocus}
     tab-index={tabIndex}
     required={_propSetMap.required}
     required-label={allCustomLabelsUtil.OmniRequired}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     theme={_theme}
     type="radio"
-    data-refresh={refresh}
     alignment={_horizontalMode}
     message-when-value-missing={_messageWhenValueMissing}
+    data-refresh={refresh}
     data-omni-input
+    onchange={handleChange}
+    onfocus={handleFocus}
+    onblur={handleBlur}
   >
     <template if:true={_propSetMap.repeat}>
       <span slot="label" class={_styleClasses.repeatContainer} role="group">

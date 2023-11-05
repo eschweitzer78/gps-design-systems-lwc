@@ -1,2 +1,16 @@
 @import "c/sfGpsDsUkGovCoreOs";
 @import "./input.gen.css";
+
+/* repeat icons */
+
+[data-label="true"] {
+  display: table;
+}
+
+[data-label="true"] .govuk-label {
+  margin-right: 0.5rem;
+}
+
+[data-label="true"] slot {
+  display: table-cell;
+}

@@ -1,27 +1,26 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import OmnistudioCheckboxGroup from "omnistudio/checkboxGroup";
-import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+
+import OmnistudioCheckboxGroup from "c/sfGpsDsOmniCheckboxGroupOsN";
+import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswCheckboxGroupOsN.html";
 
-export default class SfGpsDsAuNswCheckboxGroupOsN extends OmnistudioCheckboxGroup {
+export default class SfGpsDsAuNswCheckboxGroupOsN extends SfGpsDsAuNswStatusHelperMixin(
+  OmnistudioCheckboxGroup
+) {
   render() {
     return tmpl;
   }
 
-  get computedAriaInvalid() {
-    return this.isError;
-  }
-
   get computedAriaDescribedBy() {
     return computeClass({
-      errorMessageBlock: this.isError,
-      helper: this.fieldLevelHelp
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 
@@ -30,17 +29,5 @@ export default class SfGpsDsAuNswCheckboxGroupOsN extends OmnistudioCheckboxGrou
       "nsw-form__legend": true,
       "nsw-form__required": this.required
     });
-  }
-
-  get computedHelperClassName() {
-    return getHelperClassName("invalid");
-  }
-
-  get computedStatusIcon() {
-    return getStatusIcon("invalid");
-  }
-
-  get isRealError() {
-    return this.isError && this.errorMessage;
   }
 }

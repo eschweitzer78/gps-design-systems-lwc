@@ -1,10 +1,11 @@
 @import "c/sfGpsDsAuVicFormCssOs";
+@import "c/sfGpsDsAuVicPredictiveCssOsN";
 
+/*
 .sfgpsds-predictive {
   position: relative;
 }
 
-/*.sfgpsds-predictive*/
 input {
   border-radius: 0.25rem;
   color: #011a3c;
@@ -30,7 +31,6 @@ input {
   display: block;
   padding: 0.875rem 1rem;
   color: #011a3c;
-  /*font-weight: normal;*/
 }
 
 @media screen and (min-width: 768px) {
@@ -49,12 +49,12 @@ input {
   color: #fff;
 }
 
-.sfgpsds-listbox__option-text_entity {
+.sfgpsds-listbox__option-text {
   max-width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   display: block;
-  margin-bottom: 0.125rem; /* ? */
+  margin-bottom: 0.125rem;
   overflow: hidden;
 }
 
@@ -118,7 +118,7 @@ input {
   padding: 0;
   margin: 0;
   position: absolute;
-  top: 3rem;
+  top: 3.25rem;
   right: 0;
   left: 0;
   overflow: hidden;
@@ -198,3 +198,4 @@ li {
 li:nth-child(odd) {
   background-color: #fff;
 }
+*/

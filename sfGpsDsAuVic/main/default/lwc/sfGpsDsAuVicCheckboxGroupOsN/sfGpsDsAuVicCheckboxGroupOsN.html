@@ -12,44 +12,46 @@
         </div>
 
         <div
-          if:true={isRealError}
+          if:true={sfGpsDsIsError}
           class="errors help-block"
           aria-live="assertive"
+          role="alert"
           id="errorMessageBlock"
         >
-          <span>{errorMessage}</span>
+          <span>{sfGpsDsErrorMessage}</span>
         </div>
 
         <div class="field-wrap">
           <div class="form-control">
             <!-- avoid required after label -->
             <template
-              for:each={_decoratedInternalOpts}
-              for:item="e"
+              for:each={sfGpsDsInternalOpts}
+              for:item="option"
               for:index="index"
             >
               <label
-                key={e.id}
+                key={option.id}
                 class="rpl-checkbox"
                 data-index={index}
-                for={e.id}
+                for={option.id}
               >
                 <input
                   type="checkbox"
                   required={required}
                   disabled={disabled}
-                  id={e.id}
-                  data-index={index}
+                  id={option.id}
                   tabindex={tabIndex}
                   name={name}
-                  checked={e.selected}
-                  value={e.value}
-                  aria-invalid={isAriaInvalid}
+                  aria-invalid={sfGpsDsIsError}
                   aria-describedby={computedAriaDescribedBy}
+                  checked={option.selected}
+                  value={option.value}
+                  data-index={index}
                   onfocus={handleFocus}
-                  onchange={onchangevalue}
+                  onchange={sfGpsDsOnChangeValue}
+                  onkeydown={handleKeyDownEvent}
                 />
-                <span class={e.boxClassName}>
+                <span class={option.boxClassName}>
                   <svg
                     viewBox="0 0 11 11"
                     aria-hidden="true"
@@ -62,7 +64,7 @@
                     ></path>
                   </svg>
                 </span>
-                <span class="rpl-checkbox__inline-label"> {e.label} </span>
+                <span class="rpl-checkbox__inline-label">{option.label}</span>
               </label>
             </template>
           </div>

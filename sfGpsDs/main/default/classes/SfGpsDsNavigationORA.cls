@@ -171,7 +171,7 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
 
   @AuraEnabled(cacheable=true)
   public static String getBaseUrl() {
-    return URL.getSalesforceBaseUrl().toExternalForm();
+    return URL.getOrgDomainURL().toExternalForm();
   }
 
   public class MalformedCallException extends Exception {

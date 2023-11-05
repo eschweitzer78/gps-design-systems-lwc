@@ -4,9 +4,8 @@ import OmniscriptPubSub from "omnistudio/pubsub";
 import OmniscriptSalesforceUtils from "omnistudio/salesforceUtils";
 
 const I18N = {};
-
-const ELEMENT_SELECTOR = "select";
 const NONE = "none";
+const INPUT_SELECTOR = "[data-sfgpsds-input]";
 
 export default class SfGpsDsUkGovSelect extends LightningElement {
   @api label;
@@ -180,8 +179,22 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
     });
   }
 
+  get computedSelectClassName() {
+    return computeClass({
+      "govuk-select": true,
+      "govuk-select--error": this.isError
+    });
+  }
+
   get computedDisabled() {
     return this.disabled || this.readOnly;
+  }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.isError
+    });
   }
 
   /* methods */
@@ -227,7 +240,7 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
   /* focus */
 
   @api focus() {
-    this.template.querySelector(ELEMENT_SELECTOR).focus();
+    this.template.querySelector(INPUT_SELECTOR).focus();
   }
 
   /* validation */
@@ -279,6 +292,10 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
     return this._validity.valid;
   }
 
+  @api setCustomValidation(message) {
+    this.setCustomValidity(message);
+  }
+
   @api setCustomValidity(message) {
     this._validity.customError = this.isError = message === "" ? false : true;
     this.errorMessage = message;
@@ -288,9 +305,19 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
     this.setValidity(true);
   }
 
+  @api get validationMessage() {
+    return this.isError ? this.errorMessage : "";
+  }
+
   // event management
 
   handleChange(event) {
+    /* clear custom validation first */
+    if (this._validity.customError) {
+      this._validity.customError = false;
+      this.setValidity(true);
+    }
+
     const selectedElements = event.currentTarget.selectedOptions;
     let selectedIndexes = [];
     let selectedValues = [];

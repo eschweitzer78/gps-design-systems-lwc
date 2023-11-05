@@ -6,9 +6,12 @@
  */
 
 import OmniscriptDisclosure from "omnistudio/omniscriptDisclosure";
+import SfGpsDsOmniHasValidationMixin from "c/sfGpsDsOmniHasValidationMixinOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 
-export default class SfGpsDsFormDisclosureOsN extends OmniscriptDisclosure {
+export default class SfGpsDsFormDisclosureOsN extends SfGpsDsOmniHasValidationMixin(
+  OmniscriptDisclosure
+) {
   get mergedLabel() {
     return omniGetMergedField(this, this._propSetMap.label);
   }

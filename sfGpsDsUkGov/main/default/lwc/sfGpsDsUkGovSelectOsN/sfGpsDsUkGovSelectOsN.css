@@ -4,7 +4,7 @@
 /* repeat icons */
 
 label.govuk-label {
-  display: block; /* UK Gov uses block but "inline" can be used if required to make the + appear next to the label  */
+  display: flex; /* UK Gov uses block but "inline" can be used if required to make the + appear next to the label  */
 }
 
 label span {

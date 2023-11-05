@@ -1,12 +1,13 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import OmniscriptFile from "omnistudio/omniscriptFile";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
-import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+
+import { track } from "lwc";
+import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
+import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormFileOsN.html";
 
@@ -17,7 +18,9 @@ import tmpl from "./sfGpsDsAuNswFormFileOsN.html";
 //  background-color: rgb(243, 243, 243); -> var(--slds-c-button-neutral-color-background-hover)
 //  border-color: rgb(201, 201, 201); -> var(--slds-c-button-neutral-color-border-hover)
 
-export default class SfGpsDsAuNswFormFileOsN extends OmniscriptFile {
+export default class SfGpsDsAuNswFormFileOsN extends SfGpsDsAuNswStatusHelperMixin(
+  SfGpsDsFormFileOsN
+) {
   render() {
     return tmpl;
   }
@@ -29,19 +32,15 @@ export default class SfGpsDsAuNswFormFileOsN extends OmniscriptFile {
     });
   }
 
-  get computedHelperClassName() {
-    return getHelperClassName("invalid");
-  }
+  @track computedAriaDescribedBy;
 
-  get computedStatusIcon() {
-    return getStatusIcon("invalid");
-  }
+  renderedCallback() {
+    if (super.renderedCallback) super.renderedCallback();
 
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
+    this.computedAriaDescribedBy = [
+      ...this.template.querySelectorAll(".nsw-form__helper")
+    ]
+      .map((item) => item.id)
+      .join(" ");
   }
 }

@@ -15,12 +15,12 @@
           <div class="field-wrapper">
             <div class="slds-form-element__control">
               <input
-                style={styleProperties.value.styles}
                 type={type}
                 id="date-input"
                 aria-label={ariaLabel}
                 tabindex={tabIndex}
                 readonly={readOnly}
+                aria-readonly={readOnly}
                 required={required}
                 placeholder={placeholder}
                 disabled={disabled}
@@ -28,7 +28,7 @@
                 name={name}
                 autocomplete="off"
                 aria-invalid={ariaInvalid}
-                aria-describedby="errorMessageBlock"
+                aria-describedby={computedAriaDescribedBy}
                 value={_displayValue}
                 onkeypress={shiftFocus}
                 onkeyup={maskInput}
@@ -120,9 +120,9 @@
                       onchange={yearSelected}
                       onkeydown={shiftFocus}
                     >
-                      <template for:each={years} for:item="e">
-                        <option key={e.value}>
-                          <span>{e.value}</span>
+                      <template for:each={years} for:item="year">
+                        <option key={year.value}>
+                          <span>{year.value}</span>
                         </option>
                       </template>
                     </select>
@@ -138,33 +138,38 @@
               >
                 <thead>
                   <tr data-id="weekdays">
-                    <template for:each={daysTitle} for:item="e">
+                    <template for:each={daysTitle} for:item="day">
                       <th
-                        key={e.name}
+                        key={day.name}
                         class="slds-disabled-text"
-                        data-id={e.name}
+                        data-id={day.name}
                         tabindex="-1"
                         scope="col"
-                      ></th>
+                      >
+                        <abbr title={day.name}>{day.name}</abbr>
+                      </th>
                     </template>
                   </tr>
                 </thead>
 
                 <tbody>
-                  <template for:each={DayArray} for:item="week">
-                    <tr key={week.id}>
-                      <template for:each={week} for:item="e">
+                  <template for:each={DayArray} for:item="days">
+                    <tr key={days.id}>
+                      <template for:each={days} for:item="day">
                         <td
-                          key={e.id}
-                          class={e.class}
-                          data-id={e.id}
+                          key={day.id}
+                          class={day.class}
+                          data-id={day.id}
+                          data-type="date"
                           aria-selected="false"
                           tabindex="0"
                           role="gridcell"
                           onkeydown={shiftFocus}
                           onmousedown={selectDate}
                         >
-                          <span class="slds-day">{e.value}</span>
+                          <span class="slds-day" aria-label={day.ariaLabel}
+                            >{day.value}</span
+                          >
                         </td>
                       </template>
                     </tr>
@@ -187,12 +192,13 @@
         </div>
 
         <div
-          if:true={isError}
+          if:true={sfGpsDsIsError}
           class="errors help-block"
           aria-live="assertive"
+          role="alert"
           id="errorMessageBlock"
         >
-          <span>{errorMessage}</span>
+          <span>{sfGpsDsErrorMessage}</span>
         </div>
       </div>
     </div>

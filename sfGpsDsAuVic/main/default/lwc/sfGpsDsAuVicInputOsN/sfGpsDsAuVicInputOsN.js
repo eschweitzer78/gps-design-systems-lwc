@@ -1,18 +1,21 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { api } from "lwc";
-import OmniscriptInput from "omnistudio/input";
+import OmniscriptInput from "c/sfGpsDsOmniInputOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVicInputOsN.html";
 
 export default class SfGpsDsAuVicInputOsN extends OmniscriptInput {
   @api formGroupAddlClassName;
   @api labelClassName;
+
+  /* Methods */
+  /* ------- */
 
   render() {
     return tmpl;
@@ -38,12 +41,26 @@ export default class SfGpsDsAuVicInputOsN extends OmniscriptInput {
     }
   }
 
+  /* original maskedInput widget does a JS update of aria-describedby when validating */
+
+  resolveAriaDescribedBy() {
+    return [
+      this.template.querySelector(".hint")?.id,
+      this.template.querySelector(".help-block")?.id
+    ]
+      .filter((item) => item)
+      .join(" ");
+  }
+
+  /* Getters */
+  /* ------- */
+
   get computedFormGroupClassName() {
     return computeClass({
       "form-group": true,
       [this.formGroupAddlClassName]: this.formGroupAddlClassName,
-      valid: !this.isError,
-      invalid: this.isError,
+      valid: !this.sfGpsDsIsError,
+      invalid: this.sfGpsDsIsError,
       required: this.required
     });
   }
@@ -55,111 +72,10 @@ export default class SfGpsDsAuVicInputOsN extends OmniscriptInput {
     });
   }
 
-  get isRealError() {
-    return this.isError && this.errorMessage;
-  }
-
-  /* event center */
-  _handleOnBlur(e) {
-    super.validateError(e);
-    this.dispatchEvent(
-      new CustomEvent("internalblur", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnChange(e) {
-    super.triggerEvent(e);
-    this.dispatchEvent(
-      new CustomEvent("internalchange", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnFocus(e) {
-    super.handleFocus(e);
-    this.dispatchEvent(
-      new CustomEvent("internalfocus", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnKeyDown(e) {
-    super.triggerKeyEvents(e);
-    this.dispatchEvent(
-      new CustomEvent("internalkeydown", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnInput(e) {
-    super.triggerInputEvent(e);
-    this.dispatchEvent(
-      new CustomEvent("internalinput", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnKeyPress(e) {
-    this.dispatchEvent(
-      new CustomEvent("internalkeypress", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnKeyUp(e) {
-    super.triggerKeyEvents(e);
-    this.dispatchEvent(
-      new CustomEvent("internalkeyup", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
-  }
-  _handleOnPaste(e) {
-    this.dispatchEvent(
-      new CustomEvent("internalpaste", {
-        detail: {
-          value: e.target.value,
-          selectionStart: e.target.selectionStart,
-          selectionEnd: e.target.selectionEnd,
-          which: e.which
-        }
-      })
-    );
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
+    });
   }
 }

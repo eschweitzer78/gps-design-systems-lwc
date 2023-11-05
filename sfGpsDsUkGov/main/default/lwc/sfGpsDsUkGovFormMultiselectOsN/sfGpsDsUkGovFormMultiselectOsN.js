@@ -5,20 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptMultiselect from "omnistudio/omniscriptMultiselect";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormMultiselectOsN from "c/sfGpsDsFormMultiselectOsN";
 import tmpl from "./sfGpsDsUkGovFormMultiselectOsN.html";
 
-export default class SfGpsDsUkGovFormMultiselectOsN extends OmniscriptMultiselect {
+export default class SfGpsDsUkGovFormMultiselectOsN extends SfGpsDsFormMultiselectOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

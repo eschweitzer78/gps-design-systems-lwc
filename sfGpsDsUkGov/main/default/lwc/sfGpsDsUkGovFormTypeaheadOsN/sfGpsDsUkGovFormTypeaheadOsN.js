@@ -5,24 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormTypeahead from "c/sfGpsDsFormTypeaheadOsN";
 import tmpl from "./sfGpsDsUkGovFormTypeaheadOsN.html";
 
-export default class sfGpsDsUkGovFormTypeaheadOsN extends OmniscriptTypeahead {
+export default class sfGpsDsUkGovFormTypeaheadOsN extends SfGpsDsFormTypeahead {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
-  }
-
-  get _errorMessage() {
-    return this.errorMessage?.replace("Error: ", "");
   }
 }

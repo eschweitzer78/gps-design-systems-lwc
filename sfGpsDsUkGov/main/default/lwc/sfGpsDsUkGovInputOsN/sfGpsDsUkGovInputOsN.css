@@ -4,15 +4,15 @@
 
 /* repeat icons */
 
-[data-label] {
+[data-label="true"] {
   display: table;
 }
 
-[data-label] .govuk-label-wrapper {
+[data-label="true"] .govuk-label {
   margin-right: 0.5rem;
 }
 
-[data-label] slot {
+[data-label="true"] slot {
   display: table-cell;
 }
 
@@ -23,3 +23,26 @@
 .govuk-checkboxes__item slot {
   display: table-cell;
 }
+
+/* added to align with omnistudio 246 darkenining the background of read only widgets wholesale */
+.govuk-checkboxes__label:before {
+  background: white;
+}
+
+/*
+ fix an issue that prevents checkboxes to validate properly and creates issues on next/prev...
+ omni validates on focus out but with a large input (just as large as the faux square)
+ the blur event is never generated unless you click outside the widget.
+ As a result, the validation state may be wrong and you may navigate when you shouldn't and
+ vice versa... 
+ also, if it's a widget when a custom error was set (e.g. set errors action), it's state won't
+ be cleared and no changes (even though they are graphically visible) will make it to the json data.
+ 
+ ...so we make it as small as the omni input for checkboxes, 1px square.
+*/
+/*
+.govuk-checkboxes__input {
+  width: 1px;
+  height: 1px;
+}
+*/

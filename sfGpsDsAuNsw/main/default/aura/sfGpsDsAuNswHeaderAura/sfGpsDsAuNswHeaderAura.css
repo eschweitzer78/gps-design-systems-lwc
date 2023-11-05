@@ -103,15 +103,17 @@
 }
 @media (min-width: 62rem) {
   .THIS .nsw-header__search button > span:last-child {
-    border: 0 !important;
-    clip: rect(1px, 1px, 1px, 1px) !important;
-    clip-path: inset(50%) !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    position: absolute !important;
     width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
     white-space: nowrap !important;
+    border: 0 !important;
+  }
+  .THIS .nsw-header__search button > span:last-child:not(caption) {
+    position: absolute !important;
   }
   .THIS .nsw-header__search button .nsw-material-icons {
     font-size: 2.25rem;

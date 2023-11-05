@@ -1,16 +1,18 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmnistudioTypeahead from "omnistudio/typeahead";
-import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import OmnistudioTypeahead from "c/sfGpsDsOmniTypeaheadOsN";
+import StatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswTypeaheadOsN.html";
 
-export default class SfGpsDsAuNswTypeaheadOs extends OmnistudioTypeahead {
+export default class SfGpsDsAuNswTypeaheadOsN extends StatusHelperMixin(
+  OmnistudioTypeahead
+) {
   render() {
     return tmpl;
   }
@@ -22,11 +24,19 @@ export default class SfGpsDsAuNswTypeaheadOs extends OmnistudioTypeahead {
     });
   }
 
-  get computedHelperClassName() {
-    return getHelperClassName("invalid");
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
+    });
   }
 
-  get computedStatusIcon() {
-    return getStatusIcon("invalid");
+  get computedComboboxClassName() {
+    return computeClass({
+      "sfgpsds-combobox": true,
+      "sfgpsds-dropdown-trigger": true,
+      "sfgpsds-dropdown-trigger_click": true,
+      "sfgpsds-is-open": this.isLookupVisible
+    });
   }
 }

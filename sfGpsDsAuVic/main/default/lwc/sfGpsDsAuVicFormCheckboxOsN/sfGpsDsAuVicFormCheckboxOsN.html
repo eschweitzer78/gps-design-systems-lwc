@@ -1,13 +1,18 @@
 <template>
+  <!-- added readOnly -->
   <c-sf-gps-ds-au-vic-input-os-n
     type="checkbox"
     label={mergedLabel}
-    onchange={handleChange}
+    theme={_theme}
+    icon-name="utility:info"
     checked={elementValue}
     tab-index={tabIndex}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     form-group-addl-class-name="form-group__low-margin-bottom"
     data-omni-input
+    onchange={handleChange}
+    read-only={_propSetMap.readOnly}
   >
     <template if:true={_propSetMap.repeat}>
       <span slot="label" class={_styleClasses.repeatContainer} role="group">

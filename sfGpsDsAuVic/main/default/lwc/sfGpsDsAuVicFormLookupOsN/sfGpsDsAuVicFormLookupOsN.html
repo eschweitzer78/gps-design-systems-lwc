@@ -46,71 +46,72 @@
           {mergedHelpText}
         </div>
 
-        <div class="sfgpsds-predictive field-wrap">
+        <div class="sfgpsds-form-element__control field-wrap">
           <div class="sfgpsds-combobox_container">
             <div
-              class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger slds-dropdown-trigger_click"
-              aria-expanded={show}
-              aria-haspopup="listbox"
-              role="combobox"
+              class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger_click"
             >
-              <input
-                class="sfgpsds-lookup__input vlocity-input sfgpsds-input lookup"
-                type="text"
-                value={lookupDisplay}
-                disabled={_propSetMap.readOnly}
-                required={_propSetMap.required}
-                readonly
-                onblur={hideOptions}
-                onkeydown={handleKeyDown}
-                onkeyup={handleKeyUp}
-                onmouseup={showLookup}
-                aria-controls="lookup"
-                id="lookupId"
-                placeholder={_propSetMap.placeholder}
-                data-omni-input
-              />
+              <div class="sfgpsds-combobox__form-element" role="none">
+                <input
+                  class="sfgpsds-lookup__input sfgpsds-input sfgpsds-combobox__input lookup"
+                  type="text"
+                  disabled={_propSetMap.readOnly}
+                  required={_propSetMap.required}
+                  readonly={_propSetMap.readOnly}
+                  aria-controls="lookup"
+                  id="lookupId"
+                  placeholder={mergedPlaceholder}
+                  aria-invalid={isAriaInvalid}
+                  aria-expanded={show}
+                  aria-haspopup="listbox"
+                  aria-autocomplete="list"
+                  value={lookupDisplay}
+                  aria-describedby={computedAriaDescribedBy}
+                  role="combobox"
+                  data-omni-input
+                  onblur={hideOptions}
+                  onkeydown={handleKeyDown}
+                  onkeyup={handleKeyUp}
+                  onmouseup={showLookup}
+                />
+              </div>
+
               <div
-                class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpscx-predictive__list"
-                role="listbox"
+                class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid sfgpsds-predictive__list"
                 id="lookup"
+                role="listbox"
                 onmousedown={handleKeyDown}
                 onmouseleave={handleKeyDown}
                 onmouseup={handleKeyDown}
               >
                 <ul
-                  class="sfgpsds-listbox sfgpds-listbox_vertical"
+                  class="sfgpsds-listbox sfgpsds-listbox_vertical"
                   role="presentation"
                 >
                   <template
-                    for:each={options}
+                    for:each={computedOptions}
                     for:item="optionItem"
                     for:index="optionIndex"
                   >
+                    <!-- removed onmouseover={mouseOverFocus} -->
                     <li
                       key={optionItem.key}
+                      class="sfgpsds-listbox__item"
                       role="presentation"
+                      data-option-index={optionIndex}
                       onmouseup={selectOption}
-                      onmouseover={mouseOverFocus}
-                      class="sfgps-listbox__item"
                     >
                       <div
-                        class="sfgpsds-media sfgpsds-listbox__option sfgpsds-listbox__option_entity sfgpsds-listbox__option_has-meta"
+                        class="sfgpsds-listbox__option sfgpsds-listbox__option_plain"
                         id={optionItem.id}
                         role="option"
-                        data-option-index={optionIndex}
                         aria-selected={optionItem.selected}
                       >
                         <span
-                          class="sfgpsds-media__body"
-                          data-option-index={optionIndex}
+                          class="sfgpsds-listbox__option-text"
+                          title={optionItem.value}
                         >
-                          <span
-                            class="sfgpsds-listbox__option-text sfgpsds-listbox__option-text_entity"
-                            data-option-index={optionIndex}
-                          >
-                            {optionItem.value}
-                          </span>
+                          {optionItem.value}
                         </span>
                       </div>
                     </li>
@@ -122,18 +123,20 @@
         </div>
 
         <div
-          if:true={hasError}
+          if:true={sfGpsDsIsError}
           class="errors help-block"
           aria-live="assertive"
+          role="alert"
           id="errorMessageBlock"
         >
-          <span>{errorMessage}</span>
+          <span>{sfGpsDsErrorMessage}</span>
         </div>
 
         <template if:true={isPageLoading}>
           <omnistudio-spinner
             variant="brand"
             alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+            theme="slds"
             size="small"
           >
           </omnistudio-spinner>

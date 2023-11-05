@@ -1,18 +1,15 @@
 <template>
   <div class="omni-typeahead-container">
+    <!-- removed readonly={_propSetMap.readOnly} as it's not an attr in the original omnistudio typeahead -->
     <c-sf-gps-ds-au-vic-typeahead-os-n
       class={computedTypeaheadClass}
       type="text"
       field-level-help={mergedHelpText}
       field-level-help-position={_propSetMap.helpTextPos}
       label={mergedLabel}
-      onblur={handleBlur}
-      onlastitemclick={enterEditMode}
-      onselect={handleSelect}
-      onclear={handleClear}
       icon-name-right="utility:empty"
       options={options}
-      placeholder={_placeholder}
+      placeholder={mergedPlaceholder}
       required={_propSetMap.required}
       min-length={_propSetMap.minLength}
       max-length={_propSetMap.maxLength}
@@ -25,6 +22,10 @@
       remote-source={_useRemoteSource}
       disable-filter={_disableFilter}
       data-omni-input
+      onblur={handleBlur}
+      onlastitemclick={enterEditMode}
+      onselect={handleSelect}
+      onclear={handleClear}
     >
       <div slot="iconRight">
         <span
@@ -34,15 +35,16 @@
         >
           Enter address manually
         </span>
+
         <button
           if:false={_propSetMap.hideEditButton}
-          class="slds-button slds-button_icon nds-button nds-button_icon"
+          class="slds-button slds-button_icon"
           aria-expanded={_isEditMode}
           onclick={toggleEditMode}
         >
           <omnistudio-icon
             icon-name="utility:edit"
-            extraclass="slds-button__icon nds-button__icon"
+            extraclass="slds-button__icon"
             size="x-small"
             theme={_theme}
             alternative-text={_editLabel}
@@ -51,11 +53,8 @@
         </button>
       </div>
 
-      <a
-        slot="lastItem"
-        if:true={_propSetMap.newItemLabel}
-        label={_propSetMap.newItemLabel}
-        >{_propSetMap.newItemLabel}
+      <a slot="lastItem" if:true={_newItemLabel} label={_newItemLabel}
+        >{_newItemLabel}
       </a>
     </c-sf-gps-ds-au-vic-typeahead-os-n>
 
@@ -87,13 +86,13 @@
 
                   <button
                     if:false={_propSetMap.hideEditButton}
-                    class="slds-button slds-button_icon nds-button nds-button_icon"
+                    class="slds-button slds-button_icon"
                     aria-expanded={_isEditMode}
                     onclick={toggleEditMode}
                   >
                     <omnistudio-icon
                       icon-name="utility:edit"
-                      extraclass="slds-button__icon nds-button__icon"
+                      extraclass="slds-button__icon"
                       size="x-small"
                       theme={_theme}
                       alternative-text={_editLabel}
@@ -122,6 +121,7 @@
                   required-label={allCustomLabelsUtil.OmniRequired}
                   field-level-help=""
                   placeholder=""
+                  read-only={_propSetMap.readOnly}
                   value={street}
                 >
                 </c-sf-gps-ds-au-vic-input-os-n>
@@ -140,6 +140,7 @@
                   required-label={allCustomLabelsUtil.OmniRequired}
                   field-level-help=""
                   placeholder=""
+                  read-only={_propSetMap.readOnly}
                   value={suburb}
                 >
                 </c-sf-gps-ds-au-vic-input-os-n>
@@ -183,6 +184,7 @@
                   min-length="4"
                   max-length="4"
                   value={postcode}
+                  read-only={_propSetMap.readOnly}
                 >
                 </c-sf-gps-ds-au-vic-input-os-n>
               </div>
@@ -213,6 +215,7 @@
           if:true={errorMessage}
           class="errors help-block"
           aria-live="assertive"
+          role="alert"
           id="errorMessageBlock"
         >
           <span>{errorMessage}</span>

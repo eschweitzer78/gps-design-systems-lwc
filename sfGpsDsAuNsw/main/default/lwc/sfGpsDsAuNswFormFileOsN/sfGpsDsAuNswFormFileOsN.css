@@ -16,7 +16,7 @@
   --slds-c-button-neutral-color-border: transparent;
   --slds-c-button-neutral-color-border-hover: transparent;
   --slds-c-button-text-color: var(--nsw-text-light);
-  --slds-c-button-neutral-text-color-hover: var(--nsw-text-light);
+  --slds-c-button-text-color-hover: var(--nsw-text-light);
   --slds-c-button-spacing-block-start: 0.5rem; /* Found by trial & error, due to lightning primitive icon height */
   --slds-c-button-spacing-block-end: 0.5rem;
   --slds-c-button-neutral-spacing-inline-start: 1.375rem;

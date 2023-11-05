@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { api } from "lwc";
-import OmniscriptInput from "omnistudio/input";
+import OmniscriptInput from "c/sfGpsDsOmniInputOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSInputOsN.html";
 
@@ -37,6 +37,20 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
     }
   }
 
+  /* original input widget does a JS update of aria-describedby when validating */
+
+  resolveAriaDescribedBy() {
+    return [
+      this.template.querySelector(".form__help")?.id,
+      this.template.querySelector(".form__error")?.id
+    ]
+      .filter((item) => item)
+      .join(" ");
+  }
+
+  /* Getters */
+  /* ------- */
+
   get helperId() {
     return "helper";
   }
@@ -51,11 +65,17 @@ export default class SfGpsDsAuNswSInputOsN extends OmniscriptInput {
     });
   }
 
-  get computedInputInputClassName() {
+  get computedInputClassName() {
     return computeClass({
-      "vlocity-input": true,
       form__text: true,
-      error: this.isError
+      error: this.sfGpsDsIsError
+    });
+  }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 }

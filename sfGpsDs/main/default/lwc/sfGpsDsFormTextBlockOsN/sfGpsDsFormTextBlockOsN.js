@@ -10,13 +10,14 @@ import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import { replaceInnerHtml } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsFormTextBlockOsN.html";
 
+const MERGE_QUERY_SELECTOR = ".sfGpsDsMerge";
 export default class SfGpsDsFormTextBlockOs extends OmniscriptTextBlock {
   render() {
     return tmpl;
   }
 
   renderedCallback() {
-    let element = this.template.querySelector(".sfGpsMerge");
+    let element = this.template.querySelector(MERGE_QUERY_SELECTOR);
 
     if (element) {
       replaceInnerHtml(

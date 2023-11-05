@@ -1,16 +1,17 @@
 <template>
   <div
-    id="sf-gps-ds-uk-gov-date-picker-form-group"
-    data-sf-gps-uk-gov-error-input
-    class={computedFormGroupClass}
+    id="sf-gps-ds-uk-gov-date-picker-os-n"
+    data-sfgpsds-input
+    class={computedFormGroupClassName}
   >
     <fieldset
       class="govuk-fieldset"
       role="group"
       aria-describedby={computedAriaDescribedBy}
+      aria-labelledby={computedAriaLabelledBy}
     >
-      <legend class={computedLegendClassName}>
-        <h1 class="govuk-fieldset__heading">{label}</h1>
+      <legend if:true={label} class={computedLegendClassName}>
+        <h3 id="fieldset-label" class="govuk-fieldset__heading">{label}</h3>
         <slot name="label"></slot>
       </legend>
 
@@ -19,17 +20,19 @@
       </div>
 
       <p
-        if:true={isError}
+        if:true={computedShowErrorMessageBlock}
         class="govuk-error-message"
         aria-live="assertive"
+        role="alert"
         id="errorMessageBlock"
       >
-        <span class="govuk-visually-hidden">{errorSrLabel}</span>{_errorMessage}
+        <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span
+        >{sfGpsDsErrorMessage}
       </p>
 
       <div class="govuk-date-input" id="date-input">
         <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
+          <div class={computedItemFormGroupClassName}>
             <label
               class="govuk-label govuk-date-input__label"
               for="date-input-day"
@@ -38,12 +41,13 @@
             </label>
 
             <input
-              class={computedDateDayInputClass}
+              class={computedDateDayInputClassName}
               type="text"
               id="date-input-day"
               aria-label={ariaLabel}
               tabindex={tabIndex}
               readonly={readOnly}
+              aria-readonly={readOnly}
               required={required}
               placeholder={placeholder}
               disabled={disabled}
@@ -51,17 +55,16 @@
               name="date-input-day"
               value={dayValue}
               aria-invalid={ariaInvalid}
-              aria-describedby="errorMessageBlock"
-              onkeyup={handleDayChange}
-              onchange={handleDayChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
+              onkeyup={sfGpsDsHandleDayChange}
+              onchange={sfGpsDsHandleDayChange}
+              onblur={sfGpsDsHandleDateBlur}
+              onfocus={sfGpsDsHandleDateFocus}
             />
           </div>
         </div>
 
         <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
+          <div class={computedItemFormGroupClassName}>
             <label
               class="govuk-label govuk-date-input__label"
               for="date-input-month"
@@ -70,30 +73,30 @@
             </label>
 
             <input
-              class={computedDateMonthInputClass}
+              class={computedDateMonthInputClassName}
               type="text"
               id="date-input-month"
               value={monthValue}
               aria-label={ariaLabel}
               tabindex={tabIndex}
               readonly={readOnly}
+              aria-readonly={readOnly}
               required={required}
               placeholder={placeholder}
               disabled={disabled}
               inputmode="numeric"
               name="date-input-month"
               aria-invalid={ariaInvalid}
-              aria-describedby="errorMessageBlock"
-              onkeyup={handleMonthChange}
-              onchange={handleMonthChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
+              onkeyup={sfGpsDsHandleMonthChange}
+              onchange={sfGpsDsHandleMonthChange}
+              onblur={sfGpsDsHandleDateBlur}
+              onfocus={sfGpsDsHandleDateFocus}
             />
           </div>
         </div>
 
         <div class="govuk-date-input__item">
-          <div class="govuk-form-group">
+          <div class={computedItemFormGroupClassName}>
             <label
               class="govuk-label govuk-date-input__label"
               for="date-input-year"
@@ -102,24 +105,24 @@
             </label>
 
             <input
-              class={computedDateYearInputClass}
+              class={computedDateYearInputClassName}
               type="text"
               id="date-input-year"
               value={yearValue}
               aria-label={ariaLabel}
               tabindex={tabIndex}
               readonly={readOnly}
+              aria-readonly={readOnly}
               required={required}
               placeholder={placeholder}
               disabled={disabled}
               inputmode="numeric"
               name="date-input-year"
               aria-invalid={ariaInvalid}
-              aria-describedby="errorMessageBlock"
-              onkeyup={handleYearChange}
-              onchange={handleYearChange}
-              onblur={handleDateBlur}
-              onfocus={handleDateFocus}
+              onkeyup={sfGpsDsHandleYearChange}
+              onchange={sfGpsDsHandleYearChange}
+              onblur={sfGpsDsHandleDateBlur}
+              onfocus={sfGpsDsHandleDateFocus}
             />
           </div>
         </div>

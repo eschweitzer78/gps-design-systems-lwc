@@ -5,51 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptCheckbox from "omnistudio/omniscriptCheckbox";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormCheckboxOsN from "c/sfGpsDsFormCheckboxOsN";
 import tmpl from "./sfGpsDsUkGovFormCheckboxOsN.html";
 
-export default class SfGpsDsUkGovFormCheckboxOsN extends OmniscriptCheckbox {
-  get _options() {
-    let mergedLabel = this.getMergedLabel();
-    return [
-      {
-        label: mergedLabel,
-        value: mergedLabel
-      }
-    ];
-  }
-
+export default class SfGpsDsUkGovFormCheckboxOsN extends SfGpsDsFormCheckboxOsN {
   render() {
     return tmpl;
-  }
-
-  applyCallResp(e, t = false, i = false) {
-    /* TODO: investigate: for some reason super.applyCallResp(e, t, i) does not set elementValue */
-
-    if (i) {
-      this.setCustomValidation(e);
-    } else {
-      e = this.treatResp(e);
-
-      if (this.lodashUtil.isEqual(this.elementValue, e)) {
-        return;
-      }
-
-      this.setElementValue(e, t, i);
-      this.dispatchOmniEventUtil(
-        this,
-        this.createAggregateNode(),
-        "omniaggregate"
-      );
-    }
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.checkLabel);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

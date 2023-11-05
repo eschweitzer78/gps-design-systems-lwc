@@ -14,7 +14,12 @@ let SfGpsUkGovLabelMixin = (base, defaultLabelSize = "medium") =>
   class extends base {
     @api labelSize = defaultLabelSize;
 
-    get errorSrLabel() {
+    get _labelSize() {
+      // empty labelSize is a legitimate value, so test for null
+      return this.labelSize == null ? defaultLabelSize : this.labelSize;
+    }
+
+    get sfGpsDsErrorSrLabel() {
       return ERROR_SR_LABEL;
     }
 
@@ -23,39 +28,27 @@ let SfGpsUkGovLabelMixin = (base, defaultLabelSize = "medium") =>
     }
 
     computeLabelClassName(className) {
+      let ls = this._labelSize;
+
       return computeClass({
         "govuk-label": true,
         [className]: className,
-        "govuk-label--xl":
-          this.labelSize === "xl" || this.labelSize === "x-large",
-        "govuk-label--l": this.labelSize === "l" || this.labelSize === "large",
-        "govuk-label--m": this.labelSize === "m" || this.labelSize === "medium",
-        "govuk-label--s": this.labelSize === "s" || this.labelSize === "small"
-      });
-    }
-
-    get computedMultiLabelClassName() {
-      return this.computeMultiLabelClassName();
-    }
-
-    computeMultiLabelClassName(className) {
-      return computeClass({
-        "govuk-label": true,
-        [className]: className
+        "govuk-label--xl": ls === "xl" || ls === "x-large",
+        "govuk-label--l": ls === "l" || ls === "large",
+        "govuk-label--m": ls === "m" || ls === "medium",
+        "govuk-label--s": ls === "s" || ls === "small"
       });
     }
 
     get computedLegendClassName() {
+      let ls = this._labelSize;
+
       return computeClass({
         "govuk-fieldset__legend": true,
-        "govuk-fieldset__legend--xl":
-          this.labelSize === "xl" || this.labelSize === "x-large",
-        "govuk-fieldset__legend--l":
-          this.labelSize === "l" || this.labelSize === "large",
-        "govuk-fieldset__legend--m":
-          this.labelSize === "m" || this.labelSize === "medium",
-        "govuk-fieldset__legend--s":
-          this.labelSize === "s" || this.labelSize === "small"
+        "govuk-fieldset__legend--xl": ls === "xl" || ls === "x-large",
+        "govuk-fieldset__legend--l": ls === "l" || ls === "large",
+        "govuk-fieldset__legend--m": ls === "m" || ls === "medium",
+        "govuk-fieldset__legend--s": ls === "s" || ls === "small"
       });
     }
   };

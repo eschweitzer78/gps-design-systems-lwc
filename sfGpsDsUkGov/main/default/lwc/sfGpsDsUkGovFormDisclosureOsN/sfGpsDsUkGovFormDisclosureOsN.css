@@ -27,3 +27,7 @@
   font-weight: 400;
   line-height: 1.3157894737;
 }
+
+.govuk-disclosure__consent {
+  margin-top: 1rem;
+}

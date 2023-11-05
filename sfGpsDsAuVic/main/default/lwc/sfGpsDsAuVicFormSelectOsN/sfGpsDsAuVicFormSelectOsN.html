@@ -8,14 +8,15 @@
     theme="sfgpsds"
     value={elementValue}
     field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
     read-only={_readOnly}
     searchable={searchable}
+    disabled={_readOnly}
     label-classes={labelClasses}
     message-when-value-missing={_messageWhenValueMissing}
     data-refresh={refresh}
     data-show-lookup="true"
     data-omni-input
-    class={_styleClasses.input}
     onchange={handleChange}
   >
     <template if:true={_propSetMap.repeat}>

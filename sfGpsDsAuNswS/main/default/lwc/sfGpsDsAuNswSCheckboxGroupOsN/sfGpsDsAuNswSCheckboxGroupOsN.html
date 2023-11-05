@@ -4,7 +4,9 @@
       <legend class={computedLegendClassName}>
         <span>
           {label}
-          <span if:true={required}> ({requiredLabel})</span>
+          <span if:true={required} class="visually-hidden">
+            ({requiredLabel})</span
+          >
         </span>
         <slot name="label"> </slot>
       </legend>
@@ -13,37 +15,41 @@
       >
 
       <div class="form__checkboxes">
-        <template for:each={internalOpts} for:item="e" for:index="index">
-          <div key={e.id} class="form__item">
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <div key={option.id} class="form__item">
             <input
               class={computedInputClassName}
               type="checkbox"
               required={required}
               disabled={disabled}
-              id={e.id}
-              data-index={index}
+              id={option.id}
               tabindex={tabIndex}
               name={name}
-              checked={e.selected}
-              value={e.value}
-              aria-invalid={isAriaInvalid}
+              aria-invalid={sfGpsDsIsError}
               aria-describedby={computedAriaDescribedBy}
+              checked={option.selected}
+              value={option.value}
+              data-index={index}
               onfocus={handleFocus}
-              onchange={onchangevalue}
+              onchange={sfGpsDsOnChangeValue}
+              onkeydown={handleKeyDownEvent}
             />
-            <label data-index={index} for={e.id}> {e.label} </label>
+            <label data-index={index} for={option.id}>{option.label}</label>
           </div>
         </template>
       </div>
 
       <span
-        if:true={isRealError}
+        if:true={sfGpsDsIsError}
         class="form__error"
         aria-live="assertive"
+        role="alert"
         id="errorMessageBlock"
       >
-        {errorMessage}
+        {sfGpsDsErrorMessage}
       </span>
     </fieldset>
+
+    <!-- TODO: support button and icon -->
   </div>
 </template>

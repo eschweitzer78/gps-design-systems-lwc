@@ -6,18 +6,22 @@
  */
 
 import { api } from "lwc";
-import SfGpsDsTimePickerOsN from "c/sfGpsDsTimePickerOsN";
+import OmnistudioTimePicker from "c/sfGpsDsOmniTimePickerOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovTimePickerOsN.html";
 
-const ERROR_ID_SELECTOR = "[data-sf-gps-uk-gov-error-input]";
-const DEBUG = false;
+const DEFAULT_LABEL_SIZE = "large";
+const ZWSP_CHAR = "​";
 
 export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsTimePickerOsN,
-  "large"
+  OmnistudioTimePicker,
+  DEFAULT_LABEL_SIZE
 ) {
+  @api forceError = false;
+  @api hideFormGroup = false;
+
+  /* obsolote */
   @api fieldLabel;
 
   render() {
@@ -27,62 +31,53 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
   get computedFormGroupClassName() {
     return computeClass({
       "govuk-form-group": !this.hideFormGroup,
-      "govuk-form-group--error": this.isError
+      "govuk-form-group--error": this.sfGpsDsIsError && !this.hideFormGroup
     });
   }
 
-  get computedTimePickerInputError() {
+  get computedInputClassName() {
     return computeClass({
       "govuk-input": true,
-      "govuk-input--error": this.isError
+      "govuk-input--error": this.sfGpsDsIsError,
+      "sfgpsds-input_faux": true,
+      "sfgpsds-combobox__input": true
     });
   }
 
-  get ariaDescribedBy() {
+  get computedItemFormGroupClassName() {
+    return computeClass({
+      "govuk-form-group": !this.hideFormGroup
+    });
+  }
+
+  get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
-      errorMessageBlock: this.isError
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 
-  get computedInputId() {
-    return "time-input";
+  get computedShowErrorMessageBlock() {
+    return this.sfGpsDsIsError || this.forceError;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  get computedErrorMessageBlockId() {
+    return "errorMessageBlock";
   }
 
-  @api
-  getErrorDetails() {
-    let rv = null;
+  get computedErrorMessage() {
+    return this.sfGpsDsErrorMessage || ZWSP_CHAR;
+  }
 
-    let elt = this.template.querySelector(ERROR_ID_SELECTOR);
+  /* we're doing it mostly via template */
 
-    if (elt == null) {
-      if (DEBUG)
-        console.log("sfGpsDsUkGovTimePicker: cannot find input element");
-    } else if (this.isCustomLwc) {
-      if (elt.getErrorDetails) {
-        rv = elt.getErrorDetails();
-      } else {
-        if (DEBUG)
-          console.log(
-            "sfGpsDsUkGovTimePicker: child input does not have getErrorDetails"
-          );
-      }
+  synchronizeA11y() {
+    this.inputEle = this.inputEle ? this.inputEle : this.inputElement;
+
+    if (this.inputEle) {
+      this.setElementAttribute(this.inputEle, {
+        "aria-activedescendant": this.aria_activedescendant
+      });
     }
-    rv = elt
-      ? {
-          id: elt.id,
-          errorMessage: this._errorMessage
-        }
-      : null;
-
-    return rv;
-  }
-
-  get _errorMessage() {
-    return this.errorMessage?.replace("Error: ", "");
   }
 }

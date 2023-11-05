@@ -1,7 +1,7 @@
 <template>
   <div class="nsw-form__group">
     <div if:true={labelVisible} data-label="true">
-      <label id="textarealabel" class={computedLabelClassName} for="textareaId">
+      <label class={computedLabelClassName} for="textareaId">
         {label}
         <span if:true={required} class="sr-only"> ({requiredLabel})</span>
       </label>
@@ -18,6 +18,7 @@
       minlength={minLength}
       maxlength={maxLength}
       readonly={readOnly}
+      aria-readonly={readOnly}
       accesskey={accessKey}
       name={name}
       disabled={disabled}
@@ -25,23 +26,24 @@
       placeholder={placeholder}
       id="textareaId"
       autocomplete={autocomplete}
-      aria-labelledby="textarealabel"
-      aria-describedby={ariaDescribedBy}
-      aria-invalid={isError}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={sfGpsDsIsError}
       oninput={updateValue}
       onblur={validateError}
       onfocus={triggerEvent}
       onchange={triggerEvent}
       onkeyup={keyCallbacks}
       onkeydown={keyCallbacks}
+      data-sfgpsds-input
     >
       {_val}
     </textarea>
 
     <span
       id="errorMessageBlock"
-      if:true={isError}
+      if:true={sfGpsDsIsError}
       class={computedHelperClassName}
+      role="alert"
     >
       <span
         if:true={computedStatusIcon}
@@ -50,7 +52,7 @@
       >
         {computedStatusIcon}
       </span>
-      {errorMessage}
+      {sfGpsDsErrorMessage}
     </span>
   </div>
 </template>

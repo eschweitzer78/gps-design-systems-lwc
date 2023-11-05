@@ -1,14 +1,11 @@
 <template>
   <div class="form__item">
-    <!-- used to be form__group -->
-    <div class={errorClass}>
-      <!-- errorClass necessary for dropdown to work -->
+    <div class="sfgpsds-form-element">
       <div if:false={isLabelHidden}>
         <label
-          id="combobox-label"
           class={computedLabelClassName}
-          style="width: auto"
           for="comboboxId"
+          id="combobox-label"
         >
           {label}
           <span if:true={required} class="visually-hidden">
@@ -22,39 +19,43 @@
         {fieldLevelHelp}
       </span>
 
-      <div class="form__predictive">
-        <div class="gpsds-combobox_container">
-          <div class="gpsds-combobox__form-element" role="none">
-            <input
-              class="form__input gpsds-listbox__option-text_entity"
-              aria-describedby={computedAriaDescribedBy}
-              aria-expanded={isOpen}
-              aria-haspopup="listbox"
-              aria-controls="combobox-list"
-              role="combobox"
-              data-value={valueMap}
-              type={type}
-              disabled={disabled}
-              required={required}
-              placeholder={placeholder}
-              tabindex={tabIndex}
-              readonly={isNotInput}
-              autocomplete="off"
-              id="comboboxId"
-              aria-activedescendant={activeDescendant}
-              aria-invalid={isError}
-              value={valueCopy}
-              onblur={showLookup}
-              onmouseup={showLookup}
-              onkeydown={preventKeyDown}
-              onkeyup={handleKeyUp}
-            />
+      <div class="sfgpsds-form-element__control form__predictive">
+        <div class="sfgpsds-combobox_container">
+          <div
+            class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
+          >
+            <div class="sfgpsds-combobox__form-element">
+              <input
+                class="form__input sfgpsds-combobox__input combobox"
+                aria-describedby={computedAriaDescribedBy}
+                aria-expanded={isOpen}
+                aria-haspopup="listbox"
+                aria-controls="combobox-list"
+                role="combobox"
+                data-value={valueMap}
+                type={type}
+                disabled={disabled}
+                required={required}
+                placeholder={placeholder}
+                tabindex={tabIndex}
+                readonly={isNotInput}
+                autocomplete="off"
+                id="comboboxId"
+                aria-activedescendant={activeDescendant}
+                aria-invalid={sfGpsDsIsError}
+                value={valueCopy}
+                onblur={showLookup}
+                onmouseup={showLookup}
+                onkeydown={preventKeyDown}
+                onkeyup={handleKeyUp}
+              />
+            </div>
           </div>
         </div>
 
         <div
           id="combobox-list"
-          class="gpsds-dropdown gpsds-dropdown_fluid"
+          class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid"
           aria-labelledby="combobox-label"
           role="listbox"
           onmousedown={preventLookupClose}
@@ -62,31 +63,41 @@
           onmouseup={preventLookupOpen}
         >
           <ul
-            class="gpsds-dropdown-container gpsds-listbox gpsds-listbox_vertical form__predictive-list"
-            style={dropdownStyle}
+            class="sfgpsds-listbox sfgpsds-listbox_vertical"
             role="presentation"
           >
-            <template for:each={internalOptionsCopy} for:item="e">
+            <template for:each={internalOptionsCopy} for:item="item">
               <li
                 if:true={isGrouped}
-                class="gpsds-listbox__item gpsds-listbox__option"
-                key={e.optId}
+                class="sfgpsds-listbox__item"
+                key={item.optId}
+                role="presentation"
               >
-                <h3 role="presentation">{e.group}</h3>
+                <div class="sfgpsds-listbox__option" role="presentation">
+                  <h3
+                    class="sfgpsds-listbox__option-header"
+                    role="presentation"
+                  >
+                    {item.group}
+                  </h3>
+                </div>
               </li>
-              <li key={e.optId} class="gpsds-listbox__item">
+
+              <li key={item.optId} class="sfgpsds-listbox__item">
+                <!-- removed onmouseover={handleMouseOver} -->
+                <!-- removed onmouseout={handleMouseOut} -->
                 <div
-                  class="gpsds-listbox__option gpsds-listbox__option_plain gpsds-listbox__option-text gpsds-listbox__option-text_entity gpsds-is-selected"
-                  data-value={e.value}
-                  data-label={e.label}
-                  data-option-id={e.optId}
+                  class="sfgpsds-listbox__option sfgpsds-listbox__option_plain"
+                  data-value={item.value}
+                  data-label={item.label}
+                  data-option-id={item.optId}
                   role="option"
-                  id={e.optId}
+                  id={item.optId}
                   onmouseup={selectOption}
-                  onmouseover={handleMouseOver}
-                  onmouseout={handleMouseOut}
                 >
-                  {e.label}
+                  <span class="sfgpsds-listbox__option-text" title={item.label}>
+                    {item.label}
+                  </span>
                 </div>
               </li>
             </template>
@@ -102,16 +113,6 @@
         </div>
       </div>
 
-      <span
-        if:true={isError}
-        id="errorMessageBlock"
-        class="form__error"
-        aria-live="assertive"
-        role="alert"
-      >
-        {errorMessage}
-      </span>
-
       <template if:true={multiple}>
         <div if:true={inputLabels.length} class="slds-listbox_selection-group">
           <ul
@@ -120,22 +121,22 @@
             aria-orientation="horizontal"
             class={pillWrapperClass}
           >
-            <template for:each={inputLabels} for:item="e">
-              <li key={e} class="slds-listbox-item" role="presentation">
+            <template for:each={inputLabels} for:item="item">
+              <li key={item} class="slds-listbox-item" role="presentation">
                 <span
                   class="slds-pill"
-                  style={styleProperties.value.styles}
                   role="option"
                   tabindex="0"
+                  aria-selected="true"
                 >
-                  <span class="slds-pill__label" title={e}> {e} </span>
+                  <span class="slds-pill__label" title={item}>{item}</span>
                   <omnistudio-icon
                     if:true={showDelIcon}
-                    data-label={e}
+                    data-label={item}
                     icon-name="utility:close"
                     baseurl={iconUrl}
                     size="xx-small"
-                    theme={theme}
+                    theme="slds"
                     onclick={deleteThisLabel}
                   >
                   </omnistudio-icon>
@@ -145,6 +146,16 @@
           </ul>
         </div>
       </template>
+
+      <span
+        if:true={sfGpsDsIsError}
+        id="errorMessageBlock"
+        class="form__error"
+        aria-live="assertive"
+        role="alert"
+      >
+        {sfGpsDsErrorMessage}
+      </span>
     </div>
   </div>
 </template>

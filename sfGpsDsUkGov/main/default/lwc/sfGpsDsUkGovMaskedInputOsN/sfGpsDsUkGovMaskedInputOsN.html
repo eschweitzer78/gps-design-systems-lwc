@@ -1,18 +1,15 @@
 <template>
-  <div if:false={isCustomLwc} class={errorClass}>
-    <div class={computedFormGroupClassName}>
+  <div if:false={isCustomLwc} onmouseover={debug}>
+    <div
+      id="sf-gps-ds-uk-gov-masked-input-form-group"
+      data-sfgpsds-input
+      class={computedFormGroupClassName}
+    >
       <div if:true={labelVisible} data-label="true">
-        <h1 class="govuk-label-wrapper">
-          <label
-            class={computedLabelClassName}
-            style="width: auto"
-            for={inputId}
-          >
-            {label}
-            <!-- <span if:true={required} class="sr-only"> ({requiredLabel})</span> -->
-          </label>
-          <slot name="label"> </slot>
-        </h1>
+        <h3 class="govuk-label-wrapper">
+          <label class={computedLabelClassName} for={inputId}>{label}</label>
+        </h3>
+        <slot name="label"> </slot>
       </div>
 
       <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
@@ -27,31 +24,35 @@
         </label>
 
         <input
-          class={computedHelperClassName}
+          class="govuk-input"
           type="text"
-          readonly=""
-          disabled=""
+          readonly
+          disabled
           id={inputId}
           value={maskedValue}
-          aria-describedby={inputId}
+          aria-describedby={computedAriaDescribedBy}
         />
       </div>
+      <!-- formula -->
 
       <div if:false={static} class={pretextClass}>
         <p
-          if:true={isError}
+          if:true={sfGpsDsIsError}
           class="govuk-error-message"
           aria-live="assertive"
+          role="alert"
           id="errorMessageBlock"
         >
-          <span class="govuk-visually-hidden">{errorSrLabel}</span>
-          {_errorMessage}
+          <span class="govuk-visually-hidden">{sfGpsDsErrorSrLabel}</span>
+          {sfGpsDsErrorMessage}
         </p>
+
+        <span if:true={pretext} class={pretextClass}>{pretext}</span>
 
         <template if:true={isCurrencySFlocale}>
           <input
             if:true={isInput}
-            class="vlocity-input govuk-input"
+            class={computedInputClassName}
             id={inputId}
             tabindex={tabIndex}
             accesskey={accessKey}
@@ -66,9 +67,11 @@
             required={required}
             readonly={readOnly}
             placeholder={placeholder}
+            aria-readonly={readOnly}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
+            aria-invalid={sfGpsDsIsError}
             value={_currencyVal}
             onfocus={handleFocus}
             onblur={handleBlur}
@@ -92,7 +95,7 @@
 
           <input
             if:true={isInput}
-            class={computedInputError}
+            class={computedInputClassName}
             id={inputId}
             tabindex={tabIndex}
             accesskey={accessKey}
@@ -101,17 +104,19 @@
             max={max}
             maxlength={maxLength}
             minlength={minLength}
-            type={type}
+            type={inputType}
             inputmode={inputmode}
             disabled={disabled}
             required={required}
             readonly={readOnly}
+            aria-readonly={readOnly}
             placeholder={placeholder}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
             autocomplete={autocomplete}
             name={name}
+            aria-invalid={sfGpsDsIsError}
             onfocus={handleFocus}
             onblur={handleBlur}
             oninput={handleInput}
@@ -119,16 +124,20 @@
             onchange={handleChange}
           />
         </template>
-      </div>
 
-      <div class="slds-grid">
-        <div if:true={static} class="slds-form-element__static">
-          {maskedValue}
-        </div>
-        <span if:true={inlineHelp} class="slds-form-element__static">
-          {inlineHelp}
+        <span if:true={posttext} class="sfgpsds-form-element__addon">
+          {posttext}
         </span>
       </div>
+
+      <!-- shifted testing static one level up to avoid the empty div -->
+      <div if:true={static} class="slds-grid">
+        <div class="slds-form-element__static">{maskedValue}</div>
+      </div>
+
+      <span if:true={inlineHelp} class="slds-form-element__static">
+        {inlineHelp}
+      </span>
     </div>
   </div>
 </template>

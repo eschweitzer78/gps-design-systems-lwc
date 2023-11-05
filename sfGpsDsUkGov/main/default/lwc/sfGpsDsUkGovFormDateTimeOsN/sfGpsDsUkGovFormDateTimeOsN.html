@@ -2,10 +2,11 @@
   <c-sf-gps-ds-uk-gov-input-os-n
     type="datetime"
     label={mergedLabel}
+    label-size={_propSetMap.labelSize}
     required={_propSetMap.required}
     read-only={_propSetMap.readOnly}
-    date-placeholder={_propSetMap.datePlaceholder}
-    time-placeholder={_propSetMap.timePlaceholder}
+    date-placeholder={mergedDatePlaceholder}
+    time-placeholder={mergedTimePlaceholder}
     value={elementValue}
     tab-index={tabIndex}
     output-type="date"
@@ -34,9 +35,8 @@
     interval={_timeInterval}
     field-level-help={mergedHelpText}
     theme={_theme}
-    time-label=""
+    time-label={mergedTimeLabel}
     date-label=""
-    class={_styleClasses.input}
     data-omni-input
     onblur={handleBlur}
     onchange={handleChange}

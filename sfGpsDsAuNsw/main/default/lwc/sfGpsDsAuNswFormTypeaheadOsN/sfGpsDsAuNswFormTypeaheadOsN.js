@@ -1,24 +1,18 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+/* 19-OCT-2023: omni246.5 added a readOnly mapping to the contained typeahead but that attribute apparently
+   does not exist in the original widget anyway. */
+
+import SfGpsDsFormTypeaheadOsN from "c/sfGpsDsFormTypeaheadOsN";
 import tmpl from "./sfGpsDsAuNswFormTypeaheadOsN.html";
 
-export default class sfGpsDsAuNswFormTypeaheadOsN extends OmniscriptTypeahead {
+export default class SfGpsDsAuNswFormTypeaheadOsN extends SfGpsDsFormTypeaheadOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

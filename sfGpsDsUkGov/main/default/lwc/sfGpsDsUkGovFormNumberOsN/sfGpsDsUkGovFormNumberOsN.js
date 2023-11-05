@@ -5,26 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-/* notes
-      field-level-help-position={_propSetMap.helpTextPos} not supported
-      required-label={allCustomLabelsUtil.OmniRequired} not suppported
-      icon-name="utility:info" not supported
-*/
-
-import OmniscriptNumber from "omnistudio/omniscriptNumber";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormNumberOsN from "c/sfGpsDsFormNumberOsN";
 import tmpl from "./sfGpsDsUkGovFormNumberOsN.html";
 
-export default class SfGpsDsUkGovFormNumberOsN extends OmniscriptNumber {
+export default class SfGpsDsUkGovFormNumberOsN extends SfGpsDsFormNumberOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }
