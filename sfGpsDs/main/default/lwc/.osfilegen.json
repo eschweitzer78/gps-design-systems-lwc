@@ -48,6 +48,7 @@
       "target": "!Os.js-meta.xml",
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     },
+    "string_v6.js": { "target": "string_v6.js" },
     "utilities_v6.js": { "target": "utilities_v6.js" }
   },
   "sfGpsDsMarkdown": {
