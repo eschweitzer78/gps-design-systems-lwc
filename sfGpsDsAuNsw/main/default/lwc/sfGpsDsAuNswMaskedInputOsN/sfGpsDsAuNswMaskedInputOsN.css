@@ -7,3 +7,20 @@
 .nsw-form__group:first-child {
   margin-top: 1rem;
 }
+
+input.nsw-form__input[readonly]:not([type="range"]):not([type="checkbox"]):not(
+    [type="radio"]
+  ) {
+  color: var(--nsw-text-dark);
+  font-size: var(--nsw-font-size-sm-mobile);
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 62rem) {
+  input.nsw-form__input[readonly]:not([type="range"]):not(
+      [type="checkbox"]
+    ):not([type="radio"]) {
+    font-size: var(--nsw-font-size-sm-desktop);
+  }
+}

@@ -13,8 +13,6 @@
     <div class="nsw-grid nsw-grid--flush">
       <div class="nsw-col nsw-col-12 nsw-col-md-7 nsw-col-lg-6 nsw-col-xl-6">
         <c-sf-gps-ds-au-nsw-date-picker-os-n
-          hide-form-group="true"
-          hide-asterisk="true"
           placeholder={datePlaceholder}
           theme={theme}
           label={dateLabel}
@@ -45,6 +43,9 @@
           styles={styles}
           select-date-label={selectDateLabel}
           onchange={setTime}
+          data-sfgpsds-date-picker
+          hide-form-group="true"
+          hide-asterisk="true"
         >
         </c-sf-gps-ds-au-nsw-date-picker-os-n>
       </div>
@@ -77,6 +78,7 @@
           message-when-range-overflow={messageWhenRangeOverflow}
           hide-icon={hideIcon}
           styles={styles}
+          data-sfgpsds-time-picker
         >
         </c-sf-gps-ds-au-nsw-time-picker-os-n>
       </div>

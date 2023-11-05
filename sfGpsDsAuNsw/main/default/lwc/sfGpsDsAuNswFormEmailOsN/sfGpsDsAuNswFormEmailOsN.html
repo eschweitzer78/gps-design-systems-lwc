@@ -10,7 +10,8 @@
     read-only={_propSetMap.readOnly}
     tab-index={tabIndex}
     field-level-help={mergedHelpText}
-    placeholder={_propSetMap.placeholder}
+    field-level-help-position={_propSetMap.helpTextPos}
+    placeholder={mergedPlaceholder}
     message-when-value-missing={_messageWhenValueMissing}
     message-when-pattern-mismatch={_messageWhenPatternMismatch}
     message-when-too-short={_messageWhenTooShort}
@@ -22,7 +23,6 @@
     message-when-type-mismatch={_messageWhenTypeMismatch}
     icon-name="utility:info"
     autocomplete={_autocomplete}
-    class={_styleClasses.input}
     data-id={jsonDef.name}
     data-omni-input
     onblur={handleBlur}

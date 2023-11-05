@@ -1,19 +1,19 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmnistudioDatetimePicker from "omnistudio/datetimePicker";
+import { api } from "lwc";
+import OmnistudioDatetimePicker from "c/sfGpsDsOmniDatetimePickerOsN";
+import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import tmpl from "./sfGpsDsAuNswDatetimePickerOsN.html";
-import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
-const timeQueryClass = "c-sf-gps-ds-au-nsw-time-picker-os-n";
-const dateQueryClass = "c-sf-gps-ds-au-nsw-date-picker-os-n";
-
-export default class SfGpsDsAuNswDatetimePickerOsN extends OmnistudioDatetimePicker {
+export default class SfGpsDsAuNswDatetimePickerOsN extends SfGpsDsAuNswStatusHelperMixin(
+  OmnistudioDatetimePicker
+) {
   render() {
     return tmpl;
   }
@@ -25,32 +25,12 @@ export default class SfGpsDsAuNswDatetimePickerOsN extends OmnistudioDatetimePic
     });
   }
 
-  get computedHelperClassName() {
-    return getHelperClassName("invalid");
+  @api setCustomValidation(message) {
+    this.dateEl.setCustomValidation(message);
   }
 
-  get computedStatusIcon() {
-    return getStatusIcon("invalid");
-  }
-
-  get timeEl() {
-    if (!this._timeEl) {
-      this._timeEl = this.template.querySelector(timeQueryClass);
-    }
-
-    return this._timeEl;
-  }
-
-  get dateEl() {
-    if (!this._dateEl) {
-      this._dateEl = this.template.querySelector(dateQueryClass);
-    }
-
-    return this._dateEl;
-  }
-
-  setCustomValidity(e) {
-    this.template.querySelector(dateQueryClass).setCustomValidity(e);
-    this.template.querySelector(timeQueryClass).setCustomValidity(e);
+  @api sfGpsDsClearCustomValidation() {
+    this.dateEl.sfGpsDsClearCustomValidation();
+    this.timeEl.sfGpsDsClearCustomValidation();
   }
 }

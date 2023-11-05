@@ -1,15 +1,18 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import OmnistudioTextarea from "omnistudio/textarea";
-import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+
+import OmnistudioTextarea from "c/sfGpsDsOmniTextareaOsN";
+import StatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswTextareaOsN.html";
 
-export default class SfGpsDsAuNswTextareaOsN extends OmnistudioTextarea {
+export default class SfGpsDsAuNswTextareaOsN extends StatusHelperMixin(
+  OmnistudioTextarea
+) {
   render() {
     return tmpl;
   }
@@ -21,18 +24,10 @@ export default class SfGpsDsAuNswTextareaOsN extends OmnistudioTextarea {
     });
   }
 
-  get computedHelperClassName() {
-    return getHelperClassName("invalid");
-  }
-
-  get computedStatusIcon() {
-    return getStatusIcon("invalid");
-  }
-
-  get ariaDescribedBy() {
+  get computedAriaDescribedBy() {
     return computeClass({
-      textarealabel: true,
-      errorMessageBlock: this.isError
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 }

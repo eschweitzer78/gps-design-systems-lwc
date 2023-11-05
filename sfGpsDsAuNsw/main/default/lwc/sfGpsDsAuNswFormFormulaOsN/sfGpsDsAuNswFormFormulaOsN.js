@@ -11,20 +11,11 @@
       icon-name="utility:info" not supported
 */
 
-import OmniscriptFormula from "omnistudio/omniscriptFormula";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+import SfGpsDsFormFormulaOsN from "c/sfGpsDsFormFormulaOsN";
 import tmpl from "./sfGpsDsAuNswFormFormulaOsN.html";
 
-export default class SfGpsDsAuNswFormFormulaOsN extends OmniscriptFormula {
+export default class SfGpsDsAuNswFormFormulaOsN extends SfGpsDsFormFormulaOsN {
   render() {
     return tmpl;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

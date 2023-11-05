@@ -7,10 +7,12 @@
           <span class="sr-only"> ({requiredLabel})</span>
         </span>
         <slot name="label"> </slot>
-        <span id="helper" class="nsw-form__helper">{fieldLevelHelp}</span>
+        <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper"
+          >{fieldLevelHelp}</span
+        >
 
         <span
-          if:true={isRealError}
+          if:true={sfGpsDsIsError}
           class={computedHelperClassName}
           aria-live="assertive"
           role="alert"
@@ -23,7 +25,7 @@
           >
             {computedStatusIcon}
           </span>
-          {errorMessage}
+          {sfGpsDsErrorMessage}
         </span>
       </legend>
 
@@ -36,15 +38,15 @@
             required={required}
             disabled={disabled}
             id={option.id}
-            data-index={index}
             tabindex={tabIndex}
             name={name}
+            aria-invalid={sfGpsDsIsError}
+            aria-describedby={computedAriaDescribedBy}
             checked={option.selected}
             value={option.value}
-            aria-invalid={isError}
-            aria-describedby={computedAriaDescribedBy}
+            data-index={index}
             onfocus={handleFocus}
-            onchange={onchangevalue}
+            onchange={sfGpsDsOnChangeValue}
             onkeydown={handleKeyDownEvent}
           />
           <label
@@ -58,5 +60,7 @@
         </template>
       </div>
     </fieldset>
+
+    <!-- TODO: support button and icon -->
   </div>
 </template>

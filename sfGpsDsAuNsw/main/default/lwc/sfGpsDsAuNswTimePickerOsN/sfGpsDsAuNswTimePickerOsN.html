@@ -1,11 +1,6 @@
 <template>
   <div class={computedFormGroupClass}>
-    <label
-      lwc:if={label}
-      class={computedLabelClassName}
-      style="width: auto"
-      for="time-input"
-    >
+    <label lwc:if={label} class={computedLabelClassName} for="time-input">
       {label}
       <template if:false={hideAsterisk}>
         <span if:true={required} class="sr-only"> ({requiredLabel})</span>
@@ -17,83 +12,106 @@
       {fieldLevelHelp}
     </span>
 
-    <div class="nsw-form__predictive">
+    <div class="sfgpsds-form-element__control nsw-form__predictive">
       <div class="sfgpsds-combobox_container">
         <div
           class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
-          aria-expanded="false"
-          aria-haspopup="listbox"
-          role="combobox"
+          onblur={handleComponentLosesFocus}
         >
-          <div class="" role="none">
+          <div class="sfgpsds-combobox__form-element" role="none">
             <input
-              class="nsw-form__input timeinput"
+              class="nsw-form__input sfgpsds-combobox__input timeinput"
               autocomplete="off"
               id="time-input"
-              aria-label={ariaLabel}
-              role="textbox"
+              role="combobox"
               type="text"
               name={name}
               disabled={disabled}
               required={required}
-              aria-invalid={isAriaInvalid}
               readonly={readOnly}
               placeholder={placeholder}
               tabindex={tabIndex}
+              aria-expanded="false"
+              aria-haspopup="listbox"
               aria-autocomplete="both"
               aria-describedby={computedAriaDescribedBy}
+              aria-controls="time_picker_ul"
+              aria-label={ariaLabel}
+              aria-readonly={readOnly}
+              aria-invalid={isAriaInvalid}
               value={_displayValue}
               onblur={showLookup}
               onchange={onInputChange}
               onkeydown={handleKeyboardEvent}
               onkeyup={handleKeyUp}
               onmousedown={showLookup}
+              data-sfgpsds-input
             />
           </div>
 
-          <ul
-            if:true={_isOpen}
+          <div
             class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 nsw-form__predictive-list"
             role="listbox"
           >
-            <template for:each={options} for:item="e" for:index="s">
-              <li
-                key={e.id}
-                id={e.id}
-                data-index={s}
-                data-selected={e.selected}
-                data-val={e.value}
-                data-timepicker-option
-                role="option"
-                aria-selected={e.selected}
-                class="sfgpsds-media sfgpsds-listbox__option sfgpsds-media_small sfgpsds-media_center"
-                onmousedown={selectOption}
+            <ul
+              id="time_picker_ul"
+              class="sfgpsds-listbox sfgpsds-listbox_vertical"
+              role="presentation"
+              onmousedown={scrollerClickOnList}
+            >
+              <template
+                for:each={computedSafeOptions}
+                for:item="item"
+                for:index="index"
               >
-                <span class="media__figure">
-                  <span
-                    if:true={e.selected}
-                    class="material-icons nsw-material-icons sfgpsds-icon-small"
-                    aria-hidden="true"
+                <li
+                  key={item.id}
+                  class="sfgpds-listbox__item"
+                  role="presentation"
+                >
+                  <div
+                    id={item.id}
+                    data-index={index}
+                    data-selected={item.selected}
+                    data-val={item.value}
+                    data-timepicker-option
+                    aria-selected={item.selected}
+                    class="sfgpsds-listbox__option sfgpsds-listbox__option_plain sfgpsds-media sfgpsds-media_small sfgpsds-media_center"
+                    onmousedown={selectOption}
                   >
-                    check
-                  </span>
-                </span>
+                    <span
+                      class="sfgpsds-media__figure sfgpsds-listbox__option-icon"
+                    >
+                      <span
+                        if:true={item.selected}
+                        class="material-icons nsw-material-icons sfgpsds-icon-small"
+                        aria-hidden="true"
+                      >
+                        check
+                      </span>
+                    </span>
 
-                <span class="sfgpsds-media__body">
-                  <span class="sfgpsds-truncate" title={e.value}>
-                    {e.value}
-                  </span>
-                </span>
-              </li>
-            </template>
-          </ul>
+                    <span class="sfgpsds-media__body">
+                      <span
+                        class="sfgpsds-listbox__option-text"
+                        title={item.value}
+                      >
+                        {item.value}
+                      </span>
+                    </span>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
 
     <span
-      if:true={isError}
+      if:true={sfGpsDsIsError}
       class={computedHelperClassName}
+      data-timepicker-error-block
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
@@ -105,7 +123,7 @@
       >
         {computedStatusIcon}
       </span>
-      {errorMessage}
+      {sfGpsDsErrorMessage}
     </span>
   </div>
 </template>

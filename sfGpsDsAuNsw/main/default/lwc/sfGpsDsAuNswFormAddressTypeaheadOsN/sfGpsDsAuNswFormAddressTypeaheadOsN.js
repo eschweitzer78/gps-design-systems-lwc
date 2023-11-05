@@ -1,14 +1,13 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { api, track } from "lwc";
-import OmniscriptTypeahead from "omnistudio/omniscriptTypeahead";
-import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
-import { getHelperClassName, getStatusIcon } from "c/sfGpsDsAuNswFormHelperOsN";
+import SfGpsDsFormTypeaheadOsN from "c/sfGpsDsFormTypeaheadOsN";
+import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { debounce } from "omnistudio/utility";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormAddressTypeaheadOsN.html";
@@ -21,7 +20,9 @@ const MODE_MANUAL = "manual";
 const DEFAULT_STATE = "NSW";
 const DEFAULT_COUNTRY = "Australia";
 
-export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypeahead {
+export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswStatusHelperMixin(
+  SfGpsDsFormTypeaheadOsN
+) {
   @api street;
   @api suburb;
   @api state = DEFAULT_STATE;
@@ -222,6 +223,8 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
       })
       .catch((e) => this.handleError(e));
   }
+
+  /* Override, we don't want all the fancy stuff */
 
   applyCallResp(json, bApi = false, bValidation = false) {
     if (bValidation) {
@@ -468,14 +471,6 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
     });
   }
 
-  get computedHelperClassName() {
-    return getHelperClassName("invalid");
-  }
-
-  get computedStatusIcon() {
-    return getStatusIcon("invalid");
-  }
-
   get computedTypeaheadClass() {
     return computeClass({
       "sfgpsds-hide": !this.isSmart
@@ -490,13 +485,5 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends OmniscriptTypea
 
   get complete() {
     return this.isSmart ? this.elementValueStatus === STATUS_RESOLVED : false;
-  }
-
-  get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
-  }
-
-  get mergedHelpText() {
-    return omniGetMergedField(this, this._handleHelpText);
   }
 }

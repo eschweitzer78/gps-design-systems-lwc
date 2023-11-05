@@ -15,7 +15,6 @@
 
       <div class="nsw-disclosure__consent">
         <c-sf-gps-ds-au-nsw-input-os-n
-          data-omni-input=""
           type="checkbox"
           label={mergedCheckLabel}
           required={_propSetMap.required}
@@ -24,6 +23,7 @@
           checked={elementValue}
           message-when-value-missing={_messageWhenValueMissing}
           tab-index={tabIndex}
+          data-omni-input
           onchange={handleChange}
         >
         </c-sf-gps-ds-au-nsw-input-os-n>

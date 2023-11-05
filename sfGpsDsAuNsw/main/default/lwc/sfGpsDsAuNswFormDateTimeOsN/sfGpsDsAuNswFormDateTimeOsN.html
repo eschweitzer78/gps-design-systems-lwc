@@ -4,8 +4,8 @@
     label={mergedLabel}
     required={_propSetMap.required}
     read-only={_propSetMap.readOnly}
-    date-placeholder={_propSetMap.datePlaceholder}
-    time-placeholder={_propSetMap.timePlaceholder}
+    date-placeholder={mergedDatePlaceholder}
+    time-placeholder={mergedTimePlaceholder}
     value={elementValue}
     tab-index={tabIndex}
     output-type="date"
@@ -33,10 +33,10 @@
     timezone={_timezone}
     interval={_timeInterval}
     field-level-help={mergedHelpText}
+    filed-level-help-position={_propSetMap.helpTextPos}
     theme={_theme}
     time-label=""
     date-label=""
-    class={_styleClasses.input}
     data-omni-input
     onblur={handleBlur}
     onchange={handleChange}

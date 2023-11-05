@@ -4,20 +4,21 @@
       class="nsw-form__fieldset"
       role="radiogroup"
       aria-required={required}
-      aria-labelledby="sf-gps-au-nsw-radio-group-legend"
+      aria-labelledby="sfgpsdds-aunsw-radio-group-legend"
       aria-describedby={computedAriaDescribedBy}
       aria-invalid={computedAriaInvalid}
     >
-      <legend id="sf-gps-au-nsw-radio-group-legend">
+      <legend id="sfgpsds-aunsw-radio-group-legend">
         <span class={computedLegendClassName}>
           {label}
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
         </span>
         <slot name="label"> </slot>
+
         <span id="helper" class="nsw-form__helper">{fieldLevelHelp}</span>
 
         <span
-          if:true={isRealError}
+          if:true={sfGpsDsIsError}
           class={computedHelperClassName}
           aria-live="assertive"
           role="alert"
@@ -30,7 +31,7 @@
           >
             {computedStatusIcon}
           </span>
-          {errorMessage}
+          {sfGpsDsErrorMessage}
         </span>
       </legend>
 
@@ -38,31 +39,34 @@
         <template
           if:true={internalOpts}
           for:each={internalOpts}
-          for:item="e"
-          for:index="t"
+          for:item="option"
+          for:index="index"
         >
           <input
-            key={e.id}
+            key={option.id}
             class="nsw-form__radio-input"
             type="radio"
             tabindex={tabIndex}
             required={required}
             disabled={disabled}
-            id={e.id}
-            data-index={t}
-            name={e.name}
-            value={e.value}
-            checked={e.selected}
+            id={option.id}
+            name={option.name}
+            aria-invalid={computedAriaInvalid}
+            value={option.value}
+            checked={option.selected}
+            data-index={index}
             onfocus={handleFocus}
-            onchange={onchangevalue}
+            onblur={handleBlur}
+            onchange={sfGpsDsOnChangeValue}
+            onkeydown={handleKeyDownEvent}
           />
           <label
-            key={e.id}
+            key={option.id}
             class="nsw-form__radio-label"
-            data-index={t}
-            for={e.id}
+            data-index={index}
+            for={option.id}
           >
-            {e.label}
+            {option.label}
           </label>
         </template>
       </div>

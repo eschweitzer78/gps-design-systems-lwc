@@ -1,14 +1,15 @@
 <template>
   <div if:false={isCustomLwc} class={errorClass}>
     <div class="nsw-form__group">
-      <div if:true={labelVisible} data-label="true">
-        <label class={computedLabelClassName} style="width: auto" for={inputId}>
+      <div if:true={labelVisible}>
+        <label class={computedLabelClassName} for={inputId}>
           {label}
           <span if:true={required} class="sr-only"> ({requiredLabel})</span>
         </label>
 
         <slot name="label"> </slot>
       </div>
+
       <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper"
         >{fieldLevelHelp}</span
       >
@@ -23,20 +24,24 @@
         </div>
 
         <input
-          class="vlocity-input nsw-form__input"
+          class="nsw-form__input"
           type="text"
-          readonly=""
-          disabled=""
+          readonly
+          disabled
           id={inputId}
           value={maskedValue}
+          aria-describedby={computedAriaDescribedBy}
         />
       </div>
+      <!-- formula -->
 
       <div if:false={static} class={pretextClass}>
+        <span if:true={pretext}> {pretext} </span>
+
         <template if:true={isCurrencySFlocale}>
           <input
             if:true={isInput}
-            class="vlocity-input nsw-form__input nsw-form__input--number"
+            class="nsw-form__input nsw-form__input--number"
             id={inputId}
             tabindex={tabIndex}
             accesskey={accessKey}
@@ -51,9 +56,11 @@
             required={required}
             readonly={readOnly}
             placeholder={placeholder}
+            aria-readonly={readOnly}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
+            aria-invalid={sfGpsDsIsError}
             value={_currencyVal}
             onfocus={handleFocus}
             onblur={handleBlur}
@@ -77,7 +84,7 @@
 
           <input
             if:true={isInput}
-            class="vlocity-input nsw-form__input"
+            class="nsw-form__input"
             id={inputId}
             tabindex={tabIndex}
             accesskey={accessKey}
@@ -86,17 +93,19 @@
             max={max}
             maxlength={maxLength}
             minlength={minLength}
-            type={type}
+            type={inputType}
             inputmode={inputmode}
             disabled={disabled}
             required={required}
             readonly={readOnly}
+            aria-readonly={readOnly}
             placeholder={placeholder}
             aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
             autocomplete={autocomplete}
             name={name}
+            aria-invalid={sfGpsDsIsError}
             onfocus={handleFocus}
             onblur={handleBlur}
             oninput={handleInput}
@@ -105,10 +114,16 @@
           />
         </template>
 
+        <span if:true={posttext} class="sfgpsds-form-element__addon">
+          {posttext}
+        </span>
+
         <span
+          if:true={sfGpsDsIsError}
           id="errorMessageBlock"
-          if:true={isError}
           class={computedHelperClassName}
+          aria-live="assertive"
+          role="alert"
         >
           <span
             if:true={computedStatusIcon}
@@ -117,18 +132,18 @@
           >
             {computedStatusIcon}
           </span>
-          {errorMessage}
+          {sfGpsDsErrorMessage}
         </span>
       </div>
 
-      <div class="slds-grid">
-        <div if:true={static} class="slds-form-element__static">
-          {maskedValue}
-        </div>
-        <span if:true={inlineHelp} class="slds-form-element__static">
-          {inlineHelp}
-        </span>
+      <!-- shifted testing static one level up to avoid the empty div -->
+      <div if:true={static} class="slds-grid">
+        <div class="slds-form-element__static">{maskedValue}</div>
       </div>
+
+      <span if:true={inlineHelp} class="slds-form-element__static">
+        {inlineHelp}
+      </span>
     </div>
   </div>
 </template>

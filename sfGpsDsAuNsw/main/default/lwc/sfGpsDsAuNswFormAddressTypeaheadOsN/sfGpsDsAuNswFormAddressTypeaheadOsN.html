@@ -1,13 +1,15 @@
 <template>
   <div class="omni-typeahead-container">
+    <!-- removed readonly={_propSetMap.readOnly} as it's not an attr in the original omnistudio typeahead -->
     <c-sf-gps-ds-au-nsw-typeahead-os-n
+      class={computedTypeaheadClass}
       type="text"
       field-level-help={mergedHelpText}
       field-level-help-position={_propSetMap.helpTextPos}
       label={mergedLabel}
       icon-name-right="utility:empty"
       options={options}
-      placeholder={_placeholder}
+      placeholder={mergedPlaceholder}
       required={_propSetMap.required}
       min-length={_propSetMap.minLength}
       max-length={_propSetMap.maxLength}
@@ -20,7 +22,6 @@
       remote-source={_useRemoteSource}
       disable-filter={_disableFilter}
       data-omni-input
-      class={computedTypeaheadClass}
       onblur={handleBlur}
       onlastitemclick={enterEditMode}
       onselect={handleSelect}
@@ -51,11 +52,8 @@
         </button>
       </div>
 
-      <a
-        slot="lastItem"
-        if:true={_propSetMap.newItemLabel}
-        label={_propSetMap.newItemLabel}
-        >{_propSetMap.newItemLabel}
+      <a slot="lastItem" if:true={_newItemLabel} label={_newItemLabel}
+        >{_newItemLabel}
       </a>
     </c-sf-gps-ds-au-nsw-typeahead-os-n>
 
@@ -156,7 +154,7 @@
               required-label={allCustomLabelsUtil.OmniRequired}
               read-only="true"
               onchange={handleStateBlur}
-              theme="nswds"
+              theme="sfgpsds"
               value={state}
               field-level-help=""
               data-show-lookup="true"
