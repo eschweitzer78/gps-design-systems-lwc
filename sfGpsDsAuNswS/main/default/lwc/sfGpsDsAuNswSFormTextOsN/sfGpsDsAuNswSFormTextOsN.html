@@ -1,7 +1,6 @@
 <template>
   <c-sf-gps-ds-au-nsw-s-input-os-n
     if:false={_isMasked}
-    class={_styleClasses.input}
     type={_inputType}
     label={mergedLabel}
     required={_propSetMap.required}
@@ -15,7 +14,7 @@
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
     icon-name="utility:info"
-    placeholder={_placeholder}
+    placeholder={mergedPlaceholder}
     message-when-value-missing={_messageWhenValueMissing}
     message-when-pattern-mismatch={_messageWhenPatternMismatch}
     message-when-too-short={_messageWhenTooShort}

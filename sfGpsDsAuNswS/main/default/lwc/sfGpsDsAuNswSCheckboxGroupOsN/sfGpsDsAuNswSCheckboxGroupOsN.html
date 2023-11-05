@@ -25,13 +25,13 @@
               id={option.id}
               tabindex={tabIndex}
               name={name}
-              aria-invalid={isError}
+              aria-invalid={sfGpsDsIsError}
               aria-describedby={computedAriaDescribedBy}
               checked={option.selected}
               value={option.value}
               data-index={index}
               onfocus={handleFocus}
-              onchange={onchangevalue}
+              onchange={sfGpsDsOnChangeValue}
               onkeydown={handleKeyDownEvent}
             />
             <label data-index={index} for={option.id}>{option.label}</label>
@@ -40,13 +40,13 @@
       </div>
 
       <span
-        if:true={isRealError}
+        if:true={sfGpsDsIsError}
         class="form__error"
         aria-live="assertive"
         role="alert"
         id="errorMessageBlock"
       >
-        {errorMessage}
+        {sfGpsDsErrorMessage}
       </span>
     </fieldset>
 

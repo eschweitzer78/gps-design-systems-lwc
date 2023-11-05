@@ -1,6 +1,6 @@
 <template>
   <template if:false={isCustomLwc}>
-    <div class="form__item" style="width: auto">
+    <div class="form__item">
       <template lwc:if={labelVisible}>
         <legend
           if:true={useLegend}
@@ -55,7 +55,6 @@
         <div class="form__checkboxes">
           <div class="form__item">
             <input
-              class="vlocity-input"
               tabindex={tabIndex}
               required={required}
               aria-invalid={isAriaInvalid}
@@ -68,7 +67,7 @@
               id={inputId}
               checked={checked}
               value={_value}
-              onchange={triggerInputEvent}
+              onchange={sfGpsDsTriggerInputEvent}
               onfocus={triggerEvent}
               onblur={validateError}
             />
@@ -122,7 +121,6 @@
       <div if:true={isRadio} class="slds-form-element__control">
         <div class="slds-radio">
           <input
-            class="vlocity-input"
             type={type}
             required={required}
             aria-invalid={isAriaInvalid}
@@ -134,7 +132,7 @@
             id={inputId}
             checked={checked}
             value={_value}
-            onchange={triggerInputEvent}
+            onchange={sfGpsDsTriggerInputEvent}
             onfocus={triggerEvent}
             onblur={closeTooltip}
           />
@@ -162,7 +160,6 @@
         </span>
         <input
           id={inputId}
-          class="vlocity-input"
           name={name}
           tabindex={tabIndex}
           disabled={disabled}
@@ -172,7 +169,7 @@
           aria-describedby={computedAriaDescribedBy}
           checked={checked}
           value={_value}
-          onchange={triggerInputEvent}
+          onchange={sfGpsDsTriggerInputEvent}
           onfocus={triggerEvent}
           onblur={closeTooltip}
         />
@@ -189,7 +186,7 @@
           <div class="slds-file-selector slds-file-selector_files">
             <div class="slds-file-selector__dropzone">
               <input
-                class="vlocity-input slds-file-selector__input slds-assistive-text"
+                class="slds-file-selector__input slds-assistive-text"
                 id={inputId}
                 multiple={multiple}
                 tabindex={tabIndex}
@@ -203,8 +200,8 @@
                 aria-readonly={readOnly}
                 aria-labelledby="file-selector-primary-label file-selector-secondary-label"
                 accept={accept}
-                onblur={validateError}
-                onchange={triggerInputEvent}
+                onblur={sfGpsDsValidateError}
+                onchange={sfGpsDsTriggerInputEvent}
                 onfocus={triggerEvent}
               />
               <label class="slds-file-selector__body" for={inputId}>
@@ -295,7 +292,7 @@
 
       <input
         if:true={isInput}
-        class={computedInputInputClassName}
+        class={computedInputClassName}
         id={inputId}
         tabindex={tabIndex}
         accesskey={accessKey}
@@ -320,8 +317,8 @@
         name={name}
         value={inputValue}
         onfocus={handleFocus}
-        onblur={validateError}
-        oninput={triggerInputEvent}
+        onblur={sfGpsDsValidateError}
+        oninput={sfGpsDsTriggerInputEvent}
         onchange={triggerEvent}
         onkeydown={triggerKeyEvents}
         onkeyup={triggerKeyEvents}
@@ -374,19 +371,18 @@
       </span>
 
       <p
-        if:true={isError}
+        if:true={sfGpsDsIsError}
         class="form__error"
         aria-live="assertive"
         role="alert"
         id="errorMessageBlock"
       >
-        {errorMessage}
+        {sfGpsDsErrorMessage}
       </p>
 
-      <div class="slds-grid">
-        <div if:true={static} class="slds-form-element__static">
-          {inputValue}
-        </div>
+      <!-- shifted testing static one level up to avoid the empty div -->
+      <div if:true={static} class="slds-grid">
+        <div class="slds-form-element__static">{inputValue}</div>
       </div>
 
       <span if:true={inlineHelp} class="slds-form-element__static">
@@ -431,6 +427,7 @@
     today-label={todayLabel}
     required-label={requiredLabel}
     styles={styles}
+    data-sfgpsds-input
   >
     <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-au-nsw-s-date-picker-os-n>
@@ -463,6 +460,7 @@
     message-when-range-overflow={messageWhenRangeOverflow}
     message-when-range-underflow={messageWhenRangeUnderflow}
     styles={styles}
+    data-sfgpsds-input
   >
     <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-au-nsw-s-time-picker-os-n>
@@ -507,6 +505,7 @@
     today-label={todayLabel}
     required-label={requiredLabel}
     styles={styles}
+    data-sfgpsds-input
   >
     <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-au-nsw-s-datetime-picker-os-n>

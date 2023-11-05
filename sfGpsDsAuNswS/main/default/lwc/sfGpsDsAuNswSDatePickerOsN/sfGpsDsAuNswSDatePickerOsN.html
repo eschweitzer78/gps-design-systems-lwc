@@ -1,12 +1,7 @@
 <template>
   <div class="form__date">
     <div class={computedFormItemClassName}>
-      <label
-        if:true={label}
-        class={computedLabelClassName}
-        style="width: auto"
-        for="date-input"
-      >
+      <label if:true={label} class={computedLabelClassName} for="date-input">
         {label}
         <span if:true={required} class="visually-hidden">
           ({requiredLabel})</span
@@ -21,7 +16,6 @@
       <div class="slds-form-element__control">
         <input
           class={computedInputClassName}
-          style={styleProperties.value.styles}
           type={type}
           id="date-input"
           aria-label={ariaLabel}
@@ -194,13 +188,13 @@
     </div>
 
     <span
-      if:true={isError}
+      if:true={sfGpsDsIsError}
       class="form__error"
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
     >
-      {errorMessage}
+      {sfGpsDsErrorMessage}
     </span>
   </div>
 </template>

@@ -6,7 +6,7 @@
  */
 
 import { api } from "lwc";
-import OmnistudioCombobox from "omnistudio/combobox";
+import OmnistudioCombobox from "c/sfGpsDsOmniComboboxOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSComboboxOsN.html";
 
@@ -20,7 +20,7 @@ export default class SfGpsDsAuNswSComboboxOsN extends OmnistudioCombobox {
   get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
-      errorMessageBlock: this.isError
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 

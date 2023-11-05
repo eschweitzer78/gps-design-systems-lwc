@@ -1,6 +1,6 @@
 <template>
   <template if:false={isCustomLwc}>
-    <div class="form__item" style="width: auto">
+    <div class="form__item">
       <template if:true={labelVisible}>
         <legend if:true={useLegend} class={computedLegendClass} for={inputId}>
           <span
@@ -57,7 +57,7 @@
         <template if:true={isCurrencySFlocale}>
           <input
             if:true={isInput}
-            class={computedInputInputClassName}
+            class={computedInputClassName}
             id={inputId}
             tabindex={tabIndex}
             accesskey={accessKey}
@@ -76,7 +76,7 @@
             aria-labelledby={ariaLabelledBy}
             aria-describedby={computedAriaDescribedBy}
             aria-label={ariaLabel}
-            aria-invalid={isError}
+            aria-invalid={sfGpsDsIsError}
             value={_currencyVal}
             onfocus={handleFocus}
             onblur={handleBlur}
@@ -121,7 +121,7 @@
             aria-label={ariaLabel}
             autocomplete={autocomplete}
             name={name}
-            aria-invalid={isError}
+            aria-invalid={sfGpsDsIsError}
             onfocus={handleFocus}
             onblur={handleBlur}
             oninput={handleInput}
@@ -135,24 +135,24 @@
         </span>
 
         <p
-          if:true={isError}
+          if:true={sfGpsDsIsError}
           id="errorMessageBlock"
           class="form__error"
           aria-live="assertive"
           role="alert"
         >
-          {errorMessage}
+          {sfGpsDsErrorMessage}
         </p>
       </div>
 
-      <div class="slds-grid">
-        <div if:true={static} class="slds-form-element__static">
-          {maskedValue}
-        </div>
-        <span if:true={inlineHelp} class="slds-form-element__static">
-          {inlineHelp}
-        </span>
+      <!-- shifted testing static one level up to avoid the empty div -->
+      <div if:true={static} class="slds-grid">
+        <div class="slds-form-element__static">{maskedValue}</div>
       </div>
+
+      <span if:true={inlineHelp} class="slds-form-element__static">
+        {inlineHelp}
+      </span>
     </div>
   </template>
 </template>

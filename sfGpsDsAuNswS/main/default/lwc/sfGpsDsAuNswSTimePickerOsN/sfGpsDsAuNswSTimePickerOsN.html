@@ -1,12 +1,7 @@
 <template>
   <div class="form__time">
     <div class={computedFormItemClassName}>
-      <label
-        if:true={label}
-        class={computedLabelClassName}
-        style="width: auto"
-        for="time-input"
-      >
+      <label if:true={label} class={computedLabelClassName} for="time-input">
         {label}
         <span if:true={required} class="visually-hidden">
           ({requiredLabel})</span
@@ -18,21 +13,18 @@
         {fieldLevelHelp}
       </span>
 
-      <div class="form__predictive">
+      <div class="sfgpsds-form-element__control form__predictive">
         <div class="sfgpsds-combobox_container">
           <div
             class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            role="combobox"
             onblur={handleComponentLosesFocus}
           >
             <div class="sfgpsds-combobox__form-element" role="none">
               <input
-                class={computedInputInputClassName}
+                class={computedInputClassName}
                 autocomplete="off"
                 id="time-input"
-                role="textbox"
+                role="combobox"
                 type="text"
                 name={name}
                 disabled={disabled}
@@ -40,9 +32,11 @@
                 readonly={readOnly}
                 placeholder={placeholder}
                 tabindex={tabIndex}
+                aria-expanded="false"
+                aria-haspopup="listbox"
                 aria-autocomplete="both"
                 aria-describedby={computedAriaDescribedBy}
-                aria-controls={computedAriaControls}
+                aria-controls="time_picker_ul"
                 aria-label={ariaLabel}
                 aria-readonly={readOnly}
                 aria-invalid={isAriaInvalid}
@@ -52,70 +46,84 @@
                 onkeydown={handleKeyboardEvent}
                 onkeyup={handleKeyUp}
                 onmousedown={showLookup}
+                data-sfgpsds-input
               />
             </div>
 
-            <ul
-              if:true={_isOpen}
-              class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 form__predictive-list"
-              id="time_picker_ul"
+            <div
+              class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 nsw-form__predictive-list"
               role="listbox"
-              onmousedown={scrollerClickOnList}
             >
-              <template for:each={options} for:item="item" for:index="index">
-                <li
-                  key={item.id}
-                  id={item.id}
-                  data-index={index}
-                  data-selected={item.selected}
-                  data-val={item.value}
-                  data-timepicker-option
-                  role="option"
-                  aria-selected={item.selected}
-                  class="sfgpsds-media sfgpsds-listbox__option sfgpsds-media_small sfgpsds-media_center"
-                  onmousedown={selectOption}
+              <ul
+                id="time_picker_ul"
+                class="sfgpsds-listbox sfgpsds-listbox_vertical"
+                role="presentation"
+                onmousedown={scrollerClickOnList}
+              >
+                <template
+                  for:each={computedSafeOptions}
+                  for:item="item"
+                  for:index="index"
                 >
-                  <span class="sfgpsds-media__figure">
+                  <li
+                    key={item.id}
+                    id={item.id}
+                    data-index={index}
+                    data-selected={item.selected}
+                    data-val={item.value}
+                    data-timepicker-option
+                    role="option"
+                    aria-selected={item.selected}
+                    class="sfgpsds-listbox__option sfgpsds-listbox__option_plain sfgpsds-media sfgpsds-media_small sfgpsds-media_center"
+                    onmousedown={selectOption}
+                  >
                     <span
-                      if:true={item.selected}
-                      class="sfgpsds-icon-small"
-                      aria-hidden="true"
+                      class="sfgpsds-media__figure sfgpsds-listbox__option-icon"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        height="18"
-                        width="18"
-                        viewBox="0 0 24 24"
+                      <span
+                        if:true={item.selected}
+                        class="sfgpsds-icon-small"
+                        aria-hidden="true"
                       >
-                        <path
-                          d="M9.55 18 3.85 12.3 5.275 10.875 9.55 15.15 18.725 5.975 20.15 7.4Z"
-                        ></path>
-                      </svg>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          height="18"
+                          width="18"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M9.55 18 3.85 12.3 5.275 10.875 9.55 15.15 18.725 5.975 20.15 7.4Z"
+                          ></path>
+                        </svg>
+                      </span>
                     </span>
-                  </span>
 
-                  <span class="sfgpsds-media__body">
-                    <span class="sfgpsds-truncate" title={item.value}>
-                      {item.value}
+                    <span class="sfgpsds-media__body">
+                      <span
+                        class="sfgpsds-listbox__option-text"
+                        title={item.value}
+                      >
+                        {item.value}
+                      </span>
                     </span>
-                  </span>
-                </li>
-              </template>
-            </ul>
+                  </li>
+                </template>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <span
-      if:true={isError}
+      if:true={sfGpsDsIsError}
       class="form__error"
       data-timepicker-error-block
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
     >
-      {errorMessage}
+      {sfGpsDsErrorMessage}
     </span>
   </div>
 </template>

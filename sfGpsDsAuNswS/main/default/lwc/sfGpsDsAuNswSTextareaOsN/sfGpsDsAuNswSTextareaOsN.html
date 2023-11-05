@@ -1,5 +1,5 @@
 <template>
-  <div class="form__item" style="width: auto">
+  <div class="form__item">
     <div if:true={labelVisible} data-label="true">
       <label class={computedLabelClassName} for="textareaId">
         {label}
@@ -15,7 +15,7 @@
     </span>
 
     <textarea
-      class={computedInputInputClassName}
+      class={computedInputClassName}
       tabindex={tabIndex}
       minlength={minLength}
       maxlength={maxLength}
@@ -28,8 +28,8 @@
       placeholder={placeholder}
       id="textareaId"
       autocomplete={autocomplete}
-      aria-invalid={isError}
       aria-describedby={computedAriaDescribedBy}
+      aria-invalid={sfGpsDsIsError}
       oninput={updateValue}
       onblur={validateError}
       onfocus={triggerEvent}
@@ -41,13 +41,13 @@
     </textarea>
 
     <span
-      if:true={isError}
+      if:true={sfGpsDsIsError}
       id="errorMessageBlock"
       class="form__error"
       aria-live="assertive"
       role="alert"
     >
-      {errorMessage}
+      {sfGpsDsErrorMessage}
     </span>
   </div>
 </template>

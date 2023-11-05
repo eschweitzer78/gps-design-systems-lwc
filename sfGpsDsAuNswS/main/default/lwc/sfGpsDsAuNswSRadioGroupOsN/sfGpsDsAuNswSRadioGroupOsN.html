@@ -1,13 +1,14 @@
 <template>
   <div>
     <fieldset
+      role="radiogroup"
       aria-required={required}
-      aria-labelledby="sf-sgps-ds-au-nsw-s-radio-group-legend"
+      aria-labelledby="sfgpsds-aunsws-radio-group-legend"
       aria-invalid={computedAriaInvalid}
       aria-describedby={computedAriaDescribedBy}
     >
       <legend
-        id="sf-sgps-ds-au-nsw-s-radio-group-legend"
+        id="sfsgpsds-aunsws-radio-group-legend"
         class={computedLegendClassName}
       >
         <span>
@@ -34,7 +35,7 @@
               disabled={disabled}
               id={option.id}
               name={option.name}
-              aria-invalid={isError}
+              aria-invalid={computedAriaInvalid}
               value={option.value}
               checked={option.selected}
               data-index={index}
@@ -49,13 +50,13 @@
       </div>
 
       <span
-        if:true={isRealError}
+        if:true={sfGpsDsIsError}
         class="form__error"
         aria-live="assertive"
         role="alert"
         id="errorMessageBlock"
       >
-        {errorMessage}
+        {sfGpsDsErrorMessage}
       </span>
     </fieldset>
   </div>

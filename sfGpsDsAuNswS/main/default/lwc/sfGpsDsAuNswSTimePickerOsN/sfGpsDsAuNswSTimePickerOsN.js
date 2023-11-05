@@ -1,16 +1,16 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { api } from "lwc";
-import SfGpsDsTimePickerOsN from "c/sfGpsDsTimePickerOsN";
+import OmnistudioTimePicker from "c/sfGpsDsOmniTimePickerOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSTimePickerOsN.html";
 
-export default class SfGpsDsAuNswSTimePickerOsN extends SfGpsDsTimePickerOsN {
+export default class SfGpsDsAuNswSTimePickerOsN extends OmnistudioTimePicker {
   @api hideAsterisk = false;
 
   render() {
@@ -30,20 +30,16 @@ export default class SfGpsDsAuNswSTimePickerOsN extends SfGpsDsTimePickerOsN {
   get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
-      errorMessageBlock: this.isError
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 
-  get computedInputInputClassName() {
+  get computedInputClassName() {
     return computeClass({
       form__input: true,
       timeinput: true,
-      error: this.isError
+      error: this.sfGpsDsIsError
     });
-  }
-
-  get computedAriaControls() {
-    return this._isOpen ? "time_picker_ul" : null;
   }
 
   /* we're doing it mostly via template */

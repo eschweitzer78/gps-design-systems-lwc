@@ -1,16 +1,16 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { api } from "lwc";
-import maskedInput from "omnistudio/maskedInput";
+import OmniscriptMaskedInput from "c/sfGpsDsOmniMaskedInputOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswSMaskedInputOsN.html";
 
-export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
+export default class SfGpsDsAuNswSMaskedInputOsN extends OmniscriptMaskedInput {
   @api useLegend = false; /* not used from omni, so it's a default value */
 
   render() {
@@ -31,19 +31,18 @@ export default class SfGpsDsAuNswSMaskedInputOsN extends maskedInput {
     });
   }
 
-  get computedInputInputClassName() {
+  get computedInputClassName() {
     return computeClass({
-      "vlocity-input": true,
       "nsw-form__text": true,
       "nsw-form__number": true,
-      error: this.isError
+      error: this.sfGpsDsIsError
     });
   }
 
   get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
-      errorMessageBlock: this.isError
+      errorMessageBlock: this.sfGpsDsIsError
     });
   }
 
