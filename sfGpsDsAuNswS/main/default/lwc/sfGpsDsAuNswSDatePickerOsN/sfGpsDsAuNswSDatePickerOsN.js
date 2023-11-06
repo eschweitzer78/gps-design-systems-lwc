@@ -19,7 +19,11 @@ export default class SfGpsDsAuNswDatePickerOsN extends OmnistudioDatePicker {
 
   get computedFormItemClassName() {
     return computeClass({
-      form__item: true
+      form__item: true,
+      "slds-form-element": true,
+      "slds-dropdown-trigger": true,
+      "slds-dropdown-trigger_click": true,
+      "slds-has-error": this.sfGpsDsIsError
     });
   }
 

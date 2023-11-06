@@ -1,5 +1,7 @@
 @import "c/sfGpsDsAuNswSFormCssOs";
+@import "c/sfGpsDsAuNswSPredictiveListOsN";
 
+/*
 input[readonly][role="combobox"] {
   border: 2px solid var(--nsw-s-border);
   border-radius: var(--nsw-s-border-radius);
@@ -15,10 +17,6 @@ input[readonly][role="combobox"] {
   background-size: 1rem auto;
 }
 
-/* nothing specific for hover
-.form__predictive .form__input:hover {
-}
-*/
 
 .form__predictive .form__input:disabled {
   background: var(--nsw-s-off-white-1)
@@ -27,11 +25,6 @@ input[readonly][role="combobox"] {
   background-size: 1rem auto;
 }
 
-/* nothing specific for invalid/error and hover
-.form__predictive .form__input[aria-invalid="true"]:hover,
-.form__predictive .form__input.error:hover {
-}
-*/
 
 .form__predictive-list .sfgpsds-listbox__option {
   display: block;
@@ -51,8 +44,6 @@ input[readonly][role="combobox"] {
 .form__input {
   cursor: pointer;
 }
-
-/* adding what's the nsw ds equivalent */
 
 .form__predictive {
   position: relative;
@@ -80,15 +71,10 @@ input[readonly][role="combobox"] {
   margin: 0;
 }
 
-/* begin undoing some of the default nsw s styling */
-
 .sfgpsds-combobox ul li {
   background: none;
 }
 
-/* end */
-
-/* begin undoing some of the default slds styling */
 
 .nsw-form__predictive input[readonly][role="combobox"]:focus {
   outline: 2px solid var(--nsw-s-focus, #2e5299);
@@ -97,7 +83,6 @@ input[readonly][role="combobox"] {
   box-shadow: none;
 }
 
-/* end */
 
 .sfgpsds-listbox__option-text_entity {
   max-width: 100%;
@@ -152,13 +137,9 @@ input[readonly][role="combobox"] {
   opacity: 1;
 }
 
-/* adding not allowed cursor when disabled */
-
 .form__input:disabled {
   cursor: not-allowed;
 }
-
-/* START: dealing with the new styling in omnistudio__OmniLwcUtilsCss in omni246 */
 
 .form__predictive
   input.nsw-form__input[readonly]:not([type="range"]):not(
@@ -167,5 +148,4 @@ input[readonly][role="combobox"] {
   color: var(--nsw-s-text-dark);
   font-size: var(--nsw-s-font-size);
 }
-
-/* END */
+ */

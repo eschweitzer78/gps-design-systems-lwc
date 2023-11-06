@@ -9,96 +9,95 @@
     >
     </omnistudio-spinner>
   </template>
-  <slot>
-    <div class={_containerClasses} aria-labelledby="fileUpload">
-      <div class="form__group">
-        <div class="form__item">
-          <label id="fileUpload" class={computedLabelClassName}>
-            {mergedLabel}
-            <span if:true={_propSetMap.required} class="visually-hidden">
-              ({allCustomLabelsUtil.OmniRequired})</span
-            >
-          </label>
 
-          <span if:true={_propSetMap.help} id="helper" class="form__help">
-            {mergedHelpText}
-          </span>
-
-          <div class="slds-grid omni-file-input">
-            <lightning-file-upload
-              class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
-              label=" "
-              name={jsonDef.lwcId}
-              multiple
-              record-id={parentRecordId}
-              aria-invalid={_showValidation}
-              aria-described-by={computedAriaDescribedBy}
-              data-omni-input
-              onuploadfinished={handleUploadFinished}
-              onfocusout={handleFocusOut}
-            >
-            </lightning-file-upload>
-          </div>
-
-          <p
-            if:true={_showValidation}
-            class="form__error"
-            aria-live="assertive"
-            role="alert"
-            id="errorMessageBlock"
+  <div class={_containerClasses} aria-labelledby="fileUpload">
+    <div class="form__group">
+      <div class="form__item">
+        <label id="fileUpload" class={computedLabelClassName}>
+          {mergedLabel}
+          <span if:true={_propSetMap.required} class="visually-hidden">
+            ({allCustomLabelsUtil.OmniRequired})</span
           >
-            {errorMessage}
-          </p>
+        </label>
+
+        <span if:true={_propSetMap.help} id="helper" class="form__help">
+          {mergedHelpText}
+        </span>
+
+        <div class="slds-grid omni-file-input">
+          <lightning-file-upload
+            class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+            label=" "
+            name={jsonDef.lwcId}
+            multiple
+            record-id={parentRecordId}
+            aria-invalid={_showValidation}
+            aria-described-by={computedAriaDescribedBy}
+            data-omni-input
+            onuploadfinished={handleUploadFinished}
+            onfocusout={handleFocusOut}
+          >
+          </lightning-file-upload>
         </div>
+
+        <p
+          if:true={_showValidation}
+          class="form__error"
+          aria-live="assertive"
+          role="alert"
+          id="errorMessageBlock"
+        >
+          {errorMessage}
+        </p>
       </div>
     </div>
-  </slot>
 
-  <slot name="files">
-    <span id="upload-status" class="slds-assistive-text"
-      >{ariaLiveStatusText}</span
-    >
-    <div aria-labelledby="upload-status" aria-live={ariaLiveStatus}></div>
-    <div class="slds-grid">
-      <ul
-        class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+    <div class="sfgpsds-file-list">
+      <span id="upload-status" class="slds-assistive-text"
+        >{ariaLiveStatusText}</span
       >
-        <template for:each={_value} for:item="item" for:index="index">
-          <li key={item.data} class="slds-item">
-            <div class="slds-grid">
-              <span
-                class="slds-m-bottom_xx-small slds-size_11-of-12 slds-medium-size_11-of-12 slds-truncate"
-              >
-                {item.filename}
-              </span>
-              <span
-                class="remove-file-icon slds-m-bottom_xx-small slds-size_1-of-12 slds-medium-size_1-of-12 slds-text-align_right"
-              >
-                <button
-                  class="slds-button slds-button_icon"
-                  title={item.deleteLabel}
-                  data-index={index}
-                  data-id={item.data}
-                  onclick={deleteFile}
+      <div aria-labelledby="upload-status" aria-live={ariaLiveStatus}></div>
+      <div class="slds-grid">
+        <ul
+          class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+        >
+          <template for:each={_value} for:item="item" for:index="index">
+            <li key={item.data} class="slds-item">
+              <div class="slds-grid">
+                <span
+                  class="slds-m-bottom_xx-small slds-size_11-of-12 slds-medium-size_11-of-12 slds-truncate"
                 >
-                  <omnistudio-icon
-                    theme={_theme}
-                    extraclass="slds-button__icon"
-                    iconposition="left"
-                    icon-name="action:delete"
-                    color="brand"
-                    alternative-text={item.deleteLabel}
-                    size="x-small"
+                  {item.filename}
+                </span>
+                <span
+                  class="remove-file-icon slds-m-bottom_xx-small slds-size_1-of-12 slds-medium-size_1-of-12 slds-text-align_right"
+                >
+                  <button
+                    class="slds-button slds-button_icon"
+                    title={item.deleteLabel}
                     data-index={index}
                     data-id={item.data}
+                    onclick={deleteFile}
                   >
-                  </omnistudio-icon>
-                </button>
-              </span>
-            </div>
-          </li>
-        </template>
-      </ul>
+                    <omnistudio-icon
+                      theme={_theme}
+                      extraclass="slds-button__icon"
+                      iconposition="left"
+                      icon-name="action:delete"
+                      color="brand"
+                      alternative-text={item.deleteLabel}
+                      size="x-small"
+                      data-index={index}
+                      data-id={item.data}
+                    >
+                    </omnistudio-icon>
+                  </button>
+                </span>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
     </div>
-  </slot>
+  </div>
 </template>
