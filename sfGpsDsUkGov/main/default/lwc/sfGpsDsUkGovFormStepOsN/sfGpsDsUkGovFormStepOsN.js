@@ -13,7 +13,7 @@ import { track } from "lwc";
 import OmniscriptStep from "c/sfGpsDsFormStepOsN";
 import tmpl from "./sfGpsDsUkGovFormStepOsN.html";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsUkGovFormStepOsN";
 
 export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
