@@ -4,7 +4,7 @@
       "path": "sfGpsDs",
       "package": "Salesforce Global Public Sector Design Systems",
       "versionName": "2023.11.05.2000",
-      "versionNumber": "2.0.0.NEXT",
+      "versionNumber": "2.0.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -17,7 +17,7 @@
       "path": "sfGpsDsAuNsw",
       "package": "Salesforce Global Public Sector AU NSW Design System",
       "versionName": "2023.11.05.2000",
-      "versionNumber": "2.0.0.NEXT",
+      "versionNumber": "2.0.1.NEXT",
       "default": true,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -34,7 +34,7 @@
       "path": "sfGpsDsAuNswS",
       "package": "Salesforce Global Public Sector AU NSW Service Design System",
       "versionName": "2023.11.05.2000",
-      "versionNumber": "2.0.0.NEXT",
+      "versionNumber": "2.0.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -51,7 +51,7 @@
       "path": "sfGpsDsAuVic",
       "package": "Salesforce Global Public Sector AU VIC Design System",
       "versionName": "2023.11.05.2000",
-      "versionNumber": "2.0.0.NEXT",
+      "versionNumber": "2.0.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -68,7 +68,7 @@
       "path": "sfGpsDsUkGov",
       "package": "Salesforce Global Public Sector GOV.UK Design System",
       "versionName": "2023.11.05.2000",
-      "versionNumber": "0.9.0.NEXT",
+      "versionNumber": "0.9.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -85,7 +85,7 @@
       "path": "sfGpsDsAuQld",
       "package": "Salesforce Global Public Sector QLD Design System",
       "versionName": "2023.11.05.2000",
-      "versionNumber": "0.9.0.NEXT",
+      "versionNumber": "0.9.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -102,7 +102,7 @@
       "path": "sfGpsDsUkGovFull",
       "package": "Salesforce Global Public Sector GOV.UK Design System (Full)",
       "versionName": "2023.11.05.2000",
-      "versionNumber": "0.9.0.NEXT",
+      "versionNumber": "0.9.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
