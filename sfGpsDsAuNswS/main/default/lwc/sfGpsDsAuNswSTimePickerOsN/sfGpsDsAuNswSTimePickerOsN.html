@@ -51,7 +51,7 @@
             </div>
 
             <div
-              class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 nsw-form__predictive-list"
+              class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5"
               role="listbox"
             >
               <ul
@@ -67,45 +67,50 @@
                 >
                   <li
                     key={item.id}
-                    id={item.id}
-                    data-index={index}
-                    data-selected={item.selected}
-                    data-val={item.value}
-                    data-timepicker-option
-                    role="option"
-                    aria-selected={item.selected}
-                    class="sfgpsds-listbox__option sfgpsds-listbox__option_plain sfgpsds-media sfgpsds-media_small sfgpsds-media_center"
-                    onmousedown={selectOption}
+                    class="sfgpsds-listbox__item"
+                    role="presentation"
                   >
-                    <span
-                      class="sfgpsds-media__figure sfgpsds-listbox__option-icon"
+                    <div
+                      id={item.id}
+                      data-index={index}
+                      data-selected={item.selected}
+                      data-val={item.value}
+                      data-timepicker-option
+                      role="option"
+                      aria-selected={item.selected}
+                      class="sfgpsds-listbox__option sfgpsds-listbox__option_plain sfgpsds-media sfgpsds-media_small sfgpsds-media_center"
+                      onmousedown={selectOption}
                     >
                       <span
-                        if:true={item.selected}
-                        class="sfgpsds-icon-small"
-                        aria-hidden="true"
+                        class="sfgpsds-media__figure sfgpsds-listbox__option-icon"
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          height="18"
-                          width="18"
-                          viewBox="0 0 24 24"
+                        <span
+                          if:true={item.selected}
+                          class="sfgpsds-icon-small"
+                          aria-hidden="true"
                         >
-                          <path
-                            d="M9.55 18 3.85 12.3 5.275 10.875 9.55 15.15 18.725 5.975 20.15 7.4Z"
-                          ></path>
-                        </svg>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="18"
+                            width="18"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              d="M9.55 18 3.85 12.3 5.275 10.875 9.55 15.15 18.725 5.975 20.15 7.4Z"
+                            ></path>
+                          </svg>
+                        </span>
                       </span>
-                    </span>
 
-                    <span class="sfgpsds-media__body">
-                      <span
-                        class="sfgpsds-listbox__option-text"
-                        title={item.value}
-                      >
-                        {item.value}
+                      <span class="sfgpsds-media__body">
+                        <span
+                          class="sfgpsds-listbox__option-text"
+                          title={item.value}
+                        >
+                          {item.value}
+                        </span>
                       </span>
-                    </span>
+                    </div>
                   </li>
                 </template>
               </ul>
@@ -118,7 +123,6 @@
     <span
       if:true={sfGpsDsIsError}
       class="form__error"
-      data-timepicker-error-block
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
