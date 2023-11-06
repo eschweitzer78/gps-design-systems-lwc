@@ -2,7 +2,7 @@ import { api } from "lwc";
 import OmnistudioTimePicker from "omnistudio/timePicker";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniTimePickerOsN";
 
 export default class SfGpsDsOmniTimePickerOsN extends SfGpsDsOmniInputMixinOsN(
@@ -17,6 +17,9 @@ export default class SfGpsDsOmniTimePickerOsN extends SfGpsDsOmniInputMixinOsN(
       `.${this.theme}-dropdown-trigger_click`
     );
     e.classList.add(`${this.theme}-is-open`);
+
+    // focus on input if it isn't the case already so that key input is taken into account
+    this.inputElement.focus();
   }
 
   // fixing an inconsistency of the timePicker: with the select widget, clicking on an open widget

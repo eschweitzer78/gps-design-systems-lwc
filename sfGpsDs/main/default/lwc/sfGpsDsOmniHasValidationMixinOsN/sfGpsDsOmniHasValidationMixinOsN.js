@@ -26,7 +26,7 @@ const ERROR_PROP_NAMES = [
  * of event that omnistudio clears custom validation errors for originally. See details below.
  */
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniHasValidationMixin";
 
 let SfGpsDsOmniHasValidationMixin = (Base) =>

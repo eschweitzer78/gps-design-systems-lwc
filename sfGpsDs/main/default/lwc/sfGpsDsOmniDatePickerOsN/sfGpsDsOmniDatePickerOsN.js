@@ -2,7 +2,7 @@ import { api } from "lwc";
 import OmnistudioDatePicker from "omnistudio/datePicker";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniDatePickerOsN";
 
 export default class SfGpsDsOmniDatePickerOsN extends SfGpsDsOmniInputMixinOsN(
@@ -48,6 +48,14 @@ export default class SfGpsDsOmniDatePickerOsN extends SfGpsDsOmniInputMixinOsN(
 
       delete this.lastInvalid;
     }
+  }
+
+  /* omni246.10 introduced a mandatory button [data-id="datePickerBtn"] that we don't have 
+     and don't want to have. */
+
+  _hideCalendar() {
+    this._dataSelectEvent = "iconclick"; // make sure we dont go down the branch that uses the button
+    super._hideCalendar();
   }
 
   /***

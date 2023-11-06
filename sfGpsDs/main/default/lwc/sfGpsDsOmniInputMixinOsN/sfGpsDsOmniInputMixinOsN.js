@@ -7,7 +7,7 @@
 
 import { api } from "lwc";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniInputMixin";
 
 let SfGpsDsOmniInputMixin = (Base) =>
