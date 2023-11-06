@@ -11,13 +11,6 @@ import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormFileOsN.html";
 
-// TODO: there is seemingly a bug in SDLS when the hover colors for neutral buttons are not derived from variables
-//       raise with appropriate team.
-//       could be fixed holistically for Experience Cloud on community css override though
-// .slds-scope .slds-button_neutral:hover, .slds-scope .slds-button_neutral:focus, .slds-scope .slds-button--neutral:hover, .slds-scope .slds-button--neutral:focus {
-//  background-color: rgb(243, 243, 243); -> var(--slds-c-button-neutral-color-background-hover)
-//  border-color: rgb(201, 201, 201); -> var(--slds-c-button-neutral-color-border-hover)
-
 export default class SfGpsDsAuNswFormFileOsN extends SfGpsDsAuNswStatusHelperMixin(
   SfGpsDsFormFileOsN
 ) {
