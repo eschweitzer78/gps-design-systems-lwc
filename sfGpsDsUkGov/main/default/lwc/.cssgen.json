@@ -60,13 +60,6 @@
     { "from": ".js-enabled", "to": "" }
   ],
   "sfGpsDsUkGovHeader/header": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
-  "sfGpsDsUkGovHeroBanner/button": [
-    { "from": "@font-face\\{[^}]*\\}", "to": "" },
-    { "from": ".js-enabled", "to": "" }
-  ],
-  "sfGpsDsUkGovHeroBanner/hero-banner": [
-    { "from": "@font-face\\{[^}]*\\}", "to": "" }
-  ],
   "sfGpsDsUkGovInputOsN/checkboxes": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" },
     { "from": ".js-enabled", "to": "" }

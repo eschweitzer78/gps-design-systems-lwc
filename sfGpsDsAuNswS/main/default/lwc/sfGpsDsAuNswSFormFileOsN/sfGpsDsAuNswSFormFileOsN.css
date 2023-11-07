@@ -3,10 +3,10 @@
 .omni-file-input {
   --lwc-spacingXxxSmall: 0.5rem;
   --lwc-colorBorder: var(--nsw-s-border);
-  --slds-c-button-neutral-color-background: var(--nsw-s-brand-dark);
-  --slds-c-button-neutral-color-background-hover: rgb(82, 114, 177);
-  --slds-c-button-neutral-color-border: transparent;
-  --slds-c-button-neutral-color-border-hover: rgb(39, 74, 143);
+  --slds-c-button-neutral-color-background: #c60c30;
+  --slds-c-button-neutral-color-border: #a71930;
+  --slds-c-button-neutral-color-background-hover: #e80229;
+  --slds-c-button-neutral-color-border-hover: transparent;
   --slds-c-button-text-color: var(--nsw-s-white);
   --slds-c-button-text-color-hover: var(--nsw-s-white);
   --slds-c-button-spacing-block-start: 0.5rem; /* Found by trial & error, due to lightning primitive icon height */

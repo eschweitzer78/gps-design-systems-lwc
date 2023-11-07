@@ -1,0 +1,20 @@
+<template>
+  <template if:false={_sfGpsErrors}>
+    <div if:true={as} role="alert" class={computedClassName}>
+      <template lwc:if={compact}>
+        <span if:true={title}>{title}</span>
+      </template>
+      <template lwc:else>
+        <div if:true={title}>{title}</div>
+      </template>
+
+      <span data-sfgpsds-markdown lwc:dom="manual"> </span>
+    </div>
+  </template>
+
+  <c-sf-gps-ds-configuration-error-os
+    if:true={_sfGpsErrors}
+    errors={_sfGpsErrors}
+  >
+  </c-sf-gps-ds-configuration-error-os>
+</template>

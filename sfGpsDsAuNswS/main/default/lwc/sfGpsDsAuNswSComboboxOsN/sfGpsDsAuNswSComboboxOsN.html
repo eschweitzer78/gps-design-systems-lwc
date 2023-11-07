@@ -24,7 +24,7 @@
           <div
             class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
           >
-            <div class="sfgpsds-combobox__form-element">
+            <div class="sfgpsds-combobox__form-element" role="none">
               <input
                 class="form__input sfgpsds-combobox__input combobox"
                 aria-describedby={computedAriaDescribedBy}
@@ -50,66 +50,69 @@
                 onkeyup={handleKeyUp}
               />
             </div>
-          </div>
-        </div>
 
-        <div
-          id="combobox-list"
-          class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid"
-          aria-labelledby="combobox-label"
-          role="listbox"
-          onmousedown={preventLookupClose}
-          onmouseleave={preventLookupOpen}
-          onmouseup={preventLookupOpen}
-        >
-          <ul
-            class="sfgpsds-listbox sfgpsds-listbox_vertical"
-            role="presentation"
-          >
-            <template for:each={internalOptionsCopy} for:item="item">
-              <li
-                if:true={isGrouped}
-                class="sfgpsds-listbox__item"
-                key={item.optId}
+            <div
+              id="combobox-list"
+              class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid"
+              aria-labelledby="combobox-label"
+              role="listbox"
+              onmousedown={preventLookupClose}
+              onmouseleave={preventLookupOpen}
+              onmouseup={preventLookupOpen}
+            >
+              <ul
+                class="sfgpsds-listbox sfgpsds-listbox_vertical"
                 role="presentation"
               >
-                <div class="sfgpsds-listbox__option" role="presentation">
-                  <h3
-                    class="sfgpsds-listbox__option-header"
+                <template for:each={internalOptionsCopy} for:item="item">
+                  <li
+                    if:true={isGrouped}
+                    class="sfgpsds-listbox__item"
+                    key={item.optId}
                     role="presentation"
                   >
-                    {item.group}
-                  </h3>
-                </div>
-              </li>
+                    <div class="sfgpsds-listbox__option" role="presentation">
+                      <h3
+                        class="sfgpsds-listbox__option-header"
+                        role="presentation"
+                      >
+                        {item.group}
+                      </h3>
+                    </div>
+                  </li>
 
-              <li key={item.optId} class="sfgpsds-listbox__item">
-                <!-- removed onmouseover={handleMouseOver} -->
-                <!-- removed onmouseout={handleMouseOut} -->
-                <div
-                  class="sfgpsds-listbox__option sfgpsds-listbox__option_plain"
-                  data-value={item.value}
-                  data-label={item.label}
-                  data-option-id={item.optId}
-                  role="option"
-                  id={item.optId}
-                  onmouseup={selectOption}
-                >
-                  <span class="sfgpsds-listbox__option-text" title={item.label}>
-                    {item.label}
-                  </span>
-                </div>
-              </li>
-            </template>
-          </ul>
+                  <li key={item.optId} class="sfgpsds-listbox__item">
+                    <!-- removed onmouseover={handleMouseOver} -->
+                    <!-- removed onmouseout={handleMouseOut} -->
+                    <div
+                      class="sfgpsds-listbox__option sfgpsds-listbox__option_plain"
+                      data-value={item.value}
+                      data-label={item.label}
+                      data-option-id={item.optId}
+                      role="option"
+                      id={item.optId}
+                      onmouseup={selectOption}
+                    >
+                      <span
+                        class="sfgpsds-listbox__option-text"
+                        title={item.label}
+                      >
+                        {item.label}
+                      </span>
+                    </div>
+                  </li>
+                </template>
+              </ul>
 
-          <footer
-            if:false={hidefooter}
-            class={footerClass}
-            onmousedown={preventTrigger}
-          >
-            <slot name="footer"> </slot>
-          </footer>
+              <footer
+                if:false={hidefooter}
+                class={footerClass}
+                onmousedown={preventTrigger}
+              >
+                <slot name="footer"> </slot>
+              </footer>
+            </div>
+          </div>
         </div>
       </div>
 
