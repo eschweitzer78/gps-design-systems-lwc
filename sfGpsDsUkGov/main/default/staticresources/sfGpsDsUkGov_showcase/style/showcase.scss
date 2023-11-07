@@ -1,0 +1,33 @@
+$govuk-new-link-styles: true;
+
+@import "../../../lwc/sfGpsDsUkGovCore/core";
+
+// App-specific variables
+$app-light-grey: #f8f8f8;
+$app-code-color: #d13118;
+
+// App-specific components
+@import "components/masthead";
+@import "components/subnav";
+
+.app-width-container {
+  @include govuk-width-container($govuk-page-width);
+}
+
+// Add styling for 'what's new' banner
+.app-whats-new {
+  border-bottom: 1px solid $govuk-border-colour;
+  background-color: $app-light-grey;
+}
+
+.app-content h4, 
+.app-content h5, 
+.app-content h6, 
+.app-content p, 
+.app-content ul:not(.app-tabs), 
+.app-content ol, 
+.app-content img, 
+.app-content video, 
+.app-content .app-table--constrained {
+  max-width: 38em;
+}

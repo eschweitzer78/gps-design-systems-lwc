@@ -1,0 +1,19 @@
+$govuk-link-underline-thickness: unquote("max(1px, .0625rem)") !default;
+
+/* add concept of flex column in GOVUK grid */
+
+.govuk-grid-column-flex {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 15px;
+  width: auto;
+}
+
+/* fixes clash between GOVUK GDS and SLDS */
+
+h1.govuk-fieldset__heading {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+

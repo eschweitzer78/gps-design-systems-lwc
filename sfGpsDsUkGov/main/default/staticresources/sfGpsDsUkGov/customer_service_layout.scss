@@ -1,21 +1,18 @@
 .siteforceContentArea .forceCommunitySection {
   /*overflow-x: clip;*/
-  max-width: 960px;
-  margin-right: 15px;
-  margin-left: 15px;
+  max-width: $govuk-page-width;
+  margin-right: $govuk-gutter-half;
+  margin-left: $govuk-gutter-half;
 
-  @media(min-width: 40.0625em) {
-    margin-right: 30px;
-    margin-left: 30px
+  @include govuk-media-query($from: tablet) {
+    margin-right: $govuk-gutter;
+    margin-left: $govuk-gutter;
   }
 
-  @media(min-width: 1020px) {
-    margin-left: auto;
+  @include govuk-media-query($and: "(min-width: #{($govuk-page-width + $govuk-gutter * 2)})") {
     margin-right: auto;
+    margin-left: auto;
   }
-
-  //padding-left: 1rem;
-  //padding-right: 1rem;
 }
 
 /* SECOND SECTION SHOULD BE FULL-WIDTH
