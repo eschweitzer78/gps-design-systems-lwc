@@ -2,7 +2,7 @@
   <template if:false={_sfGpsErrors}>
     <div if:true={as} role="alert" class={computedClassName}>
       <template lwc:if={compact}>
-        <span if:true={title}>{title}</span>
+        <span if:true={title} class="alert--title">{title}</span>
       </template>
       <template lwc:else>
         <div if:true={title}>{title}</div>

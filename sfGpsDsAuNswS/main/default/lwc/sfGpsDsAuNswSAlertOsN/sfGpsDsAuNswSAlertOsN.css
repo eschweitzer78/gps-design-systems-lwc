@@ -14,6 +14,11 @@
   display: inline-flex;
 }
 
+.alert-title {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
 .alert.alert-info {
   background: #eaedf4
     url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%232e5299"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm1.2 13.2h-2.4V6h2.4v7.2zm0 4.8h-2.4v-2.4h2.4V18z"/></svg>')
