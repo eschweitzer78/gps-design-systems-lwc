@@ -1,12 +1,12 @@
 <template>
-  <div class="nsw-form__group">
+  <div class="form__group">
     <label
       class={computedLabelClassName}
       aria-label={mergedLabel}
       for="inputId"
     >
       {mergedLabel}
-      <span if:true={_propSetMap.required} class="sr-only">
+      <span if:true={_propSetMap.required} class="visually-hidden">
         ({allCustomLabelsUtil.OmniRequired})</span
       >
     </label>
@@ -51,14 +51,14 @@
       {mergedHelpText}
     </span>
 
-    <div class="sfgpsds-form-element__control nsw-form__predictive">
+    <div class="sfgpsds-form-element__control">
       <div class="sfgpsds-combobox_container">
         <div
           class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger_click"
         >
           <div class="sfgpsds-combobox__form-element" role="none">
             <input
-              class="nsw-form__input sfgpsds-input sfgpsds-combobox__input lookup"
+              class={computedInputClassName}
               type="text"
               disabled={_propSetMap.readOnly}
               required={_propSetMap.required}
@@ -81,7 +81,7 @@
           </div>
 
           <div
-            class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid nsw-form__predictive-list"
+            class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid"
             id="lookup"
             role="listbox"
             onmousedown={handleKeyDown}
@@ -128,18 +128,11 @@
 
     <span
       if:true={sfGpsDsIsError}
-      class={computedHelperClassName}
+      class="form__error"
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
     >
-      <span
-        if:true={computedStatusIcon}
-        class="material-icons nsw-material-icons"
-        aria-hidden="true"
-      >
-        {computedStatusIcon}
-      </span>
       {sfGpsDsErrorMessage}
     </span>
 

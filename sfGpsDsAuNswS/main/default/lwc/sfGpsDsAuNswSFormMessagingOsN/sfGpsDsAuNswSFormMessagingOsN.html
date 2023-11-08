@@ -1,0 +1,38 @@
+<template>
+  <template if:true={messageText}>
+    <div class="messaging">
+      <c-sf-gps-ds-au-nsw-s-alert-os-n
+        if:true={isRequirement}
+        as="error"
+        compact={isCompact}
+        title={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-nsw-s-alert-os-n>
+      <c-sf-gps-ds-au-nsw-s-alert-os-n
+        if:true={isSuccess}
+        as="success"
+        compact={isCompact}
+        title={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-nsw-s-alert-os-n>
+      <c-sf-gps-ds-au-nsw-s-alert-os-n
+        if:true={isWarning}
+        as="warning"
+        compact={isCompact}
+        title={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-nsw-s-alert-os-n>
+      <c-sf-gps-ds-au-nsw-s-alert-os-n
+        if:true={isComment}
+        as="info"
+        compact={isCompact}
+        title={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-nsw-s-alert-os-n>
+    </div>
+  </template>
+</template>
