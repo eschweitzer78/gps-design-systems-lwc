@@ -2,7 +2,7 @@ import { api } from "lwc";
 import OmnistudioRadioGroup from "omnistudio/radioGroup";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniRadioGroupOsN";
 
 export default class SfGpsDsOmniRadioGroupOsN extends SfGpsDsOmniInputMixinOsN(
