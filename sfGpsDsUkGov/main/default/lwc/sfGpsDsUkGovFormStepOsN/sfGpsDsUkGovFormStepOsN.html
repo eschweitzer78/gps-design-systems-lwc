@@ -28,7 +28,11 @@
 
     <h2 class="slds-m-top_medium os-step-label">{mergedLabel}</h2>
 
-    <a href if:true={showPrev} class="govuk-back-link" onclick={handleBack}
+    <a
+      if:true={showPrev}
+      href="#previous"
+      class="govuk-back-link"
+      onclick={handleBack}
       >{mergedPreviousLabel}</a
     >
 

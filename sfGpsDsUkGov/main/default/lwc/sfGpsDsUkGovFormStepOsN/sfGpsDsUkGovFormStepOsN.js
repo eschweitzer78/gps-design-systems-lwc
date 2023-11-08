@@ -13,7 +13,7 @@ import { track } from "lwc";
 import OmniscriptStep from "c/sfGpsDsFormStepOsN";
 import tmpl from "./sfGpsDsUkGovFormStepOsN.html";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsUkGovFormStepOsN";
 
 export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
@@ -21,29 +21,24 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
     return tmpl;
   }
 
+  handleBack(e) {
+    e.preventDefault(); // avoid default behaviour with the href on anchor
+    super.handleBack(e);
+  }
+
   handleNext(e) {
     if (DEBUG) console.log(CLASS_NAME, "handleNext");
-    e.preventDefault();
 
     /* Prepare snapshot captures errors so that they can be kept until the next time the user does next */
     this.reportValidity();
     this.prepareSnapshot();
 
-    this.dispatchEvent(
-      new CustomEvent("omniautoadvance", {
-        bubbles: true,
-        detail: {
-          moveToStep: "next"
-        }
-      })
-    );
+    super.handleNext(e);
   }
 
   handleErrorClick(e) {
     e.preventDefault();
     this.focusInvalidInput(e.currentTarget.dataset.errorkey);
-
-    return false;
   }
 
   getCurrentMessages() {
