@@ -7,7 +7,7 @@
     >
       {mergedLabel}
       <span if:true={_propSetMap.required} class="sr-only">
-        ({requiredLabel})</span
+        ({allCustomLabelsUtil.OmniRequired})</span
       >
     </label>
 
@@ -47,7 +47,7 @@
       </span>
     </template>
 
-    <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
+    <span if:true={mergedHelpText} id="helper" class="form__help">
       {mergedHelpText}
     </span>
 
