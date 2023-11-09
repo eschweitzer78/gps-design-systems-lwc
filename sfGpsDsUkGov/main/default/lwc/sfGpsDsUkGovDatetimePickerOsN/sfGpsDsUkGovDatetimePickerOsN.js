@@ -13,8 +13,7 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 
 const ZWSP_CHAR = "​"; // this is the zero width space character, great for forcing a div/span to display with some height.
 export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioDatetimePicker,
-  "large"
+  OmnistudioDatetimePicker
 ) {
   render() {
     return tmpl;

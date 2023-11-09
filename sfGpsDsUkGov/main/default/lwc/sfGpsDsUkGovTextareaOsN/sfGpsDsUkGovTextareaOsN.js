@@ -17,11 +17,9 @@ import tmpl from "./sfGpsDsUkGovTextareaOsN.html";
 
 const CHAR_LIMIT_REMAINING_TMPL = "{charRemaining} characters remaining";
 const CHAR_LIMIT_CHARACTERS_TMPL = "{charCount} characters";
-const DEFAULT_LABEL_SIZE = "large";
 
 export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioTextarea,
-  DEFAULT_LABEL_SIZE
+  OmnistudioTextarea
 ) {
   @api characterLimitRemainingTemplate = CHAR_LIMIT_REMAINING_TMPL;
 

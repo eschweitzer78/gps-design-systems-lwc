@@ -5,20 +5,31 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmniscriptMaskedInput from "c/sfGpsDsOmniMaskedInputOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
 import tmpl from "./sfGpsDsUkGovMaskedInputOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
 export default class SfGpsDsUkGovMaskedInputOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptMaskedInput,
-  DEFAULT_LABEL_SIZE
+  OmniscriptMaskedInput
 ) {
+  /* api: prefix and suffix */
+
+  @api sfGpsDsPrefix;
+  @api sfGpsDsSuffix;
+
+  /* methods */
+
   render() {
     return tmpl;
+  }
+
+  /* getters */
+
+  get computedHasPrefixOrSuffix() {
+    return this.sfGpsDsPrefix || this.sfGpsDsSuffix;
   }
 
   get computedFormGroupClassName() {

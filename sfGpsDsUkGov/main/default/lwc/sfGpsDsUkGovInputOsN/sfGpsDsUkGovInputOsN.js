@@ -13,11 +13,9 @@ import tmpl from "./sfGpsDsUkGovInputOsN.html";
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsUkGovInputOsN";
-const DEFAULT_LABEL_SIZE = "large";
 
 export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptInput,
-  DEFAULT_LABEL_SIZE
+  OmniscriptInput
 ) {
   @api labelClassName;
 
@@ -39,6 +37,11 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
       fallbackValue: false
     });
   }
+
+  /* api: prefix and suffix */
+
+  @api sfGpsDsPrefix;
+  @api sfGpsDsSuffix;
 
   /* Methods */
   /* ------- */
@@ -117,5 +120,9 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.sfGpsDsIsError
     });
+  }
+
+  get computedHasPrefixOrSuffix() {
+    return this.sfGpsDsPrefix || this.sfGpsDsSuffix;
   }
 }

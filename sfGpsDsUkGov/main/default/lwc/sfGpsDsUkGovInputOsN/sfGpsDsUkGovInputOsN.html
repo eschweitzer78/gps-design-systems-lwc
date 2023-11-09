@@ -6,9 +6,18 @@
       class={computedFormGroupClassName}
     >
       <div if:true={labelVisible} data-label="true">
-        <h3 class="govuk-label-wrapper">
+        <h1 lwc:if={computedIsH1} class="govuk-label-wrapper">
+          <label class={computedLabelClassName} for={inputId}>{label}</label>
+        </h1>
+        <h2 lwc:elseif={computedIsH2} class="govuk-label-wrapper">
+          <label class={computedLabelClassName} for={inputId}>{label}</label>
+        </h2>
+        <h3 lwc:elseif={computedIsH3} class="govuk-label-wrapper">
           <label class={computedLabelClassName} for={inputId}>{label}</label>
         </h3>
+        <label lwc:else class={computedLabelClassName} for={inputId}
+          >{label}</label
+        >
         <slot name="label"></slot>
       </div>
 
@@ -59,12 +68,6 @@
               data-label="true"
             >
               {label}
-              <span
-                if:true={required}
-                class="govuk-error-message"
-                title={requiredLabel}
-              >
-              </span>
             </label>
             <slot name="label"></slot>
           </div>
@@ -79,20 +82,54 @@
           {label}
         </label>
 
-        <input
-          class={computedInputClassName}
-          type="text"
-          id={inputId}
-          readonly
-          disabled
-          aria-describedby={computedAriaDescribedBy}
-          value={inputValue}
-          onchange={triggerEvent}
-          onfocus={triggerEvent}
-          onblur={triggerEvent}
-          onkeydown={triggerKeyEvents}
-          onkeyup={triggerKeyEvents}
-        />
+        <template lwc:if={computedHasPrefixOrSuffix}>
+          <div class="govuk-input__wrapper">
+            <div
+              lwc:if={sfGpsDsPrefix}
+              class="govuk-input__prefix"
+              aria-hidden="true"
+            >
+              {sfGpsDsPrefix}
+            </div>
+            <input
+              class={computedInputClassName}
+              type="text"
+              id={inputId}
+              readonly
+              disabled
+              aria-describedby={computedAriaDescribedBy}
+              value={inputValue}
+              onchange={triggerEvent}
+              onfocus={triggerEvent}
+              onblur={triggerEvent}
+              onkeydown={triggerKeyEvents}
+              onkeyup={triggerKeyEvents}
+            />
+            <div
+              lwc:if={sfGpsDsSuffix}
+              class="govuk-input__suffix"
+              aria-hidden="true"
+            >
+              {sfGpsDsSuffix}
+            </div>
+          </div>
+        </template>
+        <template lwc:else>
+          <input
+            class={computedInputClassName}
+            type="text"
+            id={inputId}
+            readonly
+            disabled
+            aria-describedby={computedAriaDescribedBy}
+            value={inputValue}
+            onchange={triggerEvent}
+            onfocus={triggerEvent}
+            onblur={triggerEvent}
+            onkeydown={triggerKeyEvents}
+            onkeyup={triggerKeyEvents}
+          />
+        </template>
       </div>
       <!-- isFormula -->
 
@@ -281,39 +318,93 @@
           >{sfGpsDsErrorMessage}
         </p>
 
-        <!-- class was resolvedInputClass -->
-        <input
-          class={computedInputClassName}
-          id={inputId}
-          tabindex={tabIndex}
-          accesskey={accessKey}
-          pattern={pattern}
-          step={step}
-          min={min}
-          max={max}
-          maxlength={maxLength}
-          minlength={minLength}
-          type={type}
-          data-isnumber={isNumber}
-          disabled={disabled}
-          required={required}
-          aria-invalid={isAriaInvalid}
-          aria-describedby={computedAriaDescribedBy}
-          readonly={readOnly}
-          aria-readonly={readOnly}
-          placeholder={placeholder}
-          aria-labelledby={ariaLabelledBy}
-          aria-label={ariaLabel}
-          autocomplete={autocomplete}
-          name={name}
-          value={inputValue}
-          onfocus={handleFocus}
-          onblur={sfGpsDsValidateError}
-          oninput={sfGpsDsTriggerInputEvent}
-          onchange={triggerEvent}
-          onkeydown={triggerKeyEvents}
-          onkeyup={triggerKeyEvents}
-        />
+        <template lwc:if={computedHasPrefixOrSuffix}>
+          <div class="govuk-input__wrapper">
+            <div
+              lwc:if={sfGpsDsPrefix}
+              class="govuk-input__prefix"
+              aria-hidden="true"
+            >
+              {sfGpsDsPrefix}
+            </div>
+            <!-- class was resolvedInputClass -->
+            <input
+              class={computedInputClassName}
+              id={inputId}
+              tabindex={tabIndex}
+              accesskey={accessKey}
+              pattern={pattern}
+              step={step}
+              min={min}
+              max={max}
+              maxlength={maxLength}
+              minlength={minLength}
+              type={type}
+              data-isnumber={isNumber}
+              disabled={disabled}
+              required={required}
+              aria-invalid={isAriaInvalid}
+              aria-describedby={computedAriaDescribedBy}
+              readonly={readOnly}
+              aria-readonly={readOnly}
+              placeholder={placeholder}
+              aria-labelledby={ariaLabelledBy}
+              aria-label={ariaLabel}
+              autocomplete={autocomplete}
+              name={name}
+              value={inputValue}
+              onfocus={handleFocus}
+              onblur={sfGpsDsValidateError}
+              oninput={sfGpsDsTriggerInputEvent}
+              onchange={triggerEvent}
+              onkeydown={triggerKeyEvents}
+              onkeyup={triggerKeyEvents}
+            />
+            <div
+              lwc:if={sfGpsDsSuffix}
+              class="govuk-input__suffix"
+              aria-hidden="true"
+            >
+              {sfGpsDsSuffix}
+            </div>
+          </div>
+        </template>
+        <template lwc:else>
+          <!-- class was resolvedInputClass -->
+          <input
+            class={computedInputClassName}
+            id={inputId}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            pattern={pattern}
+            step={step}
+            min={min}
+            max={max}
+            maxlength={maxLength}
+            minlength={minLength}
+            type={type}
+            data-isnumber={isNumber}
+            disabled={disabled}
+            required={required}
+            aria-invalid={isAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
+            readonly={readOnly}
+            aria-readonly={readOnly}
+            placeholder={placeholder}
+            aria-labelledby={ariaLabelledBy}
+            aria-label={ariaLabel}
+            autocomplete={autocomplete}
+            name={name}
+            value={inputValue}
+            onfocus={handleFocus}
+            onblur={sfGpsDsValidateError}
+            oninput={sfGpsDsTriggerInputEvent}
+            onchange={triggerEvent}
+            onkeydown={triggerKeyEvents}
+            onkeyup={triggerKeyEvents}
+          />
+        </template>
+        <!-- computedNeedsInputWrapper -->
       </template>
 
       <input
@@ -380,6 +471,7 @@
     theme={theme}
     label={label}
     label-size={labelSize}
+    is-heading={isHeading}
     name={name}
     icon-url={iconUrl}
     min={min}
@@ -420,6 +512,7 @@
     theme={theme}
     label={label}
     label-size={labelSize}
+    is-heading={isHeading}
     name={name}
     icon-url={iconUrl}
     min={min}
@@ -453,6 +546,7 @@
     name={name}
     label={label}
     label-size={labelSize}
+    is-heading={isHeading}
     theme={theme}
     icon-url={iconUrl}
     min={min}

@@ -3,12 +3,33 @@
     <div
       if:true={sfGpsDsErrorMessages}
       class="govuk-error-summary"
-      aria-labelledby="error-summary-title"
+      aria-labelledby={computedErrorLabelId}
       role="alert"
     >
-      <h2 class="govuk-error-summary__title" id="error-summary-title">
+      <h1
+        lwc:if={computedIsH1}
+        class="govuk-error-summary__title"
+        id={computedErrorLabelId}
+      >
+        There is a problem
+      </h1>
+      <h2
+        lwc:elseif={computedIsH2}
+        class="govuk-error-summary__title"
+        id={computedErrorLabelId}
+      >
         There is a problem
       </h2>
+      <h3
+        lwc:elseif={computedIsH3}
+        class="govuk-error-summary__title"
+        id={computedErrorLabelId}
+      >
+        There is a problem
+      </h3>
+      <p lwc:else class="govuk-error-summary__title" id={computedErrorLabelId}>
+        There is a problem
+      </p>
 
       <div class="govuk-error-summary__body">
         <ul class="govuk-list govuk-error-summary__list">
@@ -26,7 +47,20 @@
       </div>
     </div>
 
-    <h2 class="slds-m-top_medium os-step-label">{mergedLabel}</h2>
+    <span lwc:if={_propSetMap.captionText} class={computedCaptionClassName}
+      >{_propSetMap.captionText}</span
+    >
+
+    <h1 lwc:if={computedIsH1} class={computedHeadingClassName}>
+      {mergedLabel}
+    </h1>
+    <h2 lwc:elseif={computedIsH2} class={computedHeadingClassName}>
+      {mergedLabel}
+    </h2>
+    <h3 lwc:elseif={computedIsH3} class={computedHeadingClassName}>
+      {mergedLabel}
+    </h3>
+    <!-- otherwise (by default) it's just not shown -->
 
     <a
       if:true={showPrev}

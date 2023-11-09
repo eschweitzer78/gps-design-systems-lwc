@@ -18,11 +18,8 @@ import tmpl from "./sfGpsDsUkGovFormFileOsN.html";
 //  background-color: rgb(243, 243, 243); -> var(--slds-c-button-neutral-color-background-hover)
 //  border-color: rgb(201, 201, 201); -> var(--slds-c-button-neutral-color-border-hover)
 
-const DEFAULT_LABEL_SIZE = "large";
-
 export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormFileOsN,
-  DEFAULT_LABEL_SIZE
+  SfGpsDsFormFileOsN
 ) {
   render() {
     return tmpl;
@@ -32,6 +29,7 @@ export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
     super.initCompVariables();
 
     this.labelSize = this._propSetMap.labelSize;
+    this.isHeading = this._propSetMap.isHeading;
   }
 
   get computedFormGroupClassName() {
@@ -45,6 +43,10 @@ export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
     return computeClass({
       "govuk-file-upload--error": this.sfGpsDsIsError
     });
+  }
+
+  get computedLabelId() {
+    return "fileUpload";
   }
 
   @track computedAriaDescribedBy;

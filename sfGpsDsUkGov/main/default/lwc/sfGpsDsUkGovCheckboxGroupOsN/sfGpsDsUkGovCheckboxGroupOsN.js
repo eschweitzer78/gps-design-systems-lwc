@@ -11,8 +11,7 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovCheckboxGroupOsN.html";
 
 export default class SfGpsDsUkGovCheckboxGroupOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptCheckboxGroup,
-  "large"
+  OmniscriptCheckboxGroup
 ) {
   render() {
     return tmpl;

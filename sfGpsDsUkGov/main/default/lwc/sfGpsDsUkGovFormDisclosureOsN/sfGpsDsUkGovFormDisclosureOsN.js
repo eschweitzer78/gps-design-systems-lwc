@@ -9,11 +9,8 @@ import SfGpsDsFormDisclosureOsN from "c/sfGpsDsFormDisclosureOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormDisclosureOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
 export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormDisclosureOsN,
-  DEFAULT_LABEL_SIZE
+  SfGpsDsFormDisclosureOsN
 ) {
   render() {
     return tmpl;
@@ -23,5 +20,6 @@ export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsUkGovLabelMixi
     super.initCompVariables();
 
     this.labelSize = this._propSetMap.labelSize;
+    this.isHeading = this._propSetMap.isHeading;
   }
 }

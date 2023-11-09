@@ -17,13 +17,9 @@
 }
 
 [data-label] {
-  display: table;
+  display: flex;
 }
 
-[data-label] .govuk-label-wrapper {
+[data-label] .govuk-label {
   margin-right: 0.5rem;
-}
-
-[data-label] slot {
-  display: table-cell;
 }

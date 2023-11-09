@@ -3,14 +3,10 @@
 
 /* repeat icons */
 
-label.govuk-label {
+.govuk-form-group > div:first-child {
   display: flex; /* UK Gov uses block but "inline" can be used if required to make the + appear next to the label  */
 }
 
-label span {
+label {
   margin-right: 0.5rem;
-}
-
-label slot {
-  display: table-cell;
 }

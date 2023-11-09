@@ -1,10 +1,17 @@
 <template>
   <div class="govuk-form-group">
-    <h3 class="govuk-label-wrapper">
-      <label class={computedLabelClassName} aria-label={mergedLabel} for="frt">
-        {mergedLabel}
-      </label>
+    <h1 lwc:if={computedIsH1} class="govuk-label-wrapper">
+      <label class={computedLabelClassName} for="frt"> {mergedLabel} </label>
+    </h1>
+    <h2 lwc:elseif={computedIsH2} class="govuk-label-wrapper">
+      <label class={computedLabelClassName} for="frt"> {mergedLabel} </label>
+    </h2>
+    <h3 lwc:elseif={computedIsH3} class="govuk-label-wrapper">
+      <label class={computedLabelClassName} for="frt"> {mergedLabel} </label>
     </h3>
+    <label lwc:else class={computedLabelClassName} for="frt">
+      {mergedLabel}
+    </label>
 
     <div class="govuk-disclosure">
       <div class="govuk-disclosure__content">

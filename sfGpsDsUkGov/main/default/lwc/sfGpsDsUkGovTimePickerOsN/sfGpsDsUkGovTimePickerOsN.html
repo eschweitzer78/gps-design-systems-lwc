@@ -24,11 +24,19 @@
           {label}
         </label>
 
-        <h3 lwc:else class="govuk-label-wrapper">
-          <label class={computedLabelClassName} for="time-input">
-            {label}
-          </label>
+        <h1 lwc:elseif={computedIsH1} class="govuk-label-wrapper">
+          <label class={computedLabelClassName} for="time-input">{label}</label>
+        </h1>
+        <h2 lwc:elseif={computedIsH2} class="govuk-label-wrapper">
+          <label class={computedLabelClassName} for="time-input">{label}</label>
+        </h2>
+        <h3 lwc:elseif={computedIsH3} class="govuk-label-wrapper">
+          <label class={computedLabelClassName} for="time-input">{label}</label>
         </h3>
+        <label lwc:else class={computedLabelClassName} for="time-input"
+          >{label}</label
+        >
+
         <slot name="label"> </slot>
       </div>
 

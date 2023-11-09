@@ -11,8 +11,7 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovRadioGroupOsN.html";
 
 export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioRadioGroup,
-  "large"
+  OmnistudioRadioGroup
 ) {
   render() {
     return tmpl;

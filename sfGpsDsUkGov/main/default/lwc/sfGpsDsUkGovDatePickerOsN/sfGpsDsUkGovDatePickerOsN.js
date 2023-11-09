@@ -17,8 +17,7 @@ const ORIGINAL_INPUT_SELECTOR = "input[hidden]";
 const DAY_INPUT_SELECTOR = 'input[name="date-input-day"]';
 
 export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioDatePicker,
-  "large"
+  OmnistudioDatePicker
 ) {
   @api hideFormGroup;
   @api forceError;
@@ -55,12 +54,6 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     return computeClass({
       errorMessageBlock: this.sfGpsDsHasAnyError,
       helper: this.fieldLevelHelp
-    });
-  }
-
-  get computedAriaLabelledBy() {
-    return computeClass({
-      "fieldset-label": this.label
     });
   }
 

@@ -11,6 +11,7 @@
 
 import { track } from "lwc";
 import OmniscriptStep from "c/sfGpsDsFormStepOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormStepOsN.html";
 
 const DEBUG = false;
@@ -123,5 +124,75 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
       .map((item) => ({ ...item }));
     let errorMessages = customErrors.concat(this._sfGpsDsErrorSnapshot);
     return errorMessages.length ? errorMessages : null;
+  }
+
+  get computedErrorLabelId() {
+    return "error-summary-title";
+  }
+
+  get computedIsH1() {
+    return (
+      this._propSetMap.isHeading === true ||
+      this._propSetMap.isHeading === 1 ||
+      this._propSetMap.isHeading === "1"
+    );
+  }
+
+  get computedIsH2() {
+    return (
+      this._propSetMap.isHeading === 2 || this._propSetMap.isHeading === "2"
+    );
+  }
+
+  get computedIsH3() {
+    return (
+      this._propSetMap.isHeading === 3 || this._propSetMap.isHeading === "3"
+    );
+  }
+
+  get computedHeadingClassName() {
+    let ls = this._propSetMap.labelSize;
+    let h = this._propSetMap.isHeading;
+
+    return computeClass({
+      "govuk-heading-xl":
+        ls === "xl" ||
+        ls === "x-large" ||
+        (ls == null && (h === true || h === 1 || h === "1")),
+      "govuk-heading-l":
+        ls === "l" || ls === "large" || (ls == null && (h === 2 || h === "2")),
+      "govuk-heading-m":
+        ls === "m" || ls === "medium" || (ls == null && (h === 3 || h === "3")),
+      "govuk-heading-s": ls === "s" || ls === "small"
+    });
+  }
+
+  get computedLabelClassName() {
+    let ls = this._propSetMap.labelSize;
+
+    return computeClass({
+      "govuk-label": true,
+      "govuk-label--xl": ls === "xl" || ls === "x-large",
+      "govuk-label--l": ls === "l" || ls === "large",
+      "govuk-label--m": ls === "m" || ls === "medium",
+      "govuk-label--s": ls === "s" || ls === "small"
+    });
+  }
+
+  get computedCaptionClassName() {
+    let ls = this._propSetMap.captionSize || this._propSetMap.labelSize;
+    let h = this._propSetMap.isHeading;
+
+    return computeClass({
+      "govuk-caption--xl":
+        ls === "xl" ||
+        ls === "x-large" ||
+        (ls == null && (h === true || h === 1 || h === "1")),
+      "govuk-caption--l":
+        ls === "l" || ls === "large" || (ls == null && (h === 2 || h === "2")),
+      "govuk-caption--m":
+        ls === "m" || ls === "medium" || (ls == null && (h === 3 || h === "3")),
+      "govuk-caption--s": ls === "s" || ls === "small"
+    });
   }
 }
