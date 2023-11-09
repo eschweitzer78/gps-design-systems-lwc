@@ -67,8 +67,8 @@
     {
       "path": "sfGpsDsUkGov",
       "package": "Salesforce Global Public Sector GOV.UK Design System",
-      "versionName": "2023.11.07.0130",
-      "versionNumber": "0.9.1.NEXT",
+      "versionName": "2023.11.08.2130",
+      "versionNumber": "0.9.2.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -84,8 +84,8 @@
     {
       "path": "sfGpsDsAuQld",
       "package": "Salesforce Global Public Sector QLD Design System",
-      "versionName": "2023.11.07.0130",
-      "versionNumber": "0.9.1.NEXT",
+      "versionName": "2023.11.08.2130",
+      "versionNumber": "0.9.2.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
