@@ -2,7 +2,7 @@ import { api } from "lwc";
 import OmnistudioCombobox from "omnistudio/combobox";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniComboboxOsN";
 
 export default class SfGpsDsOmniCheckboxGroupOsN extends SfGpsDsOmniInputMixinOsN(

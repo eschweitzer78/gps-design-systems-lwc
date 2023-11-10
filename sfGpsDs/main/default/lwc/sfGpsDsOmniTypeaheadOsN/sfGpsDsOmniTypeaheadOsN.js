@@ -1,7 +1,7 @@
 import OmnistudioTypeahead from "omnistudio/typeahead";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniTypeaheadOsN";
 
 export default class SfGpsDsOmniTypeaheadOsN extends SfGpsDsOmniInputMixinOsN(

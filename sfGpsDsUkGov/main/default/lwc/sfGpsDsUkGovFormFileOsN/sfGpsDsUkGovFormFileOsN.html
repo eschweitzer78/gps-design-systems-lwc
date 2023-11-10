@@ -10,17 +10,31 @@
     </omnistudio-spinner>
   </template>
 
-  <div class={_containerClasses} aria-labelledby="fileUpload" tabindex="0">
+  <div class={_containerClasses} aria-labelledby={computedLabelId} tabindex="0">
     <div class={computedFormGroupClassName}>
-      <h3 class="govuk-label-wrapper">
-        <label
-          class={computedLabelClassName}
-          aria-label={mergedLabel}
-          for="frt"
-        >
+      <h1 lwc:if={computedIsH1} class="govuk-label-wrapper">
+        <label id={computedLabelId} class={computedLabelClassName} for="frt">
+          {mergedLabel}
+        </label>
+      </h1>
+      <h2 lwc:elseif={computedIsH2} class="govuk-label-wrapper">
+        <label id={computedLabelId} class={computedLabelClassName} for="frt">
+          {mergedLabel}
+        </label>
+      </h2>
+      <h3 lwc:elseif={computedIsH3} class="govuk-label-wrapper">
+        <label id={computedLabelId} class={computedLabelClassName} for="frt">
           {mergedLabel}
         </label>
       </h3>
+      <label
+        lwc:else
+        id={computedLabelId}
+        class={computedLabelClassName}
+        for="frt"
+      >
+        {mergedLabel}
+      </label>
 
       <div if:true={_propSetMap.help} id="helper" class="govuk-hint">
         {mergedHelpText}

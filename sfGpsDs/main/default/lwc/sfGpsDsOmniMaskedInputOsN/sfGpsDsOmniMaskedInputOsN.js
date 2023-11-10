@@ -1,7 +1,7 @@
 import OmnistudioMaskedInput from "omnistudio/maskedInput";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniMaskedInputOsN";
 
 export default class SfGpsDsOmniMaskedInput extends SfGpsDsOmniInputMixinOsN(

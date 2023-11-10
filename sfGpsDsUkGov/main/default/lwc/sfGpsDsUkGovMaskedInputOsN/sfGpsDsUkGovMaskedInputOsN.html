@@ -1,14 +1,23 @@
 <template>
-  <div if:false={isCustomLwc} onmouseover={debug}>
+  <div if:false={isCustomLwc}>
     <div
       id="sf-gps-ds-uk-gov-masked-input-form-group"
       data-sfgpsds-input
       class={computedFormGroupClassName}
     >
       <div if:true={labelVisible} data-label="true">
-        <h3 class="govuk-label-wrapper">
+        <h1 lwc:if={computedIsH1} class="govuk-label-wrapper">
+          <label class={computedLabelClassName} for={inputId}>{label}</label>
+        </h1>
+        <h2 lwc:elseif={computedIsH2} class="govuk-label-wrapper">
+          <label class={computedLabelClassName} for={inputId}>{label}</label>
+        </h2>
+        <h3 lwc:elseif={computedIsH3} class="govuk-label-wrapper">
           <label class={computedLabelClassName} for={inputId}>{label}</label>
         </h3>
+        <label lwc:else class={computedLabelClassName} for={inputId}
+          >{label}</label
+        >
         <slot name="label"> </slot>
       </div>
 
@@ -18,20 +27,46 @@
 
       <!-- formula -->
       <div if:true={_isFormula}>
-        <label class={computedLabelClassName} for={inputId}>
-          {label}
-          <span if:true={required} class="sr-only"> ({requiredLabel})</span>
-        </label>
+        <label class={computedLabelClassName} for={inputId}> {label} </label>
 
-        <input
-          class="govuk-input"
-          type="text"
-          readonly
-          disabled
-          id={inputId}
-          value={maskedValue}
-          aria-describedby={computedAriaDescribedBy}
-        />
+        <template lwc:if={computedHasPrefixOrSuffix}>
+          <div class="govuk-input__wrapper">
+            <div
+              lwc:if={sfGpsDsPrefix}
+              class="govuk-input__prefix"
+              aria-hidden="true"
+            >
+              {sfGpsDsPrefix}
+            </div>
+            <input
+              class="govuk-input"
+              type="text"
+              readonly
+              disabled
+              id={inputId}
+              value={maskedValue}
+              aria-describedby={computedAriaDescribedBy}
+            />
+            <div
+              lwc:if={sfGpsDsSuffix}
+              class="govuk-input__suffix"
+              aria-hidden="true"
+            >
+              {sfGpsDsSuffix}
+            </div>
+          </div>
+        </template>
+        <template lwc:else>
+          <input
+            class="govuk-input"
+            type="text"
+            readonly
+            disabled
+            id={inputId}
+            value={maskedValue}
+            aria-describedby={computedAriaDescribedBy}
+          />
+        </template>
       </div>
       <!-- formula -->
 
@@ -50,35 +85,84 @@
         <span if:true={pretext} class={pretextClass}>{pretext}</span>
 
         <template if:true={isCurrencySFlocale}>
-          <input
-            if:true={isInput}
-            class={computedInputClassName}
-            id={inputId}
-            tabindex={tabIndex}
-            accesskey={accessKey}
-            step={step}
-            min={min}
-            max={max}
-            maxlength={maxLength}
-            minlength={minLength}
-            type={type}
-            inputmode={inputmode}
-            disabled={disabled}
-            required={required}
-            readonly={readOnly}
-            placeholder={placeholder}
-            aria-readonly={readOnly}
-            aria-labelledby={ariaLabelledBy}
-            aria-describedby={computedAriaDescribedBy}
-            aria-label={ariaLabel}
-            aria-invalid={sfGpsDsIsError}
-            value={_currencyVal}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            oninput={handleInput}
-            onkeyup={handleKeyup}
-            onchange={handleChange}
-          />
+          <template lwc:if={computedHasPrefixOrSuffix}>
+            <div class="govuk-input__wrapper">
+              <div
+                lwc:if={sfGpsDsPrefix}
+                class="govuk-input__prefix"
+                aria-hidden="true"
+              >
+                {sfGpsDsPrefix}
+              </div>
+              <input
+                if:true={isInput}
+                class={computedInputClassName}
+                id={inputId}
+                tabindex={tabIndex}
+                accesskey={accessKey}
+                step={step}
+                min={min}
+                max={max}
+                maxlength={maxLength}
+                minlength={minLength}
+                type={type}
+                inputmode={inputmode}
+                disabled={disabled}
+                required={required}
+                readonly={readOnly}
+                placeholder={placeholder}
+                aria-readonly={readOnly}
+                aria-labelledby={ariaLabelledBy}
+                aria-describedby={computedAriaDescribedBy}
+                aria-label={ariaLabel}
+                aria-invalid={sfGpsDsIsError}
+                value={_currencyVal}
+                onfocus={handleFocus}
+                onblur={handleBlur}
+                oninput={handleInput}
+                onkeyup={handleKeyup}
+                onchange={handleChange}
+              />
+              <div
+                lwc:if={sfGpsDsSuffix}
+                class="govuk-input__suffix"
+                aria-hidden="true"
+              >
+                {sfGpsDsSuffix}
+              </div>
+            </div>
+          </template>
+          <template lwc:else>
+            <input
+              if:true={isInput}
+              class={computedInputClassName}
+              id={inputId}
+              tabindex={tabIndex}
+              accesskey={accessKey}
+              step={step}
+              min={min}
+              max={max}
+              maxlength={maxLength}
+              minlength={minLength}
+              type={type}
+              inputmode={inputmode}
+              disabled={disabled}
+              required={required}
+              readonly={readOnly}
+              placeholder={placeholder}
+              aria-readonly={readOnly}
+              aria-labelledby={ariaLabelledBy}
+              aria-describedby={computedAriaDescribedBy}
+              aria-label={ariaLabel}
+              aria-invalid={sfGpsDsIsError}
+              value={_currencyVal}
+              onfocus={handleFocus}
+              onblur={handleBlur}
+              oninput={handleInput}
+              onkeyup={handleKeyup}
+              onchange={handleChange}
+            />
+          </template>
         </template>
 
         <template if:false={isCurrencySFlocale}>
@@ -93,36 +177,86 @@
             value={value}
           />
 
-          <input
-            if:true={isInput}
-            class={computedInputClassName}
-            id={inputId}
-            tabindex={tabIndex}
-            accesskey={accessKey}
-            step={step}
-            min={min}
-            max={max}
-            maxlength={maxLength}
-            minlength={minLength}
-            type={inputType}
-            inputmode={inputmode}
-            disabled={disabled}
-            required={required}
-            readonly={readOnly}
-            aria-readonly={readOnly}
-            placeholder={placeholder}
-            aria-labelledby={ariaLabelledBy}
-            aria-describedby={computedAriaDescribedBy}
-            aria-label={ariaLabel}
-            autocomplete={autocomplete}
-            name={name}
-            aria-invalid={sfGpsDsIsError}
-            onfocus={handleFocus}
-            onblur={handleBlur}
-            oninput={handleInput}
-            onkeyup={handleKeyup}
-            onchange={handleChange}
-          />
+          <template lwc:if={computedHasPrefixOrSuffix}>
+            <div class="govuk-input__wrapper">
+              <div
+                lwc:if={sfGpsDsPrefix}
+                class="govuk-input__prefix"
+                aria-hidden="true"
+              >
+                {sfGpsDsPrefix}
+              </div>
+              <input
+                if:true={isInput}
+                class={computedInputClassName}
+                id={inputId}
+                tabindex={tabIndex}
+                accesskey={accessKey}
+                step={step}
+                min={min}
+                max={max}
+                maxlength={maxLength}
+                minlength={minLength}
+                type={inputType}
+                inputmode={inputmode}
+                disabled={disabled}
+                required={required}
+                readonly={readOnly}
+                aria-readonly={readOnly}
+                placeholder={placeholder}
+                aria-labelledby={ariaLabelledBy}
+                aria-describedby={computedAriaDescribedBy}
+                aria-label={ariaLabel}
+                autocomplete={autocomplete}
+                name={name}
+                aria-invalid={sfGpsDsIsError}
+                onfocus={handleFocus}
+                onblur={handleBlur}
+                oninput={handleInput}
+                onkeyup={handleKeyup}
+                onchange={handleChange}
+              />
+              <div
+                lwc:if={sfGpsDsSuffix}
+                class="govuk-input__suffix"
+                aria-hidden="true"
+              >
+                {sfGpsDsSuffix}
+              </div>
+            </div>
+          </template>
+          <template lwc:else>
+            <input
+              if:true={isInput}
+              class={computedInputClassName}
+              id={inputId}
+              tabindex={tabIndex}
+              accesskey={accessKey}
+              step={step}
+              min={min}
+              max={max}
+              maxlength={maxLength}
+              minlength={minLength}
+              type={inputType}
+              inputmode={inputmode}
+              disabled={disabled}
+              required={required}
+              readonly={readOnly}
+              aria-readonly={readOnly}
+              placeholder={placeholder}
+              aria-labelledby={ariaLabelledBy}
+              aria-describedby={computedAriaDescribedBy}
+              aria-label={ariaLabel}
+              autocomplete={autocomplete}
+              name={name}
+              aria-invalid={sfGpsDsIsError}
+              onfocus={handleFocus}
+              onblur={handleBlur}
+              oninput={handleInput}
+              onkeyup={handleKeyup}
+              onchange={handleChange}
+            />
+          </template>
         </template>
 
         <span if:true={posttext} class="sfgpsds-form-element__addon">

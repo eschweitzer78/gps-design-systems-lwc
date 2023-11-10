@@ -10,11 +10,8 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormLookupOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
 export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormLookupOsN,
-  DEFAULT_LABEL_SIZE
+  SfGpsDsFormLookupOsN
 ) {
   render() {
     return tmpl;
@@ -24,6 +21,7 @@ export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
     super.initCompVariables();
 
     this.labelSize = this._propSetMap.labelSize;
+    this.isHeading = this._propSetMap.isHeading;
   }
 
   get computedFormGroupClassName() {

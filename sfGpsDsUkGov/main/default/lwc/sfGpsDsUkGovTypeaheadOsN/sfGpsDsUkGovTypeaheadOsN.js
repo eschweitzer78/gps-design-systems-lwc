@@ -11,11 +11,8 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovTypeaheadOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
 export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsTypeahead,
-  DEFAULT_LABEL_SIZE
+  SfGpsDsTypeahead
 ) {
   render() {
     return tmpl;

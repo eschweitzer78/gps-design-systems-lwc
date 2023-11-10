@@ -11,9 +11,10 @@
 
 import { track } from "lwc";
 import OmniscriptStep from "c/sfGpsDsFormStepOsN";
+import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormStepOsN.html";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsUkGovFormStepOsN";
 
 export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
@@ -21,29 +22,24 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
     return tmpl;
   }
 
+  handleBack(e) {
+    e.preventDefault(); // avoid default behaviour with the href on anchor
+    super.handleBack(e);
+  }
+
   handleNext(e) {
     if (DEBUG) console.log(CLASS_NAME, "handleNext");
-    e.preventDefault();
 
     /* Prepare snapshot captures errors so that they can be kept until the next time the user does next */
     this.reportValidity();
     this.prepareSnapshot();
 
-    this.dispatchEvent(
-      new CustomEvent("omniautoadvance", {
-        bubbles: true,
-        detail: {
-          moveToStep: "next"
-        }
-      })
-    );
+    super.handleNext(e);
   }
 
   handleErrorClick(e) {
     e.preventDefault();
     this.focusInvalidInput(e.currentTarget.dataset.errorkey);
-
-    return false;
   }
 
   getCurrentMessages() {
@@ -128,5 +124,75 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
       .map((item) => ({ ...item }));
     let errorMessages = customErrors.concat(this._sfGpsDsErrorSnapshot);
     return errorMessages.length ? errorMessages : null;
+  }
+
+  get computedErrorLabelId() {
+    return "error-summary-title";
+  }
+
+  get computedIsH1() {
+    return (
+      this._propSetMap.isHeading === true ||
+      this._propSetMap.isHeading === 1 ||
+      this._propSetMap.isHeading === "1"
+    );
+  }
+
+  get computedIsH2() {
+    return (
+      this._propSetMap.isHeading === 2 || this._propSetMap.isHeading === "2"
+    );
+  }
+
+  get computedIsH3() {
+    return (
+      this._propSetMap.isHeading === 3 || this._propSetMap.isHeading === "3"
+    );
+  }
+
+  get computedHeadingClassName() {
+    let ls = this._propSetMap.labelSize;
+    let h = this._propSetMap.isHeading;
+
+    return computeClass({
+      "govuk-heading-xl":
+        ls === "xl" ||
+        ls === "x-large" ||
+        (ls == null && (h === true || h === 1 || h === "1")),
+      "govuk-heading-l":
+        ls === "l" || ls === "large" || (ls == null && (h === 2 || h === "2")),
+      "govuk-heading-m":
+        ls === "m" || ls === "medium" || (ls == null && (h === 3 || h === "3")),
+      "govuk-heading-s": ls === "s" || ls === "small"
+    });
+  }
+
+  get computedLabelClassName() {
+    let ls = this._propSetMap.labelSize;
+
+    return computeClass({
+      "govuk-label": true,
+      "govuk-label--xl": ls === "xl" || ls === "x-large",
+      "govuk-label--l": ls === "l" || ls === "large",
+      "govuk-label--m": ls === "m" || ls === "medium",
+      "govuk-label--s": ls === "s" || ls === "small"
+    });
+  }
+
+  get computedCaptionClassName() {
+    let ls = this._propSetMap.captionSize || this._propSetMap.labelSize;
+    let h = this._propSetMap.isHeading;
+
+    return computeClass({
+      "govuk-caption--xl":
+        ls === "xl" ||
+        ls === "x-large" ||
+        (ls == null && (h === true || h === 1 || h === "1")),
+      "govuk-caption--l":
+        ls === "l" || ls === "large" || (ls == null && (h === 2 || h === "2")),
+      "govuk-caption--m":
+        ls === "m" || ls === "medium" || (ls == null && (h === 3 || h === "3")),
+      "govuk-caption--s": ls === "s" || ls === "small"
+    });
   }
 }

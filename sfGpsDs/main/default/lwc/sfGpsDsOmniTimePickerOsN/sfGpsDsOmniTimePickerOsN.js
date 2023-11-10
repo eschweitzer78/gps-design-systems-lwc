@@ -2,7 +2,7 @@ import { api } from "lwc";
 import OmnistudioTimePicker from "omnistudio/timePicker";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniTimePickerOsN";
 
 export default class SfGpsDsOmniTimePickerOsN extends SfGpsDsOmniInputMixinOsN(

@@ -14,6 +14,9 @@ const THEME_IS_OPEN_CLASSNAME = "sfgpsds-is-open";
 const THEME_HAS_FOCUS_CLASSNAME = "sfgpsds-has-focus";
 const THEME_DD_TRIGGER_CLICK_SELECTOR = ".sfgpsds-dropdown-trigger_click";
 
+const CLASS_NAME = "sfGpsDsFormLookupOsN";
+const DEBUG = false;
+
 export default class sfGpsDsFormLookupOsN extends SfGpsDsOmniHasValidationMixin(
   OmniscriptLookup
 ) {
@@ -146,10 +149,27 @@ export default class sfGpsDsFormLookupOsN extends SfGpsDsOmniHasValidationMixin(
     return super.setSelected(selectedIndex);
   }
 
-  setCustomValidation(message, report = true) {
+  // override
+  @api setCustomValidation(message, report = true) {
     this._hasCustomError = !!message;
     this.errorMessage = message;
     if (report) this.reportValidity();
+  }
+
+  // overide
+  @api sfGpsDsHasCustomValidation() {
+    const rv = this._hasCustomError;
+    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
+    return rv;
+  }
+
+  // override
+  @api sfGpsDsClearCustomValidation(report = true) {
+    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsClearCustomValidation");
+
+    if (this._hasCustomError) {
+      this.setCustomValidation("", report);
+    }
   }
 
   @api get validationMessage() {

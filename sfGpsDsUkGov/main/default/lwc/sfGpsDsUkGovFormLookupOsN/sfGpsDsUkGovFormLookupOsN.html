@@ -1,7 +1,25 @@
 <template>
   <div class={computedFormGroupClassName}>
     <div data-label="true">
-      <h3 class="govuk-label-wrapper">
+      <h1 lwc:if={computedIsH1} class="govuk-label-wrapper">
+        <label
+          class={computedLabelClassName}
+          aria-label={mergedLabel}
+          for="inputId"
+        >
+          {mergedLabel}
+        </label>
+      </h1>
+      <h2 lwc:elseif={computedIsH2} class="govuk-label-wrapper">
+        <label
+          class={computedLabelClassName}
+          aria-label={mergedLabel}
+          for="inputId"
+        >
+          {mergedLabel}
+        </label>
+      </h2>
+      <h3 lwc:elseif={computedIsH3} class="govuk-label-wrapper">
         <label
           class={computedLabelClassName}
           aria-label={mergedLabel}
@@ -10,6 +28,14 @@
           {mergedLabel}
         </label>
       </h3>
+      <label
+        lwc:else
+        class={computedLabelClassName}
+        aria-label={mergedLabel}
+        for="inputId"
+      >
+        {mergedLabel}
+      </label>
 
       <template if:true={_propSetMap.repeat}>
         <span

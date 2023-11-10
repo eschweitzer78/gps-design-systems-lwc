@@ -1,14 +1,9 @@
 <template>
   <div class={computedFormGroupClassName}>
-    <label
-      style="width: auto"
-      id="select-label"
-      for="select"
-      class="govuk-label"
-    >
-      <span>{label}</span>
+    <div>
+      <label class="govuk-label" for="select">{label}</label>
       <slot name="label"> </slot>
-    </label>
+    </div>
 
     <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">
       {fieldLevelHelp}

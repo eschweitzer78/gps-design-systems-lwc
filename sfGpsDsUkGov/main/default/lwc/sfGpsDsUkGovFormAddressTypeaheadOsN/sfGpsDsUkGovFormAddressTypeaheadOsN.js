@@ -12,8 +12,6 @@ import { debounce } from "omnistudio/utility";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormAddressTypeaheadOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
 const STATUS_TYPING = "typing";
 const STATUS_SELECTED = "selected";
 const STATUS_RESOLVED = "resolved";
@@ -22,8 +20,7 @@ const MODE_MANUAL = "manual";
 const DEFAULT_COUNTRY = "United Kingdom";
 
 export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormTypeahead,
-  DEFAULT_LABEL_SIZE
+  SfGpsDsFormTypeahead
 ) {
   @api street;
   @api locality;

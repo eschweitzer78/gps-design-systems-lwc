@@ -12,7 +12,14 @@
       aria-invalid={computedAriaInvalid}
     >
       <legend class={computedLegendClassName}>
-        <h3 class="govuk-fieldset__heading">{label}</h3>
+        <h1 lwc:if={computedIsH1} class="govuk-fieldset__heading">{label}</h1>
+        <h2 lwc:elseif={computedIsH2} class="govuk-fieldset__heading">
+          {label}
+        </h2>
+        <h3 lwc:elseif={computedIsH3} class="govuk-fieldset__heading">
+          {label}
+        </h3>
+        <template lwc:else>{label}</template>
         <slot name="label"></slot>
       </legend>
       <div if:true={fieldLevelHelp} id="helper" class="govuk-hint">

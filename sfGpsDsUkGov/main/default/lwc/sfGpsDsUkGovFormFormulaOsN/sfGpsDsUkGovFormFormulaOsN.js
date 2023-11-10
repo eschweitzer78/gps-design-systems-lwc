@@ -9,11 +9,8 @@ import SfGpsDsFormFormulaOsN from "c/sfGpsDsFormFormulaOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormFormulaOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
-
 export default class SfGpsDsAuNswFormFormulaOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormFormulaOsN,
-  DEFAULT_LABEL_SIZE
+  SfGpsDsFormFormulaOsN
 ) {
   render() {
     return tmpl;

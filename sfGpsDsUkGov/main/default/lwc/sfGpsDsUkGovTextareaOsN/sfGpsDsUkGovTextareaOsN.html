@@ -1,15 +1,18 @@
 <template>
   <div class={computedFormGroupClassName}>
     <div if:true={labelVisible} data-label="true">
-      <h3 class="govuk-label-wrapper">
-        <label
-          id="textarealabel"
-          class={computedLabelClassName}
-          for="textareaId"
-        >
-          {label}
-        </label>
+      <h1 lwc:if={computedIsH1} class="govuk-label-wrapper">
+        <label class={computedLabelClassName} for="textareaId">{label}</label>
+      </h1>
+      <h2 lwc:elseif={computedIsH2} class="govuk-label-wrapper">
+        <label class={computedLabelClassName} for="textareaId">{label}</label>
+      </h2>
+      <h3 lwc:elseif={computedIsH3} class="govuk-label-wrapper">
+        <label class={computedLabelClassName} for="textareaId">{label}</label>
       </h3>
+      <label lwc:else class={computedLabelClassName} for="textareaId"
+        >{label}</label
+      >
       <slot name="label"> </slot>
     </div>
 

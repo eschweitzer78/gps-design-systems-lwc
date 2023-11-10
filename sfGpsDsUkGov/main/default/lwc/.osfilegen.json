@@ -159,44 +159,6 @@
       "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
     }
   },
-  "sfGpsDsUkGovLinkList": {
-    "target": "!Os",
-    "link-list.gen.css": {
-      "target": "link-list.gen.css"
-    },
-    "!.css": {
-      "target": "!Os.css",
-      "sfGpsDsUkGovCore": "sfGpsDsUkGovCoreOs"
-    },
-    "!.html": {
-      "target": "!Os.html"
-    },
-    "!.js": {
-      "target": "!Os.js",
-      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
-    },
-    "!.js-meta.xml": {
-      "target": "!Os.js-meta.xml",
-      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
-    }
-  },
-  "sfGpsDsUkGovLinkListComm": {
-    "target": "!Os",
-    "!.html": {
-      "target": "!Os.html",
-      "c-sf-gps-ds-uk-gov-link-list": "c-sf-gps-ds-uk-gov-link-list-os",
-      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
-    },
-    "!.js": {
-      "target": "!Os.js",
-      "sfGpsDsLwc": "sfGpsDsLwcOsN",
-      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs"
-    },
-    "!.js-meta.xml": {
-      "target": "!Os.js-meta.xml",
-      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
-    }
-  },
   "sfGpsDsUkGovPanel": {
     "target": "!Os",
     "panel.gen.css": {

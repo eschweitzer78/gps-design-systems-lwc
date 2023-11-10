@@ -11,12 +11,10 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovTimePickerOsN.html";
 
-const DEFAULT_LABEL_SIZE = "large";
 const ZWSP_CHAR = "​";
 
 export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioTimePicker,
-  DEFAULT_LABEL_SIZE
+  OmnistudioTimePicker
 ) {
   @api forceError = false;
   @api hideFormGroup = false;

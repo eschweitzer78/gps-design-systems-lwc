@@ -2,7 +2,7 @@ import { api } from "lwc";
 import OmnistudioDatetimePicker from "omnistudio/datetimePicker";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniDatetimePickerOsN";
 
 const TIME_SELECTOR = "[data-sfgpsds-time-picker]";

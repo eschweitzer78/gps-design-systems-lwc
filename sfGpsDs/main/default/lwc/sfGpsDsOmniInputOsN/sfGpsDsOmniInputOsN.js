@@ -2,7 +2,7 @@ import { api } from "lwc";
 import OmnistudioInput from "omnistudio/input";
 import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsOmniInputOsN";
 
 export default class SfGpsDsOmniInputOsN extends SfGpsDsOmniInputMixinOsN(
