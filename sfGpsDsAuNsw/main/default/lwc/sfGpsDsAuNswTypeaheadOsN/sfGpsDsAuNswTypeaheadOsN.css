@@ -57,25 +57,9 @@
   background-size: 1rem auto;
 }
 
-.sfgpsds-hide {
-  display: none;
-}
-
-.sfgpsds-label__group {
-  display: flex;
-}
-
-.sfgpsds-label__group_label_container {
-  display: flex;
-  flex-grow: 1;
-  min-width: 0;
-}
-
-.sfgpsds-label__group_label {
-  display: inline-flex;
-  flex-grow: 1;
-  align-items: center;
-  min-width: 0;
+.sfgpsds-label__group_action {
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 /* typeahead does not set has-focus on hover */

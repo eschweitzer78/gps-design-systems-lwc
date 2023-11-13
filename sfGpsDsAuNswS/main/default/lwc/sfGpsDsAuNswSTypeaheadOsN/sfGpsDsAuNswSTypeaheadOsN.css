@@ -10,6 +10,11 @@
   z-index: 100;
 }
 
+.sfgpsds-label__group_action {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
 .form__input.typeahead {
   padding-right: 3rem;
   background: var(--nsw-s-white)

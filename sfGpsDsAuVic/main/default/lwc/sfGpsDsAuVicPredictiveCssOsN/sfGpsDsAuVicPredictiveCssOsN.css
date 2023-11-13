@@ -281,6 +281,10 @@
   min-width: 0;
 }
 
+.sfgpsds-label__group_action {
+  min-width: 0;
+}
+
 [data-progress-bar] {
   position: absolute;
   top: 2.5rem;
