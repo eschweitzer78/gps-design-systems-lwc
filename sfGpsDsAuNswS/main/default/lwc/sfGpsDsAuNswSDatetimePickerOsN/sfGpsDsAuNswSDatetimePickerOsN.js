@@ -35,10 +35,12 @@ export default class SfGpsDsAuNswSDatetimePickerOsN extends OmnistudioDatetimePi
   }
 
   @api setCustomValidation(message) {
+    super.setCustomValidation(message);
     this.dateEl.setCustomValidation(message);
   }
 
   @api sfGpsDsClearCustomValidation() {
+    super.sfGpsDsClearCustomValidation();
     this.dateEl.sfGpsDsClearCustomValidation();
   }
 }

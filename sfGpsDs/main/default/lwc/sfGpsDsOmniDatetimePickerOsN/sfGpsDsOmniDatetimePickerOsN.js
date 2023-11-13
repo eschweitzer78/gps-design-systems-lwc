@@ -39,6 +39,11 @@ export default class SfGpsDsOmniDatetimePickerOsN extends SfGpsDsOmniInputMixinO
     return this.timeLabel == null ? I18N.timeLabel : this.timeLabel;
   }
 
+  setTime(event) {
+    this.sfGpsDsClearCustomValidation();
+    super.setTime(event);
+  }
+
   /* OmnistudioDatetimePicker does not have validationMessage */
 
   @api

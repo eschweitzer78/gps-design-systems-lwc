@@ -25,11 +25,12 @@ export default class SfGpsDsAuVicDatetimePickerOsN extends OmnistudioDatetimePic
   }
 
   @api setCustomValidation(message) {
+    super.setCustomValidation(message);
     this.dateEl.setCustomValidation(message);
   }
 
   @api sfGpsDsClearCustomValidation() {
+    super.sfGpsDsClearCustomValidation();
     this.dateEl.sfGpsDsClearCustomValidation();
-    this.timeEl.sfGpsDsClearCustomValidation();
   }
 }
