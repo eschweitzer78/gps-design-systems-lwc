@@ -1,13 +1,6 @@
 @import "c/sfGpsDsUkGovCoreOs";
 @import "./file-upload.gen.css";
 
-/* Need to adjust this rule as in Omniscript they always be first child */
-/* have same setup as for subsequent children. */
-
-.govuk-form-group:first-child {
-  margin-top: 1rem;
-}
-
 .omni-file-input {
   font-family: "GDS Transport", "Arial", "sans-serif";
   font-size: 1rem;
