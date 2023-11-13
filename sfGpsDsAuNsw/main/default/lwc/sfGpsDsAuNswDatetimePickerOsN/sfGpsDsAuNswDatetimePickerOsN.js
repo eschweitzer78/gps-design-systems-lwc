@@ -26,10 +26,12 @@ export default class SfGpsDsAuNswDatetimePickerOsN extends SfGpsDsAuNswStatusHel
   }
 
   @api setCustomValidation(message) {
+    super.setCustomValidation(message);
     this.dateEl.setCustomValidation(message);
   }
 
   @api sfGpsDsClearCustomValidation() {
+    super.sfGpsDsClearCustomValidation();
     this.dateEl.sfGpsDsClearCustomValidation();
   }
 }

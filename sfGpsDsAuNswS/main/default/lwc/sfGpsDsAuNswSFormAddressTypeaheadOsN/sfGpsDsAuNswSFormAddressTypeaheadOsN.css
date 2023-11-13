@@ -53,4 +53,6 @@
 
 .sfgpsds-label__group_action {
   min-width: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
 }

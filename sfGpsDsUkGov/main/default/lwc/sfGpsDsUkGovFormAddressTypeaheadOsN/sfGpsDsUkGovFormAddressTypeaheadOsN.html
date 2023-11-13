@@ -30,13 +30,14 @@
       onclear={handleClear}
     >
       <div slot="iconRight">
-        <span
-          class="govuk-link cannot-find-address label-link"
+        <a
+          class="govuk-link cannot-find-address"
           role="button"
+          href="#manual"
           onclick={handleToggle}
         >
           Enter address manually
-        </span>
+        </a>
         <button
           if:false={_propSetMap.hideEditButton}
           class="slds-button slds-button_icon nds-button nds-button_icon"
@@ -76,13 +77,13 @@
 
           <div class="sfgpsds-label__group_action">
             <div>
-              <span
-                class="govuk-link cannot-find-address label-link"
-                role="button"
+              <a
+                class="govuk-link cannot-find-address"
+                href="#smart"
                 onclick={handleToggle}
               >
                 Smart address lookup
-              </span>
+              </a>
 
               <button
                 if:false={_propSetMap.hideEditButton}

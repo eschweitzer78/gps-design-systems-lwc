@@ -17,7 +17,7 @@
         <h3 lwc:elseif={computedIsH3} class="govuk-fieldset__heading">
           {label}
         </h3>
-        <template lwc:else>{label}</template>
+        <span lwc:else>{label}</span>
         <slot name="label"></slot>
       </legend>
 
@@ -61,7 +61,7 @@
             onchange={setTime}
             data-sfgpsds-date-picker
             hide-form-group="true"
-            force-error={sfGpsDsIsError}
+            force-error={computedForceError}
           >
           </c-sf-gps-ds-uk-gov-date-picker-os-n>
         </div>
@@ -95,7 +95,7 @@
             styles={styles}
             data-sfgpsds-time-picker
             hide-form-group="true"
-            force-error={sfGpsDsIsError}
+            force-error={computedForceError}
           >
           </c-sf-gps-ds-uk-gov-time-picker-os-n>
         </div>

@@ -1,5 +1,98 @@
 ## Change log
 
+### 13 November 2023
+
+#### All DS implementations: fixing smart lookup/manual label
+
+Adjusted styling in all DSes so that the smart lookup or manual entry label looks like or is a link. Also adjusted reactiveness so that the label is always shown on a single line.
+
+#### NSW DS: Fixing Card Collection so that the orientation attribute is taken into account
+
+The Card Collection did have an orientation attribute but it wasn't propagated to individual cards within the collection.
+
+### 7 November 2023
+
+Release tested against Omnistudio 246.10, which required heavy template and internal behaviour changes – please review your code thoroughly if you subclassed any of the Omnistudio elements we provide.
+
+The API had been bumped up to v59.0 throughout the library.
+
+#### Base library sfGpsDs: removed images.unsplash.com has trusted site
+
+We have removed unsplash.com as a trusted site as it was only required for our demo/documentation website.
+
+#### Base library sfGpsDs: added insulation classes for all Omnistudio overrides
+
+We have added insulation classes that are wedged between the Omnistudio overrides in each DS and the original Omnistudio LWC classes. This enables us to add workarounds only once with a flow-on effect to all DS implementations and reduces code sprawl.
+
+#### All DS implementations: support for configurable error message on a per element basis
+
+You can now use the _Edit Properties as JSON_ hyperlink at the bottom of an element's configuration panel in Omnistudio, add one of the following keys and associate it with a custom error text per error type as required:
+
+- messageWhenValueMissing,
+- messageWhenTooShort,
+- messageWhenTooLong,
+- messageWhenBadInput,
+- messageWhenRangeOverflow
+- messageWhenRangeUnderflow,
+- messageWhenStepMismatch,
+- messageWhenTypeMismatch,
+- messageWhenMaskIncomplete.
+
+For instance:
+
+`"messageWhenValueMissing": "You must tell us your date of birth."`
+
+#### All DS implementations: support for Omnistudio 246.10
+
+We handled all the issues that arose for internal changes in Omnistudio 246.x elements (in particular the date picker) and tested against 246.10.
+
+#### All DS implementations: unified dropdown user experience
+
+We aimed at standardising the user experience on all widgets that involve a dropdown across implementations: lookup, selected, time picker, and typeahead (incl. address typeahead).
+Depending on the element, there might be a difference in behaviour compared to the prior release, especially when it comes to focus management.
+
+#### All DS implementations: working around element validation issues with SetErrors
+
+We aimed at putting a workaround in place when it comes to element validation, in particular when a **Set Errors** step is involved which we believe has a conceptual flaw:
+the standard Omnistudio behaviour is to clear the custom error set by **Set Errors** on focus out of the element when the user has been brought back to the offending step.
+This unfortunately has a side-effect that is not perceptible with the original SLDS look-and-feel but is very undesirable with most overriden DS implementations: any error text/decoration that has a larger height
+would disappear on focus out, e.g. when clicking on the next button. If that is high enough, it will inn turn move the position of the next button on the page, cancelling the click event on the button as it's no longer where the user clicked as _focus out_
+events have precedence over _click_ events.
+
+Instead, we clear the custom error set by **Set Errors** as soon as any change is performed on the element. The error text is hence removed before the element loses focus, and the issue with ignored clicks on the Next button disappears.
+We have tested thoroughly as it's a major behaviour change and haven't detected any issue, but please report any observed unwanted behaviour when users want to move to the next page.
+
+#### NSW DS: upgraded to nsw-design-system 3.11.3
+
+We have upgraded the nsw-design-system dependency from 3.8 to 3.11.3
+
+#### NSW DS: fixed issue with accessibility in header
+
+We have fixed an issue when HTML element IDs were not properly taken into account in accessibility attributes.
+
+#### Service NSW DS: added support for Omnistudio address typeahead, lookup, select and typeahead
+
+We added support for Omnistudio address typeahead, lookup, select and typeahead elements.
+
+#### GOV.UK DS: upgraded to govuk-frontend 4.7
+
+We have upgraded the govuk-frontend dependency from 4.6 to 4.7.
+
+#### GOV.UK DS: added multiple new elements for Omnistudio
+
+We have added support for the following elements: address typeahead, single checkbox, currency, date, date time, disclosure, email, file, lookup, messaging, multi-select, number, password, select, text, textarea, time, typeahead and URL.
+
+#### GOV.UK DS: rework of top of the page error list
+
+We are now leveraging standard Omnistudio functionality to work out which elements are in error on the current step. Please be aware of limitations: this will report only errors directly "owned" by the step, excluding addresss typeahead and
+typeahead (which are nested in typeahead blocks) or any elements nested in an edit block or simple block.
+
+#### VIC DS: upgraded to Ripple Global 1.38.3
+
+We have upgraded the Ripple Global dependency from 1.33 to 1.38.3.
+
+####
+
 ### 11 October 2023
 
 Moving repo to Salesforce Labs.

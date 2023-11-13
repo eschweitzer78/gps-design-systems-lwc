@@ -11,19 +11,6 @@
   padding-bottom: 0;
 }
 
-.has-text-link {
-  cursor: pointer;
-}
-
-.label-link {
-  text-decoration: underline;
-  color: #2e5299;
-}
-
-.has-text-link {
-  color: #3273dc !important;
-}
-
 .address-container input {
   text-transform: capitalize;
 }
@@ -41,6 +28,7 @@
   flex-grow: 1;
   min-width: 0;
 }
+
 .sfgpsds-label__group_label {
   display: inline-flex;
   flex-grow: 1;
@@ -50,4 +38,6 @@
 
 .sfgpsds-label__group_action {
   min-width: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
 }

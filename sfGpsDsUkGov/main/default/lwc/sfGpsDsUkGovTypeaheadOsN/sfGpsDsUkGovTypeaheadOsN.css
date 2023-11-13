@@ -24,3 +24,8 @@
     no-repeat right 1rem center;
   background-size: 1rem auto, auto;
 }
+
+.sfgpsds-label__group_action {
+  flex-grow: 0;
+  flex-shrink: 0;
+}

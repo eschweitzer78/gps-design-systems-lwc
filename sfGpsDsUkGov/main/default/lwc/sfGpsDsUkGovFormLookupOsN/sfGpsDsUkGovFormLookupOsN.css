@@ -23,7 +23,7 @@
   display: table;
 }
 
-[data-label] .govuk-label-wrapper {
+[data-label] label {
   margin-right: 0.5rem;
 }
 

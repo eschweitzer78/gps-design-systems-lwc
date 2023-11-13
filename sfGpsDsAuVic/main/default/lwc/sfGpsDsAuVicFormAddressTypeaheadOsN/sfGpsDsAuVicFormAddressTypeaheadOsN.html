@@ -28,13 +28,13 @@
       onclear={handleClear}
     >
       <div slot="iconRight">
-        <span
-          class="has-text-link cannot-find-address label-link"
+        <a
+          class="cannot-find-address rpl-link"
           role="button"
           onclick={handleToggle}
         >
           Enter address manually
-        </span>
+        </a>
 
         <button
           if:false={_propSetMap.hideEditButton}
@@ -76,13 +76,13 @@
 
               <div class="sfgpsds-label__group_action">
                 <div>
-                  <span
-                    class="has-text-link cannot-find-address label-link"
+                  <a
+                    class="cannot-find-address rpl-link"
                     role="button"
                     onclick={handleToggle}
                   >
                     Smart address lookup
-                  </span>
+                  </a>
 
                   <button
                     if:false={_propSetMap.hideEditButton}

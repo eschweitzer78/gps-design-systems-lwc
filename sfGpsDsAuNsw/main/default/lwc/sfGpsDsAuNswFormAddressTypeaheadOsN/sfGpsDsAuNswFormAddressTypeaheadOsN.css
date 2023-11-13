@@ -5,6 +5,18 @@
   margin-top: 1rem;
 }
 
+.cannot-find-address {
+  font-size: var(--nsw-font-size-sm-mobile);
+  line-height: var(--nsw-line-height-sm-mobile);
+}
+
+@media (min-width: 62rem) {
+  .cannot-find-address {
+    font-size: var(--nsw-font-size-sm-desktop);
+    line-height: var(--nsw-line-height-sm-desktop);
+  }
+}
+
 .nsw-col.street,
 .nsw-col.suburb,
 .nsw-col.state,
@@ -44,6 +56,7 @@
   flex-grow: 1;
   min-width: 0;
 }
+
 .sfgpsds-label__group_label {
   display: inline-flex;
   flex-grow: 1;
@@ -53,4 +66,6 @@
 
 .sfgpsds-label__group_action {
   min-width: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
 }

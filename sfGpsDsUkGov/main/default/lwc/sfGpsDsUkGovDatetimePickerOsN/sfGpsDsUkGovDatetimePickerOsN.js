@@ -32,12 +32,16 @@ export default class SfGpsDsUkGovDatetimePickerOsN extends SfGpsDsUkGovLabelMixi
     });
   }
 
+  /* override do we can clear the custom validation */
+
   @api setCustomValidation(message) {
+    super.setCustomValidation(message);
     this.dateEl.setCustomValidation(message);
     this.timeEl.setCustomValidation(ZWSP_CHAR); // zwsp - zero width space
   }
 
   @api sfGpsDsClearCustomValidation() {
+    super.sfGpsDsClearCustomValidation();
     this.dateEl.sfGpsDsClearCustomValidation();
     this.timeEl.sfGpsDsClearCustomValidation();
   }

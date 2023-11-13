@@ -281,10 +281,15 @@
   flex-grow: 1;
   min-width: 0;
 }
+
 .sfgpsds-label__group_label {
   display: inline-flex;
   flex-grow: 1;
   align-items: center;
+  min-width: 0;
+}
+
+.sfgpsds-label__group_action {
   min-width: 0;
 }
 
