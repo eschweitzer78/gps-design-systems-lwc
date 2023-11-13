@@ -53,7 +53,7 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhXAAQ">this link</a> to install the sfGpsDsUkGov unlocked package in your production org (v0.9.4.1 on 14/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhcAAA">this link</a> to install the full sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v0.9,4.1 on 14/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhcAAA">this link</a> to install the full sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v0.9.4.1 on 14/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
 ## Support, security, contributions and code of conduct
 
