@@ -43,7 +43,8 @@ export default class sfGpsDsAuVicFormAddressTypeaheadOsN extends SfGpsDsFormType
 
   // EVENT HANDLING
 
-  handleToggle() {
+  handleToggle(event) {
+    event.preventDefault();
     this.isSmart = !this.isSmart;
 
     this.dispatchOmniEventUtil(

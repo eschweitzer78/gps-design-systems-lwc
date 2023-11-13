@@ -2,22 +2,21 @@
 @import "./checkboxes.gen.css";
 @import "./input.gen.css";
 
+.cannot-find-address {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
 .street,
 .locality,
 .postalcode,
 .country {
   padding-top: 0;
-  padding-bottom: 0;
+  padding-bottom: 15px;
 }
 
 .address-container input {
   text-transform: capitalize;
-}
-
-.label-link {
-  color: #1d70b8;
-  cursor: pointer;
-  font-size: 1.18rem;
 }
 
 .sfgpsds-hide {
@@ -43,4 +42,6 @@
 
 .sfgpsds-label__group_action {
   min-width: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
 }

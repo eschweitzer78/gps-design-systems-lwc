@@ -39,7 +39,9 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
 
   // EVENT HANDLING
 
-  handleToggle() {
+  handleToggle(event) {
+    event.preventDefault();
+
     this.isSmart = !this.isSmart;
 
     this.dispatchOmniEventUtil(

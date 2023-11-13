@@ -5,6 +5,18 @@
   margin-top: 1rem;
 }
 
+.cannot-find-address {
+  font-size: var(--nsw-font-size-sm-mobile);
+  line-height: var(--nsw-line-height-sm-mobile);
+}
+
+@media (min-width: 62rem) {
+  .cannot-find-address {
+    font-size: var(--nsw-font-size-sm-desktop);
+    line-height: var(--nsw-line-height-sm-desktop);
+  }
+}
+
 .nsw-col.street,
 .nsw-col.suburb,
 .nsw-col.state,
