@@ -61,7 +61,7 @@
         type="String"
         label="Copyright mention"
         description="Copyright text in Markdown format"
-        default="Copyright © 2022"
+        default="Copyright © 2023"
       />
       <property
         name="builtMention"
