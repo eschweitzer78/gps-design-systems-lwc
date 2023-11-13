@@ -3,15 +3,12 @@
     <ul>
       <li>
         <a
-          class="nsw-icon-button"
+          class={computedPrevPageClassName}
           aria-disabled={previousDisabled}
           href="#previous"
           onclick={handlePreviousPageClick}
         >
-          <span
-            class="material-icons nsw-material-icons"
-            focusable="false"
-            aria-hidden="true"
+          <span class="material-icons nsw-material-icons" aria-hidden="true"
             >keyboard_arrow_left</span
           >
           <span class="sr-only">{srOnlyPrevious}</span>
@@ -68,15 +65,12 @@
 
       <li>
         <a
-          class="nsw-icon-button"
+          class={computedNextPageClassName}
           aria-disabled={nextDisabled}
           href="#next"
           onclick={handleNextPageClick}
         >
-          <span
-            class="material-icons nsw-material-icons"
-            focusable="false"
-            aria-hidden="true"
+          <span class="material-icons nsw-material-icons" aria-hidden="true"
             >keyboard_arrow_right</span
           >
           <span class="sr-only">{srOnlyNext}</span>

@@ -74,8 +74,22 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
     return !this.showPrevious;
   }
 
+  get computedPrevPageClassName() {
+    return computeClass({
+      "nsw-icon-button": true,
+      disabled: this.previousDisabled
+    });
+  }
+
   get nextDisabled() {
     return !this.showNext;
+  }
+
+  get computedNextPageClassName() {
+    return computeClass({
+      "nsw-icon-button": true,
+      disabled: this.nextDisabled
+    });
   }
 
   /* events */
