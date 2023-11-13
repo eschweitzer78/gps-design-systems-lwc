@@ -43,17 +43,17 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000diN8AAI">this link</a> to install the sfGpsDs unlocked package in your production org (v2.0.0.2 released on 05/11/2023).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkgyAAA">this link</a> to install the sfGpsDs unlocked package in your production org (v2.0.1.3 released on 07/11/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djQwAAI">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.0.2.1 released on 08/11/2023).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhNAAQ">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.0.4.1 released on 14/11/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djR1AAI">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v2.0.2.1 on 08/11/2023).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkh3AAA">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v2.0.3.2 on 13/11/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0tnAAA">this link</a> to install the sfGpsDsAuVic unlocked package in your production org (v1.8.0.2 on 16/06/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhSAAQ">this link</a> to install the sfGpsDsAuVic unlocked package in your production org (v2.0.3.1 on 14/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djHxAAI">this link</a> to install the sfGpsDsUkGov unlocked package in your production org (v0.9.1.4 on 07/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhXAAQ">this link</a> to install the sfGpsDsUkGov unlocked package in your production org (v0.9.4.1 on 14/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djI2AAI">this link</a> to install the full sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v0.9.1.4 on 07/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhcAAA">this link</a> to install the full sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v0.9,4.1 on 14/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
 ## Support, security, contributions and code of conduct
 
