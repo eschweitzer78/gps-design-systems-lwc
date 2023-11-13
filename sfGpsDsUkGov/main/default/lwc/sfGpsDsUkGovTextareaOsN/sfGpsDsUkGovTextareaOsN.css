@@ -2,10 +2,6 @@
 @import "./textarea.gen.css";
 @import "./character-count.gen.css";
 
-.govuk-form-group:first-child {
-  margin-top: 1rem;
-}
-
 /* Override bottom margin ONLY when using Text character counter */
 .govuk-textarea.govuk-js-character-count {
   margin-bottom: 5px;
