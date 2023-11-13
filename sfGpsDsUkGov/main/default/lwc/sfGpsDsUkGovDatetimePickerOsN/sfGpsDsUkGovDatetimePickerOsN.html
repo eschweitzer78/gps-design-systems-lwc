@@ -17,7 +17,7 @@
         <h3 lwc:elseif={computedIsH3} class="govuk-fieldset__heading">
           {label}
         </h3>
-        <template lwc:else>{label}</template>
+        <span lwc:else>{label}</span>
         <slot name="label"></slot>
       </legend>
 

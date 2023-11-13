@@ -3,7 +3,8 @@
 
 /* repeat icons */
 
-.govuk-fieldset__legend .govuk-fieldset__heading {
+.govuk-fieldset__legend .govuk-fieldset__heading,
+.govuk-fieldset__legend span {
   margin-right: 0.5rem;
 }
 
