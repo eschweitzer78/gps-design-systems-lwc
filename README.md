@@ -15,7 +15,7 @@ Do read our [change log](./CHANGELOG.md) if you plan on updating already install
 - sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nswds.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
 - sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev)
-- sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (early alpha, no production)
+- sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (pilot, no production without prior consultation); check the [documentation website](https://uk.dsforce.dev)
 
 ## Installing beta versions using Unlocked Packages
 
@@ -23,17 +23,17 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 1. Log in to your org
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000diN8AAI" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dk0EAAQ" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000diNDAAY" title="sfGpsDsAuNsw">this link</a> to install the sfGpsDsAuNsw unlocked package in your org.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djQwAAI" title="sfGpsDsAuNsw">this link</a> to install the sfGpsDsAuNsw unlocked package in your org.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000diNIAAY" title="sfGpsDsAuNswS">this link</a> to install the sfGpsDsAuNswS unlocked package in your org.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djR1AAI" title="sfGpsDsAuNswS">this link</a> to install the sfGpsDsAuNswS unlocked package in your org.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000diNNAAY" title="sfGpsDsAuVic">this link</a> to install the sfGpsDsAuVic unlocked package in your org.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djHsAAI" title="sfGpsDsAuVic">this link</a> to install the sfGpsDsAuVic unlocked package in your org.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000diNSAAY" title="sfGpsDsUkGov">this link</a> to install the sfGpsDsUkGov unlocked package in your org.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dk0JAAQ" title="sfGpsDsUkGov">this link</a> to install the sfGpsDsUkGov unlocked package in your org.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000diNXAAY" title="sfGpsDsUkGovFull">this link</a> to install the full sfGpsDsUkGov unlocked package in your org (including sfGpsDs).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dk0OAAQ" title="sfGpsDsUkGovFull">this link</a> to install the full sfGpsDsUkGov unlocked package in your org (including sfGpsDs).
 
 ## Installing the production versions using Unlocked Packages
 
@@ -43,19 +43,17 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0v0AAA">this link</a> to install the sfGpsDs unlocked package in your production org (v1.8.2.2 released on 22/06/2023).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000diN8AAI">this link</a> to install the sfGpsDs unlocked package in your production org (v2.0.0.2 released on 05/11/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000lMg5AAE">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v1.8.3.3 released on 28/08/2023).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djQwAAI">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.0.2.1 released on 08/11/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000lMgFAAU">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v1.8.3.3 on 28/08/2023).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djR1AAI">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v2.0.2.1 on 08/11/2023).
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000h0tnAAA">this link</a> to install the sfGpsDsAuVic unlocked package in your production org (v1.8.0.2 on 16/06/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000HzyGAAS
-   " title="sfGpsDsUkGov">this link</a> to install the sfGpsDsUkGov unlocked package in your org.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djHxAAI">this link</a> to install the sfGpsDsUkGov unlocked package in your production org (v0.9.1.4 on 07/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=0055j000005KB7aAAG
-   " title="sfGpsDsUkGovFull">this link</a> to install the full sfGpsDsUkGov unlocked package in your org (including sfGpsDs).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000djI2AAI">this link</a> to install the full sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v0.9.1.4 on 07/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
 ## Support, security, contributions and code of conduct
 
