@@ -16,7 +16,7 @@ Release tested against Omnistudio 246.10, which required heavy template and inte
 
 The API had been bumped up to v59.0 throughout the library.
 
-#### Base library sfGpsDs: removed images.unsplash.com has trusted site
+#### Base library sfGpsDs: removed images.unsplash.com as a trusted site
 
 We have removed unsplash.com as a trusted site as it was only required for our demo/documentation website.
 
