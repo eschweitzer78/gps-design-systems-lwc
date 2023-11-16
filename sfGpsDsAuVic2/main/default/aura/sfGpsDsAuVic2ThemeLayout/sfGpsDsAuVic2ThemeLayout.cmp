@@ -1,0 +1,62 @@
+<aura:component
+  implements="forceCommunity:themeLayout"
+  access="global"
+  description="VIC DS v2 Theme Layout"
+>
+  <ltng:require
+    styles="{! join(',', $Resource.sfGpsDsAuVic2 + '/assets/styles/global.css', $Resource.sfGpsDsAuVic2 + '/assets/styles/style.css')}"
+  />
+
+  <aura:attribute name="header" type="Aura.Component[]" required="false" />
+  <aura:attribute name="footer" type="Aura.Component[]" required="false" />
+
+  <!-- this works with Citizen, Cypress, Ember, Jepson, Stella, Webster themes but *not* Customer Service -->
+  <aura:attribute name="themeHeader" type="Aura.Component[]" required="false" />
+
+  <aura:attribute
+    name="hideHeader"
+    type="Boolean"
+    required="false"
+    default="true"
+  />
+  <aura:attribute
+    name="noWidgetMargin"
+    type="Boolean"
+    required="false"
+    default="false"
+  />
+  <aura:attribute name="navId" type="String" required="false" default="nav" />
+  <aura:attribute
+    name="contentId"
+    type="String"
+    required="false"
+    default="content"
+  />
+
+  <div
+    class="{! v.noWidgetMargin ? 'sfgpsds-widget--no-margin' : 'sfgpsds-widget--margin' }"
+  >
+    <header class="sfgpsds-header">
+      <h1 id="sfgpsds-header-title" class="sr-only">Header</h1>
+
+      <div class="sfgpsds-header-top">{!v.header}</div>
+
+      <div id="{!v.navId}" class="sfgpsds-header-center">
+        <aura:if isTrue="{! !v.hideHeader }">
+          <div class="sfgpsds-header-profile">{!v.themeHeader}</div>
+        </aura:if>
+      </div>
+    </header>
+
+    <div
+      id="{!v.contentId}"
+      aria-label="Content"
+      role="main"
+      class="sfgpsds-content"
+    >
+      {!v.body}
+    </div>
+
+    <footer aria-label="Footer" class="sfgpsds-footer">{!v.footer}</footer>
+  </div>
+</aura:component>

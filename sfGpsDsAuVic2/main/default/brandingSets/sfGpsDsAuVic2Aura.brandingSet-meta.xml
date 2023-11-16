@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<BrandingSet xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>sfGpsDsAuVic2_Aura</masterLabel>
+  <type>starter:branding-starter</type>
+
+  <brandingSetProperty>
+    <propertyName>TextColor</propertyName>
+    <propertyValue>#1A1A1A</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>DetailTextColor</propertyName>
+    <propertyValue>#1A1A1A</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>ActionColor</propertyName>
+    <propertyValue>#2574A9</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>LinkColor</propertyName>
+    <propertyValue>#0052C2</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>OverlayTextColor</propertyName>
+    <propertyValue>#FFFFFF</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>BorderColor</propertyName>
+    <propertyValue>#CCCCCC</propertyValue>
+  </brandingSetProperty>
+
+  <brandingSetProperty>
+    <propertyName>brandNavigationBackgroundColor</propertyName>
+    <propertyValue>rgba(255, 255, 255, 0)</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>brandNavigationColorText</propertyName>
+    <propertyValue>#FFFFFF</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>brandNavigationBarBackgroundColor</propertyName>
+    <propertyValue>#0052C2</propertyValue>
+  </brandingSetProperty>
+
+  <brandingSetProperty>
+    <propertyName>LoginBackgroundColor</propertyName>
+    <propertyValue>#F4F4F4</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>CardBackgroundColor</propertyName>
+    <propertyValue>rgba(255, 255, 255, 0)</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>ErrorFontColor</propertyName>
+    <propertyValue>#AA0028</propertyValue>
+  </brandingSetProperty>
+
+  <brandingSetProperty>
+    <propertyName>CompanyLogo</propertyName>
+    <propertyValue />
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>LoginBackgroundImage</propertyName>
+    <propertyValue
+    >../../../../sfsites/picasso/core/external/salesforceIdentity/images/background.jpg?v=1</propertyValue>
+  </brandingSetProperty>
+
+  <brandingSetProperty>
+    <propertyName>PrimaryFont</propertyName>
+    <propertyValue>VIC-Regular</propertyValue>  
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>HeaderFonts</propertyName>
+    <propertyValue>VIC-Bold</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>TextTransformStyle</propertyName>
+    <propertyValue>none</propertyValue>
+  </brandingSetProperty>
+
+  <!--
+    <brandingSetProperty>
+        <propertyName>_brandNavigationBarBackgroundColor</propertyName>
+        <propertyValue>rgba(128,128,128,.75)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_brandNavigationItemBackgroundColorHover</propertyName>
+        <propertyValue>rgba(0,0,0,.2)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_brandNavigationItemDividerColor</propertyName>
+        <propertyValue>rgba(255, 255, 255, 0.2)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_ActionColorDarker</propertyName>
+        <propertyValue>#135F90</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_ActionColorTrans</propertyName>
+        <propertyValue>rgba(25, 124, 190, 0.9)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_BackgroundColor1</propertyName>
+        <propertyValue>rgb(235, 235, 235)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_BackgroundColor2</propertyName>
+        <propertyValue>rgb(194, 194, 194)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_BackgroundColor3</propertyName>
+        <propertyValue>rgb(133, 133, 133)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_DxpPageBackgroundColor</propertyName>
+        <propertyValue>#FFFFFF</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_HoverColor</propertyName>
+        <propertyValue>rgba(25, 124, 190, 0.05)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_LinkColorDarker</propertyName>
+        <propertyValue>#135F90</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_NeutralColor</propertyName>
+        <propertyValue>#ecebea</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_NeutralColor1</propertyName>
+        <propertyValue>rgb(217, 215, 213)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_NeutralColor2</propertyName>
+        <propertyValue>rgb(178, 174, 170)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_NeutralColor3</propertyName>
+        <propertyValue>rgb(118, 113, 107)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_NeutralForegroundColor</propertyName>
+        <propertyValue>#000</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_NeutralForegroundColor1</propertyName>
+        <propertyValue>#000</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_NeutralForegroundColor2</propertyName>
+        <propertyValue>#000</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_NeutralForegroundColor3</propertyName>
+        <propertyValue>#fff</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_OverlayTextColorShadow</propertyName>
+        <propertyValue>#000000</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_PrimaryAccentColor1</propertyName>
+        <propertyValue>rgb(30, 93, 136)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_PrimaryAccentColor2</propertyName>
+        <propertyValue>rgb(15, 47, 69)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_PrimaryAccentColor3</propertyName>
+        <propertyValue>rgb(0, 0, 0)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_PrimaryAccentForegroundColor1</propertyName>
+        <propertyValue>rgb(255, 255, 255)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_PrimaryAccentForegroundColor2</propertyName>
+        <propertyValue>rgb(255, 255, 255)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_PrimaryAccentForegroundColor3</propertyName>
+        <propertyValue>rgb(255, 255, 255)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_TextColor1</propertyName>
+        <propertyValue>#1A1A1A</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_TextColor2</propertyName>
+        <propertyValue>rgb(0, 0, 0)</propertyValue>
+    </brandingSetProperty>
+    <brandingSetProperty>
+        <propertyName>_TextColor3</propertyName>
+        <propertyValue>rgb(0, 0, 0)</propertyValue>
+    </brandingSetProperty>
+  -->
+</BrandingSet>

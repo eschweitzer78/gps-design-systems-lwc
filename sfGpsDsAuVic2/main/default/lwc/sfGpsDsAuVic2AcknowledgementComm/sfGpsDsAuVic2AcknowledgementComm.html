@@ -1,0 +1,25 @@
+<template>
+  <div class={computedClassName}>
+    <div class="rpl-acknowledgement__flags">
+      <c-sf-gps-ds-au-vic2-image
+        add-class-name="rpl-acknowledgement__flag"
+        src="aboriginalFlag"
+        width="55"
+        height="38"
+        alt="Aboriginal flag"
+      >
+      </c-sf-gps-ds-au-vic2-image>
+      <c-sf-gps-ds-au-vic2-image
+        add-class-name="rpl-acknowledgement__flag"
+        width="55"
+        height="38"
+        src="torresStraitIslanderFlag"
+        alt="Torres Strait Islander flag"
+      >
+      </c-sf-gps-ds-au-vic2-image>
+    </div>
+    <p class="rpl-acknowledgement__message rpl-type-p rpl-type-weight-bold">
+      {message}
+    </p>
+  </div>
+</template>
