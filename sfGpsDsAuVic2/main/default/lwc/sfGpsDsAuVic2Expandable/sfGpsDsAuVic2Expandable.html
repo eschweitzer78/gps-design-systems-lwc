@@ -1,0 +1,10 @@
+<template>
+  <div
+    lwc:if={expanded}
+    class={computedClassName}
+    role="region"
+    style={computedStyle}
+  >
+    <slot></slot>
+  </div>
+</template>

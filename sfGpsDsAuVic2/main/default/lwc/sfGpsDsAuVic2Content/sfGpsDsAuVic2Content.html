@@ -1,0 +1,11 @@
+<template>
+  <div
+    lwc:if={html}
+    class={computedClassName}
+    lwc:ref="content"
+    lwc:dom="manual"
+  ></div>
+  <div lwc:else class={computedClassName}>
+    <slot></slot>
+  </div>
+</template>

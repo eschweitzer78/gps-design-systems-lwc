@@ -1,0 +1,5 @@
+/* This is the only way as slds tokens from the element override would apply to both the frame and button */
+.omniscript-article c-sf-gps-ds-uk-gov-form-file-os-n .slds-file-selector__dropzone {
+  border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+  border-radius: 0;
+}
