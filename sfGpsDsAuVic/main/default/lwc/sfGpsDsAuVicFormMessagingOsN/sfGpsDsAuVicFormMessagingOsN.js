@@ -91,11 +91,6 @@ export default class SfGpsDsAuVicFormMessagingOsN extends SfGpsDsFormMessagingOs
     if (mth) {
       if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
         replaceInnerHtml(element, mth);
-      } else {
-        console.log(
-          "CO-PH",
-          "Couldn't find internal intro markdown placeholder"
-        );
       }
     }
   }
