@@ -25,7 +25,7 @@
         datasource="default,numbered"
       />
       <property
-        name="className"
+        name="addClassName"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
