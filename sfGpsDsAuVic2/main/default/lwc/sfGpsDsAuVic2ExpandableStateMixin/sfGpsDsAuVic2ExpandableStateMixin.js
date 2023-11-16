@@ -28,12 +28,6 @@ let ExpandableStateMixin = (Base, idAttr = "id", activeAttr = "active") =>
           : [];
 
       this._nbActiveItems = nbActiveItems;
-      console.log(
-        "set items => ",
-        JSON.stringify(items),
-        typeof items,
-        JSON.stringify(this._items)
-      );
     }
 
     /* methods */
@@ -107,12 +101,11 @@ let ExpandableStateMixin = (Base, idAttr = "id", activeAttr = "active") =>
     toggleAll() {
       const isAllExpanded = this.isAllExpanded();
       const length = this._items.length;
-      console.log("> toggleAll", JSON.stringify(this._items));
+
       this._items = this._items.map((item, index) =>
         this.mapItem(item, index, length, !isAllExpanded)
       );
       this._nbActiveItems = isAllExpanded ? 0 : this._items.length;
-      console.log("< toggleAll", JSON.stringify(this._items));
 
       return !isAllExpanded;
     }

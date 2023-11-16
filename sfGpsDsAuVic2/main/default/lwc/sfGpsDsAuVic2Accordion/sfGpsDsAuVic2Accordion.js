@@ -90,7 +90,6 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
   /* computed: computedShowButton */
 
   get computedShowButton() {
-    console.log("computedShowButton", this._items.length > 0);
     return this._items.length > 0;
   }
 
