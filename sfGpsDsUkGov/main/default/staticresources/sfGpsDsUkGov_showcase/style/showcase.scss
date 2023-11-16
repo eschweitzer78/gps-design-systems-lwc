@@ -19,6 +19,7 @@ $govuk-new-link-styles: true;
 }
 
 @import "../../../lwc/sfGpsDsUkGovCore/core";
+@import "./fixes";
 
 // App-specific variables
 $app-light-grey: #f8f8f8;

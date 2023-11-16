@@ -7,6 +7,7 @@
 
 import { api } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
+import { NavigationMixin } from "lightning/navigation";
 
 export default class SfGpsDsUkGovHeaderComm extends SfGpsDsNavigation {
   @api
@@ -66,5 +67,15 @@ export default class SfGpsDsUkGovHeaderComm extends SfGpsDsNavigation {
     if (nav && this._map && event.detail) {
       nav.navigateNavMenu(this._map[event.detail]);
     }
+  }
+
+  handleHome() {
+    this[NavigationMixin.Navigate]({
+      // Pass in pageReference
+      type: "standard__namedPage",
+      attributes: {
+        pageName: "home"
+      }
+    });
   }
 }
