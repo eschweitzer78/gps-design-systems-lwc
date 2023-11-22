@@ -24,10 +24,7 @@ export default class SfGpsDsMarkdownElement extends LightningElement {
 
   renderedCallback() {
     if (this._contentHtml) {
-      replaceInnerHtml(
-        this.template.querySelector("[data-markdown]"),
-        this._contentHtml
-      );
+      replaceInnerHtml(this.refs.markdown, this._contentHtml);
     }
   }
 }
