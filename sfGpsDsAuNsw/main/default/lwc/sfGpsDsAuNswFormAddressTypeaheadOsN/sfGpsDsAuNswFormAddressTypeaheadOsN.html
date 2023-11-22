@@ -52,7 +52,7 @@
         </button>
       </div>
 
-      <a slot="lastItem" if:true={_newItemLabel} label={_newItemLabel}
+      <a slot="lastItem" lwc:if={_newItemLabel} label={_newItemLabel}
         >{_newItemLabel}
       </a>
     </c-sf-gps-ds-au-nsw-typeahead-os-n>
@@ -61,14 +61,14 @@
       <div class="nsw-form__group">
         <div class="sfgpsds-label__group">
           <div class="sfgpsds-label__group_label_container">
-            <div if:true={_propSetMap.label} class="sfgpsds-label__group_label">
+            <div lwc:if={_propSetMap.label} class="sfgpsds-label__group_label">
               <label
                 class={computedLabelClassName}
                 aria-label={label}
                 for="address"
               >
                 {mergedLabel}
-                <span if:true={_propSetMap.required} class="sr-only">
+                <span lwc:if={_propSetMap.required} class="sr-only">
                   ({allCustomLabelsUtil.OmniRequired})</span
                 >
               </label>
@@ -104,7 +104,7 @@
           </div>
         </div>
 
-        <span if:true={mergedHelpText} id="helper" class="nsw-form__helper">
+        <span lwc:if={mergedHelpText} id="helper" class="nsw-form__helper">
           {mergedHelpText}
         </span>
 
@@ -205,14 +205,14 @@
     </div>
 
     <span
-      if:true={errorMessage}
+      lwc:if={errorMessage}
       class={computedHelperClassName}
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
     >
       <span
-        if:true={computedStatusIcon}
+        lwc:if={computedStatusIcon}
         class="material-icons nsw-material-icons"
         aria-hidden="true"
       >

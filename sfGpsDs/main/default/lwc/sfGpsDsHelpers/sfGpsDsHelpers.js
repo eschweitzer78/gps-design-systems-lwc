@@ -48,4 +48,4 @@ export {
   normaliseString
 } from "./normalise_v6";
 
-export { formatTemplate } from "./string_v6";
+export { formatTemplate, safeEqualsIgnoreCase } from "./string_v6";

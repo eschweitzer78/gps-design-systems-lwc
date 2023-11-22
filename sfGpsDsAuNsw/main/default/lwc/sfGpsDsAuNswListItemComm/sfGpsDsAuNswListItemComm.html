@@ -14,9 +14,9 @@
     is-reversed={isReversed}
     class-name={className}
   >
-    <template if:true={copy}>
+    <template lwc:if={copy}>
       <span></span>
-      <p class="nsw-list-item__copy"></p>
+      <p lwc:ref="copy" class="nsw-list-item__copy"></p>
     </template>
   </c-sf-gps-ds-au-nsw-list-item>
 </template>

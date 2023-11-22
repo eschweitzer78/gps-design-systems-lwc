@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>NSW DS Default Layout</masterLabel>
+  <type>CommThemeLayoutPage</type>
+
+  <template>
+    <name>sfGpsDsAuNswAuraThemeLayout</name>
+    <properties>
+      <name>contentId</name>
+      <value>content</value>
+    </properties>
+    <properties>
+      <name>navId</name>
+      <value>nav</value>
+    </properties>
+    <properties>
+      <name>noWidgetMargin</name>
+      <value>true</value>
+    </properties>
+  </template>
+
+
+  <flexiPageRegions>
+    <name>masthead</name>
+    <type>Region</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>arLabel</name>
+          <value>Skip to links</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>content</name>
+          <value>#content</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>contentLabel</name>
+          <value>Skip to content</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>cstyle</name>
+          <value>default</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>mastheadLabel</name>
+          <value>A NSW Government website</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>nav</name>
+          <value>#nav</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>navLabel</name>
+          <value>Skip to navigation</value>
+        </componentInstanceProperties>
+        <componentName>sfGpsDsAuNswMastheadComm</componentName>
+        <identifier>sfGpsDsAuNswMastheadComm</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>header</name>
+    <type>Region</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>mode</name>
+          <value>Demo</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>navigationDevName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>ipName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>inputJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>optionsJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>profileIpName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>profileInputJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>profileOptionsJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>masterbrand</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>masterbrandAlt</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>srMasterbrandLabel</name>
+          <value>NSW Government</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>logo</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>logoAlt</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>siteDescriptor</name>
+          <value>Department of Customer Service</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>siteTitle</name>
+          <value>Salesforce ❤️ NSW</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>headerUrl</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>mobile</name>
+          <value>true</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>mobileLogoStacking</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>search</name>
+          <value>true</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>menuLabel</name>
+          <value>menu</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>searchLabel</name>
+          <value>Search site for:</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>headerClassName</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>megaMenu</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>mainNavClassName</name>
+        </componentInstanceProperties>
+        <componentName>sfGpsDsAuNswHeaderMainNavComm</componentName>
+        <identifier>sfGpsDsAuNswHeaderMainNavComm</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <appendable>enabled</appendable>
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>upperFooterMode</name>
+          <value>Demo</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>upperFooterNavigationDevName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>upperFooterIpName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>upperFooterInputJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>upperFooterOptionsJSONN</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>mode</name>
+          <value>Demo</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>navigationDevName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>ipName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>inputJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>optionsJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>statement</name>
+          <value
+          >We pay respect to the Traditional Custodians and First Peoples of NSW, and acknowledge their continued
+            connection to their country and culture.</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>copyrightMention</name>
+          <value>Copyright © 2023</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>builtMention</name>
+          <value
+          >Built with [Experience Cloud](https://www.salesforce.com/products/experience-cloud/overview/)</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>cstyle</name>
+          <value>default</value>
+        </componentInstanceProperties>
+        <componentName>sfGpsDsAuNswFooterComm</componentName>
+        <identifier>sfGpsDsAuNswFooterComm</identifier>
+      </componentInstance>
+    </itemInstances>
+    <name>footer</name>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <type>Region</type>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>themeHeader</name>
+    <type>Region</type>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>sidebar</name>
+    <type>Region</type>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+  </flexiPageRegions>
+
+</FlexiPage>

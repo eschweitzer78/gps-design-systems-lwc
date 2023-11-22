@@ -3,12 +3,12 @@
     <label lwc:if={label} class={computedLabelClassName} for="time-input">
       {label}
       <template if:false={hideAsterisk}>
-        <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+        <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
       </template>
     </label>
     <slot name="label"> </slot>
 
-    <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper">
+    <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
       {fieldLevelHelp}
     </span>
 
@@ -84,7 +84,7 @@
                       class="sfgpsds-media__figure sfgpsds-listbox__option-icon"
                     >
                       <span
-                        if:true={item.selected}
+                        lwc:if={item.selected}
                         class="material-icons nsw-material-icons sfgpsds-icon-small"
                         aria-hidden="true"
                       >
@@ -110,7 +110,7 @@
     </div>
 
     <span
-      if:true={sfGpsDsIsError}
+      lwc:if={sfGpsDsIsError}
       class={computedHelperClassName}
       data-timepicker-error-block
       aria-live="assertive"
@@ -118,7 +118,7 @@
       id="errorMessageBlock"
     >
       <span
-        if:true={computedStatusIcon}
+        lwc:if={computedStatusIcon}
         class="material-icons nsw-material-icons"
         aria-hidden="true"
       >

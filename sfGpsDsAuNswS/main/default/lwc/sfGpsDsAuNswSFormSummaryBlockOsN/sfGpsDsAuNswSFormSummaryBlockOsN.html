@@ -1,6 +1,6 @@
 <template>
   <section class="summary-block">
-    <div if:true={showValidation} class="slds-has-error">
+    <div lwc:if={showValidation} class="slds-has-error">
       <div class="slds-form-element__help">
         <span class="slds-text-link_faux" onclick={toggleContent}>
           {allCustomLabelsUtil.OmniBlockError}

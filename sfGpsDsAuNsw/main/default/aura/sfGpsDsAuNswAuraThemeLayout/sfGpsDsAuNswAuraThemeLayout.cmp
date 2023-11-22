@@ -1,0 +1,46 @@
+<aura:component
+  implements="forceCommunity:themeLayout"
+  access="global"
+  description="NSW DS Theme Layout"
+>
+  <ltng:require
+    styles="{! join(',', $Resource.sfGpsDsAuNsw + '/sfGpsDsAuNsw-min.css', $Resource.sfGpsDsAuNsw + '/byo_aura-min.css')}"
+  />
+
+  <aura:attribute name="masthead" type="Aura.Component[]" required="false" />
+  <aura:attribute name="header" type="Aura.Component[]" required="false" />
+  <aura:attribute name="footer" type="Aura.Component[]" required="false" />
+
+  <aura:attribute
+    name="noWidgetMargin"
+    type="Boolean"
+    required="false"
+    default="false"
+  />
+  <aura:attribute name="navId" type="String" required="false" default="nav" />
+  <aura:attribute
+    name="contentId"
+    type="String"
+    required="false"
+    default="content"
+  />
+
+  <div class="{! v.noWidgetMargin ? 'sfgpsds-widget--no-margin' : '' }">
+    <div class="sfgpsds-masthead-and-header">
+      {!v.masthead}
+
+      <div id="{!v.navId}" class="sfgpsds-header">{!v.header}</div>
+    </div>
+
+    <div
+      id="{!v.contentId}"
+      role="main"
+      aria-label="Content"
+      class="sfgpsds-content"
+    >
+      {!v.body}
+    </div>
+
+    <footer class="sfgpsds-footer" aria-label="Footer">{!v.footer}</footer>
+  </div>
+</aura:component>

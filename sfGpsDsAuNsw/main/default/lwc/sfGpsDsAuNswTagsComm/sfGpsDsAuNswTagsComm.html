@@ -1,13 +1,13 @@
 <template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-tags
-    if:false={_sfGpsErrors}
+    lwc:else
     as-checkboxes={asCheckboxes}
     tags={_links}
     class-name={className}
     onchange={handleChange}
   >
   </c-sf-gps-ds-au-nsw-tags>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

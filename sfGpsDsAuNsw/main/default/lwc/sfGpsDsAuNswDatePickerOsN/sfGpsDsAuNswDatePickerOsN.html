@@ -4,12 +4,12 @@
       <label lwc:if={label} class={computedLabelClassName} for="date-input">
         {label}
         <template if:false={hideAsterisk}>
-          <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+          <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
         </template>
       </label>
       <slot name="label"> </slot>
 
-      <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper">
+      <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
         {fieldLevelHelp}
       </span>
 
@@ -39,7 +39,7 @@
       </div>
 
       <div
-        if:true={built}
+        lwc:if={built}
         class={getPos}
         data-id="date-picker-div"
         role="dialog"
@@ -188,14 +188,14 @@
     </div>
 
     <span
-      if:true={sfGpsDsIsError}
+      lwc:if={sfGpsDsIsError}
       class={computedHelperClassName}
       aria-live="assertive"
       role="alert"
       id="errorMessageBlock"
     >
       <span
-        if:true={computedStatusIcon}
+        lwc:if={computedStatusIcon}
         class="material-icons nsw-material-icons"
         aria-hidden="true"
       >

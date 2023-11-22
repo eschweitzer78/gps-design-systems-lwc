@@ -5,7 +5,7 @@
       {title}
     </div>
     <ul>
-      <template if:true={items} for:each={items} for:item="item">
+      <template lwc:if={items} for:each={items} for:item="item">
         <li key={item.index}>
           <a href={item.url}>{item.text}</a>
         </li>

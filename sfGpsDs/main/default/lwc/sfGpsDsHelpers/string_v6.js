@@ -11,3 +11,15 @@ export function formatTemplate(template, values = {}) {
     }
   );
 }
+
+export function safeEqualsIgnoreCase(a, b) {
+  if (
+    a == null ||
+    b == null ||
+    typeof a.toLowerCase !== "function" ||
+    typeof b.toLowerCase !== "function"
+  )
+    return false;
+
+  return a.toLowerCase() === b.toLowerCase();
+}

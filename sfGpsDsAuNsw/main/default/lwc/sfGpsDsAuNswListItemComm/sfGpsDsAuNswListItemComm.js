@@ -118,11 +118,7 @@ export default class SfGpsDsAuNswListItemComm extends LightningElement {
 
   renderedCallback() {
     if (this.copy) {
-      let element = this.template.querySelector(".nsw-list-item__copy");
-
-      if (element) {
-        replaceInnerHtml(element, this._copyHtml);
-      }
+      replaceInnerHtml(this.refs.copy, this._copyHtml);
     }
   }
 }

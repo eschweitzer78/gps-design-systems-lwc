@@ -1,0 +1,224 @@
+.forceHighlightsPanel,
+.forceRecordLayout,
+.forceActionsDropDownMenuList {
+  --lwc-inputStaticFontSize: 1rem;
+  --lwc-formLabelFontSize: 0.875rem;
+  --lwc-fontSizeTextXSmall: 0.875rem;
+  --lwc-fontSizeMedium: 1rem;
+
+  ul {
+    margin-top: initial;
+
+    li {
+      margin-top: initial;
+    }
+  }
+}
+
+.forceActionsDropDownMenuList .uiMenuItem>a,
+.comm-page-detail .select-options .uiMenuItem>a {
+  text-decoration: none;
+  font-size: var(--nsw-font-size-sm-mobile);
+  line-height: var(--nsw-line-height-sm-mobile);
+  font-weight: var(--nsw-font-normal);
+  color: var(--nsw-text-dark);
+
+  @media (min-width: 62rem) {
+    font-size: var(--nsw-font-size-sm-desktop);
+    line-height: var(--nsw-line-height-sm-desktop);
+  }
+}
+
+.forceDetailPanelDesktop {
+  .uiInput--select .uiPopupTrigger a {
+    font-weight: var(--nsw-font-normal);
+    text-decoration: none;
+  }
+}
+
+.forceHighlightsPanel,
+.forceDetailPanelDesktop {
+  .slds-form-element_stacked:not(.slds-is-editing), 
+  .slds-form_stacked .slds-form-element:not(.slds-is-editing), 
+  .slds-form_horizontal .slds-form-element_stacked:not(.slds-is-editing) {
+    padding: 0;
+  }
+
+  .forceRecordEditActions .slds-button,
+  .forceActionsContainer .slds-button,
+  .forceModalActionContainer .slds-button {
+    --lwc-borderWidthThin: 2px;
+    --lwc-border-radius: var(--nsw-border-radius);
+    --slds-c-button-radius-border: var(--nsw-border-radius); 
+
+    border-color: var(--nsw-brand-dark);
+    color: var(--nsw-text-dark);
+
+    font-size: var(--nsw-font-size-sm-mobile);
+    font-weight: var(--nsw-font-bold);
+    line-height: var(--nsw-line-height-sm-mobile);
+    min-height: calc(var(--nsw-line-height-sm-mobile) * var(--nsw-font-size-sm-mobile) + 2 * 0.625rem + 4px);
+    padding: .625rem 1.375rem;
+
+    @media (min-width: 62rem) {
+      font-size: var(--nsw-font-size-sm-desktop);
+      line-height: var(--nsw-line-height-sm-desktop);
+      min-height: calc(var(--nsw-line-height-sm-desktop) * var(--nsw-font-size-sm-desktop) + 2 * 0.625rem + 4px);
+    }
+
+    &:hover {
+      background-color: var(--nsw-brand-dark);
+      border-color: transparent;
+      color: var(--nsw-text-light);
+    }
+
+    &.slds-button--neutral  {
+      background-color: var(--nsw-white);
+      border-color: var(--nsw-brand-dark);
+      color: var(--nsw-text-dark);
+      
+      &:hover {
+        background-color: var(--nsw-brand-dark);
+        border-color: transparent;
+        color: var(--nsw-text-light);
+        --lwc-brandAccessibleActive: var(--nsw-text-light);
+
+
+      }        
+    }
+
+    &.slds-button--brand,
+    &.slds-button--neutral.uiButton--brand {
+      background-color: var(--nsw-brand-dark);
+      border-color: transparent;
+      color: var(--nsw-text-light);
+
+      &:hover {
+        background-image: linear-gradient(rgba(var(--nsw-white-rgb),.15),rgba(var(--nsw-white-rgb),.15));
+        border-color: transparent;
+        color: var(--nsw-text-light);
+        --lwc-brandAccessibleActive: var(--nsw-text-light);
+      }
+    }
+
+    &.oneActionsDropDown .uiPopupTrigger a {
+      color: var(--nsw-text-dark);
+    }
+
+    &.oneActionsDropDown:hover .uiPopupTrigger a {
+      color: var(--nsw-text-light);
+    }
+
+    & .slds-button__icon {
+      line-height: 0.625rem;
+    }
+  }
+}
+
+.forceHighlightsPanel {
+  .slds-page-header {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .primaryFieldRow {
+    flex-wrap: wrap;
+
+    > .slds-col:first-child {
+      min-width: 100%;
+
+      @media (min-width: 62rem) {
+        min-width: 25%;
+      }
+    }
+  
+    @media (max-width: calc(62rem - 1px)) {
+      .actionsContainer {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+.forceDetailPanelDesktop {
+  &.slds-card {
+    padding: 0 !important;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+  }
+
+  .slds-form-element {
+    margin-top: 0.5rem;
+  }
+
+  .uiInput--select .select {
+    min-height: var(--lwc-heightInput,1.875rem);
+  }
+
+  .forceInlineEdit {
+    .forcePageBlockItemEdit {
+      .form-element__label {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+
+.forceModalActionContainer .slds-button {
+  --lwc-borderWidthThin: 2px;
+  --lwc-border-radius: var(--nsw-border-radius);
+  --slds-c-button-radius-border: var(--nsw-border-radius); 
+
+  border-color: var(--nsw-brand-dark);
+  color: var(--nsw-text-dark);
+
+  font-size: var(--nsw-font-size-sm-mobile);
+  font-weight: var(--nsw-font-bold);
+  line-height: var(--nsw-line-height-sm-mobile);
+  min-height: calc(var(--nsw-line-height-sm-mobile) * var(--nsw-font-size-sm-mobile) + 2 * 0.625rem + 4px);
+  padding: .625rem 1.375rem;
+
+  @media (min-width: 62rem) {
+    font-size: var(--nsw-font-size-sm-desktop);
+    line-height: var(--nsw-line-height-sm-desktop);
+    min-height: calc(var(--nsw-line-height-sm-desktop) * var(--nsw-font-size-sm-desktop) + 2 * 0.625rem + 4px);
+  }
+
+  &:hover {
+    background-color: var(--nsw-brand-dark);
+    border-color: transparent;
+    color: var(--nsw-text-light);
+  }
+
+  &.slds-button--neutral  {
+    background-color: var(--nsw-white);
+    border-color: var(--nsw-brand-dark);
+    color: var(--nsw-text-dark);
+    
+    &:hover {
+      background-color: var(--nsw-brand-dark);
+      border-color: transparent;
+      color: var(--nsw-text-light);
+      --lwc-brandAccessibleActive: var(--nsw-text-light);
+    }        
+  }
+
+  &.slds-button--brand,
+  &.slds-button--neutral.uiButton--brand {
+    background-color: var(--nsw-brand-dark);
+    border-color: transparent;
+    color: var(--nsw-text-light);
+
+    &:hover {
+      background-image: linear-gradient(rgba(var(--nsw-white-rgb),.15),rgba(var(--nsw-white-rgb),.15));
+      border-color: transparent;
+      color: var(--nsw-text-light);
+      --lwc-brandAccessibleActive: var(--nsw-text-light);
+    }
+  }
+
+  & .slds-button__icon {
+    line-height: 0.625rem;
+  }
+}

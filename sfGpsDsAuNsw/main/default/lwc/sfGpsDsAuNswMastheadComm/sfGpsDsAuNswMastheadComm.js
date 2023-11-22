@@ -10,8 +10,6 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
-
 export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
   @api arLabel = "Skip to links";
   @api nav;
@@ -47,16 +45,7 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
 
   renderedCallback() {
     if (this.mastheadLabel) {
-      let element = this.template.querySelector(MARKDOWN_SELECTOR);
-
-      if (element) {
-        replaceInnerHtml(element, this._mastheadLabelHtml);
-      } else {
-        this.addError(
-          "ML-PH",
-          "Couldn't find internal masthead label markdown placeholder"
-        );
-      }
+      replaceInnerHtml(this.refs.markdown, this._mastheadLabelHtml);
     }
   }
 }

@@ -1,6 +1,9 @@
 <template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-card
-    if:false={_sfGpsErrors}
+    lwc:else
     cstyle={cstyle}
     orientation={orientation}
     tag={tag}
@@ -13,16 +16,13 @@
     highlight={highlight}
     class-name={className}
   >
-    <template if:true={copy}>
-      <p class="nsw-card__copy" lwc:dom="manual"></p>
+    <template lwc:if={copy}>
+      <p class="nsw-card__copy" lwc:ref="copy" lwc:dom="manual"></p>
     </template>
 
-    <template if:true={footer}>
+    <template lwc:if={footer}>
       <hr class="nsw-card__divider" />
-      <div class="nsw-card__footer" lwc:dom="manual"></div>
+      <div class="nsw-card__footer" lwc:ref="footer" lwc:dom="manual"></div>
     </template>
   </c-sf-gps-ds-au-nsw-card>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

@@ -1,15 +1,15 @@
 <template>
   <div class="form__date">
     <div class={computedFormItemClassName}>
-      <label if:true={label} class={computedLabelClassName} for="date-input">
+      <label lwc:if={label} class={computedLabelClassName} for="date-input">
         {label}
-        <span if:true={required} class="visually-hidden">
+        <span lwc:if={required} class="visually-hidden">
           ({requiredLabel})</span
         >
       </label>
       <slot name="label"> </slot>
 
-      <span if:true={fieldLevelHelp} id="helper" class="form__help">
+      <span lwc:if={fieldLevelHelp} id="helper" class="form__help">
         {fieldLevelHelp}
       </span>
 
@@ -39,7 +39,7 @@
       </div>
 
       <div
-        if:true={built}
+        lwc:if={built}
         class={getPos}
         data-id="date-picker-div"
         role="dialog"
@@ -188,7 +188,7 @@
     </div>
 
     <span
-      if:true={sfGpsDsIsError}
+      lwc:if={sfGpsDsIsError}
       class="form__error"
       aria-live="assertive"
       role="alert"

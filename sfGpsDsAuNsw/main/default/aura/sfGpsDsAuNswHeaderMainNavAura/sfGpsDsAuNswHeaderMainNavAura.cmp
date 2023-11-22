@@ -2,6 +2,9 @@
   implements="forceCommunity:availableForAllPageTypes"
   access="global"
 >
+  <aura:attribute name="mode" type="String" />
+  <aura:attribute name="navigationDevName" type="String" />
+
   <aura:attribute name="ipName" type="String" />
   <aura:attribute name="inputJSON" type="String" default="{}" />
   <aura:attribute name="optionsJSON" type="String" default="{}" />
@@ -69,6 +72,8 @@
     mainNavId="{! globalId + '_main-nav' }"
   />
   <c:sfGpsDsAuNswMainNavComm
+    mode="{! v.mode }"
+    navigationDevName="{! v.navigationDevName }"
     ipName="{! v.ipName }"
     inputJSON="{! v.inputJSON }"
     optionsJSON="{! v.optionsJSON }"

@@ -1,24 +1,24 @@
 <template lwc:render-mode="light">
   <div class={computedClassName}>
     <!-- CardImage -->
-    <div if:true={image} class="nsw-card__image">
+    <div lwc:if={image} class="nsw-card__image">
       <img src={image} alt={imageAlt} />
     </div>
 
     <!-- CardContent -->
     <div class="nsw-card__content">
       <!-- CardTag-->
-      <p if:true={tag} class="nsw-card__tag">{tag}</p>
+      <p lwc:if={tag} class="nsw-card__tag">{tag}</p>
 
       <!-- CardDate -->
-      <p if:true={_date} class="nsw-card__date">
+      <p lwc:if={_date} class="nsw-card__date">
         <time datetime={_dateISOString}>{_dateLocaleString}</time>
       </p>
 
       <!-- CardHeader-->
-      <div if:true={headline} class="nsw-card__title">
-        <a if:true={link} href={link} class="nsw-card__link">{headline}</a>
-        <template if:false={link}>{headline}</template>
+      <div lwc:if={headline} class="nsw-card__title">
+        <a lwc:if={link} href={link} class="nsw-card__link">{headline}</a>
+        <template lwc:else>{headline}</template>
       </div>
 
       <slot> </slot>

@@ -14,7 +14,8 @@
         type="String"
         label="Content"
         description="Content in Markdown format."
-        default="#content"
+        default="# Markdown content"
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="className"

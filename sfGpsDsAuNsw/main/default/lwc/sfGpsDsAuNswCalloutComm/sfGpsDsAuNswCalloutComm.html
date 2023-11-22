@@ -1,13 +1,14 @@
 <template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-callout
-    if:false={_sfGpsErrors}
+    lwc:else
     title={title}
     level={_level}
+    render-first-child={renderFirstChild}
     class-name={className}
   >
-    <div class="sf-gps-ds-markdown" lwc:dom="manual"></div>
+    <div lwc:ref="markdown" lwc:dom="manual"></div>
   </c-sf-gps-ds-au-nsw-callout>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

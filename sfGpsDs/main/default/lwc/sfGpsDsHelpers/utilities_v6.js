@@ -31,7 +31,8 @@ export const isMacPlatform = () => {
 export const isExternalUrl = (url) => {
   const tmp = document.createElement("a");
   tmp.href = url;
-  return tmp.host !== window.location.host;
+
+  return tmp.host !== new URL(document.URL).host;
 };
 
 export const truncateText = (text, stop = 150, clamp) => {

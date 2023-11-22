@@ -1,10 +1,10 @@
 <template>
-  <template if:true={jsonDef.bAccordionActive}>
+  <template lwc:if={jsonDef.bAccordionActive}>
     <div class="page-header page-header--bottom">
       <div class="snsw-container">
         <h1 class="snsw-h1 os-step-label">{mergedLabel}</h1>
 
-        <p if:true={_propSetMap.chartLabel}>{mergedChartLabel}</p>
+        <p lwc:if={_propSetMap.chartLabel}>{mergedChartLabel}</p>
       </div>
     </div>
 
@@ -20,20 +20,20 @@
       <div class="form-actions">
         <!-- add replacement buttons here -->
         <input
-          if:true={showNext}
+          lwc:if={showNext}
           class="button button--primary"
           type="button"
           value={mergedNextLabel}
           onclick={handleNext}
         />
         <input
-          if:true={showSave}
+          lwc:if={showSave}
           class="button button--secondary"
           type="button"
           value={mergedSaveLabel}
           onclick={handleSave}
         />
-        <div if:true={showPrev} style="display: flex">
+        <div lwc:if={showPrev} style="display: flex">
           <div style="margin-top: 2rem; margin-bottom: 1.5rem">
             <button class="back-button" type="button" onclick={handleBack}>
               <svg

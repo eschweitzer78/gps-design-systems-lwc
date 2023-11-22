@@ -500,7 +500,23 @@
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsMarkdownElement": "sfGpsDsMarkdownElementOs",
-      "SfGpsDsAuNswMarkdownElementComm": "SfGpsDsAuNswMarkdownElementCommOs"
+      "SfGpsDsAuNswMarkdownElementComm": "SfGpsDsAuNswMarkdownElementCommOs",
+      "sfGpsDsAuNswMarkdownElementComm": "sfGpsDsAuNswMarkdownElementCommOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsAuNswMarkupElementComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsAuNswMarkupElementComm": "SfGpsDsAuNswMarkupElementCommOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

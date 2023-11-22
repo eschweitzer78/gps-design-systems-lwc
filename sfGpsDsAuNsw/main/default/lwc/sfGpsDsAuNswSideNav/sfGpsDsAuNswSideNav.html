@@ -1,13 +1,14 @@
 <template lwc:render-mode="light">
   <nav class={computedClassName} aria-labelledby={computedAriaLabelledById}>
     <div
-      if:true={title}
+      lwc:if={title}
       class="nsw-side-nav__header"
       id={computedAriaLabelledById}
     >
       <a href={url}>{title}</a>
     </div>
-    <ul if:true={_navItems}>
+
+    <ul lwc:if={_navItems}>
       <template for:each={_navItems} for:item="navItem">
         <!-- level 2 -->
         <li key={navItem.index} class={navItem.className}>
@@ -21,7 +22,7 @@
             {navItem.text}
           </a>
           <template
-            if:true={navItem.subNav}
+            lwc:if={navItem.subNav}
             for:each={navItem.subNav}
             for:item="subNavItem"
           >
@@ -37,7 +38,7 @@
                 {subNavItem.text}
               </a>
               <template
-                if:true={subNavItem.subNav}
+                lwc:if={subNavItem.subNav}
                 for:each={subNavItem.subNav}
                 for:item="subSubNavItem"
               >

@@ -13,14 +13,14 @@
       >
         <span>
           {label}
-          <span if:true={required} class="visually-hidden">
+          <span lwc:if={required} class="visually-hidden">
             ({requiredLabel})</span
           >
         </span>
         <slot name="label"></slot>
       </legend>
 
-      <span if:true={fieldLevelHelp} id="helper" class="form-help"
+      <span lwc:if={fieldLevelHelp} id="helper" class="form-help"
         >{fieldLevelHelp}</span
       >
 
@@ -50,7 +50,7 @@
       </div>
 
       <span
-        if:true={sfGpsDsIsError}
+        lwc:if={sfGpsDsIsError}
         class="form__error"
         aria-live="assertive"
         role="alert"

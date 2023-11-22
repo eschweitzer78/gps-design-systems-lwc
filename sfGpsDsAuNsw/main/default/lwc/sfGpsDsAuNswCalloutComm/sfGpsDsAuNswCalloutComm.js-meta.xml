@@ -33,6 +33,13 @@
         default="Callouts are text excerpts, used as a *visual* cue to draw attention to the text. They're used to help direct users toward an **important** piece of information."
       />
       <property
+        name="firstChild"
+        type="Boolean"
+        label="Render as first child"
+        description="Render as first child for margin purposes."
+        default="false"
+      />
+      <property
         name="className"
         type="String"
         label="Class name"

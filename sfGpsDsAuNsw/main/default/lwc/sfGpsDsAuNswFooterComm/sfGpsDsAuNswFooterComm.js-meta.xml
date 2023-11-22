@@ -10,10 +10,24 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="upperFooterMode"
+        type="String"
+        label="Upper footer mode"
+        datasource="Demo,Experience Cloud Navigation,Integration Procedure,Hide"
+        default="Integration Procedure"
+      />
+      <property
+        name="upperFooterNavigationDevName"
+        type="String"
+        label="Upper footer navigation name"
+        description="Pick the target upper footer nav when mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
         name="upperFooterIpName"
         type="String"
         label="Upper footer integration procedure name"
-        description="Name of the Integration Procedure mapping content to the upper footer nav."
+        description="Name of the Integration Procedure mapping content to the upper footer nav when mode is set to Integration Procedure."
       />
       <property
         name="upperFooterInputJSON"
@@ -30,10 +44,24 @@
         default="{}"
       />
       <property
+        name="mode"
+        type="String"
+        label="Lower footer mode"
+        datasource="Demo,Experience Cloud Navigation,Integration Procedure"
+        default="Integration Procedure"
+      />
+      <property
+        name="navigationDevName"
+        type="String"
+        label="lower footer navigation name"
+        description="Pick the target lower footer nav when mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
         name="ipName"
         type="String"
         label="Lower footer integration procedure name"
-        description="Name of the Integration Procedure mapping content to the lower footer nav."
+        description="Name of the Integration Procedure mapping content to the lower footer nav when move is set to Integration Procedure."
       />
       <property
         name="inputJSON"

@@ -64,22 +64,16 @@ export default class SfGpsDsAuNswHeroBannerAltComm extends SfGpsDsLwc {
 
   renderedCallback() {
     if (this.content) {
-      let element = this.template.querySelector(
-        ".nsw-hero-banner-alt__content_internal"
-      );
+      /*
+       * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
+       * as the react component would have one for the title in the same scope,
+       * but here our containment hierarchy is a bit different.
+       */
 
-      if (element) {
-        /*
-         * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
-         * as the react component would have one for the title in the same scope,
-         * but here our containment hierarchy is a bit different.
-         */
+      let span = this._titleLabel ? `<span></span>` : "";
+      let markup = (this._titleLabel ? span : "") + (this._contentHtml || "");
 
-        let span = this._titleLabel ? `<span></span>` : "";
-        let markup = (this._titleLabel ? span : "") + (this._contentHtml || "");
-
-        replaceInnerHtml(element, markup);
-      }
+      replaceInnerHtml(this.refs.content, markup);
     }
   }
 }

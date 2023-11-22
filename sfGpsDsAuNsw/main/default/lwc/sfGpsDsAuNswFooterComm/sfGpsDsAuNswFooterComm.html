@@ -1,8 +1,13 @@
 <template>
-  <template if:false={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
     <div class={computedClassName}>
       <c-sf-gps-ds-au-nsw-upper-footer-ip
-        if:true={upperFooterIpName}
+        lwc:if={computedShowUpperFooter}
+        mode={upperFooterMode}
+        navigation-dev-name={upperFooterNavigationDevName}
         ip-name={upperFooterIpName}
         input-j-s-o-n={upperFooterInputJSON}
         options-j-s-o-n={upperFooterOptionsJSON}
@@ -11,6 +16,8 @@
       </c-sf-gps-ds-au-nsw-upper-footer-ip>
 
       <c-sf-gps-ds-au-nsw-lower-footer-ip
+        mode={mode}
+        navigation-dev-name={navigationDevName}
         ip-name={ipName}
         input-j-s-o-n={inputJSON}
         options-j-s-o-n={optionsJSON}
@@ -22,7 +29,4 @@
       </c-sf-gps-ds-au-nsw-lower-footer-ip>
     </div>
   </template>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

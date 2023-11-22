@@ -92,8 +92,10 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
   }
 
   public class GetNavigationItemsResp {
-    public List<ConnectApi.NavigationMenuItem> items;
-    public String errorMessage;
+    public @AuraEnabled
+    List<ConnectApi.NavigationMenuItem> items;
+    public @AuraEnabled
+    String errorMessage;
   }
 
   @AuraEnabled(cacheable=false)
@@ -105,8 +107,9 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
     GetNavigationItemsResp resp = new GetNavigationItemsResp();
 
     try {
+      Id cId = Id.valueOf(communityId); // To cater to 15 vs 18 char
       ConnectApi.NavigationMenuItemCollection coll = ConnectApi.NavigationMenu.getCommunityNavigationMenu(
-        communityId,
+        cId,
         null,
         developerName,
         communityPreview
@@ -132,8 +135,9 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
     Boolean communityPreview
   ) {
     try {
+      Id cId = Id.valueOf(communityId); // To cater to 15 vs 18 char
       ConnectApi.NavigationMenuItemCollection coll = ConnectApi.NavigationMenu.getCommunityNavigationMenu(
-        communityId,
+        cId,
         null,
         developerName,
         communityPreview

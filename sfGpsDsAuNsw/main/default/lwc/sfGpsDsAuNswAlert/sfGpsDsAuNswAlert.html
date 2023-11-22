@@ -4,14 +4,14 @@
       {computedIconName}
     </span>
     <div class="nsw-in-page-alert__content">
-      <template if:true={compact}>
-        <p if:true={compact} class="nsw-small">
+      <template lwc:if={compact}>
+        <p class="nsw-small">
           <strong>{title}</strong>{space}
           <slot></slot>
         </p>
       </template>
 
-      <template if:false={compact}>
+      <template lwc:else>
         <div class="nsw-h5">{title}</div>
         <slot></slot>
       </template>

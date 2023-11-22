@@ -1,6 +1,6 @@
 <template>
   <span class={computedClassName}>
-    <template if:true={isComplete}> Complete </template>
-    <template if:false={isComplete}> In progress </template>
+    <template lwc:if={isComplete}> Complete </template>
+    <template lwc:else> In progress </template>
   </span>
 </template>

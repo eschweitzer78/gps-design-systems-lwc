@@ -7,7 +7,7 @@
           <p class="nsw-intro">
             <slot> </slot>
           </p>
-          <div if:true={cta} class="nsw-hero-banner__button">
+          <div lwc:if={cta} class="nsw-hero-banner__button">
             <a
               href={cta.url}
               class={computedButtonClassName}
@@ -17,7 +17,7 @@
           </div>
         </div>
 
-        <div if:true={links} class="nsw-hero-banner__links">
+        <div lwc:if={links} class="nsw-hero-banner__links">
           <div class="nsw-hero-banner__list">
             <div class="nsw-hero-banner__sub-title">{subtitle}</div>
             <ul>
@@ -31,9 +31,9 @@
         </div>
 
         <div class="nsw-hero-banner__box" role="presentation">
-          <div if:true={lines} class="nsw-hero-banner__lines"></div>
+          <div lwc:if={lines} class="nsw-hero-banner__lines"></div>
           <img
-            if:true={image}
+            lwc:if={image}
             class="nsw-hero-banner__image"
             src={image.src}
             alt={image.alt}

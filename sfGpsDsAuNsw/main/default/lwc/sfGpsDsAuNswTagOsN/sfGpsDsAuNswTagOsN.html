@@ -1,6 +1,6 @@
 <template>
   <div class={computedClassName}>
-    <a if:true={url} class={computedTagClassName} href={url}>{text}</a>
-    <span if:false={url} class={computedTagClassName}> {text} </span>
+    <a lwc:if={url} class={computedTagClassName} href={url}>{text}</a>
+    <span lwc:else class={computedTagClassName}>{text}</span>
   </div>
 </template>

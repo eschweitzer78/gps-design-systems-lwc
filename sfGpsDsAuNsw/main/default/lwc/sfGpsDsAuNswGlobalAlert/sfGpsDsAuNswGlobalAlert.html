@@ -5,7 +5,7 @@
         <div class="nsw-global-alert__title">{title}</div>
         <p>
           {copy}
-          <template if:true={isCtaLinkStyle}>
+          <template lwc:if={isCtaLinkStyle}>
             {space}<a
               href={ctaHref}
               class="nsw-sitewide-message__link"
@@ -16,7 +16,7 @@
         </p>
       </div>
 
-      <p if:true={isCtaButtonStyle}>
+      <p lwc:if={isCtaButtonStyle}>
         <a
           href={ctaHref}
           class={computedButtonClassName}

@@ -2,7 +2,7 @@
   <div class="nsw-tabs__list-wrapper">
     <ul class="nsw-tabs__list" role="tablist" onkeydown={handleKeyDown}>
       <template for:each={_tabs} for:item="tab">
-        <template if:true={tab.label}>
+        <template lwc:if={tab.label}>
           <li
             key={tab.value}
             class={tab.className}

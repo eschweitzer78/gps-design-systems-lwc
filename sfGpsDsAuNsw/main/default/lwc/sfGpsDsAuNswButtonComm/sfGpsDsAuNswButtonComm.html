@@ -1,7 +1,10 @@
 <template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
   <template if:false={_sfGpsErrors}>
     <c-sf-gps-ds-au-nsw-button
-      if:true={isButton}
+      lwc:if={isButton}
       label={_link.text}
       cstyle={cstyle}
       rendering={rendering}
@@ -14,7 +17,7 @@
     >
     </c-sf-gps-ds-au-nsw-button>
     <c-sf-gps-ds-au-nsw-button
-      if:false={isButton}
+      lwc:else
       link={_link.url}
       cstyle={cstyle}
       rendering={rendering}
@@ -29,7 +32,4 @@
       {_link.text}
     </c-sf-gps-ds-au-nsw-button>
   </template>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

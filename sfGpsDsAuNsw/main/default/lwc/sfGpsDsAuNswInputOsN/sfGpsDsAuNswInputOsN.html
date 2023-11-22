@@ -1,25 +1,25 @@
 <template>
   <template if:false={isCustomLwc}>
     <div class="nsw-form__group">
-      <div if:true={labelVisible} data-label="true">
+      <div lwc:if={labelVisible} data-label="true">
         <label class={computedLabelClassName} style="width: auto" for={inputId}>
           {label}
-          <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+          <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
         </label>
         <slot name="label"></slot>
       </div>
 
       <template if:false={isCheckbox}>
-        <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper">
+        <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
           {fieldLevelHelp}
         </span>
       </template>
 
-      <div if:true={pretext}>
-        <span if:true={isCheckbox}>{pretext}</span>
+      <div lwc:if={pretext}>
+        <span lwc:if={isCheckbox}>{pretext}</span>
       </div>
 
-      <template if:true={isCheckbox}>
+      <template lwc:if={isCheckbox}>
         <input
           class="nsw-form__checkbox-input"
           tabindex={tabIndex}
@@ -41,19 +41,19 @@
         <label class="nsw-form__checkbox-label" for={inputId} data-label="true">
           {label}
           <span
-            if:true={required}
+            lwc:if={required}
             class="nsw-form__required"
             title={requiredLabel}
           >
           </span>
-          <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+          <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
           <slot name="label"></slot>
         </label>
 
         <!-- TODO: fieldLevelHelp for checkboxes? -->
       </template>
 
-      <div if:true={_isFormula}>
+      <div lwc:if={_isFormula}>
         <label
           class="slds-form-element__label slds-show--inline slds-p-top_none"
           for={inputId}
@@ -78,7 +78,7 @@
       </div>
       <!-- isFormula -->
 
-      <div if:true={isRadio} class="slds-form-element__control">
+      <div lwc:if={isRadio} class="slds-form-element__control">
         <div class="slds-radio">
           <input
             type={type}
@@ -109,7 +109,7 @@
       <!-- isRadio -->
 
       <label
-        if:true={isToggle}
+        lwc:if={isToggle}
         class="slds-checkbox_toggle slds-grid"
         for={inputId}
       >
@@ -141,7 +141,7 @@
       <!-- isToggle -->
 
       <div if:false={static} class={pretextClass}>
-        <div if:true={isFile} class="slds-form-element__control">
+        <div lwc:if={isFile} class="slds-form-element__control">
           <div class="slds-file-selector slds-file-selector_files">
             <div class="slds-file-selector__dropzone">
               <input
@@ -212,12 +212,12 @@
             </template>
           </ul>
 
-          <span if:true={showPretext} class="slds-form-element__addon"
+          <span lwc:if={showPretext} class="slds-form-element__addon"
             >{pretext}</span
           >
 
           <span
-            if:true={isIconLeftClickable}
+            lwc:if={isIconLeftClickable}
             class="slds-icon_container slds-input__icon slds-input__icon_left slds-input__clickable-icon-left"
             onclick={iconClickCallback}
           >
@@ -232,7 +232,7 @@
           </span>
 
           <span
-            if:true={isIconLeft}
+            lwc:if={isIconLeft}
             class="slds-icon_container slds-input__icon slds-input__icon_left"
           >
             <omnistudio-icon
@@ -250,7 +250,7 @@
       <!-- static -->
 
       <input
-        if:true={isInput}
+        lwc:if={isInput}
         class="nsw-form__input"
         id={inputId}
         tabindex={tabIndex}
@@ -284,7 +284,7 @@
       />
 
       <input
-        if:true={isNumber}
+        lwc:if={isNumber}
         class="hiddenNumber slds-hide"
         required={required}
         aria-invalid={isAriaInvalid}
@@ -297,7 +297,7 @@
       />
 
       <span
-        if:true={isIconRightClickable}
+        lwc:if={isIconRightClickable}
         class="slds-icon_container slds-input__icon slds-input__icon_right slds-input__clickable-icon-right"
         onclick={iconClickCallback}
       >
@@ -312,7 +312,7 @@
       </span>
 
       <span
-        if:true={isIconRight}
+        lwc:if={isIconRight}
         class="slds-icon_container slds-input__icon slds-input__icon_right"
       >
         <omnistudio-icon
@@ -325,19 +325,19 @@
         </omnistudio-icon>
       </span>
 
-      <span if:true={posttext} class="slds-form-element__addon">
+      <span lwc:if={posttext} class="slds-form-element__addon">
         {posttext}
       </span>
 
       <span
-        if:true={sfGpsDsIsError}
+        lwc:if={sfGpsDsIsError}
         class={computedHelperClassName}
         aria-live="assertive"
         role="alert"
         id="errorMessageBlock"
       >
         <span
-          if:true={computedStatusIcon}
+          lwc:if={computedStatusIcon}
           class="material-icons nsw-material-icons"
           aria-hidden="true"
         >
@@ -347,18 +347,18 @@
       </span>
 
       <!-- shifted testing static one level up to avoid the empty div -->
-      <div if:true={static} class="slds-grid">
+      <div lwc:if={static} class="slds-grid">
         <div class="slds-form-element__static">{inputValue}</div>
       </div>
 
-      <span if:true={inlineHelp} class="slds-form-element__static">
+      <span lwc:if={inlineHelp} class="slds-form-element__static">
         {inlineHelp}
       </span>
     </div>
   </template>
 
   <c-sf-gps-ds-au-nsw-date-picker-os-n
-    if:true={isDate}
+    lwc:if={isDate}
     mask={mask}
     placeholder={placeholder}
     theme={theme}
@@ -398,7 +398,7 @@
   </c-sf-gps-ds-au-nsw-date-picker-os-n>
 
   <c-sf-gps-ds-au-nsw-time-picker-os-n
-    if:true={isTime}
+    lwc:if={isTime}
     placeholder={placeholder}
     theme={theme}
     label={label}
@@ -431,7 +431,7 @@
   </c-sf-gps-ds-au-nsw-time-picker-os-n>
 
   <c-sf-gps-ds-au-nsw-datetime-picker-os-n
-    if:true={isDateTime}
+    lwc:if={isDateTime}
     name={name}
     label={label}
     theme={theme}

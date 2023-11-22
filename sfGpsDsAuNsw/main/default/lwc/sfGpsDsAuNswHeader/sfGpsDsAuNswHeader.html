@@ -9,8 +9,13 @@
               class="nsw-header__logo-link"
               onclick={handleLogoClick}
             >
+              <img
+                lwc:if={masterbrand}
+                src={masterbrand}
+                alt={masterbrandAlt}
+              />
               <svg
-                if:false={masterbrand}
+                lwc:else
                 class="nsw-header__waratah-gov"
                 viewBox="0 0 259 280"
                 fill="none"
@@ -38,22 +43,17 @@
                   fill="#D7153A"
                 ></path>
               </svg>
-              <img
-                if:true={masterbrand}
-                src={masterbrand}
-                alt={masterbrandAlt}
-              />
 
-              <span if:true={srMasterbrandLabel} class="sr-only"
+              <span lwc:if={srMasterbrandLabel} class="sr-only"
                 >{srMasterbrandLabel}</span
               >
 
-              <template if:true={areLogosHorizontallyStacked}>
+              <template lwc:if={areLogosHorizontallyStacked}>
                 <!-- if logo and horizontal stacked -->
-                <template if:true={logo}>
+                <template lwc:if={logo}>
                   <img src={logo} alt={logoAlt} />
-                  <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
-                  <span if:true={siteDescriptor} class="sr-only"
+                  <span lwc:if={siteTitle} class="sr-only">{siteTitle}</span>
+                  <span lwc:if={siteDescriptor} class="sr-only"
                     >{siteDescriptor}</span
                   >
                 </template>
@@ -61,13 +61,13 @@
             </a>
           </div>
 
-          <template if:true={areLogosVerticallyStacked}>
+          <template lwc:if={areLogosVerticallyStacked}>
             <!-- if logo and vertical stacked -->
-            <div if:true={logo} class="nsw-header__name">
+            <div lwc:if={logo} class="nsw-header__name">
               <div class="nsw-header__logo">
                 <img src={logo} alt={logoAlt} />
-                <span if:true={siteTitle} class="sr-only">{siteTitle}</span>
-                <span if:true={siteDescriptor} class="sr-only"
+                <span lwc:if={siteTitle} class="sr-only">{siteTitle}</span>
+                <span lwc:if={siteDescriptor} class="sr-only"
                   >{siteDescriptor}</span
                 >
               </div>
@@ -75,15 +75,15 @@
           </template>
 
           <!-- if no logo -->
-          <div if:false={logo} class="nsw-header__name">
-            <div if:true={siteTitle} class="nsw-header__title">{siteTitle}</div>
-            <div if:true={siteDescriptor} class="nsw-header__description">
+          <div lwc:else class="nsw-header__name">
+            <div lwc:if={siteTitle} class="nsw-header__title">{siteTitle}</div>
+            <div lwc:if={siteDescriptor} class="nsw-header__description">
               {siteDescriptor}
             </div>
           </div>
         </div>
 
-        <div if:true={mobile} class="nsw-header__menu">
+        <div lwc:if={mobile} class="nsw-header__menu">
           <button
             type="button"
             aria-expanded={mainNavIsOpen}
@@ -100,7 +100,7 @@
         <div class="nsw-header__search">
           <!-- Open Search -->
           <button
-            if:true={search}
+            lwc:if={search}
             type="button"
             aria-expanded={searchIsOpen}
             aria-controls={computedHeaderSearchId}
@@ -114,12 +114,12 @@
         </div>
 
         <!-- Sign-in / User Profile -->
-        <div if:true={profile} class="nsw-header__profile">
+        <div lwc:if={profile} class="nsw-header__profile">
           <slot></slot>
         </div>
       </div>
 
-      <template if:true={search}>
+      <template lwc:if={search}>
         <div id={computedHeaderSearchId} class="nsw-header__search-area" hidden>
           <form role="search">
             <label for={computedHeaderInputId} class="sr-only">

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>59.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Breadcrumbs (Record)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="recordId"
+        type="String"
+        label="Record Id"
+        description="Value used in the context of a Record Detail page, leave blank otherwise."
+        default="{!recordId}"
+      />
+      <property
+        name="objectApiName"
+        type="String"
+        label="Object API name"
+        description="Value used in the context of a Record List page, leave blank otherwise."
+        default="{!objectName}"
+      />
+      <property
+        name="label"
+        type="String"
+        label="Aria label"
+        description="Label used for accessibility."
+        required="true"
+        default="Breadcrumbs"
+      />
+      <property
+        name="homeLabel"
+        type="String"
+        label="Home label"
+        description="Label used for the home entry."
+        required="true"
+        default="Home"
+      />
+      <property
+        name="linkComponent"
+        type="String"
+        label="Link component"
+        description="Component used to render the link."
+        datasource="a"
+        required="true"
+        default="a"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

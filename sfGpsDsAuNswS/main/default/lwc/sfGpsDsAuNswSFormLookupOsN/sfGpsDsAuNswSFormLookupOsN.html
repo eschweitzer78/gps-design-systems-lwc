@@ -6,12 +6,12 @@
       for="inputId"
     >
       {mergedLabel}
-      <span if:true={_propSetMap.required} class="visually-hidden">
+      <span lwc:if={_propSetMap.required} class="visually-hidden">
         ({allCustomLabelsUtil.OmniRequired})</span
       >
     </label>
 
-    <template if:true={_propSetMap.repeat}>
+    <template lwc:if={_propSetMap.repeat}>
       <span
         slot="label"
         style="bottom: 7px; right: -11px"
@@ -19,7 +19,7 @@
         role="group"
       >
         <button
-          if:true={canRepeat}
+          lwc:if={canRepeat}
           class={_styleClasses.repeatAdd}
           onclick={handleAdd}
         >
@@ -32,7 +32,7 @@
           </omnistudio-icon>
         </button>
         <button
-          if:true={canRemove}
+          lwc:if={canRemove}
           class={_styleClasses.repeatRemove}
           onclick={handleRemove}
         >
@@ -47,7 +47,7 @@
       </span>
     </template>
 
-    <span if:true={mergedHelpText} id="helper" class="form__help">
+    <span lwc:if={mergedHelpText} id="helper" class="form__help">
       {mergedHelpText}
     </span>
 
@@ -127,7 +127,7 @@
     </div>
 
     <span
-      if:true={sfGpsDsIsError}
+      lwc:if={sfGpsDsIsError}
       class="form__error"
       aria-live="assertive"
       role="alert"
@@ -136,7 +136,7 @@
       {sfGpsDsErrorMessage}
     </span>
 
-    <template if:true={isPageLoading}>
+    <template lwc:if={isPageLoading}>
       <omnistudio-spinner
         variant="brand"
         alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}

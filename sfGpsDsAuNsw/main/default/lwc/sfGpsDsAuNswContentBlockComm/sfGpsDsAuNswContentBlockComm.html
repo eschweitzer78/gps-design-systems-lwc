@@ -1,6 +1,9 @@
 <template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-content-block
-    if:false={_sfGpsErrors}
+    lwc:else
     headline={headline}
     image={image}
     image-alt={imageAlt}
@@ -9,9 +12,6 @@
     links={_links}
     class-name={className}
   >
-    <div class="sf-gps-ds-markdown" lwc:dom="manual"></div>
+    <div lwc:ref="markdown" lwc:dom="manual"></div>
   </c-sf-gps-ds-au-nsw-content-block>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

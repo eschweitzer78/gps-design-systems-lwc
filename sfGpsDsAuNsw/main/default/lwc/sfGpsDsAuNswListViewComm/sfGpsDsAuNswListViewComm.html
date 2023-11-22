@@ -1,13 +1,19 @@
 <template>
   <div class={className}>
-    <template if:false={_sfGpsErrors}>
+    <c-sf-gps-ds-configuration-error
+      lwc:if={_sfGpsErrors}
+      errors={_sfGpsErrors}
+    >
+    </c-sf-gps-ds-configuration-error>
+
+    <template lwc:else>
       <div class={titleClassName}>{_name}</div>
 
-      <template if:true={_isLoading}>
+      <template lwc:if={_isLoading}>
         <c-sf-gps-ds-spinner></c-sf-gps-ds-spinner>
       </template>
 
-      <template if:true={_records}>
+      <template lwc:if={_records}>
         <c-sf-gps-ds-au-nsw-results-bar
           from={_itemsFrom}
           to={_itemsTo}
@@ -45,11 +51,5 @@
         <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
       </template>
     </template>
-
-    <c-sf-gps-ds-configuration-error
-      if:true={_sfGpsErrors}
-      errors={_sfGpsErrors}
-    >
-    </c-sf-gps-ds-configuration-error>
   </div>
 </template>

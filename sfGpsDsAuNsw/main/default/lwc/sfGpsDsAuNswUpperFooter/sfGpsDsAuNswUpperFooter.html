@@ -1,11 +1,11 @@
 <template lwc:render-mode="light">
   <div class={computedClassName}>
     <div class="nsw-container">
-      <template if:true={_items}>
+      <template lwc:if={_items}>
         <template for:each={_items} for:item="navItem">
           <div key={navItem.index} class="nsw-footer__group">
             <div class="nsw-footer__heading">
-              <template if:true={navItem.url}>
+              <template lwc:if={navItem.url}>
                 <a
                   href={navItem.url}
                   data-ndx={navItem.index}
@@ -14,10 +14,10 @@
                   {navItem.text}
                 </a>
               </template>
-              <template if:false={navItem.url}>{navItem.text}</template>
+              <template lwc:else>{navItem.text}</template>
             </div>
 
-            <ul if:true={navItem.subNav}>
+            <ul lwc:if={navItem.subNav}>
               <template for:each={navItem.subNav} for:item="subNavItem">
                 <li key={subNavItem.index}>
                   <a

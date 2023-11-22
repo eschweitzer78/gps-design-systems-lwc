@@ -1,6 +1,6 @@
 <template>
   <!-- Spinner -->
-  <template if:true={isPageLoading}>
+  <template lwc:if={isPageLoading}>
     <omnistudio-spinner
       variant="brand"
       alternative-text="Loading..."
@@ -14,12 +14,12 @@
     <div class="nsw-form__group">
       <label id="fileUpload" class={computedLabelClassName} style="width: auto">
         {mergedLabel}
-        <span if:true={_propSetMap.required} class="sr-only">
+        <span lwc:if={_propSetMap.required} class="sr-only">
           ({allCustomLabelsUtil.OmniRequired})</span
         >
       </label>
 
-      <span if:true={_propSetMap.help} id="helper" class="nsw-form__helper">
+      <span lwc:if={_propSetMap.help} id="helper" class="nsw-form__helper">
         {mergedHelpText}
       </span>
 
@@ -40,14 +40,14 @@
       </div>
 
       <span
-        if:true={_showValidation}
+        lwc:if={_showValidation}
         class={computedHelperClassName}
         aria-live="assertive"
         role="alert"
         id="errorMessageBlock"
       >
         <span
-          if:true={computedStatusIcon}
+          lwc:if={computedStatusIcon}
           class="material-icons nsw-material-icons"
           aria-hidden="true"
         >

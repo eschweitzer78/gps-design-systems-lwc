@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>Login</masterLabel>
+  <type>CommThemeLayoutPage</type>
+
+  <template>
+    <name>salesforceIdentity:loginBody2</name>
+    <properties>
+      <name>footer</name>
+    </properties>
+    <properties>
+      <name>header</name>
+    </properties>
+  </template>
+
+  <flexiPageRegions>
+    <appendable>enabled</appendable>
+    <name>header</name>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <type>Region</type>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <appendable>enabled</appendable>
+    <name>content</name>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <type>Region</type>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <appendable>enabled</appendable>
+    <name>footer</name>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <type>Region</type>
+  </flexiPageRegions>
+</FlexiPage>

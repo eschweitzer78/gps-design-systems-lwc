@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<BrandingSet xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>sfGpsDsAuNswAura</masterLabel>
+  <type>starter:branding-starter</type>
+
+  <brandingSetProperty>
+    <propertyName>TextColor</propertyName>
+    <propertyValue>#22272B</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>DetailTextColor</propertyName>
+    <propertyValue>#22272B</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>ActionColor</propertyName>
+    <propertyValue>#002664</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>LinkColor</propertyName>
+    <propertyValue>#002664</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>OverlayTextColor</propertyName>
+    <propertyValue>#FFFFFF</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>BorderColor</propertyName>
+    <propertyValue>#CCCCCC</propertyValue>
+  </brandingSetProperty>
+
+  <brandingSetProperty>
+    <propertyName>brandNavigationBackgroundColor</propertyName>
+    <propertyValue>rgba(255, 255, 255, 0)</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>brandNavigationColorText</propertyName>
+    <propertyValue>#22272B</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>brandNavigationBarBackgroundColor</propertyName>
+    <propertyValue>#F2F2F2</propertyValue>
+  </brandingSetProperty>
+
+  <brandingSetProperty>
+    <propertyName>LoginBackgroundColor</propertyName>
+    <propertyValue>#F2F2F2</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>CardBackgroundColor</propertyName>
+    <propertyValue>rgba(255, 255, 255, 0)</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>ErrorFontColor</propertyName>
+    <propertyValue>#B81237</propertyValue>
+  </brandingSetProperty>
+
+  <brandingSetProperty>
+    <propertyName>CompanyLogo</propertyName>
+    <propertyValue />
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>LoginBackgroundImage</propertyName>
+    <propertyValue
+    >../../../../sfsites/picasso/core/external/salesforceIdentity/images/background.jpg?v=1</propertyValue>
+  </brandingSetProperty>
+
+  <brandingSetProperty>
+    <propertyName>PrimaryFont</propertyName>
+    <propertyValue>Public Sans</propertyValue>  
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>HeaderFonts</propertyName>
+    <propertyValue>Public Sans</propertyValue>
+  </brandingSetProperty>
+  <brandingSetProperty>
+    <propertyName>TextTransformStyle</propertyName>
+    <propertyValue>none</propertyValue>
+  </brandingSetProperty>
+</BrandingSet>

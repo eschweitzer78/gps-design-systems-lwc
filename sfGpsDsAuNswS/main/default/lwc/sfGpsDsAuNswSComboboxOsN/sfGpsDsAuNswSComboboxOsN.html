@@ -8,14 +8,14 @@
           id="combobox-label"
         >
           {label}
-          <span if:true={required} class="visually-hidden">
+          <span lwc:if={required} class="visually-hidden">
             ({requiredLabel})</span
           >
         </label>
         <slot name="label"> </slot>
       </div>
 
-      <span if:true={fieldLevelHelp} id="helper" class="form-help">
+      <span lwc:if={fieldLevelHelp} id="helper" class="form-help">
         {fieldLevelHelp}
       </span>
 
@@ -66,7 +66,7 @@
               >
                 <template for:each={internalOptionsCopy} for:item="item">
                   <li
-                    if:true={isGrouped}
+                    lwc:if={isGrouped}
                     class="sfgpsds-listbox__item"
                     key={item.optId}
                     role="presentation"
@@ -116,8 +116,8 @@
         </div>
       </div>
 
-      <template if:true={multiple}>
-        <div if:true={inputLabels.length} class="slds-listbox_selection-group">
+      <template lwc:if={multiple}>
+        <div lwc:if={inputLabels.length} class="slds-listbox_selection-group">
           <ul
             role="listbox"
             aria-label="Selected Options:"
@@ -134,7 +134,7 @@
                 >
                   <span class="slds-pill__label" title={item}>{item}</span>
                   <omnistudio-icon
-                    if:true={showDelIcon}
+                    lwc:if={showDelIcon}
                     data-label={item}
                     icon-name="utility:close"
                     baseurl={iconUrl}
@@ -151,7 +151,7 @@
       </template>
 
       <span
-        if:true={sfGpsDsIsError}
+        lwc:if={sfGpsDsIsError}
         id="errorMessageBlock"
         class="form__error"
         aria-live="assertive"

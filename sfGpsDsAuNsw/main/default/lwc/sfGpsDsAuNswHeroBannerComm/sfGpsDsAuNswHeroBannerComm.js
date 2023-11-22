@@ -10,8 +10,6 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-const MARKDOWN_SELECTOR = ".sf-gps-ds-markdown";
-
 export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
   @api title;
   @api subtitle;
@@ -100,24 +98,9 @@ export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
     this.classList.add("nsw-scope");
   }
 
-  _rendered = false;
-
   renderedCallback() {
-    if (this._rendered === false) {
-      let element;
-
-      if (this.intro) {
-        if ((element = this.template.querySelector(MARKDOWN_SELECTOR))) {
-          replaceInnerHtml(element, this._introHtml);
-        } else {
-          this.addError(
-            "CO-PH",
-            "Couldn't find internal intro markdown placeholder"
-          );
-        }
-      }
-
-      this._rendered = true;
+    if (this.intro) {
+      replaceInnerHtml(this.refs.markdown, this._introHtml);
     }
   }
 }

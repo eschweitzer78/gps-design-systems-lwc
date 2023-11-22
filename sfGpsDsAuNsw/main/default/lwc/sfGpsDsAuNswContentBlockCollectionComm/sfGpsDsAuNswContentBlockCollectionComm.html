@@ -1,7 +1,10 @@
 <template>
-  <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
+  <c-sf-gps-ds-spinner lwc:if={_isLoading}> </c-sf-gps-ds-spinner>
 
-  <template if:false={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
     <div class={computedClassName}>
       <template for:each={_items} for:item="block">
         <div key={block.index} class={computedColClassName}>
@@ -20,10 +23,7 @@
       </template>
     </div>
 
-    <c-sf-gps-ds-empty if:true={isEmpty} title="No matching content">
+    <c-sf-gps-ds-empty lwc:if={isEmpty} title="No matching content">
     </c-sf-gps-ds-empty>
   </template>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

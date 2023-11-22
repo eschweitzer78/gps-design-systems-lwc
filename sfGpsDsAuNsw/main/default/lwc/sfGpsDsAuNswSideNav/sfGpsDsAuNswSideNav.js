@@ -17,8 +17,7 @@ export default class SfGpsDsAuNswSideNav extends LightningElement {
   _mapItems;
 
   mapItems(parentIndex, parentLevel, map, items) {
-    const href = window.location.href;
-    const currentUrl = href.split("?")[0];
+    const currentUrl = document.URL.split("?")[0];
     let index = 0;
 
     return items.map((item) => {

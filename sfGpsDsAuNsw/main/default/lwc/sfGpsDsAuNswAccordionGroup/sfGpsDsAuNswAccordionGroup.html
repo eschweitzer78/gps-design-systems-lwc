@@ -1,6 +1,9 @@
 <template lwc:render-mode="light">
-  <div if:false={_sfGpsErrors} class={computedClassName}>
-    <div if:true={showButtons} class="nsw-accordion__toggle">
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
+  <div lwc:else class={computedClassName}>
+    <div lwc:if={showButtons} class="nsw-accordion__toggle">
       <button
         disabled={isFullyExpanded}
         type="button"
@@ -30,7 +33,4 @@
       </c-sf-gps-ds-au-nsw-accordion-comm>
     </template>
   </div>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>
