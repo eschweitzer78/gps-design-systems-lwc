@@ -1,0 +1,71 @@
+/* TABS */
+/********/
+
+.cSfGpsDsThemeLayout {
+  .forceCommunityTabset>.uiTabBar {
+    margin: 0;
+  }
+
+  .uiTabset--default .tabs__nav {
+    border: none
+  }
+
+  .uiTabset--base .tabs__item {
+    font-weight: var(--nsw-font-bold);
+    font-size: var(--nsw-font-size-sm-mobile);
+    line-height: var(--nsw-line-height-sm-mobile);
+
+    @media (min-width: 64rem) {
+      font-size: var(--nsw-font-size-sm-desktop);
+      line-height: var(--nsw-line-height-sm-desktop);
+    }
+  }
+
+  .uiTabset--default .tabs__item+.tabs__item {
+    margin-left: 0;
+  }
+
+  .uiTabset--default {
+    .tabs__item>a,
+    .uiTabOverflowMenuItem a,
+    .tabs__item>a:hover, 
+    .tabs__item>a:focus {
+      color: var(--nsw-brand-dark, #002664);
+    }
+
+    .tabs__item>a:hover, 
+    .tabs__item>a:focus {
+      border: none;
+      box-shadow: none;
+      outline: 0;
+    }
+
+    .tabs__item.active>a {
+      border-bottom: 2px solid var(--nsw-brand-accent, #d7153a);
+      border-color: var(--nsw-brand-accent, #d7153a);
+      color: var(--nsw-text-dark, #22272b);
+    }
+  }
+
+  .forceCommunityTabset>.uiTabBar {
+    .uiTabItem {
+      color: var(--nsw-brand-dark, #002664);
+
+      .tabHeader {
+        padding: 0.75rem 1rem;
+        position: relative;
+        z-index: 100;
+      }
+    }
+  }
+}
+
+/* TAB PANELS */
+/**************/
+
+.cSfGpsDsThemeLayout .uiTabset--default .tabs__content {
+  border-top: 2px solid var(--nsw-grey--04, #ebebeb);
+  border-bottom: 1px solid var(--nsw-grey--04, #ebebeb);
+  padding: 1.5rem 1rem;
+  margin-top: -2px;
+}

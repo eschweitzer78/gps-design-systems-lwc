@@ -1,0 +1,16 @@
+
+.unsNotificationsListRow a:not(.nsw-button) {
+  text-decoration: none;
+}
+
+ul li.unsNotificationsListRow  {
+  margin-top: 0;
+}
+
+.uiPanel--notificationsPanel .closeBtn {
+  color: var(--nsw-brand-dark);
+}
+
+.unsNotificationsCounter .countDot {
+  --lwc-colorBackgroundNotificationBadge: var(--nsw-palette-red-02, #d7153a);
+}

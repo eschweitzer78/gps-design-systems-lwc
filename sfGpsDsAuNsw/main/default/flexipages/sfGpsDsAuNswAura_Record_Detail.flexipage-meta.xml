@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>Record Detail</masterLabel>
+  <sobjectType>Site</sobjectType>
+  <template>
+    <name>siteforce:dynamicLayout</name>
+  </template>
+  <type>CommRecordPage</type>
+
+  <!-- Breadcrumb region -->
+  <flexiPageRegions>
+    <name>facet-indirection-2e83ffc0-7e35-4a14-8a91-0e7ff0a797ee</name>
+    <type>Facet</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentName>flexipage:tab</componentName>
+        <identifier>customTab</identifier>
+        <componentInstanceProperties>
+          <name>body</name>
+          <value>4a7b576b-91fe-4fd9-847a-dfaeb70a0456</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>title</name>
+          <value>1</value>
+        </componentInstanceProperties>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>4a7b576b-91fe-4fd9-847a-dfaeb70a0456</name>
+    <type>Facet</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentName>sfGpsDsAuNswBreadcrumbsRecordComm</componentName>
+        <identifier>sfGpsDsAuNswBreadcrumbsRecordComm</identifier>
+        <componentInstanceProperties>
+          <name>recordId</name>
+          <value>{!recordId}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>objectApiName</name>
+          <value />
+        </componentInstanceProperties>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <!-- Full width region, left empty -->
+  <flexiPageRegions>
+    <name>facet-indirection-08169a08-a40b-4673-a89d-706b3d1c462b</name>
+    <type>Facet</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>body</name>
+          <value>bed35d82-b826-4e7f-9959-ef5e6dc3d59d</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>title</name>
+          <value>1</value>
+        </componentInstanceProperties>
+        <componentName>flexipage:tab</componentName>
+        <identifier>customTab2</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>bed35d82-b826-4e7f-9959-ef5e6dc3d59d</name>
+    <type>Facet</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+  </flexiPageRegions>
+
+  <!-- Main region / headline -->
+  <flexiPageRegions>
+    <name>facet-indirection-ac386c36-7cb2-4432-b963-f2fef825f7f8</name>
+    <type>Facet</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentName>flexipage:tab</componentName>
+        <identifier>customTab3</identifier>
+        <componentInstanceProperties>
+          <name>body</name>
+          <value>8a947842-0348-4b6f-b982-c46b765ec808</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>title</name>
+          <value>1</value>
+        </componentInstanceProperties>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+  
+  <flexiPageRegions>
+    <name>8a947842-0348-4b6f-b982-c46b765ec808</name>
+    <type>Facet</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentName>forceCommunity:recordHeadline</componentName>
+        <identifier>sfGpsDsAuNsw_recordHeadline</identifier>
+        <componentInstanceProperties>
+          <name>recordId</name>
+          <value>{!recordId}</value>
+        </componentInstanceProperties>
+      </componentInstance>
+    </itemInstances>
+
+    <itemInstances>
+      <componentInstance>
+        <componentName>forceCommunity:recordHomeTabs</componentName>
+        <identifier>sfGpsDsAuNsw_recordHomeTabs</identifier>
+        <componentInstanceProperties>
+          <name>detailsTabLabel</name>
+          <value>Details</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>discussionsTabLabel</name>
+          <value>Feed</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>recordId</name>
+          <value>{!recordId}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>relatedTabLabel</name>
+          <value>Related</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>tab1Type</name>
+          <value>details</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>tab2Type</name>
+          <value>related</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>tab3Type</name>
+          <value>chatter</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>tab4Type</name>
+          <value>none</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>timelineTabLabel</name>
+          <value>Activity</value>
+        </componentInstanceProperties>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <!-- Main region / detail -->
+  <flexiPageRegions>
+    <name>facet-indirection-73ecdeae-0411-42e7-b2f5-04cb4cd84fbe</name>
+    <type>Facet</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>body</name>
+          <value>e4e5e433-e93d-455c-b645-2d189ff465c2</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>title</name>
+          <value>1</value>
+        </componentInstanceProperties>
+        <componentName>flexipage:tab</componentName>
+        <identifier>customTab3</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>e4e5e433-e93d-455c-b645-2d189ff465c2</name>
+    <type>Facet</type>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>recordId</name>
+          <value>{!recordId}</value>
+        </componentInstanceProperties>
+        <componentName>forceCommunity:recordDetail</componentName>
+        <identifier>sfGpsDsAuNsw_recordDetail</identifier>
+      </componentInstance>
+    </itemInstances>
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>markup</name>
+          <value>&lt;div class=&quot;nsw-m-bottom-xl&quot;&gt;
+&lt;/div&gt;
+</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>className</name>
+          <value>nsw-scope</value>
+        </componentInstanceProperties>
+        <componentName>sfGpsDsAuNswMarkupElementComm</componentName>
+        <identifier>sfGpsDsAuNswMarkupElementComm</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>content</name>
+    <type>Region</type>
+
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+        <componentInstance>
+            <componentInstanceProperties>
+                <name>background</name>
+                <value>background: rgba(0,0,0,0)</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>backgroundOverlay</name>
+                <value>rgba(0,0,0,0.5)</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>contentAreaWidth</name>
+                <value>100</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>regions</name>
+                <value
+          >facet-indirection-2e83ffc0-7e35-4a14-8a91-0e7ff0a797ee</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>sectionConfig</name>
+                <value
+          >{&quot;UUID&quot;:&quot;2e83ffc0-7e35-4a14-8a91-0e7ff0a797ee&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;4a7b576b-91fe-4fd9-847a-dfaeb70a0456&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>sectionHeight</name>
+                <value>300</value>
+            </componentInstanceProperties>
+            <componentName>forceCommunity:section</componentName>
+            <identifier>forceCommunity_section</identifier>
+        </componentInstance>
+    </itemInstances>
+
+    <itemInstances>
+        <componentInstance>
+            <componentInstanceProperties>
+                <name>background</name>
+                <value>background: rgba(0,0,0,0)</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>backgroundOverlay</name>
+                <value>rgba(0,0,0,0.5)</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>contentAreaWidth</name>
+                <value>100</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>regions</name>
+                <value
+          >facet-indirection-08169a08-a40b-4673-a89d-706b3d1c462b</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>sectionConfig</name>
+                <value
+          >{&quot;UUID&quot;:&quot;08169a08-a40b-4673-a89d-706b3d1c462b&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;bed35d82-b826-4e7f-9959-ef5e6dc3d59d&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>sectionHeight</name>
+                <value>300</value>
+            </componentInstanceProperties>
+            <componentName>forceCommunity:section</componentName>
+            <identifier>forceCommunity_section2</identifier>
+        </componentInstance>
+    </itemInstances>
+
+    <itemInstances>
+        <componentInstance>
+            <componentInstanceProperties>
+                <name>background</name>
+                <value>background: rgba(0,0,0,0)</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>backgroundOverlay</name>
+                <value>rgba(0,0,0,0.5)</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>contentAreaWidth</name>
+                <value>100</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>regions</name>
+                <value
+          >facet-indirection-73ecdeae-0411-42e7-b2f5-04cb4cd84fbe</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>sectionConfig</name>
+                <value
+          >{&quot;UUID&quot;:&quot;73ecdeae-0411-42e7-b2f5-04cb4cd84fbe&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;e4e5e433-e93d-455c-b645-2d189ff465c2&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>sectionHeight</name>
+                <value>300</value>
+            </componentInstanceProperties>
+            <componentName>forceCommunity:section</componentName>
+            <identifier>forceCommunity_section3</identifier>
+        </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>sfdcHiddenRegion</name>
+    <type>Region</type>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>customHeadTags</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>description</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>title</name>
+          <value>{!Record._Object}: {!Record._Title}</value>
+        </componentInstanceProperties>
+        <componentName>forceCommunity:seoAssistant</componentName>
+        <identifier>forceCommunity_seoAssistant</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+</FlexiPage>

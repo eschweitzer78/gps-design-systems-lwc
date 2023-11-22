@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CommunityThemeDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>NSW Design System</masterLabel>
+  <description
+  >A fully packaged theme for the Australian state Government of New South Wales.</description>
+  <publisher>Salesforce Global Public Sector</publisher>
+    <bundlesInfo>
+        <title>Branded NSW Elements</title>
+        <description
+    >30+ Elements for Experience Cloud branded according to the Digital NSW guidelines.</description>
+        <order>1</order>
+        <type>Highlight</type>
+    </bundlesInfo>
+    <bundlesInfo>
+        <title>Support for Omnistudio</title>
+        <description
+    >Put together branded forms in a matter of minutes.</description>
+        <order>1</order>
+        <type>Highlight</type>
+    </bundlesInfo>
+    <bundlesInfo>
+        <image>sfGpsDsAuNswAuraThemePreview1</image>
+        <order>1</order>
+        <title>Theme 1</title>
+        <type>PreviewImage</type>
+    </bundlesInfo>
+    <bundlesInfo>
+        <image>sfGpsDsAuNswAuraThemePreview2</image>
+        <order>2</order>
+        <title>Theme 2</title>
+        <type>PreviewImage</type>
+    </bundlesInfo>
+    <bundlesInfo>
+        <image>sfGpsDsAuNswAuraThemePreview3</image>
+        <order>3</order>
+        <title>Theme 3</title>
+        <type>PreviewImage</type>
+    </bundlesInfo>
+    <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
+    <defaultBrandingSet>sfGpsDsAuNswAura</defaultBrandingSet>
+    <themeSetting>
+      <themeLayout>sfGpsDsAuNswAura_themeLayout_Default</themeLayout>
+      <themeLayoutType>Inner</themeLayoutType>
+    </themeSetting>
+    <themeSetting>
+      <themeLayout>sfGpsDsAuNswAura_themeLayout_Login</themeLayout>
+      <themeLayoutType>Login</themeLayoutType>
+    </themeSetting>
+    <themeSetting>
+      <themeLayout
+    >sfGpsDsAuNswAura_themeLayout_ServiceNotAvailable</themeLayout>
+      <themeLayoutType>ServiceNotAvailable</themeLayoutType>
+    </themeSetting>
+</CommunityThemeDefinition>
