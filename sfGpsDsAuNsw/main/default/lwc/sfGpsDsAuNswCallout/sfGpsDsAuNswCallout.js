@@ -13,6 +13,7 @@ export default class SfGpsDsAuNswCallout extends LightningElement {
 
   @api title;
   @api level = 4;
+  @api firstChild;
   @api className;
 
   get computedClassName() {

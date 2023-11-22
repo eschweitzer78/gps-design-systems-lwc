@@ -33,7 +33,7 @@
             </form>
           </div>
 
-          <div if:true={links} class="hero-search__suggested">
+          <div lwc:if={links} class="hero-search__suggested">
             <ul>
               <template for:each={links} for:item="link">
                 <li key={link.index}><a href={link.url}>{link.text}</a></li>

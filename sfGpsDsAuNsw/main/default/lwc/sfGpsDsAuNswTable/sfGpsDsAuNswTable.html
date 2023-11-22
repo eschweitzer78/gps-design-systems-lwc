@@ -1,10 +1,10 @@
 <template>
   <div class={computedClassName} tabindex="0">
     <table>
-      <caption if:true={computedShowCaption}>
+      <caption lwc:if={computedShowCaption}>
         {caption}
       </caption>
-      <thead if:true={_tableHeaders}>
+      <thead lwc:if={_tableHeaders}>
         <tr>
           <template for:each={_tableHeaders} for:item="header">
             <th key={header.name} width={header.width} class={header.className}>
@@ -13,10 +13,11 @@
           </template>
         </tr>
       </thead>
-      <tbody if:true={_tableRows}>
+
+      <tbody lwc:if={_tableRows}>
         <template for:each={_tableRows} for:item="row">
           <tr key={row._key}>
-            <template if:true={row._cols} for:each={row._cols} for:item="cell">
+            <template lwc:if={row._cols} for:each={row._cols} for:item="cell">
               <td
                 lwc:if={cell._isMarkdown}
                 key={cell._key}

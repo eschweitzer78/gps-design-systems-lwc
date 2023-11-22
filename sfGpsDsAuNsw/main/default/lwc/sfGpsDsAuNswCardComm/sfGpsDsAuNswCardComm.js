@@ -132,18 +132,12 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    let element;
-
     if (this.copy) {
-      if ((element = this.template.querySelector(".nsw-card__copy"))) {
-        replaceInnerHtml(element, this._copyHtml);
-      }
+      replaceInnerHtml(this.refs.copy, this._copyHtml);
     }
 
     if (this.footer) {
-      if ((element = this.template.querySelector(".nsw-card__footer"))) {
-        replaceInnerHtml(element, this._footerHtml);
-      }
+      replaceInnerHtml(this.refs.footer, this._footerHtml);
     }
   }
 }

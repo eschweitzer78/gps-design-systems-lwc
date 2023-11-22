@@ -1,6 +1,9 @@
 <template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-accordion
-    if:false={_sfGpsErrors}
+    lwc:else
     header={header}
     closed={closed}
     class-name={className}
@@ -9,7 +12,4 @@
   >
     <span class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
   </c-sf-gps-ds-au-nsw-accordion>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

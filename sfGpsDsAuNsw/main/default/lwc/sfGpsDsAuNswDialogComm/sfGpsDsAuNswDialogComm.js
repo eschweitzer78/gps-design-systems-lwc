@@ -46,11 +46,7 @@ export default class SfGpsDsAuNswDialogComm extends SfGpsDsLwc {
 
   renderedCallback() {
     if (this.content) {
-      let element = this.template.querySelector(".sf-gps-ds-markdown");
-
-      if (element) {
-        replaceInnerHtml(element, this._contentHtml);
-      }
+      replaceInnerHtml(this.refs.markdown, this._contentHtml);
     }
   }
 

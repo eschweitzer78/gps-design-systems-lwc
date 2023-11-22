@@ -1,6 +1,6 @@
 <template>
   <div class="nsw-header__profile-container">
-    <template if:true={isGuest}>
+    <template lwc:if={isGuest}>
       <button class="nsw-header__profile-login" onclick={handleLogin}>
         <i class="material-icons nsw-material-icons" aria-hidden="true">
           account_circle
@@ -9,7 +9,7 @@
       </button>
     </template>
 
-    <template if:false={isGuest}>
+    <template lwc:else>
       <button class="nsw-header__profile-button" onclick={handleOpenProfile}>
         <i class="material-icons nsw-material-icons" aria-hidden="true">
           account_circle
@@ -18,7 +18,7 @@
       </button>
 
       <div
-        if:true={isOpen}
+        lwc:if={isOpen}
         role="dialog"
         aria-labelledby="nsw-header__profile-panel--content-name"
         tabindex="-1"

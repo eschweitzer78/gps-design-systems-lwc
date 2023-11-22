@@ -1,6 +1,6 @@
 <template lwc:render-mode="light">
   <div class={computedClassName}>
-    <div if:true={image} class="nsw-content-block__image">
+    <div lwc:if={image} class="nsw-content-block__image">
       <img src={image} alt={imageAlt} class="nsw-content-block__image" />
     </div>
 
@@ -10,7 +10,7 @@
       </div>
     -->
 
-    <div if:true={icon} class="nsw-content-block__image">
+    <div lwc:if={icon} class="nsw-content-block__image">
       <span
         class="material-icons nsw-material-icons nsw-material-icons--36 nsw-content-block__icon"
         >{icon}</span
@@ -18,19 +18,19 @@
     </div>
 
     <div class="nsw-content-block__content">
-      <div if:true={headline} class="nsw-content-block__title">{headline}</div>
+      <div lwc:if={headline} class="nsw-content-block__title">{headline}</div>
 
       <p class="nsw-content-block__copy">
         <slot> </slot>
       </p>
 
       <ul class="nsw-content-block__list">
-        <template if:true={links} for:each={links} for:item="link">
+        <template lwc:if={links} for:each={links} for:item="link">
           <li key={link.index}><a href={link.url}>{link.text}</a></li>
         </template>
       </ul>
 
-      <div if:true={mainLink} class="nsw-content-block__link">
+      <div lwc:if={mainLink} class="nsw-content-block__link">
         <a href={mainLink.url}>{mainLink.text}</a>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <template if:true={jsonDef.bAccordionActive}>
+  <template lwc:if={jsonDef.bAccordionActive}>
     <h2 class="nsw-h2 slds-m-top_medium os-step-label">{mergedLabel}</h2>
     <!-- slds-p-horizontal_medium  -->
 
@@ -17,20 +17,20 @@
       <div class="form-actions">
         <!-- add replacement buttons here -->
         <input
-          if:true={showNext}
+          lwc:if={showNext}
           class="nsw-button nsw-button--dark"
           type="button"
           value={mergedNextLabel}
           onclick={handleNext}
         />
         <input
-          if:true={showSave}
+          lwc:if={showSave}
           class="nsw-button nsw-button--dark-outline"
           type="button"
           value={mergedSaveLabel}
           onclick={handleSave}
         />
-        <div if:true={showPrev} style="display: flex">
+        <div lwc:if={showPrev} style="display: flex">
           <div style="margin-top: 2rem; margin-bottom: 1.5rem">
             <button class="back-button" type="button" onclick={handleBack}>
               <svg

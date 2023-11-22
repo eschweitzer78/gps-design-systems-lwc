@@ -15,51 +15,51 @@
         </a>
       </li>
 
-      <li if:true={showFirstPage}>
+      <li lwc:if={showFirstPage}>
         <a href="#first-page" onclick={handleFirstPageClick}>
           <span class="sr-only">{srOnlyPre}</span>
           {firstPage}
-          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+          <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 
-      <li if:true={showPrevEllipsis}>
+      <li lwc:if={showPrevEllipsis}>
         <span>…</span>
       </li>
 
-      <li if:true={showPrevPage}>
+      <li lwc:if={showPrevPage}>
         <a href="#prev-page" onclick={handlePreviousPageClick}>
-          <span if:true={srOnlyPre} class="sr-only">{srOnlyPre}</span>
+          <span lwc:if={srOnlyPre} class="sr-only">{srOnlyPre}</span>
           {prevPage}
-          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+          <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 
-      <li if:true={showActivePage}>
+      <li lwc:if={showActivePage}>
         <a class="active">
           <span class="sr-only">{srOnlyPre}</span>
           {activePage}
-          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+          <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 
-      <li if:true={showNextPage}>
+      <li lwc:if={showNextPage}>
         <a href="#next-page" onclick={handleNextPageClick}>
-          <span if:true={srOnlyPre} class="sr-only">{srOnlyPre}</span>
+          <span lwc:if={srOnlyPre} class="sr-only">{srOnlyPre}</span>
           {nextPage}
-          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+          <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 
-      <li if:true={showNextEllipsis}>
+      <li lwc:if={showNextEllipsis}>
         <span>…</span>
       </li>
 
-      <li if:true={showLastPage}>
+      <li lwc:if={showLastPage}>
         <a href="#last-page" onclick={handleLastPageClick}>
-          <span if:true={srOnlyPre} class="sr-only">{srOnlyPre}</span>
+          <span lwc:if={srOnlyPre} class="sr-only">{srOnlyPre}</span>
           {lastPage}
-          <span if:true={srOnlyPost} class="sr-only">{srOnlyPost}</span>
+          <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 

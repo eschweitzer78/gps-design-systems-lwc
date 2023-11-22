@@ -1,6 +1,9 @@
 <template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-results-bar
-    if:false={_sfGpsErrors}
+    lwc:else
     from={from}
     to={to}
     total={total}
@@ -10,7 +13,4 @@
     onchange={handleChange}
   >
   </c-sf-gps-ds-au-nsw-results-bar>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

@@ -3,7 +3,7 @@
     <ul class="nsw-link-list__list">
       <template for:each={links} for:item="item">
         <li key={item.index} class="nsw-link-list__item">
-          <a if:true={item.url} href={item.url}>
+          <a lwc:if={item.url} href={item.url}>
             <span>{item.text}</span>
             <span
               class="material-icons nsw-material-icons nsw-link-list__icon"
@@ -13,7 +13,7 @@
             </span>
           </a>
 
-          <template if:false={item.url}> {item.text} </template>
+          <template lwc:else>{item.text}</template>
         </li>
       </template>
     </ul>

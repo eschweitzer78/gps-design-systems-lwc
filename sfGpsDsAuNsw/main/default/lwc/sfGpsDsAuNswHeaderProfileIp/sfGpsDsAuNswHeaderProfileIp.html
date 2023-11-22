@@ -1,5 +1,8 @@
 <template>
-  <template if:false={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
     <c-sf-gps-ds-au-nsw-header-profile
       is-guest={isGuest}
       user-alias={userAlias}
@@ -12,7 +15,4 @@
 
     <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
   </template>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

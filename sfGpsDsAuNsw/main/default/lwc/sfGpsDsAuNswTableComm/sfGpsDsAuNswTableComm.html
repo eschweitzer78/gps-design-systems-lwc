@@ -7,7 +7,7 @@
 
     <template lwc:else>
       <c-sf-gps-ds-au-nsw-results-bar
-        if:true={_showResultsBar}
+        lwc:if={_showResultsBar}
         name="sort"
         from={_from}
         to={_to}
@@ -31,7 +31,7 @@
       </c-sf-gps-ds-au-nsw-table>
 
       <c-sf-gps-ds-au-nsw-pagination
-        if:true={pageSize}
+        lwc:if={pageSize}
         active-page={_activePage}
         last-page={_lastPage}
         onpagechange={handlePageChange}

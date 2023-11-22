@@ -1,6 +1,9 @@
 <template>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-header
-    if:false={_sfGpsErrors}
+    lwc:else
     masterbrand={masterbrand}
     masterbrand-alt={masterbrandAlt}
     sr-masterbrand-label={srMasterbrandLabel}
@@ -31,7 +34,4 @@
     >
     </c-sf-gps-ds-au-nsw-header-profile-ip>
   </c-sf-gps-ds-au-nsw-header>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

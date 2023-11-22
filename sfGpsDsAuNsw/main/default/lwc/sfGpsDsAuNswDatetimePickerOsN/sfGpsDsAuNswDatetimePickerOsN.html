@@ -1,12 +1,12 @@
 <template>
   <div class="nsw-form__group">
-    <label if:true={label} class={computedLabelClassName}>
+    <label lwc:if={label} class={computedLabelClassName}>
       {label}
-      <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+      <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
     </label>
     <slot name="label"> </slot>
 
-    <span if:true={fieldLevelHelp} id="helper" class="nsw-form__helper">
+    <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
       {fieldLevelHelp}
     </span>
 

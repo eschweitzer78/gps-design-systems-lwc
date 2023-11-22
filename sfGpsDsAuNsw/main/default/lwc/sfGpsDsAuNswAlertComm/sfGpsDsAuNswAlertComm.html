@@ -1,15 +1,15 @@
 <template>
-  <template if:false={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
     <c-sf-gps-ds-au-nsw-alert
       title={title}
       class-name={className}
       as={as}
       compact={_compact}
     >
-      <span class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
+      <span lwc:ref="markdown" lwc:dom="manual"> </span>
     </c-sf-gps-ds-au-nsw-alert>
   </template>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

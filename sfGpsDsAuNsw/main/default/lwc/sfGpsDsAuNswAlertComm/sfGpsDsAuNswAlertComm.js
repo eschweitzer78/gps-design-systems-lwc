@@ -59,19 +59,15 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    let element = this.template.querySelector(".sf-gps-ds-markdown");
+    /*
+     * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
+     * as the react component would have one for the title in the same scope,
+     * but here we have the title markup in a different css scope
+     */
 
-    if (element) {
-      /*
-       * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
-       * as the react component would have one for the title in the same scope,
-       * but here we have the title markup in a different css scope
-       */
-
-      replaceInnerHtml(
-        element,
-        (this.title && !this.compact ? `<span></span>` : "") + this._contentHtml
-      );
-    }
+    replaceInnerHtml(
+      this.refs.markdown,
+      (this.title && !this.compact ? `<span></span>` : "") + this._contentHtml
+    );
   }
 }

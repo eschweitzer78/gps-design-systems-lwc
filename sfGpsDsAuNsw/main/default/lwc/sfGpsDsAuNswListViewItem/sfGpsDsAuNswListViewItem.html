@@ -14,21 +14,21 @@
       <template for:each={_filteredRecord} for:item="column">
         <span
           key={column.fieldApiName}
-          if:true={column.value}
+          lwc:if={column.value}
           class="list-view__field"
         >
           <!-- BOOLEAN -->
-          <span if:true={column.isBoolean}
+          <span lwc:if={column.isBoolean}
             >{column.label}:{space}
             <i
-              if:true={column.value}
+              lwc:if={column.value}
               class="material-icons nsw-material-icons"
               aria-hidden="true"
             >
               check_box
             </i>
             <i
-              if:true={column.value}
+              lwc:if={column.value}
               class="material-icons nsw-material-icons"
               aria-hidden="true"
             >
@@ -37,56 +37,56 @@
           </span>
 
           <!-- CURRENCY -->
-          <span if:true={column.isCurrency}
+          <span lwc:elseif={column.isCurrency}
             >{column.label}: {column.displayValue}</span
           >
 
           <!-- DATE -->
-          <span if:true={column.isDate}
+          <span lwc:elseif={column.isDate}
             >{column.label}: {column.displayValue}</span
           >
 
           <!-- DATE -->
-          <span if:true={column.isDateTime}
+          <span lwc:elseif={column.isDateTime}
             >{column.label}: {column.displayValue}</span
           >
 
           <!-- EMAIL -->
-          <span if:true={column.isEmail}
+          <span lwc:elseif={column.isEmail}
             >{column.label}:{space}
             <a href={column.link}>{column.displayValue}</a></span
           >
 
           <!-- NUMBER -->
-          <span if:true={column.isNumber}
+          <span lwc:elseif={column.isNumber}
             >{column.label}: {column.displayValue}</span
           >
 
           <!-- PERCENT -->
-          <span if:true={column.isPercent}
+          <span lwc:elseif={column.isPercent}
             >{column.label}: {column.displayValue}</span
           >
 
           <!-- PHONE -->
-          <span if:true={column.isPhone}
+          <span lwc:elseif={column.isPhone}
             >{column.label}:{space}
             <a href={column.link}>{column.displayValue}</a></span
           >
 
           <!-- PICKLIST -->
-          <span if:true={column.isPicklist}
+          <span lwc:elseif={column.isPicklist}
             >{column.label}: {column.displayValue}</span
           >
 
           <!-- REFERENCE -->
-          <span if:true={column.isReference}
+          <span lwc:elseif={column.isReference}
             >{column.label}: {column.value}</span
           >
 
           <!-- STRING -->
-          <span if:true={column.isString}
+          <span lwc:elseif={column.isString}
             >{column.label}:{space}
-            <template if:true={column.link}>
+            <template lwc:if={column.link}>
               <a
                 href={column.link}
                 data-object={column.relationshipObjectApiName}
@@ -95,21 +95,21 @@
                 >{column.value}</a
               >
             </template>
-            <template if:false={column.link}>{column.value} </template>
+            <template lwc:else>{column.value} </template>
           </span>
 
           <!-- TEXTAREA -->
-          <span if:true={column.isTextArea}
+          <span lwc:elseif={column.isTextArea}
             >{column.label}: {column.value}</span
           >
 
           <!-- TIME -->
-          <span if:true={column.isTime}
+          <span lwc:elseif={column.isTime}
             >{column.label}: {column.displayValue}</span
           >
 
           <!-- URL -->
-          <span if:true={column.isURL}
+          <span lwc:elseif={column.isURL}
             >{column.label}:{space}
             <a href={column.link}>{column.value}</a>
           </span>
