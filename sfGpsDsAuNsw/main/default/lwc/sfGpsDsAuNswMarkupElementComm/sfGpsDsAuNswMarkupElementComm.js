@@ -8,7 +8,7 @@
 import { LightningElement, api } from "lwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class sfGpsDsAuNswHtmlPassThrough extends LightningElement {
+export default class sfGpsDsAuNswMarkupElementComm extends LightningElement {
   @api markup;
   @api className;
 
