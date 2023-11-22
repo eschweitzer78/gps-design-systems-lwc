@@ -30,7 +30,7 @@
     data-omni-input
     onblur={handleBlur}
   >
-    <template if:true={_propSetMap.repeat}>
+    <template lwc:if={_propSetMap.repeat}>
       <span
         slot="label"
         style="bottom: 7px; right: -11px"
@@ -38,7 +38,7 @@
         role="group"
       >
         <button
-          if:true={canRepeat}
+          lwc:if={canRepeat}
           class={_styleClasses.repeatAdd}
           onclick={handleAdd}
         >
@@ -51,7 +51,7 @@
           </omnistudio-icon>
         </button>
         <button
-          if:true={canRemove}
+          lwc:if={canRemove}
           class={_styleClasses.repeatRemove}
           onclick={handleRemove}
         >
@@ -67,7 +67,7 @@
     </template>
   </c-sf-gps-ds-au-nsw-input-os-n>
   <c-sf-gps-ds-au-nsw-masked-input-os-n
-    if:true={_isMasked}
+    lwc:if={_isMasked}
     type={_inputType}
     label={_propSetMap.label}
     required={_propSetMap.required}
@@ -97,7 +97,7 @@
     data-omni-input
     onblur={handleBlur}
   >
-    <template if:true={_propSetMap.repeat}>
+    <template lwc:if={_propSetMap.repeat}>
       <span
         slot="label"
         style="bottom: 7px; right: -11px"
@@ -105,7 +105,7 @@
         role="group"
       >
         <button
-          if:true={canRepeat}
+          lwc:if={canRepeat}
           class={_styleClasses.repeatAdd}
           onclick={handleAdd}
         >
@@ -118,7 +118,7 @@
           </omnistudio-icon>
         </button>
         <button
-          if:true={canRemove}
+          lwc:if={canRemove}
           class={_styleClasses.repeatRemove}
           onclick={handleRemove}
         >
