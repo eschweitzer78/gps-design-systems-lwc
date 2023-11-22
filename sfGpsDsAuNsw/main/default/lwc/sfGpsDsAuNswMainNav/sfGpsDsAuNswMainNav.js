@@ -121,11 +121,26 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     });
   }
 
+  close() {
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+    this.isActive = false;
+
+    // eslint-disable-next-line guard-for-in
+    for (let prop in this._mapItems) {
+      let item = this._mapItems[prop];
+      item.isActive = false;
+      item.className = "";
+      item.subNavClassName = "nsw-main-nav__sub-nav";
+    }
+
+    this._navItems = [...this._navItems];
+  }
+
   handleClickNavigate(event) {
     event.preventDefault();
 
-    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-    //this.isActive = true;
+    this.close();
+
     const closeMenuEvent = new CustomEvent("closemenu");
     this.dispatchEvent(closeMenuEvent);
 
@@ -169,18 +184,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   }
 
   handleMainCloseClick() {
-    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-    this.isActive = false;
-
-    // eslint-disable-next-line guard-for-in
-    for (let prop in this._mapItems) {
-      let item = this._mapItems[prop];
-      item.isActive = false;
-      item.className = "";
-      item.subNavClassName = "nsw-main-nav__sub-nav";
-    }
-
-    this._navItems = [...this._navItems];
+    this.close();
 
     const closeMenuEvent = new CustomEvent("closemenu");
     this.dispatchEvent(closeMenuEvent);

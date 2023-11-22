@@ -65,7 +65,7 @@ export default class SfGpsDsAuNswUpperFooter extends LightningElement {
     event.stopPropagation();
 
     this.dispatchEvent(
-      new CustomEvent("click", {
+      new CustomEvent("navclick", {
         detail: event.currentTarget.dataset.ndx
       })
     );

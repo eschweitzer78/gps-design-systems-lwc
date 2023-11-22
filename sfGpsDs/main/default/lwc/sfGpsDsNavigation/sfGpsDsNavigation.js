@@ -1,10 +1,36 @@
 import { api } from "lwc";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
+import { safeEqualsIgnoreCase } from "c/sfGpsDsHelpers";
+import getNavigationItems from "@salesforce/apex/SfGpsDsNavigationORA.getNavigationItemsV2";
 
 import cBasePath from "@salesforce/community/basePath";
 import { NavigationMixin } from "lightning/navigation";
 
+const MODE_IP = "Integration Procedure";
+const MODE_NAV = "Experience Cloud Navigation";
+
 export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
+  /* api: mode */
+
+  _mode = MODE_IP;
+
+  @api
+  get mode() {
+    return this._mode;
+  }
+
+  set mode(value) {
+    this._mode = value;
+    if (safeEqualsIgnoreCase(value, MODE_IP)) {
+      super.ipActive = true;
+    } else {
+      super.ipActive = false;
+      this.updateExperienceCloudNavigation();
+    }
+  }
+
+  /* api: ipName */
+
   @api
   get ipName() {
     return super.ipName;
@@ -13,6 +39,8 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
   set ipName(value) {
     super.ipName = value;
   }
+
+  /* api: inputJSON */
 
   @api
   get inputJSON() {
@@ -23,6 +51,8 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
     super.inputJSON = value;
   }
 
+  /* api: optionsJSON */
+
   @api
   get optionsJSON() {
     return super.optionsJSON;
@@ -30,6 +60,58 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
 
   set optionsJSON(value) {
     super.optionsJSON = value;
+  }
+
+  /* api: navigationDevName */
+
+  _navigationDevName;
+
+  @api
+  get navigationDevName() {
+    return this._navigationDevName;
+  }
+
+  set navigationDevName(value) {
+    this._navigationDevName = value;
+    this.updateExperienceCloudNavigation();
+  }
+
+  updateExperienceCloudNavigation() {
+    if (!safeEqualsIgnoreCase(this._mode, MODE_NAV)) return;
+
+    if (!this._navigationDevName) {
+      this._items = [];
+      return;
+    }
+
+    this._nLoading++;
+
+    getNavigationItems({
+      communityId: this.communityId,
+      developerName: this._navigationDevName,
+      communityPreview: this.isPreview
+    })
+      .then((data) => {
+        this._nLoading--;
+
+        if (data.errorMessage) {
+          this.addError(
+            "EN-EM",
+            `Issue getting the navigation: ${data.errorMessage}`
+          );
+          console.log("EN-EM", data.errorMessage);
+          this._items = [];
+        } else {
+          this._items = this.mapIpData(data.items);
+        }
+      })
+      .catch((error) => {
+        this._nLoading--;
+
+        this.addError("EN-EX", "Issue getting the navigation.");
+        console.log("EN-EX", error);
+        this._items = [];
+      });
   }
 
   _map = {};

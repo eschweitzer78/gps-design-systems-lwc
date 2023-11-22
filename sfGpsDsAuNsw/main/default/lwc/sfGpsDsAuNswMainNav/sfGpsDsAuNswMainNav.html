@@ -18,25 +18,7 @@
     <ul class="nsw-main-nav__list">
       <template for:each={_navItems} for:item="navItem">
         <li key={navItem.index}>
-          <a
-            if:false={navItem.subNav}
-            href={navItem.url}
-            data-ndx={navItem.index}
-            onclick={handleClick}
-          >
-            <!-- navigate -->
-            <span>{navItem.text}</span>
-            <template if:true={navItem.subNav}>
-              <span
-                class="material-icons nsw-material-icons nsw-main-nav__link-icon"
-                aria-hidden="true"
-              >
-                keyboard_arrow_right
-              </span>
-            </template>
-          </a>
-
-          <template if:true={navItem.subNav}>
+          <template lwc:if={navItem.subNav}>
             <a
               href={navItem.url}
               class={navItem.className}
@@ -48,14 +30,12 @@
             >
               <!-- expand -->
               <span>{navItem.text}</span>
-              <template if:true={navItem.subNav}>
-                <span
-                  class="material-icons nsw-material-icons nsw-main-nav__link-icon"
-                  aria-hidden="true"
-                >
-                  keyboard_arrow_right
-                </span>
-              </template>
+              <span
+                class="material-icons nsw-material-icons nsw-main-nav__link-icon"
+                aria-hidden="true"
+              >
+                keyboard_arrow_right
+              </span>
             </a>
 
             <!-- SubNav TODO change id -->
@@ -104,7 +84,7 @@
 
               <div class="nsw-main-nav__title">
                 <a
-                  if:true={navItem.url}
+                  lwc:if={navItem.url}
                   href={navItem.url}
                   data-ndx={navItem.index}
                   onclick={handleClickNavigate}
@@ -119,7 +99,7 @@
                   </span>
                 </a>
 
-                <span if:false={navItem.url}>{navItem.text}</span>
+                <span lwc:else>{navItem.text}</span>
               </div>
               <div class="nsw-main-nav__description">{navItem.description}</div>
               <!-- End SubNavHeader -->
@@ -139,7 +119,7 @@
                       <span> {subNavItem.text} </span>
 
                       <span
-                        if:true={subNavItem.subNav}
+                        lwc:if={subNavItem.subNav}
                         class="material-icons nsw-material-icons nsw-main-nav__link-icon"
                         aria-hidden="true"
                       >
@@ -147,7 +127,7 @@
                       </span>
                     </a>
 
-                    <template if:true={subNavItem.subNav}>
+                    <template lwc:if={subNavItem.subNav}>
                       <div
                         class={subNavItem.subNavClassName}
                         id={subNavItem.id}
@@ -227,7 +207,7 @@
                                 <!-- navigate -->
                                 <span>{subSubNavItem.text}</span>
                                 <span
-                                  if:true={subSubNavItem.subNav}
+                                  lwc:if={subSubNavItem.subNav}
                                   class="material-icons nsw-material-icons nsw-main-nav__link-icon"
                                   aria-hidden="true"
                                 >
@@ -239,12 +219,24 @@
                         </ul>
                       </div>
                     </template>
+                    <!-- lwc:if={subNavItem.subNav} -->
                   </li>
                 </template>
               </ul>
               <!-- End SubNav -->
             </div>
           </template>
+          <!-- lwc:if={navItem.subNav} -->
+
+          <a
+            lwc:else
+            href={navItem.url}
+            data-ndx={navItem.index}
+            onclick={handleClick}
+          >
+            <!-- navigate -->
+            <span>{navItem.text}</span>
+          </a>
         </li>
       </template>
     </ul>

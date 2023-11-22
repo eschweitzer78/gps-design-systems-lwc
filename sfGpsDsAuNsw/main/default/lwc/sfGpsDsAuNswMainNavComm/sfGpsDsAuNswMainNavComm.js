@@ -10,6 +10,47 @@ import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 
 export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
   @api
+  get mode() {
+    return super.mode;
+  }
+
+  set mode(value) {
+    super.mode = value;
+
+    if (value === "Demo") {
+      let cbp = this.communityBasePath;
+
+      this._items = this.mapIpData([
+        {
+          actionType: "InternalLink",
+          actionValue: cbp + "/get-involved",
+          imageUrl: null,
+          label: "Get involved",
+          subMenu: [],
+          target: "CurrentWindow"
+        },
+        {
+          actionType: "InternalLink",
+          actionValue: cbp + "/stories",
+          imageUrl: null,
+          label: "Stories",
+          subMenu: [],
+          target: "CurrentWindow"
+        }
+      ]);
+    }
+  }
+
+  @api
+  get navigationDevName() {
+    return super.navigationDevName;
+  }
+
+  set navigationDevName(value) {
+    super.navigationDevName = value;
+  }
+
+  @api
   get ipName() {
     return super.ipName;
   }

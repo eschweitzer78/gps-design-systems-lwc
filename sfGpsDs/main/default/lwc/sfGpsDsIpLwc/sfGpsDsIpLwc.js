@@ -8,15 +8,32 @@
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { api, track } from "lwc";
 
-/* IMPORTANT NOTE: if you modify this class, you have to update sfGpsDsLwcOsN
+/* IMPORTANT NOTE: if you modify this class, you must update sfGpsDsLwcOsN
    as it's not automatically derived */
 
 import communityId from "@salesforce/community/Id";
 import cBasePath from "@salesforce/community/basePath";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
 import runIntegrationProcedure from "@salesforce/apex/sfGpsDsIntegrationProcController.runIntegrationProcedure";
 
 export default class SfGpsDsIpLwc extends SfGpsDsLwc {
+  _ipActive = true;
+
+  @api
+  get ipActive() {
+    return this._ipActive;
+  }
+
+  set ipActive(value) {
+    this._ipActive = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+
+    this.refreshContent();
+  }
+
   _ipName;
 
   @api
@@ -28,15 +45,6 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
     this._ipName = value;
     this.refreshContent();
   }
-
-  @track _items = [];
-
-  _nLoading = 0;
-  get _isLoading() {
-    return this._nLoading > 0;
-  }
-
-  @track _didLoadOnce;
 
   _input;
   _originalInputJSON;
@@ -78,8 +86,21 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
     }
   }
 
+  @track _items = [];
+
+  _nLoading = 0;
+  get _isLoading() {
+    return this._nLoading > 0;
+  }
+
+  @track _didLoadOnce;
   refreshContent() {
-    if (this._ipName == null || this._input == null || this._options == null) {
+    if (
+      !this._ipActive ||
+      this._ipName == null ||
+      this._input == null ||
+      this._options == null
+    ) {
       /* 2023-06-01 ESC: do not bother running if not all of ipName, input and options aren't set */
       return;
     }
@@ -90,7 +111,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       ipName: this._ipName,
       input: {
         ...this._input,
-        communityId: communityId,
+        communityId: this.communityId,
         communityPreview: this.isPreview
       },
       options: this._options
@@ -138,6 +159,10 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
     return data;
   }
 
+  get communityId() {
+    return communityId;
+  }
+
   get communityBasePath() {
     return cBasePath;
   }
@@ -149,11 +174,11 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
   connectedCallback() {
     super.connectedCallback();
 
-    if (!this._ipName) {
+    if (this._ipActive && !this._ipName) {
       this.addError("IP-NV", "Integration procedure name is required.");
     }
 
-    if (!this._input) {
+    if (this._ipActive && !this._input) {
       this.addError("IJ-NV", "Input is required.");
     }
   }

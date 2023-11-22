@@ -1,5 +1,8 @@
 <design:component label="NSW DS Header and Main Nav (Aura)">
-  <design:attribute name="ipName" label="Nav integration procedure name" description="Name of the Integration procedure mapping content to this nav." />
+  <design:attribute name="mode" label="Mode" description="Indicates how this nav operates." datasource="Demo,Experience Cloud Navigation,Integration Procedure" default="Integration Procedure" />
+  <design:attribute name="navigationDevName" label="Navigation developer name" description="Set the target nav when mode is set to Experience Cloud Navigation." />
+
+  <design:attribute name="ipName" label="Nav integration procedure name" description="Name of the Integration procedure mapping content to this nav when mode is set to Integration Procedure." />
   <design:attribute name="inputJSON" label="Nav input JSON" description="JSON formatted input parameters for the Integration procedure." />
   <design:attribute name="optionsJSON" label="Nav options JSON" description="JSON formatted options for the Integration procedure."/>
   <design:attribute name="profileIpName" label="Profile integration procedure name" description="Name of the Integration procedure mapping content to this nav. Leave empty for if no profile menu is required."/>

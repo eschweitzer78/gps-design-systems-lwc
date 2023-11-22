@@ -10,6 +10,9 @@ import SfGpsDsIp from "c/sfGpsDsIpLwc";
 import { uniqueId } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIp {
+  @api mode = "Integration Procedure";
+  @api navigationDevName;
+
   @api ipName;
   @api inputJSON;
   @api optionsJSON;

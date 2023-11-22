@@ -1,9 +1,9 @@
 <template lwc:render-mode="light">
   <div class={computedClassName}>
     <div class="nsw-container">
-      <p if:true={statement}>{statement}</p>
+      <p lwc:if={statement}>{statement}</p>
 
-      <template if:true={items}>
+      <template lwc:if={items}>
         <hr />
         <nav
           role="navigation"
