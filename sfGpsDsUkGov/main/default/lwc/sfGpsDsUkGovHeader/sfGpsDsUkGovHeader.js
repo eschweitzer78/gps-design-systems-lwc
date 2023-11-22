@@ -86,9 +86,11 @@ export default class SfGpsDsUkGovHeader extends LightningElement {
 
   mapItems(parentIndex, parentLevel, map, items) {
     let index = 0;
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
 
     return items.map((item) => {
-      let isActive = item.url === window.location.pathname;
+      let isActive = item.url === pathname;
 
       let result = {
         ...item,

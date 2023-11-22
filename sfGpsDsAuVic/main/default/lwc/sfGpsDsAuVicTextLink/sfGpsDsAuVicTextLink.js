@@ -61,7 +61,7 @@ export default class SfGpsDsAuVicTextLink extends SfGpsDsLwc {
   isExternalUrl(url) {
     const tmp = document.createElement("a");
     tmp.href = url;
-    return tmp.host !== window.location.host;
+    return tmp.host !== new URL(document.URL).host;
   }
 
   get computedClassName() {

@@ -2,7 +2,7 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 export default class SfGpsDsAuVicShareThisComm extends SfGpsDsLwc {
-  _urlOriginal = window.location.href;
+  _urlOriginal = document.URL; // works with LWS/LWR
   _url = this._urlOriginal;
 
   @api get url() {
@@ -11,7 +11,7 @@ export default class SfGpsDsAuVicShareThisComm extends SfGpsDsLwc {
 
   set url(value) {
     this._urlOriginal = value;
-    this._url = value || window.location.href;
+    this._url = value || document.URL; // works with LWS/LWR
   }
 
   @api title;
