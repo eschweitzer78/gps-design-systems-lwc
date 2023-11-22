@@ -1,5 +1,8 @@
 <template>
-  <div if:false={_sfGpsErrors} class="servicensw-embed">
+  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  </c-sf-gps-ds-configuration-error>
+
+  <div lwc:else class="servicensw-embed">
     <div class="global-header">
       <div class="global-header__top">
         <div class="container">
@@ -81,7 +84,4 @@
       </div>
     </div>
   </div>
-
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
-  </c-sf-gps-ds-configuration-error>
 </template>

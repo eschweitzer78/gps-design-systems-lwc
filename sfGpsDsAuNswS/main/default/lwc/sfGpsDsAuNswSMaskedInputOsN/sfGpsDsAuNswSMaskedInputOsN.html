@@ -1,16 +1,16 @@
 <template>
   <template if:false={isCustomLwc}>
     <div class="form__item">
-      <template if:true={labelVisible}>
-        <legend if:true={useLegend} class={computedLegendClass} for={inputId}>
+      <template lwc:if={labelVisible}>
+        <legend lwc:if={useLegend} class={computedLegendClass} for={inputId}>
           <span
             >{label}
-            <span if:true={required} class="visually-hidden">
+            <span lwc:if={required} class="visually-hidden">
               ({requiredLabel})</span
             >
           </span>
 
-          <span if:true={fieldLevelHelp} id={helperId} class="form__help">
+          <span lwc:if={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
         </legend>
@@ -18,24 +18,24 @@
         <template if:false={useLegend}>
           <label class={computedLabelClassName} for={inputId}>
             {label}
-            <span if:true={required} class="visually-hidden">
+            <span lwc:if={required} class="visually-hidden">
               ({requiredLabel})</span
             >
           </label>
 
           <slot name="label"> </slot>
 
-          <span if:true={fieldLevelHelp} id={helperId} class="form__help">
+          <span lwc:if={fieldLevelHelp} id={helperId} class="form__help">
             {fieldLevelHelp}
           </span>
         </template>
       </template>
 
       <!-- formula -->
-      <div if:true={_isFormula}>
+      <div lwc:if={_isFormula}>
         <label class={computedLabelClassName} for={inputId}>
           {label}
-          <span if:true={required} class="visually-hidden">
+          <span lwc:if={required} class="visually-hidden">
             ({requiredLabel})</span
           >
         </label>
@@ -52,11 +52,11 @@
       </div>
 
       <div if:false={static} class={pretextClass}>
-        <span if:true={pretext}> {pretext} </span>
+        <span lwc:if={pretext}> {pretext} </span>
 
-        <template if:true={isCurrencySFlocale}>
+        <template lwc:if={isCurrencySFlocale}>
           <input
-            if:true={isInput}
+            lwc:if={isInput}
             class={computedInputClassName}
             id={inputId}
             tabindex={tabIndex}
@@ -88,7 +88,7 @@
 
         <template if:false={isCurrencySFlocale}>
           <input
-            if:true={isNumber}
+            lwc:if={isNumber}
             class="hiddenNumber slds-hide"
             required={required}
             min={min}
@@ -99,7 +99,7 @@
           />
 
           <input
-            if:true={isInput}
+            lwc:if={isInput}
             class={computedInputInputClassName}
             id={inputId}
             tabindex={tabIndex}
@@ -130,12 +130,12 @@
           />
         </template>
 
-        <span if:true={posttext} class="sfgpsds-form-element__addon">
+        <span lwc:if={posttext} class="sfgpsds-form-element__addon">
           {posttext}
         </span>
 
         <p
-          if:true={sfGpsDsIsError}
+          lwc:if={sfGpsDsIsError}
           id="errorMessageBlock"
           class="form__error"
           aria-live="assertive"
@@ -146,11 +146,11 @@
       </div>
 
       <!-- shifted testing static one level up to avoid the empty div -->
-      <div if:true={static} class="slds-grid">
+      <div lwc:if={static} class="slds-grid">
         <div class="slds-form-element__static">{maskedValue}</div>
       </div>
 
-      <span if:true={inlineHelp} class="slds-form-element__static">
+      <span lwc:if={inlineHelp} class="slds-form-element__static">
         {inlineHelp}
       </span>
     </div>

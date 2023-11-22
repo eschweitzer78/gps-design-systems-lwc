@@ -4,19 +4,19 @@
       <div class="breadcrumb" role="navigation" aria-label={label}>
         <ol>
           <template for:each={_itemsArray} for:item="item">
-            <li if:true={item.url} key={item.index} class={item.className}>
+            <li lwc:if={item.url} key={item.index} class={item.className}>
               <a href={item.url}>{item.text}</a>
             </li>
-            <li if:false={item.url} key={item.index} class={item.className}>
+            <li lwc:else key={item.index} class={item.className}>
               {item.text}
             </li>
           </template>
         </ol>
       </div>
 
-      <template if:true={title}>
+      <template lwc:if={title}>
         <h1 tabindex="-1">{title}</h1>
-        <p if:true={legend}>{legend}</p>
+        <p lwc:if={legend}>{legend}</p>
       </template>
     </div>
   </div>

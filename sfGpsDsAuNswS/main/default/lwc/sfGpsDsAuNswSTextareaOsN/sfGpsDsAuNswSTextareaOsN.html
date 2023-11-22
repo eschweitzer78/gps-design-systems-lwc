@@ -1,16 +1,16 @@
 <template>
   <div class="form__item">
-    <div if:true={labelVisible} data-label="true">
+    <div lwc:if={labelVisible} data-label="true">
       <label class={computedLabelClassName} for="textareaId">
         {label}
-        <span if:true={required} class="visually-hidden">
+        <span lwc:if={required} class="visually-hidden">
           ({requiredLabel})</span
         >
       </label>
       <slot name="label"></slot>
     </div>
 
-    <span if:true={fieldLevelHelp} id="helper" class="form__help"
+    <span lwc:if={fieldLevelHelp} id="helper" class="form__help"
       >{fieldLevelHelp}
     </span>
 
@@ -41,7 +41,7 @@
     </textarea>
 
     <span
-      if:true={sfGpsDsIsError}
+      lwc:if={sfGpsDsIsError}
       id="errorMessageBlock"
       class="form__error"
       aria-live="assertive"

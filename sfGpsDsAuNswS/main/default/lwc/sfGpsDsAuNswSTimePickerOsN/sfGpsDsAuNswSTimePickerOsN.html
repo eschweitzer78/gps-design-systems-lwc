@@ -1,15 +1,15 @@
 <template>
   <div class="form__time">
     <div class={computedFormItemClassName}>
-      <label if:true={label} class={computedLabelClassName} for="time-input">
+      <label lwc:if={label} class={computedLabelClassName} for="time-input">
         {label}
-        <span if:true={required} class="visually-hidden">
+        <span lwc:if={required} class="visually-hidden">
           ({requiredLabel})</span
         >
       </label>
       <slot name="label"> </slot>
 
-      <span if:true={fieldLevelHelp} id="helper" class="form__help">
+      <span lwc:if={fieldLevelHelp} id="helper" class="form__help">
         {fieldLevelHelp}
       </span>
 
@@ -85,7 +85,7 @@
                         class="sfgpsds-media__figure sfgpsds-listbox__option-icon"
                       >
                         <span
-                          if:true={item.selected}
+                          lwc:if={item.selected}
                           class="sfgpsds-icon-small"
                           aria-hidden="true"
                         >
@@ -121,7 +121,7 @@
     </div>
 
     <span
-      if:true={sfGpsDsIsError}
+      lwc:if={sfGpsDsIsError}
       class="form__error"
       aria-live="assertive"
       role="alert"

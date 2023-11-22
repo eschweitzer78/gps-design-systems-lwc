@@ -1,15 +1,15 @@
 <template>
   <div class={computedFormGroupClassName}>
     <div class={computedFormItemClassName}>
-      <label if:true={label} class={computedLabelClassName}>
+      <label lwc:if={label} class={computedLabelClassName}>
         {label}
-        <span if:true={required} class="visually-hidden">
+        <span lwc:if={required} class="visually-hidden">
           ({requiredLabel})</span
         >
       </label>
       <slot name="label"> </slot>
 
-      <span if:true={fieldLevelHelp} id="helper" class="form__help">
+      <span lwc:if={fieldLevelHelp} id="helper" class="form__help">
         {fieldLevelHelp}
       </span>
 

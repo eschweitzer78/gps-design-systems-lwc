@@ -41,7 +41,7 @@
     onblur={handleBlur}
     onchange={handleChange}
   >
-    <template if:true={_propSetMap.repeat}>
+    <template lwc:if={_propSetMap.repeat}>
       <span
         slot="label"
         style="bottom: 7px; right: 13px"
@@ -49,7 +49,7 @@
         role="group"
       >
         <button
-          if:true={canRepeat}
+          lwc:if={canRepeat}
           class={_styleClasses.repeatAdd}
           onclick={handleAdd}
         >
@@ -62,7 +62,7 @@
           </omnistudio-icon>
         </button>
         <button
-          if:true={canRemove}
+          lwc:if={canRemove}
           class={_styleClasses.repeatRemove}
           onclick={handleRemove}
         >
