@@ -211,7 +211,7 @@ jobs:
 
       # Deploy source to scratch org
       - name: "Push source to scratch org"
-        run: sfdx force source push --alias=scratch-org
+        run: sfdx project deploy start --target-org=scratch-org
 
       # Assign permissionset
       # - name: 'Assign permissionset to default user'
