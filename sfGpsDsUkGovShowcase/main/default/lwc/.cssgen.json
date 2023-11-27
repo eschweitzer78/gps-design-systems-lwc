@@ -22,5 +22,10 @@
   ],
   "sfGpsDsUkGovNotificationBanner/notification-banner": [
     { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovPanel/panel": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
+  "sfGpsDsUkGovSkipLink/skip-link": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
   ]
 }
