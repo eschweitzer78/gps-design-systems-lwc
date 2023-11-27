@@ -1,26 +1,13 @@
 <template lwc:render-mode="light">
-  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 
-  <div lwc:else class={computedClassName}>
-    <div lwc:if={showButtons} class="nsw-accordion__toggle">
-      <button
-        disabled={isFullyExpanded}
-        type="button"
-        onclick={handleExpandAll}
-      >
-        Expand all
-      </button>
-      <button
-        disabled={isFullyCollapsed}
-        type="button"
-        onclick={handleCollapseAll}
-      >
-        Collapse all
-      </button>
-    </div>
-
+  <c-sf-gps-ds-au-nsw-accordion-head-lwr lwc:else>
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item1title}
       lwc:if={item1title}
       index="0"
       header={item1title}
@@ -29,9 +16,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion1"></slot>
+      <slot name="Accordion1"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item2title}
       lwc:if={item2title}
       index="1"
       header={item2title}
@@ -40,9 +29,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion2"></slot>
+      <slot name="Accordion2"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item3title}
       lwc:if={item3title}
       index="2"
       header={item3title}
@@ -51,9 +42,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion3"></slot>
+      <slot name="Accordion3"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item4title}
       lwc:if={item4title}
       index="3"
       header={item4title}
@@ -62,9 +55,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion4"></slot>
+      <slot name="Accordion4"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item5title}
       lwc:if={item5title}
       index="4"
       header={item5title}
@@ -73,9 +68,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion5"></slot>
+      <slot name="Accordion5"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item6title}
       lwc:if={item6title}
       index="5"
       header={item6title}
@@ -84,9 +81,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion6"></slot>
+      <slot name="Accordion6"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item7title}
       lwc:if={item7title}
       index="6"
       header={item7title}
@@ -95,9 +94,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion7"></slot>
+      <slot name="Accordion7"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item8title}
       lwc:if={item8title}
       index="7"
       header={item8title}
@@ -106,9 +107,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion8"></slot>
+      <slot name="Accordion8"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item9title}
       lwc:if={item9title}
       index="8"
       header={item9title}
@@ -117,9 +120,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion9"></slot>
+      <slot name="Accordion9"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item10title}
       lwc:if={item10title}
       index="9"
       header={item10title}
@@ -128,9 +133,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion10"></slot>
+      <slot name="Accordion10"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item11title}
       lwc:if={item11title}
       index="10"
       header={item11title}
@@ -139,9 +146,11 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion11"></slot>
+      <slot name="Accordion11"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
 
     <c-sf-gps-ds-au-nsw-accordion
+      lwc:if={item12title}
       lwc:if={item12title}
       index="11"
       header={item12title}
@@ -150,6 +159,7 @@
       oncollapse={handleCollapse}
     >
       <slot name="Accordion12"></slot>
+      <slot name="Accordion12"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
-  </div>
+  </c-sf-gps-ds-au-nsw-accordion-head-lwr>
 </template>

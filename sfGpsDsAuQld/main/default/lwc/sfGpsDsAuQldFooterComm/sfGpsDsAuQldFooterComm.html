@@ -1,5 +1,5 @@
 <template>
-  <template if:false={_sfGpsErrors}>
+  <template if:false={_sfGpsDsErrors}>
     <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
     <c-sf-gps-ds-au-qld-footer
       if:false={_isLoading}
@@ -7,7 +7,7 @@
       number-columns={_numberColumns}
       copyright-mention={copyrightMention}
       class-name={className}
-      onclick={handleClick}
+      onnavclick={handleNavClick}
     >
       <div slot="col1" class="sf-gps-ds-content-1" lwc:dom="manual"></div>
       <div slot="col2" class="sf-gps-ds-content-2" lwc:dom="manual"></div>
@@ -16,6 +16,9 @@
   </template>
 
   <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 </template>

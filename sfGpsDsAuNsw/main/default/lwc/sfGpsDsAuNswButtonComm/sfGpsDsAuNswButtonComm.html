@@ -1,8 +1,11 @@
 <template>
-  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 
-  <template if:false={_sfGpsErrors}>
+  <template if:false={_sfGpsDsErrors}>
     <c-sf-gps-ds-au-nsw-button
       lwc:if={isButton}
       label={_link.text}

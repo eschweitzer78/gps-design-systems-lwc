@@ -26,6 +26,6 @@ package.xml
 
 # unfortunately OmniStudio assets cannot be packaged for now, so removing these from deployment
 **/omniIntegrationProcedure/**
-**/omniIntegrationProcedures/**
+# **/omniIntegrationProcedures/**
 **/omniDataTransform/**
-**/omniDataTransforms/**
+# **/omniDataTransforms/**

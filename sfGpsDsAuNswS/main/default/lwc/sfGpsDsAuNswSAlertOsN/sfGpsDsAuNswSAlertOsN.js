@@ -59,9 +59,7 @@ export default class SfGpsDsAuNswSAlertOsN extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    let element = this.template.querySelector("[data-sfgpsds-markdown]");
-
-    if (element) {
+    if (this._contentOriginal) {
       /*
        * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
        * as the react component would have one for the title in the same scope,
@@ -69,7 +67,7 @@ export default class SfGpsDsAuNswSAlertOsN extends SfGpsDsLwc {
        */
 
       replaceInnerHtml(
-        element,
+        this.refs.markdown,
         (this.title && !this.compact ? `<span></span>` : "") + this._contentHtml
       );
     }

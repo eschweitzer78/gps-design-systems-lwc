@@ -1,10 +1,10 @@
 <template>
-  <template if:true={_sfGpsErrors}>
-    <c-sf-gps-ds-configuration-error errors={_sfGpsErrors}>
+  <template if:true={_sfGpsDsErrors}>
+    <c-sf-gps-ds-configuration-error errors={_sfGpsDsErrors}>
     </c-sf-gps-ds-configuration-error>
   </template>
 
-  <template if:false={_sfGpsErrors}>
+  <template if:false={_sfGpsDsErrors}>
     <c-sf-gps-ds-au-vic-site-footer-internal
       social-links={_socialLinks}
       acknowledgement={acknowledgement}

@@ -1,0 +1,31 @@
+{
+  "sfGpsDsUkGovAccordion/accordion": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ],
+  "sfGpsDsUkGovBreadcrumbs/breadcrumbs": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovDetails/details": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovFooterCss/footer": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    {
+      "from": "\"/assets",
+      "to": "\"https://cdn.jsdelivr.net/npm/govuk-frontend/govuk/assets"
+    }
+  ],
+  "sfGpsDsUkGovHeader/header": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
+  "sfGpsDsUkGovInsetText/inset-text": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovNotificationBanner/notification-banner": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" }
+  ],
+  "sfGpsDsUkGovPanel/panel": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],
+  "sfGpsDsUkGovSkipLink/skip-link": [
+    { "from": "@font-face\\{[^}]*\\}", "to": "" },
+    { "from": ".js-enabled", "to": "" }
+  ]
+}

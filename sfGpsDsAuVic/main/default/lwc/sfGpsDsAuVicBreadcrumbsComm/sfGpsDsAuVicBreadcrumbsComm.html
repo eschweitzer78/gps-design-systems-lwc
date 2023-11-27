@@ -1,5 +1,5 @@
 <template lwc:render-mode="light">
-  <div if:false={_sfGpsErrors} class={className}>
+  <div if:false={_sfGpsDsErrors} class={className}>
     <div class="rpl-breadcrumbs">
       <div class="rpl-breadcrumbs__row">
         <nav aria-label={label}>
@@ -45,6 +45,9 @@
     </div>
   </div>
 
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 </template>

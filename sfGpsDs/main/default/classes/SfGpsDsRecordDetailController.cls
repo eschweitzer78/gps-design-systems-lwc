@@ -1,5 +1,4 @@
 /* ApexSOQLInject rule turned off as everything stems from a recordId with no further user input */
-
 @SuppressWarnings('PMD.ApexSOQLInjection')
 public with sharing class SfGpsDsRecordDetailController {
   @AuraEnabled(cacheable=true)

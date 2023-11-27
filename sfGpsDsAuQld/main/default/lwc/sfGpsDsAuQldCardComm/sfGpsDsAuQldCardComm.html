@@ -1,6 +1,6 @@
 <template>
   <c-sf-gps-ds-au-qld-card
-    lwc:if={_sfGpsErrors}
+    lwc:if={_sfGpsDsErrors}
     title-link={_titleLink}
     theme={theme}
     cta-link={_ctaLink}
@@ -12,6 +12,6 @@
     <div class="sf-gps-ds-markdown" lwc:dom="manual"></div>
   </c-sf-gps-ds-au-qld-card>
 
-  <c-sf-gps-ds-configuration-error lwc:else errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error lwc:else errors={_sfGpsDsErrors}>
   </c-sf-gps-ds-configuration-error>
 </template>

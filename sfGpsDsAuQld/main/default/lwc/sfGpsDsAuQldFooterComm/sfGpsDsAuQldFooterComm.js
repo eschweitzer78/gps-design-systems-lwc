@@ -105,14 +105,14 @@ export default class SfGpsDsAuQldFooterComm extends SfGpsDsNavigation {
 
   // events
 
-  handleClick(event) {
-    console.log("> handleClick", event, event.detail);
+  handleNavClick(event) {
+    console.log("> handleNavClick", event, event.detail);
     let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
 
     if (nav && this._map && event.detail) {
       nav.navigateNavMenu(this._map[event.detail]);
     }
-    console.log("< handleClick");
+    console.log("< handleNavClick");
   }
 
   // lifecycle
