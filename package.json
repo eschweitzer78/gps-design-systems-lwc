@@ -17,7 +17,7 @@
     "basegen": "node basegen.js",
     "osfilegen": "node osfilegen.js",
     "cssgen": "node cssgen.js",
-    "prep": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss",
+    "prep": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss;mkdir -p sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuVic1Full;mkdir -p sfGpsDsAuVic2Full;mkdir -p sfGpsDsUkGovFull",
     "aunsw-copy": "rm -rf sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswFull;cp -a sfGpsDs/. sfGpsDsAuNswFull;cp -a sfGpsDsAuNsw/. sfGpsDsAuNswFull",
     "aunsws-copy": "rm -rf sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuNswSFull;cp -a sfGpsDs/. sfGpsDsAuNswSFull;cp -a sfGpsDsAuNswS/. sfGpsDsAuNswSFull",
     "auvic1-copy": "rm -rf sfGpsDsAuVic1Full;mkdir -p sfGpsDsAuVic1Full;cp -a sfGpsDs/. sfGpsDsAuVic1Full;cp -a sfGpsDsAuVic/. sfGpsDsAuVic1Full",

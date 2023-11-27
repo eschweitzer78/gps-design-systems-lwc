@@ -52,6 +52,15 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dlI2AAI">this link</a> to install the full sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v0.9.6.2 on 17/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
+## Moving away from separate base and design system libraries
+
+With dependencies now included in each jursidiction's library, there will be a conflict on files that used to be located in the sfGpsDs library if you try to upgrade a
+design system. The workflow is to:
+
+- upgrade `sfGpsDs` to a version when all artefacts are marked as deprecated -- **this must be done on the command line** using `sfdx package install --package=04t5j000000dnflAAA --upgrade-type=DeprecateOnly` ,
+- upgrade the jurisdiction's library to a version with the former `sfGpsDs` dependencies included using one of the links above,
+- uninstall `sfGpsDs` now that all deprecated files have been absorbed
+
 ## Support, security, contributions and code of conduct
 
 Do read our other guidelines:
