@@ -17,10 +17,10 @@ Do read our [change log](./CHANGELOG.md) if you plan on updating already install
 - sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev)
 - sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (pilot, no production without prior consultation); check the [documentation website](https://uk.dsforce.dev)
 
-## Installing beta versions using Unlocked Packages
-
 **Important note for existing users of the libraries**: we used to require to install a base package and then a package for you design system of choice. We are dropping this
 pattern and now ship each design system will all dependencies but kindly note that it thus prevents you from having multiple design systems on a single org unless you deploy as source code. See instructions further down in this document regardind how to migrate from the former model to the new model.
+
+## Installing beta versions using Unlocked Packages
 
 Follow this set of instructions if you want to deploy the library in its most recent build to a more permanent environment than a Scratch org or if you don't want to install the local developement tools. You can use a non source-tracked orgs such as a free [Developer Edition Org](https://developer.salesforce.com/signup) or a [Trailhead Playground](https://trailhead.salesforce.com/), or one of your sandboxes.
 
@@ -54,12 +54,11 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 ## Moving away from separate base and design system libraries
 
-With dependencies now included in each jursidiction's library, there will be a conflict on files that used to be located in the sfGpsDs library if you try to upgrade a
-design system. The workflow is to:
+With dependencies now included in each jursidiction's design system library, you will find there is a conflict on files that used to be located in the sfGpsDs library if you try to upgrade a design system, unless you make the contents of former `sfGpsDs` lib deprecated. The workflow to do so is as follows:
 
-- upgrade `sfGpsDs` to a version when all artefacts are marked as deprecated -- **this must be done on the command line** using `sfdx package install --package=04t5j000000dnflAAA --upgrade-type=DeprecateOnly` ,
-- upgrade the jurisdiction's library to a version with the former `sfGpsDs` dependencies included using one of the links above,
-- uninstall `sfGpsDs` now that all deprecated files have been absorbed
+- upgrade `sfGpsDs` to a version we packaged with all artefacts marked as deprecated -- **this must be done on the command line** using `sfdx package install --package=04t5j000000dnflAAA --upgrade-type=DeprecateOnly` ,
+- upgrade the jurisdiction's design system library to a version with the former `sfGpsDs` dependencies included using one of the links above,
+- uninstall `sfGpsDs` now that all deprecated files have been absorbed.
 
 ## Support, security, contributions and code of conduct
 
