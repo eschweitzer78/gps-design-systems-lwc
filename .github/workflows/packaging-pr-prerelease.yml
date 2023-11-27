@@ -170,45 +170,35 @@ jobs:
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --alias=scratch-org --wait=20 --no-prompt --security-type=AllUsers
-
-      # Install new sfGpsDs package in scratch org
-      - name: "Install new sfGpsDs package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
-        run: sfdx package install --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
-
-      # Get current sfGpsDs package version
-      - name: "Get current sfGpsDs package version"
-        id: currentSfGpsDsPack
-        if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: |
-          packageVersionId=$(sfdx package version list --packages 'Salesforce Global Public Sector Design Systems' --order-by=CreatedDate --concise | tail -1 | awk '{print $3}')
-          echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
-
-      # Install old sfGpsDs package in scratch org
-      - name: "Install current sfGpsDs package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDs == 'false' }}
-        run: sfdx package install --package ${{ steps.currentSfGpsDsPack.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+        run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' }}
-        run: sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+        if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --alias=scratch-org
 
       # Install new sfGpsDsAuNswS package in scratch org
       - name: "Install new sfGpsDsAuNswS package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' }}
-        run: sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+        if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --alias=scratch-org
 
-      # Install new sfGpsDsAuVic package in scratch org
-      - name: "Install new sfGpsDsAuVic package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuVic == 'true' }}
-        run: sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+      # Install new sfGpsDsAuVic1 package in scratch org
+      - name: "Install new sfGpsDsAuVic1 package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsAuVic1 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --alias=scratch-org
 
       # Install new sfGpsDsUkGov package in scratch org
       - name: "Install new sfGpsDsUkGov package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' }}
-        run: sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --alias=scratch-org --no-prompt
+          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --alias=scratch-org
 
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
       - name: "Run prettier"

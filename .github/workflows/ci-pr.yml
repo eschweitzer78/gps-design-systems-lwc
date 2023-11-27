@@ -200,7 +200,7 @@ jobs:
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --alias=scratch-org --wait=20 --no-prompt --security-type=AllUsers
+        run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
 
       # Activate metadata for omnistudio on scratch org
       # (removed as OmniStudio metadata cannot be packaged fo now)
