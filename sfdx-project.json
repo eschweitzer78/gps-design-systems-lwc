@@ -23,6 +23,10 @@
       "versionDescription": "Salesforce Global Public Sector AU NSW Design System (Full)"
     },
     {
+      "path": "sfGpsDsAuNswS",
+      "default": false
+    },
+    {
       "path": "sfGpsDsAuNswSFull",
       "package": "Salesforce Global Public Sector AU NSW Service Design System",
       "versionName": "2023.11.27.1200",
@@ -52,7 +56,8 @@
       ]
     },
     {
-      "path": "sfGpsDsAuVic2"
+      "path": "sfGpsDsAuVic2",
+      "default": false
     },
     {
       "path": "sfGpsDsAuVic2Full",
@@ -72,10 +77,12 @@
       ]
     },
     {
-      "path": "sfGpsDsAuQld"
+      "path": "sfGpsDsAuQld",
+      "default": false
     },
     {
-      "path": "sfGpsDsUkGov"
+      "path": "sfGpsDsUkGov",
+      "default": false
     },
     {
       "path": "sfGpsDsUkGovFull",
@@ -91,7 +98,8 @@
       ]
     },
     {
-      "path": "sfGpsDsUkGovShowcase"
+      "path": "sfGpsDsUkGovShowcase",
+      "default": false
     }
   ],
   "name": "au-design-systems-lwc",
