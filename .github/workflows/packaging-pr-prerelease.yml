@@ -145,7 +145,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
-          json=$(sfdx package version create -path==sfGpsDsUkGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sfdx package version create --path=sfGpsDsUkGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
