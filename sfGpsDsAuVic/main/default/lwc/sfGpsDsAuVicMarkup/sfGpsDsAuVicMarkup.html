@@ -1,11 +1,14 @@
 <template lwc:render-mode="light">
-  <template if:false={_sfGpsErrors}>
+  <template if:false={_sfGpsDsErrors}>
     <div if:true={html} class={computedClassName}>
       <!-- Use dynamic component to render string template in runtime -->
       <div class="rpl-markup__inner"></div>
     </div>
   </template>
 
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 </template>

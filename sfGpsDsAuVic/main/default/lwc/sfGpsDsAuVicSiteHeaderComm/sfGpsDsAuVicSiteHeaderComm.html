@@ -1,5 +1,5 @@
 <template>
-  <template if:false={_sfGpsErrors}>
+  <template if:false={_sfGpsDsErrors}>
     <c-sf-gps-ds-au-vic-site-header
       image-src={computedMasterbrand}
       image-alt={computedMasterbrandAlt}
@@ -31,6 +31,9 @@
     <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
   </template>
 
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 </template>

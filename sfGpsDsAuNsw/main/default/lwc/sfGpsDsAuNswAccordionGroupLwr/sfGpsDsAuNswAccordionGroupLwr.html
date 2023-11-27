@@ -1,25 +1,11 @@
 <template lwc:render-mode="light">
-  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 
-  <div lwc:else class={computedClassName}>
-    <div lwc:if={showButtons} class="nsw-accordion__toggle">
-      <button
-        disabled={isFullyExpanded}
-        type="button"
-        onclick={handleExpandAll}
-      >
-        Expand all
-      </button>
-      <button
-        disabled={isFullyCollapsed}
-        type="button"
-        onclick={handleCollapseAll}
-      >
-        Collapse all
-      </button>
-    </div>
-
+  <c-sf-gps-ds-au-nsw-accordion-head-lwr lwc:else>
     <c-sf-gps-ds-au-nsw-accordion
       lwc:if={item1title}
       index="0"
@@ -151,5 +137,5 @@
     >
       <slot name="Accordion12"></slot>
     </c-sf-gps-ds-au-nsw-accordion>
-  </div>
+  </c-sf-gps-ds-au-nsw-accordion-head-lwr>
 </template>

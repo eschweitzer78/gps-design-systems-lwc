@@ -1,0 +1,15 @@
+<template>
+  <c-sf-gps-ds-uk-gov-breadcrumbs
+    if:false={_sfGpsDsErrors}
+    label={label}
+    items={_itemsArray}
+    class-name={className}
+  >
+  </c-sf-gps-ds-uk-gov-breadcrumbs>
+
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+</template>

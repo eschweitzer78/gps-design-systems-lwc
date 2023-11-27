@@ -1,6 +1,6 @@
 <template lwc:render-mode="light">
   <c-sf-gps-ds-au-vic-alert-base
-    if:false={_sfGpsErrors}
+    if:false={_sfGpsDsErrors}
     role="alert"
     class-name={computedClassName}
     close-text="Dismiss alert"
@@ -25,6 +25,9 @@
     </c-sf-gps-ds-au-vic-text-link>
   </c-sf-gps-ds-au-vic-alert-base>
 
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 </template>

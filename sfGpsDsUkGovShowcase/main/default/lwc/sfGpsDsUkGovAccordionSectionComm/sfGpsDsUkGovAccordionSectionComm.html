@@ -1,0 +1,18 @@
+<template>
+  <c-sf-gps-ds-uk-gov-accordion-section
+    if:false={_sfGpsDsErrors}
+    header={header}
+    closed={closed}
+    class-name={className}
+    onexpand={handleExpand}
+    oncollapse={handleCollapse}
+  >
+    <span class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
+  </c-sf-gps-ds-uk-gov-accordion-section>
+
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+</template>

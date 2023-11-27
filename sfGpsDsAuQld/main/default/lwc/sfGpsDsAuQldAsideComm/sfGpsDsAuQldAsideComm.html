@@ -1,6 +1,6 @@
 <template>
   <c-sf-gps-ds-au-qld-aside
-    if:false={_sfGpsErrors}
+    if:false={_sfGpsDsErrors}
     icon-name={iconName}
     icon-size={iconSize}
     title={title}
@@ -9,6 +9,9 @@
     <span if:true={content} class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
   </c-sf-gps-ds-au-qld-aside>
 
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 </template>

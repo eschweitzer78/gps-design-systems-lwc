@@ -132,16 +132,16 @@ jobs:
         run: exit 1
 
       # Run PMD scan
-      - name: "Run PMD scan for sfGpsDsAuVic"
+      - name: "Run PMD scan for sfGpsDsAuVic1"
         uses: pmd/pmd-github-action@v1.4.1
-        id: pmd-sf-gps-ds-au-vic
+        id: pmd-sf-gps-ds-au-vic1
         with:
           sourcePath: "sfGpsDsAuVic"
           rulesets: "ruleset.xml"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
-        if: steps.pmd-sf-gps-ds-au-vic.outputs.violations != 0
+        if: steps.pmd-sf-gps-ds-au-vic1.outputs.violations != 0
         run: exit 1
 
       # Run PMD scan
@@ -158,13 +158,13 @@ jobs:
         run: exit 1
 
       # Install Salesforce CLI
-      - name: "Install Salesforce CLI v7.182.1"
+      - name: "Install Salesforce CLI latest"
         run: |
-          npm install sfdx-cli@7.182.1 --location=global
+          npm install sfdx-cli --location=global
           nodeInstallPath=$(npm config get prefix)
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
 
-      # Install Salesforce CLI
+      # Confirm version Salesforce CLI
       - name: "Confirm Salesforce CLI version"
         run: |
           sfdx --version
@@ -186,11 +186,11 @@ jobs:
 
       # Create scratch org
       - name: "Create scratch org"
-        run: sfdx force:org:create -f config/project-scratch-def.json -a scratch-org -s -d 1
+        run: sfdx org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx force:package:install -p ${{ vars.OMNISTUDIO_PACKAGEID }} -u scratch-org -w 20 -r -s=AllUsers
+        run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --alias=scratch-org --wait=20 --no-prompt --security-type=AllUsers
 
       # Activate metadata for omnistudio on scratch org
       # (removed as OmniStudio metadata cannot be packaged fo now)
@@ -211,7 +211,7 @@ jobs:
 
       # Deploy source to scratch org
       - name: "Push source to scratch org"
-        run: sfdx force:source:push -u scratch-org
+        run: sfdx force source push --alias=scratch-org
 
       # Assign permissionset
       # - name: 'Assign permissionset to default user'
@@ -223,7 +223,7 @@ jobs:
 
       # Run Apex tests in scratch org
       - name: "Run Apex tests"
-        run: sfdx force:apex:test:run -c -r human -d ./tests/apex -w 20 --testlevel RunLocalTests
+        run: sfdx force apex test run --code-coverage --result-format=human --output-dir=./tests/apex --wait=20 --testlevel=RunLocalTests
 
       # Delete temporary test file that Codecov is unable to parse
       #- name: "Delete coverage file (temporary step)"
@@ -239,7 +239,7 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx force:org:delete -p -u scratch-org
+        run: sfdx force org delete --no-prompt --alias=scratch-org
 
   trigger-packaging:
     runs-on: ubuntu-latest
@@ -260,7 +260,8 @@ jobs:
           hasChangesSfGpsDs='false'
           hasChangesSfGpsDsAuNsw='false'
           hasChangesSfGpsDsAuNswS='false'
-          hasChangesSfGpsDsAuVic='false'
+          hasChangesSfGpsDsAuVic1='false'
+          hasChangesSfGpsDsAuVic2='false'
           hasChangesSfGpsDsUkGov='false'
           if [ $(echo "$changedPaths" | grep -c '^sfGpsDs$') == 1 ]; then
               hasChanges='true'
@@ -276,7 +277,11 @@ jobs:
           fi
           if [ $(echo "$changedPaths" | grep -c '^sfGpsDsAuVic$') == 1 ]; then
               hasChanges='true'
-              hasChangesSfGpsDsAuVic='true'
+              hasChangesSfGpsDsAuVic1='true'
+          fi
+          if [ $(echo "$changedPaths" | grep -c '^sfGpsDsAuVic2$') == 1 ]; then
+              hasChanges='true'
+              hasChangesSfGpsDsAuVic2='true'
           fi
           if [ $(echo "$changedPaths" | grep -c '^sfGpsDsUkGov$') == 1 ]; then
               hasChanges='true'
@@ -286,7 +291,8 @@ jobs:
           echo "hasChangesSfGpsDs=$hasChangesSfGpsDs" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsAuNsw=$hasChangesSfGpsDsAuNsw" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsAuNswS=$hasChangesSfGpsDsAuNswS" >> $GITHUB_OUTPUT
-          echo "hasChangesSfGpsDsAuVic=$hasChangesSfGpsDsAuVic" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDsAuVic1=$hasChangesSfGpsDsAuVic1" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDsAuVic2=$hasChangesSfGpsDsAuVic2" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsUkGov=$hasChangesSfGpsDsUkGov" >> $GITHUB_OUTPUT
 
       # Trigger packaging workflow if needed
@@ -296,4 +302,4 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
           event-type: start-packaging
-          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuVic": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'
+          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuVic1": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic1 }}", , "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'

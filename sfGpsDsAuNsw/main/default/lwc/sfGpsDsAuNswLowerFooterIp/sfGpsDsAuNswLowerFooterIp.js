@@ -127,11 +127,11 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
   }
 
   renderedCallback() {
-    if (this._copyrightMention) {
+    if (!this._sfGpsDsErrors && this._copyrightMention) {
       replaceInnerHtml(this.refs.copyright, this._copyrightMentionHtml);
     }
 
-    if (this._builtMention) {
+    if (!this._sfGpsDsErrors && this._builtMention) {
       replaceInnerHtml(this.refs.built, this._builtMentionHtml);
     }
   }

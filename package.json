@@ -14,10 +14,15 @@
     "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
     "postinstall": "husky install",
     "precommit": "lint-staged",
+    "basegen": "node basegen.js",
     "osfilegen": "node osfilegen.js",
     "cssgen": "node cssgen.js",
-    "prep": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss;mkdir -p sfGpsDsUkGovFull",
-    "ukgov-copy": "cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull"
+    "prep": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss",
+    "aunsw-copy": "rm -rf sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswFull;cp -a sfGpsDs/. sfGpsDsAuNswFull;cp -a sfGpsDsAuNsw/. sfGpsDsAuNswFull",
+    "aunsws-copy": "rm -rf sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuNswSFull;cp -a sfGpsDs/. sfGpsDsAuNswSFull;cp -a sfGpsDsAuNswS/. sfGpsDsAuNswSFull",
+    "auvic1-copy": "rm -rf sfGpsDsAuVic1Full;mkdir -p sfGpsDsAuVic1Full;cp -a sfGpsDs/. sfGpsDsAuVic1Full;cp -a sfGpsDsAuVic/. sfGpsDsAuVic1Full",
+    "auvic2-copy": "rm -rf sfGpsDsAuVic2Full;mkdir -p sfGpsDsAuVic2Full;cp -a sfGpsDs/. sfGpsDsAuVic2Full;cp -a sfGpsDsAuVic/. sfGpsDsAuVic2Full",
+    "ukgov-copy": "rm -rf sfGpsDsUkGovFull;mkdir -p sfGpsDsUkGovFull;cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull"
   },
   "lint-staged": {
     "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [

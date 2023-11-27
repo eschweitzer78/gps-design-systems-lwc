@@ -1,6 +1,6 @@
 <template>
   <c-sf-gps-ds-au-vic-published-date-and-author
-    if:false={_sfGpsErrors}
+    if:false={_sfGpsDsErrors}
     date={date}
     location={location}
     author={author}
@@ -10,6 +10,9 @@
   >
   </c-sf-gps-ds-au-vic-published-date-and-author>
 
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 </template>

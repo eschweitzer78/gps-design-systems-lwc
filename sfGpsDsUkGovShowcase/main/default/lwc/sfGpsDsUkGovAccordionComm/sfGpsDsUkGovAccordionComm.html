@@ -1,0 +1,14 @@
+<template>
+  <c-sf-gps-ds-uk-gov-accordion
+    if:false={_sfGpsDsErrors}
+    accordions={_h1s}
+    class-name={className}
+  >
+  </c-sf-gps-ds-uk-gov-accordion>
+
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+</template>

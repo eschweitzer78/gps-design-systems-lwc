@@ -1,0 +1,191 @@
+{
+  "sfGpsDsUkGovAccordion": {
+    "target": "!Os",
+    "accordion.gen.css": {
+      "target": "accordion.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsUkGovCore": "sfGpsDsUkGovCoreOs"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsUkGovAccordion": "SfGpsDsUkGovAccordionOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsUkGovAccordionComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-uk-gov-accordion": "c-sf-gps-ds-uk-gov-accordion-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
+      "SfGpsDsUkGovAccordionComm": "SfGpsDsUkGovAccordionCommOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsUkGovAccordionSection": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsUkGovAccordionSection": "SfGpsDsUkGovAccordionSectionOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsUkGovAccordionSectionComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-uk-gov-accordion-section": "c-sf-gps-ds-uk-gov-accordion-section-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
+      "SfGpsDsUkGovAccordionSectionComm": "SfGpsDsUkGovAccordionSectionCommOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsUkGovDetails": {
+    "target": "!Os",
+    "details.gen.css": {
+      "target": "details.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsUkGovCore": "sfGpsDsUkGovCoreOs"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsUkGovDetails": "SfGpsDsUkGovDetailsOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsUkGovDetailsComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-uk-gov-details": "c-sf-gps-ds-uk-gov-details-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
+      "SfGpsDsUkGovDetailsComm": "SfGpsDsUkGovDetailsCommOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsUkGovInsetText": {
+    "target": "!Os",
+    "inset-text.gen.css": {
+      "target": "inset-text.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsUkGovInsetTextComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-uk-gov-inset-text": "c-sf-gps-ds-uk-gov-inset-text-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsUkGovPanel": {
+    "target": "!Os",
+    "panel.gen.css": {
+      "target": "panel.gen.css",
+      "sfGpsDsUkGovCore": "sfGpsDsUkGovCoreOs"
+    },
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsUkGovCore": "sfGpsDsUkGovCoreOs"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsUkGovPanel": "SfGpsDsUkGovPanelOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsUkGovPanelComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-uk-gov-panel": "c-sf-gps-ds-uk-gov-panel-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsUkGovPanelComm": "SfGpsDsUkGovPanelCommOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  }
+}

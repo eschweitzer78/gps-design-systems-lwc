@@ -1,7 +1,10 @@
 <template>
   <c-sf-gps-ds-spinner lwc:if={_isLoading}> </c-sf-gps-ds-spinner>
 
-  <c-sf-gps-ds-configuration-error lwc:if={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 
   <template lwc:else>

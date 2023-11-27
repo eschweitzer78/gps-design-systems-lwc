@@ -1,6 +1,6 @@
 <template>
   <c-sf-gps-ds-au-vic-alert-base
-    if:false={_sfGpsErrors}
+    if:false={_sfGpsDsErrors}
     role="alert"
     close-text="Dismiss alert"
     data-alert-type={type}
@@ -16,6 +16,9 @@
     <span if:true={content} class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
   </c-sf-gps-ds-au-vic-alert-base>
 
-  <c-sf-gps-ds-configuration-error if:true={_sfGpsErrors} errors={_sfGpsErrors}>
+  <c-sf-gps-ds-configuration-error
+    if:true={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
   </c-sf-gps-ds-configuration-error>
 </template>

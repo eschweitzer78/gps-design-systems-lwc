@@ -1,7 +1,7 @@
 <template>
   <c-sf-gps-ds-configuration-error-os
-    lwc:if={_sfGpsErrors}
-    errors={_sfGpsErrors}
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
   >
   </c-sf-gps-ds-configuration-error-os>
 
@@ -14,7 +14,7 @@
         <div lwc:if={title} class="alert-title">{title}</div>
       </template>
 
-      <span data-sfgpsds-markdown lwc:dom="manual"> </span>
+      <span lwc:ref="markdown" lwc:dom="manual"> </span>
     </div>
   </template>
 </template>
