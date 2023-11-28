@@ -2,14 +2,12 @@
 <CommunityTemplateDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
   <masterLabel>NSW Design System</masterLabel>
   <description
-  >Create a responsive portal where your constituents can experience the awesomeness of Digital.NSW’s Design System.</description>
+  >Create a responsive portal where your constituents can experience the awesomeness of Digital.NSW’s Design System. As a reminder, the NSW Government logo is a registered trademark: DO NOT USE unless you are a NSW Government entity or an authorised party.</description>
   <publisher>Salesforce GPS and NSW Department of Customer Service</publisher>
   <bundlesInfo>
     <title>Distinctly NSW Government</title>
-    <description>
-      This template gives your portal a distincly NSW Government look and feel and helps
-      digital product teams create a good customer experience quickly.
-    </description>
+    <description
+    >This template gives your portal a distincly NSW Government look and feel and helps digital product teams create a good customer experience quickly.</description>
     <order>1</order>
     <type>Highlight</type>
   </bundlesInfo>

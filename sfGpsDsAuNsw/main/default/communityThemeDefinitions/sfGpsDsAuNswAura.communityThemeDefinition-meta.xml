@@ -2,7 +2,7 @@
 <CommunityThemeDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
   <masterLabel>NSW Design System</masterLabel>
   <description
-  >A fully packaged theme for the Australian state Government of New South Wales.</description>
+  >A fully packaged theme for the Australian state Government of New South Wales. As a reminder, the NSW Government logo is a registered trademark: DO NOT USE unless you are a NSW Government entity or an authorised party.</description>
   <publisher>Salesforce Global Public Sector</publisher>
     <bundlesInfo>
         <title>Branded NSW Elements</title>
