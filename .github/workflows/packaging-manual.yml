@@ -22,10 +22,6 @@ jobs:
           hasChangesSfGpsDsUkGov='true'
           echo "hasChanges=$hasChanges" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDs=$hasChangesSfGpsDs" >> $GITHUB_OUTPUT
-          echo "hasChangesSfGpsDsAuNsw=$hasChangesSfGpsDsAuNsw" >> $GITHUB_OUTPUT
-          echo "hasChangesSfGpsDsAuNswS=$hasChangesSfGpsDsAuNswS" >> $GITHUB_OUTPUT
-          echo "hasChangesSfGpsDsAuVic=$hasChangesSfGpsDsAuVic" >> $GITHUB_OUTPUT
-          echo "hasChangesSfGpsDsUkGov=$hasChangesSfGpsDsUkGov" >> $GITHUB_OUTPUT
 
       # Trigger packaging workflow if needed
       - name: "Trigger packaging workflow if needed"
@@ -34,4 +30,4 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
           event-type: start-packaging
-          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuVic": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'
+          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}" }'
