@@ -14,7 +14,7 @@ Do read our [change log](./CHANGELOG.md) if you plan on updating already install
 - sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project; it is now fully packaged with the design systems library below but the directory is kept for clarity and deployment as source code
 - sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nswds.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
-- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev)
+- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev) and know that we are investigating the support of Ripple v2
 - sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (pilot, no production without prior consultation); check the [documentation website](https://uk.dsforce.dev)
 
 **Important note for existing users of the libraries**: we used to require to install a base package and then a package for you design system of choice. We are dropping this
@@ -42,15 +42,13 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhNAAQ">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.0.4.1 released on 14/11/2023).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000doyOAAQ">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.3.0.2 released on 27/11/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkh3AAA">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v2.0.3.2 on 13/11/2023).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000doyTAAQ">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v2.3.0.2 on 27/11/2023).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhSAAQ">this link</a> to install the sfGpsDsAuVic unlocked package in your production org (v2.0.3.1 on 14/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dlHEAAY">this link</a> to install the sfGpsDsAuVic unlocked package in your production org (v2.3.0.2 on 27/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dkhXAAQ">this link</a> to install the sfGpsDsUkGov unlocked package in your production org (v0.9.4.1 on 14/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
-
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dlI2AAI">this link</a> to install the full sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v0.9.6.2 on 17/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000doydAAA">this link</a> to install the sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v1.0.1.1 on 27/11/2023). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
 ## Moving away from separate base and design system libraries
 
