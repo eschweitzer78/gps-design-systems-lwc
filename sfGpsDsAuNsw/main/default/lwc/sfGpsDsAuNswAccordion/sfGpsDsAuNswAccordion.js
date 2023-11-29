@@ -26,6 +26,7 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
   get computedClassName() {
     return computeClass({
       "nsw-accordion__title": true,
+      "nsw-accordion__open": this.isOpen,
       [this.className]: this.className
     });
   }

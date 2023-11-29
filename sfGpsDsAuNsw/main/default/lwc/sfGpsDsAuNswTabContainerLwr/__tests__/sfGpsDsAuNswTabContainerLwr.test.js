@@ -14,26 +14,31 @@ describe("c-sf-gps-ds-au-nsw-tab-container-lwr", () => {
   });
 
   it("does not show in Aura", () => {
+    window.$A = "hello";
+
     // Arrange
-    const element = createElement(ELT_TAG, {
+    let element = createElement(ELT_TAG, {
       is: SfGpsDsAuNswTabContainerLwr
     });
 
     // Act
-    window.$A = "hello";
     document.body.appendChild(element);
 
     // Assert
-    const tabSet = element.querySelector("c-sf-gps-ds-au-nsw-tab-set-lwr");
+    const tabSet = element.shadowRoot.querySelector(
+      "c-sf-gps-ds-au-nsw-tab-set-lwr"
+    );
     expect(tabSet).toBeNull();
 
-    const error = element.querySelector("c-sf-gps-ds-configuration-error");
+    const error = element.shadowRoot.querySelector(
+      "c-sf-gps-ds-configuration-error"
+    );
     expect(error).not.toBeNull();
   });
 
   it("does show in LWR with no tabs by default", () => {
     // Arrange
-    const element = createElement(ELT_TAG, {
+    let element = createElement(ELT_TAG, {
       is: SfGpsDsAuNswTabContainerLwr
     });
 
@@ -41,19 +46,25 @@ describe("c-sf-gps-ds-au-nsw-tab-container-lwr", () => {
     document.body.appendChild(element);
 
     // Assert
-    const tabSet = element.querySelector("c-sf-gps-ds-au-nsw-tab-set-lwr");
+    const tabSet = element.shadowRoot.querySelector(
+      "c-sf-gps-ds-au-nsw-tab-set-lwr"
+    );
     expect(tabSet).not.toBeNull();
 
-    const tabs = element.querySelectorAll("c-sf-gps-ds-au-nsw-tab-lwr");
+    const tabs = element.shadowRoot.querySelectorAll(
+      "c-sf-gps-ds-au-nsw-tab-lwr"
+    );
     expect(tabs.length).toBe(0);
 
-    const error = element.querySelector("c-sf-gps-ds-configuration-error");
+    const error = element.shadowRoot.querySelector(
+      "c-sf-gps-ds-configuration-error"
+    );
     expect(error).toBeNull();
   });
 
   it("does show in LWR with tabs if configured so", () => {
     // Arrange
-    const element = createElement(ELT_TAG, {
+    let element = createElement(ELT_TAG, {
       is: SfGpsDsAuNswTabContainerLwr
     });
 
@@ -63,13 +74,19 @@ describe("c-sf-gps-ds-au-nsw-tab-container-lwr", () => {
     document.body.appendChild(element);
 
     // Assert
-    const tabSet = element.querySelector("c-sf-gps-ds-au-nsw-tab-set-lwr");
+    const tabSet = element.shadowRoot.querySelector(
+      "c-sf-gps-ds-au-nsw-tab-set-lwr"
+    );
     expect(tabSet).not.toBeNull();
 
-    const tabs = element.querySelectorAll("c-sf-gps-ds-au-nsw-tab-lwr");
+    const tabs = element.shadowRoot.querySelectorAll(
+      "c-sf-gps-ds-au-nsw-tab-lwr"
+    );
     expect(tabs.length).toBe(2);
 
-    const error = element.querySelector("c-sf-gps-ds-configuration-error");
+    const error = element.shadowRoot.querySelector(
+      "c-sf-gps-ds-configuration-error"
+    );
     expect(error).toBeNull();
   });
 });

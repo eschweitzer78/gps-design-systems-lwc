@@ -1,12 +1,11 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 /**
- * @slot Content-Region
+ * @slot Section
  */
-
-export default class SfGpsDsAuNswLwrContainer extends SfGpsDsLwc {
+export default class SfGpsDsAuNswSectionLwr extends SfGpsDsLwc {
   static renderMode = "light";
 
   @api paddingStyle;
@@ -16,8 +15,6 @@ export default class SfGpsDsAuNswLwrContainer extends SfGpsDsLwc {
   @api withInvert;
   @api imageSrc;
   @api className;
-
-  @track isAura = false;
 
   get computedStyle() {
     return this.imageSrc ? `background-image: url(${this.imageSrc})` : null;
@@ -53,11 +50,8 @@ export default class SfGpsDsAuNswLwrContainer extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    // eslint-disable-next-line dot-notation
-    if (window["$A"] !== undefined && window["$A"] !== null) {
-      this.isAura = true;
-      this.addError("CO-AU", "Not compatible with Aura runtime.");
-    }
+    this._isLwrOnly = true;
+    super.connectedCallback();
 
     this.classList.add("nsw-scope");
   }

@@ -1,4 +1,4 @@
-<template lwc:render-mode="light">
+<template>
   <c-sf-gps-ds-configuration-error
     lwc:if={_sfGpsDsErrors}
     errors={_sfGpsDsErrors}
@@ -8,37 +8,37 @@
   <c-sf-gps-ds-au-nsw-tab-set-lwr
     lwc:else
     title={title}
-    tab-class-name={_tabClassName}
+    tab-class-name={computedTabClassName}
   >
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab1Label} label={tab1Label}
-      ><slot name="tab1"></slot
+      ><slot name="Tab1"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab2Label} label={tab2Label}
-      ><slot name="tab2"></slot
+      ><slot name="Tab2"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab3Label} label={tab3Label}
-      ><slot name="tab3"></slot
+      ><slot name="Tab3"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab4Label} label={tab4Label}
-      ><slot name="tab4"></slot
+      ><slot name="Tab4"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab5Label} label={tab5Label}
-      ><slot name="tab5"></slot
+      ><slot name="Tab5"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab6Label} label={tab6Label}
-      ><slot name="tab6"></slot
+      ><slot name="Tab6"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab7Label} label={tab7Label}
-      ><slot name="tab7"></slot
+      ><slot name="Tab7"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab8Label} label={tab8Label}
-      ><slot name="tab8"></slot
+      ><slot name="Tab8"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab9Label} label={tab9Label}
-      ><slot name="tab9"></slot
+      ><slot name="Tab9"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
     <c-sf-gps-ds-au-nsw-tab-lwr lwc:if={tab10Label} label={tab10Label}
-      ><slot name="tab10"></slot
+      ><slot name="Tab10"></slot
     ></c-sf-gps-ds-au-nsw-tab-lwr>
   </c-sf-gps-ds-au-nsw-tab-set-lwr>
 </template>
