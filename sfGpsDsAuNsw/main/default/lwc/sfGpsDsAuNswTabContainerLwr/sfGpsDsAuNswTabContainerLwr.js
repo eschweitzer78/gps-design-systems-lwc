@@ -3,16 +3,16 @@ import { computeClass } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 /**
- * @slot tab1
- * @slot tab2
- * @slot tab3
- * @slot tab4
- * @slot tab5
- * @slot tab6
- * @slot tab7
- * @slot tab8
- * @slot tab9
- * @slot tab10
+ * @slot Tab1
+ * @slot Tab2
+ * @slot Tab3
+ * @slot Tab4
+ * @slot Tab5
+ * @slot Tab6
+ * @slot Tab7
+ * @slot Tab8
+ * @slot Tab9
+ * @slot Tab10
  */
 export default class SfGpsDsAuNswTabContainerLwr extends SfGpsDsLwc {
   @api title;

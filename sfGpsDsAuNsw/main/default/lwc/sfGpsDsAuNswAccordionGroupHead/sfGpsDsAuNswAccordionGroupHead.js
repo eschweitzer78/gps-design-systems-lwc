@@ -10,6 +10,7 @@ import { LightningElement, api } from "lwc";
 export default class sfGpsDsAuNswAccordionGroupHead extends LightningElement {
   static renderMode = "light";
 
+  @api showButtons;
   @api isFullyExpanded;
   @api isFullyCollapsed;
   @api expandAllLabel;

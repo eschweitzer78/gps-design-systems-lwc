@@ -9,11 +9,11 @@
     <section class={computedClassName} style={computedStyle}>
       <template lwc:if={withContainer}>
         <div class="nsw-container">
-          <slot name="Content-Region">Content Region</slot>
+          <slot name="Section"></slot>
         </div>
       </template>
       <template lwc:else>
-        <slot name="Content-Region">Content Region</slot>
+        <slot name="Section"></slot>
       </template>
     </section>
   </template>
