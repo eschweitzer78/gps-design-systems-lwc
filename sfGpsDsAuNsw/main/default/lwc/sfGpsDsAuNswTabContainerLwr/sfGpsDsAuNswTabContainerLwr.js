@@ -1,4 +1,4 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
@@ -14,10 +14,7 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
  * @slot tab9
  * @slot tab10
  */
-
 export default class SfGpsDsAuNswTabContainerLwr extends SfGpsDsLwc {
-  static renderMode = "light";
-
   @api title;
   @api tab1Label;
   @api tab2Label;
@@ -32,7 +29,7 @@ export default class SfGpsDsAuNswTabContainerLwr extends SfGpsDsLwc {
   @api tabPaddingStyle = "full";
   @api tabBorderStyle = "border";
 
-  get _tabClassName() {
+  get computedTabClassName() {
     return computeClass({
       "nsw-tabs__content": true,
       "nsw-tabs__content--flush": this.tabPaddingStyle === "flush",
@@ -43,14 +40,9 @@ export default class SfGpsDsAuNswTabContainerLwr extends SfGpsDsLwc {
 
   /* lifecycle */
 
-  @track isAura = false;
-
   connectedCallback() {
-    // eslint-disable-next-line dot-notation
-    if (window["$A"] !== undefined && window["$A"] !== null) {
-      this.isAura = true;
-      this.addError("CO-AU", "Not compatible with Aura runtime.");
-    }
+    this._isLwrOnly = true;
+    super.connectedCallback();
 
     this.classList.add("nsw-scope");
   }

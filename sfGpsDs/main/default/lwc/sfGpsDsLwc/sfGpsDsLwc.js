@@ -12,6 +12,8 @@ import { LightningElement, api, track } from "lwc";
 
 export default class SfGpsDsLwc extends LightningElement {
   @track _sfGpsDsErrors;
+  @track _isAura;
+  _isLwrOnly;
 
   addError(code, description) {
     let errors = this._sfGpsDsErrors || [];
@@ -41,6 +43,14 @@ export default class SfGpsDsLwc extends LightningElement {
 
   connectedCallback() {
     this._isConnected = true;
+
+    // eslint-disable-next-line dot-notation
+    if (window["$A"] !== undefined && window["$A"] !== null) {
+      this._isAura = true;
+      if (this._isLwrOnly) {
+        this.addError("CO-AU", "This element is not compatible with Aura.");
+      }
+    }
   }
 
   disconnectedCallback() {
