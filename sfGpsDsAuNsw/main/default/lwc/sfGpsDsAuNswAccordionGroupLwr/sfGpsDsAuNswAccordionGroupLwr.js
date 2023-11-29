@@ -16,10 +16,7 @@ import { computeClass } from "c/sfGpsDsHelpers";
  * @slot Accordion11
  * @slot Accordion12
  */
-
 export default class SfGpsDsAuNswAccordionGroupLwr extends SfGpsDsLwc {
-  static renderMode = "light";
-
   @track items = [
     { title: "", closed: false },
     { title: "", closed: false },
@@ -207,17 +204,17 @@ export default class SfGpsDsAuNswAccordionGroupLwr extends SfGpsDsLwc {
   }
 
   handleExpandAll() {
-    this._numberOpen = this._h1s.length;
-    this.items.forEach((h1) => (h1.closed = false));
+    this._numberOpen = this.items.length;
+    this.items.forEach((item) => (item.closed = false));
   }
 
   handleCollapseAll() {
     this._numberOpen = 0;
-    this.items.forEach((h1) => (h1.closed = true));
+    this.items.forEach((item) => (item.closed = true));
   }
 
   get isFullyExpanded() {
-    return this.items.filter((h1) => h1.title && h1.closed).length === 0;
+    return this.items.filter((item) => item.closed).length === 0;
   }
 
   get isFullyCollapsed() {
@@ -232,17 +229,10 @@ export default class SfGpsDsAuNswAccordionGroupLwr extends SfGpsDsLwc {
     });
   }
 
-  @track isAura = false;
-
   connectedCallback() {
+    this._isLwrOnly = true;
+
     super.connectedCallback();
-
-    // eslint-disable-next-line dot-notation
-    if (window["$A"] !== undefined && window["$A"] !== null) {
-      this.isAura = true;
-      this.addError("CO-AU", "Not compatible with Aura runtime.");
-    }
-
     this.classList.add("nsw-scope");
   }
 }
