@@ -1,5 +1,44 @@
 ## Change log
 
+### 29 November 2023
+
+#### NSW DS: improved LWR support
+
+Even though LWR still has a few missing capabilities (e.g. no file upload, planed for v250 Safe Harbour), it is very well
+suited for building NSW gov pages with containers and sections, applying the colour schemes etc. We improved our support
+by fixing accessibility issues in `sfGpsDsAuNswThemeLayoutLwr` and fixing minor issues with the LWR Accordion and Tabs which
+feature slots to drop content.
+
+### 22 November 2023
+
+#### NSW DS: Added breadcrumbs specialised with smarts for record pages
+
+`sfGpsDsAuNswBreadcrumbsRecordComm` add smarts and introspects object name and record name on record list and detail pages.
+
+#### NSW DS: Addition of Markup and Markdown elements for Experience Cloud
+
+Edit HTML Markup and Markdown content with a full page editor based on CodeMirror v5.
+
+#### NSW DS: Added a full-fledge NSW Design System template
+
+Create a straw man site styled with NSW DS in seconds with our click and configure template.
+
+### 16 November 2023
+
+#### UK.GOV: Added support for the Google Places Typeahead
+
+UK.GOV now has `sfGpsDsUkGovFormPlacesTypeaheadOsN`.
+
+### 14 November 2023
+
+#### NSW DS: Added "disabled" look and feel to prev/next buttons for sfGpsDsAuNswPagination
+
+We revised the prev and next button styling when they're disabled to align with recent changes in the NSW DS.
+
+### UK.GOV: adjusted top margin for disclosure, file and text area
+
+We reduced the top margin for the OmniStudio disclosure, file and text area elements.
+
 ### 13 November 2023
 
 #### All DS implementations: fixing smart lookup/manual label
