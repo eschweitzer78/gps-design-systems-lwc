@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from "lwc";
+import { LightningElement, api, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswButton extends LightningElement {
@@ -20,6 +20,7 @@ export default class SfGpsDsAuNswButton extends LightningElement {
   @api iconStyle = "none"; // one of none, before, after
   @api iconName;
   @api mobileFullWidth = false;
+  @track ariaHaspopup;
   @api className;
 
   /* deprecated */
@@ -71,5 +72,14 @@ export default class SfGpsDsAuNswButton extends LightningElement {
   handleClick() {
     const clickEvent = new CustomEvent("click");
     this.dispatchEvent(clickEvent);
+  }
+
+  renderedCallback() {
+    const ariaHaspopup = this.getAttribute("aria-haspopup");
+
+    if (ariaHaspopup) {
+      this.ariaHaspopup = ariaHaspopup;
+      this.removeAttribute("aria-haspopup");
+    }
   }
 }
