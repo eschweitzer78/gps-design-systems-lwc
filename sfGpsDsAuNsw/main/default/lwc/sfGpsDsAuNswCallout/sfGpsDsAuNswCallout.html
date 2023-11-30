@@ -2,12 +2,7 @@
   <span lwc:if={firstChild}></span>
   <div class={computedClassName}>
     <div class="nsw-callout__content">
-      <div lwc:if={isH1} class="nsw-callout__title nsw-h1">{title}</div>
-      <div lwc:elseif={isH2} class="nsw-callout__title nsw-h2">{title}</div>
-      <div lwc:elseif={isH3} class="nsw-callout__title nsw-h3">{title}</div>
-      <div lwc:elseif={isH4} class="nsw-callout__title nsw-h4">{title}</div>
-      <div lwc:elseif={isH5} class="nsw-callout__title nsw-h5">{title}</div>
-      <div lwc:elseif={isH6} class="nsw-callout__title nsw-h6">{title}</div>
+      <div class={computedTitleClassName}>{title}</div>
       <slot> </slot>
     </div>
   </div>
