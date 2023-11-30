@@ -6,13 +6,13 @@
 
 When using the one-level version of `sfGpsDsAuNswMainNav`, entries are now marked active when the current visible page's URL starts with the entry's URL.
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswMainNav)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav)
 
 #### NSW DS: support for social media icons in the Footer
 
 We now support adding social media icons and links for LinkedIn, Twitter/X and Facebook in the footer.
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFooterCom`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFooterComm)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterCom`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm)
 
 #### NSW DS: support multiple modes for the Progress Indicator
 
@@ -21,7 +21,7 @@ The Progress Indicator now supports multiple step counting modes:
 - `cumulative`, which marks the current and all previous pages as active,
 - `label-only`, which does not render rectangles for the pages.
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswProgressIndicator`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswProgressIndicator)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswProgressIndicator`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswProgressIndicator)
 
 ### 29 November 2023
 
@@ -38,13 +38,13 @@ feature slots to drop content.
 
 `sfGpsDsAuNswBreadcrumbsRecordComm` add smarts and introspects object name and record name on record list and detail pages.
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswBreadcrumbsRecordComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswBreadcrumbsRecordComm)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbsRecordComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbsRecordComm)
 
 #### NSW DS: Addition of Markup and Markdown elements for Experience Cloud
 
 Edit HTML Markup and Markdown content with a full page editor based on CodeMirror v5. Both offer much better CSS creep control compared to the original Experience Cloud HTML Editor which injects CSS from the Rich Text Editor.
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswMarkupElementComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswMarkupElementComm) and [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswMarkdownElementComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswMarkdowmElementComm)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkupElementComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkupElementComm) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkdownElementComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkdowmElementComm)
 
 #### NSW DS: Added a full-fledge NSW Design System template
 
@@ -56,7 +56,7 @@ Create a straw man site styled with NSW DS in seconds with our click and configu
 
 UK.GOV now has a Google Places Typeahead for Omnistudio.
 
-Refer to [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormPlacesTypeaheadOsN`](./sfGpsDsUkGov/main/default/sfGpsDsUkGovFormPlacesTypeaheadOsN).
+Refer to [`sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormPlacesTypeaheadOsN`](./sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormPlacesTypeaheadOsN).
 
 ### 14 November 2023
 
@@ -64,13 +64,13 @@ Refer to [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormPlacesTypeaheadOsN`](./sfGp
 
 We revised the prev and next button styling when they're disabled to align with recent changes in the NSW DS.
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswPagination`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswPagination)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswPagination`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswPagination)
 
 ### UK.GOV: adjusted top margin for disclosure, file and text area
 
 We reduced the top margin for the OmniStudio disclosure, file and text area elements.
 
-Refer to [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormDisclosureOsN`](./sfGpsDsUkGov/main/default/sfGpsDsUkGovFormDisclosureOsN), [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormFileOsN`](./sfGpsDsUkGov/main/default/sfGpsDsUkGovFormFileOsN) and [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormTextareaOsN`](./sfGpsDsUkGov/main/default/sfGpsDsUkGovFormTextareaOsN)
+Refer to [`sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormDisclosureOsN`](./sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormDisclosureOsN), [`sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormFileOsN`](./sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormFileOsN) and [`sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormTextareaOsN`](./sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormTextareaOsN)
 
 ### 13 November 2023
 
@@ -181,7 +181,7 @@ NSW DS Header and VIC DS Menu had accessibility issues due to some element IDs n
 
 #### Fixing some validation issues for Address lookup in NSW DS and VIC DS
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormAddressTypeaheadOsN`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormAddressTypeaheadOsN) and [`sfGpsDsAuVic/main/default/sfGpsDsAuVicFormAddressTypeaheadOsN`](./sfGpsDsAuVic/main/default/sfGpsDsAuVicFormAddressTypeaheadOsN).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN) and [`sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFormAddressTypeaheadOsN`](./sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFormAddressTypeaheadOsN).
 
 #### Fixing some validation issues for other widgets in NSW DS and VIC DS
 
@@ -191,13 +191,13 @@ Includes checkbox and most text-based and number-based input fields.
 
 An override now exists to display Omnistudio formula field with the NSW DS look and feel.
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFormFormulaOsN).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFormFormulaOsN`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFormFormulaOsN).
 
 ### 4 June 2023
 
 #### Introducing the NSW DS Table widget with client side pagination
 
-Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTable) and [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswTableComm).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTableComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTableComm).
 
 ### 1 June 2023
 
