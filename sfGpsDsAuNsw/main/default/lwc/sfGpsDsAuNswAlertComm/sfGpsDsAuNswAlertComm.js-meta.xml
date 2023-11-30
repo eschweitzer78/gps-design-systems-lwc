@@ -22,6 +22,7 @@
         label="Content"
         description="Content that provides further details of the alert and actionable steps in Markdown format."
         default="In-page alerts are used to contextually inform users of **important** information or status of an interaction."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="as"

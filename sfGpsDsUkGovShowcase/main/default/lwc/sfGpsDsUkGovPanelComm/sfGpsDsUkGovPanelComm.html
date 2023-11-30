@@ -1,16 +1,15 @@
 <template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
   <c-sf-gps-ds-uk-gov-panel
-    if:false={_sfGpsDsErrors}
+    lwc:else
     title={title}
     heading-level={headingLevel}
     class-name={className}
   >
     <div class="sf-gps-ds-markdown" lwc:dom="manual"></div>
   </c-sf-gps-ds-uk-gov-panel>
-
-  <c-sf-gps-ds-configuration-error
-    if:true={_sfGpsDsErrors}
-    errors={_sfGpsDsErrors}
-  >
-  </c-sf-gps-ds-configuration-error>
 </template>

@@ -31,6 +31,7 @@
         label="Content"
         description="Callout message in Markdown format."
         default="Callouts are text excerpts, used as a *visual* cue to draw attention to the text. They're used to help direct users toward an **important** piece of information."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="firstChild"

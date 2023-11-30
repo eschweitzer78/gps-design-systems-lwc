@@ -10,8 +10,6 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-const MARKDOWN_SELECTOR = ".govuk-notification-banner__heading";
-
 export default class SfGpsDsUkGovGlobalAlertComm extends SfGpsDsLwc {
   @api type;
   @api headingLevel;
@@ -52,7 +50,7 @@ export default class SfGpsDsUkGovGlobalAlertComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    let element = this.template.querySelector(MARKDOWN_SELECTOR);
+    let element = this.refs.heading;
 
     if (element) {
       replaceInnerHtml(element, this._contentHtml);

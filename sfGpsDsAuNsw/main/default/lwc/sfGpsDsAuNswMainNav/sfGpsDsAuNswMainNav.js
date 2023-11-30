@@ -49,15 +49,21 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
   mapItems(parentIndex, parentLevel, map, items) {
     let index = 0;
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
 
     return items.map((item) => {
+      let isCurrentPage =
+        item.url === pathname ||
+        (item.url && pathname.startsWith(item.url + "/"));
+
       let result = {
         ...item,
         id: `${parentIndex}-${index}`,
         index: item.index || `${parentIndex}-${index}`,
         level: parentLevel + 1,
         isActive: false,
-        className: "",
+        className: isCurrentPage && !this._megaMenu ? "active" : "",
         subNavClassName: "nsw-main-nav__sub-nav"
       };
 

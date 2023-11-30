@@ -22,6 +22,9 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
   @api inputJSON;
   @api optionsJSON;
   @api statement;
+  @api linkedInUrl;
+  @api twitterXUrl;
+  @api facebookUrl;
   @api copyrightMention;
   @api builtMention;
   @api cstyle = "default";

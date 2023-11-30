@@ -1,17 +1,21 @@
 <template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-uk-gov-notification-banner
-    if:false={_sfGpsDsErrors}
+    lwc:else
     type={type}
     heading-level={headingLevel}
     title={title}
     class-name={className}
   >
-    <p class="govuk-notification-banner__heading" lwc:dom="manual"></p>
+    <p
+      class="govuk-notification-banner__heading"
+      lwc:ref="heading"
+      lwc:dom="manual"
+    ></p>
   </c-sf-gps-ds-uk-gov-notification-banner>
-
-  <c-sf-gps-ds-configuration-error
-    if:true={_sfGpsDsErrors}
-    errors={_sfGpsDsErrors}
-  >
-  </c-sf-gps-ds-configuration-error>
 </template>

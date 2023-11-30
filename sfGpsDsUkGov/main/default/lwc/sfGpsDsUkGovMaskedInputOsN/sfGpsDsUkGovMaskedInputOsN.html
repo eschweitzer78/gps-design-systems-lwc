@@ -84,7 +84,7 @@
 
         <span if:true={pretext} class={pretextClass}>{pretext}</span>
 
-        <template if:true={isCurrencySFlocale}>
+        <template lwc:if={isCurrencySFlocale}>
           <template lwc:if={computedHasPrefixOrSuffix}>
             <div class="govuk-input__wrapper">
               <div
@@ -165,7 +165,7 @@
           </template>
         </template>
 
-        <template if:false={isCurrencySFlocale}>
+        <template lwc:else>
           <input
             if:true={isNumber}
             class="hiddenNumber slds-hide"

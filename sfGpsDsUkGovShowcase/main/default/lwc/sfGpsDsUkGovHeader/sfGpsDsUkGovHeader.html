@@ -30,10 +30,7 @@
               ></path>
             </svg>
 
-            <span
-              if:true={masterbrandLabel}
-              class="govuk-header__logotype-text"
-            >
+            <span lwc:if={masterbrandLabel} class="govuk-header__logotype-text">
               {space}{masterbrandLabel}
             </span>
           </span>
@@ -41,7 +38,7 @@
       </div>
 
       <div class="govuk-header__content">
-        <template if:true={serviceName}>
+        <template lwc:if={serviceName}>
           <a
             lwc:if={serviceUrl}
             href={serviceUrl}
@@ -73,7 +70,7 @@
             <template for:each={_navItems} for:item="navItem">
               <li key={navItem.index} class={navItem.className}>
                 <a
-                  if:true={navItem.url}
+                  lwc:if={navItem.url}
                   class="govuk-header__link"
                   href={navItem.url}
                   data-ndx={navItem.index}
@@ -81,7 +78,7 @@
                 >
                   {navItem.text}
                 </a>
-                <template if:false={navItem.url}> {navItem.text} </template>
+                <template lwc:else>{navItem.text}</template>
               </li>
             </template>
           </ul>

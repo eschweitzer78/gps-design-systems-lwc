@@ -38,9 +38,8 @@ export default class SfGpsDsUkGovDetailsComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    let element = this.template.querySelector(".sf-gps-ds-markdown");
-    if (element) {
-      replaceInnerHtml(element, this._contentHtml);
+    if (this._content) {
+      replaceInnerHtml(this.refs.markdown, this._contentHtml);
     }
   }
 }

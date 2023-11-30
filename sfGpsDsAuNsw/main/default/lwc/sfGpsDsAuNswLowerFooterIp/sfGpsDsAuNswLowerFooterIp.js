@@ -82,7 +82,9 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
   }
 
   @api statement;
-  @api className;
+  @api linkedInUrl;
+  @api twitterXUrl;
+  @api facebookUrl;
 
   _copyrightMentionHtml;
   _copyrightMention;
@@ -118,6 +120,12 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
     }
   }
 
+  @api className;
+
+  get computedShowSocial() {
+    return this.linkedInUrl || this.twitterXUrl || this.facebookUrl;
+  }
+
   handleClick(event) {
     let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
 
@@ -127,11 +135,11 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
   }
 
   renderedCallback() {
-    if (!this._sfGpsDsErrors && this._copyrightMention) {
+    if (!this._sfGpsDsErrors && !this._isLoading && this._copyrightMention) {
       replaceInnerHtml(this.refs.copyright, this._copyrightMentionHtml);
     }
 
-    if (!this._sfGpsDsErrors && this._builtMention) {
+    if (!this._sfGpsDsErrors && !this._isLoading && this._builtMention) {
       replaceInnerHtml(this.refs.built, this._builtMentionHtml);
     }
   }

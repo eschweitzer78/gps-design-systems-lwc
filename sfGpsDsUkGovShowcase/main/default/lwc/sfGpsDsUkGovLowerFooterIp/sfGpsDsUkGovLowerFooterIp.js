@@ -96,31 +96,26 @@ export default class SfGpsUkGovLowerFooterIp extends SfGpsDsNavigation {
   /* lifecycle */
 
   renderedCallback() {
-    if (this._licenceMentionOriginal) {
-      let element = this.template.querySelector(
-        ".govuk-footer__licence-description"
-      );
-      if (element) {
-        replaceInnerHtml(element, this._licenceMentionHtml);
+    if (this._licenceMentionOriginal && !this._isLoading) {
+      let element = this.refs.mention;
 
-        const As = element.querySelectorAll("a");
-        As.forEach((a) => {
-          a.classList.add("govuk-footer__link");
-          a.rel = "licensing";
-        });
-      }
+      replaceInnerHtml(element, this._licenceMentionHtml);
+
+      const As = element.querySelectorAll("a");
+      As.forEach((a) => {
+        a.classList.add("govuk-footer__link");
+        a.rel = "licensing";
+      });
     }
 
-    if (this._builtMentionOriginal) {
-      let element = this.template.querySelector(".govuk-footer__built");
-      if (element) {
-        replaceInnerHtml(element, this._builtMentionHtml);
+    if (this._builtMentionOriginal && !this._isLoading) {
+      const element = this.refs.built;
+      replaceInnerHtml(element, this._builtMentionHtml);
 
-        const As = element.querySelectorAll("a");
-        As.forEach((a) => {
-          a.classList.add("govuk-footer__link");
-        });
-      }
+      const As = element.querySelectorAll("a");
+      As.forEach((a) => {
+        a.classList.add("govuk-footer__link");
+      });
     }
   }
 

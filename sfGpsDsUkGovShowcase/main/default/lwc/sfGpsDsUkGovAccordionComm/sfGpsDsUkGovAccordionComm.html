@@ -1,14 +1,13 @@
 <template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
   <c-sf-gps-ds-uk-gov-accordion
-    if:false={_sfGpsDsErrors}
+    lwc:else
     accordions={_h1s}
     class-name={className}
   >
   </c-sf-gps-ds-uk-gov-accordion>
-
-  <c-sf-gps-ds-configuration-error
-    if:true={_sfGpsDsErrors}
-    errors={_sfGpsDsErrors}
-  >
-  </c-sf-gps-ds-configuration-error>
 </template>

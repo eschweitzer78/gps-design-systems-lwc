@@ -1,5 +1,11 @@
 <template>
-  <template if:false={_sfGpsDsErrors}>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
     <c-sf-gps-ds-uk-gov-header
       masterbrand={masterbrand}
       masterbrand-label={masterbrandLabel}
@@ -16,10 +22,4 @@
 
     <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
   </template>
-
-  <c-sf-gps-ds-configuration-error
-    if:true={_sfGpsDsErrors}
-    errors={_sfGpsDsErrors}
-  >
-  </c-sf-gps-ds-configuration-error>
 </template>

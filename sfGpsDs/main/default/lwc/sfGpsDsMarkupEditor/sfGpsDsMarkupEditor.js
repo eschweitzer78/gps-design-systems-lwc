@@ -6,6 +6,9 @@ import modeXml from "./mode-xml";
 import modeMarkdown from "./mode-markdown";
 
 export default class SfGpsDsMarkupEditor extends LightningModal {
+  @api title;
+  @api tips;
+
   _markup;
 
   @api

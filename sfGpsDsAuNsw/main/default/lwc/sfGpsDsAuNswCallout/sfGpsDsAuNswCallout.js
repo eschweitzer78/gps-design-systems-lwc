@@ -23,27 +23,14 @@ export default class SfGpsDsAuNswCallout extends LightningElement {
     });
   }
 
-  get isH1() {
-    return this.level === 1;
-  }
-
-  get isH2() {
-    return this.level === 2;
-  }
-
-  get isH3() {
-    return this.level === 3;
-  }
-
-  get isH4() {
-    return this.level === 4;
-  }
-
-  get isH5() {
-    return this.level === 5;
-  }
-
-  get isH6() {
-    return this.level >= 6;
+  get computedTitleClassName() {
+    return computeClass({
+      "nsw-h1": this.level === 1,
+      "nsw-h2": this.level === 2,
+      "nsw-h3": this.level === 3,
+      "nsw-h4": this.level === 4,
+      "nsw-h5": this.level === 5,
+      "nsw-h6": this.level >= 6
+    });
   }
 }

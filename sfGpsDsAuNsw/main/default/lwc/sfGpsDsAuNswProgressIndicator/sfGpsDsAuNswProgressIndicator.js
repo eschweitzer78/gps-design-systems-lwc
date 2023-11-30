@@ -11,16 +11,20 @@ import { computeClass } from "c/sfGpsDsHelpers";
 export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
   @api step = 1;
   @api of = 1;
+  @api mode; // current, cumulative, label-only
   @api className;
 
   get steps() {
     let arr = [];
 
     for (let i = 1; i <= this.of; i++) {
+      const isActive =
+        this.mode === "cumulative" ? i <= this.step : i === this.step;
+
       arr.push({
         index: i,
-        isActive: i === this.step,
-        className: i === this.step ? "active" : ""
+        isActive,
+        className: isActive ? "active" : ""
       });
     }
 
@@ -32,5 +36,9 @@ export default class SfGpsDsAuNswProgressIndicator extends LightningElement {
       "nsw-progress-indicator": true,
       [this.className]: this.className
     });
+  }
+
+  get computedShowBar() {
+    return this.mode !== "label-only";
   }
 }

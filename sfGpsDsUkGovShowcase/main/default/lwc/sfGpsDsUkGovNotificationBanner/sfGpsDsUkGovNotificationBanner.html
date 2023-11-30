@@ -6,42 +6,42 @@
   >
     <div class="govuk-notification-banner__header">
       <h1
-        if:true={isH1}
+        lwc:if={isH1}
         id={computedLabelId}
         class="govuk-notification-banner__title"
       >
         {computedTitle}
       </h1>
       <h2
-        if:true={isH2}
+        lwc:elseif={isH2}
         id={computedLabelId}
         class="govuk-notification-banner__title"
       >
         {computedTitle}
       </h2>
       <h3
-        if:true={isH3}
+        lwc:elseif={isH3}
         id={computedLabelId}
         class="govuk-notification-banner__title"
       >
         {computedTitle}
       </h3>
       <h4
-        if:true={isH4}
+        lwc:elseif={isH4}
         id={computedLabelId}
         class="govuk-notification-banner__title"
       >
         {computedTitle}
       </h4>
       <h5
-        if:true={isH5}
+        lwc:elseif={isH5}
         id={computedLabelId}
         class="govuk-notification-banner__title"
       >
         {computedTitle}
       </h5>
       <h6
-        if:true={isH6}
+        lwc:elseif={isH6}
         id={computedLabelId}
         class="govuk-notification-banner__title"
       >
