@@ -1,8 +1,14 @@
 <template>
-  <template if:false={_sfGpsDsErrors}>
-    <c-sf-gps-ds-spinner if:true={_isLoading}> </c-sf-gps-ds-spinner>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <c-sf-gps-ds-spinner lwc:if={_isLoading}> </c-sf-gps-ds-spinner>
     <c-sf-gps-ds-uk-gov-upper-footer
-      if:false={_isLoading}
+      lwc:else
       items={_items}
       class-name={className}
       onclick={handleClick}
@@ -11,9 +17,4 @@
   </template>
 
   <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
-  <c-sf-gps-ds-configuration-error
-    if:true={_sfGpsDsErrors}
-    errors={_sfGpsDsErrors}
-  >
-  </c-sf-gps-ds-configuration-error>
 </template>

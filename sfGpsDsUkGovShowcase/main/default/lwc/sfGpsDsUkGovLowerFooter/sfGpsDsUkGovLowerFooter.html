@@ -1,7 +1,7 @@
 <template lwc:render-mode="light">
   <div class={computedClassName}>
     <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-      <template if:true={items}>
+      <template lwc:if={items}>
         <h2 class="govuk-visually-hidden">{i18n.supportLinksLabel}</h2>
         <ul class="govuk-footer__inline-list">
           <template for:each={items} for:item="link">

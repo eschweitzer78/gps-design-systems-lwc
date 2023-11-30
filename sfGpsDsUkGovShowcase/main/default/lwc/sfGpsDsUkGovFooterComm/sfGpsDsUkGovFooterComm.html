@@ -1,8 +1,14 @@
 <template>
-  <template if:false={_sfGpsDsErrors}>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
     <footer class={computedClassName} role="contentinfo">
       <div class="govuk-width-container">
-        <template if:true={upperFooterIpName}>
+        <template lwc:if={upperFooterIpName}>
           <c-sf-gps-ds-uk-gov-upper-footer-ip
             ip-name={upperFooterIpName}
             input-j-s-o-n={upperFooterInputJSON}
@@ -27,10 +33,4 @@
       </div>
     </footer>
   </template>
-
-  <c-sf-gps-ds-configuration-error
-    if:true={_sfGpsDsErrors}
-    errors={_sfGpsDsErrors}
-  >
-  </c-sf-gps-ds-configuration-error>
 </template>
