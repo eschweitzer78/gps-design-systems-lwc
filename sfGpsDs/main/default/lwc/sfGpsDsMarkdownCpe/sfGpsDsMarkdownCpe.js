@@ -22,7 +22,8 @@ export default class sfGpsDsMarkdownCpe extends LightningElement {
   handleClick() {
     markupEditor
       .open({
-        label: "Markdown Editor",
+        title: "Markdown Editor",
+        tips: "Add and edit markdown.",
         markup: this._valueOriginal,
         mode: "markdown",
         size: "large",
