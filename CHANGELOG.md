@@ -1,5 +1,28 @@
 ## Change log
 
+### 1 December 2023
+
+#### NSW DS: mark Main Nav pages as active
+
+When using the one-level version of `sfGpsDsAuNswMainNav`, entries are now marked active when the current visible page's URL starts with the entry's URL.
+
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswMainNav)
+
+#### NSW DS: support for social media icons in the Footer
+
+We now support adding social media icons and links for LinkedIn, Twitter/X and Facebook in the footer.
+
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswFooterCom`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswFooterComm)
+
+#### NSW DS: support multiple modes for the Progress Indicator
+
+The Progress Indicator now supports multiple step counting modes:
+- `current`, which is the default mode and marks the current page as active,
+- `cumulative`, which marks the current and all previous pages as active,
+- `label-only`, which does not render rectangles for the pages.
+
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswProgressIndicator`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswProgressIndicator)
+
 ### 29 November 2023
 
 #### NSW DS: improved LWR support
@@ -15,9 +38,13 @@ feature slots to drop content.
 
 `sfGpsDsAuNswBreadcrumbsRecordComm` add smarts and introspects object name and record name on record list and detail pages.
 
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswBreadcrumbsRecordComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswBreadcrumbsRecordComm)
+
 #### NSW DS: Addition of Markup and Markdown elements for Experience Cloud
 
-Edit HTML Markup and Markdown content with a full page editor based on CodeMirror v5.
+Edit HTML Markup and Markdown content with a full page editor based on CodeMirror v5. Both offer much better CSS creep control compared to the original Experience Cloud HTML Editor which injects CSS from the Rich Text Editor.
+
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswMarkupElementComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswMarkupElementComm) and [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswMarkdownElementComm`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswMarkdowmElementComm)
 
 #### NSW DS: Added a full-fledge NSW Design System template
 
@@ -27,7 +54,9 @@ Create a straw man site styled with NSW DS in seconds with our click and configu
 
 #### UK.GOV: Added support for the Google Places Typeahead
 
-UK.GOV now has `sfGpsDsUkGovFormPlacesTypeaheadOsN`.
+UK.GOV now has a Google Places Typeahead for Omnistudio.
+
+Refer to [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormPlacesTypeaheadOsN`](./sfGpsDsUkGov/main/default/sfGpsDsUkGovFormPlacesTypeaheadOsN).
 
 ### 14 November 2023
 
@@ -35,9 +64,13 @@ UK.GOV now has `sfGpsDsUkGovFormPlacesTypeaheadOsN`.
 
 We revised the prev and next button styling when they're disabled to align with recent changes in the NSW DS.
 
+Refer to [`sfGpsDsAuNsw/main/default/sfGpsDsAuNswPagination`](./sfGpsDsAuNsw/main/default/sfGpsDsAuNswPagination)
+
 ### UK.GOV: adjusted top margin for disclosure, file and text area
 
 We reduced the top margin for the OmniStudio disclosure, file and text area elements.
+
+Refer to [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormDisclosureOsN`](./sfGpsDsUkGov/main/default/sfGpsDsUkGovFormDisclosureOsN), [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormFileOsN`](./sfGpsDsUkGov/main/default/sfGpsDsUkGovFormFileOsN) and [`sfGpsDsUkGov/main/default/sfGpsDsUkGovFormTextareaOsN`](./sfGpsDsUkGov/main/default/sfGpsDsUkGovFormTextareaOsN)
 
 ### 13 November 2023
 
