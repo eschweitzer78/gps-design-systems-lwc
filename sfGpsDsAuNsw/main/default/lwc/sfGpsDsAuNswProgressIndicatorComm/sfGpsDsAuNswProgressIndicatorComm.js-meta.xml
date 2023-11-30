@@ -28,6 +28,14 @@
         default="1"
       />
       <property
+        name="mode"
+        type="String"
+        label="Mode"
+        description="Counting mode."
+        default="current"
+        datasource="current,cumulative,label-only"
+      />
+      <property
         name="className"
         type="String"
         label="Class name"
