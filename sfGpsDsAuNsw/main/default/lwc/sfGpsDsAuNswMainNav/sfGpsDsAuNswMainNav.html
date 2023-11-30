@@ -17,7 +17,7 @@
     </div>
     <ul class="nsw-main-nav__list">
       <template for:each={_navItems} for:item="navItem">
-        <li key={navItem.index}>
+        <li key={navItem.index} class={navItem.className}>
           <template lwc:if={navItem.subNav}>
             <a
               href={navItem.url}
