@@ -23,6 +23,7 @@
         label="Content"
         description="Dialog content in Markdown format."
         default="Thank you for your submission, it has been successfully received. We aim to respond within 3 business days by your preferred contact method. You can now make another submission or view your active submission."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="primaryButtonText"

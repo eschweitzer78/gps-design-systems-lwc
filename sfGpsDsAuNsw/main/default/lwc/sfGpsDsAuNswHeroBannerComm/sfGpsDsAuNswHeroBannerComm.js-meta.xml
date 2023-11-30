@@ -22,6 +22,7 @@
         label="Intro"
         description="Gives additional context when the title alone would be insufficient - in Markdown format."
         default="The hero banner reflects the goals or purpose of the site, service or product."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="cstyle"

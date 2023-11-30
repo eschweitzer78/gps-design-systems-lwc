@@ -23,12 +23,14 @@
         label="Copy"
         description="Provides further details where the headline alone may not be sufficient - in Markdown format."
         default="Use content cards to display all or larger group of content options to your users."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="footer"
         type="String"
         label="Footer"
         description="Provides further context separated from the copy by a horizontal ruler - in Markdown format."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="cstyle"

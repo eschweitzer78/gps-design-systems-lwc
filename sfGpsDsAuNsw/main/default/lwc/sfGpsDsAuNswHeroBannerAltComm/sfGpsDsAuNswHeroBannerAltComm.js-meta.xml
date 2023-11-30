@@ -24,6 +24,7 @@
         label="Content"
         description="Gives additional context when the title alone would be insufficient - in Markdown format."
         default="The hero banner (*alt*) reflects the goals or purpose of the site, service or product."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="imageSrc"

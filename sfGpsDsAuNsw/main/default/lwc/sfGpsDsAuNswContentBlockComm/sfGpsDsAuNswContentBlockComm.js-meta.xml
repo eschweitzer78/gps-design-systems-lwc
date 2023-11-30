@@ -30,6 +30,7 @@
         label="Copy"
         description="Provides further details where the headline alone may not be sufficient - in Markdown format."
         default="Content blocks are simply a way to display content in columns to visually separate information for users."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="image"
