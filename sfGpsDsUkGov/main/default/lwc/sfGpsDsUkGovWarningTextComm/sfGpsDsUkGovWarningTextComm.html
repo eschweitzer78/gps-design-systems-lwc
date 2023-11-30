@@ -1,13 +1,13 @@
 <template>
-  <template if:false={_sfGpsDsErrors}>
-    <c-sf-gps-ds-uk-gov-warning-text class-name={className} as={as}>
-      <span class="sf-gps-ds-markdown" lwc:dom="manual"> </span>
-    </c-sf-gps-ds-uk-gov-warning-text>
-  </template>
-
   <c-sf-gps-ds-configuration-error
-    if:true={_sfGpsDsErrors}
+    lwc:if={_sfGpsDsErrors}
     errors={_sfGpsDsErrors}
   >
   </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <c-sf-gps-ds-uk-gov-warning-text class-name={className} as={as}>
+      <span lwc:ref="markdown" lwc:dom="manual"> </span>
+    </c-sf-gps-ds-uk-gov-warning-text>
+  </template>
 </template>
