@@ -12,7 +12,7 @@ Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/ma
 
 We now support adding social media icons and links for LinkedIn, Twitter/X and Facebook in the footer.
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterCom`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm)
 
 #### NSW DS: support multiple modes for the Progress Indicator
 
