@@ -18,7 +18,7 @@ Do read our [change log](./CHANGELOG.md) if you plan on updating already install
 - sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (pilot, no production without prior consultation); check the [documentation website](https://uk.dsforce.dev)
 
 **Important note for existing users of the libraries**: we used to require to install a base package and then a package for you design system of choice. We are dropping this
-pattern and now ship each design system will all dependencies but kindly note that it thus prevents you from having multiple design systems on a single org unless you deploy as source code. See instructions further down in this document regardind how to migrate from the former model to the new model.
+pattern and now ship each design system with all dependencies but kindly note that it thus prevents you from having multiple design systems on a single org unless you deploy as source code. See instructions further down in this document regardind how to migrate from the former model to the new model.
 
 ## Installing beta versions using Unlocked Packages
 
