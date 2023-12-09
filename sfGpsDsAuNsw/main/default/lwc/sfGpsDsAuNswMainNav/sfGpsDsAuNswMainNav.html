@@ -15,23 +15,24 @@
         <span class="sr-only">{closeMenuLabel}</span>
       </button>
     </div>
-    <ul class="nsw-main-nav__list">
+
+    <ul class="nsw-main-nav__list" onkeydown={handleKeydown}>
       <template for:each={_navItems} for:item="navItem">
-        <li key={navItem.index} class={navItem.className}>
+        <li key={navItem.id}>
           <template lwc:if={navItem.subNav}>
             <a
               href={navItem.url}
-              class={navItem.className}
               role="button"
               aria-expanded={navItem.isActive}
               aria-controls={navItem.id}
+              class={navItem.className}
               data-ndx={navItem.index}
               onclick={handleClick}
             >
               <!-- expand -->
               <span>{navItem.text}</span>
               <span
-                class="material-icons nsw-material-icons nsw-main-nav__link-icon"
+                class="material-icons nsw-material-icons"
                 aria-hidden="true"
               >
                 keyboard_arrow_right
@@ -43,7 +44,7 @@
               class={navItem.subNavClassName}
               id={navItem.id}
               role="region"
-              aria-label={navItem.text}
+              aria-label={navItem.subNavAriaLabel}
             >
               <!-- SubNavHeader -->
               <div class="nsw-main-nav__header">
@@ -66,6 +67,7 @@
                     <span class="sr-only"> to previous menu</span>
                   </span>
                 </button>
+
                 <button
                   type="button"
                   class="nsw-icon-button"
@@ -101,13 +103,18 @@
 
                 <span lwc:else>{navItem.text}</span>
               </div>
+
               <div class="nsw-main-nav__description">{navItem.description}</div>
               <!-- End SubNavHeader -->
 
               <!-- SubNav -->
-              <ul class="nsw-main-nav__sub-list">
+              <ul
+                class="nsw-main-nav__sub-list"
+                data-ndx={navItem.index}
+                onkeydown={handleKeydown}
+              >
                 <template for:each={navItem.subNav} for:item="subNavItem">
-                  <li key={subNavItem.index}>
+                  <li key={subNavItem.id}>
                     <a
                       href={subNavItem.url}
                       class={subNavItem.className}
@@ -155,6 +162,7 @@
                               <span class="sr-only"> to previous menu</span>
                             </span>
                           </button>
+
                           <button
                             type="button"
                             class="nsw-icon-button"
@@ -170,6 +178,7 @@
                             <span class="sr-only">Close Menu</span>
                           </button>
                         </div>
+
                         <div class="nsw-main-nav__title">
                           <a
                             href={subNavItem.url}
@@ -187,17 +196,22 @@
                             </span>
                           </a>
                         </div>
+
                         <div class="nsw-main-nav__description">
                           {navItem.description}
                         </div>
                         <!-- End SubNavHeader-->
 
-                        <ul class="nsw-main-nav__sub-list">
+                        <ul
+                          class="nsw-main-nav__sub-list"
+                          data-ndx={subNavItem.index}
+                          onkeydown={handleKeydown}
+                        >
                           <template
                             for:each={subNavItem.subNav}
                             for:item="subSubNavItem"
                           >
-                            <li key={subSubNavItem.index}>
+                            <li key={subSubNavItem.id}>
                               <a
                                 href={subSubNavItem.url}
                                 class="nsw-subnavigation__link"

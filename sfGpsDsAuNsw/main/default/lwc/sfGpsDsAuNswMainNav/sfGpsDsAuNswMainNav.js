@@ -12,7 +12,7 @@ import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
 export default class SfGpsDsAuNswMainNav extends LightningElement {
   static renderMode = "light";
 
-  @api mainNavId = uniqueId("sf-gps-ds-au-nsw-main-nav");
+  @api mainNavId = "nav"; //uniqueId("sf-gps-ds-au-nsw-main-nav");
   @api navAriaLabel = "Main Navigation";
   @api navTitle = "Menu";
   @api closeMenuLabel = "Close Menu";
@@ -44,8 +44,8 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
    */
 
   _originalNavItems;
-  _navItems;
-  _mapItems;
+  @track _navItems;
+  @track _mapItems;
 
   mapItems(parentIndex, parentLevel, map, items) {
     let index = 0;
@@ -53,17 +53,19 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     const pathname = docUrl.pathname;
 
     return items.map((item) => {
-      let isCurrentPage =
+      const isCurrentPage =
         item.url === pathname ||
         (item.url && pathname.startsWith(item.url + "/"));
+      const isActive = isCurrentPage && !parentLevel && !this._megaMenu;
 
       let result = {
         ...item,
         id: `${parentIndex}-${index}`,
         index: item.index || `${parentIndex}-${index}`,
         level: parentLevel + 1,
-        isActive: false,
-        className: isCurrentPage && !this._megaMenu ? "active" : "",
+        isActive: isActive,
+        className: isActive ? "active" : "",
+        subNavAriaLabel: `${item.text} Submenu`,
         subNavClassName: "nsw-main-nav__sub-nav"
       };
 
@@ -104,6 +106,8 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     this._mapItems = map;
   }
 
+  /* api: megaMenu */
+
   _megaMenu = false;
 
   @api get megaMenu() {
@@ -115,7 +119,11 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     this.navItemsMapping();
   }
 
+  /* api: className */
+
   @api className;
+
+  /* get: computedClassName */
 
   get computedClassName() {
     return computeClass({
@@ -127,20 +135,52 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     });
   }
 
-  close() {
+  @api close() {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isActive = false;
 
     // eslint-disable-next-line guard-for-in
     for (let prop in this._mapItems) {
       let item = this._mapItems[prop];
+
+      item.key = `item-${this.keyIndex++}`;
       item.isActive = false;
       item.className = "";
       item.subNavClassName = "nsw-main-nav__sub-nav";
     }
-
-    this._navItems = [...this._navItems];
+    //this._navItems = [...this._navItems];
   }
+
+  getElementForItem(navItem) {
+    return navItem?.index
+      ? this.querySelector(`[data-ndx="${navItem.index}"]`)
+      : null;
+  }
+
+  focusItem(navItem) {
+    const navItemElt = this.getElementForItem(navItem);
+    if (navItemElt) {
+      navItemElt.focus();
+    }
+  }
+
+  /* Active subNavs */
+
+  _activeSubNavs = [];
+
+  pushLatestSubNav(navItem) {
+    this._activeSubNavs.push(navItem);
+  }
+
+  popLatestSubNav() {
+    this._activeSubNavs.pop();
+  }
+
+  getLatestSubNav() {
+    return this._activeSubNavs.slice(-1);
+  }
+
+  /* Event management */
 
   handleClickNavigate(event) {
     event.preventDefault();
@@ -160,22 +200,17 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isActive = true;
     let index = event.currentTarget.dataset.ndx;
+    let clickLevel = this._mapItems[index]?.level;
 
-    // If there is no subNav to expand, we're really navigating
-    // TODO: sort out level-2 nav on mobile as there is a subNav - it's just not visible
-    if (!this._mapItems[index]?.subNav) {
-      this.handleClickNavigate(event);
-      return;
-    }
+    console.log("clickLevel", clickLevel);
 
-    let level1click = this._mapItems[index]?.level === 1;
     // eslint-disable-next-line guard-for-in
     for (let prop in this._mapItems) {
       let item = this._mapItems[prop];
 
       if (prop === index) {
         item.isActive = !item.isActive;
-      } else if (item.level === 1 && level1click) {
+      } else if (item.level === 1 && clickLevel === 1) {
         // if level1 item was clicked, we need to deactivate all other level 1s
         item.isActive = false;
       }
@@ -187,6 +222,15 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     }
 
     this._navItems = [...this._navItems];
+
+    // If there is no subNav to expand, we're really navigating
+    // Unless it's level-2 nav on desktop as there is a subNav - it's just not visible and we have to navigate
+    if (
+      !this._mapItems[index]?.subNav ||
+      (clickLevel === 2 && this._isDesktop)
+    ) {
+      this.handleClickNavigate(event);
+    }
   }
 
   handleMainCloseClick() {
@@ -198,5 +242,43 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
   handleBackClick(event) {
     this.handleClick(event);
+  }
+
+  handleKeydown(event) {
+    if (this._megaMenu && event.key === "Escape") {
+      console.log("escape", event.currentTarget.dataset.ndx);
+      /*
+      const navItem = this.getLatestSubNav();
+
+      if (navItem && navItem.isActive) {
+        event.preventDefault();
+        navItem.isActive = false;
+        navItem.className = "";
+        this.focusItem(navItem);
+      }
+      */
+    }
+  }
+
+  handleResponsiveCheck(event) {
+    this._isDesktop = event?.matches;
+  }
+
+  /* Lifecycle */
+
+  breakpoint;
+  @track _isDesktop = false;
+  _handleResponsiveCheck;
+
+  connectedCallback() {
+    this.breakpoint = window.matchMedia("(min-width: 62em");
+    this.handleResponsiveCheck(this.breakpoint);
+
+    this._handleResponsiveCheck = this.handleResponsiveCheck.bind(this);
+    this.breakpoint?.addEventListener("change", this._handleResponsiveCheck);
+  }
+
+  disconnectedCallback() {
+    this.breakpoint?.removeEventListener("change", this._handleResponsiveCheck);
   }
 }
