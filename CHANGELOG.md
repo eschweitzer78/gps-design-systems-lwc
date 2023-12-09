@@ -17,6 +17,7 @@ Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm`](./sfGpsDsAuNsw
 #### NSW DS: support multiple modes for the Progress Indicator
 
 The Progress Indicator now supports multiple step counting modes:
+
 - `current`, which is the default mode and marks the current page as active,
 - `cumulative`, which marks the current and all previous pages as active,
 - `label-only`, which does not render rectangles for the pages.
