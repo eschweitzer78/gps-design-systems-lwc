@@ -1,8 +1,9 @@
-import { LightningElement, api, track } from "lwc";
+import { api, track } from "lwc";
 import { parseIso8601, replaceInnerHtml } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuNswListItemComm extends LightningElement {
+export default class SfGpsDsAuNswListItemComm extends SfGpsDsLwc {
   @api isBlock = false;
   @api isReversed = false;
   @api showLink = false;

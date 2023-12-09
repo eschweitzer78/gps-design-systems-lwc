@@ -11,7 +11,20 @@ import { computeClass } from "c/sfGpsDsHelpers";
 export default class SfGpsDsAuNswContentBlock extends LightningElement {
   static renderMode = "light";
 
-  @api headline;
+  @api title;
+
+  /* api: headline - deprecated, use title instead */
+
+  @api
+  get headline() {
+    return this.title;
+  }
+
+  set headline(value) {
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+    this.title = value;
+  }
+
   @api image;
   @api imageAlt;
   @api icon;

@@ -55,6 +55,7 @@ export default class SfGpsDsAuNswContentBlockCollectionComm extends SfGpsDsIpLwc
 
     return data.map((block, index) => ({
       ...block,
+      title: block.title || block.headline,
       copy: block.copy ? htmlDecode(block.copy) : null,
       index: block.index || `block-${index + 1}`
     }));

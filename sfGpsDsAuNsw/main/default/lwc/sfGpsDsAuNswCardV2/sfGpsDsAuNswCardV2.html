@@ -1,0 +1,35 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <!-- CardImage -->
+    <div lwc:if={image} class="nsw-card__image">
+      <img src={image} alt={imageAlt} />
+    </div>
+
+    <!-- CardContent -->
+    <div class="nsw-card__content">
+      <!-- CardTag-->
+      <p lwc:if={tag} class="nsw-card__tag">{tag}</p>
+
+      <!-- CardDate -->
+      <p lwc:if={_date} class="nsw-card__date">
+        <time datetime={_dateISOString}>{_dateLocaleString}</time>
+      </p>
+
+      <!-- CardHeader-->
+      <div lwc:if={title} class="nsw-card__title">
+        <a lwc:if={link} href={link} class="nsw-card__link">{title}</a>
+        <template lwc:else>{title}</template>
+      </div>
+
+      <slot> </slot>
+
+      <span
+        lwc:if={link}
+        class="material-icons nsw-material-icons nsw-card__icon"
+        aria-hidden="true"
+      >
+        east
+      </span>
+    </div>
+  </div>
+</template>

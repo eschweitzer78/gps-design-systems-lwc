@@ -24,6 +24,12 @@
     required="false"
     default="content"
   />
+  <aura:attribute
+    name="backToTopShow"
+    type="Boolean"
+    required="false"
+    default="false"
+  />
 
   <div class="{! v.noWidgetMargin ? 'sfgpsds-widget--no-margin' : '' }">
     <div class="sfgpsds-masthead-and-header">
@@ -40,6 +46,10 @@
     >
       {!v.body}
     </div>
+
+    <aura:if isTrue="{! v.backToTopShow }">
+      <c:sfGpsDsAuNswBackToTop />
+    </aura:if>
 
     <footer class="sfgpsds-footer" aria-label="Footer">{!v.footer}</footer>
   </div>

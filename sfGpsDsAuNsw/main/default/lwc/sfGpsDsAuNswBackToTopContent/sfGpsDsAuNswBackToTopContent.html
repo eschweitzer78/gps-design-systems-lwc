@@ -1,0 +1,30 @@
+<template lwc:render-mode="light">
+  <button
+    lwc:ref="element"
+    type="button"
+    class={computedClassName}
+    onclick={handleClick}
+  >
+    <template lwc:if={isMobile}>
+      <span>Top</span>
+      <span
+        class="material-icons nsw-material-icons"
+        title="Back to top"
+        aria-hidden="true"
+      >
+        keyboard_arrow_up
+      </span>
+    </template>
+
+    <template lwc:else>
+      <span>Back to top</span>
+      <span
+        class="material-icons nsw-material-icons"
+        title="Back to top"
+        aria-hidden="true"
+      >
+        north
+      </span>
+    </template>
+  </button>
+</template>

@@ -1,0 +1,14 @@
+<template lwc:render-mode="light">
+  <figure class={computedClassName}>
+    <img lwc:if={image} src={image} alt={imageAlt} />
+    <div lwc:elseif={video} class="nsw-media__video">
+      <iframe
+        src={video}
+        title={videoTitle}
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <figcaption lwc:if={caption}>{caption}</figcaption>
+  </figure>
+</template>

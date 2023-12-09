@@ -1,3 +1,13 @@
+// The following has more consistent results than the original height: 100% when nav not directly under the page div
+.nsw-main-nav {
+  height: 100vh;
+
+  @include breakpoint($nsw-desktop-breakpoint) {
+    height: auto;
+  }
+}
+
+/*
 .nsw-scope {
   .nsw-main-nav {
     li {
@@ -37,3 +47,4 @@
     }
   }
 }
+*/

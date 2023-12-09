@@ -14,6 +14,7 @@ export default class SfGpsDsAuNswSectionLwr extends SfGpsDsLwc {
   @api withBox;
   @api withInvert;
   @api imageSrc;
+  @api containerClassName;
   @api className;
 
   get computedStyle() {
@@ -44,6 +45,13 @@ export default class SfGpsDsAuNswSectionLwr extends SfGpsDsLwc {
       "nsw-section--image": this.imageSrc,
 
       [this.className]: this.className
+    });
+  }
+
+  get computedContainerClassName() {
+    return computeClass({
+      "nsw-container": this.withContainer,
+      [this.containerClassName]: this.containerClassName
     });
   }
 

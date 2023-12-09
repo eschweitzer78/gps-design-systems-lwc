@@ -310,17 +310,20 @@
     display: none;
   }
 }
-.THIS .nsw-header__search-area form button {
+.THIS .nsw-header__search-area form button,
+.THIS .nsw-header__search-area div button {
   display: none;
   padding: 0;
   width: 3rem;
 }
 @media (min-width: 62rem) {
-  .THIS .nsw-header__search-area form button {
+  .THIS .nsw-header__search-area form button,
+  .THIS .nsw-header__search-area div button {
     display: flex;
   }
 }
-.THIS .nsw-header__search-area form .nsw-material-icons {
+.THIS .nsw-header__search-area form .nsw-material-icons,
+.THIS .nsw-header__search-area div .nsw-material-icons {
   font-size: 2.25rem;
 }
 .THIS .nsw-header__search-area input {

@@ -11,35 +11,37 @@
       <template for:each={_items} for:item="card">
         <div key={card.index} class={computedColClassName}>
           <!-- card -->
-          <c-sf-gps-ds-au-nsw-card-comm
+          <c-sf-gps-ds-au-nsw-card-v2-comm
             lwc:if={displayDate}
             cstyle={cstyle}
+            headline={headline}
             orientation={orientation}
             tag={card.tag}
             image={card.image}
             image-alt={card.imageAlt}
-            headline={card.headline}
+            title={card.title}
             copy={card.copy}
             footer={card.footer}
             date={card.date}
             date-style={dateStyle}
             use-markup="true"
           >
-          </c-sf-gps-ds-au-nsw-card-comm>
+          </c-sf-gps-ds-au-nsw-card-v2-comm>
 
-          <c-sf-gps-ds-au-nsw-card-comm
+          <c-sf-gps-ds-au-nsw-card-v2-comm
             lwc:else
             cstyle={cstyle}
+            headline={headline}
             orientation={orientation}
             tag={card.tag}
             image={card.image}
             image-alt={card.imageAlt}
-            headline={card.headline}
+            title={card.title}
             copy={card.copy}
             footer={card.footer}
             use-markup="true"
           >
-          </c-sf-gps-ds-au-nsw-card-comm>
+          </c-sf-gps-ds-au-nsw-card-v2-comm>
         </div>
       </template>
     </div>

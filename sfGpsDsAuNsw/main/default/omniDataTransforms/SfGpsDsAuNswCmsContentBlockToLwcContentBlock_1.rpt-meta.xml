@@ -137,48 +137,21 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
+        <formulaConverted
+    >| | var:collection:items:contentNodes:image:url ISBLANK var:collection:items:contentNodes:image:unauthenticatedUrl var:collection:items:contentNodes:image:url IF</formulaConverted>
+        <formulaExpression
+    >IF(ISBLANK(collection:items:contentNodes:image:url), collection:items:contentNodes:image:unauthenticatedUrl, collection:items:contentNodes:image:url)</formulaExpression>
+        <formulaResultPath
+    >collection:items:contentNodes:imageUrlV2</formulaResultPath>
+        <formulaSequence>1.0</formulaSequence>
         <globalKey
-    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock7467857113909886</globalKey>
-        <inputFieldName
-    >collection:items:contentNodes:image:altText</inputFieldName>
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlockCustom2413</globalKey>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
-        <outputCreationSequence>1.0</outputCreationSequence>
-        <outputFieldName>imageAlt</outputFieldName>
-        <outputObjectName>json</outputObjectName>
-        <requiredForUpsert>false</requiredForUpsert>
-        <upsertKey>false</upsertKey>
-    </omniDataTransformItem>
-    <omniDataTransformItem>
-        <disabled>false</disabled>
-        <filterGroup>0.0</filterGroup>
-        <globalKey
-    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock6619356964546077</globalKey>
-        <inputFieldName
-    >collection:items:contentNodes:name:value</inputFieldName>
-        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
-        <linkedObjectSequence>0.0</linkedObjectSequence>
-        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
-        <outputCreationSequence>1.0</outputCreationSequence>
-        <outputFieldName>name</outputFieldName>
-        <outputObjectName>json</outputObjectName>
-        <requiredForUpsert>false</requiredForUpsert>
-        <upsertKey>false</upsertKey>
-    </omniDataTransformItem>
-    <omniDataTransformItem>
-        <disabled>false</disabled>
-        <filterGroup>0.0</filterGroup>
-        <globalKey
-    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock40964600281087593</globalKey>
-        <inputFieldName
-    >collection:items:contentNodes:headline:value</inputFieldName>
-        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
-        <linkedObjectSequence>0.0</linkedObjectSequence>
-        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
-        <outputCreationSequence>1.0</outputCreationSequence>
-        <outputFieldName>headline</outputFieldName>
-        <outputObjectName>json</outputObjectName>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>Formula</outputFieldName>
+        <outputObjectName>Formula</outputObjectName>
         <requiredForUpsert>false</requiredForUpsert>
         <upsertKey>false</upsertKey>
     </omniDataTransformItem>
@@ -188,7 +161,7 @@
         <globalKey
     >SfGpsDsAuNswCmsContentBlockToLwcContentBlock515254981368318</globalKey>
         <inputFieldName
-    >collection:items:contentNodes:image:unauthenticatedUrl</inputFieldName>
+    >collection:items:contentNodes:imageUrlV2</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
         <linkedObjectSequence>0.0</linkedObjectSequence>
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
@@ -242,6 +215,54 @@
         <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
         <outputCreationSequence>1.0</outputCreationSequence>
         <outputFieldName>copy</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock7467857113909886</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:image:altText</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>imageAlt</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock6619356964546077</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:name:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>name</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey
+    >SfGpsDsAuNswCmsContentBlockToLwcContentBlock40964600281087593</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:headline:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsContentBlockToLwcContentBlock</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>headline</outputFieldName>
         <outputObjectName>json</outputObjectName>
         <requiredForUpsert>false</requiredForUpsert>
         <upsertKey>false</upsertKey>

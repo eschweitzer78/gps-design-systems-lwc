@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>59.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Media</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property label="Image source" name="image" type="String" />
+      <property label="Image alternative text" name="imageAlt" type="String" />
+      <property label="Video source" name="video" type="String" />
+
+      <property
+        label="Caption"
+        name="caption"
+        type="String"
+        description="Provides further details where the image or video alone may not be sufficient - in Markdown format."
+        default="A long caption, ee mei labores adipiscing, nonumy reprehendunt ex mea umo tota has at, clita bonorum erroribus vis ne."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+
+      <property
+        label="Colour style"
+        name="cstyle"
+        type="String"
+        default="none"
+        datasource="none,dark,light,transparent"
+      />
+
+      <property
+        label="Position"
+        name="position"
+        type="String"
+        datasource="default,90,80,70,50,left-50,right-50,left-40,right-40,left-30,right-30"
+        required="true"
+        default="default"
+      />
+
+      <property label="Additional CSS class" name="className" type="String" />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

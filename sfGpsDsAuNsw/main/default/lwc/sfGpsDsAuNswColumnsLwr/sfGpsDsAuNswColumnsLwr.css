@@ -1,0 +1,47 @@
+.sfgpsdsaunsw-columns--stretch {
+  align-items: stretch;
+}
+
+.sfgpsdsaunsw-columns--center {
+  align-items: center;
+}
+
+.sfgpsdsaunsw-columns--start {
+  align-items: start;
+}
+
+.sfgpsdsaunsw-columns--end {
+  align-items: end;
+}
+
+/* 
+   For Exp Builder design mode, probably somewhat brittle as Exp Cloud may change internal mechanics...
+   but as long as it works on the published site it's okay I guess
+*/
+/*
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] {
+  height: 100%
+}
+
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] > .interactions-region > *:has(.dropzone:not(:empty)) {
+  position: relative;
+}
+
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] > .interactions-region > * > .dropzone:has(* > .interactions-component) {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] > .interactions-region > * > .dropzone > *:has(.interactions-component),
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] > .interactions-region > * > .dropzone > *:has(.interactions-component) > .interactions-component,
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] > .interactions-region > * > .dropzone > *:has(.interactions-component) > .interactions-component > .actualNode {
+  height: 100%
+}
+
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] > .interactions-region > *:has(.interactions-component),
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] > .interactions-region > * > .interactions-component,
+.sfgpsdsaunsw-columns--stretch > .nsw-col > [slot] > .interactions-region > * > .interactions-component > .actualNode {
+  height: 100%
+}
+*/

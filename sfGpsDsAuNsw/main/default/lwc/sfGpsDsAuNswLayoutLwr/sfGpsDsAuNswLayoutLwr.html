@@ -1,0 +1,33 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <div lwc:else class={computedClassName}>
+    <template lwc:if={computedShowSidebarLeft}>
+      <div class={computedSidebarClassName}>
+        <slot name="Sidebar"></slot>
+      </div>
+
+      <div class={computedMainClassName}>
+        <slot name="Main"></slot>
+      </div>
+    </template>
+
+    <template lwc:elseif={computedShowSidebarRight}>
+      <div class={computedMainClassName}>
+        <slot name="Main"></slot>
+      </div>
+
+      <div class={computedSidebarClassName}>
+        <slot name="Sidebar"></slot>
+      </div>
+    </template>
+
+    <div lwc:else class={computedMainClassName}>
+      <slot name="Main"></slot>
+    </div>
+  </div>
+</template>

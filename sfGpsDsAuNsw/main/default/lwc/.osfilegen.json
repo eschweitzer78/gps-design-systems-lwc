@@ -212,6 +212,27 @@
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     }
   },
+  "sfGpsDsAuNswCardV2": {
+    "target": "!Os",
+    "card.gen.css": {
+      "target": "card.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
   "sfGpsDsAuNswCardCollectionComm": {
     "target": "!Os",
     "!.html": {
@@ -236,6 +257,24 @@
     "!.html": {
       "target": "!Os.html",
       "c-sf-gps-ds-au-nsw-card": "c-sf-gps-ds-au-nsw-card-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsAuNswCardV2Comm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-nsw-card-v2": "c-sf-gps-ds-au-nsw-card-v2-os",
       "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
     },
     "!.js": {
@@ -294,6 +333,24 @@
     }
   },
   "sfGpsDsAuNswContentBlockComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-nsw-content-block": "c-sf-gps-ds-au-nsw-content-block-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsAuNswContentBlockV2Comm": {
     "target": "!Os",
     "!.html": {
       "target": "!Os.html",
@@ -517,6 +574,45 @@
       "target": "!Os.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsAuNswMarkupElementComm": "SfGpsDsAuNswMarkupElementCommOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsAuNswMedia": {
+    "target": "!Os",
+    "media.gen.css": {
+      "target": "media.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsAuNswMediaComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-nsw-media": "c-sf-gps-ds-au-nsw-media-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

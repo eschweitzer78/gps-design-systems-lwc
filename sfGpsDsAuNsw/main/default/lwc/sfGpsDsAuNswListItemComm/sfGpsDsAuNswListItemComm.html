@@ -1,5 +1,12 @@
 <template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-list-item
+    lwc:else
     label={label}
     title={_headline.text}
     link={_headline.url}
