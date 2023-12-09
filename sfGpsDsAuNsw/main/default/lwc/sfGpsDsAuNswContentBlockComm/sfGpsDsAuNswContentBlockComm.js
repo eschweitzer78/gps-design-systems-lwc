@@ -41,12 +41,10 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
   _originalLinks;
 
   @api get links() {
-    console.log("get links", this._originalLinks);
     return this._originalLinks;
   }
 
   set links(markdown) {
-    console.log("> set links", markdown);
     this._originalLinks = markdown;
 
     try {
@@ -58,7 +56,6 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
     }
-    console.log("< set links", JSON.stringify(this._links, null, 2));
   }
 
   /*

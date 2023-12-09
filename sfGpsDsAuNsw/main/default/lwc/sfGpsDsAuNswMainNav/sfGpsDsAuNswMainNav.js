@@ -202,7 +202,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     let index = event.currentTarget.dataset.ndx;
     let clickLevel = this._mapItems[index]?.level;
 
-    console.log("clickLevel", clickLevel);
+    //console.log("clickLevel", clickLevel);
 
     // eslint-disable-next-line guard-for-in
     for (let prop in this._mapItems) {
@@ -246,7 +246,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
   handleKeydown(event) {
     if (this._megaMenu && event.key === "Escape") {
-      console.log("escape", event.currentTarget.dataset.ndx);
+      //console.log("escape", event.currentTarget.dataset.ndx);
       /*
       const navItem = this.getLatestSubNav();
 
