@@ -5,5 +5,6 @@
   </design:attribute>
   <design:attribute name="contentId" label="contentId" description="Id to set on content region.">
   </design:attribute>
-
+  <design:attribute name="backToTopShow" label="Show back to top" description="Set to have a back to top button.">
+  </design:attribute>
 </design:component>
