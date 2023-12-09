@@ -67,15 +67,16 @@ export function debounce(func, delay, options) {
   let invokeLeading = _options.leading;
   let timer;
 
-  return function debounced() {
-    const args = Array.prototype.slice.apply(arguments);
+  return (...args) => {
     if (invokeLeading) {
       func.apply(this, args);
       invokeLeading = false;
     }
+
     clearTimeout(timer);
+
     // eslint-disable-next-line @lwc/lwc/no-async-operation
-    timer = setTimeout(function () {
+    timer = setTimeout(() => {
       func.apply(this, args);
       invokeLeading = _options.leading;
     }, delay);

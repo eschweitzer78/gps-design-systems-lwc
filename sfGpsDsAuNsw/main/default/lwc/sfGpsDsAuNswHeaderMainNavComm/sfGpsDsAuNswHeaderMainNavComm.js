@@ -7,7 +7,7 @@
 
 import { api, track } from "lwc";
 import SfGpsDsIp from "c/sfGpsDsIpLwc";
-import { uniqueId } from "c/sfGpsDsHelpers";
+// import { uniqueId } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIp {
   @api mode = "Integration Procedure";
@@ -45,7 +45,7 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIp {
   @api megaMenu = false;
   @api mainNavClassName;
 
-  @track mainNavId = uniqueId("sf-gps-ds-nsw-header-main-nav");
+  @api mainNavId = "nav";
 
   // Events
 

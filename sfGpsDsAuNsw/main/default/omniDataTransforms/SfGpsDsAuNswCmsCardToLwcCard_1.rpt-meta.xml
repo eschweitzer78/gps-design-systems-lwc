@@ -217,71 +217,6 @@
     <omniDataTransformItem>
         <disabled>false</disabled>
         <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsCardToLwcCard5754378337606285</globalKey>
-        <inputFieldName
-    >collection:items:contentNodes:headlineV2</inputFieldName>
-        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
-        <linkedObjectSequence>0.0</linkedObjectSequence>
-        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
-        <outputCreationSequence>1.0</outputCreationSequence>
-        <outputFieldName>headline</outputFieldName>
-        <outputObjectName>json</outputObjectName>
-        <requiredForUpsert>false</requiredForUpsert>
-        <upsertKey>false</upsertKey>
-    </omniDataTransformItem>
-    <omniDataTransformItem>
-        <disabled>false</disabled>
-        <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsCardToLwcCard8722471729407886</globalKey>
-        <inputFieldName
-    >collection:items:contentNodes:image:unauthenticatedUrl</inputFieldName>
-        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
-        <linkedObjectSequence>0.0</linkedObjectSequence>
-        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
-        <outputCreationSequence>1.0</outputCreationSequence>
-        <outputFieldName>image</outputFieldName>
-        <outputObjectName>json</outputObjectName>
-        <requiredForUpsert>false</requiredForUpsert>
-        <upsertKey>false</upsertKey>
-    </omniDataTransformItem>
-    <omniDataTransformItem>
-        <disabled>false</disabled>
-        <filterGroup>0.0</filterGroup>
-        <globalKey>SfGpsDsAuNswCmsCardToLwcCard9429902226807563</globalKey>
-        <inputFieldName
-    >collection:items:contentNodes:name:value</inputFieldName>
-        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
-        <linkedObjectSequence>0.0</linkedObjectSequence>
-        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
-        <outputCreationSequence>1.0</outputCreationSequence>
-        <outputFieldName>name</outputFieldName>
-        <outputObjectName>json</outputObjectName>
-        <requiredForUpsert>false</requiredForUpsert>
-        <upsertKey>false</upsertKey>
-    </omniDataTransformItem>
-    <omniDataTransformItem>
-        <disabled>false</disabled>
-        <filterGroup>0.0</filterGroup>
-        <formulaConverted
-    >| &apos;[&apos; var:collection:items:contentNodes:headline:value &apos;](&apos; var:collection:items:contentNodes:Link:value &apos;)&apos; CONCAT</formulaConverted>
-        <formulaExpression
-    >CONCAT(&apos;[&apos;,%collection:items:contentNodes:headline:value%,&apos;](&apos;, collection:items:contentNodes:Link:value,&apos;)&apos;)</formulaExpression>
-        <formulaResultPath
-    >collection:items:contentNodes:headlineV2</formulaResultPath>
-        <formulaSequence>1.0</formulaSequence>
-        <globalKey>SfGpsDsAuNswCmsCardToLwcCard2155741793164061</globalKey>
-        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
-        <linkedObjectSequence>0.0</linkedObjectSequence>
-        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
-        <outputCreationSequence>0.0</outputCreationSequence>
-        <outputFieldName>Formula</outputFieldName>
-        <outputObjectName>Formula</outputObjectName>
-        <requiredForUpsert>false</requiredForUpsert>
-        <upsertKey>false</upsertKey>
-    </omniDataTransformItem>
-    <omniDataTransformItem>
-        <disabled>false</disabled>
-        <filterGroup>0.0</filterGroup>
         <globalKey>SfGpsDsAuNswCmsCardToLwcCard5805141845735662</globalKey>
         <inputFieldName>collection:items:contentNodes:Tag:value</inputFieldName>
         <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
@@ -335,6 +270,91 @@
         <outputCreationSequence>1.0</outputCreationSequence>
         <outputFieldName>date</outputFieldName>
         <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard5754378337606285</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:headlineV2</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>headline</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <formulaConverted
+    >| | var:collection:items:contentNodes:image:url ISBLANK var:collection:items:contentNodes:image:unauthenticatedUrl var:collection:items:contentNodes:image:url IF</formulaConverted>
+        <formulaExpression
+    >IF(ISBLANK(collection:items:contentNodes:image:url), collection:items:contentNodes:image:unauthenticatedUrl, collection:items:contentNodes:image:url)</formulaExpression>
+        <formulaResultPath
+    >collection:items:contentNodes:imageUrlV2</formulaResultPath>
+        <formulaSequence>2.0</formulaSequence>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCardCustom1963</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>Formula</outputFieldName>
+        <outputObjectName>Formula</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard8722471729407886</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:imageUrlV2</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>image</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard9429902226807563</globalKey>
+        <inputFieldName
+    >collection:items:contentNodes:name:value</inputFieldName>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>1.0</outputCreationSequence>
+        <outputFieldName>name</outputFieldName>
+        <outputObjectName>json</outputObjectName>
+        <requiredForUpsert>false</requiredForUpsert>
+        <upsertKey>false</upsertKey>
+    </omniDataTransformItem>
+    <omniDataTransformItem>
+        <disabled>false</disabled>
+        <filterGroup>0.0</filterGroup>
+        <formulaConverted
+    >| &apos;[&apos; var:collection:items:contentNodes:headline:value &apos;](&apos; var:collection:items:contentNodes:Link:value &apos;)&apos; CONCAT</formulaConverted>
+        <formulaExpression
+    >CONCAT(&apos;[&apos;,%collection:items:contentNodes:headline:value%,&apos;](&apos;, collection:items:contentNodes:Link:value,&apos;)&apos;)</formulaExpression>
+        <formulaResultPath
+    >collection:items:contentNodes:headlineV2</formulaResultPath>
+        <formulaSequence>1.0</formulaSequence>
+        <globalKey>SfGpsDsAuNswCmsCardToLwcCard2155741793164061</globalKey>
+        <inputObjectQuerySequence>0.0</inputObjectQuerySequence>
+        <linkedObjectSequence>0.0</linkedObjectSequence>
+        <name>SfGpsDsAuNswCmsCardToLwcCard</name>
+        <outputCreationSequence>0.0</outputCreationSequence>
+        <outputFieldName>Formula</outputFieldName>
+        <outputObjectName>Formula</outputObjectName>
         <requiredForUpsert>false</requiredForUpsert>
         <upsertKey>false</upsertKey>
     </omniDataTransformItem>
@@ -483,10 +503,10 @@
         },
         &quot;image&quot; : {
           &quot;thumbnailUrl&quot; : null,
-          &quot;url&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MCKNAHV65EWBFAPEQHHGZOMKXYEU&quot;,
+          &quot;url&quot; : null,
           &quot;nodeType&quot; : &quot;Media&quot;,
           &quot;title&quot; : &quot;daniel-olah-IAJNzZhDADQ-unsplash&quot;,
-          &quot;unauthenticatedUrl&quot; : null,
+          &quot;unauthenticatedUrl&quot; : &quot;https://isvsi-14ddd2ecd93-1687f12594-181173f4733.force.com/sfgpsdsaunsw/cms/delivery/media/MCKNAHV65EWBFAPEQHHGZOMKXYEU&quot;,
           &quot;mimeType&quot; : &quot;image/jpeg&quot;,
           &quot;mediaType&quot; : &quot;Image&quot;,
           &quot;altText&quot; : &quot;Green Globe&quot;,

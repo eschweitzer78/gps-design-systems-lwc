@@ -8,7 +8,7 @@
   <template lwc:else>
     <section class={computedClassName} style={computedStyle}>
       <template lwc:if={withContainer}>
-        <div class="nsw-container">
+        <div class={computedContainerClassName}>
           <slot name="Section"></slot>
         </div>
       </template>

@@ -5,6 +5,8 @@ import { LightningElement, api } from "lwc";
  * @slot footer
  */
 export default class sfGpsDsAuNswLwrThemeLayout extends LightningElement {
+  static renderMode = "light";
+
   @api containerClassName = "";
   @api headerClassName = "";
   @api mainClassName = "";

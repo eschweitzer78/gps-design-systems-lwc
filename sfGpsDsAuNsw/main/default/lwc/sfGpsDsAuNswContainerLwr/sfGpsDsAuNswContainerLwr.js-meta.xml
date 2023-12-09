@@ -10,10 +10,16 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
-        label="Container class name"
+        label="Mode"
+        name="mode"
+        type="String"
+        datasource="Default,Flush"
+      />
+      <property
+        label="Class name"
         name="containerClassName"
         type="String"
-        default="nsw-container"
+        description="Additional CSS class to be applied."
       />
     </targetConfig>
   </targetConfigs>

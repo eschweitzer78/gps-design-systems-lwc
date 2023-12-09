@@ -37,6 +37,11 @@
         default="false"
       />
       <property label="Image Src" name="imageSrc" type="String" />
+      <property
+        label="Additional container CSS class"
+        name="containerClassName"
+        type="String"
+      />
       <property label="Additional CSS class" name="className" type="String" />
     </targetConfig>
   </targetConfigs>

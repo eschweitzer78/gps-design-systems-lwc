@@ -1,0 +1,14 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <div class={computedClassName}>
+      <span if:false={firstChild}></span>
+      <slot name="Block"></slot>
+    </div>
+  </template>
+</template>

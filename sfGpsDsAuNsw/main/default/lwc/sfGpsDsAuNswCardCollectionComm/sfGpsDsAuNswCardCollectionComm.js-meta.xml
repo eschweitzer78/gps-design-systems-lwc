@@ -17,6 +17,12 @@
         required="true"
       />
       <property
+        name="headline"
+        type="Boolean"
+        label="Headline"
+        description="Apply a specific headline styling."
+      />
+      <property
         name="orientation"
         type="String"
         label="Orientation"

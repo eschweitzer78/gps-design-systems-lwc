@@ -1,0 +1,41 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-nsw-card-v2
+    lwc:else
+    cstyle={cstyle}
+    headline={headline}
+    orientation={orientation}
+    tag={tag}
+    date={_date}
+    date-style={dateStyle}
+    image={image}
+    image-alt={imageAlt}
+    title={_titleText}
+    link={_titleUrl}
+    highlight={highlight}
+    class-name={className}
+  >
+    <template lwc:if={copy}>
+      <p class="nsw-card__copy" lwc:ref="copy" lwc:dom="manual"></p>
+    </template>
+    <template lwc:else>
+      <div class={computedCopyClassName}>
+        <slot name="Card-Copy" onslotchange={handleSlotChange}></slot>
+      </div>
+    </template>
+
+    <template lwc:if={footer}>
+      <hr class="nsw-card__divider" />
+      <div class="nsw-card__footer" lwc:ref="footer" lwc:dom="manual"></div>
+    </template>
+    <div lwc:else class={computedFooterClassName}>
+      <hr lwc:if={footerSlotted} class="nsw-card__divider" />
+      <slot name="Card-Footer" onslotchange={handleSlotChange}></slot>
+    </div>
+  </c-sf-gps-ds-au-nsw-card-v2>
+</template>

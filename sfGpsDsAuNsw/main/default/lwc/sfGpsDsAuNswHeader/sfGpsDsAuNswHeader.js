@@ -7,6 +7,7 @@
 
 import { LightningElement, api, track } from "lwc";
 import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import cBasePath from "@salesforce/community/basePath";
 
 export default class SfGpsDsAuNswHeader extends LightningElement {
   static renderMode = "light";
@@ -74,7 +75,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   }
 
   get computedHeaderUrl() {
-    return this.headerUrl || "#";
+    return this.headerUrl || cBasePath;
   }
 
   /* helpers */

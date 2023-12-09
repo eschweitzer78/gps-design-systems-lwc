@@ -166,6 +166,13 @@
         default="false"
       />
       <property
+        name="mainNavId"
+        type="String"
+        label="Main nav Id"
+        description="Sets the Id for the main nav, make sure you pick a unique value."
+        default="nav"
+      />
+      <property
         name="mainNavClassName"
         type="String"
         label="Main nav class name"
