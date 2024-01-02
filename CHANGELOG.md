@@ -1,20 +1,63 @@
 ## Change log
 
+### 2 January 2024
+
+#### Base: Fix the debounce implementation in Helpers
+
+The debounce helper function now works as intended.
+
+Refer to [`sfGpsDs/main/default/lwc/sfGpsDsHelpers/jsutil_v6.js`](./sfGpsDs/main/default/lwc/sfGpsDsHelpers/jsutil_v6.js)
+
+#### NSW DS: Support for back to top widget as a theme setting
+
+The NSW Design System theme now has an option to activate the back to top widget.
+
+Refer to [`sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswAuraThemeLayout`](./sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswAuraThemeLayout) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBackToTop`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBackToTop)
+
+#### NSW DS: Fix the navigation issue for Main Nav mega menus with three levels of nesting
+
+Navigation and rendering will work as required depending on the screen form-factor (mobile or desktop).
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav)
+
+#### NSW DS: Correct the semantical mix-up between title and headline in Card and Content Block
+
+Both Card and Content Block used to have mixed-up semantics for headline with the title text being referred to as the
+headline, whereas headline is actually a styling attribute that applies to the title in a card only. As a result, we are deprecating `sfGpsDsAuNswCardComm` and `sfGpsDsAuNswContentBlockComm` and replacing them by `sfGpsDsAuNswCardV2Comm` and `sfGpsDsAuContentBlockV2Comm`.
+
+A new `sfGpsDsAuNswCardV2` content types have also been introduced.
+
+Thoroughly check implications if you have been leveraging the base `sfGpsDsAuNswCard` and `sfGpsDsAuNswContentBlock` LWC elements in your own LWCs.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCardV2Comm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCardV2Comm), [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlockV2Comm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlockV2Comm/sfGpsDsAuNswContentBlockV2Comm.js), and [`sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCardV2.managedContentType-meta.xml`](./sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCardV2.managedContentType-meta.xml).
+
+#### NSW DS: New Media widget
+
+Media lets display an image or a video; future versions will aim at supporting image src sets.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMedia`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMedia)
+
+#### NSW DS: Further support for LWR with Blocks, Columns, Layouts and a refreshed Section elements.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBlockLwr`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBlockLwr), [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswColumnsLwr`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswColumnsLwr),
+[`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLayoutLwr`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLayoutLwr)
+and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSectionLwr`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSectionLwr)
+
 ### 1 December 2023
 
-#### NSW DS: mark Main Nav pages as active
+#### NSW DS: Mark Main Nav pages as active
 
 When using the one-level version of `sfGpsDsAuNswMainNav`, entries are now marked active when the current visible page's URL starts with the entry's URL.
 
 Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav)
 
-#### NSW DS: support for social media icons in the Footer
+#### NSW DS: Support for social media icons in the Footer
 
 We now support adding social media icons and links for LinkedIn, Twitter/X and Facebook in the footer.
 
 Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm)
 
-#### NSW DS: support multiple modes for the Progress Indicator
+#### NSW DS: Support multiple modes for the Progress Indicator
 
 The Progress Indicator now supports multiple step counting modes:
 
@@ -26,7 +69,7 @@ Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswProgressIndicator`](./sfGps
 
 ### 29 November 2023
 
-#### NSW DS: improved LWR support
+#### NSW DS: Improved LWR support
 
 Even though LWR still has a few missing capabilities (e.g. no file upload, planed for v250 Safe Harbour), it is very well
 suited for building NSW gov pages with containers and sections, applying the colour schemes etc. We improved our support

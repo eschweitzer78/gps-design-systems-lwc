@@ -6,7 +6,8 @@
  */
 
 // TODO: handle issue with level2 menus on desktop vs mobile -- how do we know when to navigate vs expand?
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api, track, wire } from "lwc";
+import { CurrentPageReference } from "lightning/navigation";
 import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswMainNav extends LightningElement {
@@ -57,6 +58,9 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         item.url === pathname ||
         (item.url && pathname.startsWith(item.url + "/"));
       const isActive = isCurrentPage && !parentLevel && !this._megaMenu;
+      console.log(
+        `item.url ${item.url}, pathname ${pathname}, isActive ${isActive}`
+      );
 
       let result = {
         ...item,
@@ -64,7 +68,8 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         index: item.index || `${parentIndex}-${index}`,
         level: parentLevel + 1,
         isActive: isActive,
-        className: isActive ? "active" : "",
+        className: isActive && !this._megaMenu ? "active" : "",
+        anchorClasssName: isActive && this._megaMenu ? "active" : "",
         subNavAriaLabel: `${item.text} Submenu`,
         subNavClassName: "nsw-main-nav__sub-nav"
       };
@@ -123,6 +128,21 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
   @api className;
 
+  /* wire: handlePageReference */
+
+  _pageReference;
+
+  @wire(CurrentPageReference) handlePageReference(pageReference) {
+    /* This is called when we navigate off the current page... */
+
+    if (this._pageReference && this._pageReference !== pageReference) {
+      /* update menu */
+      this.navItemsMapping();
+    }
+
+    this._pageReference = pageReference;
+  }
+
   /* get: computedClassName */
 
   get computedClassName() {
@@ -146,6 +166,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
       item.key = `item-${this.keyIndex++}`;
       item.isActive = false;
       item.className = "";
+      item.anchorClasssName = "";
       item.subNavClassName = "nsw-main-nav__sub-nav";
     }
     //this._navItems = [...this._navItems];
@@ -201,8 +222,6 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     this.isActive = true;
     let index = event.currentTarget.dataset.ndx;
     let clickLevel = this._mapItems[index]?.level;
-
-    //console.log("clickLevel", clickLevel);
 
     // eslint-disable-next-line guard-for-in
     for (let prop in this._mapItems) {
