@@ -44,7 +44,7 @@
   "devDependencies": {
     "@dpc-sdp/ripple-global": "^1.38.3",
     "@lwc/eslint-plugin-lwc": "^1.0.1",
-    "@prettier/plugin-xml": "^0.13.1",
+    "@prettier/plugin-xml": "^3.0.0",
     "@sa11y/jest": "^3.1.0",
     "@salesforce/eslint-config-lwc": "^2.0.0",
     "@salesforce/eslint-plugin-aura": "^2.0.0",
@@ -57,8 +57,8 @@
     "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
     "nsw-design-system": "^3.13.0",
-    "prettier": "^2.3.2",
-    "prettier-plugin-apex": "^1.12.0",
+    "prettier": "^3.1.1",
+    "prettier-plugin-apex": "^2.0.1",
     "sass": "^1.59.3"
   },
   "devDependencies2": {
