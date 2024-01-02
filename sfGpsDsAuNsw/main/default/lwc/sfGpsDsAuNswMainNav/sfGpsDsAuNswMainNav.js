@@ -58,9 +58,6 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         item.url === pathname ||
         (item.url && pathname.startsWith(item.url + "/"));
       const isActive = isCurrentPage && !parentLevel && !this._megaMenu;
-      console.log(
-        `item.url ${item.url}, pathname ${pathname}, isActive ${isActive}`
-      );
 
       let result = {
         ...item,
