@@ -18,14 +18,14 @@
 
     <ul class="nsw-main-nav__list" onkeydown={handleKeydown}>
       <template for:each={_navItems} for:item="navItem">
-        <li key={navItem.id}>
+        <li key={navItem.id} class={navItem.className}>
           <template lwc:if={navItem.subNav}>
             <a
               href={navItem.url}
               role="button"
               aria-expanded={navItem.isActive}
               aria-controls={navItem.id}
-              class={navItem.className}
+              class={navItem.anchorClassName}
               data-ndx={navItem.index}
               onclick={handleClick}
             >
@@ -245,6 +245,7 @@
           <a
             lwc:else
             href={navItem.url}
+            class={navItem.anchorClassName}
             data-ndx={navItem.index}
             onclick={handleClick}
           >
