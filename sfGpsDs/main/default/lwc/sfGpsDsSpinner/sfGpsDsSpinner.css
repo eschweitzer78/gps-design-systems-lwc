@@ -8,8 +8,12 @@
   background-color: hsla(0, 0%, 100%, 0.75);
   visibility: visible;
   opacity: 1;
-  -webkit-transition: opacity 0.2s ease, visibility 0s;
-  transition: opacity 0.2s ease, visibility 0s;
+  -webkit-transition:
+    opacity 0.2s ease,
+    visibility 0s;
+  transition:
+    opacity 0.2s ease,
+    visibility 0s;
   -webkit-transition-delay: 0s, 0.3s;
   transition-delay: 0s, 0.3s;
 }
@@ -17,8 +21,12 @@
 .sf-gps-ds-spinner_container.is-hidden {
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity 0.2s ease, visibility 0s;
-  transition: opacity 0.2s ease, visibility 0s;
+  -webkit-transition:
+    opacity 0.2s ease,
+    visibility 0s;
+  transition:
+    opacity 0.2s ease,
+    visibility 0s;
   -webkit-transition-delay: 0s, 0s;
   transition-delay: 0s, 0s;
 }

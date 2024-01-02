@@ -491,8 +491,8 @@ export default function (CodeMirror) {
         let check = isWordChar(startChar, helper)
           ? (ch) => isWordChar(ch, helper)
           : /\s/.test(startChar)
-          ? (ch) => /\s/.test(ch)
-          : (ch) => !/\s/.test(ch) && !isWordChar(ch);
+            ? (ch) => /\s/.test(ch)
+            : (ch) => !/\s/.test(ch) && !isWordChar(ch);
         while (start > 0 && check(line.charAt(start - 1))) --start;
         while (end < line.length && check(line.charAt(end))) ++end;
       }
@@ -713,10 +713,10 @@ function findPosH(doc, pos, dir, unit, visually) {
       let type = isWordChar(cur, helper)
         ? "w"
         : group && cur === "\n"
-        ? "n"
-        : !group || /\s/.test(cur)
-        ? null
-        : "p";
+          ? "n"
+          : !group || /\s/.test(cur)
+            ? null
+            : "p";
       if (group && !first && !type) type = "s";
       if (sawType && sawType !== type) {
         if (dir < 0) {

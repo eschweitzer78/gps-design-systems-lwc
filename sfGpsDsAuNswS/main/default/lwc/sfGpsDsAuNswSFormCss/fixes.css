@@ -135,6 +135,7 @@ legend span span {
 .form__checkbox input:focus ~ label:before,
 .form__checkboxes input.focus-visible ~ label:before,
 .form__checkboxes input:focus ~ label:before {
-  box-shadow: rgb(255, 255, 255) 0px 0px 0px 1px,
+  box-shadow:
+    rgb(255, 255, 255) 0px 0px 0px 1px,
     var(--nsw-s-focus, rgb(46, 82, 153)) 0px 0px 0px 3px;
 }

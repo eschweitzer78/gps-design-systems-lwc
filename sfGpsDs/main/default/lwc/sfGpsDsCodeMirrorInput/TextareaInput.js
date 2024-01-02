@@ -411,8 +411,8 @@ export default class TextareaInput {
     input.wrapper.style.cssText = "position: static";
     te.style.cssText = `position: absolute; width: 30px; height: 30px;
       top: ${e.clientY - wrapperBox.top - 5}px; left: ${
-      e.clientX - wrapperBox.left - 5
-    }px;
+        e.clientX - wrapperBox.left - 5
+      }px;
       z-index: 1000; background: ${
         ie ? "rgba(255, 255, 255, .05)" : "transparent"
       };

@@ -1005,7 +1005,9 @@ blockquote :last-child {
   padding: calc(22px - 0.75rem) 0.75rem;
   text-align: center;
   text-decoration: none;
-  transition: border-color 0.5s ease, background-color 0.5s ease,
+  transition:
+    border-color 0.5s ease,
+    background-color 0.5s ease,
     color 0.5s ease;
   width: 100%;
 }
@@ -1453,7 +1455,9 @@ input {
   height: 48px;
   max-width: 372px;
   padding: 0 0.825rem;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
   width: 100%;
 }
 
@@ -1498,7 +1502,9 @@ select {
   height: 48px;
   max-width: 372px;
   padding: 0 0.825rem;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
   width: 100%;
 }
 
@@ -1543,7 +1549,9 @@ textarea {
   height: 48px;
   max-width: 372px;
   padding: 0 0.825rem;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
   width: 100%;
 }
 
@@ -1588,7 +1596,9 @@ textarea.form--small {
   height: 48px;
   max-width: 372px;
   padding: 0 0.825rem;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
   width: 100%;
 }
 
@@ -1633,7 +1643,9 @@ textarea.form--small {
   height: 48px;
   max-width: 372px;
   padding: 0 0.825rem;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
   width: 100%;
 }
 
@@ -1678,7 +1690,9 @@ textarea.form--small {
   height: 48px;
   max-width: 372px;
   padding: 0 0.825rem;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease;
   width: 100%;
 }
 
@@ -2214,7 +2228,9 @@ legend {
   position: absolute;
   top: 100%;
   transform: translateY(-16px);
-  transition: visibility 0s linear 0.1s, transform 0.1s ease-in-out,
+  transition:
+    visibility 0s linear 0.1s,
+    transform 0.1s ease-in-out,
     opacity 0.1s ease-in-out;
   visibility: hidden;
   width: 100%;
@@ -3899,7 +3915,9 @@ legend {
     margin: 0;
     opacity: 0;
     transform: translateY(-60px);
-    transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+    transition:
+      transform 0.25s ease-in-out,
+      opacity 0.25s ease-in-out;
   }
 }
 
@@ -4571,7 +4589,9 @@ a.live-chat {
   right: 2.5rem;
   text-align: center;
   text-decoration: none;
-  transition: border-color 0.5s ease, background-color 0.5s ease,
+  transition:
+    border-color 0.5s ease,
+    background-color 0.5s ease,
     color 0.5s ease;
   width: 128px;
   z-index: 20;
@@ -4628,7 +4648,9 @@ a[id^="liveagent_button_online"] {
   right: 2.5rem;
   text-align: center;
   text-decoration: none;
-  transition: border-color 0.5s ease, background-color 0.5s ease,
+  transition:
+    border-color 0.5s ease,
+    background-color 0.5s ease,
     color 0.5s ease;
   width: 128px;
   z-index: 20;
@@ -4682,7 +4704,9 @@ a[id^="liveagent_button_online"]:disabled {
   margin-top: 1.5rem;
   opacity: 0;
   position: sticky;
-  transition: visibility 0s linear 0.3s, opacity 0.3s;
+  transition:
+    visibility 0s linear 0.3s,
+    opacity 0.3s;
   visibility: hidden;
   width: 9rem;
   width: fit-content;
@@ -4691,7 +4715,9 @@ a[id^="liveagent_button_online"]:disabled {
 
 .back-to-top.is-visible {
   opacity: 1;
-  transition: visibility 0s linear 0s, opacity 0.3s;
+  transition:
+    visibility 0s linear 0s,
+    opacity 0.3s;
   visibility: visible;
 }
 

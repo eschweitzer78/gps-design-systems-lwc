@@ -174,10 +174,10 @@ function configureMouse(cm, repeat, event) {
     value.unit = rect
       ? "rectangle"
       : repeat === "single"
-      ? "char"
-      : repeat === "double"
-      ? "word"
-      : "line";
+        ? "char"
+        : repeat === "double"
+          ? "word"
+          : "line";
   }
   if (value.extend == null || cm.doc.extend)
     value.extend = cm.doc.extend || event.shiftKey;
@@ -430,8 +430,8 @@ function leftButtonSelect(cm, event, start, behavior) {
         e.clientY < editorSize.top
           ? -20
           : e.clientY > editorSize.bottom
-          ? 20
-          : 0;
+            ? 20
+            : 0;
       if (outside)
         setTimeout(
           operation(cm, () => {

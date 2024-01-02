@@ -50,9 +50,9 @@ export function maybeScrollWindow(cm, rect) {
                            display.barHeight
                          }px;
                          left: ${rect.left}px; width: ${Math.max(
-        2,
-        rect.right - rect.left
-      )}px;`
+                           2,
+                           rect.right - rect.left
+                         )}px;`
     );
     cm.display.lineSpace.appendChild(scrollNode);
     scrollNode.scrollIntoView(doScroll);

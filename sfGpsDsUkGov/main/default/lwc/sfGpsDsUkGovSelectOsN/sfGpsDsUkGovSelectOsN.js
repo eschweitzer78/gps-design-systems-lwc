@@ -127,8 +127,8 @@ export default class SfGpsDsUkGovSelect extends LightningElement {
         item.value === ""
           ? NONE
           : typeof item.value === "boolean"
-          ? String(item.value)
-          : item.value,
+            ? String(item.value)
+            : item.value,
       index: index
     }));
 

@@ -10,7 +10,9 @@
   text-decoration: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: border-color 0.5s ease 0s, background-color 0.5s ease 0s,
+  transition:
+    border-color 0.5s ease 0s,
+    background-color 0.5s ease 0s,
     color 0.5s ease 0s;
   color: rgb(46, 82, 153);
   background-color: rgb(249, 253, 255);

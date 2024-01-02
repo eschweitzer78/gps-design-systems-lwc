@@ -653,8 +653,8 @@ function boxIsAfter(box, x, y, left) {
   return box.bottom <= y
     ? false
     : box.top > y
-    ? true
-    : (left ? box.left : box.right) > x;
+      ? true
+      : (left ? box.left : box.right) > x;
 }
 
 function coordsCharInner(cm, lineObj, lineNo, x, y) {
@@ -726,13 +726,14 @@ function coordsCharInner(cm, lineObj, lineNo, x, y) {
       ch === 0
         ? "after"
         : ch === lineObj.text.length
-        ? "before"
-        : measureCharPrepared(cm, preparedMeasure, ch - (ltr ? 1 : 0)).bottom +
-            widgetHeight <=
-            y ===
-          ltr
-        ? "after"
-        : "before";
+          ? "before"
+          : measureCharPrepared(cm, preparedMeasure, ch - (ltr ? 1 : 0))
+                .bottom +
+                widgetHeight <=
+                y ===
+              ltr
+            ? "after"
+            : "before";
     // Now get accurate coordinates for this place, in order to get a
     // base X position
     let coords = cursorCoords(

@@ -11,7 +11,9 @@
   padding: calc(22px - 0.75rem) 0.75rem;
   text-align: center;
   text-decoration: none;
-  transition: border-color 0.5s ease, background-color 0.5s ease,
+  transition:
+    border-color 0.5s ease,
+    background-color 0.5s ease,
     color 0.5s ease;
   width: 100%;
 }
