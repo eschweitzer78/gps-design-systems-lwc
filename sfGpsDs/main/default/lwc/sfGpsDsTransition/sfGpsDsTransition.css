@@ -1,7 +1,9 @@
 /* temporary */
 
 .fade-enter-active {
-  transition: transform ease-in 0.3s, opacity ease-in 0.3s;
+  transition:
+    transform ease-in 0.3s,
+    opacity ease-in 0.3s;
 }
 
 .fade-enter-from {

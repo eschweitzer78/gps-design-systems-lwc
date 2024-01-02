@@ -284,7 +284,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
     return rv
       ? rv
       : this.hasDayError || this.hasMonthError || this.hasYearError
-      ? this.errorMessage || ""
-      : "";
+        ? this.errorMessage || ""
+        : "";
   }
 }

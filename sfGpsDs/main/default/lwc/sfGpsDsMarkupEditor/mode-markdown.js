@@ -726,8 +726,8 @@ export default function (CodeMirror) {
                 setEm == null
                   ? "strong"
                   : setStrong == null
-                  ? "em"
-                  : "strong em";
+                    ? "em"
+                    : "strong em";
             if (setEm === true) state.em = ch;
             if (setStrong === true) state.strong = ch;
             let t = getType(state);

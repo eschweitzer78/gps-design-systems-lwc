@@ -107,8 +107,8 @@ function drawSelectionRange(cm, range, output) {
         "CodeMirror-selected",
         `position: absolute; left: ${left}px;
                              top: ${top}px; width: ${
-          width == null ? rightSide - left : width
-        }px;
+                               width == null ? rightSide - left : width
+                             }px;
                              height: ${bottom - top}px`
       )
     );

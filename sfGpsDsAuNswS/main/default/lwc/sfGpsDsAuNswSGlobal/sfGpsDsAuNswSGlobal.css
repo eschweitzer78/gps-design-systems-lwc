@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: Gotham;
-  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Book_Web.woff2)
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Book_Web.woff2)
       format("woff2"),
     url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Book_Web.woff)
       format("woff"),
@@ -15,7 +16,8 @@
 
 @font-face {
   font-family: Gotham;
-  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-BookItalic_Web.woff2)
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-BookItalic_Web.woff2)
       format("woff2"),
     url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-BookItalic_Web.woff)
       format("woff"),
@@ -29,7 +31,8 @@
 
 @font-face {
   font-family: Gotham;
-  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Medium_Web.woff2)
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Medium_Web.woff2)
       format("woff2"),
     url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Medium_Web.woff)
       format("woff"),
@@ -42,7 +45,8 @@
 
 @font-face {
   font-family: Gotham;
-  src: url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Bold_Web.woff2)
+  src:
+    url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Bold_Web.woff2)
       format("woff2"),
     url(/sfsites/c/resource/sfGpsDsAuNswS/fonts/Gotham-Bold_Web.woff)
       format("woff"),

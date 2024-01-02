@@ -109,8 +109,12 @@ ul.sfgpsds-listbox li.sfgpsds-listbox__item {
 .sfgpsds-dropdown-trigger .sfgpsds-dropdown {
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
-  transition: opacity 0.1s linear, visibility 0.1s linear;
+  -webkit-transition:
+    opacity 0.1s linear,
+    visibility 0.1s linear;
+  transition:
+    opacity 0.1s linear,
+    visibility 0.1s linear;
   top: 100%;
 }
 

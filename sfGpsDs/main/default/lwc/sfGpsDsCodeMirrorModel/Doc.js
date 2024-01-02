@@ -406,10 +406,10 @@ Doc.prototype = createObj(BranchChunk.prototype, {
           where === "text"
             ? "textClass"
             : where === "background"
-            ? "bgClass"
-            : where === "gutter"
-            ? "gutterClass"
-            : "wrapClass";
+              ? "bgClass"
+              : where === "gutter"
+                ? "gutterClass"
+                : "wrapClass";
         if (!line[prop]) line[prop] = cls;
         else if (classTest(cls).test(line[prop])) return false;
         else line[prop] += " " + cls;
@@ -427,10 +427,10 @@ Doc.prototype = createObj(BranchChunk.prototype, {
           where === "text"
             ? "textClass"
             : where === "background"
-            ? "bgClass"
-            : where === "gutter"
-            ? "gutterClass"
-            : "wrapClass";
+              ? "bgClass"
+              : where === "gutter"
+                ? "gutterClass"
+                : "wrapClass";
         let cur = line[prop];
         if (!cur) return false;
         else if (cls == null) line[prop] = null;
