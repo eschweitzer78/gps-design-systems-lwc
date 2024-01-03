@@ -8,6 +8,7 @@ export default class SfGpsDsAuNswMedia extends LightningElement {
   @api image;
   @api imageAlt;
   @api video;
+  @api videoTitle;
   @api caption;
   @api position;
   @api className;

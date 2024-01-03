@@ -4,9 +4,21 @@
     image={image}
     image-alt={imageAlt}
     video={video}
-    caption={caption}
+    video-title={videoTitle}
     position={position}
     class-name={className}
   >
+    <template lwc:if={caption}>
+      <figcaption
+        slot="caption"
+        lwc:ref="caption"
+        lwc:dom="manual"
+      ></figcaption>
+    </template>
+    <template lwc:else>
+      <div slot="caption">
+        <slot name="caption"></slot>
+      </div>
+    </template>
   </c-sf-gps-ds-au-nsw-media>
 </template>
