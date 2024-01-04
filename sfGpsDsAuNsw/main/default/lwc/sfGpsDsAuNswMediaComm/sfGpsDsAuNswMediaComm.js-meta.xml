@@ -9,9 +9,31 @@
   </targets>
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property label="Image source" name="image" type="String" />
-      <property label="Image alternative text" name="imageAlt" type="String" />
-      <property label="Video source" name="video" type="String" />
+      <property
+        name="image"
+        type="String"
+        label="Image source"
+        description="URL of a supporting image."
+      />
+      <property
+        name="imageAlt"
+        type="String"
+        label="Image alt"
+        description="Text used should there be an issue displaying the image."
+      />
+
+      <property
+        name="video"
+        type="String"
+        label="Video source"
+        description="URL of a supporting video."
+      />
+      <property
+        name="videoTitle"
+        type="String"
+        label="Video title"
+        description="Title of the video iframe."
+      />
 
       <property
         label="Caption"
@@ -26,15 +48,15 @@
         label="Colour style"
         name="cstyle"
         type="String"
-        default="none"
-        datasource="none,dark,light,transparent"
+        default="default"
+        datasource="default,dark,light,transparent"
       />
 
       <property
         label="Position"
         name="position"
         type="String"
-        datasource="default,90,80,70,50,left-50,right-50,left-40,right-40,left-30,right-30"
+        datasource="default,90,80,70,60,left-50,right-50,left-40,right-40,left-30,right-30"
         required="true"
         default="default"
       />

@@ -1,6 +1,7 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 /**
  * @slot Caption
@@ -10,30 +11,27 @@ export default class SfGpsDsAuNswMediaComm extends SfGpsDsLwc {
   @api image;
   @api imageAlt;
   @api video;
+  @api videoTitle;
   @api position;
   @api className;
-
-  // This is not exposed in Experience Builder
-  @api useMarkup = false;
 
   /*
    * caption
    */
 
-  _caption;
+  _captionOriginal;
   _captionHtml;
 
   @api get caption() {
-    return this._caption;
+    return this._captionOriginal;
   }
 
   set caption(markdown) {
-    this._caption = markdown;
+    this._captionOriginal = markdown;
+
     try {
       if (markdown) {
-        this._captionHtml = this.useMarkup
-          ? markdown
-          : mdEngine.renderEscaped(markdown);
+        this._captionHtml = mdEngine.renderEscaped(markdown);
       } else {
         this._captionHtml = null;
       }
@@ -47,5 +45,11 @@ export default class SfGpsDsAuNswMediaComm extends SfGpsDsLwc {
   connectedCallback() {
     super.connectedCallback();
     this.classList.add("nsw-scope");
+  }
+
+  renderedCallback() {
+    if (this.caption) {
+      replaceInnerHtml(this.refs.caption, this._captionHtml);
+    }
   }
 }
