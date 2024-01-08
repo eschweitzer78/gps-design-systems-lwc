@@ -23,6 +23,7 @@
                 class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
               >
                 <div class="sfgpsds-combobox__form-element" role="none">
+                  <!-- issue #280: add onclick event handler on input for omnistudio 248 -->
                   <input
                     class="sfgpsds-input sfgpsds-combobox__input combobox"
                     aria-describedby={computedAriaDescribedBy}
@@ -44,6 +45,7 @@
                     value={valueCopy}
                     onblur={showLookup}
                     onmouseup={showLookup}
+                    onclick={showLookup}
                     onkeydown={preventKeyDown}
                     onkeyup={handleKeyUp}
                   />
