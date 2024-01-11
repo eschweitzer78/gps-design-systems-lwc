@@ -17,8 +17,7 @@ Do read our [change log](./CHANGELOG.md) if you plan on updating already install
 - sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev) and know that we are investigating the support of Ripple v2
 - sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (pilot, no production without prior consultation); check the [documentation website](https://uk.dsforce.dev)
 
-**Important note for existing users of the libraries**: we used to require to install a base package and then a package for you design system of choice. We are dropping this
-pattern and now ship each design system with all dependencies but kindly note that it thus prevents you from having multiple design systems on a single org unless you deploy as source code. See instructions further down in this document regardind how to migrate from the former model to the new model.
+**Important note for existing users of the libraries**: we used to require to install a base package and then a package for you design system of choice. We are dropping this pattern and now ship each design system with all dependencies but kindly note that it thus prevents you from having multiple design systems on a single org unless you deploy as source code. See instructions further down in this document regarding how to migrate from the former model to the new one.
 
 ## Installing beta versions using Unlocked Packages
 
@@ -63,6 +62,7 @@ With dependencies now included in each jursidiction's design system library, you
 Do read our other guidelines:
 
 - [support](./SUPPORT.md)
+- [troubleshooting](./TROUBLESHOOT.md)
 - [security](./SECURITY.md)
 - [contribution](./CONTRIBUTION.md)
 - [code of conduct](./CODE_OF_CONDUCT.md)
