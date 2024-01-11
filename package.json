@@ -17,7 +17,12 @@
     "basegen": "node basegen.js",
     "osfilegen": "node osfilegen.js",
     "cssgen": "node cssgen.js",
-    "prep": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;sed 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\/node_modules/node_modules/g' ./node_modules/web-template-release/scss/qg-main.scss > ./node_modules/web-template-release/scss/qg-main-sfgpsds.scss;mkdir -p sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuVic1Full;mkdir -p sfGpsDsAuVic2Full;mkdir -p sfGpsDsUkGovFull",
+    "prep-nsw": "mkdir -p sfGpsDsAuNswFull",
+    "prep-nsws": "mkdir -p sfGpsDsAuNswSFull",
+    "prep-vic": "cp sfGpsDsAuVic/scss/_corecolor.override.scss node_modules/@dpc-sdp/ripple-global/scss/settings/_colorcore.scss;mkdir -p sfGpsDsAuVic1Full",
+    "prep-vic2": "cp -a node_modules/@dpc-sdp/ripple-ui-core/dist/assets/fonts sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/assets;cp -a node_modules/@dpc-sdp/ripple-ui-core/src/assets/flags sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/assets;cp -a node_modules/@dpc-sdp/ripple-ui-core/src/assets/logos sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/assets;cp -a node_modules/@dpc-sdp/ripple-ui-core/src/assets/patterns sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/assets;sed s#url\\(/assets#url\\(./assets#g node_modules/@dpc-sdp/ripple-ui-core/dist/global.css >sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/global.css;cp node_modules/@dpc-sdp/ripple-ui-core/dist/style.css sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2;mkdir -p sfGpsDsAuVic2Full",
+    "prep-ukgov": "mkdir -p sfGpsDsUkGovFull",
+    "prep": "npm run prep-nsw; npm run prep-nsws; npm run prep-vic; npm run prep-vic2; npm run prep-ukgov",
     "aunsw-copy": "rm -rf sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswFull;cp -a sfGpsDs/. sfGpsDsAuNswFull;cp -a sfGpsDsAuNsw/. sfGpsDsAuNswFull",
     "aunsws-copy": "rm -rf sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuNswSFull;cp -a sfGpsDs/. sfGpsDsAuNswSFull;cp -a sfGpsDsAuNswS/. sfGpsDsAuNswSFull",
     "auvic1-copy": "rm -rf sfGpsDsAuVic1Full;mkdir -p sfGpsDsAuVic1Full;cp -a sfGpsDs/. sfGpsDsAuVic1Full;cp -a sfGpsDsAuVic/. sfGpsDsAuVic1Full",
@@ -43,6 +48,7 @@
   },
   "devDependencies": {
     "@dpc-sdp/ripple-global": "^1.38.3",
+    "@dpc-sdp/ripple-ui-core": "^2.0.0",
     "@lwc/eslint-plugin-lwc": "^1.0.1",
     "@prettier/plugin-xml": "^3.0.0",
     "@sa11y/jest": "^3.1.0",
@@ -66,8 +72,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.6.2",
-    "font-awesome": "^4.7.0",
-    "web-template-release": "^4.1.0"
+    "font-awesome": "^4.7.0"
   },
   "engines": {
     "node": "18.16.0"

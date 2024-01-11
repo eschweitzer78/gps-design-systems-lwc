@@ -1,4 +1,0 @@
-<design:component >
-  <design:attribute name="noWidgetMargin" label="No widget margin" description="Removes the standard widget margin."/>
-  <design:attribute name="wide" label="Wide" description="Sets the content section as wide."/>
-</design:component>
