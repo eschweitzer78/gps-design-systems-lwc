@@ -6,46 +6,48 @@
         aria-label={mergedLabel}
         for="inputId"
       >
-        {mergedLabel}
+        <span>{mergedLabel}</span>
+        <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+
+        <template if:true={_propSetMap.repeat}>
+          <span
+            style="bottom: 7px; right: -11px"
+            class={_styleClasses.repeatContainer}
+            role="group"
+          >
+            <button
+              if:true={canRepeat}
+              class={_styleClasses.repeatAdd}
+              onclick={handleAdd}
+            >
+              <omnistudio-icon
+                icon-name="utility:add"
+                alternative-text={_repeatAlternativeText}
+                extraclass={_styleClasses.repeatIcons}
+                size="xx-small"
+              >
+              </omnistudio-icon>
+            </button>
+            <button
+              if:true={canRemove}
+              class={_styleClasses.repeatRemove}
+              onclick={handleRemove}
+            >
+              <omnistudio-icon
+                icon-name="utility:close"
+                alternative-text={_removeAlternativeText}
+                extraclass={_styleClasses.repeatIcons}
+                size="xx-small"
+              >
+              </omnistudio-icon>
+            </button>
+          </span>
+        </template>
+
         <div if:true={mergedHelpText} id="helper" class="fr-hint-text">
           {mergedHelpText}
         </div>
       </label>
-
-      <template if:true={_propSetMap.repeat}>
-        <span
-          style="bottom: 7px; right: -11px"
-          class={_styleClasses.repeatContainer}
-          role="group"
-        >
-          <button
-            if:true={canRepeat}
-            class={_styleClasses.repeatAdd}
-            onclick={handleAdd}
-          >
-            <omnistudio-icon
-              icon-name="utility:add"
-              alternative-text={_repeatAlternativeText}
-              extraclass={_styleClasses.repeatIcons}
-              size="xx-small"
-            >
-            </omnistudio-icon>
-          </button>
-          <button
-            if:true={canRemove}
-            class={_styleClasses.repeatRemove}
-            onclick={handleRemove}
-          >
-            <omnistudio-icon
-              icon-name="utility:close"
-              alternative-text={_removeAlternativeText}
-              extraclass={_styleClasses.repeatIcons}
-              size="xx-small"
-            >
-            </omnistudio-icon>
-          </button>
-        </span>
-      </template>
     </div>
 
     <div class="sfgpsds-form-element__control">

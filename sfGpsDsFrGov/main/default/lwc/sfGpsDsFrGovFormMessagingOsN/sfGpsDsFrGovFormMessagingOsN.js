@@ -15,43 +15,35 @@ export default class SfGpsDsFrGovFormMessagingOsN extends OmniscriptMessaging {
     return tmpl;
   }
 
-  get computedAlertClassName() {
+  get computedType() {
     return computeClass({
-      "fr-alert": true,
-      "fr-alert--sm": this.isCompact,
-      "fr-alert--error": this.messageType === "Requirement",
-      "fr-alert--success": this.messageType === "Success",
-      "fr-alert--info": this.messageType === "Comment",
-      "fr-alert--warning": this.messageType === "Warning"
+      error: this.messageType === "Requirement",
+      success: this.messageType === "Success",
+      info: this.messageType === "Comment",
+      warning: this.messageType === "Warning"
     });
   }
 
-  get computedAlertTitleClassName() {
-    return computeClass({
-      "fr-alert__title": true
-    });
-  }
+  get mergedTitle() {
+    if (!this.messageText) {
+      return null;
+    }
 
-  get mergedTitleText() {
-    let splitText = this.messageText.split("\\n");
+    const splitText = this.messageText.split("\\n");
     return splitText.length > 1
       ? omniGetMergedField(this, splitText[0])
       : this.messageType;
   }
 
-  get mergedMessageText() {
-    let splitText = this.messageText.split("\\n");
+  get mergedDescription() {
+    if (!this.messageText) {
+      return null;
+    }
+
+    const splitText = this.messageText.split("\\n");
     return omniGetMergedField(
       this,
       splitText.length > 1 ? splitText.slice(1).join("\\n") : this.messageText
     );
-  }
-
-  get isCompact() {
-    return this.messageText.split("\\n").length <= 2;
-  }
-
-  get space() {
-    return " ";
   }
 }

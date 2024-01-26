@@ -8,6 +8,7 @@
   margin-top: 1rem;
 }
 */
+
 .fr-disclosure {
   margin-top: 0.5rem;
   padding: 1rem;
@@ -21,9 +22,13 @@
 .fr-disclosure__content {
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.3157894737;
+  line-height: 1.5rem;
+}
+
+.fr-disclosure__consent {
+  margin-top: 1.5rem;
 }
 
 .fr-form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }

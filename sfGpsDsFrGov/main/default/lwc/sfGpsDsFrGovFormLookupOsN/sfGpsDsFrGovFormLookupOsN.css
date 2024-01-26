@@ -3,7 +3,7 @@
 @import "c/sfGpsDsFrGovPredictiveCssOsN";
 
 .sfgps-combobox__form-element::after {
-  content: url("/resource/sfGpsDsFrGov/icons/system/arrow-down-s-line.svg");
+  content: url("/sfsites/c/resource/sfGpsDsFrGov/icons/system/arrow-down-s-line.svg");
   background-size: 1rem 1rem;
   font-size: 5px !important;
   position: absolute;
@@ -14,14 +14,10 @@
 
 /* repetable icons */
 
-[data-label] {
-  display: table;
-}
-
-[data-label] label {
+.fr-label > span:first-child {
   margin-right: 0.5rem;
 }
 
-[data-label] span {
-  display: table-cell;
+.fr-select-group {
+  margin-bottom: 1.5rem;
 }

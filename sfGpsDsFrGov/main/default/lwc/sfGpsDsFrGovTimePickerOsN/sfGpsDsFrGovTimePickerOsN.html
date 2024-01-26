@@ -3,7 +3,7 @@
     id="sf-gps-ds-fr-gov-time-picker-form-group"
     class={computedFormGroupClassName}
   >
-    <label class="fr-label" for={computedInputId}>
+    <label lwc:if={label} class="fr-label" for={computedInputId}>
       <span
         >{label}
         <template if:false={hideAsterisk}>

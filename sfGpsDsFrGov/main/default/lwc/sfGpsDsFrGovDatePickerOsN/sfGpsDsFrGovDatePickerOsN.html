@@ -1,14 +1,14 @@
 <template>
   <div class={computedFormGroupClass}>
-    <label class="fr-label" for="date-input-day">
+    <label lwc:if={label} class="fr-label" for="date-input-day">
       <span
         >{label}
         <template if:false={hideAsterisk}>
           <abbr lwc:if={required} title={requiredLabel}>*</abbr>
         </template>
       </span>
-
       <slot name="label"></slot>
+
       <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
         {fieldLevelHelp}
       </span>
@@ -18,15 +18,18 @@
       class="fr-input"
       type="date"
       id="text-input-date"
-      value={dateValue}
       aria-label={ariaLabel}
       tabindex={tabIndex}
       readonly={readOnly}
+      aria-readonly={readOnly}
       required={required}
       placeholder={placeholder}
       disabled={disabled}
       name="text-input-date"
+      autocomplete="off"
+      aria-invalid={ariaInvalid}
       aria-describedby="errorMessageBlock"
+      value={dateValue}
       onchange={sfGpsDsHandleDateChange}
     />
 
