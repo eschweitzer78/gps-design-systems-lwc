@@ -22,6 +22,10 @@ export default class SfGpsDsFrGovFormMessagingOsN extends LightningElement {
     return this.size === "sm";
   }
 
+  get computedShowAlert() {
+    return this.title || this.description;
+  }
+
   get computedAlertClassName() {
     return computeClass({
       "fr-alert": true,

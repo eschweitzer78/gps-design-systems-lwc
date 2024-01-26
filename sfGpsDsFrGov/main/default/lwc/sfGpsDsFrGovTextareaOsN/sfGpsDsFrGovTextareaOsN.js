@@ -62,13 +62,13 @@ export default class extends OmnistudioTextarea {
     });
   }
 
-  get computedTextAreaClasssName() {
+  get computedTextAreaClassName() {
     return computeClass({
       "fr-input": true
     });
   }
 
-  get computedCharacterCountErrorClassName() {
+  get computedCharacterCountClassName() {
     return computeClass({
       "fr-hint-text": true,
       "fr-error-text": this.sfGpsDsIsError

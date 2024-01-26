@@ -184,6 +184,7 @@
   --hover-tint: var(--hover);
   --active-tint: var(--active);
 
+  /*
   background-image: var(--underline-img), var(--underline-img);
   background-position:
     var(--underline-x) 100%,
@@ -193,6 +194,7 @@
     var(--underline-hover-width) calc(var(--underline-thickness) * 2),
     var(--underline-idle-width) var(--underline-thickness);
   transition: background-size 0s;
+  */
 }
 
 @media screen and (min-width: 768px) {

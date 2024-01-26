@@ -13,6 +13,7 @@ import tmpl from "./sfGpsDsFrGovTimePickerOsN.html";
 const ZWSP_CHAR = "​";
 
 export default class extends OmnistudioTimePicker {
+  @api forceError;
   @api hideAsterisk;
 
   render() {
@@ -34,7 +35,7 @@ export default class extends OmnistudioTimePicker {
     });
   }
 
-  get ariaDescribedBy() {
+  get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.sfGpsDsIsError

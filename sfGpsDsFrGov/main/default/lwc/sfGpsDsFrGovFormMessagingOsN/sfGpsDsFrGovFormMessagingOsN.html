@@ -1,11 +1,6 @@
 <template>
-  <p>messageText: {messageText}</p>
-  <p>mergedTitle: {mergedTitle}</p>
-  <p>mergedDesc: {mergedDescription}</p>
-  <p>isCompact: {computedIsCompact}</p>
   <template if:true={messageText}>
     <c-sf-gps-ds-fr-gov-alert-os-n
-      lwc:else
       type={computedType}
       size="md"
       title={mergedTitle}

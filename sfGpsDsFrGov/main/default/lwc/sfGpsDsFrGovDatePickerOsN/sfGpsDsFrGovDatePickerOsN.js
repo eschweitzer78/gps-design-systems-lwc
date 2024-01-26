@@ -17,6 +17,7 @@ const DAY_INPUT_SELECTOR = "input[name='date-input-day']";
 
 export default class SfGpsDsFrGovDatePickerOsN extends OmnistudioDatePicker {
   @api readOnly;
+  @api forceError;
   @api hideAsterisk = false;
 
   @track dateValue = "";
