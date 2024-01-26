@@ -6,7 +6,7 @@ const fileRegEx = /!/;
 function genFile(filename) {
   return sass.compile(filename, {
     style: "compressed",
-    loadPaths: ["./"]
+    loadPaths: ["./", "node_modules/@gouvfr/dsfr"]
   });
 }
 

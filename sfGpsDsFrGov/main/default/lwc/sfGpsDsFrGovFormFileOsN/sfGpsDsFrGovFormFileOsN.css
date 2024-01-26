@@ -1,0 +1,6 @@
+@import "c/sfGpsDsFrGovCoreOs";
+@import "./file-upload.gen.css";
+
+.fr-upload-group {
+  margin-bottom: 1.5rem;
+}

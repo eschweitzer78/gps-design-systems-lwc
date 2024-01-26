@@ -1,5 +1,7 @@
 import { LightningElement, api, track } from "lwc";
 
+const CLEAR_VALUE = "-- Clear --";
+
 export default class sfGpsDsNavigationCpe extends LightningElement {
   @api label; // string
   @api description; // string
@@ -34,7 +36,7 @@ export default class sfGpsDsNavigationCpe extends LightningElement {
               label: item.name,
               value: item.developerName
             }));
-            options.unshift({ label: "-- Clear --", value: null });
+            options.unshift({ label: "-- Clear --", value: CLEAR_VALUE });
             this.options = options;
             this.error = null;
           } else {
@@ -55,7 +57,7 @@ export default class sfGpsDsNavigationCpe extends LightningElement {
     this.dispatchEvent(
       new CustomEvent("valuechange", {
         detail: {
-          value: this.value
+          value: this.value === CLEAR_VALUE ? null : this.value
         }
       })
     );

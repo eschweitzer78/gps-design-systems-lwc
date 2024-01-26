@@ -19,6 +19,7 @@ jobs:
           hasChangesSfGpsDsAuNsw='true'
           hasChangesSfGpsDsAuNswS='true'
           hasChangesSfGpsDsAuVic='true'
+          hasChangesSfGpsDsFrGov='true'
           hasChangesSfGpsDsUkGov='true'
           echo "hasChanges=$hasChanges" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDs=$hasChangesSfGpsDs" >> $GITHUB_OUTPUT

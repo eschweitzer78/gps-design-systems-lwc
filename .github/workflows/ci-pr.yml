@@ -155,6 +155,19 @@ jobs:
         run: exit 1
 
       # Run PMD scan
+      - name: "Run PMD scan for sfGpsDsFrGov"
+        uses: pmd/pmd-github-action@v1.4.1
+        id: pmd-sf-gps-ds-fr-gov
+        with:
+          sourcePath: "sfGpsDsFrGov"
+          rulesets: "ruleset.xml"
+
+      # Check for PMD violations
+      - name: "Check for PMD violations"
+        if: steps.pmd-sf-gps-ds-fr-gov.outputs.violations != 0
+        run: exit 1
+
+      # Run PMD scan
       - name: "Run PMD scan for sfGpsDsUkGov"
         uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-uk-gov
@@ -272,6 +285,7 @@ jobs:
           hasChangesSfGpsDsAuNswS='false'
           hasChangesSfGpsDsAuVic1='false'
           hasChangesSfGpsDsAuVic2='false'
+          hasChangesSfGpsDsFrGov='false'
           hasChangesSfGpsDsUkGov='false'
           if [ $(echo "$changedPaths" | grep -c '^sfGpsDs$') == 1 ]; then
               hasChanges='true'
@@ -293,6 +307,10 @@ jobs:
               hasChanges='true'
               hasChangesSfGpsDsAuVic2='true'
           fi
+          if [ $(echo "$changedPaths" | grep -c '^sfGpsDsFrGov$') == 1 ]; then
+              hasChanges='true'
+              hasChangesSfGpsDsFrGov='true'
+          fi
           if [ $(echo "$changedPaths" | grep -c '^sfGpsDsUkGov$') == 1 ]; then
               hasChanges='true'
               hasChangesSfGpsDsUkGov='true'
@@ -303,6 +321,7 @@ jobs:
           echo "hasChangesSfGpsDsAuNswS=$hasChangesSfGpsDsAuNswS" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsAuVic1=$hasChangesSfGpsDsAuVic1" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsAuVic2=$hasChangesSfGpsDsAuVic2" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDsFrGov=$hasChangesSfGpsDsFrGov" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsUkGov=$hasChangesSfGpsDsUkGov" >> $GITHUB_OUTPUT
 
       # Trigger packaging workflow if needed
@@ -312,4 +331,4 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
           event-type: start-packaging
-          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuVic1": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic1 }}", "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'
+          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuVic1": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic1 }}", "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsFrGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsFrGov }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'

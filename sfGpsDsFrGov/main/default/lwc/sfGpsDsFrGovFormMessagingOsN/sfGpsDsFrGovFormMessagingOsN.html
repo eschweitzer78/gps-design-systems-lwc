@@ -1,0 +1,15 @@
+<template>
+  <template if:true={messageText}>
+    <div class="messaging">
+      <div class={computedAlertClassName}>
+        <template lwc:if={isCompact}>
+          {mergedTitleText}{space}{mergedMessageText}
+        </template>
+        <template lwc:else>
+          <h3 class={computedAlertTitleClassName}>{mergedTitleText}</h3>
+          <p>{mergedMessageText}</p>
+        </template>
+      </div>
+    </div>
+  </template>
+</template>

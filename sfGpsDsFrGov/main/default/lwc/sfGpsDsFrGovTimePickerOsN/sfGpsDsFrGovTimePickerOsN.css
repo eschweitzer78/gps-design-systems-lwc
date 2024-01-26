@@ -1,0 +1,7 @@
+@import "c/sfGpsDsFrGovCoreOs";
+@import "c/sfGpsDsFrGovPredictiveCssOsN";
+@import "./input.gen.css";
+
+.fr-label > span:first-child {
+  margin-right: 0.5rem;
+}

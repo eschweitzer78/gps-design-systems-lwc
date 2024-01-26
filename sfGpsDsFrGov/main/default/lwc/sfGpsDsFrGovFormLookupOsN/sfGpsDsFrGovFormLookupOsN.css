@@ -1,0 +1,27 @@
+@import "c/sfGpsDsFrGovCoreOs";
+@import "./select.gen.css";
+@import "c/sfGpsDsFrGovPredictiveCssOsN";
+
+.sfgps-combobox__form-element::after {
+  content: url("/resource/sfGpsDsFrGov/icons/system/arrow-down-s-line.svg");
+  background-size: 1rem 1rem;
+  font-size: 5px !important;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+/* repetable icons */
+
+[data-label] {
+  display: table;
+}
+
+[data-label] label {
+  margin-right: 0.5rem;
+}
+
+[data-label] span {
+  display: table-cell;
+}

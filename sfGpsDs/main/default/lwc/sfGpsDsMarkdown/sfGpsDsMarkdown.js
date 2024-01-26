@@ -5,6 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+/*
+ * Based on open-source code:
+ * - commonmark.js by John MacFarlane et al., https://github.com/commonmark/commonmark.js, under CC-BY-SA 4.0 licence.
+ * - code derived from "he" (HTML Entities) by Mathias Bynens https://mths.be/he, under MIT licence.
+ */
+
 import { getFirstChild } from "c/sfGpsDsHelpers";
 import Parser from "./blocks.js";
 import HtmlRenderer from "./htmlRenderer.js";

@@ -1,0 +1,53 @@
+<template>
+  <div class={computedFormGroupClass}>
+    <label class="fr-label" for="date-input-day">
+      <span
+        >{label}
+        <template if:false={hideAsterisk}>
+          <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+        </template>
+      </span>
+
+      <slot name="label"></slot>
+      <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
+        {fieldLevelHelp}
+      </span>
+    </label>
+
+    <input
+      class="fr-input"
+      type="date"
+      id="text-input-date"
+      value={dateValue}
+      aria-label={ariaLabel}
+      tabindex={tabIndex}
+      readonly={readOnly}
+      required={required}
+      placeholder={placeholder}
+      disabled={disabled}
+      name="text-input-date"
+      aria-describedby="errorMessageBlock"
+      onchange={sfGpsDsHandleDateChange}
+    />
+
+    <span
+      if:true={sfGpsDsHasAnyError}
+      class="fr-error-text"
+      aria-live="assertive"
+      id="errorMessageBlock"
+    >
+      {_errorMessage}
+    </span>
+
+    <!-- hidden input for original widget -->
+    <div class="slds-form-element__control">
+      <input
+        type={type}
+        data-id="date-picker-slds-input"
+        value={_displayValue}
+        required={required}
+        hidden
+      />
+    </div>
+  </div>
+</template>
