@@ -4,7 +4,7 @@ In this document, we will go through typical ways to troubleshoot issues &mdash;
 
 ## OmniStudio releases and changes in OmniScript element behaviour
 
-The Salesforce platform features three releases a year and this also apply to the Omnistudio capability. On top of this, the Omnistudio team has recently 
+The Salesforce platform features three releases a year and this also apply to the Omnistudio capability. On top of this, the Omnistudio team has recently
 changed the way its managed package is distributed: from being on demand updates fully controlled by customers, updates are now pushed.
 
 While platform upgrades are planned with a clear calendar when you could spin a preview sandbox and perform regression tests, automated updates of a
@@ -29,9 +29,9 @@ into a single javascript file for deployment: as a result, the template gets har
 You'll want to have
 [Lightning Components Debug Mode](https://help.salesforce.com/s/articleView?id=sf.aura_debug_mode.htm&language=en_US&type=5) enabled in Setup for your Salesforce user when troubleshooting.
 
-Let us use the OmniScript `combobox` element as an example. 
+Let us use the OmniScript `combobox` element as an example.
 
-Our overridden template based on 246 was as follows 
+Our overridden template based on 246 was as follows
 (refer to [sfGpsDsAuNswComboboxOsN](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswComoboxOsN)):
 
 ```
@@ -105,7 +105,9 @@ api_element("input", {
 })
 [...]
 ```
+
 with the `showLookup` method being as follows:
+
 ```
 showLookup(event) {
   if (this._readOnly && !this._alwaysShowLookup || this.disabled) {
