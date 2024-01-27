@@ -1,0 +1,30 @@
+<template>
+  <div class="fr-form-group">
+    <label class="fr-label" for="frt"> {mergedLabel} </label>
+
+    <div class="fr-disclosure">
+      <div class="fr-disclosure__content">
+        <omnistudio-omniscript-formatted-rich-text id="frt" value={_dText}>
+        </omnistudio-omniscript-formatted-rich-text>
+      </div>
+
+      <div class="fr-disclosure__consent">
+        <c-sf-gps-ds-fr-gov-input-os-n
+          type="checkbox"
+          label={mergedCheckLabel}
+          required={_propSetMap.required}
+          required-label={allCustomLabelsUtil.OmniRequired}
+          theme={_theme}
+          checked={elementValue}
+          message-when-value-missing={_messageWhenValueMissing}
+          tab-index={tabIndex}
+          data-omni-input
+          onchange={handleChange}
+          hide-form-group="false"
+          read-only={_propSetMap.readOnly}
+        >
+        </c-sf-gps-ds-fr-gov-input-os-n>
+      </div>
+    </div>
+  </div>
+</template>
