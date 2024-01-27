@@ -4,8 +4,12 @@
     class={computedFormGroupClassName}
   >
     <label if:true={label} class="fr-label">
-      <span>{label}</span>
-      <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+      <span
+        >{label}
+        <abbr lwc:if={required} class="fr-input-asterisk" title={requiredLabel}
+          >*</abbr
+        >
+      </span>
       <slot name="label"> </slot>
       <div if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
         {fieldLevelHelp}

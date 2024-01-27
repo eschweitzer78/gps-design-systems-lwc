@@ -5,7 +5,12 @@
         <label class={computedLabelClassName} style="width: auto" for={inputId}>
           <span
             >{label}
-            <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+            <abbr
+              lwc:if={required}
+              class="fr-input-asterisk"
+              title={requiredLabel}
+              >*</abbr
+            >
           </span>
           <slot name="label"> </slot>
 

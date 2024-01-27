@@ -9,7 +9,7 @@
   display: table;
 }
 
-[data-label] .fr-label {
+[data-label] .fr-label > span:first-child {
   margin-right: 0.5rem;
 }
 
@@ -22,4 +22,8 @@
   opacity: 0.5;
   background: white !important;
   cursor: not-allowed;
+}
+
+.fr-input-group {
+  margin-bottom: 1.5rem;
 }

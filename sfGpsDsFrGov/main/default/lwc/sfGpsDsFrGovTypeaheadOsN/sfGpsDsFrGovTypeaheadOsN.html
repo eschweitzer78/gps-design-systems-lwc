@@ -5,7 +5,12 @@
         <div class="sfgpsds-label__group_label">
           <label class="fr-label" aria-label={label} for="inputId">
             <span>{label}</span>
-            <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+            <abbr
+              lwc:if={required}
+              class="fr-input-asterisk"
+              title={requiredLabel}
+              >*</abbr
+            >
             <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
               {fieldLevelHelp}
             </span>

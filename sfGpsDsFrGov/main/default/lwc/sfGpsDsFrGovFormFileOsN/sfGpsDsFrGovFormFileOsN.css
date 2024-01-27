@@ -1,6 +1,7 @@
 @import "c/sfGpsDsFrGovCoreOs";
 @import "./file-upload.gen.css";
 
-.fr-upload-group {
+.sfgpsds-file {
+  position: relative;
   margin-bottom: 1.5rem;
 }
