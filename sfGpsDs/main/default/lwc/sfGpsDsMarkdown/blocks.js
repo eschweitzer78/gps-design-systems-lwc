@@ -24,10 +24,11 @@ let reHtmlBlockOpen = [
   new RegExp("^(?:" + OPENTAG + "|" + CLOSETAG + ")\\s*$", "i")
 ];
 
+/* patched /-->/ to /--!?>/ to sort out a CodeQL warning */
 let reHtmlBlockClose = [
   /./, // dummy for 0
   /<\/(?:script|pre|textarea|style)>/i,
-  /-->/,
+  /--!?>/,
   /\?>/,
   />/,
   /\]\]>/

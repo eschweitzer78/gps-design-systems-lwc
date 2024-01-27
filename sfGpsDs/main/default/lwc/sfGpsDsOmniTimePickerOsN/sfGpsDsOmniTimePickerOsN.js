@@ -13,17 +13,17 @@ export default class SfGpsDsOmniTimePickerOsN extends SfGpsDsOmniInputMixinOsN(
   showDropdown() {
     super.showDropdown();
 
-    let e = this.template.querySelector(
+    let elt = this.template.querySelector(
       `.${this.theme}-dropdown-trigger_click`
     );
-    e.classList.add(`${this.theme}-is-open`);
+    elt.classList.add(`${this.theme}-is-open`);
   }
 
   // fixing an inconsistency of the timePicker: with the select widget, clicking on an open widget
   // closes it whereas it keeps it open on timePicker.
-  showLookup(e) {
+  showLookup(event) {
     if (!this.readOnly) {
-      if ("mousedown" === e.type) {
+      if (event.type === "mousedown") {
         if (this._isOpen) {
           this.hideDropdown();
         } else {
@@ -34,7 +34,7 @@ export default class SfGpsDsOmniTimePickerOsN extends SfGpsDsOmniInputMixinOsN(
       }
     }
 
-    super.showLookup(e);
+    super.showLookup(event);
   }
 
   /* override scrollByIndex as the implementation in ommni246 makes assumptions about option line-height */
@@ -62,18 +62,6 @@ export default class SfGpsDsOmniTimePickerOsN extends SfGpsDsOmniInputMixinOsN(
     this.sfGpsDsClearCustomValidation(false);
     super.setTime();
   }
-
-  /***
-   * There is a bug or missing capability in the original date picker that it does not
-   * report validationMessage correctly. Let's address it.
-   */
-
-  /*
-  @api get validationMessage() {
-    const rv = this._constraint.validationMessage;
-    if (DEBUG) console.log(CLASS_NAME, "validationMessage", rv);
-    return rv;
-  }*/
 
   @api
   get validationMessage() {
