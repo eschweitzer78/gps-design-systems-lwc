@@ -1,0 +1,14 @@
+<template>
+  <div>
+    <div lwc:if={error}>{label}: {error}.</div>
+    <lightning-combobox
+      lwc:else
+      name="navigationCpe"
+      label={label}
+      value={value}
+      options={options}
+      onchange={handleChange}
+    >
+    </lightning-combobox>
+  </div>
+</template>
