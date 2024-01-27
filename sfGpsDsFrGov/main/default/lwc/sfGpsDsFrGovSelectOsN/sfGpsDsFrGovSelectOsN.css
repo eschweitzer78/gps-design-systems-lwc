@@ -10,3 +10,8 @@
 .fr-select-group {
   margin-bottom: 1.5rem;
 }
+
+.fr-select-group--disabled .fr-select {
+  background: white !important;
+  cursor: not-allowed;
+}

@@ -175,6 +175,7 @@ export default class SfGpsDsFrGovSelect extends LightningElement {
   get computedFormGroupClassName() {
     return computeClass({
       "fr-select-group": true,
+      "fr-select-group--disabled": this.disabled || this.readOnly,
       "fr-select-group--error": this.isError
     });
   }
