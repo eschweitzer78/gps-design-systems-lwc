@@ -66,10 +66,6 @@ jobs:
       - name: "Automatically generate Omnistudio source"
         run: npm run osfilegen
 
-      # Copy UkGovFull
-      - name: "Copy UkGovFull"
-        run: npm run ukgov-copy
-
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"
         shell: bash
@@ -152,6 +148,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
+          npm run frgov-copy
           json=$(sfdx package version create --path=sfGpsDsFrGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
@@ -170,6 +167,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
+          npm run ukgov-copy
           json=$(sfdx package version create --path=sfGpsDsUkGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json

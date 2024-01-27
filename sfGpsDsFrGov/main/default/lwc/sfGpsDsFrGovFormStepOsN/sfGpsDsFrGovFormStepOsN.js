@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Benedict Sefa Ziorklui, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2023-2024, Bouchra Mouhim, Benedict Sefa Ziorklui, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -52,9 +52,31 @@ export default class SfGpsDsFrGovFormStepOsN extends OmniscriptStep {
       })
     );
   }
+
   get showSave() {
     return this._propSetMap.allowSaveForLater && this._propSetMap.saveLabel;
   }
+
+  // TO DO : override showNext to add a counter to get steps.length ( we don't have an info like this.scriptHeaderDef.LastStepIndex )
+  get showNext() {
+    let counter = -1;
+    let data = this.scriptHeaderDef.labelMap;
+    for (let key in data) {
+      /* eslint-disable-next-line no-prototype-builtins */
+      if (data.hasOwnProperty(key)) {
+        if (key === data[key]) {
+          counter++;
+        }
+      }
+    }
+
+    return (
+      this.scriptHeaderDef.asIndex < counter &&
+      this._propSetMap.nextWidth > 0 &&
+      this._propSetMap.nextLabel
+    );
+  }
+
   handleErrorClick(e) {
     e.preventDefault();
     this.focusInvalidInput(e.currentTarget.dataset.errorkey);

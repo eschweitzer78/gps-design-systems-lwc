@@ -2,8 +2,15 @@
   <div class={computedFormGroupClassName}>
     <div if:true={labelVisible} data-label="true">
       <label id="textarealabel" class="fr-label" for="textareaId">
-        {label}
-        <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+        <span
+          >{label}
+          <abbr
+            lwc:if={required}
+            class="fr-input-asterisk"
+            title={requiredLabel}
+            >*</abbr
+          >
+        </span>
         <slot name="label"> </slot>
         <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
           {fieldLevelHelp}

@@ -3,7 +3,9 @@
     <label id="select-label" for="select" class="fr-label">
       <span
         >{label}
-        <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+        <abbr lwc:if={required} class="fr-input-asterisk" title={requiredLabel}
+          >*</abbr
+        >
       </span>
       <slot name="label"> </slot>
       <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">

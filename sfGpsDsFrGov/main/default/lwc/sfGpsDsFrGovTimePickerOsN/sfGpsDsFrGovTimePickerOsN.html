@@ -7,7 +7,12 @@
       <span
         >{label}
         <template if:false={hideAsterisk}>
-          <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+          <abbr
+            lwc:if={required}
+            class="fr-input-asterisk"
+            title={requiredLabel}
+            >*</abbr
+          >
         </template>
       </span>
       <slot name="label"> </slot>
@@ -106,7 +111,7 @@
                     <span class="sfgpsds-media__body">
                       <span
                         class="sfgpsds-listbox__option-text"
-                        title={e.value}
+                        title={item.value}
                       >
                         {item.value}
                       </span>

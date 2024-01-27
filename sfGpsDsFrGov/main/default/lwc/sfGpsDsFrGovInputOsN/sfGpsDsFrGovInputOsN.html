@@ -9,7 +9,12 @@
         <label class={computedLabelClassName} for={inputId}>
           <span
             >{label}
-            <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+            <abbr
+              lwc:if={required}
+              class="fr-input-asterisk"
+              title={requiredLabel}
+              >*</abbr
+            >
           </span>
           <slot name="label"></slot>
 
@@ -46,7 +51,12 @@
           <label class="fr-label" for={inputId} data-label="true">
             <span
               >{label}
-              <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+              <abbr
+                lwc:if={required}
+                class="fr-input-asterisk"
+                title={requiredLabel}
+                >*</abbr
+              >
             </span>
             <slot name="label"></slot>
           </label>
@@ -101,7 +111,12 @@
               class="slds-form-element__label slds-show--inline slds-p-top_none"
             >
               {label}
-              <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+              <abbr
+                lwc:if={required}
+                class="fr-input-asterisk"
+                title={requiredLabel}
+                >*</abbr
+              >
             </span>
           </label>
         </div>
