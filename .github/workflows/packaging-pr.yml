@@ -59,10 +59,6 @@ jobs:
       - name: "Automatically generate Omnistudio source"
         run: npm run osfilegen
 
-      # Copy UkGovFull
-      - name: "Copy UkGovFull"
-        run: npm run ukgov-copy
-
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"
         shell: bash
@@ -140,11 +136,31 @@ jobs:
           fi
           exit $status
 
+      - name: "Create package version sfGpsDsFrGov"
+        id: createPackageVersion-sfGpsDsFrGov
+        if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run frgov-copy
+          json=$(sfdx package version create --path=sfGpsDsFrGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sfdx package version create failed"
+          fi
+          exit $status
+
       - name: "Create package version sfGpsDsUkGov"
         id: createPackageVersion-sfGpsDsUkGov
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
+          npm run ukgov-copy
           json=$(sfdx package version create --path=sfGpsDsUkGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
@@ -193,6 +209,13 @@ jobs:
           sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
+      # Install new sfGpsDsFrGov package in scratch org
+      - name: "Install new sfGpsFrUkGov package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
       # Install new sfGpsDsUkGov package in scratch org
       - name: "Install new sfGpsDsUkGov package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -225,6 +248,15 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuVic1Full\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuVic1Full\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Update sfGpsDsFrGov force:force:package:install link in readme
+      - name: "Update package sfGpsDsFrGov install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsFrGovFull\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsFrGovFull\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsUkGov force:force:package:install link in readme

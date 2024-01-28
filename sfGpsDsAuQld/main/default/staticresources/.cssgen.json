@@ -1,7 +1,0 @@
-{
-  "sfGpsDsAuQld/customer_service-min" : [],
-  "sfGpsDsAuQld/sfGpsDsAuQld-min" : [
-    { "from": "../", "to": "./static.qgov.net.au/assets/v4/latest/" },
-    { "from": "#qg-banner-blurb", "to": ".qg-banner-blurb" }
-  ]
-}
