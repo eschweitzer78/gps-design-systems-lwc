@@ -4,7 +4,7 @@ In this document, we will go through typical ways to troubleshoot issues &mdash;
 
 ## OmniStudio releases and changes in OmniScript element behaviour
 
-The Salesforce platform features three releases a year and this also apply to the Omnistudio capability. On top of this, the Omnistudio team has recently
+The Salesforce platform features three releases a year and this also applies to the Omnistudio capability. On top of this, the Omnistudio team has recently
 changed the way its managed package is distributed: from being on demand updates fully controlled by customers, updates are now pushed.
 
 While platform upgrades are planned with a clear calendar when you could spin a preview sandbox and perform regression tests, automated updates of a
