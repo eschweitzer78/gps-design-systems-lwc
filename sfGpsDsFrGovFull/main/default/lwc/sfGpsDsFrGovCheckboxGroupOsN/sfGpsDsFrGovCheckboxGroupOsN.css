@@ -1,0 +1,8 @@
+@import "c/sfGpsDsFrGovCoreOs";
+@import "./checkboxes.gen.css";
+
+/* repeat icons */
+
+.fr-fieldset__legend > span:first-child {
+  margin-right: 0.5rem;
+}
