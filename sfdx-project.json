@@ -99,17 +99,13 @@
     },
     {
       "path": "sfGpsDsFrGov",
-      "default": false,
-      "package": "Salesforce Global Public Sector GOUV.FR Design System (Full)",
-      "versionName": "ver 0.1",
-      "versionNumber": "0.1.0.NEXT",
-      "versionDescription": ""
+      "default": false
     },
     {
       "path": "sfGpsDsFrGovFull",
       "package": "Salesforce Global Public Sector GOUV.FR Design System (Full)",
-      "versionName": "2024.01.26.2200",
-      "versionNumber": "0.1.0.NEXT",
+      "versionName": "2024.01.30.1200",
+      "versionNumber": "0.1.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
