@@ -1,0 +1,49 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <template if:true={jsonDef.bAccordionActive}>
+    <h2 lwc:if={showLabel} class="fr-h2 slds-m-top_medium os-step-label">
+      {mergedLabel}
+    </h2>
+
+    <!-- slds-p-horizontal_medium  -->
+    <div class="vlc-separator slds-m-top_medium slds-m-bottom_medium"></div>
+    <!--  slds-m-horizontal_medium -->
+
+    <div>
+      <div class="slds-grid slds-wrap omniscript-step__body">
+        <slot class="slds-grid slds-wrap slds-size_1-of-1"></slot>
+      </div>
+
+      <!-- <hr class="sepbutton" /> -->
+
+      <div class="form-actions">
+        <div class="fr-btns-group">
+          <button
+            if:true={showPrev}
+            class="fr-btn fr-btn--secondary"
+            value={mergedPreviousLabel}
+            onclick={handleBack}
+          >
+            {mergedPreviousLabel}
+          </button>
+          <button
+            if:true={showNext}
+            class="fr-btn"
+            value={mergedNextLabel}
+            onclick={handleNext}
+          >
+            {mergedNextLabel}
+          </button>
+          <button
+            if:true={showSave}
+            class="fr-btn fr-btn--secondary"
+            value={mergedSaveLabel}
+            onclick={handleSave}
+          >
+            {mergedSaveLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  </template>
+</template>

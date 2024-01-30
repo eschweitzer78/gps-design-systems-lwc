@@ -1,0 +1,50 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <div class={computedFormGroupClassName}>
+    <label id="select-label" for="select" class="fr-label">
+      <span
+        >{label}
+        <abbr lwc:if={required} class="fr-input-asterisk" title={requiredLabel}
+          >*</abbr
+        >
+      </span>
+      <slot name="label"> </slot>
+      <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
+        {fieldLevelHelp}
+      </span>
+    </label>
+    <select
+      id="select"
+      class="fr-select"
+      disabled={computedDisabled}
+      required={required}
+      tabindex={tabIndex}
+      multiple={multiple}
+      onchange={handleChange}
+      onblur={handleBlur}
+      onfocus={handleFocus}
+      aria-describedby={computedAriaDescribedBy}
+      data-sfgpsds-input
+    >
+      <template for:each={_displayOptions} for:item="item">
+        <option
+          key={item.index}
+          data-index={item.index}
+          value={item.value}
+          selected={item.selected}
+        >
+          {item.label}
+        </option>
+      </template>
+    </select>
+    <div
+      if:true={isError}
+      class="fr-error-text"
+      role="alert"
+      aria-live="assertive"
+      id="errorMessageBlock"
+    >
+      <span>{errorMessage}</span>
+    </div>
+  </div>
+</template>

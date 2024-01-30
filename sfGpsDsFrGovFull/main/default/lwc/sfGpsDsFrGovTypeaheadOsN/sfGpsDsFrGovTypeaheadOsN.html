@@ -1,0 +1,142 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <div class={computedFormGroupClassName}>
+    <div class="sfgpsds-label__group">
+      <div class="sfgpsds-label__group_label_container">
+        <div class="sfgpsds-label__group_label">
+          <label class="fr-label" aria-label={label} for="inputId">
+            <span
+              >{label}
+              <abbr
+                lwc:if={required}
+                class="fr-input-asterisk"
+                title={requiredLabel}
+                >*</abbr
+              ></span
+            >
+            <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
+              {fieldLevelHelp}
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="sfgpsds-label__group_action">
+        <slot name="iconRight"> </slot>
+      </div>
+    </div>
+
+    <div class="sfgpsds-form-element__control">
+      <div class={showProgress}>
+        <omnistudio-progress-bar
+          if:true={remoteSource}
+          data-progress-bar
+          theme="slds"
+          size="xx-small"
+        >
+        </omnistudio-progress-bar>
+      </div>
+
+      <div class="sfgpsds-combobox_container">
+        <div
+          class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
+        >
+          <div class="sfgps-combobox__form-element fr-search-bar" role="none">
+            <label class="fr-label" for="InputId"> Recherche </label>
+            <input
+              class={computedInputClassName}
+              type="search"
+              placeholder={placeholder}
+              disabled={disabled}
+              required={required}
+              readonly={_readOnly}
+              aria-readonly={_readOnly}
+              tabindex={tabIndex}
+              maxlength={maxLength}
+              id="inputId"
+              autocomplete="off"
+              aria-activedescendant={activeDescendant}
+              aria-autocomplete="list"
+              aria-owns="listboxId"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-describedby={computedAriaDescribedBy}
+              role="combobox"
+              value={_value}
+              onkeyup={searchOptions}
+              oninput={updateValue}
+              onfocus={focusChange}
+              onblur={focusChange}
+              onkeydown={handleKeydown}
+              data-omni-input
+            />
+            <button class="fr-btn" title="Rechercher">Rechercher</button>
+          </div>
+          <div
+            class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5"
+            id="listboxId"
+            role="listbox"
+            onmousedown={handleScrollClick}
+          >
+            <ul
+              class="sfgpsds-listbox sfgpsds-listbox_vertical"
+              role="presentation"
+            >
+              <template
+                for:each={sfGpsDsInternalData}
+                for:item="item"
+                for:index="index"
+              >
+                <li
+                  key={item.itrKey}
+                  class="sfgpsds-listtbox__item"
+                  role="presentation"
+                >
+                  <div
+                    class={item.itemClass}
+                    aria-selected={item.selected}
+                    id={item.itrKey}
+                    role="option"
+                    data-index={index}
+                    onclick={selectOption}
+                  >
+                    <span class="sfgpsds-media__body">
+                      <span class="sfgpsds-listbox__option-text"
+                        >{item.name}</span
+                      >
+                    </span>
+                  </div>
+                </li>
+              </template>
+
+              <li class="sfgpsds-listbox__item">
+                <div
+                  class={_sfGpsDsLastItemClass}
+                  role="option"
+                  data-index="last-item"
+                  onclick={selectOption}
+                >
+                  <span class="sfgpsds-media__body">
+                    <span class="sfgpsds-listbox__option-text">
+                      <slot name="lastItem" onslotchange={lastItemChange}>
+                      </slot>
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span
+      if:true={sfGpsDsIsError}
+      class="fr-error-text"
+      aria-live="assertive"
+      id="errorMessageBlock"
+    >
+      {_errorMessage}
+    </span>
+  </div>
+</template>

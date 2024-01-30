@@ -1,0 +1,29 @@
+/*@import "./input.gen.css";*/
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
+
+.fr-disclosure {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border-left: solid 4px var(--background-active-blue-france);
+}
+
+.fr-disclosure:first-child {
+  margin-top: 0;
+}
+
+.fr-disclosure__content {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.fr-disclosure__consent {
+  margin-top: 1.5rem;
+}
+
+.fr-form-group {
+  margin-bottom: 1rem;
+}

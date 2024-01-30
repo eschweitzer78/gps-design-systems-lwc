@@ -1,0 +1,11 @@
+@import "./checkboxes.gen.css";
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
+
+/* repeat icons */
+
+.fr-fieldset__legend > span:first-child {
+  margin-right: 0.5rem;
+}

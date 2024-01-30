@@ -1,0 +1,105 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <omnistudio-spinner
+      variant="brand"
+      alternative-text="Chargement en cours..."
+      theme={_theme}
+      size="medium"
+    >
+    </omnistudio-spinner>
+  </template>
+
+  <div class="sfgpsds-file">
+    <div class={computedFormGroupClassName}>
+      <label class={computedLabelClassName} for="frt">
+        {mergedLabel}
+        <abbr
+          lwc:if={_propSetMap.required}
+          class="fr-input-asterisk"
+          title={allCustomLabelsUtil.OmniRequired}
+          >*</abbr
+        >
+        <span if:true={_propSetMap.help} id="helper" class="fr-hint-text">
+          {mergedHelpText}
+        </span>
+      </label>
+
+      <div>
+        <lightning-file-upload
+          class="fr-upload"
+          label=" "
+          name={jsonDef.lwcId}
+          multiple
+          record-id={parentRecordId}
+          aria-invalid={_showValidation}
+          aria-described-by={computedAriaDescribedBy}
+          data-omni-input
+          onuploadfinished={handleUploadFinished}
+          onfocusout={handleFocusOut}
+          style="border: none"
+        >
+        </lightning-file-upload>
+      </div>
+
+      <p
+        if:true={sfGpsDsIsError}
+        class="fr-error-text"
+        aria-live="assertive"
+        id="errorMessageBlock"
+      >
+        {_errorMessage}
+      </p>
+    </div>
+
+    <slot name="files">
+      <span id="upload-status" class="slds-assistive-text"
+        >{ariaLiveStatusText}</span
+      >
+      <div aria-labelledby="upload-status" aria-live={ariaLiveStatus}></div>
+      <div class="slds-grid">
+        <ul
+          class="slds-has-dividers_around-space omni-file slds-m-bottom_xx-small slds-size_12-of-12 slds-medium-size_12-of-12"
+        >
+          <template for:each={_value} for:item="item" for:index="index">
+            <li key={item.data} class="slds-item">
+              <div class="slds-grid">
+                <span
+                  class="slds-m-bottom_xx-small slds-size_11-of-12 slds-medium-size_11-of-12 slds-truncate"
+                >
+                  {item.filename}
+                </span>
+                <span
+                  class="remove-file-icon slds-m-bottom_xx-small slds-size_1-of-12 slds-medium-size_1-of-12 slds-text-align_right"
+                >
+                  <button
+                    class="slds-button slds-button_icon"
+                    title={item.deleteLabel}
+                    onclick={deleteFile}
+                    data-index={index}
+                    data-id={item.data}
+                  >
+                    <omnistudio-icon
+                      theme={_theme}
+                      extraclass="slds-button__icon"
+                      iconposition="left"
+                      icon-name="action:delete"
+                      color="brand"
+                      alternative-text={item.deleteLabel}
+                      size="x-small"
+                      data-index={index}
+                      data-id={item.data}
+                    >
+                    </omnistudio-icon>
+                  </button>
+                </span>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </slot>
+  </div>
+</template>

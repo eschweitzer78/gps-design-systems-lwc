@@ -1,0 +1,68 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <fieldset
+    if:true={isCheckbox}
+    class={computedFieldsetClassName}
+    id="checkboxes"
+    aria-describedby={computedAriaDescribedBy}
+  >
+    <legend
+      class="fr-fieldset__legend--regular fr-fieldset__legend"
+      id="checkboxes-error-legend"
+    >
+      <span
+        >{label}
+        <abbr lwc:if={required} class="fr-input-asterisk" title={requiredLabel}
+          >*</abbr
+        >
+      </span>
+      <slot name="label"> </slot>
+      <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
+        {fieldLevelHelp}
+      </span>
+    </legend>
+    <template for:each={internalOpts} for:item="option" for:index="index">
+      <div class={computedFieldsetElementClassName} key={option.id}>
+        <div class={computedCheckboxGroupClassName}>
+          <input
+            type="checkbox"
+            required={required}
+            disabled={computedDisabledReadOnly}
+            id={option.id}
+            tabindex={tabIndex}
+            name={name}
+            aria-invalid={isError}
+            aria-describedby={computedAriaDescribedBy}
+            checked={option.selected}
+            value={option.value}
+            data-index={index}
+            onfocus={handleFocus}
+            onchange={sfGpsDsOnChangeValue}
+            onkeydown={handleKeyDownEvent}
+          />
+          <label class="fr-label" data-index={index} for={option.id}>
+            {option.label}
+            <span class="fr-hint-text">{option.hint}</span>
+          </label>
+          <div
+            class="fr-messages-group"
+            id="checkboxes-error-1-messages"
+            aria-live="assertive"
+          ></div>
+        </div>
+      </div>
+    </template>
+
+    <div
+      lwc:if={sfGpsDsIsError}
+      class="fr-messages-group"
+      id="errorMessageBlock"
+      aria-live="assertive"
+    >
+      <p class="fr-message fr-message--error">{_errorMessage}</p>
+    </div>
+  </fieldset>
+
+  <!-- TODO: support button and icon -->
+  <!-- </div> -->
+</template>

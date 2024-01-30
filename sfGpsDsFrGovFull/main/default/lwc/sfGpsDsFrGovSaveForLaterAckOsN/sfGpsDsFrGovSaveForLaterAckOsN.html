@@ -1,0 +1,69 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <template if:true={auto}>
+    <template if:true={hasResult}>
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
+
+      <c-sf-gps-ds-fr-gov-alert-os-n
+        type="success"
+        size="md"
+        title="Vos éléments sont sauvegardés pour plus tard."
+      >
+        <span>
+          {_bSflLabels.OmniScriptResumeLink}
+          <a onclick={copyLinkToClipboard} class="fr-link"
+            >{_bSflLabels.OmniCopyLink}</a
+          >
+          ou
+          <a href={emailLink} target="_blank" rel="noopener" class="fr-link"
+            >{_bSflLabels.OmniEmailMe}</a
+          >.
+        </span>
+      </c-sf-gps-ds-fr-gov-alert-os-n>
+    </template>
+  </template>
+
+  <template if:false={auto}>
+    <template if:true={hasResult}>
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
+
+      <div>
+        <c-sf-gps-ds-fr-gov-alert-os-n
+          type="success"
+          size="md"
+          title="Vos éléments sont sauvegardés pour plus tard."
+        >
+          <span>
+            <span></span>
+            <p>{_bSflLabels.OmniResume}:</p>
+            <p>
+              <a
+                href={resumeLink}
+                target="_blank"
+                class="fr-link"
+                rel="noopener"
+                >{resumeLink}</a
+              >
+            </p>
+            <br />
+            <p>
+              <a onclick={copyLinkToClipboard} class="fr-link"
+                >{_bSflLabels.OmniCopyLink}
+              </a>
+              ou
+              <a onclick={openEmail} class="fr-link">
+                {_bSflLabels.OmniEmailMe}</a
+              >
+            </p>
+          </span>
+        </c-sf-gps-ds-fr-gov-alert-os-n>
+      </div>
+    </template>
+  </template>
+</template>

@@ -1,0 +1,58 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <div class={computedFormGroupClassName}>
+    <div if:true={labelVisible} data-label="true">
+      <label id="textarealabel" class="fr-label" for="textareaId">
+        <span
+          >{label}
+          <abbr
+            lwc:if={required}
+            class="fr-input-asterisk"
+            title={requiredLabel}
+            >*</abbr
+          >
+        </span>
+        <slot name="label"> </slot>
+        <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
+          {fieldLevelHelp}
+        </span>
+      </label>
+    </div>
+
+    <textarea
+      class={computedTextAreaClassName}
+      tabindex={tabIndex}
+      minlength={minLength}
+      maxlength={maxLength}
+      readonly={readOnly}
+      aria-readonly={readOnly}
+      accesskey={accessKey}
+      name={name}
+      disabled={disabled}
+      required={required}
+      placeholder={placeholder}
+      id="textareaId"
+      autocomplete={autocomplete}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={sfGpsDsIsError}
+      oninput={updateValue}
+      onblur={validateError}
+      onfocus={triggerEvent}
+      onkeyup={handleKeyUp}
+      onkeydown={keyCallbacks}
+      data-sfgpsds-input
+    >
+      {_val}
+    </textarea>
+    <p if:true={sfGpsDsIsError} id="errorMessageBlock" class="fr-error-text">
+      {_errorMessage}
+    </p>
+    <div
+      id="character-count-text"
+      class={computedCharacterCountClassName}
+      if:true={_showCharacterCount}
+    >
+      {characterCountText}
+    </div>
+  </div>
+</template>

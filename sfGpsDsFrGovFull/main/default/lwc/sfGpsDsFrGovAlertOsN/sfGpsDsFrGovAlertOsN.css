@@ -1,0 +1,9 @@
+@import "./alert.gen.css";
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
+
+.fr-alert {
+  margin-bottom: 1.5rem;
+}

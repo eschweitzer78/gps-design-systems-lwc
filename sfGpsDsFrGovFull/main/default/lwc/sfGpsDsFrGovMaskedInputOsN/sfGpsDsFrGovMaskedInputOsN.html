@@ -1,0 +1,143 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <div if:false={isCustomLwc}>
+    <div class={computedFormGroupClassName}>
+      <div if:true={labelVisible} data-label="true">
+        <label class={computedLabelClassName} style="width: auto" for={inputId}>
+          <span
+            >{label}
+            <abbr
+              lwc:if={required}
+              class="fr-input-asterisk"
+              title={requiredLabel}
+              >*</abbr
+            >
+          </span>
+          <slot name="label"> </slot>
+
+          <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
+            {fieldLevelHelp}
+          </span>
+        </label>
+      </div>
+
+      <!-- formula -->
+      <div if:true={_isFormula}>
+        <label class={computedLabelClassName} for={inputId}>
+          {label}
+          <span if:true={required} class="sr-only"> ({requiredLabel})</span>
+        </label>
+
+        <input
+          class={computedInputClassName}
+          type="text"
+          readonly
+          disabled
+          id={inputId}
+          value={maskedValue}
+          aria-describedby={inputId}
+        />
+      </div>
+
+      <div if:false={static} class={pretextClass}>
+        <span if:true={pretext} class={pretextClass}>{pretext}</span>
+
+        <template lwc:if={isCurrencySFlocale}>
+          <input
+            if:true={isInput}
+            class={computedInputClassName}
+            id={inputId}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            step={step}
+            min={min}
+            max={max}
+            maxlength={maxLength}
+            minlength={minLength}
+            type={type}
+            inputmode={inputmode}
+            disabled={disabled}
+            required={required}
+            readonly={readOnly}
+            placeholder={placeholder}
+            aria-readonly={readOnly}
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={ariaDescribedBy}
+            aria-label={ariaLabel}
+            aria-invalid={sfGpsDsIsError}
+            value={_currencyVal}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            oninput={handleInput}
+            onkeyup={handleKeyup}
+            onchange={handleChange}
+          />
+        </template>
+
+        <template lwc:else>
+          <input
+            if:true={isNumber}
+            class="hiddenNumber slds-hide"
+            required={required}
+            min={min}
+            max={max}
+            step={step}
+            type="number"
+            value={value}
+          />
+
+          <input
+            if:true={isInput}
+            class={computedInputClassName}
+            id={inputId}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            step={step}
+            min={min}
+            max={max}
+            maxlength={maxLength}
+            minlength={minLength}
+            type={type}
+            inputmode={inputmode}
+            disabled={disabled}
+            required={required}
+            readonly={readOnly}
+            placeholder={placeholder}
+            aria-readonly={readOnly}
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={ariaDescribedBy}
+            aria-label={ariaLabel}
+            aria-invalid={sfGpsDsIsError}
+            autocomplete={autocomplete}
+            name={name}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            oninput={handleInput}
+            onkeyup={handleKeyup}
+            onchange={handleChange}
+          />
+        </template>
+
+        <span if:true={posttext} class="sfgpsds-form-element__addon">
+          {posttext}
+        </span>
+      </div>
+
+      <div if:true={static} class="slds-grid">
+        <div class="slds-form-element__static">{maskedValue}</div>
+        <span if:true={inlineHelp} class="slds-form-element__static">
+          {inlineHelp}
+        </span>
+      </div>
+
+      <p
+        if:true={sfGpsDsIsError}
+        class="fr-error-text"
+        aria-live="assertive"
+        id="errorMessageBlock"
+      >
+        {_errorMessage}
+      </p>
+    </div>
+  </div>
+</template>

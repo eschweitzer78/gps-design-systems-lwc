@@ -1,0 +1,19 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <div class={computedClassName}>
+    <h2 class="fr-stepper__title">
+      {currentstepname}
+
+      <span class="fr-stepper__state">Étape {step} sur {of}</span>
+    </h2>
+    &nbsp;
+    <div
+      class="fr-stepper__steps"
+      data-fr-current-step={step}
+      data-fr-steps={of}
+    ></div>
+    <p class="fr-stepper__details">
+      <span class="fr-text--bold">Étape suivante :</span> {nextstepname}
+    </p>
+  </div>
+</template>
