@@ -1,4 +1,5 @@
 <template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
   <div class={computedFormGroupClassName}>
     <div data-label="true">
       <label
@@ -6,10 +7,15 @@
         aria-label={mergedLabel}
         for="inputId"
       >
-        <span>{mergedLabel}</span>
-        <abbr lwc:if={required} class="fr-input-asterisk" title={requiredLabel}
-          >*</abbr
-        >
+        <span
+          >{mergedLabel}
+          <abbr
+            lwc:if={_propSetMap.required}
+            class="fr-input-asterisk"
+            title={allCustomLabelsUtil.OmniRequired}
+            >*</abbr
+          >
+        </span>
 
         <template if:true={_propSetMap.repeat}>
           <span

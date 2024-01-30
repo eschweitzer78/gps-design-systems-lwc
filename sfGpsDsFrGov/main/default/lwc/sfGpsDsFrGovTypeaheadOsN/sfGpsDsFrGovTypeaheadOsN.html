@@ -1,15 +1,18 @@
 <template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
   <div class={computedFormGroupClassName}>
     <div class="sfgpsds-label__group">
       <div class="sfgpsds-label__group_label_container">
         <div class="sfgpsds-label__group_label">
           <label class="fr-label" aria-label={label} for="inputId">
-            <span>{label}</span>
-            <abbr
-              lwc:if={required}
-              class="fr-input-asterisk"
-              title={requiredLabel}
-              >*</abbr
+            <span
+              >{label}
+              <abbr
+                lwc:if={required}
+                class="fr-input-asterisk"
+                title={requiredLabel}
+                >*</abbr
+              ></span
             >
             <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
               {fieldLevelHelp}
@@ -38,7 +41,7 @@
         <div
           class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click"
         >
-          <div class="fr-search-bar" role="none">
+          <div class="sfgps-combobox__form-element fr-search-bar" role="none">
             <label class="fr-label" for="InputId"> Recherche </label>
             <input
               class={computedInputClassName}
@@ -69,58 +72,61 @@
             />
             <button class="fr-btn" title="Rechercher">Rechercher</button>
           </div>
-        </div>
-      </div>
-      <div
-        class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5"
-        id="listboxId"
-        role="listbox"
-        onmousedown={handleScrollClick}
-      >
-        <ul
-          class="sfgpsds-listbox sfgpsds-listbox_vertical"
-          role="presentation"
-        >
-          <template
-            for:each={sfGpsDsInternalData}
-            for:item="item"
-            for:index="index"
+          <div
+            class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5"
+            id="listboxId"
+            role="listbox"
+            onmousedown={handleScrollClick}
           >
-            <li
-              key={item.itrKey}
-              class="sfgpsds-listtbox__item"
+            <ul
+              class="sfgpsds-listbox sfgpsds-listbox_vertical"
               role="presentation"
             >
-              <div
-                class={item.itemClass}
-                aria-selected={item.selected}
-                id={item.itrKey}
-                role="option"
-                data-index={index}
-                onclick={selectOption}
+              <template
+                for:each={sfGpsDsInternalData}
+                for:item="item"
+                for:index="index"
               >
-                <span class="sfgpsds-media__body">
-                  <span class="sfgpsds-listbox__option-text">{item.name}</span>
-                </span>
-              </div>
-            </li>
-          </template>
+                <li
+                  key={item.itrKey}
+                  class="sfgpsds-listtbox__item"
+                  role="presentation"
+                >
+                  <div
+                    class={item.itemClass}
+                    aria-selected={item.selected}
+                    id={item.itrKey}
+                    role="option"
+                    data-index={index}
+                    onclick={selectOption}
+                  >
+                    <span class="sfgpsds-media__body">
+                      <span class="sfgpsds-listbox__option-text"
+                        >{item.name}</span
+                      >
+                    </span>
+                  </div>
+                </li>
+              </template>
 
-          <li class="sfgpsds-listbox__item">
-            <div
-              class={_sfGpsDsLastItemClass}
-              role="option"
-              data-index="last-item"
-              onclick={selectOption}
-            >
-              <span class="sfgpsds-media__body">
-                <span class="sfgpsds-listbox__option-text">
-                  <slot name="lastItem" onslotchange={lastItemChange}> </slot>
-                </span>
-              </span>
-            </div>
-          </li>
-        </ul>
+              <li class="sfgpsds-listbox__item">
+                <div
+                  class={_sfGpsDsLastItemClass}
+                  role="option"
+                  data-index="last-item"
+                  onclick={selectOption}
+                >
+                  <span class="sfgpsds-media__body">
+                    <span class="sfgpsds-listbox__option-text">
+                      <slot name="lastItem" onslotchange={lastItemChange}>
+                      </slot>
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
 

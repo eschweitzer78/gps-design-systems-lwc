@@ -1,4 +1,14 @@
 {
+  "sfGpsDsFrGovAlertOsN/alert": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
   "sfGpsDsFrGovCore/core": [
     {
       "from": ":root",
@@ -80,16 +90,6 @@
   ],
   "sfGpsDsFrGovProgressIndicatorOsN/stepper": [],
   "sfGpsDsFrGovRadioGroupOsN/radios": [
-    {
-      "from": "../../icons/system",
-      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
-    }
-  ],
-  "sfGpsDsFrGovSaveForLaterAckOsN/alert": [
-    {
-      "from": ":root",
-      "to": ":host"
-    },
     {
       "from": "../../icons/system",
       "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"

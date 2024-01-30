@@ -1,5 +1,8 @@
-@import "c/sfGpsDsFrGovCoreOs";
 @import "./file-upload.gen.css";
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
 
 .sfgpsds-file {
   position: relative;

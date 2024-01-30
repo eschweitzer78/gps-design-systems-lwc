@@ -14,6 +14,8 @@ import tmpl from "./sfGpsDsFrGovFormStepOsN.html";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsFrGovFormStepOsN";
+const SHOW_LABEL = false;
+
 export default class SfGpsDsFrGovFormStepOsN extends OmniscriptStep {
   render() {
     return tmpl;
@@ -26,10 +28,6 @@ export default class SfGpsDsFrGovFormStepOsN extends OmniscriptStep {
 
   handleNext(e) {
     if (DEBUG) console.log(CLASS_NAME, "handleNext");
-
-    /* Prepare snapshot captures errors so that they can be kept until the next time the user does next */
-    this.reportValidity();
-    this.prepareSnapshot();
 
     super.handleNext(e);
   }
@@ -49,6 +47,10 @@ export default class SfGpsDsFrGovFormStepOsN extends OmniscriptStep {
         }
       })
     );
+  }
+
+  get showLabel() {
+    return SHOW_LABEL || this._propSetMap.showLabel;
   }
 
   get showSave() {

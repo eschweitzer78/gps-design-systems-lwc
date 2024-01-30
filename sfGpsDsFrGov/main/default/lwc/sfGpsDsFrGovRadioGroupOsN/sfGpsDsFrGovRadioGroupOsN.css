@@ -1,5 +1,8 @@
-@import "c/sfGpsDsFrGovCoreOs";
 @import "./radios.gen.css";
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
 
 /* repeat icons */
 
@@ -9,22 +12,4 @@
 
 .fr-fieldset__legend slot {
   display: inline;
-}
-
-/* /* added to align with omnistudio 246 darkenining the background of read only widgets wholesale */
-.fr-label--disabled:before {
-  opacity: 0.5;
-  background: white !important;
-  background-image: linear-gradient(
-      0deg,
-      var(--text-disabled-grey),
-      var(--text-disabled-grey)
-    ),
-    linear-gradient(0deg, var(--text-disabled-grey), var(--text-disabled-grey)),
-    linear-gradient(0deg, var(--text-disabled-grey), var(--text-disabled-grey)),
-    linear-gradient(
-      0deg,
-      var(--border-default-grey),
-      var(--border-default-grey)
-    );
 }

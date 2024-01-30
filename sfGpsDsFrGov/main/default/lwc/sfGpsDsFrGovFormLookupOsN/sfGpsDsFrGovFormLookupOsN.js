@@ -5,15 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
 import SfGpsDsFormLookupOsN from "c/sfGpsDsFormLookupOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsFrGovFormLookupOsN.html";
 
 export default class SfGpsDsFrGovFormLookupOsN extends SfGpsDsFormLookupOsN {
-  @api disabled;
-  @api readOnly;
-
   render() {
     return tmpl;
   }
@@ -22,14 +18,14 @@ export default class SfGpsDsFrGovFormLookupOsN extends SfGpsDsFormLookupOsN {
     return computeClass({
       "fr-select-group": true,
       "fr-select-group--error": this.sfGpsDsIsError,
-      "fr-select-group--disabled": this.readOnly
+      "fr-select-group--disabled":
+        this._propSetMap.disabled || this._propSetMap.readOnly
     });
   }
 
   get computedLabelClassName() {
     return computeClass({
-      "fr-label": true,
-      "fr-label--disabled": this.readOnly
+      "fr-label": true
     });
   }
 

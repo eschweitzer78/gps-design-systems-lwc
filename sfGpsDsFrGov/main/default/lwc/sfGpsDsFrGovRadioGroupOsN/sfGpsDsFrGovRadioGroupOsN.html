@@ -1,4 +1,5 @@
 <template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
   <fieldset
     class={computedFormGroupClassName}
     aria-describedby={computedAriaDescribedBy}
@@ -35,7 +36,7 @@
             type="radio"
             tabindex={tabIndex}
             required={required}
-            disabled={disabled}
+            disabled={computedDisabledReadOnly}
             id={option.id}
             name={option.name}
             aria-invalid={computedAriaInvalid}
