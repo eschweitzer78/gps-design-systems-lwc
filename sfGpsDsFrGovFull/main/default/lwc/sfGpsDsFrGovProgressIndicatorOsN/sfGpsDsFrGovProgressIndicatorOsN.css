@@ -1,0 +1,5 @@
+@import "./stepper.gen.css";
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}

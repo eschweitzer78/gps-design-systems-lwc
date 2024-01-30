@@ -1,0 +1,32 @@
+@import "./select.gen.css";
+@import "c/sfGpsDsFrGovPredictiveCssOsN";
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
+
+.sfgps-combobox__form-element::after {
+  content: url("/sfsites/c/resource/sfGpsDsFrGov/icons/system/arrow-down-s-line.svg");
+  background-size: 1rem 1rem;
+  font-size: 5px !important;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+
+/* repetable icons */
+
+.fr-label > span:first-child {
+  margin-right: 0.5rem;
+}
+
+.fr-select-group--disabled .fr-input {
+  opacity: 0.5;
+  background: white !important;
+  cursor: not-allowed;
+}
+
+.fr-select-group {
+  margin-bottom: 1.5rem;
+}

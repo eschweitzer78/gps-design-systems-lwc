@@ -1,0 +1,74 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <fieldset
+    class={computedFormGroupClassName}
+    aria-describedby={computedAriaDescribedBy}
+    role="radiogroup"
+    aria-required={required}
+    aria-invalid={computedAriaInvalid}
+  >
+    <legend
+      class="fr-fieldset__legend--regular fr-fieldset__legend"
+      id="radio-hint-element-legend"
+    >
+      <span
+        >{label}
+        <abbr lwc:if={required} class="fr-input-asterisk" title={requiredLabel}
+          >*</abbr
+        >
+      </span>
+
+      <slot name="label"></slot>
+      <span if:true={fieldLevelHelp} id="helper" class="fr-hint-text">
+        {fieldLevelHelp}
+      </span>
+    </legend>
+
+    <template
+      if:true={internalOpts}
+      for:each={internalOpts}
+      for:item="option"
+      for:index="index"
+    >
+      <div key={option.id} class={computedFieldsetClassName}>
+        <div class={computedRadioGroupClassName}>
+          <input
+            type="radio"
+            tabindex={tabIndex}
+            required={required}
+            disabled={computedDisabledReadOnly}
+            id={option.id}
+            name={option.name}
+            aria-invalid={computedAriaInvalid}
+            value={option.value}
+            checked={option.selected}
+            data-index={index}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            onchange={sfGpsDsOnChangeValue}
+            onkeydown={handleKeyDownEvent}
+            readonly={readOnly}
+            aria-readonly={readOnly}
+          />
+
+          <label class={computedLabelClass} data-index={index} for={option.id}>
+            {option.label}
+            <span lwc:if={option.hint} class="fr-hint-text">
+              {option.hint}
+            </span>
+          </label>
+        </div>
+      </div>
+    </template>
+
+    <div
+      if:true={sfGpsDsIsError}
+      class="fr-messages-group"
+      id="errorMessageBlock"
+    >
+      <p aria-live="assertive" class="fr-message fr-message--error">
+        {_errorMessage}
+      </p>
+    </div>
+  </fieldset>
+</template>

@@ -1,0 +1,23 @@
+<template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
+  <div if:true={computedShowAlert} class={computedAlertClassName}>
+    <template lwc:if={isSmall}>
+      {title}
+      <template lwc:if={description}>{space}{description}</template>
+    </template>
+    <template lwc:else>
+      <h3 lwc:if={title} class="fr-alert__title">{title}</h3>
+      <p lwc:if={description}>{description}</p>
+      <slot></slot>
+    </template>
+
+    <button
+      lwc:if={hasCloseButton}
+      class="fr-btn--close fr-btn"
+      title={i18n.maskMessage}
+      onclick={handleClick}
+    >
+      {i18n.maskMessage}
+    </button>
+  </div>
+</template>
