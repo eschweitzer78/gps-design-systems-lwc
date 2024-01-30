@@ -1,4 +1,6 @@
-@import "c/sfGpsDsFrGovCoreOs";
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
 
 /* repeat icons */
 

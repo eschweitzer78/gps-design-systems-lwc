@@ -1,11 +1,24 @@
 /*.Copyright (c) 2023-2024, Bouchra Mouhim, Benedict Sefa Ziorklui, Emmanuel Schweitzer*/
 
-@import "c/sfGpsDsFrGovCoreOs";
 @import "c/sfGpsDsFrGovPredictiveCssOsN";
 @import "./search.gen.css";
 
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
+
 .fr-label > span:first-child {
   margin-right: 0.5rem;
+}
+
+.fr-input-group--disabled .fr-input {
+  opacity: 0.5;
+  background: white !important;
+  cursor: not-allowed;
+}
+
+.fr-input-group {
+  margin-bottom: 1.5rem;
 }
 
 /*

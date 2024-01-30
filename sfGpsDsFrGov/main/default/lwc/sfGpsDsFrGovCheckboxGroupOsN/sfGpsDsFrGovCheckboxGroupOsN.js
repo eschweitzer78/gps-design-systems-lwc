@@ -12,6 +12,7 @@ import tmpl from "./sfGpsDsFrGovCheckboxGroupOsN.html";
 
 export default class extends OmniscriptCheckboxGroup {
   @api sfGpsDsCheckboxSize = "default";
+  @api readOnly;
 
   render() {
     return tmpl;

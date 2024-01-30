@@ -37,8 +37,7 @@ export default class extends OmnistudioRadioGroup {
 
   get computedLabelClass() {
     return computeClass({
-      "fr-label": true,
-      "fr-label--disabled": this.readOnly
+      "fr-label": true
     });
   }
 
@@ -51,6 +50,10 @@ export default class extends OmnistudioRadioGroup {
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.sfGpsDsIsError
     });
+  }
+
+  get computedDisabledReadOnly() {
+    return this.disabled || this.readOnly;
   }
 
   get _errorMessage() {

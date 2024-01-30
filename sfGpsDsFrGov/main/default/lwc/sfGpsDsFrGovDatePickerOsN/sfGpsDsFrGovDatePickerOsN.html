@@ -1,4 +1,5 @@
 <template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
   <div class={computedFormGroupClass}>
     <label lwc:if={label} class="fr-label" for="date-input-day">
       <span
@@ -8,8 +9,9 @@
             lwc:if={required}
             class="fr-input-asterisk"
             title={requiredLabel}
-            >*</abbr
           >
+            *
+          </abbr>
         </template>
       </span>
       <slot name="label"></slot>

@@ -1,6 +1,9 @@
-@import "c/sfGpsDsFrGovCoreOs";
 @import "c/sfGpsDsFrGovPredictiveCssOsN";
 @import "./input.gen.css";
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
 
 .fr-label > span:first-child {
   margin-right: 0.5rem;

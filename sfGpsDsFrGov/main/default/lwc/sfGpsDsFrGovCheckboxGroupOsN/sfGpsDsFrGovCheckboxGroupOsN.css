@@ -1,5 +1,8 @@
-@import "c/sfGpsDsFrGovCoreOs";
 @import "./checkboxes.gen.css";
+
+:host {
+  font-family: Marianne, arial, sans-serif;
+}
 
 /* repeat icons */
 

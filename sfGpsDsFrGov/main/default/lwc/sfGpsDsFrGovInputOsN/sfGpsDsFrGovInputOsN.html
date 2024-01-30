@@ -1,4 +1,5 @@
 <template>
+  <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
   <template if:false={isCustomLwc}>
     <div
       id="sf-gps-ds-fr-gov-input-os-n"
@@ -109,8 +110,7 @@
             <span class="slds-radio_faux"></span>
             <span
               class="slds-form-element__label slds-show--inline slds-p-top_none"
-            >
-              {label}
+              >{label}
               <abbr
                 lwc:if={required}
                 class="fr-input-asterisk"

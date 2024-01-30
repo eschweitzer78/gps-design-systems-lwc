@@ -1,13 +1,8 @@
-@import "c/sfGpsDsFrGovCoreOs";
-@import "./input.gen.css";
+/*@import "./input.gen.css";*/
 
-/* Need to adjust this rule as in Omniscript they always be first child */
-/* have same setup as for subsequent children. */
-
-/*.govuk-form-group:first-child {
-  margin-top: 1rem;
+:host {
+  font-family: Marianne, arial, sans-serif;
 }
-*/
 
 .fr-disclosure {
   margin-top: 0.5rem;
