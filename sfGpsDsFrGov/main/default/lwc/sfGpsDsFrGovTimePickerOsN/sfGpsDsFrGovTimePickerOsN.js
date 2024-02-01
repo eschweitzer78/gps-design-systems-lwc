@@ -46,6 +46,10 @@ export default class extends OmnistudioTimePicker {
     return "time-input";
   }
 
+  get computedShowErrorMessageBlock() {
+    return this.sfGpsDsIsError || this.forceError;
+  }
+
   get _errorMessage() {
     return this.sfGpsDsErrorMessage?.replace("Error:", "") || ZWSP_CHAR;
   }

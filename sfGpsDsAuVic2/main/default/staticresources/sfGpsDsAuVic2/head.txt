@@ -1,0 +1,91 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Welcome to LWC Communities!</title>
+
+<!-- branding stylesheets 
+
+<link rel="stylesheet" href="{ basePath }/assets/styles/salesforce-lightning-design-system.min.css?{ versionKey }" />
+
+<link rel="stylesheet" href="{ basePath }/assets/styles/dxp-site-spacing-styling-hooks.min.css?{ versionKey }" />
+<link rel="stylesheet" href="{ basePath }/assets/styles/dxp-styling-hooks.min.css?{ versionKey }" />
+<link rel="stylesheet" href="{ basePath }/assets/styles/dxp-slds-extensions.min.css?{ versionKey }" />
+-->
+
+
+<!-- branding stylesheets -->
+<link rel="stylesheet" href="{ styles/styles.css }" />
+<link rel="stylesheet" href="{ styles/print.css }" media="print"/>
+
+<link rel="stylesheet" href="/sfsites/c/resource/1704694766/sfGpsDsAuVic2/global.css"/>
+<link rel="stylesheet" href="/sfsites/c/resource/1704694766/sfGpsDsAuVic2/style.css"/>
+
+<style>
+    body {
+        font-size: 1rem;
+    }
+</style>
+
+<!-- mini SLDS -->
+
+<style>
+.slds-button--icon, .slds-button--icon-border, .slds-button--icon-border-filled, .slds-button--icon-border-inverse, 
+.slds-button--icon-container, .slds-button--icon-error, .slds-button--icon-inverse, .slds-button--icon-more, 
+.slds-button--icon-warning, .slds-button_icon, .slds-button_icon-border, .slds-button_icon-border-filled, 
+.slds-button_icon-border-inverse, .slds-button_icon-container, .slds-button_icon-error, 
+.slds-button_icon-inverse, .slds-button_icon-more, .slds-button_icon-warning {
+    line-height: 1;
+    vertical-align: middle;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: var(--slds-g-color-neutral-base-50,#747474);
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+
+.slds-button {
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: var(--slds-c-button-spacing-block-start,var(--sds-c-button-spacing-block-start,0)) var(--slds-c-button-spacing-inline-end,var(--sds-c-button-spacing-inline-end,0)) var(--slds-c-button-spacing-block-end,var(--sds-c-button-spacing-block-end,0)) var(--slds-c-button-spacing-inline-start,var(--sds-c-button-spacing-inline-start,0));
+    background: none;
+    background-color: var(--slds-c-button-color-background,var(--sds-c-button-color-background,transparent));
+    background-clip: border-box;
+    border: var(--slds-c-button-sizing-border,var(--sds-c-button-sizing-border,1px)) solid var(--slds-c-button-color-border,var(--sds-c-button-color-border,transparent));
+    border-radius: var(--slds-c-button-radius-border,var(--sds-c-button-radius-border,.25rem));
+    -webkit-box-shadow: var(--slds-c-button-shadow,var(--sds-c-button-shadow));
+    box-shadow: var(--slds-c-button-shadow,var(--sds-c-button-shadow));
+    line-height: var(--slds-c-button-line-height,var(--sds-c-button-line-height,1.875rem));
+    text-decoration: none;
+    color: var(--slds-c-button-text-color,var(--sds-c-button-text-color,#0176d3));
+    -webkit-appearance: none;
+    white-space: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+    
+.slds-button__icon {
+    width: .875rem;
+    height: .875rem;
+    fill: var(--slds-c-icon-color-foreground,currentColor);
+}
+    
+.slds-assistive-text {
+    position: absolute!important;
+    margin: -1px!important;
+    border: 0!important;
+    padding: 0!important;
+    width: 1px!important;
+    height: 1px!important;
+    overflow: hidden!important;
+    clip: rect(0 0 0 0)!important;
+    text-transform: none!important;
+    white-space: nowrap!important;
+}
+</style>

@@ -582,3 +582,54 @@
 /* OMNI */
 
 .omniscript-sfl-actions, .omniscript-button-position, .omniscript-btn-next, .omniscript-btn-previous, .omniscript-btn-save-for-later {display: none !important;}.omniscript-article.slds-card {border: none;}.omniscript-body {padding: 0 !important; margin-top: 0 !important;}.slds-omniscript_stepform {padding-right: 0 !important;padding-left: 0 !important;}.omniscript-body {border-right: 0 !important;}
+
+/* OMNI FILE */
+
+.omniscript-article c-sf-gps-ds-au-nsw-s-form-file-os-n .slds-file-selector__dropzone {
+  border: 2px dashed var(--lwc-colorBorder, #646974);
+  min-height: 228px;
+  border-radius: 6px;
+  max-width: 450px;
+}
+
+c-sf-gps-ds-au-nsw-s-form-file-os-n .slds-file-selector__body {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+.omniscript-article c-sf-gps-ds-au-nsw-s-form-file-os-n .omni-file-input .slds-file-selector__body {
+  white-space: normal;
+}
+
+c-sf-gps-ds-au-nsw-s-form-file-os-n .omni-file-input .slds-file-selector__button {
+  transition-duration: 0.5s, 0.5s, 0.5s;
+  transition-timing-function: ease, ease, ease;
+  transition-delay: 0s, 0s, 0s;
+  transition-property: border-color, background-color, color;
+  border-radius: 8px;
+}
+
+c-sf-gps-ds-au-nsw-s-form-file-os-n .omni-file-input .slds-file-selector__button lightning-primitive-icon {
+  display: none;
+}
+
+c-sf-gps-ds-au-nsw-s-form-file-os-n .slds-file-selector__body:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23646974' aria-hidden='true' width='16' height='16' color='darkGrey'%3E%3Cpath d='M15 16H1a1 1 0 01-1-1v-5h2v4h12v-4h2v5a1 1 0 01-1 1z'/%3E%3Cpath d='M8 12a1 1 0 01-1-1V2a1 1 0 012 0v9a1 1 0 01-1 1z'/>%3E%3Cpath d='M12 6a1 1 0 01-.71-.29L8 2.41l-3.29 3.3a1 1 0 01-1.42-1.42l4-4a1 1 0 011.42 0l4 4a1 1 0 010 1.42A1 1 0 0112 6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center 0.5rem;
+  background-size: 2.25rem 2.25rem;
+  color: rgb(100, 105, 116);
+  content: var(--sfgpsds-au-nsw-s-form-file-help-text, "Drag and drop files into this box or use the button to select and upload your files.\A Formats accepted: PDF, PNG, JPG, JPEG.\A File size must not exceed 6MB.");
+  font-weight: 300;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding-top: 4.75rem;
+  max-width: 368px;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+c-sf-gps-ds-au-nsw-s-form-file-os-n .slds-file-selector__text {
+  display: none
+}

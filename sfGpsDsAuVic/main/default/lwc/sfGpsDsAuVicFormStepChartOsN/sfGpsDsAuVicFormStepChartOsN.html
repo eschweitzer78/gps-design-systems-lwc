@@ -6,14 +6,14 @@
       <div class="slds-size_1-of-1">
         <div class="slds-progress slds-size_1-of-1">
           <ol class="slds-progress__list">
-            <template for:each={stepDef} for:item="e" for:index="t">
-              <li key={e.name} class="slds-progress__item">
+            <template for:each={stepDef} for:item="step" for:index="index">
+              <li key={step.name} class="slds-progress__item">
                 <c-sf-gps-ds-au-vic-form-step-chart-item-os-n
-                  json-def={e}
+                  json-def={step}
                   is-vertical={isVertical}
                   json-data={jsonDef.response}
                   current-index={currentIndex}
-                  current-step-index={t}
+                  current-step-index={index}
                   script-header-def={scriptHeaderDef}
                 >
                 </c-sf-gps-ds-au-vic-form-step-chart-item-os-n>
@@ -55,8 +55,8 @@
         <h2 class="sfgpsds-assistive-text">Progress indicator</h2>
 
         <ol class="sfgpsds-progress__list">
-          <template for:each={stepDef} for:item="e" for:index="t">
-            <li class="sfgpsds-progress__item" key={e.name}>
+          <template for:each={stepDef} for:item="step" for:index="index">
+            <li class="sfgpsds-progress__item" key={step.name}>
               <div class="sfgpsds-progress__line-container">
                 <div class="sfgpsds-progress__line"></div>
               </div>
@@ -67,35 +67,14 @@
                 last-executed-step-index={_lastExecutedStepIndex}
                 first-visible-step-index={firstVisibleStepIndex}
                 current-index={currentIndex}
-                current-step-index={t}
+                current-step-index={index}
                 script-header-def={scriptHeaderDef}
               >
               </c-sf-gps-ds-au-vic-form-step-chart-item-os-n>
             </li>
           </template>
         </ol>
-
-        <!--
-        <div 
-          aria-valuemin="0" 
-          aria-valuemax="100" 
-          aria-valuenow={stepProgressValue} 
-          aria-label={_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
-          role="progressbar"
-        >
-          <span class="slds-assistive-text">
-            Progress: {stepProgressValue}&percnt;
-          </span>
-        </div>
-        -->
       </div>
     </div>
   </template>
-
-  <!--
-  <div
-    class="slds-omniscript_stepform slds-size_1-of-1 slds-small-size_1-of-1 slds-large-size_1-of-1 slds-m-top_xx-large slds-m-bottom_x-large"
-  >
-  </div>
--->
 </template>

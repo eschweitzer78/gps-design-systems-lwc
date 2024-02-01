@@ -1,4 +1,5 @@
 const { jestConfig } = require("@salesforce/sfdx-lwc-jest/config");
+const ro = require("resize-observer-polyfill");
 
 const setupFilesAfterEnv = jestConfig.setupFilesAfterEnv || [];
 setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.js");
@@ -23,5 +24,8 @@ module.exports = {
       "<rootDir>/__test__/jest-mocks/lightning/combobox/combobox",
     "^lightning/(.*)":
       "<rootDir>/node_modules/@salesforce/sfdx-lwc-jest/src/lightning-stubs/$1/$1"
+  },
+  globals: {
+    ResizeObserver: ro
   }
 };

@@ -20,6 +20,7 @@
     onchange={handleChange}
     onfocus={handleFocus}
     onblur={handleBlur}
+    read-only={_propSetMap.readOnly}
   >
     <template if:true={_propSetMap.repeat}>
       <span slot="label" class={_styleClasses.repeatContainer} role="group">

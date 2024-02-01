@@ -20,7 +20,7 @@ const I18N = {
 export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
   LightningElement
 ) {
-  @api addClassName;
+  @api className;
 
   /* api : numbered */
 
@@ -77,7 +77,7 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
   get computedClassName() {
     return computeClass({
       "rpl-accordion": true,
-      [this.addClassName]: this.addClassName
+      [this.className]: this.className
     });
   }
 

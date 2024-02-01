@@ -72,7 +72,7 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
               actionValue:
                 "https://www.nsw.gov.au/driving-boating-and-transport/demerits-penalties-and-offences/offences/search-offences-and-penalties",
               imageUrl: null,
-              label: "Search offfences and penalties",
+              label: "Search offences and penalties",
               subMenu: [],
               target: "CurrentWindow"
             },

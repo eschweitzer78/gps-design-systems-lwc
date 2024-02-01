@@ -1,0 +1,52 @@
+$govuk-new-link-styles: true;
+
+@font-face {
+  font-family: "GDS Transport";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/sfsites/c/resource/1699433008/sfGpsDsUkGov_showcase/fonts/NunitoSans-Latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "GDS Transport";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/sfsites/c/resource/1699433008/sfGpsDsUkGov_showcase/fonts/NunitoSans-LatinExt.woff2") format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-display: fallback;
+}
+
+@import "../../../../../../sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovCore/core";
+@import "./fixes";
+
+// App-specific variables
+$app-light-grey: #f8f8f8;
+$app-code-color: #d13118;
+
+// App-specific components
+@import "components/masthead";
+@import "components/subnav";
+
+.app-width-container {
+  @include govuk-width-container($govuk-page-width);
+}
+
+// Add styling for 'what's new' banner
+.app-whats-new {
+  border-bottom: 1px solid $govuk-border-colour;
+  background-color: $app-light-grey;
+}
+
+.app-content h4, 
+.app-content h5, 
+.app-content h6, 
+.app-content p, 
+.app-content ul:not(.app-tabs), 
+.app-content ol, 
+.app-content img, 
+.app-content video, 
+.app-content .app-table--constrained {
+  max-width: 38em;
+}

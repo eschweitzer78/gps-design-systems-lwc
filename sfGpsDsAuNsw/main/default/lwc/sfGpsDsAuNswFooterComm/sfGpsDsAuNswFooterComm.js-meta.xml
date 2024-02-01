@@ -53,7 +53,7 @@
       <property
         name="navigationDevName"
         type="String"
-        label="lower footer navigation name"
+        label="Lower footer navigation name"
         description="Pick the target lower footer nav when mode is set to Experience Cloud Navigation."
         editor="c/sfGpsDsNavigationCpe"
       />

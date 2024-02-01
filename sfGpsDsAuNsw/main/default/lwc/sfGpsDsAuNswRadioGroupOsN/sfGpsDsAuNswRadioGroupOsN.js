@@ -13,12 +13,13 @@ import tmpl from "./sfGpsDsAuNswRadioGroupOsN.html";
 export default class SfGpsDsAuNswRadioGroupOsN extends StatusHelperMixin(
   OmnistudioRadioGroup
 ) {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
-  renderedCallback() {
-    // Fixing issue #19
+  get computedLegendClassName() {
+    return computeClass({
+      "nsw-form__legend": true,
+      "nsw-form__required": this.required
+    });
   }
 
   get computedAriaInvalid() {
@@ -32,10 +33,13 @@ export default class SfGpsDsAuNswRadioGroupOsN extends StatusHelperMixin(
     });
   }
 
-  get computedLegendClassName() {
-    return computeClass({
-      "nsw-form__legend": true,
-      "nsw-form__required": this.required
-    });
+  /* lifecycle */
+
+  render() {
+    return tmpl;
+  }
+
+  renderedCallback() {
+    // Fixing issue #19
   }
 }

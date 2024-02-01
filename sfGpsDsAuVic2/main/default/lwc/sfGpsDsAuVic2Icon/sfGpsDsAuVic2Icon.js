@@ -1,35 +1,40 @@
 import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
-import { RplIconSizes, RplIconNames } from "./constants";
+import { RplIconNames } from "c/sfGpsDsAuVic2IconConstants";
 import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
-//import tmpl from "./sfGpsDsAuVic2Icon.html";
-const RplColorThemes = [];
-//const CLASS_NAME = "sfGpsDsAuVic2Icon";
+import { RplColorThemes, RplIconSizes } from "c/sfGpsDsAuVic2UiCoreConstants";
+
+import STATIC_RESOURCE from "@salesforce/resourceUrl/sfGpsDsAuVic2";
+
+const SIZE_DEFAULT = "s";
+const COLOUR_DEFAULT = null;
 
 export default class extends LightningElement {
   @api title;
-  @api addClassName;
+  @api className;
 
   /* api: padded */
 
   _paddedOriginal = false;
   _padded = false;
 
-  @api get paddded() {
+  @api
+  get padded() {
     return this._paddedOriginal;
   }
 
   set padded(value) {
     this._paddedOriginal = value;
     this._padded = normaliseBoolean(value, {
-      acceptAsString: true
+      acceptString: true,
+      fallbackValue: false
     });
   }
 
   /* api: colour */
 
-  _colourOriginal;
-  _colour;
+  _colourOriginal = COLOUR_DEFAULT;
+  _colour = COLOUR_DEFAULT;
 
   @api
   get colour() {
@@ -40,13 +45,13 @@ export default class extends LightningElement {
     this._colourOriginal = value;
     this._colour = normaliseString(value, {
       validValues: RplColorThemes,
-      fallbackValue: null
+      fallbackValue: COLOUR_DEFAULT
     });
   }
 
   /* api: size */
-  _sizeOriginal = "s";
-  _size = "s";
+  _sizeOriginal = SIZE_DEFAULT;
+  _size = SIZE_DEFAULT;
 
   @api
   get size() {
@@ -57,7 +62,7 @@ export default class extends LightningElement {
     this._sizeOriginal = value;
     this._size = normaliseString(value, {
       validValues: RplIconSizes,
-      fallbackValue: null
+      fallbackValue: SIZE_DEFAULT
     });
   }
 
@@ -88,7 +93,7 @@ export default class extends LightningElement {
       [`rpl-icon--${this._name}`]: this._name,
       [`rpl-icon--colour-${this._colour}`]: this._colour,
       "rpl-icon--padded": this._padded,
-      [this.addClassNamme]: this.addClassName
+      [this.className]: this.className
     });
   }
 
@@ -97,6 +102,6 @@ export default class extends LightningElement {
   }
 
   get computedHref() {
-    return `/sfsites/c/resource/sfGpsDsAuVic2/assets/icons/${this._name}.svg#icon`;
+    return `${STATIC_RESOURCE}/assets/icons/${this._name}.svg#icon`;
   }
 }

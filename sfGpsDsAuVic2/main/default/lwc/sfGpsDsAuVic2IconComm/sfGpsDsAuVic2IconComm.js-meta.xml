@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>59.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Icon</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property name="title" type="String" label="Title" />
+      <property
+        name="padded"
+        type="Boolean"
+        label="Padded"
+        description="Add padding around the icon."
+        default="false"
+      />
+      <property
+        name="colour"
+        type="String"
+        label="Colour"
+        description="Colour of the icon."
+        default="default"
+        required="true"
+        editor="c/sfGpsDsAuVic2IconColourCpe"
+      />
+      <property
+        name="size"
+        type="String"
+        label="Size"
+        description="Size of the icon."
+        default="m"
+        required="true"
+        editor="c/sfGpsDsAuVic2IconSizeCpe"
+      />
+      <property
+        name="name"
+        type="String"
+        label="Name"
+        description="Name of the icon."
+        default="icon-exclamation-circle-filled"
+        required="true"
+        editor="c/sfGpsDsAuVic2IconNameCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

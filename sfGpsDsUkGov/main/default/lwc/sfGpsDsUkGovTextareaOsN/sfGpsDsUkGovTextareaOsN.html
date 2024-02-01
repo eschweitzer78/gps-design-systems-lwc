@@ -30,7 +30,7 @@
     </p>
 
     <textarea
-      class={computedTextAreaCharacterCountError}
+      class={computedTextAreaClassName}
       tabindex={tabIndex}
       minlength={minLength}
       maxlength={maxLength}
@@ -58,7 +58,7 @@
 
     <div
       id="character-count-text"
-      class={computedCharacterCountError}
+      class={computedCharacterCountErrorClassName}
       if:true={_showCharacterCount}
     >
       {characterCountText}

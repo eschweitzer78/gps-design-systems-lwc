@@ -27,20 +27,3 @@ export const isIPadPro = () => {
 export const isMacPlatform = () => {
   return navigator.userAgent.match(/Mac/);
 };
-
-export const isExternalUrl = (url) => {
-  const tmp = document.createElement("a");
-  tmp.href = url;
-
-  return tmp.host !== new URL(document.URL).host;
-};
-
-export const truncateText = (text, stop = 150, clamp) => {
-  if (text && typeof text === "string") {
-    if (text.length > stop) {
-      return text.slice(0, stop) + (stop < text.length ? clamp || "..." : "");
-    }
-    return text;
-  }
-  return "";
-};

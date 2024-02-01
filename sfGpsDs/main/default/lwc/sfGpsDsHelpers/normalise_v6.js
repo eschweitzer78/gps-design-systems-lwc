@@ -52,8 +52,14 @@ export function normaliseString(value, options = {}) {
     result = result.toLowerCase();
   }
 
-  if (vV && vV.indexOf(result) === -1) {
-    result = fV;
+  if (vV && Array.isArray(vV)) {
+    if (vV.indexOf(result) === -1) {
+      result = fV;
+    }
+  } else if (vV && typeof vV === "object") {
+    if (!Object.hasOwn(vV, result)) {
+      result = fV;
+    }
   }
 
   return result;

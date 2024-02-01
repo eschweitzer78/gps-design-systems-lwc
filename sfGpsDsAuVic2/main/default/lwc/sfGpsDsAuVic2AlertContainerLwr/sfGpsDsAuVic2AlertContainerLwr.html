@@ -1,0 +1,15 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-alert-container
+    lwc:else
+    class-name={className}
+    ondismiss={handleDismiss}
+  >
+    <slot name="Alerts"></slot>
+  </c-sf-gps-ds-au-vic2-alert-container>
+</template>
