@@ -22,3 +22,12 @@
 .omniscript-body {
   border-right: 0 !important;
 }
+
+.omniscript-body {
+  padding-left: 1rem !important;
+}
+
+.slds-omniscript_stepform {
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+}

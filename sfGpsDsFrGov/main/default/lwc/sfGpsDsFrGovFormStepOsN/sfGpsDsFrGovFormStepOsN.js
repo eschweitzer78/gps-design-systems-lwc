@@ -22,58 +22,38 @@ export default class SfGpsDsFrGovFormStepOsN extends OmniscriptStep {
   }
 
   handleBack(e) {
+    if (DEBUG) console.log(CLASS_NAME, "> handleBack");
+
     e.preventDefault(); // avoid default behaviour with the href on anchor
     super.handleBack(e);
-  }
 
-  handleNext(e) {
-    if (DEBUG) console.log(CLASS_NAME, "handleNext");
-
-    super.handleNext(e);
+    if (DEBUG) console.log(CLASS_NAME, "< handleBack");
   }
 
   handleSave(e) {
+    if (DEBUG) console.log(CLASS_NAME, "> handleSave");
+
     e.stopPropagation();
 
-    if (!this._propSetMap.allowSaveForLater) {
-      return;
+    if (this._propSetMap.allowSaveForLater) {
+      this.dispatchEvent(
+        new CustomEvent("omnisaveforlater", {
+          bubbles: true,
+          detail: {
+            auto: false
+          }
+        })
+      );
     }
 
-    this.dispatchEvent(
-      new CustomEvent("omnisaveforlater", {
-        bubbles: true,
-        detail: {
-          auto: false
-        }
-      })
-    );
+    if (DEBUG) console.log(CLASS_NAME, "< handleSave");
   }
 
   get showLabel() {
-    return SHOW_LABEL || this._propSetMap.showLabel;
+    return SHOW_LABEL || this._propSetMap?.showLabel;
   }
 
   get showSave() {
-    return this._propSetMap.allowSaveForLater && this._propSetMap.saveLabel;
-  }
-
-  // TO DO : override showNext to add a counter to get steps.length ( we don't have an info like this.scriptHeaderDef.LastStepIndex )
-  get showNext() {
-    let counter = -1;
-    let data = this.scriptHeaderDef.labelMap;
-    for (let key in data) {
-      /* eslint-disable-next-line no-prototype-builtins */
-      if (data.hasOwnProperty(key)) {
-        if (key === data[key]) {
-          counter++;
-        }
-      }
-    }
-
-    return (
-      this.scriptHeaderDef.asIndex < counter &&
-      this._propSetMap.nextWidth > 0 &&
-      this._propSetMap.nextLabel
-    );
+    return this._propSetMap?.allowSaveForLater && this._propSetMap?.saveLabel;
   }
 }

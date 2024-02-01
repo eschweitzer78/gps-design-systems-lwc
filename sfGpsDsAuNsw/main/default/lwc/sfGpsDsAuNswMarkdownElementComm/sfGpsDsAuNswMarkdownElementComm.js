@@ -10,8 +10,6 @@ import SfGpsDsMarkdownElement from "c/sfGpsDsMarkdownElement";
 import tmpl from "./sfGpsDsAuNswMarkdownElementComm.html";
 
 export default class SfGpsDsAuNswMarkdownElementComm extends SfGpsDsMarkdownElement {
-  static renderMode = "shadow";
-
   @api get content() {
     return super.content;
   }

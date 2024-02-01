@@ -1,8 +1,30 @@
 <template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-accordion-group
-    content={content}
+    lwc:else
     show-buttons={showButtons}
+    is-fully-expanded={isFullyExpanded}
+    is-fully-collapsed={isFullyCollapsed}
+    onexpandall={handleExpandAll}
+    oncollapseall={handleCollapseAll}
     class-name={className}
   >
+    <template for:each={_h1s} for:item="item">
+      <c-sf-gps-ds-au-nsw-accordion-comm
+        key={item.index}
+        index={item.index}
+        header={item.title}
+        content={item.html}
+        closed={item.closed}
+        onexpand={handleExpand}
+        oncollapse={handleCollapse}
+      >
+      </c-sf-gps-ds-au-nsw-accordion-comm>
+    </template>
   </c-sf-gps-ds-au-nsw-accordion-group>
 </template>

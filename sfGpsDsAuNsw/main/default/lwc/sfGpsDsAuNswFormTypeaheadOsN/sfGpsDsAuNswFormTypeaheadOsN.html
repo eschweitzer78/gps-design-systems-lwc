@@ -72,14 +72,14 @@
     >
       <button
         if:false={_propSetMap.hideEditButton}
-        class="slds-button slds-button_icon nds-button nds-button_icon"
+        class="slds-button slds-button_icon"
         slot="iconRight"
         aria-expanded={_isEditMode}
         onclick={toggleEditMode}
       >
         <omnistudio-icon
           icon-name="utility:edit"
-          extraclass="slds-button__icon nds-button__icon"
+          extraclass="slds-button__icon"
           size="x-small"
           theme={_theme}
           alternative-text={_editLabel}

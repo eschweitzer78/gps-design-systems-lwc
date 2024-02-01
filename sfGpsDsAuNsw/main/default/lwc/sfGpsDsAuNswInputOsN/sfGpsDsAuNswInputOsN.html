@@ -398,7 +398,7 @@
   </c-sf-gps-ds-au-nsw-date-picker-os-n>
 
   <c-sf-gps-ds-au-nsw-time-picker-os-n
-    lwc:if={isTime}
+    lwc:elseif={isTime}
     placeholder={placeholder}
     theme={theme}
     label={label}
@@ -431,7 +431,7 @@
   </c-sf-gps-ds-au-nsw-time-picker-os-n>
 
   <c-sf-gps-ds-au-nsw-datetime-picker-os-n
-    lwc:if={isDateTime}
+    lwc:elseif={isDateTime}
     name={name}
     label={label}
     theme={theme}

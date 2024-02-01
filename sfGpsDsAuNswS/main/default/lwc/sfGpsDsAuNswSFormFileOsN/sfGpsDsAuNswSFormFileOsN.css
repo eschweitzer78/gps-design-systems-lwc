@@ -3,17 +3,26 @@
 .omni-file-input {
   --lwc-spacingXxxSmall: 0.5rem;
   --lwc-colorBorder: var(--nsw-s-border);
-  --slds-c-button-neutral-color-background: #c60c30;
-  --slds-c-button-neutral-color-border: #a71930;
-  --slds-c-button-neutral-color-background-hover: #e80229;
-  --slds-c-button-neutral-color-border-hover: transparent;
-  --slds-c-button-text-color: var(--nsw-s-white);
-  --slds-c-button-text-color-hover: var(--nsw-s-white);
+  --slds-c-button-sizing-border: 2px;
+  --slds-c-button-neutral-color-background-active: rgb(89, 117, 173);
+  --slds-c-button-neutral-color-border-active: rgb(46, 82, 153);
+  --slds-c-button-text-color-active: #fff;
+  --slds-c-button-neutral-color-background: rgb(249, 253, 255);
+  --slds-c-button-neutral-color-border: rgb(46, 82, 153);
+  --slds-c-button-neutral-color-background-hover: rgb(46, 82, 153);
+  --slds-c-button-neutral-color-border-hover: rgb(46, 82, 153);
+  --slds-c-button-text-color: rgb(46, 82, 153);
+  --slds-c-button-text-color-hover: #fff;
   --slds-c-button-spacing-block-start: 0.5rem; /* Found by trial & error, due to lightning primitive icon height */
   --slds-c-button-spacing-block-end: 0.5rem;
   --slds-c-button-neutral-spacing-inline-start: 1.375rem;
   --slds-c-button-neutral-spacing-inline-end: 1.375rem;
-  font-weight: var(--nsw-s-font-bold);
+  font-weight: 500;
+}
+
+.sfgpsds-file-list {
+  max-width: 450px;
+  font-weight: 500;
 }
 
 ul.omni-file {
@@ -21,6 +30,29 @@ ul.omni-file {
 }
 
 ul.omni-file li {
-  background: none;
-  padding: var(--lwc-spacingXSmall, 0.5rem);
+  background: rgb(244, 247, 249);
+  padding: 1rem;
+}
+
+ul.omni-file li .slds-grid {
+  justify-content: space-between;
+}
+
+.remove-file {
+  display: flex;
+}
+
+.remove-file button {
+  color: rgb(46, 82, 153);
+  background-color: transparent;
+  border: 0;
+  text-decoration-line: underline;
+  padding-right: 2px;
+  transition: 0.5s ease 0s fill;
+  white-space: nowrap;
+}
+
+.remove-file button:hover {
+  color: #fff;
+  background-color: rgb(46, 82, 153);
 }

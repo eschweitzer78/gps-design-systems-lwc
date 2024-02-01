@@ -8,3 +8,8 @@
   position: relative;
   margin-bottom: 1.5rem;
 }
+
+.sfgpsds-file ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}

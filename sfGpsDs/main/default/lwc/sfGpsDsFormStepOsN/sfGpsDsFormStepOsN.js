@@ -53,46 +53,46 @@ export default class SfGpsDsFormSelectOsN extends OmniscriptStep {
   }
 
   get mergedLabel() {
-    return omniGetMergedField(this, this._propSetMap.label);
+    return omniGetMergedField(this, this._propSetMap?.label);
   }
 
   get mergedChartLabel() {
-    return omniGetMergedField(this, this._propSetMap.chartLabel);
+    return omniGetMergedField(this, this._propSetMap?.chartLabel);
   }
 
   get mergedCancelLabel() {
-    return omniGetMergedField(this, this._propSetMap.cancelLabel);
+    return omniGetMergedField(this, this._propSetMap?.cancelLabel);
   }
 
   get mergedSaveLabel() {
-    return omniGetMergedField(this, this._propSetMap.saveLabel);
+    return omniGetMergedField(this, this._propSetMap?.saveLabel);
   }
 
   get mergedPreviousLabel() {
-    return omniGetMergedField(this, this._propSetMap.previousLabel);
+    return omniGetMergedField(this, this._propSetMap?.previousLabel);
   }
 
   get mergedNextLabel() {
-    return omniGetMergedField(this, this._propSetMap.nextLabel);
+    return omniGetMergedField(this, this._propSetMap?.nextLabel);
   }
 
   get showSave() {
     return (
-      this.scriptHeaderDef.allowSaveForLater &&
-      this._propSetMap.allowSaveForLater &&
-      this._propSetMap.saveLabel
+      this.scriptHeaderDef?.allowSaveForLater &&
+      this._propSetMap?.allowSaveForLater &&
+      this._propSetMap?.saveLabel
     );
   }
 
   get showNext() {
-    return this._propSetMap.nextWidth > 0 && this._propSetMap.nextLabel;
+    return this._propSetMap?.nextWidth > 0 && this._propSetMap?.nextLabel;
   }
 
   get showPrev() {
     return (
       this.scriptHeaderDef.asIndex > this.scriptHeaderDef.firstStepIndex &&
-      this._propSetMap.previousWidth > 0 &&
-      this._propSetMap.previousLabel
+      this._propSetMap?.previousWidth > 0 &&
+      this._propSetMap?.previousLabel
     );
   }
 }
