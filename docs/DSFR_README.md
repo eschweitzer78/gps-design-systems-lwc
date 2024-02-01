@@ -8,6 +8,23 @@ This document gives guidance on how to install, configure and leverage of the Om
 
 You'll find all the details in the top-level [README.md](https://github.com/eschweitzer78/gps-design-systems-lwc/README.md) file.
 
+### Prepare your Experience Cloud site
+
+Some CSS will need to be loaded on your site. Do so in `Settings > Advanced` and change the `HEAD` section:
+
+```
+<link rel="stylesheet" href="/sfsites/c/resource/sfGpsDsFrGov/dsfr.min.css">
+<link rel="stylesheet" href="/sfsites/c/resource/sfGpsDsFrGov/dsfr-supplement.min.css">
+<link rel="stylesheet" href="/sfsites/c/resource/sfGpsDsFrGov/omnistudio.css">
+
+<style>
+   html {
+  		-webkit-font-smoothing: antialiased;
+ 		 -moz-osx-font-smoothing: grayscale;
+	}
+</style>
+```
+
 ### Configure each OmniScript for use of the GOUV.FR Frontend
 
 You can apply overrides on your choice of elements for the whole script, or do a targeted override on a single element; we suggest to systematically apply all overrides for full compliance.
