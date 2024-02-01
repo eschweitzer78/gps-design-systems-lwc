@@ -4,13 +4,14 @@ This document gives guidance on how to install, configure and leverage of the Om
 
 ## How to
 
-### Install the Salesforce GOV.FR Frontend
+### Install Salesforce GOUV.FR Design System for OmniStudio
 
 You'll find all the details in the top-level [README.md](https://github.com/eschweitzer78/gps-design-systems-lwc/README.md) file.
 
-### Configure each OmniScript for use of the GOV.FR Frontend
+### Configure each OmniScript for use of the GOUV.FR Frontend
 
-You can apply overrides on your choice of elements for the whole script, or do a targeted override on a single element; we suggest to systematically apply all overrides for full compliance. 
+You can apply overrides on your choice of elements for the whole script, or do a targeted override on a single element; we suggest to systematically apply all overrides for full compliance.
+
 Here are the settings to use:
 
 |Element type|Key to use in mapping|Target LWC|
@@ -56,39 +57,41 @@ Kindly note that the Google Maps Typeahead requires mapping that's different fro
 
 ![Single component mapping](https://github.com/eschweitzer78/gps-design-systems-lwc/assets/20468027/8c102f6b-4236-4a07-8300-7ed3e6ee8b6e)
 
-#### Mask original OmniScript bottom butttons (optional)
+#### Mask the original OmniScript bottom buttons in OmniStudio Preview (optional)
 
 1. Configure the styling options section as shown below to mask original buttons.
 
 ![Additional css](https://github.com/eschweitzer78/gps-design-systems-lwc/assets/20468027/e4559116-aba7-4977-9893-d130f302d541)
 
-#### Activate OmniScript
+#### Activate your OmniScript
 
-Activate your Omniscript to preview and run your OmniScript. Make sure you do this with OmniStudio Managed Package support switched on in setup.
-Once active, you will find the Omniscript component under the Custom Components section within your Experience Site.
-Do not use the generic OmniStudio Component in Experience Builder.
+Activate your Omniscript to preview and run your OmniScript.
+Make sure you do this with OmniStudio Managed Package support switched on in setup. If you activated when Managed Package support was switched off, switch it on, de-activate and re-activate and shortly enter Preview. This will re-generated the LWC for your script.
+Once active, you will find the Omniscript component under the Custom Components section in Experience Builder.
+
+*Do not use the generic OmniStudio Component* in Experience Builder as it is not on par with generated LWCs from a capability level when it comes to overrides.
 
 ## Limitations
 
 - You may need to manually tune the bottom button widths on the first and final steps as discussed below.
 - The file upload element does not work on LWR sites just like any upload supported by the Lightning file upload widget - this is an LWR limitation, 
 - Save for Later functionnality is not available on LWR sites, just as for plain OmniScripts.
+- Generic OmniStudio Component in Experience builder isn't supported as discussed above.
 
 ## Important notes
 
 There is currently no way to override the bottom buttons of OmniScripts (Previous, Next, Save for Later, etc).
 
 In order to achieve the required styling, we have worked around this limitation by placing additional styled buttons at the bottom of the Step.
-However, a further limitation is that a Step does not have a lot of data available regarding surrounding steps but for its index in the script, is it the first element in the script or not.
-To be more precise, there is not programmatic way we can be certain whether there is a previous or next step and if the previous and next buttons should be displayed.
+However, a further limitation is that a Step does not have a lot of data available regarding surrounding steps but for its index in the script, e.g. is does not know whether it is the first or last element in the script or not. There is not programmatic way we can used to assess whether there is a previous or next step, i.e. whether the previous and next buttons should be displayed or not.
 
-Please make sure to to change the configuration of the next button on last step of your omniscript, by setting its width to 0.
-Do the same with the previous button on the next step if it's not the first element in the script.
+Please make sure to change the configuration of the `next` button on last step of your omniscript, by setting its width to 0.
+Do the same with the previous button on the firsst step if it's not the first element in the script.
 
-Also be mindful that the maximum number of steps offered in Step Indicator is limited to 8. You can refer to the documentation below.
-https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/indicateur-d-etapes
+Also be mindful that the number of steps should not exceed 8 as per guidance for the Step Indicator in the GOUV.FR Design System:
+[https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/indicateur-d-etapes](https://www.systeme-de-design.gouv.fr/elements-d-interface/composants/indicateur-d-etapes).
 
-## Developer Guide
+## Developer guide
 
 These steps are only meaningful if you intend to build your own set of artefacts for manual source deployment with `sfdx`
 instead of installing your design system with a Salesforce package.
@@ -97,7 +100,7 @@ instead of installing your design system with a Salesforce package.
 
 Check the current version suggested in the `package.json` file, and pin node and npm as required with volta or similar.
 
-### import dependencies
+### Install dependencies
 
 Import dependencies by using the following command at the root of the directory: `npm i`
 
