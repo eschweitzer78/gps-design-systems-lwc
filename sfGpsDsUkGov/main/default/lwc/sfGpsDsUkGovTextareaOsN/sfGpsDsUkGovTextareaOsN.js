@@ -66,7 +66,7 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedTextAreaCharacterCountError() {
+  get computedTextAreaClassName() {
     return computeClass({
       "govuk-textarea": true,
       "govuk-js-character-count": this._showCharacterCount,
@@ -74,7 +74,7 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedCharacterCountError() {
+  get computedCharacterCountErrorClassName() {
     return computeClass({
       "govuk-character-count__message": true,
       "govuk-character-count__status ": true,

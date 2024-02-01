@@ -39,8 +39,14 @@ export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedFileUploadError() {
+  /*  Based on the current lightning-file-upload this
+      can't really be applied but it visually does not
+      matter
+   */
+
+  get computedInputClassName() {
     return computeClass({
+      "govuk-file-upload": true,
       "govuk-file-upload--error": this.sfGpsDsIsError
     });
   }

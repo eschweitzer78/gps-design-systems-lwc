@@ -5,7 +5,6 @@
     is-heading={_propSetMap.isHeading}
     min-length={_propSetMap.minLength}
     max-length={_propSetMap.maxLength}
-    data-id={jsonDef.name}
     required={_propSetMap.required}
     read-only={_propSetMap.readOnly}
     tab-index={tabIndex}
@@ -20,6 +19,7 @@
     message-when-bad-input={_messageWhenBadInput}
     required-label={allCustomLabelsUtil.OmniRequired}
     autocomplete={_autocomplete}
+    data-id={jsonDef.name}
     data-omni-input
     onblur={handleBlur}
     show-character-count={_propSetMap.showCharacterCount}

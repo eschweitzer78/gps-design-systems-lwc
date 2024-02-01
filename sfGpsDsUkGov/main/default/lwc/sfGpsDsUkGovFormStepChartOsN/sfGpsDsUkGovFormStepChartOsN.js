@@ -9,30 +9,12 @@
 // in omniscript designer, go to setup tab and in the Element Type To LWC Component Mapping section
 // set StepChart as the ElementType and this LWC as the Lightning Web Component
 
-import { api } from "lwc";
-import OmniscriptStepChart from "omnistudio/omniscriptStepChart";
+import SfGpsDsFormStepChart from "c/sfGpsDsFormStepChartOsN";
+
 import tmpl from "./sfGpsDsUkGovFormStepChartOsN.html";
 
-export default class SfGpsDsUkGovFormStepChartOsN extends OmniscriptStepChart {
+export default class extends SfGpsDsFormStepChart {
   render() {
     return tmpl;
-  }
-
-  step;
-  of;
-
-  @api get jsonDef() {
-    return super.jsonDef;
-  }
-
-  set jsonDef(value) {
-    let steps = value.children.filter((item) => item.isStep);
-    this.of = steps.length;
-    let stepIndex = steps.findIndex(
-      (item) => item.indexInParent === value.asIndex
-    );
-    this.step = stepIndex + 1;
-
-    super.jsonDef = value;
   }
 }
