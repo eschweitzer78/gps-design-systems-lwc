@@ -10,20 +10,20 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuVic2AccordionComm extends SfGpsDsLwc {
-  @api type;
-  @api addClassName;
+  @api numbered;
+  @api className;
 
   /* api: content */
 
-  _contentOriginal;
+  _itemsOriginal;
   computedH1s = [];
 
-  @api get content() {
-    return this._contentOriginal;
+  @api get items() {
+    return this._itemsOriginal;
   }
 
-  set content(markdown) {
-    this._contentOriginal = markdown;
+  set items(markdown) {
+    this._itemsOriginal = markdown;
 
     try {
       let h1s = mdEngine.extractH1s(markdown.replaceAll("\\n", "\n"));
@@ -33,9 +33,8 @@ export default class SfGpsDsAuVic2AccordionComm extends SfGpsDsLwc {
     }
   }
 
-  /* getter: numbered */
-
-  get computedNumbered() {
-    return this.type === "numbered";
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("vic2-scope");
   }
 }

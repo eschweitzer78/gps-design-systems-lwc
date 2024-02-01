@@ -10,22 +10,22 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
-        name="content"
+        name="numbered"
+        type="Boolean"
+        label="Numbered"
+        description="Indicates the type of accordion."
+        default="false"
+      />
+      <property
+        name="items"
         type="String"
-        label="Content"
+        label="Items"
         description="Content in Markdown format, which will be split by H1 header."
         default="# Accordion\nAn accordion is a series of expandable vertical panels, designed to save space on a page by hiding content and revealing it as required.\n# Second Accordion\nUsing *styling*."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
-        name="type"
-        type="String"
-        label="Type"
-        description="Indicates the type of accordion."
-        default="default"
-        datasource="default,numbered"
-      />
-      <property
-        name="addClassName"
+        name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
