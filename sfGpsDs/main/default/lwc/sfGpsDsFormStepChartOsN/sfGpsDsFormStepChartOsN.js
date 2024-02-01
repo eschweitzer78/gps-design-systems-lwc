@@ -43,8 +43,7 @@ export default class extends OmniscriptStepChart {
 
   sfGpsDsVisibleSteps(jsonDef) {
     return jsonDef.children.filter(
-      (item) =>
-        item.isStep && item.bShow !== false /*&&
+      (item) => item.isStep && item.bShow !== false /*&&
       item.propSetMap.showStep === true*/
     );
   }
