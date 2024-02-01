@@ -18,7 +18,7 @@ $govuk-new-link-styles: true;
   font-display: fallback;
 }
 
-@import "../../../lwc/sfGpsDsUkGovCore/core";
+@import "../../../../../../sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovCore/core";
 @import "./fixes";
 
 // App-specific variables
