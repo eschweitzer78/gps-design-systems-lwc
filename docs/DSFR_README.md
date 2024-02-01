@@ -6,7 +6,7 @@ This document gives guidance on how to install, configure and leverage of the Om
 
 ### Install the Salesforce GOV.FR Frontend
 
-You'll find all the details in the top-level (README.md)[https://github.com/eschweitzer78/gps-design-systems-lwc/README.md] file.
+You'll find all the details in the top-level [README.md](https://github.com/eschweitzer78/gps-design-systems-lwc/README.md) file.
 
 ### Configure each OmniScript for use of the GOV.FR Frontend
 
