@@ -1,0 +1,46 @@
+<template>
+  <div lwc:ref="alert" class={computedClassName}>
+    <div
+      if:false={dismissed}
+      class="rpl-alert__inner"
+      role="region"
+      aria-labelledby={computedAriaLabelledBy}
+    >
+      <c-sf-gps-ds-au-vic2-icon
+        class-name="rpl-alert__icon-info"
+        size="m"
+        padded="false"
+        name={iconName}
+      >
+      </c-sf-gps-ds-au-vic2-icon>
+
+      <div class="rpl-alert__message-wrap">
+        <div
+          id={computedAriaLabelledBy}
+          class="rpl-alert__message rpl-type-label rpl-type-weight-bold"
+        >
+          {message}
+        </div>
+
+        <c-sf-gps-ds-au-vic2-text-link
+          lwc:if={hasTextAndUrl}
+          class-name="rpl-alert__link rpl-type-p rpl-u-focusable--alt-colour"
+          url={linkUrl}
+        >
+          {linkText}
+          <c-sf-gps-ds-au-vic2-icon name="icon-arrow-right">
+          </c-sf-gps-ds-au-vic2-icon>
+        </c-sf-gps-ds-au-vic2-text-link>
+      </div>
+
+      <button
+        lwc:if={isDismissible}
+        class="rpl-alert__btn-close rpl-u-focusable-inline rpl-u-focusable--alt-colour"
+        onclick={handleClose}
+      >
+        <c-sf-gps-ds-au-vic2-icon title={closeLabel} name="icon-cancel">
+        </c-sf-gps-ds-au-vic2-icon>
+      </button>
+    </div>
+  </div>
+</template>
