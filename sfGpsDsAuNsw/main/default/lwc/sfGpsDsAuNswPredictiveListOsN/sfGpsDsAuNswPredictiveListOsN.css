@@ -323,6 +323,9 @@
 
 .sfgpsds-is-open .sfgpsds-combobox__input:hover {
   background-image: url("data:image/svg+xml,%3Csvg transform='scale(1 -1)' fill='%2322272B' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem auto;
 }
 
 /* already done by nsw-form__input:disabled */
@@ -334,7 +337,11 @@
 
 .sfgpsds-combobox__input[aria-invalid="true"]:hover,
 .nsw-form__input.has-error:hover {
+  background-image: url("data:image/svg+xml,%3Csvg fill='%2322272B' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E");
   background-color: var(--nsw-status-error-bg);
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem auto;
 }
 
 /* fixing margin for dropdown with *+p, *+ul... to match that of date picker */

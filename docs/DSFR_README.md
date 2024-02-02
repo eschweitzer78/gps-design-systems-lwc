@@ -31,31 +31,31 @@ You can apply overrides on your choice of elements for the whole script, or do a
 
 Here are the settings to use:
 
-|Element type|Key to use in mapping|Target LWC|
-|------------|---------------------|----------|
-|Checkbox|Checkbox|sfGpsDsFrGovFormCheckboxOsN|
-|Currency|Currency|sfGpsDsFrGovFormCurrencyOsN|
-|Date|Date|sfGpsDsFrGovFormDateOsN|
-|Date Time|Date/Time (Local)|sfGpsDsFrGovFormDateTimeOsN|
-|Disclosure|Disclosure|sfGpsDsFrGovFormDisclosureOsN|
-|Email|Email|sfGpsDsFrGovFormEmailOsN|
-|File|File|sfGpsDsFrGovFormFileOsN|
-|Multi-select|Multi-select|sfGpsDsFrGovFormMultiselect|
-|Number|Number|sfGpsDsFrGovFormNumberOsN|
-|Password|Password|sfGpsDsFrGovFormPasswordOsN|
-|Radio|Radio|sfGpsDsFrGovFormRadioOsN|
-|Select|Select|sfGpsDsFrGovFormSelectOssN|
-|Step|Step|sfGpsDsFrGovFormStepOsN|
-|Step chart|StepChart|sfGpsDsFrGovFormStepChartOsN|
-|Telephone|Telephone|sfGpsDsFrGovFormTextOsN|
-|Text|Text|sfGpsDsFrGovFormTextOsN|
-|Textarea|Text Area|sfGpsDsFrGovFormTextareaOsN|
-|Time|Time|sfGpsDsFrGovFormTimeOsN|
-|Typeahead|Type Ahead|sfGpsDsFrGovFormTypeahead|
-|URL|URL|sfGpsDsFrGovFormUrlOsN|
-|Lookup|Lookup|sfGpsDsFrGovFormLookupOsN|
-|Messaging|Validation|sfGpsDsFrGovFormMessagingOsN|
-|Save for later|SaveForLaterAcknowledge|sfGpsDsFrGovFormSaveForLaterAckOsN|
+| Element type   | Key to use in mapping   | Target LWC                         |
+| -------------- | ----------------------- | ---------------------------------- |
+| Checkbox       | Checkbox                | sfGpsDsFrGovFormCheckboxOsN        |
+| Currency       | Currency                | sfGpsDsFrGovFormCurrencyOsN        |
+| Date           | Date                    | sfGpsDsFrGovFormDateOsN            |
+| Date Time      | Date/Time (Local)       | sfGpsDsFrGovFormDateTimeOsN        |
+| Disclosure     | Disclosure              | sfGpsDsFrGovFormDisclosureOsN      |
+| Email          | Email                   | sfGpsDsFrGovFormEmailOsN           |
+| File           | File                    | sfGpsDsFrGovFormFileOsN            |
+| Multi-select   | Multi-select            | sfGpsDsFrGovFormMultiselect        |
+| Number         | Number                  | sfGpsDsFrGovFormNumberOsN          |
+| Password       | Password                | sfGpsDsFrGovFormPasswordOsN        |
+| Radio          | Radio                   | sfGpsDsFrGovFormRadioOsN           |
+| Select         | Select                  | sfGpsDsFrGovFormSelectOssN         |
+| Step           | Step                    | sfGpsDsFrGovFormStepOsN            |
+| Step chart     | StepChart               | sfGpsDsFrGovFormStepChartOsN       |
+| Telephone      | Telephone               | sfGpsDsFrGovFormTextOsN            |
+| Text           | Text                    | sfGpsDsFrGovFormTextOsN            |
+| Textarea       | Text Area               | sfGpsDsFrGovFormTextareaOsN        |
+| Time           | Time                    | sfGpsDsFrGovFormTimeOsN            |
+| Typeahead      | Type Ahead              | sfGpsDsFrGovFormTypeahead          |
+| URL            | URL                     | sfGpsDsFrGovFormUrlOsN             |
+| Lookup         | Lookup                  | sfGpsDsFrGovFormLookupOsN          |
+| Messaging      | Validation              | sfGpsDsFrGovFormMessagingOsN       |
+| Save for later | SaveForLaterAcknowledge | sfGpsDsFrGovFormSaveForLaterAckOsN |
 
 Kindly note that the Google Maps Typeahead requires mapping that's different from Typeahead; it is not supported yet.
 
@@ -86,12 +86,12 @@ Activate your Omniscript to preview and run your OmniScript.
 Make sure you do this with OmniStudio Managed Package support switched on in setup. If you activated when Managed Package support was switched off, switch it on, de-activate and re-activate and shortly enter Preview. This will re-generated the LWC for your script.
 Once active, you will find the Omniscript component under the Custom Components section in Experience Builder.
 
-*Do not use the generic OmniStudio Component* in Experience Builder as it is not on par with generated LWCs from a capability level when it comes to overrides.
+_Do not use the generic OmniStudio Component_ in Experience Builder as it is not on par with generated LWCs from a capability level when it comes to overrides.
 
 ## Limitations
 
 - You may need to manually tune the bottom button widths on the first and final steps as discussed below.
-- The file upload element does not work on LWR sites just like any upload supported by the Lightning file upload widget - this is an LWR limitation, 
+- The file upload element does not work on LWR sites just like any upload supported by the Lightning file upload widget - this is an LWR limitation,
 - Save for Later functionnality is not available on LWR sites, just as for plain OmniScripts.
 - Generic OmniStudio Component in Experience builder isn't supported as discussed above.
 
@@ -134,4 +134,3 @@ npm run frgov-copy
 ```
 
 Your source code artefacts are now ready for deployment with `sfdx` from the `sfGpsDsFrGovFull` directory.
- 
