@@ -29,3 +29,5 @@ package.xml
 # **/omniIntegrationProcedures/**
 **/omniDataTransform/**
 # **/omniDataTransforms/**
+
+**/*.md
