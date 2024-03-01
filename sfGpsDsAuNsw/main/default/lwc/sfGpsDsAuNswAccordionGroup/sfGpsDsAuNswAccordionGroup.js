@@ -16,6 +16,9 @@ export default class SfGpsDsAuNswAccordionGroup extends SfGpsDsLwc {
   @api isFullyCollapsed;
   @api className;
 
+  /* deprecated */
+  @api content;
+
   get computedClassName() {
     return computeClass({
       "nsw-accordion": true,
