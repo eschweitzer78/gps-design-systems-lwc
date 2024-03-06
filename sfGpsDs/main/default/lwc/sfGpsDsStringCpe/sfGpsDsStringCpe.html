@@ -1,0 +1,15 @@
+<template>
+  <div>
+    <div lwc:if={error}>{label}: {error}.</div>
+    <lightning-input
+      lwc:else
+      name="stringCpe"
+      type="text"
+      label={label}
+      value={value}
+      options={options}
+      onblur={handleBlur}
+    >
+    </lightning-input>
+  </div>
+</template>
