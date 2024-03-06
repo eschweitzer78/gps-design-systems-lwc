@@ -18,18 +18,18 @@ jobs:
     steps:
       # Checkout the source code
       - name: "Checkout source code"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.client_payload.ref }}
 
       # Install Volta to enforce proper node and package manager versions
       - name: "Install Volta"
-        uses: volta-cli/action@v3
+        uses: volta-cli/action@v4
 
       # Cache node_modules to speed up the process
       - name: "Restore node_modules cache"
         id: cache-npm
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: npm-${{ hashFiles('**/package-lock.json') }}
@@ -40,7 +40,7 @@ jobs:
       # Install Salesforce CLI
       - name: "Install Salesforce CLI latest"
         run: |
-          npm install sfdx-cli --location=global
+          npm install @salesforce/cli --location=global
           nodeInstallPath=$(npm config get prefix)
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
 
@@ -101,8 +101,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsAuNsw"
         id: createPackageVersion-sfGpsDsAuNsw
@@ -120,8 +130,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsAuNswS"
         id: createPackageVersion-sfGpsDsAuNswS
@@ -139,8 +159,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx force:package:version:create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsAuVic1"
         id: createPackageVersion-sfGpsDsAuVic1
@@ -158,8 +188,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsFrGov"
         id: createPackageVersion-sfGpsDsFrGov
@@ -177,8 +217,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsUkGov"
         id: createPackageVersion-sfGpsDsUkGov
@@ -196,8 +246,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       # Wait for package replication
       - name: "Wait for package replication"
@@ -212,15 +272,6 @@ jobs:
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
         run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
-
-      # Activate metadata for omnistudio on scratch org
-      # (removed as OmniStudio metadata cannot be packaged fo now)
-      # - name: "Enable OmniStudio metadata"
-      #  run: |
-      #    cd ./node_modules/puppeteer
-      #    npm run postinstall
-      #    cd ../..
-      #    node ./configure-omnistudio-metadata scratch-org
 
       # Install new sfGpsDs package in scratch org
       - name: "Install new sfGpsDs package version in scratch org"
@@ -273,6 +324,16 @@ jobs:
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDs\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
+      # Create sfGpsDs GH release
+      - name: "Release package sfGpsDs"
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }})"
+          name: "sfGpsDs ${{ steps.createPackageVersion-sfGpsDs.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDs-${{ steps.createPackageVersion-sfGpsDs.outputs.versionNumber }}"
+
       # Update sfGpsDsAuNsw force:force:package:install link in readme
       - name: "Update package sfGpsDsAuNsw install link in readme"
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -281,6 +342,16 @@ jobs:
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswFull\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswFull\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsAuNsw GH release
+      - name: "Release package sfGpsDsAuNsw"
+        if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }})"
+          name: "sfGpsDsAuNsw ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsAuNsw-${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.versionNumber }}"
 
       # Update sfGpsDsAuNswS force:force:package:install link in readme
       - name: "Update package sfGpsDsAuNswS install link in readme"
@@ -291,6 +362,16 @@ jobs:
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswSFull\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
+      # Create sfGpsDsAuNswS GH release
+      - name: "Release package sfGpsDsAuNswS"
+        if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }})"
+          name: "sfGpsDsAuNswS ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsAuNswS-${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.versionNumber }}"
+
       # Update sfGpsDsAuVic force:force:package:install link in readme
       - name: "Update package sfGpsDsAuVic install link in readme"
         if: ${{ github.event.client_payload.sfGpsDsAuVic1 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -299,6 +380,16 @@ jobs:
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuVic1Full\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuVic1Full\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsAuVic GH release
+      - name: "Release package sfGpsDsAuVic"
+        if: ${{ github.event.client_payload.sfGpsDsAuVic1 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }})"
+          name: "sfGpsDsAuVic ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsAuVic-${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.versionNumber }}"
 
       # Update sfGpsDsFrGov force:force:package:install link in readme
       - name: "Update package sfGpsDsFrGov install link in readme"
@@ -309,6 +400,16 @@ jobs:
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsFrGovFull\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
+      # Create sfGpsDsFrGov GH release
+      - name: "Release package sfGpsDsFrGov"
+        if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }})"
+          name: "sfGpsDsFrGov ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsFrGov-${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.versionNumber }}"
+
       # Update sfGpsDsUkGov force:force:package:install link in readme
       - name: "Update package sfGpsDsUkGov install link in readme"
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -317,6 +418,16 @@ jobs:
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGovFull\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGovFull\""
           sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsUkGov GH release
+      - name: "Release package sfGpsDsUkGov"
+        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }})"
+          name: "sfGpsDsUkGov ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsUkGov-${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.versionNumber }}"
 
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
       - name: "Run prettier"
@@ -327,7 +438,7 @@ jobs:
       # Create PR for new package version(s)
       - name: "Create PR for new package version"
         id: create-pr
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v6
         with:
           title: "Released new package version(s)"
           body: "Released new package version(s)"
@@ -338,7 +449,7 @@ jobs:
 
       # Approve pull request
       - name: "Approve pull request"
-        uses: juliangruber/approve-pull-request-action@v1
+        uses: juliangruber/approve-pull-request-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           number: ${{ steps.create-pr.outputs.pull-request-number }}
