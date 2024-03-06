@@ -97,7 +97,7 @@ jobs:
               exit $status
           fi
 
-          json2=${sfdx package version report --package $packageVersionId --json}
+          json2=$(sfdx package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
@@ -126,7 +126,7 @@ jobs:
               exit $status
           fi
 
-          json2=${sfdx package version report --package $packageVersionId --json}
+          json2=$(sfdx package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
@@ -151,11 +151,11 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx force:package:version:create failed"
+              echo "sfdx package version create failed"
               exit $status
           fi
 
-          json2=${sfdx package version report --package $packageVersionId --json}
+          json2=$(sfdx package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
@@ -184,7 +184,7 @@ jobs:
               exit $status
           fi
 
-          json2=${sfdx package version report --package $packageVersionId --json}
+          json2=$(sfdx package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
@@ -213,7 +213,7 @@ jobs:
               exit $status
           fi
 
-          json2=${sfdx package version report --package $packageVersionId --json}
+          json2=$(sfdx package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
@@ -242,7 +242,7 @@ jobs:
               exit $status
           fi
 
-          json2=${sfdx package version report --package $packageVersionId --json}
+          json2=$(sfdx package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
