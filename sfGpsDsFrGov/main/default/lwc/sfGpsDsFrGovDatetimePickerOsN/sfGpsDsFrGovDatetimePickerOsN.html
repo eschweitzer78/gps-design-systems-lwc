@@ -20,6 +20,7 @@
     <div class="fr-grid-row fr-grid-row--gutters fr-grid-row--left">
       <div class="fr-col-6">
         <c-sf-gps-ds-fr-gov-date-picker-os-n
+          hide-asterisk="true"
           placeholder={datePlaceholder}
           theme={theme}
           label={dateLabel}
@@ -33,7 +34,7 @@
           message-when-value-missing={messageWhenValueMissing}
           min={dateMin}
           max={dateMax}
-          value={_value}
+          value={_timeDateObj}
           tab-index={tabIndex}
           disabled={disabled}
           required={required}
@@ -51,13 +52,13 @@
           select-date-label={selectDateLabel}
           onchange={setTime}
           data-sfgpsds-date-picker
-          hide-asterisk="true"
           force-error={computedForceError}
         >
         </c-sf-gps-ds-fr-gov-date-picker-os-n>
       </div>
       <div class="fr-col-6">
         <c-sf-gps-ds-fr-gov-time-picker-os-n
+          hide-asterisk="true"
           placeholder={timePlaceholder}
           theme="sfgpsds"
           label={sfGpsDsTimeLabel}
@@ -69,7 +70,7 @@
           locale-format-invalid-error={localeFormatInvalidError}
           min={timeMin}
           max={timeMax}
-          value={_value}
+          value={_timeDateObj}
           tab-index={tabIndex}
           read-only={readOnly}
           disabled={disabled}
@@ -84,7 +85,6 @@
           hide-icon={hideIcon}
           styles={styles}
           data-sfgpsds-time-picker
-          hide-asterisk="true"
           force-error={computedForceError}
         >
         </c-sf-gps-ds-fr-gov-time-picker-os-n>

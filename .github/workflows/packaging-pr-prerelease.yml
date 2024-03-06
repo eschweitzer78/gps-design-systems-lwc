@@ -13,16 +13,16 @@ jobs:
     steps:
       # Checkout the source code
       - name: "Checkout source code"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # Install Volta to enforce proper node and package manager versions
       - name: "Install Volta"
-        uses: volta-cli/action@v3
+        uses: volta-cli/action@v4
 
       # Cache node_modules to speed up the process
       - name: "Restore node_modules cache"
         id: cache-npm
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: npm-${{ hashFiles('**/package-lock.json') }}
@@ -33,7 +33,7 @@ jobs:
       # Install Salesforce CLI
       - name: "Install Salesforce CLI latest"
         run: |
-          npm install sfdx-cli --location=global
+          npm install @salesforce/cli --location=global
           nodeInstallPath=$(npm config get prefix)
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
 
@@ -79,6 +79,34 @@ jobs:
         run: rm -f ./DEVHUB_SFDX_URL.txt
 
       # Create package version and extract its id
+      - name: "Create package version sfGpsDs"
+        id: createPackageVersion-sfGpsDs
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx package version create --path=sfGpsDs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sfdx package version create failed"
+              exit $status
+          fi
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
+
       - name: "Create package version sfGpsDsAuNsw"
         id: createPackageVersion-sfGpsDsAuNsw
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -95,8 +123,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsAuNswS"
         id: createPackageVersion-sfGpsDsAuNswS
@@ -114,8 +152,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx force:package:version:create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsAuVic1"
         id: createPackageVersion-sfGpsDsAuVic1
@@ -133,8 +181,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsFrGov"
         id: createPackageVersion-sfGpsDsFrGov
@@ -152,8 +210,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       - name: "Create package version sfGpsDsUkGov"
         id: createPackageVersion-sfGpsDsUkGov
@@ -171,8 +239,18 @@ jobs:
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
               echo "sfdx package version create failed"
+              exit $status
           fi
-          exit $status
+
+          json2=${sfdx package version report --package $packageVersionId --json}
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
 
       # Wait for package replication
       - name: "Wait for package replication"
@@ -187,6 +265,13 @@ jobs:
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
         run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
+
+      # Install new sfGpsDs package in scratch org
+      - name: "Install new sfGpsDs package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
