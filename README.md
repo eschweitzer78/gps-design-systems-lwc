@@ -11,7 +11,7 @@ Do read our [change log](./CHANGELOG.md) if you plan on updating already install
 
 ## Structure
 
-- sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project; it is now fully packaged with the design systems library below but the directory is kept for clarity and deployment as source code
+- sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project; it is now fully packaged with the design systems library below but the directory is kept for clarity, deployment as source code or as a dependency package for third party design systems
 - sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nswds.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
 - sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev) and know that we are investigating the support of Ripple v2
@@ -26,7 +26,7 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 1. Log in to your org
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dnflAAA" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org (only when developing your own design system).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dnflAAA" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org (only when developing your own design system or as a dependency for a third-party).
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dzCPAAY" title="sfGpsDsAuNswFull">this link</a> to install the sfGpsDsAuNsw unlocked package in your org (with sfGpsDs included).
 
@@ -46,7 +46,7 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dnflAAA">this link</a> to install the sfGpsDs unlocked package in your production org (v2.2.0.1 released on 24/11/2024 -- only when using your own design system).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dnflAAA">this link</a> to install the sfGpsDs unlocked package in your production org (v2.2.0.1 released on 24/11/2024 -- only when using your own design system or a dependent third-party's).
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dwozAAA">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.3.5.1 released on 08/01/2024).
 
