@@ -21,7 +21,7 @@
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 248.5"
+          "package": "omnistudio 248.4"
         }
       ],
       "versionDescription": "Salesforce Global Public Sector AU NSW Design System (Full)"
@@ -39,7 +39,7 @@
       "versionDescription": "Salesforce Global Public Sector AU Service NSW Design System (Full)",
       "dependencies": [
         {
-          "package": "omnistudio 248.5"
+          "package": "omnistudio 248.4"
         }
       ]
     },
@@ -55,7 +55,7 @@
       "versionDescription": "Salesforce Global Public Sector AU VIC Design System v1 (Full)",
       "dependencies": [
         {
-          "package": "omnistudio 248.5"
+          "package": "omnistudio 248.4"
         }
       ]
     },
@@ -72,7 +72,7 @@
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 248.5"
+          "package": "omnistudio 248.4"
         }
       ]
     },
@@ -89,7 +89,7 @@
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 248.5"
+          "package": "omnistudio 248.4"
         }
       ]
     },
@@ -110,7 +110,7 @@
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 248.5"
+          "package": "omnistudio 248.4"
         }
       ]
     }
@@ -125,7 +125,7 @@
     "omnistudio 242.11": "04t4W000002g3gJQAQ",
     "omnistudio 246.5": "04t4W000002rEDBQA2",
     "omnistudio 246.10": "04t4W0000038bFoQAI",
-    "omnistudio 248.5": "04t4W0000038bjdQAA",
+    "omnistudio 248.4": "04t4W0000038bj9QAA",
     "Salesforce Global Public Sector Design Systems": "0Ho5j000000bljgCAA",
     "Salesforce Global Public Sector Design Systems@1.0.0-3": "04t5j000000IIUPAA4",
     "Salesforce Global Public Sector Design Systems@1.0.0-5": "04t5j000000IIthAAG",
