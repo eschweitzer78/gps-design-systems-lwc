@@ -79,6 +79,24 @@ jobs:
         run: rm -f ./DEVHUB_SFDX_URL.txt
 
       # Create package version and extract its id
+      - name: "Create package version sfGpsDs"
+        id: createPackageVersion-sfGpsDs
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          json=$(sfdx package version create --path=sfGpsDs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sfdx package version create failed"
+          fi
+          exit $status
+
       - name: "Create package version sfGpsDsAuNsw"
         id: createPackageVersion-sfGpsDsAuNsw
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -188,6 +206,13 @@ jobs:
       - name: "Deploy Omnistudio"
         run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
 
+      # Install new sfGpsDs package in scratch org
+      - name: "Install new sfGpsDs package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -222,6 +247,15 @@ jobs:
         run: |
           sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Update sfGpsDs force:force:package:install link in readme
+      - name: "Update package sfGpsDs install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDs\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDs\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Update sfGpsDsAuNsw force:force:package:install link in readme
       - name: "Update package sfGpsDsAuNsw install link in readme"
