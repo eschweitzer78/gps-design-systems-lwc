@@ -5,7 +5,7 @@
 A collection of Salesforce Lightning Web Components (LWCs) for selected Governments' Design Systems. The collection
 covers Salesforce Experience Cloud as well as Salesforce Communities for Public Sector Solutions (Omnistudio), and may be extended in the future to help with Salesforce Flows provided they're surfaced via an Experience Cloud community.
 
-Note that at this stage there is a dependency on Omnistudio **246.10 (at the minimum)**, which is the version we tested against. You also need to stay on the Omnistudio Managed Package runtime as the standard runtime is not quite on parity yet when it comes to overrides, which we do leverage quite a bit.
+Note that at this stage there is a dependency on Omnistudio **248.5 (at the minimum)**, which is the version we built and tested against. You also need to stay on the Omnistudio Managed Package runtime as the standard runtime is not quite on parity yet when it comes to overrides, which we do leverage quite a bit.
 
 Do read our [change log](./CHANGELOG.md) if you plan on updating already installed packages in order to check for changes in behaviour or configuration changes.
 
@@ -26,6 +26,8 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 1. Log in to your org
 
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dnflAAA" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org (only when developing your own design system).
+
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dzCPAAY" title="sfGpsDsAuNswFull">this link</a> to install the sfGpsDsAuNsw unlocked package in your org (with sfGpsDs included).
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dytpAAA" title="sfGpsDsAuNswSFull">this link</a> to install the sfGpsDsAuNswS unlocked package in your org (with sfGpsDs included).
@@ -43,6 +45,8 @@ Kindly note that the packages might be the same as for non-production orgs (see 
 Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECURITY.md) implications of installing those assets in production. The applicable [license](./LICENSE.md) has also wide-ranging disclaimer provisions.
 
 1. Log in to your org
+
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dnflAAA">this link</a> to install the sfGpsDs unlocked package in your production org (v2.2.0.1 released on 24/11/2024 -- only when using your own design system).
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04t5j000000dwozAAA">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.3.5.1 released on 08/01/2024).
 
