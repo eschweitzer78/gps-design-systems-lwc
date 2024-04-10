@@ -1,0 +1,62 @@
+<template>
+  <div class="omni-typeahead-container">
+    <c-sf-gps-ds-au-vic-typeahead-os-n
+      type="text"
+      field-level-help={mergedHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
+      label={mergedLabel}
+      icon-name-right="utility:edit"
+      options={options}
+      placeholder={mergedPlaceholder}
+      required={_propSetMap.required}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      message-when-value-missing={_messageWhenValueMissing}
+      message-when-too-short={_messageWhenTooShort}
+      message-when-too-long={_messageWhenTooLong}
+      theme="sfgpsds"
+      value={elementValue}
+      disable-last-item={trueValue}
+      disable-filter={trueValue}
+      remote-source={trueValue}
+      has-slot-icon-right="true"
+      data-omni-input
+      onblur={handleBlur}
+      onclear={handleClear}
+      onselect={handleSelect}
+    >
+      <button
+        if:false={_propSetMap.hideEditButton}
+        class="slds-button slds-button_icon"
+        slot="iconRight"
+        aria-expanded={_isEditMode}
+        onclick={toggleEditMode}
+      >
+        <omnistudio-icon
+          icon-name="utility:edit"
+          extraclass="slds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={_editLabel}
+        ></omnistudio-icon>
+      </button>
+
+      <img
+        slot="lastItem"
+        src={_googleAttribution}
+        alt="Powered by Google"
+        class="google-places-attribution"
+      />
+    </c-sf-gps-ds-au-vic-typeahead-os-n>
+
+    <div if:true={_renderMap} class={mapClasses} data-google-maps-container>
+      <lightning-map map-markers={selectedPlace} zoom-level={zoomLevel}>
+      </lightning-map>
+    </div>
+
+    <div if:true={errorMessage} class="slds-has-error">
+      <span class="slds-form-element__help">{errorMessage}</span>
+    </div>
+  </div>
+</template>
