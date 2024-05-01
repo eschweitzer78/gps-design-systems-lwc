@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: aquacash5/npm-gpr-auth@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GHCR_ACCESS_TOKEN }}
 
       # Checkout the source code
       - name: "Checkout source code"
