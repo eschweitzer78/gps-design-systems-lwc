@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NavigationMenu xmlns="http://soap.sforce.com/2006/04/metadata">
+    <container>sfGpsDsAuVic2</container>
+    <containerType>Network</containerType>
+    <label>VIC2 Footer Nav Default BP Example</label>
+    <navigationMenuItem>
+        <label>Your Services</label>
+        <position>1</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Your services</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Grants awards and assistance</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>News</label>
+        <position>2</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>News</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>About VIC Government</label>
+        <position>3</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>About VIC Government</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Law and safety</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Events</label>
+        <position>4</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Events</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+</NavigationMenu>

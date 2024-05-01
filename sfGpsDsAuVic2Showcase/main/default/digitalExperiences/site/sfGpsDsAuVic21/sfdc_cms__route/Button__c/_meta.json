@@ -1,0 +1,6 @@
+{
+  "apiName": "Button__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Navigation__c",
+  "path": "routes"
+}

@@ -1,0 +1,6 @@
+{
+  "apiName": "Content_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Content__c",
+  "path": "routes"
+}

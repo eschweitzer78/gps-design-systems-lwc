@@ -1,0 +1,64 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Navigation",
+  "contentBody": {
+    "themeLayoutType": "Inner",
+    "viewType": "custom-navigation",
+    "component": {
+      "id": "052fa2ce-1231-4f41-bff2-f800a8880f6b",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "efa8fa59-7baf-4693-8c94-ccd8f334c7e0",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "31e87777-b4c3-44a7-a760-834c711fb8af",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"31e87777-b4c3-44a7-a760-834c711fb8af\",\"columns\":[{\"UUID\":\"814dbbb3-29c9-4f4c-95a4-e03e3ddfbc90\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "814dbbb3-29c9-4f4c-95a4-e03e3ddfbc90",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "249399ac-70a1-4855-8978-3f8f874d5702",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "332d12db-f6dd-49fa-91cd-ebb4113eca3b",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Navigation",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

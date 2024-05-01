@@ -1,0 +1,86 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Introduction blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-header-introduction-blueprint",
+    "component": {
+      "id": "a8ccec0e-ac76-4b9b-aab5-7b52e6f260ff",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "c1317a6e-4af7-45cc-a9f1-df03865b69af",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "ca4990d8-4b89-4437-90bc-2b54428a8678",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"ca4990d8-4b89-4437-90bc-2b54428a8678\",\"columns\":[{\"UUID\":\"c640724e-cafb-42cf-987f-d887969d718a\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "c640724e-cafb-42cf-987f-d887969d718a",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "73a3f848-40ae-4a06-b3e4-919689b8ba01",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2IntroHeaderComm",
+                      "attributes": {
+                        "iconName": "icon-information-circle-filled",
+                        "title": "The intro title",
+                        "content": "In do dolore dolore sint ipsum est est, commodo ex laborum Lorem ut deserunt dolore ullamco.",
+                        "linksTitle": "Want to know more",
+                        "links": "[First link](#first)[Second link](#second)[A third link](#third)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a4d9e693-97dd-43f4-b0fb-f600dca259ec",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "0cf5db46-5dff-4e36-bf5e-bab24464fc44",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Header introduction blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

@@ -1,0 +1,76 @@
+class SfmcConsentCookie{static#DEFAULT_TTL_DAYS=365;#orgId=null;constructor(e){this.#orgId=e}exists(){return null!==this.get()}get(){return document.cookie.split("; ").find(e=>e.startsWith(this.#getCookieName()))?.split("=")[1]??null}set(e,t=SfmcConsentCookie.#DEFAULT_TTL_DAYS){let n="";var o;t&&((o=new Date).setTime(o.getTime()+24*t*60*60*1e3),n="; Expires="+o.toUTCString()),document.cookie=this.#getCookieName()+"="+(e??"")+n+"; Path=/; Secure; SameSite=Strict;"}clear(){document.cookie=this.#getCookieName()+"=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Secure; SameSite=Strict;"}#getCookieName(){return void 0===this.#orgId?"sfmc_consent":"sfmc_consent_"+this.#orgId}}class SfmcConsentBanner{static#DEFAULT_BANNER_MESSAGE="We use cookies to enhance your browsing experience, serve personalized content or ads, and analyze web traffic. By accepting, you consent to our use of cookies.";static#DEFAULT_BANNER_COLOR="#FFFFFF";static#DEFAULT_BANNER_TEXT_COLOR="#000000";static#DEFAULT_BANNER_POSITION="bottom";static#DEFAULT_BANNER_FONT_FAMILY="sans-serif";static#DEFAULT_ALLOW_BUTTON_COLOR="#FFFFFF";static#DEFAULT_ALLOW_BUTTON_TEXT_COLOR="#000000";static#DEFAULT_DECLINE_BUTTON_COLOR="#FFFFFF";static#DEFAULT_DECLINE_BUTTON_TEXT_COLOR="#000000";static#DEFAULT_PRIVACY_POLICY_TEXT="Review our privacy policy";#rootElement=null;constructor(e={}){Object.assign(this,e),this.#rootElement=null,document.addEventListener("DOMContentLoaded",e=>{this.#onLoad(e)})}#onLoad(e){var t=new SfmcConsentCookie(this.orgId);t.exists()?this.#setConsent(e,t.get()):(this.#appendHtml(document.body),this.#setConsent(e,!1))}#onAccept(e){new SfmcConsentCookie(this.orgId).set(!0),this.#setConsent(e,!0),this.#rootElement.style.display="none"}#onReject(e){new SfmcConsentCookie(this.orgId).set(!1),this.#setConsent(e,!1),this.#rootElement.style.display="none"}#appendHtml(e){this.#rootElement=document.createElement("div"),this.#rootElement.innerHTML=this.#toHtml(),e.appendChild(this.#rootElement),this.#appendText("#sfmc-consent-banner-message-content",this.#getBannerMessage()),this.#appendText("#sfmc-consent-banner-privacy-policy-link",this.#getPrivacyPolicyText()),this.#appendText("#sfmc-consent-banner-info-link",this.#getInfoText()),document.querySelector("#sfmc-consent-banner-accept-button").addEventListener("click",e=>{this.#onAccept(e)}),document.querySelector("#sfmc-consent-banner-decline-button").addEventListener("click",e=>{this.#onReject(e)})}#appendText(e,t){null!==t&&null!==(e=document.querySelector(e))&&(t.endsWith(".")||(t+="."),t=document.createTextNode(t),e.appendChild(t))}#setConsent(e,t){e.target.dispatchEvent(new CustomEvent("experience_interaction",{bubbles:!0,composed:!0,detail:{name:"set-consent",value:t}}))}#getBannerMessage(){return this.bannerMessage??SfmcConsentBanner.#DEFAULT_BANNER_MESSAGE}#getBannerColor(){return this.bannerColor??SfmcConsentBanner.#DEFAULT_BANNER_COLOR}#getBannerTextColor(){return this.bannerTextColor??SfmcConsentBanner.#DEFAULT_BANNER_TEXT_COLOR}#getBannerPosition(){return(this.bannerPosition??SfmcConsentBanner.#DEFAULT_BANNER_POSITION).toLowerCase()}#getBannerFontFamily(){return this.bannerFontFamily??SfmcConsentBanner.#DEFAULT_BANNER_FONT_FAMILY}#getAllowButtonColor(){return this.allowButtonColor??SfmcConsentBanner.#DEFAULT_ALLOW_BUTTON_COLOR}#getAllowButtonTextColor(){return this.allowButtonTextColor??SfmcConsentBanner.#DEFAULT_ALLOW_BUTTON_TEXT_COLOR}#getDeclineButtonColor(){return this.declineButtonColor??SfmcConsentBanner.#DEFAULT_DECLINE_BUTTON_COLOR}#getDeclineButtonTextColor(){return this.declineButtonTextColor??SfmcConsentBanner.#DEFAULT_DECLINE_BUTTON_TEXT_COLOR}#getPrivacyPolicyText(){return this.privacyPolicyText??SfmcConsentBanner.#DEFAULT_PRIVACY_POLICY_TEXT}#getPrivacyPolicyLink(){var e=this.privacyPolicyUrl??"";return""===e?"":`<a id="sfmc-consent-banner-privacy-policy-link" href="${encodeURI(e)}"></a>`}#getInfoText(){return this.infoText??null}#getInfoLink(){var e=this.infoUrl??"";return""===e?"":`<a id="sfmc-consent-banner-info-link" href="${encodeURI(e)}"></a>`}#toHtml(){return`
+<style>
+    #sfmc-consent-banner {
+        background-color: ${this.#getBannerColor()};
+        box-shadow: 2px 2px 5px 2px #DDD;
+        border-radius: 0.35rem;
+        ${this.#getBannerPosition()}: 2rem;
+        color: ${this.#getBannerTextColor()};
+        display: grid;
+        font-family: ${this.#getBannerFontFamily()};
+        font-size: 1rem;
+        grid-template-columns: 1fr 250px;
+        left: 0;
+        margin: 0 auto;
+        min-width: 240px;
+        padding: 1rem 2rem;
+        position: fixed;
+        right: 0;
+        width: 70%;
+        z-index: 999;
+    }
+    
+    #sfmc-consent-banner button {
+        border-radius: 0.35rem;
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    #sfmc-consent-banner-message {
+        padding: 0 1rem; 
+        align-self: center;
+    }
+    
+    #sfmc-consent-banner-message script {
+        display: inline;
+    }
+    
+    #sfmc-consent-banner-buttons {
+        align-self: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        justify-self: center;
+        padding: 1em;
+    }
+    
+    #sfmc-consent-banner-accept-button {
+        border: 1px solid ${this.#getAllowButtonTextColor()};
+        background-color: ${this.#getAllowButtonColor()};
+        color: ${this.#getAllowButtonTextColor()};
+    }
+    
+    #sfmc-consent-banner-decline-button {
+        border: 1px solid ${this.#getDeclineButtonTextColor()};
+        background-color: ${this.#getDeclineButtonColor()};
+        color: ${this.#getDeclineButtonTextColor()};
+    }
+    
+    @media screen and (max-width: 800px) {
+        #sfmc-consent-banner {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+<div id="sfmc-consent-banner" tabindex="-1">
+    <div id="sfmc-consent-banner-message">
+        <span id="sfmc-consent-banner-message-content"></span>
+        <span id="sfmc-consent-banner-message-privacy-policy">${this.#getPrivacyPolicyLink()}</span>
+        <span id="sfmc-consent-banner-message-info">${this.#getInfoLink()}</span>
+    </div>
+    <div id="sfmc-consent-banner-buttons">
+        <button id="sfmc-consent-banner-accept-button">Accept</button>
+        <button id="sfmc-consent-banner-decline-button">Reject</button>        
+    </div>
+</div>
+`}}

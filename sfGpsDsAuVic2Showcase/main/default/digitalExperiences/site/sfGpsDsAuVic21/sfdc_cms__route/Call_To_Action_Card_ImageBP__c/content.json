@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Call to action card image blueprint",
+  "contentBody": {
+    "activeViewId": "Call_To_Action_Card_ImageBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-call-to-action-card-image-blueprint",
+    "urlPrefix": "image-blueprint"
+  }
+}

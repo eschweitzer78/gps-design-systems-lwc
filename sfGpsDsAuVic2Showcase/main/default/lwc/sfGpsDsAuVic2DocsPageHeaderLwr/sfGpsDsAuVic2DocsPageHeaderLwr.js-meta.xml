@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS LWR Docs Page header</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property name="title" type="String" label="Title" default="Title" />
+      <property
+        name="description"
+        type="String"
+        label="Description"
+        default="Some short introductory text."
+      />
+      <property
+        name="links"
+        type="String"
+        label="Links"
+        description="Links in Markdown link format."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

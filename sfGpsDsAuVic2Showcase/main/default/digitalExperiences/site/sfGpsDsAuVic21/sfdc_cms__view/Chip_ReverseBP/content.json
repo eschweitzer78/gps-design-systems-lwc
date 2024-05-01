@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Reverse blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-chip-reverse-blueprint",
+    "component": {
+      "id": "e74a5c69-4b70-4fc4-9642-4cd44270def8",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "8d47a2fe-1ad7-4374-b74a-e27dc16c5667",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "22754d1d-d487-4f28-8b73-e4ac8ff1a20c",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"22754d1d-d487-4f28-8b73-e4ac8ff1a20c\",\"columns\":[{\"UUID\":\"46b12dd1-1133-486b-9a1e-3a6765d755da\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "46b12dd1-1133-486b-9a1e-3a6765d755da",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "a808aa45-a17e-43e4-9899-df43917bec9c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "links": "[Chip with link](#)[Chip without link]()",
+                        "variant": "reverse"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bfa89739-1a78-489e-bcd5-ed90f74bd0ab",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "b5d3bf06-30dd-43d2-aa11-70c3cc37ecd7",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Chip reverse blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

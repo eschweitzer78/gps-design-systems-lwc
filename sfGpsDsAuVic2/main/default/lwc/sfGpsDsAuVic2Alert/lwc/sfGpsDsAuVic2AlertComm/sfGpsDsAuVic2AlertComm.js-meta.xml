@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Alert</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="alertId"
+        type="String"
+        label="Alert ID"
+        description="A unique identifier for the alert."
+        default="error-1"
+      />
+      <property
+        name="variant"
+        type="String"
+        label="Variant"
+        description="Indicates the alert variant."
+        default="information"
+        datasource="information,warning,error"
+      />
+      <property
+        name="iconName"
+        type="String"
+        label="Icon name"
+        description="Name of the icon."
+        default="information-circle-filled"
+        required="true"
+        datasource="accessible,add,arrow-down,arrow-left,arrow-right,arrow-up,attach,browser,calendar-lined,cancel-circle-filled,car,check,child-lined,dollar-circle-filled,fire,flood,free,instagram,lightning,link,list,loading,log-in-lined,mail-lined,medical,menu,microphone,pause-circle-lined,person,play-circle-lined,print-lined,question-circle-lined,search,senior,share,smoke,spotify,star,stop-circle-lined,table-lined,temperature,traffic,trash-lined,upload,user-circle-filled,video,wechat,youtube,zoom-in,zoom-out,download,enlarge-square-filled,enlarge,exclamation-circle-filled,facebook,home,information-circle-filled,link-external-square-filled,linkedin,mail,phone,pin,twitter,view,x"
+      />
+      <property
+        name="message"
+        type="String"
+        label="Message"
+        description="Message in text format."
+        default="An informative message."
+      />
+      <property
+        name="link"
+        type="String"
+        label="Link"
+        description="Link in Markdown link format."
+        default="[Find out more](#)"
+      />
+      <property
+        name="isDismissible"
+        type="Boolean"
+        label="Dismissible"
+        default="true"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

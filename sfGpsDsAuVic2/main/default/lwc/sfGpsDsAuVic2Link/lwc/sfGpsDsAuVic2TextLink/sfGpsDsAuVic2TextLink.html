@@ -1,0 +1,13 @@
+<template>
+  <c-sf-gps-ds-au-vic2-link
+    url={url}
+    target={target}
+    prevent-default={preventDefault}
+    class-name={computedClassName}
+  >
+    <slot>{text}</slot>
+    <span lwc:if={openInNewWindow} class="rpl-u-visually-hidden">
+      (opens in a new window)
+    </span>
+  </c-sf-gps-ds-au-vic2-link>
+</template>

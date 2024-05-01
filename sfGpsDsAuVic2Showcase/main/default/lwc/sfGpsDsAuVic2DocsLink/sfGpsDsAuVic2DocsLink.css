@@ -1,0 +1,10 @@
+.docs-link {
+  --local-clr-link: var(--rpl-clr-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--rpl-sp-2);
+}
+
+.docs-link-icon {
+  color: var(--rpl-clr-link);
+}

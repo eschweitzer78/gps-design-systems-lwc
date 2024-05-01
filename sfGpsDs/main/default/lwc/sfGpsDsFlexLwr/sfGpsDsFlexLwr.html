@@ -1,0 +1,32 @@
+<template>
+  <div class={computedClassName} style={computedFlexStyle}>
+    <slot name="Content1"></slot>
+    <template lwc:if={has2}>
+      <slot name="Content2"></slot>
+    </template>
+    <template lwc:if={has3}>
+      <slot name="Content3"></slot>
+    </template>
+    <template lwc:if={has4}>
+      <slot name="Content4"></slot>
+    </template>
+    <template lwc:if={has5}>
+      <slot name="Content5"></slot>
+    </template>
+    <template lwc:if={has6}>
+      <slot name="Content6"></slot>
+    </template>
+    <template lwc:if={has7}>
+      <slot name="Content7"></slot>
+    </template>
+    <template lwc:if={has8}>
+      <slot name="Content8"></slot>
+    </template>
+    <template lwc:if={has9}>
+      <slot name="Content9"></slot>
+    </template>
+    <template lwc:if={has10}>
+      <slot name="Content10"></slot>
+    </template>
+  </div>
+</template>

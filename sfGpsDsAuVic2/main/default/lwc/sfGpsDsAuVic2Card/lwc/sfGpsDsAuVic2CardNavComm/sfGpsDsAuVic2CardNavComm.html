@@ -1,0 +1,31 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-card-nav
+    lwc:else
+    image={image}
+    title={_title.text}
+    url={_title.url}
+    highlight={highlight}
+    inset={inset}
+    class-name={className}
+  >
+    <template lwc:if={content}>
+      <div lwc:ref="content" lwc:dom="manual"></div>
+    </template>
+    <template lwc:else>
+      <slot name="Content"></slot>
+    </template>
+
+    <template lwc:if={meta}>
+      <div slot="meta" lwc:ref="meta" lwc:dom="manual"></div>
+    </template>
+    <template lwc:else>
+      <slot name="Meta" slot="meta"></slot>
+    </template>
+  </c-sf-gps-ds-au-vic2-card-nav>
+</template>

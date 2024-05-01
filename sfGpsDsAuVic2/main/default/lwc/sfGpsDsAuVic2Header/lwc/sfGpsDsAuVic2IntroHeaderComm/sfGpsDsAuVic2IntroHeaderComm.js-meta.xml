@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Header (Intro)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="iconName"
+        type="String"
+        label="Icon name"
+        editor="c/sfGpsDsAuVic2IconNameCpe"
+        default="icon-information-circle-filled"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        default="The intro title"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Provides further details where the title alone may not be sufficient - in Markdown format, leave empty to get a slot in LWR."
+        default="In do dolore dolore sint ipsum est est, commodo ex laborum Lorem ut deserunt dolore ullamco."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="linksTitle"
+        type="String"
+        label="Links title"
+        description="A title for the links section."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="linksType"
+        type="String"
+        label="Link type"
+        description="Type of element used for links in the link section."
+        default="link"
+        datasource="link,button"
+      />
+      <property
+        name="links"
+        type="String"
+        label="Links"
+        description="A series of links in Markdown link format"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="linksMore"
+        type="String"
+        label="Links more"
+        description="A last link at the bottom of the links section to be used for overflow. Leave empty if not required"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Breadcrumbs default blueprint",
+  "contentBody": {
+    "activeViewId": "Breadcrumbs_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-breadcrumbs-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

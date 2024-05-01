@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Image focal point attribute",
+  "contentBody": {
+    "activeViewId": "Image_FocalPointAttr",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-image-focal-point-attribute",
+    "urlPrefix": "focal-point-attribute"
+  }
+}

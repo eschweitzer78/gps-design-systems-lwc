@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Category grid card",
+  "contentBody": {
+    "activeViewId": "Category_Grid_Card",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-category-grid-card",
+    "urlPrefix": "category-grid-card"
+  }
+}

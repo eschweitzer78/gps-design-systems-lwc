@@ -1,0 +1,22 @@
+<template>
+  <div class="rpl-page-links__item">
+    <c-sf-gps-ds-au-vic2-text-link
+      url={url}
+      class="rpl-page-links__link rpl-type-p"
+      onclick={handleClick}
+    >
+      <c-sf-gps-ds-au-vic2-icon
+        name={computedNamed}
+        colour="default"
+        class="rpl-page-links__link-icon"
+      >
+      </c-sf-gps-ds-au-vic2-icon>
+      <span class="rpl-page-links__link-label rpl-type-weight-bold">
+        {displayLabel}
+      </span>
+      <span class="rpl-page-links__link-text">
+        <slot></slot>
+      </span>
+    </c-sf-gps-ds-au-vic2-text-link>
+  </div>
+</template>

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "In-page navigation",
+  "contentBody": {
+    "activeViewId": "In_Page_Navigation",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-in-page-navigation",
+    "urlPrefix": "in-page-navigation"
+  }
+}

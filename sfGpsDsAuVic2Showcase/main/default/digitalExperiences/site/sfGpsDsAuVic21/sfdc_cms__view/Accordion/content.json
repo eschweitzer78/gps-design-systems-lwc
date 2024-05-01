@@ -1,0 +1,163 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Accordion",
+  "contentBody": {
+    "viewType": "custom-accordion",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "b2c92adf-2acf-4884-9169-21601eeb9f79",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "569a8c98-bdf4-491a-b52e-37f7ab223435",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "71615f9b-f77e-46ca-87be-5997f5ba2015",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"71615f9b-f77e-46ca-87be-5997f5ba2015\",\"columns\":[{\"UUID\":\"14e9d956-d088-4bc5-b72b-9db5d1ad5115\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "14e9d956-d088-4bc5-b72b-9db5d1ad5115",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "35292f9e-95fc-4498-8d14-f0620176c9e0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Accordion",
+                        "description": "The Accordion component is a panel designed to save space by hiding and revealing content as required."
+                      }
+                    },
+                    {
+                      "id": "90320e31-ac67-4391-b76e-c7ef869beeeb",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "ac323e8f-5c79-40a5-b066-3fa95d9cf103",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#default-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Numbered blueprint\",\n\t\t\"url\": \"#numbered-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#numbered-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#numbered-blueprint-configuration\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "6f5df197-3ded-4393-94cf-42fb256e15cf",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>Content for the different panels can be provided in Markdown by setting the <code>content</code> attribute. Each panel title should be configured as a <code>h1</code> heading using the # markdown notation and all the content until the next <code>h1</code> is assigned to that panel.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "de428403-1b9c-4125-bf61-6cc73cbf9b80",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./accordion/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "86a3cf76-381e-4512-8b16-77cbd4bbf4b1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>numbered</code></td>\n\t\t\t\t\t<td>Numbered</td>\n\t\t\t\t\t<td><code>false</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>items</code></td>\n\t\t\t\t\t<td>Items</td>\n\t\t\t\t\t<td>\"# Accordion\\nAn accordion is a series of expandable vertical panels, designed to save space on a page by hiding content and revealing it as required.\\n# Second Accordion\\nUsing *styling*.\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "d0949d4a-8906-4a8a-99de-50b8c72db710",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"numbered-blueprint\">Numbered blueprint</h2>\n\n\t<p>This blueprint is numbered, with each panel having a sequence number added prior to its title.</p><p>Content for the different panels can be provided in Markdown by setting the <code>content</code> attribute. Each panel title should be configured as a <code>h1</code> heading using the # markdown notation and all the content until the next <code>h1</code> is assigned to that panel.</p>\n\n\t<h3 id=\"numbered-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "bde484f2-da0c-42db-a611-13a3a24c7be7",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./accordion/numbered-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "b844bd5d-3a91-425d-9789-232f29d8bd82",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"numbered-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>numbered</code></td>\n\t\t\t\t\t<td>Numbered</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>items</code></td>\n\t\t\t\t\t<td>Items</td>\n\t\t\t\t\t<td>\"# Accordion\\nAn accordion is a series of expandable vertical panels, designed to save space on a page by hiding content and revealing it as required.\\n# Second Accordion\\nUsing *styling*.\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "77d128ea-664f-4e79-9551-51e45d07a215",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>numbered</code></td>\n\t\t\t\t<td>Numbered</td>\n\t\t\t\t<td>Indicates the type of accordion.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>items</code></td>\n\t\t\t\t<td>Items</td>\n\t\t\t\t<td>Content in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown format</a>, which will be split by H1 header.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS class to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "610fd7c7-647a-4d19-b0d4-1f6dd705383b",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "48c3128f-f4b9-4fc1-960e-c7ff10a2571e",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

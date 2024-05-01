@@ -1,0 +1,82 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-content-default-blueprint",
+    "component": {
+      "id": "cb6638d3-0169-4807-a7a1-1beb63348012",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "781522ff-1c12-4643-8c21-47acb47063b6",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "d679203b-cb80-4aac-afae-492fb0e627a3",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"d679203b-cb80-4aac-afae-492fb0e627a3\",\"columns\":[{\"UUID\":\"c7573293-8302-4eb9-a950-f998623323a1\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "c7573293-8302-4eb9-a950-f998623323a1",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "ffb07b21-1837-4036-a38c-f2d2f90267f1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "markup": "<h1>Heading 1</h1>\n<h2>Heading 2</h2>\n<h3>Heading 3</h3>\n<p>Paragraph</p>\n\n<ul>\n<li>Item 1</li>\n<li>Item 2</li></ul>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "be125d45-f993-485c-ae7d-a43a8cff7557",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "c133be2f-1d16-4eb0-b40a-30b408e7e0a4",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Content default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

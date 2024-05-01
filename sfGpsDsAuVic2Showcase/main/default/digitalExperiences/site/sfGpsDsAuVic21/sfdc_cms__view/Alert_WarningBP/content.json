@@ -1,0 +1,87 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Warning blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-alert-warning-blueprint",
+    "component": {
+      "id": "91bbd9f9-ce19-427e-a372-4a9702d33a6e",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "0bbb3c2c-0ef7-4e82-9923-00cb438e2bc4",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "b4de70a5-7e3a-4faa-824d-7bf277927387",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"b4de70a5-7e3a-4faa-824d-7bf277927387\",\"columns\":[{\"UUID\":\"986f4ddd-e730-4adb-b5b8-ab767ad57f6e\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "986f4ddd-e730-4adb-b5b8-ab767ad57f6e",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "124d6c9b-dd93-4114-98b8-0d84a7498dfd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2AlertComm",
+                      "attributes": {
+                        "alertId": "info-1",
+                        "variant": "warning",
+                        "iconName": "fire",
+                        "message": "An warning message.",
+                        "link": "[Find out more](#)",
+                        "dismissible": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d056669e-3ad5-4f6b-b641-304cb504a50e",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "8b92a8f6-c0b4-4cb6-a8cc-4be7f05eb80d",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Alert warning blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

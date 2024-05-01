@@ -1,0 +1,145 @@
+<template>
+  <div class="rpl-media-embed">
+    <!-- Title -->
+    <h3 lwc:if={showTitle} class="rpl-type-h3 rpl-u-margin-b-3">
+      {title} {isFullscreenOpen}
+    </h3>
+
+    <!-- Figure (iframe, caption, source info) -->
+    <figure class="rpl-media-embed__figure">
+      <!-- Image -->
+      <c-sf-gps-ds-au-vic2-image
+        lwc:if={computedIsImage}
+        src={src}
+        alt={caption}
+        aspect={computedImageAspect}
+        sizes="xs:768px"
+        circle={computedIsAvatar}
+        class-name={computedImageClassName}
+      >
+      </c-sf-gps-ds-au-vic2-image>
+
+      <!-- Video -->
+      <div
+        lwc:elseif={computedIsVideo}
+        class="rpl-media-embed__video-container"
+      >
+        <iframe
+          class="rpl-media-embed__video rpl-u-screen-only"
+          src={src}
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          title={title}
+        >
+        </iframe>
+        <c-sf-gps-ds-au-vic2-text-link
+          class-name="rpl-type-p rpl-u-print-only"
+          url={src}
+        >
+          {title}
+        </c-sf-gps-ds-au-vic2-text-link>
+      </div>
+
+      <!-- Caption and source caption -->
+      <figcaption
+        lwc:if={computedHasCaption}
+        class="rpl-media-embed__figcaption"
+      >
+        <p lwc:if={caption} class="rpl-media-embed__caption rpl-type-p">
+          {caption}
+        </p>
+        <p
+          lwc:if={sourceCaption}
+          class="rpl-media-embed__source-caption rpl-type-p-small"
+        >
+          {sourceCaption}
+        </p>
+      </figcaption>
+    </figure>
+
+    <!-- Actions list -->
+    <ul lwc:if={computedHasActions} class="rpl-media-embed__actions-list">
+      <!-- Transcript link -->
+      <li lwc:if={transcriptUrl}>
+        <c-sf-gps-ds-au-vic2-text-link
+          class-name="rpl-media-embed__transcript-link rpl-media-embed__action rpl-u-focusable-inline rpl-type-p"
+          url={transcriptUrl}
+          onclick={handleTranscript}
+        >
+          <c-sf-gps-ds-au-vic2-icon name="icon-view">
+          </c-sf-gps-ds-au-vic2-icon>
+          {transcriptContentLabel}
+        </c-sf-gps-ds-au-vic2-text-link>
+      </li>
+
+      <!-- Fullscreen button -->
+      <li lwc:if={allowFullscreen}>
+        <button
+          class="rpl-media-embed__fullscreen-button rpl-media-embed__action rpl-u-focusable-inline rpl-type-p rpl-u-screen-only"
+          type="button"
+          onclick={handleToggleFullscreen}
+        >
+          <c-sf-gps-ds-au-vic2-icon name="icon-enlarge-square-filled">
+          </c-sf-gps-ds-au-vic2-icon>
+          {fullscreenContentLabel}
+        </button>
+      </li>
+
+      <!-- View data toggle & content -->
+      <li lwc:if={dSlot}>
+        <button
+          class="rpl-media-embed__view-data-toggle rpl-media-embed__action rpl-u-focusable-inline rpl-type-p rpl-u-screen-only"
+          onclick={handleToggleData}
+        >
+          <c-sf-gps-ds-au-vic2-icon
+            lwc:if={isDataContentOpen}
+            name="icon-cancel"
+          >
+          </c-sf-gps-ds-au-vic2-icon>
+          <c-sf-gps-ds-au-vic2-icon lwc:else name="icon-table-lined">
+          </c-sf-gps-ds-au-vic2-icon>
+          {dContentLabel}
+        </button>
+
+        <c-sf-gps-ds-au-vic2-expandable
+          aria-hidden={computedExpandableAriaHidden}
+          expanded={isDataContentOpen}
+          class="rpl-media-embed__view-data-content"
+        >
+          <slot name="data"></slot>
+        </c-sf-gps-ds-au-vic2-expandable>
+      </li>
+
+      <!-- Download link -->
+      <li lwc:if={downloadUrl}>
+        <c-sf-gps-ds-au-vic2-text-link
+          class-name="rpl-media-embed__download-link rpl-media-embed__action rpl-u-focusable-inline rpl-type-p"
+          url={downloadUrl}
+          download
+          onclick={handleDownload}
+        >
+          <c-sf-gps-ds-au-vic2-icon
+            name="icon-download"
+            class-name="rpl-u-screen-only"
+          >
+          </c-sf-gps-ds-au-vic2-icon>
+          {downloadContentLabel}
+        </c-sf-gps-ds-au-vic2-text-link>
+      </li>
+    </ul>
+
+    <c-sf-gps-ds-au-vic2-modal
+      is-open={isFullscreenOpen}
+      class-name="rpl-media-embed__modal"
+      onclose={handleToggleFullscreen}
+    >
+      <c-sf-gps-ds-au-vic2-image src={src} alt={caption} fit="contain">
+      </c-sf-gps-ds-au-vic2-image>
+
+      <div slot="below" class="rpl-media-embed__content">
+        <h3 class="rpl-type-h3 rpl-u-margin-b-2">{title}</h3>
+        <p class="rpl-type-p">{caption}</p>
+      </div>
+    </c-sf-gps-ds-au-vic2-modal>
+  </div>
+</template>

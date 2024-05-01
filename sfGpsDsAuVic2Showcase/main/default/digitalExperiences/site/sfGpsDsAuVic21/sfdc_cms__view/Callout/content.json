@@ -1,0 +1,202 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Callout",
+  "contentBody": {
+    "viewType": "custom-callout",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "f951fb68-7539-4908-8a6b-835a18eafc2c",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "d6344811-bb49-4e03-965d-f7bcfd9ba636",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "cf107609-4dcd-4c87-9b58-ad21f7dddaf4",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"cf107609-4dcd-4c87-9b58-ad21f7dddaf4\",\"columns\":[{\"UUID\":\"e44c1b67-7083-4551-a953-ccbbe0b36666\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "e44c1b67-7083-4551-a953-ccbbe0b36666",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "6ca01063-0e51-417a-b156-3a4fa49c4b43",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Callout",
+                        "description": "The Alert component display required actions or important messages to users."
+                      }
+                    },
+                    {
+                      "id": "a87c4400-91d4-48c9-815d-c3077e8e46d3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "9479d1f6-04fd-4c22-aa6c-40c07d1f6b7c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#default-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Neutral blueprint\",\n\t\t\"url\": \"#neutral-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#neutral-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#neutral-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Content blueprint\",\n\t\t\"url\": \"#content-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#content-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#content-blueprint-configuration\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "4f914cee-3737-4b20-a506-473199940cf7",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use callouts to draw a user&apos;s attention, add emphasis to the content or provide a user with more information.</p><p>A callout repeats and highlights content already on the page. Use callouts sparingly. To maintain effectiveness, consider weaving this information into the page&apos;s main content.</p><p>The <code>sfGpsDsAuVic2CalloutComm</code> LWC appears as <code>VIC2 DS Callout</code> in the Experience Builder component list.</p></div>"
+                      }
+                    },
+                    {
+                      "id": "ec46362e-6efa-4c66-8f07-941358baf9c8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>Use the default (accent) blueprint to add a high level of emphasis to the selected content. The callout accent can adopt any WYSIWYG type styles you choose.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "7a6e0f5e-9f7f-4328-ac68-8c23b76af34c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./callout/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "f49e6717-464a-458a-b561-534ad323afb1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Callout\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"default\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>className</code></td>\n\t\t\t\t\t<td>Class name</td>\n\t\t\t\t\t<td>\"rpl-content\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "9ad365e6-5bf5-4a56-a7ba-74af403c9694",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"neutral-blueprint\">Neutral blueprint</h2>\n\n\t<p>Use the neutral variant to give content a medium level of emphasis. The neutral callout uses a predefined type style that you cannot change.</p>\n\n\t<h3 id=\"neutral-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "021bc8ee-82f7-42e3-858a-06e60e825f50",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./callout/neutral-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "b1fd1513-7486-47ea-ad1d-f5fbdcf4ab5a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"neutral-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Callout\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"neutral\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>className</code></td>\n\t\t\t\t\t<td>Class name</td>\n\t\t\t\t\t<td>\"rpl-content\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "2eeb58b4-35cf-424a-99f9-6e7909e69195",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"content-blueprint\">Content blueprint</h2>\n\n\t<p>Use can alternatively use the <a href=\"./content\">VIC2 DS Content component</a> to put together a callout with greater control on the callout markup. Simply add <code>rpl-content</code> and, if required, <code>rpl-content--neutral</code> as additional CSS classes on the content component.</p>\n\n\t<h3 id=\"content-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "5724ddc5-3674-4053-9fbd-6f29433ef78f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./callout/content-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "557646ec-d5b1-4024-b2d2-9ad22e1355a1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"content-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>markup</code></td>\n\t\t\t\t\t<td>Markup</td>\n\t\t\t\t\t<td>\"&lt;h4&gt;H4 Heading&lt;/h4&gt;&lt;p&gt;Use HTML Editor to add your own markup as content.&lt;/p&gt;&lt;h5&gt;H5 Heading&lt;/h5&gt;&lt;p&gt;Span multiple paragraphs.&lt;/p&gt;\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>className</code></td>\n\t\t\t\t\t<td>Class name</td>\n\t\t\t\t\t<td>\"rpl-content rpl-callout\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "64718a6d-d7ef-4bb7-b37a-881bc722ee73",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Clearly identifies the purpose of the callout.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>content</code></td>\n\t\t\t\t<td>Content</td>\n\t\t\t\t<td>Provides further details - in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Button variant</td>\n\t\t\t\t<td>Variant of the callout style with a choice of <code>neutral</code> and <code>default</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a9daa558-37b3-46ba-a6d7-9b8c20a48b52",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "13a0497f-f004-49c3-a7a6-d0fde058dbcc",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

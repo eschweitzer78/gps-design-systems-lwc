@@ -1,0 +1,31 @@
+<template>
+  <c-sf-gps-ds-au-vic2-card
+    lwc:ref="container"
+    link={url}
+    el={el}
+    highlight="false"
+    type="category-grid"
+    class-name={className}
+  >
+    <c-sf-gps-ds-au-vic2-image
+      lwc:if={computedHasImage}
+      slot="upper"
+      class="rpl-card__media rpl-card__media--category-grid"
+      image={_image}
+    >
+    </c-sf-gps-ds-au-vic2-image>
+
+    <h3 slot="title" class="rpl-card__cta rpl-type-h3">
+      <c-sf-gps-ds-au-vic2-text-link
+        lwc:ref="trigger"
+        url={url}
+        prevent-default={preventDefault}
+        onclick={handleClick}
+      >
+        {title}
+      </c-sf-gps-ds-au-vic2-text-link>
+    </h3>
+
+    <slot></slot>
+  </c-sf-gps-ds-au-vic2-card>
+</template>

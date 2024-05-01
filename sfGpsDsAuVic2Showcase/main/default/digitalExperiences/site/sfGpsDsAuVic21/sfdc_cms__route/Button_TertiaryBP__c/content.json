@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Button tertiary blueprint",
+  "contentBody": {
+    "activeViewId": "Button_TertiaryBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-button-tertiary-blueprint",
+    "urlPrefix": "tertiary-blueprint"
+  }
+}

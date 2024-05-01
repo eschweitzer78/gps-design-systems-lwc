@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Alert",
+  "contentBody": {
+    "activeViewId": "Alert",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-alert",
+    "urlPrefix": "alert"
+  }
+}

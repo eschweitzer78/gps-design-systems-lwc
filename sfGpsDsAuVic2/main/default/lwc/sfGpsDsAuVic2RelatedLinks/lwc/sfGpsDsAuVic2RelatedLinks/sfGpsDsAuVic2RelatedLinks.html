@@ -1,0 +1,13 @@
+<template>
+  <div class={computedClassName}>
+    <div class="rpl-related-links__heading rpl-type-label-large">{title}</div>
+
+    <c-sf-gps-ds-au-vic2-list
+      items={items}
+      item-class-name="rpl-related-links__item rpl-type-p"
+      class-name="rpl-related-links__list"
+      onitemclick={handleClick}
+    >
+    </c-sf-gps-ds-au-vic2-list>
+  </div>
+</template>

@@ -1,0 +1,151 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Key dates card",
+  "contentBody": {
+    "viewType": "custom-key-dates-card",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "dbab72be-e1ad-4e9c-a907-a9c5867b5aab",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "d63b127f-4448-461b-a883-c88351ab8c1a",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "0d56a553-35ca-4fdf-ad9e-6925d54eb6f6",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"0d56a553-35ca-4fdf-ad9e-6925d54eb6f6\",\"columns\":[{\"UUID\":\"0d40555c-f42c-409f-97f5-5abc510b4896\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "0d40555c-f42c-409f-97f5-5abc510b4896",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "420d15f9-3109-4b10-8aa4-8ca8d21edbfd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Key dates card",
+                        "description": "The Key dates component shows users a card promoting key dates or events."
+                      }
+                    },
+                    {
+                      "id": "f7be23eb-4e8b-4cac-b787-411c984a7cb1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "ec186a7f-5d75-47d2-9562-29222d32ddb6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "cc848d04-8572-421f-8102-c9899ad6ae2c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Use key dates to provide a card with brief summaries of up to 2 events or key dates with a call to action.</p><p>Use on landing pages in a grid of promo cards, once per page and as the last card in the grid.</p><p>The <code>sfGpsDsAuVic2CardKeyDatesComm</code> component appears as <code>VIC2 DS Card (Key dates)</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "22269f6f-e89e-4101-8602-77ec32d4901e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "c7917900-860e-4e94-9131-cff4cc800860",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "The maximum width has been constrained to 20rem in the example below as key dates cards are usually used in a narrower container."
+                      }
+                    },
+                    {
+                      "id": "35fe20d0-c5f7-4038-90d1-a63dba29f42a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./key-dates-card/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "4d31cbae-cd1e-494a-a5f3-9ae4c8cf85c5",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Key calendar dates](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>items</code></td>\n\t\t\t\t\t<td>Items</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">[<br/>  {<br/>    \"title\": \"Friday 23 September\",<br/>    \"subtitle\": \"Friday before the AFL Grand Final\",<br/>    \"content\": \"Friday before the AFL Grand Final typically falls on the last Friday in September\"<br/>  },<br/>  {<br/>    \"title\": \"Tuesday 1 November\",<br/>    \"subtitle\": \"Melbourne Cup\",<br/>    \"content\": \"Public holiday across Victoria unless an alternate local holiday hass been arranged by a non-metro council.\"<br/>  }<br/>]</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>ctaTitle</code></td>\n\t\t\t\t\t<td>Call to action title</td>\n\t\t\t\t\t<td>\"Find all public holidays\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "600968ed-0425-4df3-a03f-22db000b5196",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Title and target URL in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown link format</a>. The link is associated to the title from a configuration standpoint as the whole card is clickable and the Call to action title is optional.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>content</code></td>\n\t\t\t\t<td>Content</td>\n\t\t\t\t<td>Items as an JSON array of { title, subtitle, content }.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>ctaTitle</code></td>\n\t\t\t\t<td>Call to action title</td>\n\t\t\t\t<td>Call to action associated with the linked content provided in the title.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "08c6870c-1f3f-4b49-8263-feb0637a234c",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "362337eb-2675-4df6-8719-eb078bb0c3ab",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

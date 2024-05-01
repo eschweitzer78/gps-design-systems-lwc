@@ -1,0 +1,89 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Video blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-media-embed-video-blueprint",
+    "component": {
+      "id": "6d31151f-fb2d-4872-aa42-41c5469b1b34",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "02363a4a-c7f6-4fba-8616-e14ebd697d1e",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "181ee868-47b5-444b-9f7c-7ac840a06a49",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"181ee868-47b5-444b-9f7c-7ac840a06a49\",\"columns\":[{\"UUID\":\"7bb31575-d661-45fd-843e-dbf09d6b84d1\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "7bb31575-d661-45fd-843e-dbf09d6b84d1",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "953ca2cd-0851-4dc4-91bd-6b3aa834b24b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2MediaEmbedComm",
+                      "attributes": {
+                        "type": "video",
+                        "variant": "landscape",
+                        "size": "large",
+                        "title": "Media embed",
+                        "showTitle": false,
+                        "src": "https://www.youtube.com/embed/bSlnfyGTiss",
+                        "transcriptUrl": "#",
+                        "caption": "Getting things done in the Loddon Campaspe Region"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4096bcb3-81a2-44c4-af74-df89a60760cf",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "37c02a84-3796-40f2-8eca-c2607636b2e3",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Media embed video blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

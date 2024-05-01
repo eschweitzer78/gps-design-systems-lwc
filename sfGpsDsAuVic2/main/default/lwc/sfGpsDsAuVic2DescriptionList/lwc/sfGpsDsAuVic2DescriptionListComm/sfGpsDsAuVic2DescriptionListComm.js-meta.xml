@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Description List</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property name="inline" type="Boolean" label="Inline" />
+      <property
+        name="variant"
+        type="String"
+        label="Variant"
+        datasource="label,icon"
+      />
+      <property
+        name="items"
+        type="String"
+        label="Items"
+        description="List items as a JSON array of { term, description, iconName }."
+        default="[{&quot;term&quot;:&quot;Name:&quot;,&quot;description&quot;:&quot;The Hon. Dame Quentin Bryce AD CVO&quot;},{&quot;term&quot;:&quot;Role:&quot;,&quot;description&quot;:&quot;Former governor-general of Australia&quot;},{&quot;term&quot;:&quot;Alma mater:&quot;,&quot;description&quot;:&quot;University of Queensland&quot;}]"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

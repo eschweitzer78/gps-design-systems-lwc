@@ -1,0 +1,87 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Critical blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-alert-critical-blueprint",
+    "component": {
+      "id": "8b76f79c-97ec-4118-b225-e06d6a0cd7d1",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "7842b79e-b6c4-4122-875e-069484dd3268",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "d73cf1a2-e8be-4d83-8a74-280c354e720d",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"d73cf1a2-e8be-4d83-8a74-280c354e720d\",\"columns\":[{\"UUID\":\"2f58c1ff-5bfc-4264-8292-fcc82cce13a7\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "2f58c1ff-5bfc-4264-8292-fcc82cce13a7",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "2a31b039-ee79-4b98-a51a-24a73d4f0f0d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2AlertComm",
+                      "attributes": {
+                        "alertId": "info-1",
+                        "variant": "error",
+                        "iconName": "cancel-circle-filled",
+                        "message": "A critical message.",
+                        "link": "[Find out more](#)",
+                        "dismissible": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f56dbf26-c887-40a5-b77d-98cd3a87987d",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "ee8f5cfe-45f0-40a1-b9af-6c50767a9202",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Alert critical blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

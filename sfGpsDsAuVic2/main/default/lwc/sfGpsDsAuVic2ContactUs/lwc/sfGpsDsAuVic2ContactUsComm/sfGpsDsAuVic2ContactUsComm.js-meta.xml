@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Contact us</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="name"
+        type="String"
+        label="Name"
+        description="Contact name"
+        default="Shankar Ramakhumar"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="department"
+        type="String"
+        label="Department"
+        description="Contact department"
+        default="Department of Health"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="street"
+        type="String"
+        label="Street address"
+        description="Street address including suburb and postal code"
+        default="50 Lonsdale St, Melbourne VIC 3000"
+        editor="c/sfGpsDsStringCpe"
+      />
+
+      <property
+        name="items"
+        type="String"
+        label="Items"
+        description="List of channels and contact details in JSON format as [{text, url, icon}]"
+        default="[{&quot;text&quot;:&quot;50 Lonsdale St, Melbourne VIC 3000&quot;,&quot;url&quot;:&quot;http://maps.google.com/maps?q=50%20Lonsdale%20Street%20Melbourne%203000(Department%20of%20Health)&quot;,&quot;icon&quot;:&quot;icon-pin&quot;,&quot;iconColour&quot;:&quot;information&quot;},{&quot;text&quot;:&quot;https://www.health.vic.gov.au/&quot;,&quot;url&quot;:&quot;https://www.health.vic.gov.au/&quot;,&quot;icon&quot;:&quot;icon-browser&quot;,&quot;iconColour&quot;:&quot;success&quot;}]"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

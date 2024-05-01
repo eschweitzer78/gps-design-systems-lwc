@@ -1,0 +1,160 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Category grid card",
+  "contentBody": {
+    "viewType": "custom-category-grid-card",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "b45406ff-8422-46d2-a05b-a96faa7ba8d3",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "3c7d51a8-ae48-4420-acca-8f9c7e6fc4d8",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "58b9fa62-3599-439c-985e-bc1ab557f3bd",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"58b9fa62-3599-439c-985e-bc1ab557f3bd\",\"columns\":[{\"UUID\":\"467317fa-264e-4794-b6fd-b4fe94256e25\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "467317fa-264e-4794-b6fd-b4fe94256e25",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "d5695019-3505-470c-9ec3-9b3cd0119250",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Category grid card",
+                        "description": "The Category grid component shows multiple cards laid out in a grid, allowing users to browse a collection of categories."
+                      }
+                    },
+                    {
+                      "id": "17f00fcf-dd4c-4a9b-80b6-4410e164d875",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "65a83959-bc7f-475c-8402-1804db369314",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Examples\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-1\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "3916a40b-e13d-429f-a01b-604ddb27dbad",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Use a category grid to help users browse a range of categories and content. Each card in a collection acts as a link to more information.</p><p>A category grid uses the text link style to indicate clickable elements. An accompanying media item, such as an icon or pictogram, is used to support the content for each category.</p><p>The media item you choose must be directly relevant to the card’s content, to support and reinforce the user’s understanding. The icon or pictogram should clearly show the difference in topics and should be easily identifiable.</p><p>The <code>sfGpsDsAuVic2CardCategoryGridComm</code> LWC appears as <code>VIC2 DS Card (Category grid)</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "a15ebdad-4477-43aa-97bd-57cde77beca3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Examples</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "07dc5137-3cbb-47de-884f-4d852d7daf81",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "The maximum width has been constrained to 20rem in the examples below as category grid cards are usually used in a responsive grid."
+                      }
+                    },
+                    {
+                      "id": "641b46e4-fbbe-4d43-a5d8-6ed12e2d9d92",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./category-grid-card/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "51cfcea9-4959-4225-a41a-0bbe834257a8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Ash](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"*Fraxinus*, commonly called ash, is a genus of flowering plants in the olive and lilac family, Oleaceae.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/2020_year._Herbarium._Fraxinus._img-016.jpg/475px-2020_year._Herbarium._Fraxinus._img-016.jpg?20210726115836\",<br/>  \"alt\": \"Ash leaf and fruit.\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "3f16ae12-faef-406b-a614-e0cf9da164e3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-1\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Oak](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"*Quercus*, commonly called oak, is a genus of flowering plants in the beeches and chestnut family, Fagaceae.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://upload.wikimedia.org/wikipedia/commons/a/af/Quercus_robur.jpg\",<br/>  \"alt\": \"Oak leaf and fruit.\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "d9060bf9-717c-4eb7-80e7-600c35535167",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Title and target URL in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown link format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>content</code></td>\n\t\t\t\t<td>Content</td>\n\t\t\t\t<td>Provides further details where the title alone may not be sufficient - in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>image</code></td>\n\t\t\t\t<td>Image</td>\n\t\t\t\t<td>Configuration of the image. Refer to the <a href=\"./page-content/image#documentation\">image documentation</a> for further detail.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f4121378-569f-407b-999e-c4dae8da3ad5",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "9dfa3bf8-af0b-45d4-8731-ce1e24837237",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

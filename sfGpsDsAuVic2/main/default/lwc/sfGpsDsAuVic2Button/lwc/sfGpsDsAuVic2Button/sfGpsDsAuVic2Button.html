@@ -1,0 +1,48 @@
+<template>
+  <a
+    lwc:if={isAnchor}
+    lwc:ref="item"
+    href={url}
+    target={target}
+    class={computedClassName}
+    onclick={handleClick}
+  >
+    <span lwc:if={busy} class="rpl-button__spinner">
+      <c-sf-gps-ds-au-vic2-spinner> </c-sf-gps-ds-au-vic2-spinner>
+    </span>
+    <span class="rpl-button__label rpl-type-label rpl-type-weight-bold">
+      <template lwc:if={label}>{label}</template>
+      <slot></slot>
+    </span>
+    <c-sf-gps-ds-au-vic2-icon
+      lwc:if={iconName}
+      name={iconName}
+      class-name="rpl-button__icon"
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+  </a>
+
+  <button
+    lwc:else
+    lwc:ref="item"
+    type="button"
+    disabled={disabled}
+    aria-busy={busy}
+    class={computedClassName}
+    onclick={handleClick}
+  >
+    <span lwc:if={busy} class="rpl-button__spinner">
+      <c-sf-gps-ds-au-vic2-spinner> </c-sf-gps-ds-au-vic2-spinner>
+    </span>
+    <span class="rpl-button__label rpl-type-label rpl-type-weight-bold">
+      <template lwc:if={label}>{label}</template>
+      <slot></slot>
+    </span>
+    <c-sf-gps-ds-au-vic2-icon
+      lwc:if={iconName}
+      name={iconName}
+      class-name="rpl-button__icon"
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+  </button>
+</template>

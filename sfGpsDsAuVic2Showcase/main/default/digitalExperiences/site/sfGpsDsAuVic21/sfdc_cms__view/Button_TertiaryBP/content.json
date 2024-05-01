@@ -1,0 +1,129 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Tertiary blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-button-tertiary-blueprint",
+    "component": {
+      "id": "052b5d02-b8df-4e54-8ef7-c5ec40ce551d",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "fe1c3925-8fd0-4cac-b272-1742179432f5",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "e76fa9e0-0bf9-4587-a161-13d183f85dd8",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "640",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"e76fa9e0-0bf9-4587-a161-13d183f85dd8\",\"columns\":[{\"UUID\":\"fc99dae5-c59a-4d1a-abe6-62caa8cd13f2\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "customCssClasses": "docs-background--neutral-100",
+              "children": [
+                {
+                  "id": "fc99dae5-c59a-4d1a-abe6-62caa8cd13f2",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "7be73ef7-c49a-42ae-938d-222e08c30684",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Apply now](#)",
+                        "variant": "white",
+                        "theme": "default"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "cc395f6d-e39c-417d-904a-f4352f6e5ce2",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "640",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"cc395f6d-e39c-417d-904a-f4352f6e5ce2\",\"columns\":[{\"UUID\":\"2106f515-b7a2-41fc-a2de-d77c0afb543c\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "customCssClasses": "docs-background--neutral-100",
+              "children": [
+                {
+                  "id": "2106f515-b7a2-41fc-a2de-d77c0afb543c",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "a18b0984-0c66-40cf-b35a-da6be924abcf",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Apply now](#)",
+                        "variant": "transparent",
+                        "theme": "default"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cef0f10f-a684-4ad5-97ec-561fff341f6b",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "6d6f1972-e1e2-4e2c-a6ca-3a1a7ca67f3d",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Button tertiary blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

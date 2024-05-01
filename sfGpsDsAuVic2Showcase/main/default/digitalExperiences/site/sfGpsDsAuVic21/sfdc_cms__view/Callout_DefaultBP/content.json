@@ -1,0 +1,85 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-callout-default-blueprint",
+    "component": {
+      "id": "9d9d85cc-e21a-432f-b0a9-11775676c66b",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "09e7dd32-40a1-4daf-ae24-546a8690e921",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "c41f076a-bbf7-42fc-95ce-4ac27e8ede57",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"c41f076a-bbf7-42fc-95ce-4ac27e8ede57\",\"columns\":[{\"UUID\":\"9b146b55-ab08-4c14-947d-f4ad0e9841b5\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "9b146b55-ab08-4c14-947d-f4ad0e9841b5",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "46358669-04db-4835-b9d8-84c7b9b9593b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "title": "Callout",
+                        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                        "variant": "default",
+                        "className": "rpl-content"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "6ec65820-a3ac-405b-a058-ad9a8bae6da0",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "9207f3f9-2578-4603-a149-c8f3878b8934",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Callout default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

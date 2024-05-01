@@ -1,0 +1,23 @@
+<template>
+  <button class={computedClassName}>
+    <c-sf-gps-ds-au-vic2-icon
+      lwc:if={isIconBefore}
+      name={iconName}
+      size={iconSize}
+      colour="default"
+      class-name="rpl-pagination__link-icon"
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+
+    <slot></slot>
+
+    <c-sf-gps-ds-au-vic2-icon
+      lwc:if={isIconAfter}
+      name={iconName}
+      size={iconSize}
+      colour="default"
+      class-name="rpl-pagination__link-icon"
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+  </button>
+</template>

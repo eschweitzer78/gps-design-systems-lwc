@@ -1,0 +1,6 @@
+{
+  "apiName": "Category_Grid_Card_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Category_Grid_Card__c",
+  "path": "routes"
+}

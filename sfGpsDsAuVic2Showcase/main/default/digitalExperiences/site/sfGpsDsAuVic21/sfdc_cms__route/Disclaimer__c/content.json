@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Disclaimer",
+  "contentBody": {
+    "activeViewId": "Disclaimer",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-disclaimer",
+    "urlPrefix": "disclaimer"
+  }
+}

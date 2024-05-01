@@ -1,0 +1,142 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Profile",
+  "contentBody": {
+    "viewType": "custom-profile",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "d8c3b874-c88c-453e-b3e4-93718313793c",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "9cdc5cd2-3014-49eb-9d71-684ef192a30d",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "3777d6a1-eb19-4179-bd08-fdf7203edca7",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"3777d6a1-eb19-4179-bd08-fdf7203edca7\",\"columns\":[{\"UUID\":\"5f991ec9-a276-4628-b298-3a661be14b42\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "5f991ec9-a276-4628-b298-3a661be14b42",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "59cc1fc0-ccd1-4f2f-8c78-67a18542711d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Profile",
+                        "description": "The Profile component shows an avatar (image) on your page, with supporting text to display key information."
+                      }
+                    },
+                    {
+                      "id": "7d879a19-2581-4366-acd9-c0c5c7322f6a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "2dabd43c-ec24-48d4-9028-319ac0fc9012",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "4522290c-1cc1-4bc9-b4a2-12035b6039b1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use profile to highlight key information to users by showing an avatar image with summary content. This highlights key information to users.</p><p>Each row of content includes a label and summary.</p><p>The <code>sfGpsDsAuVic2ProfileComm</code> LWC appears as <code>VIC2 DS Profile</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "fbb4eac4-6e23-448c-a180-014966d07386",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "f41a404b-2ebc-46ba-b969-5f1dd6508ce3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./profile/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "bf71019f-3203-4d26-bf53-29238a90c7ce",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://upload.wikimedia.org/wikipedia/commons/f/fa/Quentin_Bryce_No.1_%28cropped%29.jpg\",<br/>  \"alt\": \"Dame Quentin Bryce portrait\",<br/>  \"width\": 148,<br/>  \"height\": 148,<br/>  \"focalPoint\": {<br/>    \"x\": 74,<br/>    \"y\": 0<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>items</code></td>\n\t\t\t\t\t<td>Items</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">[<br/>  {<br/>    \"term\": \"Name:\",<br/>    \"description\": \"The Hon. Dame Quentin Bryce AD CVO\"<br/>  },<br/>  {<br/>    \"term\": \"Role:\",<br/>    \"description\": \"Former governor-general of Australia\"<br/>  },<br/>  {<br/>    \"term\": \"Alma mater:\",<br/>    \"description\": \"University of Queensland\"<br/>  }<br/>]</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "ac679558-b141-4725-8efc-bc241c2825a9",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>image</code></td>\n\t\t\t\t<td>Image</td>\n\t\t\t\t<td>Configuration of the image, refer to the <a href=\"./image#documentation\">image documentation</a> for full details of the individual fields.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>items</code></td>\n\t\t\t\t<td>Items</td>\n\t\t\t\t<td>Profile items as a JSON array of { term, description }.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5be95dbc-60c6-40b1-9e5e-901b02def21b",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "b2f90e87-02ef-4a15-9bde-1535740603e7",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

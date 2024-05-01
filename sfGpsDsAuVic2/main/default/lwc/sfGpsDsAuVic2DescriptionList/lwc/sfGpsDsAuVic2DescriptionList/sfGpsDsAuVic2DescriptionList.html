@@ -1,0 +1,35 @@
+<template>
+  <dl class={computedClassName}>
+    <template for:each={_items} for:item="row">
+      <div lwc:if={_inline} key={row.term} class={row.className}>
+        <dt class="rpl-description-list__term">
+          <c-sf-gps-ds-au-vic2-icon
+            lwc:if={row.iconName}
+            name={row.iconName}
+            colour={row.iconColour}
+            aria-hidden="true"
+          >
+          </c-sf-gps-ds-au-vic2-icon>
+          <span class={row.termClassName}>{row.term}</span>
+        </dt>
+        <dd class="rpl-description-list__description">{row.description}</dd>
+      </div>
+      <template lwc:else>
+        <dt key={row.term} class={row.className}>
+          <c-sf-gps-ds-au-vic2-icon
+            lwc:if={row.iconName}
+            name={row.iconName}
+            colour={row.iconColour}
+            aria-hidden="true"
+          >
+          </c-sf-gps-ds-au-vic2-icon>
+          <span class={row.termClassName}>{row.term}</span>
+        </dt>
+        <dd key={row.term} class="rpl-description-list__description">
+          {row.description}
+        </dd>
+      </template>
+    </template>
+    <slot></slot>
+  </dl>
+</template>

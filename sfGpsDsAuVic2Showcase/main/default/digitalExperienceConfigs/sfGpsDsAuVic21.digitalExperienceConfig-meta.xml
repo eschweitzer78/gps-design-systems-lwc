@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DigitalExperienceConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>sfGpsDsAuVic2</label>
+    <site>
+        <urlPathPrefix>sfGpsDsAuVic2</urlPathPrefix>
+    </site>
+    <space>site/sfGpsDsAuVic21</space>
+</DigitalExperienceConfig>

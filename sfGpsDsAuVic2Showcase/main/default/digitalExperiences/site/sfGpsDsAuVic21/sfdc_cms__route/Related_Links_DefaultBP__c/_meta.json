@@ -1,0 +1,6 @@
+{
+  "apiName": "Related_Links_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Related_Links__c",
+  "path": "routes"
+}

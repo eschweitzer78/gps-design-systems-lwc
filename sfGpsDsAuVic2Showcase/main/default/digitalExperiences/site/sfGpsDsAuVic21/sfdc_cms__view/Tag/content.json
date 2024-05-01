@@ -1,0 +1,172 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Tag",
+  "contentBody": {
+    "viewType": "custom-tag",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "5115e945-af36-4f80-8542-a324fc49b96b",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "94d11023-0b97-4830-bc8b-f5e4b5a64603",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "39aca20c-e71b-4423-b355-96c2f482c0c2",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"39aca20c-e71b-4423-b355-96c2f482c0c2\",\"columns\":[{\"UUID\":\"abf4c98b-ddc0-439e-bbd4-56600e393649\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "abf4c98b-ddc0-439e-bbd4-56600e393649",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "f702b8d1-9818-4092-ac6c-0bf2dd5e7243",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Tag",
+                        "description": "The Tag component adds, and draws attention to, a category name for your content."
+                      }
+                    },
+                    {
+                      "id": "8fb918db-9ea9-41cf-b982-71be015a5c0c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "261d35e3-03ab-4dc1-839a-2e48d6139e4d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Neutral blueprint\",\n\t\t\"url\": \"#neutral-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#neutral-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#neutral-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "792e58b2-3d3b-4308-9dab-0940a2c36a6c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use tags to help categorise content. Tags help users to scan and find content that's relevant to them.</p><p>Content can have more than one category or theme. Using the tag component helps indicate this to the user.</p><p>Tags have 2 blueprints:</p><ul><li>default, for use on neutral backgrounds,</li><li>neutral, for use on white backgrounds.</li></ul><p>The <code>sfGpsDsAuVic2TagComm</code> LWC appears as <code>VIC2 DS Tag</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "67431f43-4c06-4045-80d6-a16ca8bc5b85",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>The default blueprint features a tag with a white background, which is adequate for use in sections where the background is not white.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "dd783855-0e22-4bfb-bc5c-58eb2cbbb2ff",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./tag/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "bf83c5e2-29c3-46f6-ac80-8ad524801b6f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>label</code></td>\n\t\t\t\t\t<td>Label</td>\n\t\t\t\t\t<td>\"Tag\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"default\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "ef81c57f-cc7c-4885-95b9-b62bafddd3a2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"neutral-blueprint\">Neutral blueprint</h2>\n\n\t<p>The neutral blueprint features a tag with a neutral grey background, which is adequate for use in sections where the background is white or very light colour.</p>\n\n\t<h3 id=\"neutral-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "815ff748-484c-4ba0-98ca-709f62722ba2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./tag/neutral-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "6fd510a4-05a1-4830-86f1-83f6effebfe4",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"neutral-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>label</code></td>\n\t\t\t\t\t<td>Label</td>\n\t\t\t\t\t<td>\"Tag\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"neutral\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "b5962d60-b8df-4527-a695-563d04e1ea8e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>label</code></td>\n\t\t\t\t<td>Label</td>\n\t\t\t\t<td>Label of the tag.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Variant</td>\n\t\t\t\t<td>Variant used for styling with a choice of <code>default</code> and <code>neutral</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3048ae76-730b-4630-8cb1-0476d2543cce",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "3dd830b7-b109-43d0-9002-85c6488f0ba8",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

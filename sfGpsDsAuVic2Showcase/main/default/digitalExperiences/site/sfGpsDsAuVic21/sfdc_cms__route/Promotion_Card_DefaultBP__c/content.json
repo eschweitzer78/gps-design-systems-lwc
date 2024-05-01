@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Promotion card default blueprint",
+  "contentBody": {
+    "activeViewId": "Promotion_Card_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-promotion-card-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Campaign secondary blueprint",
+  "contentBody": {
+    "activeViewId": "Campaign_Banner_SecondaryBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-campaign-banner-secondary-blueprint",
+    "urlPrefix": "secondary-blueprint"
+  }
+}

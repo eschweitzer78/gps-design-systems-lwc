@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-chip-default-blueprint",
+    "component": {
+      "id": "77e8c4c1-869e-471d-b424-39c122b42a1c",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "e99423c2-421a-4308-92e5-2789403a2560",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "2ce8b9c5-336b-4d08-9e16-82c7ef5c34bf",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"2ce8b9c5-336b-4d08-9e16-82c7ef5c34bf\",\"columns\":[{\"UUID\":\"dc9a3699-a3fc-4082-9ca5-bdf5eab2ac50\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "dc9a3699-a3fc-4082-9ca5-bdf5eab2ac50",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "f596cbd7-8a14-4d92-80f7-01ee9a4ad9dc",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "links": "[Chip with link](#)[Chip without link]()",
+                        "variant": "default"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "848982ce-8aa4-4be8-ad20-5ebc2d415caa",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "4e1e14a3-fefd-4487-a7b9-563dd8f0349a",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Chip default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

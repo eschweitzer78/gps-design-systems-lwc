@@ -1,0 +1,84 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-tag-default-blueprint",
+    "component": {
+      "id": "5211c52c-0f7f-4f81-9904-7efa888535ee",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "655d9f81-f27a-44a3-ab0c-14d1c95257e4",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "765e2dfc-802a-45f2-a15b-2f9dbee42ac9",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1.5rem",
+                    "left": "1.5rem",
+                    "right": "1.5rem",
+                    "top": "1.5rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"765e2dfc-802a-45f2-a15b-2f9dbee42ac9\",\"columns\":[{\"UUID\":\"48f6a820-4b43-4bcb-8f90-6e3df51a2ee3\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "customCssClasses": "docs-background--neutral-100",
+              "children": [
+                {
+                  "id": "48f6a820-4b43-4bcb-8f90-6e3df51a2ee3",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "8d68b8fc-956b-4518-b8cd-7c4c5e26c19b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2TagComm",
+                      "attributes": {
+                        "label": "Tag",
+                        "variant": "default"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f498cee8-4504-4919-b5f7-9ef332bb184d",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "fc54a0ce-32d0-4cc5-b332-87583f657af6",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Tag default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

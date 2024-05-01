@@ -1,0 +1,24 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-callout
+    lwc:else
+    variant={variant}
+    title={title}
+    class-name={className}
+  >
+    <div
+      lwc:if={content}
+      lwc:ref="content"
+      lwc:dom="manual"
+      class={computedInlineClassName}
+    ></div>
+    <template lwc:else>
+      <slot name="Content"> </slot>
+    </template>
+  </c-sf-gps-ds-au-vic2-callout>
+</template>

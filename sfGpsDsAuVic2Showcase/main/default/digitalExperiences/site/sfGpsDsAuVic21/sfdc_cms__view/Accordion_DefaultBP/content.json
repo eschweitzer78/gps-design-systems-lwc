@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-accordion-default-blueprint",
+    "component": {
+      "id": "1f8ff2c6-ddb3-4d14-bdbf-a28022d3cc04",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "b50e7f63-b3e7-4dc2-8cad-0ebdfc5ee655",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "f971b546-b5d9-436e-867e-bac231191d18",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"f971b546-b5d9-436e-867e-bac231191d18\",\"columns\":[{\"UUID\":\"20d27fa6-6bd1-4d78-8ca4-75aa1073686b\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "20d27fa6-6bd1-4d78-8ca4-75aa1073686b",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "e689c3f6-825d-4784-8341-58e03cc129b1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2AccordionComm",
+                      "attributes": {
+                        "numbered": false,
+                        "items": "# Accordion\nAn accordion is a series of expandable vertical panels, designed to save space on a page by hiding content and revealing it as required.\n# Second Accordion\nUsing *styling*."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bc63f7bb-8839-485f-a1fc-1d5609341da0",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "c389372e-7c66-43c1-82f5-8b18b169d043",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Accordion default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

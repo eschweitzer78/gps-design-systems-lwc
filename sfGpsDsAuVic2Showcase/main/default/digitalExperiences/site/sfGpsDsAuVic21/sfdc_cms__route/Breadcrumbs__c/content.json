@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Breadcrumbs",
+  "contentBody": {
+    "activeViewId": "Breadcrumbs",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-breadcrumbs",
+    "urlPrefix": "breadcrumbs"
+  }
+}

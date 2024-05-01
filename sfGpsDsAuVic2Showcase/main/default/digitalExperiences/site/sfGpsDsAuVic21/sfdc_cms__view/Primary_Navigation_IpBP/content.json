@@ -1,0 +1,77 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "IP blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-primary-navigation-ip-blueprint",
+    "component": {
+      "id": "ee1e08d6-2459-4c25-8f2f-288265323f55",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "82b53aaf-aa27-4aec-a2a5-9967bc066f15",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "99c6645b-8c66-4b32-8279-59411a298462",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"99c6645b-8c66-4b32-8279-59411a298462\",\"columns\":[{\"UUID\":\"ded7afe0-856b-441f-925d-264157e9e104\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "ded7afe0-856b-441f-925d-264157e9e104",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "b4c2ead4-7d10-4992-ae0a-497c23c19e48",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2PrimaryNavComm",
+                      "attributes": {
+                        "mode": "Integration Procedure",
+                        "ipName": "sfGpsDsAuVic_HierarchicalMenuSample",
+                        "inputJSON": "{}",
+                        "optionsJSON": "{}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4df79d7d-1e86-4c00-8792-6e1b23f837ea",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "717a795f-50fe-4700-884f-43a7a68f8183",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Primary navigation IP blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

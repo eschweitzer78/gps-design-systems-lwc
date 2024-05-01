@@ -1,0 +1,85 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Highlight blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-promotion-card-highlight-blueprint",
+    "component": {
+      "id": "53222258-7dd5-472f-b471-7f51fbe360e3",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "e69447ee-91d7-4535-a19d-2c6030027c20",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "d1a833c3-cbe9-424d-a784-d6f7b34b4046",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"d1a833c3-cbe9-424d-a784-d6f7b34b4046\",\"columns\":[{\"UUID\":\"7dcb8d09-621c-4fdd-839c-6e027499641d\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "7dcb8d09-621c-4fdd-839c-6e027499641d",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "1d3d442b-7951-4951-8180-931dbef670f0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CardPromoComm",
+                      "attributes": {
+                        "title": "[Protected grasslands under threat](#)",
+                        "content": "The natural temperate grassland and the grassy eucalypt woodlands of the Victorian volcanic plain are two of Australia&rsquo;s most endangered ecosystems.",
+                        "topic": "Environment",
+                        "highlight": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "123f6488-a00b-4417-899d-18ee5bf180c0",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "fa0eb857-089c-4fc0-905a-73bdee59a12e",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Promotion card highlight blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

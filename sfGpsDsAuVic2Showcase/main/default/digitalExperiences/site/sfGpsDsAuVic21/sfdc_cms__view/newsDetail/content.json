@@ -1,0 +1,64 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "News Detail",
+  "contentBody": {
+    "component": {
+      "children": [
+        {
+          "children": [
+            {
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"00144872-3eb3-4f52-8c4d-9dc3edb59cf6\",\"columns\":[{\"UUID\":\"8503e045-3c70-4613-bb8e-f8454954f662\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "8503e045-3c70-4613-bb8e-f8454954f662",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "type": "region"
+                }
+              ],
+              "definition": "community_layout:section",
+              "id": "00144872-3eb3-4f52-8c4d-9dc3edb59cf6",
+              "type": "component"
+            }
+          ],
+          "id": "b7688cba-324f-4321-91f8-70f8fc37544b",
+          "name": "content",
+          "title": "Content",
+          "type": "region"
+        },
+        {
+          "children": [
+            {
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "{!Content.contentTypeLabel}.{!Content.title}",
+                "recordId": "{!recordId}"
+              },
+              "definition": "community_builder:seoAssistant",
+              "id": "05053e7f-e277-4b95-aeae-3da19c009394",
+              "type": "component"
+            }
+          ],
+          "id": "82cd8326-c76a-4ca5-ad58-916f8f3653e5",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "type": "region"
+        }
+      ],
+      "definition": "community_layout:sldsFlexibleLayout",
+      "id": "07610fd4-1eb5-4d4f-8544-840d20c4e39d",
+      "type": "component"
+    },
+    "dataProviders": [],
+    "themeLayoutType": "Inner",
+    "viewType": "managed-content-sfdc_cms__news"
+  }
+}

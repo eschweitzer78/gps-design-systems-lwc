@@ -1,0 +1,22 @@
+<template>
+  <nav aria-label="breadcrumbs" class={computedClassName}>
+    <ol lwc:if={_items} class="rpl-breadcrumbs__items rpl-type-p">
+      <template iterator:item={_items}>
+        <li key={item.value.key} class={item.value.className}>
+          <span lwc:if={item.last} class="rpl-breadcrumbs__item--current">
+            {item.value.text}
+          </span>
+          <c-sf-gps-ds-au-vic-2-text-link
+            lwc:else
+            url={item.value.url}
+            class-name="rpl-breadcrumbs__item-link"
+            data-ndx={item.index}
+            onclick={handleClick}
+          >
+            {item.value.text}
+          </c-sf-gps-ds-au-vic-2-text-link>
+        </li>
+      </template>
+    </ol>
+  </nav>
+</template>

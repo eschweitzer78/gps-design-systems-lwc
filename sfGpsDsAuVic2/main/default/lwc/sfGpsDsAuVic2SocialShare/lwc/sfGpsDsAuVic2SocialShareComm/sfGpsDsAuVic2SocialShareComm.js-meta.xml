@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Social Share</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title of the share popup window."
+        default="Share this page"
+      />
+      <property
+        name="pagetitle"
+        type="String"
+        label="Page title"
+        description="Title of the page to be shared."
+      />
+      <property
+        name="url"
+        type="String"
+        label="URL"
+        description="URL of the page to be shared."
+        default="https://this.page/here"
+      />
+      <property
+        name="email"
+        type="String"
+        label="Email template"
+        description="The developer name of the Salesforce Classic Email template (text format) - leave empty to remove Email sharing as an option."
+        default="Vic2SocialShareText"
+      />
+      <property
+        name="networks"
+        type="String"
+        label="Networks"
+        description="Semi-colon separated list of Networks."
+        default="Facebook;LinkedIn;X"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Primary navigation Show search attribute",
+  "contentBody": {
+    "activeViewId": "Primary_Navigation_ShowSearchAttr",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-primary-navigation-show-search-attr",
+    "urlPrefix": "show-search-attr"
+  }
+}

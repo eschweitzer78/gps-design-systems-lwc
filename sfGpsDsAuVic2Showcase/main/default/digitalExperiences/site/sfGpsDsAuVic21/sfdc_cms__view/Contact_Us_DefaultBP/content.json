@@ -1,0 +1,85 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-contact-us-default-blueprint",
+    "component": {
+      "id": "ac9c800c-668c-40ab-809d-5e447088dc16",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "2f40171f-d742-4973-aa10-8483cfbcbeba",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "c0944216-0a88-460c-9f2a-33878ce5e798",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"c0944216-0a88-460c-9f2a-33878ce5e798\",\"columns\":[{\"UUID\":\"d9de80dc-bf39-4246-941e-3b45a73e12b1\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "d9de80dc-bf39-4246-941e-3b45a73e12b1",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "0ed36e4d-962e-47d0-8175-ffc08302b352",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContactUsComm",
+                      "attributes": {
+                        "name": "Shankar Ramakhumar",
+                        "department": "Department of Health",
+                        "street": "50 Lonsdale St, Melbourne, VIC 3000",
+                        "items": "[{\"text\":\"50 Lonsdale St, Melbourne VIC 3000\",\"url\":\"http://maps.google.com/maps?q=50%20Lonsdale%20Street%20Melbourne%203000(Department%20of%20Health)\",\"icon\":\"icon-pin\",\"iconColour\":\"information\"},{\"text\":\"https://www.health.vic.gov.au/\",\"url\":\"https://www.health.vic.gov.au/\",\"icon\":\"icon-browser\",\"iconColour\":\"success\"},{\"text\":\"@shankarama\",\"url\":\"https://linkedin.com/shankar.ramakhumar.demo\",\"icon\":\"icon-linkedin\",\"iconColour\":\"information\"}]"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3fbccd3d-717c-4fe8-bd6f-02da34d2411e",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "ffe41312-55dc-42c6-9641-09acbf0dcd01",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Contact us default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

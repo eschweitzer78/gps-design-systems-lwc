@@ -1,0 +1,90 @@
+<template>
+  <form
+    name="sfgpsdsauvic2-searchbar"
+    class={computedClassName}
+    style={computedStyle}
+    onsubmit={handleFormSubmit}
+  >
+    <label class={computedLabelClassName} for="inputId"> {inputLabel} </label>
+
+    <div class="rpl-search-bar__inner">
+      <div
+        lwc:ref="containerRef"
+        class="rpl-search-bar__input-wrap"
+        onkeydown={handleContainerKeydown}
+      >
+        <!-- TODO: vbind, vmodel -->
+        <input
+          name="searchbox"
+          id="inputId"
+          lwc:ref="inputRef"
+          aria-owns="menuId"
+          autocomplete="off"
+          aria-autocomplete="list"
+          aria-expanded={isOpen}
+          placeholder={placeholder}
+          role="combobox"
+          class={computedInputClassName}
+          type="search"
+          value={_inputValue}
+          oninput={handleInputChange}
+          onfocus={handleInputFocus}
+          onkeydown={handleInputKeydown}
+        />
+
+        <template lwc:if={computedNoResults}>
+          <slot name="noresults">
+            <div class="rpl-search-bar__menu">
+              <span class="rpl-search-bar__menu-noresults"> No results </span>
+            </div>
+          </slot>
+        </template>
+
+        <div
+          lwc:if={computedHasResults}
+          id="menuId"
+          lwc:ref="menuRef"
+          class="rpl-search-bar__menu"
+          role="listbox"
+          tabindex="-1"
+        >
+          <template for:each={decoratedSuggestions} for:item="option">
+            <div
+              key={option.slug}
+              id={option.slug}
+              data-option-id={option.id}
+              role={option.role}
+              class={option.className}
+              tabindex="-1"
+              onkeydown={handleOptionKeydown}
+              onclick={handleOptionClick}
+            >
+              {option.label}
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <!-- was submit -->
+      <div class="rpl-search-bar__right">
+        <button
+          type="button"
+          aria-label="search"
+          class="rpl-search-bar-submit rpl-u-focusable-inline"
+        >
+          <span
+            lwc:if={submitLabel}
+            class="rpl-search-bar-submit__label rpl-type-label rpl-type-weight-bold"
+          >
+            {submitLabel}
+          </span>
+
+          <span class="rpl-search-bar-submit__icon">
+            <c-sf-gps-ds-au-vic2-icon name="icon-search" size="m">
+            </c-sf-gps-ds-au-vic2-icon>
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</template>

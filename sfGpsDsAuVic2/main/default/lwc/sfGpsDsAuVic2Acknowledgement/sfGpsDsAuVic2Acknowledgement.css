@@ -1,0 +1,11 @@
+/*
+  Original styling is 
+  .rpl-acknowledgement__flag + .rpl-acknowledgement__flag {
+    margin-left: var(--rpl-sp-2);
+  }
+  but LWCs generate one additional level of tags
+*/
+
+c-sf-gps-ds-au-vic2-image + c-sf-gps-ds-au-vic2-image {
+  margin-left: var(--rpl-sp-2);
+}

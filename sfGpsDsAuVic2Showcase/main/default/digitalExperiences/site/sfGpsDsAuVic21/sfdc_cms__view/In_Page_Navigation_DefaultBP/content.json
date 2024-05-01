@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-in-page-navigation-default-blueprint",
+    "component": {
+      "id": "a4a4c9d5-4045-4849-a425-4ec789efb50e",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "c1571e51-57c2-4a2c-8056-4a7fb4523e25",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "8288febe-6e82-4633-85cf-963334aac4f9",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"8288febe-6e82-4633-85cf-963334aac4f9\",\"columns\":[{\"UUID\":\"ec0a3127-5bc3-4571-bc58-d0aa750c723c\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "ec0a3127-5bc3-4571-bc58-d0aa750c723c",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "0891951c-39ff-4673-be6c-8d9aef3f7d19",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[{\"text\":\"Standard blueprint\",\"url\":\"#standard-blueprint\",\"items\":[{\"text\":\"Example\",\"url\":\"#standard-example\"},{\"text\":\"Configuration\",\"url\":\"#standard-configuration\"}]},{\"text\":\"Documentation\",\"url\":\"#documentation\"}]"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c9f7b543-7c9a-4e3b-9645-9d74856f27fa",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "1740de4a-f1c6-4a8b-8130-9d1ecc11a2c4",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "In-page navigation default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

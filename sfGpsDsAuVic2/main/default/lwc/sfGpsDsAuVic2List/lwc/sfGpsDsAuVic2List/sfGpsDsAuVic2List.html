@@ -1,0 +1,131 @@
+<template>
+  <ul lwc:if={computedIsUnordered} class={computedClassName} data-depth={depth}>
+    <template for:each={decoratedItems} for:item="item" for:index="index">
+      <li lwc:if={item.display} key={item.key} class={computedItemClassName}>
+        <template lwc:if={item.url}>
+          <c-sf-gps-ds-au-vic2-text-link
+            lwc:if={item.id}
+            id={item.id}
+            url={item.url}
+            class-name="rpl-list__link"
+            data-ndx={index}
+            onclick={handleClick}
+          >
+            <c-sf-gps-ds-au-vic2-list-content
+              icon-name={item.icon}
+              icon-colour={item.iconColour}
+              icon-placement={iconPlacement}
+              depth={depth}
+            >
+              {item.text}
+            </c-sf-gps-ds-au-vic2-list-content>
+          </c-sf-gps-ds-au-vic2-text-link>
+
+          <c-sf-gps-ds-au-vic2-text-link
+            lwc:else
+            url={item.url}
+            class-name="rpl-list__link"
+            data-ndx={index}
+            onclick={handleClick}
+          >
+            <c-sf-gps-ds-au-vic2-list-content
+              icon-name={item.icon}
+              icon-colour={item.iconColour}
+              icon-placement={iconPlacement}
+              depth={depth}
+            >
+              {item.text}
+            </c-sf-gps-ds-au-vic2-list-content>
+          </c-sf-gps-ds-au-vic2-text-link>
+        </template>
+
+        <c-sf-gps-ds-au-vic2-list-content
+          lwc:else
+          icon-name={item.icon}
+          icon-colour={item.iconColour}
+          icon-placement={iconPlacement}
+          depth={depth}
+        >
+          {item.text}
+        </c-sf-gps-ds-au-vic2-list-content>
+
+        <c-sf-gps-ds-au-vic2-list
+          lwc:if={item.items}
+          items={item.items}
+          item-class-name={itemClassName}
+          class-name="rpl-list__items--sub"
+          depth={computedDepthPlusOne}
+        >
+        </c-sf-gps-ds-au-vic2-list>
+      </li>
+    </template>
+  </ul>
+
+  <ol
+    lwc:elseif={computedIsOrdered}
+    class={computedClassName}
+    data-depth={depth}
+  >
+    <template for:each={decoratedItems} for:item="item" for:index="index">
+      <li lwc:if={item.display} key={item.key} class={computedItemClassName}>
+        <template lwc:if={item.url}>
+          <c-sf-gps-ds-au-vic2-text-link
+            lwc:if={item.displayId}
+            id={item.displayId}
+            url={item.url}
+            class-name="rpl-list__link"
+            data-ndx={index}
+            onclick={handleClick}
+          >
+            <c-sf-gps-ds-au-vic2-list-content
+              icon-name={item.icon}
+              icon-colour={item.iconColour}
+              icon-placement={iconPlacement}
+              depth={depth}
+            >
+              {item.text}
+            </c-sf-gps-ds-au-vic2-list-content>
+          </c-sf-gps-ds-au-vic2-text-link>
+
+          <c-sf-gps-ds-au-vic2-text-link
+            lwc:else
+            url={item.url}
+            class-name="rpl-list__link"
+            data-ndx={index}
+            onclick={handleClick}
+          >
+            <c-sf-gps-ds-au-vic2-list-content
+              icon-name={item.icon}
+              icon-colour={item.iconColour}
+              icon-placement={iconPlacement}
+              depth={depth}
+            >
+              {item.text}
+            </c-sf-gps-ds-au-vic2-list-content>
+          </c-sf-gps-ds-au-vic2-text-link>
+        </template>
+
+        <c-sf-gps-ds-au-vic2-list-content
+          lwc:else
+          icon-name={item.icon}
+          icon-colour={item.iconColour}
+          icon-placement={iconPlacement}
+          depth={depth}
+        >
+          {item.text}
+        </c-sf-gps-ds-au-vic2-list-content>
+
+        <c-sf-gps-ds-au-vic2-list
+          lwc:if={item.items}
+          items={item.items}
+          item-class-name={itemClassName}
+          class-name="rpl-list__items--sub"
+          depth={computedDepthPlusOne}
+        >
+        </c-sf-gps-ds-au-vic2-list>
+      </li>
+    </template>
+  </ol>
+
+  <c-sf-gps-ds-empty lwc:else> </c-sf-gps-ds-empty>
+</template>

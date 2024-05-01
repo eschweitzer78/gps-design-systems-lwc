@@ -1,0 +1,146 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-page-action-default-blueprint",
+    "component": {
+      "id": "80798b21-18bd-4fff-a492-24cf7b6ea08e",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "414eb2bd-e0a7-4a37-84f3-71002206e26d",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "c75fabe5-80c3-426b-9d1c-414c0c577a39",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"c75fabe5-80c3-426b-9d1c-414c0c577a39\",\"columns\":[{\"UUID\":\"ff71b559-5b9d-4a87-af9b-a4ae4dfb3c70\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "ff71b559-5b9d-4a87-af9b-a4ae4dfb3c70",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "b848d89b-ebcc-4fb1-8f99-7b978be68f3b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2PageActionLwr",
+                      "attributes": {},
+                      "children": [
+                        {
+                          "id": "14f67609-98d8-480e-9ed2-65f43f725b9b",
+                          "type": "region",
+                          "name": "Upper",
+                          "title": "Upper",
+                          "children": [
+                            {
+                              "id": "afe1a4d1-f0d6-45ac-974e-14043c244f58",
+                              "type": "component",
+                              "definition": "c:sfGpsDsAuVic2DocumentComm",
+                              "attributes": {
+                                "icon": "{\"name\":\"icon-print-lined\",\"colour\":\"information\",\"size\":\"l\"}",
+                                "name": "[Print document](#)"
+                              },
+                              "children": [
+                                {
+                                  "id": "a7ac35ef-b583-4a4a-aefb-4a6dba2c37e6",
+                                  "name": "Icon",
+                                  "title": "Icon",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "14976f72-483b-46cd-9af4-24d330f8d531",
+                                  "name": "Info",
+                                  "title": "Info",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "184d9430-f506-4c4c-9188-0f090e450449",
+                                  "name": "Caption",
+                                  "title": "Caption",
+                                  "type": "region"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "id": "ebb6f272-d538-4823-b000-2de76a9ec579",
+                          "type": "region",
+                          "name": "Content",
+                          "title": "Content",
+                          "children": [
+                            {
+                              "attributes": {
+                                "caption": "",
+                                "extension": "pdf",
+                                "name": "[Some document](#)",
+                                "size": "1.5MB"
+                              },
+                              "children": [
+                                {
+                                  "id": "c707bb22-cefb-4640-ab98-bd59da6f116f",
+                                  "name": "Caption",
+                                  "title": "Caption",
+                                  "type": "region"
+                                }
+                              ],
+                              "definition": "c:sfGpsDsAuVic2FileComm",
+                              "id": "333524db-8b3c-48ff-ae20-58cb5089eeda",
+                              "type": "component"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0285335e-8224-42c9-9a40-55237bc60220",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "f1304121-2545-404d-958b-4c016f214ab4",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Page action default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

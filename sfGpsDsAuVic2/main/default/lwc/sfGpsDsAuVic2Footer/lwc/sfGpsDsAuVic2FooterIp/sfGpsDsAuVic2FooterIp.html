@@ -1,0 +1,25 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <c-sf-gps-ds-spinner lwc:if={_isLoading}> </c-sf-gps-ds-spinner>
+
+    <c-sf-gps-ds-au-vic2-footer
+      variant={variant}
+      nav={nav}
+      links={_items}
+      logos={logos}
+      credit={credit}
+      acknowledgement={acknowledgement}
+      copyright={copyright}
+      class-name={classsName}
+      onlinksnavigate={handleLinksNavigate}
+      onnavnavigate={handleNavNavigate}
+    >
+    </c-sf-gps-ds-au-vic2-footer>
+  </template>
+</template>

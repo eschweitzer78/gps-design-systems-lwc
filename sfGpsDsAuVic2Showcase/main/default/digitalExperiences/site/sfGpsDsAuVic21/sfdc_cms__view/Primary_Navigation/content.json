@@ -1,0 +1,307 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Primary navigation",
+  "contentBody": {
+    "viewType": "custom-primary-navigation",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "a1cb2d05-470a-441a-ae25-665c3e2d1a8a",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "fcf63a34-cf55-4240-a8bd-a73405421e1c",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "8f305b06-cc73-450f-bbdf-f518b61b192a",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"8f305b06-cc73-450f-bbdf-f518b61b192a\",\"columns\":[{\"UUID\":\"b85164d5-985f-406f-8dc6-5c10639ce7e6\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "b85164d5-985f-406f-8dc6-5c10639ce7e6",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "f03cdaba-7304-4535-b2ee-8dc6bcc1db48",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Primary navigation",
+                        "description": "The Primary navigation component appears as a menu sitting at the top of the page and contains links to site’s content pages"
+                      }
+                    },
+                    {
+                      "id": "9096c868-ad15-4072-bf4b-a687de6d91e8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "bb76d8e8-8a11-405b-b753-dc6fdbfe1a62",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"IP blueprint\",\n\t\t\"url\": \"#ip-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#ip-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#ip-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Secondary logo blueprint\",\n\t\t\"url\": \"#secondary-logo-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#secondary-logo-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#secondary-logo-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Show search attribute\",\n\t\t\"url\": \"#show-search-attr\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#show-search-attr-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#show-search-attr-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Show quick exit attribute\",\n\t\t\"url\": \"#show-quick-exit-attr\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#show-quick-exit-attr-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#show-quick-exit-attr-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "ccff0093-a144-4d05-9d74-24c4470c4db2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Use primary navigation to help users get to where they need to go. It shows links to key areas of the website and guides users to the content they are looking for. The main way users journey through your site should be through primary navigation.</p><p>Use primary navigation to let users identify where they are. It helps users know their current page location within the overall site.</p><p>The primary navigation contains:</p><ul><li>a site logo,</li><li>navigation links,</li><li>optional search links.</li></ul><p>Vertical navigation is best placed next to your page’s body content, e.g. using the sidebar theme layout.</p><p>The navigation and search links expand to either a fullscreen menu or search bar.</p><p>The primary navigation always sits at the top of the page. It displays above all page content and components. Use the <code>sfGpsDsAuVic2PrimaryNavComm</code> component which appears as <code>VIC2 DS Primary Navigation</code> in the Experience Builder component list, and place it in the header section when using the default theme layout.</p>"
+                      }
+                    },
+                    {
+                      "id": "42baae74-59a2-4187-bcb6-2626509027c7",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>The standard blueprint is suited to retrieve navigation details from an Experience Cloud navigation that has been setup in Experience Builder.</p><p>Note that this creates limitations as those navigations cannot have more than one level of nesting, and parent items cannot have a target URL (they are Menu Labels only &mdash; manually add a further child entry with the same label and your desired URL).</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "39f772ab-3c91-4b46-88c8-5e36e4425198",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "This is not a Government of Victoria website and the example below uses the government logo for illustration purposes only."
+                      }
+                    },
+                    {
+                      "id": "4b31c378-a5b8-4646-bdf9-e1fbc3fa7ffe",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./primary-navigation/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "61c223d8-e0fc-4eac-95a6-aedaa2f51d12",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t\t<td>Mode</td>\n\t\t\t\t\t<td><code>Experience Cloud Navigation</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>navigationDevName</code></td>\n\t\t\t\t\t<td>Navigation name</td>\n\t\t\t\t\t<td><code>VIC2 Primary Nav Default BP Example</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "3c553694-a9c4-4c4a-abbd-418e46331606",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"ip-blueprint\">IP blueprint</h2>\n\n\t<p>The IP blueprint gets the navigation details from an Integration Procedure. This allows to overcome some limitations</p><p>Note that this creates limitations as those navigations cannot have more than one level of nesting, and parent items cannot have a target URL (they are Menu Labels only &mdash; manually add a further child entry with the same label and your desired URL).</p>\n\n\t<h3 id=\"ip-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "7c1b9340-7c7d-49b9-b50b-733b425ab4cd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "This is not a Government of Victoria website and the example below uses the government logo for illustration purposes only."
+                      }
+                    },
+                    {
+                      "id": "2211a7a6-c12e-4e97-b840-3f39d54a8b51",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./primary-navigation/ip-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "18068b4c-39e7-4304-8681-d41e66de3501",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"ip-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t\t<td>Mode</td>\n\t\t\t\t\t<td><code>Integration Procedure</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>ipName</code></td>\n\t\t\t\t\t<td>Integration procedure name</td>\n\t\t\t\t\t<td>\"sfGpsDsAuVic_HierarchicalMenuSample\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>inputJSON</code></td>\n\t\t\t\t\t<td>Input JSON</td>\n\t\t\t\t\t<td>\"{}\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>optionsJSON</code></td>\n\t\t\t\t\t<td>Options JSON</td>\n\t\t\t\t\t<td>\"{}\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "a07dd99b-9702-44f5-88ee-f42430dbb39a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"secondary-logo-blueprint\">Secondary logo blueprint</h2>\n\n\t<p>The secondary logo lets a government department add their own visual identity next to the Government of Victoria logo.</p>\n\n\t<h3 id=\"secondary-logo-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "6c298b04-eeec-4663-9bac-54ef9b7f8e53",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "This is not a Government of Victoria website and the example below uses the government logo for illustration purposes only."
+                      }
+                    },
+                    {
+                      "id": "8b3886df-c1a4-4103-9605-d71dd7954597",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./primary-navigation/secondary-logo-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "34272670-26aa-4c45-a04a-b66fdadc3cd8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"secondary-logo-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t\t<td>Mode</td>\n\t\t\t\t\t<td><code>Integration Procedure</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>ipName</code></td>\n\t\t\t\t\t<td>Integration procedure name</td>\n\t\t\t\t\t<td>\"sfGpsDsAuVic_HierarchicalMenuSample\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>inputJSON</code></td>\n\t\t\t\t\t<td>Input JSON</td>\n\t\t\t\t\t<td>\"{}\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>optionsJSON</code></td>\n\t\t\t\t\t<td>Options JSON</td>\n\t\t\t\t\t<td>\"{}\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>secondaryLogo</code></td>\n\t\t\t\t\t<td>Secondary logo</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"href\": \"#\",<br/>  \"src\": \"/sfsites/c/resource/sfGpsDsAuVic2_showcase/logos/primary-nav-logo-secondary.svg\",<br/>  \"altText\": \"Secondary logo alt text\",<br/>  \"printSrc\": \"/sfsites/c/resource/sfGpsDsAuVic2_showcase/logos/primary-nav-logo-secondary-print.svg\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "165f22a9-3df8-40c6-908c-cb6cbc146a30",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"show-search-attr\">Show search attribute</h2>\n\n\t<p>The show search attribute lets you display a search bar to provide users the option to perform a site search.</p>\n\n\t<h3 id=\"show-search-attr-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "2cd13abc-ee78-4820-82cb-d654d21d13c5",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "This is not a Government of Victoria website and the example below uses the government logo for illustration purposes only."
+                      }
+                    },
+                    {
+                      "id": "0efb5d82-25d7-45d3-9856-80e2cc98d2a0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./primary-navigation/show-search-attr",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "d396d4b4-362d-4cbd-b4ff-45528cfa2ae5",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"show-search-attr-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t\t<td>Mode</td>\n\t\t\t\t\t<td><code>Integration Procedure</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>ipName</code></td>\n\t\t\t\t\t<td>Integration procedure name</td>\n\t\t\t\t\t<td>\"sfGpsDsAuVic_HierarchicalMenuSample\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>inputJSON</code></td>\n\t\t\t\t\t<td>Input JSON</td>\n\t\t\t\t\t<td>\"{}\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>optionsJSON</code></td>\n\t\t\t\t\t<td>Options JSON</td>\n\t\t\t\t\t<td>\"{}\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>showSearch</code></td>\n\t\t\t\t\t<td>Show quick exit</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "6165baff-1468-4cd3-ad2b-9ca31882a003",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"show-quick-exit-attr\">Show quick exit attribute</h2>\n\n\t<p>The Show quick exit attribute lets you display a quick exit button aimed at helping users hide their activity on a government website by redirecting them to specified web page and removing the current page from the browser's history.</p>\n\n\t<h3 id=\"show-quick-exit-attr-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "b6b73e04-9175-4763-93ca-e3e7f6295ca3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "This is not a Government of Victoria website and the example below uses the government logo for illustration purposes only."
+                      }
+                    },
+                    {
+                      "id": "57f7a0b6-cc14-439a-b367-86b19c119235",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./primary-navigation/show-quick-exit-attr",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "712f682d-2a5a-49c6-a852-69938eab041f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"show-quick-exit-attr-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t\t<td>Mode</td>\n\t\t\t\t\t<td><code>Integration Procedure</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>ipName</code></td>\n\t\t\t\t\t<td>Integration procedure name</td>\n\t\t\t\t\t<td>\"sfGpsDsAuVic_HierarchicalMenuSample\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>inputJSON</code></td>\n\t\t\t\t\t<td>Input JSON</td>\n\t\t\t\t\t<td>\"{}\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>optionsJSON</code></td>\n\t\t\t\t\t<td>Options JSON</td>\n\t\t\t\t\t<td>\"{}\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>showQuickExit</code></td>\n\t\t\t\t\t<td>Show quick exit</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "4dda9d17-c18a-4dbf-b502-4c379b73ab3b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t<td>Mode</td>\n\t\t\t\t<td>Sets how details of the footer nav are read with a choice of <code>Demo</code>, <code>Experience Cloud Navigation</code>, <code>Integration Procedure</code> and <code>Hide</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>navigationDevName</code></td>\n\t\t\t\t<td>Navigation name</td>\n\t\t\t\t<td>Pick the target Experience Cloud navigation for the footer nav when <code>mode</code> is set to <code>Experience Cloud Navigation</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>ipName</code></td>\n\t\t\t\t<td>Integration procedure name</td>\n\t\t\t\t<td>Name of the IP to invoke for getting the nav when <code>mode</code> is set to <code>Integration Procedure</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>inputJSON</code></td>\n\t\t\t\t<td>Input JSON</td>\n\t\t\t\t<td>JSON formatted input parameters for the nav Integration Procedure.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>optionsJSON</code></td>\n\t\t\t\t<td>Options JSON</td>\n\t\t\t\t<td>JSON formatted options for the nav Integration Procedure.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>primaryLogo</code></td>\n\t\t\t\t<td>Primary Logo</td>\n\t\t\t\t<td>A JSON object formatted as { src, alt, url }. Leave src empty to get standard logo, and url empty to target community home.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>secondaryLogo</code></td>\n\t\t\t\t<td>Secondary Logo</td>\n\t\t\t\t<td>A JSON object formatted as { src, alt, url }. Leave empty if a secondary logo is not required.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>showSearch</code></td>\n\t\t\t\t<td>Show search</td>\n\t\t\t\t<td>Set to show an input field for users to initiate a search.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>showQuickExit</code></td>\n\t\t\t\t<td>Show quick exit</td>\n\t\t\t\t<td>Set to show the quick exit button.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS class to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1cd97817-1805-42f1-85f2-9ca7abd06bec",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "3278d590-7501-49b2-bf04-a9e0cae28ef0",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

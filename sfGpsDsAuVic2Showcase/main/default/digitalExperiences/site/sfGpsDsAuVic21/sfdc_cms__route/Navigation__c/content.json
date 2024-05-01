@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Navigation",
+  "contentBody": {
+    "activeViewId": "Navigation",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-navigation",
+    "urlPrefix": "navigation"
+  }
+}

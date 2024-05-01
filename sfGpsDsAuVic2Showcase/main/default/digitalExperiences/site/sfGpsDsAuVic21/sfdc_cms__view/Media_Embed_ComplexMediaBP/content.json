@@ -1,0 +1,93 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Complex media blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-media-embed-complex-media-blueprint",
+    "component": {
+      "id": "ee15a325-ad0f-439e-8574-25639b62cea4",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "61755b1a-4d73-462a-823b-48538ed220a8",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "c872799d-a7cc-4a75-9151-4c1e7497920f",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"c872799d-a7cc-4a75-9151-4c1e7497920f\",\"columns\":[{\"UUID\":\"1b714c76-bcfc-4af3-aef9-128aea2ccf0f\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "1b714c76-bcfc-4af3-aef9-128aea2ccf0f",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "71cb5c30-3765-4c17-b1bf-9f9a040cf4df",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2MediaEmbedComm",
+                      "attributes": {
+                        "type": "image",
+                        "variant": "complex",
+                        "size": "large",
+                        "title": "Southern Victoria",
+                        "showTitle": true,
+                        "src": "https://images.unsplash.com/photo-1642636494867-36193b3f7df6?q=80&w=1460&auto=format&fit=crop&ixlib=rb-4.0.3",
+                        "caption": "Phillip Island, Victoria, Australia",
+                        "srcCaption": "Photo courtesy of Zac Porter.",
+                        "allowFullscreen": true,
+                        "dSlot": true,
+                        "dContent": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo est eu   venenatis tincidunt. Sed sit amet magna tortor. Nullam gravida, nibh a tincidunt tempor.</p><p>Nulla mauris turpis, mollis et fermentum in, tincidunt vitae enim. Aenean gravida, mi a pharetra tempor.</p>",
+                        "downloadUrl": "https://unsplash.com/photos/iLr7JABLWPo/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzEyNjU4NTkwfA&force=true"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2b2a6883-6e6b-4fe8-8ed9-fee2a5f5f1d7",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "5d7125e0-0b02-443c-b7a6-58b16bab4809",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Media embed complex media blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

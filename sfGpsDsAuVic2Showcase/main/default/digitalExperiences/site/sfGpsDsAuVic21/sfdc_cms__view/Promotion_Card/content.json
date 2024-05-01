@@ -1,0 +1,232 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Promotion card",
+  "contentBody": {
+    "viewType": "custom-promotion-card",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "f41a801e-62f0-4956-a5c9-abd530f73a0c",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "99ba1703-027b-4a7e-a2c2-f1b084d5b148",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "d8494883-6f0a-4951-be32-3e7711813c45",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"d8494883-6f0a-4951-be32-3e7711813c45\",\"columns\":[{\"UUID\":\"f855920a-1d12-40a7-bfae-070687ae940c\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "f855920a-1d12-40a7-bfae-070687ae940c",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "f3df5200-9dbf-4b76-8413-ce95fe442e68",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Promotion card",
+                        "description": "The Promotion card component is used to highlight a piece of important content."
+                      }
+                    },
+                    {
+                      "id": "9e3a65f1-53ee-4829-8009-74a8ab1608af",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "79f98984-cb29-498a-9672-592540461171",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Highlight blueprint\",\n\t\t\"url\": \"#highlight-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#highlight-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#highlight-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Image full bleed blueprint\",\n\t\t\"url\": \"#image-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#image-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#image-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Avatar blueprint\",\n\t\t\"url\": \"#avatar-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#avatar-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#avatar-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "6bd1cb6d-d3fc-44c0-889b-05a6bb709248",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>The Promotion card component is used to highlight a piece of important content and provides an eye-catching way to drive the user to other pages on your site or external sites.</p><p>It features four blueprints</p><ul><li>default or standard,</li><li>highlight,</li><li>image full bleed,</li><li> and avatar.</li></ul>"
+                      }
+                    },
+                    {
+                      "id": "298f3e86-c8b6-45cc-b2b9-0b2c60c6145a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>This blueprint features the card in its simplest expression.</p><p>Use the <code>sfGpsDsAuVic2CardPromoComm</code> component, which appears as <code>VIC2 DS Card (Promotion)</code> in the Experience Builder component list.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "7d7ae1ad-e926-4246-85eb-46a33c1b40fb",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./promotion-card/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "003a1946-2077-425b-9778-0d9dedf38376",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Protected grasslands under threat](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"The natural temperate grassland and the grassy eucalypt woodlands of the Victorian volcanic plain are two of Australia&amp;rsquo;s most endangered ecosystems.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>topic</code></td>\n\t\t\t\t\t<td>Topic</td>\n\t\t\t\t\t<td>\"Environment\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "666214b3-7941-468c-a343-595f9fea83d3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"highlight-blueprint\">Highlight blueprint</h2>\n\n\t<p>This blueprint gives the card more visual prominence.</p><p>Use the <code>sfGpsDsAuVic2CardPromoComm</code> component, which appears as <code>VIC2 DS Card (Promotion)</code> in the Experience Builder component list.</p>\n\n\t<h3 id=\"highlight-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "2d740493-ebff-4627-8b23-620c1ecb9a75",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./promotion-card/highlight-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "66e6caa5-9128-431d-aa34-b74f9109e439",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"highlight-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Protected grasslands under threat](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"The natural temperate grassland and the grassy eucalypt woodlands of the Victorian volcanic plain are two of Australia&amp;rsquo;s most endangered ecosystems.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>topic</code></td>\n\t\t\t\t\t<td>Topic</td>\n\t\t\t\t\t<td>\"Environment\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>highlight</code></td>\n\t\t\t\t\t<td>Highlight</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "fbf9d54b-75c4-4af3-8180-4cc7c957787f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"image-blueprint\">Image full bleed blueprint</h2>\n\n\t<p>This blueprint gives the option to add a relevant image to attract attention.</p><p>Use the <code>sfGpsDsAuVic2CardPromoComm</code> component, which appears as <code>VIC2 DS Card (Promotion)</code> in the Experience Builder component list.</p>\n\n\t<h3 id=\"image-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "47dfcc37-1ed8-40e0-ab8a-9a1626068ff4",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./promotion-card/image-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "8a7d0930-6868-4dd5-96e6-ad275e2da16d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"image-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Protected grasslands under threat](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"The natural temperate grassland and the grassy eucalypt woodlands of the Victorian volcanic plain are two of Australia&amp;rsquo;s most endangered ecosystems.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>topic</code></td>\n\t\t\t\t\t<td>Topic</td>\n\t\t\t\t\t<td>\"Environment\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1666399484215-b2b6a20124f3?q=80&amp;w=865&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"Wallaby in the Victorian grassland\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "3a2836ac-114a-40df-9331-a36ef729a1c8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"avatar-blueprint\">Avatar blueprint</h2>\n\n\t<p>The avatar promotion blueprint focuses on a person’s profile.</p><p>Use the <code>sfGpsDsAuVic2CardAvatarComm</code> component, which appears as <code>VIC2 DS Card (Avatar)</code> in the Experience Builder component list.</p>\n\n\t<h3 id=\"avatar-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "51259721-a58a-492e-9a01-e3105d235333",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./promotion-card/avatar-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "0114c5b2-0190-4aeb-bb6f-abb4b8729079",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"avatar-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Dame Quentin Bryce](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Dame Quentin Bryce is an Australian academic who served as the 25th governor-general of Australia from 2008 to 2014. She is the first and to date only woman to have held the position, and was previously the 24th Governor of Queensland from 2003 to 2008.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>tagLabel</code></td>\n\t\t\t\t\t<td>Tag label</td>\n\t\t\t\t\t<td>\"Profile\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>tagVariant</code></td>\n\t\t\t\t\t<td>Tag variant</td>\n\t\t\t\t\t<td><code>neutral</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://upload.wikimedia.org/wikipedia/commons/f/fa/Quentin_Bryce_No.1_%28cropped%29.jpg\",<br/>  \"alt\": \"Dame Quentin Bryce portrait\",<br/>  \"width\": 148,<br/>  \"height\": 148,<br/>  \"focalPoint\": {<br/>    \"x\": 74,<br/>    \"y\": 0<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "babfbf81-74c1-474d-a508-f8654bc79ead",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Title and target URL in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown link format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>content</code></td>\n\t\t\t\t<td>Content</td>\n\t\t\t\t<td>Provides further details where the title alone may not be sufficient - in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>topic</code></td>\n\t\t\t\t<td>Topic</td>\n\t\t\t\t<td>For promo cards, the topic of the card.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>highlight</code></td>\n\t\t\t\t<td>Title highlight</td>\n\t\t\t\t<td>For promo cards, set when a colour highlight is desired on top of the card.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>tagLabel</code></td>\n\t\t\t\t<td>Tag label</td>\n\t\t\t\t<td>For avatar cards, the label used for the tag.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>tagVariant</code></td>\n\t\t\t\t<td>Tag variant</td>\n\t\t\t\t<td>For avatar cards, the variant of the tag.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>image</code></td>\n\t\t\t\t<td>Image</td>\n\t\t\t\t<td>Configuration of the image. Refer to the <a href=\"./page-content/image#documentation\">image documentation</a> for further detail.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a0ae7d10-0e07-40f3-8118-7c41d9a6f28e",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "4e909699-5a33-4f17-ad41-f422979837b4",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

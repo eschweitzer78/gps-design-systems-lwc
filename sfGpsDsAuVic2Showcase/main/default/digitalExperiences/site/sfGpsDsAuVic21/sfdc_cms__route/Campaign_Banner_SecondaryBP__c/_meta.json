@@ -1,0 +1,6 @@
+{
+  "apiName": "Campaign_Banner_SecondaryBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Campaign_Banner__c",
+  "path": "routes"
+}

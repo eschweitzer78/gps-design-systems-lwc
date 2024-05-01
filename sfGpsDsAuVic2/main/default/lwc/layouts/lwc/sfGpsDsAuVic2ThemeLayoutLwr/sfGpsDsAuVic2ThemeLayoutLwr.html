@@ -1,0 +1,13 @@
+<template lwc:render-mode="light">
+  <div lwc:ref="container" class={containerClassName}>
+    <div data-f6-region class={headerClassName}>
+      <slot name="header"></slot>
+    </div>
+    <main id="content" data-f6-region class={mainClassName}>
+      <slot></slot>
+    </main>
+    <footer data-f6-region class={footerClassName}>
+      <slot name="footer"></slot>
+    </footer>
+  </div>
+</template>

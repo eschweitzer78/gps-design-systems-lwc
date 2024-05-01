@@ -1,0 +1,241 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Header",
+  "contentBody": {
+    "viewType": "custom-header",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "7319a9c3-dfcd-4951-9d3f-2add3df14f48",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "efe391cf-1f87-4d47-b631-d5d2ed51f247",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "5234b4ca-b4e1-4689-aeee-782a09044055",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"5234b4ca-b4e1-4689-aeee-782a09044055\",\"columns\":[{\"UUID\":\"cf3bd472-5ab9-47b2-98a5-8f321efa725f\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "cf3bd472-5ab9-47b2-98a5-8f321efa725f",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "82a4de95-ac64-4793-8a6a-d303a64c56cb",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Header",
+                        "description": "The Header component introduces the purpose and content of a page."
+                      }
+                    },
+                    {
+                      "id": "ccb3c81f-5ac5-49e6-b65d-f3851157cdda",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "f2b352cd-7a31-4861-b589-b698cf5392eb",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#default-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Reverse blueprint\",\n\t\t\"url\": \"#reverse-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#reverse-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#reverse-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Image blueprint\",\n\t\t\"url\": \"#image-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#image-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#image-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Introduction blueprint\",\n\t\t\"url\": \"#introduction-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#introduction-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#introduction-blueprint-configuration\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "041db812-0417-4591-86db-03706388856c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use headers to inform the user of what is on the page. The header must be placed at the top of a page above the main body content and styled as an H1-level heading.</p><p>Headers include optional content such as introduction text, journey links, a call to action and an introduction banner.</p><p>Headers should feature a primary message and/or call to action. They can be accompanied by supporting content such as images or corner graphics.</p><p>The header can also support a campaign logo if required. This will display above the page title.</p>"
+                      }
+                    },
+                    {
+                      "id": "bdcec077-ac68-47fc-aa92-9b6a04d4e6f0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>The sample below illustrates the default blueprint with the optional use of primary and secondary options. These are also available in the next blueprints.</p><p>The <code>sfGpsDsAuVic2HeroHeaderComm</code> LWC can be found as <code>VIC2 DS Header (Hero)</code> in the Experience Builder component palette.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "8c665042-f03d-4163-8390-6038ca77a695",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./header/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "226fd7ca-116f-4e25-82e2-ac8f0f00f4af",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Find, connect, shape your Victoria\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Access grants and services, find out what's on in Victoria and have your say on government decisions.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>primaryAction</code></td>\n\t\t\t\t\t<td>Primary action</td>\n\t\t\t\t\t<td>\"[Primary action](#primary)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>secondaryActionTitle</code></td>\n\t\t\t\t\t<td>Secondary action title</td>\n\t\t\t\t\t<td>\"Want to know more\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>secondaryAction</code></td>\n\t\t\t\t\t<td>Secondary action</td>\n\t\t\t\t\t<td>\"[Secondary action](#secondary)\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "672fc9aa-a956-4af9-9cbc-b68fd617c398",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"reverse-blueprint\">Reverse blueprint</h2>\n\n\t<p>The reverse blueprint uses a reversed block type background for the title and header content text. This adds visual prominence to the header and its information.</p><p>In the example below, we illustrate the use of a list of links on the right hand side.<p>The <code>sfGpsDsAuVic2HeroHeaderComm</code> LWC can be found as <code>VIC2 DS Header (Hero)</code> in the Experience Builder component palette.</p>\n\n\t<h3 id=\"reverse-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "b385cba5-4b60-48dc-9655-4021512ff2a6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./header/reverse-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "b33e6e4e-5c90-422b-b65d-f8e7b780608c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"reverse-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Find, connect, shape your Victoria\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Access grants and services, find out what's on in Victoria and have your say on government decisions.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td>\"reverse\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>linksTitle</code></td>\n\t\t\t\t\t<td>Links title</td>\n\t\t\t\t\t<td>\"Want to know more\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>links</code></td>\n\t\t\t\t\t<td>Links</td>\n\t\t\t\t\t<td>\"[First link](#first)[Second link](#second)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>linksMore</code></td>\n\t\t\t\t\t<td>Links more</td>\n\t\t\t\t\t<td>\"[All links](#all)\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "bb09e0ad-7166-4620-84f7-8030c30d952e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"image-blueprint\">Image blueprint</h2>\n\n\t<p>An image can be added as a full background image. In that setup, the title and header content will always display as a reversed blocked type. Pick an image that is not stretched or too low in resolution and be aware of the height clipping. Avoid pictures that are overly complex of contain text.</p><p>The <code>sfGpsDsAuVic2HeroHeaderComm</code> LWC can be found as <code>VIC2 DS Header (Hero)</code> in the Experience Builder component palette.</p>\n\n\t<h3 id=\"image-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "7b21ec64-983b-4972-a3f7-42caffa01b06",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "Photo courtesy of [Urlaubstracker](http://urlaubstracker.de/)."
+                      }
+                    },
+                    {
+                      "id": "dd6e5d2a-42c0-42c2-a883-3519be2e9b91",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./header/image-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "d0719caa-7e72-4a0c-b872-ec10dee3ad17",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"image-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Find, connect, shape your Victoria\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Access grants and services, find out what's on in Victoria and have your say on government decisions.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td>\"reverse\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>cornerTop</code></td>\n\t\t\t\t\t<td>Corner top</td>\n\t\t\t\t\t<td>\"false\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>cornerBottom</code></td>\n\t\t\t\t\t<td>Corner bottom</td>\n\t\t\t\t\t<td>\"false\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>background</code></td>\n\t\t\t\t\t<td>Background</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1595434971780-79d5c20c5090?q=80&amp;w=806&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"Melbourne morning with a couple of hot air balloons in the background\",<br/>  \"srcSet\": \"https://images.unsplash.com/photo-1595434971780-79d5c20c5090?q=80&amp;w=1209&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3 640w, https://images.unsplash.com/photo-1595434971780-79d5c20c5090?q=80&amp;w=1612&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3 1200w, https://images.unsplash.com/photo-1595434971780-79d5c20c5090?q=80&amp;w=4032&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3 1600w\",<br/>  \"sizes\": \"(min-width: 640px) 640pxm (min-width: 1200px) 1200px, (min-width: 1600px) 1600px\",<br/>  \"width\": \"4032\",<br/>  \"height\": \"2268\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "4c7c17df-af2c-4e66-b918-b9fb09097d62",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"introduction-blueprint\">Introduction blueprint</h2>\n\n\t<p>The introduction header can be used to add content and journey links under the page title and introduction section in the main header banner area. It has an optional icon and should contain content related to that of the main header.</p><p>The <code>sfGpsDsAuVic2IntroHeaderComm</code> LWC can be found as <code>VIC2 DS Header (Intro)</code> in the Experience Builder component palette.</p>\n\n\t<h3 id=\"introduction-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "f201f26e-cb87-4090-b4b6-013a282158ca",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./header/introduction-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "30e8b080-9845-48ac-911f-67a7e083494e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"introduction-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t\t<td>Icon name</td>\n\t\t\t\t\t<td>\"icon-information-circle-filled\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"The intro title\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"In do dolore dolore sint ipsum est est, commodo ex laborum Lorem ut deserunt dolore ullamco.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>linksTitle</code></td>\n\t\t\t\t\t<td>Links title</td>\n\t\t\t\t\t<td>\"Want to know more\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>links</code></td>\n\t\t\t\t\t<td>Links</td>\n\t\t\t\t\t<td>\"[First link](#first)[Second link](#second)[A third link](#third)\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "bd85d078-adbf-46fe-897a-c80a1cc00e2e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Clearly identifies the primary purpose or action of the page and acts as a call to action for the user.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>content</code></td>\n\t\t\t\t<td>Content</td>\n\t\t\t\t<td>Provides further details when title alone may not be sufficient.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "8c1ea082-cf64-4364-bd42-93fa98747e6f",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "652c944e-9f63-41f1-a3ec-029ebd7b7e37",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

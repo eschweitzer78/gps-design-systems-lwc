@@ -1,0 +1,32 @@
+<template>
+  <template lwc:if={item}>
+    <button
+      lwc:if={isToggleType}
+      lwc:ref="action"
+      class={computedClassName}
+      onclick={handleClick}
+      onkeydown={handleKeydown}
+    >
+      <span class="rpl-primary-nav__mega-menu-action-text">{item.text}</span>
+      <span class="rpl-primary-nav__mega-menu-action-icon rpl-u-margin-l-5">
+        <c-sf-gps-ds-au-vic2-icon name="icon-chevron-right" size="xs">
+        </c-sf-gps-ds-au-vic2-icon>
+      </span>
+    </button>
+
+    <c-sf-gps-ds-au-vic2-link
+      lwc:else
+      lwc:ref="action"
+      class-name={computedClassName}
+      url={item.url}
+      prevent-default="true"
+      onclick={handleClick}
+      onkeydown={handleKeydown}
+    >
+      <span class="rpl-primary-nav__mega-menu-action-text">{item.text}</span>
+      <span
+        class="rpl-primary-nav__mega-menu-action-icon rpl-u-margin-l-5"
+      ></span>
+    </c-sf-gps-ds-au-vic2-link>
+  </template>
+</template>

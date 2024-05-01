@@ -1,0 +1,84 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Copyright",
+  "contentBody": {
+    "viewType": "custom-copyright",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "148b37fa-42ce-4da0-a630-77a01da14b32",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "20bee4b6-ecd9-4263-a690-d0005f3244c5",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "9a13a8c3-c93e-4ceb-ae9d-9ebd5049edcb",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"9a13a8c3-c93e-4ceb-ae9d-9ebd5049edcb\",\"columns\":[{\"UUID\":\"1753455a-8185-4a6e-9594-3f2adf1eb2df\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "1753455a-8185-4a6e-9594-3f2adf1eb2df",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "cd9c2425-6251-424c-be23-bad48105c053",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Copyright",
+                        "description": "Some stuff on copyright."
+                      }
+                    },
+                    {
+                      "id": "4a8f56a2-0e9c-4e46-84a6-353361f0b3b9",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Blah blah blah</p>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e8822240-54dd-4d8c-b6c4-c23e2846f0cd",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "caccb975-2327-4afb-9389-337d6485c444",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

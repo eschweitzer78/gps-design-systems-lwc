@@ -1,0 +1,82 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-image-default-blueprint",
+    "component": {
+      "id": "9ef8ede0-c50f-491e-a6f6-d530ac5e640d",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "8e339fbf-5d07-40d7-a0c2-5361699b6fdc",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "b11aeb64-b4a2-41ba-84eb-6d3e8a484c70",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"b11aeb64-b4a2-41ba-84eb-6d3e8a484c70\",\"columns\":[{\"UUID\":\"e3e9587f-6b67-4f1d-9242-3506d5bda9de\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "e3e9587f-6b67-4f1d-9242-3506d5bda9de",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "1dcb5dc5-a450-45f2-9426-333e7ab2465c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"circle\":false,\"fit\":\"cover\",\"priority\":\"auto\"}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "62c9b6b9-c994-4988-a3bf-f03bf11c520d",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "7e4c27e7-3930-4dd9-9e20-17fd033cf26a",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Image default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

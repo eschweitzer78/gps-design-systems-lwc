@@ -1,0 +1,6 @@
+{
+  "apiName": "Page_Action_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Page_Action__c",
+  "path": "routes"
+}

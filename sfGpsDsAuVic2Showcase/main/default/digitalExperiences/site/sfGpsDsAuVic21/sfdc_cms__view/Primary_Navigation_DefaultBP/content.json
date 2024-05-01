@@ -1,0 +1,75 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-primary-navigation-default-blueprint",
+    "component": {
+      "id": "61377468-fedd-408f-a6cb-eff4fe76886e",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "36c48541-cef5-4354-9e5d-d027eddeae9a",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "08031d88-0a1c-4e2f-aaf0-6e1f8facbd82",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"08031d88-0a1c-4e2f-aaf0-6e1f8facbd82\",\"columns\":[{\"UUID\":\"3c53ec9e-b2ce-42a8-babf-aa7cb00cb6a6\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "3c53ec9e-b2ce-42a8-babf-aa7cb00cb6a6",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "4a92f464-8246-43a8-96fc-f73e90fbb806",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2PrimaryNavComm",
+                      "attributes": {
+                        "mode": "Experience Cloud Navigation",
+                        "navigationDevName": "VIC2 Primary Nav Default BP Example"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "734c0afe-baf8-4901-be5e-c0583f178822",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "04528d87-93b9-4bd9-bdb2-3070f0f8e2aa",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Primary navigation default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

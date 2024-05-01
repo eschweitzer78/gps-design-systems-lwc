@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Sitemap default blueprint",
+  "contentBody": {
+    "activeViewId": "Sitemap_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-sitemap-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

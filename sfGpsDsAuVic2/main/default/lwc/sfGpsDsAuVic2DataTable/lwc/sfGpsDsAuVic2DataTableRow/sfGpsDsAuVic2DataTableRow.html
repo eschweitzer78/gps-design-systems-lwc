@@ -1,0 +1,61 @@
+<template>
+  <tbody class={computedClassName}>
+    <tr>
+      <template for:each={columns} for:item="column">
+        <th
+          lwc:if={column._isHeader}
+          key={column.key}
+          data-label={column.label}
+        >
+          <c-sf-gps-ds-au-vic2-content
+            lwc:if={column.isHTML}
+            html={columnGetCellText}
+          >
+          </c-sf-gps-ds-au-vic2-content>
+          <template lwc:else> {column.getCellText} </template>
+        </th>
+
+        <td lwc:else key={column.key} data-label={column.label}>
+          <c-sf-gps-ds-au-vic2-content
+            lwc:if={column.isHTML}
+            html={columnGetCellText}
+          >
+          </c-sf-gps-ds-au-vic2-content>
+          <template lwc:else> {column.getCellText} </template>
+        </td>
+      </template>
+
+      <td lwc:if={extraContent} class="rpl-data-table__actions">
+        <c-sf-gps-ds-au-vic2-button
+          class="rpl-data-table__toggle"
+          variant="transparent"
+          icon-name={computedIconName}
+          onclick={handleClick}
+        >
+          {computedToggleLabel}
+        </c-sf-gps-ds-au-vic2-button>
+      </td>
+    </tr>
+
+    <tr lwc:if={extraContent} lwc:ref="r1" class="rpl-data-table__details">
+      <td lwc:if={offset} colspan={offset}></td>
+      <td colspan={computedOffsetRemainder}>
+        <template lwc:if={extraContent.items}>
+          <template for:each={extraContent.items} for:item="item">
+            <div key={item.key} class="rpl-data-table__details-content">
+              <p><strong>{item.heading}</strong></p>
+              <p>{item.content}</p>
+            </div>
+          </template>
+        </template>
+
+        <c-sf-gps-ds-au-vic2-content
+          lwc:if={extraContent.html}
+          html={extraContent.html}
+          class="rpl-data-table__details-content"
+        >
+        </c-sf-gps-ds-au-vic2-content>
+      </td>
+    </tr>
+  </tbody>
+</template>

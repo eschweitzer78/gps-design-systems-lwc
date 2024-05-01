@@ -1,0 +1,27 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-card-promo
+    lwc:else
+    title={_title.text}
+    url={_title.url}
+    image={image}
+    highlight={highlight}
+    class-name={className}
+  >
+    <template lwc:if={content}>
+      <div lwc:ref="content" lwc:dom="manual"></div>
+    </template>
+    <template lwc:else>
+      <slot name="Content"></slot>
+    </template>
+
+    <template lwc:if={topic}>
+      <span slot="meta" class="rpl-card__topic">{topic}</span>
+    </template>
+  </c-sf-gps-ds-au-vic2-card-promo>
+</template>

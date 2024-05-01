@@ -1,0 +1,86 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Heading highlight blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-navigation-card-highlight-blueprint",
+    "component": {
+      "id": "7850b2d4-de6f-4782-bc3e-92cf2a132903",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "b0f4929d-d23f-40e9-bac8-21619285de3f",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "10f60fb8-a712-4f04-97e2-ad66bb021256",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"10f60fb8-a712-4f04-97e2-ad66bb021256\",\"columns\":[{\"UUID\":\"b32fc10c-e8fd-41eb-8145-76a1046b1a96\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "b32fc10c-e8fd-41eb-8145-76a1046b1a96",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "8b4bf8e7-4143-4b3c-b168-38a225f07ac6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CardNavComm",
+                      "attributes": {
+                        "title": "[Small Business Ventilation Program](#)",
+                        "content": "Funding for public-facing small businesses to purchase equipment and upgrades to improve ventilation and reduce the spread of COVID-19 and boost customer confidence.",
+                        "meta": "",
+                        "highlight": true,
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1614447413576-b346c641c128?q=80&w=890&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"Ventilation system\"}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "60c973cb-a2f0-4226-b664-54e2a2e679f7",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "cb495fc1-de57-4062-8425-c8e209fc8162",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Navigation card highlight blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

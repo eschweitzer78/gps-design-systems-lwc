@@ -1,0 +1,53 @@
+<template>
+  <div lwc:ref="theme" class={themeClassName}>
+    <div id={skipLinksId}>
+      <c-sf-gps-ds-au-vic2-layout-skip-link
+        lwc:if={hasAboveBody}
+        target-id={aboveBodyId}
+      >
+        {skipToContentLabel}
+      </c-sf-gps-ds-au-vic2-layout-skip-link>
+      <c-sf-gps-ds-au-vic2-layout-skip-link lwc:else target-id={mainId}>
+        {skipToContentLabel}
+      </c-sf-gps-ds-au-vic2-layout-skip-link>
+    </div>
+
+    <div class={computedLayoutClassName}>
+      <div class={aboveHeaderClassName}>
+        <slot name="aboveHeader"></slot>
+      </div>
+
+      <div class="rpl-layout__container">
+        <header
+          lwc:if={hasHeader}
+          id={headerId}
+          data-f6-region
+          class={headerClassName}
+        >
+          <slot name="header"></slot>
+          <div
+            lwc:if={hasBelowHeader}
+            id={belowHeaderId}
+            class={belowHeaderClassName}
+          >
+            <slot name="belowHeader"></slot>
+          </div>
+        </header>
+        <!-- header -->
+
+        <slot></slot>
+
+        <c-sf-gps-ds-au-vic2-layout-back-to-top
+          lwc:if={showBackToTop}
+          top-element-id={skipLinksId}
+        >
+        </c-sf-gps-ds-au-vic2-layout-back-to-top>
+
+        <footer data-f6-region class={footerClassName}>
+          <slot name="footer"></slot>
+        </footer>
+        <!-- footer -->
+      </div>
+    </div>
+  </div>
+</template>

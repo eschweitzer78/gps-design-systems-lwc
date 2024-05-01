@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Accordion",
+  "contentBody": {
+    "activeViewId": "Accordion",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-accordion",
+    "urlPrefix": "accordion"
+  }
+}

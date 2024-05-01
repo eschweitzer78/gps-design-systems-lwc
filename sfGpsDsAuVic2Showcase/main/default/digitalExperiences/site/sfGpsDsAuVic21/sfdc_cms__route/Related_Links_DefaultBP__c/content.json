@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Related links default blueprint",
+  "contentBody": {
+    "activeViewId": "Related_Links_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-related-links-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

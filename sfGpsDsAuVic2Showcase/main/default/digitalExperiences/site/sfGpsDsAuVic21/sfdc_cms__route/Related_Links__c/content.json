@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Related links",
+  "contentBody": {
+    "activeViewId": "Related_Links",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-related-links",
+    "urlPrefix": "related-links"
+  }
+}

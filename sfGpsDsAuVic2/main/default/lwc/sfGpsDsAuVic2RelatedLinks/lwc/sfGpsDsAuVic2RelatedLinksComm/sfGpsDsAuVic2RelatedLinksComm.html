@@ -1,0 +1,22 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-related-links
+    lwc:elseif={items}
+    title={title}
+    items={_items}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic2-related-links>
+
+  <c-sf-gps-ds-empty
+    lwc:else
+    title="The list is empty."
+    content="Set the items attribute."
+  >
+  </c-sf-gps-ds-empty>
+</template>

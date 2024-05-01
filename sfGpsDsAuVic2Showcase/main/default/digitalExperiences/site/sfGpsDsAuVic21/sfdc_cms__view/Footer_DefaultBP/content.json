@@ -1,0 +1,89 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-footer-default-blueprint",
+    "component": {
+      "id": "4e20f525-4f33-4aab-a6db-5ce5386139aa",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "53b03991-fff6-43fa-874e-5c0e07e2395c",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "df2e5ca8-831c-42c0-bdd3-4456167b354d",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"df2e5ca8-831c-42c0-bdd3-4456167b354d\",\"columns\":[{\"UUID\":\"cdad89fd-36e9-4afb-b586-db9937f2e993\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "cdad89fd-36e9-4afb-b586-db9937f2e993",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "68bb4a90-aece-47fe-bc34-8b8fc42213a2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2FooterComm",
+                      "attributes": {
+                        "variant": "default",
+                        "mode": "Experience Cloud Navigation",
+                        "navigationDevName": "VIC2 Footer Nav Default BP Example",
+                        "credit": "Image credit: image metadata or credit goes here.",
+                        "acknowledgement": "The Victorian Government acknowledges Aboriginal and Torres Strait Islander people as the Traditional Custodians of the land and acknowledges and pays respect to their Elders, past and present.",
+                        "linksMode": "Experience Cloud Navigation",
+                        "linksNavigationDevName": "VIC2 Footer Links Default BP Example",
+                        "logos": "[{\"src\":\"data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%2280%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2080%22%20preserveAspectRatio%3D%22none%22%3E%0A%3Cdefs%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%23holder%20text%20%7B%0Afill%3A%20rgb(150%2C%20150%2C%20150)%3B%0Afont-family%3AArial%2Csans-serif%3B%0Afont-size%3A%2013.333333333333334px%3B%0Afont-weight%3A400%3B%0A%7D%0A%3C%2Fstyle%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22holder%22%3E%0A%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22rgb(204%2C%20204%2C%20204)%22%3E%3C%2Frect%3E%0A%3Cg%3E%0A%3Ctext%20text-anchor%3D%22middle%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20dy%3D%22.3em%22%3E200%20x%2080%3C%2Ftext%3E%0A%3C%2Fg%3E%0A%3C%2Fg%3E%0A3C%2Fsvg%3E\",\"alt\":\"Landscape\",\"url\":\"#\"}]"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "6c90bd83-4a1c-4c7c-bc86-e39d98bf3622",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "2c6e9748-a4a3-4143-8882-464482ae9aec",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Footer default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

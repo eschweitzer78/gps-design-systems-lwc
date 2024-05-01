@@ -58,10 +58,10 @@ export function getFirstChild(markup) {
   return rn.firstElementChild;
 }
 
-export function computeClass(config) {
+export function computeClass(config, joinChar = " ") {
   let result = Object.keys(config)
     .filter((key) => config[key])
-    .join(" ");
+    .join(joinChar);
   return result ? result : null;
 }
 

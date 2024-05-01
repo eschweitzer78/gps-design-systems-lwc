@@ -1,0 +1,84 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-key-dates-card-default-blueprint",
+    "component": {
+      "id": "0c452ee7-67c1-433d-97c4-321d5a9850b9",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "0c69fb5a-3a6d-4063-950a-306899b40f36",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "9fccb72d-e8b8-41e2-8634-eb01ae073738",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "20rem",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"9fccb72d-e8b8-41e2-8634-eb01ae073738\",\"columns\":[{\"UUID\":\"4c0f093c-5ef6-4c17-8a74-c6636c5d2dac\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "4c0f093c-5ef6-4c17-8a74-c6636c5d2dac",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "b7db5b87-9e88-4e7e-a6e7-b2e71654ca17",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CardKeyDatesComm",
+                      "attributes": {
+                        "title": "[Key calendar dates](#)",
+                        "items": "[{\"title\":\"Friday 23 September\",\"subtitle\":\"Friday before the AFL Grand Final\",\"content\":\"Friday before the AFL Grand Final typically falls on the last Friday in September\"},{\"title\":\"Tuesday 1 November\",\"subtitle\":\"Melbourne Cup\",\"content\":\"Public holiday across Victoria unless an alternate local holiday hass been arranged by a non-metro council.\"}]",
+                        "ctaTitle": "Find all public holidays"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "db5dddac-f5a2-4113-b6a3-667f528c14ca",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "4abcde27-f5fe-403b-a76e-978c2f412cab",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Key dates card default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

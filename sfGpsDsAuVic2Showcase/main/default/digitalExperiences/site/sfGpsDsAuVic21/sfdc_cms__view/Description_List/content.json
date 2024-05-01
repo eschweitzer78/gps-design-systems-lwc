@@ -1,0 +1,172 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Description list",
+  "contentBody": {
+    "viewType": "custom-description-list",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "985df18c-83f1-4c96-8079-324833e98bcb",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "cb1fd107-1f97-418e-86e9-0cb086d48e9a",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "60663a47-481a-4650-84ae-27fefaab16ea",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"60663a47-481a-4650-84ae-27fefaab16ea\",\"columns\":[{\"UUID\":\"ae0062af-cbfc-49bc-b78e-beb2a55099d7\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "ae0062af-cbfc-49bc-b78e-beb2a55099d7",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "201ba5c6-d97a-44df-8190-3c935e64d140",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Description list",
+                        "description": "The Description list component shows a list of key information to users."
+                      }
+                    },
+                    {
+                      "id": "aa08767d-9d90-444c-a77a-31e1308db06f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "84e5e9aa-05ca-4d92-bc17-8b71843ec42c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Icon blueprint\",\n\t\t\"url\": \"#icon-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#icon-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#icon-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "999e1fa3-2370-4ccd-8cb2-ffe401b23762",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Use the detail list to display a list with labels. This surfaces (retrieves and displays) and highlights key information to users.</p><p>Each row of the comprises a:</p><ul><li><code>term</code>, a descriptive or informative label for your content, for example, 'Location',</li><li><code>description</code>, the piece of information itself, for example, 'East Gippsland'.</li><li><code>iconName</code>, the name of an optional icon to be placed in front of the term,</li><li><code>iconColour</code>, a colour to be applied to the icon.</li></ul><p>The <code>sfGpsDsAuVic2DescriptionListComm</code> LWC appears as <code>VIC2 DS Description List</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "2952bfe8-1146-4504-8466-e252c48f7545",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "9c7e91b9-f760-48dd-a976-2ef11c59a4a0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./description-list/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "e9e57218-209f-4a69-9316-12ad58ac942b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>items</code></td>\n\t\t\t\t\t<td>Items</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">[<br/>  {<br/>    \"term\": \"Name:\",<br/>    \"description\": \"The Hon. Dame Quentin Bryce AD CVO\",<br/>    \"iconName\": \"icon-user-circle-filled\"<br/>  },<br/>  {<br/>    \"term\": \"Role:\",<br/>    \"description\": \"Former governor-general of Australia\",<br/>    \"iconName\": \"icon-star\",<br/>    \"iconColour\": \"success\"<br/>  },<br/>  {<br/>    \"term\": \"Alma mater:\",<br/>    \"description\": \"University of Queensland\",<br/>    \"iconName\": \"icon-pin\",<br/>    \"iconColour\": \"warning\"<br/>  }<br/>]</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "8e72128e-bb00-43aa-90d0-5dfa5cde6cb7",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"icon-blueprint\">Icon blueprint</h2>\n\n\t\n\n\t<h3 id=\"icon-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "dce8013b-721a-4dfc-a2fb-ea347915e68f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./description-list/icon-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "c35bafd6-fb35-469b-b52b-ba57f194f4bb",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"icon-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"icon\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>items</code></td>\n\t\t\t\t\t<td>Items</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">[<br/>  {<br/>    \"term\": \"Name:\",<br/>    \"description\": \"The Hon. Dame Quentin Bryce AD CVO\",<br/>    \"iconName\": \"icon-user-circle-filled\"<br/>  },<br/>  {<br/>    \"term\": \"Role:\",<br/>    \"description\": \"Former governor-general of Australia\",<br/>    \"iconName\": \"icon-star\",<br/>    \"iconColour\": \"success\"<br/>  },<br/>  {<br/>    \"term\": \"Alma mater:\",<br/>    \"description\": \"University of Queensland\",<br/>    \"iconName\": \"icon-pin\",<br/>    \"iconColour\": \"warning\"<br/>  }<br/>]</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "29498c91-c7e8-4c39-a2f5-3680e0f2055d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>inline</code></td>\n\t\t\t\t<td>Inline</td>\n\t\t\t\t<td>Set if the dt and dd elements should not be packed in a div.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Variant</td>\n\t\t\t\t<td>Variant with a choice of <code>default</code> and <code>icon</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>items</code></td>\n\t\t\t\t<td>Items</td>\n\t\t\t\t<td>Items as a JSON array of { term, description, iconName, iconColour }.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "14e6fffb-5134-4845-9c0f-2762528c447e",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "f5686411-1c41-4d08-92f4-04d4d21ab7f6",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

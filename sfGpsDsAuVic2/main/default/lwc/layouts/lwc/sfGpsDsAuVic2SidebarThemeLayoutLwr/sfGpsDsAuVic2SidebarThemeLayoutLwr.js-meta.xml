@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="sfGpsDsAuNswThemeLayoutLwr"
+>
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS LWR Sidebar Theme Layout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Theme_Layout</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property label="Theme class name" name="themeClassName" type="String" />
+      <property
+        label="Header class name"
+        name="headerClassName"
+        type="String"
+      />
+      <property
+        label="Content class name"
+        name="contentClassName"
+        type="String"
+      />
+      <property
+        label="Container class name"
+        name="containerClassName"
+        type="String"
+        default="rpl-container"
+      />
+      <property
+        label="Grid class name"
+        name="gridClassName"
+        type="String"
+        default="rpl-grid"
+      />
+      <property
+        label="Sidebar class name"
+        name="sidebarClassName"
+        type="String"
+        default="rpl-col-12 rpl-col-3-l"
+      />
+      <property
+        label="Main class name"
+        name="mainClassName"
+        type="String"
+        default="rpl-col-12 rpl-col-9-l"
+      />
+      <property
+        label="Footer class name"
+        name="footerClassName"
+        type="String"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,64 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Page content",
+  "contentBody": {
+    "themeLayoutType": "Inner",
+    "viewType": "custom-page-content",
+    "component": {
+      "id": "008b1071-16d7-4af0-a0ce-6b0ae5aa7df0",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "2df0bb48-bc5b-456d-ba47-e8718fb77eb7",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "3732952b-5980-45b0-849a-062bb3099b1a",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"3732952b-5980-45b0-849a-062bb3099b1a\",\"columns\":[{\"UUID\":\"1b815f48-790d-4a95-839e-431cc79a894b\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "1b815f48-790d-4a95-839e-431cc79a894b",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f6a6c894-7923-4f57-9d53-09a84382ba89",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "2e134c23-f56b-440e-8dd6-40f9d3b2ae2f",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Page content",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

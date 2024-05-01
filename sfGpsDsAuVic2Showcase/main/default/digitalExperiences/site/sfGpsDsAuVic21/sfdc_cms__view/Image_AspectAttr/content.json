@@ -1,0 +1,277 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Aspect attribute",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-image-aspect-attribute",
+    "component": {
+      "id": "8f45cafa-ac16-45e9-829b-3b048680afe7",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "f7a80a01-5380-4fef-9af9-063ad25adacf",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "6eb57133-c1b7-42bc-a2d7-d12af5ab3919",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"6eb57133-c1b7-42bc-a2d7-d12af5ab3919\",\"columns\":[{\"UUID\":\"6f0130da-518a-4685-8dd9-0182ebf4fe1f\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "6f0130da-518a-4685-8dd9-0182ebf4fe1f",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "7ab5a647-67f5-4060-adbc-b11b744eb792",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"aspect\":{\"xs\":\"square\"}}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "fff551f7-d83c-48c3-a1c6-ad07bd8c6b9f",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"fff551f7-d83c-48c3-a1c6-ad07bd8c6b9f\",\"columns\":[{\"UUID\":\"1461e4cd-7e32-4025-a0c0-39f03b7be7e2\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "1461e4cd-7e32-4025-a0c0-39f03b7be7e2",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "d3043ac2-db1d-41a7-a762-4185ff694bd7",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"aspect\":{\"xs\":\"full\"}}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c1bf0448-2bee-44a1-b341-014fdd390bc5",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"c1bf0448-2bee-44a1-b341-014fdd390bc5\",\"columns\":[{\"UUID\":\"2b883ba4-75cd-455d-86dd-cb3e41ee4200\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "2b883ba4-75cd-455d-86dd-cb3e41ee4200",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "d20ca54f-52d2-4ba1-ad15-68dbe997fdca",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"aspect\":{\"xs\":\"wide\"}}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "c9c4a149-cb9a-4727-9298-5d616a9a380d",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"c9c4a149-cb9a-4727-9298-5d616a9a380d\",\"columns\":[{\"UUID\":\"f37bbe43-3967-41cd-aff1-ae9c059daa5a\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "f37bbe43-3967-41cd-aff1-ae9c059daa5a",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "d060816f-f348-49af-b347-258c19084175",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"aspect\":{\"xs\":\"ultrawide\"}}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "0bf5ef48-dfd4-49a1-b38e-93134be93375",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"0bf5ef48-dfd4-49a1-b38e-93134be93375\",\"columns\":[{\"UUID\":\"7be33b7c-e78c-4e3c-8166-ded995ca084c\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "7be33b7c-e78c-4e3c-8166-ded995ca084c",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "9634ff87-34f1-44a4-90cd-a146c4e6dc6b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"aspect\":{\"xs\":\"panorama\"}}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "bc3aeed6-c6db-4833-81a5-0890dd4bdbc4",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"bc3aeed6-c6db-4833-81a5-0890dd4bdbc4\",\"columns\":[{\"UUID\":\"84ede74f-1fc5-4bf6-ac3e-7eb1a08631f1\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "84ede74f-1fc5-4bf6-ac3e-7eb1a08631f1",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "4ff1eda8-94c3-4fba-8700-2322c1be45ec",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"aspect\":{\"xs\":\"square\",\"s\":\"full\",\"m\":\"wide\",\"l\":\"ultrawide\",\"xl\":\"panorama\"}}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fc747edc-2c1b-4b59-9998-20a437e6b209",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "191fd68d-c355-4b96-bf2b-92e1252b8689",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Image aspect attribute",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Breadcrumbs",
+  "contentBody": {
+    "viewType": "custom-breadcrumbs",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "11327106-b7ae-4799-899b-1bad70918b0f",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "daa4871b-44f8-4264-b949-30746ec191a6",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "caaf894d-970f-4243-9060-290d749df7a5",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"caaf894d-970f-4243-9060-290d749df7a5\",\"columns\":[{\"UUID\":\"65990671-9004-42ec-b443-160f88d387ab\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "65990671-9004-42ec-b443-160f88d387ab",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "5c98bb33-3a8f-478f-ab62-47c501bd7602",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Breadcrumbs",
+                        "description": "The Breadcrumbs component shows a user their location on a website. This allows quick navigation between page levels."
+                      }
+                    },
+                    {
+                      "id": "12cc98de-baa8-4433-9e57-184072661107",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "678af725-5ccf-4982-b144-3248d92fe458",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "00c033a5-9303-497b-91a1-f1725ebed8f1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Use breadcrumbs to help users understand where they are within a website’s structure. A breadcrumbs shows as a series of links and icons in a line.</p><p>It displays the parent page, icons and the current page.:</p><ul><li>Parent page: this links to the page above the current page in the information architecture,</li><li>Icons: chevrons (v-shaped icons) sitting between the parent and current pages are designed to visualise site hierarchy,</li><li>Current page: this is the page the user is currently on.</li></ul><p>On devices with a page resolution under 768px, the breadcrumb displays the parent link only.</li><p>Use the <code>sfGpsDsAuVic2BreadcrumbsComm</code> component which appears as <code>VIC2 DS Breadcrumbs</code> in the Experience Builder component list and place it in the page layout breadcrumbs section when using the standard theme layout. When using the sidebar theme layout, the breadcrumbs are less useful as the side navigation will most likely be the user&rsquo;s guide.</p>"
+                      }
+                    },
+                    {
+                      "id": "87ce7ddf-ba06-425d-9a5b-dd54d3e7c126",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "7edf063d-0945-4dc8-a010-f6130971905e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./breadcrumbs/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "116f3f69-f747-4b48-81a6-9b1990e93e34",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>items</code></td>\n\t\t\t\t\t<td>Items</td>\n\t\t\t\t\t<td>\"[Home](#)[About the VIC Government](#)[Using Victoria&amp;rsquo;s data]()\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "a4928d22-4886-461f-9886-da91ea57a6f6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>items</code></td>\n\t\t\t\t<td>Items</td>\n\t\t\t\t<td>Home, parent and current page as a series of links in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown link format</a>. Leave the link empty for the current page.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS class to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ea4d3e5b-6359-4d40-a26b-f06d7009b683",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "585c2c18-a07a-4b8f-9b71-5fc2f07f6c0a",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

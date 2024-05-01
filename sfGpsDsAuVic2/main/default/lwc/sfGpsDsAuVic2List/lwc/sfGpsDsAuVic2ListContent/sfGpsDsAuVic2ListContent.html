@@ -1,0 +1,23 @@
+<template>
+  <span lwc:if={computedDepthAboveZero} class="rpl-icon--child"> </span>
+
+  <c-sf-gps-ds-au-vic2-icon
+    lwc:if={computedShowIconBefore}
+    name={iconName}
+    colour={iconColour}
+    class-name={computedClassName}
+  >
+  </c-sf-gps-ds-au-vic2-icon>
+
+  <span class="rpl-list__label">
+    <slot></slot>
+  </span>
+
+  <c-sf-gps-ds-au-vic2-icon
+    lwc:if={computedShowIconAfter}
+    name={iconName}
+    colour={iconColour}
+    class-name={computedClassName}
+  >
+  </c-sf-gps-ds-au-vic2-icon>
+</template>

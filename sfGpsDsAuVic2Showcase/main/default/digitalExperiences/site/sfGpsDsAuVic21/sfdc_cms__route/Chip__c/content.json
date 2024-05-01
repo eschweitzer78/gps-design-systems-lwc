@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Chip",
+  "contentBody": {
+    "activeViewId": "Chip",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-chip",
+    "urlPrefix": "chip"
+  }
+}

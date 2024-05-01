@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Vertical Nav</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Optional title used as a heading."
+        default="Vertical navigation"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="mode"
+        type="String"
+        label="Mode"
+        description="Mode used to retrieve the navigation details."
+        datasource="Demo,Experience Cloud Navigation,Integration Procedure"
+        default="Integration Procedure"
+      />
+      <property
+        name="navigationDevName"
+        type="String"
+        label="Navigation name"
+        description="Pick the target nav when mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration procedure mapping content to this nav when mode is set to Integration Procedure."
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Input JSON"
+        description="JSON formatted input parameters for the Integration procedure."
+        default="{}"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Options JSON"
+        description="JSON formatted options for the Integration procedure."
+        default="{}"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS classes to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

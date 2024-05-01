@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>VIC DS v2 Home Page Theme Layout</masterLabel>
+  <type>CommThemeLayoutPage</type>
+
+  <template>
+    <name>sfGpsDsAuVic2ThemeLayout</name>
+    <properties>
+      <name>navId</name>
+      <value>nav</value>
+    </properties>
+    <properties>
+      <name>contentId</name>
+      <value>content</value>
+    </properties>
+    <properties>
+      <name>hideHeader</name>
+      <value>true</value>
+    </properties>
+  </template>
+
+  <flexiPageRegions>
+    <appendable>enabled</appendable>
+    <name>themeHeader</name>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <type>Region</type>
+  </flexiPageRegions>
+  <flexiPageRegions>
+    <name>header</name>
+    <type>Region</type>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+  </flexiPageRegions>
+  <flexiPageRegions>
+    <name>sidebar</name>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <type>Region</type>
+  </flexiPageRegions>
+  <flexiPageRegions>
+    <name>footer</name>
+    <type>Region</type>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+  </flexiPageRegions>
+</FlexiPage>

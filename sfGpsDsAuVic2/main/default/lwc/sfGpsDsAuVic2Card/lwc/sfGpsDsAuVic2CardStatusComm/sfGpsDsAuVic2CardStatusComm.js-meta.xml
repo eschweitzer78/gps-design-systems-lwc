@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Card Status</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="iconName"
+        type="String"
+        label="Icon name"
+        description="Name of the icon."
+        default="icon-exclamation-circle-filled"
+        required="true"
+        editor="c/sfGpsDsAuVic2IconNameCpe"
+      />
+      <property
+        name="iconColour"
+        type="String"
+        label="Icon colour"
+        description="Colour of the icon."
+        default="neutral"
+        required="true"
+        editor="c/sfGpsDsAuVic2IconColourCpe"
+      />
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="Status label."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

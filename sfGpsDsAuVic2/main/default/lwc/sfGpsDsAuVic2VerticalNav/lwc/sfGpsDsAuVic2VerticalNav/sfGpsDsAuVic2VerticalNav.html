@@ -1,0 +1,49 @@
+<template>
+  <nav class={computedClassName}>
+    <h3 lwc:if={title} class="rpl-vertical-nav__heading rpl-type-h3-fixed">
+      {title}
+    </h3>
+
+    <ul
+      class="rpl-vertical-nav__list rpl-vertical-nav__list--level-1 rpl-type-p-small"
+    >
+      <template for:each={_decoratedItems} for:item="item">
+        <li key={item.index} class={item.className}>
+          <c-sf-gps-ds-au-vic2-vertical-nav-toggle
+            lwc:if={item.items}
+            id={item.fullId}
+            text={item.text}
+            onclick={handleToggle}
+            data-item-id={item.id}
+          >
+          </c-sf-gps-ds-au-vic2-vertical-nav-toggle>
+
+          <c-sf-gps-ds-au-vic2-expandable
+            lwc:if={item.items}
+            labelledby={item.fullId}
+            is-hidden={item.ariaHidden}
+            expanded={item.active}
+            class-name="rpl-vertical-nav__list-item-children"
+          >
+            <c-sf-gps-ds-au-vic2-vertical-nav-child-list
+              items={item.items}
+              level="2"
+              is-expanded={item.active}
+              onitemclick={handleClick}
+            >
+            </c-sf-gps-ds-au-vic2-vertical-nav-child-list>
+          </c-sf-gps-ds-au-vic2-expandable>
+
+          <c-sf-gps-ds-au-vic2-vertical-nav-link
+            lwc:else
+            text={item.text}
+            href={item.url}
+            active={item.active}
+            onitemclick={handleClick}
+          >
+          </c-sf-gps-ds-au-vic2-vertical-nav-link>
+        </li>
+      </template>
+    </ul>
+  </nav>
+</template>

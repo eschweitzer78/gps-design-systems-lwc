@@ -1,0 +1,78 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Show search attribute",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-primary-navigation-show-search-attr",
+    "component": {
+      "id": "4ccbf427-fd44-4867-bdd9-eb6685b33734",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "f9c09a72-7d27-4ee1-bef4-6256cba822a3",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "997249fc-04e4-4038-ac32-6a547825bd38",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"997249fc-04e4-4038-ac32-6a547825bd38\",\"columns\":[{\"UUID\":\"4b3eb64b-90fd-46c5-b766-9f896eef98b2\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "4b3eb64b-90fd-46c5-b766-9f896eef98b2",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "2550fbf7-4bd5-4038-8fbb-f2ac2513bcf0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2PrimaryNavComm",
+                      "attributes": {
+                        "mode": "Integration Procedure",
+                        "ipName": "sfGpsDsAuVic_HierarchicalMenuSample",
+                        "inputJSON": "{}",
+                        "optionsJSON": "{}",
+                        "showSearch": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d69872f3-4da2-47ed-bf29-d628036ef2df",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "d35b4ebd-0296-456b-9aef-cf383c9cc4c6",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Primary navigation Show search attribute",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

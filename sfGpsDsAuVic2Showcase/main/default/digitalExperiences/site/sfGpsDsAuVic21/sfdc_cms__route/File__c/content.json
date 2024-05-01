@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "File",
+  "contentBody": {
+    "activeViewId": "File",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-file",
+    "urlPrefix": "file"
+  }
+}

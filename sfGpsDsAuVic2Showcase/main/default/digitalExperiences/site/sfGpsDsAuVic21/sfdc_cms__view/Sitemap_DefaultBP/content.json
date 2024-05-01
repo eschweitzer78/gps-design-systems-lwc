@@ -1,0 +1,82 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-sitemap-default-blueprint",
+    "component": {
+      "id": "e46ab263-3a66-4790-b029-44375dc82388",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "6138bac2-7bf3-4288-b2f0-18dae0294b78",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "bc040f99-8d37-4ffb-a111-0a0644b09ec3",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"bc040f99-8d37-4ffb-a111-0a0644b09ec3\",\"columns\":[{\"UUID\":\"2b3206f8-7570-4984-bdf2-7442a8641733\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "2b3206f8-7570-4984-bdf2-7442a8641733",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "b9ca9aa0-f113-44ba-a487-891e249fb8a6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2SitemapComm",
+                      "attributes": {
+                        "items": "[{\"text\":\"Your services\",\"url\":\"#\",\"items\":[{\"text\":\"Sub-child A\",\"url\":\"#a\"},{\"text\":\"Sub-child B\",\"url\":\"#b\",\"items\":[{\"text\":\"Sub-child B.1\",\"url\":\"#b1\"},{\"text\":\"Sub-child B.2\",\"url\":\"#b2\"}]},{\"text\":\"Sub-child C\",\"url\":\"#c\"}]},{\"text\":\"About VIC Government\",\"url\":\"#documentation\"}]"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a256512c-3e37-43b4-bee6-c6bc69718ec4",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "2fe7c41c-8d9b-481f-8a17-902646d713bc",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Sitemap default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

@@ -1,0 +1,23 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-primary-nav
+    lwc:else
+    primary-logo={_primaryLogo}
+    secondary-logo={_secondaryLogo}
+    items={decoratedItems}
+    show-search={showSearch}
+    show-quick-exit={showQuickExit}
+    onsearch={handleSearch}
+    onnavigate={handleNavigate}
+  >
+    <slot slot="userAction" name="UserAction"></slot>
+  </c-sf-gps-ds-au-vic2-primary-nav>
+
+  <c-sf-gps-ds-navigation-service lwc:ref="navsvc">
+  </c-sf-gps-ds-navigation-service>
+</template>

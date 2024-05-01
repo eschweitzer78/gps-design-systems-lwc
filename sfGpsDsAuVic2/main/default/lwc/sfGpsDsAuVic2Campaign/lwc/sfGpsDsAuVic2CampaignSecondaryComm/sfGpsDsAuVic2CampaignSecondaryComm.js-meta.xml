@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Campaign (Secondary)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Clearly identifies the primary purpose or action of the campaign and acts as a call to action for the user."
+        required="true"
+        default="Secondary campaign headline"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Content information in Markdown format, leave empty to get a slot in LWR."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="link"
+        type="String"
+        label="Link"
+        description="In Markdown link format."
+        required="true"
+        default="[Read more](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="image"
+        type="String"
+        label="Image"
+        description="Configuration of the image"
+        editor="c/sfGpsDsAuVic2ImageCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

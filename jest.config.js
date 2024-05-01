@@ -3,6 +3,7 @@ const ro = require("resize-observer-polyfill");
 
 const setupFilesAfterEnv = jestConfig.setupFilesAfterEnv || [];
 setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.js");
+setupFilesAfterEnv.push("<rootDir>/jest-crypto-setup.js");
 
 module.exports = {
   ...jestConfig,
@@ -22,6 +23,8 @@ module.exports = {
       "<rootDir>/__test__/jest-mocks/omnistudio/radioGroup",
     "^lightning/combobox$":
       "<rootDir>/__test__/jest-mocks/lightning/combobox/combobox",
+    "^lightning/primitiveIcon$":
+      "<rootDir>/__test__/jest-mocks/lightning/primitiveIcon/primitiveIcon",
     "^lightning/(.*)":
       "<rootDir>/node_modules/@salesforce/sfdx-lwc-jest/src/lightning-stubs/$1/$1"
   },

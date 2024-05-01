@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="sfGpsDsAuVic2StandardPageLayoutLwr"
+>
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS LWR Standard Page Layout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page_Layout</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        label="Has above body"
+        name="hasAboveBody"
+        type="Boolean"
+        default="true"
+      />
+      <property
+        label="Above body class name"
+        name="aboveBodyClassName"
+        type="String"
+      />
+      <property
+        label="Body class name"
+        name="bodyClassName"
+        type="String"
+        default="rpl-grid rpl-grid--no-row-gap rpl-layout__body"
+      />
+      <property
+        label="main class name"
+        name="mainClassName"
+        type="String"
+        default="rpl-layout__main rpl-col-12"
+      />
+      <property
+        label="Has sidebar"
+        name="hasSidebar"
+        type="Boolean"
+        default="false"
+      />
+      <property
+        label="Sidebar class name"
+        name="sidebarClassName"
+        type="String"
+        default="rpl-layout__sidebar rpl-col-4-m rpl-col-start-9-m rpl-col-12"
+      />
+      <property
+        label="Has below body"
+        name="hasBelowBody"
+        type="Boolean"
+        default="true"
+      />
+      <property
+        label="Below body class name"
+        name="belowBodyClassName"
+        type="String"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

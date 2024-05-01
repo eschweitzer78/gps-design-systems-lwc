@@ -29,7 +29,8 @@
     "auvic1-copy": "rm -rf sfGpsDsAuVic1Full;mkdir -p sfGpsDsAuVic1Full;cp -a sfGpsDs/. sfGpsDsAuVic1Full;cp -a sfGpsDsAuVic/. sfGpsDsAuVic1Full",
     "auvic2-copy": "rm -rf sfGpsDsAuVic2Full;mkdir -p sfGpsDsAuVic2Full;cp -a sfGpsDs/. sfGpsDsAuVic2Full;cp -a sfGpsDsAuVic/. sfGpsDsAuVic2Full",
     "frgov-copy": "rm -rf sfGpsDsFrGovFull;mkdir -p sfGpsDsFrGovFull;cp -a sfGpsDs/. sfGpsDsFrGovFull;cp -a sfGpsDsFrGov/. sfGpsDsFrGovFull",
-    "ukgov-copy": "rm -rf sfGpsDsUkGovFull;mkdir -p sfGpsDsUkGovFull;cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull"
+    "ukgov-copy": "rm -rf sfGpsDsUkGovFull;mkdir -p sfGpsDsUkGovFull;cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull",
+    "synclabs": "set SDIR=../gps-design-systems-lwc;set TDIR=../gps-design-systems-lwcx;rm -rf $TDIR;cp -a . $TDIR;cp -a $SDIR/.git $TDIR;rm -rf $TDIR/.github"
   },
   "lint-staged": {
     "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [
@@ -49,8 +50,8 @@
     "url": "git+https://github.com/eschweitzer78/gps-design-systems-lwc"
   },
   "devDependencies": {
-    "@dpc-sdp/ripple-global": "^1.38.3",
-    "@dpc-sdp/ripple-ui-core": "^2.0.0",
+    "@dpc-sdp/ripple-global": "https://registry.npmjs.org/@dpc-sdp/ripple-global/-/ripple-global-1.38.3.tgz",
+    "@dpc-sdp/ripple-ui-core": "2.7.1",
     "@gouvfr/dsfr": "^1.11.0",
     "@lwc/eslint-plugin-lwc": "^1.0.1",
     "@prettier/plugin-xml": "^3.0.0",
@@ -66,6 +67,8 @@
     "husky": "^7.0.0",
     "lint-staged": "^11.0.0",
     "nsw-design-system": "^3.13.0",
+    "postcss": "^8.4.38",
+    "postcss-custom-media": "^10.0.4",
     "prettier": "^3.1.1",
     "prettier-plugin-apex": "^2.0.1",
     "resize-observer-polyfill": "^1.5.1",
@@ -73,10 +76,6 @@
   },
   "devDependencies2": {
     "puppeteer": "^19.3.0"
-  },
-  "dependencies": {
-    "bootstrap": "^4.6.2",
-    "font-awesome": "^4.7.0"
   },
   "engines": {
     "node": "18.16.1"

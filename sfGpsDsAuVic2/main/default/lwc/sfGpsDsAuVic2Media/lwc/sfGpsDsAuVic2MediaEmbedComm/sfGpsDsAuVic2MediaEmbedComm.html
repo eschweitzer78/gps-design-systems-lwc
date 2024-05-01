@@ -1,0 +1,41 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-media-embed
+    lwc:elseif={src}
+    type={type}
+    variant={variant}
+    size={size}
+    title={title}
+    src={src}
+    alt={alt}
+    show-title={showTitle}
+    transcript-url={transcriptUrl}
+    caption={caption}
+    source-caption={sourceCaption}
+    allow-fullscreen={allowFullscreen}
+    fullscreen-label={fullscreenLabel}
+    d-slot={dSlot}
+    d-label={dLabel}
+    download-label={downloadLabel}
+    download-url={downloadUrl}
+    class-name={className}
+  >
+    <c-sf-gps-ds-au-vic2-content lwc:if={dContent} slot="data" html={dContent}>
+    </c-sf-gps-ds-au-vic2-content>
+    <template lwc:else>
+      <slot slot="data" name="Data"></slot>
+    </template>
+  </c-sf-gps-ds-au-vic2-media-embed>
+
+  <c-sf-gps-ds-empty
+    lwc:else
+    title="No media source"
+    content="Please set the media src attribute."
+  >
+  </c-sf-gps-ds-empty>
+</template>

@@ -1,0 +1,6 @@
+{
+  "apiName": "Header_ImageBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Header__c",
+  "path": "routes"
+}

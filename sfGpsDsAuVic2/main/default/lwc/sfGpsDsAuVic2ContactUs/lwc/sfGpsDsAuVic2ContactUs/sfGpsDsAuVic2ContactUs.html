@@ -1,0 +1,28 @@
+<template>
+  <div class={computedClassName}>
+    <h3 lwc:if={title} class="rpl-contact-us__title rpl-type-label-large">
+      {title}
+    </h3>
+
+    <div lwc:if={address} class="rpl-contact-us__details rpl-type-p">
+      <p>
+        <template lwc:if={name}>
+          {name}
+          <br lwc:if={computedHasDeptOrStreet} />
+        </template>
+        <template lwc:if={department}>
+          {department}
+          <br lwc:if={street} />
+        </template>
+        <template lwc:if={street}>{street}</template>
+      </p>
+    </div>
+
+    <c-sf-gps-ds-au-vic2-list
+      items={computedSocialLinks}
+      class="rpl-type-p"
+      onitemclick={handleClick}
+    >
+    </c-sf-gps-ds-au-vic2-list>
+  </div>
+</template>

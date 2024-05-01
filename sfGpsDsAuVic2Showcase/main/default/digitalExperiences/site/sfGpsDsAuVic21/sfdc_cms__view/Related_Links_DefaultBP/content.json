@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-related-links-default-blueprint",
+    "component": {
+      "id": "bcd25e8e-3938-4015-9ad8-857bf6a13923",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "249c39b6-28dd-4129-a375-2bb17a15d2e8",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "4850280f-20cc-4378-ae86-555a478913d7",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"4850280f-20cc-4378-ae86-555a478913d7\",\"columns\":[{\"UUID\":\"50b5b04c-27a7-46a4-8845-c08c8506d0af\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "50b5b04c-27a7-46a4-8845-c08c8506d0af",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "a6a64467-bb33-4b28-973c-0ead41dbea17",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2RelatedLinksComm",
+                      "attributes": {
+                        "title": "Related links",
+                        "items": "[Link title on default that travels over two lines](#)[Link title default](#)[Documentation](#documentation)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0ec0f91f-e8f3-4df0-af1d-2361dc1aaa16",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "6cf857c3-44f6-4fe7-972d-7bf020e87356",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Related links default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

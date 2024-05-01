@@ -1,0 +1,6 @@
+{
+  "apiName": "Blockquote_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Blockquote__c",
+  "path": "routes"
+}

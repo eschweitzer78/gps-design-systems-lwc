@@ -1,0 +1,47 @@
+<template>
+  <ul class={computedClassName}>
+    <!-- 'Home' link -->
+    <li lwc:if={isLevel1}>
+      <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-home-button
+        focus-key="list:home"
+        data-focus-key="list:home"
+      >
+      </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-home-button>
+    </li>
+
+    <!-- Repeat of parent as a clickable link, but only if parent has a link -->
+    <li lwc:if={computedShowParent} class="rpl-primary-nav__mega-menu-item">
+      <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-action
+        item={parent}
+        level={level}
+        position="first"
+        type="link"
+        focus-key={parentFocusKey}
+        focus-target={focusTarget}
+        data-focus-key={parentFocusKey}
+        ontoggleitem={handleToggleItem}
+        onnavigate={handleNavigate}
+      >
+      </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-action>
+    </li>
+
+    <!-- Children -->
+    <template for:each={decoratedItems} for:item="child">
+      <li key={child.id}>
+        <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-action
+          item={child}
+          type={child.type}
+          level={level}
+          parent={parentId}
+          position={child.position}
+          active-nav-items={activeNavItems}
+          focus-key={child.focusKey}
+          focus-target={focusTarget}
+          data-focus-key={child.focusKey}
+          ontoggleitem={handleToggleItem}
+        >
+        </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-action>
+      </li>
+    </template>
+  </ul>
+</template>

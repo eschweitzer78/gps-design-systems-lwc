@@ -1,0 +1,50 @@
+<template lwc:render-mode="light">
+  <header
+    lwc:ref="headerRef"
+    class="docs-header"
+    style={computedStyle}
+    onkeydown={handleKeyHandler}
+  >
+    <div class="docs-header-top">
+      <div class="rpl-container">
+        <div class="docs-header-inner">
+          <a
+            lwc:ref="firstElement"
+            aria-current="page"
+            href={computedHref}
+            class="docs-header-logo rpl-u-focusable-outline"
+          >
+            <img src={computedLogoSrc} width="106" alt={computedLogoAlt} />
+          </a>
+
+          <span class="docs-header-title"> {sectionTitle} </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-header-bottom">
+      <div class="rpl-container">
+        <div class="docs-header-bottom-inner">
+          <button
+            class="docs-header-link rpl-u-focusable-inline"
+            onclick={handleToggleMenu}
+          >
+            Menu
+            <c-sf-gps-ds-au-vic2-icon
+              name="icon-chevron-down"
+              size="xs"
+              class-name="docs-header-link-icon"
+            >
+            </c-sf-gps-ds-au-vic2-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div lwc:if={isMenuOpen} class="docs-header-menu" style={computedMenuStyle}>
+      <div class="docs-header-menu-inner">
+        <slot name="MenuContents"> </slot>
+      </div>
+    </div>
+  </header>
+</template>

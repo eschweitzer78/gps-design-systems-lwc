@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Copyright",
+  "contentBody": {
+    "activeViewId": "Copyright",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-copyright",
+    "urlPrefix": "copyright"
+  }
+}

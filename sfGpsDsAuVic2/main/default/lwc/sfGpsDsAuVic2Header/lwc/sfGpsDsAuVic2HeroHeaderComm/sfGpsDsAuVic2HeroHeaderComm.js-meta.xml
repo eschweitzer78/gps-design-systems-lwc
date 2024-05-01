@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Header (Hero)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="theme"
+        type="String"
+        label="Theme"
+        datasource="default,reverse,neutral"
+        default="default"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        default="Find, connect, shape your Victoria"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Provides further details where the title alone may not be sufficient - in Markdown format, leave empty to get a slot in LWR."
+        default="Access grants and services, find out what’s on in Victoria and have your say on government decisions."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="primaryAction"
+        type="String"
+        label="Primary action"
+        description="A label and link for the primary action in Markdown link format."
+        default="[Read more](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="secondaryActionTitle"
+        type="String"
+        label="Secondary action title"
+        description="A title for the secondary action."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="secondaryAction"
+        type="String"
+        label="Secondary action link"
+        description="A label and link for the secondary action in Markdown link format."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="linksTitle"
+        type="String"
+        label="Links title"
+        description="A title for the links section."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="linksType"
+        type="String"
+        label="Link type"
+        description="Type of element used for links in the link section."
+        default="link"
+        datasource="link,button"
+      />
+      <property
+        name="links"
+        type="String"
+        label="Links"
+        description="A series of links in Markdown link format"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="linksMore"
+        type="String"
+        label="Links more"
+        description="A last link at the bottom of the links section to be used for overflow. Leave empty if not required"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property name="breadcrumbs" type="Boolean" label="Breadcrumbs" />
+      <property name="behindNav" type="Boolean" label="Behind nav" />
+      <property
+        name="fullWidth"
+        type="Boolean"
+        label="Full width"
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="logo"
+        type="String"
+        label="Logo"
+        editor="c/sfGpsDsAuVic2ImageCpe"
+      />
+      <property
+        name="background"
+        type="String"
+        label="Background"
+        editor="c/sfGpsDsAuVic2ImageCpe"
+      />
+      <property
+        name="cornerTop"
+        type="Boolean"
+        label="Corner top"
+        default="true"
+      />
+      <property
+        name="cornerTopImage"
+        type="String"
+        label="Corner top image"
+        description="Details of an image to replace the default top-left corner image."
+        editor="c/sfGpsDsAuVic2ImageCpe"
+      />
+      <property
+        name="cornerBottom"
+        type="Boolean"
+        label="Corner bottom"
+        default="true"
+      />
+      <property
+        name="cornerBottomImage"
+        type="String"
+        label="Corner bottom image"
+        description="Details of an image to replace the default bottop-right corner image."
+        editor="c/sfGpsDsAuVic2ImageCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,31 @@
+<template>
+  <template lwc:if={url}>
+    <div lwc:if={pagetitle} class={computedClassName}>
+      <h3 lwc:if={title} class="rpl-social-share__title rpl-type-label-large">
+        {title}
+      </h3>
+
+      <div class="rpl-social-share__items">
+        <template for:each={_networks} for:item="network">
+          <c-sf-gps-ds-au-vic2-social-share-link
+            key={network}
+            network={network}
+            title={pagetitle}
+            label={title}
+            url={url}
+          >
+          </c-sf-gps-ds-au-vic2-social-share-link>
+        </template>
+
+        <c-sf-gps-ds-au-vic2-social-share-email
+          lwc:if={email}
+          title={pagetitle}
+          email={email}
+          label={title}
+          url={url}
+        >
+        </c-sf-gps-ds-au-vic2-social-share-email>
+      </div>
+    </div>
+  </template>
+</template>

@@ -18,7 +18,6 @@ export default class extends LightningElement {
   @api schema; // JSON Schema
   @api errors; // PropertyError[] w/ PropertyError = { message }
 
-  @track options;
   @track error;
 
   handleBlur(event) {

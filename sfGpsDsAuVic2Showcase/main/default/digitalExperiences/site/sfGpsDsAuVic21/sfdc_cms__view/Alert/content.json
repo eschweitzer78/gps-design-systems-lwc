@@ -1,0 +1,202 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Alert",
+  "contentBody": {
+    "viewType": "custom-alert",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "1421c0c7-e606-4e47-b7b7-f2ff606cf301",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "77fc41aa-15c4-48de-87d6-d7d2daf545a5",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "c3197d0f-3410-422a-9f39-11df2b493628",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"c3197d0f-3410-422a-9f39-11df2b493628\",\"columns\":[{\"UUID\":\"e4efaaa7-5ffd-4b30-ae1e-38ea671e311b\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "e4efaaa7-5ffd-4b30-ae1e-38ea671e311b",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "9e2d0f46-5293-46b4-bcac-4d9551709f8b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Alert",
+                        "description": "The Alert component display required actions or important messages to users."
+                      }
+                    },
+                    {
+                      "id": "b43b4844-47e7-479f-bfce-701ab375228e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "3dcf2604-e832-4f6e-af23-6f50d2ff9abe",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#default-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Warning blueprint\",\n\t\t\"url\": \"#warning-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#warning-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#warning-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Critical blueprint\",\n\t\t\"url\": \"#critical-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#critical-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#critical-blueprint-configuration\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "94413782-122b-4d08-9a55-64b80031d337",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>An alert&rsquo;s styling is according to its meaning and uses semantic colours.</p><p>Alert colours include:</p><ul><li>grey for general information,</li><li>orange for a minor warning,</li><li>red for a critical error or expected dangerous event.</li></ul><p>The <code>sfGpsDsAuVic2AlertComm</code> LWC appears as <code>VIC2 DS Alert</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "abfdfbe8-270f-41c4-a004-1ad72f0fe72e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>This blueprint features an informative message.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "f012ad9b-634d-45eb-9be0-bb6a30cd42ae",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./alert/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "10ee5e25-0950-4c97-9ec3-5547f363cde1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>alertId</code></td>\n\t\t\t\t\t<td>Alert ID</td>\n\t\t\t\t\t<td>\"info-1\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"information\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t\t<td>Icon name</td>\n\t\t\t\t\t<td>\"information-circle-filled\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>message</code></td>\n\t\t\t\t\t<td>Message</td>\n\t\t\t\t\t<td>\"An informative message.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td>\"[Find out more](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>dismissible</code></td>\n\t\t\t\t\t<td>Dismissible</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "0ac1b25e-4498-4438-b725-9fb96588ed67",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"warning-blueprint\">Warning blueprint</h2>\n\n\t<p>This blueprint features a warning message.</p>\n\n\t<h3 id=\"warning-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "b849945b-c8da-47b5-bd98-f02bda2ec0c9",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./alert/warning-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "27ad05c2-84fb-4dc1-abdf-bcc8c20e6e74",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"warning-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>alertId</code></td>\n\t\t\t\t\t<td>Alert ID</td>\n\t\t\t\t\t<td>\"info-1\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"warning\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t\t<td>Icon name</td>\n\t\t\t\t\t<td>\"fire\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>message</code></td>\n\t\t\t\t\t<td>Message</td>\n\t\t\t\t\t<td>\"An warning message.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td>\"[Find out more](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>dismissible</code></td>\n\t\t\t\t\t<td>Dismissible</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "25b26e07-fbee-46a2-9667-c9b99902ba2a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"critical-blueprint\">Critical blueprint</h2>\n\n\t<p>This blueprint features a critical message.</p>\n\n\t<h3 id=\"critical-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "7513acc7-b259-4f37-95a3-28998aab0ea0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./alert/critical-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "c3d00ba1-5c23-4799-8ea1-eb0e64a7c9ab",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"critical-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>alertId</code></td>\n\t\t\t\t\t<td>Alert ID</td>\n\t\t\t\t\t<td>\"info-1\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"error\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t\t<td>Icon name</td>\n\t\t\t\t\t<td>\"cancel-circle-filled\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>message</code></td>\n\t\t\t\t\t<td>Message</td>\n\t\t\t\t\t<td>\"A critical message.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td>\"[Find out more](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>dismissible</code></td>\n\t\t\t\t\t<td>Dismissible</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "ab51e02a-aca4-407a-8e82-cb15bbc85494",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>alertId</code></td>\n\t\t\t\t<td>Alert ID</td>\n\t\t\t\t<td>A unique ID.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Variant</td>\n\t\t\t\t<td>Type of alert with a choice of <code>information</code>, <code>warning</code> and  <code>error</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t<td>Icon name</td>\n\t\t\t\t<td>Any Ripple 2 <a href=\"./icon\">icon name</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>message</code></td>\n\t\t\t\t<td>Message</td>\n\t\t\t\t<td>Message displayed as the first part of the alert.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>link</code></td>\n\t\t\t\t<td>Link</td>\n\t\t\t\t<td>Link displayed as the second part of the alert in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>dismissible</code></td>\n\t\t\t\t<td>Dismissible</td>\n\t\t\t\t<td>Indicates whether the user can dismiss the alert with a close button or not.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS class to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ec30b83f-2fe0-420f-9cea-ca04ffdbb933",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "6a78f3d7-eef9-4d34-81d8-e1342de3e548",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

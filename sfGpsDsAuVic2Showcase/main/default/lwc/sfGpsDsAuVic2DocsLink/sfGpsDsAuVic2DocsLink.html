@@ -1,0 +1,23 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-au-vic2-text-link
+    url={url}
+    target="_blank"
+    class-name={computedClassName}
+  >
+    <c-sf-gps-ds-au-vic2-icon
+      lwc:if={computedShowIconStart}
+      name="icon-link-external-square-filled"
+      class-name="docs-link-icon"
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+
+    <slot> </slot>
+
+    <c-sf-gps-ds-au-vic2-icon
+      lwc:if={computedShowIconEnd}
+      name="icon-link-external-square-filled"
+      class="docs-link-icon"
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+  </c-sf-gps-ds-au-vic2-text-link>
+</template>

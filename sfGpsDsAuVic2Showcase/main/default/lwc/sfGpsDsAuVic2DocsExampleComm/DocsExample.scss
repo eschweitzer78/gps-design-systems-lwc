@@ -1,0 +1,69 @@
+@import '@dpc-sdp/ripple-ui-core/src/styles/breakpoints';
+
+.docs-example {
+  border: var(--rpl-border-1) solid var(--rpl-clr-neutral-300);
+  background: white;
+
+  margin: var(--rpl-sp-3) 0;
+
+  @media (--rpl-bp-l) {
+    margin: var(--rpl-sp-4) 0;
+  }
+}
+
+.frame {
+  min-width: 100%;
+  border: 0;
+}
+
+.with-padding .docs-example-body {
+  padding: var(--rpl-sp-5);
+}
+
+.docs-example-header {
+  border-bottom: var(--rpl-border-1) solid var(--rpl-clr-neutral-300);
+  padding: var(--rpl-sp-3) var(--rpl-sp-5);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--rpl-sp-3);
+
+  @media (--rpl-bp-s) {
+    align-items: center;
+    flex-direction: row;
+    gap: var(--rpl-sp-4);
+  }
+}
+
+.docs-example-footer {
+  border-top: var(--rpl-border-1) solid var(--rpl-clr-neutral-300);
+  padding: var(--rpl-sp-3) var(--rpl-sp-5);
+}
+
+.docs-example-code {
+  border-top: var(--rpl-border-1) solid var(--rpl-clr-neutral-300);
+  background: var(--rpl-clr-neutral-100);
+}
+
+.docs-example-code-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--rpl-sp-2);
+  text-decoration: underline;
+}
+
+.docs-example-code-btn:hover {
+  text-decoration: none;
+}
+
+.docs-example-code-btn-icon {
+  color: var(--rpl-clr-neutral-600);
+}
+
+.docs-example-code .hljs {
+  background: var(--rpl-clr-neutral-100);
+  padding: var(--rpl-sp-5);
+  white-space: pre;
+  overflow-x: auto;
+  display: block;
+}

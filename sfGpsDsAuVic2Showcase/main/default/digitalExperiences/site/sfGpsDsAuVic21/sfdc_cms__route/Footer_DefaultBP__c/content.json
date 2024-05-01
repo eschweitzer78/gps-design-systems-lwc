@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Footer default blueprint",
+  "contentBody": {
+    "activeViewId": "Footer_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-footer-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

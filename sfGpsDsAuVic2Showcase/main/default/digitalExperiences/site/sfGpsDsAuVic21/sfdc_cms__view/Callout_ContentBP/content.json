@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Content blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-callout-content-blueprint",
+    "component": {
+      "id": "02618057-038b-421a-b131-416e7247ad16",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "99333743-6078-49b3-9738-92673514f1c1",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "ef435aa4-6115-4bac-a1d5-1eb4ea31ada3",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"ef435aa4-6115-4bac-a1d5-1eb4ea31ada3\",\"columns\":[{\"UUID\":\"28b69df1-1d03-46f9-854c-cd5449e94724\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "28b69df1-1d03-46f9-854c-cd5449e94724",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "8b3d1a9d-9440-4096-adc0-b7501ac1c6ac",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "markup": "<h4>H4 Heading</h4><p>Use HTML Editor to add your own markup as content.</p><h5>H5 Heading</h5><p>Span multiple paragraphs.</p>",
+                        "className": "rpl-content rpl-callout"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "257134ba-9f65-489d-922a-75ffd98bd8a6",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "4548e203-3426-4a45-b691-c737de0719c1",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Callout content blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

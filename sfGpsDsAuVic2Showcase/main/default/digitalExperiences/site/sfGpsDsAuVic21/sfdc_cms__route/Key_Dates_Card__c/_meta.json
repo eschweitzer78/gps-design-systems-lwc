@@ -1,0 +1,6 @@
+{
+  "apiName": "Key_Dates_Card__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Cards__c",
+  "path": "routes"
+}

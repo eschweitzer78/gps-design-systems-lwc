@@ -1,0 +1,6 @@
+{
+  "apiName": "Disclaimer__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/About__c",
+  "path": "routes"
+}

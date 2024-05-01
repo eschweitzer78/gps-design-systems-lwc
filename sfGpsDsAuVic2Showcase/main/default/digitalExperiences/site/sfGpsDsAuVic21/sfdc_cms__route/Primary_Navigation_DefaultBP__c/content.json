@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Primary navigation default blueprint",
+  "contentBody": {
+    "activeViewId": "Primary_Navigation_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-primary-navigation-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

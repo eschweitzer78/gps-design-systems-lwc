@@ -1,0 +1,19 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-blockquote
+    lwc:else
+    author-name={authorName}
+    author-title={authorTitle}
+    class-name={className}
+  >
+    <span lwc:if={content} lwc:ref="content" lwc:dom="manual"> </span>
+    <template lwc:else>
+      <slot name="Content"> </slot>
+    </template>
+  </c-sf-gps-ds-au-vic2-blockquote>
+</template>

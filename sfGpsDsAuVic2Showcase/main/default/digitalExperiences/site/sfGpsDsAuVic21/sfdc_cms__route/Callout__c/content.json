@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Callout",
+  "contentBody": {
+    "activeViewId": "Callout",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-callout",
+    "urlPrefix": "callout"
+  }
+}

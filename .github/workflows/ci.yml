@@ -39,6 +39,8 @@ jobs:
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci
+        env:
+          GHCR_TOKEN: ${{ secrets.GHCR_ACCESS_TOKEN }}
 
       # Prettier formatting
       - name: "Code formatting verification with Prettier"
@@ -145,6 +147,19 @@ jobs:
         run: exit 1
 
       # Run PMD scan
+      - name: "Run PMD scan for sfGpsDsAuVic1"
+        uses: pmd/pmd-github-action@v1.4.1
+        id: pmd-sf-gps-ds-au-vic2
+        with:
+          sourcePath: "sfGpsDsAuVic2"
+          rulesets: "ruleset.xml"
+
+      # Check for PMD violations
+      - name: "Check for PMD violations"
+        if: steps.pmd-sf-gps-ds-au-vic2.outputs.violations != 0
+        run: exit 1
+
+      # Run PMD scan
       - name: "Run PMD scan for sfGpsDsFrGov"
         uses: pmd/pmd-github-action@v1.4.1
         id: pmd-sf-gps-ds-fr-gov
@@ -213,9 +228,16 @@ jobs:
       - name: "Automatically generate Omnistudio source"
         run: npm run osfilegen
 
-      # Deploy source to scratch org
+      # Deploy source to scratch org (but not showcases)
       - name: "Push source to scratch org"
-        run: sfdx project deploy start --target-org=scratch-org
+        run: |
+          sfdx project deploy start --source-dir sfGpsDs --target-org=scratch-org
+          sfdx project deploy start --source-dir sfGpsDsAuNsw --target-org=scratch-org
+          sfdx project deploy start --source-dir sfGpsDsAuNswS --target-org=scratch-org
+          sfdx project deploy start --source-dir sfGpsDsAuVic --target-org=scratch-org
+          sfdx project deploy start --source-dir sfGpsDsAuVic2 --target-org=scratch-org
+          sfdx project deploy start --source-dir sfGpsDsUkGov --target-org=scratch-org
+          sfdx project deploy start --source-dir sfGpsDsFrGov --target-org=scratch-org
 
       # Assign permissionset
       # - name: 'Assign permissionset to default user'

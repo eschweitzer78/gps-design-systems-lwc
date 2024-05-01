@@ -37,6 +37,20 @@ export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
     return this._sfGpsDsErrors;
   }
 
+  /* getters for parity with non OS version - no easy way to do that with scope imports not permitted */
+
+  get communityId() {
+    return null;
+  }
+
+  get communityBasePath() {
+    return null;
+  }
+
+  get isPreview() {
+    return false;
+  }
+
   /* lifecycle */
 
   _isConnected = false;

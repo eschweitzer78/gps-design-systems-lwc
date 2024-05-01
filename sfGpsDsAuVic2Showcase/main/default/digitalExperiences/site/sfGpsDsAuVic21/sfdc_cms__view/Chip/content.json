@@ -1,0 +1,172 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Chip",
+  "contentBody": {
+    "viewType": "custom-chip",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "f847a08c-a7d0-4266-88c7-642933adf762",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "b59b8fac-6da0-40e0-bca2-7ed8391d9af3",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "05d43fd9-4dbd-4c1e-9132-6f1f5a9395ec",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"05d43fd9-4dbd-4c1e-9132-6f1f5a9395ec\",\"columns\":[{\"UUID\":\"672374e3-bead-4451-94fb-083ec3f0052b\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "672374e3-bead-4451-94fb-083ec3f0052b",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "2412c4ac-49ce-4ab7-a8d6-3a918a480e32",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Chip",
+                        "description": "The Chip component is an interactive element to draw a user’s attention to a category."
+                      }
+                    },
+                    {
+                      "id": "16aea613-8c98-4f78-9d98-b5584470a4a0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "25578992-2df0-4d56-8415-e1c249662b8c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#default-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Reverse blueprint\",\n\t\t\"url\": \"#reverse-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#reverse-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#reverse-blueprint-configuration\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "5ee0ff87-597b-4fc8-89f8-04adc66ad106",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use chips to represent options in a specific context. They are unlike buttons, which are persistent across contexts. A chip labels or draws attention to categorised content. Chips can be interactive and help users navigate to relevant content easily.</p><p>Kindly note that we introduced a slight deviation from Ripple 2 by allowing not having a target URL for a chip. In such case, the chip is still rendered as a link, but there will be no underline on hover and the mouse cursor will stay default.</p><p>The <code>sfGpsDsAuVic2ChipComm</code> LWC packs a series of chips in a row and appears as <code>VIC2 DS Chip</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "20248b2f-be4d-44a4-b240-1b4a8d03912e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>This blueprint is to be used on a light background.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "99e2e785-caaf-4ef7-a3b5-2b2729a6511c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./chip/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "ff80e6eb-3e95-4996-bc7c-0d6791a0d79e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>links</code></td>\n\t\t\t\t\t<td>Links</td>\n\t\t\t\t\t<td>\"[Chip with link](#)[Chip without link]()\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"default\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "79489be1-5254-4dc3-bb21-10f9aee9671d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"reverse-blueprint\">Reverse blueprint</h2>\n\n\t<p>This blueprint is to be used on a dark background.</p>\n\n\t<h3 id=\"reverse-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "019d432a-f478-42b3-a814-575cd8f39b1a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./chip/reverse-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "330f33c7-0eb1-4432-a765-f5d77e1e98e6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"reverse-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>links</code></td>\n\t\t\t\t\t<td>Links</td>\n\t\t\t\t\t<td>\"[Chip with link](#)[Chip without link]()\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td>\"reverse\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "b43025a8-c0f5-4388-86f1-badf72b33303",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>links</code></td>\n\t\t\t\t<td>Links</td>\n\t\t\t\t<td>A series of labels and links in <a href=\"https://www.markdownguide.org/basic-syntax/#links\">Markdown format link format</a>. You may leave the link URL blank to achieve a non-clickable chip.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Variant</td>\n\t\t\t\t<td>Type of chip with a choice of <code>default</code> and  <code>reverse</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d82afa67-ef09-4b6f-8547-3e666a015567",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "2d2f7f60-c9ca-44b4-9d73-ee87db2ccf47",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

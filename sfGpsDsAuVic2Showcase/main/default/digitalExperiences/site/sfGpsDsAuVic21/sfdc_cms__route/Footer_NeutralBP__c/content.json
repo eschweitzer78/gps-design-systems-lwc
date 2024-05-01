@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Footer neutral blueprint",
+  "contentBody": {
+    "activeViewId": "Footer_NeutralBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-footer-neutral-blueprint",
+    "urlPrefix": "neutral-blueprint"
+  }
+}

@@ -1,0 +1,17 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-card-key-dates
+    lwc:else
+    title={_title.text}
+    url={_title.url}
+    items={_items}
+    cta-title={ctaTitle}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic2-card-key-dates>
+</template>

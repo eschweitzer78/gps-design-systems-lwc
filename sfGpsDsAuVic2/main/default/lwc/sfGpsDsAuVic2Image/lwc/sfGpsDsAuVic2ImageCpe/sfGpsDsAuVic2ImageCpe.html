@@ -1,0 +1,244 @@
+<template>
+  <ul class="slds-accordion">
+    <li class="slds-accordion__list-item">
+      <section class={computedSectionClassName} style="padding: 0">
+        <div class="slds-accordion__summary">
+          <h3 class="slds-accordion__summary-heading">
+            <button
+              aria-expanded={isOpen}
+              type="button"
+              class="slds-button slds-button_reset slds-accordion__summary-action"
+              onclick={handleAccordionClick}
+            >
+              <lightning-primitive-icon
+                icon-name="utility:chevrondown"
+                size="xx-small"
+                class="slds-accordion__summary-action-icon"
+              >
+              </lightning-primitive-icon>
+              <span title="Layout" class="slds-accordion__summary-content"
+                >{label}</span
+              >
+            </button>
+          </h3>
+        </div>
+
+        <div aria-hidden={isClosed} class="slds-accordion__content">
+          <fieldset class="slds-form-element">
+            <div class="slds-form-element__control">
+              <lightning-textarea
+                name="src"
+                label="Source"
+                value={_value.src}
+                onblur={handleChange}
+              ></lightning-textarea>
+              <lightning-textarea
+                name="alt"
+                label="Alternative text"
+                value={_value.alt}
+                onblur={handleChange}
+              ></lightning-textarea>
+
+              <!-- Image Size -->
+              <lightning-input
+                name="width"
+                type="text"
+                label="Width"
+                value={_value.width}
+                onblur={handleChange}
+              ></lightning-input>
+              <lightning-input
+                name="height"
+                type="text"
+                label="Height"
+                value={_value.height}
+                onblur={handleChange}
+              ></lightning-input>
+              <lightning-textarea
+                name="srcSet"
+                label="Source set"
+                value={_value.srcSet}
+                onblur={handleChange}
+              ></lightning-textarea>
+              <lightning-textarea
+                name="sizes"
+                label="Sizes"
+                value={_value.sizes}
+                onblur={handleChange}
+              ></lightning-textarea>
+              <lightning-input
+                name="circle"
+                type="checkbox"
+                label="Circle"
+                checked={_value.circle}
+                onchange={handleChange}
+              ></lightning-input>
+
+              <!-- Image Focal Point -->
+              <lightning-input
+                name="focalX"
+                type="text"
+                label="Focal x"
+                value={focalPoint.x}
+                onblur={handleChange}
+              ></lightning-input>
+              <lightning-input
+                name="focalY"
+                type="text"
+                label="Focal y"
+                value={focalPoint.y}
+                onblur={handleChange}
+              ></lightning-input>
+
+              <lightning-combobox
+                name="fit"
+                label="Fit"
+                options={fitOptions}
+                value={_value.fit}
+                onchange={handleChange}
+              ></lightning-combobox>
+              <lightning-combobox
+                name="priority"
+                label="Priority"
+                options={priorityOptions}
+                value={_value.priority}
+                onchange={handleChange}
+              ></lightning-combobox>
+              <lightning-input
+                name="className"
+                type="text"
+                label="Class name"
+                value={_value.className}
+                onblur={handleChange}
+              ></lightning-input>
+            </div>
+
+            <!-- Image Aspect -->
+            <legend class="slds-form-element__legend slds-form-element__label">
+              {label} aspect
+            </legend>
+            <div class="slds-form-element__control">
+              <template for:each={breakpoints} for:item="bp">
+                <div key={bp.key} class="slds-form-element">
+                  <label
+                    class="slds-form-element__label slds-no-flex"
+                    for="bpgroup"
+                    >{bp.label}</label
+                  >
+                  <div id={bp.id} class="slds-form-element__control">
+                    <div class="slds-button-group" role="group">
+                      <button
+                        title="Square"
+                        aria-pressed={bp.isSquare}
+                        class={bp.squareClass}
+                        data-bp={bp.key}
+                        data-ndx="square"
+                        onclick={handleAspectClick}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 960 960"
+                          class="slds-button__icon"
+                          aria-hidden="true"
+                        >
+                          <rect x="120" y="120" width="720" height="720" />
+                        </svg>
+                        <span class="slds-assistive-text">Square</span>
+                      </button>
+
+                      <button
+                        title="Full"
+                        aria-pressed={bp.isFull}
+                        class={bp.fullClass}
+                        data-bp={bp.key}
+                        data-ndx="full"
+                        onclick={handleAspectClick}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 960 960"
+                          class="slds-button__icon"
+                          aria-hidden="true"
+                        >
+                          <rect x="120" y="180" width="720" height="600" />
+                        </svg>
+                        <span class="slds-assistive-text">Full</span>
+                      </button>
+
+                      <button
+                        title="Wide"
+                        aria-pressed={bp.isWide}
+                        class={bp.wideClass}
+                        data-bp={bp.key}
+                        data-ndx="wide"
+                        onclick={handleAspectClick}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 960 960"
+                          class="slds-button__icon"
+                          aria-hidden="true"
+                        >
+                          <rect x="120" y="200" width="720" height="480" />
+                        </svg>
+                        <span class="slds-assistive-text">Wide</span>
+                      </button>
+
+                      <button
+                        title="Ultrawide"
+                        aria-pressed={bp.isUltrawide}
+                        class={bp.ultrawideClass}
+                        data-bp={bp.key}
+                        data-ndx="ultrawide"
+                        onclick={handleAspectClick}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 960 960"
+                          class="slds-button__icon"
+                          aria-hidden="true"
+                        >
+                          <rect x="120" y="240" width="720" height="360" />
+                        </svg>
+                        <span class="slds-assistive-text">Ultrawide</span>
+                      </button>
+
+                      <button
+                        title="Panorama"
+                        aria-pressed={bp.isPanorama}
+                        class={bp.panoramaClass}
+                        data-bp={bp.key}
+                        data-ndx="panorama"
+                        onclick={handleAspectClick}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 960 960"
+                          class="slds-button__icon"
+                          aria-hidden="true"
+                        >
+                          <rect x="120" y="300" width="720" height="240" />
+                        </svg>
+                        <span class="slds-assistive-text">Panorama</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </fieldset>
+        </div>
+      </section>
+    </li>
+  </ul>
+</template>

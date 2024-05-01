@@ -1,0 +1,19 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-list
+    lwc:else
+    type={type}
+    items={_items}
+    depth={zero}
+    icon-placement={iconPlacement}
+    with-link-ids={withLinkIds}
+    item-class-name={itemClassName}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic2-list>
+</template>

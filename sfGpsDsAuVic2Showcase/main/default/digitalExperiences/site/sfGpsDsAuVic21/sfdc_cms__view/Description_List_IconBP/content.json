@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Icon blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-description-list-icon-blueprint",
+    "component": {
+      "id": "b2623428-3dc1-4520-a3f7-b34d56d9998c",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "8a251961-f2db-4589-b09b-f38ba24888fc",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "6debf2af-2b2c-4d67-8084-2cf60c11d7e2",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"6debf2af-2b2c-4d67-8084-2cf60c11d7e2\",\"columns\":[{\"UUID\":\"0dee3b9b-ac75-42fd-b2ba-f6e973ecba1d\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "0dee3b9b-ac75-42fd-b2ba-f6e973ecba1d",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "2fd6c183-18b4-4c9d-9533-09079f111d85",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DescriptionListComm",
+                      "attributes": {
+                        "variant": "icon",
+                        "items": "[{\"term\":\"Name:\",\"description\":\"The Hon. Dame Quentin Bryce AD CVO\",\"iconName\":\"icon-user-circle-filled\"},{\"term\":\"Role:\",\"description\":\"Former governor-general of Australia\",\"iconName\":\"icon-star\",\"iconColour\":\"success\"},{\"term\":\"Alma mater:\",\"description\":\"University of Queensland\",\"iconName\":\"icon-pin\",\"iconColour\":\"warning\"}]"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "6301046c-a828-44a2-8550-8b53340c1d51",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "95457c71-b6d3-47bc-9610-fc46ef76bed8",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Description list icon blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

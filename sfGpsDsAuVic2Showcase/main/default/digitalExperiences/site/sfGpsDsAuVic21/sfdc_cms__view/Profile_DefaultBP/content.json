@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-profile-default-blueprint",
+    "component": {
+      "id": "2d1c1e82-a1f9-4922-b9a8-e66c8fe9b3b1",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "26d3d92c-ad99-42a5-9219-fbdb8c7770b2",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "b61e5c0b-7cc4-49a7-9d42-5d8dd410c703",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"b61e5c0b-7cc4-49a7-9d42-5d8dd410c703\",\"columns\":[{\"UUID\":\"cb26388a-1ea8-47ca-96d4-600e838f7fe6\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "cb26388a-1ea8-47ca-96d4-600e838f7fe6",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "c0533097-4657-40f1-bf01-306492ac39e1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ProfileComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://upload.wikimedia.org/wikipedia/commons/f/fa/Quentin_Bryce_No.1_%28cropped%29.jpg\",\"alt\":\"Dame Quentin Bryce portrait\",\"width\":148,\"height\":148,\"focalPoint\":{\"x\":74,\"y\":0}}",
+                        "items": "[{\"term\":\"Name:\",\"description\":\"The Hon. Dame Quentin Bryce AD CVO\"},{\"term\":\"Role:\",\"description\":\"Former governor-general of Australia\"},{\"term\":\"Alma mater:\",\"description\":\"University of Queensland\"}]"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "d665ec84-8b84-4fb1-b857-e0a97e5ff708",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "d82fa0e1-bd7f-4bc3-8da6-08f5f8d58b91",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Profile default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

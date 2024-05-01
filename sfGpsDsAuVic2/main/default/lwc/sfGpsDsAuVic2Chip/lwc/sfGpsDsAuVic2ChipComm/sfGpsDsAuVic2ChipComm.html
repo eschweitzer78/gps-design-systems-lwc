@@ -1,0 +1,23 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:elseif={_links}>
+    <c-sf-gps-ds-au-vic2-chip
+      items={_links}
+      variant={variant}
+      class-name={className}
+    >
+    </c-sf-gps-ds-au-vic2-chip>
+  </template>
+
+  <c-sf-gps-ds-empty
+    lwc:else
+    title="The chips list is empty."
+    content="Set the items attribute to get things going."
+  >
+  </c-sf-gps-ds-empty>
+</template>

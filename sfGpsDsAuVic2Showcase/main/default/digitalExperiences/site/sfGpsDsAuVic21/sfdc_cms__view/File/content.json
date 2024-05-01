@@ -1,0 +1,142 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "File",
+  "contentBody": {
+    "viewType": "custom-file",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "b5589b18-6992-40b8-baea-b2fc58bebc21",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "8079af6d-e6a2-4b49-9f75-5fa5a2b26264",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "574b0882-8959-4646-82d5-3454dca0a542",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"574b0882-8959-4646-82d5-3454dca0a542\",\"columns\":[{\"UUID\":\"94b8ff77-7ed9-4cac-bd4e-14dd1460e7aa\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "94b8ff77-7ed9-4cac-bd4e-14dd1460e7aa",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "3a8a006a-0a64-4330-b259-b9256302df3d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "File",
+                        "description": "The File component shows a link, with additional metadata, and lets a user download a file attachment."
+                      }
+                    },
+                    {
+                      "id": "5121b23f-8348-485f-b378-b78d9b5ba757",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "b4fdfd33-3886-4896-b06e-3515ef3f803a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#default-blueprint-configuration\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "b9c75575-9981-4605-a049-296957957e25",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use the File component to let users download an attachment. It is accompanied by an optional description so you can give the user more information.</p><p>File is made up of:</p><ul><li>the file name,</li><li>metadata including file type, size and updated date,</li><li>a document description.</li></ul><p>The <code>sfGpsDsAuVicContentComm</code> LWC can be found as <code>VIC2 DS Content</code> in the Experience Builder component palette.</p>"
+                      }
+                    },
+                    {
+                      "id": "a135098b-c533-41fc-8d66-d9ed8e790d93",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "91552210-b233-4b89-b0c4-9c5a7f8ebfa8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./file/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "9e38522b-698d-4404-ba57-53ab43ba6986",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>name</code></td>\n\t\t\t\t\t<td>Name</td>\n\t\t\t\t\t<td>\"[This is an example file](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>extension</code></td>\n\t\t\t\t\t<td>Extension</td>\n\t\t\t\t\t<td>\"pdf\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>caption</code></td>\n\t\t\t\t\t<td>Caption</td>\n\t\t\t\t\t<td>\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporar incident incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam, [quis nostrud](#) exercitation ullamco laboris nisi ut aliquip ex ea commodo.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>size</code></td>\n\t\t\t\t\t<td>File size</td>\n\t\t\t\t\t<td>\"1.5MB\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>updated</code></td>\n\t\t\t\t\t<td>Updated</td>\n\t\t\t\t\t<td>\"2024-02-12T12:40\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "16f8133e-9644-4bf2-b185-a481d7fc3335",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>name</code></td>\n\t\t\t\t<td>Name</td>\n\t\t\t\t<td>Name and URL of the document in  <a href=\"https://www.markdownguide.org/basic-syntax/#links\">Markdown link format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>extension</code></td>\n\t\t\t\t<td>Extension</td>\n\t\t\t\t<td>Extension denoting the file type.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>caption</code></td>\n\t\t\t\t<td>Caption</td>\n\t\t\t\t<td>Provides further details where the name alone may not be sufficient, in <a href=\"https://www.markdownguide.org/basic-syntax\">Markdown format</a> - leave empty to get a slot.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>size</code></td>\n\t\t\t\t<td>File size</td>\n\t\t\t\t<td>Text used to indicate the file size with unit etc.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>updated</code></td>\n\t\t\t\t<td>Updated</td>\n\t\t\t\t<td>Date when the file was last updated in ISO format.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "e7273060-fc51-471a-8793-1dd24946ba60",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "127440bd-684e-4c1d-9fec-c02554d5b8ed",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}
