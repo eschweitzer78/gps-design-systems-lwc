@@ -5,7 +5,7 @@
     "activeViewId": "Site_Contact_Us",
     "configurationTags": [],
     "pageAccess": "UseParent",
-    "routeType": "custom-contact-us",
-    "urlPrefix": "contact-us"
+    "routeType": "custom-site-contact-us",
+    "urlPrefix": "site-contact-us"
   }
 }
