@@ -46,8 +46,8 @@ jobs:
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: |
-          echo "@dpc-sdp:registry=https://npm.pkg.github.com" > ./.npmrc
-          echo "//npm.pkg.github.com:/_authToken=${{secrets.GHCR_ACCESS_TOKEN}}" >> ./.npmrc
+          echo "@dpc-sdp:registry=https://npm.pkg.github.com" > ~/.npmrc
+          echo "//npm.pkg.github.com:/_authToken=${{secrets.GHCR_ACCESS_TOKEN}}" >> ~/.npmrc
           npm ci
 
       # Prep
