@@ -49,9 +49,7 @@ jobs:
       # Install npm dependencies for cssgen
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: |
-          echo "@dpc-sdp:registry=https://npm.pkg.github.com" >> ~/.npmrc
-          npm ci
+        run: npm ci
 
       # Prep
       - name: "Prepare repo"
