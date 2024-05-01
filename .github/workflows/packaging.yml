@@ -52,9 +52,11 @@ jobs:
       # Install npm dependencies for cssgen
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
+        uses: aquacash5/npm-gpr-auth@v2
+        with:
+          token: ${{ github.token }}
         run: |
-          echo "@dpc-sdp:registry=https://npm.pkg.github.com" > ~/.npmrc
-          echo "//npm.pkg.github.com:/_authToken=${{secrets.GHCR_ACCESS_TOKEN}}" >> ~/.npmrc
+          echo "@dpc-sdp:registry=https://npm.pkg.github.com" >> ~/.npmrc
           npm ci
 
       # Prep

@@ -41,8 +41,11 @@ jobs:
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
+        uses: aquacash5/npm-gpr-auth@v2
+        with:
+          token: ${{ github.token }}
         run: |
-          echo "@dpc-sdp:registry=https://npm.pkg.github.com" > ~/.npmrc
+          echo "@dpc-sdp:registry=https://npm.pkg.github.com" >> ~/.npmrc
           npm ci
         env:
           NODE_AUTH_TOKEN: ${{ github.token }}
