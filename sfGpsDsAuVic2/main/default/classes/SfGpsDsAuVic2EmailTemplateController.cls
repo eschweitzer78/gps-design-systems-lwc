@@ -1,4 +1,5 @@
-public with sharing class SfGpsDsAuVic2EmailTemplateController {
+@SuppressWarnings('PMD.ApexCRUDViolation')
+public without sharing class SfGpsDsAuVic2EmailTemplateController {
   public class SfGpsDsAuVic2EmailTemplate {
     @AuraEnabled
     public String subject;
@@ -10,6 +11,8 @@ public with sharing class SfGpsDsAuVic2EmailTemplateController {
   public static SfGpsDsAuVic2EmailTemplate getTemplateByDevName(
     String developerName
   ) {
+    /* We do not check for CRUD as it's system access */
+
     try {
       List<EmailTemplate> tmplList = [
         SELECT Id, Name, TemplateType, Subject, Body, HtmlValue
