@@ -1,0 +1,87 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Image blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-header-image-blueprint",
+    "component": {
+      "id": "1271a711-9c09-4ca6-97b0-739514e943b2",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "79e3c631-f301-47dc-8124-e23c78844088",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "6c439462-742a-4f7b-be24-2059c6e691ea",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"6c439462-742a-4f7b-be24-2059c6e691ea\",\"columns\":[{\"UUID\":\"41d2653b-25b7-436e-8f5e-441ae0544fe3\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "41d2653b-25b7-436e-8f5e-441ae0544fe3",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "90cd462e-082a-4d94-bd28-30e6b670e778",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2HeroHeaderComm",
+                      "attributes": {
+                        "title": "Find, connect, shape your Victoria",
+                        "content": "Access grants and services, find out what's on in Victoria and have your say on government decisions.",
+                        "theme": "reverse",
+                        "cornerTop": "false",
+                        "cornerBottom": "false",
+                        "background": "{\"src\":\"https://images.unsplash.com/photo-1595434971780-79d5c20c5090?q=80&w=806&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"Melbourne morning with a couple of hot air balloons in the background\",\"srcSet\":\"https://images.unsplash.com/photo-1595434971780-79d5c20c5090?q=80&w=1209&auto=format&fit=crop&ixlib=rb-4.0.3 640w, https://images.unsplash.com/photo-1595434971780-79d5c20c5090?q=80&w=1612&auto=format&fit=crop&ixlib=rb-4.0.3 1200w, https://images.unsplash.com/photo-1595434971780-79d5c20c5090?q=80&w=4032&auto=format&fit=crop&ixlib=rb-4.0.3 1600w\",\"sizes\":\"(min-width: 640px) 640pxm (min-width: 1200px) 1200px, (min-width: 1600px) 1600px\",\"width\":\"4032\",\"height\":\"2268\"}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dd54fb89-5dd3-4fbf-9fae-7a843434b9ea",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "0a2062a7-d515-46ea-8c0d-5982840e9083",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Header image blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

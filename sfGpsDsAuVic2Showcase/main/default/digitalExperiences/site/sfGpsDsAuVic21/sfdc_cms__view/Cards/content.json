@@ -1,0 +1,64 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Cards",
+  "contentBody": {
+    "themeLayoutType": "Inner",
+    "viewType": "custom-cards",
+    "component": {
+      "id": "a724c69c-dc9c-4f51-9b18-7281b63a4109",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "60ba4553-be95-43db-b4cf-9887dfb98f06",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "fb8054b7-1ff5-4d95-b0dd-aaf9a9d482ed",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"fb8054b7-1ff5-4d95-b0dd-aaf9a9d482ed\",\"columns\":[{\"UUID\":\"435f8027-7aff-4466-ae80-e8ed076cb530\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "435f8027-7aff-4466-ae80-e8ed076cb530",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ed5a4d57-6d93-44cc-a2e0-d373ce0ba3f2",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "7f4741be-5679-4690-9a95-36eedaed5f31",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Cards",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

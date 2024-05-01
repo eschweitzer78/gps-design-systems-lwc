@@ -1,0 +1,84 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-blockquote-default-blueprint",
+    "component": {
+      "id": "f9f47a1a-9067-41e0-a6c1-4829f7ff5173",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "0cbce415-a499-4fc5-ad63-a542b38b6523",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "b56d7f69-c4e7-4c95-bd20-2ca85ffdffe7",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"b56d7f69-c4e7-4c95-bd20-2ca85ffdffe7\",\"columns\":[{\"UUID\":\"648a3f91-08d0-40e6-8525-73b545a328d0\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "648a3f91-08d0-40e6-8525-73b545a328d0",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "27a94456-b77c-4b2f-9178-5727dc43bca3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2BlockquoteComm",
+                      "attributes": {
+                        "content": "\"Berios sim destrum facientota nis ex eost aut prae vendis explam aliquis dolorpo rrorem reptaep elenis net.\"",
+                        "authorName": "Her Excellency the Hon. Linda Dessau AC",
+                        "authorTitle": "Governor of Victoria"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ffa74cfc-1b93-481c-8608-4aea556c12c1",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "0eb55cfa-f78a-4278-a466-4dfe4fa0f564",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Block quote default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

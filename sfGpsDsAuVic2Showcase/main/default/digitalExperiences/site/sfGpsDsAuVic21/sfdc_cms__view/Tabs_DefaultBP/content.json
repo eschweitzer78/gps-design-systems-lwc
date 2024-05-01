@@ -1,0 +1,135 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-tabs-default-blueprint",
+    "component": {
+      "id": "b477a024-bb6a-4bd4-a2da-a0d57c317fbf",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "68d8d22d-04cf-43c4-bb06-d0227a8e4a67",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "945927f6-8544-46f9-a8d5-fa4763bcbe5b",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"945927f6-8544-46f9-a8d5-fa4763bcbe5b\",\"columns\":[{\"UUID\":\"f302bfa5-648e-49c9-a24f-f008b4e4812f\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "f302bfa5-648e-49c9-a24f-f008b4e4812f",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "4da0757b-3058-4359-ad0f-a0c67b3cdbb6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2TabsLwr",
+                      "attributes": {
+                        "tab1Label": "Tab 1",
+                        "tab2Label": "Tab 2",
+                        "tab3Label": "Tab 3",
+                        "tab3IconName": "icon-pin"
+                      },
+                      "children": [
+                        {
+                          "id": "350a70cc-54ff-4eca-984e-c3dd79667de6",
+                          "type": "region",
+                          "name": "Tab1",
+                          "title": "Tab1",
+                          "children": [
+                            {
+                              "id": "8bb7ca5d-1516-42ad-bf6b-2a36b8219c88",
+                              "type": "component",
+                              "definition": "c:sfGpsDsAuVic2ContentComm",
+                              "attributes": {
+                                "markup": "<h2>Panel 1</h1><p>Here is some content for panel 1.</p>"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "1f9db9a2-a74d-40b4-9cdc-dbbd7b0b2fe5",
+                          "type": "region",
+                          "name": "Tab2",
+                          "title": "Tab2",
+                          "children": [
+                            {
+                              "id": "56c4e56f-cf6d-414e-817c-3d6c622acc7c",
+                              "type": "component",
+                              "definition": "c:sfGpsDsAuVic2ContentComm",
+                              "attributes": {
+                                "markup": "<h2>Panel 2</h1><p>Here is some content for panel 2.</p>"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "id": "58019dfa-295c-4242-ae56-5466d931411b",
+                          "type": "region",
+                          "name": "Tab3",
+                          "title": "Tab3",
+                          "children": [
+                            {
+                              "id": "c62281dc-6f74-4ba5-bbe3-4cc6de7be486",
+                              "type": "component",
+                              "definition": "c:sfGpsDsAuVic2ContentComm",
+                              "attributes": {
+                                "markup": "<h2>Panel 3</h1><p>Here is some content for panel 3.</p>"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "06737a7e-757f-4980-b008-97bdba249e8c",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "fceb7adf-589e-44d6-9976-22f3aebc64c7",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Tabs default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

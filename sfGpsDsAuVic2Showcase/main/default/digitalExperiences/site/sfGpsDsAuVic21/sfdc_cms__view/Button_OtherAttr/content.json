@@ -1,0 +1,266 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Other attributes",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-button-other-attributes",
+    "component": {
+      "id": "c60308c2-efea-41e7-b046-f2e73d0862de",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "d33e31b2-e902-4c0a-9988-cf6c652be650",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "4d7379da-f108-4cdf-9063-6e67dca7006a",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "640",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"4d7379da-f108-4cdf-9063-6e67dca7006a\",\"columns\":[{\"UUID\":\"f9e7c167-dda8-4f5f-a30a-8927535ae8e2\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "customCssClasses": "docs-background--neutral-100",
+              "children": [
+                {
+                  "id": "f9e7c167-dda8-4f5f-a30a-8927535ae8e2",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "ad0acf58-b463-4848-99a0-b52e7e63e275",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Login](#)",
+                        "variant": "filled",
+                        "theme": "default",
+                        "iconName": "icon-log-in-lined",
+                        "iconPosition": "left"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "360d82db-afbe-4ee1-8027-6eba7cc75938",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "640",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"360d82db-afbe-4ee1-8027-6eba7cc75938\",\"columns\":[{\"UUID\":\"68545fef-b7d2-49bd-bf32-f1ca46c87544\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "customCssClasses": "docs-background--neutral-100",
+              "children": [
+                {
+                  "id": "68545fef-b7d2-49bd-bf32-f1ca46c87544",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "bcd0f625-b14d-46ad-9a84-f96ffd355d7e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Login](#)",
+                        "variant": "filled",
+                        "theme": "default",
+                        "iconName": "icon-log-in-lined",
+                        "iconPosition": "right"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "b633d90a-0eea-4a74-86e5-f1ce92b5e583",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "640",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"b633d90a-0eea-4a74-86e5-f1ce92b5e583\",\"columns\":[{\"UUID\":\"05fc56e8-1369-4876-9f9b-b8dc9989b7e0\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "customCssClasses": "docs-background--neutral-100",
+              "children": [
+                {
+                  "id": "05fc56e8-1369-4876-9f9b-b8dc9989b7e0",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "e4a63cc8-75b5-4579-a157-2b1641597cde",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Login](#)",
+                        "variant": "filled",
+                        "theme": "default",
+                        "iconName": "icon-log-in-lined",
+                        "iconPosition": "left",
+                        "disabled": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "102f1758-7631-4033-858f-bae9cf386442",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "640",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"102f1758-7631-4033-858f-bae9cf386442\",\"columns\":[{\"UUID\":\"90e8c51a-c81c-426d-b30e-2312c375fa55\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "customCssClasses": "docs-background--neutral-100",
+              "children": [
+                {
+                  "id": "90e8c51a-c81c-426d-b30e-2312c375fa55",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "9b472143-6e97-4c7d-a880-5962f59e81fa",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Login](#)",
+                        "variant": "filled",
+                        "theme": "neutral"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "60ebc603-fe51-4843-883b-ea8c331eec25",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "640",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"60ebc603-fe51-4843-883b-ea8c331eec25\",\"columns\":[{\"UUID\":\"dfa29e78-2235-41c7-9dee-97a508d5b89a\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "customCssClasses": "docs-background--neutral-100",
+              "children": [
+                {
+                  "id": "dfa29e78-2235-41c7-9dee-97a508d5b89a",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "31f88b6f-df2b-44d2-974a-36263bc92ce8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Login](#)",
+                        "variant": "filled",
+                        "theme": "default",
+                        "busy": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b4702ec3-e8fc-432a-9b60-7c68824244bb",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "079ce194-ab45-406e-b307-5b4027049ac0",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Button other attributes",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

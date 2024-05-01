@@ -1,0 +1,78 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Show quick exit attribute",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-primary-navigation-show-quick-exit-attr",
+    "component": {
+      "id": "3a4e69a9-7278-4830-bdd9-27d3f1047e1e",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "0e255042-aa5e-4915-a14d-619d952e4a61",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "37caa48d-c35e-4afa-9346-734b97e3b870",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"37caa48d-c35e-4afa-9346-734b97e3b870\",\"columns\":[{\"UUID\":\"ce34d03a-bf96-4c79-8473-b75c1d090a84\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "ce34d03a-bf96-4c79-8473-b75c1d090a84",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "20146002-2052-432c-b390-d0e1c0df8799",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2PrimaryNavComm",
+                      "attributes": {
+                        "mode": "Integration Procedure",
+                        "ipName": "sfGpsDsAuVic_HierarchicalMenuSample",
+                        "inputJSON": "{}",
+                        "optionsJSON": "{}",
+                        "showQuickExit": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2f71802e-a36a-49ce-a225-b0fbc090ab0a",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "707ac693-09cf-4fc8-8213-bb8ffb211beb",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Primary navigation Show quick exit attribute",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

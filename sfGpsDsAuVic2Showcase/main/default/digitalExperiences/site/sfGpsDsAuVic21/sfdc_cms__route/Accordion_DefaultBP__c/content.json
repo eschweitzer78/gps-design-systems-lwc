@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Accordion default blueprint",
+  "contentBody": {
+    "activeViewId": "Accordion_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-accordion-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

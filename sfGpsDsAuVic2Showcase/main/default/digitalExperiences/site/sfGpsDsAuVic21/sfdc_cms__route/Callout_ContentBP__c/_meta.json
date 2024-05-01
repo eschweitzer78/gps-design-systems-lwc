@@ -1,0 +1,6 @@
+{
+  "apiName": "Callout_ContentBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Callout__c",
+  "path": "routes"
+}

@@ -1,0 +1,142 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Contact us",
+  "contentBody": {
+    "viewType": "custom-contact-us",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "062b6437-7da8-46c4-8e54-64ebac4c0c65",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "762c7d07-d059-4c1c-ada6-134541a88414",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "a724e2c4-9d52-4a4d-b5ac-0fe0f3917cec",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"a724e2c4-9d52-4a4d-b5ac-0fe0f3917cec\",\"columns\":[{\"UUID\":\"3337da78-b4e7-4a58-9076-4a82c1b7f263\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "3337da78-b4e7-4a58-9076-4a82c1b7f263",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "4eee1ee2-ad39-4448-8080-a299542ad446",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Contact us",
+                        "description": "The Contact us component is a list of contact details and links to help the user get in touch with you."
+                      }
+                    },
+                    {
+                      "id": "3d5dea66-37b0-4cc5-ad38-b84d4137fc9b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "707a9f8c-5d6e-404b-a931-9ea7c6182e0a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#default-blueprint-configuration\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "89562275-68d5-4f53-bb17-86b1b71e44f7",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use the contact us component to show the user multiple pieces of contact information or actions. The details should be related to the page content and a single point of contact.</p><p>Contact us details can include a:</p><ul><li>contact person,</li><li>address,</li><li>phone number,</li><li>social media account.</li></ul><p>The <code>sfGpsDsAuVic2ContactUsComm</code> LWC appears as <code>VIC2 DS Contact us</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "17959c7a-97dc-4668-90df-bba6c4f79137",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "9980db8d-b1e6-4ad3-a22b-607f29947fb1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./contact-us/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "e478d5c3-9ed1-48f9-95d7-0b84e894c121",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>name</code></td>\n\t\t\t\t\t<td>Name</td>\n\t\t\t\t\t<td>\"Shankar Ramakhumar\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>department</code></td>\n\t\t\t\t\t<td>Departmemt</td>\n\t\t\t\t\t<td>\"Department of Health\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>street</code></td>\n\t\t\t\t\t<td>Street address</td>\n\t\t\t\t\t<td>\"50 Lonsdale St, Melbourne, VIC 3000\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>items</code></td>\n\t\t\t\t\t<td>Items</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">[<br/>  {<br/>    \"text\": \"50 Lonsdale St, Melbourne VIC 3000\",<br/>    \"url\": \"http://maps.google.com/maps?q=50%20Lonsdale%20Street%20Melbourne%203000(Department%20of%20Health)\",<br/>    \"icon\": \"icon-pin\",<br/>    \"iconColour\": \"information\"<br/>  },<br/>  {<br/>    \"text\": \"https://www.health.vic.gov.au/\",<br/>    \"url\": \"https://www.health.vic.gov.au/\",<br/>    \"icon\": \"icon-browser\",<br/>    \"iconColour\": \"success\"<br/>  },<br/>  {<br/>    \"text\": \"@shankarama\",<br/>    \"url\": \"https://linkedin.com/shankar.ramakhumar.demo\",<br/>    \"icon\": \"icon-linkedin\",<br/>    \"iconColour\": \"information\"<br/>  }<br/>]</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "48a93c80-0a51-4c19-9748-da9cde829d78",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>name</code></td>\n\t\t\t\t<td>Name</td>\n\t\t\t\t<td>Contact name.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>department</code></td>\n\t\t\t\t<td>Departmemt</td>\n\t\t\t\t<td>Contact department.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>street</code></td>\n\t\t\t\t<td>Street address</td>\n\t\t\t\t<td>Street address including suburb and postal code.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>items</code></td>\n\t\t\t\t<td>Items</td>\n\t\t\t\t<td>A list of channels and contact details in JSON format as an array of <code>{text, url, icon}</code> where <code>icon</code> is an icon name from the list in the <a href=\"./icon\">icon</a> documentation.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a7b78179-010c-4f8b-a892-3bc32b15341e",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "2f21333f-9d11-4bdd-be43-e549fd13be42",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

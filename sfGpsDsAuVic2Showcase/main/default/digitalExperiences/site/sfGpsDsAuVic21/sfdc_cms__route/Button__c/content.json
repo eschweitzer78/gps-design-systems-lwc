@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Button",
+  "contentBody": {
+    "activeViewId": "Button",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-button",
+    "urlPrefix": "button"
+  }
+}

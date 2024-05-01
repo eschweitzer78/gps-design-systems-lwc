@@ -1,0 +1,6 @@
+{
+  "apiName": "Button_TertiaryBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Button__c",
+  "path": "routes"
+}

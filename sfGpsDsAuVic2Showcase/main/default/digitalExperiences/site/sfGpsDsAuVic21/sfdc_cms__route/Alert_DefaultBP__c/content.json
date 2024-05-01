@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Alert default blueprint",
+  "contentBody": {
+    "activeViewId": "Alert_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-alert-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

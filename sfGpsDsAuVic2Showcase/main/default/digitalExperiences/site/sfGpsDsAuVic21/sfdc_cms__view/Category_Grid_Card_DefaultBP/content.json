@@ -1,0 +1,125 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-category-grid-card-default-blueprint",
+    "component": {
+      "id": "655e46dd-c6d1-44c4-a682-5c2fcd3f0427",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "3d616be7-a8e2-4e36-b1a1-3b0a6f705f0b",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "3500d43d-8085-441c-b5b9-b1afc799d819",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "20rem",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"3500d43d-8085-441c-b5b9-b1afc799d819\",\"columns\":[{\"UUID\":\"632f23fb-6c3f-40fc-8343-7408c137e972\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "632f23fb-6c3f-40fc-8343-7408c137e972",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "7c3f9b6d-be8e-486f-a099-5c925ad156dd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CardCategoryGridComm",
+                      "attributes": {
+                        "title": "[Ash](#)",
+                        "content": "*Fraxinus*, commonly called ash, is a genus of flowering plants in the olive and lilac family, Oleaceae.",
+                        "image": "{\"src\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/2020_year._Herbarium._Fraxinus._img-016.jpg/475px-2020_year._Herbarium._Fraxinus._img-016.jpg?20210726115836\",\"alt\":\"Ash leaf and fruit.\"}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "fc5b0ae1-f054-4797-8e08-3d0dff26b641",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "20rem",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"fc5b0ae1-f054-4797-8e08-3d0dff26b641\",\"columns\":[{\"UUID\":\"e3000682-24cb-416f-9a06-d34682b2552b\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "e3000682-24cb-416f-9a06-d34682b2552b",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "cf144d3e-c98d-4959-b591-eb59981a0971",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CardCategoryGridComm",
+                      "attributes": {
+                        "title": "[Oak](#)",
+                        "content": "*Quercus*, commonly called oak, is a genus of flowering plants in the beeches and chestnut family, Fagaceae.",
+                        "image": "{\"src\":\"https://upload.wikimedia.org/wikipedia/commons/a/af/Quercus_robur.jpg\",\"alt\":\"Oak leaf and fruit.\"}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "edab528f-5cb4-4269-9bdb-8aabfbab2e00",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "e8b22d58-52e9-4557-a30c-e9edabbaf271",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Category grid card default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

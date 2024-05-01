@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Promotion card highlight blueprint",
+  "contentBody": {
+    "activeViewId": "Promotion_Card_HighlightBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-promotion-card-highlight-blueprint",
+    "urlPrefix": "highlight-blueprint"
+  }
+}

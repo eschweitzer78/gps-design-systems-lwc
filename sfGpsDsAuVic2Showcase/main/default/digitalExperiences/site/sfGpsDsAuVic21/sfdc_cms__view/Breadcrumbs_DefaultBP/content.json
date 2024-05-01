@@ -1,0 +1,82 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-breadcrumbs-default-blueprint",
+    "component": {
+      "id": "2ec2ae15-aff4-454d-ab97-b7ddb2d70609",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "b55f666f-477b-4715-9a6c-132cb89ecb27",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "6e11218c-1516-42ac-ab16-2aba6e87708a",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"6e11218c-1516-42ac-ab16-2aba6e87708a\",\"columns\":[{\"UUID\":\"79a5d966-0952-493e-a162-dc0d38450f0f\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "79a5d966-0952-493e-a162-dc0d38450f0f",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "c26ba127-c2ec-4877-8132-ab895601c564",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2BreadcrumbsComm",
+                      "attributes": {
+                        "items": "[Home](#)[About the VIC Government](#)[Using Victoria&rsquo;s data]()"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "72a996e0-5174-401d-ac25-f9669cbeaed9",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "8f9027f1-6bc9-4d44-9978-efdbb224f3e0",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Breadcrumbs default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

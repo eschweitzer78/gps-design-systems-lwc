@@ -1,0 +1,64 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Layout",
+  "contentBody": {
+    "themeLayoutType": "Inner",
+    "viewType": "custom-layout",
+    "component": {
+      "id": "32c84e73-4583-4a34-8068-9d223bb7a123",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "b9040645-19b0-4a83-8c53-ad536a4b1577",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "83adc0e1-49c9-440c-9cde-e0e13a0ef530",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"83adc0e1-49c9-440c-9cde-e0e13a0ef530\",\"columns\":[{\"UUID\":\"e1aa6bdb-71f0-4f0c-9d17-ece28215615d\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "e1aa6bdb-71f0-4f0c-9d17-ece28215615d",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "f8388931-fb0d-4ac9-8b56-b2073f3f388c",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "8060d444-2fe7-4e52-ba35-cfa0327eb443",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Layout",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

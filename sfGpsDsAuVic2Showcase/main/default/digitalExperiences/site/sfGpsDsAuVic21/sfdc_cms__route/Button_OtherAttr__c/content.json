@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Button other attributes",
+  "contentBody": {
+    "activeViewId": "Button_OtherAttr",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-button-other-attributes",
+    "urlPrefix": "other-attributes"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Promotion card image blueprint",
+  "contentBody": {
+    "activeViewId": "Promotion_Card_ImageBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-promotion-card-image-blueprint",
+    "urlPrefix": "image-blueprint"
+  }
+}

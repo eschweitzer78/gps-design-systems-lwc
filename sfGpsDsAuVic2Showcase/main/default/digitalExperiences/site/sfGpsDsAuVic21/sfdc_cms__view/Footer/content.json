@@ -1,0 +1,172 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Footer",
+  "contentBody": {
+    "viewType": "custom-footer",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "e90b969d-3760-435d-a8a6-8c1b37c3467f",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "8e1d3f26-924b-480d-8dda-7236c3d82ae7",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "aff4a177-b98e-43e8-8627-7c027e2b7f54",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"aff4a177-b98e-43e8-8627-7c027e2b7f54\",\"columns\":[{\"UUID\":\"d06d156c-acb0-4f36-be4d-784d76dfa00e\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "d06d156c-acb0-4f36-be4d-784d76dfa00e",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "3a0e7e5f-47a2-4edb-99a7-115d10fade28",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Footer",
+                        "description": "The Footer component helps help users find information at the bottom of a page."
+                      }
+                    },
+                    {
+                      "id": "ce46c55a-39b2-4037-b1c9-9570437816c2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "982784af-0142-4cb6-adc2-1582d8eb6f79",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Neutral blueprint\",\n\t\t\"url\": \"#neutral-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#neutral-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#neutral-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "100c3dbd-dccc-4f69-9f93-8a6c38d05ebe",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Use footers to help users find what they need after scrolling to the bottom of a page. Footers provide supplementary information such as:</p><ul><li>copyright,</li><li>contact information,</li><li>links to other pages within the website and</li><li>social media links.</li></ul><p>The footer must be used at the bottom of every page. It is separate from the primary navigation but is relevant to the entire site.</p><p>Use the <code>sfGpsDsAuVic2FooterComm</code> component which appears as <code>VIC2 DS Footer</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "b160f46d-1f71-4252-996c-d59dded26cd9",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "9a96f52c-0b58-435c-9492-dd7e7b0de68f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./footer/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "5790a518-a9dc-480a-98b5-bbc27db5b9ed",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t\t<td>Nav mode</td>\n\t\t\t\t\t<td><code>Experience Cloud Navigation</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>navigationDevName</code></td>\n\t\t\t\t\t<td>Nav navigation name</td>\n\t\t\t\t\t<td>\"VIC2 Footer Nav Default BP Example\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>credit</code></td>\n\t\t\t\t\t<td>Credit</td>\n\t\t\t\t\t<td>\"Image credit: image metadata or credit goes here.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>acknowledgement</code></td>\n\t\t\t\t\t<td>Acknowledgement</td>\n\t\t\t\t\t<td>\"The Victorian Government acknowledges Aboriginal and Torres Strait Islander people as the Traditional Custodians of the land and acknowledges and pays respect to their Elders, past and present.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>linksMode</code></td>\n\t\t\t\t\t<td>Links mode</td>\n\t\t\t\t\t<td><code>Experience Cloud Navigation</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>linksNavigationDevName</code></td>\n\t\t\t\t\t<td>Links navigation name</td>\n\t\t\t\t\t<td>\"VIC2 Footer Links Default BP Example\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>logos</code></td>\n\t\t\t\t\t<td>Logos</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">[<br/>  {<br/>    \"src\": \"data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%2280%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%2080%22%20preserveAspectRatio%3D%22none%22%3E%0A%3Cdefs%3E%0A%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%23holder%20text%20%7B%0Afill%3A%20rgb(150%2C%20150%2C%20150)%3B%0Afont-family%3AArial%2Csans-serif%3B%0Afont-size%3A%2013.333333333333334px%3B%0Afont-weight%3A400%3B%0A%7D%0A%3C%2Fstyle%3E%0A%20%20%20%20%3C%2Fdefs%3E%0A%20%20%20%20%3Cg%20id%3D%22holder%22%3E%0A%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22rgb(204%2C%20204%2C%20204)%22%3E%3C%2Frect%3E%0A%3Cg%3E%0A%3Ctext%20text-anchor%3D%22middle%22%20x%3D%2250%25%22%20y%3D%2250%25%22%20dy%3D%22.3em%22%3E200%20x%2080%3C%2Ftext%3E%0A%3C%2Fg%3E%0A%3C%2Fg%3E%0A3C%2Fsvg%3E\",<br/>    \"alt\": \"Landscape\",<br/>    \"url\": \"#\"<br/>  }<br/>]</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "509a9b9c-a6a7-4e3c-b5c5-fdadde228d0a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"neutral-blueprint\">Neutral blueprint</h2>\n\n\t\n\n\t<h3 id=\"neutral-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "930b82ef-6296-4806-8c8e-e6a2f343876f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./footer/neutral-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "5e7713ae-f67e-480e-b560-c38d9ad39501",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"neutral-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>neutral</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t\t<td>Nav mode</td>\n\t\t\t\t\t<td><code>Experience Cloud Navigation</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>navigationDevName</code></td>\n\t\t\t\t\t<td>Nav navigation name</td>\n\t\t\t\t\t<td>\"VIC2 Footer Nav Default BP Example\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>credit</code></td>\n\t\t\t\t\t<td>Credit</td>\n\t\t\t\t\t<td>\"Image credit: image metadata or credit goes here.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>acknowledgement</code></td>\n\t\t\t\t\t<td>Acknowledgement</td>\n\t\t\t\t\t<td>\"The Victorian Government acknowledges Aboriginal and Torres Strait Islander people as the Traditional Custodians of the land and acknowledges and pays respect to their Elders, past and present.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>linksMode</code></td>\n\t\t\t\t\t<td>Links mode</td>\n\t\t\t\t\t<td><code>Experience Cloud Navigation</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>linksNavigationDevName</code></td>\n\t\t\t\t\t<td>Links navigation name</td>\n\t\t\t\t\t<td>\"VIC2 Footer Links Default BP Example\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "c0ed1a59-d911-4274-9468-cb2335890cd4",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Variant</td>\n\t\t\t\t<td>Colour scheme variant with a choice of <code>default</code> and <code>neutral</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>mode</code></td>\n\t\t\t\t<td>Nav mode</td>\n\t\t\t\t<td>Sets how details of the footer nav are read with a choice of <code>Demo</code>, <code>Experience Cloud Navigation</code>, <code>Integration Procedure</code> and <code>Hide</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>navigationDevName</code></td>\n\t\t\t\t<td>Nav navigation name</td>\n\t\t\t\t<td>Pick the target Experience Cloud navigation for the footer nav when <code>mode</code> is set to <code>Experience Cloud Navigation</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>ipName</code></td>\n\t\t\t\t<td>Nav integration procedure name</td>\n\t\t\t\t<td>Name of the IP to invoke for getting the footer nav when mode is set to Integration Procedure.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>inputJSON</code></td>\n\t\t\t\t<td>Nav input JSON</td>\n\t\t\t\t<td>JSON formatted input parameters for the nav Integration Procedure.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>optionsJSON</code></td>\n\t\t\t\t<td>Nav options JSON</td>\n\t\t\t\t<td>JSON formatted options for the nav Integration Procedure.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>credit</code></td>\n\t\t\t\t<td>Credit</td>\n\t\t\t\t<td>Credit that goes at the bottom of the upper footer section.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>acknowledgement</code></td>\n\t\t\t\t<td>Acknowledgement</td>\n\t\t\t\t<td>Text displayed as acknowlegement to country with a default as suggested by VIC SDP.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS class to be applied.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>linksMode</code></td>\n\t\t\t\t<td>Links mode</td>\n\t\t\t\t<td>Sets how details of the footer links are read with a choice of <code>Demo</code>, <code>Experience Cloud Navigation</code>, <code>Integration Procedure</code> and <code>Hide</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>linksNavigationDevName</code></td>\n\t\t\t\t<td>Links navigation name</td>\n\t\t\t\t<td>Pick the target Experience Cloud navigation for the footer links when <code>linksMode</code> is set to <code>Experience Cloud Navigation</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>linksIpName</code></td>\n\t\t\t\t<td>Links integration procedure name</td>\n\t\t\t\t<td>Name of the IP to invoke for getting the footer links when <code>linksMode</code> is set to <code>Integration Procedure</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>linksInputJSON</code></td>\n\t\t\t\t<td>Links input JSON</td>\n\t\t\t\t<td>JSON formatted input parameters for the links Integration Procedure.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>linksOptionsJSON</code></td>\n\t\t\t\t<td>Links options JSON</td>\n\t\t\t\t<td>JSON formatted options for the links Integration Procedure.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>logos</code></td>\n\t\t\t\t<td>Logos</td>\n\t\t\t\t<td>Additional footer logos as a JSON array of { src, alt, url }.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "92864b71-e7b5-42a9-97e7-6aa211e0df2c",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "5b957c78-09ca-4cb5-84b4-4eb7856107f4",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Image inset or secondary blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-campaign-banner-secondary-blueprint",
+    "component": {
+      "id": "64d6b8d2-bc99-43f0-bad1-79388595ff63",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "cd226914-cf7b-451f-8310-5a2b636a3494",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "efea0b13-62d2-4d8c-8981-dce971ec634c",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"efea0b13-62d2-4d8c-8981-dce971ec634c\",\"columns\":[{\"UUID\":\"b8d9861b-510d-4689-8b50-89875172a275\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "b8d9861b-510d-4689-8b50-89875172a275",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "9e922279-2fdb-4e89-84d1-bf08f15ac6ba",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CampaignSecondaryComm",
+                      "attributes": {
+                        "title": "Affordable Housing Investment Partnerships",
+                        "content": "Making available up to $2.1 billion in low interest loans and government guarantees to finance social and affordable housing.",
+                        "link": "[Read more](#)",
+                        "image": "{\"src\":\"https://content.vic.gov.au/sites/default/files/2023-09/Artist-impression-Super-Housing-Partnerships-Kensington-Victoria.jpg?width=1536\",\"alt\":\"Artist impression of the Kensington Victoria super housing partnership\"}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ab06a305-21d1-441f-8df5-9e7a65a31902",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "0b3cb867-da49-4baa-b035-698bec44e591",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Campaign secondary blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Accordion numbered blueprint",
+  "contentBody": {
+    "activeViewId": "Accordion_NumberedBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-accordion-numbered-blueprint",
+    "urlPrefix": "numbered-blueprint"
+  }
+}

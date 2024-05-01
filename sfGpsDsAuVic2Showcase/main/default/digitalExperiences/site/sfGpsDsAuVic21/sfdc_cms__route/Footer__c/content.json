@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Footer",
+  "contentBody": {
+    "activeViewId": "Footer",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-footer",
+    "urlPrefix": "footer"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Call to action card",
+  "contentBody": {
+    "viewType": "custom-call-to-action-card",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "09354742-3fb4-485a-9532-39404d32c1bd",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "93bf62af-ab5a-4342-82ab-f57c3f748969",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "1d793aaa-7b99-4433-af45-81d957abcfb4",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"1d793aaa-7b99-4433-af45-81d957abcfb4\",\"columns\":[{\"UUID\":\"3c219d55-4642-497c-bb8c-388f6b2f9522\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "3c219d55-4642-497c-bb8c-388f6b2f9522",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "1b97c5b5-d12d-410e-98e6-08a2d40f3ad0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Call to action card",
+                        "description": "The Call to action component is a card promoting a specific piece of content and featuring a button highlighting the call to action."
+                      }
+                    },
+                    {
+                      "id": "87b14d8e-556a-4512-b237-b4c425f87601",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "281cf23a-79f3-41a1-b98d-ee357c569e0a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Image blueprint\",\n\t\t\"url\": \"#image-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#image-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#image-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "5fa6b6b5-39c8-4269-8b2a-b2ab51394d0f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>The Call to action card gives a brief summary of content or a task and features a button highlighting the call to action.<p></p>Use it to give your call to action more visual prominence. The call to action card can guide users to perform a preferred action.</p><p>The <code>sfGpsDsAuVic2CardCallToActionComm</code> component appears as <code>VIC2 DS Card (Call to action)</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "020ef255-ec81-466c-b229-e91a61e34e28",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>This blueprint features the card in its simplest expression.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "0b91a1ab-c158-4e34-8dcc-d7d78fcf24cc",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./call-to-action-card/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "44bd6c5b-ca9d-4eb9-8e11-b15a6a49fbbf",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Small Business Ventilation Program](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Funding for public-facing small businesses to purchase equipment and upgrades to improve ventilation and reduce the spread of COVID-19 and boost customer confidence.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>ctaText</code></td>\n\t\t\t\t\t<td>Call to action text</td>\n\t\t\t\t\t<td>\"Read more\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Button variant</td>\n\t\t\t\t\t<td><code>filled</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "721ca2e4-76a6-4ea2-b121-46554a62a264",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"image-blueprint\">Image blueprint</h2>\n\n\t<p>The image blueprint adds an illustrative image displayed on the top (shifted to the left-hand side of the content on larger devices).</p>\n\n\t<h3 id=\"image-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "fbca1648-918c-4243-b83f-a458ab7e0bc9",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./call-to-action-card/image-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "ac11ca6f-b2ac-4d9d-9946-6bfe3930651a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"image-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"[Small Business Ventilation Program](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Funding for public-facing small businesses to purchase equipment and upgrades to improve ventilation and reduce the spread of COVID-19 and boost customer confidence.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>ctaText</code></td>\n\t\t\t\t\t<td>Call to action text</td>\n\t\t\t\t\t<td>\"Read more\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Button variant</td>\n\t\t\t\t\t<td><code>filled</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1614447413576-b346c641c128?q=80&amp;w=890&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"Ventilation system\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "53ea6adf-b84d-4f96-8d11-ea2475642b0a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Title and target URL in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown link format</a>. The target is associated to the title from a configuration perspective as the whole card acts as a link.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>content</code></td>\n\t\t\t\t<td>Content</td>\n\t\t\t\t<td>Provides further details where the title alone may not be sufficient - in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>ctaText</code></td>\n\t\t\t\t<td>Call to action text</td>\n\t\t\t\t<td>Label of the action button.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Button variant</td>\n\t\t\t\t<td>Variant of the button style. Refer to the <a href=\"../page-content/button#documentation\">button documentation</a> for further detail.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>image</code></td>\n\t\t\t\t<td>Image</td>\n\t\t\t\t<td>Configuration of the image. Refer to the <a href=\"./page-content/image#documentation\">image documentation</a> for further detail.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "65683e5a-d525-4ac7-a4f6-5a710af08f2d",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "63967a36-9464-446b-a61b-ff0f9cf630d9",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

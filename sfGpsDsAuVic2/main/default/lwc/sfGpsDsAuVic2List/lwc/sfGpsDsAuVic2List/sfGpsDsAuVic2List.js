@@ -99,7 +99,7 @@ export default class SfGpsDsAuVic2List extends LightningElement {
 
             return rv;
           })
-        : null;
+        : [];
 
     return roe;
   }

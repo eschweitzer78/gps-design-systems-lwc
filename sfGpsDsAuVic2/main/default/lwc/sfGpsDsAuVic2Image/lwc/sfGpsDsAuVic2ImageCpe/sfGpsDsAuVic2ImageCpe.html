@@ -28,14 +28,12 @@
             <div class="slds-form-element__control">
               <lightning-textarea
                 name="src"
-                type="text"
                 label="Source"
                 value={_value.src}
                 onblur={handleChange}
               ></lightning-textarea>
               <lightning-textarea
                 name="alt"
-                type="text"
                 label="Alternative text"
                 value={_value.alt}
                 onblur={handleChange}
@@ -64,7 +62,6 @@
               ></lightning-textarea>
               <lightning-textarea
                 name="sizes"
-                type="text"
                 label="Sizes"
                 value={_value.sizes}
                 onblur={handleChange}
@@ -95,7 +92,6 @@
 
               <lightning-combobox
                 name="fit"
-                type="text"
                 label="Fit"
                 options={fitOptions}
                 value={_value.fit}
@@ -103,7 +99,6 @@
               ></lightning-combobox>
               <lightning-combobox
                 name="priority"
-                type="text"
                 label="Priority"
                 options={priorityOptions}
                 value={_value.priority}

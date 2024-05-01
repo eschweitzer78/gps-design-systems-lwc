@@ -1,0 +1,6 @@
+{
+  "apiName": "Description_List_IconBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Description_List__c",
+  "path": "routes"
+}

@@ -1,0 +1,6 @@
+{
+  "apiName": "Alert_WarningBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Alert__c",
+  "path": "routes"
+}

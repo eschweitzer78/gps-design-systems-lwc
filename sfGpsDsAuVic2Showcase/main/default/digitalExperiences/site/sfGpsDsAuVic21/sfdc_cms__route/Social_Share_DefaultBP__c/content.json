@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Social share default blueprint",
+  "contentBody": {
+    "activeViewId": "Social_Share_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-social-share-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

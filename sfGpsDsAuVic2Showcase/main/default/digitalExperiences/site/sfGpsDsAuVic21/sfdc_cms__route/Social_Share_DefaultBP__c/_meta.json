@@ -1,0 +1,6 @@
+{
+  "apiName": "Social_Share_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Social_Share__c",
+  "path": "routes"
+}

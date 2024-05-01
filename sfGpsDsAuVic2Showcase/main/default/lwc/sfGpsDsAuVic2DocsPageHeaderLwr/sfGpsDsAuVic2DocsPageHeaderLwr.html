@@ -1,0 +1,20 @@
+<template>
+  <header class="docs-page-header">
+    <h1 class="rpl-type-h1 rpl-u-margin-b-2">{title}</h1>
+    <p class="rpl-type-p-large">{description}</p>
+
+    <ul lwc:if={computedShowLinks} class="links rpl-u-margin-t-5">
+      <template for:each={_links} for:item="link">
+        <c-sf-gps-ds-au-vic2-docs-link
+          key={link.index}
+          is-external="true"
+          icon-position="start"
+          url={link.url}
+          class-name="rpl-type-p"
+        >
+          {link.text}
+        </c-sf-gps-ds-au-vic2-docs-link>
+      </template>
+    </ul>
+  </header>
+</template>

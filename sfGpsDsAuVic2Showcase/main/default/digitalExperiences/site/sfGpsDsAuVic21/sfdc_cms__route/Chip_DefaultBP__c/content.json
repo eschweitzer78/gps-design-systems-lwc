@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Chip default blueprint",
+  "contentBody": {
+    "activeViewId": "Chip_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-chip-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

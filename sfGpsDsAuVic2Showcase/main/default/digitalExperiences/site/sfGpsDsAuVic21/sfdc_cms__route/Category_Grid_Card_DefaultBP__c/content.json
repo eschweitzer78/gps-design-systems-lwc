@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Category grid card default blueprint",
+  "contentBody": {
+    "activeViewId": "Category_Grid_Card_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-category-grid-card-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en_US">
+    <head>
+        <script type="text/javascript">
+            function launchModal(_ref){var id=_ref.id,titleLabel=_ref.titleLabel,contentLabel=_ref.contentLabel,buttonLabel=_ref.buttonLabel,callback=_ref.callback;var modalTemplate="<div id=\"".concat(id,"\">\n          <section\n          role=\"alertdialog\"\n          tabindex=\"-1\"\n          aria-labelledby=\"prompt-heading-id\"\n          aria-describedby=\"prompt-message-wrapper\"\n          class=\"slds-modal slds-fade-in-open slds-modal_prompt\"\n          aria-modal=\"true\"\n          style=\"color: rgb(62, 62, 60)\"\n          >\n              <div class=\"slds-modal__container\">\n                  <header class=\"slds-modal__header slds-theme_info slds-theme_alert-texture\">\n                      <h2 class=\"slds-text-heading_medium\">").concat(titleLabel,"</h2>\n                  </header>\n                  <div class=\"slds-modal__content slds-p-around_medium\">\n                      <p id=\"prompt-message-id\">").concat(contentLabel,"</p>\n                  </div>\n                  <footer class=\"slds-modal__footer slds-theme_default\">\n                      <button class=\"slds-button slds-button_neutral js-button\">").concat(buttonLabel,"</button>\n                  </footer>\n              </div>\n          </section>\n          <div class=\"slds-backdrop slds-backdrop_open\"></div>\n      </div>");var div=document.createElement("div");div.innerHTML=modalTemplate;div.querySelector(".js-button").addEventListener("click",callback);if(!document.body){document.createElement("body")}document.body.appendChild(div.querySelector("#".concat(id)))}window.onload=function(){if(!window.isBrowserSupportedByWebruntime){var WEBRUNTIME_UNSUPPORTED_BROWSER_MODAL_ID="webruntime-browser-not-supported-message";launchModal({id:WEBRUNTIME_UNSUPPORTED_BROWSER_MODAL_ID,titleLabel:"Your browser isn't supported",contentLabel:"Your browser doesn\u2019t support some features on this site. For the best experience, update your browser to the latest version, or switch to another browser.",buttonLabel:"Got It",callback:function callback(){var modal=document.querySelector("#".concat(WEBRUNTIME_UNSUPPORTED_BROWSER_MODAL_ID));document.body.removeChild(modal)}})}};window.document.addEventListener("client-error",function(error){if(error.detail.type==="FAILED_TO_LOAD_RESOURCE"){launchModal({id:"webruntime-client-error-failed-to-load-resource",titleLabel:"Oops!",contentLabel:"Something went wrong. Please try refreshing the app",buttonLabel:"Refresh",callback:function callback(){var url=new URL(window.location);url.searchParams.set("lwr.cachebust",new Date().getTime());window.location=url.href}})}else if(error.detail.type==="TOO_MANY_REQUESTS"){window.document.cookie="TooManyRequests=true;max-age=30;";window.location.reload()}});
+        </script>
+        
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">!function(){const e={documentCreateElement:Document.prototype.createElement,elementSetAttribute:Element.prototype.setAttribute,elementAttachShadow:Element.prototype.attachShadow,elementAppendChild:Element.prototype.appendChild,htmlelementAddEventListener:Element.prototype.addEventListener,iframeContentDocumentGet:Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype,"contentDocument").get,iframeContentWindowGet:Object.getOwnPropertyDescriptor(HTMLIFrameElement.prototype,"contentWindow").get};Object.freeze(e),Object.defineProperty(window,"originalDomApis",{writable:!1,value:e});const t=window.frames;Object.defineProperty(window,"frames",{get:function(){const e=[];for(let n=0;n<t.length;n++)try{t[n].frameElement.getRootNode().nodeType===Node.DOCUMENT_FRAGMENT_NODE||e.push(t[n])}catch(o){e.push(t[n])}return e.length===t.length?t:e}})}();</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">!function(){"use strict";window.isBrowserSupportedByWebruntime=function(){const n="performance"in window&&"mark"in window.performance,e="customElements"in window;return n&&e}()}();
+</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">globalThis.LWR = globalThis.LWR || {};
+globalThis.LWR.customInit = (lwr) => {
+
+        LWR.define('@app/apexApiBasePath', [], function() { return "webruntime/api"; });
+        LWR.define('@app/apiBasePath', [], function() { return "webruntime/api"; });
+        LWR.define('@app/basePath', [], function() { return ""; });
+        LWR.define('@app/deployTarget', [], function() { return null; });
+        LWR.define('@app/guestUuidCookieName', [], function() { return null; });
+        LWR.define('@app/isDesignMode', [], function() { return false; });
+        LWR.define('@app/isPreviewMode', [], function() { return false; });
+        LWR.define('@app/routes', [], function() { return [{"label":"Service Not Available","isPublic":true,"viewId":"50ed46b3-babb-4609-96e3-fceb22e983ed","hasVanityURL":false,"patternMap":{},"id":"84b7c1e8-4382-4074-bc7f-c76fc278b6c6","path":"/maintenance.html","view":"serviceNotAvailable","isRoot":true,"isDefault":true,"page":{"type":"comm__namedPage","attributes":{"name":"Service_Not_Available"}}}]; });
+        LWR.define('@app/uiBasePath', [], function() { return ""; });
+        LWR.define('@app/versionKey', [], function() { return "0DB1e000000076L:21"; });
+        LWR.define('@app/viewToThemeLayoutMap', [], function() { return {"serviceNotAvailable":"snaThemeLayout"}; });
+        LWR.define('@salesforce/i18n/lang', [], function() { return "en_US"; });
+        LWR.define('@salesforce/site/Id', [], function() { return "0DM1e00000003ecGAA"; });
+lwr.define("webruntime/dispatcher", [], function(){ return function o11yDipatcherInit(dispatcher) { typeof lwr !== 'undefined' && lwr.attachDispatcher(dispatcher); };});
+LWR.define('@salesforce/user/Id', ['@app/user'], function(m) { return (m && typeof m === 'object' && 'default' in m ? m.default : m)['id'] });
+LWR.define('@salesforce/user/isGuest', ['@app/user'], function(m) { return (m && typeof m === 'object' && 'default' in m ? m.default : m)['isGuest'] });
+lwr.initializeApp();
+globalThis.process = { env: { NODE_ENV: "dev" } };};</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">globalThis.LWR = globalThis.LWR || {};
+Object.assign(globalThis.LWR, {
+  "bootstrapModule": "@lwrjs/app-service/communities_app/module/amd/v/0_11_15",
+  "autoBoot": false,
+  "rootComponents": [
+    "webruntime/app/v/1"
+  ],
+  "requiredModules": [
+    "lwc/v/5_0_10",
+    "@lwrjs/app-service/communities_app/module/amd/v/0_11_15"
+  ],
+  "importMappings": {
+    "default": "webruntime/component/latest/prod/en_US/",
+    "imports": {
+      "/webruntime/component/latest/prod/en_US/lwc": "webruntime/framework/3d8282afab/prod/lwr_lwc",
+      "@app/csrfToken": "webruntime/module/@app/csrfToken",
+      "@app/loginPath": "webruntime/module/@app/loginPath",
+      "@app/user": "webruntime/module/@app/user",
+      "@perm/": "webruntime/perm/",
+      "@salesforce/client/formFactor": "webruntime/module/@salesforce/client/formFactor",
+      "@salesforce/customPermission/": "webruntime/perm/custom/",
+      "@salesforce/featureFlag/": "webruntime/module/@salesforce/featureFlag/",
+      "@salesforce/user/Id": "webruntime/module/@salesforce/user/Id",
+      "@salesforce/user/isGuest": "webruntime/module/@salesforce/user/isGuest",
+      "@salesforce/userPermission/": "webruntime/perm/",
+      "@udd/": "webruntime/module/@udd/",
+      "@view/serviceNotAvailable": "webruntime/view/d3b0a83b90d3e3986cee0e2aa834b367/prod/en_US/serviceNotAvailable_view",
+      "@view/snaThemeLayout": "webruntime/view/3b718913c40c90b3b683023a6d2cef56/prod/en_US/snaThemeLayout_view",
+      "mobileruntime/hybridAppManager": "webruntime/framework/a05a9dfaec/prod/lwr_mobile",
+      "o11y/collectors": "webruntime/component/ccd028bc4886422b46ea4137c960983d/prod/en_US/o11y/collectors_cmp",
+      "o11y/simple_collector": "webruntime/component/d4b210b75ecb11f2c53e69aaaaf9c61f/prod/en_US/o11y/simple_collector_cmp"
+    }
+  }
+});</script>
+        <script src="webruntime/framework/4437cc0a76/prod/lwr_loader"></script>
+        <script src="webruntime/framework/0a066abd38/prod/lwr_bootstrap"></script>
+        <script src="webruntime/framework/e86a44b5ac/prod/lwr_app_bootstrap_hook"></script>
+        <script src="webruntime/framework/3d8282afab/prod/lwr_lwc"></script>
+        <script src="webruntime/framework/08f714063b/prod/lwr_app"></script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('lwc', ['lwc/v/5_0_10'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">
+        LWR.define('@app/authenticationCookieName', [], function() { return "__Secure-has-sid"; });
+        LWR.define('@app/extraRouteParams', [], function() { return {}; });
+        LWR.define('@app/isMobileAppMode', [], function() { return false; });
+        LWR.define('@app/user', [], function() { return {"isGuest":true,"id":null,"csrfToken":null}; });
+        LWR.define('@salesforce/user/Id', [], function() { return null; });
+        LWR.define('@salesforce/user/isGuest', [], function() { return true; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/apexApiBasePath/v/1', ['@app/apexApiBasePath'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/apiBasePath/v/1', ['@app/apiBasePath'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/authenticationCookieName/v/1', ['@app/authenticationCookieName'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/basePath/v/1', ['@app/basePath'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/csrfToken/v/1', ['@app/csrfToken'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/deployTarget/v/1', ['@app/deployTarget'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/extraRouteParams/v/1', ['@app/extraRouteParams'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/guestUuidCookieName/v/1', ['@app/guestUuidCookieName'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/isDesignMode/v/1', ['@app/isDesignMode'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/isMobileAppMode/v/1', ['@app/isMobileAppMode'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/isPreviewMode/v/1', ['@app/isPreviewMode'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/o11yApiEndpoint/v/1', ['@app/o11yApiEndpoint'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/o11yConfiguration/v/1', ['@app/o11yConfiguration'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/o11yFalconEnabled/v/1', ['@app/o11yFalconEnabled'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/o11yGuestToken/v/1', ['@app/o11yGuestToken'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/o11ySamplingRate/v/1', ['@app/o11ySamplingRate'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/routes/v/1', ['@app/routes'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/uiBasePath/v/1', ['@app/uiBasePath'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/user/v/1', ['@app/user'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/versionKey/v/1', ['@app/versionKey'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@app/viewToThemeLayoutMap/v/1', ['@app/viewToThemeLayoutMap'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@salesforce/i18n/lang/v/1', ['@salesforce/i18n/lang'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('@salesforce/site/Id/v/1', ['@salesforce/site/Id'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script type="text/javascript" nonce="f197e602-d230-4c1a-96ad-dca1de167c00">LWR.define('webruntime/dispatcher/v/1', ['webruntime/dispatcher'], function(m) { return m && typeof m === 'object' && 'default' in m ? m.default : m; });</script>
+        <script src="webruntime/view/d3b0a83b90d3e3986cee0e2aa834b367/prod/en_US/serviceNotAvailable_view"></script>
+        <script src="webruntime/view/3b718913c40c90b3b683023a6d2cef56/prod/en_US/snaThemeLayout_view"></script><style type="text/css" id="webruntime-branding">:root{--dxp-g-success:#4bca81;--dxp-g-brand:#005fb2;--dxp-s-text-heading-medium-letter-spacing:0em;--dxp-s-text-heading-small-text-decoration:none;--dxp-s-dropdown-text-color:var(--dxp-g-root-contrast);--dxp-s-text-heading-extra-large-line-height:1.25;--dxp-s-button-large-font-size:1.25rem;--dxp-g-warning-contrast-3:#ffffff;--dxp-s-button-small-radius-border:4px;--dxp-s-body-font-size:1rem;--dxp-s-dropdown-color-background:var(--dxp-g-root);--dxp-s-body-small-text-decoration:none;--dxp-s-text-heading-large-line-height:1.25;--dxp-g-neutral-contrast-3:#ffffff;--dxp-s-button-color-hover:var(--dxp-s-button-color-1);--dxp-s-text-heading-medium-text-transform:none;--dxp-g-neutral-contrast-2:#000000;--dxp-g-neutral-contrast-1:#000000;--dxp-s-button-font-size:1rem;--dxp-s-button-letter-spacing:0em;--dxp-s-button-color-focus-contrast:var(--dxp-g-brand-contrast-1);--dxp-g-warning-contrast-2:#000000;--dxp-g-warning-contrast-1:#000000;--dxp-s-link-text-color-1:var(--dxp-g-brand-1);--dxp-g-info:#16325c;--dxp-g-root:#ffffff;--dxp-g-root-contrast-1:#000000;--dxp-g-root-contrast:#1a1b1e;--dxp-g-root-contrast-2:#000000;--dxp-g-root-contrast-3:#000000;--dxp-s-header-content-max-width:none;--dxp-s-section-columns-max-width:none;--dxp-s-button-text-transform:none;--dxp-s-body-line-height:1.5;--dxp-s-body-text-decoration:none;--dxp-s-section-content-spacing-inline-end-mobile:0rem;--dxp-s-body-text-transform:none;--dxp-s-text-heading-medium-font-style:normal;--dxp-g-warning-2:#e27d00;--dxp-g-warning-3:#673900;--dxp-s-form-element-color-border:var(--dxp-g-neutral-3);--dxp-g-warning-1:#ffa534;--dxp-s-header-content-max-width-mobile:none;--dxp-s-text-heading-large-letter-spacing:0em;--dxp-s-body-font-style:normal;--dxp-s-body-letter-spacing:0em;--dxp-g-warning-contrast:#000000;--dxp-s-body-small-font-style:normal;--dxp-s-text-heading-small-font-style:normal;--dxp-s-text-heading-medium-line-height:1.25;--dxp-s-column-spacer-size:0rem;--dxp-s-text-heading-extra-large-letter-spacing:0em;--dxp-s-text-heading-large-text-transform:none;--dxp-s-text-heading-large-font-size:1.75rem;--dxp-s-text-heading-small-color:var(--dxp-g-root-contrast);--dxp-s-section-content-spacing-block-start:0rem;--dxp-s-html-font-size-mobile:1rem;--dxp-s-section-content-spacing-inline-end:0rem;--dxp-s-body-small-font-weight:400;--dxp-s-button-font-family:"Salesforce Sans";--dxp-s-form-element-color-background:var(--dxp-g-root);--dxp-g-offline-3:#000000;--dxp-g-offline-2:#070707;--dxp-g-offline-1:#303030;--dxp-s-button-font-weight:400;--dxp-s-body-font-weight:400;--dxp-s-body-small-line-height:1.25;--dxp-g-offline:#444444;--dxp-s-button-small-font-size:0.75rem;--dxp-s-text-heading-extra-large-text-decoration:none;--dxp-s-button-radius-border:4px;--dxp-g-success-contrast:#000000;--dxp-s-text-heading-small-font-size:1.125rem;--dxp-s-button-font-style:normal;--dxp-s-body-small-text-transform:none;--dxp-g-brand-contrast-1:#ffffff;--dxp-s-component-wrapper-spacer-size-mobile:0rem;--dxp-s-text-heading-small-line-height:1.25;--dxp-s-section-content-spacing-block-end:0rem;--dxp-g-brand-contrast-3:#ffffff;--dxp-s-button-color-hover-contrast:var(--dxp-g-brand-contrast-1);--dxp-g-brand-contrast-2:#ffffff;--dxp-g-brand-1:#004989;--dxp-g-brand-2:#001e38;--dxp-g-warning:#ffb75d;--dxp-g-success-3:#07190f;--dxp-g-brand-3:#000000;--dxp-g-success-2:#237747;--dxp-g-success-1:#36b66c;--dxp-s-link-text-color-hover:var(--dxp-s-link-text-color-1);--dxp-s-text-heading-small-font-family:"Salesforce Sans";--dxp-s-column-spacer-size-mobile:0rem;--dxp-g-offline-contrast-3:#ffffff;--dxp-s-text-heading-large-font-style:normal;--dxp-g-offline-contrast-2:#ffffff;--dxp-g-info-contrast-3:#ffffff;--dxp-s-body-small-font-size:0.75rem;--dxp-g-destructive-1:#a2302b;--dxp-s-button-color-active:var(--dxp-s-button-color-1);--dxp-s-text-heading-small-text-transform:none;--dxp-g-offline-contrast-1:#ffffff;--dxp-s-section-content-spacing-inline-start-mobile:0rem;--dxp-s-section-content-spacing-block-end-mobile:0rem;--dxp-g-info-contrast:#ffffff;--dxp-s-html-font-size:1rem;--dxp-s-body-font-family:"Salesforce Sans";--dxp-s-link-text-color:var(--dxp-g-brand);--dxp-s-link-text-decoration-focus:underline;--dxp-g-destructive-2:#611d1a;--dxp-g-neutral:#ecebea;--dxp-g-destructive-3:#010000;--dxp-g-info-contrast-1:#ffffff;--dxp-s-dropdown-text-color-hover:var(--dxp-g-neutral-contrast);--dxp-g-info-contrast-2:#ffffff;--dxp-s-text-heading-extra-large-font-family:"Salesforce Sans";--dxp-s-form-element-label-color:var(--dxp-g-root-contrast);--dxp-s-text-heading-large-font-family:"Salesforce Sans";--dxp-s-text-heading-extra-large-font-weight:300;--dxp-s-text-heading-medium-text-decoration:none;--dxp-s-text-heading-extra-large-font-style:normal;--dxp-s-button-large-padding:1.25rem;--dxp-s-text-heading-small-font-weight:300;--dxp-s-text-heading-large-font-weight:300;--dxp-g-info-2:#000000;--dxp-s-form-element-text-color:var(--dxp-g-root-contrast);--dxp-g-info-3:#000000;--dxp-g-destructive-contrast:#ffffff;--dxp-s-text-heading-medium-font-weight:300;--dxp-g-info-1:#0e203b;--dxp-g-destructive-contrast-1:#ffffff;--dxp-g-neutral-contrast:#000000;--dxp-s-dropdown-color-background-hover:var(--dxp-g-neutral);--dxp-g-destructive-contrast-2:#ffffff;--dxp-g-root-1:#ebebeb;--dxp-g-destructive-contrast-3:#ffffff;--dxp-g-root-2:#c2c2c2;--dxp-s-section-content-spacing-inline-start:0rem;--dxp-g-root-3:#858585;--dxp-s-button-color-1:var(--dxp-g-brand-1);--dxp-s-body-text-color:var(--dxp-g-root-contrast);--dxp-s-footer-content-max-width-mobile:none;--dxp-g-brand-contrast:#ffffff;--dxp-s-button-color:var(--dxp-g-brand);--dxp-s-form-element-width-border:1px;--dxp-g-neutral-3:#76716b;--dxp-s-body-small-text-color:var(--dxp-g-root-contrast);--dxp-g-neutral-2:#b2aeaa;--dxp-s-text-heading-extra-large-color:var(--dxp-g-root-contrast);--dxp-g-neutral-1:#d9d7d5;--dxp-s-button-color-active-contrast:var(--dxp-g-brand-contrast-1);--dxp-g-success-contrast-3:#ffffff;--dxp-g-success-contrast-2:#ffffff;--dxp-s-button-line-height:2;--dxp-s-text-heading-extra-large-font-size:2.5rem;--dxp-s-button-large-radius-border:4px;--dxp-g-success-contrast-1:#000000;--dxp-s-form-element-radius-border:4px;--dxp-s-component-wrapper-spacer-size:0rem;--dxp-s-link-text-decoration:none;--dxp-s-text-heading-medium-font-size:1.25rem;--dxp-g-destructive:#c23934;--dxp-s-dropdown-color-border:var(--dxp-g-neutral);--dxp-s-button-color-contrast:var(--dxp-g-brand-contrast);--dxp-s-section-columns-max-width-mobile:none;--dxp-g-offline-contrast:#ffffff;--dxp-s-text-heading-medium-color:var(--dxp-g-root-contrast);--dxp-s-button-small-padding:0.75rem;--dxp-s-text-heading-large-color:var(--dxp-g-root-contrast);--dxp-s-text-heading-large-text-decoration:none;--dxp-s-link-text-decoration-hover:underline;--dxp-s-button-color-focus:var(--dxp-s-button-color-1);--dxp-s-button-padding:1rem;--dxp-s-text-heading-medium-font-family:"Salesforce Sans";--dxp-s-footer-content-max-width:none;--dxp-s-body-small-font-family:"Salesforce Sans";--dxp-s-text-heading-small-letter-spacing:0em;--dxp-s-body-small-letter-spacing:0em;--dxp-s-section-content-spacing-block-start-mobile:0rem;--dxp-s-text-heading-extra-large-text-transform:none;}</style>
+        <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Welcome to LWC Communities!</title>
+
+<!-- branding stylesheets
+
+<link rel="stylesheet" href="assets/styles/salesforce-lightning-design-system.min.css?0DB1e000000076L:21" />
+<link rel="stylesheet" href="assets/styles/dxp-site-spacing-styling-hooks.min.css?0DB1e000000076L:21" />
+<link rel="stylesheet" href="assets/styles/dxp-styling-hooks.min.css?0DB1e000000076L:21" />
+-->
+
+<link rel="stylesheet" href="/sfsites/c/resource/1713353254/sfGpsDsAuVic2/global.css"/>
+<link rel="stylesheet" href="/sfsites/c/resource/1713353254/sfGpsDsAuVic2/style.css"/>
+
+<style>
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+        font-size: 62.5%;
+        --dxp-s-section-content-spacing-inline-end: 0;
+		--dxp-s-section-content-spacing-inline-start: 0;
+    }
+    
+    @media (min-width:992px) {
+		.rpl-container {
+			padding: 0 var(--rpl-sp-9);
+		}
+    }
+    
+    
+    .docs-layout-content {
+        padding-bottom: var(--rpl-sp-8);
+        padding-top: var(--rpl-sp-8);
+    }
+    
+    @media (min-width:768px) {
+        .docs-layout-content {
+            padding-bottom: var(--rpl-sp-10);
+            padding-top: var(--rpl-sp-10);
+        }
+    }
+    
+    @media (min-width:992px) {
+        .docs-layout-content {
+            padding-bottom: var(--rpl-sp-12);
+            padding-top: var(--rpl-sp-12);
+        }
+    }
+    
+    .docs-sidebar {
+        --local-vertical-nav-background: transparent;
+        --local-vertical-nav-item-gutter: var(--rpl-sp-3);
+        --local-vertical-nav-hover-bg: var(--rpl-clr-neutral-100);
+    }
+    
+    .docs-hide-mobile-sidebar .docs-sidebar {
+        display: none;
+    }
+    
+    @media (min-width:992px) {
+        .docs-hide-mobile-sidebar .docs-sidebar {
+            display: block;
+        }
+    }
+    
+    @media (min-width:992px) {
+        .docs-main {
+            padding-left: var(--rpl-sp-9);
+        }
+    }
+    
+    .docs-content {
+        padding-bottom: var(--rpl-sp-4);
+        padding-top: var(--rpl-sp-3);
+    }
+    
+    
+    @media (min-width:768px) {
+        .docs-content {
+            padding-top: var(--rpl-sp-4);
+        }
+    }
+    
+    .docs-inverted-background,
+    .docs-background--primary-alt {
+        background-color: var(--rpl-clr-primary-alt);
+    }
+    
+    .docs-background--neutral-100 {
+        background-color: var(--rpl-clr-neutral-100);
+    }
+
+    .docs-background--neutral-200 {
+        background-color: var(--rpl-clr-neutral-200);
+    }
+    
+    .docs-border {
+        border: 1px solid var(--rpl-clr-neutral-200);
+        --dxp-s-section-content-spacing-block-start: 2rem;
+        --dxp-s-section-content-spacing-block-end: 2rem;
+        --dxp-s-section-content-spacing-inline-start: 2rem;
+        --dxp-s-section-content-spacing-inline-end: 2rem;   
+    }
+    
+    .app-wysiwyg table code {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    
+    /* fix SLDS overspill: a:focus and a:hover spill over .rpl-vertical-nav__link for color  */
+    /*a.rpl-vertical-nav__link:focus,
+    a.rpl-vertical-nav__link:hover {
+	    color: var(--rpl-type-link);
+    }
+    */
+    
+    
+    /* mini SLDS */
+    .slds-button--icon, .slds-button--icon-border, .slds-button--icon-border-filled, .slds-button--icon-border-inverse, 
+    .slds-button--icon-container, .slds-button--icon-error, .slds-button--icon-inverse, .slds-button--icon-more, 
+    .slds-button--icon-warning, .slds-button_icon, .slds-button_icon-border, .slds-button_icon-border-filled, 
+    .slds-button_icon-border-inverse, .slds-button_icon-container, .slds-button_icon-error, 
+    .slds-button_icon-inverse, .slds-button_icon-more, .slds-button_icon-warning {
+        line-height: 1;
+        vertical-align: middle;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        color: var(--slds-g-color-neutral-base-50,#747474);
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+    }
+
+    .slds-button {
+        position: relative;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: var(--slds-c-button-spacing-block-start,var(--sds-c-button-spacing-block-start,0)) var(--slds-c-button-spacing-inline-end,var(--sds-c-button-spacing-inline-end,0)) var(--slds-c-button-spacing-block-end,var(--sds-c-button-spacing-block-end,0)) var(--slds-c-button-spacing-inline-start,var(--sds-c-button-spacing-inline-start,0));
+        background: none;
+        background-color: var(--slds-c-button-color-background,var(--sds-c-button-color-background,transparent));
+        background-clip: border-box;
+        border: var(--slds-c-button-sizing-border,var(--sds-c-button-sizing-border,1px)) solid var(--slds-c-button-color-border,var(--sds-c-button-color-border,transparent));
+        border-radius: var(--slds-c-button-radius-border,var(--sds-c-button-radius-border,.25rem));
+        -webkit-box-shadow: var(--slds-c-button-shadow,var(--sds-c-button-shadow));
+        box-shadow: var(--slds-c-button-shadow,var(--sds-c-button-shadow));
+        line-height: var(--slds-c-button-line-height,var(--sds-c-button-line-height,1.875rem));
+        text-decoration: none;
+        color: var(--slds-c-button-text-color,var(--sds-c-button-text-color,#0176d3));
+        -webkit-appearance: none;
+        white-space: normal;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .slds-button__icon {
+        width: .875rem;
+        height: .875rem;
+        fill: var(--slds-c-icon-color-foreground,currentColor);
+    }
+
+    .slds-assistive-text {
+        position: absolute!important;
+        margin: -1px!important;
+        border: 0!important;
+        padding: 0!important;
+        width: 1px!important;
+        height: 1px!important;
+        overflow: hidden!important;
+        clip: rect(0 0 0 0)!important;
+        text-transform: none!important;
+        white-space: nowrap!important;
+    }
+</style>
+    </head>
+    <body>
+        <webruntime-app></webruntime-app>
+    </body>
+</html>

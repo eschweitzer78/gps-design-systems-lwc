@@ -1,0 +1,6 @@
+{
+  "apiName": "Media_Embed_VideoBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Media_Embed__c",
+  "path": "routes"
+}

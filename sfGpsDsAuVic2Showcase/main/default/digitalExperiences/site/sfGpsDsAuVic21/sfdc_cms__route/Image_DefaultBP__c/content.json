@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Image default blueprint",
+  "contentBody": {
+    "activeViewId": "Image_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-image-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

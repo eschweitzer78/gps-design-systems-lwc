@@ -1,0 +1,121 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Circle attribute",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-image-circle-attribute",
+    "component": {
+      "id": "d925c97f-5846-46cf-88ab-a5002dda00bb",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "c539fd84-5c43-4736-8059-13df0976862a",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "92f09d61-21b5-436c-9435-af7eb31c63cb",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"92f09d61-21b5-436c-9435-af7eb31c63cb\",\"columns\":[{\"UUID\":\"b4e7304c-914e-47f8-b01b-abf0eeba6008\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "b4e7304c-914e-47f8-b01b-abf0eeba6008",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "a32a77f5-345b-4650-9515-9c4742abec78",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=290&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"circle\":true}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "145ad56c-eb84-4545-94a6-1b32ec148774",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"145ad56c-eb84-4545-94a6-1b32ec148774\",\"columns\":[{\"UUID\":\"554c487b-588f-4c9d-b273-110eda5996be\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "554c487b-588f-4c9d-b273-110eda5996be",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "1008f0ef-e019-4a49-9618-af247883e8e1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ImageComm",
+                      "attributes": {
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&w=290&auto=format&fit=crop&ixlib=rb-4.0.3\",\"alt\":\"The Twelve Apostles\",\"circle\":true,\"width\":232,\"height\":232}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2203cbf7-e7dd-4147-8811-61e05b136f19",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "2122add0-cc2d-4dc8-a71c-b6cdaa41e4ef",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Image circle attribute",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

@@ -1,0 +1,12 @@
+.docs-page-header {
+  margin-bottom: var(--rpl-sp-7);
+
+  @media (--rpl-bp-m) {
+    margin-bottom: var(--rpl-sp-9);
+  }
+}
+
+.links {
+  display: flex;
+  gap: var(--rpl-sp-5);
+}

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Cards",
+  "contentBody": {
+    "activeViewId": "Cards",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-cards",
+    "urlPrefix": "cards"
+  }
+}

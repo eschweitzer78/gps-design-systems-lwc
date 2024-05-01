@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Key dates card",
+  "contentBody": {
+    "activeViewId": "Key_Dates_Card",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-key-dates-card",
+    "urlPrefix": "key-dates-card"
+  }
+}

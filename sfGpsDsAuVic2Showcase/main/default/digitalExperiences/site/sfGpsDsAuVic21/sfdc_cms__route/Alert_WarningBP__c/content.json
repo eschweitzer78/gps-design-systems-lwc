@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Alert warning blueprint",
+  "contentBody": {
+    "activeViewId": "Alert_WarningBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-alert-warning-blueprint",
+    "urlPrefix": "warning-blueprint"
+  }
+}

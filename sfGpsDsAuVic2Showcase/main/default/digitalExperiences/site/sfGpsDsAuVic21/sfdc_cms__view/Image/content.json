@@ -1,0 +1,370 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Image",
+  "contentBody": {
+    "viewType": "custom-image",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "d7c08753-9c50-43d8-87ba-ddce324f460c",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "dc713450-f5d5-4d45-a3e2-95bd7d929244",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "00db8478-99a2-47b0-a221-7f5f195ce22f",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"00db8478-99a2-47b0-a221-7f5f195ce22f\",\"columns\":[{\"UUID\":\"26e3cb17-a029-480a-828f-9f7db9c2d1d0\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "26e3cb17-a029-480a-828f-9f7db9c2d1d0",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "997ec887-aecd-4549-8433-4e6a055f2534",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Image",
+                        "description": "The Image component shows a responsive image within the page content and often used as an embedded component within more targeted components."
+                      }
+                    },
+                    {
+                      "id": "a615f6e4-4ddc-4826-ac5f-e0514cd21818",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "fc922034-6b02-4d77-8b05-4618b8068bb2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Circle attribute\",\n\t\t\"url\": \"#circle-attribute\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Examples\", \"url\": \"#circle-attribute-example\" },\n\t\t\t{\"text\": \"Configuration of the bean-like example\",\"url\":\"#circle-attribute-configuration-0\" },\n\t\t\t{\"text\": \"Configuration of the circle example\",\"url\":\"#circle-attribute-configuration-1\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Aspect attribute\",\n\t\t\"url\": \"#aspect-attribute\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Examples\", \"url\": \"#aspect-attribute-example\" },\n\t\t\t{\"text\": \"Configuration of the square aspect example\",\"url\":\"#aspect-attribute-configuration-0\" },\n\t\t\t{\"text\": \"Configuration of the full aspect example\",\"url\":\"#aspect-attribute-configuration-1\" },\n\t\t\t{\"text\": \"Configuration of the wide aspect example\",\"url\":\"#aspect-attribute-configuration-2\" },\n\t\t\t{\"text\": \"Configuration of the ultrawide aspect example\",\"url\":\"#aspect-attribute-configuration-3\" },\n\t\t\t{\"text\": \"Configuration of the panorama aspect example\",\"url\":\"#aspect-attribute-configuration-4\" },\n\t\t\t{\"text\": \"Configuration of the responsive aspect example\",\"url\":\"#aspect-attribute-configuration-5\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Focal point attribute\",\n\t\t\"url\": \"#focal-point-attribute\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Examples\", \"url\": \"#focal-point-attribute-example\" },\n\t\t\t{\"text\": \"Configuration of the no focal example\",\"url\":\"#focal-point-attribute-configuration-0\" },\n\t\t\t{\"text\": \"Configuration of the top-left focal example\",\"url\":\"#focal-point-attribute-configuration-1\" },\n\t\t\t{\"text\": \"Configuration of the bottom-right focal example\",\"url\":\"#focal-point-attribute-configuration-2\" },\n\t\t\t{\"text\": \"Configuration of the feature focal example\",\"url\":\"#focal-point-attribute-configuration-3\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Fit attribute\",\n\t\t\"url\": \"#fit-attribute\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Examples\", \"url\": \"#fit-attribute-example\" },\n\t\t\t{\"text\": \"Configuration of the fit-none example\",\"url\":\"#fit-attribute-configuration-0\" },\n\t\t\t{\"text\": \"Configuration of the fit-contain example\",\"url\":\"#fit-attribute-configuration-1\" },\n\t\t\t{\"text\": \"Configuration of the fit-cover example\",\"url\":\"#fit-attribute-configuration-2\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "97a77273-a317-4076-8be8-178beb160a86",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>This documentation has been put together as a guideline for configuration of an image embedded in another  component. Consider using the <a href=\"./media-embed\">Media embed</a> component for independent use as page content.</p><p>The <code>sfGpsDsAuVic2ImageComm</code> LWC can be found as <code>VIC2 DS Image</code> in the Experience Builder component palette.</p>"
+                      }
+                    },
+                    {
+                      "id": "6367f653-ee5c-4afb-9450-03b1b713422d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t<p>The default or primary blueprint features a single image with multiple parameters weighing on how the media is rendered:</p><ul><li><code>circle</code> to denote the need for a rounded shape vs. a rectangular one,</li><li><code>focal point</code> to define the visual centre in the original image coordinate system,</li><li><code>aspect</code> to specify the aspect ratio of the image container based on screen width for responsiveness,</li><li><code>fit</code> to specify how the original image should be resized to fit the container.</li></ul>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "c19e4b0a-3a3f-4ad5-a305-7ac013982d0c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CalloutComm",
+                      "attributes": {
+                        "className": "rpl-content rpl-u-margin-b-4",
+                        "content": "Photo courtesy of [Shakti Rajpurohit](https://instagram.com/shaktirajpuroht)."
+                      }
+                    },
+                    {
+                      "id": "1113961a-d6db-42c8-9d2b-7e2f1bceeb69",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./image/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "d51aaeca-6bd4-40fd-9938-04f5f40dad7b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"circle\": false,<br/>  \"fit\": \"cover\",<br/>  \"priority\": \"auto\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "fcf5f19b-d16b-4b6f-8a5b-f82922a5cebd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"circle-attribute\">Circle attribute</h2>\n\n\t<p>As the original image is rectangular (290 x 232), not setting a width and height in the first example leads to getting rounded corners vs. an actual circle &mdash; unless the original image is wider than the container.</p><p>You can force the perfect circle aspect by forcing width and height to be equal as showcased in the second example.</p>\n\n\t<h3 id=\"circle-attribute-example\">Examples</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "7bd989be-2160-43f3-b40f-74365d9e5d59",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./image/circle-attribute",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "d47dd64b-2d82-4423-b77c-90a37c31f6a4",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"circle-attribute-configuration-0\">Configuration of the bean-like example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=290&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"circle\": true<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "feae1b8c-1e24-4873-b876-1298c67361b8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"circle-attribute-configuration-1\">Configuration of the circle example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=290&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"circle\": true,<br/>  \"width\": 232,<br/>  \"height\": 232<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "8cd69044-cb3e-4fac-a452-57a8307eb81f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"aspect-attribute\">Aspect attribute</h2>\n\n\t<p>Aspect settings let you force a specific width to height ratio for the image container, and it is responsive as you can have five separate settings based on the viewport/screen width. This effectively enables to avoid getting very tall images on very wide screens and having the top and bottom of an image cropped on smaller devices.</p><p>In the following examples (top to bottom) we did set each of the aspect values for all viewport widths for the five first examples (effectively setting only for <code>xs</code> as it carries over unless another value is set for a larger viewport), and had a different aspect value for each viewport width for the last example.</p>\n\n\t<h3 id=\"aspect-attribute-example\">Examples</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "a3a3ad0e-d133-4cfc-b09d-4f084826a97c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./image/aspect-attribute",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "a056787a-a049-4789-bb5a-464996cde5c9",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"aspect-attribute-configuration-0\">Configuration of the square aspect example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"square\"<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "a3d853ad-7b60-4d29-9e13-33d976ef2877",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"aspect-attribute-configuration-1\">Configuration of the full aspect example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"full\"<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "f6b37b66-2e78-4a14-afda-212cd52aec59",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"aspect-attribute-configuration-2\">Configuration of the wide aspect example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"wide\"<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "639a7135-6e08-4f46-805a-6d9b0ac34ca5",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"aspect-attribute-configuration-3\">Configuration of the ultrawide aspect example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"ultrawide\"<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "76d2732a-033d-4bc5-aad7-f128c5742280",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"aspect-attribute-configuration-4\">Configuration of the panorama aspect example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"panorama\"<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "cf8c8d86-e109-4b44-a7db-7bc16b77c24e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"aspect-attribute-configuration-5\">Configuration of the responsive aspect example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"square\",<br/>    \"s\": \"full\",<br/>    \"m\": \"wide\",<br/>    \"l\": \"ultrawide\",<br/>    \"xl\": \"panorama\"<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "daddecec-13a4-4380-97a9-da23f5747f63",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"focal-point-attribute\">Focal point attribute</h2>\n\n\t<p>The focal point gives you a chance to set a specific point in the image as the visual centre with the default set at the centre of the original image.</p><p>This is particularly important when you force a certain aspect ratio or constrain the image container in width or height: the aspect ratio will be very different from that of the original image and if the feature to highlight is not right in the centre it may be cropped as a result.</p><p>In the following examples (top to bottom), we force an image with a natural aspect ratio of 5:4 to a panorama aspect of 3:1 (= 5:1&frac13;), which crops about the top and bottom third of it.</p><p>We then:<ol><li>did not set a focal point,</li><li>set it to the top left corner,</li><li>set it to the bottom right corner and</li><li>finally set it on the right hand side of the first rock formation to make sure all of them are well visible no matter what aspect ratio gets applied.</li></ol><p>Note that both <code>width</code> and <code>height</code> (intrinsic size of the original image) must be set for <code>focalPoint</code>.\n\n\t<h3 id=\"focal-point-attribute-example\">Examples</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "daa99403-3216-4525-b281-88c20519e45d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./image/focal-point-attribute",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "24a477bc-37fe-49db-b282-7b9ea2a0394d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"focal-point-attribute-configuration-0\">Configuration of the no focal example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"width\": 1450,<br/>  \"height\": 1160,<br/>  \"aspect\": {<br/>    \"xs\": \"panorama\"<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "33ff9ce3-9559-48e8-93ab-e6c613b45c04",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"focal-point-attribute-configuration-1\">Configuration of the top-left focal example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"panorama\"<br/>  },<br/>  \"width\": 1450,<br/>  \"height\": 1160,<br/>  \"focalPoint\": {<br/>    \"x\": 0,<br/>    \"y\": 0<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "78952ae7-0d5c-4961-a409-87d81fa284ca",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"focal-point-attribute-configuration-2\">Configuration of the bottom-right focal example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"panorama\"<br/>  },<br/>  \"width\": 1450,<br/>  \"height\": 1160,<br/>  \"focalPoint\": {<br/>    \"x\": 1450,<br/>    \"y\": 1160<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "2f536ebf-07ec-4592-b559-db6825aa6a72",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"focal-point-attribute-configuration-3\">Configuration of the feature focal example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;w=1450&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"panorama\"<br/>  },<br/>  \"width\": 1450,<br/>  \"height\": 1160,<br/>  \"focalPoint\": {<br/>    \"x\": 550,<br/>    \"y\": 450<br/>  }<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "835e05ec-05a4-414c-a79f-7830eb50be07",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"fit-attribute\">Fit attribute</h2>\n\n\t<p>The fit setting lets you define the scaling behaviour when the container aspect ratio is different from that of the original image.</p>\n\n\t<h3 id=\"fit-attribute-example\">Examples</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "6c23d47c-3fd4-4c20-b9ee-38092a7f1afe",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./image/fit-attribute",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "0cf57090-78f0-492b-a63e-83b8955083f8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"fit-attribute-configuration-0\">Configuration of the fit-none example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"panorama\"<br/>  },<br/>  \"fit\": \"none\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "1a4a53ab-1aae-4170-9da3-54b584f2f085",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"fit-attribute-configuration-1\">Configuration of the fit-contain example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"panorama\"<br/>  },<br/>  \"fit\": \"contain\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "f0a5afee-c641-441a-a9c8-618c6f9500e4",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"fit-attribute-configuration-2\">Configuration of the fit-cover example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1627597989502-3a4c8527d949?q=80&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\",<br/>  \"alt\": \"The Twelve Apostles\",<br/>  \"aspect\": {<br/>    \"xs\": \"panorama\"<br/>  },<br/>  \"fit\": \"cover\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "d381feaa-c542-4355-8bee-741d8ef9ff5b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Clearly identifies the primary purpose or action of the page and acts as a call to action for the user.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>content</code></td>\n\t\t\t\t<td>Content</td>\n\t\t\t\t<td>Provides further details when title alone may not be sufficient.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2484107d-403c-438b-aef2-9087d57f3d30",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "f7fd69a5-2323-4a9b-80cc-340f8c11a4ec",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

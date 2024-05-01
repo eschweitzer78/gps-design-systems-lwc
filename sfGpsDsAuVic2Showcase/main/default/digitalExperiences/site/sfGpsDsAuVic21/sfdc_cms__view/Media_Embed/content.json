@@ -1,0 +1,202 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Media embed",
+  "contentBody": {
+    "viewType": "custom-media-embed",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "d3e70b6b-31ac-4a1d-b561-941c36d91568",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "fef95d23-09a2-478d-a41f-74d3a8cfbd38",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "d2fcc5e0-943f-4ac4-9b9d-f02862f580c5",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"d2fcc5e0-943f-4ac4-9b9d-f02862f580c5\",\"columns\":[{\"UUID\":\"dde0b131-10ea-435a-ac2d-48f150c9673f\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "dde0b131-10ea-435a-ac2d-48f150c9673f",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "aad4f186-ee1a-4321-8078-ab8767785352",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Media embed",
+                        "description": "The Media embed component shows an image or video within the page content, with optional text to give context."
+                      }
+                    },
+                    {
+                      "id": "337abff4-d210-4363-a934-1efe13bb7414",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "12454c48-4246-4940-a6b1-ce97fb33b84d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Video blueprint\",\n\t\t\"url\": \"#video-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#video-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#video-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Complex media blueprint\",\n\t\t\"url\": \"#complex-media-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#complex-media-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#complex-media-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "387ebc14-8e53-4611-8259-e2d096023c6d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use media embed to add visual elements including images, videos, graphs, infographics, maps and charts to your page content.</p><p>Use the optional text to combine the visual element with text, so that the user understands the visual element’s context. Optional text should always be used for complex media like graphs and charts with supporting data.</p><p>Media can be an image or video. Images can display as in the following sizes:</p><ul><li><code>small</code> (maximum width of 148px),</li><li><code>medium</code> (maximum width of 264px),</li><li><code>large</code> (no maximum width).</li></ul><p>Use the <code>sfGpsDsAuVic2MediaEmbedComm</code> component which appears as <code>VIC2 DS Media embed</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "6a3ef274-62e1-4dc9-b474-3d86b951eab9",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\tIn the default (image) blueprint, images can display as small, medium or large.</p><p>There are also four aspect (<code>variant</code>) options:</p><ul><li><code>landscape</code> with a 16:9 ratio,</li><li><code>portrait</code> with a 3:4 ratio,</li><li><code>square</code> with a 1:1 ratio,</li><li><code>avatar</code> (aka circle, only in small and medium size).</li></ul><p>The image is cropped to meet the specified ratio. While the official Ripple 2 documentation suggests you make sure the focal point is best placed to accurately represent the item, there is currently no focal point setting in the original <code>vue.js</code> component. Consider using the <a href=\"./image\">image</a> component as an alternative if setting the focal point is important.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "0f63eea8-1e6d-48f4-a790-f8a846150fa0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./media-embed/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "98eb43d5-2934-4970-864a-78f7e68b78f5",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>type</code></td>\n\t\t\t\t\t<td>Type</td>\n\t\t\t\t\t<td><code>\"image\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>\"landscape\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>size</code></td>\n\t\t\t\t\t<td>Size</td>\n\t\t\t\t\t<td><code>\"large\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Media embed\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>showTitle</code></td>\n\t\t\t\t\t<td>Show title</td>\n\t\t\t\t\t<td><code>false</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>src</code></td>\n\t\t\t\t\t<td>Media source</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"https://images.unsplash.com/photo-1642636494867-36193b3f7df6?q=80&amp;w=1460&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>caption</code></td>\n\t\t\t\t\t<td>Caption</td>\n\t\t\t\t\t<td>\"Phillip Island, Victoria, Australia\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>srcCaption</code></td>\n\t\t\t\t\t<td>Source caption</td>\n\t\t\t\t\t<td>\"Photo courtesy of Zac Porter.\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "f16f87f5-ef54-4fe8-b5fa-df2ac2badf36",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"video-blueprint\">Video blueprint</h2>\n\n\t<p>Videos will always display at a 16:9 ratio with no maximum width, so the <code>variant</code> and <code>size</code> attributes are ignored.</p><p>A 'view transcript' link displays by default. Videos must have both closed captions and a transcript.</p><p>Include a supporting caption to give extra context to the user.</p>\n\n\t<h3 id=\"video-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "3471a910-3c2b-4143-91aa-4c77fb444574",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./media-embed/video-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "63fa1d09-73b5-4602-ac07-70c0764c22cd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"video-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>type</code></td>\n\t\t\t\t\t<td>Type</td>\n\t\t\t\t\t<td><code>\"video\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>\"landscape\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>size</code></td>\n\t\t\t\t\t<td>Size</td>\n\t\t\t\t\t<td><code>\"large\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Media embed\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>showTitle</code></td>\n\t\t\t\t\t<td>Show title</td>\n\t\t\t\t\t<td><code>false</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>src</code></td>\n\t\t\t\t\t<td>Media source</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"https://www.youtube.com/embed/bSlnfyGTiss\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>transcriptUrl</code></td>\n\t\t\t\t\t<td>Transcript URL</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"#\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>caption</code></td>\n\t\t\t\t\t<td>Caption</td>\n\t\t\t\t\t<td>\"Getting things done in the Loddon Campaspe Region\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "5811ca7c-80fc-42fc-9fca-316309f62f84",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"complex-media-blueprint\">Complex media blueprint</h2>\n\n\t<p>The complex media blueprint is suited when your items (images only) contain detail, e.g.:</p><ul><li>infographics,</li><li>graphs,</li><li>flowcharts,</li><li>maps etc.</li></ul><p>You can support your media by providing:</p><ul><li>optional supporting data such as content or tables,</li><li>a view fullscreen link,</li><li>a download media link.</li></ul><p>Optional supporting data displays in a dropdown list. Use the type of content that will best communicate your supporting data to the user. For example, some information is conveyed better by a table, rather than plain text.</p><p>Complex media will always display the full image. The media item will display at a predefined max height or width.</p>\n\n\t<h3 id=\"complex-media-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "b18ab9e4-c4fb-40d6-8eed-4f04bc83d4b0",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./media-embed/complex-media-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "5be2fcfd-3412-4b16-b689-0617fb2571b2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"complex-media-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>type</code></td>\n\t\t\t\t\t<td>Type</td>\n\t\t\t\t\t<td><code>\"image\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>\"complex\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>size</code></td>\n\t\t\t\t\t<td>Size</td>\n\t\t\t\t\t<td><code>\"large\"</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Southern Victoria\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>showTitle</code></td>\n\t\t\t\t\t<td>Show title</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>src</code></td>\n\t\t\t\t\t<td>Media source</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"https://images.unsplash.com/photo-1642636494867-36193b3f7df6?q=80&amp;w=1460&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>caption</code></td>\n\t\t\t\t\t<td>Caption</td>\n\t\t\t\t\t<td>\"Phillip Island, Victoria, Australia\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>srcCaption</code></td>\n\t\t\t\t\t<td>Source caption</td>\n\t\t\t\t\t<td>\"Photo courtesy of Zac Porter.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>allowFullscreen</code></td>\n\t\t\t\t\t<td>Full screen allowed</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>dSlot</code></td>\n\t\t\t\t\t<td>Display data content</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>dContent</code></td>\n\t\t\t\t\t<td>Data content</td>\n\t\t\t\t\t<td>\"&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo est eu   venenatis tincidunt. Sed sit amet magna tortor. Nullam gravida, nibh a tincidunt tempor.&lt;/p&gt;&lt;p&gt;Nulla mauris turpis, mollis et fermentum in, tincidunt vitae enim. Aenean gravida, mi a pharetra tempor.&lt;/p&gt;\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>downloadUrl</code></td>\n\t\t\t\t\t<td>Download URL</td>\n\t\t\t\t\t<td>\"https://unsplash.com/photos/iLr7JABLWPo/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzEyNjU4NTkwfA&amp;force=true\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "479f9e8d-279a-499d-8e36-c4ae562f5a2e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>type</code></td>\n\t\t\t\t<td>Type</td>\n\t\t\t\t<td>Type of media to be used, amongst the following values: <code>image</code> and <code>video</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Variant</td>\n\t\t\t\t<td>Aspect ratio variant for image media types, amongst the following values: <code>landscape</code>, <code>portrait</code>, <code>square</code>, <code>avatar</code> and <code>complex</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>size</code></td>\n\t\t\t\t<td>Image size</td>\n\t\t\t\t<td>Display size for image media types, amongst the following values: <code>small</code>, <code>medium</code>, <code>large</code> with the latter downgraded for the <code>avatar</code> variant.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Title, used as a header in-place if showTitle is set, and in fullscreen modal.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>src</code></td>\n\t\t\t\t<td>Media source</td>\n\t\t\t\t<td>URL of the target image or video.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>transcriptUrl</code></td>\n\t\t\t\t<td>Transcript URL</td>\n\t\t\t\t<td>URL of the transcript, mandatory for video media types.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>caption</code></td>\n\t\t\t\t<td>Caption</td>\n\t\t\t\t<td>Caption text, also used as alternative text for image media types.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>sourceCaption</code></td>\n\t\t\t\t<td>Source caption</td>\n\t\t\t\t<td>Caption detailing the media source or credits.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>allowFullscreen</code></td>\n\t\t\t\t<td>Full screen allowed</td>\n\t\t\t\t<td>Adds an action that lets the user open the media source in a modal when set. The fullscreen view includes the media item title and caption. Media fullscreen takes over the viewport completely. However, a transparent background helps users to know they are still on the page.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>fullscreenLabel</code></td>\n\t\t\t\t<td>Fullscreen label</td>\n\t\t\t\t<td>Label that replaces the default for the fullscreen action.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>dSlot</code></td>\n\t\t\t\t<td>Display data content</td>\n\t\t\t\t<td>Adds an action that lets the user display additional data when set. Only relevant for the <code>complex</code> variant.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>dContent</code></td>\n\t\t\t\t<td>Data content</td>\n\t\t\t\t<td>Data content as HTML markup, leveraged in a <a href=\"./content\">content</a> component. Leave empty to get an LWR slot, which is only accessible in Experience Builder when you trigger the data display action in Preview mode and switch back to Builder mode.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>dLabel</code></td>\n\t\t\t\t<td>Data label</td>\n\t\t\t\t<td>Label that replaces the default for the display data action.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>downloadUrl</code></td>\n\t\t\t\t<td>Download URL</td>\n\t\t\t\t<td>URL of a downloadable version of the media source, e.g. a higher quality image. Only relevant for the <code>complex</code> variant.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>downloadLabel</code></td>\n\t\t\t\t<td>Download label</td>\n\t\t\t\t<td>Label that replaces the default for the download media action.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "0bf5206b-f411-4127-9d7d-b624e79dc758",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "7af9a9a6-b378-4c1e-a320-26157f099170",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

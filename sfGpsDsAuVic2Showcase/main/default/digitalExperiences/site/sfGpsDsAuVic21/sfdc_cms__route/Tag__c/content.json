@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Tag",
+  "contentBody": {
+    "activeViewId": "Tag",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-tag",
+    "urlPrefix": "tag"
+  }
+}

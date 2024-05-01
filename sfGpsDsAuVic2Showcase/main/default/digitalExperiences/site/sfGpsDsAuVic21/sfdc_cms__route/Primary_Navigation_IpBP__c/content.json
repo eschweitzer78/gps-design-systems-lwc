@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Primary navigation IP blueprint",
+  "contentBody": {
+    "activeViewId": "Primary_Navigation_IpBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-primary-navigation-ip-blueprint",
+    "urlPrefix": "ip-blueprint"
+  }
+}

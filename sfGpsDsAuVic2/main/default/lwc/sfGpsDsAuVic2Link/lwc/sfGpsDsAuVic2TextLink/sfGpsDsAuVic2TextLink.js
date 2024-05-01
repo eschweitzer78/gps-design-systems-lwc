@@ -5,6 +5,7 @@ export default class SfGpsDsAuVic2TextLink extends LightningElement {
   @api url;
   @api target;
   @api text;
+  @api preventDefault;
   @api className;
 
   get computedClassName() {

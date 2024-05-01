@@ -1,0 +1,6 @@
+{
+  "apiName": "Header__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Page_Content__c",
+  "path": "routes"
+}

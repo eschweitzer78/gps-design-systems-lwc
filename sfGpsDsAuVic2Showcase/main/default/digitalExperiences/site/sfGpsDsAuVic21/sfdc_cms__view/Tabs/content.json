@@ -1,0 +1,133 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Tabs",
+  "contentBody": {
+    "viewType": "custom-tabs",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "8faecc96-595e-40e0-853c-e3646619edb3",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "2f772955-1d15-41df-969f-323b9b4c7b1e",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "2ad0a749-09c2-4a92-8168-99eb0c25be8a",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"2ad0a749-09c2-4a92-8168-99eb0c25be8a\",\"columns\":[{\"UUID\":\"2ab2ec87-2fc4-4f49-98d5-2ae0fdc8a6ba\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "2ab2ec87-2fc4-4f49-98d5-2ae0fdc8a6ba",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "4c452e29-d47f-411e-b275-e4092dae682f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Tabs",
+                        "description": "The Tab component lets you organise related content so that users can switch between related information on the same page."
+                      }
+                    },
+                    {
+                      "id": "beed1321-17e1-4ff5-944b-c4511bddacac",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud LWR]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "3e6becda-1ec3-4d98-90b6-78b3152d2699",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "40d850aa-ea24-437d-85fc-7bb5e369c9bd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Use tabs to let users stay on the same page, but access more content. Only one tab is active at a time. Tabs help users navigate between, and display and hide, relevant content on your page so long as:</p><ul><li>you can split, categorise and clearly label the content,</li><li>there is a section more relevant for most users, which is placed first,</li><li>seeing the all sections at the same time is not needed,</li><li>you have a minimum of 2 tabs</li></ul><p>Use tabs to organise content so a user doesn't have to navigate away to complete their task. Tabs are useful for maps or dashboards.</p><p>Never use tabs if your content is sequential. Use it to present related content together, as a group.</p><p>The <code>sfGpsDsAuVic2TabsLWR</code> component appears as <code>VIC2 DS LWR Tabs</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "e18580c7-ce34-4952-aac0-94b23ef1cc3c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "52e07e9b-7d97-4572-90f2-b4a243808bda",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./tabs/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "5bdb21d1-8e90-4c8f-967c-1fae23cbe83d",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<p>Three <a href=\"./page-content\">page content</a> components (<code>sfGpsDsAuVic2PageContentComm</code>) were slotted, one for each tab slot.</p>\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>tab1Label</code></td>\n\t\t\t\t\t<td>Tab 1 Label</td>\n\t\t\t\t\t<td>\"Tab 1\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>tab2Label</code></td>\n\t\t\t\t\t<td>Tab 2 Label</td>\n\t\t\t\t\t<td>\"Tab 2\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>tab3Label</code></td>\n\t\t\t\t\t<td>Tab 3 Label</td>\n\t\t\t\t\t<td>\"Tab 3\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>tab3Icon</code></td>\n\t\t\t\t\t<td>Tab 3 Icon</td>\n\t\t\t\t\t<td>\"icon-pin\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "99b96cbf-e2c5-4abc-b9bc-ff9a606747f3",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "095e4985-0197-4eef-b269-559fff7675e5",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

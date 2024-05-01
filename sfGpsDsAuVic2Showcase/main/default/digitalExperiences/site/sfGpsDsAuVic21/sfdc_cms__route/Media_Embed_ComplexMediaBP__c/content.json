@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Media embed complex media blueprint",
+  "contentBody": {
+    "activeViewId": "Media_Embed_ComplexMediaBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-media-embed-complex-media-blueprint",
+    "urlPrefix": "complex-media-blueprint"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Secondary logo blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-primary-navigation-secondary-logo-blueprint",
+    "component": {
+      "id": "8618f7ff-d54a-41e6-93f7-9235d3969c76",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "23a602e4-8f4e-4f32-90dc-853f1fb9245c",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "ca09d726-f4ac-443f-8874-009b0f0c7be6",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"ca09d726-f4ac-443f-8874-009b0f0c7be6\",\"columns\":[{\"UUID\":\"ce96a991-6cfd-4691-8e41-6cf041287939\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "ce96a991-6cfd-4691-8e41-6cf041287939",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "b8df3e85-7941-4da5-980b-e117a66417ce",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2PrimaryNavComm",
+                      "attributes": {
+                        "mode": "Integration Procedure",
+                        "ipName": "sfGpsDsAuVic_HierarchicalMenuSample",
+                        "inputJSON": "{}",
+                        "optionsJSON": "{}",
+                        "secondaryLogo": "{\"href\":\"#\",\"src\":\"/sfsites/c/resource/sfGpsDsAuVic2_showcase/logos/primary-nav-logo-secondary.svg\",\"altText\":\"Secondary logo alt text\",\"printSrc\":\"/sfsites/c/resource/sfGpsDsAuVic2_showcase/logos/primary-nav-logo-secondary-print.svg\"}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "a6dcf06e-c6c1-4ca7-ad88-8ee399626c0c",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "52b7c0cd-65db-464c-9098-a7d5967dfff5",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Primary navigation secondary logo blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

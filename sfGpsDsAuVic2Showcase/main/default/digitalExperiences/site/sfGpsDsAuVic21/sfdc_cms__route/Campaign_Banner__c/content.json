@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Campaign banner",
+  "contentBody": {
+    "activeViewId": "Campaign_Banner",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-campaign-banner",
+    "urlPrefix": "campaign-banner"
+  }
+}

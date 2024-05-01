@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Contact us default blueprint",
+  "contentBody": {
+    "activeViewId": "Contact_Us_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-contact-us-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

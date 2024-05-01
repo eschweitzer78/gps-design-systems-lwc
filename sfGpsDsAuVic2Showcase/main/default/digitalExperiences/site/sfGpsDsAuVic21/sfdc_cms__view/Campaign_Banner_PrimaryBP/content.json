@@ -1,0 +1,86 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Featured or primary blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-campaign-banner-primary-blueprint",
+    "component": {
+      "id": "23e9b0d0-411e-4c75-842b-a1d72c77e1c6",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "7e037996-82f8-48c6-a687-0fe589128342",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "48efa13f-e25d-479b-9939-2c4531c70aa2",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"48efa13f-e25d-479b-9939-2c4531c70aa2\",\"columns\":[{\"UUID\":\"e5039881-153f-4984-9233-c9e80d431acb\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "e5039881-153f-4984-9233-c9e80d431acb",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "caddb4b4-10ad-4357-ab95-6c6f8c568ee1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CampaignPrimaryComm",
+                      "attributes": {
+                        "title": "Applications are open for the Victorian Government graduate program",
+                        "content": "Applications are open for the 2025 Victorian Government graduate program. In round 1 we&rsquo;re recruiting graduates to our generalist stream, accounting and finance stream, data analytics stream and economic consultancy stream. We have pathways for Aboriginal and/or Torres Strait Islander applicants and applicants with disability. Applications will close at **11:59 pm on Sunday 7 April 2024**.",
+                        "link": "[Read more](#)",
+                        "meta": "Photo courtesy of [Johm Kann](https://instagram.com/johm_kann).",
+                        "image": "{\"src\":\"https://images.unsplash.com/photo-1545696968-1a5245650b36?q=80&w=1016&auto=format&fit=crop\",\"alt\":\"Smiling asian student.\"}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "6e985a42-9a9a-4084-a658-e1ea74d1b9c6",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "65545477-3fd2-427d-8a72-2f1714dffd72",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Campaign primary blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

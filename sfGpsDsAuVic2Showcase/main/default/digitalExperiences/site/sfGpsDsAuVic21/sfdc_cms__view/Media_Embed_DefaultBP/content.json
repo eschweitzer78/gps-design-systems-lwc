@@ -1,0 +1,89 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-media-embed-default-blueprint",
+    "component": {
+      "id": "55d29bcb-3731-4915-8ae0-255f0615f9dc",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "18a170c2-838e-4a93-8598-4652e24cd975",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "a4d78fb5-ee5b-4861-92d2-91889752bb8d",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"a4d78fb5-ee5b-4861-92d2-91889752bb8d\",\"columns\":[{\"UUID\":\"bfdbe8f6-0b0a-45b5-98cc-3047b0db7105\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "bfdbe8f6-0b0a-45b5-98cc-3047b0db7105",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "37ab9ae6-a992-4d97-9cb2-dd98afb00ecd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2MediaEmbedComm",
+                      "attributes": {
+                        "type": "image",
+                        "variant": "landscape",
+                        "size": "large",
+                        "title": "Media embed",
+                        "showTitle": false,
+                        "src": "https://images.unsplash.com/photo-1642636494867-36193b3f7df6?q=80&w=1460&auto=format&fit=crop&ixlib=rb-4.0.3",
+                        "caption": "Phillip Island, Victoria, Australia",
+                        "srcCaption": "Photo courtesy of Zac Porter."
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ee56e0a7-ddcd-450e-953b-0e7f60566842",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "5c20357d-1b63-4f20-b58d-a87a3982736e",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Media embed default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

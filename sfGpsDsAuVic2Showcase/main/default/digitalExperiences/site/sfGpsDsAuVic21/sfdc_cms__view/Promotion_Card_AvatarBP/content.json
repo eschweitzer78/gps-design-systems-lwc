@@ -1,0 +1,86 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Avatar blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-promotion-card-avatar-blueprint",
+    "component": {
+      "id": "2b9e9d4c-5abd-4c73-8d62-83881126d696",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "02555cbb-056b-4c30-98d8-2fd6c2a47152",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "5a722de8-60b6-4473-ae62-1bf799f06e4c",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"5a722de8-60b6-4473-ae62-1bf799f06e4c\",\"columns\":[{\"UUID\":\"ea22b520-cbb5-4f38-8c2b-479ba9fed42f\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "ea22b520-cbb5-4f38-8c2b-479ba9fed42f",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "24caef18-f6cc-49b1-9f9f-244436c7d01a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CardAvatarComm",
+                      "attributes": {
+                        "title": "[Dame Quentin Bryce](#)",
+                        "content": "Dame Quentin Bryce is an Australian academic who served as the 25th governor-general of Australia from 2008 to 2014. She is the first and to date only woman to have held the position, and was previously the 24th Governor of Queensland from 2003 to 2008.",
+                        "tagLabel": "Profile",
+                        "tagVariant": "neutral",
+                        "image": "{\"src\":\"https://upload.wikimedia.org/wikipedia/commons/f/fa/Quentin_Bryce_No.1_%28cropped%29.jpg\",\"alt\":\"Dame Quentin Bryce portrait\",\"width\":148,\"height\":148,\"focalPoint\":{\"x\":74,\"y\":0}}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "dc9bf8a9-db15-4b93-8cd7-1211315c40f4",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "78ef90fc-047b-4fa0-bb38-58706e164d12",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Promotion card avatar blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

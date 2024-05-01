@@ -1,0 +1,55 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Service Not Available",
+  "contentBody": {
+    "component": {
+      "children": [
+        {
+          "children": [
+            {
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"20e0f8a7-3690-4ff7-afbd-def4280960c6\",\"columns\":[{\"UUID\":\"d5ac4f03-1d0d-4217-8781-890f9842e885\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}"
+              },
+              "children": [
+                {
+                  "children": [
+                    {
+                      "attributes": {
+                        "richTextValue": "<div style=\"display: flex; align-items: center; flex-direction: column; margin: 60px 25px 40px 25px;\">\n\t<div style=\"background: url(assets/img/serviceNotAvailable.svg) center no-repeat !important; background-size: contain; height: 331px; width: 100%; max-width: 538px;\"></div>\n</div>\n<div style=\"margin: 0 25px; text-align: center;\">\n\t<h1><b style=\"font-size: 2em\">Looks like the site is temporarily unavailable</b></h1>\n\t<br/>\n\t<p><span style=\"font-size: 1.5em;\">Please try again in a bit.</span></p>\n</div>"
+                      },
+                      "definition": "community_builder:htmlEditor",
+                      "id": "86366bbf-03cc-438d-9220-cee85a75b06c",
+                      "type": "component"
+                    }
+                  ],
+                  "id": "d5ac4f03-1d0d-4217-8781-890f9842e885",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "type": "region"
+                }
+              ],
+              "definition": "community_layout:section",
+              "id": "20e0f8a7-3690-4ff7-afbd-def4280960c6",
+              "type": "component"
+            }
+          ],
+          "id": "d1c7e168-2075-45b4-a4b2-4452d1624039",
+          "name": "content",
+          "title": "Content",
+          "type": "region"
+        }
+      ],
+      "definition": "community_layout:sldsFlexibleLayout",
+      "id": "429f5739-a5c0-4b39-b78a-6cdc145ba3cc",
+      "type": "component"
+    },
+    "dataProviders": [],
+    "themeLayoutType": "ServiceNotAvailable",
+    "viewType": "service-not-available"
+  }
+}

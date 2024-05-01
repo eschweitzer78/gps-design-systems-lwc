@@ -1,0 +1,88 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Neutral blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-footer-neutral-blueprint",
+    "component": {
+      "id": "a4fb8623-7523-4f95-be61-bef26bbc4e7f",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "ffdbc285-49de-4899-9020-29b6361aceac",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "e76153e7-10bb-4029-abf7-a33cca6658ba",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"e76153e7-10bb-4029-abf7-a33cca6658ba\",\"columns\":[{\"UUID\":\"46a06f32-5b84-407b-9690-9079e55e4ef3\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "46a06f32-5b84-407b-9690-9079e55e4ef3",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "a313830c-dc5b-4431-84bb-29d4a771343f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2FooterComm",
+                      "attributes": {
+                        "variant": "neutral",
+                        "mode": "Experience Cloud Navigation",
+                        "navigationDevName": "VIC2 Footer Nav Default BP Example",
+                        "credit": "Image credit: image metadata or credit goes here.",
+                        "acknowledgement": "The Victorian Government acknowledges Aboriginal and Torres Strait Islander people as the Traditional Custodians of the land and acknowledges and pays respect to their Elders, past and present.",
+                        "linksMode": "Experience Cloud Navigation",
+                        "linksNavigationDevName": "VIC2 Footer Links Default BP Example"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ba23f3aa-ce85-4982-b576-f1a2bdc769f3",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "b327b125-b4fd-4a07-ab5f-c19a352abca3",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Footer neutral blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

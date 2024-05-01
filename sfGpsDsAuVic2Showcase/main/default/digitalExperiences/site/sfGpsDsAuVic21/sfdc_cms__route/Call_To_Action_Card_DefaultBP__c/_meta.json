@@ -1,0 +1,6 @@
+{
+  "apiName": "Call_To_Action_Card_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Call_To_Action_Card__c",
+  "path": "routes"
+}

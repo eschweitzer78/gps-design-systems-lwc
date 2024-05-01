@@ -1,0 +1,84 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Getting started",
+  "contentBody": {
+    "viewType": "custom-getting-started",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "61c0a84d-1b50-445e-8338-6b8566550062",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "a31e354e-1203-4024-ac88-8096bfab687c",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "5c7c7ac6-082e-434d-a01f-3cb70137b129",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"5c7c7ac6-082e-434d-a01f-3cb70137b129\",\"columns\":[{\"UUID\":\"4abb4901-a44b-4cdb-bd08-2d4f0421d800\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "4abb4901-a44b-4cdb-bd08-2d4f0421d800",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "88f8a223-26eb-4989-b8b0-e569717693de",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Getting started",
+                        "description": "Some getting started info."
+                      }
+                    },
+                    {
+                      "id": "6155666d-8316-4286-b78d-8945e4d1e46f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Blah blah blah</p>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b3bae4db-4bdb-45be-919b-9431c132a81c",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "be845eee-80cc-4fdf-b49c-fb8551c1068a",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

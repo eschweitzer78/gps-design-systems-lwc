@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Callout content blueprint",
+  "contentBody": {
+    "activeViewId": "Callout_ContentBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-callout-content-blueprint",
+    "urlPrefix": "content-blueprint"
+  }
+}

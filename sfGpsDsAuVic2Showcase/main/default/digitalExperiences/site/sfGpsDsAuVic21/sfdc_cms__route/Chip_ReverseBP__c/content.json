@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Chip reverse blueprint",
+  "contentBody": {
+    "activeViewId": "Chip_ReverseBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-chip-reverse-blueprint",
+    "urlPrefix": "reverse-blueprint"
+  }
+}

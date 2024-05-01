@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="sfGpsDsAuVic2AppSidebarThemeLayout2Lwr"
+>
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS LWR App Sidebar Theme Layout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Theme_Layout</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property label="Theme class name" name="themeClassName" type="String" />
+      <property
+        name="headerClassName"
+        label="Header class name"
+        type="String"
+      />
+      <property
+        name="contentClassName"
+        label="Content class name"
+        type="String"
+        default="docs-layout-content"
+      />
+      <property
+        name="containerClassName"
+        label="Container class name"
+        type="String"
+        default="rpl-container"
+      />
+      <property
+        name="gridClassName"
+        label="Grid class name"
+        type="String"
+        default="rpl-grid"
+      />
+      <property
+        name="sidebarClassName"
+        label="Sidebar class name"
+        type="String"
+        default="docs-sidebar rpl-col-12 rpl-col-3-l"
+      />
+      <property
+        name="hideMobileSidebar"
+        label="Hide sidebar on mobile"
+        type="Boolean"
+        description="Hides sidebar on mobile devices when set."
+        default="true"
+      />
+      <property
+        name="mainClassName"
+        label="Main class name"
+        type="String"
+        default="docs-main rpl-col-12 rpl-col-9-l"
+      />
+      <property
+        name="footerClassName"
+        label="Footer class name"
+        type="String"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

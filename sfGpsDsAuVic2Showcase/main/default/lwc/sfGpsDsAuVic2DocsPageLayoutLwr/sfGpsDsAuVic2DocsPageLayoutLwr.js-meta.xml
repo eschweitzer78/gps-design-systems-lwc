@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="sfGpsDsAuVic2DocsPageLayoutLwr"
+>
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS LWR Docs Page Layout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page_Layout</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="contentClassName"
+        label="Content class name"
+        type="String"
+        default="docs-content"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

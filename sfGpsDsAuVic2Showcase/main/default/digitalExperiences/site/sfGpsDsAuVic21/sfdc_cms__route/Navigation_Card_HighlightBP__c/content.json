@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Navigation card highlight blueprint",
+  "contentBody": {
+    "activeViewId": "Navigation_Card_HighlightBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-navigation-card-highlight-blueprint",
+    "urlPrefix": "highlight-blueprint"
+  }
+}

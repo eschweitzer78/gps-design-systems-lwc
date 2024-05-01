@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Description list default blueprint",
+  "contentBody": {
+    "activeViewId": "Description_List_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-description-list-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

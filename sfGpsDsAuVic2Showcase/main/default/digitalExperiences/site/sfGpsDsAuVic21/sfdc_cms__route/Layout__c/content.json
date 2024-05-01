@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Layout",
+  "contentBody": {
+    "activeViewId": "Layout",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-layout",
+    "urlPrefix": "layout"
+  }
+}

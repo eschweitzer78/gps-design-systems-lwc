@@ -1,0 +1,307 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Button",
+  "contentBody": {
+    "viewType": "custom-button",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "ab99c822-e6c2-4f32-9621-c7873da10d97",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "0528b426-e915-4f19-9d06-d95214d380b9",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "769fa5c6-0238-4206-ad18-1cde22acfcbd",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"769fa5c6-0238-4206-ad18-1cde22acfcbd\",\"columns\":[{\"UUID\":\"6afa375b-f1d4-447d-8a55-ce2d245c42e5\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "6afa375b-f1d4-447d-8a55-ce2d245c42e5",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "d02c5894-8763-40cb-9ed7-f662de0c49af",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Button",
+                        "description": "The Button component helps a user to carry out an action."
+                      }
+                    },
+                    {
+                      "id": "1865d610-73f5-4702-831d-0ca216698e18",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "fa851190-3cdc-49a0-8f20-374f279f8f00",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default (primary) blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Secondary blueprint\",\n\t\t\"url\": \"#secondary-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#secondary-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#secondary-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Tertiary blueprint\",\n\t\t\"url\": \"#tertiary-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Examples\", \"url\": \"#tertiary-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#tertiary-blueprint-configuration-0\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#tertiary-blueprint-configuration-1\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Destructive blueprint\",\n\t\t\"url\": \"#destructive-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#destructive-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#destructive-blueprint-configuration-0\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Other attributes\",\n\t\t\"url\": \"#other-attributes\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Examples\", \"url\": \"#other-attributes-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#other-attributes-configuration-0\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#other-attributes-configuration-1\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#other-attributes-configuration-2\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#other-attributes-configuration-3\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#other-attributes-configuration-4\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "a4193c24-19f6-402b-961c-285ededc5d97",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-t-4",
+                        "markup": "<p>Use a button to indicate an action a user can take and to let them start carrying it out. Button labels say what action will occur when the user interacts with it. Only use a button when the page has a call to action. Do not use buttons for regular navigation.</p><p>The <code>sfGpsDsAuVic2ButtonComm</code> LWC appears as <code>VIC2 DS Button</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "66421f1c-cab0-4441-a4d1-e259278263f6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default (primary) blueprint</h2>\n\n\t<p>Primary buttons are for primary actions, known as calls to action, and use the <code>filled</code> variant. Limit primary buttons to one per page and do not use more than 4 words in the label.</p>\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "2f7ccd3e-10bf-4f53-9cc8-fdd4bd0ae075",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./button/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "23383ddf-7186-4945-83e7-00aa72718ea6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Apply now](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>filled</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "bdd48b08-cab0-48d2-b8b6-4a15f33fa029",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"secondary-blueprint\">Secondary blueprint</h2>\n\n\t<p>Use the <code>outlined</code> variant for secondary actions. Like for the primary blueprint, do not use more than a single secondary button on a page if possible.</p>\n\n\t<h3 id=\"secondary-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "0e920190-af61-4d2c-a1d0-1fa9be4f8987",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./button/secondary-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "7d76e5f6-f1af-4d9f-aad5-467242f3a7b5",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"secondary-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Apply now](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>outline</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "e47cba43-5529-469a-81c3-808ab8218f26",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"tertiary-blueprint\">Tertiary blueprint</h2>\n\n\t<p>Use this blueprint when an action is less prominent. There is a default underline aspect to align with links. This helps meet accessibility requirements and it consistent with other link types. You may also elect to configure it to render with an <code>a</code> element instead of a button.</p>\n\n\t<h3 id=\"tertiary-blueprint-example\">Examples</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "6b773d80-0e48-4095-83a8-ebe2551629b7",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./button/tertiary-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "2e28b261-ec77-4f18-8868-d763292f989c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"tertiary-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Apply now](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>white</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "f9b81aa0-588a-4689-a81b-293314aa039c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"tertiary-blueprint-configuration-1\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Apply now](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>transparent</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "c0f1b91a-8754-4d4c-8699-4ad876a1e2de",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"destructive-blueprint\">Destructive blueprint</h2>\n\n\t<p>Use this blueprint destructive actions, such as permanently deleting information, that are not easy to undo.</p>\n\n\t<h3 id=\"destructive-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "93d60e62-5e3c-44bf-a8bb-d5d5964b0834",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./button/destructive-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "8bd6981b-c493-4284-b8a1-52a274021af3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"destructive-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Apply now](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>destructive</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "3c56f235-1a24-49c2-846b-cd9e72fd0e82",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"other-attributes\">Other attributes</h2>\n\n\t<p>Other attributes determine how a button renders, but not all of them are useful when used in Experience Builder (vs. leveraging as as an element of a composite LWC):</p><ul><li><code>theme</code></li><li><code>iconName</code> and <code>iconPosition</code>,</li><li><code>disabled</code>,</li><li><code>busy</code>.</li></ul>\n\n\t<h3 id=\"other-attributes-example\">Examples</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "e1f56c08-e139-4b09-8665-c03fc8cadad8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./button/other-attributes",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "01425398-8f09-439a-b15c-262ba5246ab8",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"other-attributes-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Login](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>filled</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t\t<td>Icon name</td>\n\t\t\t\t\t<td><code>icon-log-in-lined</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconPosition</code></td>\n\t\t\t\t\t<td>Icon position</td>\n\t\t\t\t\t<td><code>left</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "40401e35-94be-46d8-8211-e68109041caa",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"other-attributes-configuration-1\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Login](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>filled</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t\t<td>Icon name</td>\n\t\t\t\t\t<td><code>icon-log-in-lined</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconPosition</code></td>\n\t\t\t\t\t<td>Icon position</td>\n\t\t\t\t\t<td><code>right</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "f07895c5-fcdc-42b8-ac39-afe4c5d932fb",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"other-attributes-configuration-2\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Login](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>filled</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t\t<td>Icon name</td>\n\t\t\t\t\t<td><code>icon-log-in-lined</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>iconPosition</code></td>\n\t\t\t\t\t<td>Icon position</td>\n\t\t\t\t\t<td><code>left</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>disabled</code></td>\n\t\t\t\t\t<td>Disabled</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "803e1963-7400-455e-af0b-9df69ea5b46b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"other-attributes-configuration-3\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Login](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>filled</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>neutral</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "e9a6ef52-0908-43db-abbd-06db2852e4ed",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"other-attributes-configuration-4\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>el</code></td>\n\t\t\t\t\t<td>Element type</td>\n\t\t\t\t\t<td><code>button</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td><span style=\"overflow-wrap:break-word\">\"[Login](#)\"</span></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t\t<td>Variant</td>\n\t\t\t\t\t<td><code>filled</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t\t<td>Theme</td>\n\t\t\t\t\t<td><code>default</code></td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>busy</code></td>\n\t\t\t\t\t<td>Busy</td>\n\t\t\t\t\t<td><code>true</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "41b1d1ac-0080-4412-93c9-9f8aee6b3ec1",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>el</code></td>\n\t\t\t\t<td>Element type</td>\n\t\t\t\t<td>Type of HTML tag to use with a choice of <code>button</code> and <code>a</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>link</code></td>\n\t\t\t\t<td>Link</td>\n\t\t\t\t<td>Text and URL in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown link format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>variant</code></td>\n\t\t\t\t<td>Variant</td>\n\t\t\t\t<td>Defines the main aspect of the button with the following values: <code>filled</code>, <code>outlined</code>, <code>white</code>, <code>transparent</code>, <code>elevated</code>, <code>destructive</code> and <code>none</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>theme</code></td>\n\t\t\t\t<td>Theme</td>\n\t\t\t\t<td>Theme colour with a choice of <code>default</code> and <code>neutral</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>iconName</code></td>\n\t\t\t\t<td>Icon name</td>\n\t\t\t\t<td>Pick a name from the <a href=\"./page-content/icon\">icon</a> documentation or leave blank for no icon.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>iconPosition</code></td>\n\t\t\t\t<td>Icon position</td>\n\t\t\t\t<td>Position with a choice of <code>left</code> and <code>right</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS class to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "80c7f1b4-cdb5-4200-ac89-a5135fdc3144",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "5d943d89-1ac3-42fa-b708-b28f3fa8c877",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

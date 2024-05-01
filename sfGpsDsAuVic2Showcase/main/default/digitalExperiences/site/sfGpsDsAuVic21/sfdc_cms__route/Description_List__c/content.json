@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Description list",
+  "contentBody": {
+    "activeViewId": "Description_List",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-description-list",
+    "urlPrefix": "description-list"
+  }
+}

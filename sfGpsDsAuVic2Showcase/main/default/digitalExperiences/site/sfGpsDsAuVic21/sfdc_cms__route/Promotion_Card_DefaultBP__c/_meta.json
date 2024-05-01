@@ -1,0 +1,6 @@
+{
+  "apiName": "Promotion_Card_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Promotion_Card__c",
+  "path": "routes"
+}

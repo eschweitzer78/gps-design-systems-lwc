@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Media embed video blueprint",
+  "contentBody": {
+    "activeViewId": "Media_Embed_VideoBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-media-embed-video-blueprint",
+    "urlPrefix": "video-blueprint"
+  }
+}

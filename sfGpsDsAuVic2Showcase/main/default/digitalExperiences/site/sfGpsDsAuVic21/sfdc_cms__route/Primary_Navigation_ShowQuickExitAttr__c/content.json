@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Primary navigation Show quick exit attribute",
+  "contentBody": {
+    "activeViewId": "Primary_Navigation_ShowQuickExitAttr",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-primary-navigation-show-quick-exit-attr",
+    "urlPrefix": "show-quick-exit-attr"
+  }
+}

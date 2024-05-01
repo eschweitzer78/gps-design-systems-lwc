@@ -1,0 +1,86 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-social-share-default-blueprint",
+    "component": {
+      "id": "10836322-9e94-4a50-ba09-ef8bff3f68e4",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "96caa3d8-dc0e-42f8-a5b5-b398e4e52c8b",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "46837b91-a124-45ef-9430-5057e3a92ee6",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"46837b91-a124-45ef-9430-5057e3a92ee6\",\"columns\":[{\"UUID\":\"dffb53d4-34ef-4805-9662-1acbc38ce489\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "dffb53d4-34ef-4805-9662-1acbc38ce489",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "c8ad82de-1b1b-4ed4-8c4e-9a129c90d2bd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2SocialShareComm",
+                      "attributes": {
+                        "title": "Share this page",
+                        "pagetitle": "Page title",
+                        "url": "https://vic2.dsforce.dev/page-content/socialshare",
+                        "email": "Vic2SocialShareText",
+                        "networks": "Facebook;LinkedIn;X"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1c5369ad-a636-4b41-b9e7-053246bec1a1",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "97dd16c0-7a3c-4b15-ab76-8ce16f072bdf",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Social share default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

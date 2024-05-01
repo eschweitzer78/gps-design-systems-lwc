@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Site contact us",
+  "contentBody": {
+    "activeViewId": "Site_Contact_Us",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-contact-us",
+    "urlPrefix": "contact-us"
+  }
+}

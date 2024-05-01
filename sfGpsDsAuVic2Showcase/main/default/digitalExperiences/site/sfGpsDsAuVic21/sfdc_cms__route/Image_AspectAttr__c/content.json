@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Image apsect attribute",
+  "contentBody": {
+    "activeViewId": "Image_AspectAttr",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-image-aspect-attribute",
+    "urlPrefix": "aspect-attribute"
+  }
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NavigationMenu xmlns="http://soap.sforce.com/2006/04/metadata">
+    <container>sfGpsDsAuVic2</container>
+    <containerType>Network</containerType>
+    <label>VIC2 Footer Links Default BP Example</label>
+    <navigationMenuItem>
+        <label>Privacy</label>
+        <position>1</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Disclaimer</label>
+        <position>2</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Terms of use</label>
+        <position>3</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Sitemap</label>
+        <position>4</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Accessibility statement</label>
+        <position>5</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Help</label>
+        <position>6</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+</NavigationMenu>

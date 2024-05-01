@@ -1,0 +1,87 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Reverse blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-header-reverse-blueprint",
+    "component": {
+      "id": "33dd0f8f-e135-47a6-9ac7-e3715882d919",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "ec7ab3b9-fe4d-4630-b767-8991ea0f0478",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "7e064f89-9573-4bf0-9ca4-d5d6d9a85e95",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"7e064f89-9573-4bf0-9ca4-d5d6d9a85e95\",\"columns\":[{\"UUID\":\"40809042-d395-40c0-8509-6a96d8b78f24\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "40809042-d395-40c0-8509-6a96d8b78f24",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "dcc691b8-aaf2-41e4-a71c-5106c41e5d7a",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2HeroHeaderComm",
+                      "attributes": {
+                        "title": "Find, connect, shape your Victoria",
+                        "content": "Access grants and services, find out what's on in Victoria and have your say on government decisions.",
+                        "theme": "reverse",
+                        "linksTitle": "Want to know more",
+                        "links": "[First link](#first)[Second link](#second)",
+                        "linksMore": "[All links](#all)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ef812e6c-4948-4b3e-87e6-014086b838f0",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "bc35481f-3263-427e-beb0-fec93f41c27b",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Header reverse blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Tag neutral blueprint",
+  "contentBody": {
+    "activeViewId": "Tag_NeutralBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-tag-neutral-blueprint",
+    "urlPrefix": "neutral-blueprint"
+  }
+}

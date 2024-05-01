@@ -1,0 +1,85 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default (primary) blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-button-default-blueprint",
+    "component": {
+      "id": "79e35d65-4c30-4a2b-9f65-3c8409e9bef2",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "ff6bef75-16b3-4a70-a37f-74d26c833ff4",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "165ffbbf-2d95-469e-a2f8-7cce4de9e960",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"165ffbbf-2d95-469e-a2f8-7cce4de9e960\",\"columns\":[{\"UUID\":\"575a7425-230f-43c1-b0fd-6a56a792380f\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "575a7425-230f-43c1-b0fd-6a56a792380f",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "8ad8c492-36a6-4492-9588-45fc6fe8bf7c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Apply now](#)",
+                        "variant": "filled",
+                        "theme": "default"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b27cd75c-9a71-48c6-ba31-4d4accf58116",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "ae9d1a5e-48a1-4b9d-a093-5e052a62a28b",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Button default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

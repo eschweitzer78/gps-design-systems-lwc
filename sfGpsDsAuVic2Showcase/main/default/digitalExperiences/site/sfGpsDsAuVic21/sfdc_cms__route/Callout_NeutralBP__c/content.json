@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Callout neutral blueprint",
+  "contentBody": {
+    "activeViewId": "Callout_NeutralBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-callout-neutral-blueprint",
+    "urlPrefix": "neutral-blueprint"
+  }
+}

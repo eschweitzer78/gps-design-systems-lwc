@@ -1,0 +1,83 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Neutral blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-tag-neutral-blueprint",
+    "component": {
+      "id": "1563134d-d9f0-47e5-b1aa-e3e2501cbbec",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "a98215ed-7d08-40e4-b6ed-e22dc42bb714",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "f6380556-cd6f-4efd-878f-1f9ae5660752",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"f6380556-cd6f-4efd-878f-1f9ae5660752\",\"columns\":[{\"UUID\":\"9f8c710e-0cbc-43f4-98b7-a20905bcf973\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "9f8c710e-0cbc-43f4-98b7-a20905bcf973",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "5fd0f708-a178-4872-85bb-3ee5e7111668",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2TagComm",
+                      "attributes": {
+                        "label": "Tag",
+                        "variant": "neutral"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c66e525e-9057-429f-92f0-e8623668faaf",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "b6d228ad-6d65-4057-9c2a-b0e5f0912e1b",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Tag neutral blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

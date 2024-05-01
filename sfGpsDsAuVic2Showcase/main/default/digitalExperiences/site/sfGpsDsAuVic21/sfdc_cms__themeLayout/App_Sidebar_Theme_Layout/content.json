@@ -1,0 +1,150 @@
+{
+  "type": "sfdc_cms__themeLayout",
+  "title": "App Sidebar Theme Layout",
+  "contentBody": {
+    "component": {
+      "id": "7af22270-91ef-4d19-b1fb-32752aa6961b",
+      "definition": "c:sfGpsDsAuVic2AppSidebarThemeLayoutLwr",
+      "type": "component",
+      "attributes": {
+        "containerClassName": "rpl-container",
+        "contentClassName": "docs-layout-content",
+        "footerClassName": "",
+        "gridClassName": "rpl-grid",
+        "headerClassName": "",
+        "hideMobileSidebar": true,
+        "mainClassName": "docs-main rpl-col-12 rpl-col-9-l",
+        "sidebarClassName": "docs-sidebar rpl-col-12 rpl-col-3-l",
+        "themeClassName": ""
+      },
+      "children": [
+        {
+          "id": "c16c4385-8022-4b68-bf9b-73a27064a6e9",
+          "type": "region",
+          "name": "header",
+          "title": "Theme Header",
+          "children": [
+            {
+              "id": "e0cb375f-d51b-4f94-a2c5-fed4c63ec2a4",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"e0cb375f-d51b-4f94-a2c5-fed4c63ec2a4\",\"columns\":[{\"UUID\":\"ae98ea4e-221e-47ec-8d4c-b3d17680b9d1\",\"columnName\":\"Column 1\",\"columnKey\":\"headerSection\",\"columnWidth\":\"12\",\"seedComponents\":null}]}"
+              },
+              "children": [
+                {
+                  "id": "ae98ea4e-221e-47ec-8d4c-b3d17680b9d1",
+                  "type": "region",
+                  "name": "headerSection",
+                  "title": "Theme Header",
+                  "children": [
+                    {
+                      "id": "94742422-e612-4e55-9e8f-d5b9348e7dc2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2AppNavbarLwr",
+                      "attributes": {
+                        "logoSrc": "/sfsites/c/resource/sfGpsDsAuVic2_showcase/SalesforceLogo.svg",
+                        "sectionColor": "var(--rpl-clr-primary)",
+                        "sectionTitle": "Ripple v2 Design System Library"
+                      },
+                      "children": [
+                        {
+                          "id": "dccdf6c8-2341-4564-938f-c90216ad0ac2",
+                          "type": "region",
+                          "name": "MenuContents",
+                          "title": "MenuContents",
+                          "children": [
+                            {
+                              "id": "4e424c93-b7aa-4784-84fd-21412bed66e9",
+                              "type": "component",
+                              "definition": "c:sfGpsDsAuVic2VerticalNavComm",
+                              "attributes": {
+                                "inputJSON": "{}",
+                                "mode": "Experience Cloud Navigation",
+                                "navigationDevName": "Default_Navigation12",
+                                "optionsJSON": "{}",
+                                "title": ""
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "children": [
+            {
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"eb7b9b8e-77f5-438f-a099-3977475a1bdc\",\"columns\":[{\"UUID\":\"7801f0eb-8c2f-4334-b381-ddb8ace94f42\",\"columnName\":\"Column 1\",\"columnKey\":\"footerSection\",\"columnWidth\":\"12\",\"seedComponents\":null}]}"
+              },
+              "children": [
+                {
+                  "id": "7801f0eb-8c2f-4334-b381-ddb8ace94f42",
+                  "type": "region",
+                  "name": "footerSection",
+                  "title": "Theme Footer",
+                  "children": [
+                    {
+                      "id": "94742422-e612-4e55-9e8f-d5b9348e7dc3",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2FooterComm",
+                      "attributes": {
+                        "mode": "Hide",
+                        "acknowledgement": "Salesforce Global Public Sector acknowledges Aboriginal and Torres Strait Islander people as the Traditional Custodians of the land and acknowledges and pays respect to their Elders, past and present.",
+                        "copyright": "© Salesforce and Emmanuel Schweitzer",
+                        "linksMode": "Experience Cloud Navigation",
+                        "linksNavigationDevName": "VIC2_Footer_Links",
+                        "logos": "[{\"src\":\"/sfsites/c/resource/sfGpsDsAuVic2_showcase/SalesforceLogo.svg\",\"alt\": \"Salesforce logo\"}]"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "definition": "community_layout:section",
+              "id": "eb7b9b8e-77f5-438f-a099-3977475a1bdc",
+              "type": "component"
+            }
+          ],
+          "id": "3247e8e4-41cb-4215-a74b-7a002a1ff354",
+          "name": "footer",
+          "title": "Theme Footer",
+          "type": "region"
+        },
+        {
+          "id": "5824f816-c0a7-470a-81c3-f66b0a35a461",
+          "type": "region",
+          "name": "sidebar",
+          "children": [
+            {
+              "id": "7c937d76-4ecd-4df0-8b01-f0d637eb5a4c",
+              "type": "component",
+              "definition": "c:sfGpsDsAuVic2VerticalNavComm",
+              "attributes": {
+                "mode": "Experience Cloud Navigation",
+                "navigationDevName": "Default_Navigation12",
+                "inputJSON": "{}",
+                "optionsJSON": "{}",
+                "title": ""
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

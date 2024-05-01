@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Key dates card default blueprint",
+  "contentBody": {
+    "activeViewId": "Key_Dates_Card_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-key-dates-card-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

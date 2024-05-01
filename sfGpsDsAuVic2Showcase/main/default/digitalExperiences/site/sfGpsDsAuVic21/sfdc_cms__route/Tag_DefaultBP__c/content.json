@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Tag default blueprint",
+  "contentBody": {
+    "activeViewId": "Tag_DefaultBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-tag-default-blueprint",
+    "urlPrefix": "default-blueprint"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Alert critical blueprint",
+  "contentBody": {
+    "activeViewId": "Alert_CriticalBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-alert-critical-blueprint",
+    "urlPrefix": "critical-blueprint"
+  }
+}

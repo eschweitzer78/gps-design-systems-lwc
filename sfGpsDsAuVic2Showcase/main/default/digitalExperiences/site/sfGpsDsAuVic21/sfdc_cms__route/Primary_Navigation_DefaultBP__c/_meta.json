@@ -1,0 +1,6 @@
+{
+  "apiName": "Primary_Navigation_DefaultBP__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Primary_Navigation__c",
+  "path": "routes"
+}

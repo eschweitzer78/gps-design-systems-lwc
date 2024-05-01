@@ -1,0 +1,26 @@
+{
+  "type": "sfdc_cms__theme",
+  "title": "Build Your Own (LWR)",
+  "contentBody": {
+    "activeBrandingSetId": "Build_Your_Own_LWR",
+    "definitionName": "byo",
+    "layouts": [
+      {
+        "layoutId": "App_Sidebar_Theme_Layout",
+        "layoutType": "VIC2AppSidebarThemeLayout"
+      },
+      {
+        "layoutId": "snaThemeLayout",
+        "layoutType": "ServiceNotAvailable"
+      },
+      {
+        "layoutId": "scopedHeaderAndFooter",
+        "layoutType": "Inner"
+      },
+      {
+        "layoutId": "App_Example_Theme_Layout",
+        "layoutType": "VIC2AppExampleThemeLayout"
+      }
+    ]
+  }
+}

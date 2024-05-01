@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Media embed",
+  "contentBody": {
+    "activeViewId": "Media_Embed",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-media-embed",
+    "urlPrefix": "media-embed"
+  }
+}

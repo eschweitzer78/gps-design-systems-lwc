@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Description list icon blueprint",
+  "contentBody": {
+    "activeViewId": "Description_List_IconBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-description-list-icon-blueprint",
+    "urlPrefix": "icon-blueprint"
+  }
+}

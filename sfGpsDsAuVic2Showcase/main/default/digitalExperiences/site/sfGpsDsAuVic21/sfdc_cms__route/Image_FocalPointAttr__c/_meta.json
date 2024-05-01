@@ -1,0 +1,6 @@
+{
+  "apiName": "Image_FocalPointAttr__c",
+  "type": "sfdc_cms__route",
+  "parentId": "sfdc_cms__route/Image__c",
+  "path": "routes"
+}

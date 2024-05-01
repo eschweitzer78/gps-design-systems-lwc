@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Page content",
+  "contentBody": {
+    "activeViewId": "Page_Content",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-page-content",
+    "urlPrefix": "page-content"
+  }
+}

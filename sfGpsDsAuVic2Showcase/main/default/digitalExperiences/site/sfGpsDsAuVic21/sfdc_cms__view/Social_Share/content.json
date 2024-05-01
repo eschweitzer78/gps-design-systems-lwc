@@ -1,0 +1,142 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Social share",
+  "contentBody": {
+    "viewType": "custom-social-share",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "edeffec8-e1cb-4224-9fef-b3ebc4ae3970",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "24a2ad07-3a14-460f-bf5d-c6f3b9d6da30",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "afcf04a5-985f-40cb-aa62-6052a09923a5",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"afcf04a5-985f-40cb-aa62-6052a09923a5\",\"columns\":[{\"UUID\":\"15b0fb57-38b6-41f6-8004-f340ad46b60a\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "15b0fb57-38b6-41f6-8004-f340ad46b60a",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "769d13a6-1f05-48b0-8e8c-b13c2436980f",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Social share",
+                        "description": "The Social share component shows a list of links to help users to share pages to social media."
+                      }
+                    },
+                    {
+                      "id": "eeefd4b5-a2a4-4fb2-914a-b93636bf23e5",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "17258889-b4c4-4abf-8dd8-51649a2b0d06",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Default blueprint\",\n\t\t\"url\": \"#default-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#default-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration of the example\",\"url\":\"#default-blueprint-configuration-0\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "3f092e18-8bf0-4346-a7c3-69fbdf45ffbd",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<p>Use social share to let users share pages to their own social media channels.</p><p>It uses the social media icons to:</p><ul><li>provide extra context,</li><li>distinguish between the different social media platforms.</li></ul><p>The <code>sfGpsDsAuVic2SocialShareComm</code> LWC appears as <code>VIC2 DS Social share</code> in the Experience Builder component list.</p>"
+                      }
+                    },
+                    {
+                      "id": "a7d7b1c8-3883-4bff-aa69-43640907f8dc",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"default-blueprint\">Default blueprint</h2>\n\n\t\n\n\t<h3 id=\"default-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "d681ad86-be4a-478a-8ca7-31adb3ac706b",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./social-share/default-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "187607b2-917d-437d-8837-53f1c63d64bf",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t\n\t<h3 id=\"default-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Share this page\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>pagetitle</code></td>\n\t\t\t\t\t<td>Page title</td>\n\t\t\t\t\t<td>\"Page title\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>url</code></td>\n\t\t\t\t\t<td>URL</td>\n\t\t\t\t\t<td>\"https://vic2.dsforce.dev/page-content/socialshare\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>email</code></td>\n\t\t\t\t\t<td>Email template</td>\n\t\t\t\t\t<td>\"Vic2SocialShareText\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>networks</code></td>\n\t\t\t\t\t<td>Networks</td>\n\t\t\t\t\t<td>\"Facebook;LinkedIn;X\"</td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\t\n</div>"
+                      }
+                    },
+                    {
+                      "id": "64c5d025-9902-4598-b5ac-44525d25472e",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>The title of the share popup window.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>pagetitle</code></td>\n\t\t\t\t<td>pageTitle</td>\n\t\t\t\t<td>The title of the page to be shared.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>url</code></td>\n\t\t\t\t<td>URL</td>\n\t\t\t\t<td>URL of the page to be shared.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>email</code></td>\n\t\t\t\t<td>Email template</td>\n\t\t\t\t<td>Developer name (aka Unique Template Name) of the Lightning Email Template, which <strong>must be</strong> a Classic Text template. Leave empty to remove Email sharing as an option.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>networks</code></td>\n\t\t\t\t<td>Networks</td>\n\t\t\t\t<td>A semi-colon separated list of networks with the following allowed values: <code>Facebook</code>, <code>LinkedIn</code>, <code>WhatsApp</code> and <code>X</code>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ea481f04-84b8-40dc-9067-0042c5c97916",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "afd4e0d5-4b7c-4a83-a4d5-33ea90f334f8",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

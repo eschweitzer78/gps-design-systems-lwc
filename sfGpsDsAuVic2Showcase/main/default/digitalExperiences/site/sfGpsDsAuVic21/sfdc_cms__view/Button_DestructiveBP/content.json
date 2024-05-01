@@ -1,0 +1,85 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Destructive blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-button-destructive-blueprint",
+    "component": {
+      "id": "a03418a4-9681-440c-a1f5-7916845ec813",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "5d7e8702-9656-4291-92bf-9c3869553401",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "e56ca901-ebb0-449b-b0f8-0b2fb0d34401",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"e56ca901-ebb0-449b-b0f8-0b2fb0d34401\",\"columns\":[{\"UUID\":\"23c34511-688b-475d-8ee0-475eb9f7ea24\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "23c34511-688b-475d-8ee0-475eb9f7ea24",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "36645ef8-0619-4609-a26a-b65ce35ba350",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ButtonComm",
+                      "attributes": {
+                        "el": "button",
+                        "link": "[Apply now](#)",
+                        "variant": "destructive",
+                        "theme": "default"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "8f0511bb-385e-44aa-84a8-d71b3c69fa81",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "7c52e89e-796a-4b5e-90ae-6118df7d5944",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Button destructive blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

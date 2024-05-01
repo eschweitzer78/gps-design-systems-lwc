@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Navigation card image blueprint",
+  "contentBody": {
+    "activeViewId": "Navigation_Card_ImageBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-navigation-card-image-blueprint",
+    "urlPrefix": "image-blueprint"
+  }
+}

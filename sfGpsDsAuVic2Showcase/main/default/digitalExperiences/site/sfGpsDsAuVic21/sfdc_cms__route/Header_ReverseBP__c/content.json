@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Header reverse blueprint",
+  "contentBody": {
+    "activeViewId": "Header_ReverseBP",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-header-reverse-blueprint",
+    "urlPrefix": "reverse-blueprint"
+  }
+}

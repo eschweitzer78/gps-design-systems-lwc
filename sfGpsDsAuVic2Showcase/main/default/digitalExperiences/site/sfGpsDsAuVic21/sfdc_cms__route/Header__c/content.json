@@ -1,0 +1,11 @@
+{
+  "type": "sfdc_cms__route",
+  "title": "Header",
+  "contentBody": {
+    "activeViewId": "Header",
+    "configurationTags": [],
+    "pageAccess": "UseParent",
+    "routeType": "custom-header",
+    "urlPrefix": "header"
+  }
+}

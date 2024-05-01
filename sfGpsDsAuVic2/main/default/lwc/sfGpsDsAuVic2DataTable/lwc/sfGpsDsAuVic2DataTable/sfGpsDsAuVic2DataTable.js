@@ -1,5 +1,7 @@
 import { LightningElement, api, track } from "lwc";
 
+/* Work in progress */
+
 const HEADING_TYPE_DEFAULT = {
   horizontal: true,
   vertical: false
@@ -49,5 +51,17 @@ export default class SfGpsDsAuVic2DataTable extends LightningElement {
 
   get computedColumnsLength() {
     return this.columns?.length;
+  }
+
+  get computedColumns() {
+    return [];
+  }
+
+  get computedItems() {
+    return [];
+  }
+
+  get computedHasVerticalHeader() {
+    return false;
   }
 }

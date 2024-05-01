@@ -1,0 +1,163 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Campaign banner",
+  "contentBody": {
+    "viewType": "custom-campaign-banner",
+    "themeLayoutType": "VIC2AppSidebarThemeLayout",
+    "component": {
+      "id": "4a430702-0dea-41c0-8e4d-9110052a07b9",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "a824ff84-e94b-4030-b11a-f7440a658687",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "e9a27201-9799-44f7-8157-01e70779252d",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"e9a27201-9799-44f7-8157-01e70779252d\",\"columns\":[{\"UUID\":\"2bbf573e-cd9f-404e-b450-7f8d6eab3a56\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "2bbf573e-cd9f-404e-b450-7f8d6eab3a56",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "07f974f8-7208-43e1-82cc-9cf83cf6d93c",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsPageHeaderLwr",
+                      "attributes": {
+                        "title": "Campaign banner",
+                        "description": "The Campaign banner components draw a user&amp;rsquo;s attention to promoted content."
+                      }
+                    },
+                    {
+                      "id": "6e32004a-76cc-4a5b-b999-5d401f8caae4",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ChipComm",
+                      "attributes": {
+                        "variant": "default",
+                        "links": "[VIC DS 2.6]()[Experience Cloud]()",
+                        "className": "rpl-u-margin-b-8"
+                      }
+                    },
+                    {
+                      "id": "2d7f65fc-a0b8-47e5-ac5e-6ee298bec750",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2InPageNavigationComm",
+                      "attributes": {
+                        "title": "On this page",
+                        "items": "[\n\t{\n\t\t\"text\": \"Featured or primary blueprint\",\n\t\t\"url\": \"#primary-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#primary-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#primary-blueprint-configuration\" }\n\t\t]},\n\n\t{\n\t\t\"text\": \"Image inset or secondary blueprint\",\n\t\t\"url\": \"#secondary-blueprint\",\n\t\t\"items\": [\n\t\t\t{\"text\": \"Example\", \"url\": \"#secondary-blueprint-example\" },\n\t\t\t{\"text\": \"Configuration\",\"url\":\"#secondary-blueprint-configuration\" }\n\t\t]},\n\t{\n\t\t\"text\": \"Documentation\",\n\t\t\"url\": \"#documentation\"\n\t}\n]"
+                      }
+                    },
+                    {
+                      "id": "a364f333-c844-4817-a518-a8e77eeac340",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"primary-blueprint\">Featured or primary blueprint</h2>\n\n\t<p>A featured campaign banner goes at the top of the page underneath the header. When on larger screens, the image is cropped in a shape and can overlap the component above (the header).</p><p>There is an option to include metadata for the image if required.</p><p>The image is rendered in the lower right corner with the Victorian diamond-shaped mask. On narrower devices, the image becomes a rectangle on top of the title and content though.</p><p>The <code>sfGpsDsAuVicCampaignPrimaryComm</code> LWC can be found as <code>VIC2 DS Campaign (Primary)</code> in the Experience Builder components palette.</p>\n\n\t<h3 id=\"primary-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "d96b845e-42da-4413-b647-582a1fbf2fb2",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./campaign-banner/primary-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "dc7bb9a3-6431-4476-ba47-653ab5e3c021",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"primary-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Applications are open for the Victorian Government graduate program\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Applications are open for the 2025 Victorian Government graduate program. In round 1 we&amp;rsquo;re recruiting graduates to our generalist stream, accounting and finance stream, data analytics stream and economic consultancy stream. We have pathways for Aboriginal and/or Torres Strait Islander applicants and applicants with disability. Applications will close at **11:59 pm on Sunday 7 April 2024**.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td>\"[Read more](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>meta</code></td>\n\t\t\t\t\t<td>Meta</td>\n\t\t\t\t\t<td>\"Photo courtesy of [Johm Kann](https://instagram.com/johm_kann).\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://images.unsplash.com/photo-1545696968-1a5245650b36?q=80&amp;w=1016&amp;auto=format&amp;fit=crop\",<br/>  \"alt\": \"Smiling asian student.\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "02438663-6412-4ec7-8f75-1f0461fdf803",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-u-margin-b-4",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"secondary-blueprint\">Image inset or secondary blueprint</h2>\n\n\t<p>The image inset variant sits above the footer at the bottom of the page. This should be used for less prominent campaigns. For featured campaigns, we recommend using the featured variant at the top of the page.</p><p>The image is rendered above the title and content on narrower screens, whereas it&apos;d be placed on the left side on larger devices. The image would be more proeminent on a wider section compared to the example below.</p><p>The <code>sfGpsDsAuVicCampaignSecondaryComm</code> LWC can be found as <code>VIC2 DS Campaign (Secondary)</code> in the Experience Builder component palette.</p>\n\n\t<h3 id=\"secondary-blueprint-example\">Example</h3>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "8e3ddd3b-23d4-4219-852a-a3d431135a04",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2DocsExampleComm",
+                      "attributes": {
+                        "hideCode": true,
+                        "hideNewTab": false,
+                        "showCallout": false,
+                        "storyPreviewUrl": "./campaign-banner/secondary-blueprint",
+                        "withPadding": false
+                      }
+                    },
+                    {
+                      "id": "013d569a-530f-441b-8629-24ea7d418da6",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\t<h3 id=\"secondary-blueprint-configuration-0\">Configuration of the example</h3>\n\n\t<div class=\"lwc-configuration\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC configuration</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Value</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>title</code></td>\n\t\t\t\t\t<td>Title</td>\n\t\t\t\t\t<td>\"Affordable Housing Investment Partnerships\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>content</code></td>\n\t\t\t\t\t<td>Content</td>\n\t\t\t\t\t<td>\"Making available up to $2.1 billion in low interest loans and government guarantees to finance social and affordable housing.\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>link</code></td>\n\t\t\t\t\t<td>Link</td>\n\t\t\t\t\t<td>\"[Read more](#)\"</td>\n\t\t\t\t</tr>\n\t\t\t\t<tr>\n\t\t\t\t\t<td><code>image</code></td>\n\t\t\t\t\t<td>Image</td>\n\t\t\t\t\t<td><code style=\"overflow-wrap:break-word\">{<br/>  \"src\": \"https://content.vic.gov.au/sites/default/files/2023-09/Artist-impression-Super-Housing-Partnerships-Kensington-Victoria.jpg?width=1536\",<br/>  \"alt\": \"Artist impression of the Kensington Victoria super housing partnership\"<br/>}</code></td>\n\t\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n</div>"
+                      }
+                    },
+                    {
+                      "id": "fbb81f06-ae16-4ff8-9197-5865519c2576",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2ContentComm",
+                      "attributes": {
+                        "className": "rpl-content",
+                        "markup": "<div class=\"app-wysiwyg\">\n\n\t<h2 id=\"documentation\">Documentation</h2>\n\n\t\n\n\t<div class=\"lwc-documentation\">\n\t\t<table class=\"rpl-table\">\n\t\t\t<caption>LWC documentation</caption>\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th width=\"20%\">Attribute</th>\n\t\t\t\t\t<th width=\"20%\">Label</th>\n\t\t\t\t\t<th width=\"60%\">Description</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td><code>title</code></td>\n\t\t\t\t<td>Title</td>\n\t\t\t\t<td>Clearly identifies the primary purpose or action of the campaign and acts as a call to action for the user.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>content</code></td>\n\t\t\t\t<td>Content</td>\n\t\t\t\t<td>Provides further details when title alone may not be sufficient - in <a href=\"https://www.markdownguide.org/basic-syntax/\">Markdown format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>link</code></td>\n\t\t\t\t<td>Link</td>\n\t\t\t\t<td>Button content - in <a href=\"https://www.markdownguide.org/basic-syntax/#links\">Markdown link format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>meta</code></td>\n\t\t\t\t<td>Meta</td>\n\t\t\t\t<td><em>Primary campaign only:</em> button content - in <a href=\"https://www.markdownguide.org/basic-syntax/#links\">Markdown link format</a>.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>img</code></td>\n\t\t\t\t<td>Image</td>\n\t\t\t\t<td>Configuration of the image, refer to the <a href=\"./image#documentation\">image documentation</a> for full details of the individual fields.</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td><code>className</code></td>\n\t\t\t\t<td>Class name</td>\n\t\t\t\t<td>Additional CSS classes to be applied.</td>\n\t\t\t</tr>\n\t\t\t</tbody>\n\t\t</table>\n\t</div>\n\n\t\n</div>"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "11c94b13-a133-48fd-a85f-731a6317f77c",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "b00d2485-1e6b-4e4b-82ca-f4700c798631",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}

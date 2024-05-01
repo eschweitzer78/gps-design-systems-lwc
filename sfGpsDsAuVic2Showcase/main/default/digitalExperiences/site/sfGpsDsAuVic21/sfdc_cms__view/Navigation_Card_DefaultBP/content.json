@@ -1,0 +1,198 @@
+{
+  "type": "sfdc_cms__view",
+  "title": "Default blueprint",
+  "contentBody": {
+    "themeLayoutType": "VIC2AppExampleThemeLayout",
+    "viewType": "custom-navigation-card-default-blueprint",
+    "component": {
+      "id": "d687c975-3a30-4269-ad93-d995876020a6",
+      "type": "component",
+      "definition": "community_layout:sldsFlexibleLayout",
+      "children": [
+        {
+          "id": "ed2cc4e0-2ae3-40c9-88e0-faa912b3ddbb",
+          "type": "region",
+          "name": "content",
+          "title": "Content",
+          "children": [
+            {
+              "id": "07246e0d-26ca-441d-b4a8-8195b2a60956",
+              "type": "component",
+              "definition": "community_layout:section",
+              "attributes": {
+                "backgroundImageConfig": "",
+                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                "componentSpacerSize": "",
+                "dxpStyle": {
+                  "padding": {
+                    "bottom": "1rem",
+                    "left": "1rem",
+                    "right": "1rem",
+                    "top": "1rem"
+                  }
+                },
+                "maxContentWidth": "",
+                "sectionColumnGutterWidth": "",
+                "sectionConfig": "{\"UUID\":\"07246e0d-26ca-441d-b4a8-8195b2a60956\",\"columns\":[{\"UUID\":\"d17f820d-6d6f-46ad-80fe-fd2aefa12471\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":[]}]}"
+              },
+              "children": [
+                {
+                  "id": "d17f820d-6d6f-46ad-80fe-fd2aefa12471",
+                  "type": "region",
+                  "name": "col1",
+                  "title": "Column 1",
+                  "children": [
+                    {
+                      "id": "9088089e-5fb5-4ca8-b1df-dd48f15cef06",
+                      "type": "component",
+                      "definition": "c:sfGpsDsAuVic2CardNavComm",
+                      "attributes": {
+                        "title": "[Small Business Ventilation Program](#)",
+                        "content": "Funding for public-facing small businesses to purchase equipment and upgrades to improve ventilation and reduce the spread of COVID-19 and boost customer confidence.",
+                        "meta": ""
+                      },
+                      "children": [
+                        {
+                          "id": "745c5e92-6375-44c9-aaff-7a1b28fc1e68",
+                          "type": "region",
+                          "name": "Content",
+                          "title": "Content"
+                        },
+                        {
+                          "id": "a0b44009-40d9-485f-99b4-cff8665b3282",
+                          "type": "region",
+                          "name": "Meta",
+                          "title": "Meta",
+                          "children": [
+                            {
+                              "attributes": {
+                                "alignItems": "center",
+                                "direction": "row",
+                                "gap": "var(--rpl-sp-3)",
+                                "justifyContent": "flex-start",
+                                "wrap": "wrap"
+                              },
+                              "children": [
+                                {
+                                  "id": "19455cd8-319d-4684-933b-6cdeb71230b6",
+                                  "type": "region",
+                                  "name": "Content1",
+                                  "title": "Content1",
+                                  "children": [
+                                    {
+                                      "id": "bdf777d1-8568-4b22-89f8-7bdb9e6ae98a",
+                                      "type": "component",
+                                      "definition": "c:sfGpsDsAuVic2TagComm",
+                                      "attributes": {
+                                        "label": "Grant",
+                                        "variant": "neutral"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "id": "b733e5a8-e19f-4896-948d-dc60612a9a4d",
+                                      "type": "component",
+                                      "definition": "c:sfGpsDsAuVic2CardStatusComm",
+                                      "attributes": {
+                                        "className": "",
+                                        "iconColour": "success",
+                                        "iconName": "icon-check-circle-filled",
+                                        "label": "Open"
+                                      }
+                                    }
+                                  ],
+                                  "id": "7938e1e5-5066-4996-a4d3-4c831cc45672",
+                                  "name": "Content2",
+                                  "title": "Content2",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "3e411cd3-8867-4876-933e-fdd4522d4ce9",
+                                  "name": "Content3",
+                                  "title": "Content3",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "537df331-2802-4cb8-bdc9-c031415aaff0",
+                                  "name": "Content4",
+                                  "title": "Content4",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "3a5747d4-15e8-4474-847d-c62950b8dc31",
+                                  "name": "Content5",
+                                  "title": "Content5",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "d8d27f2c-f385-4d29-8c30-27a38f26bb45",
+                                  "name": "Content6",
+                                  "title": "Content6",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "ee8da848-b6bf-4ad2-8303-193cbd96ad1a",
+                                  "name": "Content7",
+                                  "title": "Content7",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "717d0a75-e91b-43c4-b87d-1fac24314c0f",
+                                  "name": "Content8",
+                                  "title": "Content8",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "bd0a7d01-8c1b-4522-9568-c6e1c1add76b",
+                                  "name": "Content9",
+                                  "title": "Content9",
+                                  "type": "region"
+                                },
+                                {
+                                  "id": "9879a6c7-dc6c-434a-bd55-3ad427e3ddcc",
+                                  "name": "Content10",
+                                  "title": "Content10",
+                                  "type": "region"
+                                }
+                              ],
+                              "definition": "c:sfGpsDsFlexLwr",
+                              "id": "76ca9af0-e0b9-4c2a-aa4e-07b2231bbd02",
+                              "type": "component"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c5ccb650-c2d2-45c2-8854-4190849b1746",
+          "type": "region",
+          "name": "sfdcHiddenRegion",
+          "title": "sfdcHiddenRegion",
+          "children": [
+            {
+              "id": "e30e1681-24a0-41e7-b9de-2b8a5d940e93",
+              "type": "component",
+              "definition": "community_builder:seoAssistant",
+              "attributes": {
+                "customHeadTags": "",
+                "description": "",
+                "pageTitle": "Navigation card default blueprint",
+                "recordId": "{!recordId}"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dataProviders": []
+  }
+}
