@@ -25,14 +25,7 @@ jobs:
   format-lint-lwc-tests:
     if: "github.actor != 'eschweitzer78-bot'"
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: read
     steps:
-      - uses: aquacash5/npm-gpr-auth@v2
-        with:
-          token: ${{ secrets.GHCR_ACCESS_TOKEN }}
-
       # Checkout the source code
       - name: "Checkout source code"
         uses: actions/checkout@v4
@@ -56,6 +49,8 @@ jobs:
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci
+        env:
+          GHCR_TOKEN: { { secrets.GHCR_ACCESS_TOKEN } }
 
       # Prettier formatting
       - name: "Code formatting verification with Prettier"
