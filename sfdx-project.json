@@ -16,7 +16,7 @@
     },
     {
       "path": "sfGpsDsAuNsw",
-      "default": true
+      "default": false
     },
     {
       "path": "sfGpsDsAuNswFull",
@@ -55,8 +55,8 @@
     {
       "path": "sfGpsDsAuVic1Full",
       "package": "Salesforce Global Public Sector AU VIC Design System",
-      "versionName": "2024.03.06.1800",
-      "versionNumber": "2.4.0.NEXT",
+      "versionName": "2024.04.10.1800",
+      "versionNumber": "2.4.1.NEXT",
       "default": false,
       "versionDescription": "Salesforce Global Public Sector AU VIC Design System v1 (Full)",
       "dependencies": [
@@ -72,8 +72,8 @@
     {
       "path": "sfGpsDsAuVic2Full",
       "package": "Salesforce Global Public Sector AU VIC Design System v2",
-      "versionName": "2024.03.06.1800",
-      "versionNumber": "0.2.0.NEXT",
+      "versionName": "2024.04.30.2300",
+      "versionNumber": "0.2.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -81,6 +81,10 @@
           "package": "omnistudio 248.4"
         }
       ]
+    },
+    {
+      "path": "sfGpsDsAuVic2Showcase",
+      "default": true
     },
     {
       "path": "sfGpsDsUkGov",

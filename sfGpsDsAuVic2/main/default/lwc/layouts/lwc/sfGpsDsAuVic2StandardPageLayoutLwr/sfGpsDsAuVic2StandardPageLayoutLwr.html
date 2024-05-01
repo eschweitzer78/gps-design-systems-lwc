@@ -1,0 +1,36 @@
+<template>
+  <section data-f6-region id={aboveBodyId} class={aboveBodyClassName}>
+    <slot name="aboveBody"></slot>
+  </section>
+  <!-- above body -->
+
+  <div class="rpl-layout__body-wrap">
+    <div class="rpl-container">
+      <div class={bodyClassName}>
+        <main
+          id={mainId}
+          data-f6-region
+          class={computedMainClassName}
+          dir={direction}
+        >
+          <slot name="main"></slot>
+        </main>
+
+        <aside
+          lwc:if={hasSidebar}
+          data-f6-region
+          id="rpl-sidebar"
+          class={computedSidebarClassName}
+        >
+          <slot name="sidebar"></slot>
+        </aside>
+      </div>
+    </div>
+  </div>
+  <!-- body -->
+
+  <section id={belowBodyId} data-f6-region class={belowBodyClassName}>
+    <slot name="belowBody"></slot>
+  </section>
+  <!-- below body -->
+</template>

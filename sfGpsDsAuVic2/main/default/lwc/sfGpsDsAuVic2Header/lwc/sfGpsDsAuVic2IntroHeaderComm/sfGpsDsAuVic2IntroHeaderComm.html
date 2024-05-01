@@ -1,0 +1,37 @@
+<template>
+  <c-sf-gps-ds-au-vic2-header class-name={computedClassName}>
+    <template lwc:if={iconName}>
+      <c-sf-gps-ds-au-vic2-icon
+        slot="upper"
+        name={iconName}
+        size="l"
+        class-name="rpl-header__icon"
+      >
+      </c-sf-gps-ds-au-vic2-icon>
+    </template>
+
+    <h2 slot="title" class="rpl-header__title rpl-type-h2">{title}</h2>
+
+    <div
+      lwc:if={content}
+      lwc:ref="content"
+      lwc:dom="manual"
+      class="rpl-content"
+    ></div>
+    <div lwc:else>
+      <slot name="introContent"></slot>
+    </div>
+
+    <template lwc:if={computedDisplayLinks}>
+      <c-sf-gps-ds-au-vic2-header-links
+        slot="aside"
+        title={linksTitle}
+        items={decoratedItems}
+        type={_linksType}
+        more-link={_linksMore}
+        onitemclick={handleItemClick}
+      >
+      </c-sf-gps-ds-au-vic2-header-links>
+    </template>
+  </c-sf-gps-ds-au-vic2-header>
+</template>

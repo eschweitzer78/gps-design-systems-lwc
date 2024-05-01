@@ -1,0 +1,24 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-file
+    lwc:else
+    name={computedName}
+    url={computedUrl}
+    extension={extension}
+    size={size}
+    updated={parsedUpdated}
+    class-name={className}
+  >
+    <template lwc:if={caption}>
+      <div slot="caption" lwc:ref="caption" lwc:dom="manual"></div>
+    </template>
+    <template lwc:else>
+      <slot slot="caption" name="Caption"></slot>
+    </template>
+  </c-sf-gps-ds-au-vic2-file>
+</template>

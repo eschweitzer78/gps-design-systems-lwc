@@ -1,0 +1,11 @@
+<template>
+  <span class={computedClassName}>
+    <c-sf-gps-ds-au-vic2-icon
+      lwc:if={iconName}
+      colour={iconColour}
+      name={iconName}
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+    <span lwc:if={label}>{label}</span>
+  </span>
+</template>

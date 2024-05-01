@@ -1,0 +1,16 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <div lwc:if={cid} id={cid}>
+    <h2 lwc:if={title} class="rpl-type-h2 rpl-u-margin-b-2">{title}</h2>
+    <slot name="Component"></slot>
+  </div>
+  <div lwc:else>
+    <h2 lwc:if={title} class="rpl-type-h2 rpl-u-margin-b-2">{title}</h2>
+    <slot name="Component"></slot>
+  </div>
+</template>

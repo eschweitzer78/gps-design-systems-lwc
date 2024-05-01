@@ -11,10 +11,7 @@ import { api, track } from "lwc";
 /* IMPORTANT NOTE: if you modify this class, you must update sfGpsDsLwcOsN
    as it's not automatically derived */
 
-import communityId from "@salesforce/community/Id";
-import cBasePath from "@salesforce/community/basePath";
 import { normaliseBoolean } from "c/sfGpsDsHelpers";
-
 import runIntegrationProcedure from "@salesforce/apex/sfGpsDsIntegrationProcController.runIntegrationProcedure";
 
 export default class SfGpsDsIpLwc extends SfGpsDsLwc {
@@ -157,18 +154,6 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
 
   mapIpData(data) {
     return data;
-  }
-
-  get communityId() {
-    return communityId;
-  }
-
-  get communityBasePath() {
-    return cBasePath;
-  }
-
-  get isPreview() {
-    return !document.URL.startsWith(cBasePath);
   }
 
   connectedCallback() {

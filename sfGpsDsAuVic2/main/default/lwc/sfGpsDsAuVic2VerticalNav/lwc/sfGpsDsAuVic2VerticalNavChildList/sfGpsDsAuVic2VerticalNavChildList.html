@@ -1,0 +1,26 @@
+<template>
+  <ul class={computedClassName}>
+    <template for:each={_decoratedItems} for:item="item">
+      <li key={item.index} class="rpl-vertical-nav__list-item">
+        <c-sf-gps-ds-au-vic2-vertical-nav-link
+          text={item.text}
+          href={item.url}
+          active={item.isLinkActive}
+          show-child-icon={_showChildIcon}
+          tabindex={_tabindex}
+          onitemclick={handleClick}
+        >
+        </c-sf-gps-ds-au-vic2-vertical-nav-link>
+
+        <c-sf-gps-ds-au-vic2-vertical-nav-child-list
+          lwc:if={item.items}
+          items={item.items}
+          level={_childLevel}
+          is-expanded={isExpanded}
+          onitemclick={handleClick}
+        >
+        </c-sf-gps-ds-au-vic2-vertical-nav-child-list>
+      </li>
+    </template>
+  </ul>
+</template>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>SfGpsDs LWR Flex Div</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="nItems"
+        type="Integer"
+        label="Number of items"
+        min="1"
+        max="10"
+        default="10"
+      />
+      <property
+        name="direction"
+        type="String"
+        label="Flex direction"
+        description="Value used for the element’s flex-direction attribute."
+        datasource="column,row"
+        default="column"
+      />
+      <property
+        name="wrap"
+        type="String"
+        label="Flex wrap"
+        default="wrap"
+        datasource="wrap,nowrap"
+      />
+      <property
+        name="alignItems"
+        type="String"
+        label="Align items"
+        default="stretch"
+        datasource="center,flex-start,flex-end,stretch,baseline"
+      />
+      <property
+        name="justifyContent"
+        type="String"
+        label="Justify content"
+        default="flex-start"
+        datasource="center,flex-start,flex-end,space-between,space-around,space-evenly"
+      />
+      <property name="gap" type="String" label="Gap" />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

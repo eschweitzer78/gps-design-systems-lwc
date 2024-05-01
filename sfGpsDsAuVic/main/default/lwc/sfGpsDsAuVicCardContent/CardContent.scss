@@ -1,5 +1,5 @@
-@import "node_modules/@dpc-sdp/ripple-global/scss/settings";
-@import "node_modules/@dpc-sdp/ripple-global/scss/tools";
+@import "@dpc-sdp/ripple-global/scss/settings";
+@import "@dpc-sdp/ripple-global/scss/tools";
 @import "../sfGpsDsAuVicCard/Card";
 
 $rpl-card-content-border-color: rpl_color('mid_neutral_1') !default;

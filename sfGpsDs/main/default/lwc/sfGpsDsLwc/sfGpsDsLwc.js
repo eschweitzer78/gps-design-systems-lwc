@@ -6,6 +6,8 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import communityId from "@salesforce/community/Id";
+import cBasePath from "@salesforce/community/basePath";
 
 /* IMPORTANT NOTE: if you modify this class, you have to update sfGpsDsLwcOsN
    as it's not automatically derived */
@@ -35,6 +37,20 @@ export default class SfGpsDsLwc extends LightningElement {
 
   @api getErrors() {
     return this._sfGpsDsErrors;
+  }
+
+  /* getters */
+
+  get communityId() {
+    return communityId;
+  }
+
+  get communityBasePath() {
+    return cBasePath;
+  }
+
+  get isPreview() {
+    return !document.URL.startsWith(cBasePath);
   }
 
   /* lifecycle */

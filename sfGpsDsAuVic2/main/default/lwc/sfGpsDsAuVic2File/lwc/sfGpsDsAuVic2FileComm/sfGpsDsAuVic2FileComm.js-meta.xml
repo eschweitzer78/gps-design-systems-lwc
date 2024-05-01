@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS File</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="name"
+        type="String"
+        label="Name"
+        description="Name and URL of the document in Markdown link format."
+        required="true"
+        default="[File](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="extension"
+        type="String"
+        label="Extension"
+        description="Extension denoting the file type."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="caption"
+        type="String"
+        label="Caption"
+        description="Provides further details where the name alone may not be sufficient - in Markdown format. Leave empty to get a slot in LWR."
+        default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporar incident incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam, [quis nostrud](#) exercitation ullamco laboris nisi ut aliquip ex ea commodo."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="size"
+        type="String"
+        label="File size"
+        description="Text used to indicate the file size."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="updated"
+        type="String"
+        label="Date of last update"
+        description="Date when the file was last updated in ISO format."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

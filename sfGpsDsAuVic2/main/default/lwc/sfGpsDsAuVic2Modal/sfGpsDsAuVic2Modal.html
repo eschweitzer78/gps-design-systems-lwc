@@ -1,0 +1,40 @@
+<template>
+  <!-- <teleport to="body"> -->
+  <c-sf-gps-ds-focus-trap
+    lwc:if={isOpen}
+    lwc:ref="trap"
+    options={computedFocusTrapOptions}
+  >
+    <!-- removed below:         v-bind="$attrs" -->
+    <div
+      class={computedClassName}
+      style={computedStyle}
+      onkeydown={handleEscapeKey}
+    >
+      <div class="rpl-modal__inner">
+        <slot name="above">
+          <div class="rpl-modal__actions">
+            <!-- added tabindex to make button tabbable -->
+            <c-sf-gps-ds-au-vic2-button
+              lwc:ref="closeButton"
+              tabindex="0"
+              icon-name="icon-cancel"
+              theme="neutral"
+              variant="elevated"
+              onclick={handleCloseModal}
+            >
+              {closeLabel}
+            </c-sf-gps-ds-au-vic2-button>
+          </div>
+        </slot>
+        <div class="rpl-modal__main">
+          <slot></slot>
+        </div>
+        <div class="rpl-modal__below" style={computedBelowStyle}>
+          <slot name="below" onslotchange={handleSlotChange}></slot>
+        </div>
+      </div>
+    </div>
+  </c-sf-gps-ds-focus-trap>
+  <!-- </teleport>    -->
+</template>

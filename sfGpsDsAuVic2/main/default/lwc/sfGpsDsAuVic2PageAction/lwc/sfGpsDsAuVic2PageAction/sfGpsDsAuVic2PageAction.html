@@ -1,0 +1,11 @@
+<template>
+  <div class={computedClassName}>
+    <div class="rpl-page-action__upper" style={computedUpperSlotStyle}>
+      <slot name="upper" onslotchange={handleSlotChange}></slot>
+    </div>
+
+    <!-- This div is required for a css rule to kick in as it would not on a slot, another option would be to change the slot display to block -->
+    <div lwc:if={_hasDefaultSlot}></div>
+    <slot onslotchange={handleSlotChange}></slot>
+  </div>
+</template>

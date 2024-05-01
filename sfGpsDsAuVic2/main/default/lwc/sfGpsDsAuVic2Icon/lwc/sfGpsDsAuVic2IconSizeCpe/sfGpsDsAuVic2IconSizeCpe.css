@@ -1,0 +1,7 @@
+.slds-form-element__legend:not(:first-child) {
+  padding-top: 1rem;
+}
+
+.slds-form-element:not(:first-child) {
+  padding-top: 0.75rem;
+}

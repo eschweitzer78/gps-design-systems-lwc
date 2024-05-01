@@ -1,0 +1,110 @@
+<template>
+  <div class={computedClassName}>
+    <div
+      lwc:if={computedShowButton}
+      class="rpl-accordion__toggle-all-wrapper rpl-u-screen-only"
+    >
+      <button
+        class="rpl-accordion__toggle-all rpl-u-focusable-inline"
+        onclick={handleToggleAll}
+      >
+        {computedToggleAllLabel}
+      </button>
+    </div>
+
+    <ol lwc:if={numbered} class="rpl-accordion__items">
+      <template for:each={_items} for:item="item" for:index="index">
+        <li class={item.className} key={item.toggleId}>
+          <button
+            id={item.toggleId}
+            class="rpl-accordion__item-toggle rpl-u-focusable-block"
+            type="button"
+            onclick={handleToggleItem}
+            aria-expanded={item.active}
+            aria-controls={item.contentId}
+            data-idx={index}
+          >
+            <span class="rpl-accordion__item-heading-wrapper">
+              <span
+                aria-hidden="true"
+                class="rpl-accordion__item-number rpl-type-h4"
+              >
+                {item.index}
+              </span>
+
+              <span class="rpl-accordion__item-heading rpl-type-h4"
+                >{item.title}</span
+              >
+            </span>
+
+            <span
+              class="rpl-accordion__item-icon rpl-u-screen-only"
+              aria-hidden="true"
+            >
+              <c-sf-gps-ds-au-vic2-icon name="icon-chevron-down">
+              </c-sf-gps-ds-au-vic2-icon>
+            </span>
+          </button>
+
+          <c-sf-gps-ds-au-vic2-expandable
+            id={item.contentId}
+            expanded={item.active}
+            labelledby={item.toggleId}
+            hidden={item.inactive}
+            class-name="rpl-accordion__item-content"
+          >
+            <c-sf-gps-ds-au-vic2-content
+              html={item.html}
+              class-name="rpl-content rpl-accordion__item-content-inner"
+            >
+            </c-sf-gps-ds-au-vic2-content>
+          </c-sf-gps-ds-au-vic2-expandable>
+        </li>
+      </template>
+    </ol>
+
+    <ul lwc:else class="rpl-accordion__items">
+      <template for:each={_items} for:item="item" for:index="index">
+        <li class={item.className} key={item.toggleId}>
+          <button
+            id={item.toggleId}
+            class="rpl-accordion__item-toggle rpl-u-focusable-block"
+            type="button"
+            onclick={handleToggleItem}
+            aria-expanded={item.active}
+            aria-controls={item.contentId}
+            data-idx={index}
+          >
+            <span class="rpl-accordion__item-heading-wrapper">
+              <span class="rpl-accordion__item-heading rpl-type-h4"
+                >{item.title}</span
+              >
+            </span>
+
+            <span
+              class="rpl-accordion__item-icon rpl-u-screen-only"
+              aria-hidden="true"
+            >
+              <c-sf-gps-ds-au-vic2-icon name="icon-chevron-down">
+              </c-sf-gps-ds-au-vic2-icon>
+            </span>
+          </button>
+
+          <c-sf-gps-ds-au-vic2-expandable
+            id={item.contentId}
+            expanded={item.active}
+            labelledby={item.toggleId}
+            hidden={item.inactive}
+            class-name="rpl-accordion__item-content"
+          >
+            <c-sf-gps-ds-au-vic2-content
+              html={item.html}
+              class-name="rpl-content rpl-accordion__item-content-inner"
+            >
+            </c-sf-gps-ds-au-vic2-content>
+          </c-sf-gps-ds-au-vic2-expandable>
+        </li>
+      </template>
+    </ul>
+  </div>
+</template>

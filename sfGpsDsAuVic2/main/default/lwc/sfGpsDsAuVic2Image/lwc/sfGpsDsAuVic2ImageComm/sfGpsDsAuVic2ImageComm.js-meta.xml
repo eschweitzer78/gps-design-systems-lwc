@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Image</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="image"
+        type="String"
+        label="Image"
+        description="Configuration of the image"
+        editor="c/sfGpsDsAuVic2ImageCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

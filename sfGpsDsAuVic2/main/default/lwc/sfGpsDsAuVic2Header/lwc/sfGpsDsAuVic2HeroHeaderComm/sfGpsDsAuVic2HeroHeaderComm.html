@@ -1,0 +1,70 @@
+<template>
+  <c-sf-gps-ds-au-vic2-header
+    class-name={computedClassName}
+    full-width={fullWidth}
+  >
+    <template lwc:if={computedHasBehindSlot}>
+      <span slot="behind">
+        <c-sf-gps-ds-au-vic2-image
+          lwc:if={background}
+          image={computedBackground}
+        >
+        </c-sf-gps-ds-au-vic2-image>
+        <c-sf-gps-ds-au-vic2-header-graphic
+          lwc:if={cornerTop}
+          image={cornerTopImage}
+          placement="top"
+        >
+        </c-sf-gps-ds-au-vic2-header-graphic>
+        <c-sf-gps-ds-au-vic2-header-graphic
+          lwc:if={cornerBottom}
+          image={cornerBottomImage}
+          placement="bottom"
+        >
+        </c-sf-gps-ds-au-vic2-header-graphic>
+      </span>
+    </template>
+
+    <template lwc:if={logo}>
+      <c-sf-gps-ds-au-vic2-image
+        lwc:if={logo.src}
+        slot="upper"
+        class-name="rpl-header__logo"
+        image={logo}
+      >
+      </c-sf-gps-ds-au-vic2-image>
+    </template>
+
+    <h1 slot="title" class={computedTitleClassName}>{title}</h1>
+
+    <p class={computedContentClasses}>
+      <template lwc:if={content}>
+        <span lwc:ref="content" lwc:dom="manual"></span>
+      </template>
+      <template lwc:else>
+        <slot name="heroContent" onslotchange={handleSlotChange}></slot>
+      </template>
+    </p>
+
+    <template lwc:if={computedShowHeaderActions}>
+      <c-sf-gps-ds-au-vic2-header-actions
+        slot="lower"
+        primary={_primaryAction}
+        secondary={decoratedSecondaryAction}
+        onitemclick={handleItemClick}
+      >
+      </c-sf-gps-ds-au-vic2-header-actions>
+    </template>
+
+    <template lwc:if={computedShowHeaderLinks}>
+      <c-sf-gps-ds-au-vic2-header-links
+        slot="aside"
+        title={linksTitle}
+        items={decoratedItems}
+        more-link={_linksMore}
+        onitemclick={handleItemClick}
+      >
+      </c-sf-gps-ds-au-vic2-header-links>
+    </template>
+  </c-sf-gps-ds-au-vic2-header>
+</template>

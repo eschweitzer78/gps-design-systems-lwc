@@ -1,0 +1,39 @@
+<template>
+  <figure class={computedClassName}>
+    <a
+      class="rpl-document__link rpl-u-focusable-within"
+      href={url}
+      download={download}
+      target={computedTarget}
+      onclick={handleClick}
+    >
+      <div class="rpl-document__icon">
+        <slot name="icon" onslotchange={handleSlotChange}></slot>
+      </div>
+
+      <div class="rpl-document__content">
+        <div
+          class="rpl-document__name rpl-type-p rpl-type-weight-bold rpl-u-focusable-inline"
+          style={computedNameStyle}
+        >
+          <slot name="name" onslotchange={handleSlotChange}></slot>
+        </div>
+        <div
+          class="rpl-document__info rpl-type-label-small"
+          style={computedInfoStyle}
+        >
+          <slot name="info" onslotchange={handleSlotChange}></slot>
+        </div>
+      </div>
+      <span lwc:if={_openInNewWindow} class="rpl-u-visually-hidden">
+        (opens in a new window)
+      </span>
+    </a>
+    <figcaption
+      class="rpl-document__caption rpl-type-p-small"
+      style={computedCaptionStyle}
+    >
+      <slot name="caption" onslotchange={handleSlotChange}></slot>
+    </figcaption>
+  </figure>
+</template>

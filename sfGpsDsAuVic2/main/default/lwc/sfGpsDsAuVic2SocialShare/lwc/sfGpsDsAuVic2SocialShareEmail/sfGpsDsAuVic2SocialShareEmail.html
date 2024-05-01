@@ -1,0 +1,17 @@
+<template>
+  <c-sf-gps-ds-au-vic2-text-link
+    lwc:if={_mailtoUrl}
+    url={_mailtoUrl}
+    aria-label="Share this page via email"
+    class-name="rpl-social-share-link rpl-type-p-small"
+    onclick={handleClick}
+  >
+    <c-sf-gps-ds-au-vic2-icon
+      class-name="rpl-social-share__icon"
+      name="icon-mail"
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+
+    <span>Email</span>
+  </c-sf-gps-ds-au-vic2-text-link>
+</template>

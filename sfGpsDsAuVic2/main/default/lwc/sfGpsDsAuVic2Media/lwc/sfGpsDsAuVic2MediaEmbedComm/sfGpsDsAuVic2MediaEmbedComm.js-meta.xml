@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Media Embed</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Media type"
+        description="Type of media to be used."
+        datasource="image,video"
+      />
+      <property
+        name="variant"
+        type="String"
+        label="Variant"
+        description="Aspect ratio variant for image media types."
+        datasource="landscape,portrait,square,avatar,complex"
+      />
+      <property
+        name="size"
+        type="String"
+        label="Image size"
+        description="Display size for image media types."
+        datasource="small,medium,large"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title, used as a header in-place if showTitle is set, and in fullscreen modal."
+        default="Media embed"
+      />
+      <property name="showTitle" type="Boolean" label="Show title" />
+      <property
+        name="src"
+        type="String"
+        label="Media source"
+        description="URL of the target image or video."
+      />
+      <property
+        name="transcriptUrl"
+        type="String"
+        label="Transcript URL"
+        description="URL of the transcript, mandatory for video media types."
+      />
+      <property
+        name="caption"
+        type="String"
+        label="Caption"
+        description="Caption text, also used as alternative text for image media types."
+      />
+      <property
+        name="sourceCaption"
+        type="String"
+        label="Source caption"
+        description="Caption detailing the media source or credits."
+      />
+      <property
+        name="allowFullscreen"
+        type="Boolean"
+        label="Fullscreen allowed"
+        description="Adds an action that lets the user open the media source in a modal when set."
+      />
+      <property
+        name="fullscreenLabel"
+        type="String"
+        label="Fullscreen label"
+        description="Label that replaces the default for the fullscreen action."
+      />
+      <property
+        name="dSlot"
+        type="Boolean"
+        label="Display data content"
+        description="Set to  display data content."
+        default="true"
+      />
+      <property
+        name="dContent"
+        type="String"
+        label="Data content"
+        description="Data content markup - leave empty to get an LWR slot."
+      />
+      <property
+        name="dLabel"
+        type="String"
+        label="Data label"
+        description="Label that replaces the default for the display data action."
+      />
+      <property
+        name="downloadUrl"
+        type="String"
+        label="Download URL"
+        description="URL of a downloadable version of the media source."
+      />
+      <property
+        name="downloadLabel"
+        type="String"
+        label="Download label"
+        description="Label that replaces the default for the download media action."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to add."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

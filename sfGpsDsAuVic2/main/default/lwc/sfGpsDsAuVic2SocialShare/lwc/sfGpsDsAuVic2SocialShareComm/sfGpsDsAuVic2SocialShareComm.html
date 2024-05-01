@@ -1,0 +1,25 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-social-share
+    lwc:elseif={computedShowShare}
+    title={title}
+    pagetitle={pagetitle}
+    networks={_networks}
+    url={url}
+    email={email}
+    class-name={computedClassName}
+  >
+  </c-sf-gps-ds-au-vic2-social-share>
+
+  <c-sf-gps-ds-empty
+    lwc:elseif={isPreview}
+    title="Something is missing"
+    content="You must set the title and either the networks or email attribute."
+  >
+  </c-sf-gps-ds-empty>
+</template>

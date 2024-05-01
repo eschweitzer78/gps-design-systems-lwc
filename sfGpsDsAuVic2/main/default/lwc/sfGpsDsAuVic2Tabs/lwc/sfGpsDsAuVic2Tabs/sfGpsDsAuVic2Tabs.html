@@ -1,0 +1,13 @@
+<template lwc:render-mode="light">
+  <div
+    class={computedClassName}
+    title={title}
+    onprivatetabregister={handleTabRegister}
+    onprivatetabdatachange={handleTabDataChange}
+  >
+    <c-sf-gps-ds-au-vic2-tab-bar lwc:ref="bar" onselect={handleTabSelected}>
+    </c-sf-gps-ds-au-vic2-tab-bar>
+
+    <slot></slot>
+  </div>
+</template>

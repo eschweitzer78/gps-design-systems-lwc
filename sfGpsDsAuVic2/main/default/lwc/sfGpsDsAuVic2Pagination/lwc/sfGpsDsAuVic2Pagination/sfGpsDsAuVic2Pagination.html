@@ -1,0 +1,50 @@
+<template>
+  <nav class={computedClassName} aria-label={label}>
+    <p lwc:if={computedShowActTotal} class="rpl-pagination__tally rpl-type-p">
+      {activeStep} of {totalPages}
+    </p>
+
+    <c-sf-gps-ds-au-vic2-pagination-link
+      lwc:if={computedShowPrevPaginationLink}
+      icon-name="icon-arrow-left"
+      icon-size={computedIconSize}
+      aria-label={computedPrevAriaLabel}
+      disabled={computedPrevDisabled}
+      onclick={handlePrevClick}
+    >
+      {prevLabel}
+    </c-sf-gps-ds-au-vic2-pagination-link>
+
+    <ol lwc:if={isComplex} class="rpl-pagination__list">
+      <template for:each={visibleSteps} for:item="step">
+        <li key={step.key} class="rpl-pagination__list-item rpl-type-label">
+          <button
+            lwc:if={step}
+            class="rpl-pagination__page rpl-u-focusable-block"
+            aria-label="`Go to ${contentType} ${step}`"
+            aria-current="step === activeStep ? true : null"
+            data-ndx={step}
+            onclick={handleNumberClick}
+          >
+            <span>{step}</span>
+          </button>
+          <span lwc:else class="rpl-pagination__spacer">
+            <span>&hellip;</span>
+          </span>
+        </li>
+      </template>
+    </ol>
+
+    <c-sf-gps-ds-au-vic2-pagination-link
+      lwc:if={computedShowNextPaginationLink}
+      icon-name="icon-arrow-right"
+      icon-placement="after"
+      icon-size={computedIconSize}
+      aria-label={computedNextAriaLabel}
+      disabled={computedNextDisabled}
+      onclick={handleNextClick}
+    >
+      {nextLabel}
+    </c-sf-gps-ds-au-vic2-pagination-link>
+  </nav>
+</template>

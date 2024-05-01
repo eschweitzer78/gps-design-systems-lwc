@@ -1,0 +1,41 @@
+<template>
+  <div class="rpl-table rpl-data-table">
+    <div class="rpl-table__scroll-container" tabindex="0">
+      <table>
+        <caption lwc:if={caption}>
+          {caption}
+        </caption>
+        <thead lwc:if={computedShowHead}>
+          <tr>
+            <template for:each={getComputedColumns} for:item="column">
+              <th key={column.key} class={column.classes}>{column.label}</th>
+            </template>
+            <th lwc:if={showExtraContent} class="rpl-data-table__actions">
+              <span class="rpl-u-visually-hidden">Actions</span>
+            </th>
+          </tr>
+        </thead>
+
+        <template for:each={getComputedItems} for:item="row" for:index="index">
+          <c-sf-gps-ds-au-vic2-data-table-row
+            key={row.id}
+            columns={columns}
+            row={row}
+            extra-content={row.__extraContent}
+            vertical-header={computedHasVerticalHeader}
+            offset={offset}
+            caption={caption}
+            index={index}
+          >
+          </c-sf-gps-ds-au-vic2-data-table-row>
+        </template>
+
+        <tfoot lwc:if={footer}>
+          <tr>
+            <td colspan={computedColumnsLength}>{footer}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</template>

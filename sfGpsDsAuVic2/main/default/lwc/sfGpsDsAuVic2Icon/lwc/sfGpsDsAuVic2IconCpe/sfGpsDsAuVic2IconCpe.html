@@ -1,0 +1,41 @@
+<template>
+  <fieldset class="slds-form-element slds-form-element_stacked">
+    <legend class="slds-form-element__legend slds-form-element__label">
+      {label}
+    </legend>
+    <div class="slds-form-element__control">
+      <c-sf-gps-ds-au-vic2-icon-name-cpe
+        label="Name"
+        value={name}
+        onvaluechange={handleNameChange}
+      >
+      </c-sf-gps-ds-au-vic2-icon-name-cpe>
+      <c-sf-gps-ds-au-vic2-icon-colour-cpe
+        label="Colour"
+        value={colour}
+        onvaluechange={handleColourChange}
+      >
+      </c-sf-gps-ds-au-vic2-icon-colour-cpe>
+      <c-sf-gps-ds-au-vic2-icon-size-cpe
+        label="Size"
+        value={size}
+        onvaluechange={handleSizeChange}
+      >
+      </c-sf-gps-ds-au-vic2-icon-size-cpe>
+      <lightning-input
+        type="checkbox"
+        label="Padded"
+        checked={padded}
+        onchange={handlePaddedChange}
+      >
+      </lightning-input>
+      <lightning-input
+        type="string"
+        label="Title"
+        value={title}
+        onchange={handleTitleChange}
+      >
+      </lightning-input>
+    </div>
+  </fieldset>
+</template>

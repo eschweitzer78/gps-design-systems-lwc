@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Sitemap</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="items"
+        type="String"
+        label="Items"
+        description="Items to be displayed as a JSON hierarchical array of { text, url, items }."
+        default="[{&quot;text&quot;:&quot;Item 1&quot;,&quot;url&quot;:&quot;#&quot;},{&quot;text&quot;:&quot;Item 2&quot;,&quot;url&quot;:&quot;#&quot;}]"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

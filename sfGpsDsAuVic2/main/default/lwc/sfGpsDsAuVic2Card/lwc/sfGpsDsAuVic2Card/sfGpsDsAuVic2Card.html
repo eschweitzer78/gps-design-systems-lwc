@@ -1,0 +1,39 @@
+<template>
+  <div lwc:if={isDivEl} class={computedClassName}>
+    <div lwc:if={_highlight} class="rpl-card__highlight"></div>
+    <div class={computedUpperClassName} style={computedUpperStyle}>
+      <slot name="upper" onslotchange={handleSlotChange}></slot>
+    </div>
+
+    <div class="rpl-card__body">
+      <slot name="meta"></slot>
+      <slot name="title"></slot>
+      <div class="rpl-card__content">
+        <slot></slot>
+      </div>
+    </div>
+
+    <div class="rpl-card__lower" style={computedLowerStyle}>
+      <slot name="lower" onslotchange={handleSlotChange}></slot>
+    </div>
+  </div>
+
+  <li lwc:else class={computedClassName}>
+    <div lwc:if={_highlight} class="rpl-card__highlight"></div>
+    <div class="rpl-card__upper" style={computedUpperStyle}>
+      <slot name="upper" onslotchange={handleSlotChange}></slot>
+    </div>
+
+    <div class="rpl-card__body">
+      <slot name="meta"></slot>
+      <slot name="title"></slot>
+      <div class="rpl-card__content">
+        <slot></slot>
+      </div>
+    </div>
+
+    <div class="rpl-card__lower" style={computedLowerStyle}>
+      <slot name="lower" onslotchange={handleSlotChange}></slot>
+    </div>
+  </li>
+</template>

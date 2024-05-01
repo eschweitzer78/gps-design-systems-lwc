@@ -1,5 +1,5 @@
-@import "node_modules/@dpc-sdp/ripple-global/scss/settings";
-@import "node_modules/@dpc-sdp/ripple-global/scss/tools";
+@import "@dpc-sdp/ripple-global/scss/settings";
+@import "@dpc-sdp/ripple-global/scss/tools";
 
 $rpl-document-link-title-color-hover: rpl_color('primary') !default;
 $rpl-document-link-title-ruleset: ('xs', 1em, 'semibold') !default;

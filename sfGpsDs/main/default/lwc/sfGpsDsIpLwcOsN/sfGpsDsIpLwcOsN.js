@@ -8,7 +8,7 @@
 import SfGpsDsLwcOsN from "c/sfGpsDsLwcOsN";
 import { api, track } from "lwc";
 
-const omnistudio_ns = "omnistudio__";
+const OMNISTUDIO_NS = "omnistudio__";
 
 export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
   _ipName;
@@ -80,7 +80,7 @@ export default class SfGpsDsIpLwcOsN extends SfGpsDsLwcOsN {
 
     this.omniRemoteCall(
       {
-        sClassName: `${omnistudio_ns}IntegrationProcedureService`,
+        sClassName: `${OMNISTUDIO_NS}IntegrationProcedureService`,
         sMethodName: this._ipName,
         input: JSON.stringify(this._input),
         //input: { ...this._input, communityId: communityId, communityPreview:... },

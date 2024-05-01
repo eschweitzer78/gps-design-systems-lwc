@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Card (Call to action)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title and target URL in Markdown link format."
+        required="true"
+        default="[Call to action card](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Provides further details where the title alone may not be sufficient - in Markdown format. Leave empty to get a slot in LWR."
+        default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporar incident incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam, [quis nostrud](#) exercitation ullamco laboris nisi ut aliquip ex ea commodo."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="ctaText"
+        type="String"
+        label="Call to action text"
+        description="Text displayed in the action button."
+        default="Read more"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="variant"
+        type="String"
+        label="Button variant"
+        description="Variant of the call to action button."
+        default="filled"
+        editor="c/sfGpsDsAuVic2ButtonVariantCpe"
+      />
+      <property
+        name="image"
+        type="String"
+        label="Image"
+        description="Configuration of the image."
+        editor="c/sfGpsDsAuVic2ImageCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

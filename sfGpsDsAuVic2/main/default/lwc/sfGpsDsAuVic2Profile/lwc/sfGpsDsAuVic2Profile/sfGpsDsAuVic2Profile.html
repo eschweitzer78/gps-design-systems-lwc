@@ -1,0 +1,11 @@
+<template>
+  <div class={computedClassName}>
+    <div lwc:if={computedHasImage} class="rpl-profile__media">
+      <c-sf-gps-ds-au-vic2-image image={_image}> </c-sf-gps-ds-au-vic2-image>
+    </div>
+    <div lwc:if={items} class="rpl-profile__items">
+      <c-sf-gps-ds-au-vic2-description-list items={items} inline>
+      </c-sf-gps-ds-au-vic2-description-list>
+    </div>
+  </div>
+</template>

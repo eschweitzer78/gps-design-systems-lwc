@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Search bar</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="variant"
+        type="String"
+        label="Variant"
+        description="The colour scheme variant to be used."
+        datasource="default,reverse,menu"
+        default="default"
+      />
+      <property
+        name="autoFocus"
+        type="Boolean"
+        label="Autofocus"
+        description="Set to have the input field automatically get focused."
+        default="false"
+      />
+      <property
+        name="inputLabel"
+        type="String"
+        label="Input label"
+        description="Set the visually hidden label for the input field for accessibility."
+        default="Search"
+      />
+      <property
+        name="inputValue"
+        type="String"
+        label="Input value"
+        description="Set to have an initial value in the input field."
+        default=""
+      />
+      <property
+        name="submitLabel"
+        type="String"
+        label="Submit label"
+        description="Label used for the submit button."
+        default="Search"
+      />
+      <property
+        name="suggestions"
+        type="String"
+        label="Suggestions"
+        description="A static set of suggestions as a JSON string array."
+        default="[&quot;Melbourne&quot;,&quot;Bendigo&quot;,&quot;Ballarat&quot;,&quot;Geelong&quot;,&quot;Mildura&quot;,&quot;Warrnambool&quot;,&quot;Shepparton&quot;,&quot;Traralgon&quot;,&quot;Wangaratta&quot;,&quot;Horsham&quot;,&quot;Wodonga&quot;,&quot;Benalla&quot;,&quot;Ararat&quot;,&quot;Morwell&quot;,&quot;Swan Hill&quot;,&quot;Portland&quot;,&quot;Echuca&quot;,&quot;Maryborough&quot;,&quot;Torquay&quot;,&quot;Bairnsdale&quot;]"
+      />
+      <property
+        name="maxSuggestionsDisplayed"
+        type="Integer"
+        label="Max suggestions displayed"
+        description="Maximum number of suggestions to display in the dropdown."
+        default="10"
+      />
+      <property
+        name="placeholder"
+        type="String"
+        label="Placeholder"
+        description="Placeholder text displayed in a lighter colour when input is empty."
+      />
+      <property
+        name="showNoResults"
+        type="Boolean"
+        label="Show no results"
+        description="Set if the users should get feedback when there are no suggestions."
+        default="false"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

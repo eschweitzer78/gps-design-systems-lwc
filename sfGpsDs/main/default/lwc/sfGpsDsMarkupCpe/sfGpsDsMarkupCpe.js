@@ -22,6 +22,7 @@ export default class sfGpsDsMarkupCpe extends LightningElement {
   handleClick() {
     markupEditor
       .open({
+        label: "HTML Editor",
         title: "HTML Editor",
         tips: "Add and edit custom markup.",
         markup: this._valueOriginal,

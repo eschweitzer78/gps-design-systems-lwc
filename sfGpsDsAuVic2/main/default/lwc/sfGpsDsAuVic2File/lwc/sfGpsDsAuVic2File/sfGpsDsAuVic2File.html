@@ -1,0 +1,29 @@
+<template>
+  <c-sf-gps-ds-au-vic2-document
+    url={url}
+    global-events="false"
+    ondownload={handleDownload}
+  >
+    <c-sf-gps-ds-au-vic2-icon
+      slot="icon"
+      name="icon-document-lined"
+      size="l"
+      colour="default"
+    >
+    </c-sf-gps-ds-au-vic2-icon>
+
+    <div slot="name">{name}</div>
+
+    <template lwc:if={computedHasInfo}>
+      <div slot="info">
+        <span lwc:if={extension} class="rpl-file__meta">{extension}</span>
+        <span lwc:if={size} class="rpl-file__meta">{size}</span>
+        <div lwc:if={updated} class="rpl-file__updated">
+          Updated {formattedUpdated}
+        </div>
+      </div>
+    </template>
+
+    <slot name="caption" slot="caption"></slot>
+  </c-sf-gps-ds-au-vic2-document>
+</template>

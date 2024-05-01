@@ -1,0 +1,24 @@
+<template>
+  <div class="rpl-primary-nav__search-form">
+    <!-- Quick links -->
+    <div
+      lwc:if={showQuickExit}
+      class="rpl-primary-nav__search-form-quick-links"
+    >
+      <c-sf-gps-ds-au-vic2-primary-nav-quick-exit>
+      </c-sf-gps-ds-au-vic2-primary-nav-quick-exit>
+    </div>
+
+    <div class="rpl-primary-nav__search-bar-wrapper">
+      <c-sf-gps-ds-au-vic2-search-bar
+        lwc:ref="searchbar"
+        id="primary-nav-search"
+        variant="menu"
+        auto-focus="true"
+        placeholder="Start typing..."
+        onsubmit={handleSubmit}
+      >
+      </c-sf-gps-ds-au-vic2-search-bar>
+    </div>
+  </div>
+</template>

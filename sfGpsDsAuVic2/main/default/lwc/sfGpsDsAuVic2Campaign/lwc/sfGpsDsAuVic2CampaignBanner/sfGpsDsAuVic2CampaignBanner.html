@@ -1,0 +1,29 @@
+<template>
+  <div class={computedClassName}>
+    <div class="rpl-container">
+      <div class="rpl-campaign-banner__inner">
+        <div class="rpl-campaign-banner__media" style={computedMediaStyle}>
+          <slot name="media" onslotchange={handleSlotChange}></slot>
+        </div>
+        <div class="rpl-campaign-banner__body">
+          <slot name="title"></slot>
+          <div class="rpl-campaign-banner__content">
+            <slot></slot>
+            <div
+              class="rpl-campaign-banner__action"
+              style={computedActionStyle}
+            >
+              <slot name="action" onslotchange={handleSlotChange}></slot>
+            </div>
+          </div>
+          <div
+            class="rpl-campaign-banner__meta rpl-type-label-small"
+            style={computedMetaStyle}
+          >
+            <slot name="meta" onslotchange={handleSlotChange}></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

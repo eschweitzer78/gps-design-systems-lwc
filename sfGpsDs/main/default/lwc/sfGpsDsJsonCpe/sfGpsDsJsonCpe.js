@@ -13,7 +13,6 @@ export default class extends LightningElement {
   }
 
   set value(value) {
-    console.log("sfGpsDsJsonCpe", value);
     this._valueOriginal = value;
   }
 
@@ -23,6 +22,7 @@ export default class extends LightningElement {
   handleClick() {
     editor
       .open({
+        label: "JSON Editor",
         title: "JSON Editor",
         tips: "Add and edit JSON.",
         text: this._valueOriginal,

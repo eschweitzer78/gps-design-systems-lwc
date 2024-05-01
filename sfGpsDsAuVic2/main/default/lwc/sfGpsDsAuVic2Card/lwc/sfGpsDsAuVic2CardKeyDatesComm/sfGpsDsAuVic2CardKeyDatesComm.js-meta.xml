@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Card (Key dates)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title and target URL in Markdown link format."
+        required="true"
+        default="[Key Dates Card](#)"
+      />
+      <property
+        name="items"
+        type="String"
+        label="Items"
+        description="Profile items as a JSON array of { title, subtitle, content }."
+        default="[{&quot;title&quot;:&quot;Friday 23 September&quot;,&quot;subtitle&quot;:&quot;Friday before the AFL Grand Final&quot;,&quot;content&quot;:&quot;Friday before the AFL Grand Final typically falls on the last Friday in September&quot;},{&quot;title&quot;:&quot;Tuesday 1 November&quot;,&quot;subtitle&quot;:&quot;Melbourne Cup&quot;,&quot;content&quot;:&quot;Public holiday across Victoria unless an alternate local holiday hass been arranged by a non-metro council.&quot;}]"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="ctaTitle"
+        type="String"
+        label="Call to action title"
+        description="Text display in the action button."
+        default="Find all public holidays"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

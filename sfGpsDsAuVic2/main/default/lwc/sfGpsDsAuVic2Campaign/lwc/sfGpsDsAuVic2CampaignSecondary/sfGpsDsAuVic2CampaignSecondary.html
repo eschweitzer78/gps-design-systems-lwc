@@ -1,0 +1,22 @@
+<template>
+  <c-sf-gps-ds-au-vic2-campaign-banner class-name={computedClassName}>
+    <template lwc:if={computedHasImage}>
+      <c-sf-gps-ds-au-vic2-image image={_image} slot="media">
+      </c-sf-gps-ds-au-vic2-image>
+    </template>
+
+    <h2 class="rpl-campaign-banner__title rpl-type-h2" slot="title">{title}</h2>
+    <slot></slot>
+
+    <template lwc:if={link}>
+      <c-sf-gps-ds-au-vic2-button
+        slot="action"
+        el="a"
+        url={link.url}
+        onclick={handleClick}
+      >
+        {link.text}
+      </c-sf-gps-ds-au-vic2-button>
+    </template>
+  </c-sf-gps-ds-au-vic2-campaign-banner>
+</template>

@@ -1,0 +1,22 @@
+<template>
+  <c-sf-gps-ds-empty
+    lwc:if={computedIsError}
+    title="Issue with image"
+    content="The image configuration is not quite right."
+  >
+  </c-sf-gps-ds-empty>
+
+  <!-- RplImg is a pass-through so no point in modeling it -->
+  <img
+    lwc:elseif={computedIsNotEmpty}
+    src={src}
+    srcset={srcSet}
+    alt={computedAlt}
+    sizes={sizes}
+    width={width}
+    height={height}
+    loading={computedLoading}
+    class={computedClassName}
+    style={computedObjectPosition}
+  />
+</template>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Text Link</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="text"
+        type="String"
+        label="Text"
+        description="Text used for the link."
+        default="Text link"
+      />
+      <property
+        name="url"
+        type="String"
+        label="URL"
+        description="URL the link gets the user to."
+        default="#"
+        required="true"
+      />
+      <property
+        name="target"
+        type="String"
+        label="Target"
+        description="The target specifies where to open the link."
+        default="_self"
+        datasource="_self,_blank,_parent,_top"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

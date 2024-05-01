@@ -1,0 +1,149 @@
+<template>
+  <div class={computedClassName}>
+    <!-- Quick links (Quick exit / User action slot) -->
+    <ul
+      lwc:if={computedShowQuickLinks}
+      class="rpl-primary-nav__mega-menu-quick-links"
+    >
+      <li lwc:if={showQuickExit}>
+        <c-sf-gps-ds-au-vic2-primary-nav-quick-exit
+          parent={computedNavQuickExitParentId}
+          focus-key="links:exit"
+          focus-target={focusTarget}
+          data-focus-key="links:exit"
+        >
+        </c-sf-gps-ds-au-vic2-primary-nav-quick-exit>
+      </li>
+
+      <li
+        lwc:if={hasUserActions}
+        class="rpl-primary-nav__mega-menu-user-action"
+      >
+        <slot name="userAction"></slot>
+      </li>
+    </ul>
+
+    <div class={computedGridOuterClassName}>
+      <div class="rpl-primary-nav__mega-menu-grid-container">
+        <div class="rpl-primary-nav__mega-menu-grid rpl-grid">
+          <!-- Level 1 -->
+          <div class="rpl-primary-nav__mega-menu-column">
+            <!-- Section title - Desktop -->
+            <div
+              lwc:if={activeNavItems.level1}
+              class="rpl-primary-nav__mega-menu-section-title rpl-primary-nav__mega-menu-section-title--desktop rpl-type-h3-fixed"
+            >
+              {activeNavItems.level1.text}
+            </div>
+
+            <!-- List - Only visible on mobile -->
+            <template lwc:if={items}>
+              <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-list
+                lwc:if={items.length}
+                level="1"
+                items={items}
+                active-nav-items={activeNavItems}
+                focus-target={focusTarget}
+                data-focus-key="list:1"
+                ontoggleitem={handleToggleItem}
+              >
+              </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-list>
+            </template>
+          </div>
+
+          <!-- Level 2 -->
+          <div class="rpl-primary-nav__mega-menu-column">
+            <!-- Back button - Only visible on mobile -->
+            <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-back-button
+              label={i18n.mainMenuBackLabel}
+              onclick={handleBackButton}
+            >
+            </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-back-button>
+
+            <!-- Section title - Mobile - Level 2 -->
+            <div
+              lwc:if={activeNavItems.level1}
+              class="rpl-primary-nav__mega-menu-section-title rpl-primary-nav__mega-menu-section-title--mobile rpl-type-h3-fixed"
+            >
+              {activeNavItems.level1.text}
+            </div>
+
+            <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-list
+              lwc:if={hasANILevel1Items}
+              level="2"
+              parent={activeNavItems.level1}
+              items={activeNavItems.level1.items}
+              active-nav-items={activeNavItems}
+              focus-target={focusTarget}
+              data-focus-key="list:2"
+              ontoggleitem={handleToggleItem}
+            >
+            </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-list>
+          </div>
+
+          <!-- Level 3 -->
+          <div class="rpl-primary-nav__mega-menu-column">
+            <!-- Back button - Only visible on mobile -->
+            <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-back-button
+              lwc:if={activeNavItems.level1}
+              label={activeNavItems.level1.text}
+              onclick={handleBackButton}
+            >
+            </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-back-button>
+
+            <!-- Section title - Mobile - Level 3 -->
+            <div
+              lwc:if={activeNavItems.level2}
+              class="rpl-primary-nav__mega-menu-section-title rpl-primary-nav__mega-menu-section-title--mobile rpl-type-h3-fixed"
+            >
+              {activeNavItems.level2.text}
+            </div>
+
+            <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-list
+              lwc:if={hasANILevel2Items}
+              level="3"
+              parent={activeNavItems.level2}
+              items={activeNavItems.level2.items}
+              active-nav-items={activeNavItems}
+              focus-target={focusTarget}
+              data-focus-key="list:3"
+              ontoggleitem={handleToggleItem}
+            >
+            </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-list>
+          </div>
+
+          <!-- Level 4 -->
+          <div class="rpl-primary-nav__mega-menu-column">
+            <!-- Back button - Only visible on mobile -->
+            <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-back-button
+              lwc:if={activeNavItems.level2}
+              label={activeNavItems.level2.text}
+              onclick={handleBackButton}
+            >
+            </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-back-button>
+
+            <!-- Section title - Mobile - Level 4 -->
+            <div
+              lwc:if={activeNavItems.level3}
+              class="rpl-primary-nav__mega-menu-section-title rpl-primary-nav__mega-menu-section-title--mobile rpl-type-h3-fixed"
+            >
+              {activeNavItems.level3.text}
+            </div>
+
+            <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-list
+              lwc:if={hasANILevel3Items}
+              level="4"
+              parent={activeNavItems.level3}
+              items={activeNavItems.level3.items}
+              active-nav-items={activeNavItems}
+              focus-target={focusTarget}
+              data-focus-key="list:4"
+              ontoggleitem={handleToggleItem}
+            >
+            </c-sf-gps-ds-au-vic2-primary-nav-mega-menu-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

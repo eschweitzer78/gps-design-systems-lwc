@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS List</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="Type of list."
+        default="unordered"
+        required="true"
+        datasource="unordered,ordered"
+      />
+      <property
+        name="items"
+        type="String"
+        label="Items"
+        description="List of items in JSON format as {id, text, url, icon, iconColour}."
+        default="[{&quot;text&quot;:&quot;50 Lonsdale St, Melbourne VIC 3000&quot;,&quot;url&quot;:&quot;http://maps.google.com/maps?q=50%20Lonsdale%20Street%20Melbourne%203000(Department%20of%20Health)&quot;,&quot;icon&quot;:&quot;icon-map&quot;,&quot;iconColour&quot;:&quot;information&quot;},{&quot;text&quot;:&quot;https://www.health.vic.gov.au/&quot;,&quot;url&quot;:&quot;https://www.health.vic.gov.au/&quot;,&quot;icon&quot;:&quot;icon-web&quot;,&quot;iconColour&quot;:&quot;success&quot;}]"
+        editor="c/sfGpsDsJsonEditor"
+      />
+      <property
+        name="iconPlacement"
+        type="String"
+        label="Icon placement"
+        description="Placement of the item icons."
+        default="before"
+        required="true"
+        editor="c/sfGpsDsAuVic2IconPlacementCpe"
+      />
+      <property
+        name="withLinkIds"
+        type="Boolean"
+        label="Use link IDs"
+        default="false"
+      />
+      <property
+        name="itemClassName"
+        type="String"
+        label="Item class name"
+        description="Additional CSS class to be applied to items."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied to the container."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

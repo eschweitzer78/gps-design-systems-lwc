@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CommunityThemeDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>State of Victoria Ripple v2</masterLabel>
+  <description
+  >A fully packaged theme for the Australian state Government of Victoria</description>
+  <publisher>Salesforce Global Public Sector</publisher>
+  <bundlesInfo>
+        <description>sidebar</description>
+        <order>1</order>
+        <title>Sidebar</title>
+        <type>Highlight</type>
+    </bundlesInfo>
+    <bundlesInfo>
+        <image>sfGpsDsAuVic2AuraThemePreview1</image>
+        <order>1</order>
+        <title>Theme 1</title>
+        <type>PreviewImage</type>
+    </bundlesInfo>
+    <bundlesInfo>
+        <image>sfGpsDsAuVic2AuraThemePreview2</image>
+        <order>2</order>
+        <title>Theme 2</title>
+        <type>PreviewImage</type>
+    </bundlesInfo>
+    <bundlesInfo>
+        <image>sfGpsDsAuVic2AuraThemePreview3</image>
+        <order>3</order>
+        <title>Theme 3</title>
+        <type>PreviewImage</type>
+    </bundlesInfo>
+    <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
+    <defaultBrandingSet>sfGpsDsAuVic2Aura</defaultBrandingSet>
+
+    <customThemeLayoutType>
+        <label>hs4671Gh3Fte2m12ABUFO52tuiGNV2</label>
+    </customThemeLayoutType>
+
+    <themeRouteOverride>
+        <customThemeLayoutType
+    >hs4671Gh3Fte2m12ABUFO52tuiGNV2</customThemeLayoutType>
+        <pageAttributes>{&quot;PageName&quot;:&quot;Home&quot;}</pageAttributes>
+        <pageType>comm__standardPage</pageType>
+    </themeRouteOverride>
+
+    <themeSetting>
+      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+      <themeLayoutType>Inner</themeLayoutType>
+    </themeSetting>
+    <themeSetting>
+      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
+      <themeLayoutType>Login</themeLayoutType>
+    </themeSetting>
+    <themeSetting>
+      <themeLayout
+    >sfGpsDsAuVic2Aura_themeLayout_ServiceNotAvailable</themeLayout>
+      <themeLayoutType>ServiceNotAvailable</themeLayoutType>
+    </themeSetting>
+    <themeSetting>
+      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_HomePage</themeLayout>
+      <customThemeLayoutType
+    >hs4671Gh3Fte2m12ABUFO52tuiGNV2</customThemeLayoutType>
+    </themeSetting>
+</CommunityThemeDefinition>

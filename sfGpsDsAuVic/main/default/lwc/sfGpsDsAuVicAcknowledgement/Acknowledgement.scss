@@ -1,5 +1,5 @@
-@import "node_modules/@dpc-sdp/ripple-global/scss/settings";
-@import "node_modules/@dpc-sdp/ripple-global/scss/tools";
+@import "@dpc-sdp/ripple-global/scss/settings";
+@import "@dpc-sdp/ripple-global/scss/tools";
 
 $rpl-acknowledgement-ruleset: ('s', 1.25em, 'semibold') !default;
 $rpl-acknowledgement-ruleset-standalone: ('xs', 1.43em, 'regular') !default;

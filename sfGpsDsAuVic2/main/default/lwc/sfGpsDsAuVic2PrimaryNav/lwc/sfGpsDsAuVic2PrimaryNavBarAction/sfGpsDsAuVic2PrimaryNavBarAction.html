@@ -1,0 +1,25 @@
+<template>
+  <button
+    lwc:if={isToggle}
+    lwc:ref="action"
+    class={computedClassName}
+    onkeydown={handleFocus}
+    onclick={handleClick}
+  >
+    <div>
+      <slot></slot>
+    </div>
+  </button>
+  <a
+    lwc:else
+    lwc:ref="action"
+    href={href}
+    class={computedClassName}
+    onkeydown={handleFocus}
+    onclick={handleNavigate}
+  >
+    <div>
+      <slot></slot>
+    </div>
+  </a>
+</template>

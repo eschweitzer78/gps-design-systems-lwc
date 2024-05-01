@@ -1,0 +1,3 @@
+.inline-callout.inline-callout--no-header > :first-child {
+  margin-top: 0;
+}

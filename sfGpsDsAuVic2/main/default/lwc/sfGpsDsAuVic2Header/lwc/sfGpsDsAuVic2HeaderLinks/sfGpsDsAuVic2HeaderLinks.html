@@ -1,0 +1,45 @@
+<template>
+  <div class={computedClassName}>
+    <h2 lwc:if={title} class="rpl-header-links__title rpl-type-h4">{title}</h2>
+
+    <c-sf-gps-ds-au-vic2-list
+      lwc:if={computedIsLink}
+      items={items}
+      class-name="rpl-header-links__list"
+      item-class-name="rpl-header-links__item rpl-header__text-large-fixed rpl-type-p"
+      icon-placement="after"
+      onitemclick={handleListClick}
+    >
+    </c-sf-gps-ds-au-vic2-list>
+
+    <div lwc:else class="rpl-header-links__list">
+      <template for:each={decoratedIems} for:item="item">
+        <c-sf-gps-ds-au-vic2-button
+          key={item.key}
+          url={item.url}
+          el="a"
+          class-name="rpl-header-links__item"
+          onbuttonclick={handleListlick}
+        >
+          {item.text}
+        </c-sf-gps-ds-au-vic2-button>
+      </template>
+    </div>
+
+    <template lwc:if={moreLink}>
+      <div class="rpl-list__items"></div>
+      <!-- fix margin-top, css rule not kicking in due to lwc encapsulation -->
+      <div class="rpl-header-links__more">
+        <c-sf-gps-ds-au-vic2-text-link
+          url={moreLink.url}
+          class-name="rpl-header__text-large-fixed rpl-header__icon-link rpl-type-p rpl-type-weight-bold"
+          onclick={handleMoreLinkClick}
+        >
+          <span>{moreLink.text}</span>
+          <c-sf-gps-ds-au-vic2-icon name="icon-arrow-right" size="xs">
+          </c-sf-gps-ds-au-vic2-icon>
+        </c-sf-gps-ds-au-vic2-text-link>
+      </div>
+    </template>
+  </div>
+</template>

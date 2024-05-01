@@ -1,0 +1,32 @@
+<template>
+  <div class={computedClassName}>
+    <c-sf-gps-ds-au-vic2-button
+      lwc:if={primary}
+      url={computedPrimaryUrl}
+      class-name="rpl-header-actions__primary"
+      el="a"
+      onbuttonclick={handlePrimaryClick}
+    >
+      {computedPrimaryText}
+    </c-sf-gps-ds-au-vic2-button>
+
+    <div lwc:if={secondary} class="rpl-header-actions__secondary">
+      <p
+        lwc:if={secondary.title}
+        class="rpl-header-actions__secondary-title rpl-header__text-large-fixed rpl-type-p"
+      >
+        {secondary.title}
+      </p>
+
+      <c-sf-gps-ds-au-vic2-text-link
+        url={secondary.url}
+        class-name="rpl-header-actions__secondary-link rpl-header__icon-link"
+        onclick={handleSecondaryClick}
+      >
+        <span>{secondary.text}</span>
+        <c-sf-gps-ds-au-vic2-icon name="icon-arrow-right" size="xs">
+        </c-sf-gps-ds-au-vic2-icon>
+      </c-sf-gps-ds-au-vic2-text-link>
+    </div>
+  </div>
+</template>

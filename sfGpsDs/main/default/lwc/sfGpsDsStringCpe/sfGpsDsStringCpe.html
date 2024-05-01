@@ -2,12 +2,11 @@
   <div>
     <div lwc:if={error}>{label}: {error}.</div>
     <lightning-input
-      lwc:else
       name="stringCpe"
       type="text"
       label={label}
+      required={required}
       value={value}
-      options={options}
       onblur={handleBlur}
     >
     </lightning-input>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Profile</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="items"
+        type="String"
+        label="Items"
+        description="Profile items as a JSON array of { term, description }."
+        default="[{&quot;term&quot;:&quot;Name:&quot;,&quot;description&quot;:&quot;The Hon. Dame Quentin Bryce AD CVO&quot;},{&quot;term&quot;:&quot;Role:&quot;,&quot;description&quot;:&quot;Former governor-general of Australia&quot;},{&quot;term&quot;:&quot;Alma mater:&quot;,&quot;description&quot;:&quot;University of Queensland&quot;}]"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="image"
+        type="String"
+        label="Image"
+        description="Configuration of the image"
+        default="{&quot;src&quot;:&quot;https://upload.wikimedia.org/wikipedia/commons/f/fa/Quentin_Bryce_No.1_%28cropped%29.jpg&quot;,&quot;alt&quot;:&quot;Dame Quentin Bryce portrait&quot;,&quot;width&quot;:148,&quot;height&quot;:148,&quot;focalPoint&quot;:{&quot;x&quot;:74,&quot;y&quot;:0}}"
+        editor="c/sfGpsDsAuVic2ImageCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

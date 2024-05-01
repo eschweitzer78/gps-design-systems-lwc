@@ -1,4 +1,4 @@
-@import "node_modules/@dpc-sdp/ripple-global/scss/settings";
+@import "@dpc-sdp/ripple-global/scss/settings";
 
 $rpl-all-colors: rpl-get-colors();
 @each $color-name, $color-value in $rpl-all-colors {

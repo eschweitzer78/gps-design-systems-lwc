@@ -1,0 +1,17 @@
+<template>
+  <figure class={computedClassName}>
+    <blockquote class="rpl-blockquote__quote">
+      <p class="rpl-type-p-large-fixed">
+        <slot></slot>
+      </p>
+    </blockquote>
+    <figcaption class="rpl-blockquote__author rpl-type-label-small">
+      <span lwc:if={authorName} class="rpl-blockquote__author-name"
+        >{authorName}</span
+      >
+      <span lwc:if={authorTitle} class="rpl-blockquote__author-title"
+        >{authorTitle}</span
+      >
+    </figcaption>
+  </figure>
+</template>

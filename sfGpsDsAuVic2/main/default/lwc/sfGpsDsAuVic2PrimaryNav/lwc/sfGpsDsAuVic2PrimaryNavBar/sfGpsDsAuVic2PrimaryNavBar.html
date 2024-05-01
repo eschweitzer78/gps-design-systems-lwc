@@ -1,0 +1,163 @@
+<template>
+  <div class={computedClassName}>
+    <!-- Logos -->
+    <div class={computedLogosClassName}>
+      <!-- Primary logo -->
+      <c-sf-gps-ds-au-vic2-link
+        if:false={disablePrimaryLogo}
+        lwc:ref="primaryLogo"
+        class-name="rpl-primary-nav__primary-logo-link rpl-u-focusable-outline rpl-u-focusable-outline--no-border"
+        url={decoratedPrimaryLogo.href}
+        style="display: flex; align-items: center"
+      >
+        <template lwc:if={computedHasPrimaryLogo}>
+          <img
+            class="rpl-primary-nav__primary-logo-image rpl-u-screen-only"
+            src={decoratedPrimaryLogo.src}
+            alt={decoratedPrimaryLogo.altText}
+          />
+          <img
+            class="rpl-primary-nav__primary-logo-image rpl-primary-nav__logo-alt rpl-u-print-only"
+            src={decoratedPrimaryLogo.printSrc}
+            alt={decoratedPrimaryLogo.altText}
+          />
+        </template>
+
+        <svg
+          lwc:else
+          aria-label={decoratedPrimaryLogo.altText}
+          class="rpl-primary-nav__primary-logo-image"
+        >
+          <use href={computedPrimaryLogoHref}></use>
+        </svg>
+      </c-sf-gps-ds-au-vic2-link>
+
+      <!-- Logo divider -->
+      <div
+        lwc:if={computedShowLogoDivider}
+        class="rpl-primary-nav__logo-divider"
+      ></div>
+
+      <!-- Secondary logo -->
+      <c-sf-gps-ds-au-vic2-link
+        lwc:if={secondaryLogo}
+        lwc:ref="secondaryLogo"
+        class-name="rpl-primary-nav__secondary-logo-link rpl-u-focusable-outline rpl-u-focusable-outline--no-border"
+        url={secondaryLogo.href}
+      >
+        <img
+          class="rpl-primary-nav__secondary-logo-image rpl-u-screen-only"
+          src={secondaryLogo.src}
+          alt={secondaryLogo.altText}
+        />
+        <img
+          lwc:if={secondaryLogo.printSrc}
+          class="rpl-primary-nav__secondary-logo-image rpl-primary-nav__logo-alt rpl-u-print-only"
+          src={secondaryLogo.printSrc}
+          alt={secondaryLogo.altText}
+        />
+      </c-sf-gps-ds-au-vic2-link>
+    </div>
+
+    <ul class="rpl-primary-nav__nav-bar-actions-list">
+      <!-- Mobile menu toggle -->
+      <li class="rpl-primary-nav__nav-bar-mobile-menu-toggle-container">
+        <c-sf-gps-ds-au-vic2-primary-nav-bar-action
+          type="toggle"
+          href="/"
+          active={isMegaNavActive}
+          focus-key="menu:toggle"
+          focus-target={focusTarget}
+          data-focus-key="menu:toggle"
+          ontoggle={handleMobileToggleItem}
+        >
+          <span>{i18n.mobileToggleLabel}</span>&NoBreak;<span
+            class="rpl-primary-nav__nav-bar-icon rpl-primary-nav__nav-bar-icon--large rpl-u-margin-l-2"
+          >
+            <c-sf-gps-ds-au-vic2-icon name="icon-chevron-down" size="xs">
+            </c-sf-gps-ds-au-vic2-icon>
+          </span>
+        </c-sf-gps-ds-au-vic2-primary-nav-bar-action>
+      </li>
+
+      <!-- Mobile menu divider -->
+      <li
+        lwc:if={showSearch}
+        class="rpl-primary-nav__nav-bar-mobile-menu-divider"
+        aria-role="presentation"
+        aria-hidden="true"
+      ></li>
+
+      <!-- Desktop items -->
+      <template for:each={decoratedItems} for:item="item">
+        <li key={item.id} class="rpl-primary-nav__nav-bar-item">
+          <c-sf-gps-ds-au-vic2-primary-nav-bar-action
+            lwc:if={item.items}
+            item-id={item.id}
+            type="toggle"
+            href={item.url}
+            active={item._isItemActive}
+            focus-key={item._focusKey}
+            focus-target={focusTarget}
+            data-focus-key={item._focusKey}
+            ontoggle={handleDesktopToggleItem}
+          >
+            <span>{item.text}</span>&NoBreak;<span
+              class="rpl-primary-nav__nav-bar-icon rpl-u-margin-l-2"
+              ><c-sf-gps-ds-au-vic2-icon name="icon-chevron-down" size="xs">
+              </c-sf-gps-ds-au-vic2-icon>
+            </span>
+          </c-sf-gps-ds-au-vic2-primary-nav-bar-action>
+          <c-sf-gps-ds-au-vic2-primary-nav-bar-action
+            lwc:else
+            item-id={item.id}
+            type="link"
+            href={item.url}
+            active={item.active}
+            focus-key={item._focusKey}
+            focus-target={focusTarget}
+            data-focus-key={item._focusKey}
+          >
+            <span>{item.text}</span>
+          </c-sf-gps-ds-au-vic2-primary-nav-bar-action>
+        </li>
+      </template>
+
+      <!-- User action slot - Desktop only -->
+      <li class="rpl-primary-nav__nav-bar-user-action">
+        <slot name="userAction"></slot>
+      </li>
+
+      <!-- Search toggle -->
+      <li lwc:if={showSearch}>
+        <c-sf-gps-ds-au-vic2-primary-nav-bar-action
+          type="toggle"
+          href="/search"
+          focus-key="search:toggle"
+          focus-target={focusTarget}
+          data-focus-key="search:toggle"
+          ontoggle={handleToggleSearch}
+        >
+          <div lwc:if={isSearchActive}>
+            <span class="rpl-primary-nav__nav-bar-search-label">Close</span
+            >&NoBreak;<span
+              class="rpl-primary-nav__nav-bar-icon rpl-primary-nav__nav-bar-icon--large rpl-primary-nav__nav-bar-icon--search"
+              ><c-sf-gps-ds-au-vic2-icon
+                name="icon-cancel"
+              ></c-sf-gps-ds-au-vic2-icon>
+            </span>
+          </div>
+          <div lwc:else>
+            <span class="rpl-primary-nav__nav-bar-search-label">Search</span
+            >&NoBreak;<span
+              class="rpl-primary-nav__nav-bar-icon rpl-primary-nav__nav-bar-icon--large rpl-primary-nav__nav-bar-icon--search"
+            >
+              <c-sf-gps-ds-au-vic2-icon name="icon-search">
+              </c-sf-gps-ds-au-vic2-icon>
+            </span>
+          </div>
+        </c-sf-gps-ds-au-vic2-primary-nav-bar-action>
+      </li>
+    </ul>
+  </div>
+</template>

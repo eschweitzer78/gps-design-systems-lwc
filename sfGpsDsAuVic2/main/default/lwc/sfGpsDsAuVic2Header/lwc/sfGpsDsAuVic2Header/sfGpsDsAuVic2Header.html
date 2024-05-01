@@ -1,0 +1,32 @@
+<template>
+  <div class={computedClassName}>
+    <div class={computedBehindClassName}>
+      <slot name="behind" onslotchange={handleSlotChange}></slot>
+    </div>
+
+    <div class="rpl-container">
+      <div class="rpl-grid">
+        <div class={computedMainClassName}>
+          <div class={computedUpperClassName}>
+            <slot name="upper" onslotchange={handleSlotChange}></slot>
+          </div>
+
+          <div class="rpl-header__body">
+            <slot name="title"></slot>
+            <div class="rpl-header__content">
+              <slot></slot>
+            </div>
+          </div>
+
+          <div class={computedLowerClassName}>
+            <slot name="lower" onslotchange={handleSlotChange}></slot>
+          </div>
+        </div>
+
+        <div class={computedAsideClassName}>
+          <slot name="aside" onslotchange={handleSlotChange}></slot>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

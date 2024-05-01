@@ -1,0 +1,72 @@
+<template>
+  <nav
+    lwc:ref="navContainer"
+    class={computedClassName}
+    aria-label="Primary navigation"
+    onsfgpsdsauvic2primarynavfocus={handlePrimaryNavFocus}
+    onnavigate={handleNavigate}
+  >
+    <div lwc:if={activeFocusTrap} tabindex="0" onfocus={handleFocusTrap}></div>
+
+    <div class="rpl-primary-nav__inner" style={computedStyle}>
+      <!-- Nav bar -->
+      <c-sf-gps-ds-au-vic2-primary-nav-bar
+        lwc:ref="navbar"
+        primary-logo={primaryLogo}
+        secondary-logo={secondaryLogo}
+        items={items}
+        show-search={_showSearch}
+        show-quick-exit={_showQuickExit}
+        is-mega-nav-active={isMegaNavActive}
+        is-search-active={isSearchActive}
+        active-nav-items={activeNavItems}
+        focus-target={decoratedFocusTarget}
+        data-focus-key="navbar"
+        ontoggleitem={handleToggleItem}
+        ontogglemobilemenu={handleToggleMobileMenu}
+        ontogglesearch={handleToggleSearch}
+      >
+        <slot
+          slot="userAction"
+          name="userAction"
+          onslotchange={handleUserActionSlotChange}
+        ></slot>
+      </c-sf-gps-ds-au-vic2-primary-nav-bar>
+
+      <!-- Mega menu -->
+      <c-sf-gps-ds-au-vic2-primary-nav-mega-menu
+        lwc:if={isMegaNavActive}
+        items={items}
+        show-quick-exit={_showQuickExit}
+        active-nav-items={activeNavItems}
+        focus-target={decoratedFocusTarget}
+        data-focus-key="megamenu"
+        ontoggleitem={handleToggleItem}
+      >
+        <!--<slot slot="userAction" name="userAction" onslotchange={handleUserActionSlotChange}></slot>-->
+      </c-sf-gps-ds-au-vic2-primary-nav-mega-menu>
+
+      <!-- Search form -->
+      <template lwc:if={isSearchActive}>
+        <c-sf-gps-ds-au-vic2-primary-nav-search-form
+          show-quick-exit={_showQuickExit}
+        >
+        </c-sf-gps-ds-au-vic2-primary-nav-search-form>
+        <div
+          lwc:if={activeFocusTrap}
+          tabindex="0"
+          onfocus={handleFocusTrap}
+        ></div>
+      </template>
+    </div>
+
+    <c-sf-gps-ds-au-vic2-primary-nav-quick-exit
+      lwc:if={showQuickExit}
+      variant="fixed"
+      focus-key="links:exit"
+      focus-target={decoratedFocusTarget}
+      data-focus-key="links:exit"
+    >
+    </c-sf-gps-ds-au-vic2-primary-nav-quick-exit>
+  </nav>
+</template>
