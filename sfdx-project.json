@@ -71,7 +71,7 @@
     },
     {
       "path": "sfGpsDsAuVic2Full",
-      "package": "Salesforce Global Public Sector AU VIC Design System v2",
+      "package": "Salesforce Global Public Sector AU VIC2 Design System",
       "versionName": "2024.04.30.2300",
       "versionNumber": "0.2.1.NEXT",
       "default": false,
@@ -123,6 +123,14 @@
           "package": "omnistudio 248.4"
         }
       ]
+    },
+    {
+      "path": "sfGpsDsAuVic2Full",
+      "package": "Salesforce Global Public Sector AU VIC2 Design System",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": "Salesforce Global Public Sector AU VIC2 Design System"
     }
   ],
   "name": "au-design-systems-lwc",
@@ -414,6 +422,7 @@
     "Salesforce Global Public Sector GOUV.FR Design System (Full)@0.2.0-2": "04t5j000000dzFJAAY",
     "Salesforce Global Public Sector GOV.UK Design System (Full)@1.1.0-2": "04t5j000000dzFOAAY",
     "Salesforce Global Public Sector AU VIC Design System@2.4.0-3": "04t5j000000A2ZyAAK",
-    "Salesforce Global Public Sector GOV.UK Design System (Full)@1.1.0-3": "04t5j000000A2a3AAC"
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@1.1.0-3": "04t5j000000A2a3AAC",
+    "Salesforce Global Public Sector AU VIC2 Design System": "0Ho5j000000oMNRCA2"
   }
 }
