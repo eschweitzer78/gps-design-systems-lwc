@@ -14,7 +14,8 @@ Do read our [change log](./CHANGELOG.md) if you plan on updating already install
 - sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project; it is now fully packaged with the design systems library below but the directory is kept for clarity, deployment as source code or as a dependency package for third party design systems
 - sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nswds.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
-- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev) and know that we are investigating the support of Ripple v2
+- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev)
+- sfGpsDsAuVic2 is the folder for code and assets to the Design System of Victoria v2, Australia aka Ripple v2 (alpha); check the [documentation website](https://vic2.dsforce.dev)
 - sfGpsDsFrGov is the folder for code and assets to the Design System of France (alpha, only sandbox); check the [documentation page](docs/DSFR_README.md)
 - sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (pilot, no production without prior consultation); check the [documentation website](https://uk.dsforce.dev)
 
