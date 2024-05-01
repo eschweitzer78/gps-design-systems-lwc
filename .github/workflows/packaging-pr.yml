@@ -47,7 +47,7 @@ jobs:
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci
         env:
-          GHCR_TOKEN: { { secrets.GHCR_ACCESS_TOKEN } }
+          GHCR_TOKEN: ${{ secrets.GHCR_ACCESS_TOKEN }}
 
       # Prep
       - name: "Prepare repo"
