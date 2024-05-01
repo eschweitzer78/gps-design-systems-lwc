@@ -19,6 +19,10 @@ jobs:
       contents: read
       packages: read
     steps:
+      - uses: aquacash5/npm-gpr-auth@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       # Checkout the source code
       - name: "Checkout source code"
         uses: actions/checkout@v4
@@ -41,14 +45,9 @@ jobs:
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
-        uses: aquacash5/npm-gpr-auth@v2
-        with:
-          token: ${{ github.token }}
         run: |
           echo "@dpc-sdp:registry=https://npm.pkg.github.com" >> ~/.npmrc
           npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{ github.token }}
 
       # Prettier formatting
       - name: "Code formatting verification with Prettier"
