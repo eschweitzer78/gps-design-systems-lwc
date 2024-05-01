@@ -249,7 +249,7 @@ jobs:
 
       # Run Apex tests in scratch org
       - name: "Run Apex tests"
-        run: sfdx force apex test run --code-coverage --result-format=human --output-dir=./tests/apex --wait=20 --testlevel=RunLocalTests
+        run: sfdx force apex test run --code-coverage --result-format=human --output-dir=./tests/apex --wait=20 --test-level=RunLocalTests
 
       # Delete temporary test file that Codecov is unable to parse
       #- name: "Delete coverage file (temporary step)"
