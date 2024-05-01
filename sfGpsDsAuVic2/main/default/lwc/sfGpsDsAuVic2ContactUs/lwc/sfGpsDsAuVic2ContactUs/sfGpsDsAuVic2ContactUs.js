@@ -30,9 +30,9 @@ export default class SfGpsDsAuVic2ContactUs extends LightningElement {
 
   get computedSocialLinks() {
     return this.items && Array.isArray(this.items)
-      ? this.items.map((i) =>
-          i.icon === "icon-twitter" ? { ...i, icon: "icon-x" } : i
-        )
+      ? this.items.map((i) => {
+          return i.icon === "icon-twitter" ? { ...i, icon: "icon-x" } : i;
+        })
       : [];
   }
 
