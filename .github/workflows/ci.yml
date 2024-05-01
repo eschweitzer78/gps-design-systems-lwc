@@ -42,11 +42,12 @@ jobs:
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
+        uses: jgierer12/npm-auth-gpr@v1
+        with:
+          token: ${{ github.token }}
         run: |
           echo "@dpc-sdp:registry=https://npm.pkg.github.com" > ~/.npmrc
           npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{ github.token }}
 
       # Prettier formatting
       - name: "Code formatting verification with Prettier"
