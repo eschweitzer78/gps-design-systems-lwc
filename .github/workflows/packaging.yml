@@ -488,9 +488,7 @@ jobs:
 
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
       - name: "Run prettier"
-        run: |
-          npm ci
-          npm run prettier
+        run: npm run prettier
 
       # Create PR for new package version(s)
       - name: "Create PR for new package version"

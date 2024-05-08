@@ -52,6 +52,7 @@
   "devDependencies": {
     "@dpc-sdp/ripple-global": "https://registry.npmjs.org/@dpc-sdp/ripple-global/-/ripple-global-1.38.3.tgz",
     "@dpc-sdp/ripple-ui-core": "2.7.1",
+    "@dpc-sdp/ripple-ui-forms": "^2.8.2",
     "@gouvfr/dsfr": "^1.11.0",
     "@lwc/eslint-plugin-lwc": "^1.0.1",
     "@prettier/plugin-xml": "^3.0.0",
