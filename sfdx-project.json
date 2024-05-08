@@ -127,10 +127,16 @@
     {
       "path": "sfGpsDsAuVic2Full",
       "package": "Salesforce Global Public Sector AU VIC2 Design System",
-      "versionName": "ver 0.1",
+      "versionName": "2024.05.08.2200",
       "versionNumber": "0.1.0.NEXT",
       "default": false,
-      "versionDescription": "Salesforce Global Public Sector AU VIC2 Design System"
+      "versionDescription": "Salesforce Global Public Sector AU VIC2 Design System",
+      "definitionFile": "config/project-deployment-def.json",
+      "dependencies": [
+        {
+          "package": "omnistudio 248.4"
+        }
+      ]
     }
   ],
   "name": "au-design-systems-lwc",

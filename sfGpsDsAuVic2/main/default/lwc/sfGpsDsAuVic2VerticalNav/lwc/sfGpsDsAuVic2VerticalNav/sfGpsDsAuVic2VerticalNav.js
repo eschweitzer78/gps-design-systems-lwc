@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
 import ExpandableStateMixin from "c/sfGpsDsAuVic2ExpandableStateMixin";
 
 const DEBUG = false;
@@ -9,6 +9,23 @@ export default class SfGpsDsAuVic2VerticalNav extends ExpandableStateMixin(
 ) {
   @api title;
   @api className;
+
+  /* api: preventDefault */
+
+  _preventDefaultOriginal;
+  _preventDefault;
+
+  @api get preventDefault() {
+    return this._preventDefaultOriginal;
+  }
+
+  set preventDefault(value) {
+    this._preventDefaultOriginal = value;
+    this._preventDefault = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+  }
 
   /* getters */
 
@@ -123,13 +140,17 @@ export default class SfGpsDsAuVic2VerticalNav extends ExpandableStateMixin(
   }
 
   handleClick(event) {
-    event.preventDefault();
+    if (this._preventDefault) {
+      event.preventDefault();
+    }
 
     const itemId = event.target.dataset.itemId;
 
     this.dispatchEvent(
       new CustomEvent("navigate", {
-        detail: itemId
+        detail: itemId,
+        composed: true,
+        bubbles: true
       })
     );
   }

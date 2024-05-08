@@ -63,7 +63,7 @@
 .THIS .nsw-header__menu a:hover,
 .THIS .nsw-header__search button:hover,
 .THIS .nsw-header__search a:hover {
-  background-color: var(--nsw-text-hover);
+  background-color: var(--nsw-hover);
 }
 .THIS .nsw-header__menu button:focus,
 .THIS .nsw-header__menu a:focus,
@@ -439,7 +439,7 @@
   }
 }
 .THIS .nsw-header__profile button:hover {
-  background-color: var(--nsw-text-hover);
+  background-color: var(--nsw-hover);
 }
 .THIS .nsw-header__profile button:focus {
   outline: solid 3px var(--nsw-focus);

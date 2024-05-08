@@ -348,9 +348,7 @@ jobs:
 
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
       - name: "Run prettier"
-        run: |
-          npm ci
-          npm run prettier
+        run: npm run prettier
 
       # Housekeeping
       - name: "Delete scratch org"
