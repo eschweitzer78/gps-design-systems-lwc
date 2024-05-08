@@ -23,22 +23,6 @@ export default class SfGpsDsAuVic2VerticalNavComm extends SfGpsDsNavigation {
     this._pageReference = pageReference;
   }
 
-  /* api: items */
-  /*
-  _originalItems;
-  _items;
-
-  @api
-  get items() {
-    return this._originalItems;
-  }
-
-  set items(value) {
-    this._originalItems = value;
-    this._items = JSON.parse(value);
-  }
-*/
-
   /* api: mode */
 
   @api
@@ -187,8 +171,6 @@ export default class SfGpsDsAuVic2VerticalNavComm extends SfGpsDsNavigation {
   /* event management */
 
   handleNavigate(event) {
-    //let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
-
     if (this._map && event.detail) {
       this.refs.navsvc.navigateNavMenu(this._map[event.detail]);
     }

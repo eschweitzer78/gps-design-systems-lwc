@@ -160,7 +160,7 @@ export default class SfGpsDsAuNswCardV2Comm extends SfGpsDsLwc {
     */
 
     if (an.length) {
-      if (an[0].tagName.startsWith("WEBRUNTIMEDESIGN")) {
+      if (an[0].tagName?.startsWith("WEBRUNTIMEDESIGN")) {
         if (an[0].querySelector(".actualNode")) {
           emptyNode = false;
         }
