@@ -99,6 +99,11 @@ export default class extends SfGpsDsLwc {
     }
   }
 
+  handleNavigate(event) {
+    event.stopPropagation();
+    this.isMenuOpen = false;
+  }
+
   /* lifecycle */
 
   connectedCallback() {

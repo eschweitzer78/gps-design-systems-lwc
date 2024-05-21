@@ -2,7 +2,7 @@
   "type": "sfdc_cms__view",
   "title": "Site contact us",
   "contentBody": {
-    "viewType": "custom-contact-us",
+    "viewType": "custom-site-contact-us",
     "themeLayoutType": "VIC2AppSidebarThemeLayout",
     "component": {
       "id": "b162d31c-1871-46be-8575-121dac6e431b",

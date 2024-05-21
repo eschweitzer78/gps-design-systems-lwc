@@ -42,7 +42,7 @@
     </div>
 
     <div lwc:if={isMenuOpen} class="docs-header-menu" style={computedMenuStyle}>
-      <div class="docs-header-menu-inner">
+      <div class="docs-header-menu-inner" onnavigate={handleNavigate}>
         <slot name="MenuContents"> </slot>
       </div>
     </div>

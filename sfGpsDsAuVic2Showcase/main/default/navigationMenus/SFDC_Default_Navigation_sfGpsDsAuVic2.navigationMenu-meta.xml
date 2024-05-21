@@ -5,8 +5,51 @@
     <label>Default Navigation</label>
     <navigationMenuItem>
         <type>MenuLabel</type>
-        <label>Cards</label>
+        <label>About</label>
         <position>0</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Accessibility</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/about/accessibility</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Copyright</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/about/copyright</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Disclaimer</label>
+                <position>2</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/about/disclaimer</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Getting started</label>
+                <position>3</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/about/getting-started</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Site contact us</label>
+                <position>4</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/about/site-contact-us</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <type>MenuLabel</type>
+        <label>Cards</label>
+        <position>1</position>
         <publiclyAvailable>true</publiclyAvailable>
         <subMenu>
             <navigationMenuItem>
@@ -49,7 +92,7 @@
     <navigationMenuItem>
         <type>MenuLabel</type>
         <label>Navigation</label>
-        <position>1</position>
+        <position>2</position>
         <publiclyAvailable>true</publiclyAvailable>
         <subMenu>
             <navigationMenuItem>
@@ -106,7 +149,7 @@
     <navigationMenuItem>
         <type>MenuLabel</type>
         <label>Page content</label>
-        <position>2</position>
+        <position>3</position>
         <publiclyAvailable>true</publiclyAvailable>
         <subMenu>
             <navigationMenuItem>
