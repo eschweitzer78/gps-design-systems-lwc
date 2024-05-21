@@ -8,7 +8,7 @@ const fileRegEx = /!/;
 function genFile(filename) {
   return sass.compile(filename, {
     style: "compressed",
-    loadPaths: ["./", "node_modules/@gouvfr/dsfr", "node_modules"]
+    loadPaths: ["./", "node_modules", "node_modules/@gouvfr/dsfr"]
   });
 }
 
@@ -25,7 +25,7 @@ async function main() {
     console.log(`handling ${p}`);
 
     fs.readFile(p)
-      .then((data) => {
+      .then(async (data) => {
         let dot = path.dirname(p);
         let config = JSON.parse(data);
 
@@ -37,11 +37,10 @@ async function main() {
           let file = hasStar ? directory.slice(0, -1) : directory; // scss and css file will be name just like their containing folder
           let fileInDirectory = directory.indexOf("/") >= 0;
 
-          let content = genFile(
-            fileInDirectory
-              ? `${dot}/${file}.scss`
-              : `${dot}/${directory}/${file}.scss`
-          ).css;
+          const targetDir = fileInDirectory ? dot : dot + "/" + directory;
+          const targetFile = `${targetDir}/${file}.scss`;
+
+          let content = genFile(targetFile).css;
 
           /* go through configured content replacements */
 

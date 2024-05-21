@@ -66,7 +66,8 @@ let SfGpsDsOmniInputMixin = (Base) =>
       const hcv = this.sfGpsDsHasCustomValidation();
       const srv = super.validity;
       const rv = {
-        /* spread operator isn't working */ badInput: srv.badInput,
+        /* spread operator isn't working */
+        badInput: srv.badInput,
         customError: hcv || srv.customError,
         patternMismatch: srv.patternMismatch,
         rangeOverflow: srv.rangeOverflow,

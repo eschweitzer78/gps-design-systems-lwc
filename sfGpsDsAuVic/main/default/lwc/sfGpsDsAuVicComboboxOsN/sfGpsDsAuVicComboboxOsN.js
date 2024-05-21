@@ -43,13 +43,7 @@ export default class SfGpsDsAuVicComboboxOsN extends OmnistudioCombobox {
     });
   }
 
-  get ariaLabelledBy() {
-    return computeClass({
-      "rpl-select-label": !this.isLabelHidden
-    });
-  }
-
-  get ariaDescribedBy() {
+  get computedAriaDescribedBy() {
     return computeClass({
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.sfGpsDsIsError

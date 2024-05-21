@@ -3,9 +3,16 @@
   access="global"
   description="NSW DS Theme Layout"
 >
-  <ltng:require
-    styles="{! join(',', $Resource.sfGpsDsAuNsw + '/sfGpsDsAuNsw-min.css', $Resource.sfGpsDsAuNsw + '/byo_aura-min.css')}"
-  />
+  <aura:if isTrue="{! v.hideOmniSteps }">
+    <ltng:require
+      styles="{! join(',', $Resource.sfGpsDsAuNsw + '/sfGpsDsAuNsw-min.css', $Resource.sfGpsDsAuNsw + '/byo_aura-min.css')}"
+    />
+    <aura:set attribute="else">
+      <ltng:require
+        styles="{! join(',', $Resource.sfGpsDsAuNsw + '/sfGpsDsAuNsw-min.css', $Resource.sfGpsDsAuNsw + '/byo_aura-min-show-omni.css')}"
+      />
+    </aura:set>
+  </aura:if>
 
   <aura:attribute name="masthead" type="Aura.Component[]" required="false" />
   <aura:attribute name="header" type="Aura.Component[]" required="false" />
@@ -16,6 +23,12 @@
     type="Boolean"
     required="false"
     default="false"
+  />
+  <aura:attribute
+    name="hideOmniSteps"
+    type="Boolean"
+    required="false"
+    default="true"
   />
   <aura:attribute name="navId" type="String" required="false" default="nav" />
   <aura:attribute
@@ -31,26 +44,28 @@
     default="false"
   />
 
-  <div class="{! v.noWidgetMargin ? 'sfgpsds-widget--no-margin' : '' }">
+  <div
+    class="{! 'sfgpsds-nsw' + (v.noWidgetMargin ? ' sfgpsds-widget--no-margin' : '') }"
+  >
     <div class="sfgpsds-masthead-and-header">
       {!v.masthead}
 
-      <div id="{!v.navId}" class="sfgpsds-header">{!v.header}</div>
+      <div id="{! v.navId }" class="sfgpsds-header">{! v.header }</div>
     </div>
 
     <div
-      id="{!v.contentId}"
+      id="{! v.contentId }"
       role="main"
       aria-label="Content"
       class="sfgpsds-content"
     >
-      {!v.body}
+      {! v.body }
     </div>
 
     <aura:if isTrue="{! v.backToTopShow }">
       <c:sfGpsDsAuNswBackToTop />
     </aura:if>
 
-    <footer class="sfgpsds-footer" aria-label="Footer">{!v.footer}</footer>
+    <footer class="sfgpsds-footer" aria-label="Footer">{! v.footer }</footer>
   </div>
 </aura:component>

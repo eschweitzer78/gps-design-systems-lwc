@@ -163,6 +163,7 @@ p {
 .app-wysiwyg h2,
 .forceCommunityRichText .app-wysiwyg h2 {
   font-size: 1.25rem;
+  font-weight: normal; /* default community setting changed */
   line-height: 1.2em;
   margin-bottom: 0.83rem; /* 16.6px */
   margin-top: 0.83rem;
@@ -179,6 +180,7 @@ p {
 .app-wysiwyg h4,
 .forceCommunityRichText .app-wysiwyg h4 {
     font-size: 1rem;
+    font-weight: normal; /* default community setting changed */
     line-height: 1em;
     margin-bottom: 1em; /* 16px */
     margin-top: 1em;

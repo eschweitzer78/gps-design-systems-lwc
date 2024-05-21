@@ -1,6 +1,8 @@
 <design:component label="NSW Design System Theme Layout">
   <design:attribute name="noWidgetMargin" label="No widget margin" description="Removes the standard widget margin.">
   </design:attribute>
+  <design:attribute name="hideOmniSteps" label="Hide OmniStudio steps" description="Hides the original OmniStudio step features when you use overrides.">
+  </design:attribute>
   <design:attribute name="navId" label="navId" description="Id to set on nav region.">
   </design:attribute>
   <design:attribute name="contentId" label="contentId" description="Id to set on content region.">

@@ -1,8 +1,8 @@
-@import "node_modules/nsw-design-system/src/global/scss/settings/settings";
-@import "node_modules/nsw-design-system/src/global/scss/base/functions";
-@import "node_modules/nsw-design-system/src/global/scss/base/mixins";
+@import "nsw-design-system/src/global/scss/settings/settings";
+@import "nsw-design-system/src/global/scss/base/functions";
+@import "nsw-design-system/src/global/scss/base/mixins";
 
 @import "../../scss/iconography-icon-vars";
 
-@import "node_modules/nsw-design-system/src/components/button/button";
+@import "nsw-design-system/src/components/button/button";
 @import "./fixes";

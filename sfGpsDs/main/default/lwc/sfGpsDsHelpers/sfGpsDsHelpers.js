@@ -8,9 +8,13 @@
 export { uniqueId, isIPadPro, isMacPlatform } from "./utilities_v6";
 
 export {
+  ISO8601_PATTERN,
+  isDate,
+  isValidDate,
   parseIso8601,
   formatDate,
   formatDateRange,
+  getMonthNames,
   getUserLocale,
   getUserLocales
 } from "./datetimeutil_v6";
