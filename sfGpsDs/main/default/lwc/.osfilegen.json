@@ -26,6 +26,7 @@
   },
   "sfGpsDsFocusTrap": {
     "target": "!Os",
+    "!.html": { "target": "!Os.html" },
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs"
