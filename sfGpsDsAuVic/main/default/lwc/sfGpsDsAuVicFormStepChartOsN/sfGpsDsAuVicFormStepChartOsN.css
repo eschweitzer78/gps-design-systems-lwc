@@ -16,7 +16,7 @@
   margin-bottom: var(--lwc-spacingMedium, 1rem);
   margin-top: var(--lwc-spacingMedium, 1rem);
   padding-right: var(--lwc-spacingMedium, 1rem);
-  padding-left: var(--lwc-spacingMedium, 1rem);
+  padding-left: var(--lwc-spacingXLarge, 2rem);
 }
 
 .omni-stepchart-heading {
