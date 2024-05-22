@@ -55,8 +55,8 @@
     {
       "path": "sfGpsDsAuVic1Full",
       "package": "Salesforce Global Public Sector AU VIC Design System",
-      "versionName": "2024.05.21.2000",
-      "versionNumber": "2.5.0.NEXT",
+      "versionName": "2024.05.23.0100",
+      "versionNumber": "2.5.1.NEXT",
       "default": false,
       "versionDescription": "Salesforce Global Public Sector AU VIC Design System v1 (Full)",
       "dependencies": [
