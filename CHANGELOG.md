@@ -1,5 +1,45 @@
 ## Change log
 
+### 21 May 2024
+
+#### NSW DS: Added a theme configuration to show standard Omniscript action buttons in the NSW Design System layout
+
+We added a checkbox in the theme layout configuration used in the NSW Design System so that designer have the option of showing the standard Omniscript action buttons (previous, next, etc...). This is useful when the library's Omniscript Step override is not used.
+
+### VIC DS: Coping with Customer Service Template heading styling changes
+
+The Customer Service Template introduced a change to headings with bold font-weight being added to h2 and h4. We adjusted stylesheets to align with VIC DS where h2 and h4 use the heading font with normal font-weight.
+
+Refer to [`sfGpsDsVic/main/default/staticresources/sfGpsDsAuVic/customer_service-min.scss`](sfGpsDsVic/main/default/staticresources/sfGpsDsAuVic/customer_service-min.scss)
+
+### 9 May 2024
+
+#### VIC2 DS: Released new VIC2 Design System aligned with the Australian State of Victoria Government Ripple v2 Design System
+
+We added support for the Victorian Government Ripple v2 Design System pursuant to the deprecation of Ripple v1. This is largerly a new build with an LWR-first approach (but compatible with Aura sites). The current support is for Experience Cloud components (a vast majority of those published by VIC SDP) with Omnistudio form components planned for later this year.
+
+Refer to [`sfGpsDsVic2/main/default`](sfGpsDsVic2/main/default)
+
+### 10 April 2024
+
+#### VIC DS: Added Places Typeahead for Omnistudio
+
+We added support for the Omnistudio Places Typeahead (a Typeahead element where the `Enabled Googles Maps Autocomplete` option is checked).
+
+Refer to [`sfGpsDsVic/main/default/lwc/sfGpsDsAuVicFormPlacesTypeaheadOsN`](sfGpsDsVic/main/default/lwc/sfGpsDsAuVicFormPlacesTypeaheadOsN)
+
+#### Base: packaged as an unmanaged package for third-party use 
+
+While the base content is now released as a part of all the design system libraries' packages in this repo, we have resumed publishing it as a separate package for third-party use.
+
+### 30 January 2024
+
+#### FrGov DS: Released Omnistudio support for the French Government Design System
+
+We added support for Omnistudio elements aligning with the French Government Design System also known as [Système de Design de l'État](https://www.systeme-de-design.gouv.fr). This complements the [Salesforce support library for Experience Cloud elements](https://github.com/pegros/DSFR_LWR) maintained by [Pierre-Emmanuel Gros](https://github.com/pegros).
+
+Refer to [`sfGpsDsFrGov/main/default`](sfGpsDsFrGov/main/default)
+
 ### 2 January 2024
 
 #### Base: Fix the debounce implementation in Helpers
