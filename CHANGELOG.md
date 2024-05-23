@@ -16,7 +16,7 @@ Refer to [`sfGpsDsVic/main/default/staticresources/sfGpsDsAuVic/customer_service
 
 #### VIC2 DS: Released new VIC2 Design System aligned with the Australian State of Victoria Government Ripple v2 Design System
 
-We added support for the Victorian Government Ripple v2 Design System pursuant to the deprecation of Ripple v1. This is largerly a new build with an LWR-first approach (but compatible with Aura sites). The current support is for Experience Cloud components (a vast majority of those published by VIC SDP) with Omnistudio form components planned for later this year.
+We added support for the Victorian Government [Ripple v2 Design System](https://www.ripple.sdp.vic.gov.au) pursuant to the deprecation of Ripple v1. This is largerly a new build with an LWR-first approach (but compatible with Aura sites). The current support is for Experience Cloud components (a vast majority of those published by VIC SDP) with Omnistudio form components planned for later this year.
 
 Refer to [`sfGpsDsVic2/main/default`](sfGpsDsVic2/main/default)
 
@@ -24,11 +24,11 @@ Refer to [`sfGpsDsVic2/main/default`](sfGpsDsVic2/main/default)
 
 #### VIC DS: Added Places Typeahead for Omnistudio
 
-We added support for the Omnistudio Places Typeahead (a Typeahead element where the `Enabled Googles Maps Autocomplete` option is checked).
+We added support for the Omnistudio Places Typeahead (a Typeahead element where the `Enabled Google Maps Autocomplete` option is checked).
 
 Refer to [`sfGpsDsVic/main/default/lwc/sfGpsDsAuVicFormPlacesTypeaheadOsN`](sfGpsDsVic/main/default/lwc/sfGpsDsAuVicFormPlacesTypeaheadOsN)
 
-#### Base: packaged as an unmanaged package for third-party use 
+#### Base: packaged as an unmanaged package for third-party use
 
 While the base content is now released as a part of all the design system libraries' packages in this repo, we have resumed publishing it as a separate package for third-party use.
 
