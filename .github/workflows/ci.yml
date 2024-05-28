@@ -10,6 +10,7 @@ on:
     paths-ignore:
       - "sfdx-project.json"
       - "README.md"
+      - "CHANGELOG.md"
 
 # Jobs to be executed
 jobs:

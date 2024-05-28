@@ -1,0 +1,66 @@
+<template>
+  <div class="nsw-accordion ready">
+    <div
+      class="nsw-accordion__title nsw-accordion__open"
+      role="heading"
+      aria-level={blockHeadingLevel}
+    >
+      <button
+        if:true={blockLabel}
+        type="button"
+        aria-expanded={expandContent}
+        aria-controls="content"
+        class={computedButtonClassName}
+        onclick={toggleContent}
+      >
+        {mergedLabel}
+        <span class="material-icons nsw-material-icons" aria-hidden="true">
+          keyboard_arrow_down
+        </span>
+      </button>
+    </div>
+
+    <template if:true={_propSetMap.repeat}>
+      <div class="slds-button-group slds-p-right_large" role="group">
+        <omnistudio-button
+          if:true={canRepeat}
+          variant="base"
+          onclick={handleAdd}
+          label={allCustomLabelsUtil.OmniAdd}
+          aria-label={_addAriaLabel}
+        >
+        </omnistudio-button>
+        <omnistudio-button
+          if:true={canRemove}
+          variant="base"
+          onclick={handleRemove}
+          label={allCustomLabelsUtil.OmniDelete}
+          class="slds-m-left_x-small"
+          aria-label={_removeAriaLabel}
+        >
+        </omnistudio-button>
+      </div>
+    </template>
+
+    <span
+      lwc:if={showValidation}
+      class={computedHelperClassName}
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <span
+        lwc:if={computedStatusIcon}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {computedStatusIcon}
+      </span>
+      {allCustomLabelsUtil.OmniBlockError}
+    </span>
+
+    <div id="content" hidden={ariaHiddenValue} class="nsw-accordion__content">
+      <slot></slot>
+    </div>
+  </div>
+</template>

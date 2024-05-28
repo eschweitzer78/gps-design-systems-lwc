@@ -2,9 +2,9 @@
 
 ### 21 May 2024
 
-#### NSW DS: Added a theme configuration to show standard Omniscript action buttons in the NSW Design System layout
+#### NSW DS: Added a theme configuration to show standard Omniscript action buttons in the NSW Design System template
 
-We added a checkbox in the theme layout configuration used in the NSW Design System so that designer have the option of showing the standard Omniscript action buttons (previous, next, etc...). This is useful when the library's Omniscript Step override is not used.
+We added a checkbox in the theme layout configuration used in the NSW Design System template so that designer have the option of showing the standard Omniscript action buttons (previous, next, etc...). This is useful when the library's Omniscript Step override is not used.
 
 ### VIC DS: Coping with Customer Service Template heading styling changes
 
