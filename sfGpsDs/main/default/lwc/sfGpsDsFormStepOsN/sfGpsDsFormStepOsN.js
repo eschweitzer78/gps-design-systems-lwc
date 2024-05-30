@@ -78,7 +78,7 @@ export default class SfGpsDsFormSelectOsN extends OmniscriptStep {
 
   get showSave() {
     return (
-      this.scriptHeaderDef?.allowSaveForLater &&
+      this.scriptHeaderDef?.propSetMap?.allowSaveForLater &&
       this._propSetMap?.allowSaveForLater &&
       this._propSetMap?.saveLabel
     );
