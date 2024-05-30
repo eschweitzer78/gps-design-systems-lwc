@@ -61,8 +61,6 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   LightningElement
   // eslint-disable-next-line @lwc/lwc/no-leading-uppercase-api-name
 ) {
-  static renderMode = "light";
-
   @api hideFormGroup = false;
   @api hideAsterisk = false;
 
