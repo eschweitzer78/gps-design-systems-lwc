@@ -5,6 +5,7 @@ export default class SfGpsDsAuVic2PaginationLink extends LightningElement {
   @api iconName;
   @api iconSize;
   @api iconPlacement;
+  @api disabled;
   @api className;
 
   get computedIsIconBefore() {

@@ -49,7 +49,8 @@ export {
 export {
   formatTemplate,
   safeEqualsIgnoreCase,
-  truncateText
+  truncateText,
+  capitalize
 } from "./string_v6";
 
 export {

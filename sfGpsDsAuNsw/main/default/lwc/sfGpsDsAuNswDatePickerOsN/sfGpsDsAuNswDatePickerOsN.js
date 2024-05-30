@@ -35,7 +35,7 @@ export default class SfGpsDsAuNswDatePickerOsN extends SfGpsDsAuNswStatusHelperM
     });
   }
 
-  get computedFormGroupClass() {
+  get computedFormGroupClassName() {
     return computeClass({
       "nsw-form__group": !this.hideFormGroup
     });

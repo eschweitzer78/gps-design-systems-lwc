@@ -8,6 +8,7 @@ export default class extends LightningElement {
 
   @api title;
   @api mode; // vertical or horizontal
+  @api className;
   @api tabClassName;
 
   _tabByValue = {};

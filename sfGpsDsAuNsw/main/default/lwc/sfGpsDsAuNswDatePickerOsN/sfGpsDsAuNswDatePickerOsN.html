@@ -1,5 +1,5 @@
 <template>
-  <div class={computedFormGroupClass}>
+  <div class={computedFormGroupClassName}>
     <div class={errorClass}>
       <label lwc:if={label} class={computedLabelClassName} for="date-input">
         {label}
@@ -18,7 +18,7 @@
           class="nsw-form__input"
           type={type}
           id="date-input"
-          aria-label={ariaLabel}
+          aria-label={_ariaLabel}
           tabindex={tabIndex}
           readonly={readOnly}
           aria-readonly={readOnly}
@@ -141,6 +141,7 @@
                   class="slds-disabled-text"
                   data-id={day.name}
                   tabindex="-1"
+                  id={day.name}
                   scope="col"
                 >
                   <abbr title={day.name}>{day.name}</abbr>
@@ -159,6 +160,7 @@
                     data-id={day.id}
                     data-type="date"
                     aria-selected="false"
+                    aria-disabled={day.disabled}
                     tabindex="0"
                     role="gridcell"
                     onkeydown={shiftFocus}

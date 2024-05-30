@@ -1,0 +1,36 @@
+@import "c/sfGpsDsAuNswCoreOs";
+@import "c/sfGpsDsAuNswFormOs";
+@import "./date-picker.gen.css";
+@import "c/sfGpsDsAuNswButtonCssOs";
+
+/* Need to adjust this rule as in Omniscript they always be first child */
+/* have same setup as for subsequent children. */
+
+.nsw-form__group:first-child {
+  margin-top: 1rem;
+}
+
+.nsw-form__input:disabled {
+  cursor: not-allowed;
+}
+
+/* START: dealing with the new styling in omnistudio__OmniLwcUtilsCss in omni246 */
+
+input.nsw-form__input[readonly]:not([type="range"]):not([type="checkbox"]):not(
+    [type="radio"]
+  ) {
+  color: var(--nsw-text-dark);
+  font-size: var(--nsw-font-size-sm-mobile);
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+@media (min-width: 62rem) {
+  input.nsw-form__input[readonly]:not([type="range"]):not(
+      [type="checkbox"]
+    ):not([type="radio"]) {
+    font-size: var(--nsw-font-size-sm-desktop);
+  }
+}
+
+/* END */

@@ -8,7 +8,7 @@ setupFilesAfterEnv.push("<rootDir>/jest-crypto-setup.js");
 module.exports = {
   ...jestConfig,
   verbose: true,
-  modulePathIgnorePatterns: ["<rootDir>/.localdevserver"],
+  modulePathIgnorePatterns: ["<rootDir>/.localdevserver", "sfGpsTemp"],
   setupFilesAfterEnv,
   moduleFileExtensions: ["js", "html", "css"],
   transform: {
