@@ -1,25 +1,131 @@
 <template>
-  <template if:false={isCustomLwc}>
+  <c-sf-gps-ds-au-nsw-date-picker-os-n
+    lwc:if={isDate}
+    mask={mask}
+    placeholder={placeholder}
+    theme={theme}
+    label={label}
+    name={name}
+    icon-url={iconUrl}
+    min={min}
+    max={max}
+    value={inputValue}
+    tab-index={tabIndex}
+    format={format}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    disabled={disabled}
+    required={required}
+    read-only={readOnly}
+    size={size}
+    position={position}
+    output-type={outputType}
+    output-format={outputFormat}
+    field-level-help={fieldLevelHelp}
+    field-level-help-position={fieldLevelHelpPosition}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    message-when-value-missing={messageWhenValueMissing}
+    message-when-bad-input={messageWhenBadInput}
+    select-date-label={selectDateLabel}
+    prev-month-label={prevMonthLabel}
+    next-month-label={nextMonthLabel}
+    pick-year-label={pickYearLabel}
+    today-label={todayLabel}
+    required-label={requiredLabel}
+    styles={styles}
+    data-sfgpsds-input
+  >
+    <slot slot="label" name="label"> </slot>
+  </c-sf-gps-ds-au-nsw-date-picker-os-n>
+
+  <c-sf-gps-ds-au-nsw-time-picker-os-n
+    lwc:elseif={isTime}
+    placeholder={placeholder}
+    theme={theme}
+    label={label}
+    name={name}
+    icon-url={iconUrl}
+    min={min}
+    max={max}
+    value={inputValue}
+    tab-index={tabIndex}
+    read-only={readOnly}
+    format={format}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    disabled={disabled}
+    required={required}
+    required-label={requiredLabel}
+    field-level-help={fieldLevelHelp}
+    field-level-help-position={fieldLevelHelpPosition}
+    output-format={outputFormat}
+    output-type={outputType}
+    message-when-value-missing={messageWhenValueMissing}
+    interval={interval}
+    message-when-bad-input={messageWhenBadInput}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    styles={styles}
+    data-sfgpsds-input
+  >
+    <slot slot="label" name="label"> </slot>
+  </c-sf-gps-ds-au-nsw-time-picker-os-n>
+
+  <c-sf-gps-ds-au-nsw-datetime-picker-os-n
+    lwc:elseif={isDateTime}
+    name={name}
+    label={label}
+    theme={theme}
+    icon-url={iconUrl}
+    min={min}
+    max={max}
+    value={inputValue}
+    tab-index={tabIndex}
+    read-only={readOnly}
+    disabled={disabled}
+    required={required}
+    message-when-value-missing={messageWhenValueMissing}
+    interval={interval}
+    field-level-help={fieldLevelHelp}
+    field-level-help-position={fieldLevelHelpPosition}
+    output-format={outputFormat}
+    output-type={outputType}
+    message-when-bad-input={messageWhenBadInput}
+    date-label={dateLabel}
+    date-name={dateName}
+    date-placeholder={datePlaceholder}
+    time-label={timeLabel}
+    time-name={timeName}
+    time-placeholder={timePlaceholder}
+    date-format={dateFormat}
+    time-format={timeFormat}
+    timezone={timezone}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    select-date-label={selectDateLabel}
+    prev-month-label={prevMonthLabel}
+    next-month-label={nextMonthLabel}
+    pick-year-label={pickYearLabel}
+    today-label={todayLabel}
+    required-label={requiredLabel}
+    styles={styles}
+    data-sfgpsds-input
+  >
+    <slot slot="label" name="label"> </slot>
+  </c-sf-gps-ds-au-nsw-datetime-picker-os-n>
+
+  <template lwc:elseif={isCustomLwc}> </template>
+
+  <template lwc:else>
     <div class="nsw-form__group">
-      <div lwc:if={labelVisible} data-label="true">
-        <label class={computedLabelClassName} style="width: auto" for={inputId}>
-          {label}
-          <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
-        </label>
-        <slot name="label"></slot>
-      </div>
-
-      <template if:false={isCheckbox}>
-        <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
-          {fieldLevelHelp}
-        </span>
-      </template>
-
-      <div lwc:if={pretext}>
-        <span lwc:if={isCheckbox}>{pretext}</span>
-      </div>
-
       <template lwc:if={isCheckbox}>
+        <div lwc:if={pretext}>
+          <span>{pretext}</span>
+        </div>
+
         <input
           class="nsw-form__checkbox-input"
           tabindex={tabIndex}
@@ -49,8 +155,26 @@
           <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
           <slot name="label"></slot>
         </label>
+      </template>
 
-        <!-- TODO: fieldLevelHelp for checkboxes? -->
+      <template lwc:else>
+        <div lwc:if={labelVisible} data-label="true">
+          <label
+            class={computedLabelClassName}
+            style="width: auto"
+            for={inputId}
+          >
+            {label}
+            <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
+          </label>
+          <slot name="label"></slot>
+        </div>
+
+        <template if:false={isCheckbox}>
+          <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
+            {fieldLevelHelp}
+          </span>
+        </template>
       </template>
 
       <div lwc:if={_isFormula}>
@@ -78,7 +202,7 @@
       </div>
       <!-- isFormula -->
 
-      <div lwc:if={isRadio} class="slds-form-element__control">
+      <div lwc:elseif={isRadio} class="slds-form-element__control">
         <div class="slds-radio">
           <input
             type={type}
@@ -109,7 +233,7 @@
       <!-- isRadio -->
 
       <label
-        lwc:if={isToggle}
+        lwc:elseif={isToggle}
         class="slds-checkbox_toggle slds-grid"
         for={inputId}
       >
@@ -356,122 +480,4 @@
       </span>
     </div>
   </template>
-
-  <c-sf-gps-ds-au-nsw-date-picker-os-n
-    lwc:if={isDate}
-    mask={mask}
-    placeholder={placeholder}
-    theme={theme}
-    label={label}
-    name={name}
-    icon-url={iconUrl}
-    min={min}
-    max={max}
-    value={inputValue}
-    tab-index={tabIndex}
-    format={format}
-    locale-format={dateTimeLocaleFormat}
-    locale-format-invalid-error={localeFormatInvalidError}
-    disabled={disabled}
-    required={required}
-    read-only={readOnly}
-    size={size}
-    position={position}
-    output-type={outputType}
-    output-format={outputFormat}
-    field-level-help={fieldLevelHelp}
-    field-level-help-position={fieldLevelHelpPosition}
-    message-when-range-overflow={messageWhenRangeOverflow}
-    message-when-range-underflow={messageWhenRangeUnderflow}
-    message-when-value-missing={messageWhenValueMissing}
-    message-when-bad-input={messageWhenBadInput}
-    select-date-label={selectDateLabel}
-    prev-month-label={prevMonthLabel}
-    next-month-label={nextMonthLabel}
-    pick-year-label={pickYearLabel}
-    today-label={todayLabel}
-    required-label={requiredLabel}
-    styles={styles}
-    data-sfgpsds-input
-  >
-    <slot slot="label" name="label"> </slot>
-  </c-sf-gps-ds-au-nsw-date-picker-os-n>
-
-  <c-sf-gps-ds-au-nsw-time-picker-os-n
-    lwc:elseif={isTime}
-    placeholder={placeholder}
-    theme={theme}
-    label={label}
-    name={name}
-    icon-url={iconUrl}
-    min={min}
-    max={max}
-    value={inputValue}
-    tab-index={tabIndex}
-    read-only={readOnly}
-    format={format}
-    locale-format={dateTimeLocaleFormat}
-    locale-format-invalid-error={localeFormatInvalidError}
-    disabled={disabled}
-    required={required}
-    required-label={requiredLabel}
-    field-level-help={fieldLevelHelp}
-    field-level-help-position={fieldLevelHelpPosition}
-    output-format={outputFormat}
-    output-type={outputType}
-    message-when-value-missing={messageWhenValueMissing}
-    interval={interval}
-    message-when-bad-input={messageWhenBadInput}
-    message-when-range-overflow={messageWhenRangeOverflow}
-    message-when-range-underflow={messageWhenRangeUnderflow}
-    styles={styles}
-    data-sfgpsds-input
-  >
-    <slot slot="label" name="label"> </slot>
-  </c-sf-gps-ds-au-nsw-time-picker-os-n>
-
-  <c-sf-gps-ds-au-nsw-datetime-picker-os-n
-    lwc:elseif={isDateTime}
-    name={name}
-    label={label}
-    theme={theme}
-    icon-url={iconUrl}
-    min={min}
-    max={max}
-    value={inputValue}
-    tab-index={tabIndex}
-    read-only={readOnly}
-    disabled={disabled}
-    required={required}
-    message-when-value-missing={messageWhenValueMissing}
-    interval={interval}
-    field-level-help={fieldLevelHelp}
-    field-level-help-position={fieldLevelHelpPosition}
-    output-format={outputFormat}
-    output-type={outputType}
-    message-when-bad-input={messageWhenBadInput}
-    date-label={dateLabel}
-    date-name={dateName}
-    date-placeholder={datePlaceholder}
-    time-label={timeLabel}
-    time-name={timeName}
-    time-placeholder={timePlaceholder}
-    date-format={dateFormat}
-    time-format={timeFormat}
-    timezone={timezone}
-    locale-format={dateTimeLocaleFormat}
-    locale-format-invalid-error={localeFormatInvalidError}
-    message-when-range-overflow={messageWhenRangeOverflow}
-    message-when-range-underflow={messageWhenRangeUnderflow}
-    select-date-label={selectDateLabel}
-    prev-month-label={prevMonthLabel}
-    next-month-label={nextMonthLabel}
-    pick-year-label={pickYearLabel}
-    today-label={todayLabel}
-    required-label={requiredLabel}
-    styles={styles}
-    data-sfgpsds-input
-  >
-    <slot slot="label" name="label"> </slot>
-  </c-sf-gps-ds-au-nsw-datetime-picker-os-n>
 </template>

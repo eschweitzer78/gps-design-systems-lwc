@@ -1,6 +1,15 @@
-export function formatTemplate(template, values = {}) {
+export function formatTemplate(template, values = {}, options = {}) {
+  const { sep = "{}" } = options;
+  const sepStart = sep.slice(0, 1);
+  const sepEnd = sep.slice(1, 2) || sepStart;
+
+  const re = new RegExp(
+    "\\" + sepStart + "([^\\" + sepEnd + "]+)\\" + sepEnd,
+    "g"
+  );
+
   return template.replace(
-    /{(\w+)}/g,
+    re,
     (placeholderWithDelimiters, placeholderWithoutDelimiters) => {
       return Object.prototype.hasOwnProperty.call(
         values,

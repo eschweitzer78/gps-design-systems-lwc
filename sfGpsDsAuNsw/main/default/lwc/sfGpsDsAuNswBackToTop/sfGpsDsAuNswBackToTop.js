@@ -25,7 +25,6 @@ export default class SfGpsDsAuNswBackToTop extends LightningElement {
     } else {
       this.show = scroll > this._scrollPosition && this._scrollPosition > 200;
     }
-    console.log("show", this.show);
   }
 
   resize() {
