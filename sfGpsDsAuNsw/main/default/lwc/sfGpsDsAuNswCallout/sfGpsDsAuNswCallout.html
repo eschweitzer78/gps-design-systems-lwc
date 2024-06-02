@@ -1,5 +1,5 @@
 <template lwc:render-mode="light">
-  <span lwc:if={firstChild}></span>
+  <span if:false={firstChild}></span>
   <div class={computedClassName}>
     <div class="nsw-callout__content">
       <div class={computedTitleClassName}>{title}</div>

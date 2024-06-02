@@ -28,6 +28,7 @@ export default class SfGpsDsAuNswTabContainerLwr extends SfGpsDsLwc {
   @api tab10Label;
   @api tabPaddingStyle = "full";
   @api tabBorderStyle = "border";
+  @api firstChild;
 
   get computedTabClassName() {
     return computeClass({

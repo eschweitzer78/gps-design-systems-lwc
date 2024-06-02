@@ -16,13 +16,15 @@ export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
     this._tabHeaders = tabHeaders;
     const tabs = tabHeaders.map((tab) => {
       const classNames = this._tabClassName({});
+      const tabValue = String(tab.value);
 
       return {
         label: tab.label,
         title: tab.title || tab.label,
         linkId: tab.value + "__item",
         domId: tab.domId,
-        value: String(tab.value),
+        value: tabValue,
+        href: "#" + tabValue,
         className: classNames,
         linkClassName: "",
         tabIndex: -1,
@@ -55,6 +57,20 @@ export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
     this._queueSynchronizeA11 = true;
   }
 
+  /* getters */
+
+  get _visibleTabs() {
+    return this._tabs.filter((tab) => tab.visible);
+  }
+
+  get computedAriaOwns() {
+    return this._tabs?.length
+      ? this._tabs.map((item) => item.linkId).join(" ")
+      : null;
+  }
+
+  /* methods */
+
   @api
   selectTabByValue(tabValue) {
     this._selectTab(tabValue);
@@ -73,10 +89,6 @@ export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
     if (tab) {
       tab.focus();
     }
-  }
-
-  get _visibleTabs() {
-    return this._tabs.filter((tab) => tab.visible);
   }
 
   handleTabClick(event) {
@@ -136,6 +148,27 @@ export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
     this._selectedTab = tab;
   }
 
+  // eslint-disable-next-line no-unused-vars
+  _tabClassName({ selected = false, hasFocus = false }) {
+    /* NSW DS has no specifics for selected or focus at the tab/li level */
+    return null;
+  }
+
+  _synchronizeA11y() {
+    const tabLinks = this.querySelectorAll("a[role='tab']");
+
+    tabLinks.forEach((tabLink) => {
+      const tabData = this._tabs.find(
+        (tab) => tabLink.getAttribute("data-tab-value") === tab.value
+      );
+
+      tabLink.setAttribute("id", tabData.linkId);
+      tabLink.setAttribute("aria-controls", tabData.domId);
+    });
+  }
+
+  /* event management */
+
   handleBlur(event) {
     const tabValue = event.target.getAttribute("data-tab-value");
     const tab = this._findTabByValue(tabValue);
@@ -177,25 +210,6 @@ export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
 
         this.querySelector(`a[data-tab-value="${tab.value}"]`).focus();
       }
-    });
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  _tabClassName({ selected = false, hasFocus = false }) {
-    /* NSW DS has no specifics for selected or focus at the tab/li level */
-    return null;
-  }
-
-  _synchronizeA11y() {
-    const tabLinks = this.querySelectorAll("a[role='tab']");
-
-    tabLinks.forEach((tabLink) => {
-      const tabData = this._tabs.find(
-        (tab) => tabLink.getAttribute("data-tab-value") === tab.value
-      );
-
-      tabLink.setAttribute("id", tabData.linkId);
-      tabLink.setAttribute("aria-controls", tabData.domId);
     });
   }
 

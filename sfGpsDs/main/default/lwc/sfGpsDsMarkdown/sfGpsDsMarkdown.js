@@ -15,6 +15,7 @@ import { getFirstChild } from "c/sfGpsDsHelpers";
 import Parser from "./blocks.js";
 import HtmlRenderer from "./htmlRenderer.js";
 import HtmlUnpackFirstPRenderer from "./htmlUnpackFirstPRenderer.js";
+import { decodeHTMLStrict } from "./entitiesDecode.js";
 
 class sfGpsDsMarkdown {
   reader = new Parser();
@@ -175,6 +176,10 @@ class sfGpsDsMarkdown {
     }
 
     return h1s;
+  }
+
+  decodeEntities(str) {
+    return decodeHTMLStrict(str);
   }
 }
 

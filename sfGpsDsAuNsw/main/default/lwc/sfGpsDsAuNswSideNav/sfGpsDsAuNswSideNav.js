@@ -47,7 +47,9 @@ export default class SfGpsDsAuNswSideNav extends LightningElement {
         // Assuming parent label will be hierarchical in exp cloud navs -- which have no attached urls */
         if (
           !item.url &&
-          result.subNav.filter((subNavItem) => subNavItem.isActive).length
+          result.subNav.filter(
+            (subNavItem) => subNavItem.isActive || subNavItem.ariaCurrent
+          ).length
         ) {
           result.className = "active";
         }
@@ -105,38 +107,6 @@ export default class SfGpsDsAuNswSideNav extends LightningElement {
 
   handleClick(event) {
     event.preventDefault();
-
-    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-    //this.isActive = true;
-    //let index = event.currentTarget.dataset.ndx;
-
-    // If there is no subNav to expand, we're really navigating
-    // TODO: sort out level-2 nav on mobile as there is a subNav - it's just not visible
-    //if (!this._mapItems[index]?.subNav) {
     this.handleClickNavigate(event);
-    //return;
-    //}
-
-    /*
-    let level1click = this._mapItems[index]?.level === 1;
-    // eslint-disable-next-line guard-for-in
-    for (let prop in this._mapItems) {
-      let item = this._mapItems[prop];
-
-      if (prop === index) {
-        item.isActive = !item.isActive;
-      } else if (item.level === 1 && level1click) {
-        // if level1 item was clicked, we need to deactivate all other level 1s
-        item.isActive = false;
-      }
-
-      item.className = item.isActive ? "active" : "";
-      item.subNavClassName = item.isActive
-        ? "nsw-main-nav__sub-nav active"
-        : "nsw-main-nav__sub-nav";
-    }
-
-    this._navItems = [...this._navItems];
-    */
   }
 }

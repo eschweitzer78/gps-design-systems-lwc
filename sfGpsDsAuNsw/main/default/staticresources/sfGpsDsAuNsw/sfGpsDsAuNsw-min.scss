@@ -1,10 +1,12 @@
 @import "./sfGpsDsAuNsw_public_sans";
 @import "./sfGpsDsAuNsw_material_icons";
-@import "./sfGpsDsAuNsw_root_variables";
+//@import "./sfGpsDsAuNsw_root_variables";
 
 @import "nsw-design-system/src/global/scss/settings/settings";
 @import "nsw-design-system/src/global/scss/base/functions";
 @import "nsw-design-system/src/global/scss/base/mixins";
+@import "nsw-design-system/src/global/scss/settings/palette";
+@import "nsw-design-system/src/global/scss/settings/theme";
 
 @import "../../scss/iconography-icon-vars.scss";
 

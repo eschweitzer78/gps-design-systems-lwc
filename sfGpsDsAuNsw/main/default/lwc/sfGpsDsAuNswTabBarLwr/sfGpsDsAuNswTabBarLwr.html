@@ -1,6 +1,11 @@
 <template lwc:render-mode="light">
   <div class="nsw-tabs__list-wrapper">
-    <ul class="nsw-tabs__list" role="tablist" onkeydown={handleKeyDown}>
+    <ul
+      class="nsw-tabs__list"
+      role="tablist"
+      aria-owns={computedAriaOwns}
+      onkeydown={handleKeyDown}
+    >
       <template for:each={_tabs} for:item="tab">
         <template lwc:if={tab.label}>
           <li
@@ -15,7 +20,7 @@
             <a
               class={tab.linkClassName}
               role="tab"
-              href="javascript:void(0)"
+              href={tab.href}
               onblur={handleBlur}
               onfocus={handleFocus}
               tabindex={tab.tabIndex}

@@ -70,6 +70,7 @@
         label="Mobile full width"
         description="Setting this attribute will render the button in full width on smaller devices."
         default="false"
+        datasource="false,true"
       />
       <property
         name="className"

@@ -1,4 +1,5 @@
 <template>
+  <span if:false={firstChild}></span>
   <c-sf-gps-ds-configuration-error
     lwc:if={_sfGpsDsErrors}
     errors={_sfGpsDsErrors}

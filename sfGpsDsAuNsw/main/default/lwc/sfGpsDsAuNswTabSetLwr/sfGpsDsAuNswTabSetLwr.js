@@ -9,6 +9,7 @@ export default class SfGpsDsAuNswTabSetLwr extends LightningElement {
 
   @api title;
   @api tabClassName;
+  @api firstChild;
 
   _tabByValue = {};
   _tabHeaders = [];

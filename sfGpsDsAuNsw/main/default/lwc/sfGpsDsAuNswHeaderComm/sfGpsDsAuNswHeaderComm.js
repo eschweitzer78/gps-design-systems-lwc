@@ -84,12 +84,14 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
   }
 
   handleHome() {
-    this[NavigationMixin.Navigate]({
+    this[NavigationMixin.GenerateUrl]({
       // Pass in pageReference
       type: "standard__namedPage",
       attributes: {
         pageName: "home"
       }
+    }).then((url) => {
+      window.open(url, "_self");
     });
   }
 }

@@ -77,4 +77,8 @@ export default class SfGpsDsAuNswUpperFooter extends LightningElement {
       [this.className]: this.className
     });
   }
+
+  get computedHasItems() {
+    return this._items?.length;
+  }
 }

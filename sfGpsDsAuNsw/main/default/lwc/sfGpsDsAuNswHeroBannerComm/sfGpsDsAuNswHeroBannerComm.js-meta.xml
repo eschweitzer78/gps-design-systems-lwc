@@ -15,6 +15,7 @@
         label="Title"
         description="Clearly identifies the primary purpose or action of the site, service or product."
         default="Hero Banner"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="intro"
@@ -38,6 +39,7 @@
         label="Call to action"
         description="Call to action for the user in Markdown link format."
         default="[Learn more](#)"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="featured"
@@ -65,12 +67,14 @@
         type="String"
         label="Image source"
         description="URL of a supporting image."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="imageAlt"
         type="String"
         label="Image alt"
         description="Text used should there be an issue displaying the image."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="subtitle"
@@ -78,6 +82,7 @@
         label="Subtitle"
         description="Text that clearly identifies the nature of the listed links."
         default="Subtitle"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="links"
@@ -85,12 +90,14 @@
         label="Links"
         description="A series of links displayed on the right hand side - in Markdown link format."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

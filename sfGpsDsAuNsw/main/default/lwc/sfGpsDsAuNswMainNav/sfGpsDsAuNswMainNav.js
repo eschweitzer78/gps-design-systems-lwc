@@ -66,7 +66,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         level: parentLevel + 1,
         isActive: isActive,
         className: isActive && !this._megaMenu ? "active" : "",
-        anchorClasssName: isActive && this._megaMenu ? "active" : "",
+        anchorClassName: isActive && this._megaMenu ? "active" : "",
         subNavAriaLabel: `${item.text} Submenu`,
         subNavClassName: "nsw-main-nav__sub-nav"
       };
@@ -163,7 +163,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
       item.key = `item-${this.keyIndex++}`;
       item.isActive = false;
       item.className = "";
-      item.anchorClasssName = "";
+      item.anchorClassName = "";
       item.subNavClassName = "nsw-main-nav__sub-nav";
     }
     //this._navItems = [...this._navItems];
@@ -231,7 +231,9 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         item.isActive = false;
       }
 
-      item.className = item.isActive ? "active" : "";
+      //item.className = item.isActive ? "active" : "";
+      item.className = item.isActive && !this._megaMenu ? "active" : "";
+      item.anchorClassName = item.isActive && this._megaMenu ? "active" : "";
       item.subNavClassName = item.isActive
         ? "nsw-main-nav__sub-nav active"
         : "nsw-main-nav__sub-nav";

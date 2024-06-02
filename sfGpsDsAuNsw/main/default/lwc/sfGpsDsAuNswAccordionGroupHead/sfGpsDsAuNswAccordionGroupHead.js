@@ -6,15 +6,50 @@
  */
 
 import { LightningElement, api } from "lwc";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
 export default class sfGpsDsAuNswAccordionGroupHead extends LightningElement {
   static renderMode = "light";
 
   @api showButtons;
-  @api isFullyExpanded;
-  @api isFullyCollapsed;
   @api expandAllLabel;
   @api collapseAllLabel;
+
+  /* api: isFullyExpanded */
+
+  _isFullyExpandedOriginal;
+  _isFullyExpanded;
+
+  @api
+  get isFullyExpanded() {
+    return this._isFullyExpandedOriginal;
+  }
+
+  set isFullyExpanded(value) {
+    this._isFullyExpandedOriginal = value;
+    this._isFullyExpanded = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+  }
+
+  /* api: isFullyCollapsed */
+
+  _isFullyCollapsedOriginal;
+  _isFullyCollapsed;
+
+  @api
+  get isFullyCollapsed() {
+    return this._isFullyCollapsedOriginal;
+  }
+
+  set isFullyCollapsed(value) {
+    this._isFullyCollapsedOriginal = value;
+    this._isFullyCollapsed = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+  }
 
   /* event management */
 

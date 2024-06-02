@@ -11,7 +11,10 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
   static renderMode = "light";
 
   @api header;
+  @api index;
   @api className;
+
+  /* api: closed */
 
   @api get closed() {
     return !this.isOpen;
@@ -22,6 +25,8 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
   }
 
   @track isOpen = false;
+
+  /* getters */
 
   get computedClassName() {
     return computeClass({
@@ -53,6 +58,8 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
 
     return this._controlsId;
   }
+
+  /* event management */
 
   handleClick() {
     this.dispatchEvent(new CustomEvent(this.isOpen ? "collapse" : "expand"));

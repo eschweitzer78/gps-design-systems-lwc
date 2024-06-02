@@ -93,6 +93,13 @@
         label="Tab border style"
         datasource="border,no-border"
       />
+      <property
+        name="firstChild"
+        type="Boolean"
+        label="Render as first child"
+        description="Render as first child for margin purposes."
+        default="false"
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>
