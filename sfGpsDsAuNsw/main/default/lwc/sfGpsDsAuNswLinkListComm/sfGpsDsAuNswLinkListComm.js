@@ -13,6 +13,8 @@ import mdEngine from "c/sfGpsDsMarkdown";
 export default class SfGpsDsAuNswLinkListComm extends NavigationMixin(
   SfGpsDsLwc
 ) {
+  @api title;
+  @api firstChild;
   @api className;
 
   /*

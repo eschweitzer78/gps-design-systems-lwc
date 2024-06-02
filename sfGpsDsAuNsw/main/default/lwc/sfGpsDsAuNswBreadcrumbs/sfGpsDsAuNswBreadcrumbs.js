@@ -12,6 +12,7 @@ export default class SfGpsDsAuNswBreadcrumbs extends LightningElement {
   static renderMode = "light";
 
   @api label = "breadcrumbs";
+  @api containerClassName = "nsw-p-bottom-xs nsw-m-bottom-sm";
   @api className = "";
   @api items = [];
 

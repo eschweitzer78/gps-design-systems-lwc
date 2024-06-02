@@ -5,6 +5,7 @@ import getNavigationItems from "@salesforce/apex/SfGpsDsNavigationORA.getNavigat
 
 import cBasePath from "@salesforce/community/basePath";
 import { NavigationMixin } from "lightning/navigation";
+import mdEngine from "c/sfGpsDsMarkdown";
 
 const MODE_IP = "Integration Procedure";
 const MODE_NAV = "Experience Cloud Navigation";
@@ -133,7 +134,7 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
     return data.reduce((m, item, index) => {
       let itemKey = `${key}-${index + 1}`;
       let amik = {
-        text: item.label,
+        text: mdEngine.decodeEntities(item.label),
         url: item.actionValue,
         index: itemKey,
         position: index

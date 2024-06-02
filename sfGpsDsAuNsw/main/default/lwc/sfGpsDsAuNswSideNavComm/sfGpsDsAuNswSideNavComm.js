@@ -4,6 +4,24 @@ import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class SfGpsDsAuNswSideNavComm extends SfGpsDsNavigation {
   @api
+  get mode() {
+    return super.mode;
+  }
+
+  set mode(value) {
+    super.mode = value;
+  }
+
+  @api
+  get navigationDevName() {
+    return super.navigationDevName;
+  }
+
+  set navigationDevName(value) {
+    super.navigationDevName = value;
+  }
+
+  @api
   get ipName() {
     return super.ipName;
   }

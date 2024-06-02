@@ -6,7 +6,7 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuNswButton extends LightningElement {
   static renderMode = "light";
@@ -16,12 +16,46 @@ export default class SfGpsDsAuNswButton extends LightningElement {
   @api cstyle = "dark"; // oneOf(['dark', 'dark-outline', 'dark-outline-solid', 'light', 'light-outline','white','danger']
   @api type = "button";
   @api rendering = "button";
-  @api disabled = false;
   @api iconStyle = "none"; // one of none, before, after
   @api iconName;
-  @api mobileFullWidth = false;
   @track ariaHaspopup;
   @api className;
+
+  /* api: disabled */
+
+  _disabledOriginal;
+  _disabled;
+
+  @api
+  get disabled() {
+    return this._disabledOriginal;
+  }
+
+  set disabled(value) {
+    this._disabledOriginal = value;
+    this._disabled = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+  }
+
+  /* api: mobileFullWidth */
+
+  _mobileFullWidthOriginal;
+  _mobileFullWidth;
+
+  @api
+  get mobileFullWidth() {
+    return this._mobileFullWidthOriginal;
+  }
+
+  set mobileFullWidth(value) {
+    this._mobileFullWidthOriginal = value;
+    this._mobileFullWidth = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+  }
 
   /* deprecated */
 
@@ -51,10 +85,6 @@ export default class SfGpsDsAuNswButton extends LightningElement {
 
   get isButton() {
     return this.rendering === "button" && this.link == null;
-  }
-
-  get _disabled() {
-    return this.disabled ? "true" : null;
   }
 
   get hasIconBefore() {

@@ -5,12 +5,12 @@
   >
   </c-sf-gps-ds-configuration-error>
 
-  <c-sf-gps-ds-au-nsw-link-list
+  <c-sf-gps-ds-au-nsw-breadcrumbs
     lwc:else
-    title={title}
-    links={_links}
-    first-child={firstChild}
+    label={label}
+    items={_itemsArray}
+    container-class-name={containerClassName}
     class-name={className}
   >
-  </c-sf-gps-ds-au-nsw-link-list>
+  </c-sf-gps-ds-au-nsw-breadcrumbs>
 </template>

@@ -18,19 +18,23 @@ import { computeClass } from "c/sfGpsDsHelpers";
  */
 export default class SfGpsDsAuNswAccordionGroupLwr extends SfGpsDsLwc {
   @track items = [
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false },
-    { title: "", closed: false }
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true },
+    { title: "", closed: true }
   ];
+
+  _numberOpen = this.items.filter((item) => !item.closed).length;
+
+  @api firstChild;
 
   @api
   set item1title(value) {
@@ -191,15 +195,13 @@ export default class SfGpsDsAuNswAccordionGroupLwr extends SfGpsDsLwc {
   @api showButtons;
   @api className;
 
-  _numberOpen = 0;
-
   handleExpand(event) {
-    this.items[event.target.index].closed = false;
+    this.items[Number(event.target.index)].closed = false;
     this._numberOpen++;
   }
 
   handleCollapse(event) {
-    this.items[event.target.index].closed = true;
+    this.items[Number(event.target.index)].closed = true;
     this._numberOpen--;
   }
 

@@ -6,8 +6,8 @@
   </c-sf-gps-ds-configuration-error>
 
   <template lwc:else>
+    <span if:false={firstChild}></span>
     <div class={computedClassName}>
-      <span if:false={firstChild}></span>
       <slot name="Block"></slot>
     </div>
   </template>

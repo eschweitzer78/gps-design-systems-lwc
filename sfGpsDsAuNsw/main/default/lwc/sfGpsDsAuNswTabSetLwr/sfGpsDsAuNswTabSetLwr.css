@@ -1,3 +1,9 @@
 @import "c/sfGpsDsAuNswCore";
 @import "./tabs.gen.css";
 @import "./tabset.gen.css";
+
+/* this is required since Exp Cloud as section with a block display */
+
+section.nsw-tabs__content[hidden] {
+  display: none;
+}

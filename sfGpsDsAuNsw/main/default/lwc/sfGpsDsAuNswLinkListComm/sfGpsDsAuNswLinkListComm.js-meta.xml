@@ -10,11 +10,25 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title of the list, leave blank if not required."
+        default="Link list"
+      />
+      <property
         name="links"
         type="String"
         label="Links"
-        description="List of links in Markdown format"
+        description="List of links in Markdown format."
         default="[Link lists let users navigate to related content](#)[Icons indicate a clickable item](#)"
+      />
+      <property
+        name="firstChild"
+        type="Boolean"
+        label="Render as first child"
+        description="Render as first child for margin purposes."
+        default="false"
       />
       <property
         name="className"

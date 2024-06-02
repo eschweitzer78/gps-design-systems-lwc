@@ -11,7 +11,9 @@ import { computeClass } from "c/sfGpsDsHelpers";
 export default class SfGpsDsAuNswLinkList extends LightningElement {
   static renderMode = "light";
 
+  @api title;
   @api links;
+  @api firstChild;
   @api className;
 
   get computedClassName() {

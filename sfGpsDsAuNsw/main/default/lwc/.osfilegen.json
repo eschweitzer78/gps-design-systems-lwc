@@ -551,6 +551,9 @@
   },
   "sfGpsDsAuNswMarkdownElementComm": {
     "target": "!Os",
+    "!.css": {
+      "target": "!Os.css"
+    },
     "!.html": {
       "target": "!Os.html"
     },
@@ -567,6 +570,9 @@
   },
   "sfGpsDsAuNswMarkupElementComm": {
     "target": "!Os",
+    "!.css": {
+      "target": "!Os.css"
+    },
     "!.html": {
       "target": "!Os.html"
     },
