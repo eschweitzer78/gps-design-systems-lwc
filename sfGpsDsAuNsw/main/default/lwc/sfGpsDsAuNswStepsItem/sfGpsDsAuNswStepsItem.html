@@ -1,0 +1,14 @@
+<template>
+  <div class="nsw-steps__item">
+    <div class="nsw-steps__content">
+      <template lwc:if={title}>
+        <h3 lwc:if={isH3}>{title}</h3>
+        <h4 lwc:elseif={isH4}>{title}</h4>
+        <h2 lwc:else>{title}</h2>
+      </template>
+      <slot>
+        <div lwc:ref="content" lwc:dom="manual"></div>
+      </slot>
+    </div>
+  </div>
+</template>

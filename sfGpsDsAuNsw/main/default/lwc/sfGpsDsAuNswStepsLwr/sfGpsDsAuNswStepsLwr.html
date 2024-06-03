@@ -1,0 +1,111 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-nsw-steps
+    lwc:else
+    type={type}
+    cstyle={cstyle}
+    first-child={firstChild}
+    class-name={className}
+  >
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item1title}
+      title={item1title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step1"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item2title}
+      title={item2title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step2"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item3title}
+      title={item3title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step3"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item4title}
+      title={item4title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step4"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item5title}
+      title={item5title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step5"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item6title}
+      title={item6title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step6"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item7title}
+      title={item7title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step7"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item8title}
+      title={item8title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step8"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item9title}
+      title={item9title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step9"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item10title}
+      title={item10title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step10"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item11itle}
+      title={item11title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step11"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+
+    <c-sf-gps-ds-au-nsw-steps-item
+      lwc:if={item12title}
+      title={item12title}
+      heading-level={headingLevel}
+    >
+      <slot name="Step12"></slot>
+    </c-sf-gps-ds-au-nsw-steps-item>
+  </c-sf-gps-ds-au-nsw-steps>
+</template>

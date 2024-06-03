@@ -43,7 +43,7 @@
         type="String"
         label="Call to action style"
         description="Style used for the Call to action."
-        datasource="link,button"
+        datasource="link,button,hide"
         default="link"
       />
       <property

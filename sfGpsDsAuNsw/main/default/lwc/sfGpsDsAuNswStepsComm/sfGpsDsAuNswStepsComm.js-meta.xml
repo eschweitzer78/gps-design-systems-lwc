@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Steps</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="Type of steps."
+        default="default"
+        datasource="default,counter,filled,filled with counter"
+      />
+      <property
+        name="cstyle"
+        type="String"
+        label="Style"
+        description="Colour scheme used for the element."
+        default="default"
+        datasource="default,dark,light,supplementary"
+      />
+      <property
+        name="headingLevel"
+        type="String"
+        label="Heading level"
+        description="Level to be used for headings."
+        datasource="2,3,4"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Content in Markdown format, which will be split by H1 header."
+        default="# Discovery\nUnderstand your users, their challenges, and what motivates their behaviour.\n# Alpha\nTest hypotheses and different approaches with users rapidly to determine how to best meet identified user needs.\n# Beta\nTurn best-performing prototype into a working “minimum viable product” - the quickest and simplest version of a service to meet basic user needs and provide value."
+      />
+      <property
+        name="firstChild"
+        type="Boolean"
+        label="Render as first child"
+        description="Render as first child for margin purposes."
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
