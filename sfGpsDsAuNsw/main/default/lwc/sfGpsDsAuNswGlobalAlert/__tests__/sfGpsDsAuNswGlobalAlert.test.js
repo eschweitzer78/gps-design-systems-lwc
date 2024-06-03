@@ -76,6 +76,23 @@ describe("c-sf-gps-ds-au-nsw-global-alert", () => {
     });
   });
 
+  // linked to bug #349 - Global Alert crashes if cta left empty
+  it("does not crash if cta is left empty", () => {
+    const element = createElement(tag, {
+      is: SfGpsDsAuNswGlobalAlert
+    });
+
+    element.title = "title";
+    element.copy = "copy";
+    element.as = "critical";
+    element.cta = "";
+
+    document.body.appendChild(element);
+
+    let widget = element.querySelector(".nsw-global-alert");
+    expect(widget).not.toBeNull();
+  });
+
   it("is accessible", async () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswGlobalAlert

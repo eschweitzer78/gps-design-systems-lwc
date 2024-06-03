@@ -19,7 +19,7 @@ export default class SfGpsDsAuNswGlobalAlertComm extends SfGpsDsLwc {
    * cta
    */
 
-  @track _cta;
+  @track _cta = {};
   _originalCta;
 
   @api get cta() {
@@ -30,9 +30,10 @@ export default class SfGpsDsAuNswGlobalAlertComm extends SfGpsDsLwc {
     this._originalCta = markdown;
 
     try {
-      this._cta = markdown ? mdEngine.extractFirstLink(markdown) : null;
+      this._cta = markdown ? mdEngine.extractFirstLink(markdown) : {};
     } catch (e) {
       this.addError("CTA-MD", "Issue when parsing cta markdown");
+      this._cta = {};
     }
   }
 
