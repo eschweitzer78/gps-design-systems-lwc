@@ -1,0 +1,11 @@
+.nsw-steps__item:last-child .nsw-steps__content {
+  padding-bottom: 1.5rem;
+  
+  @media (min-width: 62rem) {
+    padding-bottom: 2rem;
+  }
+}
+
+c-sf-gps-ds-au-nsw-steps-item:last-child .nsw-steps__item .nsw-steps__content {
+  padding-bottom: 0;
+}
