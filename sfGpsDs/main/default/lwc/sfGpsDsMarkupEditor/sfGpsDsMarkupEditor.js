@@ -1,7 +1,7 @@
 import { api } from "lwc";
 import LightningModal from "lightning/modal";
 import { CodeMirror } from "c/sfGpsDsCodeMirrorEdit";
-import { normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString, replaceInnerHtml } from "c/sfGpsDsHelpers";
 import modeXml from "./mode-xml";
 import modeMarkdown from "./mode-markdown";
 
@@ -52,7 +52,16 @@ export default class SfGpsDsMarkupEditor extends LightningModal {
     if (!this._renderedOnce) {
       this._renderedOnce = true;
 
-      this._editor = CodeMirror.fromTextArea(this.refs.textarea, {
+      /**
+       * The following code sounds convoluted, but LWC prevents using insertBefore like
+       * CodeMirror.fromTextArea does if said textarea is not in an element that has
+       * lwc:dom="manual" set
+       */
+
+      const ref = this.refs.textarea;
+      replaceInnerHtml(ref, "<textarea></textarea>");
+      const textarea = ref.querySelector("textarea");
+      this._editor = CodeMirror.fromTextArea(textarea, {
         lineNumbers: true,
         mode: this._mode,
         value: this._markup || "",
