@@ -1,0 +1,24 @@
+{
+  "sfGpsDsAuNswResultsBar": {
+    "target": "!Os",
+    "results-bar.gen.css": {
+      "target": "results-bar.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs",
+      "sfGpsDsAuNswForm": "sfGpsDsAuNswFormOs"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  }
+}
