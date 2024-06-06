@@ -1,0 +1,3 @@
+{
+  "sfGpsDsAuNswCore/core": [{ "from": ":root", "to": ":host" }]
+}

@@ -1,5 +1,31 @@
 ## Change log
 
+### 3 June 2024
+
+#### NSW DS: Added support for the Steps element
+
+We added support for the steps element, enabling to draw a connection for the user between linear pieces of information. Markdown content is supported in Aura and up to 12 steps with a slot can be configured in LWR.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsComm`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsComm) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsLwr`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsLwr)
+
+### 2 June 2024
+
+#### NSW DS: Added support Breadcrumbs in the LWR runtime
+
+The default styling of the Breadcrumbs is slightly different in the LWR runtime and we added a specific element so as not to impact existing Aura sites.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbsLwr`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbsLwr)
+
+#### NSW DS: Added support for NSW Grid in the LWR runtime
+
+The NSW Grid element for LWR allows up to 12 columns over 1 or multiple rows. All the configuration is based on CSS classes applied on the grid or columns. Read digital.NSW's grid guide for more details on these.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswGridLwr`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswGridLwr)
+
+#### NSW DS: Added a stylesheet for the LWR BYO template
+
+Refer to [`sfGpsDsAuNsw/main/default/staticresources/sfGpsDsAuNsw/byo_lwr-min.css`](sfGpsDsAuNsw/main/default/staticresources/sfGpsDsAuNsw/byo_lwr-min.css)
+
 ### 21 May 2024
 
 #### NSW DS: Added a theme configuration to show standard Omniscript action buttons in the NSW Design System template
@@ -8,9 +34,9 @@ We added a checkbox in the theme layout configuration used in the NSW Design Sys
 
 ### VIC DS: Coping with Customer Service Template heading styling changes
 
-The Customer Service Template introduced a change to headings with bold font-weight being added to h2 and h4. We adjusted stylesheets to align with VIC DS where h2 and h4 use the heading font with normal font-weight.
+The Summer'24 release Customer Service Template introduced a change to headings with bold font-weight being added to h2 and h4. We adjusted stylesheets to align with VIC DS where h2 and h4 use the heading font with normal font-weight.
 
-Refer to [`sfGpsDsVic/main/default/staticresources/sfGpsDsAuVic/customer_service-min.scss`](sfGpsDsVic/main/default/staticresources/sfGpsDsAuVic/customer_service-min.scss)
+Refer to [`sfGpsDsAuVic/main/default/staticresources/sfGpsDsAuVic/customer_service-min.scss`](sfGpsDsAuVic/main/default/staticresources/sfGpsDsAuVic/customer_service-min.scss)
 
 ### 9 May 2024
 
@@ -18,7 +44,7 @@ Refer to [`sfGpsDsVic/main/default/staticresources/sfGpsDsAuVic/customer_service
 
 We added support for the Victorian Government [Ripple v2 Design System](https://www.ripple.sdp.vic.gov.au) pursuant to the deprecation of Ripple v1. This is largerly a new build with an LWR-first approach (but compatible with Aura sites). The current support is for Experience Cloud components (a vast majority of those published by VIC SDP) with Omnistudio form components planned for later this year.
 
-Refer to [`sfGpsDsVic2/main/default`](sfGpsDsVic2/main/default)
+Refer to [`sfGpsDsAuVic2/main/default`](sfGpsDsAuVic2/main/default)
 
 ### 10 April 2024
 
@@ -26,7 +52,7 @@ Refer to [`sfGpsDsVic2/main/default`](sfGpsDsVic2/main/default)
 
 We added support for the Omnistudio Places Typeahead (a Typeahead element where the `Enabled Google Maps Autocomplete` option is checked).
 
-Refer to [`sfGpsDsVic/main/default/lwc/sfGpsDsAuVicFormPlacesTypeaheadOsN`](sfGpsDsVic/main/default/lwc/sfGpsDsAuVicFormPlacesTypeaheadOsN)
+Refer to [`sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFormPlacesTypeaheadOsN`](sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFormPlacesTypeaheadOsN)
 
 #### Base: packaged as an unmanaged package for third-party use
 
@@ -58,7 +84,7 @@ Refer to [`sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswAuraThemeLayout`](./sfGpsD
 
 Navigation and rendering will work as required depending on the screen form-factor (mobile or desktop).
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswMainNav)
 
 #### NSW DS: Correct the semantical mix-up between title and headline in Card and Content Block
 
@@ -69,7 +95,7 @@ A new `sfGpsDsAuNswCardV2` content types have also been introduced.
 
 Thoroughly check implications if you have been leveraging the base `sfGpsDsAuNswCard` and `sfGpsDsAuNswContentBlock` LWC elements in your own LWCs.
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCardV2Comm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCardV2Comm), [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlockV2Comm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlockV2Comm/sfGpsDsAuNswContentBlockV2Comm.js), and [`sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCardV2.managedContentType-meta.xml`](./sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCardV2.managedContentType-meta.xml).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCard/lwc/sfGpsDsAuNswCardV2Comm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCard/lwc/sfGpsDsAuNswCardV2Comm), [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlockV2Comm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlockV2Comm/sfGpsDsAuNswContentBlockV2Comm.js), and [`sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCardV2.managedContentType-meta.xml`](./sfGpsDsAuNsw/main/default/managedContentTypes/sfGpsDsAuNswCardV2.managedContentType-meta.xml).
 
 #### NSW DS: New Media widget
 
@@ -89,13 +115,13 @@ and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSectionLwr`](./sfGpsDsAuNsw/main
 
 When using the one-level version of `sfGpsDsAuNswMainNav`, entries are now marked active when the current visible page's URL starts with the entry's URL.
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMainNav)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswMainNav`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswMainNav)
 
 #### NSW DS: Support for social media icons in the Footer
 
 We now support adding social media icons and links for LinkedIn, Twitter/X and Facebook in the footer.
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooterComm)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooter/lwc/sfGpsDsAuNswFooterComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooter/lwc/sfGpsDsAuNswFooterComm)
 
 #### NSW DS: Support multiple modes for the Progress Indicator
 
@@ -122,13 +148,13 @@ feature slots to drop content.
 
 `sfGpsDsAuNswBreadcrumbsRecordComm` add smarts and introspects object name and record name on record list and detail pages.
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbsRecordComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbsRecordComm)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbsRecordComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbsRecordComm)
 
 #### NSW DS: Addition of Markup and Markdown elements for Experience Cloud
 
 Edit HTML Markup and Markdown content with a full page editor based on CodeMirror v5. Both offer much better CSS creep control compared to the original Experience Cloud HTML Editor which injects CSS from the Rich Text Editor.
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkupElementComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkupElementComm) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkdownElementComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkdowmElementComm)
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkupElement/lwc/sfGpsDsAuNswMarkupElementComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkupElement/lwc/sfGpsDsAuNswMarkupElementComm) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkdownElement/lwc/sfGpsDsAuNswMarkdownElementComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkdownElement/lwc/sfGpsDsAuNswMarkdowmElementComm)
 
 #### NSW DS: Added a full-fledge NSW Design System template
 
@@ -265,7 +291,7 @@ NSW DS Header and VIC DS Menu had accessibility issues due to some element IDs n
 
 #### Fixing some validation issues for Address lookup in NSW DS and VIC DS
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN) and [`sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFormAddressTypeaheadOsN`](./sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFormAddressTypeaheadOsN).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN) and [`sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFormAddressTypeaheadOsN`](./sfGpsDsAuVic/main/default/lwc/sfGpsDsAuVicFormAddressTypeaheadOsN).
 
 #### Fixing some validation issues for other widgets in NSW DS and VIC DS
 
@@ -275,13 +301,13 @@ Includes checkbox and most text-based and number-based input fields.
 
 An override now exists to display Omnistudio formula field with the NSW DS look and feel.
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFormFormulaOsN`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFormFormulaOsN).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswFormFormulaOsN`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswFormFormulaOsN).
 
 ### 4 June 2023
 
 #### Introducing the NSW DS Table widget with client side pagination
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTableComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTableComm).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable).
 
 ### 1 June 2023
 
@@ -299,7 +325,7 @@ This also has an implication with the `sfGpsDs_CommunityNav` pre-canned IP and t
 
 The co-brand logo can now be vertically stacked under the masterbrand when rendered in mobile by setting the `mobileLogoStacking` property. This is also reflected in the Header and Main nav combination.
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderComm).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderComm).
 
 ### 29 May 2023
 
@@ -310,7 +336,7 @@ with the first cab of the rank being the NSW DS.
 
 Refer to [`sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswHeaderAura`](./sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswHeaderAura) and [`sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswHeaderMainNavAura`](./sfGpsDsAuNsw/main/default/aura/sfGpsDsAuNswHeaderMainNavAura).
 
-Support for the profile menu has also been added in LWC (no notifications though as there is platform support for them); refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderProfile`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderProfile), [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeader`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeader) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderComm).
+Support for the profile menu has also been added in LWC (no notifications though as there is platform support for them); refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderProfile`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderProfile), [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeader`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeader) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderComm).
 
 #### Permission sets for community users
 
@@ -330,15 +356,19 @@ We released a new version of NSW DS aligning with the official v3.5 release by d
 
 #### NSW DS Record List View
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewItem`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewItem).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListView/lwc/sfGpsDsAuNswListViewComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListView/lwc/sfGpsDsAuNswListViewComm) and [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListView/lwc/sfGpsDsAuNswListViewItem`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListView/lwc/sfGpsDsAuNswListViewItem).
 
 #### NSW DS Status Label
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStatusLabelComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStatusLabelComm).
+We introduced support for Status Label.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStatusLabel/lwc/sfGpsDsAuNswStatusLabel`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStatusLabel).
 
 #### NSW DS Dialog
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswDialogComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswDialogComm).
+We introduced support for Dialog.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswDialog`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswDialogComm).
 
 ### 07 Mar 2023
 
@@ -411,7 +441,7 @@ We introduced the following items:
 
 #### NSW DS List View
 
-Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListViewComm) and [`sfGpsDs/main/default/classes/SfGpsDsListViewController.cls`](./sfGpsDs/main/default/classes/SfGpsDsListViewController.cls).
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListView`](./sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListView) and [`sfGpsDs/main/default/classes/SfGpsDsListViewController.cls`](./sfGpsDs/main/default/classes/SfGpsDsListViewController.cls).
 
 We added an experimental record list back-end logic for use with the NSW DS List View displaying record details
 based on object and list view names.

@@ -1,0 +1,84 @@
+{
+  "sfGpsDsAuNswAccordion": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsAuNswAccordionComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-nsw-accordion": "c-sf-gps-ds-au-nsw-accordion-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsAuNswAccordionGroup": {
+    "target": "!Os",
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs",
+      "sfGpsDsAuNswAccordionGroupCss": "sfGpsDsAuNswAccordionGroupCssOs"
+    },
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-nsw-accordion-comm": "c-sf-gps-ds-au-nsw-accordion-comm-os",
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsAuNswAccordionGroupComm": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-nsw-accordion-group": "c-sf-gps-ds-au-nsw-accordion-group-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  },
+  "sfGpsDsAuNswAccordionGroupCss": {
+    "target": "!Os",
+    "accordion.gen.css": {
+      "target": "accordion.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  }
+}

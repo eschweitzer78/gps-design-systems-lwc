@@ -1,0 +1,24 @@
+{
+  "sfGpsDsAuNswTable": {
+    "target": "!Os",
+    "table.gen.css": {
+      "target": "table.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
+    },
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-nsw-markdown-element-comm": "c-sf-gps-ds-au-nsw-markdown-element-comm-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  }
+}
