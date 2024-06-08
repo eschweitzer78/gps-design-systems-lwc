@@ -1,0 +1,3 @@
+global.CSS = {
+  supports: () => false
+};

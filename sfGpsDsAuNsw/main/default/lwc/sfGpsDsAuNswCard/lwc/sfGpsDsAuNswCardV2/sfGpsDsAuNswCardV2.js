@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2023-2024, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -22,6 +22,7 @@ export default class SfGpsDsAuNswCard extends LightningElement {
   @api link;
   @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']), defaults to white
   @api orientation = "vertical"; // oneOf vertical horizontal
+  @api dateStyle = DATE_STYLE_DEFAULT; // one of: short medium long full
   @api tag;
   @api image;
   @api imageAlt;
@@ -29,7 +30,9 @@ export default class SfGpsDsAuNswCard extends LightningElement {
   @api highlight = false;
   @api className;
 
-  @api dateStyle = DATE_STYLE_DEFAULT; // one of: short medium long full
+  @api preventDefault = false;
+
+  /* api: headline */
 
   _headlineOriginal = "false";
   _headline = false;
@@ -94,6 +97,32 @@ export default class SfGpsDsAuNswCard extends LightningElement {
       [this.className]: this.className
     });
   }
+
+  /* methods */
+
+  @api click() {
+    const ref = this.refs.link;
+
+    if (ref) {
+      ref.click();
+    }
+  }
+
+  /* event management */
+
+  handleClick(event) {
+    if (this.preventDefault) {
+      event.preventDefault();
+    }
+
+    this.dispatchEvent(
+      new CustomEvent("navigate", {
+        detail: this.link
+      })
+    );
+  }
+
+  /* lifecycle */
 
   _userLocale;
 

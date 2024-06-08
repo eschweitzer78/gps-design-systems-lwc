@@ -4,6 +4,7 @@ const ro = require("resize-observer-polyfill");
 const setupFilesAfterEnv = jestConfig.setupFilesAfterEnv || [];
 setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.js");
 setupFilesAfterEnv.push("<rootDir>/jest-crypto-setup.js");
+setupFilesAfterEnv.push("<rootDir>/jest-CSS-setup.js");
 
 module.exports = {
   ...jestConfig,

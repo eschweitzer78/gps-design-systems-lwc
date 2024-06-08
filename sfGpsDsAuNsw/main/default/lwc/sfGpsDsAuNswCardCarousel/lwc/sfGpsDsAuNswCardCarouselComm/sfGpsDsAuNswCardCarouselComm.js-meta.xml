@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Card Carousel</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="accessibilityLabel"
+        type="String"
+        label="Accessibility label"
+        default="Card carousel"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="drag"
+        type="Boolean"
+        label="Drag enabled"
+        description="Enables to drag the cards for previous or next page."
+      />
+      <property
+        name="navigation"
+        type="String"
+        label="Navigation mode"
+        datasource="none,navigation,pagination,loop"
+      />
+      <property name="justifyContent" type="Boolean" label="Justify content" />
+      <property
+        name="items"
+        type="String"
+        label="Items"
+        description="Array in JSON format."
+        editor="c/sfGpsDsJsonCpe"
+        default="[{&quot;cstyle&quot;:&quot;highlight&quot;,&quot;headline&quot;:true,&quot;orientation&quot;:&quot;vertical&quot;,&quot;tag&quot;:&quot;Country NSW&quot;,&quot;date&quot;:null,&quot;dateStyle&quot;:null,&quot;image&quot;:&quot;https://images.unsplash.com/photo-1560831939-e6cf5985efb8?q=80&amp;w=600&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&quot;,&quot;imageAlt&quot;:&quot;Robertson, courtesy of Megan Clark&quot;,&quot;title&quot;:&quot;[Robertson](#)&quot;,&quot;copy&quot;:&quot;Nestled in the green heart of the Southern Highlands, Robertson is a picturesque village surrounded by lush rainforest and undulating farmland. Base yourself in this tranquil hamlet and explore the region on one of the many driving or walking trails.&quot;},{&quot;cstyle&quot;:&quot;highlight&quot;,&quot;headline&quot;:true,&quot;orientation&quot;:&quot;vertical&quot;,&quot;tag&quot;:&quot;Beach NSW&quot;,&quot;date&quot;:null,&quot;dateStyle&quot;:null,&quot;image&quot;:&quot;https://images.unsplash.com/photo-1596600094563-7b34dc1ec3b1?q=80&amp;w=547&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&quot;,&quot;imageAlt&quot;:&quot;Hastings Point, courtesy of Marc James&quot;,&quot;title&quot;:&quot;[Hasting Point](#)&quot;,&quot;copy&quot;:&quot;For tranquility, head to Hastings Point, promising a retreat from the hubbub of life and a holiday reminiscent of simpler times. Back from the beach, a network of creeks and estuaries guarantee endless water play and moments of calm.&quot;},{&quot;cstyle&quot;:&quot;highlight&quot;,&quot;headline&quot;:true,&quot;orientation&quot;:&quot;vertical&quot;,&quot;tag&quot;:&quot;Beach NSW&quot;,&quot;date&quot;:null,&quot;dateStyle&quot;:null,&quot;image&quot;:&quot;https://images.unsplash.com/photo-1581122837989-c3dc5f2bf9dc?q=80&amp;w=600&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&quot;,&quot;imageAlt&quot;:&quot;Newcastle, courtesy of Jack Bass&quot;,&quot;title&quot;:&quot;[Newcastle](#)&quot;,&quot;copy&quot;:&quot;As the busiest sea port in NSW, Newcastle revolves around the water, whether you&#8217;re swimming in gem-like ocean pools, surfing reliably good waves, or just gazing out over the harbour from a scenic waterside perch.&quot;},{&quot;cstyle&quot;:&quot;highlight&quot;,&quot;headline&quot;:true,&quot;orientation&quot;:&quot;vertical&quot;,&quot;tag&quot;:&quot;Beach NSW&quot;,&quot;date&quot;:null,&quot;dateStyle&quot;:null,&quot;image&quot;:&quot;https://images.unsplash.com/photo-1538100522992-760b4cdec3f1?q=80&amp;w=546&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&quot;,&quot;imageAlt&quot;:&quot;Killcare, courtesy of Tim Patch&quot;,&quot;title&quot;:&quot;[Killcare](#)&quot;,&quot;copy&quot;:&quot;Found on the Bouddi Peninsula between bush and beach, Killcare is best enjoyed outdoors. This secluded village on the NSW Central Coast is a launchpad for all kinds of adventure, from bushwalking to simming and whale watching.&quot;},{&quot;cstyle&quot;:&quot;highlight&quot;,&quot;headline&quot;:true,&quot;orientation&quot;:&quot;vertical&quot;,&quot;tag&quot;:&quot;Mountain NSW&quot;,&quot;date&quot;:null,&quot;dateStyle&quot;:null,&quot;image&quot;:&quot;https://images.unsplash.com/photo-1576086135878-bd7e7c812b41?q=80&amp;w=716&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&quot;,&quot;imageAlt&quot;:&quot;Blue Mountains, courtesy of Jacques Bopp&quot;,&quot;title&quot;:&quot;[Blue Mountains](#)&quot;,&quot;copy&quot;:&quot;The Blue Mountains are justifiably world famous. And it&#8217;s not just those World Heritage-listed landscapes that draw people back. There are few better places to disconnect from the world and reconnect with yourself.&quot;},{&quot;cstyle&quot;:&quot;highlight&quot;,&quot;headline&quot;:true,&quot;orientation&quot;:&quot;vertical&quot;,&quot;tag&quot;:&quot;Beach NSW&quot;,&quot;date&quot;:null,&quot;dateStyle&quot;:null,&quot;image&quot;:&quot;https://images.unsplash.com/photo-1529824928094-f9909a073398?q=80&amp;w=538&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&quot;,&quot;imageAlt&quot;:&quot;Shoalhaven Heads, courtesy of Andy Hutchinson&quot;,&quot;title&quot;:&quot;[Shoalhaven Heads](#)&quot;,&quot;copy&quot;:&quot;Tucked between Mount Coolangatta and Seven Mile Beach, and on the doorstep of the Shoalhaven River, Shoalhaven Heads is a peaceful coastal village that makes the perfect base for an idyllic getaway.&quot;},{&quot;cstyle&quot;:&quot;highlight&quot;,&quot;headline&quot;:true,&quot;orientation&quot;:&quot;vertical&quot;,&quot;tag&quot;:&quot;Mountain NSW&quot;,&quot;date&quot;:null,&quot;dateStyle&quot;:null,&quot;image&quot;:&quot;https://images.unsplash.com/photo-1579750697225-44bbd7435fcb?q=80&amp;w=729&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&quot;,&quot;imageAlt&quot;:&quot;Mount Wollumbin, courtesy of Tim Bosc&quot;,&quot;title&quot;:&quot;[Mount Wollumbin](#)&quot;,&quot;copy&quot;:&quot;This mountain in the Tweed Range in the Northern Rivers region of New South Wales, Australia, was formed from a volcanic plug of the now-gone Tweed Volcano.&quot;}]"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

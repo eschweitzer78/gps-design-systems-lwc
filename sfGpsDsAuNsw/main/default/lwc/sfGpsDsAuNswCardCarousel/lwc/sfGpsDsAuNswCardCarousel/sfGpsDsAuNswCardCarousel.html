@@ -1,0 +1,129 @@
+<template>
+  <div class="nsw-carousel-container">
+    <div
+      lwc:ref="carousel"
+      class={computedClassName}
+      aria-roledescription="carousel"
+      aria-label={accessibilityLabel}
+      onkeydown={handleKeydown}
+      ondragstart={handleDragStart}
+      ondragging={handleDragging}
+      ondragend={handleDragEnd}
+    >
+      <p class="sr-only">{i18n.carouselItemsSrOnly}</p>
+      <div lwc:ref="wrapper" class="nsw-carousel__wrapper js-carousel__wrapper">
+        <ol
+          lwc:ref="list"
+          class={computedListClassName}
+          style={computedListStyle}
+          ontransitionend={handleListTransitionEnd}
+          ontransitioncancel={handleListTransitionEnd}
+        >
+          <template for:each={displayItems} for:item="card">
+            <li
+              key={card._key}
+              role="group"
+              tabindex={card._tabindex}
+              aria-roledescription="slide"
+              aria-label={card._ariaLabel}
+              aria-hidden={card._ariaHidden}
+              aria-current={card._ariaCurrent}
+              data-index={card._displayIndex}
+              class={card._className}
+              style={card._styleString}
+            >
+              <c-sf-gps-ds-au-nsw-card-v2-comm
+                cstyle={card.cstyle}
+                headline={card.headline}
+                orientation={card.orientation}
+                tag={card.tag}
+                date={card.date}
+                date-style={card.dateStyle}
+                image={card.image}
+                image-alt={card.imageAlt}
+                title={card.title}
+                copy={card.copy}
+              >
+              </c-sf-gps-ds-au-nsw-card-v2-comm>
+            </li>
+          </template>
+        </ol>
+      </div>
+
+      <nav if:false={counter}>
+        <ul>
+          <li>
+            <button
+              lwc:ref="control-prev"
+              aria-controls="nsw-carousel__list"
+              aria-label={i18n.showPreviousItems}
+              disabled={computedControlPrevDisabled}
+              tabindex="0"
+              class="nsw-carousel__control nsw-carousel__control--prev js-carousel__control"
+              onclick={showPrevItems}
+            >
+              <svg class="nsw-icon" viewBox="0 0 20 20">
+                <title>{i18n.showPreviousItems}</title>
+                <polyline
+                  points="13 2 5 10 13 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="square"
+                  stroke-linejoin="square"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button
+              lwc:ref="control-next"
+              aria-controls="nsw-carousel__list"
+              aria-label={i18n.showNextItems}
+              disabled={computedControlNextDisabled}
+              tabindex="0"
+              class="nsw-carousel__control nsw-carousel__control--next js-carousel__control"
+              onclick={showNextItems}
+            >
+              <svg class="nsw-icon" viewBox="0 0 20 20">
+                <title>{i18n.showNextItems}</title>
+                <polyline
+                  points="7 2 15 10 7 18"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="square"
+                  stroke-linejoin="square"
+                  stroke-width="2"
+                />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div
+        lwc:ref="srOnly"
+        class="sr-only"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {computedAriaLive}
+      </div>
+
+      <ol
+        lwc:if={_navigation}
+        lwc:ref="navDots"
+        class={computedNavigationClassName}
+        onclick={handleCarouselNavigationClick}
+      >
+        <template for:each={dots} for:item="dot">
+          <li key={dot.key} class={dot.className}>
+            <button>
+              <span class={dot.indexClassName}>{dot.indexP1}</span>
+            </button>
+          </li>
+        </template>
+      </ol>
+    </div>
+  </div>
+</template>

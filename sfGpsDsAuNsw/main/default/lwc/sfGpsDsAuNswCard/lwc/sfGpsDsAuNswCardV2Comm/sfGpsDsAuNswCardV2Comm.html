@@ -7,6 +7,7 @@
 
   <c-sf-gps-ds-au-nsw-card-v2
     lwc:else
+    lwc:ref="card"
     cstyle={cstyle}
     headline={headline}
     orientation={orientation}
@@ -19,6 +20,8 @@
     link={_titleUrl}
     highlight={highlight}
     class-name={className}
+    prevent-default={preventDefault}
+    onnavigate={handleNavigate}
   >
     <template lwc:if={copy}>
       <p class="nsw-card__copy" lwc:ref="copy" lwc:dom="manual"></p>

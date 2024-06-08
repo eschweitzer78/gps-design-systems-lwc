@@ -38,6 +38,7 @@
   },
   "sfGpsDsHelpers": {
     "target": "!Os",
+    "cssutil.js": { "target": "cssutil.js" },
     "datetimeutil_v6.js": { "target": "datetimeutil_v6.js" },
     "domutil_v6.js": { "target": "domutil_v6.js" },
     "focus_v6.js": { "target": "focus_v6.js" },

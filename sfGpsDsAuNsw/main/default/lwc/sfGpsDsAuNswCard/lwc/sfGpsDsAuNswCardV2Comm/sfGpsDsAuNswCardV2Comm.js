@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2023-2024, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -23,6 +23,8 @@ export default class SfGpsDsAuNswCardV2Comm extends SfGpsDsLwc {
   @api image;
   @api imageAlt;
   @api className;
+
+  @api preventDefault = false;
 
   // This is not exposed in Experience Builder and is used by cardCollectionComm
   @api useMarkup = false;
@@ -148,6 +150,12 @@ export default class SfGpsDsAuNswCardV2Comm extends SfGpsDsLwc {
     return this.footer || this.footerSlotted;
   }
 
+  /* methods */
+
+  @api click() {
+    if (this.refs.card) this.refs.card.click();
+  }
+
   /* event management */
 
   handleSlotChange(event) {
@@ -180,6 +188,10 @@ export default class SfGpsDsAuNswCardV2Comm extends SfGpsDsLwc {
 
       default:
     }
+  }
+
+  handleNavigate(event) {
+    this.dispatchEvent(new CustomEvent("navigate", { detail: event.detail }));
   }
 
   /* lifecycle */
