@@ -3,7 +3,7 @@
     {
       "path": "sfGpsDs",
       "package": "Salesforce Global Public Sector Design Systems",
-      "versionName": "2024.06.03.1230",
+      "versionName": "2024.06.08.2330",
       "versionNumber": "2.5.3.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
@@ -21,7 +21,7 @@
     {
       "path": "sfGpsDsAuNswFull",
       "package": "Salesforce Global Public Sector AU NSW Design System",
-      "versionName": "2024.06.03.1230",
+      "versionName": "2024.06.08.2330",
       "versionNumber": "2.5.3.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
@@ -39,7 +39,7 @@
     {
       "path": "sfGpsDsAuNswSFull",
       "package": "Salesforce Global Public Sector AU NSW Service Design System",
-      "versionName": "2024.06.03.1230",
+      "versionName": "2024.06.08.2330",
       "versionNumber": "2.5.3.NEXT",
       "default": false,
       "versionDescription": "Salesforce Global Public Sector AU Service NSW Design System (Full)",
@@ -55,7 +55,7 @@
     {
       "path": "sfGpsDsAuVic1Full",
       "package": "Salesforce Global Public Sector AU VIC Design System",
-      "versionName": "2024.06.03.1230",
+      "versionName": "2024.06.08.2330",
       "versionNumber": "2.5.3.NEXT",
       "default": false,
       "versionDescription": "Salesforce Global Public Sector AU VIC Design System v1 (Full)",
@@ -72,7 +72,7 @@
     {
       "path": "sfGpsDsAuVic2Full",
       "package": "Salesforce Global Public Sector AU VIC2 Design System",
-      "versionName": "2024.06.03.1230",
+      "versionName": "2024.06.08.2330",
       "versionNumber": "0.2.4.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
@@ -93,7 +93,7 @@
     {
       "path": "sfGpsDsUkGovFull",
       "package": "Salesforce Global Public Sector GOV.UK Design System (Full)",
-      "versionName": "2024.06.03.1230",
+      "versionName": "2024.06.08.2330",
       "versionNumber": "1.2.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
@@ -114,7 +114,7 @@
     {
       "path": "sfGpsDsFrGovFull",
       "package": "Salesforce Global Public Sector GOUV.FR Design System (Full)",
-      "versionName": "2024.06.03.1230",
+      "versionName": "2024.06.08.2330",
       "versionNumber": "0.3.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
