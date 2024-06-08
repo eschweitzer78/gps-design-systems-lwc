@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-export { uniqueId, isIPadPro, isMacPlatform } from "./utilities_v6";
+export { styleToString } from "./cssutil";
 
 export {
   ISO8601_PATTERN,
@@ -60,3 +60,5 @@ export {
   getAnchorLinkName,
   decodeSpecialCharacters
 } from "./urlutil";
+
+export { uniqueId, isIPadPro, isMacPlatform } from "./utilities_v6";

@@ -17,7 +17,15 @@
 
       <!-- CardHeader-->
       <div lwc:if={title} class="nsw-card__title">
-        <a lwc:if={link} href={link} class="nsw-card__link">{title}</a>
+        <a
+          lwc:if={link}
+          lwc:ref="link"
+          href={link}
+          class="nsw-card__link"
+          onclick={handleClick}
+        >
+          {title}
+        </a>
         <template lwc:else>{title}</template>
       </div>
 

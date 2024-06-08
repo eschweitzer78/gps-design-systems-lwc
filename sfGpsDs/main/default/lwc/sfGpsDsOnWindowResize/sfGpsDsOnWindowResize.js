@@ -1,12 +1,14 @@
+import { debounce } from "c/sfGpsDsHelpers";
+
 export default class {
   _sfGpsDsOnWindowResize;
 
   /* bind must be called in the connectedCallback method */
   bind(handler) {
     this._sfGpsDsOnWindowResize = {
-      handler: (e) => {
+      handler: debounce((e) => {
         handler(e);
-      }
+      }, 250)
     };
 
     window.addEventListener(
