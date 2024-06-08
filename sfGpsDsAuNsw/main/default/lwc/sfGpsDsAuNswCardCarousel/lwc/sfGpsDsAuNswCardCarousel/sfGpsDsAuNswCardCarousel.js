@@ -184,7 +184,11 @@ export default class extends LightningElement {
   }
 
   get computedNavigationClassName() {
-    return this.navigationClassName || DEFAULT_NAVIGATION_CLASSNAME;
+    return computeClass({
+      [this.navigationClassName || DEFAULT_NAVIGATION_CLASSNAME]: true,
+      [`${this.navigationClassName || DEFAULT_NAVIGATION_CLASSNAME}--pagination`]:
+        this.navigationPagination
+    });
   }
 
   get computedPaginationClassName() {

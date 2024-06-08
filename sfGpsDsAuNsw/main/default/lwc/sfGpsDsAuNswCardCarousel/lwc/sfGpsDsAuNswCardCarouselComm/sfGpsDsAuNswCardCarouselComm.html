@@ -1,16 +1,30 @@
 <template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
   <c-sf-gps-ds-au-nsw-card-carousel
+    lwc:elseif={hasItems}
     accessibility-label={accessibilityLabel}
-    drag="true"
+    drag={drag}
     loop={loop}
-    navigation={navigation}
+    navigation={navigationNavigation}
     navigation-pagination={navigationPagination}
-    overflow-items={overflowItems}
     justify-content={justifyContent}
+    items={_items}
     navigation-class-name={navigationClassName}
     navigation-item-class-name={navigationItemClassName}
     pagination-class-name={paginationClassName}
-    items={items}
+    class-name={className}
   >
   </c-sf-gps-ds-au-nsw-card-carousel>
+
+  <c-sf-gps-ds-empty
+    lwc:else
+    title="No items."
+    content="Please set the items attribute."
+  >
+  </c-sf-gps-ds-empty>
 </template>
