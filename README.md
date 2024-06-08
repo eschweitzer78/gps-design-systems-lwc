@@ -27,19 +27,19 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 1. Log in to your org
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb3sIAC" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org (only when developing your own design system or as a dependency for a third-party).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb8eIAC" title="sfGpsDs">this link</a> to install the sfGpsDs unlocked package in your org (only when developing your own design system or as a dependency for a third-party).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb3xIAC" title="sfGpsDsAuNswFull">this link</a> to install the sfGpsDsAuNsw unlocked package in your org (with sfGpsDs included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb8jIAC" title="sfGpsDsAuNswFull">this link</a> to install the sfGpsDsAuNsw unlocked package in your org (with sfGpsDs included).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb42IAC" title="sfGpsDsAuNswSFull">this link</a> to install the sfGpsDsAuNswS unlocked package in your org (with sfGpsDs included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb8oIAC" title="sfGpsDsAuNswSFull">this link</a> to install the sfGpsDsAuNswS unlocked package in your org (with sfGpsDs included).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb47IAC" title="sfGpsDsAuVic1Full">this link</a> to install the sfGpsDsAuVic unlocked package in your org (with sfGpsDs included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb8tIAC" title="sfGpsDsAuVic1Full">this link</a> to install the sfGpsDsAuVic unlocked package in your org (with sfGpsDs included).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb4CIAS" title="sfGpsDsAuVic2Full">this link</a> to install the sfGpsDsAuVic2 unlocked package in your org (with sfGpsDs included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb8yIAC" title="sfGpsDsAuVic2Full">this link</a> to install the sfGpsDsAuVic2 unlocked package in your org (with sfGpsDs included).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb4HIAS" title="sfGpsDsFrGovFull">this link</a> to install the sfGpsDsFrGov unlocked package in your org (with sfGpsDs included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb93IAC" title="sfGpsDsFrGovFull">this link</a> to install the sfGpsDsFrGov unlocked package in your org (with sfGpsDs included).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb4MIAS" title="sfGpsDsUkGovFull">this link</a> to install the sfGpsDsUkGov unlocked package in your org (with sfGpsDs included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb98IAC" title="sfGpsDsUkGovFull">this link</a> to install the sfGpsDsUkGov unlocked package in your org (with sfGpsDs included).
 
 ## Installing the production versions using Unlocked Packages
 
