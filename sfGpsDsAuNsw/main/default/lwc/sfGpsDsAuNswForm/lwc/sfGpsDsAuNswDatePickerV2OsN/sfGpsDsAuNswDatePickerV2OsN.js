@@ -586,7 +586,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   showCalendar(event) {
     if (DEBUG) console.log(CLASS_NAME, "> showCalendar");
 
-    this.toggleCalendar(true, event);
+    if (!this.readOnly) this.toggleCalendar(true, event);
 
     if (DEBUG) console.log(CLASS_NAME, "< showCalendar");
   }

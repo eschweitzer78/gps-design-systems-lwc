@@ -134,7 +134,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
             this._items = this.mapIpData(data);
           }
 
-          this.didLoadOnce = true;
+          this._didLoadOnce = true;
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection.");
           console.log("CK-EX", e);

@@ -1,13 +1,7 @@
 <template>
-  <template lwc:if={debug}>
-    <p>_displayValue: {_displayValue}></p>
-    <p>_value: {_value}</p>
-    <p>_parsedValue: {_parsedValue}</p>
-  </template>
-
   <div
     lwc:ref="formGroup"
-    class={computedFormGroupClass}
+    class={computedFormGroupClassName}
     onfocus={handleFocus}
     onblur={handleBlur}
   >
@@ -115,6 +109,7 @@
             aria-label={triggerAriaLabel}
             type="button"
             aria-expanded={pickerVisible}
+            disabled={readOnly}
             onclick={showCalendar}
           >
             <span class="material-icons nsw-material-icons" aria-hidden="true">

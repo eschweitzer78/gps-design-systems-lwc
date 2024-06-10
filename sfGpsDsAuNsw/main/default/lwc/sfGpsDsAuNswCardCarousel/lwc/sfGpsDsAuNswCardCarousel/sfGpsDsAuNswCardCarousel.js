@@ -95,7 +95,6 @@ export default class extends LightningElement {
 
   _itemsOriginal;
   _items;
-  _itemsInit;
   _itemsNb;
 
   @api
@@ -136,6 +135,10 @@ export default class extends LightningElement {
     const value = this._itemsOriginal || [];
     const itemsNb = value.length;
 
+    if (!this._items?.length && value) {
+      this._initialRender = true;
+    }
+
     this._items = value.map((item, index) => ({
       ...item,
       _index: index,
@@ -147,7 +150,6 @@ export default class extends LightningElement {
       _style: {}
     }));
 
-    this._itemsInit = [...this._items];
     this.itemsNb = itemsNb;
   }
 
@@ -607,7 +609,7 @@ export default class extends LightningElement {
   }
 
   emitCarouselActiveItemsEvent() {
-    this.emitCarouselEvents("carousel-active-items", {
+    this.emitCarouselEvents("carouselactiveitems", {
       firstSelectedItem: this.selectedItem,
       visibleItemsNb: this.visibleItemsNb
     });
@@ -705,75 +707,78 @@ export default class extends LightningElement {
     if (this._initialRender) {
       this._initialRender = false;
 
-      const itemStyle = window.getComputedStyle(this.liveFirstItem);
-      const containerStyle = window.getComputedStyle(this.refs.wrapper);
+      if (this._items?.length) {
+        const itemStyle = window.getComputedStyle(this.liveFirstItem);
+        const containerStyle = window.getComputedStyle(this.refs.wrapper);
+        let itemWidth = parseFloat(itemStyle.getPropertyValue("width"));
+        const itemMargin = (this._itemMargin = parseFloat(
+          itemStyle.getPropertyValue("margin-right")
+        ));
+        const containerPadding = parseFloat(
+          containerStyle.getPropertyValue("padding-left")
+        );
+        let containerWidth = parseFloat(
+          containerStyle.getPropertyValue("width")
+        );
 
-      let itemWidth = parseFloat(itemStyle.getPropertyValue("width"));
-      const itemMargin = (this._itemMargin = parseFloat(
-        itemStyle.getPropertyValue("margin-right")
-      ));
-      const containerPadding = parseFloat(
-        containerStyle.getPropertyValue("padding-left")
-      );
-      let containerWidth = parseFloat(containerStyle.getPropertyValue("width"));
+        if (!this.itemAutoSize) {
+          this.itemAutoSize = itemWidth;
+        }
 
-      if (!this.itemAutoSize) {
-        this.itemAutoSize = itemWidth;
-      }
+        if (!this.itemOriginalWidth) {
+          this.itemOriginalWidth = itemWidth;
+        } else {
+          itemWidth = this.itemOriginalWidth;
+        }
 
-      if (!this.itemOriginalWidth) {
-        this.itemOriginalWidth = itemWidth;
-      } else {
-        itemWidth = this.itemOriginalWidth;
-      }
+        if (this.itemAutoSize) {
+          this.itemOriginalWidth = parseInt(this.itemAutoSize, 10);
+          itemWidth = this.itemOriginalWidth;
+        }
 
-      if (this.itemAutoSize) {
-        this.itemOriginalWidth = parseInt(this.itemAutoSize, 10);
-        itemWidth = this.itemOriginalWidth;
-      }
+        if (containerWidth < itemWidth) {
+          this.itemOriginalWidth = containerWidth;
+          itemWidth = this.itemOriginalWidth;
+        }
 
-      if (containerWidth < itemWidth) {
-        this.itemOriginalWidth = containerWidth;
-        itemWidth = this.itemOriginalWidth;
-      }
-
-      this.visibleItemsNb = parseInt(
-        (containerWidth - 2 * containerPadding + itemMargin) /
-          (itemWidth + itemMargin),
-        10
-      );
-      this.itemsWidth = parseFloat(
-        (
+        this.visibleItemsNb = parseInt(
           (containerWidth - 2 * containerPadding + itemMargin) /
-            this.visibleItemsNb -
-          itemMargin
-        ).toFixed(1)
-      );
-      this.containerWidth = (this.itemsWidth + itemMargin) * this.itemsNb;
-      this.translateContainer =
-        0 - (this.itemsWidth + itemMargin) * this.visibleItemsNb;
-      this.totTranslate =
-        0 - this.selectedItem * (this.itemsWidth + itemMargin);
+            (itemWidth + itemMargin),
+          10
+        );
+        this.itemsWidth = parseFloat(
+          (
+            (containerWidth - 2 * containerPadding + itemMargin) /
+              this.visibleItemsNb -
+            itemMargin
+          ).toFixed(1)
+        );
+        this.containerWidth = (this.itemsWidth + itemMargin) * this.itemsNb;
+        this.translateContainer =
+          0 - (this.itemsWidth + itemMargin) * this.visibleItemsNb;
+        this.totTranslate =
+          0 - this.selectedItem * (this.itemsWidth + itemMargin);
 
-      if (this.itemsNb <= this.visibleItemsNb) {
-        this.totTranslate = 0;
-      }
+        if (this.itemsNb <= this.visibleItemsNb) {
+          this.totTranslate = 0;
+        }
 
-      /* Install drag behaviour on carousel */
+        /* Install drag behaviour on carousel */
 
-      if (this._drag && window.requestAnimationFrame) {
-        const element = this.refs.carousel;
+        if (this._drag && window.requestAnimationFrame) {
+          const element = this.refs.carousel;
 
-        if (!this._swipeContent) {
-          this._swipeContent = new SwipeContent(element);
-        } else if (this._swipeContent.element !== element) {
-          this._swipeContent.cancelDragging(); // removes event handlers
-          this._swipeContent = new SwipeContent(element);
+          if (!this._swipeContent) {
+            this._swipeContent = new SwipeContent(element);
+          } else if (this._swipeContent.element !== element) {
+            this._swipeContent.cancelDragging(); // removes event handlers
+            this._swipeContent = new SwipeContent(element);
+          }
         }
       }
     }
 
-    if (!this.flexSupported) {
+    if (!this.flexSupported && this._items) {
       this.refs.list.style.width = `${(this.itemsWidth + this._itemMargin) * this.visibleItemsNb * 3}px`;
     }
   }
