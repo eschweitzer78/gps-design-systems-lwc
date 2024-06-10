@@ -5,26 +5,26 @@
   >
   </c-sf-gps-ds-configuration-error>
 
-  <c-sf-gps-ds-au-nsw-card-carousel
-    lwc:elseif={hasItems}
-    accessibility-label={accessibilityLabel}
-    drag={drag}
-    loop={loop}
-    navigation={navigationNavigation}
-    navigation-pagination={navigationPagination}
-    justify-content={justifyContent}
-    items={_items}
-    navigation-class-name={navigationClassName}
-    navigation-item-class-name={navigationItemClassName}
-    pagination-class-name={paginationClassName}
-    class-name={className}
-  >
-  </c-sf-gps-ds-au-nsw-card-carousel>
+  <template lwc:else>
+    <c-sf-gps-ds-spinner lwc:if={_isLoading}> </c-sf-gps-ds-spinner>
 
-  <c-sf-gps-ds-empty
-    lwc:else
-    title="No items."
-    content="Please set the items attribute."
-  >
-  </c-sf-gps-ds-empty>
+    <c-sf-gps-ds-empty lwc:if={isEmpty} title="No matching content">
+    </c-sf-gps-ds-empty>
+
+    <c-sf-gps-ds-au-nsw-card-carousel
+      lwc:else
+      accessibility-label={accessibilityLabel}
+      drag={drag}
+      loop={loop}
+      navigation={navigationNavigation}
+      navigation-pagination={navigationPagination}
+      justify-content={justifyContent}
+      items={_items}
+      navigation-class-name={navigationClassName}
+      navigation-item-class-name={navigationItemClassName}
+      pagination-class-name={paginationClassName}
+      class-name={className}
+    >
+    </c-sf-gps-ds-au-nsw-card-carousel>
+  </template>
 </template>
