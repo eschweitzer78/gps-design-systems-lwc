@@ -38,7 +38,18 @@ function processArguments(value) {
 export default class {
   _sfGpsDsOnClickOutside = {};
 
-  /* bind must be called only once in the renderedCallback method */
+  /* bind must be called only once in the renderedCallback method
+     pass "this" as the first argument, 
+     the name of an lwc:ref in your template as the second argument (string)
+     your callback as the third argument, function or object
+      if it's a function it will be called when a click occurs outside (event in param)
+      if it's an object, have the following attributes
+        - handler is the function that will be called backed
+        - middleware (optional) is the function that will transform the event
+        - events (optional) is the array of event types that are to be monitored
+        - active (optional) indicates whether the handler is active
+
+   */
   bind(pel, ref, value) {
     const uuid = window.crypto
       ? crypto.randomUUID()
@@ -80,7 +91,7 @@ export default class {
     }
   }
 
-  /* unbind must be call only once in the disconnectedCallback method */
+  /* unbind must be called only once in the disconnectedCallback method */
   unbind(pel, ref) {
     const el = pel.refs[ref];
 
