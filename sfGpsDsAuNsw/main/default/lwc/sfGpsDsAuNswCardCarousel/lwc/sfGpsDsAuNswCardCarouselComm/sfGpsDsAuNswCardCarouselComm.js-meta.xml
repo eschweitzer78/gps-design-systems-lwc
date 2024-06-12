@@ -48,14 +48,14 @@
       <property
         name="drag"
         type="Boolean"
-        label="Drag enabled"
+        label="Dragging enabled"
         description="Enables to drag the cards for previous or next page."
       />
       <property
         name="justifyContent"
         type="Boolean"
         label="Center content"
-        description="Puts content at the centre of the carousel."
+        description="Centers card horizontally should not all the lateral space be needed."
       />
       <property
         name="cstyle"

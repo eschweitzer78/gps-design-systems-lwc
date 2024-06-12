@@ -1,3 +1,8 @@
-.cSfGpsDsThemeLayout {
-  --lwc-brandAccessible: var(--nsw-text-link);
+.cSfGpsDsThemeLayout,
+.cSfGpsDsAuNswAuraThemeLayout {
+  --lwc-brandAccessible: var(--nsw-brand-dark);
+  --lwc-brandAccessibleActive: var(--nsw-text-light);
+  --lwc-colorTextButtonBrand: var(--nsw-text-light);
+  --lwc-colorTextDefault: var(--nsw-text-dark);
+  --lwc-colorBorderInput: var(--nsw-grey-01);
 }
