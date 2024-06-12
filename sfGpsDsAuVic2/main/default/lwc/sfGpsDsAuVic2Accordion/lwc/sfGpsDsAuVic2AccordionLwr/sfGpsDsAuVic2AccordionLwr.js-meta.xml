@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>60.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS LWR Accordion</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="numbered"
+        type="Boolean"
+        label="Numbered"
+        description="Indicates the type of accordion."
+        default="false"
+      />
+      <property
+        name="item1Title"
+        type="String"
+        label="Accordion 1 Label"
+        description="Accordion 1 label."
+        default="Accordion 1"
+        required="true"
+      />
+      <property
+        name="item2Title"
+        type="String"
+        label="Accordion 2 Label"
+        description="Accordion 2 Label, leave empty to hide."
+        default="Accordion 2"
+      />
+      <property
+        name="item3Title"
+        type="String"
+        label="Accordion 3 label"
+        description="Accordion 3 label, leave empty to hide."
+        default="Accordion 3"
+      />
+      <property
+        name="item4Title"
+        type="String"
+        label="Accordion 4 label"
+        description="Accordion 4 label, leave empty to hide."
+        default="Accordion 4"
+      />
+      <property
+        name="item5Title"
+        type="String"
+        label="Accordion 5 label"
+        description="Accordion 5 label, leave empty to hide."
+        default="Accordion 5"
+      />
+      <property
+        name="item6Title"
+        type="String"
+        label="Accordion 6 label"
+        description="Accordion 6 label, leave empty to hide."
+        default="Accordion 2"
+      />
+      <property
+        name="item7Title"
+        type="String"
+        label="Accordion 7 label"
+        description="Accordion 7 label, leave empty to hide."
+        default="Accordion 7"
+      />
+      <property
+        name="item8Title"
+        type="String"
+        label="Accordion 8 Label"
+        description="Accordion 8 label, leave empty to hide."
+        default="Accordion 8"
+      />
+      <property
+        name="item9Title"
+        type="String"
+        label="Accordion 9 label"
+        description="Accordion 9 label, leave empty to hide."
+        default="Accordion 9"
+      />
+      <property
+        name="item10Title"
+        type="String"
+        label="Accordion 10 label"
+        description="Accordion 10 label, leave empty to hide."
+        default="Accordion 10"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

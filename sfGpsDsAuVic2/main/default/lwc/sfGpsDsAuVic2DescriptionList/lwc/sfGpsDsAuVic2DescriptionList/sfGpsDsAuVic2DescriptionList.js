@@ -47,7 +47,7 @@ export default class SfGpsDsAuVic2DescriptionList extends LightningElement {
   /* api: items */
 
   _itemsOriginal;
-  _items;
+  _items = [];
 
   @api get items() {
     return this._itemsOriginal;
@@ -57,12 +57,12 @@ export default class SfGpsDsAuVic2DescriptionList extends LightningElement {
     this._itemsOriginal = value;
 
     if (!Array.isArray(value)) {
-      this._items = null;
+      this._items = [];
       return;
     }
 
     const iconOnly = this._variant === "icon";
-    this._items = value.map((item) => {
+    this._items = (value || []).map((item) => {
       return {
         ...item,
         inline: this._inline,

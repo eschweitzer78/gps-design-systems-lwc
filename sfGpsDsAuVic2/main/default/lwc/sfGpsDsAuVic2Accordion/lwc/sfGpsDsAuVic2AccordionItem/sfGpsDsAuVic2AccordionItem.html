@@ -1,0 +1,34 @@
+<template>
+  <button
+    id="button"
+    class="rpl-accordion__item-toggle rpl-u-focusable-block"
+    type="button"
+    onclick={handleToggle}
+    aria-expanded={active}
+    aria-controls="content"
+  >
+    <span class="rpl-accordion__item-heading-wrapper">
+      <span aria-hidden="true" class="rpl-accordion__item-number rpl-type-h4"
+        >{indexP1}</span
+      >
+      <span class="rpl-accordion__item-heading rpl-type-h4">{title}</span>
+    </span>
+
+    <span class="rpl-accordion__item-icon rpl-u-screen-only" aria-hidden="true">
+      <c-sf-gps-ds-au-vic2-icon name="icon-chevron-down">
+      </c-sf-gps-ds-au-vic2-icon>
+    </span>
+  </button>
+
+  <c-sf-gps-ds-au-vic2-expandable
+    id="content"
+    expanded={active}
+    labelledby="button"
+    hidden={inactive}
+    class-name="rpl-accordion__item-content"
+  >
+    <div class="rpl-accordion__item-content-inner">
+      <slot></slot>
+    </div>
+  </c-sf-gps-ds-au-vic2-expandable>
+</template>
