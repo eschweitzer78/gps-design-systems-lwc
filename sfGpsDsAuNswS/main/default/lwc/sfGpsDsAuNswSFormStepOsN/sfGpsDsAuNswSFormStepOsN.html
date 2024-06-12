@@ -2,7 +2,9 @@
   <template lwc:if={jsonDef.bAccordionActive}>
     <div class="page-header page-header--bottom">
       <div class="snsw-container">
-        <h1 class="snsw-h1 os-step-label">{mergedLabel}</h1>
+        <h1 lwc:if={mergedLabel} class="snsw-h1 os-step-label">
+          {mergedLabel}
+        </h1>
 
         <p lwc:if={_propSetMap.chartLabel}>{mergedChartLabel}</p>
       </div>

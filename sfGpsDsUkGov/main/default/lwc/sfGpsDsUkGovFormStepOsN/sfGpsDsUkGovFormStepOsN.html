@@ -51,16 +51,18 @@
       >{_propSetMap.captionText}</span
     >
 
-    <h1 lwc:if={computedIsH1} class={computedHeadingClassName}>
-      {mergedLabel}
-    </h1>
-    <h2 lwc:elseif={computedIsH2} class={computedHeadingClassName}>
-      {mergedLabel}
-    </h2>
-    <h3 lwc:elseif={computedIsH3} class={computedHeadingClassName}>
-      {mergedLabel}
-    </h3>
-    <!-- otherwise (by default) it's just not shown -->
+    <template lwc:if={mergedLabel}>
+      <h1 lwc:if={computedIsH1} class={computedHeadingClassName}>
+        {mergedLabel}
+      </h1>
+      <h2 lwc:elseif={computedIsH2} class={computedHeadingClassName}>
+        {mergedLabel}
+      </h2>
+      <h3 lwc:elseif={computedIsH3} class={computedHeadingClassName}>
+        {mergedLabel}
+      </h3>
+      <!-- otherwise (by default) it's just not shown -->
+    </template>
 
     <a
       if:true={showPrev}
