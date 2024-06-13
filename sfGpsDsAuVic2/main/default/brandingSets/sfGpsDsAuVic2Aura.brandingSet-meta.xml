@@ -66,11 +66,11 @@
 
   <brandingSetProperty>
     <propertyName>PrimaryFont</propertyName>
-    <propertyValue>VIC-Regular</propertyValue>  
+    <propertyValue>VIC</propertyValue>  
   </brandingSetProperty>
   <brandingSetProperty>
     <propertyName>HeaderFonts</propertyName>
-    <propertyValue>VIC-Bold</propertyValue>
+    <propertyValue>VIC</propertyValue>
   </brandingSetProperty>
   <brandingSetProperty>
     <propertyName>TextTransformStyle</propertyName>
