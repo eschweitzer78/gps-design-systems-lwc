@@ -15,7 +15,7 @@
   .siteforceContentArea
   .comm-layout-column
   .ui-widget:not(:last-child),
-.THIS.sfgpsdswidget--no-margin
+.THIS.sfgpsds-widget--no-margin
   .siteforceContentArea
   .cb-section_column
   .ui-widget:not(:last-child) {

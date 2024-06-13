@@ -1,4 +1,4 @@
-<design:component label="VIC Design System v2 Theme Layout">
+<design:component label="VIC2 DS Theme Layout">
   <design:attribute name="hideHeader" label="Hide main header" description="Hides the standard header.">
   </design:attribute>
   <design:attribute name="noWidgetMargin" label="No widget margin" description="Removes the standard widget margin.">
