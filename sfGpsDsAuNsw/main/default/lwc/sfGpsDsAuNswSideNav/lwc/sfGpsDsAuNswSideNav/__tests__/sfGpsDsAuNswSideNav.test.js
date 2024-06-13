@@ -51,15 +51,15 @@ describe("c-sf-gps-ds-au-nsw-side-nav", () => {
 
     const ulLis = element.querySelectorAll("ul > li");
 
-    expect(ulLis.length).toBe(3);
+    expect(ulLis.length).toBe(8);
     expect(ulLis[0].classList).not.toContain("active");
 
     const ulLiAs = element.querySelectorAll("ul > li > a");
-    expect(ulLiAs.length).toBe(3);
+    expect(ulLiAs.length).toBe(8);
     expect(ulLiAs[0].classList).not.toContain("current");
     expect(ulLiAs[0].href).toBe(`javascript${":"}void(0)`);
     expect(ulLiAs[1].classList).not.toContain("current");
-    expect(ulLiAs[1].href).toContain(SIMPLE_NAV[1].url);
+    expect(ulLiAs[1].href).toContain(SIMPLE_NAV[0].subNav[0].url);
   });
 
   it("is accessible", async () => {
