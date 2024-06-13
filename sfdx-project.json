@@ -72,8 +72,8 @@
     {
       "path": "sfGpsDsAuVic2Full",
       "package": "Salesforce Global Public Sector AU VIC2 Design System",
-      "versionName": "2024.06.08.2330",
-      "versionNumber": "0.2.4.NEXT",
+      "versionName": "2024.06.13.2000",
+      "versionNumber": "0.2.5.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
