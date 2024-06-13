@@ -7,7 +7,7 @@
         </caption>
         <thead lwc:if={computedShowHead}>
           <tr>
-            <template for:each={getComputedColumns} for:item="column">
+            <template for:each={computedColumns} for:item="column">
               <th key={column.key} class={column.classes}>{column.label}</th>
             </template>
             <th lwc:if={showExtraContent} class="rpl-data-table__actions">
@@ -16,7 +16,7 @@
           </tr>
         </thead>
 
-        <template for:each={getComputedItems} for:item="row" for:index="index">
+        <template for:each={computedItems} for:item="row" for:index="index">
           <c-sf-gps-ds-au-vic2-data-table-row
             key={row.id}
             columns={columns}

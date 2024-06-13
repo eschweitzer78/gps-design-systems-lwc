@@ -54,11 +54,11 @@ export default class SfGpsDsAuVic2DataTable extends LightningElement {
   }
 
   get computedColumns() {
-    return [];
+    return this.columns || [];
   }
 
   get computedItems() {
-    return [];
+    return this.items || [];
   }
 
   get computedHasVerticalHeader() {

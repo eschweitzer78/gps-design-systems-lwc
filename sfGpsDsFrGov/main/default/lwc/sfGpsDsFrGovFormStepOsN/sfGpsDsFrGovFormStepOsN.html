@@ -1,9 +1,11 @@
 <template>
   <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
   <template if:true={jsonDef.bAccordionActive}>
-    <h2 lwc:if={showLabel} class="fr-h2 slds-m-top_medium os-step-label">
-      {mergedLabel}
-    </h2>
+    <template lwc:if={mergedLabel}>
+      <h2 lwc:if={showLabel} class="fr-h2 slds-m-top_medium os-step-label">
+        {mergedLabel}
+      </h2>
+    </template>
 
     <!-- slds-p-horizontal_medium  -->
     <div class="vlc-separator slds-m-top_medium slds-m-bottom_medium"></div>

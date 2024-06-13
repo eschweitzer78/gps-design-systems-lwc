@@ -1,28 +1,30 @@
 <template>
   <tbody class={computedClassName}>
     <tr>
-      <template for:each={columns} for:item="column">
-        <th
-          lwc:if={column._isHeader}
-          key={column.key}
-          data-label={column.label}
-        >
-          <c-sf-gps-ds-au-vic2-content
-            lwc:if={column.isHTML}
-            html={columnGetCellText}
+      <template lwc:if={columns}>
+        <template for:each={columns} for:item="column">
+          <th
+            lwc:if={column._isHeader}
+            key={column.key}
+            data-label={column.label}
           >
-          </c-sf-gps-ds-au-vic2-content>
-          <template lwc:else> {column.getCellText} </template>
-        </th>
+            <c-sf-gps-ds-au-vic2-content
+              lwc:if={column.isHTML}
+              html={columnGetCellText}
+            >
+            </c-sf-gps-ds-au-vic2-content>
+            <template lwc:else> {column.getCellText} </template>
+          </th>
 
-        <td lwc:else key={column.key} data-label={column.label}>
-          <c-sf-gps-ds-au-vic2-content
-            lwc:if={column.isHTML}
-            html={columnGetCellText}
-          >
-          </c-sf-gps-ds-au-vic2-content>
-          <template lwc:else> {column.getCellText} </template>
-        </td>
+          <td lwc:else key={column.key} data-label={column.label}>
+            <c-sf-gps-ds-au-vic2-content
+              lwc:if={column.isHTML}
+              html={columnGetCellText}
+            >
+            </c-sf-gps-ds-au-vic2-content>
+            <template lwc:else> {column.getCellText} </template>
+          </td>
+        </template>
       </template>
 
       <td lwc:if={extraContent} class="rpl-data-table__actions">

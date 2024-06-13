@@ -1,7 +1,10 @@
 <template>
   <template if:true={jsonDef.bAccordionActive}>
     <div class="rpl-form">
-      <h3 class="rpl-form__title slds-m-top_medium os-step-label">
+      <h3
+        lwc:if={mergedLabel}
+        class="rpl-form__title slds-m-top_medium os-step-label"
+      >
         {mergedLabel}
       </h3>
       <!-- slds-p-horizontal_medium  -->

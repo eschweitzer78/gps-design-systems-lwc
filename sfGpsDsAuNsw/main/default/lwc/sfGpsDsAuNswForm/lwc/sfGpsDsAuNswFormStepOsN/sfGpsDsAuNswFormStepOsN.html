@@ -1,6 +1,8 @@
 <template>
   <template lwc:if={jsonDef.bAccordionActive}>
-    <h2 class="nsw-h2 slds-m-top_medium os-step-label">{mergedLabel}</h2>
+    <h2 lwc:if={mergedLabel} class="nsw-h2 slds-m-top_medium os-step-label">
+      {mergedLabel}
+    </h2>
     <!-- slds-p-horizontal_medium  -->
 
     <div class="vlc-separator slds-m-top_medium slds-m-bottom_medium"></div>
