@@ -6,7 +6,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>1da56b59-3f95-43ec-8f97-863cc02f16e7</value>
+                    <value>d078b741-1d35-44e9-82a2-185c7acad78b</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -16,14 +16,14 @@
                 <identifier>customTab</identifier>
             </componentInstance>
         </itemInstances>
-        <name>facet-indirection-ab00cbb3-0e5e-4bdb-a58d-d68c75ac1d72</name>
+        <name>facet-indirection-3eed82cc-9b99-4592-9a93-a913a30626c7</name>
         <prependable>enabled</prependable>
         <replaceable>enabled</replaceable>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <appendable>enabled</appendable>
-        <name>1da56b59-3f95-43ec-8f97-863cc02f16e7</name>
+        <name>d078b741-1d35-44e9-82a2-185c7acad78b</name>
         <prependable>enabled</prependable>
         <replaceable>enabled</replaceable>
         <type>Facet</type>
@@ -34,7 +34,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>56ba4e9c-34c6-4159-90ba-abdc1bccd718</value>
+                    <value>9cdd20fc-1de1-4156-a6df-5ca581fe6dab</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -44,24 +44,14 @@
                 <identifier>customTab2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>facet-indirection-46a77999-7d65-4300-b40a-505644ac95c4</name>
+        <name>facet-indirection-98352419-6666-4ca8-8178-e952b0a330a0</name>
         <prependable>enabled</prependable>
         <replaceable>enabled</replaceable>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <appendable>enabled</appendable>
-        <itemInstances>
-            <componentInstance>
-                <componentName>sfGpsDsAuVic2HeroHeaderComm</componentName>
-                <identifier>sfGpsDsAuVic2HeroHeaderComm</identifier>
-                <componentInstanceProperties>
-                    <name>behindNav</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-            </componentInstance>
-        </itemInstances>
-        <name>56ba4e9c-34c6-4159-90ba-abdc1bccd718</name>
+        <name>9cdd20fc-1de1-4156-a6df-5ca581fe6dab</name>
         <prependable>enabled</prependable>
         <replaceable>enabled</replaceable>
         <type>Facet</type>
@@ -72,7 +62,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>718b010f-49ce-437f-aaa9-bbf4e17ac36d</value>
+                    <value>18cc09bd-389c-47fa-b097-3fe64edba50f</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -82,7 +72,7 @@
                 <identifier>customTab3</identifier>
             </componentInstance>
         </itemInstances>
-        <name>facet-indirection-100b0c74-bc70-4200-b34a-7189e4790758</name>
+        <name>facet-indirection-516f2072-a6df-4591-83c8-94a83adcd044</name>
         <prependable>enabled</prependable>
         <replaceable>enabled</replaceable>
         <type>Facet</type>
@@ -91,16 +81,19 @@
         <appendable>enabled</appendable>
         <itemInstances>
             <componentInstance>
-                <componentName>sfGpsDsAuVic2ContentComm</componentName>
-                <identifier>sfGpsDsAuVic2ContentComm</identifier>
                 <componentInstanceProperties>
-                    <name>markup</name>
-                    <value
-          >&lt;p&gt;Use this HTML Editor to add your own markup.&lt;/p&gt;</value>
+                    <name>actionApiName</name>
+                    <value>{!actionApiName}</value>
                 </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>isMicrobatch</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>forceCommunity:createRecordForm</componentName>
+                <identifier>forceCommunity_createRecordForm</identifier>
             </componentInstance>
         </itemInstances>
-        <name>718b010f-49ce-437f-aaa9-bbf4e17ac36d</name>
+        <name>18cc09bd-389c-47fa-b097-3fe64edba50f</name>
         <prependable>enabled</prependable>
         <replaceable>enabled</replaceable>
         <type>Facet</type>
@@ -111,7 +104,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>ff636f5c-330e-4499-8c5f-538eeed74610</value>
+                    <value>72c7900c-0de4-4093-90c0-9222b20dca58</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -121,14 +114,14 @@
                 <identifier>customTab4</identifier>
             </componentInstance>
         </itemInstances>
-        <name>facet-indirection-51bf36a7-66af-411e-ab3e-a63cb27b35ef</name>
+        <name>facet-indirection-28a2b85f-3a97-4299-b04b-caadd83a8e2c</name>
         <prependable>enabled</prependable>
         <replaceable>enabled</replaceable>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <appendable>enabled</appendable>
-        <name>ff636f5c-330e-4499-8c5f-538eeed74610</name>
+        <name>72c7900c-0de4-4093-90c0-9222b20dca58</name>
         <prependable>enabled</prependable>
         <replaceable>enabled</replaceable>
         <type>Facet</type>
@@ -152,12 +145,12 @@
                 <componentInstanceProperties>
                     <name>regions</name>
                     <value
-          >facet-indirection-ab00cbb3-0e5e-4bdb-a58d-d68c75ac1d72</value>
+          >facet-indirection-3eed82cc-9b99-4592-9a93-a913a30626c7</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sectionConfig</name>
                     <value
-          >{&quot;UUID&quot;:&quot;ab00cbb3-0e5e-4bdb-a58d-d68c75ac1d72&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;1da56b59-3f95-43ec-8f97-863cc02f16e7&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
+          >{&quot;UUID&quot;:&quot;3eed82cc-9b99-4592-9a93-a913a30626c7&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;d078b741-1d35-44e9-82a2-185c7acad78b&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sectionHeight</name>
@@ -184,12 +177,12 @@
                 <componentInstanceProperties>
                     <name>regions</name>
                     <value
-          >facet-indirection-46a77999-7d65-4300-b40a-505644ac95c4</value>
+          >facet-indirection-98352419-6666-4ca8-8178-e952b0a330a0</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sectionConfig</name>
                     <value
-          >{&quot;UUID&quot;:&quot;46a77999-7d65-4300-b40a-505644ac95c4&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;56ba4e9c-34c6-4159-90ba-abdc1bccd718&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
+          >{&quot;UUID&quot;:&quot;98352419-6666-4ca8-8178-e952b0a330a0&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;9cdd20fc-1de1-4156-a6df-5ca581fe6dab&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sectionHeight</name>
@@ -207,7 +200,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>backgroundOverlay</name>
-                    <value>rgba(0, 0, 0, 0)</value>
+                    <value>rgba(0,0,0,0.5)</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>contentAreaWidth</name>
@@ -216,12 +209,12 @@
                 <componentInstanceProperties>
                     <name>regions</name>
                     <value
-          >facet-indirection-100b0c74-bc70-4200-b34a-7189e4790758</value>
+          >facet-indirection-516f2072-a6df-4591-83c8-94a83adcd044</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sectionConfig</name>
                     <value
-          >{&quot;UUID&quot;:&quot;100b0c74-bc70-4200-b34a-7189e4790758&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;718b010f-49ce-437f-aaa9-bbf4e17ac36d&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
+          >{&quot;UUID&quot;:&quot;516f2072-a6df-4591-83c8-94a83adcd044&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;18cc09bd-389c-47fa-b097-3fe64edba50f&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sectionHeight</name>
@@ -248,12 +241,12 @@
                 <componentInstanceProperties>
                     <name>regions</name>
                     <value
-          >facet-indirection-51bf36a7-66af-411e-ab3e-a63cb27b35ef</value>
+          >facet-indirection-28a2b85f-3a97-4299-b04b-caadd83a8e2c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sectionConfig</name>
                     <value
-          >{&quot;UUID&quot;:&quot;51bf36a7-66af-411e-ab3e-a63cb27b35ef&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;ff636f5c-330e-4499-8c5f-538eeed74610&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
+          >{&quot;UUID&quot;:&quot;28a2b85f-3a97-4299-b04b-caadd83a8e2c&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;72c7900c-0de4-4093-90c0-9222b20dca58&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sectionHeight</name>
@@ -280,7 +273,6 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Home</value>
                 </componentInstanceProperties>
                 <componentName>forceCommunity:seoAssistant</componentName>
                 <identifier>forceCommunity_seoAssistant</identifier>
@@ -291,9 +283,9 @@
         <replaceable>enabled</replaceable>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Home</masterLabel>
+    <masterLabel>Create Record</masterLabel>
     <template>
         <name>siteforce:dynamicLayout</name>
     </template>
-    <type>CommAppPage</type>
+    <type>CommQuickActionCreatePage</type>
 </FlexiPage>

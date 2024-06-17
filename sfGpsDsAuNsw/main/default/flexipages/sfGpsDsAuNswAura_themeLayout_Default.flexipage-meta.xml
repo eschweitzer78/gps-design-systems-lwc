@@ -168,7 +168,13 @@
   </flexiPageRegions>
 
   <flexiPageRegions>
+    <name>footer</name>
+    <type>Region</type>
+
     <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
     <itemInstances>
       <componentInstance>
         <componentInstanceProperties>
@@ -234,10 +240,6 @@
         <identifier>sfGpsDsAuNswFooterComm</identifier>
       </componentInstance>
     </itemInstances>
-    <name>footer</name>
-    <prependable>enabled</prependable>
-    <replaceable>enabled</replaceable>
-    <type>Region</type>
   </flexiPageRegions>
 
   <flexiPageRegions>
