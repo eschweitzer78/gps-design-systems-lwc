@@ -3,24 +3,31 @@
   <masterLabel>State of Victoria Ripple v2</masterLabel>
   <description
   >Create a responsive portal where your constituents can experience the awesomeness of the DPC-SDP Ripple 2 Design System.</description>
-  <publisher>Salesforce GPS</publisher>
+  <publisher>Salesforce Global Public Sector</publisher>
   <bundlesInfo>
-      <order>1</order>
-      <title>Distinctly VIC</title>
-      <description>Distinctly VIC</description>
-      <type>Highlight</type>
+    <title>Distinctly VIC Government</title>
+    <description
+    >This template gives your portal a distincly VIC Government look and feel and helps digital product teams create a good customer experience quickly.</description>
+    <order>1</order>
+    <type>Highlight</type>
   </bundlesInfo>
   <bundlesInfo>
-      <order>2</order>
-      <title>Accessible</title>
-      <description>Accessible</description>
-      <type>Highlight</type>
+    <title>Wide component range</title>
+    <description>
+      A range of common tried and tested design components lets you build your website 
+      or service in record time.
+    </description>
+    <order>2</order>
+    <type>Highlight</type>
   </bundlesInfo>
   <bundlesInfo>
-      <order>3</order>
-      <title>Clear and concise</title>
-      <description>Clear and concise</description>
-      <type>Highlight</type>
+    <title>Accessible and compliant</title>
+    <description>
+      Meet branding and WCAG 2.1 AA
+      accessibility guidelines, and follow VIC design standards for user needs.
+    </description>
+    <order>3</order>
+    <type>Highlight</type>
   </bundlesInfo>
   <bundlesInfo>
     <image>sfGpsDsAuVic2AuraThemePreview1</image>
@@ -29,46 +36,67 @@
     <type>PreviewImage</type>
   </bundlesInfo>
   <category>Service</category>
-
   <defaultThemeDefinition>sfGpsDsAuVic2Aura</defaultThemeDefinition>
   <baseTemplate>c</baseTemplate>
   <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
-
   <pageSetting>
-      <page>sfGpsDsAuVic2Aura_Home</page>
-      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_HomePage</themeLayout>
+    <page>sfGpsDsAuVic2Aura_Check_Password</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
   </pageSetting>
   <pageSetting>
-      <page>sfGpsDsAuVic2Aura_Error</page>
-      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+    <page>sfGpsDsAuVic2Aura_Create_Record</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
   </pageSetting>
-
   <pageSetting>
-      <page>sfGpsDsAuVic2Aura_Check_Password</page>
-      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
+    <page>sfGpsDsAuVic2Aura_Error</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Home</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Login_Error</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Login</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Record_Detail</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Record_List</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Register</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Related_Record_List</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Search</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Service_Not_Available</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_ServiceNotAvailable</themeLayout>
+  </pageSetting>
+  <pageSetting>
+    <page>sfGpsDsAuVic2Aura_Sfdc_Page</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
   </pageSetting>
   <pageSetting>
       <page>sfGpsDsAuVic2Aura_Forgot_Password</page>
       <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
   </pageSetting>
   <pageSetting>
-      <page>sfGpsDsAuVic2Aura_Login</page>
-      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
-  </pageSetting>
-  <pageSetting>
-      <page>sfGpsDsAuVic2Aura_Login_Error</page>
-      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
-  </pageSetting>
-  <pageSetting>
-      <page>sfGpsDsAuVic2Aura_Record_Detail</page>
-      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
-  </pageSetting>
-  <pageSetting>
-      <page>sfGpsDsAuVic2Aura_Record_List</page>
-      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
-  </pageSetting>
-  <pageSetting>
-      <page>sfGpsDsAuVic2Aura_Related_Record_List</page>
-      <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+    <page>sfGpsDsAuVic2Aura_Too_Many_Requests</page>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_ServiceNotAvailable</themeLayout>
   </pageSetting>
 </CommunityTemplateDefinition>

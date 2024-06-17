@@ -7,6 +7,11 @@
     styles="{! join(',', $Resource.sfGpsDsAuVic2 + '/global.css', $Resource.sfGpsDsAuVic2 + '/style.css', $Resource.sfGpsDsAuVic2 + '/byo-aura_layout.css')}"
   />
 
+  <aura:attribute
+    name="alertContainer"
+    type="Aura.Component[]"
+    required="false"
+  />
   <aura:attribute name="header" type="Aura.Component[]" required="false" />
   <aura:attribute name="footer" type="Aura.Component[]" required="false" />
 
@@ -14,49 +19,50 @@
   <aura:attribute name="themeHeader" type="Aura.Component[]" required="false" />
 
   <aura:attribute
-    name="hideHeader"
-    type="Boolean"
-    required="false"
-    default="true"
-  />
-  <aura:attribute
     name="noWidgetMargin"
     type="Boolean"
     required="false"
     default="false"
   />
-  <aura:attribute name="navId" type="String" required="false" default="nav" />
   <aura:attribute
-    name="contentId"
-    type="String"
+    name="altSections"
+    type="Boolean"
     required="false"
-    default="content"
+    default="true"
   />
 
   <div
     class="{! v.noWidgetMargin ? 'sfgpsds-widget--no-margin' : 'sfgpsds-widget--margin' }"
   >
-    <header class="sfgpsds-header">
-      <h1 id="sfgpsds-header-title" class="sr-only">Header</h1>
-
-      <div class="sfgpsds-header-top">{!v.header}</div>
-
-      <div id="{!v.navId}" class="sfgpsds-header-center">
-        <aura:if isTrue="{! !v.hideHeader }">
-          <div class="sfgpsds-header-profile">{!v.themeHeader}</div>
-        </aura:if>
-      </div>
-    </header>
-
-    <div
-      id="{!v.contentId}"
-      aria-label="Content"
-      role="main"
-      class="sfgpsds-content"
-    >
-      {!v.body}
+    <div id="rpl-skip-links">
+      <c:sfGpsDsAuVic2LayoutSkipLink target-id="rpl-above-body">
+      </c:sfGpsDsAuVic2LayoutSkipLink>
     </div>
 
-    <footer aria-label="Footer" class="sfgpsds-footer">{!v.footer}</footer>
+    <div
+      aria-label="Alert container"
+      class="{! 'rpl-layout' + (v.altSections ? ' rpl-layout--alt' : '')}"
+    >
+      <div class="rpl-alert-container">{! v.alertContainer }</div>
+
+      <div class="rpl-layout__container">
+        <header id="rpl-header" class="sfgpsds-header rpl-layout__header">
+          {!v.header}
+        </header>
+
+        <div
+          id="rpl-above-body"
+          aria-label="Content"
+          role="main"
+          class="sfgpsds-content"
+        >
+          {!v.body}
+        </div>
+
+        <c:sfGpsDsAuVic2LayoutBackToTop> </c:sfGpsDsAuVic2LayoutBackToTop>
+
+        <div aria-label="Footer" class="sfgpsds-footer">{!v.footer}</div>
+      </div>
+    </div>
   </div>
 </aura:component>

@@ -1,10 +1,6 @@
 <design:component label="VIC2 DS Theme Layout">
-  <design:attribute name="hideHeader" label="Hide main header" description="Hides the standard header.">
-  </design:attribute>
   <design:attribute name="noWidgetMargin" label="No widget margin" description="Removes the standard widget margin.">
   </design:attribute>
-  <design:attribute name="navId" label="navId" description="Id to set on nav region.">
-  </design:attribute>
-  <design:attribute name="contentId" label="contentId" description="Id to set on content region.">
+  <design:attribute name="altSections" label="Alternate sections" description="Alternates the sections’ background colour.">
   </design:attribute>
 </design:component>
