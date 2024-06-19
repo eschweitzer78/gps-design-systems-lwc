@@ -63,88 +63,82 @@ export default class SfGpsDsAuVic2FooterComm extends SfGpsDsNavigation {
       this._items = this.mapIpData([
         {
           actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/",
+          actionValue: "https://www.vic.gov.au/information-and-services",
           imageUrl: null,
-          label: "Popular",
+          label: "Information and services",
           target: "CurrentWindow",
           subMenu: [
             {
               actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/about-nsw/school-holidays",
+              actionValue:
+                "https://www.betterhealth.vic.gov.au/coronavirus-covid-19-victoria",
               imageUrl: null,
-              label: "NSW school holidays",
+              label: "Coronavirus (COVID-19) information",
+              subMenu: [],
+              target: "CurrentWindow"
+            },
+            {
+              actionType: "ExternalLink",
+              actionValue: "https://www.vic.gov.au/grants-and-programs",
+              imageUrl: null,
+              label: "Grants and programs",
+              subMenu: [],
+              target: "CurrentWindow"
+            },
+            {
+              actionType: "ExternalLink",
+              actionValue: "https://www.vic.gov.au/jobs-and-careers",
+              imageUrl: null,
+              label: "Jobs and careers",
+              subMenu: [],
+              target: "CurrentWindow"
+            },
+            {
+              actionType: "ExternalLink",
+              actionValue: "https://www.vic.gov.au/arts-culture-and-heritage",
+              imageUrl: null,
+              label: "Arts, culture and heritage",
+              subMenu: [],
+              target: "CurrentWindow"
+            },
+            {
+              actionType: "ExternalLink",
+              actionValue: "https://www.vic.gov.au/business-and-workplace",
+              imageUrl: null,
+              label: "Business and the workplace",
+              subMenu: [],
+              target: "CurrentWindow"
+            },
+            {
+              actionType: "ExternalLink",
+              actionValue: "https://www.vic.gov.au/communities",
+              imageUrl: null,
+              label: "Communities",
+              subMenu: [],
+              target: "CurrentWindow"
+            },
+            {
+              actionType: "ExternalLink",
+              actionValue: "https://www.vic.gov.au/education",
+              imageUrl: null,
+              label: "Education & training",
               subMenu: [],
               target: "CurrentWindow"
             },
             {
               actionType: "ExternalLink",
               actionValue:
-                "https://www.nsw.gov.au/departments-and-agencies/department-of-education/careersnsw",
+                "https://www.vic.gov.au/environment-water-and-energy",
               imageUrl: null,
-              label: "Careers NSW",
+              label: "Environment, water and energy",
               subMenu: [],
               target: "CurrentWindow"
             },
             {
               actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/visas-and-migration/skilled-visas/skilled-work-regional-visa-subclass-491",
+              actionValue: "https://www.vic.gov.au/health-and-social-support",
               imageUrl: null,
-              label: "Skilled Work Regional visa (subclass 491)",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/driving-boating-and-transport/driver-and-rider-licences/driver-licences/driver-licence-tests/driver-knowledge-test",
-              imageUrl: null,
-              label: "Driver Knowledge Test (DKT)",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/covid-19/testing-managing/advice-for-confirmed",
-              imageUrl: null,
-              label:
-                "Testing positive to COVID-19 and managing COVID-19 safely at home",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/driving-boating-and-transport/demerits-penalties-and-offences/offences/search-offences-and-penalties",
-              imageUrl: null,
-              label: "Search offences and penalties",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/money-and-taxes/fines-and-fees/fines/pay-your-fine",
-              imageUrl: null,
-              label: "Pay your fine",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/search",
-              imageUrl: null,
-              label: "Search",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/family-and-relationships/family-history-search",
-              imageUrl: null,
-              label: "Family history search",
+              label: "Health and social support",
               subMenu: [],
               target: "CurrentWindow"
             }
@@ -152,246 +146,59 @@ export default class SfGpsDsAuVic2FooterComm extends SfGpsDsNavigation {
         },
         {
           actionType: "ExternalLink",
-          actionValue:
-            "https://www.nsw.gov.au/nsw-government/about-this-website",
+          actionValue: "https://www.vic.gov.au/about-victorian-government",
           imageUrl: null,
-          label: "About this website",
+          label: "About the VIC Government",
           target: "CurrentWindow",
           subMenu: [
             {
               actionType: "ExternalLink",
               actionValue:
-                "https://www.nsw.gov.au/nsw-government/access-nsw-government-information",
+                "https://www.vic.gov.au/victorian-government-directory",
               imageUrl: null,
-              label: "Access to information",
+              label: "Victorian Government Directory",
               subMenu: [],
               target: "CurrentWindow"
             },
             {
               actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/accessibility-statement",
+              actionValue: "https://www.vic.gov.au/premier-and-ministers",
               imageUrl: null,
-              label: "Accessibility statement",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/nsw-government/copyright",
-              imageUrl: null,
-              label: "Copyright",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/nsw-government/disclaimer",
-              imageUrl: null,
-              label: "Disclaimer",
+              label: "The Premier and ministers",
               subMenu: [],
               target: "CurrentWindow"
             },
             {
               actionType: "ExternalLink",
               actionValue:
-                "https://www.nsw.gov.au/nsw-government/privacy-statement",
+                "https://www.vic.gov.au/victorian-government-organisations",
               imageUrl: null,
-              label: "Privacy statement",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.service.nsw.gov.au/nswgovdirectory",
-              imageUrl: null,
-              label: "NSW Government directory",
-              subMenu: [],
-              target: "CurrentWindow"
-            }
-          ]
-        },
-        {
-          actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/departments-and-agencies",
-          imageUrl: null,
-          label: "Departments",
-          target: "CurrentWindow",
-          subMenu: [
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/the-cabinet-office",
-              imageUrl: null,
-              label: "Cabinet Office",
+              label: "Departments and agencies",
               subMenu: [],
               target: "CurrentWindow"
             },
             {
               actionType: "ExternalLink",
               actionValue:
-                "https://www.nsw.gov.au/departments-and-agencies/customer-service",
+                "https://www.vic.gov.au/guidelines-and-standards-for-independent-schools",
               imageUrl: null,
-              label: "Customer Service",
+              label: "Standard and guidelines",
               subMenu: [],
               target: "CurrentWindow"
             },
             {
               actionType: "ExternalLink",
-              actionValue: "https://www.dcj.nsw.gov.au/",
+              actionValue: "https://www.vic.gov.au/using-victorias-data",
               imageUrl: null,
-              label: "Communities and Justice",
+              label: "Using Victoria’s data",
               subMenu: [],
               target: "CurrentWindow"
             },
             {
               actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/departments-and-agencies/department-of-education",
+              actionValue: "https://www.vic.gov.au/strategies-and-policies",
               imageUrl: null,
-              label: "Education",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/departments-and-agencies/enterprise-investment-trade",
-              imageUrl: null,
-              label: "Enterprise, Investment and Trade",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.health.nsw.gov.au/",
-              imageUrl: null,
-              label: "Health",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.dpie.nsw.gov.au/",
-              imageUrl: null,
-              label: "Planning and Environment",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/premiers-department",
-              imageUrl: null,
-              label: "Premier’s Department",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/departments-and-agencies/department-of-regional-nsw",
-              imageUrl: null,
-              label: "Regional NSW",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.transport.nsw.gov.au/",
-              imageUrl: null,
-              label: "Transport",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.treasury.nsw.gov.au/",
-              imageUrl: null,
-              label: "Treasury",
-              subMenu: [],
-              target: "CurrentWindow"
-            }
-          ]
-        },
-        {
-          actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/nsw-government",
-          imageUrl: null,
-          label: "NSW Government",
-          target: "CurrentWindow",
-          subMenu: [
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/nsw-government/premier-of-nsw",
-              imageUrl: null,
-              label: "The Premier",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/nsw-government/ministers",
-              imageUrl: null,
-              label: "NSW Ministers",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.parliament.nsw.gov.au/members/pages/all-members.aspx",
-              imageUrl: null,
-              label: "Find your local Member of Parliament",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://boards.dpc.nsw.gov.au/",
-              imageUrl: null,
-              label: "Boards and Committees",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://iworkfor.nsw.gov.au/",
-              imageUrl: null,
-              label: "Find a job in NSW Government",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue: "https://www.nsw.gov.au/about-nsw",
-              imageUrl: null,
-              label: "About NSW",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/nsw-government/communications",
-              imageUrl: null,
-              label: "NSW Government Communications",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/nsw-government/unsolicited-proposals",
-              imageUrl: null,
-              label: "Unsollicited proposals",
-              subMenu: [],
-              target: "CurrentWindow"
-            },
-            {
-              actionType: "ExternalLink",
-              actionValue:
-                "https://www.nsw.gov.au/nsw-government/projects-and-initiatives",
-              imageUrl: null,
-              label: "Projects and initiatives",
+              label: "Strategies and policies",
               subMenu: [],
               target: "CurrentWindow"
             }

@@ -14,7 +14,7 @@
         type="String"
         label="Mode"
         datasource="Demo,Experience Cloud Navigation,Integration Procedure"
-        default="Integration Procedure"
+        default="Experience Cloud Navigation"
       />
       <property
         name="navigationDevName"

@@ -2,6 +2,7 @@
   <c-sf-gps-ds-au-vic2-header
     class-name={computedClassName}
     full-width={fullWidth}
+    limit-content={computedImageCta}
   >
     <template lwc:if={computedHasBehindSlot}>
       <span slot="behind">
@@ -27,10 +28,9 @@
 
     <template lwc:if={logo}>
       <c-sf-gps-ds-au-vic2-image
-        lwc:if={logo.src}
+        lwc:if={computedLogoHasSrc}
         slot="upper"
-        class-name="rpl-header__logo"
-        image={logo}
+        image={computedLogo}
       >
       </c-sf-gps-ds-au-vic2-image>
     </template>
@@ -51,6 +51,7 @@
         slot="lower"
         primary={_primaryAction}
         secondary={decoratedSecondaryAction}
+        variant={computedActionsVariant}
         onitemclick={handleItemClick}
       >
       </c-sf-gps-ds-au-vic2-header-actions>
