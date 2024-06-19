@@ -27,31 +27,30 @@ export default class SfGpsDsAuVic2FooterIp extends SfGpsDsNavigation {
       this._items = this.mapIpData([
         {
           actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/",
+          actionValue: "https://www.vic.gov.au/privacy-vicgovau",
           imageUrl: null,
-          label: "Popular",
+          label: "Privacy",
           target: "CurrentWindow"
         },
         {
           actionType: "ExternalLink",
-          actionValue:
-            "https://www.nsw.gov.au/nsw-government/about-this-website",
+          actionValue: "https://www.vic.gov.au/disclaimer",
           imageUrl: null,
-          label: "About this website",
+          label: "Disclaimer",
           target: "CurrentWindow"
         },
         {
           actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/departments-and-agencies",
+          actionValue: "https://www.vic.gov.au/accessibility",
           imageUrl: null,
-          label: "Departments",
+          label: "Accessibility",
           target: "CurrentWindow"
         },
         {
           actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/nsw-government",
+          actionValue: "https://vic.gov.au/sitemap",
           imageUrl: null,
-          label: "NSW Government",
+          label: "Sitemap",
           target: "CurrentWindow"
         }
       ]);
@@ -97,24 +96,12 @@ export default class SfGpsDsAuVic2FooterIp extends SfGpsDsNavigation {
   get decoratedItems() {
     if (!this._items) return [];
 
-    let rv = this._items.map((item) => this.mapItem(item));
-    console.log(
-      "*** footerIp decoratedItems",
-      JSON.parse(JSON.stringify(this._items)),
-      JSON.parse(JSON.stringify(rv))
-    );
-    return rv;
+    return this._items.map((item) => this.mapItem(item));
   }
 
   /* event management */
 
   handleLinksNavigate(event) {
-    console.log(
-      "footerIp handleLinksNavigate",
-      JSON.parse(JSON.stringify(event.detail))
-    );
-    console.log("***", JSON.parse(JSON.stringify(this._map)));
-
     if (this._map && event.detail) {
       this.dispatchEvent(
         new CustomEvent("linknavigate", {

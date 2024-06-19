@@ -4,6 +4,7 @@ import { computeClass } from "c/sfGpsDsHelpers";
 export default class extends LightningElement {
   @api primary;
   @api secondary;
+  @api variant;
   @api className;
 
   get computedClassName() {

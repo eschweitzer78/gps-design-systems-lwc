@@ -22,7 +22,6 @@ const CORNER_BOTTOM_DEFAULT = true;
  */
 export default class extends SfGpsDsLwc {
   @api title;
-  @api logo;
   @api background;
   @api secondaryActionTitle;
   @api linksTitle;
@@ -31,6 +30,25 @@ export default class extends SfGpsDsLwc {
   @api fullWidth = false;
   @api className;
 
+  /* api: logo */
+
+  _logoOriginal;
+  _logo = {};
+
+  @api
+  get logo() {
+    return this._logoOriginal;
+  }
+
+  set logo(value) {
+    this._logoOriginal = value;
+
+    try {
+      this._logo = JSON.parse(value);
+    } catch (e) {
+      this._logo = {};
+    }
+  }
   /* api: cornerTop */
 
   _cornerTopOriginal = CORNER_TOP_DEFAULT;
@@ -234,16 +252,26 @@ export default class extends SfGpsDsLwc {
     return {
       ...background,
       priority: "high",
-      aspect: {
-        xs: "wide",
-        m: "wide"
-      },
+      aspect: this.computedBackImageRatio,
       sizes: "xs:100vw"
     };
   }
 
+  get computedBackImageRatio() {
+    return this.computedImageCta
+      ? {
+          xs: "full",
+          s: "ultrawide",
+          m: "wide"
+        }
+      : {
+          xs: "wide",
+          m: "wide"
+        };
+  }
+
   get computedShowHeaderActions() {
-    return (this._primaryAction || this.secondaryAction) && !this.background;
+    return !!(this._primaryAction || this.secondaryAction);
   }
 
   get computedShowHeaderLinks() {
@@ -263,6 +291,7 @@ export default class extends SfGpsDsLwc {
       "rpl-header--graphic-top": this.cornerTop,
       "rpl-header--graphic-bottom": this.cornerBottom,
       "rpl-header--background": this.background,
+      "rpl-header--image-cta": this.computedImageCta,
       [this.className]: this.className
     });
   }
@@ -298,6 +327,32 @@ export default class extends SfGpsDsLwc {
           url: this._secondaryAction?.url
         }
       : null;
+  }
+
+  get computedHasActions() {
+    return !!(this._primaryAction || this._secondaryAction);
+  }
+
+  get computedImageCta() {
+    return !!(this.background && this.computedHasActions);
+  }
+
+  get computedActionsVariant() {
+    return this.computedImageCta ? "white" : "filled";
+  }
+
+  get computedLogoHasSrc() {
+    return this._logo?.src;
+  }
+
+  get computedLogo() {
+    return {
+      ...this._logo,
+      className: computeClass({
+        "rpl-header__logo": true,
+        [this._logo?.className]: this._logo?.className
+      })
+    };
   }
 
   /* event management */
