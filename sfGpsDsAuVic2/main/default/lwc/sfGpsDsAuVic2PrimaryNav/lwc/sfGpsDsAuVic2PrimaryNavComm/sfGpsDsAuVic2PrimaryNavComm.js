@@ -86,6 +86,11 @@ export default class extends NavigationMixin(SfGpsDsNavigation) {
   set primaryLogo(value) {
     this._primaryLogoOriginal = value;
 
+    if (!value) {
+      this._primaryLogo = null;
+      return;
+    }
+
     try {
       value = JSON.parse(value);
     } catch (e) {
@@ -113,6 +118,11 @@ export default class extends NavigationMixin(SfGpsDsNavigation) {
 
   set secondaryLogo(value) {
     this._secondaryLogoOriginal = value;
+
+    if (!value) {
+      this._secondaryLogo = null;
+      return;
+    }
 
     try {
       value = JSON.parse(value);
