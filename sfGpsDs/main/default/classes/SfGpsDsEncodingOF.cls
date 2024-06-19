@@ -30,14 +30,9 @@ global class SfGpsDsEncodingOF implements Callable {
           return false;
         }
 
-        if (!(arguments[0] instanceof String)) {
-          setError(output, 'ARGLIST-003');
-          return false;
-        }
-
         output.put(
           'result',
-          EncodingUtil.urlEncode((String) arguments[0], 'UTF-8')
+          EncodingUtil.urlEncode(String.valueOf(arguments[0]), 'UTF-8')
         );
         return true;
       }
@@ -47,14 +42,9 @@ global class SfGpsDsEncodingOF implements Callable {
           return false;
         }
 
-        if (!(arguments[0] instanceof String)) {
-          setError(output, 'ARGLIST-003');
-          return false;
-        }
-
         output.put(
           'result',
-          EncodingUtil.urlDecode((String) arguments[0], 'UTF-8')
+          EncodingUtil.urlDecode(String.valueOf(arguments[0]), 'UTF-8')
         );
         return true;
       }
