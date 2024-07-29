@@ -1,5 +1,23 @@
 ## Change log
 
+### 29 July 2024
+
+#### All DSes: moving to Omnistudio 250.7
+
+We updated all packages to support Omnistudio 250.7.
+
+#### NSW DS: Support of Form Block
+
+Form blocks can now be styled to better align with the NSW DS and adopt the Accordion styling when the `sfGpsDsAuFormBlockOsN` override is applied to the the `Block` element.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswFormBlockOsN`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswFormBlockOsN).
+
+#### NSW DS: Support of button styling for multiple additional OmniStudio elements
+
+Most OmniStudio actions and well as the Edit Block in inline mode do now have NSW DS styling for their buttons (in Experience Cloud only).
+
+Flexcards have minimal support for default button styling as well.
+
 ### 3 June 2024
 
 #### NSW DS: Added support for the Steps element
