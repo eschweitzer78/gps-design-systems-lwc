@@ -1,0 +1,89 @@
+<template>
+  <div class={computedClassName}>
+    <!--
+    <c-sf-gps-ds-au-vic2-slider
+      current-slide={activeImageSlide}
+      show-pagination="false"
+      change-notice="false"
+      class-name="rpl-media-gallery__primary-images rpl-u-screen-only"
+      onchange={imageSlideUpdate}
+    >
+      <template for:each={decoratedImageItems} for:item="item">
+        <c-sf-gps-ds-au-vic2-image
+          key={item.key}
+          image={item.image}
+          class-name="rpl-media-gallery__image"
+          aria-describedby={item.describedBy}
+        >
+        </c-sf-gps-ds-au-vic2-image>
+      </template>
+    </c-sf-gps-ds-au-vic2-slider>
+
+    <c-sf-gps-ds-au-vic2-slider
+      effect="fade"
+      show-tally="true"
+      current-slide={activeContentSlide}
+      change-notice={computedChangeNotice}
+      class-name="rpl-media-gallery__primary-content"
+      onchange={contentSlideUpdate}
+    >
+      <template for:each={decoratedContentItems} for:item="item">
+        <c-sf-gps-ds-au-vic2-media-gallery-content
+          key={item.key}
+          title={item.title}
+          caption={item.caption}
+          image={item.image}
+          show-full-screen="true"
+          onfullscreen={handleToggleModal}
+        >
+        </c-sf-gps-ds-au-vic2-media-gallery-content>
+      </template>
+    </c-sf-gps-ds-au-vic2-slider>
+
+    <c-sf-gps-ds-au-vic2-modal
+      is-open={showModal}
+      class-name="rpl-media-gallery__modal"
+      onclose={handleToggleModal}
+    >
+      <c-sf-gps-ds-au-vic2-slider
+        current-slide={activeModalImageSlide}
+        show-pagination="false"
+        change-notice="false"
+        class-name="rpl-media-gallery__modal-images"
+        onchange={handleModalImageSlideUpdate}
+      >
+        <template for:each={decoratedModalImageItems} for:item="item">
+          <c-sf-gps-ds-au-vic2-image
+            key={item.key}
+            image={item.image}
+            class-name="rpl-media-gallery__image"
+            aria-describedby={item.describedBy}
+          >
+          </c-sf-gps-ds-au-vic2-image>
+        </template>
+      </c-sf-gps-ds-au-vic2-slider>
+
+      <c-sf-gps-ds-au-vic2-slider
+        slot="below"
+        effect="fade"
+        show-tally="true"
+        current-slide={activeModalContentSlide}
+        change-notice={computedModalChangeNotice}
+        class-name="rpl-media-gallery__modal-content"
+        onchange={handleModalContentSlideUpdate}
+      >
+        <template for:each={decoratedModalContentItems} for:item="item">
+          <c-sf-gps-ds-au-vic2-media-gallery-content
+            key={item.key}
+            title={item.title}
+            caption={item.caption}
+            image={item.image}
+            show-full-screen="false"
+          >
+          </c-sf-gps-ds-au-vic2-media-gallery-content>
+        </template>
+      </c-sf-gps-ds-au-vic2-slider>
+    </c-sf-gps-ds-au-vic2-modal>
+    -->
+  </div>
+</template>

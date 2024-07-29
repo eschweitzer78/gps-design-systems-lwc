@@ -1,0 +1,32 @@
+<template>
+  <div class={computedClassName}>
+    <c-sf-gps-ds-au-vic2-image
+      lwc:if={hasImage}
+      image={image}
+      class-name="rpl-media-gallery__image rpl-u-print-only"
+    >
+    </c-sf-gps-ds-au-vic2-image>
+
+    <h3 id={computedTitleId} class="rpl-type-h3 rpl-u-margin-b-2">{title}</h3>
+
+    <p
+      lwc:if={caption}
+      id={computedCaptionId}
+      class="rpl-media-gallery__caption rpl-type-p"
+    >
+      {caption}
+    </p>
+
+    <c-sf-gps-ds-au-vic2-button
+      lwc:if={showFullScreen}
+      variant="none"
+      class-name="rpl-media-gallery__button rpl-u-screen-only"
+      icon-name="icon-enlarge-square-filled"
+      icon-position="left"
+      theme="default"
+      onclick={handleFullScreen}
+    >
+      {fullScreenLabel}
+    </c-sf-gps-ds-au-vic2-button>
+  </div>
+</template>

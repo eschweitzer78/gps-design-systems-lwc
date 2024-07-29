@@ -1,0 +1,22 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic2-media-gallery
+    lwc:elseif={_items}
+    id={id}
+    items={_items}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic2-media-gallery>
+
+  <c-sf-gps-ds-empty
+    lwc:else
+    title="No items."
+    content="Please set the items attribute."
+  >
+  </c-sf-gps-ds-empty>
+</template>
