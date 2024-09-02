@@ -5,7 +5,8 @@
       "target": "!Os.html",
       "c-sf-gps-ds-au-nsw-link-list": "c-sf-gps-ds-au-nsw-link-list-os",
       "c-sf-gps-ds-empty": "c-sf-gps-ds-empty-os",
-      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
+      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os",
+      "c-sf-gps-ds-au-nsw-loader": "c-sf-gps-ds-au-nsw-loader-os"
     },
     "!.js": {
       "target": "!Os.js",

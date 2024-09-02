@@ -69,6 +69,7 @@ export default class {
               if (!e._sfGpsDsOnClickOutside)
                 e._sfGpsDsOnClickOutside = new Set();
               e._sfGpsDsOnClickOutside.add(uuid);
+              console.log("tag", uuid);
             }
           },
           handler: (e) => {
@@ -92,13 +93,14 @@ export default class {
   }
 
   /* unbind must be called only once in the disconnectedCallback method */
+  /* or whenever the referenced object disappears from the DOM */
   unbind(pel, ref) {
     const el = pel.refs[ref];
 
     if (this._sfGpsDsOnClickOutside[ref]) {
       this._sfGpsDsOnClickOutside[ref].forEach(({ event, tagger, handler }) => {
         document.removeEventListener(event, handler, false);
-        el.removeEventListener(event, tagger, false);
+        if (el) el.removeEventListener(event, tagger, false);
       });
 
       delete this._sfGpsDsOnClickOutside[ref];

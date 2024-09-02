@@ -6,7 +6,7 @@
   </c-sf-gps-ds-configuration-error>
 
   <template lwc:else>
-    <c-sf-gps-ds-spinner lwc:if={_isLoading}> </c-sf-gps-ds-spinner>
+    <c-sf-gps-ds-au-nsw-loader lwc:if={_isLoading}> </c-sf-gps-ds-au-nsw-loader>
     <div lwc:else class={computedClassName}>
       <template for:each={_items} for:item="card">
         <div key={card.index} class={computedColClassName}>

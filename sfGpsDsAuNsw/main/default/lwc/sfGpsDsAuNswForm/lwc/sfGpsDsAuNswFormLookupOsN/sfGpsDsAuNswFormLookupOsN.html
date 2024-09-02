@@ -146,13 +146,11 @@
     </span>
 
     <template lwc:if={isPageLoading}>
-      <omnistudio-spinner
-        variant="brand"
-        alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
-        theme="slds"
-        size="small"
+      <c-sf-gps-ds-au-nsw-loader-os
+        label={allCustomLabelsUtil.OmniSpinnerTextLoading}
+        size="sm"
       >
-      </omnistudio-spinner>
+      </c-sf-gps-ds-au-nsw-loader-os>
     </template>
   </div>
 </template>

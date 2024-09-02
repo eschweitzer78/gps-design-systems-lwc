@@ -1,13 +1,8 @@
 <template>
   <!-- Spinner -->
   <template lwc:if={isPageLoading}>
-    <omnistudio-spinner
-      variant="brand"
-      alternative-text="Loading..."
-      theme={_theme}
-      size="medium"
-    >
-    </omnistudio-spinner>
+    <c-sf-gps-ds-au-nsw-loader-os label="Loading..." size="md">
+    </c-sf-gps-ds-au-nsw-loader-os>
   </template>
 
   <div class={_containerClasses} aria-labelledby="fileUpload">
