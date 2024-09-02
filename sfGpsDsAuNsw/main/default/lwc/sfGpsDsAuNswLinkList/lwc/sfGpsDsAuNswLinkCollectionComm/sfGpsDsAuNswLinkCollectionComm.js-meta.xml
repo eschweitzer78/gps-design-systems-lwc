@@ -10,10 +10,25 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="mode"
+        type="String"
+        label="Mode"
+        datasource="Demo,Experience Cloud Navigation,Integration Procedure"
+        default="Experience Cloud Navigation"
+      />
+      <property
+        name="navigationDevName"
+        type="String"
+        label="Navigation name"
+        description="Pick the nav when mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
         name="ipName"
         type="String"
         label="Integration procedure name"
         description="Name of the Integration procedure mapping content to this list."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="inputJSON"
@@ -21,6 +36,7 @@
         label="Input JSON"
         description="JSON formatted input parameters for the Integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="optionsJSON"
@@ -28,12 +44,14 @@
         label="Options JSON"
         description="JSON formatted options for the Integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

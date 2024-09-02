@@ -28,8 +28,6 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   @api content;
   @api className;
 
-  _rendered = false;
-
   renderedCallback() {
     replaceInnerHtml(this.refs.markdown, this.content);
   }

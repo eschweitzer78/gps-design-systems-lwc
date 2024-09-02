@@ -1,8 +1,8 @@
 {
-  "sfGpsDsAuNswProgressIndicator": {
+  "sfGpsDsAuNswPagination": {
     "target": "!Os",
-    "progress-indicator.gen.css": {
-      "target": "progress-indicator.gen.css"
+    "pagination.gen.css": {
+      "target": "pagination.gen.css"
     },
     "!.css": {
       "target": "!Os.css",
@@ -20,11 +20,11 @@
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     }
   },
-  "sfGpsDsAuNswProgressIndicatorComm": {
+  "sfGpsDsAuNswPaginationComm": {
     "target": "!Os",
     "!.html": {
       "target": "!Os.html",
-      "c-sf-gps-ds-au-nsw-progress-indicator": "c-sf-gps-ds-au-nsw-progress-indicator-os",
+      "c-sf-gps-ds-au-nsw-pagination": "c-sf-gps-ds-au-nsw-pagination-os",
       "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
     },
     "!.js": {

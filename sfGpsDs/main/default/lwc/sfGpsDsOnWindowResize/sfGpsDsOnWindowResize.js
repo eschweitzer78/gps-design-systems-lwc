@@ -23,7 +23,7 @@ export default class {
     if (this._sfGpsDsOnWindowResize) {
       window.removeEventListener(
         "resize",
-        this._sfGpsDsOnWindowResizehandler.handler,
+        this._sfGpsDsOnWindowResize.handler,
         false
       );
       delete this._sfGpsDsOnWindowResize;

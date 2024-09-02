@@ -6,13 +6,10 @@
  */
 
 import { api, track } from "lwc";
-import { NavigationMixin } from "lightning/navigation";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswLinkListComm extends NavigationMixin(
-  SfGpsDsLwc
-) {
+export default class SfGpsDsAuNswLinkListComm extends SfGpsDsLwc {
   @api title;
   @api firstChild;
   @api className;

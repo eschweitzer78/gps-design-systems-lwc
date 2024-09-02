@@ -45,7 +45,7 @@
     "target": "!Os",
     "!.html": {
       "target": "!Os.html",
-      "c-sf-gps-ds-spinner": "c-sf-gps-ds-spinner-os",
+      "c-sf-gps-ds-au-nsw-loader": "c-sf-gps-ds-au-nsw-loader-os",
       "c-sf-gps-ds-au-nsw-card-comm": "c-sf-gps-ds-au-nsw-card-comm-os",
       "c-sf-gps-ds-empty": "c-sf-gps-ds-empty-os",
       "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
