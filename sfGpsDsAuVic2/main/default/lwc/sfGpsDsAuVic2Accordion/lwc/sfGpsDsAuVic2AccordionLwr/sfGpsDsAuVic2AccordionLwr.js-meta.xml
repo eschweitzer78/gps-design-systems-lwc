@@ -92,7 +92,6 @@
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
-        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>
