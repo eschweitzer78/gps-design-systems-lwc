@@ -4,7 +4,7 @@
       class="nsw-form__fieldset"
       role="radiogroup"
       aria-required={required}
-      aria-labelledby="sfgpsdds-aunsw-radio-group-legend"
+      aria-labelledby="sfgpsds-aunsw-radio-group-legend"
       aria-describedby={computedAriaDescribedBy}
       aria-invalid={computedAriaInvalid}
     >
@@ -15,7 +15,9 @@
         </span>
         <slot name="label"> </slot>
 
-        <span id="helper" class="nsw-form__helper">{fieldLevelHelp}</span>
+        <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper"
+          >{fieldLevelHelp}</span
+        >
 
         <span
           lwc:if={sfGpsDsIsError}
