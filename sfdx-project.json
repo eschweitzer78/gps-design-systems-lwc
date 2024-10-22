@@ -123,6 +123,10 @@
           "package": "omnistudio 250.7"
         }
       ]
+    },
+    {
+      "path": "sfGpsDsAuQld",
+      "default": false
     }
   ],
   "name": "au-design-systems-lwc",
