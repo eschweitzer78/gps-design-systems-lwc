@@ -1,0 +1,114 @@
+<template>
+  <section class={computedClassName}>
+    <c-sf-gps-ds-au-qld-breadcrumbs
+      lwc:if={computedHasBreadcrumbsItems}
+      mode="mobile"
+      items={breadcrumbsItems}
+      class-name="qld__banner__breadcrumbs qld__banner__breadcrumbs--mobile"
+    >
+    </c-sf-gps-ds-au-qld-breadcrumbs>
+    <template lwc:else>
+      <slot name="mobileBreadcrumbs" onslotchange={handleSlotChange}></slot>
+    </template>
+
+    <div class="container-fluid">
+      <div lwc:if={isDefault} class="qld__banner__content">
+        <c-sf-gps-ds-au-qld-breadcrumbs
+          lwc:if={computedHasBreadcrumbsItems}
+          mode="desktop"
+          items={breadcrumbsItems}
+          class-name="qld__banner__breadcrumbs qld__banner__breadcrumbs--desktop"
+        >
+        </c-sf-gps-ds-au-qld-breadcrumbs>
+        <template lwc:else>
+          <slot name="desktopBreadcrumbs"></slot>
+        </template>
+
+        <h1>{title}</h1>
+      </div>
+
+      <div lwc:else class="qld__banner__wrapper">
+        <div class="qld__banner__main row">
+          <template lwc:if={isBasic}>
+            <div class="qld__banner__content col-xs-12">
+              <c-sf-gps-ds-au-qld-breadcrumbs
+                lwc:if={computedHasBreadcrumbsItems}
+                mode="desktop"
+                items={breadcrumbsItems}
+                class-name="qld__banner__breadcrumbs qld__banner__breadcrumbs--desktop"
+              >
+              </c-sf-gps-ds-au-qld-breadcrumbs>
+
+              <template lwc:else>
+                <slot
+                  name="desktopBreadcrumbs"
+                  onslotchange={handleSlotChange}
+                ></slot>
+              </template>
+
+              <h1>{title}</h1>
+              <div class="qld__banner__content--body qld__abstract">
+                <slot onslotchange={handleSlotChange}></slot>
+              </div>
+            </div>
+          </template>
+
+          <template lwc:elseif={isAdvanced}>
+            <!-- Banner hero image -->
+            <div class="qld__banner__hero col-xs-12 col-md-6 col-lg-5">
+              <div class="qld__banner__image" style={computedImageStyle}></div>
+            </div>
+
+            <!-- Banner content -->
+            <div class="qld__banner__content col-xs-12 col-md-6 col-lg-7">
+              <c-sf-gps-ds-au-qld-breadcrumbs
+                lwc:if={computedHasBreadcrumbsItems}
+                mode="desktop"
+                items={breadcrumbsItems}
+                class-name="qld__banner__breadcrumbs qld__banner__breadcrumbs--desktop"
+              >
+              </c-sf-gps-ds-au-qld-breadcrumbs>
+
+              <template lwc:else>
+                <slot
+                  name="desktopBreadcrumbs"
+                  onslotchange={handleSlotChange}
+                ></slot>
+              </template>
+
+              <!-- Page title -->
+              <h1 class="qld__banner__heading__wrapper">
+                <span class="qld__banner__heading qld__banner__heading--dark"
+                  >{title}</span
+                >
+              </h1>
+
+              <!-- Page summary -->
+              <div class="qld__banner__content--body qld__abstract">
+                <slot onslotchange={handleSlotChange}></slot>
+              </div>
+
+              <!-- Banner CTAs -->
+              <ul class="qld__banner__content--cta qld__link-list">
+                <li lwc:if={primaryAction}>
+                  <a class="qld__btn qld__btn--primary" href={primaryActionUrl}>
+                    {primaryActionText}
+                  </a>
+                </li>
+
+                <li lwc:if={secondaryAction}>
+                  <a
+                    class="qld__btn qld__btn--secondary"
+                    href={secondaryActionUrl}
+                  >
+                    {secondaryActionText}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

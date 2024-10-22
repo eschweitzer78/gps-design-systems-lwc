@@ -1,0 +1,5 @@
+ol,
+ul {
+  list-style: revert;
+  padding-inline-start: revert;
+}

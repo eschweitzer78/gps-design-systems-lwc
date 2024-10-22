@@ -1,0 +1,17 @@
+@media (min-width: 992px) {
+  .qld__body--left-nav .qld__banner > .container-fluid,
+  .qld__body--left-nav .qld__body > .container-fluid {
+    padding-left: calc(48px + (100vw - 992px) * 24 / 320);
+    padding-right: 48px;
+    padding-right: 3rem;
+  }
+}
+
+@media (min-width: 1312px) {
+  .qld__body--left-nav .qld__banner > .container-fluid,
+  .qld__body--left-nav .qld__body > .container-fluid {
+    margin-left: 0px;
+    margin-left: 0rem;
+    padding-left: calc(72px + (100vw - 1312px) * 56 / 288);
+  }
+}

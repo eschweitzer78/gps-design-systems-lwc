@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>61.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Banner</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="mode"
+        type="String"
+        label="Mode"
+        required="true"
+        default="default"
+        datasource="default,basic,advanced"
+      />
+      <property
+        name="cstyle"
+        type="String"
+        label="Colour style"
+        description="Colour theme style used for rendering."
+        required="true"
+        default="default"
+        datasource="default,alt,dark,dark-alt"
+      />
+      <property
+        name="breadcrumbsItems"
+        type="String"
+        label="Breadcrumbs items"
+        description="Links to parent and current pages in Markdown format. Leave blank to get slots in LWR."
+        default="[Home](#)[Parent](#)[Current page]()"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Clearly identifies the primary purpose or action of the site, service or product."
+        default="Banner"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="abstract"
+        type="String"
+        label="Abstract"
+        description="Gives additional context when the title alone would be insufficient - in Markdown format. Leave blank to get a slot in LWR."
+        default="The hero banner reflects the goals or purpose of the site, service or product."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="image"
+        type="String"
+        label="Image source"
+        description="Allows for different content to stand out and provide additional context - as an URL. Leave blank to omit."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="primaryAction"
+        type="String"
+        label="Primary action"
+        description="Primary action in Markdown link format. Leave blank to omit."
+        default="[Apply](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="secondaryAction"
+        type="String"
+        label="Secondary action"
+        description="Secondary action in Markdown link format. Leave blank to omit."
+        default="[Read more](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

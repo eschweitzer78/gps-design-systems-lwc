@@ -1,0 +1,29 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-qld-loading-spinner lwc:elseif={_isLoading} mode="minimal">
+  </c-sf-gps-ds-au-qld-loading-spinner>
+
+  <template lwc:else>
+    <c-sf-gps-ds-empty lwc:if={isEmpty} title="No matching content">
+    </c-sf-gps-ds-empty>
+
+    <c-sf-gps-ds-au-qld-link-list
+      lwc:else
+      list-mode={listMode}
+      title={title}
+      links={_items}
+      cva-url={_cvaUrl}
+      cva-text={_cvaText}
+      title-class-name={titleClassName}
+      link-class-name={linkClassName}
+      anchor-class-name={anchorClassName}
+      class-name={className}
+    >
+    </c-sf-gps-ds-au-qld-link-list>
+  </template>
+</template>

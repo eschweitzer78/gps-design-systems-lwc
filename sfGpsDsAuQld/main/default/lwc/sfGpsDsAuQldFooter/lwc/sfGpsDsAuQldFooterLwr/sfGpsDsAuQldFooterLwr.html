@@ -1,0 +1,38 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <c-sf-gps-ds-au-qld-footer
+      cstyle={cstyle}
+      title={title}
+      nav-heading={navHeading}
+      links-heading={linksHeading}
+      social-heading={socialHeading}
+      facebook-url={facebookUrl}
+      instagram-url={instagramUrl}
+      linked-in-url={linkedInUrl}
+      you-tube-url={youTubeUrl}
+      twitter-x-url={twitterXUrl}
+      acknowledgements-heading={acknowledgementsHeading}
+      acknowledgements={acknowledgements}
+      logo={computedLogoUrl}
+      logo-alt={computedLogoText}
+      logo-url={logoUrl}
+      copyright-link-text={computedCopyrightLinkText}
+      copyright-link-url={computedCopyrightLinkUrl}
+      class-name={className}
+    >
+      <slot name="ContactUs"> </slot>
+
+      <slot name="FooterNav" slot="FooterNav"> </slot>
+
+      <slot name="FooterLinks" slot="FooterLinks"> </slot>
+
+      <span slot="Copyright" lwc:ref="copyright" lwc:dom="manual"> </span>
+    </c-sf-gps-ds-au-qld-footer>
+  </template>
+</template>
