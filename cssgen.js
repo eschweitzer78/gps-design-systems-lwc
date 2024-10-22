@@ -1,14 +1,39 @@
-let fs = require("fs").promises;
-let path = require("path");
+const fs = require("fs").promises;
+const path = require("path");
 const postcss = require("postcss");
 const postcssCustomMedia = require("postcss-custom-media");
-let sass = require("sass");
+const sass = require("sass");
+const toolbox = require("node-sass-magic-importer/dist/toolbox");
 const fileRegEx = /!/;
 
 function genFile(filename) {
+  const loadPaths = ["./", "node_modules", "node_modules/@gouvfr/dsfr"];
+
   return sass.compile(filename, {
     style: "compressed",
-    loadPaths: ["./", "node_modules", "node_modules/@gouvfr/dsfr"]
+    loadPaths,
+    importers: [
+      {
+        canonicalize(url) {
+          if (!url.includes("*")) return null;
+          return new URL("glob:" + url);
+        },
+        load(canonicalUrl) {
+          console.log("load", canonicalUrl.pathname);
+          const filePaths = toolbox.resolveGlobUrl(
+            canonicalUrl.pathname,
+            loadPaths
+          );
+
+          return {
+            contents: (filePaths || [])
+              .map((x) => `@import '${x}';`)
+              .join(`\n`),
+            syntax: "scss"
+          };
+        }
+      }
+    ]
   });
 }
 

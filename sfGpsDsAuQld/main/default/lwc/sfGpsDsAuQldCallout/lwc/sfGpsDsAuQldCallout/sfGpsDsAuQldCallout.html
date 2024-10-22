@@ -1,0 +1,13 @@
+<template>
+  <div class={computedClassName}>
+    <template lwc:if={heading}>
+      <h1 lwc:if={computedIsH1} class={computedHeadingClass}>{heading}</h1>
+      <h2 lwc:if={computedIsH2} class={computedHeadingClass}>{heading}</h2>
+      <h3 lwc:if={computedIsH3} class={computedHeadingClass}>{heading}</h3>
+      <h4 lwc:if={computedIsH4} class={computedHeadingClass}>{heading}</h4>
+      <h5 lwc:if={computedIsH5} class={computedHeadingClass}>{heading}</h5>
+      <h6 lwc:if={computedIsH6} class={computedHeadingClass}>{heading}</h6>
+    </template>
+    <slot></slot>
+  </div>
+</template>

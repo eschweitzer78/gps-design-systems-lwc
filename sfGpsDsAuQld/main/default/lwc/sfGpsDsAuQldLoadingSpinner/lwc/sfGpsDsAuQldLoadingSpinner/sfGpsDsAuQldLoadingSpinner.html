@@ -1,0 +1,10 @@
+<template>
+  <div class={computedClassName} role="status">
+    <!-- Visual representation of the spinner -->
+    <span class="qld__loading_spinner-wheel"></span>
+    <!-- Text label for the spinner, visible and text styled to md size via qld__display-md class -->
+    <div lwc:if={label} class="qld__loading_spinner-label qld__display-md">
+      {label}
+    </div>
+  </div>
+</template>

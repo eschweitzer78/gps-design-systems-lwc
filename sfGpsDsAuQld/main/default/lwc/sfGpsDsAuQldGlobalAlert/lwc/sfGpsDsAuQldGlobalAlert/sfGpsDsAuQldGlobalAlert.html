@@ -1,0 +1,50 @@
+<template>
+  <section class={computedClassName}>
+    <div class="container-fluid">
+      <div class="qld__global-alert__main">
+        <div class="qld__global-alert__icon">
+          <svg
+            aria-label={computedAriaLabel}
+            xmlns="http://www.w3.org/2000/svg"
+            class="qld__icon qld__icon--md"
+          >
+            <use href={computedIconUrl}></use>
+          </svg>
+        </div>
+
+        <div class="qld__global-alert__content">
+          <div lwc:if={copy} class="qld__global-alert__message">
+            <strong>{title}</strong> {copy}
+          </div>
+
+          <div class="qld__global-alert__action">
+            <a href={ctaHref} onclick={handleCtaClick}>
+              <span>{ctaText}</span>
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                xmlns="http://www.w3.org/2000/svg"
+                class="qld__icon qld__icon--sm"
+              >
+                <use href={computedArrowRightIconUrl}></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="qld__global-alert__close">
+          <button aria-label={i18n.closeAlert} onclick={handleCloseClick}>
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              xmlns="http://www.w3.org/2000/svg"
+              class="qld__icon qld__icon--md"
+            >
+              <use href={computedCloseIconUrl}></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

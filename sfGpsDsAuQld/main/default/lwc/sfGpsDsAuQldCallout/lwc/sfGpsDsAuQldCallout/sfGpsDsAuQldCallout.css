@@ -1,0 +1,9 @@
+.qld__callout__heading:not(.qld__callout__heading--sronly) {
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .qld__callout__heading:not(.qld__callout__heading--sronly) {
+    margin-bottom: 1.5rem;
+  }
+}

@@ -1,0 +1,19 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-qld-in-page-alert
+    lwc:else
+    type={type}
+    title={title}
+    class-name={className}
+  >
+    <div lwc:if={copy} lwc:ref="copy" lwc:dom="manual"></div>
+    <template lwc:else>
+      <slot name="Copy"></slot>
+    </template>
+  </c-sf-gps-ds-au-qld-in-page-alert>
+</template>

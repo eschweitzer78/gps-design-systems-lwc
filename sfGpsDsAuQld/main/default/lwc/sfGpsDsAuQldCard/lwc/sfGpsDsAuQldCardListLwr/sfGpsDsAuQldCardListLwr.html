@@ -1,0 +1,28 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <ul lwc:else class={computedClassName}>
+    <li class={computedCol1ClassName}>
+      <slot name="column1"></slot>
+    </li>
+    <li lwc:if={col2ClassName} class={computedCol2ClassName}>
+      <slot name="column2"></slot>
+    </li>
+    <li lwc:if={col3ClassName} class={computedCol3ClassName}>
+      <slot name="column3"></slot>
+    </li>
+    <li lwc:if={col4ClassName} class={computedCol4ClassName}>
+      <slot name="column4"></slot>
+    </li>
+    <li lwc:if={col5ClassName} class={computedCol5ClassName}>
+      <slot name="column5"></slot>
+    </li>
+    <li lwc:if={col6ClassName} class={computedCol6ClassName}>
+      <slot name="column6"></slot>
+    </li>
+  </ul>
+</template>

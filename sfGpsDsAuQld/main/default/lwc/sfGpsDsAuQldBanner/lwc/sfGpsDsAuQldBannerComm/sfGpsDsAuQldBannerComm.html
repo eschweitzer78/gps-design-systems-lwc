@@ -1,0 +1,19 @@
+<template>
+  <c-sf-gps-ds-au-qld-banner
+    mode={mode}
+    cstyle={cstyle}
+    breadcrumbs-items={_itemsArray}
+    title={title}
+    image={image}
+    primary-action={_primaryAction}
+    secondary-action={_secondaryAction}
+    class-name={className}
+  >
+    <slot name="mobileBreadcrumbs" slot="mobileBreadcrumbs"></slot>
+    <slot name="desktopBreadcrumbs" slot="desktopBreadcrumbs"></slot>
+    <div lwc:if={_abstractHtml} lwc:ref="abstract" lwc:dom="manual"></div>
+    <template lwc:else>
+      <slot name="abstract"></slot>
+    </template>
+  </c-sf-gps-ds-au-qld-banner>
+</template>

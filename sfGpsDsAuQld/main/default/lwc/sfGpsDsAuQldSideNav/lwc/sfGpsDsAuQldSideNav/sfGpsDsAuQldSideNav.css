@@ -1,0 +1,12 @@
+/*
+.qld__side-nav .qld__accordion__body.qld__accordion--closed {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .qld__side-nav .qld__accordion__body.qld__accordion--closed {
+    display: block;
+    height: auto;
+  }
+}
+  */

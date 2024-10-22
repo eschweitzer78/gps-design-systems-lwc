@@ -71,9 +71,11 @@
     "postcss": "^8.4.38",
     "postcss-custom-media": "^10.0.4",
     "prettier": "^3.1.1",
+    "@qhealth-design-system/core": "1.8.4",
     "prettier-plugin-apex": "^2.0.1",
     "resize-observer-polyfill": "^1.5.1",
-    "sass": "^1.59.3"
+    "sass": "^1.63.6",
+    "node-sass-magic-importer": "^5.3.3"
   },
   "devDependencies2": {
     "puppeteer": "^19.3.0"
