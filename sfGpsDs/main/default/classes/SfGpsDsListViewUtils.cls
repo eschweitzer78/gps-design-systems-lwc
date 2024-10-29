@@ -57,16 +57,23 @@ public class SfGpsDsListViewUtils {
 
           return String.join(rv, ' OR ');
         }
-        when 'Contains', 'NotContain' {
+        when 'Contains' {
           List<String> rv = new List<String>();
 
           for (String label : operandLabels) {
             rv.add(fieldApiName + ' LIKE \'%' + label + '%\'');
           }
 
-          return this.operator == 'Contains'
-            ? String.join(rv, ' OR ')
-            : 'NOT(' + String.join(rv, ' OR ') + ')';
+          return String.join(rv, ' OR ');
+        }
+        when 'NotContain' {
+          List<String> rv = new List<String>();
+
+          for (String label : operandLabels) {
+            rv.add('(NOT ' + fieldApiName + ' LIKE \'%' + label + '%\')');
+          }
+
+          return String.join(rv, ' AND ');
         }
         when 'Excludes', 'Includes' {
           List<String> rv = new List<String>();
@@ -133,7 +140,7 @@ public class SfGpsDsListViewUtils {
     return getSelectClause(dcList) +
       'FROM ' +
       objectApiName +
-      getWhereClause(filteredByInfo) +
+      getWhereClause(filterLogicString, filteredByInfo) +
       getOrderByClause(orderedByInfo) +
       getLimitOffsetClause(dcList);
   }
@@ -144,7 +151,10 @@ public class SfGpsDsListViewUtils {
       ' ';
   }
 
-  static String getWhereClause(List<ListFilteredByInfo> filteredByInfo) {
+  static String getWhereClause(
+    String filterLogicString,
+    List<ListFilteredByInfo> filteredByInfo
+  ) {
     List<String> fbiList = new List<String>();
 
     if (filteredByInfo != null) {
@@ -153,9 +163,32 @@ public class SfGpsDsListViewUtils {
       }
     }
 
-    return ((fbiList.size() > 0)
-      ? ' WHERE ' + String.join(fbiList, ' AND ')
-      : '');
+    if (String.isBlank(filterLogicString)) {
+      return ((fbiList.size() > 0)
+        ? ' WHERE ' + String.join(fbiList, ' AND ')
+        : '');
+    }
+
+    String index = '';
+    String rv = ' WHERE ';
+    Integer length = filterLogicString.length();
+    for (Integer i = 0; i <= length; i++) {
+      String c = i < length ? filterLogicString.substring(i, i + 1) : '';
+
+      if (c.isNumeric()) {
+        index += c;
+      } else {
+        if (index != '') {
+          Integer indexNum = Integer.valueOf(index);
+          rv += '(' + fbiList[indexNum - 1] + ')';
+          index = '';
+        }
+
+        rv += c;
+      }
+    }
+
+    return rv;
   }
 
   static String getOrderByClause(List<ListOrderedByInfo> orderedByInfo) {
