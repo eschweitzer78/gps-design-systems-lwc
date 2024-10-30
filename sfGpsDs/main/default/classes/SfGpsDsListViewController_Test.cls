@@ -39,34 +39,34 @@ private class SfGpsDsListViewController_Test {
   @IsTest
   private static void testGetCount() {
     final String testPrefix = 'PI314159265359_';
-    final Integer maxAccounts = 8;
+    final Integer maxContacts = 8;
 
     Test.startTest();
 
-    List<Account> accountList = new List<Account>();
-    Integer nAccounts = Integer.valueOf(Math.random() * maxAccounts);
+    List<Contact> contactList = new List<Contact>();
+    Integer nContacts = Integer.valueOf(Math.random() * maxContacts);
 
-    for (Integer i = 0; i < nAccounts; i++) {
-      accountList.add(new Account(Name = testPrefix + i));
+    for (Integer i = 0; i < nContacts; i++) {
+      contactList.add(new Contact(LastName = testPrefix + i));
     }
 
-    insert accountList;
+    insert contactList;
 
     String filteredByInfo =
       '[{"fieldApiName":"Name","label":"Name","operandLabels":["' +
       testPrefix +
       '"],"operator":"Contains"}]';
     Integer rv = SfGpsDsListViewController.getCount(
-      'Account',
+      'Contact',
       '1',
       filteredByInfo
     );
 
     System.assertEquals(
-      nAccounts,
+      nContacts,
       rv,
       'Should have ' +
-        nAccounts +
+        nContacts +
         ' accounts whose name is starting with ' +
         testPrefix +
         ' vs. ' +
