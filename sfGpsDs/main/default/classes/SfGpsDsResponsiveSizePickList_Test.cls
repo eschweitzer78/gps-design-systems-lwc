@@ -1,3 +1,6 @@
+/*
+ * @author: Emmanuel Schweitzer
+ */
 @isTest
 private class SfGpsDsResponsiveSizePickList_Test {
   static @isTest

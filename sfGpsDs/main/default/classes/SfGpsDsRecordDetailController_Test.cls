@@ -1,3 +1,6 @@
+/*
+ * @author: Emmanuel Schweitzer
+ */
 @IsTest
 private class SfGpsDsRecordDetailController_Test {
   @IsTest
@@ -41,14 +44,14 @@ private class SfGpsDsRecordDetailController_Test {
 
     try {
       SfGpsDsRecordDetailController.getObjectSummary('YabbaDabbaDoo');
-    } catch (AuraException e) {
+    } catch (AuraHandledException e) {
       hadException = true;
     }
 
-    System.assertNotEquals(
+    System.assertEquals(
       true,
       hadException,
-      'Summary should raise exception'
+      'Summary should raise an AuraHandledException'
     );
 
     Test.stopTest();

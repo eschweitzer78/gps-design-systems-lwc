@@ -1,3 +1,6 @@
+/*
+ * @author: Emmanuel Schweitzer
+ */
 @isTest
 public class SfGpsDsEncodingOF_Test {
   final static String OP_URL_ENCODE = 'UrlEncode';
