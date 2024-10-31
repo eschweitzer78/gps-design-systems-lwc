@@ -15,7 +15,7 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
           WhereFrom.INPUT,
           'communityId',
           Id.class,
-          false
+          true
         );
 
         Boolean communityPreview = (Boolean) getTypedFromMap(
@@ -54,7 +54,7 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
           WhereFrom.INPUT,
           'communityId',
           Id.class,
-          false
+          true
         );
 
         Boolean communityPreview = (Boolean) getTypedFromMap(
@@ -105,22 +105,12 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
     Boolean communityPreview
   ) {
     GetNavigationItemsResp resp = new GetNavigationItemsResp();
-
     try {
-      Id cId = Id.valueOf(communityId); // To cater to 15 vs 18 char
-      ConnectApi.NavigationMenuItemCollection coll = ConnectApi.NavigationMenu.getCommunityNavigationMenu(
-        cId,
-        null,
+      resp.items = getNavigationItems(
+        communityId,
         developerName,
         communityPreview
-          ? ConnectApi.PublishStatus.Draft
-          : ConnectApi.PublishStatus.Live,
-        false,
-        false,
-        null
       );
-
-      resp.items = coll.menuItems;
     } catch (Exception e) {
       resp.errorMessage = e.getMessage();
     }
@@ -135,37 +125,42 @@ global without sharing class SfGpsDsNavigationORA extends SfGpsDsBaseORA impleme
     Boolean communityPreview
   ) {
     try {
-      Id cId = Id.valueOf(communityId); // To cater to 15 vs 18 char
-      ConnectApi.NavigationMenuItemCollection coll = ConnectApi.NavigationMenu.getCommunityNavigationMenu(
-        cId,
-        null,
-        developerName,
-        communityPreview
-          ? ConnectApi.PublishStatus.Draft
-          : ConnectApi.PublishStatus.Live,
-        false,
-        false,
-        null
-      );
+      Id cId = communityId != null
+        ? Id.valueOf(communityId) // To cater to 15 vs 18 char
+        : null;
 
-      return coll.menuItems;
+      ConnectApi.NavigationMenuItemCollection coll = (cId != null)
+        ? ConnectApi.NavigationMenu.getCommunityNavigationMenu(
+            cId,
+            null,
+            developerName,
+            communityPreview
+              ? ConnectApi.PublishStatus.Draft
+              : ConnectApi.PublishStatus.Live,
+            false,
+            false,
+            null
+          )
+        : null;
+
+      return coll != null
+        ? coll.menuItems
+        : new List<ConnectApi.NavigationMenuItem>();
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }
   }
 
+  @TestVisible
   static List<Object> handleNavigationItemsEntities(List<Object> items) {
     if (items != null) {
       for (Object item : items) {
         Map<String, Object> mapItem = (Map<String, Object>) item;
+        String label = ((String) mapItem.get('label'))?.unescapeHtml4();
 
-        if (mapItem.containsKey('label')) {
-          mapItem.put('label', ((String) mapItem.get('label')).unescapeHtml4());
-          if (mapItem.containsKey('subMenu')) {
-            handleNavigationItemsEntities(
-              (List<Object>) mapItem.get('subMenu')
-            );
-          }
+        if (label != null) {
+          mapItem.put('label', label);
+          handleNavigationItemsEntities((List<Object>) mapItem.get('subMenu'));
         }
       }
     }

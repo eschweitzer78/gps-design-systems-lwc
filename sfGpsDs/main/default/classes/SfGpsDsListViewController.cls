@@ -462,6 +462,7 @@ public with sharing class SfGpsDsListViewController {
     Map<sObjectType, EnhancedTypeInfo> mapInfosSot;
     String defaultObjectApiName;
 
+    @TestVisible
     EnhancedTypeInfos(String defaultObjectApiName) {
       this.mapInfos = new Map<String, EnhancedTypeInfo>();
       this.mapInfosSot = new Map<sObjectType, EnhancedTypeInfo>();
@@ -515,12 +516,13 @@ public with sharing class SfGpsDsListViewController {
         : null;
     }
 
+    @TestVisible
     Map<String, Schema.PicklistEntry> getFieldPicklistEntries(
       String objectApiName,
       String fieldApiName
     ) {
       if (objectApiName != null) {
-        sObjectType sot = getTypeInfo().getTypeForRelationship(fieldApiName);
+        sObjectType sot = getTypeInfo().getTypeForRelationship(objectApiName);
         EnhancedTypeInfo typeInfo = getTypeInfo(sot);
         return typeInfo != null
           ? typeInfo.getFieldPicklistEntries(fieldApiName)
@@ -533,6 +535,7 @@ public with sharing class SfGpsDsListViewController {
         : null;
     }
 
+    @TestVisible
     Schema.PicklistEntry getFieldPicklistEntry(
       String objectApiName,
       String fieldApiName,

@@ -1,3 +1,6 @@
+/*
+ * @author: Emmanuel Schweitzer
+ */
 @IsTest
 private class SfGpsDsBaseORA_Test {
   private class SfGpsDsBaseTestORA extends SfGpsDsBaseORA {
