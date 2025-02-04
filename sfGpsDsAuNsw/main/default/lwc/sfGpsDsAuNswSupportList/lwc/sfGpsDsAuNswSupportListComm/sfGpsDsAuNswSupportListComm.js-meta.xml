@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Support List</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="header"
+        type="String"
+        label="Header"
+        description="Title of the support list block."
+        default="Supported by"
+      />
+      <property
+        name="logoPosition"
+        type="String"
+        label="Logo position"
+        description="Indicates the location of the NSW Government waratah logo."
+        default="top"
+        datasource="labels,logos,none"
+      />
+      <property
+        name="departments"
+        type="String"
+        label="Departments"
+        description="A list of departments and URLs in Markdown link format."
+        default="[Department of Customer Service](#)[Department of Education](#)"
+      />
+      <property
+        name="supportLogos"
+        type="String"
+        label="Support logos"
+        description="A list of support logo URL and alternative texts in Markdown link format. Leave empty to get LWR slots."
+        default=""
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
