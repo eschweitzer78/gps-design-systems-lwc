@@ -1,12 +1,11 @@
 /* temporary */
 
-.fade-enter-active {
-  transition:
-    transform ease-in 0.3s,
-    opacity ease-in 0.3s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity ease-in 2.3s;
 }
 
-.fade-enter-from {
-  transform: translateY(-4rem);
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
