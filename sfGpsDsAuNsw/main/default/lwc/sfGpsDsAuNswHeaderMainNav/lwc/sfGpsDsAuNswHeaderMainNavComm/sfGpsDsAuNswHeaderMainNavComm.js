@@ -5,11 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsIp from "c/sfGpsDsIpLwc";
-// import { uniqueId } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIp {
+export default class extends SfGpsDsIp {
   @api mode = "Integration Procedure";
   @api navigationDevName;
 
@@ -39,7 +38,6 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIp {
   @api profileOptionsJSON;
 
   @api headerClassName;
-  @track menuActive = false;
 
   // MainNav
   @api megaMenu = false;
@@ -47,13 +45,15 @@ export default class SfGpsDsAuNswHeaderMainNavComm extends SfGpsDsIp {
 
   @api mainNavId = "nav";
 
-  // Events
+  /* event management */
+
+  _isActive = false;
 
   handleOpenMenu() {
-    this.menuActive = true;
+    this._isActive = true;
   }
 
   handleCloseMenu() {
-    this.menuActive = false;
+    this._isActive = false;
   }
 }

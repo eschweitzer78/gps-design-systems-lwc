@@ -10,16 +10,14 @@ import StatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswRadioGroupOsN.html";
 
-export default class SfGpsDsAuNswRadioGroupOsN extends StatusHelperMixin(
-  OmnistudioRadioGroup
-) {
+export default class extends StatusHelperMixin(OmnistudioRadioGroup) {
   /* computed */
 
   get computedLegendClassName() {
-    return computeClass({
+    return {
       "nsw-form__legend": true,
       "nsw-form__required": this.required
-    });
+    };
   }
 
   get computedAriaInvalid() {

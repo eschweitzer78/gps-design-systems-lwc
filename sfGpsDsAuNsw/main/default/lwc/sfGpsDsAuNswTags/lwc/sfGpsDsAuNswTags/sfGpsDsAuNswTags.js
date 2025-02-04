@@ -5,16 +5,23 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api, track } from "lwc";
-import { computeClass, uniqueId, normaliseBoolean } from "c/sfGpsDsHelpers";
+import { LightningElement, api } from "lwc";
+import { isArray, uniqueId, normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const TAG_PREFIX = "sf-gps-ds-au-nsw-tag";
+const DEFAULT_TAGS = [];
 
-export default class SfGpsDsAuNswTags extends LightningElement {
+const ASCHECKBOXES_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
-  _asCheckboxesOriginal;
-  _asCheckboxes = false;
+  @api className;
+
+  /* api: asCheckboxes */
+
+  _asCheckboxesOriginal = ASCHECKBOXES_DEFAULT;
+  _asCheckboxes = ASCHECKBOXES_DEFAULT;
 
   @api
   get asCheckboxes() {
@@ -25,50 +32,65 @@ export default class SfGpsDsAuNswTags extends LightningElement {
     this._asCheckboxesOriginal = value;
     this._asCheckboxes = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: ASCHECKBOXES_DEFAULT
     });
 
     this.updateTags();
   }
 
-  @track _tags;
-  _originalTags;
+  /* api: tags */
+
+  _tags = DEFAULT_TAGS;
+  _tagsOriginal = DEFAULT_TAGS;
 
   @api
   get tags() {
-    return this._originalTags;
+    return this._tagsOriginal;
   }
 
   set tags(value) {
-    this._originalTags = value;
+    this._tagsOriginal = value;
     this.updateTags();
   }
 
-  updateTags() {
-    this._tags =
-      this._originalTags && Array.isArray(this._originalTags)
-        ? this._originalTags.map((tag, index) => ({
-            ...tag,
-            key: `${this.idBase}-${index}`,
-            checked: tag.checked || false,
-            className: computeClass({
-              "nsw-tag": true,
-              "nsw-tag--checkbox": this._asCheckboxes,
-              [tag.className]: tag.className
-            })
-          }))
-        : null;
-  }
-
-  @api className;
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-list": true,
       "nsw-list--8": true,
       [this.className]: this.className
-    });
+    };
   }
+
+  _idBase;
+
+  get idBase() {
+    if (this._idBase == null) {
+      this._idBase = uniqueId(TAG_PREFIX);
+    }
+
+    return this._idBase;
+  }
+
+  /* methods */
+
+  updateTags() {
+    this._tags = isArray(this._tagsOriginal)
+      ? this._tagsOriginal.map((tag, index) => ({
+          ...tag,
+          key: `${this.idBase}-${index}`,
+          checked: tag.checked || false,
+          className: {
+            "nsw-tag": true,
+            "nsw-tag--checkbox": this._asCheckboxes,
+            [tag.className]: tag.className
+          }
+        }))
+      : DEFAULT_TAGS;
+  }
+
+  /* event management */
 
   handleCheckboxClick(event) {
     event.preventDefault();
@@ -102,15 +124,5 @@ export default class SfGpsDsAuNswTags extends LightningElement {
         }
       })
     );
-  }
-
-  _idBase;
-
-  get idBase() {
-    if (this._idBase == null) {
-      this._idBase = uniqueId(TAG_PREFIX);
-    }
-
-    return this._idBase;
   }
 }

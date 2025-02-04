@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import { parseIso8601, replaceInnerHtml } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api cstyle = "white"; // PropTypes.oneOf(['dark', 'light', 'white']),
   @api orientation = "vertical"; // oneOf 'vertical' 'horizontal'
   @api dateStyle = "medium"; // oneOf short medium long full
@@ -22,21 +22,19 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
   // This is not exposed in Experience Builder and is used by cardCollectionComm
   @api useMarkup = false;
 
-  /*
-   * headline and link
-   */
+  /* api: headline and link */
 
-  @track _headline; // combined link into headline
-  _originalHeadline;
+  _headline; // combined link into headline
+  _headlineOriginal;
 
-  @api get headline() {
-    return this._originalHeadline;
+  @api
+  get headline() {
+    return this._headlineOriginal;
   }
 
   set headline(markdown) {
-    this._originalHeadline = markdown;
-
     try {
+      this._headlineOriginal = markdown;
       this._headline = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Headline markdown");
@@ -51,41 +49,39 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     return this._headline?.url;
   }
 
-  /*
-   * date
-   */
+  /* api: date */
 
-  @track _date;
-  _originalDate;
+  _date;
+  _dateOriginal;
 
-  @api get date() {
-    return this._originalDate;
+  @api
+  get date() {
+    return this._dateOriginal;
   }
 
-  set date(date) {
-    this._originalDate = date;
+  set date(value) {
+    this._dateOriginal = value;
 
-    if (date instanceof Date) {
-      this._date = date;
+    if (value instanceof Date) {
+      this._date = value;
     } else {
-      this._date = date ? parseIso8601(date.toString()) : null;
+      this._date = value ? parseIso8601(value.toString()) : null;
     }
   }
 
-  /*
-   * copy
-   */
+  /* api: copy */
 
-  _copy;
   _copyHtml;
+  _copyOriginal;
 
-  @api get copy() {
-    return this._copy;
+  @api
+  get copy() {
+    return this._copyOriginal;
   }
 
   set copy(markdown) {
-    this._copy = markdown;
     try {
+      this._copyOriginal = markdown;
       if (markdown) {
         this._copyHtml = this.useMarkup
           ? markdown
@@ -98,16 +94,19 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
     }
   }
 
-  _footer;
-  _footerHtml;
+  /* api: footer */
 
-  @api get footer() {
-    return this._footer;
+  _footerHtml;
+  _footerOriginal;
+
+  @api
+  get footer() {
+    return this._footerOriginal;
   }
 
   set footer(markdown) {
-    this._footer = markdown;
     try {
+      this._footerOriginal = markdown;
       if (markdown) {
         this._footerHtml = this.useMarkup
           ? markdown
@@ -119,6 +118,8 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
       this.addError("FO-MD", "Issue when parsing Footer markdown");
     }
   }
+
+  /* computed */
 
   get highlight() {
     return this.cstyle === "highlight";
@@ -132,11 +133,11 @@ export default class SfGpsDsAuNswCardComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    if (this.copy) {
+    if (this._copyOriginal) {
       replaceInnerHtml(this.refs.copy, this._copyHtml);
     }
 
-    if (this.footer) {
+    if (this._footerOriginal) {
       replaceInnerHtml(this.refs.footer, this._footerHtml);
     }
   }

@@ -1,5 +1,6 @@
+<!-- sldsValidatorIgnore -->
 <template>
-  <div class="nsw-header__profile-container">
+  <div lwc:ref="containerRef" class="nsw-header__profile-container">
     <template lwc:if={isGuest}>
       <button class="nsw-header__profile-login" onclick={handleLogin}>
         <i class="material-icons nsw-material-icons" aria-hidden="true">

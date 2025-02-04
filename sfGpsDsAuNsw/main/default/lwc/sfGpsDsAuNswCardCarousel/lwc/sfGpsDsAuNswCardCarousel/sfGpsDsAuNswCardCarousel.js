@@ -26,6 +26,11 @@ const I18N = {
     "Item {selected} selected. {visible} items of {total} visible."
 };
 
+const DRAG_DEFAULT = false;
+const NAVIGATION_DEFAULT = true;
+const LOOP_DEFAULT = false;
+const COUNTER_DEFAULT = false;
+
 export default class extends LightningElement {
   @api accessibilityLabel; // data-description
   @api navigationPagination = false;
@@ -36,12 +41,13 @@ export default class extends LightningElement {
   @api paginationClassName;
   @api className;
 
-  /* api: drag */
+  /* api: drag, Boolean */
 
-  _dragOriginal;
-  _drag;
+  _drag = DRAG_DEFAULT;
+  _dragOriginal = DRAG_DEFAULT;
 
-  @api get drag() {
+  @api
+  get drag() {
     return this._dragOriginal;
   }
 
@@ -49,16 +55,17 @@ export default class extends LightningElement {
     this._dragOriginal = value;
     this._drag = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: DRAG_DEFAULT
     });
   }
 
-  /* api: navigation */
+  /* api: navigation, Boolean */
 
-  _navigationOriginal = true;
-  _navigation = true;
+  _navigation = NAVIGATION_DEFAULT;
+  _navigationOriginal = NAVIGATION_DEFAULT;
 
-  @api get navigation() {
+  @api
+  get navigation() {
     return this._navigationOriginal;
   }
 
@@ -66,20 +73,21 @@ export default class extends LightningElement {
     this._navigationOriginal = value;
     this._navigation = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: true
+      fallbackValue: NAVIGATION_DEFAULT
     });
   }
 
-  /* api: loop */
+  /* api: loop, Boolean */
 
-  _loopOriginal = false;
-  _loopRequested = false;
+  _loopOriginal = LOOP_DEFAULT;
+  _loopRequested = LOOP_DEFAULT;
 
   get _loop() {
     return this._loopRequested && !this._navigation;
   }
 
-  @api get loop() {
+  @api
+  get loop() {
     return this._loopOriginal;
   }
 
@@ -87,14 +95,14 @@ export default class extends LightningElement {
     this._loopOriginal = value;
     this._loopRequested = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: LOOP_DEFAULT
     });
   }
 
-  /* api: items */
+  /* api: items, Array of Objects */
 
-  _itemsOriginal;
   _items;
+  _itemsOriginal;
   _itemsNb;
 
   @api
@@ -109,8 +117,8 @@ export default class extends LightningElement {
 
   /* api: counter */
 
-  _counterOriginal;
-  _counter;
+  _counter = COUNTER_DEFAULT;
+  _counterOriginal = COUNTER_DEFAULT;
 
   @api
   get counter() {
@@ -121,7 +129,7 @@ export default class extends LightningElement {
     this._counterOriginal = value;
     this._counter = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: COUNTER_DEFAULT
     });
 
     if (!this._counter) {
@@ -186,11 +194,11 @@ export default class extends LightningElement {
   }
 
   get computedNavigationClassName() {
-    return computeClass({
+    return {
       [this.navigationClassName || DEFAULT_NAVIGATION_CLASSNAME]: true,
       [`${this.navigationClassName || DEFAULT_NAVIGATION_CLASSNAME}--pagination`]:
         this.navigationPagination
-    });
+    };
   }
 
   get computedPaginationClassName() {
@@ -357,20 +365,20 @@ export default class extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-carousel": true,
       "nsw-carousel--loaded": !this._initialRender,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedListClassName() {
-    return computeClass({
+    return {
       "nsw-carousel__list": true,
       "nsw-carousel__list--animating": this.animating,
       [this.centerClass]:
         this.justifyContent && this.itemsNb < this.visibleItemsNb
-    });
+    };
   }
 
   get computedListStyle() {

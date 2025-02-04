@@ -9,7 +9,7 @@ import { api, track } from "lwc";
 import SfGpsDsFormTypeaheadOsN from "c/sfGpsDsFormTypeaheadOsN";
 import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { debounce } from "omnistudio/utility";
-import { computeClass } from "c/sfGpsDsHelpersOs";
+import { isArray } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormAddressTypeaheadOsN.html";
 
 const STATUS_TYPING = "typing";
@@ -20,7 +20,7 @@ const MODE_MANUAL = "manual";
 const DEFAULT_STATE = "NSW";
 const DEFAULT_COUNTRY = "Australia";
 
-export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswStatusHelperMixin(
+export default class extends SfGpsDsAuNswStatusHelperMixin(
   SfGpsDsFormTypeaheadOsN
 ) {
   @api street;
@@ -44,7 +44,73 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswSta
   @track elementValueValue;
   @track elementValueStatus = STATUS_TYPING;
 
-  // EVENT HANDLING
+  /* other vars */
+
+  _ath_options;
+
+  get options() {
+    return this._ath_options;
+  }
+  set options(v) {
+    this._ath_options = v;
+
+    if (v && isArray(v)) {
+      if (v.length === 1 && v[0].name) {
+        // simulate selection after all asynchronous activities are done
+        Promise.resolve().then(() => {
+          this.handleSelect({
+            target: { value: v[0].name },
+            detail: v[0]
+          });
+        });
+      }
+    }
+  }
+
+  _manualChildInputs;
+
+  get manualChildInputs() {
+    if (!this._manualChildInputs) {
+      this._manualChildInputs = this.template.querySelectorAll(".manual-field");
+    }
+    return this._manualChildInputs;
+  }
+
+  get elementValue() {
+    return this.isSmart ? this.getSmartValue() : this.getManualValue();
+  }
+
+  set elementValue(v) {
+    this._didGetValue = true;
+    this.ingest(v);
+  }
+
+  /* computed / getters */
+
+  get computedLabelClassName() {
+    return {
+      "nsw-form__label": true,
+      "nsw-form__required": this._propSetMap.required
+    };
+  }
+
+  get computedTypeaheadClassName() {
+    return {
+      "sfgpsds-hide": !this.isSmart
+    };
+  }
+
+  get computedManualClassName() {
+    return {
+      "sfgpsds-hide": this.isSmart
+    };
+  }
+
+  get complete() {
+    return this.isSmart ? this.elementValueStatus === STATUS_RESOLVED : false;
+  }
+
+  /* event management */
 
   handleToggle() {
     this.isSmart = !this.isSmart;
@@ -125,42 +191,6 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswSta
     }
   }
 
-  // Render/Callbacks/Override
-
-  render() {
-    return tmpl;
-  }
-
-  performTypeahead(e, testValue = true) {
-    this._didTypeahead = true;
-    const t = e.value || null;
-    this.elementValueLabel = t;
-
-    if (!testValue || this.elementValue !== t) {
-      this.setElementValue(this.getSmartValue(), false, false);
-
-      this.dispatchOmniEventUtil(
-        this,
-        this.createAggregateNode(),
-        "omniaggregate"
-      );
-
-      if (t === null) {
-        this.options = [];
-      } else {
-        if (this._propSetMap.useDataJson) {
-          this.getOptionsDataJson();
-        } else {
-          Promise.resolve().then(() => {
-            this.getOptions(this._propSetMap.taAction);
-          });
-        }
-      }
-
-      this.dispatchOmniEventUtil(this, { item: "$Vlocity.nullify" }, "select");
-    }
-  }
-
   handleTypeahead(event) {
     if (this.isSmart) {
       this.elementValueStatus = STATUS_TYPING;
@@ -213,7 +243,7 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswSta
         this.applyCallResp(
           {
             ...this.elementValue,
-            value: Array.isArray(e) ? e[0] : e,
+            value: isArray(e) ? e[0] : e,
             status: STATUS_RESOLVED
           },
           true
@@ -224,26 +254,10 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswSta
       .catch((e) => this.handleError(e));
   }
 
-  /* Override, we don't want all the fancy stuff */
+  /* lifecycle */
 
-  applyCallResp(json, bApi = false, bValidation = false) {
-    if (bValidation) {
-      this.setCustomValidation(json);
-    } else {
-      json = this.treatResp(json);
-
-      if (
-        json !== undefined &&
-        !this.lodashUtil.isEqual(this.elementValue || {}, json)
-      ) {
-        this.setElementValue(json, bApi, bValidation);
-        this.dispatchOmniEventUtil(
-          this,
-          this.createAggregateNode(),
-          "omniaggregate"
-        );
-      }
-    }
+  render() {
+    return tmpl;
   }
 
   _didTypeahead = false;
@@ -262,6 +276,78 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswSta
       this.elementValueLabel = null;
       this.elementValueValue = {};
       this.elementValueStatus = STATUS_TYPING;
+    }
+  }
+
+  renderedCallback() {
+    super.renderedCallback();
+
+    if (!this._didTypeahead && this._didGetValue) {
+      if (this.isSmart) {
+        if (this.elementValueStatus === STATUS_TYPING) {
+          this.performTypeahead({ value: this.elementValueLabel }, false);
+        } else if (this.elementValueStatus === STATUS_SELECTED) {
+          this._didTypeahead = true;
+          this.handleSelect({
+            target: { value: this.elementValueLabel },
+            detail: { item: this.elementValueValue }
+          });
+        } else {
+          this._didTypeahead = true;
+        }
+      }
+    }
+  }
+
+  /* methods / overrides */
+
+  performTypeahead(e, testValue = true) {
+    this._didTypeahead = true;
+    const t = e.value || null;
+    this.elementValueLabel = t;
+
+    if (!testValue || this.elementValue !== t) {
+      this.setElementValue(this.getSmartValue(), false, false);
+
+      this.dispatchOmniEventUtil(
+        this,
+        this.createAggregateNode(),
+        "omniaggregate"
+      );
+
+      if (t === null) {
+        this.options = [];
+      } else {
+        if (this._propSetMap.useDataJson) {
+          this.getOptionsDataJson();
+        } else {
+          Promise.resolve().then(() => {
+            this.getOptions(this._propSetMap.taAction);
+          });
+        }
+      }
+
+      this.dispatchOmniEventUtil(this, { item: "$Vlocity.nullify" }, "select");
+    }
+  }
+
+  applyCallResp(json, bApi = false, bValidation = false) {
+    if (bValidation) {
+      this.setCustomValidation(json);
+    } else {
+      json = this.treatResp(json);
+
+      if (
+        json !== undefined &&
+        !this.lodashUtil.isEqual(this.elementValue || {}, json)
+      ) {
+        this.setElementValue(json, bApi, bValidation);
+        this.dispatchOmniEventUtil(
+          this,
+          this.createAggregateNode(),
+          "omniaggregate"
+        );
+      }
     }
   }
 
@@ -296,15 +382,6 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswSta
       this.elementValueValue = {};
       this.elementValueStatus = STATUS_TYPING;
     }
-  }
-
-  get elementValue() {
-    return this.isSmart ? this.getSmartValue() : this.getManualValue();
-  }
-
-  set elementValue(v) {
-    this._didGetValue = true;
-    this.ingest(v);
   }
 
   getManualValue() {
@@ -345,56 +422,6 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswSta
     };
 
     return value;
-  }
-
-  _ath_options;
-
-  get options() {
-    return this._ath_options;
-  }
-  set options(v) {
-    this._ath_options = v;
-
-    if (v && Array.isArray(v)) {
-      if (v.length === 1 && v[0].name) {
-        // simulate selection after all asynchronous activities are done
-        Promise.resolve().then(() => {
-          this.handleSelect({
-            target: { value: v[0].name },
-            detail: v[0]
-          });
-        });
-      }
-    }
-  }
-
-  renderedCallback() {
-    super.renderedCallback();
-
-    if (!this._didTypeahead && this._didGetValue) {
-      if (this.isSmart) {
-        if (this.elementValueStatus === STATUS_TYPING) {
-          this.performTypeahead({ value: this.elementValueLabel }, false);
-        } else if (this.elementValueStatus === STATUS_SELECTED) {
-          this._didTypeahead = true;
-          this.handleSelect({
-            target: { value: this.elementValueLabel },
-            detail: { item: this.elementValueValue }
-          });
-        } else {
-          this._didTypeahead = true;
-        }
-      }
-    }
-  }
-
-  _manualChildInputs;
-
-  get manualChildInputs() {
-    if (!this._manualChildInputs) {
-      this._manualChildInputs = this.template.querySelectorAll(".manual-field");
-    }
-    return this._manualChildInputs;
   }
 
   @api checkValidity() {
@@ -460,30 +487,5 @@ export default class sfGpsDsAuNswFormAddressTypeaheadOsN extends SfGpsDsAuNswSta
     } catch (t) {
       return true;
     }
-  }
-
-  // STYLE EXPRESSIONS
-
-  get computedLabelClassName() {
-    return computeClass({
-      "nsw-form__label": true,
-      "nsw-form__required": this._propSetMap.required
-    });
-  }
-
-  get computedTypeaheadClass() {
-    return computeClass({
-      "sfgpsds-hide": !this.isSmart
-    });
-  }
-
-  get computedManualClassName() {
-    return computeClass({
-      "sfgpsds-hide": this.isSmart
-    });
-  }
-
-  get complete() {
-    return this.isSmart ? this.elementValueStatus === STATUS_RESOLVED : false;
   }
 }

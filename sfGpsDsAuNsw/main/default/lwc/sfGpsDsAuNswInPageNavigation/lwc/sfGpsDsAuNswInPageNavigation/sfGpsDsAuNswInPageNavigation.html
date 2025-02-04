@@ -1,5 +1,6 @@
 <template lwc:render-mode="light">
-  <div if:false={firstChild}></div>
+  <div if:false={_firstChild}></div>
+
   <nav class={computedClassName} aria-labelledby={computedAriaLabelledById}>
     <div id={computedAriaLabelledById} class="nsw-in-page-nav__title">
       {title}

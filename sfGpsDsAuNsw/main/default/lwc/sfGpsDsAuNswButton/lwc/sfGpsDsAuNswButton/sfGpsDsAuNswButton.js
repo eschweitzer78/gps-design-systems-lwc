@@ -6,25 +6,103 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
+import { normaliseBoolean, normaliseString } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswButton extends LightningElement {
+const CSTYLE_VALUES = [
+  "dark",
+  "dark-outline",
+  "dark-outline-solid",
+  "light",
+  "light-outline",
+  "white",
+  "danger",
+  "info"
+];
+const CSTYLE_DEFAULT = "dark";
+
+const ICONSTYLE_NONE = "none";
+const ICONSTYLE_BEFORE = "before";
+const ICONSTYLE_AFTER = "after";
+const ICONSTYLE_VALUES = [ICONSTYLE_AFTER, ICONSTYLE_BEFORE, ICONSTYLE_NONE];
+const ICONSTYLE_DEFAULT = ICONSTYLE_NONE;
+
+const RENDERING_A = "a";
+const RENDERING_BUTTON = "button";
+const RENDERING_VALUES = [RENDERING_A, RENDERING_BUTTON];
+const RENDERING_DEFAULT = RENDERING_BUTTON;
+
+const DISABLED_DEFAULT = false;
+const MOBILEFULLWIDTH_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api label;
   @api link;
-  @api cstyle = "dark"; // oneOf(['dark', 'dark-outline', 'dark-outline-solid', 'light', 'light-outline','white','danger']
   @api type = "button";
-  @api rendering = "button";
-  @api iconStyle = "none"; // one of none, before, after
   @api iconName;
-  @track ariaHaspopup;
   @api className;
+
+  @track ariaHaspopup;
+
+  /* api: cstyle */
+
+  _cstyle = CSTYLE_DEFAULT;
+  _cstyleOriginal = CSTYLE_DEFAULT;
+
+  @api
+  get cstyle() {
+    return this._cstyleOriginal;
+  }
+
+  set cstyle(value) {
+    this._cstyleOriginal = value;
+    this._cstyle = normaliseString(value, {
+      validValues: CSTYLE_VALUES,
+      fallbackValue: CSTYLE_DEFAULT
+    });
+  }
+
+  /* api: iconStyle */
+
+  _iconStyle = ICONSTYLE_DEFAULT;
+  _iconStyleOriginal = ICONSTYLE_DEFAULT;
+
+  @api
+  get iconStyle() {
+    return this._iconStyle;
+  }
+
+  set iconStyle(value) {
+    this._iconStyleOriginal = value;
+    this._iconStyle = normaliseString(value, {
+      validValues: ICONSTYLE_VALUES,
+      fallbackValue: ICONSTYLE_DEFAULT
+    });
+  }
+
+  /* api: rendering */
+
+  _rendering = RENDERING_DEFAULT;
+  _renderingOriginal = RENDERING_DEFAULT;
+
+  @api
+  get rendering() {
+    return this._renderingOriginal;
+  }
+
+  set rendering(value) {
+    this._renderingOriginal = value;
+    this._rendering = normaliseString(value, {
+      validValues: RENDERING_VALUES,
+      fallbackValue: RENDERING_DEFAULT
+    });
+  }
 
   /* api: disabled */
 
-  _disabledOriginal;
-  _disabled;
+  _disabled = DISABLED_DEFAULT;
+  _disabledOriginal = DISABLED_DEFAULT;
 
   @api
   get disabled() {
@@ -35,14 +113,14 @@ export default class SfGpsDsAuNswButton extends LightningElement {
     this._disabledOriginal = value;
     this._disabled = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: DISABLED_DEFAULT
     });
   }
 
   /* api: mobileFullWidth */
 
-  _mobileFullWidthOriginal;
-  _mobileFullWidth;
+  _mobileFullWidth = MOBILEFULLWIDTH_DEFAULT;
+  _mobileFullWidthOriginal = MOBILEFULLWIDTH_DEFAULT;
 
   @api
   get mobileFullWidth() {
@@ -53,7 +131,7 @@ export default class SfGpsDsAuNswButton extends LightningElement {
     this._mobileFullWidthOriginal = value;
     this._mobileFullWidth = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: MOBILEFULLWIDTH_DEFAULT
     });
   }
 
@@ -64,46 +142,38 @@ export default class SfGpsDsAuNswButton extends LightningElement {
   /* computed */
 
   get computedClassName() {
-    return computeClass({
+    const rv = {
       "nsw-button": true,
-      "nsw-button--dark": this.cstyle === "dark",
-      "nsw-button--dark-outline": this.cstyle === "dark-outline",
-      "nsw-button--dark-outline-solid": this.cstyle === "dark-outline-solid",
-      "nsw-button--light": this.cstyle === "light",
-      "nsw-button--light-outline": this.cstyle === "light-outline",
-      "nsw-button--white": this.cstyle === "white",
-      "nsw-button--danger": this.cstyle === "danger",
-      "nsw-button--info": this.cstyle === "info",
-      "nsw-button--full-width": this.mobileFullWidth,
+      [`nsw-button--${this._cstyle}`]: this._cstyle,
+      "nsw-button--full-width": this._mobileFullWidth,
       [this.className]: this.className
-    });
+    };
+    return rv;
   }
 
-  get isAnchor() {
-    return this.rendering === "a" || this.link;
+  get computedIsAnchor() {
+    return this._rendering === RENDERING_A || this.link;
   }
 
-  get isButton() {
-    return this.rendering === "button" && this.link == null;
+  get computedHasIconBefore() {
+    return this._iconStyle === ICONSTYLE_BEFORE;
   }
 
-  get hasIconBefore() {
-    return this.iconStyle === "before";
+  get computedHasIconAfter() {
+    return this._iconStyle === ICONSTYLE_AFTER;
   }
 
-  get hasIconAfter() {
-    return this.iconStyle === "after";
-  }
+  /* event management */
 
-  get hasIcon() {
-    return this.hasIconBefore || this.hasIconAfter;
-  }
+  handleClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
 
-  handleClick() {
     const clickEvent = new CustomEvent("click");
     this.dispatchEvent(clickEvent);
   }
 
+  /* lifecycle */
   renderedCallback() {
     const ariaHaspopup = this.getAttribute("aria-haspopup");
 

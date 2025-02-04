@@ -3,7 +3,15 @@ import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
+export default class extends SfGpsDsNavigation {
+  @api statement;
+  @api linkedInUrl;
+  @api twitterXUrl;
+  @api facebookUrl;
+  @api className;
+
+  /* api: mode, String */
+
   @api
   get mode() {
     return super.mode;
@@ -45,6 +53,8 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
     }
   }
 
+  /* api: navigationDevName, String */
+
   @api
   get navigationDevName() {
     return super.navigationDevName;
@@ -53,6 +63,8 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
   set navigationDevName(value) {
     super.navigationDevName = value;
   }
+
+  /* api: ipName, String */
 
   @api
   get ipName() {
@@ -63,6 +75,8 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
     super.ipName = value;
   }
 
+  /* api: inputJSON, String */
+
   @api
   get inputJSON() {
     return super.inputJSON;
@@ -71,6 +85,8 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
   set inputJSON(value) {
     super.inputJSON = value;
   }
+
+  /* api: optionsJSON, String */
 
   @api
   get optionsJSON() {
@@ -81,65 +97,74 @@ export default class SfGpsDsAuNswLowerFooterIp extends SfGpsDsNavigation {
     super.optionsJSON = value;
   }
 
-  @api statement;
-  @api linkedInUrl;
-  @api twitterXUrl;
-  @api facebookUrl;
+  /* api: copyrightMention, String */
 
   _copyrightMentionHtml;
-  _copyrightMention;
+  _copyrightMentionOriginal;
 
-  @api get copyrightMention() {
-    return this._copyrightMention;
+  @api
+  get copyrightMention() {
+    return this._copyrightMentionOriginal;
   }
 
   set copyrightMention(markdown) {
-    this._copyrightMention = markdown;
-
     try {
+      this._copyrightMentionOriginal = markdown;
       this._copyrightMentionHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
     } catch (e) {
       this.addError("CM-MD", "Issue when parsing Copyright mention markdown");
     }
   }
 
-  _builtMentionHtml;
-  _builtMention;
+  /* api: builtMention */
 
-  @api get builtMention() {
-    return this._builtMention;
+  _builtMentionHtml;
+  _builtMentionOriginal;
+
+  @api
+  get builtMention() {
+    return this._builtMentionOriginal;
   }
 
   set builtMention(markdown) {
-    this._builtMention = markdown;
-
     try {
+      this._builtMentionOriginal = markdown;
       this._builtMentionHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
     } catch (e) {
       this.addError("BM-MD", "Issue when parsing Built mention markdown");
     }
   }
 
-  @api className;
+  /* computed */
 
   get computedShowSocial() {
     return this.linkedInUrl || this.twitterXUrl || this.facebookUrl;
   }
 
-  handleClick(event) {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+  /* event management */
 
-    if (nav && this._map && event.detail) {
-      nav.navigateNavMenu(this._map[event.detail]);
+  handleNavClick(event) {
+    if (this._map && event.detail) {
+      this.refs.navsvc.navigateNavMenu(this._map[event.detail]);
     }
   }
 
+  /* lifecycle */
+
   renderedCallback() {
-    if (!this._sfGpsDsErrors && !this._isLoading && this._copyrightMention) {
+    if (
+      !this._sfGpsDsErrors &&
+      !this._isLoading &&
+      this._copyrightMentionOriginal
+    ) {
       replaceInnerHtml(this.refs.copyright, this._copyrightMentionHtml);
     }
 
-    if (!this._sfGpsDsErrors && !this._isLoading && this._builtMention) {
+    if (
+      !this._sfGpsDsErrors &&
+      !this._isLoading &&
+      this._builtMentionOriginal
+    ) {
       replaceInnerHtml(this.refs.built, this._builtMentionHtml);
     }
   }

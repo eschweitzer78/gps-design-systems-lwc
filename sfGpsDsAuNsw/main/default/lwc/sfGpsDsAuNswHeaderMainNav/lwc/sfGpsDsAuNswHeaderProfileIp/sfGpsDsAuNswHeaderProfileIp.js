@@ -1,7 +1,13 @@
 import { api } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 
-export default class SfGpsDsAuNswHeaderProfileIp extends SfGpsDsNavigation {
+export default class extends SfGpsDsNavigation {
+  @api isGuest;
+  @api userAlias;
+  @api className;
+
+  /* api: ipName, String */
+
   @api
   get ipName() {
     return super.ipName;
@@ -10,6 +16,8 @@ export default class SfGpsDsAuNswHeaderProfileIp extends SfGpsDsNavigation {
   set ipName(value) {
     super.ipName = value;
   }
+
+  /* api: inputJSON, String */
 
   @api
   get inputJSON() {
@@ -20,6 +28,8 @@ export default class SfGpsDsAuNswHeaderProfileIp extends SfGpsDsNavigation {
     super.inputJSON = value;
   }
 
+  /* api: optionsJSON, String */
+
   @api
   get optionsJSON() {
     return super.optionsJSON;
@@ -29,32 +39,22 @@ export default class SfGpsDsAuNswHeaderProfileIp extends SfGpsDsNavigation {
     super.optionsJSON = value;
   }
 
-  @api isGuest;
-  @api userAlias;
-  @api className;
+  /* event management  */
+
+  handleNavigate(event) {
+    if (this._map && event.detail) {
+      this.refs.navsvc.navigateNavMenu(this._map[event.detail]);
+    }
+  }
+
+  handleLogin() {
+    this.refs.navsvc.login();
+  }
 
   /* lifecycle */
 
   connectedCallback() {
     super.connectedCallback();
     this.classList.add("nsw-scope");
-  }
-
-  /* events */
-
-  handleNavigate(event) {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
-
-    if (nav && this._map && event.detail) {
-      nav.navigateNavMenu(this._map[event.detail]);
-    }
-  }
-
-  handleLogin() {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
-
-    if (nav) {
-      nav.login();
-    }
   }
 }

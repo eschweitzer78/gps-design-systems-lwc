@@ -5,14 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswHeroSearchComm extends NavigationMixin(
-  SfGpsDsLwc
-) {
+export default class extends NavigationMixin(SfGpsDsLwc) {
   @api title;
   @api intro;
   @api image;
@@ -21,43 +19,32 @@ export default class SfGpsDsAuNswHeroSearchComm extends NavigationMixin(
   @api srLabel = "Search site for:";
   @api srSearchButtonLabel = "Search";
 
-  /*
-   * links
-   */
+  /* api: links, String */
 
-  @track _links;
-  _originalLinks;
+  _links;
+  _linksOriginal;
 
-  @api get links() {
-    return this._originalLinks;
+  @api
+  get links() {
+    return this._linksOriginal;
   }
 
   set links(markdown) {
-    this._originalLinks = markdown;
-
     try {
-      if (markdown) {
-        this._links = mdEngine.extractLinks(markdown);
-      } else {
-        this._links = null;
-      }
+      this._linksOriginal = markdown;
+      this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
 
+  /* computed */
+
   get computedStyle() {
     return `background-image: url(${this.image})`;
   }
 
-  /* lifecycle */
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.classList.add("nsw-scope");
-  }
-
-  /* events */
+  /* event management */
 
   handleSearch(event) {
     // Navigate to search page using lightning/navigation API:
@@ -68,5 +55,12 @@ export default class SfGpsDsAuNswHeroSearchComm extends NavigationMixin(
         term: event.target.value
       }
     });
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }

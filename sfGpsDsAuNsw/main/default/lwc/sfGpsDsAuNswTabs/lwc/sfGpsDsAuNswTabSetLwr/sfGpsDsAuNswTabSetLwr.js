@@ -1,20 +1,39 @@
 import { LightningElement, api } from "lwc";
-import { uniqueId } from "c/sfGpsDsHelpers";
+import { uniqueId, normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const TAB_BAR_SELECTOR = "c-sf-gps-ds-au-nsw-tab-bar-lwr";
 const TAB_PREFIX = "tab";
 
-export default class SfGpsDsAuNswTabSetLwr extends LightningElement {
+const FIRSTCHILD_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
   @api tabClassName;
-  @api firstChild;
 
-  _tabByValue = {};
-  _tabHeaders = [];
+  /* api: firstChild */
+
+  _firstChild = FIRSTCHILD_DEFAULT;
+  _firstChildOriginal = FIRSTCHILD_DEFAULT;
+
+  @api
+  get firstChild() {
+    return this._firstChildOriginal;
+  }
+
+  set firstChild(value) {
+    this._firstChildOriginal = value;
+    this._firstChild = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: FIRSTCHILD_DEFAULT
+    });
+  }
+
+  /* api: activeTabValue */
 
   _activeTabValue;
+  _tabByValue = {};
 
   @api
   get activeTabValue() {
@@ -29,6 +48,7 @@ export default class SfGpsDsAuNswTabSetLwr extends LightningElement {
 
     if (this._connected) {
       const tab = this._tabByValue[tabValue];
+
       if (tab) {
         this._selectTab(tabValue);
       }
@@ -37,39 +57,25 @@ export default class SfGpsDsAuNswTabSetLwr extends LightningElement {
     }
   }
 
+  /* method */
+
+  _tabHeaders = [];
+
   handleTabRegister(event) {
     event.stopPropagation();
 
     const tab = event.target;
-    //tab.role = "tabpanel";
-    //tab.classList.add("nsw-tabs__content");
-    /*if (this.tabClassName && typeof this.tabClassName === "string") {
-      this.tabClassName.split(" ").forEach((item) => {
-        tab.className.add(item);
-      });
-    }
-    */
-    tab.className = this.tabClassName;
-
     const generatedUniqueId = uniqueId(TAB_PREFIX);
 
-    /*
-    if (!tab.id) {
-      tab.id = generatedUniqueId;
-    }
-    */
+    tab.className = this.tabClassName;
     tab.vid = generatedUniqueId;
+
     if (!tab.value) {
       tab.value = generatedUniqueId;
     }
 
     const tabValue = tab.value;
 
-    /*
-    tab.dataTabValue = tabValue;
-    tab.ariaLabelledBy = tabValue + "__item";
-    tab.hidden = true;
-    */
     tab.dataTabValue = tabValue;
     tab.variaLabelledBy = tabValue + "__item";
     tab.vhidden = true;
@@ -106,7 +112,7 @@ export default class SfGpsDsAuNswTabSetLwr extends LightningElement {
     this._tabHeaders.splice(tabIndex, 0, {
       value: tabValue,
       label: tab.label,
-      domId: tab.vid, //tab.id,
+      domId: tab.vid,
       title: tab.title,
       showErrorIndicator: tab.showErrorIndicator
     });
@@ -159,6 +165,17 @@ export default class SfGpsDsAuNswTabSetLwr extends LightningElement {
     tabBar.selectTabByValue(value);
   }
 
+  _updateTabBarHeaders(headers) {
+    this.querySelector(TAB_BAR_SELECTOR).tabHeaders = headers.slice();
+  }
+
+  @api
+  focus() {
+    this.querySelector(TAB_BAR_SELECTOR).focus();
+  }
+
+  /* event management */
+
   handleTabSelected(event) {
     const selectedTabValue = event.detail.value;
     const tab = this._tabByValue[selectedTabValue];
@@ -198,15 +215,6 @@ export default class SfGpsDsAuNswTabSetLwr extends LightningElement {
         this._activeTabValue = newTabValue;
       }
     }
-  }
-
-  _updateTabBarHeaders(headers) {
-    this.querySelector(TAB_BAR_SELECTOR).tabHeaders = headers.slice();
-  }
-
-  @api
-  focus() {
-    this.querySelector(TAB_BAR_SELECTOR).focus();
   }
 
   /* Lifecycle */

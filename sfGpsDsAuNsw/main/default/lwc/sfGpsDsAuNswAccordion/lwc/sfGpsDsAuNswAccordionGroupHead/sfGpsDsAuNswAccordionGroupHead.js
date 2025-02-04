@@ -8,7 +8,10 @@
 import { LightningElement, api } from "lwc";
 import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
-export default class sfGpsDsAuNswAccordionGroupHead extends LightningElement {
+const FULLYEXPANDED_DEFAULT = false;
+const FULLYCOLLAPSED_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api showButtons;
@@ -17,8 +20,8 @@ export default class sfGpsDsAuNswAccordionGroupHead extends LightningElement {
 
   /* api: isFullyExpanded */
 
-  _isFullyExpandedOriginal;
-  _isFullyExpanded;
+  _isFullyExpanded = FULLYEXPANDED_DEFAULT;
+  _isFullyExpandedOriginal = FULLYEXPANDED_DEFAULT;
 
   @api
   get isFullyExpanded() {
@@ -29,14 +32,14 @@ export default class sfGpsDsAuNswAccordionGroupHead extends LightningElement {
     this._isFullyExpandedOriginal = value;
     this._isFullyExpanded = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: FULLYEXPANDED_DEFAULT
     });
   }
 
   /* api: isFullyCollapsed */
 
-  _isFullyCollapsedOriginal;
-  _isFullyCollapsed;
+  _isFullyCollapsed = FULLYCOLLAPSED_DEFAULT;
+  _isFullyCollapsedOriginal = FULLYCOLLAPSED_DEFAULT;
 
   @api
   get isFullyCollapsed() {
@@ -47,7 +50,7 @@ export default class sfGpsDsAuNswAccordionGroupHead extends LightningElement {
     this._isFullyCollapsedOriginal = value;
     this._isFullyCollapsed = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: FULLYCOLLAPSED_DEFAULT
     });
   }
 

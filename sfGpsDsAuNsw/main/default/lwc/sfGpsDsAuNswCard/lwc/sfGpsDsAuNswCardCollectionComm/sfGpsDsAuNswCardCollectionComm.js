@@ -6,37 +6,10 @@
  */
 
 import { api } from "lwc";
-import { htmlDecode, computeClass } from "c/sfGpsDsHelpers";
+import { htmlDecode, isArray } from "c/sfGpsDsHelpers";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
-export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
-  @api
-  get ipName() {
-    return super.ipName;
-  }
-
-  set ipName(value) {
-    super.ipName = value;
-  }
-
-  @api
-  get inputJSON() {
-    return super.inputJSON;
-  }
-
-  set inputJSON(value) {
-    super.inputJSON = value;
-  }
-
-  @api
-  get optionsJSON() {
-    return super.optionsJSON;
-  }
-
-  set optionsJSON(value) {
-    super.optionsJSON = value;
-  }
-
+export default class extends SfGpsDsIpLwc {
   @api cstyle = "white";
   @api headline = false;
   @api orientation = "vertical";
@@ -50,12 +23,73 @@ export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
   @api xlWidth = "4";
   @api className;
 
+  /* api: ipName, String */
+
+  @api
+  get ipName() {
+    return super.ipName;
+  }
+
+  set ipName(value) {
+    super.ipName = value;
+  }
+
+  /* api: inputJSON, String */
+
+  @api
+  get inputJSON() {
+    return super.inputJSON;
+  }
+
+  set inputJSON(value) {
+    super.inputJSON = value;
+  }
+
+  /* api: optionsJSON, String */
+
+  @api
+  get optionsJSON() {
+    return super.optionsJSON;
+  }
+
+  set optionsJSON(value) {
+    super.optionsJSON = value;
+  }
+
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "nsw-grid": true,
+      [this.className]: this.className
+    };
+  }
+
+  get computedColClassName() {
+    return {
+      "nsw-col": true,
+      ["nsw-col-xs-" + this.xsWidth]: this.xsWidth,
+      ["nsw-col-sm-" + this.smWidth]: this.smWidth,
+      ["nsw-col-md-" + this.mdWidth]: this.mdWidth,
+      ["nsw-col-lg-" + this.lgWidth]: this.lgWidth,
+      ["nsw-col-xl-" + this.xlWidth]: this.xlWidth
+    };
+  }
+
+  get isEmpty() {
+    return (
+      this._didLoadOnce && (this._items == null || this._items.length === 0)
+    );
+  }
+
+  /* methods */
+
   mapIpData(data) {
     if (!data) {
       return null;
     }
 
-    if (!Array.isArray(data)) {
+    if (!isArray(data)) {
       data = [data];
     }
 
@@ -68,32 +102,10 @@ export default class SfGpsDsAuNswCardCollectionComm extends SfGpsDsIpLwc {
     }));
   }
 
-  get computedClassName() {
-    return computeClass({
-      "nsw-grid": true,
-      [this.className]: this.className
-    });
-  }
-
-  get computedColClassName() {
-    return `nsw-col ${this.xsWidth ? "nsw-col-xs-" + this.xsWidth : ""} ${
-      this.smWidth ? "nsw-col-sm-" + this.smWidth : ""
-    } ${this.mdWidth ? "nsw-col-md-" + this.mdWidth : ""}  ${
-      this.lgWidth ? "nsw-col-lg-" + this.lgWidth : ""
-    }  ${this.xlWidth ? "nsw-col-xl-" + this.xlWidth : ""}`;
-  }
-
-  get isEmpty() {
-    return (
-      this._didLoadOnce && (this._items == null || this._items.length === 0)
-    );
-  }
-
   /* lifecycle */
 
   connectedCallback() {
     super.connectedCallback();
-
     this.classList.add("nsw-scope");
   }
 }

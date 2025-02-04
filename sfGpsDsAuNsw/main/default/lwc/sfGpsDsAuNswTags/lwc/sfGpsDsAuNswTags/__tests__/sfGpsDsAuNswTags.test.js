@@ -2,7 +2,7 @@ import { createElement } from "lwc";
 import SfGpsDsAuNswTags from "c/sfGpsDsAuNswTags";
 
 const ELT_TAG = "c-sf-gps-ds-au-nsw-tags";
-describe("c-sf-gps-ds-au-nsw-status-label", () => {
+describe("c-sf-gps-ds-au-nsw-tags", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {

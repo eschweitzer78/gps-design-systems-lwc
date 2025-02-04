@@ -6,10 +6,19 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import { uniqueId, normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 import cBasePath from "@salesforce/community/basePath";
 
-export default class SfGpsDsAuNswHeader extends LightningElement {
+const STACKING_HORIZONTAL = "horizontal";
+const STACKING_VERTICAL = "vertical";
+const STACKING_VALUES = [STACKING_HORIZONTAL, STACKING_VERTICAL];
+const STACKING_DEFAULT = STACKING_HORIZONTAL;
+
+const MOBILE_DEFAULT = false;
+const SEARCH_DEFAULT = false;
+const PROFILE_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api masterbrand;
@@ -23,27 +32,98 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   @api siteTitle;
   @api siteDescriptor;
   @api headerUrl = "#";
-  @api mobile = false;
-  @api mobileLogoStacking = "horizontal"; // one of horizontal, vertical
-  @api search = false;
-  @api profile = false;
 
   @api searchAriaLabel = "search";
   @api className;
 
-  @track searchIsOpen = false;
   @api value = "";
 
   /* hidden when used stand alone */
   @api mainNavId;
   @api mainNavIsOpen = false;
 
-  get computedClassName() {
-    return computeClass({
-      "nsw-header": true,
-      "nsw-header__has-profile": this.profile,
-      [this.className]: this.className
+  @track searchIsOpen = false;
+
+  /* api: mobile */
+
+  _mobile = MOBILE_DEFAULT;
+  _mobileOriginal = MOBILE_DEFAULT;
+
+  @api
+  get mobile() {
+    return this._mobileOriginal;
+  }
+
+  set mobile(value) {
+    this._mobileOriginal = value;
+    this._mobile = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: MOBILE_DEFAULT
     });
+  }
+
+  /* api: search */
+
+  _search = SEARCH_DEFAULT;
+  _searchOriginal = SEARCH_DEFAULT;
+
+  @api
+  get search() {
+    return this._searchOriginal;
+  }
+
+  set search(value) {
+    this._searchOriginal = value;
+    this._value = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: SEARCH_DEFAULT
+    });
+  }
+
+  /* api: profile */
+
+  _profile = PROFILE_DEFAULT;
+  _profileOriginal = PROFILE_DEFAULT;
+
+  @api
+  get profile() {
+    return this._profileOriginal;
+  }
+
+  set profile(value) {
+    this._profileOriginal = value;
+    this._profile = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: PROFILE_DEFAULT
+    });
+  }
+
+  /* api: mobileLogoStacking */
+
+  _mobileLogoStacking = STACKING_HORIZONTAL;
+  _mobileLogoStackingOriginal = STACKING_HORIZONTAL;
+
+  @api
+  get mobileLogoStacking() {
+    return this._mobileLogoStackingOriginal;
+  }
+
+  set mobileLogoStacking(value) {
+    this._mobileLogoStackingOriginal = value;
+    this._mobileLogoStacking = normaliseString(value, {
+      validValues: STACKING_VALUES,
+      fallbackValue: STACKING_DEFAULT
+    });
+  }
+
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "nsw-header": true,
+      "nsw-header__has-profile": this._profile,
+      [this.className]: this.className
+    };
   }
 
   _headerSearchId;
@@ -66,12 +146,14 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
     return this._headerInputId;
   }
 
-  get areLogosHorizontallyStacked() {
-    return (this.mobileLogoStacking || "horizontal") === "horizontal";
+  get _areLogosHorizontallyStacked() {
+    return (
+      (this.mobileLogoStacking || STACKING_HORIZONTAL) === STACKING_HORIZONTAL
+    );
   }
 
-  get areLogosVerticallyStacked() {
-    return this.mobileLogoStacking === "vertical";
+  get _areLogosVerticallyStacked() {
+    return this.mobileLogoStacking === STACKING_VERTICAL;
   }
 
   get computedHeaderUrl() {
@@ -82,14 +164,14 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
 
   setSearchVisible(visible) {
     this.searchIsOpen = visible;
-    let element = this.querySelector(".nsw-header__search-area");
+    const element = this.refs.searcharea;
 
     if (element) {
       element.hidden = !visible;
     }
   }
 
-  /* Event handling */
+  /* Event management */
 
   handleCloseSearch() {
     this.setSearchVisible(false);
@@ -101,7 +183,8 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.value = "";
 
-    let element = this.querySelector(".nsw-header__input");
+    const element = this.refs.headerinput;
+
     if (element) {
       element.focus();
     }
@@ -115,8 +198,7 @@ export default class SfGpsDsAuNswHeader extends LightningElement {
   }
 
   handleKeyUp(event) {
-    const isEnterKey = event.keyCode === 13;
-    if (isEnterKey) {
+    if (event.keyCode === 13) {
       this.handleSearch(event);
     }
 

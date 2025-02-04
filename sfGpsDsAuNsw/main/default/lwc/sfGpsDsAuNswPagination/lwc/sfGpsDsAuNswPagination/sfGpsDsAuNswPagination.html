@@ -15,50 +15,50 @@
         </a>
       </li>
 
-      <li lwc:if={showFirstPage}>
+      <li lwc:if={computedShowFirstPage}>
         <a href="#first-page" onclick={handleFirstPageClick}>
           <span class="sr-only">{srOnlyPre}</span>
-          {firstPage}
+          {computedFirstPage}
           <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 
-      <li lwc:if={showPrevEllipsis}>
+      <li lwc:if={computedShowPrevEllipsis}>
         <span>…</span>
       </li>
 
-      <li lwc:if={showPrevPage}>
+      <li lwc:if={computedShowPrevPage}>
         <a href="#prev-page" onclick={handlePreviousPageClick}>
           <span lwc:if={srOnlyPre} class="sr-only">{srOnlyPre}</span>
-          {prevPage}
+          {computedPrevPage}
           <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 
-      <li lwc:if={showActivePage}>
+      <li lwc:if={computedShowActivePage}>
         <a class="active">
           <span class="sr-only">{srOnlyPre}</span>
-          {activePage}
+          {_activePage}
           <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 
-      <li lwc:if={showNextPage}>
+      <li lwc:if={computedShowNextPage}>
         <a href="#next-page" onclick={handleNextPageClick}>
           <span lwc:if={srOnlyPre} class="sr-only">{srOnlyPre}</span>
-          {nextPage}
+          {computedNextPage}
           <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
 
-      <li lwc:if={showNextEllipsis}>
+      <li lwc:if={computedShowNextEllipsis}>
         <span>…</span>
       </li>
 
-      <li lwc:if={showLastPage}>
+      <li lwc:if={computedShowLastPage}>
         <a href="#last-page" onclick={handleLastPageClick}>
           <span lwc:if={srOnlyPre} class="sr-only">{srOnlyPre}</span>
-          {lastPage}
+          {_lastPage}
           <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
@@ -66,7 +66,7 @@
       <li>
         <a
           class={computedNextPageClassName}
-          aria-disabled={nextDisabled}
+          aria-disabled={computedNextDisabled}
           href="#next"
           onclick={handleNextPageClick}
         >

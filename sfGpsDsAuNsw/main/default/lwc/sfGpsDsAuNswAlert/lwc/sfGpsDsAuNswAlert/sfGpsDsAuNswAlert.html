@@ -3,8 +3,9 @@
     <span class="material-icons nsw-material-icons nsw-in-page-alert__icon">
       {computedIconName}
     </span>
+
     <div class="nsw-in-page-alert__content">
-      <template lwc:if={compact}>
+      <template lwc:if={_compact}>
         <p class="nsw-small">
           <strong>{title}</strong>{space}
           <slot></slot>

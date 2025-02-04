@@ -13,7 +13,7 @@
       items={_items}
       statement={statement}
       class-name={className}
-      onclick={handleClick}
+      onnavclick={handleNavClick}
     >
       <template lwc:if={computedShowSocial}>
         <div slot="social">
@@ -92,5 +92,6 @@
     </c-sf-gps-ds-au-nsw-lower-footer>
   </template>
 
-  <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+  <c-sf-gps-ds-navigation-service lwc:ref="navsvc">
+  </c-sf-gps-ds-navigation-service>
 </template>

@@ -11,21 +11,19 @@ import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import tmpl from "./sfGpsDsAuNswDatePickerOsN.html";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 
-export default class SfGpsDsAuNswDatePickerOsN extends SfGpsDsAuNswStatusHelperMixin(
+export default class extends SfGpsDsAuNswStatusHelperMixin(
   OmnistudioDatePicker
 ) {
   @api hideFormGroup = false;
   @api hideAsterisk = false;
 
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "nsw-form__label": true,
       "nsw-form__required": this.required && !this.hideAsterisk
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -36,8 +34,14 @@ export default class SfGpsDsAuNswDatePickerOsN extends SfGpsDsAuNswStatusHelperM
   }
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "nsw-form__group": !this.hideFormGroup
-    });
+    };
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

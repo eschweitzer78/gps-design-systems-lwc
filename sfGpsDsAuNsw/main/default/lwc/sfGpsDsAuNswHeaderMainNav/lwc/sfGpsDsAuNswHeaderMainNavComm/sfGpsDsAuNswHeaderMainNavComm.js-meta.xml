@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>61.0</apiVersion>
+  <apiVersion>62.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Header and Main Nav</masterLabel>
   <targets>
@@ -28,6 +28,7 @@
         type="String"
         label="Nav integration procedure name"
         description="Name of the integration procedure mapping content to this nav when mode is set to Integration Procedure."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="inputJSON"
@@ -35,6 +36,7 @@
         label="Nav input JSON"
         description="JSON formatted input parameters for the nav integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="optionsJSON"
@@ -42,12 +44,14 @@
         label="Nav options JSON"
         description="JSON formatted options for the nav integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="profileIpName"
         type="String"
         label="Profile integration procedure name"
         description="Name of the integration procedure mapping content to the profile menu. Leave empty for if no profile menu is required."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="profileInputJSON"
@@ -55,6 +59,7 @@
         label="Profile input JSON"
         description="JSON formatted input parameters for the profile integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="profileOptionsJSON"
@@ -62,6 +67,7 @@
         label="Profile options JSON"
         description="JSON formatted options for the profile integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="masterbrand"
@@ -69,6 +75,7 @@
         label="Masterbrand"
         description="Logo URL for masterbrand, leave empty to keep NSW Government Waratah logo."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="masterbrandAlt"
@@ -76,6 +83,7 @@
         label="Masterbrand alternative text"
         description="Alternative text to masterbrand logo."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="srMasterbrandLabel"
@@ -83,18 +91,21 @@
         label="Screenreader masterbrand label"
         description="Label used on screenreaders for the masterbrand logo."
         default="NSW Government"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="logo"
         type="String"
         label="Logo"
         description="Logo URL for co-brand."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="logoAlt"
         type="String"
         label="Logo alternative text"
         description="Alternative text to co-brand logo."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="siteTitle"
@@ -102,6 +113,7 @@
         label="Site title"
         description="Provides user context of the product or service."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="siteDescriptor"
@@ -109,12 +121,14 @@
         label="Site descriptor"
         description="Provides user context of the cluster/department/agency if required."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="headerUrl"
         type="String"
         label="Home page URL"
         description="URL to alternative home page, leave blank otherwise."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="mobile"
@@ -144,6 +158,7 @@
         label="Menu icon name"
         description="Name of the Google Material icon used to render the menu waffle on mobile."
         default="menu"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="searchLabel"
@@ -151,12 +166,14 @@
         label="Screenreader search label"
         description="Accessibility label used for the search box with screen readers."
         default="Search site for:"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="headerClassName"
         type="String"
         label="Header class name"
         description="Additional CSS class to be applied to header."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="megaMenu"
@@ -171,12 +188,14 @@
         label="Main nav Id"
         description="Sets the Id for the main nav, make sure you pick a unique value."
         default="nav"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="mainNavClassName"
         type="String"
         label="Main nav class name"
         description="Additional CSS class to be applied to main nav."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

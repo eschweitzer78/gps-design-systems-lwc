@@ -23,7 +23,7 @@
       </template>
     </template>
 
-    <template if:false={asCheckboxes}>
+    <template lwc:else>
       <template for:each={_tags} for:item="tag">
         <a lwc:if={tag.url} key={tag.key} class={tag.className} href={tag.url}
           >{tag.text}</a

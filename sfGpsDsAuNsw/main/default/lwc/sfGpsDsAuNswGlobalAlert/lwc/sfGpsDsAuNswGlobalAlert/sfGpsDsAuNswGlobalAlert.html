@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <div if:false={_isClosed} class={computedClassName} role="alert">
     <div class="nsw-global-alert__wrapper">
@@ -5,7 +6,7 @@
         <div class="nsw-global-alert__title">{title}</div>
         <p>
           {copy}
-          <template lwc:if={isCtaLinkStyle}>
+          <template lwc:if={_isCtaLinkStyle}>
             {space}<a
               href={ctaHref}
               class="nsw-sitewide-message__link"
@@ -16,7 +17,7 @@
         </p>
       </div>
 
-      <p lwc:if={isCtaButtonStyle}>
+      <p lwc:if={_isCtaButtonStyle}>
         <a
           href={ctaHref}
           class={computedButtonClassName}

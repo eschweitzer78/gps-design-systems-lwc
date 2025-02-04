@@ -1,19 +1,49 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import { uniqueId } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswSideNav extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
   @api url;
+  @api className;
 
-  /*
-   * navItems
-   * Array of navigation item objects, format { url: '', text: '', subNav: ... }
-   */
+  /* api: navItems, array of navigation item objects { url, text, subNav: ... } */
 
-  _originalNavItems;
   _navItems;
+  _navItemsOriginal;
+
+  @api
+  get navItems() {
+    return this._navItemsOriginal;
+  }
+
+  set navItems(items) {
+    this._navItemsOriginal = items;
+    this.navItemsMapping();
+  }
+
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "nsw-side-nav": true,
+      [this.className]: this.className
+    };
+  }
+
+  _labelledById;
+
+  get computedAriaLabelledById() {
+    if (!this._labelledById) {
+      this._labelledById = uniqueId("sf-gps-ds-au-nsw-side-nav");
+    }
+
+    return this._labelledById;
+  }
+
+  /* methods */
+
   _mapItems;
 
   mapItems(parentIndex, parentLevel, map, items) {
@@ -60,43 +90,15 @@ export default class SfGpsDsAuNswSideNav extends LightningElement {
     });
   }
 
-  @api get navItems() {
-    return this._originalNavItems;
-  }
-
-  set navItems(items) {
-    this._originalNavItems = items;
-    this.navItemsMapping();
-  }
-
   navItemsMapping() {
     let map = {};
-    this._navItems = this._originalNavItems
-      ? this.mapItems("navitem", 0, map, this._originalNavItems)
+    this._navItems = this._navItemsOriginal
+      ? this.mapItems("navitem", 0, map, this._navItemsOriginal)
       : null;
     this._mapItems = map;
   }
 
-  @api className;
-
-  get computedClassName() {
-    return computeClass({
-      "nsw-side-nav": true,
-      [this.className]: this.className
-    });
-  }
-
-  _labelledById;
-
-  get computedAriaLabelledById() {
-    if (!this._labelledById) {
-      this._labelledById = uniqueId("sf-gps-ds-au-nsw-side-nav");
-    }
-
-    return this._labelledById;
-  }
-
-  /* events */
+  /* event management */
 
   handleClickNavigate(event) {
     event.preventDefault();

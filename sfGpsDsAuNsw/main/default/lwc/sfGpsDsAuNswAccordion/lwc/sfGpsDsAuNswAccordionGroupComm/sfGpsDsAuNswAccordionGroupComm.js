@@ -9,24 +9,29 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswAccordionGroupComm extends SfGpsDsLwc {
+const CONTENT_DEFAULT = [];
+
+export default class extends SfGpsDsLwc {
   @api showButtons;
   @api className;
 
-  _content;
-  _h1s = [];
+  /* api: content */
+
+  _content = CONTENT_DEFAULT;
+  _contentOriginal;
   _numberOpen = 0;
 
-  @api get content() {
-    return this._content;
+  @api
+  get content() {
+    return this._contentOriginal;
   }
 
   set content(markdown) {
-    this._content = markdown;
-
     try {
-      let h1s = mdEngine.extractH1s(markdown.replaceAll("\\n", "\n"));
-      this._h1s = h1s.map((h1) => ({ ...h1, closed: true }));
+      this._contentOriginal = markdown;
+      this._content = mdEngine
+        .extractH1s(markdown.replaceAll("\\n", "\n"))
+        .map((h1) => ({ ...h1, closed: true }));
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
     }
@@ -34,34 +39,34 @@ export default class SfGpsDsAuNswAccordionGroupComm extends SfGpsDsLwc {
 
   /* computed */
 
-  get isFullyExpanded() {
-    return this._numberOpen === this._h1s.length;
+  get computedIsFullyExpanded() {
+    return this._numberOpen === this._content.length;
   }
 
-  get isFullyCollapsed() {
+  get computedIsFullyCollapsed() {
     return this._numberOpen === 0;
   }
 
   /* event management */
 
   handleExpand(event) {
-    this._h1s[event.target.index].closed = false;
+    this._content[event.target.index].closed = false;
     this._numberOpen++;
   }
 
   handleCollapse(event) {
-    this._h1s[event.target.index].closed = true;
+    this._content[event.target.index].closed = true;
     this._numberOpen--;
   }
 
   handleExpandAll() {
-    this._numberOpen = this._h1s.length;
-    this._h1s.forEach((h1) => (h1.closed = false));
+    this._numberOpen = this._content.length;
+    this._content.forEach((h1) => (h1.closed = false));
   }
 
   handleCollapseAll() {
     this._numberOpen = 0;
-    this._h1s.forEach((h1) => (h1.closed = true));
+    this._content.forEach((h1) => (h1.closed = true));
   }
 
   /* lifecycle */

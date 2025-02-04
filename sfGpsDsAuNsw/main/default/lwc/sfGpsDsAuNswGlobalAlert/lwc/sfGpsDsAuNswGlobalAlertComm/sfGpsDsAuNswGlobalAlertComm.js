@@ -5,39 +5,38 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswGlobalAlertComm extends SfGpsDsLwc {
+const CTA_DEFAULT = {};
+
+export default class extends SfGpsDsLwc {
   @api title;
   @api copy;
   @api as = "default";
+  @api ctaStyle = "link";
   @api className;
 
-  /*
-   * cta
-   */
+  /* api: cta */
 
-  @track _cta = {};
-  _originalCta;
+  _cta = CTA_DEFAULT;
+  _ctaOriginal;
 
-  @api get cta() {
-    return this._originalCta;
+  @api
+  get cta() {
+    return this._ctaOriginal;
   }
 
   set cta(markdown) {
-    this._originalCta = markdown;
-
     try {
+      this._ctaOriginal = markdown;
       this._cta = markdown ? mdEngine.extractFirstLink(markdown) : {};
     } catch (e) {
       this.addError("CTA-MD", "Issue when parsing cta markdown");
-      this._cta = {};
+      this._cta = CTA_DEFAULT;
     }
   }
-
-  @api ctaStyle = "link";
 
   /* lifecycle */
 

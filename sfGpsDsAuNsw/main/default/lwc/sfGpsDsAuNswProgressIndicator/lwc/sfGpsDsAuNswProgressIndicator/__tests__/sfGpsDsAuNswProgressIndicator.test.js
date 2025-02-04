@@ -3,7 +3,7 @@ import SfGpsDsAuNswProgressIndicator from "c/sfGpsDsAuNswProgressIndicator";
 
 const ELT_TAG = "c-sf-gps-ds-au-nsw-progress-indicator";
 
-describe("c-sf-gps-ds-au-nsw-hero-progress-indicator", () => {
+describe("c-sf-gps-ds-au-nsw-progress-indicator", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -11,7 +11,7 @@ describe("c-sf-gps-ds-au-nsw-hero-progress-indicator", () => {
     }
   });
 
-  it("has the right div set as active", () => {
+  it("has the right divs set as active", () => {
     const element = createElement(ELT_TAG, {
       is: SfGpsDsAuNswProgressIndicator
     });
@@ -26,7 +26,7 @@ describe("c-sf-gps-ds-au-nsw-hero-progress-indicator", () => {
     );
 
     expect(indicatorBarDivs.length).toBe(3);
-    expect(indicatorBarDivs[0].classList).not.toContain("active");
+    expect(indicatorBarDivs[0].classList).toContain("active");
     expect(indicatorBarDivs[1].classList).toContain("active");
     expect(indicatorBarDivs[2].classList).not.toContain("active");
   });

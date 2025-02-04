@@ -11,17 +11,10 @@ import StatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswInputOsN.html";
 
-export default class SfGpsDsAuNswInputOsN extends StatusHelperMixin(
-  OmniscriptInput
-) {
+export default class extends StatusHelperMixin(OmniscriptInput) {
   @api labelClassName;
 
-  /* Methods */
-  /* ------- */
-
-  render() {
-    return tmpl;
-  }
+  /* methods */
 
   initOptions() {
     super.initOptions();
@@ -43,6 +36,24 @@ export default class SfGpsDsAuNswInputOsN extends StatusHelperMixin(
     }
   }
 
+  /* computed */
+
+  get computedLabelClassName() {
+    return {
+      "nsw-form__label": true,
+      "nsw-form__required": this.required,
+      [this.labelClassName]: this.labelClassName
+    };
+  }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
+    });
+  }
+
+  /* methods */
   /* original maskedInput widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
@@ -51,21 +62,9 @@ export default class SfGpsDsAuNswInputOsN extends StatusHelperMixin(
       .join(" ");
   }
 
-  /* Getters */
-  /* ------- */
+  /* lifecycle */
 
-  get computedLabelClassName() {
-    return computeClass({
-      "nsw-form__label": true,
-      "nsw-form__required": this.required,
-      [this.labelClassName]: this.labelClassName
-    });
-  }
-
-  get computedAriaDescribedBy() {
-    return computeClass({
-      helper: this.fieldLevelHelp,
-      errorMessageBlock: this.sfGpsDsIsError
-    });
+  render() {
+    return tmpl;
   }
 }

@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api title;
   @api subtitle;
   @api cstyle;
@@ -21,71 +21,64 @@ export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
   @api imageAlt;
   @api className;
 
-  /*
-   * cta
-   */
+  /* api: cta, String */
 
-  @track _cta;
-  _originalCta;
+  _cta;
+  _ctaOriginal;
 
-  @api get cta() {
-    return this._originalCta;
+  @api
+  get cta() {
+    return this._ctaOriginal;
   }
 
   set cta(markdown) {
-    this._originalCta = markdown;
-
     try {
+      this._ctaOriginal = markdown;
       this._cta = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("CTA-MD", "Issue when parsing Call to action markdown");
     }
   }
 
-  /*
-   * links
-   */
+  /* api: links, String */
 
-  @track _links;
-  _originalLinks;
+  _links;
+  _linksOriginal;
 
-  @api get links() {
-    return this._originalLinks;
+  @api
+  get links() {
+    return this._linksOriginal;
   }
 
   set links(markdown) {
-    this._originalLinks = markdown;
-
     try {
-      if (markdown) {
-        this._links = mdEngine.extractLinks(markdown);
-      } else {
-        this._links = null;
-      }
+      this._linksOriginal = markdown;
+      this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
 
-  /*
-   * intro
-   */
+  /* api: intro, String */
 
-  _intro;
   _introHtml;
+  _introOriginal;
 
-  @api get intro() {
-    return this._intro;
+  @api
+  get intro() {
+    return this._introOriginal;
   }
 
   set intro(markdown) {
-    this._intro = markdown;
     try {
+      this._introOriginal = markdown;
       this._introHtml = markdown ? mdEngine.render(markdown) : "";
     } catch (e) {
       this.addError("IN-MD", "Issue when parsing Intro markdown");
     }
   }
+
+  /* computed */
 
   get computedImage() {
     return this.image ? { src: this.image, alt: this.imageAlt } : null;
@@ -99,7 +92,7 @@ export default class SfGpsDsAuNswHeroBannerComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    if (this.intro) {
+    if (this._introOriginal) {
       replaceInnerHtml(this.refs.markdown, this._introHtml);
     }
   }

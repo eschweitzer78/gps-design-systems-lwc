@@ -1,25 +1,26 @@
 import { api, LightningElement } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsNswBackToTopContent extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api isActive;
   @api isMobile;
   @api className;
 
-  scrollElement = window;
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-button": true,
       "nsw-button--dark": true,
       "nsw-button--flex": true,
       "nsw-back-to-top": true,
       active: this.isActive,
       [this.className]: this.className
-    });
+    };
   }
+
+  /* event management */
 
   handleClick(event) {
     event.preventDefault();

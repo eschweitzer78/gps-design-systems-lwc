@@ -5,10 +5,14 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuNswAccordionGroup extends SfGpsDsLwc {
+const I18N = {
+  expandAll: "Expand all",
+  collapseAll: "Collapse all"
+};
+
+export default class extends SfGpsDsLwc {
   static renderMode = "light";
 
   @api showButtons;
@@ -16,24 +20,33 @@ export default class SfGpsDsAuNswAccordionGroup extends SfGpsDsLwc {
   @api isFullyCollapsed;
   @api className;
 
-  /* deprecated */
-  @api content;
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-accordion": true,
       ready: true,
       [this.className]: this.className
-    });
+    };
+  }
+
+  get i18n() {
+    return I18N;
   }
 
   /* event management */
 
   handleExpandAll() {
+    /* we do not change the internal state, this is a request to the parent */
     this.dispatchEvent(new CustomEvent("expandall"));
   }
 
   handleCollapseAll() {
+    /* we do not change the internal state, this is a request to the parent */
     this.dispatchEvent(new CustomEvent("collapseall"));
   }
+
+  /* deprecated */
+
+  @api content;
 }

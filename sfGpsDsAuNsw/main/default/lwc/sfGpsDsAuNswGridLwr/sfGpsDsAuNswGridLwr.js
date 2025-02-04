@@ -5,8 +5,15 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+const TYPE_VALUES = {
+  default: "",
+  spaced: "nsw-grid--spaced",
+  flushed: "nsw-grid--flushed"
+};
+const TYPE_DEFAULT = "default";
+
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
 /**
  * @slot Column-1
@@ -22,8 +29,7 @@ import { computeClass } from "c/sfGpsDsHelpers";
  * @slot Column-11
  * @slot Column-12
  */
-export default class SfGpsDsAuNswGridLwr extends LightningElement {
-  @api type;
+export default class extends LightningElement {
   @api col1ClassName;
   @api col2ClassName;
   @api col3ClassName;
@@ -38,12 +44,32 @@ export default class SfGpsDsAuNswGridLwr extends LightningElement {
   @api col12ClassName;
   @api className;
 
-  get computedClassName() {
-    return computeClass({
-      "nsw-grid": true,
-      "nsw-grid--spaced": this.type === "spaced",
-      "nsw-grid--flushed": this.type === "flushed",
-      [this.className]: this.className
+  /* api: type */
+
+  _type = TYPE_VALUES[TYPE_DEFAULT];
+  _typeOriginal = TYPE_DEFAULT;
+
+  @api
+  get type() {
+    return this._typeOriginal;
+  }
+
+  set type(value) {
+    this._typeOriginal = value;
+    this._type = normaliseString(value, {
+      validValues: TYPE_VALUES,
+      fallbackValue: TYPE_DEFAULT,
+      returnObjectValue: true
     });
+  }
+
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "nsw-grid": true,
+      [this._type]: this._type,
+      [this.className]: this.className
+    };
   }
 }

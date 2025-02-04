@@ -6,18 +6,46 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswStatusLabels extends LightningElement {
+const STATUS_DEFAULT = "info";
+const STATUS_VALUES = {
+  info: "nsw-status-label--info",
+  success: "nsw-status-label--success",
+  warning: "nsw-status-label--warning",
+  error: "nsw-status-label--error"
+};
+
+export default class extends LightningElement {
   @api label;
-  @api status;
+
+  /* api: status, Picklist */
+
+  _status = STATUS_VALUES[STATUS_DEFAULT];
+  _statusOriginal = STATUS_DEFAULT;
+
+  @api
+  get status() {
+    return this._statusOriginal;
+  }
+
+  set status(value) {
+    this._statusOriginal = value;
+    this._status =
+      STATUS_VALUES[
+        normaliseString(value, {
+          fallbackValue: STATUS_DEFAULT,
+          acceptedValues: STATUS_VALUES
+        })
+      ];
+  }
+
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-status-label": true,
-      "nsw-status-label--info": this.status === "info",
-      "nsw-status-label--success": this.status === "success",
-      "nsw-status-label--warning": this.status === "warning",
-      "nsw-status-label--error": this.status === "error"
-    });
+      [this._status]: this._status
+    };
   }
 }

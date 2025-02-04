@@ -8,7 +8,7 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuNswProgressIndicatorComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api step = 1;
   @api of = 1;
   @api mode;

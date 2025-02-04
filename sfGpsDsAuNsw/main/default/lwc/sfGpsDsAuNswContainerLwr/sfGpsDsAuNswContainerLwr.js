@@ -1,22 +1,51 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseString, isString } from "c/sfGpsDsHelpers";
+
+const MODE_VALUES = {
+  default: "",
+  flush: "nsw-container--flush"
+};
+const MODE_DEFAULT = "default";
 
 /**
  * @slot Container
  */
-export default class SfGpsDsAuNswContainerLwr extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   static renderMode = "light";
 
-  @api mode = "Default";
   @api containerClassName;
 
+  /* api: mode, picklist */
+
+  _mode = MODE_VALUES[MODE_DEFAULT];
+  _modeOriginal = MODE_DEFAULT;
+
+  @api
+  get mode() {
+    return this._modeOriginal;
+  }
+
+  set mode(value) {
+    this._modeOriginal = value;
+    this._mode = normaliseString(
+      isString(value) ? value.toLowerCase() : value,
+      {
+        validValues: MODE_VALUES,
+        fallbackValue: MODE_DEFAULT,
+        returnObjectValue: true
+      }
+    );
+  }
+
+  /* computed */
+
   get computedContainerClassName() {
-    return computeClass({
+    return {
       "nsw-container": true,
-      "nsw-container--flush": this.mode === "Flush",
+      [this._mode]: this._mode,
       [this.containerClassName]: this.containerClassName
-    });
+    };
   }
 
   /* lifecycle */
@@ -24,7 +53,6 @@ export default class SfGpsDsAuNswContainerLwr extends SfGpsDsLwc {
   connectedCallback() {
     this._isLwrOnly = true;
     super.connectedCallback();
-
     this.classList.add("nsw-scope");
   }
 }

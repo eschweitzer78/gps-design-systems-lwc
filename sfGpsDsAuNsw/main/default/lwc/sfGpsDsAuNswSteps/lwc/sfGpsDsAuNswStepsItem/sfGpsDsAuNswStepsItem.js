@@ -1,28 +1,38 @@
 import { LightningElement, api } from "lwc";
-import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import { replaceInnerHtml, normaliseInteger } from "c/sfGpsDsHelpers";
+
+const HEADINGLEVEL_DEFAULT = 2;
 
 export default class extends LightningElement {
   @api title;
   @api content;
 
-  _headingLevelOriginal = 2;
-  _headingLevel = 2;
+  /* api: headingLevel */
 
-  @api get headingLevel() {
+  _headingLevel = HEADINGLEVEL_DEFAULT;
+  _headingLevelOriginal = HEADINGLEVEL_DEFAULT;
+
+  @api
+  get headingLevel() {
     return this._headingLevelOriginal;
   }
 
   set headingLevel(value) {
     this._headingLevelOriginal = value;
-    this._headingLevel = Number(value);
+    this._headingLevel = normaliseInteger(value, {
+      acceptString: true,
+      minValue: 2,
+      maxValue: 4,
+      fallbackValue: HEADINGLEVEL_DEFAULT
+    });
   }
 
-  get isH3() {
-    return this.headingLevel === 3;
+  get _isH3() {
+    return this._headingLevel === 3;
   }
 
-  get isH4() {
-    return this.headingLebel === 4;
+  get _isH4() {
+    return this._headingLebel === 4;
   }
 
   renderedCallback() {

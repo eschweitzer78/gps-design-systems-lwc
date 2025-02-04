@@ -1,8 +1,9 @@
 <template lwc:render-mode="light">
-  <span if:false={firstChild}></span>
+  <span if:false={_firstChild}></span>
 
   <div class={computedClassName}>
     <div lwc:if={title} class="nsw-link-list__title">{title}</div>
+
     <ul class="nsw-link-list__list">
       <template for:each={links} for:item="item">
         <li key={item.index} class="nsw-link-list__item">

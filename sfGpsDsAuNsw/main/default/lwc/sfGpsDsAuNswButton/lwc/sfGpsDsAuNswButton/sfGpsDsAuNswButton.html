@@ -1,30 +1,26 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
-  <template lwc:if={isAnchor}>
+  <template lwc:if={computedIsAnchor}>
     <a class={computedClassName} href={link}>
-      <span
-        lwc:if={hasIconBefore}
-        class="material-icons nsw-material-icons"
-        aria-hidden="true"
-      >
-        {iconName}
-      </span>
-      <template lwc:if={hasIcon}>
+      <template lwc:if={computedHasIconBefore}>
+        <span class="material-icons nsw-material-icons" aria-hidden="true">
+          {iconName}
+        </span>
         <span><slot></slot></span>
+      </template>
+      <template lwc:elseif={computedHasIconAfter}>
+        <span><slot></slot></span>
+        <span class="material-icons nsw-material-icons" aria-hidden="true">
+          {iconName}
+        </span>
       </template>
       <template lwc:else>
         <slot></slot>
       </template>
-      <span
-        lwc:if={hasIconAfter}
-        class="material-icons nsw-material-icons"
-        aria-hidden="true"
-      >
-        {icon}
-      </span>
     </a>
   </template>
 
-  <template lwc:if={isButton}>
+  <template lwc:else>
     <button
       type={type}
       disabled={_disabled}
@@ -32,24 +28,19 @@
       class={computedClassName}
       onclick={handleClick}
     >
-      <span
-        lwc:if={hasIconBefore}
-        class="material-icons nsw-material-icons"
-        aria-hidden="true"
-      >
-        {iconName}
-      </span>
-      <template lwc:if={hasIcon}>
+      <template lwc:if={computedHasIconBefore}>
+        <span class="material-icons nsw-material-icons" aria-hidden="true">
+          {iconName}
+        </span>
         <span>{label}</span>
       </template>
+      <template lwc:elseif={computedHasIconAfter}>
+        <span>{label}</span>
+        <span class="material-icons nsw-material-icons" aria-hidden="true">
+          {iconName}
+        </span>
+      </template>
       <template lwc:else>{label}</template>
-      <span
-        lwc:if={hasIconAfter}
-        class="material-icons nsw-material-icons"
-        aria-hidden="true"
-      >
-        {iconName}
-      </span>
     </button>
   </template>
 </template>

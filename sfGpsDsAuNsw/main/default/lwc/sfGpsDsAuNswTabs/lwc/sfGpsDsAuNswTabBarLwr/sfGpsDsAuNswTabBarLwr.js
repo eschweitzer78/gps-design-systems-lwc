@@ -4,8 +4,7 @@ import { handleKeyDownOnTabList } from "./keyboard";
 export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
   static renderMode = "light";
 
-  @track _tabs = [];
-  @track _queueSynchronizeA11 = false;
+  /* api: tabHeaders, Array of Objects */
 
   @api
   get tabHeaders() {
@@ -57,6 +56,9 @@ export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
     this._queueSynchronizeA11 = true;
   }
 
+  @track _tabs = [];
+  @track _queueSynchronizeA11 = false;
+
   /* getters */
 
   get _visibleTabs() {
@@ -89,13 +91,6 @@ export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
     if (tab) {
       tab.focus();
     }
-  }
-
-  handleTabClick(event) {
-    event.preventDefault();
-
-    const clickedTabValue = event.target.getAttribute("data-tab-value");
-    this._selectTabAndFireSelectEvent(clickedTabValue, { hasFocus: true });
   }
 
   _findTabByValue(tabValue) {
@@ -168,6 +163,13 @@ export default class SfGpsDsAuNswLwrTabBar extends LightningElement {
   }
 
   /* event management */
+
+  handleTabClick(event) {
+    event.preventDefault();
+
+    const clickedTabValue = event.target.getAttribute("data-tab-value");
+    this._selectTabAndFireSelectEvent(clickedTabValue, { hasFocus: true });
+  }
 
   handleBlur(event) {
     const tabValue = event.target.getAttribute("data-tab-value");

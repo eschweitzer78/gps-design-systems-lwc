@@ -10,18 +10,16 @@ import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormLookupOsN.html";
 
-export default class SfGpsDsAuNswFormLookupOsN extends SfGpsDsAuNswStatusHelperMixin(
+export default class extends SfGpsDsAuNswStatusHelperMixin(
   SfGpsDsFormLookupOsN
 ) {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "nsw-form__label": true,
       "nsw-form__required": this._propSetMap.required
-    });
+    };
   }
 
   get computedAriaInvalid() {
@@ -33,5 +31,11 @@ export default class SfGpsDsAuNswFormLookupOsN extends SfGpsDsAuNswStatusHelperM
       helper: this._handleHelpText,
       errorMessageBlock: this.sfGpsDsIsError
     });
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

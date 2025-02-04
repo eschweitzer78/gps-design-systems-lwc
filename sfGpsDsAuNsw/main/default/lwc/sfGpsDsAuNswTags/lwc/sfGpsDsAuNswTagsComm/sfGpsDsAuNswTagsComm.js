@@ -5,44 +5,39 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswTagsComm extends NavigationMixin(SfGpsDsLwc) {
+export default class extends NavigationMixin(SfGpsDsLwc) {
   @api asCheckboxes = false;
   @api className;
 
-  /*
-   * links
-   */
+  /* api: links, String */
 
-  @track _links;
-  _originalLinks;
+  _links;
+  _linksOriginal;
 
-  @api get links() {
-    return this._originalLinks;
+  @api
+  get links() {
+    return this._linksOriginal;
   }
 
   set links(markdown) {
-    this._originalLinks = markdown;
-
     try {
-      if (markdown) {
-        this._links = mdEngine.extractLinks(markdown);
-      } else {
-        this._links = null;
-      }
+      this._linksOriginal = markdown;
+      this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
 
+  /* event management */
+
   handleChange(event) {
     let links = [...this._links];
     links[event.detail.index].checked = event.detail.checked;
-
     this._links = links;
   }
 

@@ -1,11 +1,11 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseInteger } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswPagination extends LightningElement {
+const ACTIVEPAGE_DEFAULT = 1;
+const LASTPAGE_DEFAULT = 1;
+
+export default class extends LightningElement {
   static renderMode = "light";
-
-  @api lastPage;
-  @api activePage;
 
   @api ariaLabel = "Pagination";
   @api srOnlyPre = "Page ";
@@ -15,90 +15,128 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
 
   @api className;
 
-  get firstPage() {
+  /* api: lastPage, Integer */
+
+  _lastPage = LASTPAGE_DEFAULT;
+  _lastPageOriginal = LASTPAGE_DEFAULT;
+
+  @api
+  get lastPage() {
+    return this._lastPageOriginal;
+  }
+
+  set lastPage(value) {
+    this._lastPageOriginal = value;
+    this._lastPage = normaliseInteger(value, {
+      acceptString: true,
+      fallbackValue: LASTPAGE_DEFAULT
+    });
+  }
+
+  /* api: activePage, Integer */
+
+  _activePage = ACTIVEPAGE_DEFAULT;
+  _activePageOriginal = ACTIVEPAGE_DEFAULT;
+
+  @api
+  get activePage() {
+    return this._activePageOriginal;
+  }
+
+  set activePage(value) {
+    this._activePageOriginal = value;
+    this._activePage = normaliseInteger(value, {
+      acceptString: true,
+      fallbackValue: ACTIVEPAGE_DEFAULT
+    });
+  }
+
+  /* computed */
+
+  get computedFirstPage() {
     return 1;
   }
 
-  get prevPage() {
-    return this.activePage - 1;
+  get computedPrevPage() {
+    return this._activePage - 1;
   }
 
-  get nextPage() {
-    return this.activePage + 1;
+  get computedNextPage() {
+    return this._activePage + 1;
   }
 
-  get showPrevious() {
-    return this.activePage > 1;
+  get computedShowPrevious() {
+    return this._activePage > 1;
   }
 
-  get showFirstPage() {
-    return this.activePage > 2;
+  get computedShowFirstPage() {
+    return this._activePage > 2;
   }
 
-  get showPrevEllipsis() {
-    return this.activePage > 3;
+  get computedShowPrevEllipsis() {
+    return this._activePage > 3;
   }
 
-  get showPrevPage() {
-    return this.activePage > 1;
+  get computedShowPrevPage() {
+    return this._activePage > 1;
   }
 
-  get showActivePage() {
-    return this.lastPage > 0;
+  get computedShowActivePage() {
+    return this._lastPage > 0;
   }
 
-  get showNextPage() {
-    return this.activePage < this.lastPage;
+  get computedShowNextPage() {
+    return this._activePage < this._lastPage;
   }
 
-  get showNextEllipsis() {
-    return this.activePage < this.lastPage - 2;
+  get computedShowNextEllipsis() {
+    return this._activePage < this._lastPage - 2;
   }
 
-  get showLastPage() {
-    return this.activePage < this.lastPage - 1;
+  get computedShowLastPage() {
+    return this._activePage < this._lastPage - 1;
   }
 
-  get showNext() {
-    return this.activePage < this.lastPage;
+  get computedShowNext() {
+    return this._activePage < this._lastPage;
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-pagination": true,
       [this.className]: this.className
-    });
+    };
   }
 
-  get previousDisabled() {
-    return !this.showPrevious;
+  get computedPreviousDisabled() {
+    return !this.computedShowPrevious;
   }
 
   get computedPrevPageClassName() {
-    return computeClass({
+    return {
       "nsw-icon-button": true,
-      disabled: this.previousDisabled
-    });
+      disabled: this.computedPreviousDisabled
+    };
   }
 
-  get nextDisabled() {
-    return !this.showNext;
+  get computedNextDisabled() {
+    return !this.computedShowNext;
   }
 
   get computedNextPageClassName() {
-    return computeClass({
+    return {
       "nsw-icon-button": true,
-      disabled: this.nextDisabled
-    });
+      disabled: this.computedNextDisabled
+    };
   }
 
-  /* events */
+  /* event management */
 
   handlePreviousPageClick(event) {
     event.preventDefault();
-    if (this.activePage > 1) {
+    if (this._activePage > 1) {
       this.dispatchEvent(
-        new CustomEvent("pagechange", { detail: this.activePage - 1 })
+        new CustomEvent("pagechange", { detail: this._activePage - 1 })
       );
     }
   }
@@ -111,16 +149,16 @@ export default class SfGpsDsAuNswPagination extends LightningElement {
   handleLastPageClick(event) {
     event.preventDefault();
     this.dispatchEvent(
-      new CustomEvent("pagechange", { detail: this.lastPage })
+      new CustomEvent("pagechange", { detail: this._lastPage })
     );
   }
 
   handleNextPageClick(event) {
     event.preventDefault();
 
-    if (this.activePage < this.lastPage) {
+    if (this._activePage < this._lastPage) {
       this.dispatchEvent(
-        new CustomEvent("pagechange", { detail: this.activePage + 1 })
+        new CustomEvent("pagechange", { detail: this._activePage + 1 })
       );
     }
   }

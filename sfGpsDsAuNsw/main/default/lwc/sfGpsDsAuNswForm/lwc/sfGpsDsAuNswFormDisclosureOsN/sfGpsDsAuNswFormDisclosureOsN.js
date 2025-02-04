@@ -8,7 +8,9 @@
 import SfGpsDsFormDisclosureOsN from "c/sfGpsDsFormDisclosureOsN";
 import tmpl from "./sfGpsDsAuNswFormDisclosureOsN.html";
 
-export default class SfGpsDsAuNswFormDisclosureOsN extends SfGpsDsFormDisclosureOsN {
+export default class extends SfGpsDsFormDisclosureOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

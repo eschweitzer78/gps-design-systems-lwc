@@ -8,19 +8,24 @@
 // TODO: handle issue with level2 menus on desktop vs mobile -- how do we know when to navigate vs expand?
 import { LightningElement, api, track, wire } from "lwc";
 import { CurrentPageReference } from "lightning/navigation";
-import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import { uniqueId, normaliseBoolean } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswMainNav extends LightningElement {
+const MEGAMENU_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api mainNavId = "nav"; //uniqueId("sf-gps-ds-au-nsw-main-nav");
   @api navAriaLabel = "Main Navigation";
   @api navTitle = "Menu";
   @api closeMenuLabel = "Close Menu";
+  @api className;
 
-  @track _isActivating;
-  @track _isClosing;
+  /* api: isActive */
+
   _isActive = false;
+  _isActivating;
+  _isClosing;
 
   @api
   get isActive() {
@@ -39,14 +44,80 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     }
   }
 
-  /*
-   * navItems
-   * Array of navigation item objects, format { url: '', text: '', subNav: ... }
-   */
+  /* api: navItems, array of navigation item objects{ url, text, subNav: ... } */
 
-  _originalNavItems;
   @track _navItems;
+  _navItemsOriginal;
+
+  @api
+  get navItems() {
+    return this._navItemsOriginal;
+  }
+
+  set navItems(items) {
+    this._navItemsOriginal = items;
+    this.navItemsMapping();
+  }
+
+  /* api: megaMenu */
+
+  _megaMenu = MEGAMENU_DEFAULT;
+  _megaMenuOriginal = MEGAMENU_DEFAULT;
+
+  @api
+  get megaMenu() {
+    return this._megaMenuOriginal;
+  }
+
+  set megaMenu(value) {
+    this._megaMenuOriginal = value;
+    this._megaMenu = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: MEGAMENU_DEFAULT
+    });
+
+    this.navItemsMapping();
+  }
+
+  /* wire: handlePageReference */
+
+  _pageReference;
+
+  @wire(CurrentPageReference) handlePageReference(pageReference) {
+    /* This is called when we navigate off the current page... */
+
+    if (this._pageReference && this._pageReference !== pageReference) {
+      /* update menu */
+      this.navItemsMapping();
+    }
+
+    this._pageReference = pageReference;
+  }
+
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "nsw-main-nav": true,
+      activating: this._isActivating,
+      active: this.isActive,
+      closing: this._isClosing,
+      [this.className]: this.className
+    };
+  }
+
+  /* methods */
+
+  _navItemId = uniqueId("sf-gps-ds-au-nsw-main-nav-item");
   @track _mapItems;
+
+  navItemsMapping() {
+    let map = {};
+    this._navItems = this._navItemsOriginal
+      ? this.mapItems(this._navItemId, 0, map, this._navItemsOriginal)
+      : null;
+    this._mapItems = map;
+  }
 
   mapItems(parentIndex, parentLevel, map, items) {
     let index = 0;
@@ -73,7 +144,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
       index++;
 
-      if (!this.megaMenu) {
+      if (!this._megaMenu) {
         delete result.subNav;
       } else if (item.subNav) {
         result.subNav = this.mapItems(
@@ -86,69 +157,6 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
       map[result.index] = result;
       return result;
-    });
-  }
-
-  @api get navItems() {
-    return this._originalNavItems;
-  }
-
-  set navItems(items) {
-    this._originalNavItems = items;
-    this.navItemsMapping();
-  }
-
-  _navItemId = uniqueId("sf-gps-ds-au-nsw-main-nav-item");
-
-  navItemsMapping() {
-    let map = {};
-    this._navItems = this._originalNavItems
-      ? this.mapItems(this._navItemId, 0, map, this._originalNavItems)
-      : null;
-    this._mapItems = map;
-  }
-
-  /* api: megaMenu */
-
-  _megaMenu = false;
-
-  @api get megaMenu() {
-    return this._megaMenu;
-  }
-
-  set megaMenu(value) {
-    this._megaMenu = value;
-    this.navItemsMapping();
-  }
-
-  /* api: className */
-
-  @api className;
-
-  /* wire: handlePageReference */
-
-  _pageReference;
-
-  @wire(CurrentPageReference) handlePageReference(pageReference) {
-    /* This is called when we navigate off the current page... */
-
-    if (this._pageReference && this._pageReference !== pageReference) {
-      /* update menu */
-      this.navItemsMapping();
-    }
-
-    this._pageReference = pageReference;
-  }
-
-  /* get: computedClassName */
-
-  get computedClassName() {
-    return computeClass({
-      "nsw-main-nav": true,
-      activating: this.isActivating,
-      active: this.isActive,
-      closing: this.isClosing,
-      [this.className]: this.className
     });
   }
 
@@ -177,6 +185,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
   focusItem(navItem) {
     const navItemElt = this.getElementForItem(navItem);
+
     if (navItemElt) {
       navItemElt.focus();
     }
@@ -198,7 +207,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     return this._activeSubNavs.slice(-1);
   }
 
-  /* Event management */
+  /* event management */
 
   handleClickNavigate(event) {
     event.preventDefault();
@@ -208,7 +217,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
     const closeMenuEvent = new CustomEvent("closemenu");
     this.dispatchEvent(closeMenuEvent);
 
-    let index = event.currentTarget.dataset.ndx;
+    const index = event.currentTarget.dataset.ndx;
     this.dispatchEvent(new CustomEvent("navigate", { detail: index }));
   }
 
@@ -217,8 +226,8 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isActive = true;
-    let index = event.currentTarget.dataset.ndx;
-    let clickLevel = this._mapItems[index]?.level;
+    const index = event.currentTarget.dataset.ndx;
+    const clickLevel = this._mapItems[index]?.level;
 
     // eslint-disable-next-line guard-for-in
     for (let prop in this._mapItems) {
@@ -231,7 +240,6 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         item.isActive = false;
       }
 
-      //item.className = item.isActive ? "active" : "";
       item.className = item.isActive && !this._megaMenu ? "active" : "";
       item.anchorClassName = item.isActive && this._megaMenu ? "active" : "";
       item.subNavClassName = item.isActive
@@ -264,8 +272,6 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
 
   handleKeydown(event) {
     if (this._megaMenu && event.key === "Escape") {
-      //console.log("escape", event.currentTarget.dataset.ndx);
-      /*
       const navItem = this.getLatestSubNav();
 
       if (navItem && navItem.isActive) {
@@ -274,7 +280,6 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
         navItem.className = "";
         this.focusItem(navItem);
       }
-      */
     }
   }
 
@@ -285,7 +290,7 @@ export default class SfGpsDsAuNswMainNav extends LightningElement {
   /* Lifecycle */
 
   breakpoint;
-  @track _isDesktop = false;
+  _isDesktop = false;
   _handleResponsiveCheck;
 
   connectedCallback() {

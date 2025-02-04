@@ -44,7 +44,7 @@ describe("c-sf-gps-ds-au-nsw-alert", () => {
     expect(widget.className).not.toContain("info");
   });
 
-  it("can have be made compact", () => {
+  it("can be made compact", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAlert
     });

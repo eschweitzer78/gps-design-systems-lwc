@@ -10,7 +10,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
+const MASTHEADLABEL_DEFAULT = "A NSW Government website";
+
+export default class extends SfGpsDsLwc {
   @api arLabel = "Skip to links";
   @api nav;
   @api navLabel = "Skip to navigation";
@@ -19,17 +21,19 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
   @api cstyle;
   @api className;
 
-  _mastheadLabelHtml;
-  _mastheadLabel = "A NSW Government website";
+  /* api: mastheadLabel */
 
-  @api get mastheadLabel() {
-    return this._mastheadLabel;
+  _mastheadLabelHtml = MASTHEADLABEL_DEFAULT;
+  _mastheadLabelOriginal = MASTHEADLABEL_DEFAULT;
+
+  @api
+  get mastheadLabel() {
+    return this._mastheadLabelOriginal;
   }
 
   set mastheadLabel(markdown) {
-    this._mastheadLabel = markdown;
-
     try {
+      this._mastheadLabelOriginal = markdown;
       this._mastheadLabelHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("ML-MD", "Issue when parsing Masthead label markdown");
@@ -44,7 +48,7 @@ export default class SfGpsDsAuNswMastheadComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    if (this.mastheadLabel) {
+    if (this._mastheadLabelOriginal) {
       replaceInnerHtml(this.refs.markdown, this._mastheadLabelHtml);
     }
   }

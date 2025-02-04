@@ -11,14 +11,10 @@ import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswComboboxOsN.html";
 
-export default class SfGpsDsAuNswComboboxOsN extends SfGpsDsAuNswStatusHelperMixin(
-  OmnistudioCombobox
-) {
+export default class extends SfGpsDsAuNswStatusHelperMixin(OmnistudioCombobox) {
   @api labelClassName;
 
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedAriaDescribedBy() {
     return computeClass({
@@ -28,10 +24,16 @@ export default class SfGpsDsAuNswComboboxOsN extends SfGpsDsAuNswStatusHelperMix
   }
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "nsw-form__label": true,
       "nsw-form__required": this.required,
       [this.labelClassName]: this.labelClassName
-    });
+    };
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

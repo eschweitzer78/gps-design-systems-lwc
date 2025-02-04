@@ -1,8 +1,9 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <div class={computedClassName}>
     <button
       type="button"
-      aria-expanded={isOpen}
+      aria-expanded={_isOpen}
       aria-controls={computedAriaControlsId}
       class={computedButtonClassName}
       onclick={handleClick}
@@ -16,6 +17,7 @@
       </i>
     </button>
   </div>
+
   <div
     class="nsw-accordion__content"
     id={computedAriaControlsId}

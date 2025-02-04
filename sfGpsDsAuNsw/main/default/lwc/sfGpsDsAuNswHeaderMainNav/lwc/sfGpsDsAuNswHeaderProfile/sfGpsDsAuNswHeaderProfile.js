@@ -1,6 +1,7 @@
 import { LightningElement, api, track } from "lwc";
+import OnClickOutside from "c/sfGpsDsOnClickOutside";
 
-export default class SfGpsDsAuNswHeaderProfile extends LightningElement {
+export default class extends LightningElement {
   @api signInLabel = "Log in";
   @api isGuest;
   @api userAlias;
@@ -9,11 +10,10 @@ export default class SfGpsDsAuNswHeaderProfile extends LightningElement {
 
   @track isOpen = false;
 
-  _justOpened;
+  /* event management */
 
   handleOpenProfile() {
     this.isOpen = true;
-    this._justOpened = true;
   }
 
   handleCloseProfile() {
@@ -36,24 +36,23 @@ export default class SfGpsDsAuNswHeaderProfile extends LightningElement {
     return false;
   }
 
-  handleOutsideClick() {
-    if (!this._justOpened) {
-      this.isOpen = false;
-    } else {
-      this._justOpened = false;
+  /* lifecycle */
+
+  _onClickOutside;
+
+  renderedCallback() {
+    if (!this._onClickOutside) {
+      this._onClickOutside = new OnClickOutside();
+      this._onClickOutside.bind(this, "containerRef", () => {
+        this.isOpen = false;
+      });
     }
   }
 
-  _handler;
-
-  connectedCallback() {
-    document.addEventListener(
-      "click",
-      (this._handler = this.handleOutsideClick.bind(this))
-    );
-  }
-
   disconnectedCallback() {
-    document.removeEventListener("click", this._handler);
+    if (this._onClickOutside) {
+      this._onClickOutside.unbind(this, "containerRef");
+      this._onClickOutside = null;
+    }
   }
 }

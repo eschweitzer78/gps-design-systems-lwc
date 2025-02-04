@@ -7,20 +7,23 @@
 
 import SfGpsDsFormBlockOsN from "c/sfGpsDsFormBlockOsN";
 import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormBlockOsN.html";
 
 export default class extends SfGpsDsAuNswStatusHelperMixin(
   SfGpsDsFormBlockOsN
 ) {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedButtonClassName() {
-    return computeClass({
+    return {
       "nsw-accordion__button": true,
       active: this.expandContent
-    });
+    };
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

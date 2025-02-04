@@ -1,18 +1,24 @@
-import { api, track, LightningElement } from "lwc";
+import { api, LightningElement } from "lwc";
 import { debounce } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswBackToTop extends LightningElement {
+const MOBILE_BREAKPOINT = 768;
+
+export default class extends LightningElement {
   @api scrollOffset = 0;
   @api className;
-  @track show;
 
+  _show;
   _width;
   _height;
   _scrollPosition;
 
-  get isMobile() {
-    return this._width < 768;
+  /* getters */
+
+  get _isMobile() {
+    return this._width < MOBILE_BREAKPOINT;
   }
+
+  /* methods */
 
   checkBackToTop() {
     const windowTop = window.scrollY || document.documentElement.scrollTop;
@@ -37,6 +43,8 @@ export default class SfGpsDsAuNswBackToTop extends LightningElement {
       window.innerHeight || 0
     );
   }
+
+  /* lifecycle */
 
   _listenForScroll;
   _listenForResize;
