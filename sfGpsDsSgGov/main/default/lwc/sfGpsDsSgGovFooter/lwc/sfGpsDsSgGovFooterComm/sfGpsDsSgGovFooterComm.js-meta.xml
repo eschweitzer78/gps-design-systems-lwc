@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>SG DS Footer</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="mode"
+        type="String"
+        label="Mode"
+        datasource="Demo,Experience Cloud Navigation,Integration Procedure"
+        default="Experience Cloud Navigation"
+      />
+      <property
+        name="navigationDevName"
+        type="String"
+        label="Navigation name"
+        description="Pick the target footer nav when mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration Procedure mapping content to the footer nav when move is set to Integration Procedure."
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Input JSON"
+        description="JSON formatted input parameters for the footer Integration Procedure."
+        default="{}"
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Options JSON"
+        description="JSON formatted options for the footer Integration Procedure."
+        default="{}"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="A text displayed as the footer title."
+        default="Singapore Government Design System"
+      />
+      <property
+        name="description"
+        type="String"
+        label="Description"
+        description="A text some general context about the products and services."
+        default="The Singapore Government Design System was developed to empower teams in creating fast, accessible and mobile-friendly digital services."
+      />
+      <property
+        name="copyrightLiner"
+        type="String"
+        label="Copyright liner"
+        description="The copyright holder in the copyright statement."
+        default="Government of Singapore"
+      />
+      <property
+        name="lastUpdate"
+        type="String"
+        label="Last update statement"
+        description="Statement regarding the date of the last site update."
+      />
+      <property
+        name="reportVulnerabilityLink"
+        type="String"
+        label="Report vulnerability link"
+        description="Report vulnerability link in Markdown link format."
+        default="[Report vulnerability](https://tech.gov.sg/report_vulnerability)"
+      />
+      <property
+        name="contactLink"
+        type="String"
+        label="Contact link"
+        description="Contact link in Markdown link format."
+        default="[Contact](#)"
+      />
+      <property
+        name="feedbackLink"
+        type="String"
+        label="Feedback link"
+        description="Feedback link in Markdown format."
+        default="[Feedback](#)"
+      />
+      <property
+        name="privacyLink"
+        type="String"
+        label="Privacy link"
+        description="Privacy link in Markdown link format."
+        default="[Privacy](#)"
+      />
+      <property
+        name="termsOfUseLink"
+        type="String"
+        label="Terms of use link"
+        description="Terms of use link in Markdown link format."
+        default="[Terms of use](#)"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,112 @@
+<template>
+  <footer class={computedClassName}>
+    <section class="footer-top" part="footer-top">
+      <div class="container-fluid">
+        <div class="row footer-header">
+          <div class="col col-lg-6 col-md-12">
+            <div class="title">{title}</div>
+            <div lwc:if={description} class="description">{description}</div>
+          </div>
+        </div>
+        <div class="row footer-items">
+          <template for:each={links} for:item="item">
+            <div key={item.index} class="col-xxl-2 col-md-4 mb-3">
+              <template lwc:if={item.title}>
+                <template lwc:if={item.href}>
+                  <a
+                    lwc:if={link.external}
+                    class="title"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-ndx={item.index}
+                    onclick={handleClick}
+                  >
+                    {item.title}
+                  </a>
+                  <a
+                    lwc:else
+                    class="title"
+                    data-ndx={item.index}
+                    onclick={handleClick}
+                  >
+                    {item.title}
+                  </a>
+                </template>
+                <div lwc:else class="title">{item.title}</div>
+              </template>
+
+              <ul class="links">
+                <template for:each={item.links} for:item="link">
+                  <li key={link.index}>
+                    <a
+                      lwc:if={link.external}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-ndx={link.index}
+                      onclick={handleClick}
+                    >
+                      {link.label}
+                    </a>
+                    <a
+                      lwc:else
+                      href={link.href}
+                      data-ndx={link.index}
+                      onclick={handleClick}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </template>
+        </div>
+
+        <div class="row footer-contact-links">
+          <div class="col">
+            <div class="d-flex justify-content-lg-end">
+              <ul>
+                <li><a href={contactHref}>{contactLabel}</a></li>
+                <li><a href={feedbackHref}>{feedbackLabel}</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer-bottom" part="footer-bottom">
+      <div class="container-fluid">
+        <div class="row footer-mandatory-links">
+          <div class="col">
+            <ul>
+              <li>
+                <a
+                  href={reportVulnerabilityHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {reportVulnerabilityLabel}
+                </a>
+              </li>
+              <li><a href={privacyHref}>{privacyLabel}</a></li>
+              <li><a href={termsOfUseHref}>{termsOfUseLabel}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row footer-copyrights">
+          <div class="col">
+            <div class="d-flex justify-content-lg-end text-end">
+              © {computedFullYear} {copyrightLiner}
+              <template lwc:if={lastUpdateDate}>
+                <br />
+                Last Updated {lastUpdatedDate}
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+</template>
