@@ -1,6 +1,6 @@
 <template>
-  <template if:true={auto}>
-    <template if:true={hasResult}>
+  <template lwc:if={auto}>
+    <template lwc:if={hasResult}>
       <div
         class="copy-container slds-is-absolute slds-z_-1"
         lwc:dom="manual"
@@ -24,8 +24,8 @@
     </template>
   </template>
 
-  <template if:false={auto}>
-    <template if:true={hasResult}>
+  <template lwc:else>
+    <template lwc:if={hasResult}>
       <div
         class="copy-container slds-is-absolute slds-z_-1"
         lwc:dom="manual"

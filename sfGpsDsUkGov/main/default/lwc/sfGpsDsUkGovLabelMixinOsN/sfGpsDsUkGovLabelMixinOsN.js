@@ -6,7 +6,6 @@
  */
 
 import { api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 
 const ERROR_SR_LABEL = "Error: ";
 
@@ -30,9 +29,9 @@ let SfGpsUkGovLabelMixin = (base) =>
     }
 
     computeLabelClassName(className) {
-      let ls = this.labelSize;
+      const ls = this.labelSize;
 
-      return computeClass({
+      return {
         "govuk-label": true,
         [className]: className,
         "govuk-label--xl":
@@ -42,13 +41,13 @@ let SfGpsUkGovLabelMixin = (base) =>
         "govuk-label--m":
           ls === "m" || ls === "medium" || (ls == null) & this.computedIsH3,
         "govuk-label--s": ls === "s" || ls === "small"
-      });
+      };
     }
 
     get computedLegendClassName() {
-      let ls = this.labelSize;
+      const ls = this.labelSize;
 
-      return computeClass({
+      return {
         "govuk-fieldset__legend": true,
         "govuk-fieldset__legend--xl":
           ls === "xl" || ls === "x-large" || (ls == null) & this.computedIsH1,
@@ -57,7 +56,7 @@ let SfGpsUkGovLabelMixin = (base) =>
         "govuk-fieldset__legend--m":
           ls === "m" || ls === "medium" || (ls == null) & this.computedIsH3,
         "govuk-fieldset__legend--s": ls === "s" || ls === "small"
-      });
+      };
     }
 
     @api isHeading;

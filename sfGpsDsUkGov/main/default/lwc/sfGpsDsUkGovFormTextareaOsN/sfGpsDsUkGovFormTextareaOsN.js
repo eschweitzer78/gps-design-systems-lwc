@@ -8,7 +8,9 @@
 import SfGpsDsFormTextareaOsN from "c/sfGpsDsFormTextareaOsN";
 import tmpl from "./sfGpsDsUkGovFormTextareaOsN.html";
 
-export default class SfGpsDsUkGovFormTextAreaOsN extends SfGpsDsFormTextareaOsN {
+export default class extends SfGpsDsFormTextareaOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

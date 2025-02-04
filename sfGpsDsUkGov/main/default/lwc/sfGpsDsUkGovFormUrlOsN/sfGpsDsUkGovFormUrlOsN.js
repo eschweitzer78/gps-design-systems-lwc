@@ -8,7 +8,9 @@
 import SfGpsDsFormUrl from "c/sfGpsDsFormUrlOsN";
 import tmpl from "./sfGpsDsUkGovFormUrlOsN.html";
 
-export default class SfGpsDsUkGovFormUrlOsN extends SfGpsDsFormUrl {
+export default class extends SfGpsDsFormUrl {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

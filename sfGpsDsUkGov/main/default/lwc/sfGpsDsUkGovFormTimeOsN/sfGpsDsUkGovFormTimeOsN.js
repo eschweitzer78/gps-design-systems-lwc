@@ -8,7 +8,9 @@
 import SfGpsDsFormTimeOsN from "c/sfGpsDsFormTimeOsN";
 import tmpl from "./sfGpsDsUkGovFormTimeOsN.html";
 
-export default class SfGpsDsUkGovFormTimeOsN extends SfGpsDsFormTimeOsN {
+export default class extends SfGpsDsFormTimeOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

@@ -9,7 +9,9 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsUkGovAccordionSectionComm extends SfGpsDsLwc {
+const CLOSED_DEFAULT = true;
+
+export default class extends SfGpsDsLwc {
   @api index;
   @api header;
   @api content;
@@ -17,9 +19,10 @@ export default class SfGpsDsUkGovAccordionSectionComm extends SfGpsDsLwc {
 
   // @api closed
 
-  _closed = true;
+  _closed = CLOSED_DEFAULT;
 
-  @api get closed() {
+  @api
+  get closed() {
     return this._closed;
   }
 

@@ -10,19 +10,15 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormLookupOsN.html";
 
-export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormLookupOsN
-) {
-  render() {
-    return tmpl;
-  }
-
+export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsFormLookupOsN) {
   initCompVariables() {
     super.initCompVariables();
 
     this.labelSize = this._propSetMap.labelSize;
     this.isHeading = this._propSetMap.isHeading;
   }
+
+  /* computed */
 
   get computedFormGroupClassName() {
     return computeClass({
@@ -32,12 +28,12 @@ export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
   }
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "govuk-input": true,
       "govuk-input--error": this.sfGpsDsIsError,
       "sfgpsds-input": true,
       "sfgpsds-combobox__input": true
-    });
+    };
   }
 
   get computedAriaInvalid() {
@@ -49,5 +45,11 @@ export default class SfGpsDsUkGovFormLookupOsN extends SfGpsDsUkGovLabelMixin(
       helper: this._handleHelpText,
       errorMessageBlock: this.sfGpsDsIsError
     });
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

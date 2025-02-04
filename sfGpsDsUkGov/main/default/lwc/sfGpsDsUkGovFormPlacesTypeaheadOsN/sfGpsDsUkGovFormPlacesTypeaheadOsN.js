@@ -8,12 +8,16 @@
 import SfGpsDsFormPlacesTypeahead from "c/sfGpsDsFormPlacesTypeaheadOsN";
 import tmpl from "./sfGpsDsUkGovFormPlacesTypeaheadOsN.html";
 
-export default class sfGpsDsUkGovFormPlacesTypeaheadOsN extends SfGpsDsFormPlacesTypeahead {
-  render() {
-    return tmpl;
-  }
+export default class extends SfGpsDsFormPlacesTypeahead {
+  /* computed */
 
   get trueValue() {
     return true;
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

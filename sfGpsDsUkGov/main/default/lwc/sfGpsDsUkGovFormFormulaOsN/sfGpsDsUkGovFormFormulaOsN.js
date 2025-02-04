@@ -9,9 +9,7 @@ import SfGpsDsFormFormulaOsN from "c/sfGpsDsFormFormulaOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormFormulaOsN.html";
 
-export default class SfGpsDsAuNswFormFormulaOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormFormulaOsN
-) {
+export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsFormFormulaOsN) {
   render() {
     return tmpl;
   }

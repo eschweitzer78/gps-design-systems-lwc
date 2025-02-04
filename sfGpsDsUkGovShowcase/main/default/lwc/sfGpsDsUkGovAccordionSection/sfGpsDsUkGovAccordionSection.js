@@ -1,5 +1,5 @@
-import { LightningElement, api, track } from "lwc";
-import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import { LightningElement, api } from "lwc";
+import { uniqueId } from "c/sfGpsDsHelpers";
 
 const CONTENTID_PREFIX = "sf-gps-ds-uk-gov-accordion-section-content";
 const HEADINGTEXTID_PREFIX = "sf-gps-ds-uk-gov-accordion-section-heading-text";
@@ -14,7 +14,7 @@ const I18N = {
 // ALLOW_ARIA_LABELLEDBY prevents the use of aria-labelledby in the section's div as it breaks W3-ARIA conformance even though it's specified by GDS.
 const ALLOW_ARIA_LABELLEDBY = false;
 
-export default class SfGpsDsUkGovAccordionSection extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api header;
@@ -23,9 +23,10 @@ export default class SfGpsDsUkGovAccordionSection extends LightningElement {
 
   /* api: closed */
 
-  @track _isOpen = false;
+  _isOpen = false;
 
-  @api get closed() {
+  @api
+  get closed() {
     return !this._isOpen;
   }
 
@@ -33,29 +34,25 @@ export default class SfGpsDsUkGovAccordionSection extends LightningElement {
     this._isOpen = !value;
   }
 
-  /* computed: _isHidden */
+  /* computed */
 
   get _isHidden() {
     return !this._isOpen;
   }
 
-  /* computed: computedClassName */
-
   get computedClassName() {
-    return computeClass({
+    return {
       "govuk-accordion__section": true,
       "govuk-accordion__section--expanded": this._isOpen,
       [this.className]: this.className
-    });
+    };
   }
 
-  /* computed: computedChevronClassName */
-
   get computedChevronClassName() {
-    return computeClass({
+    return {
       "govuk-accordion-nav__chevron": true,
       "govuk-accordion-nav__chevron--down": !this._isOpen
-    });
+    };
   }
 
   /* computed: computedAriaLabel */
@@ -65,8 +62,6 @@ export default class SfGpsDsUkGovAccordionSection extends LightningElement {
       this._isOpen ? I18N.hideSectionAriaLabel : I18N.showSectionAriaLabel
     }`;
   }
-
-  /* computed: computedHeadingTextId */
 
   _headingTextId;
 
@@ -78,8 +73,6 @@ export default class SfGpsDsUkGovAccordionSection extends LightningElement {
     return this._headingTextId;
   }
 
-  /* computed: contentId */
-
   _contentId;
 
   get computedContentId() {
@@ -90,13 +83,9 @@ export default class SfGpsDsUkGovAccordionSection extends LightningElement {
     return this._contentId;
   }
 
-  /* computed: _allowAriaLabelledby */
-
   get _allowAriaLabelledby() {
     return ALLOW_ARIA_LABELLEDBY;
   }
-
-  /* i18n */
 
   get i18n() {
     return I18N;

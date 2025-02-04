@@ -12,19 +12,11 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 
 import tmpl from "./sfGpsDsUkGovMaskedInputOsN.html";
 
-export default class SfGpsDsUkGovMaskedInputOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptMaskedInput
-) {
+export default class extends SfGpsDsUkGovLabelMixin(OmniscriptMaskedInput) {
   /* api: prefix and suffix */
 
   @api sfGpsDsPrefix;
   @api sfGpsDsSuffix;
-
-  /* methods */
-
-  render() {
-    return tmpl;
-  }
 
   /* getters */
 
@@ -53,6 +45,7 @@ export default class SfGpsDsUkGovMaskedInputOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
+  /* methods */
   /* original maskedInput widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
@@ -62,5 +55,11 @@ export default class SfGpsDsUkGovMaskedInputOsN extends SfGpsDsUkGovLabelMixin(
     ]
       .filter((item) => item)
       .join(" ");
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

@@ -8,7 +8,9 @@
 import SfGpsDsFormCheckboxOsN from "c/sfGpsDsFormCheckboxOsN";
 import tmpl from "./sfGpsDsUkGovFormCheckboxOsN.html";
 
-export default class SfGpsDsUkGovFormCheckboxOsN extends SfGpsDsFormCheckboxOsN {
+export default class extends SfGpsDsFormCheckboxOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

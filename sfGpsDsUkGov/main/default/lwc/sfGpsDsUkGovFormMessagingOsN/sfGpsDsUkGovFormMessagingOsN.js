@@ -9,10 +9,8 @@ import SfGpsDsFormMessagingOsN from "c/sfGpsDsFormMessagingOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsUkGovFormMessagingOsN.html";
 
-export default class SfGpsDsUkGovFormMessagingOsN extends SfGpsDsFormMessagingOsN {
-  render() {
-    return tmpl;
-  }
+export default class extends SfGpsDsFormMessagingOsN {
+  /* computed */
 
   get mergedMessageText() {
     return omniGetMergedField(this, this.messageText);
@@ -32,5 +30,11 @@ export default class SfGpsDsUkGovFormMessagingOsN extends SfGpsDsFormMessagingOs
 
   get isWarning() {
     return this.messageType === "Warning";
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }
