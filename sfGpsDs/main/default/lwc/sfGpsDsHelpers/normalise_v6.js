@@ -1,10 +1,10 @@
-/* normaliseOps.js */
+import { isString } from "./typeutil";
 
 export function normaliseBoolean(v, options = {}) {
   const { acceptString: as = false, fallbackValue: fV = false } = options;
 
   if (!as || typeof v !== "string") {
-    return !!v;
+    return v == null ? fV : !!v;
   }
 
   switch (v.trim().toLocaleLowerCase()) {
@@ -43,7 +43,8 @@ export function normaliseString(value, options = {}) {
     fallbackValue: fV = "",
     validValues: vV,
     toLowerCase: tLC = true,
-    trim: t = true
+    trim: t = true,
+    returnObjectValue: rOV = false
   } = options;
 
   let result = ("string" === typeof value && (t ? value.trim() : value)) || "";
@@ -59,8 +60,41 @@ export function normaliseString(value, options = {}) {
   } else if (vV && typeof vV === "object") {
     if (!Object.hasOwn(vV, result)) {
       result = fV;
+    } else if (rOV) {
+      result = vV[result];
     }
   }
 
   return result;
+}
+
+export function normaliseInteger(value, options = {}) {
+  const {
+    fallbackValue: fV = 0,
+    min = Number.NEGATIVE_INFINITY,
+    max = Number.POSITIVE_INFINITY,
+    acceptString: aS = true
+  } = options;
+
+  let intFV = parseInt(fV, 10);
+
+  if (Number.isNaN(intFV)) {
+    intFV = 0;
+  }
+
+  if (aS && isString(value)) {
+    value = parseInt(value, 10);
+  }
+
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return intFV;
+  }
+
+  const intValue = value | 0; /* truncates floating point */
+
+  if (intValue < min) {
+    return min;
+  }
+
+  return intValue > max ? max : intValue;
 }

@@ -41,7 +41,7 @@
     "cssutil.js": { "target": "cssutil.js" },
     "datetimeutil_v6.js": { "target": "datetimeutil_v6.js" },
     "domutil_v6.js": { "target": "domutil_v6.js" },
-    "focus_v6.js": { "target": "focus_v6.js" },
+    "eventutil.js": { "target": "eventutil.js" },
     "jsutil_v6.js": { "target": "jsutil_v6.js" },
     "nextTick_v6.js": { "target": "nextTick_v6.js" },
     "normalise_v6.js": { "target": "normalise_v6.js" },
@@ -51,6 +51,7 @@
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     },
     "string_v6.js": { "target": "string_v6.js" },
+    "typeutil.js": { "target": "typeutil.js" },
     "urlutil.js": { "target": "urlutil.js" },
     "utilities_v6.js": { "target": "utilities_v6.js" }
   },
@@ -111,7 +112,11 @@
   },
   "sfGpsDsTransition": {
     "target": "!Os",
-    "!.js": { "target": "!Os.js" },
+    "transition-util.js": { "target": "transition-util.js" },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"

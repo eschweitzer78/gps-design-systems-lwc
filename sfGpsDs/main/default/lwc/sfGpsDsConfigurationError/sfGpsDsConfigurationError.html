@@ -1,6 +1,7 @@
 <template>
   <div class="sf-gps-box sf-gps-theme--error sf-gps-theme--alert-texture">
     <p><strong>We hit a snag!</strong></p>
+
     <template lwc:if={errors}>
       <p>There are issues with this widget's configuration:</p>
       <ul class="sf-gps-list--dotted">
@@ -10,6 +11,7 @@
       </ul>
     </template>
     <p lwc:else>There are issues with this widget's configuration.</p>
+
     <div class="sf-gps-who">
       <p>Salesforce Global Public Sector</p>
     </div>
