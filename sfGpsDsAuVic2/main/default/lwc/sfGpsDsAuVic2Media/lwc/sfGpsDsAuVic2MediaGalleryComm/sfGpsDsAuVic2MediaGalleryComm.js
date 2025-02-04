@@ -1,27 +1,32 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+import { isString, isArray } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2MediaGalleryComm extends SfGpsDsLwc {
+const ITEMS_DEFAULT = [];
+
+export default class extends SfGpsDsLwc {
   @api id;
   @api className;
 
-  _itemsOriginal;
-  _items;
+  /* items */
 
-  @api get items() {
+  _items = ITEMS_DEFAULT;
+  _itemsOriginal = ITEMS_DEFAULT;
+
+  @api
+  get items() {
     return this._itemsOriginal;
   }
 
   set items(value) {
     this._itemsOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       value = JSON.parse(value);
     }
 
-    if (!Array.isArray(value)) {
-      this._items = [];
-      return;
+    if (!isArray(value)) {
+      value = ITEMS_DEFAULT;
     }
 
     this._items = value;

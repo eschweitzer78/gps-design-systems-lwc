@@ -1,18 +1,27 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { isArray, normaliseString } from "c/sfGpsDsHelpers";
 import { RplIconPlacement } from "c/sfGpsDsAuVic2IconConstants";
 
 const RplListTypes = ["unordered", "ordered"];
 const TYPE_DEFAULT = RplListTypes[0];
 const ICON_PLACEMENT_DEFAULT = "before";
 
-export default class SfGpsDsAuVic2List extends LightningElement {
+export default class extends LightningElement {
+  @api items;
+  @api depth = 0;
+  @api maxDepth;
+  @api withLinkIds;
+  @api itemClassName;
+  @api className;
+  @api preventDefault;
+
   /* api: type */
 
-  _typeOriginal = TYPE_DEFAULT;
   _type = TYPE_DEFAULT;
+  _typeOriginal = TYPE_DEFAULT;
 
-  @api get type() {
+  @api
+  get type() {
     return this._typeOriginal;
   }
 
@@ -24,16 +33,13 @@ export default class SfGpsDsAuVic2List extends LightningElement {
     });
   }
 
-  @api items;
-  @api depth = 0;
-  @api maxDepth;
-
   /* api: iconPlacement */
 
-  _iconPlacementOriginal = ICON_PLACEMENT_DEFAULT;
   _iconPlacement = ICON_PLACEMENT_DEFAULT;
+  _iconPlacementOriginal = ICON_PLACEMENT_DEFAULT;
 
-  @api get iconPlacement() {
+  @api
+  get iconPlacement() {
     return this._iconPlacementOriginal;
   }
 
@@ -45,10 +51,7 @@ export default class SfGpsDsAuVic2List extends LightningElement {
     });
   }
 
-  @api withLinkIds;
-  @api itemClassName;
-  @api className;
-  @api preventDefault;
+  /* computed */
 
   get computedIsUnordered() {
     return this.type === RplListTypes[0];
@@ -59,20 +62,20 @@ export default class SfGpsDsAuVic2List extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-list__items": true,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedItemClassName() {
-    return computeClass({
+    return {
       "rpl-list__item": true,
       [this.itemClassName]: this.itemClassName
-    });
+    };
   }
 
-  get shouldRenderChildren() {
+  get computedShouldRenderChildren() {
     return this.maxDepth == null ? true : this.depth < this.maxDepth;
   }
 
@@ -82,7 +85,7 @@ export default class SfGpsDsAuVic2List extends LightningElement {
 
   get decoratedItems() {
     const roe =
-      this.items && Array.isArray(this.items)
+      this.items && isArray(this.items)
         ? this.items.map((item, index) => {
             const rv = {
               ...item,
@@ -90,7 +93,7 @@ export default class SfGpsDsAuVic2List extends LightningElement {
               index: item.id || index,
               display: item.url || item.text,
               key: `item-${index + 1}`,
-              items: this.shouldRenderChildren ? item.items : null
+              items: this.computedShouldRenderChildren ? item.items : null
             };
 
             if (!this.displayId) {
@@ -103,6 +106,8 @@ export default class SfGpsDsAuVic2List extends LightningElement {
 
     return roe;
   }
+
+  /* event management */
 
   handleClick(event) {
     if (this.preventDefault) {

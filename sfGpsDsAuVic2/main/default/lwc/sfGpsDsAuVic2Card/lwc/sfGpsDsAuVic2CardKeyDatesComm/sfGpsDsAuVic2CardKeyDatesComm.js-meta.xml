@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>61.0</apiVersion>
+  <apiVersion>62.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>VIC2 DS Card (Key dates)</masterLabel>
   <targets>
@@ -16,6 +16,7 @@
         description="Title and target URL in Markdown link format."
         required="true"
         default="[Key Dates Card](#)"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="items"
@@ -31,12 +32,14 @@
         label="Call to action title"
         description="Text display in the action button."
         default="Find all public holidays"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

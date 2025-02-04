@@ -1,9 +1,9 @@
 <template>
   <c-sf-gps-ds-au-vic2-header class-name={computedClassName}>
-    <template lwc:if={iconName}>
+    <template lwc:if={computedIconName}>
       <c-sf-gps-ds-au-vic2-icon
         slot="upper"
-        name={iconName}
+        name={computedIconName}
         size="l"
         class-name="rpl-header__icon"
       >

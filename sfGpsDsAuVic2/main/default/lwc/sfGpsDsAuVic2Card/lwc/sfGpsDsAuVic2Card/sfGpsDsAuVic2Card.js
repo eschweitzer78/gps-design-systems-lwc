@@ -1,12 +1,7 @@
 import { LightningElement, api, track } from "lwc";
-import {
-  computeClass,
-  normaliseString,
-  normaliseBoolean
-} from "c/sfGpsDsHelpers";
+import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const RplCardElements = ["div", "li"];
-
 const EL_DEFAULT = "div";
 
 const RplCardTypes = [
@@ -17,17 +12,21 @@ const RplCardTypes = [
   "key-dates",
   "category-grid"
 ];
-
 const TYPE_DEFAULT = "promo";
+
 const HIGHLIGHT_DEFAULT = false;
 
-export default class SfGpsDsAuVic2Card extends LightningElement {
+export default class extends LightningElement {
+  @api link;
+  @api className;
+
   /* api: el */
 
-  _elOriginal = EL_DEFAULT;
   _el = EL_DEFAULT;
+  _elOriginal = EL_DEFAULT;
 
-  @api get el() {
+  @api
+  get el() {
     return this._elOriginal;
   }
 
@@ -41,10 +40,11 @@ export default class SfGpsDsAuVic2Card extends LightningElement {
 
   /* api: type */
 
-  _typeOriginal = TYPE_DEFAULT;
   _type = TYPE_DEFAULT;
+  _typeOriginal = TYPE_DEFAULT;
 
-  @api get type() {
+  @api
+  get type() {
     return this._typeOriginal;
   }
 
@@ -58,10 +58,11 @@ export default class SfGpsDsAuVic2Card extends LightningElement {
 
   /* api: highlight */
 
-  _highlightOriginal = HIGHLIGHT_DEFAULT;
   _highlight = HIGHLIGHT_DEFAULT;
+  _highlightOriginal = HIGHLIGHT_DEFAULT;
 
-  @api get highlight() {
+  @api
+  get highlight() {
     return this._highlightOriginal;
   }
 
@@ -73,8 +74,7 @@ export default class SfGpsDsAuVic2Card extends LightningElement {
     });
   }
 
-  @api link;
-  @api className;
+  /* tracked */
 
   @track _hasUpperSlot;
   @track _hasLowerSlot;
@@ -86,13 +86,13 @@ export default class SfGpsDsAuVic2Card extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-card": true,
       "rpl-type-p": true,
       [`rpl-card--${this._type}`]: this._type,
       "rpl-card--link": this.link,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedUpperClassName() {
@@ -121,5 +121,11 @@ export default class SfGpsDsAuVic2Card extends LightningElement {
 
       default:
     }
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    this.classList.add("sf-gps-ds-au-vic2-grid");
   }
 }

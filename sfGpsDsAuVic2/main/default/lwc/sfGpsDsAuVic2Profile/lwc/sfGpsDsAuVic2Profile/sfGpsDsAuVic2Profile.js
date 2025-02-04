@@ -1,27 +1,28 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { isString, isObject } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2Profile extends LightningElement {
+export default class extends LightningElement {
   @api items;
   @api className;
 
   /* api: image */
 
-  _imageOriginal;
   _image;
+  _imageOriginal;
 
-  @api get image() {
+  @api
+  get image() {
     return this._imageOriginal;
   }
 
   set image(value) {
     this._imageOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       value = JSON.parse(value);
     }
 
-    if (typeof value !== "object") {
+    if (!isObject(value)) {
       value = {};
     }
 
@@ -43,9 +44,9 @@ export default class SfGpsDsAuVic2Profile extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-profile": true,
       [this.className]: this.className
-    });
+    };
   }
 }

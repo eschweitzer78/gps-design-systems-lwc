@@ -1,7 +1,9 @@
 import { api, LightningElement } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2Expandable extends LightningElement {
+export default class extends LightningElement {
+  static renderMode = "light";
+
   @api expanded = false;
   @api labelledby;
   @api isHidden;

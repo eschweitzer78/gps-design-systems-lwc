@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from "lwc";
+import { isString, isObject } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
   @api el = "div";
@@ -10,21 +11,22 @@ export default class extends LightningElement {
 
   /* api: image */
 
-  _imageOriginal;
   _image;
+  _imageOriginal;
 
-  @api get image() {
+  @api
+  get image() {
     return this._imageOriginal;
   }
 
   set image(value) {
     this._imageOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       value = JSON.parse(value);
     }
 
-    if (typeof value !== "object") {
+    if (!isObject(value)) {
       value = {};
     }
 
@@ -39,7 +41,7 @@ export default class extends LightningElement {
     };
   }
 
-  _hidePromoCardStripe;
+  /* tracked */
   @track _hasMeta;
 
   /* computed */
@@ -54,15 +56,6 @@ export default class extends LightningElement {
 
   get computedMetaClassName() {
     return this._hasMeta ? "rpl-card__meta rpl-type-label-small" : null;
-  }
-
-  /* lifecycle */
-
-  connectedCallback() {
-    const style = getComputedStyle(document.body);
-    this._hidePromoCardStripe = style.getPropertyValue(
-      "--sfgpsdsauvic2-hide-promo-card-stripe"
-    );
   }
 
   /* event management */
@@ -82,5 +75,17 @@ export default class extends LightningElement {
 
   handleSlotChange() {
     this._hasMeta = true;
+  }
+
+  /* lifecycle */
+
+  _hidePromoCardStripe;
+
+  connectedCallback() {
+    const style = getComputedStyle(document.body);
+    this._hidePromoCardStripe = style.getPropertyValue(
+      "--sfgpsds-au-vic2-hide-promo-card-stripe"
+    );
+    this.classList.add("sf-gps-ds-au-vic2-grid");
   }
 }

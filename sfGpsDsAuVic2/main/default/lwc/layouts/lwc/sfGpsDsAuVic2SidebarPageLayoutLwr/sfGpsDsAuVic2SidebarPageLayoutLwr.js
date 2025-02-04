@@ -1,5 +1,6 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+
+const HASSIDEBAR_DEFAULT = true;
 
 const ID_ABOVE_BODY = "sfgpsds-au-vic2-above-body";
 const ID_MAIN = "sfgpsds-au-vic2-main";
@@ -12,8 +13,19 @@ const ID_BELOW_BODY = "sfgpsds-au-vic2-below-body";
  * @slot belowBody
  */
 export default class extends LightningElement {
-  _hasSidebar = true;
-  @api get hasSidebar() {
+  @api aboveBodyClassName = "";
+  @api bodyClassName = "rpl-grid rpl-grid--no-row-gap rpl-layout__body";
+  @api mainClassName = "rpl-layout__main rpl-col-12";
+  @api sidebarClassName =
+    "rpl-layout__sidebar rpl-col-4-m rpl-col-start-9-m rpl-col-12";
+  @api belowBodyClassName = "";
+
+  /* api: hasSideBar */
+
+  _hasSidebar = HASSIDEBAR_DEFAULT;
+
+  @api
+  get hasSidebar() {
     return this._hasSidebar;
   }
 
@@ -21,12 +33,7 @@ export default class extends LightningElement {
     this._hasSidebar = value;
   }
 
-  @api aboveBodyClassName = "";
-  @api bodyClassName = "rpl-grid rpl-grid--no-row-gap rpl-layout__body";
-  @api mainClassName = "rpl-layout__main rpl-col-12";
-  @api sidebarClassName =
-    "rpl-layout__sidebar rpl-col-4-m rpl-col-start-9-m rpl-col-12";
-  @api belowBodyClassName = "";
+  /* computed */
 
   get aboveBodyId() {
     return ID_ABOVE_BODY;
@@ -41,9 +48,9 @@ export default class extends LightningElement {
   }
 
   get computedMainClassName() {
-    return computeClass({
-      "rpl-col-7-m": this.hasSidebar,
+    return {
+      "rpl-col-7-m": this._hasSidebar,
       [this.mainClassName]: this.mainClassName
-    });
+    };
   }
 }

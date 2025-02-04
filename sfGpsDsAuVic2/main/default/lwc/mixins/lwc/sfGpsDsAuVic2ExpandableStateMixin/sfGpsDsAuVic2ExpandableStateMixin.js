@@ -1,13 +1,14 @@
-import { api, track } from "lwc";
+import { track, api } from "lwc";
+import { isArray } from "c/sfGpsDsHelpers";
 
 const DEFAULT_ACTIVE_STATE = false;
 
-let ExpandableStateMixin = (Base, idAttr = "id", activeAttr = "active") =>
+const ExpandableStateMixin = (Base, idAttr = "id", activeAttr = "active") =>
   class extends Base {
     /* api: items */
 
-    _itemsOriginal = [];
     @track _items = [];
+    _itemsOriginal = [];
     _nbActiveItems = 0;
 
     @api
@@ -19,7 +20,7 @@ let ExpandableStateMixin = (Base, idAttr = "id", activeAttr = "active") =>
       let nbActiveItems = 0;
       this._itemsOriginal = items;
       this._items =
-        items && Array.isArray(items)
+        items && isArray(items)
           ? items.map((item, index) => {
               let active = item[activeAttr] || DEFAULT_ACTIVE_STATE;
               if (active) nbActiveItems++;

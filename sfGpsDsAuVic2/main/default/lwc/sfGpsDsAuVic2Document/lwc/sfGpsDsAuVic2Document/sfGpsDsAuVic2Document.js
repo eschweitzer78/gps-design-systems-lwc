@@ -1,16 +1,21 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const GLOBAL_EVENTS_DEFAULT = false;
 const OPEN_INW_DEFAULT = false;
 
-export default class SfGpsDsAuVic2Document extends LightningElement {
+export default class extends LightningElement {
   @api url;
+  @api download;
+  @api className;
 
-  _openInNewWindowOriginal = OPEN_INW_DEFAULT;
+  /* api: openInNewWindow */
+
   _openInNewWindow = OPEN_INW_DEFAULT;
+  _openInNewWindowOriginal = OPEN_INW_DEFAULT;
 
-  @api get openInNewWindow() {
+  @api
+  get openInNewWindow() {
     return this._openInNewWindowOriginal;
   }
 
@@ -22,12 +27,13 @@ export default class SfGpsDsAuVic2Document extends LightningElement {
     });
   }
 
-  @api download;
+  /* api: globalEvents */
 
-  _globalEventsOriginal = GLOBAL_EVENTS_DEFAULT;
   _globalEvents = GLOBAL_EVENTS_DEFAULT;
+  _globalEventsOriginal = GLOBAL_EVENTS_DEFAULT;
 
-  @api get globalEvents() {
+  @api
+  get globalEvents() {
     return this._globalEventsOriginal;
   }
 
@@ -39,7 +45,7 @@ export default class SfGpsDsAuVic2Document extends LightningElement {
     });
   }
 
-  @api className;
+  /* tracked */
 
   @track _hasIconSlot;
   @track _hasNameSlot;
@@ -49,11 +55,11 @@ export default class SfGpsDsAuVic2Document extends LightningElement {
   /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-document": true,
       "rpl-document--centered": this._hasInfoSlot,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedTarget() {

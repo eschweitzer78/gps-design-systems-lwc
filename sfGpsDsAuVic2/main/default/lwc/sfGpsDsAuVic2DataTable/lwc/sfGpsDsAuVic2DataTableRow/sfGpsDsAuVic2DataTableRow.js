@@ -1,23 +1,29 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const VERTICAL_HEADER_DEFAULT = true;
 
-export default class SfGpsDsAuVic2DataTableRow extends LightningElement {
+export default class extends LightningElement {
   @api content = "";
   @api columns;
   @api items;
   @api row;
   @api extraContent;
+  @api offset;
+  @api caption;
+
+  @api index;
+  @api className;
 
   @track enabled = false;
 
   /* api: verticalHeader */
 
-  _verticalHeaderOriginal = VERTICAL_HEADER_DEFAULT;
   _verticalHeader = VERTICAL_HEADER_DEFAULT;
+  _verticalHeaderOriginal = VERTICAL_HEADER_DEFAULT;
 
-  @api get verticalHeader() {
+  @api
+  get verticalHeader() {
     return this._verticalHeaderOriginal;
   }
 
@@ -29,28 +35,22 @@ export default class SfGpsDsAuVic2DataTableRow extends LightningElement {
     });
   }
 
-  @api offset;
-  @api caption;
-
-  @api index;
-  @api className;
-
   /* computed */
 
   get computedClassName() {
     if (this.columns) {
-      return computeClass({
+      return {
         "rpl-data-table__row": true,
         "rpl-data-table__row--open": this.state?.enabled,
         [this.columns[this.index]?.classes]:
           this.index >= 0 && this.index < this.columns?.length
-      });
+      };
     }
 
-    return computeClass({
+    return {
       "rpl-data-table__row": true,
       "rpl-data-table__row--open": this.state?.enabled
-    });
+    };
   }
 
   get computedToggleLabel() {

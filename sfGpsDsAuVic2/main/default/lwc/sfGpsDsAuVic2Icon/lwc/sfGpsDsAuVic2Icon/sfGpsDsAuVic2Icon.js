@@ -1,13 +1,18 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 import { RplIconNames } from "c/sfGpsDsAuVic2IconConstants";
-import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
+import {
+  normaliseString,
+  normaliseBoolean,
+  isString,
+  isObject
+} from "c/sfGpsDsHelpers";
 import { RplColorThemes, RplIconSizes } from "c/sfGpsDsAuVic2UiCoreConstants";
 
 import STATIC_RESOURCE from "@salesforce/resourceUrl/sfGpsDsAuVic2";
 
 const SIZE_DEFAULT = "s";
 const COLOUR_DEFAULT = null;
+const PADDED_DEFAULT = false;
 
 /* eslint-disable @lwc/lwc/no-api-reassignments */
 
@@ -20,14 +25,15 @@ export default class extends LightningElement {
   _iconOriginal;
   _error;
 
-  @api get icon() {
+  @api
+  get icon() {
     return this._iconOriginal;
   }
 
   set icon(value) {
     this._iconOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       try {
         value = JSON.parse(value);
         this._error = null;
@@ -37,7 +43,7 @@ export default class extends LightningElement {
       }
     }
 
-    if (typeof value === "object") {
+    if (isObject(value)) {
       this.padded = value.padded;
       this.colour = value.colour;
       this.size = value.size;
@@ -56,8 +62,8 @@ export default class extends LightningElement {
 
   /* api: padded */
 
-  _paddedOriginal = false;
-  _padded = false;
+  _padded = PADDED_DEFAULT;
+  _paddedOriginal = PADDED_DEFAULT;
 
   @api
   get padded() {
@@ -68,14 +74,14 @@ export default class extends LightningElement {
     this._paddedOriginal = value;
     this._padded = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: PADDED_DEFAULT
     });
   }
 
   /* api: colour */
 
-  _colourOriginal = COLOUR_DEFAULT;
   _colour = COLOUR_DEFAULT;
+  _colourOriginal = COLOUR_DEFAULT;
 
   @api
   get colour() {
@@ -92,8 +98,8 @@ export default class extends LightningElement {
 
   /* api: size */
 
-  _sizeOriginal = SIZE_DEFAULT;
   _size = SIZE_DEFAULT;
+  _sizeOriginal = SIZE_DEFAULT;
 
   @api
   get size() {
@@ -110,8 +116,8 @@ export default class extends LightningElement {
 
   /* api: name */
 
-  _nameOriginal;
   _name;
+  _nameOriginal;
 
   @api
   get name() {
@@ -129,14 +135,14 @@ export default class extends LightningElement {
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-icon": true,
       [`rpl-icon--size-${this._size}`]: this._size,
       [`rpl-icon--${this._name}`]: this._name,
       [`rpl-icon--colour-${this._colour}`]: this._colour,
       "rpl-icon--padded": this._padded,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedRole() {

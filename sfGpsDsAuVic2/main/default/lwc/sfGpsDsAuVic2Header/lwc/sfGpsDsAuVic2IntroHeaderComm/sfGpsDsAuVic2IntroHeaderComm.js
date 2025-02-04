@@ -17,22 +17,23 @@ import {
 export default class extends SfGpsDsLwc {
   @api title;
   @api linksTitle;
+  @api showIcon;
   @api iconName;
   @api className;
 
   /* api: links */
 
-  _linksOriginal;
   _links;
+  _linksOriginal;
 
-  @api get links() {
+  @api
+  get links() {
     return this._linksOriginal;
   }
 
   set links(markdown) {
-    this._linksOriginal = markdown;
-
     try {
+      this._linksOriginal = markdown;
       this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this._links = null;
@@ -42,10 +43,11 @@ export default class extends SfGpsDsLwc {
 
   /* api: linksType */
 
-  _linksTypeOriginal = LINK_TYPE_DEFAULT;
   _linksType = LINK_TYPE_DEFAULT;
+  _linksTypeOriginal = LINK_TYPE_DEFAULT;
 
-  @api get linksType() {
+  @api
+  get linksType() {
     return this._linksTypeOriginal;
   }
 
@@ -59,17 +61,17 @@ export default class extends SfGpsDsLwc {
 
   /* api: linksMore */
 
-  _linksMoreOriginal;
   _linksMore;
+  _linksMoreOriginal;
 
-  @api get linksMore() {
+  @api
+  get linksMore() {
     return this._linksMoreOriginal;
   }
 
   set linksMore(markdown) {
-    this._linksMoreOriginal = markdown;
-
     try {
+      this._linksMoreOriginal = markdown;
       this._linksMore = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this._linksMore = null;
@@ -79,22 +81,24 @@ export default class extends SfGpsDsLwc {
 
   /* api: content */
 
-  _contentOriginal;
   _contentHtml;
+  _contentOriginal;
 
-  @api get content() {
+  @api
+  get content() {
     return this._contentOriginal;
   }
 
   set content(markdown) {
-    this._contentOriginal = markdown;
-
     try {
-      this._contentHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
+      this._contentOriginal = markdown;
+      this._contentHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
     }
   }
+
+  /* computed */
 
   get decoratedItems() {
     return (this._links || []).map((item) => ({
@@ -112,6 +116,10 @@ export default class extends SfGpsDsLwc {
       "rpl-header--intro": true,
       [this.className]: this.className
     });
+  }
+
+  get computedIconName() {
+    return this.showIcon ? this.iconName : null;
   }
 
   // eslint-disable-next-line no-unused-vars

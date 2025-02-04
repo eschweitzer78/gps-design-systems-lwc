@@ -1,8 +1,10 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuVic2AlertComm extends SfGpsDsLwc {
+const LINK_DEFAULT = {};
+
+export default class extends SfGpsDsLwc {
   @api alertId;
   @api variant;
   @api iconName;
@@ -13,30 +15,27 @@ export default class SfGpsDsAuVic2AlertComm extends SfGpsDsLwc {
 
   /* api: link */
 
-  _originalLink;
-  @track _link;
+  _link = LINK_DEFAULT;
+  _linkOriginal = LINK_DEFAULT;
 
-  @api get link() {
-    return this._originalLink;
+  @api
+  get link() {
+    return this._linkOriginal;
   }
 
   set link(markdown) {
-    this._originalLink = markdown;
-
     try {
-      this._link = markdown ? mdEngine.extractFirstLink(markdown) : null;
+      this._linkOriginal = markdown;
+      this._link = markdown
+        ? mdEngine.extractFirstLink(markdown)
+        : LINK_DEFAULT;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing link markdown.");
+      this._link = LINK_DEFAULT;
     }
   }
 
-  get _linkText() {
-    return this._link?.text;
-  }
-
-  get _linkUrl() {
-    return this._link?.url;
-  }
+  /* computed */
 
   get computedIconName() {
     return `icon-${this.iconName}`;

@@ -3,4 +3,13 @@
   </design:attribute>
   <design:attribute name="altSections" label="Alternate sections" description="Alternates the sections’ background colour.">
   </design:attribute>
+
+  <!-- deprecated -->
+  <design:attribute name="hideHeader" label="Hide main header" description="Deprecated">
+  </design:attribute>
+  <design:attribute name="navId" label="navId" description="Deprecated">
+  </design:attribute>
+  <design:attribute name="contentId" label="contentId" description="Deprecated">
+  </design:attribute>
+
 </design:component>

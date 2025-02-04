@@ -1,8 +1,9 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2NavSection extends LightningElement {
-  @api id;
+export default class extends LightningElement {
+  static renderMode = "light";
+
   @api section;
   @api isExpandable;
   @api index;
@@ -33,6 +34,16 @@ export default class SfGpsDsAuVic2NavSection extends LightningElement {
       "rpl-footer-nav-section": true,
       "rpl-footer-nav-section--expanded": this.isExpanded
     });
+  }
+
+  _toggleId;
+
+  get computedToggleId() {
+    if (this._toggleId == null) {
+      this._toggleId = uniqueId("sf-gps-ds-au-vic2-nav-section-toggle");
+    }
+
+    return this._toggleId;
   }
 
   /* event management */

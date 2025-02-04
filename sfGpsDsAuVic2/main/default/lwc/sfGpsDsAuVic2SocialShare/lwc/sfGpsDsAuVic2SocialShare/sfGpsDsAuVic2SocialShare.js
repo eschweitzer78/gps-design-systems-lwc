@@ -1,5 +1,4 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 import {
   RplSocialShareNetworks,
   NETWORKS_DEFAULT
@@ -12,10 +11,13 @@ export default class extends LightningElement {
   @api email;
   @api className;
 
+  /* api: networks */
+
   _networksOriginal = NETWORKS_DEFAULT;
   _networks = NETWORKS_DEFAULT;
 
-  @api get networks() {
+  @api
+  get networks() {
     return this._networksOriginal;
   }
 
@@ -26,11 +28,13 @@ export default class extends LightningElement {
     );
   }
 
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-social-share": true,
       "rpl-u-screen-only": true,
       [this.className]: this.className
-    });
+    };
   }
 }

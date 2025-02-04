@@ -47,6 +47,7 @@
     <title>Theme 3</title>
     <type>PreviewImage</type>
   </bundlesInfo>
+
   <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
   <defaultBrandingSet>sfGpsDsAuVic2Aura</defaultBrandingSet>
   <themeSetting>

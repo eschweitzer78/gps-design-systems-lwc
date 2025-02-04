@@ -7,6 +7,11 @@ import { BreakpointsMixin } from "c/sfGpsDsAuVic2BreakpointsMixin";
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsVic2PrimaryNav";
 
+const SHOWSEARCH_DEFAULT = true;
+const SHOWSEARCH_FALLBACK = false;
+const SHOWQUICKEXIT_DEFAULT = true;
+const SHOWQUICKEXIT_FALLBACK = false;
+
 export default class extends BreakpointsMixin(LightningElement) {
   @api primaryLogo;
   @api secondaryLogo;
@@ -14,10 +19,11 @@ export default class extends BreakpointsMixin(LightningElement) {
 
   /* api: showSearch */
 
-  _showSearchOriginal = true;
-  _showSearch = true;
+  _showSearch = SHOWSEARCH_DEFAULT;
+  _showSearchOriginal = SHOWSEARCH_DEFAULT;
 
-  @api get showSearch() {
+  @api
+  get showSearch() {
     return this._showSearchOriginal;
   }
 
@@ -25,16 +31,17 @@ export default class extends BreakpointsMixin(LightningElement) {
     this._showSearchOriginal = value;
     this._showSearch = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: SHOWSEARCH_FALLBACK
     });
   }
 
   /* api: showQuickExit */
 
-  _showQuickExitOriginal = true;
-  _showQuickExit = true;
+  _showQuickExit = SHOWQUICKEXIT_DEFAULT;
+  _showQuickExitOriginal = SHOWQUICKEXIT_DEFAULT;
 
-  @api get showQuickExit() {
+  @api
+  get showQuickExit() {
     return this._showQuickExitOriginal;
   }
 
@@ -42,40 +49,46 @@ export default class extends BreakpointsMixin(LightningElement) {
     this._showQuickExitOriginal = value;
     this._showQuickExit = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: SHOWQUICKEXIT_FALLBACK
     });
   }
 
-  @track isHidden = false;
-  @track isFixed = false;
-  @track scrollPosition = 0;
-  @track activeNavItems = {
+  /* tracked */
+
+  @track _isHidden = false;
+  @track _isFixed = false;
+  @track _scrollPosition = 0;
+  @track _activeNavItems = {
     level1: undefined,
     level2: undefined,
     level3: undefined
   };
-  @track hasUserActions;
-  @track _isSearchActive;
+  @track _hasUserActions;
+  @track activeFocusTrap;
 
-  get isSearchActive() {
-    return this._isSearchActive;
+  /* track: _isSearchActive */
+
+  @track __isSearchActive;
+
+  get _isSearchActive() {
+    return this.__isSearchActive;
   }
 
-  set isSearchActive(value) {
-    this._isSearchActive = value;
+  set _isSearchActive(value) {
+    this.__isSearchActive = value;
     this.watchIsExpanded();
   }
 
   /* getter/setters */
 
-  _isMegaNavActive = false;
+  __isMegaNavActive = false;
 
-  get isMegaNavActive() {
-    return this._isMegaNavActive;
+  get _isMegaNavActive() {
+    return this.__isMegaNavActive;
   }
 
-  set isMegaNavActive(newValue) {
-    this._isMegaNavActive = newValue;
+  set _isMegaNavActive(newValue) {
+    this.__isMegaNavActive = newValue;
 
     this.watchIsMegaNavActive();
     this.watchIsExpanded();
@@ -83,33 +96,33 @@ export default class extends BreakpointsMixin(LightningElement) {
 
   /* getters */
 
-  get isLargeScreen() {
+  get computedIsLargeScreen() {
     return this.bpGreaterOrEqual("l");
   }
 
-  get isXLargeScreen() {
+  get computedIsXLargeScreen() {
     return this.bpGreaterOrEqual("xl");
   }
 
-  get isExpanded() {
-    return this.isMegaNavActive || this.isSearchActive;
+  get computedIsExpanded() {
+    return this._isMegaNavActive || this._isSearchActive;
   }
 
-  get navCollapse() {
+  get computedNavCollapse() {
     let collapsed = true;
     let breakpoint = "default";
     let count = this.items?.length || 0;
 
-    if (this.showSearch) count++;
-    if (this.hasUserActions) count++;
+    if (this._showSearch) count++;
+    if (this._hasUserActions) count++;
     if (this.secondaryLogo) count++;
 
     if (count <= 6) {
       breakpoint = "l";
-      collapsed = !this.isLargeScreen;
+      collapsed = !this.computedIsLargeScreen;
     } else if (count === 7) {
       breakpoint = "xl";
-      collapsed = !this.isXLargeScreen;
+      collapsed = !this.computedIsXLargeScreen;
     } else if (count > 7) {
       breakpoint = "always";
     }
@@ -119,9 +132,9 @@ export default class extends BreakpointsMixin(LightningElement) {
 
   get decoratedFocusTarget() {
     return {
-      navCollapsed: this.navCollapse.collapsed,
-      hasQuickExit: this.showQuickExit,
-      hasUserActions: this.hasUserActions,
+      navCollapsed: this.computedNavCollapse.collapsed,
+      hasQuickExit: this._showQuickExit,
+      hasUserActions: this._hasUserActions,
       isMegaNavActive: this._isMegaNavActive
     };
   }
@@ -129,10 +142,10 @@ export default class extends BreakpointsMixin(LightningElement) {
   get computedClassName() {
     return computeClass({
       "rpl-primary-nav": true,
-      "rpl-primary-nav--hidden": this.isHidden,
-      "rpl-primary-nav--fixed": this.isFixed,
-      "rpl-primary-nav--expanded": this.isExpanded,
-      [`rpl-primary-nav--collapse-until-${this.navCollapse.breakpoint}`]: true
+      "rpl-primary-nav--hidden": this._isHidden,
+      "rpl-primary-nav--fixed": this._isFixed,
+      "rpl-primary-nav--expanded": this.computedIsExpanded,
+      [`rpl-primary-nav--collapse-until-${this.computedNavCollapse.breakpoint}`]: true
     });
   }
 
@@ -140,14 +153,20 @@ export default class extends BreakpointsMixin(LightningElement) {
     return `--local-expanded-height: ${this._clientHeight}px`;
   }
 
+  get computedNavOffset() {
+    return this._rendered
+      ? this.refs.navContainer.getBoundingClientRect().top
+      : 0;
+  }
+
   /* methods */
 
   watchIsMegaNavActive() {
-    const newValue = this.isMegaNavActive;
+    const newValue = this._isMegaNavActive;
 
     // If mega nav closes, toggle off any currently active menu items
     if (!newValue) {
-      this.activeNavItems = {
+      this._activeNavItems = {
         level1: undefined,
         level2: undefined,
         level3: undefined
@@ -155,12 +174,10 @@ export default class extends BreakpointsMixin(LightningElement) {
     }
   }
 
-  @track activeFocusTrap;
-
   watchIsExpanded() {
-    const newValue = this.isExpanded;
+    const newValue = this.computedIsExpanded;
 
-    // If isExpanded changes toggle viewport locked class
+    // If computedIsExpanded changes toggle viewport locked class
     // and focus trap
     if (newValue) {
       document.body.classList.add("rpl-u-viewport-locked");
@@ -178,45 +195,45 @@ export default class extends BreakpointsMixin(LightningElement) {
 
   toggleNavItem(level, item, open) {
     // Item needs to be made active
-    if (this.activeNavItems["level" + level]?.id !== item?.id) {
-      this.activeNavItems["level" + level] = item;
+    if (this._activeNavItems["level" + level]?.id !== item?.id) {
+      this._activeNavItems["level" + level] = item;
     }
 
     // Item needs to be made inactive
     else {
-      this.activeNavItems["level" + level] = undefined;
+      this._activeNavItems["level" + level] = undefined;
     }
 
     if (level === 1) {
-      const keepNavOpen = open || this.navCollapse.collapsed;
+      const keepNavOpen = open || this.computedNavCollapse.collapsed;
 
       // Make search inactive
-      this.isSearchActive = false;
+      this._isSearchActive = false;
 
       // If the target item is now active, make sure the mega nav is also active
-      this.isMegaNavActive =
-        keepNavOpen || this.activeNavItems.level1?.id === item.id;
+      this._isMegaNavActive =
+        keepNavOpen || this._activeNavItems.level1?.id === item.id;
 
       // Clear any active sub menus
-      this.activeNavItems.level2 = undefined;
-      this.activeNavItems.level3 = undefined;
+      this._activeNavItems.level2 = undefined;
+      this._activeNavItems.level3 = undefined;
     } else if (level === 2) {
-      this.activeNavItems.level3 = undefined;
+      this._activeNavItems.level3 = undefined;
     }
   }
 
   toggleMobileMenu(text) {
     // Make search inactive
-    this.isSearchActive = false;
+    this._isSearchActive = false;
 
     // Toggle mega nav
-    this.isMegaNavActive = !this.isMegaNavActive;
+    this._isMegaNavActive = !this._isMegaNavActive;
 
     this.dispatchEvent(
       new CustomEvent("togglemenu", {
         detail: {
           text,
-          action: this.isMegaNavActive ? "open" : "close"
+          action: this._isMegaNavActive ? "open" : "close"
         }
       })
     );
@@ -227,16 +244,16 @@ export default class extends BreakpointsMixin(LightningElement) {
       console.log(
         CLASS_NAME,
         "> toggleSearch",
-        this.isMegaNavActive,
-        this.isSearchActive,
+        this._isMegaNavActive,
+        this._isSearchActive,
         this
       );
 
     // Make mega nav inactive
-    this.isMegaNavActive = false;
+    this._isMegaNavActive = false;
 
     // Toggle search
-    this.isSearchActive = !this.isSearchActive;
+    this._isSearchActive = !this._isSearchActive;
 
     this.dispatchEvent(
       new CustomEvent("togglesearch", {
@@ -250,9 +267,66 @@ export default class extends BreakpointsMixin(LightningElement) {
       console.log(
         CLASS_NAME,
         "< toggleSearch",
-        this.isMegaNavActive,
-        this.isSearchActive
+        this._isMegaNavActive,
+        this._isSearchActive
       );
+  }
+
+  /* event management */
+
+  handleScroll() {
+    const newPosition = window.scrollY;
+    const scrollingDown = newPosition > this._scrollPosition;
+    const beyondNav = this.computedNavOffset < 0;
+
+    this._scrollPosition = newPosition;
+    this._isHidden = scrollingDown && beyondNav;
+    this._isFixed = !scrollingDown && beyondNav;
+  }
+
+  handleEscapeKey(event) {
+    if (event.key === "Escape" && this.computedIsExpanded) {
+      this._isMegaNavActive = false;
+      this._isSearchActive = false;
+    }
+  }
+
+  handleToggleItem(event) {
+    this.toggleNavItem(event.detail.level, event.detail.item);
+  }
+
+  handleToggleMobileMenu(event) {
+    this.toggleMobileMenu(event.detail);
+  }
+
+  handleToggleSearch() {
+    this.toggleSearch();
+  }
+
+  handleUserActionSlotChange() {
+    // TODO refine
+    this._hasUserActions = true;
+  }
+
+  handlePrimaryNavFocus(event) {
+    event.stopPropagation();
+
+    if (DEBUG) console.log(CLASS_NAME, "handlePrimaryNavFocus", event.detail);
+
+    const dfks = this.template.querySelectorAll("[data-focus-key]");
+
+    for (let i = 0; i < dfks.length; i++) {
+      dfks[i].notifyFocus(event.detail);
+    }
+  }
+
+  handleNavigate() {
+    // parent will take care of actual navigation
+    this._isMegaNavActive = false;
+  }
+
+  handleFocusTrap() {
+    this.refs.navbar.focus();
   }
 
   /* lifecycle */
@@ -274,61 +348,11 @@ export default class extends BreakpointsMixin(LightningElement) {
     super.disconnectedCallback();
   }
 
-  /* event management */
+  _rendered = false;
 
-  handleScroll() {
-    const newPosition = window.scrollY;
-    const scrollingDown = newPosition > this.scrollPosition;
-    const beyondNav = this.navOffest < 0;
-
-    this.scrollPosition = newPosition;
-    this.isHidden = scrollingDown && beyondNav;
-    this.isFixed = !scrollingDown && beyondNav;
-  }
-
-  handleEscapeKey(event) {
-    if (event.key === "Escape" && this.isExpanded) {
-      this.isMegaNavActive = false;
-      this.isSearchActive = false;
+  renderedCallback() {
+    if (!this._rendered) {
+      this._rendered = true;
     }
-  }
-
-  handleToggleItem(event) {
-    this.toggleNavItem(event.detail.level, event.detail.item);
-  }
-
-  handleToggleMobileMenu(event) {
-    this.toggleMobileMenu(event.detail);
-  }
-
-  handleToggleSearch() {
-    this.toggleSearch();
-  }
-
-  handleUserActionSlotChange() {
-    // TODO refine
-    this.hasUserActions = true;
-  }
-
-  handlePrimaryNavFocus(event) {
-    event.stopPropagation();
-
-    if (DEBUG) console.log(CLASS_NAME, "handlePrimaryNavFocus", event.detail);
-
-    const dfks = this.template.querySelectorAll("[data-focus-key]");
-
-    for (let i = 0; i < dfks.length; i++) {
-      dfks[i].notifyFocus(event.detail);
-    }
-  }
-
-  handleNavigate() {
-    // parent will take care of actual navigation
-    this.isMegaNavActive = false;
-  }
-
-  handleFocusTrap() {
-    console.log("handleFocusTrap");
-    this.refs.navbar.focus();
   }
 }

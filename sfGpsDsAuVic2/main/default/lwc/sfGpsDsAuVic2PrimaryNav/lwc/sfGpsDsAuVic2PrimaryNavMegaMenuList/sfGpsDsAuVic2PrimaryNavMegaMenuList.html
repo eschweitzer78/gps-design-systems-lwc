@@ -1,7 +1,7 @@
 <template>
   <ul class={computedClassName}>
     <!-- 'Home' link -->
-    <li lwc:if={isLevel1}>
+    <li lwc:if={computedIsLevel1}>
       <c-sf-gps-ds-au-vic2-primary-nav-mega-menu-home-button
         focus-key="list:home"
         data-focus-key="list:home"
@@ -16,9 +16,9 @@
         level={level}
         position="first"
         type="link"
-        focus-key={parentFocusKey}
+        focus-key={_parentFocusKey}
         focus-target={focusTarget}
-        data-focus-key={parentFocusKey}
+        data-focus-key={_parentFocusKey}
         ontoggleitem={handleToggleItem}
         onnavigate={handleNavigate}
       >
@@ -32,7 +32,7 @@
           item={child}
           type={child.type}
           level={level}
-          parent={parentId}
+          parent={_parentId}
           position={child.position}
           active-nav-items={activeNavItems}
           focus-key={child.focusKey}

@@ -3,7 +3,7 @@ import { parseIso8601, getUserLocale, formatDate } from "c/sfGpsDsHelpers";
 
 const DATE_STYLE_DEFAULT = "medium"; // one of short medium long full, defaults to medium
 
-export default class SfGpsDsAuVic2File extends LightningElement {
+export default class extends LightningElement {
   @api name;
   @api url;
   @api extension;
@@ -12,10 +12,11 @@ export default class SfGpsDsAuVic2File extends LightningElement {
 
   /* api: updated */
 
-  _updatedOriginal;
   _updated;
+  _updatedOriginal;
 
-  @api get updated() {
+  @api
+  get updated() {
     return this._updatedOriginal;
   }
 

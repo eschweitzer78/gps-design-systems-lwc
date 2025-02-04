@@ -1,13 +1,17 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2Breadcrumbs extends LightningElement {
+export default class extends LightningElement {
+  @api besideQuickExit = false;
+  @api className;
+  @api preventDefault = false;
+
   /* api: items */
 
-  _itemsOriginal;
   _items;
+  _itemsOriginal;
 
-  @api get items() {
+  @api
+  get items() {
     return this._itemsOriginal;
   }
 
@@ -18,26 +22,23 @@ export default class SfGpsDsAuVic2Breadcrumbs extends LightningElement {
       ? value.map((item, index) => ({
           ...item,
           key: `item-${index + 1}`,
-          className: computeClass({
+          className: {
             "rpl-breadcrumbs__item": true,
             "rpl-breadcrumbs__item--parent": index === this.items.length - 2
-          })
+          }
         }))
       : null;
   }
 
-  @api besideQuickExit = false;
-  @api className;
-  @api preventDefault = false;
-
   /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-breadcrumbs": true,
       "rpl-u-screen-only": true,
-      "rpl-breadcrumbs--beside-exit": this.besideQuickExit
-    });
+      "rpl-breadcrumbs--beside-exit": this.besideQuickExit,
+      [this.className]: this.className
+    };
   }
 
   /* event management */

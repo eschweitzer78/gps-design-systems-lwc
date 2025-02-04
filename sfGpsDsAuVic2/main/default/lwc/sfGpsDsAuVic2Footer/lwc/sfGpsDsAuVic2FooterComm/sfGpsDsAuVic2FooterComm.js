@@ -1,7 +1,10 @@
 import { api } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
+import { isObject, isArray, isString } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2FooterComm extends SfGpsDsNavigation {
+const LOGOS_DEFAULT = [];
+
+export default class extends SfGpsDsNavigation {
   @api variant;
   @api linksMode;
   @api linksNavigationDevName;
@@ -13,10 +16,13 @@ export default class SfGpsDsAuVic2FooterComm extends SfGpsDsNavigation {
   @api copyright;
   @api className;
 
-  _logosOriginal;
-  _logos = [];
+  /* api: logos */
 
-  @api get logos() {
+  _logos = LOGOS_DEFAULT;
+  _logosOriginal = LOGOS_DEFAULT;
+
+  @api
+  get logos() {
     return this._logosOriginal;
   }
 
@@ -24,11 +30,11 @@ export default class SfGpsDsAuVic2FooterComm extends SfGpsDsNavigation {
     this._logosOriginal = value;
 
     if (value == null) {
-      this._logos = [];
+      this._logos = LOGOS_DEFAULT;
       return;
     }
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       try {
         value = JSON.parse(value);
       } catch (e) {
@@ -37,9 +43,9 @@ export default class SfGpsDsAuVic2FooterComm extends SfGpsDsNavigation {
       }
     }
 
-    if (Array.isArray(value)) {
+    if (isArray(value)) {
       this._logos = value;
-    } else if (typeof value === "object") {
+    } else if (isObject(value)) {
       this._logos = [value];
     } else {
       this._logos = [];
@@ -266,14 +272,16 @@ export default class SfGpsDsAuVic2FooterComm extends SfGpsDsNavigation {
   /* event management */
 
   handleLinksNavigate(event) {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+    const nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+
     if (nav && event.detail) {
       nav.navigateNavMenu(event.detail);
     }
   }
 
   handleNavNavigate(event) {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+    const nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+
     if (nav && this._map && event.detail) {
       nav.navigateNavMenu(this._map[event.detail]);
     }

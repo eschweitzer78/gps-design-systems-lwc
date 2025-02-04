@@ -1,24 +1,30 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { isString, isObject, computeClass } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
+  @api title;
+  @api link;
+  @api className;
+  @api preventDefault;
+
   /* api: image */
 
-  _imageOriginal;
   _image;
+  _imageOriginal;
 
-  @api get image() {
+  @api
+  get image() {
     return this._imageOriginal;
   }
 
   set image(value) {
     this._imageOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       value = JSON.parse(value);
     }
 
-    if (typeof value !== "object") {
+    if (!isObject(value)) {
       value = {};
     }
 
@@ -32,11 +38,6 @@ export default class extends LightningElement {
       sizes: "xs:992px md:328px"
     };
   }
-
-  @api title;
-  @api link;
-  @api className;
-  @api preventDefault;
 
   /* computed */
 

@@ -1,4 +1,5 @@
 import { LightningElement, api } from "lwc";
+import { isString, isObject } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
   @api el = "div";
@@ -9,21 +10,22 @@ export default class extends LightningElement {
 
   /* api: image */
 
-  _imageOriginal;
   _image;
+  _imageOriginal;
 
-  @api get image() {
+  @api
+  get image() {
     return this._imageOriginal;
   }
 
   set image(value) {
     this._imageOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       value = JSON.parse(value);
     }
 
-    if (typeof value !== "object") {
+    if (!isObject(value)) {
       value = {};
     }
 
@@ -55,5 +57,11 @@ export default class extends LightningElement {
         }
       })
     );
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    this.classList.add("sf-gps-ds-au-vic2-grid");
   }
 }

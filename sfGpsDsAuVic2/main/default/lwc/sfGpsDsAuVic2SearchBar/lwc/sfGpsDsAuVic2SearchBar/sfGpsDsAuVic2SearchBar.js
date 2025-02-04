@@ -1,27 +1,59 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass, nextTick, normaliseBoolean } from "c/sfGpsDsHelpers";
+import {
+  isArray,
+  nextTick,
+  normaliseBoolean,
+  normaliseString,
+  normaliseInteger
+} from "c/sfGpsDsHelpers";
 import OnClickOutside from "c/sfGpsDsOnClickOutside";
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuVic2SearchBar";
 
+const VARIANT_DEFAULT = "default";
+const VARIANT_REVERSE = "reverse";
+const VARIANT_MENU = "menu";
+const VARIANT_VALUES = [VARIANT_DEFAULT, VARIANT_REVERSE, VARIANT_MENU];
+
+const AUTOFOCUS_DEFAULT = false;
+const SHOWNORESULTS_DEFAULT = false;
+const SHOWLABEL_DEFAULT = false;
+
+const MAXSUGGESTIONSDISPLAYED_MIN = 1;
+const MAXSUGGESTIONSDISPLAYED_MAX = 30;
+const MAXSUGGESTIONSDISPLAYED_DEFAULT = 10;
+
 export default class extends LightningElement {
-  @api variant = "default";
   @api inputLabel = "Search";
   @api submitLabel = "Search";
   @api placeholder = "";
-  @api getSuggestionVal = (item) => item;
-  @api getOptionLabel = (opt) => opt;
-  @api getOptionId = (opt) => opt;
-  // eslint-disable-next-line no-unused-vars
-  @api isOptionSelectable = (opt) => true;
+
+  /* api: variant */
+
+  _variant = VARIANT_DEFAULT;
+  _variantOriginal = VARIANT_DEFAULT;
+
+  @api
+  get variant() {
+    return this._variantOriginal;
+  }
+
+  set variant(value) {
+    this._variantOriginal = value;
+    this._variant = normaliseString(value, {
+      validValues: VARIANT_VALUES,
+      fallbackValue: VARIANT_DEFAULT
+    });
+  }
 
   /* api: autoFocus */
 
-  _autoFocusOriginal;
-  _autoFocus;
+  _autoFocus = AUTOFOCUS_DEFAULT;
+  _autoFocusOriginal = AUTOFOCUS_DEFAULT;
 
-  @api get autoFocus() {
+  @api
+  get autoFocus() {
     return this._autoFocusOriginal;
   }
 
@@ -29,30 +61,36 @@ export default class extends LightningElement {
     this._autoFocusOriginal = value;
     this._autoFocus = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: AUTOFOCUS_DEFAULT
     });
   }
 
-  /* api: ma */
+  /* api: maxSuggestionsDisplayed */
 
-  _maxSuggestionsDisplayedOriginal = 10;
-  _maxSuggestionsDisplayed = 10;
+  _maxSuggestionsDisplayedOriginal = MAXSUGGESTIONSDISPLAYED_DEFAULT;
+  _maxSuggestionsDisplayed = MAXSUGGESTIONSDISPLAYED_DEFAULT;
 
-  @api get maxSuggestionsDisplayed() {
+  @api
+  get maxSuggestionsDisplayed() {
     return this._maxSuggestionsDisplayedOriginal;
   }
 
   set maxSuggestionsDisplayed(value) {
     this._maxSuggestionsDisplayedOriginal = value;
-    this._maxSuggestionsDisplayed = Number(value);
+    this._maxSuggestionsDisplayed = normaliseInteger(value, {
+      min: MAXSUGGESTIONSDISPLAYED_MIN,
+      max: MAXSUGGESTIONSDISPLAYED_MAX,
+      fallbackValue: MAXSUGGESTIONSDISPLAYED_DEFAULT
+    });
   }
 
   /* api: showNoResults */
 
-  _showNoResultsOriginal;
-  _showNoResults;
+  _showNoResultsOriginal = SHOWNORESULTS_DEFAULT;
+  _showNoResults = SHOWNORESULTS_DEFAULT;
 
-  @api get showNoResults() {
+  @api
+  get showNoResults() {
     return this._showNoResultsOriginal;
   }
 
@@ -60,16 +98,17 @@ export default class extends LightningElement {
     this._showNoResultsOriginal = value;
     this._showNoResults = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: SHOWNORESULTS_DEFAULT
     });
   }
 
   /* api: showLabel */
 
-  _showLabelOriginal;
-  _showLabel;
+  _showLabel = SHOWLABEL_DEFAULT;
+  _showLabelOriginal = SHOWLABEL_DEFAULT;
 
-  @api get showLabel() {
+  @api
+  get showLabel() {
     return this._showLabelOriginal;
   }
 
@@ -77,7 +116,7 @@ export default class extends LightningElement {
     this._showLabelOriginal = value;
     this._showLabel = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: SHOWLABEL_DEFAULT
     });
   }
 
@@ -86,7 +125,8 @@ export default class extends LightningElement {
   _suggestions = [];
   _suggestionsById;
 
-  @api get suggestions() {
+  @api
+  get suggestions() {
     return this._suggestions;
   }
 
@@ -97,7 +137,7 @@ export default class extends LightningElement {
     this._suggestions = value;
     this._suggestionsById = new Map();
 
-    if (Array.isArray(value)) {
+    if (isArray(value)) {
       value.forEach((option) => {
         this._suggestionsById.set(this.getOptionId(option), option);
       });
@@ -114,6 +154,104 @@ export default class extends LightningElement {
       );
   }
 
+  /* api: inputValue */
+
+  _inputValue = "";
+
+  @api
+  get inputValue() {
+    return this._inputValue;
+  }
+
+  set inputValue(newModelValue) {
+    this._inputValue = newModelValue;
+    this.watchInputValue(newModelValue);
+  }
+
+  /* tracked */
+
+  @track _isOpen;
+
+  /* var: _activeOptionId */
+
+  __activeOptionId;
+
+  get _activeOptionId() {
+    return this.__activeOptionId;
+  }
+
+  set _activeOptionId(newId) {
+    this.__activeOptionId = newId;
+    this.watchActiveOptionId(newId);
+  }
+
+  /* var: _onClickOutside */
+
+  _onClickOutside = new OnClickOutside();
+
+  /* var: _internalValue */
+
+  _internalValue;
+
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "rpl-search-bar": true,
+      "rpl-search-bar--default": this._variant === VARIANT_DEFAULT,
+      "rpl-search-bar--reverse": this._variant === VARIANT_REVERSE,
+      "rpl-search-bar--menu": this._variant === VARIANT_MENU
+    };
+  }
+
+  get computedStyle() {
+    return `--local-max-items: ${this._maxSuggestionsDisplayed}`;
+  }
+
+  get computedLabelClassName() {
+    return {
+      "rpl-search-bar__label": true,
+      "rpl-u-visually-hidden": !this._showLabel,
+      "rpl-type-h4-fixed": true
+    };
+  }
+
+  get computedInputClassName() {
+    return {
+      "rpl-search-bar__input": true,
+      "rpl-u-focusable-outline": true,
+      "rpl-u-focusable-outline--no-border": true,
+      "rpl-u-focusable--force-on": this._isOpen
+    };
+  }
+
+  get computedNoResults() {
+    const rv =
+      this._showNoResults &&
+      this._suggestions?.length === 0 &&
+      !!this._internalValue &&
+      this._isOpen;
+
+    if (DEBUG) console.log(CLASS_NAME, "computedNoResults", rv);
+
+    return rv;
+  }
+
+  get computedHasResults() {
+    const rv = this._suggestions?.length && this._isOpen;
+
+    if (DEBUG)
+      console.log(
+        CLASS_NAME,
+        "computedHasResults",
+        this._suggestions?.length,
+        this._isOpen,
+        rv
+      );
+
+    return rv;
+  }
+
   get decoratedSuggestions() {
     return this._suggestions.map((option) => {
       const optionId = this.getOptionId(option);
@@ -123,14 +261,22 @@ export default class extends LightningElement {
         label: this.getOptionLabel(option),
         slug: this.slug(optionId),
         role: this.isOptionSelectable(option) ? "option" : null,
-        className: computeClass({
+        className: {
           "rpl-search-bar__menu-option": true,
           "rpl-u-focusable-block": true,
           "rpl-u-focusable--force-on": this.isMenuItemKeyboardFocused(optionId)
-        })
+        }
       };
     });
   }
+
+  /* methods */
+
+  // eslint-disable-next-line no-unused-vars
+  @api isOptionSelectable = (opt) => true;
+  @api getSuggestionVal = (item) => item;
+  @api getOptionLabel = (opt) => opt;
+  @api getOptionId = (opt) => opt;
 
   suggestionById(optionId) {
     if (DEBUG) console.log(CLASS_NAME, "> suggestionById", optionId);
@@ -142,99 +288,6 @@ export default class extends LightningElement {
     return rv;
   }
 
-  /* api: inputValue */
-
-  _inputValue = "";
-
-  @api get inputValue() {
-    return this._inputValue;
-  }
-
-  set inputValue(newModelValue) {
-    this._inputValue = newModelValue;
-    this.watchInputValue(newModelValue);
-  }
-
-  @track isOpen;
-
-  /* var: activeOptionId */
-
-  _activeOptionId;
-
-  get activeOptionId() {
-    return this._activeOptionId;
-  }
-
-  set activeOptionId(newId) {
-    this._activeOptionId = newId;
-    this.watchActiveOptionId(newId);
-  }
-
-  /* var: onClickOutside */
-
-  _onClickOutside = new OnClickOutside();
-
-  /* computed */
-
-  get computedClassName() {
-    return computeClass({
-      "rpl-search-bar": true,
-      "rpl-search-bar--default": this.variant === "default" || !this.variant,
-      "rpl-search-bar--reverse": this.variant === "reverse",
-      "rpl-search-bar--menu": this.variant === "menu"
-    });
-  }
-
-  get computedStyle() {
-    return `--local-max-items: ${this._maxSuggestionsDisplayed}`;
-  }
-
-  get computedLabelClassName() {
-    return computeClass({
-      "rpl-search-bar__label": true,
-      "rpl-u-visually-hidden": !this._showLabel,
-      "rpl-type-h4-fixed": true
-    });
-  }
-
-  get computedInputClassName() {
-    return computeClass({
-      "rpl-search-bar__input": true,
-      "rpl-u-focusable-outline": true,
-      "rpl-u-focusable-outline--no-border": true,
-      "rpl-u-focusable--force-on": this.isOpen
-    });
-  }
-
-  get computedNoResults() {
-    const rv =
-      this._showNoResults &&
-      this._suggestions?.length === 0 &&
-      !!this.internalValue &&
-      this.isOpen;
-
-    if (DEBUG) console.log(CLASS_NAME, "computedNoResults", rv);
-
-    return rv;
-  }
-
-  get computedHasResults() {
-    const rv = this._suggestions?.length && this.isOpen;
-
-    if (DEBUG)
-      console.log(
-        CLASS_NAME,
-        "computedHasResults",
-        this._suggestions?.length,
-        this.isOpen,
-        rv
-      );
-
-    return rv;
-  }
-
-  /* methods */
-
   getDefaultActiveId() {
     return this.suggestions?.length
       ? this.getOptionId(this.suggestions[0])
@@ -242,7 +295,7 @@ export default class extends LightningElement {
   }
 
   watchInputValue(newModelValue) {
-    this.internalValue = this.getSuggestionVal(newModelValue);
+    this._internalValue = this.getSuggestionVal(newModelValue);
   }
 
   watchActiveOptionId(newId) {
@@ -256,8 +309,6 @@ export default class extends LightningElement {
   slug(label) {
     return label.toLowerCase().replace(/[^\w-]+/g, "-");
   }
-
-  _requestedFocus;
 
   @api focus() {
     this.refs.inputRef.focus();
@@ -316,6 +367,7 @@ export default class extends LightningElement {
       case "Space":
       case "Enter":
         event.preventDefault();
+
         if (this.isOptionSelectable(option)) {
           this.handleSelectOption(option, true);
         }
@@ -344,7 +396,7 @@ export default class extends LightningElement {
           action: "search",
           id: this.id,
           name: this.inputLabel,
-          value: this.internalValue,
+          value: this._internalValue,
           text: this.type === "button" ? this.submitLabel : null,
           type
         }
@@ -354,13 +406,13 @@ export default class extends LightningElement {
 
   handleInputChange(event) {
     const value = event.target.value;
-    this.internalValue = value;
+    this._internalValue = value;
     this.dispatchEvent(
       new CustomEvent("updateinputvalue", {
         detail: value
       })
     );
-    this.isOpen = true;
+    this._isOpen = true;
   }
 
   handleSelectOption(optionValue, focusBackOnInput) {
@@ -378,14 +430,14 @@ export default class extends LightningElement {
       this.refs.InputRef.focus();
     }
 
-    this.internalValue = optionValue;
+    this._internalValue = optionValue;
     this.dispatchEvent(
       new CustomEvent("updateinputvalue", {
         detail: optionValue
       })
     );
 
-    this.isOpen = false;
+    this._isOpen = false;
 
     this.dispatchEvent(
       new CustomEvent("submit", {
@@ -405,21 +457,21 @@ export default class extends LightningElement {
       console.log(
         CLASS_NAME,
         "< handleSelectOption",
-        JSON.stringify(this.internalValue)
+        JSON.stringify(this._internalValue)
       );
   }
 
   handleOpen(fromKeyboard = false) {
-    this.isOpen = true;
+    this._isOpen = true;
 
     if (fromKeyboard && this.suggestions?.length) {
-      this.activeOptionId = this.getDefaultActiveId();
+      this._activeOptionId = this.getDefaultActiveId();
     }
   }
 
   handleClose(focusBackOnInput = false) {
-    this.isOpen = false;
-    this.activeOptionId = null;
+    this._isOpen = false;
+    this._activeOptionId = null;
 
     if (focusBackOnInput) {
       this.refs.inputRef.focus();
@@ -428,13 +480,13 @@ export default class extends LightningElement {
 
   handleArrowDown() {
     const currentActiveIndex = this.suggestions.findIndex(
-      (opt) => this.getOptionId(opt) === this.activeOptionId
+      (opt) => this.getOptionId(opt) === this._activeOptionId
     );
 
     if (currentActiveIndex < 0) {
-      this.activeOptionId = this.getDefaultActiveId();
+      this._activeOptionId = this.getDefaultActiveId();
     } else if (currentActiveIndex < this.suggestions.length - 1) {
-      this.activeOptionId = this.getOptionId(
+      this._activeOptionId = this.getOptionId(
         this.suggestions[currentActiveIndex + 1]
       );
     }
@@ -442,13 +494,13 @@ export default class extends LightningElement {
 
   handleArrowUp() {
     const currentActiveIndex = this.suggestions.findIndex(
-      (opt) => this.getOptionId(opt) === this.activeOptionId
+      (opt) => this.getOptionId(opt) === this._activeOptionId
     );
 
     if (currentActiveIndex < 0) {
-      this.activeOptionId = this.getDefaultActiveId();
+      this._activeOptionId = this.getDefaultActiveId();
     } else if (currentActiveIndex > 0) {
-      this.activeOptionId = this.getOptionId(
+      this._activeOptionId = this.getOptionId(
         this.suggestions[currentActiveIndex - 1]
       );
     }
@@ -473,7 +525,7 @@ export default class extends LightningElement {
   }
 
   isMenuItemKeyboardFocused(optionId) {
-    return this.activeOptionId === optionId;
+    return this._activeOptionId === optionId;
   }
 
   focusOption(optionId) {

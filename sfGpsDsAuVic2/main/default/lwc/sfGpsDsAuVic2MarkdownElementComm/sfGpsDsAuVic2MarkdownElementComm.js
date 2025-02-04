@@ -9,10 +9,13 @@ import { api } from "lwc";
 import SfGpsDsMarkdownElement from "c/sfGpsDsMarkdownElement";
 import tmpl from "./sfGpsDsAuVic2MarkdownElementComm.html";
 
-export default class SfGpsDsAuVic2MarkdownElementComm extends SfGpsDsMarkdownElement {
+export default class extends SfGpsDsMarkdownElement {
   static renderMode = "shadow";
 
-  @api get content() {
+  /* api: content */
+
+  @api
+  get content() {
     return super.content;
   }
 
@@ -20,7 +23,10 @@ export default class SfGpsDsAuVic2MarkdownElementComm extends SfGpsDsMarkdownEle
     super.content = markdown;
   }
 
-  @api get className() {
+  /* api: className */
+
+  @api
+  get className() {
     return super.className;
   }
 

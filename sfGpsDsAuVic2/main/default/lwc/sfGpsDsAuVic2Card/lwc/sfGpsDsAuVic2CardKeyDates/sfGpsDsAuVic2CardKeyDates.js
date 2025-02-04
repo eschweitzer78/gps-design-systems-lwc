@@ -34,4 +34,10 @@ export default class extends LightningElement {
       })
     );
   }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    this.classList.add("sf-gps-ds-au-vic2-grid");
+  }
 }

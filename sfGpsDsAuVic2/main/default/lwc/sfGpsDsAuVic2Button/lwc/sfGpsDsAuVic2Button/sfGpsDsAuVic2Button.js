@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 import {
   RplButtonIconPositions,
   RplButtonThemes,
@@ -13,12 +13,21 @@ const ICON_POSITION_DEFAULT = "right";
 const THEME_DEFAULT = "default";
 
 export default class SfGpsDsAuVic2Button extends LightningElement {
+  @api url = "";
+  @api iconName;
+  @api label;
+  @api disabled = false;
+  @api busy = false;
+  @api preventDefault;
+  @api className;
+
   /* api: el */
 
-  _elOriginal = ELEMENT_DEFAULT;
   _el = ELEMENT_DEFAULT;
+  _elOriginal = ELEMENT_DEFAULT;
 
-  @api get el() {
+  @api
+  get el() {
     return this._elOriginal;
   }
 
@@ -30,14 +39,13 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
     });
   }
 
-  @api url = "";
-
   /* api: variant */
 
-  _variantOriginal = VARIANT_DEFAULT;
   _variant = VARIANT_DEFAULT;
+  _variantOriginal = VARIANT_DEFAULT;
 
-  @api get variant() {
+  @api
+  get variant() {
     return this._variantOriginal;
   }
 
@@ -51,10 +59,11 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
 
   /* api: theme */
 
-  _themeOriginal = THEME_DEFAULT;
   _theme = THEME_DEFAULT;
+  _themeOriginal = THEME_DEFAULT;
 
-  @api get theme() {
+  @api
+  get theme() {
     return this._themeOriginal;
   }
 
@@ -66,14 +75,13 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
     });
   }
 
-  @api iconName;
-
   /* api: iconPosition */
 
   _iconPositionOriginal = ICON_POSITION_DEFAULT;
   _iconPosition = ICON_POSITION_DEFAULT;
 
-  @api get iconPosition() {
+  @api
+  get iconPosition() {
     return this._iconPositionOriginal;
   }
 
@@ -85,12 +93,6 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
     });
   }
 
-  @api label;
-  @api disabled = false;
-  @api busy = false;
-  @api preventDefault;
-  @api className;
-
   /* computed */
 
   get isAnchor() {
@@ -98,15 +100,15 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-button": true,
       [`rpl-button--${this._theme}`]: this._theme,
       [`rpl-button--${this._variant}`]: this._variant,
       "rpl-u-focusable-block": true,
-      "rpl-button--reverse": this.iconPosition === "left",
+      "rpl-button--reverse": this._iconPosition === "left",
       "rpl-button--busy": this.busy,
       [this.className]: this.className
-    });
+    };
   }
 
   /* methods */

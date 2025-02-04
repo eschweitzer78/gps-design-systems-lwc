@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from "lwc";
+import { isString } from "c/sfGpsDsHelpers";
 
 /* Work in progress */
 
@@ -7,26 +8,29 @@ const HEADING_TYPE_DEFAULT = {
   vertical: false
 };
 
-export default class SfGpsDsAuVic2DataTable extends LightningElement {
+export default class extends LightningElement {
   @api caption = "";
   @api footer = "";
   @api columns;
   @api items;
   @api showExtraContent;
+  @api offset = 1;
+  @api className;
 
   /* api: headingType */
 
-  _headingTypeOriginal = HEADING_TYPE_DEFAULT;
   _headingType = HEADING_TYPE_DEFAULT;
+  _headingTypeOriginal = HEADING_TYPE_DEFAULT;
 
-  @api get headingType() {
+  @api
+  get headingType() {
     return this._headingTypeOriginal;
   }
 
   set headingType(value) {
     this._headingTypeOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       this._headingType = {
         horizontal: value.find("horizontal") >= 0,
         vertical: value.find("vertical") >= 0
@@ -37,9 +41,6 @@ export default class SfGpsDsAuVic2DataTable extends LightningElement {
 
     this.hasVerticalHeader = this._headingType?.vertical === true;
   }
-
-  @api offset = 1;
-  @api className;
 
   @track hasVerticalHeader = false;
 

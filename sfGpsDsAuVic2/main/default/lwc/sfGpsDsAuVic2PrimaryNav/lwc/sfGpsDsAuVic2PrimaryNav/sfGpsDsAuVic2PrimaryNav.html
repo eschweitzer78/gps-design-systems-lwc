@@ -18,8 +18,8 @@
         show-search={_showSearch}
         show-quick-exit={_showQuickExit}
         is-mega-nav-active={isMegaNavActive}
-        is-search-active={isSearchActive}
-        active-nav-items={activeNavItems}
+        is-search-active={_isSearchActive}
+        active-nav-items={_activeNavItems}
         focus-target={decoratedFocusTarget}
         data-focus-key="navbar"
         ontoggleitem={handleToggleItem}
@@ -35,10 +35,10 @@
 
       <!-- Mega menu -->
       <c-sf-gps-ds-au-vic2-primary-nav-mega-menu
-        lwc:if={isMegaNavActive}
+        lwc:if={_isMegaNavActive}
         items={items}
         show-quick-exit={_showQuickExit}
-        active-nav-items={activeNavItems}
+        active-nav-items={_activeNavItems}
         focus-target={decoratedFocusTarget}
         data-focus-key="megamenu"
         ontoggleitem={handleToggleItem}
@@ -47,7 +47,7 @@
       </c-sf-gps-ds-au-vic2-primary-nav-mega-menu>
 
       <!-- Search form -->
-      <template lwc:if={isSearchActive}>
+      <template lwc:if={_isSearchActive}>
         <c-sf-gps-ds-au-vic2-primary-nav-search-form
           show-quick-exit={_showQuickExit}
         >
