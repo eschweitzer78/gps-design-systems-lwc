@@ -1,5 +1,6 @@
 import { LightningElement, api, track } from "lwc";
 import AvailableNetworks from "./networks";
+import { isString } from "c/sfGpsDsHelpers";
 
 let $window = typeof window !== "undefined" ? window : null;
 
@@ -7,7 +8,9 @@ export function mockWindow(self) {
   $window = self || window; // mock window for unit testing
 }
 
-export default class SfGpsDsSocialSharing extends LightningElement {
+export default class extends LightningElement {
+  static renderMode = "light";
+
   @api name = "ShareNetwork";
 
   @api network; // String required, name of the network to display
@@ -32,10 +35,10 @@ export default class SfGpsDsSocialSharing extends LightningElement {
   /* Formatted network name */
 
   get key() {
-    return typeof this.network === "string" ? this.network.toLowerCase() : "";
+    return isString(this.network) ? this.network.toLowerCase() : "";
   }
 
-  /* Netowrk sharing raw sharing link */
+  /* Network sharing raw sharing link */
 
   get rawLink() {
     const ua = navigator.userAgent.toLowerCase();
