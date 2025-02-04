@@ -7,15 +7,24 @@
 
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { api, track } from "lwc";
+import { isArray, normaliseBoolean } from "c/sfGpsDsHelpersOs";
 
 /* IMPORTANT NOTE: if you modify this class, you must update sfGpsDsLwcOsN
    as it's not automatically derived */
 
-import { normaliseBoolean } from "c/sfGpsDsHelpers";
 import runIntegrationProcedure from "@salesforce/apex/sfGpsDsIntegrationProcController.runIntegrationProcedure";
 
-export default class SfGpsDsIpLwc extends SfGpsDsLwc {
-  _ipActive = true;
+// Duration after which isLoading is set (which can be used by widgets to show a spinner)
+const SPINNER_THRESHOLD = 1000;
+const ITEMS_DEFAULT = [];
+const IPACTIVE_DEFAULT = true;
+const INPUT_DEFAULT = {};
+const OPTIONS_DEFAULT = {};
+
+export default class extends SfGpsDsLwc {
+  /* api: ipActive */
+
+  _ipActive = IPACTIVE_DEFAULT;
 
   @api
   get ipActive() {
@@ -31,6 +40,8 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
     this.refreshContent();
   }
 
+  /* api: ipName */
+
   _ipName;
 
   @api
@@ -43,54 +54,88 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
     this.refreshContent();
   }
 
-  _input;
-  _originalInputJSON;
+  /* api: inputJSON */
 
-  @api get inputJSON() {
-    return this._originalInputJSON;
+  _input = INPUT_DEFAULT;
+  _inputJSONOriginal = INPUT_DEFAULT;
+
+  @api
+  get inputJSON() {
+    return this._inputJSONOriginal;
   }
 
   set inputJSON(value) {
-    this._originalInputJSON = value;
+    this._inputJSONOriginal = value;
 
     if (value == null) return;
 
     try {
-      this._input = JSON.parse(value);
+      this._input = JSON.parse(value || "{}");
       this.refreshContent();
     } catch (e) {
-      this._options = {};
+      this._input = INPUT_DEFAULT;
       this.addError("IJ-BF", "JSON for input is malformed.");
     }
   }
 
-  _options;
-  _originalOptionsJSON;
+  /* api: optionsJSON */
 
-  @api get optionsJSON() {
-    return this._originalOptionsJSON;
+  _options = OPTIONS_DEFAULT;
+  _optionsJSONOriginal = OPTIONS_DEFAULT;
+
+  @api
+  get optionsJSON() {
+    return this._optionsJSONOriginal;
   }
 
   set optionsJSON(value) {
-    this._originalOptionsJSON = value;
-
     try {
+      this._optionsJSONOriginal = value;
       this._options = JSON.parse(value || "{}");
       this.refreshContent();
     } catch (e) {
-      this._options = {};
+      this._options = OPTIONS_DEFAULT;
       this.addError("OJ-BF", "JSON for options is malformed.");
     }
   }
 
-  @track _items = [];
+  /* track: _items */
+
+  @track _items = ITEMS_DEFAULT;
+  @track _didLoadOnce;
+  @track _isLoading = false;
+
+  /* methods */
 
   _nLoading = 0;
-  get _isLoading() {
-    return this._nLoading > 0;
+  _loadingTimer;
+
+  startedLoading() {
+    this._nLoading++;
+
+    if (this._loadingTimer == null) {
+      // eslint-disable-next-line @lwc/lwc/no-async-operation
+      this._loadingTimer = setTimeout(() => {
+        this._isLoading = true;
+      }, SPINNER_THRESHOLD);
+    }
   }
 
-  @track _didLoadOnce;
+  stoppedLoading() {
+    if (this._nLoading > 0) {
+      this._nLoading--;
+    }
+
+    if (this._nLoading === 0) {
+      if (this._loadingTimer) {
+        clearTimeout(this._loadingTimer);
+        this._loadingTimer = null;
+      }
+
+      this._isLoading = false;
+    }
+  }
+
   refreshContent() {
     if (
       !this._ipActive ||
@@ -102,7 +147,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       return;
     }
 
-    this._nLoading++;
+    this.startedLoading();
 
     runIntegrationProcedure({
       ipName: this._ipName,
@@ -116,7 +161,7 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
       .then((data) => {
         try {
           if (data) {
-            if (!Array.isArray(data)) {
+            if (!isArray(data)) {
               if (data.hasError || data.error || data.errorMessage) {
                 this.addError(
                   "CK-ER",
@@ -138,23 +183,24 @@ export default class SfGpsDsIpLwc extends SfGpsDsLwc {
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection.");
           console.log("CK-EX", e);
-          this._items = [];
+          this._items = ITEMS_DEFAULT;
         } finally {
-          this._nLoading--;
+          this.stoppedLoading();
         }
       })
       // eslint-disable-next-line no-unused-vars
       .catch((error) => {
-        console.log("CK-RD ip error", JSON.stringify(error));
         this.addError("CK-RD", "Issue getting the content collection.");
-        this._items = [];
-        this._nLoading--;
+        this._items = ITEMS_DEFAULT;
+        this.stoppedLoading();
       });
   }
 
   mapIpData(data) {
     return data;
   }
+
+  /* lifecycle */
 
   connectedCallback() {
     super.connectedCallback();
