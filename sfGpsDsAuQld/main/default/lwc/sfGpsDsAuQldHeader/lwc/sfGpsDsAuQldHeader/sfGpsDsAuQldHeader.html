@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <!-- Main header container with banner role -->
   <header class={computedClassName} role="banner">
@@ -7,11 +8,19 @@
       aria-label={i18n.skipLinksAriaLabel}
       tabindex="-1"
     >
-      <a class="qld__skip-link__link" href={computedContentIdRef}
-        >{i18n.skipToMainContent}</a
+      <a
+        class="qld__skip-link__link"
+        href={computedContentIdRef}
+        onclick={handleSkipToMainContent}
       >
-      <a class="qld__skip-link__link" href={computedMainNavIdRef}
-        >{i18n.skipToMainNav}</a
+        {i18n.skipToMainContent}
+      </a>
+      <a
+        class="qld__skip-link__link"
+        href={computedMainNavIdRef}
+        onclick={handleSkipToMainNav}
+      >
+        {i18n.skipToMainNav}</a
       >
     </nav>
 
@@ -81,6 +90,7 @@
             aria-controls={mainNavId}
             class="qld__header__toggle-main-nav qld__main-nav__toggle--open"
             aria-expanded={_menuIsOpen}
+            onclick={handleMainNavButtonClick}
           >
             <!-- Menu icon -->
             <svg
@@ -358,11 +368,6 @@
                   lwc:if={siteLogoSecondaryMobile}
                   media="(max-width: 991px)"
                   srcset={siteLogoSecondaryMobile}
-                />
-                <source
-                  lwc:else
-                  media="(max-width: 991px)"
-                  srcset={site.metadata.siteLogoSecondary}
                 />
                 <source
                   media="(max-width: 3000px)"

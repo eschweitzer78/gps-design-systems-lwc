@@ -6,7 +6,7 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
 const MODE_LIST = "list";
 const MODE_1COLUMN = "1 column";
@@ -31,7 +31,8 @@ export default class SfGpsDsAuNswLinkList extends LightningElement {
   _listMode = MODE_LIST;
   _listModeOriginal = MODE_LIST;
 
-  @api get listMode() {
+  @api
+  get listMode() {
     return this._modeOriginal;
   }
 
@@ -54,43 +55,43 @@ export default class SfGpsDsAuNswLinkList extends LightningElement {
   }
 
   get computedListClassName() {
-    return computeClass({
+    return {
       "qld__link-list": this._listMode === MODE_LIST,
       "qld__link-columns": this.computedIsColumnMode,
       "qld__link-columns--2-col": this._listMode === MODE_2COLUMNS,
       "qld__link-columns--3-col": this._listMode === MODE_3COLUMNS
-    });
+    };
   }
 
   get _links() {
     return (this.links || []).map((link, index) => ({
       ...link,
       key: `link-${index + 1}`,
-      linkClassName: computeClass({
+      linkClassName: {
         [this.linkClassName]: this.linkClassName
-      }),
+      },
       anchorClassName: this.anchorClassName,
       iconClassName: link.icon
-        ? computeClass({
+        ? {
             [link.icon]: true,
             [this.iconClassName]: this.iconClassName
-          })
+          }
         : null
     }));
   }
 
   get computedCvaLinkClassName() {
-    return computeClass({
+    return {
       "qld__link-columns__all-link": true,
       [this.linkClassName]: this.linkClassName
-    });
+    };
   }
 
   get computedCvaAnchorClassName() {
-    return computeClass({
+    return {
       "qld__cta-link": true,
       "qld__cta-link--view-all": true,
       [this.anchorClassName]: this.anchorClassName
-    });
+    };
   }
 }

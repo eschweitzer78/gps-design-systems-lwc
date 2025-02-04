@@ -6,14 +6,13 @@ export default class extends SfGpsDsLwc {
   @api mode;
   @api className;
 
-  /*
-   * api: ctaLink
-   */
+  /* api: ctaLink */
 
   _ctaLink;
   _ctaLinkOriginal;
 
-  @api get ctaLink() {
+  @api
+  get ctaLink() {
     return this._ctaLinkOriginal;
   }
 

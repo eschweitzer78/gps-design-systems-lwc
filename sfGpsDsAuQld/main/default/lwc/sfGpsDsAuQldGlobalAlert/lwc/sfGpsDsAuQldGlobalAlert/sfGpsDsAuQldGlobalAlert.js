@@ -1,36 +1,51 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
 
-const LEVEL_CRITICAL = "critical";
-const LEVEL_DEFAULT = "default";
-const LEVEL_GENERAL = "general";
-const LEVEL_VALUES = [LEVEL_CRITICAL, LEVEL_DEFAULT, LEVEL_GENERAL];
-
 const I18N = {
-  closeAlert: "Close alert",
-  criticalAlert: "Critical alert",
-  defaultAlert: "Alert",
-  generalAlert: "General alert"
+  closeAlert: "Close alert"
 };
+
+const LEVEL_DEFAULT = "default";
+const LEVEL_VALUES = {
+  critical: {
+    className: "qld__global-alert--critical",
+    ariaLabel: "Critial alert",
+    iconName: "qld__icon__critical"
+  },
+  default: {
+    className: "qld__global-alert--default",
+    ariaLabel: "Alert",
+    iconName: "qld__icon__warning"
+  },
+  general: {
+    className: "qld__global-alert--general",
+    ariaLabel: "General alert",
+    iconName: "qld__icon__info"
+  }
+};
+
+const DISMISSIBLE_DEFAULT = true;
 
 const STATIC_RESOURCE_ICONS_PATH =
   sfGpsDsAuQldStaticResource + "/assets/img/svg-icons.svg";
 
 export default class extends LightningElement {
+  @api alertId;
   @api title;
-  @api copy;
-  @api ctaText;
-  @api ctaHref;
-  @api ctaPreventDefault = false;
+  @api content;
+  @api linkText;
+  @api linkUrl;
+  @api linkPreventDefault = false;
   @api className;
 
   /* api: level */
 
-  _level;
-  _levelOriginal;
+  _level = LEVEL_VALUES[LEVEL_DEFAULT];
+  _levelOriginal = LEVEL_DEFAULT;
 
-  @api get level() {
+  @api
+  get level() {
     return this._levelOriginal;
   }
 
@@ -38,20 +53,37 @@ export default class extends LightningElement {
     this._levelOriginal = value;
     this._level = normaliseString(value, {
       validValues: LEVEL_VALUES,
-      fallbackValue: LEVEL_DEFAULT
+      fallbackValue: LEVEL_DEFAULT,
+      returnObjectValue: true
+    });
+  }
+
+  /* api: dismissible */
+
+  _dismissible = DISMISSIBLE_DEFAULT;
+  _dismissibleOriginal = DISMISSIBLE_DEFAULT;
+
+  @api
+  get dismissible() {
+    return this._dismissibleOriginal;
+  }
+
+  set dismissible(value) {
+    this._dismissibleOriginal = value;
+    this._dismissible = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: DISMISSIBLE_DEFAULT
     });
   }
 
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "qld__global-alert": true,
-      "qld__global-alert--critical": this._level === LEVEL_CRITICAL,
-      "qld__global-alert--default": this._level === LEVEL_DEFAULT,
-      "qld__global-alert--general": this._level === LEVEL_GENERAL,
+      [this._level.className]: this._level,
       [this.className]: this.className
-    });
+    };
   }
 
   get i18n() {
@@ -59,35 +91,11 @@ export default class extends LightningElement {
   }
 
   get computedAriaLabel() {
-    switch (this._level) {
-      case LEVEL_CRITICAL:
-        return I18N.criticalAlert;
-
-      case LEVEL_DEFAULT:
-        return I18N.defaultAlert;
-
-      case LEVEL_GENERAL:
-        return I18N.generalAlert;
-
-      default:
-        return null;
-    }
+    return this._level.ariaLabel;
   }
 
   get computedIconUrl() {
-    switch (this._level) {
-      case LEVEL_CRITICAL:
-        return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__critical";
-
-      case LEVEL_DEFAULT:
-        return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__warning";
-
-      case LEVEL_GENERAL:
-        return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__info";
-
-      default:
-        return null;
-    }
+    return STATIC_RESOURCE_ICONS_PATH + "#" + this._level.iconName;
   }
 
   get computedArrowRightIconUrl() {
@@ -98,15 +106,15 @@ export default class extends LightningElement {
     return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__close";
   }
 
-  /* methods */
+  /* event management */
 
-  handleCtaClick(event) {
-    if (this.ctaPreventDefault) {
+  handleLinkClick(event) {
+    if (this.linkPreventDefault) {
       event.preventDefault();
       event.stopPropagation();
     }
 
-    this.dispatchEvent(new CustomEvent("ctaclick"));
+    this.dispatchEvent(new CustomEvent("linkclick"));
   }
 
   handleCloseClick() {

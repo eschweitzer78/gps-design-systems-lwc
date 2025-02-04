@@ -1,6 +1,5 @@
 import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class extends SfGpsDsLwc {
   /* Similar to the Rpl Docs version but only support same origin */
@@ -11,7 +10,6 @@ export default class extends SfGpsDsLwc {
   @api withPadding = false;
   @api storyPreviewUrl;
   @api className;
-
   @api showCallout;
 
   @track isCodeOpen;
@@ -19,11 +17,11 @@ export default class extends SfGpsDsLwc {
   /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "docs-example": true,
       "with-padding": this.withPadding,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedShowNewTab() {

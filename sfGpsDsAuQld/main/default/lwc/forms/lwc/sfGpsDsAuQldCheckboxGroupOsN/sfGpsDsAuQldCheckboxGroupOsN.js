@@ -6,16 +6,17 @@
  */
 
 import OmnistudioCheckboxGroup from "c/sfGpsDsOmniCheckboxGroupOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 import StatusHelperMixin from "c/sfGpsDsAuQldStatusHelperMixinOsN";
 import tmpl from "./sfGpsDsAuQldCheckboxGroupOsN.html";
 
 export default class extends StatusHelperMixin(OmnistudioCheckboxGroup) {
+  /* computed */
+
   get computedInputClassName() {
-    return computeClass({
+    return {
       "qld__control-input__input": true,
       "qld__input--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   /* lifecycle */

@@ -12,9 +12,7 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuQldMaskedInputOsN.html";
 
 export default class extends StatusHelperMixin(OmniscriptMaskedInput) {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedAriaDescribedBy() {
     return computeClass({
@@ -23,11 +21,18 @@ export default class extends StatusHelperMixin(OmniscriptMaskedInput) {
     });
   }
 
+  /* methods */
   /* original maskedInput widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
     return [...this.template.querySelectorAll(".nsw-form__helper")]
       ?.map((item) => item.id)
       .join(" ");
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

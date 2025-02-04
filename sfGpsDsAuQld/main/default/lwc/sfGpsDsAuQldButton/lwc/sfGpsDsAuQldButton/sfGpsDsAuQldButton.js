@@ -6,11 +6,12 @@ const ELEMENT_BUTTON = "button";
 const ELEMENT_VALUES = [ELEMENT_ANCHOR, ELEMENT_BUTTON];
 const ELEMENT_DEFAULT = ELEMENT_BUTTON;
 
-const VARIANT_PRIMARY = "primary";
-const VARIANT_SECONDARY = "secondary";
-const VARIANT_TERTIARY = "tertiary";
-const VARIANT_VALUES = [VARIANT_PRIMARY, VARIANT_SECONDARY, VARIANT_TERTIARY];
-const VARIANT_DEFAULT = VARIANT_PRIMARY;
+const VARIANT_DEFAULT = "primary";
+const VARIANT_VALUES = {
+  primary: "",
+  secondary: "qld__btn--secondary",
+  tertiary: "qld__btn--tertiary"
+};
 
 const ICONPOSITION_LEAD = "lead";
 const ICONPOSITION_TRAIL = "trail";
@@ -30,7 +31,8 @@ export default class SfGpsDsAuQldButton extends LightningElement {
   _elOriginal = ELEMENT_DEFAULT;
   _el = ELEMENT_DEFAULT;
 
-  @api get el() {
+  @api
+  get el() {
     return this._elOriginal;
   }
 
@@ -44,10 +46,11 @@ export default class SfGpsDsAuQldButton extends LightningElement {
 
   /* api: variant */
 
-  _variantOriginal = VARIANT_DEFAULT;
+  _variantOriginal = VARIANT_VALUES[VARIANT_DEFAULT];
   _variant = VARIANT_DEFAULT;
 
-  @api get variant() {
+  @api
+  get variant() {
     return this._variantOriginal;
   }
 
@@ -55,7 +58,8 @@ export default class SfGpsDsAuQldButton extends LightningElement {
     this._variantOriginall = value;
     this._variant = normaliseString(value, {
       validValues: VARIANT_VALUES,
-      fallbackValue: VARIANT_DEFAULT
+      fallbackValue: VARIANT_DEFAULT,
+      returnObjectValue: true
     });
   }
 
@@ -64,7 +68,8 @@ export default class SfGpsDsAuQldButton extends LightningElement {
   _iconPositionOriginal = ICONPOSITION_DEFAULT;
   _iconPosition = ICONPOSITION_DEFAULT;
 
-  @api get iconPosition() {
+  @api
+  get iconPosition() {
     return this._iconPositionOriginal;
   }
 
@@ -93,8 +98,7 @@ export default class SfGpsDsAuQldButton extends LightningElement {
   get computedClassName() {
     return computeClass({
       qld__btn: true,
-      "qld__btn--secondary": this._variant === VARIANT_SECONDARY,
-      "qld__btn--tertiary": this._variant === VARIANT_TERTIARY,
+      [this._variant]: this._variant,
       "qld__btn--icon-lead": this._iconPosition === ICONPOSITION_LEAD,
       "qld__btn--icon-trail": this._iconPosition === ICONPOSITION_TRAIL,
       [this.className]: this.className

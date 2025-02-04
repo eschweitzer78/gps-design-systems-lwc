@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>61.0</apiVersion>
+  <apiVersion>62.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>QLD DS Link List</masterLabel>
   <targets>
@@ -52,14 +52,14 @@
         name="linkClassName"
         type="String"
         label="Link class name"
-        description="Additional CSS class to be applied to the link items."
+        description="Additional CSS class to be applied to the link list items."
         editor="c/sfGpsDsStringCpe"
       />
       <property
         name="anchorClassName"
         type="String"
         label="Anchor class name"
-        description="Additional CSS class to be applied to the links anchors."
+        description="Additional CSS class to be applied to the link anchors."
         editor="c/sfGpsDsStringCpe"
       />
       <property

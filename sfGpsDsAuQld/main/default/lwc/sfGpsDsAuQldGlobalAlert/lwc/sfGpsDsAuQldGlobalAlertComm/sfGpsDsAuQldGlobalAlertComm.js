@@ -12,25 +12,26 @@ import mdEngine from "c/sfGpsDsMarkdown";
 export default class extends SfGpsDsLwc {
   @api level;
   @api title;
-  @api copy;
+  @api content;
+  @api dismissible;
   @api className;
 
   @track _isOpen = true;
 
-  /* api: cta */
+  /* api: link */
 
-  _cta;
-  _ctaOriginal;
+  _link;
+  _linkOriginal;
 
-  @api get cta() {
-    return this._ctaOriginal;
+  @api
+  get link() {
+    return this._linkOriginal;
   }
 
-  set cta(markdown) {
-    this._ctaOriginal = markdown;
-
+  set link(markdown) {
     try {
-      this._cta = markdown ? mdEngine.extractFirstLink(markdown) : null;
+      this._linkOriginal = markdown;
+      this._link = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Call to Action markdown");
     }
@@ -38,18 +39,20 @@ export default class extends SfGpsDsLwc {
 
   /* getters */
 
-  get computedCtaText() {
-    return this._cta?.text;
+  get computedLinkText() {
+    return this._link?.text;
   }
 
-  get computedCtaUrl() {
-    return this._cta?.url;
+  get computedLinkUrl() {
+    return this._link?.url;
   }
 
   /* event management */
 
   handleClose() {
-    this._isOpen = false;
+    if (this.dismissible) {
+      this._isOpen = false;
+    }
   }
 
   /* lifecycle */

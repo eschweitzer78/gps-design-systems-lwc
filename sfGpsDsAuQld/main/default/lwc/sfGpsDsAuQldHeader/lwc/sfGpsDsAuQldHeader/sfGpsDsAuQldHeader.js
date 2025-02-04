@@ -1,25 +1,31 @@
-import { LightningElement, api, track } from "lwc";
-import { computeClass, normaliseString, uniqueId } from "c/sfGpsDsHelpers";
+import { LightningElement, api, track, wire } from "lwc";
+import { normaliseString, uniqueId } from "c/sfGpsDsHelpers";
+import { publish, MessageContext } from "lightning/messageService";
+import mainNavToggleChannel from "@salesforce/messageChannel/sfGpsDsAuQldMainNavToggle__c";
 import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
 import cBasePath from "@salesforce/community/basePath";
 
 const I18N = {
   skipLinksAriaLabel: "Skip links",
   skipToMainContent: "Skip to main content",
-  skitToMainNav: "Skip to main navigation",
+  skipToMainNav: "Skip to main navigation",
   searchButtonAriaLabel: "Search",
   searchFormAriaLabel: "Sitewide search"
 };
 
-const CSTYLE_LIGHT = "light";
-const CSTYLE_DARK = "dark";
-const CSTYLE_DARKALT = "dark-alt";
+const PREHEADER_STYLE_DEFAULT = "dark";
+const PREHEADER_STYLE_VALUES = {
+  light: "",
+  dark: "qld__header__pre-header--dark",
+  "dark-alternate": "qld__header__pre-header--dark-alt"
+};
 
-const PREHEADER_STYLE_VALUES = [CSTYLE_LIGHT, CSTYLE_DARK, CSTYLE_DARKALT];
-const PREHEADER_STYLE_DEFAULT = CSTYLE_DARK;
-
-const HEADER_STYLE_VALUES = [CSTYLE_LIGHT, CSTYLE_DARK, CSTYLE_DARKALT];
-const HEADER_STYLE_DEFAULT = CSTYLE_LIGHT;
+const HEADER_STYLE_DEFAULT = "light";
+const HEADER_STYLE_VALUES = {
+  light: "",
+  dark: "qld__header__main--dark",
+  "dark-alternate": "qld__header__main--dark-alt"
+};
 
 const STATIC_RESOURCE_ICONS_PATH =
   sfGpsDsAuQldStaticResource + "/assets/img/svg-icons.svg";
@@ -31,6 +37,7 @@ export default class extends LightningElement {
   /* ------- */
 
   @api className;
+  @wire(MessageContext) _messageContext;
 
   /* getters */
 
@@ -39,10 +46,10 @@ export default class extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       qld__header: true,
       [this.className]: this.className
-    });
+    };
   }
 
   /* preHeader */
@@ -60,10 +67,11 @@ export default class extends LightningElement {
 
   /* api: preHeaderStyle */
 
-  _preHeaderStyle = PREHEADER_STYLE_DEFAULT;
+  _preHeaderStyle = PREHEADER_STYLE_VALUES[PREHEADER_STYLE_DEFAULT];
   _preHeaderStyleOriginal = PREHEADER_STYLE_DEFAULT;
 
-  @api get preHeaderStyle() {
+  @api
+  get preHeaderStyle() {
     return this._preHeaderStyleOriginal;
   }
 
@@ -71,19 +79,18 @@ export default class extends LightningElement {
     this._preHeaderStyleOriginal = value;
     this._preHeaderStyle = normaliseString(value, {
       validValues: PREHEADER_STYLE_VALUES,
-      fallbackValue: PREHEADER_STYLE_DEFAULT
+      fallbackValue: PREHEADER_STYLE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
   /* getters */
 
   get computedPreHeaderClassName() {
-    return computeClass({
+    return {
       "qld__header__pre-header": true,
-      "qld__header__pre-header--dark": this._preHeaderStyle === CSTYLE_DARK,
-      "qld__header__pre-header--dark-alt":
-        this._preHeaderStyle === CSTYLE_DARKALT
-    });
+      [this._preHeaderStyle]: this._preHeaderStyle
+    };
   }
 
   get preHeaderText() {
@@ -130,8 +137,8 @@ export default class extends LightningElement {
   @api headerUrl;
   @api siteLogo;
   @api siteLogoAlt;
-  @api siteLogoSecondaryMobile;
   @api siteLogoSecondary;
+  @api siteLogoSecondaryMobile;
 
   get hasSiteLogoSecondary() {
     return this.siteLogoSecondary || this.siteLogoSecondaryMobile;
@@ -143,10 +150,11 @@ export default class extends LightningElement {
 
   /* api: headerStyle */
 
-  _headerStyle = HEADER_STYLE_DEFAULT;
+  _headerStyle = HEADER_STYLE_VALUES[HEADER_STYLE_DEFAULT];
   _headerStyleOriginal = HEADER_STYLE_DEFAULT;
 
-  @api get headerStyle() {
+  @api
+  get headerStyle() {
     return this._headerStyleOriginal;
   }
 
@@ -154,7 +162,8 @@ export default class extends LightningElement {
     this._headerStyleOriginal = value;
     this._headerStyle = normaliseString(value, {
       validValues: HEADER_STYLE_VALUES,
-      fallbackValue: HEADER_STYLE_DEFAULT
+      fallbackValue: HEADER_STYLE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
@@ -165,11 +174,10 @@ export default class extends LightningElement {
   }
 
   get computedMainClassName() {
-    return computeClass({
+    return {
       qld__header__main: true,
-      "qld__header__main--dark": this._headerStyle === "dark",
-      "qld__header__main--dark-alt": this._headerStyle === "dark-alt"
-    });
+      [this._headerStyle]: this._headerStyle
+    };
   }
 
   get computedHeaderUrl() {
@@ -193,19 +201,19 @@ export default class extends LightningElement {
   }
 
   get computedSearchButtonClassName() {
-    return computeClass({
+    return {
       "qld__header__toggle-main-nav": true,
       "qld__main-nav__toggle-search": true,
       "qld__main-nav__toggle-search--open": !this._searchIsOpen,
       "qld__main-nav__toggle-search--close": this._searchIsOpen
-    });
+    };
   }
 
   get computedHeaderSearchClassName() {
-    return computeClass({
+    return {
       qld__header__search: true,
       "qld__main-nav__search--open": this._searchIsOpen
-    });
+    };
   }
 
   _headerSearchId;
@@ -230,7 +238,36 @@ export default class extends LightningElement {
     return this._headerSearchInputId;
   }
 
+  /* event management */
+
+  handleSkipToMainContent(event) {
+    event.preventDefault();
+    /* eslint-disable @lwc/lwc/no-document-query */
+    const content = document.getElementById(this.contentId);
+
+    if (content) {
+      content.focus();
+    }
+  }
+
+  handleSkipToMainNav(event) {
+    event.preventDefault();
+    /* eslint-disable @lwc/lwc/no-document-query */
+    const content = document.getElementById(this.mainNavId);
+
+    if (content) {
+      content.focus();
+    }
+  }
+
   handleSearchButtonClick() {
     this._searchIsOpen = !this._searchIsOpen;
+  }
+
+  handleMainNavButtonClick() {
+    publish(this._messageContext, mainNavToggleChannel, {
+      type: "toggle",
+      detail: null
+    });
   }
 }

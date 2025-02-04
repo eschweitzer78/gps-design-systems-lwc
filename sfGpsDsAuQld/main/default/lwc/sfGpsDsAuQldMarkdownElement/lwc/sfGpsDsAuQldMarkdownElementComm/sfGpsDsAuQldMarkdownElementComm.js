@@ -9,7 +9,10 @@ import SfGpsDsMarkdownElement from "c/sfGpsDsMarkdownElement";
 import tmpl from "./sfGpsDsAuQldMarkdownElementComm.html";
 
 export default class extends SfGpsDsMarkdownElement {
-  @api get content() {
+  /* api: content */
+
+  @api
+  get content() {
     return super.content;
   }
 
@@ -17,7 +20,10 @@ export default class extends SfGpsDsMarkdownElement {
     super.content = markdown;
   }
 
-  @api get className() {
+  /* api: className */
+
+  @api
+  get className() {
     return super.className;
   }
 

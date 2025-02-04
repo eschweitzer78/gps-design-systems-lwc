@@ -4,12 +4,13 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
+
 import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import getRecordSummary from "@salesforce/apex/SfGpsDsRecordDetailController.getRecordSummary";
 import getObjectSummary from "@salesforce/apex/SfGpsDsRecordDetailController.getObjectSummary";
 
-export default class SfGpsDsAuQldBreadcrumbsRecordComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api mode;
   @api label = "Breadcrumb";
   @api objectLabel;

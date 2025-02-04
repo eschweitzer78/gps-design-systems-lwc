@@ -4,7 +4,7 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
@@ -12,12 +12,14 @@ export default class extends SfGpsDsLwc {
   @api title;
   @api className;
 
-  _items;
-  @track _itemsArray = [];
+  /* api: items */
+
+  _itemsArray = [];
+  _itemsOriginal;
 
   @api set items(markdown) {
-    this._items = markdown;
     try {
+      this._itemsOriginal = markdown;
       this._itemsArray = mdEngine.extractLinks(markdown);
     } catch (e) {
       this.addError("IT-MD", "Issue when parsing Items markdown");
@@ -25,7 +27,7 @@ export default class extends SfGpsDsLwc {
   }
 
   get items() {
-    return this._items;
+    return this._itemsOriginal;
   }
 
   /* lifecycle */

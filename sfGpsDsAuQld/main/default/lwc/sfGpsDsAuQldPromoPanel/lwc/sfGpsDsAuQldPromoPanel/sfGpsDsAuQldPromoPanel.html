@@ -1,0 +1,105 @@
+<template lwc:render-mode="light">
+  <template lwc:if={computedHasTitleOrAbstract}>
+    <template lwc:if={image}>
+      <section class={computedClassName}>
+        <div class="container-fluid">
+          <div
+            class="qld__promo-panel__container row"
+            style={computedPanelContainerStyle}
+          >
+            <div class="qld__promo-panel__container-image">
+              <div
+                class="qld__promo-panel__image"
+                style={computedPanelImageStyle}
+              ></div>
+            </div>
+
+            <div class="qld__promo-panel__container-content">
+              <div class="qld__promo-panel__container-inner">
+                <div lwc:if={icon} class="qld__promo-panel__container-icon">
+                  <i class={computedIconClassName}></i>
+                </div>
+
+                <h2 lwc:if={title} class="qld__display-xl">{title}</h2>
+
+                <div lwc:if={abstract} class="qld__abstract">{abstract}</div>
+
+                <slot></slot>
+
+                <div lwc:if={computedLinkTypeIsCta}>
+                  <a lwc:if={ctaLinkUrl} class="qld__cta-link" href={ctaLinkUrl}
+                    >{ctaLinkTitle}</a
+                  >
+                </div>
+
+                <template lwc:elseif={computedLinkTypeIsButton}>
+                  <ul
+                    lwc:if={computedHasLinks}
+                    class="qld__promo-panel__container-btn qld__banner__content--cta qld__link-list"
+                  >
+                    <li lwc:if={primaryLinkTitle}>
+                      <a
+                        class="qld__promo-panel__btn qld__btn qld__btn--primary"
+                        href={primaryLinkUrl}
+                      >
+                        {primaryLinkTitle}
+                      </a>
+                    </li>
+
+                    <li lwc:if={secondaryLinkTitle}>
+                      <a
+                        class="qld__promo-panel__btn qld__btn qld__btn--secondary"
+                        href={secondaryLinkUrl}
+                      >
+                        {secondaryLinkTitle}
+                      </a>
+                    </li>
+                  </ul>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </template>
+
+    <template lwc:else>
+      <section class={computedClassName}>
+        <div class="row qld__promo-panel__row">
+          <div class="col-xs-12">
+            <div class="qld__promo-panel__container-inner">
+              <h2 lwc:if={title} class="qld__display-xl">{title}</h2>
+              <div lwc:if={abstract} class="qld__abstract">{abstract}</div>
+
+              <slot></slot>
+
+              <div lwc:if={computedLinkTypeIsCta}>
+                <a lwc:if={ctaLinkUrl} class="qld__cta-link" href={ctaLinkUrl}
+                  >{ctaLinkTitle}</a
+                >
+              </div>
+
+              <template lwc:elseif={computedLinkTypeIsButton}>
+                <a
+                  lwc:if={primaryLinkTitle}
+                  class="qld__promo-panel__btn qld__btn"
+                  href={primaryLinkUrl}
+                >
+                  {primaryLinkTitle}
+                </a>
+
+                <a
+                  lwc:if={secondaryLinkTitle}
+                  class="qld__promo-panel__btn qld__btn qld__btn--secondary"
+                  href={secondaryLinkUrl}
+                >
+                  {secondaryLinkTitle}
+                </a>
+              </template>
+            </div>
+          </div>
+        </div>
+      </section>
+    </template>
+  </template>
+</template>

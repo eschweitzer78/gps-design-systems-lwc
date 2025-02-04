@@ -1,6 +1,5 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
 const COL_CLASSNAME = "qld__card-list--col";
 /**
@@ -25,52 +24,52 @@ export default class extends SfGpsDsLwc {
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "qld__card-list": true,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedCol1ClassName() {
-    return computeClass({
+    return {
       [this.col1ClassName]: this.col1ClassName,
       [COL_CLASSNAME]: true
-    });
+    };
   }
 
   get computedCol2ClassName() {
-    return computeClass({
+    return {
       [this.col2ClassName]: this.col2ClassName,
       [COL_CLASSNAME]: true
-    });
+    };
   }
 
   get computedCol3ClassName() {
-    return computeClass({
+    return {
       [this.col3ClassName]: this.col3ClassName,
       [COL_CLASSNAME]: true
-    });
+    };
   }
 
   get computedCol4ClassName() {
-    return computeClass({
+    return {
       [this.col4ClassName]: this.col4ClassName,
       [COL_CLASSNAME]: true
-    });
+    };
   }
 
   get computedCol5ClassName() {
-    return computeClass({
+    return {
       [this.col5ClassName]: this.col5ClassName,
       [COL_CLASSNAME]: true
-    });
+    };
   }
 
   get computedCol6ClassName() {
-    return computeClass({
+    return {
       [this.col6ClassName]: this.col6ClassName,
       [COL_CLASSNAME]: true
-    });
+    };
   }
 
   /* lifecycle */

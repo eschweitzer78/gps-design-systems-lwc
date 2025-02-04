@@ -1,9 +1,9 @@
 import { createElement } from "lwc";
-import SfGpsDsAuNswLinkList from "c/sfGpsDsAuNswLinkList";
+import SfGpsDsAuQldLinkList from "c/sfGpsDsAuQldLinkList";
 
-const ELT_TAG = "c-sf-gps-ds-au-nsw-link-list";
+const ELT_TAG = "c-sf-gps-ds-au-qld-link-list";
 
-describe("c-sf-gps-ds-au-nsw-link-list", () => {
+describe("c-sf-gps-ds-au-qld-link-list", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -13,7 +13,7 @@ describe("c-sf-gps-ds-au-nsw-link-list", () => {
 
   it("renders as expected and is accessible", async () => {
     const element = createElement(ELT_TAG, {
-      is: SfGpsDsAuNswLinkList
+      is: SfGpsDsAuQldLinkList
     });
 
     element.links = [
@@ -23,7 +23,7 @@ describe("c-sf-gps-ds-au-nsw-link-list", () => {
 
     document.body.appendChild(element);
 
-    const lass = element.querySelectorAll("li a span:first-child");
+    const lass = element.shadowRoot.querySelectorAll("li a");
     expect(lass.length).toBe(2);
     expect(lass[0].textContent).toBe(element.links[0].text);
 

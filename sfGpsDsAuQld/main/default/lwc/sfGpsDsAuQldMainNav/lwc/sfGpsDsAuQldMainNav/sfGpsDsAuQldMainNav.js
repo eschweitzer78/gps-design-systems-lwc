@@ -1,6 +1,12 @@
 import { LightningElement, api, track, wire } from "lwc";
-import { computeClass, uniqueId, normaliseString } from "c/sfGpsDsHelpers";
+import { uniqueId, normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 import { CurrentPageReference } from "lightning/navigation";
+import {
+  subscribe,
+  unsubscribe,
+  MessageContext
+} from "lightning/messageService";
+import mainNavToggleChannel from "@salesforce/messageChannel/sfGpsDsAuQldMainNavToggle__c";
 import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
 
 const I18N = {
@@ -10,26 +16,68 @@ const I18N = {
   homeLabel: "Home"
 };
 
-const CSTYLE_LIGHT = "light";
-const CSTYLE_DARK = "dark";
-const CSTYLE_DARKALT = "dark-alt";
-const CSTYLE_VALUES = [CSTYLE_LIGHT, CSTYLE_DARK, CSTYLE_DARKALT];
-const CSTYLE_DEFAULT = CSTYLE_DARK;
+const HOME_SHOW_DEFAULT = true;
+
+const CSTYLE_DEFAULT = "dark";
+const CSTYLE_VALUES = {
+  light: "",
+  dark: "qld__main-nav__menu--dark",
+  "dark-alternate": "qld__main-nav__menu--dark-alt"
+};
 
 const STATIC_RESOURCE_ICONS_PATH =
   sfGpsDsAuQldStaticResource + "/assets/img/svg-icons.svg";
 
 export default class SfGpsDsAuQldMainNav extends LightningElement {
-  @api showHomeIcon;
+  static renderMode = "light";
+
+  @api homeUrl;
   @api isActive;
-  megaMenu = true;
+  @track _open;
+
+  /* api: homeShow */
+
+  _homeShow = HOME_SHOW_DEFAULT;
+  _homeShowOriginal = HOME_SHOW_DEFAULT;
+
+  @api
+  get homeShow() {
+    return this._homeShowOriginal;
+  }
+
+  set homeShow(value) {
+    this._homeShowOriginal = value;
+    this._homeShow = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: HOME_SHOW_DEFAULT
+    });
+  }
+
+  /* api: megaMenu */
+
+  _megaMenu;
+  _megaMenuOriginal;
+
+  @api
+  get megaMenu() {
+    return this._megaMenuOriginal;
+  }
+
+  set megaMenu(value) {
+    this._megaMenuOriginal = value;
+    this._megaMenu = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+  }
 
   /* api: cStyle */
 
-  _cstyle = CSTYLE_DEFAULT;
+  _cstyle = CSTYLE_VALUES[CSTYLE_DEFAULT];
   _cstyleOriginal = CSTYLE_DEFAULT;
 
-  @api get cstyle() {
+  @api
+  get cstyle() {
     return this._cstyleOriginal;
   }
 
@@ -37,39 +85,113 @@ export default class SfGpsDsAuQldMainNav extends LightningElement {
     this._cstyleOriginal = value;
     this._cstyle = normaliseString(value, {
       validValues: CSTYLE_VALUES,
-      fallbackValue: CSTYLE_DEFAULT
+      fallbackValue: CSTYLE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
-  /*
-   * navItems
-   * Array of navigation item objects, format { url: '', text: '', subNav: ... }
-   */
+  /* api: navItems, Array of navigation item objects, format { url, text, subNav: ... } */
 
-  _originalNavItems;
   @track _navItems;
+  _navItemsOriginal;
   @track _mapItems;
+
+  @api
+  get navItems() {
+    return this._navItemsOriginal;
+  }
+
+  set navItems(items) {
+    this._navItemsOriginal = items;
+    this.navItemsMapping();
+  }
+
+  _navItemId = uniqueId("sf-gps-ds-au-qld-main-nav-item");
+
+  @wire(MessageContext) _messageContext;
+
+  /* getters */
+
+  get i18n() {
+    return I18N;
+  }
+
+  get computedClassName() {
+    return {
+      "qld__main-nav": true,
+      "qld__main-nav--mega": this._megaMenu
+    };
+  }
+
+  get computedNavContentClassName() {
+    return {
+      "qld__main-nav__content": true,
+      "qld__main-nav__content--open": this._open,
+      "qld__main-nav__content--closed": !this._open
+    };
+  }
+
+  get computedHomeClassName() {
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
+
+    return {
+      "qld__main-nav__item": true,
+      active: this.homeUrl === pathname || this.homeUrl + "/" === pathname
+    };
+  }
+
+  get computedHomeUrl() {
+    return this.homeUrl || "#";
+  }
+
+  get computedHomeIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__home";
+  }
+
+  get computedCloseIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__close";
+  }
+
+  get computedArrowRightIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__arrow-right";
+  }
+
+  get computedChevronUpIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__chevron-up";
+  }
+
+  get computedMainNavMenuClassName() {
+    return {
+      "qld__main-nav__menu": true,
+      [this._cstyle]: this._cstyle
+    };
+  }
+
+  /* methods */
 
   mapSingleItemClasses(item, isActive) {
     return {
-      className:
-        "qld__main-nav__item" + (isActive && !this._megaMenu ? " active" : ""),
-      anchorClassName: computeClass({
+      className: {
+        "qld__main-nav__item": true,
+        active: isActive && !this._megaMenu
+      },
+      anchorClassName: {
         "qld__main-nav__item-link": true,
         "qld__main-nav__item-link--desktop-hide": item.subNav && this.megaMenu,
         "qld__main-nav__item-link--open": isActive
-      }),
-      buttonClassName: computeClass({
+      },
+      buttonClassName: {
         "qld__main-nav__item-toggle": true,
         "qld__accordion--open": isActive,
         "qld__accordion--closed": !isActive
-      }),
-      subNavClassName: computeClass({
+      },
+      subNavClassName: {
         "qld__main-nav__menu-sub": true,
         qld__accordion__body: true,
         "qld__accordion--open": isActive,
         "qld__accordion--closed": !isActive
-      })
+      }
     };
   }
 
@@ -108,59 +230,15 @@ export default class SfGpsDsAuQldMainNav extends LightningElement {
     });
   }
 
-  @api get navItems() {
-    return this._originalNavItems;
-  }
-
-  set navItems(items) {
-    this._originalNavItems = items;
-    this.navItemsMapping();
-  }
-
-  _navItemId = uniqueId("sf-gps-ds-au-qld-main-nav-item");
-
   navItemsMapping() {
     let map = {};
-    this._navItems = this._originalNavItems
-      ? this.mapItems(this._navItemId, 0, map, this._originalNavItems)
+    this._navItems = this._navItemsOriginal
+      ? this.mapItems(this._navItemId, 0, map, this._navItemsOriginal)
       : null;
     this._mapItems = map;
   }
 
-  /* getters */
-
-  get i18n() {
-    return I18N;
-  }
-
-  get computedHomeIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__home";
-  }
-
-  get computedCloseIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__close";
-  }
-
-  get computedArrowRightIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__arrow-right";
-  }
-
-  get computedChevronUpIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__chevron-up";
-  }
-
-  get computedMainNavMenuClassName() {
-    return computeClass({
-      "qld__main-nav__menu": true,
-      "qld__main-nav__menu--dark": this._cstyle === CSTYLE_DARK,
-      "qld__main-nav__menu--dark-alt": this._cstyle === CSTYLE_DARKALT
-    });
-  }
-
-  /* methods */
-
   @api close() {
-    console.log("> close");
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isActive = false;
 
@@ -173,7 +251,6 @@ export default class SfGpsDsAuQldMainNav extends LightningElement {
 
       Object.assign(item, this.mapSingleItemClasses(item, false));
     }
-    //this._navItems = [...this._navItems];
   }
 
   /* Event management */
@@ -209,15 +286,6 @@ export default class SfGpsDsAuQldMainNav extends LightningElement {
         item.isActive = false;
       }
 
-      //item.className = item.isActive ? "active" : "";
-      /*
-      item.className = item.isActive && !this._megaMenu ? "active" : "";
-      item.anchorClassName = item.isActive && this._megaMenu ? "active" : "";
-      item.subNavClassName = item.isActive
-        ? "nsw-main-nav__sub-nav active"
-        : "nsw-main-nav__sub-nav";
-        */
-
       Object.assign(item, this.mapSingleItemClasses(item, item.isActive));
     }
 
@@ -233,6 +301,16 @@ export default class SfGpsDsAuQldMainNav extends LightningElement {
     }
   }
 
+  /* methods */
+
+  handleCloseNav() {
+    this._open = false;
+  }
+
+  handleMainNavToggle() {
+    this._open = !this._open;
+  }
+
   /* wire: handlePageReference */
 
   _pageReference;
@@ -246,5 +324,26 @@ export default class SfGpsDsAuQldMainNav extends LightningElement {
     }
 
     this._pageReference = pageReference;
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    this.classList.add("js");
+
+    if (!this._subscription) {
+      this._subscription = subscribe(
+        this._messageContext,
+        mainNavToggleChannel,
+        (message) => this.handleMainNavToggle(message)
+      );
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._subscription) {
+      unsubscribe(this._subscription);
+      this._subscription = null;
+    }
   }
 }

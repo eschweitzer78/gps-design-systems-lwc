@@ -13,7 +13,7 @@ const I18N = {
   errorAriaLabel: "Error: "
 };
 
-let SfGpsAuQldStatusHelperMixin = (base) =>
+const SfGpsAuQldStatusHelperMixin = (base) =>
   class extends base {
     get i18n() {
       return I18N;

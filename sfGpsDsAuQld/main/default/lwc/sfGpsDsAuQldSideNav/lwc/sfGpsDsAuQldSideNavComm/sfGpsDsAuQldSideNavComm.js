@@ -3,6 +3,10 @@ import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class extends SfGpsDsNavigation {
+  @api className;
+
+  /* api: mode */
+
   @api
   get mode() {
     return super.mode;
@@ -11,6 +15,8 @@ export default class extends SfGpsDsNavigation {
   set mode(value) {
     super.mode = value;
   }
+
+  /* api: navigationDevName */
 
   @api
   get navigationDevName() {
@@ -21,6 +27,8 @@ export default class extends SfGpsDsNavigation {
     super.navigationDevName = value;
   }
 
+  /* api: ipName */
+
   @api
   get ipName() {
     return super.ipName;
@@ -29,6 +37,8 @@ export default class extends SfGpsDsNavigation {
   set ipName(value) {
     super.ipName = value;
   }
+
+  /* api: inputJSON */
 
   @api
   get inputJSON() {
@@ -39,6 +49,8 @@ export default class extends SfGpsDsNavigation {
     super.inputJSON = value;
   }
 
+  /* api: optionsJSON */
+
   @api
   get optionsJSON() {
     return super.optionsJSON;
@@ -48,19 +60,18 @@ export default class extends SfGpsDsNavigation {
     super.optionsJSON = value;
   }
 
-  /*
-   * title and link
-   */
+  /* api: title and link */
 
   @track _titleLink; // combined link into title
-  _originalTitleLink;
+  _titleLinkOriginal;
 
-  @api get titleLink() {
-    return this._originalTitleLink;
+  @api
+  get titleLink() {
+    return this._titleLinkOriginal;
   }
 
   set titleLink(markdown) {
-    this._originalTitleLink = markdown;
+    this._titleLinkOriginal = markdown;
 
     try {
       this._titleLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
@@ -69,16 +80,20 @@ export default class extends SfGpsDsNavigation {
     }
   }
 
-  //
-
-  @api className;
-
-  get _title() {
+  get computedTitle() {
     return this._titleLink?.text;
   }
 
-  get _url() {
+  get computedUrl() {
     return this._titleLink?.url;
+  }
+
+  /* event management */
+
+  handleNavigate(event) {
+    if (this._map && event.detail) {
+      this.refs.navsvc.navigateNavMenu(this._map[event.detail]);
+    }
   }
 
   /* lifecycle */
@@ -86,15 +101,5 @@ export default class extends SfGpsDsNavigation {
   connectedCallback() {
     super.connectedCallback();
     this.classList.add("qld-scope");
-  }
-
-  /* events */
-
-  handleNavigate(event) {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
-
-    if (nav && this._map && event.detail) {
-      nav.navigateNavMenu(this._map[event.detail]);
-    }
   }
 }

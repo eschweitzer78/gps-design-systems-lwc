@@ -1,5 +1,5 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpersOs";
+import { isArray } from "c/sfGpsDsHelpersOs";
 import OmniscriptPubSub from "omnistudio/pubsub";
 import OmniscriptSalesforceUtils from "omnistudio/salesforceUtils";
 import StatusHelperMixin from "c/sfGpsDsAuQldStatusHelperMixinOsN";
@@ -20,6 +20,7 @@ export default class extends StatusHelperMixin(LightningElement) {
   @api maxCount;
   @api sortField;
   @api fieldLevelHelp;
+  @api fieldLevelHelpPosition; // disregarded
 
   @track isError = false;
   @track errorMessage;
@@ -44,7 +45,7 @@ export default class extends StatusHelperMixin(LightningElement) {
           case "string":
             if (val.indexOf("]") !== -1) {
               let parsedValue = JSON.parse(val);
-              if (Array.isArray(parsedValue)) {
+              if (isArray(parsedValue)) {
                 parsedValue.map((item) => {
                   return typeof item === "string" ? item : String(item);
                 });
@@ -75,7 +76,7 @@ export default class extends StatusHelperMixin(LightningElement) {
       ) {
         this._value = t(value);
       } else {
-        if (Array.isArray(value)) {
+        if (isArray(value)) {
           this._value = value.map((e) => {
             return typeof e === "string" ? e : String(e);
           });
@@ -167,11 +168,11 @@ export default class extends StatusHelperMixin(LightningElement) {
   /* computed */
 
   get computedSelectClassName() {
-    return computeClass({
+    return {
       qld__select: true,
       "qld__text-input--block": true,
       "qld__text-input--error": this.isError
-    });
+    };
   }
 
   get computedDisabled() {
@@ -179,10 +180,10 @@ export default class extends StatusHelperMixin(LightningElement) {
   }
 
   get computedAriaDescribedBy() {
-    return computeClass({
+    return {
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.isError
-    });
+    };
   }
 
   /* methods */

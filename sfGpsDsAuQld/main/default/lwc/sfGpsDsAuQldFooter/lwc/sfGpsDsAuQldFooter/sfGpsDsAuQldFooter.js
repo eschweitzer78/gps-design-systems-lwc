@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
 const I18N = {
   navAriaLabel: "footer",
@@ -8,11 +8,12 @@ const I18N = {
   copyrightStatement: "Copyright statement"
 };
 
-const CSTYLE_LIGHT = "light";
-const CSTYLE_DARK = "dark";
-const CSTYLE_DARKALT = "dark-alt";
-const CSTYLE_VALUES = [CSTYLE_LIGHT, CSTYLE_DARK, CSTYLE_DARKALT];
-const CSTYLE_DEFAULT = CSTYLE_DARK;
+const CSTYLE_DEFAULT = "dark";
+const CSTYLE_VALUES = {
+  light: "",
+  dark: "qld__footer--dark",
+  "dark-alternate": "qld__footer--dark-alt"
+};
 
 export default class extends LightningElement {
   @api title;
@@ -35,15 +36,15 @@ export default class extends LightningElement {
 
   @api copyrightLinkText;
   @api copyrightLinkUrl;
-
   @api className;
 
   /* api: cstyle */
 
-  _cstyle = CSTYLE_DEFAULT;
+  _cstyle = CSTYLE_VALUES[CSTYLE_DEFAULT];
   _cstyleOriginal = CSTYLE_DEFAULT;
 
-  @api get cstyle() {
+  @api
+  get cstyle() {
     return this._cstyleOriginal;
   }
 
@@ -51,7 +52,8 @@ export default class extends LightningElement {
     this._cstyleOriginal = value;
     this._cstyle = normaliseString(value, {
       validValues: CSTYLE_VALUES,
-      fallbackValue: CSTYLE_DEFAULT
+      fallbackValue: CSTYLE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
@@ -62,11 +64,10 @@ export default class extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       qld__footer: true,
-      "qld__footer--dark": this.cstyle === CSTYLE_DARK,
-      "qld__footer--dark-alt": this.cstyle === CSTYLE_DARKALT,
+      [this._cstyle]: this._cstyle,
       [this.className]: this.className
-    });
+    };
   }
 }

@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
 const MODE_DEFAULT = "default";
 const MODE_VIEWALL = "view-all";
@@ -15,7 +15,8 @@ export default class extends LightningElement {
   _mode;
   _modeOriginal;
 
-  @api get mode() {
+  @api
+  get mode() {
     return this._modeOriginal;
   }
 
@@ -28,10 +29,10 @@ export default class extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "qld__cta-link": true,
       "qld__cta-link--view-all": this._mode === MODE_VIEWALL,
       [this.className]: this.className
-    });
+    };
   }
 }

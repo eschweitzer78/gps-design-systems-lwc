@@ -8,12 +8,12 @@
   <c-sf-gps-ds-au-qld-in-page-alert
     lwc:else
     type={type}
-    title={title}
+    heading={heading}
     class-name={className}
   >
-    <div lwc:if={copy} lwc:ref="copy" lwc:dom="manual"></div>
+    <div lwc:if={body} lwc:ref="body" lwc:dom="manual"></div>
     <template lwc:else>
-      <slot name="Copy"></slot>
+      <slot name="Body"></slot>
     </template>
   </c-sf-gps-ds-au-qld-in-page-alert>
 </template>

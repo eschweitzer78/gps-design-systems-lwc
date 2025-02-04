@@ -1,5 +1,10 @@
 import { api } from "lwc";
-import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import {
+  replaceInnerHtml,
+  isArray,
+  isObject,
+  isString
+} from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
@@ -10,19 +15,30 @@ import mdEngine from "c/sfGpsDsMarkdown";
  */
 export default class extends SfGpsDsLwc {
   @api mode;
-  @api cstyle;
-  @api title;
-  @api image;
+  @api headingPrimary;
+  @api headingSecondary;
+  @api headingBackgroundDisplay;
+  @api heroImage;
+  @api heroImageResponsiveTreatment;
+  @api heroImageAlignment;
+  @api heroImagePadding;
+  @api backgroundType;
+  @api backgroundColour;
+  @api backgroundImageSm;
+  @api backgroundImageLg;
+  @api backgroundImageAlignment;
+  @api backgroundMinHeight;
+  @api ctaType;
   @api className;
 
   /* api: items */
 
-  _items;
   _itemsArray = [];
+  _itemsOriginal;
 
   @api set breadcrumbsItems(markdown) {
-    this._items = markdown;
     try {
+      this._itemsOriginal = markdown;
       this._itemsArray = mdEngine.extractLinks(markdown);
     } catch (e) {
       this.addError("IT-MD", "Issue when parsing Items markdown");
@@ -30,73 +46,115 @@ export default class extends SfGpsDsLwc {
   }
 
   get breadcrumbsItems() {
-    return this._items;
+    return this._itemsOriginal;
   }
 
   /* api: abstract */
 
-  _abstractOriginal;
   _abstractHtml;
+  _abstractOriginal;
 
-  @api get abstract() {
+  @api
+  get abstract() {
     return this._abstractOriginal;
   }
 
   set abstract(markdown) {
     this._abstractOriginal = markdown;
     try {
-      if (markdown) {
-        this._abstractHtml = mdEngine.renderEscaped(markdown);
-      } else {
-        this._abstractHtml = null;
-      }
+      this._abstractHtml = markdown ? mdEngine.renderEscaped(markdown) : null;
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Abstract markdown");
     }
   }
 
-  /* api: primaryAction */
+  /* api: buttonPrimary */
 
-  _primaryAction;
-  _primaryActionOriginal;
+  _buttonPrimary;
+  _buttonPrimaryOriginal;
 
-  @api get primaryAction() {
-    return this._primaryActionOriginal;
+  @api
+  get buttonPrimary() {
+    return this._buttonPrimaryOriginal;
   }
 
-  set primaryAction(markdown) {
-    this._primaryActionOriginal = markdown;
+  set buttonPrimary(markdown) {
+    this._buttonPrimaryOriginal = markdown;
 
     try {
-      this._primaryAction = markdown
+      this._buttonPrimary = markdown
         ? mdEngine.extractFirstLink(markdown)
         : null;
     } catch (e) {
-      this.addError("HL-MD", "Issue when parsing Primary Action markdown");
+      this.addError("HL-MD", "Issue when parsing Primary button markdown");
     }
   }
 
-  /*
-   * api: secondaryAction
-   */
+  /* api: buttonSecondary */
 
-  _secondaryAction;
-  _secondaryActionOriginal;
+  _buttonSecondary;
+  _buttonSecondaryOriginal;
 
-  @api get secondaryAction() {
-    return this._secondaryActionOriginal;
+  @api
+  get buttonSecondary() {
+    return this._buttonSecondaryOriginal;
   }
 
-  set secondaryAction(markdown) {
-    this._secondaryActionOriginal = markdown;
+  set buttonSecondary(markdown) {
+    this._buttonSecondaryOriginal = markdown;
 
     try {
-      this._secondaryAction = markdown
+      this._buttonSecondary = markdown
         ? mdEngine.extractFirstLink(markdown)
         : null;
     } catch (e) {
-      this.addError("HL-MD", "Issue when parsing Secondary Action markdown");
+      this.addError("HL-MD", "Issue when parsing Button secondary markdown");
     }
+  }
+
+  /* api: ctaConfig */
+
+  _ctaConfig;
+  _ctaConfigOriginal;
+
+  @api
+  get ctaConfig() {
+    return this._ctaConfigOriginal;
+  }
+
+  set ctaConfig(value) {
+    this._ctaConfigOriginal = value;
+
+    if (isString(value)) {
+      try {
+        value = JSON.parse(value);
+      } catch (e) {
+        this.addError(
+          "CU-JP",
+          "Issue when parsing Call to Action config JSON value"
+        );
+      }
+    }
+
+    if (isArray(value) || isObject(value)) {
+      this._ctaConfig = value;
+    } else {
+      this._ctaConfig = null;
+    }
+  }
+
+  /* computed */
+
+  get computedLinkList() {
+    return isArray(this._ctaConfig) ? this.ctaConfig : null;
+  }
+
+  get computedIconTiles() {
+    return isArray(this._ctaConfig) ? this.ctaConfig : this._ctaConfig?.tiles;
+  }
+
+  get computedIconTileBackground() {
+    return isArray(this._ctaConfig) ? null : this._ctaConfig?.background;
   }
 
   /* lifecycle */

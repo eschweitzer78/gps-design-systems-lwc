@@ -23,7 +23,7 @@
 
         <!-- Section 3: Section links (Custom secondary nav items) lwc:if={navHeading}  -->
         <div lwc:if={navHeading} class="col-xs-12 col-lg-2 qld__footer__column">
-          <nav class="qld__footer__navigation" aria-label={navAriaLabel}>
+          <nav class="qld__footer__navigation" aria-label={i18n.navAriaLabel}>
             <h4 class="sr-only">{navHeading}</h4>
             <slot name="FooterNav"></slot>
           </nav>
@@ -34,7 +34,7 @@
           lwc:if={linksHeading}
           class="col-xs-12 col-lg-2 qld__footer__column"
         >
-          <nav class="qld__footer__navigation" aria-label={linksAriaLabel}>
+          <nav class="qld__footer__navigation" aria-label={i18n.linksAriaLabel}>
             <h4 class="sr-only">{linksHeading}</h4>
             <slot name="FooterLinks"></slot>
           </nav>

@@ -1,19 +1,24 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
 const MODE_DEFAULT = "default";
-const MODE_LANDSCAPE = "landscape";
-const MODE_MINIMAL = "minimal";
-const MODE_VALUES = [MODE_DEFAULT, MODE_LANDSCAPE, MODE_MINIMAL];
+const MODE_VALUES = {
+  default: "",
+  landscape: "qld__loading_spinner--landscape",
+  minimal: "qld__loading_spinner--icon_only"
+};
 
 export default class extends LightningElement {
   @api label = "Loading...";
   @api className;
 
-  _mode = MODE_DEFAULT;
+  /* api: mode */
+
+  _mode = MODE_VALUES[MODE_DEFAULT];
   _modeOriginal = MODE_DEFAULT;
 
-  @api get mode() {
+  @api
+  get mode() {
     return this._modeOriginal;
   }
 
@@ -21,16 +26,18 @@ export default class extends LightningElement {
     this._modeOriginal = value;
     this._mode = normaliseString(value, {
       validValues: MODE_VALUES,
-      fallbackValue: MODE_DEFAULT
+      fallbackValue: MODE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       qld__loading_spinner: true,
-      "qld__loading_spinner--landscape": this.mode === MODE_LANDSCAPE,
-      "qld__loading_spinner--icon_only": this.mode === MODE_MINIMAL,
+      [this._mode]: this._mode,
       [this.className]: this.className
-    });
+    };
   }
 }

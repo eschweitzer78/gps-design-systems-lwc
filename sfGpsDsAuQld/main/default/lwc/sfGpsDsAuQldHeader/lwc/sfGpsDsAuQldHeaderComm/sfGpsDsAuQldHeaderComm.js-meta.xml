@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>61.0</apiVersion>
+  <apiVersion>62.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>QLD DS Header</masterLabel>
   <targets>
@@ -16,7 +16,7 @@
         description="Colour theme style used for rendering the pre-header."
         required="true"
         default="dark"
-        datasource="light,dark,dark-alt"
+        datasource="light,dark,dark-alternate"
       />
       <property
         name="preHeaderLink"
@@ -82,7 +82,13 @@
         description="Label used for the menu button."
         default="Menu"
       />
-
+      <property
+        name="contentId"
+        type="String"
+        label="Content Id"
+        description="HTML Id of the content section. Make certain it is unique on the page."
+        default="content"
+      />
       <property
         name="mainNavId"
         type="String"
@@ -97,7 +103,7 @@
         description="Colour theme style used for rendering the pre-header."
         required="true"
         default="light"
-        datasource="light,dark,dark-alt"
+        datasource="light,dark,dark-alternate"
       />
       <property
         name="headerUrl"
@@ -118,14 +124,14 @@
       <property
         name="siteLogoSecondary"
         type="String"
-        label="Secondary site logo"
+        label="Site logo (secondary)"
         description="URL of the image for the secondary site logo - this will hide the title and subtitle, and he site title is used as alternative text. Leave blank if no secondary logo is desired."
         default=""
       />
       <property
         name="siteLogoSecondaryMobile"
         type="String"
-        label="Secondary site logo (mobile)"
+        label="Site logo (secondary mobile)"
         description="URL of the image for the secondary site logo on mobile. If left blank, the non-mobile logo will be used on mobile too."
         default=""
       />

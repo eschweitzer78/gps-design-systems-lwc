@@ -1,5 +1,6 @@
+<!-- sldsValidatorIgnore -->
 <template>
-  <section class={computedClassName}>
+  <div class={computedClassName}>
     <div class="container-fluid">
       <div class="qld__global-alert__main">
         <div class="qld__global-alert__icon">
@@ -13,13 +14,13 @@
         </div>
 
         <div class="qld__global-alert__content">
-          <div lwc:if={copy} class="qld__global-alert__message">
-            <strong>{title}</strong> {copy}
+          <div class="qld__global-alert__message">
+            <strong>{title}</strong> {content}
           </div>
 
           <div class="qld__global-alert__action">
-            <a href={ctaHref} onclick={handleCtaClick}>
-              <span>{ctaText}</span>
+            <a href={linkUrl} onclick={handleLinkClick}>
+              <span>{linkText}</span>
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -32,7 +33,7 @@
           </div>
         </div>
 
-        <div class="qld__global-alert__close">
+        <div lwc:if={_dismissible} class="qld__global-alert__close">
           <button aria-label={i18n.closeAlert} onclick={handleCloseClick}>
             <svg
               aria-hidden="true"
@@ -46,5 +47,5 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>

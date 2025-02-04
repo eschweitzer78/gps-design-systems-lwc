@@ -1,9 +1,5 @@
 import { LightningElement, api } from "lwc";
-import {
-  computeClass,
-  normaliseString,
-  normaliseBoolean
-} from "c/sfGpsDsHelpers";
+import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const TYPE_DEFAULT = "default";
 const TYPE_ICON = "icon";
@@ -46,7 +42,8 @@ export default class extends LightningElement {
   _type = TYPE_DEFAULT;
   _typeOriginal = TYPE_DEFAULT;
 
-  @api get type() {
+  @api
+  get type() {
     return this._typeOriginal;
   }
 
@@ -63,7 +60,8 @@ export default class extends LightningElement {
   _iconAlign = ICONALIGN_DEFAULT;
   _iconAlignOriginal = ICONALIGN_DEFAULT;
 
-  @api get iconAlign() {
+  @api
+  get iconAlign() {
     return this._iconAlignOriginal;
   }
 
@@ -80,7 +78,8 @@ export default class extends LightningElement {
   _headingLevel = HEADINGLEVEL_DEFAULT;
   _headingLevelOriginal = HEADINGLEVEL_DEFAULT;
 
-  @api get headingLevel() {
+  @api
+  get headingLevel() {
     return this._headingLevelOriginal;
   }
 
@@ -97,7 +96,8 @@ export default class extends LightningElement {
   _displayFooter = DISPLAYFOOTER_DEFAULT;
   _displayFooterOriginal = DISPLAYFOOTER_DEFAULT;
 
-  @api get displayFooter() {
+  @api
+  get displayFooter() {
     return this._displayFooterOriginal;
   }
 
@@ -112,7 +112,7 @@ export default class extends LightningElement {
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       qld__card: true,
       "qld__card--icon": this._type === TYPE_ICON,
       "qld__card--image": this._type === TYPE_IMAGE,
@@ -122,7 +122,7 @@ export default class extends LightningElement {
       qld__card__action: this.nameUrl,
       "qld__card__multi-action": this.actions ? this.actions.length : false,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedIsIconCard() {
@@ -160,6 +160,7 @@ export default class extends LightningElement {
   get computedHasTags() {
     return this.tags?.length;
   }
+
   get computedHasActions() {
     return this.actions?.length;
   }

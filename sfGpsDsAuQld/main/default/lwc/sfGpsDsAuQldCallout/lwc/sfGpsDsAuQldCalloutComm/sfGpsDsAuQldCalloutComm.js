@@ -22,16 +22,17 @@ export default class extends SfGpsDsLwc {
 
   /* api: content */
 
-  _content;
   _contentHtml;
+  _contentOriginal;
 
-  @api get content() {
-    return this._content;
+  @api
+  get content() {
+    return this._contentOriginal;
   }
 
   set content(markdown) {
-    this._content = markdown;
     try {
+      this._contentOriginal = markdown;
       this._contentHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
@@ -46,7 +47,7 @@ export default class extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    const md = this.refs?.markdown;
+    const md = this.refs.markdown;
 
     if (this._content && md) {
       replaceInnerHtml(md, this._contentHtml || "");

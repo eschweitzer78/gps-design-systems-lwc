@@ -5,9 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
+import { isString, toArray } from "c/sfGpsDsHelpers";
+
+const LINKS_DEFAULT = [];
 
 export default class SfGpsDsAuNswLinkListComm extends SfGpsDsLwc {
   @api listMode;
@@ -18,55 +21,49 @@ export default class SfGpsDsAuNswLinkListComm extends SfGpsDsLwc {
   @api iconClassName;
   @api className;
 
-  /*
-   * links
-   */
+  /* api: links */
 
-  @track _links;
-  _originalLinks;
+  _links = LINKS_DEFAULT;
+  _linksOriginal = LINKS_DEFAULT;
 
-  @api get links() {
-    return this._originalLinks;
+  @api
+  get links() {
+    return this._linksOriginal;
   }
 
   set links(value) {
-    this._originalLinks = value;
+    this._linksOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       try {
-        value = JSON.parse(value);
-        if (!Array.isArray(value)) {
-          value = [value];
-        }
+        value = toArray(JSON.parse(value));
       } catch (e) {
-        value = [];
+        value = LINKS_DEFAULT;
         this.addError(
           "JS-LI",
           "The links attribute must be in JSON array format of text, url and icon."
         );
       }
     } else {
-      value = [];
+      value = LINKS_DEFAULT;
     }
 
     this._links = value;
   }
 
-  /*
-   * api: cvaLink
-   */
+  /* api: cvaLink */
 
   _cvaLink;
   _cvaLinkOriginal;
 
-  @api get cvaLink() {
+  @api
+  get cvaLink() {
     return this._cvaLinkOriginal;
   }
 
   set cvaLink(markdown) {
-    this._cvaLinkOriginal = markdown;
-
     try {
+      this._cvaLinkOriginal = markdown;
       this._cvaLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError(
@@ -75,6 +72,8 @@ export default class SfGpsDsAuNswLinkListComm extends SfGpsDsLwc {
       );
     }
   }
+
+  /* computed */
 
   get _cvaText() {
     return this._cvaLink?.text;

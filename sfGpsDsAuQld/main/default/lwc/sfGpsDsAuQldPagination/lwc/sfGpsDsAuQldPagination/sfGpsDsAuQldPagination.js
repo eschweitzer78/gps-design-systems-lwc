@@ -1,30 +1,30 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
   @api lastPage;
   @api activePage;
-
   @api ariaLabel = "Pagination";
   @api className;
 
-  get firstPage() {
+  /* computed */
+
+  get computedFirstPage() {
     return 1;
   }
 
-  get prevPage() {
+  get computedPrevPage() {
     return this.activePage - 1;
   }
 
-  get nextPage() {
+  get computedNextPage() {
     return this.activePage + 1;
   }
 
-  get showPrevious() {
+  get computedShowPrevious() {
     return this.activePage > 1;
   }
 
-  get showFirstPage() {
+  get computedShowFirstPage() {
     return this.activePage > 2;
   }
 
@@ -32,59 +32,59 @@ export default class extends LightningElement {
     return this.activePage > 3;
   }
 
-  get showPrevPage() {
+  get computedShowPrevPage() {
     return this.activePage > 1;
   }
 
-  get showActivePage() {
+  get computedShowActivePage() {
     return this.lastPage > 0;
   }
 
-  get showNextPage() {
+  get computedShowNextPage() {
     return this.activePage < this.lastPage;
   }
 
-  get showNextEllipsis() {
+  get computedShowNextEllipsis() {
     return this.activePage < this.lastPage - 2;
   }
 
-  get showLastPage() {
+  get computedShowLastPage() {
     return this.activePage < this.lastPage - 1;
   }
 
-  get showNext() {
+  get computedShowNext() {
     return this.activePage < this.lastPage;
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "qld__search-pagination": true,
       "qld__search-pagination--outline": true,
       "hidden-print": true,
       [this.className]: this.className
-    });
+    };
   }
 
-  get previousDisabled() {
-    return !this.showPrevious;
+  get computedPreviousDisabled() {
+    return !this.computedShowPrevious;
   }
 
   get computedPrevPageClassName() {
-    return computeClass({
+    return {
       "qld__search-pagination_link": true,
-      disabled: this.previousDisabled
-    });
+      disabled: this.computedPreviousDisabled
+    };
   }
 
-  get nextDisabled() {
-    return !this.showNext;
+  get computedNextDisabled() {
+    return !this.computedShowNext;
   }
 
   get computedNextPageClassName() {
-    return computeClass({
+    return {
       "qld__search-pagination_link": true,
-      disabled: this.nextDisabled
-    });
+      disabled: this.computedNextDisabled
+    };
   }
 
   /* events */

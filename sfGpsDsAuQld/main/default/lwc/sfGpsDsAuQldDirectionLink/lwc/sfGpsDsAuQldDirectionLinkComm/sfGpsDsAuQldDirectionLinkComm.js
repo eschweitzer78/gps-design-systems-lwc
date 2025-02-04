@@ -17,7 +17,8 @@ export default class extends SfGpsDsLwc {
   _link;
   _linkOriginal;
 
-  @api get link() {
+  @api
+  get link() {
     return this._linkOriginal;
   }
 

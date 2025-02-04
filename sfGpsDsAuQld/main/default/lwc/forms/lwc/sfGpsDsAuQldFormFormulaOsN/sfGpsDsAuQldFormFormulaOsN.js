@@ -15,6 +15,8 @@ import SfGpsDsFormFormulaOsN from "c/sfGpsDsFormFormulaOsN";
 import tmpl from "./sfGpsDsAuQldFormFormulaOsN.html";
 
 export default class extends SfGpsDsFormFormulaOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

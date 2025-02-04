@@ -5,21 +5,31 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmnistudioTextarea from "c/sfGpsDsOmniTextareaOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 import StatusHelperMixin from "c/sfGpsDsAuQldStatusHelperMixinOsN";
 import tmpl from "./sfGpsDsAuQldTextareaOsN.html";
 
 export default class extends StatusHelperMixin(OmnistudioTextarea) {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedTextAreaClassName() {
-    return computeClass({
+    return {
       "qld__text-input": true,
       "qld__text-input--block": true,
       "qld__text-input--error": this.sfGpsDsIsError
-    });
+    };
+  }
+
+  /* methods */
+
+  @api setValue(value) {
+    super.setValue(value);
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

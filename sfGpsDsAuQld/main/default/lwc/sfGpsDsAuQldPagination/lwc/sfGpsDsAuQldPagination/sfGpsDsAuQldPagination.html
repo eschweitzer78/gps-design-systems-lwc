@@ -6,7 +6,7 @@
       <li class="prev">
         <a
           class={computedPrevPageClassName}
-          aria-disabled={previousDisabled}
+          aria-disabled={computedPreviousDisabled}
           aria-label="Previous page of results"
           href="#previous"
           rel="prev"
@@ -30,13 +30,13 @@
         </a>
       </li>
 
-      <li lwc:if={showFirstPage} class="num first">
+      <li lwc:if={computedShowFirstPage} class="num first">
         <a
           href="#first-page"
           class="qld__search-pagination_link"
           onclick={handleFirstPageClick}
         >
-          {firstPage}
+          {computedFirstPage}
         </a>
       </li>
 
@@ -57,33 +57,33 @@
         </svg>
       </li>
 
-      <li lwc:if={showPrevPage} class="num">
+      <li lwc:if={computedShowPrevPage} class="num">
         <a
           href="#prev-page"
           class="qld__search-pagination_link"
           onclick={handlePreviousPageClick}
         >
-          {prevPage}
+          {computedPrevPage}
         </a>
       </li>
 
-      <li lwc:if={showActivePage} class="num active">
+      <li lwc:if={computedShowActivePage} class="num active">
         <a href="#current" class="qld__search-pagination_link">
           {activePage}
         </a>
       </li>
 
-      <li lwc:if={showNextPage} class="num">
+      <li lwc:if={computedShowNextPage} class="num">
         <a
           href="#next-page"
           class="qld__search-pagination_link"
           onclick={handleNextPageClick}
         >
-          {nextPage}
+          {computedNextPage}
         </a>
       </li>
 
-      <li lwc:if={showNextEllipsis} class="ellipsis">
+      <li lwc:if={computedShowNextEllipsis} class="ellipsis">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512"
@@ -100,7 +100,7 @@
         </svg>
       </li>
 
-      <li lwc:if={showLastPage} class="num last">
+      <li lwc:if={computedShowLastPage} class="num last">
         <a
           href="#last-page"
           class="qld__search-pagination_link"
@@ -113,7 +113,7 @@
       <li class="next">
         <a
           class={computedNextPageClassName}
-          aria-disabled={nextDisabled}
+          aria-disabled={computedNextDisabled}
           href="#next"
           rel="next"
           onclick={handleNextPageClick}

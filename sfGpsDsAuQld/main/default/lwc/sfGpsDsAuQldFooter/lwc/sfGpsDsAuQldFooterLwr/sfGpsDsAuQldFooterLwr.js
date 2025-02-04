@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2024, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -30,26 +30,66 @@ export default class extends SfGpsDsLwc {
   @api logoUrl;
   @api className;
 
-  /*
-   * api: logo
-   */
+  /* api: logo */
 
   _logo;
   _logoOriginal;
 
-  @api get logo() {
+  @api
+  get logo() {
     return this._logoOriginal;
   }
 
   set logo(markdown) {
-    this._logoOriginal = markdown;
-
     try {
+      this._logoOriginal = markdown;
       this._logo = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Logo markdown");
     }
   }
+
+  /* api: copyrightMention */
+
+  _copyrightMentionHtml;
+  _copyrightMentionOriginal;
+
+  @api
+  get copyrightMention() {
+    return this._copyrightMentionOriginal;
+  }
+
+  set copyrightMention(markdown) {
+    try {
+      this._copyrightMentionOriginal = markdown;
+      this._copyrightMentionHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
+    } catch (e) {
+      this.addError("CM-MD", "Issue when parsing Copyright mention markdown");
+    }
+  }
+
+  /* api: copyrightLink */
+
+  _copyrightLink;
+  _copyrightLinkOriginal;
+
+  @api
+  get copyrightLink() {
+    return this._copyrightLinkOriginal;
+  }
+
+  set copyrightLink(markdown) {
+    try {
+      this._copyrightLinkOriginal = markdown;
+      this._copyrightLink = markdown
+        ? mdEngine.extractFirstLink(markdown)
+        : null;
+    } catch (e) {
+      this.addError("HL-MD", "Issue when parsing Copyright Link markdown");
+    }
+  }
+
+  /* computed */
 
   get computedLogoUrl() {
     return this._logo?.url;
@@ -57,48 +97,6 @@ export default class extends SfGpsDsLwc {
 
   get computedLogoText() {
     return this._logo?.text;
-  }
-
-  /* api: copyrightMention */
-
-  _copyrightMentionHtml;
-  _copyrightMention;
-
-  @api get copyrightMention() {
-    return this._copyrightMention;
-  }
-
-  set copyrightMention(markdown) {
-    this._copyrightMention = markdown;
-
-    try {
-      this._copyrightMentionHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
-    } catch (e) {
-      this.addError("CM-MD", "Issue when parsing Copyright mention markdown");
-    }
-  }
-
-  /*
-   * api: copyrightLink
-   */
-
-  _copyrightLink;
-  _copyrightLinkOriginal;
-
-  @api get copyrightLink() {
-    return this._copyrightLinkOriginal;
-  }
-
-  set copyrightLink(markdown) {
-    this._copyrightLinkOriginal = markdown;
-
-    try {
-      this._copyrightLink = markdown
-        ? mdEngine.extractFirstLink(markdown)
-        : null;
-    } catch (e) {
-      this.addError("HL-MD", "Issue when parsing Copyright Link markdown");
-    }
   }
 
   get computedCopyrightLinkUrl() {
