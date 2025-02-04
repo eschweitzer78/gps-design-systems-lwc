@@ -9,6 +9,8 @@ import SfGpsDsFormMultiselectOsN from "c/sfGpsDsFormMultiselectOsN";
 import tmpl from "./sfGpsDsFrGovFormMultiselectOsN.html";
 
 export default class extends SfGpsDsFormMultiselectOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

@@ -17,6 +17,9 @@ import tmpl from "./sfGpsDsFrGovTextareaOsN.html";
 const CHAR_LIMIT_REMAINING_TMPL = "{charRemaining} caractères restants";
 const CHAR_LIMIT_CHARACTERS_TMPL = "{charCount} caractères";
 
+const SHOW_CHARACTER_COUNT_DEFAULT = true;
+const SHOW_CHARACTER_COUNT_FALLBACK = false;
+
 export default class extends OmnistudioTextarea {
   @api characterLimitRemainingTemplate = CHAR_LIMIT_REMAINING_TMPL;
 
@@ -34,10 +37,13 @@ export default class extends OmnistudioTextarea {
       : this.characterLimitCharactersTemplate;
   }
 
-  _showCharacterCount = true;
-  _showCharacterCountOriginal;
+  /* api: showCharacterCount */
 
-  @api get showCharacterCount() {
+  _showCharacterCount = SHOW_CHARACTER_COUNT_DEFAULT;
+  _showCharacterCountOriginal = SHOW_CHARACTER_COUNT_DEFAULT;
+
+  @api
+  get showCharacterCount() {
     return this._showCharacterCountOriginal;
   }
 
@@ -45,34 +51,32 @@ export default class extends OmnistudioTextarea {
     this._showCharacterCountOriginal = value;
     this._showCharacterCount = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: SHOW_CHARACTER_COUNT_FALLBACK
     });
   }
 
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "fr-input-group": true,
       "fr-input-group--error": this.sfGpsDsIsError,
       "fr-input-group--disabled":
         this.readOnly || (this.isInput && this.readOnly)
-    });
+    };
   }
 
   get computedTextAreaClassName() {
-    return computeClass({
+    return {
       "fr-input": true
-    });
+    };
   }
 
   get computedCharacterCountClassName() {
-    return computeClass({
+    return {
       "fr-hint-text": true,
       "fr-error-text": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -99,6 +103,12 @@ export default class extends OmnistudioTextarea {
     return null;
   }
 
+  get _errorMessage() {
+    return this.sfGpsDsErrorMessage?.replace("Error:", "");
+  }
+
+  /* event management */
+
   handleKeyUp(event) {
     let charCount = event.target.value ? event.target.value.length : 0;
 
@@ -107,7 +117,9 @@ export default class extends OmnistudioTextarea {
     }
   }
 
-  get _errorMessage() {
-    return this.sfGpsDsErrorMessage?.replace("Error:", "");
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

@@ -9,6 +9,8 @@ import SfGpsDsFormCurrencyOsN from "c/sfGpsDsFormCurrencyOsN";
 import tmpl from "./sfGpsDsFrGovFormCurrencyOsN.html";
 
 export default class extends SfGpsDsFormCurrencyOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

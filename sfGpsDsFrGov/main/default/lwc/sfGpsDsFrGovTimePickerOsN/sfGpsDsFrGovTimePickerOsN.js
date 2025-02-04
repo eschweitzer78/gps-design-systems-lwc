@@ -16,23 +16,21 @@ export default class extends OmnistudioTimePicker {
   @api forceError;
   @api hideAsterisk;
 
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "fr-input-group": !this.hideFormGroup,
       "fr-input-group--error": !this.hideFormGroup && this.sfGpsDsIsError,
       "fr-input-group--disabled": !this.hideFormGroup && this.readOnly
-    });
+    };
   }
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "fr-input": true,
       "fr-input--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -54,6 +52,7 @@ export default class extends OmnistudioTimePicker {
     return this.sfGpsDsErrorMessage?.replace("Error:", "") || ZWSP_CHAR;
   }
 
+  /* methods */
   /* we're doing it mostly via template */
 
   synchronizeA11y() {
@@ -64,5 +63,11 @@ export default class extends OmnistudioTimePicker {
         "aria-activedescendant": this.aria_activedescendant
       });
     }
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

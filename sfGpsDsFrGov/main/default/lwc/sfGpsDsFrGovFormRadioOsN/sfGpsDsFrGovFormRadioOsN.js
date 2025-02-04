@@ -9,6 +9,8 @@ import SfGpsDsFormRadioOsN from "c/sfGpsDsFormRadioOsN";
 import tmpl from "./sfGpsDsFrGovFormRadioOsN.html";
 
 export default class extends SfGpsDsFormRadioOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

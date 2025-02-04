@@ -9,6 +9,8 @@ import SfGpsDsFormEmailOsN from "c/sfGpsDsFormEmailOsN";
 import tmpl from "./sfGpsDsFrGovFormEmailOsN.html";
 
 export default class extends SfGpsDsFormEmailOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

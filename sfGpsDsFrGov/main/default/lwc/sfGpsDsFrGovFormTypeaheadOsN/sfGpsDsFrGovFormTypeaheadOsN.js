@@ -8,7 +8,9 @@
 import SfGpsDsFormTypeahead from "c/sfGpsDsFormTypeaheadOsN";
 import tmpl from "./sfGpsDsFrGovFormTypeaheadOsN.html";
 
-export default class sfGpsDsFrGovFormTypeaheadOsN extends SfGpsDsFormTypeahead {
+export default class extends SfGpsDsFormTypeahead {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

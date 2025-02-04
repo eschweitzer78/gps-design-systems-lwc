@@ -51,7 +51,11 @@
             aria-readonly={readOnly}
           />
 
-          <label class={computedLabelClass} data-index={index} for={option.id}>
+          <label
+            class={computedLabelClassName}
+            data-index={index}
+            for={option.id}
+          >
             {option.label}
             <span lwc:if={option.hint} class="fr-hint-text">
               {option.hint}

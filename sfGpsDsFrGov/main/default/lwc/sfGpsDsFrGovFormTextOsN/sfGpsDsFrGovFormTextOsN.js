@@ -9,6 +9,8 @@ import SfGpsDsFormTextOsN from "c/sfGpsDsFormTextOsN";
 import tmpl from "./sfGpsDsFrGovFormTextOsN.html";
 
 export default class extends SfGpsDsFormTextOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

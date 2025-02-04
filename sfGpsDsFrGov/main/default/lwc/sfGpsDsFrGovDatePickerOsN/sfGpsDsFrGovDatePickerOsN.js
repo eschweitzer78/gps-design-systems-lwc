@@ -8,14 +8,13 @@
 import { api, track } from "lwc";
 import OmnistudioDatePicker from "c/sfGpsDsOmniDatePickerOsN";
 import tmpl from "./sfGpsDsFrGovDatePickerOsN.html";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsFrGovDatePickerOsN";
 const ORIGINAL_INPUT_SELECTOR = "input[hidden]";
 const DAY_INPUT_SELECTOR = "input[name='date-input-day']";
 
-export default class SfGpsDsFrGovDatePickerOsN extends OmnistudioDatePicker {
+export default class extends OmnistudioDatePicker {
   @api readOnly;
   @api forceError;
   @api hideAsterisk = false;
@@ -29,19 +28,19 @@ export default class SfGpsDsFrGovDatePickerOsN extends OmnistudioDatePicker {
     return tmpl;
   }
 
-  get computedFormGroupClass() {
-    return computeClass({
+  get computedFormGroupClassName() {
+    return {
       "fr-input-group": true,
       "fr-input-group--error": this.sfGpsDsHasAnyError,
       "fr-input-group--disabled": this.readOnly
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
-    return computeClass({
+    return {
       errorMessageBlock: this.sfGpsDsHasAnyError,
       helper: this.fieldLevelHelp
-    });
+    };
   }
 
   // override
