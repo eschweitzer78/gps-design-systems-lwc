@@ -1,15 +1,16 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVicContainer extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api className;
 
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-container": true,
       [this.className]: this.className
-    });
+    };
   }
 }

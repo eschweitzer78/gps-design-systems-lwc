@@ -1,0 +1,22 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic-responsive-img
+    lwc:else
+    src={src}
+    alt={alt}
+    focal-point={_focalPoint}
+    src-set={srcSet}
+    src-set-qs={srcSetQs}
+    sizes={sizes}
+    height={height}
+    width={width}
+    fit={fit}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-responsive-img>
+</template>

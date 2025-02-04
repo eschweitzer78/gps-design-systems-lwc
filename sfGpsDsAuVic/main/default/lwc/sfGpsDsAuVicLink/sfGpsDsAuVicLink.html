@@ -6,9 +6,9 @@
     data-print-url={printUrl}
     onfocus={handleFocus}
   >
-    <span if:true={_innerWrap} class="rpl-link__inner">
+    <span lwc:if={_innerWrap} class="rpl-link__inner">
       {text}<slot></slot>
     </span>
-    <template if:false={_innerWrap}> {text}<slot></slot> </template>
+    <template lwc:else> {text}<slot></slot> </template>
   </a>
 </template>

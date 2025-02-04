@@ -1,0 +1,139 @@
+<!-- sldsValidatorIgnore -->
+<template lwc:render-mode="light">
+  <div
+    id={index}
+    class={computedClassName}
+    data-depth={depth}
+    data-vpos={computedRootVerticalDepth}
+    data-visibledepth={computedVisibleDepth}
+  >
+    <div class="rpl-menu__inner">
+      <div class="rpl-menu__inner_root">
+        <c-sf-gps-ds-au-vic-quick-exit
+          lwc:if={computedShowQuickExit}
+          class-name="rpl-menu__quickexit"
+          text={quickExitLabel}
+          escape-url={quickExitTarget}
+        >
+        </c-sf-gps-ds-au-vic-quick-exit>
+
+        <div class="rpl-menu__column">
+          <div class="rpl-menu__header">
+            <button
+              lwc:if={computedShowCloseMenu}
+              aria-controls={index}
+              aria-expanded={open}
+              class="rpl-menu__back"
+              onclick={handleVerticalGoBack}
+            >
+              <!-- TODO onfocus? onclick={handleVerticalGoBack} -->
+              <c-sf-gps-ds-au-vic-icon
+                symbol="left"
+                color="white"
+              ></c-sf-gps-ds-au-vic-icon>
+              <span class="rpl-visually-hidden"
+                >Close {title} and return to
+              </span>
+              <span>{backTitle}</span>
+            </button>
+
+            <a
+              lwc:if={computedShowMenuHeading}
+              class={computedMenuHeadingClassNameß}
+              href={parent.url}
+              target={parent.target}
+              >{parent.text}</a
+            >
+          </div>
+
+          <ul class={computedMenuItemsClassName}>
+            <!-- Home button -->
+            <li lwc:if={computedShowMenuItem} class="rpl-menu__item">
+              <a class="rpl-menu__item-link rpl-menu__item-link--home" href="/">
+                <span>
+                  <!-- style="margin-right: 0.5rem; TODO style to fix lwc scoping issue with css -->
+                  <c-sf-gps-ds-au-vic-icon
+                    symbol="menu_home"
+                    color="white"
+                  ></c-sf-gps-ds-au-vic-icon> </span
+                >Home
+              </a>
+            </li>
+
+            <!-- Parent link -->
+            <li lwc:if={computedShowParentLink} class="rpl-menu__item">
+              <a
+                class="rpl-menu__item-link rpl-menu__item-link--parent"
+                href={parent.url}
+                >{parent.text}
+              </a>
+            </li>
+
+            <!-- Menu items -->
+            <template
+              for:each={_decoratedMenu}
+              for:item="list"
+              for:index="index"
+            >
+              <!-- decoratedMenu -->
+              <li key={list.id} class={list.liClassName}>
+                <!-- removed onfocus={handleItemFocus} -->
+                <a
+                  lwc:if={list.displayAsLink}
+                  class="rpl-menu__item-link"
+                  href="#"
+                  target={list.target}
+                  onclick={handleItemClick}
+                  data-menu-index={list.index}
+                  >{list.text}</a
+                >
+
+                <!-- removed onfocus={handleItemFocus}-->
+                <!-- If there are no children or we have reached the menu depth of 3
+                     display menu item as a link -->
+                <template lwc:else>
+                  <button
+                    class={list.buttonClassName}
+                    onclick={handleMenuLinkClick}
+                    aria-expanded={list.open}
+                    aria-controls={list.id}
+                    data-menu-index={list.index}
+                  >
+                    <span>{list.text}</span>
+                    <c-sf-gps-ds-au-vic-icon
+                      symbol={list.parentIcon}
+                      color="white"
+                    >
+                    </c-sf-gps-ds-au-vic-icon>
+                  </button>
+
+                  <!-- removed onfocus={handleInnerItemFocus} -->
+                  <c-sf-gps-ds-au-vic-menu
+                    menu={list.children}
+                    depth={computedSubMenuDepth}
+                    open={list.open}
+                    layout={layout}
+                    title={list.text}
+                    quick-exit-label={quickExitLabel}
+                    quick-exit-target={quickExitTarget}
+                    back-title={title}
+                    shared-control={sharedControl}
+                    parent={list}
+                    onmenuchange={handleInnerMenuChange}
+                    onback={handleInnerMenuBack}
+                    onclosemenu={handleCloseMenu}
+                    onopenmenu={handleOpenMenu}
+                    onnavigate={handleNavigate}
+                    data-menu-index={list.index}
+                    index={list.id}
+                  >
+                  </c-sf-gps-ds-au-vic-menu>
+                </template>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

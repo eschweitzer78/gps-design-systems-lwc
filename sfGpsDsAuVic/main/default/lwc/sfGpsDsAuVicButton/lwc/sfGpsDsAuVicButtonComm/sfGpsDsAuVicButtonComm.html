@@ -1,0 +1,18 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic-button
+    lwc:else
+    href={href}
+    target={target}
+    theme={theme}
+    disabled={disabled}
+    class-name={className}
+  >
+    {label}
+  </c-sf-gps-ds-au-vic-button>
+</template>

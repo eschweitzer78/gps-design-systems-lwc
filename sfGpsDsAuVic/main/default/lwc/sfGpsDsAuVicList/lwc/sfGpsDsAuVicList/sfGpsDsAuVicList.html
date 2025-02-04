@@ -1,0 +1,42 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <h2 lwc:if={title} class="rpl-list__title">
+      <c-sf-gps-ds-au-vic-text-link
+        lwc:if={link}
+        link={computedLink}
+        class="rpl-list__title-inner"
+      >
+      </c-sf-gps-ds-au-vic-text-link>
+      <span lwc:else class="rpl-list__title-inner">{title}</span>
+    </h2>
+
+    <slot name="above-list"></slot>
+
+    <div lwc:if={computedListHasItems} class="rpl-list__list">
+      <template for:each={_list} for:item="item">
+        <div key={item.key} class="rpl-list__list-item">
+          <span class="rpl-list__icon">
+            <c-sf-gps-ds-au-vic-icon
+              lwc:if={item.symbol}
+              symbol={item.symbol}
+              color={item.color}
+              size={item.iconSize}
+            >
+            </c-sf-gps-ds-au-vic-icon>
+          </span>
+
+          <c-sf-gps-ds-au-vic-link
+            lwc:if={item.link}
+            href={item.link}
+            class="rpl-list__text"
+            >{item.text}
+          </c-sf-gps-ds-au-vic-link>
+
+          <span lwc:else class="rpl-list__text">{item.text}</span>
+        </div>
+      </template>
+    </div>
+
+    <slot name="below-list"></slot>
+  </div>
+</template>

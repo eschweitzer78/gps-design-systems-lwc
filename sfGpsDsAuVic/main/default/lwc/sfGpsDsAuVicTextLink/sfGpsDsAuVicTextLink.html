@@ -1,19 +1,19 @@
 <template lwc:render-mode="light">
   <c-sf-gps-ds-au-vic-link
-    if:true={link}
+    lwc:if={_link}
     class-name={computedClassName}
-    href={link.url}
+    href={_link.url}
     inner-wrap={innerWrap}
   >
     <c-sf-gps-ds-au-vic-text-label
       theme={theme}
       size={size}
-      underline={underline}
+      underline={_underline}
       emphasis={emphasis}
     >
       <c-sf-gps-ds-au-vic-text-icon
-        text={textDecoded}
-        symbol={iconSymbolFinal}
+        text={computedTextDecoded}
+        symbol={computedIconSymbol}
         color={iconColor}
         placement={iconPlacement}
         size={iconSize}

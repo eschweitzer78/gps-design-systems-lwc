@@ -1,0 +1,30 @@
+<!-- sldsValidatorIgnore -->
+<template lwc:render-mode="light">
+  <div
+    lwc:if={_visible}
+    class={computedBaseClassName}
+    aria-live="assertive"
+    role="alert"
+  >
+    <c-sf-gps-ds-au-vic-icon
+      class="rpl-alert-base__icon"
+      symbol={iconSymbol}
+      color={iconColor}
+    >
+    </c-sf-gps-ds-au-vic-icon>
+
+    <div class={computedContentClassName}>
+      <slot></slot>
+    </div>
+
+    <button
+      lwc:if={computedShowCloseIcon}
+      onclick={handleClick}
+      class="rpl-alert-base__close"
+    >
+      <c-sf-gps-ds-au-vic-icon symbol="close" color={closeIconColor}>
+      </c-sf-gps-ds-au-vic-icon>
+      <span>{closeText}</span>
+    </button>
+  </div>
+</template>

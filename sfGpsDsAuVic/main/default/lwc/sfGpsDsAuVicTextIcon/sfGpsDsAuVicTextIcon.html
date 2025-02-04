@@ -1,49 +1,55 @@
 <template lwc:render-mode="light">
-  <span if:true={showBefore}>
-    <span if:true={hasMultipleWords} class="rpl-text-icon__group">
+  <span lwc:if={computedShowBefore}>
+    <template lwc:if={computedHasMultipleWords}>
+      <span class="rpl-text-icon__group">
+        <c-sf-gps-ds-au-vic-icon
+          symbol={symbol}
+          color={color}
+          size={size}
+          class={computedIconClassName}
+        >
+        </c-sf-gps-ds-au-vic-icon>
+        {computedTextFirstWord}{space}
+      </span>
+      <span>{computedTextWithoutFirstWord}</span>
+    </template>
+    <span lwc:else class="rpl-text-icon__group">
       <c-sf-gps-ds-au-vic-icon
         symbol={symbol}
         color={color}
         size={size}
-        class={computedIconClass}
-      >
-      </c-sf-gps-ds-au-vic-icon>
-      {textFirstWord}{space}
-    </span>
-    <span if:true={hasMultipleWords}>{textWithoutFirstWord}</span>
-    <span if:false={hasMultipleWords} class="rpl-text-icon__group">
-      <c-sf-gps-ds-au-vic-icon
-        symbol={symbol}
-        color={color}
-        size={size}
-        class={computedIconClass}
+        class={computedIconClassName}
       >
       </c-sf-gps-ds-au-vic-icon
       >{text}
     </span>
   </span>
-  <span if:true={showAfter}>
-    <span if:true={hasMultipleWords}>{textWithoutLastWord}</span>
-    <span if:true={hasMultipleWords} class="rpl-text-icon__group">
-      {space}{textLastWord}
-      <c-sf-gps-ds-au-vic-icon
-        symbol={symbol}
-        color={color}
-        size={size}
-        class={computedIconClass}
-      >
-      </c-sf-gps-ds-au-vic-icon>
-    </span>
-    <span if:false={hasMultipleWords} class="rpl-text-icon__group"
+
+  <span lwc:elseif={computedShowAfter}>
+    <template lwc:if={computedHasMultipleWords}>
+      <span>{computedTextWithoutLastWord}</span>
+      <span class="rpl-text-icon__group">
+        {space}{computedTextLastWord}
+        <c-sf-gps-ds-au-vic-icon
+          symbol={symbol}
+          color={color}
+          size={size}
+          class={computedIconClassName}
+        >
+        </c-sf-gps-ds-au-vic-icon>
+      </span>
+    </template>
+    <span lwc:else class="rpl-text-icon__group"
       >{text}
       <c-sf-gps-ds-au-vic-icon
         symbol={symbol}
         color={color}
         size={size}
-        class={computedIconClass}
+        class={computedIconClassName}
       >
       </c-sf-gps-ds-au-vic-icon>
     </span>
   </span>
-  <span if:true={showOtherwise}>{text}</span>
+
+  <span lwc:else>{text}</span>
 </template>

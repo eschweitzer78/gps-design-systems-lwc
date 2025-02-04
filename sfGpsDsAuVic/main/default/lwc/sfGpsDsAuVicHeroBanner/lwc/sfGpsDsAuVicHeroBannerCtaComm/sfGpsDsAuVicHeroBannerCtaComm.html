@@ -1,0 +1,19 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic-hero-banner-cta
+    lwc:else
+    title={title}
+    intro-text={introText}
+    theme={theme}
+    link-primary={_linkPrimary}
+    cta-text={ctaText}
+    link-secondary={_linkSecondary}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-hero-banner-cta>
+</template>

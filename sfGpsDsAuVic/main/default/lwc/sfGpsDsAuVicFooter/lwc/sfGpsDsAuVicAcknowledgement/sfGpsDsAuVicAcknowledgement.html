@@ -1,0 +1,15 @@
+<template lwc:render-mode="light">
+  <div lwc:if={text} class={computedClassName}>
+    <img
+      class="rpl-acknowledgement__flag"
+      src="/sfsites/c/resource/sfGpsDsAuVic/images/aboriginal-flag.21d3606.png"
+      alt={aboriginalFlagAltText}
+    />
+    <img
+      class="rpl-acknowledgement__flag"
+      src="/sfsites/c/resource/sfGpsDsAuVic/images/torres-strait-islander-flag.64def33.png"
+      alt={torresStraitIslanderFlagAltText}
+    />
+    <div class="rpl-acknowledgement__text">{text}</div>
+  </div>
+</template>

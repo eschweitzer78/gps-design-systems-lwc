@@ -1,0 +1,34 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <div class="rpl-call-to-action__row">
+      <div lwc:if={image} class="rpl-call-to-action__left">
+        <c-sf-gps-ds-au-vic-responsive-img
+          class-name="rpl-call-to-action__image"
+          fit="contain"
+          src-set={_defaultSrcSet}
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+        >
+        </c-sf-gps-ds-au-vic-responsive-img>
+      </div>
+
+      <div class="rpl-call-to-action__right">
+        <h2 lwc:if={title} class="rpl-call-to-action__title">{title}</h2>
+
+        <div class="rpl-call-to-action__summary">
+          <slot></slot>
+        </div>
+
+        <c-sf-gps-ds-au-vic-button
+          lwc:if={link}
+          theme="primary"
+          href={link.url}
+        >
+          {link.text}
+        </c-sf-gps-ds-au-vic-button>
+      </div>
+    </div>
+  </div>
+</template>

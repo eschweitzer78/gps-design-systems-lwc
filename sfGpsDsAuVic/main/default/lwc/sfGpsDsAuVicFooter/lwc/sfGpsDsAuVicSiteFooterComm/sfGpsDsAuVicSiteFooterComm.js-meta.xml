@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC DS Site Footer</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="mode"
+        type="String"
+        label="Mode"
+        datasource="Experience Cloud Navigation,Integration Procedure"
+        default="Integration Procedure"
+      />
+      <property
+        name="navigationDevName"
+        type="String"
+        label="Navigation name"
+        description="Pick the target nav when mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
+        name="ipName"
+        type="String"
+        label="Links Integration procedure name"
+        description="Name of the Integration procedure mapping content to the links."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Links Input JSON"
+        description="JSON formatted input parameters for the links Integration procedure."
+        default="{}"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Links Options JSON"
+        description="JSON formatted options for the links Integration procedure."
+        default="{}"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="navIpName"
+        type="String"
+        label="Nav Integration procedure name"
+        description="Name of the Integration procedure mapping content to the nav."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="navInputJSON"
+        type="String"
+        label="Nav Input JSON"
+        description="JSON formatted input parameters for the nav Integration procedure."
+        default="{}"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="navOptionsJSON"
+        type="String"
+        label="Nav Options JSON"
+        description="JSON formatted options for the nav Integration procedure."
+        default="{}"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="socialLinksTitle"
+        type="String"
+        label="Social links title"
+        description="Text used as level-2 header for social links."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="socialLinks"
+        type="String"
+        label="Social links"
+        description="Social links as a JSON array of { title, uri, icon }."
+        default="[{&quot;title&quot;:&quot;@VicGovAu&quot;,&quot;uri&quot;:&quot;https://twitter.com/VicGovAu&quot;,&quot;icon&quot;:&quot;twitter&quot;},{&quot;title&quot;:&quot;Victoria Government&quot;,&quot;uri&quot;:&quot;https://au.linkedin.com/company/victoria-government&quot;,&quot;icon&quot;:&quot;linkedin&quot;},{&quot;title&quot;:&quot;Victorian Government News&quot;,&quot;uri&quot;:&quot;https://www.facebook.com/VicGovernmentNews&quot;,&quot;icon&quot;:&quot;facebook&quot;}]"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="acknowledgement"
+        type="String"
+        label="Acknowlegement"
+        description="Text displayed as acknowlegement to country."
+        default="The Victorian Government acknowledges Aboriginal and Torres Strait Islander people as the Traditional Custodians of the land and acknowledges and pays respect to their Elders, past and present."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="caption"
+        type="String"
+        label="Caption"
+        description="Caption text."
+        default=""
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="copyright"
+        type="String"
+        label="Copyright"
+        description="Copyright text."
+        default="© Copyright State Government of Victoria"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="masterbrand"
+        type="String"
+        label="Masterbrand logo"
+        description="URL for the masterbrand logo."
+        default="/sfsites/c/resource/sfGpsDsAuVic/images/vic-logo.svg"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="masterbrandAlt"
+        type="String"
+        label="Masterbrand alternative text"
+        description="Text displayed when the logo cannot be loaded."
+        default="Victoria – logo – Victoria Government - home"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="masterbrandUrl"
+        type="String"
+        label="Masterbrand target url"
+        description="Target URL when clicking on the masterbrand logo."
+        default="https://vic.gov.au"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="footerLogos"
+        type="String"
+        label="Footer logos"
+        description="Images for footer logos as a JSON array of { src, alt, url }."
+        default=""
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,38 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="rpl-form">
+    <fieldset class="rpl-fieldset">
+      <div class={computedFormGroupClassName}>
+        <label for="frt">
+          <span>{mergedLabel}</span>
+          <slot name="label"> </slot>
+        </label>
+
+        <div class="vic-disclosure">
+          <div class="vic-disclosure__content">
+            <omnistudio-omniscript-formatted-rich-text id="frt" value={_dText}>
+            </omnistudio-omniscript-formatted-rich-text>
+          </div>
+
+          <div class="vic-disclosure__consent">
+            <c-sf-gps-ds-au-vic-input-os-n
+              type="checkbox"
+              label={mergedCheckLabel}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              theme={_theme}
+              checked={elementValue}
+              message-when-value-missing={_messageWhenValueMissing}
+              tab-index={tabIndex}
+              form-group-addl-class-name="form-group__no-margin-bottom"
+              data-omni-input
+              onchange={handleChange}
+              read-only={_propSetMap.readOnly}
+            >
+            </c-sf-gps-ds-au-vic-input-os-n>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</template>

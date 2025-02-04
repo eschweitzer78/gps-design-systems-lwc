@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC DS Campaign Secondary</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Clearly identifies the primary purpose or action of the campaign and acts as a call to action for the user."
+        required="true"
+        default="Secondary campaign headline"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="link"
+        type="String"
+        label="Link"
+        description="Button link in Markdown link format."
+        default="[Read more](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="summary"
+        type="String"
+        label="Summary"
+        description="Provides further details where the title alone may not be sufficient - in Markdown format."
+        default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporar incident incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam, [quis nostrud](#) exercitation ullamco laboris nisi ut aliquip ex ea commodo."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="imageSrc"
+        type="String"
+        label="Image source"
+        description="URL of a supporting image."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="imageAlt"
+        type="String"
+        label="Image alternative text"
+        description="Text used should there be an issue displaying the image."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="videoSrc"
+        type="String"
+        label="Video source"
+        description="URL of a supporting video."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="videoMediaLink"
+        type="String"
+        label="Video media link"
+        description="Video media link in Markdown link format."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

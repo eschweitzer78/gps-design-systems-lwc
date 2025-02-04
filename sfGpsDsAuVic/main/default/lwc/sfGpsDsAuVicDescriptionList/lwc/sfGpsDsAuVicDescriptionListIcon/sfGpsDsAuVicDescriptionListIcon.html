@@ -1,0 +1,24 @@
+<template lwc:render-mode="light">
+  <dl lwc:if={computedShowList} class={computedClassName}>
+    <template for:each={decoratedList} for:item="item">
+      <div class="rpl-description-list-icon__item" key={item.key}>
+        <dt class="rpl-description-list__cell rpl-description-list__term">
+          <c-sf-gps-ds-au-vic-icon
+            lwc:if={item.icon}
+            aria-hidden="true"
+            class="rpl-description-list-icon__icon"
+            symbol={item.icon}
+            color="primary"
+            size="m"
+          >
+          </c-sf-gps-ds-au-vic-icon>
+          {item.heading}
+        </dt>
+        <dd class="rpl-description-list-icon__content">
+          <c-sf-gps-ds-au-vic-markup html={item.content}>
+          </c-sf-gps-ds-au-vic-markup>
+        </dd>
+      </div>
+    </template>
+  </dl>
+</template>

@@ -1,0 +1,16 @@
+<template lwc:render-mode="light">
+  <dl lwc:if={_list} class={computedClassName}>
+    <template for:each={_list} for:item="item">
+      <div class="rpl-description-list__row" key={item.key}>
+        <dt class="rpl-description-list__cell rpl-description-list__term">
+          {item.term}{divider}
+        </dt>
+        <dd
+          class="rpl-description-list__cell rpl-description-list__description"
+        >
+          {item.description}
+        </dd>
+      </div>
+    </template>
+  </dl>
+</template>
