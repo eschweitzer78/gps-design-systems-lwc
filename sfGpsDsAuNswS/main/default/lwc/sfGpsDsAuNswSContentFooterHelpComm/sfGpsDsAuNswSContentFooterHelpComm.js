@@ -10,20 +10,22 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswSContentFooterHelpComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api title;
 
-  _text;
+  /* api: text */
+
+  _textOriginal;
   _textHtml;
 
-  @api get text() {
-    return this._text;
+  @api
+  get text() {
+    return this._textOriginal;
   }
 
   set text(markdown) {
-    this._text = markdown;
-
     try {
+      this._textOriginal = markdown;
       this._textHtml = markdown ? mdEngine.render(markdown) : "";
     } catch (e) {
       this.addError("IN-MD", "Issue when parsing Text markdown");
@@ -31,7 +33,7 @@ export default class SfGpsDsAuNswSContentFooterHelpComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    if (this._text) {
+    if (this._textOriginal) {
       replaceInnerHtml(this.refs.markdown, this._textHtml);
     }
   }

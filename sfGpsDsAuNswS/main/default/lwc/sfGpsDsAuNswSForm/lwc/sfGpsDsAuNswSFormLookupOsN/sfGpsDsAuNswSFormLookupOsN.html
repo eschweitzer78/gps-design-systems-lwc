@@ -1,0 +1,150 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="form__group">
+    <label
+      class={computedLabelClassName}
+      aria-label={mergedLabel}
+      for="inputId"
+    >
+      {mergedLabel}
+      <span lwc:if={_propSetMap.required} class="visually-hidden">
+        ({allCustomLabelsUtil.OmniRequired})</span
+      >
+    </label>
+
+    <template lwc:if={_propSetMap.repeat}>
+      <span
+        slot="label"
+        style="bottom: 7px; right: -11px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          lwc:if={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text={_repeatAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text={_removeAlternativeText}
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+      </span>
+    </template>
+
+    <span lwc:if={mergedHelpText} id="helper" class="form__help">
+      {mergedHelpText}
+    </span>
+
+    <div class="sfgpsds-form-element__control">
+      <div class="sfgpsds-combobox_container">
+        <div
+          class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger_click"
+        >
+          <div class="sfgpsds-combobox__form-element" role="none">
+            <input
+              class={computedInputClassName}
+              type="text"
+              disabled={_propSetMap.readOnly}
+              required={_propSetMap.required}
+              readonly={_propSetMap.readOnly}
+              aria-controls="lookup"
+              id="lookupId"
+              placeholder={mergedPlaceholder}
+              aria-invalid={isAriaInvalid}
+              aria-expanded={show}
+              aria-haspopup="listbox"
+              value={lookupDisplay}
+              aria-describedby={computedAriaDescribedBy}
+              role="combobox"
+              data-omni-input
+              onblur={hideOptions}
+              onkeydown={handleKeyDown}
+              onkeyup={handleKeyUp}
+              onmouseup={showLookup}
+            />
+          </div>
+
+          <div
+            class="sfgpsds-dropdown sfgpsds-dropdown_length-5 sfgpsds-dropdown_fluid"
+            id="lookup"
+            role="listbox"
+            onmousedown={handleKeyDown}
+            onmouseleave={handleKeyDown}
+            onmouseup={handleKeyDown}
+          >
+            <ul
+              class="sfgpsds-listbox sfgpsds-listbox_vertical"
+              role="presentation"
+            >
+              <template
+                for:each={computedOptions}
+                for:item="optionItem"
+                for:index="optionIndex"
+              >
+                <!-- removed onmouseover={mouseOverFocus} -->
+                <li
+                  key={optionItem.key}
+                  class="sfgpsds-listbox__item"
+                  role="presentation"
+                  data-option-index={optionIndex}
+                  onmouseup={selectOption}
+                >
+                  <div
+                    class="sfgpsds-listbox__option sfgpsds-listbox__option--plain"
+                    id={optionItem.id}
+                    role="option"
+                    aria-selected={optionItem.selected}
+                  >
+                    <span
+                      class="sfgpsds-listbox__option-text"
+                      title={optionItem.value}
+                    >
+                      {optionItem.value}
+                    </span>
+                  </div>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span
+      lwc:if={sfGpsDsIsError}
+      class="form__error"
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      {sfGpsDsErrorMessage}
+    </span>
+
+    <template lwc:if={isPageLoading}>
+      <omnistudio-spinner
+        variant="brand"
+        alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+        theme="slds"
+        size="small"
+      >
+      </omnistudio-spinner>
+    </template>
+  </div>
+</template>

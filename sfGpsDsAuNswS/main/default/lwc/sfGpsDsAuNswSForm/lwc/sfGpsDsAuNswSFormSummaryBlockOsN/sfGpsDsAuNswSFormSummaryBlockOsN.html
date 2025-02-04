@@ -1,0 +1,17 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <section class="summary-block">
+    <div lwc:if={showValidation} class="slds-has-error">
+      <div class="slds-form-element__help">
+        <span class="slds-text-link_faux" onclick={toggleContent}>
+          {allCustomLabelsUtil.OmniBlockError}
+        </span>
+      </div>
+    </div>
+
+    <fieldset class="summary-block__content">
+      <legend></legend>
+      <slot></slot>
+    </fieldset>
+  </section>
+</template>
