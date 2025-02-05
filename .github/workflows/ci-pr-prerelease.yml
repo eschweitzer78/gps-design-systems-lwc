@@ -101,6 +101,7 @@ jobs:
         with:
           sourcePath: "sfGpsDs"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -114,6 +115,7 @@ jobs:
         with:
           sourcePath: "sfGpsDsAuNsw"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -127,6 +129,7 @@ jobs:
         with:
           sourcePath: "sfGpsDsAuNswS"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -140,6 +143,7 @@ jobs:
         with:
           sourcePath: "sfGpsDsAuVic"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -153,6 +157,7 @@ jobs:
         with:
           sourcePath: "sfGpsDsAuVic2"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -166,6 +171,7 @@ jobs:
         with:
           sourcePath: "sfGpsDsFrGov"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -179,6 +185,7 @@ jobs:
         with:
           sourcePath: "sfGpsDsUkGov"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
