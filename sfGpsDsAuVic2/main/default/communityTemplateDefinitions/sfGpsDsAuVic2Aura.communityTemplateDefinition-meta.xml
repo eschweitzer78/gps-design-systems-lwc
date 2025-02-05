@@ -36,7 +36,7 @@
     <type>PreviewImage</type>
   </bundlesInfo>
   <category>Service</category>
-  <defaultThemeDefinition>sfGpsDsAuVic2Aura</defaultThemeDefinition>
+  <defaultThemeDefinition>sfGpsDsAuVic2AuraV2</defaultThemeDefinition>
   <baseTemplate>c</baseTemplate>
   <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
   <pageSetting>
