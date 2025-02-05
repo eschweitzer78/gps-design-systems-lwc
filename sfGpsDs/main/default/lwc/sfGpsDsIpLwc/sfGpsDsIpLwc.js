@@ -7,7 +7,7 @@
 
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { api, track } from "lwc";
-import { isArray, normaliseBoolean } from "c/sfGpsDsHelpersOs";
+import { isArray, normaliseBoolean } from "c/sfGpsDsHelpers";
 
 /* IMPORTANT NOTE: if you modify this class, you must update sfGpsDsLwcOsN
    as it's not automatically derived */
