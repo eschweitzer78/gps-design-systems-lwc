@@ -74,7 +74,7 @@ export default class extends LightningElement {
 
   set search(value) {
     this._searchOriginal = value;
-    this._value = normaliseBoolean(value, {
+    this._search = normaliseBoolean(value, {
       acceptString: true,
       fallbackValue: SEARCH_DEFAULT
     });

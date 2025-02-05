@@ -22,7 +22,27 @@
         <li key={navItem.id} class={navItem.className}>
           <template lwc:if={navItem.subNav}>
             <a
+              lwc:if={navItem.url}
               href={navItem.url}
+              role="button"
+              aria-expanded={navItem.isActive}
+              aria-controls={navItem.id}
+              class={navItem.anchorClassName}
+              data-ndx={navItem.index}
+              onclick={handleClick}
+            >
+              <!-- expand -->
+              <span>{navItem.text}</span>
+              <span
+                class="material-icons nsw-material-icons"
+                aria-hidden="true"
+              >
+                keyboard_arrow_right
+              </span>
+            </a>
+            <a
+              lwc:else
+              href="javascript:void(0);"
               role="button"
               aria-expanded={navItem.isActive}
               aria-controls={navItem.id}
@@ -244,8 +264,18 @@
           <!-- lwc:if={navItem.subNav} -->
 
           <a
-            lwc:else
+            lwc:elseif={navItem.url}
             href={navItem.url}
+            class={navItem.anchorClassName}
+            data-ndx={navItem.index}
+            onclick={handleClick}
+          >
+            <!-- navigate -->
+            <span>{navItem.text}</span>
+          </a>
+          <a
+            lwc:else
+            href="javascript:void(0);"
             class={navItem.anchorClassName}
             data-ndx={navItem.index}
             onclick={handleClick}
