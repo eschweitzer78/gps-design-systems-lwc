@@ -56,7 +56,7 @@
     "@dpc-sdp/ripple-ui-forms": "^2.23.0",
     "@gouvfr/dsfr": "^1.13.0",
     "@govtechsg/sgds": "^2.3.6",
-    "nsw-design-system": "^3.18.5",
+    "nsw-design-system": "^3.18.6",
     "govuk-frontend": "^5.8.0",
     "@lwc/eslint-plugin-lwc": "^1.0.1",
     "@prettier/plugin-xml": "^3.0.0",
