@@ -8,13 +8,13 @@
   <c-sf-gps-ds-au-nsw-accordion-group
     lwc:else
     show-buttons={showButtons}
-    is-fully-expanded={isFullyExpanded}
-    is-fully-collapsed={isFullyCollapsed}
+    is-fully-expanded={computedIsFullyExpanded}
+    is-fully-collapsed={computedIsFullyCollapsed}
     onexpandall={handleExpandAll}
     oncollapseall={handleCollapseAll}
     class-name={className}
   >
-    <template for:each={_h1s} for:item="item">
+    <template for:each={_content} for:item="item">
       <c-sf-gps-ds-au-nsw-accordion-comm
         key={item.index}
         index={item.index}

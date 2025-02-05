@@ -14,9 +14,7 @@ import tmpl from "./sfGpsDsAuQldDatePickerOsN.html";
 export default class extends StatusHelperMixin(OmnistudioDatePicker) {
   @api hideAsterisk = false;
 
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedAriaDescribedBy() {
     return computeClass({
@@ -26,10 +24,16 @@ export default class extends StatusHelperMixin(OmnistudioDatePicker) {
   }
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "qld__text-input": true,
       "qld__text-input--block": true,
       "qld__text-input--error": this.sfGpsDsIsError
-    });
+    };
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

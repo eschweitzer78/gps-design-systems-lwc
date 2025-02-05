@@ -14,31 +14,33 @@ export default class extends OmnistudioRadioGroup {
   @api sfGpsDsRadioSize = "default";
   @api readOnly;
 
+  /* computed */
+
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "fr-fieldset": true,
       "fr-fieldset--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedRadioGroupClassName() {
-    return computeClass({
+    return {
       "fr-radio-group": true,
       "fr-radio-group--small": this.sfGpsDsRadioSize === "small"
-    });
+    };
   }
 
   get computedFieldsetClassName() {
-    return computeClass({
+    return {
       "fr-fieldset__element": true,
       "fr-fieldset__element--inline": this.alignment === "horizontal"
-    });
+    };
   }
 
-  get computedLabelClass() {
-    return computeClass({
+  get computedLabelClassName() {
+    return {
       "fr-label": true
-    });
+    };
   }
 
   get computedAriaInvalid() {

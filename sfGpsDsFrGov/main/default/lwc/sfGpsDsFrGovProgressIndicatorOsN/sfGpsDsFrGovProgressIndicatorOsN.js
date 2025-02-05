@@ -6,14 +6,15 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 
-export default class SfGpsDsFrGovProgressIndicatorOsN extends LightningElement {
+export default class extends LightningElement {
   @api step = 1;
   @api of = 1;
   @api currentstepname;
   @api nextstepname;
   @api className;
+
+  /* computed */
 
   get steps() {
     let arr = [];
@@ -30,9 +31,9 @@ export default class SfGpsDsFrGovProgressIndicatorOsN extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "fr-stepper": true,
       [this.className]: this.className
-    });
+    };
   }
 }

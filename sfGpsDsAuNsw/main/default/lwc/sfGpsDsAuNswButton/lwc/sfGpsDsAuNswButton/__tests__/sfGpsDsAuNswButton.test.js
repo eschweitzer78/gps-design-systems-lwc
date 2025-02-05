@@ -18,8 +18,8 @@ describe("c-sf-gps-ds-au-nsw-button", () => {
 
     document.body.appendChild(element);
 
-    let widget = element.querySelector("button");
-    expect(widget).not.toBeNull();
+    const button = element.querySelector("button");
+    expect(button).not.toBeNull();
   });
 
   it("displays as an anchor if link property is defined", () => {
@@ -32,10 +32,10 @@ describe("c-sf-gps-ds-au-nsw-button", () => {
 
     document.body.appendChild(element);
 
-    let button = element.querySelector("button");
+    const button = element.querySelector("button");
     expect(button).toBeNull();
 
-    let a = element.querySelector("a");
+    const a = element.querySelector("a");
     expect(a).not.toBeNull();
     expect(a.href).toBe("https://www.salesforce.com/");
   });
@@ -51,9 +51,24 @@ describe("c-sf-gps-ds-au-nsw-button", () => {
 
     document.body.appendChild(element);
 
-    let a = element.querySelector("a");
+    const a = element.querySelector("a");
     expect(a).not.toBeNull();
     expect(a.className).toContain("light");
+  });
+
+  it("is disabled when configured so", () => {
+    const element = createElement(tag, {
+      is: SfGpsDsAuNswButton
+    });
+
+    element.label = "Yo";
+    element.disabled = true;
+
+    document.body.appendChild(element);
+
+    const button = element.querySelector("button");
+    expect(button).not.toBeNull();
+    expect(button).toHaveProperty("disabled", true);
   });
 
   it("is accessible", async () => {

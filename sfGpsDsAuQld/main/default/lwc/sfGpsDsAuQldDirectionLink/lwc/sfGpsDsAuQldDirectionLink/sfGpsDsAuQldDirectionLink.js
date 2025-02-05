@@ -1,17 +1,13 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
-const DIRECTION_DOWN = "down";
-const DIRECTION_LEFT = "left";
-const DIRECTION_RIGHT = "right";
-const DIRECTION_UP = "up";
-const DIRECTION_VALUES = [
-  DIRECTION_DOWN,
-  DIRECTION_LEFT,
-  DIRECTION_RIGHT,
-  DIRECTION_UP
-];
-const DIRECTION_DEFAULT = DIRECTION_RIGHT;
+const DIRECTION_DEFAULT = "right";
+const DIRECTION_VALUES = {
+  down: "qld__direction-link--down",
+  left: "qld__direction-link--left",
+  right: "qld__direction-link--right",
+  up: "qld__direction-link--up"
+};
 
 export default class extends LightningElement {
   @api label;
@@ -20,10 +16,11 @@ export default class extends LightningElement {
 
   /* api: direction */
 
-  _direction;
-  _directionOriginal;
+  _direction = DIRECTION_VALUES[DIRECTION_DEFAULT];
+  _directionOriginal = DIRECTION_DEFAULT;
 
-  @api get direction() {
+  @api
+  get direction() {
     return this._directionOriginal;
   }
 
@@ -31,20 +28,18 @@ export default class extends LightningElement {
     this._directionOriginal = value;
     this._direction = normaliseString(value, {
       validValues: DIRECTION_VALUES,
-      fallbackValue: DIRECTION_DEFAULT
+      fallbackValue: DIRECTION_DEFAULT,
+      returnObjectValue: true
     });
   }
 
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "qld__direction-link": true,
-      "qld__direction-link--down": this._direction === DIRECTION_DOWN,
-      "qld__direction-link--left": this._direction === DIRECTION_LEFT,
-      "qld__direction-link--right": this._direction === DIRECTION_RIGHT,
-      "qld__direction-link--up": this._direction === DIRECTION_UP,
+      [this._direction]: this._direction,
       [this.className]: this.className
-    });
+    };
   }
 }

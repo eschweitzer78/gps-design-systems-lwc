@@ -7,14 +7,15 @@
 
   <template lwc:else>
     <c-sf-gps-ds-au-qld-side-nav
-      title={_title}
-      url={_url}
+      title={computedTitle}
+      url={computedUrl}
       nav-items={_items}
       class-name={className}
       onnavigate={handleNavigate}
     >
     </c-sf-gps-ds-au-qld-side-nav>
 
-    <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+    <c-sf-gps-ds-navigation-service lwc:ref="navsvc">
+    </c-sf-gps-ds-navigation-service>
   </template>
 </template>

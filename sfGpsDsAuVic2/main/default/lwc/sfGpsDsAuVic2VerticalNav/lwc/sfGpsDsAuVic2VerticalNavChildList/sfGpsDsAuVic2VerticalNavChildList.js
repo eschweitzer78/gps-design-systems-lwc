@@ -1,17 +1,20 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2VerticalNavChildList extends LightningElement {
+const ISEXPANDED_DEFAULT = false;
+
+export default class extends LightningElement {
   @api items;
   @api className;
 
-  /* api level */
+  /* api: level */
 
   _levelOriginal;
   _level;
   _showChildIcon;
 
-  @api get level() {
+  @api
+  get level() {
     return this._levelOriginal;
   }
 
@@ -22,35 +25,43 @@ export default class SfGpsDsAuVic2VerticalNavChildList extends LightningElement 
     this._childLevel = this._level + 1;
   }
 
-  /* api isExpanded */
+  /* api: isExpanded */
 
-  _isExpandedOriginal;
+  _isExpandedOriginal = ISEXPANDED_DEFAULT;
   _tabindex;
 
-  @api get isExpanded() {
+  @api
+  get isExpanded() {
     return this._isExpandedOriginal;
   }
 
   set isExpanded(value) {
     this._isExpandedOriginal = value;
-    this._tabindex = value ? "0" : "-1";
+    this._tabindex = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: ISEXPANDED_DEFAULT
+    })
+      ? "0"
+      : "-1";
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-vertical-nav__list": true,
       [`rpl-vertical-nav__list--level-${this._level}`]: true,
       "rpl-type-p-small": true,
       [this.className]: this.className
-    });
+    };
   }
 
-  get _decoratedItems() {
+  get decoratedItems() {
     return (this.items || []).map((item) => ({
       ...item,
       isLinkActive: item?.active && !item.items?.some((i) => i.active)
     }));
   }
+
+  /* event management */
 
   handleClick() {
     this.dispatchEvent(

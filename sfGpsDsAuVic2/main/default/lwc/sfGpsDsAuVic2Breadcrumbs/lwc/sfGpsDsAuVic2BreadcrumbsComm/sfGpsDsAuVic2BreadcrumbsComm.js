@@ -1,14 +1,22 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class sfGpsDsAuVicBreadcrumbsComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api className;
+  @api besideQuickExit;
 
+  _items = [];
   _itemsOriginal;
-  @track _items = [];
 
-  @api set items(markdown) {
+  /* api: items */
+
+  @api
+  get items() {
+    return this._itemsOriginal;
+  }
+
+  set items(markdown) {
     this._itemsOriginal = markdown;
 
     try {
@@ -18,9 +26,7 @@ export default class sfGpsDsAuVicBreadcrumbsComm extends SfGpsDsLwc {
     }
   }
 
-  get items() {
-    return this._itemsOriginal;
-  }
+  /* lifecycle */
 
   connectedCallback() {
     super.connectedCallback();

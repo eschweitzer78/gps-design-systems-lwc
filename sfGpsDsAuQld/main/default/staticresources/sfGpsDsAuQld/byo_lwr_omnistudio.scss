@@ -24,3 +24,29 @@
 .omniscript-body {
   border-right: 0 !important;
 }
+
+/* handle read only */
+
+.omni-read-only .qld__form-group {
+  -webkit-filter: none !important;
+  filter: none !important;
+}
+
+.omni-read-only [data-omni-input] .qld__form-group input:not([type=range]):not([type=checkbox]):not([type=radio]), 
+.omni-read-only [data-omni-input] .qld__form-group select, 
+.omni-read-only [data-omni-input] .qld__form-group textarea[readonly] {
+  color: var(--QLD-color-light__text);
+  border-color: var(--QLD-color-light__border--alt);
+  background: #fff;
+    padding-left: 1rem;
+}
+
+.omni-read-only [data-omni-input] .qld__form-group input:not([type=range]):not([type=checkbox]):not([type=radio])[readonly],
+.omni-read-only [data-omni-input] .qld__form-group input:not([type=range]):not([type=checkbox]):not([type=radio])[disabled],
+.omni-read-only [data-omni-input] .qld__form-group textarea[readonly],
+.omni-read-only [data-omni-input] .qld__form-group textarea[disabled],
+.omni-read-only [data-omni-input] .qld__form-group select[readonly],
+.omni-read-only [data-omni-input] .qld__form-group select[disabled] {
+    cursor: not-allowed;
+    opacity: .5;
+}

@@ -10,9 +10,11 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsUkGovWarningTextComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api as = "warning";
   @api className = "";
+
+  /* api: content */
 
   _contentOriginal;
   _contentHtml;
@@ -25,6 +27,8 @@ export default class SfGpsDsUkGovWarningTextComm extends SfGpsDsLwc {
   get content() {
     return this._contentOriginal;
   }
+
+  /* methods */
 
   generateContentHtml() {
     try {

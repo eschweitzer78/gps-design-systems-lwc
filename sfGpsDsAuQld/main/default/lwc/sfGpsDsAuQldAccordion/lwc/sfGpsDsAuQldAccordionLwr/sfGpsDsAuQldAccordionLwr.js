@@ -6,7 +6,6 @@
  */
 
 import { api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 import ExpandableStateMixin from "c/sfGpsDsExpandableStateMixin";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
@@ -188,20 +187,6 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
   @api cstyle;
   @api className;
 
-  /* items */
-
-  mapItem(item, index, length, active) {
-    let indexP1 = index + 1;
-    return {
-      ...item,
-      index: indexP1,
-      toggleId: `sfgpsds-au-qld-accordion-item-${indexP1}-toggle`,
-      contentId: `sfgpsds-au-qld-accordion-item-${indexP1}-content`,
-      inactive: !active,
-      active: active
-    };
-  }
-
   /* api readonly: allExpanded */
 
   @api
@@ -216,37 +201,45 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
     return super.isAllCollapsed();
   }
 
-  /* computed: computedClassName */
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       js: true,
       "qld__accordion-group": true,
       "qld__accordion-group--dark": this.cstyle === "dark",
       [this.className]: this.className
-    });
+    };
   }
-
-  /* computed: computedToggleAllLabel */
 
   get computedToggleAllLabel() {
     return this.allExpanded ? I18N.closeAll : I18N.openAll;
   }
 
-  /* computed: computedShowButton */
-
   get computedShowButton() {
     return this._items.length > 0;
   }
 
-  /* computed: computedButtonClassName */
-
   get computedButtonClassName() {
-    return computeClass({
+    return {
       "qld__accordion__toggle-btn": true,
       "qld__accordion__toggle-btn--closed": !this.allExpanded,
       "qld__accordion__toggle-btn--open": this.allExpanded
-    });
+    };
+  }
+
+  /* methods */
+
+  mapItem(item, index, length, active) {
+    let indexP1 = index + 1;
+    return {
+      ...item,
+      index: indexP1,
+      toggleId: `sfgpsds-au-qld-accordion-item-${indexP1}-toggle`,
+      contentId: `sfgpsds-au-qld-accordion-item-${indexP1}-content`,
+      inactive: !active,
+      active: active
+    };
   }
 
   /* event management */

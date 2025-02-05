@@ -7,28 +7,35 @@
 
 import { track } from "lwc";
 import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsFrGovFormFileOsN.html";
 
 export default class extends SfGpsDsFormFileOsN {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "fr-upload-group": true,
       "fr-input-group--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "fr-label": true
-    });
+    };
   }
 
+  get _errorMessage() {
+    return this.sfGpsDsErrorMessage?.replace("Error: ", "");
+  }
+
+  /* lifecycle */
+
   @track computedAriaDescribedBy;
+
+  render() {
+    return tmpl;
+  }
 
   renderedCallback() {
     if (super.renderedCallback) super.renderedCallback();
@@ -39,9 +46,5 @@ export default class extends SfGpsDsFormFileOsN {
     ]
       .filter((item) => item)
       .join(" ");
-  }
-
-  get _errorMessage() {
-    return this.sfGpsDsErrorMessage?.replace("Error: ", "");
   }
 }

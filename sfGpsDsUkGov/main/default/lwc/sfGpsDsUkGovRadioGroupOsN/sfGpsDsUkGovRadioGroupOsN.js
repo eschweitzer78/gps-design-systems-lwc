@@ -10,22 +10,14 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovRadioGroupOsN.html";
 
-export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioRadioGroup
-) {
-  render() {
-    return tmpl;
-  }
-
-  renderedCallback() {
-    /* parent makes a few assumptions on markup which we circumvent by not calling parent method */
-  }
+export default class extends SfGpsDsUkGovLabelMixin(OmnistudioRadioGroup) {
+  /* computed */
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "govuk-form-group": true,
       "govuk-form-group--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedAriaInvalid() {
@@ -39,10 +31,20 @@ export default class SfGpsDsUkGovRadioGroupOsN extends SfGpsDsUkGovLabelMixin(
     });
   }
 
-  get computedRadiosClass() {
-    return computeClass({
+  get computedRadiosClassName() {
+    return {
       "govuk-radios": true,
       "govuk-radios--inline": this.alignment === "horizontal"
-    });
+    };
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
+  }
+
+  renderedCallback() {
+    /* parent makes a few assumptions on markup which we circumvent by not calling parent method */
   }
 }

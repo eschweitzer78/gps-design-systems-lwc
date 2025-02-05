@@ -1,0 +1,34 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-sg-gov-alert
+    lwc:else
+    variant={variant}
+    show={show}
+    dismissible={dismissible}
+    class-name={className}
+  >
+    <svg lwc:if={iconName} slot="icon"></svg>
+    <template lwc:else>
+      <slot name="AlertIcon" slot="icon"></slot>
+    </template>
+
+    <div>
+      <c-sf-gps-ds-sg-gov-alert-heading
+        lwc:if={headerLabel}
+        header-tag={headerTag}
+      >
+        {headerLabel}
+      </c-sf-gps-ds-sg-gov-alert-heading>
+
+      <span lwc:if={content} lwc:ref="content" lwc:dom="manual"> </span>
+      <template lwc:else>
+        <slot name="AlertContent"></slot>
+      </template>
+    </div>
+  </c-sf-gps-ds-sg-gov-alert>
+</template>

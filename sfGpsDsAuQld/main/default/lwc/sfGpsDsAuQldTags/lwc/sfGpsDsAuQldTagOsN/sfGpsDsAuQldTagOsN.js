@@ -9,8 +9,10 @@ import { LightningElement, api } from "lwc";
 import { computeClass, normaliseString } from "c/sfGpsDsHelpersOs";
 
 const TAG_SIZE_DEFAULT = "default";
-const TAG_SIZE_LARGE = "large";
-const TAG_SIZES = [TAG_SIZE_DEFAULT, TAG_SIZE_LARGE];
+const TAG_SIZE_VALUES = {
+  default: "",
+  large: "qld__tag--large"
+};
 
 export default class extends LightningElement {
   @api url;
@@ -19,8 +21,8 @@ export default class extends LightningElement {
 
   /* api: size */
 
-  _sizeOriginal;
-  _size = false;
+  _sizeOriginal = TAG_SIZE_VALUES[TAG_SIZE_DEFAULT];
+  _size = TAG_SIZE_DEFAULT;
 
   @api
   get size() {
@@ -30,8 +32,9 @@ export default class extends LightningElement {
   set size(value) {
     this._sizeOriginal = value;
     this._size = normaliseString(value, {
-      validValues: TAG_SIZES,
-      fallbackValue: TAG_SIZES[0]
+      validValues: TAG_SIZE_VALUES,
+      fallbackValue: TAG_SIZE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
@@ -41,7 +44,7 @@ export default class extends LightningElement {
     return computeClass({
       qld__tag: true,
       "qld__tag--info": !this.url,
-      "qld__tag--large": this._size === TAG_SIZE_LARGE,
+      [this._size]: this._size,
       [this.className]: this.tagClassName
     });
   }

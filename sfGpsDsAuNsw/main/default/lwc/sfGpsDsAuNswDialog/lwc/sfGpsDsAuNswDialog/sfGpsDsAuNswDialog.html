@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <div
     class={computedClassName}
@@ -11,7 +12,7 @@
           <div class="nsw-dialog__title">
             <h2 id={computedAriaLabelledById}>{title}</h2>
           </div>
-          <div lwc:if={isDismissible} class="nsw-dialog__close">
+          <div lwc:if={_isDismissible} class="nsw-dialog__close">
             <button class="nsw-icon-button" onclick={handleCloseClick}>
               <span class="material-icons nsw-material-icons" aria-hidden="true"
                 >close</span
@@ -20,10 +21,12 @@
             </button>
           </div>
         </div>
+
         <div class="nsw-dialog__content">
           <slot></slot>
         </div>
       </div>
+
       <div class="nsw-dialog__bottom">
         <button
           class={computedPrimaryButtonClassName}
@@ -31,6 +34,7 @@
         >
           {primaryButtonText}
         </button>
+
         <button
           lwc:if={secondaryButtonText}
           class="nsw-button nsw-button--dark-outline-solid"

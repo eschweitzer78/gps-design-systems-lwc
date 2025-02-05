@@ -4,7 +4,7 @@ import { LightningElement, api } from "lwc";
  * @slot header
  * @slot footer
  */
-export default class sfGpsDsAuNswLwrThemeLayout extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api containerClassName = "";
@@ -13,6 +13,8 @@ export default class sfGpsDsAuNswLwrThemeLayout extends LightningElement {
   @api footerClassName = "";
 
   @api containerBackgroundColor;
+
+  /* lifecycle */
 
   renderedCallback() {
     if (this.containerBackgroundColor) {

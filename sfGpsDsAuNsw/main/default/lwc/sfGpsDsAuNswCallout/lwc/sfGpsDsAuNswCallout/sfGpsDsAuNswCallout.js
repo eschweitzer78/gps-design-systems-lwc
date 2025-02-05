@@ -6,31 +6,68 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseInteger, normaliseBoolean } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswCallout extends LightningElement {
+const LEVEL_MIN = 1;
+const LEVEL_MAX = 6;
+const LEVEL_DEFAULT = 4;
+
+const FIRSTCHILD_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
-  @api level = 4;
-  @api firstChild;
   @api className;
 
-  get computedClassName() {
-    return computeClass({
-      "nsw-callout": true,
-      [this.className]: this.className
+  /* api: firstChild */
+
+  _firstChild = FIRSTCHILD_DEFAULT;
+  _firstChildOriginal = FIRSTCHILD_DEFAULT;
+
+  @api
+  get firstChild() {
+    return this._firstChildOriginal;
+  }
+
+  set firstChild(value) {
+    this._firstChildOriginal = value;
+    this._firstChild = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: FIRSTCHILD_DEFAULT
     });
   }
 
-  get computedTitleClassName() {
-    return computeClass({
-      "nsw-h1": this.level === 1,
-      "nsw-h2": this.level === 2,
-      "nsw-h3": this.level === 3,
-      "nsw-h4": this.level === 4,
-      "nsw-h5": this.level === 5,
-      "nsw-h6": this.level >= 6
+  /* api: level */
+
+  _level = LEVEL_DEFAULT;
+  _levelOriginal = LEVEL_DEFAULT;
+
+  @api
+  get level() {
+    return this._levelOriginal;
+  }
+
+  set level(value) {
+    this._levelOriginal = value;
+    this._level = normaliseInteger(value, {
+      acceptString: true,
+      min: LEVEL_MIN,
+      max: LEVEL_MAX,
+      fallbackValue: LEVEL_DEFAULT
     });
+  }
+
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "nsw-callout": true,
+      [this.className]: this.className
+    };
+  }
+
+  get computedTitleClassName() {
+    return `nsw-h${this._level}`;
   }
 }

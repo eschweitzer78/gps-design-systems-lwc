@@ -6,9 +6,8 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 
-export default class SfGpsDsUkGovProgressIndicatorOsN extends LightningElement {
+export default class extends LightningElement {
   @api step = 1;
   @api of = 1;
   @api className;
@@ -28,9 +27,9 @@ export default class SfGpsDsUkGovProgressIndicatorOsN extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "govuk-ext-progress-indicator": true,
       [this.className]: this.className
-    });
+    };
   }
 }

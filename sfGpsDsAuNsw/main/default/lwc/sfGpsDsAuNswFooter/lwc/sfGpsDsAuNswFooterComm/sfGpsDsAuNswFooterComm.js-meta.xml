@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>61.0</apiVersion>
+  <apiVersion>62.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Footer</masterLabel>
   <targets>
@@ -28,6 +28,7 @@
         type="String"
         label="Upper footer integration procedure name"
         description="Name of the Integration Procedure mapping content to the upper footer nav when mode is set to Integration Procedure."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="upperFooterInputJSON"
@@ -35,6 +36,7 @@
         label="Upper footer input JSON"
         description="JSON formatted input parameters for the upper footer Integration Procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="upperFooterOptionsJSONN"
@@ -42,6 +44,7 @@
         label="Upper footer options JSON"
         description="JSON formatted options for the upper footer Integration Procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="mode"
@@ -62,6 +65,7 @@
         type="String"
         label="Lower footer integration procedure name"
         description="Name of the Integration Procedure mapping content to the lower footer nav when move is set to Integration Procedure."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="inputJSON"
@@ -69,6 +73,7 @@
         label="Lower footer input JSON"
         description="JSON formatted input parameters for the lower footer Integration Procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="optionsJSON"
@@ -76,6 +81,7 @@
         label="Lower footer options JSON"
         description="JSON formatted options for the lower footer Integration Procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="statement"
@@ -83,24 +89,28 @@
         label="Statement"
         description="A text displayed at the top of the lower footer."
         default="We pay respect to the Traditional Custodians and First Peoples of NSW, and acknowledge their continued connection to their country and culture."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="linkedInUrl"
         type="String"
         label="LinkedIn URL"
         description="URL of the LinkedIn page, leave blank to omit the LinkedIn social icon."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="twitterXUrl"
         type="String"
         label="Twitter/X URL"
         description="URL of the Twitter/X page, leave blank to omit the Twitter/X social icon."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="facebookUrl"
         type="String"
         label="Facebook URL"
         description="URL of the Facebook page, leave blank to omit the Facebook social icon."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="copyrightMention"
@@ -108,6 +118,7 @@
         label="Copyright mention"
         description="Copyright text in Markdown format"
         default="Copyright © 2023"
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="builtMention"
@@ -115,6 +126,7 @@
         label="Built mention"
         description="Built by/with text in Markdown format"
         default="Built with [Experience Cloud](https://www.salesforce.com/products/experience-cloud/overview/)"
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="cstyle"
@@ -129,18 +141,21 @@
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="upperFooterClassName"
         type="String"
         label="Upper footer class name"
         description="Additional CSS class to be applied to upper footer."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="lowerFooterClassName"
         type="String"
         label="Lower footer class name"
         description="Additional CSS class to be applied to lower footer."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

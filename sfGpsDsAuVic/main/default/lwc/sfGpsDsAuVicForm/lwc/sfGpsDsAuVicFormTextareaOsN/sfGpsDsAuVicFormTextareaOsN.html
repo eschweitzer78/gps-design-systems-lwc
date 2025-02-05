@@ -1,0 +1,61 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-au-vic-textarea-os-n
+    label={mergedLabel}
+    min-length={_propSetMap.minLength}
+    max-length={_propSetMap.maxLength}
+    required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
+    tab-index={tabIndex}
+    value={elementValue}
+    theme={_theme}
+    field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
+    placeholder={mergedPlaceholder}
+    message-when-value-missing={_messageWhenValueMissing}
+    message-when-too-short={_messageWhenTooShort}
+    message-when-too-long={_messageWhenTooLong}
+    message-when-bad-input={_messageWhenBadInput}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    autocomplete={_autocomplete}
+    data-id={jsonDef.name}
+    data-omni-input
+    onblur={handleBlur}
+  >
+    <template lwc:if={_propSetMap.repeat}>
+      <span
+        slot="label"
+        style="bottom: 7px; right: -11px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          lwc:if={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Textarea"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Textarea"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic-textarea-os-n>
+</template>

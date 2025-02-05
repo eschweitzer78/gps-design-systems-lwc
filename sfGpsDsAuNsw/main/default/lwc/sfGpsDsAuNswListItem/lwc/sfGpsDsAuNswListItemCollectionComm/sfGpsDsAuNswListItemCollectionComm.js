@@ -5,13 +5,23 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+const DATE_STYLE_DEFAULT = "medium";
+
 import { api } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
+import { isArray } from "c/sfGpsDsHelpers";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
-export default class SfGpsDsAuNswListItemCollectionComm extends NavigationMixin(
-  SfGpsDsIpLwc
-) {
+export default class extends NavigationMixin(SfGpsDsIpLwc) {
+  @api dateStyle = DATE_STYLE_DEFAULT;
+  @api isRelative = false;
+  @api isBlock = false;
+  @api isReversed = false;
+  @api showLink = false;
+  @api className;
+
+  /* api: ipName, String */
+
   @api
   get ipName() {
     return super.ipName;
@@ -20,6 +30,8 @@ export default class SfGpsDsAuNswListItemCollectionComm extends NavigationMixin(
   set ipName(value) {
     super.ipName = value;
   }
+
+  /* api: inputJSON, String */
 
   @api
   get inputJSON() {
@@ -30,6 +42,8 @@ export default class SfGpsDsAuNswListItemCollectionComm extends NavigationMixin(
     super.inputJSON = value;
   }
 
+  /* api: optionsJSON, String */
+
   @api
   get optionsJSON() {
     return super.optionsJSON;
@@ -39,19 +53,22 @@ export default class SfGpsDsAuNswListItemCollectionComm extends NavigationMixin(
     super.optionsJSON = value;
   }
 
-  @api isBlock = false;
-  @api isReversed = false;
-  @api isRelative = false;
-  @api showLink = false;
-  @api dateStyle = "medium";
-  @api className;
+  /* computed */
+
+  get _isEmpty() {
+    return (
+      this._didLoadOnce && (this._items == null || this._items.length === 0)
+    );
+  }
+
+  /* methods */
 
   mapIpData(data) {
     if (!data) {
       return null;
     }
 
-    if (!Array.isArray(data)) {
+    if (!isArray(data)) {
       data = [data];
     }
 
@@ -64,12 +81,6 @@ export default class SfGpsDsAuNswListItemCollectionComm extends NavigationMixin(
         })`,
       key: item.key || `item-${index + 1}`
     }));
-  }
-
-  get isEmpty() {
-    return (
-      this._didLoadOnce && (this._items == null || this._items.length === 0)
-    );
   }
 
   /* lifecycle */

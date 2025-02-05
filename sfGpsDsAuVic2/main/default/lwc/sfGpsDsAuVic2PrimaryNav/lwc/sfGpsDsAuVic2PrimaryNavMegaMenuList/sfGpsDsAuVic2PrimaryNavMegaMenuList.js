@@ -6,10 +6,13 @@ export default class extends FocusMixin(LightningElement) {
   @api items; // IRplPrimaryNavItem[]
   @api activeNavItems; // IRplPrimaryNavActiveItems
 
-  _levelOriginal;
-  _level;
+  /* api: level */
 
-  @api get level() {
+  _level;
+  _levelOriginal;
+
+  @api
+  get level() {
     return this._levelOriginal;
   }
 
@@ -18,20 +21,22 @@ export default class extends FocusMixin(LightningElement) {
     this._level = Number(value);
   }
 
+  /* computed */
+
   get computedClassName() {
     return `rpl-primary-nav__mega-menu-list rpl-primary-nav__mega-menu-list--level-${this._level}`;
   }
 
-  get isLevel1() {
+  get computedIsLevel1() {
     return this._level === 1;
   }
 
-  get parentId() {
+  get _parentId() {
     return this.parent?.id;
   }
 
-  get parentFocusKey() {
-    return `list:${this._level}:${this.parentId}`;
+  get _parentFocusKey() {
+    return `list:${this._level}:${this._parentId}`;
   }
 
   get computedShowParent() {
@@ -51,6 +56,8 @@ export default class extends FocusMixin(LightningElement) {
 
     return rv;
   }
+
+  /* event management */
 
   handleToggleItem(event) {
     this.dispatchEvent(

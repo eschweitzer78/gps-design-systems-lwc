@@ -1,0 +1,45 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <div class="rpl-campaign-secondary__row">
+      <div lwc:if={computedHasMedia} class="rpl-campaign-secondary__left">
+        <div class="rpl-campaign-secondary__content">
+          <template lwc:if={image}>
+            <c-sf-gps-ds-au-vic-responsive-img
+              src={image.src}
+              alt={image.alt}
+              class-name="rpl-campaign-secondary__image"
+            >
+            </c-sf-gps-ds-au-vic-responsive-img>
+          </template>
+
+          <template lwc:elseif={video}>
+            <c-sf-gps-ds-au-vic-embedded-video
+              variant={computedVideoVariant}
+              src={video.src}
+              media-link={video.mediaLink}
+              class-name="rpl-campaign-secondary__video"
+            >
+            </c-sf-gps-ds-au-vic-embedded-video>
+          </template>
+        </div>
+      </div>
+      <div class="rpl-campaign-secondary__right">
+        <div class="rpl-campaign-secondary__content">
+          <h2 lwc:if={title} class="rpl-campaign-secondary__title">{title}</h2>
+
+          <div class="rpl-campaign-secondary__summary">
+            <slot></slot>
+          </div>
+        </div>
+
+        <c-sf-gps-ds-au-vic-button
+          lwc:if={link}
+          theme="primary"
+          href={link.url}
+        >
+          {link.text}
+        </c-sf-gps-ds-au-vic-button>
+      </div>
+    </div>
+  </div>
+</template>

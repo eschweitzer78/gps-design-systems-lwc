@@ -5,13 +5,19 @@ import { NavigationMixin } from "lightning/navigation";
 
 export default class extends NavigationMixin(SfGpsDsLwc) {
   @api el;
+  @api variant;
+  @api iconName;
+  @api iconPosition;
+  @api disabled;
+  @api className;
 
   /* api: link */
 
-  _linkOriginal;
   _link;
+  _linkOriginal;
 
-  @api get link() {
+  @api
+  get link() {
     return this._linkOriginal;
   }
 
@@ -26,11 +32,7 @@ export default class extends NavigationMixin(SfGpsDsLwc) {
     }
   }
 
-  @api variant;
-  @api iconName;
-  @api iconPosition;
-  @api disabled;
-  @api className;
+  /* computed */
 
   get computedLabel() {
     return this._link?.text;
@@ -40,7 +42,7 @@ export default class extends NavigationMixin(SfGpsDsLwc) {
     return this._link?.url;
   }
 
-  /* events */
+  /* event management */
 
   handleClick() {
     if (this._link?.url && !this.disabled) {

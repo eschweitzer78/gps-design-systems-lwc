@@ -1,6 +1,6 @@
 <template lwc:render-mode="light">
-  <table if:true={isVisible} class={computedClassName}>
-    <thead if:true={_headers}>
+  <table lwc:if={computedIsVisible} class={computedClassName}>
+    <thead lwc:if={_headers}>
       <tr>
         <template for:each={_headers} for:item="header">
           <th
@@ -14,7 +14,8 @@
         </template>
       </tr>
     </thead>
-    <tbody if:true={_rows}>
+
+    <tbody lwc:if={_rows}>
       <template for:each={_rows} for:item="row">
         <tr key={row.key}>
           <template for:each={row.cols} for:item="col">

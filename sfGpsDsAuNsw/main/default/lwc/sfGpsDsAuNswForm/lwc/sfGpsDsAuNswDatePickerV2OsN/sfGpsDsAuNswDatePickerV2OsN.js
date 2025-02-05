@@ -67,14 +67,15 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   /* NSW DS */
 
   /**
-   * api: multipleInput
+   * api: multipleInput, Boolean
    * pass a boolean or the string true/false to flag this input as being multi-field
    */
 
-  _multipleInputOriginal;
   _multipleInput = false;
+  _multipleInputOriginal;
 
-  @api get multipleInput() {
+  @api
+  get multipleInput() {
     return this._multipleInputOriginal;
   }
 
@@ -91,15 +92,16 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    * pass a space-separated list of parsable dates to mark them as disabled
    */
 
-  datesDisabledOriginal;
   disabledArray = [];
+  _datesDisabledOriginal;
 
-  @api get datesDisabled() {
-    return this.datesDisabledOriginal;
+  @api
+  get datesDisabled() {
+    return this._datesDisabledOriginal;
   }
 
   set datesDisabled(value) {
-    this.datesDisabledOriginal = value;
+    this._datesDisabledOriginal = value;
     this.disabledArray =
       this.datesDisabled && this.datesDisabled instanceof String
         ? this.datesDisabled.split(" ").map((date) => this.parseValue(date))
@@ -127,11 +129,12 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    * passed by OmniScript
    */
 
-  _localeFormatOriginal;
   _localeFormat;
+  _localeFormatOriginal;
   _weekdays;
 
-  @api get localeFormat() {
+  @api
+  get localeFormat() {
     return this._localeFormatOriginal;
   }
 
@@ -170,7 +173,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   _messageWhenValueMissing;
 
-  @api get messageWhenValueMissing() {
+  @api
+  get messageWhenValueMissing() {
     return this._messageWhenValueMissing || I18N.valueMissingError;
   }
 
@@ -183,7 +187,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   _messageWhenBadInput;
 
-  @api get messageWhenBadInput() {
+  @api
+  get messageWhenBadInput() {
     return formatTemplate(this._messageWhenBadInput || I18N.badInputError, {
       0: this.format
     });
@@ -198,7 +203,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   _messageWhenRangeUnderflow;
 
-  @api get messageWhenRangeUnderflow() {
+  @api
+  get messageWhenRangeUnderflow() {
     return this._messageWhenRangeUnderflow
       ? this.mergeFields(this._messageWhenRangeUnderflow)
       : I18N.underflowError;
@@ -211,7 +217,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   /* api: messageWhenRangeOverflow */
 
-  @api get messageWhenRangeOverflow() {
+  @api
+  get messageWhenRangeOverflow() {
     return this._messageWhenRangeOverflow
       ? this.mergeFields(this._messageWhenRangeOverflow)
       : I18N.overflowError;
@@ -224,10 +231,11 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   /* api: format */
 
-  _formatOriginal;
   _format;
+  _formatOriginal;
 
-  @api get format() {
+  @api
+  get format() {
     const rv = this._format || dateFormat || "YYYY-MM-DD";
 
     if (DEBUG) console.log(CLASS_NAME, "get format", rv);
@@ -255,7 +263,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   _min;
   _max;
 
-  @api get max() {
+  @api
+  get max() {
     return this._max;
   }
 
@@ -268,7 +277,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     if (DEBUG) console.log(CLASS_NAME, "< set format", this._max);
   }
 
-  @api get min() {
+  @api
+  get min() {
     return this._min;
   }
 
@@ -299,7 +309,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   @track _displayMonthValue = "";
   @track _displayYearValue = "";
 
-  @api get value() {
+  @api
+  get value() {
     if (DEBUG) console.log(CLASS_NAME, "> get value");
 
     const rv = this._value;
@@ -379,7 +390,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   _outputFormat;
 
-  @api get outputFormat() {
+  @api
+  get outputFormat() {
     return this._outputFormat || DEFAULT_OUTPUT_FORMAT;
   }
 
@@ -399,7 +411,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   _outputType;
 
-  @api get outputType() {
+  @api
+  get outputType() {
     return this._outputType || DEFAULT_OUTPUT_TYPE;
   }
 
@@ -503,23 +516,23 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "nsw-form__label": true,
       "nsw-form__required": this.required && !this.hideAsterisk
-    });
+    };
   }
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "nsw-form__group": !this.hideFormGroup
-    });
+    };
   }
 
   get computedPickerClassName() {
-    return computeClass({
+    return {
       "nsw-date-picker": true,
       "nsw-date-picker--is-visible": this.pickerVisible
-    });
+    };
   }
 
   /* methods */
@@ -766,6 +779,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    * @param {string} outputFormat
    * @returns the formatted date
    */
+
   formatValue(date, outputFormat = true) {
     if (isValidDate(date)) {
       return this.outputType === "string"
@@ -1100,8 +1114,6 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     return this.multipleInput ? tmplMulti : tmpl;
   }
 
-  /* var: onClickOutside */
-
   _onClickOutside;
   _rendered = false;
 
@@ -1161,7 +1173,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   _constraintApi;
 
-  @api get _constraint() {
+  @api
+  get _constraint() {
     if (!this._constraintApi) {
       const overrides = {
         badInput: () => {
@@ -1209,7 +1222,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     return this._constraintApi;
   }
 
-  @api get validity() {
+  @api
+  get validity() {
     if (!this || !this._constraint) return null;
 
     if (DEBUG) console.log(CLASS_NAME, "> validity");

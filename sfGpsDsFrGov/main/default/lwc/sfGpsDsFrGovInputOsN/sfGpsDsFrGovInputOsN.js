@@ -17,7 +17,7 @@ export default class extends OmniscriptInput {
   @api labelClassName;
   @api readOnly;
 
-  /* api hideFormGroup */
+  /* api: hideFormGroup */
 
   _hideFormGroup = false;
   _hideFormGroupOriginal = false;
@@ -36,50 +36,20 @@ export default class extends OmniscriptInput {
     });
   }
 
-  /* Methods */
-  /* ------- */
-
-  render() {
-    return tmpl;
-  }
-
-  initOptions() {
-    super.initOptions();
-
-    switch (this._innerElement) {
-      case "c-time-picker":
-        this._innerElement = "c-sf-gps-ds-fr-gov-time-picker-os-n";
-        break;
-
-      case "c-date-picker":
-        this._innerElement = "c-sf-gps-ds-fr-gov-date-picker-os-n";
-        break;
-
-      case "c-datetime-picker":
-        this._innerElement = "c-sf-gps-ds-fr-gov-datetime-picker-os-n";
-        break;
-
-      default:
-    }
-
-    if (DEBUG) console.log(CLASS_NAME, "initOptions", this._innerElement);
-  }
-
-  /* Getters */
-  /* ------- */
+  /* computed */
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "fr-input-group": !this._hideFormGroup,
       "fr-input-group--error": !this._hideFormGroup && this.sfGpsDsIsError,
       "fr-input-group--disabled": this.readOnly
-    });
+    };
   }
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "fr-label": true
-    });
+    };
   }
 
   get computedInputClassName() {
@@ -88,7 +58,7 @@ export default class extends OmniscriptInput {
      * but setting it it only matters for nds theme
      **/
 
-    return computeClass({
+    return {
       "fr-upload": this.isFile,
       "fr-input": this.isInput || this._isFormula,
       "fr-input--error":
@@ -96,7 +66,7 @@ export default class extends OmniscriptInput {
       "fr-input--valid":
         (this.isInput || this._isFormula) && this.sfGpsDsIsValid,
       "vlocity-input": false
-    });
+    };
   }
 
   get computedErrorMessageBlockId() {
@@ -126,5 +96,33 @@ export default class extends OmniscriptInput {
     ]
       .filter((item) => item)
       .join(" ");
+  }
+
+  initOptions() {
+    super.initOptions();
+
+    switch (this._innerElement) {
+      case "c-time-picker":
+        this._innerElement = "c-sf-gps-ds-fr-gov-time-picker-os-n";
+        break;
+
+      case "c-date-picker":
+        this._innerElement = "c-sf-gps-ds-fr-gov-date-picker-os-n";
+        break;
+
+      case "c-datetime-picker":
+        this._innerElement = "c-sf-gps-ds-fr-gov-datetime-picker-os-n";
+        break;
+
+      default:
+    }
+
+    if (DEBUG) console.log(CLASS_NAME, "initOptions", this._innerElement);
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

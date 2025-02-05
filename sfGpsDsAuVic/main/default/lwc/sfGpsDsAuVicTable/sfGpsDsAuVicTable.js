@@ -1,20 +1,25 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { isArray } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVicTable extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
-  _headersOriginal;
-  _headers;
+  @api className;
 
-  @api get headers() {
+  /* api: headers */
+
+  _headers;
+  _headersOriginal;
+
+  @api
+  get headers() {
     return this._headersOriginal;
   }
 
   set headers(value) {
     this._headersOriginal = value;
 
-    if (!Array.isArray(value)) {
+    if (!isArray(value)) {
       return;
     }
 
@@ -24,17 +29,20 @@ export default class SfGpsDsAuVicTable extends LightningElement {
     }));
   }
 
-  _rowsOriginal;
-  _rows;
+  /* api: rows */
 
-  @api get rows() {
+  _rows;
+  _rowsOriginal;
+
+  @api
+  get rows() {
     return this._rowsOriginal;
   }
 
   set rows(value) {
     this._rowsOriginal = value;
 
-    if (!Array.isArray(value)) {
+    if (!isArray(value)) {
       return;
     }
 
@@ -48,16 +56,16 @@ export default class SfGpsDsAuVicTable extends LightningElement {
     }));
   }
 
-  @api className;
+  /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-table": true,
       [this.className]: this.className
-    });
+    };
   }
 
-  get isVisible() {
+  get computedIsVisible() {
     return this.headers || this.rows;
   }
 }

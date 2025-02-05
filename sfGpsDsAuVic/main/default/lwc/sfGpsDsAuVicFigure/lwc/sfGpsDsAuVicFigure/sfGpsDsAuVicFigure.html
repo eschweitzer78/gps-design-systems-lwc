@@ -1,0 +1,15 @@
+<template lwc:render-mode="light">
+  <figure class={computedClassName}>
+    <img
+      lwc:if={image}
+      class="rpl-figure__image"
+      src={image.src}
+      alt={image.alt}
+    />
+
+    <figcaption lwc:if={computedShowCaption}>
+      <span class="rpl-figure__caption" lwc:if={caption}>{caption}</span>
+      <span class="rpl-figure__source" lwc:if={source}>{source}</span>
+    </figcaption>
+  </figure>
+</template>

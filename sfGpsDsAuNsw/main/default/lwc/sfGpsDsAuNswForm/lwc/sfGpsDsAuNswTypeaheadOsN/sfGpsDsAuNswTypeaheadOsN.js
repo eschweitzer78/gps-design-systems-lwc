@@ -10,18 +10,14 @@ import StatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswTypeaheadOsN.html";
 
-export default class SfGpsDsAuNswTypeaheadOsN extends StatusHelperMixin(
-  OmnistudioTypeahead
-) {
-  render() {
-    return tmpl;
-  }
+export default class extends StatusHelperMixin(OmnistudioTypeahead) {
+  /* computed */
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "nsw-form__label": true,
       "nsw-form__required": this.required
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -32,11 +28,17 @@ export default class SfGpsDsAuNswTypeaheadOsN extends StatusHelperMixin(
   }
 
   get computedComboboxClassName() {
-    return computeClass({
+    return {
       "sfgpsds-combobox": true,
       "sfgpsds-dropdown-trigger": true,
       "sfgpsds-dropdown-trigger_click": true,
       "sfgpsds-is-open": this.isLookupVisible
-    });
+    };
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

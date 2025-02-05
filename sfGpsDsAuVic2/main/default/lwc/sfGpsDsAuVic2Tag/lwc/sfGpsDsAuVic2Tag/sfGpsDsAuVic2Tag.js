@@ -1,14 +1,23 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
-const RplTagVariants = ["default", "neutral"]; //, "dark"];
-const VARIANT_DEFAULT = RplTagVariants[0];
+const RplTagVariants = {
+  default: "rpl-tag--default",
+  neutral: "rpl-tag--neutral"
+};
+const VARIANT_DEFAULT = "default";
 
-export default class SfGpsDsAuVic2Tag extends LightningElement {
-  _variantOriginal = VARIANT_DEFAULT;
+export default class extends LightningElement {
+  @api label;
+  @api className;
+
+  /* api: variant */
+
   _variant = VARIANT_DEFAULT;
+  _variantOriginal = RplTagVariants[VARIANT_DEFAULT];
 
-  @api get variant() {
+  @api
+  get variant() {
     return this._variantOriginal;
   }
 
@@ -16,19 +25,19 @@ export default class SfGpsDsAuVic2Tag extends LightningElement {
     this._variantOriginal = value;
     this._variant = normaliseString(value, {
       validValues: RplTagVariants,
-      fallbackValue: VARIANT_DEFAULT
+      fallbackValue: VARIANT_DEFAULT,
+      returnObjectValue: true
     });
   }
 
-  @api label;
-  @api className;
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-tag": true,
-      [`rpl-tag--${this.variant}`]: this.variant,
       "rpl-type-label-small": true,
+      [this._variant]: this._variant,
       [this.className]: this.className
-    });
+    };
   }
 }

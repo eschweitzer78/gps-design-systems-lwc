@@ -9,7 +9,7 @@ import { api, track } from "lwc";
 import SfGpsDsFormTypeahead from "c/sfGpsDsFormTypeaheadOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { debounce } from "omnistudio/utility";
-import { computeClass } from "c/sfGpsDsHelpersOs";
+import { isString, isObject, isArray } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormAddressTypeaheadOsN.html";
 
 const STATUS_TYPING = "typing";
@@ -19,9 +19,7 @@ const MODE_SMART = "smart";
 const MODE_MANUAL = "manual";
 const DEFAULT_COUNTRY = "United Kingdom";
 
-export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormTypeahead
-) {
+export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsFormTypeahead) {
   @api street;
   @api locality;
   @api postcode;
@@ -192,7 +190,7 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
       .then((e) => {
         this.applyCallResp({
           ...this.elementValue,
-          value: Array.isArray(e) ? e[0] : e,
+          value: isArray(e) ? e[0] : e,
           status: STATUS_RESOLVED
         });
 
@@ -243,12 +241,12 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
   }
 
   ingest(v) {
-    if (v && (typeof v === "string" || v instanceof String)) {
+    if (isString(v)) {
       this.isSmart = true;
       this.elementValueLabel = v;
       this.elementValueValue = {};
       this.elementValueStatus = STATUS_TYPING;
-    } else if (v && typeof v === "object") {
+    } else if (isObject(v)) {
       this.isSmart = v.mode ? v.mode === MODE_SMART : true;
       this.elementValueLabel = v.label;
       this.elementValueValue = { ...v.value };
@@ -327,7 +325,7 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
   set options(v) {
     this._ath_options = v;
 
-    if (v && Array.isArray(v)) {
+    if (v && isArray(v)) {
       if (v.length === 1 && v[0].name) {
         // simulate selection after all asynchronous activities are done
         Promise.resolve().then(() => {
@@ -437,22 +435,22 @@ export default class sfGpsDsUkGovFormAddressTypeaheadOsN extends SfGpsDsUkGovLab
   // STYLE EXPRESSIONS
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "govuk-form-group": true,
       "govuk-form-group--error": this.isError
-    });
+    };
   }
 
-  get computedTypeaheadClass() {
-    return computeClass({
+  get computedTypeaheadClassName() {
+    return {
       "sfgpsds-hide": !this.isSmart
-    });
+    };
   }
 
   get computedManualClassName() {
-    return computeClass({
+    return {
       "sfgpsds-hide": this.isSmart
-    });
+    };
   }
 
   get complete() {

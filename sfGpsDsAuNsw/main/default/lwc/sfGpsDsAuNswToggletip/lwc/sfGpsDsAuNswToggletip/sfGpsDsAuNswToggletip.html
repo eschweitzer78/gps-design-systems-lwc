@@ -1,0 +1,30 @@
+<!-- sldsValidatorIgnore -->
+<template lwc:render-mode="light">
+  <div
+    lwc:ref="toggletip"
+    class={computedToggleTipClassName}
+    role="dialog"
+    aria-labelledby="nsw-toggletip__header"
+    aria-describedby="nsw-toggletip__content"
+    aria-expanded={_isOpen}
+    tabindex="0"
+  >
+    <div class="nsw-toggletip__header">
+      <div id="nsw-toggletip__header" class="sr-only">{title}</div>
+      <button class="nsw-icon-button" onclick={toggleToggletip}>
+        <span class="sr-only">Remove file</span>
+        <span class="material-icons nsw-material-icons" aria-hidden="true"
+          >close</span
+        >
+      </button>
+    </div>
+
+    <c-sf-gps-ds-focus-trap>
+      <div id="nsw-toggletip__content" class="nsw-toggletip__content">
+        <slot></slot>
+      </div>
+    </c-sf-gps-ds-focus-trap>
+
+    <div lwc:ref="arrow" class="nsw-toggletip__arrow"></div>
+  </div>
+</template>

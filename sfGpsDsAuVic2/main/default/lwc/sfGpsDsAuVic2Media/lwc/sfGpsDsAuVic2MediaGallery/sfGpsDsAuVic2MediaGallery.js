@@ -1,5 +1,5 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { isArray } from "c/sfGpsDsHelpers";
 
 export default class SfGpsDsAuVic2MediaGallery extends LightningElement {
   @api id;
@@ -12,15 +12,17 @@ export default class SfGpsDsAuVic2MediaGallery extends LightningElement {
   @track activeContentSlide = 0;
   @track activeModalContentSlide = 0;
 
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-media-gallery": true,
       [this.className]: this.className
-    });
+    };
   }
 
   get decoratedImageItems() {
-    if (!Array.isArray(this.items)) {
+    if (!isArray(this.items)) {
       return [];
     }
 
@@ -38,12 +40,12 @@ export default class SfGpsDsAuVic2MediaGallery extends LightningElement {
         `primary-${this.id}-${index + 1}-title` +
         (item.caption ? ` primary-${this.id}-${index + 1}-caption` : "")
     }));
-    console.log("decoratedThumbnailItems", JSON.parse(JSON.stringify(rv)));
+
     return rv;
   }
 
   get decoratedContentItems() {
-    if (!Array.isArray(this.items)) {
+    if (!isArray(this.items)) {
       return [];
     }
 
@@ -57,12 +59,12 @@ export default class SfGpsDsAuVic2MediaGallery extends LightningElement {
         alt: item.alt
       }
     }));
-    console.log("decoratedImageItems", JSON.parse(JSON.stringify(rv)));
+
     return rv;
   }
 
   get decoratedModalImageItems() {
-    if (!Array.isArray(this.items)) {
+    if (!isArray(this.items)) {
       return [];
     }
 
@@ -83,7 +85,7 @@ export default class SfGpsDsAuVic2MediaGallery extends LightningElement {
   }
 
   get decoratedModalContentItems() {
-    if (!Array.isArray(this.items)) {
+    if (!isArray(this.items)) {
       return [];
     }
 
@@ -100,13 +102,13 @@ export default class SfGpsDsAuVic2MediaGallery extends LightningElement {
   }
 
   get computedChangeNotice() {
-    return Array.isArray(this.items)
+    return isArray(this.items)
       ? this.items[this.activeContentSlide].title
       : null;
   }
 
   get computedModalChangeNotice() {
-    return Array.isArray(this.items)
+    return isArray(this.items)
       ? this.items[this.activeModalContentSlide].title
       : null;
   }

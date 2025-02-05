@@ -11,27 +11,23 @@ import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovTypeaheadOsN.html";
 
-export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsTypeahead
-) {
-  render() {
-    return tmpl;
-  }
+export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsTypeahead) {
+  /* computed */
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "govuk-form-group": true,
       "govuk-form-group--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "govuk-input": true,
       "govuk-input--error": this.sfGpsDsIsError,
       "sfgpsds-input": true,
       "sfgpsds-combobox__input": true
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -45,5 +41,11 @@ export default class SfGpsDsUkGovTypeaheadOs extends SfGpsDsUkGovLabelMixin(
   get validationMessage() {
     const rv = this.sfGpsDsErrorMessage;
     return rv;
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

@@ -1,69 +1,89 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+import { normaliseString, isString } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVicTextIcon extends SfGpsDsLwc {
+const PLACEMENT_AFTER = "after";
+const PLACEMENT_BEFORE = "before";
+const PLACEMENT_DEFAULT = PLACEMENT_AFTER;
+const PLACEMENT_VALUES = [PLACEMENT_AFTER, PLACEMENT_BEFORE];
+
+export default class extends SfGpsDsLwc {
   static renderMode = "light";
 
   @api symbol;
   @api color = "primary";
-  @api placement = "after";
   @api size = "m";
 
+  /* api: placement */
+
+  _placement = PLACEMENT_DEFAULT;
+  _placementOriginal = PLACEMENT_DEFAULT;
+
+  @api
+  get placement() {
+    return this._placementOriginal;
+  }
+
+  set placement(value) {
+    this._placementOriginal = value;
+    this._placement = normaliseString(value, {
+      validValues: PLACEMENT_VALUES,
+      fallbackValue: PLACEMENT_DEFAULT
+    });
+  }
+
+  /* api: text */
+
   _text;
-  @api get text() {
+  _textArray;
+  _textWordCount;
+
+  @api
+  get text() {
     return this._text;
   }
 
   set text(value) {
     this._text = value;
-    this.textArray = this.trimmedText.split(" ");
-    this.textWordCount = this.textArray.length;
+    this._textArray = isString(value) ? value.trim().split(" ") : [];
+    this._textWordCount = this._textArray.length;
   }
 
-  @track textArray;
-  @track textWordCount;
+  /* computed */
 
-  get showBefore() {
-    return this.text && this.symbol && this.placement === "before";
+  get computedShowBefore() {
+    return this._text && this.symbol && this._placement === PLACEMENT_BEFORE;
   }
 
-  get showAfter() {
-    return this.text && this.symbol && this.placement === "after";
+  get computedShowAfter() {
+    return this._text && this.symbol && this._placement === PLACEMENT_AFTER;
   }
 
-  get showOtherwise() {
-    return (
-      !this.symbol ||
-      (this.placement !== "before" && this.placement !== "after")
-    );
+  get computedHasMultipleWords() {
+    return this._textWordCount > 1;
   }
 
-  get hasMultipleWords() {
-    return this.textWordCount > 1;
+  get computedTextWithoutLastWord() {
+    return this._textArray.slice(0, this._textWordCount - 1).join(" ");
   }
 
-  get trimmedText() {
-    return this.text ? this.text.trim() : "";
+  get computedTextLastWord() {
+    return this._textArray[this._textWordCount - 1];
   }
 
-  get textWithoutLastWord() {
-    return this.textArray.slice(0, this.textWordCount - 1).join(" ");
+  get computedTextWithoutFirstWord() {
+    return this._textArray.slice(1).join(" ");
   }
 
-  get textLastWord() {
-    return this.textArray[this.textWordCount - 1];
+  get computedTextFirstWord() {
+    return this._textArray[0];
   }
 
-  get textWithoutFirstWord() {
-    return this.textArray.slice(1).join(" ");
-  }
-
-  get textFirstWord() {
-    return this.textArray[0];
-  }
-
-  get computedIconClass() {
-    return `rpl-text-icon--${this.placement}`;
+  get computedIconClassName() {
+    return {
+      "rpl-text-icon--after": this._placement === PLACEMENT_AFTER,
+      "rpl-text-icon--before": this._placement === PLACEMENT_BEFORE
+    };
   }
 
   get space() {

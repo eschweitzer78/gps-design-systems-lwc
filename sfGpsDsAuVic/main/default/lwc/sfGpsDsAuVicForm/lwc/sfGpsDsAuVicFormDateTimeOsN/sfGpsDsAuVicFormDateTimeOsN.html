@@ -1,0 +1,81 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-au-vic-input-os-n
+    type="datetime"
+    label={mergedLabel}
+    required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
+    date-placeholder={mergedDatePlaceholder}
+    time-placeholder={mergedTimePlaceholder}
+    value={elementValue}
+    tab-index={tabIndex}
+    output-type="date"
+    time-format={_timeFormat}
+    date-format={_dateFormat}
+    date-time-locale-format={allCustomLabelsUtil.OmniDayJsLocaleFormats}
+    date-time-locale-format-invalid-error={allCustomLabelsUtil.OmniLocaleFormatsInvalid}
+    select-date-label={allCustomLabelsUtil.OmniSelectDate}
+    prev-month-label={allCustomLabelsUtil.OmniPrevMonth}
+    next-month-label={allCustomLabelsUtil.OmniNextMonth}
+    pick-year-label={allCustomLabelsUtil.OmniPickYr}
+    today-label={allCustomLabelsUtil.OmniToday}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    min={_min}
+    message-when-value-missing={_messageWhenValueMissing}
+    message-when-pattern-mismatch={_messageWhenPatternMismatch}
+    message-when-too-short={_messageWhenTooShort}
+    message-when-too-long={_messageWhenTooLong}
+    message-when-bad-input={_messageWhenBadInput}
+    message-when-range-overflow={_messageWhenRangeOverflow}
+    message-when-range-underflow={_messageWhenRangeUnderflow}
+    message-when-step-mismatch={_messageWhenStepMismatch}
+    message-when-type-mismatch={_messageWhenTypeMismatch}
+    max={_max}
+    timezone={_timezone}
+    interval={_timeInterval}
+    field-level-help={mergedHelpText}
+    filed-level-help-position={_propSetMap.helpTextPos}
+    theme={_theme}
+    time-label=""
+    date-label=""
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
+  >
+    <template lwc:if={_propSetMap.repeat}>
+      <span
+        slot="label"
+        style="bottom: 7px; right: 13px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          lwc:if={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Date/Time"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Date/Time"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic-input-os-n>
+</template>

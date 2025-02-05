@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { uniqueId, computeClass } from "c/sfGpsDsHelpers";
+import { uniqueId } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
   static renderMode = "light";
@@ -8,11 +8,13 @@ export default class extends LightningElement {
   @api items = []; // Array<{index, text, url}>
   @api className;
 
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "qld__inpage-nav-links": true,
       [this.className]: this.className
-    });
+    };
   }
 
   _labelledById;

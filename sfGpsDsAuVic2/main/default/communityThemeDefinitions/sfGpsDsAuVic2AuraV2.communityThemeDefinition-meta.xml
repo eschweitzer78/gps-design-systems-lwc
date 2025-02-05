@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CommunityThemeDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>State of Victoria Ripple v2</masterLabel>
+  <description
+  >A fully packaged theme for the Australian state Government of Victoria with the Ripple v2 Design System.</description>
+  <publisher>Salesforce Global Public Sector</publisher>
+  <bundlesInfo>
+    <title>Distinctly VIC Government</title>
+    <description
+    >This template gives your portal a distincly VIC Government look and feel and helps digital product teams create a good customer experience quickly.</description>
+    <order>1</order>
+    <type>Highlight</type>
+  </bundlesInfo>
+  <bundlesInfo>
+    <title>Wide component range</title>
+    <description>
+      A range of common tried and tested design components lets you build your website 
+      or service in record time.
+    </description>
+    <order>2</order>
+    <type>Highlight</type>
+  </bundlesInfo>
+  <bundlesInfo>
+    <title>Accessible and compliant</title>
+    <description>
+      Meet branding and WCAG 2.1 AA
+      accessibility guidelines, and follow VIC design standards for user needs.
+    </description>
+    <order>3</order>
+    <type>Highlight</type>
+  </bundlesInfo>
+  <bundlesInfo>
+    <image>sfGpsDsAuVic2AuraThemePreview1</image>
+    <order>1</order>
+    <title>Theme 1</title>
+    <type>PreviewImage</type>
+  </bundlesInfo>
+  <bundlesInfo>
+    <image>sfGpsDsAuVic2AuraThemePreview2</image>
+    <order>2</order>
+    <title>Theme 2</title>
+    <type>PreviewImage</type>
+  </bundlesInfo>
+  <bundlesInfo>
+    <image>sfGpsDsAuVic2AuraThemePreview3</image>
+    <order>3</order>
+    <title>Theme 3</title>
+    <type>PreviewImage</type>
+  </bundlesInfo>
+
+  <enableExtendedCleanUpOnDelete>true</enableExtendedCleanUpOnDelete>
+  <defaultBrandingSet>sfGpsDsAuVic2Aura</defaultBrandingSet>
+  <themeSetting>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Default</themeLayout>
+    <themeLayoutType>Inner</themeLayoutType>
+  </themeSetting>
+  <themeSetting>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_Login</themeLayout>
+    <themeLayoutType>Login</themeLayoutType>
+  </themeSetting>
+  <themeSetting>
+    <themeLayout>sfGpsDsAuVic2Aura_themeLayout_ServiceNotAvailable</themeLayout>
+    <themeLayoutType>ServiceNotAvailable</themeLayoutType>
+  </themeSetting>
+</CommunityThemeDefinition>

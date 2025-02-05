@@ -1,78 +1,78 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import { parseIso8601, replaceInnerHtml } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuNswListItemComm extends SfGpsDsLwc {
-  @api isBlock = false;
-  @api isReversed = false;
-  @api showLink = false;
-  @api dateStyle = "medium";
+const DATE_STYLE_DEFAULT = "medium";
+const HEADLINE_DEFAULT = {};
+
+export default class extends SfGpsDsLwc {
   @api label;
   @api image;
   @api imageAlt;
+  @api isBlock = false;
+  @api isReversed = false;
+  @api showLink = false;
+  @api dateStyle = DATE_STYLE_DEFAULT;
   @api className;
 
   // This is not exposed in Experience Builder and is used by listItemCollectionComm
   @api useMarkup = false;
 
-  /*
-   * headline and link
-   */
+  /* api: headline and link, String */
 
-  @track _headline = { text: null, link: null }; // combined link into headline
-  _originalHeadline;
+  _headline = HEADLINE_DEFAULT;
+  _headlineOriginal;
 
-  @api get headline() {
-    return this._originalHeadline;
+  @api
+  get headline() {
+    return this._headlineOriginal;
   }
 
   set headline(markdown) {
-    this._originalHeadline = markdown;
-
     try {
+      this._headlineOriginal = markdown;
       this._headline = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
-      this._headline = { text: null, link: null };
+      this._headline = HEADLINE_DEFAULT;
       this.addError("HL-MD", "Issue when parsing Headline markdown");
     }
   }
 
-  /*
-   * date
-   */
+  /* api: date, String or Date */
 
-  @track _date;
-  _originalDate;
+  _date;
+  _dateOriginal;
 
-  @api get date() {
-    return this._originalDate;
+  @api
+  get date() {
+    return this._dateOriginal;
   }
 
-  set date(date) {
-    this._originalDate = date;
+  set date(value) {
+    this._dateOriginal = value;
 
-    if (date instanceof Date) {
-      this._date = date;
+    if (value instanceof Date) {
+      this._date = value;
     } else {
-      this._date = date ? parseIso8601(date.toString()) : null;
+      this._date = value ? parseIso8601(value.toString()) : null;
     }
   }
 
-  /*
-   * copy
-   */
+  /* api: copy, String */
 
-  _copy;
   _copyHtml;
+  _copyOriginal;
 
-  @api get copy() {
-    return this._copy;
+  @api
+  get copy() {
+    return this._copyOriginal;
   }
 
   set copy(markdown) {
-    this._copy = markdown;
     try {
+      this._copyOriginal = markdown;
+
       if (markdown) {
         this._copyHtml = this.useMarkup
           ? markdown
@@ -85,26 +85,20 @@ export default class SfGpsDsAuNswListItemComm extends SfGpsDsLwc {
     }
   }
 
-  /*
-   * tags
-   */
+  /* api: tags */
 
-  @track _links;
-  _originalLinks;
+  _tags;
+  _tagsOriginal;
 
-  @api get tags() {
-    return this._originalLinks;
+  @api
+  get tags() {
+    return this._tagsOriginal;
   }
 
   set tags(markdown) {
-    this._originalLinks = markdown;
-
     try {
-      if (markdown) {
-        this._links = mdEngine.extractLinks(markdown);
-      } else {
-        this._links = null;
-      }
+      this._tagsOriginal = markdown;
+      this._tags = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Tags markdown");
     }
@@ -118,7 +112,7 @@ export default class SfGpsDsAuNswListItemComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    if (this.copy) {
+    if (this._copyOriginal) {
       replaceInnerHtml(this.refs.copy, this._copyHtml);
     }
   }

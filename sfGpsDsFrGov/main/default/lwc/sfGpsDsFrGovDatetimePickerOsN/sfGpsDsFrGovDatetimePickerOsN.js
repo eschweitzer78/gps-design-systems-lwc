@@ -18,11 +18,11 @@ export default class extends OmnistudioDatetimePicker {
   }
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "fr-input-group": true,
       "fr-input-group--error": this.sfGpsDsIsError,
       "fr-input-group--disabled": this.readOnly
-    });
+    };
   }
 
   get computedAriaDescribedBy() {

@@ -18,7 +18,8 @@ export default class extends SfGpsDsLwc {
   _itemsOriginal;
   @track computedH1s = [];
 
-  @api get items() {
+  @api
+  get items() {
     return this._itemsOriginal;
   }
 

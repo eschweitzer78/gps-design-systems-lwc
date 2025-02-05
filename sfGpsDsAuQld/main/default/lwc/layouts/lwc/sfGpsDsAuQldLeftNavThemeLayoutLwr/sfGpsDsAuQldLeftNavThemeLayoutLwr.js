@@ -18,8 +18,10 @@ export default class extends LightningElement {
   @api bodyClassName;
   @api footerClassName;
 
-  @api contentId;
+  @api contentId = "sf-gps-ds-au-qld-left-nav-theme-layout-lwr";
   @api containerBackgroundColor;
+
+  /* lifecycle */
 
   renderedCallback() {
     if (this.containerBackgroundColor) {

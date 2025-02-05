@@ -1,0 +1,37 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <c-sf-gps-ds-sg-gov-spinner
+      lwc:if={_isLoading}
+    ></c-sf-gps-ds-sg-gov-spinner>
+    <c-sf-gps-ds-sg-gov-footer
+      lwc:else
+      links={_mediatedItems}
+      title={title}
+      description={description}
+      copyright-liner={copyrightLiner}
+      last-update={lastUpdate}
+      report-vulnerability-label={_reportVulnerabilityLink.text}
+      report-vulnerability-href={_reportVulnerabilityLink.url}
+      contact-label={_contactLink.text}
+      contact-href={_contactLink.url}
+      feedback-label={_feedbackLink.text}
+      feedback-href={_feedbackLink.url}
+      privacy-label={_privacyLink.text}
+      privacy-href={_privacyLink.url}
+      terms-of-use-label={_termsOfUseLink.text}
+      terms-of-use-href={_termsOfUseLink.url}
+      class-name={className}
+      onnavclick={handleNavClick}
+    >
+    </c-sf-gps-ds-sg-gov-footer>
+  </template>
+
+  <c-sf-gps-ds-navigation-service lwc:ref="navservice">
+  </c-sf-gps-ds-navigation-service>
+</template>

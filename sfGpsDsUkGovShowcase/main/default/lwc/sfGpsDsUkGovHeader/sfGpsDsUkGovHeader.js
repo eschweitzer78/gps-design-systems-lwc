@@ -14,7 +14,7 @@ const I18N = {
   buttonLabel: "Menu"
 };
 
-export default class SfGpsDsUkGovHeader extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api masterbrand;
@@ -24,15 +24,13 @@ export default class SfGpsDsUkGovHeader extends LightningElement {
   @api headerUrl;
   @api className;
 
-  /*
-   * api: navItems
-   * Array of navigation item objects, format { url: '', text: '', subNav: ... }
-   */
+  /* api: navItems, Array of navigation item objects { url, text, subNav: ... } */
 
   _navItemsOriginal;
   _navItems;
 
-  @api get navItems() {
+  @api
+  get navItems() {
     return this._navItemsOriginal;
   }
 
@@ -41,16 +39,14 @@ export default class SfGpsDsUkGovHeader extends LightningElement {
     this.navItemsMapping();
   }
 
-  /* computed: computedClassName */
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "govuk-header": true,
       [this.className]: this.className
-    });
+    };
   }
-
-  /* computed: computedNavigationListId */
 
   _navigationListId;
 
@@ -62,19 +58,13 @@ export default class SfGpsDsUkGovHeader extends LightningElement {
     return this._navigationListId;
   }
 
-  /* computed: computedHeaderUrl */
-
   get computedHeaderUrl() {
     return this.headerUrl || "#";
   }
 
-  /* computed: space */
-
   get space() {
     return " ";
   }
-
-  /* i18n */
 
   get i18n() {
     return I18N;

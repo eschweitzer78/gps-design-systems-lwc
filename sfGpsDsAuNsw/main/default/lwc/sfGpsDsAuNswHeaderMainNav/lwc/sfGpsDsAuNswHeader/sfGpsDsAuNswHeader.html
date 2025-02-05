@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <header class={computedClassName}>
     <div class="nsw-header__container">
@@ -49,7 +50,7 @@
                 >{srMasterbrandLabel}</span
               >
 
-              <template lwc:if={areLogosHorizontallyStacked}>
+              <template lwc:if={_areLogosHorizontallyStacked}>
                 <!-- if logo and horizontal stacked -->
                 <template lwc:if={logo}>
                   <img src={logo} alt={logoAlt} />
@@ -62,7 +63,7 @@
             </a>
           </div>
 
-          <template lwc:if={areLogosVerticallyStacked}>
+          <template lwc:if={_areLogosVerticallyStacked}>
             <!-- if logo and vertical stacked -->
             <div lwc:if={logo} class="nsw-header__name">
               <div class="nsw-header__logo">
@@ -84,7 +85,7 @@
           </div>
         </div>
 
-        <div lwc:if={mobile} class="nsw-header__menu">
+        <div lwc:if={_mobile} class="nsw-header__menu">
           <button
             type="button"
             aria-expanded={mainNavIsOpen}
@@ -101,7 +102,7 @@
         <div class="nsw-header__search">
           <!-- Open Search -->
           <button
-            lwc:if={search}
+            lwc:if={_search}
             type="button"
             aria-expanded={searchIsOpen}
             aria-controls={computedHeaderSearchId}
@@ -115,18 +116,24 @@
         </div>
 
         <!-- Sign-in / User Profile -->
-        <div lwc:if={profile} class="nsw-header__profile">
+        <div lwc:if={_profile} class="nsw-header__profile">
           <slot></slot>
         </div>
       </div>
 
-      <template lwc:if={search}>
-        <div id={computedHeaderSearchId} class="nsw-header__search-area" hidden>
+      <template lwc:if={_search}>
+        <div
+          id={computedHeaderSearchId}
+          lwc:ref="searcharea"
+          class="nsw-header__search-area"
+          hidden
+        >
           <form role="search">
             <label for={computedHeaderInputId} class="sr-only">
               {searchLabel}
             </label>
             <input
+              lwc:ref="headerinput"
               id={computedHeaderInputId}
               autocomplete="off"
               class="nsw-header__input"

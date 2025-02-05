@@ -5,30 +5,34 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsUkGovAccordionComm extends SfGpsDsLwc {
+const CONTENT_DEFAULT = [];
+
+export default class extends SfGpsDsLwc {
   @api className;
 
   /* content */
 
-  _originalContent;
-  @track _h1s = [];
+  _content = CONTENT_DEFAULT;
+  _contentOriginal;
 
-  @api get content() {
-    return this._originalContent;
+  @api
+  get content() {
+    return this._contentOriginal;
   }
 
   set content(markdown) {
-    this._originalContent = markdown;
-
     try {
-      let h1s = mdEngine.extractH1s(markdown.replaceAll("\\n", "\n"));
-      this._h1s = h1s.map((h1) => ({ ...h1, closed: true }));
+      this._contentOriginal = markdown;
+      this._content = mdEngine
+        .extractH1s(markdown.replaceAll("\\n", "\n"))
+        .map((h1) => ({ ...h1, closed: true }));
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
+      this._content = CONTENT_DEFAULT;
     }
   }
 }

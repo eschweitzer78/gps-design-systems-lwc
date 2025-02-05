@@ -6,26 +6,29 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswHeroSearch extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
   @api intro;
   @api links;
-  @api className;
   @api value = ""; // ADJUSTED: added value public attribute
+  @api className;
 
   @api srLabel = "Search site for:";
   @api srSearchButtonLabel = "Search";
 
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "hero-search": true,
       [this.className]: this.className
-    });
+    };
   }
+
+  /* event management */
 
   handleChange(event) {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
@@ -33,8 +36,7 @@ export default class SfGpsDsAuNswHeroSearch extends LightningElement {
   }
 
   handleKeyUp(event) {
-    const isEnterKey = event.keyCode === 13;
-    if (isEnterKey) {
+    if (event.keyCode === 13) {
       this.dispatchEvent(new CustomEvent("search"));
     }
 

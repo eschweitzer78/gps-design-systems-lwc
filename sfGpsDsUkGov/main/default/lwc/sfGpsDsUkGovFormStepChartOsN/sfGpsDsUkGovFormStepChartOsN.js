@@ -14,6 +14,8 @@ import SfGpsDsFormStepChart from "c/sfGpsDsFormStepChartOsN";
 import tmpl from "./sfGpsDsUkGovFormStepChartOsN.html";
 
 export default class extends SfGpsDsFormStepChart {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

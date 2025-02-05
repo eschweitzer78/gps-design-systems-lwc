@@ -6,13 +6,12 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
 const I18N = {
-  maskMessage: "Masquer le mmessage"
+  maskMessage: "Masquer le message"
 };
 
-export default class SfGpsDsFrGovFormMessagingOsN extends LightningElement {
+export default class extends LightningElement {
   @api type;
   @api size;
   @api title;
@@ -33,7 +32,7 @@ export default class SfGpsDsFrGovFormMessagingOsN extends LightningElement {
   }
 
   get computedAlertClassName() {
-    return computeClass({
+    return {
       "fr-alert": true,
       "fr-alert--sm": this.size === "sm",
       "fr-alert--error": this.type === "error",
@@ -41,7 +40,7 @@ export default class SfGpsDsFrGovFormMessagingOsN extends LightningElement {
       "fr-alert--info": this.type === "info",
       "fr-alert--warning": this.type === "warning",
       [this.className]: this.className
-    });
+    };
   }
 
   get space() {

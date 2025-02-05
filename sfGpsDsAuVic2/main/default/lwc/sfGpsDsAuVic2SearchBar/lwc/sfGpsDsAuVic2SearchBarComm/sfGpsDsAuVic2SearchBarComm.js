@@ -1,7 +1,10 @@
 import { api } from "lwc";
+import { isString, isArray } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuVic2SearchBarComm extends SfGpsDsLwc {
+const SUGGESTIONS_DEFAULT = [];
+
+export default class extends SfGpsDsLwc {
   @api variant;
   @api autoFocus;
   @api inputLabel;
@@ -13,10 +16,11 @@ export default class SfGpsDsAuVic2SearchBarComm extends SfGpsDsLwc {
 
   /* api: inputValue */
 
-  _inputValueOriginal;
   _inputValue;
+  _inputValueOriginal;
 
-  @api get inputValue() {
+  @api
+  get inputValue() {
     return this._inputValueOriginal;
   }
 
@@ -27,32 +31,35 @@ export default class SfGpsDsAuVic2SearchBarComm extends SfGpsDsLwc {
 
   /* api: suggestions */
 
-  _suggestionsOriginal = [];
-  _suggestions = [];
+  _suggestions = SUGGESTIONS_DEFAULT;
+  _suggestionsOriginal = SUGGESTIONS_DEFAULT;
 
-  @api get suggestions() {
+  @api
+  get suggestions() {
     return this._suggestionsOriginal;
   }
 
   set suggestions(value) {
     this._suggestionsOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       try {
         value = JSON.parse(value);
       } catch (e) {
-        value = [];
+        value = SUGGESTIONS_DEFAULT;
         this.addError("SU-JP", "Issue when parsing suggestions as JSON.");
       }
     }
 
-    if (Array.isArray(value)) {
+    if (isArray(value)) {
       this._suggestions = value;
     } else {
-      this._suggestions = [];
+      this._suggestions = SUGGESTIONS_DEFAULT;
       this.addError("SU-AR", "Parsed suggestions are not a JSON array.");
     }
   }
+
+  /* computed */
 
   get filteredSuggestions() {
     if (this._inputValue?.length > 2) {
@@ -61,8 +68,10 @@ export default class SfGpsDsAuVic2SearchBarComm extends SfGpsDsLwc {
       );
     }
 
-    return [];
+    return SUGGESTIONS_DEFAULT;
   }
+
+  /* event management */
 
   handleUpdateInputValue(event) {
     this._inputValue = event.detail || "";

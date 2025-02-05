@@ -13,7 +13,7 @@
     { "from": "@font-face\\{[^}]*\\}", "to": "" },
     {
       "from": "\"/assets",
-      "to": "\"https://cdn.jsdelivr.net/npm/govuk-frontend/govuk/assets"
+      "to": "\"https://cdn.jsdelivr.net/npm/govuk-frontend/dist/govuk/assets"
     }
   ],
   "sfGpsDsUkGovHeader/header": [{ "from": "@font-face\\{[^}]*\\}", "to": "" }],

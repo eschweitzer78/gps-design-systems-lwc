@@ -14,19 +14,30 @@ import tmpl from "./sfGpsDsAuQldInputOsN.html";
 export default class extends StatusHelperMixin(OmniscriptInput) {
   @api labelClassName;
 
-  /* Methods */
-  /* ------- */
+  /* computed */
 
-  render() {
-    return tmpl;
+  get computedLabelClassName() {
+    return {
+      qld__label: true,
+      [this.labelClassName]: this.labelClassName
+    };
   }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
+    });
+  }
+
+  /* Methods */
 
   initOptions() {
     super.initOptions();
 
     switch (this._innerElement) {
       case "c-time-picker":
-        this._innerElement = "c-sf-gps-ds-au-nsw-time-picker-os-n";
+        this._innerElement = "c-sf-gps-ds-au-qld-time-picker-os-n";
         break;
 
       case "c-date-picker":
@@ -34,7 +45,7 @@ export default class extends StatusHelperMixin(OmniscriptInput) {
         break;
 
       case "c-datetime-picker":
-        this._innerElement = "c-sf-gps-ds-au-nsw-datetime-picker-os-n";
+        this._innerElement = "c-sf-gps-ds-au-qld-datetime-picker-os-n";
         break;
 
       default:
@@ -49,20 +60,9 @@ export default class extends StatusHelperMixin(OmniscriptInput) {
       .join(" ");
   }
 
-  /* Getters */
-  /* ------- */
+  /* lifecycle */
 
-  get computedLabelClassName() {
-    return computeClass({
-      qld__label: true,
-      [this.labelClassName]: this.labelClassName
-    });
-  }
-
-  get computedAriaDescribedBy() {
-    return computeClass({
-      helper: this.fieldLevelHelp,
-      errorMessageBlock: this.sfGpsDsIsError
-    });
+  render() {
+    return tmpl;
   }
 }

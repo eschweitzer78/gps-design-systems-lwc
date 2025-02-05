@@ -1,9 +1,11 @@
 import { api, track } from "lwc";
 import {
-  computeClass,
+  isString,
+  isObject,
   normaliseString,
   normaliseBoolean,
-  replaceInnerHtml
+  replaceInnerHtml,
+  computeClass
 } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
@@ -16,6 +18,10 @@ import {
 
 const CORNER_TOP_DEFAULT = true;
 const CORNER_BOTTOM_DEFAULT = true;
+const LOGO_DEFAULT = {};
+const BREADCRUMBS_DEFAULT = false;
+const BEHINDNAV_DEFAULT = false;
+const FULLWIDTH_DEFAULT = false;
 
 /**
  * @slot heroContent
@@ -25,15 +31,66 @@ export default class extends SfGpsDsLwc {
   @api background;
   @api secondaryActionTitle;
   @api linksTitle;
-  @api breadcrumbs = false;
-  @api behindNav = false;
-  @api fullWidth = false;
   @api className;
+
+  /* api: breadcrumbs */
+
+  _breadcrumbs = BREADCRUMBS_DEFAULT;
+  _breadcrumbsOriginal = BREADCRUMBS_DEFAULT;
+
+  @api
+  get breadcrumbs() {
+    return this._breadcrumbsOriginal;
+  }
+
+  set breadcrumbs(value) {
+    this._breadcrumbsOriginal = value;
+    this._breadcrumbs = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: BREADCRUMBS_DEFAULT
+    });
+  }
+
+  /* api: behindNav */
+
+  _behindNav = BEHINDNAV_DEFAULT;
+  _behindNavOriginal = BEHINDNAV_DEFAULT;
+
+  @api
+  get behindNav() {
+    return this._behindNavOriginal;
+  }
+
+  set behindNav(value) {
+    this._behindNavOriginal = value;
+    this._behindNav = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: BEHINDNAV_DEFAULT
+    });
+  }
+
+  /* api: fullWidth */
+
+  _fullWidth = FULLWIDTH_DEFAULT;
+  _fullWidthOriginal = FULLWIDTH_DEFAULT;
+
+  @api
+  get fullWidth() {
+    return this._fullWidthOriginal;
+  }
+
+  set fullWidth(value) {
+    this._fullWidthOriginal = FULLWIDTH_DEFAULT;
+    this._fullWidth = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: FULLWIDTH_DEFAULT
+    });
+  }
 
   /* api: logo */
 
-  _logoOriginal;
-  _logo = {};
+  _logo = LOGO_DEFAULT;
+  _logoOriginal = JSON.stringify(LOGO_DEFAULT);
 
   @api
   get logo() {
@@ -49,12 +106,14 @@ export default class extends SfGpsDsLwc {
       this._logo = {};
     }
   }
+
   /* api: cornerTop */
 
-  _cornerTopOriginal = CORNER_TOP_DEFAULT;
   _cornerTop = CORNER_TOP_DEFAULT;
+  _cornerTopOriginal = CORNER_TOP_DEFAULT;
 
-  @api get cornerTop() {
+  @api
+  get cornerTop() {
     return this._cornerTopOriginal;
   }
 
@@ -70,10 +129,11 @@ export default class extends SfGpsDsLwc {
 
   /* api: cornerBottom */
 
-  _cornerBottomOriginal = CORNER_BOTTOM_DEFAULT;
   _cornerBottom = CORNER_BOTTOM_DEFAULT;
+  _cornerBottomOriginal = CORNER_BOTTOM_DEFAULT;
 
-  @api get cornerBottom() {
+  @api
+  get cornerBottom() {
     return this._cornerBottomOriginal;
   }
 
@@ -89,10 +149,11 @@ export default class extends SfGpsDsLwc {
 
   /* api: theme */
 
-  _themeOriginal = THEME_DEFAULT;
   _theme = THEME_DEFAULT;
+  _themeOriginal = THEME_DEFAULT;
 
-  @api get theme() {
+  @api
+  get theme() {
     return this._themeOriginal;
   }
 
@@ -106,10 +167,11 @@ export default class extends SfGpsDsLwc {
 
   /* api: primaryAction */
 
-  _primaryActionOriginal;
   _primaryAction;
+  _primaryActionOriginal;
 
-  @api get primaryAction() {
+  @api
+  get primaryAction() {
     return this._primaryActionOriginal;
   }
 
@@ -128,17 +190,17 @@ export default class extends SfGpsDsLwc {
 
   /* api: secondaryAction */
 
-  _secondaryActionOriginal;
   _secondaryAction;
+  _secondaryActionOriginal;
 
-  @api get secondaryAction() {
+  @api
+  get secondaryAction() {
     return this._secondaryActionOriginal;
   }
 
   set secondaryAction(markdown) {
-    this._secondaryActionOriginal = markdown;
-
     try {
+      this._secondaryActionOriginal = markdown;
       this._secondaryAction = markdown
         ? mdEngine.extractFirstLink(markdown)
         : null;
@@ -150,17 +212,17 @@ export default class extends SfGpsDsLwc {
 
   /* api: links */
 
-  _linksOriginal;
   _links;
+  _linksOriginal;
 
-  @api get links() {
+  @api
+  get links() {
     return this._linksOriginal;
   }
 
   set links(markdown) {
-    this._linksOriginal = markdown;
-
     try {
+      this._linksOriginal = markdown;
       this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this._links = null;
@@ -170,10 +232,11 @@ export default class extends SfGpsDsLwc {
 
   /* api: linksType */
 
-  _linksTypeOriginal = LINK_TYPE_DEFAULT;
   _linksType = LINK_TYPE_DEFAULT;
+  _linksTypeOriginal = LINK_TYPE_DEFAULT;
 
-  @api get linksType() {
+  @api
+  get linksType() {
     return this._linksTypeOriginal;
   }
 
@@ -187,17 +250,17 @@ export default class extends SfGpsDsLwc {
 
   /* api: linksMore */
 
-  _linksMoreOriginal;
   _linksMore;
+  _linksMoreOriginal;
 
-  @api get linksMore() {
+  @api
+  get linksMore() {
     return this._linksMoreOriginal;
   }
 
   set linksMore(markdown) {
-    this._linksMoreOriginal = markdown;
-
     try {
+      this._linksMoreOriginal = markdown;
       this._linksMore = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this._linksMore = null;
@@ -207,17 +270,17 @@ export default class extends SfGpsDsLwc {
 
   /* api: content */
 
-  _contentOriginal;
   _contentHtml;
+  _contentOriginal;
 
-  @api get content() {
+  @api
+  get content() {
     return this._contentOriginal;
   }
 
   set content(markdown) {
-    this._contentOriginal = markdown;
-
     try {
+      this._contentOriginal = markdown;
       this._contentHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
@@ -235,7 +298,7 @@ export default class extends SfGpsDsLwc {
   get computedBackground() {
     let background = this.background;
 
-    if (typeof background === "string") {
+    if (isString(background)) {
       try {
         background = JSON.parse(background);
       } catch (e) {
@@ -244,7 +307,7 @@ export default class extends SfGpsDsLwc {
       }
     }
 
-    if (typeof background !== "object") {
+    if (!isObject(background)) {
       this.addError("CO-MD", "Issue when parsing Background details");
       return null;
     }
@@ -286,8 +349,8 @@ export default class extends SfGpsDsLwc {
     return computeClass({
       "rpl-header--hero": true,
       [`rpl-header--${this.theme}`]: this._theme,
-      "rpl-header--behind-nav": this.behindNav,
-      "rpl-header--breadcrumbs": this.breadcrumbs,
+      "rpl-header--behind-nav": this._behindNav,
+      "rpl-header--breadcrumbs": this._breadcrumbs,
       "rpl-header--graphic-top": this.cornerTop,
       "rpl-header--graphic-bottom": this.cornerBottom,
       "rpl-header--background": this.background,
@@ -297,11 +360,11 @@ export default class extends SfGpsDsLwc {
   }
 
   get computedTitleClassName() {
-    return computeClass({
+    return {
       "rpl-header__title": true,
       "rpl-type-h1": !this.computedHighlight,
       "rpl-type-h1-highlight": this.computedHighlight
-    });
+    };
   }
 
   get computedContentClasses() {
@@ -348,10 +411,10 @@ export default class extends SfGpsDsLwc {
   get computedLogo() {
     return {
       ...this._logo,
-      className: computeClass({
+      className: {
         "rpl-header__logo": true,
         [this._logo?.className]: this._logo?.className
-      })
+      }
     };
   }
 

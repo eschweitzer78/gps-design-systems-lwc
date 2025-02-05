@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC DS Responsive Image</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="src"
+        type="String"
+        label="Image source"
+        description="URL of the image."
+        default="https://images.unsplash.com/photo-1591302418462-eb55463b49d6"
+      />
+      <property
+        name="focalPointX"
+        type="Integer"
+        label="Focal point X"
+        description="X coordinate of the focal point."
+        default="0"
+      />
+      <property
+        name="focalPointY"
+        type="Integer"
+        label="Focal point Y"
+        description="Y coordinate of the focal point."
+        default="0"
+      />
+      <property
+        name="srcSet"
+        type="String"
+        label="Src set"
+        description="HTML srcSet or, if Src set query string is set, source set in JSON array format {size, height, other_parameters}."
+        default="[{&quot;size&quot;:&quot;xs&quot;,&quot;width&quot;:576},{&quot;size&quot;:&quot;s&quot;,&quot;width&quot;:768},{&quot;size&quot;:&quot;m&quot;,&quot;width&quot;:992},{&quot;size&quot;:&quot;l&quot;,&quot;width&quot;:1200}]"
+      />
+      <property
+        name="srcSetQs"
+        type="String"
+        label="Src set query string"
+        description="Dynamic query string to be leveraged by calculated srcSet."
+        default="?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w={width}&amp;q=80"
+      />
+      <property
+        name="sizes"
+        type="String"
+        label="Sizes"
+        description="Pass a custom HTML image sizes attribute value - one will be calculated based on the src set and bps if left blank."
+        default="(max-width: 767px) 100vw, (max-width: 1283px) min(100%, 1251px), (max-height: 756px) min(100%, 1251px), (min-aspect-ratio: 5360/2487) calc((calc(100vh - 175px)) * 2.15521), calc(100vw - 32px)"
+      />
+        <property
+        name="alt"
+        type="String"
+        label="Alternative text"
+        description="Text displayed when the image is not available."
+        default="Different phases of the moon eclipse"
+      />
+      <property
+        name="height"
+        type="Integer"
+        label="Height"
+        description="Height in pixels."
+        default="300"
+      />
+      <property
+        name="width"
+        type="Integer"
+        label="Width"
+        description="Width in pixels."
+        default="575"
+      />
+      <property
+        name="fit"
+        type="String"
+        label="Fit"
+        description="Fit."
+        default="cover"
+        datasource="cover,contain"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

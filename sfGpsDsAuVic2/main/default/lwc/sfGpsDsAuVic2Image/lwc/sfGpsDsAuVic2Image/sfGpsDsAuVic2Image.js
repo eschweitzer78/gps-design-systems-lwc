@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString, isObject, isString } from "c/sfGpsDsHelpers";
 import {
   RplImageAspectOptions,
   RplImagePriorityOptions,
@@ -26,30 +26,41 @@ const distanceAsPercentage = (point, total) => {
 
 /* eslint-disable @lwc/lwc/no-api-reassignments */
 
-export default class SfGpsDsAuVic2Image extends LightningElement {
+export default class extends LightningElement {
+  @api src;
+  @api alt;
+  @api width;
+  @api height;
+  @api srcSet;
+  @api sizes;
+  @api circle;
+  @api focalPoint;
+  @api className;
+
   /* api: image */
 
   _imageOriginal = IMAGE_DEFAULT;
   _error;
 
-  @api get image() {
+  @api
+  get image() {
     return this._imageOriginal;
   }
 
   set image(value) {
     this._imageOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       try {
         value = JSON.parse(value);
         this._error = null;
       } catch (e) {
-        value = null;
+        value = IMAGE_DEFAULT;
         this._error = e;
       }
     }
 
-    if (typeof value === "object") {
+    if (isObject(value)) {
       this.src = value.src;
       this.alt = value.alt;
       this.width = value.width;
@@ -78,31 +89,22 @@ export default class SfGpsDsAuVic2Image extends LightningElement {
     }
   }
 
-  @api src;
-  @api alt;
-  @api width;
-  @api height;
-  @api srcSet;
-  @api sizes;
-  @api circle;
-  @api focalPoint;
-  @api className;
-
-  /* aspect */
+  /* api: aspect */
 
   _aspect = IMAGE_DEFAULT.aspect;
 
-  @api get aspect() {
+  @api
+  get aspect() {
     return this._aspect;
   }
 
   set aspect(value) {
-    if (typeof value === "string") {
+    if (isString(value)) {
       this._aspect = normaliseString(value, {
         validValues: RplImageAspectOptions,
         fallbackValue: IMAGE_DEFAULT.aspect
       });
-    } else if (typeof value === "object") {
+    } else if (isObject(value)) {
       this._aspect = value;
     } else {
       this._aspect = IMAGE_DEFAULT.aspect;
@@ -113,7 +115,8 @@ export default class SfGpsDsAuVic2Image extends LightningElement {
 
   _fit = IMAGE_DEFAULT.fit;
 
-  @api get fit() {
+  @api
+  get fit() {
     return this._fit;
   }
 
@@ -128,7 +131,8 @@ export default class SfGpsDsAuVic2Image extends LightningElement {
 
   _priority = IMAGE_DEFAULT.priority;
 
-  @api get priority() {
+  @api
+  get priority() {
     return this._priority;
   }
 
@@ -138,6 +142,8 @@ export default class SfGpsDsAuVic2Image extends LightningElement {
       fallbackValue: IMAGE_DEFAULT.priority
     });
   }
+
+  /* computed */
 
   get computedAspectClassName() {
     const base = "rpl-u-aspect";
@@ -149,6 +155,7 @@ export default class SfGpsDsAuVic2Image extends LightningElement {
       rv = { [`${base}-${this._aspect}`]: true };
     } else if (typeof this._aspect === "object") {
       const o = {};
+
       for (const bp in this._aspect) {
         if (Object.getOwnPropertyNames(bp)) {
           if (this._aspect[bp]) {
@@ -158,6 +165,7 @@ export default class SfGpsDsAuVic2Image extends LightningElement {
           }
         }
       }
+
       rv = o;
     }
 
@@ -165,14 +173,14 @@ export default class SfGpsDsAuVic2Image extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-image": true,
       "rpl-image--fill": this._aspect,
       "rpl-image--circle": this.circle,
       [`rpl-image--${this._fit}`]: this._fit,
       ...this.computedAspectClassName,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedObjectPosition() {

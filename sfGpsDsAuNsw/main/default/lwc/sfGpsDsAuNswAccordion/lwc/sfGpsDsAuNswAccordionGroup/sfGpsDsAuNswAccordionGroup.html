@@ -8,8 +8,8 @@
   <div lwc:else class={computedClassName}>
     <c-sf-gps-ds-au-nsw-accordion-group-head
       show-buttons={showButtons}
-      expand-all-label="Expand all"
-      collapse-all-label="Collapse all"
+      expand-all-label={i18n.expandAll}
+      collapse-all-label={i18n.collapseAll}
       is-fully-expanded={isFullyExpanded}
       is-fully-collapsed={isFullyCollapsed}
       onexpandall={handleExpandAll}

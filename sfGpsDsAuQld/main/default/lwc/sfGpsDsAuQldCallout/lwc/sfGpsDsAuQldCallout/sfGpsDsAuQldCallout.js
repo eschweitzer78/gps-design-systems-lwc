@@ -7,30 +7,16 @@
 
 import { LightningElement, api } from "lwc";
 import {
-  computeClass,
-  normaliseString,
-  normaliseBoolean
+  normaliseInteger,
+  normaliseBoolean,
+  normaliseString
 } from "c/sfGpsDsHelpers";
 
 const TYPE_DEFAULT = "default";
 const TYPE_CALENDAREVENT = "calendar-event";
 const TYPE_VALUES = [TYPE_DEFAULT, TYPE_CALENDAREVENT];
 
-const HEADINGLEVEL_1 = "1";
-const HEADINGLEVEL_2 = "2";
-const HEADINGLEVEL_3 = "3";
-const HEADINGLEVEL_4 = "4";
-const HEADINGLEVEL_5 = "5";
-const HEADINGLEVEL_6 = "6";
-const HEADINGLEVEL_VALUES = [
-  HEADINGLEVEL_1,
-  HEADINGLEVEL_2,
-  HEADINGLEVEL_3,
-  HEADINGLEVEL_4,
-  HEADINGLEVEL_5,
-  HEADINGLEVEL_6
-];
-const HEADINGLEVEL_DEFAULT = HEADINGLEVEL_3;
+const HEADINGLEVEL_DEFAULT = 3;
 
 export default class SfGpsDsAuQldCallout extends LightningElement {
   @api heading;
@@ -41,7 +27,8 @@ export default class SfGpsDsAuQldCallout extends LightningElement {
   _level = HEADINGLEVEL_DEFAULT;
   _levelOriginal = HEADINGLEVEL_DEFAULT;
 
-  @api get level() {
+  @api
+  get level() {
     return this._levelOriginal;
   }
 
@@ -52,8 +39,10 @@ export default class SfGpsDsAuQldCallout extends LightningElement {
       value = value ? value.toString() : null;
     }
 
-    this._level = normaliseString(value, {
-      validValues: HEADINGLEVEL_VALUES,
+    this._level = normaliseInteger(value, {
+      acceptString: true,
+      min: 1,
+      max: 6,
       fallbackValue: HEADINGLEVEL_DEFAULT
     });
   }
@@ -63,7 +52,8 @@ export default class SfGpsDsAuQldCallout extends LightningElement {
   _type;
   _typeOriginal;
 
-  @api get type() {
+  @api
+  get type() {
     return this._typeOriginal;
   }
 
@@ -80,7 +70,8 @@ export default class SfGpsDsAuQldCallout extends LightningElement {
   _headingSrOnly;
   _headingSrOnlyOriginal;
 
-  @api get headingSrOnly() {
+  @api
+  get headingSrOnly() {
     return this._headingSrOnlyOriginal;
   }
 
@@ -95,36 +86,41 @@ export default class SfGpsDsAuQldCallout extends LightningElement {
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       qld__callout: true,
       "qld__callout--calendar-event": this._type === TYPE_CALENDAREVENT,
       [this.className]: this.className
-    });
+    };
   }
 
-  get computedHeadingClass() {
-    return computeClass({
+  get computedHeadingClassName() {
+    return {
       qld__callout__heading: true,
       "qld__callout__heading--sronly": this.headingSrOnly
-    });
+    };
   }
 
   get computedIsH1() {
-    return this._level === HEADINGLEVEL_1;
+    return this._level === 1;
   }
+
   get computedIsH2() {
-    return this._level === HEADINGLEVEL_2;
+    return this._level === 2;
   }
+
   get computedIsH3() {
-    return this._level === HEADINGLEVEL_3 || this._level == null;
+    return this._level === 3 || this._level == null;
   }
+
   get computedIsH4() {
-    return this.level === HEADINGLEVEL_4;
+    return this.level === 4;
   }
+
   get computedIsH5() {
-    return this.level === HEADINGLEVEL_5;
+    return this.level === 5;
   }
+
   get computedIsH6() {
-    return this.level === HEADINGLEVEL_6;
+    return this.level === 6;
   }
 }

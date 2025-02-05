@@ -10,10 +10,8 @@ import { computeClass } from "c/sfGpsDsHelpers";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsFrGovFormMessagingOsN.html";
 
-export default class SfGpsDsFrGovFormMessagingOsN extends OmniscriptMessaging {
-  render() {
-    return tmpl;
-  }
+export default class extends OmniscriptMessaging {
+  /* computed */
 
   get computedType() {
     return computeClass({
@@ -45,5 +43,11 @@ export default class SfGpsDsFrGovFormMessagingOsN extends OmniscriptMessaging {
       this,
       splitText.length > 1 ? splitText.slice(1).join("\\n") : this.messageText
     );
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

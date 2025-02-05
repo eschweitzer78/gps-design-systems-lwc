@@ -14,12 +14,11 @@ import SfGpsDsFormStepChart from "c/sfGpsDsFormStepChartOsN";
 import tmpl from "./sfGpsDsAuNswFormStepChartOsN.html";
 
 export default class extends SfGpsDsFormStepChart {
-  render() {
-    return tmpl;
-  }
-
+  /* api: jsonDef */
   /* deprecated but have to keep as packaging won't pick up the fact that parent class has it */
-  @api get jsonDef() {
+
+  @api
+  get jsonDef() {
     return super.jsonDef;
   }
 
@@ -27,4 +26,10 @@ export default class extends SfGpsDsFormStepChart {
     super.jsonDef = value;
   }
   /* end deprecated */
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
+  }
 }

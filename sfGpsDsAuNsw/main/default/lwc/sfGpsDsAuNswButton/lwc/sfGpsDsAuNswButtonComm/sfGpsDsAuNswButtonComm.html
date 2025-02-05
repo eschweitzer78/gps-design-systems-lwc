@@ -5,14 +5,14 @@
   >
   </c-sf-gps-ds-configuration-error>
 
-  <template if:false={_sfGpsDsErrors}>
+  <template lwc:else>
     <c-sf-gps-ds-au-nsw-button
-      lwc:if={isButton}
+      lwc:if={computedIsButton}
       label={_link.text}
       cstyle={cstyle}
       rendering={rendering}
       type={type}
-      disabled={_disabled}
+      disabled={disabled}
       icon-style={iconStyle}
       icon-name={iconName}
       mobile-full-width={_mobileFullWidth}
@@ -26,7 +26,7 @@
       cstyle={cstyle}
       rendering={rendering}
       type={type}
-      disabled={_disabled}
+      disabled={disabled}
       icon-style={iconStyle}
       icon-name={iconName}
       mobile-full-width={_mobileFullWidth}

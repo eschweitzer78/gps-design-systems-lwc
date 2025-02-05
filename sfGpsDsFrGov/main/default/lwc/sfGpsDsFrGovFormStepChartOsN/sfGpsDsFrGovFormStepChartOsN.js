@@ -13,6 +13,8 @@ import SfGpsDsFormStepChart from "c/sfGpsDsFormStepChartOsN";
 import tmpl from "./sfGpsDsFrGovFormStepChartOsN.html";
 
 export default class extends SfGpsDsFormStepChart {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

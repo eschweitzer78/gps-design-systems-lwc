@@ -10,19 +10,22 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsUkGovDetailsComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api className;
 
-  _content;
-  _contentHtml;
+  /* api: content */
 
-  @api get content() {
-    return this._content;
+  _contentHtml;
+  _contentOriginal;
+
+  @api
+  get content() {
+    return this._contentOriginal;
   }
 
   set content(markdown) {
-    this._content = markdown;
     try {
+      this._contentOriginal = markdown;
       this._contentHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");

@@ -1,0 +1,18 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+  <c-sf-gps-ds-au-vic-document-link
+    lwc:else
+    name={_name.text}
+    url={_name.url}
+    extension={extension}
+    filesize={filesize}
+    updated={computedUpdated}
+    class-name={className}
+  >
+    <div lwc:ref="markdown" lwc:dom="manual"></div>
+  </c-sf-gps-ds-au-vic-document-link>
+</template>

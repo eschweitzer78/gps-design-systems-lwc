@@ -1,4 +1,4 @@
-.nsw-card--light {
+.nsw-card--light:not(:hover) {
   .nsw-card__divider {
     background-color: var(--nsw-text-dark);
   }

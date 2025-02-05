@@ -1,23 +1,25 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
-const TYPE_INFO = "info";
-const TYPE_SUCCESS = "success";
-const TYPE_WARNING = "warning";
-const TYPE_ERROR = "error";
-const TYPE_VALUES = [TYPE_INFO, TYPE_SUCCESS, TYPE_WARNING, TYPE_ERROR];
-const TYPE_DEFAULT = TYPE_INFO;
+const TYPE_DEFAULT = "info";
+const TYPE_VALUES = {
+  error: "qld__page-alerts--error",
+  info: "qld__page-alerts--info",
+  success: "qld__page-alerts--success",
+  warning: "qld__page-alerts--warning"
+};
 
 export default class extends LightningElement {
-  @api title;
+  @api heading;
   @api className;
 
   /* api: type */
 
-  _type;
-  _typeOriginal;
+  _type = TYPE_VALUES[TYPE_DEFAULT];
+  _typeOriginal = TYPE_DEFAULT;
 
-  @api get type() {
+  @api
+  get type() {
     return this._typeOriginal;
   }
 
@@ -25,20 +27,18 @@ export default class extends LightningElement {
     this._typeOriginal = value;
     this._type = normaliseString(value, {
       validValues: TYPE_VALUES,
-      fallbackValue: TYPE_DEFAULT
+      fallbackValue: TYPE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "qld__page-alerts": true,
-      "qld__page-alerts--error": this._type === TYPE_ERROR,
-      "qld__page-alerts--info": this._type === TYPE_INFO,
-      "qld__page-alerts--success": this._type === TYPE_SUCCESS,
-      "qld__page-alerts--warning": this._type === TYPE_WARNING,
+      [this._type]: this._type,
       [this.className]: this.className
-    });
+    };
   }
 }

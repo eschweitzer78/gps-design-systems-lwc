@@ -30,7 +30,7 @@
   padding: 2rem 0;
 }
 
-.sf-gps-ds-markdown {
+.page-footer .snsw-container > div:nth-child(2) {
   margin-top: 0.675rem;
   font-size: 1rem;
   font-weight: 325;

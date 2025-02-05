@@ -1,0 +1,15 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-sg-gov-spinner
+    lwc:else
+    type={type}
+    color={color}
+    class-name={className}
+  >
+  </c-sf-gps-ds-sg-gov-spinner>
+</template>

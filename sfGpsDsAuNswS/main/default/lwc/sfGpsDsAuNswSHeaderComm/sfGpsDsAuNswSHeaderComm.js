@@ -9,6 +9,6 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { NavigationMixin } from "lightning/navigation";
 
-export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
+export default class extends NavigationMixin(SfGpsDsLwc) {
   @api headerUrl;
 }

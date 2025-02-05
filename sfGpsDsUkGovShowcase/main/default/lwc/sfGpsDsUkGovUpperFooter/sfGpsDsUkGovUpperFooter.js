@@ -5,9 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsUkGovUpperFooter extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api className;
@@ -15,8 +14,48 @@ export default class SfGpsDsUkGovUpperFooter extends LightningElement {
   /* api: items */
 
   _itemsOriginal;
-  _mapItems;
   _items;
+
+  @api
+  get items() {
+    return this._itemsOriginal;
+  }
+
+  set items(items) {
+    this._itemsOriginal = items;
+    this.itemsMapping();
+  }
+
+  get computedClassName() {
+    return {
+      "govuk-footer__navigation": true,
+      [this.className]: this.className
+    };
+  }
+
+  get computedSectionClassName() {
+    const nColumns = this._items?.length;
+
+    return {
+      "govuk-footer__section": true,
+      "govuk-grid-column-one-quarter": nColumns === 4,
+      "govuk-grid-column-one-third": nColumns === 3,
+      "govuk-grid-column-one-half": nColumns === 2,
+      "govuk-grid-column-full": nColumns === 1
+    };
+  }
+
+  /* methods */
+
+  _mapItems;
+
+  itemsMapping() {
+    let map = {};
+    this._items = this._itemsOriginal
+      ? this.mapItems("item", 0, map, this._itemsOriginal)
+      : null;
+    this._mapItems = map;
+  }
 
   mapItems(parentIndex, parentLevel, map, items) {
     let index = 0;
@@ -43,22 +82,7 @@ export default class SfGpsDsUkGovUpperFooter extends LightningElement {
     });
   }
 
-  @api get items() {
-    return this._itemsOriginal;
-  }
-
-  set items(items) {
-    this._itemsOriginal = items;
-    this.itemsMapping();
-  }
-
-  itemsMapping() {
-    let map = {};
-    this._items = this._itemsOriginal
-      ? this.mapItems("item", 0, map, this._itemsOriginal)
-      : null;
-    this._mapItems = map;
-  }
+  /* event management */
 
   handleClick(event) {
     event.preventDefault();
@@ -69,24 +93,5 @@ export default class SfGpsDsUkGovUpperFooter extends LightningElement {
         detail: event.currentTarget.dataset.ndx
       })
     );
-  }
-
-  get computedClassName() {
-    return computeClass({
-      "govuk-footer__navigation": true,
-      [this.className]: this.className
-    });
-  }
-
-  get computedSectionClassName() {
-    const nColumns = this._items?.length;
-
-    return computeClass({
-      "govuk-footer__section": true,
-      "govuk-grid-column-one-quarter": nColumns === 4,
-      "govuk-grid-column-one-third": nColumns === 3,
-      "govuk-grid-column-one-half": nColumns === 2,
-      "govuk-grid-column-full": nColumns === 1
-    });
   }
 }

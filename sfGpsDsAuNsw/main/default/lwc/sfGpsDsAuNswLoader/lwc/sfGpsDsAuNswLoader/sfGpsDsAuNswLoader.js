@@ -1,21 +1,25 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
-const SIZE_SM = "sm";
-const SIZE_MD = "md";
-const SIZE_LG = "lg";
-const SIZE_XL = "xl";
-const SIZE_VALUES = [SIZE_LG, SIZE_MD, SIZE_SM, SIZE_XL];
-const SIZE_DEFAULT = SIZE_XL;
+const SIZE_DEFAULT = "xl";
+const SIZE_VALUES = {
+  xl: "",
+  lg: "nsw-loader__circle--lg",
+  md: "nsw-loader__circle--md",
+  sm: "nsw-loader__circle--sm"
+};
 
-export default class SfGpsDsAuNswLoader extends LightningElement {
+export default class extends LightningElement {
   @api label;
   @api className;
 
-  _sizeOriginal = SIZE_XL;
-  _size = SIZE_XL;
+  /* api: size, String */
 
-  @api get size() {
+  _size = SIZE_VALUES[SIZE_DEFAULT];
+  _sizeOriginal = SIZE_DEFAULT;
+
+  @api
+  get size() {
     return this._sizeOriginal;
   }
 
@@ -23,23 +27,24 @@ export default class SfGpsDsAuNswLoader extends LightningElement {
     this._sizeOriginal = value;
     this._size = normaliseString(value, {
       validValues: SIZE_VALUES,
-      fallbackValue: SIZE_DEFAULT
+      fallbackValue: SIZE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
+  /* computed */
+
   get computedSpanClassName() {
-    return computeClass({
+    return {
       "nsw-loader__circle": true,
-      "nsw-loader__circle--sm": this.size === SIZE_SM,
-      "nsw-loader__circle--md": this.size === SIZE_MD,
-      "nsw-loader__circle--lg": this.size === SIZE_LG
-    });
+      [this._size]: this._size
+    };
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-loader": true,
       [this.className]: this.className
-    });
+    };
   }
 }

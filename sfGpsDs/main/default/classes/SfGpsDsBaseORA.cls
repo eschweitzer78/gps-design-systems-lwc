@@ -53,7 +53,24 @@ abstract public class SfGpsDsBaseORA {
       ? input.get(key)
       : options.get(key);
 
-    if (untyped == null && canBeNull) {
+    if (
+      untyped == null ||
+      (untyped == '' &&
+      type == Id.class) ||
+      (untyped == 'undefined' &&
+      type == Id.class)
+    ) {
+      if (!canBeNull) {
+        String errorText =
+          ((wf == WhereFrom.INPUT) ? 'Input' : 'Options') +
+          ' parameter ' +
+          key +
+          ' must be set.';
+
+        setError(errorText);
+        throw new ArgsException(errorText);
+      }
+
       return null;
     }
 

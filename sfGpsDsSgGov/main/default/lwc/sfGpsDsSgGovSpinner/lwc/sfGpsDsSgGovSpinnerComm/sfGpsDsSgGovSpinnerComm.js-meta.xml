@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>SG DS Spinner (Demo)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        datasource="border,grow"
+        required="true"
+        default="border"
+      />
+      <property
+        name="color"
+        type="String"
+        label="Color"
+        datasource="primary,secondary,success,danger,warning,info,light,dark"
+        required="true"
+        default="primary"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

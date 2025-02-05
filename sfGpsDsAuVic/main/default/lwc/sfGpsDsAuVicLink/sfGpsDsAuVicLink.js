@@ -1,12 +1,10 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import {
-  computeClass,
-  normaliseBoolean,
-  isExternalUrl
-} from "c/sfGpsDsHelpers";
+import { normaliseBoolean, isExternalUrl } from "c/sfGpsDsHelpers";
 
-export default class sfGpsDsAuVicLink extends SfGpsDsLwc {
+const INNERWRAP_DEFAULT = false;
+
+export default class extends SfGpsDsLwc {
   static renderMode = "light";
 
   @api href;
@@ -14,32 +12,24 @@ export default class sfGpsDsAuVicLink extends SfGpsDsLwc {
   @api text;
   @api className;
 
-  @track _innerWrap = false;
-  _originalInnerWrap = false;
+  /* api: innerWrap */
+
+  _innerWrap = INNERWRAP_DEFAULT;
+  _innerWrapOriginal = INNERWRAP_DEFAULT;
 
   @api set innerWrap(value) {
-    this._originalInnerWrap = value;
+    this._innerWrapOriginal = value;
     this._innerWrap = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: INNERWRAP_DEFAULT
     });
   }
 
   get innerWrap() {
-    return this._originalInnerWrap;
+    return this._innerWrapOriginal;
   }
 
-  externalLinksInNewWindow = false;
-
-  renderedCallback() {
-    /* TODO: find alternative as this does not work, at least in JEST
-    let elt = this.querySelector("a");
-    let value = getComputedStyle(elt).getPropertyValue("--rpl-external-links-in-new-window");
-    this.externalLinksInNewWindow = value && value === "true";
-
-    elt.target = this.linkTarget;
-    */
-  }
+  /* computed */
 
   get printUrl() {
     let value = "";
@@ -58,7 +48,7 @@ export default class sfGpsDsAuVicLink extends SfGpsDsLwc {
       return null;
     }
 
-    if (this.target.length === 0 && this.externalLinksInNewWindow) {
+    if (this.target.length === 0 && this._externalLinksInNewWindow) {
       if (isExternalUrl(this.href)) {
         return "_blank";
       }
@@ -69,14 +59,28 @@ export default class sfGpsDsAuVicLink extends SfGpsDsLwc {
     return null;
   }
 
+  get computedClassName() {
+    return {
+      "rpl-link": true,
+      [this.className]: this.className
+    };
+  }
+
+  /* event management */
+
   handleFocus() {
     this.dispatchEvent(new CustomEvent("focus"));
   }
 
-  get computedClassName() {
-    return computeClass({
-      "rpl-link": true,
-      [this.className]: this.className
-    });
+  /* lifecycle */
+
+  _externalLinksInNewWindow = false;
+
+  renderedCallback() {
+    const elt = this.hostElement;
+    const value = getComputedStyle(elt).getPropertyValue(
+      "--rpl-external-links-in-new-window"
+    );
+    this._externalLinksInNewWindow = value;
   }
 }

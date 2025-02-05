@@ -16,10 +16,18 @@ const DEBUG = false;
 const CLASS_NAME = "SfGpsDsFrGovFormStepOsN";
 const SHOW_LABEL = false;
 
-export default class SfGpsDsFrGovFormStepOsN extends OmniscriptStep {
-  render() {
-    return tmpl;
+export default class extends OmniscriptStep {
+  /* computed */
+
+  get showLabel() {
+    return SHOW_LABEL || this._propSetMap?.showLabel;
   }
+
+  get showSave() {
+    return this._propSetMap?.allowSaveForLater && this._propSetMap?.saveLabel;
+  }
+
+  /* event management */
 
   handleBack(e) {
     if (DEBUG) console.log(CLASS_NAME, "> handleBack");
@@ -49,11 +57,9 @@ export default class SfGpsDsFrGovFormStepOsN extends OmniscriptStep {
     if (DEBUG) console.log(CLASS_NAME, "< handleSave");
   }
 
-  get showLabel() {
-    return SHOW_LABEL || this._propSetMap?.showLabel;
-  }
+  /* lifecycle */
 
-  get showSave() {
-    return this._propSetMap?.allowSaveForLater && this._propSetMap?.saveLabel;
+  render() {
+    return tmpl;
   }
 }

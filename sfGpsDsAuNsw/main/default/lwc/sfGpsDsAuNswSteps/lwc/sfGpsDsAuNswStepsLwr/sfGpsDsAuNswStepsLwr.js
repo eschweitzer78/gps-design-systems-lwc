@@ -36,7 +36,6 @@ export default class extends SfGpsDsLwc {
 
   connectedCallback() {
     this._isLwrOnly = true;
-
     super.connectedCallback();
     this.classList.add("nsw-scope");
   }

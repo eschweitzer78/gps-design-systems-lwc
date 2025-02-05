@@ -37,7 +37,7 @@
         {mergedLabel}
       </label>
 
-      <template if:true={_propSetMap.repeat}>
+      <template lwc:if={_propSetMap.repeat}>
         <span
           style="bottom: 7px; right: -11px"
           class={_styleClasses.repeatContainer}
@@ -57,7 +57,7 @@
             </omnistudio-icon>
           </button>
           <button
-            if:true={canRemove}
+            lwc:if={canRemove}
             class={_styleClasses.repeatRemove}
             onclick={handleRemove}
           >
@@ -73,12 +73,12 @@
       </template>
     </div>
 
-    <div if:true={mergedHelpText} id="helper" class="govuk-hint">
+    <div lwc:if={mergedHelpText} id="helper" class="govuk-hint">
       {mergedHelpText}
     </div>
 
     <p
-      if:true={sfGpsDsIsError}
+      lwc:if={sfGpsDsIsError}
       class="govuk-error-message"
       aria-live="assertive"
       role="alert"
@@ -93,7 +93,7 @@
         <div
           class="sfgpsds-combobox sfgpsds-dropdown-trigger sfgpsds-dropdown-trigger_click slds-dropdown-trigger_click"
         >
-          <div class="sfgps-combobox__form-element" role="none">
+          <div class="sfgpsds-combobox__form-element" role="none">
             <input
               class={computedInputClassName}
               type="text"
@@ -106,7 +106,6 @@
               aria-invalid={isAriaInvalid}
               aria-expanded={show}
               aria-haspopup="listbox"
-              aria-autocomplete="list"
               value={lookupDisplay}
               aria-describedby={computedAriaDescribedBy}
               role="combobox"

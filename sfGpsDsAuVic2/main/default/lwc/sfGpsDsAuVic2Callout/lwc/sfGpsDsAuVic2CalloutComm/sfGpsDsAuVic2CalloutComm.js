@@ -1,22 +1,23 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
-import { replaceInnerHtml, computeClass } from "c/sfGpsDsHelpers";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 /**
  * @slot Content
  */
-export default class SfGpsDsAuVic2CalloutComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api title;
   @api variant;
   @api className;
 
   /* api: content */
 
-  _contentOriginal;
   _contentHtml;
+  _contentOriginal;
 
-  @api get content() {
+  @api
+  get content() {
     return this._contentOriginal;
   }
 
@@ -33,10 +34,10 @@ export default class SfGpsDsAuVic2CalloutComm extends SfGpsDsLwc {
   /* getters */
 
   get computedInlineClassName() {
-    return computeClass({
+    return {
       "inline-callout": true,
       "inline-callout--no-header": !this.title
-    });
+    };
   }
 
   /* lifecycle */

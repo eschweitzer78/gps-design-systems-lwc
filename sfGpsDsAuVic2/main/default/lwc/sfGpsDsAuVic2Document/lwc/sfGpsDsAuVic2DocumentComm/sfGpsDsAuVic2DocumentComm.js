@@ -14,17 +14,17 @@ export default class extends SfGpsDsLwc {
 
   /* api: name, string in link markdown format */
 
-  _nameOriginal;
   _name = {};
+  _nameOriginal;
 
-  @api get name() {
+  @api
+  get name() {
     return this._nameOriginal;
   }
 
   set name(markdown) {
-    this._linkOriginal = markdown;
-
     try {
+      this._nameOriginal = markdown;
       this._name = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Name markdown");

@@ -8,7 +8,9 @@
 import OmniscriptSaveForLaterAcknowledge from "omnistudio/omniscriptSaveForLaterAcknowledge";
 import tmpl from "./sfGpsDsAuNswSaveForLaterAckOsN.html";
 
-export default class SfGpsDsAuNswSaveForLaterAckOsN extends OmniscriptSaveForLaterAcknowledge {
+export default class extends OmniscriptSaveForLaterAcknowledge {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

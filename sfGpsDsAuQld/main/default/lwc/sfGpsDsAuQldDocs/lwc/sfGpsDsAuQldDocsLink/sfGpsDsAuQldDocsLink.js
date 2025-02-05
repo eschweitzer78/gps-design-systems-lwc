@@ -1,5 +1,8 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
+
+const ISEXTERNAL_DEFAULT = false;
+const ISSMALL_DEFAULT = false;
 
 export default class extends LightningElement {
   static renderMode = "light";
@@ -9,10 +12,11 @@ export default class extends LightningElement {
 
   /* api: isExternal */
 
-  _isExternalOriginal;
-  _isExternal;
+  _isExternal = ISEXTERNAL_DEFAULT;
+  _isExternalOriginal = ISEXTERNAL_DEFAULT;
 
-  @api get isExternal() {
+  @api
+  get isExternal() {
     return this._isExternalOriginal;
   }
 
@@ -20,16 +24,17 @@ export default class extends LightningElement {
     this._isExternalOriginal = value;
     this._isExternal = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: ISEXTERNAL_DEFAULT
     });
   }
 
   /* api: isSmall */
 
-  _isSmallOriginal;
-  _isSmall;
+  _isSmall = ISSMALL_DEFAULT;
+  _isSmallOriginal = ISSMALL_DEFAULT;
 
-  @api get isSmall() {
+  @api
+  get isSmall() {
     return this._isSmallOriginal;
   }
 
@@ -37,18 +42,16 @@ export default class extends LightningElement {
     this._isSmallOriginal = value;
     this._isSmall = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: ISSMALL_DEFAULT
     });
   }
 
   /* computed */
 
   get computedClassName() {
-    return computeClass({
-      "docs-link": true,
-      "rpl-type-p": !this.isSmall,
-      "rpl-type-p-small": this.isSmall
-    });
+    return {
+      "docs-link": true
+    };
   }
 
   get computedShowIconStart() {

@@ -9,8 +9,11 @@ import { api } from "lwc";
 import SfGpsDsMarkdownElement from "c/sfGpsDsMarkdownElement";
 import tmpl from "./sfGpsDsAuNswMarkdownElementComm.html";
 
-export default class SfGpsDsAuNswMarkdownElementComm extends SfGpsDsMarkdownElement {
-  @api get content() {
+export default class extends SfGpsDsMarkdownElement {
+  /* api: content, String */
+
+  @api
+  get content() {
     return super.content;
   }
 
@@ -18,7 +21,10 @@ export default class SfGpsDsAuNswMarkdownElementComm extends SfGpsDsMarkdownElem
     super.content = markdown;
   }
 
-  @api get className() {
+  /* api: className, String */
+
+  @api
+  get className() {
     return super.className;
   }
 
@@ -33,6 +39,10 @@ export default class SfGpsDsAuNswMarkdownElementComm extends SfGpsDsMarkdownElem
   }
 
   connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+
     this.classList.add("nsw-scope");
   }
 }

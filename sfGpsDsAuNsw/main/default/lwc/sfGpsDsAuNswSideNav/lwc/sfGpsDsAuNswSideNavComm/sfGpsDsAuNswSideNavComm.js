@@ -1,8 +1,12 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswSideNavComm extends SfGpsDsNavigation {
+export default class extends SfGpsDsNavigation {
+  @api className;
+
+  /* api: mode, String */
+
   @api
   get mode() {
     return super.mode;
@@ -11,6 +15,8 @@ export default class SfGpsDsAuNswSideNavComm extends SfGpsDsNavigation {
   set mode(value) {
     super.mode = value;
   }
+
+  /* api: navigationDevName, String */
 
   @api
   get navigationDevName() {
@@ -21,6 +27,8 @@ export default class SfGpsDsAuNswSideNavComm extends SfGpsDsNavigation {
     super.navigationDevName = value;
   }
 
+  /* api: ipName, String */
+
   @api
   get ipName() {
     return super.ipName;
@@ -29,6 +37,8 @@ export default class SfGpsDsAuNswSideNavComm extends SfGpsDsNavigation {
   set ipName(value) {
     super.ipName = value;
   }
+
+  /* api: inputJSON, String */
 
   @api
   get inputJSON() {
@@ -39,6 +49,8 @@ export default class SfGpsDsAuNswSideNavComm extends SfGpsDsNavigation {
     super.inputJSON = value;
   }
 
+  /* api: optionsJSON, String */
+
   @api
   get optionsJSON() {
     return super.optionsJSON;
@@ -48,30 +60,24 @@ export default class SfGpsDsAuNswSideNavComm extends SfGpsDsNavigation {
     super.optionsJSON = value;
   }
 
-  /*
-   * title and link
-   */
+  /* api: title and link, String */
 
-  @track _titleLink; // combined link into title
-  _originalTitleLink;
+  _titleLink; // combined link into title
+  _titleLinkOriginal;
 
-  @api get titleLink() {
-    return this._originalTitleLink;
+  @api
+  get titleLink() {
+    return this._titleLinkOriginal;
   }
 
   set titleLink(markdown) {
-    this._originalTitleLink = markdown;
-
     try {
+      this._titleLinkOriginal = markdown;
       this._titleLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Title Link markdown");
     }
   }
-
-  //
-
-  @api className;
 
   get _title() {
     return this._titleLink?.text;
@@ -81,20 +87,17 @@ export default class SfGpsDsAuNswSideNavComm extends SfGpsDsNavigation {
     return this._titleLink?.url;
   }
 
+  /* event management */
+
+  handleNavigate(event) {
+    if (this._map && event.detail) {
+      this.refs.navsvc.navigateNavMenu(this._map[event.detail]);
+    }
+  }
   /* lifecycle */
 
   connectedCallback() {
     super.connectedCallback();
     this.classList.add("nsw-scope");
-  }
-
-  /* events */
-
-  handleNavigate(event) {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
-
-    if (nav && this._map && event.detail) {
-      nav.navigateNavMenu(this._map[event.detail]);
-    }
   }
 }

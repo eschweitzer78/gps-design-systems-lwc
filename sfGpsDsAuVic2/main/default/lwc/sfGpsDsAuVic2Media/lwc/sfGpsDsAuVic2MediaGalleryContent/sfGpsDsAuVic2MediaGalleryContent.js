@@ -1,22 +1,27 @@
 import { LightningElement, api } from "lwc";
 import {
-  computeClass,
   normaliseBoolean,
-  formatTemplate
+  formatTemplate,
+  isString,
+  isObject
 } from "c/sfGpsDsHelpers";
 
 const SHOW_FULL_SCREEN_DEFAULT = false;
 const FULL_SCREEN_LABEL = "View {title} fullscreen";
 
-export default class SfGpsDsAuVic2MediaGalleryContent extends LightningElement {
+export default class extends LightningElement {
   @api id;
   @api title;
   @api caption;
+  @api className;
 
-  _showFullScreenOriginal = SHOW_FULL_SCREEN_DEFAULT;
+  /* api: showFullScreen */
+
   _showFullScreen = SHOW_FULL_SCREEN_DEFAULT;
+  _showFullScreenOriginal = SHOW_FULL_SCREEN_DEFAULT;
 
-  @api get showFullScreen() {
+  @api
+  get showFullScreen() {
     return this._showFullScreenOriginal;
   }
 
@@ -28,25 +33,24 @@ export default class SfGpsDsAuVic2MediaGalleryContent extends LightningElement {
     });
   }
 
-  @api className;
-
   /* api: image */
 
-  _imageOriginal;
   _image;
+  _imageOriginal;
 
-  @api get image() {
+  @api
+  get image() {
     return this._imageOriginal;
   }
 
   set image(value) {
     this._imageOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       value = JSON.parse(value);
     }
 
-    if (typeof value !== "object") {
+    if (!isObject(value)) {
       value = {};
     }
 
@@ -74,10 +78,10 @@ export default class SfGpsDsAuVic2MediaGalleryContent extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-media-gallery__content": true,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedTitleId() {
@@ -87,6 +91,8 @@ export default class SfGpsDsAuVic2MediaGalleryContent extends LightningElement {
   get computedCaptionId() {
     return this.id + "-caption";
   }
+
+  /* event management */
 
   handleFullScreen() {
     this.dispatchEvent(

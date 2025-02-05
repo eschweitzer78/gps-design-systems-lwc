@@ -11,21 +11,17 @@ import StatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswTimePickerOsN.html";
 
-export default class SfGpsDsAuNswTimePickerOsN extends StatusHelperMixin(
-  OmnistudioTimePicker
-) {
+export default class extends StatusHelperMixin(OmnistudioTimePicker) {
   @api hideFormGroup = false;
   @api hideAsterisk = false;
 
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "nsw-form__label": true,
       "nsw-form__required": this.required && !this.hideAsterisk
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -35,12 +31,13 @@ export default class SfGpsDsAuNswTimePickerOsN extends StatusHelperMixin(
     });
   }
 
-  get computedFormGroupClass() {
-    return computeClass({
+  get computedFormGroupClassName() {
+    return {
       "nsw-form__group": !this.hideFormGroup
-    });
+    };
   }
 
+  /* methods */
   /* we're doing it mostly via template */
 
   synchronizeA11y() {
@@ -54,5 +51,11 @@ export default class SfGpsDsAuNswTimePickerOsN extends StatusHelperMixin(
     this.setElementAttribute(this.inputEle, {
       "aria-activedescendant": this.aria_activedescendant
     });
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

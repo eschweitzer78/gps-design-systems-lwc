@@ -5,14 +5,16 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api, track } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { LightningElement, api } from "lwc";
+import { normaliseString, isArray, isString } from "c/sfGpsDsHelpers";
 
 const TAG_PREFIX = "sf-gps-ds-au-qld-tag";
 
 const SIZE_DEFAULT = "default";
-const SIZE_LARGE = "large";
-const SIZE_VALUES = [SIZE_DEFAULT, SIZE_LARGE];
+const SIZE_VALUES = {
+  default: "",
+  large: "qld__tag--large"
+};
 
 const MODE_DEFAULT = "default";
 const MODE_ACTION = "action";
@@ -25,10 +27,15 @@ const I18N = {
 };
 
 export default class extends LightningElement {
-  _mode;
-  _modeOriginal;
+  @api className;
 
-  @api get mode() {
+  /* api: mode */
+
+  _mode = MODE_DEFAULT;
+  _modeOriginal = MODE_DEFAULT;
+
+  @api
+  get mode() {
     return this._modeOriginal;
   }
 
@@ -40,6 +47,59 @@ export default class extends LightningElement {
     });
 
     this.updateTags();
+  }
+
+  /* api: size */
+
+  _size = SIZE_VALUES[SIZE_DEFAULT];
+  _sizeOriginal = SIZE_DEFAULT;
+
+  @api
+  get size() {
+    return this._sizeOriginal;
+  }
+
+  set size(value) {
+    this._sizeOriginal = value;
+    this._size = normaliseString(value, {
+      validValues: SIZE_VALUES,
+      fallbackValue: SIZE_DEFAULT,
+      returnObjectValue: true
+    });
+
+    this.updateTags();
+  }
+
+  /* api: tags */
+
+  _tags;
+  _tagsOriginal;
+
+  @api
+  get tags() {
+    return this._tagsOriginal;
+  }
+
+  set tags(value) {
+    this._tagsOriginal = value;
+    this.updateTags();
+  }
+
+  /* getters */
+
+  get i18n() {
+    return I18N;
+  }
+
+  get computedClassName() {
+    return {
+      "qld__tag-list": true,
+      [this.className]: this.className
+    };
+  }
+
+  get computedHasOpenFilterItems() {
+    return this.asFilter && (this._tags || []).some((tag) => !tag.closed);
   }
 
   get asFilter() {
@@ -58,70 +118,16 @@ export default class extends LightningElement {
     return (this._mode || MODE_DEFAULT) === MODE_DEFAULT;
   }
 
-  /* api: size */
-
-  _sizeOriginal;
-  _size = false;
-
-  @api
-  get size() {
-    return this._sizeOriginal;
-  }
-
-  set size(value) {
-    this._sizeOriginal = value;
-    this._size = normaliseString(value, {
-      validValues: SIZE_VALUES,
-      fallbackValue: SIZE_DEFAULT
-    });
-
-    this.updateTags();
-  }
-
-  /* api: tags */
-
-  @track _tags;
-  _tagsOriginal;
-
-  @api
-  get tags() {
-    return this._tagsOriginal;
-  }
-
-  set tags(value) {
-    this._tagsOriginal = value;
-    this.updateTags();
-  }
-
-  @api className;
-
-  /* getters */
-
-  get i18n() {
-    return I18N;
-  }
-
-  get computedClassName() {
-    return computeClass({
-      "qld__tag-list": true,
-      [this.className]: this.className
-    });
-  }
-
-  get computedHasOpenFilterItems() {
-    return this.asFilter && (this._tags || []).some((tag) => !tag.closed);
-  }
-
   /* methods */
 
   updateTags() {
     this._tags =
-      this._tagsOriginal && Array.isArray(this._tagsOriginal)
+      this._tagsOriginal && isArray(this._tagsOriginal)
         ? this._tagsOriginal.map((tag, index) => {
-            const isString = typeof tag === "string";
-            const text = isString ? tag : tag.text;
-            const url = isString ? null : tag.url;
-            const closed = isString ? false : tag.closed;
+            const tIsString = isString(tag);
+            const text = tIsString ? tag : tag.text;
+            const url = tIsString ? null : tag.url;
+            const closed = tIsString ? false : tag.closed;
 
             return {
               text,
@@ -129,13 +135,13 @@ export default class extends LightningElement {
               closed,
               key: `${TAG_PREFIX}-${index}`,
               closeHint: "Remove " + text,
-              className: computeClass({
+              className: {
                 qld__tag: true,
-                "qld__tag--large": this._size === SIZE_LARGE,
+                [this._size]: this._size,
                 "qld__tag--info": this.asInfo || (this.asDefault && !url),
                 "qld__tag--filter": this.asFilter,
                 [tag.className]: tag.className
-              })
+              }
             };
           })
         : null;
@@ -144,30 +150,28 @@ export default class extends LightningElement {
   /* event management */
 
   handleClick(event) {
-    let element = event.target;
+    const element = event?.target;
 
     if (element === null || this._tags === null) {
       return;
     }
 
-    let targetIndex = parseInt(element.dataset.idx, 10);
+    let index = parseInt(element.dataset.idx, 10);
 
     if (
-      typeof targetIndex === "undefined" ||
-      isNaN(targetIndex) ||
-      targetIndex < 0 ||
-      targetIndex >= this._tags.length
+      typeof index === "undefined" ||
+      isNaN(index) ||
+      index < 0 ||
+      index >= this._tags.length
     ) {
       return;
     }
 
-    let tag = this._tags[targetIndex];
-
     this.dispatchEvent(
       new CustomEvent("clear", {
         detail: {
-          index: targetIndex,
-          closed: !tag.closed
+          index,
+          closed: !this._tags[index].closed
         }
       })
     );

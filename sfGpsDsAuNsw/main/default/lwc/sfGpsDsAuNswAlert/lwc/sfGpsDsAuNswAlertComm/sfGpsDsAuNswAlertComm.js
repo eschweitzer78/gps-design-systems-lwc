@@ -8,26 +8,39 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
-import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import { replaceInnerHtml, normaliseBoolean } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
+const COMPACT_DEFAULT = false;
+
+export default class extends SfGpsDsLwc {
   @api title;
-  @api className = "";
   @api as = "info";
+  @api className = "";
 
-  _compact = false;
+  /* api: compact */
 
-  @api set compact(value) {
-    this._compact = value === true || value === "true";
-    this.generateContentHtml();
-  }
+  _compact = COMPACT_DEFAULT;
+  _compactOriginal = COMPACT_DEFAULT;
 
+  @api
   get compact() {
     return this._compact;
   }
 
-  _contentOriginal;
+  set compact(value) {
+    this._compactOriginal = value;
+    this._compact = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: COMPACT_DEFAULT
+    });
+
+    this.generateContentHtml();
+  }
+
+  /* api: content */
+
   _contentHtml;
+  _contentOriginal;
 
   @api set content(markdown) {
     this._contentOriginal = markdown;
@@ -37,6 +50,8 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
   get content() {
     return this._contentOriginal;
   }
+
+  /* methods */
 
   generateContentHtml() {
     try {
@@ -67,7 +82,7 @@ export default class SfGpsDsAuNswAlertComm extends SfGpsDsLwc {
 
     replaceInnerHtml(
       this.refs.markdown,
-      (this.title && !this.compact ? `<span></span>` : "") + this._contentHtml
+      (this.title && !this._compact ? `<span></span>` : "") + this._contentHtml
     );
   }
 }

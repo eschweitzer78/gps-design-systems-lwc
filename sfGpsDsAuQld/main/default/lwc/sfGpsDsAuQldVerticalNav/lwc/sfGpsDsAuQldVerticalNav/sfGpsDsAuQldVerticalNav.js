@@ -1,5 +1,4 @@
 import { LightningElement, api, track, wire } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 import { CurrentPageReference } from "lightning/navigation";
 import cBasePath from "@salesforce/community/basePath";
 
@@ -12,14 +11,54 @@ const I18N = {
 export default class extends LightningElement {
   @api className;
 
-  /*
-   * api: navItems
-   * Array of navigation item objects, format { url: '', text: '', subNav: ... }
-   */
+  /* api: navItems, Array of navigation item objects { url, text, subNav: ... } */
 
-  _originalNavItems;
+  _navItemsOriginal;
   _navItems;
   _mapItems;
+
+  @api
+  get navItems() {
+    return this._navItemsOriginal;
+  }
+
+  set navItems(items) {
+    this._navItemsOriginal = items;
+    this._openSet = new Set();
+
+    this.navItemsMapping();
+  }
+
+  /* wire: handlePageReference */
+
+  _pageReference;
+
+  @wire(CurrentPageReference) handlePageReference(pageReference) {
+    /* This is called when we navigate off the current page... */
+
+    if (this._pageReference && this._pageReference !== pageReference) {
+      /* update menu */
+      this.navItemsMapping();
+    }
+
+    this._pageReference = pageReference;
+  }
+
+  /* getters */
+
+  get i18n() {
+    return I18N;
+  }
+
+  get computedClassName() {
+    return {
+      "qld__left-nav__content": true,
+      js: true,
+      [this.className]: this.className
+    };
+  }
+
+  /* methods */
 
   mapItems(parentIndex, parentLevel, map, items) {
     const currentUrl = document.URL.split("?")[0];
@@ -77,57 +116,15 @@ export default class extends LightningElement {
     });
   }
 
-  @api get navItems() {
-    return this._originalNavItems;
-  }
-
-  set navItems(items) {
-    this._originalNavItems = items;
-    this._openSet = new Set();
-
-    this.navItemsMapping();
-  }
-
-  /* wire: handlePageReference */
-
-  _pageReference;
-
-  @wire(CurrentPageReference) handlePageReference(pageReference) {
-    /* This is called when we navigate off the current page... */
-
-    if (this._pageReference && this._pageReference !== pageReference) {
-      /* update menu */
-      this.navItemsMapping();
-    }
-
-    this._pageReference = pageReference;
-  }
-
-  /* getters */
-
-  get i18n() {
-    return I18N;
-  }
-
-  get computedClassName() {
-    return computeClass({
-      "qld__left-nav__content": true,
-      js: true,
-      [this.className]: this.className
-    });
-  }
-
-  /* methods */
-
   navItemsMapping() {
     let map = {};
-    this._navItems = this._originalNavItems
-      ? this.mapItems("navitem", 0, map, this._originalNavItems)
+    this._navItems = this._navItemsOriginal
+      ? this.mapItems("navitem", 0, map, this._navItemsOriginal)
       : null;
     this._mapItems = map;
   }
 
-  /* events */
+  /* event management */
 
   // eslint-disable-next-line no-unused-vars
   handleToggleButtonClick(event) {
@@ -137,7 +134,7 @@ export default class extends LightningElement {
   handleClickNavigate(event) {
     event.preventDefault();
 
-    let index = event.currentTarget.dataset.ndx;
+    const index = event.currentTarget.dataset.ndx;
     this.dispatchEvent(new CustomEvent("navigate", { detail: index }));
   }
 
@@ -166,21 +163,21 @@ export default class extends LightningElement {
 
       let rv = {
         ...item,
-        anchorClassName: computeClass({
+        anchorClassName: {
           "qld__left-nav__item-link": true,
           "qld__left-nav__item-link--open": isOpen
-        }),
-        buttonClassName: computeClass({
+        },
+        buttonClassName: {
           "qld__left-nav__item-toggle": true,
           "qld__accordion--closed": !isOpen,
           "qld__accordion--open": isOpen
-        }),
-        ulClassName: computeClass({
+        },
+        ulClassName: {
           "qld__link-list": true,
           "qld__accordion--closed": !isOpen,
           "qld__accordion--open": isOpen,
           qld__accordion__body: true
-        }),
+        },
         ariaExpanded: isOpen
       };
 

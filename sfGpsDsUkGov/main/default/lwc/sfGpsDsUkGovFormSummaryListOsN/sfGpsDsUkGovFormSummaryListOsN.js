@@ -1,11 +1,31 @@
 import { LightningElement, track } from "lwc";
 import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
+import { isArray } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormSummaryListOsN.html";
 
-export default class SfGpsDsUkGovFormSummaryListOsN extends OmniscriptBaseMixin(
-  LightningElement
-) {
+export default class extends OmniscriptBaseMixin(LightningElement) {
   @track _items = [];
+
+  /* event management */
+
+  handleClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    let id = event.currentTarget.dataset.id;
+
+    if (isArray(this._items)) {
+      for (let i = 0; i < this._items.length; i++) {
+        let item = this._items[i];
+        if (item.key === id && item.step) {
+          super.omniNavigateTo(item.step);
+          break;
+        }
+      }
+    }
+  }
+
+  /* lifecycle */
 
   render() {
     return tmpl;
@@ -14,27 +34,10 @@ export default class SfGpsDsUkGovFormSummaryListOsN extends OmniscriptBaseMixin(
   connectedCallback() {
     let items = this.omniJsonData[this.omniJsonDef.name];
 
-    if (Array.isArray(items)) {
+    if (isArray(items)) {
       this._items = items;
     } else {
       this._items = [];
-    }
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    let id = e.currentTarget.dataset.id;
-
-    if (Array.isArray(this._items)) {
-      for (let i = 0; i < this._items.length; i++) {
-        let item = this._items[i];
-        if (item.key === id && item.step) {
-          super.omniNavigateTo(item.step);
-          break;
-        }
-      }
     }
   }
 }

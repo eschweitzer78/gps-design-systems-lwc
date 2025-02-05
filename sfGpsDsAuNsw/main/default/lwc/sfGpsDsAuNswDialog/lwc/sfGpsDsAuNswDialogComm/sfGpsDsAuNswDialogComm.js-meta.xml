@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>61.0</apiVersion>
+  <apiVersion>62.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Dialog (Demo)</masterLabel>
   <targets>
@@ -16,6 +16,7 @@
         description="Label used as a title at the top of the dialog."
         required="true"
         default="Your submission was successful"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="content"
@@ -32,6 +33,7 @@
         description="Text used as a label for the primary button."
         default="Make new submission"
         required="true"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="bstyle"
@@ -48,6 +50,7 @@
         label="Secondary button text"
         description="Text used as a label for the secondary button - leave empty to remove secondary button."
         default="View submissions"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="isDismissible"
@@ -60,6 +63,7 @@
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

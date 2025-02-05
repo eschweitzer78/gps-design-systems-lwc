@@ -1,10 +1,12 @@
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuNswPaginationComm extends SfGpsDsLwc {
-  /* activePage: Integer */
+export default class extends SfGpsDsLwc {
+  @api className;
 
-  @track _currentActivePage;
+  /* api: activePage, Integer */
+
+  _currentActivePage;
   _activePage;
 
   @api set activePage(value) {
@@ -16,9 +18,9 @@ export default class SfGpsDsAuNswPaginationComm extends SfGpsDsLwc {
     return this._activePage;
   }
 
-  /* lastPage: Integer */
+  /* api: lastPage, Integer */
 
-  @track _currentLastPage;
+  _currentLastPage;
   _lastPage;
 
   @api set lastPage(value) {
@@ -33,10 +35,6 @@ export default class SfGpsDsAuNswPaginationComm extends SfGpsDsLwc {
   get lastPage() {
     return this._lastPage;
   }
-
-  /* className */
-
-  @api className;
 
   /* lifecycle */
 

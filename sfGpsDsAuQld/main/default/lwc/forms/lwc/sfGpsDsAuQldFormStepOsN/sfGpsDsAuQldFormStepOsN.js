@@ -13,6 +13,8 @@ import SfGpsDsFormStepOsN from "c/sfGpsDsFormStepOsN";
 import tmpl from "./sfGpsDsAuQldFormStepOsN.html";
 
 export default class extends SfGpsDsFormStepOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

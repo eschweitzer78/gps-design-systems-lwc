@@ -5,40 +5,33 @@ import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 export default class extends SfGpsDsLwc {
   @api type;
-  @api title;
+  @api heading;
   @api className;
 
-  /* api: copy */
+  /* api: body */
 
-  _copyOriginal;
-  _copyHtml;
+  _bodyHtml;
+  _bodyOriginal;
 
-  @api get copy() {
-    return this._copyOriginal;
+  @api
+  get body() {
+    return this._bodyOriginal;
   }
 
-  set copy(markdown) {
-    this._copyOriginal = markdown;
+  set body(markdown) {
     try {
-      if (markdown) {
-        this._copyHtml = mdEngine.renderEscaped(markdown);
-      } else {
-        this._copyHtml = null;
-      }
+      this._bodyOriginal = markdown;
+      this._bodyHtml = markdown ? mdEngine.renderEscaped(markdown) : null;
     } catch (e) {
-      this.addError("CO-MD", "Issue when parsing Copy markdown");
+      this.addError("CO-MD", "Issue when parsing Content markdown");
     }
   }
 
   /* lifecycle */
 
   renderedCallback() {
-    if (this._copyOriginal) {
-      replaceInnerHtml(this.refs.copy, this._copyHtml);
-    }
-
-    if (this._footerOriginal) {
-      replaceInnerHtml(this.refs.footer, this._footerHtml);
+    if (this._bodyOriginal) {
+      replaceInnerHtml(this.refs.body, this._bodyHtml);
     }
   }
 

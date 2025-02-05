@@ -1,22 +1,9 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <div class={computedClassName}>
     <div class="govuk-accordion__controls">
       <button
-        if:false={isFullyExpanded}
-        class="govuk-accordion__show-all"
-        aria-expanded="false"
-        onclick={handleExpandAll}
-      >
-        <span
-          class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
-        >
-        </span>
-        <span class="govuk-accordion__show-all-text">
-          {i18n.showAllSectionsLabel}
-        </span>
-      </button>
-      <button
-        if:true={isFullyExpanded}
+        lwc:if={computedIsFullyExpanded}
         class="govuk-accordion__show-all"
         aria-expanded={isFullyExpanded}
         onclick={handleCollapseAll}
@@ -27,6 +14,20 @@
         </span>
         <span class="govuk-accordion__show-all-text">
           {i18n.hideAllSectionsLabel}
+        </span>
+      </button>
+      <button
+        lwc:else
+        class="govuk-accordion__show-all"
+        aria-expanded="false"
+        onclick={handleExpandAll}
+      >
+        <span
+          class="govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down"
+        >
+        </span>
+        <span class="govuk-accordion__show-all-text">
+          {i18n.showAllSectionsLabel}
         </span>
       </button>
     </div>

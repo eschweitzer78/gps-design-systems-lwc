@@ -1,17 +1,37 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseBoolean, computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2VerticalNavLink extends LightningElement {
+const ACTIVE_DEFAULT = false;
+
+export default class extends LightningElement {
   @api text;
   @api href;
-  @api active;
   @api showChildIcon;
   @api className;
 
-  get computedClass() {
+  /* api: active */
+
+  _active = ACTIVE_DEFAULT;
+  _activeOriginal = ACTIVE_DEFAULT;
+
+  @api
+  get active() {
+    return this._activeOriginal;
+  }
+
+  set active(value) {
+    this._active = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: ACTIVE_DEFAULT
+    });
+  }
+
+  /* computed */
+
+  get computedClassName() {
     return computeClass({
       "rpl-vertical-nav__item": true,
-      "rpl-vertical-nav__item--active": this.active,
+      "rpl-vertical-nav__item--active": this._active,
       "rpl-vertical-nav__link": true,
       "rpl-u-focusable-block": true,
       [this.className]: this.className

@@ -9,6 +9,8 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const CONTENT_DEFAULT = [];
+
 export default class extends SfGpsDsLwc {
   @api type;
   @api cstyle;
@@ -18,31 +20,30 @@ export default class extends SfGpsDsLwc {
 
   /* api: content */
 
-  _content;
-  _h1s = [];
+  _content = CONTENT_DEFAULT;
+  _contentOriginal;
 
-  @api get content() {
-    return this._content;
+  @api
+  get content() {
+    return this._contentOriginal;
   }
 
   set content(markdown) {
-    this._content = markdown;
-
     try {
-      let h1s = mdEngine.extractH1s(markdown.replaceAll("\\n", "\n"));
-      this._h1s = h1s.map((h1) => ({ ...h1, closed: true }));
+      this._contentOriginal = markdown;
+      this._content = mdEngine
+        .extractH1s(markdown.replaceAll("\\n", "\n"))
+        .map((h1) => ({ ...h1, closed: true }));
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
-      this._h1s = [];
+      this._content = CONTENT_DEFAULT;
     }
-
-    console.log("h1s", JSON.stringify(this._h1s));
   }
 
   /* getters */
 
-  get hasH1s() {
-    return this._h1s ? this._h1s.length > 0 : false;
+  get _isEmpty() {
+    return this._content?.length > 0;
   }
 
   /* lifecycle */

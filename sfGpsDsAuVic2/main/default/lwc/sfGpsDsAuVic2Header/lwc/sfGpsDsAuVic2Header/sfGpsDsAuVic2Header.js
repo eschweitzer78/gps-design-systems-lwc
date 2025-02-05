@@ -1,5 +1,5 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
   /* api: fullWidth */
@@ -83,39 +83,55 @@ export default class extends LightningElement {
   @track hasAsideSlot;
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-header": true,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedMainClassName() {
-    return computeClass({
+    return {
       "rpl-header__main": true,
       "rpl-col-12": true,
-      "rpl-col-8-m":
+      "rpl-col-7-m":
         !this._fullWidth && (this.hasAsideSlot || this._limitContent),
       "rpl-col-10-m":
         !this._fullWidth && !this.hasAsideSlot && !this._limitContent
-    });
+    };
   }
 
   get computedBehindClassName() {
     return this.hasBehindSlot ? "rpl-header__behind rpl-u-screen-only" : null;
   }
 
+  get computedBehindStyle() {
+    return this.hasBehindSlot ? null : "display: none";
+  }
+
   get computedUpperClassName() {
     return this.hasUpperSlot ? "rpl-header__upper" : null;
+  }
+
+  get computedUpperStyle() {
+    return this.hasUpperSlot ? null : "display: none";
   }
 
   get computedLowerClassName() {
     return this.hasLowerSlot ? "rpl-header__lower" : null;
   }
 
+  get computedLowerStyle() {
+    return this.hasLowerSlot ? null : "display: none";
+  }
+
   get computedAsideClassName() {
     return this.hasAsideSlot
       ? "rpl-header__aside rpl-col-12 rpl-col-4-m rpl-col-start-9-m"
       : null;
+  }
+
+  get computedAsideStyle() {
+    return this.hasAsideSlot ? null : "display: none";
   }
 
   handleSlotChange(event) {

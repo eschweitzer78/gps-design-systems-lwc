@@ -8,7 +8,6 @@
 import { track } from "lwc";
 import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
 import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormFileOsN.html";
 
 // TODO: there is seemingly a bug in SDLS when the hover colors for neutral buttons are not derived from variables
@@ -18,21 +17,23 @@ import tmpl from "./sfGpsDsAuNswFormFileOsN.html";
 //  background-color: rgb(243, 243, 243); -> var(--slds-c-button-neutral-color-background-hover)
 //  border-color: rgb(201, 201, 201); -> var(--slds-c-button-neutral-color-border-hover)
 
-export default class SfGpsDsAuNswFormFileOsN extends SfGpsDsAuNswStatusHelperMixin(
-  SfGpsDsFormFileOsN
-) {
+export default class extends SfGpsDsAuNswStatusHelperMixin(SfGpsDsFormFileOsN) {
+  @track computedAriaDescribedBy;
+
+  /* computed */
+
+  get computedLabelClassName() {
+    return {
+      "nsw-form__label": true,
+      "nsw-form__required": this._propSetMap.required
+    };
+  }
+
+  /* lifecycle */
+
   render() {
     return tmpl;
   }
-
-  get computedLabelClassName() {
-    return computeClass({
-      "nsw-form__label": true,
-      "nsw-form__required": this._propSetMap.required
-    });
-  }
-
-  @track computedAriaDescribedBy;
 
   renderedCallback() {
     if (super.renderedCallback) super.renderedCallback();

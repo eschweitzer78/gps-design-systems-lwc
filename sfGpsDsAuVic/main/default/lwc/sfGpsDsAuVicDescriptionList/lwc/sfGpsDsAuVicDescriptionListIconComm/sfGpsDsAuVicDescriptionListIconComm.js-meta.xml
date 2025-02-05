@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC DS Description List w/ Icon</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="list"
+        type="String"
+        label="List"
+        description="An array of heading and description as strings in JSON format."
+        default="[{&quot;icon&quot;:&quot;star&quot;,&quot;heading&quot;:&quot;List item 1&quot;,&quot;content&quot;:&quot;Description 1&quot;},{&quot;icon&quot;:&quot;doc&quot;,&quot;heading&quot;:&quot;List item 2&quot;,&quot;content&quot;:&quot;Description 2&quot;}]"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

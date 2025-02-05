@@ -7,6 +7,7 @@
 
 import { api } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
+import { toArray } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class extends SfGpsDsNavigation {
@@ -16,6 +17,8 @@ export default class extends SfGpsDsNavigation {
   @api linkClassName;
   @api anchorClassName;
   @api className;
+
+  /* api: mode */
 
   @api
   get mode() {
@@ -56,6 +59,8 @@ export default class extends SfGpsDsNavigation {
     }
   }
 
+  /* api: navigationDevName */
+
   @api
   get navigationDevName() {
     return super.navigationDevName;
@@ -64,6 +69,8 @@ export default class extends SfGpsDsNavigation {
   set navigationDevName(value) {
     super.navigationDevName = value;
   }
+
+  /* api: ipName */
 
   @api
   get ipName() {
@@ -74,6 +81,8 @@ export default class extends SfGpsDsNavigation {
     super.ipName = value;
   }
 
+  /* api: inputJSON */
+
   @api
   get inputJSON() {
     return super.inputJSON;
@@ -82,6 +91,8 @@ export default class extends SfGpsDsNavigation {
   set inputJSON(value) {
     super.inputJSON = value;
   }
+
+  /* api: optionsJSON */
 
   @api
   get optionsJSON() {
@@ -92,21 +103,19 @@ export default class extends SfGpsDsNavigation {
     super.optionsJSON = value;
   }
 
-  /*
-   * api: cvaLink
-   */
+  /* api: cvaLink */
 
   _cvaLink;
   _cvaLinkOriginal;
 
-  @api get cvaLink() {
+  @api
+  get cvaLink() {
     return this._cvaLinkOriginal;
   }
 
   set cvaLink(markdown) {
-    this._cvaLinkOriginal = markdown;
-
     try {
+      this._cvaLinkOriginal = markdown;
       this._cvaLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError(
@@ -115,6 +124,8 @@ export default class extends SfGpsDsNavigation {
       );
     }
   }
+
+  /* computed */
 
   get _cvaText() {
     return this._cvaLink?.text;
@@ -131,11 +142,7 @@ export default class extends SfGpsDsNavigation {
       return null;
     }
 
-    if (!Array.isArray(data)) {
-      data = [data];
-    }
-
-    return data.map((item, index) => ({
+    return toArray(data).map((item, index) => ({
       ...item,
       index: item.index || `item-${index + 1}`,
       text: item.text || item.label,

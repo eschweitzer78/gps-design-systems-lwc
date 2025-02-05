@@ -1,0 +1,38 @@
+<template lwc:render-mode="light">
+  <li
+    lwc:if={links}
+    class="rpl-footer-nav__menu-item rpl-footer-nav__menu-item--parent"
+  >
+    <h2 class="rpl-footer-nav__heading" onclick={handleClick}>
+      {links.title}
+      <c-sf-gps-ds-au-vic-icon
+        lwc:if={computedShowHeadingLink}
+        symbol={computedSymbol}
+        color="white"
+        size="m"
+      >
+      </c-sf-gps-ds-au-vic-icon>
+    </h2>
+
+    <c-sf-gps-ds-transition name="rpl-accordion" show={computedShow}>
+      <ul
+        class="rpl-footer-nav__submenu-item rpl-footer-nav__submenu-item--socials"
+      >
+        <template for:each={_children} for:item="socialLink">
+          <li key={socialLink.key}>
+            <c-sf-gps-ds-au-vic-link href={socialLink.uri} inner-wrap="false">
+              <c-sf-gps-ds-au-vic-icon
+                lwc:if={socialLink.icon}
+                symbol={socialLink.icon}
+                color="white"
+                size="m"
+              >
+              </c-sf-gps-ds-au-vic-icon>
+              <span class="rpl-link__inner">{socialLink.title}</span>
+            </c-sf-gps-ds-au-vic-link>
+          </li>
+        </template>
+      </ul>
+    </c-sf-gps-ds-transition>
+  </li>
+</template>

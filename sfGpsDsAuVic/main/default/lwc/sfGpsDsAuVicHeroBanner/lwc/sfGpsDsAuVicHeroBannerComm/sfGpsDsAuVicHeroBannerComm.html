@@ -1,0 +1,22 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-vic-hero-banner
+    lwc:else
+    title={title}
+    intro-text={introText}
+    link-heading={linkHeading}
+    links={_links}
+    more-link={_moreLink}
+    theme={theme}
+    show-links={showLinks}
+    logo={computedLogo}
+    background-graphic={backgroundGraphic}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-vic-hero-banner>
+</template>

@@ -1,13 +1,14 @@
-<template>
+<!-- sldsValidatorIgnore -->
+<template lwc:render-mode="light">
   <!-- Main navigation bar -->
   <nav
-    class="qld__main-nav qld__main-nav--mega js"
+    class={computedClassName}
     id="mainmenu"
     aria-label={i18n.mainNavAriaLabel}
   >
     <div class="container-fluid">
       <!-- Main navigation content wrapper -->
-      <div class="qld__main-nav__content" id="main-nav">
+      <div class={computedNavContentClassName} id="main-nav">
         <!-- Navigation menu wrapper -->
         <div class={computedMainNavMenuClassName}>
           <!-- Inner navigation menu wrapper -->
@@ -21,6 +22,7 @@
               <button
                 aria-controls="main-nav"
                 class="qld__main-nav__toggle qld__main-nav__toggle--close"
+                onclick={handleCloseNav}
               >
                 <!-- SVG icon for the close button -->
                 <svg
@@ -40,11 +42,12 @@
             <!-- Navigation link list -->
             <ul class="qld__link-list qld__link-list--flex">
               <!-- Home item -->
-              <li class="qld__main-nav__item">
+              <li lwc:if={_homeShow} class={computedHomeClassName}>
                 <div class="qld__main-nav__item-title">
                   <a
                     class="qld__main-nav__item-home qld__main-nav__item-link"
-                    href="/"
+                    href={computedHomeUrl}
+                    aria-label={i18n.homeLabel}
                   >
                     <!-- SVG icon for the link -->
                     <span class="qld__main-nav__item-icon">
@@ -57,6 +60,7 @@
                         <use href={computedHomeIconUrl}></use>
                       </svg>
                     </span>
+
                     <span class="qld__main-nav__item-text"
                       >{i18n.homeLabel}</span
                     >
@@ -64,14 +68,30 @@
                 </div>
               </li>
 
-              <template for:each={_navItems} for:item="navItem">
+              <template
+                lwc:if={_navItems}
+                for:each={_navItems}
+                for:item="navItem"
+              >
                 <li key={navItem.id} class={navItem.className}>
                   <template lwc:if={navItem.subNav}>
                     <div
                       lwc:if={navItem.subNav}
                       class="qld__main-nav__item-title"
                     >
-                      <a class={navItem.anchorClassName}> {navItem.text} </a>
+                      <a
+                        lwc:if={navItem.url}
+                        href={navItem.url}
+                        class={navItem.anchorClassName}
+                        >{navItem.text}</a
+                      >
+                      <a
+                        lwc:else
+                        href="javascript:void(0)"
+                        class={navItem.anchorClassName}
+                        >{navItem.text}</a
+                      >
+
                       <button
                         class={navItem.buttonClassName}
                         aria-controls={navItem.id}
@@ -116,6 +136,7 @@
                           class="qld__horizontal-rule qld__horizontal-rule--lg"
                         />
                         <ul
+                          lwc:if={navItem.subNav}
                           class="qld__link-columns qld__link-columns--3-col qld__link-list"
                         >
                           <template
@@ -157,6 +178,7 @@
                     <a
                       class={navItem.anchorClassName}
                       data-ndx={navItem.index}
+                      href={navItem.url}
                       onclick={handleClick}
                     >
                       {navItem.text}

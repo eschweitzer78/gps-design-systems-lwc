@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <ul class="slds-accordion">
     <li class="slds-accordion__list-item">
@@ -5,7 +6,7 @@
         <div class="slds-accordion__summary">
           <h3 class="slds-accordion__summary-heading">
             <button
-              aria-expanded={isOpen}
+              aria-expanded={_isOpen}
               type="button"
               class="slds-button slds-button_reset slds-accordion__summary-action"
               onclick={handleAccordionClick}
@@ -23,7 +24,7 @@
           </h3>
         </div>
 
-        <div aria-hidden={isClosed} class="slds-accordion__content">
+        <div aria-hidden={computedIsClosed} class="slds-accordion__content">
           <fieldset class="slds-form-element">
             <div class="slds-form-element__control">
               <lightning-textarea

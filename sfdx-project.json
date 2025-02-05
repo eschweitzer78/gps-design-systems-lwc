@@ -3,13 +3,13 @@
     {
       "path": "sfGpsDs",
       "package": "Salesforce Global Public Sector Design Systems",
-      "versionName": "2024.07.29.1000",
-      "versionNumber": "2.6.0.NEXT",
+      "versionName": "2025.02.04.1600",
+      "versionNumber": "2.7.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 250.7"
+          "package": "omnistudio 254.1"
         }
       ],
       "versionDescription": "Salesforce Global Public Sector Design Systems"
@@ -21,13 +21,13 @@
     {
       "path": "sfGpsDsAuNswFull",
       "package": "Salesforce Global Public Sector AU NSW Design System",
-      "versionName": "2024.07.29.1000",
-      "versionNumber": "2.6.0.NEXT",
+      "versionName": "2025.02.04.1600",
+      "versionNumber": "2.7.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 250.7"
+          "package": "omnistudio 254.1"
         }
       ],
       "versionDescription": "Salesforce Global Public Sector AU NSW Design System (Full)"
@@ -39,13 +39,13 @@
     {
       "path": "sfGpsDsAuNswSFull",
       "package": "Salesforce Global Public Sector AU NSW Service Design System",
-      "versionName": "2024.07.29.1000",
-      "versionNumber": "2.6.0.NEXT",
+      "versionName": "2025.02.04.1600",
+      "versionNumber": "2.7.0.NEXT",
       "default": false,
       "versionDescription": "Salesforce Global Public Sector AU Service NSW Design System (Full)",
       "dependencies": [
         {
-          "package": "omnistudio 250.7"
+          "package": "omnistudio 254.1"
         }
       ]
     },
@@ -55,13 +55,13 @@
     {
       "path": "sfGpsDsAuVic1Full",
       "package": "Salesforce Global Public Sector AU VIC Design System",
-      "versionName": "2024.07.29.1000",
-      "versionNumber": "2.6.0.NEXT",
+      "versionName": "2025.02.04.1600",
+      "versionNumber": "2.7.0.NEXT",
       "default": false,
       "versionDescription": "Salesforce Global Public Sector AU VIC Design System v1 (Full)",
       "dependencies": [
         {
-          "package": "omnistudio 250.7"
+          "package": "omnistudio 254.1"
         }
       ]
     },
@@ -72,13 +72,13 @@
     {
       "path": "sfGpsDsAuVic2Full",
       "package": "Salesforce Global Public Sector AU VIC2 Design System",
-      "versionName": "2024.07.29.1000",
-      "versionNumber": "0.3.0.NEXT",
+      "versionName": "2025.02.04.1600",
+      "versionNumber": "0.4.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 250.7"
+          "package": "omnistudio 254.1"
         }
       ]
     },
@@ -87,19 +87,23 @@
       "default": true
     },
     {
+      "path": "sfGpsDsSgGov",
+      "default": false
+    },
+    {
       "path": "sfGpsDsUkGov",
       "default": false
     },
     {
       "path": "sfGpsDsUkGovFull",
       "package": "Salesforce Global Public Sector GOV.UK Design System (Full)",
-      "versionName": "2024.07.29.1000",
-      "versionNumber": "1.3.0.NEXT",
+      "versionName": "2025.02.04.1600",
+      "versionNumber": "1.4.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 250.7"
+          "package": "omnistudio 254.1"
         }
       ]
     },
@@ -114,13 +118,13 @@
     {
       "path": "sfGpsDsFrGovFull",
       "package": "Salesforce Global Public Sector GOUV.FR Design System (Full)",
-      "versionName": "2024.07.29.1000",
-      "versionNumber": "0.4.0.NEXT",
+      "versionName": "2025.02.04.1600",
+      "versionNumber": "0.5.0.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 250.7"
+          "package": "omnistudio 254.1"
         }
       ]
     },
@@ -132,7 +136,7 @@
   "name": "au-design-systems-lwc",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "61.0",
+  "sourceApiVersion": "62.0",
   "packageAliases": {
     "omnistudio 236.3": "04t4W000002kdlN",
     "omnistudio 240.4": "04t4W000002kevmQAA",
@@ -142,6 +146,7 @@
     "omnistudio 248.4": "04t4W0000038bj9QAA",
     "omnistudio 248.12": "04t4W0000038boO",
     "omnistudio 250.7": "04t4W000003ChfPQAS",
+    "omnistudio 254.1": "04t4W000003CjxZQAS",
     "Salesforce Global Public Sector Design Systems": "0Ho5j000000bljgCAA",
     "Salesforce Global Public Sector Design Systems@1.0.0-3": "04t5j000000IIUPAA4",
     "Salesforce Global Public Sector Design Systems@1.0.0-5": "04t5j000000IIthAAG",

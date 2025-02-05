@@ -1,0 +1,49 @@
+<template lwc:render-mode="light">
+  <template lwc:if={isIcon}>
+    <svg
+      class={iconClassName}
+      style={iconStyle}
+      viewBox={computedBox}
+      aria-hidden={computedAriaHidden}
+      overflow="visible"
+    >
+      <title lwc:if={computedTitle}>{computedTitle}</title>
+      <template lwc:if={legacyIcon}>
+        <!-- Use both xlink:href and href for browser support https://css-tricks.com/on-xlinkhref-being-deprecated-in-svg/ -->
+        <use xlink:href={computedHref} href={computedHref}></use>
+      </template>
+
+      <template lwc:else>
+        <template lwc:if={icon}>
+          <template lwc:if={icon.paths}>
+            <template for:each={icon.paths} for:item="path">
+              <path
+                key={path.key}
+                d={path.value.d}
+                clip-rule={path.value.clipRule}
+                fill-rule={path.value.fillRule}
+                transform={path.value.transform}
+                stroke={path.value.stroke}
+                stroke-width={path.value.strokeWidth}
+                fill={path.value.fill}
+              ></path>
+            </template>
+          </template>
+          <template lwc:if={icon.polygons}>
+            <template for:each={icon.polygons} for:item="polygon">
+              <polygon key={polygon.key} points={polygon.points}></polygon>
+            </template>
+          </template>
+        </template>
+
+        <template lwc:else>
+          <text>Could not find icon {symbol}</text>
+        </template>
+      </template>
+    </svg>
+  </template>
+
+  <template lwc:else>
+    <p>Could not find icon named <code>{symbol}</code>.</p>
+  </template>
+</template>

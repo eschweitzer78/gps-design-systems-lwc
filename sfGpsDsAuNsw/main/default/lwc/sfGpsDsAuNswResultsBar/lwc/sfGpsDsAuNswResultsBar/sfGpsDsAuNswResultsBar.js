@@ -1,44 +1,53 @@
-import { LightningElement, api, track } from "lwc";
-import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import { LightningElement, api } from "lwc";
+import { uniqueId, isArray, formatTemplate } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswResultsBar extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api name;
   @api from;
   @api to;
   @api total;
+  @api className;
 
-  /* api value */
-  _originalValue;
+  @api noResultText = "Sorry, no results found for your search";
+  @api resultsText = "Showing results {from} - {to} of {total} results";
+
+  /* api: value */
+
   _value;
+  _valueOriginal;
 
   @api set value(value) {
-    this._originalValue = value;
+    this._valueOriginal = value;
     this._value = value;
 
     this.reconcileValueOptions();
   }
 
   get value() {
-    return this._originalValue;
+    return this._valueOriginal;
   }
 
-  /* api sortOptions */
+  /* api: sortOptions */
 
-  _originalSortOptions;
   _sortOptions;
+  _sortOptionsOriginal;
+  _visibleSortOptions;
 
-  @track _visibleSortOptions;
+  @api
+  get sortOptions() {
+    return this._sortOptionsOriginal;
+  }
 
-  @api set sortOptions(value) {
-    this._originalSortOptions = value;
+  set sortOptions(value) {
+    this._sortOptionsOriginal = value;
 
     if (value == null) {
       this._sortOptions = null;
       // eslint-disable-next-line @lwc/lwc/no-api-reassignments
       this.value = null;
-    } else if (Array.isArray(value)) {
+    } else if (isArray(value)) {
       this._sortOptions = value;
     } else {
       this._sortOptions = [value];
@@ -47,19 +56,13 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
     this.reconcileValueOptions();
   }
 
-  get sortOptions() {
-    return this._originalSortOptions;
-  }
-
-  @api noResultText = "Sorry, no results found for your search";
-  @api resultsText = "Showing results {from} - {to} of {total} results";
-  @api className;
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-results-bar": true,
       [this.className]: this.className
-    });
+    };
   }
 
   _selectId;
@@ -72,7 +75,17 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
     return this._selectId;
   }
 
-  /**********/
+  get _resultsText() {
+    return this.resultsText
+      ? formatTemplate(this.resultsText, {
+          from: this.from.toString(),
+          to: this.to.toString(),
+          total: this.total.toString()
+        })
+      : null;
+  }
+
+  /* methods */
 
   reconcileValueOptions() {
     if (this._sortOptions == null) {
@@ -90,18 +103,7 @@ export default class SfGpsDsAuNswResultsBar extends LightningElement {
     }));
   }
 
-  get _resultsText() {
-    if (this.resultsText == null) {
-      return null;
-    }
-
-    return this.resultsText
-      .replace("{from}", this.from.toString())
-      .replace("{to}", this.to.toString())
-      .replace("{total}", this.total.toString());
-  }
-
-  /* events */
+  /* event management */
 
   handleSelectChange(event) {
     event.preventDefault();

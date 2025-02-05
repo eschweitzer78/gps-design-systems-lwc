@@ -7,7 +7,9 @@
 import { LightningElement, api, track } from "lwc";
 import { uniqueId, computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswAccordion extends LightningElement {
+const ISOPEN_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api header;
@@ -16,36 +18,37 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
 
   /* api: closed */
 
-  @api get closed() {
-    return !this.isOpen;
+  @track _isOpen = ISOPEN_DEFAULT;
+
+  @api
+  get closed() {
+    return !this._isOpen;
   }
 
   set closed(value) {
-    this.isOpen = !value;
+    this._isOpen = !value;
   }
-
-  @track isOpen = false;
 
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-accordion__title": true,
-      "nsw-accordion__open": this.isOpen,
+      "nsw-accordion__open": this._isOpen,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedButtonClassName() {
-    return computeClass({
+    return {
       "nsw-accordion__button": true,
-      active: this.isOpen
-    });
+      active: this._isOpen
+    };
   }
 
   get computedIsHidden() {
     return computeClass({
-      hidden: !this.isOpen
+      hidden: !this._isOpen
     });
   }
 
@@ -62,7 +65,7 @@ export default class SfGpsDsAuNswAccordion extends LightningElement {
   /* event management */
 
   handleClick() {
-    this.dispatchEvent(new CustomEvent(this.isOpen ? "collapse" : "expand"));
-    this.isOpen = !this.isOpen;
+    this.dispatchEvent(new CustomEvent(this._isOpen ? "collapse" : "expand"));
+    this._isOpen = !this._isOpen;
   }
 }

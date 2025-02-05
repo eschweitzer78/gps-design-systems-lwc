@@ -82,3 +82,11 @@ export function debounce(func, delay, options) {
     }, delay);
   };
 }
+
+export const invokeArrayFns = (fns, ...arg) => {
+  for (let i = 0; i < fns.length; i++) {
+    fns[i](...arg);
+  }
+};
+
+export const hasChanged = (value, oldValue) => !Object.is(value, oldValue);

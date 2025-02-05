@@ -9,6 +9,8 @@ import SfGpsDsFormDateOsN from "c/sfGpsDsFormDateOsN";
 import tmpl from "./sfGpsDsFrGovFormDateOsN.html";
 
 export default class extends SfGpsDsFormDateOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

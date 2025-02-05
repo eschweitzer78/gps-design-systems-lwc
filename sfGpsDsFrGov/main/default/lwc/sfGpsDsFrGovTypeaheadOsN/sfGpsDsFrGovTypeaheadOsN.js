@@ -11,24 +11,22 @@ import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsFrGovTypeaheadOsN.html";
 
 export default class extends SfGpsDsTypeahead {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "fr-input-group": true,
       "fr-input-group--disabled": this.disabled || this.readOnly,
       "fr-input-group--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "fr-input": true,
       typeahead: true,
       "fr-input--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -46,5 +44,11 @@ export default class extends SfGpsDsTypeahead {
   get validationMessage() {
     const rv = this.sfGpsDsErrorMessage;
     return rv;
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

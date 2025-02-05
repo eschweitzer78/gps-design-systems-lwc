@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>SG DS Masthead</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="Text used for both the visible and aria label."
+        default="A Singapore Government Agency Website"
+      />
+      <property
+        name="fluid"
+        type="Boolean"
+        label="Fluid"
+        description="Sets as fluid."
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -6,38 +6,37 @@
  */
 
 import OmniscriptMaskedInput from "c/sfGpsDsOmniMaskedInputOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsFrGovMaskedInputOsN.html";
 
 export default class extends OmniscriptMaskedInput {
-  render() {
-    return tmpl;
-  }
+  /* computed */
+
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "fr-input-group": true,
       "fr-input-group--error": this.sfGpsDsIsError,
       "fr-input-group--disabled": this.readOnly
-    });
+    };
   }
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "fr-label": true
-    });
+    };
   }
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "fr-input": true,
       "fr-input--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get _errorMessage() {
     return this.sfGpsDsErrorMessage?.replace("Error:", "");
   }
 
+  /* methods */
   /* original maskedInput widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
@@ -47,5 +46,11 @@ export default class extends OmniscriptMaskedInput {
     ]
       .filter((item) => item)
       .join(" ");
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

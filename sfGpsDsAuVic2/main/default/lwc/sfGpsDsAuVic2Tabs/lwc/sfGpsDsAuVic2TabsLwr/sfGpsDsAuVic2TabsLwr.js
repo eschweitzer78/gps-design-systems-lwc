@@ -14,6 +14,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
  * @slot Tab10
  */
 export default class extends SfGpsDsLwc {
+  @api mode = "horizontal";
+
   @api tab1Label;
   @api tab1IconName;
   @api tab2Label;

@@ -8,7 +8,14 @@
 import { api } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 
-export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
+export default class extends SfGpsDsNavigation {
+  @api megaMenu = false;
+  @api className;
+  @api isActive = false;
+  @api mainNavId;
+
+  /* api: mode */
+
   @api
   get mode() {
     return super.mode;
@@ -41,6 +48,8 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
     }
   }
 
+  /* api: navigationDevName */
+
   @api
   get navigationDevName() {
     return super.navigationDevName;
@@ -49,6 +58,8 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
   set navigationDevName(value) {
     super.navigationDevName = value;
   }
+
+  /* api: ipName */
 
   @api
   get ipName() {
@@ -59,6 +70,8 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
     super.ipName = value;
   }
 
+  /* api: inputJSON */
+
   @api
   get inputJSON() {
     return super.inputJSON;
@@ -67,6 +80,8 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
   set inputJSON(value) {
     super.inputJSON = value;
   }
+
+  /* api: optionsJSON */
 
   @api
   get optionsJSON() {
@@ -77,21 +92,7 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
     super.optionsJSON = value;
   }
 
-  //
-
-  @api megaMenu = false;
-  @api className;
-  @api isActive = false;
-  @api mainNavId;
-
-  /* lifecycle */
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.classList.add("nsw-scope");
-  }
-
-  /* events */
+  /* event management */
 
   handleCloseMenu() {
     const closeMenuEvent = new CustomEvent("closemenu");
@@ -99,10 +100,17 @@ export default class SfGpsDsAuNswMainNavComm extends SfGpsDsNavigation {
   }
 
   handleNavigate(event) {
-    let nav = this.template.querySelector("c-sf-gps-ds-navigation-service");
+    const nav = this.refs.navsvc;
 
-    if (nav && this._map && event.detail) {
+    if (this._map && event.detail) {
       nav.navigateNavMenu(this._map[event.detail]);
     }
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }

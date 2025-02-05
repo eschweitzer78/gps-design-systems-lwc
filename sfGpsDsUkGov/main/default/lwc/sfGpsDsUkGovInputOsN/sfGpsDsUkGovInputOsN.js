@@ -14,9 +14,7 @@ import tmpl from "./sfGpsDsUkGovInputOsN.html";
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsUkGovInputOsN";
 
-export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
-  OmniscriptInput
-) {
+export default class extends SfGpsDsUkGovLabelMixin(OmniscriptInput) {
   @api labelClassName;
 
   /* api hideFormGroup */
@@ -43,12 +41,50 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
   @api sfGpsDsPrefix;
   @api sfGpsDsSuffix;
 
-  /* Methods */
+  /* Getters */
   /* ------- */
 
-  render() {
-    return tmpl;
+  get computedFormGroupClassName() {
+    return {
+      "govuk-form-group": !this._hideFormGroup,
+      "govuk-form-group--error": !this._hideFormGroup && this.sfGpsDsIsError
+    };
   }
+
+  get computedInputClassName() {
+    /**
+     * vlocity-input used to be this.isCheckbox || this.isRadio || this.isToggle || this.isFile || this.isInput
+     * but setting it it only matters for nds theme
+     **/
+
+    return {
+      "govuk-checkboxes__input": this.isCheckbox || this.isToggle,
+      "govuk-radios__item": this.isRadio,
+      "govuk-file-upload": this.isFile,
+      "govuk-input": this.isInput || this._isFormula,
+      "govuk-input--error":
+        (this.isInput || this._isFormula) && this.sfGpsDsIsError,
+      "vlocity-input": false
+    };
+  }
+
+  get computedErrorMessageBlockId() {
+    return "errorMessageBlock";
+  }
+
+  get computedAriaDescribedBy() {
+    return computeClass({
+      helper: this.fieldLevelHelp,
+      errorMessageBlock: this.sfGpsDsIsError
+    });
+  }
+
+  get computedHasPrefixOrSuffix() {
+    return this.sfGpsDsPrefix || this.sfGpsDsSuffix;
+  }
+
+  /* Methods */
+  /* ------- */
 
   initOptions() {
     super.initOptions();
@@ -84,45 +120,9 @@ export default class SfGpsDsUkGovInputOsN extends SfGpsDsUkGovLabelMixin(
       .join(" ");
   }
 
-  /* Getters */
-  /* ------- */
+  /* lifecycle */
 
-  get computedFormGroupClassName() {
-    return computeClass({
-      "govuk-form-group": !this._hideFormGroup,
-      "govuk-form-group--error": !this._hideFormGroup && this.sfGpsDsIsError
-    });
-  }
-
-  get computedInputClassName() {
-    /**
-     * vlocity-input used to be this.isCheckbox || this.isRadio || this.isToggle || this.isFile || this.isInput
-     * but setting it it only matters for nds theme
-     **/
-
-    return computeClass({
-      "govuk-checkboxes__input": this.isCheckbox || this.isToggle,
-      "govuk-radios__item": this.isRadio,
-      "govuk-file-upload": this.isFile,
-      "govuk-input": this.isInput || this._isFormula,
-      "govuk-input--error":
-        (this.isInput || this._isFormula) && this.sfGpsDsIsError,
-      "vlocity-input": false
-    });
-  }
-
-  get computedErrorMessageBlockId() {
-    return "errorMessageBlock";
-  }
-
-  get computedAriaDescribedBy() {
-    return computeClass({
-      helper: this.fieldLevelHelp,
-      errorMessageBlock: this.sfGpsDsIsError
-    });
-  }
-
-  get computedHasPrefixOrSuffix() {
-    return this.sfGpsDsPrefix || this.sfGpsDsSuffix;
+  render() {
+    return tmpl;
   }
 }

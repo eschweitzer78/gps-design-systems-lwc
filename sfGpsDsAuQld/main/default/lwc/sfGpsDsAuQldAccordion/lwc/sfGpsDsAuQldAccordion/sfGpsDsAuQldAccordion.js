@@ -6,16 +6,17 @@
  */
 
 import { api, LightningElement } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 import ExpandableStateMixin from "c/sfGpsDsExpandableStateMixin";
 
 const CLOSE_ACTION = "close";
 const OPEN_ACTION = "open";
 
-const CSTYLE_LIGHT = "light";
-const CSTYLE_DARK = "dark";
-const CSTYLE_VALUES = [CSTYLE_LIGHT, CSTYLE_DARK];
-const CSTYLE_DEFAULT = CSTYLE_LIGHT;
+const CSTYLE_VALUES = {
+  light: "",
+  dark: "qld__accordion-group--dark"
+};
+const CSTYLE_DEFAULT = "light";
 
 const I18N = {
   openAll: "Open all",
@@ -30,7 +31,8 @@ export default class extends ExpandableStateMixin(LightningElement) {
   _cstyle;
   _cstyleOriginal;
 
-  @api get cstyle() {
+  @api
+  get cstyle() {
     return this._cstyleOriginal;
   }
 
@@ -38,7 +40,8 @@ export default class extends ExpandableStateMixin(LightningElement) {
     this._cstyleOriginal = value;
     this._cstyle = normaliseString(value, {
       validValues: CSTYLE_VALUES,
-      fallbackValue: CSTYLE_DEFAULT
+      fallbackValue: CSTYLE_DEFAULT,
+      returnObjectValue: true
     });
   }
 
@@ -71,12 +74,12 @@ export default class extends ExpandableStateMixin(LightningElement) {
   /* computed: computedClassName */
 
   get computedClassName() {
-    return computeClass({
+    return {
       js: true,
       "qld__accordion-group": true,
-      "qld__accordion-group--dark": this._cstyle === CSTYLE_DARK,
+      [this._cstyle]: this._cstyle,
       [this.className]: this.className
-    });
+    };
   }
 
   /* computed: computedToggleAllLabel */
@@ -94,22 +97,11 @@ export default class extends ExpandableStateMixin(LightningElement) {
   /* computed: computedButtonClassName */
 
   get computedButtonClassName() {
-    return computeClass({
+    return {
       "qld__accordion__toggle-btn": true,
       "qld__accordion__toggle-btn--closed": !this.allExpanded,
       "qld__accordion__toggle-btn--open": this.allExpanded
-    });
-  }
-
-  /* event management */
-
-  handleToggleAll() {
-    this.toggleAll();
-  }
-
-  handleToggleItem(event) {
-    const index = Number(event.currentTarget.index);
-    this.toggleIndex(index);
+    };
   }
 
   /* methods */
@@ -141,5 +133,16 @@ export default class extends ExpandableStateMixin(LightningElement) {
         }
       })
     );
+  }
+
+  /* event management */
+
+  handleToggleAll() {
+    this.toggleAll();
+  }
+
+  handleToggleItem(event) {
+    const index = Number(event.currentTarget.index);
+    this.toggleIndex(index);
   }
 }

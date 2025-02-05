@@ -14,15 +14,13 @@ import tmpl from "./sfGpsDsAuNswMaskedInputOsN.html";
 export default class SfGpsDsAuNswMaskedInputOsN extends StatusHelperMixin(
   OmniscriptMaskedInput
 ) {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "nsw-form__label": true,
       "nsw-form__required": this.required
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -32,11 +30,18 @@ export default class SfGpsDsAuNswMaskedInputOsN extends StatusHelperMixin(
     });
   }
 
+  /* methods */
   /* original maskedInput widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
     return [...this.template.querySelectorAll(".nsw-form__helper")]
       ?.map((item) => item.id)
       .join(" ");
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

@@ -1,19 +1,40 @@
 import { LightningElement, api } from "lwc";
-import { uniqueId, computeClass } from "c/sfGpsDsHelpers";
+import { uniqueId, normaliseBoolean } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswInPageNavigation extends LightningElement {
+const FIRSTCHILD_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
   @api items = []; // Array<{index, text, url}>
-  @api firstChild;
   @api className;
 
+  /* api: firstChild */
+
+  _firstChild = FIRSTCHILD_DEFAULT;
+  _firstChildOriginal = FIRSTCHILD_DEFAULT;
+
+  @api
+  get firstChild() {
+    return this._firstChildOriginal;
+  }
+
+  set firstChild(value) {
+    this._firstChildOriginal = value;
+    this._firstChild = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: FIRSTCHILD_DEFAULT
+    });
+  }
+
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-in-page-nav": true,
       [this.className]: this.className
-    });
+    };
   }
 
   _labelledById;

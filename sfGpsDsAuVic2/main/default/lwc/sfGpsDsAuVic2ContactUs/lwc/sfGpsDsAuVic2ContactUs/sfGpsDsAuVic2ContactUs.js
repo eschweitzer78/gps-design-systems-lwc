@@ -1,7 +1,7 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { isString, isArray } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2ContactUs extends LightningElement {
+export default class extends LightningElement {
   @api title = "Contact us";
   @api address;
   @api items;
@@ -22,14 +22,14 @@ export default class SfGpsDsAuVic2ContactUs extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-contact-us": true,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedSocialLinks() {
-    return this.items && Array.isArray(this.items)
+    return this.items && isArray(this.items)
       ? this.items.map((i) => {
           return i.icon === "icon-twitter" ? { ...i, icon: "icon-x" } : i;
         })
@@ -47,7 +47,7 @@ export default class SfGpsDsAuVic2ContactUs extends LightningElement {
       new CustomEvent("itemClick", {
         detail: {
           ...event.detail,
-          label: typeof this.title === "string" ? this.title : null
+          label: isString(this.title) ? this.title : null
         }
       })
     );

@@ -5,10 +5,18 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
+const CSTYLE_VALUES = {
+  default: "",
+  custom: "nsw-footer--custom",
+  dark: "nsw-footer--dark",
+  light: "nsw-footer--light"
+};
+const CSTYLE_DEFAULT = "default";
+
+export default class extends SfGpsDsLwc {
   @api upperFooterMode = "Integration Procedure";
   @api upperFooterNavigationDevName;
   @api upperFooterIpName;
@@ -27,19 +35,36 @@ export default class SfGpsDsAuNswFooterComm extends SfGpsDsLwc {
   @api facebookUrl;
   @api copyrightMention;
   @api builtMention;
-  @api cstyle = "default";
   @api lowerFooterClassName;
 
   @api className;
 
-  get computedClassName() {
-    return computeClass({
-      "nsw-footer": true,
-      "nsw-footer--dark": this.cstyle === "dark",
-      "nsw-footer--light": this.cstyle === "light",
-      "nsw-footer--custom": this.cstyle === "custom",
-      [this.className]: this.className
+  /* api: cstyle */
+
+  _cstyle = CSTYLE_VALUES[CSTYLE_DEFAULT];
+  _cstyleOriginal = CSTYLE_DEFAULT;
+
+  @api
+  get cstyle() {
+    return this._cstyleOriginal;
+  }
+
+  set cstyle(value) {
+    this._cstyleOriginal = value;
+    this._cstyle = normaliseString(value, {
+      validValues: CSTYLE_VALUES,
+      fallbackValue: CSTYLE_DEFAULT,
+      returnObjectValue: true
     });
+  }
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "nsw-footer": true,
+      [this._cstyle]: this._cstyle,
+      [this.className]: this.className
+    };
   }
 
   get computedShowUpperFooter() {

@@ -4,29 +4,35 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuNswBreadcrumbsComm extends SfGpsDsLwc {
+const ITEMS_DEFAULT = [];
+
+export default class extends SfGpsDsLwc {
   @api label = "Breadcrumb";
   @api linkComponent = "a";
   @api className = "";
 
-  _items;
-  @track _itemsArray = [];
+  /* api: items */
 
-  @api set items(markdown) {
-    this._items = markdown;
-    try {
-      this._itemsArray = mdEngine.extractLinks(markdown);
-    } catch (e) {
-      this.addError("IT-MD", "Issue when parsing Items markdown");
-    }
+  _items = ITEMS_DEFAULT;
+  _itemsOriginal;
+
+  @api
+  get items() {
+    return this._itemsOriginal;
   }
 
-  get items() {
-    return this._items;
+  set items(markdown) {
+    try {
+      this._itemsOriginal = markdown;
+      this._items = mdEngine.extractLinks(markdown);
+    } catch (e) {
+      this.addError("IT-MD", "Issue when parsing Items markdown");
+      this._items = ITEMS_DEFAULT;
+    }
   }
 
   /* lifecycle */

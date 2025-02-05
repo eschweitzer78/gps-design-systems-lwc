@@ -1,6 +1,6 @@
 import { api } from "lwc";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
-import { safeEqualsIgnoreCase } from "c/sfGpsDsHelpers";
+import { safeEqualsIgnoreCase, toArray } from "c/sfGpsDsHelpers";
 import getNavigationItems from "@salesforce/apex/SfGpsDsNavigationORA.getNavigationItemsV2";
 
 import cBasePath from "@salesforce/community/basePath";
@@ -10,7 +10,7 @@ import mdEngine from "c/sfGpsDsMarkdown";
 const MODE_IP = "Integration Procedure";
 const MODE_NAV = "Experience Cloud Navigation";
 
-export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
+export default class extends NavigationMixin(SfGpsDsIpLwc) {
   /* api: mode */
 
   _mode = MODE_IP;
@@ -77,6 +77,20 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
     this.updateExperienceCloudNavigation();
   }
 
+  /* computed */
+
+  get isEmpty() {
+    return (
+      this._didLoadOnce && (this._items == null || this._items.length === 0)
+    );
+  }
+
+  get isPreview() {
+    return !document.URL.startsWith(cBasePath);
+  }
+
+  /* methods */
+
   updateExperienceCloudNavigation() {
     if (!safeEqualsIgnoreCase(this._mode, MODE_NAV)) return;
 
@@ -134,9 +148,10 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
     return data.reduce((m, item, index) => {
       let itemKey = `${key}-${index + 1}`;
       let amik = {
-        text: mdEngine.decodeEntities(item.label),
+        text: item.label ? mdEngine.decodeEntities(item.label) : null,
         url: item.actionValue,
         index: itemKey,
+        target: item.target,
         position: index
       };
 
@@ -173,11 +188,7 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
     let adaptedMap = {};
     let map = {};
 
-    if (data && !Array.isArray(data)) {
-      data = [data];
-    }
-
-    let rv = this.menuReducer(data, "menu", map, adaptedMap);
+    const rv = this.menuReducer(toArray(data), "menu", map, adaptedMap);
     this._map = map;
 
     return rv;
@@ -185,15 +196,5 @@ export default class SfGpsDsNavigation extends NavigationMixin(SfGpsDsIpLwc) {
 
   resolveUrl(item) {
     return item.Type === "MenuLabel" ? null : item.Target;
-  }
-
-  get isEmpty() {
-    return (
-      this._didLoadOnce && (this._items == null || this._items.length === 0)
-    );
-  }
-
-  get isPreview() {
-    return !document.URL.startsWith(cBasePath);
   }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>61.0</apiVersion>
+  <apiVersion>62.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Content Block</masterLabel>
   <targets>
@@ -23,6 +23,7 @@
         label="Main link"
         description="A link displayed at the bottom of the block - in Markdown link format"
         default="[View more](#)"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="copy"
@@ -30,24 +31,28 @@
         label="Copy"
         description="Provides further details where the headline alone may not be sufficient - in Markdown format."
         default="Content blocks are simply a way to display content in columns to visually separate information for users."
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="image"
         type="String"
         label="Image source"
         description="Allows for different content to stand out and provide additional context - as an URL."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="imageAlt"
         type="String"
         label="Image alt"
         description="Specifies an alternate text for the image, if the image cannot be displayed."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="icon"
         type="String"
         label="Icon"
         description="An icon that helps users visualise different pieces of information and quickly distinguish between columns. Use Google Material icon name."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="links"
@@ -55,12 +60,14 @@
         label="Links"
         description="A series of links displayed as bullet points below the copy - in Markdown link format."
         default="[A relevant piece of content](#)[A juicy bit of news](#)[Sliders for the reader](#)"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

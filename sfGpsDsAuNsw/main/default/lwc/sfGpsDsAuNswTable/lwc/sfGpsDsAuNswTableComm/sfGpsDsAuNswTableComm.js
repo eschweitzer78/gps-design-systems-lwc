@@ -5,10 +5,21 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
+import { isArray, isString, isObject } from "c/sfGpsDsHelpers";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
 
-export default class SfGpsDsAuNswTableComm extends SfGpsDsIpLwc {
+export default class extends SfGpsDsIpLwc {
+  @api resultsBarStyle = "full";
+  @api caption;
+  @api captionLocation;
+  @api isStriped = false;
+  @api isBordered = false;
+  @api pageSize = 20;
+  @api className;
+
+  /* api: ipName, String */
+
   @api
   get ipName() {
     return super.ipName;
@@ -17,6 +28,8 @@ export default class SfGpsDsAuNswTableComm extends SfGpsDsIpLwc {
   set ipName(value) {
     super.ipName = value;
   }
+
+  /* api: inputJSON, String */
 
   @api
   get inputJSON() {
@@ -27,6 +40,8 @@ export default class SfGpsDsAuNswTableComm extends SfGpsDsIpLwc {
     super.inputJSON = value;
   }
 
+  /* api: optionsJSON, String */
+
   @api
   get optionsJSON() {
     return super.optionsJSON;
@@ -36,11 +51,12 @@ export default class SfGpsDsAuNswTableComm extends SfGpsDsIpLwc {
     super.optionsJSON = value;
   }
 
-  /* api sortOrder */
+  /* api: sortOrder, String */
 
   _sortHeader;
 
-  @api get sortHeader() {
+  @api
+  get sortHeader() {
     return this._sortHeader;
   }
 
@@ -49,19 +65,20 @@ export default class SfGpsDsAuNswTableComm extends SfGpsDsIpLwc {
     this.computeSortOptions();
   }
 
-  /* api headers */
+  /* api: headers, String */
 
   _headersOriginal;
   _headers;
 
-  @api get headers() {
+  @api
+  get headers() {
     return this._headersOriginal;
   }
 
   set headers(value) {
     this._headersOriginal = value;
 
-    if (typeof value !== "string" || value == null) {
+    if (!isString(value)) {
       this._headers = [];
       return;
     }
@@ -83,9 +100,35 @@ export default class SfGpsDsAuNswTableComm extends SfGpsDsIpLwc {
     this.computeSortOptions();
   }
 
-  /* track sortOptions */
+  _totalRows;
+  _activePage;
+  _lastPage;
+  _offset;
+  _content;
+  _sortOptions;
 
-  @track _sortOptions;
+  /* computed */
+
+  get computedFrom() {
+    return (this._offset || 0) + 1;
+  }
+
+  get computedTo() {
+    return Math.min(
+      (this._offset || 0) + (this.pageSize || this._totalRows),
+      this._totalRows
+    );
+  }
+
+  get computedVisibleSortOptions() {
+    return this.resultsBarStyle === "full" ? this._sortOptions : null;
+  }
+
+  get computedShowResultsBar() {
+    return this.resultsBarStyle !== "none";
+  }
+
+  /* methods */
 
   computeSortOptions() {
     if (this._headers == null) {
@@ -108,42 +151,8 @@ export default class SfGpsDsAuNswTableComm extends SfGpsDsIpLwc {
     this.sortContent();
   }
 
-  @api resultsBarStyle = "full";
-  @api caption;
-  @api captionLocation;
-  @api isStriped = false;
-  @api isBordered = false;
-  @api className;
-
-  @track _content;
-
-  @api pageSize = 20;
-  @track _totalRows;
-  @track _activePage;
-  @track _lastPage;
-  @track _offset;
-
-  get _from() {
-    return (this._offset || 0) + 1;
-  }
-
-  get _to() {
-    return Math.min(
-      (this._offset || 0) + (this.pageSize || this._totalRows),
-      this._totalRows
-    );
-  }
-
-  get _visibleSortOptions() {
-    return this.resultsBarStyle === "full" ? this._sortOptions : null;
-  }
-
-  get _showResultsBar() {
-    return this.resultsBarStyle !== "none";
-  }
-
   mapIpData(data) {
-    this._content = Array.isArray(data) ? data : [data];
+    this._content = isArray(data) ? data : [data];
     this._totalRows = this._content.length;
     this._lastPage = this.pageSize
       ? Math.ceil(this._totalRows / this.pageSize)
@@ -165,10 +174,10 @@ export default class SfGpsDsAuNswTableComm extends SfGpsDsIpLwc {
     if (this._content && sortHeader) {
       let content = [...this._content];
       this._content = content.sort((rowA, rowB) => {
-        let cA = rowA[sortHeader],
+        const cA = rowA[sortHeader],
           cB = rowB[sortHeader];
-        let vA = cA !== null && typeof cA === "object" ? cA.value : cA;
-        let vB = cB !== null && typeof cB === "object" ? cB.value : cB;
+        const vA = isObject(cA) ? cA.value : cA;
+        const vB = isObject(cB) ? cB.value : cB;
 
         if (vA == null) return 1;
         if (vB == null) return -1;

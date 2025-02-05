@@ -1,15 +1,21 @@
 import { LightningElement, api, track } from "lwc";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 import WindowSizeMixin from "c/sfGpsDsAuVic2WindowSizeMixin";
 
-export default class SfGpsDsAuVic2Modal extends WindowSizeMixin(
-  LightningElement
-) {
-  _isOpenOriginal;
+export default class extends WindowSizeMixin(LightningElement) {
+  @api closeLabel = "Close";
+  @api className;
+
+  @track _hasBelowSlot = false;
+
+  /* api: isOpen */
+
   _isOpen;
+  _isOpenOriginal;
   _setFocus;
 
-  @api get isOpen() {
+  @api
+  get isOpen() {
     return this._isOpenOriginal;
   }
 
@@ -31,16 +37,13 @@ export default class SfGpsDsAuVic2Modal extends WindowSizeMixin(
     }
   }
 
-  @api closeLabel = "Close";
-  @api className;
-
-  @track hasBelowSlot = false;
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-modal": true,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedStyle() {
@@ -48,15 +51,17 @@ export default class SfGpsDsAuVic2Modal extends WindowSizeMixin(
   }
 
   get computedBelowStyle() {
-    return this.hasBelowSlot ? null : "display: none";
+    return this._hasBelowSlot ? null : "display: none";
   }
 
   get computedFocusTrapOptions() {
     return { immediate: true };
   }
 
+  /* event management */
+
   handleSlotChange() {
-    this.hasBelowSlot = true;
+    this._hasBelowSlot = true;
   }
 
   handleCloseModal() {

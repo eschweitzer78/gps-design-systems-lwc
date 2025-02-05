@@ -1,0 +1,56 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div>
+    <fieldset lwc:if={isCheckbox} aria-invalid={computedAriaInvalid}>
+      <legend class={computedLegendClassName}>
+        <span>
+          {label}
+          <span lwc:if={required} class="visually-hidden">
+            ({requiredLabel})</span
+          >
+        </span>
+        <slot name="label"> </slot>
+      </legend>
+      <span lwc:if={fieldLevelHelp} id="helper" class="form__help"
+        >{fieldLevelHelp}</span
+      >
+
+      <div class="form__checkboxes">
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <div key={option.id} class="form__item">
+            <input
+              class={computedInputClassName}
+              type="checkbox"
+              required={required}
+              disabled={disabled}
+              id={option.id}
+              tabindex={tabIndex}
+              name={name}
+              aria-invalid={sfGpsDsIsError}
+              aria-describedby={computedAriaDescribedBy}
+              checked={option.selected}
+              value={option.value}
+              data-index={index}
+              onfocus={handleFocus}
+              onchange={sfGpsDsOnChangeValue}
+              onkeydown={handleKeyDownEvent}
+            />
+            <label data-index={index} for={option.id}>{option.label}</label>
+          </div>
+        </template>
+      </div>
+
+      <span
+        lwc:if={sfGpsDsIsError}
+        class="form__error"
+        aria-live="assertive"
+        role="alert"
+        id="errorMessageBlock"
+      >
+        {sfGpsDsErrorMessage}
+      </span>
+    </fieldset>
+
+    <!-- TODO: support button and icon -->
+  </div>
+</template>

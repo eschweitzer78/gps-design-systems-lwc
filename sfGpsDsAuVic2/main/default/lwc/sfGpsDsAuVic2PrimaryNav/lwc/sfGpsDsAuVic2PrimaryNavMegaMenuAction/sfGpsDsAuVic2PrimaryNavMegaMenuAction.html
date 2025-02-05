@@ -1,7 +1,7 @@
 <template>
   <template lwc:if={item}>
     <button
-      lwc:if={isToggleType}
+      lwc:if={computedIsToggleType}
       lwc:ref="action"
       class={computedClassName}
       onclick={handleClick}

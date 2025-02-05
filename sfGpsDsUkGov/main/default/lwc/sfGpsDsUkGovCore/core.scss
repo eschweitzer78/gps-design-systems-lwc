@@ -1,4 +1,4 @@
-@import "govuk-frontend/govuk/base";
+@import "govuk-frontend/dist/govuk/base";
 
 // We removed defining the font-face to allow for a different font on non UK Gov websites
 
@@ -11,10 +11,10 @@
 
 @import "./pre_fixes";
 
-@import "govuk-frontend/govuk/core/all";
-@import "govuk-frontend/govuk/objects/all";
+@import "govuk-frontend/dist/govuk/core/index";
+@import "govuk-frontend/dist/govuk/objects/index";
 
-@import "govuk-frontend/govuk/utilities/all";
-@import "govuk-frontend/govuk/overrides/all";
+@import "govuk-frontend/dist/govuk/utilities/index";
+@import "govuk-frontend/dist/govuk/overrides/index";
 
 @import "./post_fixes";

@@ -1,7 +1,10 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+import { isString } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2ListComm extends SfGpsDsLwc {
+const ITEMS_DEFAULT = null;
+
+export default class extends SfGpsDsLwc {
   @api type;
   @api maxDepth;
   @api iconPlacement = "before";
@@ -9,20 +12,23 @@ export default class SfGpsDsAuVic2ListComm extends SfGpsDsLwc {
   @api itemClassName;
   @api className;
 
-  _itemsOriginal;
-  _items;
+  /* api: items */
 
-  @api get items() {
+  _items = ITEMS_DEFAULT;
+  _itemsOriginal = ITEMS_DEFAULT;
+
+  @api
+  get items() {
     return this._itemsOriginal;
   }
 
   set items(value) {
     this._itemsOriginal = value;
 
-    if (typeof value === "string") {
+    if (isString(value)) {
       this._items = JSON.parse(value);
     } else {
-      this._items = null;
+      this._items = ITEMS_DEFAULT;
     }
   }
 

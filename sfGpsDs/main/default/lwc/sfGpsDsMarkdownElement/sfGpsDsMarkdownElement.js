@@ -3,11 +3,16 @@ import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 import tmpl from "./sfGpsDsMarkdownElement.html";
 
-export default class SfGpsDsMarkdownElement extends LightningElement {
+export default class extends LightningElement {
+  @api className; // string
+
+  /* api: content (string) */
+
   _contentOriginal;
   _contentHtml;
 
-  @api get content() {
+  @api
+  get content() {
     return this._contentOriginal;
   }
 
@@ -16,7 +21,7 @@ export default class SfGpsDsMarkdownElement extends LightningElement {
     this._contentHtml = mdEngine.renderEscaped(this._contentOriginal);
   }
 
-  @api className;
+  /* lifecycle */
 
   render() {
     return tmpl;

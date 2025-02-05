@@ -6,12 +6,17 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswContentBlock extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
+  @api image;
+  @api imageAlt;
+  @api icon;
+  @api mainLink;
+  @api links = [];
+  @api className;
 
   /* api: headline - deprecated, use title instead */
 
@@ -25,17 +30,12 @@ export default class SfGpsDsAuNswContentBlock extends LightningElement {
     this.title = value;
   }
 
-  @api image;
-  @api imageAlt;
-  @api icon;
-  @api mainLink;
-  @api links = [];
-  @api className;
+  /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-content-block": true,
       [this.className]: this.className
-    });
+    };
   }
 }

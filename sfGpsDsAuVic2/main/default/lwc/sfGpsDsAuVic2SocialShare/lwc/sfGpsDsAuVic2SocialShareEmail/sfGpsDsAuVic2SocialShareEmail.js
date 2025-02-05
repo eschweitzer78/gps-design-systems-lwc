@@ -10,7 +10,8 @@ export default class extends LightningElement {
 
   _url;
 
-  @api get url() {
+  @api
+  get url() {
     return this._url;
   }
 

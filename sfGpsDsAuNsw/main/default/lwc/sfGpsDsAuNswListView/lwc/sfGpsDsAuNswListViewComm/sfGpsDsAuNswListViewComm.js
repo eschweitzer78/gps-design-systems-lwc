@@ -9,7 +9,7 @@ const LISTVIEW_OBJECTID = "00B";
 const LISTVIEW_SETTINGS = "*#$LISTVIEW_SETTINGS";
 const DEBUG = false;
 
-export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api objectApiName;
   @api pageSize = 10;
 
@@ -24,11 +24,18 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
 
   @track _isLoading = false;
 
-  _originalFilterName;
-  _filterName;
+  /* api: filterName */
 
-  @api set filterName(value) {
-    this._originalFilterName = value;
+  _filterName;
+  _filterNameOriginal;
+
+  @api
+  get filterName() {
+    return this._filterNameOriginal;
+  }
+
+  set filterName(value) {
+    this._filterNameOriginal = value;
 
     if (value && value.toString().startsWith(LISTVIEW_OBJECTID)) {
       getListViewNameById({ id: value })
@@ -46,10 +53,6 @@ export default class SfGpsDsAuNswListViewComm extends SfGpsDsLwc {
     } else {
       this._filterName = value;
     }
-  }
-
-  get filterName() {
-    return this._originalFilterName;
   }
 
   _listInfo;

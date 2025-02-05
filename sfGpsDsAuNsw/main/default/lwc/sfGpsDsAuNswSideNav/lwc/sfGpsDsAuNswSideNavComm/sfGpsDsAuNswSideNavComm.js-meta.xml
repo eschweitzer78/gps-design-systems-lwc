@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>61.0</apiVersion>
+  <apiVersion>62.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>NSW DS Side Nav</masterLabel>
   <targets>
@@ -28,6 +28,7 @@
         type="String"
         label="Integration procedure name"
         description="Name of the Integration procedure mapping content to this nav."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="inputJSON"
@@ -35,6 +36,7 @@
         label="Input JSON"
         description="JSON formatted input parameters for the Integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="optionsJSON"
@@ -42,18 +44,21 @@
         label="Options JSON"
         description="JSON formatted options for the Integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="titleLink"
         type="String"
         label="Title link"
         description="Title and link of the side nav in Markdown format, leave empty to omit."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

@@ -9,6 +9,8 @@ import SfGpsDsFormPassword from "c/sfGpsDsFormPasswordOsN";
 import tmpl from "./sfGpsDsAuQldFormPasswordOsN.html";
 
 export default class extends SfGpsDsFormPassword {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

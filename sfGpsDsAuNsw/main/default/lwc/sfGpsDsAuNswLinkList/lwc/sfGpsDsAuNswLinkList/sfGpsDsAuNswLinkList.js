@@ -6,20 +6,41 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswLinkList extends LightningElement {
+const FIRSTCHILD_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
   @api links;
-  @api firstChild;
   @api className;
 
+  /* api: firstChild */
+
+  _firstChild = FIRSTCHILD_DEFAULT;
+  _firstChildOriginal = FIRSTCHILD_DEFAULT;
+
+  @api
+  get firstChild() {
+    return this._firstChildOriginal;
+  }
+
+  set firstChild(value) {
+    this._firstChildOriginal = value;
+    this._firstChild = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: FIRSTCHILD_DEFAULT
+    });
+  }
+
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-link-list": true,
       [this.className]: this.className
-    });
+    };
   }
 }

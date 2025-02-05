@@ -18,12 +18,12 @@
  *
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api headline;
   @api image;
   @api imageAlt;
@@ -33,45 +33,39 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
   // This is not exposed in Experience Builder and is used by contentBlockCollectionComm
   @api useMarkup = false;
 
-  /*
-   * links
-   */
+  /* api: links */
 
-  @track _links;
-  _originalLinks;
+  _links;
+  _linksOriginal;
 
-  @api get links() {
-    return this._originalLinks;
+  @api
+  get links() {
+    return this._linksOriginal;
   }
 
   set links(markdown) {
-    this._originalLinks = markdown;
-
     try {
-      if (markdown) {
-        this._links = mdEngine.extractLinks(markdown);
-      } else {
-        this._links = null;
-      }
+      this._linksOriginal = markdown;
+      this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
     }
   }
 
-  /*
-   * copy
-   */
+  /* api: copy, String */
 
-  _copy;
   _copyHtml;
+  _copyOriginal;
 
-  @api get copy() {
-    return this._copy;
+  @api
+  get copy() {
+    return this._copyOriginal;
   }
 
   set copy(markdown) {
-    this._copy = markdown;
     try {
+      this._copyOriginal = markdown;
+
       if (markdown) {
         this._copyHtml = this.useMarkup
           ? markdown
@@ -84,21 +78,19 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
     }
   }
 
-  /*
-   * mainLink
-   */
+  /* api: mainLink, String */
 
-  @track _mainLink;
-  _originalMainLink;
+  _mainLink;
+  _mainLinkOriginal;
 
-  @api get mainLink() {
-    return this._originalMainLink;
+  @api
+  get mainLink() {
+    return this._mainLinkOriginal;
   }
 
   set mainLink(markdown) {
-    this._originalMainLink = markdown;
-
     try {
+      this._mainLinkOriginal = markdown;
       this._mainLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("ML-MD", "Issue when parsing MainLink markdown");
@@ -113,7 +105,7 @@ export default class SfGpsDsAuNswContentBlockComm extends SfGpsDsLwc {
   }
 
   renderedCallback() {
-    if (this.copy) {
+    if (this._copyOriginal) {
       replaceInnerHtml(this.refs.markdown, this._copyHtml);
     }
   }

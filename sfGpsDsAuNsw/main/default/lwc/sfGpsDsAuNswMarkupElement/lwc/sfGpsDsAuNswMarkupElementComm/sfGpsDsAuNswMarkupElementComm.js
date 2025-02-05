@@ -8,9 +8,11 @@
 import { LightningElement, api } from "lwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class sfGpsDsAuNswMarkupElementComm extends LightningElement {
+export default class extends LightningElement {
   @api markup;
   @api className;
+
+  /* lifecycle */
 
   renderedCallback() {
     replaceInnerHtml(this.refs.markup, this.markup || "");

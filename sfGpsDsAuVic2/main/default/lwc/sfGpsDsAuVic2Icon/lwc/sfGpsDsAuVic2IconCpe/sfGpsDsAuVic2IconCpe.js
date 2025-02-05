@@ -1,4 +1,5 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api } from "lwc";
+import { isObject } from "c/sfGpsDsHelpers";
 
 const ICON_DEFAULT_JSON = "{}";
 const ICON_DEFAULT = {};
@@ -10,20 +11,20 @@ export default class extends LightningElement {
 
   /* api: value */
 
+  _value = ICON_DEFAULT;
   _valueOriginal = ICON_DEFAULT_JSON;
-  @track _value = ICON_DEFAULT;
 
-  @api get value() {
+  @api
+  get value() {
     return this._valueOriginal;
   }
 
   set value(value) {
-    this._valueOriginal = value;
-
     try {
+      this._valueOriginal = value;
       const jsonValue = JSON.parse(value);
 
-      if (typeof jsonValue === "object") {
+      if (isObject(jsonValue)) {
         this._value = jsonValue || ICON_DEFAULT;
       } else {
         this._value = ICON_DEFAULT;
@@ -33,6 +34,8 @@ export default class extends LightningElement {
       this._value = ICON_DEFAULT;
     }
   }
+
+  /* computed */
 
   get name() {
     return this._value?.name;
@@ -54,14 +57,26 @@ export default class extends LightningElement {
     return this._value?.title;
   }
 
+  /* methods */
+
+  dispatchValueChange() {
+    this.dispatchEvent(
+      new CustomEvent("valuechange", {
+        detail: {
+          value: JSON.stringify(this._value)
+        }
+      })
+    );
+  }
+
+  /* event management */
+
   handleNameChange(event) {
-    console.log("> handleNameChange", JSON.stringify(this._value));
     this._value = {
       ...this._value,
       name: event.detail.value
     };
 
-    console.log("< handleNameChange", JSON.stringify(this._value));
     this.dispatchValueChange();
   }
 
@@ -102,15 +117,5 @@ export default class extends LightningElement {
     };
 
     this.dispatchValueChange();
-  }
-
-  dispatchValueChange() {
-    this.dispatchEvent(
-      new CustomEvent("valuechange", {
-        detail: {
-          value: JSON.stringify(this._value)
-        }
-      })
-    );
   }
 }

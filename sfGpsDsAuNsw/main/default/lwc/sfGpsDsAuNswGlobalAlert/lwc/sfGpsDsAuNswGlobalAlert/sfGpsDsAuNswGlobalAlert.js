@@ -5,58 +5,131 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswGlobalAlert extends LightningElement {
+const AS_VALUES = {
+  default: {
+    main: "",
+    button: "nsw-button--white"
+  },
+  light: {
+    main: "nsw-global-alert--light",
+    button: "nsw-button--dark"
+  },
+  critical: {
+    main: "nsw-global-alert--critical",
+    button: "nsw-button--white"
+  }
+};
+const AS_DEFAULT = "default";
+
+const CTASTYLE_LINK = "link";
+const CTASTYLE_BUTTON = "button";
+const CTASTYLE_VALUES = [CTASTYLE_BUTTON, CTASTYLE_LINK];
+const CTASTYLE_DEFAULT = CTASTYLE_LINK;
+
+const CTAPREVENTDEFAULT_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
   @api copy;
   @api ctaText;
   @api ctaHref;
-  @api ctaStyle = "link"; // link or button
-  @api ctaPreventDefault = false;
-  @api as = "default";
   @api className;
+
   @track _isClosed;
+
+  /* api: as */
+
+  _as = AS_VALUES[AS_DEFAULT];
+  _asOriginal = AS_DEFAULT;
+
+  @api
+  get as() {
+    return this._asOriginal;
+  }
+
+  set as(value) {
+    this._asOriginal = value;
+    this._as = normaliseString(value, {
+      validValues: AS_VALUES,
+      fallbackValue: AS_DEFAULT,
+      returnObjectValue: true
+    });
+  }
+
+  /* api: ctaStyle */
+
+  _ctaStyle = CTASTYLE_DEFAULT;
+  _ctaStyleOriginal = CTASTYLE_DEFAULT;
+
+  @api
+  get ctaStyle() {
+    return this._ctaStyleOriginal;
+  }
+
+  set ctaStyle(value) {
+    this._ctaStyleOriginal = value;
+    this._ctaStyle = normaliseString(value, {
+      validValues: CTASTYLE_VALUES,
+      fallbackValue: CTASTYLE_DEFAULT
+    });
+  }
+
+  /* api: ctaPreventDefault */
+
+  _ctaPreventDefault = CTAPREVENTDEFAULT_DEFAULT;
+  _ctaPreventDefaultOriginal = CTAPREVENTDEFAULT_DEFAULT;
+
+  @api
+  get ctaPreventDefault() {
+    return this._ctaPreventDefaultOriginal;
+  }
+
+  set ctaPreventDefault(value) {
+    this._ctaPreventDefaultOriginal = value;
+    this._ctaPreventDefault = normaliseBoolean(value, {
+      acceptString: false,
+      fallbackValue: CTAPREVENTDEFAULT_DEFAULT
+    });
+  }
+
+  /* computed */
 
   get space() {
     return " ";
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-global-alert": true,
-      "nsw-global-alert--light": this.as === "light",
-      "nsw-global-alert--critical": this.as === "critical",
+      [this._as.main]: this._as.main,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedButtonClassName() {
-    return computeClass({
+    return {
       "nsw-button": true,
-      "nsw-button--dark": this.as === "light",
-      "nsw-button--white": this.as === "default" || this.as === "critical"
-    });
+      [this._as.button]: this._as.button
+    };
   }
 
-  get hasCta() {
-    return this.ctaText && this.ctaHref;
+  get _isCtaLinkStyle() {
+    return this._ctaStyle === CTASTYLE_LINK;
   }
 
-  get isCtaLinkStyle() {
-    return this.ctaStyle === "link";
+  get _isCtaButtonStyle() {
+    return this._ctaStyle === CTASTYLE_BUTTON;
   }
 
-  get isCtaButtonStyle() {
-    return this.ctaStyle === "button";
-  }
+  /* event management */
 
   handleCtaClick(event) {
-    if (this.ctaPreventDefault) {
+    if (this._ctaPreventDefault) {
       event.preventDefault();
-      event.stopPropagation();
     }
 
     this.dispatchEvent(new CustomEvent("ctaclick"));

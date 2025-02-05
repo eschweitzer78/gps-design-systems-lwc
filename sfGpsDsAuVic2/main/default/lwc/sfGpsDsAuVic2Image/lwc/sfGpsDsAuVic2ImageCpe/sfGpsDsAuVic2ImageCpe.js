@@ -5,6 +5,7 @@ import {
   IMAGE_DEFAULT,
   IMAGE_DEFAULT_JSON
 } from "c/sfGpsDsAuVic2ImageConstants";
+import { isObject } from "c/sfGpsDsHelpers";
 
 const BPs = [
   { key: "xs", label: "Extra-small screen" },
@@ -14,33 +15,20 @@ const BPs = [
   { key: "xl", label: "Extra-large screen" }
 ];
 
-export default class SfGpsDsAuVic2ImageCpe extends LightningElement {
+export default class extends LightningElement {
   @api label = "Image";
   @api schema; // JSON Schema
   @api errors; // PropertyError[] w/ PropertyError = { message }
 
-  @track isOpen = false;
-
-  /* editor */
-
-  handleAccordionClick() {
-    this.isOpen = !this.isOpen;
-  }
-
-  get isClosed() {
-    return !this.isOpen;
-  }
-
-  get computedSectionClassName() {
-    return "slds-accordion__section" + (this.isOpen ? " slds-is-open" : "");
-  }
+  @track _isOpen = false;
 
   /* api: value */
 
+  _value = IMAGE_DEFAULT;
   _valueOriginal = IMAGE_DEFAULT_JSON;
-  @track _value = IMAGE_DEFAULT;
 
-  @api get value() {
+  @api
+  get value() {
     return this._valueOriginal;
   }
 
@@ -49,11 +37,21 @@ export default class SfGpsDsAuVic2ImageCpe extends LightningElement {
 
     const jsonValue = JSON.parse(value);
 
-    if (typeof jsonValue === "object") {
+    if (isObject(jsonValue === "object")) {
       this._value = jsonValue || IMAGE_DEFAULT;
     } else {
       this._value = IMAGE_DEFAULT;
     }
+  }
+
+  /* computed */
+
+  get computedIsClosed() {
+    return !this._isOpen;
+  }
+
+  get computedSectionClassName() {
+    return "slds-accordion__section" + (this._isOpen ? " slds-is-open" : "");
   }
 
   get breakpoints() {
@@ -99,6 +97,24 @@ export default class SfGpsDsAuVic2ImageCpe extends LightningElement {
 
   get focalPoint() {
     return this._value?.focalPoint || { x: null, y: null };
+  }
+
+  /* methods */
+
+  dispatchValueChange() {
+    this.dispatchEvent(
+      new CustomEvent("valuechange", {
+        detail: {
+          value: JSON.stringify(this._value)
+        }
+      })
+    );
+  }
+
+  /* event management */
+
+  handleAccordionClick() {
+    this._isOpen = !this._isOpen;
   }
 
   handleChange(event) {
@@ -156,15 +172,5 @@ export default class SfGpsDsAuVic2ImageCpe extends LightningElement {
     };
 
     this.dispatchValueChange();
-  }
-
-  dispatchValueChange() {
-    this.dispatchEvent(
-      new CustomEvent("valuechange", {
-        detail: {
-          value: JSON.stringify(this._value)
-        }
-      })
-    );
   }
 }

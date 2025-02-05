@@ -1,32 +1,76 @@
 import { LightningElement, api } from "lwc";
-import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import { normaliseString, normaliseBoolean, uniqueId } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswDialog extends LightningElement {
+const BSTYLE_DEFAULT = "dark";
+const BSTYLE_VALUES = {
+  dark: "nsw-button--dark",
+  danger: "nsw-button--danger"
+};
+
+const ISDISMISSIBLE_DEFAULT = false;
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
   @api primaryButtonText;
   @api secondaryButtonText;
-  @api bstyle; // one of dark, danger
-  @api isDismissible = false;
   @api isOpen = false;
   @api className;
 
+  /* api: bstyle */
+
+  _bstyle = BSTYLE_VALUES[BSTYLE_DEFAULT];
+  _bstyleOriginal = BSTYLE_DEFAULT;
+
+  @api
+  get bstyle() {
+    return this._bstylOriginal;
+  }
+
+  set bstyle(value) {
+    this._bstyleOriginal = value;
+    this._bstyle = normaliseString(value, {
+      validValues: BSTYLE_VALUES,
+      fallbackValue: BSTYLE_DEFAULT,
+      returnObjectValue: true
+    });
+  }
+
+  /* api: isDismissible */
+
+  _isDismissible = ISDISMISSIBLE_DEFAULT;
+  _isDismissibleOriginal = ISDISMISSIBLE_DEFAULT;
+
+  @api
+  get isDismissible() {
+    return this._isDismissibleOriginal;
+  }
+
+  set isDismissible(value) {
+    this._isDismissibleOriginal = value;
+    this._isDismissible = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: ISDISMISSIBLE_DEFAULT
+    });
+  }
+
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-dialog": true,
       "nsw-dialog--single-action": !this.secondaryButtonText,
       active: this.isOpen,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedPrimaryButtonClassName() {
-    return computeClass({
+    return {
       "nsw-button": true,
-      "nsw-button--dark": this.bstyle === "dark" || !this.bstyle,
-      "nsw-button--danger": this.bstyle === "danger"
-    });
+      [this._bstyle]: this._bstyle
+    };
   }
 
   _labelledById;
@@ -39,24 +83,23 @@ export default class SfGpsDsAuNswDialog extends LightningElement {
     return this._labelledById;
   }
 
+  /* event management */
+
   handlePrimaryClick(event) {
     event.preventDefault();
     event.stopPropagation();
-
     this.dispatchEvent(new CustomEvent("primaryclick"));
   }
 
   handleSecondaryClick(event) {
     event.preventDefault();
     event.stopPropagation();
-
     this.dispatchEvent(new CustomEvent("secondaryclick"));
   }
 
   handleCloseClick(event) {
     event.preventDefault();
     event.stopPropagation();
-
     this.dispatchEvent(new CustomEvent("close"));
   }
 }

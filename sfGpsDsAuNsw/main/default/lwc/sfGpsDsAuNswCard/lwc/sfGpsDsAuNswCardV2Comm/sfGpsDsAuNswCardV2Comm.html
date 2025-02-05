@@ -23,7 +23,7 @@
     prevent-default={preventDefault}
     onnavigate={handleNavigate}
   >
-    <template lwc:if={copy}>
+    <template lwc:if={_copyOriginal}>
       <p class="nsw-card__copy" lwc:ref="copy" lwc:dom="manual"></p>
     </template>
     <template lwc:else>
@@ -32,7 +32,7 @@
       </div>
     </template>
 
-    <template lwc:if={footer}>
+    <template lwc:if={_footerOriginal}>
       <hr class="nsw-card__divider" />
       <div class="nsw-card__footer" lwc:ref="footer" lwc:dom="manual"></div>
     </template>

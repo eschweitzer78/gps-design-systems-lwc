@@ -1,3 +1,2 @@
-({
-  // Your renderer method overrides go here
-});
+/* eslint-disable no-unused-expressions */
+({});

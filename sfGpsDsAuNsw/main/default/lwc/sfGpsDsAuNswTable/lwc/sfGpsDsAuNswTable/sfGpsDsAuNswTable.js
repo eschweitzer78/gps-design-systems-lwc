@@ -5,38 +5,99 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api, track } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { LightningElement, api } from "lwc";
+import { isArray, normaliseBoolean, normaliseString } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswTable extends LightningElement {
+const CAPTIONLOCATION_TOP = "top";
+const CAPTIONLOCATION_BOTTOM = "bottom";
+const CAPTIONLOCATION_NONE = "none";
+const CAPTIONLOCATION_VALUES = [
+  CAPTIONLOCATION_BOTTOM,
+  CAPTIONLOCATION_NONE,
+  CAPTIONLOCATION_TOP
+];
+const CAPTIONLOCATION_DEFAULT = CAPTIONLOCATION_BOTTOM;
+
+const ISSTRIPED_DEFAULT = false;
+const ISBORDERED_DEFAULT = false;
+
+export default class extends LightningElement {
   @api caption;
-  @api captionLocation;
-  @api isStriped = false;
-  @api isBordered = false;
-
   @api offset;
   @api limit;
-
   @api className;
 
-  /* api content */
+  /* api: captionLocation, Picklist */
 
-  _originalContent;
+  _captionLocation = CAPTIONLOCATION_DEFAULT;
+  _captionLocationOriginal = CAPTIONLOCATION_DEFAULT;
+
+  @api
+  get captionLocation() {
+    return this._captionLocationOriginal;
+  }
+
+  set captionLocation(value) {
+    this._captionLocationOriginal = value;
+    this._captionLocation = normaliseString(value, {
+      validValues: CAPTIONLOCATION_VALUES,
+      fallbackValue: CAPTIONLOCATION_DEFAULT
+    });
+  }
+  /* api: isStriped, Boolean */
+
+  _isStriped = ISSTRIPED_DEFAULT;
+  _isStripedOriginal = ISSTRIPED_DEFAULT;
+
+  @api
+  get isStriped() {
+    return this._isStripedOriginal;
+  }
+
+  set isStriped(value) {
+    this._isStripedOriginal = value;
+    this._isStriped = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: ISSTRIPED_DEFAULT
+    });
+  }
+
+  /* api: isBordered, Boolean */
+
+  _isBordered = ISBORDERED_DEFAULT;
+  _isBorderedOriginal = ISBORDERED_DEFAULT;
+
+  @api
+  get isBordered() {
+    return this._isBorderedOriginal;
+  }
+
+  set isBordered(value) {
+    this._isBorderedOriginal = value;
+    this._isBordered = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: ISBORDERED_DEFAULT
+    });
+  }
+
+  /* api: content, Array of Objects */
+
+  _content;
+  _contentOriginal;
   _attributes = new Set();
-  @track _content;
 
-  @api get content() {
-    return this._originalContent;
+  @api
+  get content() {
+    return this._contentOriginal;
   }
 
   set content(value) {
-    this._originalContent = value;
+    this._contentOriginal = value;
     this._attributes = new Set();
 
     if (value == null) {
       value = [];
-    }
-    if (!Array.isArray(value)) {
+    } else if (!isArray(value)) {
       value = [value];
     }
 
@@ -80,19 +141,20 @@ export default class SfGpsDsAuNswTable extends LightningElement {
     });
   }
 
-  /* api headers */
+  /* api: headers, Array of Objects */
 
-  _headersOriginal;
   _headers;
+  _headersOriginal;
 
-  @api get headers() {
+  @api
+  get headers() {
     return this._headersOriginal;
   }
 
   set headers(value) {
     this._headersOriginal = value;
 
-    if (!Array.isArray(value)) {
+    if (!isArray(value)) {
       value = null;
     }
 
@@ -129,16 +191,16 @@ export default class SfGpsDsAuNswTable extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-table": true,
-      "nsw-table--striped": this.isStriped,
+      "nsw-table--striped": this._isStriped,
       "nsw-table--bordered": this.isBordered,
-      "nsw-table--caption-top": this.captionLocation === "top",
+      "nsw-table--caption-top": this._captionLocation === CAPTIONLOCATION_TOP,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedShowCaption() {
-    return this.captionLocation !== "none";
+    return this._captionLocation !== CAPTIONLOCATION_NONE;
   }
 }

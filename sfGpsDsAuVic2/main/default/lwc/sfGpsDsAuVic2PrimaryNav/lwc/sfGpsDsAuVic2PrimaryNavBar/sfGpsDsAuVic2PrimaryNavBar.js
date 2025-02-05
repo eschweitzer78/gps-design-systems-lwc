@@ -1,7 +1,6 @@
 // Based on RplPrimaryNavBar v2.6.2
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 import FocusMixin from "c/sfGpsDsAuVic2PrimaryNavFocusMixin";
 import cBasePath from "@salesforce/community/basePath";
 import STATIC_RESOURCE from "@salesforce/resourceUrl/sfGpsDsAuVic2";
@@ -30,32 +29,12 @@ export default class extends FocusMixin(
 
   /* api: items */
 
-  _itemsOriginal;
   _items;
+  _itemsOriginal;
   _itemsById;
 
-  itemsMapper(items) {
-    if (items) {
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        if (item.items) {
-          this.itemsMapper(item.items);
-        }
-
-        this._itemsById.set(item.id, item);
-      }
-    }
-
-    return items;
-  }
-
-  getItemById(id) {
-    const rv = id ? this._itemsById.get(id) : null;
-    if (DEBUG) console.log(CLASS_NAME, "getItemById", id, JSON.stringify(rv));
-    return rv;
-  }
-
-  @api get items() {
+  @api
+  get items() {
     return this._itemsOriginal;
   }
 
@@ -97,20 +76,20 @@ export default class extends FocusMixin(
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-primary-nav__nav-bar": true,
       "rpl-primary-nav__nav-bar--search-active": this.isSearchActive
-    });
+    };
   }
 
   get computedLogosClassName() {
-    return computeClass({
+    return {
       "rpl-primary-nav__logos": true,
       "rpl-primary-nav__logos--has-secondary-logo": this.secondaryLogo
-    });
+    };
   }
 
-  get disablePrimaryLogo() {
+  get computedDisablePrimaryLogo() {
     return false;
   }
 
@@ -132,13 +111,43 @@ export default class extends FocusMixin(
   }
 
   get computedShowLogoDivider() {
-    return this.secondaryLogo && !this.disablePrimaryLogo;
+    return this.secondaryLogo && !this.computedDisablePrimaryLogo;
   }
 
   /* methods */
 
+  itemsMapper(items) {
+    if (items) {
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+
+        if (item.items) {
+          this.itemsMapper(item.items);
+        }
+
+        this._itemsById.set(item.id, item);
+      }
+    }
+
+    return items;
+  }
+
+  getItemById(id) {
+    const rv = id ? this._itemsById.get(id) : null;
+    if (DEBUG) console.log(CLASS_NAME, "getItemById", id, JSON.stringify(rv));
+    return rv;
+  }
+
   isItemActive(item) {
     return this.activeNavItems.level1?.id === item.id;
+  }
+
+  @api focus() {
+    if (this.refs.primaryLogo) {
+      this.refs.primaryLogo.focus();
+    } else if (this.refs.secondaryLogo) {
+      this.refs.secondaryLogo.focus();
+    }
   }
 
   /* event management */
@@ -168,13 +177,5 @@ export default class extends FocusMixin(
 
   handleToggleSearch() {
     this.dispatchEvent(new CustomEvent("togglesearch"));
-  }
-
-  @api focus() {
-    if (this.refs.primaryLogo) {
-      this.refs.primaryLogo.focus();
-    } else if (this.refs.secondaryLogo) {
-      this.refs.secondaryLogo.focus();
-    }
   }
 }

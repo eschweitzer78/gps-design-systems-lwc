@@ -39,7 +39,7 @@ jobs:
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm ci --force
         env:
           GHCR_TOKEN: ${{ secrets.GHCR_ACCESS_TOKEN }}
 
@@ -97,11 +97,12 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds
         with:
           sourcePath: "sfGpsDs"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -110,11 +111,12 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNsw"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-nsw
         with:
           sourcePath: "sfGpsDsAuNsw"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -123,11 +125,12 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNswS"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-nsw-s
         with:
           sourcePath: "sfGpsDsAuNswS"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -136,11 +139,12 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuVic1"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-vic1
         with:
           sourcePath: "sfGpsDsAuVic"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -149,11 +153,12 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuVic1"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-vic2
         with:
           sourcePath: "sfGpsDsAuVic2"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -162,11 +167,12 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsFrGov"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-fr-gov
         with:
           sourcePath: "sfGpsDsFrGov"
           rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
 
       # Check for PMD violations
       - name: "Check for PMD violations"
@@ -175,10 +181,11 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsUkGov"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-uk-gov
         with:
           sourcePath: "sfGpsDsUkGov"
+          uploadSarifReport: "false"
           rulesets: "ruleset.xml"
 
       # Check for PMD violations

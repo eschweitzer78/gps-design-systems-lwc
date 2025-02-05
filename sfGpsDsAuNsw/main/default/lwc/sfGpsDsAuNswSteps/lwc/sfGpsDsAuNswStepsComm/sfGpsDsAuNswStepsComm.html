@@ -5,14 +5,21 @@
   >
   </c-sf-gps-ds-configuration-error>
 
+  <c-sf-gps-ds-empty
+    lwc:elseif={_isEmpty}
+    title="The steps content is empty"
+    content="Set the content attribute with at least one h1 entry (#) to get things going."
+  >
+  </c-sf-gps-ds-empty>
+
   <c-sf-gps-ds-au-nsw-steps
-    lwc:elseif={hasH1s}
+    lwc:else
     type={type}
     cstyle={cstyle}
     first-child={firstChild}
     class-name={className}
   >
-    <template for:each={_h1s} for:item="item">
+    <template for:each={_content} for:item="item">
       <c-sf-gps-ds-au-nsw-steps-item
         key={item.index}
         title={item.title}
@@ -22,11 +29,4 @@
       </c-sf-gps-ds-au-nsw-steps-item>
     </template>
   </c-sf-gps-ds-au-nsw-steps>
-
-  <c-sf-gps-ds-empty
-    lwc:else
-    title="The steps content is empty"
-    content="Set the content attribute with at least one h1 entry (#) to get things going."
-  >
-  </c-sf-gps-ds-empty>
 </template>

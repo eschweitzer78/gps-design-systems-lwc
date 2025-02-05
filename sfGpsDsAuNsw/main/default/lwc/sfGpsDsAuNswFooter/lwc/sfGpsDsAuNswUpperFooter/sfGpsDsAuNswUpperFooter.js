@@ -5,18 +5,51 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswUpperFooter extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api className;
 
   /* api: items */
 
-  _itemsOriginal;
-  _mapItems;
   _items;
+  _itemsOriginal;
+
+  @api
+  get items() {
+    return this._itemsOriginal;
+  }
+
+  set items(items) {
+    this._itemsOriginal = items;
+    this.itemsMapping();
+  }
+
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "nsw-footer__upper": true,
+      [this.className]: this.className
+    };
+  }
+
+  get computedHasItems() {
+    return this._items?.length;
+  }
+
+  /* methods */
+
+  _mapItems;
+
+  itemsMapping() {
+    let map = {};
+    this._items = this._itemsOriginal
+      ? this.mapItems("item", 0, map, this._itemsOriginal)
+      : null;
+    this._mapItems = map;
+  }
 
   mapItems(parentIndex, parentLevel, map, items) {
     let index = 0;
@@ -43,42 +76,15 @@ export default class SfGpsDsAuNswUpperFooter extends LightningElement {
     });
   }
 
-  @api get items() {
-    return this._itemsOriginal;
-  }
-
-  set items(items) {
-    this._itemsOriginal = items;
-    this.itemsMapping();
-  }
-
-  itemsMapping() {
-    let map = {};
-    this._items = this._itemsOriginal
-      ? this.mapItems("item", 0, map, this._itemsOriginal)
-      : null;
-    this._mapItems = map;
-  }
+  /* event management */
 
   handleClick(event) {
     event.preventDefault();
-    event.stopPropagation();
 
     this.dispatchEvent(
       new CustomEvent("navclick", {
         detail: event.currentTarget.dataset.ndx
       })
     );
-  }
-
-  get computedClassName() {
-    return computeClass({
-      "nsw-footer__upper": true,
-      [this.className]: this.className
-    });
-  }
-
-  get computedHasItems() {
-    return this._items?.length;
   }
 }

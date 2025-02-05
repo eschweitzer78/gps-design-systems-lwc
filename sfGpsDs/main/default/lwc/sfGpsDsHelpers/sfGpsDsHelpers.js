@@ -29,13 +29,12 @@ export {
 } from "./domutil_v6";
 
 export {
-  findAllTabbableElements,
-  findAllFocusableNodes,
-  getElementWithFocus,
-  filterTooltips
-} from "./focus_v6";
-
-export { deepCopy, arraysEqual, debounce } from "./jsutil_v6";
+  deepCopy,
+  arraysEqual,
+  debounce,
+  invokeArrayFns,
+  hasChanged
+} from "./jsutil_v6";
 
 export { nextTick } from "./nextTick_v6";
 
@@ -43,14 +42,17 @@ export {
   normaliseBoolean,
   normaliseArray,
   normaliseAriaAttribute,
-  normaliseString
+  normaliseString,
+  normaliseInteger
 } from "./normalise_v6";
 
 export {
   formatTemplate,
   safeEqualsIgnoreCase,
   truncateText,
-  capitalize
+  capitalize,
+  camelize,
+  hyphenate
 } from "./string_v6";
 
 export {
@@ -62,3 +64,29 @@ export {
 } from "./urlutil";
 
 export { uniqueId, isIPadPro, isMacPlatform } from "./utilities_v6";
+
+export {
+  EMPTY_OBJ,
+  EMPTY_ARR,
+  NOOP,
+  hasOwn,
+  objectToString,
+  toTypeString,
+  toRawType,
+  isPlainObject,
+  isArray,
+  isMap,
+  isSet,
+  isRegEx,
+  isFunction,
+  isString,
+  isSymbol,
+  isObject,
+  isPromise,
+  extend,
+  def,
+  toNumber,
+  toArray
+} from "./typeutil";
+
+export { withModifiers, withKeys } from "./eventutil";

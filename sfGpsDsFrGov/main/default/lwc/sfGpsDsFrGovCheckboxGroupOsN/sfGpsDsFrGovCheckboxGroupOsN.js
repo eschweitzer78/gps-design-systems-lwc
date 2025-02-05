@@ -19,24 +19,24 @@ export default class extends OmniscriptCheckboxGroup {
   }
 
   get computedFieldsetClassName() {
-    return computeClass({
+    return {
       "fr-fieldset": true,
       "fr-fieldset--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedFieldsetElementClassName() {
-    return computeClass({
+    return {
       "fr-fieldset__element": true,
       "fr-fieldset__element--inline": this.alignment === "horizontal"
-    });
+    };
   }
 
   get computedCheckboxGroupClassName() {
-    return computeClass({
+    return {
       "fr-checkbox-group": true,
       "fr-checkbox-group--sm": this.sfGpsDsCheckboxSize === "small"
-    });
+    };
   }
 
   // @TODO: Refine

@@ -10,12 +10,10 @@ import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswCheckboxGroupOsN.html";
 
-export default class SfGpsDsAuNswCheckboxGroupOsN extends SfGpsDsAuNswStatusHelperMixin(
+export default class extends SfGpsDsAuNswStatusHelperMixin(
   OmnistudioCheckboxGroup
 ) {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedAriaDescribedBy() {
     return computeClass({
@@ -25,9 +23,15 @@ export default class SfGpsDsAuNswCheckboxGroupOsN extends SfGpsDsAuNswStatusHelp
   }
 
   get computedLegendClassName() {
-    return computeClass({
+    return {
       "nsw-form__legend": true,
       "nsw-form__required": this.required
-    });
+    };
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

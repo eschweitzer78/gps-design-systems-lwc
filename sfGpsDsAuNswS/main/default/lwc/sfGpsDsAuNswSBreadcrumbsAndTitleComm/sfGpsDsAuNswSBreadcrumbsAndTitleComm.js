@@ -1,31 +1,37 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2024, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
+import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
-import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswSBreadcrumbsAndTitleComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api label = "Breadcrumbs";
   @api title;
   @api legend;
   @api className;
 
-  _items;
-  @track _itemsArray = [];
+  /* api: items */
 
-  @api set items(markdown) {
-    this._items = markdown;
+  _itemsOriginal;
+  _items = [];
+
+  @api
+  get items() {
+    return this._itemsOriginal;
+  }
+
+  set items(markdown) {
+    this._itemsOriginal = markdown;
     try {
-      let arr = mdEngine.extractLinks(markdown);
+      const arr = mdEngine.extractLinks(markdown);
       let lengthm1 = arr.length - 1;
 
-      this._itemsArray = arr.map((item, index) => {
+      this._items = arr.map((item, index) => {
         let className = "";
 
         if (arr.length === 1 && item.url) {
@@ -46,16 +52,12 @@ export default class SfGpsDsAuNswSBreadcrumbsAndTitleComm extends SfGpsDsLwc {
     }
   }
 
-  get items() {
-    return this._items;
-  }
-
   get computedClassName() {
-    return computeClass({
+    return {
       "page-header": true,
       "servicensw-embed": true,
       "page-header--top": !this.title,
       [this.className]: this.className
-    });
+    };
   }
 }

@@ -14,7 +14,9 @@
 import SfGpsDsFormFormulaOsN from "c/sfGpsDsFormFormulaOsN";
 import tmpl from "./sfGpsDsAuNswFormFormulaOsN.html";
 
-export default class SfGpsDsAuNswFormFormulaOsN extends SfGpsDsFormFormulaOsN {
+export default class extends SfGpsDsFormFormulaOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }

@@ -14,20 +14,6 @@
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
     }
   },
-  "sfGpsDsAuNswSFormCss": {
-    "target": "!Os",
-    "!.css": {
-      "target": "!Os.css",
-      "sfGpsDsAuNswSCore": "sfGpsDsAuNswSCoreOs"
-    },
-    "fixes.css": { "target": "fixes.css" },
-    "form.css": { "target": "form.css" },
-    "grid.css": { "target": "grid.css" },
-    "!.js-meta.xml": {
-      "target": "!Os.js-meta.xml",
-      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
-    }
-  },
   "sfGpsDsAuNswSGlobal": {
     "target": "!Os",
     "!.css": { "target": "!Os.css" },

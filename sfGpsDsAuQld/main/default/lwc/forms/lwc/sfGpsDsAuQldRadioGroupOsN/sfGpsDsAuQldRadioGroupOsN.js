@@ -5,8 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmnistudioRadioGroup from "c/sfGpsDsOmniRadioGroupOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 import StatusHelperMixin from "c/sfGpsDsAuQldStatusHelperMixinOsN";
 import tmpl from "./sfGpsDsAuQldRadioGroupOsN.html";
 
@@ -14,11 +14,17 @@ export default class extends StatusHelperMixin(OmnistudioRadioGroup) {
   /* computed */
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "qld__control-input__input": true,
       "qld__control-input--block": true,
       "qld__input--error": this.sfGpsDsIsError
-    });
+    };
+  }
+
+  /* method */
+
+  @api setValue(value) {
+    super.setValue(value);
   }
 
   /* lifecycle */

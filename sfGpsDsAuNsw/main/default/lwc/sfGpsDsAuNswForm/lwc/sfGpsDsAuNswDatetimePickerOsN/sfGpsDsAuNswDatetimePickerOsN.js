@@ -9,21 +9,20 @@ import { api } from "lwc";
 import OmnistudioDatetimePicker from "c/sfGpsDsOmniDatetimePickerOsN";
 import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import tmpl from "./sfGpsDsAuNswDatetimePickerOsN.html";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 
-export default class SfGpsDsAuNswDatetimePickerOsN extends SfGpsDsAuNswStatusHelperMixin(
+export default class extends SfGpsDsAuNswStatusHelperMixin(
   OmnistudioDatetimePicker
 ) {
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedLabelClassName() {
-    return computeClass({
+    return {
       "nsw-form__label": true,
       "nsw-form__required": this.required
-    });
+    };
   }
+
+  /* methods */
 
   @api setCustomValidation(message) {
     super.setCustomValidation(message);
@@ -33,5 +32,11 @@ export default class SfGpsDsAuNswDatetimePickerOsN extends SfGpsDsAuNswStatusHel
   @api sfGpsDsClearCustomValidation() {
     super.sfGpsDsClearCustomValidation();
     this.dateEl.sfGpsDsClearCustomValidation();
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

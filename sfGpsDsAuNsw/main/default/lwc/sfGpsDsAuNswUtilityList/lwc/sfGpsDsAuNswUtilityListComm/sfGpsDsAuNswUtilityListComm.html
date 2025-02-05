@@ -1,0 +1,17 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-nsw-utility-list
+    lwc:else
+    print-label={printLabel}
+    copy-label={copyLabel}
+    share-label={shareLabel}
+    share-url={shareUrl}
+    share-config={_shareConfig}
+  >
+  </c-sf-gps-ds-au-nsw-utility-list>
+</template>

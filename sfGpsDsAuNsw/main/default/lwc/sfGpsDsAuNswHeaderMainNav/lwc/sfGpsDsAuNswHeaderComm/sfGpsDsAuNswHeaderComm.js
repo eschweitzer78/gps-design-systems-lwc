@@ -5,16 +5,16 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track, wire } from "lwc";
+import { api, wire } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { NavigationMixin } from "lightning/navigation";
 
 import userId from "@salesforce/user/Id";
 import isGuest from "@salesforce/user/isGuest";
-import { getRecord } from "lightning/uiRecordApi";
 import userAliasField from "@salesforce/schema/User.Alias";
+import { getRecord } from "lightning/uiRecordApi";
 
-export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
+export default class extends NavigationMixin(SfGpsDsLwc) {
   @api masterbrand;
   @api masterbrandAlt;
   @api srMasterbrandLabel = "NSW Government";
@@ -40,7 +40,7 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
   @api mainNavId;
   @api mainNavIsOpen = false;
 
-  @track userAlias;
+  userAlias;
 
   @wire(getRecord, { recordId: userId, fields: [userAliasField] })
   getUserDetails({ error, data }) {
@@ -51,18 +51,13 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
     }
   }
 
-  get isGuest() {
+  /* computed */
+
+  get _isGuest() {
     return isGuest;
   }
 
-  /* lifecycle */
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.classList.add("nsw-scope");
-  }
-
-  /* events */
+  /* event management */
 
   handleSearch(event) {
     const queryTerm = event.target.value;
@@ -93,5 +88,12 @@ export default class SfGpsDsAuHeaderComm extends NavigationMixin(SfGpsDsLwc) {
     }).then((url) => {
       window.open(url, "_self");
     });
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }

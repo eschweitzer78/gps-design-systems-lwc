@@ -2,7 +2,7 @@
   <div class={computedClassName}>
     <div class="nsw-progress-indicator__count">Step {step} of {of}</div>
     <div lwc:if={computedShowBar} class="nsw-progress-indicator__bar">
-      <template for:each={steps} for:item="item">
+      <template for:each={computedSteps} for:item="item">
         <div key={item.index} class={item.className}></div>
       </template>
     </div>

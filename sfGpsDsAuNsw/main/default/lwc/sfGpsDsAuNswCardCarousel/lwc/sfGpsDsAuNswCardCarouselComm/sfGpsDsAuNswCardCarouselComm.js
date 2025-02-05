@@ -1,37 +1,8 @@
 import { api } from "lwc";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
-import { htmlDecode } from "c/sfGpsDsHelpers";
+import { htmlDecode, isArray } from "c/sfGpsDsHelpers";
 
 export default class extends SfGpsDsIpLwc {
-  @api
-  get ipName() {
-    return super.ipName;
-  }
-
-  set ipName(value) {
-    super.ipName = value;
-  }
-
-  _rawItems;
-
-  @api
-  get inputJSON() {
-    return super.inputJSON;
-  }
-
-  set inputJSON(value) {
-    super.inputJSON = value;
-  }
-
-  @api
-  get optionsJSON() {
-    return super.optionsJSON;
-  }
-
-  set optionsJSON(value) {
-    super.optionsJSON = value;
-  }
-
   @api accessibilityLabel;
   @api drag;
   @api justifyContent;
@@ -46,7 +17,42 @@ export default class extends SfGpsDsIpLwc {
   @api dateStyle = "medium";
   @api className;
 
-  get isEmpty() {
+  /* api: ipName, String */
+
+  @api
+  get ipName() {
+    return super.ipName;
+  }
+
+  set ipName(value) {
+    super.ipName = value;
+  }
+
+  /* api: inputJSON */
+
+  @api
+  get inputJSON() {
+    return super.inputJSON;
+  }
+
+  set inputJSON(value) {
+    super.inputJSON = value;
+  }
+
+  /* api: optionsJSON, String */
+
+  @api
+  get optionsJSON() {
+    return super.optionsJSON;
+  }
+
+  set optionsJSON(value) {
+    super.optionsJSON = value;
+  }
+
+  /* computed */
+
+  get _isEmpty() {
     return (
       this._didLoadOnce && (this._items == null || this._items.length === 0)
     );
@@ -64,12 +70,14 @@ export default class extends SfGpsDsIpLwc {
     return this.navigation === "loop";
   }
 
+  /* methods */
+
   mapIpData(data) {
     if (!data) {
       return null;
     }
 
-    if (!Array.isArray(data)) {
+    if (!isArray(data)) {
       data = [data];
     }
 
@@ -91,7 +99,6 @@ export default class extends SfGpsDsIpLwc {
 
   connectedCallback() {
     super.connectedCallback();
-
     this.classList.add("nsw-scope");
   }
 }

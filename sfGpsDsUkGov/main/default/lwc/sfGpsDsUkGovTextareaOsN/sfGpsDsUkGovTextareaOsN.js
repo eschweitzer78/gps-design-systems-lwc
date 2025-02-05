@@ -18,9 +18,13 @@ import tmpl from "./sfGpsDsUkGovTextareaOsN.html";
 const CHAR_LIMIT_REMAINING_TMPL = "{charRemaining} characters remaining";
 const CHAR_LIMIT_CHARACTERS_TMPL = "{charCount} characters";
 
-export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioTextarea
-) {
+const SHOW_CHARACTER_COUNT_DEFAULT = true;
+const SHOW_CHARACTER_COUNT_FALLBACK = true;
+
+export default class extends SfGpsDsUkGovLabelMixin(OmnistudioTextarea) {
+  /* obsolete */
+  @api characterLimit;
+
   @api characterLimitRemainingTemplate = CHAR_LIMIT_REMAINING_TMPL;
 
   get _characterLimitRemainingTemplate() {
@@ -37,10 +41,13 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
       : this.characterLimitCharactersTemplate;
   }
 
-  _showCharacterCount = true;
-  _showCharacterCountOriginal;
+  /* api: showCharacterCount */
 
-  @api get showCharacterCount() {
+  _showCharacterCount = SHOW_CHARACTER_COUNT_DEFAULT;
+  _showCharacterCountOriginal = SHOW_CHARACTER_COUNT_DEFAULT;
+
+  @api
+  get showCharacterCount() {
     return this._showCharacterCountOriginal;
   }
 
@@ -48,39 +55,34 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
     this._showCharacterCountOriginal = value;
     this._showCharacterCount = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: SHOW_CHARACTER_COUNT_FALLBACK
     });
   }
 
-  /* obsolete */
-  @api characterLimit;
-
-  render() {
-    return tmpl;
-  }
+  /* computed */
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "govuk-form-group": true,
       "govuk-form-group--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedTextAreaClassName() {
-    return computeClass({
+    return {
       "govuk-textarea": true,
       "govuk-js-character-count": this._showCharacterCount,
       "govuk-textarea--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedCharacterCountErrorClassName() {
-    return computeClass({
+    return {
       "govuk-character-count__message": true,
       "govuk-character-count__status ": true,
       "govuk-hint": true,
       "govuk-error-message": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedAriaDescribedBy() {
@@ -107,11 +109,19 @@ export default class SfGpsDsUkGovTextareaOsN extends SfGpsDsUkGovLabelMixin(
     return null;
   }
 
+  /* event management */
+
   handleKeyUp(event) {
     let charCount = event.target.value ? event.target.value.length : 0;
 
     if (this.maxLength == null || charCount <= this.maxLength) {
       this.value = event.target.value;
     }
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

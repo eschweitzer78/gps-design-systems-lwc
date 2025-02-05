@@ -10,12 +10,12 @@
 
     <template lwc:else>
       <c-sf-gps-ds-au-nsw-results-bar
-        lwc:if={_showResultsBar}
+        lwc:if={computedShowResultsBar}
         name="sort"
-        from={_from}
-        to={_to}
+        from={computedFrom}
+        to={computedTo}
         total={_totalRows}
-        sort-options={_visibleSortOptions}
+        sort-options={computedVisibleSortOptions}
         onchange={handleSortChange}
       >
       </c-sf-gps-ds-au-nsw-results-bar>

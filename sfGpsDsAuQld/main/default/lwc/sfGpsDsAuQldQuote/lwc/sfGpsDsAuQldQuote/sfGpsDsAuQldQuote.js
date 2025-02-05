@@ -1,5 +1,4 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
   @api sourceUrl;
@@ -7,9 +6,9 @@ export default class extends LightningElement {
   @api className;
 
   get computedClassName() {
-    return computeClass({
+    return {
       "qld__block-quote": true,
       [this.className]: this.className
-    });
+    };
   }
 }

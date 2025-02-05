@@ -1,28 +1,34 @@
-let ResizeHeightMixin = (Base, resizeRef) =>
+import { isArray } from "c/sfGpsDsHelpers";
+
+const RESIZE_OBSERVER = Symbol("_resizeObserver");
+const HANDLE_RESIZE_HEIGHT = Symbol("_handleResizeHeight");
+
+const ResizeHeightMixin = (Base, resizeRef) =>
   class extends Base {
-    _resizeObserver;
-    _handleResizeHeight;
+    [RESIZE_OBSERVER];
+    [HANDLE_RESIZE_HEIGHT];
+
     renderedCallback() {
       if (super.renderedCallback) {
         super.renderedCallback();
       }
 
-      if (!this._resizeObserver) {
-        this._resizeObserver = new ResizeObserver((entries) => {
+      if (!this[RESIZE_OBSERVER]) {
+        this[RESIZE_OBSERVER] = new ResizeObserver((entries) => {
           /* eslint-disable-next-line @lwc/lwc/no-async-operation */
           window.requestAnimationFrame(() => {
-            this.handleResizeHeight(entries[0].contentRect.height);
+            this[HANDLE_RESIZE_HEIGHT](entries[0].contentRect.height);
           });
         });
 
-        this._handleResizeHeight = this.handleResizeHeight.bind(this);
-        this._resizeObserver.observe(this.refs[resizeRef]);
+        this[HANDLE_RESIZE_HEIGHT] = this.handleResizeHeight.bind(this);
+        this[RESIZE_OBSERVER].observe(this.refs[resizeRef]);
 
         window.addEventListener("resize", (entries) => {
           /* eslint-disable-next-line @lwc/lwc/no-async-operation */
           window.requestAnimationFrame(() => {
-            if (Array.isArray(entries) && entries.length) {
-              this._handleResizeHeight(entries[0].contentRect.height);
+            if (isArray(entries) && entries.length) {
+              this[HANDLE_RESIZE_HEIGHT](entries[0].contentRect.height);
             }
           });
         });
@@ -35,7 +41,12 @@ let ResizeHeightMixin = (Base, resizeRef) =>
       }
 
       this._resizeObserver.disconnect();
-      window.removeEventListener("resize", this._handleResizeHeight);
+
+      const handler = this[HANDLE_RESIZE_HEIGHT];
+      if (handler) {
+        window.removeEventListener("resize", handler);
+      }
+      this[HANDLE_RESIZE_HEIGHT] = null;
     }
 
     // eslint-disable-next-line no-unused-vars

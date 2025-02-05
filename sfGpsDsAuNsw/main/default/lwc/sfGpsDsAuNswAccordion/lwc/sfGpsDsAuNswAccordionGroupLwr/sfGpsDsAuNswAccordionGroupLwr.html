@@ -1,5 +1,6 @@
 <template>
   <span if:false={firstChild}></span>
+
   <c-sf-gps-ds-configuration-error
     lwc:if={_sfGpsDsErrors}
     errors={_sfGpsDsErrors}
@@ -11,8 +12,8 @@
       show-buttons={showButtons}
       expand-all-label="Expand all"
       collapse-all-label="Collapse all"
-      is-fully-expanded={isFullyExpanded}
-      is-fully-collapsed={isFullyCollapsed}
+      is-fully-expanded={computedIsFullyExpanded}
+      is-fully-collapsed={computedIsFullyCollapsed}
       onexpandall={handleExpandAll}
       oncollapseall={handleCollapseAll}
     >

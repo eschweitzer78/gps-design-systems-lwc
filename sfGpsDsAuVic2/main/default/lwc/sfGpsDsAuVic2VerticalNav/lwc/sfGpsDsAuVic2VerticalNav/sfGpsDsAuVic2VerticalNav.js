@@ -4,18 +4,19 @@ import ExpandableStateMixin from "c/sfGpsDsAuVic2ExpandableStateMixin";
 
 const DEBUG = false;
 
-export default class SfGpsDsAuVic2VerticalNav extends ExpandableStateMixin(
-  LightningElement
-) {
+const PREVENTDEFAULT_DEFAULT = false;
+
+export default class extends ExpandableStateMixin(LightningElement) {
   @api title;
   @api className;
 
   /* api: preventDefault */
 
-  _preventDefaultOriginal;
-  _preventDefault;
+  _preventDefaultOriginal = PREVENTDEFAULT_DEFAULT;
+  _preventDefault = PREVENTDEFAULT_DEFAULT;
 
-  @api get preventDefault() {
+  @api
+  get preventDefault() {
     return this._preventDefaultOriginal;
   }
 
@@ -23,21 +24,21 @@ export default class SfGpsDsAuVic2VerticalNav extends ExpandableStateMixin(
     this._preventDefaultOriginal = value;
     this._preventDefault = normaliseBoolean(value, {
       acceptString: true,
-      fallbackValue: false
+      fallbackValue: PREVENTDEFAULT_DEFAULT
     });
   }
 
   /* getters */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-vertical-nav": true,
       "rpl-u-screen-only": true,
       [this.className]: this.className
-    });
+    };
   }
 
-  get _decoratedItems() {
+  get decoratedItems() {
     if (DEBUG)
       console.log(
         "> SfGpsDsAuVic2VerticalNav.decoratedItems",
@@ -120,6 +121,8 @@ export default class SfGpsDsAuVic2VerticalNav extends ExpandableStateMixin(
   toggleId(itemId) {
     return `rpl-vertical-nav-${itemId}-toggle`;
   }
+
+  /* event management */
 
   handleToggle(event) {
     const itemId = event.target.dataset.itemId;

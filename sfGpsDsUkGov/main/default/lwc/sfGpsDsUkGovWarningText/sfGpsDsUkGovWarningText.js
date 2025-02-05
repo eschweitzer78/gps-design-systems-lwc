@@ -6,30 +6,51 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseString } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsUkGovWarningText extends LightningElement {
+const ICONTEXT_VALUES = {
+  warning: { iconText: "!", className: "" },
+  info: { iconText: "i", className: "govuk-warning-text--info" },
+  error: { iconText: "⨉", className: "govuk-warning-text--error" },
+  success: { iconText: "✓", className: "govuk-warning-text--success" }
+};
+const ICONTEXT_DEFAULT = "warning";
+
+export default class extends LightningElement {
   @api title;
-  @api as;
   @api className;
 
-  get computedClassName() {
-    return computeClass({
-      "govuk-warning-text": true,
-      "govuk-warning-text--info": this.as === "info",
-      "govuk-warning-text--error": this.as === "error",
-      "govuk-warning-text--success": this.as === "success",
-      [this.className]: this.className
+  /* api: as */
+
+  _as = ICONTEXT_VALUES[ICONTEXT_DEFAULT];
+  _asOriginal = ICONTEXT_DEFAULT;
+
+  @api
+  get as() {
+    return this._asOriginal;
+  }
+
+  set as(value) {
+    this._asOriginal = value;
+    this._as = normaliseString(value, {
+      validValues: ICONTEXT_VALUES,
+      fallbackValue: ICONTEXT_DEFAULT,
+      returnObjectValue: true
     });
   }
 
+  /* computed */
+
+  get computedClassName() {
+    return {
+      "govuk-warning-text": true,
+      [this._as.className]: this._as,
+      [this.className]: this.className
+    };
+  }
+
   get computedIconText() {
-    return computeClass({
-      "!": this.as === "warning",
-      i: this.as === "info",
-      "⨉": this.as === "error",
-      "✓": this.as === "success"
-    });
+    return this._as.iconText;
   }
 
   get space() {

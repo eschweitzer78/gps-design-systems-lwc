@@ -37,14 +37,14 @@
 
     <h1 slot="title" class={computedTitleClassName}>{title}</h1>
 
-    <p class={computedContentClasses}>
-      <template lwc:if={content}>
+    <template lwc:if={content}>
+      <p class={computedContentClasses}>
         <span lwc:ref="content" lwc:dom="manual"></span>
-      </template>
-      <template lwc:else>
-        <slot name="heroContent" onslotchange={handleSlotChange}></slot>
-      </template>
-    </p>
+      </p>
+    </template>
+    <template lwc:else>
+      <slot name="heroContent" onslotchange={handleSlotChange}></slot>
+    </template>
 
     <template lwc:if={computedShowHeaderActions}>
       <c-sf-gps-ds-au-vic2-header-actions

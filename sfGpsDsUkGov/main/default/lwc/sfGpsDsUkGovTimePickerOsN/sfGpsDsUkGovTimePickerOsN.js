@@ -13,9 +13,7 @@ import tmpl from "./sfGpsDsUkGovTimePickerOsN.html";
 
 const ZWSP_CHAR = "​";
 
-export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
-  OmnistudioTimePicker
-) {
+export default class extends SfGpsDsUkGovLabelMixin(OmnistudioTimePicker) {
   @api forceError = false;
   @api hideFormGroup = false;
 
@@ -27,25 +25,25 @@ export default class SfGpsDsUkGovTimePickerOsN extends SfGpsDsUkGovLabelMixin(
   }
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "govuk-form-group": !this.hideFormGroup,
       "govuk-form-group--error": this.sfGpsDsIsError && !this.hideFormGroup
-    });
+    };
   }
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "govuk-input": true,
       "govuk-input--error": this.sfGpsDsIsError,
       "sfgpsds-input_faux": true,
       "sfgpsds-combobox__input": true
-    });
+    };
   }
 
   get computedItemFormGroupClassName() {
-    return computeClass({
+    return {
       "govuk-form-group": !this.hideFormGroup
-    });
+    };
   }
 
   get computedAriaDescribedBy() {

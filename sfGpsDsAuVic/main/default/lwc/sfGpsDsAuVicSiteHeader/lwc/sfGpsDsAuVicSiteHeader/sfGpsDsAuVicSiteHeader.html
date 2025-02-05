@@ -1,0 +1,135 @@
+<!-- sldsValidatorIgnore -->
+<template lwc:render-mode="light">
+  <!-- <c-sf-gps-ds-transition name="rpl-header-fade" class={className}> WAS ONLY FOR DISMOUNT ANYWAY -->
+  <div class={className} lwc:ref="siteheader">
+    <c-sf-gps-ds-focus-trap disabled={isMenuContentClosed}>
+      <div
+        lwc:if={headerVisible}
+        class={computedSiteHeaderClassName}
+        onkeydown={handleKeyDown}
+      >
+        <div class="rpl-site-header__inner">
+          <!-- Top Bar -->
+          <div class="rpl-site-header__top">
+            <div class="rpl-site-header__logo-container">
+              <div class="rpl-site-header__logo-container-inner">
+                <!-- Menu Button -->
+                <button
+                  lwc:if={showMenuButton}
+                  class={computedMenuButtonClassName}
+                  aria-label={label}
+                  aria-expanded={isMenuOpen}
+                  onclick={handleMenuClick}
+                >
+                  <c-sf-gps-ds-au-vic-icon
+                    symbol={activeMenuButton.icon}
+                    color="white"
+                  >
+                  </c-sf-gps-ds-au-vic-icon>
+                  <span>{activeMenuButton.text}</span>
+                </button>
+                <div
+                  lwc:if={showMenuButton}
+                  class={computedDividerVicClassName}
+                ></div>
+
+                <!-- Primary vic.gov.au Logo -->
+                <div
+                  lwc:if={isVicLogoVisible}
+                  class={computedLogoContainerClassName}
+                >
+                  <c-sf-gps-ds-au-vic-link
+                    href={imageLink}
+                    onclick={handleImageClick}
+                  >
+                    <!--Only apply vic-logo cobrand class if there is a coBrand logo-->
+                    <img src={imageSrc} alt={imageAlt} />
+                  </c-sf-gps-ds-au-vic-link>
+                </div>
+
+                <div class={computedDividerCobrandClassName}></div>
+                <!--Co brand logo if it exists-->
+                <div lwc:if={isCobrandVisible} class="rpl-site-header__title">
+                  <c-sf-gps-ds-au-vic-link
+                    href={cobrandImageLink}
+                    onclick={handleCobrandImageClick}
+                  >
+                    <!--Render element if taxonomy includes a cobrand logo-->
+                    <img src={cobrandImageSrc} alt={cobrandImageAlt} />
+                  </c-sf-gps-ds-au-vic-link>
+                </div>
+              </div>
+            </div>
+
+            <!-- Top Menu -->
+            <div
+              lwc:if={isMenuContainerVisible}
+              class={computedMenuContainerClassName}
+            >
+              <div class="rpl-site-header__menu">
+                <c-sf-gps-ds-au-vic-menu
+                  menu={_navItems}
+                  layout={menuLayout}
+                  title={title}
+                  quick-exit-label={quickExitLabel}
+                  quick-exit-target={quickExitTarget}
+                  open={isMenuOpen}
+                  onrootmenuclicked={handleRootMenuClicked}
+                  onnavigate={handleNavigate}
+                  index={root}
+                >
+                </c-sf-gps-ds-au-vic-menu>
+              </div>
+            </div>
+
+            <div
+              id={computedSearchContainerId}
+              class="rpl-site-header__btn-container"
+            >
+              <!-- Logout button -->
+              <button
+                lwc:if={showLogout}
+                class={computedLogoutButtonClassName}
+                onclick={handleLogoutClick}
+              >
+                <span>{logoutButton.text}</span>
+                <c-sf-gps-ds-au-vic-icon
+                  symbol={logoutButton.icon}
+                  color="white"
+                >
+                  <!-- c-sfgpsdsauvicmainnavigation_sfgpsdsauvicmainnavigation  -->
+                </c-sf-gps-ds-au-vic-icon>
+              </button>
+
+              <!-- Search Button -->
+              <button
+                lwc:if={showSearch}
+                onclick={handleSearchClick}
+                class={computedSearchButtonClassName}
+                aria-expanded={isSearchOpen}
+              >
+                <span>{activeSearchButton.text}</span>
+                <c-sf-gps-ds-au-vic-icon
+                  symbol={activeSearchButton.icon}
+                  color="white"
+                >
+                  <!-- c-sfgpsdsauvicmainnavigation_sfgpsdsauvicmainnavigation  -->
+                </c-sf-gps-ds-au-vic-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- Search Content -->
+          <div
+            lwc:if={showSearchContainer}
+            class="rpl-site-header__search-container"
+          >
+            <div>Search Container TODO</div>
+            <!-- <c-vic-d-s-rpl-search terms={searchTerms} onsearch={handleSearch}></c-vic-d-s-rpl-search> -->
+          </div>
+        </div>
+      </div>
+    </c-sf-gps-ds-focus-trap>
+  </div>
+  <!-- </c-sf-gps-ds-transition> -->
+</template>

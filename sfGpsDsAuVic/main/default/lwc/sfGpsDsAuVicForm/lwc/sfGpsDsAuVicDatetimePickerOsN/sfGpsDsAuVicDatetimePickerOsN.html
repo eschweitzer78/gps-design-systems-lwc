@@ -1,0 +1,96 @@
+<template>
+  <div class="rpl-form">
+    <div class="rpl-fieldset">
+      <div class={computedFormGroupClassName}>
+        <div class={errorClass}>
+          <label style="width: auto" for="date-input">
+            <span>{label}</span>
+            <slot name="label"> </slot>
+          </label>
+
+          <div lwc:if={fieldLevelHelp} id="helper" class="hint">
+            {fieldLevelHelp}
+          </div>
+
+          <div class="rpl-row">
+            <div
+              class="rpl-col rpl-col--12 rpl-col--7-m rpl-col--6-l rpl-col--6-xl"
+            >
+              <c-sf-gps-ds-au-vic-date-picker-os-n
+                hide-form-group="true"
+                hide-asterisk="true"
+                placeholder={datePlaceholder}
+                theme={theme}
+                label={dateLabel}
+                aria-label={dateAriaLabel}
+                format={dateFormat}
+                locale-format={localeFormat}
+                locale-format-invalid-error={localeFormatInvalidError}
+                name={dateName}
+                icon-url={iconUrl}
+                read-only={readOnly}
+                message-when-value-missing={messageWhenValueMissing}
+                min={dateMin}
+                max={dateMax}
+                value={_value}
+                tab-index={tabIndex}
+                disabled={disabled}
+                required={required}
+                output-type="date"
+                message-when-range-underflow={messageWhenRangeUnderflow}
+                message-when-range-overflow={messageWhenRangeOverflow}
+                message-when-bad-input={messageWhenBadInput}
+                prev-month-label={prevMonthLabel}
+                next-month-label={nextMonthLabel}
+                pick-year-label={pickYearLabel}
+                today-label={todayLabel}
+                required-label={requiredLabel}
+                hide-icon={hideIcon}
+                styles={styles}
+                select-date-label={selectDateLabel}
+                onchange={setTime}
+                data-sfgpsds-date-picker
+              >
+              </c-sf-gps-ds-au-vic-date-picker-os-n>
+            </div>
+            <div
+              class="rpl-col rpl-col--12 rpl-col--5-m rpl-col--6-l rpl-col--6-xl"
+            >
+              <c-sf-gps-ds-au-vic-time-picker-os-n
+                hide-form-group="true"
+                hide-asterisk="true"
+                placeholder={timePlaceholder}
+                theme="sfgpsds"
+                label={timeLabel}
+                aria-label={timeAriaLabel}
+                name={timeName}
+                icon-url={iconUrl}
+                format={timeFormat}
+                locale-format={localeFormat}
+                locale-format-invalid-error={localeFormatInvalidError}
+                min={timeMin}
+                max={timeMax}
+                value={_value}
+                tab-index={tabIndex}
+                read-only={readOnly}
+                disabled={disabled}
+                required={required}
+                required-label={requiredLabel}
+                message-when-value-missing={messageWhenValueMissing}
+                interval={interval}
+                output-type="date"
+                message-when-bad-input={messageWhenBadInput}
+                message-when-range-underflow={messageWhenRangeUnderflow}
+                message-when-range-overflow={messageWhenRangeOverflow}
+                hide-icon={hideIcon}
+                styles={styles}
+                data-sfgpsds-time-picker
+              >
+              </c-sf-gps-ds-au-vic-time-picker-os-n>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

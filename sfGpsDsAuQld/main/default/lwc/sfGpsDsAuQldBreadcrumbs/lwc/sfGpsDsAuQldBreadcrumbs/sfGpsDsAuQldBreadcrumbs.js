@@ -6,7 +6,7 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString, isArray } from "c/sfGpsDsHelpers";
 import OnWindowResize from "c/sfGpsDsOnWindowResize";
 import OnClickOutside from "c/sfGpsDsOnClickOutside";
 
@@ -33,12 +33,13 @@ export default class extends LightningElement {
 
   _items = [];
 
-  @api get items() {
+  @api
+  get items() {
     return this._items;
   }
 
   set items(value) {
-    this._items = Array.isArray(value) ? value : [];
+    this._items = isArray(value) ? value : [];
     this._nOverflow = null;
   }
 
@@ -47,8 +48,9 @@ export default class extends LightningElement {
   _mode;
   _modeOriginal;
 
-  @api get mode() {
-    return this._mode;
+  @api
+  get mode() {
+    return this._modeOriginal;
   }
 
   set mode(value) {
@@ -74,10 +76,10 @@ export default class extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
+    return {
       qld__breadcrumbs: true,
       [this.className]: this.className
-    });
+    };
   }
 
   get decoratedItems() {
@@ -97,21 +99,21 @@ export default class extends LightningElement {
   }
 
   get computedOverflowButtonClassName() {
-    return computeClass({
+    return {
       qld__btn: true,
       "qld__btn--toggle": true,
       qld__overflow_menu__btn: true,
       "qld__accordion--closed": !this._isOverflowOpen,
       "qld__accordion--open": this._isOverflowOpen
-    });
+    };
   }
 
   get computedOverflowClassName() {
-    return computeClass({
+    return {
       qld__overflow_menu: true,
       "qld__accordion--closed": !this._isOverflowOpen,
       "qld__accordion--open": this._isOverflowOpen
-    });
+    };
   }
 
   /* methods */

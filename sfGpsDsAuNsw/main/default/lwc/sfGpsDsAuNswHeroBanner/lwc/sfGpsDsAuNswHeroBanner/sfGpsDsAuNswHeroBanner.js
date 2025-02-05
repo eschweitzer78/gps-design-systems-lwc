@@ -6,70 +6,216 @@
  */
 
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { normaliseBoolean, normaliseString, isArray } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswHeroBanner extends LightningElement {
+const CSTYLE_DEFAULT = "dark";
+const CSTYLE_VALUES = {
+  dark: {
+    main: "nsw-hero-banner--dark",
+    button: "nsw-button--white"
+  },
+  light: {
+    main: "nsw-hero-banner--light",
+    button: "nsw-button--dark"
+  },
+  "off-white": {
+    main: "nsw-hero-banner--off-white",
+    button: "nsw-button--dark"
+  },
+  white: {
+    main: "nsw-hero-banner--white",
+    button: "nsw-button--dark"
+  }
+};
+
+const CTAPREVENTDEFAULT_DEFAULT = false;
+const LINKSPREVENTDEFAULT_DEFAULT = false;
+const WIDE_DEFAULT = false;
+const FEATURED_DEFAULT = false;
+const LINES_DEFAULT = false;
+const LINKS_DEFAULT = [];
+
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api title;
   @api subtitle;
-  //@api intro; // replaced by default slot
   @api cta;
-  @api ctaPreventDefault = false;
-  @api cstyle = "dark";
-  @api bstyle = "default";
-  @api wide;
-  @api featured;
-  @api lines;
   @api image;
-  @api links;
-  @api linksPreventDefault = false;
   @api className;
 
-  get _links() {
-    return this.links
-      ? this.links.map((link, index) => ({
+  /* api: cstyle */
+
+  _cstyle = CSTYLE_VALUES[CSTYLE_DEFAULT];
+  _cstyleOriginal = CSTYLE_DEFAULT;
+
+  @api
+  get cstyle() {
+    return this._cstyleOriginal;
+  }
+
+  set cstyle(value) {
+    this._cstyleOriginal = value;
+    this._cstyle = normaliseString(value, {
+      validValues: CSTYLE_VALUES,
+      fallbackValue: CSTYLE_DEFAULT,
+      returnObjectValue: true
+    });
+  }
+
+  /* api: wide */
+
+  _wide = WIDE_DEFAULT;
+  _wideOriginal = WIDE_DEFAULT;
+
+  @api
+  get wide() {
+    return this._wideOriginal;
+  }
+
+  set wide(value) {
+    this._wideOriginal = value;
+    this._wide = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: WIDE_DEFAULT
+    });
+  }
+
+  /* api: feature */
+
+  _featured = FEATURED_DEFAULT;
+  _featuredOriginal = FEATURED_DEFAULT;
+
+  @api
+  get featured() {
+    return this._featuredOriginal;
+  }
+
+  set featured(value) {
+    this._featuredOriginal = value;
+    this._featured = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: FEATURED_DEFAULT
+    });
+  }
+
+  /* api: lines */
+
+  _lines = LINES_DEFAULT;
+  _linesOriginal = LINES_DEFAULT;
+
+  @api
+  get lines() {
+    return this._linesOriginal;
+  }
+
+  set lines(value) {
+    this._linesOriginal = value;
+    this._lines = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: LINES_DEFAULT
+    });
+  }
+
+  /* api: ctaPreventDefault */
+
+  _ctaPreventDefault = CTAPREVENTDEFAULT_DEFAULT;
+  _ctaPreventDefaultOriginal = CTAPREVENTDEFAULT_DEFAULT;
+
+  @api
+  get ctaPreventDefault() {
+    return this._ctaPreventDefaultOriginal;
+  }
+
+  set ctaPreventDefault(value) {
+    this._ctaPreventDefaultOriginal = value;
+    this._ctaPreventDefault = normaliseBoolean(value, {
+      acceptString: false,
+      fallbackValue: CTAPREVENTDEFAULT_DEFAULT
+    });
+  }
+
+  /* api: linksPreventDefault */
+
+  _linksPreventDefault = LINKSPREVENTDEFAULT_DEFAULT;
+  _linksPreventDefaultOriginal = LINKSPREVENTDEFAULT_DEFAULT;
+
+  @api
+  get linksPreventDefault() {
+    return this._linksPreventDefaultOriginal;
+  }
+
+  set linksPreventDefault(value) {
+    this._linksPreventDefaultOriginal = value;
+    this._linksPreventDefault = normaliseBoolean(value, {
+      acceptString: false,
+      fallbackValue: CTAPREVENTDEFAULT_DEFAULT
+    });
+  }
+
+  /* api: links */
+
+  _links = LINKS_DEFAULT;
+  _linksOriginal = LINKS_DEFAULT;
+
+  @api
+  get links() {
+    return this._linksOriginal;
+  }
+
+  set links(value) {
+    this._linksOriginal = value;
+    this._links = isArray(value)
+      ? value.map((link, index) => ({
           ...link,
           index: link.index ? link.index : `link-${index + 1}`
         }))
-      : null;
+      : LINKS_DEFAULT;
   }
 
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "nsw-hero-banner": true,
-      "nsw-hero-banner--wide": this.wide,
-      "nsw-hero-banner--featured": this.featured,
-      "nsw-hero-banner--dark": this.cstyle === "dark",
-      "nsw-hero-banner--light": this.cstyle === "light",
-      "nsw-hero-banner--white": this.cstyle === "white",
-      "nsw-hero-banner--off-white": this.cstyle === "off-white",
-      "nsw-hero-banner--lines": this.lines,
+      "nsw-hero-banner--wide": this._wide,
+      "nsw-hero-banner--featured": this._featured,
+      "nsw-hero-banner--lines": this._lines,
+      [this._cstyle.main]: this._cstyle.main,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedButtonClassName() {
-    return computeClass({
+    return {
       "nsw-button": true,
-      "nsw-button--white": this.cstyle === "dark",
-      "nsw-button--dark": ["light", "white", "off-white"].includes(this.cstyle)
-    });
+      [this._cstyle.button]: this._cstyle.button
+    };
   }
 
+  get computedHasLinks() {
+    return this._links?.length > 1;
+  }
+
+  /* event management */
+
   handleCtaClick(event) {
-    if (this.ctaPreventDefault) {
+    if (this._ctaPreventDefault) {
       event.preventDefault();
     }
 
-    this.dispatchEvent(new CustomEvent("click", { detail: event.target.href }));
+    this.dispatchEvent(
+      new CustomEvent("navclick", { detail: event.target.href })
+    );
   }
 
   handleLinksClick(event) {
-    if (this.linksPreventDefault) {
+    if (this._linksPreventDefault) {
       event.preventDefault();
     }
 
-    this.dispatchEvent(new CustomEvent("click", { detail: event.target.href }));
+    this.dispatchEvent(
+      new CustomEvent("navclick", { detail: event.target.href })
+    );
   }
 }

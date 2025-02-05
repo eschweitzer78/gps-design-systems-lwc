@@ -8,7 +8,6 @@
 import { track } from "lwc";
 import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsUkGovFormFileOsN.html";
 
 // TODO: there is seemingly a bug in SDLS when the hover colors for neutral buttons are not derived from variables
@@ -18,9 +17,7 @@ import tmpl from "./sfGpsDsUkGovFormFileOsN.html";
 //  background-color: rgb(243, 243, 243); -> var(--slds-c-button-neutral-color-background-hover)
 //  border-color: rgb(201, 201, 201); -> var(--slds-c-button-neutral-color-border-hover)
 
-export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormFileOsN
-) {
+export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsFormFileOsN) {
   render() {
     return tmpl;
   }
@@ -33,10 +30,10 @@ export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
   }
 
   get computedFormGroupClassName() {
-    return computeClass({
+    return {
       "govuk-form-group": true,
       "govuk-form-group--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   /*  Based on the current lightning-file-upload this
@@ -45,10 +42,10 @@ export default class SfGpsDsUkGovFormFileOsN extends SfGpsDsUkGovLabelMixin(
    */
 
   get computedInputClassName() {
-    return computeClass({
+    return {
       "govuk-file-upload": true,
       "govuk-file-upload--error": this.sfGpsDsIsError
-    });
+    };
   }
 
   get computedLabelId() {

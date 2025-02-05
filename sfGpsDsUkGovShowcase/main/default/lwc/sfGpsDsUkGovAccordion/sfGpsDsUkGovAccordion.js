@@ -6,53 +6,55 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import { isArray, uniqueId } from "c/sfGpsDsHelpers";
 
 const LABELID_PREFIX = "sf-gps-ds-uk-gov-accordion-title";
 const DEFAULT_CLOSE_STATE = true;
+
+const ACCORDIONS_DEFAULT = [];
 
 const I18N = {
   showAllSectionsLabel: "Show all sections",
   hideAllSectionsLabel: "Hide all sections"
 };
-export default class SfGpsDsUkGovAccordion extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api className;
 
   /* api: accordions */
 
-  _originalAccordions;
-  @track _accordions;
+  @track _accordions = ACCORDIONS_DEFAULT;
+  _accordionsOriginal = ACCORDIONS_DEFAULT;
   _numberOpen;
 
-  @api get accordions() {
-    return this._originalAccordions;
+  @api
+  get accordions() {
+    return this._accordionsOriginal;
   }
 
   set accordions(value) {
     let numberOpen = 0;
-    this._originalAccordions = value;
-    this._accordions =
-      this._originalAccordions && Array.isArray(this._originalAccordions)
-        ? this._originalAccordions.map((item, index) => {
-            let closed =
-              item.closed === undefined ? DEFAULT_CLOSE_STATE : item.closed;
-            numberOpen += closed ? 0 : 1;
+    this._accordionsOriginal = value;
+    this._accordions = isArray(value)
+      ? value.map((item, index) => {
+          let closed =
+            item.closed === undefined ? DEFAULT_CLOSE_STATE : item.closed;
+          numberOpen += closed ? 0 : 1;
 
-            return {
-              ...item,
-              index: index + 1,
-              key: `item-${index + 1}`,
-              closed: closed
-            };
-          })
-        : [];
+          return {
+            ...item,
+            index: index + 1,
+            key: `item-${index + 1}`,
+            closed: closed
+          };
+        })
+      : ACCORDIONS_DEFAULT;
 
     this._numberOpen = numberOpen;
   }
 
-  /* computed: computedTitleId */
+  /* computed */
 
   _titleId;
 
@@ -64,16 +66,20 @@ export default class SfGpsDsUkGovAccordion extends LightningElement {
     return this._titleId;
   }
 
-  /* computed: computedClassName */
-
   get computedClassName() {
-    return computeClass({
+    return {
       "govuk-accordion": true,
       [this.className]: this.className
-    });
+    };
   }
 
-  /* i18n */
+  get computedIsFullyExpanded() {
+    return this._numberOpen && this._numberOpen === this._accordions?.length;
+  }
+
+  get computedIsFullyCollapsed() {
+    return this._numberOpen === 0;
+  }
 
   get i18n() {
     return I18N;
@@ -113,17 +119,5 @@ export default class SfGpsDsUkGovAccordion extends LightningElement {
     }));
 
     this.dispatchEvent(new CustomEvent("collapseall"));
-  }
-
-  /* computed: isFullyExpanded */
-
-  get isFullyExpanded() {
-    return this._numberOpen && this._numberOpen === this._accordions?.length;
-  }
-
-  /* computed: isFullyCollapsed */
-
-  get isFullyCollapsed() {
-    return this._numberOpen === 0;
   }
 }

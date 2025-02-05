@@ -1,0 +1,20 @@
+<template>
+  <div
+    lwc:if={show}
+    class={computedClassName}
+    role="alert"
+    aria-hidden={computedAriaHidden}
+  >
+    <i>
+      <slot name="icon"></slot>
+    </i>
+    <slot></slot>
+
+    <c-sf-gps-ds-sg-gov-close-button
+      lwc:if={dismissible}
+      aria-label={i18n.closeAriaLabel}
+      onclick={close}
+    >
+    </c-sf-gps-ds-sg-gov-close-button>
+  </div>
+</template>

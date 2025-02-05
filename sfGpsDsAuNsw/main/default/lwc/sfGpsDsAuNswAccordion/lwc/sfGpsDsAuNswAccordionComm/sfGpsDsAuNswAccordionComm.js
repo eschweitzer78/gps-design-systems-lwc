@@ -9,15 +9,20 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
+const CLOSED_DEFAULT = true;
+
+export default class extends SfGpsDsLwc {
   @api index; // only used if part of a group
   @api header;
+  @api content;
+  @api className;
 
-  // closed
+  // api: closed
 
-  _closed = true;
+  _closed = CLOSED_DEFAULT;
 
-  @api get closed() {
+  @api
+  get closed() {
     return this._closed;
   }
 
@@ -25,12 +30,7 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
     this._closed = value;
   }
 
-  @api content;
-  @api className;
-
-  renderedCallback() {
-    replaceInnerHtml(this.refs.markdown, this.content);
-  }
+  /* event management */
 
   handleExpand() {
     this._closed = false;
@@ -43,6 +43,10 @@ export default class SfGpsDsAuNswAccordionComm extends SfGpsDsLwc {
   }
 
   /* lifecycle */
+
+  renderedCallback() {
+    replaceInnerHtml(this.refs.markdown, this.content);
+  }
 
   connectedCallback() {
     super.connectedCallback();

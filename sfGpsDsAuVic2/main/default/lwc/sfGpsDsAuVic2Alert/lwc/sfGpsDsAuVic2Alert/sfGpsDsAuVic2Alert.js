@@ -1,25 +1,54 @@
 import { LightningElement, api } from "lwc";
-import { normaliseBoolean, computeClass } from "c/sfGpsDsHelpers";
+import { normaliseBoolean, normaliseString } from "c/sfGpsDsHelpers";
 import ResizeHeightMixin from "c/sfGpsDsAuVic2ResizeHeightMixin";
 
 const CLOSE_LABEL = "Dismiss alert";
 
-export default class SfGpsDsAuVic2Alert extends ResizeHeightMixin(
-  LightningElement,
-  "alert"
-) {
-  @api variant = "information";
+const ISDISMISSIBLE_DEFAULT = true;
+const ISDISMISSIBLE_FALLBACK = false;
+
+const VARIANT_DEFAULT = "information";
+const VARIANT_VALUES = {
+  information: "rpl-alert--information",
+  warning: "rpl-alert--warning",
+  error: "rpl-alert--error"
+};
+
+export default class extends ResizeHeightMixin(LightningElement, "alert") {
   @api iconName = "icon-information-circle-filled";
   @api message = "";
   @api linkText = "";
   @api linkUrl = "";
   @api dismissed = false;
   @api alertId;
+  @api className;
 
-  _isDismissbleOriginal = true;
-  _isDismissible = true;
+  /* api: variant */
 
-  @api get isDismissible() {
+  _variant = VARIANT_DEFAULT;
+  _variantOriginal = VARIANT_DEFAULT;
+
+  @api
+  get variant() {
+    return this._variantOriginal;
+  }
+
+  set variant(value) {
+    this._variantOriginal = value;
+    this._variant = normaliseString(value, {
+      fallbackValue: VARIANT_DEFAULT,
+      validValues: VARIANT_VALUES,
+      returnObjectValue: true
+    });
+  }
+
+  /* api: isDismissible */
+
+  _isDismissibleOriginal = ISDISMISSIBLE_DEFAULT;
+  _isDismissible = ISDISMISSIBLE_DEFAULT;
+
+  @api
+  get isDismissible() {
     return this._isDismissbleOriginal;
   }
 
@@ -27,25 +56,20 @@ export default class SfGpsDsAuVic2Alert extends ResizeHeightMixin(
     this._isDismissibleOriginal = value;
     this._isDismissible = normaliseBoolean(value, {
       acceptString: true,
-      defaultValue: false
+      defaultValue: ISDISMISSIBLE_FALLBACK
     });
   }
-
-  @api className;
 
   /* computed */
 
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-alert": true,
-      "rpl-alert--information":
-        (this.variant || "information") === "information",
-      "rpl-alert--warning": this.variant === "warning",
-      "rpl-alert--error": this.variant === "error",
+      [this._variant]: this._variant,
       "rpl-alert--closed": this.dismissed,
       "rpl-u-screen-only": true,
       [this.className]: this.className
-    });
+    };
   }
 
   get computedAriaLabelledBy() {

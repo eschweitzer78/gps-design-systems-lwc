@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>SG DS Alert</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="variant"
+        type="String"
+        label="Variant"
+        default="primary"
+        datasource="primary,secondary,success,danger,warning,info,light"
+      />
+      <property name="show" type="Boolean" label="Show" default="true" />
+      <property
+        name="dismissible"
+        type="Boolean"
+        label="Dismissible"
+        default="false"
+      />
+      <property
+        name="headerLabel"
+        type="String"
+        label="Header label"
+        description="Alert header label, leave blank to drop header."
+        default="Alert"
+      />
+      <property
+        name="headerTag"
+        type="String"
+        label="Header level"
+        description="Heading level."
+        default="h4"
+        datasource="h1,h2,h3,h4,h5,h6"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Quote content in Markdown format, leave empty to get a slot in LWR."
+        default="&quot;Berios sim destrum facientota nis ex eost aut prae vendis explam aliquis dolorpo rrorem reptaep elenis net.&quot;"
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

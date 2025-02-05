@@ -7,11 +7,15 @@
 
 import { api } from "lwc";
 import { NavigationMixin } from "lightning/navigation";
+import { isArray } from "c/sfGpsDsHelpers";
 import SfGpsDsIpLwc from "c/sfGpsDsIpLwc";
+import demoCollection from "./demoCollection";
 
-export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
-  SfGpsDsIpLwc
-) {
+export default class extends NavigationMixin(SfGpsDsIpLwc) {
+  @api className;
+
+  /* api: mode, Array of Object */
+
   @api
   get mode() {
     return super.mode;
@@ -21,37 +25,11 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
     super.mode = value;
 
     if (value === "Demo") {
-      /* eslint-disable no-unused-vars */
-      let cbp = this.communityBasePath;
-
-      this._items = this.mapIpData([
-        {
-          actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/accessibility-statement",
-          imageUrl: null,
-          label: "Accessibility statement",
-          subMenu: [],
-          target: "CurrentWindow"
-        },
-        {
-          actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/nsw-government/copyright",
-          imageUrl: null,
-          label: "Copyright",
-          subMenu: [],
-          target: "CurrentWindow"
-        },
-        {
-          actionType: "ExternalLink",
-          actionValue: "https://www.nsw.gov.au/nsw-government/disclaimer",
-          imageUrl: null,
-          label: "Disclaimer",
-          subMenu: [],
-          target: "CurrentWindow"
-        }
-      ]);
+      this._items = this.mapIpData(demoCollection);
     }
   }
+
+  /* api: navigationDevName, String */
 
   @api
   get navigationDevName() {
@@ -62,6 +40,8 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
     super.navigationDevName = value;
   }
 
+  /* api: ipName, String */
+
   @api
   get ipName() {
     return super.ipName;
@@ -70,6 +50,8 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
   set ipName(value) {
     super.ipName = value;
   }
+
+  /* api: inputJSON, String */
 
   @api
   get inputJSON() {
@@ -80,6 +62,8 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
     super.inputJSON = value;
   }
 
+  /* api: optionsJSON, String */
+
   @api
   get optionsJSON() {
     return super.optionsJSON;
@@ -89,14 +73,22 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
     super.optionsJSON = value;
   }
 
-  @api className;
+  /* computed */
+
+  get _isEmpty() {
+    return (
+      this._didLoadOnce && (this._items == null || this._items.length === 0)
+    );
+  }
+
+  /* methods */
 
   mapIpData(data) {
     if (!data) {
       return null;
     }
 
-    if (!Array.isArray(data)) {
+    if (!isArray(data)) {
       data = [data];
     }
 
@@ -106,12 +98,6 @@ export default class SfGpsDsAuNswLinkCollectionComm extends NavigationMixin(
       text: item.text || item.label,
       url: item.url || item.actionValue
     }));
-  }
-
-  get isEmpty() {
-    return (
-      this._didLoadOnce && (this._items == null || this._items.length === 0)
-    );
   }
 
   /* lifecycle */

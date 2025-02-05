@@ -9,17 +9,17 @@ import SfGpsDsFormDisclosureOsN from "c/sfGpsDsFormDisclosureOsN";
 import SfGpsDsUkGovLabelMixin from "c/sfGpsDsUkGovLabelMixinOsN";
 import tmpl from "./sfGpsDsUkGovFormDisclosureOsN.html";
 
-export default class SfGpsDsUkGovFormDisclosureOsN extends SfGpsDsUkGovLabelMixin(
-  SfGpsDsFormDisclosureOsN
-) {
-  render() {
-    return tmpl;
-  }
-
+export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsFormDisclosureOsN) {
   initCompVariables() {
     super.initCompVariables();
 
     this.labelSize = this._propSetMap.labelSize;
     this.isHeading = this._propSetMap.isHeading;
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

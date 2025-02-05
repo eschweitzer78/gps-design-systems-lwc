@@ -65,4 +65,20 @@
       </div>
     </div>
   </div>
+
+  <!-- deprecated -->
+
+  <aura:attribute
+    name="hideHeader"
+    type="Boolean"
+    required="false"
+    default="true"
+  />
+  <aura:attribute name="navId" type="String" required="false" default="nav" />
+  <aura:attribute
+    name="contentId"
+    type="String"
+    required="false"
+    default="content"
+  />
 </aura:component>
