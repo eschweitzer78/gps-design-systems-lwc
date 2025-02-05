@@ -32,6 +32,7 @@
 
     component.set("v.value", "");
 
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
     setTimeout(function () {
       var element = component.find("header-input").getElement();
       if (element) {

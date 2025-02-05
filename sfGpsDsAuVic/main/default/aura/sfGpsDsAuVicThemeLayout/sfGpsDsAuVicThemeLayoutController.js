@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-vars */
 ({
   setColors: function (component, event, helper) {
     var rootEl = document.documentElement;
