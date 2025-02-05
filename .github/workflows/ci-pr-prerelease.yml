@@ -96,7 +96,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds
         with:
           sourcePath: "sfGpsDs"
@@ -109,7 +109,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNsw"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-nsw
         with:
           sourcePath: "sfGpsDsAuNsw"
@@ -122,7 +122,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuNswS"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-nsw-s
         with:
           sourcePath: "sfGpsDsAuNswS"
@@ -135,7 +135,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuVic1"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-vic1
         with:
           sourcePath: "sfGpsDsAuVic"
@@ -148,7 +148,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuVic2"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-vic2
         with:
           sourcePath: "sfGpsDsAuVic2"
@@ -161,7 +161,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsFrGov"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-fr-gov
         with:
           sourcePath: "sfGpsDsFrGov"
@@ -174,7 +174,7 @@ jobs:
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDsUkGov"
-        uses: pmd/pmd-github-action@v1.4.1
+        uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-uk-gov
         with:
           sourcePath: "sfGpsDsUkGov"
