@@ -21,7 +21,7 @@
         type="String"
         label="Logo position"
         description="Indicates the location of the NSW Government waratah logo."
-        default="top"
+        default="labels"
         datasource="labels,logos,none"
       />
       <property
