@@ -1,8 +1,22 @@
 <template lwc:render-mode="light">
   <div class={containerClassName}>
     <nav class={computedClassName} aria-label={label}>
-      <ol class="nsw-breadcrumb__list nsw-breadcrumb__list--inline">
-        <template for:each={items} for:item="item">
+      <ol class={computedOlClassName}>
+        <template for:each={decoratedItems} for:item="item">
+          <li
+            lwc:if={item.isSecond}
+            key={_moreToggle}
+            class="nsw-breadcrumbs__show-more-toggle"
+          >
+            <button
+              aria-label="Show more breadcrumbs"
+              class="nsw-breadcrumbs__toggle-button"
+              type="button"
+              onclick={handleMoreToggle}
+            >
+              …
+            </button>
+          </li>
           <li lwc:if={item.url} key={item.index}>
             <a href={item.url}>{item.text}</a>
           </li>
