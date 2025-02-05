@@ -52,7 +52,7 @@ jobs:
       # Install npm dependencies for cssgen
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm ci --force
         env:
           GHCR_TOKEN: ${{ secrets.GHCR_ACCESS_TOKEN }}
 
