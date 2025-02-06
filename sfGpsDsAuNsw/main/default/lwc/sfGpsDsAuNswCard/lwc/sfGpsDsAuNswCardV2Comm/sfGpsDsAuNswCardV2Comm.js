@@ -131,7 +131,7 @@ export default class extends SfGpsDsLwc {
   }
 
   get highlight() {
-    return this.cstyle === "highlight";
+    return this._cstyle === "highlight";
   }
 
   get computedCopyClassName() {

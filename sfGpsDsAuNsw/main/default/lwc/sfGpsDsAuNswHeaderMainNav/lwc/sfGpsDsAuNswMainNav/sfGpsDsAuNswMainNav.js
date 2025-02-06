@@ -32,6 +32,7 @@ export default class extends LightningElement {
   set mainNavId(value) {
     this._mainNavId = value || "nav";
   }
+
   /* api: isActive */
 
   _isActive = false;
