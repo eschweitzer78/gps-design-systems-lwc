@@ -1317,6 +1317,9 @@ a.rpl-button .rpl-button__label {
 .rpl-contact-us__title {
     margin-bottom: var(--rpl-sp-4);
 }
+.rpl-contact-us__content {
+    margin-bottom: var(--rpl-sp-4);
+}
 .rpl-contact-us__details {
     border-left-style: solid;
     border-left-width: var(--rpl-border-3);
@@ -1970,8 +1973,6 @@ td.rpl-data-table__actions {
 
   width: auto;
   height: auto;
-  max-width: var(--local-logo-width);
-  max-height: var(--local-logo-height);
   margin-top: var(--rpl-sp-1);
   margin-bottom: var(--rpl-sp-4);
 }
@@ -1983,6 +1984,10 @@ td.rpl-data-table__actions {
     margin-top: var(--rpl-sp-2);
     margin-bottom: var(--rpl-sp-5)
 }
+}
+img.rpl-header__logo {
+  max-width: var(--local-logo-width);
+  max-height: var(--local-logo-height);
 }
 .rpl-header__title {
   display: inline;
@@ -2081,6 +2086,15 @@ td.rpl-data-table__actions {
 .rpl-header--hero.rpl-header--breadcrumbs {
       --local-padding-top: var(--rpl-sp-10)
   }
+}
+@media (min-width: 992px) {
+.rpl-header--hero .rpl-header__upper {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      -moz-column-gap: var(--rpl-sp-6);
+           column-gap: var(--rpl-sp-6)
+}
 }
 @media (max-width: 575px) {
 .rpl-header--hero .rpl-header__content {
@@ -2647,11 +2661,19 @@ td.rpl-data-table__actions {
     display: block
 }
 }
-.rpl-layout__sidebar {
+.rpl-layout__sidebar--left {
+  padding-bottom: var(--rpl-sp-8);
+}
+@media (min-width: 768px) {
+.rpl-layout__sidebar--left {
+    padding-bottom: 0
+}
+}
+.rpl-layout__sidebar--right {
   padding-top: var(--rpl-sp-8);
 }
 @media (min-width: 768px) {
-.rpl-layout__sidebar {
+.rpl-layout__sidebar--right {
     padding-top: 0
 }
 }
@@ -3136,7 +3158,7 @@ td.rpl-data-table__actions {
 .rpl-primary-nav__secondary-logo-image {
   display: block;
   max-width: 126px;
-  max-height: 36px;
+  max-height: 32px;
 }
 @media (min-width: 768px) {
 .rpl-primary-nav__secondary-logo-image {
@@ -4288,6 +4310,7 @@ to {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  gap: var(--rpl-sp-2);
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
@@ -4299,7 +4322,6 @@ to {
 }
 .rpl-social-share-link {
   display: inline-block;
-  margin: 0 0 var(--rpl-sp-2);
   color: var(--rpl-clr-type-default);
 }
 .rpl-social-share-link:active {
