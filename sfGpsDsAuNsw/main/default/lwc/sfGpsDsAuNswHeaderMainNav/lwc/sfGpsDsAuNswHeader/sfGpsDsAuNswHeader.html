@@ -87,9 +87,21 @@
 
         <div lwc:if={_mobile} class="nsw-header__menu">
           <button
+            lwc:if={mainNavId}
             type="button"
             aria-expanded={mainNavIsOpen}
             aria-controls={mainNavId}
+            onclick={handleOpenMenu}
+          >
+            <span class="material-icons nsw-material-icons" aria-hidden="true">
+              {menuLabel}
+            </span>
+            <span><span class="sr-only">Open</span> Menu</span>
+          </button>
+          <button
+            lwc:else
+            type="button"
+            aria-expanded={mainNavIsOpen}
             onclick={handleOpenMenu}
           >
             <span class="material-icons nsw-material-icons" aria-hidden="true">

@@ -238,7 +238,7 @@ export default class extends LightningElement {
   }
 
   get controls() {
-    return Array.from(this.querySelectorAll(CONTROL_CLASSNAME));
+    return Array.from(this.querySelectorAll("." + CONTROL_CLASSNAME));
   }
 
   get liveFirstItem() {
@@ -634,7 +634,9 @@ export default class extends LightningElement {
   handleDragStart(event) {
     if (
       event.detail?.origin?.closest("." + CONTROL_CLASSNAME) ||
-      event.detail?.origin?.closest("." + this.computedNavigationClassName) ||
+      event.detail?.origin?.closest(
+        "." + (this.navigationClassName || DEFAULT_NAVIGATION_CLASSNAME)
+      ) ||
       !event.detail?.origin?.closest("." + WRAPPER_CLASSNAME)
     ) {
       return;

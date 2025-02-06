@@ -18,8 +18,8 @@ import runIntegrationProcedure from "@salesforce/apex/sfGpsDsIntegrationProcCont
 const SPINNER_THRESHOLD = 1000;
 const ITEMS_DEFAULT = [];
 const IPACTIVE_DEFAULT = true;
-const INPUT_DEFAULT = {};
-const OPTIONS_DEFAULT = {};
+const INPUT_DEFAULT = null;
+const OPTIONS_DEFAULT = null;
 
 export default class extends SfGpsDsLwc {
   /* api: ipActive */

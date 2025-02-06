@@ -102,7 +102,7 @@ jobs:
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm ci --force
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"

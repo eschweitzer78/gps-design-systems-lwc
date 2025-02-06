@@ -13,15 +13,7 @@
         name="shareUrl"
         type="String"
         label="Share URL"
-        description="URL of the present page, used when copying the link to the clipboard and sharing it. Leave empty to infer it automatically."
-        editor="c/sfGpsDsStringCpe"
-      />
-      <property
-        name="printLabel"
-        type="String"
-        label="Print label"
-        description="Label of the print this page button; leave empty to hide."
-        default="Print this page"
+        description="URL of the current page, used when copying the link to the clipboard and sharing it. Leave empty to infer it automatically."
         editor="c/sfGpsDsStringCpe"
       />
       <property
@@ -30,6 +22,14 @@
         label="Copy label"
         description="Label of the copy link button; leave empty to hide."
         default="Copy link"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="printLabel"
+        type="String"
+        label="Print label"
+        description="Label of the print this page button; leave empty to hide."
+        default="Print this page"
         editor="c/sfGpsDsStringCpe"
       />
       <property
@@ -45,7 +45,7 @@
         type="String"
         label="Share configuration"
         description="Configuration on the channels to share on in JSON array format."
-        default="[{&quot;network&quot;:&quot;facebook&quot;,&quot;ariaLabel&quot;:&quot;Share on Facebook&quot;,&quot;title&quot;: &quot;Title&quot;,&quot;description&quot;:&quot;Description&quot;,&quot;hashTags&quot;:&quot;#design,#system&quot;},{&quot;network&quot;:&quot;linkedin&quot;,&quot;ariaLabel&quot;:&quot;Share on LinkedIn&quot;},{&quot;network&quot;:&quot;twitter&quot;,&quot;ariaLabel&quot;:&quot;Share on X (Twitter)&quot;,&quot;title&quot;:&quot;Hi there!&quot;,&quot;hashtags&quot;:&quot;#design,#system&quot;,&quot;user&quot;:&quot;@digital_nsw&quot;},{&quot;label&quot;:&quot;network&quot;,&quot;ariaLabel&quot;:&quot;Share via Email&quot;,&quot;title&quot;:&quot;Email Subject&quot;,&quot;description&quot;:&quot;Content of my email.&quot;}]"
+        default="[{&quot;network&quot;:&quot;facebook&quot;,&quot;ariaLabel&quot;:&quot;Share on Facebook&quot;,&quot;title&quot;: &quot;Title&quot;,&quot;description&quot;:&quot;Description&quot;,&quot;hashTags&quot;:&quot;#design,#system&quot;},{&quot;network&quot;:&quot;linkedin&quot;,&quot;ariaLabel&quot;:&quot;Share on LinkedIn&quot;},{&quot;network&quot;:&quot;twitter&quot;,&quot;ariaLabel&quot;:&quot;Share on X (Twitter)&quot;,&quot;title&quot;:&quot;Hi there!&quot;,&quot;hashtags&quot;:&quot;#design,#system&quot;,&quot;user&quot;:&quot;@digital_nsw&quot;},{&quot;network&quot;:&quot;email&quot;,&quot;ariaLabel&quot;:&quot;Share via Email&quot;,&quot;title&quot;:&quot;Email Subject&quot;,&quot;description&quot;:&quot;Content of my email.&quot;}]"
         editor="c/sfGpsDsJsonCpe"
       />
       <property

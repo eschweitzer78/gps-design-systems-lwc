@@ -15,11 +15,23 @@ const MEGAMENU_DEFAULT = false;
 export default class extends LightningElement {
   static renderMode = "light";
 
-  @api mainNavId = "nav"; //uniqueId("sf-gps-ds-au-nsw-main-nav");
   @api navAriaLabel = "Main Navigation";
   @api navTitle = "Menu";
   @api closeMenuLabel = "Close Menu";
   @api className;
+
+  /* api: mainNavId */
+
+  _mainNavId = "nav";
+
+  @api
+  get mainNavId() {
+    return this._mainNavId;
+  }
+
+  set mainNavId(value) {
+    this._mainNavId = value || "nav";
+  }
 
   /* api: isActive */
 

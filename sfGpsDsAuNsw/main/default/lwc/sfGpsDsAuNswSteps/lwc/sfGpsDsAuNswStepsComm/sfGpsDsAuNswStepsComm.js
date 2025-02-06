@@ -7,6 +7,7 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+import { isArray } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 const CONTENT_DEFAULT = [];
@@ -43,7 +44,7 @@ export default class extends SfGpsDsLwc {
   /* getters */
 
   get _isEmpty() {
-    return this._content?.length > 0;
+    return isArray(this._content) ? this._content.length === 0 : true;
   }
 
   /* lifecycle */

@@ -33,7 +33,7 @@
         label="Mode"
         description="Counting mode."
         default="cumulative"
-        datasource="current,cumulative,label-only"
+        datasource="cumulative,current,label-only"
       />
       <property
         name="className"
