@@ -157,7 +157,7 @@ export default class extends LightningElement {
   }
 
   get computedHeaderUrl() {
-    return this.headerUrl || cBasePath;
+    return this.headerUrl || cBasePath || "/";
   }
 
   /* helpers */

@@ -7,6 +7,7 @@
 
 import { LightningElement, api } from "lwc";
 import { computeClass, uniqueId } from "c/sfGpsDsHelpers";
+import cBasePath from "@salesforce/community/basePath";
 
 const I18N = {
   navAriaLabel: "Menu",
@@ -59,7 +60,7 @@ export default class extends LightningElement {
   }
 
   get computedHeaderUrl() {
-    return this.headerUrl || "#";
+    return this.headerUrl || cBasePath || "/";
   }
 
   get space() {
