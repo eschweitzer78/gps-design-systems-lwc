@@ -1,7 +1,7 @@
 {
   "name": "gps-design-systems-lwc",
   "private": false,
-  "version": "1.0.0",
+  "version": "2.7.0",
   "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
     "lint": "eslint **/{aura,lwc}/**",
