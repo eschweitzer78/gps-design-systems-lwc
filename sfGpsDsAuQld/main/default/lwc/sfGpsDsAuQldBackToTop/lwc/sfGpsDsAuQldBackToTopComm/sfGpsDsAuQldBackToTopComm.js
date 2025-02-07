@@ -1,7 +1,7 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-export default class SfGpsDsAuVic2BlockquoteComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api label;
   @api className;
 

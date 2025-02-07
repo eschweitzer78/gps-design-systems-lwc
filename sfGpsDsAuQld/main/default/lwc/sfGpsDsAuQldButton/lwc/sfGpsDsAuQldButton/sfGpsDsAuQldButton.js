@@ -18,7 +18,7 @@ const ICONPOSITION_TRAIL = "trail";
 const ICONPOSITION_VALUES = [ICONPOSITION_LEAD, ICONPOSITION_TRAIL];
 const ICONPOSITION_DEFAULT = ICONPOSITION_LEAD;
 
-export default class SfGpsDsAuQldButton extends LightningElement {
+export default class extends LightningElement {
   @api label;
   @api url = "";
   @api iconName;

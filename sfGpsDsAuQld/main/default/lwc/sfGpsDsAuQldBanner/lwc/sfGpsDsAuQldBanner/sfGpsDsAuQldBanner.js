@@ -71,7 +71,7 @@ const CTA_TYPE_DEFAULT = CTA_TYPE_BUTTONS;
 const HBD_DEFAULT = false;
 const HIP_DEFAULT = false;
 
-export default class SfGpsDsAuQldBanner extends LightningElement {
+export default class extends LightningElement {
   @api breadcrumbsItems;
   @api headingPrimary;
   @api headingSecondary;
