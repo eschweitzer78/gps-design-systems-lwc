@@ -28,11 +28,12 @@ const CSTYLE_VALUES = {
 const STATIC_RESOURCE_ICONS_PATH =
   sfGpsDsAuQldStaticResource + "/assets/img/svg-icons.svg";
 
-export default class SfGpsDsAuQldMainNav extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api homeUrl;
   @api isActive;
+  @api mainNavId = "mainmenu";
   @track _open;
 
   /* api: homeShow */
