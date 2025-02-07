@@ -6,7 +6,7 @@ import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 /**
  * @slot Content
  */
-export default class SfGpsDsAuVic2BlockquoteComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api authorName;
   @api sourceUrl;
   @api className;

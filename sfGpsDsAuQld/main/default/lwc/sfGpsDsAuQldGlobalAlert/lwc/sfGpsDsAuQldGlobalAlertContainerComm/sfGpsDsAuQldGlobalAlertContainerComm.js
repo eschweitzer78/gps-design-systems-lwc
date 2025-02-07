@@ -62,7 +62,7 @@ export default class extends SfGpsDsIpLwc {
 
   get computedClassName() {
     return {
-      "qld__global-alert_include": true,
+      "qld__global-alerts": true,
       [this.className]: this.className
     };
   }

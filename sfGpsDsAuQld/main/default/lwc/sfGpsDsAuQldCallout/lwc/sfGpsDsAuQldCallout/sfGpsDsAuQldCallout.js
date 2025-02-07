@@ -18,7 +18,7 @@ const TYPE_VALUES = [TYPE_DEFAULT, TYPE_CALENDAREVENT];
 
 const HEADINGLEVEL_DEFAULT = 3;
 
-export default class SfGpsDsAuQldCallout extends LightningElement {
+export default class extends LightningElement {
   @api heading;
   @api className;
 

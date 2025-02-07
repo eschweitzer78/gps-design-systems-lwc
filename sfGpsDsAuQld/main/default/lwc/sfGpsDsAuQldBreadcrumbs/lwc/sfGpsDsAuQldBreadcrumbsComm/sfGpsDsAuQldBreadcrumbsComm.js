@@ -8,7 +8,7 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-export default class SfGpsDsAuQldBreadcrumbsComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api mode;
   @api label = "Breadcrumb";
   @api className = "";

@@ -49,7 +49,7 @@ export default class extends SfGpsDsLwc {
   renderedCallback() {
     const md = this.refs.markdown;
 
-    if (this._content && md) {
+    if (this._contentHtml && md) {
       replaceInnerHtml(md, this._contentHtml || "");
     }
   }

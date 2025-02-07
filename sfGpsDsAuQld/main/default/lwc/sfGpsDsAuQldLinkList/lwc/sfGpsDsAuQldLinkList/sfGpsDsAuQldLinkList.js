@@ -14,8 +14,9 @@ const MODE_2COLUMNS = "2 columns";
 const MODE_3COLUMNS = "3 columns";
 
 const MODE_VALUES = [MODE_LIST, MODE_1COLUMN, MODE_2COLUMNS, MODE_3COLUMNS];
+const MODE_DEFAULT = MODE_LIST;
 
-export default class SfGpsDsAuNswLinkList extends LightningElement {
+export default class extends LightningElement {
   @api title;
   @api links;
   @api cvaUrl;
@@ -40,7 +41,7 @@ export default class SfGpsDsAuNswLinkList extends LightningElement {
     this._listModeOriginal = value;
     this._listMode = normaliseString(value, {
       validValues: MODE_VALUES,
-      fallbackValue: MODE_LIST
+      fallbackValue: MODE_DEFAULT
     });
   }
 

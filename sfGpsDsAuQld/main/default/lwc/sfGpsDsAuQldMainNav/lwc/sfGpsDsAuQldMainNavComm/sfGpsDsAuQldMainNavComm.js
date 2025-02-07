@@ -12,7 +12,7 @@ export default class extends SfGpsDsNavigation {
   @api megaMenu = false;
   @api className = "";
   @api isActive = false;
-  @api mainNavId;
+  @api mainNavId = "mainmenu";
 
   /* api: mode */
 

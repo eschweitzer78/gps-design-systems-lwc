@@ -12,7 +12,7 @@ import { isString, toArray } from "c/sfGpsDsHelpers";
 
 const LINKS_DEFAULT = [];
 
-export default class SfGpsDsAuNswLinkListComm extends SfGpsDsLwc {
+export default class extends SfGpsDsLwc {
   @api listMode;
   @api title;
   @api titleClassName;
