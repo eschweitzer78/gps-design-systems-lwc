@@ -3,7 +3,12 @@
   <template lwc:if={jsonDef.bAccordionActive}>
     <div class="page-header page-header--bottom">
       <div class="snsw-container">
-        <h1 lwc:if={mergedLabel} class="snsw-h1 os-step-label">
+        <h1
+          lwc:if={mergedLabel}
+          class="snsw-h1 os-step-label"
+          aria-live="polite"
+          tabindex="-1"
+        >
           {mergedLabel}
         </h1>
 
