@@ -1,9 +1,13 @@
 <!-- sldsValidatorIgnore -->
 <template>
   <div class="rpl-form">
-    <fieldset class="rpl-fieldset">
+    <fieldset
+      class="rpl-fieldset"
+      role="group"
+      aria-labelledby="radio-group-label"
+    >
       <div class={computedFormGroupClassName}>
-        <label>
+        <label id="radio-group-label">
           <span>{label}</span>
           <slot name="label"> </slot>
         </label>

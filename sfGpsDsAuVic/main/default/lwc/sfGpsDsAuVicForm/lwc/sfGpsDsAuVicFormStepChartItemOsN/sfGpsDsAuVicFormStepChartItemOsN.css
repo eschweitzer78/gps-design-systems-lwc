@@ -79,7 +79,29 @@
   max-width: 30rem;
   white-space: nowrap;
   padding-top: 1.25rem;
+  text-overflow: ellipsis; /* issue #398 */
 }
+
+/* issue #398 */
+.step_horizontal .step-container__completed .step-label,
+.step_horizontal .step-container__nonpristine .step-label,
+.step_horizontal .step-container__pristine .step-label {
+  visibility: hidden;
+}
+
+@media (max-width: 992px) {
+  .step_horizontal .step-label {
+    font-size: 0.75rem;
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .step_horizontal .step-label {
+    visibility: hidden;
+  }
+}
+/* end issue #398 */
 
 .step-icon {
   width: 16px;
