@@ -1,4 +1,4 @@
-import OmnistudioStepChartItems from "omnistudio/omniscriptStepChartItems";
+import OmnistudioStepChartItems from "c/sfGpsDsFormStepChartItemOsN";
 import tmpl from "./sfGpsDsAuQldFormStepChartItemOsN.html";
 
 export default class extends OmnistudioStepChartItems {
