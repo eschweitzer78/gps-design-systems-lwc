@@ -1,8 +1,14 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <c-sf-gps-ds-fr-gov-core-os-n></c-sf-gps-ds-fr-gov-core-os-n>
   <template if:true={jsonDef.bAccordionActive}>
     <template lwc:if={mergedLabel}>
-      <h2 lwc:if={showLabel} class="fr-h2 slds-m-top_medium os-step-label">
+      <h2
+        lwc:if={showLabel}
+        class="fr-h2 slds-m-top_medium os-step-label"
+        aria-live="polite"
+        tabindex="-1"
+      >
         {mergedLabel}
       </h2>
     </template>
