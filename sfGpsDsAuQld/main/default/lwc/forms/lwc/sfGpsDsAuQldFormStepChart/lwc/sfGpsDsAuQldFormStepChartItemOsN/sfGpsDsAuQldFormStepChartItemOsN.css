@@ -64,6 +64,13 @@
   color: var(--QLD-color-light__text--lighter);
   font-weight: normal;
   font-size: 1rem;
+
+  /* issue 398 */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .step-container__in-progress .step-label {
@@ -78,7 +85,6 @@
   max-width: 30rem;
   white-space: nowrap;
   padding-top: 1.25rem;
-  text-overflow: ellipsis;
 }
 
 .step_horizontal .step-container__completed .step-label,
