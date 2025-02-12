@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <template if:true={jsonDef.bAccordionActive}>
     <div
@@ -52,20 +53,35 @@
     >
 
     <template lwc:if={mergedLabel}>
-      <h1 lwc:if={computedIsH1} class={computedHeadingClassName}>
+      <h1
+        lwc:if={computedIsH1}
+        class={computedHeadingClassName}
+        aria-live="polite"
+        tabindex="-1"
+      >
         {mergedLabel}
       </h1>
-      <h2 lwc:elseif={computedIsH2} class={computedHeadingClassName}>
+      <h2
+        lwc:elseif={computedIsH2}
+        class={computedHeadingClassName}
+        aria-live="polite"
+        tabindex="-1"
+      >
         {mergedLabel}
       </h2>
-      <h3 lwc:elseif={computedIsH3} class={computedHeadingClassName}>
+      <h3
+        lwc:elseif={computedIsH3}
+        class={computedHeadingClassName}
+        aria-live="polite"
+        tabindex="-1"
+      >
         {mergedLabel}
       </h3>
       <!-- otherwise (by default) it's just not shown -->
     </template>
 
     <a
-      if:true={showPrev}
+      lwc:if={showPrev}
       href="#previous"
       class="govuk-back-link"
       onclick={handleBack}
@@ -88,7 +104,7 @@
       <div class="form-actions">
         <div class="govuk-button-group">
           <button
-            if:true={showNext}
+            lwc:if={showNext}
             class="govuk-button"
             value={mergedNextLabel}
             onclick={handleNext}
@@ -96,7 +112,7 @@
             {mergedNextLabel}
           </button>
           <button
-            if:true={showSave}
+            lwc:if={showSave}
             class="govuk-button govuk-button--secondary"
             onclick={handleSave}
           >
