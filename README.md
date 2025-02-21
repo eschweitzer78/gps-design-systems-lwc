@@ -14,9 +14,10 @@ Do read our [change log](./CHANGELOG.md) if you plan on updating already install
 - sfGpsDs is the folder for code that is reusable across individual design systems supported by this repo and sfdx project; it is now fully packaged with the design systems library below but the directory is kept for clarity, deployment as source code or as a dependency package for third party design systems
 - sfGpsDsAuNsw is the folder for code and assets pertaining to the Design System of New South Wales, Australia; check the [documentation web site](https://nswds.dsforce.dev)
 - sfGpsDsAuNswS is the folder for code and assets pertaining to the specific Design System of Service NSW, New South Wales, Australia; check the [documentation website](https://nsws.dsforce.dev)
-- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation); check the [documentation website](https://vic.dsforce.dev)
-- sfGpsDsAuVic2 is the folder for code and assets to the Design System of Victoria v2, Australia aka Ripple v2 (alpha); check the [documentation website](https://vic2.dsforce.dev)
-- sfGpsDsFrGov is the folder for code and assets to the Design System of France (alpha, only sandbox); check the [documentation page](docs/DSFR_README.md)
+- sfGpsDsAuQld is the folder for code and assets to the Design System of Queensland, Australia aka Queensland Health Design System (pilot, source code and sandbox only); check the [documentation website](https://qld.dsforce.dev)
+- sfGpsDsAuVic is the folder for code and assets to the Design System of Victoria, Australia aka Ripple v1 (pilot, no production without prior consultation as VIC DPC SDP has deprecated that design system); check the [documentation website](https://vic.dsforce.dev)
+- sfGpsDsAuVic2 is the folder for code and assets to the Design System of Victoria v2, Australia aka Ripple v2 (alpha, sandbox only); check the [documentation website](https://vic2.dsforce.dev)
+- sfGpsDsFrGov is the folder for code and assets to the Design System of France (alpha, sandbox only); check the [documentation page](docs/DSFR_README.md)
 - sfGpsDsUkGov is the folder for code and assets to the Design System of the United Kingdom (pilot, no production without prior consultation); check the [documentation website](https://uk.dsforce.dev)
 
 **Important note for existing users of the libraries**: we used to require to install a base package and then a package for you design system of choice. We are dropping this pattern and now ship each design system with all dependencies but kindly note that it thus prevents you from having multiple design systems on a single org unless you deploy as source code. If you installed a package prior to November 2023, see instructions further down in this document regarding how to migrate from the former model to the new one.
@@ -49,15 +50,15 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb9IIAS">this link</a> to install the sfGpsDs unlocked package in your production org (v2.5.3.4 released on 08/06/2024 -- only when using your own design system or a dependent third-party's).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pbw8IAC">this link</a> to install the sfGpsDs unlocked package in your production org (v2.7.0.3 released on 11/02/2025 -- only when using your own design system or a dependent third-party's).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PbKuIAK">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.6.0.3 released on 29/07/2024).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PbwDIAS">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.7.0.5 released on 11/02/2025).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb9SIAS">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v2.5.3.4 released on 08/06/2024).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PbwIIAS">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v2.7.0.4 released on 11/02/2025).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb9XIAS">this link</a> to install the sfGpsDsAuVic unlocked package in your production org (v2.5.3.4 released on 08/06/2024). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pby9IACS">this link</a> to install the sfGpsDsAuVic unlocked package in your production org (v2.7.1.1 released on 21/02/2025). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pb9mIAC">this link</a> to install the sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v1.2.1.4 released on 08/06/2024). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PbxBIAS">this link</a> to install the sfGpsDsUkGov unlocked package in your production org (including sfGpsDs, v1.4.0.4 released on 12/02/2025). Please **do let us know** when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
 ## Moving away from separate base and design system libraries
 
