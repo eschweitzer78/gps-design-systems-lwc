@@ -816,7 +816,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         if (rvtmpsplit && rvtmpsplit[0] === value) {
           rv = rvtmp;
         }
-        /* end fixes issue #410 */
+        /* end: fixes issue #410 */
       }
 
       if (rv == null) {
