@@ -809,8 +809,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       if (isDate(value) || value instanceof Number) {
         rv = new Date(value);
       } else if (value.match(ISO8601_PATTERN)) {
-        let rvtmp = parseIso8601(value);
-        if (rvtmp.toISOString() === value) {
+        const rvtmp = parseIso8601(value)?.toISOString();
+        const rvtmpsplit = rvtmp?.split("T");
+
+        if (rvtmpsplit && rvtmpsplit[0] === value) {
           rv = rvtmp;
         }
       }
