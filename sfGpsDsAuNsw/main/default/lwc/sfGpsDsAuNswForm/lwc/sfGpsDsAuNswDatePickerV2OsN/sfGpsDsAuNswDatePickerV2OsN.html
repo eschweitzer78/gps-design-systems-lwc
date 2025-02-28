@@ -9,8 +9,8 @@
   <div
     lwc:ref="formGroup"
     class={computedFormGroupClassName}
-    onfocus={handleFocus}
-    onblur={handleBlur}
+    onfocusin={handleFocusIn}
+    onfocusout={handleFocusOut}
   >
     <div class="nsw-date-input">
       <legend>
@@ -44,7 +44,7 @@
           aria-invalid={ariaInvalid}
           aria-describedby={computedAriaDescribedBy}
           value={_displayValue}
-          onfocus={toggleCalendar}
+          onfocus={handleInputFocus}
           onkeydown={handleInputKeydown}
           onchange={handleInputChange}
         />

@@ -1105,21 +1105,31 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     if (DEBUG) console.log(CLASS_NAME, "< handleInputChange");
   }
 
-  handleFocus() {
+  handleFocusIn() {
     if (DEBUG) console.log(CLASS_NAME, "> handleFocus");
     this._hasFocus = true;
     if (DEBUG) console.log(CLASS_NAME, "< handleFocus");
   }
 
-  handleBlur() {
+  handleFocusOut(event) {
     if (DEBUG) console.log(CLASS_NAME, "> handleBlur");
-    this._hasFocus = false;
 
-    if (this.pickerVisible) {
-      this.hideCalendar();
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      this._hasFocus = false;
+
+      if (this.pickerVisible) {
+        this.hideCalendar();
+      }
     }
 
     if (DEBUG) console.log(CLASS_NAME, "< handleBlur");
+  }
+
+  handleInputFocus(event) {
+    /* do not show calendarif coming from picker */
+    if (!this.refs.datePicker.contains(event.relatedTarget)) {
+      this.showCalendar();
+    }
   }
 
   stopPropagation(event) {
