@@ -332,6 +332,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   setValue(value) {
     if (DEBUG) console.log(CLASS_NAME, "> setValue", value);
 
+    this.sfGpsDsClearCustomValidation();
     value = this.parseValue(value);
     this._value = this.formatValue(value);
     this._parsedValue = dayjs(value);
@@ -578,17 +579,22 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     if (DEBUG) console.log(CLASS_NAME, "< resetDayValue", this.currentDay);
   }
 
-  toggleCalendar(value = null) {
+  toggleCalendar(eventOrValue = null) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> toggleCalendar", value, this.pickerVisible);
+      console.log(
+        CLASS_NAME,
+        "> toggleCalendar",
+        eventOrValue,
+        this.pickerVisible
+      );
 
-    if (!this.pickerVisible && value !== false) {
+    if (!this.pickerVisible && eventOrValue !== false) {
       this.resetCalendar();
       this.placeCalendar();
     }
 
-    if (value != null) {
-      this.pickerVisible = value;
+    if (eventOrValue != null) {
+      this.pickerVisible = !!eventOrValue;
     } else {
       this.pickerVisible = !this.pickerVisible;
     }
@@ -599,7 +605,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   showCalendar(event) {
     if (DEBUG) console.log(CLASS_NAME, "> showCalendar");
 
-    if (!this.readOnly) this.toggleCalendar(true, event);
+    if (!this.readOnly) this.toggleCalendar(event);
 
     if (DEBUG) console.log(CLASS_NAME, "< showCalendar");
   }
@@ -684,6 +690,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       ? this._parsedValue?.toDate()
       : null;
 
+    if (DEBUG) console.log(CLASS_NAME, "= resetCalendar", currentDate);
+
     this.currentDay = this.getCurrentDay(currentDate);
     this.currentMonth = this.getCurrentMonth(currentDate);
     this.currentYear = this.getCurrentYear(currentDate);
@@ -692,7 +700,14 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     this.selectedMonth = currentDate ? this.currentMonth : false;
     this.selectedYear = currentDate ? this.currentYear : false;
 
-    if (DEBUG) console.log(CLASS_NAME, "< resetCalendar");
+    if (DEBUG)
+      console.log(
+        CLASS_NAME,
+        "< resetCalendar",
+        this.selectedDay,
+        this.selectedMonth,
+        this.selectedYear
+      );
   }
 
   /**
@@ -781,13 +796,22 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    */
 
   formatValue(date, outputFormat = true) {
+    if (DEBUG)
+      console.log(CLASS_NAME, "> formatValue", date, typeof date, outputFormat);
+
+    let rv = null;
+
+    if (DEBUG) console.log(CLASS_NAME, "= formatValue", isValidDate(date));
+
     if (isValidDate(date)) {
-      return this.outputType === "string"
-        ? dayjs(date).format(outputFormat ? this.outputFormat : this.format)
-        : date;
+      rv =
+        this.outputType === "string"
+          ? dayjs(date).format(outputFormat ? this.outputFormat : this.format)
+          : date;
     }
 
-    return null;
+    if (DEBUG) console.log(CLASS_NAME, "< formatValue", rv);
+    return rv;
   }
 
   /**
@@ -809,14 +833,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       if (isDate(value) || value instanceof Number) {
         rv = new Date(value);
       } else if (value.match(ISO8601_PATTERN)) {
-        /* fixes issue #410 */
-        const rvtmp = parseIso8601(value)?.toISOString();
-        const rvtmpsplit = rvtmp?.split("T");
-
-        if (rvtmpsplit && rvtmpsplit[0] === value) {
-          rv = rvtmp;
-        }
-        /* end: fixes issue #410 */
+        rv = parseIso8601(value);
       }
 
       if (rv == null) {
@@ -1005,7 +1022,13 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    */
 
   handlePickerKeydown(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handlePickerKeydown", event.key);
+    if (DEBUG)
+      console.log(
+        CLASS_NAME,
+        "> handlePickerKeydown",
+        event.key,
+        this.pickerVisible
+      );
 
     if (event.key?.toLowerCase() === "escape" && this.pickerVisible) {
       event.stopPropagation();
@@ -1028,6 +1051,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   handleInputKeydown(event) {
     if (DEBUG) console.log(CLASS_NAME, "> handleInputKeydown", event.key);
 
+    this.isError = false;
+
     if (event.key?.toLowerCase() === "enter") {
       event.stopPropagation();
       this._displayValue = this.refs.input.value;
@@ -1036,6 +1061,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     } else if (event.key?.toLowerCase() === "arrowdown" && this.pickerVisible) {
       event.stopPropagation();
       this.refs.body.querySelector("button[tabindex='0']")?.focus();
+    } else {
+      this._displayValue = this.refs.input.value;
     }
 
     if (DEBUG) console.log(CLASS_NAME, "< handleInputKeydown");
@@ -1043,13 +1070,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   // eslint-disable-next-line no-unused-vars
   handleInputChange(event) {
-    if (DEBUG)
-      console.log(
-        CLASS_NAME,
-        "> handleInputChange x",
-        event.target,
-        event.target.value
-      );
+    if (DEBUG) console.log(CLASS_NAME, "> handleInputChange");
 
     if (this.multipleInput) {
       event.stopPropagation();
@@ -1075,36 +1096,40 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         this.setAndDispatchValue(null);
       }
     } else {
+      event.stopPropagation();
+
       this._displayValue = this.refs.input?.value;
-
-      if (pubsub) {
-        pubsub.fire(this.name, "valuechange", {
-          name: this.name,
-          value: this._value
-        });
-      }
-
-      this.dispatchEvent(
-        new CustomEvent("change", {
-          bubbles: true,
-          composed: true
-        })
-      );
+      this.setAndDispatchValue(this.refs.input?.value);
     }
 
     if (DEBUG) console.log(CLASS_NAME, "< handleInputChange");
   }
 
-  handleFocus() {
+  handleFocusIn() {
     if (DEBUG) console.log(CLASS_NAME, "> handleFocus");
     this._hasFocus = true;
     if (DEBUG) console.log(CLASS_NAME, "< handleFocus");
   }
 
-  handleBlur() {
+  handleFocusOut(event) {
     if (DEBUG) console.log(CLASS_NAME, "> handleBlur");
-    this._hasFocus = false;
+
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      this._hasFocus = false;
+
+      if (this.pickerVisible) {
+        this.hideCalendar();
+      }
+    }
+
     if (DEBUG) console.log(CLASS_NAME, "< handleBlur");
+  }
+
+  handleInputFocus(event) {
+    /* do not show calendarif coming from picker */
+    if (!this.refs.datePicker.contains(event.relatedTarget)) {
+      this.showCalendar();
+    }
   }
 
   stopPropagation(event) {
@@ -1182,7 +1207,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     if (!this._constraintApi) {
       const overrides = {
         badInput: () => {
-          if (DEBUG) console.log(CLASS_NAME, "badInput", this._value);
+          if (DEBUG)
+            console.log(CLASS_NAME, "> _constraint.badInput", this._value);
 
           let rv = true;
 
@@ -1192,7 +1218,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
             rv = !isValidDate(this.parseInput(this._displayValue));
           }
 
-          if (DEBUG) console.log(CLASS_NAME, "badInput", rv);
+          if (DEBUG) console.log(CLASS_NAME, "< _constraint.badInput", rv);
 
           return rv;
         },
@@ -1213,7 +1239,24 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         tooShort: () => false,
         tooLong: () => false,
         typeMismatch: () => false,
-        valueMissing: () => this.required && !this._parsedValue
+        valueMissing: () => {
+          if (DEBUG)
+            console.log(CLASS_NAME, "> _constraint.valueMissing", this._value);
+
+          const rv =
+            this.required &&
+            (!this._parsedValue || !this._parsedValue.isValid());
+
+          if (DEBUG)
+            console.log(
+              CLASS_NAME,
+              "< _constraint.valueMissing",
+              rv,
+              this.required
+            );
+
+          return rv;
+        }
       };
 
       this._constraintApi = new WrapperComponentConstraints(
@@ -1260,6 +1303,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     const rv = !this._connected || this._constraint.checkValidity();
 
     if (DEBUG) console.log(CLASS_NAME, "< checkValidity", rv);
+    return rv;
   }
 
   @api setCustomValidity(e) {
