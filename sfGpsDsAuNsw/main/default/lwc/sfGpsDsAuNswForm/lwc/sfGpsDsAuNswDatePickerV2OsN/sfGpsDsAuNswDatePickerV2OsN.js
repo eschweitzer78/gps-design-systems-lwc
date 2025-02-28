@@ -1213,7 +1213,12 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         tooShort: () => false,
         tooLong: () => false,
         typeMismatch: () => false,
-        valueMissing: () => this.required && !this._parsedValue
+        valueMissing: () => {
+          return (
+            this.required &&
+            (!this._parsedValue || !this._parsedValue.isValid())
+          );
+        }
       };
 
       this._constraintApi = new WrapperComponentConstraints(
@@ -1260,6 +1265,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     const rv = !this._connected || this._constraint.checkValidity();
 
     if (DEBUG) console.log(CLASS_NAME, "< checkValidity", rv);
+    return rv;
   }
 
   @api setCustomValidity(e) {
