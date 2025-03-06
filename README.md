@@ -52,7 +52,7 @@ Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECU
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pbw8IAC">this link</a> to install the sfGpsDs unlocked package in your production org (v2.7.0.3 released on 11/02/2025 -- only when using your own design system or a dependent third-party's).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PbwDIAS">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.7.0.5 released on 11/02/2025).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PbzWIAS">this link</a> to install the sfGpsDsAuNsw unlocked package in your production org (v2.7.2.2 released on 1/03/2025).
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PbwIIAS">this link</a> to install the sfGpsDsAuNswS unlocked package in your production org (v2.7.0.4 released on 11/02/2025).
 
