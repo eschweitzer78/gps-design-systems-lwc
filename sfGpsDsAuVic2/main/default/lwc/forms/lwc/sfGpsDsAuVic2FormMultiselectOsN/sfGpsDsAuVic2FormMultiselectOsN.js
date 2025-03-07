@@ -9,7 +9,18 @@ import SfGpsDsFormMultiselectOsN from "c/sfGpsDsFormMultiselectOsN";
 import tmpl from "./sfGpsDsAuVic2FormMultiselectOsN.html";
 
 export default class extends SfGpsDsFormMultiselectOsN {
+  /* lifecycle */
+
   render() {
     return tmpl;
+  }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+
+    this.classList.add("rpl-form__outer");
+    this.hostElement.style.display = "block";
   }
 }

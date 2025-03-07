@@ -6,25 +6,50 @@
  */
 
 import OmnistudioCheckboxGroup from "c/sfGpsDsOmniCheckboxGroupOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
+import { computeClass, normaliseString } from "c/sfGpsDsHelpersOs";
 import { api } from "lwc";
 import tmpl from "./sfGpsDsAuVic2CheckboxGroupOsN.html";
 
-/* We're not leveraging the sfGpsDsAuVicIcon class as the light dom it's using is not 
-   supported in a different runtimeSpace */
+const VARIANT_DEFAULT = "default";
+const VARIANT_VALUES = {
+  default: "rpl-form-option--default",
+  reverse: "rpl-form-option--reverse"
+};
 
 export default class extends OmnistudioCheckboxGroup {
-  @api variant;
+  /* api: variant */
 
-  render() {
-    return tmpl;
+  _variant = VARIANT_DEFAULT;
+  _variantOriginal = VARIANT_VALUES[VARIANT_DEFAULT];
+
+  @api
+  get variant() {
+    return this._variantOriginal;
+  }
+
+  set variant(value) {
+    this._variantOriginal = value;
+    this._variant = normaliseString(value, {
+      validValues: VARIANT_VALUES,
+      fallbackValue: VARIANT_DEFAULT,
+      returnObjectValue: true
+    });
+  }
+
+  /* computed */
+
+  get computedGroupClassName() {
+    return {
+      "rpl-form-option-group": true,
+      "rpl-form-option-group--block": this.alignment === "vertical",
+      "rpl-form-option-group--inline": this.alignment === "horizontal"
+    };
   }
 
   get computedOptionClassName() {
     return {
       "rpl-form-option": true,
-      "rpl-form-option--default": this.variant === "default",
-      "rpl-form-option--reverse": this.variant === "reverse"
+      [this._variant]: this._variant
     };
   }
 
@@ -33,5 +58,16 @@ export default class extends OmnistudioCheckboxGroup {
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.fieldLevelHelp && this.sfGpsDsIsError
     });
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
+  }
+
+  renderedCallback() {
+    /* parent makes assumption about markup and expects slds-form-element__control */
+    /* workaround is not to execute that logic */
   }
 }

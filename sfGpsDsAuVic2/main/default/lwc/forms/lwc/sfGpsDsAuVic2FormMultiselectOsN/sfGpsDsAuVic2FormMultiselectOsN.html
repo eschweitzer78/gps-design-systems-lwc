@@ -1,9 +1,11 @@
 <template>
+  <!-- sldsValidatorIgnore -->
   <!-- TODO image group not supported-->
   <c-sf-gps-ds-au-vic2-checkbox-group-os-n
     name={jsonDef.name}
     options={_realtimeOptions}
     value={elementValue}
+    fire-change-on-set-value="false"
     label={mergedLabel}
     required={_propSetMap.required}
     tab-index={tabIndex}
@@ -13,10 +15,12 @@
     field-level-help-position={_propSetMap.helpTextPos}
     message-when-value-missing={_messageWhenValueMissing}
     required-label={allCustomLabelsUtil.OmniRequired}
+    disabled={_propSetMap.readOnly}
     data-refresh={refresh}
     data-omni-input
     onchange={handleChange}
-    read-only={_propSetMap.readOnly}
+    class="slds-form__wrapper"
+    variant={_propSetMap.variant}
   >
     <template if:true={_propSetMap.repeat}>
       <span slot="label" class={_styleClasses.repeatContainer} role="group">
