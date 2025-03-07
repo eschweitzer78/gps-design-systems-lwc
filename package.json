@@ -52,8 +52,8 @@
   },
   "devDependencies": {
     "@dpc-sdp/ripple-global": "https://registry.npmjs.org/@dpc-sdp/ripple-global/-/ripple-global-1.38.3.tgz",
-    "@dpc-sdp/ripple-ui-core": "^2.23.0",
-    "@dpc-sdp/ripple-ui-forms": "^2.23.0",
+    "@dpc-sdp/ripple-ui-core": "^2.27.0",
+    "@dpc-sdp/ripple-ui-forms": "^2.27.0",
     "@gouvfr/dsfr": "^1.13.0",
     "@govtechsg/sgds": "^2.3.6",
     "nsw-design-system": "^3.18.6",
