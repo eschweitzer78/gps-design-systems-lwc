@@ -79,6 +79,11 @@ export default class {
             if (isClickOutside && middleware(e)) {
               handler(e);
             }
+          },
+          forceTag: (e) => {
+            /* must be used by component to force the tagging when the target element is prematurely removed from the DOM */
+            if (!e._sfGpsDsOnClickOutside) e._sfGpsDsOnClickOutside = new Set();
+            e._sfGpsDsOnClickOutside.add(uuid);
           }
         };
 
@@ -106,6 +111,16 @@ export default class {
 
     if (super.disconnectedCallback) {
       super.connectedCallback();
+    }
+  }
+
+  /* must be used by component to force the tagging in the event handle when the target element is prematurely removed from the DOM */
+  forceTag(ref, event) {
+    const refItem = this._sfGpsDsOnClickOutside[ref];
+
+    if (refItem) {
+      const rv = refItem.find((eventItem) => eventItem.event === event.type);
+      rv?.forceTag(event);
     }
   }
 }
