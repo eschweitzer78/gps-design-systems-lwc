@@ -24,6 +24,8 @@ const MAXSUGGESTIONSDISPLAYED_MIN = 1;
 const MAXSUGGESTIONSDISPLAYED_MAX = 30;
 const MAXSUGGESTIONSDISPLAYED_DEFAULT = 10;
 
+const CLICK_OUTSIDE_REF = "containerRef";
+
 export default class extends LightningElement {
   @api inputLabel = "Search";
   @api submitLabel = "Search";
@@ -381,6 +383,8 @@ export default class extends LightningElement {
   }
 
   handleOptionClick(event) {
+    this._onClickOutside.forceTag(CLICK_OUTSIDE_REF, event);
+
     const optionId = event.target.dataset.optionId;
     const option = this.suggestionById(optionId);
 
@@ -557,17 +561,18 @@ export default class extends LightningElement {
   renderedCallback() {
     if (!this._isRendered) {
       this._isRendered = true;
+
       if (this._autoFocus) {
         this.refs.inputRef.focus();
       }
 
-      this._onClickOutside.bind(this, "containerRef", () => {
+      this._onClickOutside.bind(this, CLICK_OUTSIDE_REF, () => {
         this.handleClose(false);
       });
     }
   }
 
   disconnectedCallback() {
-    this._onClickOutside.unbind(this, "containerRef");
+    this._onClickOutside.unbind(this, CLICK_OUTSIDE_REF);
   }
 }
