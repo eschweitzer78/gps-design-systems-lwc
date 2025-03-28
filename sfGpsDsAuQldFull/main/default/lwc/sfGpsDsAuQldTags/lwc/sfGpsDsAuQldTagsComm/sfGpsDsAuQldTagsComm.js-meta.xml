@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Tags</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="mode"
+        type="String"
+        label="Mode"
+        description="Select the mode."
+        default="default"
+        datasource="default,action,info,filter"
+      />
+      <property
+        name="size"
+        type="String"
+        label="Size"
+        description="Size of the tags."
+        datasource="default,large"
+        default="default"
+      />
+      <property
+        name="links"
+        type="String"
+        label="Links"
+        description="List of tags in Markdown link format."
+        default="[Digital](#)[Discovery](#)"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,97 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <nav class={computedClassName} aria-label={label}>
+    <!-- Desktop -->
+    <ul
+      lwc:if={showDesktop}
+      lwc:ref="desktop"
+      class="qld__breadcrumbs__list--desktop qld__link-list qld__link-list--inline"
+    >
+      <template lwc:if={_nOverflow}>
+        <template for:each={decoratedItems} for:item="item">
+          <li lwc:if={item._isPreOverflow} key={item.index}>
+            <a href={item.url}>{item.text}</a>
+          </li>
+        </template>
+
+        <li lwc:ref="containerRef" class="qld__overflow_menu--breadcrumbs">
+          <div class="qld__overflow_menu_wrapper">
+            <button
+              aria-controls="overflow-menu"
+              aria-expanded={_isOverflowOpen}
+              class={computedOverflowButtonClassName}
+              onclick={handleOverflowButtonToggle}
+            >
+              <svg
+                class="qld__icon qld__icon-lg"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                aria-hidden="true"
+                focusable="true"
+                width="24"
+                height="32"
+                role="img"
+              >
+                <path
+                  d="M352 256C352 238.3 366.3 224 384 224C401.7 224 416 238.3 416 256C416 273.7 401.7 288 384 288C366.3 288 352 273.7 352 256zM192 256C192 238.3 206.3 224 224 224C241.7 224 256 238.3 256 256C256 273.7 241.7 288 224 288C206.3 288 192 273.7 192 256zM96 256C96 273.7 81.67 288 64 288C46.33 288 32 273.7 32 256C32 238.3 46.33 224 64 224C81.67 224 96 238.3 96 256z"
+                />
+              </svg>
+            </button>
+
+            <div id="overflow-menu" class={computedOverflowClassName}>
+              <ul
+                class="qld__overflow_menu_list"
+                aria-label={i18n.overflowMenuAriaLabel}
+              >
+                <template for:each={decoratedItems} for:item="item">
+                  <div
+                    lwc:if={item._isOverflow}
+                    key={item.idex}
+                    class="qld__overflow_menu_list-item"
+                  >
+                    <a
+                      href={item.url}
+                      class="qld__overflow_menu_list-item-link"
+                      tabindex="0"
+                    >
+                      {item.text}
+                    </a>
+                  </div>
+                </template>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <template for:each={decoratedItems} for:item="item">
+          <li lwc:if={item._isLast} key={item.index} aria-current="page">
+            {item.text}
+          </li>
+          <li lwc:elseif={item._isPostOverflow} key={item.index}>
+            <a href={item.url}>{item.text}</a>
+          </li>
+        </template>
+      </template>
+
+      <template lwc:else for:each={decoratedItems} for:item="item">
+        <li lwc:if={item._isLast} key={item.index} aria-current="page">
+          {item.text}
+        </li>
+        <li lwc:else key={item.index}>
+          <a href={item.url}>{item.text}</a>
+        </li>
+      </template>
+    </ul>
+
+    <ul
+      lwc:if={showMobile}
+      class="qld__breadcrumbs__list--mobile qld__link-list qld__link-list--inline"
+    >
+      <template for:each={decoratedItems} for:item="item">
+        <li lwc:if={item._isButLast} key={item.index}>
+          <a href={item.url}>{item.text}</a>
+        </li>
+      </template>
+    </ul>
+  </nav>
+</template>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Banner</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="mode"
+        type="String"
+        label="Mode"
+        required="true"
+        description="The mode allows you to select the banner blueprint to be applied."
+        default="default"
+        datasource="default,basic,intermediate,advanced"
+      />
+      <property
+        name="breadcrumbsItems"
+        type="String"
+        label="Breadcrumbs items"
+        description="Links to parent and current pages in Markdown format. Leave blank to get slots in LWR."
+        default="[Home](#)[Parent](#)[Current page]()"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="headingPrimary"
+        type="String"
+        label="Heading (primary)"
+        description="Clearly identifies the primary purpose or action of the site, service or product."
+        default="Banner"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="headingSecondary"
+        type="String"
+        label="Heading (secondary)"
+        description="Adds additional context to the heading."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="headingBackgroundDisplay"
+        type="Boolean"
+        label="Heading background display"
+        description="Adds a background to the heading when mode is intermediate or advanced."
+      />
+      <property
+        name="abstract"
+        type="String"
+        label="Abstract"
+        description="Gives additional context when the title alone would be insufficient - in Markdown format. Leave blank to get a slot in LWR."
+        default="The hero banner reflects the goals or purpose of the site, service or product."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="heroImage"
+        type="String"
+        label="Hero image source"
+        description="Allows for different content to stand out and provide additional context - as an URL. Leave blank to omit."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="heroImageResponsiveTreatment"
+        type="String"
+        label="Hero image responsive treatment"
+        description="Defines how the hero image is treated for responsiveness."
+        default="crop"
+        datasource="crop,scale"
+      />
+      <property
+        name="heroImageAlignment"
+        type="String"
+        label="Hero image alignment"
+        description="Defines how the hero image aligns horizontally."
+        default="grid"
+        datasource="page,grid"
+      />
+      <property
+        name="heroImagePadding"
+        type="Boolean"
+        label="Hero image padding"
+        description="Adds padding to hero image."
+      />
+      <property
+        name="backgroundType"
+        type="String"
+        label="Background type"
+        default="solid"
+        datasource="solid,image,texture"
+      />
+      <property
+        name="backgroundColour"
+        type="String"
+        label="Background colour style"
+        description="Colour theme style used for the background."
+        default="default"
+        datasource="default,alternate,dark,dark-alternate"
+      />
+      <property
+        name="backgroundImageSm"
+        type="String"
+        label="Background image source (mobile)"
+        description="URL of the backgroup image for mobile."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="backgroundImageLg"
+        type="String"
+        label="Background image source (desktop)"
+        description="URL of the backgroup image for desktop."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="backgroundImageAlignment"
+        type="String"
+        label="Background image alignment"
+        description="Alignment of the background image using a valid background-position-x value."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="backgroundMinHeight"
+        type="String"
+        label="Background minimum height"
+        description="Minimum height in pixels; leave empty to omit."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="ctaType"
+        type="String"
+        label="Call to action type for advanced banners."
+        default="buttons"
+        datasource="none,buttons,icon-tiles,link-list"
+      />
+      <property
+        name="buttonPrimary"
+        type="String"
+        label="Primary button action"
+        description="Primary button action in Markdown link format for advanced banners."
+        default="[Apply](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="buttonSecondary"
+        type="String"
+        label="Secondary button action"
+        description="Secondary button action in Markdown link format for advanced banners. Leave blank to omit."
+        default="[Read more](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="ctaConfig"
+        type="String"
+        label="Call to Action configuration"
+        description="JSON configuration of the Call to Action for link list and icon tiles."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

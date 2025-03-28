@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Button</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="el"
+        type="String"
+        label="Element type"
+        description="Type of HTML tag to use."
+        default="button"
+        datasource="a,button"
+      />
+      <property
+        name="link"
+        type="String"
+        label="Link"
+        description="Text and URL in Markdown link format."
+        default="[Read more](#)"
+      />
+      <property
+        name="variant"
+        type="String"
+        label="Variant"
+        default="primary"
+        datasource="primary,secondary,tertiary"
+      />
+      <property
+        name="iconName"
+        type="String"
+        label="Icon name"
+        description="Font Awesome classes to be applied. Leave empty if no icon is required."
+      />
+      <property
+        name="iconPosition"
+        type="String"
+        label="Position of the icon"
+        default="lead"
+        datasource="lead,trail"
+      />
+      <property
+        name="disabled"
+        type="Boolean"
+        label="Disabled"
+        description="Sets the button as disabled."
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Link Collection</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="mode"
+        type="String"
+        label="Mode"
+        datasource="Demo,Experience Cloud Navigation,Integration Procedure"
+        default="Experience Cloud Navigation"
+      />
+      <property
+        name="navigationDevName"
+        type="String"
+        label="Navigation name"
+        description="Pick the nav when mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
+        name="ipName"
+        type="String"
+        label="Integration procedure name"
+        description="Name of the Integration procedure mapping content to this list."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="inputJSON"
+        type="String"
+        label="Input JSON"
+        description="JSON formatted input parameters for the Integration procedure."
+        default="{}"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="optionsJSON"
+        type="String"
+        label="Options JSON"
+        description="JSON formatted options for the Integration procedure."
+        default="{}"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="listMode"
+        type="String"
+        label="List mode"
+        description="Rendering mode of the list element."
+        datasource="list,1 column,2 columns,3 columns"
+        default="1 column"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title of the list, leave blank if not required."
+        default="Link collection"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="cvaLink"
+        type="String"
+        label="View All Link (Column modes)"
+        description="Link to the full list in Markdown link format (column modes only)."
+        default="[View all](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="titleClassName"
+        type="String"
+        label="Title class name"
+        description="Additional CSS class to be applied to the title."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="linkClassName"
+        type="String"
+        label="Link class name"
+        description="Additional CSS class to be applied to the links."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="anchorClassName"
+        type="String"
+        label="Anchor class name"
+        description="Additional CSS class to be applied to the links anchors."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

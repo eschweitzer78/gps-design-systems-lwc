@@ -1,0 +1,248 @@
+<template>
+  <section class={computedClassName} style={computedStyle}>
+    <c-sf-gps-ds-au-qld-breadcrumbs
+      lwc:if={computedHasBreadcrumbsItems}
+      mode="mobile"
+      items={breadcrumbsItems}
+      class-name={computedBreadcrumbsMobileClassName}
+    >
+    </c-sf-gps-ds-au-qld-breadcrumbs>
+    <template lwc:else>
+      <slot name="mobileBreadcrumbs" onslotchange={handleSlotChange}></slot>
+    </template>
+
+    <div class="container-fluid">
+      <div lwc:if={computedIsDefault} class="qld__banner__content">
+        <c-sf-gps-ds-au-qld-breadcrumbs
+          lwc:if={computedHasBreadcrumbsItems}
+          mode="desktop"
+          items={breadcrumbsItems}
+          class-name="qld__banner__breadcrumbs qld__banner__breadcrumbs--desktop"
+        >
+        </c-sf-gps-ds-au-qld-breadcrumbs>
+        <template lwc:else>
+          <slot name="desktopBreadcrumbs"></slot>
+        </template>
+
+        <h1>{headingPrimary}</h1>
+      </div>
+
+      <div lwc:else class="qld__banner__wrapper">
+        <div class="qld__banner__main row">
+          <template lwc:if={computedIsBasic}>
+            <div class="qld__banner__content col-xs-12">
+              <c-sf-gps-ds-au-qld-breadcrumbs
+                lwc:if={computedHasBreadcrumbsItems}
+                mode="desktop"
+                items={breadcrumbsItems}
+                class-name={computedBreadcrumbsDesktopClassName}
+              >
+              </c-sf-gps-ds-au-qld-breadcrumbs>
+
+              <template lwc:else>
+                <slot
+                  name="desktopBreadcrumbs"
+                  onslotchange={handleSlotChange}
+                ></slot>
+              </template>
+
+              <h1>{headingPrimary}</h1>
+
+              <div class="qld__banner__content--body qld__abstract">
+                <slot onslotchange={handleSlotChange}></slot>
+              </div>
+            </div>
+          </template>
+
+          <template lwc:elseif={computedIsIntermediate}>
+            <!-- Banner hero image -->
+            <div
+              lwc:if={computedHasImage}
+              class={computedIntermediateBannerHeroClassName}
+            >
+              <div
+                class={computedBannerImageDesktopClassName}
+                style={computedBannerImageDesktopStyle}
+              ></div>
+              <div
+                lwc:if={backgroundImageSm}
+                class="qld__banner__image qld__banner__image--background qld__banner__image--desktop-hide"
+                style={computedBannerImageMobileStyle}
+              ></div>
+            </div>
+
+            <!-- Banner content -->
+            <div class={computedIntermediateBannerContentClassName}>
+              <c-sf-gps-ds-au-qld-breadcrumbs
+                lwc:if={computedHasBreadcrumbsItems}
+                mode="desktop"
+                items={breadcrumbsItems}
+                class-name={computedBreadcrumbsDesktopClassName}
+              >
+              </c-sf-gps-ds-au-qld-breadcrumbs>
+
+              <template lwc:else>
+                <slot
+                  name="desktopBreadcrumbs"
+                  onslotchange={handleSlotChange}
+                ></slot>
+              </template>
+
+              <!-- Page heading -->
+              <h1
+                lwc:if={_headingBackgroundDisplay}
+                class="qld__banner__heading__wrapper"
+              >
+                <span
+                  lwc:if={headingPrimary}
+                  class="qld__banner__heading qld__banner__heading--dark"
+                  >{headingPrimary}</span
+                >
+                <span
+                  lwc:if={headingSecondary}
+                  class="qld__banner__heading qld__banner__heading--light"
+                  >{headingSecondary}</span
+                >
+              </h1>
+              <h1 lwc:else>{headingPrimary}</h1>
+
+              <!-- Page summary -->
+              <div class="qld__banner__content--body qld__abstract">
+                <slot onslotchange={handleSlotChange}></slot>
+              </div>
+            </div>
+          </template>
+
+          <template lwc:elseif={computedIsAdvanced}>
+            <!-- Banner hero image -->
+            <div
+              lwc:if={computedHasImage}
+              class={computedAdvancedBannerHeroClassName}
+            >
+              <div
+                class={computedBannerImageDesktopClassName}
+                style={computedBannerImageDesktopStyle}
+              ></div>
+              <div
+                lwc:if={backgroundImageSm}
+                class="qld__banner__image qld__banner__image--background qld__banner__image--desktop-hide"
+                style={computedBannerImageMobileStyle}
+              ></div>
+            </div>
+
+            <!-- Banner content -->
+            <div class="qld__banner__content col-xs-12 col-md-6 col-lg-7">
+              <c-sf-gps-ds-au-qld-breadcrumbs
+                lwc:if={computedHasBreadcrumbsItems}
+                mode="desktop"
+                items={breadcrumbsItems}
+                class-name={computedBreadcrumbsDesktopClassName}
+              >
+              </c-sf-gps-ds-au-qld-breadcrumbs>
+
+              <template lwc:else>
+                <slot
+                  name="desktopBreadcrumbs"
+                  onslotchange={handleSlotChange}
+                ></slot>
+              </template>
+
+              <!-- Page title -->
+              <h1
+                lwc:if={_headingBackgroundDisplay}
+                class="qld__banner__heading__wrapper"
+              >
+                <span
+                  lwc:if={headingPrimary}
+                  class="qld__banner__heading qld__banner__heading--dark"
+                  >{headingPrimary}</span
+                >
+                <span
+                  lwc:if={headingSecondary}
+                  class="qld__banner__heading qld__banner__heading--light"
+                  >{headingSecondary}</span
+                >
+              </h1>
+              <h1 lwc:else>{headingPrimary}</h1>
+
+              <!-- Page summary -->
+              <div class="qld__banner__content--body qld__abstract">
+                <slot onslotchange={handleSlotChange}></slot>
+              </div>
+
+              <!-- Banner CTAs: Buttons -->
+              <ul
+                lwc:if={computedIsCtaButtons}
+                class="qld__banner__content--cta qld__link-list"
+              >
+                <li lwc:if={buttonPrimary}>
+                  <a
+                    class="qld__btn qld__btn--primary"
+                    href={computedButtonPrimaryUrl}
+                  >
+                    {computedButtonPrimaryText}
+                  </a>
+                </li>
+
+                <li lwc:if={buttonSecondary}>
+                  <a
+                    class="qld__btn qld__btn--secondary"
+                    href={computedButtonSecondaryUrl}
+                  >
+                    {computedButtonSecondaryText}
+                  </a>
+                </li>
+              </ul>
+
+              <!-- Banner CTAs: LinkList -->
+              <ul
+                lwc:elseif={computedIsCtaLinkList}
+                class="qld__card-list qld__card-list--matchheight qld__banner__card-list"
+              >
+                <template for:each={_links} for:item="link">
+                  <li key={link.index} class="col-xs-12">
+                    <div class={link.className}>
+                      <div class="qld__card__inner">
+                        <div class="qld__card__content">
+                          <div class="qld__card__content-inner">
+                            <h2 class="qld__card__title qld__display-lg">
+                              <a
+                                class="qld__card--clickable__link"
+                                href={link.redirectUrl}
+                                >{link.name}</a
+                              >
+                            </h2>
+                          </div>
+                          <div class="qld__card__arrow"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </template>
+              </ul>
+
+              <!-- Banner CTAs: IconTiles -->
+              <div
+                lwc:elseif={computedIsCtaIconTiles}
+                class={computedBannerNavClassName}
+              >
+                <nav class={computedTileNavClassName}>
+                  <ul class="qld__tile-nav__list">
+                    <template for:each={_navItems} for:item="nav">
+                      <li key={nav.index} class="qld__tile-nav__item">
+                        <i class={nav.cardIcon} aria-hidden="true"></i>
+                        <a href={nav.redirectUrl} class="qld__tile-nav__link"
+                          >{nav.name}</a
+                        >
+                      </li>
+                    </template>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

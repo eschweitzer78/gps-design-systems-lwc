@@ -1,0 +1,29 @@
+<template>
+  <div class={className}>
+    <h2 lwc:if={title} class={titleClassName}>{title}</h2>
+
+    <ul class={computedListClassName} aria-label={title}>
+      <template lwc:if={links}>
+        <template for:each={_links} for:item="item">
+          <li key={item.key} class={item.linkClassName}>
+            <a lwc:if={item.url} href={item.url} class={item.anchorClassName}>
+              <template lwc:if={item.iconClassName}>
+                <i class={item.iconClassName} aria-hidden="true"></i>
+                <span>{item.text}</span>
+              </template>
+              <template lwc:else>{item.text}</template>
+            </a>
+
+            <template lwc:else>{item.text}</template>
+          </li>
+        </template>
+      </template>
+
+      <template lwc:if={computedIsColumnMode}>
+        <li lwc:if={cvaUrl} class={computedCvaLinkClassName}>
+          <a href={cvaUrl} class={computedCvaAnchorClassName}> {cvaText} </a>
+        </li>
+      </template>
+    </ul>
+  </div>
+</template>

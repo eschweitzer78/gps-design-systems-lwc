@@ -1,0 +1,46 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-au-qld-callout
+    lwc:if={showCallout}
+    class-name="qld__margin-t-component"
+  >
+    This is not a Queensland Government website and the example below is for
+    illustration purposes only.
+  </c-sf-gps-ds-au-qld-callout>
+
+  <div lwc:ref="target" class={computedClassName}>
+    <div lwc:if={computedShowNewTab} class="docs-example-header">
+      <c-sf-gps-ds-au-qld-docs-link
+        url={storyPreviewUrl}
+        is-external="false"
+        is-small="true"
+        icon-position="end"
+      >
+        Open this example in a new tab
+      </c-sf-gps-ds-au-qld-docs-link>
+    </div>
+    <div class="docs-example-body">
+      <iframe
+        lwc:ref="frame"
+        src={storyPreviewUrl}
+        class="frame"
+        onload={handleFrameLoad}
+      >
+      </iframe>
+    </div>
+
+    <div lwc:if={computedShowCode} class="docs-example-footer">
+      <button
+        onclick={handleToggleCode}
+        class="docs-example-code-btn rpl-type-p-small"
+      >
+        Show code
+        <i class={computedCodeIcon}> </i>
+      </button>
+    </div>
+
+    <div lwc:if={isCodeOpen} class="docs-example-code">
+      <code class="hljs xml" lwc:ref="code">{code}</code>
+    </div>
+  </div>
+</template>

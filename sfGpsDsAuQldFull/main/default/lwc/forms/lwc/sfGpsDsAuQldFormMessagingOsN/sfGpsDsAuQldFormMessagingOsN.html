@@ -1,0 +1,34 @@
+<template>
+  <div lwc:if={messageText} class="qld__form-group">
+    <div class="messaging">
+      <c-sf-gps-ds-au-qld-in-page-alert-comm-os
+        lwc:if={isRequirement}
+        type="error"
+        heading={mergedTitleText}
+        body={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-qld-in-page-alert-comm-os>
+      <c-sf-gps-ds-au-qld-in-page-alert-comm-os
+        lwc:elseif={isSuccess}
+        type="success"
+        heading={mergedTitleText}
+        body={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-qld-in-page-alert-comm-os>
+      <c-sf-gps-ds-au-qld-in-page-alert-comm-os
+        lwc:elseif={isWarning}
+        type="warning"
+        heading={mergedTitleText}
+        body={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-qld-in-page-alert-comm-os>
+      <c-sf-gps-ds-au-qld-in-page-alert-comm-os
+        lwc:elseif={isComment}
+        type="info"
+        heading={mergedTitleText}
+        body={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-qld-in-page-alert-comm-os>
+    </div>
+  </div>
+</template>

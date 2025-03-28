@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Callout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="Type of call out with a choice of default and calendar-event."
+        default="default"
+        datasource="default,calendar-event"
+      />
+      <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="Overview of the callout if required."
+        default="Callout"
+      />
+      <property
+        name="level"
+        type="String"
+        label="Heading level"
+        description="Level of heading to be used."
+        default="3"
+        datasource="1,2,3,4,5,6"
+      />
+      <property
+        name="headingSrOnly"
+        type="Boolean"
+        label="Heading for Screen-readers only"
+        description="Keep the heading for screen-readers only."
+        default="false"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Callout message in Markdown format."
+        default="Callouts are text excerpts, used as a *visual* cue to draw attention to the text. They're used to help direct users toward an **important** piece of information or a required action. Leave empty to get a slot in LWR."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

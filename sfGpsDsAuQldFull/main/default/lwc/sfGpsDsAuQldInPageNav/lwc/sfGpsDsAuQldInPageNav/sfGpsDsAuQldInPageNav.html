@@ -1,0 +1,15 @@
+<template lwc:render-mode="light">
+  <nav class={computedClassName} aria-labelledby={computedAriaLabelledById}>
+    <h2 id={computedAriaLabelledById} class="qld__inpage-nav-links__heading">
+      {title}
+    </h2>
+
+    <ul class="qld__link-list">
+      <template lwc:if={items} for:each={items} for:item="item">
+        <li key={item.index}>
+          <a href={item.url}>{item.text}</a>
+        </li>
+      </template>
+    </ul>
+  </nav>
+</template>

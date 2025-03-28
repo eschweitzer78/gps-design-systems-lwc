@@ -1,0 +1,42 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <ul class={computedClassName}>
+    <template for:each={_tags} for:item="tag" for:index="index">
+      <template lwc:if={tag.closed}> </template>
+      <li lwc:elseif={asDefault} key={tag.key} class={tag.className}>
+        {tag.text}
+      </li>
+      <li lwc:else key={tag.key}>
+        <div lwc:if={asFilter} class={tag.className}>
+          {tag.text}
+          <button
+            lwc:if={asFilter}
+            class="qld__tag--filter-close"
+            data-idx={index}
+            onclick={handleClick}
+          >
+            <span class="sr-only"> {tag.closeHint} </span>
+          </button>
+        </div>
+
+        <a
+          lwc:elseif={asAction}
+          href={tag.url}
+          class={tag.className}
+          data-idx={index}
+          onclick={handleClick}
+        >
+          {tag.text}
+        </a>
+
+        <span lwc:else class={tag.className} role="note"> {tag.text} </span>
+      </li>
+    </template>
+
+    <li lwc:if={computedHasOpenFilterItems}>
+      <button class="qld__btn qld__btn--tertiary" onclick={handleClearFilters}>
+        {i18n.clearFilters}
+      </button>
+    </li>
+  </ul>
+</template>

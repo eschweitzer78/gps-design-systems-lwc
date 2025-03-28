@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Global Alert</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+        <property
+        name="level"
+        type="String"
+        label="Alert level"
+        description="Denotes the severity level of the alert."
+        default="default"
+        datasource="default,critical,general"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="The title should be kept short and appears in bold."
+        default="June 2024 Flood Support"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Alert message in plain text format."
+        default="Information about support for businesses impacted by the storms and floods of June 2024 will be available soon."
+      />
+      <property
+        name="link"
+        type="String"
+        label="Link"
+        description="Link or call to action in Markdown link format."
+        default="[Read more](#)"
+      />
+      <property
+        name="dismissible"
+        type="Boolean"
+        label="Dismissible"
+        description="Adds a close button to dismiss the alert."
+        default="true"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

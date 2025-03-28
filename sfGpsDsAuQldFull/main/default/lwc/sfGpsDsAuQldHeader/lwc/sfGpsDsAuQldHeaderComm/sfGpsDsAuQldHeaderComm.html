@@ -1,0 +1,34 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-qld-header
+    lwc:else
+    pre-header-style={preHeaderStyle}
+    pre-header-link={_preHeaderLink}
+    pre-header-logo={computedPreHeaderLogoUrl}
+    pre-header-logo-alt={computedPreHeaderLogoText}
+    cta-one-link={_ctaOneLink}
+    cta-one-icon={ctaOneIcon}
+    cta-two-link={_ctaLink}
+    cta-two-icon={ctaTwoIcon}
+    search-label={searchLabel}
+    search-field-label={searchFieldLabel}
+    menu-label={menuLabel}
+    content-id={contentId}
+    main-nav-id={mainNavId}
+    header-style={headerStyle}
+    header-url={headerUrl}
+    site-logo={computedSiteLogoUrl}
+    site-logo-alt={computedSiteLogoText}
+    site-logo-secondary={siteLogoSecondary}
+    site-logo-secondary-mobile={siteLogoSecondaryMobile}
+    title={title}
+    subtitle={subtitle}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-qld-header>
+</template>
