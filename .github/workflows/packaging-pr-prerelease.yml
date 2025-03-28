@@ -369,7 +369,7 @@ jobs:
           sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsFrGov package in scratch org
-      - name: "Install new sfGpsFrUkGov package version in scratch org"
+      - name: "Install new sfGpsDsFrGov package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt

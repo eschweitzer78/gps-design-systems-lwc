@@ -376,7 +376,7 @@ jobs:
           sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsFrGov package in scratch org
-      - name: "Install new sfGpsFrUkGov package version in scratch org"
+      - name: "Install new sfGpsDsFrGov package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
@@ -445,6 +445,25 @@ jobs:
           name: "sfGpsDsAuNswS ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.versionNumber }}"
           prerelease: "true"
           tag: "sfGpsDsAuNswS-${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.versionNumber }}"
+
+      # Update sfGpsDsAuQld force:force:package:install link in readme
+      - name: "Update package sfGpsDsAuQld install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsAuQld == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuQldFull\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuQldFull\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsAuQld GH release
+      - name: "Release package sfGpsDsAuQld"
+        if: ${{ github.event.client_payload.sfGpsDsAuQld == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }})"
+          name: "sfGpsDsAuQld ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsAuQld-${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.versionNumber }}"
 
       # Update sfGpsDsAuVic force:force:package:install link in readme
       - name: "Update package sfGpsDsAuVic install link in readme"
