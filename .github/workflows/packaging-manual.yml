@@ -18,6 +18,7 @@ jobs:
           hasChangesSfGpsDs='true'
           hasChangesSfGpsDsAuNsw='true'
           hasChangesSfGpsDsAuNswS='true'
+          hasChangesSfGpsDsAuQld='true'
           hasChangesSfGpsDsAuVic='true'
           hasChangesSfGpsDsFrGov='true'
           hasChangesSfGpsDsUkGov='true'
