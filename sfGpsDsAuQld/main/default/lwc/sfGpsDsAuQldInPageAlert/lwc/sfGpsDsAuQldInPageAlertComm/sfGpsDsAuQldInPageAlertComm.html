@@ -11,9 +11,9 @@
     heading={heading}
     class-name={className}
   >
-    <div lwc:if={body} lwc:ref="body" lwc:dom="manual"></div>
+    <div lwc:if={content} lwc:ref="content" lwc:dom="manual"></div>
     <template lwc:else>
-      <slot name="Body"></slot>
+      <slot name="AlertContent"></slot>
     </template>
   </c-sf-gps-ds-au-qld-in-page-alert>
 </template>
