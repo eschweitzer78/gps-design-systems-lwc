@@ -5,8 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsLwcOsN from "c/sfGpsDsLwcOsN";
 import { api, track } from "lwc";
+import SfGpsDsLwcOsN from "c/sfGpsDsLwcOsN";
 import { isArray, normaliseBoolean } from "c/sfGpsDsHelpersOs";
 
 // Duration after which isLoading is set (which can be used by widgets to show a spinner)
