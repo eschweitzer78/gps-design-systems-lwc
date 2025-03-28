@@ -1,6 +1,6 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <div if:false={isCustomLwc} class={errorClass}>
+  <template if:false={isCustomLwc}>
     <div class="qld__form-group">
       <template lwc:if={labelVisible}>
         <label class="qld__label" for={inputId}>
@@ -145,5 +145,5 @@
         {inlineHelp}
       </span>
     </div>
-  </div>
+  </template>
 </template>
