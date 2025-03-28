@@ -1,0 +1,30 @@
+{
+  "sfGpsDsAuVic2Icon": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsAuVic2IconConstants": "sfGpsDsAuVic2IconConstantsOs",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsAuVic2UiCoreConstants": "sfGpsDsAuVic2UiCoreConstantsOs",
+      "import STATIC_RESOURCE from \"@salesforce/resourceUrl/sfGpsDsAuVic2\";": "const STATIC_RESOURCE_NAME = \"sfGpsDsAuVic2\";\nimport salesforceUtils from \"omnistudio/salesforceUtils\";\nimport { getCommunityPrefix } from \"omnistudio/utility\";\n\nconst geturl = (responses, path) => {\n  const url = responses[0] + path;\n  return responses[1] ? `${getCommunityPrefix()}${url}` : url;\n};",
+      "= STATIC_RESOURCE;": "= null;\n\n  connectedCallback() {\n    if (super.connectedCallback) {\n      super.connectedCallback();\n    }\n\n    Promise.all([salesforceUtils.getResourceUrl({\n      resourceName: STATIC_RESOURCE_NAME\n    }), salesforceUtils.isCommunity(), salesforceUtils.getCommunityName()]).then(responses => {\n      this.staticResourceHref = geturl(responses, \"\");\n    });\n  }"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsAuVic2IconConstants": {
+    "target": "!Os",
+    "!.js": {
+      "target": "!Os.js"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  }
+}
