@@ -1,5 +1,5 @@
 <template>
-  <span class={computedClassName}>
+  <span lwc:if={computedHref} class={computedClassName}>
     <svg lwc:if={name} role={computedRole}>
       <title lwc:if={title}>{title}</title>
       <use href={computedHref}></use>

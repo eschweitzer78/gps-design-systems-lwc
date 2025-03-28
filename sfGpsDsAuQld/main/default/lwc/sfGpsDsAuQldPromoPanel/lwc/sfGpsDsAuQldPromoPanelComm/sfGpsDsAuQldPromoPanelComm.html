@@ -23,9 +23,9 @@
     secondary-link-title={computedSecondaryLinkText}
     class-name={className}
   >
-    <div lwc:if={_contentHtml} lwc:ref="markdown" lwc:dom="manual"></div>
+    <div lwc:if={content} lwc:ref="markdown" lwc:dom="manual"></div>
     <template lwc:else>
-      <slot name="calloutContent"></slot>
+      <slot name="panelContent"></slot>
     </template>
   </c-sf-gps-ds-au-qld-promo-panel>
 </template>

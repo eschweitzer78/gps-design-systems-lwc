@@ -1,5 +1,11 @@
 <!-- sldsValidatorIgnore -->
 <template>
+  <template lwc:if={debug}>
+    <p>_displayValue: {_displayValue}</p>
+    <p>_value: {_value}</p>
+    <p>_parsedValue: {_parsedValue}</p>
+  </template>
+
   <div
     lwc:ref="formGroup"
     class={computedFormGroupClassName}
@@ -33,13 +39,14 @@
             id="form-date-day"
             name="form-date-day"
             type="text"
+            inputmode="numeric"
             maxlength="2"
             autocomplete="off"
             readonly={readOnly}
             aria-readonly={readOnly}
             required={required}
             disabled={disabled}
-            aria-invalid={ariaInvalid}
+            aria-invalid={computedIsPartInvalidDate}
             aria-describedby={computedAriaDescribedBy}
             value={_displayDayValue}
             class="nsw-form__input"
@@ -60,13 +67,14 @@
             id="form-date-month"
             name="form-date-month"
             type="text"
+            inputmode="numeric"
             maxlength="2"
             autocomplete="off"
             readonly={readOnly}
             aria-readonly={readOnly}
             required={required}
             disabled={disabled}
-            aria-invalid={ariaInvalid}
+            aria-invalid={computedIsPartInvalidMonth}
             aria-describedby={computedAriaDescribedBy}
             value={_displayMonthValue}
             class="nsw-form__input"
@@ -87,13 +95,14 @@
             id="form-date-year"
             name="form-date-year"
             type="text"
+            inputmode="numeric"
             maxlength="4"
             autocomplete="off"
             readonly={readOnly}
             aria-readonly={readOnly}
             required={required}
             disabled={disabled}
-            aria-invalid={ariaInvalid}
+            aria-invalid={computedIsPartInvalidYear}
             aria-describedby={computedAriaDescribedBy}
             value={_displayYearValue}
             class="nsw-form__input"

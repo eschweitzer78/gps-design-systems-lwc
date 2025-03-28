@@ -1,3 +1,19 @@
 {
+  "sfGpsDsAuVic2/forms*": [
+    {
+      "extension": "v2.scss"
+    },
+    {
+      "from": "@dpc-sdp/ripple-ui-core/style/breakpoints",
+      "to": "@dpc-sdp/ripple-ui-core/src/styles/breakpoints"
+    }
+  ],
+  "sfGpsDsAuVic2/forms.v2*": [],
+  "sfGpsDsAuVic2/global*": [
+    {
+      "from": "\\(/assets/",
+      "to": "(/sfsites/c/resource/sfGpsDsAuVic2/assets/"
+    }
+  ],
   "sfGpsDsAuVic2/omni-custom*": []
 }

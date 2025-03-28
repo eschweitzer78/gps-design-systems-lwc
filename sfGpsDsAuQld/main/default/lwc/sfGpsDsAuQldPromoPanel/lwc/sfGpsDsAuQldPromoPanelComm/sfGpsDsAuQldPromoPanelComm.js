@@ -132,8 +132,8 @@ export default class extends SfGpsDsLwc {
   renderedCallback() {
     const md = this.refs.markdown;
 
-    if (this._content && md) {
-      replaceInnerHtml(md, "<span></span>" + (this._contentHtml || ""));
+    if (this._contentOriginal && md) {
+      replaceInnerHtml(md, this._contentHtml || "");
     }
   }
 }

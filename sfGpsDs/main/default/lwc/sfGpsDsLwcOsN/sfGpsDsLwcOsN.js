@@ -6,7 +6,7 @@
  */
 
 import { LightningElement, api, track } from "lwc";
-import { isArray, isFunction, isPromise } from "c/sfGpsDsHelpers";
+import { isArray, isFunction, isPromise } from "c/sfGpsDsHelpersOs";
 import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 
 /* IMPORTANT NOTE: this class is not automatically derived from sfGpsDsLwcOs */

@@ -134,12 +134,6 @@ export default class extends SfGpsDsOmniHasValidationMixin(OmniscriptLookup) {
     }
   }
 
-  /* avoid a crash when user does not have access to object */
-
-  getRecordTypeId(recordType) {
-    return this.objectInfo?.data ? super.getRecordTypeId(recordType) : null;
-  }
-
   /* clear custom validation when changing the value */
 
   setSelected(selectedIndex) {

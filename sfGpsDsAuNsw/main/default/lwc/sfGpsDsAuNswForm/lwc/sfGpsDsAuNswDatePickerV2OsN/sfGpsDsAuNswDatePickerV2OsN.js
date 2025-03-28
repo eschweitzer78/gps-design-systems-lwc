@@ -1,6 +1,6 @@
 /*
  * Portions copyright (c) 2024, Emmanuel Schweitzer and salesforce.com, inc.
- * Portions copyright (2) by Digital.NSW, incorporated under MIT licence.
+ * Portions copyright (c) by Digital.NSW, incorporated under MIT licence.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -20,7 +20,7 @@ import {
   formatTemplate,
   normaliseBoolean
 } from "c/sfGpsDsHelpersOs";
-import OnClickOutside from "c/sfGpsDsOnClickOutside";
+import OnClickOutside from "c/sfGpsDsOnClickOutsideOs";
 
 import dayjs from "omnistudio/dayjs";
 import { shortDateFormat } from "omnistudio/salesforceUtils";
@@ -33,7 +33,7 @@ const I18N = {
   overflowError: "Date is after the allowed range.",
   underflowError: "Date is before the allowed range.",
   valueMissingError: "You must provide a date.",
-  badInputError: "You must provide follow the ${0} format.",
+  badInputError: "You must provide a date following the ${0} format.",
   headerDateFormat: "MMMM YYYY",
   ariaLabel: "Select date using calendar widget.",
   ariaLabelSelection:
@@ -534,6 +534,18 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       "nsw-date-picker": true,
       "nsw-date-picker--is-visible": this.pickerVisible
     };
+  }
+
+  get computedIsPartInvalidDate() {
+    return this._isPartInvalidDate && this.sfGpsDsIsError;
+  }
+
+  get computedIsPartInvalidMonth() {
+    return this._isPartInvalidMonth && this.sfGpsDsIsError;
+  }
+
+  get computedIsPartInvalidYear() {
+    return this._isPartInvalidYear && this.sfGpsDsIsError;
   }
 
   /* methods */
@@ -1085,13 +1097,16 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       const month = mV ? Number(mV) : NaN;
       const year = yV ? Number(yV) : NaN;
 
-      if (
-        day &&
-        !Number.isNaN(day) &&
-        !Number.isNaN(month) &&
-        !Number.isNaN(year)
-      ) {
-        this.setAndDispatchValue(new Date(year, month - 1, day));
+      if (!Number.isNaN(day) && !Number.isNaN(month) && !Number.isNaN(year)) {
+        const newDate = new Date(year, month - 1, day);
+        const isSame =
+          newDate.getFullYear() === year &&
+          newDate.getMonth() === month - 1 &&
+          newDate.getDate() === day;
+
+        this.setAndDispatchValue(
+          isSame ? new Date(year, month - 1, day) : null
+        );
       } else {
         this.setAndDispatchValue(null);
       }
@@ -1101,6 +1116,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       this._displayValue = this.refs.input?.value;
       this.setAndDispatchValue(this.refs.input?.value);
     }
+
+    this.showHelpMessageIfInvalid();
 
     if (DEBUG) console.log(CLASS_NAME, "< handleInputChange");
   }
@@ -1201,6 +1218,9 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   /* api: _constraint */
 
   _constraintApi;
+  _isPartInvalidDate;
+  _isPartInvalidMonth;
+  _isPartInvalidYear;
 
   @api
   get _constraint() {
@@ -1212,10 +1232,48 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
           let rv = true;
 
-          if (this._displayValue == null || this._displayValue === "") {
-            rv = false;
+          if (this._multipleInput) {
+            const dV = (this._displayDayValue = this.refs.dateInput?.value);
+            const mV = (this._displayMonthValue = this.refs.monthInput?.value);
+            const yV = (this._displayYearValue = this.refs.yearInput?.value);
+
+            if (dV === "" || mV === "" || yV === "") {
+              rv = false;
+            } else {
+              const day = Number(dV);
+              const month = Number(mV);
+              const year = Number(yV);
+
+              this._isPartInvalidDate = Number.isNaN(day);
+              this._isPartInvalidMonth = Number.isNaN(month);
+              this._isPartInvalidYear = Number.isNaN(year);
+              rv =
+                this._isPartInvalidDate ||
+                this._isPartInvalidMonth ||
+                this._isPartInvalidYear;
+
+              if (!rv) {
+                const newDate = new Date(year, month - 1, day);
+                this._isPartInvalidDate = newDate.getDate() !== day;
+                this._isPartInvalidMonth =
+                  !this._isPartInvalidDate && newDate.getMonth() !== month - 1;
+                this._isPartInvalidYear =
+                  !this._isPartInvalidDate &&
+                  !this._isPartInvalidMonth &&
+                  newDate.getFullYear() !== year;
+
+                rv =
+                  this._isPartInvalidDate ||
+                  this._isPartInvalidMonth ||
+                  this._isPartInvalidYear;
+              }
+            }
           } else {
-            rv = !isValidDate(this.parseInput(this._displayValue));
+            if (this._displayValue == null || this._displayValue === "") {
+              rv = false;
+            } else {
+              rv = !isValidDate(this.parseInput(this._displayValue));
+            }
           }
 
           if (DEBUG) console.log(CLASS_NAME, "< _constraint.badInput", rv);
@@ -1224,16 +1282,32 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         },
         patternMismatch: () => false,
         rangeOverflow: () => {
-          return (
-            this.maxDate && this.max && this._parsedValue?.isAfter(this.maxDate)
-          );
+          const rv =
+            this.maxDate &&
+            this.max &&
+            this._parsedValue?.isAfter(this.maxDate);
+
+          if (rv) {
+            this._isPartInvalidDate = true;
+            this._isPartInvalidMonth = true;
+            this._isPartInvalidYear = true;
+          }
+
+          return rv;
         },
         rangeUnderflow: () => {
-          return (
+          const rv =
             this.minDate &&
             this.min &&
-            this._parsedValue?.isBefore(this.minDate)
-          );
+            this._parsedValue?.isBefore(this.minDate);
+
+          if (rv) {
+            this._isPartInvalidDate = true;
+            this._isPartInvalidMonth = true;
+            this._isPartInvalidYear = true;
+          }
+
+          return rv;
         },
         stepMismatch: () => false,
         tooShort: () => false,
@@ -1243,9 +1317,25 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
           if (DEBUG)
             console.log(CLASS_NAME, "> _constraint.valueMissing", this._value);
 
-          const rv =
-            this.required &&
-            (!this._parsedValue || !this._parsedValue.isValid());
+          let rv = false;
+
+          if (this._multipleInput) {
+            const dV = (this._displayDayValue = this.refs.dateInput?.value);
+            const mV = (this._displayMonthValue = this.refs.monthInput?.value);
+            const yV = (this._displayYearValue = this.refs.yearInput?.value);
+
+            rv = this.required && (dV === "" || mV === "" || yV === "");
+
+            if (rv) {
+              this._isPartInvalidDate = true;
+              this._isPartInvalidMonth = true;
+              this._isPartInvalidYear = true;
+            }
+          } else {
+            rv =
+              this.required &&
+              (!this._parsedValue || !this._parsedValue.isValid());
+          }
 
           if (DEBUG)
             console.log(

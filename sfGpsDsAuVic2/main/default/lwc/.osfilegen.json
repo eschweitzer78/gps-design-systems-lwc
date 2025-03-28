@@ -1,0 +1,12 @@
+{
+  "sfGpsDsAuVic2UiCoreConstants": {
+    "target": "!Os",
+    "!.js": {
+      "target": "!Os.js"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  }
+}

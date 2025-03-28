@@ -76,4 +76,10 @@ export default class extends SfGpsDsLwc {
   handleUpdateInputValue(event) {
     this._inputValue = event.detail || "";
   }
+
+  _submitCount = 0;
+
+  handleSubmit() {
+    this._submitCount++;
+  }
 }

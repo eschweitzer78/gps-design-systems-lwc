@@ -1,4 +1,4 @@
-import { hyphenate } from "c/sfGpsDsHelpers";
+import { hyphenate } from "./string_v6";
 
 const WITH_MODS = Symbol("_withMods");
 const WITH_KEYS = Symbol("_withKeys");
