@@ -17,4 +17,12 @@ export default class extends SfGpsDsFormTypeaheadOsN {
   render() {
     return tmpl;
   }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+
+    this._readOnlyClass = "sfgpsdsaunsw-read-only";
+  }
 }

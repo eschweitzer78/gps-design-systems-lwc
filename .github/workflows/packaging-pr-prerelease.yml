@@ -167,6 +167,35 @@ jobs:
           fi
           exit $status2
 
+      - name: "Create package version sfGpsDsAuQld"
+        id: createPackageVersion-sfGpsDsAuQld
+        if: ${{ github.event.client_payload.sfGpsDsAuQld == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run auqld-copy
+          json=$(sfdx package version create --path=sfGpsDsAuQldFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sfdx package version create failed"
+              exit $status
+          fi
+
+          json2=$(sfdx package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sfdx package version report failed"
+          fi
+          exit $status2
+
       - name: "Create package version sfGpsDsAuVic1"
         id: createPackageVersion-sfGpsDsAuVic1
         if: ${{ github.event.client_payload.sfGpsDsAuVic1 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -317,6 +346,13 @@ jobs:
         run: |
           sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Install new sfGpsDsAuQld package in scratch org
+      - name: "Install new sfGpsDsAuQld package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsAuQld == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuVic1 package in scratch org
       - name: "Install new sfGpsDsAuVic1 package version in scratch org"

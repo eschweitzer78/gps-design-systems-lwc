@@ -39,7 +39,7 @@
           aria-readonly={readOnly}
           required={required}
           placeholder={placeholder}
-          disabled={disabled}
+          disabled={computedDisabledOrReadOnly}
           autocomplete="off"
           aria-invalid={ariaInvalid}
           aria-describedby={computedAriaDescribedBy}
@@ -54,7 +54,7 @@
           aria-label={triggerAriaLabel}
           type="button"
           aria-expanded={pickerVisible}
-          disabled={readOnly}
+          disabled={computedDisabledOrReadOnly}
           onclick={showCalendar}
         >
           <span class="material-icons nsw-material-icons" aria-hidden="true">

@@ -37,6 +37,10 @@ export default class extends StatusHelperMixin(OmnistudioTimePicker) {
     };
   }
 
+  get computedDisabledOrReadOnly() {
+    return this.disabled || this.readOnly;
+  }
+
   /* methods */
   /* we're doing it mostly via template */
 

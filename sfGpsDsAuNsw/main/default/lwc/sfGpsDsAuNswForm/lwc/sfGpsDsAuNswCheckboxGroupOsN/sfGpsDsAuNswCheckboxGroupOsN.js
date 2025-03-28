@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmnistudioCheckboxGroup from "c/sfGpsDsOmniCheckboxGroupOsN";
 import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
@@ -13,6 +14,8 @@ import tmpl from "./sfGpsDsAuNswCheckboxGroupOsN.html";
 export default class extends SfGpsDsAuNswStatusHelperMixin(
   OmnistudioCheckboxGroup
 ) {
+  @api readOnly;
+
   /* computed */
 
   get computedAriaDescribedBy() {
@@ -27,6 +30,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       "nsw-form__legend": true,
       "nsw-form__required": this.required
     };
+  }
+
+  get computedDisabledOrReadOnly() {
+    return this.disabled || this.readOnly;
   }
 
   /* lifecycle */

@@ -133,7 +133,7 @@
           required={required}
           aria-invalid={isAriaInvalid}
           aria-describedby={computedAriaDescribedBy}
-          disabled={disabled}
+          disabled={checkboxDisabled}
           readonly={readOnly}
           aria-readonly={readOnly}
           type={type}
@@ -178,202 +178,6 @@
         </template>
       </template>
 
-      <div lwc:if={_isFormula}>
-        <label
-          class="slds-form-element__label slds-show--inline slds-p-top_none"
-          for={inputId}
-        >
-          {label}
-        </label>
-
-        <input
-          class="slds-input"
-          type="text"
-          id={inputId}
-          readonly
-          disabled
-          aria-describedby={computedAriaDescribedBy}
-          value={inputValue}
-          onchange={triggerEvent}
-          onfocus={triggerEvent}
-          onblur={triggerEvent}
-          onkeydown={triggerKeyEvents}
-          onkeyup={triggerKeyEvents}
-        />
-      </div>
-      <!-- isFormula -->
-
-      <div lwc:elseif={isRadio} class="slds-form-element__control">
-        <div class="slds-radio">
-          <input
-            type={type}
-            required={required}
-            aria-invalid={isAriaInvalid}
-            aria-describedby={computedAriaDescribedBy}
-            disabled={disabled}
-            readonly={readOnly}
-            aria-readonly={readOnly}
-            name={name}
-            id={inputId}
-            checked={checked}
-            value={_value}
-            onchange={sfGpsDsTriggerInputEvent}
-            onfocus={triggerEvent}
-            onblur={closeTooltip}
-          />
-          <label class="slds-radio__label" for={inputId}>
-            <span class="slds-radio_faux"></span>
-            <span
-              class="slds-form-element__label slds-show--inline slds-p-top_none"
-            >
-              {label}
-            </span>
-          </label>
-        </div>
-      </div>
-      <!-- isRadio -->
-
-      <label
-        lwc:elseif={isToggle}
-        class="slds-checkbox_toggle slds-grid"
-        for={inputId}
-      >
-        <span
-          class="slds-form-element__label slds-show--inline slds-m-bottom_none slds-p-top_none"
-        >
-          {label}
-        </span>
-        <input
-          id={inputId}
-          name={name}
-          tabindex={tabIndex}
-          disabled={disabled}
-          readonly={readOnly}
-          type="checkbox"
-          aria-describedby={computedAriaDescribedBy}
-          checked={checked}
-          value={_value}
-          onchange={sfGpsDsTriggerInputEvent}
-          onfocus={triggerEvent}
-          onblur={closeTooltip}
-        />
-        <span class="slds-checkbox_faux_container" aria-live="assertive">
-          <span class="slds-checkbox_faux"></span>
-          <span class="slds-checkbox_on">{toggleOnLabel}</span>
-          <span class="slds-checkbox_off">{toggleOffLabel}</span>
-        </span>
-      </label>
-      <!-- isToggle -->
-
-      <div if:false={static} class={pretextClass}>
-        <div lwc:if={isFile} class="slds-form-element__control">
-          <div class="slds-file-selector slds-file-selector_files">
-            <div class="slds-file-selector__dropzone">
-              <input
-                class="slds-file-selector__input slds-assistive-text"
-                id={inputId}
-                multiple={multiple}
-                tabindex={tabIndex}
-                accesskey={accessKey}
-                type={type}
-                disabled={disabled}
-                required={required}
-                aria-invalid={isAriaInvalid}
-                aria-describedby={computedAriaDescribedBy}
-                readonly={readOnly}
-                aria-readonly={readOnly}
-                aria-labelledby="file-selector-primary-label file-selector-secondary-label"
-                accept={accept}
-                onblur={sfGpsDsValidateError}
-                onchange={sfGpsDsTriggerInputEvent}
-                onfocus={triggerEvent}
-              />
-              <label class="slds-file-selector__body" for={inputId}>
-                <span
-                  class="slds-file-selector__button slds-button slds-button_neutral"
-                >
-                  <omnistudio-icon
-                    theme={theme}
-                    baseurl={iconUrl}
-                    color={iconColor}
-                    parenttype="button"
-                    iconposition="left"
-                    icon-name="utility:upload"
-                    alternative-text={translatedLabels.cmpUpload}
-                    size="x-small"
-                    variant="inverse"
-                  >
-                  </omnistudio-icon>
-                  {label}
-                </span>
-              </label>
-            </div>
-          </div>
-
-          <ul
-            class="slds-size--1-of-1 slds-p-vertical_small slds-file-selector__files"
-          >
-            <template for:each={_value} for:item="item" for:index="index">
-              <li
-                key={item.id}
-                class="slds-pill slds-p-around_xx-small slds-m-right_x-small"
-              >
-                {item.filename} ( <i>{item.size}</i> )
-                <span class="slds-file-selector__remove-file-icon">
-                  <omnistudio-icon
-                    data-index={index}
-                    theme={theme}
-                    baseurl={iconUrl}
-                    iconposition="left"
-                    icon-name="action:delete"
-                    color={iconColor}
-                    alternative-text={translatedLabels.cmpDelete}
-                    size="x-small"
-                    onclick={deleteFile}
-                  >
-                  </omnistudio-icon>
-                </span>
-              </li>
-            </template>
-          </ul>
-
-          <span lwc:if={showPretext} class="slds-form-element__addon"
-            >{pretext}</span
-          >
-
-          <span
-            lwc:if={isIconLeftClickable}
-            class="slds-icon_container slds-input__icon slds-input__icon_left slds-input__clickable-icon-left"
-            onclick={iconClickCallback}
-          >
-            <omnistudio-icon
-              icon-name={iconNameLeft}
-              color={iconColor}
-              theme={theme}
-              size={size}
-              baseurl={iconUrl}
-            >
-            </omnistudio-icon>
-          </span>
-
-          <span
-            lwc:if={isIconLeft}
-            class="slds-icon_container slds-input__icon slds-input__icon_left"
-          >
-            <omnistudio-icon
-              icon-name={iconNameLeft}
-              color={iconColor}
-              theme={theme}
-              size={size}
-              baseurl={iconUrl}
-            >
-            </omnistudio-icon>
-          </span>
-        </div>
-        <!-- isFile -->
-      </div>
-      <!-- static -->
-
       <input
         lwc:if={isInput}
         class="nsw-form__input"
@@ -388,7 +192,7 @@
         minlength={minLength}
         type={type}
         data-isnumber={isNumber}
-        disabled={disabled}
+        disabled={checkboxDisabled}
         required={required}
         aria-invalid={isAriaInvalid}
         aria-describedby={computedAriaDescribedBy}

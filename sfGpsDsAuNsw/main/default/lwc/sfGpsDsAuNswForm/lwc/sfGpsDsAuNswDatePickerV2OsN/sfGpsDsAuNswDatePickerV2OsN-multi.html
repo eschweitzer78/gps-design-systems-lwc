@@ -45,7 +45,7 @@
             readonly={readOnly}
             aria-readonly={readOnly}
             required={required}
-            disabled={disabled}
+            disabled={computedDisabledOrReadOnly}
             aria-invalid={computedIsPartInvalidDate}
             aria-describedby={computedAriaDescribedBy}
             value={_displayDayValue}
@@ -73,7 +73,7 @@
             readonly={readOnly}
             aria-readonly={readOnly}
             required={required}
-            disabled={disabled}
+            disabled={computedDisabledOrReadOnly}
             aria-invalid={computedIsPartInvalidMonth}
             aria-describedby={computedAriaDescribedBy}
             value={_displayMonthValue}
@@ -101,7 +101,7 @@
             readonly={readOnly}
             aria-readonly={readOnly}
             required={required}
-            disabled={disabled}
+            disabled={computedDisabledOrReadOnly}
             aria-invalid={computedIsPartInvalidYear}
             aria-describedby={computedAriaDescribedBy}
             value={_displayYearValue}
@@ -119,7 +119,7 @@
             aria-label={triggerAriaLabel}
             type="button"
             aria-expanded={pickerVisible}
-            disabled={readOnly}
+            disabled={computedDisabledOrReadOnly}
             onclick={showCalendar}
           >
             <span class="material-icons nsw-material-icons" aria-hidden="true">

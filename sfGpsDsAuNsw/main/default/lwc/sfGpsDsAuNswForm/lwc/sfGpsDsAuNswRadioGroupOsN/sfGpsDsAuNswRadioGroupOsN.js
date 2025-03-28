@@ -5,12 +5,15 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import OmnistudioRadioGroup from "c/sfGpsDsOmniRadioGroupOsN";
 import StatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswRadioGroupOsN.html";
 
 export default class extends StatusHelperMixin(OmnistudioRadioGroup) {
+  @api readOnly;
+
   /* computed */
 
   get computedLegendClassName() {
@@ -29,6 +32,10 @@ export default class extends StatusHelperMixin(OmnistudioRadioGroup) {
       helper: this.fieldLevelHelp,
       errorMessageBlock: this.sfGpsDsIsError
     });
+  }
+
+  get computedDisabledOrReadOnly() {
+    return this.disabled || this.readOnly;
   }
 
   /* lifecycle */

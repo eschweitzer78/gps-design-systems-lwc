@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <c-sf-gps-ds-au-vic2-radio-group-os-n
     name={jsonDef.name}
@@ -18,8 +19,8 @@
     onchange={handleChange}
     onfocus={handleFocus}
     onblur={handleBlur}
-    class="slds-form__wrapper"
-    read-only={_propSetMap.readOnly}
+    class="rpl-form__wrapper"
+    disabled={_propSetMap.readOnly}
     variant={_propSetMap.variant}
   >
     <template if:true={_propSetMap.repeat}>

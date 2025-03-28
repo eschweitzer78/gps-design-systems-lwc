@@ -4,7 +4,7 @@
     <div class={errorClass}>
       <label lwc:if={label} for="date-input" class="qld__label">
         {label}
-        <abbr lwc:if={required} title={requiredLabel}>*</abbr>
+        <abbr lwc:if={required} title="required">*</abbr>
         <span lwc:else class="qld__label--optional">{i18n.optional}</span>
         <slot name="label"> </slot>
       </label>

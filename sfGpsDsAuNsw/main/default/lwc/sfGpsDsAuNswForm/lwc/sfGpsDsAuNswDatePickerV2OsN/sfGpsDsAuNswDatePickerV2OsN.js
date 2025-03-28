@@ -548,6 +548,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     return this._isPartInvalidYear && this.sfGpsDsIsError;
   }
 
+  get computedDisabledOrReadOnly() {
+    return this.disabled || this.readOnly;
+  }
+
   /* methods */
 
   getCurrentDay(date) {

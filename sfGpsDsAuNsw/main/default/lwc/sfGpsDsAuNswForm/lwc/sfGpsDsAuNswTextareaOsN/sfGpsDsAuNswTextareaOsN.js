@@ -27,6 +27,10 @@ export default class extends StatusHelperMixin(OmnistudioTextarea) {
     });
   }
 
+  get computedDisabledOrReadOnly() {
+    return this.disabled || this.readOnly;
+  }
+
   /* lifecycle */
 
   render() {

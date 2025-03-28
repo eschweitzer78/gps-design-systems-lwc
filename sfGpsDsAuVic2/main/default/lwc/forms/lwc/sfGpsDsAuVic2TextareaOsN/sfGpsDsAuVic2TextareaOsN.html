@@ -2,8 +2,8 @@
   <label
     lwc:if={labelVisible}
     class="rpl-form-label rpl-type-h4-fixed"
-    data-label="true"
     for="textareaId"
+    data-label="true"
   >
     <span class="rpl-form-label__inner">{label}</span>
     <span
@@ -14,19 +14,19 @@
     <slot name="label"> </slot>
   </label>
 
-  <div if:true={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
+  <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
     {fieldLevelHelp}
   </div>
 
   <span
-    if:true={sfGpsDsIsError}
+    lwc:if={sfGpsDsIsError}
     class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
     aria-live="assertive"
     role="alert"
     id="errorMessageBlock"
   >
-    <c-sf-gps-ds-au-vic2-icon size="s" name="icon-exclamation-circle-filled">
-    </c-sf-gps-ds-au-vic2-icon>
+    <c-sf-gps-ds-au-vic2-icon-os size="s" name="icon-exclamation-circle-filled">
+    </c-sf-gps-ds-au-vic2-icon-os>
     <span>{sfGpsDsErrorMessage}</span>
   </span>
 

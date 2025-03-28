@@ -1,7 +1,6 @@
 <!-- sldsValidatorIgnore -->
 <template>
   <div class="omni-typeahead-container">
-    <!-- removed readonly={_propSetMap.readOnly} as it's not an attr in the original omnistudio typeahead -->
     <c-sf-gps-ds-au-nsw-s-typeahead-os-n
       class={computedTypeaheadClassName}
       type="text"
@@ -27,6 +26,7 @@
       onlastitemclick={enterEditMode}
       onselect={handleSelect}
       onclear={handleClear}
+      read-only={_propSetMap.readOnly}
     >
       <div slot="iconRight">
         <span
@@ -120,13 +120,14 @@
               label-class-name="form__label--small"
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
-              onchange={handleFieldBlur}
+              disabled={_propSetMap.readOnly}
               theme="sfgpsds"
               value={country}
               field-level-help=""
               data-show-lookup="true"
               message-when-value-missing={_messageWhenValueMissing}
               searchable="true"
+              onchange={handleFieldBlur}
             >
             </c-sf-gps-ds-au-nsw-s-combobox-os-n>
 
@@ -137,13 +138,13 @@
               class="manual-field"
               label="Country/region"
               label-class-name="form__label--small"
-              onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
               field-level-help=""
               placeholder=""
               value={country}
               read-only="true"
+              onblur={handleFieldBlur}
             >
             </c-sf-gps-ds-au-nsw-s-input-os-n>
           </div>
@@ -155,12 +156,13 @@
               class="manual-field"
               label="Street Address"
               label-class-name="form__label--small"
-              onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
               field-level-help=""
               placeholder=""
               value={street}
+              onblur={handleFieldBlur}
             >
             </c-sf-gps-ds-au-nsw-s-input-os-n>
           </div>
@@ -172,12 +174,13 @@
               class="manual-field"
               label={computedSuburbLabel}
               label-class-name="form__label--small"
-              onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
               field-level-help=""
               placeholder=""
               value={suburb}
+              onblur={handleFieldBlur}
             >
             </c-sf-gps-ds-au-nsw-s-input-os-n>
           </div>
@@ -192,13 +195,14 @@
               label-class-name="form__label--small"
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
-              onchange={handleFieldBlur}
+              disabled={_propSetMap.readOnly}
               theme="sfgpsds"
               value={state}
               field-level-help=""
               data-show-lookup="true"
               message-when-value-missing={_messageWhenValueMissing}
               searchable="true"
+              onchange={handleFieldBlur}
             >
             </c-sf-gps-ds-au-nsw-s-combobox-os-n>
             <c-sf-gps-ds-au-nsw-s-input-os-n
@@ -208,12 +212,13 @@
               class="manual-field"
               label="State/province/region"
               label-class-name="form__label--small"
-              onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
               field-level-help=""
               placeholder=""
               value={state}
+              onblur={handleFieldBlur}
             >
             </c-sf-gps-ds-au-nsw-s-input-os-n>
           </div>
@@ -225,14 +230,15 @@
               class="manual-field"
               label={computedPostcodeLabel}
               label-class-name="form__label--small"
-              onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
               field-level-help=""
               placeholder=""
               min-length="4"
               max-length="4"
               value={postcode}
+              onblur={handleFieldBlur}
             >
             </c-sf-gps-ds-au-nsw-s-input-os-n>
           </div>

@@ -42,10 +42,10 @@
                 class="nsw-form__input sfgpsds-combobox__input typeahead"
                 type={type}
                 placeholder={placeholder}
-                disabled={disabled}
                 required={required}
-                readonly={_readOnly}
-                aria-readonly={_readOnly}
+                disabled={computedDisabledOrReadOnly}
+                readonly={readOnly}
+                aria-readonly={readOnly}
                 tabindex={tabIndex}
                 maxlength={maxLength}
                 id="inputId"

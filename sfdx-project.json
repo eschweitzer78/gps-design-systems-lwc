@@ -3,8 +3,8 @@
     {
       "path": "sfGpsDs",
       "package": "Salesforce Global Public Sector Design Systems",
-      "versionName": "2025.02.05.2200",
-      "versionNumber": "2.7.0.NEXT",
+      "versionName": "2025.03.28.1600",
+      "versionNumber": "2.7.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -21,8 +21,8 @@
     {
       "path": "sfGpsDsAuNswFull",
       "package": "Salesforce Global Public Sector AU NSW Design System",
-      "versionName": "2025.02.28.2340",
-      "versionNumber": "2.7.2.NEXT",
+      "versionName": "2025.03.28.1600",
+      "versionNumber": "2.7.3.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -39,8 +39,8 @@
     {
       "path": "sfGpsDsAuNswSFull",
       "package": "Salesforce Global Public Sector AU NSW Service Design System",
-      "versionName": "2025.02.05.2200",
-      "versionNumber": "2.7.0.NEXT",
+      "versionName": "2025.03.28.1600",
+      "versionNumber": "2.7.1.NEXT",
       "default": false,
       "versionDescription": "Salesforce Global Public Sector AU Service NSW Design System (Full)",
       "dependencies": [
@@ -55,8 +55,8 @@
     {
       "path": "sfGpsDsAuVic1Full",
       "package": "Salesforce Global Public Sector AU VIC Design System",
-      "versionName": "2025.02.21.1600",
-      "versionNumber": "2.7.1.NEXT",
+      "versionName": "2025.03.28.1600",
+      "versionNumber": "2.7.2.NEXT",
       "default": false,
       "versionDescription": "Salesforce Global Public Sector AU VIC Design System v1 (Full)",
       "dependencies": [
@@ -72,8 +72,8 @@
     {
       "path": "sfGpsDsAuVic2Full",
       "package": "Salesforce Global Public Sector AU VIC2 Design System",
-      "versionName": "2025.02.05.2200",
-      "versionNumber": "0.4.0.NEXT",
+      "versionName": "2025.03.28.1600",
+      "versionNumber": "0.4.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -97,8 +97,8 @@
     {
       "path": "sfGpsDsUkGovFull",
       "package": "Salesforce Global Public Sector GOV.UK Design System (Full)",
-      "versionName": "2025.02.04.1600",
-      "versionNumber": "1.4.0.NEXT",
+      "versionName": "2025.03.28.1600",
+      "versionNumber": "1.4.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -118,8 +118,8 @@
     {
       "path": "sfGpsDsFrGovFull",
       "package": "Salesforce Global Public Sector GOUV.FR Design System (Full)",
-      "versionName": "2025.02.05.2200",
-      "versionNumber": "0.5.0.NEXT",
+      "versionName": "2025.03.28.1600",
+      "versionNumber": "0.5.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -131,6 +131,20 @@
     {
       "path": "sfGpsDsAuQld",
       "default": false
+    },
+    {
+      "path": "sfGpsDsAuQldFull",
+      "package": "Salesforce Global Public Sector AU QLD Design System (Full)",
+      "versionName": "2025.03.28.1600",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": "Salesforce Global Public Sector AU QLD Design System (Full)",
+      "definitionFile": "config/project-deployment-def.json",
+      "dependencies": [
+        {
+          "package": "omnistudio 254.1"
+        }
+      ]
     }
   ],
   "name": "au-design-systems-lwc",
@@ -584,6 +598,7 @@
     "Salesforce Global Public Sector AU VIC Design System@2.7.1-2": "04tJ4000000Pc18IAC",
     "Salesforce Global Public Sector AU VIC2 Design System@0.4.0-4": "04tJ4000000Pc1DIAS",
     "Salesforce Global Public Sector GOUV.FR Design System (Full)@0.5.0-5": "04tJ4000000Pc1IIAS",
-    "Salesforce Global Public Sector GOV.UK Design System (Full)@1.4.0-5": "04tJ4000000Pc1NIAS"
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@1.4.0-5": "04tJ4000000Pc1NIAS",
+    "Salesforce Global Public Sector AU QLD Design System (Full)": "0HoJ4000000001YKAQ"
   }
 }

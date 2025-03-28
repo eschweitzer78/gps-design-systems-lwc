@@ -39,6 +39,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     };
   }
 
+  get computedDisabledOrReadOnly() {
+    return this.disabled || this.readOnly;
+  }
+
   /* lifecycle */
 
   render() {
