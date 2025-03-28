@@ -1,0 +1,13 @@
+.vic-disclosure {
+  padding: 0 1rem;
+  border-left: solid var(--rpl-border-3) var(--rpl-clr-accent);
+  order: 2;
+}
+
+.vic-disclosure__consent {
+  margin-top: 1rem;
+}
+
+.vic-disclosure:first-child {
+  margin-top: 0;
+}

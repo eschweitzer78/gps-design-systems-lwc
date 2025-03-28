@@ -5,10 +5,16 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormMultiselectOsN from "c/sfGpsDsFormMultiselectOsN";
-import tmpl from "./sfGpsDsAuVic2FormMultiselectOsN.html";
+/* notes
+      field-level-help-position={_propSetMap.helpTextPos} not supported
+      required-label={allCustomLabelsUtil.OmniRequired} not suppported
+      icon-name="utility:info" not supported
+*/
 
-export default class extends SfGpsDsFormMultiselectOsN {
+import SfGpsDsFormFormulaOsN from "c/sfGpsDsFormFormulaOsN";
+import tmpl from "./sfGpsDsAuVic2FormFormulaOsN.html";
+
+export default class extends SfGpsDsFormFormulaOsN {
   /* lifecycle */
 
   render() {
@@ -20,7 +26,6 @@ export default class extends SfGpsDsFormMultiselectOsN {
       super.connectedCallback();
     }
 
-    this._readOnlyClass = "sfgpsdsauvic2-read-only";
     this.classList.add("rpl-form__outer");
     this.hostElement.style.display = "block";
   }
