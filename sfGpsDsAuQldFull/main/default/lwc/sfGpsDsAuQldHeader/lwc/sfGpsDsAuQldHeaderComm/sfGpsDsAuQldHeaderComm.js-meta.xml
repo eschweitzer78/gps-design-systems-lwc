@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Header</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="preHeaderStyle"
+        type="String"
+        label="Pre-header style"
+        description="Colour theme style used for rendering the pre-header."
+        required="true"
+        default="dark"
+        datasource="light,dark,dark-alternate"
+      />
+      <property
+        name="preHeaderLink"
+        type="String"
+        label="Pre-header link"
+        description="Label and URL for the pre-header in Markdown link format."
+        default="[qld.com.au](https://www.qld.com.au)"
+      />
+      <property
+        name="preHeaderLogo"
+        type="String"
+        label="Pre-header logo"
+        description="URL of the image for the pre-header logo with Alternative Text in Markdown URL format."
+        default="[Queensland Government](/sfsites/c/resource/sfGpsDsAuQld/assets/img/header-logo-qgov--light.svg)"
+      />
+      <property
+        name="ctaOneLink"
+        type="String"
+        label="Call to Action link one"
+        description="Label and URL for the call to action in Markdown link format. Leave blank if no cta is desired."
+        default="[Contact us](tel:1300200200)"
+      />
+      <property
+        name="ctaOneIcon"
+        type="String"
+        label="Icon name for Call to Action link one"
+        description="Font Awesome css classes to be applied."
+        default="fa-solid fa-phone"
+      />
+      <property
+        name="ctaTwoLink"
+        type="String"
+        label="Call to Action link two"
+        description="Label and URL for the call to action in Markdown link format. Leave blank if no cta is desired."
+        default=""
+      />
+      <property
+        name="ctaTwoIcon"
+        type="String"
+        label="Icon name for Call to Action link two"
+        description="Font Awesome css classes to be applied."
+        default=""
+      />
+
+      <property
+        name="searchLabel"
+        type="String"
+        label="Search label"
+        description="Label of the search buttons. Leave blank to disable search."
+        default="Search"
+      />
+      <property
+        name="searchFieldLabel"
+        type="String"
+        label="Search field label"
+        description="Label of the search field when search is expanded."
+        default="Search this website"
+      />
+      <property
+        name="menuLabel"
+        type="String"
+        label="Menu label"
+        description="Label used for the menu button."
+        default="Menu"
+      />
+      <property
+        name="contentId"
+        type="String"
+        label="Content Id"
+        description="HTML Id of the content section. Make certain it is unique on the page."
+        default="content"
+      />
+      <property
+        name="mainNavId"
+        type="String"
+        label="Menu main nav Id"
+        description="HTML Id of the main navigation menu. Make certain it is unique on the page."
+        default="main-nav"
+      />
+      <property
+        name="headerStyle"
+        type="String"
+        label="header style"
+        description="Colour theme style used for rendering the pre-header."
+        required="true"
+        default="light"
+        datasource="light,dark,dark-alternate"
+      />
+      <property
+        name="headerUrl"
+        type="String"
+        label="Header URL"
+        description="URL the user is taken to when clicking on the header. Leave empty for home page."
+        default=""
+      />
+
+      <property
+        name="siteLogo"
+        type="String"
+        label="Site logo"
+        description="URL of the image and alternative text for the site logo in Markdown link format. Leave URL empty for the default Queensland Coat of Arms."
+        default="[Queensland Government]()"
+      />
+
+      <property
+        name="siteLogoSecondary"
+        type="String"
+        label="Site logo (secondary)"
+        description="URL of the image for the secondary site logo - this will hide the title and subtitle, and he site title is used as alternative text. Leave blank if no secondary logo is desired."
+        default=""
+      />
+      <property
+        name="siteLogoSecondaryMobile"
+        type="String"
+        label="Site logo (secondary mobile)"
+        description="URL of the image for the secondary site logo on mobile. If left blank, the non-mobile logo will be used on mobile too."
+        default=""
+      />
+
+      <property
+        name="title"
+        type="String"
+        label="Site title"
+        description="Provides user context of the product or service."
+        default="Queensland Health"
+      />
+      <property
+        name="subtitle"
+        type="String"
+        label="Site descriptor"
+        description="Provides user context of the cluster/department/agency if required."
+        default="Health Careers"
+      />
+
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

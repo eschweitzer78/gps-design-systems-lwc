@@ -1,0 +1,128 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <div lwc:else class={computedClassName}>
+    <div lwc:if={computedShowButton} class="qld__accordion__toggle">
+      <button class={computedButtonClassName} onclick={handleToggleAll}>
+        {computedToggleAllLabel}
+      </button>
+    </div>
+
+    <ul class="qld__accordion-list">
+      <li lwc:if={item1Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="0"
+          title={item1Title}
+          active={item1Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-1"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item2Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="1"
+          title={item2Title}
+          active={item2Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-2"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item3Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="2"
+          title={item3Title}
+          active={item3Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-3"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item4Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="3"
+          title={item4Title}
+          active={item4Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-4"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item5Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="4"
+          title={item5Title}
+          active={item5Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-5"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item6Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="5"
+          title={item6Title}
+          active={item6Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-6"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item7Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="6"
+          title={item7Title}
+          active={item7Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-7"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item8Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="7"
+          title={item8Title}
+          active={item8Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-8"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item9Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="8"
+          title={item9Title}
+          active={item9Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-9"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+
+      <li lwc:if={item10Title}>
+        <c-sf-gps-ds-au-qld-accordion-item
+          index="9"
+          title={item10Title}
+          active={item10Active}
+          ontoggle={handleToggleItem}
+        >
+          <slot name="Accordion-10"></slot>
+        </c-sf-gps-ds-au-qld-accordion-item>
+      </li>
+    </ul>
+  </div>
+</template>

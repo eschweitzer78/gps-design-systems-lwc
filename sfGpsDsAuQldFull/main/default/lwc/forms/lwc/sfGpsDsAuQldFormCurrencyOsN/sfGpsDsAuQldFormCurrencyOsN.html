@@ -1,0 +1,68 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-au-qld-masked-input-os-n
+    type="text"
+    inputmode="decimal"
+    label={mergedLabel}
+    value={elementValue}
+    required={_propSetMap.required}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    read-only={_propSetMap.readOnly}
+    tab-index={tabIndex}
+    imask={_imaskCurrencyAttributes}
+    theme={_theme}
+    field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
+    min={_propSetMap.min}
+    max={_propSetMap.max}
+    placeholder={mergedPlaceholder}
+    message-when-value-missing={_messageWhenValueMissing}
+    message-when-pattern-mismatch={_messageWhenPatternMismatch}
+    message-when-too-short={_messageWhenTooShort}
+    message-when-too-long={_messageWhenTooLong}
+    message-when-bad-input={_messageWhenBadInput}
+    message-when-range-overflow={_messageWhenRangeOverflow}
+    message-when-range-underflow={_messageWhenRangeUnderflow}
+    message-when-step-mismatch={_messageWhenStepMismatch}
+    message-when-type-mismatch={_messageWhenTypeMismatch}
+    message-when-mask-incomplete={_messageWhenMaskIncomplete}
+    data-omni-input
+    onblur={handleBlur}
+  >
+    <template lwc:if={_propSetMap.repeat}>
+      <span
+        slot="label"
+        style="bottom: 7px; right: -11px"
+        class={_styleClasses.repeatContainer}
+        role="group"
+      >
+        <button
+          lwc:if={canRepeat}
+          class={_styleClasses.repeatAdd}
+          onclick={handleAdd}
+        >
+          <omnistudio-icon
+            icon-name="utility:add"
+            alternative-text="Repeat Currency"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class={_styleClasses.repeatRemove}
+          onclick={handleRemove}
+        >
+          <omnistudio-icon
+            icon-name="utility:close"
+            alternative-text="Remove Currency"
+            extraclass={_styleClasses.repeatIcons}
+            size="xx-small"
+          >
+          </omnistudio-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-qld-masked-input-os-n>
+</template>

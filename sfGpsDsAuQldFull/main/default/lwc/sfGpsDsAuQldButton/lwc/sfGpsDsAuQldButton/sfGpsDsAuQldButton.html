@@ -1,0 +1,29 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <a
+    lwc:if={computedIsAnchor}
+    lwc:ref="item"
+    href={url}
+    target={target}
+    class={computedClassName}
+  >
+    <i lwc:if={computedIsIconLeading} class={iconName}> </i>
+    <template lwc:if={label}>{label}</template>
+    <slot></slot>
+    <i lwc:if={computedIsIconTrailing} class={iconName}> </i>
+  </a>
+
+  <button
+    lwc:else
+    lwc:ref="item"
+    type="button"
+    disabled={disabled}
+    class={computedClassName}
+    onclick={handleClick}
+  >
+    <i lwc:if={computedIsIconLeading} class={iconName}> </i>
+    <template lwc:if={label}>{label}</template>
+    <slot></slot>
+    <i lwc:if={computedIsIconTrailing} class={iconName}> </i>
+  </button>
+</template>

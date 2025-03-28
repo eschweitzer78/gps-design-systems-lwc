@@ -1,0 +1,28 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:elseif={isEmpty}> </template>
+
+  <div lwc:else class={computedClassName}>
+    <template for:each={_items} for:item="alert">
+      <c-sf-gps-ds-au-qld-global-alert
+        lwc:if={alert._isOpen}
+        key={alert.id}
+        alert-id={alert.id}
+        level={alert.level}
+        title={alert.title}
+        content={alert.content}
+        link-text={alert.linkText}
+        link-url={alert.linkUrl}
+        dismissible={alert.dismissible}
+        class-name={alert.className}
+        onclose={handleClose}
+      >
+      </c-sf-gps-ds-au-qld-global-alert>
+    </template>
+  </div>
+</template>

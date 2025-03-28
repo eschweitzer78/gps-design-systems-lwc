@@ -1,0 +1,20 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <c-sf-gps-ds-au-qld-vertical-nav
+      title={_title}
+      nav-items={_items}
+      class-name={className}
+      onnavigate={handleNavigate}
+    >
+    </c-sf-gps-ds-au-qld-vertical-nav>
+
+    <c-sf-gps-ds-navigation-service lwc:ref="navsvc">
+    </c-sf-gps-ds-navigation-service>
+  </template>
+</template>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="sfGpsDsAuQldLeftNavThemeLayoutLwr"
+>
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS LWR Left-Nav Theme Layout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Theme_Layout</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        label="Container class name"
+        name="containerClassName"
+        type="String"
+        default="qld__grid inside vertical-nav"
+      />
+      <property
+        label="Container background colour"
+        name="containerBackgroundColor"
+        type="Color"
+      />
+      <property
+        label="Alert class name"
+        name="alertClassName"
+        type="String"
+        default="qld__global_alert_include"
+      />
+      <property
+        label="Header class name"
+        name="headerClassName"
+        type="String"
+        default=""
+      />
+      <property
+        label="Main class name"
+        name="mainClassName"
+        type="String"
+        default="main"
+      />
+      <property
+        label="Left nav class name"
+        name="leftNavClassName"
+        type="String"
+        default="qld__left-nav"
+      />
+      <property
+        label="Body class name"
+        name="bodyClassName"
+        type="String"
+        default="qld__body--left-nav"
+      />
+      <property
+        label="Content Id"
+        name="contentId"
+        type="String"
+        default="content"
+      />
+      <property
+        label="Footer class name"
+        name="footerClassName"
+        type="String"
+        default=""
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

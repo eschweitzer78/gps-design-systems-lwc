@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="sfGpsDsAuQldAppExampleThemeLayoutLwr"
+>
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS LWR App Example Theme Layout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Theme_Layout</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+</LightningComponentBundle>

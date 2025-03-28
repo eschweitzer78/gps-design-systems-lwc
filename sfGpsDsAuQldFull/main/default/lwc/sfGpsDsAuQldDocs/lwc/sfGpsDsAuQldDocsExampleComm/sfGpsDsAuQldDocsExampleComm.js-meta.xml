@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS LWR Docs Example</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="storyPreviewUrl"
+        type="String"
+        label="Example preview URL"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="code"
+        type="String"
+        label="Code"
+        description="LWC configuration snippet as JSON."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="hideNewTab"
+        type="Boolean"
+        label="Hide new tab"
+        description="Hides the open in new tab link when set."
+        default="false"
+      />
+      <property
+        name="hideCode"
+        type="Boolean"
+        label="Hide code"
+        description="Hides the show code toggle."
+        default="false"
+      />
+      <property
+        name="withPadding"
+        type="Boolean"
+        label="With padding"
+        description="Adds padding around the element."
+        default="false"
+      />
+      <property
+        name="showCallout"
+        type="Boolean"
+        label="Show callout"
+        description="Shows a callout warning that this is not a government website."
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS classes to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

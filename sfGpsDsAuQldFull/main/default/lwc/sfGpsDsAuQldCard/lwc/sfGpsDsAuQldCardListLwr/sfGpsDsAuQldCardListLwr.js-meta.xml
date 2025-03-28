@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS LWR Card List</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="col1ClassName"
+        type="String"
+        label="Column 1 Class Name"
+        description="Additional CSS class to be applied to column 1. Leave blank to hide column."
+        default="col-xs-12 col-md-6"
+      />
+      <property
+        name="col2ClassName"
+        type="String"
+        label="Column 2 Class Name"
+        description="Additional CSS class to be applied to column 1. Leave blank to hide column."
+        default="col-xs-12 col-md-6"
+      />
+      <property
+        name="col3ClassName"
+        type="String"
+        label="Column 3 Class Name"
+        description="Additional CSS class to be applied to column 3. Leave blank to hide column."
+        default=""
+      />
+      <property
+        name="col4ClassName"
+        type="String"
+        label="Column 4 Class Name"
+        description="Additional CSS class to be applied to column 4. Leave blank to hide column."
+        default=""
+      />
+      <property
+        name="col5ClassName"
+        type="String"
+        label="Column 5 Class Name"
+        description="Additional CSS class to be applied to column 5. Leave blank to hide column."
+        default=""
+      />
+      <property
+        name="col6ClassName"
+        type="String"
+        label="Column 6 Class Name"
+        description="Additional CSS class to be applied to column 6. Leave blank to hide column."
+        default=""
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        default="qld__card-list--matchheight"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

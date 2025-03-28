@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>sfGpsDsAuQldMainNavToggle</masterLabel>
+  <isExposed>true</isExposed>
+  <description
+  >A Lightning Message Channel to handle Main Nav on mobile devices.</description>
+  <lightningMessageFields>
+    <fieldName>type</fieldName>
+    <description>Type of event</description>
+  </lightningMessageFields>
+  <lightningMessageFields>
+    <fieldName>detail</fieldName>
+    <description>Detail</description>
+  </lightningMessageFields>
+</LightningMessageChannel>

@@ -1,0 +1,31 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-qld-promo-panel
+    lwc:else
+    type={type}
+    background-colour={backgroundColour}
+    title={title}
+    abstract={abstract}
+    icon={icon}
+    image={image}
+    image-alignment={imageAlignment}
+    link-type={linkType}
+    cta-link-url={computedCtaLinkUrl}
+    cta-link-title={computedCtaLinkText}
+    primary-link-url={computedPrimaryLinkUrl}
+    primary-link-title={computedPrimaryLinkText}
+    secondary-link-url={computedSecondaryLinkUrl}
+    secondary-link-title={computedSecondaryLinkText}
+    class-name={className}
+  >
+    <div lwc:if={content} lwc:ref="markdown" lwc:dom="manual"></div>
+    <template lwc:else>
+      <slot name="panelContent"></slot>
+    </template>
+  </c-sf-gps-ds-au-qld-promo-panel>
+</template>

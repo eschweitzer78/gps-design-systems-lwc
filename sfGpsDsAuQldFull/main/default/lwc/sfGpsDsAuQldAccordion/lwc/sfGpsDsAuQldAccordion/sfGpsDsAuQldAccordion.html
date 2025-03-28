@@ -1,0 +1,25 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class={computedClassName}>
+    <div lwc:if={computedShowButton} class="qld__accordion__toggle">
+      <button class={computedButtonClassName} onclick={handleToggleAll}>
+        {computedToggleAllLabel}
+      </button>
+    </div>
+
+    <ul class="qld__accordion-list">
+      <template for:each={_items} for:item="item" for:index="index">
+        <li key={item.index}>
+          <c-sf-gps-ds-au-qld-accordion-item
+            index={index}
+            title={item.title}
+            content={item.html}
+            active={item.active}
+            ontoggle={handleToggleItem}
+          >
+          </c-sf-gps-ds-au-qld-accordion-item>
+        </li>
+      </template>
+    </ul>
+  </div>
+</template>

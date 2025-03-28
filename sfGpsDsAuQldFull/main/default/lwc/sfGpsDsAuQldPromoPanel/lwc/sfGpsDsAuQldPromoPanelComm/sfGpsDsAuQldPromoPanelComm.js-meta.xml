@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Promo Panel</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        default="large-text"
+        datasource="large-text,contained,full-image"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        default="Promo panel"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="abstract"
+        type="String"
+        label="Abstract"
+        description="Adds further context to the title when required."
+        default=""
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Panel content in Markdown format, leave empty to get a slot in LWR."
+        default="Berios sim destrum facientota nis ex eost aut prae vendis explam aliquis dolorpo rrorem reptaep elenis net."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="backgroundColour"
+        type="String"
+        label="Background colour"
+        default="light"
+        datasource="light,alternate,dark,dark-alternate"
+      />
+      <property
+        name="icon"
+        type="String"
+        label="Icon"
+        description="Font Awesome icon CSS class. Leave empty if no icon is desired."
+        default=""
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="image"
+        type="String"
+        label="Image source"
+        description="URL of the image. Leave empty if no image is desired."
+        default=""
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="imageAlignment"
+        type="String"
+        label="Image alignment"
+        default="left"
+        datasource="left,right"
+      />
+      <property
+        name="linkType"
+        type="String"
+        label="Link type"
+        default="none"
+        datasource="none,cta,button"
+      />
+      <property
+        name="cta"
+        type="String"
+        label="Call to Action link"
+        description="Call to Action link in Markdown link format. Used when link type is cta."
+        default="[Learn more](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="buttonPrimary"
+        type="String"
+        label="Button (primary)"
+        description="Primary button link in Markdown link format. Used when link type is button; leave empty if no primary is required."
+        default="[Apply](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="buttonSecondary"
+        type="String"
+        label="Button (secondary)"
+        description="Secondary button link in Markdown link format. Used when link type is button; leave empty if no secondary is required."
+        default="[Read more](#)"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

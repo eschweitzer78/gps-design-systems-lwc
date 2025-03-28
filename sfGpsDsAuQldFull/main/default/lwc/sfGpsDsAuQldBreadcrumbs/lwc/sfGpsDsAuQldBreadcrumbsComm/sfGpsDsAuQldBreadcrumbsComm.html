@@ -1,0 +1,16 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-qld-breadcrumbs
+    lwc:else
+    mode={mode}
+    label={label}
+    items={_itemsArray}
+    class-name={className}
+  >
+  </c-sf-gps-ds-au-qld-breadcrumbs>
+</template>

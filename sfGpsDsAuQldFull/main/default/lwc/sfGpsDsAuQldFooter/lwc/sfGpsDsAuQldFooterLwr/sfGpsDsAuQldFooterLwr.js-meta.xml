@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS LWR Footer</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="cstyle"
+        type="String"
+        label="Colour style"
+        description="Denotes the colour style applied to the footer."
+        default="dark"
+        datasource="light,dark,dark-alternate"
+      />
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Site title, leave blank if none is desired."
+        default="Site Title"
+      />
+      <property
+        name="navHeading"
+        type="String"
+        label="Navigation heading"
+        description="An accessible description for the navigation column. Leave blank to hide the column."
+        default="Site Navigation"
+      />
+      <property
+        name="linksHeading"
+        type="String"
+        label="Links heading"
+        description="An accessible description for the Queensland Government links column. Leave blank to hide the column."
+        default="Queensland Government Links"
+      />
+      <property
+        name="socialHeading"
+        type="String"
+        label="Social heading"
+        description="An accessible description for social media links column. Leave blank to hide the column."
+        default="Follow us"
+      />
+      <property
+        name="facebookUrl"
+        type="String"
+        label="Facebook URL"
+        description="URL of the Facebook page, leave blank to omit the Facebook social icon."
+        default="https://www.facebook.com/QueenslandGovernment/"
+      />
+      <property
+        name="instagramUrl"
+        type="String"
+        label="Instagram URL"
+        description="URL of the Instagram page, leave blank to omit the Instagram social icon."
+        default="https://www.instagram.com/qldgov/"
+      />
+      <property
+        name="linkedInUrl"
+        type="String"
+        label="LinkedIn URL"
+        description="URL of the LinkedIn page, leave blank to omit the LinkedIn social icon."
+        default="https://au.linkedin.com/company/queensland-government"
+      />
+      <property
+        name="youTubeUrl"
+        type="String"
+        label="YouTube URL"
+        description="URL of the YouTube page, leave blank to omit the YouTube social icon."
+        default="https://www.youtube.com/c/QueenslandGovernment"
+      />
+      <property
+        name="twitterXUrl"
+        type="String"
+        label="Twitter/X URL"
+        description="URL of the Twitter/X page, leave blank to omit the Twitter/X social icon."
+        default="https://twitter.com/qldgov"
+      />
+      <property
+        name="acknowledgementsHeading"
+        type="String"
+        label="Acknowledgements heading"
+        description="An accessible description for the acknowledgement section. Leave blank if not desired."
+        default="Acknowledgement of Country"
+      />
+      <property
+        name="acknowledgements"
+        type="String"
+        label="Acknowledgements"
+        description="A text displayed for acknowledgements, for instance an Acknowledgement of Country."
+        default="Queensland Government acknowledges the Traditional Owners of the land and pays respect to Elders past, present and future."
+      />
+      <property
+        name="copyrightMention"
+        type="String"
+        label="Copyright mention"
+        description="Copyright text in Markdown format."
+        default="© The State of Queensland 1995-2024"
+      />
+      <property
+        name="logo"
+        type="String"
+        label="Logo"
+        description="Logo source and alternative text in Markdown link format."
+        default="[Queensland Government Coat of Arms](/sfsites/c/resource/sfGpsDsAuQld/assets/img/CoA-Landscape-White.svg)"
+      />
+      <property
+        name="logoUrl"
+        type="String"
+        label="Logo target URL"
+        description="URL the user is taken to when clicking on the logo."
+        default="https://www.qld.gov.au/"
+      />
+      <property
+        name="copyrightLink"
+        type="String"
+        label="Copyright link"
+        description="Text and target url of the copyright link in Markdown link format. Leave blank if link is not desired."
+        default="[Queensland Government](https://www.qld.gov.au/)"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+      </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

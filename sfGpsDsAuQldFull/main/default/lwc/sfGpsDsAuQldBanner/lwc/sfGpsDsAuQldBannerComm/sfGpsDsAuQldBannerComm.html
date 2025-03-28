@@ -1,0 +1,40 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-qld-banner
+    lwc:else
+    mode={mode}
+    breadcrumbs-items={_itemsArray}
+    heading-primary={headingPrimary}
+    heading-secondary={headingSecondary}
+    heading-background-display={headingBackgroundDisplay}
+    hero-image={heroImage}
+    hero-image-responsive-treatment={heroImageResponsiveTreatment}
+    hero-image-alignment={heroImageAlignment}
+    hero-image-padding={heroImagePadding}
+    background-type={backgroundType}
+    background-colour={backgroundColour}
+    background-image-sm={backgroundImageSm}
+    background-image-lg={backgroundImageLg}
+    background-image-alignment={backgroundImageAlignment}
+    background-min-height={backgroundMinHeight}
+    cta-type={ctaType}
+    button-primary={_buttonPrimary}
+    button-secondary={_buttonSecondary}
+    link-list={computedLinkList}
+    icon-tile-background={computedIconTileBackground}
+    icon-tiles={computedIconTiles}
+    class-name={className}
+  >
+    <slot name="mobileBreadcrumbs" slot="mobileBreadcrumbs"></slot>
+    <slot name="desktopBreadcrumbs" slot="desktopBreadcrumbs"></slot>
+    <div lwc:if={_abstractHtml} lwc:ref="abstract" lwc:dom="manual"></div>
+    <template lwc:else>
+      <slot name="abstract"></slot>
+    </template>
+  </c-sf-gps-ds-au-qld-banner>
+</template>

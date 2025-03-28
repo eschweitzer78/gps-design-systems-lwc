@@ -1,0 +1,107 @@
+<template>
+  <div class={computedClassName}>
+    <div lwc:if={computedIsIconCard} class="qld__card__icon">
+      <i class={icon}></i>
+    </div>
+
+    <div
+      lwc:elseif={computedIsImageCard}
+      class="qld__responsive-media-img--bg"
+      style={computedStyle}
+    ></div>
+
+    <div class="qld__card__inner">
+      <div class="qld__card__content">
+        <div class="qld__card__content-inner">
+          <h6 lwc:if={computedHeadingLevelIsH6} class="qld__card__title">
+            <a
+              lwc:if={nameUrl}
+              class="qld__card--clickable__link"
+              aria-label={nameText}
+              aria-describedby="card-description"
+              href={nameUrl}
+            >
+              {nameText}
+            </a>
+            <template lwc:else> {nameText} </template>
+          </h6>
+          <h5 lwc:elseif={computedHeadingLevelIsH5} class="qld__card__title">
+            <a
+              lwc:if={nameUrl}
+              class="qld__card--clickable__link"
+              aria-label={nameText}
+              aria-describedby="card-description"
+              href={nameUrl}
+            >
+              {nameText}
+            </a>
+            <template lwc:else> {nameText} </template>
+          </h5>
+          <h4 lwc:elseif={computedHeadingLevelIsH4} class="qld__card__title">
+            <a
+              lwc:if={nameUrl}
+              class="qld__card--clickable__link"
+              aria-label={nameText}
+              aria-describedby="card-description"
+              href={nameUrl}
+            >
+              {nameText}
+            </a>
+            <template lwc:else> {nameText} </template>
+          </h4>
+          <h3 lwc:elseif={computedHeadingLevelIsH3} class="qld__card__title">
+            <a
+              lwc:if={nameUrl}
+              class="qld__card--clickable__link"
+              aria-label={nameText}
+              aria-describedby="card-description"
+              href={nameUrl}
+            >
+              {nameText}
+            </a>
+            <template lwc:else> {nameText} </template>
+          </h3>
+          <h2 lwc:elseif={computedHeadingLevelIsH2} class="qld__card__title">
+            <a
+              lwc:if={nameUrl}
+              class="qld__card--clickable__link"
+              aria-label={nameText}
+              aria-describedby="card-description"
+              href={nameUrl}
+            >
+              {nameText}
+            </a>
+            <template lwc:else> {nameText} </template>
+          </h2>
+
+          <p id="card-description" class="qld__card__description">
+            <slot></slot>
+          </p>
+        </div>
+
+        <div lwc:if={displayArrow} class="qld__card__arrow"></div>
+      </div>
+      <div lwc:if={displayFooter} class="qld__card__footer">
+        <hr class="qld__horizontal-rule" />
+        <div class="qld__card__footer-inner">
+          <slot name="footer"></slot>
+
+          <c-sf-gps-ds-au-qld-tags
+            lwc:if={computedHasTags}
+            tags={tags}
+            class-name="qld__card__tags"
+          >
+          </c-sf-gps-ds-au-qld-tags>
+          <c-sf-gps-ds-au-qld-link-list
+            lwc:if={computedHasActions}
+            list-mode="list"
+            links={actions}
+            anchor-class-name="qld__card__footer-link"
+            icon-class-name="qld__card__footer-link-icon"
+          >
+          </c-sf-gps-ds-au-qld-link-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
