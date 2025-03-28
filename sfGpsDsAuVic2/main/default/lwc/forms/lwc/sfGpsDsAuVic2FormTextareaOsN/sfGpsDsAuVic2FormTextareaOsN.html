@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <c-sf-gps-ds-au-vic2-textarea-os-n
     label={mergedLabel}
@@ -20,11 +21,11 @@
     data-id={jsonDef.name}
     data-omni-input
     onblur={handleBlur}
-    class="slds-form__wrapper"
     counter-type={_propSetMap.counterType}
     counter-too-few-template={_propSetMap.counterTooFewTemplate}
     counter-too-many-template={_propSetMap.counterTooManyTemplate}
     counter-regular-template={_propSetMap.counterRegularTemplate}
+    class="rpl-form__wrapper"
   >
     <template if:true={_propSetMap.repeat}>
       <span

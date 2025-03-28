@@ -1,0 +1,29 @@
+<template>
+  <div class="rpl-form-dropdown__multi-value-label-wrap">
+    <div
+      lwc:ref="itemsRef"
+      class="rpl-form-dropdown__multi-value-label rpl-type-p"
+    >
+      <template iterator:it={selectedOptions}>
+        <span key={it.value.id} data-option-label="true">
+          {it.value.label}
+          <span
+            class="rpl-form-dropdown__multi-value-label-char"
+            aria-hidden="true"
+          >
+            &hellip;{it.value.charAt0}
+          </span>
+          <template if:false={it.last}>, </template>
+        </span>
+      </template>
+    </div>
+
+    <div
+      lwc:if={computedHasVisibleItems}
+      class="rpl-form-dropdown__more-label rpl-type-p"
+      style={computedStyle}
+    >
+      +{numItemsHidden} more
+    </div>
+  </div>
+</template>
