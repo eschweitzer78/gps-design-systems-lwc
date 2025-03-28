@@ -1,5 +1,9 @@
 /* eslint no-confusing-arrow: 0 */
 export function formatTemplate(template, values = {}, options = {}) {
+  if (template == null) {
+    return null;
+  }
+
   const { sep = "{}" } = options;
   const sepStart = sep.slice(0, 1);
   const sepEnd = sep.slice(1, 2) || sepStart;
