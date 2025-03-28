@@ -14,4 +14,12 @@ export default class extends SfGpsDsFormCurrencyOsN {
   render() {
     return tmpl;
   }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+
+    this._readOnlyClass = "sfgpsdsaunsw-read-only";
+  }
 }

@@ -36,6 +36,10 @@ export default class extends StatusHelperMixin(OmnistudioTypeahead) {
     };
   }
 
+  get computedDisabledOrReadOnly() {
+    return this.disabled || this.readOnly;
+  }
+
   /* lifecycle */
 
   render() {

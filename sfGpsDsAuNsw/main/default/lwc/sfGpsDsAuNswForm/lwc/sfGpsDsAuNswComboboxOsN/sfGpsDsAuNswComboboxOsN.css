@@ -1,9 +1,3 @@
 @import "c/sfGpsDsAuNswCoreOs";
 @import "c/sfGpsDsAuNswFormOs";
 @import "c/sfGpsDsAuNswPredictiveListOsN";
-
-/* add not allow cursor if disabled */
-
-.nsw-form__input:disabled {
-  cursor: not-allowed;
-}

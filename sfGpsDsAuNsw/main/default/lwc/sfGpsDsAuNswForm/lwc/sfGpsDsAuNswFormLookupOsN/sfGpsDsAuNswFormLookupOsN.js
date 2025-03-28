@@ -38,4 +38,12 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   render() {
     return tmpl;
   }
+
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+
+    this._readOnlyClass = "sfgpsdsaunsw-read-only";
+  }
 }

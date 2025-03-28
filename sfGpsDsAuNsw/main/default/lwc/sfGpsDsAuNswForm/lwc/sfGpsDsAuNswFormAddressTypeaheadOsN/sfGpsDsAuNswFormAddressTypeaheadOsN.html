@@ -1,7 +1,6 @@
 <!-- sldsValidatorIgnore -->
 <template>
   <div class="omni-typeahead-container">
-    <!-- removed readonly={_propSetMap.readOnly} as it's not an attr in the original omnistudio typeahead -->
     <c-sf-gps-ds-au-nsw-typeahead-os-n
       class={computedTypeaheadClassName}
       type="text"
@@ -12,6 +11,7 @@
       options={options}
       placeholder={mergedPlaceholder}
       required={_propSetMap.required}
+      read-only={_propSetMap.readOnly}
       min-length={_propSetMap.minLength}
       max-length={_propSetMap.maxLength}
       required-label={allCustomLabelsUtil.OmniRequired}
@@ -120,6 +120,7 @@
               onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
               field-level-help=""
               placeholder=""
               value={street}
@@ -137,6 +138,7 @@
               onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
               field-level-help=""
               placeholder=""
               value={suburb}
@@ -154,6 +156,7 @@
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
               read-only="true"
+              disabled={_propSetMap.readOnly}
               onchange={handleStateBlur}
               theme="sfgpsds"
               value={state}
@@ -175,6 +178,7 @@
               onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
               field-level-help=""
               placeholder=""
               min-length="4"
@@ -194,10 +198,11 @@
               onblur={handleFieldBlur}
               required={_propSetMap.required}
               required-label={allCustomLabelsUtil.OmniRequired}
+              read-only="true"
+              disabled={_propSetMap.readOnly}
               field-level-help=""
               placeholder=""
               value={country}
-              read-only="true"
             >
             </c-sf-gps-ds-au-nsw-input-os-n>
           </div>

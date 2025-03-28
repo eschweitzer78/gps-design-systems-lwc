@@ -268,6 +268,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     this._didGetValue = false;
     super.connectedCallback();
 
+    this._readOnlyClass = "sfgpsdsaunsw-read-only";
+
     if (this.elementValue) {
       // eslint-disable-next-line no-self-assign
       this.ingest(this.elementValue);

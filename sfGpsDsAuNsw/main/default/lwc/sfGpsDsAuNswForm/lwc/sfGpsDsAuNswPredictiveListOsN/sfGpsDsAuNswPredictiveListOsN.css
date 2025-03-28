@@ -151,8 +151,14 @@
 
 /* input */
 
-.sfgpsds-combobox__input[readonly] {
+.sfgpsds-combobox__input[readonly]:not(:disabled) {
   cursor: pointer;
+}
+
+.nsw-form__predictive .nsw-form__input.typeahead:disabled {
+  /* slds is doing some funky stuff with font size and border color */
+  font-size: var(--nsw-font-size-sm-mobile);
+  border-color: var(--nsw-grey-03);
 }
 
 /* listbox */
@@ -328,13 +334,6 @@
   background-size: 1rem auto;
 }
 
-/* already done by nsw-form__input:disabled */
-/*
-.sfgpsds-combobox__input:disabled {
-  background-color: var(--nsw-off-white);
-}
-*/
-
 .sfgpsds-combobox__input[aria-invalid="true"]:hover,
 .nsw-form__input.has-error:hover {
   background-image: url("data:image/svg+xml,%3Csvg fill='%2322272B' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E");
@@ -349,26 +348,3 @@
 * + ul.sfgpsds-dropdown {
   margin-top: 0;
 }
-
-/* START: dealing with the new styling in omnistudio__OmniLwcUtilsCss in omni246 */
-
-.nsw-form__predictive
-  input.nsw-form__input[readonly]:not([type="range"]):not(
-    [type="checkbox"]
-  ):not([type="radio"]) {
-  color: var(--nsw-text-dark);
-  font-size: var(--nsw-font-size-sm-mobile);
-  padding-right: 1rem;
-  padding-left: 1rem;
-}
-
-@media (min-width: 62rem) {
-  .nsw-form__predictive
-    input.nsw-form__input[readonly]:not([type="range"]):not(
-      [type="checkbox"]
-    ):not([type="radio"]) {
-    font-size: var(--nsw-font-size-sm-desktop);
-  }
-}
-
-/* END */

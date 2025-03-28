@@ -7,17 +7,3 @@
 .nsw-form__group:first-child {
   margin-top: 1rem;
 }
-
-textarea.nsw-form__input[readonly] {
-  border-color: var(--nsw-grey-01);
-  color: var(--nsw-text-dark);
-  font-size: var(--nsw-font-size-sm-mobile);
-  padding-right: 1rem;
-  padding-left: 1rem;
-}
-
-@media (min-width: 62rem) {
-  textarea.nsw-form__input[readonly] {
-    font-size: var(--nsw-font-size-sm-desktop);
-  }
-}
