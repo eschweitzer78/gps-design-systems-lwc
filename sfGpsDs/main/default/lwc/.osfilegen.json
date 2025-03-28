@@ -112,14 +112,17 @@
   },
   "sfGpsDsTransition": {
     "target": "!Os",
-    "transition-util.js": { "target": "transition-util.js" },
+    "!.html": { "target": "!Os.html" },
     "!.js": {
       "target": "!Os.js",
-      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsLwc": "SfGpsDsLwcOsN",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
-    }
+    },
+    "transition-util.js": { "target": "transition-util.js" }
   }
 }
