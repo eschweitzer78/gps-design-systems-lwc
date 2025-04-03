@@ -1,3 +1,12 @@
 @import "c/sfGpsDsAuNswCoreOs";
 @import "c/sfGpsDsAuNswFormOs";
 @import "c/sfGpsDsAuNswAccordionGroupCssOs";
+
+.non-collapsible .nsw-accordion__title .active,
+.non-collapsible .nsw-accordion__title:hover .nsw-accordion__title,
+.non-collapsible .nsw-accordion__button .active,
+.non-collapsible .nsw-accordion__title:hover .nsw-accordion__button,
+.non-collapsible .nsw-accordion__button:hover .nsw-accordion__title,
+.non-collapsible .nsw-accordion__button:hover .nsw-accordion__button {
+  cursor: default;
+}
