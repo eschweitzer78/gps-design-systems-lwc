@@ -37,7 +37,9 @@ export default class extends SfGpsDsOmniHasValidationMixin(OmniscriptLookup) {
   }
 
   get sfGpsDsErrorMessage() {
-    return this.errorMessage || this.sfGpsDsGetCustomValidation();
+    return omniGetMergedField(
+      this.errorMessage || this.sfGpsDsGetCustomValidation()
+    );
   }
 
   get computedOptions() {
@@ -170,6 +172,6 @@ export default class extends SfGpsDsOmniHasValidationMixin(OmniscriptLookup) {
 
   @api
   get validationMessage() {
-    return this.sfGpsDsErrorMessage;
+    return omniGetMergedField(this, this.errorMessage);
   }
 }

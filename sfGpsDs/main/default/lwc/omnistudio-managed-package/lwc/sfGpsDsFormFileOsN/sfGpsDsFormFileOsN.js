@@ -27,7 +27,7 @@ export default class extends SfGpsDsOmniHasValidationMixin(OmniscriptFile) {
   }
 
   get sfGpsDsErrorMessage() {
-    return this.errorMessage;
+    return omniGetMergedField(this, this.errorMessage);
   }
 
   @api
