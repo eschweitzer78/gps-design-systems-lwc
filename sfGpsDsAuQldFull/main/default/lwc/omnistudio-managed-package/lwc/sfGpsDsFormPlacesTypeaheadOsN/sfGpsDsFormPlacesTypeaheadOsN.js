@@ -25,4 +25,16 @@ export default class extends SfGpsDsOmniHasValidationMixin(
   get mergedPlaceholder() {
     return omniGetMergedField(this, this._placeholder);
   }
+
+  get mergedMessageWhenValueMissing() {
+    return omniGetMergedField(this, this._messageWhenValueMissing);
+  }
+
+  get mergedMessageWhenTooShort() {
+    return omniGetMergedField(this, this._messageWhenTooShort);
+  }
+
+  get mergedMessageWhenTooLong() {
+    return omniGetMergedField(this, this._messageWhenTooLong);
+  }
 }
