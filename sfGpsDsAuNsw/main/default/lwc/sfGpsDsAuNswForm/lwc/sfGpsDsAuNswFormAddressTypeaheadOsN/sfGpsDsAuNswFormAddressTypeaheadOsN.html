@@ -15,9 +15,9 @@
       min-length={_propSetMap.minLength}
       max-length={_propSetMap.maxLength}
       required-label={allCustomLabelsUtil.OmniRequired}
-      message-when-value-missing={_messageWhenValueMissing}
-      message-when-too-short={_messageWhenTooShort}
-      message-when-too-long={_messageWhenTooLong}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
       theme="sfgpsds"
       value={elementValueLabel}
       remote-source={_useRemoteSource}
@@ -30,8 +30,9 @@
     >
       <div slot="iconRight">
         <span
-          class="has-text-link cannot-find-address label-link"
+          class="cannot-find-address"
           role="button"
+          tabindex="0"
           onclick={handleToggle}
         >
           Enter address manually
@@ -79,8 +80,9 @@
           <div class="sfgpsds-label__group_action">
             <div>
               <span
-                class="has-text-link cannot-find-address label-link"
+                class="cannot-find-address"
                 role="button"
+                tabindex="0"
                 onclick={handleToggle}
               >
                 Smart address lookup

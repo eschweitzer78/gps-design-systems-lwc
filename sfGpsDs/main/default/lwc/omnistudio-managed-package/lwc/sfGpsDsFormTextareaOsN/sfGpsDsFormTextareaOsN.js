@@ -23,4 +23,20 @@ export default class extends SfGpsDsOmniHasValidationMixin(OmniscriptTextarea) {
   get mergedPlaceholder() {
     return omniGetMergedField(this, this._propSetMap.placeholder);
   }
+
+  get mergedMessageWhenValueMissing() {
+    return omniGetMergedField(this, this._messageWhenValueMissing);
+  }
+
+  get mergedMessageWhenTooShort() {
+    return omniGetMergedField(this, this._messageWhenTooShort);
+  }
+
+  get mergedMessageWhenTooLong() {
+    return omniGetMergedField(this, this._messageWhenTooLong);
+  }
+
+  get mergedMessageWhenBadInput() {
+    return omniGetMergedField(this, this._messageWhenBadInput);
+  }
 }

@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore-->
 <template>
   <c-sf-gps-ds-au-nsw-date-picker-v2-os-n
     label={mergedLabel}
@@ -11,10 +12,10 @@
     locale-format={allCustomLabelsUtil.OmniDayJsLocaleFormats}
     locale-format-invalid-error={allCustomLabelsUtil.OmniLocaleFormatsInvalid}
     required-label={allCustomLabelsUtil.OmniRequired}
-    message-when-value-missing={_messageWhenValueMissing}
-    message-when-bad-input={_messageWhenBadInput}
-    message-when-range-overflow={_messageWhenRangeOverflow}
-    message-when-range-underflow={_messageWhenRangeUnderflow}
+    message-when-value-missing={mergedMessageWhenValueMissing}
+    message-when-bad-input={mergedMessageWhenBadInput}
+    message-when-range-overflow={mergedMessageWhenRangeOverflow}
+    message-when-range-underflow={mergedMessageWhenRangeUnderflow}
     min={_min}
     max={_max}
     field-level-help={mergedHelpText}

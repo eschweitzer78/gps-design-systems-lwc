@@ -8,6 +8,10 @@
 .cannot-find-address {
   font-size: var(--nsw-font-size-sm-mobile);
   line-height: var(--nsw-line-height-sm-mobile);
+  color: var(--nsw-link);
+  font-weight: var(--nsw-font-bold);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 @media (min-width: 62rem) {
@@ -24,19 +28,6 @@
 .nsw-col.country {
   padding-top: 0;
   padding-bottom: 0;
-}
-
-.has-text-link {
-  cursor: pointer;
-}
-
-.label-link {
-  text-decoration: underline;
-  color: #2e5299;
-}
-
-.has-text-link {
-  color: #3273dc !important;
 }
 
 .address-container input {
