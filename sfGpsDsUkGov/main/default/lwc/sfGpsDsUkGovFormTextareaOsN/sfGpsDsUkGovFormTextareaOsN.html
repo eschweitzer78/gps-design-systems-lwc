@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore-->
 <template>
   <c-sf-gps-ds-uk-gov-textarea-os-n
     label={mergedLabel}
@@ -13,10 +14,10 @@
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
     placeholder={mergedPlaceholder}
-    message-when-value-missing={_messageWhenValueMissing}
-    message-when-too-short={_messageWhenTooShort}
-    message-when-too-long={_messageWhenTooLong}
-    message-when-bad-input={_messageWhenBadInput}
+    message-when-value-missing={mergedMessageWhenValueMissing}
+    message-when-too-short={mergedMessageWhenTooShort}
+    message-when-too-long={mergedMessageWhenTooLong}
+    message-when-bad-input={mergedMessageWhenBadInput}
     required-label={allCustomLabelsUtil.OmniRequired}
     autocomplete={_autocomplete}
     data-id={jsonDef.name}

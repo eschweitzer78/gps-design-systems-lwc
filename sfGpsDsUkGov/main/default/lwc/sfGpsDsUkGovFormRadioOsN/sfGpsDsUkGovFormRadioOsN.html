@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <c-sf-gps-ds-uk-gov-radio-group-os-n
     name={jsonDef.name}
@@ -14,7 +15,7 @@
     theme={_theme}
     type="radio"
     alignment={_horizontalMode}
-    message-when-value-missing={_messageWhenValueMissing}
+    message-when-value-missing={mergedMessageWhenValueMissing}
     data-refresh={refresh}
     data-omni-input
     onchange={handleChange}
