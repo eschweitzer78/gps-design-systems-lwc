@@ -91,6 +91,7 @@
                     <!-- removed onmouseover={handleMouseOver} -->
                     <!-- removed onmouseout={handleMouseOut} -->
                     <div
+                      lwc:if={item.isClear}
                       class="sfgpsds-listbox__option sfgpsds-listbox__option--plain"
                       data-value={item.value}
                       data-label={item.label}
@@ -106,6 +107,19 @@
                         {item.label}
                       </span>
                     </div>
+                    <a
+                      lwc:else
+                      href={item.href}
+                      class="sfgpsds-listbox__option sfgpsds-listbox__option--plain"
+                      data-value={item.value}
+                      data-label={item.label}
+                      data-option-id={item.optId}
+                      role="option"
+                      id={item.optId}
+                      onmouseup={selectOption}
+                    >
+                      {item.label}
+                    </a>
                   </li>
                 </template>
               </ul>
