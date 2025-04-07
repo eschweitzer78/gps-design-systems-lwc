@@ -364,7 +364,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     if (DEBUG) console.log(CLASS_NAME, "< setAndDispatchValue");
   }
 
-  updateDisplayValue() {
+  async updateDisplayValue() {
     const val = this._parsedValue;
 
     if (DEBUG)
@@ -379,12 +379,27 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       this._displayDayValue = val.date();
       this._displayMonthValue = val.month() + 1;
       this._displayYearValue = val.year();
+
+      /* here we actually have to make sure those last few changes make it to the DOM prior to a validation occurring */
+      if (this.refs?.dateInput)
+        this.refs.dateInput.value = this._displayDayValue;
+      if (this.refs?.monthInput)
+        this.refs.monthInput.value = this._displayMonthValue;
+      if (this.refs?.yearInput)
+        this.refs.yearInput.value = this._displayYearValue;
     } else {
       // Do not change the value of the individual fields
     }
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< updateDisplayValue", this._displayValue);
+      console.log(
+        CLASS_NAME,
+        "< updateDisplayValue",
+        this._displayValue,
+        this._displayDayValue,
+        this._displayMonthValue,
+        this._displayYearValue
+      );
   }
 
   /* api: outputFormat */
@@ -1319,7 +1334,14 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         typeMismatch: () => false,
         valueMissing: () => {
           if (DEBUG)
-            console.log(CLASS_NAME, "> _constraint.valueMissing", this._value);
+            console.log(
+              CLASS_NAME,
+              "> _constraint.valueMissing",
+              this._value,
+              this.refs.dateInput?.value,
+              this.refs.monthInput?.value,
+              this.refs.yearInput?.value
+            );
 
           let rv = false;
 
