@@ -23,4 +23,44 @@ export default class extends SfGpsDsOmniHasValidationMixin(OmniscriptText) {
   get mergedPlaceholder() {
     return omniGetMergedField(this, this._placeholder);
   }
+
+  get mergedMessageWhenValueMissing() {
+    return omniGetMergedField(this, this._messageWhenValueMissing);
+  }
+
+  get mergedMessageWhenPatternMismatch() {
+    return omniGetMergedField(this, this._messageWhenPatternMismatch);
+  }
+
+  get mergedMessageWhenTooShort() {
+    return omniGetMergedField(this, this._messageWhenTooShort);
+  }
+
+  get mergedMessageWhenTooLong() {
+    return omniGetMergedField(this, this._messageWhenTooLong);
+  }
+
+  get mergedMessageWhenBadInput() {
+    return omniGetMergedField(this, this._messageWhenBadInput);
+  }
+
+  get mergedMessageWhenRangeOverflow() {
+    return omniGetMergedField(this, this._messageWhenRangeOverflow);
+  }
+
+  get mergedMessageWhenRangeUnderflow() {
+    return omniGetMergedField(this, this._messageWhenRangeUnderflow);
+  }
+
+  get mergedMessageWhenStepMismatch() {
+    return omniGetMergedField(this, this._messageWhenStepMismatch);
+  }
+
+  get mergedMessageWhenTypeMismatch() {
+    return omniGetMergedField(this, this._messageWhenTypeMismatch);
+  }
+
+  get mergedMessageWhenMaskIncomplete() {
+    return omniGetMergedField(this, this._messageWhenMaskIncomplete);
+  }
 }
