@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <c-sf-gps-ds-au-nsw-input-os-n
     type="datetime"
@@ -19,7 +20,6 @@
     pick-year-label={allCustomLabelsUtil.OmniPickYr}
     today-label={allCustomLabelsUtil.OmniToday}
     required-label={allCustomLabelsUtil.OmniRequired}
-    min={_min}
     message-when-value-missing={mergedMessageWhenValueMissing}
     message-when-pattern-mismatch={mergedMessageWhenPatternMismatch}
     message-when-too-short={mergedMessageWhenTooShort}
@@ -29,6 +29,7 @@
     message-when-range-underflow={mergedMessageWhenRangeUnderflow}
     message-when-step-mismatch={mergedMessageWhenStepMismatch}
     message-when-type-mismatch={mergedMessageWhenTypeMismatch}
+    min={_min}
     max={_max}
     timezone={_timezone}
     interval={_timeInterval}

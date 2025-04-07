@@ -31,6 +31,37 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(OmnistudioCombobox) {
     };
   }
 
+  /* overrides */
+
+  get internalOptionsCopy() {
+    const rv = super.internalOptionsCopy;
+
+    for (let i = 0; i < rv.length; i++) {
+      const item = rv[i];
+      rv[i].href = `#option-${item.optId}`;
+      rv[i].isClear = item.value === "none" || item.value === "";
+      // It should really be none but the original handleKeyDown has a bug/typo on ArrowUp when open that uses this.options when it should be this.internalOptions
+      // This has a side effect of clearning none values. Overall all of that is not optimal as it means you cannot have a properly working combobox with an option
+      // whose value is either "none" or the empty string.
+    }
+
+    return rv;
+  }
+
+  set internalOptionsCopy(value) {
+    super.internalOptionsCopy = value;
+  }
+
+  /* event management */
+
+  selectOption(event, selectedOption) {
+    if (event) {
+      event.preventDefault(); // prevents following the href
+    }
+
+    super.selectOption(event, selectedOption);
+  }
+
   /* lifecycle */
 
   render() {

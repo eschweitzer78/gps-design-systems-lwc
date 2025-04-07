@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <div class="omni-typeahead-container">
     <c-sf-gps-ds-fr-gov-typeahead-os-n
@@ -13,9 +14,9 @@
       required-label={allCustomLabelsUtil.OmniRequired}
       min-length={_propSetMap.minLength}
       max-length={_propSetMap.maxLength}
-      message-when-value-missing={_messageWhenValueMissing}
-      message-when-too-short={_messageWhenTooShort}
-      message-when-too-long={_messageWhenTooLong}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
       theme="sfgpsds"
       value={elementValue}
       remote-source
@@ -57,9 +58,9 @@
       min-length={_propSetMap.minLength}
       max-length={_propSetMap.maxLength}
       required-label={allCustomLabelsUtil.OmniRequired}
-      message-when-value-missing={_messageWhenValueMissing}
-      message-when-too-short={_messageWhenTooShort}
-      message-when-too-long={_messageWhenTooLong}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
       theme="sfgpsds"
       value={elementValue}
       remote-source={_useRemoteSource}

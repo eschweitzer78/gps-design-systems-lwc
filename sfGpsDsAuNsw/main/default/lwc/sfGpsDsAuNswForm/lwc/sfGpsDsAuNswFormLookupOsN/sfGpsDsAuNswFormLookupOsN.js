@@ -10,6 +10,10 @@ import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswFormLookupOsN.html";
 
+const I18N = {
+  clearLabel: "-- Clear --"
+};
+
 export default class extends SfGpsDsAuNswStatusHelperMixin(
   SfGpsDsFormLookupOsN
 ) {
@@ -31,6 +35,29 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       helper: this._handleHelpText,
       errorMessageBlock: this.sfGpsDsIsError
     });
+  }
+
+  get computedOptions() {
+    const rv = super.computedOptions;
+
+    for (let i = 0; i < rv.length; i++) {
+      const item = rv[i];
+      if (item.value === "--") {
+        item.isClear = true;
+        item.value = I18N.clearLabel;
+      }
+
+      item.href = `#option-${item.id}`;
+    }
+
+    return rv;
+  }
+
+  /* event management */
+
+  selectOption(event) {
+    event.preventDefault(); // prevents following the href
+    super.selectOption(event);
   }
 
   /* lifecycle */

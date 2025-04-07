@@ -81,6 +81,13 @@
               onkeyup={handleKeyUp}
               onmouseup={showLookup}
             />
+
+            <template lwc:if={isPageLoading}>
+              <div class="loader">
+                <c-sf-gps-ds-au-nsw-loader-os label="" size="sm">
+                </c-sf-gps-ds-au-nsw-loader-os>
+              </div>
+            </template>
           </div>
 
           <div
@@ -109,6 +116,7 @@
                   onmouseup={selectOption}
                 >
                   <div
+                    lwc:if={optionItem.isClear}
                     class="sfgpsds-listbox__option sfgpsds-listbox__option--plain"
                     id={optionItem.id}
                     role="option"
@@ -121,6 +129,17 @@
                       {optionItem.value}
                     </span>
                   </div>
+
+                  <a
+                    lwc:else
+                    href={optionItem.href}
+                    class="sfgpsds-listbox__option sfgpsds-listbox__option--plain"
+                    id={optionItem.id}
+                    role="option"
+                    aria-selected={optionItem.selected}
+                  >
+                    {optionItem.value}
+                  </a>
                 </li>
               </template>
             </ul>
@@ -145,13 +164,5 @@
       </span>
       {sfGpsDsErrorMessage}
     </span>
-
-    <template lwc:if={isPageLoading}>
-      <c-sf-gps-ds-au-nsw-loader-os
-        label={allCustomLabelsUtil.OmniSpinnerTextLoading}
-        size="sm"
-      >
-      </c-sf-gps-ds-au-nsw-loader-os>
-    </template>
   </div>
 </template>

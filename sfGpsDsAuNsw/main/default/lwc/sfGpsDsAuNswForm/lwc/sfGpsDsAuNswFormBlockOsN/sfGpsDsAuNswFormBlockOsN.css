@@ -10,3 +10,13 @@
 .non-collapsible .nsw-accordion__button:hover .nsw-accordion__button {
   cursor: default;
 }
+
+.nsw-accordion:first-child {
+  margin-top: 1rem;
+}
+
+@media (min-width: 48rem) {
+  .nsw-accordion:first-child {
+    margin-top: 1rem;
+  }
+}

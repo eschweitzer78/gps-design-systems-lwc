@@ -89,7 +89,9 @@
                     role="presentation"
                     data-itrkey={item.itrKey}
                   >
-                    <div
+                    <a
+                      lwc:if={item.name}
+                      href={item.href}
                       class={item.itemClass}
                       aria-selected={item.selected}
                       id={item.itrKey}
@@ -97,10 +99,24 @@
                       data-index={index}
                       onclick={selectOption}
                     >
-                      <span class="sfgpsds-listbox__option-text"
-                        >{item.name}</span
-                      >
-                    </div>
+                      {item.preSpan}
+                      <span lwc:if={item.span}> {item.span} </span>
+                      <template lwc:if={item.postSpan}>
+                        {item.postSpan}
+                      </template>
+                    </a>
+                    <a
+                      lwc:else
+                      href="#no-result"
+                      aria-selected="false"
+                      class={item.itemClass}
+                      id={item.itrKey}
+                      role="presentation"
+                      data-index={index}
+                      onclick={handleClearOption}
+                    >
+                      {i18n.noResultFound}
+                    </a>
                   </li>
                 </template>
 

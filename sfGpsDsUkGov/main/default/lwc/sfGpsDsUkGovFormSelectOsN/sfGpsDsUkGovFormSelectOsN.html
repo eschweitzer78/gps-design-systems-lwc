@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <c-sf-gps-ds-uk-gov-select-os-n
     options={_realtimeOptions}
@@ -10,7 +11,7 @@
     field-level-help-position={_propSetMap.helpTextPos}
     read-only={_readOnly}
     disabled={_readOnly}
-    message-when-value-missing={_messageWhenValueMissing}
+    message-when-value-missing={mergedMessageWhenValueMissing}
     data-refresh={refresh}
     data-omni-input
     onchange={handleChange}
