@@ -21,4 +21,8 @@ export default class extends SfGpsDsOmniHasValidationMixin(
   get mergedCheckLabel() {
     return omniGetMergedField(this, this._propSetMap.checkLabel);
   }
+
+  get mergedMessageWhenValueMissing() {
+    return omniGetMergedField(this, this._messageWhenValueMissing);
+  }
 }
