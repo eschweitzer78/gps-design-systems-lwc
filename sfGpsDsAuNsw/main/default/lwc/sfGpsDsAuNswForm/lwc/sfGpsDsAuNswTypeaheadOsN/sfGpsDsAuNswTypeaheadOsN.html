@@ -98,12 +98,10 @@
                       role="option"
                       data-index={index}
                       onclick={selectOption}
-                    >
-                      {item.preSpan}
-                      <span lwc:if={item.span}> {item.span} </span>
-                      <template lwc:if={item.postSpan}>
-                        {item.postSpan}
-                      </template>
+                      >{item.preSpan}<span lwc:if={item.span}>{item.span}</span>
+                      <template lwc:if={item.postSpan}
+                        >{item.postSpan}</template
+                      >
                     </a>
                     <a
                       lwc:else

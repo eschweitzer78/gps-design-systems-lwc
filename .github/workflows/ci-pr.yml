@@ -4,12 +4,18 @@ name: CI on PR
 # Definition when the workflow should run
 on:
   workflow_dispatch:
+    inputs:
+      prerelease:
+        description: "Run on a pre-release org?"
+        required: false
+        type: boolean
   pull_request:
     types: [opened, edited, synchronize, reopened]
-    branches-ignore:
-      - prerelease/spring[2-9][0-9]
-      - prerelease/summer[2-9][0-9]
-      - prerelease/winter[2-9][0-9]
+
+# Workflow environment variables
+env:
+  # Is the PR base branch a prerelease branch
+  IS_PRERELEASE: ${{ startsWith(github.event.pull_request.base.ref, 'prerelease/') || inputs.prerelease  }}
 
 # Jobs to be executed
 jobs:
@@ -70,6 +76,43 @@ jobs:
         with:
           flags: LWC
           token: ${{ secrets.CODECOV_TOKEN }}
+
+  # Auto merge Dependabot PRs for:
+  # - patch updates on prod dependencies
+  # - minor updates on dev dependencies
+  dependabot-auto-merge:
+    # Only run for Dependabot PRs
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    needs: format-lint-lwc-tests
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - name: "Fetch Dependabot metadata"
+        id: dependabot
+        uses: dependabot/fetch-metadata@v2
+
+      - name: "Check auto merge conditions"
+        id: auto-merge
+        if: |
+          (
+            steps.dependabot.outputs.update-type == 'version-update:semver-patch' &&
+            contains('direct:production,indirect:production', steps.dependabot.outputs.dependency-type)
+          ) || (
+            contains('version-update:semver-minor,version-update:semver-patch', steps.dependabot.outputs.update-type) &&
+            contains('direct:development,indirect:development', steps.dependabot.outputs.dependency-type)
+          )
+        run: echo "::notice ::auto-merge conditions satisfied"
+
+      - name: "Approve and merge PR"
+        if: steps.auto-merge.conclusion == 'success'
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --rebase "$PR_URL"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
 
   scratch-org-test:
     runs-on: ubuntu-latest
@@ -226,7 +269,7 @@ jobs:
       # Confirm version Salesforce CLI
       - name: "Confirm Salesforce CLI version"
         run: |
-          sfdx --version
+          sf --version
 
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"
@@ -241,15 +284,21 @@ jobs:
 
       # Authenticate dev hub
       - name: "Authenticate Dev Hub"
-        run: sfdx auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
+        run: sf auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
 
-      # Create scratch org
+      # Create pre-release scratch org
+      - name: "Create pre-release scratch org"
+        if: ${{ env.IS_PRERELEASE }}
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --release=preview
+
+        # Create scratch org
       - name: "Create scratch org"
-        run: sfdx org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
+        if: ${{ !env.IS_PRERELEASE }}
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
+        run: sf package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
 
       # Generate css from scss
       - name: "Automatically generate css"
@@ -262,26 +311,26 @@ jobs:
       # Deploy source to scratch org
       - name: "Push source to scratch org"
         run: |
-          sfdx project deploy start --source-dir sfGpsDs --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuNsw --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuNswS --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuQld --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuVic --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuVic2 --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsUkGov --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsFrGov --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDs --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuNsw --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuNswS --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuQld --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuVic --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuVic2 --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsUkGov --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsFrGov --target-org=scratch-org
 
       # Assign permissionset
       # - name: 'Assign permissionset to default user'
-      #  run: sfdx force:user:permset:assign -n recipes
+      #  run: sf force:user:permset:assign -n recipes
 
       # Import sample data
       # - name: 'Import sample data'
-      #  run: sfdx force:data:tree:import -p ./data/data-plan.json
+      #  run: sf force:data:tree:import -p ./data/data-plan.json
 
       # Run Apex tests in scratch org
       - name: "Run Apex tests"
-        run: sfdx force apex test run --code-coverage --result-format=human --output-dir=./tests/apex --wait=20 --test-level=RunLocalTests
+        run: sf force apex test run --code-coverage --result-format=human --output-dir=./tests/apex --wait=20 --test-level=RunLocalTests
 
       # Delete temporary test file that Codecov is unable to parse
       #- name: "Delete coverage file (temporary step)"
@@ -297,7 +346,7 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org delete scratch --no-prompt --target-org=scratch-org
+        run: sf org delete scratch --no-prompt --target-org=scratch-org
 
   trigger-packaging:
     runs-on: ubuntu-latest
@@ -311,8 +360,8 @@ jobs:
       - name: "Check for package changes"
         id: checkForChanges
         run: |
-          git fetch origin ${{ github.event.before }} --depth=1
-          changedPaths=$( git diff-tree --name-only ${{ github.event.before }} $GITHUB_SHA )
+          git fetch origin $GITHUB_BASE_REF --depth=1
+          changedPaths=$( git diff-tree --name-only origin/$GITHUB_BASE_REF $GITHUB_SHA )
           set +e
           hasChanges='false'
           hasChangesSfGpsDs='false'
@@ -365,11 +414,11 @@ jobs:
           echo "hasChangesSfGpsDsFrGov=$hasChangesSfGpsDsFrGov" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsUkGov=$hasChangesSfGpsDsUkGov" >> $GITHUB_OUTPUT
 
-      # Trigger packaging workflow if needed
-      - name: "Trigger packaging workflow if needed"
+      # Trigger packaging PR workflow if needed
+      - name: "Trigger packaging PR workflow if needed"
         uses: peter-evans/repository-dispatch@v3
         if: ${{ steps.checkForChanges.outputs.hasChanges == 'true' }}
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
-          event-type: start-packaging
-          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuQld": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuQld }}", "sfGpsDsAuVic1": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic1 }}", "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsFrGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsFrGov }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'
+          event-type: start-packaging-pr
+          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "isPrelease": "${{ env.IS_PRERELEASE }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuQld": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuQld }}", "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsFrGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsFrGov }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'

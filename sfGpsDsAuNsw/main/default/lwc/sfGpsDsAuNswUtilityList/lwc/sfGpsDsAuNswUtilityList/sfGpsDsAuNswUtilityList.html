@@ -3,7 +3,7 @@
     <ul>
       <li
         lwc:if={copyLabel}
-        class="nsw-utility-list__item"
+        class={computedCopyClassName}
         tabindex="0"
         onclick={handleCopyClick}
         onkeyup={handleCopyKeyup}
@@ -11,7 +11,8 @@
         <span class="material-icons nsw-material-icons" aria-hidden="true"
           >link</span
         >
-        <span>{copyLabel}</span>
+        <span lwc:if={_clipboardCopied}>{copiedLabel}</span>
+        <span lwc:else>{copyLabel}</span>
       </li>
 
       <li

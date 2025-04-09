@@ -39,16 +39,31 @@
       <property
         name="srLabel"
         type="String"
-        label="Screenreader label"
-        description="Text used to label the search input field on screen-readers."
+        label="Label"
+        description="Text used to label the search input field."
         default="Search for:"
+      />
+      <property
+        name="showLabel"
+        type="Boolean"
+        label="Show label"
+        description="Will make the label visible vs. keeping it for screenreaders only."
+        default="false"
       />
       <property
         name="srSearchButtonLabel"
         type="String"
-        label="Screenreader search button label"
-        description="Text used to label the search button on screen-readers."
+        label="Search button label"
+        description="Text used to label the search button."
         default="Search"
+      />
+      <property
+        name="bStyle"
+        type="String"
+        label="Search button style"
+        description="Indicates whether the button features text or an icon."
+        default="icon"
+        datasource="icon,text"
       />
       <property
         name="className"

@@ -51,7 +51,7 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
   /* event management */
 
   handleScroll() {
-    const rootElement = this.template.firstElementChild;
+    const rootElement = this.refs.containerRef;
 
     if (rootElement) {
       this.scrollY = window.scrollY || window.pageYOffset;

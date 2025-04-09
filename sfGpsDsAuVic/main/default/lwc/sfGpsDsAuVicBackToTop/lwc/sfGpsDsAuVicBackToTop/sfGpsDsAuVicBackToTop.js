@@ -11,7 +11,8 @@ export default class extends LightningElement {
   stickyPos = 1200;
 
   setScrollVisibility() {
-    const rootElement = this.template.firstElementChild;
+    /* eslint-disable @lwc/lwc/no-template-children */
+    const rootElement = this.refs.root;
 
     if (rootElement) {
       let scrollY = window.scrollY || window.pageYOffset;

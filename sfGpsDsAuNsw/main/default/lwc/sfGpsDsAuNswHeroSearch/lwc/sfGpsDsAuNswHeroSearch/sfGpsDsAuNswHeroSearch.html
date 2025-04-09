@@ -6,9 +6,11 @@
         <div class="hero-search__content">
           <h1>{title}</h1>
           <p class="nsw-intro">{intro}</p>
-          <div role="search" class="hero-search__form">
-            <form class="nsw-form__input-group nsw-form__input-group--icon">
-              <label class="sr-only" for="form-input-group">{srLabel}</label>
+          <form role="search" class="hero-search__form">
+            <label class={computedLabelClassName} for="form-input-group"
+              >{searchLabel}</label
+            >
+            <div class={computedInputGroupClassName}>
               <input
                 class="nsw-form__input"
                 type="text"
@@ -22,15 +24,19 @@
                 class="nsw-button nsw-button--dark nsw-button--flex"
                 onclick={handleClick}
               >
+                <span lwc:if={computedHasTextButton}>
+                  {searchButtonLabel}
+                </span>
                 <span
+                  lwc:elseif={computedHasIconButton}
                   class="material-icons nsw-material-icons"
                   aria-hidden="true"
                   >search</span
                 >
-                <span class="sr-only">{srSearchButtonLabel}</span>
+                <span class="sr-only">{searchButtonLabel}</span>
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
 
           <div lwc:if={links} class="hero-search__suggested">
             <ul>

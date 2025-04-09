@@ -39,7 +39,7 @@ jobs:
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm ci --force
+        run: HUSKY=0 npm ci --force
         env:
           GHCR_TOKEN: ${{ secrets.GHCR_ACCESS_TOKEN }}
 
@@ -217,7 +217,7 @@ jobs:
       # Confirm version Salesforce CLI
       - name: "Confirm Salesforce CLI version"
         run: |
-          sfdx --version
+          sf --version
 
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"
@@ -232,15 +232,15 @@ jobs:
 
       # Authenticate dev hub
       - name: "Authenticate Dev Hub"
-        run: sfdx auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
+        run: sf auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
 
       # Create scratch org
       - name: "Create scratch org"
-        run: sfdx org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
+        run: sf package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
 
       # Generate css from scss
       - name: "Automatically generate css"
@@ -253,26 +253,26 @@ jobs:
       # Deploy source to scratch org (but not showcases)
       - name: "Push source to scratch org"
         run: |
-          sfdx project deploy start --source-dir sfGpsDs --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuNsw --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuNswS --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuQld --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuVic --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsAuVic2 --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsUkGov --target-org=scratch-org
-          sfdx project deploy start --source-dir sfGpsDsFrGov --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDs --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuNsw --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuNswS --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuQld --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuVic --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsAuVic2 --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsUkGov --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsFrGov --target-org=scratch-org
 
       # Assign permissionset
       # - name: 'Assign permissionset to default user'
-      #  run: sfdx force:user:permset:assign -n recipes
+      #  run: sf force:user:permset:assign -n recipes
 
       # Import sample data
       # - name: 'Import sample data'
-      #  run: sfdx force:data:tree:import -p ./data/data-plan.json
+      #  run: sf force:data:tree:import -p ./data/data-plan.json
 
       # Run Apex tests in scratch org
       - name: "Run Apex tests"
-        run: sfdx force apex test run --code-coverage --result-format=human --output-dir=./tests/apex --wait=20 --test-level=RunLocalTests
+        run: sf force apex test run --code-coverage --result-format=human --output-dir=./tests/apex --wait=20 --test-level=RunLocalTests
 
       # Delete temporary test file that Codecov is unable to parse
       #- name: "Delete coverage file (temporary step)"
@@ -288,7 +288,7 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org delete scratch --no-prompt --target-org=scratch-org
+        run: sf org delete scratch --no-prompt --target-org=scratch-org
 
   trigger-packaging:
     runs-on: ubuntu-latest
@@ -363,4 +363,4 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
           event-type: start-packaging
-          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuQld": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuQld }}", "sfGpsDsAuVic1": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic1 }}", "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsFrGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsFrGov }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'
+          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuQld": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuQld }}", "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsFrGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsFrGov }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'

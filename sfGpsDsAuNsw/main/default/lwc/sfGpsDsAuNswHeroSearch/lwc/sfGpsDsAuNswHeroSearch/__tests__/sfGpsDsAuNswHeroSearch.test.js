@@ -56,6 +56,31 @@ describe("c-sf-gps-ds-au-nsw-hero-search", () => {
     expect(suggestedLis.length).toBe(3);
   });
 
+  it("renders with a visible label and a text button when configured to do so", async () => {
+    const element = createElement(ELT_TAG, {
+      is: SfGpsDsAuNswHeroSearch
+    });
+
+    element.title = "Hero Search";
+    element.intro = "Find information, access services and have your say.";
+    element.links = [
+      { index: 0, text: "A", url: "#a" },
+      { index: 1, text: "B", url: "#b" },
+      { index: 2, text: "C", url: "#c" }
+    ];
+    element.label = true;
+    element.button = "text";
+    document.body.appendChild(element);
+
+    let labelElt = element.querySelector("label");
+    expect(labelElt).not.toBeNull();
+    expect(labelElt.classList).not.toContain("sr-only");
+
+    let buttonElt = element.querySelector("button > span");
+    expect(buttonElt).not.toBeNull();
+    expect(buttonElt.classList).not.toContain("nsw-material-icons");
+  });
+
   it("is accessible", async () => {
     const element = createElement(ELT_TAG, {
       is: SfGpsDsAuNswHeroSearch

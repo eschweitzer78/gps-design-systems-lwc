@@ -1,5 +1,160 @@
 ## Change log
 
+### 7 and 9 April 2025
+
+#### All DSes: fixed issue 304 when error labels did not merge field labels right
+
+We fixed issue 304 and now error messages referencing the label name to merge right if the label contains mergeable fields.
+
+#### NSW DS: align OmniStudio lookup, select and typeahead (incl address) for align to guidelines
+
+We aligned more closely to the Design System's predictive input field guidelines when option items are underlined and the matching portion of text is rendered in bold type.
+
+#### NSW DS: proper use of Loader element when lookup is loading data
+
+We placed the loader element as an overlay to the right-hand icon.
+
+#### NSW DS: address issue when checking wrongly input dates
+
+The were challenges if a date was entered in the wrong format in single input and the user would not be given a chance to course correct.
+
+### 4 April 2025
+
+### NSW DS: Omnistudio Block button styling
+
+Repeat buttons in the OmniStudio block element are style as per NSW DS vs SLDS. We also added configurability for the block to become non collapsible or have supplemental CSS classes applied (e.g. to control identation/padding).
+
+### NSW DS: fix issue 304 when error labels did not merge field labels right
+
+We fixed issue 304 and now error messages referencing the label name to merge right if the label contains mergeable fields.
+
+### NSW DS: fine tuned the styling of the OmniStudio address typeahead and accessibility.
+
+Colours and link styling were initially off the official guidelines and reflected Service NSW standards.
+The Enter address manually link/button is now tabbable for improved accessibility.
+
+### 28 March 2025
+
+#### All DSes: fixed an issue that prevented using omniscript elements when using Locker web security
+
+Due to a typo, modules from the "c" namespace were loaded when using omnistudio elements, leading to namespace clashes in Locker (but worked fine in LWS).
+
+#### NSW DS: made the multi-field date v2 more resilient to bad input
+
+Multi-field date input would silently cycle dates when individual elements were beyond the range, e.g. 33/1 would be automatically transformed into 3/2. We keep the offending value and now mark it as bad input.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswDatePickerV2OsN`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswDatePickerV2OsN).
+
+#### VIC2 DS: started adding some omnistudio content
+
+We added a few early building blocks paving the support for omnistudio in VIC2.
+
+### 28 February 2025
+
+#### NSW DS: fixed focus issues with Date v2
+
+The NSW DS Date v2 did not handle focus correctly, including opening/hiding the date picker.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswDatePickerV2OsN`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswDatePickerV2OsN).
+
+### 27 February 2025
+
+#### NSW DS: fixed an issue with parsing preset value in Date v2
+
+The NSW DS Date v2 did not behave correctly when a date was preset and would not parse that value correctly. The issue also appeared when a value was keyed in and the user came back to that step later.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswDatePickerV2OsN`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswForm/lwc/sfGpsDsAuNswDatePickerV2OsN).
+
+### 21 February 2025
+
+#### VIC DS: fixed omnistudio step heading level
+
+We fixed the heading level to h4.
+
+### 11 and 12 February 2025
+
+#### VIC DS: multiple accessibility fixes
+
+The following were fixed:
+
+- radio and multiselect fieldsets is now marked as labelled by the contained label for improved accessibility
+- step chart has been modified to better behave at high magnification ratios and declutter on narrower screens
+- fixed styling issue in quick exit when hovering/focusing.
+
+#### All DSes: omnistudio step change accessibility fix
+
+The title of the new step now gets the focus when changing steps, helping users on screen reader understand a change in the page context.
+
+#### QLD DS, VIC DS, VIC2 DS: step chart accessibility improved
+
+The step chart is now tabbable, enabling users to change step with the keyboard.
+
+#### NSW DS: fixed multiselect rendering
+
+We fixed (required) being erroneously being added for the multiselect element label even when the field is not required.
+
+### 7 February 2025
+
+#### Multiple DSes: fixed faulty header URL for homepage
+
+We fixed a faulty homepage URL in the header which led to issues when the site was positioned at the root of the domain (NSW, QLD, UK Showcase).
+
+#### QLD DS: fixed multiple issues
+
+We fixed the following:
+
+- Callout content rendering
+- Global alert styling,
+- Header and main nav element Ids
+
+### 4 February 2025
+
+#### NSW DS: Added ellipsis for longer breadcrumbs on mobile
+
+We adopted the new ellipsis style of NSW DS 3.18.3 for breadcrumbs which replaces the middle portion by an ellipsis on mobile to reduce overall size.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbs`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbs).
+
+#### NSW DS: Added support for Support list
+
+Added support for the Support list element introduced in NSW DS 3.18.0.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSupportList/lwc/sfGpsDsAuNswSupportListComm`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSupportList/lwc/sfGpsDsAuNswSupportListComm)
+
+#### NSW DS: Added support for Utility list
+
+Added support for the Utility list element introduced in NSW DS 3.16.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswUtilityList/lwc/sfGpsDsAuNswUtilityListComm`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswUtilityList/lwc/sfGpsDsAuNswUtilityListComm)
+
+#### NSW DS: Fixed multiple issues after refactoring and subsequent QA
+
+The following were fixed:
+
+- mega-menu nav rendering in the NSW Header and Main/nav as well as search flag handling.
+- card v2 styling.
+- steps element appearing empty due to incorrect refactoring.
+
+### 22 October 2024
+
+#### QLD DS: Early release
+
+Early (Alpha) release of the QLD Design System.
+
+This includes support for the following Experience Cloud elements: Accordion, Back to top, Banner, Body, Breadcrumbs, Button, Callout, Card, Card list, Call to action, Direction link, Footer, Global alert, Header, Horizontal rule, In-page alert, In-page nav, Link list, Loading spinner, Main nav, Markdown element, Markup element, Pagination, Quote, Side nav, Tags, Vertical nav.
+
+This includes support for the following OmniStudio element: Checkbox, Currency, Date, Email, Formula, Multiselect, Password, Radio, Select, Text, Textarea.
+
+Refer to [`sfGpsDsAuQld`](sfGpsDsAuQld).
+
+### 2 September 2024
+
+#### NSW DS: Added support for the Loader element
+
+We added support for the loader element, displaying user a cue that data is being loaded or processed. Modified a number existing elements to leverage the NSW loader vs the regular SLDS spinner.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLoader/lwc/sfGpsDsAuNswLoaderComm`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLoader/lwc/sfGpsDsAuNswLoaderComm).
+
 ### 29 July 2024
 
 #### All DSes: moving to Omnistudio 250.7
