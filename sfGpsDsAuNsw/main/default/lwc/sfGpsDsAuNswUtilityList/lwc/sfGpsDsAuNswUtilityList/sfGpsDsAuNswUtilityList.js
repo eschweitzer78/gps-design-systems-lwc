@@ -15,6 +15,7 @@ export default class extends LightningElement {
 
   @api printLabel = "Print this page";
   @api copyLabel = "Copy link";
+  @api copiedLabel = "Copied";
   @api shareLabel = "Share this page";
   @api shareUrl = "https://www.digital.nsw.gov.au";
   @api shareConfig;
@@ -90,12 +91,26 @@ export default class extends LightningElement {
     return this._socialShareId;
   }
 
+  get computedCopyClassName() {
+    return {
+      "nsw-utility-list__item": true,
+      copied: this._clipboardCopied
+    };
+  }
+
   /* methods */
+
+  @track _clipboardCopied;
 
   copyToClipboard() {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(this.shareUrl).then(() => {
         this._clipboardCopied = true;
+
+        /* eslint-disable @lwc/lwc/no-async-operation */
+        setTimeout(() => {
+          this._clipboardCopied = false;
+        }, 3000);
       });
     }
   }
