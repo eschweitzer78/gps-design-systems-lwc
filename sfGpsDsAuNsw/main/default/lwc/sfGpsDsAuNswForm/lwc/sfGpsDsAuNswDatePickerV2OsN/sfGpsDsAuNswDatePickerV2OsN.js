@@ -862,22 +862,51 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
     if (value && value !== "") {
       if (isDate(value) || value instanceof Number) {
+        if (DEBUG) console.log(CLASS_NAME, "= parseValue date or number");
         rv = new Date(value);
       } else if (value.match(ISO8601_PATTERN)) {
+        if (DEBUG) console.log(CLASS_NAME, "= parseValue iso8601 string");
         rv = parseIso8601(value);
       }
 
       if (rv == null) {
+        if (DEBUG)
+          console.log(
+            CLASS_NAME,
+            "= parseValue other format",
+            "outputFormat",
+            this.outputFormat
+          );
+
         let result = dayjs(value, this.outputFormat);
 
+        if (DEBUG)
+          console.log(
+            CLASS_NAME,
+            "= parseValue other format",
+            "daysjs",
+            result
+          );
+
         if (value === result.format(this.outputFormat)) {
+          if (DEBUG)
+            console.log(CLASS_NAME, "= parseValue matches outputFormat");
           rv = result.toDate();
         } else {
+          if (DEBUG)
+            console.log(
+              CLASS_NAME,
+              "= parseValue trying format on file",
+              this.format
+            );
           result = dayjs(value, this.format);
 
           if (value === result.format(this.format)) {
+            if (DEBUG) console.log(CLASS_NAME, "= parseValue matches format");
             rv = result.toDate();
           } else {
+            if (DEBUG)
+              console.log(CLASS_NAME, "= parseValue did not match format");
             rv = null;
           }
         }
@@ -897,14 +926,30 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    */
 
   parseInput(input) {
-    if (DEBUG) console.log(CLASS_NAME, "> parseInput", input, typeof input);
+    if (DEBUG)
+      console.log(CLASS_NAME, "> parseInput", input, typeof input, this.format);
 
     let rv = null;
 
     if (input != null && input !== "") {
       const parseFormat = this.format;
       const day = dayjs(input, parseFormat);
-      let date = day.toDate();
+      const date = day.toDate();
+
+      if (DEBUG) {
+        console.log(
+          CLASS_NAME,
+          "= parseInput",
+          "dayjs",
+          day,
+          "date",
+          date,
+          "isValidDate",
+          isValidDate(date),
+          "formatted",
+          day.format(parseFormat)
+        );
+      }
 
       if (isValidDate(date) && day.format(parseFormat) === input) {
         rv = date;
@@ -1083,20 +1128,31 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     if (DEBUG) console.log(CLASS_NAME, "> handleInputKeydown", event.key);
 
     this.isError = false;
+    const key = event.key?.toLowerCase();
 
-    if (event.key?.toLowerCase() === "enter") {
+    if (key === "enter") {
       event.stopPropagation();
       this._displayValue = this.refs.input.value;
       this.setAndDispatchValue(this.refs.input.value);
       this.hideCalendar();
-    } else if (event.key?.toLowerCase() === "arrowdown" && this.pickerVisible) {
+    } else if (key === "arrowdown" && this.pickerVisible) {
       event.stopPropagation();
       this.refs.body.querySelector("button[tabindex='0']")?.focus();
     } else {
-      this._displayValue = this.refs.input.value;
+      //this._displayValue = this.refs.input.value;
+      this.hideCalendar();
     }
 
     if (DEBUG) console.log(CLASS_NAME, "< handleInputKeydown");
+  }
+
+  handleInputKeyup(event) {
+    /* we need this as inputChange is triggered after keyup, but Omni triggers validation 
+       logic after keyup... updating _displayValue on change would be too late. */
+    if (DEBUG) console.log(CLASS_NAME, "> handleInputKeyup", event.key);
+    this._displayValue = this.refs.input.value;
+    if (DEBUG)
+      console.log(CLASS_NAME, "< handleInputKeyup", this._displayValue);
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -1288,9 +1344,22 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
               }
             }
           } else {
+            if (DEBUG)
+              console.log(
+                CLASS_NAME,
+                "= _constraint.badInput",
+                "_displayValue",
+                this._displayValue
+              );
             if (this._displayValue == null || this._displayValue === "") {
               rv = false;
             } else {
+              console.log(
+                CLASS_NAME,
+                "= _constraint.badInput",
+                "parseInput",
+                this.parseInput(this._displayValue)
+              );
               rv = !isValidDate(this.parseInput(this._displayValue));
             }
           }
