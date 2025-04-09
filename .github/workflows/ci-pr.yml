@@ -265,6 +265,10 @@ jobs:
           npm install @salesforce/cli --location=global
           nodeInstallPath=$(npm config get prefix)
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
+
+      # Confirm version Salesforce CLI
+      - name: "Confirm Salesforce CLI version"
+        run: |
           sf --version
 
       # Store secret for dev hub
