@@ -81,7 +81,7 @@ jobs:
 
       # Authenticate dev hub
       - name: "Authenticate Dev Hub"
-        run: sfdx auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
+        run: sf auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
 
       # Remove auth file
       - name: "Remove auth file"
@@ -93,7 +93,7 @@ jobs:
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
           set +e
-          json=$(sfdx package version create --path=sfGpsDs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sf package version create --path=sfGpsDs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -102,17 +102,17 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package version create failed"
+              echo "sf package version create failed"
               exit $status
           fi
 
-          json2=$(sfdx package version report --package $packageVersionId --json)
+          json2=$(sf package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
             echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
           else
-            echo "sfdx package version report failed"
+            echo "sf package version report failed"
           fi
           exit $status2
 
@@ -122,7 +122,7 @@ jobs:
         run: |
           set +e
           npm run aunsw-copy
-          json=$(sfdx package version create --path=sfGpsDsAuNswFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sf package version create --path=sfGpsDsAuNswFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -131,17 +131,17 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package version create failed"
+              echo "sf package version create failed"
               exit $status
           fi
 
-          json2=$(sfdx package version report --package $packageVersionId --json)
+          json2=$(sf package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
             echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
           else
-            echo "sfdx package version report failed"
+            echo "sf package version report failed"
           fi
           exit $status2
 
@@ -151,7 +151,7 @@ jobs:
         run: |
           set +e
           npm run aunsws-copy
-          json=$(sfdx package version create --path=sfGpsDsAuNswSFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sf package version create --path=sfGpsDsAuNswSFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -160,17 +160,17 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package version create failed"
+              echo "sf package version create failed"
               exit $status
           fi
 
-          json2=$(sfdx package version report --package $packageVersionId --json)
+          json2=$(sf package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
             echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
           else
-            echo "sfdx package version report failed"
+            echo "sf package version report failed"
           fi
           exit $status2
 
@@ -180,7 +180,7 @@ jobs:
         run: |
           set +e
           npm run auqld-copy
-          json=$(sfdx package version create --path=sfGpsDsAuQldFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sf package version create --path=sfGpsDsAuQldFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -189,17 +189,17 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package version create failed"
+              echo "sf package version create failed"
               exit $status
           fi
 
-          json2=$(sfdx package version report --package $packageVersionId --json)
+          json2=$(sf package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
             echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
           else
-            echo "sfdx package version report failed"
+            echo "sf package version report failed"
           fi
           exit $status2
 
@@ -209,7 +209,7 @@ jobs:
         run: |
           set +e
           npm run auvic1-copy
-          json=$(sfdx package version create --path=sfGpsDsAuVic1Full --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sf package version create --path=sfGpsDsAuVic1Full --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -218,17 +218,17 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package version create failed"
+              echo "sf package version create failed"
               exit $status
           fi
 
-          json2=$(sfdx package version report --package $packageVersionId --json)
+          json2=$(sf package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
             echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
           else
-            echo "sfdx package version report failed"
+            echo "sf package version report failed"
           fi
           exit $status2
 
@@ -238,7 +238,7 @@ jobs:
         run: |
           set +e
           npm run auvic2-copy
-          json=$(sfdx package version create --path=sfGpsDsAuVic2Full --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sf package version create --path=sfGpsDsAuVic2Full --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -247,17 +247,17 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package version create failed"
+              echo "sf package version create failed"
               exit $status
           fi
 
-          json2=$(sfdx package version report --package $packageVersionId --json)
+          json2=$(sf package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
             echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
           else
-            echo "sfdx package version report failed"
+            echo "sf package version report failed"
           fi
           exit $status2
 
@@ -267,7 +267,7 @@ jobs:
         run: |
           set +e
           npm run frgov-copy
-          json=$(sfdx package version create --path=sfGpsDsFrGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sf package version create --path=sfGpsDsFrGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -276,17 +276,17 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package version create failed"
+              echo "sf package version create failed"
               exit $status
           fi
 
-          json2=$(sfdx package version report --package $packageVersionId --json)
+          json2=$(sf package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
             echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
           else
-            echo "sfdx package version report failed"
+            echo "sf package version report failed"
           fi
           exit $status2
 
@@ -296,7 +296,7 @@ jobs:
         run: |
           set +e
           npm run ukgov-copy
-          json=$(sfdx package version create --path=sfGpsDsUkGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          json=$(sf package version create --path=sfGpsDsUkGovFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -305,17 +305,17 @@ jobs:
               packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
               echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
           else
-              echo "sfdx package version create failed"
+              echo "sf package version create failed"
               exit $status
           fi
 
-          json2=$(sfdx package version report --package $packageVersionId --json)
+          json2=$(sf package version report --package $packageVersionId --json)
           status2=$(echo $json2 | jq '.status')
           if [ $status2 == "0" ]; then
             versionNumber=$(echo $json2 | jq -r '.result.Version')
             echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
           else
-            echo "sfdx package version report failed"
+            echo "sf package version report failed"
           fi
           exit $status2
 
@@ -327,67 +327,67 @@ jobs:
 
       # Create scratch org
       - name: "Create scratch org"
-        run: sfdx org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
-        run: sfdx package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
+        run: sf package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
 
       # Install new sfGpsDs package in scratch org
       - name: "Install new sfGpsDs package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuNswS package in scratch org
       - name: "Install new sfGpsDsAuNswS package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuQld package in scratch org
       - name: "Install new sfGpsDsAuQld package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuQld == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuVic1 package in scratch org
       - name: "Install new sfGpsDsAuVic1 package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuVic1 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuVic2 package in scratch org
       - name: "Install new sfGpsDsAuVic2 package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuVic2 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsFrGov package in scratch org
       - name: "Install new sfGpsDsFrGov package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsUkGov package in scratch org
       - name: "Install new sfGpsDsUkGov package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
         run: |
-          sfdx package install --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sfdx package uninstall --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Update sfGpsDs force:force:package:install link in readme
       - name: "Update package sfGpsDs install link in readme"
@@ -570,4 +570,4 @@ jobs:
       # Housekeeping
       - name: "Delete scratch org"
         if: always()
-        run: sfdx org delete scratch --no-prompt --target-org=scratch-org
+        run: sf org delete scratch --no-prompt --target-org=scratch-org
