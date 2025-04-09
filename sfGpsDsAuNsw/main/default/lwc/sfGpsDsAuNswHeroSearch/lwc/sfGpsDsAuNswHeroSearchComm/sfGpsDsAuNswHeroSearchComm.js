@@ -19,6 +19,9 @@ export default class extends NavigationMixin(SfGpsDsLwc) {
   @api srLabel = "Search site for:";
   @api srSearchButtonLabel = "Search";
 
+  @api showLabel;
+  @api bStyle;
+
   /* api: links, String */
 
   _links;
