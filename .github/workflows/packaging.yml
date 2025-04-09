@@ -47,7 +47,7 @@ jobs:
       # Confirm version Salesforce CLI
       - name: "Confirm Salesforce CLI version"
         run: |
-          sfdx --version
+          sf --version
 
       # Install npm dependencies for cssgen
       - name: "Install npm dependencies"
@@ -558,25 +558,14 @@ jobs:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
 
       # Approve pull request
-      - name: "Approve pull request"
-        uses: juliangruber/approve-pull-request-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.create-pr.outputs.pull-request-number }}
-
-      # Wait for CI to be skipped on pull request
-      - name: "Wait for CI to be skipped on pull request"
-        uses: maddox/actions/sleep@master
-        with:
-          args: 60
-
-      # Merge pull request
-      - name: "Merge pull request"
-        uses: juliangruber/merge-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          number: ${{ steps.create-pr.outputs.pull-request-number }}
-          method: squash
+      - name: "Approve pull request and mark PR for auto-merge"
+        continue-on-error: true
+        run: |
+          gh pr review --approve "$PR_NUMBER"
+          gh pr merge --auto --squash "$PR_NUMBER"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ steps.create-pr.outputs.pull-request-number }}
 
       # Housekeeping
       - name: "Delete scratch org"

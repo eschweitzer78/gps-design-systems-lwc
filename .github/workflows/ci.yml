@@ -39,7 +39,7 @@ jobs:
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
-        run: npm ci --force
+        run: HUSKY=0 npm ci --force
         env:
           GHCR_TOKEN: ${{ secrets.GHCR_ACCESS_TOKEN }}
 
@@ -213,11 +213,7 @@ jobs:
           npm install @salesforce/cli --location=global
           nodeInstallPath=$(npm config get prefix)
           echo "$nodeInstallPath/bin" >> $GITHUB_PATH
-
-      # Confirm version Salesforce CLI
-      - name: "Confirm Salesforce CLI version"
-        run: |
-          sfdx --version
+          sf --version
 
       # Store secret for dev hub
       - name: "Populate auth file with DEVHUB_SFDX_URL secret"

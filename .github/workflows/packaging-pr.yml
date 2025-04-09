@@ -6,6 +6,11 @@ on:
   repository_dispatch:
     types: [start-packaging-pr]
 
+# Workflow environment variables
+env:
+  # Is the PR base branch a prerelease branch
+  IS_PRERELEASE: ${{ github.event.client_payload.isPrelease }}
+
 # Jobs to be executed
 jobs:
   packaging:
@@ -40,7 +45,7 @@ jobs:
       # Confirm version Salesforce CLI
       - name: "Confirm Salesforce CLI version"
         run: |
-          sfdx --version
+          sf --version
 
       # Install npm dependencies for cssgen
       - name: "Install npm dependencies"
@@ -318,8 +323,14 @@ jobs:
         with:
           args: 360
 
-      # Create scratch org
+      # Create pre-release scratch org
+      - name: "Create pre-release scratch org"
+        if: ${{ env.IS_PRERELEASE }}
+        run: sfdx org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --release=preview
+
+        # Create scratch org
       - name: "Create scratch org"
+        if: ${{ !env.IS_PRERELEASE }}
         run: sfdx org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
 
       # Deploy omnistudio to scratch org
