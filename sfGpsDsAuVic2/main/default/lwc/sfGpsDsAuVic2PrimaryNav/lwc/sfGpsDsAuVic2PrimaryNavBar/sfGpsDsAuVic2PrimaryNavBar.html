@@ -61,7 +61,10 @@
 
     <ul class="rpl-primary-nav__nav-bar-actions-list">
       <!-- Mobile menu toggle -->
-      <li class="rpl-primary-nav__nav-bar-mobile-menu-toggle-container">
+      <li
+        lwc:if={computedShowMobileToggle}
+        class="rpl-primary-nav__nav-bar-mobile-menu-toggle-container"
+      >
         <c-sf-gps-ds-au-vic2-primary-nav-bar-action
           type="toggle"
           href="/"
@@ -152,7 +155,7 @@
             >&NoBreak;<span
               class="rpl-primary-nav__nav-bar-icon rpl-primary-nav__nav-bar-icon--large rpl-primary-nav__nav-bar-icon--search"
             >
-              <c-sf-gps-ds-au-vic2-icon name="icon-search">
+              <c-sf-gps-ds-au-vic2-icon name="icon-search" aria-hidden="true">
               </c-sf-gps-ds-au-vic2-icon>
             </span>
           </div>

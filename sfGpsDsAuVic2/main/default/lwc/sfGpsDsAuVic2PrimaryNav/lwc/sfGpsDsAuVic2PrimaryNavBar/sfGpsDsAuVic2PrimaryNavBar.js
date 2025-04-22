@@ -114,6 +114,10 @@ export default class extends FocusMixin(
     return this.secondaryLogo && !this.computedDisablePrimaryLogo;
   }
 
+  get computedShowMobileToggle() {
+    return !!this._items?.length;
+  }
+
   /* methods */
 
   itemsMapper(items) {
