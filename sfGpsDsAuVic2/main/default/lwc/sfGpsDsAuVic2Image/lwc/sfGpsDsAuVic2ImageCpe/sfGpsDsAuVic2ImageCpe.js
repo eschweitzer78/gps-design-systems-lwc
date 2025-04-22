@@ -24,7 +24,7 @@ export default class extends LightningElement {
 
   /* api: value */
 
-  _value = IMAGE_DEFAULT;
+  @track _value = IMAGE_DEFAULT;
   _valueOriginal = IMAGE_DEFAULT_JSON;
 
   @api
@@ -37,7 +37,7 @@ export default class extends LightningElement {
 
     const jsonValue = JSON.parse(value);
 
-    if (isObject(jsonValue === "object")) {
+    if (isObject(jsonValue)) {
       this._value = jsonValue || IMAGE_DEFAULT;
     } else {
       this._value = IMAGE_DEFAULT;
