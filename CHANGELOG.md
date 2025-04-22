@@ -1,5 +1,35 @@
 ## Change log
 
+### 22 April 2025
+
+#### VIC2 DS: Near full support of OmniStudio forms
+
+We have added support for file upload, block, text block, typeahead, typeahead block, places typeahead and step chart. Added read-only styling.
+
+Refer to [`sfGpsDsAuVic2/main/default/lwc/forms`](sfGpsDsAuVic2/main/default/lwc/forms).
+
+#### VIC2 DS: Fixed vertical tabs
+
+We have fixed the styling of vertical tabs so that the tab bar appears on the right-hand size of the tab contents.
+
+Refer to [`sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Tabs`](sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Tabs).
+
+#### VIC2 DS: upgrade to Ripple 2.29
+
+We have upgraded to Ripple 2.29, including rework of breacrumbs, tabs, search bar, primary nav.
+
+#### VIC2 DS: added pagination
+
+We have added support for the pagination element.
+
+Refer to [`sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Pagination`](sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Pagination).
+
+#### VIC2 DS: added accessible container to cards
+
+We have added the accessible container mixin to all cards, enabling users to click anywhere on a card to apply the navigation or action.
+
+Refer to [`sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card`](sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card).
+
 ### 7 and 9 April 2025
 
 #### All DSes: fixed issue 304 when error labels did not merge field labels right
@@ -10,19 +40,27 @@ We fixed issue 304 and now error messages referencing the label name to merge ri
 
 We aligned more closely to the Design System's predictive input field guidelines when option items are underlined and the matching portion of text is rendered in bold type.
 
+Refer to [`sfGpsDsAuNsw/main/default/lwc/forms`](sfGpsDsAuNsw/main/default/lwc/forms).
+
 #### NSW DS: proper use of Loader element when lookup is loading data
 
 We placed the loader element as an overlay to the right-hand icon.
 
+Refer to [`sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormLookupOsN`](sfGpsDsAuNsw/main/default/lwc/forms/lwcsfGpsDsAuNswFormLookupOsN).
+
 #### NSW DS: address issue when checking wrongly input dates
 
 The were challenges if a date was entered in the wrong format in single input and the user would not be given a chance to course correct.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswDatePickerV2OsN`](sfGpsDsAuNsw/main/default/lwc/forms/sfGpsDsAuNswDatePickerV2OsN).
 
 ### 4 April 2025
 
 ### NSW DS: Omnistudio Block button styling
 
 Repeat buttons in the OmniStudio block element are style as per NSW DS vs SLDS. We also added configurability for the block to become non collapsible or have supplemental CSS classes applied (e.g. to control identation/padding).
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormBlockOsN`](sfGpsDsAuNsw/main/default/lwc/forms/sfGpsDsAuNswFormBlockOsN).
 
 ### NSW DS: fix issue 304 when error labels did not merge field labels right
 
@@ -32,6 +70,8 @@ We fixed issue 304 and now error messages referencing the label name to merge ri
 
 Colours and link styling were initially off the official guidelines and reflected Service NSW standards.
 The Enter address manually link/button is now tabbable for improved accessibility.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN`](sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN).
 
 ### 28 March 2025
 
