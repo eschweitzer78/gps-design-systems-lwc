@@ -1,5 +1,11 @@
 import { LightningElement, api, track } from "lwc";
-import { isString, isObject } from "c/sfGpsDsHelpers";
+import {
+  isString,
+  isObject,
+  normaliseBoolean,
+  getCssPropertyValue
+} from "c/sfGpsDsHelpers";
+import useAccessibleContainer from "c/sfGpsDsAuVic2AccessibleContainer";
 
 export default class extends LightningElement {
   @api el = "div";
@@ -71,6 +77,10 @@ export default class extends LightningElement {
         }
       })
     );
+
+    if (!this.preventDefault) {
+      window.location.href = this.url;
+    }
   }
 
   handleSlotChange() {
@@ -82,10 +92,19 @@ export default class extends LightningElement {
   _hidePromoCardStripe;
 
   connectedCallback() {
-    const style = getComputedStyle(document.body);
-    this._hidePromoCardStripe = style.getPropertyValue(
-      "--sfgpsds-au-vic2-hide-promo-card-stripe"
+    this._hidePromoCardStripe = normaliseBoolean(
+      getCssPropertyValue("--sfgpsds-au-vic2-hide-promo-card-stripe")
     );
-    this.classList.add("sf-gps-ds-au-vic2-grid");
+  }
+
+  _accessibleContainer;
+
+  renderedCallback() {
+    if (!this._accessibleContainer) {
+      this._accessibleContainer = new useAccessibleContainer(
+        this.refs.container,
+        this.refs.trigger
+      );
+    }
   }
 }

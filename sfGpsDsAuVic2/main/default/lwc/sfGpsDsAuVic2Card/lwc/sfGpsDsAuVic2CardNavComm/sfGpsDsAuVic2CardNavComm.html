@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <c-sf-gps-ds-configuration-error
     lwc:if={_sfGpsDsErrors}
     errors={_sfGpsDsErrors}
@@ -15,14 +15,14 @@
     class-name={className}
   >
     <template lwc:if={content}>
-      <div lwc:ref="content" lwc:dom="manual"></div>
+      <div lwc:ref="content"></div>
     </template>
     <template lwc:else>
       <slot name="Content"></slot>
     </template>
 
     <template lwc:if={meta}>
-      <div slot="meta" lwc:ref="meta" lwc:dom="manual"></div>
+      <div slot="meta" lwc:ref="meta"></div>
     </template>
     <template lwc:else>
       <slot name="Meta" slot="meta"></slot>

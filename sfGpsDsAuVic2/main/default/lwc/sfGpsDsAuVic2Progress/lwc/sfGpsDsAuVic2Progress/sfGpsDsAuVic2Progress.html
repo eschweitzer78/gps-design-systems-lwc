@@ -1,0 +1,56 @@
+<template>
+  <div class={computedClassName}>
+    <button
+      lwc:if={computedIsExpandable}
+      class="rpl-progress__header rpl-u-focusable-block"
+      type="button"
+      id="toogle"
+      aria-expanded={_isExpanded}
+      aria-controls="panel"
+      onclick={handleClick}
+    >
+      <div class="rpl-progress__header-inner">
+        <h2 class="rpl-progress__title rpl-type-h3">{_title}</h2>
+        <p class="rpl-progress__subtitle rpl-type-label">
+          <slot name="subTitle" onslotchange={handleSlotChange}></slot>
+          <template if:false={_hasSlot}> {computedDefaultSubTitle} </template>
+        </p>
+      </div>
+      <div class="rpl-progress__chevron">
+        <c-sf-gps-ds-au-vic2-icon name="icon-chevron-down">
+        </c-sf-gps-ds-au-vic2-icon>
+      </div>
+    </button>
+    <div lwc:else class="rpl-progress__header">
+      <div class="rpl-progress__header-inner">
+        <h2 class="rpl-progress__title rpl-type-h3">{title}</h2>
+        <p class="rpl-progress__subtitle rpl-type-label">
+          <slot name="subTitle" onslotchange={handleSlotChange}></slot>
+          <template if:false={_hasSlot}> {computedSubTitle} </template>
+        </p>
+      </div>
+    </div>
+
+    <c-sf-gps-ds-au-vic2-expandable expanded={computedExpandableIsExpanded}>
+      <ol id="panel" class="rpl-progress__steps" aria-labelledby="toggle">
+        <template for:each={decoratedSteps} for:item="step">
+          <li key={step.key} class={step.className}>
+            <c-sf-gps-ds-au-vic2-icon
+              lwc:if={step.isComplete}
+              name="icon-check-circle-filled"
+              class-name="rpl-progress__complete-icon"
+            >
+            </c-sf-gps-ds-au-vic2-icon>
+            <span class="rpl-progress-step__label">{step.label}</span>
+            <span lwc:if={step.isComplete} class="rpl-u-visually-hidden"
+              >(i18n.complete)</span
+            >
+            <span lwc:elseif={step.isActive} class="rpl-u-visually-hidden"
+              >(i18n.active)</span
+            >
+          </li>
+        </template>
+      </ol>
+    </c-sf-gps-ds-au-vic2-expandable>
+  </div>
+</template>

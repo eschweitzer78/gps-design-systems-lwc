@@ -1,5 +1,16 @@
 import { LightningElement, api } from "lwc";
-import { isString, isObject, computeClass } from "c/sfGpsDsHelpers";
+import {
+  isString,
+  isObject,
+  computeClass,
+  normaliseBoolean
+} from "c/sfGpsDsHelpers";
+import useAccessibleContainer from "c/sfGpsDsAuVic2AccessibleContainer";
+
+const PREVENTDEFAULT_DEFAULT = false;
+
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2CardCallToAction";
 
 export default class extends LightningElement {
   @api el;
@@ -7,7 +18,6 @@ export default class extends LightningElement {
   @api url;
   @api variant = "filled";
   @api ctaText = "Call to action";
-  @api preventDefault;
   @api className;
 
   /* api: image */
@@ -43,6 +53,24 @@ export default class extends LightningElement {
     };
   }
 
+  /* api: preventDefault */
+
+  _preventDefault = PREVENTDEFAULT_DEFAULT;
+  _preventDefaultOriginal = PREVENTDEFAULT_DEFAULT;
+
+  @api
+  get preventDefault() {
+    return this._preventDefaultOriginal;
+  }
+
+  set preventDefault(value) {
+    this._preventDefaultOriginal = value;
+    this._preventDefault = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: PREVENTDEFAULT_DEFAULT
+    });
+  }
+
   /* computed */
 
   get computedClassName() {
@@ -59,8 +87,13 @@ export default class extends LightningElement {
   /* event management */
 
   handleClick(event) {
-    if (this.preventDefault) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleClick", this._preventDefault);
+
+    if (this._preventDefault) {
       event.preventDefault();
+    } else {
+      // This bit to cater to useAccessibleContainer simulating a click, as the browser does not automatically navigate to the url
+      window.location.href = this.url;
     }
 
     this.dispatchEvent(
@@ -74,11 +107,20 @@ export default class extends LightningElement {
         }
       })
     );
+
+    if (DEBUG) console.debug(CLASS_NAME, "< handleClick");
   }
 
   /* lifecycle */
 
-  connectedCallback() {
-    this.classList.add("sf-gps-ds-au-vic2-grid");
+  _accessibleContainer;
+
+  renderedCallback() {
+    if (!this._accessibleContainer) {
+      this._accessibleContainer = new useAccessibleContainer(
+        this.refs.container,
+        this.refs.trigger
+      );
+    }
   }
 }

@@ -1,0 +1,25 @@
+:host {
+  --rpl-content-max-width: none;
+}
+
+.rpl-accordion__items {
+  border-top: none;
+}
+
+.rpl-accordion__item {
+  border-bottom: none;
+}
+
+.non-indented .rpl-accordion__item-toggle {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.non-indented .rpl-accordion__item-content-inner {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.non-indented .rpl-accordion__item.rpl-accordion__item--active::after {
+  opacity: 0;
+}

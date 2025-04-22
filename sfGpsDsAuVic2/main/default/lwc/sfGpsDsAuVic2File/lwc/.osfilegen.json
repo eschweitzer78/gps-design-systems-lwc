@@ -1,0 +1,19 @@
+{
+  "sfGpsDsAuVic2File": {
+    "target": "!Os",
+    "!.css": { "target": "!Os.css" },
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-vic2-document": "c-sf-gps-ds-au-vic2-document-os",
+      "c-sf-gps-ds-au-vic2-icon": "c-sf-gps-ds-au-vic2-icon-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  }
+}

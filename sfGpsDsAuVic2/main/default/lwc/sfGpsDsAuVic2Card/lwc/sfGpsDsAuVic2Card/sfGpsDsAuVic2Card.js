@@ -76,6 +76,7 @@ export default class extends LightningElement {
 
   /* tracked */
 
+  @track _hasMetaSlot;
   @track _hasUpperSlot;
   @track _hasLowerSlot;
 
@@ -99,6 +100,10 @@ export default class extends LightningElement {
     return this._hasUpperSlot ? "rpl-card__upper" : null;
   }
 
+  get computedMetaStyle() {
+    return this._hasMetaSlot ? null : "display: none";
+  }
+
   get computedUpperStyle() {
     return this._hasUpperSlot ? null : "display: none";
   }
@@ -111,6 +116,10 @@ export default class extends LightningElement {
 
   handleSlotChange(event) {
     switch (event.target.name) {
+      case "meta":
+        this._hasMetaSlot = true;
+        break;
+
       case "upper":
         this._hasUpperSlot = true;
         break;
@@ -121,11 +130,5 @@ export default class extends LightningElement {
 
       default:
     }
-  }
-
-  /* lifecycle */
-
-  connectedCallback() {
-    this.classList.add("sf-gps-ds-au-vic2-grid");
   }
 }

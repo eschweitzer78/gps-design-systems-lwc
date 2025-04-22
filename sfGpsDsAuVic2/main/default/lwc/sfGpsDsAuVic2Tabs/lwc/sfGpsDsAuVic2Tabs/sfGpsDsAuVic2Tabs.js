@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { uniqueId, computeClass } from "c/sfGpsDsHelpers";
+import { uniqueId } from "c/sfGpsDsHelpers";
 
 const TAB_PREFIX = "tab";
 
@@ -38,11 +38,10 @@ export default class extends LightningElement {
   }
 
   get computedClassName() {
-    return computeClass({
-      "rpl-tabs": true,
-      "rpl-tabs--vertical": this.mode === "vertical",
+    return {
+      "sfgpsdsauvic2-tabs-vertical": this.mode === "vertical",
       [this.className]: this.className
-    });
+    };
   }
 
   handleTabRegister(event) {

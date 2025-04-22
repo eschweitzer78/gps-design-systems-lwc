@@ -1,0 +1,128 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class={computedClassName}>
+    <ul class="rpl-accordion__items">
+      <li class={computedItemClassName}>
+        <template lwc:if={blockLabel}>
+          <button
+            lwc:if={computedCollapsible}
+            type="button"
+            aria-expanded={expandContent}
+            aria-controls="content"
+            class={computedButtonClassName}
+            onclick={toggleContent}
+          >
+            <span class="rpl-accordion__item-heading-wrapper">
+              <span
+                role="heading"
+                aria-level={blockHeadingLevel}
+                class="rpl-accordion__item-heading rpl-type-h4"
+                >{mergedLabel}</span
+              >
+            </span>
+
+            <span
+              class="rpl-accordion__item-icon rpl-u-screen-only"
+              aria-hidden="true"
+            >
+              <c-sf-gps-ds-au-vic2-icon-os name="icon-chevron-down">
+              </c-sf-gps-ds-au-vic2-icon-os>
+            </span>
+          </button>
+
+          <span lwc:else class={computedButtonClassName}>
+            <span class="rpl-accordion__item-heading-wrapper">
+              <span
+                role="heading"
+                aria-level={blockHeadingLevel}
+                class="rpl-accordion__item-heading rpl-type-h4"
+                >{mergedLabel}</span
+              >
+            </span>
+          </span>
+        </template>
+
+        <span
+          lwc:if={showValidation}
+          class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+          aria-live="assertive"
+          role="alert"
+          id="errorMessageBlock"
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            size="s"
+            name="icon-exclamation-circle-filled"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+          <span>{allCustomLabelsUtil.OmniBlockError}</span>
+        </span>
+
+        <c-sf-gps-ds-au-vic2-expandable-os
+          lwc:if={computedCollapsible}
+          id="content"
+          expanded={expandContent}
+          labelledby="button"
+          hidden={ariaHiddenValue}
+          class-name={computedContentClassName}
+        >
+          <div
+            class="rpl-accordion__item-content-inner rpl-grid rpl-grid--no-row-gap"
+          >
+            <template lwc:if={_propSetMap.repeat}>
+              <div class="rpl-col-12 rpl-form__outer">
+                <c-sf-gps-ds-au-vic2-button-os
+                  lwc:if={canRepeat}
+                  variant="outlined"
+                  onclick={handleAdd}
+                  label={allCustomLabelsUtil.OmniAdd}
+                  aria-label={_addAriaLabel}
+                >
+                </c-sf-gps-ds-au-vic2-button-os>
+                <c-sf-gps-ds-au-vic2-button-os
+                  lwc:if={canRemove}
+                  variant="outlined"
+                  onclick={handleRemove}
+                  label={allCustomLabelsUtil.OmniDelete}
+                  class="rpl-u-margin-l-4"
+                  aria-label={_removeAriaLabel}
+                >
+                </c-sf-gps-ds-au-vic2-button-os>
+              </div>
+            </template>
+
+            <slot></slot>
+          </div>
+        </c-sf-gps-ds-au-vic2-expandable-os>
+        <div lwc:else class={computedContentClassName}>
+          <div
+            class="rpl-accordion__item-content-inner rpl-grid rpl-grid--no-row-gap"
+          >
+            <template lwc:if={_propSetMap.repeat}>
+              <div class="rpl-col-12 rpl-form__outer">
+                <c-sf-gps-ds-au-vic2-button-os
+                  lwc:if={canRepeat}
+                  variant="outlined"
+                  onclick={handleAdd}
+                  label={allCustomLabelsUtil.OmniAdd}
+                  aria-label={_addAriaLabel}
+                >
+                </c-sf-gps-ds-au-vic2-button-os>
+                <c-sf-gps-ds-au-vic2-button-os
+                  lwc:if={canRemove}
+                  variant="outlined"
+                  onclick={handleRemove}
+                  label={allCustomLabelsUtil.OmniDelete}
+                  class="rpl-u-margin-l-4"
+                  aria-label={_removeAriaLabel}
+                >
+                </c-sf-gps-ds-au-vic2-button-os>
+              </div>
+            </template>
+
+            <slot></slot>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>

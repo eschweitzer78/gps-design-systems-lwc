@@ -18,5 +18,32 @@
 @import "@dpc-sdp/ripple-ui-forms/src/components/RplFormOptions/RplFormCheckboxGroup";
 @import "@dpc-sdp/ripple-ui-forms/src/components/RplFormOptions/RplFormOption";
 @import "@dpc-sdp/ripple-ui-forms/src/components/RplFormOptions/RplFormRadioGroup";
+@import "@dpc-sdp/ripple-ui-forms/src/components/RplFormReview/RplFormReview";
+@import "@dpc-sdp/ripple-ui-forms/src/components/RplFormStep/RplFormStep";
+@import "@dpc-sdp/ripple-ui-forms/src/components/RplFormSteps/RplFormSteps";
 @import "@dpc-sdp/ripple-ui-forms/src/components/RplFormTextarea/RplFormTextarea";
 @import "@dpc-sdp/ripple-ui-forms/src/components/RplFormValidationError/RplFormValidationError";
+
+/* fixes */
+/* ----- */
+
+// General Omnistudio input
+.rpl-form__input input:read-only {
+  cursor: not-allowed;
+  color: var(--rpl-clr-neutral-600); // disabled is 300
+  border-color: var(--rpl-clr-neutral-300); // disabled is 200
+}
+
+// Omnistudio Multi-select and Radio
+.rpl-form-option__input[readonly] + .rpl-form-option__label {
+  cursor: not-allowed;
+  color: var(--rpl-clr-neutral-600); // disabled is 300
+  border-color: var(--rpl-clr-neutral-300); // disabled is 200
+}
+
+// Omnistudio Text area
+.rpl-form__textarea textarea[readonly] {
+  cursor: not-allowed;
+  color: var(--rpl-clr-neutral-600); // disabled is 300
+  border-color: var(--rpl-clr-neutral-300); // disabled is 200
+}

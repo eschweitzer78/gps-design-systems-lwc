@@ -15,7 +15,7 @@
     field-level-help-position={_propSetMap.helpTextPos}
     message-when-value-missing={mergedMessageWhenValueMissing}
     required-label={allCustomLabelsUtil.OmniRequired}
-    disabled={_propSetMap.readOnly}
+    read-only={_propSetMap.readOnly}
     data-refresh={refresh}
     data-omni-input
     onchange={handleChange}
@@ -23,32 +23,32 @@
     variant={_propSetMap.variant}
   >
     <template if:true={_propSetMap.repeat}>
-      <span slot="label" class={_styleClasses.repeatContainer} role="group">
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
         <button
-          if:true={canRepeat}
-          class={_styleClasses.repeatAdd}
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Multiselect"
           onclick={handleAdd}
         >
-          <omnistudio-icon
-            icon-name="utility:add"
-            alternative-text="Repeat Multiselect"
-            extraclass={_styleClasses.repeatIcons}
-            size="xx-small"
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-add"
+            size="xs"
+            colour="inactive"
           >
-          </omnistudio-icon>
+          </c-sf-gps-ds-au-vic2-icon-os>
         </button>
         <button
-          if:true={canRemove}
-          class={_styleClasses.repeatRemove}
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Multiselect"
           onclick={handleRemove}
         >
-          <omnistudio-icon
-            icon-name="utility:close"
-            alternative-text="Remove Multiselect"
-            extraclass={_styleClasses.repeatIcons}
-            size="xx-small"
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
           >
-          </omnistudio-icon>
+          </c-sf-gps-ds-au-vic2-icon-os>
         </button>
       </span>
     </template>

@@ -1,0 +1,34 @@
+<template>
+  <div class="nsw-form__group">
+    <label lwc:if={_propSetMap.label} class="nsw-form__label" for="frt">
+      {mergedLabel}
+      <span lwc:if={_propSetMap.required} class="sr-only">
+        ({allCustomLabelsUtil.OmniRequired})</span
+      >
+    </label>
+
+    <div class="nsw-disclosure">
+      <div class="nsw-disclosure__content">
+        <omnistudio-omniscript-formatted-rich-text id="frt" value={_dText}>
+        </omnistudio-omniscript-formatted-rich-text>
+      </div>
+
+      <div class="nsw-disclosure__consent">
+        <c-sf-gps-ds-au-nsw-input-os-n
+          type="checkbox"
+          label={mergedCheckLabel}
+          required={_propSetMap.required}
+          required-label={allCustomLabelsUtil.OmniRequired}
+          theme={_theme}
+          checked={elementValue}
+          message-when-value-missing={mergedMessageWhenValueMissing}
+          tab-index={tabIndex}
+          data-omni-input
+          onchange={handleChange}
+          read-only={_propSetMap.readOnly}
+        >
+        </c-sf-gps-ds-au-nsw-input-os-n>
+      </div>
+    </div>
+  </div>
+</template>

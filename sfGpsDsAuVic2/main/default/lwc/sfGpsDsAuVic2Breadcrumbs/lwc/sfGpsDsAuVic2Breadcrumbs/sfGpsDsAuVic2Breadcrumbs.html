@@ -1,20 +1,33 @@
 <template>
   <nav aria-label="breadcrumbs" class={computedClassName}>
     <ol lwc:if={_items} class="rpl-breadcrumbs__items rpl-type-p">
-      <template iterator:item={_items}>
-        <li key={item.value.key} class={item.value.className}>
-          <span lwc:if={item.last} class="rpl-breadcrumbs__item--current">
-            {item.value.text}
+      <template for:each={decoratedItems} for:item="item" for:index="index">
+        <li key={item.key} lwc:if={item.showItem} class={item.className}>
+          <span
+            lwc:if={item.showFirstCollapsed}
+            class="rpl-breadcrumbs__collapse-link"
+          >
+            <button
+              class="rpl-text-link rpl-u-focusable-inline rpl-breadcrumbs__collapse-link-trigger"
+              type="button"
+              aria-label="Expand hidden breadcrumbs"
+              onclick={toggleCollapsed}
+            >
+              &hellip;
+            </button>
           </span>
           <c-sf-gps-ds-au-vic-2-text-link
-            lwc:else
-            url={item.value.url}
+            lwc:if={item.showLink}
+            url={item.url}
             class-name="rpl-breadcrumbs__item-link"
-            data-ndx={item.index}
+            data-ndx={index}
             onclick={handleClick}
           >
-            {item.value.text}
+            {item.text}
           </c-sf-gps-ds-au-vic-2-text-link>
+          <span lwc:if={item.showLast} class="rpl-breadcrumbs__item--current">
+            {item.text}
+          </span>
         </li>
       </template>
     </ol>

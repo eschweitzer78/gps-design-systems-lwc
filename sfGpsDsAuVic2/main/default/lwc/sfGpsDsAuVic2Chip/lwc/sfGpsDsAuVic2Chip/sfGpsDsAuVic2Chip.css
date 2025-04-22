@@ -1,7 +1,9 @@
-/* compensate for .rpl-chip + .rpl-chip { margin-left: var(--rpl-sp-3); } which does not get executed to different containment */
+/* compensate for .rpl-chip + .rpl-chip { margin-left: var(--rpl-sp-3); } which does not get executed due to different containment */
 
-c-sf-gps-ds-au-vic2-chip > c-sf-gps-ds-au-vic2-link + c-sf-gps-ds-au-vic2-link {
-  margin-left: var(--rpl-sp-3);
+.chip-container {
+  display: inline-flex;
+  gap: var(--rpl-sp-3);
+  flex-wrap: wrap;
 }
 
 /* introducing a deviation for chips with no href or an empty one */
@@ -10,4 +12,10 @@ c-sf-gps-ds-au-vic2-chip > c-sf-gps-ds-au-vic2-link + c-sf-gps-ds-au-vic2-link {
 .rpl-chip:not([href]):hover {
   text-decoration: none;
   cursor: default;
+}
+
+.rpl-chip--default[href=""]:hover,
+.rpl-chip--default:not([href]):hover {
+  --rpl-chip-border-clr: var(--rpl-clr-primary);
+  --rpl-chip-type-clr: var(--rpl-clr-type-primary-accessible);
 }

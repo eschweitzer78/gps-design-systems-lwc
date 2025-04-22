@@ -2,7 +2,9 @@ import { LightningElement, api } from "lwc";
 import { normaliseBoolean, normaliseString } from "c/sfGpsDsHelpers";
 import ResizeHeightMixin from "c/sfGpsDsAuVic2ResizeHeightMixin";
 
-const CLOSE_LABEL = "Dismiss alert";
+const I18N = {
+  closeLabel: "Dismiss alert"
+};
 
 const ISDISMISSIBLE_DEFAULT = true;
 const ISDISMISSIBLE_FALLBACK = false;
@@ -73,14 +75,14 @@ export default class extends ResizeHeightMixin(LightningElement, "alert") {
   }
 
   get computedAriaLabelledBy() {
-    return `alert-message-${this.alertId}`;
+    return `alert-message-${this.alertId || "unidentified"}`;
   }
 
-  get closeLabel() {
-    return CLOSE_LABEL;
+  get i18n() {
+    return I18N;
   }
 
-  get hasTextAndUrl() {
+  get computedHasTextAndUrl() {
     return this.linkText && this.linkUrl;
   }
 
@@ -93,7 +95,7 @@ export default class extends ResizeHeightMixin(LightningElement, "alert") {
           id: this.alertId,
           action: "close",
           label: this.message,
-          text: CLOSE_LABEL
+          text: I18N.closeLabel
         },
         bubbles: true
       })

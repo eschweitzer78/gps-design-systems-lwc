@@ -55,8 +55,6 @@
   >
     <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-au-vic2-time-picker-os-n>
-
-  <!--
   <c-sf-gps-ds-au-vic2-datetime-picker-os-n
     lwc:elseif={isDateTime}
     name={name}
@@ -101,7 +99,6 @@
   >
     <slot slot="label" name="label"> </slot>
   </c-sf-gps-ds-au-vic2-datetime-picker-os-n>
-  -->
   <template lwc:else>
     <label
       lwc:if={labelVisible}
@@ -181,6 +178,12 @@
               </c-sf-gps-ds-au-vic2-icon-os>
             </span>
             <span class="rpl-form-option__label-text rpl-type-p">{label}</span>
+
+            <span
+              lwc:if={required}
+              class="rpl-form-label__required rpl-type-label-small"
+              >({requiredLabel})</span
+            >
 
             <slot name="label"></slot>
           </label>

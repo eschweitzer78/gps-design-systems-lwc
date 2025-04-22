@@ -35,12 +35,9 @@
     </span>
 
     <div>
-      <div
-        lwc:if={internalOpts}
-        class="rpl-form-radio-group rpl-form-radio-group--block"
-      >
+      <div lwc:if={internalOpts} class={computedGroupClassName}>
         <template for:each={internalOpts} for:item="option" for:index="index">
-          <div key={option.id} class="rpl-form-option rpl-form-option--default">
+          <div key={option.id} class={computedOptionClassName}>
             <input
               type="radio"
               tabindex={tabIndex}

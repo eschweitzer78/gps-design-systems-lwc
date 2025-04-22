@@ -8,7 +8,7 @@
     >
       <template for:each={selectedOptions} for:item="option">
         <span
-          key={option.id}
+          key={option.key}
           aria-hidden="true"
           class="rpl-form-dropdown__multi-value-tag-item rpl-type-p"
         >
@@ -23,7 +23,7 @@
     <div lwc:ref="itemsRef" class="rpl-form-dropdown__multi-value-tag-list">
       <template for:each={displayedOptions} for:item="option">
         <button
-          key={option.id}
+          key={option.key}
           type="button"
           class="rpl-form-dropdown__multi-value-tag-item rpl-type-p rpl-u-focusable-block"
           tabindex="-1"

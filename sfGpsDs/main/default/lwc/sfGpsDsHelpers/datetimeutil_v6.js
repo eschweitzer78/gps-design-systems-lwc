@@ -17,7 +17,7 @@ export function isDate(value) {
 }
 
 export function isValidDate(obj) {
-  return isDate(obj) && !isNaN(obj.getTime());
+  return isDate(obj) && !Number.isNaN(obj.getTime());
 }
 
 export function parseIso8601(date) {

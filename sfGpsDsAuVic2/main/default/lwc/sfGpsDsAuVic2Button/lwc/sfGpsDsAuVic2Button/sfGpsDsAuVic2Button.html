@@ -1,13 +1,18 @@
-<template>
+<template lwc:render-mode="light">
   <a
     lwc:if={isAnchor}
     lwc:ref="item"
     href={url}
     target={target}
+    disabled={_disabled}
+    aria-busy={computedAriaBusy}
+    aria-controls={ariaControls}
+    aria-selected={ariaSelected}
+    aria-hidden={ariaHidden}
     class={computedClassName}
     onclick={handleClick}
   >
-    <span lwc:if={busy} class="rpl-button__spinner">
+    <span lwc:if={_busy} class="rpl-button__spinner">
       <c-sf-gps-ds-au-vic2-spinner> </c-sf-gps-ds-au-vic2-spinner>
     </span>
     <span class="rpl-button__label rpl-type-label rpl-type-weight-bold">
@@ -27,11 +32,14 @@
     lwc:ref="item"
     type="button"
     disabled={disabled}
-    aria-busy={busy}
+    aria-busy={computedAriaBusy}
+    aria-controls={ariaControls}
+    aria-selected={ariaSelected}
+    aria-hidden={ariaHidden}
     class={computedClassName}
     onclick={handleClick}
   >
-    <span lwc:if={busy} class="rpl-button__spinner">
+    <span lwc:if={_busy} class="rpl-button__spinner">
       <c-sf-gps-ds-au-vic2-spinner> </c-sf-gps-ds-au-vic2-spinner>
     </span>
     <span class="rpl-button__label rpl-type-label rpl-type-weight-bold">
@@ -42,6 +50,7 @@
       lwc:if={iconName}
       name={iconName}
       class-name="rpl-button__icon"
+      aria-hidden="true"
     >
     </c-sf-gps-ds-au-vic2-icon>
   </button>

@@ -1,16 +1,14 @@
 import { createElement } from "lwc";
 import SfGpsDsAuVic2Accordion from "c/sfGpsDsAuVic2Accordion";
+import defaultItemsFixture from "./fixtures/default";
+import simpleItemsFixture from "./fixtures/sfdc-simple";
+import complexItemsFixture from "./fixtures/sfdc-complex";
 import { setup } from "@sa11y/jest";
 
 const tag = "c-sf-gps-ds-au-vic2-accordion";
 const childTag = "c-sf-gps-ds-au-vic2-accordion-item";
 const expandAllLabel = "Open all";
 const collapseAllLabel = "Close all";
-const simpleContent = [{ title: "Accordion", content: "How are you?" }];
-const compositeContent = [
-  { title: "Accordion", content: "How are you?" },
-  { title: "Accordion 2", content: "Very well thank you!" }
-];
 const collapseExpandBtnSelect = ".rpl-accordion__toggle-all";
 
 describe("c-sf-gps-ds-au-vic2-accordion", () => {
@@ -44,7 +42,7 @@ describe("c-sf-gps-ds-au-vic2-accordion", () => {
       is: SfGpsDsAuVic2Accordion
     });
 
-    element.items = compositeContent;
+    element.items = complexItemsFixture;
     document.body.appendChild(element);
 
     const expandAllButton = element.shadowRoot.querySelector(
@@ -59,7 +57,7 @@ describe("c-sf-gps-ds-au-vic2-accordion", () => {
       is: SfGpsDsAuVic2Accordion
     });
 
-    element.items = simpleContent;
+    element.items = simpleItemsFixture;
     document.body.appendChild(element);
 
     const childAccordions = element.shadowRoot.querySelectorAll(childTag);
@@ -68,23 +66,12 @@ describe("c-sf-gps-ds-au-vic2-accordion", () => {
     );
   });
 
-  it("is accessible", async () => {
+  it("is fully expanded when user clicks on expand all", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuVic2Accordion
     });
 
-    element.items = simpleContent;
-    document.body.appendChild(element);
-
-    await expect(element).toBeAccessible();
-  });
-
-  it("is fully expanded when someone clicks on expand all", () => {
-    const element = createElement(tag, {
-      is: SfGpsDsAuVic2Accordion
-    });
-
-    element.items = compositeContent;
+    element.items = complexItemsFixture;
     document.body.appendChild(element);
 
     let expandAll = element.shadowRoot.querySelector(collapseExpandBtnSelect);
@@ -106,12 +93,12 @@ describe("c-sf-gps-ds-au-vic2-accordion", () => {
     });
   });
 
-  it("is fully collapsed when someone clicks on expand all and then collapse all", () => {
+  it("is fully collapsed when user clicks on expand all and then collapse all", () => {
     const element = createElement(tag, {
       is: SfGpsDsAuVic2Accordion
     });
 
-    element.items = compositeContent;
+    element.items = complexItemsFixture;
     document.body.appendChild(element);
 
     const expandAll = element.shadowRoot.querySelector(collapseExpandBtnSelect);
@@ -133,5 +120,44 @@ describe("c-sf-gps-ds-au-vic2-accordion", () => {
         );
       });
     });
+  });
+
+  it("is accessible", async () => {
+    const element = createElement(tag, {
+      is: SfGpsDsAuVic2Accordion
+    });
+
+    element.items = simpleItemsFixture;
+    document.body.appendChild(element);
+
+    await expect(element).toBeAccessible();
+  });
+
+  /* vic-sdp */
+
+  const baseProps = {
+    title: "Title",
+    items: defaultItemsFixture
+  };
+
+  it("show numbered accordions", () => {
+    const element = createElement(tag, {
+      is: SfGpsDsAuVic2Accordion
+    });
+
+    Object.assign(element, {
+      ...baseProps,
+      numbered: true
+    });
+
+    document.body.appendChild(element);
+
+    const childrenAccordions = element.shadowRoot.querySelectorAll(
+      ".rpl-accordion__item-number"
+    );
+    expect(childrenAccordions).toHaveLength(element.items.length);
+    expect(childrenAccordions[0].textContent).toContain("1");
+    expect(childrenAccordions[1].textContent).toContain("2");
+    expect(childrenAccordions[2].textContent).toContain("3");
   });
 });

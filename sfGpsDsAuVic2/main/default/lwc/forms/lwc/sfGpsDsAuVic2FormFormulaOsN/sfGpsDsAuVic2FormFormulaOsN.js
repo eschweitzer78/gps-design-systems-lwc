@@ -12,21 +12,15 @@
 */
 
 import SfGpsDsFormFormulaOsN from "c/sfGpsDsFormFormulaOsN";
+import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormFormulaOsN.html";
 
-export default class extends SfGpsDsFormFormulaOsN {
+export default class extends SfGpsDsAuVic2FormElementMixinOsN(
+  SfGpsDsFormFormulaOsN
+) {
   /* lifecycle */
 
   render() {
     return tmpl;
-  }
-
-  connectedCallback() {
-    if (super.connectedCallback) {
-      super.connectedCallback();
-    }
-
-    this.classList.add("rpl-form__outer");
-    this.hostElement.style.display = "block";
   }
 }

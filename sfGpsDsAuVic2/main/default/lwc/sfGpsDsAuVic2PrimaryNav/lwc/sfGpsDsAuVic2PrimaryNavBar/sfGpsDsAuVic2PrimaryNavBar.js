@@ -104,7 +104,7 @@ export default class extends FocusMixin(
   get decoratedPrimaryLogo() {
     return {
       ...this.primaryLogo,
-      href: this.primaryLogo?.href || cBasePath,
+      href: this.primaryLogo?.href || cBasePath || "/",
       altText: this.primaryLogo?.altText || "Government of Victoria Logo",
       printSrc: this.primaryLogo?.printSrc || this.primaryLogo?.src
     };
@@ -112,6 +112,10 @@ export default class extends FocusMixin(
 
   get computedShowLogoDivider() {
     return this.secondaryLogo && !this.computedDisablePrimaryLogo;
+  }
+
+  get computedShowMobileToggle() {
+    return !!this._items?.length;
   }
 
   /* methods */

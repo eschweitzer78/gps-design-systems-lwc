@@ -6,22 +6,15 @@
  */
 
 import SfGpsDsFormTimeOsN from "c/sfGpsDsFormTimeOsN";
+import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormTimeOsN.html";
 
-export default class extends SfGpsDsFormTimeOsN {
+export default class extends SfGpsDsAuVic2FormElementMixinOsN(
+  SfGpsDsFormTimeOsN
+) {
   /* lifecycle */
 
   render() {
     return tmpl;
-  }
-
-  connectedCallback() {
-    if (super.connectedCallback) {
-      super.connectedCallback();
-    }
-
-    this._readOnlyClass = "sfgpsdsauvic2-read-only";
-    this.classList.add("rpl-form__outer");
-    this.hostElement.style.display = "block";
   }
 }

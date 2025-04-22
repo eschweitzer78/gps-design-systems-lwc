@@ -1,1 +1,15 @@
-@import "./RplTabs.gen.css";
+c-sf-gps-ds-au-vic2-tabs .sfgpsdsauvic2-tabs-vertical {
+  display: flex;
+}
+
+c-sf-gps-ds-au-vic2-tabs
+  .sfgpsdsauvic2-tabs-vertical
+  c-sf-gps-ds-au-vic2-tab-bar {
+  order: 2;
+}
+
+c-sf-gps-ds-au-vic2-tabs
+  .sfgpsdsauvic2-tabs-vertical
+  c-sf-gps-ds-au-vic2-tab[data-vhidden="false"] {
+  flex-grow: 1;
+}

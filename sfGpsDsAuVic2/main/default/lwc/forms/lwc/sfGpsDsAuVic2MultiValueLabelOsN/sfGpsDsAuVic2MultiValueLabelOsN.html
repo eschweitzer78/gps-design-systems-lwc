@@ -5,7 +5,7 @@
       class="rpl-form-dropdown__multi-value-label rpl-type-p"
     >
       <template iterator:it={selectedOptions}>
-        <span key={it.value.id} data-option-label="true">
+        <span key={it.value.key} data-option-label="true">
           {it.value.label}
           <span
             class="rpl-form-dropdown__multi-value-label-char"

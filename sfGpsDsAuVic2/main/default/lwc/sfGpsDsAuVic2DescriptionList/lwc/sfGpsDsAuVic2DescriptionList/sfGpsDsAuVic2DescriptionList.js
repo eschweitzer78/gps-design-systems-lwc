@@ -63,24 +63,7 @@ export default class extends LightningElement {
       return;
     }
 
-    const iconOnly = this._variant === "icon";
-    this._items = (value || []).map((item) => {
-      return {
-        ...item,
-        inline: this._inline,
-        iconOnly,
-        className: {
-          "rpl-description-list__inline-wrap": this._inline,
-          "rpl-description-list__term": !this._inline,
-          "rpl-description-list--with-icon": item.iconName,
-          "rpl-description-list--only-icon": iconOnly,
-          [item.className]: item.className
-        },
-        termClassName: {
-          "rpl-u-visually-hidden": iconOnly
-        }
-      };
-    });
+    this._items = value.map((item) => item);
   }
 
   /* computed */
@@ -92,5 +75,25 @@ export default class extends LightningElement {
       "rpl-type-p": true,
       [this.className]: this.className
     };
+  }
+
+  get decoratedItems() {
+    const iconOnly = this._variant === "icon";
+
+    return (this._items || []).map((item) => ({
+      ...item,
+      inline: this._inline,
+      iconOnly,
+      className: {
+        "rpl-description-list__inline-wrap": this._inline,
+        "rpl-description-list__term": !this._inline,
+        "rpl-description-list--with-icon": item.iconName,
+        "rpl-description-list--only-icon": iconOnly,
+        [item.className]: item.className
+      },
+      termClassName: {
+        "rpl-u-visually-hidden": iconOnly
+      }
+    }));
   }
 }

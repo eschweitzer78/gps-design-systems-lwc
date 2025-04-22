@@ -6,15 +6,22 @@
  */
 
 import OmnistudioRadioGroup from "c/sfGpsDsOmniRadioGroupOsN";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpersOs";
+import {
+  computeClass,
+  normaliseString,
+  normaliseBoolean
+} from "c/sfGpsDsHelpersOs";
 import { api } from "lwc";
-import tmpl from "./sfGpsDsAuVic2RadioGroupOsN.html";
+import tmplRadio from "./sfGpsDsAuVic2RadioGroupOsN.html";
+import tmplButton from "./sfGpsDsAuVic2RadioGroupOsN-buttons.html";
 
 const VARIANT_DEFAULT = "default";
 const VARIANT_VALUES = {
   default: "rpl-form-option--default",
   reverse: "rpl-form-option--reverse"
 };
+
+const PERFECTSQUAREBUTTONS_DEFAULT = false;
 
 export default class extends OmnistudioRadioGroup {
   /* api: variant */
@@ -36,7 +43,42 @@ export default class extends OmnistudioRadioGroup {
     });
   }
 
+  /* api: perfectSquares */
+
+  _perfectSquareButtons = PERFECTSQUAREBUTTONS_DEFAULT;
+  _perfectSquareButtonsOriginal = PERFECTSQUAREBUTTONS_DEFAULT;
+
+  @api
+  get perfectSquareButtons() {
+    return this._perfectSquareButtonsOriginal;
+  }
+
+  set perfectSquareButtons(value) {
+    this._perfectSquareButtonsOriginal = value;
+    this._perfectSquareButtons = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: PERFECTSQUAREBUTTONS_DEFAULT
+    });
+  }
+
   /* computed */
+
+  get computedButtonsClassName() {
+    return {
+      "rpl-form-opt-buttons": true,
+      "rpl-form-opt-buttons--squares": this._perfectSquareButtons
+    };
+  }
+
+  get computedGroupClassName() {
+    const rv = {
+      "rpl-form-option-group": true,
+      "rpl-form-option-group--block": this.alignment === "vertical",
+      "rpl-form-option-group--inline": this.alignment === "horizontal"
+    };
+
+    return rv;
+  }
 
   get computedOptionClassName() {
     return {
@@ -59,7 +101,7 @@ export default class extends OmnistudioRadioGroup {
   /* lifecycle */
 
   render() {
-    return tmpl;
+    return this.isbutton ? tmplButton : tmplRadio;
   }
 
   renderedCallback() {

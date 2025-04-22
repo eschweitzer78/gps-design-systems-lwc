@@ -1,5 +1,6 @@
-<template>
-  <div class={computedClassName}>
+<template lwc:render-mode="light">
+  <div lwc:if={content} lwc:ref="content" class={computedClassName}></div>
+  <div lwc:else class={computedClassName}>
     <h3 lwc:if={title}>{title}</h3>
     <slot> </slot>
   </div>

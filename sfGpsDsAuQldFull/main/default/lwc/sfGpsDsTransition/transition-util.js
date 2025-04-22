@@ -1,7 +1,7 @@
 import { isArray, isObject, toNumber } from "c/sfGpsDsHelpers";
 
 export function isValidDuration(val) {
-  return typeof val === "number" && !isNaN(val);
+  return typeof val === "number" && !Number.isNaN(val);
 }
 
 export function getHookArgumentsLength(fn) {

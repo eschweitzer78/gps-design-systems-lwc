@@ -6,9 +6,12 @@
  */
 
 import SfGpsDsFormSelectOsN from "c/sfGpsDsFormSelectOsN";
+import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormSelectOsN.html";
 
-export default class extends SfGpsDsFormSelectOsN {
+export default class extends SfGpsDsAuVic2FormElementMixinOsN(
+  SfGpsDsFormSelectOsN
+) {
   get decoratedRealtimeOptions() {
     return this._realtimeOptions.slice(1);
   }
@@ -17,15 +20,5 @@ export default class extends SfGpsDsFormSelectOsN {
 
   render() {
     return tmpl;
-  }
-
-  connectedCallback() {
-    if (super.connectedCallback) {
-      super.connectedCallback();
-    }
-
-    this._readOnlyClass = "sfgpsdsauvic2-read-only";
-    this.classList.add("rpl-form__outer");
-    this.hostElement.style.display = "block";
   }
 }

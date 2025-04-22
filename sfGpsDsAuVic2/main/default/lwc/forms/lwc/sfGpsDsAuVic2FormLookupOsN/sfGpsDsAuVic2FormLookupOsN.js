@@ -7,10 +7,13 @@
 
 import { api, wire } from "lwc";
 import SfGpsDsFormLookupOsN from "c/sfGpsDsFormLookupOsN";
+import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormLookupOsN.html";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 
-export default class extends SfGpsDsFormLookupOsN {
+export default class extends SfGpsDsAuVic2FormElementMixinOsN(
+  SfGpsDsFormLookupOsN
+) {
   /* override */
 
   /* 
@@ -69,15 +72,5 @@ export default class extends SfGpsDsFormLookupOsN {
 
   render() {
     return tmpl;
-  }
-
-  connectedCallback() {
-    if (super.connectedCallback) {
-      super.connectedCallback();
-    }
-
-    this._readOnlyClass = "sfgpsdsauvic2-read-only";
-    this.classList.add("rpl-form__outer");
-    this.hostElement.style.display = "block";
   }
 }

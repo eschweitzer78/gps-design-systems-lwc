@@ -15,9 +15,16 @@
       </c-sf-gps-ds-au-vic2-image>
     </template>
 
-    <div slot="meta" class="rpl-card__meta rpl-type-label-small">
+    <div
+      lwc:if={_hasMetaSlot}
+      slot="meta"
+      class="rpl-card__meta rpl-type-label-small"
+    >
       <slot name="meta"></slot>
     </div>
+    <template lwc:else>
+      <slot name="meta" onslotchange={handleSlotChange}></slot>
+    </template>
 
     <h3 slot="title" class={computedTitleClassName}>
       <c-sf-gps-ds-au-vic2-text-link

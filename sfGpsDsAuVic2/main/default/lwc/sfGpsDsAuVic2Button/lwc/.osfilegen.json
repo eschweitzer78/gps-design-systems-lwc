@@ -1,0 +1,17 @@
+{
+  "sfGpsDsAuVic2Button": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-vic2-spinner": "c-sf-gps-ds-au-vic2-spinner-os",
+      "c-sf-gps-ds-au-vic2-icon": "c-sf-gps-ds-au-vic2-icon-os"
+    },
+    "!.js": {
+      "target": "!Os.js"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  }
+}

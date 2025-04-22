@@ -13,8 +13,18 @@
         class="rpl-search-bar__input-wrap"
         onkeydown={handleContainerKeydown}
       >
+        <c-sf-gps-ds-au-vic2-icon
+          lwc:if={computedHasIconLeft}
+          name="icon-search"
+          size="m"
+          role="presentation"
+          class="rpl-search-bar__icon rpl-search-bar__icon-left"
+        >
+        </c-sf-gps-ds-au-vic2-icon>
+
         <!-- TODO: vbind, vmodel -->
         <input
+          lwc:if={computedShowInput}
           name="searchbox"
           id="inputId"
           lwc:ref="inputRef"
@@ -24,13 +34,64 @@
           aria-expanded={_isOpen}
           placeholder={placeholder}
           role="combobox"
-          class={computedInputClassName}
-          type="search"
-          value={_inputValue}
+          class="rpl-search-bar__input"
+          type="text"
+          value={_internalValue}
           oninput={handleInputChange}
           onfocus={handleInputFocus}
+          onblur={handleInputBlur}
           onkeydown={handleInputKeydown}
         />
+        <div
+          lwc:else
+          tabindex="0"
+          class="rpl-search-bar__input"
+          onfocus={handleInputDivFocus}
+        >
+          <slot name="suggestion"> </slot>
+        </div>
+        <slot name="afterInput"></slot>
+
+        <div class="rpl-search-bar__right">
+          <button
+            lwc:if={computedShowClearButton}
+            type="button"
+            aria-label="Clear search"
+            class="rpl-search-bar__clear rpl-u-focusable-inline"
+            onclick={handleClear}
+          >
+            <c-sf-gps-ds-au-vic2-icon name="icon-cancel-circle-filled">
+            </c-sf-gps-ds-au-vic2-icon>
+          </button>
+          <button
+            lwc:if={_showSubmitButton}
+            type="submit"
+            aria-label="search"
+            class="rpl-search-bar-submit rpl-u-focusable-inline"
+          >
+            <span
+              lwc:if={submitLabel}
+              class="rpl-search-bar-submit__label rpl-type-label rpl-type-weight-bold"
+              >{submitLabel}</span
+            >
+            <span
+              lwc:if={computedHasIconRight}
+              class="rpl-search-bar-submit__icon rpl-search-bar__icon"
+            >
+              <c-sf-gps-ds-au-vic2-icon name="icon-search" size="m">
+              </c-sf-gps-ds-au-vic2-icon>
+            </span>
+          </button>
+          <c-sf-gps-ds-au-vic2-icon
+            lwc:elseif={computedHasIconRight}
+            name="icon-search"
+            size="m"
+            role="presentation"
+            class="rpl-search-bar__icon rpl-search-bar__icon--right"
+            onclick={handleInputDivFocus}
+          >
+          </c-sf-gps-ds-au-vic2-icon>
+        </div>
 
         <template lwc:if={computedNoResults}>
           <slot name="noresults">
@@ -63,27 +124,6 @@
             </div>
           </template>
         </div>
-      </div>
-
-      <!-- was submit -->
-      <div class="rpl-search-bar__right">
-        <button
-          type="button"
-          aria-label="search"
-          class="rpl-search-bar-submit rpl-u-focusable-inline"
-        >
-          <span
-            lwc:if={submitLabel}
-            class="rpl-search-bar-submit__label rpl-type-label rpl-type-weight-bold"
-          >
-            {submitLabel}
-          </span>
-
-          <span class="rpl-search-bar-submit__icon">
-            <c-sf-gps-ds-au-vic2-icon name="icon-search" size="m">
-            </c-sf-gps-ds-au-vic2-icon>
-          </span>
-        </button>
       </div>
     </div>
   </form>

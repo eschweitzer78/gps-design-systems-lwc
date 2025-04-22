@@ -8,7 +8,7 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
-import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import { replaceInnerHtml, toNumber } from "c/sfGpsDsHelpers";
 
 export default class extends SfGpsDsLwc {
   @api title;
@@ -27,13 +27,13 @@ export default class extends SfGpsDsLwc {
 
   set level(level) {
     this._levelOriginal = level;
-    const iLevel = parseInt(level.toString(), 10);
+    const nLevel = toNumber(level);
 
-    if (isNaN(iLevel) || iLevel < 1 || iLevel > 6) {
-      this.addError("LV-VA", "Level should be an integer value from 1 to 6");
+    if (Number.isNaN(nLevel) || nLevel < 1 || nLevel > 6) {
+      this.addError("LV-VA", "Level should be a value from 1 to 6");
+    } else {
+      this._level = Math.round(nLevel);
     }
-
-    this._level = iLevel;
   }
 
   /* api: content */

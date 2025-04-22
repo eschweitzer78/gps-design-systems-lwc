@@ -69,6 +69,11 @@ export function isRTL() {
   return document.dir === "rtl";
 }
 
+export function getCssPropertyValue(propertyName) {
+  const style = getComputedStyle(document.body);
+  return style?.getPropertyValue(propertyName);
+}
+
 // JavaScript HTML Sanitizer v2.0.2, (c) Alexander Yumashev, Jitbit Software.
 // homepage https://github.com/jitbit/HtmlSanitizer
 // License: MIT https://github.com/jitbit/HtmlSanitizer/blob/master/LICENSE

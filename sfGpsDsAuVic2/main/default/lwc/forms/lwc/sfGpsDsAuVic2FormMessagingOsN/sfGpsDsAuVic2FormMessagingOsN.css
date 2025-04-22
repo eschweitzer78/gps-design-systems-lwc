@@ -1,0 +1,17 @@
+.rpl-form-alert--information {
+  border-left-color: var(--rpl-clr-information);
+  background: var(--rpl-clr-information-light);
+}
+
+.rpl-form-alert--information .rpl-form-alert__title {
+  color: var(--rpl-clr-information);
+}
+
+.rpl-form-alert--warning {
+  border-left-color: var(--rpl-clr-warning);
+  background: var(--rpl-clr-warning-light);
+}
+
+.rpl-form-alert--warning .rpl-form-alert__title {
+  color: var(--rpl-clr-warning);
+}

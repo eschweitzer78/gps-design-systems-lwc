@@ -7,6 +7,9 @@ import {
   IMAGE_DEFAULT
 } from "c/sfGpsDsAuVic2ImageConstants";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2Image";
+
 const distanceAsPercentage = (point, total) => {
   const nP = Number(point);
   const nT = Number(total);
@@ -146,6 +149,17 @@ export default class extends LightningElement {
   /* computed */
 
   get computedAspectClassName() {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> computedAspectClassName",
+        "circle=",
+        this.circle,
+        "_aspect=",
+        JSON.stringify(this._aspect)
+      );
+    }
+
     const base = "rpl-u-aspect";
     let rv = {};
 
@@ -169,18 +183,38 @@ export default class extends LightningElement {
       rv = o;
     }
 
+    if (DEBUG) console.debug(CLASS_NAME, "< computedAspectClassName", rv);
     return rv;
   }
 
   get computedClassName() {
-    return {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> computedClassName",
+        "circle=",
+        this.circle,
+        "_aspect=",
+        JSON.stringify(this._aspect),
+        "_fit=",
+        this._fit,
+        "className=",
+        this.className
+      );
+    }
+
+    const rv = {
       "rpl-image": true,
-      "rpl-image--fill": this._aspect,
-      "rpl-image--circle": this.circle,
+      "rpl-image--fill": !!this._aspect,
+      "rpl-image--circle": !!this.circle,
       [`rpl-image--${this._fit}`]: this._fit,
       ...this.computedAspectClassName,
       [this.className]: this.className
     };
+
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< computedClassName", JSON.stringify(rv));
+    return rv;
   }
 
   get computedObjectPosition() {

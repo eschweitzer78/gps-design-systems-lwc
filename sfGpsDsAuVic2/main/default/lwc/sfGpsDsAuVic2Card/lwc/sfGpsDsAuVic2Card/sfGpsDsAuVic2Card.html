@@ -6,7 +6,9 @@
     </div>
 
     <div class="rpl-card__body">
-      <slot name="meta"></slot>
+      <div style={computedMetaStyle}>
+        <slot name="meta" onslotchange={handleSlotChange}></slot>
+      </div>
       <slot name="title"></slot>
       <div class="rpl-card__content">
         <slot></slot>

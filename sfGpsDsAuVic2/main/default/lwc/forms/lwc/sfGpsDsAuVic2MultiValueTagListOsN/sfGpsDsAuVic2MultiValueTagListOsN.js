@@ -21,9 +21,10 @@ export default class extends LightningElement {
   }
 
   set selectedOptions(value) {
-    this._selectedOptions = (value || []).map((option) => ({
+    this._selectedOptions = (value || []).map((option, index) => ({
       ...option,
-      _ariaLabel: `Remove ${option.label}`
+      _ariaLabel: `Remove ${option.label}`,
+      key: `option-${index + 1}`
     }));
 
     this.calculateHiddenItems();
@@ -97,12 +98,12 @@ export default class extends LightningElement {
   /* methods */
 
   calculateHiddenItems = async () => {
-    if (this.isOpen) return;
+    if (this.isOpen || !this._observer) return;
 
     await nextTick();
 
     const itemsBBox = this.refs.itemsRef.getBoundingClientRect();
-    const tagElements = this.faxItemsRef.querySelectorAll("[aria-hidden]");
+    const tagElements = this.refs.faxItemsRef.querySelectorAll("[aria-hidden]");
 
     let countShown = 0;
     const widthToFill = this.numItemsHidden
@@ -155,7 +156,7 @@ export default class extends LightningElement {
       }
     }
 
-    this.dispatchEvent(new CustomEvent("toggleoption", { detail: option }));
+    this.dispatchEvent(new CustomEvent("removeoption", { detail: option }));
   }
 
   handleFocus(tagId) {
@@ -165,9 +166,9 @@ export default class extends LightningElement {
       tagId = this.selectedOptions[this.selectedOptions.length - 1].id;
     }
 
-    const foundTag = this.refs.itemsRef?.querySelector(
-      `[data-tag-id="${tagId}"]`
-    );
+    const foundTag = this._observer
+      ? this.refs.itemsRef?.querySelector(`[data-tag-id="${tagId}"]`)
+      : null;
 
     if (foundTag) {
       foundTag.focus();

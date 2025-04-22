@@ -1,16 +1,67 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2Callout extends LightningElement {
+export default class extends LightningElement {
+  static renderMode = "light";
+
   @api title;
+  @api content;
   @api variant;
-  @api className;
+
+  /* api: className */
+
+  _className;
+
+  @api
+  get className() {
+    return this._className;
+  }
+
+  set className(value) {
+    this.removeClasses(this._className);
+    this._className = value;
+    this.addClasses(this._className);
+  }
+
+  /* computed */
 
   get computedClassName() {
     return computeClass({
       "rpl-callout": true,
-      "rpl-callout--neutral": this.variant === "neutral",
-      [this.className]: this.className
+      "rpl-callout--neutral": this.variant === "neutral"
     });
+  }
+
+  /* methods */
+
+  removeClasses(value) {
+    try {
+      if (value) {
+        this.classList.remove(...value.split(" "));
+      }
+    } catch (e) {
+      console.debug(e);
+    }
+  }
+
+  addClasses(value) {
+    try {
+      if (value) {
+        this.classList.add(...value.split(" "));
+      }
+    } catch (e) {
+      console.debug(e);
+    }
+  }
+
+  /* lifecycle */
+
+  renderedCallback() {
+    if (this.refs?.content) {
+      replaceInnerHtml(
+        this.refs.content,
+        (this.title ? `<h3>${this.title}</h3>` : "") + (this.content || "")
+      );
+    }
   }
 }

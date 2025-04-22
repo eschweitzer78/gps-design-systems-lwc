@@ -21,7 +21,7 @@ describe("c-sf-gps-ds-au-vic2-tab-bar", () => {
     document.body.appendChild(element);
 
     // Assert
-    const li = element.querySelector("c-sf-gps-ds-au-vic2-button");
+    const li = element.querySelector("button");
     expect(li).toBeNull();
   });
 
@@ -40,11 +40,10 @@ describe("c-sf-gps-ds-au-vic2-tab-bar", () => {
     document.body.appendChild(element);
 
     // Assert
-    const lis = element.querySelectorAll("c-sf-gps-ds-au-vic2-button");
+    const lis = element.querySelectorAll("button");
     expect(lis.length).toBe(2);
     expect(lis[0].dataset.label).toBe("Tab A");
     expect(lis[0].dataset.tabValue).toBe("a");
-    expect(lis[0].classList.length).toBe(0);
   });
 
   it("can be operated using the keyboard", () => {
@@ -70,7 +69,7 @@ describe("c-sf-gps-ds-au-vic2-tab-bar", () => {
     // Assert
 
     return Promise.resolve().then(() => {
-      const liAs = element.querySelectorAll("c-sf-gps-ds-au-vic2-button");
+      const liAs = element.querySelectorAll("button");
       expect(liAs.length).toBe(2);
       expect(liAs[0].ariaSelected).toBe("false");
       expect(liAs[1].ariaSelected).toBe("true");

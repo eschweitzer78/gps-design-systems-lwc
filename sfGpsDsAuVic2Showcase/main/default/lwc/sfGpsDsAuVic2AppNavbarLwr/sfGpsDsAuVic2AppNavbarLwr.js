@@ -63,7 +63,7 @@ export default class extends SfGpsDsLwc {
   }
 
   get computedHref() {
-    return cBasePath;
+    return cBasePath || "/";
   }
 
   /* methods */

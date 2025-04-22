@@ -48,7 +48,7 @@ export default class extends SfGpsDsLwc {
     /* This only works on same domain */
 
     const frame = this.refs.frame;
-    frame.height = frame?.contentWindow.document.body.scrollHeight;
+    frame.height = frame?.contentWindow?.document.body.scrollHeight;
   }
 
   /* lifecycle */

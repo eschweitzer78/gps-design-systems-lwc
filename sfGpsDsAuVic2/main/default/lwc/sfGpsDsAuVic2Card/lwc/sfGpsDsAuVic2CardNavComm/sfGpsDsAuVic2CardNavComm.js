@@ -10,6 +10,8 @@ const TITLE_DEFAULT = { text: "Nav card", url: "#" };
  * @slot Meta
  */
 export default class extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api image;
   @api highlight;
   @api inset;
@@ -86,6 +88,6 @@ export default class extends SfGpsDsLwc {
 
   connectedCallback() {
     super.connectedCallback();
-    this.classList.add("vic2-scope", "sf-gps-ds-au-vic2-grid");
+    this.classList.add("vic2-scope");
   }
 }

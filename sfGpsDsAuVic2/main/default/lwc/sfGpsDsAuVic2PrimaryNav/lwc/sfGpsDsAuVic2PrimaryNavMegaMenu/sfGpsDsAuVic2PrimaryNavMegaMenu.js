@@ -120,5 +120,9 @@ export default class extends FocusMixin(LightningElement) {
         detail: event.detail
       })
     );
+
+    if (event.detail?.action === "open") {
+      this.refs.megamenu.scrollTo(0, 0);
+    }
   }
 }
