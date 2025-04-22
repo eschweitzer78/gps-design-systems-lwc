@@ -106,7 +106,7 @@ export default class extends LightningElement {
 
     if (
       typeof targetIndex === "undefined" ||
-      isNaN(targetIndex) ||
+      Number.isNaN(targetIndex) ||
       targetIndex < 0 ||
       targetIndex >= this._tags.length
     ) {
