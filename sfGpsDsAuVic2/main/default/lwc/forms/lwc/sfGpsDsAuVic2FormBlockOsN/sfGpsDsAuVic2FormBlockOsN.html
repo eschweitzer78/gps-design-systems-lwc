@@ -25,8 +25,8 @@
               class="rpl-accordion__item-icon rpl-u-screen-only"
               aria-hidden="true"
             >
-              <c-sf-gps-ds-au-vic2-icon name="icon-chevron-down">
-              </c-sf-gps-ds-au-vic2-icon>
+              <c-sf-gps-ds-au-vic2-icon-os name="icon-chevron-down">
+              </c-sf-gps-ds-au-vic2-icon-os>
             </span>
           </button>
 
@@ -57,7 +57,7 @@
           <span>{allCustomLabelsUtil.OmniBlockError}</span>
         </span>
 
-        <c-sf-gps-ds-au-vic2-expandable
+        <c-sf-gps-ds-au-vic2-expandable-os
           lwc:if={computedCollapsible}
           id="content"
           expanded={expandContent}
@@ -92,7 +92,7 @@
 
             <slot></slot>
           </div>
-        </c-sf-gps-ds-au-vic2-expandable>
+        </c-sf-gps-ds-au-vic2-expandable-os>
         <div lwc:else class={computedContentClassName}>
           <div
             class="rpl-accordion__item-content-inner rpl-grid rpl-grid--no-row-gap"
