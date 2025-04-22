@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS LWR Grid</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="Type of grid."
+        default="default"
+        datasource="default,row-flush"
+      />
+      <property
+        name="col1ClassName"
+        type="String"
+        label="Column 1 Class Name"
+        description="Add rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default="rpl-col-3"
+      />
+      <property
+        name="col2ClassName"
+        type="String"
+        label="Column 2 Class Name"
+        description="Add rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default="rpl-col-3"
+      />
+      <property
+        name="col3ClassName"
+        type="String"
+        label="Column 3 Class Name"
+        description="Add rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default="rpl-col-3"
+      />
+      <property
+        name="col4ClassName"
+        type="String"
+        label="Column 4 Class Name"
+        description="Add rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default="rpl-col-3"
+      />
+      <property
+        name="col5ClassName"
+        type="String"
+        label="Column 5 Class Name"
+        description="Add rpl-col and rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default=""
+      />
+      <property
+        name="col6ClassName"
+        type="String"
+        label="Column 6 Class Name"
+        description="Add rpl-col and rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default=""
+      />
+      <property
+        name="col7ClassName"
+        type="String"
+        label="Column 7 Class Name"
+        description="Add rpl-col and rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default=""
+      />
+      <property
+        name="col8ClassName"
+        type="String"
+        label="Column 8 Class Name"
+        description="Add rpl-col and rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default=""
+      />
+      <property
+        name="col9ClassName"
+        type="String"
+        label="Column 9 Class Name"
+        description="Add rpl-col and rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default=""
+      />
+      <property
+        name="col10ClassName"
+        type="String"
+        label="Column 10 Class Name"
+        description="Add rpl-col and rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default=""
+      />
+      <property
+        name="col11ClassName"
+        type="String"
+        label="Column 11 Class Name"
+        description="Add rpl-col and rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default=""
+      />
+      <property
+        name="col12ClassName"
+        type="String"
+        label="Column 12 Class Name"
+        description="Add rpl-col and rpl-col-{breakpoint}-{width} as required. Leave empty to hide columm."
+        default=""
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
