@@ -1,12 +1,12 @@
 let StepNavigationMixin = (
   Base,
   currentStepProp,
-  surroundingSteps,
+  surroundingStepsProp,
   totalStepsProp
 ) =>
   class extends Base {
     get stepRange() {
-      return surroundingSteps * 2 + 1;
+      return this[surroundingStepsProp] * 2 + 1;
     }
 
     get isFirstStep() {
@@ -27,9 +27,9 @@ let StepNavigationMixin = (
       const totalStepsRef = this[totalStepsProp];
 
       let start = Math.max(1, Math.round(activeStep - stepRange / 2));
-      const hasFirst = surroundingSteps > 2 && start > 1;
+      const hasFirst = this[surroundingStepsProp] > 2 && start > 1;
       const end = Math.min(start + stepRange - 1, totalStepsRef);
-      const hasLast = surroundingSteps > 2 && end < totalStepsRef;
+      const hasLast = this[surroundingStepsProp] > 2 && end < totalStepsRef;
 
       if (end - start + 1 < stepRange) {
         start = Math.max(1, end - stepRange + 1);

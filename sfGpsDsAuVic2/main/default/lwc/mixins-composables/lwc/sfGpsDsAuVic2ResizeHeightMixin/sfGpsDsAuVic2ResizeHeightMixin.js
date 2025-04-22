@@ -40,7 +40,7 @@ const ResizeHeightMixin = (Base, resizeRef) =>
         super.disconnectedCallback();
       }
 
-      this._resizeObserver.disconnect();
+      this[RESIZE_OBSERVER]?.disconnect();
 
       const handler = this[HANDLE_RESIZE_HEIGHT];
       if (handler) {
