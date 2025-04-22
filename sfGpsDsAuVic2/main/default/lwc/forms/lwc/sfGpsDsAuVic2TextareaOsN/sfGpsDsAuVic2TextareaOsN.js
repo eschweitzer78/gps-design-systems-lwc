@@ -171,8 +171,10 @@ export default class extends OmnistudioTextarea {
         this.setCustomValidity(this.messageWhenTooLong);
         break;
       case ((this.value &&
-        (this.computedLength >= this.minLength || isNaN(this.minLength)) &&
-        (this.computedLength <= this.maxLength || isNaN(this.maxLength))) ||
+        (this.computedLength >= this.minLength ||
+          Number.isNaN(this.minLength)) &&
+        (this.computedLength <= this.maxLength ||
+          Number.isNaN(this.maxLength))) ||
         !this.value) &&
         (this.errorMessage === this.messageWhenTooShort ||
           this.errorMessage === this.messageWhenTooLong):
