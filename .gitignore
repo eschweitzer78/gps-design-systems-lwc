@@ -64,5 +64,8 @@ sfGpsDsUkGovFull/*
 
 # auto-generated CSS
 **/lwc/**/*.gen.css
+**/lwc/**/*.gen.scss
 **/aura/**/*.gen.css
+**/aura/**/*.gen.scss
 **/staticresources/**/*.gen.css
+**/staticresources/**/*.gen.scss
