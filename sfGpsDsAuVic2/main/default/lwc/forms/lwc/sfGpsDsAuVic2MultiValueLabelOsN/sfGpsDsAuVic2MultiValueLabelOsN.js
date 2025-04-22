@@ -21,9 +21,10 @@ export default class extends LightningElement {
   }
 
   set selectedOptions(value) {
-    this._selectedOptions = (value || []).map((opt) => ({
+    this._selectedOptions = (value || []).map((opt, index) => ({
       ...opt,
-      charAt0: opt.label?.charAt(0)
+      charAt0: opt.label?.charAt(0),
+      key: `option-${index + 1}`
     }));
     this.calculateNumberOfHiddenItems();
   }
@@ -40,6 +41,11 @@ export default class extends LightningElement {
   /* methods */
 
   async calculateNumberOfHiddenItems() {
+    if (!this._observer) {
+      /* never rendered */
+      return;
+    }
+
     const itemsRef = this.refs.itemsRef;
     await nextTick();
 

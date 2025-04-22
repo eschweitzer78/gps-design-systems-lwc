@@ -9,7 +9,7 @@
  */
 
 /* 
-  Expectations for LWC used as a childInput
+  Expectations for LWC used as a childInput for an Omni form element
 
   mandatory:
   - @api value
@@ -39,7 +39,9 @@ import {
   nextTick,
   isArray,
   isString,
-  debounce
+  toNumber,
+  debounce,
+  computeClass
 } from "c/sfGpsDsHelpersOs";
 import OnClickOutside from "c/sfGpsDsOnClickOutsideOs";
 import salesforceUtils from "omnistudio/salesforceUtils";
@@ -55,50 +57,152 @@ const VARIANT_VALUES = {
 const CLICK_OUTSIDE_REF = "containerRef";
 
 const DEFAULT_OPTION_ID = "__default-option";
+const LASTITEM_OPTION_ID = "last-item";
 const UNSELECTED_VALUE = null;
 const PLACEHOLDER_DEFAULT = "Select";
-const NORESULTLABEL_DEFAULT = "No results found";
 const MAXITEMSDISPLAYED_DEFAULT = 6;
+const SORTED_DEFAULT = true;
+const PROCESS_SEARCH_FREQUENCY = 250;
 
-const DEBUG = true;
-const CLASS_NAME = "SfGpsDsAuVic2RplDropdownOsN";
+const I18N = {
+  noResultsLabel: "No results found",
+  messageWhenValueMissing: "You must provide a value.",
+  messageWhenTooShort: "You must provide a longer value.",
+  messageWhenTooLong: "You must provide a shorter value."
+};
+
+/** The different modes:
+ * - Combobox allows to type any value or pick from the list of options
+ * - Filtered allows to type for filtering purposes, one can only pick from the list of options
+ * - Lookup does not allow typing
+ * - Typeahead is similar to combobox but the search text is synced with the value and in the options label and value must be the same
+ **/
+
+const MODE_COMBOBOX_ALL =
+  "combobox-all"; /* single - any value, non filtered options, automatically select if a single one remains */
+const MODE_COMBOBOX_AUTO =
+  "combobox-auto"; /* single - any value, filtered options, automatically select if a single one remains */
+const MODE_COMBOBOX_MANUAL =
+  "combobox-manual"; /* single - any value, filtered options, manually select */
+const MODE_FILTERED_AUTO =
+  "filtered-auto"; /* single or multi, search box but only picked value, filtered options, automatically select if a single one remains */
+const MODE_FILTERED_MANUAL =
+  "filtered-manual"; /* single or multi, search box but only picked value, filtered options, manually select */
+const MODE_LOOKUP = "lookup"; // single or multi, no search box, manually select */
+const MODE_TYPEAHEAD = "typeahead";
+
+const MODE_VALUES = {
+  [MODE_COMBOBOX_ALL]: {
+    multi: false,
+    searchable: true,
+    any: true,
+    filtering: false,
+    autoselect: true
+  },
+  [MODE_COMBOBOX_AUTO]: {
+    multi: false,
+    searchable: true,
+    any: true,
+    filtering: true,
+    autoselect: true
+  },
+  [MODE_COMBOBOX_MANUAL]: {
+    multi: false,
+    searchable: true,
+    any: true,
+    filtering: true,
+    autoselect: false
+  },
+  [MODE_FILTERED_AUTO]: {
+    multi: true,
+    searchable: true,
+    any: false,
+    filtering: true,
+    autoselect: true
+  },
+  [MODE_FILTERED_MANUAL]: {
+    multi: true,
+    searchable: true,
+    any: false,
+    filtering: true,
+    autoselect: false
+  },
+  [MODE_LOOKUP]: {
+    multi: true,
+    searchable: false,
+    any: false,
+    filtering: false,
+    autoselect: false
+  },
+  [MODE_TYPEAHEAD]: {
+    multi: false,
+    searchable: true,
+    any: false,
+    filtering: false,
+    autoselect: false,
+    syncvalue: true
+  }
+};
+
+const MODE_DEFAULT = MODE_LOOKUP;
+
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsAuVic2RplBaseDropdownOsN";
 
 export default class extends LightningElement {
   @api label;
-  @api acceptAnySingleValue;
-
   @api fieldLevelHelp;
   @api unselectLabel = "-- Clear --";
 
-  /* api: maxItemsDisplayed */
+  /* api: mode */
 
-  _maxItemsDisplayed;
+  _mode = MODE_VALUES[MODE_DEFAULT];
+  _modeOriginal = MODE_DEFAULT;
+
+  @api
+  get mode() {
+    return this._modeOriginal;
+  }
+
+  set mode(value) {
+    this._modeOriginal = value;
+    this._mode = normaliseString(value, {
+      validValues: MODE_VALUES,
+      fallbackValue: MODE_DEFAULT,
+      returnObjectValue: true
+    });
+  }
+
+  /* api: maxItemsDisplayed, height of the dropdown in number of rows */
+
+  _maxItemsDisplayed = MAXITEMSDISPLAYED_DEFAULT;
+  _maxItemsDisplayedOriginal = MAXITEMSDISPLAYED_DEFAULT;
 
   @api
   get maxItemsDisplayed() {
-    return this._maxItemsDisplayed || MAXITEMSDISPLAYED_DEFAULT;
+    return this._maxItemsDisplayedOriginal;
   }
 
   set maxItemsDisplayed(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set maxItemsDisplayed", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set maxItemsDisplayed", value);
 
     if (value == null) {
-      this._maxItemsDisplayed = null;
+      this._maxItemsDisplayed = MAXITEMSDISPLAYED_DEFAULT;
     } else {
-      this._maxItemsDisplayed = isString(value)
-        ? parseInt(value, 10)
-        : Number(value).round();
+      const n = toNumber(value);
+      this._maxItemsDisplayed =
+        Number.isNaN(n) || n < 1 ? MAXITEMSDISPLAYED_DEFAULT : Math.round(n);
     }
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< set maxItemsDisplayed",
         this._maxItemsDisplayed
       );
   }
 
-  /* api: placeholder */
+  /* api: placeholder, label that's shown when there is no selection or search text */
 
   _placeholder;
 
@@ -108,32 +212,15 @@ export default class extends LightningElement {
   }
 
   set placeholder(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set placeholder", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set placeholder", value);
 
     this._placeholder = value;
 
-    if (DEBUG) console.log(CLASS_NAME, "< set placeholder", this._placeholder);
-  }
-
-  /* api: noResultLabel */
-
-  _noResultLabel;
-
-  @api
-  get noResultLabel() {
-    return this._noResultLabel || NORESULTLABEL_DEFAULT;
-  }
-
-  set noResultLabel(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set noResultLabel", value);
-
-    this._noResultLabel = value;
-
     if (DEBUG)
-      console.log(CLASS_NAME, "< set noResultLabel", this._noResultLabel);
+      console.debug(CLASS_NAME, "< set placeholder", this._placeholder);
   }
 
-  /* api: disabled */
+  /* api: disabled, disables the whole element (which is also read only) */
 
   _disabled;
   _disabledOriginal;
@@ -144,7 +231,7 @@ export default class extends LightningElement {
   }
 
   set disabled(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set disabled", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set disabled", value);
 
     this._disabledOriginal = value;
     this._disabled = normaliseBoolean(value, {
@@ -152,13 +239,55 @@ export default class extends LightningElement {
       fallbackValue: false
     });
 
-    if (DEBUG) console.log(CLASS_NAME, "> set disabled", this._disabled);
+    if (DEBUG) console.debug(CLASS_NAME, "> set disabled", this._disabled);
   }
 
-  /* api: multiple */
+  /* api: disableLastItem, disables the last (non data) item which is used e.g. for New button or the Google copyright */
 
-  _multiple;
+  _disableLastItem;
+  _disableLastItemOriginal;
+
+  @api
+  get disableLastItem() {
+    return this._disableLastItemOriginal;
+  }
+
+  set disableLastItem(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set disabled", value);
+
+    this._disableLastItemOriginal = value;
+    this._disableLastItem = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: false
+    });
+
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> set disabled", this._disableLastItem);
+  }
+
+  /* api: multiple, allows to select multiple items */
+
+  __multiple;
   _multipleOriginal;
+
+  get _multiple() {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> get _multiple",
+        "__multiple",
+        this.__multiple,
+        "_mode.multi",
+        this._mode.multi
+      );
+    }
+
+    const rv = this.__multiple && this._mode.multi;
+
+    if (DEBUG) console.debug(CLASS_NAME, "< get _multiple", rv);
+
+    return rv;
+  }
 
   @api
   get multiple() {
@@ -166,18 +295,44 @@ export default class extends LightningElement {
   }
 
   set multiple(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set multiple", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set multiple", value);
 
     this._multipleOriginal = value;
-    this._multiple = normaliseBoolean(value, {
+    this.__multiple = normaliseBoolean(value, {
       acceptString: true,
       fallbackValue: false
     });
 
-    if (DEBUG) console.log(CLASS_NAME, "< set multiple", this._multiple);
+    this.updateValue(); // This may have an impact of the value that was set.
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set multiple", this._multiple);
   }
 
-  /* api: preventDeselect */
+  /* api: sorted, the dropdown options will be sorted by label */
+
+  _sorted = SORTED_DEFAULT;
+  _sortedOriginal = SORTED_DEFAULT;
+
+  @api
+  get sorted() {
+    return this._sortedOriginal;
+  }
+
+  set sorted(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set sorted", value);
+
+    this._sortedOriginal = value;
+    this._sorted = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: SORTED_DEFAULT
+    });
+
+    this.setOptions(this._optionsOriginal);
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set multiple", this._multiple);
+  }
+
+  /* api: preventDeselect, does not show the "-- clear --" pseudo-option */
 
   _preventDeselect;
   _preventDeselectOriginal;
@@ -188,7 +343,7 @@ export default class extends LightningElement {
   }
 
   set preventDeselect(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set preventDeselect", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set preventDeselect", value);
 
     this._preventDeselectOriginal = value;
     this._preventDeselect = normaliseBoolean(value, {
@@ -197,32 +352,10 @@ export default class extends LightningElement {
     });
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< set preventDeselect", this._preventDeselect);
+      console.debug(CLASS_NAME, "< set preventDeselect", this._preventDeselect);
   }
 
-  /* api: searchable */
-
-  _searchable;
-  _searchableOriginal;
-
-  @api
-  get searchable() {
-    return this._searchableOriginal;
-  }
-
-  set searchable(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set searchable", value);
-
-    this._searchableOriginal = value;
-    this._searchable = normaliseBoolean(value, {
-      acceptString: true,
-      fallbackValue: false
-    });
-
-    if (DEBUG) console.log(CLASS_NAME, "< set searchable", this._searchable);
-  }
-
-  /* api: required */
+  /* api: required, validation will fail if no value has been set */
 
   _required;
   _requiredOriginal;
@@ -233,7 +366,7 @@ export default class extends LightningElement {
   }
 
   set required(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set required", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set required", value);
 
     this._requiredOriginal = value;
     this._required = normaliseBoolean(value, {
@@ -241,10 +374,10 @@ export default class extends LightningElement {
       fallbackValue: false
     });
 
-    if (DEBUG) console.log(CLASS_NAME, "< set required", this._required);
+    if (DEBUG) console.debug(CLASS_NAME, "< set required", this._required);
   }
 
-  /* api: requiredLabel */
+  /* api: requiredLabel, label of the "required" cue */
 
   _requiredLabel;
 
@@ -254,16 +387,17 @@ export default class extends LightningElement {
   }
 
   set requiredLabel(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set requiredLabel", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set requiredLabel", value);
 
     this._requiredLabel = value;
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< set requiredLabel", this._requiredLabel);
+      console.debug(CLASS_NAME, "< set requiredLabel", this._requiredLabel);
   }
 
   /* api: value */
 
+  _valueOriginal;
   __value;
 
   get _value() {
@@ -271,13 +405,15 @@ export default class extends LightningElement {
   }
 
   set _value(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set _value", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set _value", JSON.stringify(value));
 
     const oldValue = this.__value;
+    this._valueOriginal = value; // if _value has been set, the original value should be replaced.
     this.__value = value;
     this.watchValue(oldValue, value);
 
-    if (DEBUG) console.log(CLASS_NAME, "< set _value", this.__value);
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< set _value", JSON.stringify(this.__value));
   }
 
   @api
@@ -286,17 +422,27 @@ export default class extends LightningElement {
   }
 
   set value(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set value", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set value", JSON.stringify(value));
 
-    this._value = value;
+    this._valueOriginal = value;
+    this.updateValue();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set variant", this._value);
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "< set value",
+        "_value",
+        JSON.stringify(this._value),
+        "_valueOriginal",
+        JSON.stringify(this._valueOriginal)
+      );
+    }
   }
 
   /* api: variant */
 
-  _variant = VARIANT_DEFAULT;
-  _variantOriginal = VARIANT_VALUES[VARIANT_DEFAULT];
+  _variant = VARIANT_VALUES[VARIANT_DEFAULT];
+  _variantOriginal = VARIANT_DEFAULT;
 
   @api
   get variant() {
@@ -304,7 +450,7 @@ export default class extends LightningElement {
   }
 
   set variant(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set variant", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set variant", value);
 
     this._variantOriginal = value;
     this._variant = normaliseString(value, {
@@ -313,7 +459,45 @@ export default class extends LightningElement {
       returnObjectValue: true
     });
 
-    if (DEBUG) console.log(CLASS_NAME, "< set variant", this._variant);
+    if (DEBUG) console.debug(CLASS_NAME, "< set variant", this._variant);
+  }
+
+  /* api: minLength */
+
+  _minLengthOriginal;
+  _minLength;
+
+  @api
+  get minLength() {
+    return this._minLengthOriginal;
+  }
+
+  set minLength(value) {
+    this._minLengthOriginal = value;
+
+    value = toNumber(value);
+    this._minLength = Number.isNaN(value)
+      ? null
+      : Math.max(0, Math.round(value));
+  }
+
+  /* api: maxLength */
+
+  _maxLengthOriginal;
+  _maxLength;
+
+  @api
+  get maxLength() {
+    return this._maxLengthOriginal;
+  }
+
+  set maxLength(value) {
+    this._maxLengthOriginal = value;
+
+    value = toNumber(value);
+    this._maxLength = Number.isNaN(value)
+      ? null
+      : Math.max(0, Math.round(value));
   }
 
   /* omnistudio requirements */
@@ -322,13 +506,15 @@ export default class extends LightningElement {
 
   /* tracked */
 
+  _optionsOriginal;
+  @track _options;
+
   @track _searchCache = "";
   @track _searchValue = "";
-  /*@track*/ _searchFocused = false;
-  @track _filtering = false;
+  _searchFocused = false;
   @track _focusTag = 0;
+
   @track _isOpen = false;
-  @track _options;
 
   /* track: activeOptionId */
 
@@ -343,10 +529,47 @@ export default class extends LightningElement {
     this.watchActiveOptionId(newId);
   }
 
+  /* internal config */
+
+  _showNoResults = true;
+  _loading = false;
+
   /* computed */
 
   get debug() {
     return DEBUG;
+  }
+
+  get i18n() {
+    return I18N;
+  }
+
+  get lastItemOptionId() {
+    return LASTITEM_OPTION_ID;
+  }
+
+  get _searchable() {
+    return this._mode.searchable;
+  }
+
+  get _filtering() {
+    return this._mode.filtering;
+  }
+
+  get _any() {
+    return this._mode.any;
+  }
+
+  get _autoselect() {
+    return this._mode.autoselect;
+  }
+
+  get _singleSearch() {
+    return !this._multiple && this._searchable;
+  }
+
+  get _multiSearch() {
+    return this._multiple && this._searchable;
   }
 
   get computedContainerClassName() {
@@ -354,12 +577,16 @@ export default class extends LightningElement {
       "rpl-form-dropdown": true,
       [this._variant]: this._variant,
       "rpl-form-dropdown--invalid": this._invalid,
-      "rpl-form-dropdown--multi-search": this.multiSearch
+      "rpl-form-dropdown--multi-search": this._multiSearch
     };
   }
 
   get computedContainerStyle() {
-    return `--local-max-items: ${this.maxItemsDisplayed}`;
+    return `--local-max-items: ${this._maxItemsDisplayed}`;
+  }
+
+  get computedComboboxTabIndex() {
+    return this._disabled ? "-1" : "0";
   }
 
   get computedInputClassName() {
@@ -372,10 +599,6 @@ export default class extends LightningElement {
 
   get computedInputActiveDescendant() {
     return this.getUniqueOptionId(this._activeOptionId);
-  }
-
-  get computedInputTabIndex() {
-    return this._disabled ? "-1" : "0";
   }
 
   get computedShowMultiValueTagList() {
@@ -400,12 +623,32 @@ export default class extends LightningElement {
 
   get computedShowNoResults() {
     return (
-      this._searchable && this._searchValue && !this.processedOptions.length
+      this._searchable &&
+      this._searchValue &&
+      !this._processedOptions.length &&
+      this._showNoResults
     );
   }
 
-  get processedOptions() {
-    if (DEBUG) console.log(CLASS_NAME, "> get processedOptions");
+  get _hasOptions() {
+    return this._options && this._options.length;
+  }
+
+  get computedLastItemStyle() {
+    return computeClass(
+      {
+        "display:none": !this._hasLastItem,
+        "pointer-events:none": this._disableLastItem
+      },
+      ";"
+    );
+  }
+
+  /* processed options are the original options with the search filter applied 
+     + eventually the -- clear -- pseudo-option */
+
+  get _processedOptions() {
+    if (DEBUG) console.debug(CLASS_NAME, "> get _processedOptions");
 
     let options = (this._options || []).map((option, index) => ({
       ...option,
@@ -429,28 +672,31 @@ export default class extends LightningElement {
     }
 
     // Only return options matching search value when searching
-    if (this._searchValue && this._filtering) {
+    if (this._filtering && this._searchValue) {
       const searchQuery = this._searchValue.toLowerCase();
 
       options = options.filter((opt) =>
-        opt.label.toLowerCase().includes(searchQuery)
+        opt.label?.toLowerCase().includes(searchQuery)
       );
     }
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
-        "< get processedOptions",
+        "< get _processedOptions",
         JSON.stringify(options)
       );
 
     return options;
   }
 
-  get decoratedProcessedOptions() {
-    if (DEBUG) console.log(CLASS_NAME, "> get decoratedProcessedOptions x");
+  /* decoratedProcessedOptions have all the required UX formatting */
 
-    const processedOptions = this.processedOptions;
+  get _decoratedProcessedOptions() {
+    if (DEBUG) console.debug(CLASS_NAME, "> get _decoratedProcessedOptions");
+
+    const processedOptions = this._processedOptions;
+    const isMultiple = this._multiple;
     const rv = processedOptions.map((option) => ({
       ...option,
       className: {
@@ -463,62 +709,171 @@ export default class extends LightningElement {
         ),
         "rpl-u-focusable--force-on": this.isMenuItemKeyboardFocused(option.id)
       },
-      selected: this.isOptionSelected(option.value)
+      selected: this.isOptionSelected(option.value, isMultiple)
     }));
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
-        "< get decoratedProcessedOptions",
+        "< get _decoratedProcessedOptions",
         JSON.stringify(rv)
       );
     return rv;
   }
 
   get selectedOptions() {
-    const values = toArray(this._value);
-
-    return values
-      .map((value) => {
-        return (this._options || []).find((opt) => opt.value === value);
-      })
-      .filter(Boolean);
+    return this.getValueMatchingOptions(this._value);
   }
 
   get singleValueDisplay() {
+    if (DEBUG) console.debug(CLASS_NAME, "> singleValueDisplay");
+
+    let rv = "";
+
     if (this.emptyOption && !this._value) {
-      return this.emptyOption.label;
+      if (DEBUG)
+        console.debug(
+          CLASS_NAME,
+          "= singleValueDisplay empty option",
+          JSON.stringify(this.emptyOption)
+        );
+
+      rv = this.emptyOption.label;
+    } else {
+      const selectedOption = (this._options || []).find(
+        (opt) => this._value === opt.value
+      );
+
+      if (DEBUG) {
+        console.debug(
+          CLASS_NAME,
+          "= singleValueDisplay selected option",
+          "selectedOption",
+          JSON.stringify(selectedOption),
+          "_value",
+          this._value
+        );
+      }
+
+      rv = selectedOption?.label || this._value;
     }
 
-    const selectedOption = (this._options || []).find(
-      (opt) => this._value === opt.value
-    );
-    return (
-      selectedOption?.label || (this.acceptAnySingleValue ? this._value : "")
-    );
+    if (DEBUG) console.debug(CLASS_NAME, "< singleValueDisplay", rv || "");
+    return rv || "";
   }
 
   get hasValue() {
-    return this._multiple
+    if (DEBUG) console.debug(CLASS_NAME, "> hasValue");
+
+    const rv = this._multiple
       ? !!this._value && !!this._value.length
       : !!this._value;
+
+    if (DEBUG) console.debug(CLASS_NAME, "< hasValue", rv);
+    return rv;
   }
 
   get emptyOption() {
-    return this._options.find(
+    return (this._options || []).find(
       (opt) => opt.value === UNSELECTED_VALUE && opt.id !== DEFAULT_OPTION_ID
     );
   }
 
-  get singleSearch() {
-    return !this._multiple && this._searchable;
-  }
-
-  get multiSearch() {
-    return this._multiple && this._searchable;
-  }
-
   /* methods */
+
+  sortOptions(options) {
+    return options.sort((a, b) => {
+      const item1 = a.name;
+      const item2 = b.name;
+      return item1 < item2 ? -1 : item1 > item2 ? 1 : 0;
+    });
+  }
+
+  @api setOptions(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> setOptions", JSON.stringify(value));
+
+    this._options = this._sorted ? this.sortOptions(value) : value;
+
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< setOptions", JSON.stringify(this._options));
+  }
+
+  /**
+   * updateValue re-evaluates _value based on value and mode and leverages the original value as
+   * set per api (which may be updated based on user interaction).
+   */
+
+  updateValue() {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> updateValue",
+        "_valueOriginal",
+        JSON.stringify(this._valueOriginal),
+        "_multiple",
+        JSON.stringify(this._multiple)
+      );
+    }
+
+    const value = this._valueOriginal;
+    const matchingOptions = this.getValueMatchingOptions(value);
+
+    if (this._multiple) {
+      this._value = matchingOptions.map((option) => option.value);
+      this._searchValue = null;
+    } else if (matchingOptions.length) {
+      /* keep the first one only */
+      this._value = matchingOptions.length ? matchingOptions[0].value : null;
+      this._searchValue = "";
+    } else if (this._any && value != null) {
+      this._value = isString(value) ? value : String(value);
+      this._searchValue = this._value || "";
+    } else {
+      this._value = null;
+      this._searchValue = "";
+    }
+
+    this._valueOriginal = value; // the operations above will have overwritten it...
+
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "< updateValue",
+        "_value",
+        JSON.stringify(this._value),
+        "_valueOriginal",
+        JSON.stringify(this._valueOriginal)
+      );
+    }
+  }
+
+  /* called each time value changes */
+  watchValue(newOptions, oldOptions) {
+    if (
+      this._isOpen &&
+      this._multiSearch &&
+      newOptions?.length > oldOptions?.length
+    ) {
+      nextTick(() =>
+        this.refs.searchRef?.scrollIntoView({
+          block: "nearest",
+          inline: "start"
+        })
+      );
+    }
+  }
+
+  getValueMatchingOptions(value) {
+    return toArray(value)
+      .map((singlevalue) =>
+        (this._options || []).find((opt) => opt.value === singlevalue)
+      )
+      .filter(Boolean);
+  }
+
+  getLabelMatchingOptions(value, options) {
+    return (options || []).filter((opt) => opt.label === value);
+  }
 
   getOptionLabel(optionValue) {
     const option = (this._options || []).find(
@@ -528,10 +883,33 @@ export default class extends LightningElement {
     return option?.label;
   }
 
-  getDefaultActiveId() {
-    if (DEBUG) console.log(CLASS_NAME, "> getDefaultActiveId");
+  isOptionSelected(optionValue, isMultiple) {
+    if (isMultiple === undefined ? this._multiple : isMultiple) {
+      return (this._value || []).includes(optionValue);
+    }
 
-    const processedOptions = this.processedOptions;
+    return !optionValue && !this._value ? true : this._value === optionValue;
+  }
+
+  getUniqueOptionId(optionId) {
+    // Nothing else is necessary if shadow DOM -- optionId ? `sfgpsdsauvic2rpldropdown-option-${optionId}` : ""
+    return optionId;
+  }
+
+  isMatchingSearchResult(option, processedOptions = this._processedOptions) {
+    return !this._searchable || processedOptions?.length > 1
+      ? false
+      : option?.toLowerCase().includes(this._searchValue.toLowerCase());
+  }
+
+  isMenuItemKeyboardFocused(optionId) {
+    return this._activeOptionId === optionId;
+  }
+
+  getDefaultActiveId() {
+    if (DEBUG) console.debug(CLASS_NAME, "> getDefaultActiveId");
+
+    const processedOptions = this._processedOptions;
     const firstOptionId = processedOptions[0].id;
     let rv;
 
@@ -548,14 +926,17 @@ export default class extends LightningElement {
       rv = selectedOption ? selectedOption.id : firstOptionId;
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "> getDefaultActiveId", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "> getDefaultActiveId", rv);
     return rv;
   }
 
-  getUniqueOptionId(optionId) {
-    return optionId; // Nothing else is necessary if shadow DOM -- optionId ? `sfgpsdsauvic2rpldropdown-option-${optionId}` : ""
+  watchActiveOptionId(newId) {
+    if (newId != null) {
+      nextTick(() => this.focusOption(newId));
+    }
   }
 
+  /* processSearch does the filtering, debounced so as to preserve user experience */
   processSearch = debounce(() => {
     let options = [...(this._options || [])];
     if (this._activeOptionId) {
@@ -564,7 +945,7 @@ export default class extends LightningElement {
     }
 
     let found = options.find((o) =>
-      o.label.toLowerCase().startsWith(this._searchCache)
+      o.label?.toLowerCase().startsWith(this._searchCache)
     );
 
     if (found) {
@@ -573,53 +954,29 @@ export default class extends LightningElement {
     }
 
     this._searchCache = "";
-  }, 250);
+  }, PROCESS_SEARCH_FREQUENCY);
 
   focusSearch() {
-    if (DEBUG) console.log(CLASS_NAME, "> focusSearch");
+    if (DEBUG) console.debug(CLASS_NAME, "> focusSearch");
 
     this._activeOptionId = null;
 
     nextTick(() => {
       this.refs.searchRef?.focus();
       this._searchFocused = true;
-      if (DEBUG) console.log(CLASS_NAME, "< focusSearch");
+      if (DEBUG) console.debug(CLASS_NAME, "~ focusSearch");
     });
-  }
 
-  watchValue(newOptions, oldOptions) {
-    if (
-      this._isOpen &&
-      this.multiSearch &&
-      newOptions?.length > oldOptions?.length
-    ) {
-      nextTick(() =>
-        this.refs.searchRef?.scrollIntoView({
-          block: "nearest",
-          inline: "start"
-        })
-      );
-    }
-  }
-
-  isOptionSelected(optionValue) {
-    if (this._multiple) {
-      return (this._value || []).includes(optionValue);
-    }
-
-    return !optionValue && !this._value ? true : this._value === optionValue;
+    if (DEBUG) console.debug(CLASS_NAME, "< focusSearch");
   }
 
   focusOption(optionId) {
-    if (DEBUG) console.log(CLASS_NAME, "> focusOption", optionId);
+    if (DEBUG) console.debug(CLASS_NAME, "> focusOption", optionId);
 
-    const optionRefs = Array.from(
-      this.template.querySelectorAll("[data-option-id]")
-    );
-    const optionEl = optionRefs.find(
+    const menu = this.refs.menuRef;
+    const optionEl = Array.from(menu.querySelectorAll("[data-option-id]")).find(
       (ref) => ref.dataset.optionId === optionId
     );
-    const menu = this.refs.menuRef;
 
     // This makes the scrolling much nicer when using the arrow keys
     if (menu.scrollHeight > menu.clientHeight) {
@@ -636,14 +993,14 @@ export default class extends LightningElement {
       optionEl.focus();
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< focusOption", optionEl);
+    if (DEBUG) console.debug(CLASS_NAME, "< focusOption", optionEl);
   }
 
   showFirstLastSelected(isLast = false) {
-    if (DEBUG) console.log(CLASS_NAME, "> showFirstLastSelected", isLast);
+    if (DEBUG) console.debug(CLASS_NAME, "> showFirstLastSelected", isLast);
 
     const optionRefs = Array.from(
-      this.template.querySelectorAll("[data-option-id]")
+      this.refs.menuRef.querySelectorAll("[data-option-id]")
     );
     const optionEl = isLast
       ? optionRefs.findLast((ref) => ref.ariaSelected === "true")
@@ -653,38 +1010,45 @@ export default class extends LightningElement {
       optionEl.scrollIntoView(!isLast);
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< showFirstLastSelected", optionEl);
+    if (DEBUG) console.debug(CLASS_NAME, "< showFirstLastSelected", optionEl);
   }
 
-  watchActiveOptionId(newId) {
-    if (newId != null) {
-      nextTick(() => this.focusOption(newId));
-    }
-  }
-
-  isMatchingSearchResult(option, processedOptions = this.processedOptions) {
-    return !this._searchable || processedOptions?.length > 1
-      ? false
-      : option.toLowerCase().includes(this._searchValue.toLowerCase());
-  }
-
-  isMenuItemKeyboardFocused(optionId) {
-    return this._activeOptionId === optionId;
-  }
+  /* Called when closing the dropdown in singleSearch mode, if not from selection
+      Does nothing by default but subclasses can override to adjust as required, 
+      e.g. searchValue must be formatted a certain way 
+  */
 
   normaliseSearchValue() {
     if (DEBUG)
-      console.log(CLASS_NAME, "> normaliseSearchValue", this._searchValue);
-
-    /* Called when closing the dropdown in singleSearch mode, if not from selection */
-    /* Does nothing by default but subclasses can override to adjust as required, 
-       e.g. searchValue must be formatted a certain way */
+      console.debug(CLASS_NAME, "> normaliseSearchValue", this._searchValue);
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< normaliseSearchValue", this._searchValue);
+      console.debug(CLASS_NAME, "< normaliseSearchValue", this._searchValue);
   }
 
-  setTime(value) {
+  /* setAndDispatchValue leverages multiple methods in order to allow for subclass overrides */
+
+  setAndDispatchValue(value) {
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> setAndDispatchValue", JSON.stringify(value));
+
+    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
+    this._value = value; // ESC
+    this.dispatchPubSub(value);
+    this.dispatchChangeEvent();
+
+    if (DEBUG) console.debug(CLASS_NAME, "< setAndDispatchValue");
+  }
+
+  dispatchPubSub(value) {
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "> dispatchPubSub",
+        this.name,
+        JSON.stringify(value)
+      );
+
     if (this && this.name) {
       pubsub.fire(this.name, "valuechange", {
         name: this.name,
@@ -692,20 +1056,30 @@ export default class extends LightningElement {
       });
     }
 
-    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-    this._value = value; // ESC
+    if (DEBUG) console.debug(CLASS_NAME, "< dispatchPubSub");
+  }
+
+  dispatchChangeEvent() {
+    if (DEBUG) console.debug(CLASS_NAME, "> dispatchChangeEvent");
+
     this.dispatchEvent(
       new CustomEvent("change", {
         bubbles: true,
         composed: true
       })
     );
+
+    if (DEBUG) console.debug(CLASS_NAME, "< dispatchChangeEvent");
+  }
+
+  clearSearch() {
+    this._searchValue = "";
   }
 
   /* methods related to event management */
 
   handleTyping(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleTyping");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleTyping");
 
     if (event.key?.length === 1 && !this._searchFocused) {
       if (this._searchable && !this._isOpen) {
@@ -718,80 +1092,89 @@ export default class extends LightningElement {
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleTyping");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleTyping");
   }
 
   handleSearchSubmit() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleSearchSubmit");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleSearchSubmit");
 
-    const processedOptions = this.processedOptions;
+    const processedOptions = this._processedOptions;
 
     if (
       processedOptions.length === 1 &&
       this.isMatchingSearchResult(processedOptions[0].label, processedOptions)
     ) {
-      this.handleSelectOption(processedOptions[0]);
+      if (DEBUG)
+        console.debug(
+          CLASS_NAME,
+          "= handleSearchSubmit single item list, matching"
+        );
 
-      if (this.multiSearch) {
-        this._searchValue = "";
+      this.selectOption(processedOptions[0]);
+
+      if (this._multiSearch) {
+        this.clearSearch();
       }
-    } else if (this.singleSearch && this.acceptAnySingleValue) {
-      this.handleClose(true, false, false);
+    } else {
+      const matchingOptions = this.getLabelMatchingOptions(
+        this._searchValue,
+        processedOptions
+      );
+
+      if (DEBUG) {
+        console.debug(
+          CLASS_NAME,
+          "= handleSearchSubmit multi item list",
+          "_searchValue",
+          this._searchValue,
+          "matchingOptions=",
+          JSON.stringify(matchingOptions)
+        );
+      }
+
+      if (
+        matchingOptions.length === 1 &&
+        matchingOptions[0].label === this._searchValue
+      ) {
+        this.selectOption(matchingOptions[0]);
+
+        if (this._multiSearch) {
+          this.clearSearch();
+        }
+      } else if (this._any) {
+        if (DEBUG)
+          console.debug(
+            CLASS_NAME,
+            "= handleSearchSubmit any",
+            "_searchValue",
+            this._searchValue
+          );
+
+        // Close - focus back to input, not cancel, not selection
+        this.handleClose(true, false, false, this._searchValue);
+      }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleSearchSubmit");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleSearchSubmit");
   }
 
   handleSearchLeft() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleSearchLeft");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleSearchLeft");
 
     if (
-      this.multiSearch &&
+      this._multiSearch &&
       this.selectedOptions?.length &&
       this.refs.searchRef?.selectionStart === 0
     ) {
       this._focusTag = this._focusTag + 1;
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleSearchLeft");
-  }
-
-  handleSearchUpdate(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleSearchUpdate");
-
-    /* manually doing what vue v-model would do */
-    this._searchValue = event.target.value || "";
-    /* end v-model */
-
-    this._filtering = true;
-
-    // If the single search value is cleared the selected option should be cleared
-    if (this.singleSearch && this._value && event.target?.value === "") {
-      this.setTime("");
-    }
-
-    if (DEBUG) console.log(CLASS_NAME, "< handleSearchUpdate");
-  }
-
-  handleSearchFocus() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleSearchFocus");
-
-    this._searchFocused = true;
-
-    if (DEBUG) console.log(CLASS_NAME, "< handleSearchFocus");
-  }
-
-  handleSearchBlur() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleSearchBlur");
-
-    this._searchFocused = false;
-
-    if (DEBUG) console.log(CLASS_NAME, "< handleSearchBlur");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleSearchLeft");
   }
 
   handleToggle(fromKeyboard = false, event) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> handleToggle fromKeyboard=", fromKeyboard);
+      console.debug(CLASS_NAME, "> handleToggle fromKeyboard=", fromKeyboard);
 
     // Prevent the default action when we're not searching
     if (fromKeyboard && !this._searchFocused) {
@@ -814,26 +1197,50 @@ export default class extends LightningElement {
     }
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< handleToggle fromKeyboard=", fromKeyboard);
+      console.debug(CLASS_NAME, "< handleToggle fromKeyboard=", fromKeyboard);
   }
 
   handleOpen(fromKeyboard = false) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> handleOpen fromKeyboard=", fromKeyboard);
+      console.debug(CLASS_NAME, "> handleOpen fromKeyboard=", fromKeyboard);
 
     this._isOpen = true;
 
-    if (this.singleSearch && this._value && !this._searchValue) {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "= handleOpen",
+        "fromKeyboard=",
+        fromKeyboard,
+        "_singleSearch",
+        this._singleSearch,
+        "_value",
+        JSON.stringify(this._value),
+        "_searchValue",
+        JSON.stringify(this._searchValue)
+      );
+    }
+
+    if (this._singleSearch && this._value && !this._searchValue) {
       this._searchValue = this.getOptionLabel(this._value) || "";
     }
 
-    if (fromKeyboard && this.processedOptions?.length && !this._searchable) {
+    if (fromKeyboard && this._processedOptions?.length && !this._searchable) {
       this._activeOptionId = this.getDefaultActiveId();
     } else if (this._searchable) {
       this.focusSearch();
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleOpen", fromKeyboard);
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "< handleOpen",
+        "_isOpen",
+        this._isOpen,
+        "_searchValue",
+        this._searchValue
+      );
+    }
   }
 
   handleClose(
@@ -843,7 +1250,7 @@ export default class extends LightningElement {
     selectionValue
   ) {
     if (DEBUG) {
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> handleClose",
         "focusBackOnInput=",
@@ -859,41 +1266,29 @@ export default class extends LightningElement {
       this._isOpen = false;
       this._activeOptionId = null;
 
-      if (focusBackOnInput) {
-        this.refs.inputRef.focus();
-      }
-
-      if (this.multiSearch) {
-        // For a multi search we always remove the search value
-        this._searchValue = "";
-      } else if (this.singleSearch) {
-        if (
-          !fromSelection &&
-          this.singleSearch &&
-          this._searchValue &&
-          this._searchValue !== this._value
-        ) {
-          if (this.acceptAnySingleValue && !isCancel) {
-            // ESC - Adding acceptAnySingleValue
-            /* for a single search with acceptAnySingleValue, we keep the current search value and select it on close */
-            this.normaliseSearchValue();
-            selectionValue = this._searchValue;
-          } else {
-            // For a single search we restore the search value if it wasn't fully deleted
-            this._searchValue = this.getOptionLabel(this._value) || "";
-          }
+      if (fromSelection) {
+        this.setAndDispatchValue(selectionValue);
+        this._searchValue = this._multi
+          ? ""
+          : this.getOptionLabel(this._value) || "";
+      } else if (isCancel) {
+        this._searchValue = this._multi
+          ? ""
+          : this.getOptionLabel(this._value) || "";
+      } else {
+        let wasSet = this.handleAutoSelect();
+        if (!wasSet) wasSet = this.handleAny();
+        if (!wasSet) {
+          this._searchValue = this._multi
+            ? ""
+            : this.getOptionLabel(this._value) || "";
         }
       }
 
-      if (
-        fromSelection ||
-        (this.singleSearch &&
-          this.acceptAnySingleValue &&
-          !isCancel &&
-          this._searchValue !== this._value)
-      ) {
-        this.setTime(selectionValue);
-      } else if (!focusBackOnInput) {
+      if (focusBackOnInput) {
+        // focus on input
+        this.focus();
+      } else {
         this.dispatchEvent(
           new CustomEvent("blur", {
             bubbles: true,
@@ -902,17 +1297,18 @@ export default class extends LightningElement {
         );
       }
 
-      this._filtering = false;
       this._searchFocused = false;
+
+      this.reportValidity();
     } else {
-      if (DEBUG) console.log(CLASS_NAME, "= handleClose was closed");
+      if (DEBUG) console.debug(CLASS_NAME, "= handleClose was closed");
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleClose");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleClose");
   }
 
   handleArrowDown() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleArrowDown");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleArrowDown");
 
     const open = this._isOpen;
 
@@ -920,12 +1316,12 @@ export default class extends LightningElement {
       this._isOpen = true;
     }
 
-    const processedOptions = this.processedOptions;
+    const processedOptions = this._processedOptions;
 
     if (processedOptions.length) {
-      if (DEBUG) console.log(CLASS_NAME, "= handleArrowDown has length");
+      if (DEBUG) console.debug(CLASS_NAME, "= handleArrowDown has length");
       if (DEBUG)
-        console.log(
+        console.debug(
           CLASS_NAME,
           "= handleArrowDown findIndex=",
           processedOptions.findIndex
@@ -936,37 +1332,37 @@ export default class extends LightningElement {
       );
 
       if (DEBUG)
-        console.log(
+        console.debug(
           CLASS_NAME,
           "= handleArrowDown currentActiveIndex=",
           currentActiveIndex
         );
 
       if (!open && this._searchable) {
-        if (DEBUG) console.log(CLASS_NAME, "= handleArrowDown focusSearch");
+        if (DEBUG) console.debug(CLASS_NAME, "= handleArrowDown focusSearch");
         nextTick(() => this.showFirstLastSelected(false));
         this.focusSearch();
       } else if (this._searchFocused && this._filtering) {
-        if (DEBUG) console.log(CLASS_NAME, "= handleArrowDown option 0");
+        if (DEBUG) console.debug(CLASS_NAME, "= handleArrowDown option 0");
         this._activeOptionId = processedOptions[0].id;
       } else if (currentActiveIndex < 0) {
         if (DEBUG)
-          console.log(CLASS_NAME, "= handleArrowDown default active id");
+          console.debug(CLASS_NAME, "= handleArrowDown default active id");
         this._activeOptionId = this.getDefaultActiveId();
       } else if (currentActiveIndex < processedOptions.length - 1) {
-        if (DEBUG) console.log(CLASS_NAME, "= handleArrowDown next");
+        if (DEBUG) console.debug(CLASS_NAME, "= handleArrowDown next");
         this._activeOptionId = processedOptions[currentActiveIndex + 1].id;
       }
     } else {
-      if (DEBUG) console.log(CLASS_NAME, "= handleArrowDown empty items");
+      if (DEBUG) console.debug(CLASS_NAME, "= handleArrowDown empty items");
     }
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< handleArrowDown", this._activeOptionId);
+      console.debug(CLASS_NAME, "< handleArrowDown", this._activeOptionId);
   }
 
   handleArrowUp() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleArrowUp");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleArrowUp");
 
     const open = this._isOpen;
 
@@ -974,7 +1370,7 @@ export default class extends LightningElement {
       this._isOpen = true;
     }
 
-    const processedOptions = this.processedOptions;
+    const processedOptions = this._processedOptions;
 
     if (processedOptions.length) {
       const currentActiveIndex = processedOptions.findIndex(
@@ -982,7 +1378,7 @@ export default class extends LightningElement {
       );
 
       if (DEBUG)
-        console.log(
+        console.debug(
           CLASS_NAME,
           "= handleArrowUp currentActiveIndex=",
           currentActiveIndex
@@ -993,23 +1389,25 @@ export default class extends LightningElement {
         this._searchable /*||
         (this._searchable && currentActiveIndex < 1) */
       ) {
-        if (DEBUG) console.log(CLASS_NAME, "= handleArrowUp focusSearch");
+        if (DEBUG) console.debug(CLASS_NAME, "= handleArrowUp focusSearch");
         nextTick(() => this.showFirstLastSelected(true));
         this.focusSearch();
       } else if (currentActiveIndex < 0) {
-        if (DEBUG) console.log(CLASS_NAME, "= handleArrowUp default active id");
+        if (DEBUG)
+          console.debug(CLASS_NAME, "= handleArrowUp default active id");
         this._activeOptionId = this.getDefaultActiveId();
       } else if (currentActiveIndex > 0) {
-        if (DEBUG) console.log(CLASS_NAME, "= handleArrowUp previous");
+        if (DEBUG) console.debug(CLASS_NAME, "= handleArrowUp previous");
         this._activeOptionId = processedOptions[currentActiveIndex - 1].id;
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleArrowUp", this._activeOptionId);
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< handleArrowUp", this._activeOptionId);
   }
 
   handleDeleteKey() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleDeleteKey");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleDeleteKey");
 
     // For searchable dropdowns open the input so the search text can be deleted
     if (this._searchable && !this._isOpen) {
@@ -1017,19 +1415,59 @@ export default class extends LightningElement {
     }
 
     // For multi search dropdowns without search text we can autofocus the last tag for deletion
-    if (this.multiSearch && !this._searchValue) {
+    if (this._multiSearch && !this._searchValue) {
       nextTick(() => this.handleSearchLeft);
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleDeleteKey");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleDeleteKey");
   }
 
-  handleSelectOptionEvent(event) {
-    this.handleSelectOption(event.detail);
+  selectLastItem() {
+    if (DEBUG) console.debug(CLASS_NAME, "> selectLastItem");
+
+    this._isOpen = false;
+    this._activeOptionId = null;
+    this.focus();
+    this._searchFocused = false;
+
+    if (DEBUG) console.debug(CLASS_NAME, "< selectLastItem");
   }
 
-  handleSelectOption(option) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleSelectOption", option);
+  /**
+   * Handles the selection of an option from the UI, including closing the dropdown for single,
+   * setting the dropdown value and dispatching an event.
+   * @param {*} option the label/value tuple that's been selected
+   * @returns {void}
+   */
+
+  selectOption(option) {
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> selectOption", JSON.stringify(option));
+
+    const newValue = this.targetValueWithOption(option);
+
+    if (this._multiple) {
+      this.setAndDispatchValue(newValue);
+    } else {
+      if (this._searchable) {
+        this._searchValue = option.label || "";
+      }
+
+      // This also sets and dispatches the value
+      this.handleClose(true, false, true, newValue);
+    }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< selectOption");
+  }
+
+  /**
+   * Return the current dropdown value + selecting an option
+   * @param {*} option the selected option value
+   * @returns what the dropdown value should be
+   */
+
+  targetValueWithOption(option) {
+    if (DEBUG) console.debug(CLASS_NAME, "> targetValueWithOption", option);
 
     const optionValue = option.value;
     let newValue = option.value;
@@ -1047,21 +1485,109 @@ export default class extends LightningElement {
         // Value is not selected, so add it to the list
         newValue = [...this._value, optionValue];
       }
-    } else {
-      if (this._searchable) {
-        this._searchValue = option.label || "";
+    }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< targetValueWithOption", newValue);
+    return newValue;
+  }
+
+  handleAutoSelect() {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> handleAutoSelect",
+        "_searchValue",
+        this._searchValue
+      );
+    }
+
+    let rv = false;
+
+    if (this._autoselect) {
+      const matchingOptions = this.getLabelMatchingOptions(
+        this._searchValue,
+        this._processedOptions
+      );
+
+      if (DEBUG) {
+        console.debug(
+          CLASS_NAME,
+          "> handleAutoSelect",
+          "_searchValue",
+          this._searchValue,
+          "matchingOptions=",
+          JSON.stringify(matchingOptions)
+        );
+      }
+
+      if (
+        matchingOptions.length === 1 &&
+        matchingOptions[0].label === this._searchValue &&
+        matchingOptions[0].value !== this._value
+      ) {
+        this.setAndDispatchValue(matchingOptions[0].value);
+        rv = true;
       }
     }
 
-    this.handleClose(true, false, true, newValue);
-
-    if (DEBUG) console.log(CLASS_NAME, "< handleSelectOption");
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "< handleAutoSelect",
+        rv,
+        JSON.stringify(this._value)
+      );
+    return rv;
   }
 
-  /* event management */
+  handleAny() {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> handleAny",
+        "_searchValue",
+        this._searchValue
+      );
+    }
+
+    let rv = false;
+
+    if (this._any) {
+      this.normaliseSearchValue();
+      this.setAndDispatchValue(this._searchValue);
+
+      rv = true;
+    }
+
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< handleAny", rv, JSON.stringify(this._value));
+
+    return rv;
+  }
+
+  @api focus() {
+    if (DEBUG) console.debug(CLASS_NAME, "> focus");
+
+    this.refs.comboboxRef.focus();
+
+    if (DEBUG) console.debug(CLASS_NAME, "< focus");
+  }
+
+  propagateEvent(event) {
+    if (event) {
+      this.dispatchEvent(
+        new CustomEvent(event.type, {
+          bubbles: true,
+          composed: true
+        })
+      );
+    }
+  }
+
+  /* event management: container */
 
   handleContainerKeydown(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleContainerKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleContainerKeydown");
 
     withKeys(
       withModifiers(() => this.handleArrowDown(), ["prevent"]),
@@ -1086,32 +1612,43 @@ export default class extends LightningElement {
     withKeys(() => this.handleDeleteKey(), ["delete"])(event);
     withModifiers(() => this.handleTyping, ["exact"])(event);
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleContainerKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleContainerKeydown");
   }
 
-  handleInputClick(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleInputClick");
+  /* event management: combobox */
+
+  handleComboboxClick(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleComboboxClick");
 
     this._onClickOutside.forceTag(CLICK_OUTSIDE_REF, event);
     this.handleToggle(false, event);
+
     if (this._isOpen) nextTick(() => this.showFirstLastSelected(false));
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleInputClick");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleComboboxClick");
   }
 
-  handleInputKeydown(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleInputKeydown");
+  handleComboboxKeydown(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleComboboxKeydown");
 
     withKeys(
       withModifiers(() => this.handleToggle(true, event), ["exact"]),
       ["space"]
     )(event);
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleInputKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleComboboxKeydown");
   }
 
+  /* event management: tag list */
+
+  handleRemoveOption(event) {
+    this.selectOption(event.detail);
+  }
+
+  /* event management: search */
+
   handleSearchKeydown(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleSearchKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleSearchKeydown");
 
     withKeys(
       withModifiers(() => this.handleSearchSubmit(), ["prevent"]),
@@ -1122,77 +1659,157 @@ export default class extends LightningElement {
       ["left"]
     )(event);
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleSearchKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleSearchKeydown");
   }
 
-  handleOptionKeydown(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleOptionKeydown");
+  handleSearchInput(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleSearchInput");
 
-    const optionId = event.target.getAttribute("data-option-id");
-    const currentOption = this.processedOptions.find(
-      (option) => option.id === optionId
+    /* manually doing what vue v-model would do */
+    this._searchValue = event.target.value || "";
+    /* end v-model */
+
+    // If the single search value is cleared the selected option should be cleared
+    if (this._singleSearch && this._value && event.target?.value === "") {
+      this.setAndDispatchValue(null); // emit event onchange null
+      //
+    } else if (this._autoselect) {
+      this.handleAutoSelect();
+    }
+
+    this.dispatchEvent(
+      new CustomEvent(event, {
+        bubbles: true,
+        composed: true
+      })
     );
 
-    if (currentOption) {
+    if (DEBUG) console.debug(CLASS_NAME, "< handleSearchInput");
+  }
+
+  handleSearchChange(event) {
+    this.dispatchEvent(
+      new CustomEvent(event, {
+        bubbles: true,
+        composed: true
+      })
+    );
+  }
+
+  handleSearchFocus(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleSearchFocus");
+
+    this._searchFocused = true;
+    this.dispatchEvent(
+      new CustomEvent(event, {
+        bubbles: true,
+        composed: true
+      })
+    );
+
+    if (DEBUG) console.debug(CLASS_NAME, "< handleSearchFocus");
+  }
+
+  handleSearchBlur(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleSearchBlur");
+
+    this._searchFocused = false;
+    this.dispatchEvent(
+      new CustomEvent(event, {
+        bubbles: true,
+        composed: true
+      })
+    );
+    if (DEBUG) console.debug(CLASS_NAME, "< handleSearchBlur");
+  }
+
+  /* event management: option */
+
+  handleOptionKeydown(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleOptionKeydown");
+
+    const optionId = event.target.getAttribute("data-option-id");
+    const isLastItem = optionId === LASTITEM_OPTION_ID;
+    const currentOption = isLastItem
+      ? null
+      : this._processedOptions.find((option) => option.id === optionId);
+
+    if (currentOption || isLastItem) {
       withKeys(
-        withModifiers(
-          () => this.handleSelectOption(currentOption),
-          ["prevent"]
-        ),
+        withModifiers(() => {
+          return isLastItem
+            ? this.selectLastItem()
+            : this.selectOption(currentOption);
+        }, ["prevent"]),
         ["space", "enter"]
       )(event);
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleOptionKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleOptionKeydown");
   }
 
   handleOptionClick(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleOptionClick");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleOptionClick");
 
     this._onClickOutside.forceTag(CLICK_OUTSIDE_REF, event);
 
-    const optionId = event.target.getAttribute("data-option-id");
-    const currentOption = this.processedOptions.find(
-      (option) => option.id === optionId
-    );
+    const optionId = event.currentTarget.getAttribute("data-option-id");
+    const isLastItem = optionId === LASTITEM_OPTION_ID;
+    const currentOption = isLastItem
+      ? null
+      : this._processedOptions.find((option) => option.id === optionId);
 
     if (DEBUG)
-      console.log(CLASS_NAME, "= handleOptionClick", optionId, currentOption);
+      console.debug(CLASS_NAME, "= handleOptionClick", optionId, currentOption);
 
     if (currentOption) {
-      this.handleSelectOption(currentOption);
+      this.selectOption(currentOption);
+    } else if (isLastItem) {
+      this.selectLastItem();
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleOptionClick");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleOptionClick");
   }
 
-  @api focus() {
-    if (DEBUG) console.log(CLASS_NAME, "> focus");
+  /* event management: last item */
 
-    this.refs.inputRef.focus();
+  @track _hasLastItem;
 
-    if (DEBUG) console.log(CLASS_NAME, "< focus");
+  handleLastItemChange(event) {
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "> handleLastItemChange",
+        event.target.assignedElements()
+      );
+
+    if (event.target) {
+      if (event.target.assignedElements().length) {
+        this._hasLastItem = true;
+      } else {
+        this._hasLastItem = false;
+      }
+    }
+
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< handleLastItemChange", this._hasLastItem);
   }
 
   /* lifecycle */
+  /* --------- */
 
   render() {
     return tmpl;
   }
 
   _onClickOutside;
-  _rendered = false;
 
   renderedCallback() {
-    if (!this._rendered) {
-      this._rendered = true;
-
-      if (!this._onClickOutside) {
-        this._onClickOutside = new OnClickOutside();
-        this._onClickOutside.bind(this, CLICK_OUTSIDE_REF, () => {
-          this.handleClose(false);
-        });
-      }
+    if (!this._onClickOutside) {
+      this._onClickOutside = new OnClickOutside();
+      this._onClickOutside.bind(this, CLICK_OUTSIDE_REF, () => {
+        this.handleClose(false);
+      });
     }
   }
 
@@ -1204,7 +1821,40 @@ export default class extends LightningElement {
 
   /* validation */
 
-  @api messageWhenValueMissing;
+  _messageWhenValueMissingOriginal;
+
+  @api
+  get messageWhenValueMissing() {
+    return (
+      this._messageWhenValueMissingOriginal || I18N.messageWhenValueMissing
+    );
+  }
+
+  set messageWhenValueMissing(value) {
+    this._messageWhenValueMissingOriginal = value;
+  }
+
+  _messageWhenTooShortOriginal;
+
+  @api
+  get messageWhenTooShort() {
+    return this._messageWhenTooShortOriginal || I18N.messageWhenTooShort;
+  }
+
+  set messageWhenTooShort(value) {
+    this._messageWhenTooShortOriginal = value;
+  }
+
+  _messageWhenValueTooLongOriginal;
+
+  @api
+  get messageWhenTooLong() {
+    return this._messageWhenTooLongOriginal || I18N.messageWhenTooLong;
+  }
+
+  set messageWhenTooLong(value) {
+    this._messageWhenTooLongOriginal = value;
+  }
 
   _validity = {
     badInput: false,
@@ -1230,36 +1880,36 @@ export default class extends LightningElement {
   }
 
   @api checkValidity() {
-    if (DEBUG) console.log(CLASS_NAME, "> checkValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "> checkValidity");
 
     this.assessValidity(false);
     const rv = this._validity && this._validity.valid;
 
-    if (DEBUG) console.log(CLASS_NAME, "< checkValidity", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< checkValidity", rv);
 
     return rv;
   }
 
   @api reportValidity() {
-    if (DEBUG) console.log(CLASS_NAME, "> reportValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "> reportValidity");
 
     this.assessValidity(true);
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< reportValidity", this._validity.valid);
+      console.debug(CLASS_NAME, "< reportValidity", this._validity.valid);
 
     return this._validity.valid;
   }
 
   @api setCustomValidity(message) {
-    if (DEBUG) console.log(CLASS_NAME, "> setCustomValidity", message);
+    if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidity", message);
 
     const isError = message === "" ? false : true;
     this._validity.customError = isError;
     this._invalid = isError;
     this.errorMessage = message;
 
-    if (DEBUG) console.log(CLASS_NAME, "< setCustomValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "< setCustomValidity");
   }
 
   @api
@@ -1268,12 +1918,26 @@ export default class extends LightningElement {
   }
 
   assessValidity(showError) {
-    if (DEBUG) console.log(CLASS_NAME, "> assessValidity", showError);
+    if (DEBUG) console.debug(CLASS_NAME, "> assessValidity", showError);
 
     if (!this._validity.customError) {
       this._invalid = false;
       this.errorMessage = "";
     }
+
+    this._validity = {
+      badInput: false,
+      customError: this._validity.customError,
+      patternMismatch: false,
+      rangeOverflow: false,
+      rangeUnderflow: false,
+      stepMismatch: false,
+      tooLong: false,
+      tooShort: false,
+      typeMismatch: false,
+      valid: false,
+      valueMissing: false
+    };
 
     if ((!this._value || this._value.length === 0) && this._required) {
       this._validity.valueMissing = true;
@@ -1282,15 +1946,37 @@ export default class extends LightningElement {
         this._invalid = true;
         this.errorMessage = this.messageWhenValueMissing;
       }
-    } else {
-      // ideally we should also check against options
-      this._validity.valueMissing = false;
+    } else if (
+      this._value != null &&
+      this._minLength &&
+      this._value.length < this._minLength
+    ) {
+      this._validity.tooShort = true;
+
+      if (showError) {
+        this._invalid = true;
+        this.errorMessage = this.messageWhenTooShort;
+      }
+    } else if (
+      this._value &&
+      this._maxLength &&
+      this._value.length > this._maxLength
+    ) {
+      this._validity.tooLong = true;
+
+      if (showError) {
+        this._invalid = true;
+        this.errorMessage = this.messageWhenTooLong;
+      }
     }
 
     this._validity.valid =
-      !this._validity.customError && !this._validity.valueMissing;
+      !this._validity.customError &&
+      !this._validity.valueMissing &&
+      !this._validity.tooShort &&
+      !this._validity.tooLong;
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< assessValidity", this._validity.valid);
+      console.debug(CLASS_NAME, "< assessValidity", this._validity.valid);
   }
 }
