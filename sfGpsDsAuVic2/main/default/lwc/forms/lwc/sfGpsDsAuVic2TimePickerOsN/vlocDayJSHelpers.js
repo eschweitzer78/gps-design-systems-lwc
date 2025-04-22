@@ -52,7 +52,7 @@ function determineMaxGranularity(format) {
 
   for (let i = 0; i < unitBlocks.length; i++) {
     tmp = resolveUnitGranularity(unitBlocks[i]);
-    if (!isNaN(tmp) && tmp > max) {
+    if (!Number.isNaN(tmp) && tmp > max) {
       max = tmp;
     }
   }

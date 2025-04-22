@@ -349,6 +349,11 @@ export default class extends SfGpsDsOmniInputMixinOsN(
     return rv;
   }
 
+  get computedShowNoResults() {
+    /* The time picker allows to type any time, so no results is not relevant */
+    return false;
+  }
+
   /* methods */
 
   setOptions() {
@@ -559,7 +564,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   }
 
   isValidDate(value) {
-    return isDate(value) && !isNaN(value.getTime());
+    return isDate(value) && !Number.isNaN(value.getTime());
   }
 
   parseInputValue(inputValue) {
@@ -765,19 +770,18 @@ export default class extends SfGpsDsOmniInputMixinOsN(
           })
         );
       }
-
-      this.setOptions();
-
-      if (DEBUG) console.log(CLASS_NAME, "< connectedCallback");
     }
 
-    this._connected = true;
+    this.setOptions();
 
-    this.searchable = true;
-    this.acceptAnySingleValue = true;
+    this._connected = true;
+    this.mode = "combobox-auto";
+
+    if (DEBUG) console.log(CLASS_NAME, "< connectedCallback");
   }
 
   disconnectedCallback() {
+    super.disconnectedCallback();
     this._connected = false;
   }
 }
