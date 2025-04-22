@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { normaliseString } from "c/sfGpsDsHelpers";
+import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 import {
   RplButtonIconPositions,
   RplButtonThemes,
@@ -11,15 +11,21 @@ const ELEMENT_DEFAULT = "button";
 const VARIANT_DEFAULT = "filled";
 const ICON_POSITION_DEFAULT = "right";
 const THEME_DEFAULT = "default";
+const DISABLED_DEFAULT = false;
+const BUSY_DEFAULT = false;
+const PREVENTDEFAULT_DEFAULT = false;
 
 export default class SfGpsDsAuVic2Button extends LightningElement {
+  static renderMode = "light";
+
   @api url = "";
   @api iconName;
   @api label;
-  @api disabled = false;
-  @api busy = false;
-  @api preventDefault;
   @api className;
+
+  @api ariaBusy;
+  @api ariaControls;
+  @api ariaSelected;
 
   /* api: el */
 
@@ -36,6 +42,42 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
     this._el = normaliseString(value, {
       validValues: RplButtonElements,
       fallbackValue: ELEMENT_DEFAULT
+    });
+  }
+
+  /* api: disabled */
+
+  _disabled = DISABLED_DEFAULT;
+  _disabledOriginal = DISABLED_DEFAULT;
+
+  @api
+  get disabled() {
+    return this._disabledOriginal;
+  }
+
+  set disabled(value) {
+    this._disabledOriginal = value;
+    this._disabled = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: DISABLED_DEFAULT
+    });
+  }
+
+  /* api: busy */
+
+  _busy = BUSY_DEFAULT;
+  _busyOriginal = BUSY_DEFAULT;
+
+  @api
+  get busy() {
+    return this._busyOriginal;
+  }
+
+  set busy(value) {
+    this._busyOriginal = value;
+    this._busy = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: BUSY_DEFAULT
     });
   }
 
@@ -93,6 +135,24 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
     });
   }
 
+  /* api: preventDefault */
+
+  _preventDefault = PREVENTDEFAULT_DEFAULT;
+  _preventDefaultOriginal = PREVENTDEFAULT_DEFAULT;
+
+  @api
+  get preventDefault() {
+    return this._preventDefaultOriginal;
+  }
+
+  set preventDefault(value) {
+    this._preventDefaultOriginal = value;
+    this._preventDefault = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: PREVENTDEFAULT_DEFAULT
+    });
+  }
+
   /* computed */
 
   get isAnchor() {
@@ -106,9 +166,15 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
       [`rpl-button--${this._variant}`]: this._variant,
       "rpl-u-focusable-block": true,
       "rpl-button--reverse": this._iconPosition === "left",
-      "rpl-button--busy": this.busy,
+      "rpl-button--busy": this.computedAriaBusy,
+      "rpl-button--icon-only-small-screens":
+        this._variant === RplButtonVariants.elevated && this.iconName,
       [this.className]: this.className
     };
+  }
+
+  get computedAriaBusy() {
+    return this.ariaBusy || this._busy;
   }
 
   /* methods */
@@ -120,7 +186,7 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
   /* event management */
 
   handleClick(event) {
-    if (this.preventDefault) {
+    if (this._preventDefault) {
       event.preventDefault();
     }
 
