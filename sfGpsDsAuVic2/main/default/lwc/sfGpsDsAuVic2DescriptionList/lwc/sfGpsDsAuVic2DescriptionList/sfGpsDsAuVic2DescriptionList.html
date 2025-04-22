@@ -1,6 +1,6 @@
 <template>
   <dl class={computedClassName}>
-    <template for:each={_items} for:item="row">
+    <template for:each={decoratedItems} for:item="row">
       <div lwc:if={_inline} key={row.term} class={row.className}>
         <dt class="rpl-description-list__term">
           <c-sf-gps-ds-au-vic2-icon
