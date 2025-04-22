@@ -1,5 +1,6 @@
 <template>
   <a
+    lwc:if={url}
     lwc:ref="a"
     href={url}
     target={target}
@@ -8,4 +9,7 @@
   >
     <slot></slot>
   </a>
+  <div lwc:else lwc:ref="a" class={className} onclick={handleClick}>
+    <slot></slot>
+  </div>
 </template>

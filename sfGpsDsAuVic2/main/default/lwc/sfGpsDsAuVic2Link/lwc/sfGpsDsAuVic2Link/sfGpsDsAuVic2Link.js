@@ -18,10 +18,9 @@ export default class sfGpsDsAuVic2Link extends LightningElement {
   handleClick(event) {
     if (this.preventDefault) {
       /* if preventDefault is set, we block the default url navigation and 
-        dispatch a custom, non-bubbling click event */
+        but the click will carry on propagating to the parent */
 
       event.preventDefault();
-      this.dispatchEvent(new CustomEvent("click"));
     }
   }
 }
