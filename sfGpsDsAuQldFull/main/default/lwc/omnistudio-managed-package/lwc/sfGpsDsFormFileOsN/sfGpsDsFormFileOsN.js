@@ -63,15 +63,10 @@ export default class extends SfGpsDsOmniHasValidationMixin(OmniscriptFile) {
       this._showValidation = !this.isValid;
 
       if (this._showValidation) {
-        let values = {
+        this.errorMessage = formatTemplate(this._messageWhenValueMissing, {
           0: this._propSetMap.label || "Field",
           label: this._propSetMap.label || "Field"
-        };
-
-        this.errorMessage = formatTemplate(
-          this._messageWhenValueMissing,
-          values
-        );
+        });
       }
     }
 
