@@ -6,7 +6,11 @@
  */
 
 import OmnistudioCheckboxGroup from "c/sfGpsDsOmniCheckboxGroupOsN";
-import { computeClass, normaliseString } from "c/sfGpsDsHelpersOs";
+import {
+  computeClass,
+  normaliseString,
+  normaliseBoolean
+} from "c/sfGpsDsHelpersOs";
 import { api } from "lwc";
 import tmpl from "./sfGpsDsAuVic2CheckboxGroupOsN.html";
 
@@ -16,11 +20,16 @@ const VARIANT_VALUES = {
   reverse: "rpl-form-option--reverse"
 };
 
+const READONLY_DEFAULT = false;
+
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsVic2CheckboxGroupOsN";
+
 export default class extends OmnistudioCheckboxGroup {
   /* api: variant */
 
-  _variant = VARIANT_DEFAULT;
-  _variantOriginal = VARIANT_VALUES[VARIANT_DEFAULT];
+  _variant = VARIANT_VALUES[VARIANT_DEFAULT];
+  _variantOriginal = VARIANT_DEFAULT;
 
   @api
   get variant() {
@@ -28,29 +37,71 @@ export default class extends OmnistudioCheckboxGroup {
   }
 
   set variant(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set variant", value);
+
     this._variantOriginal = value;
     this._variant = normaliseString(value, {
       validValues: VARIANT_VALUES,
       fallbackValue: VARIANT_DEFAULT,
       returnObjectValue: true
     });
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set variant", this._variant);
+  }
+
+  /* api: readOnly */
+
+  _readOnly = READONLY_DEFAULT;
+  _readOnlyOriginal = READONLY_DEFAULT;
+
+  @api
+  get readOnly() {
+    return this._readOnlyOriginal;
+  }
+
+  set readOnly(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set readOnly", value);
+
+    this._readOnlyOriginal = value;
+    this._readOnly = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: READONLY_DEFAULT
+    });
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set readOnly", this._readOnly);
   }
 
   /* computed */
 
   get computedGroupClassName() {
-    return {
+    if (DEBUG) console.debug(CLASS_NAME, "> computedGroupClassName");
+
+    const rv = {
       "rpl-form-option-group": true,
       "rpl-form-option-group--block": this.alignment === "vertical",
       "rpl-form-option-group--inline": this.alignment === "horizontal"
     };
+
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< computedGroupClassName", JSON.stringify(rv));
+    return rv;
   }
 
   get computedOptionClassName() {
-    return {
+    if (DEBUG) console.debug(CLASS_NAME, "> computedOptionClassName");
+
+    const rv = {
       "rpl-form-option": true,
       [this._variant]: this._variant
     };
+
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "< computedOptionClassName",
+        JSON.stringify(rv)
+      );
+    return rv;
   }
 
   get computedAriaDescribedBy() {
