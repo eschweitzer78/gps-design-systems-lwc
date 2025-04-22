@@ -24,7 +24,7 @@
         </div>
 
         <c-sf-gps-ds-au-vic2-text-link
-          lwc:if={hasTextAndUrl}
+          lwc:if={computedHasTextAndUrl}
           class-name="rpl-alert__link rpl-type-p rpl-u-focusable--alt-colour"
           url={linkUrl}
         >
@@ -35,11 +35,12 @@
       </div>
 
       <button
-        lwc:if={isDismissible}
+        lwc:if={_isDismissible}
         class="rpl-alert__btn-close rpl-u-focusable-inline rpl-u-focusable--alt-colour"
+        aria-label={i18n.closeLabel}
         onclick={handleClose}
       >
-        <c-sf-gps-ds-au-vic2-icon title={closeLabel} name="icon-cancel">
+        <c-sf-gps-ds-au-vic2-icon title={i18n.closeLabel} name="icon-cancel">
         </c-sf-gps-ds-au-vic2-icon>
       </button>
     </div>
