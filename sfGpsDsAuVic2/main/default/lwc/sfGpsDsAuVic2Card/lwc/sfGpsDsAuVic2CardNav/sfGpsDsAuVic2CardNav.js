@@ -1,10 +1,11 @@
-import { LightningElement, api } from "lwc";
+import { LightningElement, api, track } from "lwc";
 import {
   isString,
   isObject,
   normaliseBoolean,
   computeClass
 } from "c/sfGpsDsHelpers";
+import useAccessibleContainer from "c/sfGpsDsAuVic2AccessibleContainer";
 
 const HIGHLIGHT_DEFAULT = false;
 const INSET_DEFAULT = false;
@@ -85,6 +86,10 @@ export default class extends LightningElement {
     };
   }
 
+  /* tracked */
+
+  @track _hasMetaSlot = false;
+
   /* computed */
 
   get computedHasImage() {
@@ -126,11 +131,32 @@ export default class extends LightningElement {
         }
       })
     );
+
+    if (!this.preventDefault) {
+      window.location.href = this.url;
+    }
+  }
+
+  handleSlotChange(event) {
+    switch (event.target.name) {
+      case "meta":
+        this._hasMetaSlot = true;
+        break;
+
+      default:
+    }
   }
 
   /* lifecycle */
 
-  connectedCallback() {
-    this.classList.add("sf-gps-ds-au-vic2-grid");
+  _accessibleContainer;
+
+  renderedCallback() {
+    if (!this._accessibleContainer) {
+      this._accessibleContainer = new useAccessibleContainer(
+        this.refs.container,
+        this.refs.trigger
+      );
+    }
   }
 }

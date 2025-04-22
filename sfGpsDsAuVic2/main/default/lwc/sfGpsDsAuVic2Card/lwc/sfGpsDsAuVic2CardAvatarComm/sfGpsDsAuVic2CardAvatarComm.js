@@ -63,6 +63,6 @@ export default class extends SfGpsDsLwc {
 
   connectedCallback() {
     super.connectedCallback();
-    this.classList.add("vic2-scope", "sf-gps-ds-au-vic2-grid");
+    this.classList.add("vic2-scope");
   }
 }

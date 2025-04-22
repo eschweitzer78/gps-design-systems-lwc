@@ -1,5 +1,6 @@
 import { LightningElement, api } from "lwc";
 import { isString, isObject } from "c/sfGpsDsHelpers";
+import useAccessibleContainer from "c/sfGpsDsAuVic2AccessibleContainer";
 
 export default class extends LightningElement {
   @api el = "div";
@@ -50,6 +51,8 @@ export default class extends LightningElement {
   handleClick(event) {
     if (this.preventDefault) {
       event.preventDefault();
+    } else {
+      window.location.href = this.url;
     }
 
     this.dispatchEvent(
@@ -63,10 +66,16 @@ export default class extends LightningElement {
       })
     );
   }
-
   /* lifecycle */
 
-  connectedCallback() {
-    this.classList.add("sf-gps-ds-au-vic2-grid");
+  _accessibleContainer;
+
+  renderedCallback() {
+    if (!this._accessibleContainer) {
+      this._accessibleContainer = new useAccessibleContainer(
+        this.refs.container,
+        this.refs.trigger
+      );
+    }
   }
 }
