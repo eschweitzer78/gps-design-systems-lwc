@@ -160,7 +160,7 @@ export default class extends LightningElement {
 
     if (
       typeof index === "undefined" ||
-      isNaN(index) ||
+      Number.isNaN(index) ||
       index < 0 ||
       index >= this._tags.length
     ) {

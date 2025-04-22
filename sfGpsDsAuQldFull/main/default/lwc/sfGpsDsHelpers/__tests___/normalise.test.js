@@ -1,4 +1,8 @@
-import { normaliseBoolean, normaliseInteger } from "c/sfGpsDsHelpers";
+import {
+  normaliseBoolean,
+  normaliseInteger,
+  normaliseString
+} from "c/sfGpsDsHelpers";
 
 describe("c-sf-gps-ds-helpers.normaliseBoolean", () => {
   afterEach(() => {});
@@ -60,7 +64,7 @@ describe("c-sf-gps-ds-helpers.normaliseBoolean", () => {
   });
 });
 
-describe("c-sf-gps-ds-helpers.normaliseIneteger", () => {
+describe("c-sf-gps-ds-helpers.normaliseInteger", () => {
   afterEach(() => {});
 
   it("normalises an integer without changing it", () => {
@@ -105,5 +109,73 @@ describe("c-sf-gps-ds-helpers.normaliseIneteger", () => {
     expect(normaliseInteger(NaN)).toEqual(0);
     expect(normaliseInteger(["yo"])).toEqual(0);
     expect(normaliseInteger({ hey: "yo" }, { fallbackValue: 3 })).toEqual(3);
+  });
+});
+
+describe("c-sf-gps-ds-helpers.normaliseString", () => {
+  afterEach(() => {});
+
+  it("normalises a to a when in array", () => {
+    expect(normaliseString("a", { validValues: ["a", "b"] })).toEqual("a");
+  });
+
+  it("normalises A to empty string when a in array", () => {
+    expect(
+      normaliseString("A", { validValues: ["a", "b"], toLowerCase: false })
+    ).toEqual("");
+  });
+
+  it("normalises a to empty string when not in array", () => {
+    expect(normaliseString("a", { validValues: ["c", "b"] })).toEqual("");
+  });
+
+  it("normalises a to fallback string when not in array", () => {
+    expect(
+      normaliseString("a", { validValues: ["c", "b"], fallbackValue: "d" })
+    ).toEqual("d");
+  });
+
+  it("normalises a to a when in object", () => {
+    expect(normaliseString("a", { validValues: { a: "vA", b: "vB" } })).toEqual(
+      "a"
+    );
+  });
+
+  it("normalises a to vA when in object and returnObjectValue set", () => {
+    expect(
+      normaliseString("a", {
+        validValues: { a: "vA", b: "vB" },
+        returnObjectValue: true
+      })
+    ).toEqual("vA");
+  });
+
+  it("normalises a to c when not in object, fallback set to c and returnObjectValue not set", () => {
+    expect(
+      normaliseString("a", {
+        validValues: { c: "vC", b: "vB" },
+        fallbackValue: "c"
+      })
+    ).toEqual("c");
+  });
+
+  it("normalises a to vC when not in object, fallback set to c and returnObjectValue set", () => {
+    expect(
+      normaliseString("a", {
+        validValues: { c: "vC", b: "vB" },
+        fallbackValue: "c",
+        returnObjectValue: true
+      })
+    ).toEqual("vC");
+  });
+
+  it("normalises a to undefined when not in object, fallback set to d, d not object and returnObjectValue set", () => {
+    expect(
+      normaliseString("a", {
+        validValues: { c: "vC", b: "vB" },
+        fallbackValue: "d",
+        returnObjectValue: true
+      })
+    ).toBeUndefined();
   });
 });
