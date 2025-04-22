@@ -2,23 +2,24 @@
   <div class={computedClassName} role="tablist" onkeydown={handleKeyDown}>
     <template for:each={_tabs} for:item="tab">
       <template lwc:if={tab.label}>
-        <div key={tab.value} class={tab.className}>
-          <c-sf-gps-ds-au-vic2-button
-            id={tab.domId}
-            icon-name={tab.iconName}
-            aria-selected={tab.ariaSelected}
-            aria-controls={tab.domId}
-            role="tab"
-            variant="transparent"
-            data-label={tab.label}
-            data-tab-value={tab.value}
-            onbuttonclick={handleTabClick}
-            onblur={handleBlur}
-            onfocus={handleFocus}
-          >
-            {tab.title}
-          </c-sf-gps-ds-au-vic2-button>
-        </div>
+        <button
+          key={tab.value}
+          id={tab.domId}
+          class={tab.className}
+          type="button"
+          role="tab"
+          aria-selected={tab.ariaSelected}
+          aria-controls={tab.domId}
+          data-label={tab.label}
+          data-tab-value={tab.value}
+          onclick={handleTabClick}
+          onblur={handleBlur}
+          onfocus={handleFocus}
+        >
+          {tab.title}
+          <c-sf-gps-ds-au-vic2-icon lwc:if={tab.iconName} name={tab.iconName}>
+          </c-sf-gps-ds-au-vic2-icon>
+        </button>
       </template>
     </template>
   </div>

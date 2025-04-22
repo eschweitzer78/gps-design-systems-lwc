@@ -1,8 +1,15 @@
 import { LightningElement, api, track } from "lwc";
 import { handleKeyDownOnTabList } from "./keyboard";
+import { computeClass } from "c/sfGpsDsHelpers";
+
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2TabBar";
 
 export default class extends LightningElement {
   static renderMode = "light";
+
+  @api mode;
+  @api className;
 
   /* api: tabHeaders */
 
@@ -55,6 +62,14 @@ export default class extends LightningElement {
 
   /* computed */
 
+  get computedClassName() {
+    return {
+      "rpl-tabs": true,
+      "rpl-tabs--vertical": this.mode === "vertical",
+      [this.className]: this.className
+    };
+  }
+
   get _visibleTabs() {
     return this._tabs.filter((tab) => tab.visible);
   }
@@ -86,6 +101,17 @@ export default class extends LightningElement {
   }
 
   _selectTabAndFireSelectEvent(tabValue, options) {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> _selectTabAndFireSelectEvent",
+        "tabValue",
+        tabValue,
+        "options",
+        JSON.stringify(options)
+      );
+    }
+
     this._selectTab(tabValue, options);
 
     const tab = this._findTabByValue(tabValue);
@@ -98,9 +124,22 @@ export default class extends LightningElement {
         }
       })
     );
+
+    if (DEBUG) console.debug(CLASS_NAME, "< _selectTabAndFireSelectEvent");
   }
 
   _selectTab(tabValue, options = {}) {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> _selectTab",
+        "tabValue",
+        tabValue,
+        "options",
+        JSON.stringify(options)
+      );
+    }
+
     const tab = this._findTabByValue(tabValue);
 
     if (!tab) {
@@ -109,6 +148,7 @@ export default class extends LightningElement {
 
     if (this._selectedTab) {
       if (this._selectedTab.value === tabValue) {
+        if (DEBUG) console.debug(CLASS_NAME, "< _selectTab already selected");
         return;
       }
 
@@ -127,15 +167,36 @@ export default class extends LightningElement {
     tab.tabIndex = 0;
 
     this._selectedTab = tab;
+
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "< _selectTab default",
+        "_tabs",
+        JSON.stringify(this._tabs)
+      );
+    }
   }
 
   /* event management */
 
   handleTabClick(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleTabClick");
     event.preventDefault();
 
     const clickedTabValue = event.target.getAttribute("data-tab-value");
+
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "= handleTabClick",
+        "clickedTabValue",
+        clickedTabValue
+      );
+
     this._selectTabAndFireSelectEvent(clickedTabValue, { hasFocus: true });
+
+    if (DEBUG) console.debug(CLASS_NAME, "< handleTabClick");
   }
 
   handleBlur(event) {
@@ -184,9 +245,11 @@ export default class extends LightningElement {
 
   // eslint-disable-next-line no-unused-vars
   computeTabClassName({ selected = false, hasFocus = false }) {
-    return {
+    return computeClass({
       "rpl-tab": true,
-      "rpl-tab--active": selected
-    };
+      "rpl-tab--active": selected,
+      "rpl-type-p": true,
+      "rpl-u-focusable-block": true
+    });
   }
 }

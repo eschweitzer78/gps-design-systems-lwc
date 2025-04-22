@@ -5,7 +5,11 @@
     onprivatetabregister={handleTabRegister}
     onprivatetabdatachange={handleTabDataChange}
   >
-    <c-sf-gps-ds-au-vic2-tab-bar lwc:ref="bar" onselect={handleTabSelected}>
+    <c-sf-gps-ds-au-vic2-tab-bar
+      lwc:ref="bar"
+      mode={mode}
+      onselect={handleTabSelected}
+    >
     </c-sf-gps-ds-au-vic2-tab-bar>
 
     <slot></slot>
