@@ -19,6 +19,10 @@
     },
     {
       "target": "sfGpsDsAuVic2/style"
+    },
+    {
+      "from": "var\\(--rpl-clr-neutral-4\\)",
+      "to": "var(--rpl-clr-neutral-400)"
     }
   ],
   "sfGpsDsAuVic2/forms": 
