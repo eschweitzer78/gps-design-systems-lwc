@@ -1,6 +1,6 @@
 <template>
   <div class="nsw-form__group">
-    <label class="nsw-form__label" for="frt">
+    <label lwc:if={_propSetMap.label} class="nsw-form__label" for="frt">
       {mergedLabel}
       <span lwc:if={_propSetMap.required} class="sr-only">
         ({allCustomLabelsUtil.OmniRequired})</span

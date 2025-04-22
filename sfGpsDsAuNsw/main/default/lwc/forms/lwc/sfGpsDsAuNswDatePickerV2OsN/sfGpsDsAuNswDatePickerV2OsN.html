@@ -1,0 +1,212 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template lwc:if={debug}>
+    <p>_displayValue: {_displayValue}</p>
+    <p>_value: {_value}</p>
+    <p>_parsedValue: {_parsedValue}</p>
+  </template>
+
+  <div
+    lwc:ref="formGroup"
+    class={computedFormGroupClassName}
+    onfocusin={handleFocusIn}
+    onfocusout={handleFocusOut}
+  >
+    <div class="nsw-date-input">
+      <legend>
+        <label lwc:if={label} class={computedLabelClassName} for="date-input">
+          {label}
+          <template if:false={hideAsterisk}>
+            <span lwc:if={required} class="sr-only"> ({requiredLabel}) </span>
+          </template>
+        </label>
+        <slot name="label"> </slot>
+
+        <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
+          {fieldLevelHelp}
+        </span>
+      </legend>
+
+      <div
+        class="nsw-date-input__wrapper nsw-form__input-group nsw-form__input-group--icon"
+      >
+        <input
+          lwc:ref="input"
+          class="nsw-form__input"
+          type="text"
+          id="date-input"
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          required={required}
+          placeholder={placeholder}
+          disabled={computedDisabledOrReadOnly}
+          autocomplete="off"
+          aria-invalid={ariaInvalid}
+          aria-describedby={computedAriaDescribedBy}
+          value={_displayValue}
+          onfocus={handleInputFocus}
+          onkeydown={handleInputKeydown}
+          onkeyup={handleInputKeyup}
+          onchange={handleInputChange}
+        />
+        <button
+          lwc:ref="trigger"
+          class="nsw-button nsw-button--dark nsw-button--flex"
+          aria-label={triggerAriaLabel}
+          type="button"
+          aria-expanded={pickerVisible}
+          disabled={computedDisabledOrReadOnly}
+          onclick={showCalendar}
+        >
+          <span class="material-icons nsw-material-icons" aria-hidden="true">
+            calendar_today
+          </span>
+        </button>
+      </div>
+
+      <c-sf-gps-ds-focus-trap-os>
+        <div
+          lwc:ref="datePicker"
+          class={computedPickerClassName}
+          role="dialog"
+          aria-labelledby="calendar-label"
+          onkeydown={handlePickerKeydown}
+        >
+          <div lwc:ref="srLiveRegion" aria-live="polite" class="sr-only">
+            {_displayValue}
+          </div>
+
+          <header class="nsw-date-picker__header">
+            <div class="nsw-date-picker__title">
+              <span id="calendar-label" class="nsw-date-picker__title-label">
+                {header}
+              </span>
+
+              <nav>
+                <ul lwc:ref="navigation" class="nsw-date-picker__title-nav">
+                  <li>
+                    <button
+                      class="nsw-icon-button nsw-date-picker__title-nav-btn"
+                      type="button"
+                      onclick={showPrevYear}
+                    >
+                      <span class="material-icons nsw-material-icons">
+                        keyboard_double_arrow_left
+                      </span>
+                    </button>
+                    <button
+                      class="nsw-icon-button nsw-date-picker__title-nav-btn"
+                      type="button"
+                      onclick={showPrevMonth}
+                    >
+                      <span class="material-icons nsw-material-icons">
+                        chevron_left
+                      </span>
+                    </button>
+                  </li>
+
+                  <li>
+                    <button
+                      class="nsw-icon-button nsw-date-picker__title-nav-btn"
+                      type="button"
+                      onclick={showNextMonth}
+                    >
+                      <span class="material-icons nsw-material-icons"
+                        >chevron_right</span
+                      >
+                    </button>
+                    <button
+                      class="nsw-icon-button nsw-date-picker__title-nav-btn"
+                      type="button"
+                      onclick={showNextYear}
+                    >
+                      <span class="material-icons nsw-material-icons"
+                        >keyboard_double_arrow_right</span
+                      >
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+
+            <ol class="nsw-date-picker__week">
+              <template for:each={_weekdays} for:item="weekday">
+                <li key={weekday.item}>
+                  <div class="nsw-date-picker__day">
+                    {weekday.prefix}<span class="sr-only"
+                      >{weekday.suffix}</span
+                    >
+                  </div>
+                </li>
+              </template>
+            </ol>
+          </header>
+
+          <ol
+            lwc:ref="body"
+            class="nsw-date-picker__dates"
+            aria-labelledby="calendar-label"
+            onclick={handleBodyClick}
+            onkeydown={handleBodyKeydown}
+          >
+            <template for:each={rows} for:item="row">
+              <template for:each={row.cols} for:item="item">
+                <li key={item.key}>
+                  <template lwc:if={item.isDay}>
+                    <button
+                      class={item.className}
+                      tabindex={item.tabindexValue}
+                      type="button"
+                      aria-disabled={item.disabled}
+                      data-key={item.key}
+                    >
+                      {item.date}
+                    </button>
+                  </template>
+                </li>
+              </template>
+            </template>
+          </ol>
+
+          <div class="nsw-date-picker__buttongroup">
+            <button
+              lwc:ref="cancel"
+              type="button"
+              class="nsw-button nsw-button--dark-outline-solid"
+              value="cancel"
+              onclick={hideCalendar}
+            >
+              {i18n.pickerCancelLabel}
+            </button>
+            <button
+              lwc:ref="accept"
+              type="button"
+              class="nsw-button nsw-button--dark"
+              value="ok"
+              onclick={handleAccept}
+            >
+              {i18n.pickerAcceptLabel}
+            </button>
+          </div>
+        </div>
+      </c-sf-gps-ds-focus-trap-os>
+    </div>
+
+    <span
+      lwc:if={sfGpsDsIsError}
+      class={computedHelperClassName}
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <span
+        lwc:if={computedStatusIcon}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {computedStatusIcon}
+      </span>
+      {sfGpsDsErrorMessage}
+    </span>
+  </div>
+</template>

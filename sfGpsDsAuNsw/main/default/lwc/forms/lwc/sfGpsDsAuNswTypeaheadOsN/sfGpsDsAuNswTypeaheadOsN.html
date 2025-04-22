@@ -1,0 +1,158 @@
+<template>
+  <div class="slds-form-element slds-is-relative">
+    <div class="nsw-form__group">
+      <div class="sfgpsds-label__group">
+        <div class="sfgpsds-label__group_label_container">
+          <div class="sfgpsds-label__group_label">
+            <label
+              class={computedLabelClassName}
+              id="typeaheadLabelId"
+              for="inputId"
+            >
+              {label}
+              <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="sfgpsds-label__group_action">
+          <slot name="iconRight"> </slot>
+        </div>
+      </div>
+
+      <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
+        {fieldLevelHelp}
+      </span>
+
+      <div class="sfgpsds-form-element__control nsw-form__predictive">
+        <div class={showProgress}>
+          <omnistudio-progress-bar
+            lwc:if={remoteSource}
+            theme="slds"
+            size="xx-small"
+            data-progress-bar
+          >
+          </omnistudio-progress-bar>
+        </div>
+
+        <div class="sfgpsds-combobox_container">
+          <div class={computedComboboxClassName}>
+            <div class="sfgps-combobox__form-element" role="none">
+              <input
+                class="nsw-form__input sfgpsds-combobox__input typeahead"
+                type={type}
+                placeholder={placeholder}
+                required={required}
+                disabled={computedDisabledOrReadOnly}
+                readonly={readOnly}
+                aria-readonly={readOnly}
+                tabindex={tabIndex}
+                maxlength={maxLength}
+                id="inputId"
+                autocomplete="off"
+                aria-activedescendant={activeDescendant}
+                aria-autocomplete="list"
+                aria-owns="listboxId"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-describedby={computedAriaDescribedBy}
+                role="combobox"
+                value={_value}
+                onkeyup={searchOptions}
+                oninput={updateValue}
+                onfocus={focusChange}
+                onblur={focusChange}
+                onkeydown={handleKeydown}
+                data-omni-input
+              />
+            </div>
+
+            <div
+              class="sfgpsds-dropdown sfgpsds-dropdown_fluid sfgpsds-dropdown_length-5 nsw-form__predictive-list"
+              id="listboxId"
+              aria-labelledby="typeaheadLabelId"
+              role="listbox"
+              onmousedown={handleScrollClick}
+            >
+              <ul
+                class="sfgpsds-listbox sfgpsds-listbox_vertical"
+                role="presentation"
+              >
+                <template
+                  for:each={sfGpsDsInternalData}
+                  for:item="item"
+                  for:index="index"
+                >
+                  <li
+                    key={item.itrKey}
+                    class="sfgpsds-listbox__item"
+                    role="presentation"
+                    data-itrkey={item.itrKey}
+                  >
+                    <a
+                      lwc:if={item.name}
+                      href={item.href}
+                      class={item.itemClass}
+                      aria-selected={item.selected}
+                      id={item.itrKey}
+                      role="option"
+                      data-index={index}
+                      onclick={selectOption}
+                      >{item.preSpan}<span lwc:if={item.span}>{item.span}</span>
+                      <template lwc:if={item.postSpan}
+                        >{item.postSpan}</template
+                      >
+                    </a>
+                    <a
+                      lwc:else
+                      href="#no-result"
+                      aria-selected="false"
+                      class={item.itemClass}
+                      id={item.itrKey}
+                      role="presentation"
+                      data-index={index}
+                      onclick={handleClearOption}
+                    >
+                      {i18n.noResultFound}
+                    </a>
+                  </li>
+                </template>
+
+                <li class="sfgpsds-item">
+                  <div
+                    class={_sfGpsDsLastItemClassName}
+                    role="option"
+                    data-index="last-item"
+                    onclick={selectOption}
+                  >
+                    <span class="sfgpsds-listbox__option-text">
+                      <slot name="lastItem" onslotchange={lastItemChange}>
+                      </slot>
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <span
+          lwc:if={sfGpsDsIsError}
+          class={computedHelperClassName}
+          id="errorMessageBlock"
+          aria-live="assertive"
+          role="alert"
+        >
+          <span
+            lwc:if={computedStatusIcon}
+            class="material-icons nsw-material-icons"
+            aria-hidden="true"
+          >
+            {computedStatusIcon}
+          </span>
+          {sfGpsDsErrorMessage}
+        </span>
+      </div>
+    </div>
+  </div>
+</template>
