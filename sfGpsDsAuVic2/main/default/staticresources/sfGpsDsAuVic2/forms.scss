@@ -40,3 +40,10 @@
   color: var(--rpl-clr-neutral-600); // disabled is 300
   border-color: var(--rpl-clr-neutral-300); // disabled is 200
 }
+
+// Omnistudio Text area
+.rpl-form__textarea textarea[readonly] {
+  cursor: not-allowed;
+  color: var(--rpl-clr-neutral-600); // disabled is 300
+  border-color: var(--rpl-clr-neutral-300); // disabled is 200
+}
