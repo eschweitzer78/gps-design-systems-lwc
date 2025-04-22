@@ -23,6 +23,25 @@
         default="false"
       />
       <property
+        name="collapse"
+        type="Boolean"
+        label="Collapse"
+        default="false"
+      />
+      <property
+        name="displayBeforeCollapse"
+        type="Integer"
+        label="Display before collapse"
+        default="3"
+      />
+      <property name="currentDir" type="String" label="Current direction" />
+      <property
+        name="currentClassName"
+        type="String"
+        label="Current item’s class name"
+        description="Additional CSS class to be applied to the current item."
+      />
+      <property
         name="className"
         type="String"
         label="Class name"

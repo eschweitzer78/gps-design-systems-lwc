@@ -3,13 +3,17 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
 export default class extends SfGpsDsLwc {
-  @api className;
   @api besideQuickExit;
+  @api collapse;
+  @api displayBeforeCollapse;
+  @api currentDir;
+  @api currentClassName;
+  @api className;
+
+  /* api: items */
 
   _items = [];
   _itemsOriginal;
-
-  /* api: items */
 
   @api
   get items() {
