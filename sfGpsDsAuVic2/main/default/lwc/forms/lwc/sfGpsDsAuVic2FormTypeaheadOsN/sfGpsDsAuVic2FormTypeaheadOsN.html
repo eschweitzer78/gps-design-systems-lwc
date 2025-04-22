@@ -1,0 +1,91 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="omni-typeahead-container">
+    <c-sf-gps-ds-au-vic2-typeahead-os-n
+      lwc:if={_propSetMap.enableLookup}
+      field-level-help={mergedHelpText}
+      label={mergedLabel}
+      options={options}
+      placeholder={mergedPlaceholder}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
+      value={elementValue}
+      remote-source
+      disable-filter={_disableFilter}
+      disabled={_propSetMap.readOnly}
+      data-omni-input
+      onblur={handleBlur}
+      onselect={handleSelect}
+      onlookupfocus={handleLookupFocus}
+    >
+      <button
+        class="slds-button slds-button_icon"
+        slot="iconRight"
+        aria-expanded={_showLookupOptions}
+        onkeydown={handleLookupButtonKeyDown}
+        onclick={handleLookupButtonDropdownClick}
+      >
+        <omnistudio-icon
+          icon-name="utility:down"
+          extraclass="slds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={allCustomLabelsUtil.OmniTypeaheadDropdownIcon}
+        >
+        </omnistudio-icon>
+      </button>
+    </c-sf-gps-ds-au-vic2-typeahead-os-n>
+    <c-sf-gps-ds-au-vic2-typeahead-os-n
+      lwc:else
+      field-level-help={mergedHelpText}
+      label={mergedLabel}
+      options={options}
+      placeholder={mergedPlaceholder}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
+      value={elementValue}
+      remote-source={_useRemoteSource}
+      disable-filter={_disableFilter}
+      disabled={_propSetMap.readOnly}
+      data-omni-input
+      onblur={handleBlur}
+      onlastitemclick={enterEditMode}
+      onselect={handleSelect}
+      onclear={handleClear}
+    >
+      <button
+        if:false={_propSetMap.hideEditButton}
+        class="slds-button slds-button_icon"
+        slot="iconRight"
+        aria-expanded={_isEditMode}
+        onclick={toggleEditMode}
+      >
+        <omnistudio-icon
+          icon-name="utility:edit"
+          extraclass="slds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={_editLabel}
+        ></omnistudio-icon>
+      </button>
+
+      <a slot="lastItem" if:true={_newItemLabel} label={_newItemLabel}
+        >{_newItemLabel}</a
+      >
+    </c-sf-gps-ds-au-vic2-typeahead-os-n>
+
+    <div if:true={errorMessage} class="slds-has-error">
+      <span class="slds-form-element__help">{errorMessage}</span>
+    </div>
+  </div>
+</template>
