@@ -1,0 +1,22 @@
+/* Fix SLDS/Exp Cloud changing the generic text link colour on hov */
+.rpl-text-link:hover {
+  color: var(--local-clr-link, var(--rpl-clr-link)); 
+}
+
+/* Fix SLDS/Exp Cloud changing the Primary Nav Quick Exit colour on hover */
+
+.rpl-primary-nav__quick-exit .rpl-button--destructive:hover,
+.rpl-primary-nav__quick-exit .rpl-button--destructive:active {
+  color: var(--rpl-clr-light);
+}
+
+/* SLDS/Exp Cloud changing the default Primary Nav Mega Menu Action colour on hover */
+.rpl-primary-nav__mega-menu-action:hover, 
+.rpl-primary-nav__mega-menu-action:active {
+  color: var(--rpl-clr-type-primary-contrast);
+  text-decoration: none;
+}
+
+.rpl-button--filled:hover, .rpl-button--active {
+  color: var(--local-filled-type-clr); 
+}

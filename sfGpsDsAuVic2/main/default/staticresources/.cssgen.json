@@ -1,19 +1,47 @@
 {
-  "sfGpsDsAuVic2/forms*": [
+  "../../../../node_modules/@dpc-sdp/ripple-ui-core/dist/global.css": 
+  [
     {
-      "extension": "v2.scss"
+      "extension": "scss"
     },
     {
-      "from": "@dpc-sdp/ripple-ui-core/style/breakpoints",
-      "to": "@dpc-sdp/ripple-ui-core/src/styles/breakpoints"
-    }
-  ],
-  "sfGpsDsAuVic2/forms.v2*": [],
-  "sfGpsDsAuVic2/global*": [
+      "target": "sfGpsDsAuVic2/global"
+    },
     {
       "from": "\\(/assets/",
       "to": "(/sfsites/c/resource/sfGpsDsAuVic2/assets/"
     }
   ],
+  "../../../../node_modules/@dpc-sdp/ripple-ui-core/dist/style.css": 
+  [
+    {
+      "extension": "scss"
+    },
+    {
+      "target": "sfGpsDsAuVic2/style"
+    }
+  ],
+  "sfGpsDsAuVic2/forms": 
+  [
+    {
+      "extension": "scss"
+    },
+    {
+      "from": "@dpc-sdp/ripple-ui-core/style",
+      "to": "@dpc-sdp/ripple-ui-core/src/styles"
+    }
+  ],
+  "../../../../node_modules/@dpc-sdp/ripple-ui-core/src/components/progress/RplProgress.css*": 
+  [
+    {
+      "extension": "scss"
+    }, {
+      "target": "sfGpsDsAuVic2/RplProgress"
+    }, {
+      "from": "@dpc-sdp/ripple-ui-core/style",
+      "to": "@dpc-sdp/ripple-ui-core/src/styles"
+    }
+  ],
+  "sfGpsDsAuVic2/byo_lwr_all*": [],
   "sfGpsDsAuVic2/omni-custom*": []
 }

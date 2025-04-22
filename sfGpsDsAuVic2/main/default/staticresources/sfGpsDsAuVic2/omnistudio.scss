@@ -1,0 +1,36 @@
+.omniscript-sfl-actions,
+.omniscript-button-position,
+.omniscript-btn-next,
+.omniscript-btn-previous,
+.omniscript-btn-save-for-later {
+  display: none !important;
+}
+
+.omniscript-article.slds-card {
+  border: none;
+  webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.omniscript-body {
+  padding: 0 !important;
+}
+
+.slds-omniscript_stepform {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.omniscript-body {
+  border-right: 0 !important;
+}
+
+/* inline-block for visible omnistudio form elements */
+.sfgpsdsauvic2-os-show {
+  display: inline-block;
+}
+
+/* no display for non-visible omnistudio form elements */
+.sfgpsdsauvic2-os-hide {
+  display: none;
+}
