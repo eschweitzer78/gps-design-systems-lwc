@@ -38,8 +38,9 @@ export const def = (obj, key, value, writable = false) => {
 export const extend = Object.assign;
 
 export function toNumber(val) {
-  var n = parseFloat(val);
-  return isNaN(n) ? val : n;
+  if (typeof val === "number") return val;
+
+  return parseFloat(val);
 }
 
 export const toArray = (value) => (isArray(value) ? value : [value]);
