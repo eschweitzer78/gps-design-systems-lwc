@@ -59,7 +59,7 @@ export function normaliseString(value, options = {}) {
     }
   } else if (vV && typeof vV === "object") {
     if (!Object.hasOwn(vV, result)) {
-      result = fV;
+      result = rOV ? vV[fV] : fV;
     } else if (rOV) {
       result = vV[result];
     }
@@ -87,10 +87,11 @@ export function normaliseInteger(value, options = {}) {
   }
 
   if (typeof value !== "number" || Number.isNaN(value)) {
-    return intFV;
+    value = intFV;
   }
 
   const intValue = value | 0; /* truncates floating point */
+  console.debug("= normaliseInteger intValue", intValue);
 
   if (intValue < min) {
     return min;
