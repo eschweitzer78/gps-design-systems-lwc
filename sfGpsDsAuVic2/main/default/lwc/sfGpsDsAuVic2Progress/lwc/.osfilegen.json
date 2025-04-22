@@ -1,0 +1,24 @@
+{
+  "sfGpsDsAuVic2Progress": {
+    "target": "!Os",
+    "RplProgress.gen.gen.css": {
+      "target": "RplProgress.gen.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsAuVic2BreakpointsMixin": "sfGpsDsAuVic2BreakpointsMixinOs",
+      "SfGpsDsAuVic2Progress": "SfGpsDsAuVic2ProgressOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  }
+}
