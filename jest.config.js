@@ -1,16 +1,20 @@
 const { jestConfig } = require("@salesforce/sfdx-lwc-jest/config");
-const ro = require("resize-observer-polyfill");
 
 const setupFilesAfterEnv = jestConfig.setupFilesAfterEnv || [];
 setupFilesAfterEnv.push("<rootDir>/jest-CSS-setup.js");
 setupFilesAfterEnv.push("<rootDir>/jest-crypto-setup.js");
 setupFilesAfterEnv.push("<rootDir>/jest-matchers-setup.js");
+setupFilesAfterEnv.push("<rootDir>/jest-resize-observer-setup.js");
 setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.js");
 
 module.exports = {
   ...jestConfig,
   verbose: true,
-  modulePathIgnorePatterns: ["<rootDir>/.localdevserver", "sfGpsTemp"],
+  modulePathIgnorePatterns: [
+    "<rootDir>/.localdevserver",
+    "sfGpsTemp",
+    "fixtures"
+  ],
   setupFilesAfterEnv,
   moduleFileExtensions: ["js", "html", "css"],
   transform: {
@@ -35,8 +39,5 @@ module.exports = {
       "<rootDir>/__test__/jest-mocks/lightning/focusTrap/focusTrap",
     "^lightning/(.*)":
       "<rootDir>/node_modules/@salesforce/sfdx-lwc-jest/src/lightning-stubs/$1/$1"
-  },
-  globals: {
-    ResizeObserver: ro
   }
 };
