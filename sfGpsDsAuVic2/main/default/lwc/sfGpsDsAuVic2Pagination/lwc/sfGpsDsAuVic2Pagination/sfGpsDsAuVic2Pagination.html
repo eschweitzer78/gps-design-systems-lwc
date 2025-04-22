@@ -15,18 +15,18 @@
       {prevLabel}
     </c-sf-gps-ds-au-vic2-pagination-link>
 
-    <ol lwc:if={isComplex} class="rpl-pagination__list">
-      <template for:each={visibleSteps} for:item="step">
-        <li key={step.key} class="rpl-pagination__list-item rpl-type-label">
+    <ol lwc:if={_isComplex} class="rpl-pagination__list">
+      <template for:each={decoratedVisibleSteps} for:item="step">
+        <li key={step.index} class="rpl-pagination__list-item rpl-type-label">
           <button
             lwc:if={step}
             class="rpl-pagination__page rpl-u-focusable-block"
-            aria-label="`Go to ${contentType} ${step}`"
-            aria-current="step === activeStep ? true : null"
-            data-ndx={step}
+            aria-label={step.ariaLabel}
+            aria-current={step.ariaCurrent}
+            data-ndx={step.index}
             onclick={handleNumberClick}
           >
-            <span>{step}</span>
+            <span>{step.index}</span>
           </button>
           <span lwc:else class="rpl-pagination__spacer">
             <span>&hellip;</span>
