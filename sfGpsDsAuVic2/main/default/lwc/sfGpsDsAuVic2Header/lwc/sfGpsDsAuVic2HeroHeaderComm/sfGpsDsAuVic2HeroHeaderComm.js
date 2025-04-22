@@ -411,10 +411,10 @@ export default class extends SfGpsDsLwc {
   get computedLogo() {
     return {
       ...this._logo,
-      className: {
+      className: computeClass({
         "rpl-header__logo": true,
         [this._logo?.className]: this._logo?.className
-      }
+      })
     };
   }
 
