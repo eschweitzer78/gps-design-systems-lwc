@@ -138,7 +138,12 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
       let month = parseInt(this.monthValue, 10);
       let year = parseInt(this.yearValue, 10);
 
-      valid = !(isNaN(day) || isNaN(month) || isNaN(year) || year < 1000);
+      valid = !(
+        Number.isNaN(day) ||
+        Number.isNaN(month) ||
+        Number.isNaN(year) ||
+        year < 1000
+      );
     }
 
     return valid;
@@ -153,9 +158,9 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
         let month = parseInt(this.monthValue, 10);
         let year = parseInt(this.yearValue, 10);
 
-        this.hasDayError = isNaN(day);
-        this.hasMonthError = isNaN(month);
-        this.hasYearError = isNaN(year) || year < 1000;
+        this.hasDayError = Number.isNaN(day);
+        this.hasMonthError = Number.isNaN(month);
+        this.hasYearError = Number.isNaN(year) || year < 1000;
 
         valid = !(this.hasDayError || this.hasMonthError || this.hasYearError);
 
@@ -222,7 +227,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
       let parsedValue = this.parseValue(this._value, true);
       if (DEBUG)
         console.log(CLASS_NAME, "setValue", "parsedValue: " + parsedValue);
-      if (parsedValue && !isNaN(parsedValue)) {
+      if (parsedValue && !Number.isNaN(parsedValue)) {
         this.dayValue = parsedValue.getDate();
         this.monthValue = parsedValue.getMonth() + 1;
         this.yearValue = parsedValue.getFullYear();
@@ -261,7 +266,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
       let year = parseInt(this.yearValue, 10);
       let date = new Date(year, month - 1, day);
 
-      this.assignDate(year < 1000 || isNaN(date) ? null : date);
+      this.assignDate(year < 1000 || Number.isNaN(date) ? null : date);
     } else {
       this.assignDate(null);
     }
