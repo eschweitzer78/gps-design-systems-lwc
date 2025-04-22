@@ -1,7 +1,6 @@
 import { api } from "lwc";
-import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
-import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 /**
  * @slot Content
@@ -31,25 +30,10 @@ export default class extends SfGpsDsLwc {
     }
   }
 
-  /* getters */
-
-  get computedInlineClassName() {
-    return {
-      "inline-callout": true,
-      "inline-callout--no-header": !this.title
-    };
-  }
-
   /* lifecycle */
 
   connectedCallback() {
     super.connectedCallback();
     this.classList.add("vic2-scope");
-  }
-
-  renderedCallback() {
-    if (this._contentOriginal) {
-      replaceInnerHtml(this.refs.content, this._contentHtml);
-    }
   }
 }
