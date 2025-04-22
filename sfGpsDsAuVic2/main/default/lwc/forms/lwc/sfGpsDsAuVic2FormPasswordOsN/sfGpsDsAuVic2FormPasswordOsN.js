@@ -6,9 +6,14 @@
  */
 
 import SfGpsDsFormPassword from "c/sfGpsDsFormPasswordOsN";
+import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormPasswordOsN.html";
 
-export default class extends SfGpsDsFormPassword {
+export default class extends SfGpsDsAuVic2FormElementMixinOsN(
+  SfGpsDsFormPassword
+) {
+  /* lifecycle */
+
   render() {
     return tmpl;
   }
