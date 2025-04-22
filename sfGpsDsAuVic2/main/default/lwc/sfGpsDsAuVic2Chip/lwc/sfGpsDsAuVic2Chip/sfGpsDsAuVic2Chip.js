@@ -1,5 +1,7 @@
 import { LightningElement, api } from "lwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
+
+const PREVENTDEFAULT_DEFAULT = false;
 
 export default class SfGpsDsAuVic2Chip extends LightningElement {
   static renderMode = "light";
@@ -8,11 +10,34 @@ export default class SfGpsDsAuVic2Chip extends LightningElement {
   @api items;
   @api label = "";
   @api url = "#";
-  @api index = 0;
-  @api preventDefault;
   @api className;
 
+  /* api: preventDefault */
+
+  _preventDefault = PREVENTDEFAULT_DEFAULT;
+  _preventDefaultOriginal = PREVENTDEFAULT_DEFAULT;
+
+  @api
+  get preventDefault() {
+    return this._preventDefaultOriginal;
+  }
+
+  set preventDefault(value) {
+    this._preventDefaultOriginal = value;
+    this._preventDefault = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: PREVENTDEFAULT_DEFAULT
+    });
+  }
+
   /* computed */
+
+  get computedContainerClassName() {
+    return {
+      "chip-container": true,
+      [this.className]: this.className
+    };
+  }
 
   get computedClassName() {
     return computeClass({
@@ -22,9 +47,10 @@ export default class SfGpsDsAuVic2Chip extends LightningElement {
       "rpl-type-label": true,
       "rpl-u-focusable-block": true,
       "rpl-u-screen-only": true,
-      [this.className]: this.className
+      [this.className]: this.className && this._items?.length > 1
     });
   }
+
   /* event management */
 
   handleClick(event) {

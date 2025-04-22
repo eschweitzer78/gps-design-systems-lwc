@@ -1,17 +1,19 @@
 <template lwc:render-mode="light">
   <template lwc:if={items}>
-    <template for:each={items} for:item="item" for:index="index">
-      <c-sf-gps-ds-au-vic2-link
-        key={item.index}
-        index={index}
-        url={item.url}
-        class-name={computedClassName}
-        prevent-default={preventDefault}
-        onclick={handleClick}
-      >
-        {item.text}
-      </c-sf-gps-ds-au-vic2-link>
-    </template>
+    <div class={computedContainerClassName}>
+      <template for:each={items} for:item="item" for:index="index">
+        <c-sf-gps-ds-au-vic2-link
+          key={item.index}
+          index={index}
+          url={item.url}
+          class-name={computedClassName}
+          prevent-default={preventDefault}
+          onclick={handleClick}
+        >
+          {item.text}
+        </c-sf-gps-ds-au-vic2-link>
+      </template>
+    </div>
   </template>
 
   <c-sf-gps-ds-au-vic2-link
