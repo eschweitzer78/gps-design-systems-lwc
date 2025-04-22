@@ -1,11 +1,13 @@
 import { LightningElement, api } from "lwc";
-import { isArray, normaliseString } from "c/sfGpsDsHelpers";
+import { isArray, normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 import { BreakpointsMixin } from "c/sfGpsDsAuVic2BreakpointsMixin";
 import STATIC_RESOURCE from "@salesforce/resourceUrl/sfGpsDsAuVic2";
 
 const VARIANT_DEFAULT = "default";
 const VARIANT_NEUTRAL = "neutral";
 const VARIANT_VALUES = [VARIANT_DEFAULT, VARIANT_NEUTRAL];
+
+const DISABLEFOOTERLOGO_DEFAULT = false;
 
 export default class extends BreakpointsMixin(LightningElement) {
   @api nav;
@@ -31,6 +33,24 @@ export default class extends BreakpointsMixin(LightningElement) {
     this._variant = normaliseString(value, {
       validValues: VARIANT_VALUES,
       fallbackValue: VARIANT_DEFAULT
+    });
+  }
+
+  /* api: disableFooterLogo */
+
+  _disableFooterLogo = DISABLEFOOTERLOGO_DEFAULT;
+  _disableFooterLogoOriginal;
+
+  @api
+  get disableFooterLogo() {
+    return this._disableFooterLogoOriginal;
+  }
+
+  set disableFooterLogo(value) {
+    this._disableFooterLogoOriginal = value;
+    this._disableFooterLogo = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: DISABLEFOOTERLOGO_DEFAULT
     });
   }
 
@@ -85,6 +105,10 @@ export default class extends BreakpointsMixin(LightningElement) {
           ...logoLink,
           index: `logo-${index + 1}`
         }));
+  }
+
+  get computedShowFooterLogo() {
+    return !this._disableFooterLogo;
   }
 
   /* methods */

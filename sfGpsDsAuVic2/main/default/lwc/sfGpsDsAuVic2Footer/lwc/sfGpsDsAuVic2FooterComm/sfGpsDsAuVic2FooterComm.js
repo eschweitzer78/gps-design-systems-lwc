@@ -14,6 +14,7 @@ export default class extends SfGpsDsNavigation {
   @api credit;
   @api acknowledgement;
   @api copyright;
+  @api disableFooterLogo;
   @api className;
 
   /* api: logos */

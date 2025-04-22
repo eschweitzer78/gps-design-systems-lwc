@@ -123,6 +123,13 @@
         editor="c/sfGpsDsJsonCpe"
       />
       <property
+        name="disableFooterLogo"
+        type="Boolean"
+        label="Disable Victoria Government footer logo"
+        description="Check to have the bottom Victoria Government logo removed."
+        default="false"
+      />
+      <property
         name="className"
         type="String"
         label="Class name"

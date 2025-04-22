@@ -8,6 +8,7 @@ export default class SfGpsDsAuVic2FooterIp extends SfGpsDsNavigation {
   @api credit;
   @api acknowledgement;
   @api copyright;
+  @api disableFooterLogo;
   @api className;
 
   /* links */
