@@ -2,12 +2,16 @@
 <template>
   <fieldset class="rpl-form__fieldset">
     <label
-      lwc:if={labelVisible}
+      lwc:if={_propSetMap.label}
       class="rpl-form-label rpl-type-h4-fixed"
       for="frt"
-      data-label="true"
     >
       <span class="rpl-form-label__inner">{mergedLabel}</span>
+      <span
+        lwc:if={_propSetMap.required}
+        class="rpl-form-label__required rpl-type-label-small"
+        >({allCustomLabelsUtil.OmniRequired})</span
+      >
     </label>
 
     <div class="vic-disclosure">
