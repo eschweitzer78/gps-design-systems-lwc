@@ -1,13 +1,9 @@
 /*
- * Copyright (c) 2022-2023, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-
-// Setup:
-// in omniscript designer, go to setup tab and in the Element Type To LWC Component Mapping section
-// set Step as the ElementType and this LWC as the Lightning Web Component
 
 import SfGpsDsFormStepOsN from "c/sfGpsDsFormStepOsN";
 import tmpl from "./sfGpsDsAuVic2FormStepOsN.html";
@@ -27,6 +23,32 @@ export default class extends SfGpsDsFormStepOsN {
     return (
       this._propSetMap.isHeading === 2 || this._propSetMap.isHeading === "2"
     );
+  }
+
+  get computedHasButtons() {
+    return this.showPrev || this.showNext || this.showSave;
+  }
+
+  /* event management */
+
+  handleSubmit(event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  handlePrevious(event) {
+    event.preventDefault();
+    super.handlePrevious(event);
+  }
+
+  handleNext(event) {
+    event.preventDefault();
+    super.handleNext(event);
+  }
+
+  handleSave(event) {
+    event.preventDefault();
+    super.handleSave(event);
   }
 
   /* lifecycle */
