@@ -11,17 +11,18 @@
     field-level-help={mergedHelpText}
     field-level-help-position={_propSetMap.helpTextPos}
     theme={_theme}
-    type="radio"
+    type={computedType}
     alignment={_horizontalMode}
     message-when-value-missing={mergedMessageWhenValueMissing}
+    disabled={_propSetMap.readOnly}
     data-refresh={refresh}
     data-omni-input
     onchange={handleChange}
     onfocus={handleFocus}
     onblur={handleBlur}
     class="rpl-form__wrapper"
-    disabled={_propSetMap.readOnly}
     variant={_propSetMap.variant}
+    perfect-square-buttons={_propSetMap.perfectSquareButtons}
   >
     <template if:true={_propSetMap.repeat}>
       <span slot="label" class={_styleClasses.repeatContainer} role="group">
