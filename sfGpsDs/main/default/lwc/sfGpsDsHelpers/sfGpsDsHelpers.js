@@ -25,6 +25,7 @@ export {
   getFirstChild,
   computeClass,
   isRTL,
+  getCssPropertyValue,
   HtmlSanitizer
 } from "./domutil_v6";
 
