@@ -1,2 +1,2 @@
-import ro from "resise-observer-polyfill";
+import ro from "resize-observer-polyfill";
 window.ResizeObserver = ro;
