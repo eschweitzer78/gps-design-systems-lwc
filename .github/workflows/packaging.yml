@@ -327,7 +327,7 @@ jobs:
 
       # Create scratch org
       - name: "Create scratch org"
-        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --no-track-source
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"

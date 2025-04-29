@@ -289,12 +289,12 @@ jobs:
       # Create pre-release scratch org
       - name: "Create pre-release scratch org"
         if: ${{ env.IS_PRERELEASE }}
-        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --release=preview
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --release=preview --no-track-source
 
         # Create scratch org
       - name: "Create scratch org"
         if: ${{ !env.IS_PRERELEASE }}
-        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --no-track-source
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
