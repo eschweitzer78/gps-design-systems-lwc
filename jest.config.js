@@ -8,17 +8,6 @@ setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.js");
 
 module.exports = {
   ...jestConfig,
-  verbose: true,
-  modulePathIgnorePatterns: [
-    "<rootDir>/.localdevserver",
-    "sfGpsTemp",
-    "fixtures"
-  ],
-  setupFilesAfterEnv,
-  moduleFileExtensions: ["js", "html", "css"],
-  transform: {
-    "^.+\\.(js|html|css)$": "@lwc/jest-transformer"
-  },
   moduleNameMapper: {
     "^@salesforce/apex$": "<rootDir>/__test__/jest-mocks/apex",
     "^@salesforce/community/(.*)": "<rootDir>/__test__/jest-mocks/community/$1",
@@ -38,5 +27,13 @@ module.exports = {
       "<rootDir>/__test__/jest-mocks/lightning/focusTrap/focusTrap",
     "^lightning/(.*)":
       "<rootDir>/node_modules/@salesforce/sfdx-lwc-jest/src/lightning-stubs/$1/$1"
-  }
+  },
+  modulePathIgnorePatterns: [
+    "<rootDir>/.localdevserver",
+    "sfGpsTemp",
+    "fixtures"
+  ],
+  setupFiles: ["jest-canvas-mock"],
+  setupFilesAfterEnv,
+  verbose: true
 };
