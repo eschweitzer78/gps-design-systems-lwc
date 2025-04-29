@@ -1,10 +1,10 @@
 const { jestConfig } = require("@salesforce/sfdx-lwc-jest/config");
 
 const setupFilesAfterEnv = jestConfig.setupFilesAfterEnv || [];
-setupFilesAfterEnv.push("<rootDir>/jest-CSS-setup.js");
-setupFilesAfterEnv.push("<rootDir>/jest-matchers-setup.js");
-setupFilesAfterEnv.push("<rootDir>/jest-resize-observer-setup.js");
-setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.js");
+setupFilesAfterEnv.push("<rootDir>/jest-CSS-setup.mjs");
+setupFilesAfterEnv.push("<rootDir>/jest-matchers-setup.mjs");
+setupFilesAfterEnv.push("<rootDir>/jest-resize-observer-setup.mjs");
+setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.mjs");
 
 module.exports = {
   ...jestConfig,
