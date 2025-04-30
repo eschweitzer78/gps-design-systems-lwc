@@ -2,6 +2,9 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { isString, isArray } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2ProfileComm";
+
 export default class extends SfGpsDsLwc {
   @api image;
   @api className;
@@ -29,6 +32,7 @@ export default class extends SfGpsDsLwc {
             "PR-IT",
             "We had an issue parsing JSON for the items property."
           );
+          if (DEBUG) console.debug(CLASS_NAME, "set items", e);
           return;
         }
       } else {

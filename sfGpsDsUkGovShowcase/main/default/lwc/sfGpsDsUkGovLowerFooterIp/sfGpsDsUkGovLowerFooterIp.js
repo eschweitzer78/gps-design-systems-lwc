@@ -48,6 +48,7 @@ export default class SfGpsUkGovLowerFooterIp extends SfGpsDsNavigation {
 
     try {
       this._licenceMentionHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("LM-MD", "Issue when parsing Licence mention markdown");
     }
@@ -68,6 +69,7 @@ export default class SfGpsUkGovLowerFooterIp extends SfGpsDsNavigation {
 
     try {
       this._copyrightMentionLink = mdEngine.extractFirstLink(markdown);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("CM-MD", "Issue when parsing Copyright mention markdown");
     }
@@ -88,6 +90,7 @@ export default class SfGpsUkGovLowerFooterIp extends SfGpsDsNavigation {
 
     try {
       this._builtMentionHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("BM-MD", "Issue when parsing Built mention markdown");
     }

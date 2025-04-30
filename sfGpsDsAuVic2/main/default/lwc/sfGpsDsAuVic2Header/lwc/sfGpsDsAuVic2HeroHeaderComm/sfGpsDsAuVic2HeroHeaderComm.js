@@ -23,6 +23,9 @@ const BREADCRUMBS_DEFAULT = false;
 const BEHINDNAV_DEFAULT = false;
 const FULLWIDTH_DEFAULT = false;
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2HeroHeaderComm";
+
 /**
  * @slot heroContent
  */
@@ -104,6 +107,7 @@ export default class extends SfGpsDsLwc {
       this._logo = JSON.parse(value);
     } catch (e) {
       this._logo = {};
+      if (DEBUG) console.debug(CLASS_NAME, "set logo", e);
     }
   }
 
@@ -185,6 +189,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._primaryAction = null;
       this.addError("ML-MD", "Issue when parsing Primary action markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set primaryAction", e);
     }
   }
 
@@ -207,6 +212,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._secondaryAction = null;
       this.addError("ML-MD", "Issue when parsing Secondary action markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set secondaryAction", e);
     }
   }
 
@@ -227,6 +233,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._links = null;
       this.addError("ML-MD", "Issue when parsing Links markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set links", e);
     }
   }
 
@@ -265,6 +272,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._linksMore = null;
       this.addError("ML-MD", "Issue when parsing Links more markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set linksMore", e);
     }
   }
 
@@ -284,6 +292,7 @@ export default class extends SfGpsDsLwc {
       this._contentHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set content", e);
     }
   }
 
@@ -303,6 +312,7 @@ export default class extends SfGpsDsLwc {
         background = JSON.parse(background);
       } catch (e) {
         this.addError("CO-MD", "Issue when parsing Background details");
+        if (DEBUG) console.debug(CLASS_NAME, "get computedBackground", e);
         return null;
       }
     }
@@ -421,7 +431,7 @@ export default class extends SfGpsDsLwc {
   /* event management */
 
   handleItemClick() {
-    console.log("handleItemClick");
+    if (DEBUG) console.debug(CLASS_NAME, "handleItemClick");
   }
 
   handleSlotChange(event) {

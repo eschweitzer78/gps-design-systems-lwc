@@ -161,6 +161,7 @@ export default class extends SfGpsDsNavigation {
       this._reportVulnerabilityLink = markdown
         ? mdEngine.extractFirstLink(markdown)
         : null;
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError(
         "ML-MD",
@@ -186,6 +187,7 @@ export default class extends SfGpsDsNavigation {
     try {
       this._contactLinkOriginal = markdown;
       this._contactLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("ML-MD", "Issue when parsing Contact link markdown");
       this._contactLink = CONTACTLINK_DEFAULT;
@@ -208,6 +210,7 @@ export default class extends SfGpsDsNavigation {
       this._feedbackLink = markdown
         ? mdEngine.extractFirstLink(markdown)
         : null;
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("ML-MD", "Issue when parsing Feedback link markdown");
       this._feedbackLink = FEEDBACKLINK_DEFAULT;
@@ -230,6 +233,7 @@ export default class extends SfGpsDsNavigation {
     try {
       this._privacyLinkOriginal = markdown;
       this._privacyLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("ML-MD", "Issue when parsing Privacy link markdown");
       this._privacyLink = PRIVACYLINK_DEFAULT;
@@ -252,6 +256,7 @@ export default class extends SfGpsDsNavigation {
       this._termsOfUseLink = markdown
         ? mdEngine.extractFirstLink(markdown)
         : null;
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("ML-MD", "Issue when parsing Terms of use link markdown");
       this._termsOfUseLink = TERMSOFUSELINK_DEFAULT;

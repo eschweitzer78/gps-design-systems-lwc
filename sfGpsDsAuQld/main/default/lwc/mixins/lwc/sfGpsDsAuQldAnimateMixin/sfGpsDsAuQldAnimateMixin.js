@@ -1,4 +1,3 @@
-/* eslint-disable no-extra-semi */
 /* eslint-disable consistent-return */
 /* eslint-disable @lwc/lwc/no-async-operation */
 /* eslint-disable no-shadow */

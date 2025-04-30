@@ -3,6 +3,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswHeroBannerAltComm";
+
 export default class extends SfGpsDsLwc {
   @api imageSrc;
   @api imageAlt;
@@ -27,6 +30,7 @@ export default class extends SfGpsDsLwc {
       this._titleLabel = text;
     } catch (e) {
       this.addError("TL-MD", "Issue when parsing titleLink markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set titleLink", e);
     }
   }
 
@@ -46,6 +50,7 @@ export default class extends SfGpsDsLwc {
       this._contentHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set content", e);
     }
   }
 

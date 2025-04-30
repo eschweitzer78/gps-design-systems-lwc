@@ -1,5 +1,7 @@
 "use strict";
 
+/* eslint-disable no-unused-vars */
+
 import encode from "./mdUrlEncode";
 import { decodeHTML } from "./entitiesDecode";
 

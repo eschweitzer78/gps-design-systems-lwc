@@ -763,6 +763,8 @@ export default class extends SfGpsDsOmniInputMixinOsN(
         // switch to locale
         dayjs.locale(localeObj.name);
       } catch (e) {
+        if (DEBUG)
+          console.debug(CLASS_NAME, "connectedCallback localFormat", e);
         throw new Error(
           formatTemplate(this.localeFormatInvalidError, {
             1: "timePicker",

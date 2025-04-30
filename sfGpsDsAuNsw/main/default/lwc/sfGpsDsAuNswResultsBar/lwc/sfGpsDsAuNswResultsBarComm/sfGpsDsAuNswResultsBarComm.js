@@ -2,6 +2,9 @@ import { api, track } from "lwc";
 import { isArray } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswResultsBarComm";
+
 export default class extends SfGpsDsLwc {
   @api from = 1;
   @api to = 10;
@@ -39,6 +42,8 @@ export default class extends SfGpsDsLwc {
           value: option,
           label: option
         }));
+
+      if (DEBUG) console.debug(CLASS_NAME, "sortOptions", e);
     }
 
     if (isArray(this._sortOptions)) {

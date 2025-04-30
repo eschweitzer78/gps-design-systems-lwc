@@ -3,6 +3,9 @@ import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 import { isObject } from "c/sfGpsDsHelpers";
 import { NavigationMixin } from "lightning/navigation";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2PrimaryNavComm";
+
 /**
  * @slot UserAction
  */
@@ -111,6 +114,7 @@ export default class extends NavigationMixin(SfGpsDsNavigation) {
       value = JSON.parse(value);
     } catch (e) {
       this.addError("PL-JP", "Primary logo must be a valid JSON.");
+      if (DEBUG) console.debug(CLASS_NAME, "set primaryLogo", e);
       return;
     }
 
@@ -145,6 +149,7 @@ export default class extends NavigationMixin(SfGpsDsNavigation) {
       value = JSON.parse(value);
     } catch (e) {
       this.addError("SL-JP", "Secondary logo must be a valid JSON.");
+      if (DEBUG) console.debug(CLASS_NAME, "set secondaryLogo", e);
       return;
     }
 

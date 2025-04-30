@@ -75,6 +75,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._input = INPUT_DEFAULT;
       this.addError("IJ-BF", "JSON for input is malformed.");
+      console.debug(e);
     }
   }
 
@@ -96,6 +97,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._options = OPTIONS_DEFAULT;
       this.addError("OJ-BF", "JSON for options is malformed.");
+      console.debug(e);
     }
   }
 

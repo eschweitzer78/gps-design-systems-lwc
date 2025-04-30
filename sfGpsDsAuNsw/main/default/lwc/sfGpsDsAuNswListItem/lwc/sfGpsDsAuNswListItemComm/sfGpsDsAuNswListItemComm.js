@@ -6,6 +6,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 const DATE_STYLE_DEFAULT = "medium";
 const HEADLINE_DEFAULT = {};
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswListItemComm";
+
 export default class extends SfGpsDsLwc {
   @api label;
   @api image;
@@ -36,6 +39,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._headline = HEADLINE_DEFAULT;
       this.addError("HL-MD", "Issue when parsing Headline markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set headline", e);
     }
   }
 
@@ -82,6 +86,7 @@ export default class extends SfGpsDsLwc {
       }
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Copy markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set copy", e);
     }
   }
 
@@ -101,6 +106,7 @@ export default class extends SfGpsDsLwc {
       this._tags = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Tags markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set tags", e);
     }
   }
 

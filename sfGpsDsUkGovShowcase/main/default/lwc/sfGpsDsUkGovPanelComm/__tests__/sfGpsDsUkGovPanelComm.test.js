@@ -1,4 +1,3 @@
-/* eslint-disable @lwc/lwc/no-inner-html */
 import { createElement } from "lwc";
 import sfGpsDsUkGovPanelComm from "c/sfGpsDsUkGovPanelComm";
 

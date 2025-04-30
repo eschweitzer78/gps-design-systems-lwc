@@ -19,6 +19,7 @@ export default class extends SfGpsDsLwc {
     if (isString(value)) {
       try {
         value = JSON.parse(value);
+        // eslint-disable-next-line no-unused-vars
       } catch (e) {
         this.addError("IT-SM", "JSON for items is malformed.");
         value = null;
@@ -26,5 +27,13 @@ export default class extends SfGpsDsLwc {
     }
 
     this._items = value;
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.classList.add("vic2-scope");
   }
 }

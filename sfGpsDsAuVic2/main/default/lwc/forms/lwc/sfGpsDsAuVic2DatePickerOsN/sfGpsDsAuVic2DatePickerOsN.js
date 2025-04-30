@@ -161,6 +161,7 @@ export default class extends LightningElement {
       dayjs.locale(value, null, true);
       dayjs.locale(value.name);
     } catch (e) {
+      if (DEBUG) console.debug(CLASS_NAME, "set localeFormat", e);
       throw new Error(
         formatTemplate(
           this.localeFormatInvalidError || I18N.invalidLocaleError,
@@ -460,7 +461,6 @@ export default class extends LightningElement {
    * @returns the parsed date as a Date instance
    */
 
-  // eslint-disable-next-line no-unused-vars
   parseValue(value) {
     if (DEBUG) console.log(CLASS_NAME, "> parseValue", value, typeof value);
 
@@ -545,10 +545,9 @@ export default class extends LightningElement {
 
   /* event management */
 
-  // eslint-disable-next-line no-unused-vars
   handleInputChange(event) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> handleInputChange", event.target.value);
+      console.log(CLASS_NAME, "> handleInputChange", event.target?.value);
 
     event.stopPropagation();
 

@@ -12,8 +12,6 @@ import {
 } from "c/sfGpsDsCodeMirrorUtil";
 import { getGutters, renderGutters } from "./gutters";
 
-/* eslint-disable @lwc/lwc/no-async-operation */
-
 // The display handles the DOM integration, both for input reading
 // and content drawing. It holds references to DOM nodes and
 // display-related state.

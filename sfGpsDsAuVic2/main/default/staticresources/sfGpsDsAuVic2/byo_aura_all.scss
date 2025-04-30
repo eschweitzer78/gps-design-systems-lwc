@@ -1,0 +1,17 @@
+@import "omnistudio";
+
+@import "global.gen";
+@import "style.gen";
+@import "forms.gen";
+@import "RplProgress";
+
+@import "omnistudio-file-upload";
+@import "ripple2-fixes";
+@import "slds-fixes";
+
+@import "byo_aura_layout";
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -2,6 +2,9 @@ import { api, track } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldSideNavComm";
+
 export default class extends SfGpsDsNavigation {
   @api className;
 
@@ -77,6 +80,7 @@ export default class extends SfGpsDsNavigation {
       this._titleLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Title Link markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set titleLink", e);
     }
   }
 

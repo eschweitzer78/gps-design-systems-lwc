@@ -44,6 +44,7 @@ export default class extends SfGpsDsAuVic2FormElementMixinOsN(
         return this.isCompact
           ? mdEngine.renderEscapedUnpackFirstP(mmt)
           : mdEngine.renderEscaped(mmt);
+        // eslint-disable-next-line no-unused-vars
       } catch (e) {
         return "<p>IN-MD Issue when parsing Text markdown</p>";
       }

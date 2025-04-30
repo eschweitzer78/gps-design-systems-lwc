@@ -90,7 +90,6 @@ export default class extends LightningElement {
   }
 
   handleSizeChange(event) {
-    /* eslint-disable-next-line @lwc/lwc/no-api-reassignments */
     this._value = {
       ...this._value,
       size: event.detail.value
@@ -100,7 +99,6 @@ export default class extends LightningElement {
   }
 
   handlePaddedChange(event) {
-    /* eslint-disable-next-line @lwc/lwc/no-api-reassignments */
     this._value = {
       ...this._value,
       padded: event.target.checked
@@ -110,7 +108,6 @@ export default class extends LightningElement {
   }
 
   handleTitleChange(event) {
-    /* eslint-disable-next-line @lwc/lwc/no-api-reassignments */
     this._value = {
       ...this._value,
       title: event.target.value

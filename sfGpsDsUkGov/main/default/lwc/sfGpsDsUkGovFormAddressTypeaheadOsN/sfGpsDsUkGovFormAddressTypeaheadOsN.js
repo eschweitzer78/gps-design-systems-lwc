@@ -230,7 +230,6 @@ export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsFormTypeahead) {
     super.connectedCallback();
 
     if (this.elementValue) {
-      // eslint-disable-next-line no-self-assign
       this.ingest(this.elementValue);
     } else {
       this.isSmart = true;
@@ -393,7 +392,8 @@ export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsFormTypeahead) {
 
       this.isValid = validity;
       return this.isValid;
-    } catch (t) {
+      // eslint-disable-next-line no-unused-vars
+    } catch (e) {
       return true;
     }
   }
@@ -427,7 +427,8 @@ export default class extends SfGpsDsUkGovLabelMixin(SfGpsDsFormTypeahead) {
 
       this.isValid = validity;
       return this.isValid;
-    } catch (t) {
+      // eslint-disable-next-line no-unused-vars
+    } catch (e) {
       return true;
     }
   }

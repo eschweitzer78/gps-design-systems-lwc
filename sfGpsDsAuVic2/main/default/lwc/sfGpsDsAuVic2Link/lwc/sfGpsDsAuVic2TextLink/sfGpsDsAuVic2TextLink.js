@@ -1,12 +1,14 @@
 import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
-export default class SfGpsDsAuVic2TextLink extends LightningElement {
+export default class extends LightningElement {
   @api url;
   @api target;
   @api text;
   @api preventDefault;
   @api className;
+
+  /* computed */
 
   get computedClassName() {
     return computeClass({

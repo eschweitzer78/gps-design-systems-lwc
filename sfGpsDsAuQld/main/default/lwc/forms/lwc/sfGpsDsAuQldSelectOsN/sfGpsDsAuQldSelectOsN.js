@@ -70,7 +70,8 @@ export default class extends StatusHelperMixin(LightningElement) {
           default:
             return null;
         }
-      } catch (exc) {
+        // eslint-disable-next-line no-unused-vars
+      } catch (e) {
         return null;
       }
     };
@@ -118,7 +119,8 @@ export default class extends StatusHelperMixin(LightningElement) {
     const safeParse = (val) => {
       try {
         return JSON.parse(val);
-      } catch (exc) {
+        // eslint-disable-next-line no-unused-vars
+      } catch (e) {
         return [];
       }
     };

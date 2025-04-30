@@ -5,6 +5,9 @@ import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 const TITLE_DEFAULT = {};
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2CardAvatarComm";
+
 /**
  * @slot Content
  */
@@ -31,6 +34,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Name markdown");
       this._title = TITLE_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set title", e);
     }
   }
 
@@ -50,6 +54,7 @@ export default class extends SfGpsDsLwc {
       this._contentHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set content", e);
     }
   }
 

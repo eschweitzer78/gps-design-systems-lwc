@@ -1,6 +1,8 @@
 // CodeMirror, copyright (c) by Marijn Haverbeke and others
 // Distributed under an MIT license: https://codemirror.net/5/LICENSE
 
+/* eslint-disable no-unused-vars */
+
 import { ie, ios } from "./browser";
 
 export function classTest(cls) {

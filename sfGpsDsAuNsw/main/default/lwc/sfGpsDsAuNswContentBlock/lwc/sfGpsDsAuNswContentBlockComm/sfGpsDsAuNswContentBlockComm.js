@@ -23,6 +23,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswContentBlockComm";
+
 export default class extends SfGpsDsLwc {
   @api headline;
   @api image;
@@ -49,6 +52,7 @@ export default class extends SfGpsDsLwc {
       this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set links", e);
     }
   }
 
@@ -75,6 +79,7 @@ export default class extends SfGpsDsLwc {
       }
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Copy markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set copy", e);
     }
   }
 
@@ -94,6 +99,7 @@ export default class extends SfGpsDsLwc {
       this._mainLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("ML-MD", "Issue when parsing MainLink markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set mainLink", e);
     }
   }
 

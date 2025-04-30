@@ -5,6 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+/* eslint-disable no-unused-vars */
+
 import { api, track } from "lwc";
 import SfGpsDsLwcOsN from "c/sfGpsDsLwcOsN";
 import { isArray, normaliseBoolean } from "c/sfGpsDsHelpersOs";
@@ -70,6 +72,7 @@ export default class extends SfGpsDsLwcOsN {
     } catch (e) {
       this._input = INPUT_DEFAULT;
       this.addError("IJ-BF", "JSON for input is malformed.");
+      console.debug(e);
     }
   }
 
@@ -91,6 +94,7 @@ export default class extends SfGpsDsLwcOsN {
     } catch (e) {
       this._options = OPTIONS_DEFAULT;
       this.addError("OJ-BF", "JSON for options is malformed.");
+      console.debug(e);
     }
   }
 
@@ -184,11 +188,11 @@ export default class extends SfGpsDsLwcOsN {
           this.stoppedLoading();
         }
       })
-      // eslint-disable-next-line no-unused-vars
-      .catch((error) => {
+      .catch((e) => {
         this.addError("CK-EX", `Issue getting the content collection.`);
         this._items = ITEMS_DEFAULT;
         this.stoppedLoading();
+        console.debug(e);
       });
   }
 

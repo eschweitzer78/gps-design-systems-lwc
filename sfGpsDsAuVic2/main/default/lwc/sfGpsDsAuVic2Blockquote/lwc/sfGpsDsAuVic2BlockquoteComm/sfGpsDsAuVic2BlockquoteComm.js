@@ -3,6 +3,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2BlockquoteComm";
+
 /**
  * @slot Content
  */
@@ -27,6 +30,7 @@ export default class extends SfGpsDsLwc {
       this._contentHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set content", e);
     }
   }
 

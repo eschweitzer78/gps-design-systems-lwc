@@ -15,7 +15,6 @@ import { Selection } from "./selection.js";
 
 /* eslint-disable no-shadow */
 /* eslint-disable no-labels */
-/* eslint-disable no-cond-assign */
 
 export function History(prev) {
   // Arrays of change events and selections. Doing something adds an

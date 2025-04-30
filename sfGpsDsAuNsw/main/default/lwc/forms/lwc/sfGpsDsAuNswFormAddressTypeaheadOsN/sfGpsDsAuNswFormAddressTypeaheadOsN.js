@@ -20,6 +20,9 @@ const MODE_MANUAL = "manual";
 const DEFAULT_STATE = "NSW";
 const DEFAULT_COUNTRY = "Australia";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswFormAddressTypeaheadOsN";
+
 export default class extends SfGpsDsAuNswStatusHelperMixin(
   SfGpsDsFormTypeaheadOsN
 ) {
@@ -271,7 +274,6 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     this._readOnlyClass = "sfgpsdsaunsw-read-only";
 
     if (this.elementValue) {
-      // eslint-disable-next-line no-self-assign
       this.ingest(this.elementValue);
     } else {
       this.isSmart = true;
@@ -453,6 +455,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       this.isValid = validity;
       return this.isValid;
     } catch (t) {
+      if (DEBUG) console.debug(CLASS_NAME, "checkValidity", t);
       return true;
     }
   }
@@ -487,6 +490,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       this.isValid = validity;
       return this.isValid;
     } catch (t) {
+      if (DEBUG) console.debug(CLASS_NAME, "reportValidity", t);
       return true;
     }
   }

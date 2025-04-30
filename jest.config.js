@@ -9,6 +9,7 @@ setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.js");
 module.exports = {
   ...jestConfig,
   moduleNameMapper: {
+    "\\.(css)$": "<rootDir>/__test__/jest-mocks/css",
     "^@salesforce/apex$": "<rootDir>/__test__/jest-mocks/apex",
     "^@salesforce/community/(.*)": "<rootDir>/__test__/jest-mocks/community/$1",
     "^omnistudio/omniscriptBaseMixin$":

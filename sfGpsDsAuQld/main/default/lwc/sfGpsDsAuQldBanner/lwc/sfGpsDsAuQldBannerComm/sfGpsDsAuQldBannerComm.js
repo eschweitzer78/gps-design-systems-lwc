@@ -8,6 +8,9 @@ import {
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldBannerComm";
+
 /**
  * @slot mobileBreadcrumbs
  * @slot desktopBreadcrumbs
@@ -42,6 +45,7 @@ export default class extends SfGpsDsLwc {
       this._itemsArray = mdEngine.extractLinks(markdown);
     } catch (e) {
       this.addError("IT-MD", "Issue when parsing Items markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set breadcrumbsItems", e);
     }
   }
 
@@ -65,6 +69,7 @@ export default class extends SfGpsDsLwc {
       this._abstractHtml = markdown ? mdEngine.renderEscaped(markdown) : null;
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Abstract markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set abstract", e);
     }
   }
 
@@ -87,6 +92,7 @@ export default class extends SfGpsDsLwc {
         : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Primary button markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set buttonPrimary", e);
     }
   }
 
@@ -109,6 +115,7 @@ export default class extends SfGpsDsLwc {
         : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Button secondary markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set buttonSecondary", e);
     }
   }
 
@@ -133,6 +140,7 @@ export default class extends SfGpsDsLwc {
           "CU-JP",
           "Issue when parsing Call to Action config JSON value"
         );
+        if (DEBUG) console.debug(CLASS_NAME, "set ctaConfig", e);
       }
     }
 

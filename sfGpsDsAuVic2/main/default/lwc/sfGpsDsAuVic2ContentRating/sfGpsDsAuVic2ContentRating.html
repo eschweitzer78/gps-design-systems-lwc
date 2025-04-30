@@ -1,0 +1,88 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div lwc:if={showContentRating} class="tide-content-rating rpl-u-screen-only">
+    <div class="rpl-container">
+      <div class="rpl-grid">
+        <div class="rpl-col-12 rpl-col-7-m">
+          <form
+            data-v-if="isMounted"
+            data-hide-form-on-submit
+            title="Was this page helpful?"
+            data-success-message-html="Thank you! Your response has been submitted."
+            data-error-message-html="We are experiencing a server error. Please try again, otherwise contact us."
+          >
+            <div class="tide-content-rating__rating">
+              <div class="rpl-form__outer" data-invalid="false">
+                <fieldset class="rpl-form__fieldset">
+                  <legend class="rpl-form-label rpl-type-h4-fixed">
+                    <span class="rpl-form-label__inner"
+                      >Was this page helpful?</span
+                    >
+                  </legend>
+                  <div class="">
+                    <div class="">
+                      <div
+                        class="rpl-form-radio-group rpl-form-radio-group--inline"
+                      >
+                        <div class="rpl-form-option rpl-form-option--default">
+                          <input
+                            id="was_this_page_helpful-Yes"
+                            type="radio"
+                            class="rpl-form-option__input"
+                            data-rpl-focus-input="was_this_page_helpful"
+                            name="was_this_page_helpful"
+                          />
+                          <label
+                            class="rpl-form-option__label"
+                            for="was_this_page_helpful-Yes"
+                          >
+                            <span
+                              class="rpl-form-option__mark rpl-form-option__radio"
+                            >
+                              <span
+                                class="rpl-form-option__mark-tick rpl-form-option__radio-tick"
+                              >
+                              </span>
+                            </span>
+                            <span class="rpl-form-option__label-text rpl-type-p"
+                              >Yes</span
+                            >
+                          </label>
+                        </div>
+
+                        <div class="rpl-form-option rpl-form-option--default">
+                          <input
+                            id="was_this_page_helpful-No"
+                            type="radio"
+                            class="rpl-form-option__input"
+                            name="was_this_page_helpful"
+                          />
+                          <label
+                            class="rpl-form-option__label"
+                            for="was_this_page_helpful-No"
+                            ><!---->
+                            <span
+                              class="rpl-form-option__mark rpl-form-option__radio"
+                            >
+                              <span
+                                class="rpl-form-option__mark-tick rpl-form-option__radio-tick"
+                              ></span>
+                            </span>
+                            <span class="rpl-form-option__label-text rpl-type-p"
+                              >No
+                              <!---->
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -4,6 +4,9 @@ import mdEngine from "c/sfGpsDsMarkdown";
 
 const ITEMS_DEFAULT = [];
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2RelatedLinksComm";
+
 export default class extends SfGpsDsLwc {
   @api title = "Related Links";
   @api className;
@@ -26,6 +29,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("IT-MD", "Issue when parsing Links markdown");
       this._items = ITEMS_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set items", e);
     }
   }
 

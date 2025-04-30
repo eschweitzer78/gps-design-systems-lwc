@@ -4,6 +4,9 @@ import { isObject, isArray, isString } from "c/sfGpsDsHelpers";
 
 const LOGOS_DEFAULT = [];
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2FooterComm";
+
 export default class extends SfGpsDsNavigation {
   @api variant;
   @api linksMode;
@@ -40,6 +43,7 @@ export default class extends SfGpsDsNavigation {
         value = JSON.parse(value);
       } catch (e) {
         this._logos = [];
+        if (DEBUG) console.debug(CLASS_NAME, "set logos", e);
         return;
       }
     }

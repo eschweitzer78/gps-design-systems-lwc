@@ -4,6 +4,9 @@ import mdEngine from "c/sfGpsDsMarkdown";
 
 const LINK_DEFAULT = {};
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2AlertComm";
+
 export default class extends SfGpsDsLwc {
   @api alertId;
   @api variant;
@@ -32,6 +35,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing link markdown.");
       this._link = LINK_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set link", e);
     }
   }
 
