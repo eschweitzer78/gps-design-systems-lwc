@@ -4,6 +4,11 @@ const postcss = require("postcss");
 const postcssCustomMedia = require("postcss-custom-media");
 const sass = require("sass");
 const toolbox = require("node-sass-magic-importer/dist/toolbox");
+const config = require("./cssgen.config");
+
+function ignored(dir) {
+  return config.ignoreDirectories?.includes(dir.name);
+}
 
 function genFile(filename) {
   const loadPaths = ["./", "node_modules", "node_modules/@gouvfr/dsfr"];
@@ -39,7 +44,7 @@ function genFile(filename) {
 async function* walk(dir) {
   for await (const d of await fs.opendir(dir)) {
     const entry = path.join(dir, d.name);
-    if (d.isDirectory()) yield* walk(entry);
+    if (d.isDirectory() && !ignored(d)) yield* walk(entry);
     else if (d.isFile() && d.name === ".cssgen.json") yield entry;
   }
 }
