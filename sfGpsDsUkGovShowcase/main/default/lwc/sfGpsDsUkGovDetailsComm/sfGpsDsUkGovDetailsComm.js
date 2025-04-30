@@ -28,6 +28,7 @@ export default class extends SfGpsDsLwc {
     try {
       this._contentOriginal = markdown;
       this._contentHtml = mdEngine.renderEscaped(markdown);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
     }

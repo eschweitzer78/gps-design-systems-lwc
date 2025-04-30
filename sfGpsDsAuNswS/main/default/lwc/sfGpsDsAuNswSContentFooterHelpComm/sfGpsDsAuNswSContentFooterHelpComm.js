@@ -10,6 +10,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswSContentFooterHelpComm";
+
 export default class extends SfGpsDsLwc {
   @api title;
 
@@ -29,6 +32,7 @@ export default class extends SfGpsDsLwc {
       this._textHtml = markdown ? mdEngine.render(markdown) : "";
     } catch (e) {
       this.addError("IN-MD", "Issue when parsing Text markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set text", e);
     }
   }
 

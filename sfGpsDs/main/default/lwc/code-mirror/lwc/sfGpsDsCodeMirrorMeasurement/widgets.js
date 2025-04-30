@@ -8,7 +8,6 @@ import {
   e_target
 } from "c/sfGpsDsCodeMirrorUtil";
 
-/* eslint-disable no-return-assign */
 export function widgetHeight(widget) {
   if (widget.height != null) return widget.height;
   let cm = widget.doc.cm;

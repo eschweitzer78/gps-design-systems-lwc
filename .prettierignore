@@ -2,13 +2,15 @@
 # More information: https://prettier.io/docs/en/ignore.html
 #
 
-**/staticresources/**
-.localdevserver
-.sfdx
-.sf
-.vscode
-
+.localdevserver/
+.sf/
+.sfdx/
+.vscode/
 coverage/
 
+jsconfig.json
+sfdx-project.json
+
+**/staticresources/**
 **/lwc/**/*.gen.css
 **/aura/**/*.gen.css

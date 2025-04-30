@@ -8,7 +8,7 @@ import {
 } from "c/sfGpsDsHelpers";
 import OnClickOutside from "c/sfGpsDsOnClickOutside";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuVic2SearchBar";
 
 const VARIANT_DEFAULT = "default";

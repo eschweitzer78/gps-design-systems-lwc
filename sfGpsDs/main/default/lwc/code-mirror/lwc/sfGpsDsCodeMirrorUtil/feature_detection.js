@@ -4,10 +4,9 @@
 import { elt, range, removeChildren, removeChildrenAndAdd } from "./dom.js";
 import { ie, ie_version } from "./browser.js";
 
-/* eslint-disable wrap-iife */
-/* eslint-disable no-return-assign */
 /* eslint-disable no-shadow */
 /* eslint-disable no-empty */
+/* eslint-disable no-unused-vars */
 
 // Detect drag-and-drop
 export let dragAndDrop = (function () {

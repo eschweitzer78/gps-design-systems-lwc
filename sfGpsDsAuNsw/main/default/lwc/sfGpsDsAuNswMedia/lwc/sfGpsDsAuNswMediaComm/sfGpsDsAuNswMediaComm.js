@@ -3,6 +3,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswMediaComm";
+
 /**
  * @slot Caption
  */
@@ -36,6 +39,7 @@ export default class extends SfGpsDsLwc {
       }
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Caption markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set caption", e);
     }
   }
 

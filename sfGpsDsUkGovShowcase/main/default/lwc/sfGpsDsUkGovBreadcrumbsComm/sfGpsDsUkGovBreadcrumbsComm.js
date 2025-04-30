@@ -20,6 +20,7 @@ export default class SfGpsDsUkGovBreadcrumbsComm extends SfGpsDsLwc {
     this._items = markdown;
     try {
       this._itemsArray = mdEngine.extractLinks(markdown);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("IT-MD", "Issue when parsing Items markdown");
     }

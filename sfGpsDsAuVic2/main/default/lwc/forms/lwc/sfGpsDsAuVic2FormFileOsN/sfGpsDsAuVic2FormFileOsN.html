@@ -10,7 +10,11 @@
     </omnistudio-spinner>
   </template>
 
-  <div class={_containerClasses} aria-labelledby="fileUpload">
+  <div
+    class={_containerClasses}
+    aria-labelledby="fileUpload"
+    data-invalid={_showValidation}
+  >
     <fieldset class="rpl-form__fieldset">
       <label
         lwc:if={_propSetMap.label}
@@ -104,20 +108,6 @@
                         data-id={item.data}
                       >
                       </c-sf-gps-ds-au-vic2-icon-os>
-                      <!--
-                      <omnistudio-icon
-                        theme={_theme}
-                        extraclass="slds-button__icon"
-                        iconposition="left"
-                        icon-name="action:delete"
-                        color="brand"
-                        alternative-text={item.deleteLabel}
-                        size="x-small"
-                        data-index={index}
-                        data-id={item.data}
-                      >
-                      </omnistudio-icon>
-                      -->
                     </button>
                   </span>
                 </div>

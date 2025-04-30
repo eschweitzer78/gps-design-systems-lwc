@@ -12,6 +12,9 @@ import mdEngine from "c/sfGpsDsMarkdown";
 const DEPARTMENTS_DEFAULT = [];
 const SUPPORTLOGOS_DEFAULT = [];
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswSupportListComm";
+
 export default class extends SfGpsDsLwc {
   @api header = "Supported by";
   @api logoPosition = "labels";
@@ -34,6 +37,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Departments markdown");
       this._departments = DEPARTMENTS_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set departments", e);
     }
   }
 
@@ -54,6 +58,14 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Support logos markdown");
       this._supportLogos = SUPPORTLOGOS_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set supportLogos", e);
     }
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.classList.add("nsw-scope");
   }
 }

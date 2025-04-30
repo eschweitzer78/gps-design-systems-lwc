@@ -201,35 +201,6 @@ jobs:
           fi
           exit $status2
 
-      - name: "Create package version sfGpsDsAuVic1"
-        id: createPackageVersion-sfGpsDsAuVic1
-        if: ${{ github.event.client_payload.sfGpsDsAuVic1 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
-        run: |
-          set +e
-          npm run auvic1-copy
-          json=$(sf package version create --path=sfGpsDsAuVic1Full --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
-          echo "package version create output:"
-          echo $json
-          echo "----"
-          status=$(echo $json | jq '.status')
-          if [ $status == "0" ]; then
-              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
-              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
-          else
-              echo "sf package version create failed"
-              exit $status
-          fi
-
-          json2=$(sf package version report --package $packageVersionId --json)
-          status2=$(echo $json2 | jq '.status')
-          if [ $status2 == "0" ]; then
-            versionNumber=$(echo $json2 | jq -r '.result.Version')
-            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
-          else
-            echo "sf package version report failed"
-          fi
-          exit $status2
-
       - name: "Create package version sfGpsDsAuVic2"
         id: createPackageVersion-sfGpsDsAuVic2
         if: ${{ github.event.client_payload.sfGpsDsAuVic2 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
@@ -326,12 +297,12 @@ jobs:
       # Create pre-release scratch org
       - name: "Create pre-release scratch org"
         if: ${{ env.IS_PRERELEASE }}
-        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --release=preview
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --release=preview --no-track-source
 
         # Create scratch org
       - name: "Create scratch org"
         if: ${{ !env.IS_PRERELEASE }}
-        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --no-track-source
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
@@ -364,13 +335,6 @@ jobs:
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
-
-      # Install new sfGpsDsAuVic1 package in scratch org
-      - name: "Install new sfGpsDsAuVic1 package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuVic1 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
-        run: |
-          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuVic2 package in scratch org
       - name: "Install new sfGpsDsAuVic2 package version in scratch org"

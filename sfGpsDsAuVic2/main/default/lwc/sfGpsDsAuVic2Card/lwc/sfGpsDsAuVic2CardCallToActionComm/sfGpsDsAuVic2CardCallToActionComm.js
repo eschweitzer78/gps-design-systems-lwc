@@ -7,6 +7,9 @@ const TITLE_DEFAULT = { text: "Call to Action", url: "#" };
 const CTA_TEXT_DEFAULT = "Read more";
 const VARIANT_DEFAULT = "filled";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2CardCallToActionComm";
+
 /**
  * @slot Content
  */
@@ -33,6 +36,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Name markdown");
       this._title = TITLE_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set title", e);
     }
   }
 
@@ -52,6 +56,7 @@ export default class extends SfGpsDsLwc {
       this._contentHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set content", e);
     }
   }
 

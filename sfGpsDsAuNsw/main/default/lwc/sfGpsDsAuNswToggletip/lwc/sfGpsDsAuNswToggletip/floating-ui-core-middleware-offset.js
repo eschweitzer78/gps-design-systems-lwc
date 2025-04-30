@@ -16,7 +16,6 @@ export async function convertValueToCoords(state, options) {
   const crossAxisMulti = rtl && isVertical ? -1 : 1;
   const rawValue = evaluate(options, state);
 
-  // eslint-disable-next-line prefer-const
   let { mainAxis, crossAxis, alignmentAxis } =
     typeof rawValue === "number"
       ? { mainAxis: rawValue, crossAxis: 0, alignmentAxis: null }

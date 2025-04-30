@@ -122,7 +122,7 @@ const SfGpsDsOmniHasValidationMixin = (Base) =>
     }
 
     @api sfGpsDsHasCustomValidation() {
-      const rv = false || this._sfGpsDsCustomValidation;
+      const rv = this._sfGpsDsCustomValidation;
       if (DEBUG) console.log(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
       return rv;
     }

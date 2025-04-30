@@ -497,7 +497,6 @@ export default class extends SfGpsDsFormTypeaheadOsN {
     super.connectedCallback();
 
     if (this.elementValue) {
-      // eslint-disable-next-line no-self-assign
       this.ingest(this.elementValue);
     } else {
       this.isSmart = true;
@@ -665,6 +664,7 @@ export default class extends SfGpsDsFormTypeaheadOsN {
 
       this.isValid = validity;
       return this.isValid;
+      // eslint-disable-next-line no-unused-vars
     } catch (t) {
       return true;
     }
@@ -699,6 +699,7 @@ export default class extends SfGpsDsFormTypeaheadOsN {
 
       this.isValid = validity;
       return this.isValid;
+      // eslint-disable-next-line no-unused-vars
     } catch (t) {
       return true;
     }

@@ -11,6 +11,9 @@ import {
   LINK_TYPE_DEFAULT
 } from "c/sfGpsDsAuVic2HeaderConstants";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2IntroHeaderComm";
+
 /**
  * @slot introContent
  */
@@ -38,6 +41,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._links = null;
       this.addError("ML-MD", "Issue when parsing Links markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set links", e);
     }
   }
 
@@ -76,6 +80,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this._linksMore = null;
       this.addError("ML-MD", "Issue when parsing Links more markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set linksMore", e);
     }
   }
 
@@ -95,6 +100,7 @@ export default class extends SfGpsDsLwc {
       this._contentHtml = mdEngine.renderEscaped(markdown);
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set content", e);
     }
   }
 
@@ -124,7 +130,7 @@ export default class extends SfGpsDsLwc {
 
   // eslint-disable-next-line no-unused-vars
   handleItemClick(event) {
-    console.log("handleItemClick");
+    if (DEBUG) console.debug(CLASS_NAME, "handleItemClick");
   }
 
   /* lifecycle */

@@ -10,6 +10,9 @@ import { parseIso8601, replaceInnerHtml } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswCardV2Comm";
+
 /**
  * @slot Card-Copy
  * @slot Card-Footer
@@ -47,6 +50,7 @@ export default class extends SfGpsDsLwc {
       this._title = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Title markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set title", e);
     }
   }
 
@@ -101,6 +105,7 @@ export default class extends SfGpsDsLwc {
       }
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Copy markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set copy", e);
     }
   }
 
@@ -127,6 +132,7 @@ export default class extends SfGpsDsLwc {
       }
     } catch (e) {
       this.addError("FO-MD", "Issue when parsing Footer markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set footer", e);
     }
   }
 

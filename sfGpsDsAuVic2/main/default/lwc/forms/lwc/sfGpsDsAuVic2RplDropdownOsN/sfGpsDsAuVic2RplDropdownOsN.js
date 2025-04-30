@@ -1032,7 +1032,6 @@ export default class extends LightningElement {
     if (DEBUG)
       console.debug(CLASS_NAME, "> setAndDispatchValue", JSON.stringify(value));
 
-    // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this._value = value; // ESC
     this.dispatchPubSub(value);
     this.dispatchChangeEvent();

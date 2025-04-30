@@ -11,6 +11,9 @@ import mdEngine from "c/sfGpsDsMarkdown";
 
 const CTA_DEFAULT = {};
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswGlobalAlertComm";
+
 export default class extends SfGpsDsLwc {
   @api title;
   @api copy;
@@ -35,6 +38,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("CTA-MD", "Issue when parsing cta markdown");
       this._cta = CTA_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set cta", e);
     }
   }
 

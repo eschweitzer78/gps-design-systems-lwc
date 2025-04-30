@@ -12,6 +12,9 @@ import mdEngine from "c/sfGpsDsMarkdown";
 
 const CONTENT_DEFAULT = [];
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswStepsComm";
+
 export default class extends SfGpsDsLwc {
   @api type;
   @api cstyle;
@@ -38,6 +41,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
       this._content = CONTENT_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set content", e);
     }
   }
 

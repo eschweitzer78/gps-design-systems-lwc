@@ -78,6 +78,7 @@ function observeMove(element, onMove) {
         // Handle <iframe>s
         root: root.ownerDocument
       });
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       io = new IntersectionObserver(handleObserve, options);
     }

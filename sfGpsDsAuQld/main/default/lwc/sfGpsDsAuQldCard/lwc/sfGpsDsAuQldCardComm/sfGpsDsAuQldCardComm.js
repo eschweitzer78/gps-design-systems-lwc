@@ -11,6 +11,9 @@ import { replaceInnerHtml, toArray, isString } from "c/sfGpsDsHelpers";
 
 const ACTIONS_DEFAULT = [];
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldCardComm";
+
 /**
  * @slot copy
  * @slot footer
@@ -41,6 +44,7 @@ export default class extends SfGpsDsLwc {
       this._nameLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Name link markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set nameLink", e);
     }
   }
 
@@ -68,6 +72,7 @@ export default class extends SfGpsDsLwc {
       this._copyHtml = markdown ? mdEngine.renderEscaped(markdown) : null;
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Copy markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set copy", e);
     }
   }
 
@@ -87,6 +92,7 @@ export default class extends SfGpsDsLwc {
       this._footerHtml = markdown ? mdEngine.renderEscaped(markdown) : null;
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Footer markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set footer", e);
     }
   }
 
@@ -107,6 +113,7 @@ export default class extends SfGpsDsLwc {
       this._tags = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Tags markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set tags", e);
     }
   }
 
@@ -132,6 +139,7 @@ export default class extends SfGpsDsLwc {
           "JS-LI",
           "The actions attribute must be in JSON array format of text, url and icon."
         );
+        if (DEBUG) console.debug(CLASS_NAME, "set actions", e);
       }
     } else {
       value = ACTIONS_DEFAULT;

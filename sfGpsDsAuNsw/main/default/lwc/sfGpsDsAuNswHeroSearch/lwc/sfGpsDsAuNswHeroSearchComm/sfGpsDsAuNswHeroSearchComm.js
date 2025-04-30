@@ -10,6 +10,9 @@ import { NavigationMixin } from "lightning/navigation";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswHeroSearchComm";
+
 export default class extends NavigationMixin(SfGpsDsLwc) {
   @api title;
   @api intro;
@@ -38,6 +41,7 @@ export default class extends NavigationMixin(SfGpsDsLwc) {
       this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set links", e);
     }
   }
 

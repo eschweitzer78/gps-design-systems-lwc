@@ -10,6 +10,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswHeroBannerComm";
+
 export default class extends SfGpsDsLwc {
   @api title;
   @api subtitle;
@@ -37,6 +40,7 @@ export default class extends SfGpsDsLwc {
       this._cta = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("CTA-MD", "Issue when parsing Call to action markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set cta", e);
     }
   }
 
@@ -56,6 +60,7 @@ export default class extends SfGpsDsLwc {
       this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set links", e);
     }
   }
 
@@ -75,6 +80,7 @@ export default class extends SfGpsDsLwc {
       this._introHtml = markdown ? mdEngine.render(markdown) : "";
     } catch (e) {
       this.addError("IN-MD", "Issue when parsing Intro markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set intro", e);
     }
   }
 

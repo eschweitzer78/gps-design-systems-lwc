@@ -4,6 +4,9 @@ import { isString, toArray } from "c/sfGpsDsHelpers";
 
 const SHARECONFIG_DEFAULT = {};
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswUtilityListComm";
+
 export default class extends SfGpsDsLwc {
   @api printLabel;
   @api copyLabel;
@@ -33,6 +36,7 @@ export default class extends SfGpsDsLwc {
           "JS-LI",
           "The share config attribute must be in JSON object format."
         );
+        if (DEBUG) console.debug(CLASS_NAME, "set shareConfig", e);
       }
     } else {
       value = SHARECONFIG_DEFAULT;

@@ -9,7 +9,6 @@ function HtmlUnpackFirstPRenderer(options) {
 
 function paragraph(node, entering, attribute) {
   let grandparent = node.parent.parent,
-    // eslint-disable-next-line no-shadow
     attrs = this.attrs(node);
   if (grandparent !== null && grandparent.type === "list") {
     if (grandparent.listTight) {

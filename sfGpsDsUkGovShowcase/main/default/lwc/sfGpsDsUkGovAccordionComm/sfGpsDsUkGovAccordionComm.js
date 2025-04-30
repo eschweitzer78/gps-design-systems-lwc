@@ -30,6 +30,7 @@ export default class extends SfGpsDsLwc {
       this._content = mdEngine
         .extractH1s(markdown.replaceAll("\\n", "\n"))
         .map((h1) => ({ ...h1, closed: true }));
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
       this._content = CONTENT_DEFAULT;

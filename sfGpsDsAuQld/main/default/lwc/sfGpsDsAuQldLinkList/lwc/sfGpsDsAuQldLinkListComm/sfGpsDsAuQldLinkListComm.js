@@ -12,6 +12,9 @@ import { isString, toArray } from "c/sfGpsDsHelpers";
 
 const LINKS_DEFAULT = [];
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldLinkListComm";
+
 export default class extends SfGpsDsLwc {
   @api listMode;
   @api title;
@@ -43,6 +46,7 @@ export default class extends SfGpsDsLwc {
           "JS-LI",
           "The links attribute must be in JSON array format of text, url and icon."
         );
+        if (DEBUG) console.debug(CLASS_NAME, "set links", e);
       }
     } else {
       value = LINKS_DEFAULT;
@@ -70,6 +74,7 @@ export default class extends SfGpsDsLwc {
         "HL-MD",
         "Issue when parsing Column View All Link markdown"
       );
+      if (DEBUG) console.debug(CLASS_NAME, "set cvaLink", e);
     }
   }
 

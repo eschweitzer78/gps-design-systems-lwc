@@ -49,7 +49,6 @@ import {
   skipAtomic
 } from "./selection_updates.js";
 
-/* eslint-disable no-return-assign */
 /* eslint-disable no-shadow */
 
 // UPDATING

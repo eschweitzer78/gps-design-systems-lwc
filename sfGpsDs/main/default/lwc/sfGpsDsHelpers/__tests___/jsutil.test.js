@@ -1,4 +1,3 @@
-/* eslint-disable @lwc/lwc/no-inner-html */
 import { deepCopy, arraysEqual } from "c/sfGpsDsHelpers";
 
 describe("c-sf-gps-ds-helpers.jsutil", () => {

@@ -26,7 +26,6 @@ import {
 } from "./spans";
 import { getLine, lineNo, updateLineHeight } from "./utils_line";
 
-/* eslint-disable no-constant-condition */
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable no-regex-spaces */
 /* eslint-disable guard-for-in */

@@ -45,6 +45,7 @@ export default class extends SfGpsDsLwc {
     if (isString(value)) {
       try {
         value = JSON.parse(value);
+        // eslint-disable-next-line no-unused-vars
       } catch (e) {
         value = SUGGESTIONS_DEFAULT;
         this.addError("SU-JP", "Issue when parsing suggestions as JSON.");
@@ -81,5 +82,13 @@ export default class extends SfGpsDsLwc {
 
   handleSubmit() {
     this._submitCount++;
+  }
+
+  /* lifecycle */
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.classList.add("vic2-scope");
   }
 }

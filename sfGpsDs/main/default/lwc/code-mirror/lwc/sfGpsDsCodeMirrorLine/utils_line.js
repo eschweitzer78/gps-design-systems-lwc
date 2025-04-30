@@ -4,7 +4,6 @@
 import { indexOf } from "c/sfGpsDsCodeMirrorUtil";
 
 /* eslint-disable no-labels */
-/* eslint-disable no-unreachable */
 
 // Find the line object corresponding to the given line number.
 export function getLine(doc, n) {

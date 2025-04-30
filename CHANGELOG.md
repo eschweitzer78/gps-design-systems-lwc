@@ -1,5 +1,13 @@
 ## Change log
 
+### 29 April 2025
+
+We upgraded a number of tools required for quality control and build.
+
+#### VIC2 DS: Adjustments
+
+We had adjustments across the board as a result of putting together complex example pages based on actual Victorian Government content. Changes were mostly around card styling and their ability to resize within a Card Grid. We also added the appropriate red border styling for form elements in error.
+
 ### 22 April 2025
 
 #### VIC2 DS: Near full support of OmniStudio forms

@@ -133,8 +133,7 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
           "key: " + key,
           "vm: " + element.validationMessage,
           "has func sfGpsDsHasCustomValidation: " +
-            element.sfGpsDsHasCustomValidation !=
-            null,
+            (element.sfGpsDsHasCustomValidation !== null),
           hasCustomValidation
         );
 

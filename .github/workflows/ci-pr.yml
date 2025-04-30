@@ -204,20 +204,6 @@ jobs:
         run: exit 1
 
       # Run PMD scan
-      - name: "Run PMD scan for sfGpsDsAuVic"
-        uses: pmd/pmd-github-action@v2.0.0
-        id: pmd-sf-gps-ds-au-vic1
-        with:
-          sourcePath: "sfGpsDsAuVic"
-          rulesets: "ruleset.xml"
-          uploadSarifReport: "false"
-
-      # Check for PMD violations
-      - name: "Check for PMD violations"
-        if: steps.pmd-sf-gps-ds-au-vic1.outputs.violations != 0
-        run: exit 1
-
-      # Run PMD scan
       - name: "Run PMD scan for sfGpsDsAuVic2"
         uses: pmd/pmd-github-action@v2.0.0
         id: pmd-sf-gps-ds-au-vic2
@@ -289,12 +275,12 @@ jobs:
       # Create pre-release scratch org
       - name: "Create pre-release scratch org"
         if: ${{ env.IS_PRERELEASE }}
-        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --release=preview
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --release=preview --no-track-source
 
         # Create scratch org
       - name: "Create scratch org"
         if: ${{ !env.IS_PRERELEASE }}
-        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1
+        run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --no-track-source
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
@@ -315,7 +301,6 @@ jobs:
           sf project deploy start --source-dir sfGpsDsAuNsw --target-org=scratch-org
           sf project deploy start --source-dir sfGpsDsAuNswS --target-org=scratch-org
           sf project deploy start --source-dir sfGpsDsAuQld --target-org=scratch-org
-          sf project deploy start --source-dir sfGpsDsAuVic --target-org=scratch-org
           sf project deploy start --source-dir sfGpsDsAuVic2 --target-org=scratch-org
           sf project deploy start --source-dir sfGpsDsUkGov --target-org=scratch-org
           sf project deploy start --source-dir sfGpsDsFrGov --target-org=scratch-org
@@ -368,7 +353,6 @@ jobs:
           hasChangesSfGpsDsAuNsw='false'
           hasChangesSfGpsDsAuNswS='false'
           hasChangesSfGpsDsAuQld='false'
-          hasChangesSfGpsDsAuVic1='false'
           hasChangesSfGpsDsAuVic2='false'
           hasChangesSfGpsDsFrGov='false'
           hasChangesSfGpsDsUkGov='false'
@@ -388,10 +372,6 @@ jobs:
               hasChanges='true'
               hasChangesSfGpsDsAuQld='true'
           fi
-          if [ $(echo "$changedPaths" | grep -c '^sfGpsDsAuVic$') == 1 ]; then
-              hasChanges='true'
-              hasChangesSfGpsDsAuVic1='true'
-          fi
           if [ $(echo "$changedPaths" | grep -c '^sfGpsDsAuVic2$') == 1 ]; then
               hasChanges='true'
               hasChangesSfGpsDsAuVic2='true'
@@ -409,7 +389,6 @@ jobs:
           echo "hasChangesSfGpsDsAuNsw=$hasChangesSfGpsDsAuNsw" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsAuNswS=$hasChangesSfGpsDsAuNswS" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsAuQld=$hasChangesSfGpsDsAuQld" >> $GITHUB_OUTPUT
-          echo "hasChangesSfGpsDsAuVic1=$hasChangesSfGpsDsAuVic1" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsAuVic2=$hasChangesSfGpsDsAuVic2" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsFrGov=$hasChangesSfGpsDsFrGov" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsUkGov=$hasChangesSfGpsDsUkGov" >> $GITHUB_OUTPUT

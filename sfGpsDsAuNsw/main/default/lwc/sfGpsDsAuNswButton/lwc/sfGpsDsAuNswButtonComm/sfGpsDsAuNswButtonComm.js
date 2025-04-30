@@ -5,6 +5,9 @@ import { NavigationMixin } from "lightning/navigation";
 
 const LINK_DEFAULT = { text: null, url: null };
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuNswButtonComm";
+
 export default class extends NavigationMixin(SfGpsDsLwc) {
   @api cstyle;
   @api rendering;
@@ -32,6 +35,7 @@ export default class extends NavigationMixin(SfGpsDsLwc) {
     } catch (e) {
       this.addError("ML-MD", "Issue when parsing Link markdown");
       this._link = LINK_DEFAULT;
+      if (DEBUG) console.debug(CLASS_NAME, "set link", e);
     }
   }
 

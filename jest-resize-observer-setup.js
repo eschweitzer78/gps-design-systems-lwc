@@ -1,3 +1,2 @@
-const ro = require("resize-observer-polyfill");
-
+import ro from "resize-observer-polyfill";
 window.ResizeObserver = ro;

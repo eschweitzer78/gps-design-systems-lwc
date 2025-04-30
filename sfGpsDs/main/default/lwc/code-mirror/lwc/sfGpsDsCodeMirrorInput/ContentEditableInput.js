@@ -57,9 +57,9 @@ import {
 } from "c/sfGpsDsCodeMirrorUtil";
 
 /* eslint-disable @lwc/lwc/no-async-operation */
-/* eslint-disable no-return-assign */
 /* eslint-disable no-empty */
 /* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
 
 // CONTENTEDITABLE INPUT STYLE
 

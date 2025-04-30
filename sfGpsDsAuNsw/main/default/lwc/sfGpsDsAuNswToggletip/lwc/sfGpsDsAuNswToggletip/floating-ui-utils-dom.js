@@ -75,6 +75,7 @@ export function isTopLayer(element) {
   return [":popover-open", ":modal"].some((selector) => {
     try {
       return element.matches(selector);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       return false;
     }

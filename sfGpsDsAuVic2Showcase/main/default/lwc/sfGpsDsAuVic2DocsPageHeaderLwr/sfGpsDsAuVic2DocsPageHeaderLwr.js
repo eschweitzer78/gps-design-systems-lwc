@@ -22,6 +22,7 @@ export default class extends SfGpsDsLwc {
     try {
       this._linksOriginal = markdown;
       this._links = mdEngine.extractLinks(markdown);
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
       this._links = LINKS_DEFAULT;

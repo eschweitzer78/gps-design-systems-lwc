@@ -9,6 +9,9 @@ import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldAccordionComm";
+
 export default class extends SfGpsDsLwc {
   @api cstyle;
   @api className;
@@ -32,6 +35,7 @@ export default class extends SfGpsDsLwc {
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
       this.computedH1s = [];
+      if (DEBUG) console.debug(CLASS_NAME, "set items", e);
     }
   }
 

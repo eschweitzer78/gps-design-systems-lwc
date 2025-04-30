@@ -6,7 +6,6 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-useless-escape */
 /* eslint-disable no-prototype-builtins */
-/* eslint-disable no-constant-condition */
 /* eslint-disable no-shadow */
 
 export default function (CodeMirror) {
