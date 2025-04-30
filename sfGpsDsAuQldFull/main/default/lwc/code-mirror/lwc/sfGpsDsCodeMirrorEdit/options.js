@@ -37,7 +37,6 @@ import { themeChanged } from "./utils.js";
 
 /* eslint-disable no-shadow */
 /* eslint-disable no-control-regex */
-/* eslint-disable no-return-assign */
 /* eslint-disable @lwc/lwc/no-async-operation */
 
 export let Init = {

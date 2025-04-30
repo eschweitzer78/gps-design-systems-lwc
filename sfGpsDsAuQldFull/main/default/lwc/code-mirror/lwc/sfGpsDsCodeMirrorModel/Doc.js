@@ -54,7 +54,6 @@ import {
   setSimpleSelection
 } from "./selection_updates.js";
 
-/* eslint-disable no-return-assign */
 /* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
 

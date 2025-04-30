@@ -4,6 +4,9 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
+
+/* eslint-disable no-unused-vars */
+
 const numericKeys = [1, 4, 5, 6, 7, 10, 11];
 export const ISO8601_PATTERN =
   /^(\d{4}|[+-]\d{6})(?:-(\d{2})(?:-(\d{2}))?)?(?:T(\d{2}):(\d{2})(?::(\d{2})(?:\.(\d{3}))?)?(?:(Z)|([+-])(\d{2})(?::(\d{2}))?)?)?$/;
@@ -205,7 +208,6 @@ export function formatDateRange(
     return formatDate(dateStart, dateStyle, userLocale);
   }
 
-  // eslint-disable-next-line @salesforce/lightning/prefer-i18n-service
   const fmt = new Intl.DateTimeFormat(
     userLocale,
     fdrOptions[dateStyle] || fdrOptions[DATE_STYLE_DEFAULT]

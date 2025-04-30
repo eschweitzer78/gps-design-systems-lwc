@@ -5,7 +5,6 @@
 /* eslint-disable no-else-return */
 /* eslint-disable no-shadow */
 /* eslint-disable consistent-return */
-/* eslint-disable no-cond-assign */
 
 export default function (CodeMirror) {
   CodeMirror.defineMode("javascript", function (config, parserConfig) {
@@ -332,7 +331,6 @@ export default function (CodeMirror) {
 
       if (!state.lexical.hasOwnProperty("align")) state.lexical.align = true;
 
-      /* eslint-disable-next-line */
       while (true) {
         let combinator = cc.length
           ? cc.pop()

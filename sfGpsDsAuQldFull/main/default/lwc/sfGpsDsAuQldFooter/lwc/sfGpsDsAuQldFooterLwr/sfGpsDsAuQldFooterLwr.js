@@ -9,6 +9,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldFooterLwr";
+
 /**
  * @slot ContactUs
  * @slot FooterNav
@@ -46,6 +49,7 @@ export default class extends SfGpsDsLwc {
       this._logo = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Logo markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set logo", e);
     }
   }
 
@@ -65,6 +69,7 @@ export default class extends SfGpsDsLwc {
       this._copyrightMentionHtml = mdEngine.renderEscapedUnpackFirstP(markdown);
     } catch (e) {
       this.addError("CM-MD", "Issue when parsing Copyright mention markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set copyrightMention", e);
     }
   }
 
@@ -86,6 +91,7 @@ export default class extends SfGpsDsLwc {
         : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Copyright Link markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set copyrightLink", e);
     }
   }
 

@@ -3,6 +3,9 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { NavigationMixin } from "lightning/navigation";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldButtonComm";
+
 export default class extends NavigationMixin(SfGpsDsLwc) {
   @api el;
   @api variant;
@@ -29,6 +32,7 @@ export default class extends NavigationMixin(SfGpsDsLwc) {
     } catch (e) {
       this._link = null;
       this.addError("ML-MD", "Issue when parsing Link markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set link", e);
     }
   }
 

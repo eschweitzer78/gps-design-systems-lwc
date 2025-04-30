@@ -8,6 +8,9 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldBreadcrumbsComm";
+
 export default class extends SfGpsDsLwc {
   @api mode;
   @api label = "Breadcrumb";
@@ -24,6 +27,7 @@ export default class extends SfGpsDsLwc {
       this._itemsArray = mdEngine.extractLinks(markdown);
     } catch (e) {
       this.addError("IT-MD", "Issue when parsing Items markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set items", e);
     }
   }
 

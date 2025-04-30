@@ -61,7 +61,6 @@ import { dispatchKey } from "./key_events.js";
 import { commands } from "./commands.js";
 
 /* eslint-disable @lwc/lwc/no-async-operation */
-/* eslint-disable no-return-assign */
 /* eslint-disable no-shadow */
 
 const DOUBLECLICK_DELAY = 400;
@@ -520,6 +519,7 @@ function gutterEvent(cm, e, type, prevent) {
     try {
       mX = e.clientX;
       mY = e.clientY;
+      // eslint-disable-next-line no-unused-vars
     } catch (e) {
       return false;
     }
