@@ -19,7 +19,7 @@
     "prep-nsw": "mkdir -p sfGpsDsAuNswFull",
     "prep-nsws": "mkdir -p sfGpsDsAuNswSFull",
     "prep-qld": "mkdir -p sfGpsDsAuQldFull",
-    "prep-vic1": "mkdir -p sfGpsDsAuVic1",
+    "prep-vic1": "mkdir -p sfGpsDsAuVic1Full",
     "prep-vic2": "cp -a node_modules/@dpc-sdp/ripple-ui-core/dist/assets/fonts sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/assets;cp -a node_modules/@dpc-sdp/ripple-ui-core/src/assets/flags sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/assets;cp -a node_modules/@dpc-sdp/ripple-ui-core/src/assets/logos sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/assets;cp -a node_modules/@dpc-sdp/ripple-ui-core/src/assets/patterns sfGpsDsAuVic2/main/default/staticresources/sfGpsDsAuVic2/assets;mkdir -p sfGpsDsAuVic2Full",
     "prep-frgov": "mkdir -p sfGpsDsFrGovFull",
     "prep-ukgov": "mkdir -p sfGpsDsUkGovFull",
