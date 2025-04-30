@@ -332,13 +332,6 @@ jobs:
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
-      # Install new sfGpsDsAuVic1 package in scratch org
-      - name: "Install new sfGpsDsAuVic1 package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuVic1 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
-        run: |
-          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic1.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
-
       # Install new sfGpsDsAuVic2 package in scratch org
       - name: "Install new sfGpsDsAuVic2 package version in scratch org"
         if: ${{ github.event.client_payload.sfGpsDsAuVic2 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
