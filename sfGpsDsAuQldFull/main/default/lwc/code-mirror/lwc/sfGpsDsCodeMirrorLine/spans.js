@@ -7,7 +7,6 @@ import { sawCollapsedSpans } from "./saw_special_spans";
 import { getLine, isLine, lineNo } from "./utils_line";
 
 /* eslint-disable no-shadow */
-/* eslint-disable no-cond-assign */
 
 // TEXTMARKER SPANS
 

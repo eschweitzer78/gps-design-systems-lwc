@@ -3,6 +3,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldInPageAlertComm";
 /**
  * @slot AlertContent
  */
@@ -39,6 +41,7 @@ export default class extends SfGpsDsLwc {
       this._contentHtml = markdown ? mdEngine.renderEscaped(markdown) : null;
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set content", e);
     }
   }
 

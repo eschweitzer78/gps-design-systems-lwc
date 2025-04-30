@@ -10,6 +10,9 @@ import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 import { toArray } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldLinkCollectionComm";
+
 export default class extends SfGpsDsNavigation {
   @api listMode;
   @api title;
@@ -122,6 +125,7 @@ export default class extends SfGpsDsNavigation {
         "HL-MD",
         "Issue when parsing Column View All Link markdown"
       );
+      if (DEBUG) console.debug(CLASS_NAME, "set cvaLink", e);
     }
   }
 

@@ -42,6 +42,7 @@ import { widgetHeight } from "./widgets";
 /* eslint-disable no-prototype-builtins */
 /* eslint-disable no-shadow */
 /* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-vars */
 
 // POSITION MEASUREMENT
 

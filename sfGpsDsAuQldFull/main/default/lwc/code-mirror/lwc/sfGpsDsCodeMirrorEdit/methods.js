@@ -82,8 +82,6 @@ import {
 } from "c/sfGpsDsCodeMirrorMeasurement";
 
 /* eslint-disable no-prototype-builtins */
-/* eslint-disable no-cond-assign */
-/* eslint-disable no-return-assign */
 
 // The publicly visible API. Note that methodOp(f) means
 // 'wrap f in an operation, performed on its `this` parameter'.

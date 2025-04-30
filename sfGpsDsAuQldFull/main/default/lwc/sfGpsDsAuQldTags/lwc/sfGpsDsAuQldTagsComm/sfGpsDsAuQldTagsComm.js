@@ -9,6 +9,9 @@ import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldTagsComm";
+
 export default class extends SfGpsDsLwc {
   @api mode;
   @api size;
@@ -30,6 +33,7 @@ export default class extends SfGpsDsLwc {
       this._links = markdown ? mdEngine.extractLinks(markdown) : null;
     } catch (e) {
       this.addError("LI-MD", "Issue when parsing Links markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set links", e);
     }
   }
 

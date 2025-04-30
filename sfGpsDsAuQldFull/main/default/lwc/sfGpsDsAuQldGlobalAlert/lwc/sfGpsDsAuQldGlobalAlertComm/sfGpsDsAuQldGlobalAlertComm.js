@@ -9,6 +9,9 @@ import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldGlobalAlertComm";
+
 export default class extends SfGpsDsLwc {
   @api level;
   @api title;
@@ -34,6 +37,7 @@ export default class extends SfGpsDsLwc {
       this._link = markdown ? mdEngine.extractFirstLink(markdown) : null;
     } catch (e) {
       this.addError("HL-MD", "Issue when parsing Call to Action markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set link", e);
     }
   }
 
