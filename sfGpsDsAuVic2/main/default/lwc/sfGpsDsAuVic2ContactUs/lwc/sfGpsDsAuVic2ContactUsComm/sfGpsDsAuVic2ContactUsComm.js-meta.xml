@@ -10,6 +10,13 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Title, leave empty to drop the title."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
         name="name"
         type="String"
         label="Name"
@@ -33,7 +40,6 @@
         default="50 Lonsdale St, Melbourne VIC 3000"
         editor="c/sfGpsDsStringCpe"
       />
-
       <property
         name="items"
         type="String"
