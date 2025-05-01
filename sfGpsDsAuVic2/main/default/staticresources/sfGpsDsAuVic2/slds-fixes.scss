@@ -20,3 +20,8 @@
 .rpl-button--filled:hover, .rpl-button--active {
   color: var(--local-filled-type-clr); 
 }
+
+/* Related Links hover */
+.rpl-related-links__item a:hover {
+  color: var(--rpl-clr-type-default);
+}
