@@ -93,7 +93,11 @@ export default class extends LightningElement {
               index: item.id || index,
               display: item.url || item.text,
               key: `item-${index + 1}`,
-              items: this.computedShouldRenderChildren ? item.items : null
+              items: this.computedShouldRenderChildren
+                ? item.items?.length
+                  ? item.items
+                  : null
+                : null
             };
 
             if (!this.displayId) {
