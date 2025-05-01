@@ -3,6 +3,8 @@
 import { LightningElement, api } from "lwc";
 
 export default class sfGpsDsAuVic2Link extends LightningElement {
+  static renderMode = "light";
+
   @api url;
 
   // These four are added to the original spec
