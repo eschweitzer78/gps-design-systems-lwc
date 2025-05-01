@@ -823,6 +823,7 @@ export default class extends LightningElement {
         this.errorMessage = e;
       });
     this.isError = !valid;
+    this.setAttribute("data-invalid", this.isError);
 
     if (DEBUG) console.log(CLASS_NAME, "< reportValidity", valid);
 

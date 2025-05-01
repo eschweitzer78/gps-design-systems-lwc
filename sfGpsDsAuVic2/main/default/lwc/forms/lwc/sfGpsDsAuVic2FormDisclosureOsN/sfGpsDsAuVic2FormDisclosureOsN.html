@@ -1,6 +1,6 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <fieldset class="rpl-form__fieldset">
+  <fieldset class="rpl-form__fieldset" data-invalid={_showValidation}>
     <label
       lwc:if={_propSetMap.label}
       class="rpl-form-label rpl-type-h4-fixed"
@@ -16,12 +16,12 @@
 
     <div class="vic-disclosure">
       <div class="vic-disclosure__content">
-        <omnistudio-omniscript-formatted-rich-text
+        <c-sf-gps-ds-au-vic2-content-os
           id="frt"
-          class="rpl-content"
-          value={_dText}
+          class-name="rpl-form-help"
+          html={_dText}
         >
-        </omnistudio-omniscript-formatted-rich-text>
+        </c-sf-gps-ds-au-vic2-content-os>
       </div>
 
       <div class="vic-disclosure__consent">
@@ -30,6 +30,7 @@
           label={mergedCheckLabel}
           required={_propSetMap.required}
           required-label={allCustomLabelsUtil.OmniRequired}
+          hide-required="true"
           theme={_theme}
           checked={elementValue}
           message-when-value-missing={mergedMessageWhenValueMissing}

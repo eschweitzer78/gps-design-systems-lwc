@@ -1893,6 +1893,7 @@ export default class extends LightningElement {
     if (DEBUG) console.debug(CLASS_NAME, "> reportValidity");
 
     this.assessValidity(true);
+    this.setAttribute("data-invalid", !this._validity.valid);
 
     if (DEBUG)
       console.debug(CLASS_NAME, "< reportValidity", this._validity.valid);
