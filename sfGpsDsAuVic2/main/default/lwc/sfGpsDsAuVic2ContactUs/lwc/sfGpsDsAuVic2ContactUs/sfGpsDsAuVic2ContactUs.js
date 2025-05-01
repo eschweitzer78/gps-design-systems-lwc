@@ -2,6 +2,8 @@ import { LightningElement, api } from "lwc";
 import { isString, isArray } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
+  static renderMode = "light";
+
   @api title = "Contact us";
   @api address;
   @api items;
