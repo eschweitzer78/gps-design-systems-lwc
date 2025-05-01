@@ -1,5 +1,10 @@
 import { LightningElement, api, track } from "lwc";
-import { normaliseBoolean, formatTemplate, toNumber } from "c/sfGpsDsHelpers";
+import {
+  normaliseBoolean,
+  formatTemplate,
+  toNumber,
+  isString
+} from "c/sfGpsDsHelpers";
 import { BreakpointsMixin } from "c/sfGpsDsAuVic2BreakpointsMixin";
 
 const EXPANDABLE_DEFAULT = false;
@@ -25,7 +30,7 @@ export default class extends BreakpointsMixin(LightningElement) {
   /* api: title */
 
   _title = I18N.defaultTitle;
-  _titleOriginal;
+  _titleOriginal = I18N.defaultTitle;
 
   @api
   get title() {
@@ -34,7 +39,8 @@ export default class extends BreakpointsMixin(LightningElement) {
 
   set title(value) {
     this._titleOriginal = value;
-    this._title = String(value) || I18N.defaultTitle;
+    this._title =
+      (isString(value) ? value : String(value)) || I18N.defaultTitle;
   }
 
   /* api: currentStep */

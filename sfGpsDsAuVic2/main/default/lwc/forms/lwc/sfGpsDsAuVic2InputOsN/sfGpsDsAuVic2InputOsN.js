@@ -7,11 +7,31 @@
 
 import { api } from "lwc";
 import OmniscriptInput from "c/sfGpsDsOmniInputOsN";
-import { computeClass } from "c/sfGpsDsHelpersOs";
+import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVic2InputOsN.html";
+
+const HIDEREQUIRED_DEFAULT = false;
 
 export default class extends OmniscriptInput {
   @api inputClassName;
+
+  /* api: hideRequired */
+
+  _hideRequired = HIDEREQUIRED_DEFAULT;
+  _hideRequiredOriginal = HIDEREQUIRED_DEFAULT;
+
+  @api
+  get hideRequired() {
+    return this._hireRequiredOriginal;
+  }
+
+  set hideRequired(value) {
+    this._hideRequiredOriginal = value;
+    this._hideRequired = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: HIDEREQUIRED_DEFAULT
+    });
+  }
 
   /* computed */
 
@@ -79,5 +99,13 @@ export default class extends OmniscriptInput {
 
   render() {
     return tmpl;
+  }
+
+  renderedCallback() {
+    if (super.renderedCallback) super.renderedCallback();
+
+    if (!this._hideRequired) {
+      this.setAttribute("data-invalid", this.sfGpsDsIsError);
+    }
   }
 }

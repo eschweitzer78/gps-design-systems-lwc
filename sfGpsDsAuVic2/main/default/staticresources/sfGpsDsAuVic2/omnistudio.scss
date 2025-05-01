@@ -12,17 +12,27 @@
   box-shadow: none;
 }
 
-.omniscript-body {
-  padding: 0 !important;
-}
-
 .slds-omniscript_stepform {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
 
+.omniscript-side-content {
+  margin-top: 0;
+}
+
 .omniscript-body {
-  border-right: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  margin-top: 0;
+
+  &[data-stepborder=left] {
+    padding-left: var(--rpl-sp-6) !important;
+  }
+
+  &[data-stepborder=right] {
+    padding-right: var(--rpl-sp-6) !important;
+  }
 }
 
 /* inline-block for visible omnistudio form elements */

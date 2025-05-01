@@ -63,5 +63,8 @@
         </button>
       </span>
     </template>
+    <div lwc:if={_propSetMap.secondaryLabel} class="sublabel" slot="sublabel">
+      <label class="rpl-type-label-small">{_propSetMap.secondaryLabel}</label>
+    </div>
   </c-sf-gps-ds-au-vic2-input-os-n>
 </template>

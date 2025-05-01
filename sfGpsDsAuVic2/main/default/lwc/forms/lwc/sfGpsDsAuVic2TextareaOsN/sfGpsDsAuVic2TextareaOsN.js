@@ -10,6 +10,7 @@ import OmnistudioTextarea from "c/sfGpsDsOmniTextareaOsN";
 import {
   computeClass,
   normaliseString,
+  normaliseInteger,
   formatTemplate
 } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVic2TextareaOsN.html";
@@ -33,6 +34,10 @@ const COUNTERTYPE_DEFAULT = COUNTERTYPE_NONE;
 const COUNTER_TOO_FEW_TMPL = "You have {tooFew} {unit} too few";
 const COUNTER_TOO_MANY_TMPL = "You have {tooMany} {unit} too many";
 const COUNTER_REGULAR_TMPL = "You have {length} {unit}";
+
+const ROWS_DEFAULT = 4;
+const ROWS_MIN = 1;
+const ROWS_MAX = 40;
 
 const pluralize = (count) => (!count || count > 1 ? "s" : "");
 
@@ -154,6 +159,28 @@ export default class extends OmnistudioTextarea {
 
   get warningFlag() {
     return super.warningFlag && !this.computedShowCounter;
+  }
+
+  _height = ROWS_DEFAULT;
+  _heightOriginal = ROWS_DEFAULT;
+
+  get height() {
+    return this._heightOriginal;
+  }
+
+  set height(value) {
+    this._heightOriginal = value;
+    this._height = normaliseInteger(value, {
+      fallbackValue: ROWS_DEFAULT,
+      minValue: ROWS_MIN,
+      maxValue: ROWS_MAX
+    });
+  }
+
+  reportValidity() {
+    const valid = super.reportValidity();
+    this.setAttribute("data-invalid", !valid);
+    return valid;
   }
 
   checkValidity() {

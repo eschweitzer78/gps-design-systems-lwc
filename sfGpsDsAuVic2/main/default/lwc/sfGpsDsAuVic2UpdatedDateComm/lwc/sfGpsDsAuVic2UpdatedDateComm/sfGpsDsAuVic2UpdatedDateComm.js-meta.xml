@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-  <apiVersion>62.0</apiVersion>
+  <apiVersion>63.0</apiVersion>
   <isExposed>true</isExposed>
-  <masterLabel>VIC2 DS Content</masterLabel>
+  <masterLabel>VIC2 DS Updated Date</masterLabel>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
@@ -10,19 +10,16 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
-        name="markup"
+        name="date"
         type="String"
-        label="Markup"
-        description="HTML markup - JavaScript is not supported and will be stripped."
-        default="&lt;p&gt;Use this HTML Editor to add your own markup.&lt;/p&gt;"
-        editor="c/sfGpsDsMarkupCpe"
+        label="Date"
+        description="Date and time in ISO8601 format. No date will display if the value is invalid."
       />
       <property
         name="className"
         type="String"
         label="Class name"
-        description="Additional CSS class to add."
-        editor="c/sfGpsDsStringCpe"
+        description="Additional CSS class to be applied."
       />
     </targetConfig>
   </targetConfigs>

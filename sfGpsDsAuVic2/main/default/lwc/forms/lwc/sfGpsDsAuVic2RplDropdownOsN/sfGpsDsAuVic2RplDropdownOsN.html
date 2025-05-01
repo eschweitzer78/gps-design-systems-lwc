@@ -5,7 +5,7 @@
     data-label="true"
     for="textareaId"
   >
-    <span class="rpl-form-label__inner">{label} {_hasLastItem}</span>
+    <span class="rpl-form-label__inner">{label}</span>
     <span
       lwc:if={required}
       class="rpl-form-label__required rpl-type-label-small"
@@ -29,6 +29,8 @@
     </c-sf-gps-ds-au-vic2-icon-os>
     <span>{errorMessage}</span>
   </span>
+
+  <slot name="sublabel"></slot>
 
   <div
     lwc:ref="containerRef"

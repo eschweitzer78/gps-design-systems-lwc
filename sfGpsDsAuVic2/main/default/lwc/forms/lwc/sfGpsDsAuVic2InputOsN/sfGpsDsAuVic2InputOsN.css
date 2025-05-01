@@ -2,3 +2,7 @@
   line-height: var(--rpl-type-lh-4);
   margin-left: var(--rpl-sp-2);
 }
+
+:host {
+  display: block;
+}

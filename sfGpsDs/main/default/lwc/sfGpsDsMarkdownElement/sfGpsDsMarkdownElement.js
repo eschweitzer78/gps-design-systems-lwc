@@ -10,6 +10,7 @@ export default class extends LightningElement {
 
   _contentOriginal;
   _contentHtml;
+  _contentSanitizedHtml;
 
   @api
   get content() {
@@ -19,6 +20,18 @@ export default class extends LightningElement {
   set content(markdown) {
     this._contentOriginal = markdown;
     this._contentHtml = mdEngine.renderEscaped(this._contentOriginal);
+
+    if (this.sanitizer && typeof this.sanitizer.sanitize === "function") {
+      this._contentSanitizedHtml = this.sanitizer.sanitize(this._contentHtml);
+    } else {
+      this._contentSanitizedHtml = this._contentHtml;
+    }
+  }
+
+  /* computed */
+
+  get sanitizer() {
+    return null;
   }
 
   /* lifecycle */
@@ -28,8 +41,8 @@ export default class extends LightningElement {
   }
 
   renderedCallback() {
-    if (this._contentHtml) {
-      replaceInnerHtml(this.refs.markdown, this._contentHtml);
+    if (this._contentSanitizedHtml) {
+      replaceInnerHtml(this.refs.markdown, this._contentSanitizedHtml);
     }
   }
 }

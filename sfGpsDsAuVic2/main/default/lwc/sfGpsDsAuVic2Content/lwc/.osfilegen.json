@@ -5,7 +5,8 @@
       "target": "!Os.html"
     },
     "!.js": {
-      "target": "!Os.js"
+      "target": "!Os.js",
+      "sfGpsDsAuVic2HtmlPlugIns": "sfGpsDsAuVic2HtmlPlugInsOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
