@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -77,52 +77,94 @@ export function getCssPropertyValue(propertyName) {
 // JavaScript HTML Sanitizer v2.0.2, (c) Alexander Yumashev, Jitbit Software.
 // homepage https://github.com/jitbit/HtmlSanitizer
 // License: MIT https://github.com/jitbit/HtmlSanitizer/blob/master/LICENSE
+// Modified by E Schweitzer to allow for configurable plug ins performing additional work
 
-const HtmlSanitizer = new (function () {
+const HtmlSanitizer = new (function (
+  _options = {
+    allowData: true,
+    allowAria: true
+  }
+) {
+  // which tags are allowed
   const _tagWhitelist = {
     A: true,
     ABBR: true,
+    ADDRESS: true,
+    ARTICLE: true,
+    ASIDE: true,
+    AUDIO: true,
     B: true,
     BLOCKQUOTE: true,
     BODY: true,
     BR: true,
+    CAPTION: true,
     CENTER: true,
+    CITE: true,
     CODE: true,
+    COL: true,
+    COLGROUP: true,
+    DATA: true,
     DD: true,
+    DEL: true,
+    DETAILS: true,
     DIV: true,
     DL: true,
     DT: true,
     EM: true,
-    FONT: true,
+    FIGCAPTION: true,
+    FIGURE: true,
+    FOOTER: true,
     H1: true,
     H2: true,
     H3: true,
     H4: true,
     H5: true,
     H6: true,
+    HEADER: true,
+    HGROUP: true,
     HR: true,
     I: true,
     IMG: true,
+    INS: true,
     LABEL: true,
+    LEGEND: true,
     LI: true,
+    MARK: true,
+    MENU: true,
+    NAV: true,
     OL: true,
     P: true,
+    PICTURE: true,
     PRE: true,
+    PROGRESS: true,
+    Q: true,
+    RP: true,
+    RT: true,
+    RUBY: true,
+    S: true,
+    SAMP: true,
+    SECTION: true,
     SMALL: true,
     SOURCE: true,
     SPAN: true,
     STRONG: true,
     SUB: true,
+    SUMMARY: true,
     SUP: true,
     TABLE: true,
     TBODY: true,
-    TR: true,
     TD: true,
+    TFOOT: true,
     TH: true,
     THEAD: true,
-    UL: true,
+    TIME: true,
+    TITLE: true,
+    TR: true,
     U: true,
-    VIDEO: true
+    UL: true,
+    VAR: true,
+    VIDEO: true,
+    WBR: true
   };
 
   const _contentTagWhiteList = {
@@ -130,21 +172,58 @@ const HtmlSanitizer = new (function () {
     "GOOGLE-SHEETS-HTML-ORIGIN": true
   }; //tags that will be converted to DIVs
 
+  // which attributes are allowed
   const _attributeWhitelist = {
     align: true,
+    allow: true,
+    alt: true,
+    autoplay: true,
+    background: true,
+    cite: true,
+    class: true,
     color: true,
+    colspan: true,
     controls: true,
+    datetime: true,
+    decoding: true,
+    disabled: true,
+    headers: true,
     height: true,
     href: true,
+    hreflang: true,
     id: true,
+    intrisicsize: true,
+    lang: true,
+    loading: true,
+    loop: true,
+    media: true,
+    muted: true,
+    playsinline: true,
+    poster: true,
+    preload: true,
+    refererpolicy: true,
+    rel: true,
+    reversed: true,
+    rowspan: true,
+    sandbox: true,
+    scope: true,
+    sizes: true,
+    span: true,
     src: true,
+    srcdoc: true,
+    srcset: true,
+    start: true,
     style: true,
+    summary: true,
     target: true,
     title: true,
+    translate: true,
+    usemap: true,
     type: true,
     width: true
   };
 
+  // which bits are allowed in "style"
   const _cssWhitelist = {
     "background-color": true,
     color: true,
@@ -155,6 +234,7 @@ const HtmlSanitizer = new (function () {
     width: true
   };
 
+  // which "protocols" are allowed in "href", "src" etc
   const _schemaWhiteList = [
     "http:",
     "https:",
@@ -164,46 +244,57 @@ const HtmlSanitizer = new (function () {
     "ftp:",
     "mailto:",
     "pw:"
-  ]; //which "protocols" are allowed in "href", "src" etc
+  ];
 
   const _uriAttributes = { href: true, action: true };
-
   const _parser = new DOMParser();
 
-  this.sanitize = function (input, extraSelector) {
+  this.sanitize = function (input, plugIns) {
+    if (_options?.plugIns) {
+      plugIns = [...(plugIns || []), ..._options.plugIns];
+    }
+
     input = input.trim();
-    if (input === "") return ""; //to save performance
+    if (input === "" || input === "<br>") {
+      // br: firefox "bogus node" workaround for wysiwyg's
+      // to save performance
+      return "";
+    }
 
-    //firefox "bogus node" workaround for wysiwyg's
-    if (input === "<br>") return "";
-
-    if (input.indexOf("<body") === -1) input = "<body>" + input + "</body>"; //add "body" otherwise some tags are skipped, like <style>
+    if (input.indexOf("<body") === -1) {
+      input = "<body>" + input + "</body>";
+      //add "body" otherwise some tags are skipped, like <style>
+    }
 
     let doc = _parser.parseFromString(input, "text/html");
 
-    //DOM clobbering check (damn you firefox)
+    // DOM clobbering check (damn you firefox)
     if (doc.body.tagName !== "BODY") doc.body.remove();
     if (typeof doc.createElement !== "function") doc.createElement.remove();
 
     function makeSanitizedCopy(node) {
       let newNode;
+
       if (node.nodeType === Node.TEXT_NODE) {
         newNode = node.cloneNode(true);
       } else if (
         node.nodeType === Node.ELEMENT_NODE &&
-        (_tagWhitelist[node.tagName] ||
-          _contentTagWhiteList[node.tagName] ||
-          (extraSelector && node.matches(extraSelector)))
+        (_tagWhitelist[node.tagName] || _contentTagWhiteList[node.tagName])
       ) {
-        //is tag allowed?
+        // is tag allowed?
+        newNode = doc.createElement(
+          _contentTagWhiteList[node.tagName] ? "DIV" : node.tagName
+        );
 
-        if (_contentTagWhiteList[node.tagName])
-          newNode = doc.createElement("DIV"); //convert to DIV
-        else newNode = doc.createElement(node.tagName);
-
+        /* copy legitimate attributes */
         for (let i = 0; i < node.attributes.length; i++) {
           let attr = node.attributes[i];
-          if (_attributeWhitelist[attr.name]) {
+
+          if (
+            (_options?.allowAria && attr.name.startsWith("aria-")) ||
+            (_options?.allowData && attr.name.startsWith("data-")) ||
+            _attributeWhitelist[attr.name]
+          ) {
             if (attr.name === "style") {
               for (let s = 0; s < node.style.length; s++) {
                 let styleName = node.style[s];
@@ -226,8 +317,10 @@ const HtmlSanitizer = new (function () {
             }
           }
         }
-        for (let i = 0; i < node.childNodes.length; i++) {
-          let subCopy = makeSanitizedCopy(node.childNodes[i]);
+
+        const childNodes = [...node.childNodes];
+        for (let i = 0; i < childNodes.length; i++) {
+          let subCopy = makeSanitizedCopy(childNodes[i]);
           newNode.appendChild(subCopy, false);
         }
 
@@ -242,9 +335,22 @@ const HtmlSanitizer = new (function () {
         ) {
           return doc.createDocumentFragment();
         }
+
+        /* any plugin? */
+        for (let i = 0; i < (plugIns || []).length; i++) {
+          if (newNode.matches(plugIns[i].selector)) {
+            // found a pattern
+            const plugInNode = plugIns[i].process(node, _parser);
+            if (plugInNode) {
+              newNode = plugInNode;
+              break;
+            }
+          }
+        }
       } else {
         newNode = doc.createDocumentFragment();
       }
+
       return newNode;
     }
 
@@ -269,6 +375,7 @@ const HtmlSanitizer = new (function () {
   this.AllowedAttributes = _attributeWhitelist;
   this.AllowedCssStyles = _cssWhitelist;
   this.AllowedSchemas = _schemaWhiteList;
+  this.options = _options;
 })();
 
 export { HtmlSanitizer };

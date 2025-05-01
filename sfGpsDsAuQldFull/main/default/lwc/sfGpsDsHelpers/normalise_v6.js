@@ -91,7 +91,6 @@ export function normaliseInteger(value, options = {}) {
   }
 
   const intValue = value | 0; /* truncates floating point */
-  console.debug("= normaliseInteger intValue", intValue);
 
   if (intValue < min) {
     return min;
