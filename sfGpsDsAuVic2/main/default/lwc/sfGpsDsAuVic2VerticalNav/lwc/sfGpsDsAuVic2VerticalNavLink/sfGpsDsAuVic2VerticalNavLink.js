@@ -7,6 +7,7 @@ export default class extends LightningElement {
   @api text;
   @api href;
   @api showChildIcon;
+  @api tabIndex;
   @api className;
 
   /* api: active */
@@ -37,6 +38,8 @@ export default class extends LightningElement {
       [this.className]: this.className
     });
   }
+
+  /* event management */
 
   handleClick() {
     this.dispatchEvent(
