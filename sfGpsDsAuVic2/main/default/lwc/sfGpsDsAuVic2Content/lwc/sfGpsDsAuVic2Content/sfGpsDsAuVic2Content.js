@@ -1,20 +1,43 @@
 import { api, LightningElement } from "lwc";
-import { replaceInnerHtml, computeClass } from "c/sfGpsDsHelpers";
+import { replaceInnerHtml, HtmlSanitizer } from "c/sfGpsDsHelpers";
+import defaultPlugIns from "c/sfGpsDsAuVic2HtmlPlugIns";
 
-export default class SfGpsDsAuVic2Content extends LightningElement {
-  @api html;
+export default class extends LightningElement {
   @api className;
 
+  /* api: html */
+
+  _html;
+  _originalHtml;
+
+  @api
+  get html() {
+    return this._originalHtml;
+  }
+
+  set html(value) {
+    this._originalHtml = value;
+
+    try {
+      this._html = value ? HtmlSanitizer.sanitize(value, defaultPlugIns) : null;
+    } catch (e) {
+      this._html = null;
+      console.debug(e);
+    }
+  }
+
+  /* computed */
+
   get computedClassName() {
-    return computeClass({
+    return {
       "rpl-content": true,
       [this.className]: this.className
-    });
+    };
   }
 
   renderedCallback() {
-    if (this.html) {
-      replaceInnerHtml(this.refs.content, this.html);
+    if (this._html) {
+      replaceInnerHtml(this.refs.content, this._html);
     }
   }
 }

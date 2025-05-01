@@ -66,5 +66,9 @@ describe("c-sf-gps-ds-helpers.domutil", () => {
     html = "<a href=\"javascript:alert('xss')\"></a>";
     shtml = HtmlSanitizer.sanitize(html);
     expect(shtml).toBe("<a></a>");
+
+    html = '<a href="#yo"></a> or <a href="#bro"></a>';
+    shtml = HtmlSanitizer.sanitize(html);
+    expect(shtml).toBe(html);
   });
 });

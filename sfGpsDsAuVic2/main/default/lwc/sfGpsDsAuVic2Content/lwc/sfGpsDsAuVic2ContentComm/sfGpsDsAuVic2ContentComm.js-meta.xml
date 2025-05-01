@@ -23,7 +23,6 @@
         label="Class name"
         description="Additional CSS class to add."
         editor="c/sfGpsDsStringCpe"
-        default="rpl-content"
       />
     </targetConfig>
   </targetConfigs>
