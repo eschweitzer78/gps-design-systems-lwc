@@ -11,6 +11,7 @@ export default class sfGpsDsAuVic2Link extends LightningElement {
   @api target;
   @api index;
   @api preventDefault;
+  @api tabIndex;
   @api className;
 
   @api focus() {

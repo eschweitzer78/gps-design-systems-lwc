@@ -25,3 +25,8 @@
 .rpl-related-links__item a:hover {
   color: var(--rpl-clr-type-default);
 }
+
+/* Vertical nav Links hover */
+.rpl-vertical-nav__link:hover {
+  color: var(--rpl-type-link);
+}
