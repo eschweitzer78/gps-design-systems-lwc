@@ -15,7 +15,7 @@ const DISABLED_DEFAULT = false;
 const BUSY_DEFAULT = false;
 const PREVENTDEFAULT_DEFAULT = false;
 
-export default class SfGpsDsAuVic2Button extends LightningElement {
+export default class extends LightningElement {
   static renderMode = "light";
 
   @api url = "";
@@ -168,7 +168,7 @@ export default class SfGpsDsAuVic2Button extends LightningElement {
       "rpl-button--reverse": this._iconPosition === "left",
       "rpl-button--busy": this.computedAriaBusy,
       "rpl-button--icon-only-small-screens":
-        this._variant === RplButtonVariants.elevated && this.iconName,
+        this._variant === "elevated" && !!this.iconName,
       [this.className]: this.className
     };
   }
