@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <div class={computedClassName}>
     <button
@@ -13,7 +14,7 @@
         <h2 class="rpl-progress__title rpl-type-h3">{_title}</h2>
         <p class="rpl-progress__subtitle rpl-type-label">
           <slot name="subTitle" onslotchange={handleSlotChange}></slot>
-          <template if:false={_hasSlot}> {computedDefaultSubTitle} </template>
+          <template if:false={_hasSlot}>{computedDefaultSubTitle} </template>
         </p>
       </div>
       <div class="rpl-progress__chevron">
@@ -23,7 +24,7 @@
     </button>
     <div lwc:else class="rpl-progress__header">
       <div class="rpl-progress__header-inner">
-        <h2 class="rpl-progress__title rpl-type-h3">{title}</h2>
+        <h2 class="rpl-progress__title rpl-type-h3">{_title}</h2>
         <p class="rpl-progress__subtitle rpl-type-label">
           <slot name="subTitle" onslotchange={handleSlotChange}></slot>
           <template if:false={_hasSlot}> {computedSubTitle} </template>
