@@ -259,8 +259,6 @@ export default class extends LightningElement {
 
   handleClickNavigate(event) {
     event.preventDefault();
-
-    console.log("> handleClickNavigate");
     this.close();
 
     const closeMenuEvent = new CustomEvent("closemenu");
@@ -268,7 +266,6 @@ export default class extends LightningElement {
 
     let index = event.currentTarget.dataset.ndx;
     this.dispatchEvent(new CustomEvent("navigate", { detail: index }));
-    console.log("< handleClickNavigate");
   }
 
   handleClick(event) {
