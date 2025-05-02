@@ -45,7 +45,7 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
 
   connectedCallback() {
     this._handleScroll = this.handleScroll.bind(this);
-    window.addEventListener("scroll", this._listenForScroll);
+    window.addEventListener("scroll", this._handleScroll);
   }
 
   disconnectedCallback() {
