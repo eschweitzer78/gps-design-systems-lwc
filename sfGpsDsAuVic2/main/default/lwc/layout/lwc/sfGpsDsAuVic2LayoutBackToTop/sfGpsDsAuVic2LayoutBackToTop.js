@@ -3,12 +3,9 @@ import { computeClass } from "c/sfGpsDsHelpers";
 
 const SCROLL_THRESHOLD = 1080;
 
-const I18N = {
-  backToTop: "Back to top"
-};
-
-export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
-  @api topElementId;
+export default class extends LightningElement {
+  @api label = "Back to top";
+  @api topElementId = "rpl-skip-links";
   @api className;
   @track scrollY;
 
@@ -21,8 +18,8 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
       return false;
     }
 
-    const bottomPos = this._containerEl.offsetTop - window.innerHeight;
-    return this.scrollY < bottomPos;
+    const rect = this._containerEl.getBoundingClientRect();
+    return rect.top > window.innerHeight;
   }
 
   get computedClassName() {
@@ -35,8 +32,16 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
     });
   }
 
-  get i18n() {
-    return I18N;
+  get computedUrl() {
+    return `#${this.topElementId}`;
+  }
+
+  /* event management */
+
+  handleScroll() {
+    if (this._containerEl) {
+      this.scrollY = window.scrollY || window.pageYOffset;
+    }
   }
 
   /* lifecycle */
@@ -57,14 +62,6 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
     if (!this._isRendered) {
       this._isRendered = true;
       this._containerEl = this.refs.containerRef;
-    }
-  }
-
-  /* event management */
-
-  handleScroll() {
-    if (this._containerEl) {
-      this.scrollY = window.scrollY || window.pageYOffset;
     }
   }
 }
