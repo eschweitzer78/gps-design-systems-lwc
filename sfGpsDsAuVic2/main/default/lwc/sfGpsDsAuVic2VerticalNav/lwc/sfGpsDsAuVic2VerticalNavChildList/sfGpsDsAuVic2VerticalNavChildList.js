@@ -55,8 +55,9 @@ export default class extends LightningElement {
   }
 
   get decoratedItems() {
-    return (this.items || []).map((item) => ({
+    return (this.items || []).map((item, index) => ({
       ...item,
+      index: item.index || `item-${this._level}-${index + 1}`,
       isLinkActive: item?.active && !item.items?.some((i) => i.active)
     }));
   }
