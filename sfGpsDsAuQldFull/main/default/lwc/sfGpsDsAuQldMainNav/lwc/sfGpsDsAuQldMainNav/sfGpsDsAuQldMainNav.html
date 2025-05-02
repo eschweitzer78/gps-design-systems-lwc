@@ -48,6 +48,7 @@
                     class="qld__main-nav__item-home qld__main-nav__item-link"
                     href={computedHomeUrl}
                     aria-label={i18n.homeLabel}
+                    onclick={handleCloseNav}
                   >
                     <!-- SVG icon for the link -->
                     <span class="qld__main-nav__item-icon">
@@ -83,6 +84,8 @@
                         lwc:if={navItem.url}
                         href={navItem.url}
                         class={navItem.anchorClassName}
+                        data-ndx={navItem.index}
+                        onclick={handleClickNavigate}
                         >{navItem.text}</a
                       >
                       <a
