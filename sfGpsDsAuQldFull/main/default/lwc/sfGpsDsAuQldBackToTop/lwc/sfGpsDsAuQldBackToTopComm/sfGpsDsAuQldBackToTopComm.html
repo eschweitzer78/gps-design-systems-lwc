@@ -6,6 +6,13 @@
   </c-sf-gps-ds-configuration-error>
 
   <template lwc:else>
-    <a href="#" class={computedClassName}> {label} </a>
+    <a
+      lwc:ref="containerRef"
+      href="#"
+      class={computedClassName}
+      onclick={handleClick}
+    >
+      <span>{label}</span>
+    </a>
   </template>
 </template>
