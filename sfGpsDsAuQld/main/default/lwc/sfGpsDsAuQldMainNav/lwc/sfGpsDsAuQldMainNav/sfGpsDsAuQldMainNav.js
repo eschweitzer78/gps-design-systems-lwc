@@ -242,6 +242,7 @@ export default class extends LightningElement {
   @api close() {
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isActive = false;
+    this._open = false;
 
     // eslint-disable-next-line guard-for-in
     for (let prop in this._mapItems) {
@@ -258,7 +259,6 @@ export default class extends LightningElement {
 
   handleClickNavigate(event) {
     event.preventDefault();
-
     this.close();
 
     const closeMenuEvent = new CustomEvent("closemenu");
@@ -305,7 +305,7 @@ export default class extends LightningElement {
   /* methods */
 
   handleCloseNav() {
-    this._open = false;
+    this.close();
   }
 
   handleMainNavToggle() {

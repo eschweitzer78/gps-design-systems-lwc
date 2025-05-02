@@ -3,12 +3,9 @@ import { computeClass } from "c/sfGpsDsHelpers";
 
 const SCROLL_THRESHOLD = 1080;
 
-const I18N = {
-  backToTop: "Back to top"
-};
-
-export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
-  @api topElementId;
+export default class extends LightningElement {
+  @api label = "Back to top";
+  @api topElementId = "rpl-skip-links";
   @api className;
   @track scrollY;
 
@@ -17,12 +14,12 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
   }
 
   get isSticky() {
-    if (!this._isRendered) {
+    if (!this._containerEl) {
       return false;
     }
 
-    const bottomPos = this.refs.containerRef.offsetTop - window.innerHeight;
-    return this.scrollY.value < bottomPos;
+    const rect = this._containerEl.getBoundingClientRect();
+    return rect.top > window.innerHeight;
   }
 
   get computedClassName() {
@@ -35,17 +32,26 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
     });
   }
 
-  get i18n() {
-    return I18N;
+  get computedUrl() {
+    return `#${this.topElementId}`;
+  }
+
+  /* event management */
+
+  handleScroll() {
+    if (this._containerEl) {
+      this.scrollY = window.scrollY || window.pageYOffset;
+    }
   }
 
   /* lifecycle */
 
   _handleScroll;
+  _containerEl;
 
   connectedCallback() {
     this._handleScroll = this.handleScroll.bind(this);
-    window.addEventListener("scroll", this._listenForScroll);
+    window.addEventListener("scroll", this._handleScroll);
   }
 
   disconnectedCallback() {
@@ -53,16 +59,9 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
   }
 
   renderedCallback() {
-    if (!this._isRendered) this._isRendered = true;
-  }
-
-  /* event management */
-
-  handleScroll() {
-    const rootElement = this.refs.containerRef;
-
-    if (rootElement) {
-      this.scrollY = window.scrollY || window.pageYOffset;
+    if (!this._isRendered) {
+      this._isRendered = true;
+      this._containerEl = this.refs.containerRef;
     }
   }
 }
