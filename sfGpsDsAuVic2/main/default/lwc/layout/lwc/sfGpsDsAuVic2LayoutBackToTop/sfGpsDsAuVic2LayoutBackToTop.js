@@ -17,12 +17,12 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
   }
 
   get isSticky() {
-    if (!this._isRendered) {
+    if (!this._containerEl) {
       return false;
     }
 
-    const bottomPos = this.refs.containerRef.offsetTop - window.innerHeight;
-    return this.scrollY.value < bottomPos;
+    const bottomPos = this._containerEl.offsetTop - window.innerHeight;
+    return this.scrollY < bottomPos;
   }
 
   get computedClassName() {
@@ -42,6 +42,7 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
   /* lifecycle */
 
   _handleScroll;
+  _containerEl;
 
   connectedCallback() {
     this._handleScroll = this.handleScroll.bind(this);
@@ -53,15 +54,16 @@ export default class SfGpsDsAuVic2LayoutBackToTop extends LightningElement {
   }
 
   renderedCallback() {
-    if (!this._isRendered) this._isRendered = true;
+    if (!this._isRendered) {
+      this._isRendered = true;
+      this._containerEl = this.refs.containerRef;
+    }
   }
 
   /* event management */
 
   handleScroll() {
-    const rootElement = this.refs.containerRef;
-
-    if (rootElement) {
+    if (this._containerEl) {
       this.scrollY = window.scrollY || window.pageYOffset;
     }
   }
