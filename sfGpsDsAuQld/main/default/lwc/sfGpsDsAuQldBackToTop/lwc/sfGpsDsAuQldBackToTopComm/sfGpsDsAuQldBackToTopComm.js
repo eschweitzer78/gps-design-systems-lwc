@@ -7,7 +7,7 @@ export default class extends SfGpsDsLwc {
   @api label;
   @api className;
 
-  @track scrollY;
+  @track scrollY = 0;
 
   /* computed */
 
