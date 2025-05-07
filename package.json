@@ -32,7 +32,7 @@
     "auvic2-copy": "rm -rf sfGpsDsAuVic2Full;mkdir -p sfGpsDsAuVic2Full;cp -a sfGpsDs/. sfGpsDsAuVic2Full;cp -a sfGpsDsAuVic2/. sfGpsDsAuVic2Full",
     "frgov-copy": "rm -rf sfGpsDsFrGovFull;mkdir -p sfGpsDsFrGovFull;cp -a sfGpsDs/. sfGpsDsFrGovFull;cp -a sfGpsDsFrGov/. sfGpsDsFrGovFull",
     "ukgov-copy": "rm -rf sfGpsDsUkGovFull;mkdir -p sfGpsDsUkGovFull;cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull",
-    "synclabs": "set SDIR=../gps-design-systems-lwc;set TDIR=../gps-design-systems-lwcx;rm -rf $TDIR;cp -a . $TDIR;cp -a $SDIR/.git $TDIR;rm -rf $TDIR/.github"
+    "synclabs": "export SDIR=../gps-design-systems-lwc;export TDIR=../gps-design-systems-lwcx;rm -rf $TDIR;cp -a . $TDIR;cp -a $SDIR/.git $TDIR;rm -rf $TDIR/.github"
   },
   "lint-staged": {
     "**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}": [
@@ -58,7 +58,7 @@
     "@govtechsg/sgds": "^2.3.6",
     "@lwc/eslint-plugin-lwc": "^3.0.0",
     "@prettier/plugin-xml": "^3.4.1",
-    "@qhealth-design-system/core": "1.8.5",
+    "@qhealth-design-system/core": "1.14.0",
     "@sa11y/jest": "^7.0.0",
     "@salesforce/eslint-config-lwc": "^4.0.0",
     "@salesforce/eslint-plugin-lightning": "^2.0.0",

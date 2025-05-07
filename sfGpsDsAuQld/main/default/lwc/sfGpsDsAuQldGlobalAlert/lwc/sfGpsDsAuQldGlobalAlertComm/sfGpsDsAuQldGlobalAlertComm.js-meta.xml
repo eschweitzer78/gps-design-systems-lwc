@@ -14,8 +14,8 @@
         type="String"
         label="Alert level"
         description="Denotes the severity level of the alert."
-        default="default"
-        datasource="default,critical,general"
+        default="warning"
+        datasource="warning,alert,information"
       />
       <property
         name="title"
