@@ -16,6 +16,12 @@
         default="Back to top"
       />
       <property
+        name="targetId"
+        type="String"
+        label="Target Id"
+        description="Id of the target element, leave empty for top of the page."
+      />
+      <property
         name="className"
         type="String"
         label="Class name"

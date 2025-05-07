@@ -21,7 +21,7 @@
         name="width"
         type="String"
         default="full-width"
-        datasource="full-width"
+        datasource="full-width,half-width,none"
       />
       <property name="container" type="Boolean" default="true" />
       <property label="Additional CSS class" name="className" type="String" />

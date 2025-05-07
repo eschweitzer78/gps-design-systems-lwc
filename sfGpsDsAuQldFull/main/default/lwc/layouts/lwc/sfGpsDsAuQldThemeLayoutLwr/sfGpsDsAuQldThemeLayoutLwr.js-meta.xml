@@ -25,6 +25,12 @@
         type="Color"
       />
       <property
+        label="Alert class name"
+        name="alertClassName"
+        type="String"
+        default="qld__global_alert_include"
+      />
+      <property
         label="Header class name"
         name="headerClassName"
         type="String"
