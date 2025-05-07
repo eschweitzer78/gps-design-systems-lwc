@@ -1,15 +1,61 @@
 <!-- sldsValidatorIgnore -->
 <template>
   <div class={computedClassName}>
-    <button
-      id="button"
-      class={computedButtonClassName}
-      onclick={handleToggle}
-      aria-expanded={active}
-      aria-controls="content"
-    >
-      {title}
-    </button>
+    <h2 lwc:if={computedIsH2}>
+      <button
+        id={computedButtonId}
+        class={computedButtonClassName}
+        onclick={handleToggle}
+        aria-expanded={active}
+        aria-controls="content"
+      >
+        {title}
+      </button>
+    </h2>
+    <h3 lwc:elseif={computedIsH3}>
+      <button
+        id={computedButtonId}
+        class={computedButtonClassName}
+        onclick={handleToggle}
+        aria-expanded={active}
+        aria-controls="content"
+      >
+        {title}
+      </button>
+    </h3>
+    <h4 lwc:elseif={computedIsH4}>
+      <button
+        id={computedButtonId}
+        class={computedButtonClassName}
+        onclick={handleToggle}
+        aria-expanded={active}
+        aria-controls="content"
+      >
+        {title}
+      </button>
+    </h4>
+    <h5 lwc:elseif={computedIsH5}>
+      <button
+        id={computedButtonId}
+        class={computedButtonClassName}
+        onclick={handleToggle}
+        aria-expanded={active}
+        aria-controls="content"
+      >
+        {title}
+      </button>
+    </h5>
+    <h6 lwc:elseif={computedIsH2}>
+      <button
+        id={computedButtonId}
+        class={computedButtonClassName}
+        onclick={handleToggle}
+        aria-expanded={active}
+        aria-controls="content"
+      >
+        {title}
+      </button>
+    </h6>
 
     <div
       lwc:ref="content"

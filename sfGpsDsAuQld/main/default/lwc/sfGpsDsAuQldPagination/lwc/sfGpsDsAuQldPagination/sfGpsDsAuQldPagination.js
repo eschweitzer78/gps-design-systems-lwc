@@ -1,4 +1,17 @@
+/*
+ * Copyright (c) 2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.14
+ */
+
 import { LightningElement, api } from "lwc";
+import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
+
+const STATIC_RESOURCE_ICONS_PATH =
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 export default class extends LightningElement {
   @api lastPage;
@@ -87,6 +100,17 @@ export default class extends LightningElement {
     };
   }
 
+  get computedArrowLeftIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#arrow-left";
+  }
+
+  get computedArrowRightIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#arrow-right";
+  }
+
+  get computedMoreHorizontalIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#more-horizontal";
+  }
   /* events */
 
   handlePreviousPageClick(event) {

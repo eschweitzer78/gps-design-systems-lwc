@@ -7,6 +7,7 @@
 
 import { LightningElement, api } from "lwc";
 import { normaliseString, isArray, isString } from "c/sfGpsDsHelpers";
+import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
 
 const TAG_PREFIX = "sf-gps-ds-au-qld-tag";
 
@@ -25,6 +26,9 @@ const MODE_VALUES = [MODE_ACTION, MODE_DEFAULT, MODE_FILTER, MODE_INFO];
 const I18N = {
   clearFilters: "Clear filters"
 };
+
+const STATIC_RESOURCE_ICONS_PATH =
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 export default class extends LightningElement {
   @api className;
@@ -116,6 +120,10 @@ export default class extends LightningElement {
 
   get asDefault() {
     return (this._mode || MODE_DEFAULT) === MODE_DEFAULT;
+  }
+
+  get computedCloseIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#close";
   }
 
   /* methods */

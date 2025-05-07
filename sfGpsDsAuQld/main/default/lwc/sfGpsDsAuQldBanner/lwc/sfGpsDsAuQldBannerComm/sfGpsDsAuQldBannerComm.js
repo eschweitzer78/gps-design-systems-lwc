@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2024-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.10
+ */
+
 import { api } from "lwc";
 import {
   replaceInnerHtml,
@@ -13,6 +22,7 @@ const CLASS_NAME = "sfGpsDsAuQldBannerComm";
 
 /**
  * @slot mobileBreadcrumbs
+ * @slot tabletBreadcrumbs
  * @slot desktopBreadcrumbs
  * @slot abstract
  */
@@ -29,9 +39,11 @@ export default class extends SfGpsDsLwc {
   @api backgroundColour;
   @api backgroundImageSm;
   @api backgroundImageLg;
+  @api backgroundImageAlt;
   @api backgroundImageAlignment;
   @api backgroundMinHeight;
   @api ctaType;
+  @api iconTilesLabel;
   @api className;
 
   /* api: items */
