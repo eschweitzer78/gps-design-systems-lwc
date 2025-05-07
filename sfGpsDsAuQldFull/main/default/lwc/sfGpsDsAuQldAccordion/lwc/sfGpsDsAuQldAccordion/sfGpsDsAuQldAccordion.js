@@ -1,8 +1,10 @@
 /*
- * Copyright (c) 2024, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2024-2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.10
  */
 
 import { api, LightningElement } from "lwc";
@@ -23,7 +25,11 @@ const I18N = {
   closeAll: "Close all"
 };
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldAccordion";
+
 export default class extends ExpandableStateMixin(LightningElement) {
+  @api headingLevel;
   @api className;
 
   /* api: cstyle */
@@ -48,10 +54,13 @@ export default class extends ExpandableStateMixin(LightningElement) {
   /* items */
 
   mapItem(item, index, length, active) {
-    let indexP1 = index + 1;
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "mapItem", "index=", index, "active=", active);
+    }
+
     return {
       ...item,
-      index: indexP1,
+      index,
       inactive: !active,
       active: active
     };
@@ -108,6 +117,8 @@ export default class extends ExpandableStateMixin(LightningElement) {
 
   @api
   toggleAll() {
+    if (DEBUG) console.debug(CLASS_NAME, "> toggleAll");
+
     const isAllExpanded = super.toggleAll();
 
     this.dispatchEvent(
@@ -116,12 +127,17 @@ export default class extends ExpandableStateMixin(LightningElement) {
       })
     );
 
+    if (DEBUG) console.debug(CLASS_NAME, "< toggleAll", isAllExpanded);
     return isAllExpanded;
   }
 
   @api
   toggleIndex(index) {
+    if (DEBUG) console.debug(CLASS_NAME, "> toggleIndex", "index=", index);
+
     const isActive = super.toggleIndex(index);
+
+    if (DEBUG) console.debug(CLASS_NAME, "< toggleIndex", isActive);
 
     if (isActive == null) return;
 

@@ -26,6 +26,7 @@ export default class extends SfGpsDsLwc {
   @api thumbnail;
   @api displayArrow;
   @api displayFooter;
+  @api tagsMode;
   @api className;
 
   /* api: nameLink */

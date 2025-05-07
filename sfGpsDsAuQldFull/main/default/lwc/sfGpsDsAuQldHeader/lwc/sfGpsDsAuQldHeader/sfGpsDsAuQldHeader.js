@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2024-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.13
+ */
+
 import { LightningElement, api, track, wire } from "lwc";
 import { normaliseString, uniqueId } from "c/sfGpsDsHelpers";
 import { publish, MessageContext } from "lightning/messageService";
@@ -28,7 +37,7 @@ const HEADER_STYLE_VALUES = {
 };
 
 const STATIC_RESOURCE_ICONS_PATH =
-  sfGpsDsAuQldStaticResource + "/assets/img/svg-icons.svg";
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 export default class extends LightningElement {
   static renderMode = "light";
@@ -185,19 +194,15 @@ export default class extends LightningElement {
   }
 
   get computedIconSearchUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__search";
+    return STATIC_RESOURCE_ICONS_PATH + "#search";
   }
 
   get computedIconCloseUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__close";
-  }
-
-  get computedIconHomeUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__home";
+    return STATIC_RESOURCE_ICONS_PATH + "#close";
   }
 
   get computedIconMenuUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__mobile-menu";
+    return STATIC_RESOURCE_ICONS_PATH + "#menu";
   }
 
   get computedSearchButtonClassName() {

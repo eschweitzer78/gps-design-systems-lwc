@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2024-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.11
+ */
+
 import { LightningElement, api, track } from "lwc";
 import {
   normaliseString,
@@ -78,12 +87,14 @@ export default class extends LightningElement {
   @api heroImage;
   @api backgroundImageSm;
   @api backgroundImageLg;
+  @api backgroundImageAlt;
   @api backgroundImageAlignment;
   @api backgroundMinHeight;
   @api buttonPrimary;
   @api buttonSecondary;
   @api linkList;
   @api iconTiles;
+  @api iconTilesLabel;
   @api className;
 
   /* api: mode */
@@ -252,7 +263,7 @@ export default class extends LightningElement {
   /* getters */
 
   get computedHasBreadcrumbsItems() {
-    return this.breadcrumbsItems?.length;
+    return !!this.breadcrumbsItems?.length;
   }
 
   get computedIsDefault() {
@@ -289,19 +300,20 @@ export default class extends LightningElement {
   }
 
   get computedStyle() {
+    const hasI = !!this.backgroundImageLg || this.backgroundImageSm;
     const i = encodeURI(this.backgroundImageLg || this.backgroundImageSm);
 
     return computeClass(
       {
         [`--sfgpsds-au-qld-banner--background-image-lg: url(${encodeURI(
           this.backgroundImageLg
-        )})`]: true,
+        )})`]: this.backgroundImageLg,
         [`--sfgpsds-au-qld-banner--background-image-alignment: ${this.backgroundImageAlignment?.replaceAll(
           CSS_ESCAPES,
           ""
         )}`]: this.backgroundImageAlignment,
-        [`--sfgpsds-au-qld-banner--default-texture: url(${i})`]: i,
-        [`--sfgpsds-au-qld-banner--default-texture-dark: url(${i})`]: i,
+        [`--sfgpsds-au-qld-banner--default-texture: url(${i})`]: hasI,
+        [`--sfgpsds-au-qld-banner--default-texture-dark: url(${i})`]: hasI,
         [`--sfgpsds-au-qld-banner--background-min-height: ${this.backgroundMinHeight?.replaceAll(
           CSS_ESCAPES,
           ""
@@ -367,12 +379,17 @@ export default class extends LightningElement {
       "col-lg-8": !this.heroImage
     };
   }
+
   get computedBreadcrumbsMobileClassName() {
-    return this.computeBreadcrumbsClassName(true);
+    return this.computeBreadcrumbsClassName("mobile");
+  }
+
+  get computedBreadcrumbsTabletClassName() {
+    return this.computeBreadcrumbsClassName("tablet");
   }
 
   get computedBreadcrumbsDesktopClassName() {
-    return this.computeBreadcrumbsClassName(false);
+    return this.computeBreadcrumbsClassName("desktop");
   }
 
   get computedHasImage() {
@@ -387,11 +404,15 @@ export default class extends LightningElement {
   }
 
   get computedBannerImageDesktopStyle() {
-    return `background-image: url(${encodeURI(this.heroImage)})`;
+    return this.heroImage
+      ? `background-image: url(${encodeURI(this.heroImage)})`
+      : null;
   }
 
   get computedBannerImageMobileStyle() {
-    return `background-image: url(${encodeURI(this.backgroundImageSm)})`;
+    return this.backgroundImageSm
+      ? `background-image: url(${encodeURI(this.backgroundImageSm)})`
+      : null;
   }
 
   get computedNavClassName() {
@@ -451,12 +472,13 @@ export default class extends LightningElement {
 
   /* methods */
 
-  computeBreadcrumbsClassName(mobile) {
+  computeBreadcrumbsClassName(type) {
     return computeClass({
       qld__banner__breadcrumbs: true,
-      "qld__banner__breadcrumbs--mobile": mobile,
-      "qld__banner__breadcrumbs--desktop": !mobile,
-      [this._backgroundColour.breadcrumbs]: this._backgroundColor
+      "qld__banner__breadcrumbs--desktop": type === "desktop",
+      "qld__banner__breadcrumbs--mobile": type === "mobile",
+      "qld__banner__breadcrumbs--tablet": type === "tablet",
+      [this._backgroundColour?.breadcrumbs]: this._backgroundColour
     });
   }
 
@@ -467,6 +489,7 @@ export default class extends LightningElement {
   handleSlotChange(event) {
     switch (event.target.name) {
       case "mobileBreadcrumbs":
+      case "tabletBreadcrumbs":
       case "desktopBreadcrumbs":
         this.hasBreadcrumbs = true;
         break;

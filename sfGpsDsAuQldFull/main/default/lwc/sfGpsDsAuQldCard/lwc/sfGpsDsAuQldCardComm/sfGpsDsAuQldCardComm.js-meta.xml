@@ -93,6 +93,14 @@
         editor="c/sfGpsDsStringCpe"
       />
       <property
+        name="tagsMode"
+        type="String"
+        label="Tags mode"
+        description="Display mode of tags with a choice of default, action, info."
+        default="default"
+        datasource="default,action,info"
+      />
+      <property
         name="actions"
         type="String"
         label="Actions"

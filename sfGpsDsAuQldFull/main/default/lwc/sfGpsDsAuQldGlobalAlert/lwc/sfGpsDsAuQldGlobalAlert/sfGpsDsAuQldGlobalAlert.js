@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2024-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.13
+ */
+
 import { LightningElement, api } from "lwc";
 import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
 import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
@@ -6,29 +15,44 @@ const I18N = {
   closeAlert: "Close alert"
 };
 
-const LEVEL_DEFAULT = "default";
+const LEVEL_DEFAULT = "warning";
 const LEVEL_VALUES = {
+  alert: {
+    className: "qld__global-alert--critical",
+    ariaLabel: "Alert",
+    iconName: "alert-danger"
+  },
   critical: {
     className: "qld__global-alert--critical",
-    ariaLabel: "Critial alert",
-    iconName: "qld__icon__critical"
+    ariaLabel: "Alert",
+    iconName: "alert-danger"
+  },
+  warning: {
+    className: "qld__global-alert--default",
+    ariaLabel: "Warning",
+    iconName: "alert-warning"
   },
   default: {
     className: "qld__global-alert--default",
-    ariaLabel: "Alert",
-    iconName: "qld__icon__warning"
+    ariaLabel: "Warning",
+    iconName: "alert-warning"
+  },
+  information: {
+    className: "qld__global-alert--general",
+    ariaLabel: "Information",
+    iconName: "alert-information"
   },
   general: {
     className: "qld__global-alert--general",
-    ariaLabel: "General alert",
-    iconName: "qld__icon__info"
+    ariaLabel: "Information",
+    iconName: "alert-information"
   }
 };
 
 const DISMISSIBLE_DEFAULT = true;
 
 const STATIC_RESOURCE_ICONS_PATH =
-  sfGpsDsAuQldStaticResource + "/assets/img/svg-icons.svg";
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 export default class extends LightningElement {
   @api alertId;
@@ -99,11 +123,11 @@ export default class extends LightningElement {
   }
 
   get computedArrowRightIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__arrow-right";
+    return STATIC_RESOURCE_ICONS_PATH + "#arrow-right";
   }
 
   get computedCloseIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__close";
+    return STATIC_RESOURCE_ICONS_PATH + "#close";
   }
 
   /* event management */

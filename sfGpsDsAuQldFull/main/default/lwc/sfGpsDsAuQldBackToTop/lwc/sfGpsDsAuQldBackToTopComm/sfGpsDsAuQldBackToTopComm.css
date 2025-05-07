@@ -1,3 +1,13 @@
-a.qld__btn.qld__btn--floating.qld__btn--back-to-top.qld__btn--back-to-top--hidden {
-  display: none;
+a.qld__btn.qld__btn--floating.qld__btn--back-to-top.sfgpsdsauqld__btn--back-to-top--show {
+  display: block;
+}
+
+body
+  .sfgpsdsauqld__widgets
+  a.qld__btn.qld__btn--floating.qld__btn--back-to-top {
+  line-height: 1.4;
+}
+
+.sfgpsdsauqld__widgets a.qld__btn.qld__btn--floating.qld__btn--back-to-top svg {
+  margin-left: 0.5rem;
 }

@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <c-sf-gps-ds-configuration-error
     lwc:if={_sfGpsDsErrors}
     errors={_sfGpsDsErrors}
@@ -6,13 +6,11 @@
   </c-sf-gps-ds-configuration-error>
 
   <template lwc:else>
-    <section class={computedClassName} style={computedStyle}>
-      <div lwc:if={container} class="container-fluid">
-        <slot name="Body"></slot>
-      </div>
-      <template lwc:else>
-        <slot name="Body"></slot>
-      </template>
-    </section>
+    <div lwc:if={container} class="container-fluid">
+      <slot name="Body"></slot>
+    </div>
+    <template lwc:else>
+      <slot name="Body"></slot>
+    </template>
   </template>
 </template>

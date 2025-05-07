@@ -1,8 +1,10 @@
 /*
- * Copyright (c) 2024, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2024-2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.10
  */
 
 import { api } from "lwc";
@@ -46,6 +48,10 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
       { title: "" }
     ];
   }
+
+  @api headingLevel;
+  @api cstyle;
+  @api className;
 
   @api set item1Title(value) {
     this._items[0].title = value;
@@ -184,9 +190,6 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
     return this._items[9].active;
   }
 
-  @api cstyle;
-  @api className;
-
   /* api readonly: allExpanded */
 
   @api
@@ -205,7 +208,6 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
 
   get computedClassName() {
     return {
-      js: true,
       "qld__accordion-group": true,
       "qld__accordion-group--dark": this.cstyle === "dark",
       [this.className]: this.className
@@ -231,14 +233,14 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
   /* methods */
 
   mapItem(item, index, length, active) {
-    let indexP1 = index + 1;
+    const indexP1 = index + 1;
     return {
       ...item,
-      index: indexP1,
+      index,
       toggleId: `sfgpsds-au-qld-accordion-item-${indexP1}-toggle`,
       contentId: `sfgpsds-au-qld-accordion-item-${indexP1}-content`,
       inactive: !active,
-      active: active
+      active
     };
   }
 
@@ -276,7 +278,7 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
     this.dispatchEvent(
       new CustomEvent("toggleitem", {
         detail: {
-          index: index,
+          index,
           action: isActive ? OPEN_ACTION : CLOSE_ACTION
         }
       })

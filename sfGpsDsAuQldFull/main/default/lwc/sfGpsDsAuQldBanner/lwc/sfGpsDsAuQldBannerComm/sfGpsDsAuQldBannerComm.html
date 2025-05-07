@@ -20,6 +20,7 @@
     background-colour={backgroundColour}
     background-image-sm={backgroundImageSm}
     background-image-lg={backgroundImageLg}
+    background-image-alt={backgroundImageAlt}
     background-image-alignment={backgroundImageAlignment}
     background-min-height={backgroundMinHeight}
     cta-type={ctaType}
@@ -31,6 +32,7 @@
     class-name={className}
   >
     <slot name="mobileBreadcrumbs" slot="mobileBreadcrumbs"></slot>
+    <slot name="tabletBreadcrumbs" slot="tabletBreadcrumbs"></slot>
     <slot name="desktopBreadcrumbs" slot="desktopBreadcrumbs"></slot>
     <div lwc:if={_abstractHtml} lwc:ref="abstract" lwc:dom="manual"></div>
     <template lwc:else>

@@ -114,6 +114,13 @@
         editor="c/sfGpsDsStringCpe"
       />
       <property
+        name="backgroundImageAlt"
+        type="String"
+        label="Background image alternative text"
+        description="Text displayed should there be an issue loading the image."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
         name="backgroundImageAlignment"
         type="String"
         label="Background image alignment"
@@ -156,6 +163,14 @@
         label="Call to Action configuration"
         description="JSON configuration of the Call to Action for link list and icon tiles."
         editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="iconTilesLabel"
+        type="String"
+        label="Call to Action icon tiles label"
+        description="Aria label used when the CTA is configured as icon tiles."
+        default="Contact details"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"

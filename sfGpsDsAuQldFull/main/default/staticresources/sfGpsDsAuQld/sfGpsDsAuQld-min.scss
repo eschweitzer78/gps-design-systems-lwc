@@ -51,6 +51,8 @@ Components
 --------------------
 */
 
-//@import "@qhealth-design-system/core/src/components/_global/css/**/*.scss";
-@import "@qhealth-design-system/core/src/components/_global/css/**/**/*.scss";
-@import "@qhealth-design-system/core/src/components/**/css/*.scss";
+@import "@qhealth-design-system/core/src/components/_global/css/*/**.scss";
+@import "@qhealth-design-system/core/src/components/_global/css/*/*/**.scss";
+@import "@qhealth-design-system/core/src/components/*/css/**.scss";
+
+@import "./sfGpsDsAuQldWidgets";

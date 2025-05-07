@@ -1,23 +1,30 @@
 /*
- * Copyright (c) 2024, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2024-2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.14
  */
 
 import { LightningElement, api, track } from "lwc";
 import { normaliseString, isArray } from "c/sfGpsDsHelpers";
+import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
 import OnWindowResize from "c/sfGpsDsOnWindowResize";
 import OnClickOutside from "c/sfGpsDsOnClickOutside";
 
 const MODE_DEFAULT = "default";
 const MODE_DESKTOP = "desktop";
 const MODE_MOBILE = "mobile";
-const MODE_VALUES = [MODE_DEFAULT, MODE_DESKTOP, MODE_MOBILE];
+const MODE_TABLET = "tablet";
+const MODE_VALUES = [MODE_DEFAULT, MODE_DESKTOP, MODE_MOBILE, MODE_TABLET];
 
 const I18N = {
   overflowMenuAriaLabel: "Overflow menu"
 };
+
+const STATIC_RESOURCE_ICONS_PATH =
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 export default class extends LightningElement {
   @api label = "breadcrumbs";
@@ -67,12 +74,16 @@ export default class extends LightningElement {
     return I18N;
   }
 
-  get showDesktop() {
+  get computedShowDesktop() {
     return this._mode === MODE_DEFAULT || MODE_DESKTOP;
   }
 
-  get showMobile() {
+  get computedShowMobile() {
     return this._mode === MODE_DEFAULT || MODE_MOBILE;
+  }
+
+  get computedShowTablet() {
+    return this._mode === MODE_DEFAULT || MODE_TABLET;
   }
 
   get computedClassName() {
@@ -114,6 +125,10 @@ export default class extends LightningElement {
       "qld__accordion--closed": !this._isOverflowOpen,
       "qld__accordion--open": this._isOverflowOpen
     };
+  }
+
+  get computedMoreHorizontalIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#more-horizontal";
   }
 
   /* methods */

@@ -15,6 +15,13 @@
             data-idx={index}
             onclick={handleClick}
           >
+            <svg
+              class="qld__icon qld__icon--sm"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <use href={computedCloseIconUrl}></use>
+            </svg>
             <span class="sr-only"> {tag.closeHint} </span>
           </button>
         </div>

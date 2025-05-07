@@ -43,9 +43,43 @@ export default class extends SfGpsDsLwc {
 
   handleToggleItem(event) {
     const targetIndex = event.detail.index;
+
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "> handleToggleItem",
+        targetIndex,
+        JSON.stringify(this.computedH1s)
+      );
+
     this.computedH1s = this.computedH1s.map((h1, index) => ({
       ...h1,
       active: index === targetIndex ? !h1.active : h1.active
     }));
+
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "< handleToggleItem",
+        JSON.stringify(this.computedH1s)
+      );
+  }
+
+  handleToggleAll(event) {
+    const isOpen = event.detail === "open";
+
+    if (DEBUG) console.debug(CLASS_NAME, "> handleToggleAll", isOpen);
+
+    this.computedH1s = this.computedH1s.map((h1) => ({
+      ...h1,
+      active: isOpen
+    }));
+
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "< handleToggleAll",
+        JSON.stringify(this.computedH1s)
+      );
   }
 }

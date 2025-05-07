@@ -15,6 +15,17 @@
       <div lwc:if={computedIsDefault} class="qld__banner__content">
         <c-sf-gps-ds-au-qld-breadcrumbs
           lwc:if={computedHasBreadcrumbsItems}
+          mode="tablet"
+          items={breadcrumbsItems}
+          class-name="qld__banner__breadcrumbs qld__banner__breadcrumbs--tablet"
+        >
+        </c-sf-gps-ds-au-qld-breadcrumbs>
+        <template lwc:else>
+          <slot name="tabletBreadcrumbs"></slot>
+        </template>
+
+        <c-sf-gps-ds-au-qld-breadcrumbs
+          lwc:if={computedHasBreadcrumbsItems}
           mode="desktop"
           items={breadcrumbsItems}
           class-name="qld__banner__breadcrumbs qld__banner__breadcrumbs--desktop"
@@ -30,7 +41,28 @@
       <div lwc:else class="qld__banner__wrapper">
         <div class="qld__banner__main row">
           <template lwc:if={computedIsBasic}>
-            <div class="qld__banner__content col-xs-12">
+            <div lwc:if={backgroundImageSm} class="qld__banner__hero col-xs-12">
+              <div
+                class="qld__banner__image qld__banner__image--desktop-hide"
+                style={computedBannerImageMobileStyle}
+              ></div>
+            </div>
+
+            <div class="qld__banner__content col-xs-12 col-md-12 col-lg-12">
+              <c-sf-gps-ds-au-qld-breadcrumbs
+                lwc:if={computedHasBreadcrumbsItems}
+                mode="tablet"
+                items={breadcrumbsItems}
+                class-name={computedBreadcrumbsTabletClassName}
+              >
+              </c-sf-gps-ds-au-qld-breadcrumbs>
+              <template lwc:else>
+                <slot
+                  name="tabletBreadcrumbs"
+                  onslotchange={handleSlotChange}
+                ></slot>
+              </template>
+
               <c-sf-gps-ds-au-qld-breadcrumbs
                 lwc:if={computedHasBreadcrumbsItems}
                 mode="desktop"
@@ -38,7 +70,6 @@
                 class-name={computedBreadcrumbsDesktopClassName}
               >
               </c-sf-gps-ds-au-qld-breadcrumbs>
-
               <template lwc:else>
                 <slot
                   name="desktopBreadcrumbs"
@@ -75,12 +106,25 @@
             <div class={computedIntermediateBannerContentClassName}>
               <c-sf-gps-ds-au-qld-breadcrumbs
                 lwc:if={computedHasBreadcrumbsItems}
+                mode="tablet"
+                items={breadcrumbsItems}
+                class-name={computedBreadcrumbsTabletClassName}
+              >
+              </c-sf-gps-ds-au-qld-breadcrumbs>
+              <template lwc:else>
+                <slot
+                  name="tabletBreadcrumbs"
+                  onslotchange={handleSlotChange}
+                ></slot>
+              </template>
+
+              <c-sf-gps-ds-au-qld-breadcrumbs
+                lwc:if={computedHasBreadcrumbsItems}
                 mode="desktop"
                 items={breadcrumbsItems}
                 class-name={computedBreadcrumbsDesktopClassName}
               >
               </c-sf-gps-ds-au-qld-breadcrumbs>
-
               <template lwc:else>
                 <slot
                   name="desktopBreadcrumbs"
@@ -126,6 +170,8 @@
               <div
                 lwc:if={backgroundImageSm}
                 class="qld__banner__image qld__banner__image--background qld__banner__image--desktop-hide"
+                role="img"
+                aria-label={backgroundImageAlt}
                 style={computedBannerImageMobileStyle}
               ></div>
             </div>
@@ -134,12 +180,25 @@
             <div class="qld__banner__content col-xs-12 col-md-6 col-lg-7">
               <c-sf-gps-ds-au-qld-breadcrumbs
                 lwc:if={computedHasBreadcrumbsItems}
+                mode="tablet"
+                items={breadcrumbsItems}
+                class-name={computedBreadcrumbsTabletClassName}
+              >
+              </c-sf-gps-ds-au-qld-breadcrumbs>
+              <template lwc:else>
+                <slot
+                  name="tabletBreadcrumbs"
+                  onslotchange={handleSlotChange}
+                ></slot>
+              </template>
+
+              <c-sf-gps-ds-au-qld-breadcrumbs
+                lwc:if={computedHasBreadcrumbsItems}
                 mode="desktop"
                 items={breadcrumbsItems}
                 class-name={computedBreadcrumbsDesktopClassName}
               >
               </c-sf-gps-ds-au-qld-breadcrumbs>
-
               <template lwc:else>
                 <slot
                   name="desktopBreadcrumbs"
@@ -226,7 +285,10 @@
                 lwc:elseif={computedIsCtaIconTiles}
                 class={computedBannerNavClassName}
               >
-                <nav class={computedTileNavClassName}>
+                <nav
+                  class={computedTileNavClassName}
+                  aria-label={iconTilesLabel}
+                >
                   <ul class="qld__tile-nav__list">
                     <template for:each={_navItems} for:item="nav">
                       <li key={nav.index} class="qld__tile-nav__item">

@@ -16,7 +16,7 @@
         description="Indicates which breadcrumb should be rendered with a choice of desktop, mobile or default (both)."
         required="true"
         default="default"
-        datasource="default,desktop,mobile"
+        datasource="default,desktop,mobile,tablet"
       />
       <property
         name="label"
