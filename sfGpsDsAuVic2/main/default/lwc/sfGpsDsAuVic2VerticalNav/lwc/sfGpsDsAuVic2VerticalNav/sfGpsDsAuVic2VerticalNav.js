@@ -2,9 +2,10 @@ import { LightningElement, api } from "lwc";
 import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
 import ExpandableStateMixin from "c/sfGpsDsAuVic2ExpandableStateMixin";
 
-const DEBUG = false;
-
 const PREVENTDEFAULT_DEFAULT = false;
+
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2VerticalNav";
 
 export default class extends ExpandableStateMixin(LightningElement) {
   @api title;
@@ -38,56 +39,13 @@ export default class extends ExpandableStateMixin(LightningElement) {
     };
   }
 
-  get decoratedItems() {
-    if (DEBUG)
-      console.log(
-        "> SfGpsDsAuVic2VerticalNav.decoratedItems",
-        JSON.stringify(this._items)
-      );
-
-    // Because the top level items with children aren't actually links, we need to ensure that
-    // the first child of each top level item is a link to that page. These links
-    // have the same label as the parent item.
-
-    const docUrl = new URL(document.URL);
-    const pathname = docUrl.pathname;
-    const rv = (this._items || []).map((baseItem) => {
-      const isCurrentPage =
-        baseItem.url === pathname ||
-        (baseItem.url && pathname.startsWith(baseItem.url + "/"));
-
-      return {
-        ...baseItem,
-        items:
-          baseItem.url && baseItem.items?.length
-            ? [
-                {
-                  id: baseItem.id,
-                  text: baseItem.text,
-                  url: baseItem.url,
-                  active: isCurrentPage
-                },
-                ...baseItem.items
-              ]
-            : baseItem.items
-      };
-    });
-
-    if (DEBUG)
-      console.log(
-        "< SfGpsDsAuVic2VerticalNav.decoratedItems",
-        JSON.stringify(rv)
-      );
-
-    return rv;
-  }
-
   /* methods */
 
   mapItem(item, index, length, active) {
     if (DEBUG)
-      console.log(
-        "> SfGpsDsAuVic2VerticalNav.mapItem",
+      console.debug(
+        CLASS_NAME,
+        "> mapItem",
         JSON.stringify(item),
         index,
         length,
@@ -112,46 +70,75 @@ export default class extends ExpandableStateMixin(LightningElement) {
         baseItem.items && baseItem.items.length === 0 ? null : baseItem.items
     };
 
-    if (DEBUG)
-      console.log("< SfGpsDsAuVic2VerticalNav.mapItem", JSON.stringify(rv));
+    if (DEBUG) console.debug(CLASS_NAME, "< mapItem", JSON.stringify(rv));
 
     return rv;
   }
+
+  /*
+  _itemMap;
+
+  addToMap(itemList) {
+    for (let index = 0; index < itemList.length; index++) {
+      const item = itemList[index];
+      this._itemMap.set(item.id, item);
+
+      if (item.items?.length) {
+        this.addToMap(item.items);
+      }
+    }
+  }
+    */
 
   toggleId(itemId) {
     return `rpl-vertical-nav-${itemId}-toggle`;
   }
 
+  /* overrides */
+  /*
+  @api 
+  get items() {
+    return super.items;
+  }
+
+  set items(value) {
+    super.items = value;
+
+    this._itemMap = new Map();
+    this.addToMap(this._items);
+  }
+  */
+
   /* event management */
 
-  handleToggle(event) {
-    const itemId = event.target.dataset.itemId;
-    const item = this.getItemById(itemId);
-
-    this.toggleItem(itemId);
+  handleToggleMenuItem(event) {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "handleToggleMenuItem",
+        JSON.stringify(event.detail)
+      );
+    }
 
     this.dispatchEvent(
       new CustomEvent("togglemenuitem", {
-        detail: {
-          id: this.toggleId(itemId),
-          action: this.isItemExpanded(itemId) ? "open" : "close",
-          text: item.text,
-          name: this.title
-        }
+        detail: event.detail
       })
     );
   }
 
-  handleClick(event) {
-    if (this._preventDefault) {
-      event.preventDefault();
+  handleItemClick(event) {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "handleItemClick",
+        JSON.stringify(event.detail)
+      );
     }
-
-    const itemId = event.target.dataset.itemId;
 
     this.dispatchEvent(
       new CustomEvent("navigate", {
-        detail: itemId,
+        detail: event.detail?.id,
         composed: true,
         bubbles: true
       })

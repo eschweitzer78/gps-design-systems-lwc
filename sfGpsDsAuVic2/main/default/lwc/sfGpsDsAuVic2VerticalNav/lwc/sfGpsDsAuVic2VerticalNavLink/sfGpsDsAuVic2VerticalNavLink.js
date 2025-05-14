@@ -2,6 +2,10 @@ import { LightningElement, api } from "lwc";
 import { normaliseBoolean, computeClass } from "c/sfGpsDsHelpers";
 
 const ACTIVE_DEFAULT = false;
+const PREVENTDEFAULT_DEFAULT = false;
+
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2VerticalNavLink";
 
 export default class extends LightningElement {
   @api text;
@@ -27,6 +31,24 @@ export default class extends LightningElement {
     });
   }
 
+  /* api: preventDefault */
+
+  _preventDefaultOriginal = PREVENTDEFAULT_DEFAULT;
+  _preventDefault = PREVENTDEFAULT_DEFAULT;
+
+  @api
+  get preventDefault() {
+    return this._preventDefaultOriginal;
+  }
+
+  set preventDefault(value) {
+    this._preventDefaultOriginal = value;
+    this._preventDefault = normaliseBoolean(value, {
+      acceptString: true,
+      fallbackValue: PREVENTDEFAULT_DEFAULT
+    });
+  }
+
   /* computed */
 
   get computedClassName() {
@@ -41,7 +63,9 @@ export default class extends LightningElement {
 
   /* event management */
 
-  handleClick() {
+  handleClick(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "handleClick", event.target);
+
     this.dispatchEvent(
       new CustomEvent("itemclick", {
         detail: {

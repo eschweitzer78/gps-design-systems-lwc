@@ -1,0 +1,60 @@
+<template>
+  <ul class={computedClassName}>
+    <template for:each={decoratedItems} for:item="item">
+      <li key={item.index} class="rpl-vertical-nav__list-item">
+        <template lwc:if={item.items}>
+          <c-sf-gps-ds-au-vic2-vertical-nav-toggle
+            id={item.fullId}
+            text={item.text}
+            onclick={handleToggle}
+            data-item-id={item.id}
+          >
+          </c-sf-gps-ds-au-vic2-vertical-nav-toggle>
+
+          <c-sf-gps-ds-au-vic2-expandable
+            labelledby={item.fullId}
+            is-hidden={item.ariaHidden}
+            expanded={item.active}
+            class-name="rpl-vertical-nav__list-item-children"
+          >
+            <c-sf-gps-ds-au-vic2-vertical-nav-list
+              items={item.items}
+              level={_childLevel}
+              is-expanded={item.active}
+              class-name="rpl-vertical-nav__list-item-children"
+              prevent-default={_preventDefault}
+              onitemclick={handleNavListItemClick}
+              ontogglemenuitem={handleNavListToggle}
+            >
+            </c-sf-gps-ds-au-vic2-vertical-nav-list>
+          </c-sf-gps-ds-au-vic2-expandable>
+        </template>
+
+        <template lwc:else>
+          <c-sf-gps-ds-au-vic2-vertical-nav-link
+            text={item.text}
+            href={item.url}
+            active={item.isLinkActive}
+            show-child-icon={item.showChildIcon}
+            tab-index={_tabindex}
+            prevent-default={_preventDefault}
+            data-item-id={item.id}
+            onitemclick={handleItemClick}
+          >
+          </c-sf-gps-ds-au-vic2-vertical-nav-link>
+
+          <c-sf-gps-ds-au-vic2-vertical-nav-list
+            lwc:if={item.items}
+            items={item.items}
+            level={_childLevel}
+            is-expanded={isExpanded}
+            prevent-default={_preventDefault}
+            onitemclick={handleNavListItemClick}
+            ontogglemenuitem={handleNavListToggle}
+          >
+          </c-sf-gps-ds-au-vic2-vertical-nav-list>
+        </template>
+      </li>
+    </template>
+  </ul>
+</template>
