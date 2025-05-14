@@ -190,12 +190,14 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   /* lifecycle */
 
   connectedCallback() {
-    if (DEBUG) console.log(CLASS_NAME, "> connectedCallback");
+    if (DEBUG) console.debug(CLASS_NAME, "> connectedCallback");
 
     this._connected = true;
     this.mode = "combobox-auto";
     this._showNoResults = false;
     this.preventDeselect = true;
+
+    if (DEBUG) console.debug(CLASS_NAME, "< connectedCallback");
   }
 
   disconnectedCallback() {

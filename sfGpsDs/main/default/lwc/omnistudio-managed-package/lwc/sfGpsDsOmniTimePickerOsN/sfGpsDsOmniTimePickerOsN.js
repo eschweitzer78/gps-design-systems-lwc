@@ -58,7 +58,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioTimePicker) {
   }
 
   setTime() {
-    if (DEBUG) console.log(CLASS_NAME, "setTime");
+    if (DEBUG) console.debug(CLASS_NAME, "setTime");
     this.sfGpsDsClearCustomValidation(false);
     super.setTime();
   }
@@ -66,9 +66,9 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioTimePicker) {
   @api
   get validationMessage() {
     if (DEBUG)
-      console.log(CLASS_NAME, "> validationMessage", "label: " + this.label);
+      console.debug(CLASS_NAME, "> validationMessage", "label: " + this.label);
     const rv = this.sfGpsDsErrorMessage;
-    if (DEBUG) console.log(CLASS_NAME, "< validationMessage", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< validationMessage", rv);
 
     return rv;
   }

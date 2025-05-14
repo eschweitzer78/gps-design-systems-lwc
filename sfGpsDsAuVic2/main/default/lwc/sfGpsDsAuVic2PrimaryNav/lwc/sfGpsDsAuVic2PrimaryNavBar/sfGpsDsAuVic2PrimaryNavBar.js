@@ -15,7 +15,7 @@ export default class extends FocusMixin(
   LightningElement,
   function () {
     const uaSlot = this.querySelectorAll("*[slot='userAction']");
-    console.log("found slot", uaSlot);
+    if (DEBUG) console.debug("found slot", uaSlot);
   },
   "user-actions"
 ) {
@@ -39,14 +39,14 @@ export default class extends FocusMixin(
   }
 
   set items(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set items", JSON.stringify(value));
+    if (DEBUG) console.debug(CLASS_NAME, "> set items", JSON.stringify(value));
 
     this._itemsOriginal = value;
     this._itemsById = new Map();
     this._items = this.itemsMapper(value);
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< set items",
         JSON.stringify(this._items),
@@ -56,7 +56,11 @@ export default class extends FocusMixin(
 
   get decoratedItems() {
     if (DEBUG)
-      console.log(CLASS_NAME, "> decoratedItems", JSON.stringify(this._items));
+      console.debug(
+        CLASS_NAME,
+        "> decoratedItems",
+        JSON.stringify(this._items)
+      );
 
     const rv = (this._items || []).map((item) => ({
       ...item,
@@ -64,7 +68,8 @@ export default class extends FocusMixin(
       _focusKey: `list:1:${item.id}`
     }));
 
-    if (DEBUG) console.log(CLASS_NAME, "< decoratedItems", JSON.stringify(rv));
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< decoratedItems", JSON.stringify(rv));
 
     return rv;
   }
@@ -138,7 +143,7 @@ export default class extends FocusMixin(
 
   getItemById(id) {
     const rv = id ? this._itemsById.get(id) : null;
-    if (DEBUG) console.log(CLASS_NAME, "getItemById", id, JSON.stringify(rv));
+    if (DEBUG) console.debug(CLASS_NAME, "getItemById", id, JSON.stringify(rv));
     return rv;
   }
 

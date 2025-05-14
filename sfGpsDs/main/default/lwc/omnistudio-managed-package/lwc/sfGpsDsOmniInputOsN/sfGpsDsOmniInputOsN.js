@@ -7,26 +7,26 @@ const CLASS_NAME = "SfGpsDsOmniInputOsN";
 
 export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioInput) {
   sfGpsDsTriggerInputEvent(event) {
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsTriggerInputEvent");
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsTriggerInputEvent");
     this.sfGpsDsClearCustomValidation(false);
     super.triggerInputEvent(event);
   }
 
   sfGpsDsValidateError(event, isMaskedInput) {
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsValidateError");
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsValidateError");
     this.sfGpsDsClearCustomValidation(false);
     super.validateError(event, isMaskedInput);
   }
 
   @api setCustomValidation(message) {
-    if (DEBUG) console.log(CLASS_NAME, "> setCustomValidation", message);
+    if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidation", message);
     super.setCustomValidation(message);
 
     if (this.isCustomLwc && this.childInput?.setCustomValidation) {
       this.childInput.setCustomValidation(message);
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< setCustomValidation");
+    if (DEBUG) console.debug(CLASS_NAME, "< setCustomValidation");
   }
 
   @api sfGpsDsHasCustomValidation() {
@@ -34,12 +34,12 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioInput) {
       this.isCustomLwc && this.childInput?.sfGpsDsHasCustomValidation
         ? this.childInput.sfGpsDsHasCustomValidation()
         : super.sfGpsDsHasCustomValidation();
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
     return rv;
   }
 
   @api sfGpsDsClearCustomValidation() {
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsClearCustomValidation");
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsClearCustomValidation");
     this._sfGpsDsCustomValidation = "";
 
     if (this.isCustomLwc && this.childInput?.sfGpsDsClearCustomValidation) {
@@ -52,7 +52,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioInput) {
       this.isCustomLwc && this.childInput?.sfGpsDsGetCustomValidation
         ? this.childInput.sfGpsDsGetCustomValidation()
         : super.sfGpsDsGetCustomValidation();
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsGetCustomValidation", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsGetCustomValidation", rv);
     return rv;
   }
 
@@ -60,7 +60,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioInput) {
     const scv = super.checkValidity(); // it's important it always gets called as it fires events
     const rv =
       !this.isCustomLwc && this.sfGpsDsHasCustomValidation() ? false : scv;
-    if (DEBUG) console.log(CLASS_NAME, "checkValidity", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "checkValidity", rv);
     return rv;
   }
 
@@ -68,7 +68,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioInput) {
     const srv = super.reportValidity();
     const rv =
       !this.isCustomLwc && this.sfGpsDsHasCustomValidation() ? false : srv;
-    if (DEBUG) console.log(CLASS_NAME, "reportValidity", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "reportValidity", rv);
     return rv;
   }
 
@@ -77,21 +77,21 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioInput) {
 
   get validity() {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> validity",
         "label: " + this.label,
         "isCustomLwc: " + this.isCustomLwc
       );
     const rv = this.isCustomLwc ? this.childInput.validity : super.validity;
-    if (DEBUG) console.log(CLASS_NAME, "< validity", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< validity", rv);
 
     return rv;
   }
 
   get validationMessage() {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> validationMessage",
         "label: " + this.label,
@@ -100,7 +100,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioInput) {
     const rv = this.isCustomLwc
       ? this.childInput.validationMessage
       : this.sfGpsDsErrorMessage;
-    if (DEBUG) console.log(CLASS_NAME, "< validationMessage", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< validationMessage", rv);
 
     return rv;
   }

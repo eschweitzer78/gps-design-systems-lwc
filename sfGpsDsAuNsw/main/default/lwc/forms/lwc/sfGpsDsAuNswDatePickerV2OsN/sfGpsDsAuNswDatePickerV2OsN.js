@@ -181,7 +181,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   set messageWhenValueMissing(value) {
     this._messageWhenValueMissing = value;
-    if (DEBUG) console.log(CLASS_NAME, "set messageWhenValueMissing", value);
+    if (DEBUG) console.debug(CLASS_NAME, "set messageWhenValueMissing", value);
   }
 
   /* api: messageWhenBadInput */
@@ -197,7 +197,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   set messageWhenBadInput(value) {
     this._messageWhenBadInput = value;
-    if (DEBUG) console.log(CLASS_NAME, "set messageWhenBadInput", value);
+    if (DEBUG) console.debug(CLASS_NAME, "set messageWhenBadInput", value);
   }
 
   /* api: messageWhenRangeUnderflow */
@@ -213,7 +213,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   set messageWhenRangeUnderflow(value) {
     this._messageWhenRangeUnderflow = value;
-    if (DEBUG) console.log(CLASS_NAME, "set messageWhenRangeUnderflow", value);
+    if (DEBUG)
+      console.debug(CLASS_NAME, "set messageWhenRangeUnderflow", value);
   }
 
   /* api: messageWhenRangeOverflow */
@@ -227,7 +228,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   set messageWhenRangeOverflow(value) {
     this._messageWhenRangeOverflow = value;
-    if (DEBUG) console.log(CLASS_NAME, "set messageWhenRangeOverflow", value);
+    if (DEBUG) console.debug(CLASS_NAME, "set messageWhenRangeOverflow", value);
   }
 
   /* api: format */
@@ -239,13 +240,13 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   get format() {
     const rv = this._format || dateFormat || "YYYY-MM-DD";
 
-    if (DEBUG) console.log(CLASS_NAME, "get format", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "get format", rv);
 
     return rv;
   }
 
   set format(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set format", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set format", value);
 
     this._formatOriginal = value;
     this._format = value || dateFormat || "YYYY-MM-DD";
@@ -253,7 +254,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     this.setMaxDate();
     this.updateDisplayValue();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set format", this._format);
+    if (DEBUG) console.debug(CLASS_NAME, "< set format", this._format);
   }
 
   /* api: min, max */
@@ -270,12 +271,12 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   set max(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set max", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set max", value);
 
     this._max = value;
     this.setMaxDate();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set format", this._max);
+    if (DEBUG) console.debug(CLASS_NAME, "< set format", this._max);
   }
 
   @api
@@ -284,12 +285,12 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   set min(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set min", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set min", value);
 
     this._min = value;
     this.setMinDate();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set min", this._min);
+    if (DEBUG) console.debug(CLASS_NAME, "< set min", this._min);
   }
 
   setMinDate() {
@@ -312,26 +313,26 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   @api
   get value() {
-    if (DEBUG) console.log(CLASS_NAME, "> get value");
+    if (DEBUG) console.debug(CLASS_NAME, "> get value");
 
     const rv = this._value;
 
-    if (DEBUG) console.log(CLASS_NAME, "< get value", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< get value", rv);
 
     return rv;
   }
 
   set value(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set value", value, typeof value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set value", value, typeof value);
 
     this.setValue(value);
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< set value", this._value, typeof this._value);
+      console.debug(CLASS_NAME, "< set value", this._value, typeof this._value);
   }
 
   setValue(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> setValue", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> setValue", value);
 
     this.sfGpsDsClearCustomValidation();
     value = this.parseValue(value);
@@ -340,11 +341,11 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     this.updateDisplayValue();
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< setValue", this._value, typeof this._value);
+      console.debug(CLASS_NAME, "< setValue", this._value, typeof this._value);
   }
 
   setAndDispatchValue(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> setAndDispatchValue", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> setAndDispatchValue", value);
 
     this.setValue(value);
 
@@ -362,14 +363,14 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       })
     );
 
-    if (DEBUG) console.log(CLASS_NAME, "< setAndDispatchValue");
+    if (DEBUG) console.debug(CLASS_NAME, "< setAndDispatchValue");
   }
 
   async updateDisplayValue() {
     const val = this._parsedValue;
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> updateDisplayValue",
         val?.isValid() ? val?.toISOString() : "invalid date"
@@ -393,7 +394,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     }
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< updateDisplayValue",
         this._displayValue,
@@ -413,7 +414,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   set outputFormat(val) {
-    if (DEBUG) console.log(CLASS_NAME, "> set outputFormat", val);
+    if (DEBUG) console.debug(CLASS_NAME, "> set outputFormat", val);
 
     this._outputFormat = val || DEFAULT_OUTPUT_FORMAT;
     this.updateDisplayValue();
@@ -421,7 +422,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     this.setMaxDate();
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< set outputFormat", this._outputFormat);
+      console.debug(CLASS_NAME, "< set outputFormat", this._outputFormat);
   }
 
   /* api: outputType */
@@ -588,7 +589,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   resetDayValue(day) {
-    if (DEBUG) console.log(CLASS_NAME, "> resetDayValue", day);
+    if (DEBUG) console.debug(CLASS_NAME, "> resetDayValue", day);
 
     const totDays = this.daysInMonth(this.currentYear, this.currentMonth);
 
@@ -608,12 +609,12 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       if (target) target.focus();
     });
 
-    if (DEBUG) console.log(CLASS_NAME, "< resetDayValue", this.currentDay);
+    if (DEBUG) console.debug(CLASS_NAME, "< resetDayValue", this.currentDay);
   }
 
   toggleCalendar(eventOrValue = null) {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> toggleCalendar",
         eventOrValue,
@@ -631,65 +632,66 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       this.pickerVisible = !this.pickerVisible;
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< toggleCalendar", this.pickerVisible);
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< toggleCalendar", this.pickerVisible);
   }
 
   showCalendar(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> showCalendar");
+    if (DEBUG) console.debug(CLASS_NAME, "> showCalendar");
 
     if (!this.readOnly) this.toggleCalendar(event);
 
-    if (DEBUG) console.log(CLASS_NAME, "< showCalendar");
+    if (DEBUG) console.debug(CLASS_NAME, "< showCalendar");
   }
 
   hideCalendar() {
-    if (DEBUG) console.log(CLASS_NAME, "> hideCalendar");
+    if (DEBUG) console.debug(CLASS_NAME, "> hideCalendar");
 
     this.toggleCalendar(false);
 
-    if (DEBUG) console.log(CLASS_NAME, "< hideCalendar");
+    if (DEBUG) console.debug(CLASS_NAME, "< hideCalendar");
   }
 
   showNextMonth() {
-    if (DEBUG) console.log(CLASS_NAME, "> showNextMonth");
+    if (DEBUG) console.debug(CLASS_NAME, "> showNextMonth");
 
     this.currentYear =
       this.currentMonth === 11 ? this.currentYear + 1 : this.currentYear;
     this.currentMonth = (this.currentMonth + 1) % 12;
     this.currentDay = this.checkDayInMonth();
 
-    if (DEBUG) console.log(CLASS_NAME, "< showNextMonth");
+    if (DEBUG) console.debug(CLASS_NAME, "< showNextMonth");
   }
 
   showPrevMonth() {
-    if (DEBUG) console.log(CLASS_NAME, "> showPrevMonth");
+    if (DEBUG) console.debug(CLASS_NAME, "> showPrevMonth");
 
     this.currentYear =
       this.currentMonth === 0 ? this.currentYear - 1 : this.currentYear;
     this.currentMonth = this.currentMonth === 0 ? 11 : this.currentMonth - 1;
     this.currentDay = this.checkDayInMonth();
 
-    if (DEBUG) console.log(CLASS_NAME, "< showPrevMonth");
+    if (DEBUG) console.debug(CLASS_NAME, "< showPrevMonth");
   }
 
   showNextYear() {
-    if (DEBUG) console.log(CLASS_NAME, "> showNextYear");
+    if (DEBUG) console.debug(CLASS_NAME, "> showNextYear");
 
     this.currentYear += 1;
     this.currentMonth %= 12;
     this.currentDay = this.checkDayInMonth();
 
-    if (DEBUG) console.log(CLASS_NAME, "< showNextYear");
+    if (DEBUG) console.debug(CLASS_NAME, "< showNextYear");
   }
 
   showPrevYear() {
-    if (DEBUG) console.log(CLASS_NAME, "> showPrevYear");
+    if (DEBUG) console.debug(CLASS_NAME, "> showPrevYear");
 
     this.currentYear -= 1;
     this.currentMonth %= 12;
     this.currentDay = this.checkDayInMonth();
 
-    if (DEBUG) console.log(CLASS_NAME, "< showPrevYear");
+    if (DEBUG) console.debug(CLASS_NAME, "< showPrevYear");
   }
 
   checkDayInMonth() {
@@ -716,13 +718,13 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    */
 
   resetCalendar() {
-    if (DEBUG) console.log(CLASS_NAME, "> resetCalendar");
+    if (DEBUG) console.debug(CLASS_NAME, "> resetCalendar");
 
     let currentDate = this._parsedValue?.isValid()
       ? this._parsedValue?.toDate()
       : null;
 
-    if (DEBUG) console.log(CLASS_NAME, "= resetCalendar", currentDate);
+    if (DEBUG) console.debug(CLASS_NAME, "= resetCalendar", currentDate);
 
     this.currentDay = this.getCurrentDay(currentDate);
     this.currentMonth = this.getCurrentMonth(currentDate);
@@ -733,7 +735,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     this.selectedYear = currentDate ? this.currentYear : false;
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< resetCalendar",
         this.selectedDay,
@@ -778,7 +780,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   selectDate(day, month, year) {
-    if (DEBUG) console.log(CLASS_NAME, "> selectDate", day, month, year);
+    if (DEBUG) console.debug(CLASS_NAME, "> selectDate", day, month, year);
 
     this.dateSelected = true;
     this.selectedDay = day;
@@ -797,7 +799,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
     this.hideCalendar();
 
-    if (DEBUG) console.log(CLASS_NAME, "< selectDate");
+    if (DEBUG) console.debug(CLASS_NAME, "< selectDate");
   }
 
   placeCalendar() {
@@ -829,11 +831,17 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   formatValue(date, outputFormat = true) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> formatValue", date, typeof date, outputFormat);
+      console.debug(
+        CLASS_NAME,
+        "> formatValue",
+        date,
+        typeof date,
+        outputFormat
+      );
 
     let rv = null;
 
-    if (DEBUG) console.log(CLASS_NAME, "= formatValue", isValidDate(date));
+    if (DEBUG) console.debug(CLASS_NAME, "= formatValue", isValidDate(date));
 
     if (isValidDate(date)) {
       rv =
@@ -842,7 +850,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
           : date;
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< formatValue", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< formatValue", rv);
     return rv;
   }
 
@@ -856,22 +864,22 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    */
 
   parseValue(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> parseValue", value, typeof value);
+    if (DEBUG) console.debug(CLASS_NAME, "> parseValue", value, typeof value);
 
     let rv = null;
 
     if (value && value !== "") {
       if (isDate(value) || value instanceof Number) {
-        if (DEBUG) console.log(CLASS_NAME, "= parseValue date or number");
+        if (DEBUG) console.debug(CLASS_NAME, "= parseValue date or number");
         rv = new Date(value);
       } else if (value.match(ISO8601_PATTERN)) {
-        if (DEBUG) console.log(CLASS_NAME, "= parseValue iso8601 string");
+        if (DEBUG) console.debug(CLASS_NAME, "= parseValue iso8601 string");
         rv = parseIso8601(value);
       }
 
       if (rv == null) {
         if (DEBUG)
-          console.log(
+          console.debug(
             CLASS_NAME,
             "= parseValue other format",
             "outputFormat",
@@ -881,7 +889,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         let result = dayjs(value, this.outputFormat);
 
         if (DEBUG)
-          console.log(
+          console.debug(
             CLASS_NAME,
             "= parseValue other format",
             "daysjs",
@@ -890,11 +898,11 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
         if (value === result.format(this.outputFormat)) {
           if (DEBUG)
-            console.log(CLASS_NAME, "= parseValue matches outputFormat");
+            console.debug(CLASS_NAME, "= parseValue matches outputFormat");
           rv = result.toDate();
         } else {
           if (DEBUG)
-            console.log(
+            console.debug(
               CLASS_NAME,
               "= parseValue trying format on file",
               this.format
@@ -902,18 +910,18 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
           result = dayjs(value, this.format);
 
           if (value === result.format(this.format)) {
-            if (DEBUG) console.log(CLASS_NAME, "= parseValue matches format");
+            if (DEBUG) console.debug(CLASS_NAME, "= parseValue matches format");
             rv = result.toDate();
           } else {
             if (DEBUG)
-              console.log(CLASS_NAME, "= parseValue did not match format");
+              console.debug(CLASS_NAME, "= parseValue did not match format");
             rv = null;
           }
         }
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< parseValue", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< parseValue", rv);
 
     return rv;
   }
@@ -927,7 +935,13 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   parseInput(input) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> parseInput", input, typeof input, this.format);
+      console.debug(
+        CLASS_NAME,
+        "> parseInput",
+        input,
+        typeof input,
+        this.format
+      );
 
     let rv = null;
 
@@ -937,7 +951,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       const date = day.toDate();
 
       if (DEBUG) {
-        console.log(
+        console.debug(
           CLASS_NAME,
           "= parseInput",
           "dayjs",
@@ -956,7 +970,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< parseInput", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< parseInput", rv);
 
     return rv;
   }
@@ -986,7 +1000,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   /* ---------------- */
 
   handleAccept() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleAccept");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleAccept");
 
     const day = this.refs.body.querySelector("button[tabindex='0']");
 
@@ -998,11 +1012,11 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       );
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleAccept");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleAccept");
   }
 
   handleBodyClick(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleBodyClick");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleBodyClick");
 
     const day = event.target.closest("button");
 
@@ -1014,7 +1028,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       );
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleBodyClick", day);
+    if (DEBUG) console.debug(CLASS_NAME, "< handleBodyClick", day);
   }
 
   /**
@@ -1024,7 +1038,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    */
 
   handleBodyKeydown(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleBodyKeydown", event.key);
+    if (DEBUG) console.debug(CLASS_NAME, "> handleBodyKeydown", event.key);
 
     let day = this.currentDay;
 
@@ -1087,7 +1101,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       default:
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleBodyKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleBodyKeydown");
   }
 
   /**
@@ -1099,7 +1113,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   handlePickerKeydown(event) {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> handlePickerKeydown",
         event.key,
@@ -1115,7 +1129,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handlePickerKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "< handlePickerKeydown");
   }
 
   /**
@@ -1125,7 +1139,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
    */
 
   handleInputKeydown(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleInputKeydown", event.key);
+    if (DEBUG) console.debug(CLASS_NAME, "> handleInputKeydown", event.key);
 
     this.isError = false;
     const key = event.key?.toLowerCase();
@@ -1143,20 +1157,20 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       this.hideCalendar();
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleInputKeydown");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleInputKeydown");
   }
 
   handleInputKeyup(event) {
     /* we need this as inputChange is triggered after keyup, but Omni triggers validation 
        logic after keyup... updating _displayValue on change would be too late. */
-    if (DEBUG) console.log(CLASS_NAME, "> handleInputKeyup", event.key);
+    if (DEBUG) console.debug(CLASS_NAME, "> handleInputKeyup", event.key);
     this._displayValue = this.refs.input.value;
     if (DEBUG)
-      console.log(CLASS_NAME, "< handleInputKeyup", this._displayValue);
+      console.debug(CLASS_NAME, "< handleInputKeyup", this._displayValue);
   }
 
   handleInputChange(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleInputChange");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleInputChange");
 
     if (this.multipleInput) {
       event.stopPropagation();
@@ -1193,17 +1207,17 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
     this.showHelpMessageIfInvalid();
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleInputChange");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleInputChange");
   }
 
   handleFocusIn() {
-    if (DEBUG) console.log(CLASS_NAME, "> handleFocus");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleFocus");
     this._hasFocus = true;
-    if (DEBUG) console.log(CLASS_NAME, "< handleFocus");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleFocus");
   }
 
   handleFocusOut(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleBlur");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleBlur");
 
     if (!event.currentTarget.contains(event.relatedTarget)) {
       this._hasFocus = false;
@@ -1213,7 +1227,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleBlur");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleBlur");
   }
 
   handleInputFocus(event) {
@@ -1244,11 +1258,11 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       if (!this._onClickOutside) {
         this._onClickOutside = new OnClickOutside();
         this._onClickOutside.bind(this, "formGroup", (event) => {
-          if (DEBUG) console.log(CLASS_NAME, "> clickOutside", event.target);
+          if (DEBUG) console.debug(CLASS_NAME, "> clickOutside", event.target);
 
           this.hideCalendar();
 
-          if (DEBUG) console.log(CLASS_NAME, "< clickOutside");
+          if (DEBUG) console.debug(CLASS_NAME, "< clickOutside");
         });
       }
     }
@@ -1302,7 +1316,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       const overrides = {
         badInput: () => {
           if (DEBUG)
-            console.log(CLASS_NAME, "> _constraint.badInput", this._value);
+            console.debug(CLASS_NAME, "> _constraint.badInput", this._value);
 
           let rv = true;
 
@@ -1344,7 +1358,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
             }
           } else {
             if (DEBUG)
-              console.log(
+              console.debug(
                 CLASS_NAME,
                 "= _constraint.badInput",
                 "_displayValue",
@@ -1353,7 +1367,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
             if (this._displayValue == null || this._displayValue === "") {
               rv = false;
             } else {
-              console.log(
+              console.debug(
                 CLASS_NAME,
                 "= _constraint.badInput",
                 "parseInput",
@@ -1363,7 +1377,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
             }
           }
 
-          if (DEBUG) console.log(CLASS_NAME, "< _constraint.badInput", rv);
+          if (DEBUG) console.debug(CLASS_NAME, "< _constraint.badInput", rv);
 
           return rv;
         },
@@ -1402,7 +1416,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         typeMismatch: () => false,
         valueMissing: () => {
           if (DEBUG)
-            console.log(
+            console.debug(
               CLASS_NAME,
               "> _constraint.valueMissing",
               this._value,
@@ -1432,7 +1446,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
           }
 
           if (DEBUG)
-            console.log(
+            console.debug(
               CLASS_NAME,
               "< _constraint.valueMissing",
               rv,
@@ -1457,7 +1471,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   get validity() {
     if (!this || !this._constraint) return null;
 
-    if (DEBUG) console.log(CLASS_NAME, "> validity");
+    if (DEBUG) console.debug(CLASS_NAME, "> validity");
 
     let out = {};
     [
@@ -1476,27 +1490,27 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       out[constraintKey] = !!this._constraint.validity[constraintKey];
     }, this);
 
-    if (DEBUG) console.log(CLASS_NAME, "< validity", out);
+    if (DEBUG) console.debug(CLASS_NAME, "< validity", out);
 
     return out;
   }
 
   @api checkValidity() {
-    if (DEBUG) console.log(CLASS_NAME, "> checkValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "> checkValidity");
 
     const rv = !this._connected || this._constraint.checkValidity();
 
-    if (DEBUG) console.log(CLASS_NAME, "< checkValidity", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< checkValidity", rv);
     return rv;
   }
 
   @api setCustomValidity(e) {
-    if (DEBUG) console.log(CLASS_NAME, "> setCustomValidity", e);
+    if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidity", e);
 
     this._constraint.setCustomValidity(e);
     if (this._rendered && e) this.showHelpMessageIfInvalid();
 
-    if (DEBUG) console.log(CLASS_NAME, "< setCustomValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "< setCustomValidity");
   }
 
   @api showHelpMessageIfInvalid() {
@@ -1504,7 +1518,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   @api reportValidity() {
-    if (DEBUG) console.log(CLASS_NAME, "> reportValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "> reportValidity");
 
     let valid =
       !this._connected ||
@@ -1513,7 +1527,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       });
     this.isError = !valid;
 
-    if (DEBUG) console.log(CLASS_NAME, "< reportValidity", valid);
+    if (DEBUG) console.debug(CLASS_NAME, "< reportValidity", valid);
 
     return valid;
   }
@@ -1521,10 +1535,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   /* additional apis for sfGpsDs */
 
   @api setCustomValidation(message) {
-    if (DEBUG) console.log(CLASS_NAME, "> setCustomValidation", message);
+    if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidation", message);
     this._sfGpsDsCustomValidation = message;
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< setCustomValidation",
         "_sfGpsDsCustomValidation: " + this._sfGpsDsCustomValidation
@@ -1535,24 +1549,24 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   @api sfGpsDsHasCustomValidation() {
     const rv = !!this._sfGpsDsCustomValidation;
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
     return rv;
   }
 
   @api sfGpsDsClearCustomValidation() {
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsClearCustomValidation");
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsClearCustomValidation");
     this._sfGpsDsCustomValidation = "";
   }
 
   @api sfGpsDsGetCustomValidation() {
     const rv = this._sfGpsDsCustomValidation;
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsGetCustomValidation", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsGetCustomValidation", rv);
     return rv;
   }
 
   get sfGpsDsIsError() {
     const rv = this.isError || this.sfGpsDsHasCustomValidation();
-    if (DEBUG) console.log(CLASS_NAME, "get sfGpsDsIsError", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "get sfGpsDsIsError", rv);
     return rv;
   }
 

@@ -1,0 +1,6 @@
+<template>
+  <p lwc:if={_date} class={computedClassName}>
+    <strong style="padding-right: 12px">Last updated:</strong>
+    &nbsp;<time datetime={_dateIsoString}>{_dateFormatted}</time>
+  </p>
+</template>

@@ -28,6 +28,8 @@ const HEADINGLEVEL_DEFAULT = HEADINGLEVEL_H3;
 const DISPLAYFOOTER_DEFAULT = false;
 
 export default class extends LightningElement {
+  static renderMode = "light";
+
   @api icon;
   @api nameText;
   @api nameUrl;

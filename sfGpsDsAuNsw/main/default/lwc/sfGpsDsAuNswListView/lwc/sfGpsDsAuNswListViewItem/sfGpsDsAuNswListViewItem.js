@@ -38,7 +38,7 @@ export default class SfGpsDsAuNswListViewItem extends LightningElement {
   reconcile() {
     if (this._record && this._displayColumns) {
       if (DEBUG)
-        console.log(
+        console.debug(
           "reconcile",
           JSON.stringify(this._displayColumns),
           JSON.stringify(this._record)

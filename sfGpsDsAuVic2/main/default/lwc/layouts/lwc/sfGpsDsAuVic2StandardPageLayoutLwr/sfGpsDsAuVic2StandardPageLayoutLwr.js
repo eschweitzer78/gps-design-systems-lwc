@@ -12,6 +12,8 @@ const ID_BELOW_BODY = "sfgpsds-au-vic2-below-body";
  * @slot belowBody
  */
 export default class extends LightningElement {
+  static renderMode = "light";
+
   @api hasAboveBody;
   @api hasSidebar;
   @api hasBelowBody;

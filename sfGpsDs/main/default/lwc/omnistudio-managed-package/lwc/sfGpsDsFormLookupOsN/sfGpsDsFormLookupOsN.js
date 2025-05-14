@@ -157,13 +157,13 @@ export default class extends SfGpsDsOmniHasValidationMixin(OmniscriptLookup) {
   // overide
   @api sfGpsDsHasCustomValidation() {
     const rv = this._hasCustomError;
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
     return rv;
   }
 
   // override
   @api sfGpsDsClearCustomValidation(report = true) {
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsClearCustomValidation");
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsClearCustomValidation");
 
     if (this._hasCustomError) {
       this.setCustomValidation("", report);

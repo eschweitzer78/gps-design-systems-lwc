@@ -6,7 +6,7 @@
  */
 import { LightningElement, api } from "lwc";
 
-export default class Combobox extends LightningElement {
+export default class extends LightningElement {
   @api autocomplete;
   @api disabled;
   @api dropdownAlignment;
@@ -20,9 +20,7 @@ export default class Combobox extends LightningElement {
   @api required;
   @api spinnerActive;
   @api get validity() {
-    let r = { valid: this.required ? !!this.value : true };
-    //console.log('called validity on mock', this.required, JSON.stringify(this.value), r);
-    return r;
+    return { valid: this.required ? !!this.value : true };
   }
   @api value;
   @api variant;

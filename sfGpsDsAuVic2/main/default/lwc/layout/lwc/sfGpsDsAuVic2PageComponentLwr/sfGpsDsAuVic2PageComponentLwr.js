@@ -4,15 +4,30 @@ import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const FULLWIDTH_DEFAULT = false;
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2PageComponentLwr";
+
 /**
  * @slot Component
  */
 export default class extends SfGpsDsLwc {
   static renderMode = "light";
 
-  @api cid;
   @api title;
-  @api className;
+
+  /* api: cid */
+
+  _cid;
+
+  @api
+  get cid() {
+    return this._cid;
+  }
+
+  set cid(value) {
+    this._cid = value;
+    this.id = value;
+  }
 
   /* api: fullWidth */
 
@@ -38,6 +53,26 @@ export default class extends SfGpsDsLwc {
     }
   }
 
+  /* api: className */
+
+  _className;
+
+  @api
+  get className() {
+    return this._className;
+  }
+
+  set className(value) {
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> set className", value, this._className);
+
+    if (this._className) this.classList.remove(...this._className.split(" "));
+    this._className = value;
+    if (this._className) this.classList.add(...this._className.split(" "));
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set className", this._className);
+  }
+
   /* getters */
 
   get computedClassName() {
@@ -50,6 +85,6 @@ export default class extends SfGpsDsLwc {
   connectedCallback() {
     this._isLwrOnly = true;
     super.connectedCallback();
-    this.classList.add("vic2-scope", "rpl-page-component");
+    this.classList.add("rpl-page-component");
   }
 }

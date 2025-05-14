@@ -3,6 +3,7 @@ import { CurrentPageReference } from "lightning/navigation";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 
 const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2VerticalNavComm";
 
 export default class SfGpsDsAuVic2VerticalNavComm extends SfGpsDsNavigation {
   @api title;
@@ -130,7 +131,8 @@ export default class SfGpsDsAuVic2VerticalNavComm extends SfGpsDsNavigation {
 
     if (DEBUG)
       console.log(
-        "> SfGpsDsAuVic2VerticalNavComm.adaptItem",
+        CLASS_NAME,
+        "> adaptItem",
         JSON.stringify(item),
         pathname,
         isCurrentPage
@@ -151,11 +153,7 @@ export default class SfGpsDsAuVic2VerticalNavComm extends SfGpsDsNavigation {
     };
 
     if (rv.subNav) delete rv.subNav;
-    if (DEBUG)
-      console.log(
-        "< SfGpsDsAuVic2VerticalNavComm.adaptItem",
-        JSON.stringify(rv)
-      );
+    if (DEBUG) console.log(CLASS_NAME, "< adaptItem", JSON.stringify(rv));
 
     return rv;
   }

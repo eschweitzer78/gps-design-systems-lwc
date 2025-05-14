@@ -2,6 +2,8 @@ import { LightningElement, api } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 
 export default class extends LightningElement {
+  static renderMode = "light";
+
   @api url;
   @api target;
   @api text;

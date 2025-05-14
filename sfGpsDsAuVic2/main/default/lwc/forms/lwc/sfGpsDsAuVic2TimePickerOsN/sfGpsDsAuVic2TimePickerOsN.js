@@ -62,7 +62,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   }
 
   set format(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set format", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set format", value);
 
     this._format = value;
 
@@ -74,7 +74,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
     this._formatGranularity = determineMaxGranularity(this._format);
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< set format",
         this._format,
@@ -92,7 +92,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   }
 
   set interval(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set interval", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set interval", value);
 
     this._interval = Number.isNaN(value)
       ? 15
@@ -100,7 +100,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
         ? parseInt(value, 10)
         : value;
 
-    if (DEBUG) console.log(CLASS_NAME, "< set interval", this._interval);
+    if (DEBUG) console.debug(CLASS_NAME, "< set interval", this._interval);
   }
 
   /* api: outputFormat */
@@ -113,7 +113,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   }
 
   set outputFormat(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set outputFormat", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set outputFormat", value);
 
     this._outputFormat = value;
 
@@ -122,7 +122,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
     }
 
     if (DEBUG)
-      console.log(CLASS_NAME, "> set outputFormat", this._outputFormat);
+      console.debug(CLASS_NAME, "> set outputFormat", this._outputFormat);
   }
 
   /* api: outputType */
@@ -214,12 +214,12 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   }
 
   set min(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set min", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set min", value);
 
     this._min = this.parseValue(value);
     this.setOptions();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set min", this._min);
+    if (DEBUG) console.debug(CLASS_NAME, "< set min", this._min);
   }
 
   /* api: max */
@@ -232,34 +232,34 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   }
 
   set max(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set max", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set max", value);
 
     this._max = this.parseValue(value);
     this.setOptions();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set max", this._max);
+    if (DEBUG) console.debug(CLASS_NAME, "< set max", this._max);
   }
 
   /* api overrides */
 
   @api
   get value() {
-    if (DEBUG) console.log(CLASS_NAME, "> get value", this._value);
+    if (DEBUG) console.debug(CLASS_NAME, "> get value", this._value);
 
     const rv = this.formatInputValue(this.parseInputValue(this._searchValue));
 
-    if (DEBUG) console.log(CLASS_NAME, "< get value", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< get value", rv);
 
     return rv;
   }
 
   set value(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set value", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set value", value);
 
     this.setInputValue(value || "");
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< set value", this._value, this._searchValue);
+      console.debug(CLASS_NAME, "< set value", this._value, this._searchValue);
   }
 
   get _timeValue() {
@@ -291,7 +291,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   _dateSource;
 
   get dateSource() {
-    if (DEBUG) console.log(CLASS_NAME, "> get dateSource", this._dateSource);
+    if (DEBUG) console.debug(CLASS_NAME, "> get dateSource", this._dateSource);
 
     if (!this._dateSource) {
       this._dateSource = this._min || new Date();
@@ -324,13 +324,13 @@ export default class extends SfGpsDsOmniInputMixinOsN(
       rv = this._dateSource;
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< get dateSource", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< get dateSource", rv);
 
     return rv;
   }
 
   get outputValue() {
-    if (DEBUG) console.log(CLASS_NAME, "> get outputValue");
+    if (DEBUG) console.debug(CLASS_NAME, "> get outputValue");
 
     const valueAsDate = super.value
       ? this.parseInputTimeToDate(super.value)
@@ -344,7 +344,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
           : dayjs(valueAsDate).format(this._outputFormat);
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "> get outputValue", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "> get outputValue", rv);
 
     return rv;
   }
@@ -358,7 +358,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
 
   setOptions() {
     if (DEBUG) {
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> setOptions",
         "startTime=",
@@ -391,11 +391,11 @@ export default class extends SfGpsDsOmniInputMixinOsN(
     });
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< setOptions", JSON.stringify(this._options));
+      console.debug(CLASS_NAME, "< setOptions", JSON.stringify(this._options));
   }
 
   formatStringForDisplay(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> formatStringForDisplay", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> formatStringForDisplay", value);
 
     const rv = formatTemplate(
       value,
@@ -409,13 +409,13 @@ export default class extends SfGpsDsOmniInputMixinOsN(
       "%"
     );
 
-    if (DEBUG) console.log(CLASS_NAME, "> formatStringForDisplay", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "> formatStringForDisplay", rv);
 
     return rv;
   }
 
   parseInputTimeToDate(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> parseInputTimeToDate", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> parseInputTimeToDate", value);
 
     let date;
 
@@ -466,13 +466,13 @@ export default class extends SfGpsDsOmniInputMixinOsN(
       date = this._max;
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< parseInputTimeToDate", date);
+    if (DEBUG) console.debug(CLASS_NAME, "< parseInputTimeToDate", date);
 
     return date;
   }
 
   parseValue(value, isValue) {
-    if (DEBUG) console.log(CLASS_NAME, "> parseValue", value, isValue);
+    if (DEBUG) console.debug(CLASS_NAME, "> parseValue", value, isValue);
 
     let date;
 
@@ -486,14 +486,14 @@ export default class extends SfGpsDsOmniInputMixinOsN(
       console.error(e);
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< parseValue", date);
+    if (DEBUG) console.debug(CLASS_NAME, "< parseValue", date);
 
     return date;
   }
 
   dateValueParser(value, isValue) {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> dateValueParser",
         value,
@@ -504,7 +504,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
     let rv;
 
     if (isDate(value) || value instanceof Number) {
-      if (DEBUG) console.log(CLASS_NAME, "= dateValueParser is Date");
+      if (DEBUG) console.debug(CLASS_NAME, "= dateValueParser is Date");
 
       rv = new Date(value);
 
@@ -512,7 +512,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
         this._dateSource = rv;
       }
     } else if (value.match(ISO8601_PATTERN)) {
-      if (DEBUG) console.log(CLASS_NAME, "= dateValueParser is ISO string");
+      if (DEBUG) console.debug(CLASS_NAME, "= dateValueParser is ISO string");
 
       rv = parseIso8601(value);
 
@@ -524,13 +524,13 @@ export default class extends SfGpsDsOmniInputMixinOsN(
 
       if (value === rv.format(this.outputFormat)) {
         if (DEBUG)
-          console.log(CLASS_NAME, "= dateValueParser is output format");
+          console.debug(CLASS_NAME, "= dateValueParser is output format");
         rv = rv.toDate();
       } else {
         rv = dayjs(value, this.format);
 
         if (value === rv.format(this.format)) {
-          if (DEBUG) console.log(CLASS_NAME, "= dateValueParser is format");
+          if (DEBUG) console.debug(CLASS_NAME, "= dateValueParser is format");
 
           rv = rv.toDate();
         } else {
@@ -540,14 +540,14 @@ export default class extends SfGpsDsOmniInputMixinOsN(
     }
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< dateValueParser", rv, this._dateSource);
+      console.debug(CLASS_NAME, "< dateValueParser", rv, this._dateSource);
 
     return rv;
   }
 
   setInputValue(timeValue) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> setInputValue", this.format, timeValue);
+      console.debug(CLASS_NAME, "> setInputValue", this.format, timeValue);
 
     if (!timeValue && timeValue !== "") {
       /* i.e. call does not originate from set value */
@@ -560,7 +560,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
       super.value = this._searchValue = null;
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< setInputValue", this._searchValue);
+    if (DEBUG) console.debug(CLASS_NAME, "< setInputValue", this._searchValue);
   }
 
   isValidDate(value) {
@@ -568,7 +568,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   }
 
   parseInputValue(inputValue) {
-    if (DEBUG) console.log(CLASS_NAME, "> parseInputValue", inputValue);
+    if (DEBUG) console.debug(CLASS_NAME, "> parseInputValue", inputValue);
 
     let date = null;
 
@@ -597,17 +597,18 @@ export default class extends SfGpsDsOmniInputMixinOsN(
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "> parseInputValue", date);
+    if (DEBUG) console.debug(CLASS_NAME, "> parseInputValue", date);
 
     return date;
   }
 
   formatInputValue(date) {
-    if (DEBUG) console.log(CLASS_NAME, "> formatInputValue", date, this.format);
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> formatInputValue", date, this.format);
 
     const rv = this.isValidDate(date) ? dayjs(date).format(this.format) : "";
 
-    if (DEBUG) console.log(CLASS_NAME, "< formatInputValue", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< formatInputValue", rv);
 
     return rv;
   }
@@ -620,7 +621,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
 
   normaliseSearchValue() {
     if (DEBUG)
-      console.log(CLASS_NAME, "> normaliseSearchValue", this._searchValue);
+      console.debug(CLASS_NAME, "> normaliseSearchValue", this._searchValue);
 
     this._searchValue = this.formatInputValue(
       this.parseInputValue(this._searchValue)
@@ -628,7 +629,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
     this.showHelpMessageIfInvalid();
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< normaliseSearchValue", this._searchValue);
+      console.debug(CLASS_NAME, "< normaliseSearchValue", this._searchValue);
   }
 
   _constraintApi;
@@ -666,7 +667,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
 
   @api
   get validity() {
-    if (DEBUG) console.log(CLASS_NAME, "> get validity");
+    if (DEBUG) console.debug(CLASS_NAME, "> get validity");
 
     let rv = null;
 
@@ -690,23 +691,23 @@ export default class extends SfGpsDsOmniInputMixinOsN(
       }, this);
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< get validity", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< get validity", rv);
 
     return rv;
   }
 
   @api checkValidity() {
-    if (DEBUG) console.log(CLASS_NAME, "> checkValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "> checkValidity");
 
     const valid = !this._connected || this._constraint.checkValidity();
 
-    if (DEBUG) console.log(CLASS_NAME, "< checkValidity", valid);
+    if (DEBUG) console.debug(CLASS_NAME, "< checkValidity", valid);
 
     return valid;
   }
 
   @api setCustomValidity(message) {
-    if (DEBUG) console.log(CLASS_NAME, "> setCustomValidity", message);
+    if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidity", message);
 
     this._constraint.setCustomValidity(message);
 
@@ -714,21 +715,21 @@ export default class extends SfGpsDsOmniInputMixinOsN(
       this.showHelpMessageIfInvalid();
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< setCustomValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "< setCustomValidity");
   }
 
   showHelpMessageIfInvalid() {
-    if (DEBUG) console.log(CLASS_NAME, "> showHelpMessageIfInvalid");
+    if (DEBUG) console.debug(CLASS_NAME, "> showHelpMessageIfInvalid");
 
     const valid = this.reportValidity();
 
-    if (DEBUG) console.log(CLASS_NAME, "< showHelpMessageIfInvalid", valid);
+    if (DEBUG) console.debug(CLASS_NAME, "< showHelpMessageIfInvalid", valid);
 
     return valid;
   }
 
   @api reportValidity() {
-    if (DEBUG) console.log(CLASS_NAME, "> reportValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "> reportValidity");
 
     const valid =
       !this._connected ||
@@ -739,7 +740,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
 
     this._invalid = !valid;
 
-    if (DEBUG) console.log(CLASS_NAME, "< reportValidity", valid);
+    if (DEBUG) console.debug(CLASS_NAME, "< reportValidity", valid);
 
     return valid;
   }
@@ -747,7 +748,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   /* lifecycle */
 
   connectedCallback() {
-    if (DEBUG) console.log(CLASS_NAME, "> connectedCallback");
+    if (DEBUG) console.debug(CLASS_NAME, "> connectedCallback");
 
     const localeFormat =
       this.localeFormat ||
@@ -779,7 +780,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(
     this._connected = true;
     this.mode = "combobox-auto";
 
-    if (DEBUG) console.log(CLASS_NAME, "< connectedCallback");
+    if (DEBUG) console.debug(CLASS_NAME, "< connectedCallback");
   }
 
   disconnectedCallback() {

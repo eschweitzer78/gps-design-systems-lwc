@@ -24,28 +24,29 @@ const UNMOUNTED = Symbol("_onUnmountedHooks");
 const FIRST_RENDER = Symbol("_firstRender");
 
 function handleError(err, type) {
-  if (DEBUG) console.log(CLASS_NAME, "> handleError", err, type);
+  if (DEBUG) console.debug(CLASS_NAME, "> handleError", err, type);
   console.error(err, type);
-  if (DEBUG) console.log(CLASS_NAME, "< handleError");
+  if (DEBUG) console.debug(CLASS_NAME, "< handleError");
 }
 
 function callWithErrorHandling(fn, type, args) {
-  if (DEBUG) console.log(CLASS_NAME, "> callWithErrorHandling", fn, type, args);
+  if (DEBUG)
+    console.debug(CLASS_NAME, "> callWithErrorHandling", fn, type, args);
 
   try {
     const rv = args ? fn(...args) : fn();
-    if (DEBUG) console.log(CLASS_NAME, "< callWithErrorHandling1", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< callWithErrorHandling1", rv);
     return rv;
   } catch (err) {
     const rv = handleError(err, type);
-    if (DEBUG) console.log(CLASS_NAME, "< callWithErrorHandling2", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< callWithErrorHandling2", rv);
     return rv;
   }
 }
 
 function callWithAsyncErrorHandling(fn, type, args) {
   if (DEBUG)
-    console.log(
+    console.debug(
       CLASS_NAME,
       "> callWithAsyncErrorHandling fn=",
       fn,
@@ -61,12 +62,12 @@ function callWithAsyncErrorHandling(fn, type, args) {
       rv.catch((err) => {
         const rv2 = handleError(err, type);
         if (DEBUG)
-          console.log(CLASS_NAME, "< callWithAsyncErrorHandling1", rv2);
+          console.debug(CLASS_NAME, "< callWithAsyncErrorHandling1", rv2);
         return rv2;
       });
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< callWithAsyncErrorHandling2", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< callWithAsyncErrorHandling2", rv);
     return rv;
   }
 
@@ -77,11 +78,12 @@ function callWithAsyncErrorHandling(fn, type, args) {
       values.push(callWithAsyncErrorHandling(fn[i], type, args));
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< callWithAsyncErrorHandling3", values);
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< callWithAsyncErrorHandling3", values);
     return values;
   }
 
-  if (DEBUG) console.log(CLASS_NAME, "< callWithAsyncErrorHandling4");
+  if (DEBUG) console.debug(CLASS_NAME, "< callWithAsyncErrorHandling4");
   return null;
 }
 
@@ -125,7 +127,7 @@ export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
 
   callHook(type) {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> .callHook type=",
         type,
@@ -136,12 +138,12 @@ export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
     const hook = this[type];
     callWithAsyncErrorHandling(hook, type);
 
-    if (DEBUG) console.log(CLASS_NAME, "< .callHook");
+    if (DEBUG) console.debug(CLASS_NAME, "< .callHook");
   }
 
   injectHook(type, hook, prepend = false) {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> .injectHook type=",
         type,
@@ -160,7 +162,7 @@ export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
     }
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< .injectHook cbList=",
         this[type],
@@ -264,7 +266,7 @@ export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
   _isConnected = false;
 
   connectedCallback() {
-    if (DEBUG) console.log(CLASS_NAME, "> .connectedCallback");
+    if (DEBUG) console.debug(CLASS_NAME, "> .connectedCallback");
 
     this._isConnected = true;
     this[FIRST_RENDER] = true;
@@ -272,18 +274,18 @@ export default class SfGpsDsLwcOsN extends OmniscriptBaseMixin(
     // before mount hook is called before first render
     this.callHook(BEFORE_MOUNT);
 
-    if (DEBUG) console.log(CLASS_NAME, "< .connectedCallback");
+    if (DEBUG) console.debug(CLASS_NAME, "< .connectedCallback");
   }
 
   disconnectedCallback() {
-    if (DEBUG) console.log(CLASS_NAME, "> .disconnectedCallback");
+    if (DEBUG) console.debug(CLASS_NAME, "> .disconnectedCallback");
 
     // in LWC there isn't really a way to execute something *before* component is disconnected/unmounted
     this.callHook(BEFORE_UNMOUNT);
     this.callHook(UNMOUNTED);
     this._isConnected = false;
 
-    if (DEBUG) console.log(CLASS_NAME, "< .disconnectedCallback");
+    if (DEBUG) console.debug(CLASS_NAME, "< .disconnectedCallback");
   }
 
   renderedCallback() {
