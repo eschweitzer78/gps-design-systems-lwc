@@ -135,6 +135,14 @@ export default class extends LightningElement {
     };
   }
 
+  get computedListClassName() {
+    return {
+      "rpl-breadcrumbs__items": true,
+      "rpl-type-p-small": true,
+      "rpl-breadcrumbs__items--collapsed": this._collapseInnerLinks
+    };
+  }
+
   get decoratedItems() {
     if (DEBUG)
       console.debug(

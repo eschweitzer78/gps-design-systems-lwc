@@ -1,6 +1,7 @@
+<!-- sldsValidatorIgnore -->
 <template>
   <nav aria-label="breadcrumbs" class={computedClassName}>
-    <ol lwc:if={_items} class="rpl-breadcrumbs__items rpl-type-p">
+    <ol lwc:if={_items} class={computedListClassName}>
       <template for:each={decoratedItems} for:item="item" for:index="index">
         <li key={item.key} lwc:if={item.showItem} class={item.className}>
           <span
