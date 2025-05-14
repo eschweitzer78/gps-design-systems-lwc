@@ -3,6 +3,9 @@ import { computeClass } from "c/sfGpsDsHelpers";
 
 const DEFAULT_TYPE = "link";
 
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuVic2HeaderLinks";
+
 export default class extends LightningElement {
   @api title;
   @api items;
@@ -30,11 +33,13 @@ export default class extends LightningElement {
     }));
   }
 
-  handleListClick(event) {
-    console.log("handleListClick", event.target.url);
+  handleListClick() {
+    // Nothing is really needed, HREF nav should be enough
+    if (DEBUG) console.debug(CLASS_NAME, "handleListClick");
   }
 
   handleMoreLinkClick() {
-    console.log("handleMoreLinkClick", this.moreLink);
+    // Nothing is really needed, HREF nav should be enough
+    if (DEBUG) console.debug(CLASS_NAME, "handleMoreLinkClick", this.moreLink);
   }
 }
