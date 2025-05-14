@@ -14,185 +14,189 @@
           <!-- Inner navigation menu wrapper -->
           <div class="qld__main-nav__menu-inner">
             <!-- Focus trap for accessibility purposes (keyboard navigation) -->
-            <div class="qld__main-nav__focus-trap-top"></div>
-            <!-- Navigation header which contains menu title and close button -->
-            <div class="qld__main-nav__header">
-              <h6 class="qld__main-nav__menu-heading">{i18n.menuLabel}</h6>
-              <!-- Close button for the menu -->
-              <button
-                aria-controls="main-nav"
-                class="qld__main-nav__toggle qld__main-nav__toggle--close"
-                onclick={handleCloseNav}
-              >
-                <!-- SVG icon for the close button -->
-                <svg
-                  aria-hidden="true"
-                  focusable="false"
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="qld__icon qld__icon--md"
+            <c-sf-gps-ds-focus-trap>
+              <div class="qld__main-nav__focus-trap-top"></div>
+              <!-- Navigation header which contains menu title and close button -->
+              <div class="qld__main-nav__header">
+                <h6 class="qld__main-nav__menu-heading">{i18n.menuLabel}</h6>
+                <!-- Close button for the menu -->
+                <button
+                  aria-controls="main-nav"
+                  class="qld__main-nav__toggle qld__main-nav__toggle--close"
+                  onclick={handleCloseNav}
                 >
-                  <use href={computedCloseIconUrl}></use>
-                </svg>
-                <span class="qld__main-nav__toggle-text"
-                  >{i18n.closeLabel}</span
-                >
-              </button>
-            </div>
-
-            <!-- Navigation link list -->
-            <ul class="qld__link-list qld__link-list--flex">
-              <!-- Home item -->
-              <li lwc:if={_homeShow} class={computedHomeClassName}>
-                <div class="qld__main-nav__item-title">
-                  <a
-                    class="qld__main-nav__item-home qld__main-nav__item-link"
-                    href={computedHomeUrl}
-                    aria-label={i18n.homeLabel}
-                    onclick={handleCloseNav}
+                  <!-- SVG icon for the close button -->
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="qld__icon qld__icon--md"
                   >
-                    <!-- SVG icon for the link -->
-                    <span class="qld__main-nav__item-icon">
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="qld__icon qld__icon--md"
-                      >
-                        <use href={computedHomeIconUrl}></use>
-                      </svg>
-                    </span>
+                    <use href={computedCloseIconUrl}></use>
+                  </svg>
+                  <span class="qld__main-nav__toggle-text"
+                    >{i18n.closeLabel}</span
+                  >
+                </button>
+              </div>
 
-                    <span class="qld__main-nav__item-text"
-                      >{i18n.homeLabel}</span
-                    >
-                  </a>
-                </div>
-              </li>
-
-              <template
-                lwc:if={_navItems}
-                for:each={_navItems}
-                for:item="navItem"
-              >
-                <li key={navItem.id} class={navItem.className}>
-                  <template lwc:if={navItem.subNav}>
-                    <div
-                      lwc:if={navItem.subNav}
-                      class="qld__main-nav__item-title"
-                    >
-                      <a
-                        lwc:if={navItem.url}
-                        href={navItem.url}
-                        class={navItem.anchorClassName}
-                        data-ndx={navItem.index}
-                        onclick={handleClickNavigate}
-                        >{navItem.text}</a
-                      >
-                      <a
-                        lwc:else
-                        href="javascript:void(0)"
-                        class={navItem.anchorClassName}
-                        >{navItem.text}</a
-                      >
-
-                      <button
-                        class={navItem.buttonClassName}
-                        aria-controls={navItem.id}
-                        aria-expanded={navItem.isActive}
-                        aria-selected="false"
-                        aria-label="Toggle navigation, Default example"
-                        data-ndx={navItem.index}
-                        onclick={handleClick}
-                      >
-                        <span class="qld__main-nav__item-toggle-text">
-                          {navItem.text}
-                        </span>
-                        <svg class="qld__icon qld__icon--sm">
-                          <use href={computedChevronUpIconUrl}></use>
-                        </svg>
-                      </button>
-                    </div>
-
-                    <div class={navItem.subNavClassName} id={navItem.id}>
-                      <div class="qld__main-nav__menu-sub-inner">
-                        <div class="qld__main-nav__sub-head">
-                          <a
-                            class="qld__main-nav__sub-heading"
-                            href={navItem.url}
-                            data-ndx={navItem.index}
-                            onclick={handleClickNavigate}
-                          >
-                            <span
-                              class="qld__main-nav__sub-item-text qld__display-lg"
-                            >
-                              {navItem.text}
-                            </span>
-                            <svg
-                              lwc:if={navItem.url}
-                              class="qld__icon qld__icon--lg"
-                            >
-                              <use href={computedArrowRightIconUrl}></use>
-                            </svg>
-                          </a>
-                        </div>
-                        <hr
-                          class="qld__horizontal-rule qld__horizontal-rule--lg"
-                        />
-                        <ul
-                          lwc:if={navItem.subNav}
-                          class="qld__link-columns qld__link-columns--3-col qld__link-list"
-                        >
-                          <template
-                            for:each={navItem.subNav}
-                            for:item="subNavItem"
-                          >
-                            <li key={subNavItem.id}>
-                              <a
-                                href={subNavItem.url}
-                                role="button"
-                                data-ndx={subNavItem.index}
-                                onclick={handleClick}
-                              >
-                                <span class="qld__main-nav__sub-item-text"
-                                  >{subNavItem.text}</span
-                                >
-                              </a>
-                            </li>
-                          </template>
-                        </ul>
-
-                        <div
-                          lwc:if={navItem.url}
-                          class="qld__main-nav__sub-footer"
-                        >
-                          <hr
-                            class="qld__horizontal-rule qld__horizontal-rule--lg"
-                          />
-                          <a
-                            class="qld__cta-link qld__cta-link--view-all"
-                            href="javascript:void(0)"
-                            >View all</a
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </template>
-                  <div lwc:else class="qld__main-nav__item-title">
+              <!-- Navigation link list -->
+              <ul class="qld__link-list qld__link-list--flex">
+                <!-- Home item -->
+                <li lwc:if={_homeShow} class={computedHomeClassName}>
+                  <div class="qld__main-nav__item-title">
                     <a
-                      class={navItem.anchorClassName}
-                      data-ndx={navItem.index}
-                      href={navItem.url}
-                      onclick={handleClick}
+                      class="qld__main-nav__item-home qld__main-nav__item-link"
+                      href={computedHomeUrl}
+                      aria-label={i18n.homeLabel}
+                      aria-current={computedHomeIsCurrent}
+                      onclick={handleCloseNav}
                     >
-                      {navItem.text}
+                      <!-- SVG icon for the link -->
+                      <span class="qld__main-nav__item-icon">
+                        <svg
+                          aria-hidden="true"
+                          focusable="false"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="qld__icon qld__icon--md"
+                        >
+                          <use href={computedHomeIconUrl}></use>
+                        </svg>
+                      </span>
+
+                      <span class="qld__main-nav__item-text"
+                        >{i18n.homeLabel}</span
+                      >
                     </a>
                   </div>
                 </li>
-              </template>
-            </ul>
 
-            <!-- Focus trap for accessibility purposes (keyboard navigation) -->
-            <div class="qld__main-nav__focus-trap-bottom"></div>
+                <template
+                  lwc:if={_navItems}
+                  for:each={_navItems}
+                  for:item="navItem"
+                >
+                  <li key={navItem.id} class={navItem.className}>
+                    <template lwc:if={navItem.subNav}>
+                      <div
+                        lwc:if={navItem.subNav}
+                        class="qld__main-nav__item-title"
+                      >
+                        <a
+                          lwc:if={navItem.url}
+                          href={navItem.url}
+                          class={navItem.anchorClassName}
+                          data-ndx={navItem.index}
+                          onclick={handleClickNavigate}
+                          >{navItem.text}</a
+                        >
+                        <a
+                          lwc:else
+                          href="javascript:void(0)"
+                          class={navItem.anchorClassName}
+                          >{navItem.text}</a
+                        >
+
+                        <button
+                          class={navItem.buttonClassName}
+                          aria-controls={navItem.id}
+                          aria-expanded={navItem.isActive}
+                          aria-selected="false"
+                          aria-label="Toggle navigation, Default example"
+                          data-ndx={navItem.index}
+                          onclick={handleClick}
+                        >
+                          <span class="qld__main-nav__item-toggle-text">
+                            {navItem.text}
+                          </span>
+                          <svg class="qld__icon qld__icon--sm">
+                            <use href={computedChevronUpIconUrl}></use>
+                          </svg>
+                        </button>
+                      </div>
+
+                      <div class={navItem.subNavClassName} id={navItem.id}>
+                        <div class="qld__main-nav__menu-sub-inner">
+                          <div class="qld__main-nav__sub-head">
+                            <a
+                              class="qld__main-nav__sub-heading"
+                              href={navItem.url}
+                              data-ndx={navItem.index}
+                              onclick={handleClickNavigate}
+                            >
+                              <span
+                                class="qld__main-nav__sub-item-text qld__display-lg"
+                              >
+                                {navItem.text}
+                              </span>
+                              <svg
+                                lwc:if={navItem.url}
+                                class="qld__icon qld__icon--lg"
+                              >
+                                <use href={computedArrowRightIconUrl}></use>
+                              </svg>
+                            </a>
+                          </div>
+                          <hr
+                            class="qld__horizontal-rule qld__horizontal-rule--lg"
+                          />
+                          <ul
+                            lwc:if={navItem.subNav}
+                            class="qld__link-columns qld__link-columns--3-col qld__link-list"
+                          >
+                            <template
+                              for:each={navItem.subNav}
+                              for:item="subNavItem"
+                            >
+                              <li key={subNavItem.id}>
+                                <a
+                                  href={subNavItem.url}
+                                  role="button"
+                                  data-ndx={subNavItem.index}
+                                  onclick={handleClick}
+                                >
+                                  <span class="qld__main-nav__sub-item-text"
+                                    >{subNavItem.text}</span
+                                  >
+                                </a>
+                              </li>
+                            </template>
+                          </ul>
+
+                          <!-- TODO -->
+                          <div
+                            lwc:if={mainNavViewAllShow}
+                            class="qld__main-nav__sub-footer"
+                          >
+                            <hr
+                              class="qld__horizontal-rule qld__horizontal-rule--lg"
+                            />
+                            <a
+                              class="qld__cta-link qld__cta-link--view-all"
+                              href="javascript:void(0)"
+                              >View all</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                    <div lwc:else class="qld__main-nav__item-title">
+                      <a
+                        class={navItem.anchorClassName}
+                        data-ndx={navItem.index}
+                        href={navItem.url}
+                        onclick={handleClick}
+                      >
+                        {navItem.text}
+                      </a>
+                    </div>
+                  </li>
+                </template>
+              </ul>
+
+              <!-- Focus trap for accessibility purposes (keyboard navigation) -->
+              <div class="qld__main-nav__focus-trap-bottom"></div>
+            </c-sf-gps-ds-focus-trap>
           </div>
         </div>
 

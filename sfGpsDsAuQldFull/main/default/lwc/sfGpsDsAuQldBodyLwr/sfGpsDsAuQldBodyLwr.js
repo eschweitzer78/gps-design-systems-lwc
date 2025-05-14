@@ -3,12 +3,12 @@ import { normaliseString } from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 const WIDTH_VALUES = {
-  "full-width": "qld__body--full-width",
-  "half-width": "qld__body--half-width"
+  "full-width": { body: "qld__body", width: "qld__body--full-width" },
+  "half-width": { body: "qld__body", width: "qld__body--half-width" },
+  none: { body: null, width: null }
 };
 const WIDTH_DEFAULT = "full-width";
 
-const CSTYLE_DEFAULT = "default";
 const CSTYLE_VALUES = {
   default: "",
   light: "qld__body--light",
@@ -16,13 +16,38 @@ const CSTYLE_VALUES = {
   dark: "qld__body--dark",
   "dark-alternate": "qld__body--dark-alt"
 };
+const CSTYLE_DEFAULT = "default";
+
+const DEBUG = false;
+const CLASS_NAME = "sfGpsDsAuQldBodyLwr";
 
 /**
  * @slot Body
  */
 export default class extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api container;
-  @api className;
+
+  /* api: className */
+
+  _className;
+
+  @api
+  get className() {
+    return this._className;
+  }
+
+  set className(value) {
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> set className", value, this._className);
+
+    if (this._className) this.classList.remove(this._className);
+    this._className = value;
+    if (this._className) this.classList.add(this._className);
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set className", this._className);
+  }
 
   /* api: cstyle */
 
@@ -35,12 +60,20 @@ export default class extends SfGpsDsLwc {
   }
 
   set cstyle(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set cstyle", value, this._cstyle);
+
+    if (this._cstyle) this.classList.remove(this._cstyle);
     this._cstyleOriginal = value;
+
     this._cstyle = normaliseString(value, {
       validValues: CSTYLE_VALUES,
       fallbackValue: CSTYLE_DEFAULT,
       returnObjectValue: true
     });
+
+    if (this._cstyle) this.classList.add(this._cstyle);
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set cstyle", this._cstyle);
   }
 
   /* api: width */
@@ -54,30 +87,46 @@ export default class extends SfGpsDsLwc {
   }
 
   set width(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set width", value, this._width);
+
+    if (this._width?.body) this.classList.remove(this._width.body);
+    if (this._width?.width) this.classList.remove(this._width.width);
+
     this._widthOriginal = value;
     this._width = normaliseString(value, {
       validValues: WIDTH_VALUES,
       fallbackValue: WIDTH_DEFAULT,
       returnObjectValue: true
     });
+    this.updateClassName();
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set width", this._width);
   }
 
-  /* getters */
+  /* computed */
 
   get computedClassName() {
     return {
-      qld__body: true,
-      [this._width]: this._width,
+      [this._width?.body]: this._width?.body,
+      [this._width?.width]: this._width?.width,
       [this._cstyle]: this._cstyle,
-      [this.className]: this.className
+      [this._className]: this._className
     };
   }
 
+  /* methods */
+
+  updateClassName() {
+    if (this._width?.body) this.classList.add(this._width.body);
+    if (this._width?.width) this.classList.add(this._width.width);
+  }
   /* lifecycle */
 
   connectedCallback() {
+    if (DEBUG) console.debug(CLASS_NAME, "> connectedCallback");
     this._isLwrOnly = true;
     super.connectedCallback();
-    this.classList.add("qld-scope");
+    this.updateClassName();
+    if (DEBUG) console.debug(CLASS_NAME, "< connectedCallback");
   }
 }

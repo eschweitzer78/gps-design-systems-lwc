@@ -81,6 +81,14 @@
         default="Accordion 10"
       />
       <property
+        name="headingLevel"
+        type="String"
+        label="Heading level"
+        description="Level of heading used for title buttons."
+        default="3"
+        datasource="2,3,4,5,6"
+      />
+      <property
         name="cstyle"
         type="String"
         label="Colour style"

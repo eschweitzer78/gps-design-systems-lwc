@@ -1,5 +1,15 @@
+/*
+ * Copyright (c) 2024-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ *
+ * QLD DS 1.9
+ */
+
 import { LightningElement, api, track, wire } from "lwc";
 import { uniqueId, normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
+import cBasePath from "@salesforce/community/basePath";
 import { CurrentPageReference } from "lightning/navigation";
 import {
   subscribe,
@@ -133,17 +143,26 @@ export default class extends LightningElement {
   }
 
   get computedHomeClassName() {
-    const docUrl = new URL(document.URL);
-    const pathname = docUrl.pathname;
-
     return {
       "qld__main-nav__item": true,
-      active: this.homeUrl === pathname || this.homeUrl + "/" === pathname
+      active: this.computedHomeIsActive
     };
   }
 
+  get computedHomeIsActive() {
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
+    const homeUrl = this.computedHomeUrl;
+
+    return homeUrl === pathname || homeUrl + "/" === pathname;
+  }
+
+  get computedHomeIsCurrent() {
+    return this.computedHomeIsActive ? "page" : null;
+  }
+
   get computedHomeUrl() {
-    return this.homeUrl || "#";
+    return this.homeUrl || cBasePath || "/";
   }
 
   get computedHomeIconUrl() {

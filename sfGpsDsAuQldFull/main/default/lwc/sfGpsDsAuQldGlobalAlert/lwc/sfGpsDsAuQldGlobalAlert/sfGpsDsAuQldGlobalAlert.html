@@ -1,13 +1,14 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <div class={computedClassName}>
+  <div class={computedClassName} role="region" aria-label={computedAriaLabel}>
     <div class="container-fluid">
       <div class="qld__global-alert__main">
         <div class="qld__global-alert__icon">
           <svg
+            class="qld__icon qld__icon--md"
+            role="img"
             aria-label={computedAriaLabel}
             xmlns="http://www.w3.org/2000/svg"
-            class="qld__icon qld__icon--md"
           >
             <use href={computedIconUrl}></use>
           </svg>
@@ -22,10 +23,9 @@
             <a href={linkUrl} onclick={handleLinkClick}>
               <span>{linkText}</span>
               <svg
-                aria-hidden="true"
-                focusable="false"
-                xmlns="http://www.w3.org/2000/svg"
                 class="qld__icon qld__icon--sm"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <use href={computedArrowRightIconUrl}></use>
               </svg>
@@ -36,10 +36,9 @@
         <div lwc:if={_dismissible} class="qld__global-alert__close">
           <button aria-label={i18n.closeAlert} onclick={handleCloseClick}>
             <svg
+              class="qld__icon qld__icon--sm"
               aria-hidden="true"
-              focusable="false"
               xmlns="http://www.w3.org/2000/svg"
-              class="qld__icon qld__icon--md"
             >
               <use href={computedCloseIconUrl}></use>
             </svg>

@@ -33,6 +33,7 @@ export default class extends LightningElement {
   @api nameUrl;
   @api thumbnail;
   @api tags;
+  @api tagsMode;
   @api actions;
   @api displayArrow;
   @api className;
