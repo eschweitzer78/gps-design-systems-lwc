@@ -11,7 +11,7 @@ let PrimaryNavFocusMixin = (Base, el, key = null) =>
     @api focusTarget; // { navCollapsed, hasQuickExit, hasUserActions }
 
     setFocus(target) {
-      if (DEBUG) console.log(CLASS_NAME, "setFocus", target);
+      if (DEBUG) console.debug(CLASS_NAME, "setFocus", target);
 
       this.dispatchEvent(
         new CustomEvent("sfgpsdsauvic2primarynavfocus", {
@@ -28,7 +28,7 @@ let PrimaryNavFocusMixin = (Base, el, key = null) =>
       const fe = this.focusElement;
 
       if (DEBUG)
-        console.log(CLASS_NAME, "> notifyFocus", targetFocusKey, focusKey);
+        console.debug(CLASS_NAME, "> notifyFocus", targetFocusKey, focusKey);
 
       if (focusKey && targetFocusKey === focusKey) {
         if (fe) {
@@ -60,7 +60,7 @@ let PrimaryNavFocusMixin = (Base, el, key = null) =>
         }
       }
 
-      if (DEBUG) console.log(CLASS_NAME, "< notifyFocus");
+      if (DEBUG) console.debug(CLASS_NAME, "< notifyFocus");
     }
   };
 

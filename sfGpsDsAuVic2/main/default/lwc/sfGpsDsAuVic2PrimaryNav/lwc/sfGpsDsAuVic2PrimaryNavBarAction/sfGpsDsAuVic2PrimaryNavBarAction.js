@@ -21,7 +21,7 @@ export default class extends FocusMixin(LightningElement, "action") {
   }
 
   get computedClassName() {
-    if (DEBUG) console.log(CLASS_NAME, "> computedClassName");
+    if (DEBUG) console.debug(CLASS_NAME, "> computedClassName");
 
     const rv = computeClass({
       "rpl-primary-nav__nav-bar-action": true,
@@ -34,7 +34,7 @@ export default class extends FocusMixin(LightningElement, "action") {
       [this.className]: this.className
     });
 
-    if (DEBUG) console.log(CLASS_NAME, "< computedClassName", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< computedClassName", rv);
 
     return rv;
   }

@@ -183,13 +183,14 @@ export default class extends BreakpointsMixin(LightningElement) {
       document.body.classList.add("rpl-u-viewport-locked");
       this.activeFocusTrap = true;
 
-      if (DEBUG) console.log(CLASS_NAME, "watchIsExpanded: activateFocusTrap");
+      if (DEBUG)
+        console.debug(CLASS_NAME, "watchIsExpanded: activateFocusTrap");
     } else {
       document.body.classList.remove("rpl-u-viewport-locked");
       this.activeFocusTrap = false;
 
       if (DEBUG)
-        console.log(CLASS_NAME, "watchIsExpanded: deactivateFocusTrap");
+        console.debug(CLASS_NAME, "watchIsExpanded: deactivateFocusTrap");
     }
   }
 
@@ -241,7 +242,7 @@ export default class extends BreakpointsMixin(LightningElement) {
 
   toggleSearch() {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> toggleSearch",
         this._isMegaNavActive,
@@ -264,7 +265,7 @@ export default class extends BreakpointsMixin(LightningElement) {
     );
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< toggleSearch",
         this._isMegaNavActive,
@@ -311,7 +312,7 @@ export default class extends BreakpointsMixin(LightningElement) {
   handlePrimaryNavFocus(event) {
     event.stopPropagation();
 
-    if (DEBUG) console.log(CLASS_NAME, "handlePrimaryNavFocus", event.detail);
+    if (DEBUG) console.debug(CLASS_NAME, "handlePrimaryNavFocus", event.detail);
 
     const dfks = this.template.querySelectorAll("[data-focus-key]");
 

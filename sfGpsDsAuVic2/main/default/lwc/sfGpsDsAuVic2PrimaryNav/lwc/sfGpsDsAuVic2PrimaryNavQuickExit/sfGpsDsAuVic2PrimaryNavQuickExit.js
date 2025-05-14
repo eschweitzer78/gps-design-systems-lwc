@@ -12,7 +12,7 @@ export default class extends FocusMixin(LightningElement, "exit") {
   @api variant = "inline"; // inline, fixed
 
   get computedClassName() {
-    if (DEBUG) console.log(CLASS_NAME, "> computedClassName");
+    if (DEBUG) console.debug(CLASS_NAME, "> computedClassName");
 
     const rv = computeClass({
       "rpl-primary-nav__quick-exit": true,
@@ -21,7 +21,7 @@ export default class extends FocusMixin(LightningElement, "exit") {
       "rpl-u-screen-only": true
     });
 
-    if (DEBUG) console.log(CLASS_NAME, "< computedClassName", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< computedClassName", rv);
 
     return rv;
   }
@@ -29,7 +29,7 @@ export default class extends FocusMixin(LightningElement, "exit") {
   /* lifecycle */
 
   connectedCallback() {
-    if (DEBUG) console.log(CLASS_NAME, "connectedCallback");
+    if (DEBUG) console.debug(CLASS_NAME, "connectedCallback");
   }
 
   /* event management */

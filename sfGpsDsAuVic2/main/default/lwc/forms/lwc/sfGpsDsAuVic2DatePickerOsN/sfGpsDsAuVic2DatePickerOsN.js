@@ -76,22 +76,22 @@ export default class extends LightningElement {
 
   @api
   get value() {
-    if (DEBUG) console.log(CLASS_NAME, "> get value");
+    if (DEBUG) console.debug(CLASS_NAME, "> get value");
 
     const rv = this._value;
 
-    if (DEBUG) console.log(CLASS_NAME, "< get value", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< get value", rv);
 
     return rv;
   }
 
   set value(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set value", value, typeof value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set value", value, typeof value);
 
     this.setValue(value);
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< set value", this._value, typeof this._value);
+      console.debug(CLASS_NAME, "< set value", this._value, typeof this._value);
   }
 
   /* api: outputFormat */
@@ -104,7 +104,7 @@ export default class extends LightningElement {
   }
 
   set outputFormat(val) {
-    if (DEBUG) console.log(CLASS_NAME, "> set outputFormat", val);
+    if (DEBUG) console.debug(CLASS_NAME, "> set outputFormat", val);
 
     this._outputFormat = val || DEFAULT_OUTPUT_FORMAT;
     this.updateDisplayValue();
@@ -112,7 +112,7 @@ export default class extends LightningElement {
     this.setMaxDate();
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< set outputFormat", this._outputFormat);
+      console.debug(CLASS_NAME, "< set outputFormat", this._outputFormat);
   }
 
   /* api: outputType */
@@ -185,7 +185,7 @@ export default class extends LightningElement {
 
   set messageWhenValueMissing(value) {
     this._messageWhenValueMissing = value;
-    if (DEBUG) console.log(CLASS_NAME, "set messageWhenValueMissing", value);
+    if (DEBUG) console.debug(CLASS_NAME, "set messageWhenValueMissing", value);
   }
 
   /* api: messageWhenBadInput */
@@ -201,7 +201,7 @@ export default class extends LightningElement {
 
   set messageWhenBadInput(value) {
     this._messageWhenBadInput = value;
-    if (DEBUG) console.log(CLASS_NAME, "set messageWhenBadInput", value);
+    if (DEBUG) console.debug(CLASS_NAME, "set messageWhenBadInput", value);
   }
 
   /* api: messageWhenRangeUnderflow */
@@ -217,7 +217,8 @@ export default class extends LightningElement {
 
   set messageWhenRangeUnderflow(value) {
     this._messageWhenRangeUnderflow = value;
-    if (DEBUG) console.log(CLASS_NAME, "set messageWhenRangeUnderflow", value);
+    if (DEBUG)
+      console.debug(CLASS_NAME, "set messageWhenRangeUnderflow", value);
   }
 
   /* api: messageWhenRangeOverflow */
@@ -231,7 +232,7 @@ export default class extends LightningElement {
 
   set messageWhenRangeOverflow(value) {
     this._messageWhenRangeOverflow = value;
-    if (DEBUG) console.log(CLASS_NAME, "set messageWhenRangeOverflow", value);
+    if (DEBUG) console.debug(CLASS_NAME, "set messageWhenRangeOverflow", value);
   }
 
   /* api: format */
@@ -243,13 +244,13 @@ export default class extends LightningElement {
   get format() {
     const rv = this._format || dateFormat || "YYYY-MM-DD";
 
-    if (DEBUG) console.log(CLASS_NAME, "get format", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "get format", rv);
 
     return rv;
   }
 
   set format(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set format", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set format", value);
 
     this._formatOriginal = value;
     this._format = value || dateFormat || "YYYY-MM-DD";
@@ -257,7 +258,7 @@ export default class extends LightningElement {
     this.setMaxDate();
     this.updateDisplayValue();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set format", this._format);
+    if (DEBUG) console.debug(CLASS_NAME, "< set format", this._format);
   }
 
   /* api: min, max */
@@ -274,12 +275,12 @@ export default class extends LightningElement {
   }
 
   set max(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set max", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set max", value);
 
     this._max = value;
     this.setMaxDate();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set format", this._max);
+    if (DEBUG) console.debug(CLASS_NAME, "< set format", this._max);
   }
 
   @api
@@ -288,12 +289,12 @@ export default class extends LightningElement {
   }
 
   set min(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set min", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set min", value);
 
     this._min = value;
     this.setMinDate();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set min", this._min);
+    if (DEBUG) console.debug(CLASS_NAME, "< set min", this._min);
   }
 
   setMinDate() {
@@ -365,7 +366,7 @@ export default class extends LightningElement {
   /* methods */
 
   @api setValue(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> setValue", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> setValue", value);
 
     this.sfGpsDsClearCustomValidation();
     value = this.parseValue(value);
@@ -374,11 +375,11 @@ export default class extends LightningElement {
     this.updateDisplayValue();
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< setValue", this._value, typeof this._value);
+      console.debug(CLASS_NAME, "< setValue", this._value, typeof this._value);
   }
 
   setAndDispatchValue(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> setAndDispatchValue", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> setAndDispatchValue", value);
 
     this.setValue(value);
 
@@ -396,14 +397,14 @@ export default class extends LightningElement {
       })
     );
 
-    if (DEBUG) console.log(CLASS_NAME, "< setAndDispatchValue");
+    if (DEBUG) console.debug(CLASS_NAME, "< setAndDispatchValue");
   }
 
   updateDisplayValue() {
     const val = this._parsedValue;
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> updateDisplayValue",
         val?.isValid() ? val?.toISOString() : "invalid date"
@@ -419,7 +420,7 @@ export default class extends LightningElement {
     }
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< updateDisplayValue", this._displayValue);
+      console.debug(CLASS_NAME, "< updateDisplayValue", this._displayValue);
   }
 
   /* methods: parse and format */
@@ -435,11 +436,17 @@ export default class extends LightningElement {
 
   formatValue(date, outputFormat = true) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> formatValue", date, typeof date, outputFormat);
+      console.debug(
+        CLASS_NAME,
+        "> formatValue",
+        date,
+        typeof date,
+        outputFormat
+      );
 
     let rv = null;
 
-    if (DEBUG) console.log(CLASS_NAME, "= formatValue", isValidDate(date));
+    if (DEBUG) console.debug(CLASS_NAME, "= formatValue", isValidDate(date));
 
     if (isValidDate(date)) {
       rv =
@@ -448,7 +455,7 @@ export default class extends LightningElement {
           : date;
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< formatValue", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< formatValue", rv);
     return rv;
   }
 
@@ -462,7 +469,7 @@ export default class extends LightningElement {
    */
 
   parseValue(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> parseValue", value, typeof value);
+    if (DEBUG) console.debug(CLASS_NAME, "> parseValue", value, typeof value);
 
     let rv = null;
 
@@ -490,7 +497,7 @@ export default class extends LightningElement {
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< parseValue", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< parseValue", rv);
 
     return rv;
   }
@@ -503,7 +510,7 @@ export default class extends LightningElement {
    */
 
   parseInput(input) {
-    if (DEBUG) console.log(CLASS_NAME, "> parseInput", input, typeof input);
+    if (DEBUG) console.debug(CLASS_NAME, "> parseInput", input, typeof input);
 
     let rv = null;
 
@@ -517,7 +524,7 @@ export default class extends LightningElement {
       }
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< parseInput", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< parseInput", rv);
 
     return rv;
   }
@@ -547,7 +554,7 @@ export default class extends LightningElement {
 
   handleInputChange(event) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> handleInputChange", event.target?.value);
+      console.debug(CLASS_NAME, "> handleInputChange", event.target?.value);
 
     event.stopPropagation();
 
@@ -575,15 +582,15 @@ export default class extends LightningElement {
 
     this.showHelpMessageIfInvalid();
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleInputChange");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleInputChange");
   }
 
   stopPropagation(event) {
-    if (DEBUG) console.log(CLASS_NAME, "> stopPropagation");
+    if (DEBUG) console.debug(CLASS_NAME, "> stopPropagation");
 
     event.stopPropagation();
 
-    if (DEBUG) console.log(CLASS_NAME, "< stopPropagation");
+    if (DEBUG) console.debug(CLASS_NAME, "< stopPropagation");
   }
 
   /* lifecycle */
@@ -629,7 +636,7 @@ export default class extends LightningElement {
       const overrides = {
         badInput: () => {
           if (DEBUG)
-            console.log(
+            console.debug(
               CLASS_NAME,
               "> _constraint.badInput",
               this._value,
@@ -645,7 +652,7 @@ export default class extends LightningElement {
           const yV = (this._displayYearValue = this.refs.yearInput?.value);
 
           if (DEBUG)
-            console.log(CLASS_NAME, "= _constraint.badInput", dV, mV, yV);
+            console.debug(CLASS_NAME, "= _constraint.badInput", dV, mV, yV);
 
           if (dV === "" || mV === "" || yV === "") {
             rv = false;
@@ -679,7 +686,7 @@ export default class extends LightningElement {
             }
           }
 
-          if (DEBUG) console.log(CLASS_NAME, "< _constraint.badInput", rv);
+          if (DEBUG) console.debug(CLASS_NAME, "< _constraint.badInput", rv);
 
           return rv;
         },
@@ -718,14 +725,18 @@ export default class extends LightningElement {
         typeMismatch: () => false,
         valueMissing: () => {
           if (DEBUG)
-            console.log(CLASS_NAME, "> _constraint.valueMissing", this._value);
+            console.debug(
+              CLASS_NAME,
+              "> _constraint.valueMissing",
+              this._value
+            );
 
           const dV = (this._displayDayValue = this.refs.dateInput?.value);
           const mV = (this._displayMonthValue = this.refs.monthInput?.value);
           const yV = (this._displayYearValue = this.refs.yearInput?.value);
 
           if (DEBUG)
-            console.log(CLASS_NAME, "= _constraint.valueMissing", dV, mV, yV);
+            console.debug(CLASS_NAME, "= _constraint.valueMissing", dV, mV, yV);
 
           const rv =
             this.required &&
@@ -739,7 +750,7 @@ export default class extends LightningElement {
           }
 
           if (DEBUG)
-            console.log(
+            console.debug(
               CLASS_NAME,
               "< _constraint.valueMissing",
               rv,
@@ -764,7 +775,7 @@ export default class extends LightningElement {
   get validity() {
     if (!this || !this._constraint) return null;
 
-    if (DEBUG) console.log(CLASS_NAME, "> validity");
+    if (DEBUG) console.debug(CLASS_NAME, "> validity");
 
     let out = {};
     [
@@ -783,39 +794,39 @@ export default class extends LightningElement {
       out[constraintKey] = !!this._constraint.validity[constraintKey];
     }, this);
 
-    if (DEBUG) console.log(CLASS_NAME, "< validity", out);
+    if (DEBUG) console.debug(CLASS_NAME, "< validity", out);
 
     return out;
   }
 
   @api checkValidity() {
-    if (DEBUG) console.log(CLASS_NAME, "> checkValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "> checkValidity");
 
     const rv = !this._connected || this._constraint.checkValidity();
 
-    if (DEBUG) console.log(CLASS_NAME, "< checkValidity", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< checkValidity", rv);
     return rv;
   }
 
   @api setCustomValidity(e) {
-    if (DEBUG) console.log(CLASS_NAME, "> setCustomValidity", e);
+    if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidity", e);
 
     this._constraint.setCustomValidity(e);
     if (this._rendered && e) this.showHelpMessageIfInvalid();
 
-    if (DEBUG) console.log(CLASS_NAME, "< setCustomValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "< setCustomValidity");
   }
 
   @api showHelpMessageIfInvalid() {
-    if (DEBUG) console.log(CLASS_NAME, "> showHelpMessageIfInvalid");
+    if (DEBUG) console.debug(CLASS_NAME, "> showHelpMessageIfInvalid");
 
     this.reportValidity();
 
-    if (DEBUG) console.log(CLASS_NAME, "< showHelpMessageIfInvalid");
+    if (DEBUG) console.debug(CLASS_NAME, "< showHelpMessageIfInvalid");
   }
 
   @api reportValidity() {
-    if (DEBUG) console.log(CLASS_NAME, "> reportValidity");
+    if (DEBUG) console.debug(CLASS_NAME, "> reportValidity");
 
     const valid =
       !this._connected ||
@@ -825,7 +836,7 @@ export default class extends LightningElement {
     this.isError = !valid;
     this.setAttribute("data-invalid", this.isError);
 
-    if (DEBUG) console.log(CLASS_NAME, "< reportValidity", valid);
+    if (DEBUG) console.debug(CLASS_NAME, "< reportValidity", valid);
 
     return valid;
   }
@@ -833,10 +844,10 @@ export default class extends LightningElement {
   /* additional apis for sfGpsDs */
 
   @api setCustomValidation(message) {
-    if (DEBUG) console.log(CLASS_NAME, "> setCustomValidation", message);
+    if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidation", message);
     this._sfGpsDsCustomValidation = message;
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "< setCustomValidation",
         "_sfGpsDsCustomValidation: " + this._sfGpsDsCustomValidation
@@ -847,24 +858,24 @@ export default class extends LightningElement {
 
   @api sfGpsDsHasCustomValidation() {
     const rv = !!this._sfGpsDsCustomValidation;
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
     return rv;
   }
 
   @api sfGpsDsClearCustomValidation() {
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsClearCustomValidation");
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsClearCustomValidation");
     this._sfGpsDsCustomValidation = "";
   }
 
   @api sfGpsDsGetCustomValidation() {
     const rv = this._sfGpsDsCustomValidation;
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsGetCustomValidation", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsGetCustomValidation", rv);
     return rv;
   }
 
   get sfGpsDsIsError() {
     const rv = this.isError || this.sfGpsDsHasCustomValidation();
-    if (DEBUG) console.log(CLASS_NAME, "get sfGpsDsIsError", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "get sfGpsDsIsError", rv);
     return rv;
   }
 

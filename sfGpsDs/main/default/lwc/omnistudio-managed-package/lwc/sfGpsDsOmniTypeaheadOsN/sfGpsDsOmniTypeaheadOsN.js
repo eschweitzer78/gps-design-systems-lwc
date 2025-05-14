@@ -31,13 +31,13 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioTypeahead) {
   /* Deal with changes, we should clear custom validation messages */
 
   updateValue(event) {
-    if (DEBUG) console.log(CLASS_NAME, "updateValue");
+    if (DEBUG) console.debug(CLASS_NAME, "updateValue");
     this.sfGpsDsClearCustomValidation(false);
     super.updateValue(event);
   }
 
   selectOption(event, selectedItemIndex, selectedItemName) {
-    if (DEBUG) console.log(CLASS_NAME, "selectOption");
+    if (DEBUG) console.debug(CLASS_NAME, "selectOption");
     this.sfGpsDsClearCustomValidation(false);
     super.selectOption(event, selectedItemIndex, selectedItemName);
   }

@@ -7,7 +7,7 @@ const CLASS_NAME = "SfGpsDsOmniDatePickerOsN";
 
 export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioDatePicker) {
   assignDate(value) {
-    if (DEBUG) console.log(CLASS_NAME, "assignDate", value);
+    if (DEBUG) console.debug(CLASS_NAME, "assignDate", value);
     this.sfGpsDsClearCustomValidation(false);
     super.assignDate(value);
   }
@@ -19,7 +19,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioDatePicker) {
 
   _hideCalendar() {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "_hideCalendar",
         `_hasDatePickerButton = ${this._hasDatePickerButton}`
@@ -76,7 +76,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioDatePicker) {
    ***/
 
   renderedCallback() {
-    if (DEBUG) console.log(CLASS_NAME, "renderedCallback", this.lastInvalid);
+    if (DEBUG) console.debug(CLASS_NAME, "renderedCallback", this.lastInvalid);
     super.renderedCallback();
 
     if (this.lastInvalid) {
@@ -97,9 +97,9 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioDatePicker) {
   @api
   get validationMessage() {
     if (DEBUG)
-      console.log(CLASS_NAME, "> validationMessage", "label: " + this.label);
+      console.debug(CLASS_NAME, "> validationMessage", "label: " + this.label);
     const rv = this.sfGpsDsErrorMessage;
-    if (DEBUG) console.log(CLASS_NAME, "< validationMessage", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< validationMessage", rv);
 
     return rv;
   }

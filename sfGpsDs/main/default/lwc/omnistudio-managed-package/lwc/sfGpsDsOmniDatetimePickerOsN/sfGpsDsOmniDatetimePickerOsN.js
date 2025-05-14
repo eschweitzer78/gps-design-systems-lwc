@@ -49,13 +49,13 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   @api
   get validationMessage() {
     if (DEBUG)
-      console.log(CLASS_NAME, "> validationMessage", "label: " + this.label);
+      console.debug(CLASS_NAME, "> validationMessage", "label: " + this.label);
 
     const dvm = this.dateEl.validationMessage;
     const tvm = this.dateEl.validationMessage;
     const rv = this.sfGpsDsGetCustomValidation() || dvm || tvm;
 
-    if (DEBUG) console.log(CLASS_NAME, "< validationMessage", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< validationMessage", rv);
 
     return rv;
   }

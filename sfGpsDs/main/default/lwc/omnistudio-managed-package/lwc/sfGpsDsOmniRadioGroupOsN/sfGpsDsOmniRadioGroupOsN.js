@@ -9,7 +9,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioRadioGroup) {
   /* event management */
 
   sfGpsDsOnChangeValue(event) {
-    if (DEBUG) console.log(CLASS_NAME, "sfGpsDsOnChangeValue");
+    if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsOnChangeValue");
 
     this.sfGpsDsClearCustomValidation(false);
     super.onchangevalue(event);
@@ -23,7 +23,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioRadioGroup) {
   @api
   get validationMessage() {
     const rv = this.sfGpsDsErrorMessage;
-    if (DEBUG) console.log(CLASS_NAME, "validationMessage", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "validationMessage", rv);
     return rv;
   }
 }

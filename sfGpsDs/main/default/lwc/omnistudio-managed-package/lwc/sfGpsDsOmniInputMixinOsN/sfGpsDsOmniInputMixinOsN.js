@@ -18,10 +18,10 @@ const SfGpsDsOmniInputMixin = (Base) =>
      ***/
 
     @api setCustomValidation(message) {
-      if (DEBUG) console.log(CLASS_NAME, "> setCustomValidation", message);
+      if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidation", message);
       this._sfGpsDsCustomValidation = message;
       if (DEBUG)
-        console.log(
+        console.debug(
           CLASS_NAME,
           "< setCustomValidation",
           "_sfGpsDsCustomValidation: " + this._sfGpsDsCustomValidation
@@ -32,18 +32,18 @@ const SfGpsDsOmniInputMixin = (Base) =>
 
     @api sfGpsDsHasCustomValidation() {
       const rv = !!this._sfGpsDsCustomValidation;
-      if (DEBUG) console.log(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
+      if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
       return rv;
     }
 
     @api sfGpsDsClearCustomValidation() {
-      if (DEBUG) console.log(CLASS_NAME, "sfGpsDsClearCustomValidation");
+      if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsClearCustomValidation");
       this._sfGpsDsCustomValidation = "";
     }
 
     @api sfGpsDsGetCustomValidation() {
       const rv = this._sfGpsDsCustomValidation;
-      if (DEBUG) console.log(CLASS_NAME, "sfGpsDsGetCustomValidation", rv);
+      if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsGetCustomValidation", rv);
       return rv;
     }
 
@@ -51,14 +51,14 @@ const SfGpsDsOmniInputMixin = (Base) =>
       const rv = this.sfGpsDsHasCustomValidation()
         ? false
         : super.checkValidity();
-      if (DEBUG) console.log(CLASS_NAME, "checkValidity", rv);
+      if (DEBUG) console.debug(CLASS_NAME, "checkValidity", rv);
       return rv;
     }
 
     @api reportValidity() {
       const srv = super.reportValidity();
       const rv = this.sfGpsDsHasCustomValidation() ? false : srv;
-      if (DEBUG) console.log(CLASS_NAME, "reportValidity", rv);
+      if (DEBUG) console.debug(CLASS_NAME, "reportValidity", rv);
       return rv;
     }
 
@@ -81,7 +81,7 @@ const SfGpsDsOmniInputMixin = (Base) =>
         valueMissing: srv.valueMissing
       };
 
-      if (DEBUG) console.log(CLASS_NAME, "get validity", rv);
+      if (DEBUG) console.debug(CLASS_NAME, "get validity", rv);
       return rv;
     }
 
@@ -90,14 +90,14 @@ const SfGpsDsOmniInputMixin = (Base) =>
       const svm = super.validationMessage;
       const rv = this.sfGpsDsGetCustomValidation() || svm;
 
-      if (DEBUG) console.log(CLASS_NAME, "get validationMessage", rv);
+      if (DEBUG) console.debug(CLASS_NAME, "get validationMessage", rv);
 
       return rv;
     }
 
     get sfGpsDsIsError() {
       const rv = this.isError || this.sfGpsDsHasCustomValidation();
-      if (DEBUG) console.log(CLASS_NAME, "get sfGpsDsIsError", rv);
+      if (DEBUG) console.debug(CLASS_NAME, "get sfGpsDsIsError", rv);
       return rv;
     }
 
