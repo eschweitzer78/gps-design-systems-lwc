@@ -5,6 +5,7 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 const WIDTH_VALUES = {
   "full-width": { body: "qld__body", width: "qld__body--full-width" },
   "half-width": { body: "qld__body", width: "qld__body--half-width" },
+  "custom-class": { body: "qld__body", width: null },
   none: { body: null, width: null }
 };
 const WIDTH_DEFAULT = "full-width";
@@ -42,9 +43,9 @@ export default class extends SfGpsDsLwc {
     if (DEBUG)
       console.debug(CLASS_NAME, "> set className", value, this._className);
 
-    if (this._className) this.classList.remove(this._className);
+    if (this._className) this.classList.remove(...this._className.split(" "));
     this._className = value;
-    if (this._className) this.classList.add(this._className);
+    if (this._className) this.classList.add(...this._className.split(" "));
 
     if (DEBUG) console.debug(CLASS_NAME, "< set className", this._className);
   }
