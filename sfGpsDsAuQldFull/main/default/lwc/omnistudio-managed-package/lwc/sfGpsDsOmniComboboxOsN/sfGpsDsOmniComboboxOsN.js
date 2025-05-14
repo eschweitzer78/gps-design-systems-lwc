@@ -49,7 +49,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioCombobox) {
   /* clear custom val on change */
 
   selectOption(event, selectedOption) {
-    if (DEBUG) console.log(CLASS_NAME, "selectOption");
+    if (DEBUG) console.debug(CLASS_NAME, "selectOption");
 
     this.sfGpsDsClearCustomValidation(false);
     super.selectOption(event, selectedOption);
@@ -63,7 +63,7 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioCombobox) {
   @api
   get validationMessage() {
     const rv = this.sfGpsDsErrorMessage;
-    if (DEBUG) console.log(CLASS_NAME, "validationMessage", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "validationMessage", rv);
     return rv;
   }
 }

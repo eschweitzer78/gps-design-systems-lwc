@@ -9,13 +9,13 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioTextarea) {
   /* methods */
 
   updateValue(event) {
-    if (DEBUG) console.log(CLASS_NAME, "updateValue");
+    if (DEBUG) console.debug(CLASS_NAME, "updateValue");
     this.sfGpsDsClearCustomValidation(false);
     super.updateValue(event);
   }
 
   validateError(event) {
-    if (DEBUG) console.log(CLASS_NAME, "validateError");
+    if (DEBUG) console.debug(CLASS_NAME, "validateError");
     this.sfGpsDsClearCustomValidation(false);
     super.validateError(event);
   }
@@ -23,9 +23,9 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioTextarea) {
   @api
   get validationMessage() {
     if (DEBUG)
-      console.log(CLASS_NAME, "> validationMessage", "label: " + this.label);
+      console.debug(CLASS_NAME, "> validationMessage", "label: " + this.label);
     const rv = this.sfGpsDsErrorMessage;
-    if (DEBUG) console.log(CLASS_NAME, "< validationMessage", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "< validationMessage", rv);
 
     return rv;
   }
