@@ -1,7 +1,7 @@
 {
   "name": "gps-design-systems-lwc",
   "private": false,
-  "version": "2.8.0",
+  "version": "2.8.2",
   "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
     "lint": "eslint **/{aura,lwc}/**",
@@ -24,7 +24,7 @@
     "prep-frgov": "mkdir -p sfGpsDsFrGovFull",
     "prep-ukgov": "mkdir -p sfGpsDsUkGovFull",
     "prep-sggov": "cp -a node_modules/@govtechsg/sgds/css/sgds.css sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; mkdir -p sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; cp -a node_modules/bootstrap-icons/font/bootstrap-icons.css sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; mkdir -p sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov/fonts; cp -a node_modules/bootstrap-icons/font/fonts/* sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov/fonts; mkdir -p sfGpsDsSgGovFull",
-    "prep": "npm run prep-nsw; npm run prep-nsws; npm run prep-qld; npm run prep-vic1;  npm run prep-vic2; npm run prep-frgov; npm run prep-ukgov;npm run prep-sggov",
+    "prep": "npm run prep-nsw; npm run prep-nsws; npm run prep-qld; npm run prep-vic2; npm run prep-frgov; npm run prep-ukgov;npm run prep-sggov",
     "aunsw-copy": "rm -rf sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswFull;cp -a sfGpsDs/. sfGpsDsAuNswFull;cp -a sfGpsDsAuNsw/. sfGpsDsAuNswFull",
     "aunsws-copy": "rm -rf sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuNswSFull;cp -a sfGpsDs/. sfGpsDsAuNswSFull;cp -a sfGpsDsAuNswS/. sfGpsDsAuNswSFull",
     "auqld-copy": "rm -rf sfGpsDsAuQldFull;mkdir -p sfGpsDsAuQldFull;cp -a sfGpsDs/. sfGpsDsAuQldFull;cp -a sfGpsDsAuQld/. sfGpsDsAuQldFull",
