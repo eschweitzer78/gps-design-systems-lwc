@@ -242,9 +242,9 @@ export default class extends SfGpsDsLwc {
   }
 
   set className(value) {
-    if (this._className) this.classList.remove(this._className);
+    if (this._className) this.classList.remove(...this._className.split(" "));
     this._className = value;
-    if (this._className) this.classList.add(this._className);
+    if (this._className) this.classList.add(...this._className.split(" "));
   }
 
   /* getters */
