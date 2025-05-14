@@ -9,7 +9,7 @@
   </targets>
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property name="hasSidebar" type="Boolean" label="Has sidebar name" />
+      <property name="hasSidebar" type="Boolean" label="Has sidebar" />
       <property
         name="className"
         type="String"
