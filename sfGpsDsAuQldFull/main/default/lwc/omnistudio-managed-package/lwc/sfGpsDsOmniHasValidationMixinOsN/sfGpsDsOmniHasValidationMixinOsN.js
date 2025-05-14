@@ -92,7 +92,7 @@ const SfGpsDsOmniHasValidationMixin = (Base) =>
        *
        **/
 
-      if (DEBUG) console.log(CLASS_NAME, "> setCustomValidation", message);
+      if (DEBUG) console.debug(CLASS_NAME, "> setCustomValidation", message);
 
       if (this.childInput && this.childInput.setCustomValidation) {
         this.childInput.setCustomValidation(message);
@@ -100,14 +100,14 @@ const SfGpsDsOmniHasValidationMixin = (Base) =>
         if (report) this.reportValidity();
       } else {
         if (DEBUG)
-          console.log(
+          console.debug(
             CLASS_NAME,
             "setCustomValidation failed to set custom validation on child input"
           );
       }
 
       if (DEBUG)
-        console.log(
+        console.debug(
           CLASS_NAME,
           "< setCustomValidation",
           "_sfGpsDsCustomValidation: " + this._sfGpsDsCustomValidation
@@ -115,7 +115,7 @@ const SfGpsDsOmniHasValidationMixin = (Base) =>
     }
 
     handleKeyup(event) {
-      if (DEBUG) console.log(CLASS_NAME, "handleKeyup");
+      if (DEBUG) console.debug(CLASS_NAME, "handleKeyup");
 
       this.sfGpsDsClearCustomValidation(false);
       super.handleKeyup(event); // parent does reportValidity
@@ -123,12 +123,12 @@ const SfGpsDsOmniHasValidationMixin = (Base) =>
 
     @api sfGpsDsHasCustomValidation() {
       const rv = this._sfGpsDsCustomValidation;
-      if (DEBUG) console.log(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
+      if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsHasCustomValidation", rv);
       return rv;
     }
 
     @api sfGpsDsClearCustomValidation(report = true) {
-      if (DEBUG) console.log(CLASS_NAME, "sfGpsDsClearCustomValidation");
+      if (DEBUG) console.debug(CLASS_NAME, "sfGpsDsClearCustomValidation");
 
       if (this._sfGpsDsCustomValidation) {
         this.setCustomValidation("", report);

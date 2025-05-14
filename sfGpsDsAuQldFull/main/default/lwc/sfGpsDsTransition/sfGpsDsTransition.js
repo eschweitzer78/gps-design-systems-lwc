@@ -72,12 +72,12 @@ export default class extends SfGpsDsLwc {
   }
 
   set name(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set name value=", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set name value=", value);
 
     this._name = value;
     this.updateTransition();
 
-    if (DEBUG) console.log(CLASS_NAME, "< set name", this._name);
+    if (DEBUG) console.debug(CLASS_NAME, "< set name", this._name);
   }
 
   /* api: type */
@@ -91,14 +91,14 @@ export default class extends SfGpsDsLwc {
   }
 
   set type(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set type value=", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set type value=", value);
 
     this._typeOriginal = value;
     this._type = normaliseString(value, {
       validValues: TYPE_VALUES,
       fallbackValue: TYPE_DEFAULT
     });
-    if (DEBUG) console.log(CLASS_NAME, "< set type", this._type);
+    if (DEBUG) console.debug(CLASS_NAME, "< set type", this._type);
   }
 
   /* api: mode */
@@ -112,7 +112,7 @@ export default class extends SfGpsDsLwc {
   }
 
   set mode(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set mode value=", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set mode value=", value);
 
     this._modeOriginal = value;
     this._mode = normaliseString(value, {
@@ -120,7 +120,7 @@ export default class extends SfGpsDsLwc {
       fallbackValue: MODE_DEFAULT
     });
 
-    if (DEBUG) console.log(CLASS_NAME, "< set mode", this._mode);
+    if (DEBUG) console.debug(CLASS_NAME, "< set mode", this._mode);
   }
 
   /* api: v-show */
@@ -134,14 +134,14 @@ export default class extends SfGpsDsLwc {
   }
 
   set show(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set show value=", value);
+    if (DEBUG) console.debug(CLASS_NAME, "> set show value=", value);
 
     if (!value !== !this._show) {
       this._show = value;
       this.updateTransition();
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< set show", this._show);
+    if (DEBUG) console.debug(CLASS_NAME, "< set show", this._show);
   }
 
   /* api: appear */
@@ -154,14 +154,14 @@ export default class extends SfGpsDsLwc {
   }
 
   set appear(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> set appear", JSON.stringify(value));
+    if (DEBUG) console.debug(CLASS_NAME, "> set appear", JSON.stringify(value));
 
     if (value != null) {
       this._appear = value !== false && value !== "false";
     }
 
     if (DEBUG)
-      console.log(CLASS_NAME, "< set appear", JSON.stringify(this._appear));
+      console.debug(CLASS_NAME, "< set appear", JSON.stringify(this._appear));
   }
 
   /* api: duration */
@@ -205,7 +205,7 @@ export default class extends SfGpsDsLwc {
 
   updateTransition() {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> updateTransition",
         this._name,
@@ -214,7 +214,7 @@ export default class extends SfGpsDsLwc {
       );
 
     if (!this._name || this._show === undefined || this._disabled) {
-      if (DEBUG) console.log(CLASS_NAME, "< updateTransition not bound");
+      if (DEBUG) console.debug(CLASS_NAME, "< updateTransition not bound");
       return;
     }
 
@@ -241,7 +241,7 @@ export default class extends SfGpsDsLwc {
       });
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< updateTransition");
+    if (DEBUG) console.debug(CLASS_NAME, "< updateTransition");
   }
 
   /* classes */
@@ -437,17 +437,18 @@ export default class extends SfGpsDsLwc {
 
   addTransitionClass(cls) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> addTransitionClass", cls, this.classList);
+      console.debug(CLASS_NAME, "> addTransitionClass", cls, this.classList);
     this.classList.add(cls);
-    if (DEBUG) console.log(CLASS_NAME, "< addTransitionClass", this.classList);
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< addTransitionClass", this.classList);
   }
 
   removeTransitionClass(cls) {
     if (DEBUG)
-      console.log(CLASS_NAME, "> removeTransitionClass", cls, this.classList);
+      console.debug(CLASS_NAME, "> removeTransitionClass", cls, this.classList);
     this.classList.remove(cls);
     if (DEBUG)
-      console.log(CLASS_NAME, "< removeTransitionClass", this.classList);
+      console.debug(CLASS_NAME, "< removeTransitionClass", this.classList);
   }
 
   _enter() {
@@ -574,7 +575,7 @@ export default class extends SfGpsDsLwc {
   }
 
   leave(rm) {
-    if (DEBUG) console.log(CLASS_NAME, "> leave");
+    if (DEBUG) console.debug(CLASS_NAME, "> leave");
 
     if (this[ENTER_CB_KEY]) {
       this[ENTER_CB_KEY].cancelled = true;
@@ -657,14 +658,14 @@ export default class extends SfGpsDsLwc {
       cb();
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< leave");
+    if (DEBUG) console.debug(CLASS_NAME, "< leave");
   }
 
   @track _displayStyle;
 
   setDisplayStyle(value) {
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> setDisplayStyle",
         this._displayStyle,
@@ -674,7 +675,7 @@ export default class extends SfGpsDsLwc {
 
     this.hostElement.style.display = value;
 
-    if (DEBUG) console.log(CLASS_NAME, "< setDisplayStyle");
+    if (DEBUG) console.debug(CLASS_NAME, "< setDisplayStyle");
   }
 
   getDisplayStyle() {
