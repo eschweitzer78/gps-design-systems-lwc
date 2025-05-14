@@ -1,0 +1,40 @@
+<template lwc:render-mode="light">
+  <div class={className} id={id}>
+    <div class={item1ClassName} id={item1Id}>
+      <slot name="Div1"></slot>
+    </div>
+    <div lwc:if={has2} class={item2ClassName} id={item2Id}>
+      <slot name="Div2"></slot>
+    </div>
+    <div lwc:if={has3} class={item3ClassName} id={item3Id}>
+      <slot name="Div3"></slot>
+    </div>
+    <div lwc:if={has4} class={item4ClassName} id={item4Id}>
+      <slot name="Div4"></slot>
+    </div>
+    <div lwc:if={has5} class={item5ClassName} id={item5Id}>
+      <slot name="Div5"></slot>
+    </div>
+    <div lwc:if={has6} class={item6ClassName} id={item6Id}>
+      <slot name="Div6"></slot>
+    </div>
+    <div lwc:if={has7} class="{item7ClassName" id={item7Id}>
+      <slot name="Div7"></slot>
+    </div>
+    <div lwc:if={has8} class={item8ClassName} id={item8Id}>
+      <slot name="Div8"></slot>
+    </div>
+    <div lwc:if={has9} class={item9ClassName} id={item9Id}>
+      <slot name="Div9"></slot>
+    </div>
+    <div lwc:if={has10} class={item10ClassName} id={item10Id}>
+      <slot name="Div10"></slot>
+    </div>
+    <div lwc:if={has11} class={item11ClassName} id={item11Id}>
+      <slot name="Div11"></slot>
+    </div>
+    <div lwc:if={has12} class={item12ClassName} id={item12Id}>
+      <slot name="Div12"></slot>
+    </div>
+  </div>
+</template>
