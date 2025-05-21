@@ -107,11 +107,16 @@
           </div>
         </div>
 
-        <span lwc:if={mergedHelpText} id="helper" class="nsw-form__helper">
-          {mergedHelpText}
+        <span
+          lwc:if={computedShowHelpText}
+          id="helper"
+          class="nsw-form__helper"
+        >
+          <template lwc:if={isSmart}> {mergedHelpText} </template>
+          <template lwc:else> {mergedManualHelpText} </template>
         </span>
 
-        <div class="nsw-grid">
+        <div if:false={_propSetMap.manualAddressEditMode} class="nsw-grid">
           <div class="nsw-col nsw-col-12 street">
             <c-sf-gps-ds-au-nsw-input-os-n
               type="text"
