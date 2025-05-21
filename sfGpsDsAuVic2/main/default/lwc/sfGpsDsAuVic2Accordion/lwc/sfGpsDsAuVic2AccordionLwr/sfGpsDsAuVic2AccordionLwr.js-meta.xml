@@ -57,7 +57,7 @@
         type="String"
         label="Accordion 6 label"
         description="Accordion 6 label, leave empty to hide."
-        default="Accordion 2"
+        default="Accordion 6"
       />
       <property
         name="item7Title"
