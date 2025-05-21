@@ -21,6 +21,14 @@ const I18N = {
 /**
  * @slot Accordion-1
  * @slot Accordion-2
+ * @slot Accordion-3
+ * @slot Accordion-4
+ * @slot Accordion-5
+ * @slot Accordion-6
+ * @slot Accordion-7
+ * @slot Accordion-8
+ * @slot Accordion-9
+ * @slot Accordion-10
  */
 export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
   SfGpsDsLwc

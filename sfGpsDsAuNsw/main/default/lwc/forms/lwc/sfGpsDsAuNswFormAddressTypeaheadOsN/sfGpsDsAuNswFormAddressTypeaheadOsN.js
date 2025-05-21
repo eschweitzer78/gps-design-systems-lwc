@@ -10,6 +10,8 @@ import SfGpsDsFormTypeaheadOsN from "c/sfGpsDsFormTypeaheadOsN";
 import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { debounce } from "omnistudio/utility";
 import { isArray } from "c/sfGpsDsHelpersOs";
+import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
+
 import tmpl from "./sfGpsDsAuNswFormAddressTypeaheadOsN.html";
 
 const STATUS_TYPING = "typing";
@@ -22,6 +24,10 @@ const DEFAULT_COUNTRY = "Australia";
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuNswFormAddressTypeaheadOsN";
+
+const I18N = {
+  manualAddressHelpText: "Enter your address details below."
+};
 
 export default class extends SfGpsDsAuNswStatusHelperMixin(
   SfGpsDsFormTypeaheadOsN
@@ -113,10 +119,25 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     return this.isSmart ? this.elementValueStatus === STATUS_RESOLVED : false;
   }
 
+  get computedShowHelpText() {
+    return this.mergedHelpText || !this.isSmart;
+  }
+
+  get mergedManualHelpText() {
+    return omniGetMergedField(
+      this,
+      this._propSetMap.manualAddressHelpText || I18N.manualAddressHelpText
+    );
+  }
+
   /* event management */
 
   handleToggle() {
     this.isSmart = !this.isSmart;
+
+    if (this._propSetMap.manualAddressEditMode) {
+      this.toggleEditMode(!this.isSmart);
+    }
 
     this.dispatchOmniEventUtil(
       this,

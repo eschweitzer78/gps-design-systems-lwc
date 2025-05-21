@@ -191,11 +191,13 @@ export default class extends LightningElement {
   }
 
   emit(name) {
-    this.dispatchEvent(new CustomEvent(name), {
-      detail: {
-        key: this.key,
-        url: this.url
-      }
-    });
+    this.dispatchEvent(
+      new CustomEvent(name, {
+        detail: {
+          key: this.key,
+          url: this.url
+        }
+      })
+    );
   }
 }
