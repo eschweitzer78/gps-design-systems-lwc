@@ -98,8 +98,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     if (DEBUG)
       console.debug(CLASS_NAME, "> set elementValue", JSON.stringify(v));
 
-    this._didGetValue = true;
-    this.ingest(v);
+    if (this._propSetMap) {
+      this._didGetValue = true;
+      this.ingest(v);
+    }
 
     if (DEBUG) console.debug(CLASS_NAME, "< set elementValue");
   }
@@ -256,6 +258,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   handleSelect(event) {
+    if (DEBUG) console.debug(CLASS_NAME, "> handleSelect");
+
     super.handleSelect({
       target: {
         value: this.getSmartValue({
@@ -266,6 +270,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       },
       detail: event.detail
     });
+
+    const cv = this.checkValidity();
+    if (DEBUG)
+      console.debug(CLASS_NAME, "= handleSelect", "checkValidity=", cv);
 
     // for some reason this is otherwise not (never?) refreshed
     this.jsonDataStr = JSON.stringify(this._jsonData);
@@ -286,6 +294,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         this.checkValidity();
       })
       .catch((e) => this.handleError(e));
+
+    if (DEBUG) console.debug(CLASS_NAME, "< handleSelect");
   }
 
   /* lifecycle */
@@ -463,6 +473,9 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       this.elementValueValue = {};
       this.elementValueStatus = STATUS_TYPING;
     }
+
+    // Need to wait for the value to trickle down to the child element
+    Promise.resolve().then(() => this.checkValidity());
   }
 
   getManualValue() {
@@ -506,41 +519,58 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   @api checkValidity() {
+    if (DEBUG) console.debug(CLASS_NAME, "> checkValidity");
+
+    let cv = true;
+
     try {
       if (this.isSmart) {
-        let cv = true;
-
         if (
           this.elementValueStatus !== STATUS_RESOLVED &&
-          this._propSetMap.required
+          this._propSetMap?.required
         ) {
+          if (DEBUG)
+            console.debug(
+              CLASS_NAME,
+              "= checkValidity not valid, isSmart not resolved required"
+            );
           cv = false;
           this.isValid = false;
         } else {
           cv = super.checkValidity();
+          if (DEBUG)
+            console.debug(
+              CLASS_NAME,
+              `= checkValidity valid=${cv}, isSmart resolved or not required`
+            );
         }
+      } else {
+        this.manualChildInputs.forEach((i) => {
+          cv &&= i.checkValidity();
+        });
 
-        return cv;
+        if (DEBUG)
+          console.debug(CLASS_NAME, `= checkValidity valid=${cv}, manual`);
+        this.isValid = cv;
       }
-
-      let validity = true;
-      this.manualChildInputs.forEach((i) => {
-        let v = i.checkValidity();
-        validity = validity && v;
-      });
-
-      this.isValid = validity;
-      return this.isValid;
     } catch (t) {
-      if (DEBUG) console.debug(CLASS_NAME, "checkValidity", t);
-      return true;
+      if (DEBUG) console.debug(CLASS_NAME, "= checkValidity exception", t);
+      cv = true;
+      this.isValid = cv;
     }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< checkValidity", cv);
+    return cv;
   }
 
   @api reportValidity() {
+    if (DEBUG) console.debug(CLASS_NAME, "> reportValidity");
+
+    let rv = true;
+
     try {
       if (this.isSmart) {
-        let rv = super.reportValidity();
+        rv = super.reportValidity();
 
         if (
           this.elementValueStatus !== STATUS_RESOLVED &&
@@ -554,21 +584,20 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
           this.isValid = false;
           this.errorMessage = this._messageWhenValueMissing;
         }
+      } else {
+        rv = true;
+        this.manualChildInputs.forEach((i) => {
+          rv &&= i.reportValidity();
+        });
 
-        return rv;
+        this.isValid = rv;
       }
-
-      let validity = true;
-      this.manualChildInputs.forEach((i) => {
-        let v = i.reportValidity();
-        validity = validity && v;
-      });
-
-      this.isValid = validity;
-      return this.isValid;
     } catch (t) {
-      if (DEBUG) console.debug(CLASS_NAME, "reportValidity", t);
-      return true;
+      if (DEBUG) console.debug(CLASS_NAME, "= reportValidity exception", t);
+      rv = true;
     }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< reportValidity", rv);
+    return rv;
   }
 }
