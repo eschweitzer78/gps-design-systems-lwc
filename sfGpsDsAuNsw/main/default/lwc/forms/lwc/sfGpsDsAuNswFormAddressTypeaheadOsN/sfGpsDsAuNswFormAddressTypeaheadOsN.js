@@ -60,7 +60,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   get options() {
     return this._ath_options;
   }
+
   set options(v) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set options", JSON.stringify(v));
+
     this._ath_options = v;
 
     if (v && isArray(v)) {
@@ -74,6 +77,8 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         });
       }
     }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set options");
   }
 
   _manualChildInputs;
@@ -90,8 +95,13 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   }
 
   set elementValue(v) {
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> set elementValue", JSON.stringify(v));
+
     this._didGetValue = true;
     this.ingest(v);
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set elementValue");
   }
 
   /* computed / getters */
@@ -307,6 +317,19 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
   renderedCallback() {
     super.renderedCallback();
 
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> renderedCallback",
+        "_didGetValue=",
+        this._didGetValue,
+        "_didTypeahead=",
+        this._didTypeahead,
+        "elementValueStatus=",
+        this.elementValueStatus
+      );
+    }
+
     if (!this._didTypeahead && this._didGetValue) {
       if (this.isSmart) {
         if (this.elementValueStatus === STATUS_TYPING) {
@@ -322,23 +345,43 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         }
       }
     }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< renderedCallback");
   }
 
   /* methods / overrides */
 
-  performTypeahead(e, testValue = true) {
+  async performTypeahead(e, testValue = true) {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "> performTypeahead",
+        "e.value=",
+        e?.value,
+        "testValue=",
+        testValue
+      );
+    }
+
     this._didTypeahead = true;
-    const t = e.value || null;
+    const t = e?.value || null;
     this.elementValueLabel = t;
 
     if (!testValue || this.elementValue !== t) {
       this.setElementValue(this.getSmartValue(), false, false);
 
-      this.dispatchOmniEventUtil(
+      await this.dispatchOmniEventUtil(
         this,
         this.createAggregateNode(),
         "omniaggregate"
       );
+
+      if (DEBUG)
+        console.debug(
+          CLASS_NAME,
+          "= performTypeahead post omniaggregate",
+          this.jsonDataStr
+        );
 
       if (t === null) {
         this.options = [];
@@ -346,13 +389,25 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
         if (this._propSetMap.useDataJson) {
           this.getOptionsDataJson();
         } else {
+          /* Doing promise resolution twice to let events propagate */
           Promise.resolve().then(() => {
-            this.getOptions(this._propSetMap.taAction);
+            Promise.resolve().then(() => {
+              console.debug(
+                CLASS_NAME,
+                "= performTypeahead getOptions",
+                this.jsonDataStr
+              );
+              this.getOptions(this._propSetMap.taAction);
+            });
           });
         }
       }
 
       this.dispatchOmniEventUtil(this, { item: "$Vlocity.nullify" }, "select");
+    }
+
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "< performTypeahead");
     }
   }
 
@@ -382,6 +437,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       this.elementValueLabel = v;
       this.elementValueValue = {};
       this.elementValueStatus = STATUS_TYPING;
+      this.performTypeahead({ value: v });
     } else if (v && typeof v === "object") {
       this.isSmart = v.mode ? v.mode === MODE_SMART : true;
       this.elementValueLabel = v.label;
