@@ -34,3 +34,7 @@ package.xml
 **/tsconfig.json
 
 **/*.ts
+
+# test components and TS typings
+**/lwc/*Test
+**/lwc/typings
