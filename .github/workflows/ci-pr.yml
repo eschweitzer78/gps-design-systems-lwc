@@ -66,6 +66,10 @@ jobs:
       - name: "Lint Lightning Web Components / Aura Components"
         run: npm run lint
 
+      # Generate css from scss
+      - name: "Automatically generate css"
+        run: npm run cssgen
+
       # LWC unit tests
       - name: "Unit test Lightning Web Components"
         run: npm run test:unit:coverage
