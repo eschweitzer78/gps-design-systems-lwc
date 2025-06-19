@@ -1,7 +1,6 @@
 {
   "sfGpsDsAuVic2HtmlPlugIns": {
     "target": "!Os",
-    "!.css": { "target": "!Os.css" },
     "!.js": {
       "target": "!Os.js"
     },

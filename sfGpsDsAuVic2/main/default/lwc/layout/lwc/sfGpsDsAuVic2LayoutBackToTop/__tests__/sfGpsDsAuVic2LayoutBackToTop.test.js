@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVic2LayoutBackToTop from "c/sfGpsDsAuVic2LayoutBackToTop";
 
 describe("c-sf-gps-ds-au-vic2-layout-back-to-top", () => {

@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import Element from "c/sfGpsDsAuVic2RplDropdownOsN";
 import userEvent from "@testing-library/user-event";
 
