@@ -1,4 +1,4 @@
-declare module "c/sfGpsDsAuNswBreadcrumbsLwr" {
+declare module "c/sfGpsDsAuNswBreadcrumbsRecordComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { Link } from "c/sfGpsDsMarkdown"
   import type { PropertyAccessor } from "c/sfGpsDsElement";  

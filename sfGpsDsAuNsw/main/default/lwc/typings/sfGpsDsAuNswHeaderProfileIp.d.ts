@@ -1,5 +1,6 @@
-declare module "c/sfGpsDsAuNswHeaderProfile" {
+declare module "c/sfGpsDsAuNswHeaderProfileIp" {
   import type SfGpsDsNavigation from "c/sfGpsDsNavigation";
+  import type SfGpsDsNavigationService from "c/SfGpsDsNavigationService";
 
   export default 
   class sfGpsDsAuNswHeaderProfileIp 

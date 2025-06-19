@@ -1,6 +1,14 @@
 declare module "c/sfGpsDsAuNswListViewComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
-  import type { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { 
+    PropertyAccessor 
+  } from "c/sfGpsDsElement";
+  import type { 
+    sObject 
+  } from "c/sfGpsDsApex";
+  import type {  
+    ListViewInfo
+  } from "lightning/uiListsApi";
 
   export default 
   class SfGpsDsAuNswListViewComm
@@ -24,5 +32,11 @@ declare module "c/sfGpsDsAuNswListViewComm" {
 
     _filterName: string;
     _filterNameOriginal: string;
+
+    _listInfo: ListViewInfo;
+    _rawRecords: sObject[];
+
+    handleListInfo(result: { error: any, data: any }): void;
+    
   }
 }

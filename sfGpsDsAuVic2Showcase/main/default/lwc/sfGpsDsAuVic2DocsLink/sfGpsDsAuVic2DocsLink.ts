@@ -13,7 +13,7 @@ const ICONPOSITION_DEFAULT = ICONPOSITION_START;
 export default 
 class SfGpsDsAuVic2DocsLink
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

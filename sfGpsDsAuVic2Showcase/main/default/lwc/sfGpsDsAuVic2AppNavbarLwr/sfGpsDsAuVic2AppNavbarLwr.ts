@@ -10,7 +10,7 @@ import cBasePath from "@salesforce/community/basePath";
 export default 
 class SfGpsDsAuVic2AppNavbar
 extends SfGpsDsLwc {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

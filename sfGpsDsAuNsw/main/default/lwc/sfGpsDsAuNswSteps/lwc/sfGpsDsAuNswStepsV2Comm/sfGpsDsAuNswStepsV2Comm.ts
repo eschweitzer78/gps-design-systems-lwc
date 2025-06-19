@@ -51,6 +51,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
+  // @ts-ignore
   firstChild: boolean;
 
   // @ts-ignore

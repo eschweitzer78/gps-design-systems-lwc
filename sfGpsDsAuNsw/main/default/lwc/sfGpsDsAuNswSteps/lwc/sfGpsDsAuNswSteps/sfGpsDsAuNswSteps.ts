@@ -50,6 +50,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
+  // @ts-ignore
   firstChild: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT

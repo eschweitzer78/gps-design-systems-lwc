@@ -98,7 +98,7 @@ declare module "c/sfGpsDsHelpersOs" {
   export const isPromise: (val: any) => boolean;
   export const def: (obj: any, key: any, value: any, writable?: boolean) => any;
   export function toNumber(val: any): number;
-  export const toArray: (value: any) => Array[any];
+  export function toArray<T = any>(value: T): T[];
 
   export function isRelativeUrl(url: string): boolean;
   export function isExternalUrl(url: string): boolean;

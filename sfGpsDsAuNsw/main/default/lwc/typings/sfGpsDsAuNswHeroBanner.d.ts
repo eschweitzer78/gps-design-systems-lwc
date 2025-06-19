@@ -1,7 +1,7 @@
 declare module "c/sfGpsDsAuNswHeroBanner" {
   import type SfGpsDsElement from "c/sfGpsDsElement"; 
   import type { PropertyAccessor } from "c/sfGpsDsElement";
-  import type { Link } from "s/sfGpsDsMarkdown";
+  import type { Link } from "c/sfGpsDsMarkdown";
 
   export type CStyle =
     "dark" |
