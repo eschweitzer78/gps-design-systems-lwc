@@ -66,6 +66,7 @@ module.exports = defineConfig([
     "**/aura/**/*.app",
     "**/aura/**/*.map",
     "**/aura/**/*.scss",
+    "**/aura/**/*.gen.css",
     "sfGpsDsAuNswFull",
     "sfGpsDsAuQldFull",
     "sfGpsDsAuVic",
