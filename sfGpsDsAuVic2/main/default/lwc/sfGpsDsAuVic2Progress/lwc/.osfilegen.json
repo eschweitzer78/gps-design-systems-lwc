@@ -1,12 +1,6 @@
 {
   "sfGpsDsAuVic2Progress": {
     "target": "!Os",
-    "RplProgress.gen.gen.css": {
-      "target": "RplProgress.gen.gen.css"
-    },
-    "!.css": {
-      "target": "!Os.css"
-    },
     "!.html": {
       "target": "!Os.html"
     },
