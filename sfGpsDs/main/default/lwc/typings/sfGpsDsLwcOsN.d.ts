@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsLwcOsN" {
-  import type SfGpsDsElementOs, { 
+  import type SfGpsDsElementOs from "c/sfGpsDsElementOs";
+  import type { 
     PropertyDefOptions, 
     PropertyAccessor 
   } from "c/sfGpsDsElementOs";
@@ -16,7 +17,7 @@ declare module "c/sfGpsDsLwcOsN" {
   }
 
   export interface PropertyDefMarkdownOptions 
-  extends PropertyDefOptions {
+  extends PropertyDefOptions<string> {
     errorCode?: string,
     errorText?: string,
     defaultValue?: any

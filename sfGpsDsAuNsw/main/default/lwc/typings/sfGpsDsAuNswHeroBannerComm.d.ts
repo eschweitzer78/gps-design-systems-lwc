@@ -2,6 +2,7 @@ declare module "c/sfGpsDsAuNswHeroBannerComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { BannerImage, CStyle } from "c/sfGpsDsAuNswHeroBanner";
+  import type { Link } from "s/sfGpsDsMarkdown";
 
   export default 
   class SfGpsDsAuNswHeroBannerComm

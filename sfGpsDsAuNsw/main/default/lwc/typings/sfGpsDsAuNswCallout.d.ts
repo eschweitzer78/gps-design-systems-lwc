@@ -9,6 +9,7 @@ declare module "c/sfGpsDsAuNswCallout" {
     title: string;
     className: string;
 
+    // @ts-ignore
     firstChild: boolean;
     level: number;
 

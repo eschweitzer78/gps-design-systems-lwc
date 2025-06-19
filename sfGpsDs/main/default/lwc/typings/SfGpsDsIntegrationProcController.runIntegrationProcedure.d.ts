@@ -1,5 +1,5 @@
 declare module "@salesforce/apex/sfGpsDsIntegrationProcController.runIntegrationProcedure" {
-  export default function runIntegrationProcedure({
+  export default function runIntegrationProcedure(options: {
     ipName: string,
     input: object,
     options: object

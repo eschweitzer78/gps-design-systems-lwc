@@ -1,6 +1,7 @@
 declare module "c/SfGpsDsAuNswContentBlockV2Comm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { Link } from "s/sfGpsDsMarkdown";
 
   export default 
   class SfGpsDsAuNswContentBlockV2Comm

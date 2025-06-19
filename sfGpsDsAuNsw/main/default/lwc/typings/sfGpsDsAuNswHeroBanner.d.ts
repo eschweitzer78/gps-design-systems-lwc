@@ -1,6 +1,7 @@
 declare module "c/sfGpsDsAuNswHeroBanner" {
   import type SfGpsDsElement from "c/sfGpsDsElement"; 
   import type { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { Link } from "s/sfGpsDsMarkdown";
 
   export type CStyle =
     "dark" |
@@ -36,7 +37,7 @@ declare module "c/sfGpsDsAuNswHeroBanner" {
     links: Link[];
 
     // private
-    _cstyle: PropertyAccessor<CstyleValue>;
+    _cstyle: PropertyAccessor<CStyleValue>;
     _wide: PropertyAccessor<boolean>;
     _featured: PropertyAccessor<boolean>;
     _ctaPreventDefault: PropertyAccessor<boolean>;

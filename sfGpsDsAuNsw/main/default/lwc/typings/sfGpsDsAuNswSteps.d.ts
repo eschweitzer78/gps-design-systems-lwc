@@ -19,6 +19,7 @@ declare module "c/sfGpsDsAuNswSteps" {
     type: string;
     className: string;
 
+    // @ts-ignore
     firstChild: boolean;
     cstyle: CStyle;
     size: Size;

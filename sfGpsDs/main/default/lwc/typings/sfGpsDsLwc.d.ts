@@ -1,9 +1,12 @@
 declare module "c/sfGpsDsLwc" {
-  import type SfGpsDsElement, { 
+  import type SfGpsDsElement from "c/sfGpsDsElement";
+  import type { 
     PropertyDefOptions, 
     PropertyAccessor 
   } from "c/sfGpsDsElement";
-  import type { Link } from "c/sfGpsDsMarkdown";
+  import type { 
+    Link 
+  } from "c/sfGpsDsMarkdown";
 
   export interface LwcError {
     index: number,
@@ -12,7 +15,7 @@ declare module "c/sfGpsDsLwc" {
   }
 
   export interface PropertyDefMarkdownOptions 
-  extends PropertyDefOptions {
+  extends PropertyDefOptions<string> {
     errorCode?: string,
     errorText?: string,
     defaultValue?: any

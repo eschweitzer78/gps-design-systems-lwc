@@ -9,6 +9,8 @@ declare module "c/sfGpsDsAuNswLinkList" {
     title: string;
     links: Link[];
     className: string;
+
+    // @ts-ignore
     firstChild: boolean;
 
     // private

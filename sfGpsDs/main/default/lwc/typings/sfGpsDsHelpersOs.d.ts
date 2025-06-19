@@ -31,8 +31,8 @@ declare module "c/sfGpsDsHelpersOs" {
   }
   export const HtmlSanitizer: HtmlSanitizer;
 
-  export const withModifiers = (fn: Function, modifiers: string[]) => any;
-  export const withKeys = (fn: (event: Event) => any, modifiers: string[]) => any;
+  export const withModifiers: (fn: Function, modifiers: string[]) => any;
+  export const withKeys: (fn: (event: Event) => any, modifiers: string[]) => any;
   export function patchEvent(
     el: Element, 
     rawName: string, 
@@ -43,8 +43,8 @@ declare module "c/sfGpsDsHelpersOs" {
   export function arraysEqual(array1: any[] | null, array2: any[] | null): boolean;
   export function debounce(func: Function, delay: number, options?: { leading?: boolean });
   export function once(func: Function): (...args: any[]) => void;
-  export const invokeArrayFns = (fns: Function[], ...arg) => any;
-  export const hasChanged = (value: any, oldValue: any) => boolean;
+  export const invokeArrayFns: (fns: Function[], ...arg) => any;
+  export const hasChanged: (value: any, oldValue: any) => boolean;
 
   export function nextTick(fn: (value: void) => void | PromiseLike<void>): void;
 
@@ -76,29 +76,29 @@ declare module "c/sfGpsDsHelpersOs" {
     sep?: string
   }): string;
   export function safeEqualsIgnoreCase(a: string, b: string): boolean;
-  export function truncateText(text: string, stop = 150, clamp?: string): string;
-  export const camelize = (str: string) => string;
-  export const hyphenate = (str: string) => string;
-  export const capitalize = (str: string) => string;
-  export const toHandlerKey = (str: string) => string;
+  export function truncateText(text: string, stop, clamp?: string): string;
+  export const camelize: (str: string) => string;
+  export const hyphenate: (str: string) => string;
+  export const capitalize: (str: string) => string;
+  export const toHandlerKey: (str: string) => string;
   
-  export const hasOwn = (val: any, key: any) => boolean;
-  export const toTypeString = (value: any) => string;
-  export const toRawType = (value: any) => string;
-  export const isPlainObject = (val: any) => boolean;
+  export const hasOwn: (val: any, key: any) => boolean;
+  export const toTypeString: (value: any) => string;
+  export const toRawType: (value: any) => string;
+  export const isPlainObject: (val: any) => boolean;
 
-  export const isArray = (val: any) => boolean ;
-  export const isMap = (val: any) => boolean ;
-  export const isSet = (val: any) => boolean;
-  export const isRegEx = (val: any) => boolean;
-  export const isFunction = (val: any) => boolean;
-  export const isString = (val: any) => boolean;
-  export const isSymbol = (val: any) => boolean;
-  export const isObject = (val: any) => boolean;
-  export const isPromise = (val: any) => boolean;
-  export const def = (obj: any, key: any, value: any, writable?: boolean) => any;
+  export const isArray: (val: any) => boolean ;
+  export const isMap: (val: any) => boolean ;
+  export const isSet: (val: any) => boolean;
+  export const isRegEx: (val: any) => boolean;
+  export const isFunction: (val: any) => boolean;
+  export const isString: (val: any) => boolean;
+  export const isSymbol: (val: any) => boolean;
+  export const isObject: (val: any) => boolean;
+  export const isPromise: (val: any) => boolean;
+  export const def: (obj: any, key: any, value: any, writable?: boolean) => any;
   export function toNumber(val: any): number;
-  export const toArray = (value: any) => Array[any];
+  export const toArray: (value: any) => Array[any];
 
   export function isRelativeUrl(url: string): boolean;
   export function isExternalUrl(url: string): boolean;
@@ -106,9 +106,9 @@ declare module "c/sfGpsDsHelpersOs" {
   export function getAnchorLinkName(str: string): string;
   export function decodeSpecialCharacters(html: string): string;
 
-  export const uniqueId = (prefix: string) => string;
-  export const isIPadPro = () => boolean;
-  export const isMacPlatform = () => boolean;
+  export const uniqueId: (prefix: string) => string;
+  export const isIPadPro: () => boolean;
+  export const isMacPlatform: () => boolean;
 
   export function applyMixins(
     targetClass: any, 

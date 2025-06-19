@@ -9,6 +9,7 @@ declare module "c/sfGpsDsAuNswAccordionGroupLwr" {
   export default 
   class SfGpsDsAuNswAccordionGroupLwr
   extends SfGpsDsLwc {
+    // @ts-ignore
     firstChild: boolean;
     showButtons: boolean;
     className: string;

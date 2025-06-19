@@ -2,7 +2,7 @@ declare module "c/sfGpsDsAuNswListItemComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { Link } from "c/sfGpsDsMarkdown";
-  import type { DateStyle } from "c/sfGpsDsAuNswListItem";
+  import type { DateStyle as DateStyleHelpers } from "c/sfGpsDsAuNswListItem";
 
   export type DateStyle = DateStyleHelpers;
 

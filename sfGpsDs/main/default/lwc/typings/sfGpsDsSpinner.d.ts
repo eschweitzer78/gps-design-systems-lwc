@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsSpinner" {
   import type * as CSS from "csstype";
+  import type SfGpsDsElement from "c/sfGpsDsElement";
 
   export interface StyleElement {
     style: CSS.Properties,

@@ -10,6 +10,7 @@ declare module "c/sfGpsDsAuNswInPageNavigation" {
     items: Link[];
     className: string;
 
+    // @ts-ignore
     firstChild: boolean;
 
     // private

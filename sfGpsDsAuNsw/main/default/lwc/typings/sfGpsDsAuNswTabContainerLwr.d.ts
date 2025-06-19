@@ -26,6 +26,7 @@ declare module "c/sfGpsDsAuNswTabContainerLwr" {
     tab9Label: string;
     tab10Label: string;
 
+    // @ts-ignore
     firstChild: boolean;
 
     tabPaddingStyle: TabPaddingStyle;

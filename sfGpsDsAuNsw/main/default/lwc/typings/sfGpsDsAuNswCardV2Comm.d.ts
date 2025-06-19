@@ -2,6 +2,7 @@ declare module "c/sfGpsDsAuNswCardV2Comm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { DateStyle, Orientation, CStyle } from "c/sfGpsDsAuNswCardV2";
+  import type { Link } from "s/sfGpsDsMarkdown";
 
   export default 
   class sfGpsDsAuNswCardV2Comm

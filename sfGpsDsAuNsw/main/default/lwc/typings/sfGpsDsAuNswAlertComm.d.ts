@@ -1,6 +1,7 @@
 declare module "c/sfGpsDsAuNswAlertComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { AlertType } from "c/sfGpsDsAuNswAlert";
   
   export default 
   class SfGpsDsAuNswAlertComm 

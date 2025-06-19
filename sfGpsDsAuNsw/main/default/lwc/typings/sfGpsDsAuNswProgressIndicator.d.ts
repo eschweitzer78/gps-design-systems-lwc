@@ -12,7 +12,7 @@ declare module "c/sfGpsDsAuNswProgressIndicator" {
     index: number,
     isActive: boolean,
     className: string
-  };
+  }
 
   export default 
   class SfGpsDsAuNswProgressIndicator 

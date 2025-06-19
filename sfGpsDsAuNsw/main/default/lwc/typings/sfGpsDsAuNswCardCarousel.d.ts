@@ -13,7 +13,6 @@ declare module "c/sfGpsDsAuNswCardCarousel" {
     dateStyle: DateStyle,
     image: string,
     imageAlt: string,
-    title: string,
     copy: string
   }
 

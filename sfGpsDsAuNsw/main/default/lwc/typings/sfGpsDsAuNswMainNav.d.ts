@@ -67,7 +67,7 @@ declare module "c/sfGpsDsAuNswMainNav" {
       navItem: MainNavItem
     ): void;
 
-    _activeSubNavs: MainNavItem = [];
+    _activeSubNavs: MainNavItem[];
     pushLatestSubNav(navItem: MainNavItem): void;
     popLatestSubNav(): void;
     getLatestSubNav(): MainNavItem;

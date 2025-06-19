@@ -27,10 +27,12 @@ declare module "c/sfGpsDsPubSub" {
     payload: any
   ): void;
 
-  export default {
-    register,
-    unregister,
-    fire,
-    shouldExecuteCallbackHandler,
+  const m: {
+    register: typeof register,
+    unregister: typeof unregister,
+    fire: typeof fire,
+    shouldExecuteCallbackHandler: typeof shouldExecuteCallbackHandler,
   };
+  
+  export default m;
 }

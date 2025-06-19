@@ -4,7 +4,7 @@ declare module "c/sfGpsDsAuNswBackToTopContent" {
 
   export default 
   class sfGpsDsAuNswBackToTop 
-  extends LightningElement {
+  extends SfGpsDsElement {
     isActive: boolean;
     isMobile: boolean;
     className: boolean;

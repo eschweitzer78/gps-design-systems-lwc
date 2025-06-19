@@ -54,5 +54,5 @@ declare module "omnistudio/omniscriptBaseMixin" {
 
   export type BaseMixinItf<T> = BaseItf & T;
 
-  export function OmniscriptBaseMixin<T>(base: class): new(...args: any) => BaseMixinItf<T>;
+  export function OmniscriptBaseMixin<T>(base: { new(): T }): new(...args: any) => BaseMixinItf<T>;
 }

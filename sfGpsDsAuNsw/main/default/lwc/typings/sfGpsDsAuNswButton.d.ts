@@ -34,7 +34,6 @@ declare module "c/sfGpsDsAuNswButton" {
     link: string;
     type: Type;
     iconName: string;
-    ariaHasPopup: boolean;
     className: string;
 
     cstyle: CStyle;

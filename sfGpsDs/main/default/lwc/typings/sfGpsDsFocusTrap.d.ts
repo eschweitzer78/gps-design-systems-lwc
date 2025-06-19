@@ -1,17 +1,21 @@
 declare module "c/sfGpsDsFocusTrap" {
 
+  import type SfGpsDsElement from "c/sfGpsDsElement";
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
+
   export interface FocusTrapOptions {
   }
 
-  export default class SfGpsDsFocusTrap {
+  export default 
+  class SfGpsDsFocusTrap 
+  extends SfGpsDsElement {
     // public
 
-    disabled: integer | string;
+    disabled: boolean;
     options: FocusTrapOptions;
 
     // private
 
-    _disabled: boolean;
-    _disabledOriginal: integer | string;
+    _disabled: PropertyAccessor<boolean>;
   }
 }

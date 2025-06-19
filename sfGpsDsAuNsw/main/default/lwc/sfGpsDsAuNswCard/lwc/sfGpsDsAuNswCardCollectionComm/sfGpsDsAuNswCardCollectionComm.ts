@@ -145,7 +145,7 @@ extends SfGpsDsIpLwc {
 
   /* methods */
 
-  mapIpData(data: any): CardData[] {
+  mapIpData(data: object | object[]): CardData[] {
     if (!data) {
       return null;
     }

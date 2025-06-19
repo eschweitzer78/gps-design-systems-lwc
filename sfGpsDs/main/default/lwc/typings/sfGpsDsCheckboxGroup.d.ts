@@ -12,11 +12,11 @@ declare module "c/sfGpsDsCheckboxGroup" {
     label: string,
     value: string,
     selected?: boolean
-  };
+  }
 
   export interface InternalOption extends Option {
     [key: string]: any
-  };
+  }
 
   export default 
   class SfGpsDsCheckboxGroup 
@@ -59,10 +59,9 @@ declare module "c/sfGpsDsCheckboxGroup" {
     _isChecked: boolean;
     _requiredLabel: string;
 
-    _fireChangeOnSetValue: boolean;
     _fireChangeOnSetValue: boolean | string;
 
-    _internalOptions: InternalOptions[];
+    _internalOptions: InternalOption[];
 
     _updateInternalOptions(): void;
     _mapInternalOption(

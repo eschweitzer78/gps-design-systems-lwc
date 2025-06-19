@@ -17,11 +17,11 @@ declare module "c/sfGpsDsOnClickOutside" {
     tagger: (e: Event) => void,
     handler: (e: Event) => void,
     forceTag: (e: Event) => void
-  };
+  }
 
   export type HandlerEntries = {
     [key: string]: HandlerEntry[]
-  };
+  }
 
   export default class SfGpsDsOnClickOutside {
     bind(pel: any, ref: string, value: Handler): void;

@@ -59,7 +59,7 @@ declare module "c/sfGpsDsAuNswTabBarLwr" {
       tabValue: string, 
       options: SelectTabOptions = {}
     ): void;
-    _tabClassName({ selected = false, hasFocus = false }): string;
+    _tabClassName(options: { selected?: boolean, hasFocus?: boolean }): string;
     
     _synchronizeA11y(): void;
 

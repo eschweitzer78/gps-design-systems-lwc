@@ -19,7 +19,7 @@ declare module "@salesforce/apex/SfGpsDsListViewController.getEnhancedRecords" {
     relationshipId: string
   }
   interface EnhancedRecord {
-    columns: Record<string, EnhancedrecordColumn>
+    columns: Record<string, EnhancedRecordColumn>
   }
 
   export default function getEnhancedRecords(

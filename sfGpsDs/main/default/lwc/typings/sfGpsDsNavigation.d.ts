@@ -45,7 +45,7 @@ declare module "c/sfGpsDsNavigation" {
     TargetPrefs?: NavigationMenuItemTargetPrefs,
     AccessRestriction?: NavigationMenuItemAccessRestriction,
     DefaultListViewId?: string
-  };
+  }
 
   export interface AdaptedNavigationMenuItem {
     text?: string,
@@ -55,6 +55,8 @@ declare module "c/sfGpsDsNavigation" {
     position?: number,
     subNav?: AdaptedNavigationMenuItem[]
   }
+
+  type NavigationMenuItemMap = Record<string, NavigationMenuItem>;
 
   export default 
   class SfGpsDsNavigation 
@@ -71,7 +73,7 @@ declare module "c/sfGpsDsNavigation" {
     // internal
 
     _navigationDevName: string;
-    _map: NavigationMenuItemMap = {};
+    _map: NavigationMenuItemMap;
 
     updateExperienceCloudNavigation(): void;
 

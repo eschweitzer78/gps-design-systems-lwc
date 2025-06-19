@@ -10,7 +10,7 @@ declare module "c/sfGpsDsAuNswGlobalAlert" {
   export interface AlertValue {
     main: string,
     button: string
-  };
+  }
 
   export type CtaStyle = 
     "button" | 

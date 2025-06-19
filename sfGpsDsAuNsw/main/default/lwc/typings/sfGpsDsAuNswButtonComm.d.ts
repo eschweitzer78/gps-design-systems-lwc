@@ -3,6 +3,7 @@ declare module "c/sfGpsDsAuNswButtonComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { NavigationMixin } from "lightning/navigation";
+  import type { Link } from "c/sfGpsDsMarkdown";
   import type { Rendering, CStyle, IconStyle, Type } from "c/sfGpsDsAuNswButton";
 
   export default 
@@ -10,7 +11,6 @@ declare module "c/sfGpsDsAuNswButtonComm" {
   extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
     type: Type;
     iconName: string;
-    ariaHasPopup: boolean;
     className: string;
 
     cstyle: CStyle;

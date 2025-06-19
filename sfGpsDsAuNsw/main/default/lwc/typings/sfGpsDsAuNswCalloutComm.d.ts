@@ -1,5 +1,5 @@
 
-declare module "c/sfGpsDsAuNswCallout" {
+declare module "c/sfGpsDsAuNswCalloutComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { PropertyAccessor } from "c/sfGpsDsElement";
 
@@ -8,6 +8,7 @@ declare module "c/sfGpsDsAuNswCallout" {
   extends SfGpsDsLwc {
     title: string;
     level: number;
+    // @ts-ignore
     firstChild: boolean;
     className: string;
 

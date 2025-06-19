@@ -1,5 +1,5 @@
 
-declare module "c/sfGpsDsAuNswUpperFooterIp" {
+declare module "c/sfGpsDsAuNswLowerFooterIp" {
   import type SfGpsDsNavigation from "c/sfGpsDsNavigation";
   import type { PropertyAccessor } from "c/sfGpsDsElement";
 

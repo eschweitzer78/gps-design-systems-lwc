@@ -1,4 +1,6 @@
 declare module "c/sfGpsDsTransition" {
+  import type SfGpsDsLwc from "c/sfGpsDsLwc";
+  
   export type TransitionType = 
     "animation" | 
     "transition";

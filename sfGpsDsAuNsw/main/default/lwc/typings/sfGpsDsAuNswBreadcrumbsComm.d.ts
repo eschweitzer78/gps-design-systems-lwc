@@ -3,7 +3,7 @@ declare module "c/sfGpsDsAuNswBreadcrumbsComm" {
   import type { Link } from "c/sfGpsDsMarkdown";
   
   export default 
-  class sfGpsDsAuNswBreadcrumbsComm 
+  class SfGpsDsAuNswBreadcrumbsComm 
   extends SfGpsDsLwc {
     label: string;
     linkComponent: string;

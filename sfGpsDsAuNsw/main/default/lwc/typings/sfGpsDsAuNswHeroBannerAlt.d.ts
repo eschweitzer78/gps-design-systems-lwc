@@ -1,6 +1,7 @@
 declare module "c/sfGpsDsAuNswHeroBannerAlt" {
   import type SfGpsDsElement from "c/sfGpsDsElement"; 
   import type { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { Link } from "s/sfGpsDsMarkdown";
 
   export default 
   class SfGpsDsAuNswHeroBannerAlt 

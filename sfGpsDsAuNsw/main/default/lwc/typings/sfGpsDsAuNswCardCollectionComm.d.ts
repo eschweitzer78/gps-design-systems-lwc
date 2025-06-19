@@ -40,6 +40,6 @@ declare module "c/sfGpsDsAuNswCardCollectionComm" {
     readonly isEmpty: boolean;
     readonly i18n: Record<string, string>
 
-    mapIpData(data: any): CardData;
+    mapIpData(data: object | object[]): CardData[];
   }
 }
