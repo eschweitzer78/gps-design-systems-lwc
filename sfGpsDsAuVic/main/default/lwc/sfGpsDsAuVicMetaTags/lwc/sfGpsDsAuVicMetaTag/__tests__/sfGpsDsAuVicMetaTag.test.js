@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicMetaTag from "c/sfGpsDsAuVicMetaTag";
 
 const ELT_TAG = "c-sf-gps-ds-au-vic-meta-tag";

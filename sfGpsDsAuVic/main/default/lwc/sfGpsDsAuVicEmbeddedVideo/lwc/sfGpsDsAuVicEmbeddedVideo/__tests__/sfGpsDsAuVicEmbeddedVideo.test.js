@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicEmbeddedVideo from "c/sfGpsDsAuVicEmbeddedVideo";
 
 describe("c-sf-gps-ds-au-vic-embedded-video", () => {

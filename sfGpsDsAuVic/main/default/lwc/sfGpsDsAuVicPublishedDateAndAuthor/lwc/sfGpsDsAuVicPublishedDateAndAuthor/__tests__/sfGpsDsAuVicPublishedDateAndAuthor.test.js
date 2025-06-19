@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicPublishedDateAndAuthor from "c/sfGpsDsAuVicPublishedDateAndAuthor";
 
 describe("c-sf-gps-ds-au-vic-published-date-and-author", () => {

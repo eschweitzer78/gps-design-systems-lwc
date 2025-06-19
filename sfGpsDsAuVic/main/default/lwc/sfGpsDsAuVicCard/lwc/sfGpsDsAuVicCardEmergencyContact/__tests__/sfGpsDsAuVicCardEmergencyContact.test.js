@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicCardEmergencyContact from "c/sfGpsDsAuVicCardEmergencyContact";
 
 const ELT_TAG = "c-sf-gps-ds-au-vic-card-emergency-contact";

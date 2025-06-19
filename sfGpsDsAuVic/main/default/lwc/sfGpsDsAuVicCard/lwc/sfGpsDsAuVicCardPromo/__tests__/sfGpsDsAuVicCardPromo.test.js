@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicCardPromo from "c/sfGpsDsAuVicCardPromo";
 import { parseIso8601 } from "c/sfGpsDsHelpers";
 

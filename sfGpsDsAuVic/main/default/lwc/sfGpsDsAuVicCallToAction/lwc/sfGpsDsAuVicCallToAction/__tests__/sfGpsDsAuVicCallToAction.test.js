@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicCallToAction from "c/sfGpsDsAuVicCallToAction";
 
 const ELT_TAG = "c-sf-gps-ds-au-vic-call-to-action";

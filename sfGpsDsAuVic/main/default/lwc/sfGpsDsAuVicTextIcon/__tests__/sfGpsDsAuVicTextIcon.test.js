@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicTextIcon from "c/sfGpsDsAuVicTextIcon";
 
 const ELT_TAG = "c-sf-gps-ds-au-vic-text-icon";

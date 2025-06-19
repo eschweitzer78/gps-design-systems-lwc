@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicRow from "c/sfGpsDsAuVicRow";
 
 const ROW_GUTTER_SELECTOR = ".rpl-row--gutter";

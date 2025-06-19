@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVicCampaignPrimaryImage from "c/sfGpsDsAuVicCampaignPrimaryImage";
 import { setup } from "@sa11y/jest";
 
