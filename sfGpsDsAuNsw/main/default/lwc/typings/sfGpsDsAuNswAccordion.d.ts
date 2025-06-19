@@ -1,5 +1,5 @@
 declare module "c/sfGpsDsAuNswAccordion" {
-  import SfGpsDsElement from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement";
   
   export default 
   class SfGpsDsAuNswAccordion 

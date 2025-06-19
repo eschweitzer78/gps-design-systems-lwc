@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsAuNswLoader" {
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { Link } from "c/sfGpsDsMarkdown";
 
   export type Size = 

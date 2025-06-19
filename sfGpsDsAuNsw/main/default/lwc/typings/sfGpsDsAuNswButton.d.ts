@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsAuNswButton" {
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
   
   export type CStyle = 
     "dark" |

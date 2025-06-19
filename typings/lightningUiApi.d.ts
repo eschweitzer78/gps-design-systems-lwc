@@ -1,4 +1,3 @@
-
 declare module "lightning/uiListsApi" {
   import type { SoqlOperator } from "c/sfGpsDsApex";
 

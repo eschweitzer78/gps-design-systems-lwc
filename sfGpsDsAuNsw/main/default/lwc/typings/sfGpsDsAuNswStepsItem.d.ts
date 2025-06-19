@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsAuNswStepsItem" { 
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
 
   export type HeadingLevel = 2 | 3 | 4;
 

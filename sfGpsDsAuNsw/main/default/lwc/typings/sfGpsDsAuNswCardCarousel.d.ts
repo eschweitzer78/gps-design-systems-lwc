@@ -1,6 +1,7 @@
 declare module "c/sfGpsDsAuNswCardCarousel" {
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
-  import { CStyle, DateStyle, Orientation } from "c/sfGpsDsAuNswCardV2";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { CStyle, DateStyle, Orientation } from "c/sfGpsDsAuNswCardV2";
 
   export interface CardData {
     title: string,

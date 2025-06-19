@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsAuNswGlobalAlert" {
-  import SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
 
   export type AlertType = 
     "default" | 

@@ -1,6 +1,6 @@
 declare module "c/sfGpsDsAuNswLayoutLwr" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { Link } from "c/sfGpsDsMarkdown";
 
   export type Mode =

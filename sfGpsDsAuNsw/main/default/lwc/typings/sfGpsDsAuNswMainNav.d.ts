@@ -1,6 +1,7 @@
 declare module "c/sfGpsDsAuNswMainNav" {
-  import SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
-  import { AdaptedNavigationMenuItem } from "c/sfGpsDsNavigation";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { AdaptedNavigationMenuItem } from "c/sfGpsDsNavigation";
 
   export interface MainNavItem {
     id: string,

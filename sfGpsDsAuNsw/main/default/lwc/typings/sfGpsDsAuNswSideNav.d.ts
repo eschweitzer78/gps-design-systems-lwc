@@ -1,6 +1,7 @@
 
 declare module "c/sfGpsDsAuNswSideNav" { 
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { AdaptedNavigationMenuItem } from "c/sfGpsDsNavigation";
 
   export interface SideNavMenuItem 

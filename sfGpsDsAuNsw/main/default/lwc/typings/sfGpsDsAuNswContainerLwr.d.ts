@@ -1,4 +1,3 @@
-
 declare module "c/sfGpsDsAuNswContainerLwr" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { PropertyAccessor } from "c/sfGpsDsElement";

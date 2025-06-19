@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsAuNswTable" { 
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
  
   export type CaptionLocation =
     "top" |

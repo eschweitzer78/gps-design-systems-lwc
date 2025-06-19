@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsAuNswTabSetLwr" { 
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { TabHeader } from "c/sfGpsDsAuNswTabBarLwr";
 
   export default 

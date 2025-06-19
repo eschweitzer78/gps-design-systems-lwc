@@ -1,7 +1,7 @@
 
 declare module "c/sfGpsDsAuNswButtonComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
-  import { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { NavigationMixin } from "lightning/navigation";
   import type { Rendering, CStyle, IconStyle, Type } from "c/sfGpsDsAuNswButton";
 

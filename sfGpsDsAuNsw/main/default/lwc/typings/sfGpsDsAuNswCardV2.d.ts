@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsAuNswCardV2" {
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { DateStyle as HelpersDateStyle } from "c/sfGpsDsHelpers";
 
   export type DateStyle = HelpersDateStyle;

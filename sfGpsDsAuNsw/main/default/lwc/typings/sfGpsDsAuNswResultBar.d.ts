@@ -1,6 +1,7 @@
 
 declare module "c/sfGpsDsAuNswResultBar" { 
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
 
   export interface SortOption {
     value: string,

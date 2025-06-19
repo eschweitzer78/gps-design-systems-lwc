@@ -1,5 +1,5 @@
 declare module "c/sfGpsDsAuNswAccordionComm" {
-  import SfGpsDsLwc from "c/sfGpsDsLwc";
+  import type SfGpsDsLwc from "c/sfGpsDsLwc";
 
   export default 
   class SfGpsDsAuNswAccordionComm

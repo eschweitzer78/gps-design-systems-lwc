@@ -1,5 +1,6 @@
 declare module "c/sfGpsDsAuNswListItem" {
-  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type SfGpsDsElement from "c/sfGpsDsElement"; 
+  import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { Link } from "c/sfGpsDsMarkdown";
   import type { DateStyle as DateStyleHelpers } from "c/sfGpsDsHelpers";
 
