@@ -1,9 +1,0 @@
-@import "c/sfGpsDsAuVicFormCssOs";
-
-.rpl-checkbox * {
-  box-sizing: content-box;
-}
-
-.rpl-icon--color_primary {
-  fill: var(--sf-gps-ds-au-vic-color-primary, #0052c2);
-}

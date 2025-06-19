@@ -1,9 +1,0 @@
-@import "./QuickExit.gen.css";
-
-/* fixes */
-
-/* Address issue #397 */
-.rpl-quick-exit__button:hover,
-.rpl-quick-exit__button:focus {
-  color: #fff;
-}
