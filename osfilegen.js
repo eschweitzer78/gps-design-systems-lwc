@@ -1,5 +1,5 @@
-let fs = require("fs").promises;
-let path = require("path");
+import fs from "fs/promises";
+import path from "path";
 const fileRegEx = /!/;
 
 function replaceFile(filename, replacements) {
