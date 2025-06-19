@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import TargetClass from "c/sfGpsDsAuVic2SearchBar";
 import { mockSuggestions } from "./fixtures/suggestions";
 import userEvent from "@testing-library/user-event";

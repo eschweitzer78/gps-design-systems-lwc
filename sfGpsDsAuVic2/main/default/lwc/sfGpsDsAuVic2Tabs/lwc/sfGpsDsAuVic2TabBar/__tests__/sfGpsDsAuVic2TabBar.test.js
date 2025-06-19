@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVic2TabBar from "c/sfGpsDsAuVic2TabBar";
 
 const ELT_TAG = "c-sf-gps-ds-au-vic2-tab-bar";
