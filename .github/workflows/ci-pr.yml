@@ -70,6 +70,10 @@ jobs:
       - name: "Automatically generate css"
         run: npm run cssgen
 
+      # Generate JS versions of TS source
+      - name: "Automatically generate JS source from TypeScript"
+        run: npm run build
+
       # LWC unit tests
       - name: "Unit test Lightning Web Components"
         run: npm run test:unit:coverage
