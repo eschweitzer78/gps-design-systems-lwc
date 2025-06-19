@@ -1,8 +1,13 @@
 @import "c/sfGpsDsAuNswCoreOs";
 @import "c/sfGpsDsAuNswButtonCssOs";
 
-.nsw-h1 {
+.nsw-h2 {
   font-family: var(--nsw-font-family);
+}
+
+.nsw-h2:focus {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
 }
 
 .sepbutton {

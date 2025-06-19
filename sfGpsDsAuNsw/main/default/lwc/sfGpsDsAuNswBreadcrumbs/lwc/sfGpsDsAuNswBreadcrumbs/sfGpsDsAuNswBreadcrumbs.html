@@ -1,11 +1,12 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <div class={containerClassName}>
     <nav class={computedClassName} aria-label={label}>
       <ol class={computedOlClassName}>
         <template for:each={decoratedItems} for:item="item">
           <li
-            lwc:if={item.isSecond}
-            key={_moreToggle}
+            lwc:if={item._isSecond}
+            key={_moreToggleKey}
             class="nsw-breadcrumbs__show-more-toggle"
           >
             <button

@@ -1,0 +1,15 @@
+{
+  "extends": "./.sfdx/tsconfig.sfdx.json",
+  "include": ["./typings/*.d.ts"],
+  "exclude": ["**/__tests__/**"],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "experimentalDecorators": false,
+    "baseUrl": ".",
+    "paths": {
+      "c/*": ["*"]
+    }
+  }
+}

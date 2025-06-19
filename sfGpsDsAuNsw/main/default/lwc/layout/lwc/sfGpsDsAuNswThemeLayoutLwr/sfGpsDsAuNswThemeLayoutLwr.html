@@ -2,12 +2,14 @@
   <div lwc:ref="container" class={containerClassName}>
     <div data-f6-region class={headerClassName}>
       <slot name="header"></slot>
+      <slot name="NSW-Header"></slot>
     </div>
     <main id="content" data-f6-region class={mainClassName}>
       <slot></slot>
     </main>
     <footer data-f6-region class={footerClassName}>
       <slot name="footer"></slot>
+      <slot name="NSW-Footer"></slot>
     </footer>
   </div>
 </template>

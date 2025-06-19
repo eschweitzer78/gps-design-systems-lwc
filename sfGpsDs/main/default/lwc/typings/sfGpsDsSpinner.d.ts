@@ -1,0 +1,20 @@
+declare module "c/sfGpsDsSpinner" {
+  import type * as CSS from "csstype";
+
+  export interface StyleElement {
+    style: CSS.Properties,
+    index: number
+  }
+
+  export default 
+  class SfGpsDsSpinner 
+  extends SfGpsDsElement {
+    animationDuration: number;
+    size: number;
+    squaresNum: number;
+    color: string;
+
+    readonly computedSquareStyle: CSS.Properties;
+    readonly computedSquaresStyles: StyleElement[];
+  }
+}

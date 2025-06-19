@@ -1,25 +1,4 @@
 {
-  "sfGpsDsAuNswCard": {
-    "target": "!Os",
-    "card.gen.css": {
-      "target": "card.gen.css"
-    },
-    "!.css": {
-      "target": "!Os.css",
-      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
-    },
-    "!.html": {
-      "target": "!Os.html"
-    },
-    "!.js": {
-      "target": "!Os.js",
-      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
-    },
-    "!.js-meta.xml": {
-      "target": "!Os.js-meta.xml",
-      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
-    }
-  },
   "sfGpsDsAuNswCardV2": {
     "target": "!Os",
     "card.gen.css": {
@@ -54,24 +33,6 @@
       "target": "!Os.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "sfGpsDsIpLwc": "sfGpsDsIpLwcOsN"
-    },
-    "!.js-meta.xml": {
-      "target": "!Os.js-meta.xml",
-      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
-    }
-  },
-  "sfGpsDsAuNswCardComm": {
-    "target": "!Os",
-    "!.html": {
-      "target": "!Os.html",
-      "c-sf-gps-ds-au-nsw-card": "c-sf-gps-ds-au-nsw-card-os",
-      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
-    },
-    "!.js": {
-      "target": "!Os.js",
-      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
-      "sfGpsDsLwc": "sfGpsDsLwcOsN",
-      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

@@ -1,0 +1,33 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-empty
+    lwc:elseif={_isEmpty}
+    title="The steps content is empty"
+    content="Set the content attribute with at least one h1 entry (#) to get things going."
+  >
+  </c-sf-gps-ds-empty>
+
+  <c-sf-gps-ds-au-nsw-steps
+    lwc:else
+    type={type}
+    cstyle={cstyle}
+    size={size}
+    first-child={firstChild}
+    class-name={className}
+  >
+    <template for:each={_content} for:item="item">
+      <c-sf-gps-ds-au-nsw-steps-item
+        key={item.index}
+        title={item.title}
+        content={item.html}
+        heading-level={computedHeadingLevel}
+      >
+      </c-sf-gps-ds-au-nsw-steps-item>
+    </template>
+  </c-sf-gps-ds-au-nsw-steps>
+</template>

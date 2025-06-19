@@ -3,8 +3,11 @@ import { computeClass } from "c/sfGpsDsHelpers";
 
 /**
  * @slot header
+ * @slot VIC-Header
  * @slot sidebar
+ * @slot VIC-Sidebar
  * @slot footer
+ * @slot VIC-Footer
  */
 export default class extends LightningElement {
   static renderMode = "light";

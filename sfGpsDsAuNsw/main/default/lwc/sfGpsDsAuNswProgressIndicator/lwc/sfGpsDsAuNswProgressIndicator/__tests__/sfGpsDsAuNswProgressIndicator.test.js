@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuNswProgressIndicator from "c/sfGpsDsAuNswProgressIndicator";
 
 const ELT_TAG = "c-sf-gps-ds-au-nsw-progress-indicator";

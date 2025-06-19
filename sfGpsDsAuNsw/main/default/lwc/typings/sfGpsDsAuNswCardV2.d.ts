@@ -1,0 +1,56 @@
+declare module "c/sfGpsDsAuNswCardV2" {
+  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  import type { DateStyle as HelpersDateStyle } from "c/sfGpsDsHelpers";
+
+  export type DateStyle = HelpersDateStyle;
+
+  export type Orientation =
+    "vertical" |
+    "horizontal";
+
+  export type CStyle = 
+    "white" |
+    "dark" |
+    "light";
+
+  export default 
+  class sfGpsDsAuNswCardV2
+  extends SfGpsDsElement {
+    title: string;
+    link: string;
+    tag: string;
+    image: string;
+    imageAlt: string;
+    className: string;
+
+    preventDefault: boolean;
+    headline: boolean;
+    cstyle: CStyle;
+    orientation: Orientation;
+    highlight: boolean;
+    dateStyle: DateStyle;
+    date: string | Date;
+
+    click(): void;
+
+    // private
+
+    _preventDefault: PropertyAccessor<boolean>;
+    _headline: PropertyAccessor<boolean>;
+    _cstyle: PropertyAccessor<string>;
+    _orientation: PropertyAccessor<string>;
+    _highlight: PropertyAccessor<boolean>;
+    _dateStyle: PropertyAccessor<DateStyle>;
+    _date: Date;
+    _dateOriginal: string | Date;
+
+    readonly _dateISOString: string;
+    readonly _dateLocaleString: string;
+    readonly computedClassName: any;
+
+    click(): void;
+    handleClick(event: MouseEvent): void;
+
+    _userLocale: string;
+  }
+}

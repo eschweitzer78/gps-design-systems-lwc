@@ -12,7 +12,7 @@
           <div class="nsw-dialog__title">
             <h2 id={computedAriaLabelledById}>{title}</h2>
           </div>
-          <div lwc:if={_isDismissible} class="nsw-dialog__close">
+          <div lwc:if={_isDismissible.value} class="nsw-dialog__close">
             <button class="nsw-icon-button" onclick={handleCloseClick}>
               <span class="material-icons nsw-material-icons" aria-hidden="true"
                 >close</span

@@ -1,0 +1,36 @@
+
+declare module "c/sfGpsDsAuNswAlert" {
+  import type SfGpsDsElement, { PropertyAccessor } from "c/sfGpsDsElement";
+  
+  export type AlertType = 
+    "info" | 
+    "warning" | 
+    "error" | 
+    "success";
+  
+  export interface AsValue {
+    className: string,
+    iconName: string
+  }
+
+  export default 
+  class SfGpsDsAuNswAlert 
+  extends SfGpsDsElement {
+    title: string;
+    index: string | number;
+    header: string;
+    as: AlertType;
+    compact: boolean;
+    className: string;
+    closed: boolean;
+
+    // private
+
+    _as: PropertyAccessor<AsValue>;
+    _compact: PropertyAccessor<boolean>;
+
+    readonly computedClassName: any;
+    readonly computedIconName: string;
+    readonly space: string;
+  }
+}

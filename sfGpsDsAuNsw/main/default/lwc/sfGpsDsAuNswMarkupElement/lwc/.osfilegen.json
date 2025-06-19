@@ -1,5 +1,5 @@
 {
-  "sfGpsDsAuNswMarkupElementComm": {
+  "sfGpsDsAuNswMarkupElementV2Comm": {
     "target": "!Os",
     "!.css": {
       "target": "!Os.css"
@@ -10,7 +10,7 @@
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
-      "SfGpsDsAuNswMarkupElementComm": "SfGpsDsAuNswMarkupElementCommOs"
+      "SfGpsDsAuNswMarkupElementV2Comm": "SfGpsDsAuNswMarkupElementV2CommOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

@@ -23,8 +23,8 @@
   <template lwc:else>
     <button
       type={type}
-      disabled={_disabled}
-      aria-haspopup={ariaHaspopup}
+      disabled={_disabled.value}
+      aria-haspopup={ariaHasPopup}
       class={computedClassName}
       onclick={handleClick}
     >

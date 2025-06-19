@@ -2,6 +2,7 @@
   <div lwc:ref="theme" class={themeClassName}>
     <div data-f6-region class={headerClassName}>
       <slot name="header"></slot>
+      <slot name="VIC-Header"></slot>
     </div>
 
     <div class={contentClassName}>
@@ -9,6 +10,7 @@
         <div class={computedGridClassName}>
           <aside data-f6-region class={sidebarClassName}>
             <slot name="sidebar"></slot>
+            <slot name="VIC-Sidebar"></slot>
           </aside>
           <main id="content" data-f6-region class={mainClassName}>
             <slot></slot>
@@ -19,6 +21,7 @@
 
     <footer data-f6-region class={footerClassName}>
       <slot name="footer"></slot>
+      <slot name="VIC-Footer"></slot>
     </footer>
   </div>
 </template>

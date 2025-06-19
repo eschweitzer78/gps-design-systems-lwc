@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "**/*.ts",
+    "sfGpsDsAuNswToggletype/*.ts",
+    "../../../../../../.sfdx/typings/lwc/**/*.d.ts",
+    "../../../../../../typings/*.d.ts"
+  ],
+  "exclude": ["**/__tests__/**"]
+}

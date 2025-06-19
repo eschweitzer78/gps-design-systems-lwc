@@ -1,0 +1,37 @@
+{
+  "sfGpsDsAuNswSteps": {
+    "target": "!Os",
+    "steps.gen.css": {
+      "target": "steps.gen.css"
+    },
+    "!.css": {
+      "target": "!Os.css"
+    },
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-au-nsw-steps-item": "c-sf-gps-ds-au-nsw-steps-item-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  },
+  "sfGpsDsAuNswStepsItem": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
+    }
+  }
+}

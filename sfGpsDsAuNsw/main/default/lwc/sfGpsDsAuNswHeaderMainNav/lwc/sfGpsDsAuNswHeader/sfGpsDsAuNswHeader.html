@@ -85,7 +85,7 @@
           </div>
         </div>
 
-        <div lwc:if={_mobile} class="nsw-header__menu">
+        <div lwc:if={_mobile.value} class="nsw-header__menu">
           <button
             lwc:if={mainNavId}
             type="button"
@@ -114,7 +114,7 @@
         <div class="nsw-header__search">
           <!-- Open Search -->
           <button
-            lwc:if={_search}
+            lwc:if={_search.value}
             type="button"
             aria-expanded={searchIsOpen}
             aria-controls={computedHeaderSearchId}
@@ -128,12 +128,12 @@
         </div>
 
         <!-- Sign-in / User Profile -->
-        <div lwc:if={_profile} class="nsw-header__profile">
+        <div lwc:if={_profile.value} class="nsw-header__profile">
           <slot></slot>
         </div>
       </div>
 
-      <template lwc:if={_search}>
+      <template lwc:if={_search.value}>
         <div
           id={computedHeaderSearchId}
           lwc:ref="searcharea"

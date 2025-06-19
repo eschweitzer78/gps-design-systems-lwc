@@ -52,7 +52,7 @@
         </ol>
       </div>
 
-      <nav if:false={counter}>
+      <nav if:false={counter.value}>
         <ul>
           <li>
             <button
@@ -113,7 +113,7 @@
       </div>
 
       <ol
-        lwc:if={_navigation}
+        lwc:if={_navigation.value}
         lwc:ref="navDots"
         class={computedNavigationClassName}
         onclick={handleCarouselNavigationClick}

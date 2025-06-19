@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuNswResultsBar from "c/sfGpsDsAuNswResultsBar";
 
 const tag = "c-sf-gps-ds-au-nsw-results-bar";
