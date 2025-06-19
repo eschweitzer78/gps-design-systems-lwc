@@ -1,4 +1,4 @@
-const { jestConfig } = require("@salesforce/sfdx-lwc-jest/config");
+import { jestConfig } from "@salesforce/sfdx-lwc-jest/config.js";
 
 const setupFilesAfterEnv = jestConfig.setupFilesAfterEnv || [];
 setupFilesAfterEnv.push("<rootDir>/jest-CSS-setup.js");
@@ -6,7 +6,7 @@ setupFilesAfterEnv.push("<rootDir>/jest-matchers-setup.js");
 setupFilesAfterEnv.push("<rootDir>/jest-resize-observer-setup.js");
 setupFilesAfterEnv.push("<rootDir>/jest-sa11y-setup.js");
 
-module.exports = {
+export default {
   ...jestConfig,
   moduleNameMapper: {
     "\\.(css)$": "<rootDir>/__test__/jest-mocks/css",
@@ -32,7 +32,13 @@ module.exports = {
   modulePathIgnorePatterns: [
     "<rootDir>/.localdevserver",
     "sfGpsTemp",
-    "fixtures"
+    "fixtures",
+    "sfGpsDsAuNswFull",
+    "sfGpsDsAuNswSFull",
+    "sfGpsDsAuQldFull",
+    "sfGpsDsAuVic2Full",
+    "sfGpsDsFrGovFull",
+    "sfGpsDsUkGovFull"
   ],
   setupFiles: ["jest-canvas-mock"],
   setupFilesAfterEnv,
