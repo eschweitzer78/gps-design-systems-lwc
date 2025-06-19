@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuQldThemeLayoutLwr from "c/sfGpsDsAuQldThemeLayoutLwr";
 
 describe("c-sf-gps-ds-au-qld-theme-layout-lwr", () => {

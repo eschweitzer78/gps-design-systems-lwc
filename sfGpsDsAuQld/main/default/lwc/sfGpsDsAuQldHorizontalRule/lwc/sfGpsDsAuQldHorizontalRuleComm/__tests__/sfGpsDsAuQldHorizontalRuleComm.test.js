@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuQldHorizontalRuleComm from "c/sfGpsDsAuQldHorizontalRuleComm";
 
 describe("c-sf-gps-ds-au-qld-horizontal-rule-comm", () => {
