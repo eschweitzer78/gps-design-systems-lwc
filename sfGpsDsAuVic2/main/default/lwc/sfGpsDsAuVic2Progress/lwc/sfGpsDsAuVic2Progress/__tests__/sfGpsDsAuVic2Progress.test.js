@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVic2Progress from "c/sfGpsDsAuVic2Progress";
 
 describe("c-sf-gps-ds-au-vic2-progress", () => {
