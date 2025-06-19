@@ -60,7 +60,7 @@ const ANIMATION_ENDEVENT = "animationend";
 const TRANSFORM_RE = /\b(transform|all)(,|$)/;
 
 export default class SfGpsDsTransition extends SfGpsDsLwc {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   _isMounted = false;
 

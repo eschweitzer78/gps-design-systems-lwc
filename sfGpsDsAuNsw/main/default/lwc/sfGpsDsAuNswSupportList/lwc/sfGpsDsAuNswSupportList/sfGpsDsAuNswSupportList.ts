@@ -41,7 +41,7 @@ const LOGO_POSITION_DEFAULT = LOGO_POSITION_LABELS;
 export default 
 class SfGpsDsAuNswSupportList
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

@@ -20,7 +20,7 @@ import type {
 export default 
 class SfGpsDsAuNswResultsBar
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

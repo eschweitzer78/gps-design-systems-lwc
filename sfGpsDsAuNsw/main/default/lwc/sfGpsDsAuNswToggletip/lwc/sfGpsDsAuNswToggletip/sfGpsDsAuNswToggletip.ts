@@ -23,7 +23,7 @@ import {
 export default 
 class SfGpsDsAuNswToggleTip 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

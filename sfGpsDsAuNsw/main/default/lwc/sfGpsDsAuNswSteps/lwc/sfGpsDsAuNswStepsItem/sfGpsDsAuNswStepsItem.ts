@@ -16,7 +16,7 @@ const FILLED_DEFAULT = false;
 export default 
 class SfGpsDsAuNswStepsItem
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

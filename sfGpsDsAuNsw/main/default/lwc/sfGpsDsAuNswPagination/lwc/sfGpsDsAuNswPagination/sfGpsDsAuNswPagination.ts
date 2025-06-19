@@ -9,7 +9,7 @@ const LASTPAGE_DEFAULT = 1;
 export default 
 class SfGpsDsAuNswPagination 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

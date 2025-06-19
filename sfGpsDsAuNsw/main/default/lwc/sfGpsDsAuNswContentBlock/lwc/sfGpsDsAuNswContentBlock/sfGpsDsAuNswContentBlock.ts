@@ -12,7 +12,7 @@ import type { Link } from "c/sfGpsDsMarkdown";
 export default 
 class SfGpsDsAuNswContentBlock
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

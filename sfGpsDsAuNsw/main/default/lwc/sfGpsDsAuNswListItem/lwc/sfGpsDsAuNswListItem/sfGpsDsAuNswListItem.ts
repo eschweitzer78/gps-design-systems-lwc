@@ -42,7 +42,7 @@ const PREVENTDEFAULT_DEFAULT = false;
 export default 
 class SfGpsDsAuNswListItem 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

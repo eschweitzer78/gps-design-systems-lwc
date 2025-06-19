@@ -23,7 +23,7 @@ const ID_BASE = "sf-gps-ds-au-nsw-in-page-nav-label";
 export default 
 class SfGpsDsAuNswInPageNavigation
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

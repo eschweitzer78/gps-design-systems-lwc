@@ -20,7 +20,7 @@ const ISOPEN_DEFAULT = false;
 export default 
 class SfGpsDsAuNswAccordion
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

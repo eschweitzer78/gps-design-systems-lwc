@@ -20,7 +20,7 @@ const CLASS_NAME = "SfGpsDsAuNswAccordionGroupHead";
 export default
 class SfGpsDsAuNswAccordionGroupHead
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

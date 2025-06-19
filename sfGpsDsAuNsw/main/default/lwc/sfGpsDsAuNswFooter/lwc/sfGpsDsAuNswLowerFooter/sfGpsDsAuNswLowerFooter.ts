@@ -16,7 +16,7 @@ import {
 export default 
 class SfGpsDsAuNswLowerFooter 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

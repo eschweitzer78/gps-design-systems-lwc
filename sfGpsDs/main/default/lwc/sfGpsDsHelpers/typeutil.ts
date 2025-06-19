@@ -43,4 +43,6 @@ export function toNumber(val: any): number {
   return parseFloat(val);
 }
 
-export const toArray = (value: any) => (isArray(value) ? value : [value]);
+export function toArray<T = any>(value: T): T[] {
+  return isArray(value) ? value : [value]
+};

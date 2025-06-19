@@ -8,7 +8,7 @@ const SHOWERRORINDICATOR_DEFAULT = false;
 export default 
 class SfGpsDsAuNswtabLwr
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

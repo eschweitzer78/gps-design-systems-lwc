@@ -154,7 +154,7 @@ extends SfGpsDsIpLwc {
       data = [data];
     }
 
-    return data.map((card: any, index: number) => ({
+    return (data as object[]).map((card: any, index: number) => ({
       ...card,
       title: card.title || card.headline, // it used to be called headline in v1
       copy: card.copy ? htmlDecode(card.copy) : null,

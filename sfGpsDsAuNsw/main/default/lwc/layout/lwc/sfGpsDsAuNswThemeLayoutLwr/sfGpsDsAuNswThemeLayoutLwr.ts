@@ -10,7 +10,7 @@ import SfGpsDsElement from "c/sfGpsDsElement"
 export default 
 class sfGpsDsAuNswThemeLayoutLwr
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

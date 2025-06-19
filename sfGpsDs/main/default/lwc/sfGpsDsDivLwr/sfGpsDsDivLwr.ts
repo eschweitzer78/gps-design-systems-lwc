@@ -31,7 +31,7 @@ import tmplNoDiv from "./sfGpsDsDivLwrNoDiv.html";
 export default 
 class SfGpsDsDivLwr
 extends SfGpsDsLwc {
-  static renderMode = "light";
+  static renderMode: "light"|"shadow" = "light";
 
   // @ts-ignore
   @api 

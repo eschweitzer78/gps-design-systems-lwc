@@ -1,4 +1,6 @@
 declare module "c/SfGpsDsNavigationService" {
+  import type { NavigationMenuItem } from "c/sfGpsDsNavigation";
+
   export interface NavigationConfiguration {
     actionName?: string,
     pageName?: string,

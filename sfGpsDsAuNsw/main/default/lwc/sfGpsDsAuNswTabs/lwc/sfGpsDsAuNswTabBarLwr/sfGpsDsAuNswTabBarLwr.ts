@@ -13,7 +13,7 @@ import type { TabHeader, Tab, SelectTabOptions } from "c/sfGpsDsAuNswTabBarLwr";
 export default 
 class SfGpsDsAuNswLwrTabBar 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   /* api: tabHeaders, Array of Objects */
 

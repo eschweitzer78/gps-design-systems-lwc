@@ -23,7 +23,7 @@ export function mockWindow(
 export default 
 class SfGpsDsSocialSharing 
 extends LightningElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api name = "ShareNetwork";

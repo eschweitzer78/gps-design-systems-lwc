@@ -31,7 +31,7 @@ const PROFILE_DEFAULT = false;
 export default 
 class SfGpsDsNswHeader
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

@@ -30,7 +30,7 @@ const CSTYLE_VALUES: CStyleValues = {
 export default 
 class SfGpsDsAuNswMasthead
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

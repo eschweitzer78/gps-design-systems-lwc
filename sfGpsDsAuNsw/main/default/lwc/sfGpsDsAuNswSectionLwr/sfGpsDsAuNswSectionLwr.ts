@@ -49,7 +49,7 @@ const WITHINVERT_DEFAULT = false;
 export default 
 class SfGpsDsAuNswSectionLwr
 extends SfGpsDsLwc {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

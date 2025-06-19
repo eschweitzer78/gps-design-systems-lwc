@@ -63,7 +63,7 @@ declare module "c/sfGpsDsAuNswTable" {
     name: string,
     label: string,
     width?: string
-  };
+  }
 
   export default 
   class SfGpsDsAuNswTable 

@@ -19,7 +19,7 @@ const FIRSTCHILD_DEFAULT = false;
 export default 
 class SfGpsDsAuNswCallout 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 
@@ -31,6 +31,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
+  // @ts-ignore
   firstChild: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT

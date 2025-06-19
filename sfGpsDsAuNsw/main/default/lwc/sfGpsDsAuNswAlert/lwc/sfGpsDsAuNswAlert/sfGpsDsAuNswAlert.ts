@@ -40,7 +40,7 @@ const COMPACT_DEFAULT = false;
 export default 
 class SfGpsDsAuNswAlert
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

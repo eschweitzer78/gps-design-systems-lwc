@@ -14,7 +14,7 @@ declare module "c/sfGpsDsTransition" {
     timeout: number,
     propCount: number,
     hasTransform: boolean
-  };
+  }
 
   export interface TransitionCallback {
     (): void;

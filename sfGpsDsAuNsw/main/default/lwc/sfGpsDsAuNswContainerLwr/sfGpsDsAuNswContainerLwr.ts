@@ -26,7 +26,7 @@ const MODE_DEFAULT = "default";
 export default 
 class sfGpsDsAuNswContainerLwr
 extends SfGpsDsLwc {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

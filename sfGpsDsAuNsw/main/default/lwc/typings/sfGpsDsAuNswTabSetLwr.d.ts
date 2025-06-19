@@ -10,6 +10,8 @@ declare module "c/sfGpsDsAuNswTabSetLwr" {
   extends SfGpsDsElement {
     title: string;
     tabClassName: string;
+
+    // @ts-ignore
     firstChild: boolean;
     activeTabValue: string;
 

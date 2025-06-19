@@ -30,7 +30,7 @@ const ISDISMISSIBLE_DEFAULT = false;
 export default 
 class SfGpsDsAuNswDialog 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

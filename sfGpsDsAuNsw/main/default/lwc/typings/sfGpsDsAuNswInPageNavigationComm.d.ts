@@ -7,6 +7,8 @@ declare module "c/sfGpsDsAuNswInPageNavigationComm" {
   class SfGpsDsAuNswInPageNavigationComm 
   extends SfGpsDsLwc {
     title: string;
+    
+    // @ts-ignore
     firstChild: boolean;
     className: string;
 

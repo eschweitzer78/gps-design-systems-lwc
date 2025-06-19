@@ -6,6 +6,7 @@ declare module "c/sfGpsDsAuNswBlockLwr" {
   class sfGpsDsAuNswBlockLwr 
   extends SfGpsDsLwc {
     className: string;
+    // @ts-ignore
     firstChild: boolean;
 
     // private

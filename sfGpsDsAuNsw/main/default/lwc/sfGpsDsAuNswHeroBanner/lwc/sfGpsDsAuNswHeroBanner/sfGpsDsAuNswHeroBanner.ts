@@ -58,7 +58,7 @@ const LINKS_DEFAULT = [];
 export default 
 class SfGpsDsAuNswHeroBanner
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

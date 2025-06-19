@@ -30,7 +30,7 @@ const ORIENTATION_VALUES: ListOrientationValues = {
 export default 
 class SfGpsDsAuNswUtilityList
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

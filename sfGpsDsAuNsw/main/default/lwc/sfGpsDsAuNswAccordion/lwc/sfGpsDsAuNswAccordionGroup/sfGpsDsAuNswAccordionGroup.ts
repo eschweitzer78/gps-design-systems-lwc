@@ -25,7 +25,7 @@ const ISFULLYCOLLAPSED_DEFAULT = false;
 export default 
 class SfGpsDsAuNswAccordionGroup 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

@@ -90,5 +90,5 @@ declare module "c/sfGpsDsNavigation" {
     ): AdaptedNavigationMenuItem[];
 
     resolveUrl(item: NavigationMenuItem): string;
-  };
+  }
 }

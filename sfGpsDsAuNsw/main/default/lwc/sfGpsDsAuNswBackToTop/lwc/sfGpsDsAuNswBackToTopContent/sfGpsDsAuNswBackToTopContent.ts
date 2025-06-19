@@ -14,7 +14,7 @@ const ISMOBILE_DEFAULT = false;
 export default 
 class SfGpsDsAuNswBackToTopContent
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

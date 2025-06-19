@@ -26,7 +26,7 @@ const ASCHECKBOXES_DEFAULT = false;
 export default 
 class SfGpsDsAuNswTags
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

@@ -45,7 +45,7 @@ const POSITION_DEFAULT = "default";
 export default 
 class SfGpsDsAuNswMedia
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

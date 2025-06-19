@@ -62,7 +62,7 @@ const JUSTIFYCONTENT_DEFAULT = JUSTIFYCONTENT_FLEXSTART;
 export default 
 class sfGpsDsFlexLwr
 extends SfGpsDsLwc {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

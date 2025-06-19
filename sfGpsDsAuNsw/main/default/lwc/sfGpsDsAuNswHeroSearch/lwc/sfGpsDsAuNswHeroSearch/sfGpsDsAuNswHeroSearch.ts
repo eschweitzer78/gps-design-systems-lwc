@@ -26,7 +26,7 @@ const SHOWLABEL_DEFAULT = false;
 export default 
 class SfGpsDsAuNswHeroSearch 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 

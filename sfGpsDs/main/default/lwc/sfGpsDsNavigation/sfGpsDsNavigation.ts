@@ -229,7 +229,7 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
   mapIpData(
     data: object[] | object
   ): AdaptedNavigationMenuItem[] {
-    const cdata: ConnectApiNavigationMenuItem[] = toArray(data) as ConnectApiNavigationMenuItem[];
+    const cdata: ConnectApiNavigationMenuItem[] = toArray<ConnectApiNavigationMenuItem>(data as any);
     // soql: label, target, targetPrefs, type
     // connectApi: label, actionType, actionValue, target, subMenu
     let adaptedMap = {};
