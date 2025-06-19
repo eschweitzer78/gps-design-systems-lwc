@@ -1,5 +1,5 @@
 /* eslint-disable @lwc/lwc/no-inner-html */
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsUkGovPanel from "c/sfGpsDsUkGovPanel";
 
 const ELT_TAG = "c-sf-gps-ds-uk-gov-panel";

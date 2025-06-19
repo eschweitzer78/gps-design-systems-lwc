@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import sfGpsDsUkGovWarningTextComm from "c/sfGpsDsUkGovWarningTextComm";
 
 const ELT_TAG = "c-sf-gps-ds-uk-gov-warning-text-comm";

@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import sfGpsDsUkGovNotificationBannerComm from "c/sfGpsDsUkGovNotificationBannerComm";
 
 const tag = "c-sf-gps-ds-uk-gov-notification-banner-comm";
