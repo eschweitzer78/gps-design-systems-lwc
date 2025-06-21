@@ -27,6 +27,12 @@ import type {
 
 type CStyleValues = Record<CStyle, CStyleValue>;
 
+interface DisplayLink {
+  index: string,
+  text?: string,
+  url?: string
+}
+
 const CSTYLE_VALUES: CStyleValues = {
   dark: {
     main: "nsw-hero-banner--dark",
@@ -47,13 +53,13 @@ const CSTYLE_VALUES: CStyleValues = {
 };
 const CSTYLE_DEFAULT: CStyle = "dark";
 
-
 const CTAPREVENTDEFAULT_DEFAULT = false;
 const LINKSPREVENTDEFAULT_DEFAULT = false;
 const WIDE_DEFAULT = false;
 const FEATURED_DEFAULT = false;
 const LINES_DEFAULT = false;
-const LINKS_DEFAULT = [];
+const DISPLAYLINKS_DEFAULT: DisplayLink[] = [];
+const LINKS_DEFAULT: Link[] = [];
 
 export default 
 class SfGpsDsAuNswHeroBanner
@@ -66,23 +72,23 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  subtitle: string;
+  subtitle?: string;
 
   // @ts-ignore
   @api 
-  cta: string;
+  cta?: string;
 
   // @ts-ignore
   @api 
-  image: BannerImage;
+  image?: BannerImage;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  cstyle: CStyle;
+  cstyle?: CStyle;
   _cstyle = this.defineEnumObjectProperty<CStyleValue, CStyle>("cstyle", {
       validValues: CSTYLE_VALUES,
       defaultValue: CSTYLE_DEFAULT
@@ -90,42 +96,42 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  wide: boolean;
+  wide?: boolean;
   _wide = this.defineBooleanProperty("wide", {
     defaultValue: WIDE_DEFAULT
   });
 
   // @ts-ignore
   @api
-  featured: boolean;
+  featured?: boolean;
   _featured = this.defineBooleanProperty("featured", {
     defaultValue: FEATURED_DEFAULT
   });
 
   // @ts-ignore
   @api
-  lines: boolean;
+  lines?: boolean;
   _lines = this.defineBooleanProperty("lines", {
     defaultValue: LINES_DEFAULT
   });
 
   // @ts-ignore
   @api
-  ctaPreventDefault: boolean;
+  ctaPreventDefault?: boolean;
   _ctaPreventDefault = this.defineBooleanProperty("ctaPreventDefault", {
     defaultValue: CTAPREVENTDEFAULT_DEFAULT
   });
 
   // @ts-ignore
   @api
-  linksPreventDefault: boolean;
+  linksPreventDefault?: boolean;
   _linksPreventDefault = this.defineBooleanProperty("linksPreventDefault", {
     defaultValue: LINKSPREVENTDEFAULT_DEFAULT
   });
 
   /* api: links */
 
-  _links: Link[] = LINKS_DEFAULT;
+  _links: DisplayLink[] = DISPLAYLINKS_DEFAULT;
   _linksOriginal: Link[] = LINKS_DEFAULT;
 
   // @ts-ignore
@@ -138,10 +144,11 @@ extends SfGpsDsElement {
     this._linksOriginal = value;
     this._links = isArray(value)
       ? value.map((link, index) => ({
-          ...link,
-          index: link.index ? link.index : `link-${index + 1}`
+          text: link.text,
+          url: link.url,
+          index: link.index ? `link-ori-${link.index}` : `link-${index + 1}`
         }))
-      : LINKS_DEFAULT;
+      : DISPLAYLINKS_DEFAULT;
   }
 
   /* computed */
@@ -153,7 +160,7 @@ extends SfGpsDsElement {
       "nsw-hero-banner--featured": this._featured.value,
       "nsw-hero-banner--lines": this._lines.value,
       [this._cstyle.value.main]: !!this._cstyle.value.main,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 

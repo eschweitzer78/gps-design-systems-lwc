@@ -10,12 +10,12 @@ declare module "c/sfGpsDsAuNswBackToTop" {
 
     // private
 
-    _show: boolean;
-    _width: number;
-    _height: number;
+    _show?: boolean;
+    _width?: number;
+    _height?: number;
     _scrollPosition: number;   
     
-    readonly _isMobile: boolean;
+    get _isMobile(): boolean;
 
     checkBackToTop(): void;
     resize(): void;

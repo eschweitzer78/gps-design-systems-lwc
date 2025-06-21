@@ -50,11 +50,11 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  label: string;
+  label?: string;
 
   // @ts-ignore
   @api 
-  link: string;
+  link?: string;
 
   // @ts-ignore
   @api 
@@ -62,15 +62,15 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  iconName: string;
+  iconName?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  cstyle: CStyle;
+  cstyle?: CStyle;
   _cstyle = this.defineEnumProperty<CStyle>("cstyle", {
     validValues: CSTYLE_VALUES,
     defaultValue: CSTYLE_DEFAULT
@@ -78,14 +78,15 @@ extends SfGpsDsElement {
  
   // @ts-ignore
   @api
-  iconStyle: IconStyle;
+  iconStyle?: IconStyle;
   _iconStyle = this.defineEnumProperty<IconStyle>("iconStyle", {
     validValues: ICONSTYLE_VALUES,
     defaultValue: ICONSTYLE_DEFAULT
   });
 
   // @ts-ignore
-  @api rendering: Rendering;
+  @api 
+  rendering?: Rendering;
   _rendering = this.defineEnumProperty<Rendering>("rendering", {
     validValues: RENDERING_VALUES,
     defaultValue: RENDERING_DEFAULT
@@ -93,14 +94,14 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  disabled: boolean;
+  disabled?: boolean;
   _disabled = this.defineBooleanProperty("disabled", {
     defaultValue: DISABLED_DEFAULT
   });
 
   // @ts-ignore
   @api
-  mobileFullWidth: boolean;
+  mobileFullWidth?: boolean;
   _mobileFullWidth = this.defineBooleanProperty("mobileFullWidth", {
     defaultValue: MOBILEFULLWIDTH_DEFAULT
   });
@@ -109,7 +110,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  block: boolean;
+  block?: boolean;
 
   /* computed */
 
@@ -118,7 +119,7 @@ extends SfGpsDsElement {
       "nsw-button": true,
       [`nsw-button--${this._cstyle.value}`]: this._cstyle.value,
       "nsw-button--full-width": this._mobileFullWidth.value,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
     return rv;
   }

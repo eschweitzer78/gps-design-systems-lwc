@@ -12,7 +12,7 @@ import getCount from "@salesforce/apex/SfGpsDsListViewController.getCount";
 import getRecords from "@salesforce/apex/SfGpsDsListViewController.getEnhancedRecords";
 
 import type SfGpsDsNavigationService from "c/SfGpsDsNavigationService";
-import SfGpsDsAuNswListViewItem from "../sfGpsDsAuNswListViewItem/sfGpsDsAuNswListViewItem";
+import type SfGpsDsAuNswListViewItem from "c/sfGpsDsAuNswListViewItem";
 
 import type { 
   sObject 
@@ -38,44 +38,44 @@ export default
 class SfGpsDsAuNswListViewComm
 extends SfGpsDsLwc {
   // @ts-ignore
-  @api 
-  objectApiName: string;
+  @api
+  objectApiName?: string;
 
   // @ts-ignore
   @api 
   pageSize = 10;
 
   // @ts-ignore
-  @api 
-  labelColumn: string;
+  @api
+  labelColumn?: string;
 
   // @ts-ignore
-  @api 
-  titleColumn: string;
+  @api
+  titleColumn?: string;
 
   // @ts-ignore
-  @api 
-  dateColumn: string;
+  @api
+  dateColumn?: string;
 
   // @ts-ignore
-  @api 
-  tagsColumn: string;
+  @api
+  tagsColumn?: string;
 
   // @ts-ignore
-  @api 
-  imageColumn: string;
+  @api
+  imageColumn?: string;
 
   // @ts-ignore
-  @api 
-  imageAltColumn: string;
+  @api
+  imageAltColumn?: string;
 
   // @ts-ignore
-  @api 
-  className: string;
+  @api
+  className?: string;
 
   // @ts-ignore
-  @api 
-  titleClassName: string;
+  @api
+  titleClassName?: string;
 
   // @ts-ignore
   @track 
@@ -83,12 +83,12 @@ extends SfGpsDsLwc {
 
   /* api: filterName */
 
-  _filterName: string;
-  _filterNameOriginal: string;
+  _filterName?: string;
+  _filterNameOriginal?: string;
 
   // @ts-ignore
   @api
-  get filterName(): string {
+  get filterName(): string | undefined {
     return this._filterNameOriginal;
   }
 
@@ -102,7 +102,7 @@ extends SfGpsDsLwc {
         })
         .catch((error) => {
           this.addError("CO-LV", "Error while getting list view name.");
-          this._filterName = null;
+          this._filterName = undefined;
 
           if (DEBUG) {
             console.log("CO-LV", JSON.stringify(error));
@@ -113,19 +113,20 @@ extends SfGpsDsLwc {
     }
   }
 
-  _listInfo: ListViewInfo;
-  _rawRecords: sObject[];
+  _listInfo?: ListViewInfo;
+  _rawRecords?: sObject[];
 
   // @ts-ignore
-  @wire
-  (getListInfoByName, {
-    objectApiName: "$objectApiName",
-    listViewApiName: "$_filterName"
-  })
-  handleListInfo({ error, data }) {
+  @wire(getListInfoByName, { objectApiName: "$objectApiName", listViewApiName: "$_filterName"})
+  handleListInfo({ error, data }: { 
+    error: any, 
+    data: ListViewInfo | null
+  }) {
     if (data) {
       this._listInfo = data;
       this._isLoading = true;
+
+      if (this._listInfo == null) return;
 
       getCount({
         objectApiName: this._listInfo.listReference.objectApiName,
@@ -136,12 +137,12 @@ extends SfGpsDsLwc {
           this._itemsTotal = result;
           this._pageSize = this.pageSize;
           this._activePage = 1;
-          this._lastPage = Math.ceil(this._itemsTotal / this._pageSize);
+          this._lastPage = Math.ceil((this._itemsTotal || 0) / this._pageSize);
           this._itemsFrom = 1;
           this._isLoading = false;
-          this._orderedByInfo = this._listInfo.orderedByInfo;
+          this._orderedByInfo = this._listInfo?.orderedByInfo;
 
-          let sortOptions = this._listInfo.displayColumns
+          let sortOptions = (this._listInfo?.displayColumns || [])
             .filter((column) => column.sortable)
             .map((column) => ({
               label: column.label,
@@ -174,53 +175,56 @@ extends SfGpsDsLwc {
       this.addError("CO-LI", "Issue while getting list view info");
 
       if (DEBUG) console.debug(CLASS_NAME, "List view error", JSON.stringify(error));
-      this._listInfo = null;
+      this._listInfo = undefined;
       this.updateRecords();
     }
   }
 
-  _records: sObject[];
+  _records!: sObject[] | null;
 
   // @ts-ignore
-  @track 
-  _name: string;
+  @track
+  _name?: string;
 
   // @ts-ignore
-  @track 
-  _itemsTotal: number;
+  @track
+  _itemsTotal?: number;
 
   // @ts-ignore
   @track 
   _pageSize: number = 10;
 
   // @ts-ignore
-  @track 
-  _lastPage: number;
+  @track
+  _lastPage?: number;
 
   // @ts-ignore
   @track 
   _itemsFrom: number = 1;
 
   // @ts-ignore
-  @track 
-  _itemsTo: number;
+  @track
+  _itemsTo?: number;
 
   // @ts-ignore
   @track 
   _activePage: number = 1;
 
   // @ts-ignore
+  @track
+  _sortValue?: string;
+
+  // @ts-ignore
   @track 
-  _sortValue: string;
+  _sortOptions?: SortOption[];
 
   // @ts-ignore
-  @track _sortOptions: SortOption[];
+  @track 
+  _displayColumns?: ListColumn[];
 
   // @ts-ignore
-  @track _displayColumns: ListColumn[];
-
-  // @ts-ignore
-  @track _orderedByInfo: ListOrderedByInfo[]; // current orderedBy clause
+  @track 
+  _orderedByInfo?: ListOrderedByInfo[]; // current orderedBy clause
 
   /* computed */
 
@@ -232,7 +236,7 @@ extends SfGpsDsLwc {
 
   updateRecords(): void {
     if (this._listInfo == null || this._itemsTotal === 0) {
-      this._rawRecords = null;
+      this._rawRecords = undefined;
       this.updateVisibleRecords();
       return;
     }
@@ -257,7 +261,7 @@ extends SfGpsDsLwc {
       .catch((error2) => {
         this.addError("CO-GR", "Issue while getting records");
         if (DEBUG) console.log(CLASS_NAME, "getRecords error", JSON.stringify(error2));
-        this._rawRecords = null;
+        this._rawRecords = undefined;
         this._isLoading = false;
 
         this.updateVisibleRecords();
@@ -281,7 +285,7 @@ extends SfGpsDsLwc {
 
   handlePageChange(event: CustomEvent): void {
     let formerActivePage = this._activePage;
-    this._activePage = Math.max(1, Math.min(event.detail, this._lastPage));
+    this._activePage = Math.max(1, Math.min(event.detail, this._lastPage || 0));
     this._itemsFrom = (this._activePage - 1) * this._pageSize + 1;
 
     if (formerActivePage !== this._activePage) {
@@ -293,14 +297,14 @@ extends SfGpsDsLwc {
     let fieldApiName = event.detail;
 
     if (fieldApiName === LISTVIEW_SETTINGS) {
-      this._orderedByInfo = this._listInfo.orderedByInfo;
+      this._orderedByInfo = this._listInfo?.orderedByInfo;
       this._activePage = 1;
       this._itemsFrom = 1;
       this._sortValue = LISTVIEW_SETTINGS;
 
       this.updateRecords();
     } else {
-      let dc = this._listInfo.displayColumns;
+      let dc = this._listInfo?.displayColumns || [];
       for (let i = 0; i < dc.length; i++) {
         if (dc[i].fieldApiName === fieldApiName) {
           this._orderedByInfo = [
@@ -338,19 +342,25 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   _rendered = false;
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
-    const items = this.template.querySelectorAll(".item:not([data-link])");
+    const items = this.template?.querySelectorAll(".item:not([data-link])");
     const navsvc = this.navSvc;
 
-    if (items.length === 0 || !navsvc) return;
+    if (
+      !items || 
+      items.length === 0 || 
+      !navsvc
+    ) {
+      return;
+    }
 
     for (let i = 0; i < items.length; i++) {
       const viewItem = items[i] as unknown as SfGpsDsAuNswListViewItem;

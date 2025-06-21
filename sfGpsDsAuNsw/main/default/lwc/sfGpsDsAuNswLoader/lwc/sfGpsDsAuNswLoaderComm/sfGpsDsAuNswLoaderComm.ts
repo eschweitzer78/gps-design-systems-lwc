@@ -19,12 +19,13 @@ class SfGpsDsAuNswLoaderComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  label: string;
+  label?: string;
 
   // @ts-ignore
   @api 
-  size: Size;
+  size?: Size;
   
   // @ts-ignore
-  @api className: string;
+  @api 
+  className?: string;
 }

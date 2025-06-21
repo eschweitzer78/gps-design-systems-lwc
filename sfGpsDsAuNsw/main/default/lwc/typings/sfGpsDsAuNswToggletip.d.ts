@@ -4,7 +4,7 @@ declare module "c/sfGpsDsAuNswToggletip" {
   export default 
   class SfGpsDsAuNswToggletip 
   extends SfGpsDsElement {
-    anchor: string;
+    anchor?: string;
 
     showToggletip(): void;
     closeToggletip(): void;  
@@ -13,7 +13,7 @@ declare module "c/sfGpsDsAuNswToggletip" {
 
     _isOpen: boolean;
 
-    readonly computedToggleTipClassName: any;
+    get computedToggleTipClassName(): any;
 
     updateToggletip(): void;
   }

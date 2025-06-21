@@ -9,13 +9,15 @@ class SfGpsDsAuNswHeaderProfileIp
 extends SfGpsDsNavigation {
   // @ts-ignore
   @api 
-  isGuest: boolean;
+  isGuest?: boolean;
 
   // @ts-ignore
-  @api userAlias: string;
+  @api 
+  userAlias?: string;
   
   // @ts-ignore
-  @api className: string;
+  @api 
+  className?: string;
 
   /* api: ipName */
 
@@ -104,7 +106,7 @@ extends SfGpsDsNavigation {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

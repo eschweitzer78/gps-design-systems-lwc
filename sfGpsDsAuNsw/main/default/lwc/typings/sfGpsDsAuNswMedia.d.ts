@@ -23,12 +23,12 @@ declare module "c/sfGpsDsAuNswMedia" {
   export default 
   class SfGpsDsAuNswMedia 
   extends SfGpsDsElement {
-    image: string;
-    imageAlt: string;
-    video: string;
-    videoTitle: string;
-    caption: string;
-    className: string
+    image?: string;
+    imageAlt?: string;
+    video?: string;
+    videoTitle?: string;
+    caption?: string;
+    className?: string
 
     // private
   }

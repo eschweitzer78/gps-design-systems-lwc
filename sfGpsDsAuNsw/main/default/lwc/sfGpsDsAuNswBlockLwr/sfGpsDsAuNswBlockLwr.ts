@@ -5,7 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import {
+  api
+} from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 const FIRSTCHILD_DEFAULT = false;
@@ -18,12 +20,12 @@ export default class extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT
   });
@@ -33,7 +35,7 @@ export default class extends SfGpsDsLwc {
   get computedClassName(): any {
     return {
       "nsw-block": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -44,7 +46,7 @@ export default class extends SfGpsDsLwc {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

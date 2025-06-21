@@ -17,7 +17,7 @@ import mdEngine from "c/sfGpsDsMarkdown";
 import type { CStyle } from "c/sfGpsDsAuNswSteps";
 import type { Header } from "c/sfGpsDsMarkdown";
 
-const CONTENT_DEFAULT = [];
+const CONTENT_DEFAULT: Header[]= [];
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuNswStepsComm";
@@ -27,33 +27,33 @@ class sfGpsDsAuNswStepsComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  type: string;
+  type?: string;
 
   // @ts-ignore
   @api 
-  cstyle: CStyle;
+  cstyle?: CStyle;
 
   // @ts-ignore
   @api 
-  headingLevel: string;
+  headingLevel?: string;
 
   // @ts-ignore
   @api 
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: content */
 
   _content: Header[] = CONTENT_DEFAULT;
-  _contentOriginal: string;
+  _contentOriginal?: string = "";
 
   // @ts-ignore
   @api
-  get content(): string {
+  get content(): string | undefined {
     return this._contentOriginal;
   }
 
@@ -78,7 +78,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

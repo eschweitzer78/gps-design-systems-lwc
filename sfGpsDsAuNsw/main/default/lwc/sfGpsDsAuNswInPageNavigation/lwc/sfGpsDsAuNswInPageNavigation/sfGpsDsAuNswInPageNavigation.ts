@@ -34,12 +34,12 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT
   });
@@ -49,11 +49,11 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-in-page-nav": true,
-      [this.className]: this.className
+      [this.className || ""]: this.className
     };
   }
 
-  _labelledById: string;
+  _labelledById?: string;
 
   get computedAriaLabelledById(): string {
     if (this._labelledById === undefined) {

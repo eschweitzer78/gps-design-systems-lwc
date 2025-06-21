@@ -20,7 +20,7 @@ extends SfGpsDsNavigation {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
@@ -28,7 +28,7 @@ extends SfGpsDsNavigation {
 
   // @ts-ignore
   @api 
-  mainNavId: string;
+  mainNavId?: string;
 
   /* api: mode */
 
@@ -51,7 +51,7 @@ extends SfGpsDsNavigation {
         {
           actionType: "InternalLink",
           actionValue: cbp + "/get-involved",
-          imageUrl: null,
+          imageUrl: undefined,
           label: "Get involved",
           subMenu: [],
           target: "CurrentWindow"
@@ -59,7 +59,7 @@ extends SfGpsDsNavigation {
         {
           actionType: "InternalLink",
           actionValue: cbp + "/stories",
-          imageUrl: null,
+          imageUrl: undefined,
           label: "Stories",
           subMenu: [],
           target: "CurrentWindow"
@@ -151,7 +151,7 @@ extends SfGpsDsNavigation {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

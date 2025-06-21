@@ -12,15 +12,15 @@ class SfGpsDsAuNswStatusLabelComm
 extends LightningElement {
   // @ts-ignore
   @api 
-  label: string;
+  label?: string;
 
   // @ts-ignore
   @api 
-  status: Status;
+  status?: Status;
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* lifecycle */
 

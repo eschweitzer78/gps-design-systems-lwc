@@ -8,38 +8,39 @@ declare module "c/sfGpsDsAuNswPagination" {
   extends SfGpsDsElement {
     ariaLabel: string;
     srOnlyPre: string;
-    srOnlyPost: string;
-    srOnlyPrevious: string;
+    srOnlyPost?: string;
+    srOnlyPrevious?: string;
     srOnlyNext: string;
-    className: string;
+    className?: string;
 
-    lastPage: number;
-    activePage: number;
+    lastPage?: number;
+    activePage?: number;
 
     // private
+
     _lastPage: PropertyAccessor<number>;
     _activePage: PropertyAccessor<number>;
 
-    readonly computedFirstPage: number;
-    readonly computedPrevPage: number;
-    readonly computedNextPage: number;
-    readonly computedShowPrevious: boolean;
-    readonly computedShowFirstPage: boolean;
-    readonly computedShowPrevEllipsis: boolean;
-    readonly computedShowPrevPage: boolean;
-    readonly computedShowActivePage: boolean;
-    readonly computedShowNextPage: boolean;
-    readonly computedShowNextEllipsis: boolean;
-    readonly computedShowLastPage: boolean;
-    readonly computedShowNext: boolean;
+    get computedFirstPage(): number;
+    get computedPrevPage(): number;
+    get computedNextPage(): number;
+    get computedShowPrevious(): boolean;
+    get computedShowFirstPage(): boolean;
+    get computedShowPrevEllipsis(): boolean;
+    get computedShowPrevPage(): boolean;
+    get computedShowActivePage(): boolean;
+    get computedShowNextPage(): boolean;
+    get computedShowNextEllipsis(): boolean;
+    get computedShowLastPage(): boolean;
+    get computedShowNext(): boolean;
 
-    readonly computedClassName: any;
+    get computedClassName(): any;
 
-    readonly computedPreviousDisabled: boolean;
-    readonly computedPrevPageClassName: any;
+    get computedPreviousDisabled(): boolean;
+    get computedPrevPageClassName(): any;
 
-    readonly computedNextDisabled: boolean;
-    readonly computedNextPageClassName: any;
+    get computedNextDisabled(): boolean;
+    get computedNextPageClassName(): any;
 
     handlePreviousPageClick(event: MouseEvent): void;
     handleFirstPageClick(event: MouseEvent): void;

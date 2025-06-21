@@ -9,18 +9,19 @@ declare module "c/sfGpsDsAuNswTabSetLwr" {
   class SfGpsDsAuNswTabSetLwr 
   extends SfGpsDsElement {
     title: string;
-    tabClassName: string;
-
+    tabClassName?: string;
     // @ts-ignore
-    firstChild: boolean;
-    activeTabValue: string;
+    firstChild?: boolean;
+
+    get activeTabValue(): string | undefined;
+    set activeTabValue(tabValue: string);
 
     focus(): void;
 
     // private
 
     _firstChild: PropertyAccessor<boolean>;
-    _activeTabValue: string;
+    _activeTabValue?: string;
     _tabByValue: Record<string, SfGpsDsAuNswTabLwr>;
     _tabHeaders: TabHeader[];
 
@@ -40,7 +41,7 @@ declare module "c/sfGpsDsAuNswTabSetLwr" {
       headers: TabHeader[]
     ): void;
 
-    readonly tabBar: SfGpsDsAuNswTabBarLwr;
+    get tabBar(): SfGpsDsAuNswTabBarLwr;
 
     handleTabRegister(
       event: CustomEvent

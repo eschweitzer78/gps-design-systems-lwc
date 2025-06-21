@@ -12,28 +12,28 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  titleUrl: string;
+  titleUrl?: string;
 
   // @ts-ignore
   @api 
-  titleLabel: string;
+  titleLabel?: string;
 
   // @ts-ignore
   @api 
-  imageSrc: string;
+  imageSrc?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
 
   // @ts-ignore
   @api
-  titlePreventDefault: boolean;
+  titlePreventDefault?: boolean;
   _titlePreventDefault = this.defineBooleanProperty("titlePreventDefault", {
     defaultValue: TITLEPREVENTDEFAULT_DEFAULT
   });
@@ -43,7 +43,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-hero-banner-alt": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 

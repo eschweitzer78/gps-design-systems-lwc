@@ -32,11 +32,11 @@ extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  links: string;
+  links?: string;
   _links = this.defineMarkdownLinksProperty<TagLink>("links", {
     errorCode: "LI-MD",
     errorText: "Issue when parsing Links markdown"
@@ -55,7 +55,7 @@ extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

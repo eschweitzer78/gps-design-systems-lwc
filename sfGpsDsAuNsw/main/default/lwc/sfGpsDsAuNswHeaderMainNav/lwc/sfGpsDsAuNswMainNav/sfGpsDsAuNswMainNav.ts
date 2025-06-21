@@ -47,7 +47,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: mainNavId */
 
@@ -66,8 +66,8 @@ extends SfGpsDsElement {
   /* api: isActive */
 
   _isActive: boolean = false;
-  _isActivating: boolean;
-  _isClosing: boolean;
+  _isActivating?: boolean;
+  _isClosing?: boolean;
 
   // @ts-ignore
   @api
@@ -91,12 +91,12 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @track 
-  _navItems: MainNavItem[];
-  _navItemsOriginal: AdaptedNavigationMenuItem[];
+  _navItems?: MainNavItem[];
+  _navItemsOriginal?: AdaptedNavigationMenuItem[];
 
   // @ts-ignore
   @api
-  get navItems(): AdaptedNavigationMenuItem[] {
+  get navItems(): AdaptedNavigationMenuItem[] | undefined {
     return this._navItemsOriginal;
   }
 
@@ -107,7 +107,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  megaMenu: boolean;
+  megaMenu?: boolean;
   _megaMenu = this.defineBooleanProperty("megaMenu", {
     defaultValue: MEGAMENU_DEFAULT,
     watcher: () => { this.navItemsMapping(); }
@@ -142,7 +142,7 @@ extends SfGpsDsElement {
       activating: this._isActivating,
       active: this.isActive,
       closing: this._isClosing,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -157,7 +157,7 @@ extends SfGpsDsElement {
     let map: MainNavItemMap = {};
     this._navItems = this._navItemsOriginal
       ? this.mapItems(this._navItemId, 0, map, this._navItemsOriginal)
-      : null;
+      : undefined;
     this._mapItems = map;
   }
 
@@ -173,9 +173,9 @@ extends SfGpsDsElement {
 
     return items.map((item) => {
       const isCurrentPage =
-        item.url === pathname ||
+        (item.url === pathname) ||
         (item.url && pathname.startsWith(item.url + "/"));
-      const isActive = isCurrentPage && !parentLevel && !this._megaMenu;
+      const isActive = !!isCurrentPage && !parentLevel && !this._megaMenu;
 
       let result: MainNavItem = {
         ...item,
@@ -226,7 +226,7 @@ extends SfGpsDsElement {
 
   getElementForItem(
     navItem: MainNavItem
-  ): HTMLElement {
+  ): HTMLElement | null {
     return navItem?.index
       ? this.querySelector(`[data-ndx="${navItem.index}"]`)
       : null;
@@ -281,9 +281,14 @@ extends SfGpsDsElement {
   ): void {
     event.preventDefault();
 
+    if (!event.currentTarget) return;
+
     // eslint-disable-next-line @lwc/lwc/no-api-reassignments
     this.isActive = true;
     const index = (event.currentTarget as HTMLElement).dataset.ndx;
+
+    if (index == undefined) return;
+
     const clickLevel = this._mapItems[index]?.level;
 
     // eslint-disable-next-line guard-for-in
@@ -304,7 +309,9 @@ extends SfGpsDsElement {
         : "nsw-main-nav__sub-nav";
     }
 
-    this._navItems = [...this._navItems];
+    this._navItems = this._navItems 
+      ? [...this._navItems] 
+      : [];
 
     // If there is no subNav to expand, we're really navigating
     // Unless it's level-2 nav on desktop as there is a subNav - it's just not visible and we have to navigate
@@ -355,22 +362,24 @@ extends SfGpsDsElement {
 
   /* Lifecycle */
 
-  breakpoint: MediaQueryList;
+  breakpoint?: MediaQueryList;
   _isDesktop = false;
-  _handleResponsiveCheck: (event: MediaQueryListEvent) => void;
+  _handleResponsiveCheck?: (event: MediaQueryListEvent) => void;
 
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
 
-    this.breakpoint = window.matchMedia("(min-width: 62em");
-    // TODO: check if removal is ok
+    this.handleMounted(() => {
+      this.breakpoint = window.matchMedia("(min-width: 62em");
 
-    this._handleResponsiveCheck = this.handleResponsiveCheck.bind(this);
-    this.breakpoint?.addEventListener("change", this._handleResponsiveCheck);
-  }
+      this._handleResponsiveCheck = this.handleResponsiveCheck.bind(this);
+      this.breakpoint?.addEventListener("change", this._handleResponsiveCheck);
+    });
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.breakpoint?.removeEventListener("change", this._handleResponsiveCheck);
+    this.handleUnmounted(() => {
+      if (this._handleResponsiveCheck) {
+        this.breakpoint?.removeEventListener("change", this._handleResponsiveCheck);
+      }
+    })
   }
 }

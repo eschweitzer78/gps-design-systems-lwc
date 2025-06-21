@@ -18,58 +18,62 @@ import userId from "@salesforce/user/Id";
 import isGuest from "@salesforce/user/isGuest";
 import userAliasField from "@salesforce/schema/User.Alias";
 import { 
-  getRecord 
+  getRecord
 } from "lightning/uiRecordApi";
+
 import type { 
   Stacking 
 } from "c/sfGpsDsAuNswHeader";
+import type { 
+  RecordRepresentation
+} from "lightning/uiRecordApi";
 
 export default 
 class SfGpsDsAuNswHeaderComm 
 extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
   // @ts-ignore
   @api 
-  masterbrand: string;
+  masterbrand?: string;
 
   // @ts-ignore
   @api 
-  masterbrandAlt: string;
+  masterbrandAlt?: string;
 
   // @ts-ignore
   @api 
-  srMasterbrandLabel: string = "NSW Government";
+  srMasterbrandLabel = "NSW Government";
 
   // @ts-ignore
   @api 
-  logo: string;
+  logo?: string;
 
   // @ts-ignore
   @api 
-  logoAlt: string;
+  logoAlt?: string;
 
   // @ts-ignore
   @api 
-  menuLabel: string = "menu";
+  menuLabel = "menu";
 
   // @ts-ignore
   @api 
-  searchLabel: string = "Search site for:";
+  searchLabel = "Search site for:";
 
   // @ts-ignore
   @api 
-  siteTitle: string;
+  siteTitle?: string;
 
   // @ts-ignore
   @api 
-  siteDescriptor: string;
+  siteDescriptor?: string;
 
   // @ts-ignore
   @api 
-  headerUrl: string;
+  headerUrl?: string;
 
   // @ts-ignore
   @api 
-  mobile: boolean = false;
+  mobile = false;
 
   // @ts-ignore
   @api 
@@ -85,39 +89,40 @@ extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
 
   // @ts-ignore
   @api 
-  profileIpName: string;
+  profileIpName?: string;
 
   // @ts-ignore
   @api 
-  profileInputJSON: string;
+  profileInputJSON?: string;
   // @ts-ignore
+
   @api 
-  profileOptionsJSON: string;
+  profileOptionsJSON?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  mainNavId: string;
+  mainNavId?: string;
 
   // @ts-ignore
   @api 
   mainNavIsOpen: boolean = false;
 
-  userAlias: string;
+  userAlias?: string;
 
   // @ts-ignore
-  @wire(
-    getRecord, 
-    { recordId: userId, fields: [userAliasField] }
-  )
-  getUserDetails({ error, data }): void {
+  @wire(getRecord, { recordId: userId, fields: [userAliasField] })
+  getUserDetails({ error, data }: {
+    error: any,
+    data: RecordRepresentation
+  }): void {
     if (data) {
-      this.userAlias = data.fields.Alias.value;
+      this.userAlias = data.fields.Alias.value as string;
     } else if (error) {
-      console.log(error);
+      console.debug(error);
     }
   }
 
@@ -170,7 +175,7 @@ extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

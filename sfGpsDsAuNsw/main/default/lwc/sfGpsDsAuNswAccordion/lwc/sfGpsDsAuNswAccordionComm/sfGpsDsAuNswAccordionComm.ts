@@ -22,16 +22,19 @@ class SfGpsDsAuNswAccordionComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  index : string | number; // only used if part of a group
+  index?: string | number; // only used if part of a group
+
   // @ts-ignore
   @api 
-  header: string;
+  header?: string;
+
   // @ts-ignore
   @api 
-  content: string;
+  content?: string;
+
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // api: closed
 
@@ -62,15 +65,15 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
     
     if (this.refs.markdown) {
-      replaceInnerHtml(this.refs.markdown, this.content);
+      replaceInnerHtml(this.refs.markdown, this.content || "");
     }
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

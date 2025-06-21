@@ -49,31 +49,31 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  image: string;
+  image?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
-  video: string;
+  video?: string;
 
   // @ts-ignore
   @api 
-  videoTitle: string;
+  videoTitle?: string;
 
   // @ts-ignore
   @api 
-  caption: string;
+  caption?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  cstyle: CStyle;
+  cstyle?: CStyle;
   _cstyle = this.defineEnumObjectProperty<string, CStyle>("cstyle", {
     validValues: CSTYLE_VALUES,
     defaultValue: CSTYLE_DEFAULT
@@ -81,7 +81,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  position: CStyle;
+  position?: CStyle;
   _position = this.defineEnumObjectProperty<string, CStyle>("position", {
     validValues: POSITION_VALUES,
     defaultValue: POSITION_DEFAULT
@@ -94,7 +94,7 @@ extends SfGpsDsElement {
       "nsw-media": true,
       [this._cstyle.value]: this._cstyle.value,
       [this._position.value]: this._position.value,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 }

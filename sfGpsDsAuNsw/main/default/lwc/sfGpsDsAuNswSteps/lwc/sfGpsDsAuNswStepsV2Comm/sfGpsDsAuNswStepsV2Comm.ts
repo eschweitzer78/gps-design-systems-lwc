@@ -18,54 +18,52 @@ import type {
   CStyle 
 } from "c/sfGpsDsAuNswSteps";
 import type { 
-  Header 
-} from "c/sfGpsDsMarkdown";
-import { 
   HeadingLevel 
 } from "c/sfGpsDsAuNswStepsItem";
+import type { 
+  Header 
+} from "c/sfGpsDsMarkdown";
 
-const CONTENT_DEFAULT = [];
+
+const CONTENT_DEFAULT: Header[] = [];
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuNswStepsComm";
 
-type Size =
-  "large" |
-  "medium" |
-  "small";
+import type { Size } from "c/sfGpsDsAuNswSteps";
 
 export default 
 class sfGpsDsAuNswStepsCommV2
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  type: string;
+  type?: string;
+
+  // @ts-ignore
+  @api
+  cstyle?: CStyle;
+
+  // @ts-ignore
+  @api
+  size?: Size;
 
   // @ts-ignore
   @api 
-  cstyle: CStyle;
+  // @ts-ignore
+  firstChild?: boolean;
 
   // @ts-ignore
   @api 
-  size: Size;
-
-  // @ts-ignore
-  @api 
-  // @ts-ignore
-  firstChild: boolean;
-
-  // @ts-ignore
-  @api 
-  className: string;
+  className?: string;
 
   /* api: content */
 
   _content: Header[] = CONTENT_DEFAULT;
-  _contentOriginal: string;
+  _contentOriginal?: string;
 
   // @ts-ignore
   @api
-  get content(): string {
+  get content(): string | undefined {
     return this._contentOriginal;
   }
 
@@ -102,7 +100,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

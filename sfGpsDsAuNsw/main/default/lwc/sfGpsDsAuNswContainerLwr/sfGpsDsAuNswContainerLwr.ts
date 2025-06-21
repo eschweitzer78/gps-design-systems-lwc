@@ -30,11 +30,11 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  containerClassName: string;
+  containerClassName?: string;
 
   // @ts-ignore
   @api
-  mode: string;
+  mode?: string;
   _mode = this.defineEnumObjectProperty<string, Mode>("mode", {
     validValues: MODE_VALUES,
     defaultValue: MODE_DEFAULT
@@ -46,7 +46,7 @@ extends SfGpsDsLwc {
     return {
       "nsw-container": true,
       [this._mode.value]: !!this._mode.value,
-      [this.containerClassName]: !!this.containerClassName
+      [this.containerClassName || ""]: !!this.containerClassName
     };
   }
 
@@ -57,7 +57,7 @@ extends SfGpsDsLwc {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

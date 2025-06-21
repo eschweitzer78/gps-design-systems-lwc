@@ -16,19 +16,19 @@ class sfGpsDsAuNswLayoutLwr
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  mode: Mode;
+  mode?: Mode;
 
   // @ts-ignore
   @api 
-  sidebarClassName: string;
+  sidebarClassName?: string;
 
   // @ts-ignore
   @api 
-  mainClassName: string;
+  mainClassName?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* computed */
 
@@ -43,14 +43,14 @@ extends SfGpsDsLwc {
   get computedClassName(): any {
     return {
       "nsw-layout": true,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
   get computedMainClassName(): any {
     return {
       "nsw-layout__main": true,
-      [this.mainClassName]: !!this.mainClassName
+      [this.mainClassName || ""]: !!this.mainClassName
     };
   }
 
@@ -61,7 +61,7 @@ extends SfGpsDsLwc {
     return {
       "nsw-layout__sidebar": sidebar,
       "nsw-layout__sidebar--desktop": desktop,
-      [this.sidebarClassName]: !!this.sidebarClassName
+      [this.sidebarClassName || ""]: !!this.sidebarClassName
     };
   }
 
@@ -72,7 +72,7 @@ extends SfGpsDsLwc {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

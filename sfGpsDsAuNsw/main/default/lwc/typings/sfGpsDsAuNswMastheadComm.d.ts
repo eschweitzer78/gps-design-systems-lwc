@@ -7,14 +7,14 @@ declare module "c/sfGpsDsAuNswMastheadComm" {
   class SfGpsDsAuNswMastheadComm 
   extends SfGpsDsLwc {
     arLabel: string;
-    nav: string;
+    nav?: string;
     navLabel: string;
-    content: string;
+    content?: string;
     contentLabel: string;
-    cstyle: CStyle;
-    className: string;
+    cstyle?: CStyle;
+    className?: string;
 
-    mastheadLabel: string;
+    mastheadLabel?: string;
 
     // private
 

@@ -6,10 +6,10 @@ declare module "c/sfGpsDsAuNswAccordionGroup" {
   export default 
   class SfGpsDsAuNswAccordionGroup
   extends SfGpsDsElement {
-    showButtons: boolean;
-    isFullyExpanded: boolean;
-    isFullyCollapsed: boolean;
-    className: string;
+    showButtons?: boolean;
+    isFullyExpanded?: boolean;
+    isFullyCollapsed?: boolean;
+    className?: string;
 
     // private
 
@@ -17,8 +17,8 @@ declare module "c/sfGpsDsAuNswAccordionGroup" {
     _isFullyExpanded: PropertyAccessor<boolean>;
     _isFullyCollapsed: PropertyAccessor<boolean>;
 
-    readonly computedClassName: any;
-    readonly i18n: Object;
+    get computedClassName(): any;
+    get i18n(): object;
 
     handleExpandAll(event: MouseEvent): void;
     handleCollapsAll(event: MouseEvent): void;

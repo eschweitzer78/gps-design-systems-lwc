@@ -10,11 +10,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 
+import type { SwipeEventDetail } from "c/sfGpsDsAuNswCardCarousel";
+
 function getSign(x: number) {
   return Math.sign ? Math.sign(x) : (x > 0 ? 1 : 0) - (x < 0 ? 1 : 0) || +x;
 }
 
-type Tuple = [ number | false, number | false ];
+type Tuple = [ number | null, number | null ];
 
 class SwipeContent {
   element: HTMLElement;
@@ -26,7 +28,7 @@ class SwipeContent {
 
   constructor(element: HTMLElement) {
     this.element = element;
-    this.delta = [false, false];
+    this.delta = [null, null];
     this.dragging = false;
     this.intervalId = false;
     this.changedTouches = false;
@@ -90,7 +92,7 @@ class SwipeContent {
     }
   }
 
-  startDrag(event) {
+  startDrag(event: MouseEvent | TouchEvent) {
     this.dragging = true;
     this.initDragging();
     this.delta = [
@@ -98,10 +100,10 @@ class SwipeContent {
       parseInt(`${this.unify(event).clientY}`, 10)
     ];
 
-    this.emitSwipeEvents("dragstart", this.delta, event.target);
+    this.emitSwipeEvents("dragstart", this.delta, event.target as HTMLElement);
   }
 
-  endDrag(event) {
+  endDrag(event: MouseEvent | TouchEvent) {
     this.cancelDragging();
 
     const dx = parseInt(`${this.unify(event).clientX}`, 10);
@@ -118,7 +120,7 @@ class SwipeContent {
         }
       }
 
-      this.delta[0] = false;
+      this.delta[0] = null;
     }
 
     if (this.delta && (this.delta[1] || this.delta[1] === 0)) {
@@ -132,14 +134,14 @@ class SwipeContent {
         }
       }
 
-      this.delta[1] = false;
+      this.delta[1] = null;
     }
 
     this.emitSwipeEvents("dragend", [dx, dy]);
     this.dragging = false;
   }
 
-  drag(event) {
+  drag(event: MouseEvent | TouchEvent) {
     if (!this.dragging) return;
 
     if (!window.requestAnimationFrame) {
@@ -155,31 +157,34 @@ class SwipeContent {
     }
   }
 
-  unify(event: DragEvent | TouchEvent): Touch | DragEvent {
+  unify(event: MouseEvent | TouchEvent): Touch | DragEvent {
     this.changedTouches = (event as TouchEvent).changedTouches;
     return this.changedTouches ? this.changedTouches[0] : event as DragEvent;
   }
 
-  emitDrag(event: DragEvent) {
+  emitDrag(event: MouseEvent | TouchEvent) {
     this.emitSwipeEvents("dragging", [
       parseInt(`${this.unify(event).clientX}`, 10),
       parseInt(`${this.unify(event).clientY}`, 10)
     ]);
   }
 
+  emitSwipeEvents(
+    eventName: string, 
+    detail: Tuple, 
+    el?: HTMLElement
+  ): void {
+    const eventDetail: SwipeEventDetail = {
+      x: detail[0] as number,
+      y: detail[1] as number,
+      origin: el
+    };
 
-  emitSwipeEvents(eventName: string, detail: Tuple, el?: HTMLElement): void {
-    let trigger: HTMLElement | false = false;
-    if (el) trigger = el;
-    const event = new CustomEvent(eventName, {
-      detail: {
-        x: detail[0],
-        y: detail[1],
-        origin: trigger
-      }
-    });
-
-    this.element.dispatchEvent(event);
+    this.element.dispatchEvent(
+      new CustomEvent(eventName, { 
+        detail: eventDetail
+      })
+    );
   }
 }
 

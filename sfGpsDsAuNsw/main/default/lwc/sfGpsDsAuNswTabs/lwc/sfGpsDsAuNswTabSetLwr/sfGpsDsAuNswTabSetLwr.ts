@@ -27,26 +27,26 @@ extends SfGpsDsElement {
   title = "";
 
   // @ts-ignore
-  @api 
-  tabClassName: string;
+  @api
+  tabClassName?: string;
 
   // @ts-ignore
   @api 
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT
   });
 
   /* api: activeTabValue */
 
-  _activeTabValue: string;
-  _tabByValue: Record<string, SfGpsDsAuNswTabLwr> = {};
-  _tabHeaders = [];
+  _activeTabValue?: string;
+  _tabByValue: Record<string, SfGpsDsAuNswTabLwr | undefined> = {};
+  _tabHeaders: TabHeader[] = [];
 
   // @ts-ignore
   @api
-  get activeTabValue() {
+  get activeTabValue(): string | undefined {
     return this._activeTabValue;
   }
 
@@ -151,7 +151,7 @@ extends SfGpsDsElement {
     const tabs = this.querySelectorAll(`[role="tabpanel"]`);
     let tabIndex: number;
 
-    for (let tabIndex = 0; tabIndex < tabs.length; tabIndex++) {
+    for (tabIndex = 0; tabIndex < tabs.length; tabIndex++) {
       const tab = tabs[tabIndex] as HTMLElement;
       if (tab.dataset.tabValue === tabValue) {
         break;
@@ -203,7 +203,7 @@ extends SfGpsDsElement {
   ): void {
     const selectedTabValue = event.detail.value;
     const tab = this._tabByValue[selectedTabValue];
-    if (this._activeTabValue !== tab.value) {
+    if (this._activeTabValue !== tab?.value) {
       this._showTabContentForTabValue(selectedTabValue);
     }
   }
@@ -218,6 +218,12 @@ extends SfGpsDsElement {
     const matchingTabHeader = this._tabHeaders.find(
       (tabHeader) => tabHeader.value === currentTabValue
     );
+
+    if (
+      currentTabValue == undefined || 
+      newTabValue == undefined
+    )
+      return;
 
     if (matchingTabHeader) {
       matchingTabHeader.label = changedTab.label;

@@ -48,7 +48,7 @@ extends SfGpsDsIpLwc {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: ipName, String */
 
@@ -100,7 +100,7 @@ extends SfGpsDsIpLwc {
   get computedClassName(): any {
     return {
       "nsw-grid": true,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -129,25 +129,26 @@ extends SfGpsDsIpLwc {
 
   mapIpData(data: any): BlockData[] {
     if (!data) {
-      return null;
+      return [];
     }
 
     if (!isArray(data)) {
       data = [data];
     }
 
-    return data.map((block, index) => ({
+    const rv = data.map((block: any, index: number) => ({
       ...block,
       title: block.title || block.headline,
       copy: block.copy ? htmlDecode(block.copy) : null,
       index: block.index || `block-${index + 1}`
     }));
+    return rv;
   }
 
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

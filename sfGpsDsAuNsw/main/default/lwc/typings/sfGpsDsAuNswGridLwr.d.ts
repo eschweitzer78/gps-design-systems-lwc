@@ -10,26 +10,26 @@ declare module "c/sfGpsDsAuNswGridLwr" {
   export default 
   class sfGpsDsAuNswGridLwr 
   extends SfGpsDsElement {
-    col1ClassName: string;
-    col2ClassName: string;
-    col3ClassName: string;
-    col4ClassName: string;
-    col5ClassName: string;
-    col6ClassName: string;
-    col7ClassName: string;
-    col8ClassName: string;
-    col9ClassName: string;
-    col10ClassName: string;
-    col11ClassName: string;
-    col12ClassName: string;
-    className: string;
+    col1ClassName?: string;
+    col2ClassName?: string;
+    col3ClassName?: string;
+    col4ClassName?: string;
+    col5ClassName?: string;
+    col6ClassName?: string;
+    col7ClassName?: string;
+    col8ClassName?: string;
+    col9ClassName?: string;
+    col10ClassName?: string;
+    col11ClassName?: string;
+    col12ClassName?: string;
+    className?: string;
 
-    type: GridType;
+    type?: GridType;
 
     // private
 
     _type: PropertyAccessor<string>;
     
-    readonly computedClassName: any;
+    get computedClassName(): any;
   }
 }

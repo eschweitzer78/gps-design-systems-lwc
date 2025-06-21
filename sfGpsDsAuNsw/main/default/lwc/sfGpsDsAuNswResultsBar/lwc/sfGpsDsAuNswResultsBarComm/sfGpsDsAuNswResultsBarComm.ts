@@ -31,20 +31,20 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @track
-  _value: string;
+  _value?: string;
 
   /* api: sortOptions */
 
-  _sortOptions: SortOption[];
-  _sortOptionsOriginal: string;
+  _sortOptions?: SortOption[];
+  _sortOptionsOriginal?: string;
 
   // @ts-ignore
   @api
-  get sortOptions(): string {
+  get sortOptions(): string | undefined {
     return this._sortOptionsOriginal;
   }
 
@@ -52,8 +52,8 @@ extends SfGpsDsLwc {
     this._sortOptionsOriginal = value;
 
     if (value == null || value === "") {
-      this._sortOptions = null;
-      this._value = null;
+      this._sortOptions = undefined;
+      this._value = undefined;
       return;
     }
 
@@ -72,7 +72,7 @@ extends SfGpsDsLwc {
     }
 
     if (isArray(this._sortOptions)) {
-      this._value = this._sortOptions[0]?.value;
+      this._value = (this._sortOptions as SortOption[])[0]?.value;
     }
   }
 
@@ -87,7 +87,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

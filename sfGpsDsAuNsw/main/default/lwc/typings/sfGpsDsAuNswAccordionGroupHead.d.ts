@@ -5,12 +5,11 @@ declare module "c/sfGpsDsAuNswAccordionGroupHead" {
   export default 
   class SfGpsDsAuNswAccordionGroupHead
   extends SfGpsDsElement {
-    expandAllLabel: string;
-    collapseAllLabel: string;
-    showButtons: boolean;
-    isFullyExpanded: boolean;
-    isFullyCollapsed: boolean;
-    className: string;
+    expandAllLabel?: string;
+    collapseAllLabel?: string;
+    showButtons?: boolean;
+    isFullyExpanded?: boolean;
+    isFullyCollapsed?: boolean;
 
     // private
     _showButtons: PropertyAccessor<boolean>;

@@ -34,19 +34,19 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  intro: string;
+  intro?: string;
 
   // @ts-ignore
   @api 
-  links: Link[];
+  links?: Link[];
 
   // @ts-ignore
   @api 
-  value: string = ""; // ADJUSTED: added value public attribute
+  value?: string = ""; // ADJUSTED: added value public attribute
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
@@ -58,7 +58,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  button: ButtonStyle;
+  button?: ButtonStyle;
   _button = this.defineEnumObjectProperty<string, ButtonStyle>("button", {
     validValues: BUTTON_VALUES,
     defaultValue: BUTTON_DEFAULT
@@ -67,7 +67,7 @@ extends SfGpsDsElement {
   /* A slightly confusing of attribute name as we're looking at a yes/no to showing the label, but we stick to the original name */
   // @ts-ignore
   @api
-  label: boolean;
+  label?: boolean;
   _label = this.defineBooleanProperty("label", {
     defaultValue: SHOWLABEL_DEFAULT
   });
@@ -77,7 +77,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "hero-search": true,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 

@@ -26,60 +26,78 @@ extends SfGpsDsIpLwc {
 
   // @ts-ignore
   @api 
-  navigationDevName: string;
+  navigationDevName?: string;
 
   // @ts-ignore
   @api 
-  ipName: string = null;
+  get ipName(): string | undefined {
+    return super.ipName;
+  }
+
+  set ipName(value: string) {
+    super.ipName = value;
+  }
 
   // @ts-ignore
   @api 
-  inputJSON: string = null;
+  get inputJSON(): string | undefined {
+    return super.inputJSON;
+  }
 
+  set inputJSON(value: string) {
+    super.inputJSON = value;
+  }
+    
   // @ts-ignore
   @api 
-  optionsJSON: string = null;
+  get optionsJSON(): string | undefined {
+    return super.optionsJSON;
+  }
 
+  set optionsJSON(value: string) {
+    super.optionsJSON = value;
+  }
   // Header
 
   // @ts-ignore
   @api 
-  masterbrand: string;
+  masterbrand?: string;
 
   // @ts-ignore
   @api 
-  masterbrandAlt: string;
+  masterbrandAlt?: string;
 
   // @ts-ignore
   @api 
-  srMasterbrandLabel: string = "NSW Government";
+  srMasterbrandLabel = "NSW Government";
 
   // @ts-ignore
   @api 
-  logo: string;
+  logo?: string;
 
   // @ts-ignore
   @api 
-  logoAlt: string;
+  logoAlt?: string;
 
   // @ts-ignore
   @api 
-  menuLabel: string = "menu";
+  menuLabel = "menu";
 
   // @ts-ignore
   @api 
-  searchLabel: string = "Search site for:";
+  searchLabel = "Search site for:";
 
   // @ts-ignore
   @api 
-  siteTitle: string;
+  siteTitle?: string;
 
   // @ts-ignore
   @api 
-  siteDescriptor: string;
+  siteDescriptor?: string;
 
   // @ts-ignore
-  @api headerUrl: string;
+  @api 
+  headerUrl?: string;
 
   // @ts-ignore
   @api 
@@ -95,20 +113,20 @@ extends SfGpsDsIpLwc {
 
   // @ts-ignore
   @api 
-  profileIpName: string;
+  profileIpName?: string;
 
   // @ts-ignore
   @api 
-  profileInputJSON: string;
+  profileInputJSON?: string;
 
   // @ts-ignore
   @api 
-  profileOptionsJSON: string;
+  profileOptionsJSON?: string;
 
 
   // @ts-ignore
   @api 
-  headerClassName: string;
+  headerClassName?: string;
 
   // MainNav
 
@@ -118,7 +136,7 @@ extends SfGpsDsIpLwc {
 
   // @ts-ignore
   @api 
-  mainNavClassName: string;
+  mainNavClassName?: string;
 
   // @ts-ignore
   @api 
@@ -126,7 +144,7 @@ extends SfGpsDsIpLwc {
 
   /* event management */
 
-  _isActive: boolean = false;
+  _isActive = false;
 
   // eslint-disable-next-line no-unused-vars
   handleOpenMenu(

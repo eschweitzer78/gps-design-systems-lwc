@@ -7,20 +7,20 @@ declare module "c/sfGpsDsAuNswStepsItem" {
   export default 
   class SfGpsDsAuNswStepsItem
   extends SfGpsDsElement {
-    title: string;
-    content: string;
-    className: string;
+    //title: string;
+    content?: string;
+    className?: string;
 
-    headingLevel: HeadingLevel;
-    filled: boolean;
+    headingLevel?: HeadingLevel;
+    filled?: boolean;
 
     // private
 
     _headingLevel: PropertyAccessor<HeadingLevel>;
     _filled: PropertyAccessor<boolean>;
 
-    readonly computedClassName: any;
-    readonly _isH3: boolean;
-    readonly _isH4: boolean;
- }
+    get computedClassName(): any;
+    get _isH3(): boolean;
+    get _isH4(): boolean;
+  }
 }

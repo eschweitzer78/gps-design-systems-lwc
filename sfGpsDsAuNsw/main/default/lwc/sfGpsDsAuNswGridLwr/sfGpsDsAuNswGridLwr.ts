@@ -43,58 +43,58 @@ class sfGpsDsAuNswGridLwr
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  col1ClassName: string;
+  col1ClassName?: string;
 
   // @ts-ignore
   @api 
-  col2ClassName: string;
+  col2ClassName?: string;
 
   // @ts-ignore
   @api 
-  col3ClassName: string;
+  col3ClassName?: string;
 
   // @ts-ignore
   @api 
-  col4ClassName: string;
+  col4ClassName?: string;
 
   // @ts-ignore
   @api 
-  col5ClassName: string;
+  col5ClassName?: string;
 
   // @ts-ignore
   @api 
-  col6ClassName: string;
+  col6ClassName?: string;
 
   // @ts-ignore
   @api 
-  col7ClassName: string;
+  col7ClassName?: string;
 
   // @ts-ignore
   @api 
-  col8ClassName: string;
+  col8ClassName?: string;
 
   // @ts-ignore
   @api 
-  col9ClassName: string;
+  col9ClassName?: string;
 
   // @ts-ignore
   @api 
-  col10ClassName: string;
+  col10ClassName?: string;
   // @ts-ignore
   @api 
-  col11ClassName: string;
+  col11ClassName?: string;
 
   // @ts-ignore
   @api 
-  col12ClassName: string;
+  col12ClassName?: string;
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  type: GridType;
+  type?: GridType;
   _type = this.defineEnumObjectProperty<string, GridType>("type", {
     validValues: TYPE_VALUES,
     defaultValue: TYPE_DEFAULT
@@ -106,7 +106,7 @@ extends SfGpsDsElement {
     return {
       "nsw-grid": true,
       [this._type.value]: this._type.value,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 }

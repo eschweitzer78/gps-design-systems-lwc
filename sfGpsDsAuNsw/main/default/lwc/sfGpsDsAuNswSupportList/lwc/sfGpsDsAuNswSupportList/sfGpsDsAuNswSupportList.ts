@@ -49,19 +49,19 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  departments: Link[];
+  departments?: Link[];
 
   // @ts-ignore
   @api 
-  supportLogos: Link[];
+  supportLogos?: Link[];
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  logoPosition: LogoPosition;
+  logoPosition?: LogoPosition;
   _logoPosition = this.defineEnumProperty<LogoPosition>("logoPosition", {
     validValues: LOGO_POSITION_VALUES,
     defaultValue: LOGO_POSITION_DEFAULT
@@ -76,7 +76,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-support-list": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -96,10 +96,12 @@ extends SfGpsDsElement {
   }
 
   get computedHasDepartments(): boolean {
-    return this.departments?.length > 0;
+    return !!this.departments &&
+      this.departments?.length > 0;
   }
 
   get computedHasSupportLogos(): boolean {
-    return this.supportLogos?.length > 0;
+    return !!this.supportLogos && 
+      this.supportLogos.length > 0;
   }
 }

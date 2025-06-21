@@ -13,38 +13,39 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  ariaLabel: string = "Pagination";
+  ariaLabel = "Pagination";
 
   // @ts-ignore
   @api 
-  srOnlyPre: string = "Page ";
+  srOnlyPre = "Page ";
 
   // @ts-ignore
   @api 
-  srOnlyPost: string;
-  // @ts-ignore
-
-  @api 
-  srOnlyPrevious: string = "Previous";
-  // @ts-ignore
-
-  @api 
-  srOnlyNext: string = "Next";
+  srOnlyPost?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  srOnlyPrevious = "Previous";
+
+  // @ts-ignore
+
+  @api 
+  srOnlyNext = "Next";
+
+  // @ts-ignore
+  @api 
+  className?: string;
 
   // @ts-ignore
   @api
-  lastPage: number;
+  lastPage?: number;
   _lastPage = this.defineIntegerProperty("lastPage", {
     defaultValue: LASTPAGE_DEFAULT
   });
 
   // @ts-ignore
   @api
-  activePage: number;
+  activePage?: number;
   _activePage = this.defineIntegerProperty("activePage", {
     defaultValue: ACTIVEPAGE_DEFAULT
   });
@@ -102,7 +103,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-pagination": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 

@@ -6,21 +6,21 @@ declare module "c/sfGpsDsAuNswLowerFooterIp" {
   export default 
   class SfGpsDsAuNswLowerFooterIp 
   extends SfGpsDsNavigation {
-    statement: string;
-    linkedInUrl: string;
-    twitterXUrl: string;
-    facebookUrl: string;
-    className: string;
+    statement?: string;
+    linkedInUrl?: string;
+    twitterXUrl?: string;
+    facebookUrl?: string;
+    className?: string;
 
-    copyrightMention: string;
-    builtMention: string;
+    copyrightMention?: string;
+    builtMention?: string;
 
     // private
 
     _copyrightMention: PropertyAccessor<string>;
     _builtMention: PropertyAccessor<string>;
 
-    readonly computedShowSocial: boolean;
+    get computedShowSocial(): boolean;
 
     handleNavClick(event: CustomEvent): void;
   }

@@ -29,21 +29,21 @@ class SfGpsDsAuNswAccordioGroupComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  showButtons: boolean;
+  showButtons?: boolean;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: content */
 
-  _content = CONTENT_DEFAULT;
-  _contentOriginal: string;
+  _content: ContentItem[] = CONTENT_DEFAULT;
+  _contentOriginal = "";
   _numberOpen = 0;
 
   // @ts-ignore
   @api
-  get content(): string {
+  get content(): string | undefined {
     return this._contentOriginal;
   }
 
@@ -65,7 +65,7 @@ extends SfGpsDsLwc {
 
   /* computed */
 
-  get computedIsFullyExpanded(): boolean {
+  get computedIsFullyExpanded() {
     if (DEBUG) console.debug(CLASS_NAME, "> get computedIsFullyExpanded");
 
     const rv = this._numberOpen === this._content.length;
@@ -74,7 +74,7 @@ extends SfGpsDsLwc {
     return rv;
   }
 
-  get computedIsFullyCollapsed(): boolean {
+  get computedIsFullyCollapsed() {
     if (DEBUG) console.debug(CLASS_NAME, "> get computedIsFullyCollapsed");
 
     const rv = this._numberOpen === 0;
@@ -90,7 +90,7 @@ extends SfGpsDsLwc {
 
     if (DEBUG) console.debug(CLASS_NAME, "> handleExpand", "index=", target.index);
 
-    this._content[target.index].closed = false;
+    this._content[+ target.index].closed = false;
     this._numberOpen++;
 
     if (DEBUG) console.debug(CLASS_NAME, "< handleExpand", this._numberOpen);
@@ -100,7 +100,7 @@ extends SfGpsDsLwc {
     const target = event.target as unknown as SfGpsDsAuNswAccordion;
 
     if (DEBUG) console.debug(CLASS_NAME, "> handleCollapse", "index=", target.index);
-    this._content[target.index].closed = true;
+    this._content[+ target.index].closed = true;
     this._numberOpen--;
 
     if (DEBUG) console.debug(CLASS_NAME, "< handleCollapse", this._numberOpen);
@@ -129,7 +129,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

@@ -54,13 +54,15 @@ extends SfGpsDsLwc {
   // @ts-ignore
   @api 
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
+
   // @ts-ignore
   @api 
-  showButtons: boolean;
+  showButtons?: boolean;
+  
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: item1title */
 
@@ -268,21 +270,21 @@ extends SfGpsDsLwc {
     return {
       "nsw-accordion": true,
       ready: true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
   /* event management */
 
-  handleExpand(event: MouseEvent): void {
+  handleExpand(event: CustomEvent): void {
     const target = event.target as unknown as SfGpsDsAuNswAccordion;
-    this._items[Number(target.index)].closed = false;
+    this._items[+ target.index].closed = false;
     this._numberOpen++;
   }
 
-  handleCollapse(event: MouseEvent): void {
+  handleCollapse(event: CustomEvent): void {
     const target = event.target as unknown as SfGpsDsAuNswAccordion;
-    this._items[Number(target.index)].closed = true;
+    this._items[+ target.index].closed = true;
     this._numberOpen--;
   }
 
@@ -303,7 +305,7 @@ extends SfGpsDsLwc {
   }
   
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

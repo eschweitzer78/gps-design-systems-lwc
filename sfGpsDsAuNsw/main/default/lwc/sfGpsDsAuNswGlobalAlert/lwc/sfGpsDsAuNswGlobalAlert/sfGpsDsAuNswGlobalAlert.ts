@@ -53,27 +53,27 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  copy: string;
+  copy?: string;
 
   // @ts-ignore
   @api 
-  ctaText: string;
+  ctaText?: string;
 
   // @ts-ignore
   @api 
-  ctaHref: string;
+  ctaHref?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @track 
-  _isClosed: boolean;
+  _isClosed?: boolean;
 
   // @ts-ignore
   @api 
-  as: AlertType;
+  as?: AlertType;
   _as = this.defineEnumObjectProperty<AlertValue, AlertType>("as", {
     validValues: AS_VALUES,
     defaultValue: AS_DEFAULT
@@ -81,7 +81,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  ctaStyle: CtaStyle;
+  ctaStyle?: CtaStyle;
   _ctaStyle = this.defineEnumProperty<CtaStyle>("ctaStyle", {
     validValues: CTASTYLE_VALUES,
     defaultValue: CTASTYLE_DEFAULT
@@ -89,7 +89,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  ctaPreventDefault: boolean;
+  ctaPreventDefault?: boolean;
   _ctaPreventDefault = this.defineBooleanProperty("ctaPreventDefault", {
     defaultValue: CTAPREVENTDEFAULT_DEFAULT
   });
@@ -104,7 +104,7 @@ extends SfGpsDsElement {
     return {
       "nsw-global-alert": true,
       [this._as.value.main]: this._as.value,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 

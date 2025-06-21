@@ -17,8 +17,8 @@ declare module "c/sfGpsDsAuNswTabBarLwr" {
     domId: string,
     value: string,
     href: string,
-    className: string,
-    linkClassName: string,
+    className?: string,
+    linkClassName?: string,
     tabIndex: number,
     ariaSelected: boolean,
     contentId: string,
@@ -34,32 +34,41 @@ declare module "c/sfGpsDsAuNswTabBarLwr" {
   export default 
   class SfGpsDsAuNswTabBarLwr 
   extends SfGpsDsElement {
-    tabHeaders: TabHeader[];
+    get tabHeaders(): TabHeader[] | undefined;
+    set tabHeaders(tabHeaders: TabHeader[]);
 
-    selectTabByValue(tabValue: string);
+    selectTabByValue(tabValue: string): void;
     focus(): void;
 
     // private
 
-    _tabHeaders: TabHeader[];
-    _selectedTab: Tab;
+    _tabHeaders?: TabHeader[];
+    _selectedTab?: Tab;
     _tabs: Tab[];
-
     _queueSynchronizeA11: boolean;
 
-    readonly _visibleTabs: Tab[];
-    readonly computedAriaOwns: string;
+    get _visibleTabs(): Tab[];
+    get computedAriaOwns(): string | undefined;
 
-    _findTabByValue(tabValue: string): Tab;
+    _findTabByValue(
+      tabValue: string
+    ): Tab | undefined;
+
     _selectTabAndFireSelectEvent(
       tabValue: string, 
       options: SelectTabOptions
     ): void;
+
     _selectTab(
       tabValue: string, 
       options: SelectTabOptions
     ): void;
-    _tabClassName(options: { selected?: boolean, hasFocus?: boolean }): string;
+
+    _tabClassName(
+      options: { 
+        selected?: boolean, 
+        hasFocus?: boolean 
+    }): string | undefined;
     
     _synchronizeA11y(): void;
 

@@ -13,17 +13,17 @@ declare module "c/sfGpsDsAuNswLayoutLwr" {
   export default 
   class SfGpsDsAuNswLayoutLwr 
   extends SfGpsDsLwc {
-    mode: Mode;
-    sidebarClassName: string;
-    mainClassName: string;
-    className: string;
+    mode?: Mode;
+    sidebarClassName?: string;
+    mainClassName?: string;
+    className?: string;
 
     // private
 
-    readonly computedShowSidebarLeft: boolean;
-    readonly computedShowSidebarRight: boolean;
-    readonly computedClassName: any;
-    readonly computedMainClassName: any;
-    readonly computedSidebarClassName: any
+    get computedShowSidebarLeft(): boolean;
+    get computedShowSidebarRight(): boolean;
+    get computedClassName(): any;
+    get computedMainClassName(): any;
+    get computedSidebarClassName(): any
   }
 }

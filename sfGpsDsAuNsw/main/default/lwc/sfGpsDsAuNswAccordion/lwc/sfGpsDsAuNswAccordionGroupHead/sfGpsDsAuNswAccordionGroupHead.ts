@@ -24,26 +24,29 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  expandAllLabel: string;
+  expandAllLabel?: string;
 
   // @ts-ignore
   @api 
-  collapseAllLabel: string;
+  collapseAllLabel?: string;
 
   // @ts-ignore
-  @api showButtons: boolean;
+  @api 
+  showButtons?: boolean;
   _showButtons = this.defineBooleanProperty("showButtons", {
     defaultValue: SHOWBUTTONS_DEFAULT
   });
 
   // @ts-ignore
-  @api isFullyExpanded: boolean;
+  @api 
+  isFullyExpanded?: boolean;
   _isFullyExpanded = this.defineBooleanProperty("isFullyExpanded", {
     defaultValue: ISFULLYEXPANDED_DEFAULT
   });
 
   // @ts-ignore
-  @api isFullyCollapsed: boolean;
+  @api 
+  isFullyCollapsed?: boolean;
   _isFullyCollapsed = this.defineBooleanProperty("isFullyCollapsed", {
     defaultValue: ISFULLYCOLLAPSED_DEFAULT
   });

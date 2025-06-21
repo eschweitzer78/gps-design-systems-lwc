@@ -19,28 +19,28 @@ declare module "c/sfGpsDsAuNswGlobalAlert" {
   export default 
   class SfGpsDsAuNswGlobalAlert 
   extends SfGpsDsElement {
-    title: string;
-    copy: string;
-    ctaText: string;
-    ctaHref: string;
-    className: string;
+    // title: string;
+    copy?: string;
+    ctaText?: string;
+    ctaHref?: string;
+    className?: string;
 
-    as: AlertType;
-    ctaStyle: CtaStyle;
-    ctaPreventDefault: boolean;
+    as?: AlertType;
+    ctaStyle?: CtaStyle;
+    ctaPreventDefault?: boolean;
 
     // private
 
-    _isClosed: boolean;
+    _isClosed?: boolean;
     _as: PropertyAccessor<AlertValue>;
     _ctaStyle: PropertyAccessor<CtaStyle>;
     _ctaPreventDefault: PropertyAccessor<boolean>
 
-    readonly space: boolean;
-    readonly computedClassName: any;
-    readonly computedButtonClassName: any;
-    readonly _isCtaLinkStyle: boolean;
-    readonly _isCtaButtonStyle: boolean;
+    get space(): boolean;
+    get computedClassName(): any;
+    get computedButtonClassName(): any;
+    get _isCtaLinkStyle(): boolean;
+    get _isCtaButtonStyle(): boolean;
 
     handleCtaClick(event: MouseEvent): void;
     handleCloseClick(event: MouseEvent): void;

@@ -15,24 +15,27 @@ extends SfGpsDsElement {
   // @ts-ignore
   @api 
   containerClassName = "";
+
   // @ts-ignore
   @api 
   headerClassName = "";
+
   // @ts-ignore
   @api 
   mainClassName = "";
+
   // @ts-ignore
   @api 
   footerClassName = "";
 
   // @ts-ignore
   @api 
-  containerBackgroundColor: string;
+  containerBackgroundColor?: string;
 
   /* lifecycle */
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
     
     if (this.containerBackgroundColor) {
       this.refs.container.style.backgroundColor = this.containerBackgroundColor;

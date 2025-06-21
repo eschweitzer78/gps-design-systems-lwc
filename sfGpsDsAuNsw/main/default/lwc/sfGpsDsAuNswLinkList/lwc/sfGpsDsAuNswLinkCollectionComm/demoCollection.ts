@@ -4,7 +4,7 @@ const collection: ConnectApiNavigationMenuItem[] = [
   {
     actionType: "ExternalLink",
     actionValue: "https://www.nsw.gov.au/accessibility-statement",
-    imageUrl: null,
+    imageUrl: undefined,
     label: "Accessibility statement",
     subMenu: [],
     target: "CurrentWindow"
@@ -12,7 +12,7 @@ const collection: ConnectApiNavigationMenuItem[] = [
   {
     actionType: "ExternalLink",
     actionValue: "https://www.nsw.gov.au/nsw-government/copyright",
-    imageUrl: null,
+    imageUrl: undefined,
     label: "Copyright",
     subMenu: [],
     target: "CurrentWindow"
@@ -20,7 +20,7 @@ const collection: ConnectApiNavigationMenuItem[] = [
   {
     actionType: "ExternalLink",
     actionValue: "https://www.nsw.gov.au/nsw-government/disclaimer",
-    imageUrl: null,
+    imageUrl: undefined,
     label: "Disclaimer",
     subMenu: [],
     target: "CurrentWindow"

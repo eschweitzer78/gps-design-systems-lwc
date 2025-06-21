@@ -7,13 +7,13 @@ declare module "c/sfGpsDsAuNswContentBlock" {
   export default 
   class SfGpsDsAuNswContentBlock
   extends SfGpsDsElement {
-    title: string;
-    image: string;
-    imageAlt: string;
-    icon: string;
-    mainLink: string;
+    // title: string;
+    image?: string;
+    imageAlt?: string;
+    icon?: string;
+    mainLink?: string;
     links: Link[];
-    className: string;
+    className?: string;
 
     // private
 

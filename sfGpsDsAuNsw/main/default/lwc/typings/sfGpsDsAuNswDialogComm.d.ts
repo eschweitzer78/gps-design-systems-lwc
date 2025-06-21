@@ -6,14 +6,14 @@ declare module "c/sfGpsDsAuNswDialogComm" {
   export default 
   class SfGpsDsAuNswDialogComm 
   extends SfGpsDsLwc {
-    title: string;
-    primaryButtonText: string;
-    secondaryButtonText: string;
-    bstyle: BStyle;
+    // title: string;
+    primaryButtonText?: string;
+    secondaryButtonText?: string;
+    bstyle?: BStyle;
     isDismissible: boolean;
-    className: string;
+    className?: string;
 
-    content: string;
+    content?: string;
     
     // private
 

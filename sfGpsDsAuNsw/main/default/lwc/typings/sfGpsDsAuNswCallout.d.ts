@@ -6,19 +6,19 @@ declare module "c/sfGpsDsAuNswCallout" {
   export default 
   class SfGpsDsAuNswCallout
   extends SfGpsDsElement {
-    title: string;
-    className: string;
+    //title: string;
+    className?: string;
 
     // @ts-ignore
-    firstChild: boolean;
-    level: number;
+    firstChild?: boolean;
+    level?: number;
 
     // private
 
     _firstChild: PropertyAccessor<boolean>;
     _level: PropertyAccessor<number>;
 
-    readonly computedClassName: any;
-    readonly computedTitleClassName: any;
+    get computedClassName(): any;
+    get computedTitleClassName(): any;
   }
 }

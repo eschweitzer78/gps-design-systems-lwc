@@ -203,7 +203,7 @@ export function autoUpdate(
     referenceEl && layoutShift ? observeMove(referenceEl, update) : null;
 
   let reobserveFrame = -1;
-  let resizeObserver = null;
+  let resizeObserver: ResizeObserver | null = null;
 
   if (elementResize) {
     resizeObserver = new ResizeObserver(([firstEntry]) => {
@@ -226,7 +226,7 @@ export function autoUpdate(
     resizeObserver.observe(floating);
   }
 
-  let frameId;
+  let frameId: number;
   let prevRefRect = animationFrame ? getBoundingClientRect(reference) : null;
 
   if (animationFrame) {

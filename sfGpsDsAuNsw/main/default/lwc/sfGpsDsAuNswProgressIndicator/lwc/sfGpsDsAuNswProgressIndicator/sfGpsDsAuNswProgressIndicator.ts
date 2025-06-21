@@ -33,11 +33,11 @@ class SfGpsDsAuNswProgressIndicator
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  step: number;
+  step?: number;
   _step = this.defineIntegerProperty("step", {
     minValue: 1,
     defaultValue: STEP_DEFAULT
@@ -45,7 +45,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  of: number;
+  of?: number;
   _of = this.defineIntegerProperty("of", {
     minValue: 1,
     defaultValue: OF_DEFAULT
@@ -53,8 +53,8 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  mode: Mode;
-  _mode = this.defineEnumProperty<Mode>("footerButtonMode", {
+  mode?: Mode;
+  _mode = this.defineEnumProperty<Mode>("mode", {
     validValues: MODE_VALUES,
     defaultValue: MODE_DEFAULT
   });
@@ -82,7 +82,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-progress-indicator": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 

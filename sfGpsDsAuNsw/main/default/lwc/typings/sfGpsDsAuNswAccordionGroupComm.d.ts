@@ -7,7 +7,8 @@ declare module "c/sfGpsDsAuNswAccordionGroupComm" {
     showButtons: boolean;
     className: string;
 
-    content: string;
+    get content(): string | undefined;
+    set content(markdown: string);
 
     // private
 
@@ -15,8 +16,8 @@ declare module "c/sfGpsDsAuNswAccordionGroupComm" {
     _contentOriginal: string;
     _numberOpen: number;
 
-    readonly computedIsFullyExpanded: boolean;
-    readonly computedIsFullyCollapsed: boolean;
+    get computedIsFullyExpanded(): boolean;
+    get computedIsFullyCollapsed(): boolean;
 
     handleExpand(event: MouseEvent): void;
     handleCollapse(event: MouseEvent): void;

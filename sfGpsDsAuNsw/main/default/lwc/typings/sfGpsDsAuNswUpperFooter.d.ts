@@ -10,19 +10,20 @@ declare module "c/sfGpsDsAuNswUpperFooter" {
   export default 
   class SfGpsDsAuNswUpperFooter 
   extends SfGpsDsElement {
-    className: string;
+    className?: string;
 
-    items: AdaptedNavigationMenuItem[];
+    get items(): AdaptedNavigationMenuItem[] | undefined;
+    set items(items: AdaptedNavigationMenuItem[]);
 
     // private
 
-    _items: AdaptedNavigationMenuItem[];
-    _itemsOriginal: AdaptedNavigationMenuItem[];
+    _items?: AdaptedNavigationMenuItem[];
+    _itemsOriginal?: AdaptedNavigationMenuItem[];
 
-    readonly computedClassName: any;
-    readonly computedHasItems: boolean;
+    get computedClassName(): any;
+    get computedHasItems(): boolean;
 
-    _mapItems: UpperFooterMap;
+    _mapItems?: UpperFooterMap;
 
     itemsMapping(): void;
     mapItems(

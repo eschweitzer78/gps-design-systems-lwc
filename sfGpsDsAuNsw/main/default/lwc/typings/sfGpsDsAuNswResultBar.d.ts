@@ -12,36 +12,38 @@ declare module "c/sfGpsDsAuNswResultBar" {
   export default 
   class SfGpsDsAuNswResultBar 
   extends SfGpsDsElement {
-    name: string;
-    className: string;
+    name?: string;
+    className?: string;
 
-    from: number;
-    to: number;
-    total: number;
+    from?: number;
+    to?: number;
+    total?: number;
 
     noResultText: string;
     resultsText: string;
 
-    value: string;
+    value?: string;
 
-    sortOptions: SortOption[] | SortOption;
+    get sortOptions(): SortOption[] | SortOption | undefined;
+    set sortOptions(value: SortOption[] | SortOption);
 
     // private
+
     _from: PropertyAccessor<number>;
     _to: PropertyAccessor<number>;
     _total: PropertyAccessor<number>;
     _value: PropertyAccessor<string>;
 
-    _sortOptions: SortOption[];
-    _sortOptionsOriginal: SortOption[] | SortOption;
-    _visibleSortOptions: SortOption[];
+    _sortOptions?: SortOption[];
+    _sortOptionsOriginal?: SortOption[] | SortOption;
+    _visibleSortOptions?: SortOption[];
 
-    readonly computedClassName: any;
+    get computedClassName(): any;
 
-    _selectId: string;
-    readonly computedSelectId: string;
+    _selectId?: string;
 
-    readonly computedResultsText: string;
+    get computedSelectId(): string;
+    get computedResultsText(): string | null;
 
     reconcileValueOptions(): void;
     handleSelectChange(event: InputEvent): void;

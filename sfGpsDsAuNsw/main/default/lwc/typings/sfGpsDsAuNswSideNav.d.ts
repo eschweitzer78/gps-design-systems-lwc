@@ -1,41 +1,41 @@
 
 declare module "c/sfGpsDsAuNswSideNav" { 
   import type SfGpsDsElement from "c/sfGpsDsElement"; 
-  import type { PropertyAccessor } from "c/sfGpsDsElement";
   import type { AdaptedNavigationMenuItem } from "c/sfGpsDsNavigation";
 
   export interface SideNavMenuItem 
   extends AdaptedNavigationMenuItem {
     level: number,
     isActive: boolean,
-    className: string,
-    anchorClassName: string,
-    ariaCurrent: string,
+    className?: string,
+    anchorClassName?: string,
+    ariaCurrent?: string,
     subNav: SideNavMenuItem[]
   }
 
-  export type SideNavMenuItemMap = { [key: string]: SideNavMenuItem };
+  export type SideNavMenuItemMap = Record<string,  SideNavMenuItem>;
 
   export default 
   class SfGpsDsAuNswSideNav
   extends SfGpsDsElement {
-    title: string;
-    url: string;
-    className: string;
+    //title: string;
+    url?: string;
+    className?: string;
 
-    navItems: AdaptedNavigationMenuItem[];
+    get navItems(): AdaptedNavigationMenuItem[] | undefined;
+    set navItems(items: AdaptedNavigationMenuItem[]);
 
     // private
 
-    _navItems: AdaptedNavigationMenuItem[];
-    _navItemsOriginal: AdaptedNavigationMenuItem[];
+    _navItems?: AdaptedNavigationMenuItem[];
+    _navItemsOriginal?: AdaptedNavigationMenuItem[];
 
-    readonly computedClassName: any;
+    get computedClassName(): any;
 
-    _labelledById: string;
-    readonly computedAriaLabelledById: string;
+    _labelledById?: string;
+    get computedAriaLabelledById(): string;
 
-    _mapItems: SideNavMenuItemMap;
+    _mapItems?: SideNavMenuItemMap;
 
     mapItems(
       parentIndex: string, 

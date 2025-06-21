@@ -27,19 +27,19 @@ extends SfGpsDsElement {
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT
   });
 
   // @ts-ignore
   @api
-  level: number;
+  level?: number;
   _level = this.defineIntegerProperty("level", {
     minValue: LEVEL_MIN,
     maxValue: LEVEL_MAX,
@@ -51,7 +51,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-callout": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 

@@ -1,4 +1,5 @@
 declare module "c/sfGpsDsAuNswBreadcrumbsComm" {
+  import { PropertyAccessor } from "c/sfGpsDsElement";
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { Link } from "c/sfGpsDsMarkdown";
   
@@ -12,6 +13,6 @@ declare module "c/sfGpsDsAuNswBreadcrumbsComm" {
 
     // private
 
-    _items: Link[];
+    _items: PropertyAccessor<Link[]>;
   }
 }

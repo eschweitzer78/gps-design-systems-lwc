@@ -23,16 +23,16 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: items */
 
-  _items: AdaptedNavigationMenuItem[];
-  _itemsOriginal: AdaptedNavigationMenuItem[];
+  _items?: AdaptedNavigationMenuItem[];
+  _itemsOriginal?: AdaptedNavigationMenuItem[];
 
   // @ts-ignore
   @api
-  get items(): AdaptedNavigationMenuItem[] {
+  get items(): AdaptedNavigationMenuItem[] | undefined {
     return this._itemsOriginal;
   }
 
@@ -46,7 +46,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-footer__upper": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -56,13 +56,13 @@ extends SfGpsDsElement {
 
   /* methods */
 
-  _mapItems: UpperFooterMap;
+  _mapItems?: UpperFooterMap;
 
   itemsMapping() {
     let map: UpperFooterMap = {};
     this._items = this._itemsOriginal
       ? this.mapItems("item", 0, map, this._itemsOriginal)
-      : null;
+      : undefined;
     this._mapItems = map;
   }
 
@@ -75,23 +75,23 @@ extends SfGpsDsElement {
     let index = 0;
 
     return items.map((item) => {
-      let result = {
+      let result: AdaptedNavigationMenuItem = {
         ...item,
         index: item.index || `${parentIndex}-${index++}`,
-        level: parentLevel + 1,
+        //level: parentLevel + 1,
         subNav: []
       };
 
       if (item.subNav) {
         result.subNav = this.mapItems(
-          result.index,
+          result.index as string,
           parentLevel + 1,
           map,
           item.subNav
         );
       }
 
-      map[result.index] = result;
+      map[result.index as string] = result;
       return result;
     });
   }

@@ -29,7 +29,7 @@ import {
 import type { 
   Platform, 
   ReferenceElement
-} from './floating-ui-dom-types';
+} from "./floating-ui-dom-types";
 import { 
   getBoundingClientRect 
 } from "./floating-ui-dom-utils-getBoundingClientRect";
@@ -55,8 +55,8 @@ type PlatformWithCache = Platform & {
 
 // Returns the inner client rect, subtracting scrollbars if present.
 function getInnerBoundingClientRect(
-  element: Element, 
-  strategy: Strategy
+  element: Element,
+  strategy: Strategy,
 ): Rect {
   const clientRect = getBoundingClientRect(element, true, strategy === "fixed");
   const top = clientRect.top + element.clientTop;
@@ -71,14 +71,14 @@ function getInnerBoundingClientRect(
     width,
     height,
     x,
-    y
+    y,
   };
 }
 
 function getClientRectFromClippingAncestor(
   element: Element,
   clippingAncestor: Element | RootBoundary,
-  strategy: Strategy
+  strategy: Strategy,
 ): ClientRectObject {
   let rect: Rect;
 
@@ -87,14 +87,14 @@ function getClientRectFromClippingAncestor(
   } else if (clippingAncestor === "document") {
     rect = getDocumentRect(getDocumentElement(element));
   } else if (isElement(clippingAncestor)) {
-    rect = getInnerBoundingClientRect(clippingAncestor as HTMLElement, strategy);
+    rect = getInnerBoundingClientRect(clippingAncestor, strategy);
   } else {
     const visualOffsets = getVisualOffsets(element);
     rect = {
-      x: (clippingAncestor as Rect).x - visualOffsets.x,
-      y: (clippingAncestor as Rect).y - visualOffsets.y,
-      width: (clippingAncestor as Rect).width,
-      height: (clippingAncestor as Rect).height
+      x: clippingAncestor.x - visualOffsets.x,
+      y: clippingAncestor.y - visualOffsets.y,
+      width: clippingAncestor.width,
+      height: clippingAncestor.height,
     };
   }
 
@@ -121,8 +121,8 @@ function hasFixedPositionAncestor(element: Element, stopNode: Node): boolean {
 // clipping (or hiding) child elements. This returns all clipping ancestors
 // of the given element up the tree.
 function getClippingElementAncestors(
-  element: Element, 
-  cache: PlatformWithCache['_c']
+  element: Element,
+  cache: PlatformWithCache["_c"],
 ): Array<Element> {
   const cachedResult = cache.get(element);
 
@@ -131,11 +131,13 @@ function getClippingElementAncestors(
   }
 
   let result = getOverflowAncestors(element, [], false).filter(
-    (el) => isElement(el) && getNodeName(el) !== "body"
-  );
+    (el) => isElement(el) && getNodeName(el) !== "body",
+  ) as Array<Element>;
   let currentContainingBlockComputedStyle: CSSStyleDeclaration | null = null;
   const elementIsFixed = getComputedStyle(element).position === "fixed";
-  let currentNode: Node | null = elementIsFixed ? getParentNode(element) : element;
+  let currentNode: Node | null = elementIsFixed
+    ? getParentNode(element)
+    : element;
 
   // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
   while (isElement(currentNode) && !isLastTraversableNode(currentNode)) {
@@ -152,7 +154,7 @@ function getClippingElementAncestors(
           computedStyle.position === "static" &&
           !!currentContainingBlockComputedStyle &&
           ["absolute", "fixed"].includes(
-            currentContainingBlockComputedStyle.position
+            currentContainingBlockComputedStyle.position,
           )) ||
         (isOverflowElement(currentNode) &&
           !currentNodeIsContaining &&
@@ -160,7 +162,6 @@ function getClippingElementAncestors(
 
     if (shouldDropCurrentNode) {
       // Drop non-containing blocks.
-      // eslint-disable-next-line no-loop-func
       result = result.filter((ancestor) => ancestor !== currentNode);
     } else {
       // Record last containing block for next iteration.
@@ -170,26 +171,26 @@ function getClippingElementAncestors(
     currentNode = getParentNode(currentNode);
   }
 
-  cache.set(element, result as Element[]);
+  cache.set(element, result);
 
-  return result as Element[];
+  return result;
 }
 
 // Gets the maximum area that the element is visible in due to any number of
 // clipping ancestors.
 export function getClippingRect(
-  //this2,
-  { 
-    element, 
-    boundary, 
-    rootBoundary, 
-    strategy 
+  this: PlatformWithCache,
+  {
+    element,
+    boundary,
+    rootBoundary,
+    strategy,
   }: {
     element: Element;
     boundary: Boundary;
     rootBoundary: RootBoundary;
     strategy: Strategy;
-  }
+  },
 ): Rect {
   const elementClippingAncestors =
     boundary === "clippingAncestors"
@@ -201,11 +202,11 @@ export function getClippingRect(
   const firstClippingAncestor = clippingAncestors[0];
 
   const clippingRect = clippingAncestors.reduce(
-    (accRect, clippingAncestor) => {
+    (accRect: ClientRectObject, clippingAncestor) => {
       const rect = getClientRectFromClippingAncestor(
         element,
         clippingAncestor,
-        strategy
+        strategy,
       );
 
       accRect.top = max(rect.top, accRect.top);
@@ -215,13 +216,13 @@ export function getClippingRect(
 
       return accRect;
     },
-    getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy)
+    getClientRectFromClippingAncestor(element, firstClippingAncestor, strategy),
   );
 
   return {
     width: clippingRect.right - clippingRect.left,
     height: clippingRect.bottom - clippingRect.top,
     x: clippingRect.left,
-    y: clippingRect.top
+    y: clippingRect.top,
   };
 }

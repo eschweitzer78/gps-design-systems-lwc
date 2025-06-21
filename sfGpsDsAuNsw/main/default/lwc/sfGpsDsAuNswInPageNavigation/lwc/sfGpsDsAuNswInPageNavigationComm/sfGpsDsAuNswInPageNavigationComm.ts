@@ -25,16 +25,16 @@ extends SfGpsDsLwc {
   // @ts-ignore
   @api 
   // @ts-ignore
-  firstChild: boolean = false;
+  firstChild?: boolean;
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
 
   // @ts-ignore
   @api
-  items: string;
+  items?: string;
   _items = this.defineMarkdownLinksProperty("items", {
     errorCode: "IT-MD",
     errorText: "Issue when parsing Items markdown"
@@ -43,7 +43,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

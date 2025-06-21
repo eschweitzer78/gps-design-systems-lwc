@@ -19,7 +19,7 @@ type Polyfill = (element: HTMLElement) => Element | null;
 
 function getTrueOffsetParent(
   element: Element, 
-  polyfill: Polyfill
+  polyfill: Polyfill | undefined
 ): Element | null {
   if (
     !isHTMLElement(element) ||
@@ -29,10 +29,10 @@ function getTrueOffsetParent(
   }
 
   if (polyfill) {
-    return polyfill(element as HTMLElement);
+    return polyfill(element);
   }
 
-  let rawOffsetParent = (element as HTMLElement).offsetParent;
+  let rawOffsetParent = element.offsetParent;
 
   // Firefox returns the <html> element as the offsetParent if it"s non-static,
   // while Chrome and Safari return the <body> element. The <body> element must

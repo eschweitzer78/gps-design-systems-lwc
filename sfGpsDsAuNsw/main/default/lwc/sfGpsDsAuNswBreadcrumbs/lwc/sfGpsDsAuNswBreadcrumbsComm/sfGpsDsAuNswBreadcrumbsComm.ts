@@ -10,9 +10,15 @@ import {
 } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-const ITEMS_DEFAULT = [];
+import type { 
+  Link 
+} from "c/sfGpsDsMarkdown";
 
+const ITEMS_DEFAULT: Link[] = [];
+
+// eslint-disable-next-line no-unused-vars
 const DEBUG = false;
+// eslint-disable-next-line no-unused-vars
 const CLASS_NAME = "sfGpsDsAuNswBreadcrumbsComm";
 
 export default 
@@ -32,7 +38,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  items: string;
+  items?: string;
   _items = this.defineMarkdownLinksProperty("items", {
     errorCode: "IT-MD",
     errorText: "Issue when parsing Items markdown",
@@ -42,7 +48,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

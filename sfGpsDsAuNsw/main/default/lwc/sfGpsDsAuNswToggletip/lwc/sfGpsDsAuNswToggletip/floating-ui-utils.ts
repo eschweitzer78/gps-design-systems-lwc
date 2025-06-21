@@ -36,7 +36,7 @@ export interface VirtualElement {
 export const sides: Side[] = ["top", "right", "bottom", "left"];
 export const alignments: Alignment[] = ["start", "end"];
 export const placements: Placement[] = sides.reduce(
-  (acc, side) =>
+  (acc: Placement[], side) =>
     acc.concat(side, `${side}-${alignments[0]}`, `${side}-${alignments[1]}`),
   []
 );
@@ -173,9 +173,11 @@ function getSideList(
     case "bottom":
       if (rtl) return isStart ? rl : lr;
       return isStart ? lr : rl;
+
     case "left":
     case "right":
       return isStart ? tb : bt;
+
     default:
       return [];
   }
@@ -233,6 +235,7 @@ export function rectToClientRect(
   rect: Rect
 ): ClientRectObject {
   const { x, y, width, height } = rect;
+  
   return {
     width,
     height,

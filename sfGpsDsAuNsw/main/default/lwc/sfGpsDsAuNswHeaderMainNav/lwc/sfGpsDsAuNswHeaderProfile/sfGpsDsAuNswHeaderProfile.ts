@@ -18,23 +18,23 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  isGuest: boolean;
+  isGuest?: boolean;
 
   // @ts-ignore
   @api 
-  userAlias: string;
+  userAlias?: string;
 
   // @ts-ignore
   @api 
-  navItems: AdaptedNavigationMenuItem[];
+  navItems?: AdaptedNavigationMenuItem[];
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @track 
-  _isOpen: boolean = false;
+  _isOpen = false;
 
   /* event management */
 
@@ -77,25 +77,25 @@ extends SfGpsDsElement {
 
   /* lifecycle */
 
-  _onClickOutside: OnClickOutside;
+  _onClickOutside?: OnClickOutside;
 
-  renderedCallback() {
-    super.renderedCallback();
+  constructor() {
+    super();
 
-    if (!this._onClickOutside) {
-      this._onClickOutside = new OnClickOutside();
-      this._onClickOutside.bind(this, "containerRef", () => {
-        this._isOpen = false;
-      });
-    }
-  }
+    this.handleMounted(() => {
+      if (!this._onClickOutside) {
+        this._onClickOutside = new OnClickOutside();
+        this._onClickOutside.bind(this, "containerRef", () => {
+          this._isOpen = false;
+        });
+      }
+    });
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    
-    if (this._onClickOutside) {
-      this._onClickOutside.unbind(this, "containerRef");
-      this._onClickOutside = null;
-    }
+    this.handleUnmounted(() => {
+      if (this._onClickOutside) {
+        this._onClickOutside.unbind(this, "containerRef");
+        this._onClickOutside = undefined;
+      }
+    })
   }
 }

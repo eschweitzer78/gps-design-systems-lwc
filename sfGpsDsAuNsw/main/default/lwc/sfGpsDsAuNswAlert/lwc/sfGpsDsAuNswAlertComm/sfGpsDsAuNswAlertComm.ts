@@ -24,7 +24,7 @@ class SfGpsDsAuNswAlertComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  title: string = null;
+  title = "";
 
   // @ts-ignore
   @api 
@@ -32,11 +32,11 @@ extends SfGpsDsLwc {
   
   // @ts-ignore
   @api 
-  className = "";
+  className?: string;
 
   // @ts-ignore
   @api
-  compact: boolean;
+  compact?: boolean;
   _compact = this.defineBooleanProperty("compact", {
     defaultValue: COMPACT_DEFAULT,
     watcher: () => this.generateContentHtml()
@@ -44,18 +44,18 @@ extends SfGpsDsLwc {
 
   /* api: content */
 
-  _contentHtml: string;
-  _contentOriginal: string;
+  _contentHtml?: string;
+  _contentOriginal?: string;
 
   // @ts-ignore
   @api 
+  get content(): string | undefined {
+    return this._contentOriginal;
+  }
+
   set content(markdown: string) {
     this._contentOriginal = markdown;
     this.generateContentHtml();
-  }
-
-  get content(): string {
-    return this._contentOriginal;
   }
 
   /* methods */
@@ -67,7 +67,7 @@ extends SfGpsDsLwc {
           ? mdEngine.renderEscapedUnpackFirstP(this._contentOriginal)
           : mdEngine.renderEscaped(this._contentOriginal);
       }
-    } catch (e) {
+    } catch (e: any) {
       console.debug(e.toString());
       this.addError("CO-MD", "Issue when parsing Content markdown");
     }
@@ -76,12 +76,12 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
     /*
      * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar

@@ -12,35 +12,34 @@ declare module "c/sfGpsDsAuNswFooterComm" {
   class SfGpsDsAuNswFooterComm 
   extends SfGpsDsLwc {
     upperFooterMode: string;
-    upperFooterNavigationDevName: string;
-    upperFooterIpName: string;
-    upperFooterInputJSON: string;
-    upperFooterOptionsJSONN: string;
-    upperFooterClassName: string;
+    upperFooterNavigationDevName?: string;
+    upperFooterIpName?: string;
+    upperFooterInputJSON?: string;
+    upperFooterOptionsJSONN?: string;
+    upperFooterClassName?: string;
 
     mode: string;
-    navigationDevName: string;
-    ipName: string;
-    inputJSON: string;
-    optionsJSON: string;
+    navigationDevName?: string;
+    ipName?: string;
+    inputJSON?: string;
+    optionsJSON?: string;
 
-    statement: string;
-    linkedInUrl: string;
-    twitterXUrl: string;
-    facebookUrl: string;
-    copyrightMention: string;
-    builtMention: string;
-    lowerFooterClassName: string;
+    statement?: string;
+    linkedInUrl?: string;
+    twitterXUrl?: string;
+    facebookUrl?: string;
+    copyrightMention?: string;
+    builtMention?: string;
+    lowerFooterClassName?: string;
+    className?: string;
 
-    className: string;
-
-    cstyle: CStyle;
+    cstyle?: CStyle;
 
     // private
     
     _cstyle: PropertyAccessor<string>
 
-    readonly computedClassName: any;
-    readonly computedShowUpperFooter: boolean;
+    get computedClassName(): any;
+    get computedShowUpperFooter(): boolean;
   }
 }

@@ -16,13 +16,12 @@ declare module "c/sfGpsDsAuNswSteps" {
   export default 
   class SfGpsDsAuNswSteps 
   extends SfGpsDsElement {
-    type: string;
-    className: string;
-
+    type?: string;
+    className?: string;
     // @ts-ignore
-    firstChild: boolean;
-    cstyle: CStyle;
-    size: Size;
+    firstChild?: boolean;
+    cstyle?: CStyle;
+    size?: Size;
 
     // private
 
@@ -30,6 +29,6 @@ declare module "c/sfGpsDsAuNswSteps" {
     _cstyle: PropertyAccessor<string>;
     _size: PropertyAccessor<string>;
 
-    readonly computedClassName: any;
+    get computedClassName(): any;
   }
 }

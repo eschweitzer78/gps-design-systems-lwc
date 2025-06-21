@@ -29,21 +29,21 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  showButtons: boolean;
+  showButtons?: boolean;
   _showButtons = this.defineBooleanProperty("showButtons", {
     defaultValue: SHOWBUTTONS_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  isFullyExpanded: boolean;
+  isFullyExpanded?: boolean;
   _isFullyExpanded = this.defineBooleanProperty("isFullyExpanded", {
     defaultValue: ISFULLYEXPANDED_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  isFullyCollapsed: boolean;
+  isFullyCollapsed?: boolean;
   _isFullyCollapsed = this.defineBooleanProperty("isFullyCollapsed", {
     defaultValue: ISFULLYCOLLAPSED_DEFAULT
   });
@@ -51,7 +51,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* computed */
 
@@ -65,21 +65,23 @@ extends SfGpsDsElement {
     const rv = {
       "nsw-accordion": true,
       ready: true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
 
     if (DEBUG) console.debug(CLASS_NAME, "> get computedClassName", JSON.stringify(rv));
     return rv;
   }
 
-  get i18n(): Object {
+  get i18n(): object {
     return I18N;
   }
 
   /* event management */
 
   // eslint-disable-next-line no-unused-vars
-  handleExpandAll(_event: MouseEvent): void {
+  handleExpandAll(
+    _event: MouseEvent
+  ): void {
     if (DEBUG) console.debug(CLASS_NAME, "> handleExpandAll");
     /* we do not change the internal state, this is a request to the parent */
     this.dispatchEvent(new CustomEvent("expandall"));
@@ -87,7 +89,9 @@ extends SfGpsDsElement {
   }
 
   // eslint-disable-next-line no-unused-vars
-  handleCollapseAll(_event: MouseEvent): void {
+  handleCollapseAll(
+    _event: MouseEvent
+  ): void {
     if (DEBUG) console.debug(CLASS_NAME, "> handleCollapseAll");
     /* we do not change the internal state, this is a request to the parent */
     this.dispatchEvent(new CustomEvent("collapseall"));

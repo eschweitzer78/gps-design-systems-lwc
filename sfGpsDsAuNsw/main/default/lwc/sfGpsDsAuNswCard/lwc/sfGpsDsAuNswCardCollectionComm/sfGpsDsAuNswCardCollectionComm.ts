@@ -66,7 +66,7 @@ extends SfGpsDsIpLwc {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: ipName, String */
 
@@ -118,18 +118,18 @@ extends SfGpsDsIpLwc {
   get computedClassName(): any {
     return {
       "nsw-grid": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
   get computedColClassName(): any {
     return {
       "nsw-col": true,
-      ["nsw-col-xs-" + this.xsWidth]: this.xsWidth,
-      ["nsw-col-sm-" + this.smWidth]: this.smWidth,
-      ["nsw-col-md-" + this.mdWidth]: this.mdWidth,
-      ["nsw-col-lg-" + this.lgWidth]: this.lgWidth,
-      ["nsw-col-xl-" + this.xlWidth]: this.xlWidth
+      ["nsw-col-xs-" + this.xsWidth]: !!this.xsWidth,
+      ["nsw-col-sm-" + this.smWidth]: !!this.smWidth,
+      ["nsw-col-md-" + this.mdWidth]: !!this.mdWidth,
+      ["nsw-col-lg-" + this.lgWidth]: !!this.lgWidth,
+      ["nsw-col-xl-" + this.xlWidth]: !!this.xlWidth
     };
   }
 
@@ -147,7 +147,7 @@ extends SfGpsDsIpLwc {
 
   mapIpData(data: object | object[]): CardData[] {
     if (!data) {
-      return null;
+      return [];
     }
 
     if (!isArray(data)) {
@@ -166,7 +166,7 @@ extends SfGpsDsIpLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

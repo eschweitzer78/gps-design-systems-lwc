@@ -35,11 +35,11 @@ extends SfGpsDsIpLwc {
 
   // @ts-ignore
   @api 
-  caption: string;
+  caption?: string;
 
   // @ts-ignore
   @api 
-  captionLocation: CaptionLocation;
+  captionLocation?: CaptionLocation;
 
   // @ts-ignore
   @api 
@@ -55,7 +55,7 @@ extends SfGpsDsIpLwc {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: ipName, String */
 
@@ -104,11 +104,11 @@ extends SfGpsDsIpLwc {
 
   /* api: sortOrder, String */
 
-  _sortHeader: string;
+  _sortHeader?: string;
 
   // @ts-ignore
   @api
-  get sortHeader(): string {
+  get sortHeader(): string | undefined {
     return this._sortHeader;
   }
 
@@ -119,12 +119,12 @@ extends SfGpsDsIpLwc {
 
   /* api: headers, String */
 
-  _headersOriginal: string;
-  _headers: Header[];
+  _headersOriginal?: string;
+  _headers?: Header[];
 
   // @ts-ignore
   @api
-  get headers(): string {
+  get headers(): string | undefined {
     return this._headersOriginal;
   }
 
@@ -153,12 +153,12 @@ extends SfGpsDsIpLwc {
     this.computeSortOptions();
   }
 
-  _totalRows: number;
-  _activePage: number;
-  _lastPage: number;
-  _offset: number;
-  _content: object[];
-  _sortOptions: SortOption[];
+  _totalRows: number = 0;
+  _activePage: number = 0;
+  _lastPage: number = 0;
+  _offset: number = 0;
+  _content?: object[];
+  _sortOptions?: SortOption[];
 
   /* computed */
 
@@ -173,8 +173,10 @@ extends SfGpsDsIpLwc {
     );
   }
 
-  get computedVisibleSortOptions(): SortOption[] {
-    return this.resultsBarStyle === "full" ? this._sortOptions : null;
+  get computedVisibleSortOptions(): SortOption[] | undefined {
+    return this.resultsBarStyle === "full" 
+      ? this._sortOptions 
+      : undefined;
   }
 
   get computedShowResultsBar(): boolean {
@@ -184,12 +186,12 @@ extends SfGpsDsIpLwc {
   /* methods */
 
   computeSortOptions(): void {
-    if (this._headers == null) {
-      this._sortOptions = null;
+    if (this._headers == undefined) {
+      this._sortOptions = undefined;
       return;
     }
 
-    if (this._sortHeader == null) {
+    if (this._sortHeader == undefined) {
       this._sortHeader = this._headers[0].name;
     }
 
@@ -199,7 +201,7 @@ extends SfGpsDsIpLwc {
           value: header.name,
           selected: header.name === this._sortHeader
         }))
-      : null;
+      : undefined;
 
     this.sortContent();
   }
@@ -218,13 +220,16 @@ extends SfGpsDsIpLwc {
   }
 
   sortContent(
-    sortHeader: string = this._sortHeader
+    sortHeader: string | undefined = this._sortHeader
   ): void {
     if (this._content && sortHeader) {
       let content = [...this._content];
       this._content = content.sort((rowA, rowB) => {
-        const cA = rowA[sortHeader],
-          cB = rowB[sortHeader];
+        // @ts-ignore
+        const cA = rowA[sortHeader];
+        // @ts-ignore
+        const cB = rowB[sortHeader];
+
         const vA = isObject(cA) ? cA.value : cA;
         const vB = isObject(cB) ? cB.value : cB;
 

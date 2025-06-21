@@ -27,15 +27,15 @@ declare module "c/sfGpsDsAuNswSectionLwr" {
   export default 
   class SfGpsDsAuNswSectionLwr 
   extends SfGpsDsLwc {
-    imageSrc: string;
-    containerClassName: string;
-    className: string;
+    imageSrc?: string;
+    containerClassName?: string;
+    className?: string;
 
-    paddingStyle: PaddingStyle;
-    colorStyle: ColorStyle;
-    withContainer: boolean;
-    withBox: boolean;
-    withInvert: boolean;
+    paddingStyle?: PaddingStyle;
+    colorStyle?: ColorStyle;
+    withContainer?: boolean;
+    withBox?: boolean;
+    withInvert?: boolean;
 
     // private
 
@@ -45,7 +45,7 @@ declare module "c/sfGpsDsAuNswSectionLwr" {
     _withBox: PropertyAccessor<boolean>;
     _withInvert: PropertyAccessor<boolean>;
 
-    readonly computedClassName: any;
-    readonly computedContainerClassName: any;
+    get computedClassName(): any;
+    get computedContainerClassName(): any;
   }
 }

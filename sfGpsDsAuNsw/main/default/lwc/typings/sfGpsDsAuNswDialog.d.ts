@@ -7,24 +7,24 @@ declare module "c/sfGpsDsAuNswDialog" {
   export default 
   class SfGpsDsAuNswDialog 
   extends SfGpsDsElement {
-    title: string;
-    primaryButtonText: string;
-    secondaryButtonText: string;
+    // title: string;
+    primaryButtonText?: string;
+    secondaryButtonText?: string;
     isOpen: boolean;
-    className: string;
+    className?: string;
     
-    bstyle: BStyle;
-    isDismissible: boolean;
+    bstyle?: BStyle;
+    isDismissible?: boolean;
 
     // private
 
     _bstyle: PropertyAccessor<string>;
     _isDismissible: PropertyAccessor<boolean>;
-    _labelledById: string;
+    _labelledById?: string;
 
-    readonly computedClassName: any;
-    readonly computedPrimaryButtonClassName: any;
-    readonly computedAriaLabelledById: string;
+    get computedClassName(): any;
+    get computedPrimaryButtonClassName(): any;
+    get computedAriaLabelledById(): string;
 
     handlePrimaryClick(event: MouseEvent): void;
     handleSecondaryClick(event: MouseEvent): void;

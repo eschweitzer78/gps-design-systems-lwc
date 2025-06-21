@@ -27,16 +27,16 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  mode: Mode;
+  mode?: Mode;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

@@ -46,11 +46,11 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  label: string;
+  label?: string;
 
   // @ts-ignore
   @api 
-  link: string;
+  link?: string;
 
   // @ts-ignore
   @api 
@@ -58,30 +58,30 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  image: string;
+  image?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
-  tags: Link[];
+  tags?: Link[];
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  isBlock: boolean;
+  isBlock?: boolean;
   _isBlock = this.defineBooleanProperty("isBlock", {
     defaultValue: ISBLOCK_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  isReversed: boolean;
+  isReversed?: boolean;
   _isReversed = this.defineBooleanProperty("isReversed", {
     defaultValue: ISREVERSED_DEFAULT
   });
@@ -89,21 +89,21 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  showLink: boolean;
+  showLink?: boolean;
   _showLink = this.defineBooleanProperty("showLink", {
     defaultValue: SHOWLINK_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  preventDefault: boolean;
+  preventDefault?: boolean;
   _preventDefault = this.defineBooleanProperty("preventDefault", {
     defaultValue: PREVENTDEFAULT_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  dateStyle: DateStyle;
+  dateStyle?: DateStyle;
   _dateStyle = this.defineEnumProperty<DateStyle>("dateStyle", {
     validValues: DATE_STYLE_VALUES,
     defaultValue: DATE_STYLE_DEFAULT
@@ -111,12 +111,12 @@ extends SfGpsDsElement {
 
   /* api: date */
 
-  _date: Date;
-  _dateOriginal: Date | string;
+  _date?: Date;
+  _dateOriginal?: Date | string;
 
   // @ts-ignore
   @api
-  get date(): Date | string {
+  get date(): Date | string | undefined {
     return this._dateOriginal;
   }
 
@@ -126,22 +126,24 @@ extends SfGpsDsElement {
     if (value instanceof Date) {
       this._date = value;
     } else {
-      this._date = value ? parseIso8601(value.toString()) : null;
+      this._date = value ? parseIso8601(value.toString()) : undefined;
     }
   }
 
-  get _dateISOString(): string {
-    return this._date ? this._date.toISOString() : null;
+  get _dateISOString(): string | undefined {
+    return this._date 
+      ? this._date.toISOString() 
+      : undefined;
   }
 
-  get _dateLocaleString(): string {
+  get _dateLocaleString(): string | undefined {
     return this._date
       ? formatDate(
           this._date,
           this._dateStyle.value || DATE_STYLE_DEFAULT,
           this._userLocale
         )
-      : null;
+      : undefined;
   }
 
   get computedClassName(): any {
@@ -149,7 +151,7 @@ extends SfGpsDsElement {
       "nsw-list-item": true,
       "nsw-list-item--block": this._isBlock.value,
       "nsw-list-item--reversed": this._isReversed.value,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -167,10 +169,10 @@ extends SfGpsDsElement {
 
   /* lifecycle */
 
-  _userLocale: string;
+  _userLocale?: string;
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this._userLocale = getUserLocale();
   }
 }

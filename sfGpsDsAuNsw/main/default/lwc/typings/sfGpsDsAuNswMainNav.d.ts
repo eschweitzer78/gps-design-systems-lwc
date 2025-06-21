@@ -62,7 +62,7 @@ declare module "c/sfGpsDsAuNswMainNav" {
 
     getElementForItem(
       navItem: MainNavItem
-    ): HTMLElement;
+    ): HTMLElement | null;
     focusItem(
       navItem: MainNavItem
     ): void;
@@ -79,8 +79,8 @@ declare module "c/sfGpsDsAuNswMainNav" {
     handleKeydown(event: KeyboardEvent): void;
     handleResponsiveCheck(event: MediaQueryList): void;
 
-    breakpoint: MediaQueryList;
+    breakpoint?: MediaQueryList;
     _isDesktop: boolean;
-    _handleResponsiveCheck: (event: MediaQueryListEvent) => void;
+    _handleResponsiveCheck?: (event: MediaQueryListEvent) => void;
   }
 }

@@ -5,9 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import { 
+  api 
+} from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import { 
+  replaceInnerHtml 
+} from "c/sfGpsDsHelpers";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -23,20 +27,20 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api
-  level: number;
+  level?: number;
 
   // @ts-ignore
   @api 
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  content: string;
+  content?: string;
   _contentHtml = this.defineMarkdownContentProperty("content", {
     errorCode: "CO-MD",
     errorText: "Issue when parsing Content markdown"
@@ -45,12 +49,12 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
     /*
      * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
      * as the react component would have one for the title in the same scope,

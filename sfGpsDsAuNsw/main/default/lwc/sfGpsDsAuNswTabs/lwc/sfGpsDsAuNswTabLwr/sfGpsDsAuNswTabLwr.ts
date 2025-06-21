@@ -4,6 +4,7 @@ import {
 import SfGpsDsElement from "c/sfGpsDsElement";
 
 const SHOWERRORINDICATOR_DEFAULT = false;
+const TABLABEL_DEFAULT = "Tab";
 
 export default 
 class SfGpsDsAuNswtabLwr
@@ -12,28 +13,28 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  vid: string;
+  vid?: string;
 
   // @ts-ignore
   @api 
-  variaLabelledBy: string;
+  variaLabelledBy?: string;
 
   // @ts-ignore
   @api 
-  vhidden: boolean;
+  vhidden?: boolean;
 
   /* api: value, Any */
 
-  _value: string;
-  _valueOriginal: string;
+  _value?: string;
+  _valueOriginal?: string;
 
   // @ts-ignore
   @api
-  get value(): string {
+  get value(): string | undefined {
     return this._valueOriginal;
   }
 
@@ -45,11 +46,11 @@ extends SfGpsDsElement {
 
   /* api: label, String */
 
-  _label: string;
+  _label = TABLABEL_DEFAULT;
 
   // @ts-ignore
   @api
-  get label(): string {
+  get label(): string | undefined {
     return this._label;
   }
 
@@ -60,7 +61,7 @@ extends SfGpsDsElement {
 
   /* api: title, String */
 
-  _title: string;
+  _title: string = "";
   
   // @ts-ignore
   @api
@@ -76,7 +77,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  showErrorIndicator: boolean;
+  showErrorIndicator?: boolean;
   _showErrorIndicator = this.defineBooleanProperty("showErrorIndicator", {
     defaultValue: SHOWERRORINDICATOR_DEFAULT,
     watcher: () => { this._dispatchDataChangeEventIfConnected(); }
@@ -87,7 +88,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-tabs__content": true,
-      [this.className]: this.className
+      [this.className || ""]: this.className
     };
   }
 
@@ -116,30 +117,30 @@ extends SfGpsDsElement {
 
   /* lifecycle */
 
-  _deregistrationCallback: Function;
+  _deregistrationCallback?: Function;
 
-  connectedCallback() {
-    super.connectedCallback();
-    
-    this.dispatchEvent(
-      new CustomEvent("privatetabregister", {
-        cancelable: true,
-        bubbles: true,
-        composed: true,
-        detail: {
-          setDeregistrationCallback: (deregistrationCallback: Function) => {
-            this._deregistrationCallback = deregistrationCallback;
+  constructor() {
+    super();
+
+    this.handleMounted(() => {
+      this.dispatchEvent(
+        new CustomEvent("privatetabregister", {
+          cancelable: true,
+          bubbles: true,
+          composed: true,
+          detail: {
+            setDeregistrationCallback: (deregistrationCallback: Function) => {
+              this._deregistrationCallback = deregistrationCallback;
+            }
           }
-        }
-      })
-    );
-  }
+        })
+      );
+    });
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-
-    if (this._deregistrationCallback) {
-      this._deregistrationCallback();
-    }
+    this.handleUnmounted(() => {
+      if (this._deregistrationCallback) {
+        this._deregistrationCallback();
+      }
+    });
   }
 }

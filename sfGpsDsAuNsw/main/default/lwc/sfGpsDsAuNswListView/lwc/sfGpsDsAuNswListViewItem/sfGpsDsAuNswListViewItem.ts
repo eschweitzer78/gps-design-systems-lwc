@@ -5,35 +5,17 @@ import {
 import SfGpsDsElement from "c/sfGpsDsElement";
 
 import type { 
-  sObject, 
+  ColumnDetails, 
+  ReconciledRecordColumn 
+} from "c/sfGpsDsAuNswListViewItem";
+
+import type { 
+  sObject,
   sObjectColumn
 } from "c/sfGpsDsApex";
-
-interface ColumnDetails extends sObjectColumn {
-  link?: string,
-  label: string
-}
-
-type ReconciledRecordColumn = ColumnDetails & {
-  value: any,
-  displayValue: string,
-  label: string,
-  link?: string,
-  isBoolean: boolean,
-  isCurrency: boolean,
-  isDate: boolean,
-  isDateTime: boolean,
-  isEmail: boolean,
-  isNumber: boolean,
-  isPercent: boolean,
-  isPhone: boolean,
-  isPicklist: boolean,
-  isReference: boolean,
-  isString: boolean,
-  isTextArea: boolean,
-  isTime: boolean,
-  isURL: boolean
-};
+import type { 
+  Link 
+} from "c/sfGpsDsMarkdown";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuNswListViewItem";
@@ -41,66 +23,69 @@ const CLASS_NAME = "SfGpsDsAuNswListViewItem";
 export default 
 class SfGpsDsAuNswListViewItem 
 extends SfGpsDsElement {
-  _displayColumns: ColumnDetails[];
+  _displayColumns?: ColumnDetails[];
 
   // @ts-ignore
   @api 
+  get displayColumns() {
+    return this._displayColumns;
+  }
+
   set displayColumns(value) {
     this._displayColumns = value;
     this.reconcile();
   }
 
-  get displayColumns() {
-    return this._displayColumns;
-  }
 
-  _record: sObject;
+  _record?: sObject;
 
   // @ts-ignore
-  @api set record(value) {
+  @api 
+  get record() {
+    return this._record;
+  }
+  
+  set record(value) {
     this._record = value;
     this.reconcile();
   }
 
-  get record() {
-    return this._record;
-  }
 
   // @ts-ignore
   @api 
-  recordId: string;
+  recordId?: string;
 
   // @ts-ignore
   @api 
-  labelColumn: string;
+  labelColumn?: string;
 
   // @ts-ignore
   @api 
-  titleColumn: string;
+  titleColumn?: string;
 
   // @ts-ignore
   @api 
-  dateColumn: string;
+  dateColumn?: string;
 
   // @ts-ignore
   @api 
-  tagsColumn: string;
+  tagsColumn?: string;
 
   // @ts-ignore
   @api 
-  imageColumn: string;
+  imageColumn?: string;
 
   // @ts-ignore
   @api 
-  imageAltColumn: string;
+  imageAltColumn?: string;
 
   // @ts-ignore
   @api 
-  link: string;
+  link?: string;
 
   // @ts-ignore
   @track 
-  _reconciledRecord : ReconciledRecordColumn[];
+  _reconciledRecord? : ReconciledRecordColumn[];
 
   reconcile(): void {
     if (this._record && this._displayColumns) {
@@ -121,21 +106,21 @@ extends SfGpsDsElement {
         let rv: ReconciledRecordColumn = {
           ...column,
           value: value,
-          displayValue: displayValue,
+          displayValue: displayValue || "",
           label: column.label,
           isBoolean: dataType === "BOOLEAN",
           isCurrency: dataType === "CURRENCY",
           isDate: dataType === "DATE",
           isDateTime: dataType === "DATETIME",
           isEmail: dataType === "EMAIL",
-          isNumber: ["INTEGER", "DOUBLE"].includes(dataType),
+          isNumber: dataType ? ["INTEGER", "DOUBLE"].includes(dataType) : false,
           isPercent: dataType === "PERCENT",
           isPhone: dataType === "PHONE",
-          isPicklist: ["PICKLIST", "MULTIPICKLIST"].includes(dataType),
+          isPicklist: dataType ? ["PICKLIST", "MULTIPICKLIST"].includes(dataType) : false,
           isReference: dataType === "REFERENCE",
-          isString: ["ENCRYPTEDSTRING", "ID", "STRING", null].includes(
+          isString: dataType ? ["ENCRYPTEDSTRING", "ID", "STRING", null].includes(
             dataType
-          ),
+          ) : false,
           isTextArea: dataType === "TEXTAREA",
           isTime: dataType === "TIME",
           isURL: dataType === "URL"
@@ -178,35 +163,45 @@ extends SfGpsDsElement {
       ? this._reconciledRecord.filter(
           (column) => !this.isUsedForMapping(column.fieldApiName)
         )
-      : null;
+      : undefined;
   }
 
   get _label() {
+    if (!this.labelColumn) return undefined;
     return this.getColumnDetails(this.labelColumn).displayValue;
   }
 
   get _title() {
+    if (!this.titleColumn) return undefined;
     return this.getColumnDetails(this.titleColumn).displayValue;
   }
 
-  get _date() {
+  get _date(): string | undefined {
+    if (!this.dateColumn) return undefined;
+
     return this.getColumnDetails(this.dateColumn).value;
   }
 
-  get _tags() {
+  get _tags(): Link[] | undefined {
+    if (!this.tagsColumn) return undefined;
+
     let tags = this.getColumnDetails(this.tagsColumn).value;
     return tags
       ? (tags.toString() as string)
           .split(";")
           .map((value: string) => ({ text: value }))
-      : null;
+      : undefined;
   }
 
-  get _image(): any {
+  get _image(): string | undefined {
+    if (!this.imageColumn) return undefined;
+
     return this.getColumnDetails(this.imageColumn).value;
   }
 
-  get _imageAlt(): string {
+  get _imageAlt(): string | undefined {
+    if (!this.imageAltColumn) return undefined;
+
     return this.getColumnDetails(this.imageAltColumn).displayValue;
   }
 
@@ -230,13 +225,13 @@ extends SfGpsDsElement {
   getColumnDetails(
     fieldApiName: string
   ): Partial<sObjectColumn> {
-    if (!fieldApiName) {
+    if (!fieldApiName || !this._record) {
       return {
-        displayValue: null,
+        displayValue: undefined,
         value: null,
-        dataType: null,
-        relationshipObjectApiName: null,
-        relationshipId: null
+        dataType: undefined,
+        relationshipObjectApiName: undefined,
+        relationshipId: undefined
       };
     }
 

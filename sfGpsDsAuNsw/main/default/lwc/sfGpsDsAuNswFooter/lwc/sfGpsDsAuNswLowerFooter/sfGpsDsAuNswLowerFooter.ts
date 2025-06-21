@@ -20,22 +20,22 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  items: AdaptedNavigationMenuItem[];
+  items?: AdaptedNavigationMenuItem[];
 
   // @ts-ignore
   @api 
-  statement: string;
+  statement?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* computed */
 
   get computedClassName(): any {
     return {
       "nsw-footer__lower": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 

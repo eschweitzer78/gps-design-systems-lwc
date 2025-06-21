@@ -34,7 +34,7 @@ declare module "c/sfGpsDsAuNswTable" {
     ContentItemObject | 
     ContentItemLiteral;
 
-  export type ContentRow = { [key: string]: ContentItem };
+  export type ContentRow = Record<string, ContentItem>;
   export type Content = ContentRow[];
 
   export interface TableItem {
@@ -49,14 +49,14 @@ declare module "c/sfGpsDsAuNswTable" {
     className?: string
   }
 
-  export type TableRow = 
-    Record<Omit<string, '_key'>, TableItem> & {
-      _key: string;
-    };
+  export interface TableRow {
+    _key: string;
+    _items: Record<string, TableItem>;
+  }
 
   export interface DisplayRow {
     _key: string,
-    _cols: TableRow[]
+    _cols: TableItem[]
   }
 
   export interface Header {
@@ -68,29 +68,39 @@ declare module "c/sfGpsDsAuNswTable" {
   export default 
   class SfGpsDsAuNswTable 
   extends SfGpsDsElement {
-    caption: string;
-    offset: number;
-    limit: number;
+    caption?: string;
     className: string;
+    offset?: number;
+    limit?: number;
+    captionLocation?: CaptionLocation;
+    isStriped?: boolean;
+    isBordered?: boolean;
 
-    captionLocation: CaptionLocation;
-    isStriped: boolean;
-    isBordered: boolean;
+    get content(): Content | ContentRow | undefined;
+    set content(value: Content | ContentRow);
 
-    content;
-    headers;
+    get headers(): Header[] | Header | undefined;
+    set headers(value: Header[] | Header);
 
     // private
 
+    _offset: PropertyAccessor<number>;
+    _limit: PropertyAccessor<number>;
     _captionLocation: PropertyAccessor<CaptionLocation>;
     _isStriped: PropertyAccessor<boolean>;
     _isBordered: PropertyAccessor<boolean>;
 
-    _content;
-    _contentOriginal;
+    _content?: TableRow[];
+    _contentOriginal: Content | ContentRow;
     _attributes: Set<string>;
 
-    _headers: Header[];
-    _headersOriginal;
+    _headers?: Header[];
+    _headersOriginal?: Header[] | Header;
+
+    get _tableHeaders(): Header[];
+    get _tableRows(): DisplayRow[] | undefined;
+
+    get computedClassName(): any;
+    get computedShowCaption(): boolean;
   }
 }

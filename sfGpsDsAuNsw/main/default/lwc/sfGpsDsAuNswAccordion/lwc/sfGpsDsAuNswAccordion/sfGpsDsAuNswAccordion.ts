@@ -24,13 +24,15 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  index: string | number;
+  index?: string | number;
+
   // @ts-ignore
   @api 
-  header: string;
+  header?: string;
+
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: closed */
 
@@ -54,7 +56,7 @@ extends SfGpsDsElement {
     return {
       "nsw-accordion__title": true,
       "nsw-accordion__open": this._isOpen,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -65,16 +67,16 @@ extends SfGpsDsElement {
     };
   }
 
-  get computedIsHidden(): string {
+  get computedIsHidden(): string | null {
     return computeClass({
       hidden: !this._isOpen
     });
   }
 
-  _controlsId: string;
+  _controlsId?: string;
 
-  get computedAriaControlsId(): string {
-    if (this._controlsId === undefined) {
+  get computedAriaControlsId() {
+    if (!this._controlsId) {
       this._controlsId = uniqueId("sf-gps-ds-au-nsw-accordion");
     }
 
@@ -85,7 +87,11 @@ extends SfGpsDsElement {
 
   // eslint-disable-next-line no-unused-vars
   handleClick(_event: MouseEvent): void {
-    this.dispatchEvent(new CustomEvent(this._isOpen ? "collapse" : "expand"));
+    this.dispatchEvent(new CustomEvent(
+      this._isOpen 
+        ? "collapse" 
+        : "expand"
+    ));
     this._isOpen = !this._isOpen;
   }
 }

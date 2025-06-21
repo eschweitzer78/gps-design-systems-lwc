@@ -29,15 +29,15 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  primaryButtonText: string;
+  primaryButtonText?: string;
 
   // @ts-ignore
   @api 
-  secondaryButtonText: string;
+  secondaryButtonText?: string;
 
   // @ts-ignore
   @api 
-  bstyle: BStyle; // one of dark, danger
+  bstyle?: BStyle; // one of dark, danger
 
   // @ts-ignore
   @api 
@@ -45,13 +45,13 @@ extends SfGpsDsLwc {
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   _isOpen: boolean = false;
 
   // @ts-ignore
   @api
-  content: string;
+  content?: string;
   _contentHtml = this.defineMarkdownContentProperty("content", {
     errorCode: "IN-MD",
     errorText: "Issue when parsing Content markdown."
@@ -82,12 +82,12 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
     if (this._contentHtml.value && this.refs.markdown) {
       replaceInnerHtml(this.refs.markdown, this._contentHtml.value);

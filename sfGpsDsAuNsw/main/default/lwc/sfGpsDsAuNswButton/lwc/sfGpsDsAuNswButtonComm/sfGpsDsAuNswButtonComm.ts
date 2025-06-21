@@ -23,7 +23,10 @@ import {
   Type
 } from "c/sfGpsDsAuNswButton";
 
-const LINK_DEFAULT: Link = { text: null, url: null };
+const LINK_DEFAULT: Link = { 
+  text: undefined, 
+  url: undefined 
+};
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuNswButtonComm";
@@ -37,23 +40,23 @@ extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
 
   // @ts-ignore
   @api 
-  iconName: string;
+  iconName?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  cstyle: CStyle;
+  cstyle?: CStyle;
 
   // @ts-ignore
   @api 
-  iconStyle: IconStyle;
+  iconStyle?: IconStyle;
 
   // @ts-ignore
   @api 
-  rendering: Rendering;
+  rendering?: Rendering;
 
   // @ts-ignore
   @api 
@@ -66,7 +69,7 @@ extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
 
   // @ts-ignore
   @api
-  link: string;
+  link?: string;
   _link = this.defineMarkdownFirstLinkProperty("link", {
     errorCode: "ML-MD",
     errorText: "Issue when parsing Link markdown"
@@ -96,7 +99,7 @@ extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

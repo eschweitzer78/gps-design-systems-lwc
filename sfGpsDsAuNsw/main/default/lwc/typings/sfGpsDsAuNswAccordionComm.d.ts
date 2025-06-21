@@ -9,7 +9,8 @@ declare module "c/sfGpsDsAuNswAccordionComm" {
     content: string;
     className: string;
     
-    closed: boolean;
+    get closed(): boolean;
+    set closed(value: boolean);
 
     // private
     _closed: boolean;

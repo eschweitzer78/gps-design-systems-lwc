@@ -5,13 +5,13 @@ declare module "c/sfGpsDsAuNswHeaderProfileIp" {
   export default 
   class sfGpsDsAuNswHeaderProfileIp 
   extends SfGpsDsNavigation {
-    isGuest: boolean;
-    userAlias: string;
-    className: string;
+    isGuest?: boolean;
+    userAlias?: string;
+    className?: string;
 
     // private
 
-    readonly navSvc: SfGpsDsNavigationService;
+    get navSvc(): SfGpsDsNavigationService;
 
     handleNavigate(event: CustomEvent): void;
     handleLogin(event: CustomEvent): void;

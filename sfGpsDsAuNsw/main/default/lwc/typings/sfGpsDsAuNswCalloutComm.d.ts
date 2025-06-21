@@ -6,13 +6,12 @@ declare module "c/sfGpsDsAuNswCalloutComm" {
   export default 
   class SfGpsDsAuNswCalloutComm
   extends SfGpsDsLwc {
-    title: string;
+    //title: string;
     level: number;
     // @ts-ignore
-    firstChild: boolean;
-    className: string;
-
-    content: string;
+    firstChild?: boolean;
+    className?: string;
+    content?: string;
 
     // private
 

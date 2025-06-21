@@ -7,16 +7,16 @@ declare module "c/sfGpsDsAuNswInPageNavigation" {
   class SfGpsDsAuNswInPageNavigation 
   extends SfGpsDsElement {
     title: string;
-    items: Link[];
-    className: string;
+    items?: Link[];
+    className?: string;
 
     // @ts-ignore
-    firstChild: boolean;
+    firstChild?: boolean;
 
     // private
 
-    _firstChild: PropertyAccessor<boolean>;
-    _labelledById: string;
+    _firstChild?: PropertyAccessor<boolean>;
+    _labelledById?: string;
 
     readonly computedClassName: any;
     readonly computedAriaLabelledById: string;

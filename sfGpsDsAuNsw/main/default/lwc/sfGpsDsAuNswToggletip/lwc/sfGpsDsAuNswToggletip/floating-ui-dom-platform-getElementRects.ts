@@ -8,26 +8,25 @@ import {
   getOffsetParent 
 } from "./floating-ui-dom-platform-getOffsetParent";
 
-export const getElementRects: Platform['getElementRects'] = async function (
-  data
+export const getElementRects: Platform["getElementRects"] = async function (
+  this: Platform,
+  data,
 ) {
   const getOffsetParentFn = this.getOffsetParent || getOffsetParent;
   const getDimensionsFn = this.getDimensions;
   const floatingDimensions = await getDimensionsFn(data.floating);
 
-  const rv = {
+  return {
     reference: getRectRelativeToOffsetParent(
       data.reference,
       await getOffsetParentFn(data.floating),
-      data.strategy
+      data.strategy,
     ),
     floating: {
       x: 0,
       y: 0,
       width: floatingDimensions.width,
-      height: floatingDimensions.height
-    }
+      height: floatingDimensions.height,
+    },
   };
-
-  return rv;
 };

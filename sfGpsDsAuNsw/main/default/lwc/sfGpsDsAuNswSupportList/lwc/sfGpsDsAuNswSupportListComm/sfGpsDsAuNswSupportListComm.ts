@@ -17,8 +17,8 @@ import type {
   LogoPosition 
 } from "c/sfGpsDsAuNswSupportList";
 
-const DEPARTMENTS_DEFAULT = [];
-const SUPPORTLOGOS_DEFAULT = [];
+const DEPARTMENTS_DEFAULT: Link[] = [];
+const SUPPORTLOGOS_DEFAULT: Link[] = [];
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -30,19 +30,19 @@ class sfGpsDsAuNswSupportListComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  header: string = "Supported by";
+  header = "Supported by";
 
   // @ts-ignore
   @api 
-  logoPosition: LogoPosition = "labels";
+  logoPosition = "labels";
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  departments: Link[];
+  departments?: string;
   _departments = this.defineMarkdownLinksProperty("departments", {
     errorCode: "LI-MD",
     errorText: "Issue when parsing Departments markdown",
@@ -51,8 +51,8 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api
-  supportLogos: Link[];
-  _supportLogos = this.defineMarkdownLinksProperty("departments", {
+  supportLogos?: string;
+  _supportLogos = this.defineMarkdownLinksProperty("supportLogos", {
     errorCode: "LI-MD",
     errorText: "Issue when parsing Departments markdown",
     defaultValue: SUPPORTLOGOS_DEFAULT
@@ -61,7 +61,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

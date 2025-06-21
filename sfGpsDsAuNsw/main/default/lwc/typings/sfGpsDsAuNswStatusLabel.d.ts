@@ -11,15 +11,14 @@ declare module "c/sfGpsDsAuNswStatusLabel" {
   export default 
   class SfGpsDsAuNswStatusLabel 
   extends SfGpsDsElement {
-    label: string;
-
-    status: Status;
+    label?: string;
+    status?: Status;
 
     // private
 
     _status: PropertyAccessor<string>;
 
-    readonly computedClassName: any;
+    get computedClassName(): any;
 
   }
 }

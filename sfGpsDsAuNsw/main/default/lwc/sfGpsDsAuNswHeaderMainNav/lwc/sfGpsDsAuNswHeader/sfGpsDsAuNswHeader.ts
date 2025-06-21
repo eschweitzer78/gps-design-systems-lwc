@@ -35,51 +35,51 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  masterbrand: string;
+  masterbrand?: string;
 
   // @ts-ignore
   @api 
-  masterbrandAlt: string
+  masterbrandAlt?: string
 
   // @ts-ignore
   @api 
-  srMasterbrandLabel: string = "NSW Government";
+  srMasterbrandLabel = "NSW Government";
 
   // @ts-ignore
   @api 
-  logo: string;
+  logo?: string;
 
   // @ts-ignore
   @api 
-  logoAlt: string;
+  logoAlt?: string;
 
   // @ts-ignore
   @api 
-  menuLabel: string = "menu";
+  menuLabel = "menu";
 
   // @ts-ignore
   @api 
-  searchLabel: string = "Search site for:";
+  searchLabel = "Search site for:";
 
   // @ts-ignore
   @api 
-  siteTitle: string;
+  siteTitle?: string;
 
   // @ts-ignore
   @api 
-  siteDescriptor: string;
+  siteDescriptor?: string;
 
   // @ts-ignore
   @api 
-  headerUrl: string = "#";
+  headerUrl = "#";
 
   // @ts-ignore
   @api 
-  searchAriaLabel: string = "search";
+  searchAriaLabel = "search";
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
@@ -88,7 +88,7 @@ extends SfGpsDsElement {
   /* hidden when used stand alone */
   // @ts-ignore
   @api 
-  mainNavId: string;
+  mainNavId?: string;
 
   // @ts-ignore
   @api 
@@ -100,28 +100,28 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  mobile: boolean;
+  mobile?: boolean;
   _mobile = this.defineBooleanProperty("mobile", {
     defaultValue: MOBILE_DEFAULT
   });
 
   // @ts-ignore
   @api
-  search: boolean;
+  search?: boolean;
   _search = this.defineBooleanProperty("search", {
     defaultValue: SEARCH_DEFAULT
   });
 
   // @ts-ignore
   @api
-  profile: boolean;
+  profile?: boolean;
   _profile = this.defineBooleanProperty("profile", {
     defaultValue: PROFILE_DEFAULT
   });
 
   // @ts-ignore
   @api
-  mobileLogoStacking: Stacking;
+  mobileLogoStacking?: Stacking;
   _mobileLogoStacking = this.defineEnumProperty<Stacking>("mobileLogoStacking", {
     validValues: STACKING_VALUES,
     defaultValue: STACKING_DEFAULT
@@ -133,11 +133,11 @@ extends SfGpsDsElement {
     return {
       "nsw-header": true,
       "nsw-header__has-profile": !!this._profile.value,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
-  _headerSearchId: string;
+  _headerSearchId?: string;
 
   get computedHeaderSearchId(): string {
     if (this._headerSearchId == null) {
@@ -147,7 +147,7 @@ extends SfGpsDsElement {
     return this._headerSearchId;
   }
 
-  _headerInputId: string;
+  _headerInputId?: string;
 
   get computedHeaderInputId(): string {
     if (this._headerInputId == null) {

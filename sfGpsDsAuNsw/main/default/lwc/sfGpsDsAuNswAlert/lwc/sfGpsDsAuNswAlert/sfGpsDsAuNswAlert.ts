@@ -45,13 +45,14 @@ extends SfGpsDsElement {
   // @ts-ignore
   @api 
   title = "";
+  
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  as: AlertType;
+  as?: AlertType;
   _as = this.defineEnumObjectProperty<AsValue, AlertType>("as", {
     validValues: AS_VALUES,
     defaultValue: AS_DEFAULT
@@ -60,7 +61,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  compact: boolean;
+  compact?: boolean;
   _compact = this.defineBooleanProperty("compact", {
     defaultValue: COMPACT_DEFAULT
   }); 
@@ -75,8 +76,8 @@ extends SfGpsDsElement {
     return {
       "nsw-in-page-alert": true,
       "nsw-in-page-alert--compact": this._compact.value,
-      [asClassName]: asClassName,
-      [this.className]: this.className
+      [asClassName]: !!asClassName,
+      [this.className || ""]: !!this.className
     };
   }
 

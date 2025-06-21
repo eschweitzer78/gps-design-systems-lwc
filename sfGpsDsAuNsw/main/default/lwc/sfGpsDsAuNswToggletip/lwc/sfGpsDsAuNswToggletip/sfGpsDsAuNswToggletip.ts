@@ -20,6 +20,12 @@ import {
   platform
 } from "./floating-ui-dom";
 
+import type { 
+  Coords 
+} from "./floating-ui-dom";
+
+const ISOPEN_DEFAULT = false;
+
 export default 
 class SfGpsDsAuNswToggleTip 
 extends SfGpsDsElement {
@@ -31,11 +37,11 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  anchor: Element;
+  anchor?: Element;
 
   /* computed */
 
-  _isOpen: boolean;
+  _isOpen = ISOPEN_DEFAULT;
 
   get computedToggleTipClassName(): any {
     return {
@@ -103,21 +109,24 @@ extends SfGpsDsElement {
         top: `${y}px`
       });
 
-      const { x: arrowX, y: arrowY } = middlewareData.arrow;
+      const { 
+        x: arrowX, 
+        y: arrowY 
+      } = middlewareData.arrow as Partial<Coords>;
 
       const staticSide = {
         top: "bottom",
         right: "left",
         bottom: "top",
         left: "right"
-      }[placement.split("-")[0]];
+      }[placement.split("-")[0]]
 
       Object.assign(arrowElement.style, {
         left: arrowX != null ? `${arrowX}px` : "",
         top: arrowY != null ? `${arrowY}px` : "",
         right: "",
         bottom: "",
-        [staticSide]: "-6px"
+        [staticSide || "top"]: "-6px"
       });
     });
   }

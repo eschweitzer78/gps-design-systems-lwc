@@ -5,8 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, track } from "lwc";
-import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import { 
+  api, 
+  track 
+} from "lwc";
+import { 
+  replaceInnerHtml 
+} from "c/sfGpsDsHelpers";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 import type { 
@@ -39,19 +44,19 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  headline: boolean;
+  headline?: boolean;
 
   // @ts-ignore
   @api 
-  tag: string;
+  tag?: string;
 
   // @ts-ignore
   @api 
-  image: string;
+  image?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
@@ -59,7 +64,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // This is not exposed in Experience Builder and is used by cardCollectionComm
   // @ts-ignore
@@ -82,21 +87,21 @@ extends SfGpsDsLwc {
     errorText: "Issue when parsing Title markdown"
   });
 
-  get _titleText(): string {
+  get _titleText(): string | undefined {
     return this._title.value?.text;
   }
 
-  get _titleUrl(): string {
+  get _titleUrl(): string | undefined {
     return this._title.value?.url;
   }
 
   // @ts-ignore
   @api 
-  date: string;
+  date?: string;
 
   // @ts-ignore
   @api 
-  copy: string;
+  copy?: string;
   _copyHtml = this.defineMarkdownContentProperty("copy", {
     errorCode: "CO-MD",
     errorText: "Issue when parsing Copy markdown"
@@ -104,7 +109,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  footer: string;
+  footer?: string;
   _footerHtml = this.defineMarkdownContentProperty("footer", {
     errorCode: "FO-MD",
     errorText: "Issue when parsing Footer markdown"
@@ -114,12 +119,16 @@ extends SfGpsDsLwc {
     return this.cstyle === "highlight";
   }
 
-  get computedCopyClassName(): string {
-    return this._copySlotted ? "nsw-card__copy" : null;
+  get computedCopyClassName(): string | undefined {
+    return this._copySlotted 
+      ? "nsw-card__copy" 
+      : undefined;
   }
 
-  get computedFooterClassName(): string {
-    return this._copySlotted ? "nsw-card__footer" : null;
+  get computedFooterClassName(): string | undefined{
+    return this._copySlotted 
+      ? "nsw-card__footer" 
+      : undefined;
   }
 
   /* methods */
@@ -145,7 +154,7 @@ extends SfGpsDsLwc {
     */
 
     if (an.length) {
-      const el = an[0] instanceof HTMLElement ? an[0] as HTMLElement : null;
+      const el = an[0] as HTMLElement;
       if (el.tagName?.startsWith("WEBRUNTIMEDESIGN")) {
         if (el.querySelector(".actualNode")) {
           emptyNode = false;
@@ -179,12 +188,12 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
     if (this._copyHtml.value && this.refs.copy) {
       replaceInnerHtml(this.refs.copy, this._copyHtml.value);

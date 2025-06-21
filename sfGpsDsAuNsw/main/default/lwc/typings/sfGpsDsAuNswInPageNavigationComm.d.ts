@@ -6,13 +6,12 @@ declare module "c/sfGpsDsAuNswInPageNavigationComm" {
   export default 
   class SfGpsDsAuNswInPageNavigationComm 
   extends SfGpsDsLwc {
-    title: string;
+    //title: string;
     
     // @ts-ignore
-    firstChild: boolean;
-    className: string;
-
-    items: string;
+    firstChild?: boolean;
+    className?: string;
+    items?: string;
 
     // private
 

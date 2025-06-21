@@ -6,19 +6,19 @@ declare module "c/sfGpsDsAuNswHeroBannerAltComm" {
   export default 
   class SfGpsDsAuNswHeroBannerAltComm 
   extends SfGpsDsLwc {
-    imageSrc: string;
-    imageAlt: string;
-    className: string;
+    imageSrc?: string;
+    imageAlt?: string;
+    className?: string;
 
-    titleLink: string;
-    content: string;
+    titleLink?: string;
+    content?: string;
 
     // private
 
     _titleLink: PropertyAccessor<Link>;
     _contentHtml: PropertyAccessor<string>;
 
-    readonly _titleUrl: string;
-    readonly _titleLabel: string;
+    get _titleUrl(): string | undefined;
+    get _titleLabel(): string | undefined;
   }
 }

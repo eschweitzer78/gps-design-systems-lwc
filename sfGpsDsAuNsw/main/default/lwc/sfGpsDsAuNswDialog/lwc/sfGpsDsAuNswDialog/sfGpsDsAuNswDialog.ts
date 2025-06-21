@@ -38,11 +38,11 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  primaryButtonText: string;
+  primaryButtonText?: string;
 
   // @ts-ignore
   @api 
-  secondaryButtonText: string;
+  secondaryButtonText?: string;
 
   // @ts-ignore
   @api 
@@ -50,18 +50,19 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  bstyle: BStyle;
+  bstyle?: BStyle;
   _bstyle = this.defineEnumObjectProperty<string, BStyle>("bstyle", {
     validValues: BSTYLE_VALUES,
     defaultValue: BSTYLE_DEFAULT
   });
 
   // @ts-ignore
-  @api isDismissible: boolean;
+  @api 
+  isDismissible?: boolean;
   _isDismissible = this.defineBooleanProperty("isDismissible", {
     defaultValue: ISDISMISSIBLE_DEFAULT
   });
@@ -73,7 +74,7 @@ extends SfGpsDsElement {
       "nsw-dialog": true,
       "nsw-dialog--single-action": !this.secondaryButtonText,
       active: this.isOpen,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -84,7 +85,7 @@ extends SfGpsDsElement {
     };
   }
 
-  _labelledById: string;
+  _labelledById?: string;
 
   get computedAriaLabelledById(): string {
     if (this._labelledById === undefined) {

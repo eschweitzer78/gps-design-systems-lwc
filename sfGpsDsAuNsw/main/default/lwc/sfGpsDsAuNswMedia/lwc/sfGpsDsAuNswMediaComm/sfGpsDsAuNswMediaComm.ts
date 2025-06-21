@@ -35,31 +35,31 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  image: string;
+  image?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
-  video: string;
+  video?: string;
 
   // @ts-ignore
   @api 
-  videoTitle: string;
+  videoTitle?: string;
 
   // @ts-ignore
   @api 
-  position: Position;
+  position?: Position;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  caption: string;
+  caption?: string;
   _captiontHtml = this.defineMarkdownContentProperty("content", {
     errorCode: "CO-MD",
     errorText: "Issue when parsing Caption markdown"
@@ -68,12 +68,12 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
     if (this._captiontHtml.value && this.refs.caption) {
       replaceInnerHtml(this.refs.caption, this._captiontHtml.value);

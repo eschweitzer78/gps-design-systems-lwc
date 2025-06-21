@@ -20,9 +20,9 @@ declare module "c/sfGpsDsAuNswBreadcrumbs" {
     _showMore: boolean;
     _moreToggleKey: string;
     
-    readonly computedClassName: any;
-    readonly computedOlClassName: any;
-    readonly decoratedItems: DecoratedLink[];
+    get computedClassName(): any;
+    get computedOlClassName(): any;
+    get decoratedItems(): DecoratedLink[];
 
     handleMoreToggle(event: MouseEvent): void;
   }

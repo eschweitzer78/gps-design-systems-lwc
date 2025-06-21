@@ -35,25 +35,30 @@ extends SfGpsDsElement {
   // @ts-ignore
   @api 
   arLabel: string = "Skip to links";
-  // @ts-ignore
-  @api 
-  navLabel: string = "Skip to navigation";
-  // @ts-ignore
-  @api 
-  contentLabel: string = "Skip to content";
-  // @ts-ignore
-  @api 
-  content: string;
-  // @ts-ignore
-  @api 
-  nav: string;
-  // @ts-ignore
-  @api 
-  className: string;
 
   // @ts-ignore
   @api 
-  cstyle: CStyle;
+  navLabel: string = "Skip to navigation";
+
+  // @ts-ignore
+  @api 
+  contentLabel: string = "Skip to content";
+
+  // @ts-ignore
+  @api 
+  content?: string;
+
+  // @ts-ignore
+  @api 
+  nav?: string;
+  
+  // @ts-ignore
+  @api 
+  className?: string;
+
+  // @ts-ignore
+  @api 
+  cstyle?: CStyle;
   _cstyle = this.defineEnumObjectProperty<CStyleValue, CStyle>("cstyle", {
     validValues: CSTYLE_VALUES,
     defaultValue: CSTYLE_DEFAULT
@@ -72,7 +77,7 @@ extends SfGpsDsElement {
     return {
       "nsw-masthead": true,
       [this._cstyle.value.masthead]: this._cstyle.value.masthead,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 }

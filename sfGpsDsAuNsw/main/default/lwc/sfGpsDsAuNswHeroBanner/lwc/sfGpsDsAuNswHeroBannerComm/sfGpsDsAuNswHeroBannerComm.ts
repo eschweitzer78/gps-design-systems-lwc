@@ -24,39 +24,39 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  subtitle: string;
+  subtitle?: string;
 
   // @ts-ignore
   @api 
-  cstyle: CStyle;
+  cstyle?: CStyle;
 
   // @ts-ignore
   @api 
-  wide: boolean;
+  wide?: boolean;
 
   // @ts-ignore
   @api 
-  featured: boolean;
+  featured?: boolean;
 
   // @ts-ignore
   @api 
-  lines: boolean;
+  lines?: boolean;
 
   // @ts-ignore
   @api 
-  image: string;
+  image?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  cta: string;
+  cta?: string;
   _cta = this.defineMarkdownFirstLinkProperty("cta", {
     errorCode: "CT-MD",
     errorText: "Issue when parsing Call to action markdown"
@@ -64,7 +64,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api
-  links: string;
+  links?: string;
   _links = this.defineMarkdownLinksProperty("links", {
     errorCode: "LI-MD",
     errorText: "Issue when parsing Links markdown"
@@ -72,7 +72,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api
-  intro: string;
+  intro?: string;
   _introHtml = this.defineMarkdownContentProperty("intro", {
     errorCode: "IN-MD",
     errorText: "Issue when parsing Intro markdown"
@@ -80,7 +80,7 @@ extends SfGpsDsLwc {
 
   /* computed */
 
-  get computedImage(): BannerImage {
+  get computedImage(): BannerImage | null {
     return this.image 
       ? { 
           src: this.image, 
@@ -92,12 +92,12 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
     if (
       this._introHtml.value && 

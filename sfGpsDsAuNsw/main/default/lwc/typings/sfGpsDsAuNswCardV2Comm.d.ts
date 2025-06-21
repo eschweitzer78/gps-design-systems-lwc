@@ -10,19 +10,21 @@ declare module "c/sfGpsDsAuNswCardV2Comm" {
     cstyle: CStyle;
     orientation: Orientation;
     dateStyle: DateStyle;
-    headline: boolean;
-    tag: string;
-    image: string;
-    imageAlt: string;
+    headline?: boolean;
+    tag?: string;
+    image?: string;
+    imageAlt?: string;
     preventDefault: boolean;
-    className: string;
+    className?: string;
 
     useMarkup: string | boolean;
 
-    title: string;
-    date: string;
-    copy: string;
-    footer: string;
+    //title: string;
+    date?: string;
+    copy?: string;
+    footer?: string;
+
+    click(): void;
 
     // private
 
@@ -30,18 +32,16 @@ declare module "c/sfGpsDsAuNswCardV2Comm" {
     _footerSlotted: boolean;
     _title: PropertyAccessor<Link>;
 
-    readonly _titleText: string;
-    readonly _titleUrl: string;
+    get _titleText(): string | undefined;
+    get _titleUrl(): string | undefined;
 
     _copyHtml: PropertyAccessor<string>;
     _footerHtml: PropertyAccessor<string>;
 
-    readonly highlight: boolean;
+    get highlight(): boolean;
+    get computedCopyClassName(): string | undefined;
+    get computedFooterClassName(): string | undefined;
 
-    readonly computedCopyClassName: string;
-    readonly computedFooterClassName: string;
-
-    click(): void;
     handleSlotChange(event: Event): void;
     handleNavigate(event: CustomEvent): void;
   }

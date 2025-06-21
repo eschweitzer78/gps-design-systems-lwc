@@ -20,8 +20,8 @@ declare module "c/sfGpsDsAuNswUtilityList" {
     copiedLabel: string;
     shareLabel: string;
     shareUrl: string;
-    shareConfig: SocialSharingInfo[];
-    className: string;
+    shareConfig?: SocialSharingInfo[];
+    className?: string;
 
     orientation: ListOrientation;
 
@@ -29,16 +29,16 @@ declare module "c/sfGpsDsAuNswUtilityList" {
 
     _orientation: PropertyAccessor<string>;
 
-    readonly computedClassName: any;
-    readonly computedCopyClassName: any;
+    get computedClassName(): any;
+    get computedCopyClassName(): any;
 
-    readonly facebook: SocialSharingInfo;
-    readonly linkedin: SocialSharingInfo;
-    readonly twitter: SocialSharingInfo;
-    readonly email: SocialSharingInfo;
+    get facebook(): SocialSharingInfo | undefined;
+    get linkedin(): SocialSharingInfo | undefined;
+    get twitter(): SocialSharingInfo | undefined;
+    get email(): SocialSharingInfo | undefined;
 
-    _socialShareId: string;
-    readonly computedSocialShareId: string;
+    _socialShareId?: string;
+    get computedSocialShareId(): string;
 
     _clipboardCopied: boolean;
 
@@ -53,6 +53,6 @@ declare module "c/sfGpsDsAuNswUtilityList" {
     handleShareClick(): void;
     handleShareKeyup(event: KeyboardEvent): void;
 
-    anchor: HTMLElement;
+    anchor?: HTMLElement;
   }
 }

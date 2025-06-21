@@ -10,22 +10,21 @@ declare module "c/sfGpsDsAuNswHeroSearchComm" {
   class SfGpsDsAuNswHeroSearchComm 
   extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
     title: string;
-    intro: string;
-    image: string;
-    className: string;
+    intro?: string;
+    image?: string;
+    className?: string;
 
     srLabel: string;
     srSearchButtonLabel: string;
-    showLabel: boolean;
-    bStyle: ButtonStyle;
-
-    links: string;
+    showLabel?: boolean;
+    bStyle?: ButtonStyle;
+    links?: string;
 
     // private
 
     _links: PropertyAccessor<Link[]>;
 
-    readonly computedStyle: string;
+    get computedStyle(): string;
 
     handleSearch(event: CustomEvent): void;
   }

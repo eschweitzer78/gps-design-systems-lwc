@@ -33,20 +33,20 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  url: string;
+  url?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: navItems, array of navigation item objects { url, text, subNav: ... } */
 
-  _navItems: SideNavMenuItem[];
-  _navItemsOriginal: AdaptedNavigationMenuItem[];
+  _navItems?: SideNavMenuItem[];
+  _navItemsOriginal?: AdaptedNavigationMenuItem[];
 
   // @ts-ignore
   @api
-  get navItems(): AdaptedNavigationMenuItem[] {
+  get navItems(): AdaptedNavigationMenuItem[] | undefined {
     return this._navItemsOriginal;
   }
 
@@ -60,11 +60,11 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-side-nav": true,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
-  _labelledById: string;
+  _labelledById?: string;
 
   get computedAriaLabelledById(): string {
     if (!this._labelledById) {
@@ -76,7 +76,7 @@ extends SfGpsDsElement {
 
   /* methods */
 
-  _mapItems: SideNavMenuItemMap;
+  _mapItems?: SideNavMenuItemMap;
 
   mapItems(
     parentIndex: string, 
@@ -88,8 +88,14 @@ extends SfGpsDsElement {
     let index = 0;
 
     return items.map((item) => {
-      let isActive = currentUrl && currentUrl.includes(item.url);
-      let isCurrent = currentUrl && currentUrl.endsWith(item.url);
+      let isActive = 
+        !!item.url && 
+        !!currentUrl && 
+        currentUrl.includes(item.url);
+      let isCurrent = 
+        !!item.url && 
+        !!currentUrl && 
+        currentUrl.endsWith(item.url);
 
       let result: SideNavMenuItem = {
         ...item,
@@ -97,15 +103,15 @@ extends SfGpsDsElement {
         url: item.url || `javascript${":"}void(0)`,
         level: parentLevel + 1,
         isActive: isActive,
-        className: isActive ? "active" : null,
-        anchorClassName: isCurrent ? "current" : null,
-        ariaCurrent: isCurrent ? "page" : null,
+        className: isActive ? "active" : undefined,
+        anchorClassName: isCurrent ? "current" : undefined,
+        ariaCurrent: isCurrent ? "page" : undefined,
         subNav: []
       };
 
       if (item.subNav) {
         result.subNav = this.mapItems(
-          result.index,
+          result.index as string,
           parentLevel + 1,
           map,
           item.subNav
@@ -122,7 +128,7 @@ extends SfGpsDsElement {
         }
       }
 
-      map[result.index] = result;
+      map[result.index as string] = result;
       return result;
     });
   }
@@ -131,7 +137,7 @@ extends SfGpsDsElement {
     let map: SideNavMenuItemMap = {};
     this._navItems = this._navItemsOriginal
       ? this.mapItems("navitem", 0, map, this._navItemsOriginal)
-      : null;
+      : undefined;
     this._mapItems = map;
   }
 

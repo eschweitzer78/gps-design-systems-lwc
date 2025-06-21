@@ -19,23 +19,23 @@ class SfGpsDsAuNswLowerFooterIp
 extends SfGpsDsNavigation {
   // @ts-ignore
   @api 
-  statement: string;
+  statement?: string;
 
   // @ts-ignore
   @api 
-  linkedInUrl: string;
+  linkedInUrl?: string;
 
   // @ts-ignore
   @api 
-  twitterXUrl: string;
+  twitterXUrl?: string;
 
   // @ts-ignore
   @api 
-  facebookUrl: string;
+  facebookUrl?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: mode, String */
 
@@ -59,7 +59,7 @@ extends SfGpsDsNavigation {
         {
           actionType: "ExternalLink",
           actionValue: "https://www.nsw.gov.au/accessibility-statement",
-          imageUrl: null,
+          imageUrl: undefined,
           label: "Accessibility statement",
           subMenu: [],
           target: "CurrentWindow"
@@ -67,7 +67,7 @@ extends SfGpsDsNavigation {
         {
           actionType: "ExternalLink",
           actionValue: "https://www.nsw.gov.au/nsw-government/copyright",
-          imageUrl: null,
+          imageUrl: undefined,
           label: "Copyright",
           subMenu: [],
           target: "CurrentWindow"
@@ -75,7 +75,7 @@ extends SfGpsDsNavigation {
         {
           actionType: "ExternalLink",
           actionValue: "https://www.nsw.gov.au/nsw-government/disclaimer",
-          imageUrl: null,
+          imageUrl: undefined,
           label: "Disclaimer",
           subMenu: [],
           target: "CurrentWindow"
@@ -146,7 +146,7 @@ extends SfGpsDsNavigation {
 
   // @ts-ignore
   @api
-  copyrightMention: string;
+  copyrightMention?: string;
   _copyrightMentionHtml = this.defineMarkdownUnpackedFirstPProperty("copyrightMention", {
     errorCode: "CM-MD",
     errorText: "Issue when parsing Copyright mention markdown"
@@ -154,7 +154,7 @@ extends SfGpsDsNavigation {
 
   // @ts-ignore
   @api
-  builtMention: string;
+  builtMention?: string;
   _builtMentionHtml = this.defineMarkdownUnpackedFirstPProperty("builtMention", {
     errorCode: "CM-MD",
     errorText: "Issue when parsing Built mention markdown"
@@ -179,7 +179,7 @@ extends SfGpsDsNavigation {
   /* lifecycle */
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
     
     if (
       this.refs.copyright &&

@@ -47,44 +47,53 @@ extends SfGpsDsLwc {
   title = "";
 
   // @ts-ignore
-  @api 
-  tab1Label: string;
-  // @ts-ignore
-  @api 
-  tab2Label: string;
-  // @ts-ignore
-  @api 
-  tab3Label: string;
-  // @ts-ignore
-  @api 
-  tab4Label: string;
-  // @ts-ignore
-  @api 
-  tab5Label: string;
-  // @ts-ignore
-  @api 
-  tab6Label: string;
-  // @ts-ignore
-  @api 
-  tab7Label: string;
-  // @ts-ignore
-  @api 
-  tab8Label: string;
-  // @ts-ignore
-  @api 
-  tab9Label: string;
-  // @ts-ignore
-  @api 
-  tab10Label: string;
-
-  // @ts-ignore
-  @api 
-  // @ts-ignore
-  firstChild: boolean = FIRSTCHILD_DEFAULT;
+  @api
+  tab1Label?: string;
 
   // @ts-ignore
   @api
-  tabPaddingStyle: TabPaddingStyle;
+  tab2Label?: string;
+
+  // @ts-ignore
+  @api
+  tab3Label?: string;
+
+  // @ts-ignore
+  @api
+  tab4Label?: string;
+
+  // @ts-ignore
+  @api
+  tab5Label?: string;
+
+  // @ts-ignore
+  @api
+  tab6Label?: string;
+
+  // @ts-ignore
+  @api
+  tab7Label?: string;
+
+  // @ts-ignore
+  @api
+  tab8Label?: string;
+
+  // @ts-ignore
+  @api 
+  tab9Label?: string;
+
+  // @ts-ignore
+  @api
+  tab10Label?: string;
+
+  // @ts-ignore
+  @api 
+  // @ts-ignore
+  firstChild = FIRSTCHILD_DEFAULT;
+
+  // @ts-ignore
+  @api
+  tabPaddingStyle?: TabPaddingStyle;
   _tabPaddingStyle = this.defineEnumObjectProperty<string>("tabPaddingStyle", {
     validValues: TABPADDINGSTYLE_VALUES,
     defaultValue: TABPADDINGSTYLE_DEFAULT
@@ -92,7 +101,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api
-  tabBorderStyle: TabPaddingStyle;
+  tabBorderStyle?: TabPaddingStyle;
   _tabBorderStyle = this.defineEnumObjectProperty<string>("tabBorderStyle", {
     validValues: TABBORDERSTYLE_VALUES,
     defaultValue: TABBORDERSTYLE_DEFAULT
@@ -115,7 +124,7 @@ extends SfGpsDsLwc {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

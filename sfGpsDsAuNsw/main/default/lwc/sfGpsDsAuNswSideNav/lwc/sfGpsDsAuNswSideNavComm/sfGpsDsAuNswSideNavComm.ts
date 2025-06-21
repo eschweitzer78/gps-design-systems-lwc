@@ -21,7 +21,7 @@ class sfGpsDsAuNswSideNavComm
 extends SfGpsDsNavigation {
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: mode, String */
 
@@ -100,17 +100,17 @@ extends SfGpsDsNavigation {
 
   // @ts-ignore
   @api
-  titleLink: string;
+  titleLink?: string;
   _titleLink = this.defineMarkdownFirstLinkProperty("titleLink", {
     errorCode: "HL-MD",
     errorText: "Issue when parsing Title Link markdown"
   });
 
-  get _title(): string {
+  get _title(): string | undefined {
     return this._titleLink.value?.text;
   }
 
-  get _url(): string {
+  get _url(): string | undefined {
     return this._titleLink.value?.url;
   }
 
@@ -130,7 +130,7 @@ extends SfGpsDsNavigation {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

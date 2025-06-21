@@ -13,12 +13,12 @@ declare module "c/sfGpsDsAuNswAccordion" {
     
     _isOpen: boolean;
 
-    readonly computedClassName: any;
-    readonly computedButtonClassName: any;
-    readonly computedIsHidden: boolean;
+    get computedClassName(): any;
+    get computedButtonClassName(): any;
+    get computedIsHidden(): string | null;
 
-    _controlsId: string;
-    readonly computedAriaControlsId: string;
+    _controlsId?: string;
+    get computedAriaControlsId(): string;
 
     handleClick(event: MouseEvent): void;
   }

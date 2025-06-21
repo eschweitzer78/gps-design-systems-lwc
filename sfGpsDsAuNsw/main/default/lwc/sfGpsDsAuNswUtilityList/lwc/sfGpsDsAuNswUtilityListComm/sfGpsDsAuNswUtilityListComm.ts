@@ -11,7 +11,7 @@ import type {
   SocialSharingInfo 
 } from "c/sfGpsDsAuNswUtilityList";
 
-const SHARECONFIG_DEFAULT = [];
+const SHARECONFIG_DEFAULT: SocialSharingInfo[] = [];
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuNswUtilityListComm";
@@ -21,23 +21,23 @@ class sfGpsDsAuNswUtilityListComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  printLabel: string;
+  printLabel?: string;
 
   // @ts-ignore
   @api 
-  copyLabel: string;
+  copyLabel?: string;
 
   // @ts-ignore
   @api 
-  shareLabel: string;
+  shareLabel?: string;
 
   // @ts-ignore
   @api 
-  shareUrl: string;
+  shareUrl?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: shareConfig */
 
@@ -80,7 +80,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

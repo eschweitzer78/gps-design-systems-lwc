@@ -51,7 +51,7 @@ extends SfGpsDsMarkdownElement {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

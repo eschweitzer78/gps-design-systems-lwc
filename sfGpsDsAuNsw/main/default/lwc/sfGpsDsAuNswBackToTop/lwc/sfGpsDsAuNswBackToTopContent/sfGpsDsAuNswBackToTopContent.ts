@@ -5,7 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import { 
+  api 
+} from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 
 const ISACTIVE_DEFAULT = false;
@@ -18,21 +20,21 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  isActive: boolean;
+  isActive?: boolean;
   _isActive = this.defineBooleanProperty("isActive",  {
     defaultValue: ISACTIVE_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  isMobile: boolean;
+  isMobile?: boolean;
   _isMobile = this.defineBooleanProperty("isMobile",  {
     defaultValue: ISMOBILE_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* computed */
 
@@ -43,7 +45,7 @@ extends SfGpsDsElement {
       "nsw-button--flex": true,
       "nsw-back-to-top": true,
       active: this._isActive.value,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 

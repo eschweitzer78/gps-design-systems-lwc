@@ -5,7 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import { 
+  api 
+} from "lwc";
 import SfGpsDsAuNswBreadcrumbsComm from "c/sfGpsDsAuNswBreadcrumbsComm";
 import tmpl from "./sfGpsDsAuNswBreadcrumbsLwr.html";
 
@@ -14,7 +16,7 @@ class SfGpsDsAuNswBreadcrumbsLwr
 extends SfGpsDsAuNswBreadcrumbsComm {
   // @ts-ignore
   @api 
-  containerClassName: string = "nsw-container nsw-p-bottom-sm";
+  containerClassName = "nsw-container nsw-p-bottom-sm";
 
   // @ts-ignore
   @api
@@ -64,7 +66,7 @@ extends SfGpsDsAuNswBreadcrumbsComm {
   }
 
   set items(markdown) {
-  // @ts-ignore
+    // @ts-ignore
     super.items = markdown;
   }
 

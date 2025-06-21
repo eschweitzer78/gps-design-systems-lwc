@@ -15,11 +15,12 @@ import {
 import SfGpsDsElement from "c/sfGpsDsElement";
 
 import type { 
-  TagLink 
+  TagLink,
+  DisplayTagLink
 } from "c/sfGpsDsAuNswTags";
 
 const TAG_PREFIX = "sf-gps-ds-au-nsw-tag";
-const DEFAULT_TAGS = [];
+const DEFAULT_TAGS: TagLink[] = [];
 
 const ASCHECKBOXES_DEFAULT = false;
 
@@ -30,11 +31,11 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  asCheckboxes: boolean;
+  asCheckboxes?: boolean;
   _asCheckboxes = this.defineBooleanProperty("asCheckboxes", {
     defaultValue: ASCHECKBOXES_DEFAULT,
     watcher: () => this.updateTags()
@@ -62,11 +63,11 @@ extends SfGpsDsElement {
     return {
       "nsw-list": true,
       "nsw-list--8": true,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
-  _idBase: string;
+  _idBase?: string;
 
   get idBase(): string {
     if (this._idBase == null) {
@@ -87,7 +88,7 @@ extends SfGpsDsElement {
           className: {
             "nsw-tag": true,
             "nsw-tag--checkbox": this._asCheckboxes.value,
-            [tag.className]: !!tag.className
+            [tag.className || ""]: !!tag.className
           }
         }))
       : DEFAULT_TAGS;
@@ -103,9 +104,12 @@ extends SfGpsDsElement {
 
     const element = event.target as HTMLElement;
 
-    if (element === null || this._tags === null) {
+    if (element == null || this._tags == null) {
       return;
     }
+
+    if (element.dataset.idx == undefined) 
+      return;
 
     const targetIndex = parseInt(element.dataset.idx, 10);
     const tag = this._tags[targetIndex];
@@ -118,7 +122,6 @@ extends SfGpsDsElement {
     ) {
       return;
     }
-
 
     this.dispatchEvent(
       new CustomEvent("change", {

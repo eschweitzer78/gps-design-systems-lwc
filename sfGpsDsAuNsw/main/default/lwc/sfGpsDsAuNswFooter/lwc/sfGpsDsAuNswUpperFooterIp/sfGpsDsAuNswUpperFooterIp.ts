@@ -10,7 +10,7 @@ class SfGpsDsAuNswUpperFooterIp
 extends SfGpsDsNavigation {
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: mode, String */
 

@@ -24,16 +24,16 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  content: string;
+  content?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   
   // @ts-ignore
   @api 
-  headingLevel: HeadingLevel;
+  headingLevel?: HeadingLevel;
   _headingLevel = this.defineIntegerProperty<HeadingLevel>("headingLevel", {
     minValue: 2,
     maxValue: 4,
@@ -42,7 +42,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  filled: boolean;
+  filled?: boolean;
   _filled = this.defineBooleanProperty("filled", {
     defaultValue: FILLED_DEFAULT
   });
@@ -53,7 +53,7 @@ extends SfGpsDsElement {
     return {
       "nsw-steps__item": true,
       "nsw-steps__item--fill": this._filled.value,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     }
   }
 
@@ -68,7 +68,7 @@ extends SfGpsDsElement {
   /* lifecycle */
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
     if (this.refs.content) {
       replaceInnerHtml(this.refs.content, this.content || "");

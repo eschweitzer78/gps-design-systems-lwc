@@ -22,15 +22,14 @@ declare module "c/sfGpsDsAuNswContentBlockCollectionComm" {
     mdWidth: WidthRatio;
     lgWidth: WidthRatio;
     xlWidth: WidthRatio;
-
-    className: string;
+    className?: string;
 
     // private
 
-    readonly computedClassName: any;
-    readonly computedColClassName: any;
-    readonly _isEmpty: boolean;
-    readonly i18n: Record<string, string>;
+    get computedClassName(): any;
+    get computedColClassName(): any;
+    get _isEmpty(): boolean;
+    get i18n(): Record<string, string>;
 
     mapIpData(data: any): BlockData[];
   }

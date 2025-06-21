@@ -7,12 +7,12 @@ declare module "c/sfGpsDsAuNswBlockLwr" {
   extends SfGpsDsLwc {
     className: string;
     // @ts-ignore
-    firstChild: boolean;
+    firstChild?: boolean;
 
     // private
 
     _firstChild: PropertyAccessor<boolean>;
 
-    readonly computedClassName: any;
+    get computedClassName(): any;
   }
 }

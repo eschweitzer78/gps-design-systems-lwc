@@ -30,17 +30,17 @@ declare module "c/sfGpsDsAuNswButton" {
   export default 
   class sfGpsDsAuNswButton
   extends SfGpsDsElement {
-    label: string;
-    link: string;
+    label?: string;
+    link?: string;
     type: Type;
-    iconName: string;
-    className: string;
+    iconName?: string;
+    className?: string;
 
-    cstyle: CStyle;
-    iconStyle: IconStyle;
-    rendering: Rendering;
-    disabled: boolean;
-    mobileFullWidth: boolean;
+    cstyle?: CStyle;
+    iconStyle?: IconStyle;
+    rendering?: Rendering;
+    disabled?: boolean;
+    mobileFullWidth?: boolean;
 
     // private
 
@@ -50,10 +50,10 @@ declare module "c/sfGpsDsAuNswButton" {
     _disabled: PropertyAccessor<boolean>;
     _mobileFullWidth: PropertyAccessor<boolean>;
 
-    readonly computedClassName: any;
-    readonly computedIsAnchor: boolean;
-    readonly computedHasIconBefore: boolean;
-    readonly computedHasIconAfter: boolean;
+    get computedClassName(): any;
+    get computedIsAnchor(): boolean;
+    get computedHasIconBefore(): boolean;
+    get computedHasIconAfter(): boolean;
 
     handleClick(event: MouseEvent): void;
   }

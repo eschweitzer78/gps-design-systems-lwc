@@ -11,12 +11,12 @@ declare module "c/sfGpsDsAuNswBreadcrumbsRecordComm" {
     className: string;
     
     homeLabel: string;
-    recordId: string;
-    objectApiName: string;
+    recordId?: string;
+    objectApiName?: string;
 
     // private
 
-    _homeLabel: string;
+    _homeLabel?: string;
     _recordId: PropertyAccessor<string>;
     _objectApiName: PropertyAccessor<string>;
 

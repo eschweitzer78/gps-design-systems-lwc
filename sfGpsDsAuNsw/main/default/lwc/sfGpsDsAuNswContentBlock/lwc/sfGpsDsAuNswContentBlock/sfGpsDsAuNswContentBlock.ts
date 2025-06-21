@@ -20,19 +20,19 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  image: string;
+  image?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
-  icon: string;
+  icon?: string;
 
   // @ts-ignore
   @api 
-  mainLink: string;
+  mainLink?: string;
 
   // @ts-ignore
   @api 
@@ -40,7 +40,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: headline - deprecated, use title instead */
 
@@ -60,7 +60,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-content-block": true,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 }

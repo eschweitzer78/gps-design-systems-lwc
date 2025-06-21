@@ -31,15 +31,17 @@ declare module "c/sfGpsDsAuNswCardCollectionComm" {
     lgWidth: WidthRatio;
     xlWidth: WidthRatio;
 
-    className: string;
+    className?: string;
 
     // private
 
-    readonly computedClassName: any;
-    readonly computedColClassName: any;
-    readonly isEmpty: boolean;
-    readonly i18n: Record<string, string>
+    get computedClassName(): any;
+    get computedColClassName(): any;
+    get isEmpty(): boolean;
+    get i18n(): Record<string, string>
 
-    mapIpData(data: object | object[]): CardData[];
+    mapIpData(
+      data: object | object[]
+    ): CardData[];
   }
 }

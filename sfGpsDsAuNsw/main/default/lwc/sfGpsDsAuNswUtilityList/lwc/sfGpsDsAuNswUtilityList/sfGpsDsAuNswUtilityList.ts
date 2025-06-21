@@ -34,35 +34,35 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  printLabel: string = "Print this page";
+  printLabel = "Print this page";
 
   // @ts-ignore
   @api 
-  copyLabel: string = "Copy link";
+  copyLabel = "Copy link";
 
   // @ts-ignore
   @api 
-  copiedLabel: string = "Copied";
+  copiedLabel = "Copied";
 
   // @ts-ignore
   @api 
-  shareLabel: string = "Share this page";
+  shareLabel = "Share this page";
 
   // @ts-ignore
   @api 
-  shareUrl: string = "https://www.digital.nsw.gov.au";
+  shareUrl = "https://www.digital.nsw.gov.au";
 
   // @ts-ignore
   @api 
-  shareConfig: SocialSharingInfo[];
+  shareConfig?: SocialSharingInfo[];
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  orientation: ListOrientation;
+  orientation?: ListOrientation;
   _orientation = this.defineEnumObjectProperty<string, ListOrientation>("orientation", {
     validValues: ORIENTATION_VALUES,
     defaultValue: ORIENTATION_DEFAULT
@@ -78,7 +78,7 @@ extends SfGpsDsElement {
     return {
       "nsw-utility-list": true,
       [this._orientation.value]: !!this._orientation.value,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -89,31 +89,31 @@ extends SfGpsDsElement {
     };
   }
 
-  get facebook(): SocialSharingInfo {
+  get facebook(): SocialSharingInfo | undefined {
     return isArray(this.shareConfig)
-      ? this.shareConfig.find((item) => item.network === "facebook")
-      : null;
+      ? (this.shareConfig as SocialSharingInfo[]).find((item) => item.network === "facebook")
+      : undefined;
   }
 
-  get linkedin(): SocialSharingInfo {
+  get linkedin(): SocialSharingInfo | undefined {
     return isArray(this.shareConfig)
-      ? this.shareConfig.find((item) => item.network === "linkedin")
-      : null;
+      ? (this.shareConfig as SocialSharingInfo[]).find((item) => item.network === "linkedin")
+      : undefined;
   }
 
-  get twitter(): SocialSharingInfo {
+  get twitter(): SocialSharingInfo | undefined {
     return isArray(this.shareConfig)
-      ? this.shareConfig.find((item) => item.network === "twitter")
-      : null;
+      ? (this.shareConfig as SocialSharingInfo[]).find((item) => item.network === "twitter")
+      : undefined;
   }
 
-  get email(): SocialSharingInfo {
+  get email(): SocialSharingInfo | undefined {
     return isArray(this.shareConfig)
-      ? this.shareConfig.find((item) => item.network === "email")
-      : null;
+      ? (this.shareConfig as SocialSharingInfo[]).find((item) => item.network === "email")
+      : undefined;
   }
 
-  _socialShareId: string;
+  _socialShareId?: string;
 
   get computedSocialShareId(): string {
     if (this._socialShareId == null) {
@@ -129,7 +129,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @track 
-  _clipboardCopied: boolean;
+  _clipboardCopied: boolean = false;
 
   copyToClipboard(): void {
     if (navigator.clipboard) {
@@ -209,10 +209,10 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @track 
-  anchor: HTMLElement;
+  anchor?: HTMLElement;
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
     this.anchor = this.refs.anchor;
   }
 }

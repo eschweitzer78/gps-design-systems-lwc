@@ -18,26 +18,29 @@ class SfGpsDsAuNswMarkupElementV2Comm
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  markup: string;
+  markup?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* lifecycle */
 
   renderedCallback() {
-    super.renderedCallback();
-
-    let tmpl = document.createElement("template");
-    replaceInnerHtml(tmpl, this.markup);
+    super.renderedCallback?.();
 
     const elt = this.refs.markup;
-    if (elt) elt.parentNode.replaceChild(tmpl.content, elt);
+
+    if (this.markup && elt) {
+      let tmpl = document.createElement("template");
+      replaceInnerHtml(tmpl, this.markup);
+
+      elt.parentNode?.replaceChild(tmpl.content, elt);
+    }
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
 
     if (this.className) {

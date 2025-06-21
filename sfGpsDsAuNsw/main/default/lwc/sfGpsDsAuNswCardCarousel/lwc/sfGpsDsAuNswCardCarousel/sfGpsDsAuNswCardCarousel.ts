@@ -21,10 +21,11 @@ import SwipeContent from "./swipe-content";
 import type { 
   CardData, 
   CardInternalData, 
-  CardDisplayData 
+  CardDisplayData, 
+  DotInfo,
+  Direction,
+  SwipeEvent
 } from "c/sfGpsDsAuNswCardCarousel";
-
-type Direction = "next" | "prev" | "click";
 
 const DEFAULT_NAVIGATION_ITEM_CLASSNAME = "nsw-carousel__nav-item";
 const DEFAULT_NAVIGATION_CLASSNAME = "nsw-carousel__navigation";
@@ -49,12 +50,15 @@ const NAVIGATION_DEFAULT = true;
 const LOOP_DEFAULT = false;
 const COUNTER_DEFAULT = false;
 
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsAuNswCardCarousel";
+
 export default 
 class SfGpsDsAuNswCardCarousel 
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  accessibilityLabel: string; // data-description
+  accessibilityLabel?: string; // data-description
 
   // @ts-ignore
   @api 
@@ -66,41 +70,41 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  justifyContent: boolean;
+  justifyContent?: boolean;
 
   // @ts-ignore
   @api 
-  navigationItemClassName: string;
+  navigationItemClassName?: string;
 
   // @ts-ignore
   @api 
-  navigationClassName: string;
+  navigationClassName?: string;
 
   // @ts-ignore
   @api 
-  paginationClassName: string;
+  paginationClassName?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  drag: boolean;
+  drag?: boolean;
   _drag = this.defineBooleanProperty("drag", {
     defaultValue: DRAG_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  navigation: boolean;
+  navigation?: boolean;
   _navigation = this.defineBooleanProperty("navigation", {
     defaultValue: NAVIGATION_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  loop: boolean;
+  loop?: boolean;
   _loopRequested = this.defineBooleanProperty("loop", {
     defaultValue: LOOP_DEFAULT
   });
@@ -111,7 +115,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  counter: boolean;
+  counter?: boolean;
   _counter = this.defineBooleanProperty("counter", {
     defaultValue: COUNTER_DEFAULT,
     watcher: () => {
@@ -121,17 +125,16 @@ extends SfGpsDsElement {
 
   /* api: items, Array of Objects */
 
-  _items: CardInternalData[];
-  _itemsOriginal: CardData[];
-  _itemsNb: number;
+  _items?: CardInternalData[];
+  _itemsOriginal?: CardData[];
 
   // @ts-ignore
   @api
-  get items() {
+  get items(): CardData[] | undefined {
     return this._itemsOriginal;
   }
 
-  set items(value) {
+  set items(value: CardData[]) {
     this._itemsOriginal = value;
     this.updateItems();
   }
@@ -152,17 +155,24 @@ extends SfGpsDsElement {
       _ariaLabel: formatTemplate(I18N.itemAriaLabel, {
         current: index + 1,
         total: itemsNb
-      }),
+      }) as string,
       _className: ITEM_CLASSNAME,
       _style: {}
     }));
 
     this.itemsNb = itemsNb;
+
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, "< updateItems",
+        "_items", JSON.stringify(this._items),
+      );
+    }
   }
 
-  itemsNb: number;
-  visibleItemsNb: number = null;
-  itemsWidth: number = null;
+  itemsNb: number = 0;
+  visibleItemsNb?: number;
+  itemsWidth?: number;
   itemOriginalWidth: number | boolean = false;
 
   selectedItem: number = 0;
@@ -171,11 +181,12 @@ extends SfGpsDsElement {
   animating: boolean = false;
   dragStart: number | boolean = false;
 
-  selectedDotIndex: number;
+  selectedDotIndex?: number;
 
   // @ts-ignore
   @track 
-  itemAutoSize: string;
+  itemAutoSize?: string;
+
   // @ts-ignore
   @track 
   totTranslate: number = 0;
@@ -192,7 +203,7 @@ extends SfGpsDsElement {
       selected: this.selectedItem + 1,
       visible: this.visibleItemsNb,
       total: this.itemsNb
-    });
+    }) as string;
   }
 
   get computedNavigationItemClassName(): any {
@@ -212,21 +223,16 @@ extends SfGpsDsElement {
   }
 
   get selectedDot(): number {
-    return Math.ceil(this.selectedItem / this.visibleItemsNb);
+    return Math.ceil(this.selectedItem / (this.visibleItemsNb || 1));
   }
 
   get dotsNb(): number {
     return this.visibleItemsNb
-      ? Math.ceil(this.itemsNb / this.visibleItemsNb)
+      ? Math.ceil((this.itemsNb as number) / this.visibleItemsNb)
       : 0;
   }
 
-  get dots(): Array<{
-    key: string,
-    indexP1: number,
-    className: string,
-    indexClassName: string
-  }> {
+  get dots(): Array<DotInfo> {
     const selectedDot = this.selectedDot;
     const indexClassName = this.navigationPagination ? "" : SR_CLASSNAME;
     const dotsNb = this.dotsNb;
@@ -252,7 +258,7 @@ extends SfGpsDsElement {
     return Array.from(this.querySelectorAll("." + CONTROL_CLASSNAME));
   }
 
-  get liveFirstItem(): HTMLElement {
+  get liveFirstItem(): HTMLElement | null {
     return this.refs.list.querySelector("li");
   }
 
@@ -269,54 +275,65 @@ extends SfGpsDsElement {
   }
 
   get displayItems(): CardDisplayData[] {
-    let rv = [];
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, "> displayItems",
+        "_items", JSON.stringify(this._items)
+      );
+    }
+
+    let rv: CardDisplayData[] = [];
     const itemsNb = this.itemsNb;
-    const visibleItemsNb = this.visibleItemsNb;
+    const visibleItemsNb = this.visibleItemsNb || 0;
     const carouselActive = itemsNb > visibleItemsNb;
     let displayIndex = 0;
 
     if (this.__loop) {
-      for (let index = itemsNb - visibleItemsNb; index < itemsNb; index += 1) {
+      for (let index = itemsNb - visibleItemsNb; index < itemsNb; index++) {
+        const item = (this._items as CardInternalData[])[index];
         rv.push({
-          ...this._items[index],
+          ...item,
           _key: `card-b${index + 1}`,
-          _displayIndex: displayIndex++,
+          _displayIndex: `${displayIndex++}`,
           _style: this.itemsWidth
             ? {
-                ...this._items[index]._style,
+                ...item._style,
                 width: `${this.itemsWidth}px`
               }
-            : this._items[index]._style
+            : item._style
         });
       }
     }
 
-    for (let index = 0; index < itemsNb; index += 1) {
+    for (let index = 0; index < itemsNb; index++) {
+      const item = (this._items as CardInternalData[])[index];
       rv.push({
-        ...this._items[index],
+        ...item,
         _key: `card-${index + 1}`,
-        _displayIndex: displayIndex++,
+        _displayIndex: `${displayIndex++}`,
         _style: this.itemsWidth
           ? {
-              ...this._items[index]._style,
+              ...item._style,
               width: `${this.itemsWidth}px`
             }
-          : this._items[index]._style
+          : item._style
       });
     }
 
     if (this.__loop) {
-      for (let index = 0; index < this.visibleItemsNb; index += 1) {
+      for (let index = 0; index < visibleItemsNb; index += 1) {
+        const item = (this._items as CardInternalData[])[index];
+
         rv.push({
-          ...this._items[index],
+          ...item,
           _key: `card-a${index + 1}`,
-          _displayIndex: displayIndex++,
+          _displayIndex: `${displayIndex++}`,
           _style: this.itemsWidth
             ? {
-                ...this._items[index]._style,
+                ...item._style,
                 width: `${this.itemsWidth}px`
               }
-            : this._items[index]._style
+            : item._style
         });
       }
     }
@@ -324,40 +341,45 @@ extends SfGpsDsElement {
     for (let i = 0; i < rv.length; i += 1) {
       if (this.__loop) {
         const modIndex =
-          (i + this.itemsNb - this.visibleItemsNb) % this.itemsNb;
+          (i + itemsNb - visibleItemsNb) % itemsNb;
         const modMin = this.selectedItem;
         const modMax =
-          (this.selectedItem + this.visibleItemsNb + this.itemsNb) %
-          this.itemsNb;
+          (this.selectedItem + visibleItemsNb + itemsNb) % itemsNb;
 
         if (
           modMin < modMax
             ? modIndex >= modMin && modIndex < modMax
             : modIndex >= modMin || modIndex < modMax
         ) {
-          rv[i]._tabindex = null;
-          rv[i]._ariaHidden = null;
-          rv[i]._ariaCurrent = true;
+          rv[i]._tabindex = undefined;
+          rv[i]._ariaHidden = undefined;
+          rv[i]._ariaCurrent = undefined;
         } else {
           rv[i]._tabindex = "-1";
-          rv[i]._ariaHidden = true;
-          rv[i]._ariaCurrent = null;
+          rv[i]._ariaHidden = undefined;
+          rv[i]._ariaCurrent = undefined;
         }
       } else if (
         (i < this.selectedItem ||
-          i >= this.selectedItem + this.visibleItemsNb) &&
+          i >= this.selectedItem + visibleItemsNb) &&
         carouselActive
       ) {
         rv[i]._tabindex = "-1";
-        rv[i]._ariaHidden = true;
-        rv[i]._ariaCurrent = null;
+        rv[i]._ariaHidden = "true";
+        rv[i]._ariaCurrent = undefined;
       } else {
-        rv[i]._tabindex = null;
-        rv[i]._ariaHidden = null;
-        rv[i]._ariaCurrent = true;
+        rv[i]._tabindex = undefined;
+        rv[i]._ariaHidden = undefined;
+        rv[i]._ariaCurrent = "true";
       }
 
       rv[i]._styleString = styleToString(rv[i]._style);
+    }
+
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, '< displayItems', JSON.stringify(rv)
+      );
     }
 
     return rv;
@@ -371,7 +393,7 @@ extends SfGpsDsElement {
     return (
       !this.__loop &&
       (this.totTranslate <= -this.translateContainer - this.containerWidth ||
-        this.itemsNb <= this.visibleItemsNb)
+        (this.itemsNb || 0) <= (this.visibleItemsNb || 0))
     );
   }
 
@@ -379,7 +401,7 @@ extends SfGpsDsElement {
     return {
       "nsw-carousel": true,
       "nsw-carousel--loaded": !this._initialRender,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -388,7 +410,7 @@ extends SfGpsDsElement {
       "nsw-carousel__list": true,
       "nsw-carousel__list--animating": this.animating,
       "nsw-justify-content-center":
-        this.justifyContent && this.itemsNb < this.visibleItemsNb
+        this.justifyContent && (this.itemsNb || 0) < (this.visibleItemsNb || 0)
     };
   }
 
@@ -403,20 +425,34 @@ extends SfGpsDsElement {
       : `translateX(${this.totTranslate}px)`;
   }
 
-  get i18n() {
-    return I18N || {};
+  get i18n(): Record<string, string> {
+    return I18N;
   }
 
   /* methods - rewritten */
 
-  getIndex(index: number) {
-    const i = index < 0 ? this.getPositiveValue(index, this.itemsNb) : index;
-    return i >= this.itemsNb ? i % this.itemsNb : i;
+  getIndex(
+    index: number
+  ) {
+    if (!this.itemsNb) return 0;
+
+    const i = index < 0 
+      ? this.getPositiveValue(index, this.itemsNb)
+      : index;
+
+    return i >= this.itemsNb 
+      ? i % this.itemsNb 
+      : i;
   }
 
-  getPositiveValue(value, add) {
+  getPositiveValue(
+    value: number, 
+    add: number
+  ): number {
     const val = value + add;
-    return val > 0 ? val : this.getPositiveValue(val, add);
+    return val > 0 
+      ? val 
+      : this.getPositiveValue(val, add);
   }
 
   noLoopTranslateValue(direction: Direction) {
@@ -432,7 +468,7 @@ extends SfGpsDsElement {
         break;
 
       case "click":
-        translate = this.selectedDotIndex * this.translateContainer;
+        translate = this.selectedDotIndex as number * this.translateContainer;
         break;
 
       default:
@@ -445,10 +481,10 @@ extends SfGpsDsElement {
 
     if (translate < -this.translateContainer - this.containerWidth) {
       translate = -this.translateContainer - this.containerWidth;
-      this.selectedItem = this.itemsNb - this.visibleItemsNb;
+      this.selectedItem = (this.itemsNb || 0) - (this.visibleItemsNb || 0);
     }
 
-    if (this.visibleItemsNb > this.itemsNb) {
+    if ((this.visibleItemsNb || 0) > (this.itemsNb || 0)) {
       translate = 0;
     }
 
@@ -469,7 +505,7 @@ extends SfGpsDsElement {
         break;
 
       case "click":
-        translate = this.selectedDotIndex * this.translateContainer;
+        translate = this.selectedDotIndex as number * this.translateContainer;
         break;
 
       default:
@@ -477,7 +513,7 @@ extends SfGpsDsElement {
 
     if (translate > -this.translateContainer) {
       translate -= this.containerWidth;
-      this.selectedItem += this.itemsNb - this.visibleItemsNb;
+      this.selectedItem += (this.itemsNb || 0) - (this.visibleItemsNb || 0);
     } else if (translate < -this.containerWidth) {
       translate += this.containerWidth;
     }
@@ -499,6 +535,7 @@ extends SfGpsDsElement {
       // Otherwise, the totTranslate attribute change is aggregated with subsequent modifications
       // and this will trigger an animation.
       // eslint-disable-next-line dot-notation
+      // @ts-ignore
       this.refs.list.style.transform = this.refs.list.style["msTransform"] =
         this.translateX;
 
@@ -506,14 +543,14 @@ extends SfGpsDsElement {
       setTimeout(() => {
         this.animating = true;
         this.selectedItem = this.getIndex(
-          this.selectedItem - this.visibleItemsNb
+          this.selectedItem - (this.visibleItemsNb || 0)
         );
         this.animateList("prev");
       });
     } else {
       this.animating = true;
       this.selectedItem = this.getIndex(
-        this.selectedItem - this.visibleItemsNb
+        this.selectedItem - (this.visibleItemsNb || 0)
       );
       this.animateList("prev");
     }
@@ -535,6 +572,7 @@ extends SfGpsDsElement {
       // Otherwise, the totTranslate attribute change is aggregated with subsequent modifications
       // and this will trigger an animation.
       // eslint-disable-next-line dot-notation
+      // @ts-ignore
       this.refs.list.style.transform = this.refs.list.style["msTransform"] =
         this.translateX;
 
@@ -542,20 +580,20 @@ extends SfGpsDsElement {
       setTimeout(() => {
         this.animating = true;
         this.selectedItem = this.getIndex(
-          this.selectedItem + this.visibleItemsNb
+          this.selectedItem + (this.visibleItemsNb || 0)
         );
         this.animateList("next");
       });
     } else {
       this.animating = true;
       this.selectedItem = this.getIndex(
-        this.selectedItem + this.visibleItemsNb
+        this.selectedItem + (this.visibleItemsNb || 0)
       );
       this.animateList("next");
     }
   }
 
-  handleListTransitionEnd(event) {
+  handleListTransitionEnd(event: TransitionEvent) {
     if (!this.animating) return;
 
     if (event.propertyName && event.propertyName !== "transform") {
@@ -565,7 +603,7 @@ extends SfGpsDsElement {
     this.animating = false;
   }
 
-  animateList(direction) {
+  animateList(direction: Direction) {
     const initTranslate = this.totTranslate;
     const realTranslate = this.refs.list.style.transform;
 
@@ -612,10 +650,10 @@ extends SfGpsDsElement {
     }
   }
 
-  handleCarouselNavigationClick(event) {
-    const dot = event.target.closest(
+  handleCarouselNavigationClick(event: MouseEvent) {
+    const dot = (event.target as HTMLElement).closest(
       `.${this.computedNavigationItemClassName}`
-    );
+    ) as HTMLElement;
 
     if (!dot || this.animating) {
       return;
@@ -625,7 +663,7 @@ extends SfGpsDsElement {
 
     this.animating = true;
     this.selectedDotIndex = index;
-    this.selectedItem = index * this.visibleItemsNb;
+    this.selectedItem = index * (this.visibleItemsNb || 0);
     this.animateList("click");
   }
 
@@ -636,7 +674,7 @@ extends SfGpsDsElement {
     });
   }
 
-  emitCarouselEvents(eventName, eventDetail) {
+  emitCarouselEvents(eventName: string, eventDetail: any) {
     this.dispatchEvent(
       new CustomEvent(eventName, {
         detail: eventDetail
@@ -644,7 +682,7 @@ extends SfGpsDsElement {
     );
   }
 
-  handleDragStart(event) {
+  handleDragStart(event: CustomEvent) {
     if (
       event.detail?.origin?.closest("." + CONTROL_CLASSNAME) ||
       event.detail?.origin?.closest(
@@ -659,7 +697,7 @@ extends SfGpsDsElement {
     this.dragStart = event.detail.x;
   }
 
-  handleDragging(event) {
+  handleDragging(event: SwipeEvent) {
     if (
       !this.dragStart ||
       this.animating ||
@@ -675,11 +713,12 @@ extends SfGpsDsElement {
     }px)`;
 
     // eslint-disable-next-line dot-notation
+    // @ts-ignore
     this.refs.list.style.transform = this.refs.list.style["msTransform"] =
       translateValue;
   }
 
-  handleDragEnd(event) {
+  handleDragEnd(event: SwipeEvent) {
     if (!this.dragStart) {
       return;
     }
@@ -700,8 +739,8 @@ extends SfGpsDsElement {
   /* lifecycle */
   /* --------- */
 
-  _onWindowResize;
-  _swipeContent;
+  _onWindowResize?: OnWindowResize;
+  _swipeContent?: SwipeContent;
 
   connectedCallback() {
     this.flexSupported = CSS.supports("align-items", "stretch");
@@ -711,27 +750,25 @@ extends SfGpsDsElement {
     if (!this._onWindowResize) {
       this._onWindowResize = new OnWindowResize();
       this._onWindowResize.bind(() => {
-        this.itemAutoSize = null;
-        this.itemsWidth = null;
+        this.itemAutoSize = undefined;
+        this.itemsWidth = undefined;
         this._initialRender = true;
       });
     }
   }
 
   disconnectedCallback() {
-    if (!this._onWindowResize) {
-      this._onWindowResize.unbind();
-    }
+    this._onWindowResize?.unbind();
   }
 
   _initialRender = true;
-  _itemMargin;
+  _itemMargin: number = 0;
 
   renderedCallback() {
     if (this._initialRender) {
-      this._initialRender = false;
+      if (this._items?.length && this.liveFirstItem) {
+        this._initialRender = false;
 
-      if (this._items?.length) {
         const itemStyle = window.getComputedStyle(this.liveFirstItem);
         const containerStyle = window.getComputedStyle(this.refs.wrapper);
         let itemWidth = parseFloat(itemStyle.getPropertyValue("width"));
@@ -777,19 +814,20 @@ extends SfGpsDsElement {
             itemMargin
           ).toFixed(1)
         );
-        this.containerWidth = (this.itemsWidth + itemMargin) * this.itemsNb;
+        this.containerWidth = (this.itemsWidth + itemMargin) * (this.itemsNb || 0);
         this.translateContainer =
           0 - (this.itemsWidth + itemMargin) * this.visibleItemsNb;
         this.totTranslate =
           0 - this.selectedItem * (this.itemsWidth + itemMargin);
 
-        if (this.itemsNb <= this.visibleItemsNb) {
+        if ((this.itemsNb || 0) <= this.visibleItemsNb) {
           this.totTranslate = 0;
         }
 
         /* Install drag behaviour on carousel */
 
-        if (this._drag && window.requestAnimationFrame) {
+        // @ts-ignore
+        if (this._drag.value && window.requestAnimationFrame) {
           const element = this.refs.carousel;
 
           if (!this._swipeContent) {
@@ -803,7 +841,7 @@ extends SfGpsDsElement {
     }
 
     if (!this.flexSupported && this._items) {
-      this.refs.list.style.width = `${(this.itemsWidth + this._itemMargin) * this.visibleItemsNb * 3}px`;
+      this.refs.list.style.width = `${((this.itemsWidth || 0) + this._itemMargin) * (this.visibleItemsNb || 0) * 3}px`;
     }
   }
 }

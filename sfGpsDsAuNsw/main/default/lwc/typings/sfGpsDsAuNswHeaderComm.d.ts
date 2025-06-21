@@ -2,39 +2,43 @@ declare module "c/sfGpsDsAuNswHeaderComm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { NavigationMixin } from "lightning/navigation";
   import type { Stacking } from "c/sfGpsDsAuNswHeader";
+  import type { RecordRepresentation } from "lightning/uiRecordApi";
 
   export default 
   class sfGpsDsAuNswHeaderComm 
   extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
-    masterbrand: string;
-    masterbrandAlt: string;
+    masterbrand?: string;
+    masterbrandAlt?: string;
     srMasterbrandLabel: string;
-    logo: string;
-    logoAlt: string;
+    logo?: string;
+    logoAlt?: string;
     menuLabel: string;
     searchLabel: string;
-    siteTitle: string;
-    siteDescriptor: string;
-    headerUrl: string;
+    siteTitle?: string;
+    siteDescriptor?: string;
+    headerUrl?: string;
     mobile: boolean;
     mobileLogoStacking: Stacking;
     search: boolean;
     profile: boolean;
 
-    profileIpName: string;
-    profileInputJSON: string;
-    profileOptionsJSON: string;
+    profileIpName?: string;
+    profileInputJSON?: string;
+    profileOptionsJSON?: string;
 
-    className: string;
+    className?: string;
 
-    mainNavId: string;
+    mainNavId?: string;
     mainNavIsOpen: boolean;
 
-    getUserDetails({ error, data }): void;
+    getUserDetails(options: { 
+      error: any, 
+      data: RecordRepresentation 
+    }): void;
 
     // private
 
-    userAlias: string;
+    userAlias?: string;
 
     readonly _isGuest: boolean;
 

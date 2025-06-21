@@ -6,12 +6,11 @@ declare module "c/sfGpsDsAuNswLinkListComm" {
   export default 
   class SfGpsDsAuNswLinkListComm 
   extends SfGpsDsLwc {
-    title: string;
+    // title: string;
     // @ts-ignore
-    firstChild: boolean;
-    className: string;
-
-    links: string;
+    firstChild?: boolean;
+    className?: string;
+    links?: string;
 
     // private
 

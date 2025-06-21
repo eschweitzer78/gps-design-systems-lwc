@@ -5,7 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import { 
+  api 
+} from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 import {
   parseIso8601,
@@ -63,40 +65,41 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  link: string;
+  link?: string;
 
   // @ts-ignore
   @api 
-  tag: string;
+  tag?: string;
 
   // @ts-ignore
   @api 
-  image: string;
+  image?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
-  @api preventDefault: boolean;
+  @api 
+  preventDefault?: boolean;
   _preventDefault = this.defineBooleanProperty("preventDefault", {
     defaultValue: PREVENTDEFAULT_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  headline: boolean;
+  headline?: boolean;
   _headline = this.defineBooleanProperty("headline", {
     defaultValue: HEADLINE_DEFAULT
   });
 
   // @ts-ignore
   @api
-  cstyle: CStyle;
+  cstyle?: CStyle;
   _cstyle = this.defineEnumObjectProperty<string, CStyle>("cstyle", {
     validValues: CSTYLE_VALUES,
     defaultValue: CSTYLE_DEFAULT
@@ -104,7 +107,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  orientation: string;
+  orientation?: string;
   _orientation = this.defineEnumObjectProperty<string, Orientation>("orientation", {
     validValues: ORIENTATION_VALUES,
     defaultValue: ORIENTATION_DEFAULT
@@ -112,14 +115,14 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  highlight: boolean;
+  highlight?: boolean;
   _highlight = this.defineBooleanProperty("highlight", {
     defaultValue: HIGHLIGHT_DEFAULT
   });
 
   // @ts-ignore
   @api
-  dateStyle: DateStyle;
+  dateStyle?: DateStyle;
   _dateStyle = this.defineEnumProperty<DateStyle>("dateStyle", {
     validValues: DATE_STYLE_VALUES,
     defaultValue: DATE_STYLE_DEFAULT
@@ -127,12 +130,12 @@ extends SfGpsDsElement {
 
   /* api: date */
 
-  _date: Date;
-  _dateOriginal: string | Date;
+  _date?: Date;
+  _dateOriginal?: string | Date;
 
   // @ts-ignore
   @api
-  get date() {
+  get date(): string | Date | undefined {
     return this._dateOriginal;
   }
 
@@ -142,22 +145,26 @@ extends SfGpsDsElement {
     if (value instanceof Date) {
       this._date = value;
     } else {
-      this._date = value ? parseIso8601(value.toString()) : null;
+      this._date = value 
+        ? parseIso8601(value.toString()) 
+        : undefined;
     }
   }
 
-  get _dateISOString(): string {
-    return this._date ? this._date.toISOString() : null;
+  get _dateISOString(): string | undefined {
+    return this._date 
+      ? this._date.toISOString() 
+      : undefined;
   }
 
-  get _dateLocaleString(): string {
+  get _dateLocaleString(): string | undefined {
     return this._date
       ? formatDate(
           this._date,
           this._dateStyle.value as DateStyle || DATE_STYLE_DEFAULT,
           this._userLocale
         )
-      : null;
+      : undefined;
   }
 
   /* computed */
@@ -169,7 +176,7 @@ extends SfGpsDsElement {
       "nsw-card--highlight": this._highlight.value,
       [this._cstyle.value]: !!this._cstyle.value,
       [this._orientation.value]: !!this._orientation.value,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -199,10 +206,10 @@ extends SfGpsDsElement {
 
   /* lifecycle */
 
-  _userLocale: string;
+  _userLocale?: string;
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this._userLocale = getUserLocale();
   }
 }

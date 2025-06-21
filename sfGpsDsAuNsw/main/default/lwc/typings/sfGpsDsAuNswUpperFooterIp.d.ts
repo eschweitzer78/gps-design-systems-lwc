@@ -4,7 +4,7 @@ declare module "c/sfGpsDsAuNswUpperFooterIp" {
   export default 
   class SfGpsDsAuNswUpperFooterIp 
   extends SfGpsDsNavigation {
-    className: string;
+    className?: string;
 
     // private
 

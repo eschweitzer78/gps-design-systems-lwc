@@ -27,17 +27,17 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  links: Link[];
+  links?: Link[];
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
 
   // @ts-ignore
   @api 
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT
   });
@@ -47,7 +47,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-link-list": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 }

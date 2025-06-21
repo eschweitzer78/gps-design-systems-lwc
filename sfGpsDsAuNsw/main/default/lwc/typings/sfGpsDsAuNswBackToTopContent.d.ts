@@ -11,7 +11,7 @@ declare module "c/sfGpsDsAuNswBackToTopContent" {
 
     // private
     
-    readonly computedClassName: any;
+    get computedClassName(): any;
 
     handleClick(event: MouseEvent): void;
   }

@@ -10,9 +10,9 @@ declare module "c/sfGpsDsAuNswAccordionGroupLwr" {
   class SfGpsDsAuNswAccordionGroupLwr
   extends SfGpsDsLwc {
     // @ts-ignore
-    firstChild: boolean;
-    showButtons: boolean;
-    className: string;
+    firstChild?: boolean;
+    showButtons?: boolean;
+    className?: string;
 
     item1title: string;
     item2title: string;
@@ -31,25 +31,25 @@ declare module "c/sfGpsDsAuNswAccordionGroupLwr" {
 
     items: AccordionGroupItem[]
 
-    readonly item1closed: boolean;
-    readonly item2closed: boolean;
-    readonly item3closed: boolean;
-    readonly item4closed: boolean;
-    readonly item5closed: boolean;
-    readonly item6closed: boolean;
-    readonly item7closed: boolean;
-    readonly item8closed: boolean;
-    readonly item9closed: boolean;
-    readonly item10closed: boolean;
-    readonly item11closed: boolean;
-    readonly item12closed: boolean;
+    get item1closed(): boolean;
+    get item2closed(): boolean;
+    get item3closed(): boolean;
+    get item4closed(): boolean;
+    get item5closed(): boolean;
+    get item6closed(): boolean;
+    get item7closed(): boolean;
+    get item8closed(): boolean;
+    get item9closed(): boolean;
+    get item10closed(): boolean;
+    get item11closed(): boolean;
+    get item12closed(): boolean;
 
-    readonly computedIsFullyExpanded: boolean;
-    readonly computedIsFullyCollapsed: boolean;
-    readonly computedClassName: any;
+    get computedIsFullyExpanded(): boolean;
+    get computedIsFullyCollapsed(): boolean;
+    get computedClassName(): any;
 
-    handleExpand(event: MouseEvent): void;
-    handleCollapse(event: MouseEvent): void;
+    handleExpand(event: CustomEvent): void;
+    handleCollapse(event: CustomEvent): void;
     handleExpandAll(): void;
     handleCollapseAll(): void;
   }

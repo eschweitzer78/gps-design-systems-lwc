@@ -9,29 +9,29 @@ declare module "c/sfGpsDsAuNswHeader" {
   export default 
   class sfGpsDsAuNswHeader 
   extends SfGpsDsElement {
-    masterbrand: string;
-    masterbrandAlt: string;
+    masterbrand?: string;
+    masterbrandAlt?: string;
     srMasterbrandLabel: string;
-    logo: string;
-    logoAlt: string;
+    logo?: string;
+    logoAlt?: string;
     menuLabel: string;
     searchLabel: string;
-    siteTitle: string;
-    siteDescriptor: string;
+    siteTitle?: string;
+    siteDescriptor?: string;
     headerUrl: string;
     searchAriaLabel: string;
-    className: string;
+    className?: string;
 
     value: string;
 
-    mainNavId: string;
+    mainNavId?: string;
     mainNavIsOpen: boolean;
     searchIsOpen: boolean;
 
-    mobile: boolean;
-    search: boolean;
-    profile: boolean;
-    mobileLogoStacking: Stacking;
+    mobile?: boolean;
+    search?: boolean;
+    profile?: boolean;
+    mobileLogoStacking?: Stacking;
 
     // private
 
@@ -40,20 +40,22 @@ declare module "c/sfGpsDsAuNswHeader" {
     _profile: PropertyAccessor<boolean>;
     _mobileLogoStacking: PropertyAccessor<Stacking>;
 
-    readonly computedClassName: any;
+    get computedClassName(): any;
 
-    _headerSearchId: string;
-    readonly computedHeaderSearchId: string;
+    _headerSearchId?: string;
+    get computedHeaderSearchId(): string;
 
-    _headerInputId: string;
-    readonly computedHeaderInputId: string;
+    _headerInputId?: string;
+    get computedHeaderInputId(): string;
 
-    readonly _areLogosHorizontallyStacked: boolean;
-    readonly _areLogosVerticallyStacked: boolean;
+    get _areLogosHorizontallyStacked(): boolean;
+    get _areLogosVerticallyStacked(): boolean;
 
-    readonly computedHeaderUrl: string;
+    get computedHeaderUrl(): string;
 
-    setSearchVisible(visible: boolean): void;
+    setSearchVisible(
+      visible: boolean
+    ): void;
 
     handleCloseSearch(event: MouseEvent): void;
     handleOpenSearch(event: MouseEvent): void;

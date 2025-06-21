@@ -29,11 +29,11 @@ class SfGpsDsAuNswStatusLabel
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  label: string;
+  label?: string;
 
   // @ts-ignore
   @api 
-  status: Status;
+  status?: Status;
   _status = this.defineEnumObjectProperty<string, Status>("status", {
     validValues: STATUS_VALUES,
     defaultValue: STATUS_DEFAULT

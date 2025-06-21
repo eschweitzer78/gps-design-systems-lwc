@@ -16,7 +16,7 @@ declare module "c/sfGpsDsAuNswAlert" {
   export default 
   class SfGpsDsAuNswAlert 
   extends SfGpsDsElement {
-    title: string;
+    // title: string;
     index: string | number;
     header: string;
     as: AlertType;
@@ -29,8 +29,8 @@ declare module "c/sfGpsDsAuNswAlert" {
     _as: PropertyAccessor<AsValue>;
     _compact: PropertyAccessor<boolean>;
 
-    readonly computedClassName: any;
-    readonly computedIconName: string;
-    readonly space: string;
+    get computedClassName(): any;
+    get computedIconName(): string;
+    get space(): string;
   }
 }

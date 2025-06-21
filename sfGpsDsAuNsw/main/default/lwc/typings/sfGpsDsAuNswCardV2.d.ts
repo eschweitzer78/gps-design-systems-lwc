@@ -18,19 +18,21 @@ declare module "c/sfGpsDsAuNswCardV2" {
   class sfGpsDsAuNswCardV2
   extends SfGpsDsElement {
     title: string;
-    link: string;
-    tag: string;
-    image: string;
-    imageAlt: string;
-    className: string;
+    link?: string;
+    tag?: string;
+    image?: string;
+    imageAlt?: string;
+    className?: string;
 
-    preventDefault: boolean;
-    headline: boolean;
-    cstyle: CStyle;
-    orientation: Orientation;
-    highlight: boolean;
-    dateStyle: DateStyle;
-    date: string | Date;
+    preventDefault?: boolean;
+    headline?: boolean;
+    cstyle?: CStyle;
+    orientation?: Orientation;
+    highlight?: boolean;
+    dateStyle?: DateStyle;
+
+    get date(): string | Date | undefined;
+    set date(value: string | Date);
 
     click(): void;
 
@@ -45,11 +47,10 @@ declare module "c/sfGpsDsAuNswCardV2" {
     _date: Date;
     _dateOriginal: string | Date;
 
-    readonly _dateISOString: string;
-    readonly _dateLocaleString: string;
-    readonly computedClassName: any;
+    get _dateISOString(): string | undefined;
+    get _dateLocaleString(): string | undefined;
+    get computedClassName(): any;
 
-    click(): void;
     handleClick(event: MouseEvent): void;
 
     _userLocale: string;

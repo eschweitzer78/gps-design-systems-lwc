@@ -28,47 +28,71 @@ declare module "c/sfGpsDsAuNswCardCarousel" {
   extends CardInternalData {
     _key: string,
     _displayIndex: string,
-    _tabindex: string,
-    _ariaHidden: string,
-    _ariaCurrent: string,
-    _styleString: string
+    _tabindex?: string,
+    _ariaHidden?: string,
+    _ariaCurrent?: string,
+    _styleString?: string
+  }
+
+  export interface DotInfo {
+    key: string,
+    indexP1: number,
+    className: string | null,
+    indexClassName: string
+  }
+
+  export type Direction = 
+    "next" | 
+    "prev" | 
+    "click";
+
+  export interface SwipeEventDetail {
+    x: number,
+    y: number,
+    origin?: HTMLElement
+  }
+
+  export interface SwipeEvent extends CustomEvent {
+    detail: SwipeEventDetail
   }
 
   export default 
   class SfGpsDsAuNswCardCarousel
   extends SfGpsDsElement {
-    accessibilityLabel: string;
+    accessibilityLabel?: string;
     navigationPagination: boolean;
     overflowItems: boolean;
-    justifyContent: boolean;
-    navigationItemClassName: string;
-    navigationClassName: string;
-    paginationClassName: string;
-    className: string;
+    justifyContent?: boolean;
+    navigationItemClassName?: string;
+    navigationClassName?: string;
+    paginationClassName?: string;
+    className?: string;
 
-    drag: boolean;
-    navigation: boolean;
-    loop: boolean;
-    counter: boolean;
-    items: string;
+    drag?: boolean;
+    navigation?: boolean;
+    loop?: boolean;
+    counter?: boolean;
+    
+    get items(): CardData[] | undefined;
+    set items(value: CardData[]);
 
     // private
 
     _drag: PropertyAccessor<boolean>;
     _navigation: PropertyAccessor<boolean>;
     _loopRequested: PropertyAccessor<boolean>;
-    readonly __loop: boolean;
+    get __loop(): boolean;
     _counter: PropertyAccessor<boolean>;
 
-    _items: CardData[];
-    _itemsOriginal: string;
+    _items?: CardInternalData[];
+    _itemsOriginal?: CardData[];
     _itemsNb: number;
 
     updateItems(): void;
 
     itemsNb: number;
-    visibleItemsNb: number;
-    itemsWidth: number;
+    visibleItemsNb?: number;
+    itemsWidth?: number;
     itemOriginalWidth: number | boolean;
 
     selectedItem: number;
@@ -77,32 +101,46 @@ declare module "c/sfGpsDsAuNswCardCarousel" {
     animating: boolean;
     dragStart: number | boolean;
 
-    selectedDotIndex: number;
+    selectedDotIndex?: number;
 
-    itemAutoSize: string;
+    itemAutoSize?: string;
     totTranslate: number;
 
     flexSupported: boolean;
     transitionSupported: boolean;
     cssPropertiesSupported: boolean;
 
-    readonly computedAriaLive: string;
-    readonly computedNavigationItemClassName: any;
-    readonly computedNavigationClassName: any;
-    readonly computedPaginationClassName: any;
-    readonly selectedDot: number;
-    readonly dotsNb: number;
-    readonly dots: Array<{
-      key: string,
-      indexP1: number,
-      className: string,
-      indexClassName: string
-    }>;
-    readonly controls: HTMLElement[];
-    readonly liveFirstItem: HTMLElement;
-    readonly liveItems: HTMLElement[];
-    readonly navDots: HTMLElement[];
+    get computedAriaLive(): string;
+    get computedNavigationItemClassName(): any;
+    get computedNavigationClassName(): any;
+    get computedPaginationClassName(): any;
+    get selectedDot(): number;
+    get dotsNb(): number;
+    get dot(): Array<DotInfo>;
+    get controls(): HTMLElement[];
+    get liveFirstItem(): HTMLElement | null;
+    get liveItems(): HTMLElement[];
+    get navDots(): HTMLElement[];
+    get displayItems(): CardDisplayData[];
+    get computedControlPrevDisabled(): boolean;
+    get computedControlNextDisabled(): boolean;
+    get computedClassName(): any;
+    get computedListClassName(): any;
+    get computedListStyle(): string;
+    get translateX(): string;
+    get i18n(): Record<string, string>;
 
-    readonly displayItems: CardDisplayData[];
+    getIndex(
+      index: number
+    ): number;
+
+    getPositiveValue(
+      value: number, 
+      add: number
+    ): number;
+
+    noLoopTranslateValue(
+      direction: Direction
+    ): number;
   }
 }

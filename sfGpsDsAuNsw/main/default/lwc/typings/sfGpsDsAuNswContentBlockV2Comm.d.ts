@@ -6,17 +6,17 @@ declare module "c/SfGpsDsAuNswContentBlockV2Comm" {
   export default 
   class SfGpsDsAuNswContentBlockV2Comm
   extends SfGpsDsLwc {
-    title: string;
-    image: string;
-    imageAlt: string;
-    icon: string;
-    className: string;
+    //title: string;
+    image?: string;
+    imageAlt?: string;
+    icon?: string;
+    className?: string;
 
     useMarkup: boolean;
 
-    links: string;
-    copy: string;
-    mainLink: string;
+    links?: string;
+    copy?: string;
+    mainLink?: string;
 
     // private
 

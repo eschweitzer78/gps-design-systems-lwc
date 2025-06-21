@@ -53,19 +53,19 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  imageSrc: string;
+  imageSrc?: string;
 
   // @ts-ignore
   @api 
-  containerClassName: string;
+  containerClassName?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  paddingStyle: PaddingStyle;
+  paddingStyle?: PaddingStyle;
   _paddingStyle = this.defineEnumObjectProperty<string, PaddingStyle>("paddingStyle", {
     validValues: PADDINGSTYLE_VALUES,
     defaultValue: PADDINGSTYLE_DEFAULT
@@ -73,7 +73,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  colorStyle: ColorStyle;
+  colorStyle?: ColorStyle;
   _colorStyle = this.defineEnumObjectProperty<string, ColorStyle>("colorStyle", {
     validValues: COLORSTYLE_VALUES,
     defaultValue: COLORSTYLE_DEFAULT
@@ -81,21 +81,21 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  withContainer: ColorStyle;
+  withContainer?: ColorStyle;
   _withContainer = this.defineBooleanProperty("withContainer", {
     defaultValue: WITHCONTAINER_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  withBox: ColorStyle;
+  withBox?: ColorStyle;
   _withBox = this.defineBooleanProperty("withBox", {
     defaultValue: WITHBOX_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  withInvert: ColorStyle;
+  withInvert?: ColorStyle;
   _withInvert = this.defineBooleanProperty("withInvert", {
     defaultValue: WITHINVERT_DEFAULT
   });
@@ -114,14 +114,14 @@ extends SfGpsDsLwc {
       "nsw-section--box": !!this._withBox.value,
       "nsw-section--invert": !!this._withInvert.value,
       "nsw-section--image": !!this.imageSrc,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
   get computedContainerClassName(): any {
     return {
       "nsw-container": this._withContainer.value,
-      [this.containerClassName]: !!this.containerClassName
+      [this.containerClassName || ""]: !!this.containerClassName
     };
   }
 
@@ -132,7 +132,7 @@ extends SfGpsDsLwc {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

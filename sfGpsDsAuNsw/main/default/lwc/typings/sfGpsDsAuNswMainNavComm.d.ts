@@ -1,15 +1,14 @@
 
 declare module "c/sfGpsDsAuNswMainNavComm" {
   import type SfGpsDsNavigation from "c/sfGpsDsNavigation";
-  import type { Stacking } from "c/sfGpsDsAuNswHeader";
 
   export default 
   class SfGpsDsAuNswMainNavComm 
   extends SfGpsDsNavigation {
     megaMenu: boolean;
-    className: string;
+    className?: string;
     isActive: boolean;
-    mainNavId: string;
+    mainNavId?: string;
 
     // private
 

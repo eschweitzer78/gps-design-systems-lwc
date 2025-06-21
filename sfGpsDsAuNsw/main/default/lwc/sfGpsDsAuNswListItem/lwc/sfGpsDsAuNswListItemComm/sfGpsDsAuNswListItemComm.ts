@@ -30,15 +30,15 @@ class SfGpsDsAuNswListItemComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  label: string;
+  label?: string;
 
   // @ts-ignore
   @api 
-  image: string;
+  image?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
@@ -57,7 +57,8 @@ extends SfGpsDsLwc {
   dateStyle: DateStyle = DATE_STYLE_DEFAULT;
 
   // @ts-ignore
-  @api className: string;
+  @api 
+  className?: string;
 
   // This is not exposed in Experience Builder and is used by listItemCollectionComm
   // @ts-ignore
@@ -66,7 +67,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  headline: string;
+  headline?: string;
   _headline = this.defineMarkdownFirstLinkProperty("headline", {
     errorCode: "HL-MD",
     errorText: "Issue when parsing Headline markdown"
@@ -74,12 +75,12 @@ extends SfGpsDsLwc {
 
   /* api: date, String or Date */
 
-  _date: Date;
-  _dateOriginal: Date | string;
+  _date?: Date;
+  _dateOriginal?: Date | string;
 
   // @ts-ignore
   @api
-  get date(): Date | string {
+  get date(): Date | string | undefined {
     return this._dateOriginal;
   }
 
@@ -89,13 +90,15 @@ extends SfGpsDsLwc {
     if (value instanceof Date) {
       this._date = value;
     } else {
-      this._date = value ? parseIso8601(value.toString()) : null;
+      this._date = value 
+        ? parseIso8601(value.toString()) 
+        : undefined;
     }
   }
 
   // @ts-ignore
   @api 
-  copy: string;
+  copy?: string;
   _copyHtml = this.defineMarkdownContentProperty("copy", {
     errorCode: "CO-MD",
     errorText: "Issue when parsing Copy markdown"
@@ -104,8 +107,8 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  tags: string;
-  _tags = this.defineMarkdownContentProperty("tags", {
+  tags?: string;
+  _tags = this.defineMarkdownLinksProperty("tags", {
     errorCode: "TA-MD",
     errorText: "Issue when parsing Tags markdown"
   });
@@ -113,12 +116,12 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
     
     if (this._copyHtml.value && this.refs.copy) {
       replaceInnerHtml(this.refs.copy, this._copyHtml.value);

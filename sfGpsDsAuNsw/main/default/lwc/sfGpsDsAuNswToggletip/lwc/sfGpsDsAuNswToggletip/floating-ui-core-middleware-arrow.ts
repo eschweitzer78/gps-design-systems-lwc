@@ -43,10 +43,20 @@ export function arrow(
     name: "arrow",
     options,
     async fn(state) {
-      const { x, y, placement, rects, platform, elements, middlewareData } =
-        state;
+      const { 
+        x, 
+        y, 
+        placement, 
+        rects,
+        platform, 
+        elements, 
+        middlewareData 
+      } = state;
       // Since `element` is required, we don"t Partial<> the type.
-      const { element, padding = 0 } = evaluate(options, state) || {};
+      const { 
+        element,
+        padding = 0 
+      } = evaluate(options, state) || {};
 
       if (element == null) {
         return {};

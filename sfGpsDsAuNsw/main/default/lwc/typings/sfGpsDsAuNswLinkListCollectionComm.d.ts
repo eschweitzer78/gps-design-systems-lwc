@@ -4,8 +4,6 @@ declare module "c/sfGpsDsAuNswLinkListCollectionComm" {
   export default 
   class sfGpsDsAuNswLinkListCollectionComm 
   extends SfGpsDsNavigation {
-    className: string;
-
-    // private
+    className?: string;
   }
 }

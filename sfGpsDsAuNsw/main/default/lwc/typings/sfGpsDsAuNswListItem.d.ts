@@ -9,20 +9,20 @@ declare module "c/sfGpsDsAuNswListItem" {
   export default 
   class SfGpsDsAuNswListItem
   extends SfGpsDsElement {
-    label: string;
-    link: string;
-    title: string;
-    image: string;
-    imageAlt: string;
-    tags: Link[];
-    className: string;
+    label?: string;
+    link?: string;
+    // title: string;
+    image?: string;
+    imageAlt?: string;
+    tags?: Link[];
+    className?: string;
 
-    isBlock: boolean;
-    isReversed: boolean;
-    showLink: boolean;
-    preventDefault: boolean;
-    dateStyle: DateStyle;
-    date: Date | string;
+    isBlock?: boolean;
+    isReversed?: boolean;
+    showLink?: boolean;
+    preventDefault?: boolean;
+    dateStyle?: DateStyle;
+    date?: Date | string;
 
     // private
 
@@ -31,16 +31,17 @@ declare module "c/sfGpsDsAuNswListItem" {
     _showLink: PropertyAccessor<boolean>;
     _preventDefault: PropertyAccessor<boolean>;
     _dateStyle: PropertyAccessor<DateStyle>;
-    _date: Date;
-    _dateOriginal: Date | string;
 
-    readonly _dateISOString: string;
-    readonly _dateLocaleString: string;
+    _date?: Date;
+    _dateOriginal?: Date | string;
 
-    readonly computedClassName: any;
+    get _dateISOString(): string | undefined;
+    get _dateLocaleString(): string | undefined;
+
+    get computedClassName(): any;
 
     handleClick(event: MouseEvent): void;
 
-    _userLocale: string;
+    _userLocale?: string;
   }
 }

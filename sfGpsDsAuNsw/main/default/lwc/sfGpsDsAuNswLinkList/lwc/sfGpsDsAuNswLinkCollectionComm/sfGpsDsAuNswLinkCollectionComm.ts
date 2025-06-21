@@ -20,11 +20,9 @@ class SfGpsDsAuNswLinkCollectionComm
 extends SfGpsDsNavigation {
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
-  /* api: mode, Array of Object */
-
-  _mode: "Demo";
+  /* api: mode, Array of Object */;
 
   // @ts-ignore
   @api
@@ -106,7 +104,7 @@ extends SfGpsDsNavigation {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

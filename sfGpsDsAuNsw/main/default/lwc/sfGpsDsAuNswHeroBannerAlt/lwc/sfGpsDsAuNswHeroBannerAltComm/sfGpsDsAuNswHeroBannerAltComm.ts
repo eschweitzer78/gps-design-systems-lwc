@@ -10,19 +10,19 @@ class SfGpsDsAuNswHeroBannerAltComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
-  imageSrc: string;
+  imageSrc?: string;
 
   // @ts-ignore
   @api 
-  imageAlt: string;
+  imageAlt?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  titleLink: string;
+  titleLink?: string;
   _titleLink = this.defineMarkdownFirstLinkProperty("titleLink", {
     errorCode: "TL-MD",
     errorText: "Issue when parsing Title link markdown"
@@ -30,31 +30,31 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api
-  content: string;
-  _contentHtml = this.defineMarkdownLinksProperty("content", {
+  content?: string;
+  _contentHtml = this.defineMarkdownContentProperty("content", {
     errorCode: "IN-MD",
     errorText: "Issue when parsing Content markdown"
   });
 
   /* computed */
 
-  get _titleUrl(): string {
+  get _titleUrl(): string | undefined {
     return this._titleLink.value?.url;
   }
 
-  get _titleLabel(): string {
-    return this._titleLink.value?.text;
+  get _titleLabel(): string | undefined {
+    return this._titleLink.value?.text || "";
   }
   
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
     if (this._contentHtml.value && this.refs.content) {
       /*

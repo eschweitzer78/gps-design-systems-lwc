@@ -15,18 +15,19 @@ class SfGpsDsAuNswTagOsN
 extends SfGpsDsElementOs {
   // @ts-ignore
   @api 
-  url: string;
-
-  // @ts-ignore
-  @api text: string;
+  url?: string;
 
   // @ts-ignore
   @api 
-  tagClassName: string;
+  text?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  tagClassName?: string;
+
+  // @ts-ignore
+  @api 
+  className?: string;
 
   /* computed */
 
@@ -34,14 +35,14 @@ extends SfGpsDsElementOs {
     return {
       "nsw-list": true,
       "nsw-list-8": true,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
   get computedTagClassName(): any {
     return {
       "nsw-tag": true,
-      [this.tagClassName]: !!this.tagClassName
+      [this.tagClassName || ""]: !!this.tagClassName
     };
   }
 }

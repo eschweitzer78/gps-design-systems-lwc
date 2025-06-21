@@ -28,70 +28,73 @@ export default
 class SfGpsDsAuNswStepsLwr
 extends SfGpsDsLwc {
   // @ts-ignore
-  @api type: string;
-
-  // @ts-ignore
-  @api cstyle: CStyle;
-
-  // @ts-ignore
-  @api 
-  headingLevel: HeadingLevel;
+  @api
+  type?: string;
 
   // @ts-ignore
   @api 
-  item1title: string;
+  cstyle?: CStyle;
 
   // @ts-ignore
   @api 
-  item2title: string;
+  headingLevel?: HeadingLevel;
 
   // @ts-ignore
   @api 
-  item3title: string;
+  item1title?: string;
 
   // @ts-ignore
   @api 
-  item4title: string;
+  item2title?: string;
 
   // @ts-ignore
   @api 
-  item5title: string;
+  item3title?: string;
 
   // @ts-ignore
   @api 
-  item6title: string;
+  item4title?: string;
 
   // @ts-ignore
   @api 
-  item7title: string;;
+  item5title?: string;
 
   // @ts-ignore
   @api 
-  item8title: string;
+  item6title?: string;
 
   // @ts-ignore
   @api 
-  item9title: string;
+  item7title?: string;;
 
   // @ts-ignore
   @api 
-  item10title: string;
+  item8title?: string;
 
   // @ts-ignore
   @api 
-  item11title: string;
+  item9title?: string;
 
   // @ts-ignore
   @api 
-  item12title: string;
+  item10title?: string;
 
   // @ts-ignore
   @api 
-  firstChild: boolean;
+  item11title?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  item12title?: string;
+
+  // @ts-ignore
+  @api 
+  // @ts-ignore
+  firstChild?: boolean;
+
+  // @ts-ignore
+  @api 
+  className?: string;
 
   /* lifecycle */
   
@@ -100,7 +103,7 @@ extends SfGpsDsLwc {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

@@ -5,10 +5,14 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import { 
+  api 
+} from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-import { CStyle } from "c/sfGpsDsAuNswFooterComm";
+import type { 
+  CStyle 
+} from "c/sfGpsDsAuNswFooterComm";
 
 type CStyleValues = Record<CStyle, string>;
 
@@ -29,23 +33,23 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  upperFooterNavigationDevName: string;
+  upperFooterNavigationDevName?: string;
 
   // @ts-ignore
   @api 
-  upperFooterIpName: string;
+  upperFooterIpName?: string;
 
   // @ts-ignore
   @api 
-  upperFooterInputJSON: string;
+  upperFooterInputJSON?: string;
 
   // @ts-ignore
   @api 
-  upperFooterOptionsJSONN: string;
+  upperFooterOptionsJSONN?: string;
 
   // @ts-ignore
   @api 
-  upperFooterClassName: string;
+  upperFooterClassName?: string;
 
   // @ts-ignore
   @api 
@@ -53,55 +57,55 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  navigationDevName: string;
+  navigationDevName?: string;
 
   // @ts-ignore
   @api 
-  ipName: string;
+  ipName?: string;
 
   // @ts-ignore
   @api 
-  inputJSON: string;
+  inputJSON?: string;
 
   // @ts-ignore
   @api 
-  optionsJSON: string;
+  optionsJSON?: string;
   // @ts-ignore
   
   @api 
-  statement: string;
+  statement?: string;
 
   // @ts-ignore
   @api 
-  linkedInUrl: string;
+  linkedInUrl?: string;
 
   // @ts-ignore
   @api 
-  twitterXUrl: string;
+  twitterXUrl?: string;
 
   // @ts-ignore
   @api 
-  facebookUrl: string;
+  facebookUrl?: string;
 
   // @ts-ignore
   @api 
-  copyrightMention: string;
+  copyrightMention?: string;
 
   // @ts-ignore
   @api 
-  builtMention: string;
+  builtMention?: string;
 
   // @ts-ignore
   @api 
-  lowerFooterClassName: string;
+  lowerFooterClassName?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  cstyle: CStyle;
+  cstyle?: CStyle;
   _cstyle = this.defineEnumObjectProperty<string, CStyle>("cstyle", {
     validValues: CSTYLE_VALUES,
     defaultValue: CSTYLE_DEFAULT
@@ -113,7 +117,7 @@ extends SfGpsDsLwc {
     return {
       "nsw-footer": true,
       [this._cstyle.value]: !!this._cstyle.value,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -124,7 +128,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

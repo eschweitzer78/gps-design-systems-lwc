@@ -31,7 +31,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  nav: string;
+  nav?: string;
 
   // @ts-ignore
   @api 
@@ -39,7 +39,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  content: string;
+  content?: string;
 
   // @ts-ignore
   @api 
@@ -47,15 +47,15 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  cstyle: CStyle;
+  cstyle?: CStyle;
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  mastheadLabel: string;
+  mastheadLabel?: string;
   _mastheadLabelHtml = this.defineMarkdownContentProperty("mastheadLabel", {
     errorCode: "ML-MD",
     errorText: "Issue when parsing Masthead label markdown"
@@ -64,15 +64,17 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
-    if (this._mastheadLabelHtml.value) {
-      replaceInnerHtml(this.refs.markdown, this._mastheadLabelHtml.value);
+    const md = this.refs.markdown;
+    
+    if (this._mastheadLabelHtml.value && md) {
+      replaceInnerHtml(md, this._mastheadLabelHtml.value);
     }
   }
 }

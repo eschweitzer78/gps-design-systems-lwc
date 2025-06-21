@@ -17,12 +17,12 @@ extends SfGpsDsElement {
 
   /* api: tabHeaders, Array of Objects */
 
-  _tabHeaders: TabHeader[];
-  _selectedTab: Tab;
+  _tabHeaders?: TabHeader[];
+  _selectedTab?: Tab;
 
   // @ts-ignore
   @api
-  get tabHeaders(): TabHeader[] {
+  get tabHeaders(): TabHeader[] | undefined {
     return this._tabHeaders;
   }
 
@@ -50,10 +50,10 @@ extends SfGpsDsElement {
       };
     });
 
-    let selectedTab = tabs[0];
+    let selectedTab: Tab | undefined = tabs[0];
 
     if (this._selectedTab) {
-      selectedTab = tabs.find((tab) => tab.value === this._selectedTab.value);
+      selectedTab = tabs.find((tab) => tab.value === (this._selectedTab as Tab).value);
 
       if (!selectedTab) {
         selectedTab = tabs[0];
@@ -86,10 +86,10 @@ extends SfGpsDsElement {
     return this._tabs.filter((tab) => tab.visible);
   }
 
-  get computedAriaOwns(): string {
+  get computedAriaOwns(): string | undefined {
     return this._tabs?.length
       ? this._tabs.map((item) => item.linkId).join(" ")
-      : null;
+      : undefined;
   }
 
   /* methods */
@@ -116,7 +116,7 @@ extends SfGpsDsElement {
     }
   }
 
-  _findTabByValue(tabValue: string): Tab {
+  _findTabByValue(tabValue: string): Tab | undefined {
     return this._tabs.find((tab) => tab.value === tabValue);
   }
 
@@ -128,14 +128,16 @@ extends SfGpsDsElement {
 
     const tab = this._findTabByValue(tabValue);
 
-    this.dispatchEvent(
-      new CustomEvent("select", {
-        detail: {
-          value: tab.value,
-          label: tab.label
-        }
-      })
-    );
+    if (tab) {
+      this.dispatchEvent(
+        new CustomEvent("select", {
+          detail: {
+            value: tab.value,
+            label: tab.label
+          }
+        })
+      );
+    }
   }
 
   _selectTab(
@@ -173,9 +175,9 @@ extends SfGpsDsElement {
   }
 
   // eslint-disable-next-line no-unused-vars
-  _tabClassName({ selected = false, hasFocus = false }): string {
+  _tabClassName({ selected = false, hasFocus = false }): string | undefined {
     /* NSW DS has no specifics for selected or focus at the tab/li level */
-    return null;
+    return undefined;
   }
 
   _synchronizeA11y(): void {
@@ -186,8 +188,10 @@ extends SfGpsDsElement {
         (tab) => tabLink.getAttribute("data-tab-value") === tab.value
       );
 
-      tabLink.setAttribute("id", tabData.linkId);
-      tabLink.setAttribute("aria-controls", tabData.domId);
+      if (tabData) {
+        tabLink.setAttribute("id", tabData.linkId);
+        tabLink.setAttribute("aria-controls", tabData.domId);
+      }
     });
   }
 
@@ -199,20 +203,29 @@ extends SfGpsDsElement {
     event.preventDefault();
 
     const clickedTabValue = (event.target as HTMLElement).getAttribute("data-tab-value");
-    this._selectTabAndFireSelectEvent(clickedTabValue, { hasFocus: true });
+
+    if (clickedTabValue) {
+      this._selectTabAndFireSelectEvent(
+        clickedTabValue, 
+        { hasFocus: true }
+      );
+    }
   }
 
   handleBlur(
     event: FocusEvent
   ): void {
     const tabValue = (event.target as HTMLElement).getAttribute("data-tab-value");
-    const tab = this._findTabByValue(tabValue);
 
-    if (tab) {
-      tab.className = this._tabClassName({
-        selected: this._selectedTab.value === tab.value,
-        hasFocus: false
-      });
+    if (tabValue && this._selectedTab) {
+      const tab = this._findTabByValue(tabValue);
+
+      if (tab) {
+        tab.className = this._tabClassName({
+          selected: this._selectedTab.value === tab.value,
+          hasFocus: false
+        });
+      }
     }
   }
 
@@ -221,12 +234,17 @@ extends SfGpsDsElement {
   ): void {
     const target = event.target as HTMLElement
     const tabValue = target.getAttribute("data-tab-value");
-    const tab = this._findTabByValue(tabValue);
 
-    tab.className = this._tabClassName({
-      selected: this._selectedTab.value === tab.value,
-      hasFocus: true
-    });
+    if (tabValue && this._selectedTab) {
+      const tab = this._findTabByValue(tabValue);
+
+      if (tab) {
+        tab.className = this._tabClassName({
+          selected: this._selectedTab.value === tab.value,
+          hasFocus: true
+        });
+      }
+    }
   }
 
   handleKeyDown(
@@ -236,7 +254,7 @@ extends SfGpsDsElement {
 
     if (this._selectedTab) {
       currentFocusedIndex = this._visibleTabs.findIndex(
-        (tab) => tab.value === this._selectedTab.value
+        (tab) => tab.value === (this._selectedTab as Tab).value
       );
     }
 
@@ -257,7 +275,7 @@ extends SfGpsDsElement {
   /* Lifecycle */
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
 
     if (this._queueSynchronizeA11) {
       this._synchronizeA11y();

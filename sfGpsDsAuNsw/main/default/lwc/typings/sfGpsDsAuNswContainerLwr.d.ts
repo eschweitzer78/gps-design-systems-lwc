@@ -9,14 +9,13 @@ declare module "c/sfGpsDsAuNswContainerLwr" {
   export default 
   class sfGpsDsAuNswContainerLwr
   extends SfGpsDsLwc {
-    containerClassName: string;
-
-    mode: Mode;
+    containerClassName?: string;
+    mode?: Mode;
 
     // private
 
     _mode: PropertyAccessor<string>;
 
-    readonly computedContainerClassName: any;
+    get computedContainerClassName(): any;
   }
 }

@@ -10,22 +10,22 @@ declare module "c/sfGpsDsAuNswButtonComm" {
   class SfGpsDsAuNswButtonComm
   extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
     type: Type;
-    iconName: string;
-    className: string;
+    iconName?: string;
+    className?: string;
 
-    cstyle: CStyle;
-    iconStyle: IconStyle;
-    rendering: Rendering;
+    cstyle?: CStyle;
+    iconStyle?: IconStyle;
+    rendering?: Rendering;
     disabled: boolean;
     mobileFullWidth: boolean;
 
-    link: string;
+    link?: string;
 
     // private
 
     _link: PropertyAccessor<Link>
 
-    readonly computedIsButton: boolean;
+    get computedIsButton(): boolean;
 
     handleClick(event: MouseEvent): void;
   }

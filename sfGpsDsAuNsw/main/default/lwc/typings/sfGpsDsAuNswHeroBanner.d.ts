@@ -22,19 +22,21 @@ declare module "c/sfGpsDsAuNswHeroBanner" {
   export default 
   class SfGpsDsAuNswHeroBanner 
   extends SfGpsDsElement {
-    title: string;
-    subtitle: string;
-    cta: string;
-    image: BannerImage;
-    className: string;
+    //title: string;
+    subtitle?: string;
+    cta?: string;
+    image?: BannerImage;
+    className?: string;
 
-    cstyle: CStyle;
-    wide: boolean;
-    feature: boolean;
-    lines: boolean;
-    ctaPreventDefault: boolean;
-    linksPreventDefault: boolean;
-    links: Link[];
+    cstyle?: CStyle;
+    wide?: boolean;
+    feature?: boolean;
+    lines?: boolean;
+    ctaPreventDefault?: boolean;
+    linksPreventDefault?: boolean;
+    
+    get links(): Link[];
+    set links(value: Link[]);
 
     // private
     _cstyle: PropertyAccessor<CStyleValue>;
@@ -45,9 +47,9 @@ declare module "c/sfGpsDsAuNswHeroBanner" {
     _links: Link[];
     _linksOriginal: Link[];
 
-    readonly computedClassName: any;
-    readonly computedButtonClassName: any;
-    readonly computedHasLinks: boolean;
+    get computedClassName(): any;
+    get computedButtonClassName(): any;
+    get computedHasLinks(): boolean;
 
     handleCtaClick(event: MouseEvent): void;
     handleLinksClick(event: MouseEvent): void;

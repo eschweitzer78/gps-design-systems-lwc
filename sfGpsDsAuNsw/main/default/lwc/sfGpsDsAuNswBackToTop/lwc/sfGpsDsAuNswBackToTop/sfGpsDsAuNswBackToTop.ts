@@ -5,9 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import { 
+  api 
+} from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
-import { debounce } from "c/sfGpsDsHelpers";
+import { 
+  debounce 
+} from "c/sfGpsDsHelpers";
 
 const MOBILE_BREAKPOINT = 768;
 const DEBOUNCE_DELAY = 250;
@@ -21,17 +25,19 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
-  _show: boolean;
-  _width: number;
-  _height: number;
-  _scrollPosition: number;
+  _show?: boolean;
+  _width?: number;
+  _height?: number;
+  _scrollPosition = 0;
 
   /* getters */
 
   get _isMobile(): boolean {
-    return this._width < MOBILE_BREAKPOINT;
+    return this._width 
+      ? this._width < MOBILE_BREAKPOINT 
+      : false;
   }
 
   /* methods */

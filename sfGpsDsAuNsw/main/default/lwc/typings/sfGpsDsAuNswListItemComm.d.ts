@@ -9,27 +9,29 @@ declare module "c/sfGpsDsAuNswListItemComm" {
   export default 
   class SfGpsDsAuNswListItemComm
   extends SfGpsDsLwc {
-    label: string;
-    image: string;
-    imageAlt: string;
+    label?: string;
+    image?: string;
+    imageAlt?: string;
     isBlock: boolean;
     isReversed: boolean;
     showLink: boolean;
     dateStyle: DateStyle;
-    className: string;
+    className?: string;
 
     useMarkup: boolean;
 
-    headline: string;
-    date: Date | string;
-    copy: string;
-    tags: string;
+    headline?: string;
+    copy?: string;
+    tags?: string;
+
+    get date(): Date | string | undefined;
+    set date(value: Date | string);
 
     // private
 
     _headline: PropertyAccessor<Link>;
-    _date: Date;
-    _dateOriginal: Date | string;
+    _date?: Date;
+    _dateOriginal?: Date | string;
     _copy: PropertyAccessor<string>;
     _tags: PropertyAccessor<Link[]>;
   }

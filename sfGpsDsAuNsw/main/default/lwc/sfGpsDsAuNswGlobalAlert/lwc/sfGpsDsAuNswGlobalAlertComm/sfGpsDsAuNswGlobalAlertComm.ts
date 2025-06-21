@@ -29,7 +29,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  copy: string;
+  copy?: string;
 
   // @ts-ignore
   @api 
@@ -41,11 +41,11 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  cta : string;
+  cta?: string;
   _cta = this.defineMarkdownFirstLinkProperty("cta", {
     errorCode: "CT-MD",
     errorText: "Error while parsin Call to action markdown."
@@ -54,7 +54,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

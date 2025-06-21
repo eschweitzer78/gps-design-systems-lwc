@@ -22,7 +22,9 @@ import type {
   Content,
   TableRow,
   DisplayRow,
-  Header
+  Header,
+  ContentDisplayType,
+  ContentItemLiteral
 } from "c/sfGpsDsAuNswTable";
 
 const CAPTIONLOCATION_TOP: CaptionLocation = "top";
@@ -43,15 +45,15 @@ class SfGpsDsAuNswTable
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  caption: string;
+  caption?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  offset: number;
+  offset?: number;
   _offset = this.defineIntegerProperty("offset", {
     minValue: 0,
     defaultValue: 0
@@ -59,7 +61,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  limit: number;
+  limit?: number;
   _limit = this.defineIntegerProperty("limit", {
     minValue: 1,
     defaultValue: null
@@ -67,7 +69,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  captionLocation: CaptionLocation;
+  captionLocation?: CaptionLocation;
   _captionLocation = this.defineEnumProperty<CaptionLocation>("captionLocation", {
     validValues: CAPTIONLOCATION_VALUES,
     defaultValue: CAPTIONLOCATION_DEFAULT
@@ -75,27 +77,27 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  isStriped: boolean;
+  isStriped?: boolean;
   _isStriped = this.defineBooleanProperty("isStriped", {
     defaultValue: ISSTRIPED_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  isBordered: boolean;
+  isBordered?: boolean;
   _isBordered = this.defineBooleanProperty("isBordered", {
     defaultValue: ISBORDERED_DEFAULT
   });
 
   /* api: content, Array of Objects */
 
-  _content: TableRow[];
-  _contentOriginal: any;
+  _content?: TableRow[];
+  _contentOriginal?: Content | ContentRow;
   _attributes = new Set<string>();
 
   // @ts-ignore
   @api
-  get content(): any {
+  get content(): Content | ContentRow | undefined {
     return this._contentOriginal;
   }
 
@@ -114,6 +116,7 @@ extends SfGpsDsElement {
       .map((row: ContentRow, rowIndex: number) => {
         let nRow: TableRow = {
           _key: `row-${rowIndex + 1}`,
+          _items: {}
         };
 
         for (let colName in row) {
@@ -125,7 +128,7 @@ extends SfGpsDsElement {
               if (col !== null && isObject(col)) {
                 const cio = col as ContentItemObject;
                 const cioType = cio.type;
-                nRow[colName] = {
+                nRow._items[colName] = {
                   ...cio,
                   _key: colName,
                   _isMarkdown: cioType === "markdown",
@@ -134,13 +137,17 @@ extends SfGpsDsElement {
                   _isBoolean: cioType === "boolean",
                   _isReference: cioType === "reference"
                 };
-              } else {
-                const type = col != null 
-                  ? typeof col 
+              } else if ([
+                "string", 
+                "number", 
+                "boolean"
+              ].includes(typeof col)) {
+                const type: ContentDisplayType = col != null 
+                  ? typeof col as ContentDisplayType
                   : "string";
 
-                nRow[colName] = {
-                  value: col,
+                nRow._items[colName] = {
+                  value: col as ContentItemLiteral,
                   type: type,
                   _key: colName,
                   _isMarkdown: false,
@@ -160,20 +167,20 @@ extends SfGpsDsElement {
 
   /* api: headers, Array of Objects */
 
-  _headers: Header[];
-  _headersOriginal: Header[] | Header;
+  _headers?: Header[];
+  _headersOriginal?: Header[] | Header;
 
   // @ts-ignore
   @api
-  get headers() {
+  get headers(): Header[] | Header | undefined {
     return this._headersOriginal;
   }
 
   set headers(value: Header[] | Header) {
     this._headersOriginal = value;
 
-    if (!isArray(value)) {
-      value = null;
+    if (!isArray(value) ) {
+      value = [value as Header];
     }
 
     this._headers = value as Header[];
@@ -191,9 +198,9 @@ extends SfGpsDsElement {
     );
   }
 
-  get _tableRows(): DisplayRow[] {
+  get _tableRows(): DisplayRow[] | undefined {
     if (this._content == null) {
-      return null;
+      return undefined;
     }
 
     const headers = this._tableHeaders;
@@ -204,7 +211,9 @@ extends SfGpsDsElement {
 
     return content.map((row: TableRow, index: number) => ({
       _key: `row-${index + 1}`,
-      _cols: headers.map<TableRow>((header) => row[header.name] || {})
+      _cols: headers.map((header) => row._items[header.name] || { 
+        _key: `col-empty-${index + 1}-${header.name}`
+      })
     }));
   }
 
@@ -214,7 +223,7 @@ extends SfGpsDsElement {
       "nsw-table--striped": this._isStriped.value,
       "nsw-table--bordered": this._isBordered.value,
       "nsw-table--caption-top": this._captionLocation.value === CAPTIONLOCATION_TOP,
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 

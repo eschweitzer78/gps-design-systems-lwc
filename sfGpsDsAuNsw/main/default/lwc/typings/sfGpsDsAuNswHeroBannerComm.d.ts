@@ -8,18 +8,18 @@ declare module "c/sfGpsDsAuNswHeroBannerComm" {
   class SfGpsDsAuNswHeroBannerComm
   extends SfGpsDsLwc {
     title: string;
-    subtitle: string;
-    cstyle: CStyle;
-    wide: boolean;
-    feature: boolean;
-    lines: boolean;
-    image: string;
-    imageAlt: string;
-    className: string;
+    subtitle?: string;
+    cstyle?: CStyle;
+    wide?: boolean;
+    feature?: boolean;
+    lines?: boolean;
+    image?: string;
+    imageAlt?: string;
+    className?: string;
 
-    cta: string;
-    links: string;
-    intro: string;
+    cta?: string;
+    links?: string;
+    intro?: string;
 
     // private
 
@@ -27,6 +27,6 @@ declare module "c/sfGpsDsAuNswHeroBannerComm" {
     _links: PropertyAccessor<Link[]>;
     _introHtml: PropertyAccessor<string>;
 
-    readonly computedImage: BannerImage;
+    readonly computedImage: BannerImage | null;
   }
 }

@@ -17,19 +17,19 @@ declare module "c/sfGpsDsAuNswProgressIndicator" {
   export default 
   class SfGpsDsAuNswProgressIndicator 
   extends SfGpsDsElement {
-    className: string;
+    className?: string;
 
-    step: number;
-    of: number;
-    mode: Mode;
+    step?: number;
+    of?: number;
+    mode?: Mode;
 
     // private
     _step: PropertyAccessor<number>;
     _of: PropertyAccessor<number>;
     _mode: PropertyAccessor<Mode>
 
-    readonly computedSteps: StepInfo[];
-    readonly computedClassName: any;
-    readonly computedShowBar: boolean;
+    get computedSteps(): StepInfo[];
+    get computedClassName(): any;
+    get computedShowBar(): boolean;
   }
 }

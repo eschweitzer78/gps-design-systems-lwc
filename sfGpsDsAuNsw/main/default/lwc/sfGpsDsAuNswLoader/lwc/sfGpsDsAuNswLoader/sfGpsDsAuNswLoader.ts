@@ -29,15 +29,15 @@ class SfGpsDsAuNswLoader
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  label: string;
+  label?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api
-  size: Size;
+  size?: Size;
   _size = this.defineEnumObjectProperty<string, Size>("size", {
     validValues: SIZE_VALUES,
     defaultValue: SIZE_DEFAULT
@@ -55,7 +55,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-loader": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 }

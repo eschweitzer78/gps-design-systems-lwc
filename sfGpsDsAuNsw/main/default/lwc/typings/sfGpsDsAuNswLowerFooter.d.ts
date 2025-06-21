@@ -6,13 +6,13 @@ declare module "c/sfGpsDsAuNswLowerFooter" {
   export default 
   class SfGpsDsAuNswLowerFooter 
   extends SfGpsDsElement {
-    items: AdaptedNavigationMenuItem[];
-    statement: string;
-    className: string;
+    items?: AdaptedNavigationMenuItem[];
+    statement?: string;
+    className?: string;
 
     // private
 
-    readonly computedClassName: any;    
+    get computedClassName(): any;    
 
     handleClick(event: MouseEvent): void;
   }

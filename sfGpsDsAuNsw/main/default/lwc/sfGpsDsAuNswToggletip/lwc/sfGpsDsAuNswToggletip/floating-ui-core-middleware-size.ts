@@ -61,8 +61,8 @@ export const size = (
       const isYAxis = getSideAxis(placement) === "y";
       const { width, height } = rects.floating;
 
-      let heightSide;
-      let widthSide;
+      let heightSide: "top" | "bottom";
+      let widthSide: "left" | "right";
 
       if (side === "top" || side === "bottom") {
         heightSide = side;

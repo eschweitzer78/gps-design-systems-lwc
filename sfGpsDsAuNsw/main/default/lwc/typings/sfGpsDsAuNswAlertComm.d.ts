@@ -6,17 +6,20 @@ declare module "c/sfGpsDsAuNswAlertComm" {
   export default 
   class SfGpsDsAuNswAlertComm 
   extends SfGpsDsLwc {
-    title: string;
+    // title: string;
     as: AlertType;
-    compact: boolean;
-    content: string;
-    className: string;
+    compact?: boolean;
+    className?: string;
 
+    get content(): string | undefined;
+    set content(markdown: string);
+    
     // private
     
     _compact: PropertyAccessor<boolean>;
-    _contentHtml: string;
-    _contentOriginal; string;
+
+    _contentHtml?: string;
+    _contentOriginal?: string;
 
     generateContentHtml(): void;
   }

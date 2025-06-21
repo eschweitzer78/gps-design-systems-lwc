@@ -8,6 +8,6 @@ declare module "c/sfGpsDsAuNswThemeLayoutLwr" {
     headerClassName: string;
     mainClassName: string;
     footerClassName: string;
-    containerBackgroundColor: string;
+    containerBackgroundColor?: string;
   }
 }

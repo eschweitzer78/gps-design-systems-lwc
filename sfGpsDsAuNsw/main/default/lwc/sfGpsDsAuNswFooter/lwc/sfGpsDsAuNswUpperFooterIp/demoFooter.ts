@@ -6,14 +6,14 @@ export default [
   {
     actionType: "ExternalLink",
     actionValue: "https://www.nsw.gov.au/",
-    imageUrl: null,
+    imageUrl: undefined,
     label: "Popular",
     target: "CurrentWindow",
     subMenu: [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/about-nsw/school-holidays",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "NSW school holidays",
         subMenu: [],
         target: "CurrentWindow"
@@ -22,7 +22,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/departments-and-agencies/department-of-education/careersnsw",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Careers NSW",
         subMenu: [],
         target: "CurrentWindow"
@@ -31,7 +31,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/visas-and-migration/skilled-visas/skilled-work-regional-visa-subclass-491",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Skilled Work Regional visa (subclass 491)",
         subMenu: [],
         target: "CurrentWindow"
@@ -40,7 +40,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/driving-boating-and-transport/driver-and-rider-licences/driver-licences/driver-licence-tests/driver-knowledge-test",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Driver Knowledge Test (DKT)",
         subMenu: [],
         target: "CurrentWindow"
@@ -49,7 +49,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/covid-19/testing-managing/advice-for-confirmed",
-        imageUrl: null,
+        imageUrl: undefined,
         label:
           "Testing positive to COVID-19 and managing COVID-19 safely at home",
         subMenu: [],
@@ -59,7 +59,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/driving-boating-and-transport/demerits-penalties-and-offences/offences/search-offences-and-penalties",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Search offences and penalties",
         subMenu: [],
         target: "CurrentWindow"
@@ -68,7 +68,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/money-and-taxes/fines-and-fees/fines/pay-your-fine",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Pay your fine",
         subMenu: [],
         target: "CurrentWindow"
@@ -76,7 +76,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/search",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Search",
         subMenu: [],
         target: "CurrentWindow"
@@ -85,7 +85,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/family-and-relationships/family-history-search",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Family history search",
         subMenu: [],
         target: "CurrentWindow"
@@ -95,7 +95,7 @@ export default [
   {
     actionType: "ExternalLink",
     actionValue: "https://www.nsw.gov.au/nsw-government/about-this-website",
-    imageUrl: null,
+    imageUrl: undefined,
     label: "About this website",
     target: "CurrentWindow",
     subMenu: [
@@ -103,7 +103,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/nsw-government/access-nsw-government-information",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Access to information",
         subMenu: [],
         target: "CurrentWindow"
@@ -111,7 +111,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/accessibility-statement",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Accessibility statement",
         subMenu: [],
         target: "CurrentWindow"
@@ -119,7 +119,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/nsw-government/copyright",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Copyright",
         subMenu: [],
         target: "CurrentWindow"
@@ -127,7 +127,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/nsw-government/disclaimer",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Disclaimer",
         subMenu: [],
         target: "CurrentWindow"
@@ -135,7 +135,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/nsw-government/privacy-statement",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Privacy statement",
         subMenu: [],
         target: "CurrentWindow"
@@ -143,7 +143,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.service.nsw.gov.au/nswgovdirectory",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "NSW Government directory",
         subMenu: [],
         target: "CurrentWindow"
@@ -153,14 +153,14 @@ export default [
   {
     actionType: "ExternalLink",
     actionValue: "https://www.nsw.gov.au/departments-and-agencies",
-    imageUrl: null,
+    imageUrl: undefined,
     label: "Departments",
     target: "CurrentWindow",
     subMenu: [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/the-cabinet-office",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Cabinet Office",
         subMenu: [],
         target: "CurrentWindow"
@@ -169,7 +169,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/departments-and-agencies/customer-service",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Customer Service",
         subMenu: [],
         target: "CurrentWindow"
@@ -177,7 +177,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.dcj.nsw.gov.au/",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Communities and Justice",
         subMenu: [],
         target: "CurrentWindow"
@@ -186,7 +186,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/departments-and-agencies/department-of-education",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Education",
         subMenu: [],
         target: "CurrentWindow"
@@ -195,7 +195,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/departments-and-agencies/enterprise-investment-trade",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Enterprise, Investment and Trade",
         subMenu: [],
         target: "CurrentWindow"
@@ -203,7 +203,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.health.nsw.gov.au/",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Health",
         subMenu: [],
         target: "CurrentWindow"
@@ -211,7 +211,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.dpie.nsw.gov.au/",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Planning and Environment",
         subMenu: [],
         target: "CurrentWindow"
@@ -219,7 +219,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/premiers-department",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Premier’s Department",
         subMenu: [],
         target: "CurrentWindow"
@@ -228,7 +228,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/departments-and-agencies/department-of-regional-nsw",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Regional NSW",
         subMenu: [],
         target: "CurrentWindow"
@@ -236,7 +236,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.transport.nsw.gov.au/",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Transport",
         subMenu: [],
         target: "CurrentWindow"
@@ -244,7 +244,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.treasury.nsw.gov.au/",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Treasury",
         subMenu: [],
         target: "CurrentWindow"
@@ -254,14 +254,14 @@ export default [
   {
     actionType: "ExternalLink",
     actionValue: "https://www.nsw.gov.au/nsw-government",
-    imageUrl: null,
+    imageUrl: undefined,
     label: "NSW Government",
     target: "CurrentWindow",
     subMenu: [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/nsw-government/premier-of-nsw",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "The Premier",
         subMenu: [],
         target: "CurrentWindow"
@@ -269,7 +269,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/nsw-government/ministers",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "NSW Ministers",
         subMenu: [],
         target: "CurrentWindow"
@@ -278,7 +278,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.parliament.nsw.gov.au/members/pages/all-members.aspx",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Find your local Member of Parliament",
         subMenu: [],
         target: "CurrentWindow"
@@ -286,7 +286,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://boards.dpc.nsw.gov.au/",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Boards and Committees",
         subMenu: [],
         target: "CurrentWindow"
@@ -294,7 +294,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://iworkfor.nsw.gov.au/",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Find a job in NSW Government",
         subMenu: [],
         target: "CurrentWindow"
@@ -302,7 +302,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/about-nsw",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "About NSW",
         subMenu: [],
         target: "CurrentWindow"
@@ -310,7 +310,7 @@ export default [
       {
         actionType: "ExternalLink",
         actionValue: "https://www.nsw.gov.au/nsw-government/communications",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "NSW Government Communications",
         subMenu: [],
         target: "CurrentWindow"
@@ -319,7 +319,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/nsw-government/unsolicited-proposals",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Unsollicited proposals",
         subMenu: [],
         target: "CurrentWindow"
@@ -328,7 +328,7 @@ export default [
         actionType: "ExternalLink",
         actionValue:
           "https://www.nsw.gov.au/nsw-government/projects-and-initiatives",
-        imageUrl: null,
+        imageUrl: undefined,
         label: "Projects and initiatives",
         subMenu: [],
         target: "CurrentWindow"

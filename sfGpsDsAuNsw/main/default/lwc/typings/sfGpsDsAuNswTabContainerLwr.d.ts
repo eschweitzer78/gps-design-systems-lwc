@@ -14,29 +14,29 @@ declare module "c/sfGpsDsAuNswTabContainerLwr" {
   export default 
   class SfGpsDsAuNswTabContainerLwr 
   extends SfGpsDsLwc {
-    title: string;
-    tab1Label: string;
-    tab2Label: string;
-    tab3Label: string;
-    tab4Label: string;
-    tab5Label: string;
-    tab6Label: string;
-    tab7Label: string;
-    tab8Label: string;
-    tab9Label: string;
-    tab10Label: string;
+    //title: string;
+    tab1Label?: string;
+    tab2Label?: string;
+    tab3Label?: string;
+    tab4Label?: string;
+    tab5Label?: string;
+    tab6Label?: string;
+    tab7Label?: string;
+    tab8Label?: string;
+    tab9Label?: string;
+    tab10Label?: string;
 
     // @ts-ignore
-    firstChild: boolean;
+    firstChild?: boolean;
 
-    tabPaddingStyle: TabPaddingStyle;
-    tabBorderStyle: TabBorderStyle
+    tabPaddingStyle?: TabPaddingStyle;
+    tabBorderStyle?: TabBorderStyle
 
     // private
 
     _tabPaddingStyle: PropertyAccessor<TabPaddingStyle>;
     _tabBorderStyle: PropertyAccessor<TabBorderStyle>;
 
-    readonly computedTabClassName: any;
+    get computedTabClassName(): any;
   }
 }

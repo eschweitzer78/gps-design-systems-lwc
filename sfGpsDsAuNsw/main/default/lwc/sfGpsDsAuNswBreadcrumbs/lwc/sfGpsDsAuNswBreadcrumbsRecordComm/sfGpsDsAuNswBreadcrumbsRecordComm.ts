@@ -33,7 +33,7 @@ extends SfGpsDsLwc {
 
   /* api: homeLabel */
 
-  _homeLabel: string;
+  _homeLabel?: string;
 
   // @ts-ignore
   @api
@@ -47,14 +47,14 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  recordId: string;
+  recordId?: string;
   _recordId = this.defineStringProperty("recordId", {
     watcher: () => this.updateBreadcrumbs()
   });
 
   // @ts-ignore
   @api 
-  objectApiName: string;
+  objectApiName?: string;
   _objectApiName = this.defineStringProperty("objectApiName", {
     watcher: () => this.updateBreadcrumbs()
   });
@@ -104,7 +104,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

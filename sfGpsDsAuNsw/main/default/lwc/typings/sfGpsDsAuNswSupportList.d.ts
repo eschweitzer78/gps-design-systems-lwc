@@ -11,23 +11,22 @@ declare module "c/sfGpsDsAuNswSupportList" {
   export default 
   class SfGpsDsAuNswSupportList 
   extends SfGpsDsElement {
-    header: string;
-    departments: Link[];
-    supportLogos: Link[];
-    className: string;
-
-    logoPosition: LogoPosition;
+    header?: string;
+    departments?: Link[];
+    supportLogos?: Link[];
+    className?: string;
+    logoPosition?: LogoPosition;
 
     // private
 
     _logoPosition: PropertyAccessor<LogoPosition>;
 
-    readonly i18n: Record<string, string>;
-    readonly computedClassName: any;
-    readonly computedContainerClassName: any;
-    readonly computedShowLogoTop: boolean;
-    readonly computedShowLogoBottom: boolean;
-    readonly computedHasDepartments: boolean;
-    readonly computedHasSupportLogos: boolean;
+    get i18n(): Record<string, string>;
+    get computedClassName(): any;
+    get computedContainerClassName(): any;
+    get computedShowLogoTop(): boolean;
+    get computedShowLogoBottom(): boolean;
+    get computedHasDepartments(): boolean;
+    get computedHasSupportLogos(): boolean;
   }
 }

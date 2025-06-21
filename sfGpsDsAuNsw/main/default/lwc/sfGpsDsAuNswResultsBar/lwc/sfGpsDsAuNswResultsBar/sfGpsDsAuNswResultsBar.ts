@@ -24,15 +24,15 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  name: string;
+  name?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
-  from: number;
+  from?: number;
   _from = this.defineIntegerProperty("from", {
     minValue: 0,
     defaultValue: FROM_DEFAULT
@@ -40,7 +40,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  to: number;
+  to?: number;
   _to = this.defineIntegerProperty("to", {
     minValue: 0,
     defaultValue: TO_DEFAULT
@@ -48,7 +48,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  total: number;
+  total?: number;
   _total = this.defineIntegerProperty("total", {
     minValue: 0,
     defaultValue: TOTAL_DEFAULT
@@ -64,7 +64,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  value: string;
+  value?: string;
   _value = this.defineStringProperty("value", {
     defaultValue: VALUE_DEFAULT,
     watcher: () => this.reconcileValueOptions()
@@ -72,13 +72,13 @@ extends SfGpsDsElement {
 
   /* api: sortOptions */
 
-  _sortOptions: SortOption[];
-  _sortOptionsOriginal: SortOption[] | SortOption;
-  _visibleSortOptions: SortOption[];
+  _sortOptions?: SortOption[];
+  _sortOptionsOriginal?: SortOption[] | SortOption;
+  _visibleSortOptions?: SortOption[];
 
   // @ts-ignore
   @api
-  get sortOptions(): SortOption[] | SortOption {
+  get sortOptions(): SortOption[] | SortOption | undefined {
     return this._sortOptionsOriginal;
   }
 
@@ -86,9 +86,9 @@ extends SfGpsDsElement {
     this._sortOptionsOriginal = value;
 
     if (value == null) {
-      this._sortOptions = null;
+      this._sortOptions = undefined;
       // eslint-disable-next-line @lwc/lwc/no-api-reassignments
-      this.value = null;
+      this.value = undefined;
     } else if (isArray(value)) {
       this._sortOptions = (value as SortOption[]).map((option) => ({
         ...option,
@@ -108,11 +108,11 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-results-bar": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
-  _selectId: string;
+  _selectId?: string;
 
   get computedSelectId(): string {
     if (this._selectId === undefined) {
@@ -122,7 +122,7 @@ extends SfGpsDsElement {
     return this._selectId;
   }
 
-  get computedResultsText(): string {
+  get computedResultsText(): string | null {
     return this.resultsText
       ? formatTemplate(this.resultsText, {
           from: this._from.value?.toString(),
@@ -135,8 +135,8 @@ extends SfGpsDsElement {
   /* methods */
 
   reconcileValueOptions(): void {
-    if (this._sortOptions == null) {
-      this._visibleSortOptions = null;
+    if (this._sortOptions == undefined) {
+      this._visibleSortOptions = undefined;
       return;
     }
 

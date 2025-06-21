@@ -42,23 +42,23 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  type: string;
+  type?: string;
 
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @api 
   // @ts-ignore
-  firstChild: boolean;
+  firstChild?: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT
   });
 
   // @ts-ignore
   @api 
-  cstyle: boolean;
+  cstyle?: boolean;
   _cstyle = this.defineEnumObjectProperty<string, CStyle>("cstyle", {
     validValues: CSTYLE_VALUES,
     defaultValue: CSTYLE_DEFAULT
@@ -66,7 +66,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  size: boolean;
+  size?: boolean;
   _size = this.defineEnumObjectProperty<string, Size>("size", {
     validValues: SIZE_VALUES,
     defaultValue: SIZE_DEFAULT
@@ -81,7 +81,7 @@ extends SfGpsDsElement {
       [this._size.value]: !!this._size.value,
       "nsw-steps--fill": this.type?.includes("fill"),
       "nsw-steps--counters": this.type?.includes("counter"),
-      [this.className]: !!this.className
+      [this.className || ""]: !!this.className
     };
   }
 }

@@ -25,31 +25,31 @@ class SfGpsDsAuNswCardCarouselComm
 extends SfGpsDsIpLwc {
   // @ts-ignore
   @api 
-  accessibilityLabel: string;
+  accessibilityLabel?: string;
 
   // @ts-ignore
   @api 
-  drag: boolean;
+  drag?: boolean;
 
   // @ts-ignore
   @api 
-  justifyContent: boolean;
+  justifyContent?: boolean;
 
   // @ts-ignore
   @api 
-  navigation: "navigation" | "pagination" | "loop";
+  navigation?: "navigation" | "pagination" | "loop";
 
   // @ts-ignore
   @api 
-  navigationItemClassName: string;
+  navigationItemClassName?: string;
 
   // @ts-ignore
   @api 
-  navigationClassName: string;
+  navigationClassName?: string;
 
   // @ts-ignore
   @api 
-  paginationClassName: string;
+  paginationClassName?: string;
 
   // @ts-ignore
   @api 
@@ -72,7 +72,8 @@ extends SfGpsDsIpLwc {
   dateStyle: DateStyle = "medium";
 
   // @ts-ignore
-  @api className: string;
+  @api 
+  className?: string;
 
   /* api: ipName, String */
 
@@ -143,7 +144,7 @@ extends SfGpsDsIpLwc {
 
   mapIpData(data: any): CardData[] {
     if (!data) {
-      return null;
+      return [];
     }
 
     if (!isArray(data)) {
@@ -167,7 +168,7 @@ extends SfGpsDsIpLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
 }

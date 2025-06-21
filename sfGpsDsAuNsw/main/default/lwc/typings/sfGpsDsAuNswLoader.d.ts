@@ -1,7 +1,6 @@
 declare module "c/sfGpsDsAuNswLoader" {
   import type SfGpsDsElement from "c/sfGpsDsElement"; 
   import type { PropertyAccessor } from "c/sfGpsDsElement";
-  import type { Link } from "c/sfGpsDsMarkdown";
 
   export type Size = 
     "xl" | 
@@ -12,15 +11,15 @@ declare module "c/sfGpsDsAuNswLoader" {
   export default 
   class SfGpsDsAuNswLoader 
   extends SfGpsDsElement {
-    label: string;
-    className: string;
-    size: Size;
+    label?: string;
+    className?: string;
+    size?: Size;
 
     // private
 
     _size: PropertyAccessor<string>;
 
-    readonly computedSpanClassName: any;
-    readonly computedClassName: any;
+    get computedSpanClassName(): any;
+    get computedClassName(): any;
   }
 }

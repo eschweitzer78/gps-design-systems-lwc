@@ -31,7 +31,7 @@ export const computePosition: ComputePosition = async (
   const rtl = await platform.isRTL?.(floating);
 
   let rects = await platform.getElementRects({ reference, floating, strategy });
-  let { x, y } = computeCoordsFromPlacement(rects, placement, rtl);
+  let { x, y } = computeCoordsFromPlacement(rects, placement, rtl || false);
   let statefulPlacement = placement;
   let middlewareData: MiddlewareData = {};
   let resetCount = 0;
@@ -90,7 +90,7 @@ export const computePosition: ComputePosition = async (
               : reset.rects;
         }
 
-        ({ x, y } = computeCoordsFromPlacement(rects, statefulPlacement, rtl));
+        ({ x, y } = computeCoordsFromPlacement(rects, statefulPlacement, rtl || false));
       }
 
       i = -1;

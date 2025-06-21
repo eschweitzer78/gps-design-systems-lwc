@@ -5,31 +5,36 @@ declare module "c/sfGpsDsAuNswTabLwr" {
   export default 
   class SfGpsDsAuNswTabLwr 
   extends SfGpsDsElement {
-    className: string;
-    vid: string;
-    variaLabelledBy: string;
-    vhidden: boolean;
+    className?: string;
+    vid?: string;
+    variaLabelledBy?: string;
+    vhidden?: boolean;
 
-    value: string;
-    label: string;
+    get value(): string | undefined;
+    set value(value: string);
+
+    get label(): string;
+    set label(value: string);
+
     showErrorIndicator: boolean;
 
     loadContent(): boolean;
 
     // private
 
-    _value: string;
-    _valueOriginal: string;
+    _value?: string;
+    _valueOriginal?: string;
     _label: string;
     _title: string;
-    _showErrorIndicator: boolean;
-    _loadContent: boolean;
 
-    readonly computedClassName: any;
+    _showErrorIndicator: PropertyAccessor<boolean>;
+    _loadContent?: boolean;
+
+    get computedClassName(): any;
 
     _dispatchDataChangeEventIfConnected(): void;
 
-    _deregistrationCallback: Function;
+    _deregistrationCallback?: Function;
 
   }
 }
