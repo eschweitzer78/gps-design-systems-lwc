@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVic2Breadcrumbs from "c/sfGpsDsAuVic2Breadcrumbs";
 
 const TAG_NAME = "c-sf-gps-ds-au-vic2-breadcrumbs";

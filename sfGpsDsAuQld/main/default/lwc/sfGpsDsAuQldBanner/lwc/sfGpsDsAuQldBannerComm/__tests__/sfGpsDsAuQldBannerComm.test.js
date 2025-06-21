@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuQldBannerComm from "c/sfGpsDsAuQldBannerComm";
 
 describe("c-sf-gps-ds-au-qld-banner-comm", () => {

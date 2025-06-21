@@ -1,5 +1,5 @@
 /* eslint-disable @lwc/lwc/no-inner-html */
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuNswCallout from "c/sfGpsDsAuNswCallout";
 
 const tag = "c-sf-gps-ds-au-nsw-callout";

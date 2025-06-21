@@ -2,8 +2,33 @@
 <template>
   <div
     class="slds-omniscript_stepform slds-size_1-of-1 slds-small-size_1-of-1 slds-large-size_12-of-12 slds-m-top_xx-large slds-m-bottom_x-large"
+    aria-label={_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
   >
+    <c-sf-gps-ds-au-nsw-steps-os
+      lwc:if={isVertical}
+      type={computedType}
+      cstyle={computedCstyle}
+      size="small"
+      first-child="true"
+    >
+      <template for:each={stepDef} for:item="step" for:index="index">
+        <c-sf-gps-ds-au-nsw-form-step-chart-item-os-n
+          key={step.name}
+          json-def={step}
+          is-vertical={isVertical}
+          last-step-index={lastStepIndex}
+          last-executed-step-index={_lastExecutedStepIndex}
+          first-visible-step-index={firstVisibleStepIndex}
+          current-index={currentIndex}
+          current-step-index={index}
+          script-header-def={scriptHeaderDef}
+        >
+        </c-sf-gps-ds-au-nsw-form-step-chart-item-os-n>
+      </template>
+    </c-sf-gps-ds-au-nsw-steps-os>
+
     <c-sf-gps-ds-au-nsw-progress-indicator-os
+      lwc:else
       step={sfGpsDsStepNumber}
       of={sfGpsDsStepCount}
     >

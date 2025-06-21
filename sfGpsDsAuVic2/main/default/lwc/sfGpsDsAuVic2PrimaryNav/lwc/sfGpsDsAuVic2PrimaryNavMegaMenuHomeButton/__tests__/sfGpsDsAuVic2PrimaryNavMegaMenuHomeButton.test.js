@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVic2PrimaryNavMegaMenuHomeButton from "c/sfGpsDsAuVic2PrimaryNavMegaMenuHomeButton";
 
 describe("c-sf-gps-ds-au-vic2-primary-nav-mega-menu-home-button", () => {

@@ -1,6 +1,8 @@
 <template>
   <div class={computedClassName}>
-    <div class="nsw-progress-indicator__count">Step {step} of {of}</div>
+    <div class="nsw-progress-indicator__count">
+      Step {_step.value} of {_of.value}
+    </div>
     <div lwc:if={computedShowBar} class="nsw-progress-indicator__bar">
       <template for:each={computedSteps} for:item="item">
         <div key={item.index} class={item.className}></div>

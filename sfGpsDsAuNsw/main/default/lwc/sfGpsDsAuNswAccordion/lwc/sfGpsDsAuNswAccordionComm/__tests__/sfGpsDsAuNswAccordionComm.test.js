@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuNswAccordionComm from "c/sfGpsDsAuNswAccordionComm";
 
 const tag = "c-sf-gps-ds-au-nsw-accordion-comm";
@@ -28,7 +28,7 @@ describe("c-sf-gps-ds-au-nsw-accordion-comm", () => {
     expect(childAccordion.closed).toBe(true);
   });
 
-  it("is open when someone clicks on the title", () => {
+  it("is open when someone clicks on the title", async () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordionComm
     });
@@ -45,15 +45,14 @@ describe("c-sf-gps-ds-au-nsw-accordion-comm", () => {
     let button = childAccordion.querySelector("button");
     button.click();
 
-    return Promise.resolve().then(() => {
-      expect(childAccordion.closed).toBe(false);
-      expect(element.closed).toBe(false);
-      expect(handler).toHaveBeenCalled();
-      expect(handler).toHaveBeenCalledTimes(1);
-    });
+    await Promise.resolve();
+    expect(childAccordion.closed).toBe(false);
+    expect(element.closed).toBe(false);
+    expect(handler).toHaveBeenCalled();
+    expect(handler).toHaveBeenCalledTimes(1);
   });
 
-  it("is closed when someone clicks on the title twice", () => {
+  it("is closed when someone clicks on the title twice", async () => {
     const element = createElement(tag, {
       is: SfGpsDsAuNswAccordionComm
     });
@@ -71,11 +70,10 @@ describe("c-sf-gps-ds-au-nsw-accordion-comm", () => {
     button.click();
     button.click();
 
-    return Promise.resolve().then(() => {
-      expect(element.closed).toBe(true);
-      expect(handler).toHaveBeenCalled();
-      expect(handler).toHaveBeenCalledTimes(1);
-    });
+    await Promise.resolve();
+    expect(element.closed).toBe(true);
+    expect(handler).toHaveBeenCalled();
+    expect(handler).toHaveBeenCalledTimes(1);
   });
 
   it("is accessible", async () => {

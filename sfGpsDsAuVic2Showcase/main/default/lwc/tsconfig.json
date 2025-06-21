@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "include": [
+    "**/*.ts",
+    "./typings/*.d.ts",
+    "../../../../typings/*.d.ts",
+    "../../../../.sfdx/typings/lwc/**/*.d.ts"
+  ],
+  "exclude": ["**/__tests__/**"]
+}

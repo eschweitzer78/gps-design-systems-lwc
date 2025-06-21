@@ -4,7 +4,9 @@
 
 # Salesforce cache
 .sf/
-.sfdx/
+.sfdx/*
+!.sfdx/typings
+!.sfdx/tsconfig.sfdx.json
 .localdevserver/
 deploy-options.json
 

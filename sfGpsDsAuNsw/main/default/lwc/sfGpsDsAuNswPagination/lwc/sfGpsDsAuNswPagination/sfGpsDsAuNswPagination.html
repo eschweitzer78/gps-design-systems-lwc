@@ -38,7 +38,7 @@
       <li lwc:if={computedShowActivePage}>
         <a class="active">
           <span class="sr-only">{srOnlyPre}</span>
-          {_activePage}
+          {_activePage.value}
           <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>
@@ -58,7 +58,7 @@
       <li lwc:if={computedShowLastPage}>
         <a href="#last-page" onclick={handleLastPageClick}>
           <span lwc:if={srOnlyPre} class="sr-only">{srOnlyPre}</span>
-          {_lastPage}
+          {_lastPage.value}
           <span lwc:if={srOnlyPost} class="sr-only">{srOnlyPost}</span>
         </a>
       </li>

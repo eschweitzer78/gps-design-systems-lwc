@@ -4,7 +4,7 @@
     <p class="rpl-type-p-large">{description}</p>
 
     <ul lwc:if={computedShowLinks} class="links rpl-u-margin-t-5">
-      <template for:each={_links} for:item="link">
+      <template for:each={_links.value} for:item="link">
         <c-sf-gps-ds-au-vic2-docs-link
           key={link.index}
           is-external="true"

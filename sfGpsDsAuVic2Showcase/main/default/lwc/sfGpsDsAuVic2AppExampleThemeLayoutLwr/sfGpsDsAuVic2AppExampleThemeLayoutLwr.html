@@ -14,7 +14,7 @@
 
     <div class={computedLayoutClassName}>
       <div class={aboveHeaderClassName}>
-        <slot name="aboveHeader"></slot>
+        <slot name="VIC-AboveHeader"></slot>
       </div>
 
       <div class="rpl-layout__container">
@@ -24,13 +24,13 @@
           data-f6-region
           class={headerClassName}
         >
-          <slot name="header"></slot>
+          <slot name="VIC-Header"></slot>
           <div
             lwc:if={hasBelowHeader}
             id={belowHeaderId}
             class={belowHeaderClassName}
           >
-            <slot name="belowHeader"></slot>
+            <slot name="VIC-BelowHeader"></slot>
           </div>
         </header>
         <!-- header -->
@@ -46,7 +46,7 @@
         </c-sf-gps-ds-au-vic2-layout-back-to-top>
 
         <footer data-f6-region class={footerClassName}>
-          <slot name="footer"></slot>
+          <slot name="VIC-Footer"></slot>
         </footer>
         <!-- footer -->
       </div>

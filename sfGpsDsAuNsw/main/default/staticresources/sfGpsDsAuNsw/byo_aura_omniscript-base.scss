@@ -2,17 +2,28 @@
   border: none;
 }
 
-.omniscript-body {
-  padding: 0 !important;
-}
-
 .slds-omniscript_stepform {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
 
+.omniscript-side-content {
+  margin-top: 0;
+}
+
 .omniscript-body {
+  padding: 0 !important;
   border-right: 0 !important;
+  margin-top: 0;
+
+  &[data-stepborder=left] {
+    padding-left: 1rem !important;
+  }
+
+  &[data-stepborder=right] {
+    padding-right: 1rem !important;
+  }
+
 }
 
 c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group {
@@ -37,7 +48,8 @@ omnistudio-omniscript-pdf-action,
 omnistudio-omniscript-remote-action,
 omnistudio-omniscript-set-values,
 omnistudio-omniscript-set-errors,
-omnistudio-omniscript-edit-block fieldset [omnistudio-omniscripteditblock_omniscripteditblockinline],c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group {
+omnistudio-omniscript-edit-block fieldset [omnistudio-omniscripteditblock_omniscripteditblockinline],c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group,
+omnistudio-omniscript-edit-block {
   .slds-button {
     --lwc-borderWidthThin: 2px;
     --lwc-border-radius: var(--nsw-border-radius);

@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsSgGovCloseButton from "c/sfGpsDsSgGovCloseButton";
 
 describe("c-sf-gps-ds-sg-gov-close-button", () => {

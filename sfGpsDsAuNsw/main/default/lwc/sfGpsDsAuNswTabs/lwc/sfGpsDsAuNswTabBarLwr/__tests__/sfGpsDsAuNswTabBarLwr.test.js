@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuNswTabBarLwr from "c/sfGpsDsAuNswTabBarLwr";
 
 const ELT_TAG = "c-sf-gps-ds-au-nsw-tab-bar-lwr";
@@ -56,7 +56,7 @@ describe("c-sf-gps-ds-au-nsw-tab-bar-lwr", () => {
     expect(liAs[1].classList).not.toContain("active");
   });
 
-  it("can be operated using the keyboard", () => {
+  it("can be operated using the keyboard", async () => {
     // Arrange
     const element = createElement(ELT_TAG, {
       is: SfGpsDsAuNswTabBarLwr
@@ -74,17 +74,17 @@ describe("c-sf-gps-ds-au-nsw-tab-bar-lwr", () => {
     expect(tabsList).not.toBeNull();
 
     // send arrow right
-    tabsList.dispatchEvent(new KeyboardEvent("keydown", { keyCode: 39 }));
+    tabsList.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight" }));
 
     // Assert
 
-    return Promise.resolve().then(() => {
-      const liAs = element.querySelectorAll("li a");
-      expect(liAs.length).toBe(2);
-      expect(liAs[0].ariaSelected).toBe("false");
-      expect(liAs[0].classList).not.toContain("active");
-      expect(liAs[1].ariaSelected).toBe("true");
-      expect(liAs[1].classList).toContain("active");
-    });
+    await Promise.resolve();
+
+    const liAs = element.querySelectorAll("li a");
+    expect(liAs.length).toBe(2);
+    expect(liAs[0].ariaSelected).toBe("false");
+    expect(liAs[0].classList).not.toContain("active");
+    expect(liAs[1].ariaSelected).toBe("true");
+    expect(liAs[1].classList).toContain("active");
   });
 });

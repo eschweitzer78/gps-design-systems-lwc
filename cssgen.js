@@ -107,7 +107,7 @@ async function main() {
             fileInDirectory
               ? `${dot}/${file}${hasStar ? "" : ".gen"}.${genFileExtension}`
               : `${dot}/${directory}/${file}${hasStar ? "" : ".gen"}.${genFileExtension}`,
-            pContent.css,
+            "/* sldsValidatorIgnore */\n" + pContent.css,
             (err) => {
               if (err) throw err;
             }

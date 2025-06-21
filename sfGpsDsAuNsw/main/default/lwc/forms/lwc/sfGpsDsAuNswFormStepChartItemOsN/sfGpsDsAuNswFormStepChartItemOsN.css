@@ -1,0 +1,16 @@
+[role="button"] {
+  cursor: pointer;
+}
+
+[role="button"]:hover {
+  text-decoration: underline;
+}
+
+[role="button"]:focus {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
+}
+
+.nsw-steps__content[data-islast="true"]::before {
+  display: none;
+}

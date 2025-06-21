@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsUkGovUpperFooter from "c/sfGpsDsUkGovUpperFooter";
 
 const ELT_TAG = "c-sf-gps-ds-uk-gov-upper-footer";

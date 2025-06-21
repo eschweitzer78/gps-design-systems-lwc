@@ -1,5 +1,5 @@
-<template>
-  <div class="nsw-steps__item">
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
     <div class="nsw-steps__content">
       <template lwc:if={title}>
         <h3 lwc:if={_isH3}>{title}</h3>
@@ -7,7 +7,7 @@
         <h2 lwc:else>{title}</h2>
       </template>
       <slot>
-        <div lwc:ref="content" lwc:dom="manual"></div>
+        <div lwc:if={content} lwc:ref="content"></div>
       </slot>
     </div>
   </div>

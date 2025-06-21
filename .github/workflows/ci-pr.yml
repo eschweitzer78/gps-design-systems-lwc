@@ -66,6 +66,14 @@ jobs:
       - name: "Lint Lightning Web Components / Aura Components"
         run: npm run lint
 
+      # Generate css from scss
+      - name: "Automatically generate css"
+        run: npm run cssgen
+
+      # Generate JS versions of TS source
+      - name: "Automatically generate JS source from TypeScript"
+        run: npm run build
+
       # LWC unit tests
       - name: "Unit test Lightning Web Components"
         run: npm run test:unit:coverage
@@ -289,6 +297,10 @@ jobs:
       # Generate css from scss
       - name: "Automatically generate css"
         run: npm run cssgen
+
+      # Generate JS versions of TS source
+      - name: "Automatically generate JS source from TypeScript"
+        run: npm run build
 
       # Generate omnistudio versions of source
       - name: "Automatically generate Omnistudio source"

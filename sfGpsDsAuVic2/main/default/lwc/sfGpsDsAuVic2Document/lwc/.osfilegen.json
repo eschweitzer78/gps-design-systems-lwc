@@ -1,7 +1,6 @@
 {
   "sfGpsDsAuVic2Document": {
     "target": "!Os",
-    "!.css": { "target": "!Os.css" },
     "!.html": {
       "target": "!Os.html"
     },

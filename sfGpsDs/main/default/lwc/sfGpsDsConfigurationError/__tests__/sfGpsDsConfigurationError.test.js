@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsConfigurationError from "c/sfGpsDsConfigurationError";
 
 describe("c-sf-gps-ds-configuration-error", () => {

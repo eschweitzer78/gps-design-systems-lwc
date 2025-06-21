@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsUkGovAccordion from "c/sfGpsDsUkGovAccordion";
 import { setup } from "@sa11y/jest";
 

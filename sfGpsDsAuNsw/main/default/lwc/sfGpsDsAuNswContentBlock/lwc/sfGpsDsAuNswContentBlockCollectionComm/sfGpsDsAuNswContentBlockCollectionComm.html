@@ -12,7 +12,6 @@
       <template for:each={_items} for:item="block">
         <div key={block.index} class={computedColClassName}>
           <c-sf-gps-ds-au-nsw-content-block-v2-comm
-            tag={block.tag}
             image={block.image}
             image-alt={block.imageAlt}
             title={block.title}
@@ -26,7 +25,7 @@
       </template>
     </div>
 
-    <c-sf-gps-ds-empty lwc:if={_isEmpty} title="No matching content">
+    <c-sf-gps-ds-empty lwc:if={_isEmpty} title={i18n.emptyTitle}>
     </c-sf-gps-ds-empty>
   </template>
 </template>

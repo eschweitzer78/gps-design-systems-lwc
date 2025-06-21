@@ -8,14 +8,14 @@
   <c-sf-gps-ds-au-nsw-list-item
     lwc:else
     label={label}
-    title={_headline.text}
-    link={_headline.url}
+    title={_headline.value.text}
+    link={_headline.value.url}
     copy={copy}
     image={image}
     image-alt={imageAlt}
     date={_date}
     date-style={dateStyle}
-    tags={_links}
+    tags={_links.value}
     show-link={showLink}
     is-block={isBlock}
     is-reversed={isReversed}

@@ -8,14 +8,14 @@
   <c-sf-gps-ds-au-nsw-hero-banner
     lwc:else
     title={title}
-    cta={_cta}
+    cta={_cta.value}
     cstyle={cstyle}
     wide={wide}
     featured={featured}
     lines={lines}
     image={computedImage}
     subtitle={subtitle}
-    links={_links}
+    links={_links.value}
     class-name={className}
   >
     <div lwc:ref="markdown" lwc:dom="manual"></div>

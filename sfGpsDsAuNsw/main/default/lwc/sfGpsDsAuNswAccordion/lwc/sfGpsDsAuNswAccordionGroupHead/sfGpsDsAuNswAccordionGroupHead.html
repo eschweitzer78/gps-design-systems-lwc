@@ -1,12 +1,16 @@
 <!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
-  <div lwc:if={showButtons} class="nsw-accordion__toggle">
-    <button type="button" disabled={_isFullyExpanded} onclick={handleExpandAll}>
+  <div lwc:if={_showButtons.value} class="nsw-accordion__toggle">
+    <button
+      type="button"
+      disabled={_isFullyExpanded.value}
+      onclick={handleExpandAll}
+    >
       {expandAllLabel}
     </button>
     <button
       type="button"
-      disabled={_isFullyCollapsed}
+      disabled={_isFullyCollapsed.value}
       onclick={handleCollapseAll}
     >
       {collapseAllLabel}

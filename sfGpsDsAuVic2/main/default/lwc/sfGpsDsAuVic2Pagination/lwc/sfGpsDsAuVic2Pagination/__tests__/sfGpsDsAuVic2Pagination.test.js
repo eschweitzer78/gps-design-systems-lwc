@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVic2Pagination from "c/sfGpsDsAuVic2Pagination";
 
 const TAG_NAME = "c-sf-gps-ds-au-vic2-pagination";

@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuNswToggletip from "c/sfGpsDsAuNswToggletip";
 
 describe("c-sf-gps-ds-au-nsw-toggletip", () => {

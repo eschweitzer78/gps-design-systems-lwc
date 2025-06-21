@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuNswSideNav from "c/sfGpsDsAuNswSideNav";
 
 const ELT_TAG = "c-sf-gps-ds-au-nsw-side-nav";

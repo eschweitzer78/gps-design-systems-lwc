@@ -1,0 +1,26 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template lwc:if={completed}>
+    <div
+      class="nsw-steps__content"
+      data-islast={computedIsLast}
+      role="button"
+      tabindex={computedTabindex}
+      onclick={handleStepClick}
+      onkeydown={handleStepKeydown}
+    >
+      <h4>{stepLabel}<span class="sr-only"> ({_labelCompleted})</span></h4>
+    </div>
+  </template>
+
+  <template lwc:else>
+    <div class="nsw-steps__content" data-islast={computedIsLast}>
+      <h4>
+        {stepLabel}
+        <span class="sr-only" lwc:if={inProgress}> ({_labelInProgress})</span>
+        <span class="sr-only" lwc:if={pristine}> ({_labelUntouched})</span>
+        <span class="sr-only" lwc:if={nonpristine}> ({_labelIncomplete})</span>
+      </h4>
+    </div>
+  </template>
+</template>

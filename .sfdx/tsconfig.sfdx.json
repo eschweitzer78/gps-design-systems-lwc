@@ -1,0 +1,2283 @@
+{
+    "compilerOptions": {
+        "skipLibCheck": true,
+        "target": "ESNext",
+        "module": "NodeNext",
+        "paths": {
+            "c/sfGpsDsConfigurationError": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsConfigurationError/sfGpsDsConfigurationError"
+            ],
+            "c/sfGpsDsConfigurationErrorOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsConfigurationErrorOs/sfGpsDsConfigurationErrorOs"
+            ],
+            "c/sfGpsDsDivLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsDivLwr/sfGpsDsDivLwr"
+            ],
+            "c/sfGpsDsElement": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsElement/sfGpsDsElement"
+            ],
+            "c/sfGpsDsElementOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsElementOs/sfGpsDsElementOs"
+            ],
+            "c/sfGpsDsEmpty": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsEmpty/sfGpsDsEmpty"
+            ],
+            "c/sfGpsDsEmptyOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsEmptyOs/sfGpsDsEmptyOs"
+            ],
+            "c/sfGpsDsFlexLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsFlexLwr/sfGpsDsFlexLwr"
+            ],
+            "c/sfGpsDsFocusTrap": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsFocusTrap/sfGpsDsFocusTrap"
+            ],
+            "c/sfGpsDsFocusTrapOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsFocusTrapOs/sfGpsDsFocusTrapOs"
+            ],
+            "c/sfGpsDsHelpers": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsHelpers/sfGpsDsHelpers"
+            ],
+            "c/sfGpsDsHelpersOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsHelpersOs/sfGpsDsHelpersOs"
+            ],
+            "c/sfGpsDsIpLwc": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsIpLwc/sfGpsDsIpLwc"
+            ],
+            "c/sfGpsDsIpLwcOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsIpLwcOsN/sfGpsDsIpLwcOsN"
+            ],
+            "c/sfGpsDsLwc": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsLwc/sfGpsDsLwc"
+            ],
+            "c/sfGpsDsLwcOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsLwcOsN/sfGpsDsLwcOsN"
+            ],
+            "c/sfGpsDsMarkdown": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsMarkdown/sfGpsDsMarkdown"
+            ],
+            "c/sfGpsDsMarkdownElement": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsMarkdownElement/sfGpsDsMarkdownElement"
+            ],
+            "c/sfGpsDsMarkdownElementOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsMarkdownElementOs/sfGpsDsMarkdownElementOs"
+            ],
+            "c/sfGpsDsMarkdownOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsMarkdownOs/sfGpsDsMarkdownOs"
+            ],
+            "c/sfGpsDsMarkupComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsMarkupComm/sfGpsDsMarkupComm"
+            ],
+            "c/sfGpsDsNavigation": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsNavigation/sfGpsDsNavigation"
+            ],
+            "c/sfGpsDsNavigationService": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsNavigationService/sfGpsDsNavigationService"
+            ],
+            "c/sfGpsDsSocialSharing": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsSocialSharing/sfGpsDsSocialSharing"
+            ],
+            "c/sfGpsDsSpinner": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsSpinner/sfGpsDsSpinner"
+            ],
+            "c/sfGpsDsSpinnerOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsSpinnerOs/sfGpsDsSpinnerOs"
+            ],
+            "c/sfGpsDsTransition": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsTransition/sfGpsDsTransition"
+            ],
+            "c/sfGpsDsTransitionOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/sfGpsDsTransitionOs/sfGpsDsTransitionOs"
+            ],
+            "c/sfGpsDsCodeMirrorDisplay": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/code-mirror/lwc/sfGpsDsCodeMirrorDisplay/sfGpsDsCodeMirrorDisplay"
+            ],
+            "c/sfGpsDsCodeMirrorEdit": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/code-mirror/lwc/sfGpsDsCodeMirrorEdit/sfGpsDsCodeMirrorEdit"
+            ],
+            "c/sfGpsDsCodeMirrorInput": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/code-mirror/lwc/sfGpsDsCodeMirrorInput/sfGpsDsCodeMirrorInput"
+            ],
+            "c/sfGpsDsCodeMirrorLine": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/code-mirror/lwc/sfGpsDsCodeMirrorLine/sfGpsDsCodeMirrorLine"
+            ],
+            "c/sfGpsDsCodeMirrorMeasurement": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/code-mirror/lwc/sfGpsDsCodeMirrorMeasurement/sfGpsDsCodeMirrorMeasurement"
+            ],
+            "c/sfGpsDsCodeMirrorModel": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/code-mirror/lwc/sfGpsDsCodeMirrorModel/sfGpsDsCodeMirrorModel"
+            ],
+            "c/sfGpsDsCodeMirrorModes": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/code-mirror/lwc/sfGpsDsCodeMirrorModes/sfGpsDsCodeMirrorModes"
+            ],
+            "c/sfGpsDsCodeMirrorUtil": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/code-mirror/lwc/sfGpsDsCodeMirrorUtil/sfGpsDsCodeMirrorUtil"
+            ],
+            "c/sfGpsDsJsonCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/custom-property-editors/lwc/sfGpsDsJsonCpe/sfGpsDsJsonCpe"
+            ],
+            "c/sfGpsDsJsonEditor": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/custom-property-editors/lwc/sfGpsDsJsonEditor/sfGpsDsJsonEditor"
+            ],
+            "c/sfGpsDsMarkdownCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/custom-property-editors/lwc/sfGpsDsMarkdownCpe/sfGpsDsMarkdownCpe"
+            ],
+            "c/sfGpsDsMarkupCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/custom-property-editors/lwc/sfGpsDsMarkupCpe/sfGpsDsMarkupCpe"
+            ],
+            "c/sfGpsDsMarkupEditor": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/custom-property-editors/lwc/sfGpsDsMarkupEditor/sfGpsDsMarkupEditor"
+            ],
+            "c/sfGpsDsNavigationCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/custom-property-editors/lwc/sfGpsDsNavigationCpe/sfGpsDsNavigationCpe"
+            ],
+            "c/sfGpsDsStringCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/custom-property-editors/lwc/sfGpsDsStringCpe/sfGpsDsStringCpe"
+            ],
+            "c/sfGpsDsPubSub": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/forms/lwc/sfGpsDsPubSub/sfGpsDsPubSub"
+            ],
+            "c/sfGpsDsExpandableStateMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/mixins-and-directives/lwc/sfGpsDsExpandableStateMixin/sfGpsDsExpandableStateMixin"
+            ],
+            "c/sfGpsDsExpandableStateMixinOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/mixins-and-directives/lwc/sfGpsDsExpandableStateMixinOs/sfGpsDsExpandableStateMixinOs"
+            ],
+            "c/sfGpsDsOnClickOutside": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/mixins-and-directives/lwc/sfGpsDsOnClickOutside/sfGpsDsOnClickOutside"
+            ],
+            "c/sfGpsDsOnClickOutsideOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/mixins-and-directives/lwc/sfGpsDsOnClickOutsideOs/sfGpsDsOnClickOutsideOs"
+            ],
+            "c/sfGpsDsOnWindowResize": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/mixins-and-directives/lwc/sfGpsDsOnWindowResize/sfGpsDsOnWindowResize"
+            ],
+            "c/sfGpsDsOnWindowResizeOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/mixins-and-directives/lwc/sfGpsDsOnWindowResizeOs/sfGpsDsOnWindowResizeOs"
+            ],
+            "c/sfGpsDsFormBlockOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormBlockOsN/sfGpsDsFormBlockOsN"
+            ],
+            "c/sfGpsDsFormCheckboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormCheckboxOsN/sfGpsDsFormCheckboxOsN"
+            ],
+            "c/sfGpsDsFormCurrencyOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormCurrencyOsN/sfGpsDsFormCurrencyOsN"
+            ],
+            "c/sfGpsDsFormDateOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormDateOsN/sfGpsDsFormDateOsN"
+            ],
+            "c/sfGpsDsFormDateTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormDateTimeOsN/sfGpsDsFormDateTimeOsN"
+            ],
+            "c/sfGpsDsFormDisclosureOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormDisclosureOsN/sfGpsDsFormDisclosureOsN"
+            ],
+            "c/sfGpsDsFormEmailOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormEmailOsN/sfGpsDsFormEmailOsN"
+            ],
+            "c/sfGpsDsFormFileOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormFileOsN/sfGpsDsFormFileOsN"
+            ],
+            "c/sfGpsDsFormFormulaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormFormulaOsN/sfGpsDsFormFormulaOsN"
+            ],
+            "c/sfGpsDsFormLookupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormLookupOsN/sfGpsDsFormLookupOsN"
+            ],
+            "c/sfGpsDsFormMessagingOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormMessagingOsN/sfGpsDsFormMessagingOsN"
+            ],
+            "c/sfGpsDsFormMultiselectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormMultiselectOsN/sfGpsDsFormMultiselectOsN"
+            ],
+            "c/sfGpsDsFormNumberOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormNumberOsN/sfGpsDsFormNumberOsN"
+            ],
+            "c/sfGpsDsFormPasswordOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormPasswordOsN/sfGpsDsFormPasswordOsN"
+            ],
+            "c/sfGpsDsFormPlacesTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormPlacesTypeaheadOsN/sfGpsDsFormPlacesTypeaheadOsN"
+            ],
+            "c/sfGpsDsFormRadioOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormRadioOsN/sfGpsDsFormRadioOsN"
+            ],
+            "c/sfGpsDsFormSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormSelectOsN/sfGpsDsFormSelectOsN"
+            ],
+            "c/sfGpsDsFormStepChartItemOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormStepChartItemOsN/sfGpsDsFormStepChartItemOsN"
+            ],
+            "c/sfGpsDsFormStepChartOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormStepChartOsN/sfGpsDsFormStepChartOsN"
+            ],
+            "c/sfGpsDsFormStepOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormStepOsN/sfGpsDsFormStepOsN"
+            ],
+            "c/sfGpsDsFormTextBlockOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormTextBlockOsN/sfGpsDsFormTextBlockOsN"
+            ],
+            "c/sfGpsDsFormTextOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormTextOsN/sfGpsDsFormTextOsN"
+            ],
+            "c/sfGpsDsFormTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormTextareaOsN/sfGpsDsFormTextareaOsN"
+            ],
+            "c/sfGpsDsFormTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormTimeOsN/sfGpsDsFormTimeOsN"
+            ],
+            "c/sfGpsDsFormTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormTypeaheadOsN/sfGpsDsFormTypeaheadOsN"
+            ],
+            "c/sfGpsDsFormUrlOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsFormUrlOsN/sfGpsDsFormUrlOsN"
+            ],
+            "c/sfGpsDsOmniCheckboxGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniCheckboxGroupOsN/sfGpsDsOmniCheckboxGroupOsN"
+            ],
+            "c/sfGpsDsOmniComboboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniComboboxOsN/sfGpsDsOmniComboboxOsN"
+            ],
+            "c/sfGpsDsOmniDatePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniDatePickerOsN/sfGpsDsOmniDatePickerOsN"
+            ],
+            "c/sfGpsDsOmniDatetimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniDatetimePickerOsN/sfGpsDsOmniDatetimePickerOsN"
+            ],
+            "c/sfGpsDsOmniHasValidationMixinOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniHasValidationMixinOsN/sfGpsDsOmniHasValidationMixinOsN"
+            ],
+            "c/sfGpsDsOmniHelpersOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniHelpersOsN/sfGpsDsOmniHelpersOsN"
+            ],
+            "c/sfGpsDsOmniInputMixinOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniInputMixinOsN/sfGpsDsOmniInputMixinOsN"
+            ],
+            "c/sfGpsDsOmniInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniInputOsN/sfGpsDsOmniInputOsN"
+            ],
+            "c/sfGpsDsOmniMaskedInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniMaskedInputOsN/sfGpsDsOmniMaskedInputOsN"
+            ],
+            "c/sfGpsDsOmniRadioGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniRadioGroupOsN/sfGpsDsOmniRadioGroupOsN"
+            ],
+            "c/sfGpsDsOmniTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniTextareaOsN/sfGpsDsOmniTextareaOsN"
+            ],
+            "c/sfGpsDsOmniTimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniTimePickerOsN/sfGpsDsOmniTimePickerOsN"
+            ],
+            "c/sfGpsDsOmniTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniTypeaheadOsN/sfGpsDsOmniTypeaheadOsN"
+            ],
+            "c/sfGpsDsCheckboxGroup": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/forms/lwc/checkboxGroup/lwc/sfGpsDsCheckboxGroup/sfGpsDsCheckboxGroup"
+            ],
+            "c/sfGpsDsSldsCheckboxGroup": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/forms/lwc/checkboxGroup/lwc/sfGpsDsSldsCheckboxGroup/sfGpsDsSldsCheckboxGroup"
+            ],
+            "c/sfGpsDsSldsCheckboxGroupCommTest": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/forms/lwc/checkboxGroup/lwc/sfGpsDsSldsCheckboxGroupCommTest/sfGpsDsSldsCheckboxGroupCommTest"
+            ],
+            "c/sfGpsDsAuNswBlockLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBlockLwr/sfGpsDsAuNswBlockLwr"
+            ],
+            "c/sfGpsDsAuNswContainerLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContainerLwr/sfGpsDsAuNswContainerLwr"
+            ],
+            "c/sfGpsDsAuNswGridLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswGridLwr/sfGpsDsAuNswGridLwr"
+            ],
+            "c/sfGpsDsAuNswLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLayoutLwr/sfGpsDsAuNswLayoutLwr"
+            ],
+            "c/sfGpsDsAuNswSectionLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSectionLwr/sfGpsDsAuNswSectionLwr"
+            ],
+            "c/sfGpsDsAuNswCheckboxGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswCheckboxGroupOsN/sfGpsDsAuNswCheckboxGroupOsN"
+            ],
+            "c/sfGpsDsAuNswComboboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswComboboxOsN/sfGpsDsAuNswComboboxOsN"
+            ],
+            "c/sfGpsDsAuNswDatePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswDatePickerOsN/sfGpsDsAuNswDatePickerOsN"
+            ],
+            "c/sfGpsDsAuNswDatePickerV2OsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswDatePickerV2OsN/sfGpsDsAuNswDatePickerV2OsN"
+            ],
+            "c/sfGpsDsAuNswDatetimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswDatetimePickerOsN/sfGpsDsAuNswDatetimePickerOsN"
+            ],
+            "c/sfGpsDsAuNswFormAddressTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN/sfGpsDsAuNswFormAddressTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuNswFormBlockOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormBlockOsN/sfGpsDsAuNswFormBlockOsN"
+            ],
+            "c/sfGpsDsAuNswFormCheckboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormCheckboxOsN/sfGpsDsAuNswFormCheckboxOsN"
+            ],
+            "c/sfGpsDsAuNswFormCurrencyOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormCurrencyOsN/sfGpsDsAuNswFormCurrencyOsN"
+            ],
+            "c/sfGpsDsAuNswFormDateOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormDateOsN/sfGpsDsAuNswFormDateOsN"
+            ],
+            "c/sfGpsDsAuNswFormDateTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormDateTimeOsN/sfGpsDsAuNswFormDateTimeOsN"
+            ],
+            "c/sfGpsDsAuNswFormDateV2OsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormDateV2OsN/sfGpsDsAuNswFormDateV2OsN"
+            ],
+            "c/sfGpsDsAuNswFormDisclosureOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormDisclosureOsN/sfGpsDsAuNswFormDisclosureOsN"
+            ],
+            "c/sfGpsDsAuNswFormEmailOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormEmailOsN/sfGpsDsAuNswFormEmailOsN"
+            ],
+            "c/sfGpsDsAuNswFormFileOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormFileOsN/sfGpsDsAuNswFormFileOsN"
+            ],
+            "c/sfGpsDsAuNswFormFormulaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormFormulaOsN/sfGpsDsAuNswFormFormulaOsN"
+            ],
+            "c/sfGpsDsAuNswFormHelperOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormHelperOsN/sfGpsDsAuNswFormHelperOsN"
+            ],
+            "c/sfGpsDsAuNswFormLookupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormLookupOsN/sfGpsDsAuNswFormLookupOsN"
+            ],
+            "c/sfGpsDsAuNswFormMessagingOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormMessagingOsN/sfGpsDsAuNswFormMessagingOsN"
+            ],
+            "c/sfGpsDsAuNswFormMultiselectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormMultiselectOsN/sfGpsDsAuNswFormMultiselectOsN"
+            ],
+            "c/sfGpsDsAuNswFormNumberOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormNumberOsN/sfGpsDsAuNswFormNumberOsN"
+            ],
+            "c/sfGpsDsAuNswFormPasswordOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormPasswordOsN/sfGpsDsAuNswFormPasswordOsN"
+            ],
+            "c/sfGpsDsAuNswFormRadioOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormRadioOsN/sfGpsDsAuNswFormRadioOsN"
+            ],
+            "c/sfGpsDsAuNswFormSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormSelectOsN/sfGpsDsAuNswFormSelectOsN"
+            ],
+            "c/sfGpsDsAuNswFormStepChartItemOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormStepChartItemOsN/sfGpsDsAuNswFormStepChartItemOsN"
+            ],
+            "c/sfGpsDsAuNswFormStepChartOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormStepChartOsN/sfGpsDsAuNswFormStepChartOsN"
+            ],
+            "c/sfGpsDsAuNswFormStepOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormStepOsN/sfGpsDsAuNswFormStepOsN"
+            ],
+            "c/sfGpsDsAuNswFormTextOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormTextOsN/sfGpsDsAuNswFormTextOsN"
+            ],
+            "c/sfGpsDsAuNswFormTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormTextareaOsN/sfGpsDsAuNswFormTextareaOsN"
+            ],
+            "c/sfGpsDsAuNswFormTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormTimeOsN/sfGpsDsAuNswFormTimeOsN"
+            ],
+            "c/sfGpsDsAuNswFormTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormTypeaheadOsN/sfGpsDsAuNswFormTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuNswFormUrlOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormUrlOsN/sfGpsDsAuNswFormUrlOsN"
+            ],
+            "c/sfGpsDsAuNswInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswInputOsN/sfGpsDsAuNswInputOsN"
+            ],
+            "c/sfGpsDsAuNswMaskedInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswMaskedInputOsN/sfGpsDsAuNswMaskedInputOsN"
+            ],
+            "c/sfGpsDsAuNswRadioGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswRadioGroupOsN/sfGpsDsAuNswRadioGroupOsN"
+            ],
+            "c/sfGpsDsAuNswSaveForLaterAckOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswSaveForLaterAckOsN/sfGpsDsAuNswSaveForLaterAckOsN"
+            ],
+            "c/sfGpsDsAuNswStatusHelperMixinOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswStatusHelperMixinOsN/sfGpsDsAuNswStatusHelperMixinOsN"
+            ],
+            "c/sfGpsDsAuNswTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswTextareaOsN/sfGpsDsAuNswTextareaOsN"
+            ],
+            "c/sfGpsDsAuNswTimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswTimePickerOsN/sfGpsDsAuNswTimePickerOsN"
+            ],
+            "c/sfGpsDsAuNswTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswTypeaheadOsN/sfGpsDsAuNswTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuNswThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/layout/lwc/sfGpsDsAuNswThemeLayoutLwr/sfGpsDsAuNswThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuNswAccordion": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordion/sfGpsDsAuNswAccordion"
+            ],
+            "c/sfGpsDsAuNswAccordionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionComm/sfGpsDsAuNswAccordionComm"
+            ],
+            "c/sfGpsDsAuNswAccordionCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionCommOs/sfGpsDsAuNswAccordionCommOs"
+            ],
+            "c/sfGpsDsAuNswAccordionGroup": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionGroup/sfGpsDsAuNswAccordionGroup"
+            ],
+            "c/sfGpsDsAuNswAccordionGroupComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionGroupComm/sfGpsDsAuNswAccordionGroupComm"
+            ],
+            "c/sfGpsDsAuNswAccordionGroupCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionGroupCommOs/sfGpsDsAuNswAccordionGroupCommOs"
+            ],
+            "c/sfGpsDsAuNswAccordionGroupHead": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionGroupHead/sfGpsDsAuNswAccordionGroupHead"
+            ],
+            "c/sfGpsDsAuNswAccordionGroupLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionGroupLwr/sfGpsDsAuNswAccordionGroupLwr"
+            ],
+            "c/sfGpsDsAuNswAccordionGroupOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionGroupOs/sfGpsDsAuNswAccordionGroupOs"
+            ],
+            "c/sfGpsDsAuNswAccordionOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAccordion/lwc/sfGpsDsAuNswAccordionOs/sfGpsDsAuNswAccordionOs"
+            ],
+            "c/sfGpsDsAuNswAlert": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAlert/lwc/sfGpsDsAuNswAlert/sfGpsDsAuNswAlert"
+            ],
+            "c/sfGpsDsAuNswAlertComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAlert/lwc/sfGpsDsAuNswAlertComm/sfGpsDsAuNswAlertComm"
+            ],
+            "c/sfGpsDsAuNswAlertCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAlert/lwc/sfGpsDsAuNswAlertCommOs/sfGpsDsAuNswAlertCommOs"
+            ],
+            "c/sfGpsDsAuNswAlertOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswAlert/lwc/sfGpsDsAuNswAlertOs/sfGpsDsAuNswAlertOs"
+            ],
+            "c/sfGpsDsAuNswBackToTop": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBackToTop/lwc/sfGpsDsAuNswBackToTop/sfGpsDsAuNswBackToTop"
+            ],
+            "c/sfGpsDsAuNswBackToTopContent": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBackToTop/lwc/sfGpsDsAuNswBackToTopContent/sfGpsDsAuNswBackToTopContent"
+            ],
+            "c/sfGpsDsAuNswBreadcrumbs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbs/sfGpsDsAuNswBreadcrumbs"
+            ],
+            "c/sfGpsDsAuNswBreadcrumbsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbsComm/sfGpsDsAuNswBreadcrumbsComm"
+            ],
+            "c/sfGpsDsAuNswBreadcrumbsLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbsLwr/sfGpsDsAuNswBreadcrumbsLwr"
+            ],
+            "c/sfGpsDsAuNswBreadcrumbsRecordComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBreadcrumbs/lwc/sfGpsDsAuNswBreadcrumbsRecordComm/sfGpsDsAuNswBreadcrumbsRecordComm"
+            ],
+            "c/sfGpsDsAuNswButton": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswButton/lwc/sfGpsDsAuNswButton/sfGpsDsAuNswButton"
+            ],
+            "c/sfGpsDsAuNswButtonComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswButton/lwc/sfGpsDsAuNswButtonComm/sfGpsDsAuNswButtonComm"
+            ],
+            "c/sfGpsDsAuNswButtonOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswButton/lwc/sfGpsDsAuNswButtonOs/sfGpsDsAuNswButtonOs"
+            ],
+            "c/sfGpsDsAuNswCallout": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCallout/lwc/sfGpsDsAuNswCallout/sfGpsDsAuNswCallout"
+            ],
+            "c/sfGpsDsAuNswCalloutComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCallout/lwc/sfGpsDsAuNswCalloutComm/sfGpsDsAuNswCalloutComm"
+            ],
+            "c/sfGpsDsAuNswCalloutCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCallout/lwc/sfGpsDsAuNswCalloutCommOs/sfGpsDsAuNswCalloutCommOs"
+            ],
+            "c/sfGpsDsAuNswCalloutOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCallout/lwc/sfGpsDsAuNswCalloutOs/sfGpsDsAuNswCalloutOs"
+            ],
+            "c/sfGpsDsAuNswCardCollectionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCard/lwc/sfGpsDsAuNswCardCollectionComm/sfGpsDsAuNswCardCollectionComm"
+            ],
+            "c/sfGpsDsAuNswCardCollectionCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCard/lwc/sfGpsDsAuNswCardCollectionCommOs/sfGpsDsAuNswCardCollectionCommOs"
+            ],
+            "c/sfGpsDsAuNswCardV2": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCard/lwc/sfGpsDsAuNswCardV2/sfGpsDsAuNswCardV2"
+            ],
+            "c/sfGpsDsAuNswCardV2Comm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCard/lwc/sfGpsDsAuNswCardV2Comm/sfGpsDsAuNswCardV2Comm"
+            ],
+            "c/sfGpsDsAuNswCardV2CommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCard/lwc/sfGpsDsAuNswCardV2CommOs/sfGpsDsAuNswCardV2CommOs"
+            ],
+            "c/sfGpsDsAuNswCardV2Os": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCard/lwc/sfGpsDsAuNswCardV2Os/sfGpsDsAuNswCardV2Os"
+            ],
+            "c/sfGpsDsAuNswCardCarousel": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCardCarousel/lwc/sfGpsDsAuNswCardCarousel/sfGpsDsAuNswCardCarousel"
+            ],
+            "c/sfGpsDsAuNswCardCarouselComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCardCarousel/lwc/sfGpsDsAuNswCardCarouselComm/sfGpsDsAuNswCardCarouselComm"
+            ],
+            "c/sfGpsDsAuNswContentBlock": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlock/sfGpsDsAuNswContentBlock"
+            ],
+            "c/sfGpsDsAuNswContentBlockCollectionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlockCollectionComm/sfGpsDsAuNswContentBlockCollectionComm"
+            ],
+            "c/sfGpsDsAuNswContentBlockCollectionCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlockCollectionCommOs/sfGpsDsAuNswContentBlockCollectionCommOs"
+            ],
+            "c/sfGpsDsAuNswContentBlockCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlockCommOs/sfGpsDsAuNswContentBlockCommOs"
+            ],
+            "c/sfGpsDsAuNswContentBlockOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlockOs/sfGpsDsAuNswContentBlockOs"
+            ],
+            "c/sfGpsDsAuNswContentBlockV2Comm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlockV2Comm/sfGpsDsAuNswContentBlockV2Comm"
+            ],
+            "c/sfGpsDsAuNswContentBlockV2CommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswContentBlock/lwc/sfGpsDsAuNswContentBlockV2CommOs/sfGpsDsAuNswContentBlockV2CommOs"
+            ],
+            "c/sfGpsDsAuNswDialog": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswDialog/lwc/sfGpsDsAuNswDialog/sfGpsDsAuNswDialog"
+            ],
+            "c/sfGpsDsAuNswDialogComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswDialog/lwc/sfGpsDsAuNswDialogComm/sfGpsDsAuNswDialogComm"
+            ],
+            "c/sfGpsDsAuNswDialogOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswDialog/lwc/sfGpsDsAuNswDialogOs/sfGpsDsAuNswDialogOs"
+            ],
+            "c/sfGpsDsAuNswFooterComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooter/lwc/sfGpsDsAuNswFooterComm/sfGpsDsAuNswFooterComm"
+            ],
+            "c/sfGpsDsAuNswLowerFooter": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooter/lwc/sfGpsDsAuNswLowerFooter/sfGpsDsAuNswLowerFooter"
+            ],
+            "c/sfGpsDsAuNswLowerFooterIp": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooter/lwc/sfGpsDsAuNswLowerFooterIp/sfGpsDsAuNswLowerFooterIp"
+            ],
+            "c/sfGpsDsAuNswUpperFooter": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooter/lwc/sfGpsDsAuNswUpperFooter/sfGpsDsAuNswUpperFooter"
+            ],
+            "c/sfGpsDsAuNswUpperFooterIp": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswFooter/lwc/sfGpsDsAuNswUpperFooterIp/sfGpsDsAuNswUpperFooterIp"
+            ],
+            "c/sfGpsDsAuNswGlobalAlert": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswGlobalAlert/lwc/sfGpsDsAuNswGlobalAlert/sfGpsDsAuNswGlobalAlert"
+            ],
+            "c/sfGpsDsAuNswGlobalAlertComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswGlobalAlert/lwc/sfGpsDsAuNswGlobalAlertComm/sfGpsDsAuNswGlobalAlertComm"
+            ],
+            "c/sfGpsDsAuNswGlobalAlertCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswGlobalAlert/lwc/sfGpsDsAuNswGlobalAlertCommOs/sfGpsDsAuNswGlobalAlertCommOs"
+            ],
+            "c/sfGpsDsAuNswGlobalAlertOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswGlobalAlert/lwc/sfGpsDsAuNswGlobalAlertOs/sfGpsDsAuNswGlobalAlertOs"
+            ],
+            "c/sfGpsDsAuNswHeader": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeader/sfGpsDsAuNswHeader"
+            ],
+            "c/sfGpsDsAuNswHeaderComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderComm/sfGpsDsAuNswHeaderComm"
+            ],
+            "c/sfGpsDsAuNswHeaderMainNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderMainNavComm/sfGpsDsAuNswHeaderMainNavComm"
+            ],
+            "c/sfGpsDsAuNswHeaderProfile": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderProfile/sfGpsDsAuNswHeaderProfile"
+            ],
+            "c/sfGpsDsAuNswHeaderProfileIp": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderProfileIp/sfGpsDsAuNswHeaderProfileIp"
+            ],
+            "c/sfGpsDsAuNswMainNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswMainNav/sfGpsDsAuNswMainNav"
+            ],
+            "c/sfGpsDsAuNswMainNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswMainNavComm/sfGpsDsAuNswMainNavComm"
+            ],
+            "c/sfGpsDsAuNswHeroBanner": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeroBanner/lwc/sfGpsDsAuNswHeroBanner/sfGpsDsAuNswHeroBanner"
+            ],
+            "c/sfGpsDsAuNswHeroBannerComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeroBanner/lwc/sfGpsDsAuNswHeroBannerComm/sfGpsDsAuNswHeroBannerComm"
+            ],
+            "c/sfGpsDsAuNswHeroBannerCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeroBanner/lwc/sfGpsDsAuNswHeroBannerCommOs/sfGpsDsAuNswHeroBannerCommOs"
+            ],
+            "c/sfGpsDsAuNswHeroBannerOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeroBanner/lwc/sfGpsDsAuNswHeroBannerOs/sfGpsDsAuNswHeroBannerOs"
+            ],
+            "c/sfGpsDsAuNswHeroBannerAlt": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeroBannerAlt/lwc/sfGpsDsAuNswHeroBannerAlt/sfGpsDsAuNswHeroBannerAlt"
+            ],
+            "c/sfGpsDsAuNswHeroBannerAltComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeroBannerAlt/lwc/sfGpsDsAuNswHeroBannerAltComm/sfGpsDsAuNswHeroBannerAltComm"
+            ],
+            "c/sfGpsDsAuNswHeroSearch": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeroSearch/lwc/sfGpsDsAuNswHeroSearch/sfGpsDsAuNswHeroSearch"
+            ],
+            "c/sfGpsDsAuNswHeroSearchComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeroSearch/lwc/sfGpsDsAuNswHeroSearchComm/sfGpsDsAuNswHeroSearchComm"
+            ],
+            "c/sfGpsDsAuNswInPageNavigation": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswInPageNavigation/lwc/sfGpsDsAuNswInPageNavigation/sfGpsDsAuNswInPageNavigation"
+            ],
+            "c/sfGpsDsAuNswInPageNavigationComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswInPageNavigation/lwc/sfGpsDsAuNswInPageNavigationComm/sfGpsDsAuNswInPageNavigationComm"
+            ],
+            "c/sfGpsDsAuNswLinkCollectionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkCollectionComm/sfGpsDsAuNswLinkCollectionComm"
+            ],
+            "c/sfGpsDsAuNswLinkCollectionCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkCollectionCommOs/sfGpsDsAuNswLinkCollectionCommOs"
+            ],
+            "c/sfGpsDsAuNswLinkList": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkList/sfGpsDsAuNswLinkList"
+            ],
+            "c/sfGpsDsAuNswLinkListComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkListComm/sfGpsDsAuNswLinkListComm"
+            ],
+            "c/sfGpsDsAuNswLinkListCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkListCommOs/sfGpsDsAuNswLinkListCommOs"
+            ],
+            "c/sfGpsDsAuNswLinkListOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkListOs/sfGpsDsAuNswLinkListOs"
+            ],
+            "c/sfGpsDsAuNswListItem": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListItem/lwc/sfGpsDsAuNswListItem/sfGpsDsAuNswListItem"
+            ],
+            "c/sfGpsDsAuNswListItemCollectionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListItem/lwc/sfGpsDsAuNswListItemCollectionComm/sfGpsDsAuNswListItemCollectionComm"
+            ],
+            "c/sfGpsDsAuNswListItemComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListItem/lwc/sfGpsDsAuNswListItemComm/sfGpsDsAuNswListItemComm"
+            ],
+            "c/sfGpsDsAuNswListItemOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListItem/lwc/sfGpsDsAuNswListItemOs/sfGpsDsAuNswListItemOs"
+            ],
+            "c/sfGpsDsAuNswListViewComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListView/lwc/sfGpsDsAuNswListViewComm/sfGpsDsAuNswListViewComm"
+            ],
+            "c/sfGpsDsAuNswListViewItem": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswListView/lwc/sfGpsDsAuNswListViewItem/sfGpsDsAuNswListViewItem"
+            ],
+            "c/sfGpsDsAuNswLoader": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLoader/lwc/sfGpsDsAuNswLoader/sfGpsDsAuNswLoader"
+            ],
+            "c/sfGpsDsAuNswLoaderComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLoader/lwc/sfGpsDsAuNswLoaderComm/sfGpsDsAuNswLoaderComm"
+            ],
+            "c/sfGpsDsAuNswLoaderOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLoader/lwc/sfGpsDsAuNswLoaderOs/sfGpsDsAuNswLoaderOs"
+            ],
+            "c/sfGpsDsAuNswMarkdownElementComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkdownElement/lwc/sfGpsDsAuNswMarkdownElementComm/sfGpsDsAuNswMarkdownElementComm"
+            ],
+            "c/sfGpsDsAuNswMarkdownElementCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkdownElement/lwc/sfGpsDsAuNswMarkdownElementCommOs/sfGpsDsAuNswMarkdownElementCommOs"
+            ],
+            "c/sfGpsDsAuNswMarkupElementV2Comm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkupElement/lwc/sfGpsDsAuNswMarkupElementV2Comm/sfGpsDsAuNswMarkupElementV2Comm"
+            ],
+            "c/sfGpsDsAuNswMarkupElementV2CommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMarkupElement/lwc/sfGpsDsAuNswMarkupElementV2CommOs/sfGpsDsAuNswMarkupElementV2CommOs"
+            ],
+            "c/sfGpsDsAuNswMasthead": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMasthead/lwc/sfGpsDsAuNswMasthead/sfGpsDsAuNswMasthead"
+            ],
+            "c/sfGpsDsAuNswMastheadComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMasthead/lwc/sfGpsDsAuNswMastheadComm/sfGpsDsAuNswMastheadComm"
+            ],
+            "c/sfGpsDsAuNswMedia": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMedia/lwc/sfGpsDsAuNswMedia/sfGpsDsAuNswMedia"
+            ],
+            "c/sfGpsDsAuNswMediaComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMedia/lwc/sfGpsDsAuNswMediaComm/sfGpsDsAuNswMediaComm"
+            ],
+            "c/sfGpsDsAuNswMediaCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMedia/lwc/sfGpsDsAuNswMediaCommOs/sfGpsDsAuNswMediaCommOs"
+            ],
+            "c/sfGpsDsAuNswMediaOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswMedia/lwc/sfGpsDsAuNswMediaOs/sfGpsDsAuNswMediaOs"
+            ],
+            "c/sfGpsDsAuNswPagination": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswPagination/lwc/sfGpsDsAuNswPagination/sfGpsDsAuNswPagination"
+            ],
+            "c/sfGpsDsAuNswPaginationComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswPagination/lwc/sfGpsDsAuNswPaginationComm/sfGpsDsAuNswPaginationComm"
+            ],
+            "c/sfGpsDsAuNswPaginationCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswPagination/lwc/sfGpsDsAuNswPaginationCommOs/sfGpsDsAuNswPaginationCommOs"
+            ],
+            "c/sfGpsDsAuNswPaginationOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswPagination/lwc/sfGpsDsAuNswPaginationOs/sfGpsDsAuNswPaginationOs"
+            ],
+            "c/sfGpsDsAuNswProgressIndicator": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswProgressIndicator/lwc/sfGpsDsAuNswProgressIndicator/sfGpsDsAuNswProgressIndicator"
+            ],
+            "c/sfGpsDsAuNswProgressIndicatorComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswProgressIndicator/lwc/sfGpsDsAuNswProgressIndicatorComm/sfGpsDsAuNswProgressIndicatorComm"
+            ],
+            "c/sfGpsDsAuNswProgressIndicatorCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswProgressIndicator/lwc/sfGpsDsAuNswProgressIndicatorCommOs/sfGpsDsAuNswProgressIndicatorCommOs"
+            ],
+            "c/sfGpsDsAuNswProgressIndicatorOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswProgressIndicator/lwc/sfGpsDsAuNswProgressIndicatorOs/sfGpsDsAuNswProgressIndicatorOs"
+            ],
+            "c/sfGpsDsAuNswResultsBar": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswResultsBar/lwc/sfGpsDsAuNswResultsBar/sfGpsDsAuNswResultsBar"
+            ],
+            "c/sfGpsDsAuNswResultsBarComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswResultsBar/lwc/sfGpsDsAuNswResultsBarComm/sfGpsDsAuNswResultsBarComm"
+            ],
+            "c/sfGpsDsAuNswResultsBarOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswResultsBar/lwc/sfGpsDsAuNswResultsBarOs/sfGpsDsAuNswResultsBarOs"
+            ],
+            "c/sfGpsDsAuNswSideNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSideNav/lwc/sfGpsDsAuNswSideNav/sfGpsDsAuNswSideNav"
+            ],
+            "c/sfGpsDsAuNswSideNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSideNav/lwc/sfGpsDsAuNswSideNavComm/sfGpsDsAuNswSideNavComm"
+            ],
+            "c/sfGpsDsAuNswStatusLabel": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStatusLabel/lwc/sfGpsDsAuNswStatusLabel/sfGpsDsAuNswStatusLabel"
+            ],
+            "c/sfGpsDsAuNswStatusLabelComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStatusLabel/lwc/sfGpsDsAuNswStatusLabelComm/sfGpsDsAuNswStatusLabelComm"
+            ],
+            "c/sfGpsDsAuNswStatusLabelOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStatusLabel/lwc/sfGpsDsAuNswStatusLabelOs/sfGpsDsAuNswStatusLabelOs"
+            ],
+            "c/sfGpsDsAuNswSteps": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswSteps/sfGpsDsAuNswSteps"
+            ],
+            "c/sfGpsDsAuNswStepsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsComm/sfGpsDsAuNswStepsComm"
+            ],
+            "c/sfGpsDsAuNswStepsItem": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsItem/sfGpsDsAuNswStepsItem"
+            ],
+            "c/sfGpsDsAuNswStepsItemOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsItemOs/sfGpsDsAuNswStepsItemOs"
+            ],
+            "c/sfGpsDsAuNswStepsLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsLwr/sfGpsDsAuNswStepsLwr"
+            ],
+            "c/sfGpsDsAuNswStepsOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsOs/sfGpsDsAuNswStepsOs"
+            ],
+            "c/sfGpsDsAuNswStepsV2Comm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSteps/lwc/sfGpsDsAuNswStepsV2Comm/sfGpsDsAuNswStepsV2Comm"
+            ],
+            "c/sfGpsDsAuNswSupportList": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSupportList/lwc/sfGpsDsAuNswSupportList/sfGpsDsAuNswSupportList"
+            ],
+            "c/sfGpsDsAuNswSupportListComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSupportList/lwc/sfGpsDsAuNswSupportListComm/sfGpsDsAuNswSupportListComm"
+            ],
+            "c/sfGpsDsAuNswTable": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable/lwc/sfGpsDsAuNswTable/sfGpsDsAuNswTable"
+            ],
+            "c/sfGpsDsAuNswTableComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable/lwc/sfGpsDsAuNswTableComm/sfGpsDsAuNswTableComm"
+            ],
+            "c/sfGpsDsAuNswTableOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTable/lwc/sfGpsDsAuNswTableOs/sfGpsDsAuNswTableOs"
+            ],
+            "c/sfGpsDsAuNswTabBarLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTabs/lwc/sfGpsDsAuNswTabBarLwr/sfGpsDsAuNswTabBarLwr"
+            ],
+            "c/sfGpsDsAuNswTabContainerLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTabs/lwc/sfGpsDsAuNswTabContainerLwr/sfGpsDsAuNswTabContainerLwr"
+            ],
+            "c/sfGpsDsAuNswTabLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTabs/lwc/sfGpsDsAuNswTabLwr/sfGpsDsAuNswTabLwr"
+            ],
+            "c/sfGpsDsAuNswTabSetLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTabs/lwc/sfGpsDsAuNswTabSetLwr/sfGpsDsAuNswTabSetLwr"
+            ],
+            "c/sfGpsDsAuNswTagOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTags/lwc/sfGpsDsAuNswTagOsN/sfGpsDsAuNswTagOsN"
+            ],
+            "c/sfGpsDsAuNswTags": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTags/lwc/sfGpsDsAuNswTags/sfGpsDsAuNswTags"
+            ],
+            "c/sfGpsDsAuNswTagsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTags/lwc/sfGpsDsAuNswTagsComm/sfGpsDsAuNswTagsComm"
+            ],
+            "c/sfGpsDsAuNswTagsCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTags/lwc/sfGpsDsAuNswTagsCommOs/sfGpsDsAuNswTagsCommOs"
+            ],
+            "c/sfGpsDsAuNswTagsOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswTags/lwc/sfGpsDsAuNswTagsOs/sfGpsDsAuNswTagsOs"
+            ],
+            "c/sfGpsDsAuNswToggletip": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswToggletip/lwc/sfGpsDsAuNswToggletip/sfGpsDsAuNswToggletip"
+            ],
+            "c/sfGpsDsAuNswUtilityList": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswUtilityList/lwc/sfGpsDsAuNswUtilityList/sfGpsDsAuNswUtilityList"
+            ],
+            "c/sfGpsDsAuNswUtilityListComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswUtilityList/lwc/sfGpsDsAuNswUtilityListComm/sfGpsDsAuNswUtilityListComm"
+            ],
+            "c/sfGpsDsSgGovAlertComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovAlertComm/sfGpsDsSgGovAlertComm"
+            ],
+            "c/sfGpsDsSgGovAlertHeading": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovAlertHeading/sfGpsDsSgGovAlertHeading"
+            ],
+            "c/sfGpsDsSgGovCloseButton": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovCloseButton/sfGpsDsSgGovCloseButton"
+            ],
+            "c/sfGpsDsSgGovAlert": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovAlert/lwc/sfGpsDsSgGovAlert/sfGpsDsSgGovAlert"
+            ],
+            "c/sfGpsDsSgGovAlertLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovAlert/lwc/sfGpsDsSgGovAlertLink/sfGpsDsSgGovAlertLink"
+            ],
+            "c/sfGpsDsSgGovFooter": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovFooter/lwc/sfGpsDsSgGovFooter/sfGpsDsSgGovFooter"
+            ],
+            "c/sfGpsDsSgGovFooterComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovFooter/lwc/sfGpsDsSgGovFooterComm/sfGpsDsSgGovFooterComm"
+            ],
+            "c/sfGpsDsSgGovMastheadComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovMasthead/lwc/sfGpsDsSgGovMastheadComm/sfGpsDsSgGovMastheadComm"
+            ],
+            "c/sfGpsDsSgGovSpinner": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovSpinner/lwc/sfGpsDsSgGovSpinner/sfGpsDsSgGovSpinner"
+            ],
+            "c/sfGpsDsSgGovSpinnerComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsSgGov/main/default/lwc/sfGpsDsSgGovSpinner/lwc/sfGpsDsSgGovSpinnerComm/sfGpsDsSgGovSpinnerComm"
+            ],
+            "c/sfGpsDsUkGovCheckboxGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovCheckboxGroupOsN/sfGpsDsUkGovCheckboxGroupOsN"
+            ],
+            "c/sfGpsDsUkGovDatePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovDatePickerOsN/sfGpsDsUkGovDatePickerOsN"
+            ],
+            "c/sfGpsDsUkGovDatetimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovDatetimePickerOsN/sfGpsDsUkGovDatetimePickerOsN"
+            ],
+            "c/sfGpsDsUkGovFormAddressTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormAddressTypeaheadOsN/sfGpsDsUkGovFormAddressTypeaheadOsN"
+            ],
+            "c/sfGpsDsUkGovFormCheckboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormCheckboxOsN/sfGpsDsUkGovFormCheckboxOsN"
+            ],
+            "c/sfGpsDsUkGovFormCurrencyOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormCurrencyOsN/sfGpsDsUkGovFormCurrencyOsN"
+            ],
+            "c/sfGpsDsUkGovFormDateOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormDateOsN/sfGpsDsUkGovFormDateOsN"
+            ],
+            "c/sfGpsDsUkGovFormDateTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormDateTimeOsN/sfGpsDsUkGovFormDateTimeOsN"
+            ],
+            "c/sfGpsDsUkGovFormDisclosureOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormDisclosureOsN/sfGpsDsUkGovFormDisclosureOsN"
+            ],
+            "c/sfGpsDsUkGovFormEmailOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormEmailOsN/sfGpsDsUkGovFormEmailOsN"
+            ],
+            "c/sfGpsDsUkGovFormFileOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormFileOsN/sfGpsDsUkGovFormFileOsN"
+            ],
+            "c/sfGpsDsUkGovFormFormulaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormFormulaOsN/sfGpsDsUkGovFormFormulaOsN"
+            ],
+            "c/sfGpsDsUkGovFormLookupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormLookupOsN/sfGpsDsUkGovFormLookupOsN"
+            ],
+            "c/sfGpsDsUkGovFormMessagingOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormMessagingOsN/sfGpsDsUkGovFormMessagingOsN"
+            ],
+            "c/sfGpsDsUkGovFormMultiselectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormMultiselectOsN/sfGpsDsUkGovFormMultiselectOsN"
+            ],
+            "c/sfGpsDsUkGovFormNumberOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormNumberOsN/sfGpsDsUkGovFormNumberOsN"
+            ],
+            "c/sfGpsDsUkGovFormPasswordOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormPasswordOsN/sfGpsDsUkGovFormPasswordOsN"
+            ],
+            "c/sfGpsDsUkGovFormPlacesTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormPlacesTypeaheadOsN/sfGpsDsUkGovFormPlacesTypeaheadOsN"
+            ],
+            "c/sfGpsDsUkGovFormRadioOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormRadioOsN/sfGpsDsUkGovFormRadioOsN"
+            ],
+            "c/sfGpsDsUkGovFormSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormSelectOsN/sfGpsDsUkGovFormSelectOsN"
+            ],
+            "c/sfGpsDsUkGovFormStepChartOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormStepChartOsN/sfGpsDsUkGovFormStepChartOsN"
+            ],
+            "c/sfGpsDsUkGovFormStepOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormStepOsN/sfGpsDsUkGovFormStepOsN"
+            ],
+            "c/sfGpsDsUkGovFormSummaryListOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormSummaryListOsN/sfGpsDsUkGovFormSummaryListOsN"
+            ],
+            "c/sfGpsDsUkGovFormTextOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormTextOsN/sfGpsDsUkGovFormTextOsN"
+            ],
+            "c/sfGpsDsUkGovFormTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormTextareaOsN/sfGpsDsUkGovFormTextareaOsN"
+            ],
+            "c/sfGpsDsUkGovFormTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormTimeOsN/sfGpsDsUkGovFormTimeOsN"
+            ],
+            "c/sfGpsDsUkGovFormTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormTypeaheadOsN/sfGpsDsUkGovFormTypeaheadOsN"
+            ],
+            "c/sfGpsDsUkGovFormUrlOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovFormUrlOsN/sfGpsDsUkGovFormUrlOsN"
+            ],
+            "c/sfGpsDsUkGovInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovInputOsN/sfGpsDsUkGovInputOsN"
+            ],
+            "c/sfGpsDsUkGovLabelMixinOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovLabelMixinOsN/sfGpsDsUkGovLabelMixinOsN"
+            ],
+            "c/sfGpsDsUkGovMaskedInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovMaskedInputOsN/sfGpsDsUkGovMaskedInputOsN"
+            ],
+            "c/sfGpsDsUkGovProgressIndicatorOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovProgressIndicatorOsN/sfGpsDsUkGovProgressIndicatorOsN"
+            ],
+            "c/sfGpsDsUkGovRadioGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovRadioGroupOsN/sfGpsDsUkGovRadioGroupOsN"
+            ],
+            "c/sfGpsDsUkGovSaveForLaterAckOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovSaveForLaterAckOsN/sfGpsDsUkGovSaveForLaterAckOsN"
+            ],
+            "c/sfGpsDsUkGovSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovSelectOsN/sfGpsDsUkGovSelectOsN"
+            ],
+            "c/sfGpsDsUkGovTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovTextareaOsN/sfGpsDsUkGovTextareaOsN"
+            ],
+            "c/sfGpsDsUkGovTimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovTimePickerOsN/sfGpsDsUkGovTimePickerOsN"
+            ],
+            "c/sfGpsDsUkGovTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovTypeaheadOsN/sfGpsDsUkGovTypeaheadOsN"
+            ],
+            "c/sfGpsDsUkGovWarningText": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovWarningText/sfGpsDsUkGovWarningText"
+            ],
+            "c/sfGpsDsUkGovWarningTextComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovWarningTextComm/sfGpsDsUkGovWarningTextComm"
+            ],
+            "c/sfGpsDsUkGovWarningTextCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovWarningTextCommOs/sfGpsDsUkGovWarningTextCommOs"
+            ],
+            "c/sfGpsDsUkGovWarningTextOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGov/main/default/lwc/sfGpsDsUkGovWarningTextOs/sfGpsDsUkGovWarningTextOs"
+            ],
+            "c/sfGpsDsFrGovAlertOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovAlertOsN/sfGpsDsFrGovAlertOsN"
+            ],
+            "c/sfGpsDsFrGovCheckboxGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovCheckboxGroupOsN/sfGpsDsFrGovCheckboxGroupOsN"
+            ],
+            "c/sfGpsDsFrGovCoreOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovCoreOsN/sfGpsDsFrGovCoreOsN"
+            ],
+            "c/sfGpsDsFrGovDatePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovDatePickerOsN/sfGpsDsFrGovDatePickerOsN"
+            ],
+            "c/sfGpsDsFrGovDatetimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovDatetimePickerOsN/sfGpsDsFrGovDatetimePickerOsN"
+            ],
+            "c/sfGpsDsFrGovFormCheckboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormCheckboxOsN/sfGpsDsFrGovFormCheckboxOsN"
+            ],
+            "c/sfGpsDsFrGovFormCurrencyOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormCurrencyOsN/sfGpsDsFrGovFormCurrencyOsN"
+            ],
+            "c/sfGpsDsFrGovFormDateOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormDateOsN/sfGpsDsFrGovFormDateOsN"
+            ],
+            "c/sfGpsDsFrGovFormDateTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormDateTimeOsN/sfGpsDsFrGovFormDateTimeOsN"
+            ],
+            "c/sfGpsDsFrGovFormDisclosureOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormDisclosureOsN/sfGpsDsFrGovFormDisclosureOsN"
+            ],
+            "c/sfGpsDsFrGovFormEmailOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormEmailOsN/sfGpsDsFrGovFormEmailOsN"
+            ],
+            "c/sfGpsDsFrGovFormFileOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormFileOsN/sfGpsDsFrGovFormFileOsN"
+            ],
+            "c/sfGpsDsFrGovFormLookupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormLookupOsN/sfGpsDsFrGovFormLookupOsN"
+            ],
+            "c/sfGpsDsFrGovFormMessagingOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormMessagingOsN/sfGpsDsFrGovFormMessagingOsN"
+            ],
+            "c/sfGpsDsFrGovFormMultiselectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormMultiselectOsN/sfGpsDsFrGovFormMultiselectOsN"
+            ],
+            "c/sfGpsDsFrGovFormNumberOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormNumberOsN/sfGpsDsFrGovFormNumberOsN"
+            ],
+            "c/sfGpsDsFrGovFormPasswordOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormPasswordOsN/sfGpsDsFrGovFormPasswordOsN"
+            ],
+            "c/sfGpsDsFrGovFormRadioOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormRadioOsN/sfGpsDsFrGovFormRadioOsN"
+            ],
+            "c/sfGpsDsFrGovFormSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormSelectOsN/sfGpsDsFrGovFormSelectOsN"
+            ],
+            "c/sfGpsDsFrGovFormStepChartOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormStepChartOsN/sfGpsDsFrGovFormStepChartOsN"
+            ],
+            "c/sfGpsDsFrGovFormStepOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormStepOsN/sfGpsDsFrGovFormStepOsN"
+            ],
+            "c/sfGpsDsFrGovFormTextOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormTextOsN/sfGpsDsFrGovFormTextOsN"
+            ],
+            "c/sfGpsDsFrGovFormTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormTextareaOsN/sfGpsDsFrGovFormTextareaOsN"
+            ],
+            "c/sfGpsDsFrGovFormTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormTimeOsN/sfGpsDsFrGovFormTimeOsN"
+            ],
+            "c/sfGpsDsFrGovFormTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormTypeaheadOsN/sfGpsDsFrGovFormTypeaheadOsN"
+            ],
+            "c/sfGpsDsFrGovFormUrlOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovFormUrlOsN/sfGpsDsFrGovFormUrlOsN"
+            ],
+            "c/sfGpsDsFrGovInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovInputOsN/sfGpsDsFrGovInputOsN"
+            ],
+            "c/sfGpsDsFrGovMaskedInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovMaskedInputOsN/sfGpsDsFrGovMaskedInputOsN"
+            ],
+            "c/sfGpsDsFrGovProgressIndicatorOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovProgressIndicatorOsN/sfGpsDsFrGovProgressIndicatorOsN"
+            ],
+            "c/sfGpsDsFrGovRadioGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovRadioGroupOsN/sfGpsDsFrGovRadioGroupOsN"
+            ],
+            "c/sfGpsDsFrGovSaveForLaterAckOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovSaveForLaterAckOsN/sfGpsDsFrGovSaveForLaterAckOsN"
+            ],
+            "c/sfGpsDsFrGovSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovSelectOsN/sfGpsDsFrGovSelectOsN"
+            ],
+            "c/sfGpsDsFrGovTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovTextareaOsN/sfGpsDsFrGovTextareaOsN"
+            ],
+            "c/sfGpsDsFrGovTimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovTimePickerOsN/sfGpsDsFrGovTimePickerOsN"
+            ],
+            "c/sfGpsDsFrGovTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsFrGov/main/default/lwc/sfGpsDsFrGovTypeaheadOsN/sfGpsDsFrGovTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuQldBodyLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldBodyLwr/sfGpsDsAuQldBodyLwr"
+            ],
+            "c/sfGpsDsAuQldCheckboxGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldCheckboxGroupOsN/sfGpsDsAuQldCheckboxGroupOsN"
+            ],
+            "c/sfGpsDsAuQldDatePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldDatePickerOsN/sfGpsDsAuQldDatePickerOsN"
+            ],
+            "c/sfGpsDsAuQldFormCheckboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormCheckboxOsN/sfGpsDsAuQldFormCheckboxOsN"
+            ],
+            "c/sfGpsDsAuQldFormCurrencyOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormCurrencyOsN/sfGpsDsAuQldFormCurrencyOsN"
+            ],
+            "c/sfGpsDsAuQldFormDateOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormDateOsN/sfGpsDsAuQldFormDateOsN"
+            ],
+            "c/sfGpsDsAuQldFormEmailOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormEmailOsN/sfGpsDsAuQldFormEmailOsN"
+            ],
+            "c/sfGpsDsAuQldFormFileOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormFileOsN/sfGpsDsAuQldFormFileOsN"
+            ],
+            "c/sfGpsDsAuQldFormFormulaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormFormulaOsN/sfGpsDsAuQldFormFormulaOsN"
+            ],
+            "c/sfGpsDsAuQldFormMessagingOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormMessagingOsN/sfGpsDsAuQldFormMessagingOsN"
+            ],
+            "c/sfGpsDsAuQldFormMultiselectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormMultiselectOsN/sfGpsDsAuQldFormMultiselectOsN"
+            ],
+            "c/sfGpsDsAuQldFormNumberOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormNumberOsN/sfGpsDsAuQldFormNumberOsN"
+            ],
+            "c/sfGpsDsAuQldFormPasswordOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormPasswordOsN/sfGpsDsAuQldFormPasswordOsN"
+            ],
+            "c/sfGpsDsAuQldFormRadioOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormRadioOsN/sfGpsDsAuQldFormRadioOsN"
+            ],
+            "c/sfGpsDsAuQldFormSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormSelectOsN/sfGpsDsAuQldFormSelectOsN"
+            ],
+            "c/sfGpsDsAuQldFormStepOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormStepOsN/sfGpsDsAuQldFormStepOsN"
+            ],
+            "c/sfGpsDsAuQldFormTextOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormTextOsN/sfGpsDsAuQldFormTextOsN"
+            ],
+            "c/sfGpsDsAuQldFormTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormTextareaOsN/sfGpsDsAuQldFormTextareaOsN"
+            ],
+            "c/sfGpsDsAuQldFormUrlOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormUrlOsN/sfGpsDsAuQldFormUrlOsN"
+            ],
+            "c/sfGpsDsAuQldInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldInputOsN/sfGpsDsAuQldInputOsN"
+            ],
+            "c/sfGpsDsAuQldMaskedInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldMaskedInputOsN/sfGpsDsAuQldMaskedInputOsN"
+            ],
+            "c/sfGpsDsAuQldRadioGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldRadioGroupOsN/sfGpsDsAuQldRadioGroupOsN"
+            ],
+            "c/sfGpsDsAuQldSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldSelectOsN/sfGpsDsAuQldSelectOsN"
+            ],
+            "c/sfGpsDsAuQldStatusHelperMixinOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldStatusHelperMixinOsN/sfGpsDsAuQldStatusHelperMixinOsN"
+            ],
+            "c/sfGpsDsAuQldTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldTextareaOsN/sfGpsDsAuQldTextareaOsN"
+            ],
+            "c/sfGpsDsAuQldAppExampleThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/layouts/lwc/sfGpsDsAuQldAppExampleThemeLayoutLwr/sfGpsDsAuQldAppExampleThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuQldDefaultPageLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/layouts/lwc/sfGpsDsAuQldDefaultPageLayoutLwr/sfGpsDsAuQldDefaultPageLayoutLwr"
+            ],
+            "c/sfGpsDsAuQldLeftNavThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/layouts/lwc/sfGpsDsAuQldLeftNavThemeLayoutLwr/sfGpsDsAuQldLeftNavThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuQldNoContentIdPageLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/layouts/lwc/sfGpsDsAuQldNoContentIdPageLayoutLwr/sfGpsDsAuQldNoContentIdPageLayoutLwr"
+            ],
+            "c/sfGpsDsAuQldThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/layouts/lwc/sfGpsDsAuQldThemeLayoutLwr/sfGpsDsAuQldThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuQldAnimateMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/mixins/lwc/sfGpsDsAuQldAnimateMixin/sfGpsDsAuQldAnimateMixin"
+            ],
+            "c/sfGpsDsAuQldAccordion": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldAccordion/lwc/sfGpsDsAuQldAccordion/sfGpsDsAuQldAccordion"
+            ],
+            "c/sfGpsDsAuQldAccordionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldAccordion/lwc/sfGpsDsAuQldAccordionComm/sfGpsDsAuQldAccordionComm"
+            ],
+            "c/sfGpsDsAuQldAccordionItem": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldAccordion/lwc/sfGpsDsAuQldAccordionItem/sfGpsDsAuQldAccordionItem"
+            ],
+            "c/sfGpsDsAuQldAccordionLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldAccordion/lwc/sfGpsDsAuQldAccordionLwr/sfGpsDsAuQldAccordionLwr"
+            ],
+            "c/sfGpsDsAuQldBackToTopComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldBackToTop/lwc/sfGpsDsAuQldBackToTopComm/sfGpsDsAuQldBackToTopComm"
+            ],
+            "c/sfGpsDsAuQldBanner": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldBanner/lwc/sfGpsDsAuQldBanner/sfGpsDsAuQldBanner"
+            ],
+            "c/sfGpsDsAuQldBannerComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldBanner/lwc/sfGpsDsAuQldBannerComm/sfGpsDsAuQldBannerComm"
+            ],
+            "c/sfGpsDsAuQldBreadcrumbs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldBreadcrumbs/lwc/sfGpsDsAuQldBreadcrumbs/sfGpsDsAuQldBreadcrumbs"
+            ],
+            "c/sfGpsDsAuQldBreadcrumbsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldBreadcrumbs/lwc/sfGpsDsAuQldBreadcrumbsComm/sfGpsDsAuQldBreadcrumbsComm"
+            ],
+            "c/sfGpsDsAuQldBreadcrumbsRecordComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldBreadcrumbs/lwc/sfGpsDsAuQldBreadcrumbsRecordComm/sfGpsDsAuQldBreadcrumbsRecordComm"
+            ],
+            "c/sfGpsDsAuQldButton": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldButton/lwc/sfGpsDsAuQldButton/sfGpsDsAuQldButton"
+            ],
+            "c/sfGpsDsAuQldButtonComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldButton/lwc/sfGpsDsAuQldButtonComm/sfGpsDsAuQldButtonComm"
+            ],
+            "c/sfGpsDsAuQldCallout": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldCallout/lwc/sfGpsDsAuQldCallout/sfGpsDsAuQldCallout"
+            ],
+            "c/sfGpsDsAuQldCalloutComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldCallout/lwc/sfGpsDsAuQldCalloutComm/sfGpsDsAuQldCalloutComm"
+            ],
+            "c/sfGpsDsAuQldCard": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldCard/lwc/sfGpsDsAuQldCard/sfGpsDsAuQldCard"
+            ],
+            "c/sfGpsDsAuQldCardComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldCard/lwc/sfGpsDsAuQldCardComm/sfGpsDsAuQldCardComm"
+            ],
+            "c/sfGpsDsAuQldCardListLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldCard/lwc/sfGpsDsAuQldCardListLwr/sfGpsDsAuQldCardListLwr"
+            ],
+            "c/sfGpsDsAuQldCta": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldCta/lwc/sfGpsDsAuQldCta/sfGpsDsAuQldCta"
+            ],
+            "c/sfGpsDsAuQldCtaComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldCta/lwc/sfGpsDsAuQldCtaComm/sfGpsDsAuQldCtaComm"
+            ],
+            "c/sfGpsDsAuQldDirectionLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldDirectionLink/lwc/sfGpsDsAuQldDirectionLink/sfGpsDsAuQldDirectionLink"
+            ],
+            "c/sfGpsDsAuQldDirectionLinkComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldDirectionLink/lwc/sfGpsDsAuQldDirectionLinkComm/sfGpsDsAuQldDirectionLinkComm"
+            ],
+            "c/sfGpsDsAuQldDocsExampleComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldDocs/lwc/sfGpsDsAuQldDocsExampleComm/sfGpsDsAuQldDocsExampleComm"
+            ],
+            "c/sfGpsDsAuQldDocsLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldDocs/lwc/sfGpsDsAuQldDocsLink/sfGpsDsAuQldDocsLink"
+            ],
+            "c/sfGpsDsAuQldFooter": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldFooter/lwc/sfGpsDsAuQldFooter/sfGpsDsAuQldFooter"
+            ],
+            "c/sfGpsDsAuQldFooterLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldFooter/lwc/sfGpsDsAuQldFooterLwr/sfGpsDsAuQldFooterLwr"
+            ],
+            "c/sfGpsDsAuQldGlobalAlert": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldGlobalAlert/lwc/sfGpsDsAuQldGlobalAlert/sfGpsDsAuQldGlobalAlert"
+            ],
+            "c/sfGpsDsAuQldGlobalAlertComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldGlobalAlert/lwc/sfGpsDsAuQldGlobalAlertComm/sfGpsDsAuQldGlobalAlertComm"
+            ],
+            "c/sfGpsDsAuQldGlobalAlertContainerComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldGlobalAlert/lwc/sfGpsDsAuQldGlobalAlertContainerComm/sfGpsDsAuQldGlobalAlertContainerComm"
+            ],
+            "c/sfGpsDsAuQldHeader": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldHeader/lwc/sfGpsDsAuQldHeader/sfGpsDsAuQldHeader"
+            ],
+            "c/sfGpsDsAuQldHeaderComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldHeader/lwc/sfGpsDsAuQldHeaderComm/sfGpsDsAuQldHeaderComm"
+            ],
+            "c/sfGpsDsAuQldHorizontalRule": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldHorizontalRule/lwc/sfGpsDsAuQldHorizontalRule/sfGpsDsAuQldHorizontalRule"
+            ],
+            "c/sfGpsDsAuQldHorizontalRuleComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldHorizontalRule/lwc/sfGpsDsAuQldHorizontalRuleComm/sfGpsDsAuQldHorizontalRuleComm"
+            ],
+            "c/sfGpsDsAuQldInPageAlert": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldInPageAlert/lwc/sfGpsDsAuQldInPageAlert/sfGpsDsAuQldInPageAlert"
+            ],
+            "c/sfGpsDsAuQldInPageAlertComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldInPageAlert/lwc/sfGpsDsAuQldInPageAlertComm/sfGpsDsAuQldInPageAlertComm"
+            ],
+            "c/sfGpsDsAuQldInPageAlertCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldInPageAlert/lwc/sfGpsDsAuQldInPageAlertCommOs/sfGpsDsAuQldInPageAlertCommOs"
+            ],
+            "c/sfGpsDsAuQldInPageAlertOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldInPageAlert/lwc/sfGpsDsAuQldInPageAlertOs/sfGpsDsAuQldInPageAlertOs"
+            ],
+            "c/sfGpsDsAuQldInPageNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldInPageNav/lwc/sfGpsDsAuQldInPageNav/sfGpsDsAuQldInPageNav"
+            ],
+            "c/sfGpsDsAuQldInPageNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldInPageNav/lwc/sfGpsDsAuQldInPageNavComm/sfGpsDsAuQldInPageNavComm"
+            ],
+            "c/sfGpsDsAuQldLinkCollectionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkCollectionComm/sfGpsDsAuQldLinkCollectionComm"
+            ],
+            "c/sfGpsDsAuQldLinkCollectionCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkCollectionCommOs/sfGpsDsAuQldLinkCollectionCommOs"
+            ],
+            "c/sfGpsDsAuQldLinkList": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkList/sfGpsDsAuQldLinkList"
+            ],
+            "c/sfGpsDsAuQldLinkListComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkListComm/sfGpsDsAuQldLinkListComm"
+            ],
+            "c/sfGpsDsAuQldLinkListCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkListCommOs/sfGpsDsAuQldLinkListCommOs"
+            ],
+            "c/sfGpsDsAuQldLinkListOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkListOs/sfGpsDsAuQldLinkListOs"
+            ],
+            "c/sfGpsDsAuQldLoadingSpinner": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLoadingSpinner/lwc/sfGpsDsAuQldLoadingSpinner/sfGpsDsAuQldLoadingSpinner"
+            ],
+            "c/sfGpsDsAuQldLoadingSpinnerComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLoadingSpinner/lwc/sfGpsDsAuQldLoadingSpinnerComm/sfGpsDsAuQldLoadingSpinnerComm"
+            ],
+            "c/sfGpsDsAuQldLoadingSpinnerOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLoadingSpinner/lwc/sfGpsDsAuQldLoadingSpinnerOs/sfGpsDsAuQldLoadingSpinnerOs"
+            ],
+            "c/sfGpsDsAuQldMainNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMainNav/lwc/sfGpsDsAuQldMainNav/sfGpsDsAuQldMainNav"
+            ],
+            "c/sfGpsDsAuQldMainNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMainNav/lwc/sfGpsDsAuQldMainNavComm/sfGpsDsAuQldMainNavComm"
+            ],
+            "c/sfGpsDsAuQldMarkdownElementComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMarkdownElement/lwc/sfGpsDsAuQldMarkdownElementComm/sfGpsDsAuQldMarkdownElementComm"
+            ],
+            "c/sfGpsDsAuQldMarkupElementComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMarkupElement/lwc/sfGpsDsAuQldMarkupElementComm/sfGpsDsAuQldMarkupElementComm"
+            ],
+            "c/sfGpsDsAuQldMarkupElementCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMarkupElement/lwc/sfGpsDsAuQldMarkupElementCommOs/sfGpsDsAuQldMarkupElementCommOs"
+            ],
+            "c/sfGpsDsAuQldPagination": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldPagination/lwc/sfGpsDsAuQldPagination/sfGpsDsAuQldPagination"
+            ],
+            "c/sfGpsDsAuQldPaginationComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldPagination/lwc/sfGpsDsAuQldPaginationComm/sfGpsDsAuQldPaginationComm"
+            ],
+            "c/sfGpsDsAuQldPromoPanelComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldPromoPanel/lwc/sfGpsDsAuQldPromoPanelComm/sfGpsDsAuQldPromoPanelComm"
+            ],
+            "c/sfGpsDsAuQldQuote": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldQuote/lwc/sfGpsDsAuQldQuote/sfGpsDsAuQldQuote"
+            ],
+            "c/sfGpsDsAuQldQuoteComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldQuote/lwc/sfGpsDsAuQldQuoteComm/sfGpsDsAuQldQuoteComm"
+            ],
+            "c/sfGpsDsAuQldSideNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldSideNav/lwc/sfGpsDsAuQldSideNav/sfGpsDsAuQldSideNav"
+            ],
+            "c/sfGpsDsAuQldSideNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldSideNav/lwc/sfGpsDsAuQldSideNavComm/sfGpsDsAuQldSideNavComm"
+            ],
+            "c/sfGpsDsAuQldTagOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldTags/lwc/sfGpsDsAuQldTagOsN/sfGpsDsAuQldTagOsN"
+            ],
+            "c/sfGpsDsAuQldTags": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldTags/lwc/sfGpsDsAuQldTags/sfGpsDsAuQldTags"
+            ],
+            "c/sfGpsDsAuQldTagsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldTags/lwc/sfGpsDsAuQldTagsComm/sfGpsDsAuQldTagsComm"
+            ],
+            "c/sfGpsDsAuQldTagsCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldTags/lwc/sfGpsDsAuQldTagsCommOs/sfGpsDsAuQldTagsCommOs"
+            ],
+            "c/sfGpsDsAuQldTagsOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldTags/lwc/sfGpsDsAuQldTagsOs/sfGpsDsAuQldTagsOs"
+            ],
+            "c/sfGpsDsAuQldUpdatedDate": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldUpdatedDate/lwc/sfGpsDsAuQldUpdatedDate/sfGpsDsAuQldUpdatedDate"
+            ],
+            "c/sfGpsDsAuQldUpdatedDateComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldUpdatedDate/lwc/sfGpsDsAuQldUpdatedDateComm/sfGpsDsAuQldUpdatedDateComm"
+            ],
+            "c/sfGpsDsAuQldVerticalNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldVerticalNav/lwc/sfGpsDsAuQldVerticalNav/sfGpsDsAuQldVerticalNav"
+            ],
+            "c/sfGpsDsAuQldVerticalNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldVerticalNav/lwc/sfGpsDsAuQldVerticalNavComm/sfGpsDsAuQldVerticalNavComm"
+            ],
+            "c/sfGpsDsAuQldFormStepChartItemOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormStepChart/lwc/sfGpsDsAuQldFormStepChartItemOsN/sfGpsDsAuQldFormStepChartItemOsN"
+            ],
+            "c/sfGpsDsAuQldFormStepChartOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/forms/lwc/sfGpsDsAuQldFormStepChart/lwc/sfGpsDsAuQldFormStepChartOsN/sfGpsDsAuQldFormStepChartOsN"
+            ],
+            "c/sfGpsDsAuNswSBreadcrumbsAndTitleComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/sfGpsDsAuNswSBreadcrumbsAndTitleComm/sfGpsDsAuNswSBreadcrumbsAndTitleComm"
+            ],
+            "c/sfGpsDsAuNswSContentFooterHelpComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/sfGpsDsAuNswSContentFooterHelpComm/sfGpsDsAuNswSContentFooterHelpComm"
+            ],
+            "c/sfGpsDsAuNswSHeaderComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/sfGpsDsAuNswSHeaderComm/sfGpsDsAuNswSHeaderComm"
+            ],
+            "c/sfGpsDsAuNswSAlertOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSAlertOsN/sfGpsDsAuNswSAlertOsN"
+            ],
+            "c/sfGpsDsAuNswSCheckboxGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSCheckboxGroupOsN/sfGpsDsAuNswSCheckboxGroupOsN"
+            ],
+            "c/sfGpsDsAuNswSComboboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSComboboxOsN/sfGpsDsAuNswSComboboxOsN"
+            ],
+            "c/sfGpsDsAuNswSCompletionTagOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSCompletionTagOsN/sfGpsDsAuNswSCompletionTagOsN"
+            ],
+            "c/sfGpsDsAuNswSDatePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSDatePickerOsN/sfGpsDsAuNswSDatePickerOsN"
+            ],
+            "c/sfGpsDsAuNswSDatetimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSDatetimePickerOsN/sfGpsDsAuNswSDatetimePickerOsN"
+            ],
+            "c/sfGpsDsAuNswSFormAddressTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormAddressTypeaheadOsN/sfGpsDsAuNswSFormAddressTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuNswSFormCheckboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormCheckboxOsN/sfGpsDsAuNswSFormCheckboxOsN"
+            ],
+            "c/sfGpsDsAuNswSFormCurrencyOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormCurrencyOsN/sfGpsDsAuNswSFormCurrencyOsN"
+            ],
+            "c/sfGpsDsAuNswSFormDateOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormDateOsN/sfGpsDsAuNswSFormDateOsN"
+            ],
+            "c/sfGpsDsAuNswSFormDateTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormDateTimeOsN/sfGpsDsAuNswSFormDateTimeOsN"
+            ],
+            "c/sfGpsDsAuNswSFormDisclosureOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormDisclosureOsN/sfGpsDsAuNswSFormDisclosureOsN"
+            ],
+            "c/sfGpsDsAuNswSFormEmailOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormEmailOsN/sfGpsDsAuNswSFormEmailOsN"
+            ],
+            "c/sfGpsDsAuNswSFormFileOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormFileOsN/sfGpsDsAuNswSFormFileOsN"
+            ],
+            "c/sfGpsDsAuNswSFormLookupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormLookupOsN/sfGpsDsAuNswSFormLookupOsN"
+            ],
+            "c/sfGpsDsAuNswSFormMessagingOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormMessagingOsN/sfGpsDsAuNswSFormMessagingOsN"
+            ],
+            "c/sfGpsDsAuNswSFormMultiselectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormMultiselectOsN/sfGpsDsAuNswSFormMultiselectOsN"
+            ],
+            "c/sfGpsDsAuNswSFormNavButtonOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormNavButtonOsN/sfGpsDsAuNswSFormNavButtonOsN"
+            ],
+            "c/sfGpsDsAuNswSFormNumberOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormNumberOsN/sfGpsDsAuNswSFormNumberOsN"
+            ],
+            "c/sfGpsDsAuNswSFormPasswordOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormPasswordOsN/sfGpsDsAuNswSFormPasswordOsN"
+            ],
+            "c/sfGpsDsAuNswSFormRadioOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormRadioOsN/sfGpsDsAuNswSFormRadioOsN"
+            ],
+            "c/sfGpsDsAuNswSFormSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormSelectOsN/sfGpsDsAuNswSFormSelectOsN"
+            ],
+            "c/sfGpsDsAuNswSFormStepOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormStepOsN/sfGpsDsAuNswSFormStepOsN"
+            ],
+            "c/sfGpsDsAuNswSFormSummaryBlockOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormSummaryBlockOsN/sfGpsDsAuNswSFormSummaryBlockOsN"
+            ],
+            "c/sfGpsDsAuNswSFormTextBlockOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormTextBlockOsN/sfGpsDsAuNswSFormTextBlockOsN"
+            ],
+            "c/sfGpsDsAuNswSFormTextOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormTextOsN/sfGpsDsAuNswSFormTextOsN"
+            ],
+            "c/sfGpsDsAuNswSFormTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormTextareaOsN/sfGpsDsAuNswSFormTextareaOsN"
+            ],
+            "c/sfGpsDsAuNswSFormTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormTimeOsN/sfGpsDsAuNswSFormTimeOsN"
+            ],
+            "c/sfGpsDsAuNswSFormTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormTypeaheadOsN/sfGpsDsAuNswSFormTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuNswSFormUrlOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSFormUrlOsN/sfGpsDsAuNswSFormUrlOsN"
+            ],
+            "c/sfGpsDsAuNswSInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSInputOsN/sfGpsDsAuNswSInputOsN"
+            ],
+            "c/sfGpsDsAuNswSMaskedInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSMaskedInputOsN/sfGpsDsAuNswSMaskedInputOsN"
+            ],
+            "c/sfGpsDsAuNswSRadioGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSRadioGroupOsN/sfGpsDsAuNswSRadioGroupOsN"
+            ],
+            "c/sfGpsDsAuNswSTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSTextareaOsN/sfGpsDsAuNswSTextareaOsN"
+            ],
+            "c/sfGpsDsAuNswSTimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSTimePickerOsN/sfGpsDsAuNswSTimePickerOsN"
+            ],
+            "c/sfGpsDsAuNswSTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/forms/lwc/sfGpsDsAuNswSTypeaheadOsN/sfGpsDsAuNswSTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuNswSFooterComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/sfGpsDsAuNswSFooter/lwc/sfGpsDsAuNswSFooterComm/sfGpsDsAuNswSFooterComm"
+            ],
+            "c/sfGpsDsAuNswSLowerFooter": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/sfGpsDsAuNswSFooter/lwc/sfGpsDsAuNswSLowerFooter/sfGpsDsAuNswSLowerFooter"
+            ],
+            "c/sfGpsDsAuNswSLowerFooterP": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNswS/main/default/lwc/sfGpsDsAuNswSFooter/lwc/sfGpsDsAuNswSLowerFooterP/sfGpsDsAuNswSLowerFooterP"
+            ],
+            "c/sfGpsDsAuVic2Acknowledgement": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Acknowledgement/sfGpsDsAuVic2Acknowledgement"
+            ],
+            "c/sfGpsDsAuVic2ContainerLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2ContainerLwr/sfGpsDsAuVic2ContainerLwr"
+            ],
+            "c/sfGpsDsAuVic2ContentRatingTest": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2ContentRatingTest/sfGpsDsAuVic2ContentRatingTest"
+            ],
+            "c/sfGpsDsAuVic2GridLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2GridLwr/sfGpsDsAuVic2GridLwr"
+            ],
+            "c/sfGpsDsAuVic2MarkdownElementComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2MarkdownElementComm/sfGpsDsAuVic2MarkdownElementComm"
+            ],
+            "c/sfGpsDsAuVic2MarkupElementComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2MarkupElementComm/sfGpsDsAuVic2MarkupElementComm"
+            ],
+            "c/sfGpsDsAuVic2Modal": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Modal/sfGpsDsAuVic2Modal"
+            ],
+            "c/sfGpsDsAuVic2UiCoreConstants": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2UiCoreConstants/sfGpsDsAuVic2UiCoreConstants"
+            ],
+            "c/sfGpsDsAuVic2UiCoreConstantsOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2UiCoreConstantsOs/sfGpsDsAuVic2UiCoreConstantsOs"
+            ],
+            "c/sfGpsDsAuVic2CheckboxGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2CheckboxGroupOsN/sfGpsDsAuVic2CheckboxGroupOsN"
+            ],
+            "c/sfGpsDsAuVic2ComboboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2ComboboxOsN/sfGpsDsAuVic2ComboboxOsN"
+            ],
+            "c/sfGpsDsAuVic2DatePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2DatePickerOsN/sfGpsDsAuVic2DatePickerOsN"
+            ],
+            "c/sfGpsDsAuVic2DatetimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2DatetimePickerOsN/sfGpsDsAuVic2DatetimePickerOsN"
+            ],
+            "c/sfGpsDsAuVic2FormBlockOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormBlockOsN/sfGpsDsAuVic2FormBlockOsN"
+            ],
+            "c/sfGpsDsAuVic2FormCheckboxOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormCheckboxOsN/sfGpsDsAuVic2FormCheckboxOsN"
+            ],
+            "c/sfGpsDsAuVic2FormCurrencyOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormCurrencyOsN/sfGpsDsAuVic2FormCurrencyOsN"
+            ],
+            "c/sfGpsDsAuVic2FormDateOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormDateOsN/sfGpsDsAuVic2FormDateOsN"
+            ],
+            "c/sfGpsDsAuVic2FormDateTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormDateTimeOsN/sfGpsDsAuVic2FormDateTimeOsN"
+            ],
+            "c/sfGpsDsAuVic2FormDisclosureOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormDisclosureOsN/sfGpsDsAuVic2FormDisclosureOsN"
+            ],
+            "c/sfGpsDsAuVic2FormElementMixinOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormElementMixinOsN/sfGpsDsAuVic2FormElementMixinOsN"
+            ],
+            "c/sfGpsDsAuVic2FormEmailOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormEmailOsN/sfGpsDsAuVic2FormEmailOsN"
+            ],
+            "c/sfGpsDsAuVic2FormFileOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormFileOsN/sfGpsDsAuVic2FormFileOsN"
+            ],
+            "c/sfGpsDsAuVic2FormFormulaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormFormulaOsN/sfGpsDsAuVic2FormFormulaOsN"
+            ],
+            "c/sfGpsDsAuVic2FormLookupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormLookupOsN/sfGpsDsAuVic2FormLookupOsN"
+            ],
+            "c/sfGpsDsAuVic2FormMessagingOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormMessagingOsN/sfGpsDsAuVic2FormMessagingOsN"
+            ],
+            "c/sfGpsDsAuVic2FormMultiselectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormMultiselectOsN/sfGpsDsAuVic2FormMultiselectOsN"
+            ],
+            "c/sfGpsDsAuVic2FormNumberOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormNumberOsN/sfGpsDsAuVic2FormNumberOsN"
+            ],
+            "c/sfGpsDsAuVic2FormPasswordOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormPasswordOsN/sfGpsDsAuVic2FormPasswordOsN"
+            ],
+            "c/sfGpsDsAuVic2FormPlacesTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormPlacesTypeaheadOsN/sfGpsDsAuVic2FormPlacesTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuVic2FormRadioOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormRadioOsN/sfGpsDsAuVic2FormRadioOsN"
+            ],
+            "c/sfGpsDsAuVic2FormSelectOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormSelectOsN/sfGpsDsAuVic2FormSelectOsN"
+            ],
+            "c/sfGpsDsAuVic2FormStepChartOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormStepChartOsN/sfGpsDsAuVic2FormStepChartOsN"
+            ],
+            "c/sfGpsDsAuVic2FormStepOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormStepOsN/sfGpsDsAuVic2FormStepOsN"
+            ],
+            "c/sfGpsDsAuVic2FormTextBlockOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormTextBlockOsN/sfGpsDsAuVic2FormTextBlockOsN"
+            ],
+            "c/sfGpsDsAuVic2FormTextOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormTextOsN/sfGpsDsAuVic2FormTextOsN"
+            ],
+            "c/sfGpsDsAuVic2FormTextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormTextareaOsN/sfGpsDsAuVic2FormTextareaOsN"
+            ],
+            "c/sfGpsDsAuVic2FormTimeOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormTimeOsN/sfGpsDsAuVic2FormTimeOsN"
+            ],
+            "c/sfGpsDsAuVic2FormTypeaheadBlockOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormTypeaheadBlockOsN/sfGpsDsAuVic2FormTypeaheadBlockOsN"
+            ],
+            "c/sfGpsDsAuVic2FormTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormTypeaheadOsN/sfGpsDsAuVic2FormTypeaheadOsN"
+            ],
+            "c/sfGpsDsAuVic2FormUrlOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2FormUrlOsN/sfGpsDsAuVic2FormUrlOsN"
+            ],
+            "c/sfGpsDsAuVic2InputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2InputOsN/sfGpsDsAuVic2InputOsN"
+            ],
+            "c/sfGpsDsAuVic2MaskedInputOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2MaskedInputOsN/sfGpsDsAuVic2MaskedInputOsN"
+            ],
+            "c/sfGpsDsAuVic2MultiValueLabelOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2MultiValueLabelOsN/sfGpsDsAuVic2MultiValueLabelOsN"
+            ],
+            "c/sfGpsDsAuVic2MultiValueTagListOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2MultiValueTagListOsN/sfGpsDsAuVic2MultiValueTagListOsN"
+            ],
+            "c/sfGpsDsAuVic2RadioGroupOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2RadioGroupOsN/sfGpsDsAuVic2RadioGroupOsN"
+            ],
+            "c/sfGpsDsAuVic2RplDropdownOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2RplDropdownOsN/sfGpsDsAuVic2RplDropdownOsN"
+            ],
+            "c/sfGpsDsAuVic2TextareaOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2TextareaOsN/sfGpsDsAuVic2TextareaOsN"
+            ],
+            "c/sfGpsDsAuVic2TimePickerOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2TimePickerOsN/sfGpsDsAuVic2TimePickerOsN"
+            ],
+            "c/sfGpsDsAuVic2TypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/forms/lwc/sfGpsDsAuVic2TypeaheadOsN/sfGpsDsAuVic2TypeaheadOsN"
+            ],
+            "c/sfGpsDsAuVic2HtmlPlugIns": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/functions/lwc/sfGpsDsAuVic2HtmlPlugIns/sfGpsDsAuVic2HtmlPlugIns"
+            ],
+            "c/sfGpsDsAuVic2HtmlPlugInsOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/functions/lwc/sfGpsDsAuVic2HtmlPlugInsOs/sfGpsDsAuVic2HtmlPlugInsOs"
+            ],
+            "c/sfGpsDsAuVic2CardGridLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2CardGridLwr/sfGpsDsAuVic2CardGridLwr"
+            ],
+            "c/sfGpsDsAuVic2LayoutBackToTop": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2LayoutBackToTop/sfGpsDsAuVic2LayoutBackToTop"
+            ],
+            "c/sfGpsDsAuVic2LayoutSkipLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2LayoutSkipLink/sfGpsDsAuVic2LayoutSkipLink"
+            ],
+            "c/sfGpsDsAuVic2PageComponentLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2PageComponentLwr/sfGpsDsAuVic2PageComponentLwr"
+            ],
+            "c/sfGpsDsAuVic2SidebarComponentLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2SidebarComponentLwr/sfGpsDsAuVic2SidebarComponentLwr"
+            ],
+            "c/sfGpsDsAuVic2SidebarPageLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layouts/lwc/sfGpsDsAuVic2SidebarPageLayoutLwr/sfGpsDsAuVic2SidebarPageLayoutLwr"
+            ],
+            "c/sfGpsDsAuVic2SidebarThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layouts/lwc/sfGpsDsAuVic2SidebarThemeLayoutLwr/sfGpsDsAuVic2SidebarThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuVic2StandardPageLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layouts/lwc/sfGpsDsAuVic2StandardPageLayoutLwr/sfGpsDsAuVic2StandardPageLayoutLwr"
+            ],
+            "c/sfGpsDsAuVic2StandardThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layouts/lwc/sfGpsDsAuVic2StandardThemeLayoutLwr/sfGpsDsAuVic2StandardThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuVic2ThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layouts/lwc/sfGpsDsAuVic2ThemeLayoutLwr/sfGpsDsAuVic2ThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuVic2AccessibleContainer": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2AccessibleContainer/sfGpsDsAuVic2AccessibleContainer"
+            ],
+            "c/sfGpsDsAuVic2ExpandableStateMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2ExpandableStateMixin/sfGpsDsAuVic2ExpandableStateMixin"
+            ],
+            "c/sfGpsDsAuVic2PopupMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2PopupMixin/sfGpsDsAuVic2PopupMixin"
+            ],
+            "c/sfGpsDsAuVic2ResizeHeightMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2ResizeHeightMixin/sfGpsDsAuVic2ResizeHeightMixin"
+            ],
+            "c/sfGpsDsAuVic2StepNavigationMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2StepNavigationMixin/sfGpsDsAuVic2StepNavigationMixin"
+            ],
+            "c/sfGpsDsAuVic2WindowSizeMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2WindowSizeMixin/sfGpsDsAuVic2WindowSizeMixin"
+            ],
+            "c/sfGpsDsAuVic2Accordion": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Accordion/lwc/sfGpsDsAuVic2Accordion/sfGpsDsAuVic2Accordion"
+            ],
+            "c/sfGpsDsAuVic2AccordionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Accordion/lwc/sfGpsDsAuVic2AccordionComm/sfGpsDsAuVic2AccordionComm"
+            ],
+            "c/sfGpsDsAuVic2AccordionItem": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Accordion/lwc/sfGpsDsAuVic2AccordionItem/sfGpsDsAuVic2AccordionItem"
+            ],
+            "c/sfGpsDsAuVic2AccordionLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Accordion/lwc/sfGpsDsAuVic2AccordionLwr/sfGpsDsAuVic2AccordionLwr"
+            ],
+            "c/sfGpsDsAuVic2Alert": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Alert/lwc/sfGpsDsAuVic2Alert/sfGpsDsAuVic2Alert"
+            ],
+            "c/sfGpsDsAuVic2AlertComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Alert/lwc/sfGpsDsAuVic2AlertComm/sfGpsDsAuVic2AlertComm"
+            ],
+            "c/sfGpsDsAuVic2AlertContainer": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Alert/lwc/sfGpsDsAuVic2AlertContainer/sfGpsDsAuVic2AlertContainer"
+            ],
+            "c/sfGpsDsAuVic2AlertContainerLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Alert/lwc/sfGpsDsAuVic2AlertContainerLwr/sfGpsDsAuVic2AlertContainerLwr"
+            ],
+            "c/sfGpsDsAuVic2Blockquote": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Blockquote/lwc/sfGpsDsAuVic2Blockquote/sfGpsDsAuVic2Blockquote"
+            ],
+            "c/sfGpsDsAuVic2BlockquoteComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Blockquote/lwc/sfGpsDsAuVic2BlockquoteComm/sfGpsDsAuVic2BlockquoteComm"
+            ],
+            "c/sfGpsDsAuVic2Breadcrumbs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Breadcrumbs/lwc/sfGpsDsAuVic2Breadcrumbs/sfGpsDsAuVic2Breadcrumbs"
+            ],
+            "c/sfGpsDsAuVic2BreadcrumbsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Breadcrumbs/lwc/sfGpsDsAuVic2BreadcrumbsComm/sfGpsDsAuVic2BreadcrumbsComm"
+            ],
+            "c/sfGpsDsAuVic2Button": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Button/lwc/sfGpsDsAuVic2Button/sfGpsDsAuVic2Button"
+            ],
+            "c/sfGpsDsAuVic2ButtonComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Button/lwc/sfGpsDsAuVic2ButtonComm/sfGpsDsAuVic2ButtonComm"
+            ],
+            "c/sfGpsDsAuVic2ButtonConstants": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Button/lwc/sfGpsDsAuVic2ButtonConstants/sfGpsDsAuVic2ButtonConstants"
+            ],
+            "c/sfGpsDsAuVic2ButtonOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Button/lwc/sfGpsDsAuVic2ButtonOs/sfGpsDsAuVic2ButtonOs"
+            ],
+            "c/sfGpsDsAuVic2ButtonVariantCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Button/lwc/sfGpsDsAuVic2ButtonVariantCpe/sfGpsDsAuVic2ButtonVariantCpe"
+            ],
+            "c/sfGpsDsAuVic2Callout": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Callout/lwc/sfGpsDsAuVic2Callout/sfGpsDsAuVic2Callout"
+            ],
+            "c/sfGpsDsAuVic2CalloutComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Callout/lwc/sfGpsDsAuVic2CalloutComm/sfGpsDsAuVic2CalloutComm"
+            ],
+            "c/sfGpsDsAuVic2CampaignBanner": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Campaign/lwc/sfGpsDsAuVic2CampaignBanner/sfGpsDsAuVic2CampaignBanner"
+            ],
+            "c/sfGpsDsAuVic2CampaignPrimary": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Campaign/lwc/sfGpsDsAuVic2CampaignPrimary/sfGpsDsAuVic2CampaignPrimary"
+            ],
+            "c/sfGpsDsAuVic2CampaignPrimaryComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Campaign/lwc/sfGpsDsAuVic2CampaignPrimaryComm/sfGpsDsAuVic2CampaignPrimaryComm"
+            ],
+            "c/sfGpsDsAuVic2CampaignSecondary": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Campaign/lwc/sfGpsDsAuVic2CampaignSecondary/sfGpsDsAuVic2CampaignSecondary"
+            ],
+            "c/sfGpsDsAuVic2CampaignSecondaryComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Campaign/lwc/sfGpsDsAuVic2CampaignSecondaryComm/sfGpsDsAuVic2CampaignSecondaryComm"
+            ],
+            "c/sfGpsDsAuVic2Card": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2Card/sfGpsDsAuVic2Card"
+            ],
+            "c/sfGpsDsAuVic2CardAvatar": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardAvatar/sfGpsDsAuVic2CardAvatar"
+            ],
+            "c/sfGpsDsAuVic2CardAvatarComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardAvatarComm/sfGpsDsAuVic2CardAvatarComm"
+            ],
+            "c/sfGpsDsAuVic2CardCallToAction": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardCallToAction/sfGpsDsAuVic2CardCallToAction"
+            ],
+            "c/sfGpsDsAuVic2CardCallToActionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardCallToActionComm/sfGpsDsAuVic2CardCallToActionComm"
+            ],
+            "c/sfGpsDsAuVic2CardCategoryGrid": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardCategoryGrid/sfGpsDsAuVic2CardCategoryGrid"
+            ],
+            "c/sfGpsDsAuVic2CardCategoryGridComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardCategoryGridComm/sfGpsDsAuVic2CardCategoryGridComm"
+            ],
+            "c/sfGpsDsAuVic2CardKeyDates": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardKeyDates/sfGpsDsAuVic2CardKeyDates"
+            ],
+            "c/sfGpsDsAuVic2CardKeyDatesComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardKeyDatesComm/sfGpsDsAuVic2CardKeyDatesComm"
+            ],
+            "c/sfGpsDsAuVic2CardNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardNav/sfGpsDsAuVic2CardNav"
+            ],
+            "c/sfGpsDsAuVic2CardNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardNavComm/sfGpsDsAuVic2CardNavComm"
+            ],
+            "c/sfGpsDsAuVic2CardPromo": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardPromo/sfGpsDsAuVic2CardPromo"
+            ],
+            "c/sfGpsDsAuVic2CardPromoComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardPromoComm/sfGpsDsAuVic2CardPromoComm"
+            ],
+            "c/sfGpsDsAuVic2CardStatusComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Card/lwc/sfGpsDsAuVic2CardStatusComm/sfGpsDsAuVic2CardStatusComm"
+            ],
+            "c/sfGpsDsAuVic2Chip": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Chip/lwc/sfGpsDsAuVic2Chip/sfGpsDsAuVic2Chip"
+            ],
+            "c/sfGpsDsAuVic2ChipComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Chip/lwc/sfGpsDsAuVic2ChipComm/sfGpsDsAuVic2ChipComm"
+            ],
+            "c/sfGpsDsAuVic2ContactUs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2ContactUs/lwc/sfGpsDsAuVic2ContactUs/sfGpsDsAuVic2ContactUs"
+            ],
+            "c/sfGpsDsAuVic2ContactUsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2ContactUs/lwc/sfGpsDsAuVic2ContactUsComm/sfGpsDsAuVic2ContactUsComm"
+            ],
+            "c/sfGpsDsAuVic2Content": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Content/lwc/sfGpsDsAuVic2Content/sfGpsDsAuVic2Content"
+            ],
+            "c/sfGpsDsAuVic2ContentComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Content/lwc/sfGpsDsAuVic2ContentComm/sfGpsDsAuVic2ContentComm"
+            ],
+            "c/sfGpsDsAuVic2ContentOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Content/lwc/sfGpsDsAuVic2ContentOs/sfGpsDsAuVic2ContentOs"
+            ],
+            "c/sfGpsDsAuVic2DataTable": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2DataTable/lwc/sfGpsDsAuVic2DataTable/sfGpsDsAuVic2DataTable"
+            ],
+            "c/sfGpsDsAuVic2DataTableRow": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2DataTable/lwc/sfGpsDsAuVic2DataTableRow/sfGpsDsAuVic2DataTableRow"
+            ],
+            "c/sfGpsDsAuVic2DescriptionList": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2DescriptionList/lwc/sfGpsDsAuVic2DescriptionList/sfGpsDsAuVic2DescriptionList"
+            ],
+            "c/sfGpsDsAuVic2DescriptionListComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2DescriptionList/lwc/sfGpsDsAuVic2DescriptionListComm/sfGpsDsAuVic2DescriptionListComm"
+            ],
+            "c/sfGpsDsAuVic2Document": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Document/lwc/sfGpsDsAuVic2Document/sfGpsDsAuVic2Document"
+            ],
+            "c/sfGpsDsAuVic2DocumentComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Document/lwc/sfGpsDsAuVic2DocumentComm/sfGpsDsAuVic2DocumentComm"
+            ],
+            "c/sfGpsDsAuVic2DocumentOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Document/lwc/sfGpsDsAuVic2DocumentOs/sfGpsDsAuVic2DocumentOs"
+            ],
+            "c/sfGpsDsAuVic2Expandable": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Expandable/lwc/sfGpsDsAuVic2Expandable/sfGpsDsAuVic2Expandable"
+            ],
+            "c/sfGpsDsAuVic2ExpandableOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Expandable/lwc/sfGpsDsAuVic2ExpandableOs/sfGpsDsAuVic2ExpandableOs"
+            ],
+            "c/sfGpsDsAuVic2File": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2File/lwc/sfGpsDsAuVic2File/sfGpsDsAuVic2File"
+            ],
+            "c/sfGpsDsAuVic2FileComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2File/lwc/sfGpsDsAuVic2FileComm/sfGpsDsAuVic2FileComm"
+            ],
+            "c/sfGpsDsAuVic2FileOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2File/lwc/sfGpsDsAuVic2FileOs/sfGpsDsAuVic2FileOs"
+            ],
+            "c/sfGpsDsAuVic2Footer": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Footer/lwc/sfGpsDsAuVic2Footer/sfGpsDsAuVic2Footer"
+            ],
+            "c/sfGpsDsAuVic2FooterComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Footer/lwc/sfGpsDsAuVic2FooterComm/sfGpsDsAuVic2FooterComm"
+            ],
+            "c/sfGpsDsAuVic2FooterIp": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Footer/lwc/sfGpsDsAuVic2FooterIp/sfGpsDsAuVic2FooterIp"
+            ],
+            "c/sfGpsDsAuVic2NavSection": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Footer/lwc/sfGpsDsAuVic2NavSection/sfGpsDsAuVic2NavSection"
+            ],
+            "c/sfGpsDsAuVic2Header": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Header/lwc/sfGpsDsAuVic2Header/sfGpsDsAuVic2Header"
+            ],
+            "c/sfGpsDsAuVic2HeaderActions": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Header/lwc/sfGpsDsAuVic2HeaderActions/sfGpsDsAuVic2HeaderActions"
+            ],
+            "c/sfGpsDsAuVic2HeaderConstants": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Header/lwc/sfGpsDsAuVic2HeaderConstants/sfGpsDsAuVic2HeaderConstants"
+            ],
+            "c/sfGpsDsAuVic2HeaderGraphic": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Header/lwc/sfGpsDsAuVic2HeaderGraphic/sfGpsDsAuVic2HeaderGraphic"
+            ],
+            "c/sfGpsDsAuVic2HeaderLinks": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Header/lwc/sfGpsDsAuVic2HeaderLinks/sfGpsDsAuVic2HeaderLinks"
+            ],
+            "c/sfGpsDsAuVic2HeroHeaderComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Header/lwc/sfGpsDsAuVic2HeroHeaderComm/sfGpsDsAuVic2HeroHeaderComm"
+            ],
+            "c/sfGpsDsAuVic2IntroHeaderComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Header/lwc/sfGpsDsAuVic2IntroHeaderComm/sfGpsDsAuVic2IntroHeaderComm"
+            ],
+            "c/sfGpsDsAuVic2Icon": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2Icon/sfGpsDsAuVic2Icon"
+            ],
+            "c/sfGpsDsAuVic2IconColourCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconColourCpe/sfGpsDsAuVic2IconColourCpe"
+            ],
+            "c/sfGpsDsAuVic2IconComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconComm/sfGpsDsAuVic2IconComm"
+            ],
+            "c/sfGpsDsAuVic2IconConstants": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconConstants/sfGpsDsAuVic2IconConstants"
+            ],
+            "c/sfGpsDsAuVic2IconConstantsOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconConstantsOs/sfGpsDsAuVic2IconConstantsOs"
+            ],
+            "c/sfGpsDsAuVic2IconCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconCpe/sfGpsDsAuVic2IconCpe"
+            ],
+            "c/sfGpsDsAuVic2IconNameCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconNameCpe/sfGpsDsAuVic2IconNameCpe"
+            ],
+            "c/sfGpsDsAuVic2IconOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconOs/sfGpsDsAuVic2IconOs"
+            ],
+            "c/sfGpsDsAuVic2IconPlacementCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconPlacementCpe/sfGpsDsAuVic2IconPlacementCpe"
+            ],
+            "c/sfGpsDsAuVic2IconSizeCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Icon/lwc/sfGpsDsAuVic2IconSizeCpe/sfGpsDsAuVic2IconSizeCpe"
+            ],
+            "c/sfGpsDsAuVic2Image": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Image/lwc/sfGpsDsAuVic2Image/sfGpsDsAuVic2Image"
+            ],
+            "c/sfGpsDsAuVic2ImageComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Image/lwc/sfGpsDsAuVic2ImageComm/sfGpsDsAuVic2ImageComm"
+            ],
+            "c/sfGpsDsAuVic2ImageConstants": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Image/lwc/sfGpsDsAuVic2ImageConstants/sfGpsDsAuVic2ImageConstants"
+            ],
+            "c/sfGpsDsAuVic2ImageCpe": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Image/lwc/sfGpsDsAuVic2ImageCpe/sfGpsDsAuVic2ImageCpe"
+            ],
+            "c/sfGpsDsAuVic2InPageNavigation": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2InPageNavigation/lwc/sfGpsDsAuVic2InPageNavigation/sfGpsDsAuVic2InPageNavigation"
+            ],
+            "c/sfGpsDsAuVic2InPageNavigationComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2InPageNavigation/lwc/sfGpsDsAuVic2InPageNavigationComm/sfGpsDsAuVic2InPageNavigationComm"
+            ],
+            "c/sfGpsDsAuVic2Link": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Link/lwc/sfGpsDsAuVic2Link/sfGpsDsAuVic2Link"
+            ],
+            "c/sfGpsDsAuVic2TextLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Link/lwc/sfGpsDsAuVic2TextLink/sfGpsDsAuVic2TextLink"
+            ],
+            "c/sfGpsDsAuVic2TextLinkComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Link/lwc/sfGpsDsAuVic2TextLinkComm/sfGpsDsAuVic2TextLinkComm"
+            ],
+            "c/sfGpsDsAuVic2List": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2List/lwc/sfGpsDsAuVic2List/sfGpsDsAuVic2List"
+            ],
+            "c/sfGpsDsAuVic2ListComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2List/lwc/sfGpsDsAuVic2ListComm/sfGpsDsAuVic2ListComm"
+            ],
+            "c/sfGpsDsAuVic2ListContent": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2List/lwc/sfGpsDsAuVic2ListContent/sfGpsDsAuVic2ListContent"
+            ],
+            "c/sfGpsDsAuVic2MediaEmbed": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Media/lwc/sfGpsDsAuVic2MediaEmbed/sfGpsDsAuVic2MediaEmbed"
+            ],
+            "c/sfGpsDsAuVic2MediaEmbedComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Media/lwc/sfGpsDsAuVic2MediaEmbedComm/sfGpsDsAuVic2MediaEmbedComm"
+            ],
+            "c/sfGpsDsAuVic2MediaGallery": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Media/lwc/sfGpsDsAuVic2MediaGallery/sfGpsDsAuVic2MediaGallery"
+            ],
+            "c/sfGpsDsAuVic2MediaGalleryComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Media/lwc/sfGpsDsAuVic2MediaGalleryComm/sfGpsDsAuVic2MediaGalleryComm"
+            ],
+            "c/sfGpsDsAuVic2MediaGalleryContent": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Media/lwc/sfGpsDsAuVic2MediaGalleryContent/sfGpsDsAuVic2MediaGalleryContent"
+            ],
+            "c/sfGpsDsAuVic2PageAction": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PageAction/lwc/sfGpsDsAuVic2PageAction/sfGpsDsAuVic2PageAction"
+            ],
+            "c/sfGpsDsAuVic2PageActionLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PageAction/lwc/sfGpsDsAuVic2PageActionLwr/sfGpsDsAuVic2PageActionLwr"
+            ],
+            "c/sfGpsDsAuVic2PageLinks": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PageLinks/lwc/sfGpsDsAuVic2PageLinks/sfGpsDsAuVic2PageLinks"
+            ],
+            "c/sfGpsDsAuVic2PageLinksItem": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PageLinks/lwc/sfGpsDsAuVic2PageLinksItem/sfGpsDsAuVic2PageLinksItem"
+            ],
+            "c/sfGpsDsAuVic2Pagination": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Pagination/lwc/sfGpsDsAuVic2Pagination/sfGpsDsAuVic2Pagination"
+            ],
+            "c/sfGpsDsAuVic2PaginationLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Pagination/lwc/sfGpsDsAuVic2PaginationLink/sfGpsDsAuVic2PaginationLink"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNav/sfGpsDsAuVic2PrimaryNav"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavBar": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavBar/sfGpsDsAuVic2PrimaryNavBar"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavBarAction": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavBarAction/sfGpsDsAuVic2PrimaryNavBarAction"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavComm/sfGpsDsAuVic2PrimaryNavComm"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavFocusMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavFocusMixin/sfGpsDsAuVic2PrimaryNavFocusMixin"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavMegaMenu": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavMegaMenu/sfGpsDsAuVic2PrimaryNavMegaMenu"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavMegaMenuAction": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavMegaMenuAction/sfGpsDsAuVic2PrimaryNavMegaMenuAction"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavMegaMenuBackButton": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavMegaMenuBackButton/sfGpsDsAuVic2PrimaryNavMegaMenuBackButton"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavMegaMenuHomeButton": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavMegaMenuHomeButton/sfGpsDsAuVic2PrimaryNavMegaMenuHomeButton"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavMegaMenuList": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavMegaMenuList/sfGpsDsAuVic2PrimaryNavMegaMenuList"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavQuickExit": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavQuickExit/sfGpsDsAuVic2PrimaryNavQuickExit"
+            ],
+            "c/sfGpsDsAuVic2PrimaryNavSearchForm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2PrimaryNav/lwc/sfGpsDsAuVic2PrimaryNavSearchForm/sfGpsDsAuVic2PrimaryNavSearchForm"
+            ],
+            "c/sfGpsDsAuVic2Profile": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Profile/lwc/sfGpsDsAuVic2Profile/sfGpsDsAuVic2Profile"
+            ],
+            "c/sfGpsDsAuVic2ProfileComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Profile/lwc/sfGpsDsAuVic2ProfileComm/sfGpsDsAuVic2ProfileComm"
+            ],
+            "c/sfGpsDsAuVic2Progress": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Progress/lwc/sfGpsDsAuVic2Progress/sfGpsDsAuVic2Progress"
+            ],
+            "c/sfGpsDsAuVic2ProgressOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Progress/lwc/sfGpsDsAuVic2ProgressOs/sfGpsDsAuVic2ProgressOs"
+            ],
+            "c/sfGpsDsAuVic2RelatedLinks": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2RelatedLinks/lwc/sfGpsDsAuVic2RelatedLinks/sfGpsDsAuVic2RelatedLinks"
+            ],
+            "c/sfGpsDsAuVic2RelatedLinksComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2RelatedLinks/lwc/sfGpsDsAuVic2RelatedLinksComm/sfGpsDsAuVic2RelatedLinksComm"
+            ],
+            "c/sfGpsDsAuVic2SearchBar": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2SearchBar/lwc/sfGpsDsAuVic2SearchBar/sfGpsDsAuVic2SearchBar"
+            ],
+            "c/sfGpsDsAuVic2SearchBarComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2SearchBar/lwc/sfGpsDsAuVic2SearchBarComm/sfGpsDsAuVic2SearchBarComm"
+            ],
+            "c/sfGpsDsAuVic2Sitemap": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Sitemap/lwc/sfGpsDsAuVic2Sitemap/sfGpsDsAuVic2Sitemap"
+            ],
+            "c/sfGpsDsAuVic2SitemapComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Sitemap/lwc/sfGpsDsAuVic2SitemapComm/sfGpsDsAuVic2SitemapComm"
+            ],
+            "c/sfGpsDsAuVic2SocialShare": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2SocialShare/lwc/sfGpsDsAuVic2SocialShare/sfGpsDsAuVic2SocialShare"
+            ],
+            "c/sfGpsDsAuVic2SocialShareComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2SocialShare/lwc/sfGpsDsAuVic2SocialShareComm/sfGpsDsAuVic2SocialShareComm"
+            ],
+            "c/sfGpsDsAuVic2SocialShareConstants": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2SocialShare/lwc/sfGpsDsAuVic2SocialShareConstants/sfGpsDsAuVic2SocialShareConstants"
+            ],
+            "c/sfGpsDsAuVic2SocialShareEmail": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2SocialShare/lwc/sfGpsDsAuVic2SocialShareEmail/sfGpsDsAuVic2SocialShareEmail"
+            ],
+            "c/sfGpsDsAuVic2SocialShareLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2SocialShare/lwc/sfGpsDsAuVic2SocialShareLink/sfGpsDsAuVic2SocialShareLink"
+            ],
+            "c/sfGpsDsAuVic2Spinner": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Spinner/lwc/sfGpsDsAuVic2Spinner/sfGpsDsAuVic2Spinner"
+            ],
+            "c/sfGpsDsAuVic2SpinnerComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Spinner/lwc/sfGpsDsAuVic2SpinnerComm/sfGpsDsAuVic2SpinnerComm"
+            ],
+            "c/sfGpsDsAuVic2SpinnerOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Spinner/lwc/sfGpsDsAuVic2SpinnerOs/sfGpsDsAuVic2SpinnerOs"
+            ],
+            "c/sfGpsDsAuVic2Tab": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Tabs/lwc/sfGpsDsAuVic2Tab/sfGpsDsAuVic2Tab"
+            ],
+            "c/sfGpsDsAuVic2TabBar": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Tabs/lwc/sfGpsDsAuVic2TabBar/sfGpsDsAuVic2TabBar"
+            ],
+            "c/sfGpsDsAuVic2Tabs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Tabs/lwc/sfGpsDsAuVic2Tabs/sfGpsDsAuVic2Tabs"
+            ],
+            "c/sfGpsDsAuVic2TabsLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Tabs/lwc/sfGpsDsAuVic2TabsLwr/sfGpsDsAuVic2TabsLwr"
+            ],
+            "c/sfGpsDsAuVic2Tag": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Tag/lwc/sfGpsDsAuVic2Tag/sfGpsDsAuVic2Tag"
+            ],
+            "c/sfGpsDsAuVic2TagComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Tag/lwc/sfGpsDsAuVic2TagComm/sfGpsDsAuVic2TagComm"
+            ],
+            "c/sfGpsDsAuVic2UpdatedDate": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2UpdatedDateComm/lwc/sfGpsDsAuVic2UpdatedDate/sfGpsDsAuVic2UpdatedDate"
+            ],
+            "c/sfGpsDsAuVic2UpdatedDateComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2UpdatedDateComm/lwc/sfGpsDsAuVic2UpdatedDateComm/sfGpsDsAuVic2UpdatedDateComm"
+            ],
+            "c/sfGpsDsAuVic2VerticalNav": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2VerticalNav/lwc/sfGpsDsAuVic2VerticalNav/sfGpsDsAuVic2VerticalNav"
+            ],
+            "c/sfGpsDsAuVic2VerticalNavComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2VerticalNav/lwc/sfGpsDsAuVic2VerticalNavComm/sfGpsDsAuVic2VerticalNavComm"
+            ],
+            "c/sfGpsDsAuVic2VerticalNavLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2VerticalNav/lwc/sfGpsDsAuVic2VerticalNavLink/sfGpsDsAuVic2VerticalNavLink"
+            ],
+            "c/sfGpsDsAuVic2VerticalNavList": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2VerticalNav/lwc/sfGpsDsAuVic2VerticalNavList/sfGpsDsAuVic2VerticalNavList"
+            ],
+            "c/sfGpsDsAuVic2VerticalNavToggle": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2VerticalNav/lwc/sfGpsDsAuVic2VerticalNavToggle/sfGpsDsAuVic2VerticalNavToggle"
+            ],
+            "c/sfGpsDsAuVic2BreakpointsMixin": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2BreakpointsMixin/lwc/sfGpsDsAuVic2BreakpointsMixin/sfGpsDsAuVic2BreakpointsMixin"
+            ],
+            "c/sfGpsDsAuVic2BreakpointsMixinOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2BreakpointsMixin/lwc/sfGpsDsAuVic2BreakpointsMixinOs/sfGpsDsAuVic2BreakpointsMixinOs"
+            ],
+            "c/sfGpsDsUkGovAccordion": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovAccordion/sfGpsDsUkGovAccordion"
+            ],
+            "c/sfGpsDsUkGovAccordionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovAccordionComm/sfGpsDsUkGovAccordionComm"
+            ],
+            "c/sfGpsDsUkGovAccordionCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovAccordionCommOs/sfGpsDsUkGovAccordionCommOs"
+            ],
+            "c/sfGpsDsUkGovAccordionOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovAccordionOs/sfGpsDsUkGovAccordionOs"
+            ],
+            "c/sfGpsDsUkGovAccordionSection": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovAccordionSection/sfGpsDsUkGovAccordionSection"
+            ],
+            "c/sfGpsDsUkGovAccordionSectionComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovAccordionSectionComm/sfGpsDsUkGovAccordionSectionComm"
+            ],
+            "c/sfGpsDsUkGovAccordionSectionCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovAccordionSectionCommOs/sfGpsDsUkGovAccordionSectionCommOs"
+            ],
+            "c/sfGpsDsUkGovAccordionSectionOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovAccordionSectionOs/sfGpsDsUkGovAccordionSectionOs"
+            ],
+            "c/sfGpsDsUkGovBreadcrumbs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovBreadcrumbs/sfGpsDsUkGovBreadcrumbs"
+            ],
+            "c/sfGpsDsUkGovBreadcrumbsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovBreadcrumbsComm/sfGpsDsUkGovBreadcrumbsComm"
+            ],
+            "c/sfGpsDsUkGovDetails": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovDetails/sfGpsDsUkGovDetails"
+            ],
+            "c/sfGpsDsUkGovDetailsComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovDetailsComm/sfGpsDsUkGovDetailsComm"
+            ],
+            "c/sfGpsDsUkGovDetailsCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovDetailsCommOs/sfGpsDsUkGovDetailsCommOs"
+            ],
+            "c/sfGpsDsUkGovDetailsOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovDetailsOs/sfGpsDsUkGovDetailsOs"
+            ],
+            "c/sfGpsDsUkGovFooterComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovFooterComm/sfGpsDsUkGovFooterComm"
+            ],
+            "c/sfGpsDsUkGovHeader": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovHeader/sfGpsDsUkGovHeader"
+            ],
+            "c/sfGpsDsUkGovHeaderComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovHeaderComm/sfGpsDsUkGovHeaderComm"
+            ],
+            "c/sfGpsDsUkGovInsetText": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovInsetText/sfGpsDsUkGovInsetText"
+            ],
+            "c/sfGpsDsUkGovInsetTextComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovInsetTextComm/sfGpsDsUkGovInsetTextComm"
+            ],
+            "c/sfGpsDsUkGovInsetTextCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovInsetTextCommOs/sfGpsDsUkGovInsetTextCommOs"
+            ],
+            "c/sfGpsDsUkGovInsetTextOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovInsetTextOs/sfGpsDsUkGovInsetTextOs"
+            ],
+            "c/sfGpsDsUkGovLowerFooter": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovLowerFooter/sfGpsDsUkGovLowerFooter"
+            ],
+            "c/sfGpsDsUkGovLowerFooterIp": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovLowerFooterIp/sfGpsDsUkGovLowerFooterIp"
+            ],
+            "c/sfGpsDsUkGovNotificationBanner": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovNotificationBanner/sfGpsDsUkGovNotificationBanner"
+            ],
+            "c/sfGpsDsUkGovNotificationBannerComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovNotificationBannerComm/sfGpsDsUkGovNotificationBannerComm"
+            ],
+            "c/sfGpsDsUkGovPanel": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovPanel/sfGpsDsUkGovPanel"
+            ],
+            "c/sfGpsDsUkGovPanelComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovPanelComm/sfGpsDsUkGovPanelComm"
+            ],
+            "c/sfGpsDsUkGovPanelCommOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovPanelCommOs/sfGpsDsUkGovPanelCommOs"
+            ],
+            "c/sfGpsDsUkGovPanelOs": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovPanelOs/sfGpsDsUkGovPanelOs"
+            ],
+            "c/sfGpsDsUkGovSkipLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovSkipLink/sfGpsDsUkGovSkipLink"
+            ],
+            "c/sfGpsDsUkGovUpperFooter": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovUpperFooter/sfGpsDsUkGovUpperFooter"
+            ],
+            "c/sfGpsDsUkGovUpperFooterIp": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsUkGovShowcase/main/default/lwc/sfGpsDsUkGovUpperFooterIp/sfGpsDsUkGovUpperFooterIp"
+            ],
+            "c/sfGpsDsAuVic2AppExampleThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2AppExampleThemeLayoutLwr/sfGpsDsAuVic2AppExampleThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuVic2AppNavbarLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2AppNavbarLwr/sfGpsDsAuVic2AppNavbarLwr"
+            ],
+            "c/sfGpsDsAuVic2AppSidebarThemeLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2AppSidebarThemeLayoutLwr/sfGpsDsAuVic2AppSidebarThemeLayoutLwr"
+            ],
+            "c/sfGpsDsAuVic2DocsContentLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2DocsContentLwr/sfGpsDsAuVic2DocsContentLwr"
+            ],
+            "c/sfGpsDsAuVic2DocsExampleComm": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2DocsExampleComm/sfGpsDsAuVic2DocsExampleComm"
+            ],
+            "c/sfGpsDsAuVic2DocsLink": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2DocsLink/sfGpsDsAuVic2DocsLink"
+            ],
+            "c/sfGpsDsAuVic2DocsPageHeaderLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2DocsPageHeaderLwr/sfGpsDsAuVic2DocsPageHeaderLwr"
+            ],
+            "c/sfGpsDsAuVic2DocsPageLayoutLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2DocsPageLayoutLwr/sfGpsDsAuVic2DocsPageLayoutLwr"
+            ],
+            "c/sfGpsDsAuVic2DocsPageLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2DocsPageLwr/sfGpsDsAuVic2DocsPageLwr"
+            ]
+        }
+    }
+}

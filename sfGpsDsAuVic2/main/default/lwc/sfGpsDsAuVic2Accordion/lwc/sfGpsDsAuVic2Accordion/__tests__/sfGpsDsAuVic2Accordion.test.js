@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuVic2Accordion from "c/sfGpsDsAuVic2Accordion";
 import defaultItemsFixture from "./fixtures/default";
 import simpleItemsFixture from "./fixtures/sfdc-simple";

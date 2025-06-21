@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsAuNswBannerAlt from "c/sfGpsDsAuNswHeroBannerAlt";
 
 const tag = "c-sf-gps-ds-au-nsw-hero-banner";

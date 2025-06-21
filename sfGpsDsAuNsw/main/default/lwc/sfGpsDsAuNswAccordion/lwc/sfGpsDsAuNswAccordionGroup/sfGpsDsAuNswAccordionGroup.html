@@ -1,17 +1,11 @@
 <template lwc:render-mode="light">
-  <c-sf-gps-ds-configuration-error
-    lwc:if={_sfGpsDsErrors}
-    errors={_sfGpsDsErrors}
-  >
-  </c-sf-gps-ds-configuration-error>
-
-  <div lwc:else class={computedClassName}>
+  <div class={computedClassName}>
     <c-sf-gps-ds-au-nsw-accordion-group-head
-      show-buttons={showButtons}
+      show-buttons={_showButtons.value}
       expand-all-label={i18n.expandAll}
       collapse-all-label={i18n.collapseAll}
-      is-fully-expanded={isFullyExpanded}
-      is-fully-collapsed={isFullyCollapsed}
+      is-fully-expanded={_isFullyExpanded.value}
+      is-fully-collapsed={_isFullyCollapsed.value}
       onexpandall={handleExpandAll}
       oncollapseall={handleCollapseAll}
     >

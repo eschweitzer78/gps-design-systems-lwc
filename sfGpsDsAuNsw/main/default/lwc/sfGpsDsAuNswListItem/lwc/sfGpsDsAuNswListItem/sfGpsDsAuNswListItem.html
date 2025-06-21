@@ -10,7 +10,7 @@
       <div class="nsw-list-item__title">
         <a href={link} onclick={handleClick}>{title}</a>
       </div>
-      <div lwc:if={_showLink} class="nsw-list-item__info">{link}</div>
+      <div lwc:if={_showLink.value} class="nsw-list-item__info">{link}</div>
 
       <slot> </slot>
 

@@ -1,4 +1,4 @@
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsUkGovAccordionSection from "c/sfGpsDsUkGovAccordionSection";
 
 const ELT_TAG = "c-sf-gps-ds-uk-gov-accordion-section";

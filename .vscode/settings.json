@@ -4,5 +4,6 @@
     "**/bower_components": true,
     "**/.sfdx": true
   },
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "salesforcedx-vscode-lwc.preview.typeScriptSupport": true
 }

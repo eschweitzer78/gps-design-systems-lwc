@@ -8,7 +8,7 @@
   <template lwc:else>
     <c-sf-gps-ds-au-nsw-button
       lwc:if={computedIsButton}
-      label={_link.text}
+      label={_link.value.text}
       cstyle={cstyle}
       rendering={rendering}
       type={type}
@@ -16,13 +16,14 @@
       icon-style={iconStyle}
       icon-name={iconName}
       mobile-full-width={_mobileFullWidth}
+      aria-haspopup={ariaHasPopup}
       class-name={className}
       onclick={handleClick}
     >
     </c-sf-gps-ds-au-nsw-button>
     <c-sf-gps-ds-au-nsw-button
       lwc:else
-      link={_link.url}
+      link={_link.value.url}
       cstyle={cstyle}
       rendering={rendering}
       type={type}
@@ -30,9 +31,10 @@
       icon-style={iconStyle}
       icon-name={iconName}
       mobile-full-width={_mobileFullWidth}
+      aria-haspopup={ariaHasPopup}
       class-name={className}
     >
-      {_link.text}
+      {_link.value.text}
     </c-sf-gps-ds-au-nsw-button>
   </template>
 </template>

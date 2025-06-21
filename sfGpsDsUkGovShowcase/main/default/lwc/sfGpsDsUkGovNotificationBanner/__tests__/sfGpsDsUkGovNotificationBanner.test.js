@@ -1,5 +1,5 @@
 /* eslint-disable @lwc/lwc/no-inner-html */
-import { createElement } from "lwc";
+import { createElement } from "@lwc/engine-dom";
 import SfGpsDsUkGovNotificationBanner from "c/sfGpsDsUkGovNotificationBanner";
 
 const tag = "c-sf-gps-ds-uk-gov-notification-banner";

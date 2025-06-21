@@ -1,7 +1,6 @@
 {
   "sfGpsDsAuVic2File": {
     "target": "!Os",
-    "!.css": { "target": "!Os.css" },
     "!.html": {
       "target": "!Os.html",
       "c-sf-gps-ds-au-vic2-document": "c-sf-gps-ds-au-vic2-document-os",

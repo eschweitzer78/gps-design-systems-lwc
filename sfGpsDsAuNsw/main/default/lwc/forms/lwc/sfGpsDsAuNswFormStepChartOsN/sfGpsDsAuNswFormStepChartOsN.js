@@ -13,6 +13,9 @@ import { api } from "lwc";
 import SfGpsDsFormStepChart from "c/sfGpsDsFormStepChartOsN";
 import tmpl from "./sfGpsDsAuNswFormStepChartOsN.html";
 
+const DEBUG = true;
+const CLASS_NAME = "SfGpsDsAuNswFormStepChartOsN";
+
 export default class extends SfGpsDsFormStepChart {
   /* api: jsonDef */
   /* deprecated but have to keep as packaging won't pick up the fact that parent class has it */
@@ -26,6 +29,34 @@ export default class extends SfGpsDsFormStepChart {
     super.jsonDef = value;
   }
   /* end deprecated */
+
+  get computedCstyle() {
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "> computedCstyle",
+        this.jsonDef?.propSetMap?.stepChartStepsCstyle
+      );
+
+    const rv = this.jsonDef?.propSetMap?.stepChartStepsCstyle || "dark";
+
+    if (DEBUG) console.debug(CLASS_NAME, "< computedCstyle", rv);
+    return rv;
+  }
+
+  get computedType() {
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "> computedType",
+        this.jsonDef?.propSetMap?.stepChartStepsType
+      );
+
+    const rv = this.jsonDef?.propSetMap?.stepChartStepsType || "default";
+
+    if (DEBUG) console.debug(CLASS_NAME, "< computedType", rv);
+    return rv;
+  }
 
   /* lifecycle */
 

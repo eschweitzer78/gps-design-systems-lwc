@@ -1,0 +1,55 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <fieldset class={computedFieldsetClassName}>
+    <legend lwc:if={label} class="slds-show slds-float_left">
+      <abbr lwc:if={_required} class="slds-required" title={requiredLabel}>
+        *
+      </abbr>
+      <span
+        class="slds-form-element__legend slds-form-element__label slds-show_inline slds-float_none slds-var-p-top_xxx-small"
+      >
+        {label}
+      </span>
+    </legend>
+
+    <span class="slds-clearfix">{fieldLevelHelp}</span>
+    <slot name="label"></slot>
+
+    <div class={computedFormElementControlClassName}>
+      <template for:each={_internalOptions} for:item="option" for:index="index">
+        <div key={option.id} class="slds-checkbox">
+          <input
+            id={option.id}
+            data-sfgpsds-input
+            type="checkbox"
+            required={_required}
+            disabled={_disabled}
+            data-index={index}
+            tabindex={tabIndex}
+            name={option.name}
+            aria-invalid={_isError}
+            checked={option.selected}
+            value={option.value}
+            onfocus={handleFocus}
+            onchange={handleChange}
+            onkeydown={handleKeyDown}
+          />
+          <label
+            class="slds-checkbox__label"
+            data-index={index}
+            for={option.id}
+          >
+            <span class="slds-checkbox_faux"></span>
+            <span class="slds-form-element__label slds-p-top_none">
+              {option.label}
+            </span>
+          </label>
+        </div>
+      </template>
+    </div>
+  </fieldset>
+
+  <div lwc:if={_hasError} class="slds-form-element__help" role="alert">
+    {_errorMessage}
+  </div>
+</template>

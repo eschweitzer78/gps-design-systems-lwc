@@ -28,6 +28,7 @@
           <c-sf-gps-ds-au-nsw-list-view-item
             key={record.Id}
             class="item"
+            record-id={record.Id}
             display-columns={_displayColumns}
             label-column={labelColumn}
             title-column={titleColumn}
@@ -48,7 +49,8 @@
         >
         </c-sf-gps-ds-au-nsw-pagination>
 
-        <c-sf-gps-ds-navigation-service> </c-sf-gps-ds-navigation-service>
+        <c-sf-gps-ds-navigation-service lwc:ref="navsvc">
+        </c-sf-gps-ds-navigation-service>
       </template>
     </template>
   </div>
