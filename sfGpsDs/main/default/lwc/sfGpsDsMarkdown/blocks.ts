@@ -1,7 +1,14 @@
 /* eslint-disable no-unused-vars */
 
-import { Node } from "./node";
-import { unescapeString, OPENTAG, CLOSETAG } from "./common";
+import { 
+  ListData,
+  Node 
+} from "./node";
+import { 
+  unescapeString, 
+  OPENTAG, 
+  CLOSETAG 
+} from "./common";
 import InlineParser from "./inlines";
 
 const CODE_INDENT = 4;
@@ -54,8 +61,8 @@ function isSpaceOrTab(c: number): boolean {
   return c === C_SPACE || c === C_TAB;
 };
 
-function peek(ln, pos: number) {
-  if (pos < ln.length) {
+function peek(ln: string | undefined, pos: number) {
+  if (ln && pos < ln.length) {
     return ln.charCodeAt(pos);
   }
   return -1;
@@ -67,7 +74,7 @@ function peek(ln, pos: number) {
 
 // Returns true if block ends with a blank line, descending if needed
 // into lists and sublists.
-function endsWithBlankLine(block: Node): boolean {
+function endsWithBlankLine(block: Node | undefined): boolean {
   while (block) {
     if (block._lastLineBlank) {
       return true;
@@ -84,23 +91,21 @@ function endsWithBlankLine(block: Node): boolean {
   return false;
 };
 
-
-
 // Parse a list marker and return data on the marker (type,
 // start, delimiter, bullet character, padding) or null.
-function parseListMarker(parser, container: Node) {
+function parseListMarker(parser: Parser, container: Node) {
   let rest = parser.currentLine.slice(parser.nextNonspace);
   let match;
   let nextc;
   let spacesStartCol;
   let spacesStartOffset;
-  let data = {
-    type: null,
+  let data: ListData = {
+    type: undefined,
     tight: true, // lists are tight by default
-    bulletChar: null,
-    start: null,
-    delimiter: null,
-    padding: null,
+    bulletChar: undefined,
+    start: undefined,
+    delimiter: undefined,
+    padding: undefined,
     markerOffset: parser.indent
   };
   if (parser.indent >= 4) {
@@ -111,7 +116,7 @@ function parseListMarker(parser, container: Node) {
     data.bulletChar = match[0][0];
   } else if (
     (match = rest.match(reOrderedListMarker)) &&
-    (container.type !== "paragraph" || match[1] === 1)
+    (container.type !== "paragraph" || match[1] === "1")
   ) {
     data.type = "ordered";
     data.start = parseInt(match[1], 10);
@@ -162,7 +167,10 @@ function parseListMarker(parser, container: Node) {
 // Returns true if the two list items are of the same type,
 // with the same delimiter and bullet character.  This is used
 // in agglomerating list items into lists.
-let listsMatch = function (list_data, item_data) {
+let listsMatch = function(
+  list_data: ListData, 
+  item_data: ListData
+) {
   return (
     list_data.type === item_data.type &&
     list_data.delimiter === item_data.delimiter &&
@@ -214,12 +222,17 @@ export class Parser {
   // at a certain line and offset (e.g. whether a block quote
   // contains a `>`.  It returns 0 for matched, 1 for not matched,
   // and 2 for "we've dealt with this line completely, go to next."
-  blocks = {
+  blocks: Record<string, {
+        continue: (parser: Parser, container: Node) => number,
+        finalize: (parser: Parser, block: Node) => void,
+        canContain: (t: string) => boolean,
+        acceptsLines: boolean
+    }> = {
     document: {
-      continue: function (parser, container: Node): number {
+      continue: function (_parser: Parser, container: Node): number {
         return 0;
       },
-      finalize: function (parser, block: Node) {},
+      finalize: function (_parser: Parser, block: Node) {},
       canContain: function (t: string): boolean {
         return t !== "item";
       },
@@ -227,10 +240,10 @@ export class Parser {
     },
 
     list: {
-      continue: function (parser, container: Node): number {
+      continue: function (_parser: Parser, container: Node): number {
         return 0;
       },
-      finalize: function (parser, block: Node) {
+      finalize: function (_parser: Parser, block: Node) {
         let item = block._firstChild;
         while (item) {
           // check for non-final list item ending with blank line:
@@ -258,7 +271,7 @@ export class Parser {
     },
 
     block_quote: {
-      continue: function (parser, container: Node): number {
+      continue: function (parser: Parser, container: Node): number {
         let ln = parser.currentLine;
         if (!parser.indented && peek(ln, parser.nextNonspace) === C_GREATERTHAN) {
           parser.advanceNextNonspace();
@@ -271,7 +284,7 @@ export class Parser {
         }
         return 0;
       },
-      finalize: function (parser, block: Node) {},
+      finalize: function (_parser: Parser, block: Node) {},
       canContain: function (t: string): boolean {
         return t !== "item";
       },
@@ -279,7 +292,7 @@ export class Parser {
     },
 
     item: {
-      continue: function (parser, container: Node): number {
+      continue: function (parser: Parser, container: Node): number {
         if (parser.blank) {
           if (container._firstChild == null) {
             // Blank line after empty list item
@@ -288,10 +301,10 @@ export class Parser {
           parser.advanceNextNonspace();
         } else if (
           parser.indent >=
-          container._listData.markerOffset + container._listData.padding
+          (container._listData.markerOffset as number) + (container._listData.padding as number)
         ) {
           parser.advanceOffset(
-            container._listData.markerOffset + container._listData.padding,
+            (container._listData.markerOffset as number) + (container._listData.padding as number),
             true
           );
         } else {
@@ -299,7 +312,7 @@ export class Parser {
         }
         return 0;
       },
-      finalize: function (parser, block: Node) {},
+      finalize: function (_parser: Parser, _block: Node) {},
       canContain: function (t: string): boolean {
         return t !== "item";
       },
@@ -307,11 +320,11 @@ export class Parser {
     },
 
     heading: {
-      continue: function (parser, container: Node): number {
+      continue: function (_parser: Parser, container: Node): number {
         // a heading can never container > 1 line, so fail to match:
         return 1;
       },
-      finalize: function (parser, block: Node) {},
+      finalize: function (_parser: Parser, block: Node) {},
       canContain: function (t: string): boolean {
         return false;
       },
@@ -319,11 +332,11 @@ export class Parser {
     },
 
     thematic_break: {
-      continue: function (parser, container: Node): number {
+      continue: function (_parser: Parser, container: Node): number {
         // a thematic break can never container > 1 line, so fail to match:
         return 1;
       },
-      finalize: function (parser, block: Node) {},
+      finalize: function (_parser: Parser, block: Node) {},
       canContain: function (t: string): boolean {
         return false;
       },
@@ -331,7 +344,7 @@ export class Parser {
     },
 
     code_block: {
-      continue: function (parser, container: Node): number {
+      continue: function (parser: Parser, container: Node): number {
         let ln = parser.currentLine;
         let indent = parser.indent;
         if (container._isFenced) {
@@ -348,7 +361,7 @@ export class Parser {
           }
           // skip optional spaces of fence offset
           let i = container._fenceOffset;
-          while (i > 0 && isSpaceOrTab(peek(ln, parser.offset))) {
+          while (i && i > 0 && isSpaceOrTab(peek(ln, parser.offset))) {
             parser.advanceOffset(1, true);
             i--;
           }
@@ -364,21 +377,21 @@ export class Parser {
         }
         return 0;
       },
-      finalize: function (parser, block: Node) {
+      finalize: function (_parser: Parser, block: Node) {
         if (block._isFenced) {
           // fenced
           // first line becomes info string
-          let content = block._string_content;
-          let newlinePos = content.indexOf("\n");
-          let firstLine = content.slice(0, newlinePos);
-          let rest = content.slice(newlinePos + 1);
+          const content = block._string_content as string;
+          const newlinePos = content.indexOf("\n");
+          const firstLine = content.slice(0, newlinePos);
+          const rest = content.slice(newlinePos + 1);
           block.info = unescapeString(firstLine.trim());
           block._literal = rest;
         } else {
           // indented
-          block._literal = block._string_content.replace(/(\n *)+$/, "\n");
+          block._literal = (block._string_content as string).replace(/(\n *)+$/, "\n");
         }
-        block._string_content = null; // allow GC
+        block._string_content = undefined; // allow GC
       },
       canContain: function (t: string): false {
         return false;
@@ -387,15 +400,21 @@ export class Parser {
     },
 
     html_block: {
-      continue: function (parser, container: Node) {
+      continue: function (
+        parser: Parser, 
+        container: Node
+      ) {
         return parser.blank &&
           (container._htmlBlockType === 6 || container._htmlBlockType === 7)
           ? 1
           : 0;
       },
-      finalize: function (parser, block: Node): void {
-        block._literal = block._string_content.replace(/(\n *)+$/, "");
-        block._string_content = null; // allow GC
+      finalize: function (
+        _parser: Parser, 
+        block: Node
+      ): void {
+        block._literal = (block._string_content as string).replace(/(\n *)+$/, "");
+        block._string_content = undefined; // allow GC
       },
       canContain: function (t: string): boolean {
         return false;
@@ -404,10 +423,10 @@ export class Parser {
     },
 
     paragraph: {
-      continue: function (parser, container: Node): number {
+      continue: function (parser: Parser, _container: Node): number {
         return parser.blank ? 1 : 0;
       },
-      finalize: function (parser, block: Node): void {
+      finalize: function (parser: Parser, block: Node): void {
         let pos;
         let hasReferenceDefs = false;
 
@@ -415,18 +434,18 @@ export class Parser {
         while (
           peek(block._string_content, 0) === C_OPEN_BRACKET &&
           (pos = parser.inlineParser.parseReference(
-            block._string_content,
+            block._string_content as string,
             parser.refmap
           ))
         ) {
-          block._string_content = block._string_content.slice(pos);
+          block._string_content = (block._string_content as string).slice(pos);
           hasReferenceDefs = true;
         }
-        if (hasReferenceDefs && isBlank(block._string_content)) {
+        if (hasReferenceDefs && isBlank(block._string_content as string)) {
           block.unlink();
         }
       },
-      canContain: function (t: string): boolean {
+      canContain: function (_t: string): boolean {
         return false;
       },
       acceptsLines: true
@@ -439,7 +458,7 @@ export class Parser {
   // 2 = matched leaf, no more block starts
   blockStarts = [
     // block quote
-    function (parser) {
+    function (parser: Parser) {
       if (
         !parser.indented &&
         peek(parser.currentLine, parser.nextNonspace) === C_GREATERTHAN
@@ -458,7 +477,7 @@ export class Parser {
     },
 
     // ATX heading
-    function (parser) {
+    function (parser: Parser) {
       let match;
       if (
         !parser.indented &&
@@ -483,7 +502,7 @@ export class Parser {
     },
 
     // Fenced code block
-    function (parser) {
+    function (parser: Parser) {
       let match;
       if (
         !parser.indented &&
@@ -504,7 +523,7 @@ export class Parser {
     },
 
     // HTML block
-    function (parser, container: Node) {
+    function (parser: Parser, container: Node) {
       if (
         !parser.indented &&
         peek(parser.currentLine, parser.nextNonspace) === C_LESSTHAN
@@ -537,7 +556,7 @@ export class Parser {
     },
 
     // Setext heading
-    function (parser, container: Node) {
+    function (parser: Parser, container: Node) {
       let match;
       if (
         !parser.indented &&
@@ -552,13 +571,13 @@ export class Parser {
         while (
           peek(container._string_content, 0) === C_OPEN_BRACKET &&
           (pos = parser.inlineParser.parseReference(
-            container._string_content,
+            container._string_content as string,
             parser.refmap
           ))
         ) {
-          container._string_content = container._string_content.slice(pos);
+          container._string_content = (container._string_content as string).slice(pos);
         }
-        if (container._string_content.length > 0) {
+        if ((container._string_content as string).length > 0) {
           let heading = new Node("heading", container.sourcepos);
           heading.level = match[0][0] === "=" ? 1 : 2;
           heading._string_content = container._string_content;
@@ -574,7 +593,7 @@ export class Parser {
     },
 
     // thematic break
-    function (parser) {
+    function (parser: Parser) {
       if (
         !parser.indented &&
         reThematicBreak.test(parser.currentLine.slice(parser.nextNonspace))
@@ -588,7 +607,7 @@ export class Parser {
     },
 
     // list item
-    function (parser, container: Node) {
+    function (parser: Parser, container: Node) {
       let data;
 
       if (
@@ -615,7 +634,7 @@ export class Parser {
     },
 
     // indented code block
-    function (parser) {
+    function (parser: Parser) {
       if (parser.indented && parser.tip.type !== "paragraph" && !parser.blank) {
         // indented code
         parser.advanceOffset(CODE_INDENT, true);
@@ -627,7 +646,7 @@ export class Parser {
     }
   ];
 
-  advanceOffset(count: number, columns: boolean) {
+  advanceOffset(count: number, columns?: boolean) {
     let currentLine = this.currentLine;
     let charsToTab, charsToAdvance;
     let c;
@@ -730,7 +749,7 @@ export class Parser {
         /* eslint-enable */
       }
       if (!all_matched) {
-        container = container._parent; // back up to last matching block
+        container = container._parent as Node; // back up to last matching block
         break;
       }
     }
@@ -811,7 +830,7 @@ export class Parser {
       let cont = container;
       while (cont) {
         cont._lastLineBlank = lastLineBlank;
-        cont = cont._parent;
+        cont = cont._parent as Node;
       }
 
       if (this.blocks[t].acceptsLines) {
@@ -819,9 +838,9 @@ export class Parser {
         // if HtmlBlock, check for end condition
         if (
           t === "html_block" &&
-          container._htmlBlockType >= 1 &&
-          container._htmlBlockType <= 5 &&
-          reHtmlBlockClose[container._htmlBlockType].test(
+          container._htmlBlockType as number >= 1 &&
+          container._htmlBlockType as number <= 5 &&
+          reHtmlBlockClose[container._htmlBlockType as number].test(
             this.currentLine.slice(this.offset)
           )
         ) {
@@ -881,7 +900,7 @@ export class Parser {
 
     this.blocks[block.type].finalize(this, block);
 
-    this.tip = above;
+    this.tip = above as Node;
   };
 
   // Walk through a block & children recursively, parsing string content
@@ -907,7 +926,7 @@ export class Parser {
       while (this.oldtip !== this.lastMatchedContainer) {
         let parent = this.oldtip._parent;
         this.finalize(this.oldtip, this.lineNumber - 1);
-        this.oldtip = parent;
+        this.oldtip = parent as Node;
       }
       this.allClosed = true;
     }

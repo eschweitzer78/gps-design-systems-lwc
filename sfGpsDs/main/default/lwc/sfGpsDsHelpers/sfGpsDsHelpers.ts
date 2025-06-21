@@ -28,8 +28,7 @@ export {
   computeClass,
   isRTL,
   getCssPropertyValue,
-  HtmlSanitizer,
-  HtmlSanitizerPlugin
+  HtmlSanitizer
 } from "./domutil";
 
 export {

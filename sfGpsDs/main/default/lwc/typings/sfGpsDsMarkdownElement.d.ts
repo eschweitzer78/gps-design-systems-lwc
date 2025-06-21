@@ -1,16 +1,20 @@
 declare module "c/sfGpsDsMarkdownElement" {
   import type SfGpsDsElement from "c/sfGpsDsElement";
+  import type { HtmlSanitizerClass } from "c/sfGpsDsHelpers";
+
   
   export default class sfGpsDsMarkdownElement extends SfGpsDsElement {
-    content: string;
-    className: string;
+    className?: string;
+
+    get content(): string | undefined;
+    set content(markdown: string);
 
     // internal
 
-    _contentOriginal: string;
-    _contentHtml: string;
-    _contentSanitizedHtml: string;
+    _contentOriginal?: string;
+    _contentHtml?: string;
+    _contentSanitizedHtml?: string;
 
-    readonly sanitizer;
+    get sanitizer(): HtmlSanitizerClass | null;
   }
 }

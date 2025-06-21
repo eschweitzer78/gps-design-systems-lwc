@@ -28,7 +28,9 @@ import type {
 
 /* IMPORTANT NOTE: this class is not automatically derived from sfGpsDsLwcOs */
 
+// eslint-disable-next-line no-unused-vars
 const DEBUG = false;
+// eslint-disable-next-line no-unused-vars
 const CLASS_NAME = "SfGpsDsLwcOsN";
 
 export default 
@@ -54,7 +56,7 @@ extends OmniscriptBaseMixin<SfGpsDsElementOs>(
 
   // @ts-ignore
   @track 
-  _sfGpsDsErrors: LwcError[];
+  _sfGpsDsErrors?: LwcError[];
 
   /* methods: internal */
 
@@ -74,7 +76,7 @@ extends OmniscriptBaseMixin<SfGpsDsElementOs>(
   }
 
   clearErrors(): void {
-    this._sfGpsDsErrors = null;
+    this._sfGpsDsErrors = undefined;
   }
 
   // @ts-ignore
@@ -98,6 +100,7 @@ extends OmniscriptBaseMixin<SfGpsDsElementOs>(
         transform: (markdown) => {
           try {
             return markdown ? mdEngine.renderEscaped(markdown) : "";
+          // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
             return null;
@@ -120,6 +123,7 @@ extends OmniscriptBaseMixin<SfGpsDsElementOs>(
         transform: (markdown) => {
           try {
             return markdown ? mdEngine.renderEscapedUnpackFirstP(markdown) : "";
+          // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
             return null;
@@ -142,12 +146,13 @@ extends OmniscriptBaseMixin<SfGpsDsElementOs>(
         transform: (markdown) => {
           try {
             return markdown ? mdEngine.extractFirstLink(markdown) : "";
+          // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
             return null;
           } 
         },
-        defaultValue: options.defaultValue || {}
+        defaultValue: safeOptions.defaultValue || {}
       }
     );
   }
@@ -165,6 +170,7 @@ extends OmniscriptBaseMixin<SfGpsDsElementOs>(
         transform: (markdown) => {
           try {
             return markdown ? mdEngine.extractLinks(markdown) : (safeOptions.defaultValue || "");
+          // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
             return null;
@@ -212,14 +218,13 @@ extends OmniscriptBaseMixin<SfGpsDsElementOs>(
   // @ts-ignore
   get handleBeforeUnmount() { 
     // @ts-ignore
-    return super._handleBeforeUnmount(); 
+    return super.handleBeforeUnmount(); 
   }
 
   // @ts-ignore
   @api 
   // @ts-ignore
-    // @ts-ignore
-    get handleUnmounted() { 
+  get handleUnmounted() { 
     return this.handleUnmounted(); 
   }
 }

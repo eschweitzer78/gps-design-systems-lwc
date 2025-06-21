@@ -11,7 +11,7 @@
  * @tu = twitterUser
  */
 
-export default {
+const networks: Record<string, string> = {
   baidu: "http://cang.baidu.com/do/add?iu=@u&it=@t",
   buffer: "https://bufferapp.com/add?text=@t&url=@u",
   email: "mailto:?subject=@t&body=@u%0D%0A@d",
@@ -47,3 +47,5 @@ export default {
   yammer:
     "https://www.yammer.com/messages/new?login=true&status=@t%0D%0A@u%0D%0A@d"
 };
+
+export default networks;

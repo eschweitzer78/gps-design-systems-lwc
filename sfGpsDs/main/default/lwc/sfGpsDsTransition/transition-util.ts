@@ -23,16 +23,16 @@ export function getHookArgumentsLength(fn: TransitionHook) {
     // invoker
     return getHookArgumentsLength(
       isArray(invokerFns) 
-        ? invokerFns[0] 
+        ? (invokerFns as TransitionHook[])[0] 
         : invokerFns as TransitionHook
     );
   }
   return (fn._length || fn.length) > 1;
 }
 
-export function normaliseDuration(duration: any): Duration {
+export function normaliseDuration(duration: any): Duration | undefined {
   if (duration == null) {
-    return null;
+    return undefined;
   }
 
   if (isObject(duration)) {

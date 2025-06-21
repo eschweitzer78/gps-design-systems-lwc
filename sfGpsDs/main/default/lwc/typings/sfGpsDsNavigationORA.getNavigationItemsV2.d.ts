@@ -5,22 +5,16 @@ declare module "@salesforce/apex/SfGpsDsNavigationORA.getNavigationItemsV2" {
   export interface ConnectApiNavigationMenuItem {
     actionType: ConnectApiNavigationMenuItemActionType,
     actionValue: string,
-    imageUrl: string,
+    imageUrl?: string,
     label: string,
     pageReference?: any,
-    subMenu: ConnectApiNavigationMenuItem[],
-    target: ConnectApiNavigationMenuItemOpenTarget
+    subMenu?: ConnectApiNavigationMenuItem[],
+    target?: ConnectApiNavigationMenuItemOpenTarget
   }
 
   export interface GetNavigationItemsResp {
     items: ConnectApiNavigationMenuItem[] | ConnectApiNavigationMenuItem, // IPs drop the array when an array is a singleton
     errorMessage: string;
   }
-
-  export default function getNavigationItemsV2(param: {
-    communityId: string,
-    developerName: string,
-    communityPreview: boolean
-  }): Promise<GetNavigationItemsResp>;
 }
 

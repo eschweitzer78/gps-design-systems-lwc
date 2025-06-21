@@ -5,12 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-export const uniqueId = (prefix: string): string => {
-  const prefixValue = prefix === undefined ? "sfGpsDs" : prefix;
-  return `${prefixValue}-${Math.random().toString(36).substring(2, 18)}`;
+export function uniqueId(
+  prefix: string = "sfGpsDs"
+): string {
+  return `${prefix}-${Math.random().toString(36).substring(2, 18)}`;
 };
 
-export const isIPadPro = (): boolean => {
+export function isIPadPro(): boolean {
   // No good way to tell iPad Pro, this may well not work after years.
   // https://stackoverflow.com/a/58017456/1212791
   // TODO revisit
@@ -24,6 +25,6 @@ export const isIPadPro = (): boolean => {
   return false;
 };
 
-export const isMacPlatform = (): boolean => {
+export function isMacPlatform(): boolean {
   return !!navigator.userAgent.match(/Mac/);
 };

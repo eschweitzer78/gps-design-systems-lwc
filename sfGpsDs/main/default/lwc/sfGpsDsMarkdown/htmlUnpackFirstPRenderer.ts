@@ -4,13 +4,20 @@ import type { Node } from "./node";
 import HtmlRenderer from "./htmlRenderer";
 
 class HtmlUnpackFirstPRenderer extends HtmlRenderer {
-  pIndex: number;
+  pIndex: number = 0;
 
-  paragraph(node: Node, entering: boolean, attribute: string) {
-    let grandparent = node.parent.parent,
+  paragraph(
+    node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
+    const grandparent = (node.parent as Node).parent,
       attrs = this.attrs(node);
-    if (grandparent !== null && grandparent.type === "list") {
-      if (grandparent.listTight) {
+    if (
+      grandparent != null && 
+      (grandparent as Node).type === "list"
+    ) {
+      if ((grandparent as Node).listTight) {
         return;
       }
     }
@@ -38,7 +45,10 @@ class HtmlUnpackFirstPRenderer extends HtmlRenderer {
     }
   }
 
-  render(ast: Node, attribute: string) {
+  render(
+    ast: Node, 
+    attribute?: string
+  ) {
     this.pIndex = 0;
     return super.render(ast, attribute);
   }

@@ -3,8 +3,8 @@
 import type { Node, NodeWalkerEvent } from "./node";
 
 export default class Renderer {
-  buffer: string;
-  lastOut: string;
+  buffer?: string;
+  lastOut?: string;
 
   /**
    *  Walks the AST and calls member methods for each Node type.
@@ -12,9 +12,9 @@ export default class Renderer {
    *  @param ast {Node} The root of the abstract syntax tree.
    */
 
-  render(ast: Node, attribute: string) {
+  render(ast: Node, attribute?: string) {
     let walker = ast.walker();
-    let e: NodeWalkerEvent;
+    let e: NodeWalkerEvent | null;
 
     this.buffer = "";
     this.lastOut = "\n";
@@ -22,7 +22,9 @@ export default class Renderer {
     while ((e = walker.next())) {
       const type = e.node.type;
 
+      // @ts-ignore
       if (this[type]) {
+        // @ts-ignore
         this[type](e.node, e.entering, attribute);
       }
     }

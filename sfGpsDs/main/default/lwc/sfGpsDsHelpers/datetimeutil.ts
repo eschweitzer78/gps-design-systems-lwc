@@ -32,7 +32,7 @@ export function parseIso8601(date: string): Date {
    */
 
   let timestamp,
-    struct,
+    struct: Array<string | number> | null,
     minutesOffset = 0;
 
   // ES5 §15.9.4.2 states that the string should attempt to be parsed as a Date Time String Format string
@@ -50,7 +50,7 @@ export function parseIso8601(date: string): Date {
     struct[3] = +struct[3] || 1;
 
     if (struct[8] !== "Z" && struct[9] !== undefined) {
-      minutesOffset = struct[10] * 60 + struct[11];
+      minutesOffset = (struct[10] as number) * 60 + (struct[11] as number);
 
       if (struct[9] === "+") {
         minutesOffset = 0 - minutesOffset;
@@ -58,13 +58,13 @@ export function parseIso8601(date: string): Date {
     }
 
     timestamp = Date.UTC(
-      struct[1],
-      struct[2],
-      struct[3],
-      struct[4],
-      struct[5] + minutesOffset,
-      struct[6],
-      struct[7]
+      struct[1] as number,
+      struct[2] as number,
+      struct[3] as number,
+      struct[4] as number,
+      struct[5] as number + minutesOffset,
+      struct[6] as number,
+      struct[7] as number
     );
   } else {
     timestamp = Date.parse(date);
@@ -206,11 +206,11 @@ export function formatDateRange(
   dateStyle: DateStyle = DATE_STYLE_DEFAULT,
   userLocale: string = "en-AU"
 ): string {
-  if (dateStart === null) {
+  if (dateStart == null) {
     return formatDate(dateEnd, dateStyle, userLocale);
   }
 
-  if (dateEnd === null) {
+  if (dateEnd == null) {
     return formatDate(dateStart, dateStyle, userLocale);
   }
 
@@ -225,7 +225,7 @@ export function formatDateRange(
 export function getUserLocale(
   useFallbackLocale: boolean = true,
   fallbackLocale: string = "en-AU"
-): string {
+): string | null {
   return getUserLocales(useFallbackLocale, fallbackLocale)[0] || null;
 }
 
@@ -233,7 +233,7 @@ export function getUserLocales(
   useFallbackLocale: boolean = true,
   fallbackLocale: string = "en-AU"
 ): string[] {
-  let languageList = [];
+  let languageList: string[] = [];
 
   if (typeof navigator !== "undefined") {
     languageList = languageList.concat(navigator.languages, navigator.language);

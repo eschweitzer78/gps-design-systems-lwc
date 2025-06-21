@@ -5,22 +5,35 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { isArray } from "c/sfGpsDsHelpers";
-import type SfGpsDsElement from "c/sfGpsDsElement";
-import { api, track } from "lwc";
+import { 
+  isArray 
+} from "c/sfGpsDsHelpers";
+import { 
+  api, 
+  track 
+} from "lwc";
+
+import type { 
+  ExpandableState 
+} from "c/sfGpsDsExpandableStateMixin";
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsExpandableState";
 
 const DEFAULT_ACTIVE_STATE = false;
 
-type Constructor<T> = new (...args: any[]) => T;
-
-function ExpandableState<B extends Constructor<SfGpsDsElement>>(
-  base: B, idAttr = "id", activeAttr = "active", indexAttr = "index"
-) {
+export default 
+function ExpandableStateMixin<T>(
+  base: new (...args: any[]) => object,
+  idAttr = "id", 
+  activeAttr = "active", 
+  indexAttr = "index"
+):
+  new (...args: any[]) => ExpandableState & T
+{
   if (DEBUG) console.debug(CLASS_NAME, "creator");
-  return class extends base {
+
+  class ExpandableState extends base {
     
     /* api: items */
 
@@ -32,14 +45,32 @@ function ExpandableState<B extends Constructor<SfGpsDsElement>>(
     // @ts-ignore
     @api
     get items() {
-      if (DEBUG) console.debug(CLASS_NAME, "> get items");
+      if (DEBUG) {
+        console.debug(
+          CLASS_NAME, "> get items"
+        );
+      }
+
       const rv = this._itemsOriginal;
-      if (DEBUG) console.debug(CLASS_NAME, "< get items", JSON.stringify(rv));
+
+      if (DEBUG) {
+        console.debug(
+          CLASS_NAME, "< get items", 
+          JSON.stringify(rv)
+        );
+      }
+
       return rv;
     }
 
     set items(items) {
-      if (DEBUG) console.debug(CLASS_NAME, "> set items", JSON.stringify(items));
+      if (DEBUG) {
+        console.debug(
+          CLASS_NAME, "> set items", 
+          JSON.stringify(items)
+        );
+      }
+
       let nbActiveItems = 0;
       this._itemsOriginal = items;
       this._items =
@@ -52,12 +83,23 @@ function ExpandableState<B extends Constructor<SfGpsDsElement>>(
           : [];
 
       this._nbActiveItems = nbActiveItems;
-      if (DEBUG) console.debug(CLASS_NAME, "< set items", JSON.stringify(this._items));
+
+      if (DEBUG) {
+        console.debug(
+          CLASS_NAME, "< set items", 
+          JSON.stringify(this._items)
+        );
+      }
     }
 
     /* methods */
 
-    mapItem(item: any, index: number, length: number, active: boolean): any {
+    mapItem(
+      item: any, 
+      index: number, 
+      length: number, 
+      active: boolean
+    ): any {
       if (DEBUG) console.debug(CLASS_NAME, "> mapItems", JSON.stringify(item), length);
 
       const rv = {
@@ -70,21 +112,27 @@ function ExpandableState<B extends Constructor<SfGpsDsElement>>(
       return rv;
     }
 
-    getItemById(id: string): any {
+    getItemById(
+      id: string
+    ): any {
       if (DEBUG) console.debug(CLASS_NAME, "> getItemsById", id);
       const rv = this._items.find((item) => item[idAttr] === id);
       if (DEBUG) console.debug(CLASS_NAME, "< getItemsById", JSON.stringify(rv));
       return rv;
     }
 
-    isItemExpanded(item: any): boolean {
+    isItemExpanded(
+      item: any
+    ): boolean {
       if (DEBUG) console.debug(CLASS_NAME, "> isItemExpanded", JSON.stringify(item));
       const rv = item[activeAttr];
       if (DEBUG) console.debug(CLASS_NAME, "< isItemExpanded", rv);
       return rv;
     }
 
-    isItemExpandedById(id: string): boolean {
+    isItemExpandedById(
+      id: string
+    ): boolean {
       if (DEBUG) console.debug(CLASS_NAME, "> isItemExpandedById", id);
       const rv = this._items.some(
         (item) => item[idAttr] === id && item[activeAttr]
@@ -93,7 +141,9 @@ function ExpandableState<B extends Constructor<SfGpsDsElement>>(
       return rv;
     }
 
-    isItemExpandedByIndex(index: number): boolean {
+    isItemExpandedByIndex(
+      index: number
+    ): boolean {
       if (DEBUG) console.debug(CLASS_NAME, "> isItemExpandedByIndex", index);
       const item = this._items[index];
       const rv = item ? item[activeAttr] : null;
@@ -115,9 +165,11 @@ function ExpandableState<B extends Constructor<SfGpsDsElement>>(
       return rv;
     }
 
-    toggleItem(item: any): boolean {
+    toggleItem(
+      item: any
+    ): boolean | null {
       if (DEBUG) console.debug(CLASS_NAME, "> toggleItem", JSON.stringify(item));
-      let wasActive: boolean;
+      let wasActive: boolean | null = null;
 
       if (item) {
         wasActive = item[activeAttr];
@@ -138,7 +190,7 @@ function ExpandableState<B extends Constructor<SfGpsDsElement>>(
       return rv;
     }
 
-    toggleItemById(id: string): boolean {
+    toggleItemById(id: string) {
       if (DEBUG) console.debug(CLASS_NAME, "> toggleItemById", id);
       const rv = this.toggleItem(this._items.find((item) => item[idAttr] === id));
       if (DEBUG) console.debug(CLASS_NAME, "< toggleItemById", rv);
@@ -166,6 +218,7 @@ function ExpandableState<B extends Constructor<SfGpsDsElement>>(
       return !isAllExpanded;
     }
   }
-}
 
-export default ExpandableState;
+  // @ts-ignore
+  return ExpandableState;
+}

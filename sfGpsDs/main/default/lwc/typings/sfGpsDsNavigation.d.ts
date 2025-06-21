@@ -61,19 +61,20 @@ declare module "c/sfGpsDsNavigation" {
   export default 
   class SfGpsDsNavigation 
   extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
-    mode: NavigationMode;
-    ipName: string;
-    inputJSON: string;
-    optionJSON: string;
-    navigationDevName: string;
+    get mode(): NavigationMode;
+    set mode(value: NavigationMode);
+    
+    get navigationDevName(): string | undefined;
+    set navigationDevName(value: string | undefined);
 
-    readonly isEmpty: boolean;
-    readonly isPreview: boolean;
 
     // internal
 
-    _navigationDevName: string;
+    _mode: NavigationMode;
+    _navigationDevName?: string;
     _map: NavigationMenuItemMap;
+
+    get isEmpty(): boolean;
 
     updateExperienceCloudNavigation(): void;
 
@@ -81,7 +82,7 @@ declare module "c/sfGpsDsNavigation" {
       data: ConnectApiNavigationMenuItem[], 
       key: string, 
       map: NavigationMenuItemMap, 
-      adaptedMap: AdaptedNavigationMenuItem 
+      adaptedMap: Record<string, AdaptedNavigationMenuItem> 
     ): AdaptedNavigationMenuItem[];
 
     mapIpData(
@@ -89,6 +90,9 @@ declare module "c/sfGpsDsNavigation" {
         ConnectApiNavigationMenuItem[] |  ConnectApiNavigationMenuItem,
     ): AdaptedNavigationMenuItem[];
 
-    resolveUrl(item: NavigationMenuItem): string;
+    resolveUrl(
+      item: NavigationMenuItem
+    ): string | undefined;
+
   }
 }

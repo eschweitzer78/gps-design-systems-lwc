@@ -1,8 +1,9 @@
 declare module "c/sfGpsDsEmpty" {
-  export default class SfGpsDsEmpty {
+  import type SfGpsDsElement from "c/sfGpsDsElement";
+  export default 
+  class SfGpsDsEmpty 
+  extends SfGpsDsElement {
     // public
-
-    title: string;
-    content: string;
+    content?: string;
   }
 }

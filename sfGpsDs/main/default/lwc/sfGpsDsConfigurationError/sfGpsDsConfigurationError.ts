@@ -19,5 +19,5 @@ class SfGpsDsConfigurationError
 extends LightningElement {
   // @ts-ignore
   @api 
-  errors: LwcError;
+  errors?: LwcError[];
 }

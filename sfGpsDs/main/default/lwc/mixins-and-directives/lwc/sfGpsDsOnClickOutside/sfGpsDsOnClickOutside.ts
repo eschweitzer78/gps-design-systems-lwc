@@ -5,9 +5,17 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { uniqueId, isFunction, isObject } from "c/sfGpsDsHelpers";
-import type { HandlerFunction, HandlerObject, Handler, HandlerEntries } from "c/sfGpsDsOnClickOutside";
-
+import { 
+  uniqueId, 
+  isFunction, 
+  isObject 
+} from "c/sfGpsDsHelpers";
+import type { 
+  HandlerFunction, 
+  HandlerObject, 
+  Handler, 
+  HandlerEntries 
+} from "c/sfGpsDsOnClickOutside";
 
 const _sfGpsDsOnClickOutside = Symbol("_sfGpsDsOnClickOutside");
 
@@ -71,6 +79,7 @@ export default class SfGpsDsOnClickOutside {
   */
 
   bind(pel: any, ref: string, value: Handler): void {
+    // @ts-ignore
     const uuid = window.crypto?.randomUUID
       ? crypto.randomUUID()
       : uniqueId("sfGpsDsOnClickOutside");
@@ -78,7 +87,7 @@ export default class SfGpsDsOnClickOutside {
     const { events, handler, middleware, active } = processArguments(value);
 
     if (active) {
-      this._sfGpsDsOnClickOutside[ref] = events.map((event) => {
+      this._sfGpsDsOnClickOutside[ref] = (events || []).map((event) => {
         const rv = {
           event,
           tagger: (e: Event) => {
@@ -86,24 +95,26 @@ export default class SfGpsDsOnClickOutside {
 
             if (!isClickOutside) {
               /* Create a set only if it isn't there yet */
-              if (!e[_sfGpsDsOnClickOutside])
-                e[_sfGpsDsOnClickOutside] = new Set();
+              // @ts-ignore
+              if (!e[_sfGpsDsOnClickOutside]) e[_sfGpsDsOnClickOutside] = new Set();
+              // @ts-ignore
               e[_sfGpsDsOnClickOutside].add(uuid);
             }
           },
           handler: (e: Event) => {
             /* it is outside if the property does not exist or the uuid is not there */
-            const isClickOutside = !(
-              e[_sfGpsDsOnClickOutside] && e[_sfGpsDsOnClickOutside].has(uuid)
-            );
+            // @ts-ignore
+            const isClickOutside = !(e[_sfGpsDsOnClickOutside] && e[_sfGpsDsOnClickOutside].has(uuid));
 
-            if (isClickOutside && middleware(e)) {
+            if (isClickOutside && middleware?.(e)) {
               handler(e);
             }
           },
           forceTag: (e: Event) => {
             /* must be used by component to force the tagging when the target element is prematurely removed from the DOM */
+              // @ts-ignore
             if (!e[_sfGpsDsOnClickOutside]) e[_sfGpsDsOnClickOutside] = new Set();
+              // @ts-ignore
             e[_sfGpsDsOnClickOutside].add(uuid);
           }
         };

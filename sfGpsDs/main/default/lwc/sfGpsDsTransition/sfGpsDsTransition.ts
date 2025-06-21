@@ -30,7 +30,8 @@ import type {
   CSSDurations,
   CSSDelays,
   Duration,
-  TransitionHook
+  TransitionHook,
+  Transition
 } from "c/sfGpsDsTransition";
 
 const DEBUG = false;
@@ -62,6 +63,10 @@ const TRANSFORM_RE = /\b(transform|all)(,|$)/;
 export default class SfGpsDsTransition extends SfGpsDsLwc {
   static renderMode: "light" | "shadow" = "light";
 
+  [ORIGINAL_DISPLAY_KEY]?: string;
+  [LEAVE_CB_KEY]?: TransitionCallback;
+  [ENTER_CB_KEY]?: Function;
+
   _isMounted = false;
 
   constructor() {
@@ -74,7 +79,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
 
   /* api: name */
 
-  _name: string;
+  _name?: string;
 
   // @ts-ignore
   @api
@@ -93,12 +98,12 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
 
   /* api: type */
 
-  _type: TransitionType;
-  _typeOriginal: any;
+  _type?: TransitionType;
+  _typeOriginal?: TransitionType;
 
   // @ts-ignore
   @api
-  get type(): TransitionType {
+  get type(): TransitionType | undefined {
     return this._typeOriginal;
   }
 
@@ -116,12 +121,12 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
 
   /* api: mode */
 
-  _mode: TransitionMode;
-  _modeOriginal: any;
+  _mode?: TransitionMode;
+  _modeOriginal?: TransitionMode;
 
   // @ts-ignore
   @api
-  get mode(): TransitionMode {
+  get mode(): TransitionMode | undefined {
     return this._modeOriginal;
   }
 
@@ -139,16 +144,16 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
 
   /* api: v-show */
 
-  _show: boolean;
-  _hasShow: boolean;
+  _show?: boolean;
+  _hasShow?: boolean;
 
   // @ts-ignore
   @api
-  get show(): boolean {
+  get show() {
     return this._show;
   }
 
-  set show(value: boolean) {
+  set show(value) {
     if (DEBUG) console.debug(CLASS_NAME, "> set show value=", value);
 
     if (!value !== !this._show) {
@@ -161,7 +166,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
 
   /* api: appear */
 
-  _appear: boolean;
+  _appear: boolean = false;
 
   // @ts-ignore
   @api
@@ -182,7 +187,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
 
   /* api: duration */
 
-  _duration: Duration;
+  _duration?: Duration;
   _durationOriginal: any;
 
   // @ts-ignore
@@ -265,7 +270,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
   /* classes */
   /* ------- */
 
-  _enterClass: string;
+  _enterClass?: string;
 
   // @ts-ignore
   @api
@@ -277,7 +282,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
     this._enterClass = value;
   }
 
-  _leaveClass: string;
+  _leaveClass?: string;
 
   // @ts-ignore
   @api
@@ -289,7 +294,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
     this._leaveClass = value;
   }
 
-  _enterToClass: string;
+  _enterToClass?: string;
 
   // @ts-ignore
   @api
@@ -301,7 +306,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
     this._enterToClass = value;
   }
 
-  _leaveToClass: string;
+  _leaveToClass?: string;
 
   // @ts-ignore
   @api
@@ -313,7 +318,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
     this._leaveToClass = value;
   }
 
-  _enterActiveClass: string;
+  _enterActiveClass?: string;
 
   // @ts-ignore
   @api
@@ -325,7 +330,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
     this._enterActiveClass = value;
   }
 
-  _leaveActiveClass: string;
+  _leaveActiveClass?: string;
 
   // @ts-ignore
   @api
@@ -338,11 +343,15 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
   }
 
   // @ts-ignore
-  @api appearClass: string;
+  @api 
+  appearClass?: string;
+
   // @ts-ignore
-  @api appearActiveClass: string;
+  @api 
+  appearActiveClass?: string;
   // @ts-ignore
-  @api appearToClass: string;
+  @api 
+  appearToClass?: string;
 
   /* hooks */
   /* ----- */
@@ -407,7 +416,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
 
     const end = () => {
       // eslint-disable-next-line no-use-before-define
-      this.removeEventListener(event, onEnd);
+      this.removeEventListener(event, onEnd as EventListener);
       cb();
     };
 
@@ -426,30 +435,29 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
       }
     }, timeout + 1);
 
-    this.addEventListener(event, onEnd);
+    this.addEventListener(event, onEnd as EventListener);
   }
 
-  getTransitionInfo(expectedType: TransitionType) {
+  getTransitionInfo(
+    expectedType?: TransitionType
+  ): Transition {
     const styles = window.getComputedStyle(this.hostElement);
 
     // JSDOM may return undefined for transition properties
+    // @ts-ignore
     const transitionDelays: CSSDelays = (styles[TRANSITION_PROP + "Delay"] || "").split(
       ", "
     );
-    const transitionDurations: CSSDurations = (
-      styles[TRANSITION_PROP + "Duration"] || ""
-    ).split(", ");
+      // @ts-ignore
+    const transitionDurations: CSSDurations = (styles[TRANSITION_PROP + "Duration"] || "").split(", ");
     const transitionTimeout = getTimeout(transitionDelays, transitionDurations);
-
-    const animationDelays: CSSDelays = (styles[ANIMATION_PROP + "Delay"] || "").split(
-      ", "
-    );
-    const animationDurations: CSSDurations = (
-      styles[ANIMATION_PROP + "Duration"] || ""
-    ).split(", ");
+    // @ts-ignore
+    const animationDelays: CSSDelays = (styles[ANIMATION_PROP + "Delay"] || "").split(", ");
+    // @ts-ignore
+    const animationDurations: CSSDurations = (styles[ANIMATION_PROP + "Duration"] || "").split(", ");
     const animationTimeout = getTimeout(animationDelays, animationDurations);
 
-    let type: TransitionType;
+    let type: TransitionType | undefined;
     let timeout = 0;
     let propCount = 0;
 
@@ -472,7 +480,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
           ? transitionTimeout > animationTimeout
             ? TYPE_TRANSITION
             : TYPE_ANIMATION
-          : null;
+          : undefined;
       propCount = type
         ? type === TYPE_TRANSITION
           ? transitionDurations.length
@@ -481,8 +489,8 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
     }
 
     const hasTransform =
-      type === TYPE_TRANSITION &&
-      TRANSFORM_RE.test(styles[TRANSITION_PROP + "Property"]);
+      // @ts-ignore
+      type === TYPE_TRANSITION && TRANSFORM_RE.test(styles[TRANSITION_PROP + "Property"]);
       
     return {
       type,
@@ -492,7 +500,9 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
     };
   }
 
-  addTransitionClass(cls: string): void {
+  addTransitionClass(
+    cls: string
+  ): void {
     if (DEBUG)
       console.debug(CLASS_NAME, "> addTransitionClass", cls, this.classList);
     this.classList.add(cls);
@@ -500,7 +510,9 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
       console.debug(CLASS_NAME, "< addTransitionClass", this.classList);
   }
 
-  removeTransitionClass(cls: string): void {
+  removeTransitionClass(
+    cls: string
+  ): void {
     if (DEBUG)
       console.debug(CLASS_NAME, "> removeTransitionClass", cls, this.classList);
     this.classList.remove(cls);
@@ -587,7 +599,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
           }
         }
 
-        this[ENTER_CB_KEY] = null;
+        this[ENTER_CB_KEY] = undefined;
       })
     );
 
@@ -608,7 +620,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
             if (isValidDuration(explicitEnterDuration)) {
               // eslint-disable-next-line @lwc/lwc/no-async-operation
               setTimeout(cb, explicitEnterDuration);
-            } else {
+            } else if (this._type) {
               this.whenTransitionEnds(this._type, cb);
             }
           }
@@ -673,7 +685,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
         }
       }
 
-      this[LEAVE_CB_KEY] = null;
+      this[LEAVE_CB_KEY] = undefined;
     }));
 
     if (cb.cancelled) {
@@ -697,7 +709,7 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
             if (isValidDuration(explicitLeaveDuration)) {
               // eslint-disable-next-line @lwc/lwc/no-async-operation
               setTimeout(cb, explicitLeaveDuration);
-            } else {
+            } else if (this._type) {
               this.whenTransitionEnds(this._type, cb);
             }
           }
@@ -718,9 +730,9 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
 
   // @ts-ignore
   @track 
-  _displayStyle: string;
+  _displayStyle?: string;
 
-  setDisplayStyle(value: string) {
+  setDisplayStyle(value?: string) {
     if (DEBUG)
       console.debug(
         CLASS_NAME,
@@ -730,8 +742,8 @@ export default class SfGpsDsTransition extends SfGpsDsLwc {
         value
       );
 
-    this.hostElement.style.display = value;
-    this._displayStyle = value;
+    this.hostElement.style.display = value || "none";
+    this._displayStyle = value || "none";
 
     if (DEBUG) console.debug(CLASS_NAME, "< setDisplayStyle");
   }

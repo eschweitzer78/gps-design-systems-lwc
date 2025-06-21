@@ -11,7 +11,7 @@ declare module "c/sfGpsDsFocusTrap" {
   extends SfGpsDsElement {
     // public
 
-    disabled: boolean;
+    disabled?: boolean;
     options: FocusTrapOptions;
 
     // private

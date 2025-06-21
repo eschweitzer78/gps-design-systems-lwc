@@ -1,13 +1,19 @@
 "use strict";
 
-import { escapeXml } from "./common";
+import { 
+  escapeXml 
+} from "./common";
 import Renderer from "./renderer";
-import type { Node } from "./node";
+import type { 
+  Node 
+} from "./node";
 
 const reUnsafeProtocol = /^javascript:|vbscript:|file:|data:/i;
 const reSafeDataProtocol = /^data:image\/(?:png|gif|jpeg|webp)/i;
 
-function potentiallyUnsafe(url: string): boolean {
+function potentiallyUnsafe(
+  url: string
+): boolean {
   return reUnsafeProtocol.test(url) && !reSafeDataProtocol.test(url);
 };
 
@@ -41,20 +47,30 @@ class HtmlRenderer extends Renderer {
   }
 
   /* Node methods */
-  text(node: Node): void {
+  text(
+    node: Node
+  ) {
     this.out(node.literal);
   }
 
-  softbreak(): void {
-    this.lit(this.options.softbreak);
+  softbreak() {
+    this.lit(this.options.softbreak as string);
   }
 
-  linebreak(node: Node, entering: boolean, attribute: string): void {
+  linebreak(
+    _node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
     this.tag("br", entering && attribute ? [[attribute, ""]] : [], true);
     this.cr();
   }
 
-  link(node: Node, entering: boolean, attribute: string): void {
+  link(
+    node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
     // eslint-disable-next-line no-shadow
     let attrs = this.attrs(node);
 
@@ -77,7 +93,11 @@ class HtmlRenderer extends Renderer {
     }
   }
 
-  image(node: Node, entering: boolean, attribute: string): void {
+  image(
+    node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
     if (entering) {
       if (this.disableTags === 0) {
         if (this.options.safe && potentiallyUnsafe(node.destination)) {
@@ -105,26 +125,41 @@ class HtmlRenderer extends Renderer {
   }
 
 
-  emph(node: Node, entering: boolean, attribute: string): void {
+  emph(
+    _node: Node, 
+    entering: boolean,
+    attribute: string
+  ) {
     this.tag(
       entering ? "em" : "/em",
-      entering && attribute ? [[attribute, ""]] : null
+      entering && attribute ? [[attribute, ""]] : undefined
     );
   }
 
-  strong(node: Node, entering: boolean, attribute: string): void {
+  strong(
+    _node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
     this.tag(
       entering ? "strong" : "/strong",
-      entering && attribute ? [[attribute, ""]] : null
+      entering && attribute ? [[attribute, ""]] : undefined
     );
   }
 
-  paragraph(node: Node, entering: boolean, attribute: string): void {
-    let grandparent = node.parent.parent,
+  paragraph(
+    node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
+    const grandparent = (node.parent as Node).parent,
       // eslint-disable-next-line no-shadow
       attrs = this.attrs(node);
-    if (grandparent !== null && grandparent.type === "list") {
-      if (grandparent.listTight) {
+    if (
+      grandparent != null && 
+      (grandparent as Node).type === "list"
+    ) {
+      if ((grandparent as Node).listTight) {
         return;
       }
     }
@@ -143,8 +178,12 @@ class HtmlRenderer extends Renderer {
     }
   }
 
-  heading(node: Node, entering: boolean, attribute: string): void {
-    let tagname = "h" + node.level,
+  heading(
+    node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
+    const tagname = "h" + node.level,
       // eslint-disable-next-line no-shadow
       attrs = this.attrs(node);
 
@@ -162,14 +201,24 @@ class HtmlRenderer extends Renderer {
     }
   }
 
-  code(node: Node, entering: boolean, attribute: string): void {
-    this.tag("code", attribute ? [[attribute, ""]] : null);
+  code(
+    node: Node, 
+    _entering: boolean, 
+    attribute: string
+  ) {
+    this.tag("code", attribute ? [[attribute, ""]] : undefined);
     this.out(node.literal);
     this.tag("/code");
   }
 
-  code_block(node: Node, entering: boolean, attribute: string): void {
-    let info_words = node.info ? node.info.split(/\s+/) : [],
+  code_block(
+    node: Node, 
+    _entering: boolean, 
+    attribute: string
+  ) {
+    const info_words = node.info 
+      ? node.info.split(/\s+/) 
+      : [],
       // eslint-disable-next-line no-shadow
       attrs = this.attrs(node);
 
@@ -182,7 +231,7 @@ class HtmlRenderer extends Renderer {
     }
 
     this.cr();
-    this.tag("pre", attribute ? [[attribute, ""]] : null);
+    this.tag("pre", attribute ? [[attribute, ""]] : undefined);
     this.tag("code", attrs);
     this.out(node.literal);
     this.tag("/code");
@@ -190,7 +239,11 @@ class HtmlRenderer extends Renderer {
     this.cr();
   }
 
-  thematic_break(node: Node, entering: boolean, attribute: string): void {
+  thematic_break(
+    node: Node, 
+    _entering: boolean, 
+    attribute: string
+  ) {
     // eslint-disable-next-line no-shadow
     let attrs = this.attrs(node);
     this.cr();
@@ -203,7 +256,11 @@ class HtmlRenderer extends Renderer {
     this.cr();
   }
 
-  block_quote(node: Node, entering: boolean, attribute: string) {
+  block_quote(
+    node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
     // eslint-disable-next-line no-shadow
     let attrs = this.attrs(node);
 
@@ -223,7 +280,11 @@ class HtmlRenderer extends Renderer {
     }
   }
 
-  list(node: Node, entering: boolean, attribute: string): void {
+  list(
+    node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
     let tagname = node.listType === "bullet" ? "ul" : "ol",
       // eslint-disable-next-line no-shadow
       attrs = this.attrs(node);
@@ -231,7 +292,7 @@ class HtmlRenderer extends Renderer {
     if (entering) {
       let start = node.listStart;
 
-      if (start !== null && start !== 1) {
+      if (start != null && start !== 1) {
         attrs.push(["start", start.toString()]);
       }
 
@@ -250,7 +311,11 @@ class HtmlRenderer extends Renderer {
     }
   }
 
-  item(node: Node, entering: boolean, attribute: string): void {
+  item(
+    node: Node, 
+    entering: boolean, 
+    attribute: string
+  ) {
     // eslint-disable-next-line no-shadow
     let attrs = this.attrs(node);
 
@@ -266,7 +331,9 @@ class HtmlRenderer extends Renderer {
     }
   }
 
-  html_inline(node: Node): void {
+  html_inline(
+    node: Node
+  ) {
     if (this.options.safe) {
       this.lit("<!-- raw HTML omitted -->");
     } else {
@@ -274,7 +341,9 @@ class HtmlRenderer extends Renderer {
     }
   }
 
-  html_block(node: Node): void {
+  html_block(
+    node: Node
+  ) {
     this.cr();
 
     if (this.options.safe) {
@@ -286,7 +355,10 @@ class HtmlRenderer extends Renderer {
     this.cr();
   }
 
-  custom_inline(node: Node, entering: boolean): void {
+  custom_inline(
+    node: Node, 
+    entering: boolean
+  ) {
     if (entering && node.onEnter) {
       this.lit(node.onEnter);
     } else if (!entering && node.onExit) {
@@ -294,7 +366,10 @@ class HtmlRenderer extends Renderer {
     }
   }
 
-  custom_block(node: Node, entering: boolean): void {
+  custom_block(
+    node: Node, 
+    entering: boolean
+  ) {
     this.cr();
 
     if (entering && node.onEnter) {
@@ -309,7 +384,11 @@ class HtmlRenderer extends Renderer {
   // Helper function to produce an HTML tag.
   // eslint-disable-next-line no-shadow
 
-  tag(name: string, attrs?: string[][], selfclosing?: boolean): void {
+  tag(
+    name: string, 
+    attrs?: string[][], 
+    selfclosing?: boolean
+  ) {
     if (this.disableTags > 0) {
       return;
     }
@@ -338,11 +417,15 @@ class HtmlRenderer extends Renderer {
     this.lastOut = ">";
   }
 
-  out(s: string): void {
+  out(
+    s: string
+  ) {
     this.lit(this.esc(s));
   }
 
-  attrs(node: Node): string[][] {
+  attrs(
+    node: Node
+  ): string[][] {
     //var att = [];
     let att = node.attrs ? node.attrs : []; // ESC
 

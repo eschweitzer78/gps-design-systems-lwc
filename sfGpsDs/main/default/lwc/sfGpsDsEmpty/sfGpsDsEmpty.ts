@@ -5,13 +5,21 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api } from "lwc";
+import {  
+  api 
+} from "lwc";
+import SfGpsDsElement from "c/sfGpsDsElement";
 
 const DEFAULT_TITLE = "There is no data";
 
-export default class extends LightningElement {
+export default 
+class SfGpsDsEmpty 
+extends SfGpsDsElement {
   // @ts-ignore
-  @api title: string = DEFAULT_TITLE;
+  @api 
+  title: string = DEFAULT_TITLE;
+
   // @ts-ignore
-  @api content: string;
+  @api 
+  content?: string;
 }

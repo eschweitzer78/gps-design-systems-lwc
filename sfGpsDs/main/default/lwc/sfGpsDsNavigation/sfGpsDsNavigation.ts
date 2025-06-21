@@ -7,7 +7,8 @@ import {
   toArray
 } from "c/sfGpsDsHelpers";
 import getNavigationItems, { 
-  ConnectApiNavigationMenuItem 
+  ConnectApiNavigationMenuItem, 
+  GetNavigationItemsResp
 } from "@salesforce/apex/SfGpsDsNavigationORA.getNavigationItemsV2";
 
 import cBasePath from "@salesforce/community/basePath";
@@ -19,12 +20,9 @@ import mdEngine from "c/sfGpsDsMarkdown";
 import type {
   NavigationMode,
   NavigationMenuItem,
+  NavigationMenuItemMap,
   AdaptedNavigationMenuItem
 } from "c/sfGpsDsNavigation";
-
-interface NavigationMenuItemMap { 
-  [key: string]: NavigationMenuItem 
-}
 
 const MODE_IP = "Integration Procedure";
 const MODE_NAV = "Experience Cloud Navigation";
@@ -101,7 +99,7 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
 
   /* api: navigationDevName */
 
-  _navigationDevName: string;
+  _navigationDevName?: string;
 
   // @ts-ignore
   @api
@@ -109,7 +107,7 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
     return this._navigationDevName;
   }
 
-  set navigationDevName(value: string) {
+  set navigationDevName(value: string | undefined) {
     this._navigationDevName = value;
     this.updateExperienceCloudNavigation();
   }
@@ -139,7 +137,7 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
       developerName: this._navigationDevName,
       communityPreview: this.isPreview
     })
-      .then((data) => {
+      .then((data: GetNavigationItemsResp) => {
         this._nLoading--;
 
         if (data.errorMessage) {
@@ -177,16 +175,16 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
     data: ConnectApiNavigationMenuItem[], 
     key: string, 
     map: NavigationMenuItemMap,
-    adaptedMap: AdaptedNavigationMenuItem
+    adaptedMap: Record<string, AdaptedNavigationMenuItem>
   ): AdaptedNavigationMenuItem[] {
     if (data === null || data === undefined) {
-      return null;
+      return [];
     }
 
     return data.reduce((m, item, index) => {
       let itemKey = `${key}-${index + 1}`;
       let amik: AdaptedNavigationMenuItem = {
-        text: item.label ? mdEngine.decodeEntities(item.label) : null,
+        text: item.label ? mdEngine.decodeEntities(item.label) : undefined,
         url: item.actionValue,
         index: itemKey,
         target: item.target,
@@ -194,7 +192,7 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
       };
 
       const subNav = this.menuReducer(
-        item.subMenu, 
+        item.subMenu || [], 
         itemKey, 
         map, 
         adaptedMap
@@ -223,11 +221,11 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
       };
 
       return m;
-    }, []);
+    }, ([] as AdaptedNavigationMenuItem[]));
   }
 
   mapIpData(
-    data: object[] | object
+    data: ConnectApiNavigationMenuItem[] | ConnectApiNavigationMenuItem
   ): AdaptedNavigationMenuItem[] {
     const cdata: ConnectApiNavigationMenuItem[] = toArray<ConnectApiNavigationMenuItem>(data as any);
     // soql: label, target, targetPrefs, type
@@ -243,7 +241,9 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
 
   resolveUrl(
     item: NavigationMenuItem
-  ): string {
-    return item.Type === "MenuLabel" ? null : item.Target;
+  ): string | undefined {
+    return item.Type === "MenuLabel" 
+      ? undefined 
+      : item.Target;
   }
 }

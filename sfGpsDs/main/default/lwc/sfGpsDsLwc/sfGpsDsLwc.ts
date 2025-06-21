@@ -31,8 +31,8 @@ const CLASS_NAME = "SfGpsDsLwc";
 export default 
 class SfGpsDsLwc 
 extends SfGpsDsElement {
-  _isAura: boolean;
-  _isLwrOnly: boolean; // can be set in the constructor of subclasses
+  _isAura = false;
+  _isLwrOnly = false; // can be set in the constructor of subclasses
 
   constructor(isLwrOnly: boolean = false) {
     super();
@@ -58,7 +58,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @track 
-  _sfGpsDsErrors: LwcError[];
+  _sfGpsDsErrors?: LwcError[];
 
   addError(
     code: string, 
@@ -76,7 +76,7 @@ extends SfGpsDsElement {
   }
 
   clearErrors(): void {
-    this._sfGpsDsErrors = null;
+    this._sfGpsDsErrors = undefined;
   }
 
   // @ts-ignore
@@ -100,6 +100,7 @@ extends SfGpsDsElement {
         transform: (markdown) => {
           try {
             return markdown ? mdEngine.renderEscaped(markdown) : "";
+          // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
             return null;
@@ -122,6 +123,7 @@ extends SfGpsDsElement {
         transform: (markdown) => {
           try {
             return markdown ? mdEngine.renderEscapedUnpackFirstP(markdown) : "";
+          // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
             return null;
@@ -144,12 +146,12 @@ extends SfGpsDsElement {
         transform: (markdown) => {
           try {
             return markdown ? mdEngine.extractFirstLink(markdown) : "";
+          // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
             return null;
           } 
-        },
-        defaultValue: options.defaultValue || {}
+        }
       }
     );
   }
@@ -167,6 +169,7 @@ extends SfGpsDsElement {
         transform: (markdown) => {
           try {
             return markdown ? mdEngine.extractLinks(markdown) : (safeOptions.defaultValue || "");
+          // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
             return null;
@@ -181,14 +184,17 @@ extends SfGpsDsElement {
   connectedCallback(): void {
     if (DEBUG) console.debug(CLASS_NAME, "> connectedCallback");
 
-    super.connectedCallback();
+    super.connectedCallback?.();
 
+    // @ts-ignore
     // eslint-disable-next-line dot-notation
     if (window["$A"] !== undefined && window["$A"] !== null) {
       this._isAura = true;
 
       if (this._isLwrOnly) {
-        this.addError("CO-AU", "This element is not compatible with Aura communities.");
+        this.addError(
+          "CO-AU", 
+          "This element is not compatible with Aura communities.");
       }
     }
 

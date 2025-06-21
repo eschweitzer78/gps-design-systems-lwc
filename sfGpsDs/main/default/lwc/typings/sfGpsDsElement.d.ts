@@ -19,8 +19,8 @@ declare module "c/sfGpsDsElement" {
     maxValue?: number
   }
 
-  export interface PropertyDefEnumOptions<T, K = string> extends PropertyDefOptions<T> {
-    validValues?: T[] | { [key: string]: T },
+  export interface PropertyDefEnumOptions<T, _K = string> extends PropertyDefOptions<T> {
+    validValues?: T[] | Record<string, T>,
     returnObjectValue?: boolean
   }
 
@@ -34,33 +34,54 @@ declare module "c/sfGpsDsElement" {
     description: string
   }
 
-  type HookType = symbol;
+  export const enum HookType { 
+    BEFORE_MOUNT,
+    MOUNTED,
+    BEFORE_UPDATE,
+    UPDATED,
+    BEFORE_UNMOUNT,
+    UNMOUNTED,
+    FIRST_RENDER
+  }
 
   export default 
   class SfGpsDsElement 
   extends LightningElement {
-    static HookTypes: { [key: string]: HookType };
+    static HookTypes: {
+      BEFORE_MOUNT: HookType,
+      MOUNTED: HookType,
+      BEFORE_UPDATE: HookType,
+      UPDATED: HookType,
+      BEFORE_UNMOUNT: HookType,
+      UNMOUNTED: HookType,
+      FIRST_RENDER: HookType
+    }
 
-    callHook(type: HookType): void;
+    callHook(
+      type: HookType
+    ): void;
 
     injectHook(
       type: HookType, 
       hook: Function, 
       prepend?: boolean
     ): Function;
-    update(fn: Function | Function[]): void;
 
-    update(fn: Function | Function[]): void;
+    update(
+      fn: Function | Function[]
+    ): void;
 
-    readonly handleBeforeMount: Function;
-    readonly handleMounted: Function;
-    readonly handleBeforeUpdate: Function;
-    readonly handleUpdated: Function;
-    readonly handleBeforeUnmount: Function;
-    readonly handleUnmounted: Function;
-    readonly handleFirstRender: Function;
+    update(
+      fn: Function | Function[]
+    ): void;
 
-    __serialiseInner(): string;
+    get handleBeforeMount(): Function;
+    get handleMounted(): Function;
+    get handleBeforeUpdate(): Function;
+    get handleUpdated(): Function;
+    get handleBeforeUnmount(): Function;
+    get handleUnmounted(): Function;
+    get handleFirstRender(): Function;
 
     defineProperty(
       propertyName: string, 

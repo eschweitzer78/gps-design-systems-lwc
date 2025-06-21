@@ -1,8 +1,8 @@
 declare module "c/sfGpsDsPubSub" {
-  export interface PubSubCallback {
-    (payload: any): void,
-    uniqueObjectId: string
-  }
+  export type PubSubCallback =
+    Record<string, (payload: any) => void> & {
+      uniqueObjectId: string
+    }
 
   function register(
     eventName: string, 
@@ -33,6 +33,5 @@ declare module "c/sfGpsDsPubSub" {
     fire: typeof fire,
     shouldExecuteCallbackHandler: typeof shouldExecuteCallbackHandler,
   };
-  
   export default m;
 }

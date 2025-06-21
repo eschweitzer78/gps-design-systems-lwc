@@ -12,7 +12,8 @@
  */
 
 import { 
-  getFirstChild 
+  getFirstChild, 
+  isString
 } from "c/sfGpsDsHelpers";
 import { 
   Parser 
@@ -46,7 +47,11 @@ class SfGpsDsMarkdown {
     markdown: string, 
     attribute?: string
   ): string {
-    let parsed = this.reader.parse(markdown);
+    if (!isString(markdown)) {
+      return "";
+    }
+
+    const parsed = this.reader.parse(markdown);
     return this.writer.render(parsed, attribute);
   }
 
@@ -54,7 +59,11 @@ class SfGpsDsMarkdown {
     markdown: string, 
     attribute?: string
   ): string {
-    let parsed = this.reader.parse(markdown.replaceAll("\\n", "\n"));
+    if (!isString(markdown)) {
+      return "";
+    }
+
+    const parsed = this.reader.parse(markdown.replaceAll("\\n", "\n"));
     return this.writer.render(parsed, attribute);
   }
 
@@ -62,8 +71,12 @@ class SfGpsDsMarkdown {
     markdown: string, 
     attribute?: string
   ): string {
+    if (!isString(markdown)) {
+      return "";
+    }
+
     let tmpWriter = new HtmlUnpackFirstPRenderer();
-    let parsed = this.reader.parse(markdown.replaceAll("\\n", "\n"));
+    const parsed = this.reader.parse(markdown.replaceAll("\\n", "\n"));
     return tmpWriter.render(parsed, attribute);
   }
 
@@ -78,51 +91,57 @@ class SfGpsDsMarkdown {
     markdown: string, 
     attribute?: string
   ): string {
-    let ast = this.parse(markdown),
-      walker = ast.walker(),
-      event: NodeWalkerEvent,
-      html = "";
+    let html = "";
 
-    while ((event = walker.next())) {
-      if (event.node.type === "link" && event.entering) {
-        if (event.node.attrs == null) {
-          event.node.attrs = [];
+    if (isString(markdown)) {
+      let ast = this.parse(markdown),
+        walker = ast.walker(),
+        event: NodeWalkerEvent | null;
+
+      while ((event = walker.next())) {
+        if (event.node.type === "link" && event.entering) {
+          if (event.node.attrs == null) {
+            event.node.attrs = [];
+          }
+
+          html += `<li ${attribute ? " " + attribute : ""}>${this.renderNode(
+            event.node,
+            attribute
+          )}</li>`;
         }
-
-        html += `<li ${attribute ? " " + attribute : ""}>${this.renderNode(
-          event.node,
-          attribute
-        )}</li>`;
       }
     }
-
+    
     return html;
   }
 
   extractLinks(
     markdown: string
   ): Link[] {
-    let ast = this.parse(markdown),
-      walker = ast.walker(),
-      event: NodeWalkerEvent,
-      index = 0,
-      links = [];
+    let links = [];
 
-    while ((event = walker.next())) {
-      if (event.node.type === "link" && event.entering) {
-        if (event.node.attrs == null) {
-          event.node.attrs = [];
+    if (isString(markdown)) {
+      let ast = this.parse(markdown),
+        walker = ast.walker(),
+        event: NodeWalkerEvent | null,
+        index = 0;
+
+      while ((event = walker.next())) {
+        if (event.node.type === "link" && event.entering) {
+          if (event.node.attrs == null) {
+            event.node.attrs = [];
+          }
+
+          const node = new DOMParser().parseFromString(
+            this.renderNode(event.node),
+            "text/html"
+          ).body.firstElementChild;
+          links.push({
+            url: node?.getAttribute("href") || undefined,
+            text: node?.textContent || undefined,
+            index: index++
+          });
         }
-
-        const node = new DOMParser().parseFromString(
-          this.renderNode(event.node),
-          "text/html"
-        ).body.firstElementChild;
-        links.push({
-          url: node.getAttribute("href"),
-          text: node.textContent,
-          index: index++
-        });
       }
     }
 
@@ -132,79 +151,86 @@ class SfGpsDsMarkdown {
   extractFirstLink(
     markdown: string
   ): Link {
-    let ast = this.parse(markdown),
-      walker = ast.walker(),
-      event: NodeWalkerEvent;
+    if (isString(markdown)) {
+      let ast = this.parse(markdown),
+        walker = ast.walker(),
+        event: NodeWalkerEvent | null;
 
-    while ((event = walker.next())) {
-      if (event.node.type === "link" && event.entering) {
-        const node = getFirstChild(this.renderNode(event.node));
+      while ((event = walker.next())) {
+        if (event.node.type === "link" && event.entering) {
+          const node = getFirstChild(this.renderNode(event.node));
 
-        return {
-          url: node.getAttribute("href"),
-          text: node.textContent
-        };
+          return {
+            url: node?.getAttribute("href") || "",
+            text: node?.textContent || ""
+          };
+        }
       }
     }
 
-    return { url: null, text: null };
+    return { url: undefined, text: undefined };
   }
 
   extractH1s(
     markdown: string
   ): Header[] {
-    let ast = this.parse(markdown),
-      walker = ast.walker(),
-      event: NodeWalkerEvent,
-      html = "",
-      index = 0,
-      h1s: Header[] = [],
-      h1: Header,
-      currentNode: Node;
+    let h1s: Header[] = [];
 
-    while ((event = walker.next())) {
-      if (event.entering) {
-        if (event.node.type === "heading" && event.node.level === 1) {
-          if (event.node.attrs == null) {
-            event.node.attrs = [];
+    if (isString(markdown)) {
+      let ast = this.parse(markdown),
+        walker = ast.walker(),
+        event: NodeWalkerEvent | null,
+        html = "",
+        index = 0,
+        h1: Header | null = null,
+        currentNode: Node | undefined = undefined;
+
+      while ((event = walker.next())) {
+        if (event.entering) {
+          if (event.node.type === "heading" && event.node.level === 1) {
+            if (event.node.attrs == null) {
+              event.node.attrs = [];
+            }
+
+            if (h1) {
+              // flush ongoing one
+              h1.html = html;
+              h1s.push(h1);
+            }
+
+            const node = getFirstChild(this.renderNode(event.node));
+
+            h1 = {
+              title: node?.textContent || undefined,
+              index: index++
+            };
+
+            html = "";
+            currentNode = event.node;
+          } else if (h1 && !currentNode) {
+            currentNode = event.node;
+            html += this.renderNode(event.node);
           }
-
-          if (h1) {
-            // flush ongoing one
-            h1.html = html;
-            h1s.push(h1);
+        } else {
+          if (event.node === currentNode) {
+            currentNode = undefined;
           }
-
-          const node = getFirstChild(this.renderNode(event.node));
-
-          h1 = {
-            title: node.textContent,
-            index: index++
-          };
-
-          html = "";
-          currentNode = event.node;
-        } else if (h1 && !currentNode) {
-          currentNode = event.node;
-          html += this.renderNode(event.node);
-        }
-      } else {
-        if (event.node === currentNode) {
-          currentNode = undefined;
         }
       }
-    }
 
-    if (h1) {
-      // flush final one
-      h1.html = html;
-      h1s.push(h1);
+      if (h1) {
+        // flush final one
+        h1.html = html;
+        h1s.push(h1);
+      }
     }
 
     return h1s;
   }
 
-  decodeEntities(str: string): string {
+  decodeEntities(
+    str: string
+  ): string {
     return decodeHTMLStrict(str);
   }
 }

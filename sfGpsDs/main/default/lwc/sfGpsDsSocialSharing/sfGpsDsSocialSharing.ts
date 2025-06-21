@@ -9,10 +9,11 @@ import {
 } from "c/sfGpsDsHelpers";
 
 import type {
+  Dimensions,
   MockWindow
 } from "c/sfGpsDsSocialSharing";
 
-let $window: Window & typeof globalThis | MockWindow = typeof window !== "undefined" ? window : null;
+let $window: Window & typeof globalThis | MockWindow | null = typeof window !== "undefined" ? window : null;
 
 export function mockWindow(
   self: MockWindow
@@ -26,57 +27,74 @@ extends LightningElement {
   static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
-  @api name = "ShareNetwork";
+  @api 
+  name = "ShareNetwork";
 
   // @ts-ignore
-  @api network: string; // String required, name of the network to display
+  @api 
+  network = ""; // String required, name of the network to display
 
   // @ts-ignore
-  @api url: string; // String required, URL of the content to share
+  @api 
+  url = "#"; // String required, URL of the content to share
 
   // @ts-ignore
-  @api title: string; // String required, URL of the content to share
+  @api 
+  title = ""; // String required, URL of the content to share
 
   // @ts-ignore
-  @api description = ""; // description of the content to share
+  @api 
+  description = ""; // description of the content to share
 
   // @ts-ignore
-  @api quote = ""; // quote content, used for Facebook
+  @api 
+  quote = ""; // quote content, used for Facebook
 
   // @ts-ignore
-  @api hashtags = ""; // used for Twitter and Facebook
+  @api 
+  hashtags = ""; // used for Twitter and Facebook
 
   // @ts-ignore
-  @api twitterUser = ""; // used for Twitter
+  @api 
+  twitterUser = ""; // used for Twitter
 
   // @ts-ignore
-  @api media = ""; // used for Pinterest
+  @api 
+  media = ""; // used for Pinterest
 
   // @ts-ignore
-  @api tag = "a"; // tag used by the Network component - note this is disregarded as we only support "a"
+  @api 
+  tag = "a"; // tag used by the Network component - note this is disregarded as we only support "a"
 
   // @ts-ignore
-  @api popup: Dimensions = { 
+  @api 
+  popup: Dimensions = { 
     width: 626, 
     height: 436 
   }; // properties of the popup window
 
   // @ts-ignore
-  @track popupTop = 0;
+  @api 
+  className?: string;
 
   // @ts-ignore
-  @track popupLeft = 0;
+  @track 
+  popupTop = 0;
 
   // @ts-ignore
-  @track popupWindow = undefined;
+  @track 
+  popupLeft = 0;
 
   // @ts-ignore
-  @track popupInterval = null;
+  @track 
+  popupWindow: Window | null = null;
+
+  // @ts-ignore
+  @track 
+  popupInterval: NodeJS.Timeout | null = null;
 
   networks = AvailableNetworks;
 
-  // @ts-ignore
-  @api className: string;
 
   /* Formatted network name */
 
@@ -158,6 +176,8 @@ extends LightningElement {
    */
 
   resizePopup(): void {
+    if (!$window) return;
+
     const width =
       $window.innerWidth ||
       document.documentElement.clientWidth ||
@@ -181,6 +201,7 @@ extends LightningElement {
    */
 
   share(): void {
+    if (!$window) return;
     this.resizePopup();
 
     // If a popup window already exist, we close it and trigger a change event.
@@ -218,8 +239,11 @@ extends LightningElement {
     // Create an interval to detect popup closing event
     // eslint-disable-next-line @lwc/lwc/no-async-operation
     this.popupInterval = setInterval(() => {
-      if (!this.popupWindow || this.popupWindow.closed) {
-        clearInterval(this.popupInterval);
+      if (!this.popupWindow || this.popupWindow.closed ) {
+        if (this.popupInterval) {
+          clearInterval(this.popupInterval);
+        }
+        
         this.popupWindow = null;
         this.emit("close");
       }
@@ -237,7 +261,9 @@ extends LightningElement {
     this.emit("open");
   }
 
-  emit(name: string): void {
+  emit(
+    name: string
+  ): void {
     this.dispatchEvent(new CustomEvent(name, {
       detail: {
         key: this.key,

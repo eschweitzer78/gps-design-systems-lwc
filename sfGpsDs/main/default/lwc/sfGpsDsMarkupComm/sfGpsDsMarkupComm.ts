@@ -18,13 +18,16 @@ class SfGpsDsMarkupComm
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  markup: string;
+  markup?: string;
+
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   renderedCallback() {
-    super.renderedCallback();
-    replaceInnerHtml(this.refs.markup, this.markup || "");
+    super.renderedCallback?.();
+    
+    if (this.refs.markup)
+      replaceInnerHtml(this.refs.markup, this.markup || "");
   }
 }

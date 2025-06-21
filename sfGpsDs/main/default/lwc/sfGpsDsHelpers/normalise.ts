@@ -42,7 +42,7 @@ export function normaliseArray(
 
 export function normaliseAriaAttribute(
   value: any
-): string {
+): string | null {
   let result = Array.isArray(value) ? value : [value];
   result = result
     .map((e) => ("string" === typeof e ? e.replace(/\s+/g, " ").trim() : ""))
@@ -55,7 +55,7 @@ export function normaliseString(
   value: any, 
   options: {
     fallbackValue?: string,
-    validValues?: string[] | object,
+    validValues?: string[] | Record<string, any>,
     toLowerCase?: boolean,
     trim?: boolean,
     returnObjectValue?: boolean

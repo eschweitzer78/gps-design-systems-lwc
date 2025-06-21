@@ -115,16 +115,16 @@ interface Delimiters {
   numdelims: number,
   origdelims: number,
   node: Node,
-  previous: Delimiters,
-  next: Delimiters,
+  previous?: Delimiters,
+  next?: Delimiters,
   canOpen: boolean,
   canClose: boolean
 };
 
 interface Brackets {
   node: Node,
-  previous: Brackets,
-  previousDelimiter: Delimiters,
+  previous?: Brackets,
+  previousDelimiter?: Delimiters,
   index: number,
   image: boolean,
   active: boolean,
@@ -145,16 +145,16 @@ interface InlineParserOptions extends ParserOptions {
 // The InlineParser object.
 class InlineParser {
   subject: string;
-  delimiters: Delimiters;
-  brackets: Brackets;
+  delimiters?: Delimiters;
+  brackets?: Brackets;
   pos: number;
   refmap: ReferenceMap;
   options: InlineParserOptions;
 
   constructor(options?: InlineParserOptions) {
     this.subject = "";
-    this.delimiters = null; // used by handleDelim method
-    this.brackets = null;
+    this.delimiters = undefined; // used by handleDelim method
+    this.brackets = undefined;
     this.pos = 0;
     this.refmap = {};
     this.options = options || {};
@@ -163,10 +163,10 @@ class InlineParser {
 
   // If re matches at current position in the subject, advance
   // position in subject and return the match; otherwise return null.
-  match(re: RegExp): string {
+  match(re: RegExp): string | null {
     let m = re.exec(this.subject.slice(this.pos));
 
-    if (m === null) {
+    if (m == null) {
       return null;
     }
 
@@ -198,12 +198,12 @@ class InlineParser {
   parseBackticks(block: Node): boolean {
     let ticks = this.match(reTicksHere);
 
-    if (ticks === null) {
+    if (ticks == null) {
       return false;
     }
 
     let afterOpenTicks = this.pos;
-    let matched: string;
+    let matched: string | null;
     let node: Node;
     let contents: string;
 
@@ -306,11 +306,11 @@ class InlineParser {
 
   parseCloseBracket(block: Node): boolean {
     let startpos: number;
-    let dest: string;
-    let title: string;
+    let dest: string | null = null;
+    let title: string | null = null;
     let matched: boolean = false;
-    let reflabel: string;
-    let opener: Brackets;
+    let reflabel: string | null = null;
+    let opener: Brackets | undefined;
 
     this.pos += 1;
     startpos = this.pos;
@@ -318,7 +318,7 @@ class InlineParser {
     // get last [ or ![
     opener = this.brackets;
 
-    if (opener === null) {
+    if (opener == null) {
       // no matched opener, just return a literal
       block.appendChild(text("]"));
       return true;
@@ -346,7 +346,7 @@ class InlineParser {
 
       if (
         this.spnl() &&
-        (dest = this.parseLinkDestination()) !== null &&
+        (dest = this.parseLinkDestination()) != null &&
         this.spnl() &&
         // make sure there's a space before the title:
         ((reWhitespaceChar.test(this.subject.charAt(this.pos - 1)) &&
@@ -397,7 +397,7 @@ class InlineParser {
       node._destination = dest;
       node._title = title || "";
 
-      let tmp: Node, next: Node;
+      let tmp: Node | undefined, next: Node | undefined;
       tmp = opener.node._next;
 
       while (tmp) {
@@ -418,7 +418,7 @@ class InlineParser {
       if (!is_image) {
         opener = this.brackets;
 
-        while (opener !== null) {
+        while (opener != null) {
           if (!opener.image) {
             opener.active = false; // deactivate this opener
           }
@@ -438,7 +438,7 @@ class InlineParser {
   };
 
   addBracket(node: Node, index: number, image: boolean): void {
-    if (this.brackets !== null) {
+    if (this.brackets != null) {
       this.brackets.bracketAfter = true;
     }
 
@@ -453,7 +453,9 @@ class InlineParser {
   };
 
   removeBracket(): void {
-    this.brackets = this.brackets.previous;
+    this.brackets = this.brackets 
+      ? (this.brackets as Brackets).previous
+      : undefined;
   };
 
   // Parse a newline.  If it was preceded by two spaces, return a hard
@@ -561,7 +563,7 @@ class InlineParser {
 
       case C_SINGLEQUOTE:
       case C_DOUBLEQUOTE:
-        res = this.options.smart && this.handleDelim(c, block);
+        res = !!this.options.smart && this.handleDelim(c, block);
         break;
         
       case C_OPEN_BRACKET:
@@ -603,8 +605,8 @@ class InlineParser {
     this.subject = s;
     this.pos = 0;
     let rawlabel : string;
-    let dest: string;
-    let title: string;
+    let dest: string | null;
+    let title: string | null = null;
     let matchChars: number;
     let startpos = this.pos;
 
@@ -628,7 +630,7 @@ class InlineParser {
     this.spnl();
 
     dest = this.parseLinkDestination();
-    if (dest === null) {
+    if (dest == null) {
       this.pos = startpos;
       return 0;
     }
@@ -640,7 +642,7 @@ class InlineParser {
       title = this.parseLinkTitle();
     }
 
-    if (title === null) {
+    if (title == null) {
       title = "";
       // rewind before spaces
       this.pos = beforetitle;
@@ -649,7 +651,7 @@ class InlineParser {
     // make sure we're at line end:
     let atLineEnd = true;
 
-    if (this.match(reSpaceAtEndOfLine) === null) {
+    if (this.match(reSpaceAtEndOfLine) == null) {
       if (title === "") {
         atLineEnd = false;
       } else {
@@ -685,7 +687,7 @@ class InlineParser {
 
   // Attempt to parse an autolink (URL or email in pointy brackets).
   parseAutolink(block: Node): boolean {
-    let m: string;
+    let m: string | null;
     let dest: string;
     let node: Node;
 
@@ -715,7 +717,7 @@ class InlineParser {
   parseHtmlTag(block: Node): boolean {
     const m = this.match(reHtmlTag);
 
-    if (m === null) {
+    if (m == null) {
       return false;
     }
 
@@ -829,12 +831,12 @@ class InlineParser {
         origdelims: numdelims,
         node: node,
         previous: this.delimiters,
-        next: null,
+        next: undefined,
         canOpen: res.canOpen,
         canClose: res.canClose
       };
 
-      if (this.delimiters.previous !== null) {
+      if (this.delimiters.previous != null) {
         this.delimiters.previous.next = this.delimiters;
       }
     }
@@ -844,11 +846,11 @@ class InlineParser {
 
   // Attempt to parse link title (sans quotes), returning the string
   // or null if no match.
-  parseLinkTitle(): string {
+  parseLinkTitle(): string | null {
     const title = this.match(reLinkTitle);
 
     // chop off quotes from title and unescape:
-    return title === null 
+    return title == null 
       ? null 
       : unescapeString(title.substring(1, title.length - 1));
   };
@@ -856,10 +858,10 @@ class InlineParser {
   // Attempt to parse link destination, returning the string or
   // null if no match.
 
-  parseLinkDestination(): string {
+  parseLinkDestination(): string | null {
     let res = this.match(reLinkDestinationBraces);
 
-    if (res === null) {
+    if (res == null) {
       if (this.peek() === C_LESSTHAN) {
         return null;
       }
@@ -916,35 +918,39 @@ class InlineParser {
   // Attempt to parse a link label, returning number of characters parsed.
   parseLinkLabel(): number {
     let m = this.match(reLinkLabel);
-    return (m === null || m.length > 1001) ? 0 : m.length;
+    return (m == null || m.length > 1001) ? 0 : m.length;
   };
 
   // Parse string content in block into inline children,
   // using refmap to resolve references.
 
   parse(block: Node): void {
-    this.subject = block._string_content.trim();
+    this.subject = (block._string_content as string).trim();
     this.pos = 0;
-    this.delimiters = null;
-    this.brackets = null;
+    this.delimiters = undefined;
+    this.brackets = undefined;
 
     /* eslint-disable */
     while (this.parseInline(block)) {}
 
     /* eslint-enable */
-    block._string_content = null; // allow raw string to be garbage collected
-    this.processEmphasis(null);
+    block._string_content = undefined; // allow raw string to be garbage collected
+    this.processEmphasis(undefined);
   };
 
 
-  processEmphasis(stackBottom: Delimiters): void {
-    let opener: Delimiters, closer: Delimiters, oldCloser: Delimiters;
+  processEmphasis(
+    stackBottom: Delimiters | undefined
+  ): void {
+    let opener: Delimiters | undefined;
+    let closer: Delimiters | undefined;
+    let oldCloser: Delimiters;
     let openerInl: Node, closerInl: Node;
-    let tempstack: Delimiters;
+    let tempstack: Delimiters | undefined;
     let useDelims: number;
-    let tmp: Node, next: Node;
+    let tmp: Node | undefined, next: Node | undefined;
     let openerFound: boolean;
-    let openersBottom = [[], [], []];
+    let openersBottom: Array<Array<Delimiters | undefined>> = [[], [], []];
     let oddMatch = false;
 
     for (let i = 0; i < 3; i++) {
@@ -957,32 +963,35 @@ class InlineParser {
     // find first closer above stackBottom:
     closer = this.delimiters;
 
-    while (closer !== null && closer.previous !== stackBottom) {
-      closer = closer.previous;
+    while (
+      closer != null && 
+      (closer as Delimiters).previous !== stackBottom
+    ) {
+      closer = (closer as Delimiters).previous;
     }
 
     // move forward, looking for closers, and handling each
-    while (closer !== null) {
-      let closercc = closer.cc;
+    while (closer != null) {
+      let closercc = (closer as Delimiters).cc;
 
-      if (!closer.canClose) {
-        closer = closer.next;
+      if (!(closer as Delimiters).canClose) {
+        closer = (closer as Delimiters).next;
       } else {
         // found emphasis closer. now look back for first matching opener:
-        opener = closer.previous;
+        opener = (closer as Delimiters).previous;
         openerFound = false;
 
         while (
-          opener !== null &&
+          opener != null &&
           opener !== stackBottom &&
-          opener !== openersBottom[closer.origdelims % 3][closercc]
+          opener !== openersBottom[(closer as Delimiters).origdelims % 3][closercc]
         ) {
           oddMatch =
-            (closer.canOpen || opener.canClose) &&
-            closer.origdelims % 3 !== 0 &&
-            (opener.origdelims + closer.origdelims) % 3 === 0;
+            ((closer as Delimiters).canOpen || opener.canClose) &&
+            (closer as Delimiters).origdelims % 3 !== 0 &&
+            (opener.origdelims + (closer as Delimiters).origdelims) % 3 === 0;
 
-          if (opener.cc === closer.cc && opener.canOpen && !oddMatch) {
+          if (opener.cc === (closer as Delimiters).cc && opener.canOpen && !oddMatch) {
             openerFound = true;
             break;
           }
@@ -990,21 +999,24 @@ class InlineParser {
           opener = opener.previous;
         }
 
-        oldCloser = closer;
+        oldCloser = closer as Delimiters;
 
-        if (closercc === C_ASTERISK || closercc === C_UNDERSCORE) {
+        if (
+          closercc === C_ASTERISK || 
+          closercc === C_UNDERSCORE
+        ) {
           if (!openerFound) {
-            closer = closer.next;
+            closer = (closer as Delimiters).next;
           } else {
             // calculate actual number of delimiters used from closer
-            useDelims = closer.numdelims >= 2 && opener.numdelims >= 2 ? 2 : 1;
+            useDelims = (closer as Delimiters).numdelims >= 2 && (opener as Delimiters).numdelims >= 2 ? 2 : 1;
 
-            openerInl = opener.node;
-            closerInl = closer.node;
+            openerInl = (opener as Delimiters).node;
+            closerInl = (closer as Delimiters).node;
 
             // remove used delimiters from stack elts and inlines
-            opener.numdelims -= useDelims;
-            closer.numdelims -= useDelims;
+            (opener as Delimiters).numdelims -= useDelims;
+            (closer as Delimiters).numdelims -= useDelims;
             openerInl._literal = openerInl._literal.slice(
               0,
               openerInl._literal.length - useDelims
@@ -1029,37 +1041,40 @@ class InlineParser {
             openerInl.insertAfter(emph);
 
             // remove elts between opener and closer in delimiters stack
-            removeDelimitersBetween(opener, closer);
+            removeDelimitersBetween(
+              opener as Delimiters, 
+              closer as Delimiters
+            );
 
             // if opener has 0 delims, remove it and the inline
-            if (opener.numdelims === 0) {
+            if ((opener as Delimiters).numdelims === 0) {
               openerInl.unlink();
-              this.removeDelimiter(opener);
+              this.removeDelimiter(opener as Delimiters);
             }
 
-            if (closer.numdelims === 0) {
+            if ((closer as Delimiters).numdelims === 0) {
               closerInl.unlink();
-              tempstack = closer.next;
-              this.removeDelimiter(closer);
+              tempstack = (closer as Delimiters).next;
+              this.removeDelimiter(closer as Delimiters);
               closer = tempstack;
             }
           }
         } else if (closercc === C_SINGLEQUOTE) {
-          closer.node._literal = "\u2019";
+          (closer as Delimiters).node._literal = "\u2019";
 
           if (openerFound) {
-            opener.node._literal = "\u2018";
+            (opener as Delimiters).node._literal = "\u2018";
           }
 
-          closer = closer.next;
+          closer = (closer as Delimiters).next;
         } else if (closercc === C_DOUBLEQUOTE) {
-          closer.node._literal = "\u201D";
+          (closer as Delimiters).node._literal = "\u201D";
 
           if (openerFound) {
-            opener.node.literal = "\u201C";
+            (opener as Delimiters).node.literal = "\u201C";
           }
 
-          closer = closer.next;
+          closer = (closer as Delimiters).next;
         }
 
         if (!openerFound) {
@@ -1077,18 +1092,21 @@ class InlineParser {
     }
 
     // remove all delimiters
-    while (this.delimiters !== null && this.delimiters !== stackBottom) {
+    while (
+      this.delimiters != null && 
+      this.delimiters !== stackBottom
+    ) {
       this.removeDelimiter(this.delimiters);
     }
   };
 
 
   removeDelimiter(delim: Delimiters): void {
-    if (delim.previous !== null) {
+    if (delim.previous != null) {
       delim.previous.next = delim.next;
     }
 
-    if (delim.next === null) {
+    if (delim.next == null) {
       // top of stack
       this.delimiters = delim.previous;
     } else {

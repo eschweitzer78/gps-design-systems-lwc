@@ -38,7 +38,7 @@ export const decodeHTML = (function () {
   );
   const replace = getReplacer(entityMap);
 
-  function replacer(str) {
+  function replacer(str: string) {
     if (str.substr(-1) !== ";") {
       str += ";";
     }

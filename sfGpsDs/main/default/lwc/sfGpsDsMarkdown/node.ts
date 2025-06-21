@@ -6,7 +6,7 @@ export interface NodeWalkerEvent {
 }
 
 class NodeWalker {
-  current: Node;
+  current?: Node;
   root: Node;
   entering: boolean;
 
@@ -16,11 +16,11 @@ class NodeWalker {
     this.entering = true;
   }
 
-  next(): NodeWalkerEvent {
+  next(): NodeWalkerEvent | null {
     const cur = this.current;
     let entering: boolean = this.entering;
 
-    if (cur === null) {
+    if (cur == null) {
       return null;
     }
 
@@ -35,8 +35,8 @@ class NodeWalker {
         this.entering = false;
       }
     } else if (cur === this.root) {
-      this.current = null;
-    } else if (cur._next === null) {
+      this.current = undefined;
+    } else if (cur._next == null) {
       this.current = cur._parent;
       this.entering = false;
     } else {
@@ -53,35 +53,38 @@ class NodeWalker {
   }
 };
 
+export interface ListData {
+  type?: string,
+  tight?: boolean,
+  bulletChar?: string,
+  start?: number,
+  delimiter?: string,
+  markerOffset?: number,
+  padding?: number
+}
+
 export class Node {
   _type: string;
-  _parent: Node;
-  _firstChild: Node;
-  _lastChild: Node;
-  _prev: Node;
-  _next: Node;
+  _parent?: Node;
+  _firstChild?: Node;
+  _lastChild?: Node;
+  _prev?: Node;
+  _next?: Node;
   _sourcepos: any;
   _lastLineBlank: boolean;
   _lastLineChecked: boolean;
   _open: boolean;
-  _string_content: string;
+  _string_content?: string;
   _literal: any;
-  _listData: {
-    type?: string,
-    tight?: boolean,
-    start?: number,
-    delimiter?: string,
-    markerOffset?: number,
-    padding?: number
-  };
+  _listData: ListData;
   _info: any;
   _destination: any;
-  _title: string;
+  _title?: string;
   _isFenced: boolean;
   _fenceChar: any;
   _fenceLength: number;
-  _fenceOffset: number;
-  _level: number;
+  _fenceOffset?: number;
+  _level?: number;
   _onEnter: any;
   _onExit: any;
   _htmlBlockType?: number;
@@ -89,26 +92,26 @@ export class Node {
 
   constructor(nodeType: string, sourcepos?: any) {
     this._type = nodeType;
-    this._parent = null;
-    this._firstChild = null;
-    this._lastChild = null;
-    this._prev = null;
-    this._next = null;
+    this._parent = undefined;
+    this._firstChild = undefined;
+    this._lastChild = undefined;
+    this._prev = undefined;
+    this._next = undefined;
     this._sourcepos = sourcepos;
     this._lastLineBlank = false;
     this._lastLineChecked = false;
     this._open = true;
-    this._string_content = null;
+    this._string_content = undefined;
     this._literal = null;
     this._listData = {};
     this._info = null;
     this._destination = null;
-    this._title = null;
+    this._title = undefined;
     this._isFenced = false;
     this._fenceChar = null;
     this._fenceLength = 0;
-    this._fenceOffset = null;
-    this._level = null;
+    this._fenceOffset = undefined;
+    this._level = undefined;
     this._onEnter = null;
     this._onExit = null;
     this._attrs = [];
@@ -139,23 +142,23 @@ export class Node {
     return this._type;
   }
 
-  get firstChild(): Node {
+  get firstChild(): Node | undefined {
     return this._firstChild;
   }
 
-  get lastChild(): Node {
+  get lastChild(): Node | undefined {
     return this._lastChild;
   }
 
-  get next(): Node {
+  get next(): Node | undefined {
     return this._next;
   }
 
-  get prev(): Node {
+  get prev(): Node | undefined {
     return this._prev;
   }
 
-  get parent(): Node {
+  get parent(): Node | undefined {
     return this._parent;
   }
 
@@ -297,9 +300,9 @@ export class Node {
     } else if (this._parent) {
       this._parent._lastChild = this._prev;
     }
-    this._parent = null;
-    this._next = null;
-    this._prev = null;
+    this._parent = undefined;
+    this._next = undefined;
+    this._prev = undefined;
   };
 
   insertAfter(sibling: Node) {
@@ -311,7 +314,7 @@ export class Node {
     sibling._prev = this;
     this._next = sibling;
     sibling._parent = this._parent;
-    if (!sibling._next) {
+    if (!sibling._next && sibling._parent) {
       sibling._parent._lastChild = sibling;
     }
   }
@@ -325,7 +328,7 @@ export class Node {
     sibling._next = this;
     this._prev = sibling;
     sibling._parent = this._parent;
-    if (!sibling._prev) {
+    if (!sibling._prev && sibling._parent) {
       sibling._parent._firstChild = sibling;
     }
   }

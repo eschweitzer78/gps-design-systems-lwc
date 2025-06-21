@@ -1,4 +1,4 @@
-export default {
+const entitiesMap: Record<number, number> = {
   0: 65533,
   128: 8364,
   130: 8218,
@@ -28,3 +28,5 @@ export default {
   158: 382,
   159: 376
 };
+
+export default entitiesMap;

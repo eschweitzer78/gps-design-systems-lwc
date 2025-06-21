@@ -70,11 +70,11 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  gap: string;
+  gap?: string;
   
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: direction */
 
@@ -154,10 +154,10 @@ extends SfGpsDsLwc {
 
   /* computed */
 
-  get computedClassName() {
+  get computedClassName(): any {
     return {
       //"sfgpsds-flex--nogrow": !this.grow,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 

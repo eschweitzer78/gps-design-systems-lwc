@@ -17,7 +17,7 @@ export const isRegEx = (val: any): boolean => toTypeString(val) === "[object Reg
 export const isFunction = (val: any): boolean => typeof val === "function";
 export const isString = (val: any): boolean => typeof val === "string";
 export const isSymbol = (val: any): boolean => typeof val === "symbol";
-export const isObject = (val: any): boolean => val !== null && typeof val === "object";
+export const isObject = (val: any): boolean => val != null && typeof val === "object";
 export const isPromise = (val: any): boolean => {
   return (
     (isObject(val) || isFunction(val)) &&

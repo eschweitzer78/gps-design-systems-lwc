@@ -9,8 +9,10 @@
 /* eslint-disable @lwc/lwc/no-leading-uppercase-api-name */
 
 import { 
-  LightningElement, api 
+  LightningElement, 
+  api 
 } from "lwc";
+
 import { 
   normaliseBoolean, 
   normaliseInteger, 
@@ -19,6 +21,10 @@ import {
   isFunction, 
 } from "c/sfGpsDsHelpers";
  
+import { 
+  callWithAsyncErrorHandling 
+} from "./hookFn";
+
 import type { 
   PropertyDefOptions,
   PropertyDefIntegerOptions,
@@ -26,13 +32,25 @@ import type {
   PropertyAccessor 
 } from "c/sfGpsDsElement";
 
-import { 
-  HookTypes, 
-  callWithAsyncErrorHandling 
-} from "./hookFn";
-import type { 
-  HookType 
-} from "./hookFn";
+export const enum HookType { 
+  BEFORE_MOUNT = "BEFORE_MOUNT",
+  MOUNTED = "MOUNTED",
+  BEFORE_UPDATE = "BEFORE_UPDATE",
+  UPDATED = "UPDATED",
+  BEFORE_UNMOUNT = "BEFORE_UNMOUNT",
+  UNMOUNTED = "UNMOUNTED",
+  FIRST_RENDER = "FIRST_RENDER"
+}
+
+const HookTypes = Object.freeze({
+  BEFORE_MOUNT: Symbol("_onBeforeMountHooks"),
+  MOUNTED: Symbol("_onMountedHooks"),
+  BEFORE_UPDATE: Symbol("_onBeforeUpdateHooks"),
+  UPDATED: Symbol("_onUpdatedHooks"),
+  BEFORE_UNMOUNT: Symbol("_onBeforeUnmountHooks"),
+  UNMOUNTED: Symbol("_onUnmountedHooks"),
+  FIRST_RENDER: Symbol("_firstRender")
+});
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsElement";
@@ -40,23 +58,37 @@ const CLASS_NAME = "SfGpsDsElement";
 export default 
 class SfGpsDsElement 
 extends LightningElement {
+  [HookTypes.BEFORE_MOUNT]?: Function[];
+  [HookTypes.BEFORE_UNMOUNT]?: Function[];
+  [HookTypes.BEFORE_UPDATE]?: Function[];
+  [HookTypes.FIRST_RENDER]?: Function[];
+  [HookTypes.MOUNTED]?: Function[];
+  [HookTypes.UNMOUNTED] ?: Function[];
+  [HookTypes.UPDATED]?: Function[];
+
   /* methods: internal - hooks */
 
   static HookTypes = HookTypes;
 
-  callHook(type: HookType): void {
+  callHook(
+    type: HookType
+  ): void {
+    const hookSymbol = HookTypes[type];
+
     if (DEBUG) {
       console.debug(
         CLASS_NAME, "> callHook",
         "type=", type,
-        "cbList=", this[type]
+        "cbList=", hookSymbol ? this[hookSymbol] : "N/A"
       );
     }
 
-    const hook = this[type];
+    const hook = hookSymbol ? this[hookSymbol] : undefined;
     callWithAsyncErrorHandling(hook, type);
 
-    if (DEBUG) console.debug(CLASS_NAME, "< callHook");
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "< callHook");
+    }
   }
 
   /**
@@ -73,6 +105,8 @@ extends LightningElement {
     hook: Function, 
     prepend: boolean = false
   ): Function {
+    const hookSymbol = HookTypes[type];
+    
     if (DEBUG) {
       console.debug(
         CLASS_NAME, "> injectHook",
@@ -82,18 +116,20 @@ extends LightningElement {
       );
     }
 
-    const hooks = this[type] || (this[type] = []);
+    if (hookSymbol) {
+      const hooks = this[hookSymbol] || (this[hookSymbol] = []);
 
-    if (prepend) {
-      hooks.unshift(hook);
-    } else {
-      hooks.push(hook);
+      if (prepend) {
+        hooks.unshift(hook);
+      } else {
+        hooks.push(hook);
+      }
     }
 
     if (DEBUG) {
       console.debug(
         CLASS_NAME, "< injectHook",
-        "cbList=", this[type],
+        "cbList=", hookSymbol ? this[hookSymbol] : "N/A",
         "hook=", hook
       );
     }
@@ -108,7 +144,7 @@ extends LightningElement {
   update(
     fn: Function | Function[]
   ): void {
-    this.callHook(HookTypes.BEFORE_UPDATE);
+    this.callHook(HookType.BEFORE_UPDATE);
 
     if (isFunction(fn)) {
       (fn as Function)();
@@ -118,81 +154,81 @@ extends LightningElement {
       }
     }
 
-    this.callHook(HookTypes.UPDATED);
+    this.callHook(HookType.UPDATED);
   }
 
   // methods: external - hooks, for testing purposes only
 
-  _handleBeforeMount: Function;
+  _handleBeforeMount?: Function;
 
   // @ts-ignore
   @api
   get handleBeforeMount() {
     return (
       this._handleBeforeMount ||
-      (this._handleBeforeMount = this._createHook(HookTypes.BEFORE_MOUNT))
+      (this._handleBeforeMount = this._createHook(HookType.BEFORE_MOUNT))
     );
   }
 
-  _handleMounted: Function;
+  _handleMounted?: Function;
 
   // @ts-ignore
   @api
   get handleMounted() {
     return (
-      this._handleMounted || (this._handleMounted = this._createHook(HookTypes.MOUNTED))
+      this._handleMounted || (this._handleMounted = this._createHook(HookType.MOUNTED))
     );
   }
 
-  _handleBeforeUpdate: Function;
+  _handleBeforeUpdate?: Function;
 
   // @ts-ignore
   @api
   get handleBeforeUpdate() {
     return (
       this._handleBeforeUpdate ||
-      (this._handleBeforeUpdate = this._createHook(HookTypes.BEFORE_UPDATE))
+      (this._handleBeforeUpdate = this._createHook(HookType.BEFORE_UPDATE))
     );
   }
 
-  _handleUpdated: Function;
+  _handleUpdated?: Function;
 
   // @ts-ignore
   @api
   get handleUpdated() {
     return (
-      this._handleUpdated || (this._handleUpdated = this._createHook(HookTypes.UPDATED))
+      this._handleUpdated || (this._handleUpdated = this._createHook(HookType.UPDATED))
     );
   }
 
-  _handleBeforeUnmount: Function;
+  _handleBeforeUnmount?: Function;
 
   // @ts-ignore
   @api
   get handleBeforeUnmount() {
     return (
       this._handleBeforeUnmount ||
-      (this._handleBeforeUnmount = this._createHook(HookTypes.BEFORE_UNMOUNT))
+      (this._handleBeforeUnmount = this._createHook(HookType.BEFORE_UNMOUNT))
     );
   }
 
-  _handleUnmounted: Function;
+  _handleUnmounted?: Function;
 
   // @ts-ignore
   @api
   get handleUnmounted() {
     return (
       this._handleUnmounted ||
-      (this._handleUnmounted = this._createHook(HookTypes.UNMOUNTED))
+      (this._handleUnmounted = this._createHook(HookType.UNMOUNTED))
     );
   }
 
-  _handleFirstRender: Function;
+  _handleFirstRender?: Function;
 
   get handleFirstRender() {
     return (
       this._handleFirstRender ||
-      (this._handleFirstRender = this._createHook(HookTypes.FIRST_RENDER))
+      (this._handleFirstRender = this._createHook(HookType.FIRST_RENDER))
     );
   }
 
@@ -200,7 +236,7 @@ extends LightningElement {
   @api 
   __serialiseInner(): string {
     // eslint-disable-next-line @lwc/lwc/no-inner-html
-    return this.template.innerHTML;
+    return this.template?.innerHTML || "";
   }
 
   /* methods: internal - property management */
@@ -221,6 +257,7 @@ extends LightningElement {
     const prop = Symbol(`_${propertyName}`);
     this[propOriginal] = defaultValue;
     this[prop] = transform(defaultValue);
+    // @ts-ignore
     this[propertyName] = defaultValue;
 
     Object.defineProperty(this, propertyName, {
@@ -375,29 +412,45 @@ extends LightningElement {
   _isRendered = false;
 
   connectedCallback(): void {
-    if (DEBUG) console.debug(CLASS_NAME, "> connectedCallback");
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, "> connectedCallback"
+      );
+    }
 
     this._isConnected = true;
     this._isRendered = false;
 
     // before mount hook is called before first render
-    this.callHook(HookTypes.BEFORE_MOUNT);
+    this.callHook(HookType.BEFORE_MOUNT);
 
-    if (DEBUG) console.debug(CLASS_NAME, "< connectedCallback");
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, "< connectedCallback"
+      );
+    }
   }
 
   disconnectedCallback() {
-    if (DEBUG) console.debug(CLASS_NAME, "> disconnectedCallback");
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, "> disconnectedCallback"
+      );
+    }
 
     // in LWC there isn't really a way to execute something 
     // *before* component is disconnected/unmounted, so we do it right when it happens
     // but the element is no longer in the DOM so we can't do fancy stuff like fade outs
     // before the component is removed.
-    this.callHook(HookTypes.BEFORE_UNMOUNT);
-    this.callHook(HookTypes.UNMOUNTED);
+    this.callHook(HookType.BEFORE_UNMOUNT);
+    this.callHook(HookType.UNMOUNTED);
     this._isConnected = false;
 
-    if (DEBUG) console.debug(CLASS_NAME, "< disconnectedCallback");
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, "< disconnectedCallback"
+      );
+    }
   }
 
   renderedCallback() {
@@ -405,8 +458,8 @@ extends LightningElement {
       this._isRendered = true;
 
       // mounted hook is called after first render
-      this.callHook(HookTypes.MOUNTED);
-      this.callHook(HookTypes.FIRST_RENDER);
+      this.callHook(HookType.MOUNTED);
+      this.callHook(HookType.FIRST_RENDER);
     }
   }
 }

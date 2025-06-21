@@ -5,7 +5,10 @@ const WITH_KEYS = Symbol("_withKeys");
 
 const systemModifiers = ["ctrl", "shift", "alt", "meta"];
 
-const modifierGuards = {
+const modifierGuards: Record<
+  string, 
+  (...args: any[]) => boolean | void
+> = {
   stop: (e: Event) => e.stopPropagation(),
   prevent: (e: Event) => e.preventDefault(),
   self: (e: Event) => e.target !== e.currentTarget,
@@ -17,16 +20,18 @@ const modifierGuards = {
   middle: (e: Event) => "button" in e && e.button !== 1,
   right: (e: Event) => "button" in e && e.button !== 2,
   exact: (e: Event, modifiers: string[]) =>
+    // @ts-ignore
     systemModifiers.some((m) => e[`${m}Key`] && !modifiers.includes(m))
 };
 
-export const withModifiers = (fn: Function, modifiers: string[]): any => {
+export function withModifiers(fn: Function, modifiers: string[]): any {
+    // @ts-ignore
   const cache = fn[WITH_MODS] || (fn[WITH_MODS] = {});
   const cacheKey = modifiers.join(".");
 
   return (
     cache[cacheKey] ||
-    (cache[cacheKey] = (event: Event, ...args) => {
+    (cache[cacheKey] = (event: Event, ...args: any[]) => {
       for (let i = 0; i < modifiers.length; i++) {
         const guard = modifierGuards[modifiers[i]];
 
@@ -38,7 +43,7 @@ export const withModifiers = (fn: Function, modifiers: string[]): any => {
   );
 };
 
-const keyNames = {
+const keyNames: Record<string, string> = {
   esc: "escape",
   space: " ",
   up: "arrow-up",
@@ -48,7 +53,11 @@ const keyNames = {
   delete: "backspace"
 };
 
-export const withKeys = (fn: (event: Event) => any, modifiers: string[]): any => {
+export function withKeys(
+  fn: (event: Event) => any,
+   modifiers: string[]
+): any {
+  // @ts-ignore
   const cache = fn[WITH_KEYS] || (fn[WITH_KEYS] = {});
   const cacheKey = modifiers.join(".");
 
@@ -79,7 +88,8 @@ export function patchEvent(
   rawName: string, 
   prevValue: Function | Function[] | null, 
   nextValue: Function | Function[] | unknown
-) {
+): void {
+  // @ts-ignore
   const invokers = el[EI_KEY] || (el[EI_KEY] = {});
   const existingInvoker = invokers[rawName];
 
@@ -103,8 +113,10 @@ export function patchEvent(
 
 const optionsModifierRE = /(?:Once|Passive|Capture)$/;
 
-function parseName(name: string) {
-  let options: object;
+function parseName(
+  name: string
+): [string, Record<string, any> | undefined] {
+  let options: Record<string, any> | undefined;
 
   if (optionsModifierRE.test(name)) {
     options = {};
@@ -116,12 +128,13 @@ function parseName(name: string) {
     }
   }
 
-  const event = name[2] === ":" ? name.slice(3) : hyphenate(name.slice(2));
+  const event: string = name[2] === ":" ? name.slice(3) : hyphenate(name.slice(2));
+  
   return [event, options];
 }
 
 function createInvoker(initialValue: any) {
-  const invoker = (e) => {
+  const invoker = (e: any) => {
     invoker.value(e);
   };
 

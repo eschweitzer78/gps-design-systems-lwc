@@ -9,7 +9,7 @@ import {
 import tmpl from "./sfGpsDsMarkdownElement.html";
 
 import type { 
-  HtmlSanitizer 
+  HtmlSanitizerClass
 } from "c/sfGpsDsHelpers";
 
 export default 
@@ -17,17 +17,17 @@ class sfGpsDsMarkdownElement
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   /* api: content */
 
-  _contentOriginal: string;
-  _contentHtml: string;
-  _contentSanitizedHtml: string;
+  _contentOriginal?: string;
+  _contentHtml?: string;
+  _contentSanitizedHtml?: string;
 
   // @ts-ignore
   @api
-  get content(): string {
+  get content(): string | undefined {
     return this._contentOriginal;
   }
 
@@ -44,7 +44,7 @@ extends SfGpsDsElement {
 
   /* computed */
 
-  get sanitizer(): HtmlSanitizer {
+  get sanitizer(): HtmlSanitizerClass | null {
     return null;
   }
 
@@ -55,7 +55,7 @@ extends SfGpsDsElement {
   }
 
   renderedCallback() {
-    super.renderedCallback();
+    super.renderedCallback?.();
     
     if (this._contentSanitizedHtml) {
       replaceInnerHtml(this.refs.markdown, this._contentSanitizedHtml);

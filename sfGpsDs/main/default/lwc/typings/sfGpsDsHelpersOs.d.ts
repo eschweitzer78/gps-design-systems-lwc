@@ -2,81 +2,163 @@ declare module "c/sfGpsDsHelpersOs" {
   export type DateStyle = "short" | "medium" | "full" | "long";
   export type MonthFormat = "long" | "short" | "numeric" | "2-digit" | "narrow";
 
-  export function isDate(value: any): boolean;
-  export function isValidDate(obj: any): boolean;
-  export function parseIso8601(date: string): Date;
+  export function isDate(
+    value: any)
+    : boolean;
+  export function isValidDate(
+    obj: any)
+    : boolean;
+  export function parseIso8601(
+    date: string
+  ): Date;
   export function formatDate(
     date: Date, 
     dateStyle?: DateStyle, 
     userLocale?: string
   ): string;
-  export function getMonthNames(userLocale?: string, format?: MonthFormat): string[];
-  export function formatDateRange(dateStart: Date, dateEnd: Date, dateStyle?: DateStyle, userLocale?: string): string;
-  export function getUserLocale(useFallbackLocale?: boolean, fallbackLocale?: string): string;
-  export function getUserLocales(useFallbackLocale?: boolean, fallbackLocale?: string): string[];
+  export function getMonthNames(
+    userLocale?: string, 
+    format?: MonthFormat
+  ): string[];
+  export function formatDateRange(
+    dateStart: Date, 
+    dateEnd: Date, 
+    dateStyle?: DateStyle, 
+    userLocale?: string
+  ): string;
+  export function getUserLocale(
+    useFallbackLocale?: boolean, 
+    fallbackLocale?: string
+  ): string;
+  export function getUserLocales(
+    useFallbackLocale?: boolean, 
+    fallbackLocale?: string
+  ): string[];
 
-  export function replaceInnerHtml(element: Element, markup: string);
-  export function htmlDecode(markup: string): string;
-  export function getFirstChild(markup: string): Element;
-  export function computeClass(config: object | string[], joinChar?: string): string;
+  export function replaceInnerHtml(
+    element: Element, 
+    markup: string
+  ): void;
+  export function htmlDecode(
+    markup: string
+  ): string | null;
+  export function getFirstChild(
+    markup: string
+  ): Element | null;
+  export function computeClass(
+    config: Record<string, any> | string[], 
+    joinChar?: string
+  ): string | null;
   export function isRTL(): boolean;
-  export function getCssPropertyValue(propertyName: string): string;
+  export function getCssPropertyValue(
+    propertyName: string
+  ): string | null;
 
   export type HtmlSanitizerPlugin = {
     selector: string,
     process: (node: Node, parse: DOMParser) => Node
   }
-  export type HtmlSanitizer = {
-    sanitize(input: string, plugIns?: HtmlSanitizerPlugin[]): string
+  export type HtmlSanitizerClass = {
+    sanitize(
+      input: string, 
+      plugIns?: HtmlSanitizerPlugin[]
+    ): string
   }
-  export const HtmlSanitizer: HtmlSanitizer;
+  export const HtmlSanitizer: HtmlSanitizerClass;
 
-  export const withModifiers: (fn: Function, modifiers: string[]) => any;
-  export const withKeys: (fn: (event: Event) => any, modifiers: string[]) => any;
+  export function withModifiers(
+    fn: Function, 
+    modifiers: string[]
+  ): any;
+  export function withKeys(
+    fn: (event: Event) => any, 
+    modifiers: string[]
+  ): any;
   export function patchEvent(
     el: Element, 
     rawName: string, 
     prevValue: Function | Function[] | null, 
     nextValue: Function | Function[] | unknown
   ): void;
-  export function deepCopy(obj: any): any;
-  export function arraysEqual(array1: any[] | null, array2: any[] | null): boolean;
-  export function debounce(func: Function, delay: number, options?: { leading?: boolean });
-  export function once(func: Function): (...args: any[]) => void;
-  export const invokeArrayFns: (fns: Function[], ...arg) => any;
-  export const hasChanged: (value: any, oldValue: any) => boolean;
 
-  export function nextTick(fn: (value: void) => void | PromiseLike<void>): void;
+  export function deepCopy(
+    obj: any
+  ): any;
+  export function arraysEqual(
+    array1: any[] | null, 
+    array2: any[] | null
+  ): boolean;
+  export function debounce(
+    func: Function, 
+    delay: number, 
+    options?: { 
+      leading?: boolean 
+    }): (...args: any[]) => void;
+  export function once(
+    func: Function
+  ): (...args: any[]) => void;
+  export function invokeArrayFns (
+    fns: Function[], 
+    ...args: any[]
+  ): any;
+  export function hasChanged(
+    value: any, 
+    oldValue: any
+  ): boolean;
+
+  export function nextTick(
+    fn: (value: void) => void | PromiseLike<void>
+  ): Promise<void>;
 
   export function styleToString(styleObj: object | string[]): string;
   
-  export function normaliseBoolean(value: any, options?: {
-    acceptString?: boolean,
-    fallbackValue?: boolean
+  export function normaliseBoolean(
+    value: any, 
+    options?: {
+      acceptString?: boolean,
+      fallbackValue?: boolean
   }): boolean;
-  export function normaliseArray(value: any, options?: {
-    arraySingleton?: boolean
+  export function normaliseArray(
+    value: any, 
+    options?: {
+      arraySingleton?: boolean
   }): any[];
-  export function normaliseAriaAttribute(value: any): string;
-  export function normaliseString(value: any, options?: {
-    fallbackValue?: string,
-    validValues?: string[] | object,
-    toLowerCase?: boolean,
-    trim?: boolean,
-    returnObjectValue?: boolean
+  export function normaliseAriaAttribute(
+    value: any
+  ): string | null;
+  export function normaliseString(
+    value: any, 
+    options?: {
+      fallbackValue?: string,
+      validValues?: string[] | Record<string, string>,
+      toLowerCase?: boolean,
+      trim?: boolean,
+      returnObjectValue?: boolean
   }): string;
-  export function normaliseInteger(value: any, options?: {
-    fallbackValue?: number,
-    min?: number,
-    max?: number,
-    acceptString?: boolean
+  export function normaliseInteger(
+    value: any, 
+    options?: {
+      fallbackValue?: number,
+      min?: number,
+      max?: number,
+      acceptString?: boolean
   }): number;
 
-  export function formatTemplate(template: string, values?: object, options?: {
+  export function formatTemplate(
+    template: string, 
+    values?: Record<string, any>, 
+    options?: {
     sep?: string
-  }): string;
-  export function safeEqualsIgnoreCase(a: string, b: string): boolean;
-  export function truncateText(text: string, stop, clamp?: string): string;
+  }): string | null;
+  export function safeEqualsIgnoreCase(
+    a: string, 
+    b: string
+  ): boolean;
+  export function truncateText(
+    text: string, 
+    stop: number, 
+    clamp?: string
+  ): string;
   export const camelize: (str: string) => string;
   export const hyphenate: (str: string) => string;
   export const capitalize: (str: string) => string;
@@ -100,18 +182,25 @@ declare module "c/sfGpsDsHelpersOs" {
   export function toNumber(val: any): number;
   export function toArray<T = any>(value: T): T[];
 
-  export function isRelativeUrl(url: string): boolean;
-  export function isExternalUrl(url: string): boolean;
-  export function isAnchorLink(url: string): boolean;
-  export function getAnchorLinkName(str: string): string;
-  export function decodeSpecialCharacters(html: string): string;
+  export function isRelativeUrl(
+    url: string
+  ): boolean;
+  export function isExternalUrl(
+    url: string
+  ): boolean;
+  export function isAnchorLink(
+    url: string
+  ): boolean;
+  export function getAnchorLinkName(
+    str: string
+  ): string;
+  export function decodeSpecialCharacters(
+    html: string
+  ): string | null;
 
-  export const uniqueId: (prefix: string) => string;
-  export const isIPadPro: () => boolean;
-  export const isMacPlatform: () => boolean;
-
-  export function applyMixins(
-    targetClass: any, 
-    mixinClasses: any[]
-  ): void;
+  export function uniqueId(
+    prefix?: string
+  ): string;
+  export function isIPadPro(): boolean;
+  export function isMacPlatform(): boolean;
 }

@@ -5,10 +5,14 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api } from "lwc";
+import {
+  api 
+} from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 import type * as CSS from "csstype";
-import type { StyleElement } from "c/sfGpsDsSpinner";
+import type { 
+  StyleElement 
+} from "c/sfGpsDsSpinner";
 
 export default 
 class SfGpsDsSpinner 

@@ -1,5 +1,7 @@
 declare module "c/SfGpsDsNavigationService" {
+  import type { LightningElement } from "lwc";
   import type { NavigationMenuItem } from "c/sfGpsDsNavigation";
+  import type { NavigationMixin } from "lightning/navigation";
 
   export interface NavigationConfiguration {
     actionName?: string,
@@ -13,7 +15,9 @@ declare module "c/SfGpsDsNavigationService" {
     filterName?: string
   }
 
-  export default class SfGpsDsNavigationService {
+  export default 
+  class SfGpsDsNavigationService
+  extends NavigationMixin<LightningElement>(LightningElement) {
     navigateTo(
       type: string,
       configuration: NavigationConfiguration,

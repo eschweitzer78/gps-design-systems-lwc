@@ -1,13 +1,13 @@
 declare module "c/sfGpsDsCheckboxGroup" {
   import type SfGpsDsElement from "c/sfGpsDsElement";
+  import { PropertyAccessor } from "c/sfGpsDsElement";
 
   export const ELEMENT_SELECTOR: string;
   export const DISABLED_TRUE_VALUES: any[];
   export const READONLY_TRUE_VALUES: any[];
   export const REQUIRED_TRUE_VALUES: any[];
   export const VALUE_SEPARATOR: string;
-  export const CHECKED_DEFAULT: boolean;
-
+  
   export interface Option {
     label: string,
     value: string,
@@ -21,19 +21,32 @@ declare module "c/sfGpsDsCheckboxGroup" {
   export default 
   class SfGpsDsCheckboxGroup 
   extends SfGpsDsElement {
-    name: string;
-    label: string;
-    fieldLevelHelp: string;
-    fieldLevelPosition: string;
+    name?: string;
+    label?: string;
+    fieldLevelHelp?: string;
+    fieldLevelPosition?: string;
     alignment: "horizontal" | "vertical";
-    disabled: boolean | string;
-    readOnly: boolean | string;
-    required: boolean | string;
-    value: string[] | string;
-    options: Option[] | string[] | string;
-    checked: boolean | string;
-    requiredLabel: string;
 
+    get disabled(): boolean | string;
+    set disabled(value: boolean | string);
+    get readOnly(): boolean | string;
+    set readOnly(value: boolean | string);
+    get required(): boolean | string;
+    set required(value: boolean | string);
+
+    get value(): string[] | string;
+    set value(value: string[] | string);
+
+    get options(): Option[] | string[] | string;
+    set options(options: Option[] | string[] | string);
+
+    checked?: boolean | string;
+
+    get requiredLabel(): string;
+    set requiredLabel(value: string);
+
+    fireChangeOnSetValue?: boolean | string;
+    
     messageWhenValueMissing: string;
 
     readonly validity: ValidityState;
@@ -50,18 +63,15 @@ declare module "c/sfGpsDsCheckboxGroup" {
     _readOnlyOriginal: boolean | string;
     _required: boolean;
     _requiredOriginal: boolean | string;
-
     _value : string[];
-
     _options: Option[];
     _optionsOriginal: Option[] | string[] | string;
 
-    _isChecked: boolean;
+    _checked: PropertyAccessor<boolean>;
     _requiredLabel: string;
+    _fireChangeOnSetValue: PropertyAccessor<boolean>;
 
-    _fireChangeOnSetValue: boolean | string;
-
-    _internalOptions: InternalOption[];
+    _internalOptions?: InternalOption[];
 
     _updateInternalOptions(): void;
     _mapInternalOption(
@@ -78,10 +88,10 @@ declare module "c/sfGpsDsCheckboxGroup" {
 
     _notifyChange(isSet?: boolean): void;
 
-    _errorMessage: string;
+    _errorMessage?: string;
     _validity: object;
-    readonly _hasError: boolean;
+    get _hasError(): boolean;
 
-    _assessValidity(): void;
+    _assessValidity(showError: boolean): void;
   }
 }

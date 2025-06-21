@@ -10,7 +10,7 @@ declare module "c/sfGpsDsTransition" {
     "out-in";
 
   export interface Transition {
-    type: TransitionType,
+    type?: TransitionType,
     timeout: number,
     propCount: number,
     hasTransform: boolean
@@ -39,36 +39,58 @@ declare module "c/sfGpsDsTransition" {
   class SfGpsDsTransition 
   extends SfGpsDsLwc {
     name: string;
-    type: TransitionType;
-    mode: TransitionMode;
-    show: boolean;
-    appear;
-    duration;
-    disabled: boolean;
 
-    enterClass: string;
-    leaveClass: string;
-    enterToClass: string;
-    leaveToClass: string;
-    enterActiveClass: string;
-    leaveActiveClass: string;
+    get type(): TransitionType | undefined;
+    set type(value: TransitionType);
+
+    get mode(): TransitionMode | undefined;
+    set mode(value: TransitionMode);
+
+    get show(): boolean;
+    set show(value: boolean);
+
+    get appear(): boolean;
+    set appear(value: boolean);
+
+    get duration(): any;
+    set duration(value: any);
+
+    get disabled(): boolean;
+    set disabled(value: boolean);
+
+    get enterClass(): string;
+    set enterClass(value: string);
+
+    get leaveClass(): string;
+    set leaveClass(value: string);
+
+    get enterToClass(): string;
+    set enterToClass(value: string);
+
+    get leaveToClass(): string;
+    set leaveToClass(value: string);
+
+    get enterActiveClass(): string;
+    set enterActiveClass(value: string);
+
+    get leaveActiveClass(): string;
+    set leaveActiveClass(value: string);
 
     appearClass: string;
     appearActiveClass: string;
     appearToClass: string;
 
-    handleBeforeEnter: Function;
-    handleEnter: Function;
-    handleAfterEnter: Function;
-    handleAfterCancelled: Function;
+    handleBeforeEnter: TransitionHook;
+    handleEnter: TransitionHook;
+    handleAfterEnter: TransitionHook;
+    handleAfterCancelled: TransitionHook;
 
-    handleBeforeLeave: Function;
-    handleAfterLeave: Function;
-    handleLeaveCancelled: Function;
+    handleBeforeLeave: TransitionHook;
+    handleAfterLeave: TransitionHook;
+    handleLeaveCancelled: TransitionHook;
 
-    handleBeforeAppear: Function;
-    handleAfterAppear: Function;
-    handleAppearCancelled: Function;
+    handleBeforeAppear: TransitionHook;
+    handleAfterAppear: TransitionHook;
 
     // private
 
@@ -76,50 +98,62 @@ declare module "c/sfGpsDsTransition" {
 
     _name: string;
 
-    _typeOriginal: any;
-    _type: TransitionType;
+    _typeOriginal?: TransitionType;
+    _type?: TransitionType;
 
     _modeOriginal: any;
     _mode: TransitionMode;
 
-    _show: boolean;
-    _hasShow: boolean;
+    _show?: boolean;
+    _hasShow?: boolean;
 
-    _appear;
+    _appear: boolean;
 
-    _duration;
+    _duration?: Duration;
     _durationOriginal: any;
 
     _disabled: boolean;
-    _disabledOriginal: any;
+    _disabledOriginal: boolean;
+
+    _bound: boolean;
 
     updatedTransition(): void;
 
-    _enterClass: string;
-    _leaveClass: string;
-    _enterToClass: string;
-    _leaveToClass: string;
-    _enterActiveClass: string;
-    _leaveActiveClass: string;
+    _enterClass?: string;
+    _leaveClass?: string;
+    _enterToClass?: string;
+    _leaveToClass?: string;
+    _enterActiveClass?: string;
+    _leaveActiveClass?: string;
 
     whenTransitionEnds(
       expectedType: TransitionType, 
       cb: Function
     ): void;
+
     getTransitionInfo(
-      expectedType: TransitionType
+      expectedType?: TransitionType
     ): Transition;
 
-    addTransitionClass(cls: string): void;
-    removeTransitionClass(cls: string): void;
+    addTransitionClass(
+      cls: string
+    ): void;
+
+    removeTransitionClass(
+      cls: string
+    ): void;
 
     _enter(): void;
 
     _hasCancelCb: boolean;
-    _cancelCb: (Event) => void;
+    _cancelCb: (event: TransitionEvent) => void;
 
     enter(toggleDisplay?: () => void): void;
     leave(rm: () => void): void;
+
+    _displayStyle?: string;
+    setDisplayStyle(value?: string): void;
+    getDisplayStyle(): string;
 
   }
 }

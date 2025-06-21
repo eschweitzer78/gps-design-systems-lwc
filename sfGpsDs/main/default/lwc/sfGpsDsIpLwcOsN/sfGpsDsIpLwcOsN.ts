@@ -17,22 +17,22 @@ import {
   normaliseBoolean 
 } from "c/sfGpsDsHelpersOs";
 
-import type { 
-  BaseMixinItf
+import { 
+  OmniscriptBaseMixin
 } from "omnistudio/omniscriptBaseMixin";
 
 // Duration after which isLoading is set (which can be used by widgets to show a spinner)
 const SPINNER_THRESHOLD = 1000;
-const ITEMS_DEFAULT = [];
+const ITEMS_DEFAULT: any[] = [];
 const IPACTIVE_DEFAULT = true;
-const INPUT_DEFAULT = {};
-const OPTIONS_DEFAULT = {};
+const INPUT_DEFAULT = undefined;
+const OPTIONS_DEFAULT = undefined;
 
 const OMNISTUDIO_NS = "omnistudio__";
 
 export default 
 class SfGpsDsIpLwcOsN 
-extends SfGpsDsLwcOsN {
+extends OmniscriptBaseMixin<SfGpsDsLwcOsN>(SfGpsDsLwcOsN) {
   /* api: ipActive */
 
   _ipActive = IPACTIVE_DEFAULT;
@@ -54,7 +54,7 @@ extends SfGpsDsLwcOsN {
 
   /* api: ipName */
 
-  _ipName: string;
+  _ipName?: string;
 
   // @ts-ignore
   @api
@@ -69,8 +69,8 @@ extends SfGpsDsLwcOsN {
 
   /* api: inputJSON */
 
-  _input = INPUT_DEFAULT;
-  _inputJSONOriginal = JSON.stringify(INPUT_DEFAULT);
+  _input: object | undefined = INPUT_DEFAULT;
+  _inputJSONOriginal: string | undefined = INPUT_DEFAULT;
 
   // @ts-ignore
   @api
@@ -93,8 +93,8 @@ extends SfGpsDsLwcOsN {
 
   /* api: optionsJSON */
 
-  _options = OPTIONS_DEFAULT;
-  _optionsJSONOriginal = JSON.stringify(OPTIONS_DEFAULT);
+  _options: object | undefined = OPTIONS_DEFAULT;
+  _optionsJSONOriginal: string | undefined = OPTIONS_DEFAULT;
 
   // @ts-ignore
   @api
@@ -122,7 +122,7 @@ extends SfGpsDsLwcOsN {
 
   // @ts-ignore
   @track 
-  _didLoadOnce: boolean;
+  _didLoadOnce = false;
 
   // @ts-ignore
   @track 
@@ -131,7 +131,7 @@ extends SfGpsDsLwcOsN {
   /* methods */
 
   _nLoading = 0;
-  _loadingTimer: NodeJS.Timeout;
+  _loadingTimer?: NodeJS.Timeout;
 
   startedLoading(): void {
     this._nLoading++;
@@ -152,7 +152,7 @@ extends SfGpsDsLwcOsN {
     if (this._nLoading === 0) {
       if (this._loadingTimer) {
         clearTimeout(this._loadingTimer);
-        this._loadingTimer = null;
+        this._loadingTimer = undefined;
       }
 
       this._isLoading = false;
@@ -172,7 +172,7 @@ extends SfGpsDsLwcOsN {
 
     this.startedLoading();
 
-    (this as BaseMixinItf<typeof this>).omniRemoteCall(
+    this.omniRemoteCall(
       {
         sClassName: `${OMNISTUDIO_NS}IntegrationProcedureService`,
         sMethodName: this._ipName,
@@ -230,7 +230,7 @@ extends SfGpsDsLwcOsN {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
 
     if (this._ipActive && !this._ipName) {
       this.addError("IP-NV", "Integration procedure name is required.");

@@ -4,35 +4,27 @@ import {
   isPromise 
 } from "c/sfGpsDsHelpers";
 
+import { HookType } from "./sfGpsDsElement";
+
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsElement";
 
-export const HookTypes = {
-  BEFORE_MOUNT: Symbol("_onBeforeMountHooks"),
-  MOUNTED: Symbol("_onMountedHooks"),
-  BEFORE_UPDATE: Symbol("_onBeforeUpdateHooks"),
-  UPDATED: Symbol("_onUpdatedHooks"),
-  BEFORE_UNMOUNT: Symbol("_onBeforeUnmountHooks"),
-  UNMOUNTED: Symbol("_onUnmountedHooks"),
-  FIRST_RENDER: Symbol("_firstRender")
-};
+function handleError(
+  err: string | undefined,
+  type: HookType
+): void {
+  if (typeof err === "undefined") err = "Undefined error";
 
-export type HookType =
-  typeof HookTypes.BEFORE_MOUNT |
-  typeof HookTypes.MOUNTED |
-  typeof HookTypes.BEFORE_UPDATE |
-  typeof HookTypes.UPDATED |
-  typeof HookTypes.BEFORE_UNMOUNT |
-  typeof HookTypes.UNMOUNTED |
-  typeof HookTypes.FIRST_RENDER;
-
-function handleError(err: string, type: HookType) {
   if (DEBUG) console.debug(CLASS_NAME, "> handleError", err, type);
   console.error(err, type);
   if (DEBUG) console.debug(CLASS_NAME, "< handleError");
 }
 
-export function callWithErrorHandling(fn: Function, type: HookType, args?: any) {
+export function callWithErrorHandling(
+  fn: Function, 
+  type: HookType, 
+  args?: any
+): any {
   if (DEBUG) {
     console.debug(
       CLASS_NAME, "> callWithErrorHandling", 
@@ -44,29 +36,41 @@ export function callWithErrorHandling(fn: Function, type: HookType, args?: any) 
 
   try {
     const rv = args ? fn(...args) : fn();
-    if (DEBUG) console.debug(CLASS_NAME, "< callWithErrorHandling1", rv);
+
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, "< callWithErrorHandling1", 
+        rv
+      );
+    }
+
     return rv;
   } catch (err) {
-    const rv = handleError(err, type);
+    const rv = handleError(err?.toString?.(), type);
     if (DEBUG) console.debug(CLASS_NAME, "< callWithErrorHandling2", rv);
     return rv;
   }
 }
 
-export function callWithAsyncErrorHandling(fn: Function, type: HookType, args?: any) {
-  if (DEBUG)
+export function callWithAsyncErrorHandling(
+  fn: Function | Function[] | undefined, 
+  type: HookType, 
+  args?: any
+): any | any[] {
+  if (DEBUG) {
     console.debug(
       CLASS_NAME, "> callWithAsyncErrorHandling",
       "fn=", fn,
       "type=", type,
       "args=", args
     );
+  }
 
   if (isFunction(fn)) {
-    const rv = callWithErrorHandling(fn, type, args);
+    const rv = callWithErrorHandling(fn as Function, type, args);
     if (rv && isPromise(rv)) {
-      rv.catch((err) => {
-        const rv2 = handleError(err, type);
+      rv.catch((err: any) => {
+        const rv2 = handleError(err?.toString?.(), type);
         if (DEBUG)
           console.debug(CLASS_NAME, "< callWithAsyncErrorHandling1", rv2);
         return rv2;
@@ -80,15 +84,25 @@ export function callWithAsyncErrorHandling(fn: Function, type: HookType, args?: 
   if (isArray(fn)) {
     const values = [];
 
-    for (let i = 0; i < fn.length; i++) {
-      values.push(callWithAsyncErrorHandling(fn[i], type, args));
+    for (let i = 0; i < (fn as Function[]).length; i++) {
+      values.push(callWithAsyncErrorHandling((fn as Function[])[i], type, args));
     }
 
-    if (DEBUG)
-      console.debug(CLASS_NAME, "< callWithAsyncErrorHandling3", values);
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME, "< callWithAsyncErrorHandling3", 
+        values
+      );
+    }
+
     return values;
   }
 
-  if (DEBUG) console.debug(CLASS_NAME, "< callWithAsyncErrorHandling4");
+  if (DEBUG) {
+    console.debug(
+      CLASS_NAME, "< callWithAsyncErrorHandling4"
+    );
+  }
+
   return null;
 }

@@ -1,11 +1,11 @@
 /* eslint no-confusing-arrow: 0 */
 export function formatTemplate(
   template: string, 
-  values: object = {}, 
+  values: Record<string, any> = {}, 
   options: {
     sep?: string
   }= {}
-): string {
+): string | null {
   if (template == null) {
     return null;
   }
@@ -32,7 +32,10 @@ export function formatTemplate(
   );
 }
 
-export function safeEqualsIgnoreCase(a: string, b: string): boolean {
+export function safeEqualsIgnoreCase(
+  a: string, 
+  b: string
+): boolean {
   if (
     a == null ||
     b == null ||
@@ -44,8 +47,12 @@ export function safeEqualsIgnoreCase(a: string, b: string): boolean {
   return a.toLowerCase() === b.toLowerCase();
 }
 
-export function truncateText(text: string, stop = 150, clamp?: string): string {
-  if (text && typeof text === "string") {
+export function truncateText(
+  text: string, 
+  stop = 150, 
+  clamp?: string
+): string {
+  if (text && typeof text === "string" && stop > 0) {
     if (text.length > stop) {
       return text.slice(0, stop) + (stop < text.length ? clamp || "..." : "");
     }
@@ -55,8 +62,8 @@ export function truncateText(text: string, stop = 150, clamp?: string): string {
 }
 
 const cacheStringFunction = (fn: (str: string) => string) => {
-  const cache = Object.create(null);
-  return (str: string) => {
+  const cache: Record<string, string> = Object.create(null);
+  return (str: string): string => {
     const hit = cache[str];
     return hit || (cache[str] = fn(str));
   };

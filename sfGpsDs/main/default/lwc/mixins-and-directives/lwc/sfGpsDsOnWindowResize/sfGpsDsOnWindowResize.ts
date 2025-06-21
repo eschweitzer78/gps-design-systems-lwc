@@ -10,8 +10,12 @@ import { debounce } from "c/sfGpsDsHelpers";
 const WINDOW_RESIZE = Symbol("_sfGpsDsOnWindowResize");
 
 export default class {
+  [WINDOW_RESIZE]?: {
+    handler: EventListener
+  };
+
   /* bind must be called in the connectedCallback method */
-  bind(handler: (event: Event) => any) {
+  bind(handler: EventListener) {
     this[WINDOW_RESIZE] = {
       handler: debounce((e: Event) => {
         handler(e);

@@ -16,7 +16,7 @@ declare module "c/sfGpsDsSocialSharing" {
       url: string, 
       target?: string, 
       windowFeatures?: string
-    ): void;
+    ): Window | null;
   }
 
   export interface Dimensions {
@@ -28,11 +28,13 @@ declare module "c/sfGpsDsSocialSharing" {
     self: MockWindow
   ): void;
 
-  export default class SfGpsDsSocialSharing extends LightningElement {
+  export default 
+  class SfGpsDsSocialSharing 
+  extends LightningElement {
     name: string;
     network: string;
     url: string;
-    title: string;
+    // title: string;
     description: string;
     quote: string;
     hashtags: string;
@@ -40,13 +42,22 @@ declare module "c/sfGpsDsSocialSharing" {
     media: string;
     tag: string;
     popup: Dimensions;
-    className: string;
+    className?: string;
 
-    readonly key: string;
-    readonly rawLink: string;
-    readonly shareLink: string;
-    readonly encodedHashtags: string;
-    readonly computedClassName: string;
+    // private
+
+    popupTop: number;
+    popupLeft: number;
+    popupWindow: Window | null;
+    popupInterval: NodeJS.Timeout | null;
+
+    networks: Record<string, string>;
+
+    get key(): string;
+    get rawLink(): string;
+    get shareLink(): string;
+    get encodedHashtags(): string;
+    get computedClassName(): string;
 
     handleClick(
       event: MouseEvent

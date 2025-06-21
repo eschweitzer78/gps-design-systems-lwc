@@ -15,7 +15,8 @@ declare module "c/sfGpsDsSpinner" {
     squaresNum: number;
     color: string;
 
-    readonly computedSquareStyle: CSS.Properties;
-    readonly computedSquaresStyles: StyleElement[];
+    // internal
+    get computedSquareStyle(): CSS.Properties;
+    get computedSquaresStyles(): StyleElement[];
   }
 }

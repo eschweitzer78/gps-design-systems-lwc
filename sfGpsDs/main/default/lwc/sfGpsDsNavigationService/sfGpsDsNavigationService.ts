@@ -16,13 +16,13 @@ import type {
 
 export default 
 class SfGpsDsNavigationService 
-extends NavigationMixin(LightningElement) {
+extends NavigationMixin<LightningElement>(LightningElement) {
   // @ts-ignore
   @api 
   navigateTo(
     type: string, 
     config: NavigationConfiguration, 
-    state: NavigationState = null
+    state?: NavigationState
   ): void {
     // @ts-ignore
     this[NavigationMixin.Navigate]({
@@ -200,7 +200,7 @@ extends NavigationMixin(LightningElement) {
   @api generateUrl(
     type: string, 
     config: NavigationConfiguration, 
-    state: NavigationState = null
+    state?: NavigationState
   ): Promise<string> {
     // @ts-ignore
     return this[NavigationMixin.GenerateUrl]({

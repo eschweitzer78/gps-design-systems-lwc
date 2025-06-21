@@ -10,6 +10,7 @@ declare module "c/sfGpsDsLwcOsN" {
   import type { 
     OmniscriptBaseMixin
   } from "omnistudio/omniscriptBaseMixin";
+
   export interface LwcError {
     index: number,
     code: string,
@@ -30,15 +31,15 @@ declare module "c/sfGpsDsLwcOsN" {
   ) {
     // external
 
-    getErrors(): LwcError[];
+    getErrors(): LwcError[] | undefined;
 
     // internal
 
-    readonly communityId: string;
-    readonly communityBasePath: string;
-    readonly isPreview: boolean;
+    get communityId(): string;
+    get communityBasePath(): string;
+    get isPreview(): boolean;
 
-    _sfGpsDsErrors: LwcError[];
+    _sfGpsDsErrors?: LwcError[];
     addError(code: string, description: string): void;
     clearErrors(): void;
 

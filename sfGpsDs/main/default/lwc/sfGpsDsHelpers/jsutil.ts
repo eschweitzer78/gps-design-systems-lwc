@@ -5,7 +5,9 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 
-export function deepCopy(obj: any): any {
+export function deepCopy(
+  obj: any
+): any {
   if (Object(obj) !== obj) {
     return obj;
   }
@@ -40,7 +42,10 @@ export function deepCopy(obj: any): any {
   return result;
 }
 
-export function arraysEqual(array1: any[] | null, array2: any[] | null): boolean {
+export function arraysEqual(
+  array1: any[] | null, 
+  array2: any[] | null
+): boolean {
   if (!array1 || !array2) {
     return false;
   }
@@ -68,13 +73,14 @@ export function debounce(
   options?: {
     leading?: boolean
   }
-) {
+): (...args: any[]) => void {
   const _options = options || {};
   let invokeLeading = _options.leading;
   let timer: NodeJS.Timeout | string | number;
 
   return (...args: any[]): void => {
     if (invokeLeading) {
+      // @ts-ignore
       func.apply(this, args);
       invokeLeading = false;
     }
@@ -83,12 +89,12 @@ export function debounce(
 
     // eslint-disable-next-line @lwc/lwc/no-async-operation
     timer = setTimeout(() => {
+      // @ts-ignore
       func.apply(this, args);
       invokeLeading = _options.leading;
     }, delay);
   };
 }
-
 
 export function once(
   func: Function
@@ -98,6 +104,7 @@ export function once(
   return function () {
     if (!called) {
       called = true;
+      // @ts-ignore
       func.apply(this, arguments);
     }
   };

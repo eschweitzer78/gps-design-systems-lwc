@@ -15,14 +15,14 @@ import {
   normaliseBoolean 
 } from "c/sfGpsDsHelpers";
 
-import runIntegrationProcedure from "@salesforce/apex/sfGpsDsIntegrationProcController.runIntegrationProcedure";
+import runIntegrationProcedure from "@salesforce/apex/SfGpsDsIntegrationProcController.runIntegrationProcedure";
 
 // Duration after which isLoading is set (which can be used by widgets to show a spinner)
 const SPINNER_THRESHOLD = 1000;
-const ITEMS_DEFAULT = [];
+const ITEMS_DEFAULT: any[] = [];
 const IPACTIVE_DEFAULT = true;
-const INPUT_DEFAULT = null;
-const OPTIONS_DEFAULT = null;
+const INPUT_DEFAULT = undefined;
+const OPTIONS_DEFAULT = undefined;
 
 export default 
 class SfGpsDsIpLwc 
@@ -48,7 +48,7 @@ extends SfGpsDsLwc {
 
   /* api: ipName */
 
-  _ipName: string;
+  _ipName?: string;
 
   // @ts-ignore
   @api
@@ -63,8 +63,8 @@ extends SfGpsDsLwc {
 
   /* api: inputJSON */
 
-  _input = INPUT_DEFAULT;
-  _inputJSONOriginal = JSON.stringify(INPUT_DEFAULT);
+  _input: object | undefined = INPUT_DEFAULT;
+  _inputJSONOriginal: string | undefined = INPUT_DEFAULT;
 
   // @ts-ignore
   @api
@@ -89,8 +89,8 @@ extends SfGpsDsLwc {
 
   /* api: optionsJSON */
 
-  _options = OPTIONS_DEFAULT;
-  _optionsJSONOriginal = JSON.stringify(OPTIONS_DEFAULT);
+  _options: object | undefined = OPTIONS_DEFAULT;
+  _optionsJSONOriginal: string | undefined = OPTIONS_DEFAULT;
 
   // @ts-ignore
   @api
@@ -118,7 +118,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @track 
-  _didLoadOnce: boolean;
+  _didLoadOnce = false;
 
   // @ts-ignore
   @track 
@@ -127,7 +127,7 @@ extends SfGpsDsLwc {
   /* methods */
 
   _nLoading = 0;
-  _loadingTimer: NodeJS.Timeout;
+  _loadingTimer?: NodeJS.Timeout;
 
   startedLoading(): void {
     this._nLoading++;
@@ -148,7 +148,7 @@ extends SfGpsDsLwc {
     if (this._nLoading === 0) {
       if (this._loadingTimer) {
         clearTimeout(this._loadingTimer);
-        this._loadingTimer = null;
+        this._loadingTimer = undefined;
       }
 
       this._isLoading = false;
@@ -171,7 +171,7 @@ extends SfGpsDsLwc {
     runIntegrationProcedure({
       ipName: this._ipName,
       input: {
-        ...this._input,
+        ...(this._input ? this._input : {}),
         communityId: this.communityId,
         communityPreview: this.isPreview
       },
@@ -224,7 +224,7 @@ extends SfGpsDsLwc {
   /* lifecycle */
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
 
     if (this._ipActive && !this._ipName) {
       this.addError("IP-NV", "Integration procedure name is required.");

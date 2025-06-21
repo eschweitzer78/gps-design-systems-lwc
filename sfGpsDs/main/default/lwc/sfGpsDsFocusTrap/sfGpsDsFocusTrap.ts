@@ -22,7 +22,7 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  disabled: boolean;
+  disabled?: boolean;
   _disabled = this.defineBooleanProperty("disabled", {
     defaultValue: DISABLED_DEFAULT
   });

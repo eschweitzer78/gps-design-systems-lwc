@@ -41,8 +41,8 @@ function _isTelOrEmailUrl(url: string) {
   return false;
 }
 
-export function decodeSpecialCharacters(html: string): string {
-  const map = {
+export function decodeSpecialCharacters(html: string): string | null {
+  const map: Record<string, string> = {
     "&amp;": "&",
     "&gt;": ">",
     "&lt;": "<",
