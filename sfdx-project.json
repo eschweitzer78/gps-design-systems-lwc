@@ -50,22 +50,6 @@
       ]
     },
     {
-      "path": "sfGpsDsAuVic"
-    },
-    {
-      "path": "sfGpsDsAuVic1Full",
-      "package": "Salesforce Global Public Sector AU VIC Design System",
-      "versionName": "2025.04.28.1800",
-      "versionNumber": "2.8.0.NEXT",
-      "default": false,
-      "versionDescription": "Salesforce Global Public Sector AU VIC Design System v1 (Full)",
-      "dependencies": [
-        {
-          "package": "omnistudio 254.1"
-        }
-      ]
-    },
-    {
       "path": "sfGpsDsAuVic2",
       "default": false
     },
