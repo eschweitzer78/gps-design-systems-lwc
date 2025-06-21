@@ -6,7 +6,6 @@
 .sf/
 .sfdx/*
 !.sfdx/typings
-.sfdx/typings/lwc/sobjects
 !.sfdx/tsconfig.sfdx.json
 .localdevserver/
 deploy-options.json

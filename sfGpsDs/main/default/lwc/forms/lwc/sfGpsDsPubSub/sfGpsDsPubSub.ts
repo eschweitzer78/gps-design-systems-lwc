@@ -1,12 +1,12 @@
-import type { PubSubCallback } from "c/sfGpsDsPubSub";
+import type { 
+  PubSubCallback 
+} from "c/sfGpsDsPubSub";
 
 /**
  * A basic pub-sub mechanism for sibling component communication.
  */
 
-const callbacks: {
-  [key: string]: Set<PubSubCallback>
-} = {};
+const callbacks: Record<string, Set<PubSubCallback>> = {};
 
 /**
  * Registers a callback for an event
@@ -15,7 +15,8 @@ const callbacks: {
  */
 
 function register(
-  eventName: string, callbackobj: PubSubCallback
+  eventName: string, 
+  callbackobj: PubSubCallback
 ): void {
   if (!callbacks[eventName]) {
     callbacks[eventName] = new Set();
