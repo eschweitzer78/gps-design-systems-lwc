@@ -17,11 +17,11 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  url: string;
+  url?: string;
 
   // @ts-ignore
   @api 
-  iconPosition: string;
+  iconPosition?: string;
   _iconPosition = this.defineEnumProperty("iconPosition", {
     validValues: ICONPOSITION_VALUES,
     defaultValue: ICONPOSITION_DEFAULT
@@ -29,21 +29,21 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  isExternal: boolean;
+  isExternal?: boolean;
   _isExternal = this.defineBooleanProperty("isExternal", {
     defaultValue: ISEXTERNAL_DEFAULT
   });
 
   // @ts-ignore
   @api
-  isSmall: boolean;
+  isSmall?: boolean;
   _isSmall = this.defineBooleanProperty("isSmall", {
     defaultValue: ISSMALL_DEFAULT
   });
 
   /* computed */
 
-  get computedClassName(): string {
+  get computedClassName(): string | null {
     return computeClass({
       "docs-link": true,
       "rpl-type-p": !this._isSmall.value,

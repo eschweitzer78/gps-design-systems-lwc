@@ -16,40 +16,47 @@ class SfGpsDsAuVic2AppExampleThemeLayourLwr
 extends LightningElement {
   // @ts-ignore
   @api 
-  direction: string;
+  direction?: string;
+
   // @ts-ignore
   @api 
-  background: string;
+  background?: string;
+
   // @ts-ignore
   @api 
-  showBackToTop: string;
+  showBackToTop?: string;
+
   // @ts-ignore
   @api 
   skipToContentLabel: string = "Skip to main content";
 
   // @ts-ignore
   @api 
-  hasHeader: boolean;
-  // @ts-ignore
-  @api 
-  hasBelowHeader: boolean;
+  hasHeader?: boolean;
 
   // @ts-ignore
   @api 
-  themeClassName: string = "";
+  hasBelowHeader?: boolean;
 
   // @ts-ignore
   @api 
-  aboveHeaderClassName: string = "";
+  themeClassName = "";
+
   // @ts-ignore
   @api 
-  headerClassName: string = "rpl-layout__header";
+  aboveHeaderClassName = "";
   // @ts-ignore
   @api 
-  belowHeaderClassName: string = "rpl-u-margin-t-1";
+  headerClassName = "rpl-layout__header";
   // @ts-ignore
   @api 
-  footerClassName: string = "";
+  belowHeaderClassName = "rpl-u-margin-t-1";
+
+  // @ts-ignore
+  @api 
+  footerClassName = "";
+
+  /* computed */
 
   get skipLinksId(): string {
     return ID_SKIP_LINKS;
@@ -73,7 +80,7 @@ extends LightningElement {
 
   /* lifecycle */
 
-  _observer: ResizeObserver;
+  _observer?: ResizeObserver;
 
   connectedCallback() {
     // Post a message about document resizing, but up to 1x per 500ms

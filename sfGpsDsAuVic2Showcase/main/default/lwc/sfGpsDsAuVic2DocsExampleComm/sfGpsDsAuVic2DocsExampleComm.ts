@@ -8,29 +8,35 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  code: string;
+  code?: string;
+
   // @ts-ignore
   @api 
-  hideNewTab: boolean;
+  hideNewTab = false;
+
   // @ts-ignore
   @api 
-  hideCode: boolean;
+  hideCode = false;
+
   // @ts-ignore
   @api 
   withPadding = false;
+
   // @ts-ignore
   @api 
-  storyPreviewUrl: string;
+  storyPreviewUrl?: string;
+
   // @ts-ignore
   @api 
-  showCallout: true;
+  showCallout = false;
+
   // @ts-ignore
   @api 
-  className: string;
+  className?: string;
 
   // @ts-ignore
   @track 
-  isCodeOpen: boolean;
+  isCodeOpen = false;
 
   /* computed */
 
@@ -38,7 +44,7 @@ extends SfGpsDsLwc {
     return {
       "docs-example": true,
       "with-padding": this.withPadding,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
@@ -51,7 +57,9 @@ extends SfGpsDsLwc {
   }
 
   get computedCodeIcon(): string {
-    return this.isCodeOpen ? "icon-chevron-up" : "icon-chevron-down";
+    return this.isCodeOpen 
+      ? "icon-chevron-up" 
+      : "icon-chevron-down";
   }
 
   /* event management */
@@ -70,28 +78,27 @@ extends SfGpsDsLwc {
 
   /* lifecycle */
 
+  _messageListener?: (event: MessageEvent) => void;
+
   constructor() {
     super(true); // isLwrOnly
-  }
 
-  _messageListener: (event: MessageEvent) => void;
+    this.handleMounted(() => {
+      this.classList.add("vic2-scope");
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.classList.add("vic2-scope");
+      this._messageListener = (event) => {
+        if (event.data === "sfgpsds-auvic2-resize") {
+          this.handleFrameLoad();
+        }
+      };
 
-    this._messageListener = (event) => {
-      if (event.data === "sfgpsds-auvic2-resize") {
-        this.handleFrameLoad();
+      window.addEventListener("message", this._messageListener);
+    });
+
+    this.handleUnmounted(() => {
+      if (this._messageListener) {
+        window.removeEventListener("message", this._messageListener);
       }
-    };
-
-    window.addEventListener("message", this._messageListener);
-  }
-
-  disconnectedCallback() {
-    if (this._messageListener) {
-      window.removeEventListener("message", this._messageListener);
-    }
+    });
   }
 }

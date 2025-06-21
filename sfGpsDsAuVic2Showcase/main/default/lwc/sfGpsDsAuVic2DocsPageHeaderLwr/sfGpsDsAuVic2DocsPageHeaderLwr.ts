@@ -1,7 +1,10 @@
-import { api } from "lwc";
+import { 
+  api 
+} from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import mdEngine from "c/sfGpsDsMarkdown";
-import type { Link } from "c/sfGpsDsMarkdown";
+import type { 
+  Link 
+} from "c/sfGpsDsMarkdown";
 
 const LINKS_DEFAULT: Link[] = [];
 
@@ -9,36 +12,26 @@ export default
 class SfGpsDsAuVic2DocsPageHeaderLwr 
 extends SfGpsDsLwc {
   // @ts-ignore
-  @api title: string;
+  @api 
+  title = "";
+
   // @ts-ignore
-  @api description: string;
-
-  /* api: links */
-
-  _linksOriginal: string;
-  _links: Link[] = LINKS_DEFAULT;
+  @api 
+  description?: string;
 
   // @ts-ignore
   @api
-  get links(): string {
-    return this._linksOriginal;
-  }
-
-  set links(markdown: string) {
-    try {
-      this._linksOriginal = markdown;
-      this._links = mdEngine.extractLinks(markdown);
-      // eslint-disable-next-line no-unused-vars
-    } catch (e) {
-      this.addError("LI-MD", "Issue when parsing Links markdown");
-      this._links = LINKS_DEFAULT;
-    }
-  }
+  links?: string;
+  _links = this.defineMarkdownLinksProperty("links", {
+    errorCode: "LI-MD",
+    errorText: "Issue when parsing Links markdown",
+    defaultValue: LINKS_DEFAULT
+  }) ;
 
   /* computed */
 
   get computedShowLinks(): boolean {
-    return !!this._links?.length;
+    return !!this._links.value?.length;
   }
 
   /* lifecycle */
@@ -48,7 +41,7 @@ extends SfGpsDsLwc {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("vic2-scope");
   }
 }

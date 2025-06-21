@@ -1,7 +1,7 @@
 import { createElement } from "@lwc/engine-dom";
-import SfGpsDsAuVicButtonComm from "c/sfGpsDsAuVicButtonComm";
+import SfGpsDsAuVic2ButtonComm from "c/sfGpsDsAuVic2ButtonComm";
 
-describe("c-sf-gps-ds-au-vic-button-comm", () => {
+describe("c-sf-gps-ds-au-vic2-button-comm", () => {
   afterEach(() => {
     // The jsdom instance is shared across test cases in a single file so reset the DOM
     while (document.body.firstChild) {
@@ -11,14 +11,13 @@ describe("c-sf-gps-ds-au-vic-button-comm", () => {
 
   it("is accessible", async () => {
     // Arrange
-    const element = createElement("c-sf-gps-ds-au-vic-button-comm", {
-      is: SfGpsDsAuVicButtonComm
+    const element = createElement("c-sf-gps-ds-au-vic2-button-comm", {
+      is: SfGpsDsAuVic2ButtonComm
     });
 
     // Act
-    element.theme = "primary";
+    element.link = "[Click me](#)";
     element.disabled = false;
-    element.label = "Click me";
 
     document.body.appendChild(element);
 

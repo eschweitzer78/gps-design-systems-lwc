@@ -1,4 +1,4 @@
-import { LightningElement, api } from "lwc";
+import { api } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 
 /**

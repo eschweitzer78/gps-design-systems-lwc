@@ -11,8 +11,9 @@ extends SfGpsDsLwc {
   constructor() {
     super(true); // isLwrOnly
   }
+  
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("vic2-scope");
   }
 }

@@ -1,8 +1,15 @@
-import { api, track } from "lwc";
+import { 
+  api, 
+  track 
+} from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import { computeClass } from "c/sfGpsDsHelpers";
+import { 
+  computeClass 
+} from "c/sfGpsDsHelpers";
 import STATIC_RESOURCE from "@salesforce/resourceUrl/sfGpsDsAuVic2";
 import cBasePath from "@salesforce/community/basePath";
+
+const MENUOPEN_DEFAULT = false;
 
 /**
  * @slot MenuContents
@@ -14,24 +21,24 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  logoSrc: string;
+  logoSrc?: string;
   // @ts-ignore
   @api 
-  logoAlt: string;
+  logoAlt?: string;
   // @ts-ignore
   @api 
-  sectionTitle: string;
+  sectionTitle?: string;
   // @ts-ignore
   @api 
-  sectionColor: string;
+  sectionColor?: string;
 
   // @ts-ignore
   @track 
-  _focusTrapActivated: boolean;
+  _focusTrapActivated?: boolean;
 
   // @ts-ignore
   @track 
-  _isMenuOpen: boolean;
+  _isMenuOpen = MENUOPEN_DEFAULT;
 
   get isMenuOpen(): boolean {
     return this._isMenuOpen;
@@ -44,24 +51,18 @@ extends SfGpsDsLwc {
 
   /* computed */
 
-  get computedStyle(): string {
-    return computeClass(
-      {
-        [`--docs-header-color: ${this.sectionColor}`]: this.sectionColor
-      },
-      ";"
-    );
+  get computedStyle(): string | null {
+    return computeClass({
+      [`--docs-header-color: ${this.sectionColor}`]: this.sectionColor
+    }, ";");
   }
 
-  get computedMenuStyle(): string {
-    return computeClass(
-      {
-        "--local-vertical-nav-background: transparent": true,
-        "--local-vertical-nav-item-gutter: var(--rpl-sp-3)": true,
-        "--local-vertical-nav-hover-bg: var(--rpl-clr-neutral-300)": true
-      },
-      ";"
-    );
+  get computedMenuStyle(): string | null {
+    return computeClass({
+      "--local-vertical-nav-background: transparent": true,
+      "--local-vertical-nav-item-gutter: var(--rpl-sp-3)": true,
+      "--local-vertical-nav-hover-bg: var(--rpl-clr-neutral-300)": true
+    }, ";");
   }
 
   get computedLogoSrc() {
@@ -123,7 +124,7 @@ extends SfGpsDsLwc {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback?.();
     this.classList.add("vic2-scope");
   }
 
