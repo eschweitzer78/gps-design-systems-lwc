@@ -2,8 +2,8 @@
   "extends": "../../tsconfig.json",
   "include": [
     "**/*.ts",
-    "../../../../../../.sfdx/typings/lwc/**/*.d.ts",
-    "../../../../../../types/*.d.ts"
+    "../../../../../../types/*.d.ts",
+    "../../../../../../.sfdx/typings/lwc/**/*.d.ts"
   ],
   "exclude": ["**/__tests__/**"]
 }

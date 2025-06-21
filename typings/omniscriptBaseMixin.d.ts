@@ -1,5 +1,5 @@
 declare module "omnistudio/omniscriptBaseMixin" {
-  type BaseItf = {
+  class OmniscriptBaseItf {
     showValidation: boolean;
     omniSpinnerEnabled: boolean;
 
@@ -27,7 +27,7 @@ declare module "omnistudio/omniscriptBaseMixin" {
       input: object,
       key: string,
       usePubsub: boolean
-    );
+    ): void;
 
     omniGetSaveState(
       key: string
@@ -51,8 +51,7 @@ declare module "omnistudio/omniscriptBaseMixin" {
     checkValidity(): boolean;
     reportValidity(): boolean;
   }
-
-  export type BaseMixinItf<T> = BaseItf & T;
-
-  export function OmniscriptBaseMixin<T>(base: { new(): T }): new(...args: any) => BaseMixinItf<T>;
+  export function OmniscriptBaseMixin<T>(
+    base: new (...args: any[]) => T
+  ): new (...args: any[]) => OmniscriptBaseItf & T;
 }
