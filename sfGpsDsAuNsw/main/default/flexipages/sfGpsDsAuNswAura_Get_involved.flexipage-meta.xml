@@ -110,11 +110,7 @@
 &lt;/header&gt;
 </value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>className</name>
-                    <value>nsw-scope</value>
-                </componentInstanceProperties>
-                <componentName>sfGpsDsAuNswMarkupElementComm</componentName>
+                <componentName>sfGpsDsAuNswMarkupElementV2Comm</componentName>
                 <identifier>sfGpsDsAuNswMarkupElementComm</identifier>
             </componentInstance>
         </itemInstances>
@@ -201,11 +197,7 @@
 &lt;/header&gt;
 </value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>className</name>
-                    <value>nsw-scope</value>
-                </componentInstanceProperties>
-                <componentName>sfGpsDsAuNswMarkupElementComm</componentName>
+                <componentName>sfGpsDsAuNswMarkupElementV2Comm</componentName>
                 <identifier>sfGpsDsAuNswMarkupElementComm2</identifier>
             </componentInstance>
         </itemInstances>
