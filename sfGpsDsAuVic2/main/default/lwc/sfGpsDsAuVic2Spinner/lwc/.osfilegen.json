@@ -5,7 +5,8 @@
       "target": "!Os.html"
     },
     "!.js": {
-      "target": "!Os.js"
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

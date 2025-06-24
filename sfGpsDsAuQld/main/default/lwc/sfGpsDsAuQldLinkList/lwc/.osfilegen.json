@@ -23,7 +23,8 @@
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsLwc": "sfGpsDsLwcOsN",
-      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs"
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
