@@ -1,22 +1,4 @@
 {
-  "sfGpsDsAuQldLinkCollectionComm": {
-    "target": "!Os",
-    "!.html": {
-      "target": "!Os.html",
-      "c-sf-gps-ds-au-qld-link-list": "c-sf-gps-ds-au-qld-link-list-os",
-      "c-sf-gps-ds-empty": "c-sf-gps-ds-empty-os",
-      "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os",
-      "c-sf-gps-ds-au-qld-loading-spinner": "c-sf-gps-ds-au-qld-loading-spinner-os"
-    },
-    "!.js": {
-      "target": "!Os.js",
-      "sfGpsDsIpLwc": "sfGpsDsIpLwcOsN"
-    },
-    "!.js-meta.xml": {
-      "target": "!Os.js-meta.xml",
-      "<isExposed>(.|\\n)*Bundle>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>\n</LightningComponentBundle>"
-    }
-  },
   "sfGpsDsAuQldLinkList": {
     "target": "!Os",
     "!.html": {
@@ -41,7 +23,8 @@
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsLwc": "sfGpsDsLwcOsN",
-      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs"
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

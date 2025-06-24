@@ -6,6 +6,7 @@
     },
     "!.js": {
       "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "sfGpsDsAuVic2HtmlPlugIns": "sfGpsDsAuVic2HtmlPlugInsOs"
     },
     "!.js-meta.xml": {

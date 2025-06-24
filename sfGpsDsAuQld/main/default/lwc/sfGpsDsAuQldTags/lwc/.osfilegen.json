@@ -6,7 +6,9 @@
     },
     "!.js": {
       "target": "!Os.js",
-      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "import STATIC_RESOURCE from \"@salesforce/resourceUrl/sfGpsDsAuQld\";": "const STATIC_RESOURCE_NAME = \"sfGpsDsAuQld\";\nimport salesforceUtils from \"omnistudio/salesforceUtils\";\nimport { getCommunityPrefix } from \"omnistudio/utility\";\n\nconst geturl = (responses, path) => {\n  const url = responses[0] + path;\n  return responses[1] ? `${getCommunityPrefix()}${url}` : url;\n};",
+      "= STATIC_RESOURCE;": "= null;\n\n  connectedCallback() {\n    if (super.connectedCallback) {\n      super.connectedCallback();\n    }\n\n    Promise.all([salesforceUtils.getResourceUrl({\n      resourceName: STATIC_RESOURCE_NAME\n    }), salesforceUtils.isCommunity(), salesforceUtils.getCommunityName()]).then(responses => {\n      this.staticResourceHref = geturl(responses, \"\");\n    });\n  }"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

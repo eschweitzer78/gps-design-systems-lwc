@@ -1,24 +1,9 @@
+@import "./byo_auralwr_omniscript-base";
+
 .omniscript-sfl-actions,
 .omniscript-button-position,
 .omniscript-btn-next,
 .omniscript-btn-previous,
 .omniscript-btn-save-for-later {
   display: none !important;
-}
-
-.omniscript-article.slds-card {
-  border: none;
-}
-
-.omniscript-body {
-  padding: 0 !important;
-}
-
-.slds-omniscript_stepform {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}
-
-.omniscript-body {
-  border-right: 0 !important;
 }

@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { isArray, isObject } from "c/sfGpsDsHelpers";
+import { isArray, isObject } from "./typeutil";
 
 const parser = new DOMParser();
 

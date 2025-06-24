@@ -6,7 +6,8 @@
     },
     "!.js": {
       "target": "!Os.js",
-      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsElement": "sfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
@@ -46,7 +47,8 @@
       "target": "!Os.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "sfGpsDsLwc": "sfGpsDsLwcOsN",
-      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs"
+      "c/sfGpsDsMarkdown": "c/sfGpsDsMarkdownOs",
+      "sfGpsDsElement": "sfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
@@ -61,7 +63,8 @@
     },
     "!.js": {
       "target": "!Os.js",
-      "sfGpsDsLwc": "sfGpsDsLwcOsN"
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

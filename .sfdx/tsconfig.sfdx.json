@@ -634,9 +634,6 @@
             "c/sfGpsDsAuNswLinkCollectionComm": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkCollectionComm/sfGpsDsAuNswLinkCollectionComm"
             ],
-            "c/sfGpsDsAuNswLinkCollectionCommOs": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkCollectionCommOs/sfGpsDsAuNswLinkCollectionCommOs"
-            ],
             "c/sfGpsDsAuNswLinkList": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkList/sfGpsDsAuNswLinkList"
             ],
@@ -1296,9 +1293,6 @@
             ],
             "c/sfGpsDsAuQldLinkCollectionComm": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkCollectionComm/sfGpsDsAuQldLinkCollectionComm"
-            ],
-            "c/sfGpsDsAuQldLinkCollectionCommOs": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkCollectionCommOs/sfGpsDsAuQldLinkCollectionCommOs"
             ],
             "c/sfGpsDsAuQldLinkList": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldLinkList/lwc/sfGpsDsAuQldLinkList/sfGpsDsAuQldLinkList"

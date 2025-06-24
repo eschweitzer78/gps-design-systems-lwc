@@ -65,6 +65,7 @@
       "target": "!Os.js",
       "sfGpsDsLwc": "sfGpsDsLwcOsN",
       "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "SfGpsDsUkGovAccordionSectionComm": "SfGpsDsUkGovAccordionSectionCommOs"
     },
     "!.js-meta.xml": {
@@ -104,6 +105,7 @@
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "sfGpsDsMarkdown": "sfGpsDsMarkdownOs",
       "SfGpsDsUkGovDetailsComm": "SfGpsDsUkGovDetailsCommOs"
     },
@@ -124,7 +126,8 @@
       "target": "!Os.html"
     },
     "!.js": {
-      "target": "!Os.js"
+      "target": "!Os.js",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
@@ -139,7 +142,10 @@
       "c-sf-gps-ds-configuration-error": "c-sf-gps-ds-configuration-error-os"
     },
     "!.js": {
-      "target": "!Os.js"
+      "target": "!Os.js",
+      "sfGpsDsLwc": "sfGpsDsLwcOsN",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsMarkdown": "sfGpsDsMarkdownOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
