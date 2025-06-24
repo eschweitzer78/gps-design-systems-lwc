@@ -13,7 +13,7 @@ import { api } from "lwc";
 import SfGpsDsFormStepChart from "c/sfGpsDsFormStepChartOsN";
 import tmpl from "./sfGpsDsAuNswFormStepChartOsN.html";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuNswFormStepChartOsN";
 
 export default class extends SfGpsDsFormStepChart {
