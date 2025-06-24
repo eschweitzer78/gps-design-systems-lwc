@@ -10,7 +10,8 @@
     },
     "!.js": {
       "target": "!Os.js",
-      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsElement": "sfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",

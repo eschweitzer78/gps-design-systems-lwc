@@ -10,6 +10,7 @@
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsElement": "sfGpsDsElementOs",
       "SfGpsDsAuNswMarkupElementV2Comm": "SfGpsDsAuNswMarkupElementV2CommOs"
     },
     "!.js-meta.xml": {

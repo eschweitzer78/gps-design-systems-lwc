@@ -17,7 +17,7 @@
     "hookFn.js": {
       "target": "hookFn.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
-      "SfGpsDsElement": "SfGpsDsElementOs"
+      "sfGpsDsElement": "sfGpsDsElementOs"
     },
     "!.html": { "target": "!Os.html" },
     "!.js": {
@@ -35,7 +35,8 @@
     "!.html": { "target": "!Os.html" },
     "!.js": {
       "target": "!Os.js",
-      "SfGpsDsEmpty": "SfGpsDsEmptyOs"
+      "SfGpsDsEmpty": "SfGpsDsEmptyOs",
+      "sfGpsDsElement": "sfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
@@ -47,7 +48,8 @@
     "!.html": { "target": "!Os.html" },
     "!.js": {
       "target": "!Os.js",
-      "sfGpsDsHelpers": "sfGpsDsHelpersOs"
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "sfGpsDsElement": "sfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
@@ -109,7 +111,8 @@
       "sfGpsDsMarkdown\"": "sfGpsDsMarkdownOs\"",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
       "sfGpsDsMarkdownElement": "sfGpsDsMarkdownElementOs",
-      "SfGpsDsMarkdownElement": "SfGpsDsMarkdownElementOs"
+      "SfGpsDsMarkdownElement": "SfGpsDsMarkdownElementOs",
+      "sfGpsDsElement": "sfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
@@ -122,7 +125,8 @@
     "!.html": { "target": "!Os.html" },
     "!.js": {
       "target": "!Os.js",
-      "SfGpsDsSpinner": "SfGpsDsSpinnerOs"
+      "SfGpsDsSpinner": "SfGpsDsSpinnerOs",
+      "sfGpsDsElement": "sfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
