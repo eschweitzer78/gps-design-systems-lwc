@@ -1,9 +1,7 @@
 .omniscript-article.slds-card {
   border: none;
-}
-
-.omniscript-body {
-  padding: 0 !important;
+  webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .slds-omniscript_stepform {
@@ -11,8 +9,29 @@
   padding-left: 0 !important;
 }
 
+.omniscript-side-content {
+  margin-top: 0;
+}
+
 .omniscript-body {
+  padding: 0 !important;
   border-right: 0 !important;
+  margin-top: 0;
+
+  &[data-stepborder=left] {
+    padding-left: 1rem !important;
+  }
+
+  &[data-stepborder=right] {
+    padding-right: 1rem !important;
+  }
+
+}
+
+c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group {
+  .slds-button {
+    margin-top: 0.5rem;
+  }
 }
 
 omnistudio-omniscript-calculation-action,
@@ -26,11 +45,13 @@ omnistudio-omniscript-dr-transform-action,
 omnistudio-omniscript-http-action,
 omnistudio-omniscript-ip-action,
 omnistudio-omniscript-matrix-action,
-c-navigate-action,
+omnistudio-omniscript-navigate-action,
 omnistudio-omniscript-pdf-action,
 omnistudio-omniscript-remote-action,
 omnistudio-omniscript-set-values,
-omnistudio-omniscript-set-errors {
+omnistudio-omniscript-set-errors,
+omnistudio-omniscript-edit-block,
+c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group {
   .slds-button {
     --lwc-borderWidthThin: 2px;
     --lwc-border-radius: var(--nsw-border-radius);
@@ -126,3 +147,4 @@ omnistudio-omniscript-set-errors {
     }
   }
 }
+
