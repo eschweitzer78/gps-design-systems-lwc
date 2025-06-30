@@ -1675,9 +1675,6 @@
             "c/sfGpsDsAuVic2PageComponentLwr": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2PageComponentLwr/sfGpsDsAuVic2PageComponentLwr"
             ],
-            "c/sfGpsDsAuVic2SidebarComponentLwr": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2SidebarComponentLwr/sfGpsDsAuVic2SidebarComponentLwr"
-            ],
             "c/sfGpsDsAuVic2SidebarPageLayoutLwr": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layouts/lwc/sfGpsDsAuVic2SidebarPageLayoutLwr/sfGpsDsAuVic2SidebarPageLayoutLwr"
             ],
@@ -1695,9 +1692,6 @@
             ],
             "c/sfGpsDsAuVic2AccessibleContainer": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2AccessibleContainer/sfGpsDsAuVic2AccessibleContainer"
-            ],
-            "c/sfGpsDsAuVic2ExpandableStateMixin": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2ExpandableStateMixin/sfGpsDsAuVic2ExpandableStateMixin"
             ],
             "c/sfGpsDsAuVic2PopupMixin": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/mixins-composables/lwc/sfGpsDsAuVic2PopupMixin/sfGpsDsAuVic2PopupMixin"

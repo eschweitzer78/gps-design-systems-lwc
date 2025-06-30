@@ -1,16 +1,21 @@
-let PopupMixin = (
-  Base,
+import type { 
+  PopupMixinItf 
+} from "c/sfGpsDsAuVic2PopupMixin";
+
+export default function PopupMixin<T>(
+  base: new (...args: any[]) => object,
   popupSize = {
     width: 626,
     height: 436
   }
-) =>
-  class extends Base {
-    popupWindow;
-    popupInterval;
+): new (...args: any[]) => PopupMixinItf & T {
+  // @ts-ignore
+  return class PopupMixin extends base {
+    popupWindow: Window | null = null;
+    popupInterval?: NodeJS.Timeout;
     popup = popupSize;
 
-    openPopup(content, key) {
+    openPopup(content: string, key: string) {
       const $window = window;
       const { popupTop, popupLeft } = this.resizePopup($window);
 
@@ -40,7 +45,7 @@ let PopupMixin = (
       }, 500);
     }
 
-    resizePopup($window) {
+    resizePopup($window: Window) {
       const width =
         $window.innerWidth ||
         document.documentElement.clientWidth ||
@@ -66,5 +71,4 @@ let PopupMixin = (
       };
     }
   };
-
-export default PopupMixin;
+}

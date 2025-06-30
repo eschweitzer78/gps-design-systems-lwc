@@ -1,13 +1,16 @@
 /*
- * Copyright (c) 2023, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2023-2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { api, LightningElement } from "lwc";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
-import ExpandableStateMixin from "c/sfGpsDsAuVic2ExpandableStateMixin";
+import { api } from "lwc";
+import SfGpsDsElement from "c/sfGpsDsElement";
+import { computeClass } from "c/sfGpsDsHelpers";
+import ExpandableStateMixin from "c/sfGpsDsExpandableStateMixin";
+
+const NUMBERED_DEFAULT = false;
 
 const CLOSE_ACTION = "close";
 const OPEN_ACTION = "open";
@@ -17,32 +20,32 @@ const I18N = {
   closeAll: "Close all"
 };
 
-export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
-  LightningElement
+export default 
+class SfGpsDsAuVic2Accordion 
+extends ExpandableStateMixin<SfGpsDsElement>(
+  SfGpsDsElement
 ) {
-  @api className;
+  // @ts-ignore
+  @api 
+  className?: string;
 
   /* api : numbered */
 
-  _numberedOriginal = false;
-  _numbered = false;
-
+  // @ts-ignore
   @api
-  get numbered() {
-    return this._numberedOriginal;
-  }
-
-  set numbered(value) {
-    this._numberedOriginal = value;
-    this._numbered = normaliseBoolean(value, {
-      acceptAsString: true,
-      fallbackValue: false
-    });
-  }
+  numbered: boolean;
+  _numbered = this.defineBooleanProperty("numbered", {
+    defaultValue: NUMBERED_DEFAULT
+  });
 
   /* items */
 
-  mapItem(item, index, length, active) {
+  mapItem(
+    item: any, 
+    index: number, 
+    _length: number, 
+    active: boolean
+  ): any {
     let indexP1 = index + 1;
     return {
       ...item,
@@ -60,6 +63,7 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
 
   /* api readonly: allExpanded */
 
+  // @ts-ignore
   @api
   get allExpanded() {
     return super.isAllExpanded();
@@ -67,6 +71,7 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
 
   /* api readonly: allCollapsed */
 
+  // @ts-ignore
   @api
   get allCollapsed() {
     return super.isAllCollapsed();
@@ -74,11 +79,11 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
 
   /* computed: computedClassName */
 
-  get computedClassName() {
-    return computeClass({
+  get computedClassName(): any {
+    return {
       "rpl-accordion": true,
-      [this.className]: this.className
-    });
+      [this.className || ""]: !!this.className
+    };
   }
 
   /* computed: computedToggleAllLabel */
@@ -99,13 +104,15 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     this.toggleAll();
   }
 
-  handleToggleItem(event) {
-    const index = Number(event.currentTarget.dataset.idx);
-    this.toggleIndex(index);
+  handleToggleItem(event: MouseEvent): void {
+    const currentTarget = event.currentTarget as HTMLElement;
+    const index = Number(currentTarget.dataset.idx);
+    this.toggleItemByIndex(index);
   }
 
   /* methods */
 
+  // @ts-ignore
   @api
   toggleAll() {
     const isAllExpanded = super.toggleAll();
@@ -119,11 +126,12 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return isAllExpanded;
   }
 
+  // @ts-ignore
   @api
-  toggleIndex(index) {
-    const isActive = super.toggleIndex(index);
+  toggleItemByIndex(index: number) {
+    const isActive = super.toggleItemByIndex(index);
 
-    if (isActive == null) return;
+    if (isActive == null) return null;
 
     this.dispatchEvent(
       new CustomEvent("toggleitem", {

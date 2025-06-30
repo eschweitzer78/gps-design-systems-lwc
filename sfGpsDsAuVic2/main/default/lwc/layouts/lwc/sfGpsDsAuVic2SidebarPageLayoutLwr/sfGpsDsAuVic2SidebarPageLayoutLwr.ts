@@ -1,4 +1,7 @@
-import { LightningElement, api } from "lwc";
+import { 
+  LightningElement, 
+  api 
+} from "lwc";
 
 const HASSIDEBAR_DEFAULT = true;
 
@@ -12,18 +15,35 @@ const ID_BELOW_BODY = "sfgpsds-au-vic2-below-body";
  * @slot sidebar
  * @slot belowBody
  */
-export default class extends LightningElement {
-  @api aboveBodyClassName = "";
-  @api bodyClassName = "rpl-grid rpl-grid--no-row-gap rpl-layout__body";
-  @api mainClassName = "rpl-layout__main rpl-col-12";
-  @api sidebarClassName =
+export default 
+class SfGpsDsAuVic2SidebarPageLayoutLwr 
+extends LightningElement {
+  // @ts-ignore
+  @api 
+  aboveBodyClassName = "";
+
+  // @ts-ignore
+  @api 
+  bodyClassName = "rpl-grid rpl-grid--no-row-gap rpl-layout__body";
+
+  // @ts-ignore
+  @api 
+  mainClassName = "rpl-layout__main rpl-col-12";
+
+  // @ts-ignore
+  @api 
+  sidebarClassName =
     "rpl-layout__sidebar rpl-col-4-m rpl-col-start-9-m rpl-col-12";
-  @api belowBodyClassName = "";
+
+  // @ts-ignore
+  @api 
+  belowBodyClassName = "";
 
   /* api: hasSideBar */
 
   _hasSidebar = HASSIDEBAR_DEFAULT;
 
+  // @ts-ignore
   @api
   get hasSidebar() {
     return this._hasSidebar;
@@ -47,10 +67,10 @@ export default class extends LightningElement {
     return ID_BELOW_BODY;
   }
 
-  get computedMainClassName() {
+  get computedMainClassName(): any {
     return {
-      "rpl-col-7-m": this._hasSidebar,
-      [this.mainClassName]: this.mainClassName
+      "rpl-col-7-m": !!this._hasSidebar,
+      [this.mainClassName || ""]: !!this.mainClassName
     };
   }
 }
