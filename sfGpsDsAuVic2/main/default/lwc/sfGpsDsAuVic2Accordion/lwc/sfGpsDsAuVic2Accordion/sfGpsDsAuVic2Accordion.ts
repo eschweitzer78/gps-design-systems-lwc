@@ -26,17 +26,15 @@ extends ExpandableStateMixin<SfGpsDsElement>(
   SfGpsDsElement
 ) {
   // @ts-ignore
-  @api 
-  className?: string;
-
-  /* api : numbered */
-
-  // @ts-ignore
   @api
-  numbered: boolean;
+  numbered?: boolean;
   _numbered = this.defineBooleanProperty("numbered", {
     defaultValue: NUMBERED_DEFAULT
   });
+
+  // @ts-ignore
+  @api 
+  className?: string;
 
   /* items */
 
@@ -141,5 +139,7 @@ extends ExpandableStateMixin<SfGpsDsElement>(
         }
       })
     );
+
+    return isActive;
   }
 }

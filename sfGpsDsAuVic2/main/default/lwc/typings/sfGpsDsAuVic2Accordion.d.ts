@@ -8,6 +8,7 @@ declare module "c/sfGpsDsAuVic2Accordion" {
   extends ExpandableStateMixin<SfGpsDsElement>(
     SfGpsDsElement
   ) {
+    numbered?: boolean;
     className?: string;
     numbered: boolean;
 

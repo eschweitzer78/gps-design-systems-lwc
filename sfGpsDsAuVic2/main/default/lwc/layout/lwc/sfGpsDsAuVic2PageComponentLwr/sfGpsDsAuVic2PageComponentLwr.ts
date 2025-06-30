@@ -53,6 +53,8 @@ extends SfGpsDsLwc {
 
   /* api: className */
 
+  // @ts-ignore
+  @api
   className?: string;
   _className = this.defineStringProperty("className", {
     // eslint-disable-next-line no-unused-vars

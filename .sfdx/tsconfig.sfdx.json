@@ -1675,6 +1675,9 @@
             "c/sfGpsDsAuVic2PageComponentLwr": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2PageComponentLwr/sfGpsDsAuVic2PageComponentLwr"
             ],
+            "c/sfGpsDsAuVic2SidebarComponentLwr": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layout/lwc/sfGpsDsAuVic2SidebarComponentLwr/sfGpsDsAuVic2SidebarComponentLwr"
+            ],
             "c/sfGpsDsAuVic2SidebarPageLayoutLwr": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2/main/default/lwc/layouts/lwc/sfGpsDsAuVic2SidebarPageLayoutLwr/sfGpsDsAuVic2SidebarPageLayoutLwr"
             ],

@@ -1,7 +1,7 @@
 import type { HtmlSanitizerPlugin } from "c/sfGpsDsHelpers";
 
 const plugInLinks: HtmlSanitizerPlugin = {
-  selector: "a:not[class]",
+  selector: "a:not([class])",
   process: ($node, parser) => {
     const $anchor = $node as HTMLAnchorElement;
 

@@ -16,12 +16,10 @@ class SfGpsDsAuVic2CardGridLwr
 extends SfGpsDsLwc {
   static renderMode: "light" | "shadow" = "light";
 
-  /* api: hasSideBar */
-
   // @ts-ignore
   @api 
-  hasSideBar?: boolean;
-  _hasSideBar = this.defineBooleanProperty("hasSideBar", {
+  hasSidebar?: boolean;
+  _hasSidebar = this.defineBooleanProperty("hasSidebar", {
     defaultValue: HASSIDEBAR_DEFAULT,
     watcher: (_propertyName, newValue, previousValue) => {
       if (previousValue && !newValue)
@@ -31,8 +29,8 @@ extends SfGpsDsLwc {
     }
   });
 
-  /* api: className */
-
+  // @ts-ignore
+  @api
   className?: string;
   _className = this.defineStringProperty("className", {
     // eslint-disable-next-line no-unused-vars
