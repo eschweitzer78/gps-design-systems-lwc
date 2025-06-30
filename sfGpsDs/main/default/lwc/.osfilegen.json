@@ -23,7 +23,8 @@
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
-      "sfGpsDsElement": "sfGpsDsElementOs"
+      "sfGpsDsElement": "sfGpsDsElementOs",
+      "SfGpsDsElement": "SfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
