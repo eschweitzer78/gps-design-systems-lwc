@@ -4,7 +4,7 @@
   "version": "3.0.0",
   "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
-    "build": "npx tsc --project sfGpsDs/main/default/lwc; npx tsc --project sfGpsDsAuNsw/main/default/lwc; npx tsc --project sfGpsDsAuVic2Showcase/main/default/lwc",
+    "build": "npx tsc --project sfGpsDs/main/default/lwc; npx tsc --project sfGpsDsAuNsw/main/default/lwc; npx tsc --project sfGpsDsAuVic2/main/default/lwc; npx tsc --project sfGpsDsAuVic2Showcase/main/default/lwc",
     "lint": "eslint **/{aura,lwc}/**",
     "test": "npm run test:unit",
     "test:unit": "npm run osfilegen;sfdx-lwc-jest --skipApiVersionCheck --verbose",

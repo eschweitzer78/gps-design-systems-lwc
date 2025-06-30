@@ -5,7 +5,7 @@ import {
   toNumber,
   isString
 } from "c/sfGpsDsHelpers";
-import { BreakpointsMixin } from "c/sfGpsDsAuVic2BreakpointsMixin";
+import BreakpointsMixin from "c/sfGpsDsAuVic2BreakpointsMixin";
 
 const EXPANDABLE_DEFAULT = false;
 const AUTOEXPANDABLE_DEFAULT = false;

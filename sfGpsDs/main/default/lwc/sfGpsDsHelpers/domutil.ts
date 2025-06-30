@@ -18,11 +18,11 @@ const parser = new DOMParser();
 
 export function replaceInnerHtml(
   element: Element, 
-  markup: string
+  markup: string | undefined | null
 ): void {
   try {
     // eslint-disable-next-line @lwc/lwc/no-inner-html
-    element.innerHTML = markup;
+    element.innerHTML = markup || "";
   } catch (error) {
     console.error(
       "Error in replaceInnerHtml",
@@ -42,10 +42,14 @@ export function replaceInnerHtml(
  */
 
 export function htmlDecode(
-  markup: string
+  markup:  | undefined | null
 ): string | null {
-  let htmlDoc = parser.parseFromString(markup, "text/html");
-  let rn = htmlDoc.querySelector("body");
+  if (!markup) {
+    return null;
+  }
+
+  const htmlDoc = parser.parseFromString(markup, "text/html");
+  const rn = htmlDoc.querySelector("body");
 
   return rn?.childNodes.length === 0 ? "" : (rn as HTMLBodyElement).childNodes[0].nodeValue;
 }
@@ -59,8 +63,12 @@ export function htmlDecode(
  */
 
 export function getFirstChild(
-  markup: string
+  markup: string | undefined | null
 ): Element | null {
+  if (!markup) {
+    return null;
+  }
+
   const htmlDoc = parser.parseFromString(markup, "text/html");
   const rn = htmlDoc.querySelector("body");
 

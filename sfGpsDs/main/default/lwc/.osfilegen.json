@@ -23,7 +23,8 @@
     "!.js": {
       "target": "!Os.js",
       "sfGpsDsHelpers": "sfGpsDsHelpersOs",
-      "sfGpsDsElement": "sfGpsDsElementOs"
+      "sfGpsDsElement": "sfGpsDsElementOs",
+      "SfGpsDsElement": "SfGpsDsElementOs"
     },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
@@ -65,7 +66,6 @@
     "jsutil.js": { "target": "jsutil.js" },
     "nextTick.js": { "target": "nextTick.js" },
     "normalise.js": { "target": "normalise.js" },
-    "mixins.js": { "target": "mixins.js" },
     "!.js": { "target": "!Os.js" },
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
