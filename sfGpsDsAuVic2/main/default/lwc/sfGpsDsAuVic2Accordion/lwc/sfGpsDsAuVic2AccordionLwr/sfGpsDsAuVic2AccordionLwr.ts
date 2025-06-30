@@ -7,11 +7,13 @@
 
 import { api } from "lwc";
 import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
-import ExpandableStateMixin from "c/sfGpsDsAuVic2ExpandableStateMixin";
+import ExpandableStateMixin from "c/sfGpsDsExpandableStateMixin";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 const CLOSE_ACTION = "close";
 const OPEN_ACTION = "open";
+
+const NUMBERED_DEFAULT = false;
 
 const I18N = {
   openAll: "Open all",
@@ -30,9 +32,17 @@ const I18N = {
  * @slot Accordion-9
  * @slot Accordion-10
  */
-export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
+export default 
+class SfGpsDsAuVic2Accordion 
+extends ExpandableStateMixin<SfGpsDsLwc>(
   SfGpsDsLwc
 ) {
+  items: Array<{
+    title: string,
+    className?: string,
+    active?: boolean;
+  }>;
+
   constructor() {
     super();
 
@@ -50,7 +60,9 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     ];
   }
 
-  @api set item1Title(value) {
+  // @ts-ignore
+  @api 
+  set item1Title(value) {
     this._items[0].title = value;
   }
   get item1Title() {
@@ -63,7 +75,9 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[0].active;
   }
 
-  @api set item2Title(value) {
+  // @ts-ignore
+  @api 
+  set item2Title(value) {
     this._items[1].title = value;
   }
   get item2Title() {
@@ -76,7 +90,9 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[1].active;
   }
 
-  @api set item3Title(value) {
+  // @ts-ignore
+  @api 
+  set item3Title(value) {
     this._items[2].title = value;
   }
   get item3Title() {
@@ -89,8 +105,10 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[2].active;
   }
 
+  // @ts-ignore
   @api
-  set item4Title(value) {
+  set 
+  item4Title(value) {
     this._items[3].title = value;
   }
   get item4Title() {
@@ -103,8 +121,10 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[3].active;
   }
 
+  // @ts-ignore
   @api
-  set item5Title(value) {
+  set 
+  item5Title(value) {
     this._items[4].title = value;
   }
   get item5Title() {
@@ -117,8 +137,10 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[4].active;
   }
 
+  // @ts-ignore
   @api
-  set item6Title(value) {
+  set 
+  item6Title(value) {
     this._items[5].title = value;
   }
   get item6Title() {
@@ -131,8 +153,10 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[5].active;
   }
 
+  // @ts-ignore
   @api
-  set item7Title(value) {
+  set 
+  item7Title(value) {
     this._items[6].title = value;
   }
   get item7Title() {
@@ -145,8 +169,10 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[6].active;
   }
 
+  // @ts-ignore
   @api
-  set item8Title(value) {
+  set 
+  item8Title(value) {
     this._items[7].title = value;
   }
   get item8Title() {
@@ -159,8 +185,10 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[7].active;
   }
 
+  // @ts-ignore
   @api
-  set item9Title(value) {
+  set 
+  item9Title(value) {
     this._items[8].title = value;
   }
   get item9Title() {
@@ -173,6 +201,7 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[8].active;
   }
 
+  // @ts-ignore
   @api
   set item10Title(value) {
     this._items[9].title = value;
@@ -187,30 +216,27 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return this._items[9].active;
   }
 
-  @api className;
+  // @ts-ignore
+  @api 
+  numbered?: boolean;
+  _numbered = this.defineBooleanProperty("numbered", {
+    defaultValue: NUMBERED_DEFAULT
+  });
 
-  /* api : numbered */
-
-  _numberedOriginal = false;
-  _numbered = false;
-
-  @api
-  get numbered() {
-    return this._numberedOriginal;
-  }
-
-  set numbered(value) {
-    this._numberedOriginal = value;
-    this._numbered = normaliseBoolean(value, {
-      acceptAsString: true,
-      fallbackValue: false
-    });
-  }
+  // @ts-ignore
+  @api 
+  className?: string;
 
   /* items */
 
-  mapItem(item, index, length, active) {
+  mapItem(
+    item: any, 
+    index: number, 
+    _length: number, 
+    active: boolean
+  ): any {
     let indexP1 = index + 1;
+
     return {
       ...item,
       index: indexP1,
@@ -227,6 +253,7 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
 
   /* api readonly: allExpanded */
 
+  // @ts-ignore
   @api
   get allExpanded() {
     return super.isAllExpanded();
@@ -234,6 +261,7 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
 
   /* api readonly: allCollapsed */
 
+  // @ts-ignore
   @api
   get allCollapsed() {
     return super.isAllCollapsed();
@@ -241,22 +269,22 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
 
   /* computed: computedClassName */
 
-  get computedClassName() {
+  get computedClassName(): any {
     return computeClass({
       "rpl-accordion": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     });
   }
 
   /* computed: computedToggleAllLabel */
 
-  get computedToggleAllLabel() {
+  get computedToggleAllLabel(): string {
     return this.allExpanded ? I18N.closeAll : I18N.openAll;
   }
 
   /* computed: computedShowButton */
 
-  get computedShowButton() {
+  get computedShowButton(): boolean {
     return this._items.length > 0;
   }
 
@@ -266,12 +294,13 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     this.toggleAll();
   }
 
-  handleToggleItem(event) {
-    this.toggleIndex(event.detail.index);
+  handleToggleItem(event: CustomEvent) {
+    this.toggleItemByIndex(event.detail.index);
   }
 
   /* methods */
 
+  // @ts-ignore
   @api
   toggleAll() {
     const isAllExpanded = super.toggleAll();
@@ -285,9 +314,10 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
     return isAllExpanded;
   }
 
+  // @ts-ignore
   @api
-  toggleIndex(index) {
-    const isActive = super.toggleIndex(index);
+  toggleItemByIndex(index: number) {
+    const isActive = super.toggleItemByIndex(index);
 
     if (isActive == null) return;
 
@@ -299,5 +329,7 @@ export default class SfGpsDsAuVic2Accordion extends ExpandableStateMixin(
         }
       })
     );
+
+    return isActive
   }
 }

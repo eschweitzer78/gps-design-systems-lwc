@@ -96,18 +96,6 @@ extends ExpandableStateMixin<SfGpsDsElement>(
     return this._items.length > 0;
   }
 
-  /* event management */
-
-  handleToggleAll() {
-    this.toggleAll();
-  }
-
-  handleToggleItem(event: MouseEvent): void {
-    const currentTarget = event.currentTarget as HTMLElement;
-    const index = Number(currentTarget.dataset.idx);
-    this.toggleItemByIndex(index);
-  }
-
   /* methods */
 
   // @ts-ignore
@@ -141,5 +129,16 @@ extends ExpandableStateMixin<SfGpsDsElement>(
     );
 
     return isActive;
+  }
+  /* event management */
+
+  handleToggleAll() {
+    this.toggleAll();
+  }
+
+  handleToggleItem(event: MouseEvent): void {
+    const currentTarget = event.currentTarget as HTMLElement;
+    const index = Number(currentTarget.dataset.idx);
+    this.toggleItemByIndex(index);
   }
 }
