@@ -1,47 +1,53 @@
-import { LightningElement, api } from "lwc";
-import { computeClass, normaliseBoolean } from "c/sfGpsDsHelpers";
-import ExpandableStateMixin from "c/sfGpsDsAuVic2ExpandableStateMixin";
+import { 
+  api 
+} from "lwc";
+import SfGpsDsElement from "c/sfGpsDsElement";
+import { 
+  computeClass 
+} from "c/sfGpsDsHelpers";
+import ExpandableStateMixin from "c/sfGpsDsExpandableStateMixin";
 
 const PREVENTDEFAULT_DEFAULT = false;
 
 const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuVic2VerticalNav";
+const CLASS_NAME = "SfGpsDsAuVic2VerticalNav";
 
-export default class extends ExpandableStateMixin(LightningElement) {
-  @api title;
-  @api className;
+export default 
+class SfGpsDsAuVic2VerticalNav 
+extends ExpandableStateMixin<SfGpsDsElement>(SfGpsDsElement) {
+  // @ts-ignore
+  @api 
+  title = "";
 
-  /* api: preventDefault */
-
-  _preventDefaultOriginal = PREVENTDEFAULT_DEFAULT;
-  _preventDefault = PREVENTDEFAULT_DEFAULT;
-
+  // @ts-ignore
   @api
-  get preventDefault() {
-    return this._preventDefaultOriginal;
-  }
+  preventDefault?: boolean;
+  _preventDefault = this.defineBooleanProperty("preventDefault", {
+    defaultValue: PREVENTDEFAULT_DEFAULT
+  });
 
-  set preventDefault(value) {
-    this._preventDefaultOriginal = value;
-    this._preventDefault = normaliseBoolean(value, {
-      acceptString: true,
-      fallbackValue: PREVENTDEFAULT_DEFAULT
-    });
-  }
+  // @ts-ignore
+  @api 
+  className?: string;
 
   /* getters */
 
-  get computedClassName() {
+  get computedClassName(): any {
     return {
       "rpl-vertical-nav": true,
       "rpl-u-screen-only": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
   /* methods */
-
-  mapItem(item, index, length, active) {
+  
+  mapItem(
+    item: any, 
+    index: number, 
+    length: number, 
+    active: boolean
+  ): any {
     if (DEBUG)
       console.debug(
         CLASS_NAME,
@@ -75,43 +81,17 @@ export default class extends ExpandableStateMixin(LightningElement) {
     return rv;
   }
 
-  /*
-  _itemMap;
-
-  addToMap(itemList) {
-    for (let index = 0; index < itemList.length; index++) {
-      const item = itemList[index];
-      this._itemMap.set(item.id, item);
-
-      if (item.items?.length) {
-        this.addToMap(item.items);
-      }
-    }
-  }
-    */
-
-  toggleId(itemId) {
+  toggleId(
+    itemId: string
+  ): string {
     return `rpl-vertical-nav-${itemId}-toggle`;
   }
 
-  /* overrides */
-  /*
-  @api 
-  get items() {
-    return super.items;
-  }
-
-  set items(value) {
-    super.items = value;
-
-    this._itemMap = new Map();
-    this.addToMap(this._items);
-  }
-  */
-
   /* event management */
 
-  handleToggleMenuItem(event) {
+  handleToggleMenuItem(
+    event: CustomEvent
+  ): void {
     if (DEBUG) {
       console.debug(
         CLASS_NAME,
@@ -127,7 +107,9 @@ export default class extends ExpandableStateMixin(LightningElement) {
     );
   }
 
-  handleItemClick(event) {
+  handleItemClick(
+    event: CustomEvent
+  ): void {
     if (DEBUG) {
       console.debug(
         CLASS_NAME,

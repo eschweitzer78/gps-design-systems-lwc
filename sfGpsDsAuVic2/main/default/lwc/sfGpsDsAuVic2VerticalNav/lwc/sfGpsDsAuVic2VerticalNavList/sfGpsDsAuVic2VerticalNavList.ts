@@ -1,113 +1,80 @@
-import { LightningElement, api } from "lwc";
 import {
-  normaliseBoolean,
-  normaliseInteger,
+  api 
+} from "lwc";
+import SfGpsDsElement from "c/sfGpsDsElement";
+import {
   computeClass
 } from "c/sfGpsDsHelpers";
-import ExpandableStateMixin from "c/sfGpsDsAuVic2ExpandableStateMixin";
+import ExpandableStateMixin from "c/sfGpsDsExpandableStateMixin";
 
 const ISEXPANDED_DEFAULT = false;
 const PREVENTDEFAULT_DEFAULT = false;
+const LEVEL_DEFAULT = 1;
+const TOGGLELEVELS_DEFAULT = 0;
 
 const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuVic2VerticalNavList";
+const CLASS_NAME = "SfGpsDsAuVic2VerticalNavList";
 
-export default class extends ExpandableStateMixin(LightningElement) {
-  @api className;
+export default 
+class SfGpsDsAuVic2VerticalNavList 
+extends ExpandableStateMixin<SfGpsDsElement>(SfGpsDsElement) {
+  // @ts-ignore
+  @api 
+  level?: number;
+  _childLevel = LEVEL_DEFAULT + 1;
+  _level = this.defineIntegerProperty("level", {
+    defaultValue: LEVEL_DEFAULT,
+    // eslint-disable no-unused-vars
+    watcher: () => {
+      this._childLevel = this._level.value + 1;
+    }
+  });
 
-  /* api: level */
 
-  _levelOriginal;
-  _level;
+  // @ts-ignore
+  @api 
+  toggleLevels?: boolean;
+  _toggleLevels = this.defineIntegerProperty("toggleLevels", {
+    defaultValue: TOGGLELEVELS_DEFAULT
+  });
 
-  @api
-  get level() {
-    return this._levelOriginal;
-  }
+  // @ts-ignore
+  @api 
+  isExpanded?: boolean;
+  _tabindex = "-1";
+  _isExpanded = this.defineBooleanProperty("isExpanded", {
+    defaultValue: ISEXPANDED_DEFAULT,
+    // eslint-disable no-unused-vars
+    watcher: () => {
+      this._tabindex = this._isExpanded.value ? "0" : "-1";
+    }
+  });
 
-  set level(value) {
-    this._level = normaliseInteger(value);
-    this._levelOriginal = this._level;
-    this._childLevel = this._level + 1;
-  }
+  // @ts-ignore
+  @api 
+  preventDefault?: boolean;
+  _preventDefault = this.defineBooleanProperty("preventDefault", {
+    defaultValue: PREVENTDEFAULT_DEFAULT
+  });
 
-  /* api: toggleLevels */
-
-  _toggleLevels;
-  _toggleLevelsOriginal;
-
-  @api
-  get toggleLevels() {
-    return this._toggleLevelsOriginal;
-  }
-
-  set toggleLevels(value) {
-    this._toggleLevelsOriginal = value;
-    this._toggleLevels = normaliseInteger(value);
-  }
-
-  /* api: isExpanded */
-
-  _isExpandedOriginal = ISEXPANDED_DEFAULT;
-  _tabindex;
-
-  @api
-  get isExpanded() {
-    return this._isExpandedOriginal;
-  }
-
-  set isExpanded(value) {
-    this._isExpandedOriginal = value;
-    this._tabindex = normaliseBoolean(value, {
-      acceptString: true,
-      fallbackValue: ISEXPANDED_DEFAULT
-    })
-      ? "0"
-      : "-1";
-  }
-
-  /* api: preventDefault */
-
-  _preventDefaultOriginal = PREVENTDEFAULT_DEFAULT;
-  _preventDefault = PREVENTDEFAULT_DEFAULT;
-
-  @api
-  get preventDefault() {
-    return this._preventDefaultOriginal;
-  }
-
-  set preventDefault(value) {
-    this._preventDefaultOriginal = value;
-    this._preventDefault = normaliseBoolean(value, {
-      acceptString: true,
-      fallbackValue: PREVENTDEFAULT_DEFAULT
-    });
-  }
+  // @ts-ignore
+  @api 
+  className?: string;
 
   /* computed */
 
-  get computedClassName() {
+  get computedClassName(): any {
     return {
       "rpl-vertical-nav__list": true,
-      [`rpl-vertical-nav__list--level-${this._level}`]: true,
+      [`rpl-vertical-nav__list--level-${this._level.value}`]: true,
       "rpl-type-p-small": true,
-      [this.className]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
   get computedIsExpandable() {
-    return this._items?.length && this._level <= this._toggleLevels;
+    return this._items?.length && this._level.value <= this._toggleLevels.value;
   }
-
-  /*
-  get decoratedItems() {
-    return (this.items || []).map((item, index) => ({
-      ...item,
-      index: item.index || `item-${this._level}-${index + 1}`,
-      isLinkActive: item?.active && !item.items?.some((i) => i.active)
-    }));
-  }
-  */
 
   get decoratedItems() {
     if (DEBUG)
@@ -158,7 +125,12 @@ export default class extends ExpandableStateMixin(LightningElement) {
 
   /* methods */
 
-  mapItem(item, index, length, active) {
+  mapItem(
+    item: any, 
+    index: number, 
+    length: number, 
+    active: boolean
+  ): any {
     if (DEBUG)
       console.debug(
         CLASS_NAME,
@@ -193,22 +165,23 @@ export default class extends ExpandableStateMixin(LightningElement) {
     return rv;
   }
 
-  toggleId(itemId) {
+  toggleId(itemId: string): string {
     return `rpl-vertical-nav-${itemId}-toggle`;
   }
 
-  showIcon(index) {
-    const hasIcon = this._level > Math.max(this._toggleLevels, 2);
+  showIcon(index: number) {
+    const hasIcon = this._level.value > Math.max(this._toggleLevels.value, 2);
 
-    return index === 0 && this._lebel - 1 <= this._toggleLevels
+    return index === 0 && this._level.value - 1 <= this._toggleLevels.value
       ? false
       : hasIcon;
   }
 
   /* event management */
 
-  handleToggle(event) {
-    const itemId = event.target.dataset.itemId;
+  handleToggle(event: MouseEvent): void {
+    const target: HTMLElement = event.target as HTMLElement;
+    const itemId = target.dataset.itemId;
     const item = this.getItemById(itemId);
 
     if (DEBUG) {
@@ -227,8 +200,11 @@ export default class extends ExpandableStateMixin(LightningElement) {
     );
   }
 
-  handleItemClick(event) {
-    const itemId = event.target.dataset.itemId;
+  handleItemClick(
+    event: CustomEvent
+  ): void {
+    const target: HTMLElement = event.target as HTMLElement;
+    const itemId = target.dataset.itemId;
     const item = this.getItemById(itemId);
 
     if (DEBUG) {
@@ -246,7 +222,9 @@ export default class extends ExpandableStateMixin(LightningElement) {
     );
   }
 
-  handleNavListToggle(event) {
+  handleNavListToggle(
+    event: CustomEvent
+  ): void {
     if (DEBUG) {
       console.debug(
         CLASS_NAME,
@@ -262,7 +240,9 @@ export default class extends ExpandableStateMixin(LightningElement) {
     );
   }
 
-  handleNavListItemClick(event) {
+  handleNavListItemClick(
+    event: CustomEvent
+  ): void {
     if (DEBUG) {
       console.debug(
         CLASS_NAME,
