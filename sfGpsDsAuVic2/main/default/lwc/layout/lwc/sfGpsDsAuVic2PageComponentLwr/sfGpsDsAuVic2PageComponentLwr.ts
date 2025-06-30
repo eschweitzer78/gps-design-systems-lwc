@@ -43,7 +43,7 @@ extends SfGpsDsLwc {
   _fullWidth = this.defineBooleanProperty("fullWidth", {
     defaultValue: FULLWIDTH_DEFAULT,
     watcher: () => {
-      if (this._fullWidth) {
+      if (this._fullWidth.value) {
         this.classList.add("rpl-page-component--full-width");
       } else {
         this.classList.remove("rpl-page-component--full-width");
