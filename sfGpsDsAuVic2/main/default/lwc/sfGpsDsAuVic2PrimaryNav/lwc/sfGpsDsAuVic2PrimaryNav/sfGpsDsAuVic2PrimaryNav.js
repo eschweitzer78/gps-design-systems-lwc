@@ -2,7 +2,7 @@
 
 import { LightningElement, api, track } from "lwc";
 import { normaliseBoolean, computeClass } from "c/sfGpsDsHelpers";
-import { BreakpointsMixin } from "c/sfGpsDsAuVic2BreakpointsMixin";
+import BreakpointsMixin from "c/sfGpsDsAuVic2BreakpointsMixin";
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsVic2PrimaryNav";

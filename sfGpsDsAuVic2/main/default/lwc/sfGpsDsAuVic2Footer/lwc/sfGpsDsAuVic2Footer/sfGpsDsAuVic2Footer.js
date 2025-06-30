@@ -1,6 +1,6 @@
 import { LightningElement, api } from "lwc";
 import { isArray, normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
-import { BreakpointsMixin } from "c/sfGpsDsAuVic2BreakpointsMixin";
+import BreakpointsMixin from "c/sfGpsDsAuVic2BreakpointsMixin";
 import STATIC_RESOURCE from "@salesforce/resourceUrl/sfGpsDsAuVic2";
 
 const VARIANT_DEFAULT = "default";

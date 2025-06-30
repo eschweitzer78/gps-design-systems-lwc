@@ -9,6 +9,7 @@ import {
   isArray 
 } from "c/sfGpsDsHelpers";
 import { 
+  LightningElement,
   api, 
   track 
 } from "lwc";
@@ -23,8 +24,8 @@ const CLASS_NAME = "sfGpsDsExpandableState";
 const DEFAULT_ACTIVE_STATE = false;
 
 export default 
-function ExpandableStateMixin<T>(
-  base: new (...args: any[]) => object,
+function ExpandableStateMixin<T extends LightningElement>(
+  base: new (...args: any[]) => LightningElement,
   idAttr = "id", 
   activeAttr = "active", 
   indexAttr = "index"

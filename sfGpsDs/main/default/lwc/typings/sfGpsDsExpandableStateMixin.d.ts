@@ -1,4 +1,5 @@
 declare module "c/sfGpsDsExpandableStateMixin" {
+  import type { LightningElement } from "lwc";
 
   interface ExpandableState {
     get items(): any[];
@@ -51,8 +52,9 @@ declare module "c/sfGpsDsExpandableStateMixin" {
     _nbActiveItems: number;
   }
 
-  export default function ExpandableStateMixin<T extends new (...args: any[]) => object>(
-    base: T,
+  export default 
+  function ExpandableStateMixin<T extends LightningElement>(
+    base: new (...args: any[]) => LightningElement,
     idAttr?: string, 
     activeAttr?: string, 
     indexAttr?: string

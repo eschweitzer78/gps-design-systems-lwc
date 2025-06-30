@@ -22,7 +22,7 @@
               level={_childLevel}
               is-expanded={item.active}
               class-name="rpl-vertical-nav__list-item-children"
-              prevent-default={_preventDefault}
+              prevent-default={_preventDefault.value}
               onitemclick={handleNavListItemClick}
               ontogglemenuitem={handleNavListToggle}
             >
@@ -37,7 +37,7 @@
             active={item.isLinkActive}
             show-child-icon={item.showChildIcon}
             tab-index={_tabindex}
-            prevent-default={_preventDefault}
+            prevent-default={_preventDefault.value}
             data-item-id={item.id}
             onitemclick={handleItemClick}
           >
@@ -48,7 +48,7 @@
             items={item.items}
             level={_childLevel}
             is-expanded={isExpanded}
-            prevent-default={_preventDefault}
+            prevent-default={_preventDefault.value}
             onitemclick={handleNavListItemClick}
             ontogglemenuitem={handleNavListToggle}
           >

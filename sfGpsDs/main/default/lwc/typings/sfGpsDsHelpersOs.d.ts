@@ -37,13 +37,13 @@ declare module "c/sfGpsDsHelpersOs" {
 
   export function replaceInnerHtml(
     element: Element, 
-    markup: string
+    markup: string | undefined | null
   ): void;
   export function htmlDecode(
-    markup: string
+    markup: string | undefined | null
   ): string | null;
   export function getFirstChild(
-    markup: string
+    markup: string | undefined | null
   ): Element | null;
   export function computeClass(
     config: Record<string, any> | string[], 

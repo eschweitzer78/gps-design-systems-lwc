@@ -18,7 +18,7 @@ export default class extends OmnistudioStepChartItem {
   /* computed */
 
   get computedIsLast() {
-    return this.currentStepIndex === this.lastStepIndex;
+    return this.jsonDef.indexInParent === this.lastStepIndex;
   }
 
   // override
