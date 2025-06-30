@@ -10,7 +10,6 @@ declare module "c/sfGpsDsAuVic2Accordion" {
   ) {
     numbered?: boolean;
     className?: string;
-    numbered: boolean;
 
     get allExpanded(): boolean;
     get allCollapsed(): boolean;
