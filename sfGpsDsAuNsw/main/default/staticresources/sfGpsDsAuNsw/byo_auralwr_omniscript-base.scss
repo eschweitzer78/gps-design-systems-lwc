@@ -26,6 +26,86 @@
     padding-right: 1rem !important;
   }
 
+  /* BEGIN: caters to standard buttons in Omniscript with NSW DS */
+  > .slds-grid {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 1rem;
+
+    @media(max-width: 62rem) {
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+
+      > .slds-col {
+        width: 100%;
+      }
+
+      > .slds-medium-order_1 {
+        order: 2;
+      }
+
+      > .slds-medium-order_2 {
+        order: 1;
+      }
+
+      .omniscript-btn-previous,
+      .omniscript-btn-next {
+        width: 100% !important;
+        margin: 0 !important;
+      }
+
+      .omniscript-button-position {
+        gap: .25rem;
+      }
+        
+      .omniscript-sfl-actions omnistudio-navigate-action {
+        margin-bottom: -.25rem;
+      }
+    }
+
+    @media(min-width: 62rem){
+      padding-top: 2rem;
+    }
+
+    &.slds-gutters > .slds-col {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.omniscript-sfl-actions {
+  display: flex;
+  gap: .25rem;
+
+  > div {
+    padding: 0 !important;
+    border: none !important;
+  }
+}
+
+/* mobile */
+    
+@media screen and (max-width: 768px) {
+  .omniscript-sfl-actions {
+    flex-direction: column;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+
+      > * {
+      flex-grow: 1;
+    }
+  }
+  
+  .omniscript-btn-save-for-later > button {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group {
@@ -52,8 +132,7 @@ omnistudio-omniscript-set-values,
 omnistudio-omniscript-set-errors,
 omnistudio-omniscript-edit-block,
 c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group,
-.omnistudio-sfl-actions,
-.omniscript-button-position {
+.omniscript-body > .slds-grid {
   .slds-button {
     --lwc-borderWidthThin: 2px;
     --lwc-border-radius: var(--nsw-border-radius);
