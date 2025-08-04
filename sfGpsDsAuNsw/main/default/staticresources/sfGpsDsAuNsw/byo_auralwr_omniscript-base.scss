@@ -51,7 +51,9 @@ omnistudio-omniscript-remote-action,
 omnistudio-omniscript-set-values,
 omnistudio-omniscript-set-errors,
 omnistudio-omniscript-edit-block,
-c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group {
+c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group,
+.omnistudio-sfl-actions,
+.omniscript-button-position {
   .slds-button {
     --lwc-borderWidthThin: 2px;
     --lwc-border-radius: var(--nsw-border-radius);
