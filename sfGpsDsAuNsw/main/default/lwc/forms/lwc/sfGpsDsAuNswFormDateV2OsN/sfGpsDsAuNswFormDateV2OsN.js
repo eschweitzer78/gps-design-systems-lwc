@@ -9,6 +9,23 @@ import SfGpsDsFormDateOsN from "c/sfGpsDsFormDateOsN";
 import tmpl from "./sfGpsDsAuNswFormDateV2OsN.html";
 
 export default class extends SfGpsDsFormDateOsN {
+  initCompVariables() {
+    super.initCompVariables();
+
+    this._messageWhenRangeOverflow =
+      String(
+        this.allCustomLabelsUtil.OmniDateDisabledDay +
+          " " +
+          this.allCustomLabelsUtil.OmniDateMax
+      ) + " {max}.";
+    this._messageWhenRangeUnderflow =
+      String(
+        this.allCustomLabelsUtil.OmniDateDisabledDay +
+          " " +
+          this.allCustomLabelsUtil.OmniDateMin
+      ) + " {min}.";
+  }
+
   render() {
     return tmpl;
   }

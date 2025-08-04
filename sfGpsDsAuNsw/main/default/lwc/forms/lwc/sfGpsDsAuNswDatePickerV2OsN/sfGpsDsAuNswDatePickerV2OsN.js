@@ -37,7 +37,7 @@ const I18N = {
   headerDateFormat: "MMMM YYYY",
   ariaLabel: "Select date using calendar widget.",
   ariaLabelSelection:
-    "Select date using calendar widget, selected date is {0}.",
+    "Select date using calendar widget, selected date is ${0}.",
   dayLabel: "Day",
   monthLabel: "Month",
   yearLabel: "Year",
@@ -993,7 +993,7 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
       {}
     );
 
-    return formatTemplate(string, mergeFieldOptions, { sep: "%" });
+    return formatTemplate(string, mergeFieldOptions, { sep: "{}" });
   }
 
   /* Event management */
