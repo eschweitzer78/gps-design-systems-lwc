@@ -133,9 +133,6 @@
             "c/sfGpsDsStringCpe": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/custom-property-editors/lwc/sfGpsDsStringCpe/sfGpsDsStringCpe"
             ],
-            "c/sfGpsDsPubSub": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/forms/lwc/sfGpsDsPubSub/sfGpsDsPubSub"
-            ],
             "c/sfGpsDsExpandableStateMixin": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/mixins-and-directives/lwc/sfGpsDsExpandableStateMixin/sfGpsDsExpandableStateMixin"
             ],
@@ -271,15 +268,6 @@
             "c/sfGpsDsOmniTypeaheadOsN": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/omnistudio-managed-package/lwc/sfGpsDsOmniTypeaheadOsN/sfGpsDsOmniTypeaheadOsN"
             ],
-            "c/sfGpsDsCheckboxGroup": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/forms/lwc/checkboxGroup/lwc/sfGpsDsCheckboxGroup/sfGpsDsCheckboxGroup"
-            ],
-            "c/sfGpsDsSldsCheckboxGroup": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/forms/lwc/checkboxGroup/lwc/sfGpsDsSldsCheckboxGroup/sfGpsDsSldsCheckboxGroup"
-            ],
-            "c/sfGpsDsSldsCheckboxGroupCommTest": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDs/main/default/lwc/forms/lwc/checkboxGroup/lwc/sfGpsDsSldsCheckboxGroupCommTest/sfGpsDsSldsCheckboxGroupCommTest"
-            ],
             "c/sfGpsDsAuNswBlockLwr": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswBlockLwr/sfGpsDsAuNswBlockLwr"
             ],
@@ -372,6 +360,9 @@
             ],
             "c/sfGpsDsAuNswFormStepChartOsN": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormStepChartOsN/sfGpsDsAuNswFormStepChartOsN"
+            ],
+            "c/sfGpsDsAuNswFormStepNoButtonOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormStepNoButtonOsN/sfGpsDsAuNswFormStepNoButtonOsN"
             ],
             "c/sfGpsDsAuNswFormStepOsN": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormStepOsN/sfGpsDsAuNswFormStepOsN"
@@ -2268,6 +2259,9 @@
             ],
             "c/sfGpsDsAuVic2DocsPageLwr": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2DocsPageLwr/sfGpsDsAuVic2DocsPageLwr"
+            ],
+            "c/sfGpsDsAuNswFormPlacesTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormPlacesTypeaheadOsN/sfGpsDsAuNswFormPlacesTypeaheadOsN"
             ]
         }
     }
