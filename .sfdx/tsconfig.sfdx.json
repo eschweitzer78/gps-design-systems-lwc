@@ -349,6 +349,9 @@
             "c/sfGpsDsAuNswFormPasswordOsN": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormPasswordOsN/sfGpsDsAuNswFormPasswordOsN"
             ],
+            "c/sfGpsDsAuNswFormPlacesTypeaheadOsN": [
+                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormPlacesTypeaheadOsN/sfGpsDsAuNswFormPlacesTypeaheadOsN"
+            ],
             "c/sfGpsDsAuNswFormRadioOsN": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormRadioOsN/sfGpsDsAuNswFormRadioOsN"
             ],
@@ -2259,9 +2262,6 @@
             ],
             "c/sfGpsDsAuVic2DocsPageLwr": [
                 "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuVic2Showcase/main/default/lwc/sfGpsDsAuVic2DocsPageLwr/sfGpsDsAuVic2DocsPageLwr"
-            ],
-            "c/sfGpsDsAuNswFormPlacesTypeaheadOsN": [
-                "/Users/eschweitzer/Sfdx/au-design-systems-lwc/sfGpsDsAuNsw/main/default/lwc/forms/lwc/sfGpsDsAuNswFormPlacesTypeaheadOsN/sfGpsDsAuNswFormPlacesTypeaheadOsN"
             ]
         }
     }
