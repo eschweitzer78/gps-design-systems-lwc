@@ -22,6 +22,5 @@
       "to": "nsw-date-picker *:not(.nsw-button){"
     }
   ],
-  "sfGpsDsAuNswForm/form": [],
   "sfGpsDsAuNswSaveForLaterAckOsN/in-page-alert": []
 }
