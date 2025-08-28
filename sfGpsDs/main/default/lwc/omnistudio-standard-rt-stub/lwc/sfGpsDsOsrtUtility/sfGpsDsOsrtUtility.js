@@ -147,7 +147,7 @@ export {
   interpolateWithRegex,
   interpolateElement,
   interpolateKeyValue
-} from "c/dataInterpolation";
+} from "c/sfGpsDsOsrtDataInterpolation";
 export { dateValueParser } from "./formatDate";
 // export {
 //   loadSDK,
