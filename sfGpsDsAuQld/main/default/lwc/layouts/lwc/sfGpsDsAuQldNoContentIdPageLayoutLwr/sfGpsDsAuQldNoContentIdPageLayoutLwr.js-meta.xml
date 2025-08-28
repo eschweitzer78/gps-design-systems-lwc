@@ -3,7 +3,7 @@
   xmlns="http://soap.sforce.com/2006/04/metadata"
   fqn="sfGpsDsAuQldDefaultPageLayoutLwr"
 >
-  <apiVersion>63.0</apiVersion>
+  <apiVersion>64.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>QLD DS LWR No Content ID Page Layout</masterLabel>
   <targets>
