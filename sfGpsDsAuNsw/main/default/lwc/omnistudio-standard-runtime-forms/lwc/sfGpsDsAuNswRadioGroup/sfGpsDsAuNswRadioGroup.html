@@ -1,0 +1,78 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="nsw-form__group">
+    <fieldset
+      class="nsw-form__fieldset"
+      role="radiogroup"
+      aria-required={required}
+      aria-labelledby="sfgpsds-aunsw-radio-group-legend"
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={computedAriaInvalid}
+    >
+      <legend id="sfgpsds-aunsw-radio-group-legend">
+        <span class={computedLegendClassName}>
+          {label}
+          <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
+        </span>
+        <slot name="label"> </slot>
+
+        <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper"
+          >{fieldLevelHelp}</span
+        >
+
+        <span
+          lwc:if={sfGpsDsIsError}
+          class={computedHelperClassName}
+          aria-live="assertive"
+          role="alert"
+          id="errorMessageBlock"
+        >
+          <span
+            lwc:if={computedStatusIcon}
+            class="material-icons nsw-material-icons"
+            aria-hidden="true"
+          >
+            {computedStatusIcon}
+          </span>
+          {sfGpsDsErrorMessage}
+        </span>
+      </legend>
+
+      <div>
+        <template
+          lwc:if={internalOpts}
+          for:each={internalOpts}
+          for:item="option"
+          for:index="index"
+        >
+          <input
+            key={option.id}
+            class="nsw-form__radio-input"
+            type="radio"
+            tabindex={tabIndex}
+            required={required}
+            disabled={computedDisabledOrReadOnly}
+            id={option.id}
+            name={option.name}
+            aria-invalid={computedAriaInvalid}
+            value={option.value}
+            checked={option.selected}
+            data-index={index}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            onchange={sfGpsDsOnChangeValue}
+            onkeydown={handleKeyDownEvent}
+          />
+          <label
+            key={option.id}
+            class="nsw-form__radio-label"
+            data-index={index}
+            for={option.id}
+          >
+            {option.label}
+          </label>
+        </template>
+      </div>
+    </fieldset>
+  </div>
+</template>

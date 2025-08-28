@@ -1,0 +1,38 @@
+.slds-icon_container.slds-icon-utility-error.slds-progress__marker.slds-progress__marker_icon.omni-stepchart-button.omni-stepchart-error-button {
+  margin-left: 0;
+  box-shadow: none;
+}
+
+.omni-stepchart-heading {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.slds-progress_vertical
+  .slds-progress__list
+  .omni-vert-stepchart-completed:before,
+.slds-progress_vertical
+  .slds-progress__list
+  .omni-vert-stepchart-completed:after,
+.slds-progress_vertical .slds-progress__list .omni-vert-stepchart-active:before,
+.slds-progress_vertical
+  .slds-progress__list
+  .omni-vert-stepchart-last-completed:before {
+  background-color: rgb(94, 180, 255);
+}
+
+.slds-progress_vertical .slds-progress__list .omni-vert-stepchart-last:after {
+  background-color: transparent;
+}
+
+.slds-progress_vertical
+  .slds-progress__list
+  .omni-vert-stepchart-active-initial:before {
+  background-color: white;
+}
+
+.slds-progress-not-touched .slds-progress__item::before,
+.slds-progress-not-touched .slds-progress__item::after,
+.progress-bar_color {
+  background-color: rgb(147, 147, 147);
+}

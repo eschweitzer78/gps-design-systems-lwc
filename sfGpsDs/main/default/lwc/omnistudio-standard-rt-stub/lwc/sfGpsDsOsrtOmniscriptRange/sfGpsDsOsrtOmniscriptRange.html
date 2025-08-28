@@ -1,0 +1,61 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <slot>
+    <c-sf-gps-ds-osrt-slider
+      label={_propSetMap.label}
+      data-omni-input
+      onchange={handleChange}
+      ontouchmove={handleTouchMove}
+      class={_styleClasses.input}
+      value={elementValue}
+      step={_propSetMap.step}
+      min={_propSetMap.rangeLow}
+      max={_propSetMap.rangeHigh}
+      field-level-help={_handleHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
+      tab-index={tabIndex}
+      imask={_imaskAttributes}
+      message-when-value-missing={_messageWhenValueMissing}
+      message-when-pattern-mismatch={_messageWhenPatternMismatch}
+      message-when-too-long={_messageWhenTooLong}
+      message-when-bad-input={_messageWhenBadInput}
+      message-when-range-overflow={_messageWhenRangeOverflow}
+      message-when-range-underflow={_messageWhenRangeUnderflow}
+      message-when-step-mismatch={_messageWhenStepMismatch}
+      message-when-type-mismatch={_messageWhenTypeMismatch}
+      slider-range-assistive-text={allCustomLabelsUtil.OmniSliderAssistiveRangeText}
+      theme={_theme}
+    >
+      <template if:true={_propSetMap.repeat}>
+        <span slot="label" class={_styleClasses.repeatContainer} role="group">
+          <button
+            if:true={canRepeat}
+            class={_styleClasses.repeatAdd}
+            onclick={handleAdd}
+          >
+            <c-sf-gps-ds-osrt-icon
+              icon-name="utility:add"
+              alternative-text="Repeat Range"
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </button>
+          <button
+            if:true={canRemove}
+            class={_styleClasses.repeatRemove}
+            onclick={handleRemove}
+          >
+            <c-sf-gps-ds-osrt-icon
+              icon-name="utility:close"
+              alternative-text="Remove Range"
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </button>
+        </span>
+      </template>
+    </c-sf-gps-ds-osrt-slider>
+  </slot>
+</template>

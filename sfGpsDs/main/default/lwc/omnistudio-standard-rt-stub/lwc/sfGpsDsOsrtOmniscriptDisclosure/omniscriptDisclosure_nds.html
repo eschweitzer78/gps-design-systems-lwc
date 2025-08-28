@@ -1,0 +1,35 @@
+<template>
+  <div class="nds-size_1-of-1">
+    <div
+      class="nds-form-element nds-size_1-of-1 nds-m-bottom_large nds-p-around_small"
+    >
+      <div class="nds-form-element__control">
+        <div class="nds-disclosure">
+          <div class="nds-form-element__label nds-m-bottom_x-small">
+            {_propSetMap.label}
+          </div>
+          <div class="nds-box">
+            <c-sf-gps-ds-osrt-omniscript-formatted-rich-text
+              value={_propSetMap.text}
+            ></c-sf-gps-ds-osrt-omniscript-formatted-rich-text>
+          </div>
+          <div class="nds-m-top_x-small">
+            <c-sf-gps-ds-osrt-input
+              type="checkbox"
+              label={_propSetMap.checkLabel}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              theme={_theme}
+              onchange={handleChange}
+              checked={elementValue}
+              message-when-value-missing={_messageWhenValueMissing}
+              tab-index={tabIndex}
+              data-omni-input
+            >
+            </c-sf-gps-ds-osrt-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

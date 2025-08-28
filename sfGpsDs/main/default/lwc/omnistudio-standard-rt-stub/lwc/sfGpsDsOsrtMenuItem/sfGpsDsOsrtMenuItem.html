@@ -1,0 +1,71 @@
+<template>
+  <li
+    class={dropdownClass}
+    role="menuitem"
+    onclick={toggleCheck}
+    onkeydown={handleKeyDown}
+  >
+    <template if:false={isBaseVersion}>
+      <slot></slot>
+    </template>
+    <template if:true={isBaseVersion}>
+      <template if:true={isTypeAction}>
+        <c-sf-gps-ds-osrt-action
+          if:true={actionData}
+          state-obj={obj}
+          s-object-type={actionData.sObjectType}
+          state-action={actionData.stateAction}
+          context-id={actionData.contextId}
+          re-render-flyout={actionData.reRenderFlyout}
+        >
+          <div class={navigateActionClass}>
+            <a class={statusClass}>
+              <span if:true={isIconRight} class={truncateClass}
+                >{menuLabel}</span
+              >
+              <template if:true={iconName}>
+                <c-sf-gps-ds-osrt-icon
+                  size="x-small"
+                  alternative-text={iconText}
+                  icon-name={iconName}
+                  extraclass={extraClasses}
+                  theme={theme}
+                  baseurl={iconurl}
+                ></c-sf-gps-ds-osrt-icon>
+              </template>
+              <span if:false={isIconRight} class={truncateClass}
+                >{menuLabel}</span
+              >
+            </a>
+          </div>
+        </c-sf-gps-ds-osrt-action>
+      </template>
+      <template if:false={isTypeAction}>
+        <a class={statusClass}>
+          <template if:true={showCheckIcon}>
+            <c-sf-gps-ds-osrt-icon
+              size="x-small"
+              theme={theme}
+              icon-name="utility:check"
+              class="checkIcon"
+              extraclass={iconClass}
+              baseurl={iconurl}
+            ></c-sf-gps-ds-osrt-icon>
+          </template>
+          <span if:true={isIconRight} class={truncateClass}>{menuLabel}</span>
+          <template if:true={iconName}>
+            <c-sf-gps-ds-osrt-icon
+              size="x-small"
+              alternative-text={iconText}
+              icon-name={iconName}
+              extraclass={extraClasses}
+              theme={theme}
+              baseurl={iconurl}
+            ></c-sf-gps-ds-osrt-icon>
+          </template>
+          <span if:false={isIconRight} class={truncateClass}>{menuLabel}</span>
+        </a>
+      </template>
+    </template>
+  </li>
+</template>

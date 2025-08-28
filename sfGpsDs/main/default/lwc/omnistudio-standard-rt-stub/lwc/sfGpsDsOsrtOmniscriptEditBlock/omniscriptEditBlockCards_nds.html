@@ -1,0 +1,416 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="nds-p-horizontal_small">
+    <div class="nds-grid nds-wrap nds-element_text-font">
+      <!-- Modal Visual (Cards) -->
+      <template if:true={_isCards}>
+        <div class={visualClass} onclick={handleCheckbox} role="application">
+          <div
+            class="nds-box nds-box_x-small nds-grid nds-grid_vertical nds-grid_vertical-align-center nds-is-relative nds-size_12-of-12 nds-m-right_medium nds-m-bottom_medium nds-edit-block_shortcards"
+            data-edit-action="default"
+            tabindex="0"
+            onkeydown={handleKeyboardCheckbox}
+            aria-invalid={isInvalid}
+            aria-describedby="card-text-error"
+            aria-labelledby="card-text"
+          >
+            <!-- Menu Action Icon -->
+            <template if:true={_useActionMenu}>
+              <div
+                class="nds-dropdown-trigger nds-dropdown-trigger_click nds-is-open nds-col_bump-left"
+              >
+                <button
+                  type="button"
+                  class="nds-button nds-button_icon-border-filled nds-editblock_action-button nds-element_text-font"
+                  aria-haspopup="true"
+                  aria-expanded={_menuExpanded}
+                  data-action-button-menu
+                  onclick={toggleActionMenu}
+                  onkeydown={handleKeyboardActionMenu}
+                >
+                  <c-sf-gps-ds-osrt-icon
+                    extraclass="nds-input__icon"
+                    icon-name="utility:chevrondown"
+                    theme="nds"
+                    alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextDown}
+                    size="x-small"
+                  >
+                  </c-sf-gps-ds-osrt-icon>
+                </button>
+
+                <!-- Action Menu List -->
+                <div
+                  if:true={_bShowActionMenu}
+                  class="nds-dropdown nds-dropdown_right"
+                >
+                  <ul class="nds-dropdown__list" role="menu">
+                    <template
+                      for:each={_actionMenuList}
+                      for:item="actionMenuItem"
+                      for:index="actionMenuIndex"
+                    >
+                      <li
+                        key={actionMenuItem.lwcId}
+                        class="nds-dropdown__item"
+                        role="presentation"
+                        onclick={actionMenuItem.handleClick}
+                        onkeydown={actionMenuItem.handleKeyboardClick}
+                      >
+                        <a
+                          href="javascript:void(0);"
+                          role="menuitem"
+                          tabindex="0"
+                        >
+                          <span class="nds-truncate">
+                            {actionMenuItem.label}
+                          </span>
+                        </a>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+                <!-- Click anywhere else will hide action menu list-->
+                <div
+                  if:true={_bShowActionMenu}
+                  onclick={hideActionMenu}
+                  class="nds-is-absolute"
+                  style="
+                    width: 1000vh;
+                    height: 1000vh;
+                    left: -200vw;
+                    top: -200vh;
+                  "
+                ></div>
+              </div>
+            </template>
+
+            <span
+              if:true={isInvalid}
+              style="left: 0; top: 0"
+              class="nds-required nds-m-around_none nds-p-left_xx-small nds-is-absolute"
+            >
+              *
+            </span>
+            <span id="card-text-error">
+              <span if:true={isInvalid} class="nds-assistive-text">
+                {allCustomLabelsUtil.OmniEditBlockError}
+              </span>
+            </span>
+
+            <!-- Customizable SVG Icon -->
+            <div class="nds-edit-block_shortcards-circle">
+              <span
+                class="nds-icon_container nds-icon_container_circle slds-current-color omni-icon-circle"
+                style="color: #1564bf"
+              >
+                <c-sf-gps-ds-osrt-icon
+                  class=""
+                  extraclass="nds-input__icon"
+                  icon-name={svgMapIcon}
+                  theme="nds"
+                  size="large"
+                >
+                </c-sf-gps-ds-osrt-icon>
+              </span>
+            </div>
+
+            <!-- Display Text -->
+            <div
+              class="nds-grid nds-grid_vertical nds-grid_vertical-align-center nds-m-top_x-small nds-size_1-of-1"
+              id="card-text"
+            >
+              <template
+                for:each={_displayValues}
+                for:item="dvItem"
+                for:index="dvIndex"
+              >
+                <span key={dvItem.lwcId} class="nds-truncate">
+                  {dvItem.value}
+                </span>
+              </template>
+            </div>
+
+            <!-- Checkbox Icon -->
+            <template if:true={_showCheckbox}>
+              <span
+                class="nds-is-absolute slds-icon_container nds-icon_container--circle"
+                style="top: -1rem; right: -1rem; background: #50e3c2"
+              >
+                <c-sf-gps-ds-osrt-icon
+                  class=""
+                  extraclass="nds-input__icon"
+                  variant=" "
+                  icon-name="action:approval"
+                  theme="nds"
+                  alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextApproval}
+                  size="small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+              </span>
+            </template>
+          </div>
+        </div>
+      </template>
+
+      <!-- Modal Visual (LongCards) -->
+      <template if:true={_isLongCards}>
+        <div class={visualClass} onclick={handleCheckbox}>
+          <div
+            class="nds-grid nds-grid_align-center nds-is-relative nds-size_12-of-12 nds-m-right_medium nds-m-bottom_medium nds-grid_vertical-align-center nds-edit-block_longcards"
+            style="justify-content: flex-start"
+            data-edit-action="default"
+            tabindex="0"
+            onkeydown={handleKeyboardCheckbox}
+            aria-invalid={isInvalid}
+            aria-describedby="longcard-text-error"
+            aria-labelledby="longcard-text"
+          >
+            <span
+              if:true={isInvalid}
+              style="left: 0; top: 0"
+              class="nds-required nds-m-around_none nds-p-left_xx-small nds-is-absolute"
+            >
+              *
+            </span>
+            <span id="longcard-text-error">
+              <span if:true={isInvalid} class="nds-assistive-text">
+                {allCustomLabelsUtil.OmniEditBlockError}
+              </span>
+            </span>
+
+            <!-- Customizable SVG Icon -->
+            <div class="nds-edit-block_longcards-circle">
+              <div
+                class="nds-grid nds-grid_align-center nds-grid_vertical-align-center"
+                style="height: 100%"
+              >
+                <span
+                  class="nds-icon_container nds-icon_container_circle slds-current-color omni-icon-circle"
+                  style="color: #1564bf; position: unset"
+                >
+                  <c-sf-gps-ds-osrt-icon
+                    class=""
+                    extraclass="nds-input__icon"
+                    icon-name={svgMapIcon}
+                    theme="nds"
+                    size="large"
+                  >
+                  </c-sf-gps-ds-osrt-icon>
+                </span>
+              </div>
+            </div>
+
+            <!-- Display Text -->
+            <div
+              class="nds-grid nds-grid_vertical nds-grid_align-center nds-p-left_small nds-max-small-size_5-of-12 nds-small-size_8-of-12"
+              id="longcard-text"
+            >
+              <template
+                for:each={_displayValues}
+                for:item="dvItem"
+                for:index="dvIndex"
+              >
+                <span key={dvItem.lwcId} class="nds-truncate">
+                  {dvItem.value}
+                </span>
+              </template>
+            </div>
+
+            <!-- Menu Action Icon -->
+            <template if:true={_useActionMenu}>
+              <div
+                class="nds-grid nds-dropdown-trigger nds-dropdown-trigger_click nds-is-open nds-col_bump-left nds-m-right_small"
+              >
+                <button
+                  type="button"
+                  class="nds-button nds-button_icon-border-filled nds-editblock_action-button nds-element_text-font"
+                  aria-haspopup="true"
+                  aria-expanded={_menuExpanded}
+                  data-action-button-menu
+                  onclick={toggleActionMenu}
+                  onkeydown={handleKeyboardActionMenu}
+                >
+                  <c-sf-gps-ds-osrt-icon
+                    extraclass="nds-input__icon"
+                    icon-name="utility:chevrondown"
+                    theme="nds"
+                    alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextDown}
+                    size="x-small"
+                  >
+                  </c-sf-gps-ds-osrt-icon>
+                </button>
+
+                <!-- Action Menu List -->
+                <div
+                  if:true={_bShowActionMenu}
+                  class="nds-dropdown nds-dropdown_right"
+                >
+                  <ul class="nds-dropdown__list" role="menu">
+                    <template
+                      for:each={_actionMenuList}
+                      for:item="actionMenuItem"
+                      for:index="actionMenuIndex"
+                    >
+                      <li
+                        key={actionMenuItem.lwcId}
+                        class="nds-dropdown__item"
+                        role="presentation"
+                        onclick={actionMenuItem.handleClick}
+                        onkeydown={actionMenuItem.handleKeyboardClick}
+                      >
+                        <a
+                          href="javascript:void(0);"
+                          role="menuitem"
+                          tabindex="0"
+                        >
+                          <span class="nds-truncate">
+                            {actionMenuItem.label}
+                          </span>
+                        </a>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+                <!-- Click anywhere else will hide action menu list-->
+                <div
+                  if:true={_bShowActionMenu}
+                  onclick={hideActionMenu}
+                  class="nds-is-absolute"
+                  style="
+                    width: 1000vh;
+                    height: 1000vh;
+                    left: -200vw;
+                    top: -200vh;
+                  "
+                ></div>
+              </div>
+            </template>
+
+            <!-- Checkbox Icon -->
+            <template if:true={_showCheckbox}>
+              <span
+                class="nds-is-absolute slds-icon_container nds-icon_container--circle"
+                style="top: -1rem; right: -1rem; background: #50e3c2"
+              >
+                <c-sf-gps-ds-osrt-icon
+                  class=""
+                  extraclass="nds-input__icon"
+                  variant=" "
+                  icon-name="action:approval"
+                  theme="nds"
+                  alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextApproval}
+                  size="small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+              </span>
+            </template>
+          </div>
+        </div>
+      </template>
+
+      <!-- Modal Editing (Shared)-->
+      <div class={editClass}>
+        <div class="nds-modal_custom">
+          <section
+            role="dialog"
+            tabindex="-1"
+            class="nds-modal nds-fade-in-open nds-modal_large"
+            aria-modal="true"
+            aria-label={_propSetMap.label}
+          >
+            <div class="nds-modal__container">
+              <header class="nds-modal__header">
+                <h1 class="nds-text-heading_small nds-step_label">
+                  {_propSetMap.label}
+                </h1>
+              </header>
+              <div class="nds-modal__content nds-p-around_medium">
+                <slot class="nds-grid nds-wrap nds-grid_pull-padded"></slot>
+              </div>
+              <footer class="nds-modal__footer nds-button_text-font">
+                <button
+                  type="button"
+                  onclick={cancel}
+                  class="nds-button nds-button_neutral nds-size_2-of-12 nds-text-align_center"
+                >
+                  {allCustomLabelsUtil.OmnicancelLabel}
+                </button>
+                <button
+                  type="button"
+                  onclick={save}
+                  disabled={isPageLoading}
+                  class="nds-button nds-button_neutral nds-button_brand nds-size_2-of-12 nds-text-align_center"
+                >
+                  {allCustomLabelsUtil.OmniConfigProdModalOk}
+                </button>
+              </footer>
+            </div>
+          </section>
+          <div class="nds-backdrop nds-backdrop_open"></div>
+        </div>
+      </div>
+
+      <!-- LongCards Add Button -->
+      <template if:true={_isLongCards}>
+        <template if:true={showAdd}>
+          <div
+            class="nds-grid nds-grid_align-center nds-m-right_medium nds-m-bottom_medium nds-size_12-of-12 nds-edit-block_cards-add-card nds-edit-block_longcards editblock-new"
+            role="button"
+            tabindex="0"
+            onclick={handleAdd}
+            onkeydown={handleKeyboardAdd}
+          >
+            <div class="nds-grid nds-cont-wrapper">
+              <!-- Add Button Icon -->
+              <div class="nds-edit-block_longcards-circle">
+                <div
+                  class="nds-grid nds-grid_align-center nds-grid_vertical-align-center"
+                  style="height: 100%"
+                >
+                  <span
+                    class="nds-icon_container nds-icon_container_circle"
+                    style="position: unset"
+                  >
+                    <c-sf-gps-ds-osrt-icon
+                      extraclass="nds-input__icon"
+                      icon-name={_svgIcon}
+                      theme="nds"
+                      alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextUser}
+                      size="large"
+                    >
+                    </c-sf-gps-ds-osrt-icon>
+                  </span>
+                </div>
+              </div>
+              <div
+                class="nds-edit-block_longcards-add-icon nds-grid nds-has-flexi-truncate nds-align_absolute-center"
+              >
+                <c-sf-gps-ds-osrt-icon
+                  class="nds-align_absolute-center"
+                  extraclass="nds-button__icon"
+                  icon-name="utility:add"
+                  theme="nds"
+                  alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextAdd}
+                  size="xx-small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+                <span> {_newLabel} </span>
+              </div>
+            </div>
+          </div>
+        </template>
+      </template>
+    </div>
+  </div>
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      theme={_theme}
+      size="medium"
+      class="nds-editblock_inline__spinner"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

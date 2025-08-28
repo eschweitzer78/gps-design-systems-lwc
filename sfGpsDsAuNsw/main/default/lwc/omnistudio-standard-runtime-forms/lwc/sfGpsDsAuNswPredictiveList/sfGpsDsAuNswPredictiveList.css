@@ -1,0 +1,350 @@
+.nsw-form__group:first-child {
+  margin-top: 1rem;
+}
+
+.sfgpsds-form-element {
+  position: relative;
+  min-width: 0;
+}
+
+.sfgpsds-form-element__control {
+  clear: left;
+  position: relative;
+}
+
+.sfgpsds-combobox_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+}
+
+.sfgpsds-dropdown-trigger {
+  position: relative;
+  display: inline-block;
+}
+
+.sfgpsds-combobox {
+  position: static;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.sfgps-combobox,
+.sfgps-combobox__form-element {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.sfgpsds-dropdown {
+  position: absolute;
+  z-index: 1000;
+  left: 50%;
+  float: left;
+  min-width: 6rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+
+  border-radius: var(--nsw-border-radius);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  box-shadow: 0 4px 12px 0 rgba(var(--nsw-black-rgb), 0.15);
+}
+
+.sfgpsds-dropdown_fluid,
+.sfgpsds-dropdown--fluid {
+  min-width: auto;
+  max-width: 100%;
+  width: 100%;
+}
+
+.sfgpsds-dropdown_length-5,
+.sfgpsds-dropdown--length-5 {
+  /* corrected to 1.5em + 2 times padding at 0.625rem */
+  /* max-height: calc((var(--nsw-line-height-sm-mobile) + 1.25rem) * 5); -- does not work with var */
+  -webkit-overflow-scrolling: touch;
+  max-height: calc((1.5em + 1.25rem) * 5);
+  overflow-y: auto;
+}
+
+.sfgpsds-dropdown_length-7,
+.sfgpsds-dropdown--length-7 {
+  -webkit-overflow-scrolling: touch;
+  /* corrected to 1.5em + 2 times padding at 0.625rem */
+  /* max-height: calc((var(--nsw-line-height-sm-mobile) + 1.25rem) * 5); -- does not work with var */
+  max-height: calc((1.5em + 1.25rem) * 7);
+  overflow-y: auto;
+}
+
+.sfgpsds-dropdown_length-10,
+.sfgpsds-dropdown--length-10 {
+  -webkit-overflow-scrolling: touch;
+  /* corrected to 1.5em + 2 times padding at 0.625rem */
+  /* max-height: calc((var(--nsw-line-height-sm-mobile) + 1.25rem) * 5); -- does not work with var */
+  max-height: calc((1.5em + 1.25rem) * 10);
+  overflow-y: auto;
+}
+
+@media (min-width: 62rem) {
+  .sfgpsds-dropdown_length-5,
+  .sfgpsds-dropdown--length-5 {
+    /* corrected to 1.5em + 2 times padding at 0.625rem */
+    /* max-height: calc((var(--nsw-line-height-sm-desktop) + 1.25rem) * 5); -- does not work with var */
+    max-height: calc((1.5em + 1.25rem) * 5);
+  }
+
+  .sfgpsds-dropdown_length-7,
+  .sfgpsds-dropdown--length-7 {
+    -webkit-overflow-scrolling: touch;
+    /* corrected to 1.5em + 2 times padding at 0.625rem */
+    /* max-height: calc((var(--nsw-line-height-sm-desktop) + 1.25rem) * 5); -- does not work with var */
+    max-height: calc((1.5em + 1.25rem) * 7);
+    overflow-y: auto;
+  }
+
+  .sfgpsds-dropdown_length-10,
+  .sfgpsds-dropdown--length-10 {
+    -webkit-overflow-scrolling: touch;
+    /* corrected to 1.5em + 2 times padding at 0.625rem */
+    /* max-height: calc((var(--nsw-line-height-sm-desktop) + 1.25rem) * 5); -- does not work with var */
+    max-height: calc((1.5em + 1.25rem) * 10);
+    overflow-y: auto;
+  }
+}
+
+.sfgpsds-dropdown-trigger .sfgpsds-dropdown {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition:
+    opacity 0.1s linear,
+    visibility 0.1s linear;
+  transition:
+    opacity 0.1s linear,
+    visibility 0.1s linear;
+  top: 100%;
+}
+
+.sfgpsds-dropdown-trigger--click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger--click:hover .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click .sfgpsds-dropdown,
+.sfgpsds-dropdown-trigger_click:hover .sfgpsds-dropdown {
+  display: none;
+}
+
+.sfgpsds-dropdown-trigger_click.sfgpsds-is-open .sfgpsds-dropdown {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* input */
+
+.sfgpsds-combobox__input[readonly]:not(:disabled) {
+  cursor: pointer;
+}
+
+.nsw-form__predictive .nsw-form__input.typeahead:disabled {
+  /* slds is doing some funky stuff with font size and border color */
+  font-size: var(--nsw-font-size-sm-mobile);
+  border-color: var(--nsw-grey-03);
+}
+
+/* listbox */
+
+.sfgpsds-listbox {
+  text-decoration: none;
+}
+
+/* items */
+
+.sfgpsds-listbox__item {
+  height: 2.75rem; /* calc((var(--nsw-line-height-sm-mobile) + 1.25rem) */
+}
+
+@media (min-width: 62rem) {
+  .sfgpsds-listbox__item {
+    height: 2.75rem; /* it turns it's the same but calc using a var won't work
+    calc((var(--nsw-line-height-sm-desktop) + 1.25rem) */
+  }
+}
+
+/* media and options */
+
+.sfgpsds-media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option--plain,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option_plain,
+.sfgpsds-listbox--vertical .sfgpsds-listbox__option_term,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option--plain,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option_plain,
+.sfgpsds-listbox_vertical .sfgpsds-listbox__option_term {
+  padding: 0.625rem;
+}
+
+.sfgpsds-listbox__option:hover {
+  cursor: pointer;
+  background-color: var(--nsw-text-hover);
+  color: var(--nsw-text-dark);
+}
+
+.sfgpsds-listbox__option:focus,
+.sfgpsds-listbox__option.sfgpsds-has-focus {
+  outline-offset: -3px;
+  /*outline-width: 3px;*/
+  outline: solid 3px var(--nsw-focus);
+}
+
+.sfgpsds-listbox__option.sfgpsds-is-selected {
+  background-color: var(--nsw-off-white);
+}
+
+.sfgpsds-listbox__option-text {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+}
+
+.sfgpsds-listbox__option-icon {
+  width: 1.5rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: var(--nsw-palette-grey-02);
+}
+
+.sfgpsds-media_center,
+.sfgpsds-media--center {
+  align-items: center;
+}
+
+.sfgpsds-media__figure {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+}
+
+.sfgpsds-media_small .sfgpsds-media__figure,
+.sfgpsds-media--small .sfgpsds-media__figure {
+  margin-right: 0.25rem;
+}
+
+.sfgpsds-media__body {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  min-width: 0;
+}
+
+.sfgpsds-media__body,
+.sfgpsds-media__body > :last-child {
+  margin-bottom: 0;
+}
+
+.sfgpsds-icon-small {
+  font-size: inherit;
+}
+
+.sfgpsds-listbox__option:hover .sfgpsds-listbox__option-icon,
+.sfgpsds-listbox__option.sfgpsds-has-focus .sfgpsds-listbox__option-icon {
+  color: var(--nsw-text-dark);
+}
+
+.sfgpsds-hide {
+  display: none;
+}
+
+.sfgpsds-label__group {
+  display: flex;
+}
+
+.sfgpsds-label__group_label_container {
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.sfgpsds-label__group_label {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.sfgpsds-label__group_action {
+  min-width: 0;
+}
+
+/* Default side icon */
+
+.sfgpsds-combobox__input {
+  background-color: var(--nsw-white);
+}
+
+.sfgpsds-combobox__input,
+.sfgpsds-combobox__input:disabled {
+  padding-right: 3rem;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%2322272B' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem auto;
+}
+
+.sfgpsds-is-open .sfgpsds-combobox__input {
+  background-image: url("data:image/svg+xml,%3Csvg transform='scale(1 -1)' fill='%2322272B' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.sfgpsds-combobox__input:hover {
+  background-color: var(--nsw-text-hover);
+  background-image: url("data:image/svg+xml,%3Csvg fill='%2322272B' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.sfgpsds-is-open .sfgpsds-combobox__input:hover {
+  background-image: url("data:image/svg+xml,%3Csvg transform='scale(1 -1)' fill='%2322272B' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem auto;
+}
+
+.sfgpsds-combobox__input[aria-invalid="true"]:hover,
+.nsw-form__input.has-error:hover {
+  background-image: url("data:image/svg+xml,%3Csvg fill='%2322272B' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 26l16-16-4-4-12 12-12-12-4 4 16 16z'%3E%3C/path%3E%3C/svg%3E");
+  background-color: var(--nsw-status-error-bg);
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem auto;
+}
+
+/* fixing margin for dropdown with *+p, *+ul... to match that of date picker */
+
+* + ul.sfgpsds-dropdown {
+  margin-top: 0;
+}

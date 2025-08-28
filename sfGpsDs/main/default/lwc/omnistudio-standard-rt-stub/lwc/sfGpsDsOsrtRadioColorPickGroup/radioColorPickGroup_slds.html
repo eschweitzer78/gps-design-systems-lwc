@@ -1,0 +1,72 @@
+<template>
+  <div class={errorClass}>
+    <fieldset>
+      <template if:true={isColorDisplay}>
+        <div class="slds-radio_custom_container slds-form-element__control">
+          <label
+            if:true={label}
+            class="slds-form-element__legend slds-form-element__label slds-float_none slds-p-top_none"
+          >
+            <abbr if:true={required} title="required" class="slds-required"
+              >*</abbr
+            >
+            <span class="slds-m-bottom_xxx-small">{label}</span>
+          </label>
+          <span style="white-space: nowrap">
+            <c-sf-gps-ds-osrt-tooltip
+              if:true={fieldLevelHelp}
+              theme="slds"
+              content={fieldLevelHelp}
+              icon-name="utility:info"
+              class="slds-tooltip_container slds-p-right_x-small"
+              extrabuttonclass="slds-m-bottom_xxx-small "
+            >
+            </c-sf-gps-ds-osrt-tooltip>
+            <slot name="label"></slot>
+          </span>
+          <div>
+            <template
+              for:each={internalOpts}
+              for:item="item"
+              for:index="radioIndex"
+            >
+              <div class={wrapperClass} key={item.id}>
+                <input
+                  value={item.value}
+                  onfocus={handleFocus}
+                  onchange={onchangevalue}
+                  checked={item.selected}
+                  type={type}
+                  disabled={disabled}
+                  name={item.id}
+                  id={item.id}
+                  aria-invalid={isError}
+                />
+                <label class={imageClass} for={item.id}>
+                  <div
+                    class="slds-img-item_select-container slds-img_option-width-height"
+                  >
+                    <template if:true={isColorDisplay}>
+                      <div class="slds-align_absolute-center">
+                        <div class="slds-illustration">
+                          <span
+                            class="slds-avatar slds-avatar_large slds-avatar_circle"
+                            style={item.bgstyle}
+                          ></span>
+                          <div class="slds-text-font_monospace">
+                            {item.label}
+                          </div>
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                </label>
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
+    </fieldset>
+    <div if:true={isError} class="slds-form-element__help">{errorMessage}</div>
+  </div>
+</template>

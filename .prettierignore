@@ -15,3 +15,5 @@ sfdx-project.json
 **/lwc/**/*.gen.css
 **/aura/**/*.gen.css
 **/__tests__/**
+
+sfGpsDs/main/default/lwc/omnistudio-standard-rt-stub/lwc/**

@@ -1,0 +1,302 @@
+<template>
+  <div
+    class="nds-element_text-font nds-grid nds-grid_vertical nds-p-horizontal_small nds-edit-block-table"
+  >
+    <template if:true={_isFirstIndex}>
+      <!-- Header/Label -->
+      <div class="nds-m-bottom_x-small nds-grid nds-m-top_small">
+        <h2
+          aria-label={_propSetMap.label}
+          class="nds-text-heading_small nds-text"
+          aria-live="polite"
+        >
+          {_propSetMap.label}
+        </h2>
+      </div>
+
+      <!-- Global Actions -->
+      <div if:true={_propSetMap.gActions} class="nds-grid nds-wrap">
+        <template
+          for:each={_gActions}
+          for:item="gActionItem"
+          for:index="gActionIndex"
+        >
+          <template if:true={gActionItem.hasIcon}>
+            <div
+              key={gActionItem.lwcId}
+              class="nds-m-bottom_x-small nds-m-right_xx-small"
+            >
+              <c-sf-gps-ds-osrt-icon
+                extraclass="nds-input__icon"
+                icon-name={gActionItem.icon}
+                theme="nds"
+                alternative-text="icon"
+                size="small"
+                style="cursor: pointer"
+                onclick={gActionItem.handleClick}
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </div>
+          </template>
+          <template if:false={gActionItem.hasIcon}>
+            <div key={gActionItem.lwcId} class={gActionItem.cls}>
+              <div class="nds-m-bottom_xx-small nds-m-right_xx-small">
+                <button
+                  class="nds-button nds-button_neutral nds-button_brand nds-size_1-of-1"
+                  onclick={gActionItem.handleClick}
+                >
+                  {gActionItem.label}
+                </button>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
+    </template>
+
+    <!-- Table Header -->
+    <template if:true={_isFirstIndex}>
+      <div
+        role="rowgroup"
+        class="nds-border_top nds-border_bottom nds-border_left nds-border_right nds-grid nds-p-vertical_xx-small"
+      >
+        <div
+          role="row"
+          tabindex="0"
+          class="nds-size_11-of-12 nds-grid nds-wrap"
+        >
+          <template
+            for:each={_tableLabels}
+            for:item="dvItem"
+            for:index="dvIndex"
+          >
+            <div key={dvItem.lwcId} class={dvItem.cls} role="columnheader">
+              <strong
+                class="nds-text-title_caps nds-text-heading--label nds-p-vertical_x-small"
+              >
+                {dvItem.label}
+              </strong>
+            </div>
+          </template>
+        </div>
+        <div class="nds-size_1-of-12">&nbsp;</div>
+      </div>
+    </template>
+
+    <!-- Table is always visible -->
+    <template if:true={_hasChildren}>
+      <template if:false={_isEditing}>
+        <div
+          class="nds-grid nds-cont-wrapper nds-border_top nds-border_bottom nds-border_left nds-border_right nds-editblock-table-row"
+          onclick={handleCheckbox}
+          data-is-selected={_showCheckbox}
+          tabindex="0"
+          role="rowgroup"
+          aria-describedby="table-text-error"
+          aria-labelledby="table-text"
+          aria-invalid={isInvalid}
+        >
+          <div role="row" class="nds-size_12-of-12 nds-grid">
+            <span id="table-text-error">
+              <span if:true={isInvalid} class="nds-assistive-text">
+                {allCustomLabelsUtil.OmniEditBlockRowError}
+              </span>
+            </span>
+            <div class="nds-size_11-of-12 nds-grid nds-wrap" id="table-text">
+              <span
+                if:true={isInvalid}
+                aria-hidden="true"
+                class="nds-required nds-m-around_none nds-p-left_xx-small nds-is-absolute"
+              >
+                *
+              </span>
+
+              <template
+                for:each={_displayValues}
+                for:item="dvItem"
+                for:index="dvIndex"
+              >
+                <div key={dvItem.lwcId} class={dvItem.cls} role="cell">
+                  <!-- Text -->
+                  <template if:false={dvItem.isCheckbox}>
+                    {dvItem.value}
+                  </template>
+                  <!-- Checkbox for FS / Table -->
+                  <template if:true={dvItem.isCheckbox}>
+                    <div class="nds-checkbox" style="padding-top: 0px">
+                      <input
+                        type="checkbox"
+                        checked={dvItem.value}
+                        class="nds-input_mask"
+                      />
+                      <label class="nds-checkbox__label">
+                        <span class="nds-checkbox_faux"> </span>
+                      </label>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+            <div
+              class="nds-size_1-of-12 nds-grid nds-grid--vertical-align-center"
+            >
+              <!-- Menu Action Icon -->
+              <template if:true={_useActionMenu}>
+                <div
+                  class="nds-grid nds-grid_vertical nds-grid_vertical-align-end nds-col_bump-left nds-is-relative nds-m-right_x-small"
+                >
+                  <button
+                    class="nds-button nds-button--icon-border-filled"
+                    data-action-button-menu
+                    onclick={toggleActionMenu}
+                    onkeydown={handleKeyboardActionMenu}
+                    aria-haspopup="true"
+                    aria-expanded={_menuExpanded}
+                    title={allCustomLabelsUtil.OmniEditBlockShowMoreLabel}
+                    aria-label={allCustomLabelsUtil.OmniEditBlockShowMoreLabel}
+                    tabindex="0"
+                    type="button"
+                  >
+                    <c-sf-gps-ds-osrt-icon
+                      extraclass="nds-input__icon"
+                      icon-name="utility:down"
+                      theme="nds"
+                      alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextDown}
+                      size="x-small"
+                    >
+                    </c-sf-gps-ds-osrt-icon>
+                  </button>
+                  <!-- Action Menu List -->
+                  <div
+                    if:true={_bShowActionMenu}
+                    class="nds-dropdown nds-dropdown_right"
+                    style="top: 100%"
+                  >
+                    <ul class="nds-dropdown__list" role="menu">
+                      <template
+                        for:each={_actionMenuList}
+                        for:item="actionMenuItem"
+                        for:index="actionMenuIndex"
+                      >
+                        <li
+                          key={actionMenuItem.lwcId}
+                          class="nds-dropdown__item"
+                          role="presentation"
+                          onclick={actionMenuItem.handleClick}
+                          onkeydown={actionMenuItem.handleKeyboardClick}
+                        >
+                          <a
+                            href="javascript:void(0);"
+                            role="menuitem"
+                            tabindex="0"
+                          >
+                            <span class="nds-truncate">
+                              {actionMenuItem.label}
+                            </span>
+                          </a>
+                        </li>
+                      </template>
+                    </ul>
+                  </div>
+                  <!-- Click anywhere else will hide action menu list-->
+                  <div
+                    if:true={_bShowActionMenu}
+                    onclick={hideActionMenu}
+                    class="nds-is-absolute"
+                    style="
+                      width: 1000vh;
+                      height: 1000vh;
+                      left: -200vw;
+                      top: -200vh;
+                    "
+                  ></div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+        <!-- bottom border of the table -->
+        <div if:true={showAdd} class="nds-border_bottom nds-size-1-of-1"></div>
+      </template>
+    </template>
+
+    <!-- Modal Editing -->
+    <div class={editClass}>
+      <div class="nds-modal_custom">
+        <section
+          role="dialog"
+          tabindex="-1"
+          class="nds-modal nds-fade-in-open nds-modal_large"
+          aria-modal="true"
+          aria-label={_propSetMap.label}
+        >
+          <div class="nds-modal__container">
+            <header class="nds-modal__header">
+              <h1 class="nds-text-heading_small nds-step_label">
+                {_propSetMap.label}
+              </h1>
+            </header>
+            <div class="nds-modal__content nds-p-around_medium">
+              <slot
+                class="nds-grid nds-wrap nds-grid_pull-padded nds-p-left_small"
+              ></slot>
+            </div>
+            <footer class="nds-modal__footer nds-button_text-font">
+              <button
+                type="button"
+                onclick={cancel}
+                class="nds-button nds-button_neutral nds-size_2-of-12 nds-text-align_center"
+              >
+                {allCustomLabelsUtil.OmnicancelLabel}
+              </button>
+              <button
+                type="button"
+                onclick={save}
+                disabled={isPageLoading}
+                class="nds-button nds-button_neutral nds-button_brand nds-size_2-of-12 nds-text-align_center"
+              >
+                {allCustomLabelsUtil.OmniConfigProdModalOk}
+              </button>
+            </footer>
+          </div>
+        </section>
+        <div class="nds-backdrop nds-backdrop_open"></div>
+      </div>
+    </div>
+
+    <!-- Add Button -->
+    <template if:true={showAdd}>
+      <div class="nds-grid nds-m-top_small">
+        <button
+          type="button"
+          tabindex="0"
+          class="nds-button nds-m-top_x-small nds-text-align_center nds-editblock_add-button nds-col_bump-left editblock-new"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-osrt-icon
+            class="nds-m-right_xx-small"
+            extraclass="nds-input__icon"
+            icon-name="utility:add"
+            theme="nds"
+            alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextAdd}
+            size="x-small"
+          >
+          </c-sf-gps-ds-osrt-icon>
+          <span> {_newLabel} </span>
+        </button>
+      </div>
+    </template>
+  </div>
+
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      theme={_theme}
+      size="medium"
+      class="nds-editblock_inline__spinner"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

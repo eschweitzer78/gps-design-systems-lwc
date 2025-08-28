@@ -1,0 +1,124 @@
+{
+  "sfGpsDsFrGovAlertOsN/alert": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovCheckboxGroupOsN/checkboxes": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovDatePickerOsN/input": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovFormDisclosureOsN/input": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovFormFileOsN/file-upload": [],
+  "sfGpsDsFrGovFormLookupOsN/select": [
+    {
+      "from": ":root",
+      "to": ":host"
+    }
+  ],
+  "sfGpsDsFrGovFormStepOsN/button": [
+    {
+      "from": ":root",
+      "to": ":host"
+    }
+  ],
+  "sfGpsDsFrGovInputOsN/checkboxes": [
+    {
+      "from": ":root",
+      "to": ":host"
+    }
+  ],
+  "sfGpsDsFrGovInputOsN/input": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovMaskedInputOsN/input": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovProgressIndicatorOsN/stepper": [],
+  "sfGpsDsFrGovRadioGroupOsN/radios": [
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovSelectOsN/select": [
+    {
+      "from": ":root",
+      "to": ":host"
+    }
+  ],
+  "sfGpsDsFrGovTextareaOsN/input": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovTimePickerOsN/input": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ],
+  "sfGpsDsFrGovTypeaheadOsN/search": [
+    {
+      "from": ":root",
+      "to": ":host"
+    },
+    {
+      "from": "../../icons/system",
+      "to": "/sfsites/c/resource/sfGpsDsFrGov/icons/system"
+    }
+  ]
+}

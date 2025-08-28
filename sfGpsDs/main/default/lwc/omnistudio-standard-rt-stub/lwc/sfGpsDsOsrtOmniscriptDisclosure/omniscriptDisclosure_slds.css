@@ -1,0 +1,14 @@
+.vlc-slds-box__no-border {
+  border-radius: 0;
+  padding: 0;
+}
+
+.vlc-slds-box__no-border > .slds-box {
+  border-radius: inherit;
+  border: none;
+  border-bottom: inherit;
+}
+
+.vlc-slds-box__no-border > .slds-box:last-child {
+  border-bottom: none;
+}

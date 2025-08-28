@@ -1,0 +1,14 @@
+<template>
+  <div class={getClasses}>
+    <div if:true={imgsrc}>
+      <img src={imgsrc} alt={alternativeText} />
+    </div>
+    <svg if:false={imgsrc} class="nds-icon" aria-hidden="true">
+      <use xlink:href={getAltIconUrl}></use>
+    </svg>
+    <span if:false={imgsrc}>{alternativeText}</span>
+    <div if:true={title} class={getTitleClasses}>
+      <span title={title}>{title}</span>
+    </div>
+  </div>
+</template>

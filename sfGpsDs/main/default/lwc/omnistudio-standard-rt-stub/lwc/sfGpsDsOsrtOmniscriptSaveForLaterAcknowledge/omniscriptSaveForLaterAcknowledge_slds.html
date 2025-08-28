@@ -1,0 +1,84 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:true={auto}>
+    <template if:true={hasResult}>
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
+      <div class="slds-text-body_small">
+        {_bSflLabels.OmniScriptResumeLink}
+        <button
+          class="slds-button slds-text-link"
+          onclick={copyLinkToClipboard}
+        >
+          {_bSflLabels.OmniCopyLink}
+        </button>
+        or&nbsp;
+        <a href={emailLink} target="_blank" rel="noopener"
+          >{_bSflLabels.OmniEmailMe}</a
+        >
+      </div>
+    </template>
+  </template>
+  <template if:false={auto}>
+    <template if:true={hasResult}>
+      <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_medium">
+        <div class="slds-col slds-size_12-of-12 slds-medium-size_2-of-12"></div>
+        <div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12">
+          <div class="slds-card omniscript-save-for-later">
+            <div
+              class="copy-container slds-is-absolute slds-z_-1"
+              lwc:dom="manual"
+            ></div>
+            <div class="slds-card__header slds-grid">
+              <header
+                class="slds-media slds-media_center slds-has-flexi-truncate"
+              >
+                <div class="slds-media__figure">
+                  <lightning-icon
+                    icon-name="action:approval"
+                    alternative-text="Ok"
+                    size="medium"
+                  ></lightning-icon>
+                </div>
+                <div class="slds-media__body">
+                  <h1
+                    class="slds-card__header-title"
+                    role="heading"
+                    aria-live="polite"
+                  >
+                    <span class="slds-text-heading_large"
+                      >{_bSflLabels.OmniSaved}</span
+                    >
+                  </h1>
+                </div>
+              </header>
+            </div>
+            <div class="slds-card__body slds-card__body_inner">
+              <div>
+                <label>{_bSflLabels.OmniResume}</label>:
+                <div class="slds-m-vertical_medium slds-break-word">
+                  <a href={resumeLink} target="_blank">{resumeLink}</a>
+                </div>
+                <button
+                  class="slds-button slds-button_neutral"
+                  onclick={copyLinkToClipboard}
+                >
+                  {_bSflLabels.OmniCopyLink}
+                </button>
+                <button
+                  class="slds-button slds-button_neutral"
+                  onclick={openEmail}
+                >
+                  {_bSflLabels.OmniEmailMe}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-col slds-size_12-of-12 slds-medium-size_2-of-12"></div>
+      </div>
+    </template>
+  </template>
+</template>

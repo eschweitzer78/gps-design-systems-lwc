@@ -1,0 +1,78 @@
+<template>
+  <div class={containerClass}>
+    <div
+      class="nds-form-element__control nds-form-element__control-animated-label"
+    >
+      <textarea
+        tabindex={tabIndex}
+        oninput={updateValue}
+        minlength={minLength}
+        maxlength={maxLength}
+        readonly={readOnly}
+        aria-readonly={readOnly}
+        accesskey={accessKey}
+        name={name}
+        disabled={disabled}
+        onblur={validateError}
+        required={required}
+        class={textAreaClass}
+        placeholder={placeholder}
+        id="textAreaId"
+        style={styleProperties.value.styles}
+        autocomplete={autocomplete}
+        onfocus={triggerEvent}
+        onchange={triggerEvent}
+        onkeyup={keyCallbacks}
+        onkeydown={keyCallbacks}
+        aria-invalid={isError}
+        aria-describedby="errorMessageBlock"
+      >
+{_val}</textarea
+      >
+      <div
+        class="nds-form-element__label nds-align-middle nds-animated-label__ease-out"
+        data-label="true"
+      >
+        <label
+          if:true={labelVisible}
+          for="textAreaId"
+          style={styleProperties.label.styles}
+          >{label}
+          <abbr
+            if:true={required}
+            class="nds-required nds-p-left_xx-small"
+            title={requiredLabel}
+            >*</abbr
+          >
+        </label>
+        <c-sf-gps-ds-osrt-tooltip
+          class="nds-tooltip__container"
+          if:true={fieldLevelHelp}
+          icon-url={iconUrl}
+          content={fieldLevelHelp}
+          associated-component-label={label}
+          theme="nds"
+          arrowposition={fieldLevelHelpPosition}
+        ></c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </div>
+    </div>
+    <div
+      if:true={isError}
+      class="nds-form-element__help nds-form-element__help_text-transform__none"
+      aria-live="polite"
+      id="errorMessageBlock"
+      role="alert"
+    >
+      {errorMessage}
+    </div>
+    <div
+      if:true={warningFlag}
+      class="nds-form-element__help nds-size_1-of-1 nds-text_warning"
+      aria-live="polite"
+      role="alert"
+    >
+      {warningMessage}
+    </div>
+  </div>
+</template>

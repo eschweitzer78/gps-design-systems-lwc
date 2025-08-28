@@ -1,0 +1,38 @@
+<template>
+  <template lwc:if={messageText}>
+    <div class="messaging">
+      <c-sf-gps-ds-au-nsw-alert-comm
+        lwc:if={isRequirement}
+        as="error"
+        compact={isCompact}
+        title={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-nsw-alert-comm>
+      <c-sf-gps-ds-au-nsw-alert-comm
+        lwc:elseif={isSuccess}
+        as="success"
+        compact={isCompact}
+        title={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-nsw-alert-comm>
+      <c-sf-gps-ds-au-nsw-alert-comm
+        lwc:elseif={isWarning}
+        as="warning"
+        compact={isCompact}
+        title={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-nsw-alert-comm>
+      <c-sf-gps-ds-au-nsw-alert-comm
+        lwc:elseif={isComment}
+        as="info"
+        compact={isCompact}
+        title={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </c-sf-gps-ds-au-nsw-alert-comm>
+    </div>
+  </template>
+</template>

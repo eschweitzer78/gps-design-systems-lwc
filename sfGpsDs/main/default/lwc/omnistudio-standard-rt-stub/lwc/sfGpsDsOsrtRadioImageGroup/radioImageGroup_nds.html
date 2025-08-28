@@ -1,0 +1,224 @@
+<template>
+  <div class={errorClass}>
+    <template if:true={isDisplayRadio}>
+      <div class={horizonDisplayMode}>
+        <fieldset>
+          <legend
+            if:true={label}
+            class="nds-show nds-form-element__legend nds-float_left"
+            style={styleProperties.label.styles}
+          >
+            <span
+              class="nds-m-right_x-small"
+              style={styleProperties.label.styles}
+              >{label}</span
+            >
+            <abbr if:true={required} title="required" class="nds-required"
+              >*</abbr
+            >
+          </legend>
+          <span class="nds-clearfix nds-m-top_xx-small">
+            <c-sf-gps-ds-osrt-tooltip
+              if:true={fieldLevelHelp}
+              class="nds-m-right_small"
+              theme={theme}
+              content={fieldLevelHelp}
+              arrowposition={fieldLevelHelpPosition}
+              icon-name="utility:info"
+            >
+            </c-sf-gps-ds-osrt-tooltip>
+            <slot name="label"></slot>
+          </span>
+          <template
+            for:each={internalOpts}
+            for:item="item"
+            for:index="radioIndex"
+          >
+            <div class="nds-radio" key={item.id}>
+              <input
+                value={item.value}
+                tabindex={tabIndex}
+                onfocus={handleFocus}
+                onblur={handleBlur}
+                onchange={onchangevalue}
+                checked={item.selected}
+                onkeydown={handleKeyDownEvent}
+                required={required}
+                type={type}
+                disabled={isDisabled}
+                name={item.id}
+                id={item.id}
+                aria-invalid={isError}
+              />
+              <label
+                class="nds-radio__label"
+                for={item.id}
+                disabled={isDisabled}
+              >
+                <span class="nds-radio_faux"></span>
+                <span class="nds-form-element__label">{item.label}</span>
+              </label>
+            </div>
+          </template>
+        </fieldset>
+      </div>
+    </template>
+
+    <template if:true={isImage}>
+      <div class="nds-radio_custom_container nds-form-element__control">
+        <fieldset>
+          <legend
+            if:true={label}
+            class="nds-form-element__legend nds-radio-relative-tooltip nds-show nds-float_left nds-m-right_xxx-small"
+            style={styleProperties.label.styles}
+          >
+            <span
+              class="nds-m-right_x-small"
+              style={styleProperties.label.styles}
+              >{label}</span
+            >
+            <abbr if:true={required} title="required" class="nds-required"
+              >*</abbr
+            >
+          </legend>
+          <div class="nds-clearfix nds-m-top_xx-small">
+            <c-sf-gps-ds-osrt-tooltip
+              if:true={fieldLevelHelp}
+              class="nds-m-right_small"
+              theme={theme}
+              content={fieldLevelHelp}
+              arrowposition={fieldLevelHelpPosition}
+              icon-name="utility:info"
+            >
+            </c-sf-gps-ds-osrt-tooltip>
+            <slot name="label"></slot>
+          </div>
+          <div>
+            <template
+              for:each={internalOpts}
+              for:item="item"
+              for:index="radioIndex"
+            >
+              <div class={wrapperClass} key={item.id}>
+                <input
+                  value={item.value}
+                  tabindex={tabIndex}
+                  onfocus={handleFocus}
+                  onblur={handleBlur}
+                  required={required}
+                  onchange={onchangevalue}
+                  checked={item.selected}
+                  onkeydown={handleKeyDownEvent}
+                  type={type}
+                  disabled={isDisabled}
+                  name={item.name}
+                  id={item.id}
+                  aria-invalid={isError}
+                />
+                <label class={imageClass} for={item.id} disabled={isDisabled}>
+                  <div
+                    class="nds-img-item_select-container nds-img_option-width-height"
+                  >
+                    <template if:true={isImageDisplay}>
+                      <img
+                        if:true={item.imgId}
+                        class="nds-img-item"
+                        src={item.imgId}
+                        alt={item.label}
+                        title={item.label}
+                      />
+                    </template>
+                    <span class="nds-img-item-caption" if:false={item.imgId}
+                      >{item.label}</span
+                    >
+                  </div>
+                  <template if:true={enabledCaption}>
+                    <template if:true={item.imgId}>
+                      <div class="nds-caption-out_cont">
+                        <span class="captionOut nds-form-element__label"
+                          >{item.label}</span
+                        >
+                      </div>
+                    </template>
+                  </template>
+                </label>
+              </div>
+            </template>
+          </div>
+        </fieldset>
+      </div>
+    </template>
+
+    <template if:true={isDisplayWide}>
+      <div class="nds-form-element__control">
+        <div class="nds-radio_button-group">
+          <fieldset>
+            <legend
+              if:true={label}
+              class="nds-show nds-form-element__legend nds-float_left"
+            >
+              <span
+                class="nds-m-right_x-small"
+                style={styleProperties.label.styles}
+                >{label}</span
+              >
+              <abbr if:true={required} title="required" class="nds-required"
+                >*</abbr
+              >
+            </legend>
+            <span class="nds-clearfix nds-m-top_xx-small">
+              <c-sf-gps-ds-osrt-tooltip
+                if:true={fieldLevelHelp}
+                class="nds-m-right_small"
+                theme={theme}
+                content={fieldLevelHelp}
+                arrowposition={fieldLevelHelpPosition}
+                icon-name="utility:info"
+              >
+              </c-sf-gps-ds-osrt-tooltip>
+              <slot name="label"></slot>
+            </span>
+            <template
+              for:each={internalOpts}
+              for:item="item"
+              for:index="radioIndex"
+            >
+              <span class="nds-button nds-radio_button" key={item.id}>
+                <input
+                  value={item.value}
+                  tabindex={tabIndex}
+                  onfocus={handleFocus}
+                  onblur={handleBlur}
+                  required={required}
+                  onchange={onchangevalue}
+                  data-index={index}
+                  checked={item.selected}
+                  onkeydown={handleKeyDownEvent}
+                  type={type}
+                  disabled={isDisabled}
+                  name={item.name}
+                  id={item.id}
+                  aria-invalid={isError}
+                />
+                <label
+                  class="nds-radio_button__label"
+                  data-index={index}
+                  for={item.value}
+                >
+                  <span class="nds-radio_faux">{item.label}</span>
+                </label>
+              </span>
+            </template>
+          </fieldset>
+        </div>
+      </div>
+    </template>
+    <div
+      if:true={isError}
+      class="nds-form-element__help nds-form-element__help_text-transform__none"
+      role="alert"
+    >
+      {errorMessage}
+    </div>
+  </div>
+</template>

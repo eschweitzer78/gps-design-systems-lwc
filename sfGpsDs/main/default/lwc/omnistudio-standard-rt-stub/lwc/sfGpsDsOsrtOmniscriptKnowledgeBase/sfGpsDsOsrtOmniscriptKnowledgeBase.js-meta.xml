@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>56.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Vlocity OmniScript Knowledge Base</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+    <target>lightning__RecordPage</target>
+    <target>lightning__AppPage</target>
+    <target>lightning__HomePage</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig
+      targets="lightning__AppPage, lightning__HomePage, lightning__RecordPage, lightningCommunity__Default"
+    >
+      <property name="layout" type="String" />
+      <property name='omniscriptKey' type="String" />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

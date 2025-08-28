@@ -1,0 +1,7 @@
+input {
+  caret-color: transparent;
+}
+
+.nds-input:focus {
+  border-color: #f46a01;
+}

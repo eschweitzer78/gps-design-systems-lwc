@@ -1,0 +1,58 @@
+<template>
+  <div class="nsw-form__group">
+    <div lwc:if={labelVisible} data-label="true">
+      <label class={computedLabelClassName} for="textareaId">
+        {label}
+        <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
+      </label>
+      <slot name="label"> </slot>
+    </div>
+
+    <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper"
+      >{fieldLevelHelp}</span
+    >
+
+    <textarea
+      class="nsw-form__input"
+      tabindex={tabIndex}
+      minlength={minLength}
+      maxlength={maxLength}
+      readonly={readOnly}
+      aria-readonly={readOnly}
+      accesskey={accessKey}
+      name={name}
+      disabled={computedDisabledOrReadOnly}
+      required={required}
+      placeholder={placeholder}
+      id="textareaId"
+      autocomplete={autocomplete}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={sfGpsDsIsError}
+      oninput={updateValue}
+      onblur={validateError}
+      onfocus={triggerEvent}
+      onchange={triggerEvent}
+      onkeyup={keyCallbacks}
+      onkeydown={keyCallbacks}
+      data-sfgpsds-input
+    >
+      {_val}
+    </textarea>
+
+    <span
+      id="errorMessageBlock"
+      lwc:if={sfGpsDsIsError}
+      class={computedHelperClassName}
+      role="alert"
+    >
+      <span
+        lwc:if={computedStatusIcon}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {computedStatusIcon}
+      </span>
+      {sfGpsDsErrorMessage}
+    </span>
+  </div>
+</template>

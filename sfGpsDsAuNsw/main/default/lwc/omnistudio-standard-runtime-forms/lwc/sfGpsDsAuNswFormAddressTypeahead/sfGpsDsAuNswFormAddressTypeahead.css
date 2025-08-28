@@ -1,0 +1,62 @@
+@import "c/sfGpsDsAuNswCore";
+@import "c/sfGpsDsAuNswForm";
+
+.nsw-form__group:first-child {
+  margin-top: 1rem;
+}
+
+.cannot-find-address {
+  font-size: var(--nsw-font-size-sm-mobile);
+  line-height: var(--nsw-line-height-sm-mobile);
+  color: var(--nsw-link);
+  font-weight: var(--nsw-font-bold);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (min-width: 62rem) {
+  .cannot-find-address {
+    font-size: var(--nsw-font-size-sm-desktop);
+    line-height: var(--nsw-line-height-sm-desktop);
+  }
+}
+
+.nsw-col.street,
+.nsw-col.suburb,
+.nsw-col.state,
+.nsw-col.postalcode,
+.nsw-col.country {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.address-container input {
+  text-transform: capitalize;
+}
+
+.sfgpsds-hide {
+  display: none;
+}
+
+.sfgpsds-label__group {
+  display: flex;
+}
+
+.sfgpsds-label__group_label_container {
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.sfgpsds-label__group_label {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  min-width: 0;
+}
+
+.sfgpsds-label__group_action {
+  min-width: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+}

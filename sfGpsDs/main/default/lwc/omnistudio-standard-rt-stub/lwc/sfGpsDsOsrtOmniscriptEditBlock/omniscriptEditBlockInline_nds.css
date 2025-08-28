@@ -1,0 +1,8 @@
+.nds-editblock_inline .nds-edit-block_longcards form {
+  border: none;
+}
+
+.nds-editblock_inline .nds-edit-block_longcards {
+  border: 1px solid #dddbda;
+  border-radius: 0.25rem;
+}

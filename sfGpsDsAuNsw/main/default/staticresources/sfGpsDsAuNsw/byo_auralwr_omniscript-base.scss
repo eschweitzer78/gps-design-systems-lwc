@@ -108,31 +108,51 @@
   }
 }
 
-c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group {
+c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group,
+c-sf-gps-ds-au-nsw-form-block > .nsw-accordion > .slds-button-group {
   .slds-button {
     margin-top: 0.5rem;
   }
 }
 
 omnistudio-omniscript-action-block,
+c-sf-gps-ds-osrt-omniscript-action-block,
 omnistudio-omniscript-calculation-action,
+c-sf-gps-ds-osrt-omniscript-calculation-action,
 omnistudio-omniscript-delete-action,
+c-sf-gps-ds-osrt-omniscript-delete-action,
 omnistudio-omniscript-docusign-envelope-action,
+c-sf-gps-ds-osrt-omniscript-docusign-envelope-action,
 omnistudio-omniscript-docusign-signature-action,
+c-sf-gps-ds-osrt-omniscript-docusing-signature-action,
 omnistudio-omniscript-dr-extract-action,
+c-sf-gps-ds-osrt-omniscript-dr-extract-action,
 omnistudio-omniscript-dr-post-action,
+c-sf-gps-ds-osrt-omniscript-dr-post--action,
 omnistudio-omniscript-dr-turbo-action,
+c-sf-gps-ds-osrt-omniscript-dr-turbo-action,
 omnistudio-omniscript-dr-transform-action,
+c-sf-gps-ds-osrt-omniscript-dr-transform-action,
 omnistudio-omniscript-http-action,
+c-sf-gps-ds-osrt-omniscript-http-action,
 omnistudio-omniscript-ip-action,
+c-sf-gps-ds-osrt-omniscript-ip-action,
 omnistudio-omniscript-matrix-action,
+c-sf-gps-ds-osrt-omniscript-matrix-action,
 omnistudio-omniscript-navigate-action,
+c-sf-gps-ds-osrt-omniscript-navigate-action,
 omnistudio-omniscript-pdf-action,
+c-sf-gps-ds-osrt-omniscript-pdf-action,
 omnistudio-omniscript-remote-action,
+c-sf-gps-ds-osrt-omniscript-remote-action,
 omnistudio-omniscript-set-values,
+c-sf-gps-ds-osrt-omniscript-set-values-action,
 omnistudio-omniscript-set-errors,
+c-sf-gps-ds-osrt-omniscript-set-errors-action,
 omnistudio-omniscript-edit-block,
+c-sf-gps-ds-osrt-omniscript-edit-block,
 c-sf-gps-ds-au-nsw-form-block-os-n > .nsw-accordion > .slds-button-group,
+c-sf-gps-ds-au-nsw-form-block > .nsw-accordion > .slds-button-group,
 .omniscript-body > .slds-grid {
   .slds-button {
     --lwc-borderWidthThin: 2px;

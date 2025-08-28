@@ -1,0 +1,237 @@
+.slds-form-element__label {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  color: #061c3f;
+  font-weight: 400;
+  margin-top: 1.2rem;
+  width: 90%;
+  margin: 0.8rem auto;
+  display: block;
+}
+
+.slds-form-element__control.slds-input-has-icon {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  margin-bottom: 1.6rem;
+}
+
+input.slds-input {
+  border: 1px solid #d8dde6;
+}
+
+ul {
+  min-height: 18rem;
+  height: 18rem;
+  overflow-y: auto;
+  padding-top: 0;
+  background: #fff;
+  border-top: none;
+  width: 100%;
+  margin-right: -1rem;
+}
+
+li {
+  border-bottom: 1px solid #cfd7e6;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(207, 215, 230);
+  min-height: 6rem;
+  height: 6rem;
+  color: #456792;
+  padding: 0.6rem 5% 0 0;
+}
+
+.vlc-slds-knowledge-list-item {
+  min-height: 3.6rem;
+}
+
+.vlc-slds-control-action__container {
+  padding-top: 0.75rem;
+  white-space: nowrap;
+}
+
+.vlc-slds-control-action__container > p {
+  float: left;
+  width: 80%;
+  max-width: 80%;
+  text-overflow: ellipsis;
+  margin-right: 0.3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: rgb(22, 50, 92);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.vlc-slds-control-action__container > button {
+  position: relative;
+  color: #4f6a92;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.vlc-slds-knowledge-list-item > h3 {
+  font-weight: 300;
+  font-size: 0.7rem;
+  color: #5876a3;
+}
+
+.vlc-slds-knowledge-list-item
+  .vlc-slds-control-action__container
+  > button
+  small {
+  position: absolute;
+  right: 0;
+  top: -1rem;
+  display: none;
+}
+
+ul.vlc-slds-knowledge-item
+  .vlc-slds-knowledge-list-item
+  .vlc-slds-control-action__container
+  button
+  .slds-icon__eye:hover
+  + small {
+  display: inline;
+}
+
+.slds-icon {
+  fill: #49739c;
+}
+
+ul.vlc-slds-knowledge-item
+  li
+  .vlc-slds-knowledge-list-item
+  .vlc-slds-control-action__container
+  button {
+  margin-right: 10px;
+  padding: 0;
+  background: none;
+  color: inherit;
+  margin-left: 10px;
+}
+
+ul.vlc-slds-knowledge-item .vlc-slds-knowledge-list-item > h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  width: 90%;
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgb(22, 50, 92);
+}
+
+ul.vlc-slds-knowledge-item .vlc-slds-knowledge-list-item .vlc-slds-lastpubdate {
+  font-size: 0.7125rem;
+}
+
+.vlc-slds-control-action__container svg {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0;
+}
+
+.slds-lookup__search-input.slds-input {
+  padding: 0;
+}
+
+.slds-modal__container {
+  width: 90%;
+  max-width: none;
+  min-width: 40rem;
+  height: 100%;
+}
+
+.slds-modal__header {
+  border-bottom: 2px;
+  solid: #dddbda;
+}
+
+.slds-modal__footer {
+  border-top: 2px;
+  solid: #dddbda;
+}
+
+.slds-modal__footer div {
+  float: right;
+}
+
+.vlc-slds-control-action__container p {
+  cursor: pointer;
+  margin: 1px;
+}
+
+.vlc-slds-control-action__container p:hover {
+  text-decoration: underline;
+}
+
+.vlc-slds-knowledge-component,
+.slds-knowledge-block {
+  padding: 0 1.5rem 0 1.5rem;
+}
+
+.slds-knowledge-block[chart-top="true"] {
+  position: fixed;
+  top: 10.625rem;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 100%;
+  padding: 0;
+}
+
+.slds-knowledge-block .slds-knowledge-data_cont {
+  position: absolute;
+  top: 1.8rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.slds-knowledge-block > .slds-form-element__label {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  position: absolute;
+  transform: rotate(270deg);
+  border: 1px solid #e7ecf3;
+  right: -3.75rem;
+  padding: 0.3125rem 0.9375rem;
+  margin: 0;
+  top: 6.25rem;
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  text-align: center;
+  background-color: #fff;
+}
+
+.slds-knowledge_full-cont-width {
+  width: 30%;
+}
+
+.slds-knowledge_cont-init-width {
+  width: 5%;
+}
+
+.slds-knowledge-data_wrapper {
+  position: relative;
+  padding: 1rem;
+  border-left: 2px solid #e7ecf3;
+  border-top: 2px solid #e7ecf3;
+  overflow-y: scroll;
+  background: #fff;
+}
+
+.vlc-slds-control-action__container button:focus,
+.vlc-slds-control-action__container button:active,
+.vlc-slds-control-action__container p:focus,
+.vlc-slds-control-action__container p:active {
+  outline: 0;
+  box-shadow: 0 0 3px #0070d2;
+  z-index: 1;
+}

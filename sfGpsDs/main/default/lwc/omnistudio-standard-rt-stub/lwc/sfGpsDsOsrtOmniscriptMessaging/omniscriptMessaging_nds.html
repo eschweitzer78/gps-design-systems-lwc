@@ -1,0 +1,33 @@
+<template>
+  <div class={wrapperClass} if:false={_isDesignMode}>
+    <div
+      class="nds-form-element__control nds-form-element__control-animated-label nds-grid"
+      role="alert"
+    >
+      <div if:true={messageText} msg={messageType} class="nds-faux-animate">
+        <span
+          class="nds-icon_container nds-icon_container_circle nds-m-right_small"
+          title={messageType}
+        >
+          <c-sf-gps-ds-osrt-icon
+            theme={_theme}
+            icon-name={iconName}
+            variant={iconVariant}
+            alternative-text={alternativeText}
+          ></c-sf-gps-ds-osrt-icon>
+        </span>
+      </div>
+      <label
+        if:true={_showLabel}
+        class="nds-form-element__label"
+        style="top: 0rem"
+      >
+        <span>{_propSetMap.label}</span>
+      </label>
+      <span class={textClass}>{messageText}</span>
+    </div>
+  </div>
+  <span if:true={_isDesignMode} class="slds-text-font_monospace">
+    &lt;{_elementId} /&gt;</span
+  >
+</template>

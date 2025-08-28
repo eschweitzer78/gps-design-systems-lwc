@@ -1,0 +1,9 @@
+<template>
+  <ul class="nds-has-dividers_around nds-has-block-links_space">
+    <template for:each={records} for:item="item" for:index="index">
+      <li key={item.id} class="nds-item">
+        <a href="javascript:void(0);">{item.Name}</a>
+      </li>
+    </template>
+  </ul>
+</template>

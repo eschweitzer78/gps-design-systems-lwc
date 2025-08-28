@@ -1,0 +1,71 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class={computedClassName}>
+    <div
+      class="nsw-accordion__title nsw-accordion__open"
+      role="heading"
+      aria-level={blockHeadingLevel}
+    >
+      <template lwc:if={blockLabel}>
+        <button
+          lwc:if={computedCollapsible}
+          type="button"
+          aria-expanded={expandContent}
+          aria-controls="content"
+          class={computedButtonClassName}
+          onclick={toggleContent}
+        >
+          {mergedLabel}
+          <span class="material-icons nsw-material-icons" aria-hidden="true">
+            keyboard_arrow_down
+          </span>
+        </button>
+
+        <span lwc:else class={computedButtonClassName}> {mergedLabel} </span>
+      </template>
+    </div>
+
+    <template lwc:if={_propSetMap.repeat}>
+      <div class="nsw-list nsw-list--8 nsw-p-top-sm">
+        <c-sf-gps-ds-au-nsw-button
+          lwc:if={canRepeat}
+          cstyle="dark-outline"
+          onclick={handleAdd}
+          label={allCustomLabelsUtil.OmniAdd}
+          aria-label={_addAriaLabel}
+        >
+        </c-sf-gps-ds-au-nsw-button>
+        <c-sf-gps-ds-au-nsw-button
+          lwc:if={canRemove}
+          cstyle="dark-outline"
+          onclick={handleRemove}
+          label={allCustomLabelsUtil.OmniDelete}
+          class="slds-m-left_x-small"
+          aria-label={_removeAriaLabel}
+        >
+        </c-sf-gps-ds-au-nsw-button>
+      </div>
+    </template>
+
+    <span
+      lwc:if={showValidation}
+      class={computedHelperClassName}
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <span
+        lwc:if={computedStatusIcon}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {computedStatusIcon}
+      </span>
+      {allCustomLabelsUtil.OmniBlockError}
+    </span>
+
+    <div id="content" hidden={ariaHiddenValue} class={computedContentClassName}>
+      <slot></slot>
+    </div>
+  </div>
+</template>

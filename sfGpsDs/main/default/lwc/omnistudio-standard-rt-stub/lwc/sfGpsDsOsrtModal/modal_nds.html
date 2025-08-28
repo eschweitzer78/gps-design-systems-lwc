@@ -1,0 +1,50 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="modal-container" style="display: none">
+    <section class={getModalClasses}>
+      <div
+        role="dialog"
+        tabindex="0"
+        aria-modal="true"
+        aria-label={flyoutAriaLabel}
+        class="modal-dialog nds-modal__container"
+        onkeydown={handleModalKeyDown}
+      >
+        <button
+          title="Close"
+          class="modal-close-btn nds-button nds-button_icon nds-modal__close nds-button_icon-inverse"
+          onkeydown={trapFocus}
+          onclick={closeModal}
+        >
+          <c-sf-gps-ds-osrt-icon
+            icon-name="utility:close"
+            theme="nds"
+            baseurl={iconUrl}
+            size="small"
+            variant="inverse"
+          ></c-sf-gps-ds-osrt-icon>
+        </button>
+        <header class={headerClasses}>
+          <template if:false={hideheader}>
+            <h2 class="nds-text-heading_medium nds-hyphenate">{title}</h2>
+            <slot name="header"></slot>
+          </template>
+        </header>
+        <div class="nds-modal__content nds-p-around_medium">
+          <slot name="content"></slot>
+        </div>
+        <template if:false={hidefooter}>
+          <footer class={footerClasses}>
+            <slot name="footer"></slot>
+          </footer>
+        </template>
+        <span
+          class="last-focusable-element"
+          tabindex="0"
+          onfocus={trapFocus}
+        ></span>
+      </div>
+    </section>
+    <div class="nds-backdrop nds-backdrop_open"></div>
+  </div>
+</template>
