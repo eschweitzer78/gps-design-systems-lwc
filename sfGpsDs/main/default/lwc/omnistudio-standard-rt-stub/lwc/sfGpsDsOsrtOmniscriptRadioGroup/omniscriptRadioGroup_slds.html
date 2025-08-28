@@ -1,0 +1,104 @@
+<template>
+  <slot>
+    <fieldset class="slds-form-element slds-m-top_small">
+      <label
+        class="slds-form-element__label slds-form-element__control-help slds-text-heading_small nds-m-bottom_small"
+      >
+        <abbr
+          if:true={_propSetMap.required}
+          title={allCustomLabelsUtil.OmniRequired}
+          class="slds-required"
+          >*</abbr
+        >
+        <span>{_propSetMap.label}</span>
+      </label>
+      <c-sf-gps-ds-osrt-tooltip
+        if:true={_propSetMap.help}
+        theme="slds"
+        content={_handleHelpText}
+        associated-component-label={_propSetMap.label}
+        arrowposition={_propSetMap.helpTextPos}
+        extrabuttonclass="slds-m-bottom_xx-small"
+        icon-name="utility:info"
+      >
+      </c-sf-gps-ds-osrt-tooltip>
+      <div
+        class="slds-grid slds-grid_vertical slds-form-element"
+        data-sval={_selectedValues}
+      >
+        <div class="slds-grid">
+          <div class={_labelClass}>
+            <!-- blank area -->
+          </div>
+          <div class={_optionClass}>
+            <template
+              for:each={_propSetMap.options}
+              for:item="radioButton"
+              for:index="radioButtonIndex"
+            >
+              <label
+                class="slds-form-element__label vlc-setall__label"
+                key={radioButton.name}
+              >
+                <strong>
+                  <span
+                    class="slds-listbox__option"
+                    data-col={radioButtonIndex}
+                    if:true={radioButton.setAll}
+                    onclick={setAll}
+                  >
+                    {radioGroupSetAll}
+                  </span>
+                </strong>
+              </label>
+            </template>
+          </div>
+        </div>
+        <template
+          for:each={_radioGroup}
+          for:item="radioGroupLabel"
+          for:index="radioGroupLabelIndex"
+        >
+          <div class="slds-grid slds-p-bottom_small" key={radioGroupLabel.name}>
+            <div class={_labelClass}>
+              <span role="radio" tabindex="0"> {radioGroupLabel.value} </span>
+            </div>
+            <div class={_optionClass}>
+              <template
+                for:each={radioGroupLabel.options}
+                for:item="radioButton"
+                for:index="radioButtonIndex"
+              >
+                <label
+                  class="slds-radio vlc-radiogroup__button"
+                  key={radioButton.name}
+                >
+                  <input
+                    type="radio"
+                    data-row={radioGroupLabelIndex}
+                    data-col={radioButtonIndex}
+                    name={radioGroupLabel.id}
+                    value={radioButton.name}
+                    onchange={handleChange}
+                    checked={radioButton.checked}
+                    disabled={_propSetMap.readOnly}
+                    data-omni-input
+                  />
+                  <span class="slds-radio--faux"></span>
+                  <span class="slds-form-element__label">
+                    {radioButton.value}
+                  </span>
+                </label>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class="slds-has-error slds-m-top_none">
+        <div if:true={hasError} class="slds-form-element__help">
+          {errorMessage}
+        </div>
+      </div>
+    </fieldset>
+  </slot>
+</template>

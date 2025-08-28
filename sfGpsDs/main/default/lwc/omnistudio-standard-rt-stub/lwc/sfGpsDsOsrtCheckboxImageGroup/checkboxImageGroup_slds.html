@@ -1,0 +1,153 @@
+<template>
+  <div class={errorClass}>
+    <template if:true={isDisplayCheckbox}>
+      <div class="slds-form-element__control">
+        <div class="slds-checkbox">
+          <fieldset class="slds-form-element">
+            <legend
+              class="slds-float_left slds-p-top_none slds-show"
+              style={styleProperties.label.styles}
+            >
+              <abbr if:true={required} title="required" class="slds-required"
+                >*</abbr
+              >
+              <span
+                class="slds-form-element__legend slds-form-element__label slds-show_inline slds-float_none slds-var-p-top_xxx-small"
+                style={styleProperties.label.styles}
+              >
+                {label}
+              </span>
+            </legend>
+            <span class="slds-clearfix">
+              <c-sf-gps-ds-osrt-tooltip
+                if:true={fieldLevelHelp}
+                theme="slds"
+                content={fieldLevelHelp}
+                icon-name="utility:info"
+                class="slds-tooltip_container slds-p-right_x-small"
+                arrowposition={fieldLevelHelpPosition}
+              >
+              </c-sf-gps-ds-osrt-tooltip>
+              <slot name="label"></slot>
+            </span>
+            <input
+              type={type}
+              onfocus={handleFocus}
+              onchange={onchangevalue}
+              checked={checked}
+              required={required}
+              disabled={isDisabled}
+              name={name}
+              id={checkboxId}
+              value={value}
+              tabindex={tabIndex}
+              aria-invalid={isError}
+            />
+            <label
+              class="slds-checkbox__label"
+              for={checkboxId}
+              disabled={isDisabled}
+            >
+              <span class="slds-checkbox_faux"></span>
+              <span
+                if:true={label}
+                class="slds-form-element__label"
+                style={styleProperties.value.styles}
+                >{label}</span
+              >
+            </label>
+          </fieldset>
+        </div>
+      </div>
+    </template>
+    <template if:true={isImage}>
+      <div class="slds-form-element__control">
+        <fieldset class="slds-form-element">
+          <legend
+            if:true={label}
+            class="slds-float_left slds-p-top_none slds-show"
+            style={styleProperties.label.styles}
+          >
+            <abbr if:true={required} title="required" class="slds-required"
+              >*</abbr
+            >
+            <span
+              class="slds-form-element__legend slds-form-element__label slds-show_inline slds-float_none slds-var-p-top_xxx-small"
+              style={styleProperties.label.styles}
+            >
+              {label}
+            </span>
+          </legend>
+          <span class="slds-clearfix">
+            <c-sf-gps-ds-osrt-tooltip
+              if:true={fieldLevelHelp}
+              theme="slds"
+              content={fieldLevelHelp}
+              icon-name="utility:info"
+              class="slds-tooltip_container slds-p-right_x-small"
+              extrabuttonclass="slds-m-bottom_xxx-small"
+              arrowposition={fieldLevelHelpPosition}
+            >
+            </c-sf-gps-ds-osrt-tooltip>
+            <slot name="label"></slot>
+          </span>
+
+          <div>
+            <template
+              for:each={internalOpts}
+              for:item="item"
+              for:index="radioIndex"
+            >
+              <div class={wrapperClass} key={item.id}>
+                <input
+                  onfocus={handleFocus}
+                  tabindex={tabIndex}
+                  onkeydown={handleKeyDownEvent}
+                  onchange={onchangevalue}
+                  checked={item.selected}
+                  type={type}
+                  disabled={isDisabled}
+                  name={name}
+                  id={item.id}
+                  value={item.value}
+                  aria-invalid={isError}
+                />
+                <label class={imageClass} for={item.id} disabled={isDisabled}>
+                  <div class="slds-img-item_select-container">
+                    <template if:true={isImageDisplay}>
+                      <img
+                        if:true={item.imgId}
+                        class="slds-img-item"
+                        src={item.imgId}
+                        alt={item.label}
+                        title={item.label}
+                      />
+                    </template>
+                    <span
+                      class="slds-img-item-caption"
+                      if:false={item.imgId}
+                      style={styleProperties.value.styles}
+                      >{item.label}</span
+                    >
+                  </div>
+                  <template if:true={enabledCaption}>
+                    <template if:true={item.imgId}>
+                      <div class="slds-caption-out_cont slds-p-top_none">
+                        <span
+                          class="captionOut slds-form-element__label"
+                          style={styleProperties.value.styles}
+                          >{item.label}</span
+                        >
+                      </div>
+                    </template>
+                  </template>
+                </label>
+              </div>
+            </template>
+          </div>
+        </fieldset>
+      </div>
+    </template>
+    <div if:true={isError} class="slds-form-element__help">{errorMessage}</div>
+  </div>
+</template>

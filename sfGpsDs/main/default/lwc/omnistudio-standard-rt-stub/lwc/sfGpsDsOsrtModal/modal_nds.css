@@ -1,0 +1,3 @@
+.nds-modal__container:focus {
+  outline: none;
+}

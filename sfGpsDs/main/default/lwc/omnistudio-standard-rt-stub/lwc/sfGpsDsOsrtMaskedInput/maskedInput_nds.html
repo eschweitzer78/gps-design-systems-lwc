@@ -1,0 +1,171 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div if:false={isCustomLwc} class={errorClass}>
+    <div
+      if:true={_isFormula}
+      class="nds-form-element__control nds-form-element__control-animated-label"
+    >
+      <input
+        id={inputId}
+        type="text"
+        class="vlocity-input nds-input_mask nds-input"
+        readonly
+        disabled
+        value={maskedValue}
+      />
+      <div
+        class="nds-form-element__label nds-align-middle nds-animated-label__ease-out"
+      >
+        <label for={inputId}>
+          <span style={styleProperties.label.styles}>{label}</span>
+        </label>
+      </div>
+    </div>
+
+    <div if:false={static} class={pretextClass}>
+      <span if:true={pretext} class="nds-form-element__addon">{pretext}</span>
+      <span
+        if:true={isIconLeft}
+        class="nds-icon_container nds-input__icon_left"
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name={iconNameLeft}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+          extraclass="nds-input__icon"
+        ></c-sf-gps-ds-osrt-icon>
+      </span>
+      <template if:true={isCurrencySFlocale}>
+        <input
+          id={inputId}
+          if:true={isInput}
+          tabindex={tabIndex}
+          accesskey={accessKey}
+          step={step}
+          min={min}
+          max={max}
+          maxlength={maxLength}
+          minlength={minLength}
+          class="vlocity-input nds-input_mask nds-input"
+          type={type}
+          inputmode={inputmode}
+          disabled={disabled}
+          required={required}
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          placeholder={placeholder}
+          style={styleProperties.value.styles}
+          onfocus={handleFocus}
+          onblur={handleBlur}
+          oninput={handleInput}
+          onkeyup={handleKeyup}
+          onchange={handleChange}
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={ariaDescribedBy}
+          aria-label={ariaLabel}
+          value={_currencyVal}
+          aria-invalid={isError}
+        />
+      </template>
+      <template if:false={isCurrencySFlocale}>
+        <input
+          class="hiddenNumber nds-hide"
+          required={required}
+          if:true={isNumber}
+          min={min}
+          max={max}
+          step={step}
+          type="number"
+          value={value}
+        />
+        <input
+          id={inputId}
+          if:true={isInput}
+          tabindex={tabIndex}
+          accesskey={accessKey}
+          step={step}
+          min={min}
+          max={max}
+          maxlength={maxLength}
+          minlength={minLength}
+          class="vlocity-input nds-input_mask nds-input"
+          type={inputType}
+          inputmode={inputmode}
+          disabled={disabled}
+          required={required}
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          placeholder={placeholder}
+          style={styleProperties.value.styles}
+          onfocus={handleFocus}
+          onblur={handleBlur}
+          oninput={handleInput}
+          onkeyup={handleKeyup}
+          onchange={handleChange}
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={ariaDescribedBy}
+          aria-label={ariaLabel}
+          autocomplete={autocomplete}
+          name={name}
+          aria-invalid={isError}
+        />
+      </template>
+      <span
+        if:true={isIconRight}
+        class="nds-icon_container nds-input__icon_right"
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name={iconNameRight}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+          extraclass="nds-input__icon"
+        ></c-sf-gps-ds-osrt-icon>
+      </span>
+      <span if:true={posttext} class="nds-form-element__addon">{posttext}</span>
+      <div
+        class="nds-form-element__label nds-align-middle nds-animated-label__ease-out"
+      >
+        <label if:true={labelVisible} for={inputId}>
+          <span style={styleProperties.label.styles}>{label}</span>
+          <abbr
+            if:true={required}
+            class="nds-required nds-p-left_xx-small"
+            title={requiredLabel}
+            >*</abbr
+          >
+        </label>
+        <c-sf-gps-ds-osrt-tooltip
+          class="nds-tooltip__container"
+          if:true={fieldLevelHelp}
+          icon-url={iconUrl}
+          content={fieldLevelHelp}
+          associated-component-label={label}
+          theme="nds"
+          arrowposition={fieldLevelHelpPosition}
+          data-field-level-help
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </div>
+      <div
+        if:true={isError}
+        id="errorMessageBlock"
+        aria-live="polite"
+        class="nds-form-element__help nds-form-element__help_text-transform__none"
+        role="alert"
+      >
+        {errorMessage}
+      </div>
+    </div>
+    <div class="nds-grid">
+      <div if:true={static} class="nds-form-element__static">{maskedValue}</div>
+    </div>
+    <span if:true={inlineHelp} class="nds-form-element__static"
+      >{inlineHelp}</span
+    >
+  </div>
+</template>

@@ -1,0 +1,185 @@
+<template>
+  <template if:true={renderTemplate}>
+    <template if:true={canShowKbOnStep}>
+      <div class={_omniNewportClass}>
+        <div class={classToggleWidth}>
+          <div
+            class="nds-form-element nds-lookup nds-knowledge-component nds-knowledge-component_container"
+            data-select="single"
+            data-scope="single"
+          >
+            <button
+              class="nds-knowledge-expand"
+              if:false={isToggled}
+              title={_customLabelsUtil.OmniKnowledgeExpand}
+              onclick={toggleKb}
+              onkeydown={handleKeyToggle}
+              tabindex="0"
+              aria-expanded={isToggled}
+              aria-controls="wrapper"
+            >
+              {displayLabel}
+            </button>
+            <div
+              id="wrapper"
+              class="nds-knowledge-data_wrapper"
+              if:true={isToggled}
+            >
+              <div
+                class="nds-form-element__control nds-input-has-icon nds-input-has-icon_right"
+              >
+                <div class="nds-knowledge-data_cont">
+                  <h3>{displayLabel}</h3>
+                  <button
+                    class="nds-button nds-button_icon"
+                    title={_customLabelsUtil.OmniKnowledgeCollapse}
+                    tabindex="0"
+                    onclick={toggleKb}
+                    onkeydown={handleKeyToggle}
+                    aria-expanded={isToggled}
+                    aria-controls="wrapper"
+                  >
+                    <c-sf-gps-ds-osrt-icon
+                      extraclass="nds-button__icon"
+                      variant="default"
+                      size="x-small"
+                      icon-name="utility:chevronright"
+                      alternative-text={_customLabelsUtil.OmniKnowledgeCollapse}
+                      theme={_themeKB}
+                    ></c-sf-gps-ds-osrt-icon>
+                  </button>
+                </div>
+
+                <div
+                  class="nds-knowledge-data_wrapper-search nds-lookup__input"
+                >
+                  <c-sf-gps-ds-osrt-input
+                    label={_customLabelsUtil.OmniKnowledgeSearchLabel}
+                    tabindex="0"
+                    type="text"
+                    onkeypress={searchKnowledgeArticle}
+                    value={inputSearchKeyword}
+                    placeholder={_customLabelsUtil.OmniScriptSearch}
+                    data-focusable-input="true"
+                    theme={_themeKB}
+                  >
+                  </c-sf-gps-ds-osrt-input>
+
+                  <c-sf-gps-ds-osrt-icon
+                    class="nds-input__icon nds-icon-text-default"
+                    variant="default"
+                    size="x-small"
+                    icon-name="utility:search"
+                    alternative-text={_customLabelsUtil.OmniKnowledgeSearchIcon}
+                    theme={_themeKB}
+                  ></c-sf-gps-ds-osrt-icon>
+                </div>
+                <p aria-live="polite" data-article-count>{_numArticlesLabel}</p>
+                <ul class="nds-knowledge-item">
+                  <template
+                    class="nds-item"
+                    for:each={articlesResults}
+                    for:item="item"
+                    for:index="articleIndex"
+                  >
+                    <li class="nds-item" key={item.title}>
+                      <div class="nds-knowledge-list-item nds-text-block">
+                        <div class="nds-grid nds-control-action_container">
+                          <strong
+                            class="nds-knowledge-item_heading"
+                            data-info={articleIndex}
+                            onclick={redirectToArticleUrl}
+                            tabindex="0"
+                            onkeydown={handleKeydownRedirect}
+                            >{item.title}</strong
+                          >
+
+                          <a
+                            class="nds-knowledge-item_popup"
+                            href="javascript:void(0);"
+                            onclick={openModal}
+                            data-info={articleIndex}
+                            tabindex="0"
+                          >
+                            <c-sf-gps-ds-osrt-icon
+                              class="nds-icon nds-icon_small nds-button__icon nds-button__icon_medium vlc-slds-button_exp"
+                              variant="default"
+                              size="x-small"
+                              icon-name="utility:preview"
+                              theme={_themeKB}
+                              alternative-text={item.modalLabel}
+                            ></c-sf-gps-ds-osrt-icon>
+                            <small>{item.modalLabel}</small>
+                          </a>
+                        </div>
+
+                        <h3 class="nds-knowledge-desc">{item.summary}</h3>
+                        <h3 class="nds-knowledge-lastpubdate">
+                          {item.displayType} |
+                          {_customLabelsUtil.OmniScriptLastPublished}
+                          {item.lastPubDate}
+                        </h3>
+                      </div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <template if:true={_kbModal}>
+        <slot>
+          <div class={_omniNewportClass} onkeydown={handleKeyDown}>
+            <div class={_modalContainerClass}>
+              <section
+                role="dialog"
+                tabindex="-1"
+                aria-modal="true"
+                aria-describedby="modal-content"
+                aria-labelledby="modal-heading"
+                class={_modalClasses}
+              >
+                <div class="nds-modal__container">
+                  <header
+                    tabindex="0"
+                    class={_headerClasses}
+                    id="modal-heading"
+                  >
+                    <h1>{articleBodyResults.articleTitle}</h1>
+                  </header>
+
+                  <div
+                    class="nds-modal__content nds-p-around_medium"
+                    id="modal-content"
+                  >
+                    <c-sf-gps-ds-osrt-omniscript-formatted-rich-text
+                      value={articleBodyResults.articleBody}
+                    >
+                    </c-sf-gps-ds-osrt-omniscript-formatted-rich-text>
+                  </div>
+
+                  <footer class={_footerClasses}>
+                    <div slot="footer">
+                      <c-sf-gps-ds-osrt-button
+                        type="button"
+                        variant="brand"
+                        data-button
+                        onclick={closeModal}
+                        theme={_themeKB}
+                        label={_customLabelsUtil.OmnipostMessage}
+                        extraclass="nds-m-left_medium"
+                      >
+                      </c-sf-gps-ds-osrt-button>
+                    </div>
+                  </footer>
+                </div>
+              </section>
+              <div class="nds-backdrop nds-backdrop_open"></div>
+            </div>
+          </div>
+        </slot>
+      </template>
+    </template>
+  </template>
+</template>

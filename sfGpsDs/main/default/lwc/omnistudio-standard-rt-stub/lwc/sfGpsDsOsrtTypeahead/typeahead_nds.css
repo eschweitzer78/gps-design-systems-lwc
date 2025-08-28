@@ -1,0 +1,16 @@
+.cmp-pointer-disabled {
+  pointer-events: none;
+}
+
+[data-progress-bar] {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  width: auto;
+  z-index: 100;
+}
+
+.vloc-reset-minwidth {
+  min-width: 100%;
+}

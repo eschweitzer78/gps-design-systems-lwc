@@ -1,0 +1,39 @@
+@import "c/sfGpsDsAuNswCore";
+@import "c/sfGpsDsAuNswButtonCss";
+
+.nsw-h2 {
+  font-family: var(--nsw-font-family);
+}
+
+.nsw-h2:focus {
+  outline: solid 3px var(--nsw-focus);
+  outline-offset: 0;
+}
+
+.sepbutton {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  font-size: 1rem;
+  font-weight: 500;
+  display: inline-block;
+  cursor: pointer;
+  border: 0;
+  text-decoration: underline;
+  padding: 0 2px;
+  text-align: left;
+  background: none;
+  color: rgb(46, 82, 153);
+  transition: fill 0.5s ease 0s;
+}
+
+.back-button:hover:not(:disabled) {
+  color: rgb(255, 255, 255);
+  background-color: rgb(46, 82, 153);
+}
+
+.form-actions input {
+  margin-right: 0.5rem;
+}

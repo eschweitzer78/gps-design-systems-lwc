@@ -1,0 +1,78 @@
+.vlc-separator {
+  border-width: 0.1rem;
+  width: 4rem;
+  border-color: #285dac;
+}
+
+.omniscript-step__body {
+  min-height: 150px;
+  padding-right: 0.2rem;
+}
+
+.vlc-slds-knowledge--container {
+  margin-top: 1rem;
+  margin-right: 2.2rem;
+  margin-left: 1.5rem;
+  position: relative;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #cfd7e6;
+  background: #f4f6f9;
+}
+
+.vlc-slds-knowledge--container > button.close-button {
+  position: absolute;
+  top: 0;
+  padding-top: 0.5rem;
+  right: 0.5rem;
+}
+
+.vlc-slds-knowledge--container .vlc-slds-knowledge--body {
+  font-size: 0.8rem;
+}
+
+.vlc-slds-knowledge--container .vlc-slds-knowledge--header {
+  font-size: 1rem;
+}
+
+.vlc-slds-knowledge--container .vlc-slds-knowledge--header a {
+  font-weight: 400;
+  color: #00396b;
+}
+
+.vlc-slds-knowledge--container .vlc-slds-knowledge--header[visible="true"] {
+  margin-bottom: 1rem;
+}
+
+.vlc-slds-knowledge--container .vlc-slds-knowledge--header .slds-button__icon {
+  background: none;
+  fill: #00396b;
+}
+
+.vlc-slds-knowledge--container
+  .vlc-slds-knowledge--header[visible="false"]
+  .slds-button__icon.vlc-slds-expand {
+  display: none;
+}
+
+.vlc-slds-knowledge--container
+  .vlc-slds-knowledge--header[visible="false"]
+  .slds-button__icon.vlc-slds-collapse {
+  display: inline;
+}
+
+.vlc-slds-knowledge--container
+  .vlc-slds-knowledge--header[visible="true"]
+  .slds-button__icon.vlc-slds-collapse {
+  display: none;
+}
+
+.vlc-slds-knowledge--container
+  .vlc-slds-knowledge--header[visible="true"]
+  .slds-button__icon.vlc-slds-expand {
+  display: inline;
+}
+
+.os-step-label {
+  font-weight: var(--lwc-fontWeightLight, 300);
+}

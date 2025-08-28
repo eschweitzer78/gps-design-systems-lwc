@@ -1,0 +1,37 @@
+.slds-action_item {
+  color: inherit;
+  min-height: 1.7rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.slds-action_menu {
+  min-height: 1.7rem;
+  vertical-align: middle;
+}
+
+.slds-action_inline {
+  display: inline-block;
+}
+
+.slds-action_icon {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.slds-action_text {
+  font-size: inherit;
+  display: table-cell;
+  color: inherit;
+  vertical-align: middle;
+}
+
+.smart-action {
+  color: #459df2;
+  border-radius: 8px;
+  height: 40px;
+}
+
+.menu-item-label {
+  width: 100%;
+}

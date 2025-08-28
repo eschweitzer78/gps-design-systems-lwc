@@ -1,0 +1,75 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:true={jsonDef.bAccordionActive}>
+    <div>
+      <div
+        class="vlc-slds-knowledge--container"
+        if:true={articleBodyResults.articleTitle}
+      >
+        <h3 class="vlc-slds-knowledge--header" visible={visible}>
+          <a href={articleBodyResults.articleLink} target="_blank" tabindex="0"
+            >{articleBodyResults.articleTitle}</a
+          >
+          <button
+            class="slds-button"
+            aria-expanded={visible}
+            aria-label={_toggleArticleLabel}
+            onclick={toggleArticle}
+          >
+            <c-sf-gps-ds-osrt-icon
+              class="vlc-slds-collapse slds-button__icon slds-button__icon--large"
+              variant="default"
+              size="small"
+              icon-name="utility:chevrondown"
+              theme={_theme}
+            ></c-sf-gps-ds-osrt-icon>
+            <c-sf-gps-ds-osrt-icon
+              class="vlc-slds-expand slds-button__icon slds-button__icon--large"
+              variant="default"
+              size="small"
+              icon-name="utility:chevronup"
+              theme={_theme}
+            ></c-sf-gps-ds-osrt-icon>
+          </button>
+        </h3>
+
+        <div class="vlc-slds-knowledge--body" if:true={visible}>
+          <c-sf-gps-ds-osrt-omniscript-formatted-rich-text
+            value={articleBodyResults.articleBody}
+          >
+          </c-sf-gps-ds-osrt-omniscript-formatted-rich-text>
+        </div>
+
+        <button
+          class="slds-button close-button"
+          aria-label={scriptHeaderDef.allCustomLabels.OmniStepCloseDetails}
+          onclick={closeArticle}
+        >
+          <c-sf-gps-ds-osrt-icon
+            class="slds-icon_container slds-button__icon slds-button__icon--large"
+            variant="default"
+            size="small"
+            icon-name="action:remove"
+            theme={_theme}
+          ></c-sf-gps-ds-osrt-icon>
+        </button>
+      </div>
+    </div>
+    <h1
+      class="slds-page-header__title slds-p-horizontal_medium slds-text-heading--medium slds-m-top_medium os-step-label"
+      aria-live="polite"
+      tabindex="0"
+    >
+      {_propSetMap.label}
+    </h1>
+    <div
+      class="vlc-separator slds-border_top slds-m-top_x-small slds-m-bottom_xx-small slds-m-horizontal_medium"
+    ></div>
+    <div
+      class="slds-grid slds-wrap slds-p-vertical_small omniscript-step__body"
+    >
+      <slot class="slds-grid slds-wrap slds-size_1-of-1 slds-p-left_medium">
+      </slot>
+    </div>
+  </template>
+</template>

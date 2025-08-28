@@ -1,0 +1,46 @@
+<template>
+  <span style="position: relative">
+    <c-sf-gps-ds-osrt-button
+      extraclass={buttonClass}
+      variant={variant}
+      icon-fill={iconFill}
+      onmouseover={openTooltip}
+      onfocus={openTooltip}
+      onblur={closeTooltip}
+      onmouseout={closeTooltip}
+      onfocusout={closeTooltip}
+      onclick={openTooltip}
+      onkeyup={immediateCloseTooltip}
+      icon-name={iconName}
+      icon-variant={iconVariant}
+      icon-url={iconUrl}
+      icon-size={iconSize}
+      theme={theme}
+      aria-describedby="help"
+      aria-label={ariaLabel}
+      disable-tab={disableTab}
+    >
+    </c-sf-gps-ds-osrt-button>
+    <span
+      class={tooltipClass}
+      role="tooltip"
+      onmouseover={openTooltip}
+      onfocus={openTooltip}
+      onmouseout={closeTooltip}
+      onfocusout={closeTooltip}
+      onclick={openTooltip}
+      id="help"
+      if:false={hidePopover}
+      style="white-space: normal"
+    >
+      <template if:false={isBaseVersion}>
+        <div class={bodyClass}>
+          <slot></slot>
+        </div>
+      </template>
+      <template if:true={isBaseVersion}>
+        <div class={bodyClass}>{content}</div>
+      </template>
+    </span>
+  </span>
+</template>

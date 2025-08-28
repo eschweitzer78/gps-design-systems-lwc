@@ -1,0 +1,14 @@
+<template>
+  <slot>
+    <div
+      if:true={_isEmptyTextBlockInDesignMode}
+      class="slds-text-font_monospace"
+    >
+      &lt;{jsonDef.name} /&gt;
+    </div>
+    <div class={_themeClass}>
+      <c-sf-gps-ds-osrt-omniscript-formatted-rich-text value={mergeVal}>
+      </c-sf-gps-ds-osrt-omniscript-formatted-rich-text>
+    </div>
+  </slot>
+</template>

@@ -1,0 +1,57 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="slds-has-error">
+    <div class="slds-slider-label slds-grid">
+      <label
+        if:true={labelVisible}
+        class="slds-form-element__label slds-p-bottom_xxx-small"
+        for="slider-input"
+        id="slider-label"
+      >
+        <span class="slds-m-right_x-small">{label}</span>
+        <span style="white-space: nowrap">
+          <c-sf-gps-ds-osrt-tooltip
+            class="slds-tooltip_container slds-p-right_x-small"
+            if:true={fieldLevelHelp}
+            icon-url={iconUrl}
+            content={fieldLevelHelp}
+            associated-component-label={label}
+            theme={theme}
+            arrowposition={fieldLevelHelpPosition}
+            extrabuttonclass="slds-m-bottom_xxx-small"
+            data-field-level-help
+          >
+          </c-sf-gps-ds-osrt-tooltip>
+          <slot name="label"></slot>
+        </span>
+      </label>
+    </div>
+    <span class="slds-slider-label__range">{rangeLabel}</span>
+    <div class={sliderClass}>
+      <input
+        class="slds-slider__range"
+        required
+        id="slider-input"
+        type="range"
+        min={_min}
+        max={_max}
+        step={_step}
+        value={_value}
+        tabindex={tabIndex}
+        disabled={disabled}
+        oninput={handleChange}
+        onblur={closeTooltip}
+        aria-labelledby="slider-label slider-description"
+      />
+      <span class="slds-slider__value no-break" aria-hidden="true"
+        >{_maskedValue}</span
+      >
+    </div>
+    <div id="slider-description" aria-hidden="true" class="slds-assistive-text">
+      {sliderRangeAssistiveText}
+    </div>
+    <div if:true={isError} id="error-message" class="slds-form-element__help">
+      {errorMessage}
+    </div>
+  </div>
+</template>

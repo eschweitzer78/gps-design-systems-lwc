@@ -1,0 +1,80 @@
+<template>
+  <div class="nds-dropdown-trigger nds-dropdown-trigger_click">
+    <c-sf-gps-ds-osrt-button
+      theme="nds"
+      label={interpolatedLabel}
+      icon-url={iconUrl}
+      type="button"
+      styles={styles}
+      onclick={toggleMenu}
+      onmousedown={handleDropdownMouseDown}
+      onkeydown={handleKeyDown}
+      onblur={hideMenuDropDown}
+      extraclass={extraClass}
+      icon-name={iconName}
+      icon-size={iconSize}
+      icon-fill={iconColor}
+      icon-only={iconOnly}
+      variant={variant}
+      icon-position={iconPosition}
+      disabled={disabled}
+      id="menubutton-id"
+      aria-label={interpolatedLabel}
+      aria-haspopup="true"
+      aria-controls="menu-id"
+      aria-expanded={isMenuDisplayed}
+    >
+    </c-sf-gps-ds-osrt-button>
+    <div
+      class={dropdownClass}
+      onopenmenumodal={handleOpenModal}
+      onclosemenumodal={handleCloseModal}
+    >
+      <div onmousedown={handleDropdownMouseDown}>
+        <ul
+          class="nds-dropdown__list"
+          id="menu-id"
+          role="menu"
+          aria-labelledby="menubutton-id"
+        >
+          <template if:false={menuItems}>
+            <slot></slot>
+          </template>
+          <template if:true={menuItems}>
+            <template for:each={menuItems} for:item="item">
+              <span key={item.name}>
+                <c-sf-gps-ds-osrt-menu-item
+                  record={item.record}
+                  icon-name={item.iconName}
+                  action-url={item.actionUrl}
+                  open-url-in={item.openUrlIn}
+                  icon-position={item.iconPosition}
+                  icon-text={item.iconText}
+                  theme="nds"
+                  obj={record}
+                  action-data={item.actionData}
+                  label={item.label}
+                  checked={item.checked}
+                  status={item.status}
+                  icon-url={item.iconUrl}
+                  name={item.name}
+                  type={item.type}
+                >
+                </c-sf-gps-ds-osrt-menu-item>
+              </span>
+            </template>
+          </template>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <c-sf-gps-ds-osrt-modal
+    size="medium"
+    class="menuItemFlyout"
+    onclose={hideFlyout}
+  >
+    <div slot="content" class="nds-is-relative">
+      <slot name="flyout"></slot>
+    </div>
+  </c-sf-gps-ds-osrt-modal>
+</template>

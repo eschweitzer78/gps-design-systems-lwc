@@ -1,0 +1,33 @@
+.sidebar {
+  height: 100vh;
+  z-index: 1;
+  transition: 0.5s;
+  overflow-y: scroll;
+  width: 100%;
+  position: relative;
+  visibility: visible;
+  border: 1px solid #e5e5e5;
+  background-color: #ffffff;
+}
+
+.sidebar .footer {
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+  position: absolute;
+}
+
+.content {
+  min-height: 200px;
+  overflow-y: scroll;
+  max-height: 85vh;
+  height: inherit;
+}
+
+.header {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #2b2826;
+  padding: 10px;
+}

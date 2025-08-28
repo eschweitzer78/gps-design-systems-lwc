@@ -1,0 +1,18 @@
+<template>
+  <div class="slds-float_right sidebar">
+    <!--Header-->
+    <div class="header slds-text-heading_small">
+      <slot name="header"></slot>
+    </div>
+
+    <!--Content-->
+    <div class="slds-p-top_small content">
+      <slot name="content"></slot>
+    </div>
+
+    <!--Footer-->
+    <div class="footer slds-p-around_small slds-border_top">
+      <slot name="footer"></slot>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,26 @@
+.omni-edit-block-card {
+  box-shadow: 0 1px 4px #000;
+  cursor: pointer;
+}
+
+.omni-edit-block-card.omni-edit-block-short-cards {
+  height: 12.5rem;
+}
+
+.omni-new-card {
+  position: relative;
+  text-align: center;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4rem;
+  margin: 1.55rem 0;
+}
+
+.omni-add-circle {
+  background: #54698d;
+}
+
+.omni-icon-circle {
+  background: #05a6df;
+}

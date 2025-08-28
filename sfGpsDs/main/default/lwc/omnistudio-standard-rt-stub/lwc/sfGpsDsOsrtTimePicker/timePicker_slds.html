@@ -1,0 +1,130 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class={errorClass}>
+    <div class="slds-grid" data-label="true">
+      <label
+        if:true={label}
+        class="slds-form-element__label slds-show--inline slds-truncate"
+        for="time-input"
+        style={styleProperties.label.styles}
+      >
+        <abbr if:true={required} class="slds-required" title={requiredLabel}
+          ><span if:false={hideAsterisk}>*</span></abbr
+        >{label}
+      </label>
+      <c-sf-gps-ds-osrt-tooltip
+        if:true={fieldLevelHelp}
+        icon-url={iconUrl}
+        theme={theme}
+        content={fieldLevelHelp}
+        associated-component-label={label}
+        class="slds-tooltip_container slds-p-right_x-small"
+        extrabuttonclass="slds-m-bottom_xx-small"
+        arrowposition={fieldLevelHelpPosition}
+        data-field-level-help
+      >
+      </c-sf-gps-ds-osrt-tooltip>
+      <slot name="label"></slot>
+    </div>
+    <div class="slds-form-element__control">
+      <div class="slds-combobox_container">
+        <div
+          class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist slds-timepicker"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          role="combobox"
+          onblur={handleComponentLosesFocus}
+        >
+          <div
+            class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+            role="none"
+          >
+            <input
+              class="timepicker-input slds-input slds-combobox__input slds-combobox__input-value"
+              autocomplete="off"
+              id="time-input"
+              role="textbox"
+              type="text"
+              name={name}
+              required={required}
+              onblur={showLookup}
+              onchange={onInputChange}
+              onkeydown={handleKeyboardEvent}
+              onkeyup={handleKeyUp}
+              onmousedown={showLookup}
+              readonly={readOnly}
+              aria-readonly={readOnly}
+              value={_displayValue}
+              placeholder={placeholder}
+              tabindex={tabIndex}
+              aria-autocomplete="both"
+              style={styleProperties.value.styles}
+              aria-describedby="errorMessageblock"
+            />
+            <span
+              if:false={hideIconVal}
+              class="slds-icon_container slds-icon-utility-clock slds-input__icon slds-input__icon_right"
+            >
+              <c-sf-gps-ds-osrt-icon
+                icon-name="utility:clock"
+                size="x-small"
+                baseurl={iconUrl}
+                theme={theme}
+                alternative-text={clockIconLabel}
+              ></c-sf-gps-ds-osrt-icon>
+            </span>
+          </div>
+          <ul
+            id="time_picker_ul"
+            class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid slds-dropdown_length-5 slds-dropdown_left"
+            role="listbox"
+            if:true={_isOpen}
+            onmousedown={scrollerClickOnList}
+          >
+            <template for:each={options} for:item="item" for:index="index">
+              <li
+                onmousedown={selectOption}
+                id={item.id}
+                data-index={index}
+                data-selected={item.selected}
+                data-val={item.value}
+                data-timepicker-option
+                key={item.id}
+                class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
+                role="option"
+                aria-selected={item.selected}
+                style="height: 37px"
+              >
+                <span class="slds-media__figure">
+                  <c-sf-gps-ds-osrt-icon
+                    if:true={item.selected}
+                    icon-name="utility:check"
+                    extraclass="slds-listbox__icon-selected"
+                    size="x-small"
+                    baseurl={iconUrl}
+                    theme={theme}
+                  ></c-sf-gps-ds-osrt-icon>
+                </span>
+                <span class="slds-media__body">
+                  <span class="slds-truncate" title={item.value}>
+                    {item.value}</span
+                  >
+                </span>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      if:true={isError}
+      data-timepicker-error-block
+      class="slds-form-element__help"
+      aria-live="assertive"
+      id="errorMessageBlock"
+      role="alert"
+    >
+      {errorMessage}
+    </div>
+  </div>
+</template>

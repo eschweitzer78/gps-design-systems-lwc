@@ -1,0 +1,70 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <slot>
+    <div class="omni-typeahead-container">
+      <c-sf-gps-ds-osrt-typeahead
+        type="text"
+        field-level-help={_handleHelpText}
+        field-level-help-position={_propSetMap.helpTextPos}
+        icon-name-right="utility:edit"
+        label={_propSetMap.label}
+        onblur={handleBlur}
+        onclear={handleClear}
+        onselect={handleSelect}
+        options={options}
+        placeholder={_placeholder}
+        required={_propSetMap.required}
+        required-label={allCustomLabelsUtil.OmniRequired}
+        min-length={_propSetMap.minLength}
+        max-length={_propSetMap.maxLength}
+        message-when-value-missing={_messageWhenValueMissing}
+        message-when-too-short={_messageWhenTooShort}
+        message-when-too-long={_messageWhenTooLong}
+        theme={_theme}
+        value={elementValue}
+        disable-last-item
+        disable-filter
+        remote-source
+        data-omni-input
+        has-slot-icon-right="true"
+      >
+        <button
+          if:false={_propSetMap.hideEditButton}
+          class="slds-button slds-button_icon nds-button nds-button_icon"
+          slot="iconRight"
+          aria-expanded={_isEditMode}
+          onclick={toggleEditMode}
+        >
+          <c-sf-gps-ds-osrt-icon
+            icon-name="utility:edit"
+            extraclass="slds-button__icon nds-button__icon"
+            size="x-small"
+            theme={_theme}
+            alternative-text={_editLabel}
+          ></c-sf-gps-ds-osrt-icon>
+        </button>
+
+        <img
+          slot="lastItem"
+          src={_googleAttribution}
+          class="google-places-attribution"
+          alt="Powered by Google"
+        />
+      </c-sf-gps-ds-osrt-typeahead>
+
+      <div if:true={errorMessage} class="slds-has-error nds-has-error">
+        <span
+          class="slds-form-element__help nds-form-element__help nds-form-element__help_text-transform__none"
+          >{errorMessage}</span
+        >
+      </div>
+
+      <div if:true={_renderMap} data-google-maps-container class={mapClasses}>
+        <lightning-map
+          map-markers={selectedPlace}
+          zoom-level={zoomLevel}
+        ></lightning-map>
+      </div>
+    </div>
+  </slot>
+</template>

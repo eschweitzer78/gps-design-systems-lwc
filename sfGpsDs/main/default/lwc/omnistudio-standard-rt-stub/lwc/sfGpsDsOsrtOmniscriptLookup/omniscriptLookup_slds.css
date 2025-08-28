@@ -1,0 +1,25 @@
+input {
+  caret-color: transparent;
+}
+
+label.slds-form-element__label {
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  label.slds-form-element__label {
+    max-width: 100%;
+  }
+}
+
+.slds-combobox[role="combobox"] input[readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  border-color: #939393;
+  background: #f3f3f3;
+}
+
+.slds-combobox[role="combobox"] input[readonly]:focus {
+  border-color: #939393;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}

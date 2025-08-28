@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>OmniScript Message In Channel</masterLabel>
+    <isExposed>false</isExposed>
+    <description>Message Channel for OmniScript Inbound</description>
+    <lightningMessageFields>
+        <fieldName>omniInputData</fieldName>
+        <description>The input data for OmniScript to process</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

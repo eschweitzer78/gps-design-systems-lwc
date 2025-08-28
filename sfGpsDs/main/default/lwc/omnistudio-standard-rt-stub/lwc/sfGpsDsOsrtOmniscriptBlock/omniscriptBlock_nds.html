@@ -1,0 +1,111 @@
+<template>
+  <div class="nds-size_1-of-1">
+    <div class={blockClasses}>
+      <div class="nds-form-element__control nds-block_container">
+        <label
+          class="nds-form-element__label nds-clearfix"
+          role="heading"
+          aria-level={blockHeadingLevel}
+        >
+          <template if:true={_propSetMap.repeat}>
+            <button
+              if:true={blockLabel}
+              class="nds-grid nds-button--reset nds-size_1-of-1 nds-cursor-pointer"
+              label="toggle"
+              tabindex="0"
+              aria-expanded={expandContent}
+              aria-controls="content"
+              onclick={toggleContent}
+            >
+              <c-sf-gps-ds-osrt-icon
+                extraclass="nds-block__action-icon nds-button__icon nds-button__icon-left"
+                icon-name="utility:switch"
+                theme="nds"
+                size="small"
+              >
+              </c-sf-gps-ds-osrt-icon>
+              <div
+                class="nds-form-element__label_toggle-text"
+                aria-live="polite"
+              >
+                {blockLabel}
+                <div if:true={showValidation} class="nds-has-error">
+                  <div
+                    class="nds-form-element__help nds-form-element__help_text-transform__none"
+                  >
+                    <span class="nds-text-link_faux">
+                      {allCustomLabelsUtil.OmniBlockError}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="nds-control-action__container"></div>
+            </button>
+          </template>
+          <template if:false={_propSetMap.repeat}>
+            <button
+              if:true={blockLabel}
+              class="nds-grid nds-button--reset nds-size_1-of-1 nds-cursor-pointer"
+              label="toggle"
+              tabindex="0"
+              aria-expanded={expandContent}
+              aria-controls="content"
+              onclick={toggleContent}
+            >
+              <c-sf-gps-ds-osrt-icon
+                extraclass="nds-block__action-icon nds-button__icon nds-button__icon-left"
+                icon-name="utility:switch"
+                theme="nds"
+                size="small"
+              >
+              </c-sf-gps-ds-osrt-icon>
+              <div
+                class="nds-form-element__label_toggle-text"
+                aria-live="polite"
+              >
+                {blockLabel}
+                <div if:true={showErrorMessage} class="nds-has-error">
+                  <div
+                    class="nds-form-element__help nds-form-element__help_text-transform__none"
+                  >
+                    {allCustomLabelsUtil.OmniBlockError}
+                  </div>
+                </div>
+              </div>
+              <div class="nds-control-action__container"></div>
+            </button>
+          </template>
+        </label>
+        <template if:true={_propSetMap.repeat}>
+          <div class="nds-is-absolute nds-button-group" role="group">
+            <c-sf-gps-ds-osrt-button
+              if:true={canRepeat}
+              variant="base"
+              onclick={handleAdd}
+              label={allCustomLabelsUtil.OmniAdd}
+              theme={_theme}
+              aria-label={_addAriaLabel}
+            >
+            </c-sf-gps-ds-osrt-button>
+            <c-sf-gps-ds-osrt-button
+              if:true={canRemove}
+              variant="base"
+              onclick={handleRemove}
+              label={allCustomLabelsUtil.OmniDelete}
+              class="nds-m-left_x-small"
+              theme={_theme}
+              aria-label={_removeAriaLabel}
+            >
+            </c-sf-gps-ds-osrt-button>
+          </div>
+        </template>
+        <fieldset id="content" class="nds-size_1-of-1 nds-block_body">
+          <legend></legend>
+          <div class="nds-grid nds-wrap nds-grid_pull-padded">
+            <slot></slot>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</template>

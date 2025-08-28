@@ -1,0 +1,85 @@
+<template>
+  <slot>
+    <template if:true={_isBtn}>
+      <div class="slds-is-relative slds-p-top_xx-small">
+        <c-sf-gps-ds-osrt-button
+          type="button"
+          variant="brand"
+          onclick={execute}
+          theme={_theme}
+          label={_propSetMap.label}
+          extraclass={extraclass}
+        >
+        </c-sf-gps-ds-osrt-button>
+        <template if:true={isBtnLoading}>
+          <c-sf-gps-ds-osrt-spinner
+            variant="brand"
+            alternative-text="Loading..."
+            theme={_theme}
+            size="small"
+          >
+          </c-sf-gps-ds-osrt-spinner>
+        </template>
+      </div>
+    </template>
+    <template if:true={_docusignModal}>
+      <div class={_modalContainerClass}>
+        <section
+          role="dialog"
+          tabindex="-1"
+          aria-modal="true"
+          aria-describedby="modal-content"
+          class={_modalClasses}
+        >
+          <div class="slds-modal__container">
+            <header class={_headerClasses}>
+              <slot name="header">
+                <h1>{allCustomLabelsUtil.OmniDocuSignModalTitle}</h1>
+              </slot>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium">
+              <div class="docusign-frame">
+                <iframe></iframe>
+              </div>
+            </div>
+            <footer class={_footerClasses}>
+              <div slot="footer">
+                <template if:true={showViewPdfBtn}>
+                  <c-sf-gps-ds-osrt-button
+                    type="button"
+                    variant="brand"
+                    onclick={viewPDF}
+                    theme={_theme}
+                    disabled={disableViewPdfBtn}
+                    label={allCustomLabelsUtil.OmniDocuSignModalViewPdf}
+                  >
+                  </c-sf-gps-ds-osrt-button>
+                </template>
+                <c-sf-gps-ds-osrt-button
+                  type="button"
+                  variant="brand"
+                  onclick={closeModal}
+                  theme={_theme}
+                  label={allCustomLabelsUtil.OmniDocuSignModalClose}
+                  extraclass="slds-m-left_medium"
+                >
+                </c-sf-gps-ds-osrt-button>
+              </div>
+            </footer>
+          </div>
+        </section>
+        <template if:true={isPageLoading}>
+          <c-sf-gps-ds-osrt-spinner
+            variant="brand"
+            alternative-text="Loading..."
+            theme={_theme}
+            message={spinnerActionMessage}
+            size="medium"
+          >
+          </c-sf-gps-ds-osrt-spinner>
+        </template>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </div>
+    </template>
+  </slot>
+</template>

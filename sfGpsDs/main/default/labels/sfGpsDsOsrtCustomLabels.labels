@@ -1,0 +1,1566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+  <labels>
+    <fullName>sfGpsDsOsrtClose</fullName>
+    <categories>Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Close</shortDescription>
+    <value>Close</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpBack</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Back</shortDescription>
+    <value>Back</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpBackLabelPrefix</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>cmpBackLabelPrefix</shortDescription>
+    <value>Back to</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpBadInput</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Bad input.</shortDescription>
+    <value>Bad input.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpCancel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Cancel</shortDescription>
+    <value>Cancel</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpClockIconLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Clock Icon Label</shortDescription>
+    <value>Clock Icon</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpClose</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Close</shortDescription>
+    <value>Close</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpDate</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Date</shortDescription>
+    <value>Date</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpDateFieldNotValid</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>This field is not valid.</shortDescription>
+    <value>This field is not valid. Please use the format {0}.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpDayJsLocaleFormats</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Minified Date Time formats override, see DayJS locale object</shortDescription>
+    <value>{"name":"en","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"months":["January","February","March","April","May","June","July","August","September","October","November","December"]}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpDelete</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Delete</shortDescription>
+    <value>Delete</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpDeleteConfirmationPrompt</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Are you sure you want to delete this item?</shortDescription>
+    <value>Are you sure you want to delete this item?</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpEdit</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Edit</shortDescription>
+    <value>Edit</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpFieldNotValid</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>This field is not valid.</shortDescription>
+    <value>This field is not valid.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpFieldRequired</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>This field is required.</shortDescription>
+    <value>This field is required.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpFieldTooLong</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>This field is too long.</shortDescription>
+    <value>This field is too long.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpFieldTooShort</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>This field is too short.</shortDescription>
+    <value>This field is too short.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpFieldValueMissing</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>This field value is missing.</shortDescription>
+    <value>This field value is missing.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpInvalidValue</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Invalid Value.</shortDescription>
+    <value>Invalid Value.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpLevelZeroBackLabelSuffix</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>cmpLevelZeroBackLabelSuffix</shortDescription>
+    <value>All</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpLoading</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>loading</shortDescription>
+    <value>loading</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpLoadMore</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Load More</shortDescription>
+    <value>Load More</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpLocaleFormatsInvalid</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Locale Format is invalid</shortDescription>
+    <value>Unable to render ${1} due to invalid localeFormat [${2}]. Please provide a valid localeFormat in the form of {"name":"en","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"months":["January","February","March","April","May","June","July","August","September","October","November","December"]}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpNext</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Next</shortDescription>
+    <value>Next</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpNextMonth</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Next Month</shortDescription>
+    <value>Next Month</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpNoRecordsToDisplay</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>No records to display</shortDescription>
+    <value>No records to display</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpPatternNoMatch</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>The pattern does not match.</shortDescription>
+    <value>The pattern does not match.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpPickYr</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Pick a year</shortDescription>
+    <value>Pick a year</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpPrevious</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Previous</shortDescription>
+    <value>Previous</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpPrevMonth</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Previous Month</shortDescription>
+    <value>Previous Month</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpProgress</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Progress</shortDescription>
+    <value>Progress</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpRangeOverflow</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Date is after the allowed range.</shortDescription>
+    <value>Date is after the allowed range.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpRangeOverflowError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Range overflow error.</shortDescription>
+    <value>Range overflow error.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpRangeUnderflow</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Date is before the allowed range.</shortDescription>
+    <value>Date is before the allowed range.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpRangeUnderflowError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Range underflow error.</shortDescription>
+    <value>Range underflow error.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpRemove</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Press delete or backspace to remove</shortDescription>
+    <value>Press delete or backspace to remove</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpRequired</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>required</shortDescription>
+    <value>required</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpSave</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Save</shortDescription>
+    <value>Save</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpSearch</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Search</shortDescription>
+    <value>Search</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpSearchKey</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Search Key</shortDescription>
+    <value>Search Key</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpSelectDate</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Select Date</shortDescription>
+    <value>Select Date</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpSelectTime</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Select Time</shortDescription>
+    <value>Select Time</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpSortBy</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Sort by</shortDescription>
+    <value>Sort by</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpSorted</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Sorted</shortDescription>
+    <value>Sorted</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpStep</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Step</shortDescription>
+    <value>Step</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpStepMismatchError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Step mismatch error.</shortDescription>
+    <value>Step mismatch error.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpTime</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Time</shortDescription>
+    <value>Time</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpToday</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Today</shortDescription>
+    <value>Today</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpTypeMismatchError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Type mismatch error.</shortDescription>
+    <value>Type mismatch error.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpUpload</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Upload</shortDescription>
+    <value>Upload</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpValueAboveMaxValue</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Value is above the max value.</shortDescription>
+    <value>Value is above the max value.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpValueBelowMinValue</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Value is below the min value.</shortDescription>
+    <value>Value is below the min value.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpValueReachedMax</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Text character exceeds the maximum length.</shortDescription>
+    <value>You reached the {0} character limit.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpValueTooLong</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Value is too long.</shortDescription>
+    <value>Value is too long.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtcmpValueTooShort</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Value is too short.</shortDescription>
+    <value>Value is too short.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtdataTableFalseCell</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Aria Label for DataTable icon false cell</shortDescription>
+    <value>False</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtdatatableNameDefaultValue</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Default value for datatable name</shortDescription>
+    <value>Datatable</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtdatatablePaginationButtonLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for page buttons within datatable pagination section</shortDescription>
+    <value>Page</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtdataTableTrueCell</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Aria Label for DataTable icon true cell</shortDescription>
+    <value>True</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtMaxSafeInt</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>MaxSafeInt</shortDescription>
+    <value>Maximum Permitted Value: 9007199254740991</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOAErrorLabel</fullName>
+    <categories>Omni Analytics</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Omni Analytics Error Label</shortDescription>
+    <value>Error</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtODCActionBlockDrop4ElementsBelow</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>ODCActionBlockDrop4ElementsBelow</shortDescription>
+    <value>Drop up to 4 child actions below:</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtODCCustomActionUtilityErrorMessageForRuntime</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>ODCCustomActionUtilityErrorMessageForRuntime</shortDescription>
+    <value>As managed package runtime is disabled, package utilities are not available.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtODCErrorModalTitle</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>ODCErrorModalTitle</shortDescription>
+    <value>An error occured.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniAdd</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniAdd</shortDescription>
+    <value>Add</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniBlockAddAriaLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniBlockAddAriaLabel</shortDescription>
+    <value>Add a new block</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniBlockError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniBlockError</shortDescription>
+    <value>Please expand to fix all invalid fields.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniBlockRemoveAriaLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniBlockRemoveAriaLabel</shortDescription>
+    <value>Delete block {0}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniCancel</fullName>
+    <language>en_US</language>
+    <protected>true</protected>
+    <shortDescription>OmniCancel</shortDescription>
+    <value>Cancel</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnicancelHeader</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnicancelHeader</shortDescription>
+    <value>Cancel</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnicancelLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnicancelLabel</shortDescription>
+    <value>Cancel</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnicancelMessage</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnicancelMessage</shortDescription>
+    <value>Are you sure? Any unsaved changes will be lost.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniClear</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniClear</shortDescription>
+    <value>-- Clear --</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnicompleteLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnicompleteLabel</shortDescription>
+    <value>Complete</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnicompleteMessage</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnicompleteMessage</shortDescription>
+    <value>Are you sure you want to complete the script?</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniConfigProdModalOk</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniConfigProdModalOk</shortDescription>
+    <value>Save</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniConfirm</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniConfirm</shortDescription>
+    <value>Confirm</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniconsoleTabLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniconsoleTabLabel</shortDescription>
+    <value>New</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniContinue</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniContinue</shortDescription>
+    <value>Continue</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniCopyLink</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniCopyLink</shortDescription>
+    <value>Copy the link</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniCopyLinkError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniCopyLinkError</shortDescription>
+    <value>Unable to copy link.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniCopyLinkSuccess</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniCopyLinkSuccess</shortDescription>
+    <value>Copied link to clipboard.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniCopyToClipBoard2</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniCopyToClipBoard2</shortDescription>
+    <value>Copy to clipboard: Double click to select, Ctrl+C/Cmd+C</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniCurrencyRemoveAltText</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniCurrencyRemoveAltText</shortDescription>
+    <value>Delete {0} and remove the currency field</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniCurrencyRepeatAltText</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniCurrencyRepeatAltText</shortDescription>
+    <value>Save {0} and add a new currency field</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniCustomLabelError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniCustomLabelError</shortDescription>
+    <value>Failed to get custom labels</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDateDisabledDay</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error message for a date or day which has been disabled</shortDescription>
+    <value>This date has been disabled.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDateMax</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error message for OmniScript's max date</shortDescription>
+    <value>Please select a date on or before</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDateMin</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error message for OmniScript's min date</shortDescription>
+    <value>Please select a date on or after</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDayJsLocaleFormats</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Minified Date Time formats override, see DayJS locale object</shortDescription>
+    <value>{"name":"en","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"months":["January","February","March","April","May","June","July","August","September","October","November","December"]}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDelete</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniDelete</shortDescription>
+    <value>Delete</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDeleteItem</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniDeleteItem</shortDescription>
+    <value>Delete {0}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDesInvalidJson</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniDesInvalidJson</shortDescription>
+    <value>The JSON is invalid</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDesOk</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniDesOk</shortDescription>
+    <value>Ok</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDocuSignModalClose</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniDocuSignModalClose</shortDescription>
+    <value>Close</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDocuSignModalTitle</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniDocuSignModalTitle</shortDescription>
+    <value>DocuSign Signing Ceremony</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDocuSignModalViewPdf</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniDocuSignModalViewPdf</shortDescription>
+    <value>View PDF</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniDocuSignNoRecipients</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniDocuSignNoRecipients</shortDescription>
+    <value>No recipients were found in the request</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockActionMenuText</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockActionMenuText</shortDescription>
+    <value>Action Menu for Block</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockDeleteConfirmation</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockDeleteConfirmation</shortDescription>
+    <value>Are you sure that you want to permanently delete the selected item</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockError</shortDescription>
+    <value>This block contains a missing required field</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockIconTextAdd</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockIconTextAdd</shortDescription>
+    <value>Add</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockIconTextApproval</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockIconTextApproval</shortDescription>
+    <value>Check</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockIconTextCancel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockIconTextCancel</shortDescription>
+    <value>Cancel</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockIconTextDelete</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockIconTextDelete</shortDescription>
+    <value>Delete</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockIconTextDown</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockIconTextDown</shortDescription>
+    <value>Show More</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockIconTextSave</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockIconTextSave</shortDescription>
+    <value>Save</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockIconTextUser</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockIconTextUser</shortDescription>
+    <value>User</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockItemCountAssistiveText</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockItemCountAssistiveText</shortDescription>
+    <value>{0} item</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockItemsCountAssistiveText</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockItemsCountAssistiveText</shortDescription>
+    <value>{0} items</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockRowError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockRowError</shortDescription>
+    <value>This row contains a missing required field</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEditBlockShowMoreLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEditBlockShowMoreLabel</shortDescription>
+    <value>Show More</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnieditLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnieditLabel</shortDescription>
+    <value>Edit</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniEmailMe</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniEmailMe</shortDescription>
+    <value>Email me the link</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniErrorPrefix</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniErrorPrefix</shortDescription>
+    <value>Error:</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnifailureGoBackLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnifailureGoBackLabel</shortDescription>
+    <value>Go Back</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnifailureNextLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnifailureNextLabel</shortDescription>
+    <value>Continue</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniFileUploadCount</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniFileUploadCount</shortDescription>
+    <value>Number of files uploaded is {0}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniinProgressMessage</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniinProgressMessage</shortDescription>
+    <value>In Progress</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniInvalidEmailError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniInvalidEmailError</shortDescription>
+    <value>Invalid email format.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniInvalidLwcComponent</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniInvalidLwcComponent</shortDescription>
+    <value>Form Updated</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniInvalidLwcComponentMessage</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniInvalidLwcComponentMessage</shortDescription>
+    <value>The form has been updated since you last saved it. Click Continue to start over using the updated form.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniInvalidURLError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniInvalidURLError</shortDescription>
+    <value>Please enter a valid website URL. (e.g. https://www.example.com)</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniKnowledgeArticlesCount</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Number of Knowledge Base articles found during search.</shortDescription>
+    <value>{0} articles found</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniKnowledgeCollapse</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniKnowledgeCollapse</shortDescription>
+    <value>Collapse Knowledge</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniKnowledgeExpand</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniKnowledgeExpand</shortDescription>
+    <value>Expand Knowledge</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniKnowledgeSearchIcon</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniKnowledgeSearchIcon</shortDescription>
+    <value>Search Icon</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniKnowledgeSearchLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniKnowledgeSearchLabel</shortDescription>
+    <value>Search Knowledge</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniLink</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniLink</shortDescription>
+    <value>link</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniLocaleFormatsInvalid</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Locale Format is invalid</shortDescription>
+    <value>Unable to render ${1} due to invalid localeFormat [${2}]. Please provide a valid localeFormat in the form of {"name":"en","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"months":["January","February","March","April","May","June","July","August","September","October","November","December"]}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniLwcApexHttpActionNotAvailable</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniLwcApexHttpActionNotAvailable</shortDescription>
+    <value>Endpoint 'Apex' for HTTP Action is currently not available in Lightning Web Components.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniMaxInt</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniMaxVal</shortDescription>
+    <value>Maximum Permitted Value: 9007199254740991</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniMaxLength</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniMaxLength</shortDescription>
+    <value>Maximum length of</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniMaxLengthWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniMaxLengthWithLabel</shortDescription>
+    <value>{0} has the maximum length of</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniMinLength</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniMinLength</shortDescription>
+    <value>Minimum length of</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniMinLengthWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniMinLengthWithLabel</shortDescription>
+    <value>{0} has the minimum length of</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniNavigationError1</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniNavigationError1</shortDescription>
+    <value>This type of navigation is not supported.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmninewItemLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmninewItemLabel</shortDescription>
+    <value>New</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmninewLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmninewLabel</shortDescription>
+    <value>New</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmninextLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmninextLabel</shortDescription>
+    <value>Next</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniNextMonth</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Next Month</shortDescription>
+    <value>Next Month</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniNoActionsError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniNoActionsError</shortDescription>
+    <value>No actions are defined.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniOK</fullName>
+    <language>en_US</language>
+    <protected>true</protected>
+    <shortDescription>OmniOK</shortDescription>
+    <value>OK</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniPendingUpdatesError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniPendingUpdatesError</shortDescription>
+    <value>Please save or cancel any pending updates.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniPickYr</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Pick a year</shortDescription>
+    <value>Pick a year</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniPopupBlocked</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniPopupBlocked</shortDescription>
+    <value>Popup Blocked. Please disable any Popup Blocker and try again.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnipostMessage</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnipostMessage</shortDescription>
+    <value>Done</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnipreviousLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnipreviousLabel</shortDescription>
+    <value>Previous</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniPrevMonth</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Previous Month</shortDescription>
+    <value>Previous Month</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniPrompt</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniPrompt</shortDescription>
+    <value>Prompt</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniRadioGroupSetAll</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniRadioGroupSetAll</shortDescription>
+    <value>Set All</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniRemoteActionConfirm</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniRemoteActionConfirm</shortDescription>
+    <value>Are you sure? This action cannot be undone.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniRemoteCallTimeout</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniRemoteCallTimeout</shortDescription>
+    <value>Remote Call Timeout</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniRequired</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniRequired</shortDescription>
+    <value>Required</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniRequiredWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniRequiredWithLabel</shortDescription>
+    <value>{0} is required.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniResume</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniResume</shortDescription>
+    <value>To resume, please click or bookmark the following link</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniResumeLink</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniResumeLink</shortDescription>
+    <value>Resume link:</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniReturn</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniReturn</shortDescription>
+    <value>Return</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnireviseLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnireviseLabel</shortDescription>
+    <value>Go back</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSaved</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSaved</shortDescription>
+    <value>Your OmniScript is saved for later</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSavedFailed</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSavedFailed</shortDescription>
+    <value>Save for Later failed. If your form includes large attachments, please remove them and try again. Otherwise, navigating away from this page will lose all current information.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSavedFailedConcurrent</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSavedFailed</shortDescription>
+    <value>This saved OmniScript has been updated since resuming. To see the latest updates, please exit and resume the saved OmniScript again.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSaveEmailBody</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSaveEmailBody</shortDescription>
+    <value>Note: for an authenticated user, please log in first before accessing the link.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnisaveLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnisaveLabel</shortDescription>
+    <value>Save for later</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnisaveMessage</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnisaveMessage</shortDescription>
+    <value>Are you sure you want to save it for later?</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSavingAccessibleLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSavingAccessibleLabel</shortDescription>
+    <value>Saving changes</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptError</shortDescription>
+    <value>Error</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptLang</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptLang</shortDescription>
+    <value>Language</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptLastPublished</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptLastPublished</shortDescription>
+    <value>Last Published</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptModal</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptModal</shortDescription>
+    <value>Open in modal dialog</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptModalFormatted</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>ARIA label for button to open Knowledge Base article in modal</shortDescription>
+    <value>Open "{0}" in modal dialog</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptNotFound1</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptNotFound1</shortDescription>
+    <value>There is no active OmniScript with:</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptNotFound2</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptNotFound2</shortDescription>
+    <value>Please contact your Salesforce Administrator.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptNotFound3</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptNotFound1</shortDescription>
+    <value>This OmniScript is either inactive or has been replaced with a new version which has not been deployed.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptOpen</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptOpen</shortDescription>
+    <value>Open in OmniScript</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptOpenFormatted</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>ARIA label for button to open Knowledge Base article inline</shortDescription>
+    <value>Open "{0}" in OmniScript</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptResumeLink</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptResumeLink</shortDescription>
+    <value>This script has been automatically saved, in order to resume in the future:</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptSubType</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptSubType</shortDescription>
+    <value>Sub Type</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniScriptType</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniScriptType</shortDescription>
+    <value>Type</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSelectDate</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Select Date</shortDescription>
+    <value>Select Date</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSendEmailNoTemplate</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSendEmailNoTemplate</shortDescription>
+    <value>No Template found in the request</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSideBarError1</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSideBarError1</shortDescription>
+    <value>There are Actions embedded between Steps, therefore you can not navigate to a future Step.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSliderAssistiveRangeText</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSliderAssistiveRangeText</shortDescription>
+    <value>Select a value between {0} and {1}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniSpinnerTextLoading</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniSpinnerTextLoading</shortDescription>
+    <value>Loading...</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepChartCompleted</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepChartCompleted</shortDescription>
+    <value>Completed</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepChartIncomplete</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepChartIncomplete</shortDescription>
+    <value>Incomplete</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepChartInProgress</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepChartInProgress</shortDescription>
+    <value>In Progress</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepChartLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepChartLabel</shortDescription>
+    <value>Steps</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepChartUntouched</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepChartUntouched</shortDescription>
+    <value>Untouched</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepCloseDetails</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepCloseDetails</shortDescription>
+    <value>Close Details</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepHideDetails</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepHideDetails</shortDescription>
+    <value>Hide Details</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepShowDetails</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepShowDetails</shortDescription>
+    <value>Show Details</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniStepValidationError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniStepValidationError</shortDescription>
+    <value>Please fix all the fields with errors.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnisubmitLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnisubmitLabel</shortDescription>
+    <value>Submit</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmnisummaryLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmnisummaryLabel</shortDescription>
+    <value>Summary</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniTextRemoveAltText</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniTextRemoveAltText</shortDescription>
+    <value>Delete {0} and remove the field</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniTextRepeatAltText</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniTextRepeatAltText</shortDescription>
+    <value>Save {0} and add a new field</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniTimeMinMax</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error message for OmniScript's min and max time</shortDescription>
+    <value>Please select a time between</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniToday</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Today</shortDescription>
+    <value>Today</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniTypeaheadDropdownIcon</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Select an Option</shortDescription>
+    <value>Select an Option</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniTypeAheadEditLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniTypeAheadEditLabel</shortDescription>
+    <value>Edit</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationBadInput</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationBadInput</shortDescription>
+    <value>Enter a valid value.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationBadInputDate</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationBadInputDate</shortDescription>
+    <value>Enter a valid value. Please use the format {0}.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationBadInputWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationBadInputWithLabel</shortDescription>
+    <value>Enter a valid value for {0}.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationMaskIncomplete</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationMaskIncomplete</shortDescription>
+    <value>This field is incomplete.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationMaskIncompleteWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationMaskIncompleteWithLabel</shortDescription>
+    <value>{0} is incomplete.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationPatternMismatch</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationPatternMismatch</shortDescription>
+    <value>Your entry does not match the allowed pattern.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationPatternMismatchWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationPatternMismatchWithLabel</shortDescription>
+    <value>Your entry does not match the allowed pattern for {0}.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationRangeOverflow</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationRangeOverflow</shortDescription>
+    <value>The number is too high.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationRangeOverflowWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationRangeOverflowWithLabel</shortDescription>
+    <value>The number is too high for {0}.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationRangeUnderflow</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationRangeUnderflow</shortDescription>
+    <value>The number is too low.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationRangeUnderflowWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationRangeUnderflowWithLabel</shortDescription>
+    <value>The number is too low for {0}.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationStepMismatch</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationStepMismatch</shortDescription>
+    <value>Your entry isn't a valid increment.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationStepMismatchWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationStepMismatchWithLabel</shortDescription>
+    <value>Your entry isn't a valid increment for {0}.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationTypeMismatch</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationTypeMismatch</shortDescription>
+    <value>You have entered an invalid format.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtOmniValidationTypeMismatchWithLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>OmniValidationTypeMismatchWithLabel</shortDescription>
+    <value>You have entered an invalid format for {0}.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtoptionsSelected</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Options Selected</shortDescription>
+    <value>{0} options selected</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtPopoverLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>PopoverLabel</shortDescription>
+    <value>Popover</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtsearchDropdownAssertiveMessage</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>TypeAheadDropdownAssistiveText</shortDescription>
+    <value>To scroll through your search results, press the arrow keys.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtselectAllAriaLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Select All Aria Label</shortDescription>
+    <value>Select All</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtselectRowAriaLabel</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Select Row Aria Label</shortDescription>
+    <value>Select Row {0}</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtvlocityToastErrorTitle</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>ToastErrorTitle</shortDescription>
+    <value>An error occured</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsOsrtwizItemLabelMissingError</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>wizItemLabelMissingError</shortDescription>
+    <value>Wizard - Label is required attribute for WizardItems</value>
+  </labels>
+</CustomLabels>

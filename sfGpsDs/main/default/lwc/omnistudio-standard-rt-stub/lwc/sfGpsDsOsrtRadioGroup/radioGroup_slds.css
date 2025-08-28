@@ -1,0 +1,25 @@
+.slds-form-element__control span.slds-radio {
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .slds-form-element__control span.slds-radio {
+    padding-left: 0;
+    text-indent: 0;
+  }
+}
+
+input[readonly],
+.slds-radio[readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  border-color: #939393;
+  background-color: #f3f3f3;
+}
+
+input[readonly]:focus,
+.slds-radio[readonly]:focus {
+  border-color: #939393;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}

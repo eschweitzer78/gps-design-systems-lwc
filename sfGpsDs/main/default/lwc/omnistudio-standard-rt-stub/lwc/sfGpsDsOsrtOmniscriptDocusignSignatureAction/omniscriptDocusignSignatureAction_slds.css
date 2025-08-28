@@ -1,0 +1,45 @@
+.modal-container {
+  display: none;
+}
+
+.slds-modal__container {
+  width: 90%;
+  max-width: none;
+  min-width: 40rem;
+  height: 100%;
+}
+
+.slds-modal__header {
+  border-bottom: 2px;
+  solid: #dddbda;
+}
+
+.slds-modal__content iframe {
+  height: 100vh;
+  width: 100%;
+}
+
+.slds-modal__footer {
+  border-top: 2px;
+  solid: #dddbda;
+}
+
+.slds-modal__footer div {
+  float: right;
+}
+
+.vlc-view-pdf {
+  display: none;
+}
+
+.modal-container .slds-spinner_container {
+  position: fixed;
+  z-index: 9002 !important;
+}
+
+@media only screen and (min-width: 30em) {
+  .slds-modal.slds-fade-in-open .slds-modal__container {
+    min-width: unset;
+    width: unset;
+  }
+}

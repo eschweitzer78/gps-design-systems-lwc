@@ -1,0 +1,27 @@
+:host {
+  /*
+        this is so we can style the lighting-file-input and keep the accessibility working well.
+        We'setting the label on it, but hiding it
+     */
+  --lwc-formLabelFontSize: 0;
+}
+
+.omni-file {
+  margin-bottom: 7px;
+}
+
+.nds-file-list-lwc {
+  margin: 0px !important;
+}
+
+.omni-file-input {
+  overflow: hidden;
+}
+
+.omni-file-required {
+  line-height: 1em;
+}
+
+.omni-input-label {
+  display: inline;
+}

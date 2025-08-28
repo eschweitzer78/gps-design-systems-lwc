@@ -1,0 +1,55 @@
+<template>
+  <template lwc:if={auto}>
+    <template lwc:if={hasResult}>
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
+
+      <c-sf-gps-ds-au-nsw-alert
+        as="success"
+        title="Your application is saved for later. "
+        compact="true"
+        class-name="nsw-scope"
+      >
+        <span slot="compact">
+          {_bSflLabels.OmniScriptResumeLink}
+          <a onclick={copyLinkToClipboard}> {_bSflLabels.OmniCopyLink} </a>
+          or
+          <a href={emailLink} target="_blank" rel="noopener"
+            >{_bSflLabels.OmniEmailMe}</a
+          >.
+        </span>
+      </c-sf-gps-ds-au-nsw-alert>
+    </template>
+  </template>
+
+  <template lwc:else>
+    <template lwc:if={hasResult}>
+      <div
+        class="copy-container slds-is-absolute slds-z_-1"
+        lwc:dom="manual"
+      ></div>
+
+      <div class="nsw-container nsw-scope">
+        <c-sf-gps-ds-au-nsw-alert
+          as="success"
+          title="Your application is saved for later"
+          compact="false"
+          class-name="nsw-scope"
+        >
+          <span slot="regular">
+            <span></span>
+            <p>{_bSflLabels.OmniResume}:</p>
+            <p><a href={resumeLink} target="_blank">{resumeLink}</a></p>
+            <br />
+            <p>
+              <a onclick={copyLinkToClipboard}>{_bSflLabels.OmniCopyLink}</a> or
+              <a onclick={openEmail}>{_bSflLabels.OmniEmailMe}</a>
+            </p>
+          </span>
+        </c-sf-gps-ds-au-nsw-alert>
+      </div>
+    </template>
+  </template>
+</template>

@@ -1,0 +1,64 @@
+.tooltipSection {
+  position: absolute;
+  max-width: 20rem;
+  width: max-content;
+  pointer-events: all;
+}
+
+.top-left {
+  left: -1rem;
+  top: 2rem;
+}
+
+.top-right {
+  right: -1rem;
+  top: 2rem;
+}
+
+.bottom-left {
+  left: -1rem;
+  bottom: 2rem;
+}
+
+.bottom-right {
+  right: -1rem;
+  bottom: 2rem;
+}
+
+.top-right-corner {
+  right: -0.5rem;
+  top: 2rem;
+}
+
+.top-left-corner {
+  left: 0rem;
+  top: 2rem;
+}
+
+.bottom-right-corner {
+  right: -0.5rem;
+  bottom: 2rem;
+}
+
+.bottom-left-corner {
+  left: 0rem;
+  bottom: 2rem;
+}
+
+.right {
+  left: -10rem;
+}
+
+.left {
+  left: 2rem;
+}
+
+.top {
+  left: -4rem;
+  top: 2rem;
+}
+
+.bottom {
+  left: -4rem;
+  top: -3rem;
+}
