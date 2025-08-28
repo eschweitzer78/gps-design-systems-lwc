@@ -1,4 +1,4 @@
-import { Parser } from "c/nearley";
+import { Parser } from "c/sfGpsDsOrstNearley";
 import grammar from "./expressionEngineGrammar";
 import {
   setTemplateResolverFn,
