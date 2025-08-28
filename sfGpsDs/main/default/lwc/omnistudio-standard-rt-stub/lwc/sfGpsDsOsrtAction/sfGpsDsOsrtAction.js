@@ -32,10 +32,10 @@ import pubsub from "c/sfGpsDsOsrtPubsub";
 import { isEqual, get } from "c/sfGpsDsOsrtLodash";
 import sldsTemplate from "./action_slds.html";
 import ndsTemplate from "./action_nds.html";
-import { getDefaultTrackingData, initInteraction } from "c/actionUtility";
+import { getDefaultTrackingData, initInteraction } from "c/sfGpsDsOsrtActionUtility";
 import vtag from "sfGpsDsOsrtOaVtag";
 import { isSalesforcePlatform } from "c/sfGpsDsOsrtSdkUtility";
-import { BaseFlexElementMixin } from "c/baseFlexElementMixin";
+import { BaseFlexElementMixin } from "c/sfGpsDsOsrtBaseFlexElementMixin";
 import { CurrentPageReference } from "lightning/navigation";
 export default class Action extends BaseFlexElementMixin(LightningElement) {
   /** url

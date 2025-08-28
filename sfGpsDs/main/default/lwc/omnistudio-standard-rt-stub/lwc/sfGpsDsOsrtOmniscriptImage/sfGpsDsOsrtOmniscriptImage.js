@@ -1,5 +1,5 @@
 import { track } from "lwc";
-import OmniscriptFile from "c/omniscriptFile";
+import OmniscriptFile from "c/sfGpsDsOsrtOmniscriptFile";
 import tmpl from "./omniscriptImage_slds.html";
 import tmpl_nds from "./omniscriptImage_nds.html";
 import { getCurrentBaseUrl } from "c/sfGpsDsOsrtOmniscriptRestApi";

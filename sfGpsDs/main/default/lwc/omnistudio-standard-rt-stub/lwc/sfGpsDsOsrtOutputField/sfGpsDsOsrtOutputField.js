@@ -9,7 +9,7 @@ import {
   lwcPropertyNameConversion,
   dateValueParser
 } from "c/sfGpsDsOsrtUtility";
-import { BaseFlexElementMixin } from "c/baseFlexElementMixin";
+import { BaseFlexElementMixin } from "c/sfGpsDsOsrtBaseFlexElementMixin";
 
 export default class OutputField extends BaseFlexElementMixin(
   LightningElement

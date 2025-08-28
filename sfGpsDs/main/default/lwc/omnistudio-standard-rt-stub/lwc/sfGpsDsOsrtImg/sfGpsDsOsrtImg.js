@@ -70,7 +70,7 @@ export default class Img extends LightningElement {
       return getCommunityPrefix();
     } else if (!isSalesforcePlatform) {
       try {
-        let connection = require("c/omniscriptConnection").getConnection();
+        let connection = require("c/sfGpsDsOsrtOmniscriptConnection").getConnection();
         return connection.instanceUrl;
       } catch (e) {
         return window.location.origin;
