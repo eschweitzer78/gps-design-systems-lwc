@@ -33,7 +33,7 @@ import { isEqual, get } from "c/sfGpsDsOsrtLodash";
 import sldsTemplate from "./action_slds.html";
 import ndsTemplate from "./action_nds.html";
 import { getDefaultTrackingData, initInteraction } from "c/actionUtility";
-import vtag from "c/oaVtag";
+import vtag from "sfGpsDsOsrtOaVtag";
 import { isSalesforcePlatform } from "c/sfGpsDsOsrtSdkUtility";
 import { BaseFlexElementMixin } from "c/baseFlexElementMixin";
 import { CurrentPageReference } from "lightning/navigation";

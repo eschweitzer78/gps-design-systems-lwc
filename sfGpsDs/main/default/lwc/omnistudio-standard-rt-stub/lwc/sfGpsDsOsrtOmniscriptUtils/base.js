@@ -6,7 +6,7 @@ import {
 } from "c/sfGpsDsOsrtOmniscriptInternalUtils";
 import { mergeWith } from "c/sfGpsDsOsrtLodash";
 import { getCommonTrackingData } from "c/sfGpsDsOsrtOmniscriptTrackingServiceUtils";
-import vtag from "c/oaVtag";
+import vtag from "sfGpsDsOsrtOaVtag";
 import { safePostMessage } from "c/sfGpsDsOsrtSalesforceUtils";
 
 const API = "api";
