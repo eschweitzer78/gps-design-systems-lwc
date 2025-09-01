@@ -1,0 +1,131 @@
+.step-id {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  min-width: 32px;
+  min-height: 32px;
+  border: 2px solid var(--QLD-color-dark__border--alt);
+  border-radius: 100px;
+  font-size: 19px;
+  z-index: 2;
+
+  font-weight: bold;
+  color: var(--QLD-color-light__text--lighter);
+}
+
+.step_horizontal .step-id {
+  min-width: 24px;
+  min-height: 24px;
+  font-size: 12px;
+}
+
+.step-container {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+}
+
+.step_horizontal .step-container {
+  flex-direction: column;
+}
+
+.step-container__completed .step-id {
+  background-color: var(--QLD-color-dark__border--alt);
+  color: var(--QLD-color-light__text);
+}
+.step-container__in-progress .step-id {
+  background-color: var(--QLD-color-light__design-accent);
+  color: var(--QLD-color-light__text);
+}
+
+.step-container__pristine .step-id {
+  background-color: #ffffff;
+}
+
+.step-container__nonpristine .step-id {
+  background-color: #f5f5f5;
+}
+
+.step-label {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow: hidden;
+  margin-left: 12px;
+  margin-right: 12px;
+  letter-spacing: -0.3px;
+  line-height: 22px;
+  max-height: 44px;
+  min-height: 22px;
+  color: var(--QLD-color-light__text--lighter);
+  font-weight: normal;
+  font-size: 1rem;
+
+  /* issue 398 */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.step-container__in-progress .step-label {
+  color: var(--QLD-color-light__text);
+  font-weight: bold;
+}
+
+.step_horizontal .step-label {
+  font-size: 0.875rem;
+  position: absolute;
+  top: 5px;
+  max-width: 30rem;
+  white-space: nowrap;
+  padding-top: 1.25rem;
+}
+
+.step_horizontal .step-container__completed .step-label,
+.step_horizontal .step-container__nonpristine .step-label,
+.step_horizontal .step-container__pristine .step-label {
+  visibility: hidden;
+}
+
+@media (max-width: 992px) {
+  .step_horizontal .step-label {
+    font-size: 0.75rem;
+    max-width: 15rem;
+  }
+}
+
+@media (max-width: 699px) {
+  .step_horizontal .step-label {
+    visibility: hidden;
+  }
+}
+
+.step-icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.5s ease 0s;
+  transform: translateX(0px);
+}
+
+.step_horizontal .step-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.sfgpsds-assistive-text {
+  border: 0px;
+  clip: rect(0px, 0px, 0px, 0px);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: absolute;
+}

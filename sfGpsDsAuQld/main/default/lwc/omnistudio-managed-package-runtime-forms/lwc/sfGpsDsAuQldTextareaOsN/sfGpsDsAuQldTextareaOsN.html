@@ -1,0 +1,58 @@
+<template>
+  <div class="qld__form-group">
+    <template lwc:if={labelVisible}>
+      <label for="textareaId" class="qld__label">
+        {label}
+        <abbr lwc:if={required} title="required">*</abbr>
+        <span lwc:else class="qld__label--optional">{i18n.optional}</span>
+        <slot name="label"> </slot>
+      </label>
+    </template>
+
+    <span lwc:if={fieldLevelHelp} id="helper" class="qld__hint-text">
+      {fieldLevelHelp}
+    </span>
+
+    <span
+      lwc:if={sfGpsDsIsError}
+      id="errorMessageBlock"
+      class="qld__input--error"
+      role="alert"
+    >
+      <svg
+        class="qld__icon qld__icon--lead qld__icon--sm"
+        role="img"
+        aria-label={i18n.errorAriaLabel}
+      >
+        <use href={computedStatusErrorIconHref}></use></svg
+      >{_errorMessage}
+    </span>
+
+    <textarea
+      class={computedTextAreaClassName}
+      tabindex={tabIndex}
+      minlength={minLength}
+      maxlength={maxLength}
+      readonly={readOnly}
+      aria-readonly={readOnly}
+      accesskey={accessKey}
+      name={name}
+      disabled={computedIsDisabledOrReadOnly}
+      required={required}
+      placeholder={placeholder}
+      id="textareaId"
+      autocomplete={autocomplete}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={sfGpsDsIsError}
+      oninput={updateValue}
+      onblur={validateError}
+      onfocus={triggerEvent}
+      onchange={triggerEvent}
+      onkeyup={keyCallbacks}
+      onkeydown={keyCallbacks}
+      data-sfgpsds-input
+    >
+      {_val}
+    </textarea>
+  </div>
+</template>
