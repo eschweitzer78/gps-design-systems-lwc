@@ -1,0 +1,51 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="rpl-form-dropdown__multi-value-tag-list-wrap">
+    <div
+      lwc:ref="faxItemsRef"
+      class="rpl-form-dropdown__multi-value-tag-list"
+      aria-hidden="true"
+    >
+      <template for:each={selectedOptions} for:item="option">
+        <span
+          key={option.key}
+          aria-hidden="true"
+          class="rpl-form-dropdown__multi-value-tag-item rpl-type-p"
+        >
+          {option.label}
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-cancel"
+            size="xs"
+          ></c-sf-gps-ds-au-vic2-icon-os>
+        </span>
+      </template>
+    </div>
+    <div lwc:ref="itemsRef" class="rpl-form-dropdown__multi-value-tag-list">
+      <template for:each={displayedOptions} for:item="option">
+        <button
+          key={option.key}
+          type="button"
+          class="rpl-form-dropdown__multi-value-tag-item rpl-type-p rpl-u-focusable-block"
+          tabindex="-1"
+          data-tag-id={option.id}
+          aria-label={option._ariaLabel}
+          onkeydown={handleKeydown}
+          onclick={handleClick}
+        >
+          {option.label}
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-cancel"
+            size="xs"
+          ></c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+      </template>
+
+      <span
+        lwc:if={computedShowHiddenMessage}
+        class="rpl-form-dropdown__more-label rpl-type-p"
+      >
+        {hiddenMessage}
+      </span>
+    </div>
+  </div>
+</template>

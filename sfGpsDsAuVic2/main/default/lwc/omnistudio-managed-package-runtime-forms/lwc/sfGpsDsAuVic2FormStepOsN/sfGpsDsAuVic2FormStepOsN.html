@@ -1,0 +1,78 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template lwc:if={jsonDef.bAccordionActive}>
+    <div class="rpl-form">
+      <template lwc:if={mergedLabel}>
+        <h1
+          lwc:if={computedIsH1}
+          class="rpl-type-h1 rpl-u-margin-b-8"
+          aria-live="polite"
+          tabindex="-1"
+        >
+          {mergedLabel}
+        </h1>
+        <h2
+          lwc:elseif={computedIsH2}
+          class="rpl-type-h2 rpl-u-margin-b-6"
+          aria-live="polite"
+          tabindex="-1"
+        >
+          {mergedLabel}
+        </h2>
+        <h3
+          lwc:else
+          class="rpl-type-h3 rpl-u-margin-b-4"
+          aria-live="polite"
+          tabindex="-1"
+        >
+          {mergedLabel}
+        </h3>
+      </template>
+
+      <form class="rpl-form__form rpl-form" onsubmit={handleSubmit}>
+        <fieldset class="rpl-form__fieldset">
+          <div class="rpl-grid rpl-grid--no-row-gap">
+            <slot> </slot>
+
+            <div
+              lwc:if={computedHasButtons}
+              class="rpl-form-actions rpl-u-screen-only rpl-col-12"
+            >
+              <!-- add replacement buttons here -->
+              <button
+                lwc:if={showPrev}
+                class="rpl-button rpl-button--outlined rpl-button--default rpl-u-focusable-block"
+                onclick={handleBack}
+              >
+                <span
+                  class="rpl-button__label rpl-type-label rpl-type-weight-bold"
+                  >{mergedPreviousLabel}</span
+                >
+              </button>
+              <button
+                lwc:if={showSave}
+                class="rpl-button rpl-button--outlined rpl-button--default rpl-u-focusable-block"
+                onclick={handleSave}
+              >
+                <span
+                  class="rpl-button__label rpl-type-label rpl-type-weight-bold"
+                  >{mergedSaveLabel}</span
+                >
+              </button>
+              <button
+                lwc:if={showNext}
+                class="rpl-button rpl-button--filled rpl-button--default rpl-u-focusable-block"
+                onclick={handleNext}
+              >
+                <span
+                  class="rpl-button__label rpl-type-label rpl-type-weight-bold"
+                  >{mergedNextLabel}</span
+                >
+              </button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </template>
+</template>

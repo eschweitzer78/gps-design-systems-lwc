@@ -1,0 +1,49 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <!-- added readOnly -->
+  <c-sf-gps-ds-au-vic2-input-os-n
+    type="checkbox"
+    label={mergedLabel}
+    theme={_theme}
+    icon-name="utility:info"
+    checked={elementValue}
+    tab-index={tabIndex}
+    field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
+    data-omni-input
+    onchange={handleChange}
+    read-only={_propSetMap.readOnly}
+    class="rpl-form__wrapper"
+  >
+    <template lwc:if={_propSetMap.repeat}>
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
+        <button
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Checkbox"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-add"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Checkbox"
+          onclick={handleRemove}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic2-input-os-n>
+</template>

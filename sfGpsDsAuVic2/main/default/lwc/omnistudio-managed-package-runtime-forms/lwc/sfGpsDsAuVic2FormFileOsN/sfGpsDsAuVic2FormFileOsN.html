@@ -1,0 +1,122 @@
+<template>
+  <!-- Spinner -->
+  <template lwc:if={isPageLoading}>
+    <omnistudio-spinner
+      variant="brand"
+      alternative-text="Loading..."
+      theme={_theme}
+      size="medium"
+    >
+    </omnistudio-spinner>
+  </template>
+
+  <div
+    class={_containerClasses}
+    aria-labelledby="fileUpload"
+    data-invalid={_showValidation}
+  >
+    <fieldset class="rpl-form__fieldset">
+      <label
+        lwc:if={_propSetMap.label}
+        id="fileUpload"
+        class="rpl-form-label rpl-type-h4-fixed"
+      >
+        <span class="rpl-form-label__inner">{mergedLabel}</span>
+        <span
+          lwc:if={_propSetMap.required}
+          class="rpl-form-label__required rpl-type-label-small"
+          >({_propSetMap.required})
+        </span>
+        <slot name="label"> </slot>
+      </label>
+
+      <div
+        lwc:if={_propSetMap.help}
+        id="helper"
+        class="rpl-content rpl-form-help"
+      >
+        {mergedHelpText}
+      </div>
+
+      <span
+        lwc:if={_showValidation}
+        class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+        aria-live="assertive"
+        role="alert"
+        id="errorMessageBlock"
+      >
+        <c-sf-gps-ds-au-vic2-icon-os
+          size="s"
+          name="icon-exclamation-circle-filled"
+        >
+        </c-sf-gps-ds-au-vic2-icon-os>
+        <span>{errorMessage}</span>
+      </span>
+
+      <div class="omni-file-input">
+        <lightning-file-upload
+          class="omni-file"
+          label=" "
+          name={jsonDef.lwcId}
+          multiple
+          record-id={parentRecordId}
+          aria-invalid={_showValidation}
+          aria-described-by={computedAriaDescribedBy}
+          data-omni-input
+          onuploadfinished={handleUploadFinished}
+          onfocusout={handleFocusOut}
+        >
+        </lightning-file-upload>
+      </div>
+
+      <!-- filelist -->
+      <div class="sfgpsds-file-list">
+        <span id="upload-status" class="slds-assistive-text">
+          {ariaLiveStatusText}
+        </span>
+        <div aria-labelledby="upload-status" aria-live={ariaLiveStatus}></div>
+        <div class="rpl-grid rpl-u-padding-t-2">
+          <ul class="omni-file rpl-col-12">
+            <template
+              for:each={_decoratedValue}
+              for:item="item"
+              for:index="index"
+            >
+              <li key={item.data} class="rpl-type-p">
+                <div>
+                  <c-sf-gps-ds-au-vic2-file-os
+                    name={item.filename}
+                    size={item._sizeText}
+                    extension={item._fileExt}
+                    data-index={index}
+                    data-id={item.data}
+                    ondownload={deleteFile}
+                  >
+                  </c-sf-gps-ds-au-vic2-file-os>
+                  <span class="remove-file-icon">
+                    <button
+                      title={item.deleteLabel}
+                      data-index={index}
+                      data-id={item.data}
+                      onclick={deleteFile}
+                    >
+                      <c-sf-gps-ds-au-vic2-icon-os
+                        name="icon-cancel-circle-filled"
+                        size="xs"
+                        title={item.deleteLabel}
+                        data-index={index}
+                        data-id={item.data}
+                      >
+                      </c-sf-gps-ds-au-vic2-icon-os>
+                    </button>
+                  </span>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+      <!-- end filelist -->
+    </fieldset>
+  </div>
+</template>

@@ -1,0 +1,76 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-au-vic2-input-os-n
+    type="datetime"
+    label={mergedLabel}
+    required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
+    date-placeholder={mergedDatePlaceholder}
+    time-placeholder={mergedTimePlaceholder}
+    value={elementValue}
+    tab-index={tabIndex}
+    output-type="date"
+    time-format={_timeFormat}
+    date-format={_dateFormat}
+    date-time-locale-format={allCustomLabelsUtil.OmniDayJsLocaleFormats}
+    date-time-locale-format-invalid-error={allCustomLabelsUtil.OmniLocaleFormatsInvalid}
+    select-date-label={allCustomLabelsUtil.OmniSelectDate}
+    prev-month-label={allCustomLabelsUtil.OmniPrevMonth}
+    next-month-label={allCustomLabelsUtil.OmniNextMonth}
+    pick-year-label={allCustomLabelsUtil.OmniPickYr}
+    today-label={allCustomLabelsUtil.OmniToday}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    message-when-value-missing={mergedMessageWhenValueMissing}
+    message-when-pattern-mismatch={mergedMessageWhenPatternMismatch}
+    message-when-too-short={mergedMessageWhenTooShort}
+    message-when-too-long={mergedMessageWhenTooLong}
+    message-when-bad-input={mergedMessageWhenBadInput}
+    message-when-range-overflow={mergedMessageWhenRangeOverflow}
+    message-when-range-underflow={mergedMessageWhenRangeUnderflow}
+    message-when-step-mismatch={mergedMessageWhenStepMismatch}
+    message-when-type-mismatch={mergedMessageWhenTypeMismatch}
+    min={_min}
+    max={_max}
+    timezone={_timezone}
+    interval={_timeInterval}
+    field-level-help={mergedHelpText}
+    filed-level-help-position={_propSetMap.helpTextPos}
+    theme={_theme}
+    time-label=""
+    date-label=""
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
+        <button
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Date/Time"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-add"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Date/Time"
+          onclick={handleRemove}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic2-input-os-n>
+</template>

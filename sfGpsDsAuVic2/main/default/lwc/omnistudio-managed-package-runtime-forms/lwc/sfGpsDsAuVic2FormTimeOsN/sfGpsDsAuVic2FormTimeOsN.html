@@ -1,0 +1,70 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-au-vic2-input-os-n
+    type="time"
+    label={mergedLabel}
+    read-only={_propSetMap.readOnly}
+    value={elementValue}
+    tab-index={tabIndex}
+    output-type={_propSetMap.timeType}
+    output-format={_modelTimeFormat}
+    format={_timeFormat}
+    date-time-locale-format={allCustomLabelsUtil.OmniDayJsLocaleFormats}
+    date-time-locale-format-invalid-error={allCustomLabelsUtil.OmniLocaleFormatsInvalid}
+    message-when-value-missing={_messageWhenValueMissing}
+    message-when-pattern-mismatch={_messageWhenPatternMismatch}
+    message-when-too-short={_messageWhenTooShort}
+    message-when-too-long={_messageWhenTooLong}
+    message-when-bad-input={_messageWhenBadInput}
+    message-when-range-overflow={_messageWhenRangeOverflow}
+    message-when-range-underflow={_messageWhenRangeUnderflow}
+    message-when-step-mismatch={_messageWhenStepMismatch}
+    message-when-type-mismatch={_messageWhenTypeMismatch}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    min={_min}
+    max={_max}
+    interval={_timeInterval}
+    required={_propSetMap.required}
+    placeholder={mergedPlaceholder}
+    field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
+    theme={_theme}
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
+        <button
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Time"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-add"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Time"
+          onclick={handleRemove}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+      </span>
+    </template>
+    <div lwc:if={_propSetMap.secondaryLabel} class="sublabel" slot="sublabel">
+      <label class="rpl-type-label-small">{_propSetMap.secondaryLabel}</label>
+    </div>
+  </c-sf-gps-ds-au-vic2-input-os-n>
+</template>

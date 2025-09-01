@@ -1,0 +1,136 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <fieldset
+    class="rpl-form__fieldset"
+    aria-describedby={computedAriaDescribedBy}
+  >
+    <label
+      lwc:if={label}
+      class="rpl-form-label rpl-type-h4-fixed"
+      for="textareaId"
+      data-label="true"
+    >
+      <span class="rpl-form-label__inner">{label}</span>
+      <span
+        lwc:if={required}
+        class="rpl-form-label__required rpl-type-label-small"
+        >({requiredLabel})</span
+      >
+      <slot name="label"> </slot>
+    </label>
+
+    <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
+      {fieldLevelHelp}
+    </div>
+
+    <span
+      lwc:if={sfGpsDsIsError}
+      class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <c-sf-gps-ds-au-vic2-icon-os
+        size="s"
+        name="icon-exclamation-circle-filled"
+      >
+      </c-sf-gps-ds-au-vic2-icon-os>
+      <span>{sfGpsDsErrorMessage}</span>
+    </span>
+
+    <div class="rpl-form-date">
+      <div class="rpl-form-date__part">
+        <label
+          for="form-date-day"
+          class="rpl-form-date__part-label rpl-type-label-small"
+        >
+          {i18n.dayLabel}
+        </label>
+        <div class={computedDateInputClassName}>
+          <input
+            lwc:ref="dateInput"
+            id="form-date-day"
+            name="form-date-day"
+            type="text"
+            inputmode="numeric"
+            maxlength="2"
+            autocomplete="off"
+            readonly={readOnly}
+            aria-readonly={readOnly}
+            required={required}
+            disabled={disabled}
+            aria-invalid={computedIsPartInvalidDate}
+            aria-describedby={computedAriaDescribedBy}
+            value={_displayDayValue}
+            placeholder={i18n.dayPlaceholder}
+            onblur={handleInputChange}
+            onchange={stopPropagation}
+            class="rpl-u-focusable-outline"
+          />
+        </div>
+      </div>
+
+      <div class="rpl-form-date__part">
+        <label
+          for="form-date-month"
+          class="rpl-form-date__part-label rpl-type-label-small"
+        >
+          {i18n.monthLabel}
+        </label>
+        <div class={computedMonthInputClassName}>
+          <input
+            lwc:ref="monthInput"
+            id="form-date-month"
+            name="form-date-month"
+            type="text"
+            inputmode="numeric"
+            maxlength="2"
+            autocomplete="off"
+            readonly={readOnly}
+            aria-readonly={readOnly}
+            required={required}
+            disabled={disabled}
+            aria-invalid={computedIsPartInvalidMonth}
+            aria-describedby={computedAriaDescribedBy}
+            value={_displayMonthValue}
+            placeholder={i18n.monthPlaceholder}
+            onblur={handleInputChange}
+            onchange={stopPropagation}
+            class="rpl-u-focusable-outline"
+          />
+        </div>
+      </div>
+
+      <div class="rpl-form-date__part">
+        <label
+          for="year"
+          class="rpl-form-date__part-label rpl-type-label-small"
+        >
+          {i18n.yearLabel}
+        </label>
+        <div class={computedYearInputClassName}>
+          <input
+            lwc:ref="yearInput"
+            id="form-date-year"
+            name="form-date-year"
+            type="text"
+            inputmode="numeric"
+            maxlength="4"
+            autocomplete="off"
+            readonly={readOnly}
+            aria-readonly={readOnly}
+            required={required}
+            disabled={disabled}
+            aria-invalid={computedIsPartInvalidYear}
+            aria-describedby={computedAriaDescribedBy}
+            value={_displayYearValue}
+            placeholder={i18n.yearPlaceholder}
+            onblur={handleInputChange}
+            onchange={stopPropagation}
+            class="rpl-u-focusable-outline"
+          />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</template>

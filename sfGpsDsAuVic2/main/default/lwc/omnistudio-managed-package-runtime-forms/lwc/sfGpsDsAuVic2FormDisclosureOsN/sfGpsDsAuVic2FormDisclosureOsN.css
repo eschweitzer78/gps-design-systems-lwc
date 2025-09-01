@@ -1,0 +1,13 @@
+.vic-disclosure {
+  order: 2;
+  margin-top: -16px; /* compensate the content margin of var(--rpl-sp-4)); */
+  margin-bottom: var(--rpl-sp-2);
+}
+
+.vic-disclosure__consent {
+  margin-top: 1rem;
+}
+
+.vic-disclosure:first-child {
+  margin-top: 0;
+}

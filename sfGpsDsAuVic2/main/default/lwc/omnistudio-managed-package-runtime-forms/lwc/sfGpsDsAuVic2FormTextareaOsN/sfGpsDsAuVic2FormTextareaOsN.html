@@ -1,0 +1,61 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-au-vic2-textarea-os-n
+    label={mergedLabel}
+    min-length={_propSetMap.minLength}
+    max-length={_propSetMap.maxLength}
+    required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
+    tab-index={tabIndex}
+    value={elementValue}
+    theme={_theme}
+    field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
+    placeholder={mergedPlaceholder}
+    message-when-value-missing={mergedMessageWhenValueMissing}
+    message-when-too-short={mergedMessageWhenTooShort}
+    message-when-too-long={mergedMessageWhenTooLong}
+    message-when-bad-input={mergedMessageWhenBadInput}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    autocomplete={_autocomplete}
+    data-id={jsonDef.name}
+    data-omni-input
+    onblur={handleBlur}
+    counter-type={_propSetMap.counterType}
+    counter-too-few-template={_propSetMap.counterTooFewTemplate}
+    counter-too-many-template={_propSetMap.counterTooManyTemplate}
+    counter-regular-template={_propSetMap.counterRegularTemplate}
+    class="rpl-form__wrapper"
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
+        <button
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Text Area"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-add"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Text Area"
+          onclick={handleRemove}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic2-textarea-os-n>
+</template>

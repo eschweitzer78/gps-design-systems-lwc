@@ -1,0 +1,58 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="omni-typeahead-container">
+    <c-sf-gps-ds-au-vic2-typeahead-os-n
+      field-level-help={mergedHelpText}
+      label={mergedLabel}
+      options={options}
+      placeholder={mergedPlaceholder}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
+      value={elementValue}
+      disable-last-item
+      disable-filter
+      remote-source
+      data-omni-input
+      onblur={handleBlur}
+      onclear={handleClear}
+      onselect={handleSelect}
+    >
+      <button
+        if:false={_propSetMap.hideEditButton}
+        class="slds-button slds-button_icon"
+        slot="iconRight"
+        aria-expanded={_isEditMode}
+        onclick={toggleEditMode}
+      >
+        <omnistudio-icon
+          icon-name="utility:edit"
+          extraclass="slds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={_editLabel}
+        ></omnistudio-icon>
+      </button>
+
+      <img
+        slot="lastItem"
+        src={_googleAttribution}
+        alt="Powered by Google"
+        class="google-places-attribution"
+      />
+    </c-sf-gps-ds-au-vic2-typeahead-os-n>
+
+    <div lwc:if={_renderMap} class={mapClasses} data-google-maps-container>
+      <lightning-map map-markers={selectedPlace} zoom-level={zoomLevel}>
+      </lightning-map>
+    </div>
+
+    <div lwc:if={errorMessage} class="slds-has-error">
+      <span class="slds-form-element__help">{errorMessage}</span>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,17 @@
+<template>
+  <template lwc:if={messageText}>
+    <div lwc:ref="containerRef" class={computedClassName} tabindex="-1">
+      <h3 class="rpl-form-alert__title rpl-type-label-large">
+        <c-sf-gps-ds-au-vic2-icon-os name={computedIconName} size="m">
+        </c-sf-gps-ds-au-vic2-icon-os>
+        {mergedTitleText}
+      </h3>
+
+      <div
+        lwc:ref="markdown"
+        class="rpl-form-alert__description rpl-type-p"
+        lwc:dom="manual"
+      ></div>
+    </div>
+  </template>
+</template>

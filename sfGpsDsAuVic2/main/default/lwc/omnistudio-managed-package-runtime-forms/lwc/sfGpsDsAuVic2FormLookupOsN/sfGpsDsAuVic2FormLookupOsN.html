@@ -1,0 +1,61 @@
+<template>
+  <!-- sldsValidatorIgnore -->
+  <c-sf-gps-ds-au-vic2-combobox-os-n
+    lwc:ref="childInput"
+    label={mergedLabel}
+    disabled={_readOnly}
+    required={_propSetMap.required}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    placeholder={mergedPlaceholder}
+    options={decoratedOptions}
+    value={lookupDisplay}
+    field-level-help={mergedHelpText}
+    searchable="true"
+    message-when-value-missing={_messageWhenValueMissing}
+    data-omni-input
+    onchange={handleChange}
+    class="rpl-form__wrapper"
+    unselect-label={allCustomLabelsUtil.OmniClear}
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
+        <button
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Lookup"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-add"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Lookup"
+          onclick={handleRemove}
+        >
+          <c-sf-gps-ds-au-vic2-icon-os
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon-os>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic2-combobox-os-n>
+
+  <template if:true={isPageLoading}>
+    <omnistudio-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      theme="slds"
+      size="small"
+    >
+    </omnistudio-spinner>
+  </template>
+</template>

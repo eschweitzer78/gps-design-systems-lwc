@@ -1,0 +1,18 @@
+<template>
+  <c-sf-gps-ds-au-vic2-progress-os
+    lwc:if={isVertical}
+    steps={computedSteps}
+    current-step={computedCurrentIndexP1}
+    expandable="false"
+    initially-expanded="true"
+  >
+  </c-sf-gps-ds-au-vic2-progress-os>
+  <c-sf-gps-ds-au-vic2-progress-os
+    lwc:else
+    steps={computedSteps}
+    current-step={computedCurrentIndexP1}
+    expandable="true"
+    initially-expanded="false"
+  >
+  </c-sf-gps-ds-au-vic2-progress-os>
+</template>

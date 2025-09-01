@@ -1,0 +1,247 @@
+<template>
+  <c-sf-gps-ds-au-vic2-date-picker-os-n
+    lwc:if={isDate}
+    placeholder={placeholder}
+    label={label}
+    name={name}
+    min={min}
+    max={max}
+    value={inputValue}
+    tab-index={tabIndex}
+    format={format}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    disabled={computedDisabledReadOnly}
+    required={required}
+    required-label={requiredLabel}
+    size={size}
+    position={position}
+    output-type={outputType}
+    output-format={outputFormat}
+    field-level-help={fieldLevelHelp}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    message-when-value-missing={messageWhenValueMissing}
+    message-when-bad-input={messageWhenBadInput}
+    data-sfgpsds-input
+  >
+    <slot slot="label" name="label"> </slot>
+  </c-sf-gps-ds-au-vic2-date-picker-os-n>
+
+  <c-sf-gps-ds-au-vic2-time-picker-os-n
+    lwc:elseif={isTime}
+    placeholder={placeholder}
+    label={label}
+    name={name}
+    min={min}
+    max={max}
+    value={inputValue}
+    tab-index={tabIndex}
+    format={format}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    disabled={computedDisabledReadOnly}
+    required={required}
+    required-label={requiredLabel}
+    output-type={outputType}
+    output-format={outputFormat}
+    field-level-help={fieldLevelHelp}
+    interval={interval}
+    message-when-value-missing={messageWhenValueMissing}
+    message-when-bad-input={messageWhenBadInput}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    data-sfgpsds-input
+  >
+    <slot slot="label" name="label"> </slot>
+    <slot slot="sublabel" name="sublabel"> </slot>
+  </c-sf-gps-ds-au-vic2-time-picker-os-n>
+  <c-sf-gps-ds-au-vic2-datetime-picker-os-n
+    lwc:elseif={isDateTime}
+    name={name}
+    label={label}
+    theme={theme}
+    icon-url={iconUrl}
+    min={min}
+    max={max}
+    value={inputValue}
+    tab-index={tabIndex}
+    read-only={readOnly}
+    disabled={disabled}
+    required={required}
+    message-when-value-missing={messageWhenValueMissing}
+    interval={interval}
+    field-level-help={fieldLevelHelp}
+    field-level-help-position={fieldLevelHelpPosition}
+    output-format={outputFormat}
+    output-type={outputType}
+    message-when-bad-input={messageWhenBadInput}
+    date-label={dateLabel}
+    date-name={dateName}
+    date-placeholder={datePlaceholder}
+    time-label={timeLabel}
+    time-name={timeName}
+    time-placeholder={timePlaceholder}
+    date-format={dateFormat}
+    time-format={timeFormat}
+    timezone={timezone}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    select-date-label={selectDateLabel}
+    prev-month-label={prevMonthLabel}
+    next-month-label={nextMonthLabel}
+    pick-year-label={pickYearLabel}
+    today-label={todayLabel}
+    required-label={requiredLabel}
+    styles={styles}
+    data-sfgpsds-input
+  >
+    <slot slot="label" name="label"> </slot>
+  </c-sf-gps-ds-au-vic2-datetime-picker-os-n>
+  <template lwc:else>
+    <label
+      lwc:if={labelVisible}
+      class="rpl-form-label rpl-type-h4-fixed"
+      for={inputId}
+      data-label="true"
+    >
+      <span class="rpl-form-label__inner">{label}</span>
+      <template if:false={_hideRequired}>
+        <span
+          lwc:if={required}
+          class="rpl-form-label__required rpl-type-label-small"
+          >({requiredLabel})</span
+        >
+      </template>
+      <slot name="label"> </slot>
+    </label>
+
+    <template if:false={isCheckbox}>
+      <div
+        lwc:if={fieldLevelHelp}
+        id={helpedId}
+        class="rpl-content rpl-form-help"
+      >
+        {fieldLevelHelp}
+      </div>
+    </template>
+
+    <span
+      lwc:if={sfGpsDsIsError}
+      class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <c-sf-gps-ds-au-vic2-icon-os
+        size="s"
+        name="icon-exclamation-circle-filled"
+      >
+      </c-sf-gps-ds-au-vic2-icon-os>
+      <span>{sfGpsDsErrorMessage}</span>
+    </span>
+
+    <div class="rpl-form__inner">
+      <div if:true={pretext}>
+        <span if:true={isCheckbox}>{pretext}</span>
+      </div>
+
+      <template lwc:if={isCheckbox}>
+        <div
+          class="rpl-form-option rpl-form-option--default rpl-form-option--single"
+        >
+          <input
+            class="rpl-form-option__input"
+            tabindex={tabIndex}
+            required={required}
+            aria-invalid={isAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
+            disabled={checkboxDisabled}
+            readonly={readOnly}
+            aria-readonly={readOnly}
+            type={type}
+            name={name}
+            id={inputId}
+            checked={checked}
+            value={_value}
+            onchange={sfGpsDsTriggerInputEvent}
+            onfocus={triggerEvent}
+            onblur={sfGpsDsValidateError}
+          />
+
+          <label class="rpl-form-option__label" for={inputId} data-label="true">
+            <span class="rpl-form-option__mark rpl-form-option__check">
+              <c-sf-gps-ds-au-vic2-icon-os
+                size="s"
+                name="icon-check"
+                class-name="rpl-form-option__mark-tick"
+              >
+              </c-sf-gps-ds-au-vic2-icon-os>
+            </span>
+            <span class="rpl-form-option__label-text rpl-type-p">{label}</span>
+
+            <template if:false={_hideRequired}>
+              <span
+                lwc:if={required}
+                class="rpl-form-label__required rpl-type-label-small"
+                >({requiredLabel})</span
+              >
+            </template>
+
+            <slot name="label"></slot>
+          </label>
+        </div>
+      </template>
+
+      <div lwc:elseif={isInput} class={computedInputClassName}>
+        <!-- text tel number -->
+        <div class="rpl-form__input-wrap">
+          <input
+            id={inputId}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            pattern={pattern}
+            step={step}
+            min={min}
+            max={max}
+            maxlength={maxLength}
+            minlength={minLength}
+            type={type}
+            disabled={disabled}
+            required={required}
+            aria-invalid={isAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
+            readonly={readOnly}
+            aria-readonly={readOnly}
+            placeholder={placeholder}
+            aria-labelledby={ariaLabelledBy}
+            aria-label={ariaLabel}
+            autocomplete={autocomplete}
+            name={name}
+            value={inputValue}
+            onfocus={handleFocus}
+            onblur={sfGpsDsValidateError}
+            oninput={sfGpsDsTriggerInputEvent}
+            onchange={triggerEvent}
+            onkeydown={triggerKeyEvents}
+            onkeyup={triggerKeyEvents}
+            class="rpl-u-focusable-outline"
+          />
+        </div>
+      </div>
+    </div>
+
+    <span lwc:if={posttext}> {posttext} </span>
+
+    <!-- shifted testing static one level up to avoid the empty div -->
+    <div lwc:if={static} class="slds-grid">
+      <div class="slds-form-element__static">{inputValue}</div>
+    </div>
+
+    <span lwc:if={inlineHelp} class="slds-form-element__static">
+      {inlineHelp}
+    </span>
+  </template>
+</template>
