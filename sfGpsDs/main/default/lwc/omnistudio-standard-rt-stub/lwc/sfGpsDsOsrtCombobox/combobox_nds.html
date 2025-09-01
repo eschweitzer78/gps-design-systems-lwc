@@ -1,0 +1,185 @@
+<template>
+  <div class="nds-form-element nds-form-container">
+    <div class={errorClass}>
+      <div class="nds-form-element__control">
+        <div class="nds-combobox_container">
+          <div
+            class="nds-combobox__form-element nds-input-has-icon nds-input-has-icon_right nds-form-element__control nds-form-element__control-animated-label"
+            role="none"
+          >
+            <input
+              id="comboboxId"
+              aria-describedby="errorMessageBlock"
+              class="nds-input nds-listbox__option-text_entity"
+              aria-expanded={isOpen}
+              aria-haspopup="listbox"
+              aria-controls="combobox-list"
+              role="combobox"
+              value={valueCopy}
+              data-value={valueMap}
+              type={type}
+              aria-disabled={disabled}
+              required={required}
+              onblur={showLookup}
+              onclick={showLookup}
+              onkeydown={preventKeyDown}
+              onkeyup={handleKeyUp}
+              placeholder={placeholder}
+              tabindex={tabIndex}
+              readonly={isNotInput}
+              aria-readonly={isNotInput}
+              aria-activedescendant={activeDescendant}
+              autocomplete="off"
+              aria-invalid={isError}
+            />
+            <div
+              class="nds-form-element__label nds-align-middle nds-animated-label__ease-out"
+              data-label="true"
+            >
+              <label
+                if:false={isLabelHidden}
+                class={extraLabelClasses}
+                style={styleProperties.label.styles}
+                for="comboboxId"
+                id="combobox-label"
+              >
+                {label}
+                <abbr
+                  if:true={required}
+                  class="nds-required nds-p-left_xx-small"
+                  title={requiredLabel}
+                  >*</abbr
+                >
+              </label>
+              <c-sf-gps-ds-osrt-tooltip
+                class="nds-tooltip__container"
+                if:true={fieldLevelHelp}
+                icon-url={iconUrl}
+                content={fieldLevelHelp}
+                associated-component-label={label}
+                theme="nds"
+                arrowposition={fieldLevelHelpPosition}
+                data-field-level-help
+              ></c-sf-gps-ds-osrt-tooltip>
+              <slot name="label"></slot>
+            </div>
+            <span
+              aria-hidden="true"
+              class="nds-icon_container nds-icon-utility-down nds-input__icon nds-input__icon_right"
+            >
+              <c-sf-gps-ds-osrt-icon
+                icon-name="utility:down"
+                size="x-small"
+                baseurl={iconUrl}
+                theme={theme}
+                onmouseup={showLookup}
+              ></c-sf-gps-ds-osrt-icon>
+            </span>
+          </div>
+        </div>
+        <div class="nds-form-element">
+          <div
+            id="combobox-list"
+            aria-labelledby="combobox-label"
+            class="nds-dropdown nds-dropdown_fluid nds-p-bottom_none"
+            role="listbox"
+            onmousedown={preventLookupClose}
+            onmouseleave={preventLookupOpen}
+            onmouseup={preventLookupOpen}
+          >
+            <ul
+              class="nds-dropdown-container listbox nds-listbox nds-listbox_vertical"
+              role="presentation"
+              style={dropdownStyle}
+            >
+              <template for:each={internalOptionsCopy} for:item="item">
+                <li
+                  if:true={item.isGrouped}
+                  key={item.optId}
+                  class="nds-listbox__item"
+                >
+                  <div
+                    class="nds-media nds-listbox__option nds-listbox__option_plain nds-media_small"
+                    role="option"
+                  >
+                    <h3 class="nds-text-title_caps" role="presentation">
+                      {item.group}
+                    </h3>
+                  </div>
+                </li>
+                <li key={item.optId} class="nds-listbox__item">
+                  <div
+                    class="nds-media nds-listbox__option nds-listbox__option_plain nds-media_small nds-is-selected"
+                    onmouseup={selectOption}
+                    data-value={item.value}
+                    data-label={item.label}
+                    data-option-id={item.optId}
+                    onmouseover={handleMouseOver}
+                    onmouseout={handleMouseOut}
+                    role="option"
+                    id={item.optId}
+                  >
+                    <span class="nds-media__body">
+                      <span
+                        class="nds-listbox__option-text nds-listbox__option-text_entity"
+                        >{item.label}</span
+                      >
+                    </span>
+                  </div>
+                </li>
+              </template>
+            </ul>
+            <template if:false={hidefooter}>
+              <footer class={footerClass}>
+                <slot name="footer"></slot>
+              </footer>
+            </template>
+          </div>
+        </div>
+        <div
+          if:true={isError}
+          aria-live="polite"
+          class="nds-form-element__help nds-form-element__help_text-transform__none"
+          id="errorMessageBlock"
+          role="alert"
+        >
+          {errorMessage}
+        </div>
+      </div>
+
+      <template if:true={multiple}>
+        <div if:true={inputLabels.length} class="nds-listbox_selection-group">
+          <ul
+            class={pillWrapperClass}
+            role="listbox"
+            aria-label="Selected Options:"
+            aria-orientation="horizontal"
+          >
+            <template for:each={inputLabels} for:item="item">
+              <li key={item} class="nds-listbox-item" role="presentation">
+                <span
+                  class="nds-pill"
+                  role="option"
+                  tabindex="0"
+                  aria-selected="true"
+                  style={styleProperties.value.styles}
+                >
+                  <span class="nds-pill__label" title={item}>{item}</span>
+                  <c-sf-gps-ds-osrt-icon
+                    if:true={showDelIcon}
+                    icon-name="utility:close"
+                    baseurl={iconUrl}
+                    size="xx-small"
+                    theme={theme}
+                    data-label={item}
+                    onclick={deleteThisLabel}
+                  ></c-sf-gps-ds-osrt-icon>
+                </span>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

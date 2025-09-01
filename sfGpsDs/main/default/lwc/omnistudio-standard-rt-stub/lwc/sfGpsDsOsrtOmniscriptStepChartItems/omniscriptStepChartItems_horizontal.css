@@ -1,0 +1,45 @@
+.omni-hz-stepchart-popover {
+  position: absolute;
+  top: -2.8rem;
+  left: calc(50% + 10px);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.omni-hz-stepchart-list-item:hover .omni-hz-stepchart-popover,
+.omni-hz-stepchart-list-item:focus .omni-hz-stepchart-popover {
+  visibility: visible;
+}
+
+.omni-hz-stepchart-popover-container .omni-hz-stepchart-popover {
+  visibility: hidden;
+}
+
+.omni-hz-stepchart-label {
+  left: calc(-30% + 8px);
+  top: 5px;
+  max-width: 30rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 768px) {
+  .omni-hz-stepchart-label {
+    left: calc(-45% + 8px);
+    top: 5px;
+    max-width: 8rem;
+    display: inline-block;
+    overflow: visible;
+  }
+}
+
+.omni-hz-stepchart-completed-icon {
+  height: 0.875rem;
+  width: 0.875rem;
+}
+
+.slds-progress__item .omni-stepchart-button-pristine {
+  border-color: rgb(255, 255, 255);
+  background-color: var(--slds-g-color-neutral-base-60, rgb(148, 148, 148));
+}

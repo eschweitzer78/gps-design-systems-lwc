@@ -1,0 +1,17 @@
+@import "c/sfGpsDsAuNswCore";
+@import "c/sfGpsDsAuNswForm";
+@import "./date-picker.gen.css";
+@import "c/sfGpsDsAuNswButtonCss";
+
+/* Need to adjust this rule as in Omniscript they always be first child */
+/* have same setup as for subsequent children. */
+
+.nsw-form__group:first-child {
+  margin-top: 1rem;
+}
+
+.nsw-form__input:disabled {
+  cursor: not-allowed;
+}
+
+/* END */

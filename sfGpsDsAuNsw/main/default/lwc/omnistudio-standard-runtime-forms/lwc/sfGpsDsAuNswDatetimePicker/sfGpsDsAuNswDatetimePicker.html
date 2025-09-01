@@ -1,0 +1,87 @@
+<template>
+  <div class="nsw-form__group">
+    <label lwc:if={label} class={computedLabelClassName}>
+      {label}
+      <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
+    </label>
+    <slot name="label"> </slot>
+
+    <span lwc:if={fieldLevelHelp} id="helper" class="nsw-form__helper">
+      {fieldLevelHelp}
+    </span>
+
+    <div class="nsw-grid nsw-grid--flush">
+      <div class="nsw-col nsw-col-12 nsw-col-md-7 nsw-col-lg-6 nsw-col-xl-6">
+        <c-sf-gps-ds-au-nsw-date-picker-v2
+          placeholder={datePlaceholder}
+          theme={theme}
+          label={dateLabel}
+          aria-label={dateAriaLabel}
+          format={dateFormat}
+          locale-format={localeFormat}
+          locale-format-invalid-error={localeFormatInvalidError}
+          name={dateName}
+          icon-url={iconUrl}
+          read-only={readOnly}
+          message-when-value-missing={messageWhenValueMissing}
+          min={dateMin}
+          max={dateMax}
+          value={_value}
+          tab-index={tabIndex}
+          disabled={disabled}
+          required={required}
+          output-type="date"
+          message-when-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-overflow={messageWhenRangeOverflow}
+          message-when-bad-input={messageWhenBadInput}
+          prev-month-label={prevMonthLabel}
+          next-month-label={nextMonthLabel}
+          pick-year-label={pickYearLabel}
+          today-label={todayLabel}
+          required-label={requiredLabel}
+          hide-icon={hideIcon}
+          styles={styles}
+          select-date-label={selectDateLabel}
+          data-sfgpsds-date-picker
+          onchange={setTime}
+          hide-form-group="true"
+          hide-asterisk="true"
+        >
+        </c-sf-gps-ds-au-nsw-date-picker-v2>
+      </div>
+      <div class="nsw-col nsw-col-12 nsw-col-md-5 nsw-col-lg-6 nsw-col-xl-6">
+        <c-sf-gps-ds-au-nsw-time-picker
+          placeholder={timePlaceholder}
+          theme="sfgpsds"
+          label={timeLabel}
+          aria-label={timeAriaLabel}
+          name={timeName}
+          icon-url={iconUrl}
+          format={timeFormat}
+          locale-format={localeFormat}
+          locale-format-invalid-error={localeFormatInvalidError}
+          min={timeMin}
+          max={timeMax}
+          value={_value}
+          tab-index={tabIndex}
+          read-only={readOnly}
+          disabled={disabled}
+          required={required}
+          required-label={requiredLabel}
+          message-when-value-missing={messageWhenValueMissing}
+          interval={interval}
+          output-type="date"
+          message-when-bad-input={messageWhenBadInput}
+          message-when-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-overflow={messageWhenRangeOverflow}
+          hide-icon={hideIcon}
+          styles={styles}
+          data-sfgpsds-time-picker
+          hide-form-group="true"
+          hide-asterisk="true"
+        >
+        </c-sf-gps-ds-au-nsw-time-picker>
+      </div>
+    </div>
+  </div>
+</template>

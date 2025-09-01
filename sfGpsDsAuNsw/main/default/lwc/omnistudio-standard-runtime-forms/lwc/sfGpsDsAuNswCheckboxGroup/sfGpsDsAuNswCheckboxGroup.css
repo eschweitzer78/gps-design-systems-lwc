@@ -1,0 +1,16 @@
+@import "c/sfGpsDsAuNswCore";
+@import "c/sfGpsDsAuNswForm";
+
+/* Need to adjust this rule as in Omniscript they always be first child */
+/* have same setup as for subsequent children. */
+
+.nsw-form__group:first-child {
+  margin-top: 1rem;
+}
+
+/* repeatable */
+
+.nsw-form__fieldset legend .nsw-form__legend {
+  display: inline;
+  margin-right: 0.5rem;
+}

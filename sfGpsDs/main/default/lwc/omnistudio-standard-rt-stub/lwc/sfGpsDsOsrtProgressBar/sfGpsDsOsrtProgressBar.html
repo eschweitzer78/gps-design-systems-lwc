@@ -1,0 +1,17 @@
+<template>
+  <div
+    class={componentClasses}
+    aria-valuemin="0"
+    aria-valuemax="100"
+    aria-valuenow="0"
+    aria-label={name}
+    role="progressbar"
+    data-progress-bar
+  >
+    <span class={valueClasses} data-progress-bar-value>
+      <span class={textClass}
+        >{_translatedLabels.cmpProgress}: {_progress}</span
+      >
+    </span>
+  </div>
+</template>

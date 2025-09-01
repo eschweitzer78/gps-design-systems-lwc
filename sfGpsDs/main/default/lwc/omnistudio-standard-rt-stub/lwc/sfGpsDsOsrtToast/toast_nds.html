@@ -1,0 +1,50 @@
+<template>
+  <div if:false={isHidden} class="via-nds">
+    <div class={extraclassSelection}>
+      <div class={stateClassSelection} role="alert">
+        <span class="nds-assistive-text">{type}</span>
+
+        <span
+          class="nds-icon_container nds-m-right_small nds-align-top"
+          title={message}
+        >
+          <c-sf-gps-ds-osrt-icon
+            if:true={icon}
+            variant="toast"
+            baseurl={iconUrl}
+            icon-name={icon}
+            theme="nds"
+            size="small"
+          ></c-sf-gps-ds-osrt-icon>
+        </span>
+        <div class="nds-notify__content vloc-full_width">
+          <div class="nds-grid nds-grid_align-spread">
+            <div class="nds-col">
+              <h2 if:true={title} class="nds-text-heading_small">{title}</h2>
+              <p if:true={message}>{message}</p>
+            </div>
+            <div class="nds-col">
+              <div class="nds-p-left_small">
+                <slot></slot>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nds-notify__close">
+          <c-sf-gps-ds-osrt-button
+            theme="nds"
+            variant="base"
+            label=""
+            extraclass="nds-button_icon nds-button_icon-inverse"
+            onclick={close}
+            icon-url={iconUrl}
+            icon-name="utility:close"
+            icon-size="small"
+            icon-position="right"
+          >
+          </c-sf-gps-ds-osrt-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

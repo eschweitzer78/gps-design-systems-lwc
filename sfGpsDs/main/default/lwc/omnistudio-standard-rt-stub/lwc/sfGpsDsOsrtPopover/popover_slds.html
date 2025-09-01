@@ -1,0 +1,25 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <section class={popoverClass} role="dialog" aria-label={_popoverLabel}>
+    <c-sf-gps-ds-osrt-button
+      if:true={showclosebutton}
+      class="slds-button slds-button_icon slds-float_right slds-popover__close slds-button_icon"
+      title="Close dialog"
+      onmousedown={closePopover}
+      icon-name="utility:close"
+      icon-url={iconUrl}
+      icon-size="x-small"
+      theme={theme}
+    >
+    </c-sf-gps-ds-osrt-button>
+    <header class="slds-popover__header" if:true={header}>
+      <slot name="header"></slot>
+    </header>
+    <div class="slds-popover__body">
+      <slot name="content"></slot>
+    </div>
+    <footer class="slds-popover__footer" if:true={footer}>
+      <slot name="footer"></slot>
+    </footer>
+  </section>
+</template>

@@ -1,0 +1,72 @@
+@import "c/sfGpsDsAuNswCore";
+@import "c/sfGpsDsAuNswForm";
+@import "c/sfGpsDsAuNswPredictiveList";
+
+/* Need to adjust this rule as in Omniscript they always be first child */
+/* have same setup as for subsequent children. */
+
+.nsw-form__group:first-child {
+  margin-top: 1rem;
+}
+
+.cmp-pointer-disabled {
+  pointer-events: none;
+}
+
+[data-progress-bar] {
+  position: absolute;
+  top: 2.5rem;
+  left: 0.9rem;
+  right: 1rem;
+  width: auto;
+  z-index: 100;
+}
+
+.vloc-reset-minwidth {
+  min-width: 100%;
+}
+
+.nsw-form__predictive .nsw-form__input.typeahead {
+  padding-right: 3rem;
+  background: var(--nsw-white)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'  %3E%3Cg%3E%3Cpath d='M0,0h24v24H0V0z' fill='none'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M7,9H2V7h5V9z M7,12H2v2h5V12z M20.59,19l-3.83-3.83C15.96,15.69,15.02,16,14,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5 c0,1.02-0.31,1.96-0.83,2.75L22,17.59L20.59,19z M17,11c0-1.65-1.35-3-3-3s-3,1.35-3,3s1.35,3,3,3S17,12.65,17,11z M2,19h10v-2H2 V19z'/%3E%3C/g%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.nsw-form__predictive .nsw-form__input.typeahead:hover {
+  background: var(--nsw-text-hover)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'  %3E%3Cg%3E%3Cpath d='M0,0h24v24H0V0z' fill='none'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M7,9H2V7h5V9z M7,12H2v2h5V12z M20.59,19l-3.83-3.83C15.96,15.69,15.02,16,14,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5 c0,1.02-0.31,1.96-0.83,2.75L22,17.59L20.59,19z M17,11c0-1.65-1.35-3-3-3s-3,1.35-3,3s1.35,3,3,3S17,12.65,17,11z M2,19h10v-2H2 V19z'/%3E%3C/g%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.nsw-form__predictive .nsw-form__input.typeahead:disabled {
+  background: var(--nsw-off-white)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'  %3E%3Cg%3E%3Cpath d='M0,0h24v24H0V0z' fill='none'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M7,9H2V7h5V9z M7,12H2v2h5V12z M20.59,19l-3.83-3.83C15.96,15.69,15.02,16,14,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5 c0,1.02-0.31,1.96-0.83,2.75L22,17.59L20.59,19z M17,11c0-1.65-1.35-3-3-3s-3,1.35-3,3s1.35,3,3,3S17,12.65,17,11z M2,19h10v-2H2 V19z'/%3E%3C/g%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+  color: var(--nsw-text-dark); /* counter generic omni grey out */
+}
+
+.nsw-form__predictive .nsw-form__input.typeahead[aria-invalid="true"]:hover,
+.nsw-form__predictive .nsw-form__input.has-error:hover {
+  background: var(--nsw-status-error-bg)
+    url("data:image/svg+xml,%3Csvg fill='%23333333' version='1.1' xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24'  %3E%3Cg%3E%3Cpath d='M0,0h24v24H0V0z' fill='none'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M7,9H2V7h5V9z M7,12H2v2h5V12z M20.59,19l-3.83-3.83C15.96,15.69,15.02,16,14,16c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5 c0,1.02-0.31,1.96-0.83,2.75L22,17.59L20.59,19z M17,11c0-1.65-1.35-3-3-3s-3,1.35-3,3s1.35,3,3,3S17,12.65,17,11z M2,19h10v-2H2 V19z'/%3E%3C/g%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem auto;
+}
+
+.sfgpsds-label__group_action {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/* typeahead does not set has-focus on hover */
+
+.nsw-form__predictive-list .sfgpsds-listbox__option:hover {
+  outline-width: 0;
+  cursor: pointer;
+  background-color: var(--nsw-text-hover);
+  color: var(--nsw-text-dark);
+}

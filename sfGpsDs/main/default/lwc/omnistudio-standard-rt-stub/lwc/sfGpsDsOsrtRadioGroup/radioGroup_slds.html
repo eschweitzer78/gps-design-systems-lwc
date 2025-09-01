@@ -1,0 +1,133 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class={errorClass}>
+    <fieldset if:false={isbutton} class="slds-form-element">
+      <legend
+        if:true={label}
+        class="slds-show slds-float_left"
+        style={styleProperties.label.styles}
+      >
+        <abbr if:true={required} title={requiredLabel} class="slds-required"
+          >*</abbr
+        >
+        <span
+          class="slds-form-element__legend slds-form-element__label slds-show_inline slds-float_none slds-var-p-top_xxx-small"
+          style={styleProperties.label.styles}
+        >
+          {label}
+        </span>
+      </legend>
+      <span class="slds-clearfix">
+        <c-sf-gps-ds-osrt-tooltip
+          if:true={fieldLevelHelp}
+          theme="slds"
+          content={fieldLevelHelp}
+          icon-name="utility:info"
+          class="slds-tooltip_container slds-p-right_x-small"
+          extrabuttonclass="slds-m-bottom_xxx-small"
+          arrowposition={fieldLevelHelpPosition}
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </span>
+      <div class="slds-form-element__control">
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <div key={option.id} class="slds-radio">
+            <input
+              type="radio"
+              value={option.value}
+              tabindex={tabIndex}
+              onfocus={handleFocus}
+              onblur={handleBlur}
+              onchange={onchangevalue}
+              onkeydown={handleKeyDownEvent}
+              checked={option.selected}
+              disabled={disabled}
+              id={option.id}
+              data-index={index}
+              name={option.name}
+              aria-invalid={isError}
+              aria-describedby="errorMessageblock"
+            />
+            <label class="slds-radio__label" data-index={index} for={option.id}>
+              <span class="slds-radio_faux"></span>
+              <span
+                class="slds-form-element__label slds-p-top_none"
+                style={styleProperties.value.styles}
+                >{option.label}</span
+              >
+            </label>
+          </div>
+        </template>
+      </div>
+    </fieldset>
+    <fieldset if:true={isbutton} class="slds-form-element">
+      <legend
+        if:true={label}
+        class="slds-p-top_none slds-show slds-float_left"
+        style={styleProperties.label.styles}
+      >
+        <abbr if:true={required} title="required" class="slds-required">*</abbr>
+        <span
+          class="slds-form-element__legend slds-form-element__label slds-show_inline slds-float_none slds-var-p-top_xxx-small"
+          style={styleProperties.label.styles}
+        >
+          {label}
+        </span>
+      </legend>
+      <span class="slds-clearfix">
+        <c-sf-gps-ds-osrt-tooltip
+          if:true={fieldLevelHelp}
+          theme="slds"
+          content={fieldLevelHelp}
+          icon-name="utility:info"
+          class="slds-tooltip_container slds-p-right_x-small"
+          extrabuttonclass="slds-m-bottom_xxx-small"
+          arrowposition={fieldLevelHelpPosition}
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </span>
+      <div class="slds-form-element__control">
+        <div class="slds-radio_button-group">
+          <template for:each={internalOpts} for:item="option" for:index="index">
+            <span key={option.id} class="slds-button slds-radio_button">
+              <input
+                type="radio"
+                value={option.value}
+                tabindex={tabIndex}
+                onfocus={handleFocus}
+                onblur={handleBlur}
+                onchange={onchangevalue}
+                checked={option.selected}
+                onkeydown={handleKeyDownEvent}
+                disabled={disabled}
+                id={option.id}
+                data-index={index}
+                name={option.name}
+                aria-invalid={isError}
+                aria-describedby="errorMessageblock"
+              />
+              <label
+                class="slds-radio_button__label"
+                data-index={index}
+                for={option.id}
+              >
+                <span class="slds-radio_faux">{option.label}</span>
+                <div class="slds-radio-overlay"></div>
+              </label>
+            </span>
+          </template>
+        </div>
+      </div>
+    </fieldset>
+    <div
+      if:true={isError}
+      class="slds-form-element__help"
+      role="alert"
+      id="errorMessageblock"
+    >
+      {errorMessage}
+    </div>
+  </div>
+</template>

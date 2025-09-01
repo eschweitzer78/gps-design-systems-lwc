@@ -1,0 +1,50 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <slot>
+    <div class={_styleClasses.container}>
+      <c-sf-gps-ds-osrt-input
+        type="checkbox"
+        label={_propSetMap.checkLabel}
+        theme={_theme}
+        onchange={handleChange}
+        icon-name="utility:info"
+        checked={elementValue}
+        tab-index={tabIndex}
+        field-level-help={_handleHelpText}
+        field-level-help-position={_propSetMap.helpTextPos}
+        data-omni-input
+      >
+        <template if:true={_propSetMap.repeat}>
+          <span slot="label" class={_styleClasses.repeatContainer} role="group">
+            <button
+              if:true={canRepeat}
+              class={_styleClasses.repeatAdd}
+              onclick={handleAdd}
+            >
+              <c-sf-gps-ds-osrt-icon
+                icon-name="utility:add"
+                alternative-text="Repeat Checkbox"
+                extraclass={_styleClasses.repeatIcons}
+                size="xx-small"
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </button>
+            <button
+              if:true={canRemove}
+              class={_styleClasses.repeatRemove}
+              onclick={handleRemove}
+            >
+              <c-sf-gps-ds-osrt-icon
+                icon-name="utility:close"
+                alternative-text="Remove Checkbox"
+                extraclass={_styleClasses.repeatIcons}
+                size="xx-small"
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </button>
+          </span>
+        </template>
+      </c-sf-gps-ds-osrt-input>
+    </div>
+  </slot>
+</template>

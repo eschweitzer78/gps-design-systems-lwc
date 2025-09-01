@@ -1,0 +1,294 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div
+    class="slds-element_text-font slds-grid slds-grid_vertical"
+    style="margin-top: -0.25rem"
+  >
+    <!-- Removing the default base element's bottom margin of x-small (slds only)-->
+
+    <template if:true={_isFirstIndex}>
+      <!-- Header/Label -->
+      <div class="slds-m-bottom_x-small slds-grid slds-m-top_small">
+        <h2
+          aria-label={_propSetMap.label}
+          class="slds-text-heading_small slds-text"
+          aria-live="polite"
+        >
+          {_propSetMap.label}
+        </h2>
+      </div>
+
+      <!-- Global Actions -->
+      <div if:true={_propSetMap.gActions} class="slds-grid slds-wrap">
+        <template
+          for:each={_gActions}
+          for:item="gActionItem"
+          for:index="gActionIndex"
+        >
+          <template if:true={gActionItem.hasIcon}>
+            <div
+              key={gActionItem.lwcId}
+              class="slds-m-bottom_xx-small slds-m-right_xx-small"
+            >
+              <c-sf-gps-ds-osrt-icon
+                extraclass="slds-input__icon"
+                icon-name={gActionItem.icon}
+                theme="slds"
+                alternative-text="icon"
+                size="small"
+                style="cursor: pointer"
+                onclick={gActionItem.handleClick}
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </div>
+          </template>
+          <template if:false={gActionItem.hasIcon}>
+            <div key={gActionItem.lwcId} class={gActionItem.cls}>
+              <div class="slds-m-bottom_x-small slds-m-right_xx-small">
+                <button
+                  class="slds-button slds-button_neutral slds-button_brand slds-size_1-of-1"
+                  onclick={gActionItem.handleClick}
+                >
+                  {gActionItem.label}
+                </button>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
+    </template>
+
+    <!-- Table Header -->
+    <template if:true={_isFirstIndex}>
+      <div
+        role="rowgroup"
+        class="slds-border_top slds-border_bottom slds-border_left slds-border_right slds-grid slds-p-vertical_xx-small"
+      >
+        <div
+          role="row"
+          tabindex="0"
+          class="slds-size_11-of-12 slds-grid slds-wrap"
+        >
+          <template
+            for:each={_tableLabels}
+            for:item="dvItem"
+            for:index="dvIndex"
+          >
+            <div key={dvItem.lwcId} class={dvItem.cls} role="columnheader">
+              <strong
+                class="slds-text-title_caps slds-text-heading--label slds-p-vertical_x-small"
+              >
+                {dvItem.label}
+              </strong>
+            </div>
+          </template>
+        </div>
+        <div class="slds-size_1-of-12">&nbsp;</div>
+      </div>
+    </template>
+
+    <!-- Table is always visible -->
+    <template if:true={_hasChildren}>
+      <div
+        if:false={_isEditing}
+        class="slds-grid slds-cont-wrapper slds-border_top slds-border_left slds-border_right slds-border_bottom omni-editblock-table-row"
+        onclick={handleCheckbox}
+        data-is-selected={_showCheckbox}
+        tabindex="0"
+        aria-describedby="table-text-error"
+        aria-labelledby="table-text"
+        aria-invalid={isInvalid}
+        role="rowgroup"
+      >
+        <div role="row" class="slds-size_12-of-12 slds-grid">
+          <span id="table-text-error">
+            <span if:true={isInvalid} class="slds-assistive-text">
+              {allCustomLabelsUtil.OmniEditBlockRowError}
+            </span>
+          </span>
+          <div class="slds-size_11-of-12 slds-grid slds-wrap" id="table-text">
+            <span
+              if:true={isInvalid}
+              aria-hidden="true"
+              class="slds-required slds-m-around_none slds-p-left_xx-small slds-is-absolute"
+            >
+              *
+            </span>
+            <template
+              for:each={_displayValues}
+              for:item="dvItem"
+              for:index="dvIndex"
+            >
+              <div key={dvItem.lwcId} class={dvItem.cls} role="cell">
+                <!-- Text -->
+                <template if:false={dvItem.isCheckbox}>
+                  {dvItem.value}
+                </template>
+                <!-- Checkbox for FS / Table -->
+                <template if:true={dvItem.isCheckbox}>
+                  <div class="slds-checkbox" style="padding-top: 0px">
+                    <input
+                      type="checkbox"
+                      checked={dvItem.value}
+                      class="slds-input_mask"
+                    />
+                    <label class="slds-checkbox__label">
+                      <span class="slds-checkbox_faux"> </span>
+                    </label>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+          <div
+            class="slds-size_1-of-12 slds-grid slds-grid--vertical-align-center"
+          >
+            <!-- Menu Action Icon -->
+            <template if:true={_useActionMenu}>
+              <div
+                class="slds-grid slds-col_bump-left slds-is-relative slds-m-right_x-small slds-p-vertical_xx-small"
+              >
+                <button
+                  class="slds-button slds-button--icon-border-filled"
+                  aria-haspopup="true"
+                  aria-expanded={_menuExpanded}
+                  data-action-button-menu
+                  onclick={toggleActionMenu}
+                  onkeydown={handleKeyboardActionMenu}
+                  type="button"
+                >
+                  <c-sf-gps-ds-osrt-icon
+                    extraclass="slds-input__icon"
+                    icon-name="utility:down"
+                    theme="slds"
+                    alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextDown}
+                    size="x-small"
+                  >
+                  </c-sf-gps-ds-osrt-icon>
+                </button>
+                <!-- Action Menu List -->
+                <div
+                  if:true={_bShowActionMenu}
+                  class="slds-dropdown slds-dropdown_right"
+                  style="top: 100%"
+                >
+                  <ul class="slds-dropdown__list" role="menu">
+                    <template
+                      for:each={_actionMenuList}
+                      for:item="actionMenuItem"
+                      for:index="actionMenuIndex"
+                    >
+                      <li
+                        key={actionMenuItem.lwcId}
+                        class="slds-dropdown__item"
+                        role="presentation"
+                        onclick={actionMenuItem.handleClick}
+                        onkeydown={actionMenuItem.handleKeyboardClick}
+                      >
+                        <a
+                          href="javascript:void(0);"
+                          role="menuitem"
+                          tabindex="0"
+                        >
+                          <span class="slds-truncate">
+                            {actionMenuItem.label}
+                          </span>
+                        </a>
+                      </li>
+                    </template>
+                  </ul>
+                </div>
+                <!-- Click anywhere else will hide action menu list-->
+                <div
+                  if:true={_bShowActionMenu}
+                  onclick={hideActionMenu}
+                  class="slds-is-absolute"
+                  style="
+                    width: 1000vh;
+                    height: 1000vh;
+                    left: -200vw;
+                    top: -200vh;
+                  "
+                ></div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Modal Editing -->
+    <div class={editClass}>
+      <div class="slds-modal_custom">
+        <section
+          role="dialog"
+          tabindex="-1"
+          class="slds-modal slds-fade-in-open slds-modal_large"
+          aria-modal="true"
+          aria-label={_propSetMap.label}
+        >
+          <div class="slds-modal__container">
+            <header class="slds-modal__header">
+              <h1 class="slds-text-heading_small slds-step_label">
+                {_propSetMap.label}
+              </h1>
+            </header>
+            <div
+              class="slds-modal__content slds-p-around_medium omni-editblock-modal__content"
+            >
+              <slot
+                class="slds-grid slds-wrap slds-grid_pull-padded slds-p-left_small"
+              ></slot>
+            </div>
+            <footer class="slds-modal__footer slds-button_text-font">
+              <button
+                type="button"
+                onclick={cancel}
+                class="slds-button slds-button_neutral slds-size_2-of-12 slds-text-align_center"
+              >
+                {allCustomLabelsUtil.OmnicancelLabel}
+              </button>
+              <button
+                type="button"
+                onclick={save}
+                disabled={isPageLoading}
+                class="slds-button slds-button_neutral slds-button_brand slds-size_2-of-12 slds-text-align_center"
+              >
+                {allCustomLabelsUtil.OmniConfigProdModalOk}
+              </button>
+            </footer>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+      </div>
+    </div>
+
+    <!-- Add Button -->
+    <template if:true={showAdd}>
+      <div class="slds-grid slds-m-top_small">
+        <div
+          class="slds-size_3-of-12 slds-grid slds-grid_align-center slds-col_bump-left"
+        >
+          <button
+            type="button"
+            class="slds-button slds-button_brand slds-button_stretch editblock-new"
+            onclick={handleAdd}
+          >
+            {_newLabel}
+          </button>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      theme={_theme}
+      size="medium"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

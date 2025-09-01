@@ -1,0 +1,39 @@
+label.slds-form-element__label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+textarea::placeholder {
+  color: var(--slds-g-color-neutral-base-50, #747474);
+}
+
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  label.slds-form-element__label {
+    max-width: 100%;
+  }
+}
+
+.slds-text_warning {
+  color: var(--slds-g-color-warning-base-60, #dd7a01);
+}
+
+input,
+.slds-textarea {
+  background: transparent;
+}
+
+input[readonly],
+.slds-textarea[readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  background-color: #f3f3f3;
+  border-color: #939393;
+}
+
+input[readonly],
+.slds-textarea[readonly]:focus {
+  border-color: #939393;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}

@@ -1,0 +1,48 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <!-- Cards Add Button-->
+  <template if:true={_allowNew}>
+    <template if:true={_isCards}>
+      <div
+        class="slds-box slds-box_x-small slds-grid slds-grid_vertical slds-grid_vertical-align-center slds-m-right_medium slds-m-bottom_medium slds-size_12-of-12 omni-edit-block-short-cards omni-edit-block-card editblock-new"
+        onclick={handleAdd}
+        role="button"
+        tabindex="0"
+        onkeydown={handleKeyboardAdd}
+      >
+        <div class="slds-m-top_large">
+          <!-- Add Button Icon -->
+          <span
+            class="slds-icon_container slds-icon_container--circle omni-add-circle"
+          >
+            <c-sf-gps-ds-osrt-icon
+              class=""
+              extraclass="slds-input__icon"
+              variant=" "
+              icon-name={_svgIcon}
+              theme="slds"
+              alternative-text={scriptHeaderDef.allCustomLabels.OmniEditBlockIconTextUser}
+              size="large"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </span>
+        </div>
+
+        <div
+          class="slds-m-top_x-small slds-size_1-of-1 slds-text-align_center omni-new-card"
+        >
+          <c-sf-gps-ds-osrt-icon
+            class="slds-m-horizontal_xx-small"
+            extraclass="slds-input__icon"
+            icon-name="utility:add"
+            theme="slds"
+            alternative-text={scriptHeaderDef.allCustomLabels.OmniEditBlockIconTextAdd}
+            size="small"
+          >
+          </c-sf-gps-ds-osrt-icon>
+          <span class="slds-m-horizontal_xx-small"> {_newLabel} </span>
+        </div>
+      </div>
+    </template>
+  </template>
+</template>

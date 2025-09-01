@@ -1,0 +1,72 @@
+<template>
+  <div class={containerClass}>
+    <div class="slds-grid" data-label="true">
+      <label
+        if:true={labelVisible}
+        class="slds-form-element__label slds-show--inline"
+        for="textareaId"
+      >
+        <abbr class="slds-required" if:true={required} title={requiredLabel}
+          >*
+        </abbr>
+        <span style={styleProperties.label.styles}>{label}</span>
+      </label>
+      <c-sf-gps-ds-osrt-tooltip
+        if:true={fieldLevelHelp}
+        icon-url={iconUrl}
+        content={fieldLevelHelp}
+        associated-component-label={label}
+        arrowposition={fieldLevelHelpPosition}
+        extrabuttonclass="slds-m-bottom_xx-small"
+        class="slds-tooltip_container slds-p-right_x-small slds-p-top_xx-small"
+      >
+      </c-sf-gps-ds-osrt-tooltip>
+      <slot name="label"></slot>
+    </div>
+    <div class="slds-form-element__control">
+      <textarea
+        tabindex={tabIndex}
+        oninput={updateValue}
+        minlength={minLength}
+        maxlength={maxLength}
+        readonly={readOnly}
+        aria-readonly={readOnly}
+        accesskey={accessKey}
+        name={name}
+        disabled={disabled}
+        onblur={validateError}
+        required={required}
+        class={textAreaClass}
+        placeholder={placeholder}
+        style={styleProperties.value.styles}
+        id="textareaId"
+        autocomplete={autocomplete}
+        onfocus={triggerEvent}
+        onchange={triggerEvent}
+        onkeyup={keyCallbacks}
+        onkeydown={keyCallbacks}
+        aria-invalid={isError}
+        aria-describedby="errorMessageBlock"
+      >
+        {_val}
+      </textarea>
+    </div>
+    <div
+      if:true={isError}
+      class="slds-form-element__help"
+      aria-live="polite"
+      id="errorMessageBlock"
+      role="alert"
+    >
+      {errorMessage}
+    </div>
+    <div
+      if:true={warningFlag}
+      class="slds-form-element__help slds-text_warning"
+      aria-live="polite"
+      role="alert"
+    >
+      {warningMessage}
+    </div>
+  </div>
+</template>

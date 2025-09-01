@@ -1,0 +1,38 @@
+.modal-container {
+  display: none;
+}
+
+.nds-modal__container {
+  width: 90%;
+  max-width: none;
+  min-width: 40rem;
+  height: 100%;
+}
+
+.nds-modal__header {
+  border-bottom: 2px;
+  solid: #dddbda;
+}
+
+.nds-modal__content iframe {
+  height: 100vh;
+  width: 100%;
+}
+
+.nds-modal__footer {
+  border-top: 2px;
+  solid: #dddbda;
+}
+
+.nds-modal__footer div {
+  float: right;
+}
+
+.vlc-view-pdf {
+  display: none;
+}
+
+.modal-container .nds-spinner_container {
+  position: fixed;
+  z-index: 9002 !important;
+}

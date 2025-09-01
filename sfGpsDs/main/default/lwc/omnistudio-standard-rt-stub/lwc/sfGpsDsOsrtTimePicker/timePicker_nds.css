@@ -1,0 +1,4 @@
+input[readonly],
+.slds-input[readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+}

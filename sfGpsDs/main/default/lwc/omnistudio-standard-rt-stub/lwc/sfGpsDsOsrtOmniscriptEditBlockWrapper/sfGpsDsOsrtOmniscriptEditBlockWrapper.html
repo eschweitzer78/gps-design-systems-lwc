@@ -1,0 +1,23 @@
+<template>
+  <slot name="label"> </slot>
+
+  <!-- adding the polite assitive text in the label to apply to all items -->
+  <div
+    id="edit-block-item-count-label"
+    class="slds-assistive-text nds-assistive-text"
+    aria-live="polite"
+  >
+    {assistiveTextItemCountLabel}
+  </div>
+  <slot
+    aria-describedby="edit-block-item-count-label"
+    role={_role}
+    onomnieditblockadd={handleAdd}
+    onomnieditblockcancel={handleCancel}
+    onomnieditblocksave={handleSave}
+    onomnieditblockremove={handleRemove}
+  >
+    <!-- this part still comes from the template compilation -->
+  </slot>
+  <slot name="new"> </slot>
+</template>

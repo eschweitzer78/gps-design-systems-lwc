@@ -1,0 +1,237 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="omni-typeahead-container">
+    <c-sf-gps-ds-au-nsw-typeahead
+      class={computedTypeaheadClassName}
+      type="text"
+      field-level-help={mergedHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
+      label={mergedLabel}
+      icon-name-right="utility:empty"
+      options={options}
+      placeholder={mergedPlaceholder}
+      required={_propSetMap.required}
+      read-only={_propSetMap.readOnly}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
+      theme="sfgpsds"
+      value={elementValueLabel}
+      remote-source={_useRemoteSource}
+      disable-filter={_disableFilter}
+      data-omni-input
+      onblur={handleBlur}
+      onlastitemclick={enterEditMode}
+      onselect={handleSelect}
+      onclear={handleClear}
+    >
+      <div slot="iconRight">
+        <span
+          class="cannot-find-address"
+          role="button"
+          tabindex="0"
+          onclick={handleToggle}
+        >
+          Enter address manually
+        </span>
+        <button
+          if:false={_propSetMap.hideEditButton}
+          class="slds-button slds-button_icon nds-button nds-button_icon"
+          aria-expanded={_isEditMode}
+          onclick={toggleEditMode}
+        >
+          <c-sf-gps-ds-osrt-icon
+            icon-name="utility:edit"
+            extraclass="slds-button__icon nds-button__icon"
+            size="x-small"
+            theme={_theme}
+            alternative-text={_editLabel}
+          >
+          </c-sf-gps-ds-osrt-icon>
+        </button>
+      </div>
+
+      <a slot="lastItem" lwc:if={_newItemLabel} label={_newItemLabel}
+        >{_newItemLabel}
+      </a>
+    </c-sf-gps-ds-au-nsw-typeahead>
+
+    <div class={computedManualClassName}>
+      <div class="nsw-form__group">
+        <div class="sfgpsds-label__group">
+          <div class="sfgpsds-label__group_label_container">
+            <div lwc:if={_propSetMap.label} class="sfgpsds-label__group_label">
+              <label
+                class={computedLabelClassName}
+                aria-label={label}
+                for="address"
+              >
+                {mergedLabel}
+                <span lwc:if={_propSetMap.required} class="sr-only">
+                  ({allCustomLabelsUtil.OmniRequired})</span
+                >
+              </label>
+            </div>
+          </div>
+
+          <div class="sfgpsds-label__group_action">
+            <div>
+              <span
+                class="cannot-find-address"
+                role="button"
+                tabindex="0"
+                onclick={handleToggle}
+              >
+                Smart address lookup
+              </span>
+
+              <button
+                if:false={_propSetMap.hideEditButton}
+                class="slds-button slds-button_icon nds-button nds-button_icon"
+                aria-expanded={_isEditMode}
+                onclick={toggleEditMode}
+              >
+                <c-sf-gps-ds-osrt-icon
+                  icon-name="utility:edit"
+                  extraclass="slds-button__icon nds-button__icon"
+                  size="x-small"
+                  theme={_theme}
+                  alternative-text={_editLabel}
+                >
+                </c-sf-gps-ds-osrt-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <span
+          lwc:if={computedShowHelpText}
+          id="helper"
+          class="nsw-form__helper"
+        >
+          <template lwc:if={isSmart}> {mergedHelpText} </template>
+          <template lwc:else> {mergedManualHelpText} </template>
+        </span>
+
+        <div if:false={_propSetMap.manualAddressEditMode} class="nsw-grid">
+          <div class="nsw-col nsw-col-12 street">
+            <c-sf-gps-ds-au-nsw-input
+              type="text"
+              name="street"
+              class="manual-field"
+              label="Street Address"
+              label-class-name="nsw-form__label--small"
+              onblur={handleFieldBlur}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
+              field-level-help=""
+              placeholder=""
+              value={street}
+            >
+            </c-sf-gps-ds-au-nsw-input>
+          </div>
+
+          <div class="nsw-col nsw-col-md-6 nsw-col-12 suburb">
+            <c-sf-gps-ds-au-nsw-input
+              type="text"
+              name="suburb"
+              class="manual-field"
+              label="Suburb"
+              label-class-name="nsw-form__label--small"
+              onblur={handleFieldBlur}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
+              field-level-help=""
+              placeholder=""
+              value={suburb}
+            >
+            </c-sf-gps-ds-au-nsw-input>
+          </div>
+
+          <div class="nsw-col nsw-col-md-3 nsw-col-6 state">
+            <c-sf-gps-ds-au-nsw-combobox
+              name="state"
+              class="manual-field"
+              options={states}
+              label="State"
+              label-class-name="nsw-form__label--small"
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              read-only="true"
+              disabled={_propSetMap.readOnly}
+              onchange={handleStateBlur}
+              theme="sfgpsds"
+              value={state}
+              field-level-help=""
+              data-show-lookup="true"
+              message-when-value-missing={_messageWhenValueMissing}
+              searchable="false"
+            >
+            </c-sf-gps-ds-au-nsw-combobox>
+          </div>
+
+          <div class="nsw-col nsw-col-md-3 nsw-col-6 postalcode">
+            <c-sf-gps-ds-au-nsw-input
+              type="text"
+              name="postcode"
+              class="manual-field"
+              label="Postcode"
+              label-class-name="nsw-form__label--small"
+              onblur={handleFieldBlur}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              read-only={_propSetMap.readOnly}
+              field-level-help=""
+              placeholder=""
+              min-length="4"
+              max-length="4"
+              value={postcode}
+            >
+            </c-sf-gps-ds-au-nsw-input>
+          </div>
+
+          <div class="nsw-col nsw-col-12 country">
+            <c-sf-gps-ds-au-nsw-input
+              type="text"
+              name="country"
+              class="manual-field"
+              label="Country"
+              label-class-name="nsw-form__label--small"
+              onblur={handleFieldBlur}
+              required={_propSetMap.required}
+              required-label={allCustomLabelsUtil.OmniRequired}
+              read-only="true"
+              disabled={_propSetMap.readOnly}
+              field-level-help=""
+              placeholder=""
+              value={country}
+            >
+            </c-sf-gps-ds-au-nsw-input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <span
+      lwc:if={errorMessage}
+      class={computedHelperClassName}
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <span
+        lwc:if={computedStatusIcon}
+        class="material-icons nsw-material-icons"
+        aria-hidden="true"
+      >
+        {computedStatusIcon}
+      </span>
+      {errorMessage}
+    </span>
+  </div>
+</template>

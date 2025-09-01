@@ -1,0 +1,286 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:true={renderTemplate}>
+    <template if:true={canShowKbOnStep}>
+      <div
+        class="slds-form-element slds-lookup vlc-slds-knowledge-component slds-card"
+        data-select="single"
+        data-scope="single"
+        if:false={_isStepChartTop}
+      >
+        <div
+          class="slds-page-header__title slds-truncate omni-stepchart-heading slds-p-bottom_small slds-p-top_small"
+        >
+          {displayLabel}
+        </div>
+
+        <div class="slds-input-has-icon slds-input-has-icon_right">
+          <c-sf-gps-ds-osrt-input
+            label={_customLabelsUtil.OmniKnowledgeSearchLabel}
+            tabindex="0"
+            type="text"
+            onkeypress={searchKnowledgeArticle}
+            value={inputSearchKeyword}
+            placeholder={_customLabelsUtil.OmniScriptSearch}
+          >
+          </c-sf-gps-ds-osrt-input>
+
+          <span class="slds-icon_container slds-input__icon_right">
+            <c-sf-gps-ds-osrt-icon
+              class="slds-input__icon slds-icon-text-default"
+              variant="default"
+              size="x-small"
+              alternative-text={_customLabelsUtil.OmniKnowledgeSearchIcon}
+              icon-name="utility:search"
+            ></c-sf-gps-ds-osrt-icon>
+          </span>
+        </div>
+        <p aria-live="polite" data-article-count>{_numArticlesLabel}</p>
+        <ul class="vlc-slds-knowledge-item">
+          <template
+            for:each={articlesResults}
+            for:item="item"
+            for:index="articleIndex"
+          >
+            <li key={item.title} class="slds-item">
+              <div class="vlc-slds-knowledge-list-item">
+                <div class="vlc-slds-control-action__container">
+                  <p
+                    onclick={redirectToArticleUrl}
+                    data-info={articleIndex}
+                    tabindex="0"
+                    onkeydown={handleKeydownRedirect}
+                  >
+                    {item.title}
+                  </p>
+
+                  <button
+                    onclick={openInOmniscript}
+                    data-info={articleIndex}
+                    aria-label={item.openLabel}
+                    if:true={_openInOmniEnable}
+                    tabindex="0"
+                  >
+                    <c-sf-gps-ds-osrt-icon
+                      class="slds-icon__eye"
+                      variant="default"
+                      size="x-small"
+                      icon-name="utility:preview"
+                      alternative-text={item.openLabel}
+                    ></c-sf-gps-ds-osrt-icon>
+                    <small>{item.openLabel}</small>
+                  </button>
+
+                  <button
+                    onclick={openModal}
+                    aria-label={item.modalLabel}
+                    data-info={articleIndex}
+                    tabindex="0"
+                  >
+                    <c-sf-gps-ds-osrt-icon
+                      class="slds-icon__eye"
+                      variant="default"
+                      size="x-small"
+                      icon-name="utility:expand"
+                      alternative-text={item.modalLabel}
+                    ></c-sf-gps-ds-osrt-icon>
+                    <small>{item.modalLabel}</small>
+                  </button>
+                </div>
+
+                <h3>{item.summary}</h3>
+                <h3 class="vlc-slds-lastpubdate">
+                  {item.displayType} |
+                  {_customLabelsUtil.OmniScriptLastPublished} {item.lastPubDate}
+                </h3>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
+
+      <div
+        if:true={_isStepChartTop}
+        class={classToggleWidth}
+        data-select="single"
+        data-scope="single"
+        chart-top={_isStepChartTop}
+      >
+        <button
+          if:false={isToggled}
+          title={_customLabelsUtil.OmniKnowledgeExpand}
+          class="slds-form-element__label slds-knowledge-expand"
+          onclick={toggleKb}
+          onkeydown={handleKeyToggle}
+          tabindex="0"
+          aria-expanded={isToggled}
+          aria-controls="wrapper"
+        >
+          {kbLabel}
+        </button>
+
+        <div
+          if:true={isToggled}
+          id="wrapper"
+          class="slds-knowledge-data_wrapper"
+        >
+          <div
+            class="slds-page-header__title slds-truncate omni-stepchart-heading slds-p-bottom_small slds-p-top_small"
+          >
+            {kbLabel}
+          </div>
+          <div class="slds-knowledge-data_cont">
+            <button
+              class="slds-button slds-button_icon slds-button_icon-bare"
+              title={_customLabelsUtil.OmniKnowledgeCollapse}
+              tabindex="0"
+              onclick={toggleKb}
+              onkeydown={handleKeyToggle}
+              aria-expanded={isToggled}
+              aria-controls="wrapper"
+            >
+              <c-sf-gps-ds-osrt-icon
+                class="slds-input__icon slds-icon-text-default"
+                variant="default"
+                size="x-small"
+                icon-name="utility:chevronright"
+                alternative-text={_customLabelsUtil.OmniKnowledgeCollapse}
+                theme={_themeKB}
+              ></c-sf-gps-ds-osrt-icon>
+            </button>
+          </div>
+
+          <div class="slds-input-has-icon slds-input-has-icon--right">
+            <c-sf-gps-ds-osrt-input
+              type="text"
+              label={_customLabelsUtil.OmniKnowledgeSearchLabel}
+              onkeypress={searchKnowledgeArticle}
+              value={inputSearchKeyword}
+              data-focusable-input="true"
+              placeholder={_customLabelsUtil.OmniScriptSearch}
+            >
+            </c-sf-gps-ds-osrt-input>
+            <span class="slds-icon_container">
+              <c-sf-gps-ds-osrt-icon
+                class="slds-input__icon slds-icon-text-default"
+                alternative-text={_customLabelsUtil.OmniKnowledgeSearchIcon}
+                variant="default"
+                size="x-small"
+                icon-name="utility:search"
+              ></c-sf-gps-ds-osrt-icon>
+            </span>
+          </div>
+          <p aria-live="polite" data-article-count>{_numArticlesLabel}</p>
+          <ul class="vlc-slds-knowledge-item">
+            <template
+              for:each={articlesResults}
+              for:item="item"
+              for:index="articleIndex"
+            >
+              <li key={item.title} class="slds-item">
+                <div class="vlc-slds-knowledge-list-item">
+                  <div class="vlc-slds-control-action__container">
+                    <p
+                      onclick={redirectToArticleUrl}
+                      data-info={articleIndex}
+                      tabindex="0"
+                      onkeydown={handleKeydownRedirect}
+                    >
+                      {item.title}
+                    </p>
+
+                    <button
+                      onclick={openInOmniscript}
+                      aria-label={item.openLabel}
+                      data-info={articleIndex}
+                      tabindex="0"
+                    >
+                      <c-sf-gps-ds-osrt-icon
+                        class="slds-icon__eye"
+                        variant="default"
+                        size="x-small"
+                        icon-name="utility:preview"
+                        alternative-text={item.openLabel}
+                      ></c-sf-gps-ds-osrt-icon>
+                      <small>{item.openLabel}</small>
+                    </button>
+
+                    <button
+                      onclick={openModal}
+                      aria-label={item.modalLabel}
+                      data-info={articleIndex}
+                      tabindex="0"
+                    >
+                      <c-sf-gps-ds-osrt-icon
+                        class="slds-icon__eye"
+                        variant="default"
+                        size="x-small"
+                        icon-name="utility:expand"
+                        alternative-text={item.modalLabel}
+                      ></c-sf-gps-ds-osrt-icon>
+                      <small>{item.modalLabel}</small>
+                    </button>
+                  </div>
+
+                  <h3>{item.summary}</h3>
+                  <h3>
+                    {item.displayType} |
+                    {_customLabelsUtil.OmniScriptLastPublished}
+                    {item.lastPubDate}
+                  </h3>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+
+      <template if:true={_kbModal}>
+        <slot>
+          <div class={_modalContainerClass} onkeydown={handleKeyDown}>
+            <section
+              role="dialog"
+              tabindex="-1"
+              aria-modal="true"
+              aria-describedby="modal-content"
+              aria-labelledby="modal-heading"
+              class={_modalClasses}
+            >
+              <div class="slds-modal__container">
+                <header tabindex="0" class={_headerClasses}>
+                  <h1 id="modal-heading">{articleBodyResults.articleTitle}</h1>
+                </header>
+
+                <div
+                  class="slds-modal__content slds-p-around_medium"
+                  id="modal-content"
+                >
+                  <c-sf-gps-ds-osrt-omniscript-formatted-rich-text
+                    value={articleBodyResults.articleBody}
+                  >
+                  </c-sf-gps-ds-osrt-omniscript-formatted-rich-text>
+                </div>
+
+                <footer class={_footerClasses}>
+                  <div slot="footer">
+                    <c-sf-gps-ds-osrt-button
+                      type="button"
+                      variant="brand"
+                      data-button
+                      onclick={closeModal}
+                      theme={_themeKB}
+                      label={_customLabelsUtil.OmnipostMessage}
+                      extraclass="slds-m-left_medium"
+                    >
+                    </c-sf-gps-ds-osrt-button>
+                  </div>
+                </footer>
+              </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+          </div>
+        </slot>
+      </template>
+    </template>
+  </template>
+</template>

@@ -1,0 +1,65 @@
+<template>
+  <!-- Cards and LongCards -->
+  <template if:true={_showLabel}>
+    <!-- Header/Label -->
+    <div class="nds-element_text-font">
+      <h2
+        aria-label={_propSetMap.label}
+        class="nds-m-horizontal_small nds-text-heading_small nds-text"
+        aria-live="polite"
+      >
+        {_propSetMap.label}
+      </h2>
+    </div>
+
+    <!-- Global Actions -->
+    <div if:true={_jsonDef.propSetMap.gActions} class="nds-grid nds-wrap">
+      <template
+        for:each={_gActions}
+        for:item="gActionItem"
+        for:index="gActionIndex"
+      >
+        <template if:true={gActionItem.hasIcon}>
+          <div
+            key={gActionItem.lwcId}
+            class="nds-m-bottom_x-small nds-m-right_xx-small"
+          >
+            <c-sf-gps-ds-osrt-icon
+              extraclass="nds-input__icon"
+              icon-name={gActionItem.icon}
+              theme="nds"
+              alternative-text="icon"
+              size="small"
+              style="cursor: pointer"
+              onclick={gActionItem.handleClick}
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </div>
+        </template>
+        <template if:false={gActionItem.hasIcon}>
+          <div key={gActionItem.lwcId} class={gActionItem.cls}>
+            <div class="nds-m-bottom_xx-small nds-m-right_xx-small">
+              <button
+                class="nds-button nds-button_neutral nds-button_brand nds-size_1-of-1"
+                onclick={gActionItem.handleClick}
+              >
+                {gActionItem.label}
+              </button>
+            </div>
+          </div>
+        </template>
+      </template>
+    </div>
+  </template>
+
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={scriptHeaderDef.allCustomLabels.OmniSpinnerTextLoading}
+      theme={_theme}
+      size="medium"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

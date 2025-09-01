@@ -1,0 +1,10 @@
+.slds-pill {
+  background-color: inherit;
+  border: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.slds-listbox_selection-group {
+  height: auto;
+}

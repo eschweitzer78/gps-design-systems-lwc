@@ -1,0 +1,20 @@
+.omni-editblock-table-row {
+  cursor: pointer;
+}
+
+.omni-editblock-table-row[data-is-selected="true"],
+.omni-editblock-table-row:hover {
+  background-color: #f4f6f9;
+}
+
+.omni-editblock-table-row[aria-invalid="true"] {
+  border-width: 2px;
+  border-color: var(--lwc-colorBorderError, rgb(194, 57, 52));
+}
+
+/*
+ * W-13551215 : Updated height of edit block modal content for slds to match nds
+ */
+.omni-editblock-modal__content {
+  height: 78vh;
+}

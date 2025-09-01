@@ -1,0 +1,24 @@
+<template>
+  <section class={popoverClass} role="dialog" aria-label={_popoverLabel}>
+    <c-sf-gps-ds-osrt-button
+      if:true={showclosebutton}
+      class="nds-button nds-button_icon nds-float_right nds-popover__close nds-button_icon"
+      title="Close dialog"
+      onmousedown={closePopover}
+      icon-name="utility:close"
+      icon-url={iconUrl}
+      icon-size="x-small"
+      theme={theme}
+    >
+    </c-sf-gps-ds-osrt-button>
+    <header class="nds-popover__header" if:true={header}>
+      <slot name="header"></slot>
+    </header>
+    <div class="nds-popover__body">
+      <slot name="content"></slot>
+    </div>
+    <footer class="nds-popover__footer" if:true={footer}>
+      <slot name="footer"></slot>
+    </footer>
+  </section>
+</template>

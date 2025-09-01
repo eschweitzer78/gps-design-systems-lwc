@@ -1,0 +1,26 @@
+{
+  "sfGpsDsAuNswDatePickerV2OsN/date-picker": [
+    { "from": ":root", "to": ".nsw-date-picker" },
+    {
+      "from": "--date-picker-calendar-gap:",
+      "to": "--date-picker-calendar-gap--default:"
+    },
+    {
+      "from": "--date-picker-calendar-item-size:",
+      "to": "--date-picker-calendar-item-size--default:"
+    },
+    {
+      "from": "var\\(--date-picker-calendar-item-size\\)",
+      "to": "var(--date-picker-calendar-item-size, var(--date-picker-calendar-item-size--default))"
+    },
+    {
+      "from": "var\\(--date-picker-calendar-gap\\)",
+      "to": "var(--date-picker-calendar-gap, var(--date-picker-calendar-gap--default))"
+    },
+    {
+      "from": "nsw-date-picker \\*{",
+      "to": "nsw-date-picker *:not(.nsw-button){"
+    }
+  ],
+  "sfGpsDsAuNswSaveForLaterAckOsN/in-page-alert": []
+}

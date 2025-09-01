@@ -1,0 +1,57 @@
+<template>
+  <div class="nds-has-error nds-form-container">
+    <label class="nds-slider-label" for="slider-input" id="slider-label">
+      <span
+        if:true={labelVisible}
+        class="nds-slider-label__label nds-form-element__legend nds-form-element__label nds-m-right_none"
+      >
+        <span>{label}</span>
+      </span>
+      <span class="nds-slider-label__slot">
+        <c-sf-gps-ds-osrt-tooltip
+          class="nds-tooltip_container nds-m-left_x-small nds-m-top_xxx-small"
+          if:true={fieldLevelHelp}
+          icon-url={iconUrl}
+          content={fieldLevelHelp}
+          associated-component-label={label}
+          theme={theme}
+          arrowposition={fieldLevelHelpPosition}
+          data-field-level-help
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </span>
+    </label>
+    <span class="nds-slider-label__range">{rangeLabel}</span>
+    <div class={sliderClass}>
+      <input
+        required
+        id="slider-input"
+        class="nds-slider__range"
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={_value}
+        tabindex={tabIndex}
+        disabled={disabled}
+        oninput={handleChange}
+        onblur={closeTooltip}
+        aria-labelledby="slider-label slider-description"
+      />
+      <span class="nds-slider__value no-break" aria-hidden="true"
+        >{_maskedValue}</span
+      >
+    </div>
+    <div id="slider-description" aria-hidden="true" class="slds-assistive-text">
+      {sliderRangeAssistiveText}
+    </div>
+    <div
+      if:true={isError}
+      id="error-message"
+      class="nds-form-element__help nds-form-element__help_text-transform__none"
+    >
+      {errorMessage}
+    </div>
+  </div>
+</template>
