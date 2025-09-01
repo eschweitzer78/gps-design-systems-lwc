@@ -1,0 +1,6 @@
+/* sldsValidatorIgnore */
+.qld__fieldset__legend > *:last-child,
+.qld__label > *:last-child {
+  margin-left: 0.25rem;
+  display: inline;
+}

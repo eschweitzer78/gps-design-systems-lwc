@@ -1,0 +1,7 @@
+/* sldsValidatorIgnore */
+.form-actions {
+  display: flex;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+  flex-wrap: wrap;
+}

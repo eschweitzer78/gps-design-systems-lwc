@@ -1,0 +1,90 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="qld__form-group">
+    <fieldset
+      class="qld__fieldset"
+      aria-required={required}
+      aria-labelledby="sfgpsds-auqld-radio-group-legend"
+      aria-invalid={computedAriaInvalid}
+    >
+      <legend
+        id="sfgpsds-auqld-radio-group-legend"
+        class="qld__fieldset__legend"
+      >
+        {label}
+        <abbr lwc:if={required} title="required">*</abbr>
+        <span lwc:else class="qld__label--optional">{i18n.optional}</span>
+        <slot name="label"> </slot>
+      </legend>
+
+      <span
+        lwc:if={sfGpsDsIsError}
+        class="qld__input--error"
+        aria-live="assertive"
+        role="alert"
+        id="errorMessageBlock"
+      >
+        <svg
+          class="qld__icon qld__icon--lead qld__icon--sm"
+          role="img"
+          aria-label={i18n.errorAriaLabel}
+        >
+          <use href={computedStatusErrorIconHref}></use></svg
+        >{_errorMessage}
+      </span>
+
+      <span
+        lwc:if={fieldLevelHelp}
+        id="helper"
+        class="qld__hint-text"
+        aria-describedby={computedAriaDescribedBy}
+      >
+        {fieldLevelHelp}
+      </span>
+
+      <div
+        class="qld__form-field qld__control-group"
+        role="radiogroup"
+        aria-labelledby="sfgpsds-auqld-radio-group-legend"
+      >
+        <template
+          lwc:if={internalOpts}
+          for:each={internalOpts}
+          for:item="option"
+          for:index="index"
+        >
+          <div
+            key={option.id}
+            class="qld__control-input qld__control-input--block"
+          >
+            <input
+              class={computedInputClassName}
+              type="radio"
+              tabindex={tabIndex}
+              required={required}
+              disabled={disabled}
+              id={option.id}
+              name={option.name}
+              aria-invalid={sfGpsDsIsError}
+              value={option.value}
+              checked={option.selected}
+              aria-checked={option.selected}
+              data-index={index}
+              onfocus={handleFocus}
+              onblur={handleBlur}
+              onchange={sfGpsDsOnChangeValue}
+              onkeydown={handleKeyDownEvent}
+            />
+            <label
+              class="qld__control-input__text"
+              data-index={index}
+              for={option.id}
+            >
+              {option.label}
+            </label>
+          </div>
+        </template>
+      </div>
+    </fieldset>
+  </div>
+</template>
