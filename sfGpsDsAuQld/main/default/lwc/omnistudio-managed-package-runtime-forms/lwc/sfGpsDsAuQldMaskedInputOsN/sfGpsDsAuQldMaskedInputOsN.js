@@ -25,7 +25,7 @@ export default class extends StatusHelperMixin(OmniscriptMaskedInput) {
   /* original maskedInput widget does a JS update of aria-describedby when validating */
 
   resolveAriaDescribedBy() {
-    return [...this.template.querySelectorAll(".nsw-form__helper")]
+    return [...this.template.querySelectorAll(".qld__hint-text")]
       ?.map((item) => item.id)
       .join(" ");
   }

@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormRadioOsN from "c/sfGpsDsFormRadioOsN";
+import SfGpsDsFormRadio from "c/sfGpsDsFormRadioOsN";
 import tmpl from "./sfGpsDsAuQldFormRadioOsN.html";
 
-export default class extends SfGpsDsFormRadioOsN {
+export default class extends SfGpsDsFormRadio {
   /* lifecycle */
 
   render() {

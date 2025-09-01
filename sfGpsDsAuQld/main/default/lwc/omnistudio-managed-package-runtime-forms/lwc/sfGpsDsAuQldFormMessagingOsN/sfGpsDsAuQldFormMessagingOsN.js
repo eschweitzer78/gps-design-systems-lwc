@@ -5,11 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormMessagingOsN from "c/sfGpsDsFormMessagingOsN";
+import SfGpsDsFormMessaging from "c/sfGpsDsFormMessagingOsN";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpersOsN";
 import tmpl from "./sfGpsDsAuQldFormMessagingOsN.html";
 
-export default class extends SfGpsDsFormMessagingOsN {
+export default class extends SfGpsDsFormMessaging {
   /* computed */
 
   get mergedTitleText() {

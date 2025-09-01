@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormStepOsN from "c/sfGpsDsFormStepOsN";
+import SfGpsDsFormStep from "c/sfGpsDsFormStepOsN";
 import tmpl from "./sfGpsDsAuVic2FormStepOsN.html";
 
-export default class extends SfGpsDsFormStepOsN {
+export default class extends SfGpsDsFormStep {
   /* computed */
 
   get computedIsH1() {

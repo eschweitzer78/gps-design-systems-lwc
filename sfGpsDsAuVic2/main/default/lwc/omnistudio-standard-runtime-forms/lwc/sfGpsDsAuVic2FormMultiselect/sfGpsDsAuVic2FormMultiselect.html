@@ -1,0 +1,52 @@
+<template>
+  <!-- sldsValidatorIgnore -->
+  <!-- TODO image group not supported-->
+  <c-sf-gps-ds-au-vic2-checkbox-group
+    name={jsonDef.name}
+    options={_realtimeOptions}
+    value={elementValue}
+    fire-change-on-set-value="false"
+    label={mergedLabel}
+    required={_propSetMap.required}
+    tab-index={tabIndex}
+    theme={_theme}
+    alignment={_horizontalMode}
+    field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
+    message-when-value-missing={mergedMessageWhenValueMissing}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    read-only={_propSetMap.readOnly}
+    data-refresh={refresh}
+    data-omni-input
+    onchange={handleChange}
+    class="slds-form__wrapper"
+    variant={_propSetMap.variant}
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
+        <button
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Multiselect"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-au-vic2-icon name="icon-add" size="xs" colour="inactive">
+          </c-sf-gps-ds-au-vic2-icon>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Multiselect"
+          onclick={handleRemove}
+        >
+          <c-sf-gps-ds-au-vic2-icon
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic2-checkbox-group>
+</template>

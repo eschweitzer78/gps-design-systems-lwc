@@ -6,14 +6,12 @@
  */
 
 import { api, wire } from "lwc";
-import SfGpsDsFormLookupOsN from "c/sfGpsDsFormLookupOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsFormLookup from "c/sfGpsDsFormLookupOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormLookupOsN.html";
 import { getObjectInfo } from "lightning/uiObjectInfoApi";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
-  SfGpsDsFormLookupOsN
-) {
+export default class extends SfGpsDsAuVic2FormElementMixin(SfGpsDsFormLookup) {
   /* override */
 
   /* 

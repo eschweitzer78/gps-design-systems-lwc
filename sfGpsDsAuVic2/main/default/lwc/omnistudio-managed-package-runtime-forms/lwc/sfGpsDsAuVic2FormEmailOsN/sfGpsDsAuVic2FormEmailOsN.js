@@ -5,13 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormEmailOsN from "c/sfGpsDsFormEmailOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsFormEmail from "c/sfGpsDsFormEmailOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormEmailOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
-  SfGpsDsFormEmailOsN
-) {
+export default class extends SfGpsDsAuVic2FormElementMixin(SfGpsDsFormEmail) {
   /* lifecycle */
 
   render() {

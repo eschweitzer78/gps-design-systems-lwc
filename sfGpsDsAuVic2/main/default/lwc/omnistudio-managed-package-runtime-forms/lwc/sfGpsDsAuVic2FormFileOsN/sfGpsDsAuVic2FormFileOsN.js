@@ -6,14 +6,12 @@
  */
 
 import { track } from "lwc";
-import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsFormFile from "c/sfGpsDsFormFileOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuVic2FormFileOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
-  SfGpsDsFormFileOsN
-) {
+export default class extends SfGpsDsAuVic2FormElementMixin(SfGpsDsFormFile) {
   @track computedAriaDescribedBy;
 
   /* computed */

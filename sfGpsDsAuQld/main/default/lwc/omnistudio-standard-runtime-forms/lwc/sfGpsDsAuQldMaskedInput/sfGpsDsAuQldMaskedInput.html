@@ -1,0 +1,149 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:false={isCustomLwc}>
+    <div class="qld__form-group">
+      <template lwc:if={labelVisible}>
+        <label class="qld__label" for={inputId}>
+          {label}
+          <abbr lwc:if={required} title="required">*</abbr>
+          <span lwc:else class="qld__label--optional">{i18n.optional}</span>
+          <slot name="label"> </slot>
+        </label>
+      </template>
+
+      <span
+        lwc:if={sfGpsDsIsError}
+        class="qld__input--error"
+        aria-live="assertive"
+        role="alert"
+        id="errorMessageBlock"
+      >
+        <svg
+          class="qld__icon qld__icon--lead qld__icon--sm"
+          role="img"
+          aria-label={i18n.errorAriaLabel}
+        >
+          <use href={computedStatusErrorIconHref}></use></svg
+        >{_errorMessage}
+      </span>
+
+      <span lwc:if={fieldLevelHelp} id="helper" class="qld__hint-text">
+        {fieldLevelHelp}
+      </span>
+
+      <!-- formula -->
+      <template lwc:if={_isFormula}>
+        <div>
+          <label class={computedLabelClassName} for={inputId}>
+            {label}
+            <span lwc:if={required} class="sr-only"> ({requiredLabel})</span>
+          </label>
+        </div>
+
+        <input
+          class="qld__text-input qld__text-input--block"
+          type="text"
+          readonly
+          disabled
+          id={inputId}
+          value={maskedValue}
+          aria-describedby={computedAriaDescribedBy}
+        />
+      </template>
+      <!-- formula -->
+
+      <template if:false={static}>
+        <span lwc:if={pretext}>{pretext}</span>
+
+        <template lwc:if={isCurrencySFlocale}>
+          <input
+            lwc:if={isInput}
+            class="qld__text-input qld__text-input--block"
+            id={inputId}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            step={step}
+            min={min}
+            max={max}
+            maxlength={maxLength}
+            minlength={minLength}
+            type={type}
+            inputmode={inputmode}
+            disabled={disabled}
+            required={required}
+            readonly={readOnly}
+            placeholder={placeholder}
+            aria-readonly={readOnly}
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={computedAriaDescribedBy}
+            aria-label={ariaLabel}
+            aria-invalid={sfGpsDsIsError}
+            value={_currencyVal}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            oninput={handleInput}
+            onkeyup={handleKeyup}
+            onchange={handleChange}
+          />
+        </template>
+
+        <template lwc:else>
+          <input
+            lwc:if={isNumber}
+            class="hiddenNumber slds-hide"
+            required={required}
+            min={min}
+            max={max}
+            step={step}
+            type="number"
+            value={value}
+          />
+
+          <input
+            lwc:if={isInput}
+            class="qld__text-input qld__text-input--block"
+            id={inputId}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            step={step}
+            min={min}
+            max={max}
+            maxlength={maxLength}
+            minlength={minLength}
+            type={inputType}
+            inputmode={inputmode}
+            disabled={disabled}
+            required={required}
+            readonly={readOnly}
+            aria-readonly={readOnly}
+            placeholder={placeholder}
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={computedAriaDescribedBy}
+            aria-label={ariaLabel}
+            autocomplete={autocomplete}
+            name={name}
+            aria-invalid={sfGpsDsIsError}
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            oninput={handleInput}
+            onkeyup={handleKeyup}
+            onchange={handleChange}
+          />
+        </template>
+
+        <span lwc:if={posttext} class="sfgpsds-form-element__addon">
+          {posttext}
+        </span>
+      </template>
+
+      <!-- shifted testing static one level up to avoid the empty div -->
+      <div lwc:if={static} class="slds-grid">
+        <div class="slds-form-element__static">{maskedValue}</div>
+      </div>
+
+      <span lwc:if={inlineHelp} class="slds-form-element__static">
+        {inlineHelp}
+      </span>
+    </div>
+  </template>
+</template>

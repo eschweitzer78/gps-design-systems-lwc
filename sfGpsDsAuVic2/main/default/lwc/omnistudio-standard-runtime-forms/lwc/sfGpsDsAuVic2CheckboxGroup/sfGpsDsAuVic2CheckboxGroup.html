@@ -1,0 +1,82 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <fieldset
+    lwc:if={isCheckbox}
+    class="rpl-form__fieldset"
+    aria-describedby={computedAriaDescribedBy}
+  >
+    <legend class="rpl-form-label rpl-type-h4-fixed">
+      <span class="rpl-form-label__inner">{label}</span>
+      <span
+        lwc:if={required}
+        class="rpl-form-label__required rpl-type-label-small"
+      >
+        ({requiredLabel})
+      </span>
+      <slot name="label"></slot>
+    </legend>
+
+    <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
+      {fieldLevelHelp}
+    </div>
+
+    <span
+      lwc:if={sfGpsDsIsError}
+      class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <c-sf-gps-ds-au-vic2-icon size="s" name="icon-exclamation-circle-filled">
+      </c-sf-gps-ds-au-vic2-icon>
+      <span>{sfGpsDsErrorMessage}</span>
+    </span>
+
+    <div>
+      <div lwc:if={internalOpts} class={computedGroupClassName}>
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <div key={option.id} class={computedOptionClassName}>
+            <input
+              type="checkbox"
+              required={required}
+              disabled={disabled}
+              readonly={readOnly}
+              id={option.id}
+              tabindex={tabIndex}
+              name={name}
+              aria-invalid={sfGpsDsIsError}
+              checked={option.selected}
+              value={option.value}
+              class="rpl-form-option__input"
+              data-index={index}
+              onfocus={handleFocus}
+              onchange={sfGpsDsOnChangeValue}
+              onkeydown={handleKeyDownEvent}
+            />
+
+            <label
+              class="rpl-form-option__label"
+              data-index={index}
+              for={option.id}
+            >
+              <span class="rpl-form-option__mark rpl-form-option__check">
+                <span
+                  class="rpl-icon rpl-icon--size-s rpl-icon--icon-check rpl-form-option__mark-tick"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path
+                      d="M22.9.4c-1.1-.7-2.6-.4-3.3.8L9.2 17.8l-5.1-5.1c-.9-.9-2.5-.9-3.4 0s-.9 2.5 0 3.4l7.2 7.2c1.1 1.1 2.9.9 3.7-.4l12-19.2c.7-1.2.4-2.6-.7-3.3z"
+                    ></path>
+                  </svg>
+                </span>
+              </span>
+              <span class="rpl-form-option__label-text rpl-type-p"
+                >{option.label}</span
+              >
+            </label>
+          </div>
+        </template>
+      </div>
+    </div>
+  </fieldset>
+</template>

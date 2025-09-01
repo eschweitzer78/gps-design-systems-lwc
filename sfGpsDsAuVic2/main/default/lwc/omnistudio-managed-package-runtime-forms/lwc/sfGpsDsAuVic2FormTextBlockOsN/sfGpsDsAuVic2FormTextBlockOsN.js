@@ -6,10 +6,10 @@
  */
 
 import OmniscriptTextBlock from "omnistudio/omniscriptTextBlock";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormTextBlockOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
+export default class extends SfGpsDsAuVic2FormElementMixin(
   OmniscriptTextBlock
 ) {
   /* lifecycle */

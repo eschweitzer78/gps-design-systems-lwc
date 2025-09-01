@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormDateOsN from "c/sfGpsDsFormDateOsN";
+import SfGpsDsFormDate from "c/sfGpsDsFormDateOsN";
 import tmpl from "./sfGpsDsAuQldFormDateOsN.html";
 
-export default class extends SfGpsDsFormDateOsN {
+export default class extends SfGpsDsFormDate {
   /* lifecycle */
 
   render() {

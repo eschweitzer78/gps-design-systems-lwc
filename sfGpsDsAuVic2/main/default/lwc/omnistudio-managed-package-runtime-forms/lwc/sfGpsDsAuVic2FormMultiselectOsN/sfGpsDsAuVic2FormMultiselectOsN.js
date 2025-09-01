@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormMultiselectOsN from "c/sfGpsDsFormMultiselectOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsFormMultiselect from "c/sfGpsDsFormMultiselectOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormMultiselectOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
-  SfGpsDsFormMultiselectOsN
+export default class extends SfGpsDsAuVic2FormElementMixin(
+  SfGpsDsFormMultiselect
 ) {
   /* lifecycle */
 

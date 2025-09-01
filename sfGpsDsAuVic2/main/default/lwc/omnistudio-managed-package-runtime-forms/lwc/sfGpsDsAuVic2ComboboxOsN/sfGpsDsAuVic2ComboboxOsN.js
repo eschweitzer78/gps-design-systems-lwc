@@ -6,16 +6,14 @@
  */
 
 import { api } from "lwc";
-import SfGpsDsAuVic2RplDropdownOsN from "c/sfGpsDsAuVic2RplDropdownOsN";
-import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
+import SfGpsDsAuVic2RplDropdown from "c/sfGpsDsAuVic2RplDropdownOsN";
+import SfGpsDsOmniInputMixin from "c/sfGpsDsOmniInputMixinOsN";
 import { normaliseBoolean } from "c/sfGpsDsHelpersOs";
 
 const SEARCHABLE_DEFAULT = false;
 const SEARCHABLE = Symbol("searchable");
 
-export default class extends SfGpsDsOmniInputMixinOsN(
-  SfGpsDsAuVic2RplDropdownOsN
-) {
+export default class extends SfGpsDsOmniInputMixin(SfGpsDsAuVic2RplDropdown) {
   @api
   get options() {
     return this._options;
@@ -56,6 +54,9 @@ export default class extends SfGpsDsOmniInputMixinOsN(
   /* lifecycle */
 
   connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
     super.mode = this[SEARCHABLE] ? "filter-auto" : "lookup";
   }
 }

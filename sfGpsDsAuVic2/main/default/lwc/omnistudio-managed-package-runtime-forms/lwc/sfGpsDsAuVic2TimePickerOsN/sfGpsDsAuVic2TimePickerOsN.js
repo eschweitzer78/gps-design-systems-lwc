@@ -6,8 +6,8 @@
  */
 
 import { api } from "lwc";
-import SfGpsDsAuVic2RplDropdownOsN from "c/sfGpsDsAuVic2RplDropdownOsN";
-import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
+import SfGpsDsAuVic2RplDropdown from "c/sfGpsDsAuVic2RplDropdownOsN";
+import SfGpsDsOmniInputMixin from "c/sfGpsDsOmniInputMixinOsN";
 import {
   isString,
   formatTemplate,
@@ -15,7 +15,7 @@ import {
   parseIso8601,
   normaliseString,
   ISO8601_PATTERN
-} from "c/sfGpsDsHelpers";
+} from "c/sfGpsDsHelpersOs";
 import dayjs from "omnistudio/dayjs";
 import salesforceUtils from "omnistudio/salesforceUtils";
 import { determineMaxGranularity, unitName } from "./vlocDayJSHelpers";
@@ -31,9 +31,7 @@ const OUTPUTTYPE_DEFAULT = OUTPUTTYPE_STRING;
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuVic2TimePickerOsN";
 
-export default class extends SfGpsDsOmniInputMixinOsN(
-  SfGpsDsAuVic2RplDropdownOsN
-) {
+export default class extends SfGpsDsOmniInputMixin(SfGpsDsAuVic2RplDropdown) {
   @api localeFormat;
 
   /* api: ariaLabel */

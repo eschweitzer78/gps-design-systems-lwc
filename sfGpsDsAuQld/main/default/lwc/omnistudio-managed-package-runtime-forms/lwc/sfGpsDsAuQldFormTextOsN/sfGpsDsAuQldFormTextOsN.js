@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormTextOsN from "c/sfGpsDsFormTextOsN";
+import SfGpsDsFormText from "c/sfGpsDsFormTextOsN";
 import tmpl from "./sfGpsDsAuQldFormTextOsN.html";
 
-export default class extends SfGpsDsFormTextOsN {
+export default class extends SfGpsDsFormText {
   /* lifecycle */
 
   render() {

@@ -5,13 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormSelectOsN from "c/sfGpsDsFormSelectOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsFormSelect from "c/sfGpsDsFormSelectOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormSelectOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
-  SfGpsDsFormSelectOsN
-) {
+export default class extends SfGpsDsAuVic2FormElementMixin(SfGpsDsFormSelect) {
   get decoratedRealtimeOptions() {
     return this._realtimeOptions.slice(1);
   }

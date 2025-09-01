@@ -7,10 +7,10 @@
  * QLD DS 1.11
  */
 
-import SfGpsDsFormStepOsN from "c/sfGpsDsFormStepOsN";
+import SfGpsDsFormStep from "c/sfGpsDsFormStepOsN";
 import tmpl from "./sfGpsDsAuQldFormStepOsN.html";
 
-export default class extends SfGpsDsFormStepOsN {
+export default class extends SfGpsDsFormStep {
   /* lifecycle */
 
   render() {

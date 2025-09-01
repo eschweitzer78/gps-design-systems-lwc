@@ -11,13 +11,11 @@
       icon-name="utility:info" not supported
 */
 
-import SfGpsDsFormFormulaOsN from "c/sfGpsDsFormFormulaOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsFormFormula from "c/sfGpsDsFormFormulaOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormFormulaOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
-  SfGpsDsFormFormulaOsN
-) {
+export default class extends SfGpsDsAuVic2FormElementMixin(SfGpsDsFormFormula) {
   /* lifecycle */
 
   render() {

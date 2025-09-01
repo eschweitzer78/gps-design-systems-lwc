@@ -7,17 +7,15 @@
 
 import { api } from "lwc";
 import { isArray, isString, normaliseBoolean } from "c/sfGpsDsHelpersOs";
-import SfGpsDsAuVic2RplDropdownOsN from "c/sfGpsDsAuVic2RplDropdownOsN";
-import SfGpsDsOmniInputMixinOsN from "c/sfGpsDsOmniInputMixinOsN";
+import SfGpsDsAuVic2RplDropdown from "c/sfGpsDsAuVic2RplDropdownOsN";
+import SfGpsDsOmniInputMixin from "c/sfGpsDsOmniInputMixinOsN";
 
 const OPTIONS_ORIGINAL = Symbol("_optionsOriginal");
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuVic2TypeaheadOsN";
 
-export default class extends SfGpsDsOmniInputMixinOsN(
-  SfGpsDsAuVic2RplDropdownOsN
-) {
+export default class extends SfGpsDsOmniInputMixin(SfGpsDsAuVic2RplDropdown) {
   /* api: remoteSource, which controls whether to show the progress bar / spinner */
 
   _remoteSource;

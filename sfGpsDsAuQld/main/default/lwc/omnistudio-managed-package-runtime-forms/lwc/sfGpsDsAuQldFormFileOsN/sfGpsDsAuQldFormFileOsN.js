@@ -6,7 +6,7 @@
  */
 
 import { track } from "lwc";
-import SfGpsDsFormFileOsN from "c/sfGpsDsFormFileOsN";
+import SfGpsDsFormFile from "c/sfGpsDsFormFileOsN";
 import SfGpsDsAuQldStatusHelperMixin from "c/sfGpsDsAuQldStatusHelperMixinOsN";
 import { isArray } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuQldFormFileOsN.html";
@@ -27,7 +27,7 @@ const FA_TYPE_MAPPING = {
   avi: "-video",
   zip: "-zipper"
 };
-export default class extends SfGpsDsAuQldStatusHelperMixin(SfGpsDsFormFileOsN) {
+export default class extends SfGpsDsAuQldStatusHelperMixin(SfGpsDsFormFile) {
   @track computedAriaDescribedBy;
 
   /* getters */

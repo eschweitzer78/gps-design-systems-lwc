@@ -1,0 +1,99 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="omni-typeahead-container">
+    <c-sf-gps-ds-au-vic2-typeahead
+      lwc:if={_propSetMap.enableLookup}
+      field-level-help={mergedHelpText}
+      label={mergedLabel}
+      options={options}
+      placeholder={mergedPlaceholder}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
+      value={elementValue}
+      remote-source
+      disable-filter={_disableFilter}
+      disabled={_propSetMap.readOnly}
+      data-omni-input
+      onblur={handleBlur}
+      onselect={handleSelect}
+      onlookupfocus={handleLookupFocus}
+    >
+      <button
+        class="slds-button slds-button_icon"
+        slot="iconRight"
+        aria-expanded={_showLookupOptions}
+        onkeydown={handleLookupButtonKeyDown}
+        onclick={handleLookupButtonDropdownClick}
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name="utility:down"
+          extraclass="slds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={allCustomLabelsUtil.OmniTypeaheadDropdownIcon}
+        >
+        </c-sf-gps-ds-osrt-icon>
+      </button>
+    </c-sf-gps-ds-au-vic2-typeahead>
+    <c-sf-gps-ds-au-vic2-typeahead
+      lwc:else
+      field-level-help={mergedHelpText}
+      label={mergedLabel}
+      options={options}
+      placeholder={mergedPlaceholder}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      min-length={_propSetMap.minLength}
+      max-length={_propSetMap.maxLength}
+      message-when-value-missing={mergedMessageWhenValueMissing}
+      message-when-too-short={mergedMessageWhenTooShort}
+      message-when-too-long={mergedMessageWhenTooLong}
+      value={elementValue}
+      remote-source={_useRemoteSource}
+      disable-filter={_disableFilter}
+      disabled={_propSetMap.readOnly}
+      data-omni-input
+      onblur={handleBlur}
+      onlastitemclick={enterEditMode}
+      onselect={handleSelect}
+      onclear={handleClear}
+    >
+      <button
+        if:false={_propSetMap.hideEditButton}
+        class="slds-button slds-button_icon"
+        slot="iconRight"
+        aria-expanded={_isEditMode}
+        onclick={toggleEditMode}
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name="utility:edit"
+          extraclass="slds-button__icon"
+          size="x-small"
+          theme={_theme}
+          alternative-text={_editLabel}
+        ></c-sf-gps-ds-osrt-icon>
+      </button>
+
+      <a slot="lastItem" if:true={_newItemLabel} label={_newItemLabel}
+        >{_newItemLabel}</a
+      >
+    </c-sf-gps-ds-au-vic2-typeahead>
+
+    <span
+      lwc:if={errorMessage}
+      class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <c-sf-gps-ds-au-vic2-icon size="s" name="icon-exclamation-circle-filled">
+      </c-sf-gps-ds-au-vic2-icon>
+      <span>{errorMessage}</span>
+    </span>
+  </div>
+</template>

@@ -6,10 +6,10 @@
  */
 
 import SfGpsDsFormPassword from "c/sfGpsDsFormPasswordOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormPasswordOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
+export default class extends SfGpsDsAuVic2FormElementMixin(
   SfGpsDsFormPassword
 ) {
   /* lifecycle */

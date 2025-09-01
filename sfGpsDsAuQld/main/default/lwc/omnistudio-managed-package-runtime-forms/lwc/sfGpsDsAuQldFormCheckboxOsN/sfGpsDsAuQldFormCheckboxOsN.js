@@ -5,10 +5,10 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormCheckboxOsN from "c/sfGpsDsFormCheckboxOsN";
+import SfGpsDsFormCheckbox from "c/sfGpsDsFormCheckboxOsN";
 import tmpl from "./sfGpsDsAuQldFormCheckboxOsN.html";
 
-export default class extends SfGpsDsFormCheckboxOsN {
+export default class extends SfGpsDsFormCheckbox {
   /* lifecycle */
 
   render() {

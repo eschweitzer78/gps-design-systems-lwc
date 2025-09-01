@@ -84,8 +84,19 @@
       >
     </c-sf-gps-ds-au-vic2-typeahead-os-n>
 
-    <div if:true={errorMessage} class="slds-has-error">
-      <span class="slds-form-element__help">{errorMessage}</span>
-    </div>
+    <span
+      lwc:if={errorMessage}
+      class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <c-sf-gps-ds-au-vic2-icon-os
+        size="s"
+        name="icon-exclamation-circle-filled"
+      >
+      </c-sf-gps-ds-au-vic2-icon-os>
+      <span>{errorMessage}</span>
+    </span>
   </div>
 </template>

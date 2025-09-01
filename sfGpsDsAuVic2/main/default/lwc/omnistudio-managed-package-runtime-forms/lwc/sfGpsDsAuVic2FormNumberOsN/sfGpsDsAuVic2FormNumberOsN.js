@@ -5,13 +5,11 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormNumberOsN from "c/sfGpsDsFormNumberOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsFormNumber from "c/sfGpsDsFormNumberOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormNumberOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
-  SfGpsDsFormNumberOsN
-) {
+export default class extends SfGpsDsAuVic2FormElementMixin(SfGpsDsFormNumber) {
   /* lifecycle */
 
   render() {

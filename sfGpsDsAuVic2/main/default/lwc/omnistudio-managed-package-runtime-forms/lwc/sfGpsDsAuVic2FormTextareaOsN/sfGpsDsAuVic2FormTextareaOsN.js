@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import SfGpsDsFormTextareaOsN from "c/sfGpsDsFormTextareaOsN";
-import SfGpsDsAuVic2FormElementMixinOsN from "c/sfGpsDsAuVic2FormElementMixinOsN";
+import SfGpsDsFormTextarea from "c/sfGpsDsFormTextareaOsN";
+import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixinOsN";
 import tmpl from "./sfGpsDsAuVic2FormTextareaOsN.html";
 
-export default class extends SfGpsDsAuVic2FormElementMixinOsN(
-  SfGpsDsFormTextareaOsN
+export default class extends SfGpsDsAuVic2FormElementMixin(
+  SfGpsDsFormTextarea
 ) {
   /* lifecycle */
 
