@@ -1,0 +1,8 @@
+.rpl-form-option--single .rpl-form-label__required {
+  line-height: var(--rpl-type-lh-4);
+  margin-left: var(--rpl-sp-2);
+}
+
+:host {
+  display: block;
+}

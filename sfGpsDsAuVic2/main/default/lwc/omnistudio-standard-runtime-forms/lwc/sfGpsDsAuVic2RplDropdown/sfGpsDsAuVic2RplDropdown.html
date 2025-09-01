@@ -1,0 +1,200 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <label
+    class="rpl-form-label rpl-type-h4-fixed"
+    data-label="true"
+    for="textareaId"
+  >
+    <span class="rpl-form-label__inner">{label}</span>
+    <span
+      lwc:if={required}
+      class="rpl-form-label__required rpl-type-label-small"
+      >({requiredLabel})</span
+    >
+    <slot name="label"> </slot>
+  </label>
+
+  <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
+    {fieldLevelHelp}
+  </div>
+
+  <span
+    lwc:if={isError}
+    class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+    aria-live="assertive"
+    role="alert"
+    id="errorMessageBlock"
+  >
+    <c-sf-gps-ds-au-vic2-icon size="s" name="icon-exclamation-circle-filled">
+    </c-sf-gps-ds-au-vic2-icon>
+    <span>{errorMessage}</span>
+  </span>
+
+  <slot name="sublabel"></slot>
+
+  <div
+    lwc:ref="containerRef"
+    class={computedContainerClassName}
+    style={computedContainerStyle}
+    onkeydown={handleContainerKeydown}
+  >
+    <div
+      lwc:ref="comboboxRef"
+      class={computedInputClassName}
+      aria-controls="menuId"
+      aria-expanded={_isOpen}
+      aria-haspopup="listbox"
+      aria-disabled={disabled}
+      aria-invalid={invalid}
+      aria-labelledby="labelId"
+      aria-activedescendant={computedInputActiveDescendant}
+      role="combobox"
+      tabindex={computedComboboxTabIndex}
+      onclick={handleComboboxClick}
+      onkeydown={handleComboboxKeydown}
+      data-ti={computedComboboxTabIndex}
+    >
+      <template lwc:if={_searchable}>
+        <!-- searchable, combobox like -->
+
+        <c-sf-gps-ds-au-vic2-multi-value-tag-list
+          lwc:if={computedShowMultiValueTagList}
+          lwc:ref="tagListRef"
+          is-open={_isOpen}
+          selected-options={selectedOptions}
+          focus-tag={_focusTag}
+          onremoveoption={handleRemoveOption}
+          onfocussearch={focusSearch}
+        >
+        </c-sf-gps-ds-au-vic2-multi-value-tag-list>
+
+        <template lwc:if={_isOpen}>
+          <input
+            lwc:ref="searchRef"
+            value={_searchValue}
+            aria-label={computedSearchAriaLabel}
+            class="rpl-form-dropdown-search__input rpl-type-p"
+            autocomplete="off"
+            onkeydown={handleSearchKeydown}
+            onfocus={handleSearchFocus}
+            onblur={handleSearchBlur}
+            oninput={handleSearchInput}
+            onchange={handleSearchChange}
+          />
+        </template>
+        <span
+          lwc:elseif={computedShowPlaceholder}
+          class="rpl-form-dropdown-input__placeholder rpl-type-p"
+        >
+          {placeholder}
+        </span>
+        <span
+          lwc:elseif={computedShowSingleValue}
+          class="rpl-form-dropdown-input__single-value rpl-type-p"
+        >
+          {singleValueDisplay}
+        </span>
+      </template>
+
+      <template lwc:else>
+        <!-- non searchable, lookup like -->
+        <span
+          lwc:if={computedShowPlaceholder}
+          class="rpl-form-dropdown-input__placeholder rpl-type-p"
+        >
+          {placeholder}
+        </span>
+        <c-sf-gps-ds-au-vic2-multi-value-label
+          lwc:elseif={_multiple}
+          selected-options={selectedOptions}
+        >
+        </c-sf-gps-ds-au-vic2-multi-value-label>
+        <span lwc:else class="rpl-form-dropdown-input__single-value rpl-type-p">
+          {singleValueDisplay}
+        </span>
+      </template>
+
+      <span lwc:ref="toggleRef" class="rpl-form-dropdown-input__toggle">
+        <c-sf-gps-ds-au-vic2-spinner
+          lwc:if={_loading}
+          size="s"
+          class-name="rpl-form-dropdown__chevron"
+        >
+        </c-sf-gps-ds-au-vic2-spinner>
+        <c-sf-gps-ds-au-vic2-icon
+          lwc:else
+          name="icon-chevron-down"
+          size="s"
+          class-name="rpl-form-dropdown__chevron"
+        >
+        </c-sf-gps-ds-au-vic2-icon>
+      </span>
+    </div>
+
+    <div
+      lwc:if={_isOpen}
+      id="menuId"
+      lwc:ref="menuRef"
+      class="rpl-form-dropdown-menu"
+      role="listbox"
+      aria-multiselectable={multiple}
+      aria-required={required}
+      aria-invalid={invalid}
+      aria-labelledby="labelId"
+      tabindex="-1"
+    >
+      <template for:each={_decoratedProcessedOptions} for:item="option">
+        <div
+          key={option.id}
+          id={option.id}
+          data-option-id={option.id}
+          role="option"
+          class={option.className}
+          aria-selected={option.selected}
+          tabindex="-1"
+          onkeydown={handleOptionKeydown}
+          onclick={handleOptionClick}
+        >
+          <span lwc:if={multiple} class="rpl-form-dropdown-option__check">
+            <c-sf-gps-ds-au-vic2-icon
+              lwc:if={option.selected}
+              name="icon-check"
+            >
+            </c-sf-gps-ds-au-vic2-icon>
+          </span>
+          <span lwc:else class="rpl-form-dropdown-option__tick">
+            <c-sf-gps-ds-au-vic2-icon
+              lwc:if={option.selected}
+              name="icon-check"
+            >
+            </c-sf-gps-ds-au-vic2-icon>
+          </span>
+          {option.label}
+        </div>
+      </template>
+
+      <div
+        lwc:if={computedShowNoResults}
+        role="presentation"
+        class="rpl-form-dropdown-search__no-results rpl-type-p"
+        aria-live="polite"
+      >
+        {i18n.noResultsLabel}
+      </div>
+
+      <div
+        data-option-id={lastItemOptionId}
+        role="option"
+        class="rpl-form-dropdown-option rpl-type-p rpl-u-focusable-block"
+        tabindex="-1"
+        style={computedLastItemStyle}
+        onkeydown={handleOptionKeydown}
+        onclick={handleOptionClick}
+      >
+        <span lwc:if={multiple} class="rpl-form-dropdown-option__check"> </span>
+        <span lwc:else class="rpl-form-dropdown-option__tick"> </span>
+        <slot name="lastItem" onslotchange={handleLastItemChange}></slot>
+      </div>
+    </div>
+  </div>
+</template>

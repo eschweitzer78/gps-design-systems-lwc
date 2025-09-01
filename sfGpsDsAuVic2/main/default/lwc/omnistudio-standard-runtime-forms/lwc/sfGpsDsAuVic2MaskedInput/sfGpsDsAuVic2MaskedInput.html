@@ -1,0 +1,127 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <label
+    class="rpl-form-label rpl-type-h4-fixed"
+    for={inputId}
+    data-label="true"
+  >
+    <span class="rpl-form-label__inner">{label}</span>
+    <span
+      lwc:if={required}
+      class="rpl-form-label__required rpl-type-label-small"
+      >({requiredLabel})</span
+    >
+    <slot name="label"> </slot>
+  </label>
+
+  <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
+    {fieldLevelHelp}
+  </div>
+
+  <span
+    lwc:if={sfGpsDsIsError}
+    class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+    aria-live="assertive"
+    role="alert"
+    id="errorMessageBlock"
+  >
+    <c-sf-gps-ds-au-vic2-icon size="s" name="icon-exclamation-circle-filled">
+    </c-sf-gps-ds-au-vic2-icon>
+    <span>{sfGpsDsErrorMessage}</span>
+  </span>
+
+  <div class="rpl-form__inner">
+    <div class={computedInputClassName}>
+      <!-- text tel number -->
+      <!-- formula -->
+      <input
+        lwc:if={_isFormula}
+        type="text"
+        readonly
+        disabled
+        id={inputId}
+        value={maskedValue}
+        aria-describedby={computedAriaDescribedBy}
+        aria-required="false"
+        aria-invalid="false"
+        aria-readonly="true"
+        class="rpl-u-focusable-outline"
+      />
+
+      <template lwc:elseif={isCurrencySFlocale}>
+        <input
+          lwc:if={isInput}
+          id={inputId}
+          tabindex={tabIndex}
+          accesskey={accessKey}
+          step={step}
+          min={min}
+          max={max}
+          maxlength={maxLength}
+          minlength={minLength}
+          type={type}
+          inputmode={inputmode}
+          disabled={disabled}
+          required={required}
+          readonly={readOnly}
+          placeholder={placeholder}
+          aria-readonly={readOnly}
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={computedAriaDescribedBy}
+          aria-label={ariaLabel}
+          aria-invalid={sfGpsDsIsError}
+          value={_currencyVal}
+          onfocus={handleFocus}
+          onblur={handleBlur}
+          oninput={handleInput}
+          onkeyup={handleKeyup}
+          onchange={handleChange}
+          class="rpl-u-focusable-outline"
+        />
+      </template>
+
+      <template lwc:else>
+        <input
+          lwc:if={isNumber}
+          class="hiddenNumber slds-hide"
+          required={required}
+          min={min}
+          max={max}
+          step={step}
+          type="number"
+          value={value}
+        />
+
+        <input
+          lwc:if={isInput}
+          id={inputId}
+          tabindex={tabIndex}
+          accesskey={accessKey}
+          step={step}
+          min={min}
+          max={max}
+          maxlength={maxLength}
+          minlength={minLength}
+          type={inputType}
+          inputmode={inputmode}
+          disabled={disabled}
+          required={required}
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          placeholder={placeholder}
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={computedAriaDescribedBy}
+          aria-label={ariaLabel}
+          autocomplete={autocomplete}
+          name={name}
+          aria-invalid={sfGpsDsIsError}
+          onfocus={handleFocus}
+          onblur={handleBlur}
+          oninput={handleInput}
+          onkeyup={handleKeyup}
+          onchange={handleChange}
+        />
+      </template>
+    </div>
+  </div>
+</template>

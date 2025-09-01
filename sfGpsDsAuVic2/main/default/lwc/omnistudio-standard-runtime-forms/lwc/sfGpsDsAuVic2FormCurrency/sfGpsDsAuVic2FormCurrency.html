@@ -1,0 +1,60 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-au-vic2-masked-input
+    type="text"
+    inputmode="decimal"
+    label={mergedLabel}
+    value={elementValue}
+    required={_propSetMap.required}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    read-only={_propSetMap.readOnly}
+    tab-index={tabIndex}
+    imask={_imaskCurrencyAttributes}
+    theme={_theme}
+    field-level-help={mergedHelpText}
+    field-level-help-position={_propSetMap.helpTextPos}
+    min={_propSetMap.min}
+    max={_propSetMap.max}
+    placeholder={mergedPlaceholder}
+    message-when-value-missing={mergedMessageWhenValueMissing}
+    message-when-pattern-mismatch={mergedMessageWhenPatternMismatch}
+    message-when-too-short={mergedMessageWhenTooShort}
+    message-when-too-long={mergedMessageWhenTooLong}
+    message-when-bad-input={mergedMessageWhenBadInput}
+    message-when-range-overflow={mergedMessageWhenRangeOverflow}
+    message-when-range-underflow={mergedMessageWhenRangeUnderflow}
+    message-when-step-mismatch={mergedMessageWhenStepMismatch}
+    message-when-type-mismatch={mergedMessageWhenTypeMismatch}
+    message-when-mask-incomplete={mergedMessageWhenMaskIncomplete}
+    data-omni-input
+    onblur={handleBlur}
+    class="rpl-form__wrapper"
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
+        <button
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Currency"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-au-vic2-icon name="icon-add" size="xs" colour="inactive">
+          </c-sf-gps-ds-au-vic2-icon>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Currency"
+          onclick={handleRemove}
+        >
+          <c-sf-gps-ds-au-vic2-icon
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic2-masked-input>
+</template>

@@ -1,0 +1,72 @@
+<template>
+  <label
+    lwc:if={labelVisible}
+    class="rpl-form-label rpl-type-h4-fixed"
+    for="textareaId"
+    data-label="true"
+  >
+    <span class="rpl-form-label__inner">{label}</span>
+    <span
+      lwc:if={required}
+      class="rpl-form-label__required rpl-type-label-small"
+      >({requiredLabel})</span
+    >
+    <slot name="label"> </slot>
+  </label>
+
+  <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
+    {fieldLevelHelp}
+  </div>
+
+  <span
+    lwc:if={sfGpsDsIsError}
+    class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+    aria-live="assertive"
+    role="alert"
+    id="errorMessageBlock"
+  >
+    <c-sf-gps-ds-au-vic2-icon size="s" name="icon-exclamation-circle-filled">
+    </c-sf-gps-ds-au-vic2-icon>
+    <span>{sfGpsDsErrorMessage}</span>
+  </span>
+
+  <div class="rpl-form__inner">
+    <div class={computedClassName}>
+      <!-- removing min and max length as counter could be words -->
+      <textarea
+        lwc:ref="textarea"
+        class="rpl-type-p rpl-u-focusable-outline"
+        tabindex={tabIndex}
+        readonly={readOnly}
+        aria-readonly={readOnly}
+        accesskey={accessKey}
+        name={name}
+        disabled={disabled}
+        required={required}
+        aria-required={required}
+        placeholder={placeholder}
+        id="textareaId"
+        autocomplete={autocomplete}
+        aria-invalid={sfGpsDsIsError}
+        aria-describedby={computedAriaDescribedBy}
+        oninput={updateValue}
+        onblur={validateError}
+        onfocus={triggerEvent}
+        onchange={triggerEvent}
+        onkeyup={keyCallbacks}
+        onkeydown={keyCallbacks}
+        data-sfgpsds-input
+        rows={_height}
+      >
+        {_val}
+      </textarea>
+    </div>
+
+    <div
+      lwc:if={computedShowCounter}
+      class="rpl-form__counter rpl-type-label-small"
+    >
+      {computedCounterMessage}
+    </div>
+  </div>
+</template>

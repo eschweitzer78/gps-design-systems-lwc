@@ -1,0 +1,65 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <fieldset
+    class="rpl-form__fieldset"
+    aria-describedby={computedAriaDescribedBy}
+  >
+    <legend class="rpl-form-label rpl-type-h4-fixed">
+      <span class="rpl-form-label__inner">{label}</span>
+      <span
+        lwc:if={required}
+        class="rpl-form-label__required rpl-type-label-small"
+      >
+        ({requiredLabel})
+      </span>
+      <slot name="label"></slot>
+    </legend>
+
+    <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
+      {fieldLevelHelp}
+    </div>
+
+    <span
+      lwc:if={sfGpsDsIsError}
+      class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <c-sf-gps-ds-au-vic2-icon size="s" name="icon-exclamation-circle-filled">
+      </c-sf-gps-ds-au-vic2-icon>
+      <span>{sfGpsDsErrorMessage}</span>
+    </span>
+
+    <div lwc:if={internalOpts} class={computedButtonsClassName}>
+      <template for:each={internalOpts} for:item="option" for:index="index">
+        <div key={option.id} class="rpl-form-opt-buttons-option">
+          <input
+            type="radio"
+            tabindex={tabIndex}
+            disabled={disabled}
+            id={option.id}
+            data-index={index}
+            name={option.name}
+            aria-invalid={sfGpsDsIsError}
+            value={option.value}
+            checked={option.selected}
+            class="rpl-form-opt-buttons-option__input"
+            onfocus={handleFocus}
+            onblur={handleBlur}
+            onchange={sfGpsDsOnChangeValue}
+            onkeydown={handleKeyDownEvent}
+          />
+
+          <label
+            class="rpl-form-opt-buttons-option__label rpl-type-label"
+            data-index={index}
+            for={option.id}
+          >
+            {option.label}
+          </label>
+        </div>
+      </template>
+    </div>
+  </fieldset>
+</template>

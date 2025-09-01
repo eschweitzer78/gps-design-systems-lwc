@@ -1,0 +1,46 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <fieldset class="rpl-form__fieldset" data-invalid={_showValidation}>
+    <label
+      lwc:if={_propSetMap.label}
+      class="rpl-form-label rpl-type-h4-fixed"
+      for="frt"
+    >
+      <span class="rpl-form-label__inner">{mergedLabel}</span>
+      <span
+        lwc:if={_propSetMap.required}
+        class="rpl-form-label__required rpl-type-label-small"
+        >({allCustomLabelsUtil.OmniRequired})</span
+      >
+    </label>
+
+    <div class="vic-disclosure">
+      <div class="vic-disclosure__content">
+        <c-sf-gps-ds-au-vic2-content
+          id="frt"
+          class-name="rpl-form-help"
+          html={_dText}
+        >
+        </c-sf-gps-ds-au-vic2-content>
+      </div>
+
+      <div class="vic-disclosure__consent">
+        <c-sf-gps-ds-au-vic2-input
+          type="checkbox"
+          label={mergedCheckLabel}
+          required={_propSetMap.required}
+          required-label={allCustomLabelsUtil.OmniRequired}
+          hide-required="true"
+          theme={_theme}
+          checked={elementValue}
+          message-when-value-missing={mergedMessageWhenValueMissing}
+          tab-index={tabIndex}
+          data-omni-input
+          onchange={handleChange}
+          read-only={_propSetMap.readOnly}
+        >
+        </c-sf-gps-ds-au-vic2-input>
+      </div>
+    </div>
+  </fieldset>
+</template>

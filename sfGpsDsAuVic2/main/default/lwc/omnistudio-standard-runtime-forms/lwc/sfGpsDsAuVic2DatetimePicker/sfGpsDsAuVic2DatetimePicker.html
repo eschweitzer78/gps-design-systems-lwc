@@ -1,0 +1,76 @@
+<template>
+  <div class="rpl-fieldset" aria-describedby={computedAriaDescribedBy}>
+    <label class="rpl-form-label rpl-type-h4-fixed" for="date-input">
+      <span class="rpl-form-label__inner">{label}</span>
+      <span
+        lwc:if={required}
+        class="rpl-form-label__required rpl-type-label-small"
+        >({requiredLabel})</span
+      >
+      <slot name="label"> </slot>
+    </label>
+
+    <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
+      {fieldLevelHelp}
+    </div>
+
+    <div class="rpl-row">
+      <div class="rpl-col rpl-col--12 rpl-col--7-m rpl-col--6-l rpl-col--6-xl">
+        <c-sf-gps-ds-au-vic2-date-picker
+          placeholder={datePlaceholder}
+          label={dateLabel}
+          aria-label={dateAriaLabel}
+          format={dateFormat}
+          locale-format={localeFormat}
+          locale-format-invalid-error={localeFormatInvalidError}
+          name={dateName}
+          min={dateMin}
+          max={dateMax}
+          value={_value}
+          tab-index={tabIndex}
+          disabled={disabled}
+          required={required}
+          output-type="date"
+          message-when-value-missing={messageWhenValueMissing}
+          message-when-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-overflow={messageWhenRangeOverflow}
+          message-when-bad-input={messageWhenBadInput}
+          required-label={requiredLabel}
+          onchange={setTime}
+          data-sfgpsds-date-picker
+        >
+        </c-sf-gps-ds-au-vic2-date-picker>
+      </div>
+      <div class="rpl-col rpl-col--12 rpl-col--5-m rpl-col--6-l rpl-col--6-xl">
+        <c-sf-gps-ds-au-vic2-time-picker
+          placeholder={timePlaceholder}
+          label={timeLabel}
+          aria-label={timeAriaLabel}
+          name={timeName}
+          format={timeFormat}
+          locale-format={localeFormat}
+          locale-format-invalid-error={localeFormatInvalidError}
+          min={timeMin}
+          max={timeMax}
+          value={_value}
+          tab-index={tabIndex}
+          read-only={readOnly}
+          disabled={disabled}
+          required={required}
+          required-label={requiredLabel}
+          interval={interval}
+          output-type="date"
+          message-when-value-missing={messageWhenValueMissing}
+          message-when-bad-input={messageWhenBadInput}
+          message-when-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-overflow={messageWhenRangeOverflow}
+          data-sfgpsds-time-picker
+        >
+          <div class="sublabel" slot="sublabel">
+            <label class="rpl-type-label-small">‎</label>
+          </div>
+        </c-sf-gps-ds-au-vic2-time-picker>
+      </div>
+    </div>
+  </div>
+</template>
