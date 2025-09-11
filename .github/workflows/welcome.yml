@@ -1,4 +1,6 @@
 name: Greeting
+permissions:
+  issues: write
 
 on:
   issues:
