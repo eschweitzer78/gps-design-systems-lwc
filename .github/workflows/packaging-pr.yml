@@ -1,5 +1,7 @@
 # Unique name for this workflow
 name: Packaging on PR
+permissions:
+  contents: read
 
 # Workflow starts when receiving custom event sent by CI workflow
 on:
