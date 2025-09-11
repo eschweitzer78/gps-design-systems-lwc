@@ -1,5 +1,7 @@
 # Unique name for this workflow
 name: CI
+permissions:
+  contents: read
 
 # Definition when the workflow should run
 on:
@@ -289,6 +291,8 @@ jobs:
 
   trigger-packaging:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs: scratch-org-test
     steps:
       # Checkout the source code

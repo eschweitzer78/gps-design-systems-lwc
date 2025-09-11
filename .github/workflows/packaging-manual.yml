@@ -1,5 +1,7 @@
 # Unique name for this workflow
 name: Packaging Manual
+permissions:
+  contents: read
 
 # Definition when the workflow should run
 on:
