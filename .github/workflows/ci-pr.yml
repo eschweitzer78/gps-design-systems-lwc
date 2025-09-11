@@ -12,6 +12,9 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
 
+permissions:
+  contents: read
+
 # Workflow environment variables
 env:
   # Is the PR base branch a prerelease branch
