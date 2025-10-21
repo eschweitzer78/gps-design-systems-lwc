@@ -101,6 +101,17 @@ extends SfGpsDsElement {
     defaultValue: PREVENTDEFAULT_DEFAULT
   });
 
+  // Added as we made the mistake of renaming preventClickDefault to preventDefault when migrating to TS
+  // @ts-ignore
+  @api 
+  get preventClickDefault() {
+    return this.preventDefault;
+  }
+
+  set preventClickDefault(value) {
+    this.preventDefault = value;
+  }
+
   // @ts-ignore
   @api 
   dateStyle?: DateStyle;
