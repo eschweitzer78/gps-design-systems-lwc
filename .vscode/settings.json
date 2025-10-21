@@ -5,5 +5,6 @@
     "**/.sfdx": true
   },
   "editor.tabSize": 2,
-  "salesforcedx-vscode-lwc.preview.typeScriptSupport": true
+  "salesforcedx-vscode-lwc.preview.typeScriptSupport": true,
+  "xml.preferences.showSchemaDocumentationType": "none"
 }
