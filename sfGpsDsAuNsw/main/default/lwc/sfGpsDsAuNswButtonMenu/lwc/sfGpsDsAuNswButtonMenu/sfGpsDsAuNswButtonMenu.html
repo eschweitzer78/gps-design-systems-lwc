@@ -1,0 +1,51 @@
+<!-- sldsValidatorIgnore -->
+<template lwc:render-mode="light">
+  <div class={computedClassName} lwc:ref="containerRef">
+    <button
+      lwc:ref="buttonRef"
+      aria-haspopup="true"
+      aria-controls="menu"
+      aria-expanded={_isOpen}
+      aria-label={computedButtonAriaLabel}
+      class={computedButtonClassName}
+      onclick={handleButtonClick}
+      onkeydown={handleButtonKeydown}
+    >
+      <slot>
+        <span
+          lwc:if={iconName}
+          class="material-icons nsw-material-icons"
+          aria-hidden="true"
+        >
+          {iconName}
+        </span>
+        {label}
+      </slot>
+    </button>
+
+    <c-sf-gps-ds-focus-trap>
+      <ul
+        id="menu"
+        role="menu"
+        aria-hidden={computedIsClosed}
+        tabindex="-1"
+        class={computedDropdownClassName}
+      >
+        <template for:each={computedItems} for:item="item">
+          <li key={item.key} role="none">
+            <a
+              role="menuitem"
+              href={item.url}
+              class="sfgpsdsnsw-button-menu--dropdown-item"
+              data-ndx={item.index}
+              onclick={handleItemClick}
+              onkeydown={handleItemKeydown}
+            >
+              {item.text}
+            </a>
+          </li>
+        </template>
+      </ul>
+    </c-sf-gps-ds-focus-trap>
+  </div>
+</template>

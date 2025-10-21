@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Button Menu</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="Label of the button, leave blank if not required."
+      />
+      <property
+        name="iconName"
+        type="String"
+        label="Label"
+        description="Label of the button, leave blank if not required."
+      />
+      <property
+        name="variant"
+        type="String"
+        label="Variant"
+        description="Variant of the button."
+        datasource="padded,unpadded"
+        default="padded"
+      />
+      <property
+        name="menuPosition"
+        type="String"
+        label="Menu position"
+        description="Position of the menu with respect to button."
+        datasource="left,right"
+        default="left"
+      />
+      <property
+        name="links"
+        type="String"
+        label="Links"
+        description="List of links in Markdown format."
+        default="[Menu item 2](#)[Menu item 2](#)"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
