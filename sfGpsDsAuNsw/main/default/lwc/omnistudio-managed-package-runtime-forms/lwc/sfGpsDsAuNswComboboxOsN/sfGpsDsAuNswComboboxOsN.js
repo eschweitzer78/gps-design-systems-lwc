@@ -62,6 +62,10 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(OmnistudioCombobox) {
     super.selectOption(event, selectedOption);
   }
 
+  preventClickDefault(event) {
+    event.preventDefault(); // prevents following the href
+  }
+
   /* lifecycle */
 
   render() {
