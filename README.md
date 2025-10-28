@@ -5,7 +5,7 @@
 A collection of Salesforce Lightning Web Components (LWCs) for selected Governments' Design Systems. The collection
 covers Salesforce Experience Cloud as well as Salesforce Communities for Public Sector Solutions (Omnistudio), and may be extended in the future to help with Salesforce Flows provided they're surfaced via an Experience Cloud community.
 
-Note that at this stage there is a dependency on Omnistudio **251.1 (at the minimum)**, which is the version we built and tested against. You also need to stay on the Omnistudio Managed Package runtime as the standard runtime is not quite on parity yet when it comes to overrides, which we do leverage quite a bit.
+Note that at this stage there is a dependency on Omnistudio **258.5 (at the minimum)**, which is the version we built and tested against. You also need to stay on the Omnistudio Managed Package runtime as the standard runtime is not quite on parity yet when it comes to overrides, which we do leverage quite a bit.
 
 Do read our [change log](./CHANGELOG.md) if you plan on updating already installed packages in order to check for changes in behaviour or configuration changes.
 
