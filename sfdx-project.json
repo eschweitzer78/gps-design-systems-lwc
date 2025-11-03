@@ -108,7 +108,7 @@
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
-          "package": "omnistudio 258.1"
+          "package": "omnistudio 258.4"
         }
       ]
     },
