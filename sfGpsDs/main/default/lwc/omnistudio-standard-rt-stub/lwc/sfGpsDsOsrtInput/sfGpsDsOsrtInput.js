@@ -437,7 +437,7 @@ export default class VlocityInput extends LightningElement {
       case "datetime":
         this.isCustomLwc = true;
         this.isDateTime = true;
-        this._innerElement = "c-datetime-picker";
+        this._innerElement = "c-sf-gps-ds-osrt-datetime-picker";
         break;
       case "formula":
         this._isFormula = true;

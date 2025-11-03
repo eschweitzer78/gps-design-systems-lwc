@@ -68,15 +68,15 @@ export default class extends OmniscriptInput {
     super.initOptions();
 
     switch (this._innerElement) {
-      case "c-time-picker":
+      case "c-sf-gps-ds-osrt-time-picker":
         this._innerElement = "c-sf-gps-ds-au-vic2-time-picker-os-n";
         break;
 
-      case "c-date-picker":
+      case "c-sf-gps-ds-osrt-date-picker":
         this._innerElement = "c-sf-gps-ds-au-vic2-date-picker-os-n";
         break;
 
-      case "c-datetime-picker":
+      case "c-sf-gps-ds-osrt-datetime-picker":
         this._innerElement = "c-sf-gps-ds-au-vic2-datetime-picker-os-n";
         break;
 

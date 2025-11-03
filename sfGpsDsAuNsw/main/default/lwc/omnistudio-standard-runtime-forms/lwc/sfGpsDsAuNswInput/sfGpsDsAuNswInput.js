@@ -20,15 +20,15 @@ export default class extends StatusHelperMixin(OmniscriptInput) {
     super.initOptions();
 
     switch (this._innerElement) {
-      case "c-time-picker":
+      case "c-sf-gps-ds-osrt-time-picker":
         this._innerElement = "c-sf-gps-ds-au-nsw-time-picker";
         break;
 
-      case "c-date-picker":
+      case "c-sf-gps-ds-osrt-date-picker":
         this._innerElement = "c-sf-gps-ds-au-nsw-date-picker";
         break;
 
-      case "c-datetime-picker":
+      case "c-sf-gps-ds-osrt-datetime-picker":
         this._innerElement = "c-sf-gps-ds-au-nsw-datetime-picker";
         break;
 
