@@ -1,5 +1,142 @@
 ## Change log
 
+### 1 September 2025
+
+#### QLD DS and VIC2 DS: Support for OmniScript Standard Runtime
+
+We added support for the standard runtime with OmniScript. This comes with a new Override LWC for each OmniScript element.
+
+Refer to [`sfGpsDsAuQld/main/default/lwc/omnistudio-standard-runtime-forms`](sfGpsDsAuQld/main/default/lwc/omnistudio-standard-runtime-forms) and [`sfGpsDsAuVic2/main/default/lwc/omnistudio-standard-runtime-forms`](sfGpsDsAuVic2/main/default/lwc/omnistudio-standard-runtime-forms).
+
+### 28 August 2025
+
+#### NSW DS: Support for OmniScript Standard Runtime
+
+We added support for the standard runtime with OmniScript. This comes with a new Override LWC for each OmniScript element.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/omnistudio-standard-runtime-forms`](sfGpsDsAuNsw/main/default/lwc/omnistudio-standard-runtime-forms).
+
+### 13 August 2025
+
+#### NSW DS: Support for Places Typeahead in OmniScripts
+
+We introduced support the the Places Typeahead, which is a regular Typeahead when "use Google Maps autocomplete" is checked.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormPlacesTypeaheadOsN`](sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormPlacesTypeaheadOsN).
+
+### 4 and 5 August 2025
+
+#### NSW DS: OmniScript standard navigation buttons
+
+We introduced a new override for steps, `sfGpsDsAuNswStepNoButtonOsN` that does not pack custom navigation buttons in the Step element. This can be used in conjuction with variants of the Experience Cloud stylesheets that no longer hide standard OmniStudio buttons:
+
+- `byo_aura-min-show-omni.css` (automatically pulled in the NSW DS Template when unchecking the 'Hide OmniStudio steps' theme setting),
+- `byo_lwr-min-show-omni.css`.
+
+This, in particular, allows users to "Cancel" the current OmniScript.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormStepNoButtonOsN`](sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormStepNoButtonOsN).
+
+We also styled the SLDS rendered action block buttons to visually align with the NSW DS.
+
+### 24 June 2025
+
+We sorted out a few namespace typos that unintentionally created issues when using our libraries with Locker.
+
+### 22 June 2025
+
+#### Partial move to typescript
+
+We moved sfGpsDs and SfGpsDsAuNsw to typescript.
+
+#### NSW DS: Introduced new OmniScript vertical progress bar
+
+So far, only a horizontal progress bar based on the NSW DS Progress component was supported in OmniScript. We have now introduced a vertical variant that is inspired by the NSW DS Steps component.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormStepChartOsN`](sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormStepChartOsN).
+
+#### NSW DS: Some SLDS overrides to adjust appearance of SLDS content in OmniScript
+
+In particular we worked Edit in Edit Block, and default OmniScript Navigation buttons.
+
+### 29 May 2025
+
+#### NSW DS: Allow to initialise an address typeahead with a string value
+
+We now allow to initialise an address typeahead with a string value that is the intended address. The component then performs the API lookup to retrieve the address details.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN`](sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN).
+
+#### NSW DS: Fixed a bug when clearing a required lookup
+
+Required lookups, when cleared, would display an empty error message. We have fixed this to display the appropriate error message.
+
+### 21 May 2025
+
+#### All DSes: Fixed event emitted by sfGpsDsSocialSharing
+
+Refer to [`sfGpsDs/main/default/lwc/sfGpsDsSocialSharing`](sfGpsDs/main/default/lwc/sfGpsDsSocialSharing).
+
+sfGpsDs/main/default/lwc/sfGpsDsSocialSharing
+
+#### VIC2 DS: Fixed bug in VIC2 LWR Accordion
+
+We fixed a bug where the VIC2 LWR Accordion only had 2 slots.
+
+Refer to [`sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Accordion/lwc/sfGpsDsAuVic2AccordionLwr`](sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Accordion/lwc/sfGpsDsAuVic2AccordionLwr).
+
+#### NSW DS: Introduced a new custom manual entry for the Address Typeahead
+
+You can now request the Address Typeahead to get into edit mode when "enter address manually is selected", hiding the original typeahead and showing whichever elements you have added to the typeahead.
+
+Use the OmniScript JSON editor to add the following flags to an address typeahead element:
+
+- manualAddressEditMode set to true to indicate you'd like that new behaviour to apply
+- mergedManualHelpText if you'd like to have a different help text when in manual mode (notwithstanding whether the former flag is set or not).
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN`](sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormAddressTypeaheadOsN).
+
+### 14 May 2025
+
+#### All: Move to Salesforce API v63
+
+We moved all metadata to API v63.
+
+#### VIC2 DS: Collapse/Expand for levels on side/vertical nav
+
+We added collapse and expand behaviour for side/vertical nav levels.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSideNav`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSideNav).
+
+#### VIC2 DS: Adjusting card grid
+
+We finessed the card grid behaviour to iron out a few rendering issues.
+
+#### QLD DS: Updated Date component
+
+We introduced the "Updated Date" component for the QLD DS which can be added at the bottom of a page to let
+readers know about when the page was last updated.
+
+Refer to [`sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldUpdatedDate`](sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldUpdatedDate).
+
+### 8 May 2025
+
+#### QLD DS: Align to Design System v1.14
+
+We went through all the components to check and adjust their alignment to v1.14.
+
+### 1 May 2025
+
+#### VIC2 DS: Styling adjustment for OmniStudio
+
+We adjusted the styling of multiple OmniStudio elements.
+
+#### VIC2 DS: Added HTML PlugIns
+
+We added HTML PlugIns which enable to automatically rewrite/reformat content placed in VIC2 DS Markup, e.g. formatting a table, lists, anchor links etc. to align with VIC2 DS styling for those element without having to painfully add all the class annotations.
+
+Refer to [`sfGpsDsAuVic2/main/default/lwc/functions/lwc/sfGpsDsAuVic2HtmlPlugIns`](sfGpsDsAuVic2/main/default/lwc/functions/lwc/sfGpsDsAuVic2HtmlPlugIns).
+
 ### 29 April 2025
 
 We upgraded a number of tools required for quality control and build.
