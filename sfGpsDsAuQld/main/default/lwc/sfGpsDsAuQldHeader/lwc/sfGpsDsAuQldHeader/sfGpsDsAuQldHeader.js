@@ -193,6 +193,10 @@ export default class extends LightningElement {
     return this.headerUrl || cBasePath || "/";
   }
 
+  get computedDefaultLogoUrl() {
+    return sfGpsDsAuQldStaticResource + "/assets/img/qgov-coa.svg#logo";
+  }
+
   get computedIconSearchUrl() {
     return STATIC_RESOURCE_ICONS_PATH + "#search";
   }
@@ -203,6 +207,14 @@ export default class extends LightningElement {
 
   get computedIconMenuUrl() {
     return STATIC_RESOURCE_ICONS_PATH + "#menu";
+  }
+
+  get computedCtaOneIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#" + this.ctaOneIcon;
+  }
+
+  get computedCtaTwoIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#" + this.ctaTwoIcon;
   }
 
   get computedSearchButtonClassName() {

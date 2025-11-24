@@ -1,4 +1,9 @@
 {
-  "sfGpsDsAuQld/sfGpsDsAuQld-min*":  [],
+  "sfGpsDsAuQld/sfGpsDsAuQld-min*":  [
+    { 
+      "from": ".qld__grid main>div>section>.container-fluid,", 
+      "to": ".qld__grid main>div>section>.container-fluid,c-sf-gps-ds-au-qld-promo-panel-comm.qld__promo-panel .container-fluid," 
+    }
+  ],
   "sfGpsDsAuQld/byo_lwr-min*": []
 }

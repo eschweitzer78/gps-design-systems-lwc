@@ -58,7 +58,7 @@
     "@lwc/eslint-plugin-lwc": "^3.1.0",
     "@lwc/jest-preset": "^19.1.0",
     "@prettier/plugin-xml": "^3.4.1",
-    "@qhealth-design-system/core": "1.14.0",
+    "@qhealth-design-system/core": "1.17.2",
     "@sa11y/jest": "^7.0.0",
     "@salesforce/eslint-config-lwc": "^4.0.0",
     "@salesforce/eslint-plugin-lightning": "^2.0.0",

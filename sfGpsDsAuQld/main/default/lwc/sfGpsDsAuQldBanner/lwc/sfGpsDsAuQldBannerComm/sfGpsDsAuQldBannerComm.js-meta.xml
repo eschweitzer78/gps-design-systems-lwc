@@ -97,7 +97,7 @@
         label="Background colour style"
         description="Colour theme style used for the background."
         default="default"
-        datasource="default,alternate,dark,dark-alternate"
+        datasource="default,light,alternate,dark,dark-alternate"
       />
       <property
         name="backgroundImageSm"

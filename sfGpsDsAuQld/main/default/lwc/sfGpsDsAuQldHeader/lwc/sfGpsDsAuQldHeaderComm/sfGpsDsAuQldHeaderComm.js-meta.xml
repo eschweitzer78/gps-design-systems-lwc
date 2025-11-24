@@ -30,7 +30,7 @@
         type="String"
         label="Pre-header logo"
         description="URL of the image for the pre-header logo with Alternative Text in Markdown URL format."
-        default="[Queensland Government](/sfsites/c/resource/sfGpsDsAuQld/assets/img/header-logo-qgov--light.svg)"
+        default="[Queensland Government logo](/sfsites/c/resource/sfGpsDsAuQld/assets/img/header-logo-qgov--light.svg)"
       />
       <property
         name="ctaOneLink"
@@ -44,7 +44,7 @@
         type="String"
         label="Icon name for Call to Action link one"
         description="Font Awesome css classes to be applied."
-        default="fa-solid fa-phone"
+        default="phone"
       />
       <property
         name="ctaTwoLink"

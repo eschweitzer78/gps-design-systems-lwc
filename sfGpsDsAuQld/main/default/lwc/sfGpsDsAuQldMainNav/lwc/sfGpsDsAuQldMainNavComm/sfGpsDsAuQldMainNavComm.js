@@ -10,6 +10,8 @@ import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 
 export default class extends SfGpsDsNavigation {
   @api megaMenu = false;
+  @api cstyle;
+  @api preHeaderStyle;
   @api className = "";
   @api isActive = false;
   @api mainNavId = "mainmenu";

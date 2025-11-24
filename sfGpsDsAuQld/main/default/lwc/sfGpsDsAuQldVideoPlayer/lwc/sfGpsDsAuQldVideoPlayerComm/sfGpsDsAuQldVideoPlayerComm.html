@@ -1,0 +1,26 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-qld-video-player
+    lwc:else
+    video-type={videoType}
+    video-id={videoId}
+    caption={caption}
+    duration={duration}
+    transcript={transcript}
+    transcript-link={transcriptLink}
+    size={size}
+    layout={layout}
+    cstyle={cstyle}
+    class-name={className}
+  >
+    <div lwc:if={description} lwc:ref="description" lwc:dom="manual"></div>
+    <template lwc:else>
+      <slot name="description"></slot>
+    </template>
+  </c-sf-gps-ds-au-qld-video-player>
+</template>

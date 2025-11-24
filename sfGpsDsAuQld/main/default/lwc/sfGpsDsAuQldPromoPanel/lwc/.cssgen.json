@@ -1,0 +1,12 @@
+{
+  "../../../../../../node_modules/@qhealth-design-system/core/src/styles/imports/variables.scss": [
+    { "extension": "scss" },
+    { "target": "sfGpsDsAuQldPromoPanelComm/variables" },
+    { "from": "QLD custom properties(.|\\r|\\n)*}", "to": "*/" },
+    {
+      "from": "@import \"",
+      "to": "@import \"@qhealth-design-system/core/src/styles/imports/"
+    }
+  ],
+  "sfGpsDsAuQldPromoPanelComm/fixes": []
+}

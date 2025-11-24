@@ -4,7 +4,7 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  *
- * QLD DS 1.9
+ * QLD DS 1.18
  */
 
 import { LightningElement, api, track, wire } from "lwc";
@@ -31,12 +31,18 @@ const HOME_SHOW_DEFAULT = true;
 const CSTYLE_DEFAULT = "dark";
 const CSTYLE_VALUES = {
   light: "",
+  dark: "qld__main-nav--dark"
+};
+
+const PREHEADERSTYLE_DEFAULT = "light";
+const PREHEADERSTYLE_VALUES = {
+  light: "",
   dark: "qld__main-nav__menu--dark",
   "dark-alternate": "qld__main-nav__menu--dark-alt"
 };
 
 const STATIC_RESOURCE_ICONS_PATH =
-  sfGpsDsAuQldStaticResource + "/assets/img/svg-icons.svg";
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 export default class extends LightningElement {
   static renderMode = "light";
@@ -101,6 +107,25 @@ export default class extends LightningElement {
     });
   }
 
+  /* api: preHeaderStyle */
+
+  _preHeaderStyle = PREHEADERSTYLE_VALUES[PREHEADERSTYLE_DEFAULT];
+  _preHeaderStyleOriginal = PREHEADERSTYLE_DEFAULT;
+
+  @api
+  get preHeaderStyle() {
+    return this._preHeaderStyleOriginal;
+  }
+
+  set preHeaderStyle(value) {
+    this._preHeaderStyleOriginal = value;
+    this._preHeaderStyle = normaliseString(value, {
+      validValues: PREHEADERSTYLE_VALUES,
+      fallbackValue: PREHEADERSTYLE_DEFAULT,
+      returnObjectValue: true
+    });
+  }
+
   /* api: navItems, Array of navigation item objects, format { url, text, subNav: ... } */
 
   @track _navItems;
@@ -130,7 +155,15 @@ export default class extends LightningElement {
   get computedClassName() {
     return {
       "qld__main-nav": true,
+      [this._cstyle]: this._cstyle,
       "qld__main-nav--mega": this._megaMenu
+    };
+  }
+
+  get computedMainNavMenuClassName() {
+    return {
+      "qld__main-nav__menu": true,
+      [this._preHeaderStyle]: this.preHeaderStyle
     };
   }
 
@@ -146,6 +179,14 @@ export default class extends LightningElement {
     return {
       "qld__main-nav__item": true,
       active: this.computedHomeIsActive
+    };
+  }
+
+  get computedHomeIconClassName() {
+    return {
+      qld__icon: true,
+      "qld__icon--md": !this._megaMenu,
+      "qld__icon--sm": this._megaMenu
     };
   }
 
@@ -166,26 +207,19 @@ export default class extends LightningElement {
   }
 
   get computedHomeIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__home";
+    return STATIC_RESOURCE_ICONS_PATH + "#home";
   }
 
   get computedCloseIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__close";
+    return STATIC_RESOURCE_ICONS_PATH + "#close";
   }
 
   get computedArrowRightIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__arrow-right";
+    return STATIC_RESOURCE_ICONS_PATH + "#arrow-right";
   }
 
   get computedChevronUpIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#qld__icon__chevron-up";
-  }
-
-  get computedMainNavMenuClassName() {
-    return {
-      "qld__main-nav__menu": true,
-      [this._cstyle]: this._cstyle
-    };
+    return STATIC_RESOURCE_ICONS_PATH + "#chevron-up";
   }
 
   /* methods */
@@ -211,7 +245,8 @@ export default class extends LightningElement {
         qld__accordion__body: true,
         "qld__accordion--open": isActive,
         "qld__accordion--closed": !isActive
-      }
+      },
+      toggleAriaLabel: "Toggle navigation, " + item.text
     };
   }
 
