@@ -8,7 +8,7 @@
   >
     <div class="container-fluid">
       <!-- Main navigation content wrapper -->
-      <div class={computedNavContentClassName} id="main-nav">
+      <div class="qld__main-nav__content" id="main-nav">
         <!-- Navigation menu wrapper -->
         <div class={computedMainNavMenuClassName}>
           <!-- Inner navigation menu wrapper -->
@@ -18,7 +18,9 @@
               <div class="qld__main-nav__focus-trap-top"></div>
               <!-- Navigation header which contains menu title and close button -->
               <div class="qld__main-nav__header">
-                <h6 class="qld__main-nav__menu-heading">{i18n.menuLabel}</h6>
+                <h2 class="qld__main-nav__menu-heading" tabindex="-1">
+                  {i18n.menuLabel}
+                </h2>
                 <!-- Close button for the menu -->
                 <button
                   aria-controls="main-nav"
@@ -53,16 +55,13 @@
                       onclick={handleCloseNav}
                     >
                       <!-- SVG icon for the link -->
-                      <span class="qld__main-nav__item-icon">
-                        <svg
-                          aria-hidden="true"
-                          focusable="false"
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="qld__icon qld__icon--md"
-                        >
-                          <use href={computedHomeIconUrl}></use>
-                        </svg>
-                      </span>
+                      <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class={computedHomeIconClassName}
+                      >
+                        <use href={computedHomeIconUrl}></use>
+                      </svg>
 
                       <span class="qld__main-nav__item-text"
                         >{i18n.homeLabel}</span
@@ -102,7 +101,7 @@
                           aria-controls={navItem.id}
                           aria-expanded={navItem.isActive}
                           aria-selected="false"
-                          aria-label="Toggle navigation, Default example"
+                          aria-label={navItem.toggleAriaLabel}
                           data-ndx={navItem.index}
                           onclick={handleClick}
                         >
@@ -187,7 +186,9 @@
                         href={navItem.url}
                         onclick={handleClick}
                       >
-                        {navItem.text}
+                        <span class="qld__main-nav__item-text"
+                          >{navItem.text}</span
+                        >
                       </a>
                     </div>
                   </li>

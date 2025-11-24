@@ -1,0 +1,161 @@
+<template>
+  <section class={computedClassName}>
+    <div class="container-fluid">
+      <div class={computedRowClassName}>
+        <template lwc:if={computedIsStacked}>
+          <div class={computedDescriptionClassName}>
+            <slot></slot>
+          </div>
+
+          <div class={computedPlayerSectionClassName}>
+            <div lwc:if={videoId} class="qld__video__player--embed">
+              <div class="qld__video__player--embed--container">
+                <iframe
+                  src={computedVideoUrl}
+                  frameborder="0"
+                  allow="fullscreen"
+                  allowfullscreen
+                  title={caption}
+                  class="qld__video__player--iframe"
+                >
+                </iframe>
+              </div>
+
+              <div class="qld__video__player--summary">
+                <div
+                  lwc:if={computedShowCaption}
+                  class="qld__video__player--caption"
+                >
+                  {caption}
+                  <div lwc:if={duration} class="qld__video__player--duration">
+                    <svg
+                      class="qld__icon qld__icon--sm"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <use href={computedClockIconHref}></use>
+                    </svg>
+                    Duration: {duration}
+                  </div>
+                </div>
+
+                <div
+                  lwc:if={computedShowLinkTranscript}
+                  class="qld__video__player__transcript"
+                >
+                  <div class="qld__video__player__transcript-link">
+                    <svg
+                      class="qld__icon qld__icon--sm"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <use href={computedArrowRightIconHref}></use>
+                    </svg>
+                    <a href={transcript}>View transcript</a>
+                  </div>
+                </div>
+                <div
+                  lwc:if={computedShowAccordionTranscript}
+                  class="qld__video__player__transcript js"
+                >
+                  <c-sf-gps-ds-au-qld-accordion-item
+                    content={transcript}
+                    active={_transcriptOpen}
+                    ontoggle={handleToggleTranscript}
+                  >
+                    <span slot="title">
+                      <svg
+                        class="qld__icon qld__icon--md"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <use href={computedTranscriptIconHref}></use>
+                      </svg>
+                      <span>Show transcript</span>
+                    </span>
+                  </c-sf-gps-ds-au-qld-accordion-item>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+        <template lwc:else>
+          <div class="col-xs-12 col-lg-6">
+            <slot></slot>
+          </div>
+          <div class="col-xs-12 col-lg-6">
+            <div lwc:if={videoId} class="qld__video__player--embed">
+              <div class="qld__video__player--embed--container">
+                <iframe
+                  src={computedVideoUrl}
+                  frameborder="0"
+                  allow="fullscreen"
+                  allowfullscreen
+                  title={caption}
+                  class="qld__video__player--iframe"
+                >
+                </iframe>
+              </div>
+
+              <div class="qld__video__player--summary">
+                <div
+                  lwc:if={computedShowCaption}
+                  class="qld__video__player--caption"
+                >
+                  {caption}
+                  <div lwc:if={duration} class="qld__video__player--duration">
+                    <svg
+                      class="qld__icon qld__icon--sm"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <use href={computedClockIconHref}></use>
+                    </svg>
+                    Duration: {duration}
+                  </div>
+                </div>
+
+                <div
+                  lwc:if={computedShowLinkTranscript}
+                  class="qld__video__player__transcript"
+                >
+                  <div class="qld__video__player__transcript-link">
+                    <svg
+                      class="qld__icon qld__icon--sm"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <use href={computedArrowRightIconHref}></use>
+                    </svg>
+                    <a href={transcript}>View transcript</a>
+                  </div>
+                </div>
+                <div
+                  lwc:if={computedShowAccordionTranscript}
+                  class="qld__video__player__transcript js"
+                >
+                  <c-sf-gps-ds-au-qld-accordion-item
+                    content={transcript}
+                    active={_transcriptOpen}
+                    ontoggle={handleToggleTranscript}
+                  >
+                    <span slot="title">
+                      <svg
+                        class="qld__icon qld__icon--md"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <use href={computedTranscriptIconHref}></use>
+                      </svg>
+                      <span>Show transcript</span>
+                    </span>
+                  </c-sf-gps-ds-au-qld-accordion-item>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+</template>

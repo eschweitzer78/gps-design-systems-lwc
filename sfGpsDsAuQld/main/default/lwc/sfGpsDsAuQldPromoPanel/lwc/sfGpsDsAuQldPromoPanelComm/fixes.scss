@@ -1,0 +1,30 @@
+//@import "@qhealth-design-system/core/src/styles/imports/functions.scss";
+@import "@qhealth-design-system/core/src/styles/imports/mixins.scss";
+@import "variables.gen.scss";
+
+.qld__body--alt  +  c-sf-gps-ds-au-qld-promo-panel-comm.qld__promo-panel{
+    background: var(--QLD-color-light-alt__background);
+}
+
+.qld__body--dark  + c-sf-gps-ds-au-qld-promo-panel-comm.qld__promo-panel{
+    background: var(--QLD-color-dark__background);
+}
+
+.qld__body--dark-alt  +  c-sf-gps-ds-au-qld-promo-panel-comm.qld__promo-panel{
+    background: var(--QLD-color-dark-alt__background);
+}
+
+
+@include QLD-media(md) {
+    c-sf-gps-ds-au-qld-promo-panel-comm.qld__promo-panel + c-sf-gps-ds-au-qld-body-lwr.qld__body {
+        margin-top:-64px;
+        padding-top:104px !important;  
+    }
+}
+
+@include QLD-media(lg) {
+    c-sf-gps-ds-au-qld-promo-panel-comm.qld__promo-panel + c-sf-gps-ds-au-qld-body-lwr.qld__body {
+        margin-top:-64px;
+        padding-top:128px !important;  
+    }
+}

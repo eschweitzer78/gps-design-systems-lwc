@@ -54,6 +54,21 @@
         default="false"
       />
       <property
+        name="cstyle"
+        type="String"
+        label="Colour style"
+        description="Colour style."
+        default="dark"
+        datasource="light,dark"
+      />
+      <property
+        name="preHeaderStyle"
+        type="String"
+        label="Pre-header style"
+        description="Pre-header style."
+        datasource="default,dark,dark-alternate"
+      />
+      <property
         name="className"
         type="String"
         label="Class name"

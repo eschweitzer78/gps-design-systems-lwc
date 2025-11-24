@@ -48,6 +48,8 @@ async function main() {
         console.log(`dot ${dot}`);
 
         for (const [directory, instructions] of Object.entries(config)) {
+          console.log("> entry", directory);
+
           let targetDirectory = instructions.target.replace(
             fileRegEx,
             directory
@@ -108,6 +110,8 @@ async function main() {
             .catch((err) => {
               console.log(err);
             });
+
+          console.log("< entry", directory);
         }
       })
       .catch((err) => {

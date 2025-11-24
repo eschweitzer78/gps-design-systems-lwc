@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS Video Player</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="videoType"
+        type="String"
+        label="Video type"
+        required="true"
+        description="Denotes the type of video with a choice of vimeo and youtube."
+        default="youtube"
+        datasource="vimeo,youtube"
+      />
+      <property
+        name="videoId"
+        type="String"
+        label="Video ID"
+        description="The identifier of the video on the video service."
+        default="Tt-GAjz4swM"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="description"
+        type="String"
+        label="Description"
+        description="Longer description of the video in a few sentences or paragraphs. Leave empty to get a slot in LWR."
+        default="# Play On! Sports Vouchers\n\nQueensland’s new Play On! Sports Vouchers program is launching on 4 August 2025, giving more children the opportunity to get involved in sport and active recreation."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="caption"
+        type="String"
+        label="Caption"
+        description="Title that's shown below the video."
+        default="Play On! Sports Vouchers"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="duration"
+        type="String"
+        label="Duration"
+        description="Indicates how long the video runs for. Please add metric."
+        default="30 sec"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="transcript"
+        type="String"
+        label="Transcript"
+        description="Transcript"
+        default="The new Queensland Government is helping kids get active and play their favourite sport with $200 Play On! Sports Vouchers. There's heaps of sports to play all across Queensland, from the city to the country, in winter or summer, for families with kids aged 5 to 17. To find out more, search Play On!"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="transcriptLink"
+        type="String"
+        label="Transcript link"
+        description="Provide a URL if the transcript is not included."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="layout"
+        type="String"
+        label="Layout"
+        description="Pick how you would like the player to be laid out with a choice of stack, stack centered, two-column top and two-column centered."
+        default="stack"
+        datasource="stack,stack centered,two-column top, two-column centered"
+      />
+      <property
+        name="cstyle"
+        type="String"
+        label="Colour style"
+        description="Pick the player background with a choice of default, dark, light, alternate, and dark-alternate."
+        default="default"
+        datasource="default,dark,light,alternate,dark-alternate"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

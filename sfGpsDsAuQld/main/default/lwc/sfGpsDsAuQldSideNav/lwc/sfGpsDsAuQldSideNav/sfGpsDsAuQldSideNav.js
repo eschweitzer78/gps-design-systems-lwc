@@ -1,4 +1,5 @@
 import { LightningElement, api, track } from "lwc";
+import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
 
 export default class extends LightningElement {
   @api title;
@@ -50,6 +51,10 @@ export default class extends LightningElement {
       "qld__accordion--open": this._isOpen,
       qld__accordion__body: true
     };
+  }
+
+  get computedChevronUpIconHref() {
+    return sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg#chevron-up";
   }
 
   /* methods */
