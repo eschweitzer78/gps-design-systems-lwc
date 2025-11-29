@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -7,14 +7,20 @@
 
 import { api } from "lwc";
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
+import mdEngine from "c/sfGpsDsMarkdown";
+
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsAuQldMainNavComm";
 
 export default class extends SfGpsDsNavigation {
   @api megaMenu = false;
   @api cstyle;
   @api preHeaderStyle;
-  @api className = "";
   @api isActive = false;
   @api mainNavId = "mainmenu";
+  @api ctaOneIcon;
+  @api ctaTwoIcon;
+  @api className = "";
 
   /* api: mode */
 
@@ -92,6 +98,46 @@ export default class extends SfGpsDsNavigation {
 
   set optionsJSON(value) {
     super.optionsJSON = value;
+  }
+
+  /* api: ctaOneLink */
+
+  _ctaOneLink;
+  _ctaOneLinkOriginal;
+
+  @api
+  get ctaOneLink() {
+    return this._ctaOneLinkOriginal;
+  }
+
+  set ctaOneLink(markdown) {
+    try {
+      this._ctaOneLinkOriginal = markdown;
+      this._ctaOneLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
+    } catch (e) {
+      this.addError("HL-CO", "Issue when parsing CTA One Link markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set ctaOneLink", e);
+    }
+  }
+
+  /* api: ctaTwoLink */
+
+  _ctaTwoLink;
+  _ctaTwoLinkOriginal;
+
+  @api
+  get ctaTwoLink() {
+    return this._ctaTwoLinkOriginal;
+  }
+
+  set ctaTwoLink(markdown) {
+    try {
+      this._ctaTwoLinkOriginal = markdown;
+      this._ctaTwoLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
+    } catch (e) {
+      this.addError("HL-CT", "Issue when parsing CTA Two Link markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set ctaTwoLink", e);
+    }
   }
 
   /* event management */

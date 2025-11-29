@@ -39,6 +39,9 @@ const HEADER_STYLE_VALUES = {
 const STATIC_RESOURCE_ICONS_PATH =
   sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsAuQldHeader";
+
 export default class extends LightningElement {
   static renderMode = "light";
 
@@ -282,9 +285,17 @@ export default class extends LightningElement {
   }
 
   handleMainNavButtonClick() {
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "> handleMainNavButtonClick");
+    }
+
     publish(this._messageContext, mainNavToggleChannel, {
       type: "toggle",
       detail: null
     });
+
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "< handleMainNavButtonClick");
+    }
   }
 }
