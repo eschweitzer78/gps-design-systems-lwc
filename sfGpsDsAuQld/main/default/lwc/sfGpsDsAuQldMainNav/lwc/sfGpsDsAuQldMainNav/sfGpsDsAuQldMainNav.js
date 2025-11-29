@@ -31,18 +31,33 @@ const HOME_SHOW_DEFAULT = true;
 const CSTYLE_DEFAULT = "dark";
 const CSTYLE_VALUES = {
   light: "",
-  dark: "qld__main-nav--dark"
+  dark: "qld__main-nav__body--dark"
 };
 
 const PREHEADERSTYLE_DEFAULT = "light";
 const PREHEADERSTYLE_VALUES = {
-  light: "",
-  dark: "qld__main-nav__menu--dark",
-  "dark-alternate": "qld__main-nav__menu--dark-alt"
+  light: {
+    menu: "",
+    header: "",
+    ctaWrapper: ""
+  },
+  dark: {
+    menu: "qld__main-nav__menu--dark",
+    header: "qld__main-nav__header--dark",
+    ctaWrapper: "qld__main-nav__cta-wrapper--dark"
+  },
+  "dark-alternate": {
+    menu: "qld__main-nav__menu--dark-alt",
+    header: "qld__main-nav__header--dark-alt",
+    ctaWrapper: "qld__main-nav__cta-wrapper--dark-alt"
+  }
 };
 
 const STATIC_RESOURCE_ICONS_PATH =
   sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
+
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsAuQldMainNav";
 
 export default class extends LightningElement {
   static renderMode = "light";
@@ -50,6 +65,11 @@ export default class extends LightningElement {
   @api homeUrl;
   @api isActive;
   @api mainNavId = "mainmenu";
+  @api ctaOneIcon;
+  @api ctaOneLink;
+  @api ctaTwoIcon;
+  @api ctaTwoLink;
+
   @track _open;
 
   /* api: homeShow */
@@ -155,15 +175,7 @@ export default class extends LightningElement {
   get computedClassName() {
     return {
       "qld__main-nav": true,
-      [this._cstyle]: this._cstyle,
       "qld__main-nav--mega": this._megaMenu
-    };
-  }
-
-  get computedMainNavMenuClassName() {
-    return {
-      "qld__main-nav__menu": true,
-      [this._preHeaderStyle]: this.preHeaderStyle
     };
   }
 
@@ -172,6 +184,28 @@ export default class extends LightningElement {
       "qld__main-nav__content": true,
       "qld__main-nav__content--open": this._open,
       "qld__main-nav__content--closed": !this._open
+    };
+  }
+
+  get computedMainNavMenuClassName() {
+    return {
+      "qld__main-nav__menu": true,
+      [this._preHeaderStyle.menu]: this.preHeaderStyle
+    };
+  }
+
+  get computedNavHeaderClassName() {
+    return {
+      "qld__main-nav__header": true,
+      [this._preHeaderStyle.header]: this.preHeaderStyle
+    };
+  }
+
+  get computedLinkListClassName() {
+    return {
+      "qld__link-list": true,
+      "qld__link-list--flex": true,
+      [this._cstyle]: this.cstyle
     };
   }
 
@@ -222,6 +256,80 @@ export default class extends LightningElement {
     return STATIC_RESOURCE_ICONS_PATH + "#chevron-up";
   }
 
+  get computedHasCta() {
+    return !!(this.ctaOneLink || this.ctaTwoLink);
+  }
+
+  get computedMobileFiller() {
+    return {
+      "qld__mega-nav_mobile-filler-60": !!this.ctaOneLink !== !!this.ctaTwoLink,
+      "qld__mega-nav_mobile-filler-120": this.ctaOneLink && this.ctaTwoLink
+    };
+  }
+
+  get computedCtaWrapperClassName() {
+    return {
+      "qld__main-nav__cta-wrapper": true,
+      [this._preHeaderStyle.ctaWrapper]: this.preHeaderStyle
+    };
+  }
+
+  get computedCtaOneIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#" + this.ctaOneIcon;
+  }
+
+  get computedCtaTwoIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#" + this.ctaTwoIcon;
+  }
+
+  get computedCtaOneClassName() {
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
+    const url = this.ctaOneLink?.url || "#";
+
+    const isCurrentPage = new URL(url, docUrl).pathname === pathname;
+
+    return {
+      "qld__main-nav__item": true,
+      "qld__main-nav__item--cta": true,
+      active: isCurrentPage
+    };
+  }
+
+  get computedCtaOneAriaCurrent() {
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
+    const url = this.ctaOneLink?.url || "#";
+
+    const isCurrentPage = new URL(url, docUrl).pathname === pathname;
+
+    return isCurrentPage ? "page" : null;
+  }
+
+  get computedCtaTwoClassName() {
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
+    const url = this.ctaTwoLink?.url || "#";
+
+    const isCurrentPage = new URL(url, docUrl).pathname === pathname;
+
+    return {
+      "qld__main-nav__item": true,
+      "qld__main-nav__item--cta": true,
+      active: isCurrentPage
+    };
+  }
+
+  get computedCtaTwoAriaCurrent() {
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
+    const url = this.ctaTwoLink?.url || "#";
+
+    const isCurrentPage = new URL(url, docUrl).pathname === pathname;
+
+    return isCurrentPage ? "page" : null;
+  }
+
   /* methods */
 
   mapSingleItemClasses(item, isActive) {
@@ -245,6 +353,10 @@ export default class extends LightningElement {
         qld__accordion__body: true,
         "qld__accordion--open": isActive,
         "qld__accordion--closed": !isActive
+      },
+      subNavItemClassName: {
+        "qld__main-nav__item--has-desc":
+          item.description && this.showDescLevelTwo
       },
       toggleAriaLabel: "Toggle navigation, " + item.text
     };
@@ -363,7 +475,15 @@ export default class extends LightningElement {
   }
 
   handleMainNavToggle() {
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "> handleMainNavToggle", this._open);
+    }
+
     this._open = !this._open;
+
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "< handleMainNavToggle", this._open);
+    }
   }
 
   /* wire: handlePageReference */
@@ -387,6 +507,10 @@ export default class extends LightningElement {
     this.classList.add("js");
 
     if (!this._subscription) {
+      if (DEBUG) {
+        console.debug(CLASS_NAME, "= connectedCallback subscribe");
+      }
+
       this._subscription = subscribe(
         this._messageContext,
         mainNavToggleChannel,

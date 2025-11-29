@@ -60,7 +60,6 @@
         description="Font Awesome css classes to be applied."
         default=""
       />
-
       <property
         name="searchLabel"
         type="String"

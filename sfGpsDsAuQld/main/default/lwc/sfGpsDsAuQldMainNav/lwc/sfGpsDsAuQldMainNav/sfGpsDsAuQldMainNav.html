@@ -8,7 +8,7 @@
   >
     <div class="container-fluid">
       <!-- Main navigation content wrapper -->
-      <div class="qld__main-nav__content" id="main-nav">
+      <div class={computedNavContentClassName} id="main-nav">
         <!-- Navigation menu wrapper -->
         <div class={computedMainNavMenuClassName}>
           <!-- Inner navigation menu wrapper -->
@@ -17,7 +17,7 @@
             <c-sf-gps-ds-focus-trap>
               <div class="qld__main-nav__focus-trap-top"></div>
               <!-- Navigation header which contains menu title and close button -->
-              <div class="qld__main-nav__header">
+              <div class={computedNavHeaderClassName}>
                 <h2 class="qld__main-nav__menu-heading" tabindex="-1">
                   {i18n.menuLabel}
                 </h2>
@@ -32,7 +32,7 @@
                     aria-hidden="true"
                     focusable="false"
                     xmlns="http://www.w3.org/2000/svg"
-                    class="qld__icon qld__icon--md"
+                    class="qld__icon qld__icon--sm"
                   >
                     <use href={computedCloseIconUrl}></use>
                   </svg>
@@ -43,7 +43,7 @@
               </div>
 
               <!-- Navigation link list -->
-              <ul class="qld__link-list qld__link-list--flex">
+              <ul class={computedLinkListClassName}>
                 <!-- Home item -->
                 <li lwc:if={_homeShow} class={computedHomeClassName}>
                   <div class="qld__main-nav__item-title">
@@ -108,7 +108,11 @@
                           <span class="qld__main-nav__item-toggle-text">
                             {navItem.text}
                           </span>
-                          <svg class="qld__icon qld__icon--sm">
+                          <svg
+                            class="qld__icon qld__icon--xs"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
                             <use href={computedChevronUpIconUrl}></use>
                           </svg>
                         </button>
@@ -131,14 +135,26 @@
                               <svg
                                 lwc:if={navItem.url}
                                 class="qld__icon qld__icon--lg"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
                                 <use href={computedArrowRightIconUrl}></use>
                               </svg>
                             </a>
+                            <template lwc:if={showDescLevelOne}>
+                              <p
+                                lwc:if={navItem.description}
+                                class="qld__main-nav__item-desc"
+                              >
+                                {navItem.description}
+                              </p>
+                            </template>
                           </div>
+
                           <hr
                             class="qld__horizontal-rule qld__horizontal-rule--lg"
                           />
+
                           <ul
                             lwc:if={navItem.subNav}
                             class="qld__link-columns qld__link-columns--3-col qld__link-list"
@@ -147,7 +163,10 @@
                               for:each={navItem.subNav}
                               for:item="subNavItem"
                             >
-                              <li key={subNavItem.id}>
+                              <li
+                                key={subNavItem.id}
+                                class={subNavItemClassName}
+                              >
                                 <a
                                   href={subNavItem.url}
                                   role="button"
@@ -158,6 +177,11 @@
                                     >{subNavItem.text}</span
                                   >
                                 </a>
+                                <template lwc:if={showDescLevelTwo}>
+                                  <p lwc:if={subNavItem.description}>
+                                    {subNavItem.description}
+                                  </p>
+                                </template>
                               </li>
                             </template>
                           </ul>
@@ -172,9 +196,10 @@
                             />
                             <a
                               class="qld__cta-link qld__cta-link--view-all"
-                              href="javascript:void(0)"
-                              >View all</a
+                              href={mainNavViewAllLink}
                             >
+                              View all
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -192,6 +217,59 @@
                   </li>
                 </template>
               </ul>
+
+              <!-- CTAs -->
+              <template lwc:if={computedHasCta}>
+                <div class={computedMobileFiller}></div>
+                <div class={computedCtaWrapperClassName}>
+                  <ul class="qld__link-list qld__link-list--flex">
+                    <li lwc:if={ctaOneLink} class={computedCtaOneClassName}>
+                      <div class="qld__main-nav__item-title">
+                        <a
+                          class="qld__main-nav__item-link"
+                          aria-current={computeCtaOneAriaCurrent}
+                          href={ctaOneLink.url}
+                        >
+                          <svg
+                            lwc:if={ctaOneIcon}
+                            class="qld__icon qld__icon--md"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <use href={computedCtaOneIconUrl}></use>
+                          </svg>
+
+                          <span class="qld__main-nav__item-text"
+                            >{ctaOneLink.text}</span
+                          >
+                        </a>
+                      </div>
+                    </li>
+                    <li lwc:if={ctaTwoLink} class={computedCtaTwoClassName}>
+                      <div class="qld__main-nav__item-title">
+                        <a
+                          class="qld__main-nav__item-link"
+                          aria-current={computeCtaTwoAriaCurrent}
+                          href={ctaTwoLink.url}
+                        >
+                          <svg
+                            lwc:if={ctaTwoIcon}
+                            class="qld__icon qld__icon--md"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <use href={computedCtaTwoIconUrl}></use>
+                          </svg>
+
+                          <span class="qld__main-nav__item-text"
+                            >{ctaTwoLink.text}</span
+                          >
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </template>
 
               <!-- Focus trap for accessibility purposes (keyboard navigation) -->
               <div class="qld__main-nav__focus-trap-bottom"></div>

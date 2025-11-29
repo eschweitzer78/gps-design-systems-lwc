@@ -69,6 +69,34 @@
         datasource="default,dark,dark-alternate"
       />
       <property
+        name="ctaOneLink"
+        type="String"
+        label="Call to Action link one"
+        description="Label and URL for the call to action in Markdown link format. Leave blank if no cta is desired."
+        default="[Contact us](tel:1300200200)"
+      />
+      <property
+        name="ctaOneIcon"
+        type="String"
+        label="Icon name for Call to Action link one"
+        description="Font Awesome css classes to be applied."
+        default="phone"
+      />
+      <property
+        name="ctaTwoLink"
+        type="String"
+        label="Call to Action link two"
+        description="Label and URL for the call to action in Markdown link format. Leave blank if no cta is desired."
+        default=""
+      />
+      <property
+        name="ctaTwoIcon"
+        type="String"
+        label="Icon name for Call to Action link two"
+        description="Font Awesome css classes to be applied."
+        default=""
+      />
+      <property
         name="className"
         type="String"
         label="Class name"
