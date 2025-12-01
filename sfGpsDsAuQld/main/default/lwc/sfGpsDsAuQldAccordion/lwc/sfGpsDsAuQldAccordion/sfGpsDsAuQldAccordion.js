@@ -132,12 +132,13 @@ export default class extends ExpandableStateMixin(LightningElement) {
   }
 
   @api
-  toggleIndex(index) {
-    if (DEBUG) console.debug(CLASS_NAME, "> toggleIndex", "index=", index);
+  toggleItemByIndex(index) {
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> toggleItemByIndex", "index=", index);
 
-    const isActive = super.toggleIndex(index);
+    const isActive = super.toggleItemByIndex(index);
 
-    if (DEBUG) console.debug(CLASS_NAME, "< toggleIndex", isActive);
+    if (DEBUG) console.debug(CLASS_NAME, "< toggleItemByIndex", isActive);
 
     if (isActive == null) return;
 
@@ -159,6 +160,6 @@ export default class extends ExpandableStateMixin(LightningElement) {
 
   handleToggleItem(event) {
     const index = Number(event.currentTarget.index);
-    this.toggleIndex(index);
+    this.toggleItemByIndex(index);
   }
 }
