@@ -20,6 +20,7 @@ export default class extends SfGpsDsLwc {
     return {
       "docs-example": true,
       "with-padding": this.withPadding,
+      "qld__margin-t-component": this.showCallout,
       [this.className]: this.className
     };
   }
