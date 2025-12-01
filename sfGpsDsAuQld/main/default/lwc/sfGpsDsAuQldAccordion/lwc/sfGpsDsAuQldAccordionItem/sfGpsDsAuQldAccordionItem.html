@@ -9,7 +9,10 @@
         aria-expanded={active}
         aria-controls="content"
       >
-        {title}
+        <template lwc:if={title}> {title} </template>
+        <template lwc:else>
+          <slot name="title"> </slot>
+        </template>
       </button>
     </h2>
     <h3 lwc:elseif={computedIsH3}>
@@ -20,7 +23,10 @@
         aria-expanded={active}
         aria-controls="content"
       >
-        {title}
+        <template lwc:if={title}> {title} </template>
+        <template lwc:else>
+          <slot name="title"> </slot>
+        </template>
       </button>
     </h3>
     <h4 lwc:elseif={computedIsH4}>
@@ -31,7 +37,10 @@
         aria-expanded={active}
         aria-controls="content"
       >
-        {title}
+        <template lwc:if={title}> {title} </template>
+        <template lwc:else>
+          <slot name="title"> </slot>
+        </template>
       </button>
     </h4>
     <h5 lwc:elseif={computedIsH5}>
@@ -42,7 +51,10 @@
         aria-expanded={active}
         aria-controls="content"
       >
-        {title}
+        <template lwc:if={title}> {title} </template>
+        <template lwc:else>
+          <slot name="title"> </slot>
+        </template>
       </button>
     </h5>
     <h6 lwc:elseif={computedIsH2}>
@@ -53,7 +65,10 @@
         aria-expanded={active}
         aria-controls="content"
       >
-        {title}
+        <template lwc:if={title}> {title} </template>
+        <template lwc:else>
+          <slot name="title"> </slot>
+        </template>
       </button>
     </h6>
 

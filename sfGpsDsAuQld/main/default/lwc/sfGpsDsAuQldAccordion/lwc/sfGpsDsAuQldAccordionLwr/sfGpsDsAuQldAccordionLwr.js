@@ -251,7 +251,7 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
   }
 
   handleToggleItem(event) {
-    this.toggleIndex(event.detail.index);
+    this.toggleItemByIndex(event.detail.index);
   }
 
   /* methods */
@@ -270,8 +270,8 @@ export default class extends ExpandableStateMixin(SfGpsDsLwc) {
   }
 
   @api
-  toggleIndex(index) {
-    const isActive = super.toggleIndex(index);
+  toggleItemByIndex(index) {
+    const isActive = super.toggleItemByIndex(index);
 
     if (isActive == null) return;
 
