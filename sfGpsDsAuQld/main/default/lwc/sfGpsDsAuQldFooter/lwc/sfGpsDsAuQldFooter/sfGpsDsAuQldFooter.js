@@ -85,22 +85,22 @@ export default class extends LightningElement {
   }
 
   get computedFacebookIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#Facebook";
+    return STATIC_RESOURCE_ICONS_PATH + "#facebook";
   }
 
   get computedLinkedInIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#LinkedIn";
+    return STATIC_RESOURCE_ICONS_PATH + "#linkedin";
   }
 
   get computedYouTubeIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#YouTube";
+    return STATIC_RESOURCE_ICONS_PATH + "#youtube";
   }
 
   get computedInstagramIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#Instagram";
+    return STATIC_RESOURCE_ICONS_PATH + "#instagram";
   }
 
   get computedXIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + "#X";
+    return STATIC_RESOURCE_ICONS_PATH + "#x";
   }
 }

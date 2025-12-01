@@ -34,7 +34,7 @@ export default class extends LightningElement {
 
   @api
   get listMode() {
-    return this._modeOriginal;
+    return this._listModeOriginal;
   }
 
   set listMode(value) {

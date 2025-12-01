@@ -284,6 +284,14 @@ export default class extends LightningElement {
     this._searchIsOpen = !this._searchIsOpen;
   }
 
+  handleSearch(event) {
+    event.preventDefault();
+    this._searchIsOpen = false;
+
+    const searchEvent = new CustomEvent("search");
+    this.dispatchEvent(searchEvent);
+  }
+
   handleMainNavButtonClick() {
     if (DEBUG) {
       console.debug(CLASS_NAME, "> handleMainNavButtonClick");
