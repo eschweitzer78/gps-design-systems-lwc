@@ -1,0 +1,74 @@
+<!--sldsValidatorIgnore -->
+<template lwc:render-mode="light">
+  <button
+    lwc:ref="scrollLeftBtn"
+    class="qld__tab-nav__item-scroll tab-overflow-nav-button-left"
+    aria-hidden="true"
+    aria-label={i18n.scrollLeft}
+    tabindex="-1"
+    onclick={handleScrollLeft}
+  >
+    <svg
+      class="qld__icon qld__icon--sm"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use href={computedChevronLeftIconUrl}></use>
+    </svg>
+  </button>
+
+  <button
+    lwc:ref="scrollRightBtn"
+    class="qld__tab-nav__item-scroll tab-overflow-nav-button-right"
+    aria-hidden="true"
+    aria-label={i18n.scrollRight}
+    tabindex="-1"
+    onclick={handleScrollRight}
+  >
+    <svg
+      class="qld__icon qld__icon--sm"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <use href={computedChevronRightIconUrl}></use>
+    </svg>
+  </button>
+
+  <div
+    lwc:ref="tabList"
+    class={computedClassName}
+    role="tablist"
+    onkeydown={handleKeyDown}
+  >
+    <template for:each={_tabs} for:item="tab">
+      <template lwc:if={tab.label}>
+        <button
+          key={tab.value}
+          id={tab.domId}
+          class={tab.className}
+          type="button"
+          role="tab"
+          aria-selected={tab.ariaSelected}
+          aria-controls={tab.domId}
+          data-label={tab.label}
+          data-tab-value={tab.value}
+          onclick={handleTabClick}
+          onblur={handleBlur}
+          onfocus={handleFocus}
+        >
+          <span>
+            <svg
+              lwc:if={tab.iconName}
+              class="qld__icon qld__icon--sm"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <use href={tab.iconUrl}></use>
+            </svg>
+            {tab.title}
+          </span>
+        </button>
+      </template>
+    </template>
+  </div>
+</template>

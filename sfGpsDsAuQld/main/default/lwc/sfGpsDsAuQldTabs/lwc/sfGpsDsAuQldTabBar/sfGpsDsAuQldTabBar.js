@@ -1,14 +1,24 @@
 import { LightningElement, api, track } from "lwc";
 import { handleKeyDownOnTabList } from "./keyboard";
 import { computeClass } from "c/sfGpsDsHelpers";
+import OnWindowResize from "c/sfGpsDsOnWindowResize";
+import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
+
+const STATIC_RESOURCE_ICONS_PATH =
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
+
+const I18N = {
+  scrollLeft: "Scroll tab buttons left",
+  scrollRight: "Scroll tab buttons right"
+};
+const SCROLL_AMOUNT = 500;
 
 const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuVic2TabBar";
+const CLASS_NAME = "sfGpsDsAuQldTabBar";
 
 export default class extends LightningElement {
   static renderMode = "light";
 
-  @api mode;
   @api className;
 
   /* api: tabHeaders */
@@ -28,6 +38,7 @@ export default class extends LightningElement {
       return {
         label: tab.label,
         iconName: tab.iconName,
+        iconUrl: STATIC_RESOURCE_ICONS_PATH + "#" + tab.iconName,
         title: tab.title || tab.label,
         linkId: tab.value + "__item",
         domId: tab.domId,
@@ -58,20 +69,32 @@ export default class extends LightningElement {
     }
 
     this._tabs = tabs;
+    this._hasOverflow = null; // force recalculation
   }
 
   /* computed */
 
   get computedClassName() {
     return {
-      "rpl-tabs": true,
-      "rpl-tabs--vertical": this.mode === "vertical",
+      qld__tabs: true,
       [this.className]: this.className
     };
   }
 
   get _visibleTabs() {
     return this._tabs.filter((tab) => tab.visible);
+  }
+
+  get i18n() {
+    return I18N;
+  }
+
+  get computedChevronLeftIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#chevron-left";
+  }
+
+  get computedChevronRightIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#chevron-right";
   }
 
   /* methods */
@@ -116,14 +139,23 @@ export default class extends LightningElement {
 
     const tab = this._findTabByValue(tabValue);
 
-    this.dispatchEvent(
-      new CustomEvent("select", {
-        detail: {
-          value: tab.value,
-          label: tab.label
-        }
-      })
-    );
+    if (tab) {
+      this.dispatchEvent(
+        new CustomEvent("select", {
+          detail: {
+            value: tab.value,
+            label: tab.label
+          }
+        })
+      );
+    } else {
+      if (DEBUG)
+        console.debug(
+          CLASS_NAME,
+          "= _selectTabAndFireSelectEvent",
+          "could not find tab"
+        );
+    }
 
     if (DEBUG) console.debug(CLASS_NAME, "< _selectTabAndFireSelectEvent");
   }
@@ -178,10 +210,63 @@ export default class extends LightningElement {
     }
   }
 
+  checkOverflow() {
+    if (DEBUG) console.debug(CLASS_NAME, "> checkOverflow", this._hasOverflow);
+
+    if (this._hasOverflow != null || !this.refs) return;
+
+    const cusidEle = this.querySelectorAll(".qld__tab-button");
+    const tabList = this.refs.tabList;
+    const menuWidth = tabList.offsetWidth;
+    let totalWidth = 0;
+
+    // Calculate the total width of all the nav items
+    for (let i = 0; i < cusidEle.length; i++) {
+      totalWidth += cusidEle[i].offsetWidth;
+    }
+
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "= checkOverflow",
+        "menuWidth=",
+        menuWidth,
+        "totalWidth=",
+        totalWidth
+      );
+    }
+
+    // If the total width is greater than the menu width, display the right scroll button
+    // and scroll the link list to the left by the defined amount
+    if (totalWidth > menuWidth) {
+      this.refs.scrollRightBtn.style.display = "block";
+      tabList.scrollLeft -= SCROLL_AMOUNT;
+      this.refs.scrollLeftBtn.style.display = "none";
+      this._hasOverflow = true;
+    } else {
+      this.refs.scrollLeftBtn.style.display = "none";
+      tabList.scrollLeft = 0;
+      this.refs.scrollRightBtn.style.display = "none";
+      this._hasOverflow = false;
+    }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< checkOverflow", this._hasOverflow);
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  computeTabClassName({ selected = false, hasFocus = false }) {
+    return computeClass({
+      "qld__tab-button": true,
+      active: selected
+    });
+  }
+
   /* event management */
 
   handleTabClick(event) {
-    if (DEBUG) console.debug(CLASS_NAME, "> handleTabClick");
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> handleTabClick", event.currentTarget);
+
     event.preventDefault();
 
     const clickedTabValue = event.currentTarget.getAttribute("data-tab-value");
@@ -243,13 +328,63 @@ export default class extends LightningElement {
     });
   }
 
-  // eslint-disable-next-line no-unused-vars
-  computeTabClassName({ selected = false, hasFocus = false }) {
-    return computeClass({
-      "rpl-tab": true,
-      "rpl-tab--active": selected,
-      "rpl-type-p": true,
-      "rpl-u-focusable-block": true
-    });
+  handleScrollRight() {
+    const tabList = this.refs.tabList;
+
+    // Check if the current scroll position is at the maximum scroll position
+    if (
+      tabList.scrollLeft + SCROLL_AMOUNT >=
+      tabList.scrollWidth - tabList.clientWidth
+    ) {
+      // Hide the scroll right button
+      this.refs.scrollRightBtn.style.display = "none";
+    }
+
+    tabList.scrollLeft += SCROLL_AMOUNT;
+    this.refs.scrollLeftBtn.style.display = "block";
+  }
+
+  handleScrollLeft() {
+    const tabList = this.refs.tabList;
+
+    // Check if the current scroll position is at the beginning of the scroll
+    if (tabList.scrollLeft - SCROLL_AMOUNT <= 0) {
+      // Hide the scroll left button
+      this.refs.scrollLeftBtn.style.display = "none";
+    }
+
+    tabList.scrollLeft -= SCROLL_AMOUNT;
+    this.refs.scrollRightBtn.style.display = "block";
+  }
+
+  /* lifecycle */
+
+  _hasOverflow = false;
+  _onWindowResize;
+
+  connectedCallback() {
+    if (!this._onWindowResize) {
+      this._onWindowResize = new OnWindowResize();
+      this._onWindowResize.bind(() => {
+        if (DEBUG) console.debug(CLASS_NAME, "onWindowResize");
+        // Force recalculation of overflow
+        this._hasOverflow = null;
+        this.checkOverflow();
+      });
+    }
+  }
+
+  disconnectedCallback() {
+    if (this._onWindowResize) {
+      this._onWindowResize.unbind();
+    }
+
+    if (this._onClickOutside) {
+      this._onClickOutside.unbind(this, "containerRef");
+    }
+  }
+
+  renderedCallback() {
+    this.checkOverflow();
   }
 }

@@ -1,0 +1,22 @@
+<!-- sldsValidatorIgnore -->
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-au-qld-body-lwr
+    cstyle={cstyle}
+    width={width}
+    container="true"
+    class-name={computedBodyClassName}
+  >
+    <div class="container-fluid" slot="Body">
+      <div
+        class={computedContainerClassName}
+        onprivatetabregister={handleTabRegister}
+        onprivatetabdatachange={handleTabDataChange}
+      >
+        <c-sf-gps-ds-au-qld-tab-bar lwc:ref="bar" onselect={handleTabSelected}>
+        </c-sf-gps-ds-au-qld-tab-bar>
+
+        <slot></slot>
+      </div>
+    </div>
+  </c-sf-gps-ds-au-qld-body-lwr>
+</template>
