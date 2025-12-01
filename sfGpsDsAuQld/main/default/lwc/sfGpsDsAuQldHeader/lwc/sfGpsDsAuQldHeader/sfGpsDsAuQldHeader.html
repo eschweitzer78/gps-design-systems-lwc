@@ -200,6 +200,13 @@
               </label>
 
               <div class="qld__search-form__inner">
+                <svg
+                  class="qld__icon qld__icon--sm qld__search-form__inner-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <use href={computedIconSearchUrl}></use>
+                </svg>
                 <input
                   type="search"
                   id={computedHeaderSearchInputId}
@@ -220,8 +227,17 @@
                     class="qld__btn qld__btn--search"
                     type="submit"
                     aria-label={i18n.searchButtonAriaLabel}
+                    onclick={handleSearch}
                   >
-                    <span class="qld__btn__icon"></span>
+                    <span class="qld__btn__icon">
+                      <svg
+                        class="qld__icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <use href={computedIconSearchUrl}></use>
+                      </svg>
+                    </span>
                     <span class="qld__btn__text">{searchLabel}</span>
                   </button>
                 </div>

@@ -202,7 +202,7 @@ extends SfGpsDsElement {
   ): void {
     event.preventDefault();
 
-    const clickedTabValue = (event.target as HTMLElement).getAttribute("data-tab-value");
+    const clickedTabValue = (event.currentTarget as HTMLElement).getAttribute("data-tab-value");
 
     if (clickedTabValue) {
       this._selectTabAndFireSelectEvent(

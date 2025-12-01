@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>QLD DS LWR Tabs</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        label="Mode"
+        name="mode"
+        type="String"
+        default="individual"
+        datasource="individual,section"
+      />
+      <property
+        label="Colour style"
+        name="cstyle"
+        type="String"
+        description="Colour style when mode is section."
+        default="white"
+        datasource="white,light,alternate,dark,dark-alternate"
+      />
+      <property
+        label="Width"
+        name="width"
+        type="String"
+        description="Width when mode is section."
+        default="full-width"
+        datasource="full-width,half-width,custom-class,none"
+      />
+      <property
+        label="CSS Class"
+        name="className"
+        type="String"
+        description="Additional CSS class to apply."
+      />
+      <property
+        name="tab1Label"
+        type="String"
+        label="Tab 1 Label"
+        description="Tab 1 Label"
+        default="Tab 1"
+        required="true"
+      />
+      <property
+        name="tab1IconName"
+        type="String"
+        label="Tab 1 Icon name"
+        description="Tab 1 Icon name."
+      />
+      <property
+        name="tab2Label"
+        type="String"
+        label="Tab 2 Label"
+        description="Tab 2 Label, leave empty to hide"
+        default="Tab 2"
+      />
+      <property
+        name="tab2IconName"
+        type="String"
+        label="Tab 2 Icon name"
+        description="Tab 2 Icon name."
+      />
+      <property
+        name="tab3Label"
+        type="String"
+        label="Tab 3 Label"
+        description="Tab 3 Label, leave empty to hide"
+        default="Tab 3"
+      />
+      <property
+        name="tab3IconName"
+        type="String"
+        label="Tab 3 Icon name"
+        description="Tab 3 Icon name."
+      />
+      <property
+        name="tab4Label"
+        type="String"
+        label="Tab 4 Label"
+        description="Tab 4 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab4IconName"
+        type="String"
+        label="Tab 4 Icon name"
+        description="Tab 4 Icon name."
+      />
+      <property
+        name="tab5Label"
+        type="String"
+        label="Tab 5 Label"
+        description="Tab 5 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab5IconName"
+        type="String"
+        label="Tab 5 Icon name"
+        description="Tab 5 Icon name."
+      />
+      <property
+        name="tab6Label"
+        type="String"
+        label="Tab 6 Label"
+        description="Tab 6 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab6IconName"
+        type="String"
+        label="Tab 6 Icon name"
+        description="Tab 6 Icon name."
+      />
+      <property
+        name="tab7Label"
+        type="String"
+        label="Tab 7 Label"
+        description="Tab 7 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab7IconName"
+        type="String"
+        label="Tab 7 Icon name"
+        description="Tab 7 Icon name."
+      />
+      <property
+        name="tab8Label"
+        type="String"
+        label="Tab 8 Label"
+        description="Tab 8 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab8IconName"
+        type="String"
+        label="Tab 8 Icon name"
+        description="Tab 8 Icon name."
+      />
+      <property
+        name="tab9Label"
+        type="String"
+        label="Tab 9 Label"
+        description="Tab 9 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab9IconName"
+        type="String"
+        label="Tab 9 Icon name"
+        description="Tab 9 Icon name."
+      />
+      <property
+        name="tab10Label"
+        type="String"
+        label="Tab 10 Label"
+        description="Tab 10 Label, leave empty to hide"
+        default=""
+      />
+      <property
+        name="tab10IconName"
+        type="String"
+        label="Tab 10 Icon name"
+        description="Tab 10 Icon name."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
