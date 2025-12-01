@@ -1,8 +1,7 @@
 import { api } from "lwc";
-import SfGpsDsLwc from "c/sfGpsDsLwc";
+import SfGpsDsAuQldBodyLwr from "c/sfGpsDsAuQldBodyLwr";
 
 /**
- * @slot Header
  * @slot Tab1
  * @slot Tab2
  * @slot Tab3
@@ -14,11 +13,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
  * @slot Tab9
  * @slot Tab10
  */
-export default class extends SfGpsDsLwc {
-  @api mode;
-  @api cstyle;
-  @api width;
-  @api className;
+export default class extends SfGpsDsAuQldBodyLwr {
+  static renderMode = "light";
 
   @api tab1Label;
   @api tab1IconName;
@@ -41,12 +37,55 @@ export default class extends SfGpsDsLwc {
   @api tab10Label;
   @api tab10IconName;
 
-  /* lifecycle */
+  @api
+  get cstyle() {
+    return super.cstyle;
+  }
 
-  connectedCallback() {
-    this._isLwrOnly = true;
-    super.connectedCallback();
+  set cstyle(value) {
+    super.cstyle = this.value;
+  }
 
-    this.classList.add("qld-scope");
+  @api
+  get width() {
+    return super.width;
+  }
+
+  set width(value) {
+    super.width = value;
+  }
+
+  /* api: mode */
+
+  _mode;
+
+  @api
+  get mode() {
+    return this._mode;
+  }
+
+  set mode(value) {
+    if (value === this._mode) return;
+
+    if (this.computedIsSection) this.classList.remove("qld__tab-section");
+    this._mode = value;
+    if (this.computedIsSection) this.classList.add("qld__tab-section");
+  }
+
+  get computedIsSection() {
+    return this._mode === "section";
+  }
+
+  /* api: className */
+
+  _preClassName;
+
+  @api
+  get className() {
+    return super.className;
+  }
+
+  set className(value) {
+    super.className = value;
   }
 }

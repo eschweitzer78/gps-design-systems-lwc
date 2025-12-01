@@ -13,8 +13,8 @@
         label="Mode"
         name="mode"
         type="String"
-        default="individual"
-        datasource="individual,section"
+        default="contained"
+        datasource="contained,section"
       />
       <property
         label="Colour style"
