@@ -1,6 +1,5 @@
 import { LightningElement, api } from "lwc";
 import { uniqueId, computeClass, normaliseString } from "c/sfGpsDsHelpers";
-import bodyTmpl from "./sfGpsDsAuQldTabs-body.html";
 import individualTmpl from "./sfGpsDsAuQldTabs.html";
 
 const TAB_PREFIX = "tab";
@@ -280,6 +279,6 @@ export default class extends LightningElement {
   }
 
   render() {
-    return this._mode === MODE_INDIVIDUAL ? individualTmpl : bodyTmpl;
+    return individualTmpl;
   }
 }
