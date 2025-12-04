@@ -1,0 +1,235 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:elseif={isAuthConfigLoading}>
+    <div class={className}>
+      <div class="sf-gps-ds-au-qld-login-container">
+        <c-sf-gps-ds-au-qld-loading-spinner>
+        </c-sf-gps-ds-au-qld-loading-spinner>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedHasAuthConfigIssue}>
+    <div class={className}>
+      <div class="sf-gps-ds-au-qld-login-container">
+        <legend lwc:if={title} class="qld__legend">
+          <h2 class="qld__legend__title">{title}</h2>
+        </legend>
+
+        <div class="qld__margin-t-component">
+          <c-sf-gps-ds-au-qld-in-page-alert
+            type="error"
+            heading={i18n.authConfigErrorTitle}
+          >
+            {i18n.authConfigIssueLabel}
+          </c-sf-gps-ds-au-qld-in-page-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedRegistrationDisabled}>
+    <div class={className}>
+      <div class="sf-gps-ds-au-qld-login-container">
+        <legend lwc:if={title} class="qld__legend">
+          <h2 class="qld__legend__title">{title}</h2>
+        </legend>
+
+        <div class="qld__margin-t-component">
+          <c-sf-gps-ds-au-qld-in-page-alert
+            type="error"
+            heading={i18n.registrationDisabledTitle}
+          >
+            {i18n.registrationDisabledLabel}
+          </c-sf-gps-ds-au-qld-in-page-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:else>
+    <div class={className}>
+      <div class="sf-gps-ds-au-qld-login-container">
+        <form>
+          <div class="qld__fieldset">
+            <legend lwc:if={title} class="qld__legend">
+              <h2 class="qld__legend__title">{title}</h2>
+            </legend>
+
+            <template for:each={fieldsArray} for:item="field">
+              <div key={field.name} class="qld__form-group">
+                <label for={field.name} class="qld__label">
+                  <abbr lwc:if={field.required} title="required">*</abbr>
+                  {field.label}
+                  <span if:false={field.required} class="qld__label--optional"
+                    >{i18n.optional}</span
+                  >
+                </label>
+
+                <template lwc:if={field.isPassword}>
+                  <span
+                    lwc:if={authConfig.registrationPasswordPolicy}
+                    class="qld__hint-text"
+                  >
+                    {authConfig.registrationPasswordPolicy}
+                  </span>
+                </template>
+
+                <span lwc:if={field.anyError} class="qld__input--error">
+                  <svg
+                    class="qld__icon qld__icon--lead qld__icon--sm"
+                    role="img"
+                    aria-label={i18n.ariaErrorLabel}
+                  >
+                    <use href={computedErrorIconHref}></use>
+                  </svg>
+                  <template lwc:if={field.requiredError}>
+                    {i18n.fieldRequiredLabel}
+                  </template>
+                  <template lwc:elseif={field.mismatchError}>
+                    {i18n.passwordMismatchLabel}
+                  </template>
+                </span>
+
+                <input
+                  lwc:if={field.anyError}
+                  type={field.inputType}
+                  id={field.name}
+                  name={field.name}
+                  value={field.value}
+                  class="qld__text-input qld__text-input--block qld__text-input--error"
+                  aria-required={field.required}
+                  required={field.required}
+                  autocomplete={field.autocomplete}
+                  onkeyup={handleChange}
+                  onchange={handleChange}
+                  onblur={handleBlur}
+                />
+                <input
+                  lwc:else
+                  type={field.inputType}
+                  id={field.name}
+                  name={field.name}
+                  value={field.value}
+                  class="qld__text-input qld__text-input--block"
+                  aria-required={field.required}
+                  required={field.required}
+                  autocomplete={field.autocomplete}
+                  onkeyup={handleChange}
+                  onchange={handleChange}
+                  onblur={handleBlur}
+                />
+              </div>
+            </template>
+
+            <c-sf-gps-ds-au-qld-loading-spinner
+              lwc:if={isExtraFieldsLoading}
+              mode="minimal"
+            >
+            </c-sf-gps-ds-au-qld-loading-spinner>
+
+            <template for:each={extraFieldsArray} for:item="field">
+              <div key={field.name} class="qld__form-group">
+                <label for={field.name} class="qld__label">
+                  <abbr lwc:if={field.required} title="required">*</abbr>
+                  {field.label}
+                  <span if:false={field.required} class="qld__label--optional"
+                    >{i18n.optional}</span
+                  >
+                </label>
+
+                <span lwc:if={field.requiredError} class="qld__input--error">
+                  <svg
+                    class="qld__icon qld__icon--lead qld__icon--sm"
+                    role="img"
+                    aria-label={i18n.ariaErrorLabel}
+                  >
+                    <use href={computedErrorIconHref}></use>
+                  </svg>
+                  {i18n.fieldRequiredLabel}
+                </span>
+
+                <input
+                  lwc:if={field.requiredError}
+                  type="text"
+                  id={field.name}
+                  name={field.name}
+                  value={field.value}
+                  class="qld__text-input qld__text-input--block qld__text-input--error"
+                  aria-required={field.required}
+                  required={field.required}
+                  onkeyup={handleExtraFieldsChange}
+                  onchange={handleExtraFieldsChange}
+                  onblur={handleExtraFieldsBlur}
+                />
+                <input
+                  lwc:else
+                  type="text"
+                  id={field.name}
+                  name={field.name}
+                  value={field.value}
+                  class="qld__text-input qld__text-input--block"
+                  aria-required={field.required}
+                  required={field.required}
+                  onkeyup={handleExtraFieldsChange}
+                  onchange={handleExtraFieldsChange}
+                  onblur={handleExtraFieldsBlur}
+                />
+              </div>
+            </template>
+
+            <div class="qld__margin-t-component form-actions">
+              <c-sf-gps-ds-au-qld-button
+                el="button"
+                label={i18n.registerButtonLabel}
+                variant="primary"
+                icon-name={iconName}
+                icon-position={iconPosition}
+                disabled={computedIsRegisterButtonDisabled}
+                onclick={handleClick}
+              >
+              </c-sf-gps-ds-au-qld-button>
+              <c-sf-gps-ds-au-qld-loading-spinner
+                lwc:if={isRegistering}
+                mode="minimal"
+                label={i18n.registerWaitLabel}
+              >
+              </c-sf-gps-ds-au-qld-loading-spinner>
+            </div>
+          </div>
+        </form>
+
+        <div class="qld__margin-t-component">
+          <c-sf-gps-ds-au-qld-in-page-alert
+            lwc:if={errorMessage}
+            type="error"
+            heading={i18n.errorTitle}
+          >
+            {errorMessage}
+          </c-sf-gps-ds-au-qld-in-page-alert>
+        </div>
+
+        <hr lwc:if={terms} class="qld__horizontal-rule--lg" />
+
+        <div lwc:if={terms} lwc:ref="terms" lwc:dom="manual"></div>
+        <template lwc:else>
+          <slot name="terms"></slot>
+        </template>
+
+        <hr class="qld__horizontal-rule--lg" />
+
+        <p lwc:if={targetLoginUrl}>
+          <a href={targetLoginUrl} target="_self"
+            >{i18n.alreadyRegisteredLabel}</a
+          >
+        </p>
+      </div>
+    </div>
+  </template>
+</template>
