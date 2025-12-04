@@ -7,10 +7,32 @@
     target={target}
     class={computedClassName}
   >
-    <i lwc:if={computedIsIconLeading} class={iconName}> </i>
-    <template lwc:if={label}>{label}</template>
-    <slot></slot>
-    <i lwc:if={computedIsIconTrailing} class={iconName}> </i>
+    <template lwc:if={computedIsFaIcon}>
+      <i lwc:if={computedIsIconLeading} class={iconName}> </i>
+      <template lwc:if={label}>{label}</template>
+      <slot></slot>
+      <i lwc:if={computedIsIconTrailing} class={iconName}> </i>
+    </template>
+    <template lwc:else>
+      <svg
+        lwc:if={computedIsIconLeading}
+        class="qld__icon"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <use href={computedIconUrl}></use>
+      </svg>
+      <template lwc:if={label}>{label}</template>
+      <slot></slot>
+      <svg
+        lwc:if={computedIsIconTrailing}
+        class="qld__icon"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <use href={computedIconUrl}></use>
+      </svg>
+    </template>
   </a>
 
   <button
@@ -21,9 +43,31 @@
     class={computedClassName}
     onclick={handleClick}
   >
-    <i lwc:if={computedIsIconLeading} class={iconName}> </i>
-    <template lwc:if={label}>{label}</template>
-    <slot></slot>
-    <i lwc:if={computedIsIconTrailing} class={iconName}> </i>
+    <template lwc:if={computedIsFaIcon}>
+      <i lwc:if={computedIsIconLeading} class={iconName}> </i>
+      <template lwc:if={label}>{label}</template>
+      <slot></slot>
+      <i lwc:if={computedIsIconTrailing} class={iconName}> </i>
+    </template>
+    <template lwc:else>
+      <svg
+        lwc:if={computedIsIconLeading}
+        class="qld__icon"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <use href={computedIconUrl}></use>
+      </svg>
+      <template lwc:if={label}>{label}</template>
+      <slot></slot>
+      <svg
+        lwc:if={computedIsIconTrailing}
+        class="qld__icon"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <use href={computedIconUrl}></use>
+      </svg>
+    </template>
   </button>
 </template>

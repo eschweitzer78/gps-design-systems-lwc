@@ -21,8 +21,7 @@ const SfGpsAuQldStatusHelperMixin = (base) =>
 
     get computedStatusErrorIconHref() {
       return (
-        sfGpsDsAuQldStaticResource +
-        "/assets/img/QGDS-icons-v2.svg#icon-Status-Error"
+        sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg#status-error"
       );
     }
 
