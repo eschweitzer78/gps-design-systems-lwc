@@ -227,7 +227,7 @@
                       <div class="qld__main-nav__item-title">
                         <a
                           class="qld__main-nav__item-link"
-                          aria-current={computeCtaOneAriaCurrent}
+                          aria-current={computedCtaOneAriaCurrent}
                           href={ctaOneLink.url}
                         >
                           <svg
@@ -249,7 +249,7 @@
                       <div class="qld__main-nav__item-title">
                         <a
                           class="qld__main-nav__item-link"
-                          aria-current={computeCtaTwoAriaCurrent}
+                          aria-current={computedCtaTwoAriaCurrent}
                           href={ctaTwoLink.url}
                         >
                           <svg
@@ -263,6 +263,51 @@
 
                           <span class="qld__main-nav__item-text"
                             >{ctaTwoLink.text}</span
+                          >
+                        </a>
+                      </div>
+                    </li>
+                    <li lwc:if={profileLink} class={computedProfileClassName}>
+                      <div class="qld__main-nav__item-title">
+                        <a
+                          class="qld__main-nav__item-link"
+                          aria-current={computedProfileAriaCurrent}
+                          href={profileLink.url}
+                        >
+                          <svg
+                            lwc:if={profileIcon}
+                            class="qld__icon qld__icon--md"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <use href={computedProfileIconUrl}></use>
+                          </svg>
+
+                          <span class="qld__main-nav__item-text"
+                            >{profileLink.text}</span
+                          >
+                        </a>
+                      </div>
+                    </li>
+                    <li
+                      lwc:if={computedAuthShowLogin}
+                      class="qld__main-nav__item qld__main-nav__item--cta"
+                    >
+                      <div class="qld__main-nav__item-title">
+                        <a
+                          class="qld__main-nav__item-link"
+                          href={computedAuthUrl}
+                        >
+                          <svg
+                            class="qld__icon qld__icon--md"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <use href={computedAuthIconUrl}></use>
+                          </svg>
+
+                          <span class="qld__main-nav__item-text"
+                            >{computedAuthText}</span
                           >
                         </a>
                       </div>

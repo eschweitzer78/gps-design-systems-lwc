@@ -67,6 +67,38 @@
             </span>
             <span class="qld__header__cta-link-text">{ctaTwoText}</span>
           </a>
+
+          <a
+            lwc:if={computedAuthShowProfile}
+            href={profileUrl}
+            class="qld__header__cta-link"
+          >
+            <span lwc:if={profileIcon} class="qld__header__cta-link-icon">
+              <svg
+                class="qld__icon"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <use href={computedProfileIconUrl}></use>
+              </svg>
+            </span>
+            <span class="qld__header__cta-link-text">{profileText}</span>
+          </a>
+
+          <template lwc:if={computedAuthShowLogin}>
+            <a href={computedAuthUrl} class="qld__header__cta-link">
+              <span class="qld__header__cta-link-icon">
+                <svg
+                  class="qld__icon"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <use href={computedAuthIconUrl}></use>
+                </svg>
+              </span>
+              <span class="qld__header__cta-link-text">{computedAuthText}</span>
+            </a>
+          </template>
         </div>
 
         <!-- Main navigation controls (Search and Menu buttons on mobile and tablet screens) -->
@@ -103,6 +135,7 @@
 
           <!-- Menu button -->
           <button
+            lwc:if={menuLabel}
             aria-controls={mainNavId}
             class="qld__header__toggle-main-nav qld__main-nav__toggle--open"
             aria-expanded={_menuIsOpen}
@@ -190,7 +223,7 @@
               role="search"
               aria-label={i18n.searchFormAriaLabel}
               class="qld__search-form"
-              action="#"
+              action={computedGlobalSearchActionUrl}
             >
               <label
                 for={computedHeaderSearchInputId}
@@ -207,8 +240,10 @@
                 >
                   <use href={computedIconSearchUrl}></use>
                 </svg>
+                <!-- text vs search to avoid event -->
                 <input
-                  type="search"
+                  lwc:ref="query"
+                  type="text"
                   id={computedHeaderSearchInputId}
                   name="query"
                   class="qld__text-input"

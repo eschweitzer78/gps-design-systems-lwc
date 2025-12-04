@@ -20,6 +20,8 @@ export default class extends SfGpsDsNavigation {
   @api mainNavId = "mainmenu";
   @api ctaOneIcon;
   @api ctaTwoIcon;
+  @api authMode;
+  @api profileIcon;
   @api className = "";
 
   /* api: mode */
@@ -137,6 +139,26 @@ export default class extends SfGpsDsNavigation {
     } catch (e) {
       this.addError("HL-CT", "Issue when parsing CTA Two Link markdown");
       if (DEBUG) console.debug(CLASS_NAME, "set ctaTwoLink", e);
+    }
+  }
+
+  /* api: profileLink */
+
+  _profileLink;
+  _profileLinkOriginal;
+
+  @api
+  get profileLink() {
+    return this._profileLinkOriginal;
+  }
+
+  set profileLink(markdown) {
+    try {
+      this._profileLinkOriginal = markdown;
+      this._profileLink = markdown ? mdEngine.extractFirstLink(markdown) : null;
+    } catch (e) {
+      this.addError("HL-CO", "Issue when parsing Profile Link markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set profileLink", e);
     }
   }
 
