@@ -1,0 +1,157 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:elseif={isAuthConfigLoading}>
+    <div class={className}>
+      <div class="sf-gps-ds-au-qld-login-container">
+        <c-sf-gps-ds-au-qld-loading-spinner>
+        </c-sf-gps-ds-au-qld-loading-spinner>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedHasAuthConfigIssue}>
+    <div class={className}>
+      <div class="sf-gps-ds-au-qld-login-container">
+        <legend lwc:if={title} class="qld__legend">
+          <h2 class="qld__legend__title">{title}</h2>
+        </legend>
+
+        <div class="qld__margin-t-component">
+          <c-sf-gps-ds-au-qld-in-page-alert
+            type="error"
+            heading={i18n.authConfigErrorTitle}
+          >
+            {i18n.authConfigErrorLabel}
+          </c-sf-gps-ds-au-qld-in-page-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedLoginDisabled}>
+    <div class={className}>
+      <div class="sf-gps-ds-au-qld-login-container">
+        <legend lwc:if={title} class="qld__legend">
+          <h2 class="qld__legend__title">{title}</h2>
+        </legend>
+
+        <div class="qld__margin-t-component">
+          <c-sf-gps-ds-au-qld-in-page-alert
+            type="error"
+            heading={i18n.loginDisabledTitle}
+          >
+            {i18n.loginDisabledLabel}
+          </c-sf-gps-ds-au-qld-in-page-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:else>
+    <div class={className}>
+      <div class="sf-gps-ds-au-qld-login-container">
+        <form>
+          <div class="qld__fieldset">
+            <legend lwc:if={title} class="qld__legend">
+              <h2 class="qld__legend__title">{title}</h2>
+            </legend>
+
+            <div class="qld__margin-t-component">
+              <c-sf-gps-ds-au-qld-in-page-alert
+                lwc:if={errorMessage}
+                type="error"
+                heading={i18n.errorHeading}
+              >
+                {errorMessage}
+              </c-sf-gps-ds-au-qld-in-page-alert>
+            </div>
+
+            <div class="qld__form-group">
+              <label for="username" class="qld__label">
+                <abbr title="required">*</abbr>
+                {i18n.usernameFieldLabel}
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                class="qld__text-input qld__text-input--block"
+                aria-required="true"
+                required
+                autocomplete="username"
+                onkeyup={handleChange}
+                onchange={handleChange}
+              />
+            </div>
+
+            <div class="qld__form-group">
+              <label for="password" class="qld__label">
+                <abbr title="required">*</abbr>
+                {i18n.passwordFieldLabel}
+              </label>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                class="qld__text-input qld__text-input--block"
+                aria-required="true"
+                required
+                autocomplete="current-password"
+                onkeyup={handleChange}
+                onchange={handleChange}
+              />
+            </div>
+
+            <div class="form-actions qld__margin-t-component">
+              <c-sf-gps-ds-au-qld-button
+                el="button"
+                label={i18n.loginButtonLabel}
+                variant="primary"
+                icon-name={iconName}
+                icon-position={iconPosition}
+                disabled={computedIsLoginButtonDisabled}
+                onclick={handleLogin}
+              >
+              </c-sf-gps-ds-au-qld-button>
+              <c-sf-gps-ds-au-qld-loading-spinner
+                lwc:if={isLoggingIn}
+                mode="minimal"
+                label={i18n.loginWaitLabel}
+              >
+              </c-sf-gps-ds-au-qld-loading-spinner>
+            </div>
+          </div>
+        </form>
+
+        <hr lwc:if={terms} class="qld__horizontal-rule--lg" />
+
+        <div lwc:if={terms} lwc:ref="terms" lwc:dom="manual"></div>
+        <template lwc:else>
+          <slot name="terms"></slot>
+        </template>
+
+        <hr lwc:if={computedHasFooter} class="qld__horizontal-rule--lg" />
+
+        <p lwc:if={computedForgotPasswordUrl}>
+          <a href={computedForgotPasswordUrl} target="_self"
+            >{i18n.forgotPasswordLabel}</a
+          >
+        </p>
+        <p lwc:if={computedRegistrationUrl}>
+          <a href={computedRegistrationUrl} target="_self"
+            >{i18n.registerUserLabel}</a
+          >
+        </p>
+      </div>
+    </div>
+  </template>
+</template>

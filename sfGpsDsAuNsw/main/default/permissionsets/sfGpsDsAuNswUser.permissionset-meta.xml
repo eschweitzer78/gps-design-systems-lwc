@@ -40,6 +40,10 @@
     <apexClass>SfGpsDsRecordDetailController</apexClass>
     <enabled>true</enabled>
   </classAccesses>
+  <classAccesses>
+    <apexClass>SfGpsDsCommunitiesController</apexClass>
+    <enabled>true</enabled>
+  </classAccesses>
   <hasActivationRequired>false</hasActivationRequired>
-    <label>sfGpsDsAuNsw User</label>
+  <label>sfGpsDsAuNsw User</label>
 </PermissionSet>

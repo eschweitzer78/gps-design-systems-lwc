@@ -1,5 +1,9 @@
 import { api, track } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
+
+const STATIC_RESOURCE_ICONS_PATH =
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 export default class extends SfGpsDsLwc {
   /* Similar to the Rpl Docs version but only support same origin */
@@ -20,7 +24,7 @@ export default class extends SfGpsDsLwc {
     return {
       "docs-example": true,
       "with-padding": this.withPadding,
-      "qld__margin-t-component": this.showCallout,
+      "qld__margin-t-component": true,
       [this.className]: this.className
     };
   }
@@ -34,7 +38,13 @@ export default class extends SfGpsDsLwc {
   }
 
   get computedCodeIcon() {
-    return this.isCodeOpen ? " fas chevron-up" : " faschevron-down";
+    return this.isCodeOpen ? " fas chevron-up" : " fas chevron-down";
+  }
+
+  get computedCodeIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + this.isCodeOpen
+      ? "#chevron-up"
+      : " #chevron-down";
   }
 
   /* event management */

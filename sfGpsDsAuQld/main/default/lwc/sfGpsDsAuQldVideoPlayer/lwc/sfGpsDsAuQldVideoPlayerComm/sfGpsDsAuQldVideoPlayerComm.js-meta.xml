@@ -54,7 +54,7 @@
         name="transcript"
         type="String"
         label="Transcript"
-        description="Transcript"
+        description="The full transcript text, which will be showed in a collapsible section below the video."
         default="The new Queensland Government is helping kids get active and play their favourite sport with $200 Play On! Sports Vouchers. There's heaps of sports to play all across Queensland, from the city to the country, in winter or summer, for families with kids aged 5 to 17. To find out more, search Play On!"
         editor="c/sfGpsDsStringCpe"
       />

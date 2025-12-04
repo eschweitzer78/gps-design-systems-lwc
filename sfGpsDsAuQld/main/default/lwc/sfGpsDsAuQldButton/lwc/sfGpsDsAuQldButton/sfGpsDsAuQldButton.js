@@ -1,5 +1,6 @@
 import { LightningElement, api } from "lwc";
 import { computeClass, normaliseString } from "c/sfGpsDsHelpers";
+import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
 
 const ELEMENT_ANCHOR = "a";
 const ELEMENT_BUTTON = "button";
@@ -17,6 +18,9 @@ const ICONPOSITION_LEAD = "lead";
 const ICONPOSITION_TRAIL = "trail";
 const ICONPOSITION_VALUES = [ICONPOSITION_LEAD, ICONPOSITION_TRAIL];
 const ICONPOSITION_DEFAULT = ICONPOSITION_LEAD;
+
+const STATIC_RESOURCE_ICONS_PATH =
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 export default class extends LightningElement {
   @api label;
@@ -103,6 +107,14 @@ export default class extends LightningElement {
       "qld__btn--icon-trail": this._iconPosition === ICONPOSITION_TRAIL,
       [this.className]: this.className
     });
+  }
+
+  get computedIsFaIcon() {
+    return this.iconName?.includes("fa-");
+  }
+
+  get computedIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#" + this.iconName;
   }
 
   /* methods */

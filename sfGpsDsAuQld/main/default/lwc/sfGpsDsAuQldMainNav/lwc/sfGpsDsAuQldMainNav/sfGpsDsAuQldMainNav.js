@@ -16,14 +16,21 @@ import {
   unsubscribe,
   MessageContext
 } from "lightning/messageService";
+import { NavigationMixin } from "lightning/navigation";
 import mainNavToggleChannel from "@salesforce/messageChannel/sfGpsDsAuQldMainNavToggle__c";
 import sfGpsDsAuQldStaticResource from "@salesforce/resourceUrl/sfGpsDsAuQld";
+import isGuest from "@salesforce/user/isGuest";
+
+import sfGpsDsAuthLoginButtonLabel from "@salesforce/label/c.sfGpsDsAuthLoginButtonLabel";
+import sfGpsDsAuthLogoutButtonLabel from "@salesforce/label/c.sfGpsDsAuthLogoutButtonLabel";
 
 const I18N = {
   mainNavAriaLabel: "main",
   menuLabel: "Menu",
   closeLabel: "Close",
-  homeLabel: "Home"
+  homeLabel: "Home",
+  loginButtonLabel: sfGpsDsAuthLoginButtonLabel,
+  logoutButtonLabel: sfGpsDsAuthLogoutButtonLabel
 };
 
 const HOME_SHOW_DEFAULT = true;
@@ -53,13 +60,19 @@ const PREHEADERSTYLE_VALUES = {
   }
 };
 
+const AUTH_MODE_HIDE = "hide";
+const AUTH_MODE_LILO = "login-logout";
+const AUTH_MODE_ALL = "all";
+const AUTH_MODE_VALUES = [AUTH_MODE_HIDE, AUTH_MODE_LILO, AUTH_MODE_ALL];
+const AUTH_MODE_DEFAULT = AUTH_MODE_HIDE;
+
 const STATIC_RESOURCE_ICONS_PATH =
   sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuQldMainNav";
 
-export default class extends LightningElement {
+export default class extends NavigationMixin(LightningElement) {
   static renderMode = "light";
 
   @api homeUrl;
@@ -69,6 +82,8 @@ export default class extends LightningElement {
   @api ctaOneLink;
   @api ctaTwoIcon;
   @api ctaTwoLink;
+  @api profileLink;
+  @api profileIcon;
 
   @track _open;
 
@@ -146,6 +161,24 @@ export default class extends LightningElement {
     });
   }
 
+  /* api: authMode */
+
+  _authMode;
+  _authModeOriginal;
+
+  @api
+  get authMode() {
+    return this._authModeOriginal;
+  }
+
+  set authMode(value) {
+    this._authModeOriginal = value;
+    this._authMode = normaliseString(value, {
+      validValues: AUTH_MODE_VALUES,
+      fallbackValue: AUTH_MODE_DEFAULT
+    });
+  }
+
   /* api: navItems, Array of navigation item objects, format { url, text, subNav: ... } */
 
   @track _navItems;
@@ -165,6 +198,11 @@ export default class extends LightningElement {
   _navItemId = uniqueId("sf-gps-ds-au-qld-main-nav-item");
 
   @wire(MessageContext) _messageContext;
+
+  /* tracked */
+
+  loginUrl;
+  logoutUrl;
 
   /* getters */
 
@@ -257,13 +295,18 @@ export default class extends LightningElement {
   }
 
   get computedHasCta() {
-    return !!(this.ctaOneLink || this.ctaTwoLink);
+    return !!(this.ctaOneLink || this.ctaTwoLink || this.profileLink);
   }
 
   get computedMobileFiller() {
+    const number =
+      (this.ctaOneLink ? 1 : 0) +
+      (this.ctaTwoLink ? 1 : 0) +
+      (this.profileLink ? 1 : 0);
+
     return {
-      "qld__mega-nav_mobile-filler-60": !!this.ctaOneLink !== !!this.ctaTwoLink,
-      "qld__mega-nav_mobile-filler-120": this.ctaOneLink && this.ctaTwoLink
+      "qld__mega-nav_mobile-filler-60": number === 1,
+      "qld__mega-nav_mobile-filler-120": number > 1
     };
   }
 
@@ -274,6 +317,77 @@ export default class extends LightningElement {
     };
   }
 
+  get computedAuthShowProfile() {
+    return this.authMode === AUTH_MODE_ALL && !isGuest;
+  }
+
+  get computedAuthShowLogin() {
+    return this._authMode !== AUTH_MODE_HIDE;
+  }
+
+  get computedCtaOneClassName() {
+    const url = this.ctaOneLink?.url || "#";
+
+    return {
+      "qld__main-nav__item": true,
+      "qld__main-nav__item--cta": true,
+      active: this.isCurrentPage(url)
+    };
+  }
+
+  get computedCtaOneAriaCurrent() {
+    const url = this.ctaOneLink?.url || "#";
+    return this.isCurrentPage(url) ? "page" : null;
+  }
+
+  get computedCtaTwoClassName() {
+    const url = this.ctaTwoLink?.url || "#";
+
+    return {
+      "qld__main-nav__item": true,
+      "qld__main-nav__item--cta": true,
+      active: this.isCurrentPage(url)
+    };
+  }
+
+  get profileText() {
+    return this.profileLink?.text;
+  }
+
+  get profileUrl() {
+    return this.profileLink?.url;
+  }
+
+  get computedCtaTwoAriaCurrent() {
+    const url = this.ctaTwoLink?.url || "#";
+    return this.isCurrentPage(url) ? "page" : null;
+  }
+
+  get computedProfileClassName() {
+    const url = this.profileLink?.url || "#";
+
+    return {
+      "qld__main-nav__item": true,
+      "qld__main-nav__item--cta": true,
+      active: this.isCurrentPage(url)
+    };
+  }
+
+  get computedProfileAriaCurrent() {
+    const url = this.profileLink?.url || "#";
+    return this.isCurrentPage(url) ? "page" : null;
+  }
+
+  get computedAuthUrl() {
+    return isGuest ? this.loginUrl : this.logoutUrl;
+  }
+
+  get computedAuthText() {
+    return isGuest
+      ? I18N.loginButtonLabel || "Log in"
+      : I18N.logoutButtonLabel || "Log out";
+  }
+
   get computedCtaOneIconUrl() {
     return STATIC_RESOURCE_ICONS_PATH + "#" + this.ctaOneIcon;
   }
@@ -282,55 +396,22 @@ export default class extends LightningElement {
     return STATIC_RESOURCE_ICONS_PATH + "#" + this.ctaTwoIcon;
   }
 
-  get computedCtaOneClassName() {
-    const docUrl = new URL(document.URL);
-    const pathname = docUrl.pathname;
-    const url = this.ctaOneLink?.url || "#";
-
-    const isCurrentPage = new URL(url, docUrl).pathname === pathname;
-
-    return {
-      "qld__main-nav__item": true,
-      "qld__main-nav__item--cta": true,
-      active: isCurrentPage
-    };
+  get computedProfileIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#" + this.profileIcon;
   }
 
-  get computedCtaOneAriaCurrent() {
-    const docUrl = new URL(document.URL);
-    const pathname = docUrl.pathname;
-    const url = this.ctaOneLink?.url || "#";
-
-    const isCurrentPage = new URL(url, docUrl).pathname === pathname;
-
-    return isCurrentPage ? "page" : null;
-  }
-
-  get computedCtaTwoClassName() {
-    const docUrl = new URL(document.URL);
-    const pathname = docUrl.pathname;
-    const url = this.ctaTwoLink?.url || "#";
-
-    const isCurrentPage = new URL(url, docUrl).pathname === pathname;
-
-    return {
-      "qld__main-nav__item": true,
-      "qld__main-nav__item--cta": true,
-      active: isCurrentPage
-    };
-  }
-
-  get computedCtaTwoAriaCurrent() {
-    const docUrl = new URL(document.URL);
-    const pathname = docUrl.pathname;
-    const url = this.ctaTwoLink?.url || "#";
-
-    const isCurrentPage = new URL(url, docUrl).pathname === pathname;
-
-    return isCurrentPage ? "page" : null;
+  get computedAuthIconUrl() {
+    return STATIC_RESOURCE_ICONS_PATH + "#" + (isGuest ? "log-in" : "log-out");
   }
 
   /* methods */
+
+  isCurrentPage(url) {
+    const docUrl = new URL(document.URL);
+    const pathname = docUrl.pathname;
+
+    return new URL(url || "#", docUrl).pathname === pathname;
+  }
 
   mapSingleItemClasses(item, isActive) {
     return {
@@ -504,6 +585,8 @@ export default class extends LightningElement {
   /* lifecycle */
 
   connectedCallback() {
+    if (super.connectedCallback) super.connectedCallback();
+
     this.classList.add("js");
 
     if (!this._subscription) {
@@ -517,6 +600,24 @@ export default class extends LightningElement {
         (message) => this.handleMainNavToggle(message)
       );
     }
+
+    this[NavigationMixin.GenerateUrl]({
+      type: "comm__loginPage",
+      attributes: {
+        actionName: isGuest ? "login" : "logout"
+      }
+    })
+      .then((url) => {
+        if (isGuest) {
+          this.loginUrl = url;
+        } else {
+          this.logoutUrl = url;
+        }
+      })
+      .catch((error) => {
+        if (DEBUG)
+          console.error(CLASS_NAME, "connectedCallback.generateUrl", error);
+      });
   }
 
   disconnectedCallback() {

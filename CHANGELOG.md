@@ -1,5 +1,45 @@
 ## Change log
 
+### 4 September 2025
+
+#### All DSes: Base headless components for login, self-registration, forgot password and check email pages
+
+We added the headless logic and back-end code for DSes to support login, self-registration, forgot password and check email pages for authentication.
+
+Refer to [`sfGpsDs/main/default/lwc/auth/lwc`](sfGpsDs/main/default/lwc/auth/lwc) and [`sfGpsDs/main/default/lwc/auth/classes/SfGpsDsCommunitiesController.cls`](sfGpsDs/main/default/lwc/auth/classes/SfGpsDsCommunitiesController.cls).
+
+#### QLD DS: Support for login, self-registration, forgot password and check email pages
+
+We added components to support login, self-registration, forgot password and check email pages for authentication.
+
+Refer to [`sfGpsDsAuQld/main/default/lwc/auth/lwc`](sfGpsDAuQld/main/default/lwc/auth/lwc).
+
+#### QLD DS: Support for authentication and profile display in Header and Main Nav.
+
+We modified the header and main nav components to allow the display of current user details and well as login out, or login in when unauthenticated. These details are configured as part of the pre-header in the header component on desktop, and in the main nav on mobile and tablet.
+
+The main nav component has been adjusted to allow the display of the two call to action links you would find as part of the pre-header in the desktop header on mobile and tablet.
+
+Refer to [`sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldHeader/lwc`](sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldHeader/lwc) and [`sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMainNav/lwc`](sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMainNav/lwc).
+
+### 3 September 2025
+
+#### QLD DS: Move to Design System v1.18.4
+
+Note that there are some side effects as the default colour scheme which is now on the blue-ish side, and on icon name on a number of components where FontAwesome classes were accepted and QLD Icons names are now required.
+
+#### QLD DS: Support for Tabs
+
+We added support for Tabs in LWR.
+
+Refer to [`sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldTabs`](sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldTabs).
+
+#### QLD DS: Support for Video Player
+
+We added support for the Video Player.
+
+Refer to [`sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldVideoPlayer`](sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldVideoPlayer).
+
 ### 1 September 2025
 
 #### QLD DS and VIC2 DS: Support for OmniScript Standard Runtime
