@@ -1,12 +1,16 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <c-sf-gps-ds-au-qld-callout
-    lwc:if={showCallout}
-    class-name="qld__margin-t-component"
-  >
-    This is not a Queensland Government website and the example below is for
-    illustration purposes only.
-  </c-sf-gps-ds-au-qld-callout>
+  <template lwc:if={showCallout}>
+    <div></div>
+    <c-sf-gps-ds-au-qld-callout
+      lwc:if={showCallout}
+      class="qld__margin-t-component"
+      style="display: block"
+    >
+      This is not a Queensland Government website and the example below is for
+      illustration purposes only.
+    </c-sf-gps-ds-au-qld-callout>
+  </template>
 
   <div lwc:ref="target" class={computedClassName}>
     <div lwc:if={computedShowNewTab} class="docs-example-header">
@@ -19,6 +23,7 @@
         Open this example in a new tab
       </c-sf-gps-ds-au-qld-docs-link>
     </div>
+
     <div class="docs-example-body">
       <iframe
         lwc:ref="frame"
@@ -30,12 +35,15 @@
     </div>
 
     <div lwc:if={computedShowCode} class="docs-example-footer">
-      <button
-        onclick={handleToggleCode}
-        class="docs-example-code-btn rpl-type-p-small"
-      >
+      <button onclick={handleToggleCode} class="qld__btn qld__btn--icon-trail">
         Show code
-        <i class={computedCodeIcon}> </i>
+        <svg
+          class="qld__icon qld__icon--sm"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <use href={computedCodeIconUrl}></use>
+        </svg>
       </button>
     </div>
 
