@@ -40,6 +40,14 @@
     <apexClass>SfGpsDsRecordDetailController</apexClass>
     <enabled>true</enabled>
   </classAccesses>
+  <classAccesses>
+    <apexClass>GlobalSearchController</apexClass>
+    <enabled>true</enabled>
+  </classAccesses>
+  <classAccesses>
+    <apexClass>SfGpsDsCommunitiesController</apexClass>
+    <enabled>true</enabled>
+  </classAccesses>
   <hasActivationRequired>false</hasActivationRequired>
     <label>sfGpsDsAuVic2 User</label>
 </PermissionSet>
