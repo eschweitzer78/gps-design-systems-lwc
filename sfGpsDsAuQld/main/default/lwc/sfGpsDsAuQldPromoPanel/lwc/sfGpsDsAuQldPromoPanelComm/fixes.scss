@@ -2,6 +2,10 @@
 @import "@qhealth-design-system/core/src/styles/imports/mixins.scss";
 @import "variables.gen.scss";
 
+:host {
+    display: block;
+}
+
 .qld__body--alt  +  c-sf-gps-ds-au-qld-promo-panel-comm.qld__promo-panel{
     background: var(--QLD-color-light-alt__background);
 }

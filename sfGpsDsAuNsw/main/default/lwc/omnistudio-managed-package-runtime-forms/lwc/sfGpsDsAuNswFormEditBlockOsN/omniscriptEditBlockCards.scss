@@ -1,0 +1,35 @@
+@import "nsw-design-system/src/global/scss/settings/settings";
+@import "nsw-design-system/src/global/scss/base/functions";
+@import "nsw-design-system/src/global/scss/base/mixins";
+
+.nsw-hide {
+  display: none;
+}
+
+.nsw-card {
+  &:hover c-sf-gps-ds-au-nsw-button-menu-os {
+    --nsw-brand-dark: var(--nsw-text-white);
+  }
+
+
+  &__content {
+    position: relative;
+
+    c-sf-gps-ds-au-nsw-button-menu-os {
+      position: absolute;
+      top: rem(16px);
+      right: rem(16px);
+  
+      @include breakpoint("lg") {
+        & {
+          top: rem(32px);
+          right: rem(32px);
+        }
+      }
+    }
+  }
+
+  span.material-icons.checkbox {
+    margin-left: 2rem;
+  }
+}

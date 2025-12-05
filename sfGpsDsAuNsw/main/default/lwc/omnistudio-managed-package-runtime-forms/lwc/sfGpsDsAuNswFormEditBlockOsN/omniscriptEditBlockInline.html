@@ -1,0 +1,127 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template lwc:if={_isFirstIndex}>
+    <!-- Header/Label -->
+    <div>
+      <span class="nsw-form__label">{_propSetMap.label}</span>
+    </div>
+
+    <!-- Global Actions -->
+    <div lwc:if={_propSetMap.gActions} class="nsw-list nsw-list--8">
+      <template
+        for:each={_gActions}
+        for:item="gActionItem"
+        for:index="gActionIndex"
+      >
+        <omnistudio-icon
+          lwc:if={gActionItem.hasIcon}
+          key={gActionItem.lwcId}
+          extraclass="slds-input__icon"
+          icon-name={gActionItem.icon}
+          theme="slds"
+          alternative-text={gActionItem.label}
+          size="small"
+          style="cursor: pointer"
+          onclick={gActionItem.handleClick}
+        >
+        </omnistudio-icon>
+        <button
+          lwc:else
+          key={gActionItem.lwcId}
+          class="nsw-button nsw-button--dark-outline"
+          onclick={gActionItem.handleClick}
+        >
+          {gActionItem.label}
+        </button>
+      </template>
+    </div>
+  </template>
+
+  <div class="nsw-grid">
+    <!-- Inline Visual -->
+    <div class={visualClassName}>
+      <div class="sfgpsds-au-nsw-editblock">
+        <div class="sfgpsds-au-nsw-editblock__content">
+          <div class="sfgpsds-au-nsw-editblock__icon">
+            <span class="material-icons nsw-material-icons" aria-hidden="true">
+              {svgMapIcon}
+            </span>
+          </div>
+          <div class="sfgpsds-au-nsw-editblock__copy">
+            <template
+              for:each={_displayValues}
+              for:item="dvItem"
+              for:index="dvIndex"
+            >
+              <p key={dvItem.lwcId} class="nsw-text__truncate">
+                {dvItem.value}
+              </p>
+            </template>
+          </div>
+          <button class="nsw-icon-button sfgpsds-au-nsw-editblock__delete">
+            <span
+              lwc:if={_allowDelete}
+              class="material-icons nsw-material-icons"
+              aria-label={allCustomLabelsUtil.OmniDelete}
+              tabindex="0"
+              role="button"
+              data-remove-button
+              onclick={remove}
+              onkeydown={handleKeyboardRemove}
+            >
+              delete
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline Editing -->
+    <div class={editClassName}>
+      <article class="sfgpsds-au-nsw-editblock--inline">
+        <fieldset>
+          <slot></slot>
+          <div>
+            <button
+              onclick={cancel}
+              class="nsw-button nsw-button--dark-outline"
+            >
+              {allCustomLabelsUtil.OmnicancelLabel}
+            </button>
+
+            <button
+              onclick={save}
+              disabled={isPageLoading}
+              class="nsw-button nsw-button--dark-outline"
+            >
+              {allCustomLabelsUtil.OmniConfigProdModalOk}
+            </button>
+          </div>
+        </fieldset>
+      </article>
+    </div>
+  </div>
+
+  <!-- Add Button -->
+  <div
+    if:true={showAdd}
+    class="nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
+  >
+    <button
+      type="button"
+      class="nsw-button nsw-button--dark-outline editblock-new"
+      onclick={handleAdd}
+    >
+      {_newLabel}
+    </button>
+  </div>
+
+  <!-- Spinner -->
+  <template lwc:if={isPageLoading}>
+    <c-sf-gps-ds-au-nsw-loader-os
+      label={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      size="md"
+    >
+    </c-sf-gps-ds-au-nsw-loader-os>
+  </template>
+</template>

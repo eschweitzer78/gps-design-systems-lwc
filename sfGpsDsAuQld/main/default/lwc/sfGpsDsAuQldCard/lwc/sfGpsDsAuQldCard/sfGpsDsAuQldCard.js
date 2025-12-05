@@ -1,5 +1,5 @@
 import { LightningElement, api } from "lwc";
-import { normaliseString, normaliseBoolean } from "c/sfGpsDsHelpers";
+import { normaliseString, normaliseBoolean, uniqueId } from "c/sfGpsDsHelpers";
 
 const TYPE_DEFAULT = "default";
 const TYPE_ICON = "icon";
@@ -166,5 +166,19 @@ export default class extends LightningElement {
 
   get computedHasActions() {
     return this.actions?.length;
+  }
+
+  get computedDescriptionClassName() {
+    return this._hasDescriptionSlot ? "qld__card__description" : null;
+  }
+
+  _cardDescriptionId;
+
+  get computedCardDescriptionId() {
+    if (this._cardDescriptionId == null) {
+      this._cardDescriptionId = uniqueId("sf-gps-ds-au-qld-card-description");
+    }
+
+    return this._cardDescriptionId;
   }
 }

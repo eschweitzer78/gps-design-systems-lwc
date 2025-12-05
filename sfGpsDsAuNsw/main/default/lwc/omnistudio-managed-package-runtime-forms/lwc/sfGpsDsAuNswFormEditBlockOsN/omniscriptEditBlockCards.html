@@ -1,0 +1,100 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="nsw-grid">
+    <div
+      class={visualClassName}
+      onclick={handleCheckbox}
+      onkeydown={handleKeyboardCheckbox}
+    >
+      <!-- Display Text -->
+      <div class="nsw-card">
+        <div class="nsw-card__content">
+          <ul class="sf-gps-ds-omniscript-edit-block--card--values">
+            <template
+              for:each={_displayValues}
+              for:item="dvItem"
+              for:index="dvIndex"
+            >
+              <li key={dvItem.lwcId} class="nsw-text__truncate">
+                {dvItem.value}
+              </li>
+            </template>
+          </ul>
+
+          <span class="material-icons nsw-material-icons" aria-hidden="true"
+            >{svgMapIcon}</span
+          >
+          <template lwc:if={_showCheckbox}>
+            <span
+              class="material-icons nsw-material-icons checkbox"
+              aria-hidden="true"
+              >check_box</span
+            >
+            <span class="sr-only"
+              >{allCustomLabelsUtil.OmniEditBlockIconTextApproval}</span
+            >
+          </template>
+          <template lwc:elseif={_propSetMap.selectCheckBox}>
+            <span
+              class="material-icons nsw-material-icons checkbox"
+              aria-hidden="true"
+              >check_box_outline_blank</span
+            >
+          </template>
+
+          <!-- Menu Action Icon -->
+          <c-sf-gps-ds-au-nsw-button-menu-os
+            lwc:if={_useActionMenu}
+            id="actionmenu"
+            lwc:ref="actionmenu"
+            items={decoratedActionMenuItems}
+            variant="padded"
+            prevent-default="true"
+            onitemselected={handleActionMenuSelected}
+            onclick={handleActionMenuClick}
+          >
+          </c-sf-gps-ds-au-nsw-button-menu-os>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Editing -->
+    <c-sf-gps-ds-au-nsw-dialog-os
+      title={_propSetMap.label}
+      bstyle="dark"
+      is-dismissible="true"
+      is-open={_isEditing}
+      primary-button-text={allCustomLabelsUtil.OmniConfigProdModalOk}
+      secondary-button-text={allCustomLabelsUtil.OmnicancelLabel}
+      class-name={className}
+      onprimaryclick={save}
+      onsecondaryclick={cancel}
+      onclose={cancel}
+    >
+      <!-- disabled={isPageLoading} -->
+      <slot class="nsw-grid nsw-p-left-sm"> </slot>
+    </c-sf-gps-ds-au-nsw-dialog-os>
+
+    <div
+      lwc:if={showAdd}
+      class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
+    >
+      <button
+        type="button"
+        class="nsw-button nsw-button--dark-outline editblock-new"
+        onclick={handleAdd}
+      >
+        {_newLabel}
+      </button>
+    </div>
+  </div>
+
+  <!-- Spinner -->
+  <template lwc:if={isPageLoading}>
+    <c-sf-gps-ds-au-nsw-loader-os
+      label={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      size="md"
+    >
+    </c-sf-gps-ds-au-nsw-loader-os>
+  </template>
+</template>

@@ -120,8 +120,8 @@
       <property
         name="headerStyle"
         type="String"
-        label="header style"
-        description="Colour theme style used for rendering the pre-header."
+        label="Header style"
+        description="Colour theme style used for rendering the header."
         required="true"
         default="light"
         datasource="light,dark,dark-alternate"

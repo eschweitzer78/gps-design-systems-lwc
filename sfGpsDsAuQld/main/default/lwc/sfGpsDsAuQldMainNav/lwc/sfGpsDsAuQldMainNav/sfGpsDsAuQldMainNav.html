@@ -141,14 +141,12 @@
                                 <use href={computedArrowRightIconUrl}></use>
                               </svg>
                             </a>
-                            <template lwc:if={showDescLevelOne}>
-                              <p
-                                lwc:if={navItem.description}
-                                class="qld__main-nav__item-desc"
-                              >
-                                {navItem.description}
-                              </p>
-                            </template>
+                            <p
+                              lwc:if={navItem.description}
+                              class="qld__main-nav__item-desc"
+                            >
+                              {navItem.description}
+                            </p>
                           </div>
 
                           <hr
@@ -177,11 +175,9 @@
                                     >{subNavItem.text}</span
                                   >
                                 </a>
-                                <template lwc:if={showDescLevelTwo}>
-                                  <p lwc:if={subNavItem.description}>
-                                    {subNavItem.description}
-                                  </p>
-                                </template>
+                                <p lwc:if={subNavItem.description}>
+                                  {subNavItem.description}
+                                </p>
                               </li>
                             </template>
                           </ul>
@@ -211,6 +207,18 @@
                         href={navItem.url}
                         onclick={handleClick}
                       >
+                        <span
+                          lwc:if={navItem.iconName}
+                          class="qld__main-nav__item-icon"
+                        >
+                          <svg
+                            class="qld__icon qld__icon--sm"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <use href={navItem.iconUrl}></use>
+                          </svg>
+                        </span>
                         {navItem.text}
                       </a>
                     </div>

@@ -18,7 +18,7 @@
               lwc:if={nameUrl}
               class="qld__card--clickable__link"
               aria-label={nameText}
-              aria-describedby="card-description"
+              aria-describedby={computedDescriptionId}
               href={nameUrl}
             >
               {nameText}
@@ -30,7 +30,7 @@
               lwc:if={nameUrl}
               class="qld__card--clickable__link"
               aria-label={nameText}
-              aria-describedby="card-description"
+              aria-describedby={computedDescriptionId}
               href={nameUrl}
             >
               {nameText}
@@ -42,7 +42,7 @@
               lwc:if={nameUrl}
               class="qld__card--clickable__link"
               aria-label={nameText}
-              aria-describedby="card-description"
+              aria-describedby={computedDescriptionId}
               href={nameUrl}
             >
               {nameText}
@@ -54,7 +54,7 @@
               lwc:if={nameUrl}
               class="qld__card--clickable__link"
               aria-label={nameText}
-              aria-describedby="card-description"
+              aria-describedby={computedDescriptionId}
               href={nameUrl}
             >
               {nameText}
@@ -66,7 +66,7 @@
               lwc:if={nameUrl}
               class="qld__card--clickable__link"
               aria-label={nameText}
-              aria-describedby="card-description"
+              aria-describedby={computedDescriptionId}
               href={nameUrl}
             >
               {nameText}
@@ -74,9 +74,10 @@
             <template lwc:else>{nameText}</template>
           </h2>
 
-          <p id="card-description" class="qld__card__description">
+          <!-- replace p by div, tag does not play a difference here -->
+          <div id={computedDescriptionId} class="qld__card__description">
             <slot></slot>
-          </p>
+          </div>
         </div>
 
         <div lwc:if={displayArrow} class="qld__card__arrow"></div>

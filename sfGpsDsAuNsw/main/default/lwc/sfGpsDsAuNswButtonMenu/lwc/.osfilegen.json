@@ -1,0 +1,20 @@
+{
+  "sfGpsDsAuNswButtonMenu": {
+    "target": "!Os",
+    "!.html": {
+      "target": "!Os.html",
+      "c-sf-gps-ds-focus-trap": "c-sf-gps-ds-focus-trap-os"
+    },
+    "!.js": {
+      "target": "!Os.js",
+      "sfGpsDsElement": "sfGpsDsElementOs",
+      "sfGpsDsOnClickOutside": "sfGpsDsOnClickOutsideOs",
+      "sfGpsDsHelpers": "sfGpsDsHelpersOs",
+      "SfGpsDsNswButtonMenu": "SfGpsDsNswButtonMenuOs"
+    },
+    "!.js-meta.xml": {
+      "target": "!Os.js-meta.xml",
+      "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    }
+  }
+}

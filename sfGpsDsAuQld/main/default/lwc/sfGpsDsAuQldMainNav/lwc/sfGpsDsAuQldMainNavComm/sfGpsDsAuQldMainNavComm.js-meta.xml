@@ -51,13 +51,21 @@
         type="Boolean"
         label="Mega menu"
         description="Enable mega-menu"
-        default="false"
+        default="true"
+      />
+      <property
+        name="descLevel"
+        type="String"
+        label="Description level"
+        description="Indicates up to which level to show item descriptions."
+        default="none"
+        datasource="none,level 1, level 2"
       />
       <property
         name="cstyle"
         type="String"
         label="Colour style"
-        description="Colour style."
+        description="Colour theme style used to render the Main Nav."
         default="dark"
         datasource="light,dark"
       />
@@ -65,35 +73,36 @@
         name="preHeaderStyle"
         type="String"
         label="Pre-header style"
-        description="Pre-header style."
-        datasource="default,dark,dark-alternate"
+        description="Colour theme style used for rendering the pre-header as set up in your Header."
+        default="light"
+        datasource="light,dark,dark-alternate"
       />
       <property
         name="ctaOneLink"
         type="String"
-        label="Call to Action link one"
+        label="Call to Action link 1"
         description="Label and URL for the call to action in Markdown link format. Leave blank if no cta is desired."
         default="[Contact us](tel:1300200200)"
       />
       <property
         name="ctaOneIcon"
         type="String"
-        label="Icon name for Call to Action link one"
-        description="Font Awesome css classes to be applied."
+        label="Call to Action link 1 icon name"
+        description="QLD Icons icon name or Font Awesome css classes to be applied."
         default="phone"
       />
       <property
         name="ctaTwoLink"
         type="String"
-        label="Call to Action link two"
+        label="Call to Action link 2"
         description="Label and URL for the call to action in Markdown link format. Leave blank if no cta is desired."
         default=""
       />
       <property
         name="ctaTwoIcon"
         type="String"
-        label="Icon name for Call to Action link two"
-        description="Font Awesome css classes to be applied."
+        label="Call to Action link 2 icon name"
+        description="QLD Icons icon name or Font Awesome css classes to be applied."
         default=""
       />
       <property

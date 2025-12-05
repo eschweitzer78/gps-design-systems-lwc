@@ -37,14 +37,11 @@ export default class extends SfGpsDsLwc {
     return !this.hideCode;
   }
 
-  get computedCodeIcon() {
-    return this.isCodeOpen ? " fas chevron-up" : " fas chevron-down";
-  }
-
   get computedCodeIconUrl() {
-    return STATIC_RESOURCE_ICONS_PATH + this.isCodeOpen
-      ? "#chevron-up"
-      : " #chevron-down";
+    return (
+      STATIC_RESOURCE_ICONS_PATH +
+      (this.isCodeOpen ? "#chevron-up" : "#chevron-down")
+    );
   }
 
   /* event management */

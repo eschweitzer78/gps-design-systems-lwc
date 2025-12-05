@@ -1,4 +1,4 @@
-<template>
+<template lwc:render-mode="light">
   <c-sf-gps-ds-configuration-error
     lwc:if={_sfGpsDsErrors}
     errors={_sfGpsDsErrors}
@@ -21,12 +21,12 @@
     actions={_actions}
     class-name={className}
   >
-    <div lwc:if={copy} lwc:ref="copy" lwc:dom="manual"></div>
+    <div lwc:if={copy} lwc:ref="copy"></div>
     <template lwc:else>
       <slot name="copy"></slot>
     </template>
 
-    <div lwc:if={footer} lwc:ref="footer" lwc:dom="manual" slot="footer"></div>
+    <div lwc:if={footer} lwc:ref="footer" slot="footer"></div>
     <template lwc:else>
       <slot name="footer" slot="footer"></slot>
     </template>

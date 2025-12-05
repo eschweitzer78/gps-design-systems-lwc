@@ -19,6 +19,8 @@ const CLASS_NAME = "sfGpsDsAuQldCardComm";
  * @slot footer
  */
 export default class extends SfGpsDsLwc {
+  static renderMode = "light";
+
   @api type;
   @api icon;
   @api iconAlign;

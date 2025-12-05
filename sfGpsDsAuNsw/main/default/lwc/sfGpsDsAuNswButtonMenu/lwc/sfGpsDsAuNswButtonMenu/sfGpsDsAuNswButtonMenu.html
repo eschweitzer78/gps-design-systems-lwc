@@ -14,13 +14,20 @@
       <slot>
         <span
           lwc:if={iconName}
-          class="material-icons nsw-material-icons"
+          class="material-icons nsw-material-icons icon"
           aria-hidden="true"
         >
           {iconName}
         </span>
         {label}
       </slot>
+
+      <span
+        class="material-icons nsw-material-icons dropdown"
+        aria-hidden="true"
+      >
+        keyboard_arrow_down
+      </span>
     </button>
 
     <c-sf-gps-ds-focus-trap>

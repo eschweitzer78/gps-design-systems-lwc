@@ -35,25 +35,22 @@
       outline-offset: 3px;
     }
 
-    span.material-icons {
+    span.material-icons.icon {
       margin-right: .25rem;
     }
 
-    &:after {
-      content: "";
+    .dropdown {
+      color: var(--nsw-brand-dark);
+      font-size: 1.875rem;
       position: absolute;
+      right: .25rem;
       top: 50%;
-      right: 1rem;
-      height: 16px;
-      width: 12px;
-      transform: translateY(-50%) rotate(90deg);
-      background-repeat: no-repeat;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 32' fill='%231F2E61' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 16L4 0 0 4l12 12L0 28l4 4 16-16z'/%3E%3C/svg%3E");
+      transform: translateY(-50%);
       transition: transform .15s ease-in-out, color .15s ease-in-out;
     }
 
-    &[aria-expanded=true]:after {
-      transform: translateY(-50%) rotate(270deg);
+    &[aria-expanded=true] .dropdown {
+      transform: translateY(-50%) rotate(180deg);
     }
   }
 
@@ -129,3 +126,4 @@
 
   }
 }
+

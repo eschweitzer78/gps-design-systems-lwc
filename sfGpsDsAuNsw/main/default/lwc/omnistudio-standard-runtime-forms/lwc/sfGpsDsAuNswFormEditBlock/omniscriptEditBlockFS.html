@@ -1,20 +1,18 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <div>
+  <div class="nsw-grid">
     <!-- Header/Label -->
 
     <template lwc:if={_isFirstIndex}>
-      <div>
-        <label class="nsw-form__label" for="form-edit-block-table">
-          {_propSetMap.label} v1
-        </label>
-        <div if:true={_hasSumElement} class="slds-col--bump-left">
+      <div class="nsw-col">
+        <label class="nsw-form__label"> {_propSetMap.label} </label>
+        <div lwc:if={_hasSumElement} class="slds-col--bump-left">
           {sumElement}
         </div>
       </div>
 
       <!-- Global Actions -->
-      <div lwc:if={_propSetMap.gActions} class="nsw-list nsw-list--8">
+      <div lwc:if={_propSetMap.gActions} class="nsw-col nsw-list nsw-list--8">
         <template
           for:each={_gActions}
           for:item="gActionItem"
@@ -44,10 +42,10 @@
       </div>
     </template>
 
-    <div id="form-edit-block-table" class="nsw-table">
+    <div class="nsw-col nsw-table">
       <table>
         <!-- Table Header -->
-        <thead if:true={_isFirstIndex}>
+        <thead lwc:if={_isFirstIndex}>
           <tr>
             <th>
               <span class="sr-only">Error</span>
@@ -72,7 +70,7 @@
         <template lwc:if={_hasChildren}>
           <tbody
             if:false={_isEditing}
-            class="slds-grid slds-cont-wrapper omni-edit-block-fs-row"
+            class="omni-edit-block-fs-row"
             onclick={edit}
             aria-describedby="fs-text-error"
             aria-invalid={isInvalid}
@@ -150,10 +148,10 @@
 
     <!-- Inline Editing -->
     <div class={editClassName}>
-      <article class="sfgpsds-au-nsw-editblock--inline">
+      <article class="sfgpsds-au-nsw-editblock--fs">
         <fieldset>
           <slot></slot>
-          <div>
+          <div class="nsw-list nsw-list--8 nsw-p-top-sm">
             <button
               onclick={cancel}
               class="nsw-button nsw-button--dark-outline"
@@ -177,7 +175,7 @@
   <!-- Add Button -->
   <div
     if:true={showAdd}
-    class="nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
+    class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
   >
     <button
       type="button"

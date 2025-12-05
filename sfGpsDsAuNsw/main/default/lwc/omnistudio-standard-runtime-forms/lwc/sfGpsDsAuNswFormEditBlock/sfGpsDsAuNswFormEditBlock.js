@@ -5,6 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+/* We currently do not support Short/Narrow Cards as they seem to be working quite differently when it comes to their interaction with the surrounding OmniscriptEditBlockWrapper, which cannot be extended/overriden */
+
 import OmniscriptEditBlock from "c/sfGpsDsOsrtOmniscriptEditBlock";
 
 import tmpl_table from "./omniscriptEditBlock.html";
@@ -12,14 +14,10 @@ import tmpl_inline from "./omniscriptEditBlockInline.html";
 import tmpl_card from "./omniscriptEditBlockCards.html";
 import tmpl_fs from "./omniscriptEditBlockFS.html";
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsNswFormEditBlock";
 
 export default class extends OmniscriptEditBlock {
-  test(event) {
-    console.debug("*** TEST", event.currentTarget, event.target);
-  }
-
   /* computed */
 
   get computedDropdownClassName() {
@@ -49,19 +47,44 @@ export default class extends OmniscriptEditBlock {
 
   // eslint-disable-next-line no-unused-vars
   handleCheckbox(event) {
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "handleCheckbox",
+        "detail=",
+        JSON.stringify(event?.detail),
+        "target=",
+        event.target,
+        "from actionmenu=",
+        this.refs.actionmenu,
+        this.refs.actionmenu?.contains(event.target)
+      );
+    }
+
     // this will make sure the click event is propagated up
-    return super.handleCheckbox(null);
+    const rv = this.refs.actionmenu?.contains(event.target)
+      ? true
+      : super.handleCheckbox(null);
+    return rv;
   }
 
   handleActionMenuSelected(event) {
-    if (DEBUG)
+    if (DEBUG) {
       console.debug(CLASS_NAME, "> handleActionMenuSelected", event.detail);
+    }
 
     const actionMenuItem = this._actionMenuList[event.detail];
     // passing null event as we do not want to stop propagation, this would mess up the button menu
     this.handleClickOrEnter(null, actionMenuItem.lwcId);
 
-    if (DEBUG) console.debug(CLASS_NAME, "< handleActionMenuSelected");
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "< handleActionMenuSelected");
+    }
+  }
+
+  handleActionMenuClick(event) {
+    if (event) event.preventDefault();
+    if (DEBUG) console.debug(CLASS_NAME, "handleActionMenuClick");
   }
 
   /* lifecycle */
@@ -70,7 +93,8 @@ export default class extends OmniscriptEditBlock {
     if (DEBUG) {
       console.debug(
         CLASS_NAME,
-        "render",
+        "> render",
+        this._propSetMap.label,
         "isFs=",
         this._isFS,
         "isLongCards=",
@@ -80,11 +104,17 @@ export default class extends OmniscriptEditBlock {
         "isTable=",
         this._isTable,
         "isInline=",
-        this._isInline
+        this._isInline,
+        "isEditing=",
+        this._isEditing,
+        "hasChildren=",
+        this._hasChildren,
+        "isFirstIndex=",
+        this._isFirstIndex
       );
     }
 
-    let template = super.render();
+    let template = super.render(); // must run render as it computes a few variables
 
     if (this._isFS) {
       template = tmpl_fs;
@@ -94,6 +124,16 @@ export default class extends OmniscriptEditBlock {
       template = tmpl_table;
     } else if (this._isInline) {
       template = tmpl_inline;
+    }
+
+    if (DEBUG) {
+      console.debug(
+        CLASS_NAME,
+        "< render",
+        this._propSetMap.label,
+        "template=",
+        template
+      );
     }
 
     return template;
@@ -130,13 +170,18 @@ export default class extends OmniscriptEditBlock {
   }
 
   get visualClassName() {
-    return (
-      "nsw-col" + (this._isEditing || !this._hasChildren ? " nsw-hide" : "")
-    );
+    return {
+      "nsw-col": true,
+      "nsw-hide": this._isEditing || !this._hasChildren,
+      "nsw-col-sm-12": this._isLongCards || this._isCards
+    };
   }
 
   get editClassName() {
-    return "nsw-col " + (this._isEditing ? "" : " nsw-hide");
+    return {
+      "nsw-col": true,
+      "nsw-hide": !this._isEditing
+    };
   }
 
   createTableLabelColumns() {

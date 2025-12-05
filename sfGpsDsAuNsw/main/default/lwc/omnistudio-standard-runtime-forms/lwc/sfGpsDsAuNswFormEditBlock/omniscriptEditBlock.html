@@ -1,18 +1,16 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <div style="margin-top: -0.25rem">
+  <div class="nsw-grid">
     <!-- Removing the default base element's bottom margin of x-small (slds only)-->
 
     <template lwc:if={_isFirstIndex}>
       <!-- Header/Label -->
-      <div>
-        <label class="nsw-form__label" for="form-edit-block-table">
-          {_propSetMap.label}
-        </label>
+      <div class="nsw-col">
+        <label class="nsw-form__label"> {_propSetMap.label} </label>
       </div>
 
       <!-- Global Actions -->
-      <div lwc:if={_propSetMap.gActions} class="nsw-list nsw-list--8">
+      <div lwc:if={_propSetMap.gActions} class="nsw-col nsw-list nsw-list--8">
         <template
           for:each={_gActions}
           for:item="gActionItem"
@@ -42,7 +40,7 @@
       </div>
     </template>
 
-    <div id="form-edit-block-table" class="nsw-table">
+    <div class="nsw-col nsw-table">
       <table>
         <!-- Table Header -->
         <thead if:true={_isFirstIndex}>
@@ -75,7 +73,6 @@
             tabindex="0"
             aria-describedby="table-text-error"
             aria-invalid={isInvalid}
-            role="rowgroup"
           >
             <tr>
               <td>
@@ -130,8 +127,8 @@
                 <!-- Menu Action Icon -->
                 <c-sf-gps-ds-au-nsw-button-menu
                   if:true={_useActionMenu}
-                  id="action-menu"
-                  lwc:ref="action-menu"
+                  id="actionmenu"
+                  lwc:ref="actionmenu"
                   items={decoratedActionMenuItems}
                   variant="unpadded"
                   prevent-default="true"
@@ -166,7 +163,7 @@
     <!-- Add Button -->
     <div
       if:true={showAdd}
-      class="nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
+      class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
     >
       <button
         type="button"

@@ -1,0 +1,96 @@
+@import "nsw-design-system/src/global/scss/settings/settings";
+@import "nsw-design-system/src/global/scss/base/functions";
+@import "nsw-design-system/src/global/scss/base/mixins";
+
+@import "../../../../scss/iconography-icon-vars";
+
+.sfgpsds-au-nsw-editblock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100%;
+  color: var(--nsw-text-dark);
+  border-radius: var(--nsw-border-radius);
+
+  &:focus-within {
+    @include nsw-focus;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &__content {
+    padding: rem(16px);
+    background-color: var(--nsw-white);
+    border-radius: var(--nsw-border-radius);
+    border: 1px solid var(--nsw-grey-03);
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    height: 100%;
+    transition: background $nsw-transition-duration, border $nsw-transition-duration;
+
+    @include font-size('sm');
+
+    @include breakpoint('lg') {
+      padding: rem(32px);
+    }
+
+  }
+
+  &__copy {
+    flex: 1 1 auto;
+    transition: color $nsw-transition-duration;
+  }
+
+  .nsw-material-icons {
+    font-size: rem(map-get($nsw-icon-sizes, 30));
+    color: var(--nsw-brand-dark);
+    transition: color $nsw-transition-duration;
+
+    &--delete:hover {
+      @include nsw-hover;
+      background-color: var(--nsw-hover-light);
+    }
+  }
+
+  &--highlight {
+    .sfgpsds-au-nsw-editblock__content {
+      &::before {
+        content: '';
+        height: 4px;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background-color: var(--nsw-brand-accent);
+        transition: background $nsw-transition-duration;
+      }
+    }
+  }
+
+  &--inline {
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+  }
+}
+
+.nsw-hide {
+  display: none;
+}
