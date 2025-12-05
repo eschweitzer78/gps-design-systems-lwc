@@ -90,6 +90,7 @@ export default class extends NavigationMixin(LightningElement) {
   @api ctaTwoLink;
   @api profileLink;
   @api profileIcon;
+
   @track _open;
 
   /* api: homeShow */
