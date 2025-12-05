@@ -9,6 +9,9 @@ const I18N = {
   toggleNavigation: "Toggle navigation"
 };
 
+const STATIC_RESOURCE_ICONS_PATH =
+  sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg";
+
 export default class extends LightningElement {
   @api className;
 
@@ -60,7 +63,7 @@ export default class extends LightningElement {
   }
 
   get computedChevronUpIconUrl() {
-    return sfGpsDsAuQldStaticResource + "/assets/img/QLD-icons.svg#chevron-up";
+    return STATIC_RESOURCE_ICONS_PATH + "#chevron-up";
   }
 
   /* methods */

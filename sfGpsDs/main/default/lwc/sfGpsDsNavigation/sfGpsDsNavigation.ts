@@ -182,8 +182,10 @@ extends NavigationMixin<SfGpsDsIpLwc>(SfGpsDsIpLwc) {
     }
 
     return data.reduce((m, item, index) => {
+      let itemCopy = {...item}; delete itemCopy.subMenu;
       let itemKey = `${key}-${index + 1}`;
       let amik: AdaptedNavigationMenuItem = {
+        item: itemCopy,
         text: item.label ? mdEngine.decodeEntities(item.label) : undefined,
         url: item.actionValue,
         index: itemKey,

@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .qld__card-list--row {
   display: flex;
   flex-direction: row;

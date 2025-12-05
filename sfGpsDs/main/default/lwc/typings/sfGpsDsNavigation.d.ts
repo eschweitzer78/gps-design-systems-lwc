@@ -48,6 +48,7 @@ declare module "c/sfGpsDsNavigation" {
   }
 
   export interface AdaptedNavigationMenuItem {
+    item?: Object,
     text?: string,
     url?: string,
     index?: string,

@@ -1,0 +1,3 @@
+.qld__card .qld__card__inner .qld__card__description:empty {
+  display: none;
+}

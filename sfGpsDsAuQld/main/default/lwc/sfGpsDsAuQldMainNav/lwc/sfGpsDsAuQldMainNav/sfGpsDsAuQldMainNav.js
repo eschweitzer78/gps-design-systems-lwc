@@ -60,6 +60,12 @@ const PREHEADERSTYLE_VALUES = {
   }
 };
 
+const DESC_LEVEL_NONE = "none";
+const DESC_LEVEL_ONE = "level 1";
+const DESC_LEVEL_TWO = "level 2";
+const DESC_LEVEL_VALUES = [DESC_LEVEL_NONE, DESC_LEVEL_ONE, DESC_LEVEL_TWO];
+const DESC_LEVEL_DEFAULT = DESC_LEVEL_NONE;
+
 const AUTH_MODE_HIDE = "hide";
 const AUTH_MODE_LILO = "login-logout";
 const AUTH_MODE_ALL = "all";
@@ -84,7 +90,6 @@ export default class extends NavigationMixin(LightningElement) {
   @api ctaTwoLink;
   @api profileLink;
   @api profileIcon;
-
   @track _open;
 
   /* api: homeShow */
@@ -158,6 +163,24 @@ export default class extends NavigationMixin(LightningElement) {
       validValues: PREHEADERSTYLE_VALUES,
       fallbackValue: PREHEADERSTYLE_DEFAULT,
       returnObjectValue: true
+    });
+  }
+
+  /* api: descLevel */
+
+  _descLevel;
+  _descLevelOriginal;
+
+  @api
+  get descLevel() {
+    return this._descLevelOriginal;
+  }
+
+  set descLevel(value) {
+    this._descLevelOriginal = value;
+    this._descLevel = normaliseString(value, {
+      validValues: DESC_LEVEL_VALUES,
+      fallbackValue: DESC_LEVEL_DEFAULT
     });
   }
 
@@ -404,6 +427,19 @@ export default class extends NavigationMixin(LightningElement) {
     return STATIC_RESOURCE_ICONS_PATH + "#" + (isGuest ? "log-in" : "log-out");
   }
 
+  get showDescLevel() {
+    switch (this._descLevel) {
+      case DESC_LEVEL_ONE:
+        return 1;
+
+      case DESC_LEVEL_TWO:
+        return 2;
+
+      default:
+        return 0;
+    }
+  }
+
   /* methods */
 
   isCurrentPage(url) {
@@ -436,8 +472,7 @@ export default class extends NavigationMixin(LightningElement) {
         "qld__accordion--closed": !isActive
       },
       subNavItemClassName: {
-        "qld__main-nav__item--has-desc":
-          item.description && this.showDescLevelTwo
+        "qld__main-nav__item--has-desc": item.description
       },
       toggleAriaLabel: "Toggle navigation, " + item.text
     };
@@ -446,6 +481,7 @@ export default class extends NavigationMixin(LightningElement) {
   mapItems(parentIndex, parentLevel, map, items) {
     const docUrl = new URL(document.URL);
     const pathname = docUrl.pathname;
+    const level = parentLevel + 1;
 
     return items.map((item, index) => {
       const isCurrentPage =
@@ -453,13 +489,30 @@ export default class extends NavigationMixin(LightningElement) {
         (item.url && pathname.startsWith(item.url + "/"));
       const isActive = isCurrentPage && !parentLevel && !this._megaMenu;
 
-      let result = {
+      let decoratedItem = {
         ...item,
+        description:
+          item.item?.description && level <= this.showDescLevel
+            ? item.item.description
+            : null,
+        iconName: item.item?.iconName,
+        iconUrl: item.item?.iconName
+          ? STATIC_RESOURCE_ICONS_PATH + "#" + item.item.iconName
+          : null
+      };
+
+      if (decoratedItem.item) {
+        // remove original item
+        delete decoratedItem.item;
+      }
+
+      let result = {
+        ...decoratedItem,
         id: `${parentIndex}-${index}`,
-        index: item.index || `${parentIndex}-${index}`,
-        level: parentLevel + 1,
+        index: decoratedItem.index || `${parentIndex}-${index}`,
+        level: level,
         isActive: isActive,
-        ...this.mapSingleItemClasses(item, isActive)
+        ...this.mapSingleItemClasses(decoratedItem, isActive)
       };
 
       if (!this.megaMenu) {
@@ -469,7 +522,7 @@ export default class extends NavigationMixin(LightningElement) {
           result.index,
           parentLevel + 1,
           map,
-          item.subNav
+          decoratedItem.subNav
         );
       }
 

@@ -14,6 +14,7 @@ const CLASS_NAME = "SfGpsDsAuQldMainNavComm";
 
 export default class extends SfGpsDsNavigation {
   @api megaMenu = false;
+  @api descLevel;
   @api cstyle;
   @api preHeaderStyle;
   @api isActive = false;
