@@ -13,7 +13,7 @@
         for:item="gActionItem"
         for:index="gActionIndex"
       >
-        <c-sf-gps-ds-osrt-icon
+        <omnistudio-icon
           lwc:if={gActionItem.hasIcon}
           key={gActionItem.lwcId}
           extraclass="slds-input__icon"
@@ -24,7 +24,7 @@
           style="cursor: pointer"
           onclick={gActionItem.handleClick}
         >
-        </c-sf-gps-ds-osrt-icon>
+        </omnistudio-icon>
         <button
           lwc:else
           key={gActionItem.lwcId}
@@ -118,10 +118,10 @@
 
   <!-- Spinner -->
   <template lwc:if={isPageLoading}>
-    <c-sf-gps-ds-au-nsw-loader
+    <c-sf-gps-ds-au-nsw-loader-os
       label={allCustomLabelsUtil.OmniSpinnerTextLoading}
       size="md"
     >
-    </c-sf-gps-ds-au-nsw-loader>
+    </c-sf-gps-ds-au-nsw-loader-os>
   </template>
 </template>

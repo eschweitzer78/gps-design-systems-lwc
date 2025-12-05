@@ -43,7 +43,7 @@
           </template>
 
           <!-- Menu Action Icon -->
-          <c-sf-gps-ds-au-nsw-button-menu
+          <c-sf-gps-ds-au-nsw-button-menu-os
             lwc:if={_useActionMenu}
             id="actionmenu"
             lwc:ref="actionmenu"
@@ -53,13 +53,13 @@
             onitemselected={handleActionMenuSelected}
             onclick={handleActionMenuClick}
           >
-          </c-sf-gps-ds-au-nsw-button-menu>
+          </c-sf-gps-ds-au-nsw-button-menu-os>
         </div>
       </div>
     </div>
 
     <!-- Modal Editing -->
-    <c-sf-gps-ds-au-nsw-dialog
+    <c-sf-gps-ds-au-nsw-dialog-os
       title={_propSetMap.label}
       bstyle="dark"
       is-dismissible="true"
@@ -73,7 +73,7 @@
     >
       <!-- disabled={isPageLoading} -->
       <slot class="nsw-grid nsw-p-left-sm"> </slot>
-    </c-sf-gps-ds-au-nsw-dialog>
+    </c-sf-gps-ds-au-nsw-dialog-os>
 
     <div
       lwc:if={showAdd}
@@ -91,10 +91,10 @@
 
   <!-- Spinner -->
   <template lwc:if={isPageLoading}>
-    <c-sf-gps-ds-au-nsw-loader
+    <c-sf-gps-ds-au-nsw-loader-os
       label={allCustomLabelsUtil.OmniSpinnerTextLoading}
       size="md"
     >
-    </c-sf-gps-ds-au-nsw-loader>
+    </c-sf-gps-ds-au-nsw-loader-os>
   </template>
 </template>

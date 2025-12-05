@@ -7,7 +7,7 @@
 
 /* We currently do not support Short/Narrow Cards as they seem to be working quite differently when it comes to their interaction with the surrounding OmniscriptEditBlockWrapper, which cannot be extended/overriden */
 
-import OmniscriptEditBlock from "c/sfGpsDsOsrtOmniscriptEditBlock";
+import OmniscriptEditBlock from "omnistudio/omniscriptEditBlock";
 
 import tmpl_table from "./omniscriptEditBlock.html";
 import tmpl_inline from "./omniscriptEditBlockInline.html";
@@ -15,7 +15,7 @@ import tmpl_card from "./omniscriptEditBlockCards.html";
 import tmpl_fs from "./omniscriptEditBlockFS.html";
 
 const DEBUG = false;
-const CLASS_NAME = "SfGpsDsNswFormEditBlock";
+const CLASS_NAME = "SfGpsDsNswFormEditBlockOsN";
 
 export default class extends OmniscriptEditBlock {
   /* computed */

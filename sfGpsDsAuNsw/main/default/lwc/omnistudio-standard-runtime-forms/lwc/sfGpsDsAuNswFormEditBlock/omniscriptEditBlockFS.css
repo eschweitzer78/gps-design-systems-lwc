@@ -1,0 +1,15 @@
+@import "c/sfGpsDsAuNswCore";
+@import "c/sfGpsDsAuNswForm";
+
+th {
+  display: list-item;
+}
+
+/* for the error column */
+tr > th:first-child {
+  display: none;
+}
+
+.nsw-hide {
+  display: none;
+}

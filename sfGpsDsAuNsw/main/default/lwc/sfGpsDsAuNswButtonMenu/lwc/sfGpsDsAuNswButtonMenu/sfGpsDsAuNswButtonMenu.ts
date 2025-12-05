@@ -21,7 +21,7 @@ import type {
 } from "c/sfGpsDsMarkdown";
 
 const CLASS_NAME = "sfGpsDsNswButtonMenu";
-const DEBUG = true;
+const DEBUG = false;
 
 const MENUPOSITION_LEFT = "left";
 const MENUPOSITION_RIGHT = "right";
