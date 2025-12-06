@@ -163,6 +163,7 @@
                 <forceCommunity:notifications />
               </aura:if>
               <c:sfGpsDsAuNswHeaderProfileIp
+                mode="Integration Procedure"
                 ipName="{! v.profileIpName }"
                 inputJSON="{! v.profileInputJSON }"
                 optionsJSON="{! v.profileOptionsJSON }"
