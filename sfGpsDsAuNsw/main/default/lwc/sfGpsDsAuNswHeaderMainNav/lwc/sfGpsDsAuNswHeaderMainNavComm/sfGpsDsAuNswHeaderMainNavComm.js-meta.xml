@@ -47,6 +47,21 @@
         editor="c/sfGpsDsStringCpe"
       />
       <property
+        name="profileMode"
+        type="String"
+        label="Profile mode"
+        description="Mode by which the profile menu data is retrieved, pick None is no profile is required."
+        default="Integration Procedure"
+        datasource="None,Integration Procedure,Experience Cloud Navigation"
+      />
+      <property
+        name="profileNavigationDevName"
+        type="String"
+        label="Profile navigation name"
+        description="Pick the target profile nav when profile mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
         name="profileIpName"
         type="String"
         label="Profile integration procedure name"

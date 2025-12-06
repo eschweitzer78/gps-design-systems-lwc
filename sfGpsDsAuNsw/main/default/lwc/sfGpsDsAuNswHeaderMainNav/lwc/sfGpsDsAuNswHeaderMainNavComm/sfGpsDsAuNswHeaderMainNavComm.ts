@@ -14,8 +14,9 @@ import type {
   NavigationMode 
 } from "c/sfGpsDsNavigation"
 import type { 
-  Stacking 
-} from "c/sfGpsDsAuNswHeader";
+  Stacking,
+  ProfileNavigationMode 
+} from "c/sfGpsDsAuNswHeaderComm";
 
 export default 
 class SfGpsDsAuNswHeaderMainNavComm
@@ -110,6 +111,14 @@ extends SfGpsDsIpLwc {
   // @ts-ignore
   @api 
   search: boolean = false;
+
+  // @ts-ignore
+  @api 
+  profileMode?: ProfileNavigationMode;
+
+  // @ts-ignore
+  @api 
+  profileNavigationDevName?: string;
 
   // @ts-ignore
   @api 

@@ -19,6 +19,21 @@ extends SfGpsDsNavigation {
   @api 
   className?: string;
 
+  /* api: mode, String */
+
+  // @ts-ignore
+  @api
+  // @ts-ignore
+  get mode() {
+    // @ts-ignore
+    return super.mode;
+  }
+
+  set mode(value) {
+    // @ts-ignore
+    super.mode = value;
+  }
+  
   /* api: ipName */
 
   // @ts-ignore

@@ -15,6 +15,7 @@
         label="Masterbrand"
         description="Logo URL for masterbrand, leave empty to keep NSW Government Waratah logo."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="masterbrandAlt"
@@ -22,6 +23,7 @@
         label="Masterbrand alternative text"
         description="Alternative text to masterbrand logo."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="srMasterbrandLabel"
@@ -29,18 +31,21 @@
         label="Screenreader masterbrand label"
         description="Label used on screenreaders for the masterbrand logo."
         default="NSW Government"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="logo"
         type="String"
         label="Logo"
         description="Logo URL for co-brand."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="logoAlt"
         type="String"
         label="Logo alternative text"
         description="Alternative text to co-brand logo."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="siteTitle"
@@ -48,6 +53,7 @@
         label="Site title"
         description="Provides user context of the product or service."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="siteDescriptor"
@@ -55,12 +61,14 @@
         label="Site descriptor"
         description="Provides user context of the cluster/department/agency if required."
         default=""
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="headerUrl"
         type="String"
         label="Home page URL"
         description="URL to alternative home page, leave blank otherwise."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="mobile"
@@ -85,10 +93,26 @@
         default="true"
       />
       <property
+        name="profileMode"
+        type="String"
+        label="Profile mode"
+        description="Indicates how to handle getting profile details. Pick None if no profile is required."
+        default="Integration Procedure"
+        datasource="None,Integration Procedure,Experience Cloud Navigation"
+      />
+      <property
+        name="profileNavigationDevName"
+        type="String"
+        label="Profile navigation name"
+        description="Pick the target nav when profile mode is set to Experience Cloud Navigation."
+        editor="c/sfGpsDsNavigationCpe"
+      />
+      <property
         name="profileIpName"
         type="String"
         label="Profile integration procedure name"
-        description="Name of the Integration procedure mapping content to profile menu. Leave empty for if no profile menu is required."
+        description="Name of the Integration procedure mapping content to profile menu when profile mode is set to Integration Procedure."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="profileInputJSON"
@@ -96,6 +120,7 @@
         label="Profile input JSON"
         description="JSON formatted input parameters for the profile integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="profileOptionsJSON"
@@ -103,6 +128,7 @@
         label="Profile options JSON"
         description="JSON formatted options for the Profile integration procedure."
         default="{}"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="menuLabel"
@@ -110,6 +136,7 @@
         label="Menu icon name"
         description="Name of the Google Material icon used to render the menu waffle on mobile."
         default="menu"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="searchLabel"
@@ -117,12 +144,14 @@
         label="Screenreader search label"
         description="Accessibility label used for the search box with screen readers"
         default="Search site for:"
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

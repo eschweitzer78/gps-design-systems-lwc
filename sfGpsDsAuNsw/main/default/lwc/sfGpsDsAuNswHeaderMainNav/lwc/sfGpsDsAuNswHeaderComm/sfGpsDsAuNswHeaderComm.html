@@ -19,7 +19,7 @@
     mobile={mobile}
     mobile-logo-stacking={mobileLogoStacking}
     search={search}
-    profile={profileIpName}
+    profile={profile}
     search-label={searchLabel}
     class-name={className}
     main-nav-id={mainNavId}
@@ -29,9 +29,12 @@
     onhome={handleHome}
   >
     <c-sf-gps-ds-au-nsw-header-profile-ip
+      lwc:if={profile}
+      mode={profileMode}
       ip-name={profileIpName}
       input-j-s-o-n={profileInputJSON}
       options-j-s-o-n={profileOptionsJSON}
+      navigation-dev-name={profileNavigationDevName}
       is-guest={_isGuest}
       user-alias={userAlias}
     >
