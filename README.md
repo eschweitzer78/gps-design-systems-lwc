@@ -30,7 +30,7 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcbMIAS" title="sfGpsDs">this link</a> to install the `sfGpsDs` unlocked package in your org (only when developing your own design system or as a dependency for a third-party). Note that this is a major upgrade with higher risk of regression (migration to typescript).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcbWIAS" title="sfGpsDsAuNswFull">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included). Note that this is a major upgrade with higher risk of regression (migration to typescript).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PccPIAS" title="sfGpsDsAuNswFull">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included). Note that this is a major upgrade with higher risk of regression (migration to typescript).
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcbgIAC" title="sfGpsDsAuNswSFull">this link</a> to install the `sfGpsDsAuNswS` unlocked package in your org (with `sfGpsDs` included).
 
