@@ -24,19 +24,23 @@ Please submit issues on our [development repo](https://github.com/eschweitzer78/
 
 ## Installing beta versions using Unlocked Packages
 
-Follow this set of instructions if you want to deploy the library in its most recent build to a more permanent environment than a Scratch org or if you don't want to install the local developement tools. You can use a non source-tracked orgs such as a free [Developer Edition Org](https://developer.salesforce.com/signup) or a [Trailhead Playground](https://trailhead.salesforce.com/), or one of your sandboxes.
+Follow this set of instructions if you want to deploy the library in its most recent build to a more permanent environment than a Scratch org or if you don't want to install the local developement tools.
+
+You can use a non source-tracked orgs such as a free [Developer Edition Org](https://developer.salesforce.com/signup) or a [Trailhead Playground](https://trailhead.salesforce.com/), or one of your sandboxes.
+
+While installing, expand the advanced options to pick the `Compile only the Apex in the package` option.
 
 1. Log in to your org
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcctIAC" title="sfGpsDs">this link</a> to install the `sfGpsDs` unlocked package in your org (only when developing your own design system or as a dependency for a third-party). Note that this is a major upgrade with higher risk of regression (migration to typescript).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcctIAC" title="sfGpsDs">this link</a> to install the `sfGpsDs` unlocked package in your org (only when developing your own design system or as a dependency for a third-party).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pcd3IAC" title="sfGpsDsAuNswFull">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included). Note that this is a major upgrade with higher risk of regression (migration to typescript).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pcd3IAC" title="sfGpsDsAuNswFull">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included). **Note**: Former users (pre-3.4), you may need to upgrade with deprecate only if you have been actively using `sfGpsDsAuNswHeaderComm` which is now superseded by `sfGpsDsAuNswHeaderV2Comm`.
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcdDIAS" title="sfGpsDsAuNswSFull">this link</a> to install the `sfGpsDsAuNswS` unlocked package in your org (with `sfGpsDs` included).
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcdIIAS" title="sfGpsDsAuQldFull">this link</a> to install the `sfGpsDsAuQld` unlocked package in your org (with `sfGpsDs` included).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc7kIAC" title="sfGpsDsAuVic1Full">this link</a> to install the `sfGpsDsAuVic` unlocked package in your org (with `sfGpsDs` included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc7kIAC" title="sfGpsDsAuVic1Full">this link</a> to install the `sfGpsDsAuVic` unlocked package in your org (with `sfGpsDs` included). **Note**: this library is now deprecated.
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcdNIAS" title="sfGpsDsAuVic2Full">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included).
 
@@ -46,21 +50,21 @@ Follow this set of instructions if you want to deploy the library in its most re
 
 ## Installing the production versions using Unlocked Packages
 
-Kindly note that the packages might be the same as for non-production orgs (see above) if the latest successful build has alreay been promoted for production.
+Kindly note that the packages might be the same as for non-production orgs (see above) if the latest successful build has alreay been promoted for production. It is highly advisable to have sufficient testing mileage in a sandbox with a given version prior to installing it in production.
 
 Make sure you fully understand the [support](./SUPPORT.md) and [security](./SECURITY.md) implications of installing those assets in production. The applicable [license](./LICENSE.md) has also wide-ranging disclaimer provisions.
+
+While installing, you can expand the advanced options to pick the `Compile only the Apex in the package` option if you know that your local Apex may raise issues as the installation would otherwise be aborted in abundance of caution. It is however advisable to deal with those issues before setting forth with the installation if possible.
 
 1. Log in to your org
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc9qIAC">this link</a> to install the `sfGpsDs` unlocked package in your production org (v2.8.0.4 released on 28/04/2025 -- only when using your own design system or a dependent third-party's).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcPPIA0">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your production org (v3.0.4.4 released on 13/08/2025).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pcd3IAC">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your production org (v3.4.0.1 released on 08/12/2025).
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcA0IAK">this link</a> to install the `sfGpsDsAuNswS` unlocked package in your production org (v2.8.0.4 released on 28/04/2025).
 
 1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuQld` unlocked package in a production org. We would like to collect feedback and may be able to provide early adopter support.
-
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc7kIAC">this link</a> to install the `sfGpsDsAuVic` unlocked package in your production org (v2.7.1.1 released on 21/02/2025). Please [do let us know](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) when doing so for non-educational use as we plan on stopping distribution by 1/10/2025.
 
 1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuVic2` unlocked package in a production org. We would like to collect feedback and may be able to provide early adopter support.
 
