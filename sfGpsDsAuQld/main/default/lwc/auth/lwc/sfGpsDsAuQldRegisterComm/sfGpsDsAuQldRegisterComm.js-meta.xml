@@ -36,7 +36,7 @@
         type="String"
         label="Terms"
         description="Insert the terms of usage or a link to the terms page."
-        default="By registering for this site, you agree to its [terms and conditions](./terms)."
+        default=""
         editor="c/sfGpsDsMarkdownCpe"
       />
       <property

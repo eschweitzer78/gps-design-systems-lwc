@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+import { api } from "lwc";
+import SfGpsDsAuthCheckPassword from "c/sfGpsDsAuthCheckPassword";
+import mdEngine from "c/sfGpsDsMarkdown";
+import { replaceInnerHtml } from "c/sfGpsDsHelpers";
+import tmpl from "./sfGpsDsAuNswCheckPasswordComm.html";
+
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsAuNswCheckPasswordComm";
+
+/**
+ * @slot description
+ */
+export default class extends SfGpsDsAuthCheckPassword {
+  @api title;
+  @api className;
+
+  /* api: description */
+
+  _descriptionHtml;
+  _descriptionOriginal;
+
+  @api
+  get description() {
+    return this._descriptionOriginal;
+  }
+
+  set description(markdown) {
+    this._descriptionOriginal = markdown;
+    try {
+      this._descriptionHtml = markdown
+        ? mdEngine.renderEscaped(markdown)
+        : null;
+    } catch (e) {
+      this.addError("CO-MD", "Issue when parsing Description markdown");
+      if (DEBUG) console.debug(CLASS_NAME, "set description", e);
+    }
+  }
+
+  /* getters */
+
+  get computedClassName() {
+    return {
+      "nsw-layout": true,
+      [this.className]: this.className
+    };
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
+  }
+
+  renderedCallback() {
+    super.renderedCallback?.();
+
+    const description = this.refs.description;
+
+    if (description && this._descriptionHtml) {
+      replaceInnerHtml(description, this._descriptionHtml);
+    }
+  }
+}

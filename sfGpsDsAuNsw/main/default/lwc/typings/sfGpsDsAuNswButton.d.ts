@@ -32,6 +32,7 @@ declare module "c/sfGpsDsAuNswButton" {
   extends SfGpsDsElement {
     label?: string;
     link?: string;
+    target?: string;
     type: Type;
     iconName?: string;
     className?: string;

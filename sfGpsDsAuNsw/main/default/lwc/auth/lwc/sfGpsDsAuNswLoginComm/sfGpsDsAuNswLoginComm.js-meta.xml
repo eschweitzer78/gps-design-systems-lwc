@@ -2,7 +2,7 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>64.0</apiVersion>
   <isExposed>true</isExposed>
-  <masterLabel>QLD DS Auth Login</masterLabel>
+  <masterLabel>NSW DS Auth Login</masterLabel>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
@@ -20,15 +20,16 @@
         name="iconName"
         type="String"
         label="Icon name"
-        description="Font Awesome classes to be applied to the login button, or QLD icon name. Leave empty if no icon is required."
+        description="Name of the icon in the Google Material collection."
         editor="c/sfGpsDsStringCpe"
       />
       <property
-        name="iconPosition"
+        name="iconStyle"
         type="String"
-        label="Position of the icon"
-        default="lead"
-        datasource="lead,trail"
+        label="Icon style"
+        description="Indicates whether there is an icon and where."
+        datasource="none,before,after"
+        default="none"
       />
       <property
         name="terms"

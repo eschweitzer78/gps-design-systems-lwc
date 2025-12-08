@@ -57,6 +57,10 @@ extends SfGpsDsElement {
   link?: string;
 
   // @ts-ignore
+  @api
+  target?: string;
+
+  // @ts-ignore
   @api 
   type: Type;
 
