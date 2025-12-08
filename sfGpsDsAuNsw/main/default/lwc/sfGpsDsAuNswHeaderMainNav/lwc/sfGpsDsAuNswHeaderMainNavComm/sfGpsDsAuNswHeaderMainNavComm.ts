@@ -16,7 +16,7 @@ import type {
 import type { 
   Stacking,
   ProfileNavigationMode 
-} from "c/sfGpsDsAuNswHeaderComm";
+} from "c/sfGpsDsAuNswHeaderV2Comm";
 
 export default 
 class SfGpsDsAuNswHeaderMainNavComm

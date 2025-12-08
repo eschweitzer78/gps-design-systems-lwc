@@ -29,10 +29,10 @@ import type {
 } from "lightning/uiRecordApi";
 import type { 
   ProfileNavigationMode 
-} from "c/sfGpsDsAuNswHeaderComm";
+} from "c/sfGpsDsAuNswHeaderV2Comm";
 
 export default 
-class SfGpsDsAuNswHeaderComm 
+class SfGpsDsAuNswHeaderV2Comm 
 extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
   // @ts-ignore
   @api 
@@ -98,7 +98,7 @@ extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
 
   // @ts-ignore
   @api
-  profileMode?: ProfileNavigationMode;
+  profileMode?: ProfileNavigationMode = "None";
 
   // @ts-ignore
   @api 
