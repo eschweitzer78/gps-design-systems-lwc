@@ -1,7 +1,7 @@
 <!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <template lwc:if={computedIsAnchor}>
-    <a class={computedClassName} href={link}>
+    <a class={computedClassName} href={link} target={target}>
       <template lwc:if={computedHasIconBefore}>
         <span class="material-icons nsw-material-icons" aria-hidden="true">
           {iconName}

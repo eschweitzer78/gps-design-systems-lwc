@@ -34,7 +34,7 @@ import "./sfGpsDsAuNswGlobalAlert";
 import "./sfGpsDsAuNswGlobalAlertComm";
 import "./sfGpsDsAuNswGridLwr";
 import "./sfGpsDsAuNswHeader";
-import "./sfGpsDsAuNswHeaderComm";
+import "./sfGpsDsAuNswHeaderV2Comm";
 import "./sfGpsDsAuNswHeaderProfile";
 import "./sfGpsDsAuNswHeroBanner";
 import "./sfGpsDsAuNswHeroBannerAlt";

@@ -52,7 +52,6 @@ export default class extends SfGpsDsLwc {
   errorMessage;
   isAuthConfigLoading = true;
   loginUrl;
-  targetLoginUrl;
   checkEmailUrl;
   isResettingPassword;
 
@@ -88,6 +87,13 @@ export default class extends SfGpsDsLwc {
     return (
       Object.keys(this.authConfig).length === 0 && !this.isAuthConfigLoading
     );
+  }
+
+  get targetLoginUrl() {
+    const loginUrl = this.loginUrl || this.authConfig?.loginUrl1;
+    return loginUrl
+      ? appendStartUrlToTargetUrl(loginUrl, getStartUrlFromCurrentUrl())
+      : null;
   }
 
   /* methods */
@@ -183,11 +189,8 @@ export default class extends SfGpsDsLwc {
   async connectedCallback() {
     if (super.connectedCallback()) super.connectedCallback();
 
-    this.loginUrl = (await getLoginUrl()) || "./login";
-    this.targetLoginUrl = appendStartUrlToTargetUrl(
-      this.loginUrl,
-      getStartUrlFromCurrentUrl()
-    );
+    this.loginUrl = await getLoginUrl();
+
     this.checkEmailUrl = "./CheckPasswordResetEmail";
     this.targetcheckEmailUrl = appendStartUrlToTargetUrl(
       this.checkEmailUrl,

@@ -95,6 +95,10 @@
           <value>{}</value>
         </componentInstanceProperties>
         <componentInstanceProperties>
+          <name>profileMode</name>
+          <value>None</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
           <name>profileIpName</name>
           <value />
         </componentInstanceProperties>

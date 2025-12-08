@@ -1,0 +1,149 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:elseif={isAuthConfigLoading}>
+    <div class={computedClassName}>
+      <div class="nsw-layout__main sf-gps-ds-au-nsw-login-container">
+        <c-sf-gps-ds-au-nsw-loader> </c-sf-gps-ds-au-nsw-loader>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedHasAuthConfigIssue}>
+    <div class={computedClassName}>
+      <div class="nsw-layout__main sf-gps-ds-au-nsw-login-container">
+        <h2 lwc:if={title}>{title}</h2>
+
+        <div class="nsw-m-top-md">
+          <c-sf-gps-ds-au-nsw-alert
+            as="error"
+            title={i18n.authConfigErrorTitle}
+          >
+            <p>{i18n.authConfigErrorLabel}</p>
+          </c-sf-gps-ds-au-nsw-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedLoginDisabled}>
+    <div class={computedClassName}>
+      <div class="nsw-layout__main sf-gps-ds-au-nsw-login-container">
+        <h2 lwc:if={title}>{title}</h2>
+
+        <div class="nsw-m-top-md">
+          <c-sf-gps-ds-au-nsw-alert
+            type="error"
+            heading={i18n.loginDisabledTitle}
+          >
+            <p>{i18n.loginDisabledLabel}</p>
+          </c-sf-gps-ds-au-nsw-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:else>
+    <div class={computedClassName}>
+      <div class="nsw-layout__main sf-gps-ds-au-nsw-login-container">
+        <form>
+          <div>
+            <h2 lwc:if={title}>{title}</h2>
+
+            <div class="nsw-top-md-small">
+              <c-sf-gps-ds-au-nsw-alert
+                lwc:if={errorMessage}
+                type="error"
+                heading={i18n.errorHeading}
+              >
+                <p>{errorMessage}</p>
+              </c-sf-gps-ds-au-nsw-alert>
+            </div>
+
+            <div class="nsw-form__group">
+              <label for="username" class="nsw-form__label nsw-form__required">
+                {i18n.usernameFieldLabel}
+                <span class="sr-only"> (i18n.required)</span>
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                class="nsw-form__input"
+                aria-required="true"
+                required
+                autocomplete="username"
+                onkeyup={handleChange}
+                onchange={handleChange}
+              />
+            </div>
+
+            <div class="nsw-form__group">
+              <label for="password" class="nsw-form__label nsw-form__required">
+                {i18n.passwordFieldLabel}
+                <span class="sr-only"> (i18n.required)</span>
+              </label>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                class="nsw-form__input"
+                aria-required="true"
+                required
+                autocomplete="current-password"
+                onkeyup={handleChange}
+                onchange={handleChange}
+              />
+            </div>
+
+            <div class="form-actions nsw-p-top-md">
+              <c-sf-gps-ds-au-nsw-button
+                type="button"
+                label={i18n.loginButtonLabel}
+                icon-name={iconName}
+                icon-position={iconPosition}
+                disabled={computedIsLoginButtonDisabled}
+                onclick={handleLogin}
+              >
+              </c-sf-gps-ds-au-nsw-button>
+              <c-sf-gps-ds-au-nsw-loader
+                lwc:if={isLoggingIn}
+                size="md"
+                label={i18n.loginWaitLabel}
+              >
+              </c-sf-gps-ds-au-nsw-loader>
+            </div>
+          </div>
+        </form>
+
+        <hr lwc:if={terms} />
+
+        <div lwc:if={terms} lwc:ref="terms" lwc:dom="manual"></div>
+        <template lwc:else>
+          <slot name="terms"></slot>
+        </template>
+
+        <hr lwc:if={computedHasFooter} />
+
+        <p lwc:if={computedForgotPasswordUrl}>
+          <a href={computedForgotPasswordUrl} target="_self"
+            >{i18n.forgotPasswordLabel}</a
+          >
+        </p>
+        <p lwc:if={computedRegistrationUrl}>
+          <a href={computedRegistrationUrl} target="_self"
+            >{i18n.registerUserLabel}</a
+          >
+        </p>
+      </div>
+    </div>
+  </template>
+</template>

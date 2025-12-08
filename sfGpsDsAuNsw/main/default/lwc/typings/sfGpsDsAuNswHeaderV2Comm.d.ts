@@ -1,4 +1,4 @@
-declare module "c/sfGpsDsAuNswHeaderComm" {
+declare module "c/sfGpsDsAuNswHeaderV2Comm" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";
   import type { NavigationMixin } from "lightning/navigation";
   import type { RecordRepresentation } from "lightning/uiRecordApi";
@@ -8,7 +8,7 @@ declare module "c/sfGpsDsAuNswHeaderComm" {
   export type ProfileNavigationMode = Exclude<NavigationMode, "Demo"> | "None";
 
   export default 
-  class sfGpsDsAuNswHeaderComm 
+  class sfGpsDsAuNswHeaderV2Comm 
   extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
     masterbrand?: string;
     masterbrandAlt?: string;

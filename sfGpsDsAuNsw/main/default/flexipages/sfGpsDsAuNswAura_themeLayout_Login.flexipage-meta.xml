@@ -4,36 +4,174 @@
   <type>CommThemeLayoutPage</type>
 
   <template>
-    <name>salesforceIdentity:loginBody2</name>
+    <name>sfGpsDsAuNswAuraThemeLayout</name>
     <properties>
-      <name>footer</name>
+      <name>contentId</name>
+      <value>content</value>
     </properties>
     <properties>
-      <name>header</name>
+      <name>navId</name>
+      <value>nav</value>
+    </properties>
+    <properties>
+      <name>noWidgetMargin</name>
+      <value>true</value>
     </properties>
   </template>
 
+
   <flexiPageRegions>
+    <name>masthead</name>
+    <type>Region</type>
+
     <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>arLabel</name>
+          <value>Skip to links</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>content</name>
+          <value>#content</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>contentLabel</name>
+          <value>Skip to content</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>cstyle</name>
+          <value>default</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>mastheadLabel</name>
+          <value>A NSW Government website</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>nav</name>
+          <value>#nav</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>navLabel</name>
+          <value>Skip to navigation</value>
+        </componentInstanceProperties>
+        <componentName>sfGpsDsAuNswMastheadComm</componentName>
+        <identifier>sfGpsDsAuNswMastheadComm</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
     <name>header</name>
+    <type>Region</type>
+
+    <appendable>enabled</appendable>
     <prependable>enabled</prependable>
     <replaceable>enabled</replaceable>
-    <type>Region</type>
+
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>masterbrand</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>masterbrandAlt</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>srMasterbrandLabel</name>
+          <value>NSW Government</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>logo</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>logoAlt</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>siteTitle</name>
+          <value>Salesforce ❤️ NSW</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>siteDescriptor</name>
+          <value>Department of Customer Service</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>headerUrl</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>mobile</name>
+          <value>false</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>mobileLogoStacking</name>
+          <value>horizontal</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>search</name>
+          <value>false</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>profileMode</name>
+          <value>None</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>profileNavigationDevName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>profileIpName</name>
+          <value />
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>profileInputJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>profileOptionsJSON</name>
+          <value>{}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>menuLabel</name>
+          <value>menu</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>searchLabel</name>
+          <value>Search site for:</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>className</name>
+        </componentInstanceProperties>
+        <componentName>sfGpsDsAuNswHeaderV2Comm</componentName>
+        <identifier>sfGpsDsAuNswHeaderV2Comm</identifier>
+      </componentInstance>
+    </itemInstances>
   </flexiPageRegions>
 
   <flexiPageRegions>
-    <appendable>enabled</appendable>
-    <name>content</name>
-    <prependable>enabled</prependable>
-    <replaceable>enabled</replaceable>
-    <type>Region</type>
-  </flexiPageRegions>
-
-  <flexiPageRegions>
-    <appendable>enabled</appendable>
     <name>footer</name>
+    <type>Region</type>
+
+    <appendable>enabled</appendable>
     <prependable>enabled</prependable>
     <replaceable>enabled</replaceable>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>themeHeader</name>
     <type>Region</type>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+  </flexiPageRegions>
+
+  <flexiPageRegions>
+    <name>sidebar</name>
+    <type>Region</type>
+    <appendable>enabled</appendable>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
   </flexiPageRegions>
 </FlexiPage>

@@ -2,7 +2,7 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>64.0</apiVersion>
   <isExposed>true</isExposed>
-  <masterLabel>NSW DS Header (Demo)</masterLabel>
+  <masterLabel>NSW DS Header v2</masterLabel>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
@@ -72,7 +72,7 @@
       />
       <property
         name="mobile"
-        type="String"
+        type="Boolean"
         label="Mobile"
         description="Show a responsive menu on mobile."
         default="true"
@@ -97,7 +97,7 @@
         type="String"
         label="Profile mode"
         description="Indicates how to handle getting profile details. Pick None if no profile is required."
-        default="Integration Procedure"
+        default="None"
         datasource="None,Integration Procedure,Experience Cloud Navigation"
       />
       <property

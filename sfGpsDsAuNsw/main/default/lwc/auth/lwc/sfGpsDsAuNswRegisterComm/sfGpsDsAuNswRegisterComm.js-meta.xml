@@ -2,7 +2,7 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>64.0</apiVersion>
   <isExposed>true</isExposed>
-  <masterLabel>QLD DS Auth Login</masterLabel>
+  <masterLabel>NSW DS Auth Register</masterLabel>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
@@ -13,22 +13,24 @@
         name="title"
         type="String"
         label="Title"
-        default="Log in using your existing account"
+        default="Register a new account"
+        description="Text used as a header."
         editor="c/sfGpsDsStringCpe"
       />
       <property
         name="iconName"
         type="String"
         label="Icon name"
-        description="Font Awesome classes to be applied to the login button, or QLD icon name. Leave empty if no icon is required."
+        description="Name of the icon in the Google Material collection."
         editor="c/sfGpsDsStringCpe"
       />
       <property
-        name="iconPosition"
+        name="iconStyle"
         type="String"
-        label="Position of the icon"
-        default="lead"
-        datasource="lead,trail"
+        label="Icon style"
+        description="Indicates whether there is an icon and where."
+        datasource="none,before,after"
+        default="none"
       />
       <property
         name="terms"
@@ -37,6 +39,20 @@
         description="Insert the terms of usage or a link to the terms page."
         default=""
         editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="includePasswordField"
+        type="Boolean"
+        label="Include password field"
+        description="Indicates that the user can provide their own password. Uncheck for a password to be generated and sent by email."
+        default="true"
+      />
+      <property
+        name="extraFieldsFieldset"
+        type="String"
+        label="Extra fields Fieldset"
+        description="The API name of a fieldset on the User object to capture additional details."
+        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"

@@ -85,7 +85,7 @@ const DEFAULT_VALUES = {
   URL: ""
 };
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuthRegister";
 
 export default class extends SfGpsDsLwc {
@@ -202,7 +202,6 @@ export default class extends SfGpsDsLwc {
   isRegistering = false;
   passwordMismatchError = false;
   loginUrl;
-  targetLoginUrl;
   isAuthConfigLoading = true;
 
   @track authConfig = {};
@@ -297,6 +296,13 @@ export default class extends SfGpsDsLwc {
     }
 
     return rv;
+  }
+
+  get targetLoginUrl() {
+    const loginUrl = this.loginUrl || this.authConfig?.loginUrl1;
+    return loginUrl
+      ? appendStartUrlToTargetUrl(loginUrl, getStartUrlFromCurrentUrl())
+      : null;
   }
 
   get _cantBeUsedAsIsErrors() {
@@ -395,7 +401,9 @@ export default class extends SfGpsDsLwc {
     }
 
     if (error) {
-      console.debug(CLASS_NAME, "loadFieldset error", JSON.stringify(error));
+      if (DEBUG) {
+        console.debug(CLASS_NAME, "loadFieldset error", JSON.stringify(error));
+      }
 
       this.extraFields = {};
     }
@@ -618,10 +626,6 @@ export default class extends SfGpsDsLwc {
       });
     }
 
-    this.loginUrl = (await getLoginUrl()) || "./login";
-    this.targetLoginUrl = appendStartUrlToTargetUrl(
-      this.loginUrl,
-      getStartUrlFromCurrentUrl()
-    );
+    this.loginUrl = await getLoginUrl();
   }
 }
