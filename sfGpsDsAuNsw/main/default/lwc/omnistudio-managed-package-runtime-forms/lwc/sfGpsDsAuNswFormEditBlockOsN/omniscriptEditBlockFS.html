@@ -5,7 +5,18 @@
 
     <template lwc:if={_isFirstIndex}>
       <div class="nsw-col">
-        <label class="nsw-form__label"> {_propSetMap.label} </label>
+        <!-- use h3 since step heading is h2 -->
+        <h3 lwc:if={computedIsH3Heading} class="nsw-form__label" style="inline">
+          {_propSetMap.label}
+        </h3>
+        <span
+          lwc:else
+          class="nsw-form__label"
+          role="heading"
+          aria-level={_propSetMap.headingLevel}
+        >
+          {_propSetMap.label}
+        </span>
         <div lwc:if={_hasSumElement} class="slds-col--bump-left">
           {sumElement}
         </div>
@@ -170,28 +181,28 @@
         </fieldset>
       </article>
     </div>
-  </div>
 
-  <!-- Add Button -->
-  <div
-    if:true={showAdd}
-    class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
-  >
-    <button
-      type="button"
-      class="nsw-button nsw-button--dark-outline editblock-new"
-      onclick={handleAdd}
+    <!-- Add Button -->
+    <div
+      if:true={showAdd}
+      class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
     >
-      {_newLabel}
-    </button>
-  </div>
+      <button
+        type="button"
+        class="nsw-button nsw-button--dark-outline editblock-new"
+        onclick={handleAdd}
+      >
+        {_newLabel}
+      </button>
+    </div>
 
-  <!-- Spinner -->
-  <template lwc:if={isPageLoading}>
-    <c-sf-gps-ds-au-nsw-loader-os
-      label={allCustomLabelsUtil.OmniSpinnerTextLoading}
-      size="md"
-    >
-    </c-sf-gps-ds-au-nsw-loader-os>
-  </template>
+    <!-- Spinner -->
+    <template lwc:if={isPageLoading}>
+      <c-sf-gps-ds-au-nsw-loader-os
+        label={allCustomLabelsUtil.OmniSpinnerTextLoading}
+        size="md"
+      >
+      </c-sf-gps-ds-au-nsw-loader-os>
+    </template>
+  </div>
 </template>

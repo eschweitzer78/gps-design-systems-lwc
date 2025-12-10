@@ -1,5 +1,13 @@
 ## Change log
 
+### 10 September 2025
+
+#### NSW DS: Adjusting Edit Block for accessibility
+
+The label of edit blocks had poor accessibility. Replaced the heading by a h3 or div with a heading role and aria-level, both in standard and managed package runtime.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormEditBlock`](sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormEditBlock) and [`sfGpsDsAuNsw/main/default/lwc/omnistudio-standard-runtime-forms/lwc/sfGpsDsAuNswFormEditBlock`](sfGpsDsAuNsw/main/default/lwc/omnistudio-standard-runtime-forms/lwc/sfGpsDsAuNswFormEditBlock).
+
 ### 8 September 2025
 
 #### NSW DS: Support for login, self-registration, forgot password and check email pages
