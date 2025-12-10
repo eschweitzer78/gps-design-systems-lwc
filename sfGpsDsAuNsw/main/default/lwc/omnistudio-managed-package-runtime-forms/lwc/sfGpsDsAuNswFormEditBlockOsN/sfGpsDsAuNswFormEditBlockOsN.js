@@ -43,6 +43,10 @@ export default class extends OmniscriptEditBlock {
     }));
   }
 
+  get computedIsH3Heading() {
+    return (this._propSetMap.headingLevel || 3) === 3;
+  }
+
   /* event management */
 
   // eslint-disable-next-line no-unused-vars

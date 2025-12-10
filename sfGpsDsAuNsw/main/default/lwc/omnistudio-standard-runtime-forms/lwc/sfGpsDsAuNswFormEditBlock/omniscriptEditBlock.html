@@ -6,7 +6,18 @@
     <template lwc:if={_isFirstIndex}>
       <!-- Header/Label -->
       <div class="nsw-col">
-        <label class="nsw-form__label"> {_propSetMap.label} </label>
+        <!-- use h3 since step heading is h2 -->
+        <h3 lwc:if={computedIsH3Heading} class="nsw-form__label">
+          {_propSetMap.label}
+        </h3>
+        <span
+          lwc:else
+          class="nsw-form__label"
+          role="heading"
+          aria-level={_propSetMap.headingLevel}
+        >
+          {_propSetMap.label}
+        </span>
       </div>
 
       <!-- Global Actions -->
