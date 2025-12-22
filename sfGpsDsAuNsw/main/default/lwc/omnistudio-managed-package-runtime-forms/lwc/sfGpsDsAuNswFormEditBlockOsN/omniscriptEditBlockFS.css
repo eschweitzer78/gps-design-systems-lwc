@@ -1,5 +1,8 @@
+/* sldsValidatorIgnore */
+
 @import "c/sfGpsDsAuNswCore";
 @import "c/sfGpsDsAuNswForm";
+@import "./table.gen.css";
 
 th {
   display: list-item;
