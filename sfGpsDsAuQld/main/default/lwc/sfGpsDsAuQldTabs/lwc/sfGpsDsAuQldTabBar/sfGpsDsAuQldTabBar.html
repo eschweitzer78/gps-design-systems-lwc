@@ -36,7 +36,7 @@
 
   <div
     lwc:ref="tabList"
-    class={computedClassName}
+    class="qld__tabs"
     role="tablist"
     onkeydown={handleKeyDown}
   >
@@ -44,12 +44,12 @@
       <template lwc:if={tab.label}>
         <button
           key={tab.value}
-          id={tab.domId}
+          id={tab.linkId}
           class={tab.className}
           type="button"
           role="tab"
-          aria-selected={tab.ariaSelected}
-          aria-controls={tab.domId}
+          aria-selected={tab.selected}
+          aria-controls={tab.vid}
           data-label={tab.label}
           data-tab-value={tab.value}
           onclick={handleTabClick}
