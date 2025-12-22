@@ -9,7 +9,6 @@ declare module "c/sfGpsDsAuVic2Alert" {
     "warning" | 
     "error";
 
-
   export default 
   class SfGpsDsAuVic2Alert
   extends ResizeHeightMixin<SfGpsDsElement>(
