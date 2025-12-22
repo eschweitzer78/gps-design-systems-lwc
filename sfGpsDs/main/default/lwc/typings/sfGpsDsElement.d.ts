@@ -120,5 +120,8 @@ declare module "c/sfGpsDsElement" {
 
     hostElement: HTMLElement;
     refs: { [key: string]: HTMLElement };
+    focus(options?: { preventScoll: boolean, focusVisible: boolean}): void;
+    blur(): void;
+    click(): void;
   }
 }
