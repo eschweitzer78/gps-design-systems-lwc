@@ -1,0 +1,15 @@
+c-sf-gps-ds-au-vic2-tab-set-lwr .sfgpsdsauvic2-tabs-vertical {
+  display: flex;
+}
+
+c-sf-gps-ds-au-vic2-tab-set-lwr
+  .sfgpsdsauvic2-tabs-vertical
+  c-sf-gps-ds-au-vic2-tab-bar-lwr {
+  order: 2;
+}
+
+c-sf-gps-ds-au-vic2-tab-set-lwr
+  .sfgpsdsauvic2-tabs-vertical
+  c-sf-gps-ds-au-vic2-tab-lwr[data-vhidden="false"] {
+  flex-grow: 1;
+}

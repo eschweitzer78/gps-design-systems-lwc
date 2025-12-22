@@ -2,12 +2,15 @@
   <span if:false={_firstChild}></span>
 
   <div
-    class="nsw-tabs"
+    class={computedClassName}
     title={title}
     onprivatetabregister={handleTabRegister}
     onprivatetabdatachange={handleTabDataChange}
   >
-    <c-sf-gps-ds-au-nsw-tab-bar-lwr onselect={handleTabSelected}>
+    <c-sf-gps-ds-au-nsw-tab-bar-lwr
+      lwc:ref="tabbar"
+      onselect={handleTabSelected}
+    >
     </c-sf-gps-ds-au-nsw-tab-bar-lwr>
 
     <slot></slot>

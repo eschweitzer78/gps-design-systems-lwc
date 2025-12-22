@@ -1,6 +1,12 @@
 ## Change log
 
-### 10 September 2025
+### 22 December 2025
+
+#### NSW, QLD and VIC2 DS: Tabs refactor
+
+We refactored the tabs functionality based on new headless tabs code in sfGpsDs, reducing code duplication across DSes.
+
+### 10 December 2025
 
 #### NSW DS: Adjusting Edit Block for accessibility
 
@@ -8,7 +14,7 @@ The label of edit blocks had poor accessibility. Replaced the heading by a h3 or
 
 Refer to [`sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormEditBlock`](sfGpsDsAuNsw/main/default/lwc/omnistudio-managed-package-runtime-forms/lwc/sfGpsDsAuNswFormEditBlock) and [`sfGpsDsAuNsw/main/default/lwc/omnistudio-standard-runtime-forms/lwc/sfGpsDsAuNswFormEditBlock`](sfGpsDsAuNsw/main/default/lwc/omnistudio-standard-runtime-forms/lwc/sfGpsDsAuNswFormEditBlock).
 
-### 8 September 2025
+### 8 December 2025
 
 #### NSW DS: Support for login, self-registration, forgot password and check email pages
 
@@ -22,7 +28,7 @@ We fixed the Experience Cloud metadata to revert the `mobile` property to boolea
 
 Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderV2Comm`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeaderV2Comm).
 
-### 6 September 2025
+### 6 December 2025
 
 #### NSW DS: Support of Experience Cloud navigations to display the profile menu in Header
 
@@ -30,7 +36,7 @@ We now allow to directly reference an Experience Cloud navigation in the Header 
 
 Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeader`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswHeaderMainNav/lwc/sfGpsDsAuNswHeader).
 
-### 4 September 2025
+### 4 December 2025
 
 #### All DSes: Base headless components for login, self-registration, forgot password and check email pages
 
@@ -52,7 +58,7 @@ The main nav component has been adjusted to allow the display of the two call to
 
 Refer to [`sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldHeader/lwc`](sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldHeader/lwc) and [`sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMainNav/lwc`](sfGpsDsAuQld/main/default/lwc/sfGpsDsAuQldMainNav/lwc).
 
-### 3 September 2025
+### 3 December 2025
 
 #### QLD DS: Move to Design System v1.18.4
 

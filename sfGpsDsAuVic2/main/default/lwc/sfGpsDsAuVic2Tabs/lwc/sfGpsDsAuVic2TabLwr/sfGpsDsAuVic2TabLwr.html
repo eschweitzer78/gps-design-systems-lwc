@@ -1,0 +1,15 @@
+<template lwc:render-mode="light">
+  <section
+    id={vid}
+    class={computedClassName}
+    role="tabpanel"
+    aria-labelledby={variaLabelledBy}
+    hidden={_vhidden}
+    data-hidden={_vhidden}
+    tabindex="0"
+  >
+    <template lwc:if={_loadContent}>
+      <slot></slot>
+    </template>
+  </section>
+</template>

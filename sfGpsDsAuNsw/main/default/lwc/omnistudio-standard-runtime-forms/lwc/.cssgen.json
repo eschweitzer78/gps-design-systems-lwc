@@ -25,6 +25,7 @@
   "sfGpsDsAuNswForm/form": [],
   "sfGpsDsAuNswFormEditBlock/omniscriptEditBlockInline": [],
   "sfGpsDsAuNswFormEditBlock/card": [],
+  "sfGpsDsAuNswFormEditBlock/table": [],
   "sfGpsDsAuNswFormEditBlock/omniscriptEditBlockCards": [],
   "sfGpsDsAuNswSaveForLaterAck/in-page-alert": []
 }

@@ -1,6 +1,7 @@
 declare module "c/sfGpsDsHelpers" {
   export type DateStyle = "short" | "medium" | "full" | "long";
   export type MonthFormat = "long" | "short" | "numeric" | "2-digit" | "narrow";
+  export type ClassConfig = Record<string, any> | string[];
 
   export function isDate(
     value: any)
@@ -46,7 +47,7 @@ declare module "c/sfGpsDsHelpers" {
     markup: string | undefined | null
   ): Element | null;
   export function computeClass(
-    config: Record<string, any> | string[], 
+    config: ClassConfig, 
     joinChar?: string
   ): string | null;
   export function isRTL(): boolean;

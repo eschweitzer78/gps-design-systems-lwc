@@ -30,4 +30,7 @@ import "./sfGpsDsRecordDetailController.getObjectSummary";
 import "./sfGpsDsRecordDetailController.getRecordSummary"
 import "./sfGpsDsSocialSharing";
 import "./sfGpsDsSpinner";
+import "./sfGpsDsTabLwr";
+import "./sfGpsDsTabSetLwr";
+import "./sfGpsDsTabBarLwr";
 import "./sfGpsDsTransition";

@@ -13,6 +13,7 @@ import "./sfGpsDsAuVic2SidebarPageLayoutLwr";
 import "./sfGpsDsAuVic2SidebarThemeLayoutLwr";
 import "./sfGpsDsAuVic2StandardPageLayoutLwr";
 import "./sfGpsDsAuVic2StepNavigationMixin";
+import "./sfGpsDsAuVic2TabBarLwr";
 import "./sfGpsDsAuVic2VerticalNav";
 import "./sfGpsDsAuVic2VerticalNavList";
 import "./sfGpsDsAuVic2WindowSizeMixin";

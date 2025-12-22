@@ -14,7 +14,6 @@ declare module "c/sfGpsDsAuNswTabContainerLwr" {
   export default 
   class SfGpsDsAuNswTabContainerLwr 
   extends SfGpsDsLwc {
-    //title: string;
     tab1Label?: string;
     tab2Label?: string;
     tab3Label?: string;

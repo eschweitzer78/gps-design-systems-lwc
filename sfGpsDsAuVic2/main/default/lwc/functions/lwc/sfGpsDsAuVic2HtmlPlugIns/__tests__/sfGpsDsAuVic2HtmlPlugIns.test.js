@@ -27,7 +27,6 @@ const plugInLinks = {
 const plugInTables = {
   selector: "table",
   process: ($table, parser) => {
-    console.log("> table", $table.outerHTML);
     const cols = $table.querySelectorAll("col[data-width]");
     [...cols].forEach((col) => {
       const colWidth = col.getAttribute("data-width");
@@ -37,8 +36,6 @@ const plugInTables = {
         col.removeAttribute("data-width");
       }
     });
-
-    console.log("= table", $table.outerHTML);
 
     const elt = parser.parseFromString(
       `

@@ -1,0 +1,27 @@
+<!-- sldsValidatorIgnore -->
+<template lwc:render-mode="light">
+  <div class={computedClassName} role="tablist" onkeydown={handleKeyDown}>
+    <template for:each={_tabs} for:item="tab">
+      <template lwc:if={tab.label}>
+        <button
+          key={tab.value}
+          id={tab.linkId}
+          class={tab.className}
+          type="button"
+          role="tab"
+          aria-selected={tab.selected}
+          aria-controls={tab.vid}
+          data-label={tab.label}
+          data-tab-value={tab.value}
+          onclick={handleTabClick}
+          onblur={handleBlur}
+          onfocus={handleFocus}
+        >
+          {tab.title}
+          <c-sf-gps-ds-au-vic2-icon lwc:if={tab.iconName} name={tab.iconName}>
+          </c-sf-gps-ds-au-vic2-icon>
+        </button>
+      </template>
+    </template>
+  </div>
+</template>

@@ -157,6 +157,12 @@
         description="Tab 10 Icon name."
         editor="c/sfGpsDsAuVic2IconNameCpe"
       />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>
