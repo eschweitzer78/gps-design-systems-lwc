@@ -43,7 +43,7 @@ export default
 class SfGpsDsAuNswTabContainerLwr
 extends SfGpsDsLwc {
   // @ts-ignore
-  @api 
+  @api
   title = "";
 
   // @ts-ignore
@@ -88,7 +88,6 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
-  // @ts-ignore
   firstChild = FIRSTCHILD_DEFAULT;
 
   // @ts-ignore

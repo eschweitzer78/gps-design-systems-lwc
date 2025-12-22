@@ -1,5 +1,5 @@
 <template lwc:render-mode="light">
-  <div class="nsw-tabs__list-wrapper">
+  <div class={computedClassName}>
     <ul
       class="nsw-tabs__list"
       role="tablist"
@@ -24,7 +24,7 @@
               onblur={handleBlur}
               onfocus={handleFocus}
               tabindex={tab.tabIndex}
-              aria-selected={tab.ariaSelected}
+              aria-selected={tab.selected}
               data-tab-value={tab.value}
               data-label={tab.label}
             >
