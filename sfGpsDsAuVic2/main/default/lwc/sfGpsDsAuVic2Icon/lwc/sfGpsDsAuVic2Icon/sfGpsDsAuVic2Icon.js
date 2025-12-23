@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api } from "lwc";
 import { RplIconNames } from "c/sfGpsDsAuVic2IconConstants";
 import {
   normaliseString,
@@ -172,15 +172,10 @@ export default class extends LightningElement {
     return this.title ? null : "presentation";
   }
 
-  @track staticResourceHref = STATIC_RESOURCE;
-
   get computedHref() {
     if (DEBUG) console.debug(CLASS_NAME, "> computedHref", this._name);
 
-    const rv =
-      this.staticResourceHref != null
-        ? `${this.staticResourceHref}/assets/icons/${this._name}.svg#icon`
-        : null;
+    const rv = `${STATIC_RESOURCE}/assets/icons/${this._name}.svg#icon`;
 
     if (DEBUG) console.debug(CLASS_NAME, "< computedHref", rv);
     return rv;

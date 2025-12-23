@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api } from "lwc";
 import { normaliseString, isArray, isString } from "c/sfGpsDsHelpers";
 import STATIC_RESOURCE from "@salesforce/resourceUrl/sfGpsDsAuQld";
 
@@ -119,10 +119,8 @@ export default class extends LightningElement {
     return (this._mode || MODE_DEFAULT) === MODE_DEFAULT;
   }
 
-  @track staticResourceHref = STATIC_RESOURCE;
-
   get computedCloseIconUrl() {
-    return this.staticResourceHref + "/assets/img/QLD-icons.svg#close";
+    return STATIC_RESOURCE + "/assets/img/QLD-icons.svg#close";
   }
 
   /* methods */
