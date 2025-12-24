@@ -4,6 +4,8 @@ declare module "c/sfGpsDsAuNswLinkListCollectionComm" {
   export default 
   class sfGpsDsAuNswLinkListCollectionComm 
   extends SfGpsDsNavigation {
+    highlightExternal?: boolean;
+    firstChild?: boolean;
     className?: string;
   }
 }

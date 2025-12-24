@@ -11,8 +11,8 @@ import {
 import SfGpsDsElement from "c/sfGpsDsElement";
 
 import type { 
-  Link 
-} from "c/sfGpsDsMarkdown";
+  Link, DecoratedLink 
+} from "c/sfGpsDsAuNswLinkList";
 import { isExternalUrl, uniqueId } from "c/sfGpsDsHelpers";
 
 const FIRSTCHILD_DEFAULT = false;
@@ -63,7 +63,7 @@ extends SfGpsDsElement {
     };
   }
 
-  get decoratedList() {
+  get decoratedList(): DecoratedLink[] {
     const highlightExternal = this._highlightExternal.value;
 
     return this.links.map((item) => ({
