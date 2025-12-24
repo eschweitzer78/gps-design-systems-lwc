@@ -11,6 +11,7 @@ declare module "c/sfGpsDsAuNswCardV2Comm" {
     orientation: Orientation;
     dateStyle: DateStyle;
     headline?: boolean;
+    border?: boolean;
     tag?: string;
     image?: string;
     imageAlt?: string;

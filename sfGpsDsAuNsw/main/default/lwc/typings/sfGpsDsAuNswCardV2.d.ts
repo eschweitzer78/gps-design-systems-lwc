@@ -26,6 +26,7 @@ declare module "c/sfGpsDsAuNswCardV2" {
 
     preventDefault?: boolean;
     headline?: boolean;
+    border?: boolean;
     cstyle?: CStyle;
     orientation?: Orientation;
     highlight?: boolean;
@@ -40,6 +41,7 @@ declare module "c/sfGpsDsAuNswCardV2" {
 
     _preventDefault: PropertyAccessor<boolean>;
     _headline: PropertyAccessor<boolean>;
+    _border: PropertyAccessor<boolean>;
     _cstyle: PropertyAccessor<string>;
     _orientation: PropertyAccessor<string>;
     _highlight: PropertyAccessor<boolean>;
