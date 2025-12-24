@@ -8,6 +8,7 @@ declare module "c/sfGpsDsAuNswSideNavComm" {
   export default 
   class SfGpsDsAuNswSideNavComm
   extends SfGpsDsNavigation {
+    parentText?: string;
     className?: string;
     titleLink?: string;
 

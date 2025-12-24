@@ -21,6 +21,10 @@ class sfGpsDsAuNswSideNavComm
 extends SfGpsDsNavigation {
   // @ts-ignore
   @api 
+  parentText?: string;
+
+  // @ts-ignore
+  @api 
   className?: string;
 
   /* api: mode, String */

@@ -18,6 +18,7 @@ declare module "c/sfGpsDsAuNswSideNav" {
   export default 
   class SfGpsDsAuNswSideNav
   extends SfGpsDsElement {
+    parentText?: string;
     //title: string;
     url?: string;
     className?: string;
@@ -30,10 +31,15 @@ declare module "c/sfGpsDsAuNswSideNav" {
     _navItems?: AdaptedNavigationMenuItem[];
     _navItemsOriginal?: AdaptedNavigationMenuItem[];
 
+    _isOpen: boolean;
+
     get computedClassName(): any;
 
     _labelledById?: string;
     get computedAriaLabelledById(): string;
+
+    _controlsId?: string;
+    get computedAriaControlsId(): string;
 
     _mapItems?: SideNavMenuItemMap;
 
@@ -46,6 +52,7 @@ declare module "c/sfGpsDsAuNswSideNav" {
 
     navItemsMapping(): void;
 
+    handleExpandToggle(event: MouseEvent): void;
     handleClickNavigate(event: MouseEvent): void;
     handleClick(event: MouseEvent): void;
   }

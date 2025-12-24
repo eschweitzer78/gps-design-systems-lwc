@@ -47,6 +47,13 @@
         editor="c/sfGpsDsStringCpe"
       />
       <property
+        name="parentText"
+        type="String"
+        label="Parent text"
+        description="Label used for the expansion button on mobile. Defaults to the title if left blank."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
         name="titleLink"
         type="String"
         label="Title link"
