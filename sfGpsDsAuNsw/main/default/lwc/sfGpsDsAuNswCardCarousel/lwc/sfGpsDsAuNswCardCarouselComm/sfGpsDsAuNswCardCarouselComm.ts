@@ -25,6 +25,10 @@ class SfGpsDsAuNswCardCarouselComm
 extends SfGpsDsIpLwc {
   // @ts-ignore
   @api 
+  title = "";
+
+  // @ts-ignore
+  @api 
   accessibilityLabel?: string;
 
   // @ts-ignore

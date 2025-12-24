@@ -33,6 +33,13 @@
         editor="c/sfGpsDsJsonCpe"
       />
       <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Level 2 header title. Leave empty if no title is desired."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
         name="accessibilityLabel"
         type="String"
         label="Accessibility label"
