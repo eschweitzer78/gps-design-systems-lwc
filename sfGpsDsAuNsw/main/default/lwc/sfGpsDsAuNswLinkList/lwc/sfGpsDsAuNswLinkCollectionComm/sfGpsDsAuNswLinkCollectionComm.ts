@@ -20,6 +20,14 @@ class SfGpsDsAuNswLinkCollectionComm
 extends SfGpsDsNavigation {
   // @ts-ignore
   @api 
+  highlightExternal?: boolean;
+
+  // @ts-ignore
+  @api 
+  firstChild?: boolean;
+  
+  // @ts-ignore
+  @api 
   className?: string;
 
   /* api: mode, Array of Object */;
