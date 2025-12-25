@@ -75,7 +75,11 @@
               <a
                 href="{! v.headerUrl ? v.headerUrl : v.cBasePath }"
                 class="nsw-header__logo-link"
-                onclick="{! c.handleLogoClick }"
+                onclick="
+                  {
+                    !c.handleLogoClick;
+                  }
+                "
               >
                 <aura:if isTrue="{! v.masterbrand }">
                   <img src="{! v.masterbrand }" alt="{! v.masterbrandAlt }" />
@@ -123,7 +127,11 @@
                 type="button"
                 aria-expanded="{! v.mainNavIsOpen }"
                 aria-controls="{! v.mainNavId }"
-                onclick="{! c.handleOpenMenu }"
+                onclick="
+                  {
+                    !c.handleOpenMenu;
+                  }
+                "
               >
                 <span
                   class="material-icons nsw-material-icons"
@@ -143,7 +151,11 @@
                 type="button"
                 aria-expanded="{! v.searchIsOpen }"
                 aria-controls="{! globalId + '_header-search' }"
-                onclick="{! c.handleOpenSearch }"
+                onclick="
+                  {
+                    !c.handleOpenSearch;
+                  }
+                "
               >
                 <span
                   class="material-icons nsw-material-icons"
@@ -193,13 +205,25 @@
                 name="searchInput"
                 type="text"
                 value="{! v.value }"
-                onchange="{! c.handleChange }"
-                onkeyup="{! c.handleKeyUp }"
+                onchange="
+                  {
+                    !c.handleChange;
+                  }
+                "
+                onkeyup="
+                  {
+                    !c.handleKeyUp;
+                  }
+                "
               />
               <button
                 class="nsw-icon-button nsw-icon-button--flex"
                 aria-label="{! v.searchAriaLabel }"
-                onclick="{! c.handleSearch }"
+                onclick="
+                  {
+                    !c.handleSearch;
+                  }
+                "
               >
                 <span
                   class="material-icons nsw-material-icons"
@@ -214,7 +238,11 @@
               class="nsw-icon-button"
               aria-expanded="{! v.searchIsOpen }"
               aria-controls="{! globalId + '_header-search' }"
-              onclick="{! c.handleCloseSearch}"
+              onclick="
+                {
+                  !c.handleCloseSearch;
+                }
+              "
             >
               <span
                 class="material-icons nsw-material-icons nsw-search__close-icon"

@@ -48,6 +48,10 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
+  border?: boolean;
+
+  // @ts-ignore
+  @api 
   tag?: string;
 
   // @ts-ignore

@@ -18,7 +18,7 @@ declare module "c/sfGpsDsAuNswAccordionGroup" {
     _isFullyCollapsed: PropertyAccessor<boolean>;
 
     get computedClassName(): any;
-    get i18n(): object;
+    get i18n(): Record<string, string>;
 
     handleExpandAll(event: MouseEvent): void;
     handleCollapsAll(event: MouseEvent): void;

@@ -52,6 +52,7 @@ const CSTYLE_DEFAULT: CStyle = "white";
 
 const HIGHLIGHT_DEFAULT = false;
 const HEADLINE_DEFAULT = false;
+const BORDER_DEFAULT = false;
 const PREVENTDEFAULT_DEFAULT = false;
 
 export default 
@@ -95,6 +96,13 @@ extends SfGpsDsElement {
   headline?: boolean;
   _headline = this.defineBooleanProperty("headline", {
     defaultValue: HEADLINE_DEFAULT
+  });
+
+  // @ts-ignore
+  @api 
+  border?: boolean;
+  _border = this.defineBooleanProperty("border", {
+    defaultValue: BORDER_DEFAULT
   });
 
   // @ts-ignore
@@ -174,6 +182,7 @@ extends SfGpsDsElement {
       "nsw-card": true,
       "nsw-card--headline": this._headline.value,
       "nsw-card--highlight": this._highlight.value,
+      "nsw-card--border": this._border.value,
       [this._cstyle.value]: !!this._cstyle.value,
       [this._orientation.value]: !!this._orientation.value,
       [this.className || ""]: !!this.className

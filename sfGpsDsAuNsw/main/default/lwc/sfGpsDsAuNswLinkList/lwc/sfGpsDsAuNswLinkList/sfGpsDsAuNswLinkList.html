@@ -1,22 +1,51 @@
 <template lwc:render-mode="light">
   <span if:false={_firstChild.value}></span>
-
   <div class={computedClassName}>
     <div lwc:if={title} class="nsw-link-list__title">{title}</div>
 
-    <ul class="nsw-link-list__list">
-      <template for:each={links} for:item="item">
-        <li key={item.index} class="nsw-link-list__item">
-          <a lwc:if={item.url} href={item.url}>
-            <span>{item.text}</span>
-            <span
-              class="material-icons nsw-material-icons nsw-link-list__icon"
-              aria-hidden="true"
-            >
-              east
-            </span>
-          </a>
-
+    <ul>
+      <template for:each={decoratedList} for:item="item">
+        <li key={item.index}>
+          <template lwc:if={item.url}>
+            <template lwc:if={item._isExternalUrl}>
+              <a
+                class="nsw-link nsw-link--icon"
+                href={item.url}
+                target="_blank"
+                rel="noopener"
+                aria-describedby={computedAriaDescribedById}
+              >
+                <span
+                  >{item.text}
+                  <span
+                    class="material-icons nsw-material-icons"
+                    aria-hidden="true"
+                    title={i18n.opensInNewWindow}
+                  >
+                    open_in_new
+                  </span>
+                </span>
+                <span
+                  class="material-icons nsw-material-icons"
+                  aria-hidden="true"
+                >
+                  east
+                </span>
+              </a>
+              <span id={computedAriaDescribedById} class="sr-only"
+                >({i18n.opensInNewWindow})</span
+              >
+            </template>
+            <a lwc:else href={item.url}>
+              <span>{item.text}</span>
+              <span
+                class="material-icons nsw-material-icons"
+                aria-hidden="true"
+              >
+                east
+              </span>
+            </a>
+          </template>
           <template lwc:else>{item.text}</template>
         </li>
       </template>

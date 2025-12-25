@@ -6,7 +6,8 @@
  */
 
 import { 
-  api 
+  api,
+  track 
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 import { 
@@ -26,6 +27,10 @@ export default
 class SfGpsDsAuNswSideNav
 extends SfGpsDsElement {
   static renderMode: "light" | "shadow" = "light";
+
+  // @ts-ignore
+  @api 
+  parentText?: string;
 
   // @ts-ignore
   @api 
@@ -55,11 +60,18 @@ extends SfGpsDsElement {
     this.navItemsMapping();
   }
 
+  /* track: isOpen */
+
+  // @ts-ignore
+  @track
+  _isOpen = false;
+
   /* computed */
 
   get computedClassName(): any {
     return {
       "nsw-side-nav": true,
+      "open": this._isOpen,
       [this.className || ""]: !!this.className
     };
   }
@@ -68,10 +80,20 @@ extends SfGpsDsElement {
 
   get computedAriaLabelledById(): string {
     if (!this._labelledById) {
-      this._labelledById = uniqueId("sf-gps-ds-au-nsw-side-nav");
+      this._labelledById = uniqueId("nsw-side-nav__header");
     }
 
     return this._labelledById;
+  }
+
+  _controlsId?: string;
+
+  get computedAriaControlsId() {
+    if (!this._controlsId) {
+      this._controlsId = uniqueId("nsw-side-nav__content");
+    }
+
+    return this._controlsId;
   }
 
   /* methods */
@@ -142,6 +164,17 @@ extends SfGpsDsElement {
   }
 
   /* event management */
+
+  handleExpandToggle(
+    event: MouseEvent
+  ): void {
+    event.preventDefault();
+
+    const isDesktop = window.innerWidth > 992
+    if (isDesktop) return;
+
+    this._isOpen = !this._isOpen
+  };
 
   handleClickNavigate(
     event: MouseEvent

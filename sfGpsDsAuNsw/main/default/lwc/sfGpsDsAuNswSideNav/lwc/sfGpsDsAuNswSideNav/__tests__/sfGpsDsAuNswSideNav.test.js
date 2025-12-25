@@ -43,6 +43,9 @@ describe("c-sf-gps-ds-au-nsw-side-nav", () => {
 
     document.body.appendChild(element);
 
+    const toggle = element.querySelector(".nsw-side-nav__toggle");
+    expect(toggle.textContent).toBe(element.title + "keyboard_arrow_right");
+
     const headerA = element.querySelector(".nsw-side-nav__header a");
 
     expect(headerA).not.toBeNull();
@@ -60,6 +63,44 @@ describe("c-sf-gps-ds-au-nsw-side-nav", () => {
     expect(ulLiAs[0].href).toBe(`javascript${":"}void(0)`);
     expect(ulLiAs[1].classList).not.toContain("current");
     expect(ulLiAs[1].href).toContain(SIMPLE_NAV[0].subNav[0].url);
+  });
+
+  it("expands as required on mobile", async () => {
+    // Arrange
+
+    window.innerWidth = 564;
+    // eslint-disable-next-line @lwc/lwc/prefer-custom-event
+    window.dispatchEvent(new Event("resize"));
+
+    const element = createElement(ELT_TAG, {
+      is: SfGpsDsAuNswSideNav
+    });
+
+    // Act
+
+    element.parentText = "My parent title";
+    element.title = "My title";
+    element.url = "#here";
+    element.navItems = SIMPLE_NAV;
+
+    document.body.appendChild(element);
+
+    const navOpen = element.querySelector(".nsw-side-nav.open");
+    const toggle = element.querySelector(".nsw-side-nav__toggle");
+
+    expect(navOpen).toBeNull();
+    expect(toggle.getAttribute("aria-expanded")).toBe("false");
+    expect(toggle.textContent).toBe(element.parentText + "keyboard_arrow_right");
+
+    toggle.click();
+
+    await Promise.resolve();
+
+    const navOpen2 = element.querySelector(".nsw-side-nav.open");
+    console.debug(navOpen2);
+
+    expect(navOpen2).not.toBeNull();
+    expect(toggle.getAttribute("aria-expanded")).toBe("true");
   });
 
   it("is accessible", async () => {

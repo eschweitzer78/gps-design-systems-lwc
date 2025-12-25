@@ -47,6 +47,20 @@
         editor="c/sfGpsDsStringCpe"
       />
       <property
+        name="highlightExternal"
+        type="Boolean"
+        label="Highlight external links"
+        description="Adds an external link icon and opens external links in a new tab if set."
+        default="false"
+      />
+      <property
+        name="firstChild"
+        type="Boolean"
+        label="Render as first child"
+        description="Render as first child for margin purposes."
+        default="false"
+      />
+      <property
         name="className"
         type="String"
         label="Class name"

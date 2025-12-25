@@ -1,5 +1,27 @@
 ## Change log
 
+### 24 December 2025
+
+#### NSW DS: SideNav mobile button
+
+We implemented the changes in mobile SideNav as per NSW Design System v2.24, essentially adding a collapsible button.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSideNav/lwc/sfGpsDsAuNswSideNav`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswSideNav/lwc/sfGpsDsAuNswSideNav).
+
+#### NSW DS: Card v2 border attribute
+
+We added the border attribute, which adds a border around images, as per the NSW Design System v2.24.
+
+#### NSW DS: Card Carrousel update
+
+We carried over the changes in the NSW DS v2.24 Card Carrousel, aimed at having a more consistent card sizing.
+
+#### NSW DS: Support for external links in Link lists and link collections
+
+We added the external link highlight feature from NSW DS v2.24 for link lists. This adds a distinctive icon flagging the link as external, and the link is opened in a new window.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkList`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswLinkList/lwc/sfGpsDsAuNswLinkList).
+
 ### 22 December 2025
 
 #### NSW, QLD and VIC2 DS: Tabs refactor

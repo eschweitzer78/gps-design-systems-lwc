@@ -1,5 +1,18 @@
+<!-- sldsValidatorIgnore -->
 <template lwc:render-mode="light">
   <nav class={computedClassName} aria-labelledby={computedAriaLabelledById}>
+    <button
+      class="nsw-side-nav__toggle"
+      aria-expanded={_isOpen}
+      aria-controls={computedAriaControlsId}
+      onclick={handleExpandToggle}
+    >
+      <span lwc:if={parentText}>{parentText}</span>
+      <span lwc:else>{title}</span>
+      <span class="material-icons nsw-material-icons" aria-hidden="true"
+        >keyboard_arrow_right</span
+      >
+    </button>
     <div
       lwc:if={title}
       class="nsw-side-nav__header"
@@ -8,7 +21,11 @@
       <a href={url}>{title}</a>
     </div>
 
-    <ul lwc:if={_navItems}>
+    <ul
+      lwc:if={_navItems}
+      id={computedAriaControlsId}
+      class="nsw-side-nav__content"
+    >
       <template for:each={_navItems} for:item="navItem">
         <!-- level 2 -->
         <li key={navItem.index} class={navItem.className}>

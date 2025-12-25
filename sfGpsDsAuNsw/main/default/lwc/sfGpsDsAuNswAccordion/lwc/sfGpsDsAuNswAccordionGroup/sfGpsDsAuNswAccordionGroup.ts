@@ -72,7 +72,7 @@ extends SfGpsDsElement {
     return rv;
   }
 
-  get i18n(): object {
+  get i18n(): Record<string, string> {
     return I18N;
   }
 
