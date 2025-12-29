@@ -21,8 +21,8 @@
     {
       "path": "sfGpsDsAuNswFull",
       "package": "Salesforce Global Public Sector AU NSW Design System",
-      "versionName": "2025.12.22.1830",
-      "versionNumber": "3.5.0.NEXT",
+      "versionName": "2025.12.28.2300",
+      "versionNumber": "3.5.1.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -56,8 +56,8 @@
     {
       "path": "sfGpsDsAuVic2Full",
       "package": "Salesforce Global Public Sector AU VIC2 Design System",
-      "versionName": "2025.12.23.1200",
-      "versionNumber": "0.8.1.NEXT",
+      "versionName": "2025.12.28.2300",
+      "versionNumber": "0.8.2.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
