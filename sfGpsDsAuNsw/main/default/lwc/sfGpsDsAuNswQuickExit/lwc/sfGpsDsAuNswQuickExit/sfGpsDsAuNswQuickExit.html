@@ -1,0 +1,21 @@
+<template lwc:render-mode="light">
+  <a
+    lwc:ref="quickexit"
+    class="nsw-quick-exit"
+    href={safeUrl}
+    rel="nofollow noopener"
+    aria-label="Quick exit"
+    aria-describedby={computedAriaDescribedById}
+    onclick={handleClick}
+  >
+    <div class="nsw-quick-exit__content">
+      <span
+        id={computedAriaDescribedById}
+        class="nsw-quick-exit__description-text"
+      >
+        <slot></slot>
+      </span>
+      <span class="nsw-quick-exit__exit-text">{i18n.exitNow}</span>
+    </div>
+  </a>
+</template>
