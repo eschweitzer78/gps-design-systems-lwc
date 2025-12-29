@@ -16,7 +16,6 @@
         description="Provides a snapshot of the content combined with a URL the card leads to in Markdown link format."
         required="true"
         default="[Card](#)"
-        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="copy"
@@ -45,12 +44,19 @@
         name="headline"
         type="Boolean"
         label="Headline"
-        description="Add specific headline styling."
+        description="Adds specific headline styling."
+      />
+      <property
+        name="border"
+        type="Boolean"
+        label="Border"
+        description="Adds border styling around the image."
       />
       <property
         name="orientation"
         type="String"
         label="Orientation"
+        description="Indicates the orientation of the card."
         datasource="vertical,horizontal"
         default="vertical"
       />
@@ -59,7 +65,6 @@
         type="String"
         label="Date"
         description="Specifies a date context for the content, e.g. a publication date - in ISO8601 format."
-        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="dateStyle"
@@ -73,28 +78,24 @@
         type="String"
         label="Image source"
         description="Allows for different content to stand out and provide additional context - as an URL."
-        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="imageAlt"
         type="String"
         label="Image alt"
         description="Specifies an alternate text for the image, if the image cannot be displayed."
-        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="tag"
         type="String"
         label="Tag"
         description="Indicates the category of a topic or theme to further group content."
-        editor="c/sfGpsDsStringCpe"
       />
       <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to be applied."
-        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>

@@ -40,6 +40,7 @@ const I18N = {
   showPreviousItems: "Show previous items",
   showNextItems: "Show next items",
   carouselItemsSrOnly: "Carousel items",
+  controlNavAriaLabel: "Carousel controls",
   itemAriaLabel: "{current} of {total}",
   carouselAriaLive:
     "Item {selected} selected. {visible} items of {total} visible."
@@ -56,6 +57,10 @@ const CLASS_NAME = "SfGpsDsAuNswCardCarousel";
 export default 
 class SfGpsDsAuNswCardCarousel 
 extends SfGpsDsElement {
+  // @ts-ignore
+  @api 
+  title = "";
+
   // @ts-ignore
   @api 
   accessibilityLabel?: string; // data-description
@@ -204,6 +209,14 @@ extends SfGpsDsElement {
       visible: this.visibleItemsNb,
       total: this.itemsNb
     }) as string;
+  }
+
+  get computedCounter(): string {
+    return `${Math.min(this.selectedItem + this.visibleItemsNb, this.itemsNb)}`
+  }
+
+  get computedCounterTotal(): string {
+    return `${this.itemsNb}`;
   }
 
   get computedNavigationItemClassName(): any {
@@ -770,17 +783,23 @@ extends SfGpsDsElement {
         this._initialRender = false;
 
         const itemStyle = window.getComputedStyle(this.liveFirstItem);
-        const containerStyle = window.getComputedStyle(this.refs.wrapper);
-        let itemWidth = parseFloat(itemStyle.getPropertyValue("width"));
-        const itemMargin = (this._itemMargin = parseFloat(
-          itemStyle.getPropertyValue("margin-right")
-        ));
-        const containerPadding = parseFloat(
-          containerStyle.getPropertyValue("padding-left")
-        );
-        let containerWidth = parseFloat(
-          containerStyle.getPropertyValue("width")
-        );
+        const trackEl = this.refs.list;
+        const trackStyle = window.getComputedStyle(trackEl);
+        let itemWidth = this.liveFirstItem ? this.liveFirstItem.getBoundingClientRect().width : 0;
+        const trackGap = trackStyle
+          ? parseFloat(trackStyle.getPropertyValue("column-gap") || trackStyle.getPropertyValue("gap"))
+          : 0;
+        const marginRight = itemStyle ? parseFloat(itemStyle.getPropertyValue("margin-right")) : 0;
+        const itemMargin = Number.isFinite(trackGap) && trackGap > 0 ? trackGap : marginRight;
+
+        let containerWidth = 0;
+        const padL = parseFloat(trackStyle.getPropertyValue("padding-left"));
+        const padR = parseFloat(trackStyle.getPropertyValue("padding-right"));
+        containerWidth = Math.max(
+          0, 
+          trackEl.clientWidth - 
+          (Number.isFinite(padL) ? padL : 0) - 
+          (Number.isFinite(padR) ? padR : 0));
 
         if (!this.itemAutoSize) {
           this.itemAutoSize = `${itemWidth}`;
@@ -796,24 +815,26 @@ extends SfGpsDsElement {
           this.itemOriginalWidth = parseInt(this.itemAutoSize, 10);
           itemWidth = this.itemOriginalWidth;
         }
+        if (DEBUG) console.debug(CLASS_NAME, "itemWidth = ", itemWidth);
 
         if (containerWidth < itemWidth) {
           this.itemOriginalWidth = containerWidth;
           itemWidth = this.itemOriginalWidth;
         }
 
-        this.visibleItemsNb = parseInt(`${
-          (containerWidth - 2 * containerPadding + itemMargin) /
-            (itemWidth + itemMargin)}`,
-          10
+        this.visibleItemsNb = Math.max(
+          1, 
+          Math.floor((containerWidth + itemMargin) / (itemWidth + itemMargin))
         );
         this.itemsWidth = parseFloat(
           (
-            (containerWidth - 2 * containerPadding + itemMargin) /
-              this.visibleItemsNb -
-            itemMargin
+            (
+              (containerWidth + itemMargin) / 
+              this.visibleItemsNb
+            ) - itemMargin
           ).toFixed(1)
         );
+        if (DEBUG) console.debug(CLASS_NAME, "itemsWidth = ", this.itemsWidth);
         this.containerWidth = (this.itemsWidth + itemMargin) * (this.itemsNb || 0);
         this.translateContainer =
           0 - (this.itemsWidth + itemMargin) * this.visibleItemsNb;

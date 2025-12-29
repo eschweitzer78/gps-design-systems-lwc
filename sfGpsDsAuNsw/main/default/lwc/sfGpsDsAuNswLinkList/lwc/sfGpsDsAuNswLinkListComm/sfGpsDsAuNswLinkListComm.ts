@@ -24,7 +24,10 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api 
+  highlightExternal?: boolean;
+
   // @ts-ignore
+  @api 
   firstChild?: boolean;
   
   // @ts-ignore

@@ -1,7 +1,12 @@
 declare module "c/sfGpsDsAuNswLinkList" {
   import type SfGpsDsElement from "c/sfGpsDsElement"; 
   import type { PropertyAccessor } from "c/sfGpsDsElement";
-  import type { Link } from "c/sfGpsDsMarkdown";
+  import type { Link as BaseLink } from "c/sfGpsDsMarkdown";
+
+  export type Link = BaseLink;
+  export interface DecoratedLink extends Link {
+    _isExternal?: boolean
+  } 
 
   export default 
   class SfGpsDsAuNswLinkList 
@@ -9,13 +14,17 @@ declare module "c/sfGpsDsAuNswLinkList" {
     // title: string;
     links?: Link[];
     className?: string;
-    // @ts-ignore
+    hightlightExternal?: boolean;
     firstChild?: boolean;
 
     // private
 
+    _hightlightExternal: PropertyAccessor<boolean>;
     _firstChild: PropertyAccessor<boolean>;
+    _describedById?: string;
 
-    readonly computedClassName: any;
+    get computedClassName(): any;
+    get computedAriaDescribedById(): string;
+    get i18n(): Record<string, string>;
   }
 }

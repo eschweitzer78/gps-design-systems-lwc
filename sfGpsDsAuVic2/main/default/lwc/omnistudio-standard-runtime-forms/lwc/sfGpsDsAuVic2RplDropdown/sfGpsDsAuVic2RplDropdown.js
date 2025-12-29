@@ -147,7 +147,7 @@ const MODE_VALUES = {
 const MODE_DEFAULT = MODE_LOOKUP;
 
 const DEBUG = false;
-const CLASS_NAME = "SfGpsDsAuVic2RplBaseDropdown";
+const CLASS_NAME = "SfGpsDsAuVic2RplDropdown";
 
 export default class extends LightningElement {
   @api label;
