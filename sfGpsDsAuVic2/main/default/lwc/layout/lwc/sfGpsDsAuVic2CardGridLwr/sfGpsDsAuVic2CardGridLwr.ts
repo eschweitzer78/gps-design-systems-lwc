@@ -21,10 +21,10 @@ extends SfGpsDsLwc {
   hasSidebar?: boolean;
   _hasSidebar = this.defineBooleanProperty("hasSidebar", {
     defaultValue: HASSIDEBAR_DEFAULT,
-    watcher: (_propertyName, newValue, previousValue) => {
-      if (previousValue && !newValue)
+    watcher: (_propertyName, oldValue, newValue) => {
+      if (oldValue && !newValue)
         this.classList.remove("rpl-layout-card-grid--has-sidebar");
-      else if (!previousValue && newValue)
+      else if (!oldValue && newValue)
         this.classList.add("rpl-layout-card-grid--has-sidebar");
     }
   });
@@ -34,7 +34,7 @@ extends SfGpsDsLwc {
   className?: string;
   _className = this.defineStringProperty("className", {
     // eslint-disable-next-line no-unused-vars
-    watcher: (_propertyName, newValue, oldValue) => {
+    watcher: (_propertyName, oldValue, newValue) => {
       if (DEBUG)
         console.debug(CLASS_NAME, "> set className", newValue, oldValue);
 
