@@ -4,9 +4,9 @@ declare module "c/sfGpsDsAuNswAccordion" {
   export default 
   class SfGpsDsAuNswAccordion 
   extends SfGpsDsElement {
-    index: string | number;
-    header: string;
-    className: string;
+    index?: string | number;
+    header?: string;
+    className?: string;
     closed: boolean;
 
     // private

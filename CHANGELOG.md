@@ -1,5 +1,19 @@
 ## Change log
 
+### 29 December 2025
+
+#### NSW DS: QuickExit
+
+Added the QuickExit element to let users leave a site immediately without drawing attention.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswQuickExit/lwc/sfGpsDsAuNswQuickExit`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswQuickExit/lwc/sfGpsDsAuNswQuickExit).
+
+#### NSW DS: Sticky Container
+
+Added the Sticky Container element which allows to pack a component like the QuickExit into a fixed-position container at the bottom of the screen. The page bottom margin is adjusted accordingly so that all the content can still be seen.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStickyContainer/lwc/sfGpsDsAuNswQuickExit`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswStickyContainer/lwc/sfGpsDsAuNswStickyContainer).
+
 ### 24 December 2025
 
 #### NSW DS: SideNav mobile button

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Quick Exit</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="safeUrl"
+        type="String"
+        label="Safe URL"
+        default="https://www.google.com/webhp"
+        description="Target URL."
+      />
+      <property
+        name="copy"
+        type="String"
+        label="Copy"
+        description="Provides further details regarding what the quick exit will do."
+        default="Leave quickly using this banner or press &lt;kbd aria-label=&quot;Escape&quot;&gt;Esc&lt;/kbd&gt; 2 times."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="enableCloak"
+        type="Boolean"
+        label="Enable cloak"
+        description="Allows to quickly hide the current page while target URL is loading."
+        default="true"
+      />
+      <property
+        name="enableEsc"
+        type="Boolean"
+        label="Enable escape key"
+        description="Allows to use a global double escape key binding. This shortcut is deferred when the focus is on an element that tpically uses the escape key."
+        default="true"
+      />
+      <property
+        name="focusFirst"
+        type="Boolean"
+        label="Focus first"
+        description="Forces the first tab to focus on this element."
+        default="true"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
