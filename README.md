@@ -42,7 +42,7 @@ While installing, expand the advanced options to pick the `Compile only the Apex
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc7kIAC" title="sfGpsDsAuVic1Full">this link</a> to install the `sfGpsDsAuVic` unlocked package in your org (with `sfGpsDs` included). **Note**: this library is now deprecated.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pch5IAC" title="sfGpsDsAuVic2Full">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PchKIAS" title="sfGpsDsAuVic2Full">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included).
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcfEIAS" title="sfGpsDsFrGovFull">this link</a> to install the `sfGpsDsFrGov` unlocked package in your org (with `sfGpsDs` included).
 
