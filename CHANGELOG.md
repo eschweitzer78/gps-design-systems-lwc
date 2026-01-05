@@ -1,5 +1,13 @@
 ## Change log
 
+### 5 January 2026
+
+#### VIC2 DS: Timeline
+
+Added the Timeline element to let display a visual journey of short blocks of content in a linear order. Each block can be actionable for users to navigate through to related content.
+
+Refer to [`sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Timeline/lwc/sfGpsDsAuVic2Timeline`](sfGpsDsAuVic2/main/default/lwc/sfGpsDsAuVic2Timeline/lwc/sfGpsDsAuVic2Timeline).
+
 ### 29 December 2025
 
 #### NSW DS: QuickExit
