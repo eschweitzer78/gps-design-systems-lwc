@@ -1,0 +1,46 @@
+<template>
+  <div class={computedClassName}>
+    <h2 lwc:if={title} class="rpl-type-h2-fixed rpl-timeline__heading">
+      {title}
+    </h2>
+    <ul lwc:if={computedHasItems} class="rpl-timeline__items rpl-type-p">
+      <template for:each={_items} for:item="item">
+        <li key={item._key} class={item._className}>
+          <c-sf-gps-ds-au-vic2-image
+            lwc:if={item.image}
+            image={item.image}
+            class-name="rpl-timeline__item-image"
+          >
+          </c-sf-gps-ds-au-vic2-image>
+          <h3
+            lwc:if={item.title}
+            class="rpl-type-h3-fixed rpl-timeline__item-title"
+          >
+            <c-sf-gps-ds-au-vic2-text-link
+              lwc:if={item.url}
+              class-name="rpl-timeline__item-link"
+              url={item.url}
+              data-ndx={item._index}
+              onclick={handleItemClick}
+            >
+              {item.title}
+            </c-sf-gps-ds-au-vic2-text-link>
+            <template lwc:else>{item.title}</template>
+          </h3>
+          <p
+            lwc:if={item.subtitle}
+            class="rpl-timeline__item-subtitle rpl-type-p"
+          >
+            {item.subtitle}
+          </p>
+          <c-sf-gps-ds-au-vic2-content
+            lwc:if={item.description}
+            html={item.description}
+            class-name="rpl-timeline__item-description rpl-content"
+          >
+          </c-sf-gps-ds-au-vic2-content>
+        </li>
+      </template>
+    </ul>
+  </div>
+</template>
