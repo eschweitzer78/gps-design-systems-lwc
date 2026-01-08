@@ -1,0 +1,175 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div
+    lwc:if={isBannerRendered}
+    class={computedClassName}
+    role="alert"
+    tabindex="-1"
+    aria-labelledby="cookie-banner-title"
+    aria-live="assertive"
+    hidden={_isDialogOpen}
+  >
+    <div class="nsw-cookie-banner__wrapper">
+      <div id="cookie-banner-title" class="nsw-cookie-banner__title">
+        {title}
+      </div>
+      <span class="nsw-cookie-banner__description" hidden={isConfirmed}>
+        <div class="nsw-cookie-banner__content">
+          <slot></slot>
+        </div>
+        <div class="nsw-cookie-banner__buttons-container">
+          <div
+            lwc:if={computedHasCtaButtons}
+            class="nsw-cookie-banner__cta-group"
+          >
+            <button
+              lwc:if={acceptAllBtn}
+              class="nsw-button nsw-button--dark"
+              data-role="accept-all"
+              onclick={handleBannerClick}
+            >
+              {acceptAllBtn}
+            </button>
+            <button
+              lwc:if={acceptNecessaryBtn}
+              class="nsw-button nsw-button--dark"
+              data-role="reject-all"
+              onclick={handleBannerClick}
+            >
+              {acceptNecessaryBtn}
+            </button>
+          </div>
+          <a
+            href="#cookie-consent"
+            class="nsw-button nsw-button--dark-outline"
+            aria-haspopup="dialog"
+            data-role="open-dialog"
+            onclick={handleBannerClick}
+          >
+            {showPreferencesBtn}
+          </a>
+        </div>
+      </span>
+      <span
+        class="nsw-cookie-banner__confirmation-message"
+        hidden={computedIsNotConfirmed}
+      >
+        <div class="nsw-cookie-banner__content" onclick={handleBannerClick}>
+          <slot
+            name="confirmationMessage"
+            onslotchange={handleCMSlotChange}
+          ></slot>
+        </div>
+        <div class="nsw-cookie-banner__buttons-container">
+          <button
+            class="nsw-button nsw-button--dark"
+            data-role="close"
+            onclick={handleBannerClick}
+          >
+            {i18n.closeThisMessage}
+          </button>
+        </div>
+      </span>
+    </div>
+  </div>
+
+  <c-sf-gps-ds-au-nsw-dialog
+    lwc:if={isDialogRendered}
+    title={dialogTitle}
+    has-custom-footer="true"
+    is-open={_isDialogOpen}
+    is-dismissible="true"
+    class-name="nsw-cookie-dialog"
+    onclose={handleDialogClick}
+  >
+    <c-sf-gps-ds-au-nsw-tab-set-lwr first-child="true">
+      <c-sf-gps-ds-au-nsw-tab-lwr
+        lwc:if={dialogTab1Title}
+        label={dialogTab1Title}
+        disable-lazy-loading="true"
+      >
+        <div class="nsw-cookie-dialog__content-wrapper">
+          <c-sf-gps-ds-au-nsw-loader
+            lwc:if={_isLoading.value}
+            label={i18n.loading}
+          >
+          </c-sf-gps-ds-au-nsw-loader>
+
+          <c-sf-gps-ds-empty lwc:elseif={_isEmpty.value} title={i18.empty}>
+          </c-sf-gps-ds-empty>
+
+          <ul lwc:elseif={_sections} class="nsw-cookie-dialog__list">
+            <template for:each={_sections} for:item="section">
+              <li class="nsw-cookie-dialog__list-item" key={section._key}>
+                <input
+                  class="nsw-form__checkbox-input"
+                  value={section.linkedCategory}
+                  type="checkbox"
+                  name={section._key}
+                  id={section._key}
+                  checked={section.checked}
+                  disabled={section.readOnly}
+                  onclick={handleInputClick}
+                />
+                <label class="nsw-form__checkbox-label" for={section._key}>
+                  {section.title}
+                </label>
+                <div class="nsw-cookie-dialog__cookie-details">
+                  <p>{section.description}</p>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </c-sf-gps-ds-au-nsw-tab-lwr>
+
+      <c-sf-gps-ds-au-nsw-tab-lwr
+        lwc:if={dialogTab2Title}
+        label={dialogTab2Title}
+        disable-lazy-loading="true"
+      >
+        <div class="nsw-cookie-dialog__content-wrapper">
+          <slot name="dialogTab2Content"></slot>
+        </div>
+      </c-sf-gps-ds-au-nsw-tab-lwr>
+
+      <c-sf-gps-ds-au-nsw-tab-lwr
+        lwc:if={dialogTab3Title}
+        label={dialogTab3Title}
+        disable-lazy-loading="true"
+      >
+        <div class="nsw-cookie-dialog__content-wrapper">
+          <slot name="dialogTab3Content"></slot>
+        </div>
+      </c-sf-gps-ds-au-nsw-tab-lwr>
+    </c-sf-gps-ds-au-nsw-tab-set-lwr>
+
+    <div slot="footer" class="nsw-cookie-dialog__bottom">
+      <div class="nsw-cookie-dialog__cta-group">
+        <button
+          class="nsw-button nsw-button--dark-outline-solid"
+          data-role="accept-all"
+          onclick={handleDialogClick}
+        >
+          {dialogAcceptAllBtn}
+        </button>
+        <button
+          class="nsw-button nsw-button--dark-outline-solid"
+          data-role="reject-all"
+          onclick={handleDialogClick}
+        >
+          {dialogAcceptNecessaryBtn}
+        </button>
+      </div>
+      <div class="nsw-cookie-dialog__cta-group">
+        <button
+          class="nsw-button nsw-button--dark js-close-dialog"
+          data-role="accept-selection"
+          onclick={handleDialogClick}
+        >
+          {dialogSavePreferencesBtn}
+        </button>
+      </div>
+    </div>
+  </c-sf-gps-ds-au-nsw-dialog>
+</template>

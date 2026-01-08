@@ -1,0 +1,72 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-au-nsw-cookie-consent
+    lwc:elseif={isOpen}
+    title={title}
+    sections={_sections}
+    accept-all-btn={acceptAllBtn}
+    accept-necessary-btn={acceptNecessaryBtn}
+    show-preferences-btn={showPreferencesBtn}
+    dialog-title={dialogTitle}
+    dialog-accept-all-btn={acceptAllBtn}
+    dialog-accept-necessary-btn={acceptNecessaryBtn}
+    dialog-save-preferences-btn={savePreferencesBtn}
+    dialog-tab1-title={tab1Title}
+    dialog-tab2-title={tab2Title}
+    dialog-tab3-title={tab3Title}
+    is-loading={_isLoading}
+    is-empty={isEmpty}
+    is-confirmed={_isConfirmed}
+    onconfirm={handleConfirmed}
+    onrequestrefresh={handleRefresh}
+  >
+    <div
+      lwc:if={description}
+      lwc:dom="manual"
+      lwc:ref="description"
+      class="ulol-initial"
+    ></div>
+    <template lwc:else>
+      <slot name="Description"></slot>
+    </template>
+
+    <div
+      lwc:if={confirmationMessage}
+      lwc:dom="manual"
+      lwc:ref="confirmationMessage"
+      slot="confirmationMessage"
+      class="ulol-initial"
+    ></div>
+    <template lwc:else>
+      <slot name="ConfirmationMessage" slot="confirmationMessage"></slot>
+    </template>
+
+    <div
+      lwc:if={tab2Content}
+      lwc:dom="manual"
+      lwc:ref="tab2Content"
+      slot="dialogTab2Content"
+      class="ulol-initial tab2"
+    ></div>
+    <template lwc:else>
+      <slot name="Tab2Content" slot="dialogTab2Content"></slot>
+    </template>
+
+    <div
+      lwc:if={tab3Content}
+      lwc:dom="manual"
+      lwc:ref="tab3Content"
+      slot="dialogTab3Content"
+      class="ulol-initial"
+    ></div>
+    <template lwc:else>
+      <slot name="Tab3Content" slot="dialogTab3Content"></slot>
+    </template>
+  </c-sf-gps-ds-au-nsw-cookie-consent>
+</template>
