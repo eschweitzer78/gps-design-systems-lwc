@@ -36,6 +36,11 @@ declare module "c/sfGpsDsIpLwc" {
     startedLoading(): void;
     stoppedLoading(): void;
     refreshContent(): void;
+    runIntegrationProcedureCustom(
+      additionalInput: object, 
+      successCb: (value: any) => any, 
+      failureCb: (value: any) => any
+    ): void;
     mapIpData(data: object[] | object): any[];
   }
 }
