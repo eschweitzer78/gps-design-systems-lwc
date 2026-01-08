@@ -27,6 +27,7 @@
         label="Header class name"
         name="headerClassName"
         type="String"
+        default="rpl-layout__header"
       />
       <property label="Main class name" name="mainClassName" type="String" />
       <property
