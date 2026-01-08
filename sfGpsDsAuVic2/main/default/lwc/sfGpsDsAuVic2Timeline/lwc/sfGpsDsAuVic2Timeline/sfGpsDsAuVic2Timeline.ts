@@ -6,7 +6,7 @@ import { TimelineItem, DecoratedTimelineItem } from "c/sfGpsDsAuVic2Timeline";
 
 const PREVENTDEFAULT_DEFAULT = false;
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuVic2Timeline";
 
 export default 

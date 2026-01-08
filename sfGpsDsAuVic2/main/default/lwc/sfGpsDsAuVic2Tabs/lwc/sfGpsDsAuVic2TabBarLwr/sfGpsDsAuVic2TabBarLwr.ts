@@ -9,7 +9,7 @@ const MODE_VERTICAL = "vertical";
 const MODE_VALUES = [MODE_HORIZONTAL, MODE_VERTICAL];
 const MODE_DEFAULT = MODE_HORIZONTAL;
 
-const DEBUG = true;
+const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuVic2TabBarLwr";
 
 export default 
