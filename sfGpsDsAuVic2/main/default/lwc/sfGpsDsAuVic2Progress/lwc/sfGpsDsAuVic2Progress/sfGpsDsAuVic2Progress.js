@@ -206,7 +206,10 @@ export default class extends BreakpointsMixin(LightningElement) {
   }
 
   get decoratedSteps() {
-    return (this.steps || []).map((step, index) => {
+    if (DEBUG)
+      console.debug(CLASS_NAME, "> decoratedSteps", JSON.stringify(this.steps));
+
+    const rv = (this.steps || []).map((step, index) => {
       const isActive = index + 1 === this._currentStep;
       const isComplete = index + 1 < this._currentStep;
 
@@ -224,6 +227,11 @@ export default class extends BreakpointsMixin(LightningElement) {
         }
       };
     });
+
+    if (DEBUG)
+      console.debug(CLASS_NAME, "< decoratedSteps", JSON.stringify(rv));
+
+    return rv;
   }
 
   /* event management */

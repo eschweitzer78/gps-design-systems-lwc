@@ -41,7 +41,19 @@ export default class extends SfGpsDsFormStepChart {
   }
 
   get computedCurrentIndexP1() {
-    return this.currentIndex + 1;
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "> computedCurrentIndexP1", this.currentIndex);
+    }
+
+    const stepIndex = (this.stepDef || []).findIndex(
+      (step) => step.indexInParent === this.currentIndex
+    );
+
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "< computedCurrentIndexP1", stepIndex + 1);
+    }
+
+    return stepIndex + 1;
   }
 
   /* lifecycle */
