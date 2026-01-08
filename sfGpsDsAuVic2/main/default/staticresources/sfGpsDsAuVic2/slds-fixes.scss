@@ -5,8 +5,8 @@
 
 /* Fix SLDS/Exp Cloud changing the Primary Nav Quick Exit colour on hover */
 
-.rpl-primary-nav__quick-exit .rpl-button--destructive:hover,
-.rpl-primary-nav__quick-exit .rpl-button--destructive:active {
+.rpl-primary-nav__quick-exit.rpl-button--destructive:hover,
+.rpl-primary-nav__quick-exit.rpl-button--destructive:active {
   color: var(--rpl-clr-light);
 }
 

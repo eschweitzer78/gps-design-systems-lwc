@@ -9,7 +9,7 @@
     },
     {
       "from": "\\(/assets/",
-      "to": "(/sfsites/c/resource/sfGpsDsAuVic2/assets/"
+      "to": "(./assets/"
     }
   ],
   "../../../../node_modules/@dpc-sdp/ripple-ui-core/dist/style.css": 
