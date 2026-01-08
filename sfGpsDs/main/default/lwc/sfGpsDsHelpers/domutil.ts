@@ -89,6 +89,22 @@ export function computeClass(
   return isArray(config) ? config.join(joinChar) : null
 }
 
+export function uniqueClassesFromString(
+  classNames = ""
+) {
+  const classes = classNames
+    .split(" ")
+    .map((c) => c.trim())
+    .filter((c) => !!c);
+  const unique = [];
+
+  classes.forEach((c) => {
+    if (unique.indexOf(c) < 0) unique.push(c);
+  });
+
+  return unique.join(" ");
+}
+
 export function isRTL(): boolean {
   return document.dir === "rtl";
 }

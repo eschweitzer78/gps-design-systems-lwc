@@ -6,6 +6,7 @@ import "./SfGpsDsIntegrationProcController.runIntegrationProcedure";
 import "./sfGpsDsApex";
 import "./sfGpsDsCheckboxGroup";
 import "./sfGpsDsConfigurationError";
+import "./sfGpsDsCookieConsent";
 import "./sfGpsDsDivLwr";
 import "./sfGpsDsElement";
 import "./sfGpsDsElementOs";
