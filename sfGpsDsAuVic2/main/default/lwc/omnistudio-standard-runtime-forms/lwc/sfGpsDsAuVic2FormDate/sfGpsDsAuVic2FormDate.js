@@ -10,6 +10,24 @@ import SfGpsDsAuVic2FormElementMixin from "c/sfGpsDsAuVic2FormElementMixin";
 import tmpl from "./sfGpsDsAuVic2FormDate.html";
 
 export default class extends SfGpsDsAuVic2FormElementMixin(SfGpsDsFormDate) {
+  initCompVariables() {
+    super.initCompVariables();
+
+    this._messageWhenRangeOverflow =
+      String(
+        this.allCustomLabelsUtil.OmniDateDisabledDay +
+          " " +
+          this.allCustomLabelsUtil.OmniDateMax
+      ) + " {max}.";
+
+    this._messageWhenRangeUnderflow =
+      String(
+        this.allCustomLabelsUtil.OmniDateDisabledDay +
+          " " +
+          this.allCustomLabelsUtil.OmniDateMin
+      ) + " {min}.";
+  }
+
   /* lifecycle */
 
   render() {

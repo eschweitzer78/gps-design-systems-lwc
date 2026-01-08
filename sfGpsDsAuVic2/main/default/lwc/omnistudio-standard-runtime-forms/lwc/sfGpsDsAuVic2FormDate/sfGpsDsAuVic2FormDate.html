@@ -1,5 +1,60 @@
 <!-- sldsValidatorIgnore -->
 <template>
+  <c-sf-gps-ds-au-vic2-date-picker
+    label={mergedLabel}
+    required={_propSetMap.required}
+    read-only={_propSetMap.readOnly}
+    placeholder={mergedPlaceholder}
+    value={elementValue}
+    output-type={_propSetMap.dateType}
+    output-format={_modelDateFormat}
+    format={_dateFormat}
+    locale-format={allCustomLabelsUtil.OmniDayJsLocaleFormats}
+    locale-format-invalid-error={allCustomLabelsUtil.OmniLocaleFormatsInvalid}
+    required-label={allCustomLabelsUtil.OmniRequired}
+    message-when-value-missing={mergedMessageWhenValueMissing}
+    message-when-pattern-mismatch={mergedMessageWhenPatternMismatch}
+    message-when-too-short={mergedMessageWhenTooShort}
+    message-when-too-long={mergedMessageWhenTooLong}
+    message-when-bad-input={mergedMessageWhenBadInput}
+    message-when-range-overflow={mergedMessageWhenRangeOverflow}
+    message-when-range-underflow={mergedMessageWhenRangeUnderflow}
+    min={_min}
+    max={_max}
+    field-level-help={mergedHelpText}
+    data-omni-input
+    onblur={handleOnBlur}
+    onchange={handleChange}
+  >
+    <template if:true={_propSetMap.repeat}>
+      <span slot="label" class="rpl-u-padding-t-1" role="group">
+        <button
+          lwc:if={canRepeat}
+          class="rpl-u-margin-l-1"
+          aria-label="Repeat Date"
+          onclick={handleAdd}
+        >
+          <c-sf-gps-ds-au-vic2-icon name="icon-add" size="xs" colour="inactive">
+          </c-sf-gps-ds-au-vic2-icon>
+        </button>
+        <button
+          lwc:if={canRemove}
+          class="rpl-u-margin-l-1"
+          aria-label="Remove Date"
+          onclick={handleRemove}
+        >
+          <c-sf-gps-ds-au-vic2-icon
+            name="icon-cancel-circle-filled"
+            size="xs"
+            colour="inactive"
+          >
+          </c-sf-gps-ds-au-vic2-icon>
+        </button>
+      </span>
+    </template>
+  </c-sf-gps-ds-au-vic2-date-picker>
+
+  <!--
   <c-sf-gps-ds-au-vic2-input
     type="date"
     label={mergedLabel}
@@ -64,4 +119,5 @@
       </span>
     </template>
   </c-sf-gps-ds-au-vic2-input>
+  -->
 </template>
