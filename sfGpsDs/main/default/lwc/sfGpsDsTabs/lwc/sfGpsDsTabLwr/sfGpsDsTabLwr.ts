@@ -1,10 +1,14 @@
 import { 
-  api 
+  api,
+  track
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 
 const SHOWERRORINDICATOR_DEFAULT = false;
 const TABLABEL_DEFAULT = "Tab";
+
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsTabLwr";
 
 export default 
 class SfGpsDsTabLwr
@@ -101,13 +105,23 @@ extends SfGpsDsElement {
 
   /* methods */
 
+  // @ts-ignore
+  @track 
   _loadContent: boolean = false;
 
   // @ts-ignore
   @api
   loadContent(): void {
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "> loadContent");
+    }
+
     this._loadContent = true;
     this.dispatchEvent(new CustomEvent("active"));
+
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "< loadContent");
+    }
   }
 
   _dispatchDataChangeEventIfConnected(): void {
