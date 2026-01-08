@@ -26,6 +26,7 @@ export {
   replaceInnerHtml,
   getFirstChild,
   computeClass,
+  uniqueClassesFromString,
   isRTL,
   getCssPropertyValue,
   HtmlSanitizer
