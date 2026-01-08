@@ -50,6 +50,9 @@ declare module "c/sfGpsDsHelpers" {
     config: ClassConfig, 
     joinChar?: string
   ): string | null;
+  export function uniqueClassesFromString(
+    classNames?: string
+  ): string;
   export function isRTL(): boolean;
   export function getCssPropertyValue(
     propertyName: string

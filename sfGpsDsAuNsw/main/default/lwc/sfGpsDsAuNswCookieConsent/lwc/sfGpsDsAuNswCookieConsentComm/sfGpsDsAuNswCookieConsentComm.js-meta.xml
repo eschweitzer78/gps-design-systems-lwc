@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>NSW DS Cookie Consent</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Label used as a title at the top of the banner."
+        default="Cookies on this website"
+      />
+      <property
+        name="description"
+        type="String"
+        label="Description"
+        description="Description in Markdown format, adjust the default text as necessary or make up your own. Leave empty to get a slot in LWR."
+        default="We’ve added essential and additional cookies to ensure this service works effectively, track how it’s being used, and make necessary improvements. You can manage your cookie settings by clicking on the &quot;Manage your preferences&quot; button."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="confirmationMessage"
+        type="String"
+        label="Confirmation message"
+        description="Confirmation message displayed when the user makes a selection - in Markdown format. Adjust the default text as necessary or make up your own. Leave empty to get a slot in LWR."
+        default="Thanks for making your selection. View and update your &lt;a href=&quot;#cookie-consent&quot; aria-haspopup=&quot;dialog&quot; data-role=&quot;open-dialog&quot;>cookies preferences&lt;/a>."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="acceptAllBtn"
+        type="String"
+        label="Accept all button text"
+        description="Text used as a label for the button that indicates user acceptance of all cookies."
+        default="Accept all"
+      />
+      <property
+        name="acceptNecessaryBtn"
+        type="String"
+        label="Accept necessary button text"
+        description="Text used as a label for the button that indicates user acceptance of only necessary cookies."
+        default="Only necessary cookies"
+      />
+      <property
+        name="showPreferencesBtn"
+        type="String"
+        label="Show preferences button text"
+        description="Text used as a label for the button that opens a modal dialog for the user to manage their preferences."
+        default="Manage your preferences"
+      />
+      <property
+        name="savePreferencesBtn"
+        type="String"
+        label="Save preferences button text"
+        description="Text used as a label for the button that saves users preferences."
+        default="Accept current selection"
+      />
+      <property
+        name="dialogTitle"
+        type="String"
+        label="Dialog title"
+        description="Title for modal dialog to manage user preferences."
+        default="Manage cookie preferences"
+      />
+      <property
+        name="tab1Title"
+        type="String"
+        label="Tab 1 title"
+        description="Title for tab 1. Contents are automatically added."
+        default="Cookie preferences"
+      />
+      <property
+        name="config"
+        type="String"
+        label="Cookie consent management config"
+        description="Cookie consent management configuration in JSON format."
+        default="{&#xa;  &quot;mode&quot;: &quot;opt-in&quot;,&#xa;  &quot;autoClearCookies&quot;: true,&#xa;  &quot;hideFromBots&quot;: true,&#xa;  &quot;categories&quot;: {&#xa;    &quot;necessary&quot;: {&#xa;      &quot;title&quot;: &quot;Necessary&quot;,&#xa;      &quot;description&quot;: &quot;This site requires necessary cookies for privacy protection, accessibility, and secure access to government services. They cannot be turned off.&quot;,&#xa;      &quot;readOnly&quot;: true&#xa;    },&#xa;    &quot;analytics&quot;: {&#xa;      &quot;title&quot;: &quot;Performance and Analytics&quot;,&#xa;      &quot;description&quot;: &quot;These cookies collect information about how you use our website. All of the data is anonymised and cannot be used to identify you.&quot;,&#xa;      &quot;readOnly&quot;: false&#xa;    }&#xa;  }&#xa;}"
+        editor="c/sfGpsDsJsonCpe"
+      />
+
+      <property
+        name="tab2Title"
+        type="String"
+        label="Tab 2 title"
+        description="Title for tab 2. Leave blank if tab 3 is not desired."
+        default="How we use cookies"
+      />
+      <property
+        name="tab2Content"
+        type="String"
+        label="Tab 2 content"
+        description="Content for tab 2 in Markdown format. Leave empty to get a slot in LWR."
+        default="We use cookies to enhance your experience when using our website.&#xa;&#xa;Cookies help us understand how you interact with our site, allowing us to improve functionality and ensure security.&#xa;&#xa;They do not contain viruses or harmful software and take up minimal space on your device.&#xa;&#xa;## How we use cookies&#xa;&#xa;Our website uses cookies to:&#xa;&#xa;* ensure essential site functionality, such as security and accessibility&#xa;* remember your preferences, including dismissed notifications and pop-ups&#xa;* analyse website traffic and user interactions to improve content and navigation&#xa;* enable sharing of content on social media platforms like LinkedIn&#xa;* help us make continuous improvements based on user behaviour&#xa;&#xa;Some cookies may collect information that is classified as personal data. Please refer to our [Privacy Policy](#url-to-your-privacy-policy) to learn more about how we handle personal information.&#xa;&#xa;For more details on cookies, how they work, and how to manage or delete them, visit [www.allaboutcookies.org](https://www.allaboutcookies.org).&#xa;&#xa;## Details about cookies on this NSW Government website>&#xa;&lt;table class=&quot;nsw-table&quot;>&#xa;  &lt;caption class=&quot;sr-only&quot;>Details about cookies on this NSW Government website&lt;/caption>&#xa;  &lt;thead>&#xa;    &lt;tr>&#xa;      &lt;th scope=&quot;col&quot;>Name&lt;/th>&#xa;      &lt;th scope=&quot;col&quot;>Purpose&lt;/th>&#xa;      &lt;th scope=&quot;col&quot;>Expires&lt;/th>&#xa;    &lt;/tr>&#xa;  &lt;/thead>&#xa;  &lt;tbody>&#xa;    &lt;tr>&#xa;      &lt;td>analytics_next_page_call&lt;/td>&#xa;      &lt;td>This lets us know the next page you visit on NSW Government website, so we can make journeys better&lt;/td>&#xa;      &lt;td>When you close your browser&lt;/td>&#xa;    &lt;/tr>&lt;tr>&#xa;      &lt;td>_ga&lt;/td>&#xa;    &lt;td>These help us count how many people visit NSW Government website and other government digital services by tracking if you’ve visited before&lt;/td>&#xa;      &lt;td>2 years&lt;/td>&#xa;    &lt;/tr>&#xa;    &lt;tr>&#xa;      &lt;td>_gid&lt;/td>&#xa;      &lt;td>These help us count how many people visit NSW Government website and other government digital services by tracking if you’ve visited before&lt;/td>&#xa;      &lt;td>24 hours&lt;/td>&#xa;    &lt;/tr>&#xa;    &lt;tr>&#xa;      &lt;td>_ga_XYZA123456&lt;/td>&#xa;      &lt;td>Used by Google Analytics to find and track an individual session with your device&lt;/td>&#xa;      &lt;td>2 years&lt;/td>&#xa;    &lt;/tr>&#xa;  &lt;/tbody>&lt;/table>"
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="tab3Title"
+        type="String"
+        label="Tab 3 title"
+        description="Title for tab 3. Leave blank if tab 3 is not desired."
+        default="What are cookies"
+      />
+      <property
+        name="tab3Content"
+        type="String"
+        label="Tab 3 content"
+        description="Content for tab 3 in Markdown format. Leave empty to get a slot in LWR."
+        default="Cookies are small files stored on your phone, tablet, or computer when you visit a website. They help us understand how you use our website and improve your experience.>&#xa;&#xa;Some cookies collect information about how you interact with our website, such as the pages you visit and links you click. Others may store personal information, depending on their purpose and configuration.>&#xa;&#xa;Personal information that may be collected by cookies includes:>&#xa;&#xa;* Email address>&#xa;* Username>&#xa;* IP address>&#xa;* Geographic location>&#xa;* Session screen recordings>&#xa;&#xa;We use cookies to:>&#xa;&#xa;* Make our website work efficiently and securely>&#xa;* Remember your preferences, such as which pop-ups you’ve seen>&#xa;* Understand how you use our website (analytics cookies)>&#xa;* Enable social sharing, such as LinkedIn>&#xa;* Continuously improve our website for you>&#xa;&#xa;Privacy and compliance: if cookies collect personal information, we are required to comply with Information Privacy Principle (IPP) 3, ensuring openness in data collection. This means you should be informed when your personal information is collected.>&#xa;&#xa;We provide this information through:>&#xa;&#xa;* A Privacy Collection Notice (PCN) within the &quot;How we use cookies&quot; tab>&#xa;* A link to our Privacy Policy and/or Cookie Policy>&#xa;&#xa;As tracking technologies evolve, we periodically review our cookie practices to maintain privacy compliance and control over tracking technologies.>&#xa;&#xa;For more information on cookies, including how to manage or delete them, visit [www.allaboutcookies.org](https://www.allaboutcookies.org),>&#xa;&#xa;For privacy advice, please contact your agency’s privacy or information governance team. Additional guidance is available by email at [digitalnswprivacy@customerservice.nsw.gov.au](mailto:digitalnswprivacy@customerservice.nsw.gov.au)."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

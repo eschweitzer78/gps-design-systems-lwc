@@ -28,6 +28,8 @@ import "./sfGpsDsAuNswContainerLwr";
 import "./sfGpsDsAuNswContentBlock";
 import "./sfGpsDsAuNswContentBlockCollectionComm";
 import "./sfGpsDsAuNswContentBlockV2Comm";
+import "./sfGpsDsAuNswCoookieConsent";
+import "./sfGpsDsAuNswCoookieConsentComm";
 import "./sfGpsDsAuNswDialog";
 import "./sfGpsDsAuNswFooterComm";
 import "./sfGpsDsAuNswGlobalAlert";

@@ -24,6 +24,9 @@ const IPACTIVE_DEFAULT = true;
 const INPUT_DEFAULT = undefined;
 const OPTIONS_DEFAULT = undefined;
 
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsIpLwc";
+
 export default 
 class SfGpsDsIpLwc 
 extends SfGpsDsLwc {
@@ -57,8 +60,10 @@ extends SfGpsDsLwc {
   }
 
   set ipName(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set ipName", value);
     this._ipName = value;
     this.refreshContent();
+    if (DEBUG) console.debug(CLASS_NAME, "< set ipName");
   }
 
   /* api: inputJSON */
@@ -73,6 +78,7 @@ extends SfGpsDsLwc {
   }
 
   set inputJSON(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set inputJSON", value);
     this._inputJSONOriginal = value;
 
     if (value == null) return;
@@ -85,6 +91,7 @@ extends SfGpsDsLwc {
       this.addError("IJ-BF", "JSON for input is malformed.");
       console.debug(e);
     }
+    if (DEBUG) console.debug(CLASS_NAME, "< set inputJSON");
   }
 
   /* api: optionsJSON */
@@ -99,6 +106,8 @@ extends SfGpsDsLwc {
   }
 
   set optionsJSON(value) {
+    if (DEBUG) console.debug(CLASS_NAME, "> set optionsJSON", value);
+
     try {
       this._optionsJSONOriginal = value;
       this._options = JSON.parse(value || "{}");
@@ -108,6 +117,8 @@ extends SfGpsDsLwc {
       this.addError("OJ-BF", "JSON for options is malformed.");
       console.debug(e);
     }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set optionsJSON");
   }
 
   /* track: _items */
@@ -130,6 +141,8 @@ extends SfGpsDsLwc {
   _loadingTimer?: NodeJS.Timeout;
 
   startedLoading(): void {
+    if (DEBUG) console.debug(CLASS_NAME, "> set startLoading", this._nLoading);
+
     this._nLoading++;
 
     if (this._loadingTimer == null) {
@@ -138,9 +151,13 @@ extends SfGpsDsLwc {
         this._isLoading = true;
       }, SPINNER_THRESHOLD);
     }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set startLoading", this._nLoading);
   }
 
   stoppedLoading(): void {
+    if (DEBUG) console.debug(CLASS_NAME, "> set stoppedLoading", this._nLoading);
+
     if (this._nLoading > 0) {
       this._nLoading--;
     }
@@ -153,15 +170,23 @@ extends SfGpsDsLwc {
 
       this._isLoading = false;
     }
+
+    if (DEBUG) console.debug(CLASS_NAME, "< set stoppedLoading", this._nLoading);
   }
 
   refreshContent(): void {
+    if (DEBUG) console.debug(CLASS_NAME, "> refreshContent");
+
     if (
       !this._ipActive ||
       this._ipName == null ||
       this._input == null ||
       this._options == null
     ) {
+      if (DEBUG) {
+        console.debug(CLASS_NAME, "< refreshContent", "empty parameters");
+      }
+
       /* 2023-06-01 ESC: do not bother running if not all of ipName, input and options aren't set */
       return;
     }
@@ -178,6 +203,13 @@ extends SfGpsDsLwc {
       options: this._options
     })
       .then((data) => {
+        if (DEBUG) {
+          console.debug(
+            CLASS_NAME, "= refreshContent", 
+            "received data", JSON.stringify(data)
+          );
+        }
+
         try {
           if (data) {
             if (!isArray(data)) {
@@ -213,6 +245,27 @@ extends SfGpsDsLwc {
         this._items = ITEMS_DEFAULT;
         this.stoppedLoading();
       });
+
+    if (DEBUG) console.debug(CLASS_NAME, "< refreshContent");
+  }
+
+  runIntegrationProcedureCustom(
+    additionalInput: object, 
+    successCb: (value: any) => any, 
+    failureCb: (value: any) => any
+  ): void {
+    runIntegrationProcedure({
+      ipName: this._ipName,
+      input: {
+        ...(this._input ? this._input : {}),
+        ...(additionalInput || {}),
+        communityId: this.communityId,
+        communityPreview: this.isPreview
+      },
+      options: this._options
+    })
+      .then(successCb)
+      .catch(failureCb);
   }
 
   mapIpData(

@@ -26,6 +26,7 @@ const BSTYLE_VALUES: BStyleValues = {
 };
 
 const ISDISMISSIBLE_DEFAULT = false;
+const HASCUSTOMFOOTER_DEFAULT = false;
 
 export default 
 class SfGpsDsAuNswDialog 
@@ -50,10 +51,6 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
-  className?: string;
-
-  // @ts-ignore
-  @api 
   bstyle?: BStyle;
   _bstyle = this.defineEnumObjectProperty<string, BStyle>("bstyle", {
     validValues: BSTYLE_VALUES,
@@ -66,6 +63,17 @@ extends SfGpsDsElement {
   _isDismissible = this.defineBooleanProperty("isDismissible", {
     defaultValue: ISDISMISSIBLE_DEFAULT
   });
+
+  // @ts-ignore
+  @api 
+  hasCustomFooter?: boolean;
+  _hasCustomFooter = this.defineBooleanProperty("hasCustomFooter", {
+    defaultValue: HASCUSTOMFOOTER_DEFAULT
+  });
+
+  // @ts-ignore
+  @api 
+  className?: string;
 
   /* computed */
 

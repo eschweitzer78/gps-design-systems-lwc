@@ -27,7 +27,10 @@
         </div>
       </div>
 
-      <div class="nsw-dialog__bottom">
+      <template lwc:if={_hasCustomFooter.value}>
+        <slot name="footer"></slot>
+      </template>
+      <div lwc:else class="nsw-dialog__bottom">
         <button
           class={computedPrimaryButtonClassName}
           onclick={handlePrimaryClick}

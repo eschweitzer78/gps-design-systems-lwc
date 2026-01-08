@@ -1,5 +1,13 @@
 ## Change log
 
+### 6 January 2026
+
+#### NSW DS: Cookie Consent element
+
+Added the Cookie Consent element to let customers confirm their cookie preferences. It comes with a banner that should be placed in a sticky container at the bottom of the main content section and will be automatically show if any cookie content is past it's shelf life. It also has a modal dialog to manager cookie preferences.
+
+Refer to [`sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCookieConsent/lwc/sfGpsDsAuNswCookieConsent`](sfGpsDsAuNsw/main/default/lwc/sfGpsDsAuNswCookieConsent/lwc/sfGpsDsAuNswCookieConsent) and [`sfGpsDs/main/default/lwc/sfGpsDsCookieConsent`](sfGpsDs/main/default/lwc/sfGpsDsCookieConsent).
+
 ### 5 January 2026
 
 #### VIC2 DS: Timeline

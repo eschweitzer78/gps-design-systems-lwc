@@ -547,7 +547,7 @@ export default class extends LightningElement {
       {}
     );
 
-    return formatTemplate(string, mergeFieldOptions, { sep: "%" });
+    return formatTemplate(string, mergeFieldOptions, { sep: "{}" });
   }
 
   /* event management */

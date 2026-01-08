@@ -10,14 +10,13 @@
 
   .nsw-button:focus {
     &.nsw-button--dark,
-    &.nsw-button--dark-outline,
-    &.nsw-button--dark-outline-solid,
     &.nsw-button--danger,
     &.nsw-button--info {
       color: var(--nsw-text-light);
     }
+    &.nsw-button--dark-outline:not(:hover),
+    &.nsw-button--dark-outline-solid:not(:hover),
     &.nsw-button--light,
-    &.nsw-button--light-outline,
     &.nsw-button--white {
       color: var(--nsw-text-dark);
     }
