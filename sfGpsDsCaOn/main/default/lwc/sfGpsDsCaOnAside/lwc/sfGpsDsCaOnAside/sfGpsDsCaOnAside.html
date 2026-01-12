@@ -1,0 +1,21 @@
+<template lwc:render-mode="light">
+  <aside class={computedClassName}>
+    <h2 lwc:if={isH2} class="ontario-aside__title ontario-h5">
+      <slot name="heading"></slot>
+    </h2>
+    <h3 lwc:if={isH3} class="ontario-aside__title ontario-h5">
+      <slot name="heading"></slot>
+    </h3>
+    <h4 lwc:if={isH4} class="ontario-aside__title ontario-h5">
+      <slot name="heading"></slot>
+    </h4>
+    <h5 lwc:if={isH5} class="ontario-aside__title ontario-h5">
+      <slot name="heading"></slot>
+    </h5>
+    <h6 lwc:if={isH6} class="ontario-aside__title ontario-h5">
+      <slot name="heading"></slot>
+    </h6>
+
+    <slot></slot>
+  </aside>
+</template>

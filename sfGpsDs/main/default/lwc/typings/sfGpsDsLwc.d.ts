@@ -18,7 +18,8 @@ declare module "c/sfGpsDsLwc" {
   extends PropertyDefOptions<string> {
     errorCode?: string,
     errorText?: string,
-    defaultValue?: any
+    defaultValue?: any,
+    parseFunction?: (markdown: string) => string
   }
 
   export default 

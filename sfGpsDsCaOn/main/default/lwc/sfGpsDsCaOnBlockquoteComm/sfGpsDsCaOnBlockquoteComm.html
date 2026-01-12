@@ -1,0 +1,17 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <ontario-blockquote
+    lwc:else
+    lwc:external
+    attribution={attribution}
+    byline={byline}
+    class-name={className}
+  >
+    <span lwc:ref="markdown" lwc:dom="manual"></span>
+  </ontario-blockquote>
+</template>

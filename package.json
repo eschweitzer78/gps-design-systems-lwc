@@ -4,6 +4,7 @@
   "version": "3.0.1",
   "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
+    "build-caon": "npx tsc --project sfGpsDsCaOn/main/default/lwc",
     "build": "npx tsc --project sfGpsDs/main/default/lwc; npx tsc --project sfGpsDsAuNsw/main/default/lwc; npx tsc --project sfGpsDsAuQld/main/default/lwc; npx tsc --project sfGpsDsAuVic2/main/default/lwc; npx tsc --project sfGpsDsAuVic2Showcase/main/default/lwc",
     "lint": "eslint **/{aura,lwc}/**",
     "test": "npm run test:unit",
@@ -24,13 +25,15 @@
     "prep-frgov": "mkdir -p sfGpsDsFrGovFull",
     "prep-ukgov": "mkdir -p sfGpsDsUkGovFull",
     "prep-sggov": "cp -a node_modules/@govtechsg/sgds/css/sgds.css sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; mkdir -p sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; cp -a node_modules/bootstrap-icons/font/bootstrap-icons.css sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; mkdir -p sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov/fonts; cp -a node_modules/bootstrap-icons/font/fonts/* sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov/fonts; mkdir -p sfGpsDsSgGovFull",
-    "prep": "npm run prep-nsw; npm run prep-nsws; npm run prep-qld; npm run prep-vic2; npm run prep-frgov; npm run prep-ukgov;npm run prep-sggov",
+    "prep-caon": "rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; mkdir -p sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; cp -a node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist/ontario-design-system-components/fonts; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/dist; cp -a node_modules/@ongov/ontario-design-system-global-styles/dist sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles; mkdir -p sfGpsDsCaOnFull",
+    "prep": "npm run prep-nsw; npm run prep-nsws; npm run prep-qld; npm run prep-vic2; npm run prep-frgov; npm run prep-ukgov;npm run prep-sggov; npm run prep-caon",
     "aunsw-copy": "rm -rf sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswFull;cp -a sfGpsDs/. sfGpsDsAuNswFull;cp -a sfGpsDsAuNsw/. sfGpsDsAuNswFull",
     "aunsws-copy": "rm -rf sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuNswSFull;cp -a sfGpsDs/. sfGpsDsAuNswSFull;cp -a sfGpsDsAuNswS/. sfGpsDsAuNswSFull",
     "auqld-copy": "rm -rf sfGpsDsAuQldFull;mkdir -p sfGpsDsAuQldFull;cp -a sfGpsDs/. sfGpsDsAuQldFull;cp -a sfGpsDsAuQld/. sfGpsDsAuQldFull",
     "auvic2-copy": "rm -rf sfGpsDsAuVic2Full;mkdir -p sfGpsDsAuVic2Full;cp -a sfGpsDs/. sfGpsDsAuVic2Full;cp -a sfGpsDsAuVic2/. sfGpsDsAuVic2Full",
     "frgov-copy": "rm -rf sfGpsDsFrGovFull;mkdir -p sfGpsDsFrGovFull;cp -a sfGpsDs/. sfGpsDsFrGovFull;cp -a sfGpsDsFrGov/. sfGpsDsFrGovFull",
     "ukgov-copy": "rm -rf sfGpsDsUkGovFull;mkdir -p sfGpsDsUkGovFull;cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull",
+    "copy-caon": "rm -rf sfGpsDsOnCaFull;mkdir -p sfGpsDsOnCaFull;cp -a sfGpsDs/. sfGpsDsOnCaFull;cp -a sfGpsDsOnCa/. sfGpsDsOnCaFull",
     "synclabs": "export SDIR=../gps-design-systems-lwc;export TDIR=../gps-design-systems-lwcx;rm -rf $TDIR;cp -a . $TDIR;cp -a $SDIR/.git $TDIR;rm -rf $TDIR/.github"
   },
   "lint-staged": {
@@ -57,6 +60,8 @@
     "@govtechsg/sgds": "^2.3.6",
     "@lwc/eslint-plugin-lwc": "^3.3.0",
     "@lwc/jest-preset": "^19.1.0",
+    "@ongov/ontario-design-system-component-library": "5.0.0",
+    "@ongov/ontario-design-system-global-styles": "5.0.0",
     "@prettier/plugin-xml": "^3.4.2",
     "@qhealth-design-system/core": "1.18.4",
     "@sa11y/jest": "^8.0.0",

@@ -1,0 +1,33 @@
+<template lwc:render-mode="light">
+  <li class={computedClassName}>
+    <div lwc:if={image} class="ontario-card__image-container">
+      <img class="ontario-card__image" src={image} alt={imageAltText} />
+    </div>
+    <div class={computedTextContainerClassName}>
+      <h2 lwc:if={isH2} class={computedHeadingClass}>
+        <a lwc:if={url} href={url}> {heading} </a>
+        <template lwc:else> {heading} </template>
+      </h2>
+      <h3 lwc:elseif={isH3} class={computedHeadingClass}>
+        <a lwc:if={url} href={url}> {heading} </a>
+        <template lwc:else> {heading} </template>
+      </h3>
+      <h4 lwc:elseif={isH3} class={computedHeadingClass}>
+        <a lwc:if={url} href={url}> {heading} </a>
+        <template lwc:else> {heading} </template>
+      </h4>
+      <h5 lwc:elseif={isH3} class={computedHeadingClass}>
+        <a lwc:if={url} href={url} aria-label={ariaLabelText}> {heading} </a>
+        <template lwc:else> {heading} </template>
+      </h5>
+      <h6 lwc:elseif={isH3} class={computedHeadingClass}>
+        <a lwc:if={url} href={url}> {heading} </a>
+        <template lwc:else> {heading} </template>
+      </h6>
+
+      <div lwc:if={hasDescription} class="ontario-card__description">
+        <slot></slot>
+      </div>
+    </div>
+  </li>
+</template>

@@ -96,9 +96,12 @@ extends SfGpsDsElement {
     return this.defineProperty(
       propertyName, 
       {
-        ...options,
+        ...safeOptions,
         transform: (markdown) => {
           try {
+            if (safeOptions.parseFunction) {
+              return markdown ? safeOptions.parseFunction(markdown) : 0
+            }
             return markdown ? mdEngine.renderEscaped(markdown) : "";
           // eslint-disable-next-line no-unused-vars
           } catch (e) {

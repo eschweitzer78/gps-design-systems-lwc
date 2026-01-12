@@ -1,0 +1,28 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-ca-on-card
+    lwc:else
+    aria-label-text={ariaLabelText}
+    image={image}
+    image-alt-text={imageAltText}
+    has-description={computedHasDescription}
+    heading={_headingText}
+    heading-colour={headingColour}
+    heading-level={headingLevel}
+    horizontal-image-position={horizontalImagePosition}
+    horizontal-image-size={horizontalImageSize}
+    layout-direction={layoutDirection}
+    url={_headingUrl}
+    class-name={className}
+  >
+    <div lwc:if={description} lwc:ref="description" lwc:dom="manual"></div>
+    <template lwc:else>
+      <slot name="Card-Description"></slot>
+    </template>
+  </c-sf-gps-ds-ca-on-card>
+</template>
