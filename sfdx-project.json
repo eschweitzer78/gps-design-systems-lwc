@@ -129,7 +129,7 @@
           "package": "omnistudio 258.4"
         }
       ]
-    },    
+    },
     {
       "path": "sfGpsDsCaOn",
       "default": false
@@ -764,6 +764,13 @@
     "Salesforce Global Public Sector AU NSW Design System@3.5.1-3": "04tJ4000000Pch0IAC",
     "Salesforce Global Public Sector AU VIC2 Design System@0.8.2-1": "04tJ4000000Pch5IAC",
     "Salesforce Global Public Sector AU VIC2 Design System@0.8.3-1": "04tJ4000000PchKIAS",
-    "Salesforce Global Public Sector AU VIC2 Design System@0.8.3-3": "04tJ4000000PciSIAS"
+    "Salesforce Global Public Sector AU VIC2 Design System@0.8.3-3": "04tJ4000000PciSIAS",
+    "Salesforce Global Public Sector Design Systems@3.5.1-2": "04tJ4000000PcicIAC",
+    "Salesforce Global Public Sector AU NSW Design System@3.5.2-2": "04tJ4000000PcihIAC",
+    "Salesforce Global Public Sector AU NSW Service Design System@3.3.0-12": "04tJ4000000PcimIAC",
+    "Salesforce Global Public Sector AU QLD Design System (Full)@1.3.1-1": "04tJ4000000PcirIAC",
+    "Salesforce Global Public Sector AU VIC2 Design System@0.8.3-4": "04tJ4000000PciwIAC",
+    "Salesforce Global Public Sector GOUV.FR Design System (Full)@0.8.3-8": "04tJ4000000Pcj1IAC",
+    "Salesforce Global Public Sector GOV.UK Design System (Full)@1.7.3-8": "04tJ4000000Pcj6IAC"
   }
 }
