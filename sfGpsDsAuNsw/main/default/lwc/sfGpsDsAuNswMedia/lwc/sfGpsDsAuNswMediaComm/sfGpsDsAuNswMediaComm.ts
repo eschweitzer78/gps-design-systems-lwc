@@ -60,7 +60,7 @@ extends SfGpsDsLwc {
   // @ts-ignore
   @api 
   caption?: string;
-  _captiontHtml = this.defineMarkdownContentProperty("content", {
+  _captionHtml = this.defineMarkdownContentProperty("caption", {
     errorCode: "CO-MD",
     errorText: "Issue when parsing Caption markdown"
   });
@@ -75,8 +75,8 @@ extends SfGpsDsLwc {
   renderedCallback() {
     super.renderedCallback?.();
 
-    if (this._captiontHtml.value && this.refs.caption) {
-      replaceInnerHtml(this.refs.caption, this._captiontHtml.value);
+    if (this._captionHtml.value && this.refs.caption) {
+      replaceInnerHtml(this.refs.caption, this._captionHtml.value);
     }
   }
 }
