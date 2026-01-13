@@ -17,7 +17,9 @@
     <div>
       <!-- class="nsw-container" -->
       <div class="slds-grid slds-wrap omniscript-step__body">
-        <slot class="slds-grid slds-wrap slds-size_1-of-1"> </slot>
+        <!-- Aria-live added as a test for NVDA screen reader for conditionally visible elements in the step -->
+        <slot class="slds-grid slds-wrap slds-size_1-of-1" aria-live="polite">
+        </slot>
       </div>
 
       <hr lwc:if={computedShowSep} class="sepbutton" />

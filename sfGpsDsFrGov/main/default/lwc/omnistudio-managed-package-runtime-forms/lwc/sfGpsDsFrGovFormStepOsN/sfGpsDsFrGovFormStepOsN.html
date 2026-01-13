@@ -6,7 +6,6 @@
       <h2
         lwc:if={showLabel}
         class="fr-h2 slds-m-top_medium os-step-label"
-        aria-live="polite"
         tabindex="-1"
       >
         {mergedLabel}
@@ -19,7 +18,10 @@
 
     <div>
       <div class="slds-grid slds-wrap omniscript-step__body">
-        <slot class="slds-grid slds-wrap slds-size_1-of-1"></slot>
+        <slot
+          class="slds-grid slds-wrap slds-size_1-of-1"
+          aria-live="polite"
+        ></slot>
       </div>
 
       <!-- <hr class="sepbutton" /> -->

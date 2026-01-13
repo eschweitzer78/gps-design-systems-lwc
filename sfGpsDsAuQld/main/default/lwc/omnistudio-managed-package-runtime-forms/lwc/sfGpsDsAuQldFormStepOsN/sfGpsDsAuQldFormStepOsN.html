@@ -1,18 +1,14 @@
 <!-- sldsValidatorIgnore -->
 <template>
   <template lwc:if={jsonDef.bAccordionActive}>
-    <h2
-      lwc:if={mergedLabel}
-      class="os-step-label"
-      aria-live="polite"
-      tabindex="-1"
-    >
+    <h2 lwc:if={mergedLabel} class="os-step-label" tabindex="-1">
       {mergedLabel}
     </h2>
 
     <div class="qld__form">
       <div class="slds-grid slds-wrap omniscript-step__body">
-        <slot class="slds-grid slds-wrap slds-size_1-of-1"> </slot>
+        <slot class="slds-grid slds-wrap slds-size_1-of-1" aria-live="polite">
+        </slot>
       </div>
 
       <hr class="qld__horizontal-rule--lg" />
