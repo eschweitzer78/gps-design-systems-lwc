@@ -75,26 +75,27 @@
       <slot class="nsw-grid nsw-p-left-sm"> </slot>
     </c-sf-gps-ds-au-nsw-dialog-os>
 
-    <div
-      lwc:if={showAdd}
-      class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
-    >
-      <button
-        type="button"
-        class="nsw-button nsw-button--dark-outline editblock-new"
-        onclick={handleAdd}
+    <template lwc:if={_isLongCards}>
+      <div
+        lwc:if={showAdd}
+        class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
       >
-        {_newLabel}
-      </button>
-    </div>
+        <button
+          type="button"
+          class="nsw-button nsw-button--dark-outline editblock-new"
+          onclick={handleAdd}
+        >
+          {_newLabel}
+        </button>
+      </div>
+    </template>
   </div>
 
   <!-- Spinner -->
-  <template lwc:if={isPageLoading}>
-    <c-sf-gps-ds-au-nsw-loader-os
-      label={allCustomLabelsUtil.OmniSpinnerTextLoading}
-      size="md"
-    >
-    </c-sf-gps-ds-au-nsw-loader-os>
-  </template>
+  <c-sf-gps-ds-au-nsw-loader-os
+    lwc:if={isPageLoading}
+    label={allCustomLabelsUtil.OmniSpinnerTextLoading}
+    size="md"
+  >
+  </c-sf-gps-ds-au-nsw-loader-os>
 </template>

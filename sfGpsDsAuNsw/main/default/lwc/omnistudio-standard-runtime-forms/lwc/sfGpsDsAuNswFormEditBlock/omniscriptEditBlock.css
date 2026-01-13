@@ -13,3 +13,8 @@
     margin-top: -2rem;
   }
 }
+
+/* allow button menu to span over next elements */
+.sfgpsds-nsw-edit-block__nextindex {
+  overflow: visible;
+}

@@ -1,0 +1,14 @@
+<template>
+  <template lwc:if={_allowNew}>
+    <!-- Add Button -->
+    <div lwc:if={_isCards} class="nsw-m-top-sm">
+      <button
+        type="button"
+        class="nsw-button nsw-button--dark-outline editblock-new"
+        onclick={handleAdd}
+      >
+        {_newLabel}
+      </button>
+    </div>
+  </template>
+</template>
