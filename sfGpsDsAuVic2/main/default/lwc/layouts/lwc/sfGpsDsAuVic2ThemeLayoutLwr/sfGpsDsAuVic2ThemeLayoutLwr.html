@@ -1,13 +1,13 @@
 <template lwc:render-mode="light">
   <div lwc:ref="container" class={containerClassName}>
-    <div data-f6-region class={headerClassName}>
-      <slot name="header" aria-live="polite"></slot>
+    <div data-f6-region class={headerClassName} aria-live="polite">
+      <slot name="header"></slot>
     </div>
-    <main id="content" data-f6-region class={mainClassName}>
-      <slot aria-live="polite"></slot>
+    <main id="content" data-f6-region class={mainClassName} aria-live="polite">
+      <slot></slot>
     </main>
-    <footer data-f6-region class={footerClassName}>
-      <slot name="footer" aria-live="polite"></slot>
+    <footer data-f6-region class={footerClassName} aria-live="polite">
+      <slot name="footer"></slot>
     </footer>
   </div>
 </template>

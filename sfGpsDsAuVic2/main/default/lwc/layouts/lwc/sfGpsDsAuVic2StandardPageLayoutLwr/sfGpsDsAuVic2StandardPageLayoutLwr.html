@@ -12,8 +12,9 @@
           data-f6-region
           class={computedMainClassName}
           dir={direction}
+          aria-live="polite"
         >
-          <slot name="main" aria-live="polite"></slot>
+          <slot name="main"></slot>
         </main>
 
         <aside
@@ -21,16 +22,22 @@
           data-f6-region
           id="rpl-sidebar"
           class={computedSidebarClassName}
+          aria-live="polite"
         >
-          <slot name="sidebar" aria-live="polite"></slot>
+          <slot name="sidebar"></slot>
         </aside>
       </div>
     </div>
   </div>
   <!-- body -->
 
-  <section id={belowBodyId} data-f6-region class={belowBodyClassName}>
-    <slot name="belowBody" aria-live="polite"></slot>
+  <section
+    id={belowBodyId}
+    data-f6-region
+    class={belowBodyClassName}
+    aria-live="polite"
+  >
+    <slot name="belowBody"></slot>
   </section>
   <!-- below body -->
 </template>
