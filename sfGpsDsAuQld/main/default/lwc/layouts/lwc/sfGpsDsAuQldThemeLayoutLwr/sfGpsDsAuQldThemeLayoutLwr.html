@@ -2,13 +2,13 @@
   <span></span>
   <div lwc:ref="container" class={containerClassName}>
     <div data-f6-region class={alertClassName}>
-      <slot name="alert"></slot>
+      <slot name="alert" aria-live="polite"></slot>
     </div>
     <div data-f6-region class={headerClassName}>
       <slot name="header"></slot>
     </div>
     <main data-f6-region id="main" class={mainClassName} tabindex="-1">
-      <slot></slot>
+      <slot aria-live="polite"></slot>
     </main>
     <div class="sfgpsdsauqld__widgets">
       <slot name="widgets"></slot>

@@ -8,10 +8,10 @@
       <div class={containerClassName}>
         <div class={gridClassName}>
           <aside data-f6-region class={sidebarClassName}>
-            <slot name="sidebar"></slot>
+            <slot name="sidebar" aria-live="polite"></slot>
           </aside>
           <main id="content" data-f6-region class={mainClassName}>
-            <slot></slot>
+            <slot aria-live="polite"></slot>
           </main>
         </div>
       </div>
