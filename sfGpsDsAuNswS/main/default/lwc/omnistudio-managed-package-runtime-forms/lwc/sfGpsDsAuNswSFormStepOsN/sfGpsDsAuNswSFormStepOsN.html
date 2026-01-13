@@ -3,12 +3,7 @@
   <template lwc:if={jsonDef.bAccordionActive}>
     <div class="page-header page-header--bottom">
       <div class="snsw-container">
-        <h1
-          lwc:if={mergedLabel}
-          class="snsw-h1 os-step-label"
-          aria-live="polite"
-          tabindex="-1"
-        >
+        <h1 lwc:if={mergedLabel} class="snsw-h1 os-step-label" tabindex="-1">
           {mergedLabel}
         </h1>
 
@@ -20,7 +15,8 @@
 
     <div class="snsw-container">
       <div class="slds-grid slds-wrap omniscript-step__body">
-        <slot class="slds-grid slds-wrap slds-size_1-of-1"> </slot>
+        <slot class="slds-grid slds-wrap slds-size_1-of-1" aria-live="polite">
+        </slot>
       </div>
 
       <hr class="sepbutton" />
