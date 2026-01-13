@@ -22,4 +22,9 @@ export default class extends SfGpsDsFormStep {
   render() {
     return tmpl;
   }
+
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.classList.add("nsw-scope");
+  }
 }

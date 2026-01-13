@@ -57,6 +57,7 @@
       id="{! v.contentId }"
       role="main"
       aria-label="Content"
+      aria-live="polite"
       class="sfgpsds-content"
     >
       {! v.body }

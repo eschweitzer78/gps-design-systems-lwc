@@ -14,7 +14,7 @@
 
     <div class={computedLayoutClassName}>
       <div class={aboveHeaderClassName}>
-        <slot name="aboveHeader"></slot>
+        <slot name="aboveHeader" aria-live="polite"></slot>
       </div>
 
       <div class="rpl-layout__container">
@@ -24,18 +24,18 @@
           data-f6-region
           class={headerClassName}
         >
-          <slot name="header"></slot>
+          <slot name="header" aria-live="polite"></slot>
           <div
             lwc:if={hasBelowHeader}
             id={belowHeaderId}
             class={belowHeaderClassName}
           >
-            <slot name="belowHeader"></slot>
+            <slot name="belowHeader" aria-live="polite"></slot>
           </div>
         </header>
         <!-- header -->
 
-        <slot></slot>
+        <slot aria-live="polite"></slot>
 
         <c-sf-gps-ds-au-vic2-layout-back-to-top
           lwc:if={showBackToTop}
@@ -44,7 +44,7 @@
         </c-sf-gps-ds-au-vic2-layout-back-to-top>
 
         <footer data-f6-region class={footerClassName}>
-          <slot name="footer"></slot>
+          <slot name="footer" aria-live="polite"></slot>
         </footer>
         <!-- footer -->
       </div>

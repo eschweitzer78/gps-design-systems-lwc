@@ -1,6 +1,6 @@
 <template lwc:render-mode="light">
   <slot name="contentHeader"></slot>
-  <div id="content" tabindex="-1">
+  <div id="content" tabindex="-1" aria-live="polite">
     <slot name="contentBody"></slot>
   </div>
   <slot name="contentFooter"></slot>

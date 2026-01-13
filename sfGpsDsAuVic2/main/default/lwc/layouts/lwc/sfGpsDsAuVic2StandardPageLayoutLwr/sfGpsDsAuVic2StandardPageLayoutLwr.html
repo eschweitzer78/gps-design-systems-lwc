@@ -1,5 +1,10 @@
 <template lwc:render-mode="light">
-  <section data-f6-region id={aboveBodyId} class={aboveBodyClassName}>
+  <section
+    data-f6-region
+    id={aboveBodyId}
+    class={aboveBodyClassName}
+    aria-live="polite"
+  >
     <slot name="aboveBody"></slot>
   </section>
   <!-- above body -->
@@ -12,6 +17,7 @@
           data-f6-region
           class={computedMainClassName}
           dir={direction}
+          aria-live="polite"
         >
           <slot name="main"></slot>
         </main>
@@ -21,6 +27,7 @@
           data-f6-region
           id="rpl-sidebar"
           class={computedSidebarClassName}
+          aria-live="polite"
         >
           <slot name="sidebar"></slot>
         </aside>
@@ -29,7 +36,12 @@
   </div>
   <!-- body -->
 
-  <section id={belowBodyId} data-f6-region class={belowBodyClassName}>
+  <section
+    id={belowBodyId}
+    data-f6-region
+    class={belowBodyClassName}
+    aria-live="polite"
+  >
     <slot name="belowBody"></slot>
   </section>
   <!-- below body -->

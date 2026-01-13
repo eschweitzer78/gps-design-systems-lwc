@@ -1,13 +1,13 @@
 <template lwc:render-mode="light">
   <span></span>
   <div lwc:ref="container" class={containerClassName}>
-    <div data-f6-region class={alertClassName}>
+    <div data-f6-region class={alertClassName} aria-live="polite">
       <slot name="alert"></slot>
     </div>
-    <div data-f6-region class={headerClassName}>
+    <div data-f6-region class={headerClassName} aria-live="polite">
       <slot name="header"></slot>
     </div>
-    <main data-f6-region class={mainClassName}>
+    <main data-f6-region class={mainClassName} aria-live="polite">
       <div class={leftNavClassName}>
         <slot name="leftNav"></slot>
       </div>
@@ -18,7 +18,7 @@
     <div class="sfgpsdsauqld__widgets">
       <slot name="widgets"></slot>
     </div>
-    <div data-f6-region class={footerClassName}>
+    <div data-f6-region class={footerClassName} aria-live="polite">
       <slot name="footer"></slot>
     </div>
   </div>

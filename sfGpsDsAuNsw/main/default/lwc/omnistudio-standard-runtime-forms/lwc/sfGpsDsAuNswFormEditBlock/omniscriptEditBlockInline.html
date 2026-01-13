@@ -1,64 +1,26 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <template lwc:if={_isFirstIndex}>
-    <!-- Header/Label -->
-    <div>
-      <!-- use h3 since step heading is h2 -->
-      <h3 lwc:if={computedIsH3Heading} class="nsw-form__label">
-        {_propSetMap.label}
-      </h3>
-      <span
-        lwc:else
-        class="nsw-form__label"
-        role="heading"
-        aria-level={_propSetMap.headingLevel}
-      >
-        {_propSetMap.label}
-      </span>
-    </div>
-
-    <!-- Global Actions -->
-    <div lwc:if={_propSetMap.gActions} class="nsw-list nsw-list--8">
-      <template
-        for:each={_gActions}
-        for:item="gActionItem"
-        for:index="gActionIndex"
-      >
-        <c-sf-gps-ds-osrt-icon
-          lwc:if={gActionItem.hasIcon}
-          key={gActionItem.lwcId}
-          extraclass="slds-input__icon"
-          icon-name={gActionItem.icon}
-          theme="slds"
-          alternative-text={gActionItem.label}
-          size="small"
-          style="cursor: pointer"
-          onclick={gActionItem.handleClick}
-        >
-        </c-sf-gps-ds-osrt-icon>
-        <button
-          lwc:else
-          key={gActionItem.lwcId}
-          class="nsw-button nsw-button--dark-outline"
-          onclick={gActionItem.handleClick}
-        >
-          {gActionItem.label}
-        </button>
-      </template>
-    </div>
-  </template>
-
   <div class="nsw-grid">
     <!-- Inline Visual -->
     <div class={visualClassName}>
-      <div class="sfgpsds-au-nsw-editblock">
+      <div
+        class="sfgpsds-au-nsw-editblock"
+        tabindex="0"
+        role="button"
+        data-edit-action="default"
+        aria-invalid={isInvalid}
+        aria-describedby={computedErrorTextId}
+        aria-labelledby="inline-text"
+        onclick={edit}
+        onkeydown={handleKeyboardEdit}
+      >
         <div class="sfgpsds-au-nsw-editblock__content">
           <div class="sfgpsds-au-nsw-editblock__icon">
             <span class="material-icons nsw-material-icons" aria-hidden="true">
               {svgMapIcon}
             </span>
           </div>
-          <div class="sfgpsds-au-nsw-editblock__copy">
+          <div class="sfgpsds-au-nsw-editblock__copy" id="inline-text">
             <template
               for:each={_displayValues}
               for:item="dvItem"
@@ -68,18 +30,19 @@
                 {dvItem.value}
               </p>
             </template>
+
+            <span lwc:if={isInvalid} id="inline-text-error" class="sr-only">
+              {allCustomLabelsUtil.OmniEditBlockError}
+            </span>
           </div>
-          <button class="nsw-icon-button sfgpsds-au-nsw-editblock__delete">
-            <span
-              lwc:if={_allowDelete}
-              class="material-icons nsw-material-icons"
-              aria-label={allCustomLabelsUtil.OmniDelete}
-              tabindex="0"
-              role="button"
-              data-remove-button
-              onclick={remove}
-              onkeydown={handleKeyboardRemove}
-            >
+          <button
+            lwc:if={_allowDelete}
+            class="nsw-icon-button sfgpsds-au-nsw-editblock__delete"
+            onclick={remove}
+            aria-label={allCustomLabelsUtil.OmniDelete}
+            data-remove-button
+          >
+            <span class="material-icons nsw-material-icons" aria-hidden="true">
               delete
             </span>
           </button>
@@ -111,28 +74,24 @@
         </fieldset>
       </article>
     </div>
-  </div>
 
-  <!-- Add Button -->
-  <div
-    if:true={showAdd}
-    class="nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
-  >
-    <button
-      type="button"
-      class="nsw-button nsw-button--dark-outline editblock-new"
-      onclick={handleAdd}
-    >
-      {_newLabel}
-    </button>
+    <!-- Add Button -->
+    <div if:true={showAdd} class="nsw-col">
+      <button
+        type="button"
+        class="nsw-button nsw-button--dark-outline editblock-new"
+        onclick={handleAdd}
+      >
+        {_newLabel}
+      </button>
+    </div>
   </div>
 
   <!-- Spinner -->
-  <template lwc:if={isPageLoading}>
-    <c-sf-gps-ds-au-nsw-loader
-      label={allCustomLabelsUtil.OmniSpinnerTextLoading}
-      size="md"
-    >
-    </c-sf-gps-ds-au-nsw-loader>
-  </template>
+  <c-sf-gps-ds-au-nsw-loader
+    lwc:if={isPageLoading}
+    label={allCustomLabelsUtil.OmniSpinnerTextLoading}
+    size="md"
+  >
+  </c-sf-gps-ds-au-nsw-loader>
 </template>

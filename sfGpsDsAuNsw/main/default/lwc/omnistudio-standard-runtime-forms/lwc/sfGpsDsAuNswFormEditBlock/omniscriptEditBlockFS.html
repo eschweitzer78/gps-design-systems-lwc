@@ -1,208 +1,142 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <div class="nsw-grid">
-    <!-- Header/Label -->
+  <!-- Header/Label -->
 
-    <template lwc:if={_isFirstIndex}>
-      <div class="nsw-col">
-        <!-- use h3 since step heading is h2 -->
-        <h3 lwc:if={computedIsH3Heading} class="nsw-form__label" style="inline">
-          {_propSetMap.label}
-        </h3>
-        <span
-          lwc:else
-          class="nsw-form__label"
-          role="heading"
-          aria-level={_propSetMap.headingLevel}
-        >
-          {_propSetMap.label}
-        </span>
-        <div lwc:if={_hasSumElement} class="slds-col--bump-left">
-          {sumElement}
-        </div>
-      </div>
-
-      <!-- Global Actions -->
-      <div lwc:if={_propSetMap.gActions} class="nsw-col nsw-list nsw-list--8">
-        <template
-          for:each={_gActions}
-          for:item="gActionItem"
-          for:index="gActionIndex"
-        >
-          <c-sf-gps-ds-osrt-icon
-            lwc:if={gActionItem.hasIcon}
-            key={gActionItem.lwcId}
-            extraclass="slds-input__icon"
-            icon-name={gActionItem.icon}
-            theme="slds"
-            alternative-text={gActionItem.label}
-            size="small"
-            style="cursor: pointer"
-            onclick={gActionItem.handleClick}
+  <div class="nsw-table">
+    <table>
+      <!-- Table Header -->
+      <thead lwc:if={_isFirstIndex}>
+        <tr>
+          <th>
+            <span class="sr-only">Error</span>
+          </th>
+          <template
+            for:each={_tableLabels}
+            for:item="dvItem"
+            for:index="dvIndex"
           >
-          </c-sf-gps-ds-osrt-icon>
-          <button
-            lwc:else
-            key={gActionItem.lwcId}
-            class="nsw-button nsw-button--dark-outline"
-            onclick={gActionItem.handleClick}
-          >
-            {gActionItem.label}
-          </button>
-        </template>
-      </div>
-    </template>
-
-    <div class="nsw-col nsw-table">
-      <table>
-        <!-- Table Header -->
-        <thead lwc:if={_isFirstIndex}>
-          <tr>
-            <th>
-              <span class="sr-only">Error</span>
+            <th key={dvItem.lwcId} class={dvItem.cls} width={dvItem.tableWidth}>
+              {dvItem.label}
             </th>
-            <template
-              for:each={_tableLabels}
-              for:item="dvItem"
-              for:index="dvIndex"
-            >
-              <th
-                key={dvItem.lwcId}
-                class={dvItem.cls}
-                width={dvItem.tableWidth}
+          </template>
+        </tr>
+      </thead>
+
+      <!-- Table is always visible -->
+      <template lwc:if={_hasChildren}>
+        <tbody
+          if:false={_isEditing}
+          class="omni-edit-block-fs-row"
+          onclick={edit}
+          aria-describedby={computedErrorTextId}
+          aria-invalid={isInvalid}
+        >
+          <tr>
+            <td>
+              <template lwc:if={isInvalid}>
+                <span class="sr-only" id="fs-text-error">
+                  {allCustomLabelsUtil.OmniEditBlockRowError}
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="nsw-form__required"
+                  title={requiredLabel}
+                >
+                </span>
+                <span class="sr-only"> ({requiredLabel})</span>
+              </template>
+            </td>
+
+            <td>
+              <template
+                for:each={_displayValues}
+                for:item="dvItem"
+                for:index="dvIndex"
               >
-                {dvItem.label}
-              </th>
-            </template>
+                <div key={dvItem.lwcId} class={dvItem.cls}>
+                  <template lwc:if={dvItem.isCheckbox}>
+                    <div>
+                      <input
+                        id={dvItem.checkboxId}
+                        type="checkbox"
+                        checked={dvItem.value}
+                        class="nsw-form__checkbox-input"
+                      />
+                      <label
+                        for={dvItem.checkboxId}
+                        class="slds-checkbox__label sr-only"
+                      >
+                        Select
+                      </label>
+                    </div>
+                  </template>
+                  <template lwc:else> {dvItem.value} </template>
+                </div>
+              </template>
+            </td>
+
+            <!--</div>-->
+
+            <td>
+              <button
+                lwc:if={_allowDelete}
+                aria-label={allCustomLabelsUtil.OmniDelete}
+                data-remove-button
+                class="nsw-icon-button sfgpsds-au-nsw-editblock__delete"
+                onclick={remove}
+              >
+                <span
+                  class="material-icons nsw-material-icons"
+                  aria-hidden="true"
+                >
+                  delete
+                </span>
+              </button>
+            </td>
           </tr>
-        </thead>
-
-        <!-- Table is always visible -->
-        <template lwc:if={_hasChildren}>
-          <tbody
-            if:false={_isEditing}
-            class="omni-edit-block-fs-row"
-            onclick={edit}
-            aria-describedby="fs-text-error"
-            aria-invalid={isInvalid}
-            role="rowgroup"
-          >
-            <tr>
-              <td>
-                <template lwc:if={isInvalid}>
-                  <span class="sr-only" id="fs-text-error">
-                    {allCustomLabelsUtil.OmniEditBlockRowError}
-                  </span>
-                  <span
-                    aria-hidden="true"
-                    class="nsw-form__required"
-                    title={requiredLabel}
-                  >
-                  </span>
-                  <span class="sr-only"> ({requiredLabel})</span>
-                </template>
-              </td>
-
-              <td>
-                <template
-                  for:each={_displayValues}
-                  for:item="dvItem"
-                  for:index="dvIndex"
-                >
-                  <div key={dvItem.lwcId} class={dvItem.cls}>
-                    <template lwc:if={dvItem.isCheckbox}>
-                      <div>
-                        <input
-                          id={dvItem.checkboxId}
-                          type="checkbox"
-                          checked={dvItem.value}
-                          class="nsw-form__checkbox-input"
-                        />
-                        <label
-                          for={dvItem.checkboxId}
-                          class="slds-checkbox__label sr-only"
-                        >
-                          Select
-                        </label>
-                      </div>
-                    </template>
-                    <template lwc:else> {dvItem.value} </template>
-                  </div>
-                </template>
-              </td>
-
-              <!--</div>-->
-
-              <td>
-                <button
-                  class="nsw-icon-button sfgpsds-au-nsw-editblock__delete"
-                >
-                  <span
-                    lwc:if={_allowDelete}
-                    class="material-icons nsw-material-icons"
-                    aria-label={allCustomLabelsUtil.OmniDelete}
-                    tabindex="0"
-                    role="button"
-                    data-remove-button
-                    onclick={remove}
-                    onkeydown={handleKeyboardRemove}
-                  >
-                    delete
-                  </span>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </template>
-      </table>
-    </div>
-
-    <!-- Inline Editing -->
-    <div class={editClassName}>
-      <article class="sfgpsds-au-nsw-editblock--fs">
-        <fieldset>
-          <slot></slot>
-          <div class="nsw-list nsw-list--8 nsw-p-top-sm">
-            <button
-              onclick={cancel}
-              class="nsw-button nsw-button--dark-outline"
-            >
-              {allCustomLabelsUtil.OmnicancelLabel}
-            </button>
-
-            <button
-              onclick={save}
-              disabled={isPageLoading}
-              class="nsw-button nsw-button--dark-outline"
-            >
-              {allCustomLabelsUtil.OmniConfigProdModalOk}
-            </button>
-          </div>
-        </fieldset>
-      </article>
-    </div>
-
-    <!-- Add Button -->
-    <div
-      if:true={showAdd}
-      class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
-    >
-      <button
-        type="button"
-        class="nsw-button nsw-button--dark-outline editblock-new"
-        onclick={handleAdd}
-      >
-        {_newLabel}
-      </button>
-    </div>
-
-    <!-- Spinner -->
-    <template lwc:if={isPageLoading}>
-      <c-sf-gps-ds-au-nsw-loader
-        label={allCustomLabelsUtil.OmniSpinnerTextLoading}
-        size="md"
-      >
-      </c-sf-gps-ds-au-nsw-loader>
-    </template>
+        </tbody>
+      </template>
+    </table>
   </div>
+
+  <!-- Inline Editing -->
+  <div class={editClassName}>
+    <article class="sfgpsds-au-nsw-editblock--fs">
+      <fieldset>
+        <slot></slot>
+        <div class="nsw-list nsw-list--8 nsw-p-top-sm">
+          <button onclick={cancel} class="nsw-button nsw-button--dark-outline">
+            {allCustomLabelsUtil.OmnicancelLabel}
+          </button>
+
+          <button
+            onclick={save}
+            disabled={isPageLoading}
+            class="nsw-button nsw-button--dark-outline"
+          >
+            {allCustomLabelsUtil.OmniConfigProdModalOk}
+          </button>
+        </div>
+      </fieldset>
+    </article>
+  </div>
+
+  <!-- Add Button -->
+  <div if:true={showAdd} class="nsw-m-top-md">
+    <button
+      type="button"
+      class="nsw-button nsw-button--dark-outline editblock-new"
+      onclick={handleAdd}
+    >
+      {_newLabel}
+    </button>
+  </div>
+
+  <!-- Spinner -->
+  <c-sf-gps-ds-au-nsw-loader
+    lwc:if={isPageLoading}
+    label={allCustomLabelsUtil.OmniSpinnerTextLoading}
+    size="md"
+  >
+  </c-sf-gps-ds-au-nsw-loader>
 </template>

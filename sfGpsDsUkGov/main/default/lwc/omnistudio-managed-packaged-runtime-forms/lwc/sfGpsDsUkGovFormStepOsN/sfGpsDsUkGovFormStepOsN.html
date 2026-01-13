@@ -1,50 +1,56 @@
 <!-- sldsValidatorIgnore -->
 <template>
   <template if:true={jsonDef.bAccordionActive}>
-    <div
-      if:true={sfGpsDsErrorMessages}
-      class="govuk-error-summary"
-      aria-labelledby={computedErrorLabelId}
-      role="alert"
-    >
-      <h1
-        lwc:if={computedIsH1}
-        class="govuk-error-summary__title"
-        id={computedErrorLabelId}
+    <div aria-live="polite">
+      <div
+        lwc:if={sfGpsDsErrorMessages}
+        class="govuk-error-summary"
+        aria-labelledby={computedErrorLabelId}
+        role="alert"
       >
-        There is a problem
-      </h1>
-      <h2
-        lwc:elseif={computedIsH2}
-        class="govuk-error-summary__title"
-        id={computedErrorLabelId}
-      >
-        There is a problem
-      </h2>
-      <h3
-        lwc:elseif={computedIsH3}
-        class="govuk-error-summary__title"
-        id={computedErrorLabelId}
-      >
-        There is a problem
-      </h3>
-      <p lwc:else class="govuk-error-summary__title" id={computedErrorLabelId}>
-        There is a problem
-      </p>
+        <h1
+          lwc:if={computedIsH1}
+          class="govuk-error-summary__title"
+          id={computedErrorLabelId}
+        >
+          There is a problem
+        </h1>
+        <h2
+          lwc:elseif={computedIsH2}
+          class="govuk-error-summary__title"
+          id={computedErrorLabelId}
+        >
+          There is a problem
+        </h2>
+        <h3
+          lwc:elseif={computedIsH3}
+          class="govuk-error-summary__title"
+          id={computedErrorLabelId}
+        >
+          There is a problem
+        </h3>
+        <p
+          lwc:else
+          class="govuk-error-summary__title"
+          id={computedErrorLabelId}
+        >
+          There is a problem
+        </p>
 
-      <div class="govuk-error-summary__body">
-        <ul class="govuk-list govuk-error-summary__list">
-          <template for:each={sfGpsDsErrorMessages} for:item="error">
-            <li key={error.key}>
-              <a
-                href={error.href}
-                data-errorkey={error.key}
-                onclick={handleErrorClick}
-                >{error.message}</a
-              >
-            </li>
-          </template>
-        </ul>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <template for:each={sfGpsDsErrorMessages} for:item="error">
+              <li key={error.key}>
+                <a
+                  href={error.href}
+                  data-errorkey={error.key}
+                  onclick={handleErrorClick}
+                  >{error.message}</a
+                >
+              </li>
+            </template>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -53,18 +59,12 @@
     >
 
     <template lwc:if={mergedLabel}>
-      <h1
-        lwc:if={computedIsH1}
-        class={computedHeadingClassName}
-        aria-live="polite"
-        tabindex="-1"
-      >
+      <h1 lwc:if={computedIsH1} class={computedHeadingClassName} tabindex="-1">
         {mergedLabel}
       </h1>
       <h2
         lwc:elseif={computedIsH2}
         class={computedHeadingClassName}
-        aria-live="polite"
         tabindex="-1"
       >
         {mergedLabel}
@@ -72,7 +72,6 @@
       <h3
         lwc:elseif={computedIsH3}
         class={computedHeadingClassName}
-        aria-live="polite"
         tabindex="-1"
       >
         {mergedLabel}
@@ -96,7 +95,10 @@
       <!-- class="govuk-width-container" -->
 
       <div class="slds-grid slds-wrap omniscript-step__body">
-        <slot class="slds-grid slds-wrap slds-size_1-of-1"></slot>
+        <slot
+          class="slds-grid slds-wrap slds-size_1-of-1"
+          aria-live="polite"
+        ></slot>
       </div>
 
       <!-- <hr class="sepbutton" /> -->

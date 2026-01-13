@@ -1,9 +1,17 @@
+/* sldsValidatorIgnore */
+
 @import "c/sfGpsDsAuNswCore";
 @import "c/sfGpsDsAuNswForm";
 @import "./table.gen.css";
 
-th {
-  display: list-item;
+thead tr {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+tbody tr {
+  display: flex;
 }
 
 /* for the error column */
@@ -11,6 +19,20 @@ tr > th:first-child {
   display: none;
 }
 
+tbody tr td {
+  flex: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+tbody tr td:nth-child(2) {
+  flex: 1;
+}
+
 .nsw-hide {
   display: none;
+}
+
+.sfgpsds-au-nsw-editblock__delete {
+  margin-right: 0.25rem;
 }

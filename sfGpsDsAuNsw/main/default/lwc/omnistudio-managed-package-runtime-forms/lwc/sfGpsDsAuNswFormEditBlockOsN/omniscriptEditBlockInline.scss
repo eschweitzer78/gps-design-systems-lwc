@@ -13,7 +13,7 @@
   color: var(--nsw-text-dark);
   border-radius: var(--nsw-border-radius);
 
-  &:focus-within {
+  &:focus {
     @include nsw-focus;
 
     a {
@@ -37,12 +37,6 @@
     @include breakpoint('lg') {
       padding: rem(32px);
     }
-
-  }
-
-  &__copy {
-    flex: 1 1 auto;
-    transition: color $nsw-transition-duration;
   }
 
   .nsw-material-icons {
@@ -54,6 +48,42 @@
       @include nsw-hover;
       background-color: var(--nsw-hover-light);
     }
+  }
+
+  &[aria-invalid="true"] &__content {
+    border-color: var(--nsw-status-error);
+  }
+
+  &:hover &__content {
+    background-color: var(--nsw-brand-dark);
+    border-color: transparent;
+    transition: background $nsw-transition-duration;
+  }
+
+  &[aria-invalid="false"]:hover {
+    color: var(--nsw-text-light);
+  }
+
+  &[aria-invalid="false"]:hover &__content {
+    background-color: var(--nsw-brand-dark);
+
+    .nsw-material-icons {
+      color: var(--nsw-text-light);
+    }
+  }
+
+  &[aria-invalid="true"]:hover &__content {
+    background-color: var(--nsw-status-error-bg);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+
+  &__copy {
+    flex: 1 1 auto;
+    transition: color $nsw-transition-duration;
   }
 
   &--highlight {

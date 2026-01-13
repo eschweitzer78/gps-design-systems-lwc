@@ -6,7 +6,6 @@
         <h1
           lwc:if={computedIsH1}
           class="rpl-type-h1 rpl-u-margin-b-8"
-          aria-live="polite"
           tabindex="-1"
         >
           {mergedLabel}
@@ -14,17 +13,11 @@
         <h2
           lwc:elseif={computedIsH2}
           class="rpl-type-h2 rpl-u-margin-b-6"
-          aria-live="polite"
           tabindex="-1"
         >
           {mergedLabel}
         </h2>
-        <h3
-          lwc:else
-          class="rpl-type-h3 rpl-u-margin-b-4"
-          aria-live="polite"
-          tabindex="-1"
-        >
+        <h3 lwc:else class="rpl-type-h3 rpl-u-margin-b-4" tabindex="-1">
           {mergedLabel}
         </h3>
       </template>
@@ -32,7 +25,7 @@
       <form class="rpl-form__form rpl-form" onsubmit={handleSubmit}>
         <fieldset class="rpl-form__fieldset">
           <div class="rpl-grid rpl-grid--no-row-gap">
-            <slot> </slot>
+            <slot aria-live="polite"> </slot>
 
             <div
               lwc:if={computedHasButtons}

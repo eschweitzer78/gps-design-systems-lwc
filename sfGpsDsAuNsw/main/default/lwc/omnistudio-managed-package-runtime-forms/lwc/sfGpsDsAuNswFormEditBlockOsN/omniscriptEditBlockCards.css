@@ -1,4 +1,4 @@
-@import "c/sfGpsDsAuNswCore";
-@import "c/sfGpsDsAuNswForm";
+@import "c/sfGpsDsAuNswCoreOs";
+@import "c/sfGpsDsAuNswFormOs";
 @import "./card.gen.css";
 @import "./omniscriptEditBlockCards.gen.css";

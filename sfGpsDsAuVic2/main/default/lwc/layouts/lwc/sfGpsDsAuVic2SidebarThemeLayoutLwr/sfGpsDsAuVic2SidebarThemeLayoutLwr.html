@@ -1,24 +1,29 @@
 <template lwc:render-mode="light">
   <div lwc:ref="theme" class={themeClassName}>
-    <div data-f6-region class={headerClassName}>
+    <div data-f6-region class={headerClassName} aria-live="polite">
       <slot name="header"></slot>
     </div>
 
     <div class={contentClassName}>
       <div class={containerClassName}>
         <div class={gridClassName}>
-          <aside data-f6-region class={sidebarClassName}>
+          <aside data-f6-region class={sidebarClassName} aria-live="polite">
             <slot name="sidebar"></slot>
           </aside>
-          <main id="content" data-f6-region class={mainClassName}>
+          <main
+            id="content"
+            data-f6-region
+            class={mainClassName}
+            aria-live="polite"
+          >
             <slot></slot>
           </main>
         </div>
       </div>
     </div>
 
-    <footer data-f6-region class={footerClassName}>
-      <slot name="footer"></slot>
+    <footer data-f6-region class={footerClassName} aria-live="polite">
+      <slot></slot>
     </footer>
   </div>
 </template>

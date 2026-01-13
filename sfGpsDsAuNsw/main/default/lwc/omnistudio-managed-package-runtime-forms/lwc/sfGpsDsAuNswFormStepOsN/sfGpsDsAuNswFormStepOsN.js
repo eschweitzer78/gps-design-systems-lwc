@@ -22,4 +22,9 @@ export default class extends SfGpsDsFormStepOsN {
   render() {
     return tmpl;
   }
+
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.classList.add("nsw-scope");
+  }
 }

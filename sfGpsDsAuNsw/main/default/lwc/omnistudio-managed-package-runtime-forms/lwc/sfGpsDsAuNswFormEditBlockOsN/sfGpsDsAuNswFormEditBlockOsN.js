@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2025-2026, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -45,6 +45,10 @@ export default class extends OmniscriptEditBlock {
 
   get computedIsH3Heading() {
     return (this._propSetMap.headingLevel || 3) === 3;
+  }
+
+  get computedErrorTextId() {
+    return this.isInvalid ? "inline-text-error" : null;
   }
 
   /* event management */
