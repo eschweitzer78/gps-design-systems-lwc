@@ -9,7 +9,8 @@
       "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
     },
     "!.html": {
-      "target": "!Os.html"
+      "target": "!Os.html",
+      "c-sf-gps-ds-focus-trap": "c-sf-gps-ds-focus-trap-os"
     },
     "!.js": {
       "target": "!Os.js",
