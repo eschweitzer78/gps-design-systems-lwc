@@ -20,7 +20,7 @@ import type {
   Link
 } from "c/sfGpsDsMarkdown";
 
-const CLASS_NAME = "sfGpsDsNswButtonMenu";
+const CLASS_NAME = "SfGpsDsNswButtonMenu";
 const DEBUG = false;
 
 const MENUPOSITION_LEFT = "left";
