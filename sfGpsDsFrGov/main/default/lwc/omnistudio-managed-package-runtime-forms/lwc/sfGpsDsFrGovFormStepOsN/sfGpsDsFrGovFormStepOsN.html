@@ -29,25 +29,28 @@
       <div class="form-actions">
         <div class="fr-btns-group">
           <button
-            if:true={showPrev}
+            lwc:if={showPrev}
             class="fr-btn fr-btn--secondary"
             value={mergedPreviousLabel}
+            disabled={disabledButtons}
             onclick={handleBack}
           >
             {mergedPreviousLabel}
           </button>
           <button
-            if:true={showNext}
+            lwc:if={showNext}
             class="fr-btn"
             value={mergedNextLabel}
+            disabled={disabledButtons}
             onclick={handleNext}
           >
             {mergedNextLabel}
           </button>
           <button
-            if:true={showSave}
+            lwc:if={showSave}
             class="fr-btn fr-btn--secondary"
             value={mergedSaveLabel}
+            disabled={disabledButtons}
             onclick={handleSave}
           >
             {mergedSaveLabel}

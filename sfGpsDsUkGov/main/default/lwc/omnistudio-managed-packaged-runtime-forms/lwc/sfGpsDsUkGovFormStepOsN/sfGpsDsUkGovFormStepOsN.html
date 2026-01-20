@@ -83,6 +83,7 @@
       lwc:if={showPrev}
       href="#previous"
       class="govuk-back-link"
+      disabled={disabledButtons}
       onclick={handleBack}
       >{mergedPreviousLabel}</a
     >
@@ -109,6 +110,7 @@
             lwc:if={showNext}
             class="govuk-button"
             value={mergedNextLabel}
+            disabled={disabledButtons}
             onclick={handleNext}
           >
             {mergedNextLabel}
@@ -116,6 +118,7 @@
           <button
             lwc:if={showSave}
             class="govuk-button govuk-button--secondary"
+            disabled={disabledButtons}
             onclick={handleSave}
           >
             {mergedSaveLabel}
