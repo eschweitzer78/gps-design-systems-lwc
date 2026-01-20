@@ -31,11 +31,9 @@
         <template lwc:if={_hasChildren}>
           <tbody
             if:false={_isEditing}
-            onclick={handleCheckbox}
-            data-is-selected={_showCheckbox}
-            tabindex="0"
             aria-describedby={computedErrorTextId}
             aria-invalid={isInvalid}
+            class="omni-editblock-table-row"
           >
             <tr>
               <td>
@@ -70,13 +68,19 @@
                         id={dvItem.checkboxId}
                         type="checkbox"
                         checked={dvItem.value}
+                        onclick={handleCheckbox}
+                        onkeydown={handleKeyboardCheckbox}
+                        data-is-selected={_showCheckbox}
                         class="nsw-form__checkbox-input"
                       />
                       <label
                         for={dvItem.checkboxId}
-                        class="nsw-form__checkbox-label sr-only"
+                        class="nsw-form__checkbox-label"
                       >
-                        Select
+                        <span lwc:if={dvItem.value} class="sr-only"
+                          >Selected</span
+                        >
+                        <span lwc:else class="sr-only">Unselected</span>
                       </label>
                     </div>
                   </template>
@@ -123,7 +127,7 @@
     </c-sf-gps-ds-au-nsw-dialog-os>
 
     <!-- Add Button -->
-    <div lwc:if={showAdd} class="nsw-col nsw-m-top-sm">
+    <div lwc:if={showAdd} class="nsw-col">
       <button
         type="button"
         class="nsw-button nsw-button--dark-outline editblock-new"

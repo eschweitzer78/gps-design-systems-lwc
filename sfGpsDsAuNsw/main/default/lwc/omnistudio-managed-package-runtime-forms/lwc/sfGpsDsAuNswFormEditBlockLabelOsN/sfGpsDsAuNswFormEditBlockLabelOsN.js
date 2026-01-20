@@ -8,11 +8,18 @@
 /* We currently do not support Short/Narrow Cards as they seem to be working quite differently when it comes to their interaction with the surrounding OmniscriptEditBlockWrapper, which cannot be extended/overriden */
 
 import OmniscriptEditBlockLabel from "omnistudio/omniscriptEditBlockLabel";
+import tmpl from "./sfGpsDsAuNswFormEditBlockLabelOsN.html";
 
 export default class extends OmniscriptEditBlockLabel {
   /* computed */
 
   get computedIsH3Heading() {
     return (this._propSetMap.headingLevel || 3) === 3;
+  }
+
+  /* lifecycle */
+
+  render() {
+    return tmpl;
   }
 }

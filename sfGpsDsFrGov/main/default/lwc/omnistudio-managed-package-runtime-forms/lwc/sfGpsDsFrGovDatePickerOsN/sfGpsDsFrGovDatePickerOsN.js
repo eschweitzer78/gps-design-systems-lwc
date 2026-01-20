@@ -92,7 +92,7 @@ export default class extends OmnistudioDatePicker {
 
   // override setValue so we can capture changes
   setValue(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> setValue", value, typeof value);
+    if (DEBUG) console.debug(CLASS_NAME, "> setValue", value, typeof value);
     if (DEBUG)
       console.log(CLASS_NAME, "setValue", "outputFormat: " + this.outputFormat);
 

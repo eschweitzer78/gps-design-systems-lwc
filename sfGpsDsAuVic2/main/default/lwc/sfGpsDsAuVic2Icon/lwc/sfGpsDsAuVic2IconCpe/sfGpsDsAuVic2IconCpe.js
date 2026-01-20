@@ -30,7 +30,7 @@ export default class extends LightningElement {
         this._value = ICON_DEFAULT;
       }
     } catch (e) {
-      console.log("set value exception", value, e);
+      console.debug("set value exception", value, e);
       this._value = ICON_DEFAULT;
     }
   }

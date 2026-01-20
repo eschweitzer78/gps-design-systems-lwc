@@ -233,7 +233,7 @@ extends SfGpsDsLwc {
           this._didLoadOnce = true;
         } catch (e) {
           this.addError("CK-EX", "Issue getting the content collection.");
-          console.log("CK-EX", e);
+          console.debug("CK-EX", e);
           this._items = ITEMS_DEFAULT;
         } finally {
           this.stoppedLoading();

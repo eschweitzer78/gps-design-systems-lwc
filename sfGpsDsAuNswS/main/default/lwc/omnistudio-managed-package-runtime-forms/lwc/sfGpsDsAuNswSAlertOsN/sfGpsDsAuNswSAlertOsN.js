@@ -80,7 +80,7 @@ export default class extends SfGpsDsLwc {
       this._contentOriginal = markdown;
       this._contentHtml = markdown ? mdEngine.renderEscaped(markdown) : null;
     } catch (e) {
-      console.log(e);
+      console.debug(e);
       this.addError("CO-MD", "Issue when parsing Content markdown");
     }
   }

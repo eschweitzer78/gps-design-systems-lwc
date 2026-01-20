@@ -158,7 +158,7 @@ extends SfGpsDsElement {
     //html2canvas(content)
     htmlToImage.toPng(content)
       .then((base64image) => {
-        console.log('have canvas');
+        console.debug('have canvas');
         //const base64image = canvas.toDataURL('image/png');
         // eslint-disable-next-line no-undef
         const pdf = new jsPDF('p', 'px', [canvas.width, canvas.height]);
@@ -203,7 +203,7 @@ extends SfGpsDsElement {
       loadScript(this, `${sfGpsDsAuNswStaticResource}/js/html2canvas.min.js`),
       loadScript(this, `${sfGpsDsAuNswStaticResource}/js/jspdf.min.js`)
     ])
-    .catch((err) => { console.log(err); })
+    .catch((err) => { console.debug(err); })
   }
   */
 

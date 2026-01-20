@@ -130,7 +130,7 @@ export default class SfGpsDsAuVic2VerticalNavComm extends SfGpsDsNavigation {
       (item.url && pathname.startsWith(item.url + "/"));
 
     if (DEBUG)
-      console.log(
+      console.debug(
         CLASS_NAME,
         "> adaptItem",
         JSON.stringify(item),
@@ -153,7 +153,7 @@ export default class SfGpsDsAuVic2VerticalNavComm extends SfGpsDsNavigation {
     };
 
     if (rv.subNav) delete rv.subNav;
-    if (DEBUG) console.log(CLASS_NAME, "< adaptItem", JSON.stringify(rv));
+    if (DEBUG) console.debug(CLASS_NAME, "< adaptItem", JSON.stringify(rv));
 
     return rv;
   }

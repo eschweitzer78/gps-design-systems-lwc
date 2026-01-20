@@ -1,6 +1,10 @@
 {
   "sfGpsDsAuNswButtonMenu": {
     "target": "!Os",
+    "!.css": {
+      "target": "!Os.css",
+      "sfGpsDsAuNswCore": "sfGpsDsAuNswCoreOs"
+    },
     "!.html": {
       "target": "!Os.html",
       "c-sf-gps-ds-focus-trap": "c-sf-gps-ds-focus-trap-os"
@@ -15,6 +19,9 @@
     "!.js-meta.xml": {
       "target": "!Os.js-meta.xml",
       "<isExposed>false</isExposed>": "<isExposed>true</isExposed>\n  <runtimeNamespace>omnistudio</runtimeNamespace>"
+    },
+    "button-menu.gen.css": {
+      "target": "button-menu.gen.css"
     }
   }
 }

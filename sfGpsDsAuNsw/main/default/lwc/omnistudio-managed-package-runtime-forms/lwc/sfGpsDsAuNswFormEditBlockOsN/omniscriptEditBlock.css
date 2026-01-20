@@ -1,6 +1,6 @@
 @import "c/sfGpsDsAuNswCoreOs";
 @import "c/sfGpsDsAuNswFormOs";
-@import "./table.gen.css";
+@import "./table_gen.css";
 
 /* the goal here is to bring the next rows closer */
 
@@ -17,4 +17,8 @@
 /* allow button menu to span over next elements */
 .sfgpsds-nsw-edit-block__nextindex {
   overflow: visible;
+}
+
+table td {
+  vertical-align: middle;
 }

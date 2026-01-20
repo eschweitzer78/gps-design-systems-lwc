@@ -78,7 +78,7 @@ extends SfGpsDsLwc {
           ];
         })
         .catch((error) => {
-          console.log(error);
+          console.debug(error);
           this.addError("FR-RS", "Cannot fetch record summary");
         });
     } else if (this._objectApiName.value) {
@@ -90,7 +90,7 @@ extends SfGpsDsLwc {
           ];
         })
         .catch((error) => {
-          console.log(error);
+          console.debug(error);
           this.addError("FR-OS", "Cannot fetch object summary");
         });
     } else {
