@@ -5,12 +5,30 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import OmniscriptEditBlockNewOsN from "c/sfGpsDsOsrtOmniscriptEditBlockNew";
+import OmniscriptEditBlockNew from "omnistudio/omniscriptEditBlockNew";
 
 import tmpl from "./sfGpsDsAuNswFormEditBlockNewOsN.html";
 
-export default class extends OmniscriptEditBlockNewOsN {
+export default class extends OmniscriptEditBlockNew {
   render() {
     return tmpl;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.classList.remove(`${this._theme}-large-size_3-of-12`);
+    this.classList.remove(`${this._theme}-medium-size_6-of-12`);
+    this.classList.remove(`${this._theme}-small-size_1-of-1`);
+    this.classList.remove(`${this._theme}-m-bottom_xx-small`);
+    this.classList.remove(`${this._theme}-p-right_small`);
+
+    this.classList.add(
+      "nsw-col-sm-12",
+      "nsw-col-md-6",
+      "nsw-col-lg-3",
+      "nsw-p-right-sm",
+      "nsw-p-bottom-sm"
+    );
   }
 }

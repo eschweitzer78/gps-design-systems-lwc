@@ -27,6 +27,7 @@
         <tbody
           if:false={_isEditing}
           class="omni-edit-block-fs-row"
+          role="button"
           onclick={edit}
           aria-describedby={computedErrorTextId}
           aria-invalid={isInvalid}
@@ -60,13 +61,17 @@
                         id={dvItem.checkboxId}
                         type="checkbox"
                         checked={dvItem.value}
+                        disabled
                         class="nsw-form__checkbox-input"
                       />
                       <label
                         for={dvItem.checkboxId}
-                        class="slds-checkbox__label sr-only"
+                        class="nsw-form__checkbox-label"
                       >
-                        Select
+                        <span lwc:if={dvItem.value} class="sr-only"
+                          >Selected</span
+                        >
+                        <span lwc:else class="sr-only">Unselected</span>
                       </label>
                     </div>
                   </template>

@@ -3,6 +3,9 @@
   <div class="nsw-grid">
     <div
       class={visualClassName}
+      role={computedAriaRole}
+      aria-checked={computedAriaChecked}
+      tabindex={computedTabindex}
       onclick={handleCheckbox}
       onkeydown={handleKeyboardCheckbox}
     >
@@ -76,10 +79,7 @@
     </c-sf-gps-ds-au-nsw-dialog-os>
 
     <template lwc:if={_isLongCards}>
-      <div
-        lwc:if={showAdd}
-        class="nsw-col nsw-display-flex nsw-justify-content-end nsw-m-top-sm"
-      >
+      <div lwc:if={showAdd} class="nsw-col">
         <button
           type="button"
           class="nsw-button nsw-button--dark-outline editblock-new"

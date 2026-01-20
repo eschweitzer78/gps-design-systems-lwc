@@ -1,6 +1,9 @@
 {
   "sfGpsDsAuNswDatePickerV2OsN/date-picker": [
-    { "from": ":root", "to": ".nsw-date-picker" },
+    {
+      "from": ":root",
+      "to": ".nsw-date-picker"
+    },
     {
       "from": "--date-picker-calendar-gap:",
       "to": "--date-picker-calendar-gap--default:"
@@ -22,9 +25,25 @@
       "to": "nsw-date-picker *:not(.nsw-button){"
     }
   ],
-  "sfGpsDsAuNswFormEditBlockOsN/omniscriptEditBlockInline": [],
-  "sfGpsDsAuNswFormEditBlockOsN/card": [],
-  "sfGpsDsAuNswFormEditBlockOsN/table": [],
-  "sfGpsDsAuNswFormEditBlockOsN/omniscriptEditBlockCards": [],
+  "sfGpsDsAuNswFormEditBlockOsN/omniscriptEditBlockInline*": [
+    {
+      "target": "sfGpsDsAuNswFormEditBlockOsN/omniscriptEditBlockInline_gen"
+    }
+  ],
+  "sfGpsDsAuNswFormEditBlockOsN/card*": [
+    {
+      "target": "sfGpsDsAuNswFormEditBlockOsN/card_gen"
+    }
+  ],
+  "sfGpsDsAuNswFormEditBlockOsN/table*": [
+    {
+      "target": "sfGpsDsAuNswFormEditBlockOsN/table_gen"
+    }
+  ],
+  "sfGpsDsAuNswFormEditBlockOsN/omniscriptEditBlockCards*": [
+    {
+      "target": "sfGpsDsAuNswFormEditBlockOsN/omniscriptEditBlockCards_gen"
+    }
+  ],
   "sfGpsDsAuNswSaveForLaterAckOsN/in-page-alert": []
 }

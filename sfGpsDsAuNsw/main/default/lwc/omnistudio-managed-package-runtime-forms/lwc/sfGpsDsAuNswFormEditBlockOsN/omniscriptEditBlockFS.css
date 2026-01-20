@@ -2,7 +2,7 @@
 
 @import "c/sfGpsDsAuNswCoreOs";
 @import "c/sfGpsDsAuNswFormOs";
-@import "./table.gen.css";
+@import "./table_gen.css";
 
 thead tr {
   display: flex;
@@ -35,4 +35,8 @@ tbody tr td:nth-child(2) {
 
 .sfgpsds-au-nsw-editblock__delete {
   margin-right: 0.25rem;
+}
+
+.omni-edit-block-fs-row {
+  cursor: pointer;
 }

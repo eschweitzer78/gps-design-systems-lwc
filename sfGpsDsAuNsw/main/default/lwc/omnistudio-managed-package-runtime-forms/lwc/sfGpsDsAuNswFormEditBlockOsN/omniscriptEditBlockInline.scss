@@ -13,6 +13,8 @@
   color: var(--nsw-text-dark);
   border-radius: var(--nsw-border-radius);
 
+  cursor: pointer;
+
   &:focus {
     @include nsw-focus;
 
