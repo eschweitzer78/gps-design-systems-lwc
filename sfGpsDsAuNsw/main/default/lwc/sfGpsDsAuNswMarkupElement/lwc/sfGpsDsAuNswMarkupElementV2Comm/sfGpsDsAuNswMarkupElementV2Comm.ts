@@ -22,6 +22,10 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api 
+  mode?: string;
+
+  // @ts-ignore
+  @api 
   className?: string;
 
   /* lifecycle */
@@ -32,10 +36,13 @@ extends SfGpsDsElement {
     const elt = this.refs.markup;
 
     if (this.markup && elt) {
-      let tmpl = document.createElement("template");
-      replaceInnerHtml(tmpl, this.markup);
-
-      elt.parentNode?.replaceChild(tmpl.content, elt);
+      if (this.mode === "reparent") {
+        let tmpl = document.createElement("template");
+        replaceInnerHtml(tmpl, this.markup);
+        elt.parentNode?.replaceChild(tmpl.content, elt);
+      } else {
+        replaceInnerHtml(elt, this.markup);
+      }
     }
   }
 

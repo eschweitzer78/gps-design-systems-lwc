@@ -18,11 +18,17 @@
         editor="c/sfGpsDsMarkupCpe"
       />
       <property
+        name="mode"
+        type="String"
+        label="Mode"
+        datasource="replace,reparent"
+        default="replace"
+      />
+      <property
         name="className"
         type="String"
         label="Class name"
         description="Additional CSS class to add."
-        editor="c/sfGpsDsStringCpe"
       />
     </targetConfig>
   </targetConfigs>
