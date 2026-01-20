@@ -105,7 +105,7 @@ extends SfGpsDsLwc {
           this._filterName = undefined;
 
           if (DEBUG) {
-            console.log("CO-LV", JSON.stringify(error));
+            console.debug("CO-LV", JSON.stringify(error));
           }
         });
     } else {
@@ -260,7 +260,7 @@ extends SfGpsDsLwc {
       })
       .catch((error2) => {
         this.addError("CO-GR", "Issue while getting records");
-        if (DEBUG) console.log(CLASS_NAME, "getRecords error", JSON.stringify(error2));
+        if (DEBUG) console.debug(CLASS_NAME, "getRecords error", JSON.stringify(error2));
         this._rawRecords = undefined;
         this._isLoading = false;
 

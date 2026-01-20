@@ -106,7 +106,7 @@ extends NavigationMixin<LightningElement>(LightningElement) {
         break;
 
       case "NavigationalTopic":
-        console.log(
+        console.debug(
           "sfGpsDsNavigationService.navtopic",
           JSON.stringify(menuEntry)
         );

@@ -253,7 +253,6 @@ const AnimateMixin = (Base) =>
         this.getCSSPropertyBecauseIE(element, options.property)
       ); // the current size of the element
 
-      console.log(currentSize);
       if (currentSize === closeSize || element.QLDtoggleState === "closing") {
         targetSize = openSize;
         preState = "opening";

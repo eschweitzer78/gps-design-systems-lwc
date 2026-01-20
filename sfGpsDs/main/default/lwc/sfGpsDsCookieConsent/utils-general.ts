@@ -6,7 +6,7 @@ import { globalObj } from "./core-global";
  * @param {any} [params]
  */
 export const debug = (...params: any[]) => {
-  console.log(...params);
+  console.debug(...params);
 };
 
 export const indexOf = <T>(el: T[] | string, value: T | string) => typeof el === "string" 

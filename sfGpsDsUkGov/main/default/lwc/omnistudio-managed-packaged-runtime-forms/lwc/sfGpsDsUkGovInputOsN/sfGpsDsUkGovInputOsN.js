@@ -105,7 +105,7 @@ export default class extends SfGpsDsUkGovLabelMixin(OmniscriptInput) {
       default:
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "initOptions", this._innerElement);
+    if (DEBUG) console.debug(CLASS_NAME, "initOptions", this._innerElement);
   }
 
   /* original maskedInput widget does a JS update of aria-describedby when validating

@@ -88,7 +88,7 @@ class SwipeContent {
         break;
 
       default:
-        console.log(`${event.type}.`);
+        console.debug(`${event.type}.`);
     }
   }
 

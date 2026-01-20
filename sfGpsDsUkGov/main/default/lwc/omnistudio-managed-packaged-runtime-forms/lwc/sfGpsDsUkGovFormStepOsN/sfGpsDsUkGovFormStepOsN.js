@@ -115,7 +115,7 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
   /* methods */
 
   getCurrentMessages() {
-    if (DEBUG) console.log(CLASS_NAME, "> getCurrentMessages");
+    if (DEBUG) console.debug(CLASS_NAME, "> getCurrentMessages");
 
     let errorMessages = [];
 
@@ -182,7 +182,7 @@ export default class SfGpsDsUkGovFormStepOsN extends OmniscriptStep {
   }
 
   handleNext(e) {
-    if (DEBUG) console.log(CLASS_NAME, "handleNext");
+    if (DEBUG) console.debug(CLASS_NAME, "handleNext");
 
     /* Prepare snapshot captures errors so that they can be kept until the next time the user does next */
     this.reportValidity();

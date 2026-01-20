@@ -217,7 +217,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
 
   // override setValue so we can capture changes
   setValue(value) {
-    if (DEBUG) console.log(CLASS_NAME, "> setValue", value, typeof value);
+    if (DEBUG) console.debug(CLASS_NAME, "> setValue", value, typeof value);
     if (DEBUG)
       console.log(CLASS_NAME, "setValue", "outputFormat: " + this.outputFormat);
 
@@ -285,7 +285,7 @@ export default class SfGpsDsUkGovDatePickerOsN extends SfGpsDsUkGovLabelMixin(
 
   get validationMessage() {
     const rv = this._constraint.validationMessage;
-    if (DEBUG) console.log(CLASS_NAME, "validationMessage", rv);
+    if (DEBUG) console.debug(CLASS_NAME, "validationMessage", rv);
     return rv
       ? rv
       : this.hasDayError || this.hasMonthError || this.hasYearError

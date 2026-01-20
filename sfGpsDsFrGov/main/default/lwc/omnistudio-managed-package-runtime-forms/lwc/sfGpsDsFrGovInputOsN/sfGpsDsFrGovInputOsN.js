@@ -117,7 +117,7 @@ export default class extends OmniscriptInput {
       default:
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "initOptions", this._innerElement);
+    if (DEBUG) console.debug(CLASS_NAME, "initOptions", this._innerElement);
   }
 
   /* lifecycle */

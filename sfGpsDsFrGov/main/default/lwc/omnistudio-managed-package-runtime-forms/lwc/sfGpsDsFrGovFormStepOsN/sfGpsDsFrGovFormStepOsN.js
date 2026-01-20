@@ -30,16 +30,16 @@ export default class extends OmniscriptStep {
   /* event management */
 
   handleBack(e) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleBack");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleBack");
 
     e.preventDefault(); // avoid default behaviour with the href on anchor
     super.handleBack(e);
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleBack");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleBack");
   }
 
   handleSave(e) {
-    if (DEBUG) console.log(CLASS_NAME, "> handleSave");
+    if (DEBUG) console.debug(CLASS_NAME, "> handleSave");
 
     e.stopPropagation();
 
@@ -54,7 +54,7 @@ export default class extends OmniscriptStep {
       );
     }
 
-    if (DEBUG) console.log(CLASS_NAME, "< handleSave");
+    if (DEBUG) console.debug(CLASS_NAME, "< handleSave");
   }
 
   /* lifecycle */
