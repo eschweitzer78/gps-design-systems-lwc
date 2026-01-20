@@ -35,6 +35,7 @@
               <button
                 lwc:if={showPrev}
                 class="rpl-button rpl-button--outlined rpl-button--default rpl-u-focusable-block"
+                disabled={disabledButtons}
                 onclick={handleBack}
               >
                 <span
@@ -45,6 +46,7 @@
               <button
                 lwc:if={showSave}
                 class="rpl-button rpl-button--outlined rpl-button--default rpl-u-focusable-block"
+                disabled={disabledButtons}
                 onclick={handleSave}
               >
                 <span
@@ -55,6 +57,7 @@
               <button
                 lwc:if={showNext}
                 class="rpl-button rpl-button--filled rpl-button--default rpl-u-focusable-block"
+                disabled={disabledButtons}
                 onclick={handleNext}
               >
                 <span

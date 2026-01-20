@@ -31,6 +31,7 @@
           class="nsw-button nsw-button--dark"
           type="button"
           value={mergedNextLabel}
+          disabled={disabledButtons}
           onclick={handleNext}
         />
         <input
@@ -38,11 +39,17 @@
           class="nsw-button nsw-button--dark-outline"
           type="button"
           value={mergedSaveLabel}
+          disabled={disabledButtons}
           onclick={handleSave}
         />
         <div lwc:if={showPrev} style="display: flex">
           <div style="margin-top: 2rem; margin-bottom: 1.5rem">
-            <button class="back-button" type="button" onclick={handleBack}>
+            <button
+              class="back-button"
+              type="button"
+              disabled={disabledButtons}
+              onclick={handleBack}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"

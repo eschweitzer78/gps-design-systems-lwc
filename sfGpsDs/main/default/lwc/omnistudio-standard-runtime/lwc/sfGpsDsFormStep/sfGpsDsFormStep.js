@@ -9,6 +9,8 @@ import OmniscriptStep from "c/sfGpsDsOsrtOmniscriptStep";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpers";
 
 export default class extends OmniscriptStep {
+  disabledButtons = false;
+
   /* computed */
 
   get mergedLabel() {
@@ -60,6 +62,12 @@ export default class extends OmniscriptStep {
   handleNext(e) {
     e.stopPropagation();
 
+    this.disabledButtons = true;
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    setTimeout(() => {
+      this.disabledButtons = false;
+    }, 1000);
+
     this.dispatchEvent(
       new CustomEvent("omniautoadvance", {
         bubbles: true,
@@ -73,6 +81,12 @@ export default class extends OmniscriptStep {
   handleBack(e) {
     e.stopPropagation();
 
+    this.disabledButtons = true;
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    setTimeout(() => {
+      this.disabledButtons = false;
+    }, 1000);
+
     this.dispatchEvent(
       new CustomEvent("omniautoadvance", {
         bubbles: true,
@@ -85,6 +99,12 @@ export default class extends OmniscriptStep {
 
   handleSave(e) {
     e.stopPropagation();
+
+    this.disabledButtons = true;
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    setTimeout(() => {
+      this.disabledButtons = false;
+    }, 1000);
 
     if (!this._propSetMap.allowSaveForLater) {
       return;

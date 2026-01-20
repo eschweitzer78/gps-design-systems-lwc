@@ -15,7 +15,12 @@
 
       <!-- add replacement buttons here -->
       <div class="form-actions">
-        <button lwc:if={showNext} class="qld__btn" onclick={handleNext}>
+        <button
+          lwc:if={showNext}
+          class="qld__btn"
+          disabled={disabledButtons}
+          onclick={handleNext}
+        >
           {mergedNextLabel}
         </button>
 
@@ -23,6 +28,7 @@
           lwc:if={showSave}
           class="qld__btn qld__btn--secondary"
           type="button"
+          disabled={disabledButtons}
           onclick={handleSave}
         >
           {mergedSaveLabel}
@@ -32,6 +38,7 @@
           lwc:if={showPrev}
           class="qld__btn qld__btn--secondary"
           type="button"
+          disabled={disabledButtons}
           onclick={handleBack}
         >
           {mergedPreviousLabel}
