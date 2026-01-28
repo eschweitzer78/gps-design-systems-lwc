@@ -10,13 +10,19 @@
 .sfgpsdscaon-file__upload-container {
   /* Ontario button styling overrides for the upload button */
   --lwc-spacingXxxSmall: 0.5rem;
-  --lwc-colorBorder: #1a1a1a;
-  --slds-c-button-neutral-color-background: #1a1a1a;
-  --slds-c-button-neutral-color-background-hover: #333333;
+  --lwc-colorBorder: var(--ontario-colour-black, #1a1a1a);
+  --slds-c-button-neutral-color-background: var(
+    --ontario-colour-black,
+    #1a1a1a
+  );
+  --slds-c-button-neutral-color-background-hover: var(
+    --ontario-greyscale-60,
+    #333333
+  );
   --slds-c-button-neutral-color-border: transparent;
   --slds-c-button-neutral-color-border-hover: transparent;
-  --slds-c-button-text-color: #ffffff;
-  --slds-c-button-text-color-hover: #ffffff;
+  --slds-c-button-text-color: var(--ontario-colour-white, #ffffff);
+  --slds-c-button-text-color-hover: var(--ontario-colour-white, #ffffff);
   --slds-c-button-spacing-block-start: 0.75rem;
   --slds-c-button-spacing-block-end: 0.75rem;
   --slds-c-button-neutral-spacing-inline-start: 1.5rem;
@@ -37,12 +43,12 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--ontario-greyscale-10, #e0e0e0);
   border-radius: 4px;
 }
 
 .sfgpsdscaon-file__item {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--ontario-greyscale-10, #e0e0e0);
 }
 
 .sfgpsdscaon-file__item:last-child {
@@ -60,7 +66,7 @@
   width: 24px;
   height: 24px;
   flex-shrink: 0;
-  fill: #666666;
+  fill: var(--ontario-greyscale-40, #666666);
 }
 
 .sfgpsdscaon-file__item-name {
@@ -87,18 +93,18 @@
 
 .sfgpsdscaon-file__item-delete:hover,
 .sfgpsdscaon-file__item-delete:focus {
-  background-color: #f5f5f5;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
 }
 
 .sfgpsdscaon-file__item-delete:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }
 
 .sfgpsdscaon-file__delete-icon {
   width: 20px;
   height: 20px;
-  fill: #cc0000;
+  fill: var(--ontario-colour-error, #cc0000);
 }
 
 /* Screen reader only */

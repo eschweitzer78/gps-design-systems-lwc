@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Ontario - Decision Explainer</masterLabel>
+    <description
+  >Displays business rule evaluation results with step-by-step explanations following Ontario Design System standards. Integrates with Salesforce Business Rules Engine DecisionExplainer API.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <!-- Content Configuration -->
+            <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="Heading text displayed above the results"
+        default="Eligibility Results"
+      />
+            
+            <!-- Expression Set Configuration -->
+            <property
+        name="expressionSetApiName"
+        type="String"
+        label="Expression Set API Name"
+        description="The API name of the expression set to evaluate. Required when using Expression Set method."
+      />
+            
+            <!-- Integration Procedure Configuration -->
+            <property
+        name="integrationProcedureName"
+        type="String"
+        label="Integration Procedure Name"
+        description="The Integration Procedure name (Type_SubType format). Required when using Integration Procedure method."
+      />
+            
+            <!-- Evaluation Method -->
+            <property
+        name="evaluationMethod"
+        type="String"
+        label="Evaluation Method"
+        description="How to evaluate the business rules"
+        datasource="expressionSet,integrationProcedure"
+        default="expressionSet"
+      />
+            
+            <!-- Input Variables -->
+            <property
+        name="inputVariablesJson"
+        type="String"
+        label="Input Variables (JSON)"
+        description="JSON string containing input variables for the expression set. Supports merge fields."
+      />
+            
+            <!-- Display Options -->
+            <property
+        name="viewModeDefault"
+        type="String"
+        label="Default View Mode"
+        description="Initial display mode for results"
+        datasource="concise,detailed"
+        default="concise"
+      />
+            
+            <property
+        name="showViewToggle"
+        type="Boolean"
+        label="Show View Toggle"
+        description="Allow users to toggle between concise and detailed views"
+        default="true"
+      />
+            
+            <property
+        name="autoEvaluate"
+        type="Boolean"
+        label="Auto Evaluate on Load"
+        description="Automatically evaluate when the component loads"
+        default="false"
+      />
+            
+            <property
+        name="showInputs"
+        type="Boolean"
+        label="Show Input Summary"
+        description="Display the input values used in the evaluation"
+        default="false"
+      />
+            
+            <property
+        name="showOutputs"
+        type="Boolean"
+        label="Show Output Summary"
+        description="Display the calculated output values"
+        default="true"
+      />
+            
+            <!-- Styling -->
+            <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply to the component"
+      />
+        </targetConfig>
+        <targetConfig
+      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage"
+    >
+            <!-- Content Configuration -->
+            <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="Heading text displayed above the results"
+        default="Eligibility Results"
+      />
+            
+            <!-- Expression Set Configuration -->
+            <property
+        name="expressionSetApiName"
+        type="String"
+        label="Expression Set API Name"
+        description="The API name of the expression set to evaluate. Required when using Expression Set method."
+      />
+            
+            <!-- Integration Procedure Configuration -->
+            <property
+        name="integrationProcedureName"
+        type="String"
+        label="Integration Procedure Name"
+        description="The Integration Procedure name (Type_SubType format). Required when using Integration Procedure method."
+      />
+            
+            <!-- Evaluation Method -->
+            <property
+        name="evaluationMethod"
+        type="String"
+        label="Evaluation Method"
+        description="How to evaluate the business rules"
+        datasource="expressionSet,integrationProcedure"
+        default="expressionSet"
+      />
+            
+            <!-- Input Variables -->
+            <property
+        name="inputVariablesJson"
+        type="String"
+        label="Input Variables (JSON)"
+        description="JSON string containing input variables for the expression set. Supports merge fields."
+      />
+            
+            <!-- Display Options -->
+            <property
+        name="viewModeDefault"
+        type="String"
+        label="Default View Mode"
+        description="Initial display mode for results"
+        datasource="concise,detailed"
+        default="concise"
+      />
+            
+            <property
+        name="showViewToggle"
+        type="Boolean"
+        label="Show View Toggle"
+        description="Allow users to toggle between concise and detailed views"
+        default="true"
+      />
+            
+            <property
+        name="autoEvaluate"
+        type="Boolean"
+        label="Auto Evaluate on Load"
+        description="Automatically evaluate when the component loads"
+        default="false"
+      />
+            
+            <property
+        name="showInputs"
+        type="Boolean"
+        label="Show Input Summary"
+        description="Display the input values used in the evaluation"
+        default="false"
+      />
+            
+            <property
+        name="showOutputs"
+        type="Boolean"
+        label="Show Output Summary"
+        description="Display the calculated output values"
+        default="true"
+      />
+            
+            <!-- Styling -->
+            <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply to the component"
+      />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

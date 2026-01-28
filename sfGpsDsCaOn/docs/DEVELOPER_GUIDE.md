@@ -68,51 +68,51 @@ Every Ontario form component follows a three-layer inheritance pattern:
 
 These properties come from the OmniScript element configuration:
 
-| Property | Type | Description | Example |
-|----------|------|-------------|---------|
-| `_jsonDef` | Object | Full element definition from OmniScript | `{ name: "FirstName", type: "Text", ... }` |
-| `_propSetMap` | Object | Element properties map | `{ label: "First Name", required: true }` |
-| `_value` | Any | Current field value | `"John"` |
-| `_elementValue` | Any | Displayed value (may differ from _value) | `"John"` |
-| `_name` | String | Element name/path | `"FirstName"` |
-| `_index` | Number | Index in parent array (for repeating elements) | `0` |
-| `jsonData` | Object | Complete OmniScript data object | `{ FirstName: "John", LastName: "Doe" }` |
+| Property        | Type   | Description                                    | Example                                    |
+| --------------- | ------ | ---------------------------------------------- | ------------------------------------------ |
+| `_jsonDef`      | Object | Full element definition from OmniScript        | `{ name: "FirstName", type: "Text", ... }` |
+| `_propSetMap`   | Object | Element properties map                         | `{ label: "First Name", required: true }`  |
+| `_value`        | Any    | Current field value                            | `"John"`                                   |
+| `_elementValue` | Any    | Displayed value (may differ from \_value)      | `"John"`                                   |
+| `_name`         | String | Element name/path                              | `"FirstName"`                              |
+| `_index`        | Number | Index in parent array (for repeating elements) | `0`                                        |
+| `jsonData`      | Object | Complete OmniScript data object                | `{ FirstName: "John", LastName: "Doe" }`   |
 
 #### `_propSetMap` Common Properties
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `label` | String | Field label text |
-| `required` | Boolean | Field is required |
-| `optional` | Boolean | Show (optional) flag |
-| `readOnly` | Boolean | Field is read-only |
-| `disabled` | Boolean | Field is disabled |
-| `hide` | Boolean | Field is hidden |
-| `help` | String | Help/hint text |
-| `placeholder` | String | Placeholder text |
-| `controlWidth` | Number | Bootstrap column width (1-12) |
+| Property       | Type    | Description                   |
+| -------------- | ------- | ----------------------------- |
+| `label`        | String  | Field label text              |
+| `required`     | Boolean | Field is required             |
+| `optional`     | Boolean | Show (optional) flag          |
+| `readOnly`     | Boolean | Field is read-only            |
+| `disabled`     | Boolean | Field is disabled             |
+| `hide`         | Boolean | Field is hidden               |
+| `help`         | String  | Help/hint text                |
+| `placeholder`  | String  | Placeholder text              |
+| `controlWidth` | Number  | Bootstrap column width (1-12) |
 
 ### From Base Form Class (`sfGpsDsForm*`)
 
-| Property/Method | Type | Description |
-|-----------------|------|-------------|
-| `mergedLabel` | Getter | Label with merge field values resolved |
-| `mergedHelpText` | Getter | Help text with merge fields resolved |
-| `mergedPlaceholder` | Getter | Placeholder with merge fields resolved |
-| `_handleHelpText` | String | Raw help text (before merge) |
-| `_placeholder` | String | Raw placeholder (before merge) |
-| `_messageWhenValueMissing` | String | Validation message for required |
+| Property/Method            | Type   | Description                            |
+| -------------------------- | ------ | -------------------------------------- |
+| `mergedLabel`              | Getter | Label with merge field values resolved |
+| `mergedHelpText`           | Getter | Help text with merge fields resolved   |
+| `mergedPlaceholder`        | Getter | Placeholder with merge fields resolved |
+| `_handleHelpText`          | String | Raw help text (before merge)           |
+| `_placeholder`             | String | Raw placeholder (before merge)         |
+| `_messageWhenValueMissing` | String | Validation message for required        |
 
 ### From Validation Mixin (`SfGpsDsOmniHasValidationMixin`)
 
-| Property/Method | Type | Description |
-|-----------------|------|-------------|
-| `sfGpsDsIsError` | Boolean | True if field has validation error |
-| `sfGpsDsErrorMessage` | String | Current error message to display |
-| `_showValidation` | Boolean | True if validation UI should show |
-| `reportValidity()` | Method | Triggers validation check |
-| `checkValidity()` | Method | Returns validation state |
-| `setCustomValidity(msg)` | Method | Sets custom error message |
+| Property/Method          | Type    | Description                        |
+| ------------------------ | ------- | ---------------------------------- |
+| `sfGpsDsIsError`         | Boolean | True if field has validation error |
+| `sfGpsDsErrorMessage`    | String  | Current error message to display   |
+| `_showValidation`        | Boolean | True if validation UI should show  |
+| `reportValidity()`       | Method  | Triggers validation check          |
+| `checkValidity()`        | Method  | Returns validation state           |
+| `setCustomValidity(msg)` | Method  | Sets custom error message          |
 
 ---
 
@@ -136,19 +136,18 @@ const CLASS_NAME = "SfGpsDsCaOnFormX";
 /**
  * @slot X
  * @description Ontario Design System X input for OmniStudio forms.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports
  * - Ontario DS: Uses ontario-* CSS classes
  * - WCAG 2.1 AA: Proper labeling, error messaging
- * 
+ *
  * @example
  * // Used automatically when OmniScript element type "X" is rendered
  * // with the Ontario DS LWC override configured.
  */
 export default class extends SfGpsDsFormX {
-  
   /* ========================================
    * COMPUTED PROPERTIES
    * Used in template bindings
@@ -211,7 +210,7 @@ export default class extends SfGpsDsFormX {
    */
   handleChange(event) {
     if (DEBUG) console.log(CLASS_NAME, "handleChange", event.target.value);
-    
+
     // Call parent handler to update OmniScript value
     super.handleChange(event);
   }
@@ -240,10 +239,10 @@ export default class extends SfGpsDsFormX {
 
     // Add CSS scoping class for Ontario DS styles
     this.classList.add("caon-scope");
-    
+
     // Configure read-only styling class
     this._readOnlyClass = "sfgpsdscaon-read-only";
-    
+
     if (DEBUG) console.log(CLASS_NAME, "connectedCallback", this._propSetMap);
   }
 }
@@ -255,29 +254,24 @@ export default class extends SfGpsDsFormX {
 <template>
   <!-- Ontario DS form group wrapper -->
   <div class="ontario-form-group">
-    
     <!-- 1. LABEL -->
-    <label 
-      id="label-id" 
-      class={computedLabelClassName} 
-      for={inputId}
-    >
+    <label id="label-id" class="{computedLabelClassName}" for="{inputId}">
       {mergedLabel}
       <!-- Required/Optional flag -->
-      <span lwc:if={showFlag} class="ontario-label__flag">
+      <span lwc:if="{showFlag}" class="ontario-label__flag">
         ({flagText})
       </span>
     </label>
-    
+
     <!-- 2. HINT TEXT -->
-    <p lwc:if={mergedHelpText} id="hint-id" class="ontario-hint">
+    <p lwc:if="{mergedHelpText}" id="hint-id" class="ontario-hint">
       {mergedHelpText}
     </p>
-    
+
     <!-- 3. ERROR MESSAGE (shown when invalid) -->
-    <div 
-      lwc:if={sfGpsDsIsError} 
-      class="ontario-error-messaging" 
+    <div
+      lwc:if="{sfGpsDsIsError}"
+      class="ontario-error-messaging"
       id="error-id"
       role="alert"
       aria-live="assertive"
@@ -289,25 +283,24 @@ export default class extends SfGpsDsFormX {
         {sfGpsDsErrorMessage}
       </span>
     </div>
-    
+
     <!-- 4. INPUT ELEMENT -->
     <input
       type="text"
-      id={inputId}
-      class={computedInputClassName}
-      value={_elementValue}
-      placeholder={mergedPlaceholder}
-      required={_propSetMap.required}
-      disabled={_propSetMap.disabled}
-      readonly={_propSetMap.readOnly}
-      aria-describedby={computedAriaDescribedBy}
-      aria-invalid={sfGpsDsIsError}
-      aria-required={_propSetMap.required}
+      id="{inputId}"
+      class="{computedInputClassName}"
+      value="{_elementValue}"
+      placeholder="{mergedPlaceholder}"
+      required="{_propSetMap.required}"
+      disabled="{_propSetMap.disabled}"
+      readonly="{_propSetMap.readOnly}"
+      aria-describedby="{computedAriaDescribedBy}"
+      aria-invalid="{sfGpsDsIsError}"
+      aria-required="{_propSetMap.required}"
       data-omni-input
-      onchange={handleChange}
-      onblur={handleBlur}
+      onchange="{handleChange}"
+      onblur="{handleBlur}"
     />
-    
   </div>
 </template>
 ```
@@ -351,13 +344,13 @@ log.exit("methodName");
 
 ### Log Levels
 
-| Level | Usage |
-|-------|-------|
-| `log.error()` | Failures that break functionality |
-| `log.warn()` | Deprecated usage, potential issues |
-| `log.info()` | User actions, important state changes |
-| `log.debug()` | Development debugging, state details |
-| `log.trace()` | Method entry/exit, verbose tracing |
+| Level         | Usage                                 |
+| ------------- | ------------------------------------- |
+| `log.error()` | Failures that break functionality     |
+| `log.warn()`  | Deprecated usage, potential issues    |
+| `log.info()`  | User actions, important state changes |
+| `log.debug()` | Development debugging, state details  |
+| `log.trace()` | Method entry/exit, verbose tracing    |
 
 ### Browser DevTools
 
@@ -370,17 +363,19 @@ log.exit("methodName");
 
 ```javascript
 // In browser console with component selected
-$0._propSetMap        // View all OmniScript properties
-$0._value             // Current value
-$0.sfGpsDsIsError     // Validation state
-$0.sfGpsDsErrorMessage // Current error message
+$0._propSetMap; // View all OmniScript properties
+$0._value; // Current value
+$0.sfGpsDsIsError; // Validation state
+$0.sfGpsDsErrorMessage; // Current error message
 ```
 
 #### Monitor OmniScript Events
 
 ```javascript
 // Add to console to log all OmniScript pubsub events
-window.addEventListener('omnistudio', (e) => console.log('OmniStudio:', e.detail));
+window.addEventListener("omnistudio", (e) =>
+  console.log("OmniStudio:", e.detail)
+);
 ```
 
 ### Common Debug Scenarios
@@ -389,34 +384,34 @@ window.addEventListener('omnistudio', (e) => console.log('OmniStudio:', e.detail
 
 ```javascript
 // Check if data-omni-input is present
-const input = $0.template.querySelector('[data-omni-input]');
-console.log('Has data-omni-input:', !!input);
+const input = $0.template.querySelector("[data-omni-input]");
+console.log("Has data-omni-input:", !!input);
 
 // Check value binding
-console.log('_value:', $0._value);
-console.log('_elementValue:', $0._elementValue);
+console.log("_value:", $0._value);
+console.log("_elementValue:", $0._elementValue);
 ```
 
 #### Validation Not Triggering
 
 ```javascript
 // Check validation mixin is applied
-console.log('Has validation:', typeof $0.reportValidity === 'function');
+console.log("Has validation:", typeof $0.reportValidity === "function");
 
 // Manually trigger validation
 $0.reportValidity();
-console.log('Is Error:', $0.sfGpsDsIsError);
-console.log('Error Message:', $0.sfGpsDsErrorMessage);
+console.log("Is Error:", $0.sfGpsDsIsError);
+console.log("Error Message:", $0.sfGpsDsErrorMessage);
 ```
 
 #### Template Not Rendering
 
 ```javascript
 // Check render() returns correct template
-console.log('Render template:', $0.render());
+console.log("Render template:", $0.render());
 
 // Check lifecycle ran
-console.log('Has caon-scope:', $0.classList.contains('caon-scope'));
+console.log("Has caon-scope:", $0.classList.contains("caon-scope"));
 ```
 
 ---
@@ -434,7 +429,7 @@ console.log('Has caon-scope:', $0.classList.contains('caon-scope'));
 get characterCount() {
   const current = (this._elementValue || "").length;
   const max = this._propSetMap.maxLength || 0;
-  
+
   if (max > 0) {
     return `${current} / ${max} characters`;
   }
@@ -457,10 +452,10 @@ handleChange(event) {
   if (this.customValidation) {
     // Do something
   }
-  
+
   // ALWAYS call parent to maintain OmniStudio binding
   super.handleChange(event);
-  
+
   // Custom logic AFTER parent
   this.updateCharacterCount();
 }
@@ -476,10 +471,10 @@ handleChange(event) {
  */
 handleCustomAction(event) {
   if (DEBUG) console.log(CLASS_NAME, "handleCustomAction");
-  
+
   // Prevent default if needed
   event.preventDefault();
-  
+
   // Dispatch custom event
   this.dispatchEvent(new CustomEvent("mycustomevent", {
     detail: { value: this._value },
@@ -503,6 +498,63 @@ handleCustomAction(event) {
 
 ---
 
+## CSS Variables and Theming
+
+All components use Ontario Design System CSS custom properties (variables) with fallback values for colors. This ensures:
+
+1. **Theming Support**: Colors can be customized at the site level
+2. **Consistency**: All components use the same color palette
+3. **Fallback Safety**: Components work even if CSS variables aren't defined
+
+### Using Colors in CSS
+
+Always use CSS variables with fallbacks:
+
+```css
+/* ✅ Correct: Use CSS variable with fallback */
+.my-component {
+  color: var(--ontario-colour-black, #1a1a1a);
+  background-color: var(--ontario-colour-white, #ffffff);
+  border: 1px solid var(--ontario-greyscale-20, #cccccc);
+}
+
+/* ❌ Incorrect: Hard-coded color without variable */
+.my-component {
+  color: #1a1a1a;
+}
+```
+
+### Available Color Tokens
+
+| Token                         | Fallback | Usage              |
+| ----------------------------- | -------- | ------------------ |
+| `--ontario-colour-white`      | #ffffff  | Backgrounds        |
+| `--ontario-colour-black`      | #1a1a1a  | Text, headers      |
+| `--ontario-colour-link`       | #0066cc  | Links, interactive |
+| `--ontario-colour-link-hover` | #00478f  | Hover states       |
+| `--ontario-colour-focus`      | #009adb  | Focus rings        |
+| `--ontario-colour-error`      | #cd0000  | Error states       |
+| `--ontario-colour-success`    | #118847  | Success states     |
+| `--ontario-colour-warning`    | #ffc107  | Warning states     |
+| `--ontario-greyscale-5`       | #f5f5f5  | Light backgrounds  |
+| `--ontario-greyscale-10`      | #e0e0e0  | Borders, dividers  |
+| `--ontario-greyscale-20`      | #cccccc  | Borders            |
+| `--ontario-greyscale-40`      | #666666  | Secondary text     |
+
+### Exception: rgba() for Shadows
+
+For shadows and overlays, use rgba() directly (CSS variables don't work inside rgba):
+
+```css
+/* ✅ Correct: rgba for shadows */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+background-color: rgba(0, 0, 0, 0.5); /* Overlay */
+```
+
+See [POST_DEPLOYMENT.md](./POST_DEPLOYMENT.md#css-custom-properties-reference) for the complete token reference.
+
+---
+
 ## Common Issues
 
 ### Issue: Styles Not Applied
@@ -511,11 +563,11 @@ handleCustomAction(event) {
 
 **Causes & Solutions**:
 
-| Cause | Solution |
-|-------|----------|
+| Cause                      | Solution                                                    |
+| -------------------------- | ----------------------------------------------------------- |
 | Missing `caon-scope` class | Add `this.classList.add("caon-scope")` in connectedCallback |
-| CSS not loaded | Verify static resources deployed |
-| CSS specificity conflict | Use more specific selectors |
+| CSS not loaded             | Verify static resources deployed                            |
+| CSS specificity conflict   | Use more specific selectors                                 |
 
 ### Issue: Validation Messages Not Showing
 
@@ -523,11 +575,11 @@ handleCustomAction(event) {
 
 **Causes & Solutions**:
 
-| Cause | Solution |
-|-------|----------|
-| Missing validation mixin | Ensure base class has `SfGpsDsOmniHasValidationMixin` |
-| Missing `data-omni-input` | Add attribute to input element |
-| Template missing error div | Add `{sfGpsDsErrorMessage}` binding |
+| Cause                      | Solution                                              |
+| -------------------------- | ----------------------------------------------------- |
+| Missing validation mixin   | Ensure base class has `SfGpsDsOmniHasValidationMixin` |
+| Missing `data-omni-input`  | Add attribute to input element                        |
+| Template missing error div | Add `{sfGpsDsErrorMessage}` binding                   |
 
 ### Issue: Value Not Saving to OmniScript
 
@@ -535,11 +587,11 @@ handleCustomAction(event) {
 
 **Causes & Solutions**:
 
-| Cause | Solution |
-|-------|----------|
-| Missing `data-omni-input` | Add attribute: `data-omni-input` |
-| Not calling `super.handleChange()` | Always call parent in overrides |
-| Wrong event handler name | Must use `handleChange` not `onChange` |
+| Cause                              | Solution                               |
+| ---------------------------------- | -------------------------------------- |
+| Missing `data-omni-input`          | Add attribute: `data-omni-input`       |
+| Not calling `super.handleChange()` | Always call parent in overrides        |
+| Wrong event handler name           | Must use `handleChange` not `onChange` |
 
 ### Issue: Keyboard Navigation Broken
 
@@ -547,11 +599,11 @@ handleCustomAction(event) {
 
 **Causes & Solutions**:
 
-| Cause | Solution |
-|-------|----------|
-| Missing tabindex | Add appropriate tabindex values |
+| Cause                   | Solution                            |
+| ----------------------- | ----------------------------------- |
+| Missing tabindex        | Add appropriate tabindex values     |
 | Missing ARIA attributes | Add `role`, `aria-activedescendant` |
-| Focus trap not working | Check `focusTrap` component usage |
+| Focus trap not working  | Check `focusTrap` component usage   |
 
 ---
 

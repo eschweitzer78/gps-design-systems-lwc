@@ -214,6 +214,41 @@ The following components have been added with full LWR/LWS compatibility:
 | `sfGpsDsCaOnActionCard`             | Light       | Markdown parsing, slot support            |
 | `sfGpsDsCaOnActivityStatusCard`     | Light       | Progress indicators, computed properties  |
 | `sfGpsDsCaOnSiteTaskCard`           | Light       | Task list integration                     |
+| `sfGpsDsCaOnDecisionExplainerComm`  | Light       | API callouts, ARIA live regions           |
+
+---
+
+### 7.1. Decision Explainer Component - LWR Considerations
+
+The `sfGpsDsCaOnDecisionExplainerComm` component calls Salesforce APIs via Apex. For LWR sites, special configuration is required:
+
+**LWR Guest User Compatibility:**
+
+| Scenario                  | Session ID  | Named Credential | Status      |
+| ------------------------- | ----------- | ---------------- | ----------- |
+| Aura site - Authenticated | ✅ Works    | Optional         | ✅ Works    |
+| Aura site - Guest         | ❌ Null     | Required         | ⚠️ Needs NC |
+| LWR site - Authenticated  | ⚠️ May work | Recommended      | ✅ Works    |
+| LWR site - Guest          | ❌ Null     | **Required**     | ⚠️ Needs NC |
+
+**Issue:** `UserInfo.getSessionId()` returns `null` for guest users in LWR Experience Cloud sites.
+
+**Solution:** The Apex controller (`SfGpsDsCaOnDecisionExplainerController`) automatically:
+
+1. Checks for Named Credential `SfGpsDsCaOnDecisionExplainer`
+2. Uses Named Credential if available (handles auth automatically)
+3. Falls back to Session ID for backward compatibility
+
+**Required Setup for LWR Guest Users:**
+
+1. Create External Credential with OAuth 2.0 Client Credentials flow
+2. Create Named Credential `SfGpsDsCaOnDecisionExplainer` pointing to your org
+3. Grant External Credential access to the guest user profile
+4. See [DECISION_EXPLAINER_SETUP.md](./DECISION_EXPLAINER_SETUP.md) for detailed instructions
+
+**Error Handling:**
+
+If authentication fails, the component displays a helpful error message guiding administrators to configure the Named Credential
 
 ---
 

@@ -47,8 +47,8 @@
   width: 320px;
   min-width: 320px;
   padding: 1.5rem;
-  background-color: #ffffff;
-  border-right: 1px solid #cccccc;
+  background-color: var(--ontario-colour-white, #ffffff);
+  border-right: 1px solid var(--ontario-greyscale-20, #cccccc);
   overflow-y: auto;
 }
 
@@ -56,7 +56,7 @@
 .sfgpsdscaon-site-selector__right-panel {
   flex: 1;
   position: relative;
-  background-color: #f5f5f5;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
 }
 
 /* ========================================
@@ -111,17 +111,17 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  color: #666666;
+  color: var(--ontario-greyscale-40, #666666);
   transition: background-color 0.15s ease-in-out;
 }
 
 .sfgpsdscaon-site-selector__clear-btn:hover {
-  background-color: #f0f0f0;
-  color: #1a1a1a;
+  background-color: var(--ontario-greyscale-5, #f0f0f0);
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-site-selector__clear-btn:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }
 
@@ -152,9 +152,9 @@
 .sfgpsdscaon-site-selector__error {
   padding: 0.75rem;
   margin-bottom: 1rem;
-  background-color: #fce4e4;
-  border-left: 4px solid #cd0000;
-  color: #cd0000;
+  background-color: var(--ontario-colour-error-light, #fce4e4);
+  border-left: 4px solid var(--ontario-colour-error, #cd0000);
+  color: var(--ontario-colour-error, #cd0000);
   font-size: 0.875rem;
 }
 
@@ -165,22 +165,22 @@
 .sfgpsdscaon-site-selector__address-details {
   margin-bottom: 1.5rem;
   padding: 1rem;
-  background-color: #f5f5f5;
-  border-left: 4px solid #0066cc;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  border-left: 4px solid var(--ontario-colour-link, #0066cc);
 }
 
 .sfgpsdscaon-site-selector__details-heading {
   margin: 0 0 0.75rem 0;
   font-size: 1rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-site-selector__address-line {
   margin: 0 0 0.25rem 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-site-selector__address-line:last-child {
@@ -195,7 +195,7 @@
   margin-bottom: 1rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #4d4d4d;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
 }
 
 /* ========================================
@@ -213,7 +213,7 @@
 .sfgpsdscaon-site-selector__tabs {
   display: flex;
   margin-top: auto;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
   padding-top: 1rem;
 }
 
@@ -229,7 +229,7 @@
   border-bottom: 3px solid transparent;
   font-size: 0.875rem;
   font-weight: 400;
-  color: #666666;
+  color: var(--ontario-greyscale-40, #666666);
   cursor: pointer;
   transition:
     color 0.15s ease-in-out,
@@ -237,17 +237,17 @@
 }
 
 .sfgpsdscaon-site-selector__tab:hover {
-  color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
 }
 
 .sfgpsdscaon-site-selector__tab:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: -3px;
 }
 
 .sfgpsdscaon-site-selector__tab--active {
-  color: #0066cc;
-  border-bottom-color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
+  border-bottom-color: var(--ontario-colour-link, #0066cc);
   font-weight: 700;
 }
 
@@ -274,7 +274,7 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  color: #666666;
+  color: var(--ontario-greyscale-40, #666666);
 }
 
 /* ========================================
@@ -291,7 +291,7 @@
     min-width: auto;
     max-height: 50%;
     border-right: none;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid var(--ontario-greyscale-20, #cccccc);
   }
 
   .sfgpsdscaon-site-selector__right-panel {

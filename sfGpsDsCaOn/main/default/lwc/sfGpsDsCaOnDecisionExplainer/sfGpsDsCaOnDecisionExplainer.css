@@ -1,0 +1,222 @@
+/*
+ * Copyright (c) 2026, Shannon Schupbach, Jeremy Blankenship and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+/* Decision Explainer Component Styles */
+
+.ontario-decision-explainer {
+  display: block;
+}
+
+/* Visually hidden but accessible to screen readers */
+.ontario-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Live region - hidden visually but announced by screen readers */
+.ontario-decision-explainer__live-region {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Step list reset */
+.ontario-decision-explainer__step-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Accessible status icons */
+.ontario-decision-explainer__icon {
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.ontario-decision-explainer__icon--passed::before {
+  content: "✓";
+  color: var(--ontario-colour-success, #118847);
+}
+
+.ontario-decision-explainer__icon--failed::before {
+  content: "⚠";
+  color: var(--ontario-colour-warning-dark, #8b6914);
+}
+
+/* Step status indicators - now using separate icon element */
+.ontario-decision-explainer__step-passed {
+  color: var(--ontario-colour-success, #118847);
+}
+
+.ontario-decision-explainer__step-failed {
+  color: var(--ontario-colour-warning-dark, #8b6914);
+}
+
+/* Alert variations */
+.ontario-alert--success {
+  border-left: 4px solid var(--ontario-colour-success, #118847);
+}
+
+.ontario-alert--success .ontario-alert__header {
+  background-color: var(--ontario-colour-success-light, #e8f4ec);
+}
+
+.ontario-alert--warning {
+  border-left: 4px solid var(--ontario-colour-warning, #faba00);
+}
+
+.ontario-alert--warning .ontario-alert__header {
+  background-color: var(--ontario-colour-warning-light, #fff8e6);
+}
+
+/* Definition list for details */
+.ontario-definition-list {
+  margin: 0;
+  padding: 0;
+}
+
+.ontario-definition-list__item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--ontario-colour-grey-3, #ededed);
+}
+
+.ontario-definition-list__item:last-child {
+  border-bottom: none;
+}
+
+.ontario-definition-list__term {
+  flex: 0 0 40%;
+  font-weight: 600;
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+.ontario-definition-list__definition {
+  flex: 1 1 50%;
+  margin: 0;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
+}
+
+/* Details/Accordion styling */
+.ontario-details {
+  border: 1px solid var(--ontario-colour-grey-3, #ededed);
+  border-radius: 4px;
+  background-color: var(--ontario-colour-white, #ffffff);
+}
+
+.ontario-details__summary {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.ontario-details__summary:hover {
+  background-color: var(--ontario-colour-grey-1, #f7f7f7);
+}
+
+.ontario-details__content {
+  padding: 0 1rem 1rem;
+}
+
+/* Callout modifications for steps */
+.ontario-decision-explainer__steps .ontario-callout {
+  border-left-width: 4px;
+  margin-bottom: 1rem;
+}
+
+.ontario-callout--passed {
+  border-left-color: var(--ontario-colour-success, #118847);
+}
+
+.ontario-callout--failed {
+  border-left-color: var(--ontario-colour-warning, #faba00);
+}
+
+.ontario-callout__content {
+  padding: 1rem;
+}
+
+/* ============================================
+   ACCESSIBILITY - Focus Indicators
+   WCAG 2.1 Success Criterion 2.4.7: Focus Visible
+   ============================================ */
+
+/* Focus indicator for buttons */
+.ontario-decision-explainer button:focus {
+  outline: 3px solid var(--ontario-colour-focus, #009acd);
+  outline-offset: 2px;
+}
+
+.ontario-decision-explainer button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.ontario-decision-explainer button:focus-visible {
+  outline: 3px solid var(--ontario-colour-focus, #009acd);
+  outline-offset: 2px;
+}
+
+/* Focus indicator for details/summary */
+.ontario-details__summary:focus {
+  outline: 3px solid var(--ontario-colour-focus, #009acd);
+  outline-offset: 2px;
+}
+
+.ontario-details__summary:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.ontario-details__summary:focus-visible {
+  outline: 3px solid var(--ontario-colour-focus, #009acd);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ontario-decision-explainer__icon--passed::before {
+    color: #006400;
+  }
+
+  .ontario-decision-explainer__icon--failed::before {
+    color: #8b0000;
+  }
+
+  .ontario-callout--passed {
+    border-left-color: #006400;
+  }
+
+  .ontario-callout--failed {
+    border-left-color: #8b0000;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .ontario-decision-explainer * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

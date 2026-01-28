@@ -49,18 +49,24 @@
     Global typography variables
 --------------------------------- */
 h6,
-.ontario-h6, h5,
-.ontario-h5, h4,
-.ontario-h4, h3,
-.ontario-h3, h2,
-.ontario-h2, h1,
+.ontario-h6,
+h5,
+.ontario-h5,
+h4,
+.ontario-h4,
+h3,
+.ontario-h3,
+h2,
+.ontario-h2,
+h1,
 .ontario-h1 {
   font-style: normal;
   font-weight: 700;
   text-rendering: optimizeLegibility;
   margin-bottom: 1rem;
   font-feature-settings: normal;
-  font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1,
@@ -196,7 +202,7 @@ html {
 body {
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: rgb(25.5, 25.5, 25.5);
   margin: 0;
 }
@@ -246,16 +252,16 @@ hr.ontario-hr--dark {
 }
 
 a {
-  color: #0066CC;
+  color: #0066cc;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #551A8B;
+  color: #551a8b;
 }
 
 a:hover {
-  color: #00478F;
+  color: #00478f;
 }
 
 a:active {
@@ -263,9 +269,9 @@ a:active {
 }
 
 a:focus {
-  -moz-box-shadow: 0 0 0 4px #009ADB;
-  -webkit-box-shadow: 0 0 0 4px #009ADB;
-  box-shadow: 0 0 0 4px #009ADB;
+  -moz-box-shadow: 0 0 0 4px #009adb;
+  -webkit-box-shadow: 0 0 0 4px #009adb;
+  box-shadow: 0 0 0 4px #009adb;
   outline: 4px solid transparent;
   transition: all 0.1s ease-in-out;
 }
@@ -307,13 +313,13 @@ li code {
 }
 
 /* Forms */
-input[type=text],
-input[type=number],
-input[type=email],
-input[type=date],
-input[type=color],
-input[type=search],
-input[type=tel],
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+input[type="color"],
+input[type="search"],
+input[type="tel"],
 textarea {
   background-origin: initial;
   height: auto;
@@ -321,8 +327,8 @@ textarea {
   -moz-appearance: none;
 }
 
-input[type=checkbox] + label,
-input[type=radio] + label {
+input[type="checkbox"] + label,
+input[type="radio"] + label {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -377,8 +383,8 @@ ol li:last-child {
   padding-bottom: 0;
 }
 
-ul[class*=columns-] li:last-child,
-ol[class*=columns-] li:last-child {
+ul[class*="columns-"] li:last-child,
+ol[class*="columns-"] li:last-child {
   padding-bottom: 0.75rem;
 }
 
@@ -414,7 +420,7 @@ p + ol {
   }
 }
 .ontario-callout {
-  border-left: 0.25rem solid #367A76;
+  border-left: 0.25rem solid #367a76;
   padding: 1.5rem;
   margin: 2rem 0 2.5rem 0;
   background-color: rgb(242.25, 242.25, 242.25);
@@ -431,31 +437,31 @@ p + ol {
 }
 
 .ontario-border-highlight--teal {
-  border-color: #367A76 !important;
+  border-color: #367a76 !important;
 }
 
 .ontario-border-highlight--gold {
-  border-color: #86743D !important;
+  border-color: #86743d !important;
 }
 
 .ontario-border-highlight--yellow {
-  border-color: #8A600D !important;
+  border-color: #8a600d !important;
 }
 
 .ontario-border-highlight--taupe {
-  border-color: #7B725C !important;
+  border-color: #7b725c !important;
 }
 
 .ontario-border-highlight--green {
-  border-color: #2B8737 !important;
+  border-color: #2b8737 !important;
 }
 
 .ontario-border-highlight--lime {
-  border-color: #5F8129 !important;
+  border-color: #5f8129 !important;
 }
 
 .ontario-border-highlight--sky {
-  border-color: #1080A6 !important;
+  border-color: #1080a6 !important;
 }
 
 .ontario-border-highlight--blue {
@@ -463,7 +469,121 @@ p + ol {
 }
 
 .ontario-border-highlight--purple {
-  border-color: #92278F !important;
+  border-color: #92278f !important;
+}
+
+/* ========================================
+ * CALLOUT TYPE VARIANTS
+ * Alert-style callouts with background colors and icons
+ * Based on EASR Prototype patterns
+ * ======================================== */
+
+/* Base styles for typed callouts */
+.ontario-callout--typed {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+}
+
+.ontario-callout--typed .ontario-callout__icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.125rem;
+}
+
+.ontario-callout--typed .ontario-callout__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.ontario-callout--typed .ontario-callout__title {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.ontario-callout--typed p:last-child {
+  margin-bottom: 0;
+}
+
+/* Information Callout (Blue) */
+.ontario-callout--information {
+  background-color: var(--ontario-colour-info-light, #e8f4fd);
+  border-left: 0.25rem solid var(--ontario-colour-information, #1080a6);
+}
+
+.ontario-callout--information .ontario-callout__icon {
+  fill: var(--ontario-colour-information, #1080a6);
+}
+
+.ontario-callout--information .ontario-callout__title {
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+/* Warning Callout (Yellow/Gold) */
+.ontario-callout--warning {
+  background-color: var(--ontario-colour-warning-light, #fef6e6);
+  border-left: 0.25rem solid var(--ontario-colour-warning-dark, #8a600d);
+}
+
+.ontario-callout--warning .ontario-callout__icon {
+  fill: var(--ontario-colour-warning-dark, #8a600d);
+}
+
+.ontario-callout--warning .ontario-callout__title {
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+/* Error Callout (Red) */
+.ontario-callout--error {
+  background-color: var(--ontario-colour-error-light, #fce4e4);
+  border-left: 0.25rem solid var(--ontario-colour-error, #cd0000);
+}
+
+.ontario-callout--error .ontario-callout__icon {
+  fill: var(--ontario-colour-error, #cd0000);
+}
+
+.ontario-callout--error .ontario-callout__title {
+  color: var(--ontario-colour-error, #cd0000);
+}
+
+/* Success Callout (Green) */
+.ontario-callout--success {
+  background-color: var(--ontario-colour-success-light, #e6f4ea);
+  border-left: 0.25rem solid var(--ontario-colour-success, #118847);
+}
+
+.ontario-callout--success .ontario-callout__icon {
+  fill: var(--ontario-colour-success, #118847);
+}
+
+.ontario-callout--success .ontario-callout__title {
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+/* Icon-only variant (no heading) */
+.ontario-callout--typed.ontario-callout--no-heading .ontario-callout__icon {
+  margin-top: 0;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .ontario-callout--information,
+  .ontario-callout--warning,
+  .ontario-callout--error,
+  .ontario-callout--success {
+    border-width: 0.375rem;
+  }
+
+  .ontario-callout--warning {
+    background-color: #fff3cd;
+  }
+
+  .ontario-callout--error {
+    background-color: #f8d7da;
+  }
 }
 
 /*# sourceMappingURL=sfGpsDsCaOnCallout.css.map */

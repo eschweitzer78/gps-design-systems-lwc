@@ -44,6 +44,18 @@ extends SfGpsDsLwc {
   @api 
   headingLevel?: string;
 
+  /**
+   * Callout type for alert-style callouts with background colors and icons.
+   * - default: Standard callout with border color only
+   * - information: Blue background with info icon
+   * - warning: Yellow/gold background with warning icon (for regulatory notices)
+   * - error: Red background with error icon (for hard stops/ineligibility)
+   * - success: Green background with success icon
+   */
+  // @ts-ignore
+  @api 
+  type?: string;
+
   // @ts-ignore
   @api 
   className?: string;

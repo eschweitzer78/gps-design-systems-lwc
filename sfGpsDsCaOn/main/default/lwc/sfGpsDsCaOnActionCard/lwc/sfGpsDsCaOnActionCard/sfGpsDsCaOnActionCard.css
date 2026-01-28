@@ -9,8 +9,8 @@
 .sfgpsdscaon-action-card {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
+  background-color: var(--ontario-colour-white, #ffffff);
+  border: 1px solid var(--ontario-greyscale-20, #cccccc);
   border-radius: 4px;
   overflow: hidden;
   height: 100%;
@@ -23,32 +23,32 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1.25rem;
-  color: #ffffff;
+  color: var(--ontario-colour-white, #ffffff);
 }
 
-/* Header Color Variants */
+/* Header Color Variants - Using Ontario DS accent colors where available */
 .sfgpsdscaon-action-card__header--dark-blue {
-  background-color: #1a1a5e;
+  background-color: var(--ontario-colour-dark-blue, #1a1a5e);
 }
 
 .sfgpsdscaon-action-card__header--blue {
-  background-color: #0066cc;
+  background-color: var(--ontario-colour-link, #0066cc);
 }
 
 .sfgpsdscaon-action-card__header--teal {
-  background-color: #00838f;
+  background-color: var(--ontario-colour-teal, #00838f);
 }
 
 .sfgpsdscaon-action-card__header--green {
-  background-color: #118847;
+  background-color: var(--ontario-colour-success, #118847);
 }
 
 .sfgpsdscaon-action-card__header--gold {
-  background-color: #b38500;
+  background-color: var(--ontario-colour-gold, #b38500);
 }
 
 .sfgpsdscaon-action-card__header--purple {
-  background-color: #5e3c78;
+  background-color: var(--ontario-colour-purple, #5e3c78);
 }
 
 /* Header Icon */
@@ -83,7 +83,7 @@
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
   flex-grow: 1;
 }
 
@@ -101,16 +101,16 @@
   display: inline-block;
   width: 100%;
   text-align: center;
-  color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
   text-decoration: underline;
   font-size: 1rem;
 }
 
 .sfgpsdscaon-action-card__link:hover {
-  color: #00478f;
+  color: var(--ontario-colour-link-hover, #00478f);
 }
 
 .sfgpsdscaon-action-card__link:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }

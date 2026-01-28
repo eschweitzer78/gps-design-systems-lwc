@@ -2,33 +2,138 @@
   Light DOM compatible callout component.
   Supports both property-based heading (preferred for Light DOM)
   and slot-based heading (for direct usage).
+  
+  Type variants: default, information, warning, error, success
+  Typed callouts include an icon and colored background.
 -->
 <template lwc:render-mode="light">
-  <section class={computedClassName} role="note">
-    <!-- Heading: Property takes precedence over slot for Light DOM compatibility -->
-    <!-- Note: slot can't be used with lwc:else, so we use two separate conditionals -->
-    <h2 lwc:if={isH2} class="ontario-callout__title ontario-h5">
-      <template lwc:if={hasHeadingProp}>{heading}</template>
-      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
-    </h2>
-    <h3 lwc:if={isH3} class="ontario-callout__title ontario-h5">
-      <template lwc:if={hasHeadingProp}>{heading}</template>
-      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
-    </h3>
-    <h4 lwc:if={isH4} class="ontario-callout__title ontario-h5">
-      <template lwc:if={hasHeadingProp}>{heading}</template>
-      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
-    </h4>
-    <h5 lwc:if={isH5} class="ontario-callout__title ontario-h5">
-      <template lwc:if={hasHeadingProp}>{heading}</template>
-      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
-    </h5>
-    <h6 lwc:if={isH6} class="ontario-callout__title ontario-h5">
-      <template lwc:if={hasHeadingProp}>{heading}</template>
-      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
-    </h6>
+  <section class={computedClassName} role="note" aria-live="polite">
+    <!-- Icon for typed callouts -->
+    <template lwc:if={showIcon}>
+      <!-- Information Icon -->
+      <svg
+        lwc:if={isInformation}
+        class="ontario-callout__icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        />
+      </svg>
+      <!-- Warning Icon -->
+      <svg
+        lwc:if={isWarning}
+        class="ontario-callout__icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+      </svg>
+      <!-- Error Icon -->
+      <svg
+        lwc:if={isError}
+        class="ontario-callout__icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <!-- Success Icon -->
+      <svg
+        lwc:if={isSuccess}
+        class="ontario-callout__icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+        />
+      </svg>
+    </template>
 
-    <!-- Content slot -->
-    <slot></slot>
+    <!-- Content wrapper for typed callouts, or direct content for default -->
+    <div lwc:if={isTypedCallout} class="ontario-callout__content">
+      <!-- Heading: Property takes precedence over slot for Light DOM compatibility -->
+      <h2 lwc:if={isH2} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h2>
+      <h3 lwc:if={isH3} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h3>
+      <h4 lwc:if={isH4} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h4>
+      <h5 lwc:if={isH5} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h5>
+      <h6 lwc:if={isH6} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h6>
+      <!-- Content slot -->
+      <slot></slot>
+    </div>
+
+    <!-- Default callout (no wrapper needed) -->
+    <template lwc:if={isDefaultCallout}>
+      <!-- Heading: Property takes precedence over slot for Light DOM compatibility -->
+      <h2 lwc:if={isH2} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h2>
+      <h3 lwc:if={isH3} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h3>
+      <h4 lwc:if={isH4} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h4>
+      <h5 lwc:if={isH5} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h5>
+      <h6 lwc:if={isH6} class="ontario-callout__title ontario-h5">
+        <template lwc:if={hasHeadingProp}>{heading}</template>
+        <template lwc:if={showHeadingSlot}
+          ><slot name="heading"></slot
+        ></template>
+      </h6>
+      <!-- Content slot -->
+      <slot></slot>
+    </template>
   </section>
 </template>

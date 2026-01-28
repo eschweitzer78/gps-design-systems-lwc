@@ -9,9 +9,9 @@
 .sfgpsdscaon-activity-status-card {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  border: 1px solid #cccccc;
-  border-left: 4px solid #0066cc;
+  background-color: var(--ontario-colour-white, #ffffff);
+  border: 1px solid var(--ontario-greyscale-20, #cccccc);
+  border-left: 4px solid var(--ontario-colour-link, #0066cc);
   border-radius: 4px;
   padding: 1.25rem;
   height: 100%;
@@ -32,23 +32,23 @@
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.3;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 /* Remove Link */
 .sfgpsdscaon-activity-status-card__remove {
   flex-shrink: 0;
-  color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
   font-size: 1rem;
   text-decoration: underline;
 }
 
 .sfgpsdscaon-activity-status-card__remove:hover {
-  color: #00478f;
+  color: var(--ontario-colour-link-hover, #00478f);
 }
 
 .sfgpsdscaon-activity-status-card__remove:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }
 
@@ -66,13 +66,13 @@
 .sfgpsdscaon-activity-status-card__field-label {
   display: block;
   font-size: 0.875rem;
-  color: #4d4d4d;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
 }
 
 .sfgpsdscaon-activity-status-card__field-value {
   display: block;
   font-size: 1rem;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 /* Card Footer */
@@ -91,7 +91,7 @@
 
 .sfgpsdscaon-activity-status-card__progress-text {
   font-size: 0.875rem;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 /* Status Icons */
@@ -104,15 +104,15 @@
 }
 
 .sfgpsdscaon-activity-status-card__status-icon--not-started {
-  fill: #cd0000; /* Error red */
+  fill: var(--ontario-colour-error, #cd0000); /* Error red */
 }
 
 .sfgpsdscaon-activity-status-card__status-icon--in-progress {
-  fill: #0066cc; /* Blue */
+  fill: var(--ontario-colour-link, #0066cc); /* Blue */
 }
 
 .sfgpsdscaon-activity-status-card__status-icon--complete {
-  fill: #118847; /* Success green */
+  fill: var(--ontario-colour-success, #118847); /* Success green */
 }
 
 /* Action Button */

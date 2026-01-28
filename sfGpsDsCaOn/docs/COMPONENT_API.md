@@ -349,23 +349,60 @@ An Ontario Design System badge for Experience Builder.
 
 ### sfGpsDsCaOnCalloutComm
 
-An Ontario Design System callout for Experience Builder.
+An Ontario Design System callout for Experience Builder. Supports both standard callouts with border colors and alert-style callouts with background colors and icons.
 
 #### Properties
 
-| Property  | Type   | Default         | Description                       |
-| --------- | ------ | --------------- | --------------------------------- |
-| `title`   | String | -               | Callout heading                   |
-| `content` | String | -               | Callout body text (supports HTML) |
-| `type`    | String | `"information"` | Callout type                      |
+| Property          | Type   | Default     | Description                                                                               |
+| ----------------- | ------ | ----------- | ----------------------------------------------------------------------------------------- |
+| `heading`         | String | -           | Callout heading (supports Markdown)                                                       |
+| `headingLevel`    | String | `"h2"`      | Heading level (h2, h3, h4, h5, h6)                                                        |
+| `content`         | String | -           | Callout body text (supports Markdown)                                                     |
+| `type`            | String | `"default"` | Callout type (default, information, warning, error, success)                              |
+| `highlightColour` | String | `"default"` | Border color for default type (blue, gold, green, lime, purple, sky, taupe, teal, yellow) |
+| `className`       | String | -           | Additional CSS classes                                                                    |
 
-#### Usage Example
+#### Type Variants
+
+| Type          | Appearance                          | Use Case                                   |
+| ------------- | ----------------------------------- | ------------------------------------------ |
+| `default`     | Border color only (no icon)         | General informational callouts             |
+| `information` | Blue background with info icon      | Helpful tips, additional context           |
+| `warning`     | Yellow background with warning icon | Regulatory notices, important cautions     |
+| `error`       | Red background with error icon      | Hard stops, ineligibility, critical errors |
+| `success`     | Green background with success icon  | Confirmations, successful completions      |
+
+#### Usage Examples
+
+**Standard Callout (border only):**
 
 ```html
 <c-sf-gps-ds-ca-on-callout-comm
-  title="Important Information"
-  content="Please review the following before continuing."
+  heading="Existing site information"
+  content="The sites listed are sites previously created and stored in your profile."
+  highlight-colour="sky"
+>
+</c-sf-gps-ds-ca-on-callout-comm>
+```
+
+**Warning Callout (yellow background with icon):**
+
+```html
+<c-sf-gps-ds-ca-on-callout-comm
+  heading="Important regulatory notice"
+  content="The person certifying must have authority to bind the registrant as per Ontario Regulation 245/11."
   type="warning"
+>
+</c-sf-gps-ds-ca-on-callout-comm>
+```
+
+**Error Callout (red background with icon):**
+
+```html
+<c-sf-gps-ds-ca-on-callout-comm
+  heading="You do not meet the requirements"
+  content="Based on your answer, you may need to apply for an Environmental Compliance Approval (ECA)."
+  type="error"
 >
 </c-sf-gps-ds-ca-on-callout-comm>
 ```
@@ -1016,10 +1053,122 @@ For comprehensive documentation on GIS-integrated components, see **[GIS_GUIDE.m
 
 ---
 
+## Business Rules Components
+
+### sfGpsDsCaOnDecisionExplainerComm
+
+A component for displaying business rule evaluation results with step-by-step explanations. Integrates with Salesforce Business Rules Engine DecisionExplainer API.
+
+> **Setup Required:** This component requires Connected App configuration and authorization. See [DECISION_EXPLAINER_SETUP.md](./DECISION_EXPLAINER_SETUP.md) for complete setup instructions.
+
+#### Properties
+
+| Property                   | Type    | Default                 | Description                                       |
+| -------------------------- | ------- | ----------------------- | ------------------------------------------------- |
+| `heading`                  | String  | `"Eligibility Results"` | Heading text displayed above the results          |
+| `expressionSetApiName`     | String  | -                       | API name of the expression set to evaluate        |
+| `integrationProcedureName` | String  | -                       | Integration Procedure name (Type_SubType format)  |
+| `evaluationMethod`         | String  | `"expressionSet"`       | Method: `expressionSet` or `integrationProcedure` |
+| `inputVariablesJson`       | String  | -                       | JSON string containing input variables            |
+| `viewModeDefault`          | String  | `"concise"`             | Display mode: `concise` or `detailed`             |
+| `showViewToggle`           | Boolean | `true`                  | Show button to toggle between view modes          |
+| `autoEvaluate`             | Boolean | `false`                 | Automatically evaluate on component load          |
+| `showInputs`               | Boolean | `false`                 | Display input values in summary                   |
+| `showOutputs`              | Boolean | `true`                  | Display calculated output values                  |
+| `className`                | String  | -                       | Additional CSS classes                            |
+
+#### Events
+
+| Event            | Detail                | Description                       |
+| ---------------- | --------------------- | --------------------------------- |
+| `evaluate`       | `{ success, result }` | Fired after evaluation completes  |
+| `error`          | `{ message }`         | Fired if evaluation fails         |
+| `viewmodechange` | `{ viewMode }`        | Fired when user toggles view mode |
+
+#### Methods
+
+| Method             | Parameters | Returns                              | Description                     |
+| ------------------ | ---------- | ------------------------------------ | ------------------------------- |
+| `evaluate()`       | -          | `Promise<DecisionExplanationResult>` | Trigger evaluation              |
+| `reset()`          | -          | `void`                               | Reset to initial state          |
+| `toggleViewMode()` | -          | `void`                               | Toggle between concise/detailed |
+
+#### Usage Example
+
+```html
+<c-sf-gps-ds-ca-on-decision-explainer-comm
+  heading="Your Eligibility Results"
+  expression-set-api-name="Benefit_Eligibility_Check"
+  input-variables-json='{"income": 50000, "dependents": 2, "isVeteran": true}'
+  view-mode-default="concise"
+  show-view-toggle="true"
+  auto-evaluate="true"
+  show-outputs="true"
+></c-sf-gps-ds-ca-on-decision-explainer-comm>
+```
+
+#### Programmatic Usage
+
+```javascript
+// Get component reference
+const explainer = this.template.querySelector(
+  "c-sf-gps-ds-ca-on-decision-explainer"
+);
+
+// Set input variables dynamically
+explainer.inputVariables = {
+  income: this.userIncome,
+  dependents: this.dependentCount,
+  isVeteran: this.veteranStatus
+};
+
+// Trigger evaluation
+const result = await explainer.evaluate();
+
+if (result.success) {
+  console.log("Eligible:", result.overallResult === "passed");
+  console.log("Outputs:", result.outputs);
+} else {
+  console.error("Evaluation failed:", result.errorMessage);
+}
+```
+
+#### Result Object Structure
+
+```javascript
+{
+  success: true,
+  overallResult: 'passed', // 'passed', 'failed', or 'error'
+  overallMessage: 'All eligibility criteria have been met.',
+  steps: [
+    {
+      stepName: 'Income_Check',
+      stepLabel: 'Income Verification',
+      message: 'Your income of $50,000 meets the threshold.',
+      passed: true,
+      showDetails: true,
+      sequenceNumber: 1,
+      details: {
+        threshold: 45000,
+        actualIncome: 50000
+      }
+    },
+    // ... more steps
+  ],
+  outputs: {
+    eligibleAmount: 1200,
+    benefitTier: 'Standard'
+  }
+}
+```
+
+---
+
 ## Related Documentation
 
 - [OMNISTUDIO_FORMS.md](./OMNISTUDIO_FORMS.md) - OmniStudio forms overview
 - [OMNISCRIPT_SETUP.md](./OMNISCRIPT_SETUP.md) - OmniScript configuration
 - [GIS_GUIDE.md](./GIS_GUIDE.md) - GIS components (Site Selector, Discharge Point, ESRI integration)
 - [LWR_COMPATIBILITY.md](./LWR_COMPATIBILITY.md) - LWR compatibility patterns
+- [DECISION_EXPLAINER_SETUP.md](./DECISION_EXPLAINER_SETUP.md) - Decision Explainer setup (Connected App, permissions)
 - [SETUP.md](./SETUP.md) - Initial setup

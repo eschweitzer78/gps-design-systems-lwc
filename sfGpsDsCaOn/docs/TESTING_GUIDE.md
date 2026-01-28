@@ -80,14 +80,17 @@ This guide outlines the tools, processes, and checklists for testing sfGpsDsCaOn
 
 ### Colors
 
-- [ ] **Primary Blue**: #1a5a96 (Ontario Blue)
-- [ ] **Focus Color**: #009ACD (Cyan)
-- [ ] **Error Red**: #D81A21
-- [ ] **Success Green**: #118847
-- [ ] **Warning Yellow**: #FEBA35
-- [ ] **Text Color**: #1A1A1A (near-black)
-- [ ] **Background**: #FFFFFF (white)
-- [ ] **Border Gray**: #CCCCCC
+> **Note**: All colors should be implemented using CSS variables with fallbacks (e.g., `var(--ontario-colour-link, #0066cc)`). When testing, verify the computed color matches the expected value below.
+
+- [ ] **Primary Blue**: #1a5a96 (Ontario Blue) - `--ontario-colour-primary`
+- [ ] **Focus Color**: #009ADB (Cyan) - `--ontario-colour-focus`
+- [ ] **Error Red**: #CD0000 - `--ontario-colour-error`
+- [ ] **Success Green**: #118847 - `--ontario-colour-success`
+- [ ] **Warning Yellow**: #FFC107 - `--ontario-colour-warning`
+- [ ] **Text Color**: #1A1A1A (near-black) - `--ontario-colour-black`
+- [ ] **Background**: #FFFFFF (white) - `--ontario-colour-white`
+- [ ] **Border Gray**: #CCCCCC - `--ontario-greyscale-20`
+- [ ] **Link Blue**: #0066CC - `--ontario-colour-link`
 
 ### Spacing
 

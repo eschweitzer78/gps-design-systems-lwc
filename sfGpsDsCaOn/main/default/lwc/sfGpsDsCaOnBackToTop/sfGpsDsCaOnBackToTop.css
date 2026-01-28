@@ -12,12 +12,12 @@
   align-items: center;
   height: 3rem;
   padding: 0.5rem 1rem 0.5rem 0.75rem;
-  background: #e6e6e6;
-  border: 0.125rem solid var(--ontario-color-white, #ffffff);
+  background: var(--ontario-greyscale-10, #e6e6e6);
+  border: 0.125rem solid var(--ontario-colour-white, #ffffff);
   border-radius: 0.25rem;
   box-sizing: border-box;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.6);
-  color: var(--ontario-color-black, #1a1a1a);
+  color: var(--ontario-colour-black, #1a1a1a);
   line-height: 1.25rem;
   font-size: 1rem;
   font-family: "Open Sans", sans-serif;
@@ -35,14 +35,18 @@
   background-color: var(--ontario-greyscale-20, #cccccc);
 }
 .ontario-back-to-top--default:focus {
-  background-color: #e6e6e6;
-  box-shadow: 0 0 0 0.25rem var(--ontario-color-focus, #009adb), 0 0.1875rem 0.3125rem 0.1875rem rgba(0, 0, 0, 0.6);
+  background-color: var(--ontario-greyscale-10, #e6e6e6);
+  box-shadow:
+    0 0 0 0.25rem var(--ontario-colour-focus, #009adb),
+    0 0.1875rem 0.3125rem 0.1875rem rgba(0, 0, 0, 0.6);
   outline: 0.25rem solid transparent;
   transition: 0.1s ease-in-out;
 }
 .ontario-back-to-top--default:active {
-  background-color: #b2b2b2;
-  box-shadow: 0 0 0 0.25rem var(--ontario-color-focus, #009adb), 0 0.3125rem 0.4375rem 0.1875rem rgba(0, 0, 0, 0.6);
+  background-color: var(--ontario-greyscale-30, #b2b2b2);
+  box-shadow:
+    0 0 0 0.25rem var(--ontario-colour-focus, #009adb),
+    0 0.3125rem 0.4375rem 0.1875rem rgba(0, 0, 0, 0.6);
   outline: 0.25rem solid transparent;
 }
 .ontario-back-to-top--default.active {

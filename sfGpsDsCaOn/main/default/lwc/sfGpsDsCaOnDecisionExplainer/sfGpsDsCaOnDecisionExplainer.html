@@ -1,0 +1,214 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <!-- Heading -->
+    <h2 lwc:if={heading} class="ontario-h4 ontario-margin-bottom-16-!">
+      {heading}
+    </h2>
+
+    <!-- Live region for screen reader announcements -->
+    <div
+      class="ontario-decision-explainer__live-region"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <span lwc:if={_isLoading} class="ontario-visually-hidden"
+        >Evaluating eligibility, please wait.</span
+      >
+      <span lwc:if={hasExplanation} class="ontario-visually-hidden"
+        >{screenReaderAnnouncement}</span
+      >
+    </div>
+
+    <!-- Loading State -->
+    <c-sf-gps-ds-ca-on-loading-indicator
+      lwc:if={_isLoading}
+      is-loading="true"
+      label="Evaluating eligibility..."
+      overlay="false"
+      aria-hidden="true"
+    ></c-sf-gps-ds-ca-on-loading-indicator>
+
+    <!-- Error State -->
+    <div
+      lwc:elseif={hasError}
+      class="ontario-alert ontario-alert--error"
+      role="alert"
+      aria-live="assertive"
+    >
+      <div class="ontario-alert__header">
+        <h3 class="ontario-alert__header-title ontario-h5">Error</h3>
+      </div>
+      <div class="ontario-alert__body">
+        <p>{_error}</p>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <template lwc:elseif={hasExplanation}>
+      <!-- Overall Result Alert -->
+      <div class={overallAlertClassName} role="alert">
+        <div class="ontario-alert__header">
+          <h3 class="ontario-alert__header-title ontario-h5">
+            {overallResultHeading}
+          </h3>
+        </div>
+        <div class="ontario-alert__body">
+          <p>{overallResultMessage}</p>
+        </div>
+      </div>
+
+      <!-- View Toggle Button -->
+      <div
+        lwc:if={_showViewToggle.value}
+        class="ontario-margin-top-16-! ontario-margin-bottom-16-!"
+      >
+        <button
+          type="button"
+          class="ontario-button ontario-button--tertiary"
+          onclick={handleToggleViewMode}
+          aria-label={viewToggleAriaLabel}
+          aria-pressed={isDetailedView}
+        >
+          {viewToggleLabel}
+        </button>
+      </div>
+
+      <!-- Step Explanations -->
+      <section
+        lwc:if={hasSteps}
+        class="ontario-decision-explainer__steps ontario-margin-top-24-!"
+        aria-labelledby="steps-heading"
+      >
+        <h3 id="steps-heading" class="ontario-h5 ontario-margin-bottom-16-!">
+          How we determined this result
+        </h3>
+
+        <!-- Concise View: Simple callout list -->
+        <ul
+          lwc:if={isConciseView}
+          class="ontario-decision-explainer__step-list"
+          role="list"
+        >
+          <template for:each={computedSteps} for:item="step">
+            <li key={step.id} class={step.calloutClassName} role="listitem">
+              <div class="ontario-callout__content">
+                <!-- Accessible status indicator -->
+                <span class="ontario-visually-hidden">{step.statusText}</span>
+                <span
+                  class={step.statusIconClassName}
+                  aria-hidden="true"
+                ></span>
+                <h4 class="ontario-h6 ontario-margin-bottom-8-!">
+                  {step.stepLabel}
+                </h4>
+                <p>{step.message}</p>
+              </div>
+            </li>
+          </template>
+        </ul>
+
+        <!-- Detailed View: Expandable accordion -->
+        <div lwc:else class="ontario-decision-explainer__accordion">
+          <template for:each={computedSteps} for:item="step">
+            <details
+              key={step.id}
+              class="ontario-details ontario-margin-bottom-16-!"
+            >
+              <summary class="ontario-details__summary">
+                <span class="ontario-details__summary-text">
+                  <!-- Accessible status indicator -->
+                  <span class="ontario-visually-hidden">{step.statusText}</span>
+                  <span
+                    class={step.statusIconClassName}
+                    aria-hidden="true"
+                  ></span>
+                  <span class="ontario-details__title">{step.stepLabel}</span>
+                </span>
+              </summary>
+              <div class="ontario-details__content">
+                <p class="ontario-margin-bottom-16-!">{step.message}</p>
+
+                <!-- Step Details (if available and showDetails is true) -->
+                <template lwc:if={step.showDetails}>
+                  <template lwc:if={step.detailItems.length}>
+                    <dl
+                      class="ontario-definition-list"
+                      aria-label="Calculation details"
+                    >
+                      <template for:each={step.detailItems} for:item="detail">
+                        <div
+                          key={detail.key}
+                          class="ontario-definition-list__item"
+                        >
+                          <dt class="ontario-definition-list__term">
+                            {detail.key}
+                          </dt>
+                          <dd class="ontario-definition-list__definition">
+                            {detail.value}
+                          </dd>
+                        </div>
+                      </template>
+                    </dl>
+                  </template>
+                </template>
+              </div>
+            </details>
+          </template>
+        </div>
+      </section>
+
+      <!-- Input Summary -->
+      <template lwc:if={hasInputSummaryItems}>
+        <section
+          class="ontario-margin-top-24-!"
+          aria-labelledby="inputs-heading"
+        >
+          <h3 id="inputs-heading" class="ontario-h5 ontario-margin-bottom-16-!">
+            Information Provided
+          </h3>
+          <c-sf-gps-ds-ca-on-summary-list
+            items={inputSummaryItems}
+            ratio="1-2"
+            compact
+          ></c-sf-gps-ds-ca-on-summary-list>
+        </section>
+      </template>
+
+      <!-- Output Summary -->
+      <template lwc:if={hasSummaryItems}>
+        <section
+          class="ontario-margin-top-24-!"
+          aria-labelledby="outputs-heading"
+        >
+          <h3
+            id="outputs-heading"
+            class="ontario-h5 ontario-margin-bottom-16-!"
+          >
+            Calculated Results
+          </h3>
+          <c-sf-gps-ds-ca-on-summary-list
+            items={summaryItems}
+            ratio="1-2"
+            compact
+          ></c-sf-gps-ds-ca-on-summary-list>
+        </section>
+      </template>
+    </template>
+
+    <!-- Initial State (not yet evaluated) -->
+    <template lwc:elseif={showInitialState}>
+      <div class="ontario-callout ontario-border-highlight--teal">
+        <p>Click the button below to check your eligibility.</p>
+      </div>
+      <button
+        type="button"
+        class="ontario-button ontario-button--primary ontario-margin-top-16-!"
+        onclick={handleEvaluateClick}
+        aria-label="Check eligibility - this will evaluate your information against the eligibility criteria"
+      >
+        Check Eligibility
+      </button>
+    </template>
+  </div>
+</template>

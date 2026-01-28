@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>false</isExposed>
+    <description
+  >Ontario Design System Decision Explainer component for displaying business rule evaluation results with step-by-step explanations.</description>
+</LightningComponentBundle>

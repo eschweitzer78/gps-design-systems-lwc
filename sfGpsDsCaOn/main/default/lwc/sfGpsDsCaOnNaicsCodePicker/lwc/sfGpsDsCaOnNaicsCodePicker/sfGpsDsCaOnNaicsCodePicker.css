@@ -24,8 +24,8 @@
 .sfgpsdscaon-naics-code-picker__selection {
   margin-top: 1.5rem;
   padding: 1rem;
-  background-color: #f5f5f5;
-  border-left: 4px solid #1a1a1a;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  border-left: 4px solid var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-naics-code-picker__selected-label {
@@ -36,21 +36,21 @@
 .sfgpsdscaon-naics-code-picker__selected-value {
   margin: 0 0 0.75rem 0;
   font-size: 1rem;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-naics-code-picker__clear-link {
   display: inline-block;
   font-size: 1rem;
-  color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
   text-decoration: underline;
 }
 
 .sfgpsdscaon-naics-code-picker__clear-link:hover {
-  color: #004080;
+  color: var(--ontario-colour-link-hover, #004080);
 }
 
 .sfgpsdscaon-naics-code-picker__clear-link:focus {
-  outline: 4px solid #009adb;
+  outline: 4px solid var(--ontario-colour-focus, #009adb);
   outline-offset: 2px;
 }

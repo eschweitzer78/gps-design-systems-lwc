@@ -29,9 +29,17 @@
         name="highlightColour"
         type="String"
         label="Highlight colour"
-        description="Border colour of the callout."
+        description="Border colour of the callout (only applies when Type is 'default')."
         default="default"
         datasource="default,blue,gold,green,lime,purple,sky,taupe,teal,yellow"
+      />
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="Callout type: default (border only), information (blue), warning (yellow), error (red), success (green)."
+        default="default"
+        datasource="default,information,warning,error,success"
       />
       <property
         name="content"

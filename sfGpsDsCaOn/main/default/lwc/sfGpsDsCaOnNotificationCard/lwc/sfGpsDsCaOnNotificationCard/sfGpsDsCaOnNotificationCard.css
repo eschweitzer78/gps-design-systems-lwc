@@ -2,8 +2,8 @@
 
 .sfgpsdscaon-notification-card {
   display: block;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: var(--ontario-colour-white, #fff);
+  border: 1px solid var(--ontario-greyscale-20, #ccc);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -14,15 +14,15 @@
 }
 
 .sfgpsdscaon-notification-card__header--action {
-  background-color: #1a1a1a;
+  background-color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-notification-card__header--reminder {
-  background-color: #00838f;
+  background-color: var(--ontario-colour-teal, #00838f);
 }
 
 .sfgpsdscaon-notification-card__header--status {
-  background-color: #0277bd;
+  background-color: var(--ontario-colour-blue, #0277bd);
 }
 
 .sfgpsdscaon-notification-card__title {
@@ -30,7 +30,7 @@
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.3;
-  color: #ffffff;
+  color: var(--ontario-colour-white, #ffffff);
   margin: 0;
 }
 
@@ -43,7 +43,7 @@
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: #4d4d4d;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
   margin: 0 0 0.75rem 0;
 }
 
@@ -57,27 +57,27 @@
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
   text-decoration: underline;
 }
 
 .sfgpsdscaon-notification-card__badge:hover {
-  color: #004080;
+  color: var(--ontario-colour-link-hover, #004080);
 }
 
 .sfgpsdscaon-notification-card__view-all {
   font-family: "Open Sans", Arial, sans-serif;
   font-size: 0.875rem;
-  color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
   text-decoration: underline;
 }
 
 .sfgpsdscaon-notification-card__view-all:hover {
-  color: #004080;
+  color: var(--ontario-colour-link-hover, #004080);
 }
 
 /* Focus state for accessibility */
 .sfgpsdscaon-notification-card__link:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }

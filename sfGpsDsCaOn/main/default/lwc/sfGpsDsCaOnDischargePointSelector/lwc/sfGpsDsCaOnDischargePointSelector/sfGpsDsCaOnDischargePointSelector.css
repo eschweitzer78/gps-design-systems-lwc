@@ -31,8 +31,8 @@
   width: 350px;
   min-width: 350px;
   padding: 1.5rem;
-  background-color: #ffffff;
-  border-right: 1px solid #cccccc;
+  background-color: var(--ontario-colour-white, #ffffff);
+  border-right: 1px solid var(--ontario-greyscale-20, #cccccc);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -42,7 +42,7 @@
 .sfgpsdscaon-discharge-selector__right-panel {
   flex: 1;
   position: relative;
-  background-color: #f5f5f5;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
 }
 
 /* Form Fields */
@@ -87,19 +87,19 @@
 .sfgpsdscaon-discharge-selector__coordinates-display {
   margin-top: 1.5rem;
   padding: 1rem;
-  background-color: #f5f5f5;
-  border-left: 4px solid #0066cc;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  border-left: 4px solid var(--ontario-colour-link, #0066cc);
 }
 
 .sfgpsdscaon-discharge-selector__coordinates-label {
   font-weight: 600;
   margin-bottom: 0.25rem;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-discharge-selector__coordinates-value {
   font-family: monospace;
-  color: #4d4d4d;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
 }
 
 /* Continue Button */
@@ -113,7 +113,7 @@
   display: flex;
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
 }
 
 .sfgpsdscaon-discharge-selector__tab {
@@ -126,7 +126,7 @@
   background: none;
   border: none;
   border-bottom: 3px solid transparent;
-  color: #4d4d4d;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
   font-size: 0.875rem;
   font-family: inherit;
   cursor: pointer;
@@ -134,13 +134,13 @@
 }
 
 .sfgpsdscaon-discharge-selector__tab:hover {
-  background-color: #f5f5f5;
-  color: #1a1a1a;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-discharge-selector__tab--active {
-  color: #0066cc;
-  border-bottom-color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
+  border-bottom-color: var(--ontario-colour-link, #0066cc);
 }
 
 .sfgpsdscaon-discharge-selector__tab .ontario-icon {
@@ -162,12 +162,12 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #4d4d4d;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
 }
 
 .sfgpsdscaon-discharge-selector__map-placeholder-hint {
   font-size: 0.875rem;
-  color: #666666;
+  color: var(--ontario-greyscale-40, #666666);
   margin-top: 0.5rem;
 }
 
@@ -182,7 +182,7 @@
     min-width: unset;
     max-height: 50%;
     border-right: none;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid var(--ontario-greyscale-20, #cccccc);
   }
 
   .sfgpsdscaon-discharge-selector__right-panel {

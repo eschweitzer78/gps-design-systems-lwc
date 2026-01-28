@@ -44,7 +44,7 @@
   flex-direction: column;
   max-height: 90vh;
   max-width: 90vw;
-  background-color: #ffffff;
+  background-color: var(--ontario-colour-white, #ffffff);
   border-radius: 0;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
   transform: translateY(-20px);
@@ -103,8 +103,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1.5rem;
-  background-color: #1a1a1a; /* Ontario dark - matching screenshot */
-  color: #ffffff;
+  background-color: var(
+    --ontario-colour-black,
+    #1a1a1a
+  ); /* Ontario dark - matching screenshot */
+  color: var(--ontario-colour-white, #ffffff);
   flex-shrink: 0;
 }
 
@@ -116,7 +119,7 @@
   font-family:
     "Raleway Modified", "Open Sans", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
-  color: #ffffff;
+  color: var(--ontario-colour-white, #ffffff);
 }
 
 /* ========================================
@@ -136,7 +139,7 @@
   border: 2px solid transparent;
   border-radius: 4px;
   cursor: pointer;
-  color: #ffffff;
+  color: var(--ontario-colour-white, #ffffff);
   transition:
     background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out;
@@ -148,7 +151,7 @@
 
 .sfgpsdscaon-modal__close-btn:focus {
   outline: none;
-  border-color: #ffffff;
+  border-color: var(--ontario-colour-white, #ffffff);
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 
@@ -170,7 +173,7 @@
   flex: 1;
   overflow: auto;
   padding: 0;
-  background-color: #ffffff;
+  background-color: var(--ontario-colour-white, #ffffff);
 }
 
 /* For modals that need internal padding */
@@ -188,8 +191,8 @@
   justify-content: flex-end;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background-color: #f5f5f5;
-  border-top: 1px solid #cccccc;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
   flex-shrink: 0;
 }
 

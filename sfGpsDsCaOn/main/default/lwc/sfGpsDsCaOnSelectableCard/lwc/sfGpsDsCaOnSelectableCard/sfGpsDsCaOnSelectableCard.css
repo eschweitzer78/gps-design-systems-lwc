@@ -9,17 +9,17 @@
   display: flex;
   flex-direction: column;
   padding: 1rem 1.25rem;
-  border-bottom: 1px solid #cccccc;
-  background-color: #ffffff;
+  border-bottom: 1px solid var(--ontario-greyscale-20, #cccccc);
+  background-color: var(--ontario-colour-white, #ffffff);
   transition: background-color 0.15s ease-in-out;
 }
 
 .sfgpsdscaon-selectable-card:first-child {
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
 }
 
 .sfgpsdscaon-selectable-card--selected {
-  background-color: #f5f5f5;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
 }
 
 .sfgpsdscaon-selectable-card--disabled {
@@ -60,7 +60,7 @@
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.5;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 /* Badge - Status indicator next to title */
@@ -77,23 +77,23 @@
 
 /* Badge Variants */
 .sfgpsdscaon-selectable-card__badge--success {
-  background-color: #118847;
-  color: #ffffff;
+  background-color: var(--ontario-colour-success, #118847);
+  color: var(--ontario-colour-white, #ffffff);
 }
 
 .sfgpsdscaon-selectable-card__badge--info {
-  background-color: #0066cc;
-  color: #ffffff;
+  background-color: var(--ontario-colour-link, #0066cc);
+  color: var(--ontario-colour-white, #ffffff);
 }
 
 .sfgpsdscaon-selectable-card__badge--warning {
-  background-color: #ffc107;
-  color: #1a1a1a;
+  background-color: var(--ontario-colour-warning, #ffc107);
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-selectable-card__badge--error {
-  background-color: #cd0000;
-  color: #ffffff;
+  background-color: var(--ontario-colour-error, #cd0000);
+  color: var(--ontario-colour-white, #ffffff);
 }
 
 /* Description - supports multi-line text with \n */
@@ -102,7 +102,7 @@
   margin-left: 2.25rem; /* Align with label text */
   font-size: 1rem;
   line-height: 1.5;
-  color: #4d4d4d;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
   white-space: pre-line; /* Preserve line breaks from \n */
 }
 
@@ -112,16 +112,16 @@
   margin-top: 0.25rem;
   margin-left: 2.25rem; /* Align with label text */
   font-size: 1rem;
-  color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
   text-decoration: underline;
 }
 
 .sfgpsdscaon-selectable-card__link:hover {
-  color: #00478f;
+  color: var(--ontario-colour-link-hover, #00478f);
 }
 
 .sfgpsdscaon-selectable-card__link:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }
 
@@ -135,7 +135,7 @@
   padding: 0;
   background: none;
   border: none;
-  color: #0066cc;
+  color: var(--ontario-colour-link, #0066cc);
   font-size: 1rem;
   font-family: inherit;
   cursor: pointer;
@@ -143,12 +143,12 @@
 }
 
 .sfgpsdscaon-selectable-card__expand-btn:hover {
-  color: #00478f;
+  color: var(--ontario-colour-link-hover, #00478f);
   text-decoration: underline;
 }
 
 .sfgpsdscaon-selectable-card__expand-btn:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }
 
@@ -164,9 +164,9 @@
   margin-top: 0.75rem;
   margin-left: 2.25rem; /* Align with label text */
   padding: 1rem;
-  background-color: #f5f5f5;
-  border-left: 4px solid #0066cc;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  border-left: 4px solid var(--ontario-colour-link, #0066cc);
   font-size: 1rem;
   line-height: 1.5;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }

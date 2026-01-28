@@ -13,7 +13,7 @@
 
 .sfgpsdscaon-edit-block__edit-container {
   padding: 1rem;
-  background: #f8f8f8;
+  background: var(--ontario-greyscale-3, #f8f8f8);
   border-radius: 4px;
 }
 
@@ -22,14 +22,14 @@
   gap: 0.5rem;
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--ontario-greyscale-10, #e0e0e0);
 }
 
 /* Table mode */
 .sfgpsdscaon-edit-block__table-header {
   display: flex;
-  background: #1a1a1a;
-  color: #ffffff;
+  background: var(--ontario-colour-black, #1a1a1a);
+  color: var(--ontario-colour-white, #ffffff);
   font-weight: 600;
 }
 
@@ -45,12 +45,12 @@
 
 .sfgpsdscaon-edit-block__row {
   display: flex;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--ontario-greyscale-10, #e0e0e0);
   align-items: center;
 }
 
 .sfgpsdscaon-edit-block__row--selected {
-  background-color: #e8f4fd;
+  background-color: var(--ontario-colour-info-light, #e8f4fd);
 }
 
 .sfgpsdscaon-edit-block__table-cell {
@@ -71,7 +71,7 @@
 /* Inline mode */
 .sfgpsdscaon-edit-block--inline {
   padding: 1rem;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--ontario-greyscale-10, #e0e0e0);
   border-radius: 4px;
 }
 
@@ -83,7 +83,7 @@
 
 /* Cards mode */
 .sfgpsdscaon-edit-block__card {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--ontario-greyscale-10, #e0e0e0);
   border-radius: 4px;
   margin-bottom: 1rem;
   cursor: pointer;
@@ -95,7 +95,7 @@
 }
 
 .sfgpsdscaon-edit-block__card--selected {
-  border-color: #0066cc;
+  border-color: var(--ontario-colour-link, #0066cc);
   box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
 }
 
@@ -116,8 +116,8 @@
 /* FS (Full-Screen) mode */
 .sfgpsdscaon-edit-block__fs-header {
   display: flex;
-  background: #1a1a1a;
-  color: #ffffff;
+  background: var(--ontario-colour-black, #1a1a1a);
+  color: var(--ontario-colour-white, #ffffff);
   font-weight: 600;
 }
 
@@ -133,7 +133,7 @@
 
 .sfgpsdscaon-edit-block__fs-row {
   display: flex;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--ontario-greyscale-10, #e0e0e0);
   align-items: center;
 }
 
@@ -162,7 +162,7 @@
 
 .sfgpsdscaon-edit-block__fs-sum {
   padding: 0.75rem;
-  background: #f8f8f8;
+  background: var(--ontario-greyscale-3, #f8f8f8);
   text-align: right;
-  border-bottom: 2px solid #1a1a1a;
+  border-bottom: 2px solid var(--ontario-colour-black, #1a1a1a);
 }

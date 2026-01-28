@@ -12,7 +12,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 import type { 
   HeadingColour, 
-  HeadingLevel 
+  HeadingLevel,
+  CalloutType 
 } from "c/sfGpsDsCaOnCallout";
 
 // eslint-disable-next-line no-unused-vars
@@ -39,6 +40,23 @@ const HEADINGLEVEL_VALUES: HeadingLevel[] = [
   "h2", "h3", "h4", "h5", "h6"
 ];
 const HEADINGLEVEL_DEFAULT: HeadingLevel = "h2";
+
+/**
+ * Callout type variants with corresponding CSS classes
+ * - default: Standard callout with border color only
+ * - information: Blue background with info icon
+ * - warning: Yellow/gold background with warning icon
+ * - error: Red background with error icon
+ * - success: Green background with success icon
+ */
+const CALLOUTTYPE_VALUES: Record<CalloutType, string> = {
+  default: "",
+  information: "ontario-callout--typed ontario-callout--information",
+  warning: "ontario-callout--typed ontario-callout--warning",
+  error: "ontario-callout--typed ontario-callout--error",
+  success: "ontario-callout--typed ontario-callout--success"
+} as const;
+const CALLOUTTYPE_DEFAULT: CalloutType = "default";
 
 export default 
 class SfGpsDsCaOnCallout
@@ -73,6 +91,22 @@ extends SfGpsDsLwc {
   @api 
   heading?: string;
 
+  /**
+   * Callout type for alert-style callouts with background colors and icons.
+   * - default: Standard callout with border color only
+   * - information: Blue background with info icon
+   * - warning: Yellow/gold background with warning icon (for regulatory notices)
+   * - error: Red background with error icon (for hard stops/ineligibility)
+   * - success: Green background with success icon
+   */
+  // @ts-ignore
+  @api 
+  type?: CalloutType;
+  _type = this.defineEnumObjectProperty<string, CalloutType>("type", {
+    validValues: CALLOUTTYPE_VALUES,
+    defaultValue: CALLOUTTYPE_DEFAULT
+  });
+
   /* getters */
 
   /**
@@ -92,10 +126,86 @@ extends SfGpsDsLwc {
     return !this.heading;
   }
 
+  /**
+   * Returns the resolved type key from the type property.
+   */
+  get _typeKey(): CalloutType {
+    // If type is set and valid, use it; otherwise default
+    const validTypes: CalloutType[] = ["default", "information", "warning", "error", "success"];
+    if (this.type && validTypes.includes(this.type as CalloutType)) {
+      return this.type as CalloutType;
+    }
+    return CALLOUTTYPE_DEFAULT;
+  }
+
+  /**
+   * Returns true if this is a typed callout (has icon).
+   */
+  get isTypedCallout(): boolean {
+    return this._typeKey !== "default";
+  }
+
+  /**
+   * Returns true if this is NOT a typed callout (default callout).
+   * Used in template since LWC doesn't support ! negation in expressions.
+   */
+  get isDefaultCallout(): boolean {
+    return this._typeKey === "default";
+  }
+
+  /**
+   * Returns true if callout should show an icon.
+   */
+  get showIcon(): boolean {
+    return this.isTypedCallout;
+  }
+
+  /**
+   * Returns true if this is an information callout.
+   */
+  get isInformation(): boolean {
+    return this._typeKey === "information";
+  }
+
+  /**
+   * Returns true if this is a warning callout.
+   */
+  get isWarning(): boolean {
+    return this._typeKey === "warning";
+  }
+
+  /**
+   * Returns true if this is an error callout.
+   */
+  get isError(): boolean {
+    return this._typeKey === "error";
+  }
+
+  /**
+   * Returns true if this is a success callout.
+   */
+  get isSuccess(): boolean {
+    return this._typeKey === "success";
+  }
+
+  /**
+   * Get the CSS class for the current type.
+   */
+  get _typeClassName(): string {
+    return CALLOUTTYPE_VALUES[this._typeKey] || "";
+  }
+
   get computedClassName(): any {
+    const isTyped = this.isTypedCallout;
+    const typeClass = this._typeClassName;
     return {
       "ontario-callout": true,
-      [this._highlightColour.value]: !!this._highlightColour.value,
+      // Only apply border highlight color for default (non-typed) callouts
+      [this._highlightColour.value]: !isTyped && !!this._highlightColour.value,
+      // Apply type-specific classes for typed callouts
+      [typeClass]: isTyped && !!typeClass,
+      // Add no-heading modifier if typed but no heading
+      "ontario-callout--no-heading": isTyped && !this.heading,
       [this.className || ""]: this.className
     }
   }

@@ -56,7 +56,7 @@
 .sfgpsdscaon-coordinate-input__dms-symbol {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
   min-width: 0.75rem;
   text-align: center;
 }
@@ -68,7 +68,7 @@
 
 /* Error state */
 .sfgpsdscaon-coordinate-input--error .ontario-input {
-  border-color: #cd0000;
+  border-color: var(--ontario-colour-error, #cd0000);
 }
 
 /* Responsive */

@@ -5,8 +5,8 @@
  */
 
 .sfgpsdscaon-formula-value {
-  background-color: #f2f2f2;
-  border: 1px solid #cccccc;
+  background-color: var(--ontario-greyscale-5, #f2f2f2);
+  border: 1px solid var(--ontario-greyscale-20, #cccccc);
   cursor: default;
   min-height: 48px;
   display: flex;

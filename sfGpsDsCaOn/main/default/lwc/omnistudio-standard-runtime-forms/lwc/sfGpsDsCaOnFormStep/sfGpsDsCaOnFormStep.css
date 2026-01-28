@@ -21,8 +21,8 @@
   position: absolute;
   top: -40px;
   left: 0;
-  background: #1a5a96;
-  color: #ffffff;
+  background: var(--ontario-colour-primary, #1a5a96);
+  color: var(--ontario-colour-white, #ffffff);
   padding: 0.5rem 1rem;
   text-decoration: none;
   font-weight: 600;
@@ -34,12 +34,12 @@
 .sfgpsdscaon-step__skip-link:focus,
 .sfgpsdscaon-step__skip-link--visible {
   top: 0;
-  outline: 3px solid #ffcc00;
+  outline: 3px solid var(--ontario-colour-warning, #ffcc00);
   outline-offset: 2px;
 }
 
 .sfgpsdscaon-step__skip-link:hover {
-  background: #0d3d66;
+  background: var(--ontario-colour-primary-dark, #0d3d66);
 }
 
 /* ========================================
@@ -48,8 +48,8 @@
  * ======================================== */
 
 .sfgpsdscaon-step__error-summary {
-  background-color: #fef0f0;
-  border: 2px solid #cd0000;
+  background-color: var(--ontario-colour-error-light, #fef0f0);
+  border: 2px solid var(--ontario-colour-error, #cd0000);
   border-left-width: 4px;
   padding: 1rem 1.5rem;
   margin-bottom: 1.5rem;
@@ -57,19 +57,19 @@
 }
 
 .sfgpsdscaon-step__error-summary:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }
 
 .sfgpsdscaon-step__error-summary h3 {
-  color: #cd0000;
+  color: var(--ontario-colour-error, #cd0000);
   margin: 0 0 0.5rem 0;
   font-size: 1.125rem;
 }
 
 .sfgpsdscaon-step__error-summary p {
   margin: 0;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-step__heading {
@@ -77,17 +77,17 @@
   font-weight: 700;
   line-height: 1.3;
   margin: 1.5rem 0 1rem 0;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
 }
 
 .sfgpsdscaon-step__heading:focus {
-  outline: 3px solid #0066cc;
+  outline: 3px solid var(--ontario-colour-link, #0066cc);
   outline-offset: 2px;
 }
 
 .sfgpsdscaon-step__separator {
   border: none;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
   margin: 1rem 0 1.5rem 0;
 }
 
@@ -102,7 +102,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1.5rem 0;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
 }
 
 .sfgpsdscaon-step__back {
@@ -122,11 +122,11 @@
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .sfgpsdscaon-step__back {
     order: 2;
   }
-  
+
   .sfgpsdscaon-step__primary-actions {
     order: 1;
     flex-direction: column;

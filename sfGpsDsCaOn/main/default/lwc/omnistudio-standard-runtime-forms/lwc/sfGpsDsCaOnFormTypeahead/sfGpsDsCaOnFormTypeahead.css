@@ -28,7 +28,7 @@
   width: 24px;
   height: 24px;
   pointer-events: none;
-  fill: #666666;
+  fill: var(--ontario-greyscale-40, #666666);
 }
 
 .sfgpsdscaon-typeahead__loader {
@@ -47,8 +47,8 @@
   z-index: 7001;
   max-height: 200px;
   overflow-y: auto;
-  background: #ffffff;
-  border: 2px solid #1a1a1a;
+  background: var(--ontario-colour-white, #ffffff);
+  border: 2px solid var(--ontario-colour-black, #1a1a1a);
   border-top: none;
   border-radius: 0 0 4px 4px;
   display: none;
@@ -74,9 +74,9 @@
   display: block;
   padding: 0.75rem 1rem;
   text-decoration: none;
-  color: #1a1a1a;
+  color: var(--ontario-colour-black, #1a1a1a);
   cursor: pointer;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--ontario-greyscale-10, #e0e0e0);
 }
 
 .sfgpsdscaon-listbox__option:last-child {
@@ -86,13 +86,13 @@
 .sfgpsdscaon-listbox__option:hover,
 .sfgpsdscaon-listbox__option:focus,
 .sfgpsdscaon-listbox__option.sfgpsdscaon-has-focus {
-  background-color: #e8f4fd;
+  background-color: var(--ontario-colour-info-light, #e8f4fd);
   outline: none;
 }
 
 .sfgpsdscaon-listbox__option[aria-selected="true"] {
-  background-color: #0066cc;
-  color: #ffffff;
+  background-color: var(--ontario-colour-link, #0066cc);
+  color: var(--ontario-colour-white, #ffffff);
 }
 
 /* Open state indicator */
