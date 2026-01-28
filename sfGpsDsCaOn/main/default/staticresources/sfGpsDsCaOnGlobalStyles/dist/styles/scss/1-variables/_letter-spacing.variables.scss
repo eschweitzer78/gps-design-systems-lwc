@@ -1,0 +1,13 @@
+@use './tokens.variables' as variables;
+
+/* -------------------------------
+    Global letter-spacing variables
+--------------------------------- */
+
+// These pixel values are based on a based rem value of 16px and can be found in packages/ontario-design-system-design-tokens/tokens/sizes/letter-spacing.js
+
+$ontario-letter-spacing-xsmall: variables.$ontario-font-letter-spacing-x-small; // 0.32 px
+$ontario-letter-spacing-small: variables.$ontario-font-letter-spacing-small; // 0.4px
+$ontario-letter-spacing-medium: variables.$ontario-font-letter-spacing-medium; // 0.48px
+$ontario-letter-spacing-large: variables.$ontario-font-letter-spacing-large; // 0.5px
+$ontario-letter-spacing-xlarge: variables.$ontario-font-letter-spacing-x-large; // 0.64px

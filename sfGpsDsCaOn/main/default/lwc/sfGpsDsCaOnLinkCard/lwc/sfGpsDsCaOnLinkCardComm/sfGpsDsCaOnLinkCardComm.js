@@ -6,37 +6,29 @@
  */
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-
 /**
  * Experience Builder wrapper for Ontario DS Link Card.
  */
 export default class SfGpsDsCaOnLinkCardComm extends SfGpsDsLwc {
   static renderMode = "light";
-
   // @ts-ignore
   @api
   heading;
-
   // @ts-ignore
   @api
   description;
-
   // @ts-ignore
   @api
   url;
-
   // @ts-ignore
   @api
   isExternal;
-
   // @ts-ignore
   @api
   headingLevel;
-
   // @ts-ignore
   @api
   className;
-
   /* Lifecycle */
   connectedCallback() {
     super.connectedCallback?.();

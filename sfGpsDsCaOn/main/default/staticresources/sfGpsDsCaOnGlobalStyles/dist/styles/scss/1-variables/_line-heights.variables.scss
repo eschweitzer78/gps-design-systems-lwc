@@ -1,0 +1,16 @@
+@use './tokens.variables' as variables;
+
+/* -------------------------------
+    Global line-height variables
+--------------------------------- */
+
+// These pixel values are based on a based rem value of 16px and can be found in packages/ontario-design-system-design-tokens/tokens/sizes/line-heights.js
+
+$ontario-line-height-1: variables.$ontario-font-line-heights-1; // 19.2px
+$ontario-line-height-2: variables.$ontario-font-line-heights-2; // 20.64px
+$ontario-line-height-3: variables.$ontario-font-line-heights-3; // 21.28px
+$ontario-line-height-4: variables.$ontario-font-line-heights-4; // 21.92px
+$ontario-line-height-5: variables.$ontario-font-line-heights-5; // 22.24px
+$ontario-line-height-6: variables.$ontario-font-line-heights-6; // 22.88px
+$ontario-line-height-7: variables.$ontario-font-line-heights-7; // 24px
+$ontario-line-height-8: variables.$ontario-font-line-heights-8; // 24.96px

@@ -4,7 +4,7 @@
   "version": "3.0.1",
   "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
-    "build-caon": "npx tsc --project sfGpsDsCaOn/main/default/lwc",
+    "build-caon": "npx tsc --project sfGpsDs/main/default/lwc; npx tsc --project sfGpsDsCaOn/main/default/lwc",
     "build": "npx tsc --project sfGpsDs/main/default/lwc; npx tsc --project sfGpsDsAuNsw/main/default/lwc; npx tsc --project sfGpsDsAuQld/main/default/lwc; npx tsc --project sfGpsDsAuVic2/main/default/lwc; npx tsc --project sfGpsDsAuVic2Showcase/main/default/lwc",
     "lint": "eslint **/{aura,lwc}/**",
     "lint-caon": "eslint sfGpsDsCaOn/**/{aura,lwc}/**",
@@ -30,7 +30,7 @@
     "prep-frgov": "mkdir -p sfGpsDsFrGovFull",
     "prep-ukgov": "mkdir -p sfGpsDsUkGovFull",
     "prep-sggov": "cp -a node_modules/@govtechsg/sgds/css/sgds.css sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; mkdir -p sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; cp -a node_modules/bootstrap-icons/font/bootstrap-icons.css sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; mkdir -p sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov/fonts; cp -a node_modules/bootstrap-icons/font/fonts/* sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov/fonts; mkdir -p sfGpsDsSgGovFull",
-    "prep-caon": "rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; mkdir -p sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; cp -a node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist/ontario-design-system-components/fonts; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/dist; cp -a node_modules/@ongov/ontario-design-system-global-styles/dist sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles; mkdir -p sfGpsDsCaOnFull",
+    "prep-caon": "rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; mkdir -p sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; cp -a node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist/ontario-design-system-components/fonts; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/dist; cp -a node_modules/@ongov/ontario-design-system-global-styles/dist sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/dist/fonts; mkdir -p sfGpsDsCaOnFull",
     "prep": "npm run prep-nsw; npm run prep-nsws; npm run prep-qld; npm run prep-vic2; npm run prep-frgov; npm run prep-ukgov;npm run prep-sggov; npm run prep-caon",
     "aunsw-copy": "rm -rf sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswFull;cp -a sfGpsDs/. sfGpsDsAuNswFull;cp -a sfGpsDsAuNsw/. sfGpsDsAuNswFull",
     "aunsws-copy": "rm -rf sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuNswSFull;cp -a sfGpsDs/. sfGpsDsAuNswSFull;cp -a sfGpsDsAuNswS/. sfGpsDsAuNswSFull",
@@ -38,7 +38,7 @@
     "auvic2-copy": "rm -rf sfGpsDsAuVic2Full;mkdir -p sfGpsDsAuVic2Full;cp -a sfGpsDs/. sfGpsDsAuVic2Full;cp -a sfGpsDsAuVic2/. sfGpsDsAuVic2Full",
     "frgov-copy": "rm -rf sfGpsDsFrGovFull;mkdir -p sfGpsDsFrGovFull;cp -a sfGpsDs/. sfGpsDsFrGovFull;cp -a sfGpsDsFrGov/. sfGpsDsFrGovFull",
     "ukgov-copy": "rm -rf sfGpsDsUkGovFull;mkdir -p sfGpsDsUkGovFull;cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull",
-    "copy-caon": "rm -rf sfGpsDsOnCaFull;mkdir -p sfGpsDsOnCaFull;cp -a sfGpsDs/. sfGpsDsOnCaFull;cp -a sfGpsDsOnCa/. sfGpsDsOnCaFull",
+    "copy-caon": "rm -rf sfGpsDsCaOnFull;mkdir -p sfGpsDsCaOnFull;cp -a sfGpsDs/. sfGpsDsCaOnFull;cp -a sfGpsDsCaOn/. sfGpsDsCaOnFull",
     "synclabs": "export SDIR=../gps-design-systems-lwc;export TDIR=../gps-design-systems-lwcx;rm -rf $TDIR;cp -a . $TDIR;cp -a $SDIR/.git $TDIR;rm -rf $TDIR/.github"
   },
   "lint-staged": {

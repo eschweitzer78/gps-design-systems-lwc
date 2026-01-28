@@ -1,0 +1,39 @@
+@use 'sass:math';
+@use './tokens.variables' as variables;
+
+/*
+*  Global variables
+*
+*  Used across multiple components
+*/
+
+// Radius for rounded corners (for example, buttons)
+$global-radius: variables.$ontario-global-tokens-radius;
+
+// This value represents 1 pixel based on a base rem value of 16px
+$pixel: variables.$ontario-global-tokens-pixel-value;
+
+$breakpoint-transition-value: variables.$ontario-global-tokens-breakpoint-transition-value;
+
+// This value represents a large max value
+$max-value: variables.$ontario-global-tokens-max-value;
+
+// Width values
+$narrower-width: variables.$ontario-global-tokens-width-narrower; // 26.25em
+$narrow-width: variables.$ontario-global-tokens-width-narrow; // 38.75em
+$standard-width: variables.$ontario-global-tokens-width-standard;
+$full-width: variables.$ontario-global-tokens-width-max; // 100%
+
+// Border sizes
+$border-size-standard: variables.$ontario-global-tokens-border-size; // 2px
+
+// Touch target sizes
+$touch-target-size: variables.$ontario-global-tokens-touch-target-size; // 36px
+$touch-target-size-mobile: variables.$ontario-global-tokens-touch-target-size-mobile; // 40px
+
+// Line height sizes
+$line-height-default: variables.$ontario-global-tokens-line-height-default; // 1.5
+
+// Height values
+$standard-input-height: 48px;
+$ontario-logo-height: 46px;

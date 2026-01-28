@@ -1,0 +1,16 @@
+@use '../1-variables/global.variables' as globalVariables;
+@use '../1-variables/spacing.variables' as spacing;
+
+.ontario-aside *:last-of-type,
+.ontario-callout *:last-of-type {
+	margin-bottom: spacing.$spacing-2;
+}
+
+ontario-aside *,
+ontario-callout * {
+	max-width: globalVariables.$standard-width;
+
+	&:last-of-type {
+		margin-bottom: spacing.$spacing-2;
+	}
+}

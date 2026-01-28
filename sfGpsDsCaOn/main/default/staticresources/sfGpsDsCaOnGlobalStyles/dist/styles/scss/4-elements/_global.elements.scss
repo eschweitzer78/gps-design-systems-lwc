@@ -1,0 +1,285 @@
+@use '../1-variables/colours.variables' as colours;
+@use '../1-variables/font-weights.variables' as fontWeights;
+@use '../1-variables/font-sizes.variables' as fontSizes;
+@use '../1-variables/fonts.variables' as fonts;
+@use '../1-variables/typography.variables' as typography;
+@use '../1-variables/global.variables' as global;
+@use '../1-variables/spacing.variables' as spacing;
+@use '../1-variables/breakpoints.variables' as breakpoints;
+
+/*
+*  Global elements
+*
+*  1 - Unclassed elements
+*    1.1 - Base
+*    1.2 - Typography
+*    1.3 - Forms
+*    1.4 - Horizontal Rule
+*    1.5 - Lists
+*/
+
+/*** 1 - Unclassed Elements ***/
+
+/* Base */
+html {
+	font-family: fonts.$ontario-font-open-sans;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+}
+
+body {
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	line-height: 1.6;
+	background-color: colours.$ontario-colour-white;
+	color: colours.$ontario-colour-black;
+	margin: 0;
+}
+
+/* Typography */
+p {
+	font-size: inherit;
+	margin-bottom: 1.25rem;
+	text-rendering: optimizeLegibility;
+	margin: 0 0 spacing.$spacing-5 0;
+}
+
+cite {
+	font-style: italic;
+	line-height: inherit;
+}
+
+strong {
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	line-height: inherit;
+}
+
+h1,
+.ontario-h1 {
+	@extend %h1-styles;
+}
+
+h2,
+.ontario-h2 {
+	@extend %h2-styles;
+}
+
+h3,
+.ontario-h3 {
+	@extend %h3-styles;
+}
+
+h4,
+.ontario-h4 {
+	@extend %h4-styles;
+}
+
+h5,
+.ontario-h5 {
+	@extend %h5-styles;
+}
+
+h6,
+.ontario-h6 {
+	@extend %h6-styles;
+}
+
+.ontario-lead-statement {
+	@extend %lead-statement;
+}
+
+/* everything - including before and after - should inherit their box sizing */
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+main p,
+main p:not(.ontario-lead-statement),
+main dd,
+main li {
+	max-width: global.$standard-width;
+}
+
+hr {
+	border: 0;
+	padding: 0;
+	margin: spacing.$spacing-7 0;
+	border-bottom: 4px solid colours.$ontario-greyscale-20;
+}
+
+/* Horizontal Rule */
+hr.ontario-hr--dark {
+	border-bottom: 4px solid colours.$ontario-colour-black;
+}
+
+a {
+	color: colours.$ontario-colour-link;
+	text-decoration: underline;
+
+	&:visited {
+		color: colours.$ontario-colour-link--visited;
+	}
+
+	&:hover {
+		color: colours.$ontario-colour-link--hover;
+	}
+
+	&:active {
+		color: colours.$ontario-colour-link--active;
+	}
+
+	&:focus {
+		-moz-box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
+		-webkit-box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
+		box-shadow: 0 0 0 4px colours.$ontario-colour-focus;
+		outline: 4px solid transparent;
+		transition: all 0.1s ease-in-out;
+	}
+}
+
+​p {
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-0;
+}
+
+​p + h1,
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6,
+ul + h1,
+ul + h2,
+ul + h3,
+ul + h4,
+ul + h5,
+ul + h6,
+ol + h1,
+ol + h2,
+ol + h3,
+ol + h4,
+ol + h5,
+ol + h6,
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+	margin-top: spacing.$spacing-6;
+}
+
+p code,
+td code,
+li code {
+	line-height: 2.25rem;
+}
+
+/* Forms */
+input[type='text'],
+input[type='number'],
+input[type='email'],
+input[type='date'],
+input[type='color'],
+input[type='search'],
+input[type='tel'],
+textarea {
+	background-origin: initial;
+	height: auto;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+input[type='checkbox'] + label,
+input[type='radio'] + label {
+	font-family: fonts.$ontario-font-open-sans;
+	font-size: fontSizes.$ontario-font-size-standard-body-text;
+	font-weight: fontWeights.$ontario-font-weights-normal;
+	margin-left: spacing.$spacing-0;
+	margin-right: spacing.$spacing-0;
+}
+
+fieldset {
+	border: spacing.$spacing-0;
+	margin: spacing.$spacing-0;
+	padding: spacing.$spacing-0;
+	page-break-inside: avoid;
+}
+
+legend,
+label {
+	display: block;
+	margin: spacing.$spacing-0;
+}
+
+select {
+	background-origin: initial;
+	height: auto;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+/* Lists */
+ul,
+ol {
+	padding: spacing.$spacing-0;
+}
+
+ul {
+	margin-left: spacing.$spacing-6;
+}
+
+ul li {
+	padding: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+}
+
+ol {
+	margin-left: calc(spacing.$spacing-3 + spacing.$spacing-4);
+}
+
+ol li {
+	padding: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-1;
+}
+
+ul li:last-child,
+ol li:last-child {
+	padding-bottom: spacing.$spacing-0;
+}
+
+ul[class*='columns-'] li:last-child,
+ol[class*='columns-'] li:last-child {
+	padding-bottom: spacing.$spacing-3;
+}
+
+ul ul,
+ol ul {
+	margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 spacing.$spacing-6;
+}
+
+ul ol,
+ol ol {
+	margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 1.75rem;
+}
+
+p + ul,
+p + ol {
+	margin-top: calc(spacing.$spacing-3 * -1);
+}
+
+@media screen and (min-width: breakpoints.$small-breakpoint) {
+	ul {
+		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-8;
+	}
+
+	ol {
+		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-5 2.75rem;
+	}
+
+	ul ul,
+	ol ul {
+		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 spacing.$spacing-8;
+	}
+
+	ul ol,
+	ol ol {
+		margin: spacing.$spacing-2 spacing.$spacing-0 spacing.$spacing-2 2.75rem;
+	}
+}

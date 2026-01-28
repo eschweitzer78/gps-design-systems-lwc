@@ -1,0 +1,63 @@
+@use '../1-variables/fonts.variables' as fonts;
+@use '../1-variables/colours.variables' as colours;
+@use '../1-variables/spacing.variables' as spacing;
+@use '../1-variables/global.variables' as global;
+@use '../2-tools/placeholder/focus.placeholders' as focusPlaceholders;
+
+/*
+*  Text Inputs
+*/
+
+.ontario-input {
+	border: global.$border-size-standard solid colours.$ontario-colour-black;
+	border-radius: global.$global-radius;
+	box-sizing: border-box;
+	color: colours.$ontario-colour-black;
+	display: block;
+	font-size: 1rem;
+	font-family: fonts.$ontario-font-open-sans;
+	line-height: global.$line-height-default;
+	margin: 0 0 spacing.$spacing-7;
+	max-width: global.$standard-width;
+	width: global.$full-width;
+	padding: 0.625rem spacing.$spacing-4;
+	transition: focusPlaceholders.$ontario-focus-transition;
+
+	&:focus,
+	&:active {
+		@extend %ontario-focus;
+	}
+}
+
+.ontario-input--2-char-width {
+	max-width: 8ex;
+}
+
+.ontario-input--3-char-width {
+	max-width: 10ex;
+}
+
+.ontario-input--4-char-width {
+	max-width: 12ex;
+}
+
+.ontario-input--5-char-width {
+	max-width: 14ex;
+}
+
+.ontario-input--7-char-width {
+	max-width: 17ex;
+}
+
+.ontario-input--10-char-width {
+	max-width: 23ex;
+}
+
+.ontario-input--20-char-width {
+	max-width: 41ex;
+}
+
+//for general forms
+.ontario-form-group:last-of-type {
+	margin-bottom: 2.5rem;
+}

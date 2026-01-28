@@ -1,0 +1,10 @@
+@use './tokens.variables' as variables;
+
+/* -------------------------------
+    Global font-weight variables
+--------------------------------- */
+
+$ontario-font-weights-light: variables.$ontario-font-weights-light; // 300
+$ontario-font-weights-normal: variables.$ontario-font-weights-normal; // 400
+$ontario-font-weights-semi-bold: variables.$ontario-font-weights-semi-bold; //600
+$ontario-font-weights-bold: variables.$ontario-font-weights-bold; // 700

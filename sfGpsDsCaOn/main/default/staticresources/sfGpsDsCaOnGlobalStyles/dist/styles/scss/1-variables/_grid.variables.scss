@@ -1,0 +1,58 @@
+@use '../2-tools/functions/global.functions' as globalFunctions;
+@use '../2-tools/functions/grid.functions' as gridFunctions;
+@use './breakpoints.variables' as breakpoints;
+@use './tokens.variables' as variables;
+
+/*
+*  Global grid variables
+*
+*  1 - Grid text variables
+*  2 - Grid row/column variables
+*  3 - Grid screen size variables
+*/
+
+/*** 1 - Grid text variables ***/
+$text-direction: variables.$ontario-text-directions-text-direction !default;
+$default-float: variables.$ontario-text-directions-default-float !default;
+$opposite-direction: variables.$ontario-text-directions-opposite-direction !default;
+
+@if $text-direction == ltr {
+	$default-float: left;
+	$opposite-direction: right;
+} @else {
+	$default-float: right;
+	$opposite-direction: left;
+}
+
+/*** 2 - Grid row/column variables ***/
+$include-html-classes: variables.$ontario-grid-columns-include-html-classes !default;
+$include-html-grid-classes: $include-html-classes !default;
+
+$row-width: globalFunctions.px-to-rem(variables.$ontario-grid-columns-row-width);
+$total-columns: variables.$ontario-grid-columns-total-columns;
+$column-gutter: globalFunctions.px-to-rem(variables.$ontario-grid-columns-column-gutter);
+
+$column-count-1: variables.$ontario-grid-columns-column-count1;
+$column-count-2: variables.$ontario-grid-columns-column-count2;
+$column-count-3: variables.$ontario-grid-columns-column-count3;
+$column-count-4: variables.$ontario-grid-columns-column-count4;
+
+$last-child-float: $opposite-direction !default;
+
+/*** 3 - Grid screen size variables ***/
+$screen: 'only screen' !default;
+
+$small-up: $screen !default;
+$small-only: '#{$screen} and (max-width: #{gridFunctions.ontario-upper-bound(breakpoints.$small-range)})' !default;
+
+$medium-up: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$medium-range)})' !default;
+$medium-only: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$medium-range)}) and (max-width:#{gridFunctions.ontario-upper-bound(breakpoints.$medium-range)})' !default;
+
+$large-up: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$large-range)})' !default;
+$large-only: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$large-range)}) and (max-width:#{gridFunctions.ontario-upper-bound(breakpoints.$large-range)})' !default;
+
+$xlarge-up: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$xlarge-range)})' !default;
+$xlarge-only: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$xlarge-range)}) and (max-width:#{gridFunctions.ontario-upper-bound(breakpoints.$xlarge-range)})' !default;
+
+$xxlarge-up: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$xxlarge-range)})' !default;
+$xxlarge-only: '#{$screen} and (min-width:#{gridFunctions.ontario-lower-bound(breakpoints.$xxlarge-range)}) and (max-width:#{gridFunctions.ontario-upper-bound(breakpoints.$xxlarge-range)})' !default;

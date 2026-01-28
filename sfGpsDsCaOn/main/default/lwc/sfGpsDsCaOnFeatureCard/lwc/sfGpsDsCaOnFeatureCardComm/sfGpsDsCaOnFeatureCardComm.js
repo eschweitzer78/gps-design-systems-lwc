@@ -6,54 +6,42 @@
  */
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-
 /**
  * Experience Builder wrapper for Ontario DS Feature Card.
  */
 export default class SfGpsDsCaOnFeatureCardComm extends SfGpsDsLwc {
   static renderMode = "light";
-
   // @ts-ignore
   @api
   heading;
-
   // @ts-ignore
   @api
   description;
-
   // @ts-ignore
   @api
   url;
-
   // @ts-ignore
   @api
   image;
-
   // @ts-ignore
   @api
   imageAltText;
-
   // @ts-ignore
   @api
   headingLevel;
-
   // @ts-ignore
   @api
   imageSize;
-
   // Deprecated properties - kept for backwards compatibility
   // @ts-ignore
   @api
   aspectRatio;
-
   // @ts-ignore
   @api
   cardStyle;
-
   // @ts-ignore
   @api
   className;
-
   /* Lifecycle */
   connectedCallback() {
     super.connectedCallback?.();
