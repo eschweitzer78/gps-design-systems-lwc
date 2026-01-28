@@ -68,6 +68,17 @@
         var view = null;
         var search = null;
 
+        // Ontario LIO Services base URLs
+        var LIO_BASE_URL =
+          "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services";
+        var ACCESS_ENV_URL =
+          LIO_BASE_URL + "/Access_Environment/Access_Environment_Map/MapServer";
+        var MECP_BOUNDARIES_URL =
+          LIO_BASE_URL + "/MOE/MECP_Full_Boundaries/MapServer";
+
+        // Reference to MECP district layer for queries
+        var mecpDistrictLayer = null;
+
         // Initialize ESRI map
         require([
           "esri/config",
@@ -78,9 +89,14 @@
           "esri/widgets/Locate",
           "esri/widgets/LayerList",
           "esri/widgets/Expand",
+          "esri/widgets/Legend",
           "esri/Graphic",
           "esri/layers/GraphicsLayer",
-          "esri/geometry/Point"
+          "esri/layers/MapImageLayer",
+          "esri/layers/FeatureLayer",
+          "esri/geometry/Point",
+          "esri/rest/query",
+          "esri/rest/support/Query"
         ], function (
           esriConfig,
           Map,
@@ -90,9 +106,14 @@
           Locate,
           LayerList,
           Expand,
+          Legend,
           Graphic,
           GraphicsLayer,
-          Point
+          MapImageLayer,
+          FeatureLayer,
+          Point,
+          query,
+          Query
         ) {
           // Configure ESRI API key
           if (apiKey) {
@@ -103,6 +124,65 @@
           var map = new Map({
             basemap: "topo-vector" // Topographic basemap
           });
+
+          // ========================================
+          // ONTARIO LIO LAYERS
+          // ========================================
+
+          // MECP District Boundaries Layer (for district office lookup)
+          mecpDistrictLayer = new FeatureLayer({
+            url: MECP_BOUNDARIES_URL + "/0",
+            title: "MECP District Boundaries",
+            visible: false,
+            opacity: 0.5,
+            outFields: ["*"],
+            popupTemplate: {
+              title: "{DISTRICT_N}",
+              content: [
+                {
+                  type: "fields",
+                  fieldInfos: [
+                    { fieldName: "DISTRICT_N", label: "District Name" },
+                    { fieldName: "AREA_OFFIC", label: "Area Office" },
+                    { fieldName: "PHONE", label: "Phone" }
+                  ]
+                }
+              ]
+            }
+          });
+          map.add(mecpDistrictLayer);
+
+          // Access Environment Layer - Environmental Registrations
+          var accessEnvLayer = new MapImageLayer({
+            url: ACCESS_ENV_URL,
+            title: "Ontario Environment Data",
+            visible: false,
+            opacity: 0.8,
+            sublayers: [
+              {
+                id: 3,
+                title: "EASR Registrations",
+                visible: true,
+                popupEnabled: true
+              },
+              {
+                id: 1,
+                title: "Environmental Compliance Approvals",
+                visible: false
+              },
+              {
+                id: 5,
+                title: "Permit to Take Water",
+                visible: false
+              },
+              {
+                id: 6,
+                title: "Record of Site Condition",
+                visible: false
+              }
+            ]
+          });
+          map.add(accessEnvLayer);
 
           // Create map view
           view = new MapView({
@@ -116,8 +196,10 @@
             }
           });
 
-          // Graphics layer for markers
-          graphicsLayer = new GraphicsLayer();
+          // Graphics layer for markers (added last to be on top)
+          graphicsLayer = new GraphicsLayer({
+            title: "Selected Location"
+          });
           map.add(graphicsLayer);
 
           // Add scale bar
@@ -162,14 +244,40 @@
 
           // Add Layer List in expandable panel
           var layerList = new LayerList({
-            view: view
+            view: view,
+            listItemCreatedFunction: function (event) {
+              var item = event.item;
+              // Add legend for each layer
+              if (item.layer.type !== "graphics") {
+                item.panel = {
+                  content: "legend",
+                  open: false
+                };
+              }
+            }
           });
           var layerExpand = new Expand({
             view: view,
             content: layerList,
-            expanded: false
+            expanded: false,
+            expandIconClass: "esri-icon-layers",
+            expandTooltip: "Ontario Data Layers"
           });
           view.ui.add(layerExpand, "top-left");
+
+          // Add Legend widget
+          var legend = new Legend({
+            view: view,
+            style: "card"
+          });
+          var legendExpand = new Expand({
+            view: view,
+            content: legend,
+            expanded: false,
+            expandIconClass: "esri-icon-legend",
+            expandTooltip: "Legend"
+          });
+          view.ui.add(legendExpand, "bottom-left");
 
           // Handle map click for site point mode
           view.on("click", function (event) {
@@ -213,6 +321,13 @@
               target: geometry,
               zoom: 17
             });
+
+            // Query MECP district for this location
+            var point = new Point({
+              latitude: geometry.latitude,
+              longitude: geometry.longitude
+            });
+            queryMECPDistrict(point);
           }
 
           /**
@@ -274,6 +389,9 @@
                       longitude: point.longitude
                     }
                   });
+
+                  // Also query MECP district for this location
+                  queryMECPDistrict(point);
                 })
                 .catch(function (error) {
                   sendToLWC({
@@ -281,6 +399,80 @@
                     error: "Could not determine address for this location"
                   });
                 });
+            });
+          }
+
+          /**
+           * Queries the MECP District boundary layer to find which district contains the point
+           */
+          function queryMECPDistrict(point) {
+            if (!mecpDistrictLayer) {
+              return;
+            }
+
+            var districtQuery = new Query();
+            districtQuery.geometry = point;
+            districtQuery.spatialRelationship = "intersects";
+            districtQuery.outFields = ["*"];
+            districtQuery.returnGeometry = false;
+
+            query
+              .executeQueryJSON(MECP_BOUNDARIES_URL + "/0/query", districtQuery)
+              .then(function (results) {
+                if (results.features && results.features.length > 0) {
+                  var attrs = results.features[0].attributes;
+
+                  // Build MECP district info object
+                  var mecpDistrict = {
+                    districtName: attrs.DISTRICT_N || attrs.DISTRICT_NAME || "",
+                    areaOffice: attrs.AREA_OFFIC || attrs.AREA_OFFICE || "",
+                    phone: attrs.PHONE || "",
+                    tollFree: attrs.TOLL_FREE || "",
+                    address: attrs.ADDRESS || "",
+                    city: attrs.CITY || "",
+                    postalCode: attrs.POSTAL_CODE || ""
+                  };
+
+                  // Format full address if components exist
+                  if (mecpDistrict.address && mecpDistrict.city) {
+                    mecpDistrict.fullAddress =
+                      mecpDistrict.address +
+                      ", " +
+                      mecpDistrict.city +
+                      ", ON " +
+                      mecpDistrict.postalCode;
+                  }
+
+                  sendToLWC({
+                    name: "mecpDistrictFound",
+                    mecpDistrict: mecpDistrict
+                  });
+                } else {
+                  sendToLWC({
+                    name: "mecpDistrictFound",
+                    mecpDistrict: null,
+                    message: "Location is outside Ontario MECP districts"
+                  });
+                }
+              })
+              .catch(function (error) {
+                console.warn("MECP District query failed:", error);
+                // Don't send error to LWC - this is optional data
+              });
+          }
+
+          /**
+           * Toggles visibility of Ontario LIO layers
+           */
+          function toggleOntarioLayers(visible) {
+            if (mecpDistrictLayer) {
+              mecpDistrictLayer.visible = visible;
+            }
+            // Find and toggle Access Environment layer
+            map.layers.forEach(function (layer) {
+              if (layer.title === "Ontario Environment Data") {
+                layer.visible = visible;
+              }
             });
           }
 
@@ -404,6 +596,35 @@
                           reverseGeocode(point);
                         }
                       });
+                  }
+                  break;
+
+                case "toggleOntarioLayers":
+                  // Toggle visibility of Ontario LIO layers
+                  if (msg.detail && typeof msg.detail.visible !== "undefined") {
+                    toggleOntarioLayers(msg.detail.visible);
+                  }
+                  break;
+
+                case "showMECPDistricts":
+                  // Toggle MECP district boundaries visibility
+                  if (mecpDistrictLayer) {
+                    mecpDistrictLayer.visible = msg.detail?.visible !== false;
+                  }
+                  break;
+
+                case "queryMECPDistrict":
+                  // Query MECP district for specific coordinates
+                  if (
+                    msg.detail &&
+                    msg.detail.latitude &&
+                    msg.detail.longitude
+                  ) {
+                    var queryPoint = new Point({
+                      latitude: msg.detail.latitude,
+                      longitude: msg.detail.longitude
+                    });
+                    queryMECPDistrict(queryPoint);
                   }
                   break;
 

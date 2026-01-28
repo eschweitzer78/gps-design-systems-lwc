@@ -412,13 +412,97 @@ If using option 1 (Spatial Query), create a custom object:
 
 ---
 
+## Ontario LIO (Land Information Ontario) Integration
+
+The GIS components integrate with Ontario's Land Information Ontario (LIO) ArcGIS REST services to provide access to provincial environmental data layers.
+
+### Available Layers
+
+The following layers from the Ontario [Access Environment Map Viewer](https://www.lioapplications.lrc.gov.on.ca/Access_Environment/index.html) are available:
+
+| Layer                              | Service URL                          | Description                                               |
+| ---------------------------------- | ------------------------------------ | --------------------------------------------------------- |
+| EASR Registrations                 | `Access_Environment_Map/MapServer/3` | Existing Environmental Activity and Sector Registry sites |
+| Environmental Compliance Approvals | `Access_Environment_Map/MapServer/1` | ECA permits and approvals                                 |
+| Permit to Take Water               | `Access_Environment_Map/MapServer/5` | Water taking permits                                      |
+| Record of Site Condition           | `Access_Environment_Map/MapServer/6` | Environmental site assessments                            |
+| MECP District Boundaries           | `MECP_Full_Boundaries/MapServer/0`   | Ministry district office boundaries                       |
+
+**Base URL:** `https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/`
+
+### MECP District Office Lookup
+
+When a user selects a location on the map, the system automatically queries the MECP District Boundaries layer to determine which Ministry of Environment, Conservation and Parks district office serves that location.
+
+**Data Returned:**
+
+```json
+{
+  "name": "mecpDistrictFound",
+  "mecpDistrict": {
+    "districtName": "Halton-Peel District Office",
+    "areaOffice": "Central Region",
+    "phone": "905-319-3847",
+    "tollFree": "1-800-335-5906",
+    "address": "4145 North Service Rd",
+    "city": "Burlington",
+    "postalCode": "L7L 6A3",
+    "fullAddress": "4145 North Service Rd, Burlington, ON L7L 6A3"
+  }
+}
+```
+
+### Controlling Ontario Layers via postMessage
+
+The parent LWC can control Ontario LIO layers using these messages:
+
+**Toggle all Ontario layers:**
+
+```javascript
+iframe.contentWindow.postMessage(
+  {
+    title: "toggleOntarioLayers",
+    detail: { visible: true }
+  },
+  communityUrl
+);
+```
+
+**Toggle MECP district boundaries:**
+
+```javascript
+iframe.contentWindow.postMessage(
+  {
+    title: "showMECPDistricts",
+    detail: { visible: true }
+  },
+  communityUrl
+);
+```
+
+**Query MECP district for specific coordinates:**
+
+```javascript
+iframe.contentWindow.postMessage(
+  {
+    title: "queryMECPDistrict",
+    detail: { latitude: 43.6532, longitude: -79.3832 }
+  },
+  communityUrl
+);
+```
+
+---
+
 ## CSP and Trusted Sites Configuration
 
-> **CRITICAL**: Without proper CSP configuration, the ESRI map will not display and Visualforce iframes will be blocked.
+> **CRITICAL**: Without proper CSP configuration, the ESRI map will not display, Visualforce iframes will be blocked, and Ontario LIO layers will fail to load.
 
 ### Step 1: CSP Trusted Sites (Setup → Security → CSP Trusted Sites)
 
 Add each of the following as trusted sites with **all CSP directives enabled** (Connect, Font, Img, Script, Style, Frame):
+
+**ESRI Services (Required):**
 
 | Trusted Site Name | Trusted Site URL                    | Purpose                         |
 | ----------------- | ----------------------------------- | ------------------------------- |
@@ -429,6 +513,13 @@ Add each of the following as trusted sites with **all CSP directives enabled** (
 | ESRI_Basemaps     | `https://basemaps.arcgis.com`       | Basemap services                |
 | ESRI_Online       | `https://www.arcgis.com`            | ArcGIS Online services          |
 | ESRI_Tiles        | `https://tiles.arcgis.com`          | Map tiles                       |
+
+**Ontario LIO Services (Required for Ontario Data Layers):**
+
+| Trusted Site Name | Trusted Site URL                            | Purpose                                    |
+| ----------------- | ------------------------------------------- | ------------------------------------------ |
+| Ontario_LIO       | `https://ws.lioservices.lrc.gov.on.ca`      | LIO ArcGIS REST services (layers, queries) |
+| Ontario_LIO_Apps  | `https://www.lioapplications.lrc.gov.on.ca` | LIO application services                   |
 
 > **Important**: Enable the `Font` directive - commonly missed but required for ESRI map fonts!
 
@@ -471,6 +562,8 @@ https://services.arcgisonline.com
 https://geocode.arcgis.com
 https://basemaps.arcgis.com
 https://*.arcgis.com
+https://ws.lioservices.lrc.gov.on.ca
+https://www.lioapplications.lrc.gov.on.ca
 ```
 
 ### Step 4: Session Settings (Setup → Security → Session Settings)
@@ -494,14 +587,18 @@ For Visualforce iframes to work:
 
 ## Troubleshooting
 
-| Error                       | Cause                       | Solution                                    |
-| --------------------------- | --------------------------- | ------------------------------------------- |
-| "Refused to frame"          | Missing frame-src           | Add VF domain to Experience Builder CSP     |
-| "Refused to load script"    | Missing script-src          | Add `js.arcgis.com` to CSP Trusted Sites    |
-| "Loading font violates CSP" | Missing font-src            | Enable Font directive on ESRI trusted sites |
-| Map tiles not loading       | Missing connect-src/img-src | Add ESRI domains to trusted sites           |
-| postMessage not working     | Origin mismatch             | Configure SiteName in utils\_\_mdt          |
-| UTM conversion fails        | Client-side limitation      | UTM→Decimal requires server-side processing |
+| Error                       | Cause                         | Solution                                    |
+| --------------------------- | ----------------------------- | ------------------------------------------- |
+| "Refused to frame"          | Missing frame-src             | Add VF domain to Experience Builder CSP     |
+| "Refused to load script"    | Missing script-src            | Add `js.arcgis.com` to CSP Trusted Sites    |
+| "Loading font violates CSP" | Missing font-src              | Enable Font directive on ESRI trusted sites |
+| Map tiles not loading       | Missing connect-src/img-src   | Add ESRI domains to trusted sites           |
+| postMessage not working     | Origin mismatch               | Configure SiteName in utils\_\_mdt          |
+| UTM conversion fails        | Client-side limitation        | UTM→Decimal requires server-side processing |
+| Ontario layers not loading  | Missing LIO CSP configuration | Add `ws.lioservices.lrc.gov.on.ca` to CSP   |
+| MECP district query fails   | CORS/CSP blocked              | Add Ontario LIO trusted sites               |
+| Layer list empty            | Layers not visible by default | Use Layer List widget to toggle visibility  |
+| "Location outside Ontario"  | Point outside MECP boundaries | Normal behavior for non-Ontario locations   |
 
 ---
 
@@ -557,9 +654,23 @@ For Visualforce iframes to work:
   - [x] Uses OmniscriptBaseMixin
   - [x] Maps coordinates to OmniScript fields
 - [x] Update VF page to support coordinate navigation with marker placement
-- [ ] Create Integration Procedure for source protection area lookup
+- [x] Add Ontario LIO layers (Access Environment, MECP Boundaries)
+- [x] Add automatic MECP district lookup on location selection
+- [x] Document Integration Procedure for LIO data retrieval
 - [ ] Configure Discharge Point Details display
 - [ ] Test in Stormwater Discharge Location OmniScript
+
+### Ontario LIO Integration
+
+- [x] Add MECP District Boundaries layer
+- [x] Add Access Environment layers (EASR, ECA, PTTW)
+- [x] Add automatic MECP district query on pin placement
+- [x] Add layer toggle controls via postMessage
+- [x] Document CSP configuration for LIO services
+- [x] Create Integration Procedure documentation
+- [ ] Create Integration Procedure: EASR_GetLocationDetails
+- [ ] Create Integration Procedure: EASR_GetSourceWaterProtection
+- [ ] Test Integration Procedures with sample coordinates
 
 ---
 
@@ -575,6 +686,7 @@ For Visualforce iframes to work:
 
 ## Related Documentation
 
+- [ONTARIO_LIO_INTEGRATION_PROCEDURE.md](./ONTARIO_LIO_INTEGRATION_PROCEDURE.md) - Integration Procedure setup for LIO services
 - [STORMWATER_WORKS.md](./STORMWATER_WORKS.md) - Stormwater Management Works implementation guide
 - [OMNISTUDIO_FORMS.md](./OMNISTUDIO_FORMS.md) - OmniStudio form components
 - [BUILD_GUIDE.md](./BUILD_GUIDE.md) - Build and deployment guide
