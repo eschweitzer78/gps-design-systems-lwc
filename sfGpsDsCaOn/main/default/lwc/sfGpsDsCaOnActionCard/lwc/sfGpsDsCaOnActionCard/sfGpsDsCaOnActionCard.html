@@ -20,10 +20,18 @@
   <li class={computedCardClassName}>
     <!-- Header Bar with Icon and Title -->
     <div class={computedHeaderClassName}>
+      <!-- Meaningful icon (has alt text) -->
       <img
-        lwc:if={hasIcon}
+        lwc:if={hasMeaningfulIcon}
         src={icon}
         alt={computedIconAltText}
+        class="sfgpsdscaon-action-card__icon"
+      />
+      <!-- Decorative icon (no alt text) - hidden from screen readers -->
+      <img
+        lwc:if={hasDecorativeIcon}
+        src={icon}
+        alt=""
         class="sfgpsdscaon-action-card__icon"
         aria-hidden="true"
       />

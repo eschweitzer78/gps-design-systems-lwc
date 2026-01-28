@@ -136,6 +136,22 @@ export default class SfGpsDsCaOnActionCard extends LightningElement {
     return this.iconAltText || "";
   }
 
+  /**
+   * Whether the icon has alt text and should be accessible
+   * @returns {boolean}
+   */
+  get hasMeaningfulIcon() {
+    return this.hasIcon && Boolean(this.iconAltText);
+  }
+
+  /**
+   * Whether the icon is decorative (no alt text)
+   * @returns {boolean}
+   */
+  get hasDecorativeIcon() {
+    return this.hasIcon && !this.iconAltText;
+  }
+
   /* lifecycle */
 
   connectedCallback() {
