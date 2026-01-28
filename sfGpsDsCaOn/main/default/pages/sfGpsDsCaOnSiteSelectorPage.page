@@ -522,11 +522,21 @@
             // Update UI based on mode
             if (mode === "search") {
               search.visible = true;
+              view.cursor = "default";
             } else if (mode === "sitepoint") {
               search.visible = false;
               view.cursor = "crosshair";
             } else if (mode === "layers") {
               search.visible = true;
+              view.cursor = "default";
+            } else if (mode === "readonly") {
+              // Read-only mode: hide search, disable map click
+              search.visible = false;
+              view.cursor = "default";
+              // Expand the layer list for review
+              if (layerExpand) {
+                layerExpand.expanded = true;
+              }
             }
           }
 

@@ -82,6 +82,49 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   @api className;
 
   /**
+   * Read-only mode for reviewing a previously captured location.
+   * When true:
+   * - Search and input controls are hidden
+   * - Save button is hidden
+   * - Map displays the location without allowing changes
+   * - Useful for back-office review of submitted applications
+   * @type {boolean}
+   */
+  @api readOnly = false;
+
+  /**
+   * Pre-populated address value for read-only mode or editing.
+   * Can be a JSON string or object with address fields.
+   * @type {Object|string}
+   */
+  @api
+  get value() {
+    return this._value;
+  }
+  set value(val) {
+    try {
+      if (typeof val === "string" && val) {
+        this._value = JSON.parse(val);
+      } else if (val && typeof val === "object") {
+        this._value = val;
+      } else {
+        this._value = null;
+      }
+      // If value is set, populate address details and coordinates
+      if (this._value) {
+        this._addressDetails = this._value.address || this._value;
+        this._coordinates = this._value.coordinates || {
+          latitude: this._value.latitude,
+          longitude: this._value.longitude
+        };
+      }
+    } catch {
+      this._value = null;
+    }
+  }
+  _value = null;
+
+  /**
    * Search parameter options for dropdown
    * @type {Array}
    */
@@ -264,6 +307,59 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   }
 
   /**
+   * Whether component is in read-only mode
+   * @returns {boolean}
+   */
+  get isReadOnly() {
+    return this.readOnly === true || this.readOnly === "true";
+  }
+
+  /**
+   * Whether to show the search/input controls
+   * @returns {boolean}
+   */
+  get showSearchControls() {
+    return !this.isReadOnly;
+  }
+
+  /**
+   * Whether to show the save button
+   * @returns {boolean}
+   */
+  get showSaveButton() {
+    return !this.isReadOnly && this.hasAddressDetails;
+  }
+
+  /**
+   * Button label for trigger (different in read-only mode)
+   * @returns {string}
+   */
+  get computedButtonLabel() {
+    return this.isReadOnly ? "View location" : this.buttonLabel;
+  }
+
+  /**
+   * Button CSS class (secondary style for read-only)
+   * @returns {string}
+   */
+  get triggerButtonClassName() {
+    return computeClass({
+      "ontario-button": true,
+      "ontario-button--primary": !this.isReadOnly,
+      "ontario-button--secondary": this.isReadOnly,
+      "sfgpsdscaon-site-selector__trigger": true
+    });
+  }
+
+  /**
+   * Modal title (different for read-only mode)
+   * @returns {string}
+   */
+  get computedModalTitle() {
+    return this.isReadOnly ? `${this.modalTitle} - View Only` : this.modalTitle;
+  }
+
+  /**
    * Computed VF page URL with parameters
    * @returns {string}
    */
@@ -360,9 +456,39 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   @api
   open() {
     this._isModalOpen = true;
-    this._activeTab = "search";
-    this._addressDetails = null;
     this._errorMessage = "";
+
+    if (this.isReadOnly) {
+      // In read-only mode, set to layers tab and preserve existing address
+      this._activeTab = "layers";
+      // If we have coordinates, navigate map to that location after iframe loads
+      if (this._coordinates?.latitude && this._coordinates?.longitude) {
+        // Wait for modal and iframe to be ready, then navigate
+        // eslint-disable-next-line @lwc/lwc/no-async-operation
+        setTimeout(() => {
+          this.sendMessageToMap({
+            title: "goTo",
+            detail: {
+              latitude: this._coordinates.latitude,
+              longitude: this._coordinates.longitude,
+              zoom: 17,
+              placeMarker: true
+            }
+          });
+          // Set read-only mode on the map
+          this.sendMessageToMap({
+            title: "modeChange",
+            detail: { mode: "readonly" }
+          });
+        }, 1000);
+      }
+    } else {
+      // In edit mode, reset to search tab
+      this._activeTab = "search";
+      if (!this._value) {
+        this._addressDetails = null;
+      }
+    }
   }
 
   /**

@@ -55,6 +55,19 @@
         label="Custom CSS Class"
         description="Additional CSS class for custom styling"
       />
+      <property
+        name="readOnly"
+        type="Boolean"
+        label="Read-Only Mode"
+        description="When enabled, displays location for review without allowing changes. Useful for back-office application review."
+        default="false"
+      />
+      <property
+        name="value"
+        type="String"
+        label="Location Value (JSON)"
+        description="Pre-populated location data as JSON. Format: {address: {...}, coordinates: {latitude, longitude}}"
+      />
     </targetConfig>
   </targetConfigs>
 </LightningComponentBundle>

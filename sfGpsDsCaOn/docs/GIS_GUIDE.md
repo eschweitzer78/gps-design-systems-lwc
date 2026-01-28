@@ -115,6 +115,77 @@ Base modal component with Ontario DS styling:
 </c-sf-gps-ds-ca-on-modal>
 ```
 
+### Read-Only Mode (Back-Office Review)
+
+The Site Selector Tool supports a read-only mode for back-office personnel to review locations captured during application submission.
+
+**Properties:**
+
+| Property   | Type    | Description                                         |
+| ---------- | ------- | --------------------------------------------------- |
+| `readOnly` | Boolean | Enables read-only mode for location review          |
+| `value`    | Object  | Pre-populated location data (address + coordinates) |
+
+**Features in Read-Only Mode:**
+
+- Search and input controls are hidden
+- Save button is replaced with Close button
+- Map displays the submitted location with a pin marker
+- Ontario LIO layers are visible for context (EASR, ECA, etc.)
+- Layer list is expanded by default
+- Modal title shows "View Only" suffix
+- Trigger button shows "View location" instead of "Site selector tool"
+
+**Usage in Experience Builder (Application Review Page):**
+
+```html
+<c-sf-gps-ds-ca-on-site-selector-tool
+  read-only="true"
+  value="{applicationLocation}"
+  modal-title="Site Location"
+  vf-page-url="/apex/sfGpsDsCaOnSiteSelectorPage"
+></c-sf-gps-ds-ca-on-site-selector-tool>
+```
+
+**Usage in LWC (Dynamic):**
+
+```javascript
+// In your review component
+get siteLocationValue() {
+  return JSON.stringify({
+    address: {
+      streetAddress: this.record.Site_Street__c,
+      city: this.record.Site_City__c,
+      province: this.record.Site_Province__c,
+      postalCode: this.record.Site_Postal_Code__c,
+      country: "Canada"
+    },
+    coordinates: {
+      latitude: this.record.Site_Latitude__c,
+      longitude: this.record.Site_Longitude__c
+    }
+  });
+}
+```
+
+```html
+<c-sf-gps-ds-ca-on-site-selector-tool
+  read-only
+  value="{siteLocationValue}"
+  modal-title="Site Location"
+  vf-page-url="{vfPageUrl}"
+></c-sf-gps-ds-ca-on-site-selector-tool>
+```
+
+**Use Cases:**
+
+1. **Application Review** - Reviewers can see exactly where the applicant selected their site
+2. **Approval Workflow** - Approvers can verify location against nearby environmental data
+3. **Audit Trail** - Captured location is displayed without modification risk
+4. **Customer Service** - Support staff can view submitted location details
+
+---
+
 ### Site Selector Data Structure
 
 The Site Selector Tool returns structured address data to OmniScript:

@@ -206,6 +206,33 @@
   margin-bottom: 1.5rem;
 }
 
+.sfgpsdscaon-site-selector__close-btn {
+  margin-bottom: 1.5rem;
+}
+
+/* ========================================
+ * READ-ONLY MODE
+ * ======================================== */
+
+.sfgpsdscaon-site-selector__readonly-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--ontario-greyscale-20, #cccccc);
+}
+
+.sfgpsdscaon-site-selector__readonly-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+.sfgpsdscaon-site-selector__readonly-hint {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--ontario-greyscale-60, #666666);
+}
+
 /* ========================================
  * TAB BAR
  * ======================================== */
