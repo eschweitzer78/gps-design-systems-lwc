@@ -35,6 +35,16 @@ export default class SfGpsDsCaOnTextArea extends SfGpsDsLwc {
   @api minLength?: number;
   // @ts-ignore
   @api maxLength?: number;
+  /**
+   * HTML5 autocomplete attribute value.
+   * Enables browser autofill for common fields, aiding users with mobility impairments.
+   * 
+   * Common values for textarea:
+   * - "street-address" - Multi-line street address
+   * - "off" - Disable autofill
+   */
+  // @ts-ignore
+  @api autocomplete?: string;
   // @ts-ignore
   @api showCharacterCount?: boolean;
   _showCharacterCount = this.defineBooleanProperty("showCharacterCount", {

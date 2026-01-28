@@ -12,7 +12,7 @@ import tmpl from "./sfGpsDsCaOnFormEmail.html";
  * @slot Email
  * @description Ontario Design System Email input for OmniStudio forms.
  * Extends the base form email class with Ontario DS styling.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports
@@ -20,6 +20,22 @@ import tmpl from "./sfGpsDsCaOnFormEmail.html";
  * - WCAG 2.1 AA: Proper labeling, error messaging, keyboard support
  */
 export default class SfGpsDsCaOnFormEmail extends SfGpsDsFormEmail {
+  /* computed */
+
+  /**
+   * Returns the autocomplete value for email input.
+   * Uses OmniScript configuration if set, otherwise defaults to "email".
+   * @returns {string} Autocomplete attribute value
+   */
+  get computedEmailAutocomplete() {
+    // Use OmniScript configured value if set
+    if (this._autocomplete) {
+      return this._autocomplete;
+    }
+    // Default to "email" for email inputs (WCAG/accessibility best practice)
+    return "email";
+  }
+
   /* lifecycle */
 
   render() {

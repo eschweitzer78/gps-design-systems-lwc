@@ -41,6 +41,23 @@ export default class SfGpsDsCaOnTextInput extends SfGpsDsLwc {
   @api maxLength?: number;
   // @ts-ignore
   @api pattern?: string;
+  /**
+   * HTML5 autocomplete attribute value.
+   * Enables browser autofill for common fields, aiding users with mobility impairments.
+   * 
+   * Common values:
+   * - "name", "given-name", "family-name" - Full/first/last name
+   * - "email" - Email address
+   * - "tel", "tel-national" - Phone numbers
+   * - "street-address", "address-line1", "address-line2" - Address
+   * - "postal-code" - Postal/ZIP code
+   * - "organization" - Company/organization name
+   * - "off" - Disable autofill
+   * 
+   * @see https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
+   */
+  // @ts-ignore
+  @api autocomplete?: string;
   // @ts-ignore
   @api showCharacterCount?: boolean;
   _showCharacterCount = this.defineBooleanProperty("showCharacterCount", {

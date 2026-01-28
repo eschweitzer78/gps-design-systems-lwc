@@ -7,20 +7,25 @@
     </label>
 
     <!-- Hint text -->
-    <p lwc:if={hintText} id={_hintId} class="ontario-hint">
-      {hintText}
-    </p>
+    <p lwc:if={hintText} id={_hintId} class="ontario-hint">{hintText}</p>
 
     <!-- Error message -->
-    <div 
+    <div
       lwc:if={hasError}
       id={_errorId}
       class="ontario-error-messaging"
       role="alert"
       aria-live="assertive"
     >
-      <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
       </svg>
       <span class="ontario-error-messaging__content">{errorMessage}</span>
     </div>
@@ -39,13 +44,16 @@
       rows={computedRows}
       minlength={minLength}
       maxlength={maxLength}
+      autocomplete={autocomplete}
       aria-describedby={computedAriaDescribedBy}
       aria-invalid={computedAriaInvalid}
       oninput={handleInput}
       onchange={handleChange}
       onblur={handleBlur}
       onfocus={handleFocus}
-    >{value}</textarea>
+    >
+{value}</textarea
+    >
 
     <!-- Character count -->
     <c-sf-gps-ds-ca-on-character-count
