@@ -14,37 +14,37 @@ import tmpl from "./sfGpsDsCaOnFormImage.html";
  * @slot Image
  * @description Ontario Design System Image Upload for OmniStudio forms.
  * Extends the base File upload with image-specific features and preview.
- * 
+ *
  * This component overrides the standard OmniScript Image element to provide
  * Ontario Design System styling with image preview functionality.
- * 
+ *
  * ## Architecture
  * - Extends: SfGpsDsFormFile (base file upload)
  * - Accepts: Image file types only (.jpg, .jpeg, .png, .gif, .webp)
  * - Features: Image thumbnail preview after upload
- * 
+ *
  * ## Key Features
  * - Image-only file type restriction
  * - Thumbnail preview of uploaded images
  * - Multiple image upload support
  * - Delete functionality with preview update
- * 
+ *
  * ## OmniScript Configuration
  * In OmniScript Designer, configure the Image element:
  * - Multiple: Allow multiple image uploads
  * - Required: Make the field required
- * 
+ *
  * ## OmniScript Registration
  * Register in your OmniScript LWC override:
  * ```javascript
  * import sfGpsDsCaOnFormImage from "c/sfGpsDsCaOnFormImage";
- * 
+ *
  * static elementTypeToLwcConstructorMap = {
  *   ...OmniscriptBaseOsrt.elementTypeToLwcConstructorMap,
  *   "Image": sfGpsDsCaOnFormImage,
  * };
  * ```
- * 
+ *
  * Compliance:
  * - LWR: Uses lightning-file-upload (LWR compatible)
  * - LWS: No eval(), proper namespace imports
@@ -105,7 +105,9 @@ export default class SfGpsDsCaOnFormImage extends SfGpsDsFormFile {
    * @returns {string} Upload button label
    */
   get uploadButtonLabel() {
-    return this.isMultiple ? "Choose images to upload" : "Choose an image to upload";
+    return this.isMultiple
+      ? "Choose images to upload"
+      : "Choose an image to upload";
   }
 
   /**
@@ -214,15 +216,29 @@ export default class SfGpsDsCaOnFormImage extends SfGpsDsFormFile {
   }
 
   /**
+   * Computed aria-describedby initialization flag.
+   * @type {boolean}
+   * @private
+   */
+  _ariaDescribedByInitialized = false;
+
+  /**
    * Updates aria-describedby after render.
+   * Optimized: Only queries DOM once after initial render.
    */
   renderedCallback() {
     if (super.renderedCallback) super.renderedCallback();
 
-    const helpers = this.template.querySelectorAll(".ontario-hint");
-    this.computedAriaDescribedBy = [...helpers]
-      .map((item) => item.id)
-      .join(" ");
+    // Optimization: Only compute aria-describedby once
+    if (!this._ariaDescribedByInitialized) {
+      const helpers = this.template.querySelectorAll(".ontario-hint");
+      if (helpers.length > 0) {
+        this.computedAriaDescribedBy = [...helpers]
+          .map((item) => item.id)
+          .join(" ");
+        this._ariaDescribedByInitialized = true;
+      }
+    }
   }
 
   /* ========================================
@@ -246,7 +262,7 @@ export default class SfGpsDsCaOnFormImage extends SfGpsDsFormFile {
       } else {
         this._baseUrl = "/";
       }
-    } catch (e) {
+    } catch {
       // LWS may restrict window.location - fallback to root
       this._baseUrl = "/";
     }

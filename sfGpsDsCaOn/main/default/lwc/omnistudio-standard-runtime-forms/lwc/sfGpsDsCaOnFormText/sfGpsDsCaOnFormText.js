@@ -11,17 +11,23 @@ import tmpl from "./sfGpsDsCaOnFormText.html";
 /**
  * @slot Text
  * @description Ontario Design System Text Input component for OmniStudio forms.
- * 
+ *
  * Compliance:
  * - LWR: Uses Ontario DS styling
  * - LWS: No eval(), proper namespace imports
  * - Ontario DS: Uses Ontario form styling
- * - WCAG 2.1 AA / AODA: 
+ * - WCAG 2.1 AA / AODA:
  *   - Focus management for validation errors
  *   - Error messages not reliant on color alone (includes icon)
  *   - aria-invalid and aria-describedby for error association
  */
 export default class SfGpsDsCaOnFormText extends SfGpsDsFormText {
+  /* ========================================
+   * PRIVATE STATE - Re-render optimization
+   * ======================================== */
+
+  _previousErrorState = null;
+
   /* ========================================
    * PUBLIC METHODS - AODA Accessibility
    * ======================================== */
@@ -38,7 +44,7 @@ export default class SfGpsDsCaOnFormText extends SfGpsDsFormText {
       if (input) {
         input.focus();
       }
-    } catch (e) {
+    } catch {
       // Fail silently - focus management is progressive enhancement
     }
   }
@@ -72,17 +78,24 @@ export default class SfGpsDsCaOnFormText extends SfGpsDsFormText {
   /**
    * Announce error to screen readers when validation state changes.
    * AODA: Error messages should be announced immediately.
+   * Optimized: Only updates DOM when error state actually changes.
    */
   renderedCallback() {
     if (super.renderedCallback) {
       super.renderedCallback();
     }
 
-    // Set data attribute for error state (used by Step component)
-    if (this.sfGpsDsIsError) {
-      this.setAttribute("data-has-error", "true");
-    } else {
-      this.removeAttribute("data-has-error");
+    // Optimization: Only update DOM when error state changes
+    const currentErrorState = Boolean(this.sfGpsDsIsError);
+    if (currentErrorState !== this._previousErrorState) {
+      this._previousErrorState = currentErrorState;
+
+      // Set data attribute for error state (used by Step component)
+      if (currentErrorState) {
+        this.setAttribute("data-has-error", "true");
+      } else {
+        this.removeAttribute("data-has-error");
+      }
     }
   }
 }

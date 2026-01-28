@@ -11,11 +11,17 @@ import tmpl from "./sfGpsDsCaOnFormSelect.html";
 /**
  * @slot Select
  * @description Ontario Design System Select/Dropdown component for OmniStudio forms.
- * 
+ *
  * Compliance:
  * - WCAG 2.1 AA / AODA: Focus management for validation errors
  */
 export default class SfGpsDsCaOnFormSelect extends SfGpsDsFormSelect {
+  /* ========================================
+   * PRIVATE STATE - Re-render optimization
+   * ======================================== */
+
+  _previousErrorState = null;
+
   /* ========================================
    * PUBLIC METHODS - AODA Accessibility
    * ======================================== */
@@ -31,7 +37,7 @@ export default class SfGpsDsCaOnFormSelect extends SfGpsDsFormSelect {
       if (select) {
         select.focus();
       }
-    } catch (e) {
+    } catch {
       // Fail silently
     }
   }
@@ -62,16 +68,25 @@ export default class SfGpsDsCaOnFormSelect extends SfGpsDsFormSelect {
     this.classList.add("caon-scope");
   }
 
+  /**
+   * Optimized: Only updates DOM when error state changes.
+   */
   renderedCallback() {
     if (super.renderedCallback) {
       super.renderedCallback();
     }
 
-    // Set data attribute for error state
-    if (this.sfGpsDsIsError) {
-      this.setAttribute("data-has-error", "true");
-    } else {
-      this.removeAttribute("data-has-error");
+    // Optimization: Only update DOM when error state changes
+    const currentErrorState = Boolean(this.sfGpsDsIsError);
+    if (currentErrorState !== this._previousErrorState) {
+      this._previousErrorState = currentErrorState;
+
+      // Set data attribute for error state
+      if (currentErrorState) {
+        this.setAttribute("data-has-error", "true");
+      } else {
+        this.removeAttribute("data-has-error");
+      }
     }
   }
 }

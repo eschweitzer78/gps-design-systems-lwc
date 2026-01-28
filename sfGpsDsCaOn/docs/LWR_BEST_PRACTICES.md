@@ -86,7 +86,51 @@ set isActive(value) {
 }
 ```
 
-### 5. No Aura or Restricted APIs
+### 5. Avoiding Unnecessary Re-Renders in renderedCallback
+
+The `renderedCallback` runs after every render cycle. Unguarded code causes performance issues:
+
+```javascript
+// ❌ BAD: Runs on every render
+renderedCallback() {
+  this.setAttribute("data-ready", "true");  // DOM update on every render
+  const el = this.template.querySelector(".hint");  // DOM query on every render
+  this.computedValue = el?.id;  // State change triggers another render!
+}
+
+// ✅ GOOD: Guard with initialization flag
+_initialized = false;
+
+renderedCallback() {
+  if (!this._initialized) {
+    this._initialized = true;
+    this.setAttribute("data-ready", "true");
+  }
+}
+
+// ✅ GOOD: Check if value actually changed
+_previousErrorState = null;
+
+renderedCallback() {
+  const currentErrorState = Boolean(this.hasError);
+  if (currentErrorState !== this._previousErrorState) {
+    this._previousErrorState = currentErrorState;
+    if (currentErrorState) {
+      this.setAttribute("data-has-error", "true");
+    } else {
+      this.removeAttribute("data-has-error");
+    }
+  }
+}
+```
+
+**Patterns to avoid:**
+
+- DOM queries (`querySelector`) on every render
+- Setting attributes/properties without change detection
+- Modifying `@track` properties (triggers re-render loop)
+
+### 6. No Aura or Restricted APIs
 
 Components avoid:
 
