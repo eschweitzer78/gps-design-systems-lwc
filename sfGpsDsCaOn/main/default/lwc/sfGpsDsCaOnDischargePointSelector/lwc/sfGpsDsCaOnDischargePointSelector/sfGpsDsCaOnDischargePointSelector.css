@@ -28,8 +28,9 @@
 
 /* Left Panel */
 .sfgpsdscaon-discharge-selector__left-panel {
-  width: 350px;
-  min-width: 350px;
+  width: 22rem; /* 350px at default font size, scales with zoom */
+  min-width: 16rem; /* Allows shrinking for better reflow */
+  max-width: 100%; /* Ensures reflow at small viewports */
   padding: 1.5rem;
   background-color: var(--ontario-colour-white, #ffffff);
   border-right: 1px solid var(--ontario-greyscale-20, #cccccc);
@@ -171,7 +172,7 @@
   margin-top: 0.5rem;
 }
 
-/* Responsive */
+/* Responsive - WCAG 1.4.10 Reflow Support */
 @media (max-width: 768px) {
   .sfgpsdscaon-discharge-selector__panels {
     flex-direction: column;
@@ -187,5 +188,21 @@
 
   .sfgpsdscaon-discharge-selector__right-panel {
     min-height: 300px;
+  }
+}
+
+/* Extra small screens / high zoom (WCAG 1.4.10) */
+@media (max-width: 480px) {
+  .sfgpsdscaon-discharge-selector__content {
+    height: auto;
+  }
+
+  .sfgpsdscaon-discharge-selector__left-panel {
+    max-height: none;
+    padding: 1rem;
+  }
+
+  .sfgpsdscaon-discharge-selector__field {
+    margin-bottom: 0.75rem;
   }
 }

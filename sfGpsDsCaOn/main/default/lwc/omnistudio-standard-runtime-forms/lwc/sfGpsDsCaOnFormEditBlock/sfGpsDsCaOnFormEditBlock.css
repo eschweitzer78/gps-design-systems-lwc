@@ -39,7 +39,8 @@
 }
 
 .sfgpsdscaon-edit-block__table-actions-header {
-  width: 150px;
+  width: 9.375rem; /* 150px at default font size, scales with zoom */
+  min-width: 6rem; /* Allow shrinking for reflow */
   flex: none;
 }
 
@@ -62,7 +63,8 @@
 }
 
 .sfgpsdscaon-edit-block__table-actions {
-  width: 150px;
+  width: 9.375rem; /* 150px at default font size, scales with zoom */
+  min-width: 6rem; /* Allow shrinking for reflow */
   flex: none;
   display: flex;
   gap: 0.25rem;
@@ -127,7 +129,8 @@
 }
 
 .sfgpsdscaon-edit-block__fs-actions-header {
-  width: 150px;
+  width: 9.375rem; /* 150px at default font size, scales with zoom */
+  min-width: 6rem; /* Allow shrinking for reflow */
   flex: none;
 }
 
@@ -143,7 +146,8 @@
 }
 
 .sfgpsdscaon-edit-block__fs-actions {
-  width: 150px;
+  width: 9.375rem; /* 150px at default font size, scales with zoom */
+  min-width: 6rem; /* Allow shrinking for reflow */
   flex: none;
   display: flex;
   gap: 0.25rem;
