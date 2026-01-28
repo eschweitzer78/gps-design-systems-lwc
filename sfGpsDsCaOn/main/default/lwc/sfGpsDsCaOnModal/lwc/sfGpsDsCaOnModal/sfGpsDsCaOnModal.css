@@ -130,8 +130,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  /* WCAG 2.5.5: Touch target minimum 44x44px */
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
   padding: 0;
   margin: 0;
   margin-left: 1rem;
