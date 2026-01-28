@@ -295,4 +295,48 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
       // VF domain URL fetch failed - component will show placeholder
     }
   }
+
+  /* ========================================
+   * VALIDATION METHODS - OmniScript Integration
+   * ======================================== */
+
+  /**
+   * Checks if the component is valid.
+   * Required for OmniScript "Next" button validation.
+   * @returns {boolean} True if valid (not required OR has value)
+   * @api
+   */
+  checkValidity() {
+    // If not required, always valid
+    if (!this.isRequired) {
+      return true;
+    }
+    // If required, must have address data
+    return (
+      this._addressData !== null &&
+      Boolean(this._addressData?.address?.fullAddress)
+    );
+  }
+
+  /**
+   * Reports validity and shows validation messages.
+   * Required for OmniScript step validation.
+   * @returns {boolean} True if valid
+   * @api
+   */
+  reportValidity() {
+    const isValid = this.checkValidity();
+    this.showValidation = !isValid;
+    return isValid;
+  }
+
+  /**
+   * Sets a custom validity message.
+   * @param {string} message - Custom error message
+   * @api
+   */
+  setCustomValidity(message) {
+    this._customValidityMessage = message;
+    this.showValidation = Boolean(message);
+  }
 }

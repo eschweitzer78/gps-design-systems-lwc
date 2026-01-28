@@ -213,4 +213,49 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
       if (DEBUG) console.error(CLASS_NAME, "loadVfDomainUrl error", e);
     }
   }
+
+  /* ========================================
+   * VALIDATION METHODS - OmniScript Integration
+   * ======================================== */
+
+  /**
+   * Checks if the component is valid.
+   * Required for OmniScript "Next" button validation.
+   * @returns {boolean} True if valid (not required OR has value)
+   * @api
+   */
+  checkValidity() {
+    // If not required, always valid
+    if (!this.isRequired) {
+      return true;
+    }
+    // If required, must have coordinate data
+    return (
+      this._coordinateData !== null &&
+      this._coordinateData.latitude != null &&
+      this._coordinateData.longitude != null
+    );
+  }
+
+  /**
+   * Reports validity and shows validation messages.
+   * Required for OmniScript step validation.
+   * @returns {boolean} True if valid
+   * @api
+   */
+  reportValidity() {
+    const isValid = this.checkValidity();
+    this.showValidation = !isValid;
+    return isValid;
+  }
+
+  /**
+   * Sets a custom validity message.
+   * @param {string} message - Custom error message
+   * @api
+   */
+  setCustomValidity(message) {
+    this._customValidityMessage = message;
+    this.showValidation = Boolean(message);
+  }
 }
