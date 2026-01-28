@@ -51,7 +51,7 @@
   cursor: pointer;
 }
 .ontario-input.ontario-dropdown:focus {
-  outline: 4px solid var(--ontario-color-focus, #009adb);
+  outline: 4px solid var(--ontario-colour-focus, #009adb);
   outline-offset: 0;
   border-color: var(--ontario-color-black, #1a1a1a);
 }
@@ -80,7 +80,7 @@
 }
 .ontario-input__error.ontario-dropdown:focus {
   border-color: var(--ontario-color-error, #d81a21);
-  outline-color: var(--ontario-color-focus, #009adb);
+  outline-color: var(--ontario-colour-focus, #009adb);
 }
 
 /* Error messaging */

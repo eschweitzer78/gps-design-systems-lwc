@@ -121,8 +121,8 @@
 }
 
 .sfgpsdscaon-site-selector__clear-btn:focus {
-  outline: 3px solid var(--ontario-colour-link, #0066cc);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
 }
 
 .sfgpsdscaon-site-selector__clear-btn svg {
@@ -268,8 +268,8 @@
 }
 
 .sfgpsdscaon-site-selector__tab:focus {
-  outline: 3px solid var(--ontario-colour-link, #0066cc);
-  outline-offset: -3px;
+  box-shadow: inset 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
 }
 
 .sfgpsdscaon-site-selector__tab--active {

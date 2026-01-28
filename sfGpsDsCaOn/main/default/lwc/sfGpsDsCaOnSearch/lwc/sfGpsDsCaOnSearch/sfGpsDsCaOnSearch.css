@@ -22,8 +22,8 @@
 }
 
 .ontario-search__input-container:focus-within {
-  border-color: var(--ontario-color-focus, #009ADE);
-  outline: 4px solid var(--ontario-color-focus, #009ADE);
+  border-color: var(--ontario-colour-focus, #009adb);
+  outline: 4px solid var(--ontario-colour-focus, #009adb);
   outline-offset: 0;
 }
 
@@ -144,7 +144,7 @@
 }
 
 .ontario-search-autocomplete__suggestion-list--selected:focus {
-  outline: 2px solid var(--ontario-color-focus, #009ADE);
+  outline: 2px solid var(--ontario-colour-focus, #009adb);
   outline-offset: -2px;
 }
 

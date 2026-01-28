@@ -49,18 +49,24 @@
     Global typography variables
 --------------------------------- */
 h6,
-.ontario-h6, h5,
-.ontario-h5, h4,
-.ontario-h4, h3,
-.ontario-h3, h2,
-.ontario-h2, h1,
+.ontario-h6,
+h5,
+.ontario-h5,
+h4,
+.ontario-h4,
+h3,
+.ontario-h3,
+h2,
+.ontario-h2,
+h1,
 .ontario-h1 {
   font-style: normal;
   font-weight: 700;
   text-rendering: optimizeLegibility;
   margin-bottom: 1rem;
   font-feature-settings: normal;
-  font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1,
@@ -196,7 +202,7 @@ html {
 body {
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: rgb(25.5, 25.5, 25.5);
   margin: 0;
 }
@@ -246,16 +252,16 @@ hr.ontario-hr--dark {
 }
 
 a {
-  color: #0066CC;
+  color: #0066cc;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #551A8B;
+  color: #551a8b;
 }
 
 a:hover {
-  color: #00478F;
+  color: #00478f;
 }
 
 a:active {
@@ -263,9 +269,9 @@ a:active {
 }
 
 a:focus {
-  -moz-box-shadow: 0 0 0 4px #009ADB;
-  -webkit-box-shadow: 0 0 0 4px #009ADB;
-  box-shadow: 0 0 0 4px #009ADB;
+  -moz-box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  -webkit-box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
   outline: 4px solid transparent;
   transition: all 0.1s ease-in-out;
 }
@@ -307,13 +313,13 @@ li code {
 }
 
 /* Forms */
-input[type=text],
-input[type=number],
-input[type=email],
-input[type=date],
-input[type=color],
-input[type=search],
-input[type=tel],
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+input[type="color"],
+input[type="search"],
+input[type="tel"],
 textarea {
   background-origin: initial;
   height: auto;
@@ -321,8 +327,8 @@ textarea {
   -moz-appearance: none;
 }
 
-input[type=checkbox] + label,
-input[type=radio] + label {
+input[type="checkbox"] + label,
+input[type="radio"] + label {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
@@ -377,8 +383,8 @@ ol li:last-child {
   padding-bottom: 0;
 }
 
-ul[class*=columns-] li:last-child,
-ol[class*=columns-] li:last-child {
+ul[class*="columns-"] li:last-child,
+ol[class*="columns-"] li:last-child {
   padding-bottom: 0.75rem;
 }
 
@@ -414,7 +420,7 @@ p + ol {
   }
 }
 .ontario-aside {
-  border-left: 0.25rem solid #367A76;
+  border-left: 0.25rem solid #367a76;
   padding: 1.5rem;
   margin: 2rem 0 2.5rem 2rem;
 }
@@ -435,31 +441,31 @@ p + ol {
 }
 
 .ontario-border-highlight--teal {
-  border-color: #367A76 !important;
+  border-color: #367a76 !important;
 }
 
 .ontario-border-highlight--gold {
-  border-color: #86743D !important;
+  border-color: #86743d !important;
 }
 
 .ontario-border-highlight--yellow {
-  border-color: #8A600D !important;
+  border-color: #8a600d !important;
 }
 
 .ontario-border-highlight--taupe {
-  border-color: #7B725C !important;
+  border-color: #7b725c !important;
 }
 
 .ontario-border-highlight--green {
-  border-color: #2B8737 !important;
+  border-color: #2b8737 !important;
 }
 
 .ontario-border-highlight--lime {
-  border-color: #5F8129 !important;
+  border-color: #5f8129 !important;
 }
 
 .ontario-border-highlight--sky {
-  border-color: #1080A6 !important;
+  border-color: #1080a6 !important;
 }
 
 .ontario-border-highlight--blue {
@@ -467,7 +473,7 @@ p + ol {
 }
 
 .ontario-border-highlight--purple {
-  border-color: #92278F !important;
+  border-color: #92278f !important;
 }
 
 /*# sourceMappingURL=sfGpsDsCaOnAside.css.map */

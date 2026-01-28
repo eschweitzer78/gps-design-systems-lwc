@@ -33,8 +33,9 @@
 /* -------------------------------
     Focus placeholder
 --------------------------------- */
-.ontario-accordion__button--expand-all:focus, .ontario-accordion__button:focus {
-  box-shadow: 0 0 0 4px #009ADB;
+.ontario-accordion__button--expand-all:focus,
+.ontario-accordion__button:focus {
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
   outline: 4px solid transparent;
   transition: box-shadow 0.1s ease-in-out;
 }
@@ -62,7 +63,8 @@
   text-rendering: optimizeLegibility;
   margin-bottom: 1rem;
   font-feature-settings: normal;
-  font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .ontario-accordion__button {
@@ -110,11 +112,12 @@
 .ontario-accordion__button--expand-all {
   font-size: 1rem;
   margin-bottom: 0.5rem;
-  color: #0066CC;
+  color: #0066cc;
   cursor: pointer;
 }
-.ontario-accordion__button--expand-all:focus, .ontario-accordion__button--expand-all:hover {
-  color: #00478F;
+.ontario-accordion__button--expand-all:focus,
+.ontario-accordion__button--expand-all:hover {
+  color: #00478f;
   text-decoration: underline;
 }
 .ontario-accordion__button--expand-all:active {
@@ -136,7 +139,7 @@
 .ontario-accordion__button {
   display: flex;
   align-items: flex-start;
-  color: #0066CC;
+  color: #0066cc;
   cursor: pointer;
   padding: 0.75rem 0.5rem;
   text-align: left;
@@ -151,12 +154,13 @@
   width: 1.75rem;
   height: 1.75rem;
 }
-.ontario-accordion__button:focus, .ontario-accordion__button:hover {
+.ontario-accordion__button:focus,
+.ontario-accordion__button:hover {
   background-color: rgb(242.25, 242.25, 242.25);
-  color: #00478F;
+  color: #00478f;
 }
 .ontario-accordion__button:focus {
-  box-shadow: 0 0 0 4px #009ADB inset;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb) inset;
 }
 .ontario-accordion__button:active {
   color: #002142;

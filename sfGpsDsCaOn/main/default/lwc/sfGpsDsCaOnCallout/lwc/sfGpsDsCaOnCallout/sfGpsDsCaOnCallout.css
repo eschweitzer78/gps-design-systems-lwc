@@ -269,9 +269,9 @@ a:active {
 }
 
 a:focus {
-  -moz-box-shadow: 0 0 0 4px #009adb;
-  -webkit-box-shadow: 0 0 0 4px #009adb;
-  box-shadow: 0 0 0 4px #009adb;
+  -moz-box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  -webkit-box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
   outline: 4px solid transparent;
   transition: all 0.1s ease-in-out;
 }

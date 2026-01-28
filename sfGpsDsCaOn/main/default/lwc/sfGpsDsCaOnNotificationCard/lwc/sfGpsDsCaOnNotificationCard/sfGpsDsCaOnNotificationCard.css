@@ -76,8 +76,8 @@
   color: var(--ontario-colour-link-hover, #004080);
 }
 
-/* Focus state for accessibility */
+/* Focus state for accessibility - Ontario DS standard */
 .sfgpsdscaon-notification-card__link:focus {
-  outline: 3px solid var(--ontario-colour-link, #0066cc);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
 }

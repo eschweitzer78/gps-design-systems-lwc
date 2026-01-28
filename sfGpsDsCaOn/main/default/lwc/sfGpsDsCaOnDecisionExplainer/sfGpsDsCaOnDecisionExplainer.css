@@ -164,34 +164,36 @@
    WCAG 2.1 Success Criterion 2.4.7: Focus Visible
    ============================================ */
 
-/* Focus indicator for buttons */
+/* Focus indicator for buttons - Ontario DS standard: 4px #009ADB */
 .ontario-decision-explainer button:focus {
-  outline: 3px solid var(--ontario-colour-focus, #009acd);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
 }
 
 .ontario-decision-explainer button:focus:not(:focus-visible) {
+  box-shadow: none;
   outline: none;
 }
 
 .ontario-decision-explainer button:focus-visible {
-  outline: 3px solid var(--ontario-colour-focus, #009acd);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
 }
 
-/* Focus indicator for details/summary */
+/* Focus indicator for details/summary - Ontario DS standard */
 .ontario-details__summary:focus {
-  outline: 3px solid var(--ontario-colour-focus, #009acd);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
 }
 
 .ontario-details__summary:focus:not(:focus-visible) {
+  box-shadow: none;
   outline: none;
 }
 
 .ontario-details__summary:focus-visible {
-  outline: 3px solid var(--ontario-colour-focus, #009acd);
-  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
 }
 
 /* High contrast mode support */

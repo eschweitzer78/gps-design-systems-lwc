@@ -57,7 +57,7 @@
   background-color: var(--ontario-color-white, #ffffff);
 }
 .ontario-checkboxes__input:focus {
-  outline: 4px solid var(--ontario-color-focus, #009adb);
+  outline: 4px solid var(--ontario-colour-focus, #009adb);
   outline-offset: 0;
 }
 .ontario-checkboxes__input:checked {

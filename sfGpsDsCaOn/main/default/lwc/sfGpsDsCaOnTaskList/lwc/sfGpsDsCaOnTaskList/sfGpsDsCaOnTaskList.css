@@ -91,7 +91,7 @@
 }
 
 .ontario-task:focus-within {
-  outline: 4px solid var(--ontario-color-focus, #009adb);
+  outline: 4px solid var(--ontario-colour-focus, #009adb);
 }
 
 .ontario-task:has(.ontario-task__link):hover {

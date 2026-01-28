@@ -40,7 +40,7 @@
   text-decoration: underline;
 }
 .ontario-button--tertiary:focus {
-  outline: 0.25rem solid var(--ontario-color-focus, #009adb);
+  outline: 0.25rem solid var(--ontario-colour-focus, #009adb);
   outline-offset: 0.125rem;
   background-color: transparent;
 }
