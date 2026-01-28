@@ -23,7 +23,7 @@ https://your-site.com/s/page?debug=true
 Or set in localStorage (persists across sessions):
 
 ```javascript
-localStorage.setItem('sfGpsDsCaOnDebug', 'true');
+localStorage.setItem("sfGpsDsCaOnDebug", "true");
 ```
 
 ### Disable Debug Mode
@@ -31,7 +31,7 @@ localStorage.setItem('sfGpsDsCaOnDebug', 'true');
 ```javascript
 window.sfGpsDsCaOnDebug = false;
 // Or
-localStorage.removeItem('sfGpsDsCaOnDebug');
+localStorage.removeItem("sfGpsDsCaOnDebug");
 ```
 
 ---
@@ -42,15 +42,15 @@ The `sfGpsDsCaOnDebugUtils` module provides standardized logging and tracing for
 
 ### Features
 
-| Feature | Description |
-|---------|-------------|
-| **Logger Class** | Consistent logging with component identification |
-| **Log Levels** | NONE, ERROR, WARN, INFO, DEBUG, TRACE |
-| **Performance Timing** | Measure operation duration |
-| **State Tracking** | Log property changes |
-| **Event Tracing** | Track dispatched and received events |
-| **Method Tracing** | Log method entry/exit for execution flow |
-| **Instance IDs** | Unique identifiers for multiple component instances |
+| Feature                | Description                                         |
+| ---------------------- | --------------------------------------------------- |
+| **Logger Class**       | Consistent logging with component identification    |
+| **Log Levels**         | NONE, ERROR, WARN, INFO, DEBUG, TRACE               |
+| **Performance Timing** | Measure operation duration                          |
+| **State Tracking**     | Log property changes                                |
+| **Event Tracing**      | Track dispatched and received events                |
+| **Method Tracing**     | Log method entry/exit for execution flow            |
+| **Instance IDs**       | Unique identifiers for multiple component instances |
 
 ---
 
@@ -97,14 +97,15 @@ Use `enter()` and `exit()` to trace execution flow:
 ```javascript
 handleOptionSelect(event) {
   log.enter("handleOptionSelect", { type: event.type });
-  
+
   // ... method logic ...
-  
+
   log.exit("handleOptionSelect");
 }
 ```
 
 **Console Output:**
+
 ```
 [SfGpsDsCaOnFormTypeahead] > handleOptionSelect { type: "click" }
 [SfGpsDsCaOnFormTypeahead] < handleOptionSelect
@@ -123,6 +124,7 @@ handleChange(event) {
 ```
 
 **Console Output:**
+
 ```
 [SfGpsDsCaOnDropdown] State: value { from: "", to: "option1" }
 ```
@@ -150,14 +152,15 @@ Measure operation duration:
 ```javascript
 connectedCallback() {
   log.timeStart("initialization");
-  
+
   // ... initialization logic ...
-  
+
   log.timeEnd("initialization");
 }
 ```
 
 **Console Output:**
+
 ```
 [SfGpsDsCaOnFormLookup] Timer started: initialization
 [SfGpsDsCaOnFormLookup] Timer initialization: 2.35ms
@@ -172,11 +175,11 @@ connectedCallback() {
 When multiple instances of the same component exist on a page:
 
 ```javascript
-const log = new Logger("SfGpsDsCaOnTextInput", { 
-  includeInstanceId: true 
+const log = new Logger("SfGpsDsCaOnTextInput", {
+  includeInstanceId: true
 });
 
-// Output: [SfGpsDsCaOnTextInput#1] ... 
+// Output: [SfGpsDsCaOnTextInput#1] ...
 // Output: [SfGpsDsCaOnTextInput#2] ...
 ```
 
@@ -185,8 +188,8 @@ const log = new Logger("SfGpsDsCaOnTextInput", {
 Include timestamps in logs:
 
 ```javascript
-const log = new Logger("SfGpsDsCaOnSearch", { 
-  includeTimestamp: true 
+const log = new Logger("SfGpsDsCaOnSearch", {
+  includeTimestamp: true
 });
 
 // Output: 2026-01-26T15:30:45.123Z [SfGpsDsCaOnSearch] ...
@@ -261,7 +264,7 @@ setLogLevel(LogLevel.NONE);
 ```javascript
 import { enableDebug, disableDebug } from "c/sfGpsDsCaOnDebugUtils";
 
-enableDebug();  // Sets level to DEBUG
+enableDebug(); // Sets level to DEBUG
 disableDebug(); // Sets level to ERROR
 ```
 
@@ -279,6 +282,7 @@ window.sfGpsDsCaOnDebug = true;
 ```
 
 Look for:
+
 - `ERROR:` messages indicating failures
 - `connectedCallback` entry without exit (component crashed during init)
 
@@ -340,32 +344,35 @@ const log = new Logger("ComponentName");
 
 ### 2. Log at Appropriate Levels
 
-| Level | Use For |
-|-------|---------|
-| ERROR | Failures that break functionality |
-| WARN | Deprecated usage, potential issues |
-| INFO | User actions, important state changes |
-| DEBUG | Development debugging, state details |
-| TRACE | Method entry/exit, verbose tracing |
+| Level | Use For                               |
+| ----- | ------------------------------------- |
+| ERROR | Failures that break functionality     |
+| WARN  | Deprecated usage, potential issues    |
+| INFO  | User actions, important state changes |
+| DEBUG | Development debugging, state details  |
+| TRACE | Method entry/exit, verbose tracing    |
 
 ### 3. Include Context in Logs
 
 Bad:
+
 ```javascript
 log.debug("Error occurred");
 ```
 
 Good:
+
 ```javascript
-log.debug("Failed to load options", { 
+log.debug("Failed to load options", {
   dataRaptor: this._propSetMap.optionSource,
-  error: error.message 
+  error: error.message
 });
 ```
 
 ### 4. Clean Up for Production
 
 Debug logging is automatically suppressed when:
+
 - `window.sfGpsDsCaOnDebug` is not set
 - URL parameter `?debug=true` is not present
 - localStorage doesn't have the debug flag
@@ -378,18 +385,64 @@ No code changes needed for production.
 
 The following components have been enhanced with debug logging:
 
-| Component | Key Logged Operations |
-|-----------|----------------------|
-| `sfGpsDsCaOnFormTypeahead` | Keyboard navigation, option selection, initialization |
-| `sfGpsDsCaOnFormPlacesTypeahead` | Google Places selection, place details retrieval |
-| `sfGpsDsCaOnFormLookup` | Dropdown open/close, option selection, ARIA focus |
-| `sfGpsDsCaOnSearchComm` | Search queries, suggestions, errors |
-| `sfGpsDsCaOnDropdown` | Value changes, events |
+| Component                        | Key Logged Operations                                 |
+| -------------------------------- | ----------------------------------------------------- |
+| `sfGpsDsCaOnFormTypeahead`       | Keyboard navigation, option selection, initialization |
+| `sfGpsDsCaOnFormPlacesTypeahead` | Google Places selection, place details retrieval      |
+| `sfGpsDsCaOnFormLookup`          | Dropdown open/close, option selection, ARIA focus     |
+| `sfGpsDsCaOnSearchComm`          | Search queries, suggestions, errors                   |
+| `sfGpsDsCaOnDropdown`            | Value changes, events                                 |
+
+---
+
+## Error Tracking
+
+For production error tracking, use the `sfGpsDsCaOnErrorTracker` module.
+
+### Basic Setup
+
+```javascript
+import { ErrorTracker } from "c/sfGpsDsCaOnErrorTracker";
+
+const tracker = new ErrorTracker("SfGpsDsCaOnMyComponent", {
+  reportToApex: true // Enable server-side logging
+});
+```
+
+### Track Errors with Correlation IDs
+
+```javascript
+try {
+  await this.callApex();
+} catch (error) {
+  tracker.trackError(error, { action: "loadData" });
+  // Logs: [SfGpsDsCaOnMyComponent] INTEGRATION Error [SFGPS-1706450400123-a1b2c3d4]: ...
+}
+```
+
+### Pass Correlation ID to Apex
+
+Include the correlation ID in Apex calls for end-to-end tracing:
+
+```javascript
+const correlationId = tracker.getCorrelationId();
+const result = await callApex({ correlationId, ...params });
+```
+
+### Search Logs by Correlation ID
+
+Use the correlation ID to find related log entries:
+
+```apex
+// In Developer Console > Debug Logs
+// Search for: [SFGPS-1706450400123-a1b2c3d4]
+```
 
 ---
 
 ## Related Documentation
 
+- [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common issues and solutions
 - [DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md) - Development guide
 - [COMPONENT_API.md](./COMPONENT_API.md) - Component APIs
 - [OMNISCRIPT_SETUP.md](./OMNISCRIPT_SETUP.md) - OmniScript configuration
