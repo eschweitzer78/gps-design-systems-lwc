@@ -1,4 +1,10 @@
-<template>
+<!--
+  Light DOM compatible version.
+  In Light DOM, content is assigned to slots using the slot attribute on child elements.
+  The heading and content can come from properties (with markdown parsing) or from slots.
+  Note: Can't use lwc:else on slot elements, so we use separate lwc:if conditions.
+-->
+<template lwc:render-mode="light">
   <c-sf-gps-ds-configuration-error
     lwc:if={_sfGpsDsErrors}
     errors={_sfGpsDsErrors}
@@ -11,14 +17,18 @@
     highlight-colour={highlightColour}
     class-name={className}
   >
-    <span lwc:if={heading} lwc:ref="heading" lwc:dom="manual" slot="heading">
-    </span>
-    <template lwc:else>
-      <slot slot="heading" name="Aside-Heading"></slot>
+    <!-- Heading: From property (markdown) or Experience Builder slot -->
+    <!-- slot="heading" assigns this content to child's named slot -->
+    <span lwc:if={heading} lwc:ref="heading" slot="heading"></span>
+    <template lwc:if={showHeadingSlot}>
+      <span slot="heading">
+        <slot name="Aside-Heading"></slot>
+      </span>
     </template>
 
+    <!-- Content: From property (markdown) or Experience Builder slot -->
     <div lwc:if={content} lwc:ref="content"></div>
-    <template lwc:else>
+    <template lwc:if={showContentSlot}>
       <slot name="Aside-Content"></slot>
     </template>
   </c-sf-gps-ds-ca-on-aside>

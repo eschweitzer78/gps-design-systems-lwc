@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Footer (Expanded)</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="footerLinksJson"
+        type="String"
+        label="Footer links (JSON)"
+        description="JSON object with accessibilityLink, privacyLink, contactLink."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="socialLinksJson"
+        type="String"
+        label="Social links (JSON)"
+        description="JSON object with social media URLs (facebook, twitter, instagram, youtube)."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="twoColumnOptionsJson"
+        type="String"
+        label="Two column options (JSON)"
+        description="JSON object for two-column layout content with title, content, and contentType."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="threeColumnOptionsJson"
+        type="String"
+        label="Three column options (JSON)"
+        description="JSON object for three-column layout content with title and content array."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="topMargin"
+        type="Boolean"
+        label="Top margin"
+        description="When true, adds margin above the footer."
+        default="true"
+      />
+      <property
+        name="language"
+        type="String"
+        label="Language"
+        description="The language for the footer: en or fr."
+        default="en"
+        datasource="en,fr"
+      />
+      <property
+        name="assetBasePath"
+        type="String"
+        label="Asset base path"
+        description="Base path for footer assets (logos). Leave empty to use default."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,61 @@
+<template lwc:render-mode="light">
+  <div class="ontario-form-group">
+    <!-- Label -->
+    <label class="ontario-label" for={_inputId}>
+      {label}
+      <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+    </label>
+
+    <!-- Hint text -->
+    <p lwc:if={hintText} id={_hintId} class="ontario-hint">
+      {hintText}
+    </p>
+
+    <!-- Error message -->
+    <div 
+      lwc:if={hasError}
+      id={_errorId}
+      class="ontario-error-messaging"
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      </svg>
+      <span class="ontario-error-messaging__content">{errorMessage}</span>
+    </div>
+
+    <!-- Input field -->
+    <!-- AODA: Added aria-required for screen reader announcement -->
+    <input
+      type={type}
+      id={_inputId}
+      name={name}
+      class={computedInputClassName}
+      value={value}
+      placeholder={placeholder}
+      disabled={disabled}
+      readonly={readonly}
+      required={required}
+      aria-required={required}
+      minlength={minLength}
+      maxlength={maxLength}
+      pattern={pattern}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={computedAriaInvalid}
+      oninput={handleInput}
+      onchange={handleChange}
+      onblur={handleBlur}
+      onfocus={handleFocus}
+    />
+
+    <!-- Character count -->
+    <c-sf-gps-ds-ca-on-character-count
+      lwc:if={shouldShowCharacterCount}
+      current-length={currentLength}
+      max-length={maxLength}
+      threshold={computedCharacterCountThreshold}
+      mode={computedCharacterCountMode}
+    ></c-sf-gps-ds-ca-on-character-count>
+  </div>
+</template>

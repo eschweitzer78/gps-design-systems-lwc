@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Summary List</masterLabel>
+  <description>Displays a key-value pair list for form review and confirmation pages following Ontario Design System guidelines.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="Section heading for the summary list"
+      />
+      <property
+        name="headingActionLabel"
+        type="String"
+        label="Heading Action Label"
+        description="Label for action link in heading (e.g., Change)"
+        default="Change"
+      />
+      <property
+        name="headingActionUrl"
+        type="String"
+        label="Heading Action URL"
+        description="URL for action link in heading"
+      />
+      <property
+        name="itemsJson"
+        type="String"
+        label="Items (JSON)"
+        description="JSON array of items with key, value, changeUrl, changeLabel properties"
+      />
+      <property
+        name="ratio"
+        type="String"
+        label="Key-Value Ratio"
+        description="Ratio of key to value column widths"
+        datasource="1-1,1-2,1-3,2-1,2-3"
+        default="1-1"
+      />
+      <property
+        name="fullWidth"
+        type="Boolean"
+        label="Full Width"
+        description="Extend to full container width"
+        default="false"
+      />
+      <property
+        name="compact"
+        type="Boolean"
+        label="Compact"
+        description="Use compact row spacing"
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

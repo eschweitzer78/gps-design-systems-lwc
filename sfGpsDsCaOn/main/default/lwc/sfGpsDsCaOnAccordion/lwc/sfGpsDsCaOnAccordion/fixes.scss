@@ -1,0 +1,17 @@
+/* Ontario Accordion LWC Fixes */
+
+/* Ensure accordion content displays correctly when opened */
+.ontario-accordion__content--opened {
+  display: block;
+}
+
+.ontario-accordion__content--closed {
+  display: none;
+}
+
+/* Fix icon sizing */
+.ontario-accordion__button .ontario-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
+}

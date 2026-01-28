@@ -1,0 +1,230 @@
+/*
+*  Global variables
+*
+*  Used across multiple components
+*/
+/* -------------------------------
+    Global spacing variables
+--------------------------------- */
+/*
+*  Global colour variables
+*
+*  1 - Greyscale colours
+*  2 - System colours
+*  3 - Accent colours
+*    3.1 - Main
+*    3.2 - Light
+*    3.3 - Dark
+*    3.4 - Callout backgrounds
+*/
+/*** 1 - Greyscale colours ***/
+/*** 2 - System colours ***/
+/*** 3 - Accent colours ***/
+/* Main */
+/* Light */
+/* Dark */
+/* callout backgrounds */
+/* icon colours */
+/* service ontario header colours */
+/*** 1 - Breakpoint sizes for media queries ***/
+/* -------------------------------
+    Focus placeholder variables
+--------------------------------- */
+/* -------------------------------
+    Focus placeholder
+--------------------------------- */
+.ontario-accordion__button--expand-all:focus, .ontario-accordion__button:focus {
+  box-shadow: 0 0 0 4px #009ADB;
+  outline: 4px solid transparent;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+/* -------------------------------
+    Global font variables
+--------------------------------- */
+/* -------------------------------
+    Global font-weight variables
+--------------------------------- */
+/* -------------------------------
+    Global letter-spacing variables
+--------------------------------- */
+/* Rem calc function */
+/* Pixel to REM Conversion */
+/* -------------------------------
+    Global line-height variables
+--------------------------------- */
+/* -------------------------------
+    Global typography variables
+--------------------------------- */
+.ontario-accordion__button {
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 1rem;
+  font-feature-settings: normal;
+  font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.ontario-accordion__button {
+  font-size: 1.25rem;
+  letter-spacing: 0.03rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+  max-width: 48rem;
+}
+
+@media screen and (min-width: 40em) {
+  .ontario-accordion__button {
+    font-size: 1.5rem;
+    letter-spacing: 0.0313rem;
+    line-height: 1.5;
+  }
+}
+/* -------------------------------
+    Global font-size variables
+--------------------------------- */
+.ontario-accordions__container {
+  max-width: 48rem;
+  width: 100%;
+}
+
+.ontario-accordion {
+  border-top: 2px solid #cccccc;
+}
+.ontario-accordion:last-of-type {
+  border-bottom: 2px solid #cccccc;
+}
+
+.ontario-accordion__controls {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ontario-accordion__button,
+.ontario-accordion__button--expand-all {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.ontario-accordion__button--expand-all {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #0066CC;
+  cursor: pointer;
+}
+.ontario-accordion__button--expand-all:focus, .ontario-accordion__button--expand-all:hover {
+  color: #00478F;
+  text-decoration: underline;
+}
+.ontario-accordion__button--expand-all:active {
+  color: #002142;
+  text-decoration: underline;
+}
+
+.ontario-accordion--expand-close-all {
+  display: none;
+}
+
+.ontario-accordion__controls--active .ontario-accordion--expand-close-all {
+  display: block;
+}
+.ontario-accordion__controls--active .ontario-accordion--expand-open-all {
+  display: none;
+}
+
+.ontario-accordion__button {
+  display: flex;
+  align-items: flex-start;
+  color: #0066CC;
+  cursor: pointer;
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+.ontario-accordion__button .ontario-accordion__button-icon--close,
+.ontario-accordion__button .ontario-accordion__button-icon--open {
+  margin-right: 0.5rem;
+}
+.ontario-accordion__button .ontario-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.ontario-accordion__button:focus, .ontario-accordion__button:hover {
+  background-color: rgb(242.25, 242.25, 242.25);
+  color: #00478F;
+}
+.ontario-accordion__button:focus {
+  box-shadow: 0 0 0 4px #009ADB inset;
+}
+.ontario-accordion__button:active {
+  color: #002142;
+}
+
+.ontario-accordion__content {
+  display: none;
+  padding: 0.75rem 0.75rem 2rem 0.75rem;
+  margin-left: 0;
+}
+@media screen and (min-width: 40em) {
+  .ontario-accordion__content {
+    margin-left: 2rem;
+  }
+}
+.ontario-accordion__content * {
+  margin-top: 0;
+  max-width: 48rem;
+  width: 100%;
+}
+.ontario-accordion__content ul,
+.ontario-accordion__content ol {
+  max-width: calc(100% - 3rem);
+}
+.ontario-accordion__content > :last-child {
+  margin-bottom: 0;
+}
+
+.ontario-accordion__button-icon--close,
+.ontario-expander--active .ontario-accordion__button-icon--open {
+  display: none;
+}
+
+.ontario-expander--active ~ .ontario-accordion__content,
+.ontario-expander--active .ontario-accordion__button-icon--close {
+  display: block;
+}
+
+.ontario-accordions__container .ontario-h1,
+.ontario-accordions__container .ontario-h2,
+.ontario-accordions__container .ontario-h3,
+.ontario-accordions__container .ontario-h4,
+.ontario-accordions__container .ontario-h5,
+.ontario-accordions__container p,
+.ontario-accordions__container h1,
+.ontario-accordions__container h2,
+.ontario-accordions__container h3,
+.ontario-accordions__container h4,
+.ontario-accordions__container h5,
+.ontario-accordions__container h6 {
+  margin: 0;
+}
+
+/* Ontario Accordion LWC Fixes */
+/* Ensure accordion content displays correctly when opened */
+.ontario-accordion__content--opened {
+  display: block;
+}
+
+.ontario-accordion__content--closed {
+  display: none;
+}
+
+/* Fix icon sizing */
+.ontario-accordion__button .ontario-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnAccordion.css.map */

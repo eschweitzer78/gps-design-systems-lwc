@@ -1,0 +1,48 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <ul class="ontario-task-list" role="list">
+      <template for:each={computedItems} for:item="item">
+        <li 
+          key={item.id} 
+          class={item.taskClassName}
+          role="group"
+          aria-labelledby={item.labelId}
+          aria-describedby={item.ariaDescribedBy}
+        >
+          <template lwc:if={item.hasUrl}>
+            <a href={item.url} class="ontario-task__link" aria-label="Clicking this link will lead you to the task">
+              <div class="ontario-task__content">
+                <div class="ontario-task__text">
+                  <h2 id={item.labelId} class="ontario-task__label ontario-task__hint-text--true">
+                    {item.label}
+                  </h2>
+                  <p lwc:if={item.hasHint} id={item.hintId} class="ontario-hint">
+                    {item.hint}
+                  </p>
+                </div>
+                <span class="ontario-badge" role="status">
+                  {item.computedStatusLabel}
+                </span>
+              </div>
+            </a>
+          </template>
+          <template lwc:else>
+            <div class="ontario-task__content">
+              <div class="ontario-task__text">
+                <h2 id={item.labelId} class="ontario-task__label ontario-task__hint-text--true">
+                  {item.label}
+                </h2>
+                <p lwc:if={item.hasHint} id={item.hintId} class="ontario-hint">
+                  {item.hint}
+                </p>
+              </div>
+              <span class="ontario-badge" role="status">
+                {item.computedStatusLabel}
+              </span>
+            </div>
+          </template>
+        </li>
+      </template>
+    </ul>
+  </div>
+</template>

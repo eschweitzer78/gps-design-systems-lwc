@@ -1,0 +1,26 @@
+<!--
+  Light DOM compatible version.
+  Supports both data-driven accordions (via accordionData property)
+  and slot-based child accordion items (for Experience Builder).
+-->
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:else>
+    <c-sf-gps-ds-ca-on-accordion-group
+      name={name}
+      items={computedItems}
+      show-expand-collapse={computedShowExpandCollapse}
+      expand-label={expandLabel}
+      collapse-label={collapseLabel}
+      class-name={className}
+    >
+      <!-- Slot for Experience Builder to place child accordion items -->
+      <slot name="Accordion-Items"></slot>
+    </c-sf-gps-ds-ca-on-accordion-group>
+  </template>
+</template>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Task List (Salesforce)</masterLabel>
+  <description>Displays Salesforce Tasks assigned to the current user or related to a record, styled with Ontario Design System guidelines.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+    <target>lightning__RecordPage</target>
+    <target>lightning__AppPage</target>
+    <target>lightning__HomePage</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="recordId"
+        type="String"
+        label="Record ID"
+        description="Optional. Show tasks related to this record. Leave empty to show current user's tasks."
+      />
+      <property
+        name="showCompleted"
+        type="Boolean"
+        label="Show Completed Tasks"
+        description="Include completed tasks in the list"
+        default="false"
+      />
+      <property
+        name="maxRecords"
+        type="Integer"
+        label="Maximum Records"
+        description="Maximum number of tasks to display (1-200)"
+        default="50"
+        min="1"
+        max="200"
+      />
+      <property
+        name="emptyMessage"
+        type="String"
+        label="Empty Message"
+        description="Message to display when no tasks are found"
+        default="No tasks found"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply"
+      />
+    </targetConfig>
+    <targetConfig targets="lightning__RecordPage">
+      <property
+        name="showCompleted"
+        type="Boolean"
+        label="Show Completed Tasks"
+        description="Include completed tasks in the list"
+        default="false"
+      />
+      <property
+        name="maxRecords"
+        type="Integer"
+        label="Maximum Records"
+        description="Maximum number of tasks to display (1-200)"
+        default="50"
+        min="1"
+        max="200"
+      />
+      <property
+        name="emptyMessage"
+        type="String"
+        label="Empty Message"
+        description="Message to display when no tasks are found"
+        default="No tasks found"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply"
+      />
+    </targetConfig>
+    <targetConfig targets="lightning__AppPage,lightning__HomePage">
+      <property
+        name="showCompleted"
+        type="Boolean"
+        label="Show Completed Tasks"
+        description="Include completed tasks in the list"
+        default="false"
+      />
+      <property
+        name="maxRecords"
+        type="Integer"
+        label="Maximum Records"
+        description="Maximum number of tasks to display (1-200)"
+        default="50"
+        min="1"
+        max="200"
+      />
+      <property
+        name="emptyMessage"
+        type="String"
+        label="Empty Message"
+        description="Message to display when no tasks are found"
+        default="No tasks found"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

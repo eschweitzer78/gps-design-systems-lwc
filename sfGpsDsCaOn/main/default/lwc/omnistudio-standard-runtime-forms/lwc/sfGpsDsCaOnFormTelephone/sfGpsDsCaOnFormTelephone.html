@@ -1,0 +1,59 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Telephone Input for OmniStudio
+  
+  This template renders a phone number input field with Ontario DS styling.
+  It wraps the c-sf-gps-ds-ca-on-text-input component with type="tel".
+  
+  Compliance:
+  - LWR: Compatible (uses Light DOM parent)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Follows form field structure
+  - WCAG 2.1 AA: 
+    - Label associated with input via name
+    - Hint text via aria-describedby
+    - Error messages with role="alert"
+    - Keyboard accessible
+    - type="tel" provides appropriate keyboard on mobile devices
+
+  Template Bindings:
+  - type: Set to "tel" for telephone input (mobile keyboard optimization)
+  - label: From mergedLabel getter (supports merge fields)
+  - name: From _name for form association
+  - required/optional: From _propSetMap configuration
+  - disabled/readonly: From _propSetMap configuration
+  - max-length/min-length: From _maxLength/_minLength
+  - pattern: From _patternVal for format validation (e.g., phone patterns)
+  - hint-text: From mergedHelpText getter
+  - placeholder: From mergedPlaceholder getter
+  - error-message: From sfGpsDsErrorMessage getter (validation)
+  - value: From elementValue (current input value)
+  
+  Event Handlers:
+  - onblur: handleBlur - Triggers validation display
+  - onchange: handleChange - Updates OmniScript data model
+  - oninput: handleInput - Real-time input handling
+-->
+<template>
+  <c-sf-gps-ds-ca-on-text-input
+    type="tel"
+    label={mergedLabel}
+    name={_name}
+    required={_propSetMap.required}
+    optional={_propSetMap.optional}
+    disabled={_propSetMap.disabled}
+    readonly={_propSetMap.readOnly}
+    max-length={_maxLength}
+    min-length={_minLength}
+    pattern={_patternVal}
+    hint-text={mergedHelpText}
+    placeholder={mergedPlaceholder}
+    error-message={sfGpsDsErrorMessage}
+    value={elementValue}
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
+    oninput={handleInput}
+  >
+  </c-sf-gps-ds-ca-on-text-input>
+</template>

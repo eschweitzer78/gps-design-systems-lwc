@@ -1,21 +1,34 @@
+<!--
+  Light DOM compatible callout component.
+  Supports both property-based heading (preferred for Light DOM)
+  and slot-based heading (for direct usage).
+-->
 <template lwc:render-mode="light">
-  <callout class={computedClassName}>
+  <section class={computedClassName} role="note">
+    <!-- Heading: Property takes precedence over slot for Light DOM compatibility -->
+    <!-- Note: slot can't be used with lwc:else, so we use two separate conditionals -->
     <h2 lwc:if={isH2} class="ontario-callout__title ontario-h5">
-      <slot name="heading"></slot>
+      <template lwc:if={hasHeadingProp}>{heading}</template>
+      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
     </h2>
     <h3 lwc:if={isH3} class="ontario-callout__title ontario-h5">
-      <slot name="heading"></slot>
+      <template lwc:if={hasHeadingProp}>{heading}</template>
+      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
     </h3>
     <h4 lwc:if={isH4} class="ontario-callout__title ontario-h5">
-      <slot name="heading"></slot>
+      <template lwc:if={hasHeadingProp}>{heading}</template>
+      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
     </h4>
     <h5 lwc:if={isH5} class="ontario-callout__title ontario-h5">
-      <slot name="heading"></slot>
+      <template lwc:if={hasHeadingProp}>{heading}</template>
+      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
     </h5>
     <h6 lwc:if={isH6} class="ontario-callout__title ontario-h5">
-      <slot name="heading"></slot>
+      <template lwc:if={hasHeadingProp}>{heading}</template>
+      <template lwc:if={showHeadingSlot}><slot name="heading"></slot></template>
     </h6>
 
+    <!-- Content slot -->
     <slot></slot>
-  </callout>
+  </section>
 </template>

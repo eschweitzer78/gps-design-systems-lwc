@@ -1,0 +1,129 @@
+/* Ontario Design System - Range/Slider Styles */
+
+/* Range container with min/max labels */
+.ontario-range-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* Min/max value labels */
+.ontario-range__min-label,
+.ontario-range__max-label {
+  font-size: 0.875rem;
+  color: var(--ontario-colour-grey-dark, #4d4d4d);
+  flex-shrink: 0;
+  min-width: 2.5rem;
+  text-align: center;
+}
+
+/* Base range input styling */
+.ontario-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--ontario-colour-grey-light, #ccc);
+  outline: none;
+  cursor: pointer;
+}
+
+/* Range track for WebKit browsers */
+.ontario-range::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--ontario-colour-grey-light, #ccc);
+}
+
+/* Range thumb for WebKit browsers */
+.ontario-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--ontario-colour-primary, #1a1a1a);
+  cursor: pointer;
+  margin-top: -8px;
+  border: 2px solid var(--ontario-colour-white, #fff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.ontario-range::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Range track for Firefox */
+.ontario-range::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--ontario-colour-grey-light, #ccc);
+}
+
+/* Range thumb for Firefox */
+.ontario-range::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--ontario-colour-primary, #1a1a1a);
+  cursor: pointer;
+  border: 2px solid var(--ontario-colour-white, #fff);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.ontario-range::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* Focus state - WCAG 2.4.7 Focus Visible */
+/* Note: We use box-shadow on thumb as visible focus indicator */
+/* The outline:none is acceptable because we provide an alternative visible focus */
+.ontario-range:focus {
+  outline: 2px solid transparent; /* For high contrast mode */
+}
+
+.ontario-range:focus-visible {
+  /* Fallback focus ring on the track for browsers that support focus-visible */
+  outline: 2px solid var(--ontario-colour-focus, #009ACD);
+  outline-offset: 2px;
+}
+
+.ontario-range:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009ACD);
+  transform: scale(1.1);
+}
+
+.ontario-range:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009ACD);
+  transform: scale(1.1);
+}
+
+/* Disabled state */
+.ontario-range:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ontario-range:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
+.ontario-range:disabled::-moz-range-thumb {
+  cursor: not-allowed;
+}
+
+/* Current value display */
+.ontario-range__value-display {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--ontario-colour-grey-dark, #4d4d4d);
+}
+
+.ontario-range__current-value strong {
+  font-weight: 700;
+  color: var(--ontario-colour-black, #1a1a1a);
+}

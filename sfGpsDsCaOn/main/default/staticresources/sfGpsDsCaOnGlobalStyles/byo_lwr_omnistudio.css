@@ -1,0 +1,302 @@
+/* ==========================================================================
+   LWR Base Overrides
+   ========================================================================== */
+html,
+body,
+.comm-page-container,
+.cCenterPanel,
+.cLayout,
+[class*=forceCommunity] {
+  font-family: var(--ontario-font-open-sans);
+}
+
+/* ==========================================================================
+   OmniStudio Integration
+   ========================================================================== */
+.omniscript-article.slds-card {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.slds-omniscript_stepform {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.omniscript-body {
+  padding: 0 !important;
+  border: 0 !important;
+  margin-top: 0;
+}
+
+.omniscript-side-content {
+  margin-top: 0;
+  margin-bottom: var(--ontario-spacing-6);
+}
+
+.omniscript-sfl-actions,
+.omniscript-button-position,
+.omniscript-btn-next,
+.omniscript-btn-previous,
+.omniscript-btn-save-for-later {
+  display: none !important;
+}
+
+.sfgpsdscaon-os-show {
+  display: inline-block;
+}
+
+.sfgpsdscaon-os-hide {
+  display: none;
+}
+
+/* ==========================================================================
+   SLDS Overrides
+   ========================================================================== */
+.slds-button {
+  font-family: var(--ontario-font-open-sans);
+}
+
+.slds-button--icon,
+.slds-button--icon-border,
+.slds-button--icon-border-filled,
+.slds-button--icon-border-inverse,
+.slds-button--icon-container,
+.slds-button--icon-error,
+.slds-button--icon-inverse,
+.slds-button--icon-more,
+.slds-button--icon-warning,
+.slds-button_icon,
+.slds-button_icon-border,
+.slds-button_icon-border-filled,
+.slds-button_icon-border-inverse,
+.slds-button_icon-container,
+.slds-button_icon-error,
+.slds-button_icon-inverse,
+.slds-button_icon-more,
+.slds-button_icon-warning {
+  line-height: 1;
+  vertical-align: middle;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+/* ==========================================================================
+   Form Elements Override
+   ========================================================================== */
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=tel],
+input[type=url],
+input[type=number],
+input[type=search],
+input[type=date],
+textarea,
+select {
+  font-family: var(--ontario-font-open-sans);
+  font-size: var(--ontario-font-size-standard);
+  border: 2px solid var(--ontario-colour-greyscale-60);
+  border-radius: var(--ontario-border-radius);
+  padding: var(--ontario-spacing-3);
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+input[type=tel]:focus,
+input[type=url]:focus,
+input[type=number]:focus,
+input[type=search]:focus,
+input[type=date]:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid var(--ontario-colour-focus);
+  outline-offset: 0;
+  border-color: var(--ontario-colour-focus);
+}
+
+label {
+  font-family: var(--ontario-font-open-sans);
+  font-weight: var(--ontario-font-weight-semi-bold);
+  display: block;
+  margin-bottom: var(--ontario-spacing-2);
+}
+
+/* ==========================================================================
+   Link Overrides
+   ========================================================================== */
+a:not([class*=slds-]):not([class*=ontario-]) {
+  color: var(--ontario-colour-link);
+  text-decoration: underline;
+}
+a:not([class*=slds-]):not([class*=ontario-]):hover {
+  color: var(--ontario-colour-link-hover);
+  text-decoration: none;
+}
+a:not([class*=slds-]):not([class*=ontario-]):active {
+  color: var(--ontario-colour-link-active);
+}
+a:not([class*=slds-]):not([class*=ontario-]):focus-visible {
+  outline: 3px solid var(--ontario-colour-focus);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+@media print {
+  .omniscript-sfl-actions,
+  .omniscript-button-position {
+    display: none !important;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+}
+/* ==========================================================================
+   OmniStudio Form Elements
+   ========================================================================== */
+.nds-input__icon {
+  color: var(--ontario-colour-greyscale-60);
+}
+
+.nds-checkbox label,
+.nds-radio label {
+  font-weight: var(--ontario-font-weight-normal);
+}
+
+.nds-required {
+  color: var(--ontario-colour-alert);
+}
+
+.nds-has-error .nds-input,
+.nds-has-error .nds-select,
+.nds-has-error .nds-textarea {
+  border-color: var(--ontario-colour-alert);
+  border-width: 2px;
+}
+
+.nds-form-element__help {
+  color: var(--ontario-colour-alert);
+  font-size: var(--ontario-font-size-small);
+  margin-top: var(--ontario-spacing-2);
+}
+
+/* ==========================================================================
+   OmniStudio Step Indicator
+   ========================================================================== */
+.nds-progress .nds-progress__marker {
+  background-color: var(--ontario-colour-greyscale-20);
+  border-color: var(--ontario-colour-greyscale-60);
+}
+.nds-progress .nds-progress__marker.nds-progress__marker_icon {
+  background-color: var(--ontario-colour-success);
+  border-color: var(--ontario-colour-success);
+}
+.nds-progress .nds-is-active .nds-progress__marker {
+  background-color: var(--ontario-colour-link);
+  border-color: var(--ontario-colour-link);
+}
+
+/* ==========================================================================
+   OmniStudio Buttons
+   ========================================================================== */
+.nds-button_brand,
+.nds-button--brand {
+  background-color: var(--ontario-colour-link);
+  border-color: var(--ontario-colour-link);
+  color: var(--ontario-colour-white);
+  font-family: var(--ontario-font-open-sans);
+  font-weight: var(--ontario-font-weight-semi-bold);
+  border-radius: var(--ontario-border-radius);
+  padding: var(--ontario-spacing-3) var(--ontario-spacing-5);
+  text-decoration: none;
+}
+.nds-button_brand:hover, .nds-button_brand:focus,
+.nds-button--brand:hover,
+.nds-button--brand:focus {
+  background-color: var(--ontario-colour-link-hover);
+  border-color: var(--ontario-colour-link-hover);
+}
+.nds-button_brand:active,
+.nds-button--brand:active {
+  background-color: var(--ontario-colour-link-active);
+  border-color: var(--ontario-colour-link-active);
+}
+.nds-button_brand:focus-visible,
+.nds-button--brand:focus-visible {
+  outline: 3px solid var(--ontario-colour-focus);
+  outline-offset: 2px;
+}
+
+.nds-button_neutral,
+.nds-button--neutral {
+  background-color: var(--ontario-colour-white);
+  border: 2px solid var(--ontario-colour-link);
+  color: var(--ontario-colour-link);
+  font-family: var(--ontario-font-open-sans);
+  font-weight: var(--ontario-font-weight-semi-bold);
+  border-radius: var(--ontario-border-radius);
+  padding: var(--ontario-spacing-3) var(--ontario-spacing-5);
+  text-decoration: none;
+}
+.nds-button_neutral:hover, .nds-button_neutral:focus,
+.nds-button--neutral:hover,
+.nds-button--neutral:focus {
+  background-color: #E0F0FF;
+  border-color: var(--ontario-colour-link);
+  color: var(--ontario-colour-link);
+}
+.nds-button_neutral:active,
+.nds-button--neutral:active {
+  background-color: #C2E0FF;
+}
+.nds-button_neutral:focus-visible,
+.nds-button--neutral:focus-visible {
+  outline: 3px solid var(--ontario-colour-focus);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   OmniStudio Card/Panel Styling
+   ========================================================================== */
+.nds-card {
+  border: 1px solid var(--ontario-colour-greyscale-20);
+  border-radius: var(--ontario-border-radius);
+  box-shadow: none;
+}
+.nds-card .nds-card__header {
+  padding: var(--ontario-spacing-4);
+  border-bottom: 1px solid var(--ontario-colour-greyscale-20);
+}
+.nds-card .nds-card__body {
+  padding: var(--ontario-spacing-4);
+}
+
+/* ==========================================================================
+   OmniStudio Disclosure/Accordion
+   ========================================================================== */
+.nds-accordion__summary {
+  font-family: var(--ontario-font-open-sans);
+  font-weight: var(--ontario-font-weight-semi-bold);
+}
+
+.nds-accordion__content {
+  padding: var(--ontario-spacing-4);
+}
+
+/*# sourceMappingURL=byo_lwr_omnistudio.css.map */

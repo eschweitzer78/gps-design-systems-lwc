@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS In-Page Navigation</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="The heading text for the navigation section."
+        default="On this page"
+      />
+      <property
+        name="itemsJson"
+        type="String"
+        label="Navigation items (JSON)"
+        description="JSON array of navigation items with label and href."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="showTopBorder"
+        type="Boolean"
+        label="Show top border"
+        description="When true, displays a top border on the navigation."
+        default="true"
+      />
+      <property
+        name="skipLinkId"
+        type="String"
+        label="Skip link target ID"
+        description="The ID of the element to skip to (without #). Defaults to 'skip-to-main'."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

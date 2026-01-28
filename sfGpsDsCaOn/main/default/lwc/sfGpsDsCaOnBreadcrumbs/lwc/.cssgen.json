@@ -1,0 +1,6 @@
+{
+  "sfGpsDsCaOnBreadcrumbs": {
+    "source": "ontario-breadcrumbs.scss",
+    "target": "sfGpsDsCaOnBreadcrumbs.css"
+  }
+}

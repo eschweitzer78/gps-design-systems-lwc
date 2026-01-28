@@ -1,0 +1,243 @@
+/* Ontario Design System Table Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+.ontario-table-container {
+  position: relative;
+  margin: 0.5rem 0 2.5rem 0;
+}
+.ontario-table-container table:not(.ontario-table--no-zebra-stripes) tbody tr:first-child:nth-last-child(n+6):nth-child(even),
+.ontario-table-container table:not(.ontario-table--no-zebra-stripes) tbody tr:first-child:nth-last-child(n+6) ~ tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.0509803922);
+}
+
+.ontario-table-div {
+  overflow-x: auto;
+}
+@media screen and (max-width: 40em) {
+  .ontario-table-div {
+    overflow-x: scroll;
+  }
+}
+.ontario-table-div {
+  background: linear-gradient(to right, var(--ontario-color-white, #ffffff) 30%, rgba(255, 255, 255, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), var(--ontario-color-white, #ffffff) 70%) 0 100%, linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(252, 0, 0, 0) 100.01%), linear-gradient(to left, rgba(0, 0, 0, 0.2) 0%, rgba(252, 0, 0, 0) 100.01%);
+  background-repeat: no-repeat;
+  background-size: 2.5rem 100%, 2.5rem 100%, 0.875rem 100%, 0.875rem 100%;
+  background-position: 0 0, 100%, 0 0, 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 1.0625rem;
+  display: table;
+  line-height: 1.625rem;
+  font-weight: normal;
+}
+table.ontario-table--full-container-width {
+  display: table;
+  width: 100% !important;
+}
+@media screen and (max-width: 40em) {
+  table {
+    font-size: 1rem;
+  }
+}
+
+caption {
+  background-color: rgba(0, 0, 0, 0.1019607843);
+  padding: 1.125rem 1rem 1.125rem 1.5rem;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.375rem;
+  line-height: 2.1875rem;
+  display: table-caption;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+@media screen and (max-width: 40em) {
+  caption {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    padding-left: 1rem;
+  }
+}
+
+thead {
+  border: solid;
+  border-width: 0.1875rem 0;
+  border-color: var(--ontario-color-black, #1a1a1a);
+  vertical-align: top;
+}
+thead th {
+  text-align: left;
+  padding: 1.75rem 1rem 1.75rem 1.5rem;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+@media screen and (max-width: 40em) {
+  thead th {
+    font-size: 1rem;
+    line-height: 1.3125rem;
+    padding: 1.53125rem 0.5rem 1.53125rem 1rem;
+  }
+}
+thead th.ontario-table-cell--numeric {
+  padding: 1.75rem 1.5rem 1.75rem 1rem;
+  text-align: right;
+}
+@media screen and (max-width: 40em) {
+  thead th.ontario-table-cell--numeric {
+    padding: 1.53125rem 1rem 1.53125rem 0.5rem;
+  }
+}
+
+tbody {
+  font-size: 1rem;
+  vertical-align: top;
+}
+tbody tr {
+  border: solid;
+  border-width: 0.0625rem 0;
+  border-color: rgba(0, 0, 0, 0.3019607843);
+}
+tbody tr:last-child {
+  border-width: 0.1875rem 0;
+  border-top-width: 0;
+  border-color: var(--ontario-color-black, #1a1a1a);
+}
+tbody tr.ontario-table-row--highlight {
+  background-color: rgba(225, 145, 0, 0.2352941176) !important;
+}
+tbody th {
+  padding: 1.1875rem 1rem 1.1875rem 1.5rem;
+  text-align: left;
+  letter-spacing: 0.025rem;
+  font-weight: bold;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+@media screen and (max-width: 40em) {
+  tbody th {
+    font-size: 1rem;
+    line-height: 1.625rem;
+    padding: 1.1875rem 0.5rem 1.1875rem 1rem;
+  }
+}
+
+td {
+  padding: 1.1875rem 1rem 1.1875rem 1.5rem;
+  text-align: left;
+  letter-spacing: 0.025rem;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+
+td.ontario-table-cell--numeric {
+  padding: 1.1875rem 1.5rem 1.1875rem 1rem;
+  text-align: right;
+  font-family: "Courier Prime", Courier, "Courier New", monospace;
+  font-size: 1.0625rem;
+}
+
+tr.ontario-table-row--subtotal,
+tfoot tr {
+  border: solid;
+  border-width: 0.1875rem 0;
+  font-size: 1rem;
+  border-color: var(--ontario-color-black, #1a1a1a);
+}
+tr.ontario-table-row--subtotal td,
+tfoot tr td {
+  font-weight: bold;
+  padding: 1.4375rem 1rem 1.4375rem 1.5rem;
+}
+
+tr.ontario-table-row--subtotal {
+  background-color: rgba(0, 123, 158, 0.1137254902) !important;
+}
+
+tfoot {
+  vertical-align: top;
+}
+tfoot tr {
+  background-color: rgba(0, 119, 160, 0.337254902) !important;
+}
+tfoot th {
+  padding: 1.4375rem 1rem 1.4375rem 1.5rem;
+  font-weight: bold;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+
+/* Condensed table styles */
+table.ontario-table--condensed td {
+  padding: 0.75rem 1rem 0.75rem 1.5rem;
+  text-align: left;
+}
+table.ontario-table--condensed td.ontario-table-cell--numeric {
+  padding: 0.75rem 1.5rem 0.75rem 1rem;
+  font-size: 1.0625rem;
+  text-align: right;
+}
+table.ontario-table--condensed tbody th,
+table.ontario-table--condensed tfoot th {
+  padding: 0.75rem 1rem 0.75rem 1.5rem;
+}
+table.ontario-table--condensed tr.ontario-table-row--subtotal th,
+table.ontario-table--condensed tr.ontario-table-row--subtotal td,
+table.ontario-table--condensed tfoot tr th,
+table.ontario-table--condensed tfoot tr td {
+  padding: 1rem 1rem 1rem 1.5rem;
+}
+table.ontario-table--condensed tr.ontario-table-row--subtotal td.ontario-table-cell--numeric,
+table.ontario-table--condensed tfoot tr td.ontario-table-cell--numeric {
+  text-align: right;
+  padding: 1rem 1.5rem 1rem 1rem;
+}
+@media screen and (max-width: 40em) {
+  table.ontario-table--condensed td {
+    padding: 0.75rem 0.5rem 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  table.ontario-table--condensed td.ontario-table-cell--numeric {
+    padding: 0.75rem 1rem 0.75rem 0.5rem;
+  }
+  table.ontario-table--condensed tbody th {
+    padding: 0.75rem 0.5rem 0.75rem 1rem;
+  }
+  table.ontario-table--condensed tr.ontario-table-row--subtotal th,
+  table.ontario-table--condensed tr.ontario-table-row--subtotal td,
+  table.ontario-table--condensed tfoot tr th,
+  table.ontario-table--condensed tfoot tr td {
+    padding: 1rem 0.5rem 1rem 1rem;
+  }
+  table.ontario-table--condensed tr.ontario-table-row--subtotal td.ontario-table-cell--numeric,
+  table.ontario-table--condensed tfoot tr td.ontario-table-cell--numeric {
+    text-align: right;
+    padding: 1rem 1rem 1rem 0.5rem;
+  }
+}
+
+/* Column span classes */
+.ontario-table-header--column-span-1 {
+  min-width: 8.33333vw;
+}
+
+.ontario-table-header--column-span-2 {
+  min-width: 16.66666vw;
+}
+
+.ontario-table-header--column-span-3 {
+  min-width: 25vw;
+}
+
+.ontario-table-header--column-span-4 {
+  min-width: 33.33333vw;
+}
+
+.ontario-table-header--column-span-5 {
+  min-width: 41.66666vw;
+}
+
+.ontario-table-header--column-span-6 {
+  min-width: 50vw;
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnTable.css.map */

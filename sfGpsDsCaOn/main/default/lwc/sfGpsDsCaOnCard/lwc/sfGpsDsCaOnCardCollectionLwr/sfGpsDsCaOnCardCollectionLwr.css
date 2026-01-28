@@ -1,1 +1,52 @@
-@import "./ontario-card-collection.gen.css";
+/* Ontario Design System Card Collection Styles */
+/* Modified to use generic selectors compatible with LWC */
+
+.ontario-card-collection__container {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  row-gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 4 cards per row */
+.ontario-card-collection--cards-per-row-4 > * {
+  width: calc(25% - 1.5rem);
+}
+@media screen and (max-width: 73em) {
+  .ontario-card-collection--cards-per-row-4 > * {
+    width: calc(50% - 1rem);
+  }
+}
+@media screen and (max-width: 40em) {
+  .ontario-card-collection--cards-per-row-4 > * {
+    width: 100%;
+  }
+}
+
+/* 3 cards per row */
+.ontario-card-collection--cards-per-row-3 > * {
+  width: calc(33.3% - 1.33rem);
+}
+@media screen and (max-width: 40em) {
+  .ontario-card-collection--cards-per-row-3 > * {
+    width: 100%;
+  }
+}
+
+/* 2 cards per row */
+.ontario-card-collection--cards-per-row-2 > * {
+  width: calc(50% - 1rem);
+}
+@media screen and (max-width: 40em) {
+  .ontario-card-collection--cards-per-row-2 > * {
+    width: 100%;
+  }
+}
+
+/* Single card */
+.ontario-card-collection--cards-per-row-1 > * {
+  width: 100%;
+}

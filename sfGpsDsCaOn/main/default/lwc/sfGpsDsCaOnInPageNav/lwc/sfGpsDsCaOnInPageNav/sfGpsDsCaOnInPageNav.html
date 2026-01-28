@@ -1,0 +1,25 @@
+<template lwc:render-mode="light">
+  <nav aria-label={computedHeading}>
+    <div class={computedClassName}>
+      <div class="ontario-page-navigation-content">
+        <h2 class="ontario-page-navigation-header">{computedHeading}</h2>
+        <a class="ontario-show-on-focus" href={computedSkipLinkHref}>
+          Skip this page navigation
+        </a>
+        <ol class="ontario-page-navigation-list" role="list">
+          <template for:each={computedItems} for:item="item">
+            <li key={item.id} class="ontario-page-navigation-list__item">
+              <a 
+                class="ontario-page-navigation-item__link" 
+                href={item.href}
+                aria-current={item.ariaCurrent}
+              >
+                {item.label}
+              </a>
+            </li>
+          </template>
+        </ol>
+      </div>
+    </div>
+  </nav>
+</template>

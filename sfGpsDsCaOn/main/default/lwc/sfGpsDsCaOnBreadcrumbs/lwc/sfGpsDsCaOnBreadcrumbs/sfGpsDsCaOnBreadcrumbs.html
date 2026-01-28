@@ -1,0 +1,21 @@
+<template lwc:render-mode="light">
+  <nav aria-label="Breadcrumb" class={computedClassName}>
+    <ol class="ontario-breadcrumbs__list">
+      <template for:each={computedItems} for:item="item">
+        <li key={item.id} class="ontario-breadcrumbs__item">
+          <template lwc:if={item.isLast}>
+            <span aria-current="page" class="ontario-breadcrumbs__current">
+              {item.label}
+            </span>
+          </template>
+          <template lwc:else>
+            <a href={item.href} class="ontario-breadcrumbs__link">
+              {item.label}
+            </a>
+            <span class="ontario-breadcrumbs__separator" aria-hidden="true">/</span>
+          </template>
+        </li>
+      </template>
+    </ol>
+  </nav>
+</template>

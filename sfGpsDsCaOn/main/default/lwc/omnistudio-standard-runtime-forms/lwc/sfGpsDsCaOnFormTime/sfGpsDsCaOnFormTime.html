@@ -1,0 +1,36 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Time Input for OmniStudio
+  
+  Uses HTML5 time input with Ontario DS styling.
+  
+  Compliance:
+  - LWR: Compatible (uses Light DOM parent)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Follows form field structure
+  - WCAG 2.1 AA: 
+    - Label associated with input
+    - Hint text via aria-describedby
+    - Error messages with role="alert"
+    - Native time picker for accessibility
+-->
+<template>
+  <c-sf-gps-ds-ca-on-text-input
+    type="time"
+    label={mergedLabel}
+    name={_name}
+    required={_propSetMap.required}
+    optional={_propSetMap.optional}
+    disabled={_propSetMap.disabled}
+    readonly={_propSetMap.readOnly}
+    hint-text={mergedHelpText}
+    placeholder={mergedPlaceholder}
+    error-message={sfGpsDsErrorMessage}
+    value={elementValue}
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
+    oninput={handleInput}
+  >
+  </c-sf-gps-ds-ca-on-text-input>
+</template>

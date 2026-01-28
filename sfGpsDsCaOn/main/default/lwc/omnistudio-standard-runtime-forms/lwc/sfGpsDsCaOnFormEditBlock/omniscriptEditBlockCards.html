@@ -1,0 +1,104 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - EditBlock Cards Mode for OmniStudio
+  
+  Displays edit block entries as Ontario cards.
+  
+  Compliance:
+  - LWR: Compatible (Light DOM pattern)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses Ontario card styling
+  - WCAG 2.1 AA: Proper ARIA, keyboard accessible
+-->
+<template>
+  <template lwc:if={_hasChildren}>
+    <div
+      class={computedCardClassName}
+      role={computedAriaRole}
+      aria-checked={computedAriaChecked}
+      tabindex={computedTabindex}
+      onclick={handleCheckbox}
+    >
+      <!-- Card Header -->
+      <div class="ontario-card__heading">
+        <template lwc:if={svgMapIcon}>
+          <span class="sfgpsdscaon-edit-block__icon" aria-hidden="true">
+            <!-- Icon placeholder -->
+          </span>
+        </template>
+        {_propSetMap.label}
+      </div>
+
+      <!-- Card Content -->
+      <div class="ontario-card__content">
+        <template lwc:if={_isEditing}>
+          <!-- Edit Mode -->
+          <div class="sfgpsdscaon-edit-block__edit-container">
+            <slot></slot>
+            <div class="sfgpsdscaon-edit-block__edit-actions">
+              <button
+                type="button"
+                class="ontario-button ontario-button--primary"
+                onclick={save}
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                class="ontario-button ontario-button--secondary"
+                onclick={cancel}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </template>
+        <template lwc:else>
+          <!-- View Mode - Display Values -->
+          <template for:each={_displayValues} for:item="col">
+            <div key={col.lwcId} class="sfgpsdscaon-edit-block__card-field">
+              <span class="sfgpsdscaon-edit-block__card-label">{col.label}:</span>
+              <span class="sfgpsdscaon-edit-block__card-value">{col.value}</span>
+            </div>
+          </template>
+        </template>
+      </div>
+
+      <!-- Card Actions -->
+      <template lwc:if={_useActionMenu}>
+        <div lwc:if={_isEditing} class="ontario-card__footer"></div>
+        <div lwc:else class="ontario-card__footer">
+          <button
+            lwc:if={_allowEdit}
+            type="button"
+            class="ontario-button ontario-button--tertiary"
+            onclick={edit}
+          >
+            Edit
+          </button>
+          <button
+            lwc:if={_allowDelete}
+            type="button"
+            class="ontario-button ontario-button--tertiary"
+            onclick={remove}
+          >
+            Delete
+          </button>
+        </div>
+      </template>
+    </div>
+  </template>
+
+  <!-- Add Card Button -->
+  <template lwc:if={showAdd}>
+    <div class="sfgpsdscaon-edit-block__add-card">
+      <button
+        type="button"
+        class="ontario-button ontario-button--secondary editblock-new"
+        onclick={handleAdd}
+      >
+        {_newLabel}
+      </button>
+    </div>
+  </template>
+</template>

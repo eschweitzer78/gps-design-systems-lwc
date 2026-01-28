@@ -1,0 +1,33 @@
+<template lwc:render-mode="light">
+  <div class="ontario-accordions__container">
+    <h2 lwc:if={name}>{name}</h2>
+    
+    <div lwc:if={computedShowExpandCollapse} class="ontario-accordion__controls">
+      <button
+        type="button"
+        class="ontario-accordion__button--expand-all"
+        onclick={handleExpandCollapseAll}
+        aria-expanded={ariaExpandedAll}
+        aria-label={ariaLabelExpandCollapseAll}
+      >
+        <span class="ontario-accordion--expand-open-all">
+          {expandCollapseLabel}
+        </span>
+      </button>
+    </div>
+
+    <template for:each={_items} for:item="item">
+      <c-sf-gps-ds-ca-on-accordion
+        key={item.id}
+        label={item.label}
+        is-open={item.isOpen}
+        accordion-id={item.id}
+        ontoggle={handleToggle}
+      >
+        <span>{item.content}</span>
+      </c-sf-gps-ds-ca-on-accordion>
+    </template>
+
+    <slot></slot>
+  </div>
+</template>

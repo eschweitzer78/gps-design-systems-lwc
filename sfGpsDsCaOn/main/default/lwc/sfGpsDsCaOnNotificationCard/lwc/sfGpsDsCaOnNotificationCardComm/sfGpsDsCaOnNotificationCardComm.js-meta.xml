@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>59.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Notification Card</masterLabel>
+  <description>A card for displaying notification categories with colored headers and unread counts</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="The title of the notification category"
+        required="true"
+        default="Action required"
+      />
+      <property
+        name="description"
+        type="String"
+        label="Description"
+        description="Description text explaining the notification category"
+        default="Check messages that need your attention"
+      />
+      <property
+        name="url"
+        type="String"
+        label="URL"
+        description="URL to navigate to when viewing notifications"
+        required="true"
+        default="#"
+      />
+      <property
+        name="notificationType"
+        type="String"
+        label="Notification Type"
+        description="Type of notification (affects header color)"
+        default="action"
+        datasource="action,reminder,status"
+      />
+      <property
+        name="unreadCount"
+        type="Integer"
+        label="Unread Count"
+        description="Number of unread notifications"
+        default="0"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Class"
+        description="Additional CSS class to apply to the card"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

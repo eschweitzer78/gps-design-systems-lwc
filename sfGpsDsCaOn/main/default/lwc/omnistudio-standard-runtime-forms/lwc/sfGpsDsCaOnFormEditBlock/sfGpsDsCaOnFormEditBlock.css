@@ -1,0 +1,168 @@
+/*
+ * Ontario Design System - EditBlock Component Styles
+ */
+
+/* Common styles */
+.sfgpsdscaon-edit-block {
+  margin-bottom: 1rem;
+}
+
+.sfgpsdscaon-edit-block__add {
+  margin-top: 1rem;
+}
+
+.sfgpsdscaon-edit-block__edit-container {
+  padding: 1rem;
+  background: #f8f8f8;
+  border-radius: 4px;
+}
+
+.sfgpsdscaon-edit-block__edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Table mode */
+.sfgpsdscaon-edit-block__table-header {
+  display: flex;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.sfgpsdscaon-edit-block__table-header-cell {
+  padding: 0.75rem;
+  flex: 1;
+}
+
+.sfgpsdscaon-edit-block__table-actions-header {
+  width: 150px;
+  flex: none;
+}
+
+.sfgpsdscaon-edit-block__row {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  align-items: center;
+}
+
+.sfgpsdscaon-edit-block__row--selected {
+  background-color: #e8f4fd;
+}
+
+.sfgpsdscaon-edit-block__table-cell {
+  padding: 0.75rem;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sfgpsdscaon-edit-block__table-actions {
+  width: 150px;
+  flex: none;
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Inline mode */
+.sfgpsdscaon-edit-block--inline {
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.sfgpsdscaon-edit-block__inline-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Cards mode */
+.sfgpsdscaon-edit-block__card {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+}
+
+.sfgpsdscaon-edit-block__card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sfgpsdscaon-edit-block__card--selected {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.sfgpsdscaon-edit-block__card-field {
+  margin-bottom: 0.5rem;
+}
+
+.sfgpsdscaon-edit-block__card-label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.sfgpsdscaon-edit-block__add-card {
+  padding: 1rem;
+  text-align: center;
+}
+
+/* FS (Full-Screen) mode */
+.sfgpsdscaon-edit-block__fs-header {
+  display: flex;
+  background: #1a1a1a;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.sfgpsdscaon-edit-block__fs-header-cell {
+  padding: 0.75rem;
+  flex: 1;
+}
+
+.sfgpsdscaon-edit-block__fs-actions-header {
+  width: 150px;
+  flex: none;
+}
+
+.sfgpsdscaon-edit-block__fs-row {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+  align-items: center;
+}
+
+.sfgpsdscaon-edit-block__fs-cell {
+  padding: 0.75rem;
+  flex: 1;
+}
+
+.sfgpsdscaon-edit-block__fs-actions {
+  width: 150px;
+  flex: none;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.sfgpsdscaon-edit-block__fs-edit {
+  width: 100%;
+  padding: 1rem;
+}
+
+.sfgpsdscaon-edit-block__fs-edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.sfgpsdscaon-edit-block__fs-sum {
+  padding: 0.75rem;
+  background: #f8f8f8;
+  text-align: right;
+  border-bottom: 2px solid #1a1a1a;
+}

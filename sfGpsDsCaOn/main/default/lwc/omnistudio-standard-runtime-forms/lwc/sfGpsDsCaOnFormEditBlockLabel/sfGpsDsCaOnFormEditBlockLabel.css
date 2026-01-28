@@ -1,0 +1,13 @@
+/*
+ * Ontario Design System - EditBlock Label Component Styles
+ */
+
+.sfgpsdscaon-edit-block-label__heading {
+  margin-bottom: 1rem;
+}
+
+.sfgpsdscaon-edit-block-label__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}

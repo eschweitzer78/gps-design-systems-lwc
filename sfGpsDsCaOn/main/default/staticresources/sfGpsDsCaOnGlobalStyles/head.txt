@@ -1,0 +1,91 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ontario.ca</title>
+
+<!-- Favicons -->
+<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon.ico" sizes="48x48" />
+<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon-512x512.png" />
+
+<!-- Ontario Design System Global Styles -->
+<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/global.css" />
+<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/ds-theme.css" />
+
+<!-- Ontario Design System Component Library (Web Components) -->
+<!-- Required for: ontario-button, ontario-badge, ontario-blockquote, ontario-page-alert, ontario-critical-alert -->
+<script type="module" src="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.esm.js"></script>
+<script nomodule src="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.js"></script>
+
+<!-- Ontario Design System Component Library Styles -->
+<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.css" />
+
+<!-- LWR Site Default Styles -->
+<link rel="stylesheet" href="{ styles/styles.css }" />
+<link rel="stylesheet" href="{ styles/print.css }" media="print" />
+
+<!-- Base Font Size -->
+<style>
+  body {
+    font-size: 1rem;
+  }
+</style>
+
+<!-- Mini SLDS (required for some LWC base components) -->
+<style>
+.slds-button--icon, .slds-button--icon-border, .slds-button--icon-border-filled, .slds-button--icon-border-inverse,
+.slds-button--icon-container, .slds-button--icon-error, .slds-button--icon-inverse, .slds-button--icon-more,
+.slds-button--icon-warning, .slds-button_icon, .slds-button_icon-border, .slds-button_icon-border-filled,
+.slds-button_icon-border-inverse, .slds-button_icon-container, .slds-button_icon-error,
+.slds-button_icon-inverse, .slds-button_icon-more, .slds-button_icon-warning {
+  line-height: 1;
+  vertical-align: middle;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.slds-button {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  line-height: 1.875rem;
+  text-decoration: none;
+  -webkit-appearance: none;
+  white-space: normal;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.slds-button__icon {
+  width: 0.875rem;
+  height: 0.875rem;
+  fill: currentColor;
+}
+
+.slds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+</style>

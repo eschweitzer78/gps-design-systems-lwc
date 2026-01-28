@@ -1,0 +1,39 @@
+/* Ontario Design System Fieldset Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+.ontario-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.ontario-fieldset__legend {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: var(--ontario-color-black, #1a1a1a);
+  padding: 0;
+}
+.ontario-fieldset__legend--large {
+  font-size: 1.1875rem;
+}
+.ontario-fieldset__legend--heading {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ontario-label__flag {
+  font-weight: 400;
+  font-size: inherit;
+  margin-left: 0.25rem;
+}
+
+.ontario-hint {
+  margin: -0.5rem 0 1rem;
+  font-size: 1rem;
+  color: var(--ontario-color-grey-darker, #4d4d4d);
+  line-height: 1.5;
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnFieldset.css.map */

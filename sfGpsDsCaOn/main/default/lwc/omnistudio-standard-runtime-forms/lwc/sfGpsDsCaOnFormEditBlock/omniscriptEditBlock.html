@@ -1,0 +1,117 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - EditBlock Table Mode for OmniStudio
+  
+  Displays edit block entries in a table format.
+  
+  Compliance:
+  - LWR: Compatible (Light DOM pattern)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses Ontario table and button styling
+  - WCAG 2.1 AA: Proper table semantics, keyboard accessible
+-->
+<template>
+  <!-- Table Header (first index only) -->
+  <template lwc:if={_isFirstIndex}>
+    <div class="sfgpsdscaon-edit-block__table-header" role="row">
+      <template for:each={_tableLabels} for:item="col">
+        <div
+          key={col.lwcId}
+          class="sfgpsdscaon-edit-block__table-cell sfgpsdscaon-edit-block__table-header-cell"
+          role="columnheader"
+        >
+          {col.label}
+        </div>
+      </template>
+      <div class="sfgpsdscaon-edit-block__table-cell sfgpsdscaon-edit-block__table-actions-header">
+        Actions
+      </div>
+    </div>
+  </template>
+
+  <!-- Table Row -->
+  <div
+    class={computedTableRowClassName}
+    role="row"
+    aria-checked={computedAriaChecked}
+    tabindex={computedTabindex}
+  >
+    <!-- Display Values -->
+    <template lwc:if={_hasChildren}>
+      <template lwc:if={_isEditing}>
+        <!-- Edit Mode -->
+        <div class="sfgpsdscaon-edit-block__edit-container">
+          <slot></slot>
+          <div class="sfgpsdscaon-edit-block__edit-actions">
+            <button
+              type="button"
+              class="ontario-button ontario-button--primary"
+              onclick={save}
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              class="ontario-button ontario-button--secondary"
+              onclick={cancel}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </template>
+      <template lwc:else>
+        <!-- View Mode -->
+        <template for:each={_displayValues} for:item="col">
+          <div
+            key={col.lwcId}
+            class="sfgpsdscaon-edit-block__table-cell"
+            role="cell"
+          >
+            <template lwc:if={col.isCheckbox}>
+              <input type="checkbox" checked={col.value} disabled aria-label={col.label} />
+            </template>
+            <template lwc:else>
+              {col.value}
+            </template>
+          </div>
+        </template>
+        
+        <!-- Actions -->
+        <div class="sfgpsdscaon-edit-block__table-cell sfgpsdscaon-edit-block__table-actions">
+          <button
+            lwc:if={_allowEdit}
+            type="button"
+            class="ontario-button ontario-button--tertiary"
+            onclick={edit}
+            aria-label="Edit"
+          >
+            Edit
+          </button>
+          <button
+            lwc:if={_allowDelete}
+            type="button"
+            class="ontario-button ontario-button--tertiary"
+            onclick={remove}
+            aria-label="Delete"
+          >
+            Delete
+          </button>
+        </div>
+      </template>
+    </template>
+  </div>
+
+  <!-- Add Button -->
+  <template lwc:if={showAdd}>
+    <div class="sfgpsdscaon-edit-block__add">
+      <button
+        type="button"
+        class="ontario-button ontario-button--secondary editblock-new"
+        onclick={handleAdd}
+      >
+        {_newLabel}
+      </button>
+    </div>
+  </template>
+</template>

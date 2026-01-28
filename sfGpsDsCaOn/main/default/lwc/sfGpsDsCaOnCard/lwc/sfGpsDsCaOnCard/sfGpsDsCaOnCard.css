@@ -1,1 +1,511 @@
-@import "./ontario-card.gen.css";
+/*
+*  Global variables
+*
+*  Used across multiple components
+*/
+/* -------------------------------
+    Global spacing variables
+--------------------------------- */
+/*
+*  Global colour variables
+*
+*  1 - Greyscale colours
+*  2 - System colours
+*  3 - Accent colours
+*    3.1 - Main
+*    3.2 - Light
+*    3.3 - Dark
+*    3.4 - Callout backgrounds
+*/
+/*** 1 - Greyscale colours ***/
+/*** 2 - System colours ***/
+/*** 3 - Accent colours ***/
+/* Main */
+/* Light */
+/* Dark */
+/* callout backgrounds */
+/* icon colours */
+/* service ontario header colours */
+/*** 1 - Breakpoint sizes for media queries ***/
+/* -------------------------------
+    Focus placeholder variables
+--------------------------------- */
+/* -------------------------------
+    Focus placeholder
+--------------------------------- */
+/* -------------------------------
+    Global font-weight variables
+--------------------------------- */
+/* -------------------------------
+    Global font-size variables
+--------------------------------- */
+/* Rem calc function */
+/* Pixel to REM Conversion */
+/* -------------------------------
+    Global font variables
+--------------------------------- */
+/* -------------------------------
+    Global letter-spacing variables
+--------------------------------- */
+/* -------------------------------
+    Global line-height variables
+--------------------------------- */
+/* -------------------------------
+    Global typography variables
+--------------------------------- */
+.ontario-card__heading {
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+  margin-bottom: 1rem;
+  font-feature-settings: normal;
+  font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.ontario-card__heading {
+  font-size: 1.25rem;
+  letter-spacing: 0.03rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+  max-width: 48rem;
+}
+
+@media screen and (min-width: 40em) {
+  .ontario-card__heading {
+    font-size: 1.5rem;
+    letter-spacing: 0.0313rem;
+    line-height: 1.5;
+  }
+}
+.ontario-card {
+  box-shadow: 0rem 0.1875rem 0.5rem 0.0625rem rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  margin-bottom: 2.5rem;
+  padding: 0;
+  /*
+   * Required for cards to stay the same height regardless of content size.
+   * Without subtracting the margin-bottom amount the cards will be too large.
+   */
+  height: calc(100% - 2.5rem);
+  list-style-type: none;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  cursor: pointer;
+  background: #FFFFFF;
+}
+.ontario-card:hover {
+  box-shadow: 0rem 0.375rem 0.75rem 0.125rem rgba(0, 0, 0, 0.35);
+}
+.ontario-card:focus-within {
+  box-shadow: 0 0 0 4px #009ADB;
+  outline: 4px solid transparent;
+  transition: box-shadow 0.1s ease-in-out;
+}
+.ontario-card:active {
+  box-shadow: 0 0 0 4px #009ADB;
+  background-color: rgb(242.25, 242.25, 242.25);
+}
+@media screen and (max-width: 40em) {
+  .ontario-card {
+    margin-bottom: 3rem;
+    width: 100% !important;
+    max-width: 100%;
+  }
+}
+
+.ontario-card--image-true {
+  margin-top: -0.5rem;
+}
+.ontario-card__card-type--horizontal .ontario-card--image-true {
+  margin-top: 0;
+}
+
+.ontario-card__card-type--horizontal {
+  display: flex;
+}
+@media screen and (max-width: 40em) {
+  .ontario-card__card-type--horizontal {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.ontario-card__card-type--horizontal .ontario-card__image-container,
+.ontario-card__card-type--horizontal .ontario-card__text-container {
+  position: relative;
+}
+.ontario-card__card-type--horizontal .ontario-card__heading {
+  border-radius: 0;
+}
+.ontario-card__card-type--horizontal a:focus-within {
+  box-shadow: none;
+  outline: none;
+}
+.ontario-card__card-type--horizontal a:active {
+  box-shadow: none;
+}
+.ontario-card__card-type--horizontal img {
+  height: 100%;
+  position: absolute;
+}
+
+.ontario-card__image-right {
+  flex-direction: row-reverse;
+}
+
+.ontario-card__heading {
+  margin: 0;
+  border-radius: 4px 4px 0 0;
+  padding: 1.25rem 1.5rem 0.5rem 1.5rem;
+  transition: text-decoration 0.3s ease-in-out;
+  background-color: #FFFFFF;
+  max-width: none;
+}
+.ontario-card:hover .ontario-card__heading {
+  text-decoration-line: underline;
+  text-decoration-color: rgb(25.5, 25.5, 25.5);
+}
+.ontario-card--image-true .ontario-card__heading {
+  border-radius: 0;
+}
+.ontario-card__image-right .ontario-card--image-true .ontario-card__heading {
+  border-radius: 4px 0 0 0;
+}
+
+.ontario-card__image-left .ontario-card--image-true .ontario-card__heading {
+  border-radius: 0 4px 0 0;
+}
+
+.ontario-card__heading a {
+  color: rgb(25.5, 25.5, 25.5);
+  text-decoration: none;
+  outline: none;
+}
+.ontario-card__heading a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.ontario-card__heading a:focus {
+  box-shadow: none;
+}
+.ontario-card__heading a:active {
+  outline: none;
+}
+@media screen and (max-width: 73em) {
+  .ontario-card__heading {
+    font-size: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.ontario-card__background--light-accent {
+  background-color: rgb(242.25, 242.25, 242.25);
+}
+
+.ontario-card__heading--light-accent {
+  background-color: rgb(242.25, 242.25, 242.25);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--dark-accent {
+  background-color: rgb(25.5, 25.5, 25.5);
+}
+
+.ontario-card__heading--dark-accent {
+  background-color: rgb(25.5, 25.5, 25.5);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-gold {
+  background-color: #F0E7CC;
+}
+
+.ontario-card__heading--light-gold {
+  background-color: #F0E7CC;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-yellow {
+  background-color: #F8E5C3;
+}
+
+.ontario-card__heading--light-yellow {
+  background-color: #F8E5C3;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-taupe {
+  background-color: #EBE7DB;
+}
+
+.ontario-card__heading--light-taupe {
+  background-color: #EBE7DB;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-green {
+  background-color: #D1EFD4;
+}
+
+.ontario-card__heading--light-green {
+  background-color: #D1EFD4;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-lime {
+  background-color: #DDEDC7;
+}
+
+.ontario-card__heading--light-lime {
+  background-color: #DDEDC7;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-teal {
+  background-color: #CFEDED;
+}
+
+.ontario-card__heading--light-teal {
+  background-color: #CFEDED;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-sky {
+  background-color: #C5EEFA;
+}
+
+.ontario-card__heading--light-sky {
+  background-color: #C5EEFA;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-purple {
+  background-color: #F1E3F2;
+}
+
+.ontario-card__heading--light-purple {
+  background-color: #F1E3F2;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-orange {
+  background-color: #FEE1D9;
+}
+
+.ontario-card__heading--light-orange {
+  background-color: #FEE1D9;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-red {
+  background-color: #FFE0E2;
+}
+
+.ontario-card__heading--light-red {
+  background-color: #FFE0E2;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--light-magenta {
+  background-color: #FEDFF0;
+}
+
+.ontario-card__heading--light-magenta {
+  background-color: #FEDFF0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--gold {
+  background-color: #CBA52E;
+}
+
+.ontario-card__heading--gold {
+  background-color: #CBA52E;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--yellow {
+  background-color: #FCAF17;
+}
+
+.ontario-card__heading--yellow {
+  background-color: #FCAF17;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--taupe {
+  background-color: #C1B28F;
+}
+
+.ontario-card__heading--taupe {
+  background-color: #C1B28F;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--green {
+  background-color: #39B54A;
+}
+
+.ontario-card__heading--green {
+  background-color: #39B54A;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--lime {
+  background-color: #8DC63F;
+}
+
+.ontario-card__heading--lime {
+  background-color: #8DC63F;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--teal {
+  background-color: #49A7A2;
+}
+
+.ontario-card__heading--teal {
+  background-color: #49A7A2;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--sky {
+  background-color: #00B2E3;
+}
+
+.ontario-card__heading--sky {
+  background-color: #00B2E3;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--purple {
+  background-color: #B975B7;
+}
+
+.ontario-card__heading--purple {
+  background-color: #B975B7;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--orange {
+  background-color: #F15A22;
+}
+
+.ontario-card__heading--orange {
+  background-color: #F15A22;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--red {
+  background-color: #F0454B;
+}
+
+.ontario-card__heading--red {
+  background-color: #F0454B;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__background--magenta {
+  background-color: #F03093;
+}
+
+.ontario-card__heading--magenta {
+  background-color: #F03093;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.ontario-card__card-type--horizontal .ontario-card__text-container {
+  width: 66.6666666667%;
+}
+.ontario-card__image-size-one-fourth .ontario-card__text-container {
+  width: 75%;
+}
+.ontario-card--no-image .ontario-card__text-container {
+  width: 100%;
+}
+
+.ontario-card__description {
+  margin: 0;
+  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+  background-color: #FFFFFF;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.ontario-card__description p {
+  margin-top: 0;
+}
+.ontario-card__description p:last-of-type {
+  margin-bottom: 0;
+}
+@media screen and (max-width: 73em) {
+  .ontario-card__description {
+    padding: 0.5rem 1rem 1.5rem 1rem;
+  }
+}
+
+.ontario-card--position-vertical .ontario-card__image-container {
+  margin-bottom: -0.5rem;
+}
+.ontario-card__card-type--horizontal .ontario-card__image-container {
+  width: 33.3%;
+}
+.ontario-card__image-size-one-fourth .ontario-card__image-container {
+  width: 25%;
+}
+
+.ontario-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-size: 100% 100%;
+}
+.ontario-card--position-vertical .ontario-card__image {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.ontario-card__image-right .ontario-card__image {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.ontario-card__image-left .ontario-card__image {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.ontario-card__heading--dark-accent a {
+  color: white;
+}
+
+.ontario-card:hover .ontario-card__heading.ontario-card__heading--dark-accent {
+  text-decoration-color: white;
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnCard.css.map */

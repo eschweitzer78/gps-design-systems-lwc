@@ -1,0 +1,132 @@
+/* Ontario Design System Radio Group Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+.ontario-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.ontario-fieldset__legend {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  color: var(--ontario-color-black, #1a1a1a);
+  padding: 0;
+}
+
+.ontario-label__flag {
+  font-weight: 400;
+  font-size: inherit;
+  margin-left: 0.25rem;
+}
+
+.ontario-hint {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  color: var(--ontario-color-grey-darker, #4d4d4d);
+  line-height: 1.5;
+}
+
+.ontario-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ontario-radios__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ontario-radios__input {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 2px solid var(--ontario-color-black, #1a1a1a);
+  border-radius: 50%;
+  background-color: var(--ontario-color-white, #ffffff);
+}
+.ontario-radios__input:focus {
+  outline: 4px solid var(--ontario-color-focus, #009adb);
+  outline-offset: 0;
+}
+.ontario-radios__input:checked {
+  border-width: 6px;
+  background-color: var(--ontario-color-white, #ffffff);
+}
+.ontario-radios__input:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--ontario-color-black, #1a1a1a);
+}
+.ontario-radios__input:disabled {
+  border-color: var(--ontario-color-grey-dark, #6b6b6b);
+  background-color: var(--ontario-color-grey-light, #e5e5e5);
+  cursor: not-allowed;
+}
+.ontario-radios__input:disabled:checked::after {
+  background-color: var(--ontario-color-grey-dark, #6b6b6b);
+}
+
+.ontario-radios__label {
+  font-size: 1rem;
+  line-height: 2rem;
+  color: var(--ontario-color-black, #1a1a1a);
+  cursor: pointer;
+}
+.ontario-radios__label:has(+ .ontario-radios__input:disabled) {
+  color: var(--ontario-color-grey-darker, #4d4d4d);
+}
+
+/* Error state */
+.ontario-radios__input--error {
+  border-color: var(--ontario-color-error, #d81a21);
+}
+
+/* Error messaging */
+.ontario-error-messaging {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--ontario-color-error-light, #fcf2f2);
+  border-left: 4px solid var(--ontario-color-error, #d81a21);
+  color: var(--ontario-color-error, #d81a21);
+  font-weight: 700;
+}
+
+.ontario-error-messaging__content {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.ontario-error-messaging .ontario-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  fill: var(--ontario-color-error, #d81a21);
+}
+
+.ontario-error__hidden {
+  display: none;
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnRadioGroup.css.map */

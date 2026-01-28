@@ -1,0 +1,122 @@
+/* Ontario Design System - Image Upload Styles */
+
+/* Upload container */
+.sfgpsdscaon-image__upload-container {
+  margin-top: 0.5rem;
+}
+
+.sfgpsdscaon-image__upload {
+  --slds-c-button-brand-color-background: var(--ontario-colour-primary, #1a1a1a);
+  --slds-c-button-brand-color-background-hover: var(--ontario-colour-grey-dark, #4d4d4d);
+}
+
+.sfgpsdscaon-image__disabled-message {
+  color: var(--ontario-colour-grey-dark, #4d4d4d);
+  font-style: italic;
+  margin: 0;
+}
+
+/* Small hint text */
+.ontario-hint--small {
+  font-size: 0.875rem;
+  color: var(--ontario-colour-grey-dark, #666);
+}
+
+/* Image preview grid */
+.sfgpsdscaon-image__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Individual image item */
+.sfgpsdscaon-image__item {
+  border: 1px solid var(--ontario-colour-grey-light, #ccc);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--ontario-colour-white, #fff);
+}
+
+/* Image preview container */
+.sfgpsdscaon-image__preview {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ontario-colour-grey-lighter, #f5f5f5);
+  overflow: hidden;
+}
+
+/* Thumbnail image */
+.sfgpsdscaon-image__thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder when no preview */
+.sfgpsdscaon-image__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.sfgpsdscaon-image__placeholder-icon {
+  width: 48px;
+  height: 48px;
+  fill: var(--ontario-colour-grey, #999);
+}
+
+/* Image info section */
+.sfgpsdscaon-image__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-top: 1px solid var(--ontario-colour-grey-light, #ccc);
+}
+
+/* Filename */
+.sfgpsdscaon-image__filename {
+  font-size: 0.75rem;
+  color: var(--ontario-colour-grey-dark, #4d4d4d);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Delete button */
+.sfgpsdscaon-image__delete {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.15s ease;
+}
+
+.sfgpsdscaon-image__delete:hover {
+  background: var(--ontario-colour-grey-lighter, #f0f0f0);
+}
+
+.sfgpsdscaon-image__delete:focus {
+  outline: 4px solid var(--ontario-colour-focus, #009ACD);
+  outline-offset: 0;
+}
+
+.sfgpsdscaon-image__delete-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--ontario-colour-error, #cd0000);
+}

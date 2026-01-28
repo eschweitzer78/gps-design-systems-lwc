@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Step Indicator</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="currentStep"
+        type="Integer"
+        label="Current step"
+        description="The current step number (1-based)."
+        default="1"
+      />
+      <property
+        name="numberOfSteps"
+        type="Integer"
+        label="Number of steps"
+        description="The total number of steps in the process."
+        default="5"
+      />
+      <property
+        name="percentageComplete"
+        type="Integer"
+        label="Percentage complete"
+        description="Optional percentage complete (0-100). If provided, overrides the step-based calculation."
+      />
+      <property
+        name="showBackButton"
+        type="Boolean"
+        label="Show back button"
+        description="When true, displays a back button when current step is greater than 1."
+        default="true"
+      />
+      <property
+        name="backButtonUrl"
+        type="String"
+        label="Back button URL"
+        description="Optional URL for the back button. If not provided, uses browser history."
+      />
+      <property
+        name="language"
+        type="String"
+        label="Language"
+        description="The language for the step indicator: en or fr."
+        default="en"
+        datasource="en,fr"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

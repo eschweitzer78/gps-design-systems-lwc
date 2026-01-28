@@ -1,0 +1,16 @@
+/*
+ * Ontario Design System - Disclosure Component Styles
+ */
+
+.sfgpsdscaon-disclosure__content {
+  margin-bottom: 1.5rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: #f2f2f2;
+  border-left: 4px solid #1a1a1a;
+}
+
+.sfgpsdscaon-disclosure__consent {
+  margin-top: 1rem;
+}

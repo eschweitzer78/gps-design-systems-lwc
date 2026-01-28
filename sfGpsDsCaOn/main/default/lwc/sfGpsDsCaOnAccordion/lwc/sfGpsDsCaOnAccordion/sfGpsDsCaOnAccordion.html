@@ -1,0 +1,35 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <h3 class={computedHeadingClassName}>
+      <button
+        class="ontario-accordion__button"
+        id={buttonId}
+        aria-expanded={computedAriaExpanded}
+        aria-controls={contentId}
+        data-toggle="ontario-collapse"
+        onclick={handleClick}
+      >
+        <span class="ontario-accordion__button-icon--close">
+          <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+          </svg>
+        </span>
+        <span class="ontario-accordion__button-icon--open">
+          <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/>
+          </svg>
+        </span>
+        {label}
+      </button>
+    </h3>
+    <section
+      id={contentId}
+      class={computedContentClassName}
+      aria-labelledby={buttonId}
+      aria-hidden={computedAriaHidden}
+      data-toggle="ontario-expander-content"
+    >
+      <slot></slot>
+    </section>
+  </div>
+</template>

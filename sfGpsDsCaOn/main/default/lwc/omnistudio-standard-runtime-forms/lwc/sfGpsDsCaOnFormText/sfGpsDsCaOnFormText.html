@@ -1,0 +1,24 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-ca-on-text-input
+    type={_inputType}
+    label={mergedLabel}
+    name={_name}
+    required={_propSetMap.required}
+    optional={_propSetMap.optional}
+    disabled={_propSetMap.disabled}
+    readonly={_propSetMap.readOnly}
+    max-length={_maxLength}
+    min-length={_minLength}
+    pattern={_patternVal}
+    hint-text={mergedHelpText}
+    placeholder={mergedPlaceholder}
+    error-message={sfGpsDsErrorMessage}
+    value={elementValue}
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
+    oninput={handleInput}
+  >
+  </c-sf-gps-ds-ca-on-text-input>
+</template>

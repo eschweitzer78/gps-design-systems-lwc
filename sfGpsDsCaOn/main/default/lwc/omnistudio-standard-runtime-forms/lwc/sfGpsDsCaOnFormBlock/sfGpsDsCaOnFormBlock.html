@@ -1,0 +1,96 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Block (Accordion) for OmniStudio
+  
+  Uses accordion pattern for collapsible content sections.
+  
+  Compliance:
+  - LWR: Compatible (Light DOM pattern)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses Ontario accordion styling
+  - WCAG 2.1 AA: 
+    - Proper ARIA expanded/controls
+    - Keyboard accessible
+    - Screen reader compatible
+-->
+<template>
+  <div class={computedClassName}>
+    <!-- Heading with toggle button -->
+    <div
+      class="ontario-accordion__title"
+      role="heading"
+      aria-level={blockHeadingLevel}
+    >
+      <template lwc:if={blockLabel}>
+        <!-- Collapsible button -->
+        <button
+          lwc:if={computedCollapsible}
+          type="button"
+          aria-expanded={expandContent}
+          aria-controls="content"
+          class={computedButtonClassName}
+          onclick={toggleContent}
+        >
+          {mergedLabel}
+          <svg
+            class="ontario-icon ontario-accordion__toggle-icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+          </svg>
+        </button>
+
+        <!-- Non-collapsible label -->
+        <span lwc:else class="ontario-accordion__label">
+          {mergedLabel}
+        </span>
+      </template>
+    </div>
+
+    <!-- Repeat buttons -->
+    <template lwc:if={_propSetMap.repeat}>
+      <div class="sfgpsdscaon-block__actions">
+        <button
+          lwc:if={canRepeat}
+          type="button"
+          class="ontario-button ontario-button--secondary"
+          onclick={handleAdd}
+          aria-label={addAriaLabel}
+        >
+          Add
+        </button>
+        <button
+          lwc:if={canRemove}
+          type="button"
+          class="ontario-button ontario-button--secondary"
+          onclick={handleRemove}
+          aria-label={removeAriaLabel}
+        >
+          Remove
+        </button>
+      </div>
+    </template>
+
+    <!-- Validation error -->
+    <div
+      lwc:if={showValidationError}
+      class="ontario-error-messaging"
+      aria-live="assertive"
+      role="alert"
+    >
+      <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      </svg>
+      <span class="ontario-error-messaging__content">
+        {allCustomLabelsUtil.OmniBlockError}
+      </span>
+    </div>
+
+    <!-- Content -->
+    <div id="content" hidden={ariaHiddenValue} class={computedContentClassName}>
+      <slot></slot>
+    </div>
+  </div>
+</template>

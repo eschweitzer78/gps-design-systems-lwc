@@ -1,0 +1,125 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - File Upload for OmniStudio
+  
+  Uses lightning-file-upload with Ontario DS styling overlay.
+  
+  Compliance:
+  - LWR: Uses lightning-file-upload (LWR compatible)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Ontario form field structure
+  - WCAG 2.1 AA: 
+    - Proper labeling
+    - Error messages with role="alert"
+    - Keyboard accessible
+    - Screen reader announcements for upload status
+-->
+<template>
+  <!-- Loading indicator -->
+  <template lwc:if={isPageLoading}>
+    <c-sf-gps-ds-ca-on-loading-indicator label="Loading..." size="medium">
+    </c-sf-gps-ds-ca-on-loading-indicator>
+  </template>
+
+  <div class={_containerClasses} aria-labelledby="fileUploadLabel">
+    <div class="ontario-form-group sfgpsdscaon-file">
+      <!-- Label -->
+      <label id="fileUploadLabel" class={computedLabelClassName}>
+        {mergedLabel}
+        <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+        <span lwc:if={_propSetMap.required} class="ontario-show-for-sr">
+          ({allCustomLabelsUtil.OmniRequired})
+        </span>
+      </label>
+
+      <!-- Hint text -->
+      <p lwc:if={mergedHelpText} id="helper" class="ontario-hint">
+        {mergedHelpText}
+      </p>
+
+      <!-- File upload component -->
+      <div class="sfgpsdscaon-file__upload-container">
+        <lightning-file-upload
+          class="sfgpsdscaon-file__upload"
+          label=" "
+          name={jsonDef.lwcId}
+          multiple
+          record-id={parentRecordId}
+          aria-invalid={_showValidation}
+          aria-describedby={computedAriaDescribedBy}
+          data-omni-input
+          onuploadfinished={handleUploadFinished}
+          onfocusout={handleFocusOut}
+        >
+        </lightning-file-upload>
+      </div>
+
+      <!-- Error message -->
+      <div
+        lwc:if={_showValidation}
+        class="ontario-error-messaging"
+        aria-live="assertive"
+        role="alert"
+        id="errorMessageBlock"
+      >
+        <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+        </svg>
+        <span class="ontario-error-messaging__content">{errorMessage}</span>
+      </div>
+    </div>
+
+    <!-- File list -->
+    <div lwc:if={hasFiles} class="sfgpsdscaon-file__list">
+      <!-- Screen reader status -->
+      <span id="upload-status" class="ontario-show-for-sr">
+        {ariaLiveStatusText}
+      </span>
+      <div aria-labelledby="upload-status" aria-live={ariaLiveStatus}></div>
+
+      <!-- File items -->
+      <ul class="sfgpsdscaon-file__items" role="list">
+        <template for:each={decoratedFiles} for:item="item">
+          <li key={item.key} class="sfgpsdscaon-file__item">
+            <div class="sfgpsdscaon-file__item-content">
+              <!-- File icon -->
+              <svg 
+                class="sfgpsdscaon-file__item-icon" 
+                aria-hidden="true" 
+                focusable="false" 
+                viewBox="0 0 24 24"
+              >
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+              </svg>
+              
+              <!-- File name -->
+              <span class="sfgpsdscaon-file__item-name" title={item.filename}>
+                {item.filename}
+              </span>
+              
+              <!-- Delete button -->
+              <button
+                type="button"
+                class="sfgpsdscaon-file__item-delete"
+                title={item.deleteLabel}
+                aria-label={item.deleteLabel}
+                data-index={item.index}
+                data-id={item.data}
+                onclick={deleteFile}
+              >
+                <svg 
+                  class="sfgpsdscaon-file__delete-icon" 
+                  aria-hidden="true" 
+                  focusable="false" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                </svg>
+              </button>
+            </div>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </div>
+</template>

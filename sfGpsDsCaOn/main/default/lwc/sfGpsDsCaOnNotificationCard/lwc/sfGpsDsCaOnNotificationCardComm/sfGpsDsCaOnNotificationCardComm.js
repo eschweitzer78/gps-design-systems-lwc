@@ -1,0 +1,37 @@
+/*
+ * Copyright (c) 2026, Shannon Schupbach, Jeremy Blankenship and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+import { api } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
+/**
+ * Experience Builder wrapper for Ontario DS Notification Card.
+ */
+export default class SfGpsDsCaOnNotificationCardComm extends SfGpsDsLwc {
+    static renderMode = "light";
+    // @ts-ignore
+    @api
+    heading;
+    // @ts-ignore
+    @api
+    description;
+    // @ts-ignore
+    @api
+    url;
+    // @ts-ignore
+    @api
+    notificationType;
+    // @ts-ignore
+    @api
+    unreadCount;
+    // @ts-ignore
+    @api
+    className;
+    /* Lifecycle */
+    connectedCallback() {
+        super.connectedCallback?.();
+        this.classList.add("caon-scope");
+    }
+}

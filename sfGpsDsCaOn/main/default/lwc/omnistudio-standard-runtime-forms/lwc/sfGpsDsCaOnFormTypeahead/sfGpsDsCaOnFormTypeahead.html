@@ -1,0 +1,129 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Typeahead for OmniStudio
+  
+  Provides autocomplete functionality with remote data source support.
+  
+  Compliance:
+  - LWR: Compatible (Light DOM pattern)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses Ontario form field styling
+  - WCAG 2.1 AA: 
+    - Proper ARIA combobox pattern
+    - aria-expanded, aria-controls, aria-activedescendant
+    - Keyboard navigation
+    - Screen reader announcements
+-->
+<template>
+  <div class="ontario-form-group sfgpsdscaon-typeahead">
+    <!-- Label -->
+    <label class={computedLabelClassName} for="typeaheadId">
+      {mergedLabel}
+      <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+    </label>
+
+    <!-- Hint text -->
+    <p lwc:if={mergedHelpText} id="helper" class="ontario-hint">
+      {mergedHelpText}
+    </p>
+
+    <!-- Screen reader announcements for results (AODA) -->
+    <div 
+      class="ontario-show-for-sr" 
+      aria-live="polite" 
+      aria-atomic="true"
+      role="status"
+    >
+      <span lwc:if={_showOptions}>{resultsAnnouncement}</span>
+    </div>
+
+    <!-- Typeahead container -->
+    <div class="sfgpsdscaon-typeahead-container">
+      <div class="sfgpsdscaon-typeahead__form-element" role="none">
+        <!-- Input field -->
+        <input
+          class={computedInputClassName}
+          type="text"
+          id="typeaheadId"
+          placeholder={mergedPlaceholder}
+          value={elementValue}
+          disabled={_propSetMap.readOnly}
+          readonly={_propSetMap.readOnly}
+          required={_propSetMap.required}
+          aria-required={_propSetMap.required}
+          minlength={_propSetMap.minLength}
+          maxlength={_propSetMap.maxLength}
+          aria-invalid={sfGpsDsIsError}
+          aria-expanded={_showOptions}
+          aria-haspopup="listbox"
+          aria-controls="typeahead-listbox"
+          aria-activedescendant={computedAriaActiveDescendant}
+          aria-describedby={computedAriaDescribedBy}
+          aria-autocomplete="list"
+          role="combobox"
+          autocomplete="off"
+          data-omni-input
+          onblur={handleBlur}
+          onfocus={handleInputChange}
+          onkeydown={handleInputKeyDown}
+          onkeyup={handleInputChange}
+        />
+
+        <!-- Search icon (shown when not loading) -->
+        <svg 
+          class="sfgpsdscaon-typeahead__icon" 
+          aria-hidden="true" 
+          focusable="false" 
+          viewBox="0 0 24 24"
+        >
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </div>
+
+      <!-- Dropdown list -->
+      <div
+        lwc:if={hasOptions}
+        class={computedDropdownClassName}
+        id="typeahead-listbox"
+        role="listbox"
+      >
+        <ul class="sfgpsdscaon-listbox" role="presentation">
+          <template for:each={decoratedOptions} for:item="optionItem" for:index="optionIndex">
+            <li
+              key={optionItem.key}
+              class="sfgpsdscaon-listbox__item"
+              role="presentation"
+            >
+              <div
+                class="sfgpsdscaon-listbox__option"
+                id={optionItem.id}
+                role="option"
+                tabindex="0"
+                data-option-index={optionIndex}
+                onclick={handleOptionSelect}
+                onmouseover={handleOptionFocus}
+                onkeydown={handleOptionSelect}
+              >
+                {optionItem.label}
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Error message -->
+    <div
+      lwc:if={sfGpsDsIsError}
+      class="ontario-error-messaging"
+      aria-live="assertive"
+      role="alert"
+      id="errorMessageBlock"
+    >
+      <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      </svg>
+      <span class="ontario-error-messaging__content">{sfGpsDsErrorMessage}</span>
+    </div>
+  </div>
+</template>

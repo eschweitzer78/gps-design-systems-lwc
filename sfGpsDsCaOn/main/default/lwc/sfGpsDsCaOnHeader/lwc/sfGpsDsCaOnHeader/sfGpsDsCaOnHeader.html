@@ -1,0 +1,13 @@
+<template lwc:render-mode="light">
+  <ontario-header
+    lwc:external
+    type={_type.value}
+    application-header-info={applicationHeaderInfoJson}
+    menu-items={menuItemsJson}
+    language-toggle-options={languageToggleOptionsJson}
+    disable-dynamic-menu={computedDisableDynamicMenu}
+    language={computedLanguage}
+    asset-base-path={assetBasePath}
+    class={className}
+  ></ontario-header>
+</template>

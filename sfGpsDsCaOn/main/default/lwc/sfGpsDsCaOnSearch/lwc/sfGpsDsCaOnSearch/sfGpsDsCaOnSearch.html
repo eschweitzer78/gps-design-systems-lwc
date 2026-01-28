@@ -1,0 +1,122 @@
+<template lwc:render-mode="light">
+  <form 
+    class={computedContainerClass} 
+    onsubmit={handleFormSubmit}
+    role="search"
+  >
+    <!-- Label -->
+    <label class="ontario-label" for={_searchId}>
+      {label}
+    </label>
+    
+    <!-- Hint text -->
+    <p lwc:if={hintText} id="search-hint" class="ontario-hint">
+      {hintText}
+    </p>
+
+    <!-- Search input container -->
+    <div class={computedInputContainerClass}>
+      <!-- Search input -->
+      <input
+        type="search"
+        name="search"
+        id={_searchId}
+        autocomplete="off"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded={computedAriaExpanded}
+        aria-owns={_listboxId}
+        aria-controls={_listboxId}
+        aria-activedescendant={activeOptionId}
+        aria-describedby={computedAriaDescribedBy}
+        aria-haspopup="listbox"
+        class={computedInputClass}
+        placeholder={placeholder}
+        value={_inputValue}
+        oninput={handleInput}
+        onfocus={handleFocus}
+        onblur={handleBlur}
+        onkeydown={handleKeydown}
+      />
+      
+      <!-- Reset/Clear button -->
+      <button
+        lwc:if={showResetButton}
+        type="button"
+        class="ontario-search__reset"
+        aria-label="Clear search"
+        onclick={handleReset}
+      >
+        <span class="ontario-show-for-sr">Clear</span>
+      </button>
+      
+      <!-- Submit button -->
+      <button
+        class="ontario-search__submit"
+        type="submit"
+        aria-label="Submit search"
+      >
+        <span class="ontario-show-for-sr">Submit</span>
+        <svg 
+          class="ontario-icon" 
+          focusable="false" 
+          viewBox="0 0 24 24" 
+          aria-hidden="true"
+        >
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+      </button>
+
+      <!-- Autocomplete suggestions listbox -->
+      <ul
+        lwc:if={hasSuggestions}
+        id={_listboxId}
+        class="ontario-search-autocomplete__suggestion-list"
+        role="listbox"
+        aria-label="Search suggestions"
+      >
+        <template for:each={decoratedSuggestions} for:item="suggestion">
+          <li
+            key={suggestion.id}
+            id={suggestion.optionId}
+            data-id={suggestion.id}
+            data-index={suggestion.index}
+            class={suggestion.className}
+            role="option"
+            aria-selected={suggestion.isActive}
+            tabindex="-1"
+            onclick={handleSuggestionClick}
+            onmouseenter={handleSuggestionMouseEnter}
+          >
+            <span class="ontario-search-autocomplete__suggestion-label">
+              {suggestion.label}
+            </span>
+            <span class="ontario-search-autocomplete__suggestion-type">
+              {suggestion.objectType}
+            </span>
+          </li>
+        </template>
+      </ul>
+
+      <!-- No results message -->
+      <div 
+        lwc:if={showNoResults}
+        class="ontario-search-autocomplete__no-results"
+        role="status"
+      >
+        {noResultsText}
+      </div>
+    </div>
+
+    <!-- Live region for screen reader announcements -->
+    <div 
+      id={_statusId}
+      role="status" 
+      aria-live="polite" 
+      aria-atomic="true"
+      class="ontario-show-for-sr"
+    >
+      {statusMessage}
+    </div>
+  </form>
+</template>

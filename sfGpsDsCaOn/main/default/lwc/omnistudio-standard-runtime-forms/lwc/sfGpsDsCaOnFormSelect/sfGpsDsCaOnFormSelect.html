@@ -1,0 +1,19 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-ca-on-dropdown
+    label={mergedLabel}
+    name={_name}
+    required={_propSetMap.required}
+    optional={_propSetMap.optional}
+    disabled={_propSetMap.disabled}
+    hint-text={mergedHelpText}
+    default-option-label={_defaultLabel}
+    options={_options}
+    error-message={sfGpsDsErrorMessage}
+    value={elementValue}
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
+  >
+  </c-sf-gps-ds-ca-on-dropdown>
+</template>

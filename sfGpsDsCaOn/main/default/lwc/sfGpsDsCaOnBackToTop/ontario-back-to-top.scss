@@ -1,0 +1,88 @@
+/* Ontario Design System Back to Top Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+
+@import "../../staticresources/sfGpsDsCaOnGlobalStyles/_ontario-variables.scss";
+
+$ontario-colour-back-to-top--default-background: #e6e6e6;
+$ontario-colour-back-to-top--active-background: #b2b2b2;
+
+.ontario-back-to-top--default {
+  position: fixed;
+  bottom: 5%;
+  right: 2%;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  background: $ontario-colour-back-to-top--default-background;
+  border: 0.125rem solid var(--ontario-color-white, #{$ontario-color-white});
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.6);
+  color: var(--ontario-color-black, #{$ontario-color-black});
+  line-height: 1.25rem;
+  font-size: 1rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  z-index: 10000;
+  cursor: pointer;
+
+  svg.ontario-icon {
+    margin: 0.125rem 0.5rem 0 0;
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+  }
+
+  &:hover {
+    background-color: var(--ontario-greyscale-20, #{$ontario-greyscale-20});
+  }
+
+  &:focus {
+    background-color: $ontario-colour-back-to-top--default-background;
+    box-shadow: 0 0 0 0.25rem var(--ontario-color-focus, #{$ontario-color-focus}),
+      0 0.1875rem 0.3125rem 0.1875rem rgba(0, 0, 0, 0.6);
+    outline: 0.25rem solid transparent;
+    transition: 0.1s ease-in-out;
+  }
+
+  &:active {
+    background-color: $ontario-colour-back-to-top--active-background;
+    box-shadow: 0 0 0 0.25rem var(--ontario-color-focus, #{$ontario-color-focus}),
+      0 0.3125rem 0.4375rem 0.1875rem rgba(0, 0, 0, 0.6);
+    outline: 0.25rem solid transparent;
+  }
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 64em) {
+    flex-direction: column;
+    height: 4.75rem;
+    padding: 0.375rem 0.75rem 0.5625rem 0.75rem;
+    
+    svg.ontario-icon {
+      margin: 0.0625rem 0 0.25rem 0;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 40em) {
+    display: block;
+    padding: 0.5rem;
+    font-size: 0;
+    width: 3rem;
+    height: 3rem;
+    
+    svg.ontario-icon {
+      margin: 0;
+    }
+  }
+}

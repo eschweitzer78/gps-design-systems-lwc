@@ -1,0 +1,107 @@
+/* Ontario Design System - Text Block Styles */
+
+/* Apply Ontario DS typography to text block content */
+.ontario-text-block {
+  font-family: var(--ontario-font-family, 'Open Sans', sans-serif);
+  font-size: var(--ontario-font-size-body, 1rem);
+  line-height: var(--ontario-line-height-body, 1.6);
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+/* Headings within text blocks */
+.ontario-text-block h1,
+.ontario-text-block h2,
+.ontario-text-block h3,
+.ontario-text-block h4,
+.ontario-text-block h5,
+.ontario-text-block h6 {
+  font-family: var(--ontario-font-family-heading, 'Raleway', sans-serif);
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ontario-text-block h1 {
+  font-size: 2rem;
+}
+
+.ontario-text-block h2 {
+  font-size: 1.75rem;
+}
+
+.ontario-text-block h3 {
+  font-size: 1.5rem;
+}
+
+.ontario-text-block h4 {
+  font-size: 1.25rem;
+}
+
+/* Paragraphs */
+.ontario-text-block p {
+  margin-bottom: 1rem;
+}
+
+/* Links */
+.ontario-text-block a {
+  color: var(--ontario-colour-link, #0066cc);
+  text-decoration: underline;
+}
+
+.ontario-text-block a:hover {
+  color: var(--ontario-colour-link-hover, #00478f);
+}
+
+.ontario-text-block a:focus {
+  outline: 4px solid var(--ontario-colour-focus, #009ACD);
+  outline-offset: 2px;
+}
+
+/* Lists */
+.ontario-text-block ul,
+.ontario-text-block ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.ontario-text-block li {
+  margin-bottom: 0.5rem;
+}
+
+/* Strong and emphasis */
+.ontario-text-block strong,
+.ontario-text-block b {
+  font-weight: 700;
+}
+
+.ontario-text-block em,
+.ontario-text-block i {
+  font-style: italic;
+}
+
+/* Blockquotes within text blocks */
+.ontario-text-block blockquote {
+  border-left: 4px solid var(--ontario-colour-black, #1a1a1a);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+}
+
+/* Tables within text blocks */
+.ontario-text-block table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.ontario-text-block th,
+.ontario-text-block td {
+  border: 1px solid var(--ontario-colour-grey-light, #ccc);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.ontario-text-block th {
+  background-color: var(--ontario-colour-grey-lighter, #f5f5f5);
+  font-weight: 700;
+}

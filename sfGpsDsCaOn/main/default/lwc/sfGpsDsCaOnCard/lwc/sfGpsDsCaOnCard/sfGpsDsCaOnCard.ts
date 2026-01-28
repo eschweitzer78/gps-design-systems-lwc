@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025, Emmanuel Schweitzer, Jeremy Blankenship and salesforce.com, inc.
+ * Copyright (c) 2025, Shannon Schupbach, Jeremy Blankenship and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -106,6 +106,28 @@ extends SfGpsDsElement {
   // @ts-ignore
   @api 
   imageAltText?: string;
+
+  // @ts-ignore
+  @api 
+  imageIsDecorative?: boolean;
+  _imageIsDecorative = this.defineBooleanProperty("imageIsDecorative", {
+    defaultValue: false
+  });
+
+  get computedImageAltText(): string {
+    // If alt text is explicitly provided, use it
+    if (this.imageAltText) {
+      return this.imageAltText;
+    }
+    
+    // If image is marked as decorative, return empty string (WCAG compliant)
+    if (this._imageIsDecorative.value) {
+      return "";
+    }
+    
+    // Fallback to heading as alt text if not decorative and no alt provided
+    return this.heading ? `Image for ${this.heading}` : "";
+  }
 
   // @ts-ignore
   @api 

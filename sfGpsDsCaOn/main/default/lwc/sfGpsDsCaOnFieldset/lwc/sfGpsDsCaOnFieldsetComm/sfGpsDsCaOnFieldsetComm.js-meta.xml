@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Fieldset</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="legend"
+        type="String"
+        label="Legend"
+        description="Legend text for the fieldset."
+        required="true"
+      />
+      <property
+        name="legendLarge"
+        type="Boolean"
+        label="Large legend"
+        description="Use a larger font size for the legend."
+        default="false"
+      />
+      <property
+        name="legendHeading"
+        type="Boolean"
+        label="Heading legend"
+        description="Style the legend as a heading."
+        default="false"
+      />
+      <property
+        name="hintText"
+        type="String"
+        label="Hint text"
+        description="Additional hint text displayed below the legend."
+      />
+      <property
+        name="required"
+        type="Boolean"
+        label="Required"
+        description="Show (required) flag after legend."
+        default="false"
+      />
+      <property
+        name="optional"
+        type="Boolean"
+        label="Optional"
+        description="Show (optional) flag after legend."
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to apply."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

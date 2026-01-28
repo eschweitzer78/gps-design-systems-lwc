@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "source": "sfGpsDsCaOnSearch/ontario-search.scss",
+      "target": "sfGpsDsCaOnSearch/ontario-search.gen.css"
+    }
+  ]
+}

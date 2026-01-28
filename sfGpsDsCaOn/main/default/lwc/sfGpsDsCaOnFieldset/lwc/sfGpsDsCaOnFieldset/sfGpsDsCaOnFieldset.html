@@ -1,0 +1,17 @@
+<template lwc:render-mode="light">
+  <fieldset class={computedFieldsetClassName}>
+    <!-- Legend -->
+    <legend class={computedLegendClassName}>
+      {legend}
+      <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+    </legend>
+
+    <!-- Hint text -->
+    <p lwc:if={hintText} id={_hintId} class="ontario-hint">
+      {hintText}
+    </p>
+
+    <!-- Slot for child components -->
+    <slot></slot>
+  </fieldset>
+</template>

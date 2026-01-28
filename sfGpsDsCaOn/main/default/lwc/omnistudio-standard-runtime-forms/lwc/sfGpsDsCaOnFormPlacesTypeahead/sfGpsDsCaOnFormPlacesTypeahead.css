@@ -1,0 +1,130 @@
+/**
+ * Ontario Design System Places Typeahead Styles
+ * 
+ * Provides styling for Google Maps address autocomplete
+ * following Ontario Design System patterns.
+ */
+
+/* Wrapper positioning */
+.sfgpsdscaon-typeahead-wrapper {
+  position: relative;
+}
+
+/* Location icon in input */
+.sfgpsdscaon-typeahead__icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  fill: var(--ontario-colour-grey-dark, #4d4d4d);
+}
+
+/* Input with right padding for icon */
+.sfgpsdscaon-typeahead__input {
+  padding-right: 44px;
+}
+
+/* Dropdown container */
+.sfgpsdscaon-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--ontario-colour-white, #ffffff);
+  border: 2px solid var(--ontario-colour-black, #1a1a1a);
+  border-top: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.sfgpsdscaon-dropdown--open {
+  display: block;
+}
+
+/* Dropdown list */
+.sfgpsdscaon-dropdown__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Dropdown items */
+.sfgpsdscaon-dropdown__item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--ontario-colour-grey-light, #e8e8e8);
+  transition: background-color 0.2s ease;
+}
+
+.sfgpsdscaon-dropdown__item:last-of-type {
+  border-bottom: none;
+}
+
+.sfgpsdscaon-dropdown__item:hover,
+.sfgpsdscaon-dropdown__item.sfgpsdscaon-has-focus {
+  background-color: var(--ontario-colour-grey-light, #f2f2f2);
+}
+
+/* Focus indicator for keyboard navigation */
+.sfgpsdscaon-dropdown__item:focus {
+  outline: 3px solid var(--ontario-colour-focus, #009ACD);
+  outline-offset: -3px;
+  background-color: var(--ontario-colour-grey-light, #f2f2f2);
+}
+
+/* Item text */
+.sfgpsdscaon-dropdown__item-text {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Google Attribution - Required by API Terms */
+.sfgpsdscaon-dropdown__attribution {
+  padding: 8px 16px;
+  text-align: right;
+  background-color: var(--ontario-colour-grey-light, #f8f8f8);
+  border-top: 1px solid var(--ontario-colour-grey-light, #e8e8e8);
+}
+
+.sfgpsdscaon-google-attribution {
+  height: 16px;
+  width: auto;
+}
+
+/* Map container */
+.sfgpsdscaon-places-map {
+  margin-top: 16px;
+  border: 1px solid var(--ontario-colour-grey-dark, #4d4d4d);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 250px;
+}
+
+/* Open state on container */
+.sfgpsdscaon-is-open .sfgpsdscaon-typeahead__input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Read-only state */
+.sfgpsdscaon-read-only .sfgpsdscaon-typeahead__input {
+  background-color: var(--ontario-colour-grey-light, #f2f2f2);
+  cursor: not-allowed;
+}
+
+/* Screen reader only class */
+.ontario-show-for-sr {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

@@ -1,0 +1,6 @@
+{
+  "sfGpsDsCaOnInPageNav": {
+    "source": "ontario-in-page-nav.scss",
+    "target": "sfGpsDsCaOnInPageNav.css"
+  }
+}

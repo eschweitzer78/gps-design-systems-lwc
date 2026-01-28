@@ -1,0 +1,116 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - EditBlock Full-Screen (FS) Mode for OmniStudio
+  
+  Displays edit block entries in a full-screen table format.
+  
+  Compliance:
+  - LWR: Compatible (Light DOM pattern)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses Ontario table styling
+  - WCAG 2.1 AA: Proper table semantics, keyboard accessible
+-->
+<template>
+  <!-- FS Header (first index only) -->
+  <template lwc:if={_isFirstIndex}>
+    <div class="sfgpsdscaon-edit-block__fs-header">
+      <template for:each={_tableLabels} for:item="col">
+        <div
+          key={col.lwcId}
+          class="sfgpsdscaon-edit-block__fs-header-cell"
+          style={col.tableWidth}
+        >
+          {col.label}
+        </div>
+      </template>
+      <div class="sfgpsdscaon-edit-block__fs-header-cell sfgpsdscaon-edit-block__fs-actions-header">
+        Actions
+      </div>
+    </div>
+  </template>
+
+  <!-- FS Row -->
+  <div class="sfgpsdscaon-edit-block__fs-row">
+    <template lwc:if={_hasChildren}>
+      <!-- Edit Mode - Show Form Fields -->
+      <template lwc:if={_isEditing}>
+        <div class="sfgpsdscaon-edit-block__fs-edit">
+          <slot></slot>
+          <div class="sfgpsdscaon-edit-block__fs-edit-actions">
+            <button
+              type="button"
+              class="ontario-button ontario-button--primary"
+              onclick={save}
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              class="ontario-button ontario-button--secondary"
+              onclick={cancel}
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </template>
+      <!-- View Mode - Show Values -->
+      <template lwc:else>
+        <template for:each={_displayValues} for:item="col">
+          <div
+            key={col.lwcId}
+            class="sfgpsdscaon-edit-block__fs-cell"
+            style={col.tableWidth}
+          >
+            <template lwc:if={col.isCheckbox}>
+              <input type="checkbox" checked={col.value} disabled aria-label={col.label} />
+            </template>
+            <template lwc:else>
+              {col.value}
+            </template>
+          </div>
+        </template>
+        
+        <!-- Actions -->
+        <div class="sfgpsdscaon-edit-block__fs-cell sfgpsdscaon-edit-block__fs-actions">
+          <button
+            lwc:if={_allowEdit}
+            type="button"
+            class="ontario-button ontario-button--tertiary"
+            onclick={edit}
+          >
+            Edit
+          </button>
+          <button
+            lwc:if={_allowDelete}
+            type="button"
+            class="ontario-button ontario-button--tertiary"
+            onclick={remove}
+          >
+            Delete
+          </button>
+        </div>
+      </template>
+    </template>
+  </div>
+
+  <!-- Sum Element (if configured) -->
+  <template lwc:if={_hasSumElement}>
+    <div lwc:if={_isFirstIndex} class="sfgpsdscaon-edit-block__fs-sum">
+      <strong>Total:</strong> {sumElement}
+    </div>
+  </template>
+
+  <!-- Add Button -->
+  <template lwc:if={showAdd}>
+    <div class="sfgpsdscaon-edit-block__add">
+      <button
+        type="button"
+        class="ontario-button ontario-button--secondary editblock-new"
+        onclick={handleAdd}
+      >
+        {_newLabel}
+      </button>
+    </div>
+  </template>
+</template>

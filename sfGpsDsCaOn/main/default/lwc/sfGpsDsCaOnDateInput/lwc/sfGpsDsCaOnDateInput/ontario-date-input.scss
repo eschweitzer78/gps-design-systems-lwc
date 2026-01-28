@@ -1,0 +1,123 @@
+/* Ontario Design System Date Input Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+
+@import "../../../../../staticresources/sfGpsDsCaOnGlobalStyles/_ontario-variables.scss";
+
+/* Date Group Container */
+.ontario-date__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+/* Individual Date Input Wrapper */
+.ontario-date__group-input {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.5rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    color: var(--ontario-color-black, $ontario-color-black);
+  }
+
+  input {
+    margin-top: 0.25rem;
+  }
+}
+
+/* Small label variant */
+.ontario-label--small {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* Error State */
+.ontario-date--error {
+  input {
+    border: 0.125rem solid var(--ontario-color-alert, $ontario-color-alert);
+    
+    &:focus {
+      box-shadow: 0 0 0 4px var(--ontario-color-focus, $ontario-color-focus);
+      border-color: var(--ontario-color-alert, $ontario-color-alert);
+      outline: none;
+    }
+  }
+}
+
+/* Error Messaging */
+.ontario-error-messaging {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  color: var(--ontario-color-alert, $ontario-color-alert);
+}
+
+.ontario-error-messaging__icon {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  
+  .ontario-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+  }
+}
+
+.ontario-error-messaging__content {
+  font-weight: 600;
+}
+
+/* Input width variants for date fields */
+.ontario-input--3-char-width {
+  width: 4rem;
+  min-width: 4rem;
+}
+
+.ontario-input--5-char-width {
+  width: 6rem;
+  min-width: 6rem;
+}
+
+/* Fieldset Styling */
+.ontario-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ontario-fieldset__legend {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--ontario-color-black, $ontario-color-black);
+}
+
+/* Hint text */
+.ontario-hint {
+  font-size: 1rem;
+  color: var(--ontario-greyscale-70, $ontario-greyscale-70);
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+/* Label flag */
+.ontario-label__flag {
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 40em) {
+  .ontario-date__group-input {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+}

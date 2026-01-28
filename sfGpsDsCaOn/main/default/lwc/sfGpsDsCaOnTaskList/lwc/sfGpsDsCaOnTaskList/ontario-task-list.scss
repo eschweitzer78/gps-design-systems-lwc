@@ -1,0 +1,160 @@
+/* Ontario Design System Task List Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+
+@import "../../../../staticresources/sfGpsDsCaOnGlobalStyles/_ontario-variables.scss";
+
+.ontario-task-list {
+  border-top: 0.125rem solid var(--ontario-greyscale-20, #{$ontario-greyscale-20});
+  margin-left: 0;
+  padding: 0;
+  max-width: 48rem;
+
+  li:last-child {
+    padding-bottom: 1.1875rem;
+  }
+}
+
+.ontario-task-list__container {
+  padding: 0 0.25rem;
+}
+
+.ontario-task {
+  border-bottom: 0.125rem solid var(--ontario-greyscale-20, #{$ontario-greyscale-20});
+  padding: 1.25rem 0;
+  list-style: none;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .ontario-task__text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ontario-badge {
+      align-self: center;
+    }
+
+    @media screen and (max-width: 40em) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .ontario-badge {
+        align-self: flex-start;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
+  &__label {
+    text-align: left;
+    margin: 0;
+    font-size: 1.1875rem;
+    font-weight: 600;
+    display: inline-block;
+    color: var(--ontario-color-black, #{$ontario-color-black});
+
+    @media screen and (max-width: 40em) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: var(--ontario-color-link, #{$ontario-color-link});
+    font-weight: normal;
+
+    .ontario-task__label {
+      text-decoration: underline;
+      color: var(--ontario-color-link, #{$ontario-color-link});
+    }
+
+    &:visited .ontario-task__label {
+      color: var(--ontario-color-link-visited, #{$ontario-color-link-visited});
+    }
+
+    &:hover .ontario-task__label {
+      color: var(--ontario-color-link-hover, #{$ontario-color-link-hover});
+    }
+
+    &:active .ontario-task__label {
+      color: var(--ontario-color-link-active, #{$ontario-color-link-active});
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  &__hint-text--true {
+    margin-bottom: 0.5rem;
+  }
+
+  &--error {
+    padding-left: 1rem;
+    border-left: 0.25rem solid var(--ontario-color-error, #{$ontario-color-error});
+    margin-left: -0.125rem;
+  }
+
+  .ontario-hint {
+    margin-bottom: 0;
+    color: var(--ontario-greyscale-60, #{$ontario-greyscale-60});
+  }
+}
+
+.ontario-task:focus-within {
+  outline: 4px solid var(--ontario-color-focus, #{$ontario-color-focus});
+}
+
+.ontario-task:has(.ontario-task__link) {
+  &:hover {
+    background-color: var(--ontario-greyscale-5, #{$ontario-greyscale-5});
+  }
+}
+
+/* Badge styles within task list */
+.ontario-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  white-space: nowrap;
+
+  .ontario-task-status--not-started & {
+    background-color: var(--ontario-color-information-light, #{$ontario-color-information-light});
+    color: var(--ontario-color-black, #{$ontario-color-black});
+  }
+
+  .ontario-task-status--in-progress & {
+    background-color: var(--ontario-color-information, #{$ontario-color-information});
+    color: var(--ontario-color-white, #{$ontario-color-white});
+  }
+
+  .ontario-task-status--error & {
+    background-color: var(--ontario-color-error, #{$ontario-color-error});
+    color: var(--ontario-color-white, #{$ontario-color-white});
+  }
+
+  .ontario-task-status--complete & {
+    background-color: var(--ontario-color-white, #{$ontario-color-white});
+    border: 0.0625rem solid var(--ontario-greyscale-70, #{$ontario-greyscale-70});
+    color: var(--ontario-color-black, #{$ontario-color-black});
+  }
+
+  .ontario-task-status--optional & {
+    background-color: var(--ontario-greyscale-5, #{$ontario-greyscale-5});
+    color: var(--ontario-color-black, #{$ontario-color-black});
+  }
+
+  .ontario-task-status--cannot-start-yet & {
+    background-color: var(--ontario-greyscale-20, #{$ontario-greyscale-20});
+    color: var(--ontario-color-black, #{$ontario-color-black});
+  }
+}

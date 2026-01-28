@@ -1,0 +1,19 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-ca-on-date-input
+    label={mergedLabel}
+    name={_name}
+    required={_propSetMap.required}
+    optional={_propSetMap.optional}
+    disabled={_propSetMap.disabled}
+    hint-text={mergedHelpText}
+    error-message={sfGpsDsErrorMessage}
+    value={elementValue}
+    min-date={computedMinDate}
+    max-date={computedMaxDate}
+    data-omni-input
+    onchange={handleDateChange}
+    onblur={handleDateBlur}
+  >
+  </c-sf-gps-ds-ca-on-date-input>
+</template>

@@ -1,0 +1,62 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - DateTime Input for OmniStudio
+  
+  Combines date and time inputs with Ontario DS styling.
+  Uses HTML5 datetime-local input for simplicity.
+  
+  Compliance:
+  - LWR: Compatible (Light DOM pattern)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Follows form field structure
+  - WCAG 2.1 AA: 
+    - Label associated with input group
+    - Hint text via aria-describedby
+    - Error messages with role="alert"
+    - Keyboard accessible
+-->
+<template>
+  <div class="ontario-form-group sfgpsdscaon-datetime">
+    <!-- Label -->
+    <label class="ontario-label" for={_inputId}>
+      {mergedLabel}
+      <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+    </label>
+
+    <!-- Hint text -->
+    <p lwc:if={mergedHelpText} id={_hintId} class="ontario-hint">
+      {mergedHelpText}
+    </p>
+
+    <!-- Error message -->
+    <div 
+      lwc:if={hasError}
+      id={_errorId}
+      class="ontario-error-messaging"
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      </svg>
+      <span class="ontario-error-messaging__content">{sfGpsDsErrorMessage}</span>
+    </div>
+
+    <!-- DateTime input using datetime-local -->
+    <input
+      type="datetime-local"
+      id={_inputId}
+      name={_name}
+      class={computedInputClassName}
+      value={elementValue}
+      disabled={_propSetMap.disabled}
+      readonly={_propSetMap.readOnly}
+      required={_propSetMap.required}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={hasError}
+      data-omni-input
+      onchange={handleChange}
+      onblur={handleBlur}
+    />
+  </div>
+</template>

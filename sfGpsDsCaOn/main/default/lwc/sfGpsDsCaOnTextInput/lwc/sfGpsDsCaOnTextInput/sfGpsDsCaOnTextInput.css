@@ -1,0 +1,141 @@
+/* Ontario Design System Text Input Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+.ontario-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.ontario-label {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+.ontario-label--large {
+  font-size: 1.1875rem;
+}
+.ontario-label--heading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.ontario-label__flag {
+  font-weight: 400;
+  font-size: inherit;
+  margin-left: 0.25rem;
+}
+
+.ontario-hint {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--ontario-color-grey-darker, #4d4d4d);
+  line-height: 1.5;
+}
+
+.ontario-input {
+  display: block;
+  width: 100%;
+  max-width: 48ch;
+  padding: 0.625rem;
+  border: 2px solid var(--ontario-color-black, #1a1a1a);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.5;
+  color: var(--ontario-color-black, #1a1a1a);
+  background-color: var(--ontario-color-white, #ffffff);
+  box-sizing: border-box;
+}
+.ontario-input:focus {
+  outline: 4px solid var(--ontario-color-focus, #009adb);
+  outline-offset: 0;
+  border-color: var(--ontario-color-black, #1a1a1a);
+}
+.ontario-input:disabled {
+  background-color: var(--ontario-color-grey-light, #e5e5e5);
+  border-color: var(--ontario-color-grey-dark, #6b6b6b);
+  color: var(--ontario-color-grey-darker, #4d4d4d);
+  cursor: not-allowed;
+}
+.ontario-input[readonly] {
+  background-color: var(--ontario-color-grey-lighter, #f5f5f5);
+}
+.ontario-input::placeholder {
+  color: var(--ontario-color-grey-dark, #6b6b6b);
+}
+
+/* Character width variants */
+.ontario-input--2-char-width {
+  max-width: 4ch;
+}
+
+.ontario-input--3-char-width {
+  max-width: 5ch;
+}
+
+.ontario-input--4-char-width {
+  max-width: 6ch;
+}
+
+.ontario-input--5-char-width {
+  max-width: 7ch;
+}
+
+.ontario-input--7-char-width {
+  max-width: 9ch;
+}
+
+.ontario-input--10-char-width {
+  max-width: 12ch;
+}
+
+.ontario-input--20-char-width {
+  max-width: 22ch;
+}
+
+.ontario-input--full-char-width {
+  max-width: 100%;
+}
+
+/* Error state */
+.ontario-input__error {
+  border-color: var(--ontario-color-error, #d81a21);
+  border-width: 3px;
+}
+.ontario-input__error:focus {
+  border-color: var(--ontario-color-error, #d81a21);
+  outline-color: var(--ontario-color-focus, #009adb);
+}
+
+/* Error messaging */
+.ontario-error-messaging {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--ontario-color-error-light, #fcf2f2);
+  border-left: 4px solid var(--ontario-color-error, #d81a21);
+  color: var(--ontario-color-error, #d81a21);
+  font-weight: 700;
+}
+
+.ontario-error-messaging__content {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.ontario-error-messaging .ontario-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  fill: var(--ontario-color-error, #d81a21);
+}
+
+.ontario-error__hidden {
+  display: none;
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnTextInput.css.map */

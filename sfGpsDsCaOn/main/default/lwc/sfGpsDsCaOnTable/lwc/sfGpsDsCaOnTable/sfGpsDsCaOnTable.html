@@ -1,0 +1,46 @@
+<template lwc:render-mode="light">
+  <div class={computedContainerClassName}>
+    <div class="ontario-table-div">
+      <!-- AODA: Removed tabindex="0" - tables should not be in tab order -->
+      <!-- AODA: Added aria-label fallback when no caption is present -->
+      <table class={computedTableClassName} aria-label={computedAriaLabel}>
+        <caption lwc:if={caption}>{caption}</caption>
+        <thead>
+          <tr>
+            <template for:each={computedColumns} for:item="col">
+              <th key={col.id} scope="col" class={col.headerClassName}>
+                {col.label}
+              </th>
+            </template>
+          </tr>
+        </thead>
+        <tbody>
+          <template for:each={computedRows} for:item="row">
+            <tr key={row.id} class={row.rowClassName}>
+              <template for:each={row.cells} for:item="cell">
+                <th lwc:if={cell.isRowHeader} key={cell.id} scope="row">
+                  {cell.value}
+                </th>
+                <td lwc:else key={cell.id} class={cell.cellClassName}>
+                  {cell.value}
+                </td>
+              </template>
+            </tr>
+          </template>
+        </tbody>
+        <tfoot lwc:if={hasFooter}>
+          <tr>
+            <template for:each={computedFooterCells} for:item="cell">
+              <th lwc:if={cell.isRowHeader} key={cell.id} scope="row">
+                {cell.value}
+              </th>
+              <td lwc:else key={cell.id} class={cell.cellClassName}>
+                {cell.value}
+              </td>
+            </template>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "source": "sfGpsDsCaOnRadioGroup/ontario-radio.scss",
+      "target": "sfGpsDsCaOnRadioGroup/sfGpsDsCaOnRadioGroup.css"
+    }
+  ]
+}

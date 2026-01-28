@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Table</masterLabel>
+  <description>Displays a responsive data table with Ontario Design System styling.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="caption"
+        type="String"
+        label="Caption"
+        description="Table caption/title"
+      />
+      <property
+        name="columnsJson"
+        type="String"
+        label="Columns (JSON)"
+        description="JSON array of column definitions with label, key, isNumeric, columnSpan properties"
+      />
+      <property
+        name="rowsJson"
+        type="String"
+        label="Rows (JSON)"
+        description="JSON array of row objects with values matching column keys"
+      />
+      <property
+        name="footerRowJson"
+        type="String"
+        label="Footer Row (JSON)"
+        description="JSON object for footer/totals row with values matching column keys"
+      />
+      <property
+        name="condensed"
+        type="Boolean"
+        label="Condensed"
+        description="Use compact table styling"
+        default="false"
+      />
+      <property
+        name="noZebraStripes"
+        type="Boolean"
+        label="No Zebra Stripes"
+        description="Disable alternating row colors"
+        default="false"
+      />
+      <property
+        name="fullWidth"
+        type="Boolean"
+        label="Full Width"
+        description="Extend table to full container width"
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,33 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Multiselect for OmniStudio
+  
+  Uses checkbox group pattern from Ontario DS.
+  Allows multiple selections from a list of options.
+  
+  Compliance:
+  - LWR: Compatible (uses Light DOM parent)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses Ontario checkbox group styling
+  - WCAG 2.1 AA: 
+    - Proper fieldset/legend structure
+    - Keyboard navigation
+    - Screen reader compatible
+    - Error messaging
+-->
+<template>
+  <c-sf-gps-ds-ca-on-checkbox-group
+    legend={mergedLabel}
+    name={_name}
+    options={decoratedOptions}
+    value={elementValue}
+    required={_propSetMap.required}
+    optional={_propSetMap.optional}
+    disabled={_propSetMap.readOnly}
+    hint-text={mergedHelpText}
+    error-message={sfGpsDsErrorMessage}
+    data-omni-input
+    onchange={handleChange}
+  >
+  </c-sf-gps-ds-ca-on-checkbox-group>
+</template>

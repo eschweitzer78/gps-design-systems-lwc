@@ -1,0 +1,41 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Number Input for OmniStudio
+  
+  Note: Uses type="text" with inputmode="decimal" for better 
+  cross-browser compatibility and mobile keyboard support.
+  Pattern validation ensures numeric input.
+  
+  Compliance:
+  - LWR: Compatible (uses Light DOM parent)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Follows form field structure
+  - WCAG 2.1 AA: 
+    - Label associated with input
+    - Hint text via aria-describedby
+    - Error messages with role="alert"
+    - Keyboard accessible
+    - Uses inputmode for proper mobile experience
+-->
+<template>
+  <c-sf-gps-ds-ca-on-text-input
+    type="text"
+    inputmode="decimal"
+    label={mergedLabel}
+    name={_name}
+    required={_propSetMap.required}
+    optional={_propSetMap.optional}
+    disabled={_propSetMap.disabled}
+    readonly={_propSetMap.readOnly}
+    pattern={_patternVal}
+    hint-text={mergedHelpText}
+    placeholder={mergedPlaceholder}
+    error-message={sfGpsDsErrorMessage}
+    value={elementValue}
+    data-omni-input
+    onblur={handleBlur}
+    onchange={handleChange}
+    oninput={handleInput}
+  >
+  </c-sf-gps-ds-ca-on-text-input>
+</template>

@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "source": "sfGpsDsCaOnCheckboxGroup/ontario-checkbox.scss",
+      "target": "sfGpsDsCaOnCheckboxGroup/sfGpsDsCaOnCheckboxGroup.css"
+    }
+  ]
+}

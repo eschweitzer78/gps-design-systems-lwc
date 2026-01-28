@@ -1,0 +1,272 @@
+/* Ontario Design System Table Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+
+@import "../../../../staticresources/sfGpsDsCaOnGlobalStyles/_ontario-variables.scss";
+
+$ontario-table-caption-background: #0000001a;
+$ontario-table-total: #0077a056;
+$ontario-table-subtotal: #007b9e1d;
+$ontario-table-highlight: #e191003c;
+$ontario-table-row-divider: #0000004d;
+$ontario-table-zebra-striping: #0000000d;
+$ontario-table-shadow--cover: rgba(255, 255, 255, 0);
+$ontario-table-shadow--black: rgba(0, 0, 0, 0.2);
+$ontario-table-shadow--clear: rgba(252, 0, 0, 0);
+
+.ontario-table-container {
+  position: relative;
+  margin: 0.5rem 0 2.5rem 0;
+
+  table:not(.ontario-table--no-zebra-stripes) {
+    tbody {
+      tr:first-child:nth-last-child(n + 6),
+      tr:first-child:nth-last-child(n + 6) ~ tr {
+        &:nth-child(even) {
+          background-color: $ontario-table-zebra-striping;
+        }
+      }
+    }
+  }
+}
+
+.ontario-table-div {
+  overflow-x: auto;
+
+  @media screen and (max-width: 40em) {
+    overflow-x: scroll;
+  }
+
+  background: linear-gradient(to right, var(--ontario-color-white, #{$ontario-color-white}) 30%, $ontario-table-shadow--cover),
+    linear-gradient(to right, $ontario-table-shadow--cover, var(--ontario-color-white, #{$ontario-color-white}) 70%) 0 100%,
+    linear-gradient(to right, $ontario-table-shadow--black 0%, $ontario-table-shadow--clear 100.01%),
+    linear-gradient(to left, $ontario-table-shadow--black 0%, $ontario-table-shadow--clear 100.01%);
+  background-repeat: no-repeat;
+  background-size: 2.5rem 100%, 2.5rem 100%, 0.875rem 100%, 0.875rem 100%;
+  background-position: 0 0, 100%, 0 0, 100%;
+  background-attachment: local, local, scroll, scroll;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 1.0625rem;
+  display: table;
+  line-height: 1.625rem;
+  font-weight: normal;
+
+  &.ontario-table--full-container-width {
+    display: table;
+    width: 100% !important;
+  }
+
+  @media screen and (max-width: 40em) {
+    font-size: 1rem;
+  }
+}
+
+caption {
+  background-color: $ontario-table-caption-background;
+  padding: 1.125rem 1rem 1.125rem 1.5rem;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1.375rem;
+  line-height: 2.1875rem;
+  display: table-caption;
+  color: var(--ontario-color-black, #{$ontario-color-black});
+
+  @media screen and (max-width: 40em) {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    padding-left: 1rem;
+  }
+}
+
+thead {
+  border: solid;
+  border-width: 0.1875rem 0;
+  border-color: var(--ontario-color-black, #{$ontario-color-black});
+  vertical-align: top;
+
+  th {
+    text-align: left;
+    padding: 1.75rem 1rem 1.75rem 1.5rem;
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    color: var(--ontario-color-black, #{$ontario-color-black});
+
+    @media screen and (max-width: 40em) {
+      font-size: 1rem;
+      line-height: 1.3125rem;
+      padding: 1.53125rem 0.5rem 1.53125rem 1rem;
+    }
+  }
+
+  th.ontario-table-cell--numeric {
+    padding: 1.75rem 1.5rem 1.75rem 1rem;
+    text-align: right;
+
+    @media screen and (max-width: 40em) {
+      padding: 1.53125rem 1rem 1.53125rem 0.5rem;
+    }
+  }
+}
+
+tbody {
+  font-size: 1rem;
+  vertical-align: top;
+
+  tr {
+    border: solid;
+    border-width: 0.0625rem 0;
+    border-color: $ontario-table-row-divider;
+  }
+
+  tr:last-child {
+    border-width: 0.1875rem 0;
+    border-top-width: 0;
+    border-color: var(--ontario-color-black, #{$ontario-color-black});
+  }
+
+  tr.ontario-table-row--highlight {
+    background-color: $ontario-table-highlight !important;
+  }
+
+  th {
+    padding: 1.1875rem 1rem 1.1875rem 1.5rem;
+    text-align: left;
+    letter-spacing: 0.025rem;
+    font-weight: bold;
+    color: var(--ontario-color-black, #{$ontario-color-black});
+
+    @media screen and (max-width: 40em) {
+      font-size: 1rem;
+      line-height: 1.625rem;
+      padding: 1.1875rem 0.5rem 1.1875rem 1rem;
+    }
+  }
+}
+
+td {
+  padding: 1.1875rem 1rem 1.1875rem 1.5rem;
+  text-align: left;
+  letter-spacing: 0.025rem;
+  color: var(--ontario-color-black, #{$ontario-color-black});
+}
+
+td.ontario-table-cell--numeric {
+  padding: 1.1875rem 1.5rem 1.1875rem 1rem;
+  text-align: right;
+  font-family: 'Courier Prime', Courier, 'Courier New', monospace;
+  font-size: 1.0625rem;
+}
+
+tr.ontario-table-row--subtotal,
+tfoot tr {
+  border: solid;
+  border-width: 0.1875rem 0;
+  font-size: 1rem;
+  border-color: var(--ontario-color-black, #{$ontario-color-black});
+
+  td {
+    font-weight: bold;
+    padding: 1.4375rem 1rem 1.4375rem 1.5rem;
+  }
+}
+
+tr.ontario-table-row--subtotal {
+  background-color: $ontario-table-subtotal !important;
+}
+
+tfoot {
+  vertical-align: top;
+
+  tr {
+    background-color: $ontario-table-total !important;
+  }
+
+  th {
+    padding: 1.4375rem 1rem 1.4375rem 1.5rem;
+    font-weight: bold;
+    color: var(--ontario-color-black, #{$ontario-color-black});
+  }
+}
+
+/* Condensed table styles */
+table.ontario-table--condensed {
+  td {
+    padding: 0.75rem 1rem 0.75rem 1.5rem;
+    text-align: left;
+  }
+
+  td.ontario-table-cell--numeric {
+    padding: 0.75rem 1.5rem 0.75rem 1rem;
+    font-size: 1.0625rem;
+    text-align: right;
+  }
+
+  tbody th,
+  tfoot th {
+    padding: 0.75rem 1rem 0.75rem 1.5rem;
+  }
+
+  tr.ontario-table-row--subtotal,
+  tfoot tr {
+    th,
+    td {
+      padding: 1rem 1rem 1rem 1.5rem;
+    }
+
+    td.ontario-table-cell--numeric {
+      text-align: right;
+      padding: 1rem 1.5rem 1rem 1rem;
+    }
+  }
+
+  @media screen and (max-width: 40em) {
+    td {
+      padding: 0.75rem 0.5rem 0.75rem 1rem;
+      font-size: 1rem;
+    }
+
+    td.ontario-table-cell--numeric {
+      padding: 0.75rem 1rem 0.75rem 0.5rem;
+    }
+
+    tbody th {
+      padding: 0.75rem 0.5rem 0.75rem 1rem;
+    }
+
+    tr.ontario-table-row--subtotal,
+    tfoot tr {
+      th,
+      td {
+        padding: 1rem 0.5rem 1rem 1rem;
+      }
+
+      td.ontario-table-cell--numeric {
+        text-align: right;
+        padding: 1rem 1rem 1rem 0.5rem;
+      }
+    }
+  }
+}
+
+/* Column span classes */
+.ontario-table-header--column-span-1 {
+  min-width: 8.33333vw;
+}
+.ontario-table-header--column-span-2 {
+  min-width: 16.66666vw;
+}
+.ontario-table-header--column-span-3 {
+  min-width: 25vw;
+}
+.ontario-table-header--column-span-4 {
+  min-width: 33.33333vw;
+}
+.ontario-table-header--column-span-5 {
+  min-width: 41.66666vw;
+}
+.ontario-table-header--column-span-6 {
+  min-width: 50vw;
+}

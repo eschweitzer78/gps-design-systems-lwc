@@ -1,0 +1,26 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-ca-on-dropdown
+    lwc:else
+    label={label}
+    name={name}
+    value={value}
+    hint-text={hintText}
+    default-option-label={defaultOptionLabel}
+    options={parsedOptions}
+    required={required}
+    optional={optional}
+    disabled={disabled}
+    error-message={errorMessage}
+    class-name={className}
+    onchange={handleChange}
+    onblur={handleBlur}
+    onfocus={handleFocus}
+  >
+  </c-sf-gps-ds-ca-on-dropdown>
+</template>

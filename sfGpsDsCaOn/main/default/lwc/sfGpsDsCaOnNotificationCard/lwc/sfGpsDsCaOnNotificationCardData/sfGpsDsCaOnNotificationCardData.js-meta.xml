@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Notification Card (Data Connected)</masterLabel>
+  <description>Data-connected notification card that automatically fetches notification counts from Salesforce based on notification type.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="notificationType"
+        type="String"
+        label="Notification Type"
+        description="The type of notifications to display. Determines what data is queried and how the card is styled."
+        default="action"
+        datasource="action,reminder,status"
+      />
+      <property
+        name="headingOverride"
+        type="String"
+        label="Heading Override"
+        description="Optional: Override the heading text. Leave empty to use the default heading for the notification type."
+      />
+      <property
+        name="descriptionOverride"
+        type="String"
+        label="Description Override"
+        description="Optional: Override the description text. Leave empty to use the default description."
+      />
+      <property
+        name="urlOverride"
+        type="String"
+        label="URL Override"
+        description="Optional: Override the destination URL when the card is clicked."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class Name"
+        description="Additional CSS class to apply to the card."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

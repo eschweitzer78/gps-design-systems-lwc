@@ -1,0 +1,102 @@
+/*
+ * Ontario Design System - Typeahead Component Styles
+ */
+
+.sfgpsdscaon-typeahead {
+  position: relative;
+}
+
+.sfgpsdscaon-typeahead-container {
+  position: relative;
+}
+
+.sfgpsdscaon-typeahead__form-element {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sfgpsdscaon-typeahead__input {
+  padding-right: 2.5rem;
+}
+
+.sfgpsdscaon-typeahead__icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  fill: #666666;
+}
+
+.sfgpsdscaon-typeahead__loader {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Dropdown styles - shared with Lookup */
+.sfgpsdscaon-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 7001;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 2px solid #1a1a1a;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sfgpsdscaon-dropdown--open {
+  display: block;
+}
+
+.sfgpsdscaon-listbox {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sfgpsdscaon-listbox__item {
+  margin: 0;
+  padding: 0;
+}
+
+.sfgpsdscaon-listbox__option {
+  display: block;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #1a1a1a;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sfgpsdscaon-listbox__option:last-child {
+  border-bottom: none;
+}
+
+.sfgpsdscaon-listbox__option:hover,
+.sfgpsdscaon-listbox__option:focus,
+.sfgpsdscaon-listbox__option.sfgpsdscaon-has-focus {
+  background-color: #e8f4fd;
+  outline: none;
+}
+
+.sfgpsdscaon-listbox__option[aria-selected="true"] {
+  background-color: #0066cc;
+  color: #ffffff;
+}
+
+/* Open state indicator */
+.sfgpsdscaon-is-open .sfgpsdscaon-typeahead__input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

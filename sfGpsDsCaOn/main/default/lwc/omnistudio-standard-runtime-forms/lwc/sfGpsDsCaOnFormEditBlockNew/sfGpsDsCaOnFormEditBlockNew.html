@@ -1,0 +1,27 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - EditBlock New Button for OmniStudio
+  
+  Provides the "Add new" button for creating new EditBlock entries.
+  Only shown when cards mode is active.
+  
+  Compliance:
+  - LWR: Compatible (Light DOM pattern)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses Ontario button styling
+  - WCAG 2.1 AA: Proper button labeling
+-->
+<template>
+  <template lwc:if={_allowNew}>
+    <!-- Add Button for Cards Mode -->
+    <div lwc:if={_isCards} class="sfgpsdscaon-edit-block-new">
+      <button
+        type="button"
+        class="ontario-button ontario-button--secondary editblock-new"
+        onclick={handleAdd}
+      >
+        {_newLabel}
+      </button>
+    </div>
+  </template>
+</template>

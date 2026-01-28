@@ -1,0 +1,33 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Messaging Component for OmniStudio
+  
+  Displays alert messages using Ontario DS page alerts.
+  Maps OmniStudio message types to Ontario alert types:
+  - Success -> success
+  - Requirement -> error  
+  - Warning -> warning
+  - Comment -> informational
+  
+  Compliance:
+  - LWR: Compatible (uses Ontario DS web component with lwc:external)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses ontario-page-alert component
+  - WCAG 2.1 AA: 
+    - Uses proper alert roles
+    - Accessible color contrast
+    - Screen reader compatible
+-->
+<template>
+  <template lwc:if={messageText}>
+    <div class="ontario-form-group sfgpsdscaon-messaging">
+      <ontario-page-alert
+        lwc:external
+        type={ontarioAlertType}
+        heading={mergedTitleText}
+        content={mergedMessageText}
+      >
+      </ontario-page-alert>
+    </div>
+  </template>
+</template>

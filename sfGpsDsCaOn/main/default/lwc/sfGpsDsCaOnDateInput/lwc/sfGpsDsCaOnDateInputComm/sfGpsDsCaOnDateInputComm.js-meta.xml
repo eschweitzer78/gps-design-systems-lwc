@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Date Input</masterLabel>
+  <description>Ontario Design System Date Input with separate day, month, and year fields for accessible date entry.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="The main label for the date input group"
+        required="true"
+      />
+      <property
+        name="name"
+        type="String"
+        label="Name"
+        description="The name attribute for the input (used in forms)"
+      />
+      <property
+        name="hintText"
+        type="String"
+        label="Hint Text"
+        description="Optional hint text displayed below the label"
+      />
+      <property
+        name="value"
+        type="String"
+        label="Default Value"
+        description="Default date value in ISO format (YYYY-MM-DD)"
+      />
+      <property
+        name="required"
+        type="Boolean"
+        label="Required"
+        description="Whether the date input is required"
+        default="false"
+      />
+      <property
+        name="optional"
+        type="Boolean"
+        label="Show Optional Flag"
+        description="Whether to show the (optional) flag"
+        default="false"
+      />
+      <property
+        name="disabled"
+        type="Boolean"
+        label="Disabled"
+        description="Whether the date input is disabled"
+        default="false"
+      />
+      <property
+        name="minDate"
+        type="String"
+        label="Minimum Date"
+        description="Minimum allowed date in ISO format (YYYY-MM-DD)"
+      />
+      <property
+        name="maxDate"
+        type="String"
+        label="Maximum Date"
+        description="Maximum allowed date in ISO format (YYYY-MM-DD)"
+      />
+      <property
+        name="errorMessage"
+        type="String"
+        label="Error Message"
+        description="Custom error message to display"
+      />
+      <property
+        name="dayLabel"
+        type="String"
+        label="Day Label"
+        description="Label for the day field (default: Day)"
+      />
+      <property
+        name="monthLabel"
+        type="String"
+        label="Month Label"
+        description="Label for the month field (default: Month)"
+      />
+      <property
+        name="yearLabel"
+        type="String"
+        label="Year Label"
+        description="Label for the year field (default: Year)"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

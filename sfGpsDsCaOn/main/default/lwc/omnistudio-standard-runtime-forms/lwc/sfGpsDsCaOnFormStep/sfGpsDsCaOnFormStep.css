@@ -1,0 +1,135 @@
+/*
+ * Ontario Design System - Step Component Styles
+ * 
+ * AODA Accessibility Features:
+ * - Skip link visible on focus for keyboard users
+ * - Error summary with high contrast styling
+ * - Focus indicators meeting 3:1 contrast ratio
+ */
+
+.sfgpsdscaon-step {
+  padding: 0 1rem;
+  position: relative;
+}
+
+/* ========================================
+ * Skip Link - AODA Requirement
+ * Allows keyboard users to skip to navigation
+ * ======================================== */
+
+.sfgpsdscaon-step__skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #1a5a96;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 100;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.2s ease;
+}
+
+.sfgpsdscaon-step__skip-link:focus,
+.sfgpsdscaon-step__skip-link--visible {
+  top: 0;
+  outline: 3px solid #ffcc00;
+  outline-offset: 2px;
+}
+
+.sfgpsdscaon-step__skip-link:hover {
+  background: #0d3d66;
+}
+
+/* ========================================
+ * Error Summary - AODA Requirement
+ * Provides grouped error feedback
+ * ======================================== */
+
+.sfgpsdscaon-step__error-summary {
+  background-color: #fef0f0;
+  border: 2px solid #cd0000;
+  border-left-width: 4px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+.sfgpsdscaon-step__error-summary:focus {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.sfgpsdscaon-step__error-summary h3 {
+  color: #cd0000;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.125rem;
+}
+
+.sfgpsdscaon-step__error-summary p {
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.sfgpsdscaon-step__heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 1.5rem 0 1rem 0;
+  color: #1a1a1a;
+}
+
+.sfgpsdscaon-step__heading:focus {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+
+.sfgpsdscaon-step__separator {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin: 1rem 0 1.5rem 0;
+}
+
+.sfgpsdscaon-step__content {
+  margin-bottom: 2rem;
+}
+
+.sfgpsdscaon-step__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid #cccccc;
+}
+
+.sfgpsdscaon-step__back {
+  flex: 0 0 auto;
+}
+
+.sfgpsdscaon-step__primary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .sfgpsdscaon-step__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .sfgpsdscaon-step__back {
+    order: 2;
+  }
+  
+  .sfgpsdscaon-step__primary-actions {
+    order: 1;
+    flex-direction: column;
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,23 @@
+/* Ontario Design System Character Count Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+
+@import "../../../staticresources/sfGpsDsCaOnGlobalStyles/_ontario-variables.scss";
+
+.ontario-character-count {
+  font-size: 0.875rem;
+  color: var(--ontario-greyscale-70, $ontario-greyscale-70);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+/* Warning state - approaching limit */
+.ontario-character-count--warning {
+  color: var(--ontario-color-warning, $ontario-color-warning);
+  font-weight: 600;
+}
+
+/* Error state - over limit */
+.ontario-character-count--error {
+  color: var(--ontario-color-alert, $ontario-color-alert);
+  font-weight: 700;
+}

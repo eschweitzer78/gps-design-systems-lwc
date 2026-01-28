@@ -1,0 +1,22 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-ca-on-loading-indicator
+    lwc:if={_isLoading}
+    is-loading="true"
+    label="Loading tasks..."
+    overlay="false"
+  ></c-sf-gps-ds-ca-on-loading-indicator>
+
+  <div lwc:elseif={hasError} class="ontario-alert ontario-alert--error" role="alert">
+    <p><strong>Error:</strong> {_error}</p>
+  </div>
+
+  <div lwc:elseif={isEmpty} class="ontario-callout">
+    <p>{computedEmptyMessage}</p>
+  </div>
+
+  <c-sf-gps-ds-ca-on-task-list
+    lwc:else
+    items={_tasks}
+    class-name={className}
+  ></c-sf-gps-ds-ca-on-task-list>
+</template>

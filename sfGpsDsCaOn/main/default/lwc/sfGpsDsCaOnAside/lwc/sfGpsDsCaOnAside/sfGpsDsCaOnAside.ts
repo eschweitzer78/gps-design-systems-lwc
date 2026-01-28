@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2025, Emmanuel Schweitzer, Jeremy Blankenship and salesforce.com, inc.
+* Copyright (c) 2025, Shannon Schupbach, Jeremy Blankenship and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -65,7 +65,32 @@ extends SfGpsDsLwc {
   @api 
   className?: string;
 
+  /**
+   * Heading text content (alternative to using the heading slot).
+   * For Light DOM compatibility, this property is preferred over slots.
+   */
+  // @ts-ignore
+  @api 
+  heading?: string;
+
   /* getters */
+
+  /**
+   * Returns true if heading property has content.
+   * When true, renders heading from property instead of slot.
+   */
+  get hasHeadingProp(): boolean {
+    return !!this.heading;
+  }
+
+  /**
+   * Returns true if the heading slot should be shown.
+   * This is the inverse of hasHeadingProp.
+   * Note: Can't use lwc:else on slot elements, so we need this getter.
+   */
+  get showHeadingSlot(): boolean {
+    return !this.heading;
+  }
 
   get computedClassName(): any {
     return {

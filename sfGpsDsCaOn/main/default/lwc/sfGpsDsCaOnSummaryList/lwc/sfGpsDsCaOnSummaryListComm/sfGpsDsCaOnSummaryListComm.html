@@ -1,0 +1,18 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  ></c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-ca-on-summary-list
+    lwc:else
+    heading={heading}
+    heading-action-label={headingActionLabel}
+    heading-action-url={headingActionUrl}
+    items={parsedItems}
+    ratio={ratio}
+    full-width={fullWidth}
+    compact={compact}
+    class-name={className}
+  ></c-sf-gps-ds-ca-on-summary-list>
+</template>

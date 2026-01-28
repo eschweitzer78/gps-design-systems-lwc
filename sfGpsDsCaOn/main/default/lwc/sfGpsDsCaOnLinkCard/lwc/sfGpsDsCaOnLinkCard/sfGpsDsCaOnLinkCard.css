@@ -1,0 +1,107 @@
+/* Link Card - Ontario Design System
+ * Based on official Ontario DS Basic Card (accent header / light variant)
+ * https://designsystem.ontario.ca/components/detail/cards.html
+ */
+
+.sfgpsdscaon-link-card {
+  display: block;
+  background-color: #fff;
+  box-shadow: 0rem 0.1875rem 0.5rem 0.0625rem rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.sfgpsdscaon-link-card:hover {
+  box-shadow: 0rem 0.375rem 0.75rem 0.125rem rgba(0, 0, 0, 0.35);
+}
+
+.sfgpsdscaon-link-card:focus-within {
+  box-shadow: 0 0 0 4px #009adb;
+  outline: 0.25rem solid transparent;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+.sfgpsdscaon-link-card:active {
+  box-shadow: 0 0 0 4px #009adb;
+}
+
+/* Heading with grey accent background */
+.sfgpsdscaon-link-card__heading {
+  font-family: "Raleway Modified", "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.03rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  background-color: #f2f2f2;
+  transition: text-decoration 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 73em) {
+  .sfgpsdscaon-link-card__heading {
+    font-size: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.sfgpsdscaon-link-card:hover .sfgpsdscaon-link-card__heading {
+  text-decoration-line: underline;
+  text-decoration-color: #1a1a1a;
+}
+
+/* Link styling */
+.sfgpsdscaon-link-card__link {
+  color: #1a1a1a;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  outline: none;
+}
+
+.sfgpsdscaon-link-card__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.sfgpsdscaon-link-card__link:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.sfgpsdscaon-link-card__external-icon {
+  flex-shrink: 0;
+}
+
+/* Description */
+.sfgpsdscaon-link-card__description {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 1rem 1.5rem;
+  background-color: #fff;
+}
+
+.sfgpsdscaon-link-card__description p {
+  margin: 0;
+}
+
+@media screen and (max-width: 73em) {
+  .sfgpsdscaon-link-card__description {
+    padding: 1rem;
+  }
+}

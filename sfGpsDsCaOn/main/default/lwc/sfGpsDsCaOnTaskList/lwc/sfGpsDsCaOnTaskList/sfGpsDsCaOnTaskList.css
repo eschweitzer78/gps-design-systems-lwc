@@ -1,0 +1,138 @@
+/* Ontario Design System Task List Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+.ontario-task-list {
+  border-top: 0.125rem solid var(--ontario-greyscale-20, #cccccc);
+  margin-left: 0;
+  padding: 0;
+  max-width: 48rem;
+}
+.ontario-task-list li:last-child {
+  padding-bottom: 1.1875rem;
+}
+
+.ontario-task-list__container {
+  padding: 0 0.25rem;
+}
+
+.ontario-task {
+  border-bottom: 0.125rem solid var(--ontario-greyscale-20, #cccccc);
+  padding: 1.25rem 0;
+  list-style: none;
+}
+.ontario-task__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.ontario-task__content .ontario-task__text {
+  display: flex;
+  flex-direction: column;
+}
+.ontario-task__content .ontario-badge {
+  align-self: center;
+}
+@media screen and (max-width: 40em) {
+  .ontario-task__content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ontario-task__content .ontario-badge {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+  }
+}
+.ontario-task__label {
+  text-align: left;
+  margin: 0;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  display: inline-block;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+@media screen and (max-width: 40em) {
+  .ontario-task__label {
+    margin-bottom: 0.5rem;
+  }
+}
+.ontario-task__link {
+  display: block;
+  text-decoration: none;
+  color: var(--ontario-color-link, #0066cc);
+  font-weight: normal;
+}
+.ontario-task__link .ontario-task__label {
+  text-decoration: underline;
+  color: var(--ontario-color-link, #0066cc);
+}
+.ontario-task__link:visited .ontario-task__label {
+  color: var(--ontario-color-link-visited, #551a8b);
+}
+.ontario-task__link:hover .ontario-task__label {
+  color: var(--ontario-color-link-hover, #00478f);
+}
+.ontario-task__link:active .ontario-task__label {
+  color: var(--ontario-color-link-active, #002d5c);
+}
+.ontario-task__link:focus {
+  outline: none;
+  box-shadow: none;
+}
+.ontario-task__hint-text--true {
+  margin-bottom: 0.5rem;
+}
+.ontario-task--error {
+  padding-left: 1rem;
+  border-left: 0.25rem solid var(--ontario-color-error, #d81a21);
+  margin-left: -0.125rem;
+}
+.ontario-task .ontario-hint {
+  margin-bottom: 0;
+  color: var(--ontario-greyscale-60, #6b6b6b);
+}
+
+.ontario-task:focus-within {
+  outline: 4px solid var(--ontario-color-focus, #009adb);
+}
+
+.ontario-task:has(.ontario-task__link):hover {
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+}
+
+/* Badge styles within task list */
+.ontario-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.ontario-task-status--not-started .ontario-badge {
+  background-color: var(--ontario-color-information-light, #e8f4f7);
+  color: var(--ontario-color-black, #1a1a1a);
+}
+.ontario-task-status--in-progress .ontario-badge {
+  background-color: var(--ontario-color-information, #1080a6);
+  color: var(--ontario-color-white, #ffffff);
+}
+.ontario-task-status--error .ontario-badge {
+  background-color: var(--ontario-color-error, #d81a21);
+  color: var(--ontario-color-white, #ffffff);
+}
+.ontario-task-status--complete .ontario-badge {
+  background-color: var(--ontario-color-white, #ffffff);
+  border: 0.0625rem solid var(--ontario-greyscale-70, #4d4d4d);
+  color: var(--ontario-color-black, #1a1a1a);
+}
+.ontario-task-status--optional .ontario-badge {
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  color: var(--ontario-color-black, #1a1a1a);
+}
+.ontario-task-status--cannot-start-yet .ontario-badge {
+  background-color: var(--ontario-greyscale-20, #cccccc);
+  color: var(--ontario-color-black, #1a1a1a);
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnTaskList.css.map */

@@ -1,0 +1,149 @@
+<!-- 
+  Ontario Design System Places Typeahead for OmniStudio
+  Provides Google Maps address autocomplete with Ontario DS styling.
+  
+  Accessibility:
+  - role="combobox" on input for screen readers
+  - aria-expanded indicates dropdown state
+  - aria-activedescendant tracks focused option
+  - aria-live region announces results
+  - Full keyboard navigation (Arrow keys, Enter, Escape)
+  
+  Google Maps:
+  - Displays Google attribution as required by API terms
+  - Optional embedded lightning-map for visual confirmation
+-->
+<template>
+  <div class="ontario-form-group sfgpsdscaon-places-typeahead">
+    <!-- Label -->
+    <label 
+      class={computedLabelClassName} 
+      for="places-input"
+    >
+      {mergedLabel}
+      <span lwc:if={showFlag} class="ontario-label__flag">
+        ({flagText})
+      </span>
+    </label>
+
+    <!-- Help Text / Hint -->
+    <span lwc:if={mergedHelpText} id="helper" class="ontario-hint">
+      {mergedHelpText}
+    </span>
+
+    <!-- Error Message -->
+    <div 
+      lwc:if={sfGpsDsIsError} 
+      id="errorMessageBlock" 
+      class="ontario-error-messaging" 
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg
+        class="ontario-icon"
+        alt=""
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        ></path>
+      </svg>
+      <span class="ontario-error-messaging__content">
+        {sfGpsDsErrorMessage}
+      </span>
+    </div>
+
+    <!-- Input with Dropdown -->
+    <div class="sfgpsdscaon-typeahead-wrapper">
+      <input
+        id="places-input"
+        type="text"
+        class={computedInputClassName}
+        value={elementValue}
+        placeholder={mergedPlaceholder}
+        autocomplete="off"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-expanded={_showOptions}
+        aria-haspopup="listbox"
+        aria-controls="places-listbox"
+        aria-required={_propSetMap.required}
+        aria-invalid={sfGpsDsIsError}
+        aria-describedby={computedAriaDescribedBy}
+        aria-activedescendant={computedAriaActiveDescendant}
+        data-omni-input
+        onkeyup={handleTypeahead}
+        onkeydown={handleInputKeyDown}
+        onfocus={handleInputChange}
+        onblur={handleBlur}
+      />
+
+      <!-- Search Icon -->
+      <span class="sfgpsdscaon-typeahead__icon" aria-hidden="true">
+        <svg 
+          viewBox="0 0 24 24" 
+          width="24" 
+          height="24"
+          focusable="false"
+        >
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+      </span>
+
+      <!-- Screen Reader Announcement -->
+      <div class="ontario-show-for-sr" aria-live="polite" aria-atomic="true" role="status">
+        <span lwc:if={_showOptions}>{resultsAnnouncement}</span>
+      </div>
+
+      <!-- Options Dropdown -->
+      <div 
+        lwc:if={hasOptions}
+        id="places-listbox"
+        class={computedDropdownClassName}
+        role="listbox"
+        aria-label="Address suggestions"
+      >
+        <ul class="sfgpsdscaon-dropdown__list">
+          <template for:each={decoratedOptions} for:item="option">
+            <li
+              key={option.key}
+              id={option.id}
+              class="sfgpsdscaon-dropdown__item"
+              role="option"
+              aria-selected="false"
+              data-option-index={option.key}
+              data-place-id={option.place_id}
+              onclick={handleOptionSelect}
+              onkeydown={handleOptionSelect}
+              onmouseover={handleOptionFocus}
+            >
+              <span class="sfgpsdscaon-dropdown__item-text">
+                {option.label}
+              </span>
+            </li>
+          </template>
+          
+          <!-- Google Attribution - Required by API Terms -->
+          <li class="sfgpsdscaon-dropdown__attribution" aria-hidden="true">
+            <img
+              src={_googleAttribution}
+              alt="Powered by Google"
+              class="sfgpsdscaon-google-attribution"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Map Display -->
+    <div lwc:if={showMap} class={computedMapClassName}>
+      <lightning-map 
+        map-markers={selectedPlace} 
+        zoom-level={zoomLevel}
+      ></lightning-map>
+    </div>
+  </div>
+</template>

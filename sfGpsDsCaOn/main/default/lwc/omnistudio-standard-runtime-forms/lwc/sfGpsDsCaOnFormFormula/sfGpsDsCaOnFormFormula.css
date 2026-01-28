@@ -1,0 +1,15 @@
+/*
+ * Ontario Design System - Formula Component Styles
+ * 
+ * Read-only formula display styling aligned with Ontario DS.
+ */
+
+.sfgpsdscaon-formula-value {
+  background-color: #f2f2f2;
+  border: 1px solid #cccccc;
+  cursor: default;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0.625rem 1rem;
+}

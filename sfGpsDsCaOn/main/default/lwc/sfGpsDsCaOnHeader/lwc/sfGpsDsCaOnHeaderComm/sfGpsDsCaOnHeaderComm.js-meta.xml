@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Header</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Header type"
+        description="The type of header to display: ontario, application, or serviceOntario."
+        default="ontario"
+        datasource="ontario,application,serviceOntario"
+      />
+      <property
+        name="applicationHeaderInfoJson"
+        type="String"
+        label="Application header info (JSON)"
+        description="JSON object containing title, href, and maxWidth for application headers."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="menuItemsJson"
+        type="String"
+        label="Menu items (JSON)"
+        description="JSON array of menu items with title and href."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="languageToggleOptionsJson"
+        type="String"
+        label="Language toggle options (JSON)"
+        description="JSON object with englishLink and frenchLink URLs."
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="disableDynamicMenu"
+        type="Boolean"
+        label="Disable dynamic menu"
+        description="When true, disables fetching menu data from Ontario's API (recommended for Salesforce sites)."
+        default="true"
+      />
+      <property
+        name="language"
+        type="String"
+        label="Language"
+        description="The language for the header: en or fr."
+        default="en"
+        datasource="en,fr"
+      />
+      <property
+        name="assetBasePath"
+        type="String"
+        label="Asset base path"
+        description="Base path for header assets (logos, icons). Leave empty to use default."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

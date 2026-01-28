@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "source": "sfGpsDsCaOnDropdown/ontario-dropdown.scss",
+      "target": "sfGpsDsCaOnDropdown/sfGpsDsCaOnDropdown.css"
+    }
+  ]
+}

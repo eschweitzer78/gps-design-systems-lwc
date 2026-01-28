@@ -1,0 +1,149 @@
+/* Ontario Design System Text Input Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+
+@import "../../../../staticresources/sfGpsDsCaOnGlobalStyles/_ontario-variables.scss";
+
+.ontario-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.ontario-label {
+  display: block;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  color: var(--ontario-color-black, #{$ontario-color-black});
+  
+  &--large {
+    font-size: 1.1875rem;
+  }
+  
+  &--heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.ontario-label__flag {
+  font-weight: 400;
+  font-size: inherit;
+  margin-left: 0.25rem;
+}
+
+.ontario-hint {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--ontario-color-grey-darker, #{$ontario-color-grey-darker});
+  line-height: 1.5;
+}
+
+.ontario-input {
+  display: block;
+  width: 100%;
+  max-width: 48ch;
+  padding: 0.625rem;
+  border: 2px solid var(--ontario-color-black, #{$ontario-color-black});
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.5;
+  color: var(--ontario-color-black, #{$ontario-color-black});
+  background-color: var(--ontario-color-white, #{$ontario-color-white});
+  box-sizing: border-box;
+  
+  &:focus {
+    outline: 4px solid var(--ontario-color-focus, #{$ontario-color-focus});
+    outline-offset: 0;
+    border-color: var(--ontario-color-black, #{$ontario-color-black});
+  }
+  
+  &:disabled {
+    background-color: var(--ontario-color-grey-light, #{$ontario-color-grey-light});
+    border-color: var(--ontario-color-grey-dark, #{$ontario-color-grey-dark});
+    color: var(--ontario-color-grey-darker, #{$ontario-color-grey-darker});
+    cursor: not-allowed;
+  }
+  
+  &[readonly] {
+    background-color: var(--ontario-color-grey-lighter, #{$ontario-color-grey-lighter});
+  }
+  
+  &::placeholder {
+    color: var(--ontario-color-grey-dark, #{$ontario-color-grey-dark});
+  }
+}
+
+/* Character width variants */
+.ontario-input--2-char-width {
+  max-width: 4ch;
+}
+
+.ontario-input--3-char-width {
+  max-width: 5ch;
+}
+
+.ontario-input--4-char-width {
+  max-width: 6ch;
+}
+
+.ontario-input--5-char-width {
+  max-width: 7ch;
+}
+
+.ontario-input--7-char-width {
+  max-width: 9ch;
+}
+
+.ontario-input--10-char-width {
+  max-width: 12ch;
+}
+
+.ontario-input--20-char-width {
+  max-width: 22ch;
+}
+
+.ontario-input--full-char-width {
+  max-width: 100%;
+}
+
+/* Error state */
+.ontario-input__error {
+  border-color: var(--ontario-color-error, #{$ontario-color-error});
+  border-width: 3px;
+  
+  &:focus {
+    border-color: var(--ontario-color-error, #{$ontario-color-error});
+    outline-color: var(--ontario-color-focus, #{$ontario-color-focus});
+  }
+}
+
+/* Error messaging */
+.ontario-error-messaging {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--ontario-color-error-light, #{$ontario-color-error-light});
+  border-left: 4px solid var(--ontario-color-error, #{$ontario-color-error});
+  color: var(--ontario-color-error, #{$ontario-color-error});
+  font-weight: 700;
+}
+
+.ontario-error-messaging__content {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.ontario-error-messaging .ontario-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  fill: var(--ontario-color-error, #{$ontario-color-error});
+}
+
+.ontario-error__hidden {
+  display: none;
+}

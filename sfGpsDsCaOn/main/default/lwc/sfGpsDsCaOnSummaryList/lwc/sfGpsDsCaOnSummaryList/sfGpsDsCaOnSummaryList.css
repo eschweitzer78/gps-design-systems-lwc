@@ -1,0 +1,174 @@
+/* Ontario Design System Summary List Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+.ontario-summary-list {
+  max-width: 48rem;
+  float: revert;
+  margin-bottom: 2.25rem;
+}
+.ontario-summary-list.summary-list-full-width {
+  max-width: 100%;
+}
+.ontario-summary-list dl.ontario-summary-list__container {
+  margin: 0;
+}
+.ontario-summary-list dl.ontario-summary-list__container .ontario-summary-list__key,
+.ontario-summary-list dl.ontario-summary-list__container .ontario-summary-list__value {
+  flex: 1;
+}
+.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__1-2 .ontario-summary-list__key {
+  flex: 1;
+}
+.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__1-2 .ontario-summary-list__value {
+  flex: 2;
+}
+.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__1-3 .ontario-summary-list__key {
+  flex: 1;
+}
+.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__1-3 .ontario-summary-list__value {
+  flex: 3;
+}
+.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__2-1 .ontario-summary-list__key {
+  flex: 2;
+}
+.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__2-1 .ontario-summary-list__value {
+  flex: 1;
+}
+.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__2-3 .ontario-summary-list__key {
+  flex: 2;
+}
+.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__2-3 .ontario-summary-list__value {
+  flex: 3;
+}
+.ontario-summary-list .ontario-summary-list__row {
+  display: flex;
+  flex-direction: row;
+  padding: 1.1875rem 0;
+  border-bottom: 1px solid var(--ontario-greyscale-20, #cccccc);
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 0 !important;
+}
+.ontario-summary-list .ontario-summary-list__row.compact {
+  padding: 0.75rem 0;
+}
+.ontario-summary-list .ontario-summary-list__row .ontario-summary-list__key {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+@media screen and (max-width: 40em) {
+  .ontario-summary-list .ontario-summary-list__row .ontario-summary-list__key {
+    padding-bottom: 0.25rem;
+  }
+}
+.ontario-summary-list .ontario-summary-list__row .ontario-summary-list__value {
+  padding-left: 1.25rem;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+@media screen and (max-width: 40em) {
+  .ontario-summary-list .ontario-summary-list__row .ontario-summary-list__value {
+    flex: revert;
+    padding: 0;
+  }
+}
+.ontario-summary-list .ontario-summary-list__row dt,
+.ontario-summary-list .ontario-summary-list__row dd {
+  margin: 0 !important;
+  text-align: left;
+}
+.ontario-summary-list .ontario-summary-list__row .ontario-summary-list-button__container {
+  text-align: right;
+  flex-basis: 3.5rem;
+  padding-left: 1.25rem;
+}
+@media screen and (max-width: 40em) {
+  .ontario-summary-list .ontario-summary-list__row .ontario-summary-list-button__container {
+    flex-basis: revert;
+    align-self: flex-start;
+    padding-left: 0;
+  }
+}
+.ontario-summary-list .ontario-summary-list__row .ontario-summary-list-change__button {
+  display: block;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--ontario-color-link, #0066cc);
+  font-weight: 400;
+  padding: 0;
+}
+.ontario-summary-list .ontario-summary-list__row .ontario-summary-list-change__button:hover {
+  color: var(--ontario-color-link-hover, #00478f);
+}
+.ontario-summary-list .ontario-summary-list__row .ontario-summary-list-change__button:active {
+  color: var(--ontario-color-link-active, #002d5c);
+}
+@media screen and (max-width: 40em) {
+  .ontario-summary-list .ontario-summary-list__row .ontario-summary-list-change__button {
+    margin-top: 0.75rem;
+    padding: 0;
+  }
+}
+@media screen and (max-width: 40em) {
+  .ontario-summary-list .ontario-summary-list__row {
+    flex-direction: column;
+    align-items: revert;
+  }
+}
+.ontario-summary-list .ontario-summary-list-heading__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--ontario-color-black, #1a1a1a);
+  gap: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list__heading {
+  font-weight: 700;
+  font-size: 1.375rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+  color: var(--ontario-color-black, #1a1a1a);
+}
+.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list-heading__buttons {
+  display: flex;
+  gap: 2rem;
+}
+.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list-change__button {
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--ontario-color-link, #0066cc);
+  font-weight: 400;
+}
+.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list-change__button:hover {
+  color: var(--ontario-color-link-hover, #00478f);
+}
+.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list-change__button:active {
+  color: var(--ontario-color-link-active, #002d5c);
+}
+@media screen and (max-width: 40em) {
+  .ontario-summary-list .ontario-summary-list-heading__container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
+
+.ontario-show-for-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnSummaryList.css.map */

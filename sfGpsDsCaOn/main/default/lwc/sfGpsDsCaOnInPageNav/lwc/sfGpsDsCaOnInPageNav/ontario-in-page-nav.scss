@@ -1,0 +1,89 @@
+@import "../../../../staticresources/sfGpsDsCaOnGlobalStyles/_ontario-variables.scss";
+
+.ontario-page-navigation {
+  border-top: 4px solid var(--ontario-color-black, #{$ontario-color-black});
+  border-bottom: 4px solid var(--ontario-greyscale-20, #e5e5e5);
+  padding: 0;
+  margin: 2.5rem 0;
+}
+
+.ontario-page-navigation--no-top-border {
+  border-top: none;
+
+  .ontario-page-navigation-content {
+    padding-top: 0;
+  }
+}
+
+.ontario-page-navigation-content {
+  padding: 2.5rem 0;
+  max-width: 46rem;
+}
+
+.ontario-page-navigation-header {
+  font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.4375rem;
+  font-weight: 700;
+  letter-spacing: 0.02rem;
+  line-height: 1.39;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .ontario-page-navigation-header {
+    font-size: 1.75rem;
+    line-height: 1.43;
+  }
+}
+
+.ontario-page-navigation-list {
+  padding: 0;
+  padding-left: calc(1.5rem + 0.25rem);
+  margin: 0;
+  margin-top: 1.5rem;
+  list-style-type: disc;
+}
+
+.ontario-page-navigation-list__item {
+  padding-bottom: calc(1.5rem + 0.25rem);
+  padding-left: 0;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.ontario-page-navigation-item__link {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  font-style: normal;
+  margin-left: 0;
+  text-decoration: none;
+  color: var(--ontario-link-color, #0066cc);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 4px var(--ontario-focus-color, #009ADB);
+    outline: 4px solid transparent;
+  }
+}
+
+.ontario-show-on-focus {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+  }
+}

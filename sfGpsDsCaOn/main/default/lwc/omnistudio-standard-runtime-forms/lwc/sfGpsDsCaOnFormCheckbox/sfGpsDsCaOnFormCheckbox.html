@@ -1,0 +1,61 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="ontario-form-group">
+    <fieldset lwc:if={isCheckbox} class="ontario-fieldset">
+      <legend class="ontario-fieldset__legend">
+        <span class={computedLegendClassName}>
+          {label}
+          <span lwc:if={required} class="ontario-label__flag">(required)</span>
+          <span lwc:if={optional} class="ontario-label__flag">(optional)</span>
+        </span>
+        <slot name="label"> </slot>
+        <p lwc:if={fieldLevelHelp} id="helper" class="ontario-hint">{fieldLevelHelp}</p>
+
+        <div
+          lwc:if={sfGpsDsIsError}
+          class="ontario-error-messaging"
+          aria-live="assertive"
+          role="alert"
+          id="errorMessageBlock"
+        >
+          <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+          <span class="ontario-error-messaging__content">{sfGpsDsErrorMessage}</span>
+        </div>
+      </legend>
+
+      <div class="ontario-checkboxes">
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <div class="ontario-checkboxes__item" key={option.id}>
+            <input
+              class="ontario-checkboxes__input"
+              type="checkbox"
+              required={required}
+              disabled={computedDisabledOrReadOnly}
+              id={option.id}
+              tabindex={tabIndex}
+              name={name}
+              aria-invalid={sfGpsDsIsError}
+              aria-describedby={computedAriaDescribedBy}
+              checked={option.selected}
+              value={option.value}
+              data-index={index}
+              data-omni-input
+              onfocus={handleFocus}
+              onchange={sfGpsDsOnChangeValue}
+              onkeydown={handleKeyDownEvent}
+            />
+            <label
+              class="ontario-checkboxes__label"
+              data-index={index}
+              for={option.id}
+            >
+              {option.label}
+            </label>
+          </div>
+        </template>
+      </div>
+    </fieldset>
+  </div>
+</template>

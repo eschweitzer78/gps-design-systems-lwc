@@ -1,0 +1,8 @@
+{
+  "files": [
+    {
+      "source": "sfGpsDsCaOnFieldset/ontario-fieldset.scss",
+      "target": "sfGpsDsCaOnFieldset/sfGpsDsCaOnFieldset.css"
+    }
+  ]
+}

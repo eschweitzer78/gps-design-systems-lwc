@@ -1,0 +1,11 @@
+<template lwc:render-mode="light">
+  <div
+    lwc:if={hasMaxLength}
+    id={_countId}
+    class={computedClassName}
+    aria-live={computedAriaLive}
+    aria-atomic="true"
+  >
+    {displayText}
+  </div>
+</template>

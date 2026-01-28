@@ -1,0 +1,15 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  ></c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-ca-on-footer-simple
+    lwc:else
+    footer-links={parsedFooterLinks}
+    top-margin={topMargin}
+    language={language}
+    asset-base-path={assetBasePath}
+    class-name={className}
+  ></c-sf-gps-ds-ca-on-footer-simple>
+</template>

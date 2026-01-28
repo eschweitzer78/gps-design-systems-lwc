@@ -1,0 +1,257 @@
+/* ==========================================================================
+   CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+:root {
+  --ontario-colour-white: #FFFFFF;
+  --ontario-colour-black: #1A1A1A;
+  --ontario-colour-greyscale-5: #F2F2F2;
+  --ontario-colour-greyscale-20: #CCCCCC;
+  --ontario-colour-greyscale-40: #999999;
+  --ontario-colour-greyscale-60: #666666;
+  --ontario-colour-greyscale-70: #4D4D4D;
+  --ontario-colour-link: #0066CC;
+  --ontario-colour-link-hover: #00478F;
+  --ontario-colour-link-active: #002142;
+  --ontario-colour-link-visited: #551A8B;
+  --ontario-colour-focus: #009ADB;
+  --ontario-colour-alert: #CD0000;
+  --ontario-colour-alert-light: #FCEFF0;
+  --ontario-colour-warning: #FFD440;
+  --ontario-colour-warning-light: #FEF6DC;
+  --ontario-colour-success: #118847;
+  --ontario-colour-success-light: #E5F0E9;
+  --ontario-colour-information: #1080A6;
+  --ontario-colour-information-light: #E2F0F4;
+  --ontario-colour-gold: #CBA52E;
+  --ontario-colour-yellow: #FCAF17;
+  --ontario-colour-taupe: #C1B28F;
+  --ontario-colour-green: #39B54A;
+  --ontario-colour-lime: #8DC63F;
+  --ontario-colour-teal: #49A7A2;
+  --ontario-colour-sky: #00B2E3;
+  --ontario-colour-blue: #3193CC;
+  --ontario-colour-purple: #B975B7;
+  --ontario-colour-orange: #F15A22;
+  --ontario-colour-red: #F0454B;
+  --ontario-colour-magenta: #F03093;
+  --ontario-font-open-sans: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ontario-font-raleway-modified: "Raleway Modified", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ontario-font-courier-prime: "Courier Prime", Courier, "Courier New", monospace;
+  --ontario-font-size-small: 0.875rem;
+  --ontario-font-size-standard: 1rem;
+  --ontario-font-size-large: 1.25rem;
+  --ontario-font-size-xlarge: 1.5rem;
+  --ontario-font-weight-light: 300;
+  --ontario-font-weight-normal: 400;
+  --ontario-font-weight-medium: 500;
+  --ontario-font-weight-semi-bold: 600;
+  --ontario-font-weight-bold: 700;
+  --ontario-font-weight-extra-bold: 800;
+  --ontario-line-height-default: 1.6;
+  --ontario-line-height-heading: 1.2;
+  --ontario-spacing-0: 0;
+  --ontario-spacing-1: 0.25rem;
+  --ontario-spacing-2: 0.5rem;
+  --ontario-spacing-3: 0.75rem;
+  --ontario-spacing-4: 1rem;
+  --ontario-spacing-5: 1.5rem;
+  --ontario-spacing-6: 2rem;
+  --ontario-spacing-7: 2.5rem;
+  --ontario-spacing-8: 3rem;
+  --ontario-spacing-9: 4rem;
+  --ontario-spacing-10: 5rem;
+  --ontario-breakpoint-xsmall: 20em;
+  --ontario-breakpoint-small: 40em;
+  --ontario-breakpoint-medium: 73em;
+  --ontario-breakpoint-large: 96em;
+  --ontario-breakpoint-xlarge: 120em;
+  --ontario-grid-columns: 12;
+  --ontario-grid-row-width: 1152px;
+  --ontario-grid-column-gutter: 32px;
+  --ontario-border-radius: 4px;
+  --ontario-border-size: 2px;
+  --ontario-touch-target-size: 36px;
+  --ontario-touch-target-size-mobile: 40px;
+}
+
+/* ==========================================================================
+   Font Face Declarations
+   ========================================================================== */
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/open-sans-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/open-sans-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Open Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/open-sans-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Raleway Modified";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/raleway-modified-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Raleway Modified";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/raleway-modified-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Raleway Modified";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/raleway-modified-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Courier Prime";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/courier-prime-400.woff2") format("woff2");
+}
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--ontario-font-open-sans);
+  font-size: 100%;
+  line-height: var(--ontario-line-height-default);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--ontario-colour-black);
+  background-color: var(--ontario-colour-white);
+}
+
+/* ==========================================================================
+   Typography Base Styles
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ontario-font-raleway-modified);
+  font-weight: var(--ontario-font-weight-bold);
+  line-height: var(--ontario-line-height-heading);
+  margin-top: 0;
+  margin-bottom: var(--ontario-spacing-4);
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 0.02rem;
+}
+
+h2 {
+  font-size: 2rem;
+  letter-spacing: 0.025rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  letter-spacing: 0.03rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--ontario-spacing-4);
+}
+
+a {
+  color: var(--ontario-colour-link);
+  text-decoration: underline;
+}
+a:hover {
+  color: var(--ontario-colour-link-hover);
+}
+a:active {
+  color: var(--ontario-colour-link-active);
+}
+a:visited {
+  color: var(--ontario-colour-link-visited);
+}
+a:focus {
+  outline: 3px solid var(--ontario-colour-focus);
+  outline-offset: 2px;
+}
+
+code, kbd, pre, samp {
+  font-family: var(--ontario-font-courier-prime);
+}
+
+/* ==========================================================================
+   Focus States
+   ========================================================================== */
+:focus-visible {
+  outline: 3px solid var(--ontario-colour-focus);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+.ontario-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.ontario-container {
+  max-width: var(--ontario-grid-row-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--ontario-spacing-4);
+  padding-right: var(--ontario-spacing-4);
+}
+
+@media screen and (min-width: 40em) {
+  .ontario-container {
+    padding-left: var(--ontario-spacing-6);
+    padding-right: var(--ontario-spacing-6);
+  }
+}
+
+/*# sourceMappingURL=global.css.map */

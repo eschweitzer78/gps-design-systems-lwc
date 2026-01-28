@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Search</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="Label for the search input field."
+        default="Search"
+      />
+      <property
+        name="placeholder"
+        type="String"
+        label="Placeholder"
+        description="Placeholder text displayed when input is empty."
+        default="Search..."
+      />
+      <property
+        name="hintText"
+        type="String"
+        label="Hint text"
+        description="Additional hint text displayed below the label."
+      />
+      <property
+        name="searchObjects"
+        type="String"
+        label="Search objects"
+        description="Comma-separated list of Salesforce object API names to search (e.g., Knowledge__kav,Account,Contact)."
+        default="Knowledge__kav,Account,Contact"
+      />
+      <property
+        name="maxSuggestions"
+        type="Integer"
+        label="Max suggestions"
+        description="Maximum number of autocomplete suggestions to display."
+        default="8"
+        min="1"
+        max="20"
+      />
+      <property
+        name="debounceMs"
+        type="Integer"
+        label="Debounce (ms)"
+        description="Delay in milliseconds before triggering search after user stops typing."
+        default="300"
+        min="100"
+        max="1000"
+      />
+      <property
+        name="minChars"
+        type="Integer"
+        label="Minimum characters"
+        description="Minimum number of characters required before search triggers."
+        default="2"
+        min="1"
+        max="5"
+      />
+      <property
+        name="noResultsText"
+        type="String"
+        label="No results text"
+        description="Text displayed when no search results are found."
+        default="No results found"
+      />
+      <property
+        name="searchResultsPage"
+        type="String"
+        label="Search results page"
+        description="URL path for the full search results page. The search term will be appended as a 'q' query parameter."
+        default="/search"
+      />
+      <property
+        name="navigateOnSelect"
+        type="Boolean"
+        label="Navigate on select"
+        description="When enabled, selecting a suggestion navigates to that record."
+        default="true"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied to the search container."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
