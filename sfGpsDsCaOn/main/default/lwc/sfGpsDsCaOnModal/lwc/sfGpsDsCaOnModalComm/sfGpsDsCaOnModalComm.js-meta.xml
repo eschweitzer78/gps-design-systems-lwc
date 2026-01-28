@@ -9,11 +9,12 @@
     <target>lightning__RecordPage</target>
     <target>lightning__AppPage</target>
     <target>lightning__HomePage</target>
+    <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
   </targets>
   <targetConfigs>
     <targetConfig
-      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage,lightningCommunity__Default"
+      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage,lightningCommunity__Page,lightningCommunity__Default"
     >
       <property
         name="title"

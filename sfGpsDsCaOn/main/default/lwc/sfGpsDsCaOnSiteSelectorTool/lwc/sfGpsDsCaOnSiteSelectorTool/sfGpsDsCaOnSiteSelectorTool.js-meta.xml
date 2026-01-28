@@ -9,11 +9,12 @@
     <target>lightning__RecordPage</target>
     <target>lightning__AppPage</target>
     <target>lightning__HomePage</target>
+    <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
   </targets>
   <targetConfigs>
     <targetConfig
-      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage,lightningCommunity__Default"
+      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage,lightningCommunity__Page,lightningCommunity__Default"
     >
       <property
         name="buttonLabel"
@@ -21,6 +22,13 @@
         label="Button Label"
         description="Label for the button that opens the site selector"
         default="Site selector tool"
+      />
+      <property
+        name="buttonIcon"
+        type="String"
+        label="Button Icon"
+        description="Icon name for the trigger button (e.g., location, map)"
+        default="location"
       />
       <property
         name="modalTitle"
@@ -67,6 +75,12 @@
         type="String"
         label="Location Value (JSON)"
         description="Pre-populated location data as JSON. Format: {address: {...}, coordinates: {latitude, longitude}}"
+      />
+      <property
+        name="searchOptions"
+        type="String"
+        label="Search Options (JSON)"
+        description="JSON array of search type options. Default: [{value:'address',label:'Address'},{value:'coordinates',label:'Coordinates'},{value:'lot',label:'Lot/Concession'}]"
       />
     </targetConfig>
   </targetConfigs>
