@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <availableInTouch>true</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description
+  >ESRI Site Selector Map for Ontario Design System. Provides address geocoding and site point selection.</description>
+    <label>Site Selector Map</label>
+</ApexPage>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>59.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Site Selector Tool</masterLabel>
+  <description
+  >ESRI-integrated site selector with address search, map visualization, and geocoding. LWR/LWS compatible.</description>
+  <targets>
+    <target>lightning__RecordPage</target>
+    <target>lightning__AppPage</target>
+    <target>lightning__HomePage</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig
+      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage,lightningCommunity__Default"
+    >
+      <property
+        name="buttonLabel"
+        type="String"
+        label="Button Label"
+        description="Label for the button that opens the site selector"
+        default="Site selector tool"
+      />
+      <property
+        name="modalTitle"
+        type="String"
+        label="Modal Title"
+        description="Title displayed in the modal header"
+        default="Site"
+      />
+      <property
+        name="vfPageUrl"
+        type="String"
+        label="Visualforce Page URL"
+        description="Full URL to the ESRI map Visualforce page"
+      />
+      <property
+        name="defaultLatitude"
+        type="Decimal"
+        label="Default Latitude"
+        description="Default latitude for map center"
+        default="43.6532"
+      />
+      <property
+        name="defaultLongitude"
+        type="Decimal"
+        label="Default Longitude"
+        description="Default longitude for map center"
+        default="-79.3832"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Custom CSS Class"
+        description="Additional CSS class for custom styling"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

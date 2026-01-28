@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Site Task Card</masterLabel>
+  <description
+  >Card displaying a registration site with its associated tasks and progress summary.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="siteId"
+        type="String"
+        label="Site ID"
+        description="Unique identifier for this site"
+      />
+      <property
+        name="siteName"
+        type="String"
+        label="Site Name"
+        description="Site name/identifier displayed in header"
+        default="Site 1 name identifier"
+      />
+      <property
+        name="tasksJson"
+        type="String"
+        label="Tasks (JSON)"
+        description="JSON array of task items with label, hint, status (not-started, in-progress, complete, cannot-start-yet), statusLabel, and url properties"
+      />
+      <property
+        name="allowRemove"
+        type="Boolean"
+        label="Allow Remove"
+        description="Whether to show the Remove action"
+        default="true"
+      />
+      <property
+        name="headingLevel"
+        type="String"
+        label="Heading Level"
+        description="Heading level for the site name"
+        default="h3"
+        datasource="h2,h3,h4"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class Name"
+        description="Additional CSS class to be applied"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

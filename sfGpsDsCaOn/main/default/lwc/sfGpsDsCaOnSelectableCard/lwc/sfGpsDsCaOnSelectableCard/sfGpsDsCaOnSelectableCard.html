@@ -1,0 +1,89 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Selectable Card Component
+  
+  A card with checkbox, title, description, and expandable "View more" content.
+  Used for service/activity selection interfaces like EASR activity selection.
+  
+  Compliance:
+  - LWR: Light DOM compatible
+  - LWS: No restricted APIs
+  - Ontario DS: Follows checkbox and card patterns
+  - WCAG 2.1 AA: Proper checkbox labeling, keyboard accessible, aria-expanded
+-->
+<template lwc:render-mode="light">
+  <div class={computedCardClassName}>
+    <!-- Checkbox and Label -->
+    <div class="ontario-checkboxes__item sfgpsdscaon-selectable-card__header">
+      <input
+        type="checkbox"
+        class={computedCheckboxClassName}
+        id={checkboxId}
+        name={name}
+        value={value}
+        checked={checked}
+        disabled={disabled}
+        onchange={handleCheckboxChange}
+      />
+      <label
+        class="ontario-checkboxes__label sfgpsdscaon-selectable-card__label"
+        for={checkboxId}
+      >
+        <span class="sfgpsdscaon-selectable-card__title-wrapper">
+          <span class="sfgpsdscaon-selectable-card__title">{label}</span>
+          <span lwc:if={hasBadge} class={computedBadgeClassName}>{badge}</span>
+        </span>
+      </label>
+    </div>
+
+    <!-- Description -->
+    <div
+      lwc:if={hasDescription}
+      class="sfgpsdscaon-selectable-card__description"
+    >
+      {description}
+    </div>
+
+    <!-- Optional Link -->
+    <a
+      lwc:if={hasLink}
+      href={linkUrl}
+      class="ontario-link sfgpsdscaon-selectable-card__link"
+    >
+      {linkLabel}
+    </a>
+
+    <!-- View More Button -->
+    <button
+      lwc:if={hasExpandedContent}
+      type="button"
+      class="sfgpsdscaon-selectable-card__expand-btn"
+      aria-expanded={expandButtonAriaExpanded}
+      aria-controls={expandedContentId}
+      onclick={handleExpandClick}
+    >
+      <svg
+        class="ontario-icon sfgpsdscaon-selectable-card__expand-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          lwc:if={isExpanded}
+          d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"
+        ></path>
+        <path lwc:else d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path>
+      </svg>
+      {expandButtonLabel}
+    </button>
+
+    <!-- Expanded Content -->
+    <div
+      lwc:if={isExpanded}
+      id={expandedContentId}
+      class="sfgpsdscaon-selectable-card__expanded-content"
+    >
+      {expandedContent}
+    </div>
+  </div>
+</template>

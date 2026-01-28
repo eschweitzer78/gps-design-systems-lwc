@@ -1,0 +1,116 @@
+/**
+ * Ontario Design System - Action Card Styles
+ * 
+ * Styling for action cards used on permission/service selection pages.
+ * Based on Ontario DS card patterns with custom header bar styling.
+ */
+
+/* Card Container */
+.sfgpsdscaon-action-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 100%;
+  list-style: none;
+}
+
+/* Header Bar */
+.sfgpsdscaon-action-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  color: #ffffff;
+}
+
+/* Header Color Variants */
+.sfgpsdscaon-action-card__header--dark-blue {
+  background-color: #1a1a5e;
+}
+
+.sfgpsdscaon-action-card__header--blue {
+  background-color: #0066cc;
+}
+
+.sfgpsdscaon-action-card__header--teal {
+  background-color: #00838f;
+}
+
+.sfgpsdscaon-action-card__header--green {
+  background-color: #118847;
+}
+
+.sfgpsdscaon-action-card__header--gold {
+  background-color: #b38500;
+}
+
+.sfgpsdscaon-action-card__header--purple {
+  background-color: #5e3c78;
+}
+
+/* Header Icon */
+.sfgpsdscaon-action-card__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1); /* Make icon white */
+}
+
+/* Header Heading */
+.sfgpsdscaon-action-card__heading {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: inherit;
+}
+
+/* Card Body */
+.sfgpsdscaon-action-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  flex-grow: 1;
+}
+
+/* Description */
+.sfgpsdscaon-action-card__description {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  flex-grow: 1;
+}
+
+/* Primary Button */
+.sfgpsdscaon-action-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-decoration: none;
+}
+
+/* Secondary Link */
+.sfgpsdscaon-action-card__link {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: #0066cc;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+
+.sfgpsdscaon-action-card__link:hover {
+  color: #00478f;
+}
+
+.sfgpsdscaon-action-card__link:focus {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}

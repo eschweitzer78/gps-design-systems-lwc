@@ -1,0 +1,39 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Action Card Community Component
+  
+  Experience Builder wrapper for Action Card.
+  Supports Markdown in description field.
+  
+  Use inside sfGpsDsCaOnActionCardCollectionComm for proper grid layout.
+-->
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-ca-on-action-card
+    lwc:else
+    icon={icon}
+    icon-alt-text={iconAltText}
+    heading={heading}
+    heading-level={headingLevel}
+    header-colour={headerColour}
+    button-label={buttonLabel}
+    button-url={buttonUrl}
+    link-label={linkLabel}
+    link-url={linkUrl}
+    class-name={className}
+  >
+    <div
+      lwc:if={hasCustomDescription}
+      lwc:ref="description"
+      slot="ActionCard-Description"
+    ></div>
+    <template lwc:else>
+      <slot name="ActionCard-Description"></slot>
+    </template>
+  </c-sf-gps-ds-ca-on-action-card>
+</template>

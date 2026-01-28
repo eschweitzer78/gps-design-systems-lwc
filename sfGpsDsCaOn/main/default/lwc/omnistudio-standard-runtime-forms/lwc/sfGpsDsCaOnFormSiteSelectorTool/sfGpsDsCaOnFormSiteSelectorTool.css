@@ -1,0 +1,75 @@
+/**
+ * Ontario Design System - Form Site Selector Tool Styles
+ *
+ * OmniStudio wrapper for the Site Selector Tool.
+ */
+
+/* Container */
+.sfgpsdscaon-form-site-selector {
+  margin-bottom: 1.5rem;
+}
+
+/* Selected Address Display */
+.sfgpsdscaon-form-site-selector__selected {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background-color: #e8f4e8;
+  border: 1px solid #118847;
+  border-radius: 4px;
+}
+
+.sfgpsdscaon-form-site-selector__selected-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.sfgpsdscaon-form-site-selector__selected-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  fill: #118847;
+}
+
+.sfgpsdscaon-form-site-selector__selected-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+
+.sfgpsdscaon-form-site-selector__clear-btn {
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #0066cc;
+  font-size: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sfgpsdscaon-form-site-selector__clear-btn:hover {
+  color: #00478f;
+}
+
+.sfgpsdscaon-form-site-selector__clear-btn:focus {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* Error State */
+.sfgpsdscaon-form-site-selector--error
+  .sfgpsdscaon-form-site-selector__selected {
+  border-color: #cd0000;
+  background-color: #fce4e4;
+}
+
+.sfgpsdscaon-form-site-selector--error
+  .sfgpsdscaon-form-site-selector__selected-icon {
+  fill: #cd0000;
+}

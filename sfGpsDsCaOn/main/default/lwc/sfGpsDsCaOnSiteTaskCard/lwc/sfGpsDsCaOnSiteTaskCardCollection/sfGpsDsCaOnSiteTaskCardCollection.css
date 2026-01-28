@@ -1,0 +1,9 @@
+/**
+ * Ontario Design System - Site Task Card Collection Styles
+ */
+
+.sfgpsdscaon-site-task-card-collection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

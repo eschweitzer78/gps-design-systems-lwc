@@ -1,0 +1,22 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <div lwc:elseif={hasSites} class="sfgpsdscaon-site-task-card-collection">
+    <template for:each={decoratedSites} for:item="site">
+      <c-sf-gps-ds-ca-on-site-task-card
+        key={site.key}
+        site-id={site.siteId}
+        site-name={site.siteName}
+        tasks={site.tasks}
+        allow-remove={allowRemove}
+        heading-level={headingLevel}
+        onremove={handleRemove}
+      >
+      </c-sf-gps-ds-ca-on-site-task-card>
+    </template>
+  </div>
+</template>

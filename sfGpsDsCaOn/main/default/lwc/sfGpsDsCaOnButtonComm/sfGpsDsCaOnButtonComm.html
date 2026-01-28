@@ -5,6 +5,42 @@
   >
   </c-sf-gps-ds-configuration-error>
 
+  <!-- Native button with icon support -->
+  <template lwc:elseif={useNativeButton}>
+    <button
+      type={htmlType}
+      id={elementId}
+      class={computedButtonClassName}
+      aria-label={ariaLabelText}
+      onclick={handleClick}
+    >
+      <!-- Icon on left -->
+      <svg
+        lwc:if={isIconLeft}
+        class="ontario-icon sfgpsdscaon-button__icon sfgpsdscaon-button__icon--left"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <path d={iconPath}></path>
+      </svg>
+      {label}
+      <!-- Icon on right -->
+      <svg
+        lwc:if={isIconRight}
+        class="ontario-icon sfgpsdscaon-button__icon sfgpsdscaon-button__icon--right"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <path d={iconPath}></path>
+      </svg>
+    </button>
+  </template>
+
+  <!-- Standard ontario-button without icon -->
   <ontario-button
     lwc:else
     lwc:external

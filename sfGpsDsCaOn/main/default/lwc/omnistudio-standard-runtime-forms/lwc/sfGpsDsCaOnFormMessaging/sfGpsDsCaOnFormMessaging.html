@@ -3,11 +3,22 @@
   Ontario Design System - Messaging Component for OmniStudio
   
   Displays alert messages using Ontario DS page alerts.
+  Supports Markdown content including hyperlinks for hard stop messages.
+  
   Maps OmniStudio message types to Ontario alert types:
-  - Success -> success
-  - Requirement -> error  
-  - Warning -> warning
-  - Comment -> informational
+  - Success -> success (green)
+  - Requirement -> error (red/pink, used for hard stops)
+  - Warning -> warning (yellow)
+  - Comment -> informational (blue)
+  
+  Markdown Support:
+  - Links: [link text](url)
+  - Bold: **bold text**
+  - Italic: *italic text*
+  - Paragraphs: separated by blank lines
+  
+  Example Message Text:
+  "Based on your answer, you may need to [apply for an ECA](https://ontario.ca/eca)."
   
   Compliance:
   - LWR: Compatible (uses Ontario DS web component with lwc:external)
@@ -17,16 +28,17 @@
     - Uses proper alert roles
     - Accessible color contrast
     - Screen reader compatible
+    - Links are keyboard accessible
 -->
 <template>
-  <template lwc:if={messageText}>
+  <template lwc:if={hasContent}>
     <div class="ontario-form-group sfgpsdscaon-messaging">
       <ontario-page-alert
         lwc:external
         type={ontarioAlertType}
         heading={mergedTitleText}
-        content={mergedMessageText}
       >
+        <span lwc:ref="content" lwc:dom="manual"></span>
       </ontario-page-alert>
     </div>
   </template>

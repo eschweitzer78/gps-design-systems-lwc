@@ -1,0 +1,78 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Site Task Card Component
+  
+  A card displaying a registration site with its associated tasks.
+  Used in the Stormwater Management Works "Getting Started" page.
+  
+  Compliance:
+  - LWR: Light DOM compatible
+  - LWS: No restricted APIs
+  - Ontario DS: Follows card patterns
+  - WCAG 2.1 AA: Proper headings, keyboard accessible, status announcements
+-->
+<template lwc:render-mode="light">
+  <div class={computedCardClassName}>
+    <!-- Card Header -->
+    <div class="sfgpsdscaon-site-task-card__header">
+      <h2 lwc:if={isH2} class="sfgpsdscaon-site-task-card__title">
+        {siteName}
+      </h2>
+      <h3 lwc:elseif={isH3} class="sfgpsdscaon-site-task-card__title">
+        {siteName}
+      </h3>
+      <h4 lwc:elseif={isH4} class="sfgpsdscaon-site-task-card__title">
+        {siteName}
+      </h4>
+
+      <a
+        lwc:if={allowRemove}
+        href="#"
+        class="sfgpsdscaon-site-task-card__remove"
+        onclick={handleRemove}
+        aria-label={removeAriaLabel}
+      >
+        Remove
+      </a>
+    </div>
+
+    <!-- Task List -->
+    <div lwc:if={hasTasks} class="sfgpsdscaon-site-task-card__tasks">
+      <c-sf-gps-ds-ca-on-task-list-comm items-json={tasksJson}>
+      </c-sf-gps-ds-ca-on-task-list-comm>
+    </div>
+
+    <!-- Progress Summary -->
+    <div class="sfgpsdscaon-site-task-card__progress" role="status">
+      <!-- Status Icon -->
+      <svg
+        class={progressIconClass}
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <!-- Error/Not Started Icon -->
+        <template lwc:if={isNotStarted}>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </template>
+        <!-- Complete Icon -->
+        <template lwc:elseif={isComplete}>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+          />
+        </template>
+        <!-- In Progress Icon -->
+        <template lwc:else>
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"
+          />
+        </template>
+      </svg>
+      <span class="sfgpsdscaon-site-task-card__progress-text">
+        {progressText}
+      </span>
+    </div>
+  </div>
+</template>

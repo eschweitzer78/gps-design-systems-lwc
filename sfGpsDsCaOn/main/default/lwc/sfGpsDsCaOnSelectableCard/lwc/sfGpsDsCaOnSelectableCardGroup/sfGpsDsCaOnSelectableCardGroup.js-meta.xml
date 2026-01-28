@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Selectable Card Group</masterLabel>
+  <description
+  >A group of selectable cards with checkbox, title, description, and expandable content. Used for service/activity selection interfaces.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="legend"
+        type="String"
+        label="Legend"
+        description="Legend/title for the fieldset."
+      />
+      <property
+        name="hintText"
+        type="String"
+        label="Hint text"
+        description="Additional hint text displayed below the legend."
+      />
+      <property
+        name="name"
+        type="String"
+        label="Name"
+        description="Name attribute for the checkbox inputs."
+      />
+      <property
+        name="options"
+        type="String"
+        label="Options (JSON)"
+        description="JSON array of card options. Format: [{&quot;value&quot;:&quot;val1&quot;,&quot;label&quot;:&quot;Title&quot;,&quot;description&quot;:&quot;Description text&quot;,&quot;expandedContent&quot;:&quot;More details...&quot;}]"
+        required="true"
+        editor="c/sfGpsDsJsonCpe"
+      />
+      <property
+        name="required"
+        type="Boolean"
+        label="Required"
+        description="Mark field as required."
+        default="false"
+      />
+      <property
+        name="optional"
+        type="Boolean"
+        label="Optional"
+        description="Mark field as optional."
+        default="false"
+      />
+      <property
+        name="disabled"
+        type="Boolean"
+        label="Disabled"
+        description="Disable all cards."
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to apply."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

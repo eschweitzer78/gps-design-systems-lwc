@@ -1,0 +1,19 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-ca-on-site-task-card
+    lwc:else
+    site-id={siteId}
+    site-name={siteName}
+    tasks={parsedTasks}
+    allow-remove={allowRemove}
+    heading-level={headingLevel}
+    class-name={className}
+    onremove={handleRemove}
+  >
+  </c-sf-gps-ds-ca-on-site-task-card>
+</template>

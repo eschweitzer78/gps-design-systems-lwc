@@ -1,0 +1,63 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Action Card Component
+  
+  Displays an action card with:
+  - Colored header bar with icon and title
+  - Description text
+  - Primary action button
+  - Optional secondary "More information" link
+  
+  Used for permission/service selection pages like "Apply or Register".
+  
+  Compliance:
+  - LWR: Light DOM compatible
+  - LWS: No restricted APIs
+  - Ontario DS: Custom styling based on Ontario DS card patterns
+  - WCAG 2.1 AA: Proper heading hierarchy, keyboard accessible links/buttons
+-->
+<template lwc:render-mode="light">
+  <li class={computedCardClassName}>
+    <!-- Header Bar with Icon and Title -->
+    <div class={computedHeaderClassName}>
+      <img
+        lwc:if={hasIcon}
+        src={icon}
+        alt={computedIconAltText}
+        class="sfgpsdscaon-action-card__icon"
+        aria-hidden="true"
+      />
+
+      <h2 lwc:if={isH2} class="sfgpsdscaon-action-card__heading">{heading}</h2>
+      <h3 lwc:elseif={isH3} class="sfgpsdscaon-action-card__heading">
+        {heading}
+      </h3>
+      <h4 lwc:elseif={isH4} class="sfgpsdscaon-action-card__heading">
+        {heading}
+      </h4>
+    </div>
+
+    <!-- Card Body -->
+    <div class="sfgpsdscaon-action-card__body">
+      <!-- Description -->
+      <template lwc:if={hasDescription}>
+        <p class="sfgpsdscaon-action-card__description">{description}</p>
+      </template>
+      <slot name="ActionCard-Description"></slot>
+
+      <!-- Primary Action Button -->
+      <a
+        lwc:if={hasButton}
+        href={buttonUrl}
+        class="ontario-button ontario-button--primary sfgpsdscaon-action-card__button"
+      >
+        {buttonLabel}
+      </a>
+
+      <!-- Secondary Link -->
+      <a lwc:if={hasLink} href={linkUrl} class="sfgpsdscaon-action-card__link">
+        {linkLabel}
+      </a>
+    </div>
+  </li>
+</template>

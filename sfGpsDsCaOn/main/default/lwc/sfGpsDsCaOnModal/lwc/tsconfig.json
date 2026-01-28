@@ -1,0 +1,12 @@
+{
+  "extends": "../../../../../../../../../sfGpsDs/main/default/lwc/tsconfig.json",
+  "include": ["./**/*.ts"],
+  "compilerOptions": {
+    "paths": {
+      "c/sf*": [
+        "../../../**/sf*/sf*.js",
+        "../../../../sfGpsDs/main/default/lwc/**/sf*/sf*.js"
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<template lwc:render-mode="light">
+  <!-- Trigger slot - click to open modal -->
+  <div class="sfgpsdscaon-modal-trigger" onclick={handleTriggerClick}>
+    <slot name="trigger"></slot>
+  </div>
+
+  <!-- Modal Component -->
+  <c-sf-gps-ds-ca-on-modal
+    title={title}
+    size={size}
+    is-open={isOpen}
+    hide-close-button={hideCloseButton}
+    hide-header={hideHeader}
+    hide-footer={hideFooter}
+    class-name={className}
+    aria-label={ariaLabel}
+    onclose={handleModalClose}
+  >
+    <div slot="content">
+      <slot name="content"></slot>
+    </div>
+    <div slot="footer">
+      <slot name="footer"></slot>
+    </div>
+  </c-sf-gps-ds-ca-on-modal>
+</template>

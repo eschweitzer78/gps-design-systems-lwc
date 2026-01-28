@@ -1,0 +1,46 @@
+/**
+ * Ontario Design System - Activity Status Card Collection Styles
+ * 
+ * Grid layout for activity status cards with responsive behavior.
+ */
+
+/* Base Grid Container */
+.sfgpsdscaon-activity-status-card-collection {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Grid Items */
+.sfgpsdscaon-activity-status-card-collection__item {
+  display: flex;
+}
+
+/* 1 card per row */
+.sfgpsdscaon-activity-status-card-collection--1-per-row {
+  grid-template-columns: 1fr;
+}
+
+/* 2 cards per row (default) */
+.sfgpsdscaon-activity-status-card-collection--2-per-row {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 3 cards per row */
+.sfgpsdscaon-activity-status-card-collection--3-per-row {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Responsive: Tablet */
+@media (max-width: 992px) {
+  .sfgpsdscaon-activity-status-card-collection--3-per-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive: Mobile */
+@media (max-width: 576px) {
+  .sfgpsdscaon-activity-status-card-collection--2-per-row,
+  .sfgpsdscaon-activity-status-card-collection--3-per-row {
+    grid-template-columns: 1fr;
+  }
+}

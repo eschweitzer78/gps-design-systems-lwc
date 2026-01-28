@@ -1,0 +1,305 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Discharge Point Selector Component
+  
+  Modal-based component for selecting discharge point locations using
+  coordinate entry or map interaction.
+  
+  Compliance:
+  - LWR: Light DOM compatible
+  - LWS: No restricted APIs
+  - Ontario DS: Uses Ontario modal and form patterns
+  - WCAG 2.1 AA: Proper labeling, keyboard accessible
+-->
+<template lwc:render-mode="light">
+  <div class={computedContainerClassName}>
+    <!-- Trigger Button -->
+    <button
+      type="button"
+      class="ontario-button ontario-button--secondary sfgpsdscaon-discharge-selector__trigger"
+      onclick={handleOpenClick}
+    >
+      <svg
+        class="ontario-icon sfgpsdscaon-discharge-selector__trigger-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+          fill="currentColor"
+        />
+      </svg>
+      {buttonLabel}
+    </button>
+
+    <!-- Modal -->
+    <c-sf-gps-ds-ca-on-modal
+      title={modalTitle}
+      size="full"
+      is-open={isModalOpen}
+      hide-footer="true"
+      onclose={handleModalClose}
+    >
+      <div slot="content" class="sfgpsdscaon-discharge-selector__content">
+        <div class="sfgpsdscaon-discharge-selector__panels">
+          <!-- Left Panel - Search Controls -->
+          <div class="sfgpsdscaon-discharge-selector__left-panel">
+            <!-- Search Method Dropdown -->
+            <div class="sfgpsdscaon-discharge-selector__field">
+              <label class="ontario-label" for="search-method">
+                Search by
+                <span class="ontario-label__flag">(required)</span>
+              </label>
+              <select
+                id="search-method"
+                class="ontario-input"
+                value={_searchMethod}
+                onchange={handleSearchMethodChange}
+              >
+                <template for:each={searchMethodOptions} for:item="opt">
+                  <option key={opt.value} value={opt.value}>{opt.label}</option>
+                </template>
+              </select>
+            </div>
+
+            <!-- Coordinates Method -->
+            <template lwc:if={isCoordinatesMethod}>
+              <!-- Coordinate Format Dropdown -->
+              <div class="sfgpsdscaon-discharge-selector__field">
+                <label class="ontario-label" for="coord-format">
+                  Enter coordinates by
+                  <span class="ontario-label__flag">(required)</span>
+                </label>
+                <select
+                  id="coord-format"
+                  class="ontario-input"
+                  value={_coordinateFormat}
+                  onchange={handleCoordinateFormatChange}
+                >
+                  <template for:each={coordinateFormatOptions} for:item="opt">
+                    <option key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  </template>
+                </select>
+              </div>
+
+              <!-- Coordinate Input Component -->
+              <c-sf-gps-ds-ca-on-coordinate-input
+                format={_coordinateFormat}
+                required="true"
+                error-message={_errorMessage}
+                onchange={handleCoordinateChange}
+              ></c-sf-gps-ds-ca-on-coordinate-input>
+            </template>
+
+            <!-- Address Method -->
+            <template lwc:if={isAddressMethod}>
+              <div class="sfgpsdscaon-discharge-selector__field">
+                <label class="ontario-label" for="address-search">
+                  Enter address
+                  <span class="ontario-label__flag">(required)</span>
+                </label>
+                <p class="ontario-hint">
+                  Enter street number, street name and city.
+                </p>
+                <div class="sfgpsdscaon-discharge-selector__search-input">
+                  <input
+                    type="text"
+                    id="address-search"
+                    class="ontario-input"
+                    value={_addressSearchValue}
+                    oninput={handleAddressChange}
+                    onkeydown={handleSearchKeyDown}
+                  />
+                  <button
+                    type="button"
+                    class="ontario-button ontario-button--primary sfgpsdscaon-discharge-selector__search-btn"
+                    onclick={handleSearchClick}
+                    disabled={_isSearching}
+                    aria-label="Search for address"
+                  >
+                    <svg
+                      class="ontario-icon"
+                      aria-hidden="true"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    <span class="ontario-show-for-sr">Search</span>
+                  </button>
+                </div>
+              </div>
+            </template>
+
+            <!-- Search Button (for coordinates) -->
+            <button
+              lwc:if={isCoordinatesMethod}
+              type="button"
+              class="ontario-button ontario-button--secondary sfgpsdscaon-discharge-selector__action-btn"
+              onclick={handleSearchClick}
+              disabled={_isSearching}
+            >
+              Search
+            </button>
+
+            <!-- Error Message -->
+            <div
+              lwc:if={_errorMessage}
+              class="ontario-error-messaging sfgpsdscaon-discharge-selector__error"
+              role="alert"
+            >
+              <svg
+                class="ontario-icon"
+                aria-hidden="true"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+                />
+              </svg>
+              <span class="ontario-error-messaging__content"
+                >{_errorMessage}</span
+              >
+            </div>
+
+            <!-- Coordinate Display -->
+            <div
+              lwc:if={hasCoordinates}
+              class="sfgpsdscaon-discharge-selector__coordinates-display"
+            >
+              <p class="sfgpsdscaon-discharge-selector__coordinates-label">
+                Selected coordinates:
+              </p>
+              <p class="sfgpsdscaon-discharge-selector__coordinates-value">
+                {coordinateDisplayText}
+              </p>
+            </div>
+
+            <!-- Continue Button -->
+            <button
+              type="button"
+              class="ontario-button ontario-button--primary sfgpsdscaon-discharge-selector__continue-btn"
+              onclick={handleContinueClick}
+              disabled={isContinueDisabled}
+            >
+              Continue
+            </button>
+
+            <!-- Tab Bar -->
+            <div
+              class="sfgpsdscaon-discharge-selector__tabs"
+              role="tablist"
+              aria-label="Map view options"
+              onkeydown={handleTabKeyDown}
+            >
+              <button
+                type="button"
+                role="tab"
+                id="discharge-tab-search"
+                class={searchTabClassName}
+                data-tab="search"
+                aria-selected={isSearchTabActive}
+                tabindex={searchTabTabIndex}
+                onclick={handleTabClick}
+              >
+                <svg
+                  class="ontario-icon"
+                  aria-hidden="true"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Search
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="discharge-tab-droppoint"
+                class={dropPointTabClassName}
+                data-tab="droppoint"
+                aria-selected={isDropPointTabActive}
+                tabindex={dropPointTabTabIndex}
+                onclick={handleTabClick}
+              >
+                <svg
+                  class="ontario-icon"
+                  aria-hidden="true"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Drop point
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="discharge-tab-layers"
+                class={layersTabClassName}
+                data-tab="layers"
+                aria-selected={isLayersTabActive}
+                tabindex={layersTabTabIndex}
+                onclick={handleTabClick}
+              >
+                <svg
+                  class="ontario-icon"
+                  aria-hidden="true"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Layers
+              </button>
+            </div>
+
+            <!-- Screen reader announcement for coordinate updates -->
+            <div
+              class="ontario-show-for-sr"
+              aria-live="assertive"
+              aria-atomic="true"
+            >
+              {coordinateAnnouncementText}
+            </div>
+          </div>
+
+          <!-- Right Panel - Map -->
+          <div class="sfgpsdscaon-discharge-selector__right-panel">
+            <iframe
+              lwc:if={hasVfPageUrl}
+              class="sfgpsdscaon-discharge-selector__map-iframe"
+              src={computedVfPageUrl}
+              title="ESRI Map - Discharge Point Selection"
+            ></iframe>
+            <div
+              lwc:if={hasNoVfPageUrl}
+              class="sfgpsdscaon-discharge-selector__map-placeholder"
+            >
+              <p>Map loading...</p>
+              <p class="sfgpsdscaon-discharge-selector__map-placeholder-hint">
+                Configure the Visualforce page URL to enable map functionality.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-sf-gps-ds-ca-on-modal>
+  </div>
+</template>

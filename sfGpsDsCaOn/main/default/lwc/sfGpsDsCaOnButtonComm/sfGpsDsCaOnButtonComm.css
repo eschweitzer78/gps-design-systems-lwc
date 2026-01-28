@@ -1,0 +1,23 @@
+/**
+ * Ontario Design System - Button with Icon Styles
+ * 
+ * Adds icon support to the Ontario DS button component.
+ */
+
+/* Icon styling within buttons */
+.sfgpsdscaon-button__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+/* Icon on left side */
+.sfgpsdscaon-button__icon--left {
+  margin-right: 0.5rem;
+}
+
+/* Icon on right side */
+.sfgpsdscaon-button__icon--right {
+  margin-left: 0.5rem;
+}

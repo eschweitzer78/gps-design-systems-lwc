@@ -1,0 +1,26 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-ca-on-naics-code-picker
+    label={mergedLabel}
+    help-text={mergedHelpText}
+    required={_propSetMap.required}
+    optional={_propSetMap.optional}
+    disabled={_propSetMap.disabled}
+    error-message={sfGpsDsErrorMessage}
+    value={elementValue}
+    sector-label={sectorLabel}
+    sub-sector-label={subSectorLabel}
+    industry-group-label={industryGroupLabel}
+    industry-label={industryLabel}
+    national-industry-label={nationalIndustryLabel}
+    sector-options={sectorOptions}
+    sub-sector-options={subSectorOptions}
+    industry-group-options={industryGroupOptions}
+    industry-options={industryOptions}
+    national-industry-options={nationalIndustryOptions}
+    data-omni-input
+    onchange={handleChange}
+    onclear={handleClear}
+  >
+  </c-sf-gps-ds-ca-on-naics-code-picker>
+</template>

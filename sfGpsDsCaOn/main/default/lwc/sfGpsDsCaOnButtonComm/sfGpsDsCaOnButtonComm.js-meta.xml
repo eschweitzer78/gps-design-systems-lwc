@@ -3,6 +3,8 @@
   <apiVersion>65.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Button</masterLabel>
+  <description
+  >Ontario Design System button component with optional icon support. Supports primary, secondary, and tertiary button types.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
@@ -10,30 +12,11 @@
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
       <property
-        name="ariaLabelText"
-        type="String"
-        label="Aria label text"
-        description="Provides more context as to what the button interaction is doing."
-      />
-      <property
-        name="elementId"
-        type="String"
-        label="Element Id"
-        description="The unique identifier of the button. This is optional - if no ID is passed, one will be generated."
-      />
-      <property
-        name="htmlType"
-        type="String"
-        label="HTML type"
-        description="The native HTML button type the button should use. If no htmlType is passed, it will default to 'button'."
-        default="button"
-        datasource="button,reset,submit"
-      />
-      <property
         name="label"
         type="String"
         label="Label"
         description="Text to be displayed within the button."
+        required="true"
         default="Button"
       />
       <property
@@ -47,8 +30,44 @@
         name="type"
         type="String"
         label="Type"
+        description="Button style variant."
         default="primary"
-        datasource="internalThemeDark,primary,secondary,tertiary"
+        datasource="primary,secondary,tertiary,internalThemeDark"
+      />
+      <property
+        name="icon"
+        type="String"
+        label="Icon"
+        description="Optional icon to display. Available icons: add, remove, edit, delete, chevronLeft, chevronRight, arrowForward, arrowBack, search, download, upload, check, close, info, warning, error, refresh, home, print, save"
+        datasource=",add,remove,edit,delete,chevronLeft,chevronRight,arrowForward,arrowBack,search,download,upload,check,close,info,warning,error,refresh,home,print,save"
+      />
+      <property
+        name="iconPosition"
+        type="String"
+        label="Icon position"
+        description="Position of the icon relative to the label."
+        default="left"
+        datasource="left,right"
+      />
+      <property
+        name="htmlType"
+        type="String"
+        label="HTML type"
+        description="The native HTML button type."
+        default="button"
+        datasource="button,reset,submit"
+      />
+      <property
+        name="ariaLabelText"
+        type="String"
+        label="Aria label text"
+        description="Provides more context as to what the button interaction is doing (for accessibility)."
+      />
+      <property
+        name="elementId"
+        type="String"
+        label="Element Id"
+        description="The unique identifier of the button. Optional - if not provided, one will be generated."
       />
       <property
         name="className"

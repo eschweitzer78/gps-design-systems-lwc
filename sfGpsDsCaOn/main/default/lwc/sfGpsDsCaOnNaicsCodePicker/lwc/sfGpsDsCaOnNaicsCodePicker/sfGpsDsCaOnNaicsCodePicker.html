@@ -1,0 +1,122 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <!-- Main label and help text -->
+    <fieldset class="ontario-fieldset sfgpsdscaon-naics-code-picker__fieldset">
+      <legend class="ontario-fieldset__legend">
+        <h2 class="ontario-h4">{label}</h2>
+      </legend>
+
+      <p
+        lwc:if={helpText}
+        id={helpTextId}
+        class="ontario-hint sfgpsdscaon-naics-code-picker__help"
+      >
+        {helpText}
+      </p>
+
+      <!-- Error message -->
+      <div
+        lwc:if={hasError}
+        id={errorId}
+        class="ontario-error-messaging"
+        role="alert"
+        aria-live="assertive"
+      >
+        <svg
+          class="ontario-icon"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+        <span class="ontario-error-messaging__content">{errorMessage}</span>
+      </div>
+
+      <!-- Cascading dropdowns -->
+      <div class="sfgpsdscaon-naics-code-picker__dropdowns">
+        <!-- Sector (2-digit) -->
+        <c-sf-gps-ds-ca-on-dropdown
+          label={sectorLabel}
+          name="naics-sector"
+          required={required}
+          disabled={disabled}
+          options={_sectorOptions}
+          value={_sector}
+          default-option-label="Select"
+          onchange={handleSectorChange}
+        ></c-sf-gps-ds-ca-on-dropdown>
+
+        <!-- Sub sector (3-digit) -->
+        <c-sf-gps-ds-ca-on-dropdown
+          label={subSectorLabel}
+          name="naics-subsector"
+          required={required}
+          disabled={isSubSectorDisabled}
+          options={filteredSubSectorOptions}
+          value={_subSector}
+          default-option-label="Select"
+          onchange={handleSubSectorChange}
+        ></c-sf-gps-ds-ca-on-dropdown>
+
+        <!-- Industry group (4-digit) -->
+        <c-sf-gps-ds-ca-on-dropdown
+          label={industryGroupLabel}
+          name="naics-industry-group"
+          required={required}
+          disabled={isIndustryGroupDisabled}
+          options={filteredIndustryGroupOptions}
+          value={_industryGroup}
+          default-option-label="Select"
+          onchange={handleIndustryGroupChange}
+        ></c-sf-gps-ds-ca-on-dropdown>
+
+        <!-- Industry (5-digit) -->
+        <c-sf-gps-ds-ca-on-dropdown
+          label={industryLabel}
+          name="naics-industry"
+          required={required}
+          disabled={isIndustryDisabled}
+          options={filteredIndustryOptions}
+          value={_industry}
+          default-option-label="Select"
+          onchange={handleIndustryChange}
+        ></c-sf-gps-ds-ca-on-dropdown>
+
+        <!-- National industry (6-digit) -->
+        <c-sf-gps-ds-ca-on-dropdown
+          label={nationalIndustryLabel}
+          name="naics-national-industry"
+          required={required}
+          disabled={isNationalIndustryDisabled}
+          options={filteredNationalIndustryOptions}
+          value={_nationalIndustry}
+          default-option-label="Select"
+          onchange={handleNationalIndustryChange}
+        ></c-sf-gps-ds-ca-on-dropdown>
+      </div>
+
+      <!-- Selected code display -->
+      <div
+        lwc:if={hasSelection}
+        class="sfgpsdscaon-naics-code-picker__selection"
+      >
+        <p class="sfgpsdscaon-naics-code-picker__selected-label">
+          <strong>Selected NAICS code</strong>
+        </p>
+        <p class="sfgpsdscaon-naics-code-picker__selected-value">
+          {selectedCodeDisplay}
+        </p>
+        <a
+          href="#"
+          class="ontario-link sfgpsdscaon-naics-code-picker__clear-link"
+          onclick={handleClearSelection}
+        >
+          Clear selection
+        </a>
+      </div>
+    </fieldset>
+  </div>
+</template>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Action Card</masterLabel>
+  <description
+  >Action card with colored header, icon, description, button, and link. Use for permission/service selection pages. Place inside Ontario DS Action Card Collection for proper grid layout.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="icon"
+        type="String"
+        label="Icon URL"
+        description="URL to the icon image displayed in the header bar. Use a static resource URL."
+      />
+      <property
+        name="iconAltText"
+        type="String"
+        label="Icon alt text"
+        description="Alternative text for the icon (for accessibility). Leave empty if icon is decorative."
+      />
+      <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="Card title displayed in the colored header bar."
+        required="true"
+        default="Action Card"
+      />
+      <property
+        name="headingLevel"
+        type="String"
+        label="Heading level"
+        description="HTML heading level for accessibility."
+        default="h3"
+        datasource="h2,h3,h4"
+      />
+      <property
+        name="headerColour"
+        type="String"
+        label="Header colour"
+        description="Background color of the header bar."
+        default="dark-blue"
+        datasource="dark-blue,blue,teal,green,gold,purple"
+      />
+      <property
+        name="description"
+        type="String"
+        label="Description"
+        description="Description text below the header. Supports Markdown."
+        default="Description of the action or service."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="buttonLabel"
+        type="String"
+        label="Button label"
+        description="Text for the primary action button."
+        required="true"
+        default="Apply"
+      />
+      <property
+        name="buttonUrl"
+        type="String"
+        label="Button URL"
+        description="URL the button navigates to when clicked."
+        required="true"
+        default="#"
+      />
+      <property
+        name="linkLabel"
+        type="String"
+        label="Link label"
+        description="Text for the optional secondary link (e.g., 'More information')."
+        default="More information"
+      />
+      <property
+        name="linkUrl"
+        type="String"
+        label="Link URL"
+        description="URL for the secondary link."
+        default="#"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to apply to the card."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

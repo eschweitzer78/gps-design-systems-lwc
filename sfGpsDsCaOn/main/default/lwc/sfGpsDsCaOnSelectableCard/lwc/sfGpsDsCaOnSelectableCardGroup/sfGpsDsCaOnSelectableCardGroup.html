@@ -1,0 +1,73 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Selectable Card Group Component
+  
+  A fieldset containing multiple selectable cards.
+  Each card has checkbox, title, description, and expandable content.
+  
+  Compliance:
+  - LWR: Light DOM compatible
+  - LWS: No restricted APIs
+  - Ontario DS: Follows checkbox group and fieldset patterns
+  - WCAG 2.1 AA: Proper fieldset/legend, keyboard navigation, error messaging
+-->
+<template lwc:render-mode="light">
+  <fieldset
+    class={computedFieldsetClassName}
+    aria-describedby={computedAriaDescribedBy}
+    aria-invalid={computedAriaInvalid}
+    aria-required={required}
+  >
+    <!-- Legend -->
+    <legend lwc:if={legend} class="ontario-fieldset__legend">
+      {legend}
+      <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+    </legend>
+
+    <!-- Hint text -->
+    <p lwc:if={hintText} id={_hintId} class="ontario-hint">{hintText}</p>
+
+    <!-- Error message -->
+    <div
+      lwc:if={hasError}
+      id={_errorId}
+      class="ontario-error-messaging"
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <span class="ontario-error-messaging__content">{errorMessage}</span>
+    </div>
+
+    <!-- Selectable Cards -->
+    <div class="sfgpsdscaon-selectable-card-group__cards">
+      <template for:each={decoratedOptions} for:item="opt">
+        <c-sf-gps-ds-ca-on-selectable-card
+          key={opt.key}
+          value={opt.value}
+          label={opt.label}
+          description={opt.description}
+          link-label={opt.linkLabel}
+          link-url={opt.linkUrl}
+          badge={opt.badge}
+          badge-variant={opt.badgeVariant}
+          expanded-content={opt.expandedContent}
+          checked={opt.checked}
+          disabled={disabled}
+          name={name}
+          onselect={handleCardSelect}
+        >
+        </c-sf-gps-ds-ca-on-selectable-card>
+      </template>
+    </div>
+  </fieldset>
+</template>

@@ -1,0 +1,45 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Activity Status Card Collection
+  
+  Grid container for Activity Status Cards.
+  Displays BusinessLicenseApplication records in a responsive grid.
+  
+  Compliance:
+  - LWR: Light DOM compatible
+  - LWS: No restricted APIs
+  - Ontario DS: Follows grid patterns
+  - WCAG 2.1 AA: Proper list semantics
+-->
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <div lwc:elseif={hasActivities} class={computedClassName} role="list">
+    <template for:each={decoratedActivities} for:item="activity">
+      <div
+        key={activity.key}
+        class="sfgpsdscaon-activity-status-card-collection__item"
+        role="listitem"
+      >
+        <c-sf-gps-ds-ca-on-activity-status-card
+          record-id={activity.recordId}
+          activity-name={activity.activityName}
+          business-name={activity.businessName}
+          registration-sites={activity.registrationSites}
+          steps-completed={activity.stepsCompleted}
+          total-steps={activity.totalSteps}
+          action-url={activity.actionUrl}
+          allow-remove={allowRemove}
+          heading-level={headingLevel}
+          onremove={handleRemove}
+          onaction={handleAction}
+        >
+        </c-sf-gps-ds-ca-on-activity-status-card>
+      </div>
+    </template>
+  </div>
+</template>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>59.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Modal</masterLabel>
+  <description
+  >Ontario Design System modal dialog with accessible focus management and Ontario branding.</description>
+  <targets>
+    <target>lightning__RecordPage</target>
+    <target>lightning__AppPage</target>
+    <target>lightning__HomePage</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig
+      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage,lightningCommunity__Default"
+    >
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Modal title displayed in the header"
+        default="Modal"
+      />
+      <property
+        name="size"
+        type="String"
+        label="Size"
+        description="Modal size variant"
+        default="medium"
+        datasource="small,medium,large,full"
+      />
+      <property
+        name="hideCloseButton"
+        type="Boolean"
+        label="Hide Close Button"
+        description="Hide the X close button in the header"
+        default="false"
+      />
+      <property
+        name="hideHeader"
+        type="Boolean"
+        label="Hide Header"
+        description="Hide the entire header section"
+        default="false"
+      />
+      <property
+        name="hideFooter"
+        type="Boolean"
+        label="Hide Footer"
+        description="Hide the footer section"
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Custom CSS Class"
+        description="Additional CSS class for custom styling"
+      />
+      <property
+        name="ariaLabel"
+        type="String"
+        label="ARIA Label"
+        description="Accessible label for the modal dialog"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

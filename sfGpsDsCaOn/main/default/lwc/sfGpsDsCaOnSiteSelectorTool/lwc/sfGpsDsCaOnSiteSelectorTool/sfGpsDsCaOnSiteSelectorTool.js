@@ -1,0 +1,648 @@
+/*
+ * Copyright (c) 2026, Shannon Schupbach, Jeremy Blankenship and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+import { api, LightningElement, track } from "lwc";
+import { computeClass } from "c/sfGpsDsHelpers";
+
+/**
+ * @slot SiteSelectorTool
+ * @description Ontario Design System Site Selector Tool with ESRI map integration.
+ * Provides address search, map visualization, and site point selection.
+ *
+ * ## LWR/LWS Compatibility
+ * - Uses Light DOM for Experience Cloud
+ * - No eval() or dynamic code execution
+ * - ESRI map runs in Visualforce iframe
+ * - postMessage for secure cross-origin communication
+ *
+ * ## Features
+ * - Address search with ESRI geocoding
+ * - Interactive map with pin placement
+ * - Site point selection (manual pin)
+ * - Map layers control
+ * - Structured address data output
+ *
+ * ## Architecture
+ * - Main component contains modal and two-panel layout
+ * - Left panel: search controls and address details
+ * - Right panel: ESRI map in Visualforce iframe
+ */
+export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
+  static renderMode = "light";
+
+  /* ========================================
+   * PUBLIC PROPERTIES
+   * ======================================== */
+
+  /**
+   * Button label to open the site selector
+   * @type {string}
+   */
+  @api buttonLabel = "Site selector tool";
+
+  /**
+   * Button icon name
+   * @type {string}
+   */
+  @api buttonIcon = "location";
+
+  /**
+   * Modal title
+   * @type {string}
+   */
+  @api modalTitle = "Site";
+
+  /**
+   * Default latitude for map center
+   * @type {number}
+   */
+  @api defaultLatitude = 43.6532; // Toronto
+
+  /**
+   * Default longitude for map center
+   * @type {number}
+   */
+  @api defaultLongitude = -79.3832; // Toronto
+
+  /**
+   * Visualforce page URL for the ESRI map
+   * Set by parent component or fetched via Apex
+   * @type {string}
+   */
+  @api vfPageUrl;
+
+  /**
+   * Custom CSS class
+   * @type {string}
+   */
+  @api className;
+
+  /**
+   * Search parameter options for dropdown
+   * @type {Array}
+   */
+  @api
+  get searchOptions() {
+    return this._searchOptions;
+  }
+  set searchOptions(val) {
+    try {
+      this._searchOptions =
+        typeof val === "string" ? JSON.parse(val) : val || [];
+    } catch {
+      this._searchOptions = [];
+    }
+  }
+  _searchOptions = [
+    { value: "address", label: "Address" },
+    { value: "coordinates", label: "Coordinates" },
+    { value: "lot", label: "Lot/Concession" }
+  ];
+
+  /* ========================================
+   * PRIVATE PROPERTIES
+   * ======================================== */
+
+  /** @type {boolean} Modal open state */
+  @track _isModalOpen = false;
+
+  /** @type {string} Current active tab */
+  @track _activeTab = "search";
+
+  /** @type {string} Selected search parameter */
+  @track _searchParameter = "address";
+
+  /** @type {string} Search input value */
+  @track _searchValue = "";
+
+  /** @type {boolean} Search in progress */
+  @track _isSearching = false;
+
+  /** @type {Object} Found address details */
+  @track _addressDetails = null;
+
+  /** @type {Object} Current coordinates */
+  @track _coordinates = null;
+
+  /** @type {string} Error message */
+  @track _errorMessage = "";
+
+  /** @type {boolean} Map loaded state */
+  @track _mapLoaded = false;
+
+  /**
+   * Bound message handler for cleanup
+   * @type {Function}
+   * @private
+   */
+  _messageHandler = null;
+
+  /* ========================================
+   * COMPUTED PROPERTIES
+   * ======================================== */
+
+  /**
+   * Whether the modal is open
+   * @returns {boolean}
+   */
+  get isModalOpen() {
+    return this._isModalOpen;
+  }
+
+  /**
+   * CSS class for the component container
+   * @returns {string}
+   */
+  get computedContainerClassName() {
+    return computeClass({
+      "sfgpsdscaon-site-selector": true,
+      [this.className]: this.className
+    });
+  }
+
+  /**
+   * Whether Search tab is active
+   * @returns {boolean}
+   */
+  get isSearchTabActive() {
+    return this._activeTab === "search";
+  }
+
+  /**
+   * Whether Site Point tab is active
+   * @returns {boolean}
+   */
+  get isSitePointTabActive() {
+    return this._activeTab === "sitepoint";
+  }
+
+  /**
+   * Whether Layers tab is active
+   * @returns {boolean}
+   */
+  get isLayersTabActive() {
+    return this._activeTab === "layers";
+  }
+
+  /**
+   * CSS class for Search tab button
+   * @returns {string}
+   */
+  get searchTabClassName() {
+    return computeClass({
+      "sfgpsdscaon-site-selector__tab": true,
+      "sfgpsdscaon-site-selector__tab--active": this.isSearchTabActive
+    });
+  }
+
+  /**
+   * CSS class for Site Point tab button
+   * @returns {string}
+   */
+  get sitePointTabClassName() {
+    return computeClass({
+      "sfgpsdscaon-site-selector__tab": true,
+      "sfgpsdscaon-site-selector__tab--active": this.isSitePointTabActive
+    });
+  }
+
+  /**
+   * CSS class for Layers tab button
+   * @returns {string}
+   */
+  get layersTabClassName() {
+    return computeClass({
+      "sfgpsdscaon-site-selector__tab": true,
+      "sfgpsdscaon-site-selector__tab--active": this.isLayersTabActive
+    });
+  }
+
+  /**
+   * Whether address details are available
+   * @returns {boolean}
+   */
+  get hasAddressDetails() {
+    return this._addressDetails !== null;
+  }
+
+  /**
+   * Street address from details
+   * @returns {string}
+   */
+  get streetAddress() {
+    return this._addressDetails?.streetAddress || "";
+  }
+
+  /**
+   * City, Province, Postal Code formatted
+   * @returns {string}
+   */
+  get cityProvincePostal() {
+    if (!this._addressDetails) return "";
+    const { city, province, postalCode } = this._addressDetails;
+    return [city, province, postalCode].filter(Boolean).join(", ");
+  }
+
+  /**
+   * Country from details
+   * @returns {string}
+   */
+  get country() {
+    return this._addressDetails?.country || "";
+  }
+
+  /**
+   * Whether save button should be disabled
+   * @returns {boolean}
+   */
+  get isSaveDisabled() {
+    return !this.hasAddressDetails;
+  }
+
+  /**
+   * Computed VF page URL with parameters
+   * @returns {string}
+   */
+  get computedVfPageUrl() {
+    if (!this.vfPageUrl) return "";
+    const lat = this._coordinates?.latitude || this.defaultLatitude;
+    const lng = this._coordinates?.longitude || this.defaultLongitude;
+    return `${this.vfPageUrl}?latitude=${lat}&longitude=${lng}&mode=${this._activeTab}`;
+  }
+
+  /**
+   * Whether VF page URL is available
+   * @returns {boolean}
+   */
+  get hasVfPageUrl() {
+    return Boolean(this.computedVfPageUrl);
+  }
+
+  /**
+   * Whether VF page URL is NOT available (for placeholder)
+   * @returns {boolean}
+   */
+  get hasNoVfPageUrl() {
+    return !this.computedVfPageUrl;
+  }
+
+  /**
+   * Dropdown options for search parameter
+   * @returns {Array}
+   */
+  get searchParameterOptions() {
+    return this._searchOptions.map((opt) => ({
+      ...opt,
+      selected: opt.value === this._searchParameter
+    }));
+  }
+
+  /**
+   * Search input placeholder based on parameter
+   * @returns {string}
+   */
+  get searchPlaceholder() {
+    switch (this._searchParameter) {
+      case "coordinates":
+        return "Enter latitude, longitude";
+      case "lot":
+        return "Enter lot/concession";
+      default:
+        return "Enter street number, street name and city.";
+    }
+  }
+
+  /**
+   * Tabindex for Search tab (roving tabindex pattern)
+   * @returns {string}
+   */
+  get searchTabTabIndex() {
+    return this.isSearchTabActive ? "0" : "-1";
+  }
+
+  /**
+   * Tabindex for Site Point tab (roving tabindex pattern)
+   * @returns {string}
+   */
+  get sitePointTabTabIndex() {
+    return this.isSitePointTabActive ? "0" : "-1";
+  }
+
+  /**
+   * Tabindex for Layers tab (roving tabindex pattern)
+   * @returns {string}
+   */
+  get layersTabTabIndex() {
+    return this.isLayersTabActive ? "0" : "-1";
+  }
+
+  /**
+   * Screen reader announcement text for address updates
+   * @returns {string}
+   */
+  get addressAnnouncementText() {
+    if (!this._addressDetails) return "";
+    return `Address selected: ${this.streetAddress}, ${this.cityProvincePostal}`;
+  }
+
+  /* ========================================
+   * PUBLIC METHODS
+   * ======================================== */
+
+  /**
+   * Opens the site selector modal
+   * @public
+   */
+  @api
+  open() {
+    this._isModalOpen = true;
+    this._activeTab = "search";
+    this._addressDetails = null;
+    this._errorMessage = "";
+  }
+
+  /**
+   * Closes the site selector modal
+   * @public
+   */
+  @api
+  close() {
+    this._isModalOpen = false;
+  }
+
+  /**
+   * Gets the current address data
+   * @public
+   * @returns {Object} Address and coordinate data
+   */
+  @api
+  getAddressData() {
+    return {
+      address: this._addressDetails,
+      coordinates: this._coordinates
+    };
+  }
+
+  /* ========================================
+   * EVENT HANDLERS
+   * ======================================== */
+
+  /**
+   * Handles button click to open modal
+   * @param {Event} event
+   */
+  handleOpenClick(event) {
+    event.preventDefault();
+    this.open();
+  }
+
+  /**
+   * Handles modal close event
+   */
+  handleModalClose() {
+    this._isModalOpen = false;
+  }
+
+  /**
+   * Handles tab selection
+   * @param {Event} event
+   */
+  handleTabClick(event) {
+    const tab = event.currentTarget.dataset.tab;
+    if (tab) {
+      this._activeTab = tab;
+      // Notify map of mode change
+      this.sendMessageToMap({ title: "modeChange", detail: { mode: tab } });
+    }
+  }
+
+  /**
+   * Handles keyboard navigation for tabs (arrow keys)
+   * WCAG 2.1.1 - Keyboard accessible
+   * @param {KeyboardEvent} event
+   */
+  handleTabKeyDown(event) {
+    const tabOrder = ["search", "sitepoint", "layers"];
+    const currentIndex = tabOrder.indexOf(this._activeTab);
+
+    let newIndex = currentIndex;
+    let shouldHandle = false;
+
+    switch (event.key) {
+      case "ArrowLeft":
+      case "ArrowUp":
+        newIndex = currentIndex === 0 ? tabOrder.length - 1 : currentIndex - 1;
+        shouldHandle = true;
+        break;
+      case "ArrowRight":
+      case "ArrowDown":
+        newIndex = currentIndex === tabOrder.length - 1 ? 0 : currentIndex + 1;
+        shouldHandle = true;
+        break;
+      case "Home":
+        newIndex = 0;
+        shouldHandle = true;
+        break;
+      case "End":
+        newIndex = tabOrder.length - 1;
+        shouldHandle = true;
+        break;
+      default:
+        break;
+    }
+
+    if (shouldHandle) {
+      event.preventDefault();
+      this._activeTab = tabOrder[newIndex];
+      this.sendMessageToMap({
+        title: "modeChange",
+        detail: { mode: this._activeTab }
+      });
+
+      // Focus the new active tab
+      // eslint-disable-next-line @lwc/lwc/no-async-operation
+      setTimeout(() => {
+        const newTab = this.querySelector(`[data-tab="${this._activeTab}"]`);
+        if (newTab) {
+          newTab.focus();
+        }
+      }, 0);
+    }
+  }
+
+  /**
+   * Handles search parameter dropdown change
+   * @param {Event} event
+   */
+  handleSearchParameterChange(event) {
+    this._searchParameter = event.target.value;
+  }
+
+  /**
+   * Handles search input change
+   * @param {Event} event
+   */
+  handleSearchInputChange(event) {
+    this._searchValue = event.target.value;
+  }
+
+  /**
+   * Handles search button click
+   * @param {Event} event
+   */
+  handleSearchClick(event) {
+    event.preventDefault();
+    if (this._searchValue.trim()) {
+      this._isSearching = true;
+      this._errorMessage = "";
+      // Send search request to map
+      this.sendMessageToMap({
+        title: "search",
+        detail: {
+          query: this._searchValue,
+          type: this._searchParameter
+        }
+      });
+    }
+  }
+
+  /**
+   * Handles clear search input
+   * @param {Event} event
+   */
+  handleClearSearch(event) {
+    event.preventDefault();
+    this._searchValue = "";
+    this._addressDetails = null;
+    this._coordinates = null;
+    // Clear map marker
+    this.sendMessageToMap({ title: "clearMarker", detail: {} });
+  }
+
+  /**
+   * Handles save site address button click
+   * @param {Event} event
+   */
+  handleSaveClick(event) {
+    event.preventDefault();
+    if (this._addressDetails) {
+      // Dispatch event with address data
+      this.dispatchEvent(
+        new CustomEvent("save", {
+          detail: {
+            address: this._addressDetails,
+            coordinates: this._coordinates
+          },
+          bubbles: false
+        })
+      );
+      this.close();
+    }
+  }
+
+  /**
+   * Handles Enter key in search input
+   * @param {KeyboardEvent} event
+   */
+  handleSearchKeyDown(event) {
+    if (event.key === "Enter") {
+      this.handleSearchClick(event);
+    }
+  }
+
+  /**
+   * Handles message from VF iframe (map)
+   * @param {MessageEvent} event
+   * @private
+   */
+  handleMapMessage(event) {
+    // Validate origin if vfPageUrl is set
+    // In LWR, we use the VF domain from Apex
+    try {
+      const data = event.data;
+      if (!data || typeof data !== "object") return;
+
+      switch (data.name) {
+        case "pageLoaded":
+          this._mapLoaded = true;
+          break;
+
+        case "searchResult":
+          this._isSearching = false;
+          if (data.address) {
+            this._addressDetails = data.address;
+            this._coordinates = data.coordinates;
+          } else if (data.error) {
+            this._errorMessage = data.error;
+          }
+          break;
+
+        case "pinPlaced":
+          // Reverse geocoding result from pin placement
+          if (data.address) {
+            this._addressDetails = data.address;
+            this._coordinates = data.coordinates;
+          }
+          break;
+
+        case "error":
+          this._errorMessage = data.error || "An error occurred";
+          this._isSearching = false;
+          break;
+
+        default:
+          break;
+      }
+    } catch {
+      // Ignore parsing errors from other sources
+    }
+  }
+
+  /**
+   * Sends a postMessage to the VF iframe
+   * @param {Object} message - Message object with title and detail
+   * @private
+   */
+  sendMessageToMap(message) {
+    const iframe = this.querySelector(".sfgpsdscaon-site-selector__map-iframe");
+    if (iframe && iframe.contentWindow) {
+      try {
+        iframe.contentWindow.postMessage(JSON.stringify(message), "*");
+      } catch (e) {
+        // LWS may restrict postMessage in some cases
+        console.warn("Failed to send message to map:", e.message);
+      }
+    }
+  }
+
+  /* ========================================
+   * LIFECYCLE METHODS
+   * ======================================== */
+
+  /**
+   * Component connected to DOM
+   */
+  connectedCallback() {
+    this.classList.add("caon-scope");
+
+    // Set up message listener for VF iframe communication
+    // LWR/LWS compatible - uses bound function for cleanup
+    this._messageHandler = this.handleMapMessage.bind(this);
+    window.addEventListener("message", this._messageHandler);
+  }
+
+  /**
+   * Component disconnected from DOM
+   */
+  disconnectedCallback() {
+    // Clean up message listener
+    if (this._messageHandler) {
+      window.removeEventListener("message", this._messageHandler);
+      this._messageHandler = null;
+    }
+  }
+}
