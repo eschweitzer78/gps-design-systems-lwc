@@ -12,6 +12,12 @@ const DEBUG = false;
 const CLASS_NAME = "SfGpsDsCaOnSelectableCardGroup";
 
 /**
+ * Minimum number of options before showing skip link.
+ * AODA: Skip links for groups with 5+ options.
+ */
+const SKIP_LINK_THRESHOLD = 5;
+
+/**
  * Ontario Design System - Selectable Card Group Component
  *
  * A fieldset containing multiple selectable cards with checkbox,
@@ -112,6 +118,14 @@ export default class SfGpsDsCaOnSelectableCardGroup extends LightningElement {
    */
   @api className;
 
+  /**
+   * Threshold for showing skip link (number of options).
+   * Set to 0 to disable skip link, or a positive number.
+   * Default: 5 options.
+   * @type {number}
+   */
+  @api skipLinkThreshold = SKIP_LINK_THRESHOLD;
+
   /* internal */
   @track _decoratedOptions = [];
   _hintId;
@@ -150,6 +164,40 @@ export default class SfGpsDsCaOnSelectableCardGroup extends LightningElement {
     if (this.hintText) ids.push(this._hintId);
     if (this.hasError) ids.push(this._errorId);
     return ids.length > 0 ? ids.join(" ") : null;
+  }
+
+  /**
+   * Number of options in the group.
+   * @returns {number}
+   */
+  get optionCount() {
+    return this._options?.length || 0;
+  }
+
+  /**
+   * Whether to show skip link based on option count.
+   * @returns {boolean}
+   */
+  get showSkipLink() {
+    const threshold =
+      parseInt(this.skipLinkThreshold, 10) || SKIP_LINK_THRESHOLD;
+    return threshold > 0 && this.optionCount >= threshold;
+  }
+
+  /**
+   * Unique ID for the skip link target.
+   * @returns {string}
+   */
+  get skipLinkTargetId() {
+    return `selectable-card-group-${this._hintId}-skip-target`;
+  }
+
+  /**
+   * Href for the skip link.
+   * @returns {string}
+   */
+  get skipLinkTarget() {
+    return `#${this.skipLinkTargetId}`;
   }
 
   get computedAriaInvalid() {

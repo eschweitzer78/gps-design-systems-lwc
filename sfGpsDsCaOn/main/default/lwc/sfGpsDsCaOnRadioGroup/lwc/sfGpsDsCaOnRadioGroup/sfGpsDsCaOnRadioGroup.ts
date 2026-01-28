@@ -8,6 +8,12 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
+/**
+ * Minimum number of options before showing skip link.
+ * AODA: Skip links for groups with 5+ options.
+ */
+const SKIP_LINK_THRESHOLD = 5;
+
 export interface RadioOption {
   value: string;
   label: string;
@@ -26,6 +32,14 @@ export default class SfGpsDsCaOnRadioGroup extends SfGpsDsLwc {
   @api legend?: string;
   // @ts-ignore
   @api name?: string;
+  
+  /**
+   * Threshold for showing skip link (number of options).
+   * Set to 0 to disable skip link, or a positive number.
+   * Default: 5 options.
+   */
+  // @ts-ignore
+  @api skipLinkThreshold: number = SKIP_LINK_THRESHOLD;
   // @ts-ignore
   @api value?: string = "";
   // @ts-ignore
@@ -95,6 +109,35 @@ export default class SfGpsDsCaOnRadioGroup extends SfGpsDsLwc {
       id: `${this._groupId}-${index}`,
       checked: opt.value === this.value
     }));
+  }
+
+  /**
+   * Number of options in the group.
+   */
+  get optionCount(): number {
+    return this._options?.length || 0;
+  }
+
+  /**
+   * Whether to show skip link based on option count.
+   */
+  get showSkipLink(): boolean {
+    const threshold = Number(this.skipLinkThreshold) || SKIP_LINK_THRESHOLD;
+    return threshold > 0 && this.optionCount >= threshold;
+  }
+
+  /**
+   * Unique ID for the skip link target.
+   */
+  get skipLinkTargetId(): string {
+    return `${this._groupId}-skip-target`;
+  }
+
+  /**
+   * Href for the skip link.
+   */
+  get skipLinkTarget(): string {
+    return `#${this.skipLinkTargetId}`;
   }
 
   /* Public methods for validation */

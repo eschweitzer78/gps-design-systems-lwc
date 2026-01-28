@@ -24,6 +24,15 @@
       <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
     </legend>
 
+    <!-- Skip link for long option lists (AODA requirement) -->
+    <a
+      lwc:if={showSkipLink}
+      href={skipLinkTarget}
+      class="ontario-show-on-focus sfgpsdscaon-skip-options"
+    >
+      Skip {optionCount} selectable cards
+    </a>
+
     <!-- Hint text -->
     <p lwc:if={hintText} id={_hintId} class="ontario-hint">{hintText}</p>
 
@@ -69,5 +78,13 @@
         </c-sf-gps-ds-ca-on-selectable-card>
       </template>
     </div>
+
+    <!-- Skip link target (hidden anchor for skip navigation) -->
+    <span
+      lwc:if={showSkipLink}
+      id={skipLinkTargetId}
+      tabindex="-1"
+      class="ontario-invisible"
+    ></span>
   </fieldset>
 </template>

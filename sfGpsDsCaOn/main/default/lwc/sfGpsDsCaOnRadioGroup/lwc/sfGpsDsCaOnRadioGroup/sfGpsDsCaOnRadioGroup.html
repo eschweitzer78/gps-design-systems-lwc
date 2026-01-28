@@ -1,7 +1,7 @@
 <template lwc:render-mode="light">
   <!-- AODA: Added aria-required and aria-invalid on fieldset -->
-  <fieldset 
-    class={computedFieldsetClassName} 
+  <fieldset
+    class={computedFieldsetClassName}
     aria-describedby={computedAriaDescribedBy}
     aria-required={required}
     aria-invalid={computedAriaInvalid}
@@ -12,21 +12,35 @@
       <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
     </legend>
 
+    <!-- Skip link for long option lists (AODA requirement) -->
+    <a
+      lwc:if={showSkipLink}
+      href={skipLinkTarget}
+      class="ontario-show-on-focus sfgpsdscaon-skip-options"
+    >
+      Skip {optionCount} radio options
+    </a>
+
     <!-- Hint text -->
-    <p lwc:if={hintText} id={_hintId} class="ontario-hint">
-      {hintText}
-    </p>
+    <p lwc:if={hintText} id={_hintId} class="ontario-hint">{hintText}</p>
 
     <!-- Error message -->
-    <div 
+    <div
       lwc:if={hasError}
       id={_errorId}
       class="ontario-error-messaging"
       role="alert"
       aria-live="assertive"
     >
-      <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
       </svg>
       <span class="ontario-error-messaging__content">{errorMessage}</span>
     </div>
@@ -51,5 +65,13 @@
         </div>
       </template>
     </div>
+
+    <!-- Skip link target (hidden anchor for skip navigation) -->
+    <span
+      lwc:if={showSkipLink}
+      id={skipLinkTargetId}
+      tabindex="-1"
+      class="ontario-invisible"
+    ></span>
   </fieldset>
 </template>

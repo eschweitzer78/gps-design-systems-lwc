@@ -2,6 +2,45 @@
  * Ontario Design System - Selectable Card Group Styles
  */
 
+/* Skip link for long option lists - AODA requirement */
+.sfgpsdscaon-skip-options {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 0.5rem 1rem;
+  background-color: var(--ontario-colour-primary, #0066cc);
+  color: var(--ontario-colour-white, #ffffff);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.sfgpsdscaon-skip-options:focus {
+  position: static;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
+}
+
+.ontario-invisible {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.ontario-show-on-focus {
+  position: absolute;
+  left: -9999px;
+}
+
+.ontario-show-on-focus:focus {
+  position: static;
+  left: auto;
+}
+
 /* Fieldset container */
 .sfgpsdscaon-selectable-card-group {
   border: none;
