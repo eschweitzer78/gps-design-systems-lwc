@@ -227,12 +227,61 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
    * ======================================== */
 
   /**
-   * Component connected to DOM
+   * Component connected to DOM.
+   * Restores saved state from OmniScript JSON data.
    */
   connectedCallback() {
     this.classList.add("caon-scope");
     // Fetch VF domain URL
     this.loadVfDomainUrl();
+    // Restore saved state from OmniScript JSON
+    this.restoreSavedState();
+  }
+
+  /**
+   * Restores component state from OmniScript JSON data.
+   * Called on connectedCallback to handle "Previous" button navigation.
+   * @private
+   */
+  restoreSavedState() {
+    try {
+      // Get the saved data from OmniScript JSON using the element's path
+      const jsonPath = this.omniJsonDef?.JSONPath;
+      if (!jsonPath || !this.omniJsonData) return;
+
+      // Parse the JSON path to get the saved value
+      const pathParts = jsonPath.split(":");
+      let savedData = this.omniJsonData;
+
+      for (const part of pathParts) {
+        if (savedData && typeof savedData === "object") {
+          savedData = savedData[part];
+        } else {
+          savedData = null;
+          break;
+        }
+      }
+
+      // If we have saved data with address fields, restore the component state
+      if (savedData && (savedData.fullAddress || savedData.latitude)) {
+        this._addressData = {
+          address: {
+            streetAddress: savedData.streetAddress || "",
+            city: savedData.city || "",
+            province: savedData.province || "",
+            postalCode: savedData.postalCode || "",
+            country: savedData.country || "",
+            fullAddress: savedData.fullAddress || ""
+          },
+          coordinates: {
+            latitude: savedData.latitude,
+            longitude: savedData.longitude
+          }
+        };
+      }
+    } catch {
+      // Fail silently - state restoration is best-effort
+    }
   }
 
   /**

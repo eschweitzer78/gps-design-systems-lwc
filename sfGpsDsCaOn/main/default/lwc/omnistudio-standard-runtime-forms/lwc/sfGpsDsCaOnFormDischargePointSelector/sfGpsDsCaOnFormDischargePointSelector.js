@@ -144,11 +144,63 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
    * LIFECYCLE
    * ======================================== */
 
+  /**
+   * Component connected to DOM.
+   * Restores saved state from OmniScript JSON data.
+   */
   connectedCallback() {
     this.classList.add("caon-scope");
     this.loadVfDomainUrl();
+    // Restore saved state from OmniScript JSON
+    this.restoreSavedState();
 
     if (DEBUG) console.log(CLASS_NAME, "connectedCallback", this._propSetMap);
+  }
+
+  /**
+   * Restores component state from OmniScript JSON data.
+   * Called on connectedCallback to handle "Previous" button navigation.
+   * @private
+   */
+  restoreSavedState() {
+    try {
+      // Get the saved data from OmniScript JSON using the element's path
+      const jsonPath = this.omniJsonDef?.JSONPath;
+      if (!jsonPath || !this.omniJsonData) return;
+
+      // Parse the JSON path to get the saved value
+      const pathParts = jsonPath.split(":");
+      let savedData = this.omniJsonData;
+
+      for (const part of pathParts) {
+        if (savedData && typeof savedData === "object") {
+          savedData = savedData[part];
+        } else {
+          savedData = null;
+          break;
+        }
+      }
+
+      // If we have saved data with coordinate fields, restore the component state
+      if (
+        savedData &&
+        (savedData.latitude != null || savedData.longitude != null)
+      ) {
+        this._coordinateData = {
+          latitude: savedData.latitude,
+          longitude: savedData.longitude,
+          utmZone: savedData.utmZone || null,
+          utmEast: savedData.utmEast || null,
+          utmNorth: savedData.utmNorth || null
+        };
+
+        if (DEBUG)
+          console.log(CLASS_NAME, "restoreSavedState", this._coordinateData);
+      }
+    } catch (e) {
+      if (DEBUG) console.error(CLASS_NAME, "restoreSavedState error", e);
+      // Fail silently - state restoration is best-effort
+    }
   }
 
   async loadVfDomainUrl() {
