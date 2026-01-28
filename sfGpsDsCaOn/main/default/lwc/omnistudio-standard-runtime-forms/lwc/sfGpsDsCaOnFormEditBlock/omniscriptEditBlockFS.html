@@ -6,7 +6,7 @@
   
   Compliance:
   - LWR: Compatible (Light DOM pattern)
-  - LWS: Compatible (no restricted APIs)
+  - LWS: Compatible (sanitized style bindings prevent injection)
   - Ontario DS: Uses Ontario table styling
   - WCAG 2.1 AA: Proper table semantics, keyboard accessible
 -->
@@ -14,7 +14,7 @@
   <!-- FS Header (first index only) -->
   <template lwc:if={_isFirstIndex}>
     <div class="sfgpsdscaon-edit-block__fs-header">
-      <template for:each={_tableLabels} for:item="col">
+      <template for:each={sanitizedTableLabels} for:item="col">
         <div
           key={col.lwcId}
           class="sfgpsdscaon-edit-block__fs-header-cell"
@@ -23,7 +23,9 @@
           {col.label}
         </div>
       </template>
-      <div class="sfgpsdscaon-edit-block__fs-header-cell sfgpsdscaon-edit-block__fs-actions-header">
+      <div
+        class="sfgpsdscaon-edit-block__fs-header-cell sfgpsdscaon-edit-block__fs-actions-header"
+      >
         Actions
       </div>
     </div>
@@ -56,23 +58,28 @@
       </template>
       <!-- View Mode - Show Values -->
       <template lwc:else>
-        <template for:each={_displayValues} for:item="col">
+        <template for:each={sanitizedDisplayValues} for:item="col">
           <div
             key={col.lwcId}
             class="sfgpsdscaon-edit-block__fs-cell"
             style={col.tableWidth}
           >
             <template lwc:if={col.isCheckbox}>
-              <input type="checkbox" checked={col.value} disabled aria-label={col.label} />
+              <input
+                type="checkbox"
+                checked={col.value}
+                disabled
+                aria-label={col.label}
+              />
             </template>
-            <template lwc:else>
-              {col.value}
-            </template>
+            <template lwc:else> {col.value} </template>
           </div>
         </template>
-        
+
         <!-- Actions -->
-        <div class="sfgpsdscaon-edit-block__fs-cell sfgpsdscaon-edit-block__fs-actions">
+        <div
+          class="sfgpsdscaon-edit-block__fs-cell sfgpsdscaon-edit-block__fs-actions"
+        >
           <button
             lwc:if={_allowEdit}
             type="button"

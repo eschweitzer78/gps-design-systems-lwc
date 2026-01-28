@@ -28,18 +28,18 @@ const CLASS_NAME = "SfGpsDsCaOnFormEditBlock";
 /**
  * @slot EditBlock
  * @description Ontario Design System EditBlock for OmniStudio forms.
- * 
+ *
  * EditBlock is a complex component that provides repeatable/editable data sections.
  * It supports multiple display modes (Table, Inline, Cards, FullScreen) and handles
  * CRUD operations on repeating data.
- * 
+ *
  * ## Display Modes
  * - **Table**: Rows displayed in a table format (default)
  * - **Inline**: Each entry displayed inline
  * - **Cards**: Each entry displayed as a card
  * - **LongCards**: Wide card format
  * - **FS (FullScreen)**: Full-screen editing modal
- * 
+ *
  * ## Key Inherited Properties (from OmniscriptEditBlock)
  * - `_isTable` {boolean} - True if Table mode
  * - `_isCards` {boolean} - True if Cards mode
@@ -51,19 +51,19 @@ const CLASS_NAME = "SfGpsDsCaOnFormEditBlock";
  * - `_actionMenuList` {Array} - List of actions (Edit, Delete, etc.)
  * - `_showCheckbox` {boolean} - True if checkbox is checked
  * - `_bShowActionMenu` {boolean} - True if action menu is visible
- * 
+ *
  * ## Templates
  * - `omniscriptEditBlock.html` - Table mode
  * - `omniscriptEditBlockInline.html` - Inline mode
  * - `omniscriptEditBlockCards.html` - Cards mode
  * - `omniscriptEditBlockFS.html` - FullScreen mode
- * 
+ *
  * ## Compliance
  * - **LWR**: Uses Light DOM parent component
  * - **LWS**: No eval(), proper namespace imports
  * - **Ontario DS**: Uses Ontario button, card, and table styling
  * - **WCAG 2.1 AA**: Proper ARIA attributes, keyboard navigation for actions
- * 
+ *
  * @example
  * // Configured in OmniScript as "Edit Block" element type
  * // Properties set in OmniScript Designer:
@@ -71,7 +71,7 @@ const CLASS_NAME = "SfGpsDsCaOnFormEditBlock";
  * // - allowNew: true/false
  * // - allowEdit: true/false
  * // - allowDelete: true/false
- * 
+ *
  * @see {@link sfGpsDsCaOnFormEditBlockLabel} Heading component
  * @see {@link sfGpsDsCaOnFormEditBlockNew} Add new button component
  */
@@ -84,7 +84,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Computes CSS classes for the action dropdown menu.
    * Controls visibility state of the menu.
-   * 
+   *
    * @returns {Object} CSS class object for computeClass helper
    * @template-binding: Used with dropdown menu element
    */
@@ -98,7 +98,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Transforms action menu items into a format suitable for rendering.
    * Adds key and index properties for list rendering.
-   * 
+   *
    * @returns {Array<{key: string, index: number, text: string}>} Decorated action items
    * @template-binding: Used in action menu iteration (for:each)
    */
@@ -120,7 +120,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Determines if heading should use H3 tag.
    * Based on headingLevel property, defaults to 3.
-   * 
+   *
    * @returns {boolean} True if heading level is 3
    * @template-binding: <h3 lwc:if={computedIsH3Heading}>
    */
@@ -130,7 +130,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
 
   /**
    * Returns error text ID for aria-describedby when invalid.
-   * 
+   *
    * @returns {string|null} Error element ID or null if valid
    * @template-binding: aria-describedby={computedErrorTextId}
    */
@@ -146,7 +146,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Returns ARIA role for selectable items.
    * Only applies when selectCheckBox mode is enabled.
-   * 
+   *
    * @returns {string|null} "checkbox" or null
    * @template-binding: role={computedAriaRole}
    */
@@ -156,7 +156,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
 
   /**
    * Returns ARIA checked state for selectable items.
-   * 
+   *
    * @returns {string|null} "true", "false", or null
    * @template-binding: aria-checked={computedAriaChecked}
    */
@@ -169,7 +169,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
 
   /**
    * Returns tabindex for keyboard navigation of selectable items.
-   * 
+   *
    * @returns {string|null} "0" for focusable or null
    * @template-binding: tabindex={computedTabindex}
    */
@@ -185,7 +185,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Computes CSS classes for card container.
    * Adds selected styling when checkbox is checked.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    * @template-binding: class={computedCardClassName} (Cards mode)
    */
@@ -200,7 +200,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Computes CSS classes for table row.
    * Adds selected styling when checkbox is checked.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    * @template-binding: class={computedTableRowClassName} (Table mode)
    */
@@ -215,7 +215,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Computes CSS classes for visual (non-editing) content area.
    * Hidden when editing or when no children exist.
-   * 
+   *
    * @returns {Object} CSS class object for computeClass helper
    * @template-binding: class={visualClassName}
    */
@@ -230,7 +230,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Computes CSS classes for editing content area.
    * Only visible when in editing mode.
-   * 
+   *
    * @returns {Object} CSS class object for computeClass helper
    * @template-binding: class={editClassName}
    */
@@ -242,6 +242,59 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   }
 
   /* ========================================
+   * LWS SECURITY - Style Sanitization
+   * Prevents style injection attacks
+   * ======================================== */
+
+  /**
+   * Sanitizes a CSS width value to prevent style injection.
+   * Only allows safe patterns: width: Npx, N%, Nem, Nrem
+   *
+   * @param {string} styleValue - The style value to sanitize
+   * @returns {string} Sanitized style or empty string
+   * @private
+   */
+  _sanitizeStyleWidth(styleValue) {
+    if (!styleValue || typeof styleValue !== "string") {
+      return "";
+    }
+    // Only allow safe CSS width patterns
+    // Matches: "width: 25%", "width: 100px", "width: 10rem", "width: 5em"
+    const safePattern = /^width:\s*\d+(\.\d+)?(px|%|rem|em|vw)$/i;
+    return safePattern.test(styleValue.trim()) ? styleValue : "";
+  }
+
+  /**
+   * Returns table labels with sanitized tableWidth values.
+   * Wraps parent's _tableLabels to prevent style injection.
+   *
+   * @returns {Array} Table labels with sanitized widths
+   * @template-binding: Used in FS mode header iteration
+   */
+  get sanitizedTableLabels() {
+    const labels = this._tableLabels || [];
+    return labels.map((col) => ({
+      ...col,
+      tableWidth: this._sanitizeStyleWidth(col.tableWidth)
+    }));
+  }
+
+  /**
+   * Returns display values with sanitized tableWidth values.
+   * Wraps parent's _displayValues to prevent style injection.
+   *
+   * @returns {Array} Display values with sanitized widths
+   * @template-binding: Used in FS mode cell iteration
+   */
+  get sanitizedDisplayValues() {
+    const values = this._displayValues || [];
+    return values.map((col) => ({
+      ...col,
+      tableWidth: this._sanitizeStyleWidth(col.tableWidth)
+    }));
+  }
+
+  /* ========================================
    * EVENT HANDLERS
    * Handle user interactions with EditBlock
    * ======================================== */
@@ -249,7 +302,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Handles checkbox selection for selectable items.
    * Intercepts clicks on action menu to prevent checkbox toggle.
-   * 
+   *
    * @param {Event} event - Click or change event
    * @returns {boolean} Result of checkbox handling
    * @override
@@ -279,7 +332,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Handles action menu item selection (Edit, Delete, etc.).
    * Delegates to parent's handleClickOrEnter with the action ID.
-   * 
+   *
    * @param {CustomEvent} event - Custom event with index in detail
    * @fires handleClickOrEnter - Inherited method to process action
    */
@@ -298,7 +351,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
 
   /**
    * Prevents default click behavior on action menu button.
-   * 
+   *
    * @param {Event} event - Click event
    */
   handleActionMenuClick(event) {
@@ -313,14 +366,14 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
 
   /**
    * Selects the appropriate template based on display mode.
-   * 
+   *
    * Template selection priority:
    * 1. FullScreen (FS) mode
    * 2. Cards or LongCards mode
    * 3. Table mode
    * 4. Inline mode
    * 5. Default from parent
-   * 
+   *
    * @returns {Object} The template to render
    * @override
    */
@@ -376,7 +429,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
 
   /**
    * Initializes component with Ontario DS scoping class.
-   * 
+   *
    * @override
    */
   connectedCallback() {
@@ -387,7 +440,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Applies width and layout classes based on configuration.
    * Handles controlWidth, hide, and card layout styling.
-   * 
+   *
    * @override
    */
   applyCtrlWidth() {
@@ -415,7 +468,7 @@ export default class SfGpsDsCaOnFormEditBlock extends OmniscriptEditBlock {
   /**
    * Triggers validation before saving.
    * Ensures all child fields are validated.
-   * 
+   *
    * @param {Event} evt - Save trigger event
    * @override
    */
