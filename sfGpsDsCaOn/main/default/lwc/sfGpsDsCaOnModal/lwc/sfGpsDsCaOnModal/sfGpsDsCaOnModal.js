@@ -39,9 +39,14 @@ import { computeClass } from "c/sfGpsDsHelpers";
  *
  * ## Compliance
  * - **LWR**: Uses Light DOM for Experience Cloud compatibility
- * - **LWS**: No eval(), proper event handling
+ * - **LWS**: No eval(), no document/window globals, component-scoped focus management
  * - **Ontario DS**: Follows Ontario Design System patterns
  * - **WCAG 2.1 AA**: Focus trapping, ARIA labels, keyboard navigation
+ *
+ * ## LWS Notes
+ * - Focus trapping uses component-scoped element tracking (not document.activeElement)
+ * - Body scroll lock uses CSS class on host element (not document.body)
+ * - Dispatches 'modalopen'/'modalclose' events for parent scroll management
  */
 export default class SfGpsDsCaOnModal extends LightningElement {
   static renderMode = "light";
@@ -139,17 +144,19 @@ export default class SfGpsDsCaOnModal extends LightningElement {
 
   /**
    * Reference to the element that had focus before modal opened
+   * Used for focus restoration when modal closes
    * @type {Element}
    * @private
    */
   _previousActiveElement = null;
 
   /**
-   * Saved body overflow style for restoration
-   * @type {string}
+   * Currently focused element index within the modal
+   * Used for LWS-compatible focus trapping (avoids document.activeElement)
+   * @type {number}
    * @private
    */
-  _savedBodyOverflow = null;
+  _currentFocusIndex = 0;
 
   /**
    * Bound keydown handler for cleanup
@@ -282,16 +289,44 @@ export default class SfGpsDsCaOnModal extends LightningElement {
 
   /**
    * Handles modal opening - saves focus, locks body scroll
+   * LWS-compatible: Uses component-scoped focus tracking and CSS classes
    * @private
    */
   handleOpen() {
-    // Save current focus for restoration
-    this._previousActiveElement = document.activeElement;
+    // LWS: Track which element within our scope triggered the modal
+    // We'll save the element if it's within our component, otherwise null
+    try {
+      // Try to find focused element within component scope
+      const focusableInScope = this.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      for (let i = 0; i < focusableInScope.length; i++) {
+        if (
+          focusableInScope[i] ===
+          focusableInScope[i].ownerDocument?.activeElement
+        ) {
+          this._previousActiveElement = focusableInScope[i];
+          break;
+        }
+      }
+    } catch {
+      // LWS may restrict activeElement - proceed without saving
+      this._previousActiveElement = null;
+    }
 
-    // Lock body scroll
-    this._savedBodyOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.body.classList.add("sfgpsdscaon-modal-is-open");
+    // LWS: Add class to host element for CSS-based scroll prevention
+    // Parent components can listen for 'modalopen' event to lock body scroll
+    this.classList.add("sfgpsdscaon-modal-is-open");
+
+    // Dispatch event for parent page scroll management
+    // LWS: Cannot access document.body, so parent must handle scroll lock
+    this.dispatchEvent(
+      new CustomEvent("modalopen", {
+        bubbles: true,
+        composed: true,
+        detail: { modalId: this._uniqueId }
+      })
+    );
 
     // Focus the close button or dialog after render
     // Use setTimeout to ensure DOM is updated
@@ -300,6 +335,7 @@ export default class SfGpsDsCaOnModal extends LightningElement {
       const closeBtn = this.querySelector(".sfgpsdscaon-modal__close-btn");
       if (closeBtn) {
         closeBtn.focus();
+        this._currentFocusIndex = 0;
       } else {
         const dialog = this.querySelector('[role="dialog"]');
         if (dialog) {
@@ -311,18 +347,35 @@ export default class SfGpsDsCaOnModal extends LightningElement {
 
   /**
    * Handles modal closing - restores focus and body scroll
+   * LWS-compatible: Uses component classes and events instead of document.body
    * @private
    */
   handleCloseInternal() {
-    // Restore body scroll
-    document.body.style.overflow = this._savedBodyOverflow || "";
-    document.body.classList.remove("sfgpsdscaon-modal-is-open");
+    // LWS: Remove class from host element
+    this.classList.remove("sfgpsdscaon-modal-is-open");
 
-    // Restore focus to previous element
+    // Dispatch event for parent page scroll management
+    // LWS: Cannot access document.body, so parent must handle scroll unlock
+    this.dispatchEvent(
+      new CustomEvent("modalclose", {
+        bubbles: true,
+        composed: true,
+        detail: { modalId: this._uniqueId }
+      })
+    );
+
+    // Restore focus to previous element if available
     if (this._previousActiveElement) {
-      this._previousActiveElement.focus();
+      try {
+        this._previousActiveElement.focus();
+      } catch {
+        // Element may no longer be focusable - fail silently
+      }
       this._previousActiveElement = null;
     }
+
+    // Reset focus tracking
+    this._currentFocusIndex = 0;
   }
 
   /**
@@ -377,6 +430,7 @@ export default class SfGpsDsCaOnModal extends LightningElement {
 
   /**
    * Handles Tab key for focus trapping within modal
+   * LWS-compatible: Uses event.target instead of document.activeElement
    * @param {KeyboardEvent} event
    * @private
    */
@@ -390,17 +444,23 @@ export default class SfGpsDsCaOnModal extends LightningElement {
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
 
+    // LWS: Use event.target instead of document.activeElement
+    // event.target is the element that currently has focus and received the keydown
+    const currentElement = event.target;
+
     if (event.shiftKey) {
       // Shift + Tab: wrap to last element
-      if (document.activeElement === firstElement) {
+      if (currentElement === firstElement) {
         event.preventDefault();
         lastElement.focus();
+        this._currentFocusIndex = focusableElements.length - 1;
       }
     } else {
       // Tab: wrap to first element
-      if (document.activeElement === lastElement) {
+      if (currentElement === lastElement) {
         event.preventDefault();
         firstElement.focus();
+        this._currentFocusIndex = 0;
       }
     }
   }
@@ -411,28 +471,39 @@ export default class SfGpsDsCaOnModal extends LightningElement {
 
   /**
    * Component connected to DOM
+   * LWS-compatible: Uses component-scoped event handling
    */
   connectedCallback() {
     this.classList.add("caon-scope");
 
-    // Add global keydown listener for Escape
+    // LWS: Add keydown listener to component host instead of document
+    // The modal dialog has tabindex="-1" to receive keyboard events
     this._keydownHandler = this.handleKeyDown.bind(this);
-    document.addEventListener("keydown", this._keydownHandler);
+    this.addEventListener("keydown", this._keydownHandler);
   }
 
   /**
    * Component disconnected from DOM
+   * LWS-compatible: Clean up component-scoped listeners
    */
   disconnectedCallback() {
-    // Remove global keydown listener
+    // Remove component keydown listener
     if (this._keydownHandler) {
-      document.removeEventListener("keydown", this._keydownHandler);
+      this.removeEventListener("keydown", this._keydownHandler);
     }
 
-    // Ensure body scroll is restored
+    // Ensure modal state is cleaned up
     if (this._isOpen) {
-      document.body.style.overflow = this._savedBodyOverflow || "";
-      document.body.classList.remove("sfgpsdscaon-modal-is-open");
+      this.classList.remove("sfgpsdscaon-modal-is-open");
+
+      // Dispatch close event so parent can restore scroll
+      this.dispatchEvent(
+        new CustomEvent("modalclose", {
+          bubbles: true,
+          composed: true,
+          detail: { modalId: this._uniqueId }
+        })
+      );
     }
   }
 }

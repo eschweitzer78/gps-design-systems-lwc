@@ -154,9 +154,9 @@ describe("c-sf-gps-ds-ca-on-modal", () => {
       element.addEventListener("close", closeHandler);
 
       return Promise.resolve().then(() => {
-        // Keydown listener is on document, not the element
+        // LWS: Keydown listener is on the component itself, not document
         const event = new KeyboardEvent("keydown", { key: "Escape", bubbles: true });
-        document.dispatchEvent(event);
+        element.dispatchEvent(event);
 
         expect(closeHandler).toHaveBeenCalled();
       });
@@ -345,7 +345,7 @@ describe("c-sf-gps-ds-ca-on-modal", () => {
       });
     });
 
-    it("should lock body scroll when open", () => {
+    it("should add modal-open class when open (LWS: scroll lock via class)", () => {
       const element = createElement("c-sf-gps-ds-ca-on-modal", {
         is: SfGpsDsCaOnModal
       });
@@ -354,7 +354,9 @@ describe("c-sf-gps-ds-ca-on-modal", () => {
       document.body.appendChild(element);
 
       return Promise.resolve().then(() => {
-        expect(document.body.style.overflow).toBe("hidden");
+        // LWS: Cannot access document.body, so component adds class to itself
+        // and dispatches modalopen event for parent scroll management
+        expect(element.classList.contains("sfgpsdscaon-modal-is-open")).toBe(true);
       });
     });
 
