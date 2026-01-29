@@ -205,11 +205,11 @@ Labels follow this pattern: `sfGpsDsCaOn_[Category]_[Name]`
 | ----------------------------------- | -------------- |
 | `sfGpsDsCaOnSiteSelectorTool`       | ✅ Implemented |
 | `sfGpsDsCaOnUserMessages`           | ✅ Implemented |
-| `sfGpsDsCaOnDischargePointSelector` | 🔄 Pending     |
-| `sfGpsDsCaOnTaskList`               | 🔄 Pending     |
-| `sfGpsDsCaOnDropdown`               | 🔄 Pending     |
-| `sfGpsDsCaOnSearch`                 | 🔄 Pending     |
-| `sfGpsDsCaOnLoadingIndicator`       | 🔄 Pending     |
+| `sfGpsDsCaOnDischargePointSelector` | ✅ Implemented |
+| `sfGpsDsCaOnTaskList`               | ✅ Implemented |
+| `sfGpsDsCaOnDropdown`               | ✅ Implemented |
+| `sfGpsDsCaOnSearch`                 | ✅ Implemented |
+| `sfGpsDsCaOnLoadingIndicator`       | ✅ Implemented |
 
 ## Best Practices
 

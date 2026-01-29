@@ -131,7 +131,7 @@
                         fill="currentColor"
                       />
                     </svg>
-                    <span class="ontario-show-for-sr">Search</span>
+                    <span class="ontario-show-for-sr">{labelSearch}</span>
                   </button>
                 </div>
               </div>
@@ -145,7 +145,7 @@
               onclick={handleSearchClick}
               disabled={_isSearching}
             >
-              Search
+              {labelSearch}
             </button>
 
             <!-- Error Message -->
@@ -189,7 +189,7 @@
               onclick={handleContinueClick}
               disabled={isContinueDisabled}
             >
-              Continue
+              {labelContinue}
             </button>
 
             <!-- Tab Bar -->
@@ -220,7 +220,7 @@
                     fill="currentColor"
                   />
                 </svg>
-                Search
+                {labelTabSearch}
               </button>
               <button
                 type="button"
@@ -243,7 +243,7 @@
                     fill="currentColor"
                   />
                 </svg>
-                Drop point
+                {labelTabPinDrop}
               </button>
               <button
                 type="button"
@@ -266,7 +266,7 @@
                     fill="currentColor"
                   />
                 </svg>
-                Layers
+                {labelTabLayers}
               </button>
             </div>
 
@@ -292,7 +292,7 @@
               lwc:if={hasNoVfPageUrl}
               class="sfgpsdscaon-discharge-selector__map-placeholder"
             >
-              <p>Map loading...</p>
+              <p>{labelLoading}...</p>
               <p class="sfgpsdscaon-discharge-selector__map-placeholder-hint">
                 Configure the Visualforce page URL to enable map functionality.
               </p>

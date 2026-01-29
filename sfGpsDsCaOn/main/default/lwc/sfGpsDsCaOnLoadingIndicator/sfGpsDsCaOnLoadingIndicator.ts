@@ -7,6 +7,8 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -40,8 +42,11 @@ export default class SfGpsDsCaOnLoadingIndicator extends SfGpsDsLwc {
 
   /* getters */
 
+  /**
+   * Computed label that uses translated default if not specified.
+   */
   get computedLabel(): string {
-    return this.label || "Loading";
+    return this.label || LABELS.Common.Loading;
   }
 
   get computedAriaHidden(): string {

@@ -7,6 +7,8 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -23,14 +25,20 @@ export interface TaskItem {
   url?: string;
 }
 
-const STATUS_LABELS: Record<TaskStatus, string> = {
-  "not-started": "Not yet started",
-  "in-progress": "In progress",
-  "complete": "Completed",
-  "cannot-start-yet": "Cannot yet start",
-  "optional": "Optional",
-  "error": "Error"
-};
+/**
+ * Gets translated status labels from Custom Labels.
+ * Labels are automatically translated based on user's language.
+ */
+function getStatusLabels(): Record<TaskStatus, string> {
+  return {
+    "not-started": LABELS.Task.NotStarted,
+    "in-progress": LABELS.Task.InProgress,
+    "complete": LABELS.Task.Completed,
+    "cannot-start-yet": LABELS.Task.CannotStart,
+    "optional": LABELS.Common.Optional,
+    "error": LABELS.Task.Error
+  };
+}
 
 export default class SfGpsDsCaOnTaskList extends SfGpsDsLwc {
   static renderMode = "light";
@@ -79,7 +87,7 @@ export default class SfGpsDsCaOnTaskList extends SfGpsDsLwc {
         taskClassName: this.getTaskClassName(item),
         hasUrl: Boolean(item.url) && item.status !== "complete" && item.status !== "cannot-start-yet",
         hasHint,
-        computedStatusLabel: item.statusLabel || STATUS_LABELS[item.status] || item.status,
+        computedStatusLabel: item.statusLabel || getStatusLabels()[item.status] || item.status,
         ariaDescribedBy: hasHint ? hintId : null
       };
     });

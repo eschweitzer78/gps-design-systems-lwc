@@ -8,6 +8,8 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { debounce } from "c/sfGpsDsHelpers";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -32,13 +34,17 @@ export default class SfGpsDsCaOnSearch extends SfGpsDsLwc {
 
   /* api properties */
 
+  /**
+   * Label for the search input.
+   * Defaults to translated "Search" label if not specified.
+   */
   // @ts-ignore
   @api
-  label?: string = "Search";
+  label?: string;
 
   // @ts-ignore
   @api
-  placeholder?: string = "Search...";
+  placeholder?: string;
 
   // @ts-ignore
   @api
@@ -109,6 +115,20 @@ export default class SfGpsDsCaOnSearch extends SfGpsDsLwc {
 
   get computedContainerClass(): string {
     return `ontario-search__container ${this.className || ""}`.trim();
+  }
+
+  /**
+   * Computed label that uses translated default if not specified.
+   */
+  get computedLabel(): string {
+    return this.label || LABELS.Common.Search;
+  }
+
+  /**
+   * Computed placeholder that uses translated default if not specified.
+   */
+  get computedPlaceholder(): string {
+    return this.placeholder || `${LABELS.Common.Search}...`;
   }
 
   get computedInputContainerClass(): string {

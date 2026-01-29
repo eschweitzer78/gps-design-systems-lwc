@@ -8,6 +8,7 @@
 import { api, LightningElement, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 import { formatUserError, getMessage } from "c/sfGpsDsCaOnUserMessages";
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsCaOnDischargePointSelector";
@@ -246,6 +247,67 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
     return !this.computedVfPageUrl;
   }
 
+  /* ========================================
+   * I18N LABEL GETTERS
+   * Labels are automatically translated based on user's language
+   * ======================================== */
+
+  /** @returns {string} Search button label */
+  get labelSearch() {
+    return LABELS.Common.Search;
+  }
+
+  /** @returns {string} Continue button label */
+  get labelContinue() {
+    return LABELS.Common.Continue;
+  }
+
+  /** @returns {string} Required indicator */
+  get labelRequired() {
+    return LABELS.Common.Required;
+  }
+
+  /** @returns {string} Search tab label */
+  get labelTabSearch() {
+    return LABELS.SiteSelector.TabSearch;
+  }
+
+  /** @returns {string} Pin drop tab label */
+  get labelTabPinDrop() {
+    return LABELS.DischargePoint.TabPinDrop;
+  }
+
+  /** @returns {string} Map layers tab label */
+  get labelTabLayers() {
+    return LABELS.SiteSelector.TabLayers;
+  }
+
+  /** @returns {string} Search method label */
+  get labelSearchMethod() {
+    return LABELS.DischargePoint.SearchMethod;
+  }
+
+  /** @returns {string} Loading label */
+  get labelLoading() {
+    return LABELS.Common.Loading;
+  }
+
+  /** @returns {string} Enter address label */
+  get labelEnterAddress() {
+    return LABELS.SiteSelector.Address;
+  }
+
+  /** @returns {string} Selected coordinates label */
+  get labelSelectedCoordinates() {
+    // Use a static English string for now - add to labels if needed
+    return "Selected coordinates:";
+  }
+
+  /** @returns {string} UTM conversion error */
+  get labelUTMConversionError() {
+    return LABELS.DischargePoint.UTMConversionError;
+  }
+
   get coordinateDisplayText() {
     if (!this._coordinates) return "";
     if (this._coordinates.utmZone) {
@@ -405,8 +467,7 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
 
         if (decimal.requiresConversion) {
           // UTM requires server-side conversion
-          this._errorMessage =
-            "UTM conversion requires server processing. Please use the map or enter decimal coordinates.";
+          this._errorMessage = this.labelUTMConversionError;
           return;
         }
 

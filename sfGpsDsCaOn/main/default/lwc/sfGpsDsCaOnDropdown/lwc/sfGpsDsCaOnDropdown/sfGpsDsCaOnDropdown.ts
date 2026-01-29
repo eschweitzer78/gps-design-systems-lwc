@@ -7,6 +7,8 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 export interface DropdownOption {
   value: string;
@@ -25,8 +27,12 @@ export default class SfGpsDsCaOnDropdown extends SfGpsDsLwc {
   @api value?: string = "";
   // @ts-ignore
   @api hintText?: string;
+  /**
+   * Label for the default "Select" option.
+   * Defaults to translated "Select" label if not specified.
+   */
   // @ts-ignore
-  @api defaultOptionLabel?: string = "Select";
+  @api defaultOptionLabel?: string;
   // @ts-ignore
   @api required?: boolean;
   // @ts-ignore
@@ -92,6 +98,14 @@ export default class SfGpsDsCaOnDropdown extends SfGpsDsLwc {
 
   get hasError(): boolean {
     return !!this.errorMessage;
+  }
+
+  /**
+   * Computed default option label.
+   * Uses provided defaultOptionLabel or falls back to translated "Select" label.
+   */
+  get computedDefaultOptionLabel(): string {
+    return this.defaultOptionLabel || LABELS.Common.Select;
   }
 
   get decoratedOptions(): DropdownOption[] {
