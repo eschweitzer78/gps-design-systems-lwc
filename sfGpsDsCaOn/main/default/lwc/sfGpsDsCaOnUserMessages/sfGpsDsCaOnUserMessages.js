@@ -13,165 +13,175 @@
  * - Explain what went wrong
  * - Provide guidance on what to do next
  * - Accessible and actionable
+ * - Available in both English and French
+ *
+ * This module uses Salesforce Custom Labels for i18n support.
+ * Labels are automatically translated based on user's language setting.
  *
  * @module sfGpsDsCaOnUserMessages
  * @see https://designsystem.ontario.ca/components/detail/error-messages.html
  */
 
+import { LABELS } from "c/sfGpsDsCaOnLabels";
+
 /**
- * User-friendly error messages mapped by error category.
- * These messages follow Ontario Design System plain language guidelines.
+ * Gets user-friendly error messages from Custom Labels.
+ * Messages are automatically translated based on user's language.
  */
-export const USER_MESSAGES = {
-  // Network/Connection Errors
-  NETWORK_ERROR: {
-    title: "Connection problem",
-    message:
-      "We couldn't connect to the server. Please check your internet connection and try again.",
-    action: "Try again"
-  },
-  TIMEOUT_ERROR: {
-    title: "Request timed out",
-    message:
-      "The request is taking longer than expected. Please try again in a few moments.",
-    action: "Try again"
-  },
+function getUserMessages() {
+  return {
+    // Network/Connection Errors
+    NETWORK_ERROR: {
+      title: LABELS.Error.NetworkTitle,
+      message: LABELS.Error.NetworkMessage,
+      action: LABELS.Error.ActionTryAgain
+    },
+    TIMEOUT_ERROR: {
+      title: LABELS.Error.TimeoutTitle,
+      message: LABELS.Error.TimeoutMessage,
+      action: LABELS.Error.ActionTryAgain
+    },
 
-  // Search/Location Errors
-  SEARCH_NO_RESULTS: {
-    title: "No results found",
-    message:
-      "We couldn't find any results for your search. Try using different keywords or check the spelling.",
-    action: "Modify search"
-  },
-  LOCATION_NOT_FOUND: {
-    title: "Location not found",
-    message:
-      "We couldn't find that address or location. Please check the spelling or try a different search.",
-    action: "Try a different address"
-  },
-  LOCATION_OUTSIDE_ONTARIO: {
-    title: "Location outside Ontario",
-    message:
-      "The selected location is outside of Ontario. This service is only available for Ontario locations.",
-    action: "Select an Ontario location"
-  },
-  GEOLOCATION_DENIED: {
-    title: "Location access denied",
-    message:
-      "You've blocked location access. To use your current location, please enable location services in your browser settings.",
-    action: "Enable location services"
-  },
-  GEOLOCATION_UNAVAILABLE: {
-    title: "Location unavailable",
-    message:
-      "We couldn't determine your current location. Please enter your address manually.",
-    action: "Enter address manually"
-  },
+    // Search/Location Errors
+    SEARCH_NO_RESULTS: {
+      title: LABELS.Error.SearchNoResultsTitle,
+      message: LABELS.Error.SearchNoResultsMessage,
+      action: null
+    },
+    LOCATION_NOT_FOUND: {
+      title: LABELS.Error.LocationNotFoundTitle,
+      message: LABELS.Error.LocationNotFoundMessage,
+      action: null
+    },
+    LOCATION_OUTSIDE_ONTARIO: {
+      title: LABELS.Error.LocationOutsideOntarioTitle,
+      message: LABELS.Error.LocationOutsideOntarioMessage,
+      action: null
+    },
+    GEOLOCATION_DENIED: {
+      title: LABELS.Error.LocationNotFoundTitle,
+      message: LABELS.Error.LocationNotFoundMessage,
+      action: null
+    },
+    GEOLOCATION_UNAVAILABLE: {
+      title: LABELS.Error.LocationNotFoundTitle,
+      message: LABELS.Error.LocationNotFoundMessage,
+      action: null
+    },
 
-  // Map Errors
-  MAP_LOAD_ERROR: {
-    title: "Map unavailable",
-    message:
-      "We're having trouble loading the map. You can still enter your location using the search field.",
-    action: "Use search instead"
-  },
-  MAP_LAYER_ERROR: {
-    title: "Map layer unavailable",
-    message:
-      "Some map information couldn't be loaded. The basic map is still available.",
-    action: null
-  },
+    // Map Errors
+    MAP_LOAD_ERROR: {
+      title: LABELS.Error.MapLoadTitle,
+      message: LABELS.Error.MapLoadMessage,
+      action: null
+    },
+    MAP_LAYER_ERROR: {
+      title: LABELS.Error.MapLayerTitle,
+      message: LABELS.Error.MapLayerMessage,
+      action: null
+    },
 
-  // Form/Validation Errors
-  REQUIRED_FIELD: {
-    title: "Required information missing",
-    message: "Please provide the required information to continue.",
-    action: "Complete required fields"
-  },
-  INVALID_FORMAT: {
-    title: "Invalid format",
-    message:
-      "The information you entered isn't in the right format. Please check and try again.",
-    action: "Correct the format"
-  },
-  INVALID_DATE: {
-    title: "Invalid date",
-    message: "Please enter a valid date in the format DD/MM/YYYY.",
-    action: "Correct the date"
-  },
-  INVALID_EMAIL: {
-    title: "Invalid email address",
-    message: "Please enter a valid email address (e.g., name@example.com).",
-    action: "Correct the email"
-  },
-  INVALID_PHONE: {
-    title: "Invalid phone number",
-    message: "Please enter a valid phone number (e.g., 416-555-1234).",
-    action: "Correct the phone number"
-  },
-  INVALID_POSTAL_CODE: {
-    title: "Invalid postal code",
-    message: "Please enter a valid Canadian postal code (e.g., M5V 3A8).",
-    action: "Correct the postal code"
-  },
+    // Form/Validation Errors
+    REQUIRED_FIELD: {
+      title: LABELS.Error.RequiredFieldTitle,
+      message: LABELS.Error.RequiredFieldMessage,
+      action: null
+    },
+    INVALID_FORMAT: {
+      title: LABELS.Error.InvalidFormatTitle,
+      message: LABELS.Error.InvalidFormatMessage,
+      action: null
+    },
+    INVALID_DATE: {
+      title: LABELS.Error.InvalidFormatTitle,
+      message: LABELS.Error.InvalidDateMessage,
+      action: null
+    },
+    INVALID_EMAIL: {
+      title: LABELS.Error.InvalidFormatTitle,
+      message: LABELS.Error.InvalidEmailMessage,
+      action: null
+    },
+    INVALID_PHONE: {
+      title: LABELS.Error.InvalidFormatTitle,
+      message: LABELS.Error.InvalidPhoneMessage,
+      action: null
+    },
+    INVALID_POSTAL_CODE: {
+      title: LABELS.Error.InvalidFormatTitle,
+      message: LABELS.Error.InvalidPostalCodeMessage,
+      action: null
+    },
 
-  // API/Service Errors
-  SERVICE_UNAVAILABLE: {
-    title: "Service temporarily unavailable",
-    message:
-      "This service is temporarily unavailable. Please try again later or contact support if the problem continues.",
-    action: "Try again later"
-  },
-  ELIGIBILITY_CHECK_ERROR: {
-    title: "Unable to check eligibility",
-    message:
-      "We couldn't complete the eligibility check at this time. Please try again or contact support for assistance.",
-    action: "Try again"
-  },
-  DATA_LOAD_ERROR: {
-    title: "Unable to load data",
-    message:
-      "We couldn't load the required information. Please refresh the page and try again.",
-    action: "Refresh page"
-  },
-  SAVE_ERROR: {
-    title: "Unable to save",
-    message:
-      "We couldn't save your information. Please check your connection and try again.",
-    action: "Try again"
-  },
+    // API/Service Errors
+    SERVICE_UNAVAILABLE: {
+      title: LABELS.Error.ServiceUnavailableTitle,
+      message: LABELS.Error.ServiceUnavailableMessage,
+      action: LABELS.Error.ActionTryAgain
+    },
+    ELIGIBILITY_CHECK_ERROR: {
+      title: LABELS.Error.EligibilityCheckTitle,
+      message: LABELS.Error.EligibilityCheckMessage,
+      action: LABELS.Error.ActionTryAgain
+    },
+    DATA_LOAD_ERROR: {
+      title: LABELS.Error.DataLoadTitle,
+      message: LABELS.Error.DataLoadMessage,
+      action: LABELS.Error.ActionRefreshPage
+    },
+    SAVE_ERROR: {
+      title: LABELS.Error.SaveTitle,
+      message: LABELS.Error.SaveMessage,
+      action: LABELS.Error.ActionTryAgain
+    },
 
-  // Authentication/Authorization
-  SESSION_EXPIRED: {
-    title: "Session expired",
-    message:
-      "Your session has expired for security reasons. Please sign in again to continue.",
-    action: "Sign in"
-  },
-  ACCESS_DENIED: {
-    title: "Access denied",
-    message:
-      "You don't have permission to access this feature. Please contact your administrator if you believe this is an error.",
-    action: "Contact administrator"
-  },
+    // Authentication/Authorization
+    SESSION_EXPIRED: {
+      title: LABELS.Error.SessionExpiredTitle,
+      message: LABELS.Error.SessionExpiredMessage,
+      action: LABELS.Error.ActionSignIn
+    },
+    ACCESS_DENIED: {
+      title: LABELS.Error.AccessDeniedTitle,
+      message: LABELS.Error.AccessDeniedMessage,
+      action: LABELS.Error.ActionContactSupport
+    },
 
-  // Configuration Errors (should rarely be shown to end users)
-  CONFIGURATION_ERROR: {
-    title: "Configuration issue",
-    message:
-      "There's a configuration issue with this application. Please contact support for assistance.",
-    action: "Contact support"
-  },
+    // Configuration Errors
+    CONFIGURATION_ERROR: {
+      title: LABELS.Error.ConfigurationTitle,
+      message: LABELS.Error.ConfigurationMessage,
+      action: LABELS.Error.ActionContactSupport
+    },
 
-  // Generic Fallback (use sparingly)
-  GENERIC_ERROR: {
-    title: "Something went wrong",
-    message:
-      "We encountered an unexpected problem. Please try again or contact support if the issue continues.",
-    action: "Try again"
+    // Generic Fallback
+    GENERIC_ERROR: {
+      title: LABELS.Error.GenericTitle,
+      message: LABELS.Error.GenericMessage,
+      action: LABELS.Error.ActionTryAgain
+    }
+  };
+}
+
+/**
+ * Lazy-loaded user messages (for i18n support)
+ */
+let _userMessages = null;
+
+/**
+ * Gets the USER_MESSAGES object with current language translations.
+ * @returns {Object} User messages catalog
+ */
+export function getUserMessagesMap() {
+  if (!_userMessages) {
+    _userMessages = getUserMessages();
   }
-};
+  return _userMessages;
+}
+
+// For backwards compatibility, export as USER_MESSAGES
+// Note: This will use the labels at import time
+export const USER_MESSAGES = getUserMessages();
 
 /**
  * Classifies technical errors into user-friendly categories.
@@ -307,6 +317,7 @@ export function extractErrorMessage(error) {
 
 /**
  * Gets a user-friendly error message for display.
+ * Messages are automatically translated based on user's language setting.
  *
  * @param {Error|Object|string} error - The technical error
  * @param {string} [context] - Optional context to help classify the error
@@ -322,8 +333,9 @@ export function extractErrorMessage(error) {
  * }
  */
 export function getUserFriendlyError(error, context) {
+  const messages = getUserMessagesMap();
   const category = classifyError(error);
-  const userMessage = USER_MESSAGES[category] || USER_MESSAGES.GENERIC_ERROR;
+  const userMessage = messages[category] || messages.GENERIC_ERROR;
 
   // Log technical details for debugging (not shown to user)
   if (typeof console !== "undefined" && console.warn) {
@@ -347,6 +359,7 @@ export function getUserFriendlyError(error, context) {
 /**
  * Formats a user-friendly error message for simple display.
  * Returns just the message text, suitable for error message components.
+ * Messages are automatically translated.
  *
  * @param {Error|Object|string} error - The technical error
  * @param {string} [fallbackMessage] - Optional fallback if classification fails
@@ -354,21 +367,22 @@ export function getUserFriendlyError(error, context) {
  */
 export function formatUserError(error, fallbackMessage) {
   const userMessage = getUserFriendlyError(error);
+  const messages = getUserMessagesMap();
   return (
-    userMessage.message ||
-    fallbackMessage ||
-    USER_MESSAGES.GENERIC_ERROR.message
+    userMessage.message || fallbackMessage || messages.GENERIC_ERROR.message
   );
 }
 
 /**
  * Gets a specific user message by key.
+ * Messages are automatically translated.
  *
  * @param {string} key - The message key from USER_MESSAGES
  * @returns {Object} The message object
  */
 export function getMessage(key) {
-  return USER_MESSAGES[key] || USER_MESSAGES.GENERIC_ERROR;
+  const messages = getUserMessagesMap();
+  return messages[key] || messages.GENERIC_ERROR;
 }
 
 export default {
@@ -377,5 +391,6 @@ export default {
   extractErrorMessage,
   getUserFriendlyError,
   formatUserError,
-  getMessage
+  getMessage,
+  getUserMessagesMap
 };

@@ -41,7 +41,7 @@
                   for="search-parameter"
                   class="ontario-label sfgpsdscaon-site-selector__label"
                 >
-                  Search by other parameters
+                  {labelSearchByParameters}
                 </label>
                 <select
                   id="search-parameter"
@@ -87,7 +87,7 @@
                       lwc:if={_searchValue}
                       type="button"
                       class="sfgpsdscaon-site-selector__clear-btn"
-                      aria-label="Clear search"
+                      aria-label={labelClearSearch}
                       onclick={handleClearSearch}
                     >
                       <svg
@@ -118,7 +118,7 @@
                         fill="currentColor"
                       />
                     </svg>
-                    <span class="ontario-show-for-sr">Search</span>
+                    <span class="ontario-show-for-sr">{labelSearch}</span>
                   </button>
                 </div>
               </div>
@@ -137,10 +137,10 @@
             <template lwc:if={isReadOnly}>
               <div class="sfgpsdscaon-site-selector__readonly-header">
                 <h3 class="sfgpsdscaon-site-selector__readonly-title">
-                  Submitted Location
+                  {labelSubmittedLocation}
                 </h3>
                 <p class="sfgpsdscaon-site-selector__readonly-hint">
-                  This location was captured during the application submission.
+                  {labelSubmittedHint}
                 </p>
               </div>
             </template>
@@ -154,7 +154,7 @@
               aria-label="Selected address"
             >
               <h3 class="sfgpsdscaon-site-selector__details-heading">
-                Site location details
+                {labelLocationDetails}
               </h3>
               <p class="sfgpsdscaon-site-selector__address-line">
                 {streetAddress}
@@ -179,8 +179,7 @@
               lwc:if={showSaveButton}
               class="sfgpsdscaon-site-selector__instructions"
             >
-              Once you have finalized the site location, select
-              <strong>"Save site address"</strong>.
+              {labelSaveInstructions}
             </p>
 
             <!-- Save Button (only in edit mode) -->
@@ -191,7 +190,7 @@
               onclick={handleSaveClick}
               disabled={isSaveDisabled}
             >
-              Save site address
+              {labelSaveSiteAddress}
             </button>
 
             <!-- Close Button (in read-only mode) -->
@@ -201,7 +200,7 @@
               class="ontario-button ontario-button--secondary sfgpsdscaon-site-selector__close-btn"
               onclick={handleModalClose}
             >
-              Close
+              {labelClose}
             </button>
 
             <!-- Tab Bar -->
@@ -232,7 +231,7 @@
                     fill="currentColor"
                   />
                 </svg>
-                Search
+                {labelTabSearch}
               </button>
               <button
                 type="button"
@@ -255,7 +254,7 @@
                     fill="currentColor"
                   />
                 </svg>
-                Site point
+                {labelTabSitePoint}
               </button>
               <button
                 type="button"
@@ -278,7 +277,7 @@
                     fill="currentColor"
                   />
                 </svg>
-                Layers
+                {labelTabLayers}
               </button>
             </div>
           </div>

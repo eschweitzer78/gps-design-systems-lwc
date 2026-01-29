@@ -8,6 +8,7 @@
 import { api, LightningElement, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 import { formatUserError, getMessage } from "c/sfGpsDsCaOnUserMessages";
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 /**
  * @slot SiteSelectorTool
@@ -358,6 +359,71 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    */
   get computedModalTitle() {
     return this.isReadOnly ? `${this.modalTitle} - View Only` : this.modalTitle;
+  }
+
+  /* ========================================
+   * I18N LABEL GETTERS
+   * Labels are automatically translated based on user's language
+   * ======================================== */
+
+  /** @returns {string} Search button screen reader text */
+  get labelSearch() {
+    return LABELS.Common.Search;
+  }
+
+  /** @returns {string} Clear search button label */
+  get labelClearSearch() {
+    return LABELS.SiteSelector.ClearSearch;
+  }
+
+  /** @returns {string} Search by parameters dropdown label */
+  get labelSearchByParameters() {
+    return LABELS.SiteSelector.SearchByParameters;
+  }
+
+  /** @returns {string} Read-only mode submitted location title */
+  get labelSubmittedLocation() {
+    return LABELS.SiteSelector.SubmittedLocation;
+  }
+
+  /** @returns {string} Read-only mode hint text */
+  get labelSubmittedHint() {
+    return LABELS.SiteSelector.SubmittedHint;
+  }
+
+  /** @returns {string} Location details heading */
+  get labelLocationDetails() {
+    return LABELS.SiteSelector.LocationDetails;
+  }
+
+  /** @returns {string} Save instructions text */
+  get labelSaveInstructions() {
+    return LABELS.SiteSelector.SaveInstructions;
+  }
+
+  /** @returns {string} Save site address button */
+  get labelSaveSiteAddress() {
+    return LABELS.SiteSelector.SaveSiteAddress;
+  }
+
+  /** @returns {string} Close button label */
+  get labelClose() {
+    return LABELS.Common.Close;
+  }
+
+  /** @returns {string} Search tab label */
+  get labelTabSearch() {
+    return LABELS.SiteSelector.TabSearch;
+  }
+
+  /** @returns {string} Site point tab label */
+  get labelTabSitePoint() {
+    return LABELS.SiteSelector.TabSitePoint;
+  }
+
+  /** @returns {string} Map layers tab label */
+  get labelTabLayers() {
+    return LABELS.SiteSelector.TabLayers;
   }
 
   /**
