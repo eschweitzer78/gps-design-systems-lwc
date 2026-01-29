@@ -5,6 +5,33 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+/**
+ * @description Ontario Design System Back to Top button component.
+ * Provides a floating button that appears after scrolling and allows users
+ * to quickly return to the top of the page.
+ *
+ * ## LWS Compatibility
+ * - Uses window.scrollTo with try/catch (allowed in LWS with restrictions)
+ * - Dispatches 'backtotop' event for parent-managed focus (instead of document.querySelector)
+ * - All window APIs are wrapped in try/catch for graceful degradation
+ *
+ * ## Focus Management
+ * This component dispatches a 'backtotop' event after scrolling. Parent components
+ * should listen for this event and manage focus appropriately:
+ *
+ * ```javascript
+ * handleBackToTop(event) {
+ *   const skipLink = this.template.querySelector('#skip-to-content');
+ *   if (skipLink) skipLink.focus();
+ * }
+ * ```
+ *
+ * ## Compliance
+ * - **LWR**: Uses Light DOM for Experience Cloud compatibility
+ * - **LWS**: No document.querySelector, window APIs wrapped in try/catch
+ * - **Ontario DS**: Follows Ontario Design System back-to-top pattern
+ * - **WCAG 2.1 AA**: Dispatches event for focus management (WCAG 2.4.3)
+ */
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
@@ -55,8 +82,12 @@ export default class SfGpsDsCaOnBackToTop extends SfGpsDsLwc {
   /* handlers */
 
   /**
-   * Scrolls the page to the top and moves focus for accessibility.
+   * Scrolls the page to the top and dispatches event for focus management.
    * Uses try/catch for LWS compatibility where window APIs may be restricted.
+   *
+   * LWS Note: Cannot use document.querySelector to find focus targets.
+   * Instead, dispatches 'backtotop' event for parent-managed focus.
+   *
    * AODA/WCAG 2.4.3: Focus management after programmatic scrolling.
    */
   handleClick(): void {
@@ -66,10 +97,13 @@ export default class SfGpsDsCaOnBackToTop extends SfGpsDsLwc {
           top: 0,
           behavior: "smooth"
         });
-        
-        // AODA: Move focus to top of page after scroll
-        // Try common skip link targets, then main content
-        this.moveFocusToTop();
+
+        // LWS: Dispatch event for parent to manage focus
+        // Parent components should listen and focus appropriate element
+        // eslint-disable-next-line @lwc/lwc/no-async-operation
+        setTimeout(() => {
+          this.dispatchBackToTopEvent();
+        }, 500);
       }
     } catch (e) {
       // LWS may restrict window.scrollTo - fail silently
@@ -78,37 +112,36 @@ export default class SfGpsDsCaOnBackToTop extends SfGpsDsLwc {
   }
 
   /**
-   * Moves focus to the top of the page after scrolling.
-   * Tries skip link targets first, then main content areas.
-   * AODA/WCAG 2.4.3 compliance for focus order.
+   * Dispatches the backtotop event for parent focus management.
+   * LWS-compatible: Uses bubbling event instead of document.querySelector.
+   *
+   * Parent components should listen for this event and manage focus:
+   * ```javascript
+   * handleBackToTop(event) {
+   *   const skipLink = this.template.querySelector('#skip-to-content');
+   *   if (skipLink) skipLink.focus();
+   * }
+   * ```
+   * @private
    */
-  private moveFocusToTop(): void {
-    try {
-      // Common selectors for skip link targets and main content
-      const focusTargets = [
-        "#skip-to-content",
-        "#main-content", 
-        "#main",
-        "[role='main']",
-        "main",
-        "h1"
-      ];
-      
-      for (const selector of focusTargets) {
-        const element = document.querySelector(selector) as HTMLElement;
-        if (element) {
-          // Make element focusable if not already
-          if (!element.hasAttribute("tabindex")) {
-            element.setAttribute("tabindex", "-1");
-          }
-          // Use setTimeout to allow smooth scroll to complete
-          setTimeout(() => element.focus(), 500);
-          return;
+  private dispatchBackToTopEvent(): void {
+    this.dispatchEvent(
+      new CustomEvent("backtotop", {
+        bubbles: true,
+        composed: true,
+        detail: {
+          // Suggested focus targets for parent reference
+          suggestedTargets: [
+            "#skip-to-content",
+            "#main-content",
+            "#main",
+            "[role='main']",
+            "main",
+            "h1"
+          ]
         }
-      }
-    } catch (e) {
-      // LWS may restrict document.querySelector - fail silently
-    }
+      })
+    );
   }
 
   /**
