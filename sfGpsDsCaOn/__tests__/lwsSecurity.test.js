@@ -258,4 +258,110 @@ describe('postMessage Security', () => {
     // Should have try/catch around message handling
     expect(source).toMatch(/try\s*\{[\s\S]*event\.data[\s\S]*\}\s*catch/);
   });
+
+  // New tests for postMessage origin validation (added 2026-01-28)
+  describe('Origin Validation', () => {
+    it('SiteSelectorTool should have getVfOrigin method for extracting VF domain', () => {
+      const source = readSourceFile(COMPONENT_PATHS.SiteSelectorTool);
+      if (!source) return;
+      
+      expect(source).toContain('getVfOrigin');
+      expect(source).toContain('new URL');
+      expect(source).toContain('url.origin');
+    });
+
+    it('SiteSelectorTool should have isValidOrigin method for message validation', () => {
+      const source = readSourceFile(COMPONENT_PATHS.SiteSelectorTool);
+      if (!source) return;
+      
+      expect(source).toContain('isValidOrigin');
+      expect(source).toContain('eventOrigin');
+    });
+
+    it('SiteSelectorTool should validate origin in handleMapMessage', () => {
+      const source = readSourceFile(COMPONENT_PATHS.SiteSelectorTool);
+      if (!source) return;
+      
+      // Should call isValidOrigin before processing message
+      expect(source).toMatch(/handleMapMessage[\s\S]*isValidOrigin\(event\.origin\)/);
+    });
+
+    it('SiteSelectorTool should use specific targetOrigin in postMessage (not wildcard)', () => {
+      const source = readSourceFile(COMPONENT_PATHS.SiteSelectorTool);
+      if (!source) return;
+      
+      // Should use getVfOrigin() instead of "*"
+      expect(source).toContain('getVfOrigin()');
+      expect(source).toMatch(/postMessage\([\s\S]*,\s*targetOrigin\)/);
+    });
+
+    it('DischargePointSelector should have getVfOrigin method', () => {
+      const source = readSourceFile(COMPONENT_PATHS.DischargePointSelector);
+      if (!source) return;
+      
+      expect(source).toContain('getVfOrigin');
+      expect(source).toContain('new URL');
+    });
+
+    it('DischargePointSelector should validate origin in handleMapMessage', () => {
+      const source = readSourceFile(COMPONENT_PATHS.DischargePointSelector);
+      if (!source) return;
+      
+      expect(source).toMatch(/handleMapMessage[\s\S]*isValidOrigin\(event\.origin\)/);
+    });
+
+    it('DischargePointSelector should use specific targetOrigin in postMessage', () => {
+      const source = readSourceFile(COMPONENT_PATHS.DischargePointSelector);
+      if (!source) return;
+      
+      expect(source).toContain('getVfOrigin()');
+      expect(source).toMatch(/postMessage\([\s\S]*,\s*targetOrigin\)/);
+    });
+  });
+
+  describe('Cached VF Origin', () => {
+    it('SiteSelectorTool should cache VF origin for performance', () => {
+      const source = readSourceFile(COMPONENT_PATHS.SiteSelectorTool);
+      if (!source) return;
+      
+      expect(source).toContain('_vfOrigin');
+      expect(source).toMatch(/if\s*\(\s*this\._vfOrigin\s*\)/);
+    });
+
+    it('DischargePointSelector should cache VF origin', () => {
+      const source = readSourceFile(COMPONENT_PATHS.DischargePointSelector);
+      if (!source) return;
+      
+      expect(source).toContain('_vfOrigin');
+    });
+  });
+});
+
+describe('LWR Navigation Security', () => {
+  const SEARCH_COMM_PATH = 'main/default/lwc/sfGpsDsCaOnSearch/lwc/sfGpsDsCaOnSearchComm/sfGpsDsCaOnSearchComm.ts';
+
+  it('SearchComm should include objectApiName in record navigation', () => {
+    const source = readSourceFile(SEARCH_COMM_PATH);
+    if (!source) return;
+    
+    // LWR requires objectApiName for standard__recordPage navigation
+    expect(source).toContain('objectApiName');
+    expect(source).toMatch(/standard__recordPage[\s\S]*objectApiName/);
+  });
+
+  it('SearchComm should have fallback objectApiName derivation', () => {
+    const source = readSourceFile(SEARCH_COMM_PATH);
+    if (!source) return;
+    
+    // Should have method to derive object name from record ID prefix
+    expect(source).toContain('deriveObjectApiName');
+  });
+
+  it('SearchComm navigateToRecord should accept objectApiName parameter', () => {
+    const source = readSourceFile(SEARCH_COMM_PATH);
+    if (!source) return;
+    
+    // Method signature should include objectApiName
+    expect(source).toMatch(/navigateToRecord\(recordId.*objectApiName/);
+  });
 });

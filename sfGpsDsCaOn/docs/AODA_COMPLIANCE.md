@@ -357,6 +357,105 @@ The Ontario Design System includes built-in accessibility:
 
 ---
 
+## High Contrast Mode Support
+
+> **Added 2026-01-28:** Components now include explicit support for `@media (prefers-contrast: high)` and `@media (forced-colors: active)` (Windows High Contrast Mode).
+
+### Implementation Pattern
+
+Each component includes two media query blocks for high contrast support:
+
+```css
+/* macOS Increase Contrast / Browser high contrast preference */
+@media (prefers-contrast: high) {
+  .ontario-input {
+    border-width: 3px;
+    border-color: CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .ontario-input:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    border-color: CanvasText;
+  }
+}
+
+/* Windows High Contrast Mode */
+@media (forced-colors: active) {
+  .ontario-input {
+    border-color: ButtonText;
+    background-color: Field;
+    color: FieldText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-input:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+```
+
+### System Color Keywords
+
+These CSS keywords automatically adapt to the user's high contrast theme:
+
+| Keyword         | Purpose                | Typical Values |
+| --------------- | ---------------------- | -------------- |
+| `CanvasText`    | Text on background     | Black or white |
+| `Canvas`        | Background color       | White or black |
+| `Highlight`     | Selection/focus color  | Blue or yellow |
+| `HighlightText` | Text on highlight      | White or black |
+| `LinkText`      | Link/interactive color | Blue or purple |
+| `ButtonText`    | Button text            | Black or white |
+| `GrayText`      | Disabled text          | Gray           |
+| `Field`         | Input field background | White          |
+| `FieldText`     | Input field text       | Black          |
+
+### Components with High Contrast Support
+
+| Component                    | Status | Notes                        |
+| ---------------------------- | ------ | ---------------------------- |
+| sfGpsDsCaOnTextInput         | ✅     | Full support                 |
+| sfGpsDsCaOnTextArea          | ✅     | Full support                 |
+| sfGpsDsCaOnDropdown          | ✅     | Including dropdown icon      |
+| sfGpsDsCaOnCheckboxGroup     | ✅     | Custom checkbox styling      |
+| sfGpsDsCaOnRadioGroup        | ✅     | Custom radio styling         |
+| sfGpsDsCaOnModal             | ✅     | Header, close button, dialog |
+| sfGpsDsCaOnAccordion         | ✅     | Buttons and borders          |
+| sfGpsDsCaOnSearch            | ✅     | Input, submit, suggestions   |
+| sfGpsDsCaOnBackToTop         | ✅     | Button and icon              |
+| sfGpsDsCaOnSelectableCard    | ✅     | Card, badge, expand button   |
+| sfGpsDsCaOnCallout           | ✅     | Previously implemented       |
+| sfGpsDsCaOnDecisionExplainer | ✅     | Previously implemented       |
+
+### Testing High Contrast Mode
+
+**macOS:**
+
+1. System Preferences → Accessibility → Display
+2. Enable "Increase contrast"
+
+**Windows:**
+
+1. Settings → Accessibility → Contrast themes
+2. Select a high contrast theme (e.g., "High Contrast Black")
+
+**Browser DevTools:**
+
+1. Open DevTools → Rendering tab
+2. Emulate CSS media feature `prefers-contrast: high`
+
+### WCAG References
+
+- **1.4.11 Non-text Contrast (Level AA):** Focus indicators and UI boundaries must have 3:1 contrast ratio
+- **1.4.1 Use of Color (Level A):** Information must not be conveyed by color alone
+- **2.4.7 Focus Visible (Level AA):** Keyboard focus must be visible
+
+---
+
 ## Resources
 
 - [AODA Requirements](https://www.ontario.ca/page/accessibility-laws)
@@ -369,7 +468,12 @@ The Ontario Design System includes built-in accessibility:
 
 ## Changelog
 
-| Date       | Change                                          |
-| ---------- | ----------------------------------------------- |
-| 2026-01-28 | Initial AODA compliance audit                   |
-| 2026-01-28 | Fixed ActionCard image alt/aria-hidden conflict |
+| Date       | Change                                           |
+| ---------- | ------------------------------------------------ |
+| 2026-01-28 | Initial AODA compliance audit                    |
+| 2026-01-28 | Fixed ActionCard image alt/aria-hidden conflict  |
+| 2026-01-28 | Added high contrast mode support (10 components) |
+| 2026-01-28 | Added `@media (prefers-contrast: high)` rules    |
+| 2026-01-28 | Added `@media (forced-colors: active)` rules     |
+| 2026-01-28 | Fixed keyboard accessibility on modal trigger    |
+| 2026-01-28 | Converted action links to semantic buttons       |

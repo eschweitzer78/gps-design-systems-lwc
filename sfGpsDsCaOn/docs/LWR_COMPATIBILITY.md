@@ -131,6 +131,70 @@ export default class SfGpsDsCaOnButtonComm extends NavigationMixin<SfGpsDsLwc>(
 
 ---
 
+### 3.1 Record Page Navigation (LWR Critical)
+
+> **LWR Fix (2026-01-28):** The `standard__recordPage` page reference requires `objectApiName` in LWR. Without it, navigation fails silently.
+
+**Invalid Pattern (fails in LWR):**
+
+```javascript
+// Missing objectApiName - will fail silently in LWR
+this[NavigationMixin.Navigate]({
+  type: "standard__recordPage",
+  attributes: {
+    recordId: recordId,
+    actionName: "view"
+  }
+});
+```
+
+**Valid Pattern (LWR compatible):**
+
+```javascript
+/**
+ * Navigate to a record detail page.
+ * LWR CRITICAL: objectApiName is required for routing.
+ */
+navigateToRecord(recordId, objectApiName) {
+  const pageRef = {
+    type: "standard__recordPage",
+    attributes: {
+      recordId: recordId,
+      objectApiName: objectApiName,  // REQUIRED for LWR
+      actionName: "view"
+    }
+  };
+
+  this[NavigationMixin.Navigate](pageRef);
+}
+```
+
+**Fallback for Dynamic Object Types:**
+
+When the object type isn't known at design time, derive it from the record ID prefix:
+
+```javascript
+deriveObjectApiName(recordId) {
+  const prefixMap = {
+    "001": "Account",
+    "003": "Contact",
+    "006": "Opportunity",
+    "00Q": "Lead",
+    "500": "Case",
+    "ka0": "Knowledge__kav"
+  };
+
+  const prefix = recordId?.substring(0, 3);
+  return prefixMap[prefix] || "Record";
+}
+```
+
+**Components Updated:**
+
+- `sfGpsDsCaOnSearchComm` - Search result navigation now includes objectApiName
+
+---
+
 ### 4. External Web Components
 
 The package uses Ontario Design System web components via `lwc:external`:
@@ -287,18 +351,68 @@ get hasNoValue() {
 
 ### 9. LWR/LWS Pattern: postMessage Communication
 
-For Visualforce iframe integration, use `postMessage` with explicit origin validation:
+For Visualforce iframe integration, use `postMessage` with explicit origin validation.
+
+> **Security Update (2026-01-28):** Components now use strict origin validation instead of wildcard `*` or substring matching. This prevents potential message injection attacks.
+
+**LWC Side - Origin Extraction and Caching:**
+
+```javascript
+/**
+ * Private property to cache VF origin
+ */
+_vfOrigin = null;
+
+/**
+ * Extract and cache origin from vfPageUrl for security.
+ * Uses URL API for proper parsing.
+ */
+getVfOrigin() {
+  if (this._vfOrigin) {
+    return this._vfOrigin;
+  }
+
+  if (this.vfPageUrl) {
+    try {
+      const url = new URL(this.vfPageUrl);
+      this._vfOrigin = url.origin;
+      return this._vfOrigin;
+    } catch {
+      console.warn("Invalid vfPageUrl, cannot extract origin");
+    }
+  }
+
+  // Fallback - less secure but functional
+  return "*";
+}
+
+/**
+ * Validate message origin against expected VF origin.
+ */
+isValidOrigin(eventOrigin) {
+  const expectedOrigin = this.getVfOrigin();
+
+  if (expectedOrigin === "*") {
+    return true; // Fallback mode
+  }
+
+  return eventOrigin === expectedOrigin; // Strict match
+}
+```
 
 **LWC Side (sending to VF):**
 
 ```javascript
-sendMessageToMap(action, detail) {
-  const iframe = this.template.querySelector("iframe");
+sendMessageToMap(message) {
+  const iframe = this.querySelector(".map-iframe");
   if (iframe && iframe.contentWindow) {
-    iframe.contentWindow.postMessage(
-      { action, detail },
-      this._vfOrigin  // Explicit origin, never use '*'
-    );
+    try {
+      // SECURITY: Use specific origin, never "*"
+      const targetOrigin = this.getVfOrigin();
+      iframe.contentWindow.postMessage(JSON.stringify(message), targetOrigin);
+    } catch (e) {
+      console.warn("Failed to send message to map:", e.message);
+    }
   }
 }
 ```
@@ -317,11 +431,17 @@ disconnectedCallback() {
 }
 
 handleMapMessage(event) {
-  // Validate origin
-  if (!event.origin.includes(".force.com")) return;
+  // SECURITY: Validate origin before processing
+  if (!this.isValidOrigin(event.origin)) {
+    return; // Silently ignore untrusted origins
+  }
 
-  const { action, detail } = event.data;
-  // Handle message...
+  try {
+    const data = event.data;
+    // Handle message...
+  } catch {
+    // Ignore parsing errors
+  }
 }
 ```
 
@@ -336,10 +456,16 @@ window.parent.postMessage(
 
 // Receive from LWC
 window.addEventListener("message", function (event) {
-  if (!event.origin.includes(".site.com")) return;
+  // Validate against known LWC origin
+  if (event.origin !== "{!expectedLwcOrigin}") return;
   // Handle message...
 });
 ```
+
+**Components Using This Pattern:**
+
+- `sfGpsDsCaOnSiteSelectorTool`
+- `sfGpsDsCaOnDischargePointSelector`
 
 ---
 
