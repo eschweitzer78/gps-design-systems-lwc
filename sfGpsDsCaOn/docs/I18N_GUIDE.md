@@ -6,6 +6,12 @@ This guide explains how to implement English/French bilingual support in Ontario
 
 Ontario is officially bilingual, and all government services must be available in both English and French. The components support dynamic language switching through Salesforce Custom Labels.
 
+## Quick Start
+
+1. **For Developers**: Import labels from `c/sfGpsDsCaOnLabels` and use in your components
+2. **For Translators**: Use Translation Workbench to edit translations without code
+3. **For Admins**: Configure language settings in Salesforce Setup
+
 ## Architecture
 
 ### Components
@@ -289,8 +295,267 @@ The Header and Footer components pass a `language` property to the underlying On
 ></c-sf-gps-ds-ca-on-header>
 ```
 
+## Translation Workbench
+
+Translation Workbench allows non-developers to edit translations directly in Salesforce Setup without modifying code.
+
+### Enabling Translation Workbench
+
+1. Go to **Setup** → **Translation Workbench** → **Translation Settings**
+2. Click **Enable**
+3. Add supported languages (French - Canada is required for Ontario)
+
+### Editing Translations via UI
+
+1. Go to **Setup** → **Translation Workbench** → **Translate**
+2. Select **Language**: French (Canada)
+3. Select **Setup Component**: Custom Labels
+4. In the filter, search for `sfGpsDsCaOn`
+5. Edit translations in the **Translation** column
+6. Click **Save**
+
+Changes take effect immediately for users with that language setting.
+
+### Bulk Export/Import
+
+For managing many translations or professional translation services:
+
+#### Export
+
+1. Go to **Setup** → **Translation Workbench** → **Export**
+2. Select **Language**: French (Canada)
+3. Select **Setup Components**: Custom Labels
+4. Click **Export**
+5. Download the generated `.stf` (Salesforce Translation Format) file
+
+#### Import
+
+1. Have translations added to the `.stf` file
+2. Go to **Setup** → **Translation Workbench** → **Import**
+3. Upload the translated file
+4. Review and publish
+
+### Permissions for Translators
+
+To allow translators access without full admin rights:
+
+1. Create a Permission Set: "Translation Manager"
+2. Enable System Permissions:
+   - "Manage Translation"
+   - "View Setup and Configuration"
+3. Assign to translator users
+
+## Adding New Languages
+
+### Step 1: Enable Language in Salesforce
+
+1. Go to **Setup** → **Company Information** → **Edit**
+2. In **Language Settings**, add the new language
+3. Save
+
+### Step 2: Create Translation File
+
+Create a new file `sfGpsDsCaOn/main/default/translations/[locale].translation-meta.xml`:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customLabels>
+        <label>sfGpsDsCaOn_Common_Search</label>
+        <translation>[Translated text]</translation>
+    </customLabels>
+    <!-- Add all other labels -->
+</Translations>
+```
+
+Common locale codes:
+
+- `fr_CA` - French (Canada)
+- `es` - Spanish
+- `zh_CN` - Chinese (Simplified)
+- `pt_BR` - Portuguese (Brazil)
+
+### Step 3: Deploy
+
+```bash
+sf project deploy start --source-dir sfGpsDsCaOn/main/default/translations
+```
+
+### Step 4: Configure Experience Site (if applicable)
+
+1. **Experience Builder** → **Settings** → **Languages**
+2. Add the new language
+3. Set as active
+
+## How Language Selection Works
+
+### Internal Salesforce Users
+
+Language is determined by the user's personal settings:
+
+1. **Personal Settings** → **Language & Time Zone**
+2. Set **Language** to desired language
+3. Refresh the page
+
+### Experience Cloud (Community) Users
+
+Language can be set by:
+
+1. **User Profile Language**: Default language for the user
+2. **URL Parameter**: `?language=fr` appended to URL
+3. **Language Toggle**: Header component with language switch
+
+### Language Toggle Configuration
+
+The Header component supports a language toggle:
+
+```javascript
+// In Experience Builder or component configuration
+const languageToggleOptions = {
+  englishLink: "/s/?language=en",
+  frenchLink: "/s/?language=fr"
+};
+```
+
+This creates a toggle that navigates to the same page with the language parameter.
+
+## Translation File Format
+
+### Custom Labels (Source)
+
+Located in `labels/CustomLabels.labels-meta.xml`:
+
+```xml
+<labels>
+    <fullName>sfGpsDsCaOn_Common_Search</fullName>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Search button label</shortDescription>
+    <value>Search</value>
+</labels>
+```
+
+| Element            | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| `fullName`         | Unique identifier (use naming convention)        |
+| `language`         | Base language (always `en_US`)                   |
+| `protected`        | `false` allows editing via Translation Workbench |
+| `shortDescription` | Context for translators                          |
+| `value`            | English text                                     |
+
+### Translations
+
+Located in `translations/fr_CA.translation-meta.xml`:
+
+```xml
+<customLabels>
+    <label>sfGpsDsCaOn_Common_Search</label>
+    <translation>Rechercher</translation>
+</customLabels>
+```
+
+| Element       | Description                           |
+| ------------- | ------------------------------------- |
+| `label`       | Must match `fullName` in CustomLabels |
+| `translation` | Translated text                       |
+
+## Translation Guidelines
+
+### Ontario French Standards
+
+Follow the Ontario Government's French language guidelines:
+
+1. **Use Canadian French** - Not European French
+2. **Be consistent** - Use the same translation for the same term
+3. **Match formality** - Ontario uses formal "vous" not informal "tu"
+4. **Keep it concise** - French text is often longer; ensure UI accommodates
+
+### Common Translations Reference
+
+| English    | French (Ontario) | Notes              |
+| ---------- | ---------------- | ------------------ |
+| Submit     | Soumettre        | Not "Envoyer"      |
+| Cancel     | Annuler          |                    |
+| Delete     | Supprimer        |                    |
+| Required   | Obligatoire      |                    |
+| Optional   | Facultatif       |                    |
+| Sign in    | Connexion        | Not "Se connecter" |
+| Sign out   | Déconnexion      |                    |
+| My Account | Mon compte       |                    |
+| Error      | Erreur           |                    |
+| Warning    | Avertissement    |                    |
+| Success    | Réussite         |                    |
+
+### Placeholders
+
+Labels with placeholders like `{0}`, `{1}` must preserve them:
+
+```
+English: "Step {0} of {1}"
+French:  "Étape {0} de {1}"
+```
+
+The order can change if grammatically required in the target language.
+
+## Troubleshooting
+
+### Labels Not Translating
+
+1. **Check user language setting** - Ensure it's set to the target language
+2. **Verify deployment** - Confirm translation file is deployed
+3. **Check label name** - The `<label>` in translation must exactly match `<fullName>`
+4. **Clear cache** - Hard refresh the browser (Ctrl+Shift+R)
+
+### Translation Workbench Not Showing Labels
+
+1. **Filter correctly** - Search for `sfGpsDsCaOn` prefix
+2. **Select Custom Labels** - Not other component types
+3. **Ensure labels deployed** - Labels must exist in org before translating
+
+### Experience Cloud Not Switching
+
+1. **Enable multilingual site** - In Experience Builder Settings
+2. **Add language to site** - The language must be added to the site
+3. **Check URL parameter** - Ensure `?language=fr` is being passed
+
+## CI/CD Integration
+
+### Deploying Translations
+
+Include translations in your deployment:
+
+```bash
+# Deploy labels and translations together
+sf project deploy start \
+  --source-dir sfGpsDsCaOn/main/default/labels \
+  --source-dir sfGpsDsCaOn/main/default/translations
+```
+
+### Validation
+
+Add translation validation to your CI pipeline:
+
+```javascript
+// Example Jest test for translation completeness
+describe("Translation Completeness", () => {
+  it("should have French translations for all labels", () => {
+    const labels = parseXml("labels/CustomLabels.labels-meta.xml");
+    const translations = parseXml("translations/fr_CA.translation-meta.xml");
+
+    labels.forEach((label) => {
+      const hasTranslation = translations.some(
+        (t) => t.label === label.fullName
+      );
+      expect(hasTranslation).toBe(true);
+    });
+  });
+});
+```
+
 ## Resources
 
 - [Salesforce Custom Labels](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_label.htm)
 - [Translation Workbench](https://help.salesforce.com/s/articleView?id=sf.customize_wbench.htm)
 - [Ontario Design System - Language](https://designsystem.ontario.ca/guidelines/detail/language.html)
+- [Ontario French Language Services](https://www.ontario.ca/page/government-services-french)
+- [Experience Cloud Multilingual Sites](https://help.salesforce.com/s/articleView?id=sf.exp_cloud_multilingual.htm)
