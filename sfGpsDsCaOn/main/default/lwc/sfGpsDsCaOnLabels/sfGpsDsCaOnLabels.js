@@ -187,6 +187,28 @@ import A11y_LoadingComplete from "@salesforce/label/c.sfGpsDsCaOn_A11y_LoadingCo
 import A11y_FormError from "@salesforce/label/c.sfGpsDsCaOn_A11y_FormError";
 import A11y_StepOf from "@salesforce/label/c.sfGpsDsCaOn_A11y_StepOf";
 
+// ========================================
+// NAVIGATION / MENU LABELS
+// ========================================
+import Nav_Home from "@salesforce/label/c.sfGpsDsCaOn_Nav_Home";
+import Nav_About from "@salesforce/label/c.sfGpsDsCaOn_Nav_About";
+import Nav_Services from "@salesforce/label/c.sfGpsDsCaOn_Nav_Services";
+import Nav_Contact from "@salesforce/label/c.sfGpsDsCaOn_Nav_Contact";
+import Nav_Help from "@salesforce/label/c.sfGpsDsCaOn_Nav_Help";
+import Nav_FAQ from "@salesforce/label/c.sfGpsDsCaOn_Nav_FAQ";
+import Nav_Apply from "@salesforce/label/c.sfGpsDsCaOn_Nav_Apply";
+import Nav_MyAccount from "@salesforce/label/c.sfGpsDsCaOn_Nav_MyAccount";
+import Nav_SignIn from "@salesforce/label/c.sfGpsDsCaOn_Nav_SignIn";
+import Nav_SignOut from "@salesforce/label/c.sfGpsDsCaOn_Nav_SignOut";
+import Nav_Dashboard from "@salesforce/label/c.sfGpsDsCaOn_Nav_Dashboard";
+import Nav_Applications from "@salesforce/label/c.sfGpsDsCaOn_Nav_Applications";
+import Nav_Permits from "@salesforce/label/c.sfGpsDsCaOn_Nav_Permits";
+import Nav_Licenses from "@salesforce/label/c.sfGpsDsCaOn_Nav_Licenses";
+import Nav_Reports from "@salesforce/label/c.sfGpsDsCaOn_Nav_Reports";
+import Nav_Settings from "@salesforce/label/c.sfGpsDsCaOn_Nav_Settings";
+import Nav_Profile from "@salesforce/label/c.sfGpsDsCaOn_Nav_Profile";
+import Nav_Notifications from "@salesforce/label/c.sfGpsDsCaOn_Nav_Notifications";
+
 /**
  * All labels organized by category.
  * Labels are automatically translated based on user's language setting.
@@ -311,6 +333,27 @@ export const LABELS = {
     LoadingComplete: A11y_LoadingComplete,
     FormError: A11y_FormError,
     StepOf: A11y_StepOf
+  },
+
+  Nav: {
+    Home: Nav_Home,
+    About: Nav_About,
+    Services: Nav_Services,
+    Contact: Nav_Contact,
+    Help: Nav_Help,
+    FAQ: Nav_FAQ,
+    Apply: Nav_Apply,
+    MyAccount: Nav_MyAccount,
+    SignIn: Nav_SignIn,
+    SignOut: Nav_SignOut,
+    Dashboard: Nav_Dashboard,
+    Applications: Nav_Applications,
+    Permits: Nav_Permits,
+    Licenses: Nav_Licenses,
+    Reports: Nav_Reports,
+    Settings: Nav_Settings,
+    Profile: Nav_Profile,
+    Notifications: Nav_Notifications
   }
 };
 

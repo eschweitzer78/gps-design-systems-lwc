@@ -823,4 +823,135 @@
         <value>Step {0} of {1}</value>
     </labels>
     
+    <!-- ========================================
+         NAVIGATION / MENU LABELS
+         ======================================== -->
+    
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Home</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Home menu item</shortDescription>
+        <value>Home</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_About</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>About menu item</shortDescription>
+        <value>About</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Services</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Services menu item</shortDescription>
+        <value>Services</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Contact</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Contact menu item</shortDescription>
+        <value>Contact</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Help</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Help menu item</shortDescription>
+        <value>Help</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_FAQ</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FAQ menu item</shortDescription>
+        <value>Frequently Asked Questions</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Apply</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Apply menu item</shortDescription>
+        <value>Apply</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_MyAccount</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>My Account menu item</shortDescription>
+        <value>My Account</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_SignIn</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sign In menu item</shortDescription>
+        <value>Sign In</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_SignOut</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Sign Out menu item</shortDescription>
+        <value>Sign Out</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Dashboard</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Dashboard menu item</shortDescription>
+        <value>Dashboard</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Applications</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Applications menu item</shortDescription>
+        <value>Applications</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Permits</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Permits menu item</shortDescription>
+        <value>Permits</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Licenses</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Licenses menu item</shortDescription>
+        <value>Licenses</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Reports</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reports menu item</shortDescription>
+        <value>Reports</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Settings</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Settings menu item</shortDescription>
+        <value>Settings</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Profile</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Profile menu item</shortDescription>
+        <value>Profile</value>
+    </labels>
+    <labels>
+        <fullName>sfGpsDsCaOn_Nav_Notifications</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Notifications menu item</shortDescription>
+        <value>Notifications</value>
+    </labels>
+    
 </CustomLabels>

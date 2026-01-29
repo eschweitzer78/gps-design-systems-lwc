@@ -463,4 +463,78 @@
         <label>sfGpsDsCaOn_A11y_StepOf</label>
         <translation>Étape {0} de {1}</translation>
     </customLabels>
+    
+    <!-- NAVIGATION / MENU LABELS -->
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Home</label>
+        <translation>Accueil</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_About</label>
+        <translation>À propos</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Services</label>
+        <translation>Services</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Contact</label>
+        <translation>Contact</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Help</label>
+        <translation>Aide</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_FAQ</label>
+        <translation>Foire aux questions</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Apply</label>
+        <translation>Soumettre une demande</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_MyAccount</label>
+        <translation>Mon compte</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_SignIn</label>
+        <translation>Connexion</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_SignOut</label>
+        <translation>Déconnexion</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Dashboard</label>
+        <translation>Tableau de bord</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Applications</label>
+        <translation>Demandes</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Permits</label>
+        <translation>Permis</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Licenses</label>
+        <translation>Licences</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Reports</label>
+        <translation>Rapports</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Settings</label>
+        <translation>Paramètres</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Profile</label>
+        <translation>Profil</translation>
+    </customLabels>
+    <customLabels>
+        <label>sfGpsDsCaOn_Nav_Notifications</label>
+        <translation>Notifications</translation>
+    </customLabels>
 </Translations>

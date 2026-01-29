@@ -7,11 +7,21 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
 // eslint-disable-next-line no-unused-vars
 const CLASS_NAME = "SfGpsDsCaOnHeaderComm";
+
+interface MenuItem {
+  title?: string;
+  labelKey?: string;
+  href: string;
+  linkIsActive?: boolean;
+  onClickHandler?: string;
+}
 
 export default class SfGpsDsCaOnHeaderComm extends SfGpsDsLwc {
   static renderMode = "light";
@@ -39,13 +49,32 @@ export default class SfGpsDsCaOnHeaderComm extends SfGpsDsLwc {
   @api
   menuItemsJson?: string;
 
-  get parsedMenuItems(): unknown[] | undefined {
+  /**
+   * Translates menu items using labelKey if provided.
+   * Falls back to title if no labelKey or translation not found.
+   */
+  private translateMenuItems(items: MenuItem[]): MenuItem[] {
+    return items.map(item => {
+      if (item.labelKey && LABELS.Nav[item.labelKey]) {
+        return {
+          ...item,
+          title: LABELS.Nav[item.labelKey]
+        };
+      }
+      return item;
+    });
+  }
+
+  get parsedMenuItems(): MenuItem[] | undefined {
     if (!this.menuItemsJson) return undefined;
     
     try {
       const parsed = JSON.parse(this.menuItemsJson);
-      return Array.isArray(parsed) ? parsed : undefined;
-    } catch (e) {
+      if (!Array.isArray(parsed)) return undefined;
+      
+      // Translate items with labelKey
+      return this.translateMenuItems(parsed);
+    } catch {
       this.addError("MI-JP", "Menu items JSON is invalid");
       return undefined;
     }

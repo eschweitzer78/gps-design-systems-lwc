@@ -108,6 +108,60 @@ Site Selector Tool specific labels.
 
 Discharge Point Selector specific labels.
 
+### Nav (`LABELS.Nav.*`)
+
+Navigation/menu item labels for the Header component:
+
+| Key             | English                    | French                |
+| --------------- | -------------------------- | --------------------- |
+| `Home`          | Home                       | Accueil               |
+| `About`         | About                      | À propos              |
+| `Services`      | Services                   | Services              |
+| `Contact`       | Contact                    | Contact               |
+| `Help`          | Help                       | Aide                  |
+| `FAQ`           | Frequently Asked Questions | Foire aux questions   |
+| `Apply`         | Apply                      | Soumettre une demande |
+| `MyAccount`     | My Account                 | Mon compte            |
+| `SignIn`        | Sign In                    | Connexion             |
+| `SignOut`       | Sign Out                   | Déconnexion           |
+| `Dashboard`     | Dashboard                  | Tableau de bord       |
+| `Applications`  | Applications               | Demandes              |
+| `Permits`       | Permits                    | Permis                |
+| `Licenses`      | Licenses                   | Licences              |
+| `Reports`       | Reports                    | Rapports              |
+| `Settings`      | Settings                   | Paramètres            |
+| `Profile`       | Profile                    | Profil                |
+| `Notifications` | Notifications              | Notifications         |
+
+#### Using Dynamic Menu Translation
+
+The Header component supports dynamic menu translation using `labelKey`:
+
+```javascript
+// In Experience Builder or programmatically
+const menuItems = [
+  { labelKey: "Home", href: "/" },
+  { labelKey: "Dashboard", href: "/dashboard" },
+  { labelKey: "Applications", href: "/applications" },
+  { labelKey: "Help", href: "/help" }
+];
+```
+
+The component will automatically translate the menu items based on the user's language:
+
+- **English user**: Home, Dashboard, Applications, Help
+- **French user**: Accueil, Tableau de bord, Demandes, Aide
+
+You can also mix static titles with label keys:
+
+```javascript
+const menuItems = [
+  { labelKey: "Home", href: "/" },
+  { title: "Custom Page", href: "/custom" }, // Static, not translated
+  { labelKey: "Contact", href: "/contact" }
+];
+```
+
 ### Task (`LABELS.Task.*`)
 
 Task list status labels.

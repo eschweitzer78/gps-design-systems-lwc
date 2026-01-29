@@ -7,6 +7,8 @@
 
 import { api } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -29,8 +31,18 @@ export interface LanguageToggleOptions {
   frenchLink?: string;
 }
 
+/**
+ * Menu item interface.
+ * 
+ * Use either `title` for hardcoded text or `labelKey` for translated labels.
+ * When `labelKey` is provided, it will look up the translated label from
+ * the LABELS.Nav object (e.g., "Home" -> LABELS.Nav.Home).
+ */
 export interface MenuItem {
-  title: string;
+  /** Static title text (used if labelKey is not provided) */
+  title?: string;
+  /** Label key for dynamic translation (e.g., "Home", "About", "Services") */
+  labelKey?: string;
   href: string;
   linkIsActive?: boolean;
   onClickHandler?: string;
@@ -88,12 +100,40 @@ export default class SfGpsDsCaOnHeader extends SfGpsDsElement {
     return JSON.stringify(this.applicationHeaderInfo);
   }
 
+  /**
+   * Translates menu items using labelKey if provided.
+   * Falls back to title if no labelKey or translation not found.
+   */
+  private translateMenuItems(items: MenuItem[]): MenuItem[] {
+    return items.map(item => {
+      if (item.labelKey && LABELS.Nav[item.labelKey]) {
+        return {
+          ...item,
+          title: LABELS.Nav[item.labelKey]
+        };
+      }
+      return item;
+    });
+  }
+
   get menuItemsJson(): string | undefined {
     if (!this.menuItems) return undefined;
+    
+    // If string, parse it first to check for labelKeys
+    let items: MenuItem[];
     if (typeof this.menuItems === "string") {
-      return this.menuItems;
+      try {
+        items = JSON.parse(this.menuItems);
+      } catch {
+        return this.menuItems; // Return as-is if invalid JSON
+      }
+    } else {
+      items = this.menuItems;
     }
-    return JSON.stringify(this.menuItems);
+    
+    // Translate items with labelKey
+    const translatedItems = this.translateMenuItems(items);
+    return JSON.stringify(translatedItems);
   }
 
   get languageToggleOptionsJson(): string | undefined {
