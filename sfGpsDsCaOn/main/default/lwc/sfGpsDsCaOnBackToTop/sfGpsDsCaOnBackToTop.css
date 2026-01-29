@@ -78,4 +78,63 @@
   }
 }
 
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .ontario-back-to-top--default {
+    background-color: Canvas;
+    color: CanvasText;
+    border: 3px solid CanvasText;
+    box-shadow: none;
+  }
+
+  .ontario-back-to-top--default:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .ontario-back-to-top--default:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .ontario-back-to-top--default:active {
+    background-color: Highlight;
+    color: HighlightText;
+    box-shadow: none;
+  }
+
+  .ontario-back-to-top--default svg.ontario-icon {
+    fill: currentColor;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .ontario-back-to-top--default {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border-color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-back-to-top--default:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .ontario-back-to-top--default:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-back-to-top--default svg.ontario-icon {
+    fill: currentColor;
+  }
+}
+
 /*# sourceMappingURL=sfGpsDsCaOnBackToTop.css.map */

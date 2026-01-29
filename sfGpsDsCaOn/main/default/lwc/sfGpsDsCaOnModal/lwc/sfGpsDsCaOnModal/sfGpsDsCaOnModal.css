@@ -248,3 +248,110 @@
     display: none;
   }
 }
+
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .sfgpsdscaon-modal {
+    border: 3px solid CanvasText;
+    background-color: Canvas;
+  }
+
+  .sfgpsdscaon-modal__header {
+    background-color: CanvasText;
+    color: Canvas;
+    border-bottom: 2px solid CanvasText;
+  }
+
+  .sfgpsdscaon-modal__title {
+    color: Canvas;
+  }
+
+  .sfgpsdscaon-modal__close-btn {
+    color: Canvas;
+    border: 2px solid Canvas;
+  }
+
+  .sfgpsdscaon-modal__close-btn:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    border-color: Canvas;
+    box-shadow: none;
+  }
+
+  .sfgpsdscaon-modal__close-btn:hover {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-modal__dialog:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .sfgpsdscaon-modal__content {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-modal__footer {
+    background-color: Canvas;
+    border-top: 2px solid CanvasText;
+  }
+
+  .sfgpsdscaon-modal__backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .sfgpsdscaon-modal {
+    border: 3px solid ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .sfgpsdscaon-modal__header {
+    background-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .sfgpsdscaon-modal__title {
+    color: HighlightText;
+  }
+
+  .sfgpsdscaon-modal__close-btn {
+    color: HighlightText;
+    border-color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .sfgpsdscaon-modal__close-btn:focus {
+    outline: 3px solid ButtonText;
+    outline-offset: 2px;
+  }
+
+  .sfgpsdscaon-modal__close-btn:hover {
+    background-color: HighlightText;
+    color: Highlight;
+  }
+
+  .sfgpsdscaon-modal__dialog:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .sfgpsdscaon-modal__content {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-modal__footer {
+    border-color: ButtonText;
+  }
+}

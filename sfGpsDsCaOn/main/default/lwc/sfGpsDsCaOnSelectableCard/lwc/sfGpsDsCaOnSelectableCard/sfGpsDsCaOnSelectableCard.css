@@ -170,3 +170,86 @@
   line-height: 1.5;
   color: var(--ontario-colour-black, #1a1a1a);
 }
+
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .sfgpsdscaon-selectable-card {
+    border-color: CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-selectable-card--selected {
+    background-color: Canvas;
+    border-left: 4px solid Highlight;
+  }
+
+  .sfgpsdscaon-selectable-card__title {
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-selectable-card__description {
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-selectable-card__badge {
+    background-color: CanvasText;
+    color: Canvas;
+  }
+
+  .sfgpsdscaon-selectable-card__link {
+    color: LinkText;
+  }
+
+  .sfgpsdscaon-selectable-card__link:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .sfgpsdscaon-selectable-card__expand-btn {
+    color: LinkText;
+  }
+
+  .sfgpsdscaon-selectable-card__expand-btn:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .sfgpsdscaon-selectable-card__expanded-content {
+    background-color: Canvas;
+    border-color: Highlight;
+    color: CanvasText;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .sfgpsdscaon-selectable-card {
+    border-color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .sfgpsdscaon-selectable-card--selected {
+    border-left: 4px solid Highlight;
+  }
+
+  .sfgpsdscaon-selectable-card__link:focus,
+  .sfgpsdscaon-selectable-card__expand-btn:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .sfgpsdscaon-selectable-card__badge {
+    forced-color-adjust: none;
+  }
+
+  .sfgpsdscaon-selectable-card__expanded-content {
+    border-color: Highlight;
+  }
+}

@@ -113,4 +113,94 @@
   display: none;
 }
 
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .ontario-input.ontario-dropdown {
+    border-width: 3px;
+    border-color: CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .ontario-input.ontario-dropdown:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    border-color: CanvasText;
+  }
+
+  .ontario-input.ontario-dropdown:disabled {
+    border-color: GrayText;
+    color: GrayText;
+    background-color: Canvas;
+  }
+
+  .ontario-dropdown__icon {
+    fill: CanvasText;
+  }
+
+  .ontario-input__error.ontario-dropdown {
+    border-color: LinkText;
+  }
+
+  .ontario-error-messaging {
+    border-left-width: 6px;
+    border-color: LinkText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .ontario-error-messaging .ontario-icon {
+    fill: LinkText;
+  }
+
+  .ontario-label {
+    color: CanvasText;
+  }
+
+  .ontario-hint {
+    color: CanvasText;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .ontario-input.ontario-dropdown {
+    border-color: ButtonText;
+    background-color: Field;
+    color: FieldText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-input.ontario-dropdown:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-input.ontario-dropdown:disabled {
+    border-color: GrayText;
+    color: GrayText;
+  }
+
+  .ontario-dropdown__icon {
+    fill: ButtonText;
+  }
+
+  .ontario-input__error.ontario-dropdown {
+    border-color: LinkText;
+  }
+
+  .ontario-error-messaging {
+    border-color: LinkText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-error-messaging .ontario-icon {
+    fill: LinkText;
+  }
+}
+
 /*# sourceMappingURL=sfGpsDsCaOnDropdown.css.map */

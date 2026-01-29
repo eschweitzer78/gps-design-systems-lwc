@@ -170,4 +170,116 @@
   display: none;
 }
 
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .ontario-checkboxes__input {
+    border-width: 3px;
+    border-color: CanvasText;
+    background-color: Canvas;
+  }
+
+  .ontario-checkboxes__input:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-checkboxes__input:checked {
+    background-color: CanvasText;
+  }
+
+  .ontario-checkboxes__input:checked::after {
+    border-color: Canvas;
+  }
+
+  .ontario-checkboxes__input:disabled {
+    border-color: GrayText;
+    background-color: Canvas;
+  }
+
+  .ontario-checkboxes__input:disabled:checked {
+    background-color: GrayText;
+  }
+
+  .ontario-checkboxes__label {
+    color: CanvasText;
+  }
+
+  .ontario-checkboxes__input--error {
+    border-color: LinkText;
+  }
+
+  .ontario-error-messaging {
+    border-left-width: 6px;
+    border-color: LinkText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .ontario-error-messaging .ontario-icon {
+    fill: LinkText;
+  }
+
+  .ontario-fieldset__legend {
+    color: CanvasText;
+  }
+
+  .ontario-hint {
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-skip-options {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .sfgpsdscaon-skip-options:focus {
+    outline: 3px solid CanvasText;
+    box-shadow: none;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .ontario-checkboxes__input {
+    border-color: ButtonText;
+    background-color: Field;
+    forced-color-adjust: none;
+  }
+
+  .ontario-checkboxes__input:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-checkboxes__input:checked {
+    background-color: Highlight;
+    border-color: Highlight;
+  }
+
+  .ontario-checkboxes__input:checked::after {
+    border-color: HighlightText;
+  }
+
+  .ontario-checkboxes__input:disabled {
+    border-color: GrayText;
+  }
+
+  .ontario-checkboxes__input--error {
+    border-color: LinkText;
+  }
+
+  .ontario-error-messaging {
+    border-color: LinkText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-error-messaging .ontario-icon {
+    fill: LinkText;
+  }
+}
+
 /*# sourceMappingURL=sfGpsDsCaOnCheckboxGroup.css.map */

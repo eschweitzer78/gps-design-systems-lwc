@@ -138,4 +138,90 @@
   display: none;
 }
 
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .ontario-input {
+    border-width: 3px;
+    border-color: CanvasText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .ontario-input:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    border-color: CanvasText;
+  }
+
+  .ontario-input:disabled {
+    border-color: GrayText;
+    color: GrayText;
+    background-color: Canvas;
+  }
+
+  .ontario-input::placeholder {
+    color: GrayText;
+  }
+
+  .ontario-input__error {
+    border-color: LinkText;
+  }
+
+  .ontario-error-messaging {
+    border-left-width: 6px;
+    border-color: LinkText;
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .ontario-error-messaging .ontario-icon {
+    fill: LinkText;
+  }
+
+  .ontario-label {
+    color: CanvasText;
+  }
+
+  .ontario-hint {
+    color: CanvasText;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .ontario-input {
+    border-color: ButtonText;
+    background-color: Field;
+    color: FieldText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-input:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-input:disabled {
+    border-color: GrayText;
+    color: GrayText;
+  }
+
+  .ontario-input__error {
+    border-color: LinkText;
+  }
+
+  .ontario-error-messaging {
+    border-color: LinkText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-error-messaging .ontario-icon {
+    fill: LinkText;
+  }
+}
+
 /*# sourceMappingURL=sfGpsDsCaOnTextInput.css.map */

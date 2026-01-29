@@ -202,4 +202,137 @@
   border: 0;
 }
 
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .ontario-search__input-container {
+    border-width: 3px;
+    border-color: CanvasText;
+    background-color: Canvas;
+  }
+
+  .ontario-search__input-container:focus-within {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    border-color: CanvasText;
+  }
+
+  .ontario-search__input {
+    color: CanvasText;
+    background-color: Canvas;
+  }
+
+  .ontario-search__input::placeholder {
+    color: GrayText;
+  }
+
+  .ontario-search__submit {
+    background-color: CanvasText;
+    color: Canvas;
+    border-color: CanvasText;
+  }
+
+  .ontario-search__submit:hover,
+  .ontario-search__submit:focus {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .ontario-search__submit:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-search__reset {
+    color: CanvasText;
+  }
+
+  .ontario-search__reset:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-search-autocomplete__suggestion-list {
+    border-width: 3px;
+    border-color: CanvasText;
+    background-color: Canvas;
+  }
+
+  .ontario-search-autocomplete__suggestion-list__list-item {
+    color: CanvasText;
+  }
+
+  .ontario-search-autocomplete__suggestion-list__list-item:focus {
+    outline: 3px solid Highlight;
+    outline-offset: -3px;
+    box-shadow: none;
+  }
+
+  .ontario-search-autocomplete__suggestion-list__list-item:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+
+  .ontario-search-autocomplete__suggestion-label {
+    color: inherit;
+  }
+
+  .ontario-search-autocomplete__suggestion-type {
+    background-color: CanvasText;
+    color: Canvas;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .ontario-search__input-container {
+    border-color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-search__input-container:focus-within {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-search__input {
+    color: FieldText;
+    background-color: Field;
+  }
+
+  .ontario-search__submit {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border-color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-search__submit:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-search__reset:focus {
+    outline: 3px solid Highlight;
+  }
+
+  .ontario-search-autocomplete__suggestion-list {
+    border-color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-search-autocomplete__suggestion-list__list-item:focus {
+    outline: 3px solid Highlight;
+    outline-offset: -3px;
+  }
+
+  .ontario-search-autocomplete__suggestion-list__list-item:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+
 /*# sourceMappingURL=sfGpsDsCaOnSearch.css.map */

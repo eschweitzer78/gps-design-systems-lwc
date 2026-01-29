@@ -231,4 +231,78 @@
   fill: currentColor;
 }
 
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .ontario-accordion {
+    border-color: CanvasText;
+  }
+
+  .ontario-accordion__button {
+    color: LinkText;
+    background-color: Canvas;
+  }
+
+  .ontario-accordion__button:hover,
+  .ontario-accordion__button:focus {
+    background-color: Canvas;
+    color: LinkText;
+  }
+
+  .ontario-accordion__button:focus {
+    outline: 3px solid Highlight;
+    outline-offset: -3px;
+    box-shadow: none;
+  }
+
+  .ontario-accordion__button--expand-all {
+    color: LinkText;
+  }
+
+  .ontario-accordion__button--expand-all:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .ontario-accordion__content {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .ontario-accordion__button .ontario-icon {
+    fill: LinkText;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .ontario-accordion {
+    border-color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-accordion__button {
+    color: LinkText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-accordion__button:focus {
+    outline: 3px solid Highlight;
+    outline-offset: -3px;
+  }
+
+  .ontario-accordion__button--expand-all:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-accordion__button .ontario-icon {
+    fill: LinkText;
+  }
+}
+
 /*# sourceMappingURL=sfGpsDsCaOnAccordion.css.map */
