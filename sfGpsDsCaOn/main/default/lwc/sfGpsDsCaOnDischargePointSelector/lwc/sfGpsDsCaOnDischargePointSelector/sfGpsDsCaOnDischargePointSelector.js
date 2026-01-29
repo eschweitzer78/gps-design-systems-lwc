@@ -7,6 +7,7 @@
 
 import { api, LightningElement, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
+import { formatUserError, getMessage } from "c/sfGpsDsCaOnUserMessages";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsCaOnDischargePointSelector";
@@ -472,7 +473,11 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
         case "searchResult":
           this._isSearching = false;
           if (data.error) {
-            this._errorMessage = data.error;
+            // Use user-friendly error message for search failures
+            this._errorMessage = formatUserError(
+              data.error,
+              getMessage("LOCATION_NOT_FOUND").message
+            );
           } else if (data.coordinates) {
             this._coordinates = {
               latitude: data.coordinates.latitude,
@@ -497,7 +502,11 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
 
         case "error":
           this._isSearching = false;
-          this._errorMessage = data.error || "An error occurred";
+          // Use user-friendly error message based on error type
+          this._errorMessage = formatUserError(
+            data.error,
+            getMessage("MAP_LOAD_ERROR").message
+          );
           break;
 
         default:

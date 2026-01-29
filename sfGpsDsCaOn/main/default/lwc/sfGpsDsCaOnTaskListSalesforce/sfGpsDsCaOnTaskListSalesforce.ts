@@ -14,6 +14,8 @@ import getCurrentUserTasks from "@salesforce/apex/SfGpsDsCaOnTaskController.getC
 import getRelatedTasks from "@salesforce/apex/SfGpsDsCaOnTaskController.getRelatedTasks";
 // @ts-ignore - Salesforce Apex import
 import { refreshApex } from "@salesforce/apex";
+// @ts-ignore - LWC module import
+import { formatUserError, getMessage } from "c/sfGpsDsCaOnUserMessages";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -89,7 +91,8 @@ export default class SfGpsDsCaOnTaskListSalesforce extends SfGpsDsLwc {
       }));
       this._error = null;
     } else if (result.error) {
-      this._error = result.error.message || "Error loading tasks";
+      // Use user-friendly error message
+      this._error = formatUserError(result.error, getMessage("DATA_LOAD_ERROR").message);
       this._tasks = [];
     }
   }
@@ -115,7 +118,8 @@ export default class SfGpsDsCaOnTaskListSalesforce extends SfGpsDsLwc {
       }));
       this._error = null;
     } else if (result.error) {
-      this._error = result.error.message || "Error loading tasks";
+      // Use user-friendly error message
+      this._error = formatUserError(result.error, getMessage("DATA_LOAD_ERROR").message);
       this._tasks = [];
     }
   }

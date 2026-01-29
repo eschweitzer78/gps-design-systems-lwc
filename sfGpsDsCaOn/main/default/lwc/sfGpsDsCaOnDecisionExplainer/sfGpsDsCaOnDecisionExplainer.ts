@@ -12,6 +12,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import evaluateExpressionSet from "@salesforce/apex/SfGpsDsCaOnDecisionExplainerController.evaluateExpressionSet";
 // @ts-ignore - Salesforce Apex import
 import evaluateViaIntegrationProcedure from "@salesforce/apex/SfGpsDsCaOnDecisionExplainerController.evaluateViaIntegrationProcedure";
+// @ts-ignore - LWC module import
+import { formatUserError, getMessage } from "c/sfGpsDsCaOnUserMessages";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -423,13 +425,16 @@ export default class SfGpsDsCaOnDecisionExplainer extends SfGpsDsLwc {
       return result;
 
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      this._error = errorMessage;
+      // Use user-friendly error message for display
+      const userFriendlyMessage = formatUserError(error, getMessage("ELIGIBILITY_CHECK_ERROR").message);
+      this._error = userFriendlyMessage;
 
-      // Dispatch error event
+      // Dispatch error event with both user-friendly and technical message
+      const technicalMessage = error instanceof Error ? error.message : String(error);
       this.dispatchEvent(new CustomEvent("error", {
         detail: {
-          message: errorMessage
+          message: userFriendlyMessage,
+          technicalMessage: technicalMessage
         },
         bubbles: true,
         composed: true

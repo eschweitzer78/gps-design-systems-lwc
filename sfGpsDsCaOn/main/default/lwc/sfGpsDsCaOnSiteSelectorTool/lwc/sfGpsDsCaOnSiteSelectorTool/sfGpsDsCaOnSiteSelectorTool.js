@@ -7,6 +7,7 @@
 
 import { api, LightningElement, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
+import { formatUserError, getMessage } from "c/sfGpsDsCaOnUserMessages";
 
 /**
  * @slot SiteSelectorTool
@@ -703,7 +704,11 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
             this._addressDetails = data.address;
             this._coordinates = data.coordinates;
           } else if (data.error) {
-            this._errorMessage = data.error;
+            // Use user-friendly error message for search failures
+            this._errorMessage = formatUserError(
+              data.error,
+              getMessage("LOCATION_NOT_FOUND").message
+            );
           }
           break;
 
@@ -716,7 +721,11 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
           break;
 
         case "error":
-          this._errorMessage = data.error || "An error occurred";
+          // Use user-friendly error message based on error type
+          this._errorMessage = formatUserError(
+            data.error,
+            getMessage("MAP_LOAD_ERROR").message
+          );
           this._isSearching = false;
           break;
 
