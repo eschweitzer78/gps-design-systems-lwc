@@ -132,6 +132,14 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
 
   _messageHandler = null;
 
+  /**
+   * Cached VF origin for postMessage security
+   * Extracted from vfPageUrl to validate message origins
+   * @type {string|null}
+   * @private
+   */
+  _vfOrigin = null;
+
   /* ========================================
    * COMPUTED PROPERTIES
    * ======================================== */
@@ -518,7 +526,70 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
     this.close();
   }
 
+  /**
+   * Extracts and caches the origin from vfPageUrl for postMessage security.
+   * LWS Security: Used to validate message origins and target origins.
+   *
+   * @returns {string} The origin (protocol + host) or "*" as fallback
+   * @private
+   */
+  getVfOrigin() {
+    // Return cached origin if available
+    if (this._vfOrigin) {
+      return this._vfOrigin;
+    }
+
+    // Extract origin from vfPageUrl
+    if (this.vfPageUrl) {
+      try {
+        const url = new URL(this.vfPageUrl);
+        this._vfOrigin = url.origin;
+        return this._vfOrigin;
+      } catch {
+        console.warn(
+          "DischargePointSelector: Invalid vfPageUrl, cannot extract origin"
+        );
+      }
+    }
+
+    // Fallback to wildcard (less secure, but functional)
+    return "*";
+  }
+
+  /**
+   * Validates if a message event origin matches the expected VF origin.
+   * LWS Security: Prevents processing messages from untrusted origins.
+   *
+   * @param {string} eventOrigin - The origin from the MessageEvent
+   * @returns {boolean} True if origin is valid
+   * @private
+   */
+  isValidOrigin(eventOrigin) {
+    const expectedOrigin = this.getVfOrigin();
+
+    // If we couldn't determine the origin, accept all (fallback behavior)
+    if (expectedOrigin === "*") {
+      return true;
+    }
+
+    // Strict origin check
+    return eventOrigin === expectedOrigin;
+  }
+
+  /**
+   * Handles message from VF iframe (map)
+   * LWS Security: Validates message origin before processing.
+   *
+   * @param {MessageEvent} event
+   * @private
+   */
   handleMapMessage(event) {
+    // LWS Security: Validate origin before processing message
+    if (!this.isValidOrigin(event.origin)) {
+      // Silently ignore messages from unexpected origins
+      return;
+    }
+
     try {
       const data =
         typeof event.data === "string" ? JSON.parse(event.data) : event.data;
@@ -578,6 +649,13 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
     }
   }
 
+  /**
+   * Sends a postMessage to the VF iframe
+   * LWS Security: Uses specific targetOrigin instead of wildcard.
+   *
+   * @param {Object} message - Message object with title and detail
+   * @private
+   */
   sendMessageToMap(message) {
     // Light DOM component - use this.querySelector() directly
     const iframe = this.querySelector(
@@ -585,7 +663,9 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
     );
 
     if (iframe && iframe.contentWindow) {
-      iframe.contentWindow.postMessage(JSON.stringify(message), "*");
+      // LWS Security: Use specific origin instead of "*"
+      const targetOrigin = this.getVfOrigin();
+      iframe.contentWindow.postMessage(JSON.stringify(message), targetOrigin);
     }
   }
 
