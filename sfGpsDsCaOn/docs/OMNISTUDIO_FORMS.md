@@ -19,8 +19,6 @@ The Ontario Design System (sfGpsDsCaOn) provides 32 OmniStudio form components t
 
 ## How It Works
 
-### Component Override Architecture
-
 When you configure an OmniScript to use the Ontario Design System, each form element is automatically rendered using an Ontario-styled component instead of the default OmniStudio component.
 
 ```
@@ -35,25 +33,7 @@ Ontario component renders with Ontario DS styling
 All OmniStudio behavior preserved (validation, data binding, etc.)
 ```
 
-### Three-Layer Inheritance
-
-Each Ontario form component follows this inheritance pattern:
-
-```
-Layer 1: OmniStudio Runtime (omnistudio/omniscriptText)
-    ↓ extends
-Layer 2: Stub Class (sfGpsDsOsrtOmniscriptText)
-    ↓ extends
-Layer 3: Base Form Class (sfGpsDsFormText) + Validation Mixin
-    ↓ extends
-Layer 4: Ontario Component (sfGpsDsCaOnFormText) - Template Override Only
-```
-
-This ensures:
-
-- All OmniStudio behavior is inherited
-- Validation and error handling are consistent
-- Only the visual template is customized
+> **Architecture Details:** For the complete three-layer inheritance pattern, inherited properties reference, and component development patterns, see [DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md).
 
 ---
 
@@ -570,9 +550,10 @@ connectedCallback() {
 
 ## Related Documentation
 
-- [SETUP.md](./SETUP.md) - Initial setup and deployment
+- [DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md) - Architecture, inheritance patterns, debugging, and extending components
+- [BUILD_GUIDE.md](./BUILD_GUIDE.md) - Initial setup and deployment
 - [OMNISCRIPT_SETUP.md](./OMNISCRIPT_SETUP.md) - OmniScript configuration
 - [COMPONENT_API.md](./COMPONENT_API.md) - Component properties reference
 - [GIS_GUIDE.md](./GIS_GUIDE.md) - GIS components (Site Selector, Discharge Point, ESRI integration)
-- [LWR_COMPATIBILITY.md](./LWR_COMPATIBILITY.md) - LWR-specific guidance
+- [LWR_GUIDE.md](./LWR_GUIDE.md) - LWR compatibility and best practices
 - [INDUSTRY_ELIGIBILITY_OMNISCRIPT.md](./INDUSTRY_ELIGIBILITY_OMNISCRIPT.md) - Industry Eligibility Check implementation guide

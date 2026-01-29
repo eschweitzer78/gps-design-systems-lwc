@@ -2,6 +2,8 @@
 
 This guide outlines the tools, processes, and checklists for testing sfGpsDsCaOn components for compliance with the Ontario Design System (ODS) and AODA accessibility requirements.
 
+> **Related Guide:** For detailed per-component test cases with specific test IDs, see [COMPONENT_TEST_CHECKLIST.md](./COMPONENT_TEST_CHECKLIST.md).
+
 ## Table of Contents
 
 1. [Testing Tools](#testing-tools)
@@ -824,10 +826,11 @@ When reporting compliance issues, include:
 
 ### Internal Documentation
 
+- [COMPONENT_TEST_CHECKLIST.md](./COMPONENT_TEST_CHECKLIST.md) - Detailed per-component test cases
 - [COMPONENT_API.md](./COMPONENT_API.md) - Component properties reference
 - [GIS_GUIDE.md](./GIS_GUIDE.md) - GIS components (Site Selector, Discharge Point)
 - [OMNISTUDIO_FORMS.md](./OMNISTUDIO_FORMS.md) - OmniStudio form components
-- [LWR_COMPATIBILITY.md](./LWR_COMPATIBILITY.md) - LWR/LWS patterns
+- [LWR_GUIDE.md](./LWR_GUIDE.md) - LWR/LWS patterns and best practices
 
 ### External Documentation
 

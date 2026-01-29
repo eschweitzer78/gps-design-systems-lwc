@@ -148,6 +148,10 @@ export default class SfGpsDsCaOnHeader extends SfGpsDsElement {
     return this._disableDynamicMenu.value;
   }
 
+  get computedLanguage(): string {
+    return this.language || "en";
+  }
+
   /* lifecycle */
 
   connectedCallback() {

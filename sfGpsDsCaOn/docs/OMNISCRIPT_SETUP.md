@@ -102,34 +102,34 @@ export default class SfGpsDsCaOnOmniscript extends OmniscriptBaseOsrt {
   // Map OmniScript element types to Ontario DS components
   static elementTypeToLwcConstructorMap = {
     ...OmniscriptBaseOsrt.elementTypeToLwcConstructorMap,
-    "Text": sfGpsDsCaOnFormText,
+    Text: sfGpsDsCaOnFormText,
     "Text Area": sfGpsDsCaOnFormTextarea,
-    "Email": sfGpsDsCaOnFormEmail,
-    "URL": sfGpsDsCaOnFormUrl,
-    "Telephone": sfGpsDsCaOnFormTelephone,
-    "Range": sfGpsDsCaOnFormRange,
-    "Number": sfGpsDsCaOnFormNumber,
-    "Password": sfGpsDsCaOnFormPassword,
-    "Currency": sfGpsDsCaOnFormCurrency,
-    "Date": sfGpsDsCaOnFormDate,
-    "Time": sfGpsDsCaOnFormTime,
+    Email: sfGpsDsCaOnFormEmail,
+    URL: sfGpsDsCaOnFormUrl,
+    Telephone: sfGpsDsCaOnFormTelephone,
+    Range: sfGpsDsCaOnFormRange,
+    Number: sfGpsDsCaOnFormNumber,
+    Password: sfGpsDsCaOnFormPassword,
+    Currency: sfGpsDsCaOnFormCurrency,
+    Date: sfGpsDsCaOnFormDate,
+    Time: sfGpsDsCaOnFormTime,
     "Date/Time": sfGpsDsCaOnFormDateTime,
-    "Radio": sfGpsDsCaOnFormRadio,
-    "Checkbox": sfGpsDsCaOnFormCheckbox,
-    "Select": sfGpsDsCaOnFormSelect,
+    Radio: sfGpsDsCaOnFormRadio,
+    Checkbox: sfGpsDsCaOnFormCheckbox,
+    Select: sfGpsDsCaOnFormSelect,
     "Multi-select": sfGpsDsCaOnFormMultiselect,
-    "Lookup": sfGpsDsCaOnFormLookup,
-    "Typeahead": sfGpsDsCaOnFormTypeahead,
+    Lookup: sfGpsDsCaOnFormLookup,
+    Typeahead: sfGpsDsCaOnFormTypeahead,
     "Places Typeahead": sfGpsDsCaOnFormPlacesTypeahead,
-    "File": sfGpsDsCaOnFormFile,
-    "Image": sfGpsDsCaOnFormImage,
+    File: sfGpsDsCaOnFormFile,
+    Image: sfGpsDsCaOnFormImage,
     "Text Block": sfGpsDsCaOnFormTextBlock,
-    "Formula": sfGpsDsCaOnFormFormula,
-    "Disclosure": sfGpsDsCaOnFormDisclosure,
-    "Messaging": sfGpsDsCaOnFormMessaging,
-    "Step": sfGpsDsCaOnFormStep,
+    Formula: sfGpsDsCaOnFormFormula,
+    Disclosure: sfGpsDsCaOnFormDisclosure,
+    Messaging: sfGpsDsCaOnFormMessaging,
+    Step: sfGpsDsCaOnFormStep,
     "Step Chart": sfGpsDsCaOnFormStepChart,
-    "Block": sfGpsDsCaOnFormBlock,
+    Block: sfGpsDsCaOnFormBlock,
     "Edit Block": sfGpsDsCaOnFormEditBlock,
     "Edit Block Label": sfGpsDsCaOnFormEditBlockLabel,
     "Edit Block New": sfGpsDsCaOnFormEditBlockNew
@@ -177,14 +177,23 @@ Add the Ontario Design System CSS to your Experience Cloud site:
 
 ```html
 <!-- Ontario Design System Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Raleway:wght@400;700&display=swap"
+  rel="stylesheet"
+/>
 
 <!-- Ontario Design System Styles -->
-<link rel="stylesheet" href="{!$Resource.sfGpsDsCaOnGlobalStyles}/global.css">
-<link rel="stylesheet" href="{!$Resource.sfGpsDsCaOnGlobalStyles}/byo_lwr.css">
-<link rel="stylesheet" href="{!$Resource.sfGpsDsCaOnGlobalStyles}/byo_lwr_omnistudio.css">
+<link rel="stylesheet" href="{!$Resource.sfGpsDsCaOnGlobalStyles}/global.css" />
+<link
+  rel="stylesheet"
+  href="{!$Resource.sfGpsDsCaOnGlobalStyles}/byo_lwr.css"
+/>
+<link
+  rel="stylesheet"
+  href="{!$Resource.sfGpsDsCaOnGlobalStyles}/byo_lwr_omnistudio.css"
+/>
 ```
 
 Or reference the static resource using the content from `head.txt`:
@@ -199,12 +208,12 @@ Or reference the static resource using the content from `head.txt`:
 
 ### Recommended Settings
 
-| Property | Recommended Value | Description |
-|----------|-------------------|-------------|
-| **Track Changes** | Enabled | Required for proper data binding |
-| **Auto Save** | As needed | Consider UX implications |
-| **Client-Side Validation** | Enabled | Uses Ontario DS error styling |
-| **Step Chart** | Enabled | Uses Ontario DS step indicator |
+| Property                   | Recommended Value | Description                      |
+| -------------------------- | ----------------- | -------------------------------- |
+| **Track Changes**          | Enabled           | Required for proper data binding |
+| **Auto Save**              | As needed         | Consider UX implications         |
+| **Client-Side Validation** | Enabled           | Uses Ontario DS error styling    |
+| **Step Chart**             | Enabled           | Uses Ontario DS step indicator   |
 
 ### Theme Settings
 
@@ -237,7 +246,7 @@ Enable debug mode to troubleshoot issues:
 
 ```javascript
 // In browser console
-localStorage.setItem('omniDebug', 'true');
+localStorage.setItem("omniDebug", "true");
 ```
 
 ---
@@ -260,9 +269,24 @@ localStorage.setItem('omniDebug', 'true');
       "name": "PersonalInfo",
       "label": "Personal Information",
       "elements": [
-        { "type": "Text", "name": "FirstName", "label": "First Name", "required": true },
-        { "type": "Text", "name": "LastName", "label": "Last Name", "required": true },
-        { "type": "Email", "name": "Email", "label": "Email Address", "required": true }
+        {
+          "type": "Text",
+          "name": "FirstName",
+          "label": "First Name",
+          "required": true
+        },
+        {
+          "type": "Text",
+          "name": "LastName",
+          "label": "Last Name",
+          "required": true
+        },
+        {
+          "type": "Email",
+          "name": "Email",
+          "label": "Email Address",
+          "required": true
+        }
       ]
     },
     {
@@ -272,7 +296,12 @@ localStorage.setItem('omniDebug', 'true');
       "elements": [
         { "type": "Text", "name": "Street", "label": "Street Address" },
         { "type": "Text", "name": "City", "label": "City" },
-        { "type": "Select", "name": "Province", "label": "Province", "options": "..." }
+        {
+          "type": "Select",
+          "name": "Province",
+          "label": "Province",
+          "options": "..."
+        }
       ]
     }
   ]
@@ -292,8 +321,18 @@ localStorage.setItem('omniDebug', 'true');
   "newLabel": "Add Dependent",
   "elements": [
     { "type": "Text", "name": "Name", "label": "Full Name", "required": true },
-    { "type": "Date", "name": "DOB", "label": "Date of Birth", "required": true },
-    { "type": "Select", "name": "Relationship", "label": "Relationship", "required": true }
+    {
+      "type": "Date",
+      "name": "DOB",
+      "label": "Date of Birth",
+      "required": true
+    },
+    {
+      "type": "Select",
+      "name": "Relationship",
+      "label": "Relationship",
+      "required": true
+    }
   ]
 }
 ```
@@ -307,6 +346,7 @@ localStorage.setItem('omniDebug', 'true');
 **Symptoms**: Form fields appear with default OmniStudio styling
 
 **Solutions**:
+
 1. Verify the LWC override is configured correctly
 2. Check that the OmniScript is using the custom LWC
 3. Ensure CSS is loaded (check Network tab in browser dev tools)
@@ -317,6 +357,7 @@ localStorage.setItem('omniDebug', 'true');
 **Symptoms**: Required fields don't show errors, or errors don't display
 
 **Solutions**:
+
 1. Ensure `required` property is set on the element
 2. Check that `data-omni-input` attribute is on the input element
 3. Verify the validation mixin is applied to the component
@@ -326,6 +367,7 @@ localStorage.setItem('omniDebug', 'true');
 **Symptoms**: Styling looks wrong, fonts are incorrect, colors don't match
 
 **Solutions**:
+
 1. Ensure Ontario DS CSS is loaded after SLDS CSS
 2. Use the `caon-scope` class for CSS scoping
 3. Check for conflicting CSS in the Experience Cloud site theme
@@ -335,6 +377,7 @@ localStorage.setItem('omniDebug', 'true');
 **Symptoms**: No step indicator visible despite configuration
 
 **Solutions**:
+
 1. Verify `showStepChart: true` in OmniScript settings
 2. Check that `sfGpsDsCaOnFormStepChart` is in the element map
 3. Ensure the Step Chart component is deployed
@@ -344,6 +387,7 @@ localStorage.setItem('omniDebug', 'true');
 **Symptoms**: Add/Edit/Delete buttons not working, data not saving
 
 **Solutions**:
+
 1. Ensure all Edit Block components are deployed (EditBlock, EditBlockLabel, EditBlockNew)
 2. Check that the mode property is set correctly (Table, Inline, Cards, FS)
 3. Verify parent record ID is available for file attachments
@@ -394,6 +438,7 @@ const { default: sfGpsDsCaOnFormText } = await import("c/sfGpsDsCaOnFormText");
 ### Minimize CSS
 
 Use only the required CSS files:
+
 - `global.css` - Always required
 - `byo_lwr.css` - Required for LWR sites
 - `byo_lwr_omnistudio.css` - Required for OmniStudio forms
@@ -405,5 +450,5 @@ Use only the required CSS files:
 - [OMNISTUDIO_FORMS.md](./OMNISTUDIO_FORMS.md) - OmniStudio forms overview
 - [COMPONENT_API.md](./COMPONENT_API.md) - Component API reference
 - [POST_DEPLOYMENT.md](./POST_DEPLOYMENT.md) - Post-deployment configuration
-- [LWR_COMPATIBILITY.md](./LWR_COMPATIBILITY.md) - LWR-specific guidance
-- [SETUP.md](./SETUP.md) - Initial setup
+- [LWR_GUIDE.md](./LWR_GUIDE.md) - LWR compatibility and best practices
+- [BUILD_GUIDE.md](./BUILD_GUIDE.md) - Build and deployment

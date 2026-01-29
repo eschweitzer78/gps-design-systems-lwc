@@ -430,6 +430,52 @@ npm run prep-caon && npm run build-caon && sf project deploy start --source-dir 
 
 ---
 
+## Compiling SCSS (If Modified)
+
+If you've made changes to the SCSS files, recompile them:
+
+```bash
+# Compile global styles
+npx sass --no-source-map \
+  sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/global.scss \
+  sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/global.css
+
+# Compile LWR overrides
+npx sass --no-source-map \
+  sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/byo_lwr.scss \
+  sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/byo_lwr.css
+
+# Compile OmniStudio styles
+npx sass --no-source-map \
+  sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/byo_lwr_omnistudio.scss \
+  sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/byo_lwr_omnistudio.css
+```
+
+---
+
+## Static Resources Overview
+
+| Static Resource           | Contents                 | Purpose                                          |
+| ------------------------- | ------------------------ | ------------------------------------------------ |
+| `sfGpsDsCaOnGlobalStyles` | CSS, fonts, icons, logos | Global styling and assets                        |
+| `sfGpsDsCaOnComponents`   | Web component library    | Ontario DS web components (ontario-button, etc.) |
+
+---
+
+## Component Library Structure
+
+The Ontario Design System Component Library includes these web components:
+
+| Web Component              | LWC Wrapper                    | Description           |
+| -------------------------- | ------------------------------ | --------------------- |
+| `<ontario-button>`         | `sfGpsDsCaOnButtonComm`        | Interactive button    |
+| `<ontario-badge>`          | `sfGpsDsCaOnBadgeComm`         | Status badge          |
+| `<ontario-blockquote>`     | `sfGpsDsCaOnBlockquoteComm`    | Styled blockquote     |
+| `<ontario-page-alert>`     | `sfGpsDsCaOnPageAlertComm`     | Page-level alert      |
+| `<ontario-critical-alert>` | `sfGpsDsCaOnCriticalAlertComm` | Critical alert banner |
+
+---
+
 ## Next Steps
 
 After successful deployment:

@@ -42,15 +42,6 @@ export default class SfGpsDsCaOnFeatureCardComm extends SfGpsDsLwc {
   @api
   imageSize?: string;
 
-  // Deprecated properties - kept for backwards compatibility
-  // @ts-ignore
-  @api
-  aspectRatio?: string;
-
-  // @ts-ignore
-  @api
-  cardStyle?: string;
-
   // @ts-ignore
   @api
   className?: string;

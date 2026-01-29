@@ -103,6 +103,10 @@ export default class SfGpsDsCaOnHeaderComm extends SfGpsDsLwc {
   @api
   language?: string;
 
+  get computedLanguage(): string {
+    return this.language || "en";
+  }
+
   // @ts-ignore
   @api
   assetBasePath?: string;

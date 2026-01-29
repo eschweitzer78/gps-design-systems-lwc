@@ -2,6 +2,8 @@
 
 This guide provides solutions for common issues encountered with Ontario Design System LWC components.
 
+> **Related Guide:** For detailed information on enabling debug mode, using the Logger utility, and understanding log levels, see [DEBUG_GUIDE.md](./DEBUG_GUIDE.md).
+
 ---
 
 ## Table of Contents
@@ -64,12 +66,12 @@ console.log(document.querySelector("c-sf-gps-ds-ca-on-callout"));
 
 **Causes & Solutions:**
 
-| Cause                     | Solution                                            |
-| ------------------------- | --------------------------------------------------- |
-| Component not deployed    | Run `sf project deploy start -d sfGpsDsCaOn`        |
-| Missing dependencies      | Check `js-meta.xml` for required LWC dependencies   |
-| Incorrect target          | Verify component target matches page type           |
-| Lightning Locker blocking | Check LWS compatibility (see LWR_BEST_PRACTICES.md) |
+| Cause                     | Solution                                                     |
+| ------------------------- | ------------------------------------------------------------ |
+| Component not deployed    | Run `sf project deploy start -d sfGpsDsCaOn`                 |
+| Missing dependencies      | Check `js-meta.xml` for required LWC dependencies            |
+| Incorrect target          | Verify component target matches page type                    |
+| Lightning Locker blocking | Check LWS compatibility (see [LWR_GUIDE.md](./LWR_GUIDE.md)) |
 
 **Debug Steps:**
 
@@ -764,7 +766,7 @@ System.debug(LoggingLevel.DEBUG, 'Your debug message');
 
 ## Related Documentation
 
-- [DEBUG_GUIDE.md](./DEBUG_GUIDE.md) - Detailed logging setup
-- [LWR_BEST_PRACTICES.md](./LWR_BEST_PRACTICES.md) - LWR/LWS compatibility
+- [DEBUG_GUIDE.md](./DEBUG_GUIDE.md) - Detailed logging setup, Logger utility, and debug tools
+- [LWR_GUIDE.md](./LWR_GUIDE.md) - LWR/LWS compatibility and best practices
 - [AODA_COMPLIANCE.md](./AODA_COMPLIANCE.md) - Accessibility requirements
 - [GIS_GUIDE.md](./GIS_GUIDE.md) - GIS component setup

@@ -1169,6 +1169,6 @@ if (result.success) {
 - [OMNISTUDIO_FORMS.md](./OMNISTUDIO_FORMS.md) - OmniStudio forms overview
 - [OMNISCRIPT_SETUP.md](./OMNISCRIPT_SETUP.md) - OmniScript configuration
 - [GIS_GUIDE.md](./GIS_GUIDE.md) - GIS components (Site Selector, Discharge Point, ESRI integration)
-- [LWR_COMPATIBILITY.md](./LWR_COMPATIBILITY.md) - LWR compatibility patterns
+- [LWR_GUIDE.md](./LWR_GUIDE.md) - LWR compatibility and best practices
 - [DECISION_EXPLAINER_SETUP.md](./DECISION_EXPLAINER_SETUP.md) - Decision Explainer setup (Connected App, permissions)
-- [SETUP.md](./SETUP.md) - Initial setup
+- [BUILD_GUIDE.md](./BUILD_GUIDE.md) - Build and deployment

@@ -612,4 +612,4 @@ See [POST_DEPLOYMENT.md](./POST_DEPLOYMENT.md#css-custom-properties-reference) f
 - [OMNISTUDIO_FORMS.md](./OMNISTUDIO_FORMS.md) - OmniStudio forms overview
 - [COMPONENT_API.md](./COMPONENT_API.md) - Component API reference
 - [OMNISCRIPT_SETUP.md](./OMNISCRIPT_SETUP.md) - OmniScript configuration
-- [LWR_COMPATIBILITY.md](./LWR_COMPATIBILITY.md) - LWR-specific guidance
+- [LWR_GUIDE.md](./LWR_GUIDE.md) - LWR compatibility and best practices

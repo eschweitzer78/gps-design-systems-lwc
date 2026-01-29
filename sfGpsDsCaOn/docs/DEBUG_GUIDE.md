@@ -1,6 +1,8 @@
 # Ontario Design System - Debug and Tracing Guide
 
-This guide explains how to enable debugging, use the logging utilities, and troubleshoot Ontario Design System LWC components.
+This guide explains how to enable debugging, use the logging utilities, and trace execution in Ontario Design System LWC components.
+
+> **Related Guide:** For solutions to common issues and error codes, see [TROUBLESHOOTING.md](./TROUBLESHOOTING.md).
 
 ---
 
@@ -442,7 +444,7 @@ Use the correlation ID to find related log entries:
 
 ## Related Documentation
 
-- [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common issues and solutions
-- [DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md) - Development guide
+- [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) - Common issues, solutions, and error codes reference
+- [DEVELOPER_GUIDE.md](./DEVELOPER_GUIDE.md) - Development guide and architecture
 - [COMPONENT_API.md](./COMPONENT_API.md) - Component APIs
 - [OMNISCRIPT_SETUP.md](./OMNISCRIPT_SETUP.md) - OmniScript configuration
