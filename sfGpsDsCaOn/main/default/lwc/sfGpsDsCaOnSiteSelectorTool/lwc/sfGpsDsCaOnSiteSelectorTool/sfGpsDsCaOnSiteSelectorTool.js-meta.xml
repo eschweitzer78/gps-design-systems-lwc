@@ -9,12 +9,12 @@
     <target>lightning__RecordPage</target>
     <target>lightning__AppPage</target>
     <target>lightning__HomePage</target>
-    <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
   </targets>
   <targetConfigs>
+    <!-- Lightning App Builder (supports property tags) -->
     <targetConfig
-      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage,lightningCommunity__Page,lightningCommunity__Default"
+      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage"
     >
       <property
         name="buttonLabel"
@@ -45,16 +45,85 @@
       />
       <property
         name="defaultLatitude"
-        type="Decimal"
+        type="String"
         label="Default Latitude"
-        description="Default latitude for map center"
+        description="Default latitude for map center (e.g., 43.6532)"
         default="43.6532"
       />
       <property
         name="defaultLongitude"
-        type="Decimal"
+        type="String"
         label="Default Longitude"
-        description="Default longitude for map center"
+        description="Default longitude for map center (e.g., -79.3832)"
+        default="-79.3832"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Custom CSS Class"
+        description="Additional CSS class for custom styling"
+      />
+      <property
+        name="readOnly"
+        type="Boolean"
+        label="Read-Only Mode"
+        description="When enabled, displays location for review without allowing changes. Useful for back-office application review."
+        default="false"
+      />
+      <property
+        name="value"
+        type="String"
+        label="Location Value (JSON)"
+        description="Pre-populated location data as JSON. Format: {address: {...}, coordinates: {latitude, longitude}}"
+      />
+      <property
+        name="searchOptions"
+        type="String"
+        label="Search Options (JSON)"
+        description="JSON array of search type options. Default: [{value:'address',label:'Address'},{value:'coordinates',label:'Coordinates'},{value:'lot',label:'Lot/Concession'}]"
+      />
+    </targetConfig>
+    <!-- Experience Builder (lightningCommunity__Default) -->
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="buttonLabel"
+        type="String"
+        label="Button Label"
+        description="Label for the button that opens the site selector"
+        default="Site selector tool"
+      />
+      <property
+        name="buttonIcon"
+        type="String"
+        label="Button Icon"
+        description="Icon name for the trigger button (e.g., location, map)"
+        default="location"
+      />
+      <property
+        name="modalTitle"
+        type="String"
+        label="Modal Title"
+        description="Title displayed in the modal header"
+        default="Site"
+      />
+      <property
+        name="vfPageUrl"
+        type="String"
+        label="Visualforce Page URL"
+        description="Full URL to the ESRI map Visualforce page"
+      />
+      <property
+        name="defaultLatitude"
+        type="String"
+        label="Default Latitude"
+        description="Default latitude for map center (e.g., 43.6532)"
+        default="43.6532"
+      />
+      <property
+        name="defaultLongitude"
+        type="String"
+        label="Default Longitude"
+        description="Default longitude for map center (e.g., -79.3832)"
         default="-79.3832"
       />
       <property

@@ -9,12 +9,11 @@
     <target>lightning__RecordPage</target>
     <target>lightning__AppPage</target>
     <target>lightning__HomePage</target>
-    <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
   </targets>
   <targetConfigs>
     <targetConfig
-      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage,lightningCommunity__Page,lightningCommunity__Default"
+      targets="lightning__RecordPage,lightning__AppPage,lightning__HomePage"
     >
       <property
         name="title"
@@ -30,6 +29,55 @@
         description="Modal size variant"
         default="medium"
         datasource="small,medium,large,full"
+      />
+      <property
+        name="hideCloseButton"
+        type="Boolean"
+        label="Hide Close Button"
+        description="Hide the X close button in the header"
+        default="false"
+      />
+      <property
+        name="hideHeader"
+        type="Boolean"
+        label="Hide Header"
+        description="Hide the entire header section"
+        default="false"
+      />
+      <property
+        name="hideFooter"
+        type="Boolean"
+        label="Hide Footer"
+        description="Hide the footer section"
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Custom CSS Class"
+        description="Additional CSS class for custom styling"
+      />
+      <property
+        name="ariaLabel"
+        type="String"
+        label="ARIA Label"
+        description="Accessible label for the modal dialog"
+      />
+    </targetConfig>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Modal title displayed in the header"
+        default="Modal"
+      />
+      <property
+        name="size"
+        type="String"
+        label="Size"
+        description="Modal size variant"
+        default="medium"
       />
       <property
         name="hideCloseButton"

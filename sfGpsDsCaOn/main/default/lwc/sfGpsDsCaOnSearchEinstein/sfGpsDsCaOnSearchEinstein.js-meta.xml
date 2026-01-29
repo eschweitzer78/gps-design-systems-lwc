@@ -6,16 +6,13 @@
     <description
   >Ontario Design System search component with Einstein Search integration. Provides type-ahead search with automatic result fetching from Salesforce.</description>
     <targets>
-        <target>lightningCommunity__Page</target>
         <target>lightningCommunity__Default</target>
         <target>lightning__RecordPage</target>
         <target>lightning__AppPage</target>
         <target>lightning__HomePage</target>
     </targets>
     <targetConfigs>
-        <targetConfig
-      targets="lightningCommunity__Default,lightningCommunity__Page"
-    >
+        <targetConfig targets="lightningCommunity__Default">
             <property
         name="label"
         type="String"

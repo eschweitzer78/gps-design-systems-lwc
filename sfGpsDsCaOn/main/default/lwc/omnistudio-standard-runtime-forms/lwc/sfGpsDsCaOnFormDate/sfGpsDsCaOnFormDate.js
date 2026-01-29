@@ -44,32 +44,39 @@ export default class SfGpsDsCaOnFormDate extends SfGpsDsFormDate {
 
   /* event handlers */
 
+  /**
+   * Handles date input changes from the sfGpsDsCaOnDateInput component.
+   * Updates OmniScript JSON data via applyCallResp() which is the standard
+   * OmniScript pattern for updating element values.
+   *
+   * @param {CustomEvent} event - Change event with detail.value (ISO date string)
+   */
   handleDateChange(event) {
     const detail = event.detail;
-    
+
     if (detail && detail.value) {
-      // Update the OmniStudio element value with the ISO date
-      this.elementValue = detail.value;
-      
-      // Trigger OmniStudio update
-      if (this.updateDataJson) {
-        this.updateDataJson(this.elementValue);
-      }
+      // Update OmniScript data using the standard applyCallResp method
+      // This triggers proper data binding and validation
+      this.applyCallResp(detail.value);
     } else {
-      this.elementValue = "";
-      if (this.updateDataJson) {
-        this.updateDataJson("");
-      }
+      // Clear the value
+      this.applyCallResp("");
     }
 
-    // Handle validation
-    if (!detail.isValid && this.setCustomValidation) {
+    // Handle validation for invalid date format
+    if (detail && !detail.isValid && this.setCustomValidation) {
       this.setCustomValidation("Please enter a valid date");
     } else if (this.setCustomValidation) {
       this.setCustomValidation("");
     }
   }
 
+  /**
+   * Handles blur event for validation triggering.
+   * Delegates to parent's handleBlur for standard validation flow.
+   *
+   * @param {Event} event - Blur event
+   */
   handleDateBlur(event) {
     // Trigger blur handling for validation
     if (this.handleBlur) {

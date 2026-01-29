@@ -9,26 +9,25 @@
  * Controller for Ontario Design System Search component
  * Provides unified search functionality for Experience Cloud sites
  *
- * Supports two search modes:
- * 1. SOSL Search (getSearchSuggestions) - Standard SOSL with Einstein when enabled
- * 2. Einstein Search API (searchWithEinstein) - Connect API for Experience Cloud
+ * Uses SOSL Search which automatically leverages Einstein Search when enabled
+ * in the org. This provides:
+ * - Natural language understanding
+ * - Typo tolerance and synonyms
+ * - Federated search across objects
  *
- * Note: Einstein Search requires:
- * - Einstein Search to be enabled in Setup
- * - For Experience Cloud: Network.getNetworkId() must be valid
+ * Note: Einstein Search benefits are automatic when Einstein Search is enabled
+ * in Setup > Einstein Search.
  */
 public with sharing class SfGpsDsCaOnSearchController {
   /**
-   * Search using Einstein Search via Connect API (Experience Cloud)
+   * Search with Einstein-enhanced SOSL
    *
-   * This method uses the Connect API which provides:
-   * - Personalized results based on user behavior
-   * - Natural language understanding
-   * - Typo tolerance and synonyms
-   * - Federated search across objects
+   * This method provides a consistent search interface that leverages
+   * Einstein Search capabilities when enabled. It wraps getSearchSuggestions
+   * with additional parameters for Experience Cloud use cases.
    *
    * @param searchTerm The search term entered by the user
-   * @param searchGroup The search scope: 'ALL', 'NAME', 'EMAIL', 'PHONE', 'SIDEBAR'
+   * @param searchGroup The search scope (reserved for future use): 'ALL', 'NAME', 'EMAIL', 'PHONE', 'SIDEBAR'
    * @param maxResults Maximum number of results to return (default 20, max 100)
    * @return List of SearchResult objects
    */
@@ -38,11 +37,9 @@ public with sharing class SfGpsDsCaOnSearchController {
     String searchGroup,
     Integer maxResults
   ) {
-    List<SearchResult> results = new List<SearchResult>();
-
     // Validate input
     if (String.isBlank(searchTerm) || searchTerm.trim().length() < 2) {
-      return results;
+      return new List<SearchResult>();
     }
 
     // Set defaults
@@ -52,77 +49,11 @@ public with sharing class SfGpsDsCaOnSearchController {
       ? maxResults
       : 20;
 
-    String group = String.isNotBlank(searchGroup) ? searchGroup : 'ALL';
+    // searchGroup parameter reserved for future filtering enhancements
+    // Currently delegates to SOSL which leverages Einstein when enabled
 
-    try {
-      // Get the Network ID for Experience Cloud
-      String networkId = Network.getNetworkId();
-
-      if (String.isBlank(networkId)) {
-        // Not in Experience Cloud context - fall back to SOSL
-        return getSearchSuggestions(searchTerm, null, resultLimit);
-      }
-
-      // Call Connect API for Einstein Search
-      ConnectApi.SearchResults searchResults = ConnectApi.Search.search(
-        networkId,
-        searchTerm
-      );
-
-      if (searchResults != null && searchResults.searchResults != null) {
-        Integer count = 0;
-        for (ConnectApi.SearchResult result : searchResults.searchResults) {
-          if (count >= resultLimit)
-            break;
-
-          SearchResult sr = createSearchResultFromConnect(result);
-          if (sr != null) {
-            results.add(sr);
-            count++;
-          }
-        }
-      }
-    } catch (ConnectApi.ConnectApiException e) {
-      // Connect API not available - fall back to SOSL
-      System.debug(
-        LoggingLevel.WARN,
-        'Einstein Search not available: ' + e.getMessage()
-      );
-      return getSearchSuggestions(searchTerm, null, resultLimit);
-    } catch (Exception e) {
-      System.debug(
-        LoggingLevel.ERROR,
-        'Einstein Search error: ' + e.getMessage()
-      );
-      // Return empty results on unexpected errors
-    }
-
-    return results;
-  }
-
-  /**
-   * Create SearchResult from Connect API result
-   */
-  private static SearchResult createSearchResultFromConnect(
-    ConnectApi.SearchResult result
-  ) {
-    try {
-      String recordId = result.id;
-      String label = result.title;
-      String url = result.url;
-      String objectType = result.type;
-
-      // Get friendly label for the object type
-      String typeLabel = getObjectLabel(objectType);
-
-      return new SearchResult(recordId, label, typeLabel, url);
-    } catch (Exception e) {
-      System.debug(
-        LoggingLevel.WARN,
-        'Could not parse search result: ' + e.getMessage()
-      );
-      return null;
-    }
+    // Use SOSL-based search which automatically uses Einstein when enabled
+    return getSearchSuggestions(searchTerm, null, resultLimit);
   }
 
   /**

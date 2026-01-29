@@ -724,13 +724,16 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
     event.preventDefault();
     if (this._addressDetails) {
       // Dispatch event with address data
+      // Uses bubbles: true, composed: true to ensure event reaches OmniScript
+      // runtime even when component is nested in Shadow DOM contexts
       this.dispatchEvent(
         new CustomEvent("save", {
           detail: {
             address: this._addressDetails,
             coordinates: this._coordinates
           },
-          bubbles: false
+          bubbles: true,
+          composed: true
         })
       );
       this.close();
