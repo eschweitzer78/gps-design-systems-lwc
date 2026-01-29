@@ -113,6 +113,50 @@ All form components support these OmniScript properties:
 | `disabled`    | Disables the field                          |
 | `placeholder` | Placeholder text in input                   |
 
+### Configuring Custom Properties (JSON Editor)
+
+Some components support additional custom properties beyond the standard OmniScript properties. For OmniScript LWC overrides, these custom properties must be configured via the **JSON Editor**.
+
+#### How to Add Custom Properties
+
+1. In OmniScript Designer, select the element you want to configure
+2. Click the **JSON Editor** button (curly braces icon `{}`) in the Properties panel
+3. Locate the `propSetMap` object in the JSON
+4. **Add a nested `propSetMap` object** inside the existing `propSetMap` with your custom properties:
+
+```json
+{
+  "name": "MyElement",
+  "type": "Multi-select",
+  "propSetMap": {
+    "label": "Select options",
+    "required": true,
+    "propSetMap": {
+      "customProperty1": "value1",
+      "customProperty2": ["array", "values"],
+      "optionsJson": [
+        { "value": "opt1", "label": "Option 1", "description": "..." }
+      ]
+    }
+  }
+}
+```
+
+> **Important:** Custom properties must be placed inside a **nested `propSetMap`** object. OmniStudio uses the outer `propSetMap` for standard properties (label, required, options), while custom properties for LWC overrides go inside the nested `propSetMap`.
+
+#### Using Merge Fields for Dynamic Values
+
+Custom properties can reference OmniScript data using merge fields:
+
+```json
+{
+  "propSetMap": {
+    "optionsJson": "%DynamicOptionsFromSetValues%",
+    "defaultValue": "%UserInput:Step1:FieldName%"
+  }
+}
+```
+
 ### Validation
 
 All components integrate with OmniStudio validation:
@@ -252,33 +296,111 @@ The `sfGpsDsCaOnFormSelectableCards` component provides a card-based multi-selec
 **Element Type:** Multi-select (with Custom LWC override)
 **LWC Override:** `c-sf-gps-ds-ca-on-form-selectable-cards`
 
-**Standard Options:** Configure via OmniScript Multi-select options
+**Standard Options:** Configure via OmniScript Multi-select options (Picklist)
 
-**Extended Options (Custom Properties JSON):**
+> **Important:** OmniScript picklist options only provide basic label/value pairs. To display descriptions, badges, links, and expandable content, you **must** configure the `optionsJson` Custom LWC Property.
+
+### Configuring Extended Options (Step-by-Step)
+
+Follow these steps to add descriptions, badges, and expanded content to selectable cards:
+
+#### Step 1: Create the Multi-select Element
+
+1. In OmniScript Designer, add a **Multiselect** element
+2. Set the **Custom LWC Override** to `c-sf-gps-ds-ca-on-form-selectable-cards`
+3. Configure the basic picklist options (these provide the values for data binding)
+
+#### Step 2: Add optionsJson via JSON Editor
+
+For OmniScript LWC overrides, custom properties are configured through the **JSON Editor**.
+
+1. With the Multiselect element selected, click the **JSON Editor** button (curly braces icon `{}`) in the Properties panel
+2. In the JSON Editor, locate the `propSetMap` object
+3. Add a **nested `propSetMap`** object inside the existing `propSetMap` with your `optionsJson`:
 
 ```json
 {
-  "extendedOptions": [
-    {
-      "value": "air-emissions",
-      "label": "Air emissions",
-      "description": "If your business engages in activities that result in air emissions.",
-      "linkLabel": "More details in your profile",
-      "linkUrl": "/profile/sites/air-emissions",
-      "badge": "NEW",
-      "badgeVariant": "success",
-      "expandedContent": "<p>Additional details about requirements...</p>"
-    },
-    {
-      "value": "stormwater",
-      "label": "Stormwater management works",
-      "description": "Discharge of stormwater into the natural environment.",
-      "badge": "IN PROGRESS",
-      "badgeVariant": "info"
+  "name": "AddActivityOptions",
+  "type": "Multi-select",
+  "propSetMap": {
+    "label": "Add activity",
+    "required": false,
+    "controlWidth": 12,
+    "propSetMap": {
+      "optionsJson": [
+        {
+          "value": "air-emissions",
+          "label": "Air emissions",
+          "description": "If your business engages in activities...",
+          "expandedContent": "Additional details..."
+        }
+      ]
     }
-  ]
+  }
 }
 ```
+
+> **Important:** Custom properties must be placed inside a **nested `propSetMap`** object. OmniStudio uses the outer `propSetMap` for standard properties (label, required, options), while custom properties for LWC overrides go inside the inner `propSetMap`.
+
+#### Alternative: Using a Formula or Set Values Element
+
+For dynamic extended options, you can use a Set Values or Formula element to generate the JSON, then reference it:
+
+1. Create a **Set Values** element earlier in the OmniScript
+2. Set the element name (e.g., `ExtendedOptions`)
+3. Configure it to output the JSON array
+4. In the Multiselect element's JSON Editor, add the nested `propSetMap` with a merge field reference:
+
+```json
+{
+  "propSetMap": {
+    "propSetMap": {
+      "optionsJson": "%ExtendedOptions%"
+    }
+  }
+}
+```
+
+#### Step 3: Format the optionsJson Value
+
+The `optionsJson` property must be a valid JSON array. Each object in the array corresponds to one card:
+
+```json
+[
+  {
+    "value": "air-emissions",
+    "label": "Air emissions",
+    "description": "If your business engages in activities that result in air emissions.",
+    "linkLabel": "More details in your profile",
+    "linkUrl": "/profile/sites/air-emissions",
+    "badge": "NEW",
+    "badgeVariant": "success",
+    "expandedContent": "Additional details about requirements..."
+  },
+  {
+    "value": "stormwater",
+    "label": "Stormwater management works",
+    "description": "Discharge of stormwater into the natural environment.",
+    "badge": "IN PROGRESS",
+    "badgeVariant": "info"
+  }
+]
+```
+
+> **Note:** The `value` field in `optionsJson` must match the value configured in the OmniScript picklist options.
+
+### Extended Options Properties
+
+| Property          | Required | Description                                    |
+| ----------------- | -------- | ---------------------------------------------- |
+| `value`           | Yes      | Unique identifier (must match picklist option) |
+| `label`           | Yes      | Card title displayed in bold                   |
+| `description`     | No       | Text displayed below the title                 |
+| `expandedContent` | No       | Content shown when "View more" is clicked      |
+| `linkLabel`       | No       | Text for an optional link                      |
+| `linkUrl`         | No       | URL for the optional link                      |
+| `badge`           | No       | Badge text (e.g., "NEW", "IN PROGRESS")        |
+| `badgeVariant`    | No       | Badge color (see variants below)               |
 
 ### Badge Variants
 
@@ -288,6 +410,42 @@ The `sfGpsDsCaOnFormSelectableCards` component provides a card-based multi-selec
 | `info`    | Blue   | New, informational        |
 | `warning` | Yellow | Pending, attention needed |
 | `error`   | Red    | Error, rejected           |
+
+### Troubleshooting Selectable Cards
+
+#### Cards only show value identifiers (e.g., "air-emissions") instead of proper labels
+
+**Cause:** The `optionsJson` property is not configured in the **nested** `propSetMap`.
+
+**Solution:** Open the JSON Editor and add a nested `propSetMap` object inside the existing `propSetMap`, then add `optionsJson` inside the nested object (see Step 2 above).
+
+#### Cards show no description, badge, or "View more" content
+
+**Cause:** Same as above - the extended options data is missing from the nested `propSetMap`.
+
+**Solution:** Configure `optionsJson` in the nested `propSetMap` via JSON Editor with all the extended properties (`description`, `expandedContent`, `badge`, etc.).
+
+#### Card value doesn't match when submitted
+
+**Cause:** The `value` in `optionsJson` doesn't match the picklist option value.
+
+**Solution:** Ensure the `value` field in each `optionsJson` object exactly matches the corresponding OmniScript picklist option value.
+
+#### Using Dynamic Content
+
+For dynamic extended options (from DataRaptor, Integration Procedure, or formula), use a merge field reference in the nested `propSetMap`:
+
+```json
+{
+  "propSetMap": {
+    "propSetMap": {
+      "optionsJson": "%ExtendedOptionsFormula%"
+    }
+  }
+}
+```
+
+Where `ExtendedOptionsFormula` is a Set Values or Formula element that produces the JSON array.
 
 ---
 
@@ -300,16 +458,44 @@ The `sfGpsDsCaOnFormNaicsCodePicker` provides a cascading 5-level dropdown for s
 **Element Type:** Select (with Custom LWC override)
 **LWC Override:** `c-sf-gps-ds-ca-on-form-naics-code-picker`
 
-**Custom Properties:**
+### Custom Properties (via JSON Editor)
+
+Add custom properties to a **nested `propSetMap`** via the JSON Editor:
 
 ```json
 {
-  "label": "NAICS Code",
-  "helpText": "Select the industry code that best describes your operation.",
-  "required": true,
-  "naicsDataSource": "DataRaptorName"
+  "propSetMap": {
+    "label": "NAICS Code",
+    "helpText": "Select the industry code that best describes your operation.",
+    "required": true,
+    "propSetMap": {
+      "sectorLabel": "Sector",
+      "subSectorLabel": "Sub sector",
+      "industryGroupLabel": "Industry group",
+      "industryLabel": "Industry",
+      "nationalIndustryLabel": "National industry",
+      "sectorOptionsJson": [...],
+      "subSectorOptionsJson": [...],
+      "industryGroupOptionsJson": [...],
+      "industryOptionsJson": [...],
+      "nationalIndustryOptionsJson": [...]
+    }
+  }
 }
 ```
+
+| Property                      | Required | Description                             |
+| ----------------------------- | -------- | --------------------------------------- |
+| `sectorLabel`                 | No       | Label for sector dropdown               |
+| `subSectorLabel`              | No       | Label for sub-sector dropdown           |
+| `industryGroupLabel`          | No       | Label for industry group dropdown       |
+| `industryLabel`               | No       | Label for industry dropdown             |
+| `nationalIndustryLabel`       | No       | Label for national industry dropdown    |
+| `sectorOptionsJson`           | Yes      | JSON array of sector options            |
+| `subSectorOptionsJson`        | Yes      | JSON array of sub-sector options        |
+| `industryGroupOptionsJson`    | Yes      | JSON array of industry group options    |
+| `industryOptionsJson`         | Yes      | JSON array of industry options          |
+| `nationalIndustryOptionsJson` | Yes      | JSON array of national industry options |
 
 ### Cascading Levels
 
@@ -345,17 +531,33 @@ The `sfGpsDsCaOnFormSiteSelectorTool` provides ESRI-integrated address selection
 **Element Type:** Custom LWC
 **LWC Name:** `c-sf-gps-ds-ca-on-form-site-selector-tool`
 
-**Custom Properties:**
+### Custom Properties (via JSON Editor)
+
+Add custom properties to a **nested `propSetMap`** via the JSON Editor:
 
 ```json
 {
-  "label": "Site address",
-  "helpText": "Use the site selector tool to find the address.",
-  "required": true,
-  "buttonLabel": "Site selector tool",
-  "modalTitle": "Site"
+  "propSetMap": {
+    "label": "Site address",
+    "helpText": "Use the site selector tool to find the address.",
+    "required": true,
+    "propSetMap": {
+      "buttonLabel": "Site selector tool",
+      "modalTitle": "Site",
+      "vfPageUrl": "/apex/SiteSelectorVF"
+    }
+  }
 }
 ```
+
+| Property      | Required | Default              | Description                          |
+| ------------- | -------- | -------------------- | ------------------------------------ |
+| `label`       | No       | "Site address"       | Field label (outer propSetMap)       |
+| `helpText`    | No       | ""                   | Help text below label (outer)        |
+| `required`    | No       | false                | Makes field required (outer)         |
+| `buttonLabel` | No       | "Site selector tool" | Text on the launcher button (nested) |
+| `modalTitle`  | No       | "Site"               | Title of the modal dialog (nested)   |
+| `vfPageUrl`   | No       | ""                   | URL to the Visualforce page (nested) |
 
 ### Output Fields
 
@@ -385,17 +587,37 @@ The `sfGpsDsCaOnFormDischargePointSelector` provides coordinate-based location e
 **Element Type:** Custom LWC
 **LWC Name:** `c-sf-gps-ds-ca-on-form-discharge-point-selector`
 
-**Custom Properties:**
+### Custom Properties (via JSON Editor)
+
+Add custom properties to a **nested `propSetMap`** via the JSON Editor:
 
 ```json
 {
-  "label": "Discharge point location",
-  "helpText": "Enter the coordinates of the discharge point.",
-  "required": true,
-  "buttonLabel": "Add discharge point",
-  "modalTitle": "Source"
+  "propSetMap": {
+    "label": "Discharge point location",
+    "helpText": "Enter the coordinates of the discharge point.",
+    "required": true,
+    "propSetMap": {
+      "buttonLabel": "Add discharge point",
+      "modalTitle": "Source",
+      "defaultLatitude": 43.6532,
+      "defaultLongitude": -79.3832,
+      "vfPageUrl": "/apex/DischargePointVF"
+    }
+  }
 }
 ```
+
+| Property           | Required | Default                    | Description                               |
+| ------------------ | -------- | -------------------------- | ----------------------------------------- |
+| `label`            | No       | "Discharge point location" | Field label (outer propSetMap)            |
+| `helpText`         | No       | ""                         | Help text below label (outer)             |
+| `required`         | No       | false                      | Makes field required (outer)              |
+| `buttonLabel`      | No       | "Add discharge point"      | Text on the launcher button (nested)      |
+| `modalTitle`       | No       | "Source"                   | Title of the modal dialog (nested)        |
+| `defaultLatitude`  | No       | 43.6532                    | Default latitude for map center (nested)  |
+| `defaultLongitude` | No       | -79.3832                   | Default longitude for map center (nested) |
+| `vfPageUrl`        | No       | ""                         | URL to the Visualforce page (nested)      |
 
 ### Coordinate Formats
 
@@ -414,6 +636,80 @@ The `sfGpsDsCaOnFormDischargePointSelector` provides coordinate-based location e
 | `utmZone`   | Integer | UTM zone (if entered as UTM) |
 | `utmEast`   | Decimal | UTM east coordinate          |
 | `utmNorth`  | Decimal | UTM north coordinate         |
+
+---
+
+## Places Typeahead Component
+
+The `sfGpsDsCaOnFormPlacesTypeahead` provides Google Maps-powered address autocomplete with optional embedded map display.
+
+### OmniScript Configuration
+
+**Element Type:** Typeahead (with Custom LWC override)
+**LWC Override:** `c-sf-gps-ds-ca-on-form-places-typeahead`
+
+### Custom Properties (via JSON Editor)
+
+Add these properties to `propSetMap` via the JSON Editor:
+
+```json
+{
+  "propSetMap": {
+    "label": "Address",
+    "helpText": "Start typing to search for an address.",
+    "required": true,
+    "googleMapsAPIKey": "YOUR_GOOGLE_MAPS_API_KEY",
+    "googleAddressCountry": "ca",
+    "googleAddressTypes": "address",
+    "hideMap": false
+  }
+}
+```
+
+| Property               | Required | Default   | Description                                  |
+| ---------------------- | -------- | --------- | -------------------------------------------- |
+| `label`                | No       | "Address" | Field label                                  |
+| `helpText`             | No       | ""        | Help text below label                        |
+| `required`             | No       | false     | Makes field required                         |
+| `googleMapsAPIKey`     | Yes      | ""        | Your Google Maps API key                     |
+| `googleAddressCountry` | No       | ""        | Country bias for search results (e.g., "ca") |
+| `googleAddressTypes`   | No       | ""        | Types of places to search (e.g., "address")  |
+| `hideMap`              | No       | false     | Hide the embedded map after selection        |
+
+> **Note:** You must configure a valid Google Maps API key with the Places API enabled for this component to work.
+
+---
+
+## Typeahead Component
+
+The `sfGpsDsCaOnFormTypeahead` provides an autocomplete dropdown powered by DataRaptor or REST data sources.
+
+### OmniScript Configuration
+
+**Element Type:** Typeahead (with Custom LWC override)
+**LWC Override:** `c-sf-gps-ds-ca-on-form-typeahead`
+
+### Custom Properties (via JSON Editor)
+
+Add these properties to `propSetMap` via the JSON Editor:
+
+```json
+{
+  "propSetMap": {
+    "label": "Search",
+    "helpText": "Type to search...",
+    "required": true,
+    "dataJson": "%SearchResultsFromDataRaptor%"
+  }
+}
+```
+
+| Property   | Required | Default  | Description                              |
+| ---------- | -------- | -------- | ---------------------------------------- |
+| `label`    | No       | "Search" | Field label                              |
+| `helpText` | No       | ""       | Help text below label                    |
+| `required` | No       | false    | Makes field required                     |
+| `dataJson` | No       | ""       | JSON array of options or merge field ref |
 
 ---
 

@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, track } from "lwc";
+import { api, LightningElement, track } from "lwc";
 import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 import { computeClass } from "c/sfGpsDsHelpers";
 import fetchVFDomainURL from "@salesforce/apex/sfGpsDsCaOnSiteSelectorCtr.fetchVFDomainURL";
@@ -46,27 +46,63 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
   }
 
   get buttonLabel() {
-    return this._propSetMap?.buttonLabel || "Add discharge point";
+    // Check custom propSetMap first, then standard propSetMap
+    return (
+      this._customPropSetMap?.buttonLabel ||
+      this._propSetMap?.buttonLabel ||
+      "Add discharge point"
+    );
   }
 
   get modalTitle() {
-    return this._propSetMap?.modalTitle || "Source";
+    return (
+      this._customPropSetMap?.modalTitle ||
+      this._propSetMap?.modalTitle ||
+      "Source"
+    );
   }
 
   get defaultLatitude() {
-    return this._propSetMap?.defaultLatitude || 43.6532;
+    return (
+      this._customPropSetMap?.defaultLatitude ||
+      this._propSetMap?.defaultLatitude ||
+      43.6532
+    );
   }
 
   get defaultLongitude() {
-    return this._propSetMap?.defaultLongitude || -79.3832;
+    return (
+      this._customPropSetMap?.defaultLongitude ||
+      this._propSetMap?.defaultLongitude ||
+      -79.3832
+    );
   }
 
   get vfPageUrl() {
-    return this._vfPageUrl || this._propSetMap?.vfPageUrl || "";
+    return (
+      this._vfPageUrl ||
+      this._customPropSetMap?.vfPageUrl ||
+      this._propSetMap?.vfPageUrl ||
+      ""
+    );
   }
 
+  /**
+   * Access standard OmniStudio properties from jsonDef.propSetMap
+   * @returns {Object}
+   */
   get _propSetMap() {
-    return this.omniJsonDef?.propSetMap || {};
+    return this.jsonDef?.propSetMap || {};
+  }
+
+  /**
+   * Access custom properties added via JSON Editor.
+   * OmniStudio nests custom propSetMap inside the standard propSetMap.
+   * Path: jsonDef.propSetMap.propSetMap.customProperty
+   * @returns {Object}
+   */
+  get _customPropSetMap() {
+    return this.jsonDef?.propSetMap?.propSetMap || {};
   }
 
   /* ========================================
@@ -222,8 +258,8 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
    * Checks if the component is valid.
    * Required for OmniScript "Next" button validation.
    * @returns {boolean} True if valid (not required OR has value)
-   * @api
    */
+  @api
   checkValidity() {
     // If not required, always valid
     if (!this.isRequired) {
@@ -241,8 +277,8 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
    * Reports validity and shows validation messages.
    * Required for OmniScript step validation.
    * @returns {boolean} True if valid
-   * @api
    */
+  @api
   reportValidity() {
     const isValid = this.checkValidity();
     this.showValidation = !isValid;
@@ -252,8 +288,8 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
   /**
    * Sets a custom validity message.
    * @param {string} message - Custom error message
-   * @api
    */
+  @api
   setCustomValidity(message) {
     this._customValidityMessage = message;
     this.showValidation = Boolean(message);

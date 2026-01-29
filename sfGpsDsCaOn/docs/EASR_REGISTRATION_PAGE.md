@@ -237,6 +237,81 @@ Add custom CSS for spacing and layout:
 
 ---
 
+## Add Activity Page Setup
+
+When the user clicks the "Add activity" button, they navigate to a separate page (`/easr/activity/new`) that displays the OmniScript for selecting activity types.
+
+### 1. Create the Add Activity Page
+
+1. Go to **Experience Builder**
+2. Click **Pages** → **New Page**
+3. Select **Standard Page** or **Build Your Own**
+4. Set the page properties:
+
+| Property | Value             |
+| -------- | ----------------- |
+| **Name** | Add Activity      |
+| **URL**  | easr/activity/new |
+
+### 2. Configure Page Layout
+
+Add the following components to the page:
+
+#### Header Section
+
+Use the same header configuration as the EASR Registration page (see [Header Section](#header-section) above).
+
+#### Back Link
+
+| Property  | Value          |
+| --------- | -------------- |
+| **Label** | Back           |
+| **URL**   | /easr/register |
+
+#### Page Title
+
+```html
+<h1 class="ontario-h1">Add activity</h1>
+```
+
+#### OmniScript Embed
+
+Add the **OmniScript** component from the Experience Builder component palette.
+
+| Property               | Value       |
+| ---------------------- | ----------- |
+| **OmniScript Type**    | EASR        |
+| **OmniScript SubType** | AddActivity |
+| **Language**           | English     |
+
+> **Note**: The OmniScript Type and SubType must match the OmniScript you've created in OmniStudio. See [Add Activity OmniScript](#add-activity-omniscript) below for the OmniScript configuration.
+
+### 3. OmniScript Navigation
+
+Configure the OmniScript to handle navigation after completion:
+
+| User Action      | OmniScript Behavior                                      |
+| ---------------- | -------------------------------------------------------- |
+| **Add selected** | Save data, navigate to `/easr/register` with new records |
+| **Cancel**       | Navigate back to `/easr/register`                        |
+| **Back to home** | Navigate to `/`                                          |
+
+In the OmniScript, use a **Navigate Action** element or **Set Values** with `window.location` to redirect:
+
+```javascript
+// In OmniScript Custom LWC or Action
+window.location.href = "/easr/register";
+```
+
+Or use the OmniScript **Navigate** action with:
+
+| Property         | Value          |
+| ---------------- | -------------- |
+| **Target Type**  | URL            |
+| **Target Value** | /easr/register |
+
+---
+
 ## Accessibility Considerations
 
 1. **Heading Hierarchy**:
@@ -361,9 +436,50 @@ Use the **Multiselect** element type in OmniScript with Custom LWC Override:
 | **Label**           | Add activity                   |
 | **Options Source**  | Picklist or DataRaptor         |
 
-#### Options JSON (Custom Properties)
+##### Step 1: Configure Picklist Options
 
-Set the `optionsJson` property in Custom LWC Properties:
+In the Multiselect element properties, add the picklist options:
+
+| Label                              | Value (Name)            |
+| ---------------------------------- | ----------------------- |
+| Air emissions                      | air-emissions           |
+| Automotive refurbishing facility   | automotive-refurbishing |
+| End-of-life vehicle waste disposal | elv-disposal            |
+| Printing facility                  | printing-facility       |
+| Solar facility                     | solar-facility          |
+| Stormwater management works        | stormwater-management   |
+| Waste management system            | waste-management        |
+| Water taking activities            | water-taking            |
+
+> **Important:** You must configure BOTH the Label AND the Name/Value for each option. The Name/Value is what gets stored in the data. If you only configure the Label, the cards will display the label as both the title and the value identifier.
+
+##### Step 2: Add optionsJson via JSON Editor
+
+The picklist only provides basic label/value pairs. To add descriptions, badges, and expandable content, you need to add the `optionsJson` property via the **JSON Editor**:
+
+1. With the Multiselect element selected, click the **JSON Editor** button (curly braces icon `{}`) in the Properties panel
+2. Locate the `propSetMap` object in the JSON
+3. Add a **nested `propSetMap`** object inside the existing `propSetMap` with your `optionsJson`:
+
+```json
+{
+  "propSetMap": {
+    "label": "Add activity",
+    "required": false,
+    "propSetMap": {
+      "optionsJson": [
+        // ... array of extended options (see below)
+      ]
+    }
+  }
+}
+```
+
+> **Important:** Custom properties must be placed inside a **nested `propSetMap`** object. OmniStudio uses the outer `propSetMap` for standard properties, while custom properties for LWC overrides go inside the inner `propSetMap`.
+
+#### optionsJson Property Value
+
+Add the following JSON array as the value of `optionsJson` in the element's `propSetMap`:
 
 ```json
 [
@@ -432,6 +548,35 @@ Set the `optionsJson` property in Custom LWC Properties:
    - "Back to home" → Returns to the home page
 
 5. **Data Binding**: The selected values are stored in the OmniScript data JSON and can be used in subsequent steps or Integration Procedures
+
+### Troubleshooting Selectable Cards
+
+#### Cards only show value identifiers (e.g., "air-emissions") instead of labels
+
+**Cause:** The `optionsJson` property is not configured in the element's JSON, or the picklist options only have Label configured without Name/Value.
+
+**Solution:**
+
+1. Ensure picklist options have BOTH Label AND Name/Value configured
+2. Add the `optionsJson` property to `propSetMap` via JSON Editor (see Step 2 above)
+
+#### No description, badge, or "View more" content appears
+
+**Cause:** The `optionsJson` property is missing from `propSetMap` or is malformed.
+
+**Solution:** Open the JSON Editor and add the `optionsJson` property inside `propSetMap` with valid JSON containing `description`, `expandedContent`, and other extended properties.
+
+#### All checkboxes get selected when clicking one
+
+**Cause:** The picklist options only have Label configured, resulting in undefined values.
+
+**Solution:** Configure BOTH Label AND Name/Value for each picklist option. The Name/Value field provides the unique identifier used for selection tracking.
+
+#### Styling issues (no checkbox visible, no fonts)
+
+**Cause:** CSS files not loading correctly in LWR site.
+
+**Solution:** Ensure the site is republished after deploying component updates. Hard refresh the browser (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows) to clear CDN cache.
 
 ### Alternative: Experience Builder Implementation
 

@@ -10,10 +10,10 @@
   background-color: rgba(255, 255, 255, 0.7);
   z-index: 9999;
 }
-.ontario-loading-indicator__overlay[aria-hidden=false] {
+.ontario-loading-indicator__overlay[aria-hidden="false"] {
   display: block;
 }
-.ontario-loading-indicator__overlay[aria-hidden=true] {
+.ontario-loading-indicator__overlay[aria-hidden="true"] {
   display: none;
 }
 
@@ -45,10 +45,10 @@
   height: auto;
   padding: 1rem;
 }
-.ontario-loading-indicator--inline[aria-hidden=true] {
+.ontario-loading-indicator--inline[aria-hidden="true"] {
   display: none;
 }
-.ontario-loading-indicator--inline[aria-hidden=false] {
+.ontario-loading-indicator--inline[aria-hidden="false"] {
   display: flex;
 }
 

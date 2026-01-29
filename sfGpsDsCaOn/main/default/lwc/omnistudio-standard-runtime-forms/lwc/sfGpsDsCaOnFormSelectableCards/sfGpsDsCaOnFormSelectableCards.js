@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import SfGpsDsFormMultiselect from "c/sfGpsDsFormMultiselect";
 import tmpl from "./sfGpsDsCaOnFormSelectableCards.html";
 
@@ -53,6 +54,85 @@ const CLASS_NAME = "SfGpsDsCaOnFormSelectableCards";
  * - WCAG 2.1 AA: Proper fieldset/legend, keyboard navigation
  */
 export default class SfGpsDsCaOnFormSelectableCards extends SfGpsDsFormMultiselect {
+  /**
+   * Access custom properties from the OmniScript element definition.
+   * We use a separate getter because _propSetMap is a base class property that can't be overridden.
+   * Try multiple paths since OmniStudio structure varies.
+   * @returns {Object} The propSetMap from the OmniScript element definition
+   */
+  get _customPropSetMap() {
+    // Try multiple paths to find propSetMap
+    const fromJsonDef = this.jsonDef?.propSetMap;
+
+    if (DEBUG) {
+      console.log(CLASS_NAME, "_customPropSetMap - jsonDef:", this.jsonDef);
+      console.log(
+        CLASS_NAME,
+        "_customPropSetMap - jsonDef.propSetMap:",
+        fromJsonDef
+      );
+
+      // Try to access optionsJson directly from different paths
+      console.log(
+        CLASS_NAME,
+        "_customPropSetMap - jsonDef.propSetMap?.optionsJson:",
+        this.jsonDef?.propSetMap?.optionsJson
+      );
+      console.log(
+        CLASS_NAME,
+        "_customPropSetMap - jsonDef.optionsJson:",
+        this.jsonDef?.optionsJson
+      );
+
+      // Check if optionsJson is at the jsonDef level directly
+      if (this.jsonDef) {
+        // Try to enumerate jsonDef properties
+        try {
+          for (const key in this.jsonDef) {
+            if (Object.prototype.hasOwnProperty.call(this.jsonDef, key)) {
+              if (key === "propSetMap" || key === "optionsJson") {
+                console.log(
+                  CLASS_NAME,
+                  "_customPropSetMap - jsonDef[" + key + "]:",
+                  this.jsonDef[key]
+                );
+              }
+            }
+          }
+        } catch (e) {
+          console.log(
+            CLASS_NAME,
+            "_customPropSetMap - error enumerating jsonDef:",
+            e
+          );
+        }
+      }
+
+      // Check propSetMap properties
+      if (fromJsonDef) {
+        try {
+          for (const key in fromJsonDef) {
+            if (Object.prototype.hasOwnProperty.call(fromJsonDef, key)) {
+              console.log(
+                CLASS_NAME,
+                "_customPropSetMap - propSetMap[" + key + "]:",
+                fromJsonDef[key]
+              );
+            }
+          }
+        } catch (e) {
+          console.log(
+            CLASS_NAME,
+            "_customPropSetMap - error enumerating propSetMap:",
+            e
+          );
+        }
+      }
+    }
+
+    return fromJsonDef || {};
+  }
+
   /* computed */
 
   /**
@@ -66,9 +146,79 @@ export default class SfGpsDsCaOnFormSelectableCards extends SfGpsDsFormMultisele
         ? [this.elementValue]
         : [];
 
+    if (DEBUG) {
+      console.log(
+        CLASS_NAME,
+        "decoratedOptions - elementValue:",
+        this.elementValue
+      );
+      console.log(
+        CLASS_NAME,
+        "decoratedOptions - _realtimeOptions length:",
+        this._realtimeOptions?.length
+      );
+      if (this._realtimeOptions?.[0]) {
+        const first = this._realtimeOptions[0];
+        console.log(CLASS_NAME, "FIRST OPTION - value:", first.value);
+        console.log(CLASS_NAME, "FIRST OPTION - label:", first.label);
+        console.log(CLASS_NAME, "FIRST OPTION - name:", first.name);
+        console.log(
+          CLASS_NAME,
+          "FIRST OPTION - all keys:",
+          Object.keys(first).join(", ")
+        );
+        // Try to iterate and log all properties
+        for (const key of Object.keys(first)) {
+          console.log(CLASS_NAME, "FIRST OPTION - " + key + ":", first[key]);
+        }
+      }
+    }
+
     // Check for extended options in Custom Properties
-    const extendedOptionsJson = this._propSetMap?.optionsJson;
+    // OmniStudio stores custom properties in a nested propSetMap when added via JSON Editor
+    // Path: jsonDef.propSetMap.propSetMap.optionsJson
+    const nestedPropSetMap = this.jsonDef?.propSetMap?.propSetMap;
+    const extendedOptionsJson = nestedPropSetMap?.optionsJson;
     let extendedOptions = {};
+
+    if (DEBUG) {
+      console.log(
+        CLASS_NAME,
+        "decoratedOptions - nestedPropSetMap:",
+        nestedPropSetMap
+      );
+      console.log(
+        CLASS_NAME,
+        "decoratedOptions - optionsJson exists:",
+        !!extendedOptionsJson
+      );
+      console.log(
+        CLASS_NAME,
+        "decoratedOptions - optionsJson type:",
+        typeof extendedOptionsJson
+      );
+      if (extendedOptionsJson) {
+        console.log(
+          CLASS_NAME,
+          "decoratedOptions - optionsJson length:",
+          Array.isArray(extendedOptionsJson)
+            ? extendedOptionsJson.length
+            : "not array"
+        );
+      }
+      // Also enumerate the nested propSetMap to see what's there
+      if (nestedPropSetMap) {
+        for (const key in nestedPropSetMap) {
+          if (Object.prototype.hasOwnProperty.call(nestedPropSetMap, key)) {
+            console.log(
+              CLASS_NAME,
+              "decoratedOptions - nestedPropSetMap[" + key + "]:",
+              nestedPropSetMap[key]
+            );
+          }
+        }
+      }
+    }
 
     if (extendedOptionsJson) {
       try {
@@ -77,30 +227,87 @@ export default class SfGpsDsCaOnFormSelectableCards extends SfGpsDsFormMultisele
             ? JSON.parse(extendedOptionsJson)
             : extendedOptionsJson;
 
+        if (DEBUG) {
+          console.log(
+            CLASS_NAME,
+            "decoratedOptions - parsed optionsJson:",
+            parsed
+          );
+        }
+
         if (Array.isArray(parsed)) {
           parsed.forEach((opt) => {
             extendedOptions[opt.value] = opt;
           });
+          if (DEBUG) {
+            console.log(
+              CLASS_NAME,
+              "decoratedOptions - extendedOptions keys:",
+              Object.keys(extendedOptions)
+            );
+          }
         }
       } catch (e) {
-        if (DEBUG) console.error(CLASS_NAME, "Error parsing optionsJson", e);
+        console.error(CLASS_NAME, "Error parsing optionsJson", e);
       }
     }
 
     // Merge standard options with extended data
+    // NOTE: OmniStudio picklist options structure varies:
+    // - Sometimes: opt.name = identifier, opt.value = label (confusingly named)
+    // - Sometimes: opt.value = identifier, opt.label = label (more intuitive)
+    // We need to handle both cases and match against optionsJson which uses "value" as identifier
     return (this._realtimeOptions || []).map((opt, index) => {
-      const extended = extendedOptions[opt.value] || {};
+      // Determine the identifier - prefer opt.value as it's used for selection tracking
+      // If opt.value looks like a label (has spaces), use opt.name instead
+      const optValue = opt.value;
+      const optLabel = opt.label;
+      const optName = opt.name;
+
+      // Use opt.value as identifier if available, otherwise opt.name or opt.label
+      const optIdentifier = optValue || optName || optLabel;
+      // Use opt.label for display if available, otherwise fall back
+      const optDisplayLabel = optLabel || optValue || optName;
+
+      const extended = extendedOptions[optIdentifier] || {};
+
+      if (DEBUG && index === 0) {
+        console.log(CLASS_NAME, "MAPPED OPTION - opt.value:", optValue);
+        console.log(CLASS_NAME, "MAPPED OPTION - opt.label:", optLabel);
+        console.log(CLASS_NAME, "MAPPED OPTION - opt.name:", optName);
+        console.log(
+          CLASS_NAME,
+          "MAPPED OPTION - optIdentifier:",
+          optIdentifier
+        );
+        console.log(
+          CLASS_NAME,
+          "MAPPED OPTION - optDisplayLabel:",
+          optDisplayLabel
+        );
+        console.log(
+          CLASS_NAME,
+          "MAPPED OPTION - extended found:",
+          Object.keys(extended).length > 0
+        );
+        console.log(
+          CLASS_NAME,
+          "MAPPED OPTION - extended.description:",
+          extended.description
+        );
+      }
+
       return {
-        value: opt.value,
-        label: extended.label || opt.label,
+        value: optIdentifier,
+        label: extended.label || optDisplayLabel,
         description: extended.description || "",
         linkLabel: extended.linkLabel || "",
         linkUrl: extended.linkUrl || "",
         badge: extended.badge || "",
         badgeVariant: extended.badgeVariant || "info",
         expandedContent: extended.expandedContent || "",
-        checked: selected.includes(opt.value),
-        key: `opt-${index}-${opt.value}`
+        checked: selected.includes(optIdentifier),
+        key: `opt-${index}-${optIdentifier}`
       };
     });
   }
@@ -112,15 +319,54 @@ export default class SfGpsDsCaOnFormSelectableCards extends SfGpsDsFormMultisele
     return this._propSetMap?.errorMessage || "";
   }
 
+  /* validation overrides - bypass childInput to avoid caching issues */
+
+  /**
+   * Override checkValidity to handle validation directly.
+   * The parent mixin tries to call this.childInput.checkValidity() which fails
+   * for our component since childInput is an LWC, not a native input.
+   * @returns {boolean} True if valid
+   */
+  @api checkValidity() {
+    if (DEBUG) console.log(CLASS_NAME, "checkValidity override");
+    if (
+      this._propSetMap?.required &&
+      (!this.elementValue || this.elementValue.length === 0)
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * Override reportValidity to handle validation directly.
+   * The parent mixin tries to call this.childInput.reportValidity() which fails
+   * for our component since childInput is an LWC, not a native input.
+   * @returns {boolean} True if valid
+   */
+  @api reportValidity() {
+    if (DEBUG) console.log(CLASS_NAME, "reportValidity override");
+    const isValid = this.checkValidity();
+    this._showValidation = !isValid;
+    this.isValid = isValid;
+    return isValid;
+  }
+
   /* event handlers */
 
   handleChange(event) {
+    // Ignore native change events from checkboxes (they don't have event.detail)
+    // Only process custom change events from sfGpsDsCaOnSelectableCardGroup
+    if (!event.detail) {
+      return;
+    }
+
     const newValue = event.detail.value;
 
     if (DEBUG) console.log(CLASS_NAME, "handleChange", newValue);
 
     // Update the OmniStudio element value
-    this.applyCallResp(newValue, false, false, true);
+    this.applyCallResp(newValue, false, false);
   }
 
   /* lifecycle */

@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { LightningElement, track } from "lwc";
+import { api, LightningElement, track } from "lwc";
 import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 import { computeClass } from "c/sfGpsDsHelpers";
 import fetchVFDomainURL from "@salesforce/apex/sfGpsDsCaOnSiteSelectorCtr.fetchVFDomainURL";
@@ -56,11 +56,29 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
    * ======================================== */
 
   /**
+   * Access standard OmniStudio properties from jsonDef.propSetMap
+   * @returns {Object}
+   */
+  get _propSetMap() {
+    return this.jsonDef?.propSetMap || {};
+  }
+
+  /**
+   * Access custom properties added via JSON Editor.
+   * OmniStudio nests custom propSetMap inside the standard propSetMap.
+   * Path: jsonDef.propSetMap.propSetMap.customProperty
+   * @returns {Object}
+   */
+  get _customPropSetMap() {
+    return this.jsonDef?.propSetMap?.propSetMap || {};
+  }
+
+  /**
    * Get label from OmniScript properties
    * @returns {string}
    */
   get label() {
-    return this.omniJsonDef?.propSetMap?.label || "Site address";
+    return this._propSetMap?.label || "Site address";
   }
 
   /**
@@ -68,7 +86,7 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
    * @returns {string}
    */
   get helpText() {
-    return this.omniJsonDef?.propSetMap?.helpText || "";
+    return this._propSetMap?.helpText || "";
   }
 
   /**
@@ -76,39 +94,55 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
    * @returns {boolean}
    */
   get isRequired() {
-    return Boolean(this.omniJsonDef?.propSetMap?.required);
+    return Boolean(this._propSetMap?.required);
   }
 
   /**
-   * Button label from properties
+   * Button label from properties (check custom props first)
    * @returns {string}
    */
   get buttonLabel() {
-    return this.omniJsonDef?.propSetMap?.buttonLabel || "Site selector tool";
+    return (
+      this._customPropSetMap?.buttonLabel ||
+      this._propSetMap?.buttonLabel ||
+      "Site selector tool"
+    );
   }
 
   /**
-   * Modal title from properties
+   * Modal title from properties (check custom props first)
    * @returns {string}
    */
   get modalTitle() {
-    return this.omniJsonDef?.propSetMap?.modalTitle || "Site";
+    return (
+      this._customPropSetMap?.modalTitle ||
+      this._propSetMap?.modalTitle ||
+      "Site"
+    );
   }
 
   /**
-   * Default latitude from properties
+   * Default latitude from properties (check custom props first)
    * @returns {number}
    */
   get defaultLatitude() {
-    return this.omniJsonDef?.propSetMap?.defaultLatitude || 43.6532;
+    return (
+      this._customPropSetMap?.defaultLatitude ||
+      this._propSetMap?.defaultLatitude ||
+      43.6532
+    );
   }
 
   /**
-   * Default longitude from properties
+   * Default longitude from properties (check custom props first)
    * @returns {number}
    */
   get defaultLongitude() {
-    return this.omniJsonDef?.propSetMap?.defaultLongitude || -79.3832;
+    return (
+      this._customPropSetMap?.defaultLongitude ||
+      this._propSetMap?.defaultLongitude ||
+      -79.3832
+    );
   }
 
   /**
@@ -304,8 +338,8 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
    * Checks if the component is valid.
    * Required for OmniScript "Next" button validation.
    * @returns {boolean} True if valid (not required OR has value)
-   * @api
    */
+  @api
   checkValidity() {
     // If not required, always valid
     if (!this.isRequired) {
@@ -322,8 +356,8 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
    * Reports validity and shows validation messages.
    * Required for OmniScript step validation.
    * @returns {boolean} True if valid
-   * @api
    */
+  @api
   reportValidity() {
     const isValid = this.checkValidity();
     this.showValidation = !isValid;
@@ -333,8 +367,8 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
   /**
    * Sets a custom validity message.
    * @param {string} message - Custom error message
-   * @api
    */
+  @api
   setCustomValidity(message) {
     this._customValidityMessage = message;
     this.showValidation = Boolean(message);

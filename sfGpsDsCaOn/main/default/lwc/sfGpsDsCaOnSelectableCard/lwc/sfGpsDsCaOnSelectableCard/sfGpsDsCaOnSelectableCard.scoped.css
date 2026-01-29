@@ -34,11 +34,101 @@
   margin-bottom: 0;
 }
 
-/* Checkbox styling - leverage Ontario DS */
+/* ============================================================================
+   CHECKBOX STYLING - Self-contained Ontario DS checkbox implementation
+   Does not rely on external theme CSS to avoid broken path issues
+   ============================================================================ */
+
+/* Hide native checkbox but keep accessible */
 .sfgpsdscaon-selectable-card__checkbox {
-  flex-shrink: 0;
-  margin-top: 0.125rem;
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
+
+/* Custom checkbox appearance via label::before */
+.sfgpsdscaon-selectable-card__label {
+  position: relative;
+  padding-left: 2.25rem;
+  cursor: pointer;
+  min-height: 1.75rem;
+}
+
+.sfgpsdscaon-selectable-card__label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.125rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: #ffffff;
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+/* Checkmark via label::after */
+.sfgpsdscaon-selectable-card__label::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  width: 0.75rem;
+  height: 0.4375rem;
+  border: solid #ffffff;
+  border-width: 0 0 3px 3px;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* Checked state */
+.sfgpsdscaon-selectable-card__checkbox:checked
+  + .sfgpsdscaon-selectable-card__label::before {
+  background-color: #1a1a1a;
+  border-color: #1a1a1a;
+}
+
+.sfgpsdscaon-selectable-card__checkbox:checked
+  + .sfgpsdscaon-selectable-card__label::after {
+  opacity: 1;
+}
+
+/* Focus state - Ontario focus ring */
+.sfgpsdscaon-selectable-card__checkbox:focus
+  + .sfgpsdscaon-selectable-card__label::before {
+  box-shadow: 0 0 0 4px #009adb;
+  outline: 4px solid transparent;
+}
+
+/* Hover state */
+.sfgpsdscaon-selectable-card__label:hover::before {
+  border-color: #0066cc;
+}
+
+/* Disabled state */
+.sfgpsdscaon-selectable-card__checkbox:disabled
+  + .sfgpsdscaon-selectable-card__label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.sfgpsdscaon-selectable-card__checkbox:disabled
+  + .sfgpsdscaon-selectable-card__label::before {
+  background-color: #f5f5f5;
+  border-color: #cccccc;
+}
+
+/* ============================================================================ */
 
 /* Label */
 .sfgpsdscaon-selectable-card__label {

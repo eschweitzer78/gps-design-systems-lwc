@@ -1,0 +1,84 @@
+.ontario-page-navigation {
+  border-top: 4px solid var(--ontario-color-black, #1a1a1a);
+  border-bottom: 4px solid var(--ontario-greyscale-20, #e5e5e5);
+  padding: 0;
+  margin: 2.5rem 0;
+}
+
+.ontario-page-navigation--no-top-border {
+  border-top: none;
+}
+.ontario-page-navigation--no-top-border .ontario-page-navigation-content {
+  padding-top: 0;
+}
+
+.ontario-page-navigation-content {
+  padding: 2.5rem 0;
+  max-width: 46rem;
+}
+
+.ontario-page-navigation-header {
+  font-family:
+    "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.4375rem;
+  font-weight: 700;
+  letter-spacing: 0.02rem;
+  line-height: 1.39;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 40em) {
+  .ontario-page-navigation-header {
+    font-size: 1.75rem;
+    line-height: 1.43;
+  }
+}
+.ontario-page-navigation-list {
+  padding: 0;
+  padding-left: 1.75rem;
+  margin: 0;
+  margin-top: 1.5rem;
+  list-style-type: disc;
+}
+
+.ontario-page-navigation-list__item {
+  padding-bottom: 1.75rem;
+  padding-left: 0;
+}
+.ontario-page-navigation-list__item:last-child {
+  padding-bottom: 0;
+}
+
+.ontario-page-navigation-item__link {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  font-style: normal;
+  margin-left: 0;
+  text-decoration: none;
+  color: var(--ontario-link-color, #0066cc);
+}
+.ontario-page-navigation-item__link:hover {
+  text-decoration: underline;
+}
+.ontario-page-navigation-item__link:focus {
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
+}
+
+.ontario-show-on-focus {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.ontario-show-on-focus:focus {
+  position: static;
+  width: auto;
+  height: auto;
+}
+
+/*# sourceMappingURL=sfGpsDsCaOnInPageNav.css.map */

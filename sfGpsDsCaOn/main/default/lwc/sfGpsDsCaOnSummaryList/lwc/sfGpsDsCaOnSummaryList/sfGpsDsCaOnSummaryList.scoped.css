@@ -11,32 +11,52 @@
 .ontario-summary-list dl.ontario-summary-list__container {
   margin: 0;
 }
-.ontario-summary-list dl.ontario-summary-list__container .ontario-summary-list__key,
-.ontario-summary-list dl.ontario-summary-list__container .ontario-summary-list__value {
+.ontario-summary-list
+  dl.ontario-summary-list__container
+  .ontario-summary-list__key,
+.ontario-summary-list
+  dl.ontario-summary-list__container
+  .ontario-summary-list__value {
   flex: 1;
 }
-.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__1-2 .ontario-summary-list__key {
+.ontario-summary-list
+  dl.ontario-summary-list__container.ontario-summary-list-ratio__1-2
+  .ontario-summary-list__key {
   flex: 1;
 }
-.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__1-2 .ontario-summary-list__value {
+.ontario-summary-list
+  dl.ontario-summary-list__container.ontario-summary-list-ratio__1-2
+  .ontario-summary-list__value {
   flex: 2;
 }
-.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__1-3 .ontario-summary-list__key {
+.ontario-summary-list
+  dl.ontario-summary-list__container.ontario-summary-list-ratio__1-3
+  .ontario-summary-list__key {
   flex: 1;
 }
-.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__1-3 .ontario-summary-list__value {
+.ontario-summary-list
+  dl.ontario-summary-list__container.ontario-summary-list-ratio__1-3
+  .ontario-summary-list__value {
   flex: 3;
 }
-.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__2-1 .ontario-summary-list__key {
+.ontario-summary-list
+  dl.ontario-summary-list__container.ontario-summary-list-ratio__2-1
+  .ontario-summary-list__key {
   flex: 2;
 }
-.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__2-1 .ontario-summary-list__value {
+.ontario-summary-list
+  dl.ontario-summary-list__container.ontario-summary-list-ratio__2-1
+  .ontario-summary-list__value {
   flex: 1;
 }
-.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__2-3 .ontario-summary-list__key {
+.ontario-summary-list
+  dl.ontario-summary-list__container.ontario-summary-list-ratio__2-3
+  .ontario-summary-list__key {
   flex: 2;
 }
-.ontario-summary-list dl.ontario-summary-list__container.ontario-summary-list-ratio__2-3 .ontario-summary-list__value {
+.ontario-summary-list
+  dl.ontario-summary-list__container.ontario-summary-list-ratio__2-3
+  .ontario-summary-list__value {
   flex: 3;
 }
 .ontario-summary-list .ontario-summary-list__row {
@@ -68,7 +88,9 @@
   color: var(--ontario-color-black, #1a1a1a);
 }
 @media screen and (max-width: 40em) {
-  .ontario-summary-list .ontario-summary-list__row .ontario-summary-list__value {
+  .ontario-summary-list
+    .ontario-summary-list__row
+    .ontario-summary-list__value {
     flex: revert;
     padding: 0;
   }
@@ -78,19 +100,25 @@
   margin: 0 !important;
   text-align: left;
 }
-.ontario-summary-list .ontario-summary-list__row .ontario-summary-list-button__container {
+.ontario-summary-list
+  .ontario-summary-list__row
+  .ontario-summary-list-button__container {
   text-align: right;
   flex-basis: 3.5rem;
   padding-left: 1.25rem;
 }
 @media screen and (max-width: 40em) {
-  .ontario-summary-list .ontario-summary-list__row .ontario-summary-list-button__container {
+  .ontario-summary-list
+    .ontario-summary-list__row
+    .ontario-summary-list-button__container {
     flex-basis: revert;
     align-self: flex-start;
     padding-left: 0;
   }
 }
-.ontario-summary-list .ontario-summary-list__row .ontario-summary-list-change__button {
+.ontario-summary-list
+  .ontario-summary-list__row
+  .ontario-summary-list-change__button {
   display: block;
   text-decoration: underline;
   cursor: pointer;
@@ -99,14 +127,20 @@
   font-weight: 400;
   padding: 0;
 }
-.ontario-summary-list .ontario-summary-list__row .ontario-summary-list-change__button:hover {
+.ontario-summary-list
+  .ontario-summary-list__row
+  .ontario-summary-list-change__button:hover {
   color: var(--ontario-color-link-hover, #00478f);
 }
-.ontario-summary-list .ontario-summary-list__row .ontario-summary-list-change__button:active {
+.ontario-summary-list
+  .ontario-summary-list__row
+  .ontario-summary-list-change__button:active {
   color: var(--ontario-color-link-active, #002d5c);
 }
 @media screen and (max-width: 40em) {
-  .ontario-summary-list .ontario-summary-list__row .ontario-summary-list-change__button {
+  .ontario-summary-list
+    .ontario-summary-list__row
+    .ontario-summary-list-change__button {
     margin-top: 0.75rem;
     padding: 0;
   }
@@ -126,18 +160,24 @@
   gap: 1.5rem;
   padding-bottom: 0.75rem;
 }
-.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list__heading {
+.ontario-summary-list
+  .ontario-summary-list-heading__container
+  .ontario-summary-list__heading {
   font-weight: 700;
   font-size: 1.375rem;
   line-height: 1.4;
   margin-bottom: 0;
   color: var(--ontario-color-black, #1a1a1a);
 }
-.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list-heading__buttons {
+.ontario-summary-list
+  .ontario-summary-list-heading__container
+  .ontario-summary-list-heading__buttons {
   display: flex;
   gap: 2rem;
 }
-.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list-change__button {
+.ontario-summary-list
+  .ontario-summary-list-heading__container
+  .ontario-summary-list-change__button {
   padding: 0;
   text-decoration: underline;
   cursor: pointer;
@@ -145,10 +185,14 @@
   color: var(--ontario-color-link, #0066cc);
   font-weight: 400;
 }
-.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list-change__button:hover {
+.ontario-summary-list
+  .ontario-summary-list-heading__container
+  .ontario-summary-list-change__button:hover {
   color: var(--ontario-color-link-hover, #00478f);
 }
-.ontario-summary-list .ontario-summary-list-heading__container .ontario-summary-list-change__button:active {
+.ontario-summary-list
+  .ontario-summary-list-heading__container
+  .ontario-summary-list-change__button:active {
   color: var(--ontario-color-link-active, #002d5c);
 }
 @media screen and (max-width: 40em) {

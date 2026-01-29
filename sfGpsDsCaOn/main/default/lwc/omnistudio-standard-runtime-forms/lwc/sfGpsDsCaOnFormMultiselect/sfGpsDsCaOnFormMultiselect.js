@@ -13,7 +13,7 @@ import tmpl from "./sfGpsDsCaOnFormMultiselect.html";
  * @description Ontario Design System Multiselect for OmniStudio forms.
  * Uses checkbox group pattern from Ontario DS.
  * Allows multiple selections from a list of options.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports
@@ -24,17 +24,31 @@ export default class SfGpsDsCaOnFormMultiselect extends SfGpsDsFormMultiselect {
   /* computed */
 
   get decoratedOptions() {
-    const selected = Array.isArray(this.elementValue) 
-      ? this.elementValue 
-      : this.elementValue 
-        ? [this.elementValue] 
+    const selected = Array.isArray(this.elementValue)
+      ? this.elementValue
+      : this.elementValue
+        ? [this.elementValue]
         : [];
 
-    return (this._realtimeOptions || []).map((opt, index) => ({
-      ...opt,
-      id: `${this._name}-opt-${index}`,
-      checked: selected.includes(opt.value)
-    }));
+    // NOTE: OmniStudio picklist options have a confusing naming convention:
+    // - opt.name = the identifier/value to store (e.g., "air-emissions")
+    // - opt.value = the display label (e.g., "Air emissions")
+    // We use opt.name as the identifier for selection tracking
+    return (this._realtimeOptions || []).map((opt, index) => {
+      // Use opt.name as the identifier (this is what OmniStudio stores when selected)
+      // Fall back to opt.value or opt.label if name is not available
+      const optIdentifier = opt.name || opt.value || opt.label;
+      // Use opt.value as the display label (OmniStudio's "value" is actually the label)
+      const optDisplayLabel = opt.value || opt.label || opt.name;
+
+      return {
+        ...opt,
+        value: optIdentifier,
+        label: optDisplayLabel,
+        id: `${this._name}-opt-${index}`,
+        checked: selected.includes(optIdentifier)
+      };
+    });
   }
 
   /* lifecycle */

@@ -207,11 +207,70 @@ export default class SfGpsDsCaOnSelectableCardGroup extends LightningElement {
   /* methods */
 
   _updateDecoratedOptions() {
-    this._decoratedOptions = (this._options || []).map((opt, index) => ({
-      ...opt,
-      checked: this._value.includes(opt.value),
-      key: `option-${index}-${opt.value}`
-    }));
+    if (DEBUG) {
+      console.log(CLASS_NAME, "_updateDecoratedOptions", {
+        options: JSON.stringify(this._options),
+        value: JSON.stringify(this._value)
+      });
+    }
+    this._decoratedOptions = (this._options || []).map((opt, index) => {
+      const isChecked = this._value.includes(opt.value);
+      if (DEBUG) {
+        console.log(
+          CLASS_NAME,
+          "option",
+          opt.value,
+          "checked:",
+          isChecked,
+          "description:",
+          opt.description
+        );
+      }
+      return {
+        ...opt,
+        checked: isChecked,
+        key: `option-${index}-${opt.value}`
+      };
+    });
+  }
+
+  /**
+   * Standard form validation API - reports validity to the user.
+   * Required for OmniStudio form integration.
+   * @returns {boolean} True if valid, false if invalid
+   */
+  @api
+  reportValidity() {
+    const isValid = this.checkValidity();
+    // If invalid and required, the error message should already be displayed
+    // via the errorMessage property set by the parent form component
+    return isValid;
+  }
+
+  /**
+   * Standard form validation API - checks validity without reporting.
+   * Required for OmniStudio form integration.
+   * @returns {boolean} True if valid, false if invalid
+   */
+  @api
+  checkValidity() {
+    // If required and no values selected, it's invalid
+    if (this.required && (!this._value || this._value.length === 0)) {
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * Sets a custom validity message.
+   * Required for OmniStudio form integration.
+   * @param {string} message - The validation message
+   */
+  @api
+  setCustomValidity(message) {
+    // This is typically called by the parent form component
+    // The errorMessage property handles display
+    if (DEBUG) console.log(CLASS_NAME, "setCustomValidity", message);
   }
 
   /* event handlers */

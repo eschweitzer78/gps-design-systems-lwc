@@ -550,12 +550,12 @@ describe("c-sf-gps-ds-ca-on-selectable-card", () => {
       document.body.appendChild(element);
 
       return Promise.resolve().then(() => {
-        // The component uses ontario-checkboxes__item class
-        const container = element.querySelector(".ontario-checkboxes__item");
+        // The component uses sfgpsdscaon-selectable-card class (custom styling to avoid Ontario DS conflicts)
+        const container = element.querySelector(".sfgpsdscaon-selectable-card");
         expect(container).not.toBeNull();
 
-        // Also verify the checkbox has Ontario styling class
-        const checkbox = element.querySelector(".ontario-checkboxes__input");
+        // Also verify the checkbox has our custom styling class
+        const checkbox = element.querySelector(".sfgpsdscaon-selectable-card__checkbox");
         expect(checkbox).not.toBeNull();
       });
     });
@@ -569,9 +569,9 @@ describe("c-sf-gps-ds-ca-on-selectable-card", () => {
       document.body.appendChild(element);
 
       return Promise.resolve().then(() => {
-        // Verify the label has the Ontario checkbox label class
+        // Verify the label has our custom label class
         // which provides focus styling (JSDOM can't compute CSS)
-        const label = element.querySelector(".ontario-checkboxes__label");
+        const label = element.querySelector(".sfgpsdscaon-selectable-card__label");
         expect(label).not.toBeNull();
 
         // Verify the checkbox input is focusable

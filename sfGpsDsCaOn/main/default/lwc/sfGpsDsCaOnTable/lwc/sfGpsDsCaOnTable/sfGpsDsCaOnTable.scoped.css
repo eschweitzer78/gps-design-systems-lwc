@@ -4,8 +4,15 @@
   position: relative;
   margin: 0.5rem 0 2.5rem 0;
 }
-.ontario-table-container table:not(.ontario-table--no-zebra-stripes) tbody tr:first-child:nth-last-child(n+6):nth-child(even),
-.ontario-table-container table:not(.ontario-table--no-zebra-stripes) tbody tr:first-child:nth-last-child(n+6) ~ tr:nth-child(even) {
+.ontario-table-container
+  table:not(.ontario-table--no-zebra-stripes)
+  tbody
+  tr:first-child:nth-last-child(n + 6):nth-child(even),
+.ontario-table-container
+  table:not(.ontario-table--no-zebra-stripes)
+  tbody
+  tr:first-child:nth-last-child(n + 6)
+  ~ tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.0509803922);
 }
 
@@ -18,10 +25,35 @@
   }
 }
 .ontario-table-div {
-  background: linear-gradient(to right, var(--ontario-color-white, #ffffff) 30%, rgba(255, 255, 255, 0)), linear-gradient(to right, rgba(255, 255, 255, 0), var(--ontario-color-white, #ffffff) 70%) 0 100%, linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(252, 0, 0, 0) 100.01%), linear-gradient(to left, rgba(0, 0, 0, 0.2) 0%, rgba(252, 0, 0, 0) 100.01%);
+  background:
+    linear-gradient(
+      to right,
+      var(--ontario-color-white, #ffffff) 30%,
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0),
+        var(--ontario-color-white, #ffffff) 70%
+      )
+      0 100%,
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(252, 0, 0, 0) 100.01%
+    ),
+    linear-gradient(to left, rgba(0, 0, 0, 0.2) 0%, rgba(252, 0, 0, 0) 100.01%);
   background-repeat: no-repeat;
-  background-size: 2.5rem 100%, 2.5rem 100%, 0.875rem 100%, 0.875rem 100%;
-  background-position: 0 0, 100%, 0 0, 100%;
+  background-size:
+    2.5rem 100%,
+    2.5rem 100%,
+    0.875rem 100%,
+    0.875rem 100%;
+  background-position:
+    0 0,
+    100%,
+    0 0,
+    100%;
   background-attachment: local, local, scroll, scroll;
 }
 
@@ -186,7 +218,9 @@ table.ontario-table--condensed tfoot tr th,
 table.ontario-table--condensed tfoot tr td {
   padding: 1rem 1rem 1rem 1.5rem;
 }
-table.ontario-table--condensed tr.ontario-table-row--subtotal td.ontario-table-cell--numeric,
+table.ontario-table--condensed
+  tr.ontario-table-row--subtotal
+  td.ontario-table-cell--numeric,
 table.ontario-table--condensed tfoot tr td.ontario-table-cell--numeric {
   text-align: right;
   padding: 1rem 1.5rem 1rem 1rem;
@@ -208,7 +242,9 @@ table.ontario-table--condensed tfoot tr td.ontario-table-cell--numeric {
   table.ontario-table--condensed tfoot tr td {
     padding: 1rem 0.5rem 1rem 1rem;
   }
-  table.ontario-table--condensed tr.ontario-table-row--subtotal td.ontario-table-cell--numeric,
+  table.ontario-table--condensed
+    tr.ontario-table-row--subtotal
+    td.ontario-table-cell--numeric,
   table.ontario-table--condensed tfoot tr td.ontario-table-cell--numeric {
     text-align: right;
     padding: 1rem 1rem 1rem 0.5rem;

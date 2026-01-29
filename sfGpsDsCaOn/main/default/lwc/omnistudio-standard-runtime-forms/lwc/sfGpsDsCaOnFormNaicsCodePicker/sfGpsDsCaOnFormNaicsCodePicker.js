@@ -40,6 +40,16 @@ const CLASS_NAME = "SfGpsDsCaOnFormNaicsCodePicker";
  * - WCAG 2.1 AA: Proper fieldset/legend, keyboard navigation
  */
 export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
+  /**
+   * Access custom properties added via JSON Editor.
+   * OmniStudio nests custom propSetMap inside the standard propSetMap.
+   * Path: jsonDef.propSetMap.propSetMap.customProperty
+   * @returns {Object}
+   */
+  get _customPropSetMap() {
+    return this.jsonDef?.propSetMap?.propSetMap || {};
+  }
+
   /* computed */
 
   get mergedLabel() {
@@ -69,49 +79,82 @@ export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
     );
   }
 
-  /* Dropdown labels */
+  /* Dropdown labels - check custom propSetMap first */
 
   get sectorLabel() {
-    return this._propSetMap?.sectorLabel || "Sector";
+    return (
+      this._customPropSetMap?.sectorLabel ||
+      this._propSetMap?.sectorLabel ||
+      "Sector"
+    );
   }
 
   get subSectorLabel() {
-    return this._propSetMap?.subSectorLabel || "Sub sector";
+    return (
+      this._customPropSetMap?.subSectorLabel ||
+      this._propSetMap?.subSectorLabel ||
+      "Sub sector"
+    );
   }
 
   get industryGroupLabel() {
-    return this._propSetMap?.industryGroupLabel || "Industry group";
+    return (
+      this._customPropSetMap?.industryGroupLabel ||
+      this._propSetMap?.industryGroupLabel ||
+      "Industry group"
+    );
   }
 
   get industryLabel() {
-    return this._propSetMap?.industryLabel || "Industry";
+    return (
+      this._customPropSetMap?.industryLabel ||
+      this._propSetMap?.industryLabel ||
+      "Industry"
+    );
   }
 
   get nationalIndustryLabel() {
-    return this._propSetMap?.nationalIndustryLabel || "National industry";
+    return (
+      this._customPropSetMap?.nationalIndustryLabel ||
+      this._propSetMap?.nationalIndustryLabel ||
+      "National industry"
+    );
   }
 
-  /* Options from Custom Properties */
+  /* Options from Custom Properties - check custom propSetMap first */
 
   get sectorOptions() {
-    return this._parseOptionsJson(this._propSetMap?.sectorOptionsJson);
+    return this._parseOptionsJson(
+      this._customPropSetMap?.sectorOptionsJson ||
+        this._propSetMap?.sectorOptionsJson
+    );
   }
 
   get subSectorOptions() {
-    return this._parseOptionsJson(this._propSetMap?.subSectorOptionsJson);
+    return this._parseOptionsJson(
+      this._customPropSetMap?.subSectorOptionsJson ||
+        this._propSetMap?.subSectorOptionsJson
+    );
   }
 
   get industryGroupOptions() {
-    return this._parseOptionsJson(this._propSetMap?.industryGroupOptionsJson);
+    return this._parseOptionsJson(
+      this._customPropSetMap?.industryGroupOptionsJson ||
+        this._propSetMap?.industryGroupOptionsJson
+    );
   }
 
   get industryOptions() {
-    return this._parseOptionsJson(this._propSetMap?.industryOptionsJson);
+    return this._parseOptionsJson(
+      this._customPropSetMap?.industryOptionsJson ||
+        this._propSetMap?.industryOptionsJson
+    );
   }
 
   get nationalIndustryOptions() {
     return this._parseOptionsJson(
-      this._propSetMap?.nationalIndustryOptionsJson
+      this._customPropSetMap?.nationalIndustryOptionsJson ||
+        this._propSetMap?.nationalIndustryOptionsJson
     );
   }
 

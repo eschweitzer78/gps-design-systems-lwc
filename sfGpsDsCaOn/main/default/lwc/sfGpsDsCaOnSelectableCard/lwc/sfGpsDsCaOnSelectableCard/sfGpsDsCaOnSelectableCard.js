@@ -102,13 +102,6 @@ export default class SfGpsDsCaOnSelectableCard extends LightningElement {
     });
   }
 
-  get computedCheckboxClassName() {
-    return computeClass({
-      "ontario-checkboxes__input": true,
-      "sfgpsdscaon-selectable-card__checkbox": true
-    });
-  }
-
   get hasDescription() {
     return Boolean(this.description);
   }
@@ -185,6 +178,25 @@ export default class SfGpsDsCaOnSelectableCard extends LightningElement {
     this._uniqueId = `selectable-card-${Math.random().toString(36).substring(2, 9)}`;
     this.classList.add("caon-scope");
 
-    if (DEBUG) console.log(CLASS_NAME, "connectedCallback", this.value);
+    if (DEBUG) {
+      console.log(CLASS_NAME, "connectedCallback", {
+        value: this.value,
+        label: this.label,
+        description: this.description,
+        checked: this.checked,
+        expandedContent: this.expandedContent
+      });
+    }
+  }
+
+  renderedCallback() {
+    if (DEBUG) {
+      console.log(CLASS_NAME, "renderedCallback", {
+        value: this.value,
+        checked: this.checked,
+        hasDescription: this.hasDescription,
+        hasExpandedContent: this.hasExpandedContent
+      });
+    }
   }
 }
