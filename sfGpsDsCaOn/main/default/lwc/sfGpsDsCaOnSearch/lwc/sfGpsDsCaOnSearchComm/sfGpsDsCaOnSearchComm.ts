@@ -103,18 +103,53 @@ export default class SfGpsDsCaOnSearchComm
     this[NavigationMixin.Navigate](pageRef);
   }
 
-  navigateToRecord(recordId: string): void {
+  /**
+   * Navigate to a record detail page.
+   * LWR CRITICAL: objectApiName is required for LWR routing to work.
+   * Without it, navigation fails silently with a console routing error.
+   * 
+   * @param recordId - The Salesforce record ID
+   * @param objectApiName - The API name of the object (e.g., 'Account', 'Contact')
+   */
+  navigateToRecord(recordId: string, objectApiName?: string): void {
     // Use NavigationMixin for record navigation
+    // LWR requires objectApiName - attempt to derive from recordId prefix if not provided
+    const derivedObjectName = objectApiName || this.deriveObjectApiName(recordId);
+    
     const pageRef: PageReference = {
       type: "standard__recordPage",
       attributes: {
         recordId: recordId,
+        objectApiName: derivedObjectName,
         actionName: "view"
       }
     };
 
     // @ts-ignore - NavigationMixin method
     this[NavigationMixin.Navigate](pageRef);
+  }
+
+  /**
+   * Attempts to derive object API name from record ID prefix.
+   * This is a fallback - explicit objectApiName should always be provided.
+   * 
+   * @param recordId - The Salesforce record ID
+   * @returns Object API name or 'Record' as fallback
+   */
+  private deriveObjectApiName(recordId: string): string {
+    // Common Salesforce key prefixes
+    const prefixMap: Record<string, string> = {
+      "001": "Account",
+      "003": "Contact",
+      "006": "Opportunity",
+      "00Q": "Lead",
+      "500": "Case",
+      "ka0": "Knowledge__kav",
+      "0pk": "BusinessLicenseApplication"
+    };
+
+    const prefix = recordId?.substring(0, 3);
+    return prefixMap[prefix] || "Record";
   }
 
   /* event handlers */
@@ -149,7 +184,8 @@ export default class SfGpsDsCaOnSearchComm
     if (this.computedNavigateOnSelect && result) {
       if (result.id) {
         // Navigate to record detail page using NavigationMixin
-        this.navigateToRecord(result.id);
+        // LWR: Pass objectType for proper routing (required in LWR context)
+        this.navigateToRecord(result.id, result.objectType);
       } else if (result.url) {
         // Navigate to URL using NavigationMixin
         this.navigateToUrl(result.url);

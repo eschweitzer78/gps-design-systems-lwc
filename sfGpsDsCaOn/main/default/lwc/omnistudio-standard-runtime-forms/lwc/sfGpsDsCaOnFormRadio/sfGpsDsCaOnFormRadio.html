@@ -1,15 +1,16 @@
 <!-- sldsValidatorIgnore -->
 <template>
   <div class="ontario-form-group">
+    <!-- LWR: Using dynamic legendId to avoid duplicate ID issues when multiple radio groups exist -->
     <fieldset
       class="ontario-fieldset"
       role="radiogroup"
       aria-required={required}
-      aria-labelledby="sfgpsds-caon-radio-group-legend"
+      aria-labelledby={legendId}
       aria-describedby={computedAriaDescribedBy}
       aria-invalid={computedAriaInvalid}
     >
-      <legend id="sfgpsds-caon-radio-group-legend" class="ontario-fieldset__legend">
+      <legend id={legendId} class="ontario-fieldset__legend">
         <span class={computedLegendClassName}>
           {label}
           <span lwc:if={required} class="ontario-label__flag">(required)</span>
@@ -17,7 +18,9 @@
         </span>
         <slot name="label"> </slot>
 
-        <p lwc:if={fieldLevelHelp} id="helper" class="ontario-hint">{fieldLevelHelp}</p>
+        <p lwc:if={fieldLevelHelp} id="helper" class="ontario-hint">
+          {fieldLevelHelp}
+        </p>
 
         <div
           lwc:if={sfGpsDsIsError}
@@ -26,10 +29,19 @@
           role="alert"
           id="errorMessageBlock"
         >
-          <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          <svg
+            class="ontario-icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
           </svg>
-          <span class="ontario-error-messaging__content">{sfGpsDsErrorMessage}</span>
+          <span class="ontario-error-messaging__content"
+            >{sfGpsDsErrorMessage}</span
+          >
         </div>
       </legend>
 

@@ -13,7 +13,23 @@ import tmpl from "./sfGpsDsCaOnFormRadio.html";
 export default class SfGpsDsCaOnFormRadio extends OmnistudioRadioGroup {
   @api readOnly;
 
+  /**
+   * Unique ID for this component instance.
+   * Used for aria-labelledby to avoid duplicate ID issues in Shadow DOM.
+   * @private
+   */
+  _uniqueId = `radio-${Math.random().toString(36).substring(2, 11)}`;
+
   /* computed */
+
+  /**
+   * Dynamic legend ID to avoid duplicate IDs when multiple radio groups exist.
+   * LWR: Hardcoded IDs can cause duplicate ID issues in component instances.
+   * @returns {string} Unique legend element ID
+   */
+  get legendId() {
+    return `${this._uniqueId}-legend`;
+  }
 
   get computedLegendClassName() {
     return {
