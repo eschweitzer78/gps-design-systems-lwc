@@ -25,15 +25,16 @@
         {siteName}
       </h4>
 
-      <a
+      <!-- WCAG 2.1.1: Using button for action (not navigation) -->
+      <button
         lwc:if={allowRemove}
-        href="#"
-        class="sfgpsdscaon-site-task-card__remove"
+        type="button"
+        class="sfgpsdscaon-site-task-card__remove ontario-button ontario-button--tertiary"
         onclick={handleRemove}
         aria-label={removeAriaLabel}
       >
         Remove
-      </a>
+      </button>
     </div>
 
     <!-- Task List -->

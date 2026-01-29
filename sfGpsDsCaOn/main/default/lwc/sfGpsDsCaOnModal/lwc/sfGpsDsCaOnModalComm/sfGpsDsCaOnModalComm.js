@@ -129,6 +129,18 @@ export default class SfGpsDsCaOnModalComm extends LightningElement {
   }
 
   /**
+   * Handles trigger keyboard event (Enter/Space) to open modal
+   * WCAG 2.1.1: Keyboard accessible - matches click behavior
+   * @param {KeyboardEvent} event
+   */
+  handleTriggerKeyDown(event) {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      this.open();
+    }
+  }
+
+  /**
    * Handles modal close event
    */
   handleModalClose() {

@@ -109,13 +109,14 @@
         <p class="sfgpsdscaon-naics-code-picker__selected-value">
           {selectedCodeDisplay}
         </p>
-        <a
-          href="#"
-          class="ontario-link sfgpsdscaon-naics-code-picker__clear-link"
+        <!-- WCAG 2.1.1: Using button for action (not navigation) -->
+        <button
+          type="button"
+          class="ontario-button ontario-button--tertiary sfgpsdscaon-naics-code-picker__clear-link"
           onclick={handleClearSelection}
         >
           Clear selection
-        </a>
+        </button>
       </div>
     </fieldset>
   </div>

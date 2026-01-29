@@ -1,6 +1,14 @@
 <template lwc:render-mode="light">
-  <!-- Trigger slot - click to open modal -->
-  <div class="sfgpsdscaon-modal-trigger" onclick={handleTriggerClick}>
+  <!-- Trigger slot - click/keyboard to open modal -->
+  <!-- WCAG 2.1.1: Keyboard accessible trigger with role="button" -->
+  <div
+    class="sfgpsdscaon-modal-trigger"
+    role="button"
+    tabindex="0"
+    onclick={handleTriggerClick}
+    onkeydown={handleTriggerKeyDown}
+    aria-haspopup="dialog"
+  >
     <slot name="trigger"></slot>
   </div>
 
