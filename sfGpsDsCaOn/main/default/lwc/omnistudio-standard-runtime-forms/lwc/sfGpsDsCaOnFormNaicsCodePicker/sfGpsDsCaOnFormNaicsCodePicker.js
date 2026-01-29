@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { api } from "lwc";
 import SfGpsDsFormSelect from "c/sfGpsDsFormSelect";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpers";
 import tmpl from "./sfGpsDsCaOnFormNaicsCodePicker.html";
@@ -23,8 +24,8 @@ const CLASS_NAME = "SfGpsDsCaOnFormNaicsCodePicker";
  * 4. Industry (5-digit)
  * 5. National industry (6-digit)
  *
- * Options Format (via Custom Properties):
- * Set the following properties in Custom Properties:
+ * Options Format (via Custom Properties or @api):
+ * Set the following properties in Custom Properties or pass via @api:
  * - sectorOptionsJson: [{ "value": "11", "label": "11 Agriculture..." }]
  * - subSectorOptionsJson: [{ "value": "111", "label": "111 Crop production", "parentValue": "11" }]
  * - industryGroupOptionsJson: [{ "value": "1111", "label": "1111 Oilseed...", "parentValue": "111" }]
@@ -40,6 +41,51 @@ const CLASS_NAME = "SfGpsDsCaOnFormNaicsCodePicker";
  * - WCAG 2.1 AA: Proper fieldset/legend, keyboard navigation
  */
 export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
+  /* ========================================
+   * PUBLIC @api PROPERTIES
+   * For Custom LWC elements, OmniStudio passes config via @api properties
+   * ======================================== */
+
+  /** @type {string} Field label */
+  @api configLabel;
+
+  /** @type {string} Help text below label */
+  @api configHelpText;
+
+  /** @type {string} Sector dropdown label */
+  @api configSectorLabel;
+
+  /** @type {string} Sub sector dropdown label */
+  @api configSubSectorLabel;
+
+  /** @type {string} Industry group dropdown label */
+  @api configIndustryGroupLabel;
+
+  /** @type {string} Industry dropdown label */
+  @api configIndustryLabel;
+
+  /** @type {string} National industry dropdown label */
+  @api configNationalIndustryLabel;
+
+  /** @type {string} JSON string for sector options */
+  @api configSectorOptionsJson;
+
+  /** @type {string} JSON string for sub sector options */
+  @api configSubSectorOptionsJson;
+
+  /** @type {string} JSON string for industry group options */
+  @api configIndustryGroupOptionsJson;
+
+  /** @type {string} JSON string for industry options */
+  @api configIndustryOptionsJson;
+
+  /** @type {string} JSON string for national industry options */
+  @api configNationalIndustryOptionsJson;
+
+  /* ========================================
+   * COMPUTED PROPERTIES
+   * ======================================== */
+
   /**
    * Access custom properties added via JSON Editor.
    * OmniStudio nests custom propSetMap inside the standard propSetMap.
@@ -55,7 +101,8 @@ export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
   get mergedLabel() {
     return omniGetMergedField(
       this,
-      this._propSetMap?.label ||
+      this.configLabel ||
+        this._propSetMap?.label ||
         "Select North American Industry Classification System (NAICS) code"
     );
   }
@@ -63,7 +110,8 @@ export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
   get mergedHelpText() {
     return omniGetMergedField(
       this,
-      this._propSetMap?.helpText ||
+      this.configHelpText ||
+        this._propSetMap?.helpText ||
         "The NAICS is a six digit code that represents your business at this facility or site."
     );
   }
@@ -79,10 +127,11 @@ export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
     );
   }
 
-  /* Dropdown labels - check custom propSetMap first */
+  /* Dropdown labels - check @api first, then custom propSetMap, then standard propSetMap */
 
   get sectorLabel() {
     return (
+      this.configSectorLabel ||
       this._customPropSetMap?.sectorLabel ||
       this._propSetMap?.sectorLabel ||
       "Sector"
@@ -91,6 +140,7 @@ export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
 
   get subSectorLabel() {
     return (
+      this.configSubSectorLabel ||
       this._customPropSetMap?.subSectorLabel ||
       this._propSetMap?.subSectorLabel ||
       "Sub sector"
@@ -99,6 +149,7 @@ export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
 
   get industryGroupLabel() {
     return (
+      this.configIndustryGroupLabel ||
       this._customPropSetMap?.industryGroupLabel ||
       this._propSetMap?.industryGroupLabel ||
       "Industry group"
@@ -107,6 +158,7 @@ export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
 
   get industryLabel() {
     return (
+      this.configIndustryLabel ||
       this._customPropSetMap?.industryLabel ||
       this._propSetMap?.industryLabel ||
       "Industry"
@@ -115,45 +167,51 @@ export default class SfGpsDsCaOnFormNaicsCodePicker extends SfGpsDsFormSelect {
 
   get nationalIndustryLabel() {
     return (
+      this.configNationalIndustryLabel ||
       this._customPropSetMap?.nationalIndustryLabel ||
       this._propSetMap?.nationalIndustryLabel ||
       "National industry"
     );
   }
 
-  /* Options from Custom Properties - check custom propSetMap first */
+  /* Options from @api or Custom Properties - check @api first */
 
   get sectorOptions() {
     return this._parseOptionsJson(
-      this._customPropSetMap?.sectorOptionsJson ||
+      this.configSectorOptionsJson ||
+        this._customPropSetMap?.sectorOptionsJson ||
         this._propSetMap?.sectorOptionsJson
     );
   }
 
   get subSectorOptions() {
     return this._parseOptionsJson(
-      this._customPropSetMap?.subSectorOptionsJson ||
+      this.configSubSectorOptionsJson ||
+        this._customPropSetMap?.subSectorOptionsJson ||
         this._propSetMap?.subSectorOptionsJson
     );
   }
 
   get industryGroupOptions() {
     return this._parseOptionsJson(
-      this._customPropSetMap?.industryGroupOptionsJson ||
+      this.configIndustryGroupOptionsJson ||
+        this._customPropSetMap?.industryGroupOptionsJson ||
         this._propSetMap?.industryGroupOptionsJson
     );
   }
 
   get industryOptions() {
     return this._parseOptionsJson(
-      this._customPropSetMap?.industryOptionsJson ||
+      this.configIndustryOptionsJson ||
+        this._customPropSetMap?.industryOptionsJson ||
         this._propSetMap?.industryOptionsJson
     );
   }
 
   get nationalIndustryOptions() {
     return this._parseOptionsJson(
-      this._customPropSetMap?.nationalIndustryOptionsJson ||
+      this.configNationalIndustryOptionsJson ||
+        this._customPropSetMap?.nationalIndustryOptionsJson ||
         this._propSetMap?.nationalIndustryOptionsJson
     );
   }

@@ -427,7 +427,34 @@ OmniScript: EASR_AddActivity
 
 #### Selectable Cards Element
 
-Use the **Multiselect** element type in OmniScript with Custom LWC Override:
+The Selectable Cards component can be used in two ways:
+
+##### Option A: Custom LWC Element (Recommended)
+
+Use the **Custom LWC** element type with `config*` prefixed properties:
+
+| OmniScript Property | Value                                   |
+| ------------------- | --------------------------------------- |
+| **Element Type**    | Custom LWC                              |
+| **LWC Component**   | c-sf-gps-ds-ca-on-form-selectable-cards |
+
+**JSON Editor Configuration:**
+
+```json
+{
+  "type": "Custom LWC",
+  "lwcComponentOverride": "c-sf-gps-ds-ca-on-form-selectable-cards",
+  "propSetMap": {
+    "configRequired": false,
+    "configErrorMessage": "Please select at least one activity",
+    "configOptionsJson": "[{\"value\":\"air-emissions\",\"label\":\"Air emissions\",\"description\":\"...\"}]"
+  }
+}
+```
+
+##### Option B: LWC Override of Multiselect
+
+Use the **Multiselect** element type with Custom LWC Override:
 
 | OmniScript Property | Value                          |
 | ------------------- | ------------------------------ |
@@ -436,7 +463,7 @@ Use the **Multiselect** element type in OmniScript with Custom LWC Override:
 | **Label**           | Add activity                   |
 | **Options Source**  | Picklist or DataRaptor         |
 
-##### Step 1: Configure Picklist Options
+###### Step 1: Configure Picklist Options
 
 In the Multiselect element properties, add the picklist options:
 
@@ -453,7 +480,7 @@ In the Multiselect element properties, add the picklist options:
 
 > **Important:** You must configure BOTH the Label AND the Name/Value for each option. The Name/Value is what gets stored in the data. If you only configure the Label, the cards will display the label as both the title and the value identifier.
 
-##### Step 2: Add optionsJson via JSON Editor
+###### Step 2: Add optionsJson via JSON Editor
 
 The picklist only provides basic label/value pairs. To add descriptions, badges, and expandable content, you need to add the `optionsJson` property via the **JSON Editor**:
 
@@ -475,7 +502,7 @@ The picklist only provides basic label/value pairs. To add descriptions, badges,
 }
 ```
 
-> **Important:** Custom properties must be placed inside a **nested `propSetMap`** object. OmniStudio uses the outer `propSetMap` for standard properties, while custom properties for LWC overrides go inside the inner `propSetMap`.
+> **Important:** For LWC Overrides, custom properties must be placed inside a **nested `propSetMap`** object. OmniStudio uses the outer `propSetMap` for standard properties, while custom properties for LWC overrides go inside the inner `propSetMap`.
 
 #### optionsJson Property Value
 

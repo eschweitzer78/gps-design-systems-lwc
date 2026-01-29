@@ -658,18 +658,49 @@ For Visualforce iframes to work:
 
 ## Troubleshooting
 
-| Error                       | Cause                         | Solution                                    |
-| --------------------------- | ----------------------------- | ------------------------------------------- |
-| "Refused to frame"          | Missing frame-src             | Add VF domain to Experience Builder CSP     |
-| "Refused to load script"    | Missing script-src            | Add `js.arcgis.com` to CSP Trusted Sites    |
-| "Loading font violates CSP" | Missing font-src              | Enable Font directive on ESRI trusted sites |
-| Map tiles not loading       | Missing connect-src/img-src   | Add ESRI domains to trusted sites           |
-| postMessage not working     | Origin mismatch               | Configure SiteName in utils\_\_mdt          |
-| UTM conversion fails        | Client-side limitation        | UTM→Decimal requires server-side processing |
-| Ontario layers not loading  | Missing LIO CSP configuration | Add `ws.lioservices.lrc.gov.on.ca` to CSP   |
-| MECP district query fails   | CORS/CSP blocked              | Add Ontario LIO trusted sites               |
-| Layer list empty            | Layers not visible by default | Use Layer List widget to toggle visibility  |
-| "Location outside Ontario"  | Point outside MECP boundaries | Normal behavior for non-Ontario locations   |
+| Error                          | Cause                            | Solution                                           |
+| ------------------------------ | -------------------------------- | -------------------------------------------------- |
+| "Refused to frame"             | Missing frame-src                | Add VF domain to Experience Builder CSP            |
+| "Refused to load script"       | Missing script-src               | Add `js.arcgis.com` to CSP Trusted Sites           |
+| "Loading font violates CSP"    | Missing font-src                 | Enable Font directive on ESRI trusted sites        |
+| Map tiles not loading          | Missing connect-src/img-src      | Add ESRI domains to trusted sites                  |
+| postMessage not working        | Origin mismatch                  | Ensure Apex returns origin only (no path)          |
+| "Origin mismatch" in console   | Apex returns full URL not origin | Fix `fetchVFDomainURL()` to return protocol://host |
+| Site Point cursor not changing | VF page mode not recognized      | Verify mode URL param is in valid list             |
+| Iframe reloads after search    | URL has reactive properties      | Use static URL, update via postMessage             |
+| Tab state not resetting        | Tab reset after URL build        | Reset `_activeTab` before `_buildVfPageUrl()`      |
+| UTM conversion fails           | Client-side limitation           | UTM→Decimal requires server-side processing        |
+| Ontario layers not loading     | Missing LIO CSP configuration    | Add `ws.lioservices.lrc.gov.on.ca` to CSP          |
+| MECP district query fails      | CORS/CSP blocked                 | Add Ontario LIO trusted sites                      |
+| Layer list empty               | Layers not visible by default    | Use Layer List widget to toggle visibility         |
+| "Location outside Ontario"     | Point outside MECP boundaries    | Normal behavior for non-Ontario locations          |
+
+### postMessage Origin Issues
+
+The Apex controller `sfGpsDsCaOnSiteSelectorCtr.fetchVFDomainURL()` must return only the **origin** (protocol + hostname), not the full URL path. JavaScript's `event.origin` only contains the origin, so comparing against a full URL will always fail.
+
+```apex
+// CORRECT - returns origin only
+return urlObj.getProtocol() + '://' + urlObj.getHost();
+// Example: https://yoursite.my.site.com
+
+// INCORRECT - includes path
+return details[0].SecureURL;
+// Example: https://yoursite.my.site.com/EASRvforcesite
+```
+
+### VF Page Mode Parameter
+
+The VF page reads the initial mode from the URL's `mode` parameter:
+
+```javascript
+var urlParams = new URLSearchParams(window.location.search);
+var initialMode = urlParams.get("mode") || "search";
+```
+
+Valid modes: `search`, `sitepoint`, `layers`, `readonly`, `discharge`
+
+The mode is applied when the map is ready, setting cursor style and search widget visibility.
 
 ---
 

@@ -7,6 +7,8 @@ This document provides the API reference for all Ontario Design System UI compon
 ## Table of Contents
 
 1. [UI Components](#ui-components)
+   - [Header](#sfgpsdscaonheadercomm)
+   - [Footer](#sfgpsdscaonfootercomm)
    - [Text Input](#sfgpsdscaontextinput)
    - [Dropdown](#sfgpsdscaondropdown)
    - [Checkbox Group](#sfgpsdscaoncheckboxgroup)
@@ -36,6 +38,90 @@ This document provides the API reference for all Ontario Design System UI compon
 ---
 
 ## UI Components
+
+### sfGpsDsCaOnHeaderComm
+
+The Ontario Design System header component for Experience Builder sites. Supports Ontario Government branding, application headers, menu items, and language toggle.
+
+#### Properties
+
+| Property                    | Type    | Default     | Description                                                         |
+| --------------------------- | ------- | ----------- | ------------------------------------------------------------------- |
+| `type`                      | String  | `"ontario"` | Header type: `ontario`, `application`, or `serviceOntario`          |
+| `applicationHeaderInfoJson` | String  | -           | JSON object with `title`, `href`, and `maxWidth` for app headers    |
+| `menuItemsJson`             | String  | -           | JSON array of menu items with `title` and `href`                    |
+| `languageToggleOptionsJson` | String  | -           | JSON object with `englishLink` and `frenchLink` URLs                |
+| `disableDynamicMenu`        | Boolean | `true`      | When true, disables fetching menu data from Ontario's API           |
+| `language`                  | String  | `"en"`      | Header language: `en` (English) or `fr` (French)                    |
+| `assetBasePath`             | String  | -           | Base path for header assets (logos, icons). Leave empty for default |
+| `className`                 | String  | -           | Additional CSS classes                                              |
+
+#### Menu Items JSON Format
+
+```json
+[
+  { "title": "Home", "href": "/home" },
+  { "title": "Services", "href": "/services" },
+  { "title": "Contact", "href": "/contact" }
+]
+```
+
+#### Language Toggle Options JSON Format
+
+```json
+{
+  "englishLink": "/en/home",
+  "frenchLink": "/fr/home"
+}
+```
+
+#### Application Header Info JSON Format
+
+```json
+{
+  "title": "Environmental Registry",
+  "href": "/",
+  "maxWidth": "1200px"
+}
+```
+
+#### Usage Example
+
+```html
+<c-sf-gps-ds-ca-on-header-comm
+  type="application"
+  language="en"
+  application-header-info-json='{"title": "EASR Portal", "href": "/"}'
+  menu-items-json='[{"title": "Home", "href": "/home"}, {"title": "Register", "href": "/register"}]'
+  language-toggle-options-json='{"englishLink": "/en", "frenchLink": "/fr"}'
+  disable-dynamic-menu
+></c-sf-gps-ds-ca-on-header-comm>
+```
+
+---
+
+### sfGpsDsCaOnFooterComm
+
+The Ontario Design System footer component for Experience Builder sites. Supports Ontario Government branding and language toggle.
+
+#### Properties
+
+| Property                    | Type   | Default | Description                                          |
+| --------------------------- | ------ | ------- | ---------------------------------------------------- |
+| `language`                  | String | `"en"`  | Footer language: `en` (English) or `fr` (French)     |
+| `languageToggleOptionsJson` | String | -       | JSON object with `englishLink` and `frenchLink` URLs |
+| `className`                 | String | -       | Additional CSS classes                               |
+
+#### Usage Example
+
+```html
+<c-sf-gps-ds-ca-on-footer-comm
+  language="en"
+  language-toggle-options-json='{"englishLink": "/en", "frenchLink": "/fr"}'
+></c-sf-gps-ds-ca-on-footer-comm>
+```
+
+---
 
 ### sfGpsDsCaOnTextInput
 

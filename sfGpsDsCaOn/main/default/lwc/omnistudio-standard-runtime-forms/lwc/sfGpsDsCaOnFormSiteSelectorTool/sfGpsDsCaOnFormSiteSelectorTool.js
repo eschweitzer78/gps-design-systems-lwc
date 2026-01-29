@@ -42,6 +42,35 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
   LightningElement
 ) {
   /* ========================================
+   * PUBLIC @api PROPERTIES
+   * For Custom LWC elements, OmniStudio passes config via @api properties
+   * ======================================== */
+
+  /** @type {string} Field label - passed from OmniScript */
+  @api configLabel;
+
+  /** @type {string} Help text - passed from OmniScript */
+  @api configHelpText;
+
+  /** @type {boolean} Whether field is required - passed from OmniScript */
+  @api configRequired;
+
+  /** @type {string} Button label - passed from OmniScript */
+  @api configButtonLabel;
+
+  /** @type {string} Modal title - passed from OmniScript */
+  @api configModalTitle;
+
+  /** @type {number} Default latitude - passed from OmniScript */
+  @api configDefaultLatitude;
+
+  /** @type {number} Default longitude - passed from OmniScript */
+  @api configDefaultLongitude;
+
+  /** @type {string} VF page URL path - passed from OmniScript */
+  @api configVfPageUrl;
+
+  /* ========================================
    * PRIVATE PROPERTIES
    * ======================================== */
 
@@ -53,6 +82,7 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
 
   /* ========================================
    * COMPUTED PROPERTIES - CONFIGURATION
+   * For Custom LWC elements, check @api props first, then jsonDef
    * ======================================== */
 
   /**
@@ -74,35 +104,39 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
   }
 
   /**
-   * Get label from OmniScript properties
+   * Get label - checks @api prop first, then jsonDef
    * @returns {string}
    */
   get label() {
-    return this._propSetMap?.label || "Site address";
+    return this.configLabel || this._propSetMap?.label || "Site address";
   }
 
   /**
-   * Get help text from OmniScript properties
+   * Get help text - checks @api prop first, then jsonDef
    * @returns {string}
    */
   get helpText() {
-    return this._propSetMap?.helpText || "";
+    return this.configHelpText || this._propSetMap?.helpText || "";
   }
 
   /**
-   * Whether the field is required
+   * Whether the field is required - checks @api prop first
    * @returns {boolean}
    */
   get isRequired() {
+    if (this.configRequired !== undefined) {
+      return Boolean(this.configRequired);
+    }
     return Boolean(this._propSetMap?.required);
   }
 
   /**
-   * Button label from properties (check custom props first)
+   * Button label - checks @api prop first, then jsonDef
    * @returns {string}
    */
   get buttonLabel() {
     return (
+      this.configButtonLabel ||
       this._customPropSetMap?.buttonLabel ||
       this._propSetMap?.buttonLabel ||
       "Site selector tool"
@@ -110,11 +144,12 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
   }
 
   /**
-   * Modal title from properties (check custom props first)
+   * Modal title - checks @api prop first, then jsonDef
    * @returns {string}
    */
   get modalTitle() {
     return (
+      this.configModalTitle ||
       this._customPropSetMap?.modalTitle ||
       this._propSetMap?.modalTitle ||
       "Site"
@@ -122,11 +157,12 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
   }
 
   /**
-   * Default latitude from properties (check custom props first)
+   * Default latitude - checks @api prop first, then jsonDef
    * @returns {number}
    */
   get defaultLatitude() {
     return (
+      this.configDefaultLatitude ||
       this._customPropSetMap?.defaultLatitude ||
       this._propSetMap?.defaultLatitude ||
       43.6532
@@ -134,11 +170,12 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
   }
 
   /**
-   * Default longitude from properties (check custom props first)
+   * Default longitude - checks @api prop first, then jsonDef
    * @returns {number}
    */
   get defaultLongitude() {
     return (
+      this.configDefaultLongitude ||
       this._customPropSetMap?.defaultLongitude ||
       this._propSetMap?.defaultLongitude ||
       -79.3832
@@ -147,9 +184,15 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
 
   /**
    * VF Page URL with domain
+   * Checks @api configVfPageUrl first, then uses fetched URL
    * @returns {string}
    */
   get vfPageUrl() {
+    // If full URL is provided via @api, use it directly
+    if (this.configVfPageUrl) {
+      return this.configVfPageUrl;
+    }
+    // Otherwise construct from fetched VF domain
     if (this._vfPageUrl) {
       return this._vfPageUrl + "/apex/sfGpsDsCaOnSiteSelectorPage";
     }
@@ -266,8 +309,10 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
    */
   connectedCallback() {
     this.classList.add("caon-scope");
-    // Fetch VF domain URL
-    this.loadVfDomainUrl();
+    // Fetch VF domain URL (if not provided via @api)
+    if (!this.configVfPageUrl) {
+      this.loadVfDomainUrl();
+    }
     // Restore saved state from OmniScript JSON
     this.restoreSavedState();
   }

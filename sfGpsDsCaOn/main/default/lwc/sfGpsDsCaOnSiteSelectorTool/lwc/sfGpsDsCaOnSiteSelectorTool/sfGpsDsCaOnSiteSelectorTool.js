@@ -180,6 +180,13 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   @track _mapLoaded = false;
 
   /**
+   * Initial iframe URL - set once when modal opens, doesn't update reactively
+   * @type {string}
+   * @private
+   */
+  @track _initialIframeUrl = "";
+
+  /**
    * Bound message handler for cleanup
    * @type {Function}
    * @private
@@ -435,10 +442,24 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   }
 
   /**
-   * Computed VF page URL with parameters
+   * Computed VF page URL with parameters.
+   * Uses _initialIframeUrl which is set once when modal opens.
+   * This prevents iframe reload when coordinates change.
    * @returns {string}
    */
   get computedVfPageUrl() {
+    // Return the initial URL that was set when modal opened
+    // This prevents reactive updates from reloading the iframe
+    return this._initialIframeUrl;
+  }
+
+  /**
+   * Builds the VF page URL with current parameters
+   * Called once when modal opens to set initial URL
+   * @returns {string}
+   * @private
+   */
+  _buildVfPageUrl() {
     if (!this.vfPageUrl) return "";
     const lat = this._coordinates?.latitude || this.defaultLatitude;
     const lng = this._coordinates?.longitude || this.defaultLongitude;
@@ -533,9 +554,26 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
     this._isModalOpen = true;
     this._errorMessage = "";
 
+    // IMPORTANT: Reset _activeTab BEFORE building URL to ensure consistent initial mode
+    // This prevents stale tab state from affecting the iframe URL
     if (this.isReadOnly) {
-      // In read-only mode, set to layers tab and preserve existing address
       this._activeTab = "layers";
+    } else {
+      this._activeTab = "search";
+      if (!this._value) {
+        this._addressDetails = null;
+      }
+    }
+
+    // Set initial iframe URL once when modal opens
+    // This prevents iframe reload when coordinates change during search
+    this._initialIframeUrl = this._buildVfPageUrl();
+    console.log(
+      "SiteSelectorTool - open() - initial iframe URL:",
+      this._initialIframeUrl
+    );
+
+    if (this.isReadOnly) {
       // If we have coordinates, navigate map to that location after iframe loads
       if (this._coordinates?.latitude && this._coordinates?.longitude) {
         // Wait for modal and iframe to be ready, then navigate
@@ -556,12 +594,6 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
             detail: { mode: "readonly" }
           });
         }, 1000);
-      }
-    } else {
-      // In edit mode, reset to search tab
-      this._activeTab = "search";
-      if (!this._value) {
-        this._addressDetails = null;
       }
     }
   }
@@ -697,17 +729,25 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    */
   handleSearchClick(event) {
     event.preventDefault();
+    console.log(
+      "SiteSelectorTool - Search button clicked, value:",
+      this._searchValue
+    );
     if (this._searchValue.trim()) {
       this._isSearching = true;
       this._errorMessage = "";
       // Send search request to map
-      this.sendMessageToMap({
+      const message = {
         title: "search",
         detail: {
           query: this._searchValue,
           type: this._searchParameter
         }
-      });
+      };
+      console.log("SiteSelectorTool - Sending search message:", message);
+      this.sendMessageToMap(message);
+    } else {
+      console.log("SiteSelectorTool - Search value is empty, not searching");
     }
   }
 
@@ -817,22 +857,41 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    * @private
    */
   handleMapMessage(event) {
+    // DEBUG: Log all incoming messages
+    console.log("SiteSelectorTool - Incoming message:", {
+      origin: event.origin,
+      expectedOrigin: this.getVfOrigin(),
+      data: event.data,
+      dataType: typeof event.data
+    });
+
     // LWS Security: Validate origin before processing message
     if (!this.isValidOrigin(event.origin)) {
-      // Silently ignore messages from unexpected origins
+      // DEBUG: Log rejected messages
+      console.warn("SiteSelectorTool - Message rejected, origin mismatch:", {
+        eventOrigin: event.origin,
+        expectedOrigin: this.getVfOrigin()
+      });
       return;
     }
 
     try {
       const data = event.data;
-      if (!data || typeof data !== "object") return;
+      if (!data || typeof data !== "object") {
+        console.log("SiteSelectorTool - Message ignored, not an object:", data);
+        return;
+      }
+
+      console.log("SiteSelectorTool - Processing message:", data.name, data);
 
       switch (data.name) {
         case "pageLoaded":
+          console.log("SiteSelectorTool - Map page loaded");
           this._mapLoaded = true;
           break;
 
         case "searchResult":
+          console.log("SiteSelectorTool - Search result received:", data);
           this._isSearching = false;
           if (data.address) {
             this._addressDetails = data.address;
@@ -880,15 +939,30 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    */
   sendMessageToMap(message) {
     const iframe = this.querySelector(".sfgpsdscaon-site-selector__map-iframe");
+    console.log("SiteSelectorTool - sendMessageToMap:", {
+      iframeFound: !!iframe,
+      hasContentWindow: !!(iframe && iframe.contentWindow),
+      message: message
+    });
     if (iframe && iframe.contentWindow) {
       try {
         // LWS Security: Use specific origin instead of "*"
         const targetOrigin = this.getVfOrigin();
+        console.log(
+          "SiteSelectorTool - Posting message to iframe:",
+          targetOrigin,
+          message
+        );
         iframe.contentWindow.postMessage(JSON.stringify(message), targetOrigin);
+        console.log("SiteSelectorTool - Message posted successfully");
       } catch (e) {
         // LWS may restrict postMessage in some cases
         console.warn("Failed to send message to map:", e.message);
       }
+    } else {
+      console.warn(
+        "SiteSelectorTool - Cannot send message, iframe not found or no contentWindow"
+      );
     }
   }
 

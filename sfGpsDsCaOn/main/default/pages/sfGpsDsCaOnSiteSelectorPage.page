@@ -62,7 +62,29 @@
         var defaultLng =
           parseFloat("{!JSENCODE(defaultLongitude)}") || -79.3832;
         var communityUrl = "{!JSENCODE(communityUrl)}";
-        var currentMode = "search"; // search, sitepoint, layers
+
+        // Parse mode from URL parameter (defaults to "search")
+        var urlParams = new URLSearchParams(window.location.search);
+        var initialMode = urlParams.get("mode") || "search";
+        // Validate mode value
+        // "discharge" is used by DischargePointSelector, behaves like "search"
+        var validModes = [
+          "search",
+          "sitepoint",
+          "layers",
+          "readonly",
+          "discharge"
+        ];
+        var currentMode = validModes.includes(initialMode)
+          ? initialMode
+          : "search";
+        console.log(
+          "VF Page - Initial mode from URL:",
+          initialMode,
+          "-> currentMode:",
+          currentMode
+        );
+
         var currentMarker = null;
         var graphicsLayer = null;
         var view = null;
@@ -220,6 +242,12 @@
 
           // Handle search complete
           search.on("search-complete", function (event) {
+            console.log("VF Page - Search complete event:", event);
+            console.log(
+              "VF Page - Results count:",
+              event.results?.length,
+              event.results?.[0]?.results?.length
+            );
             if (
               event.results &&
               event.results.length > 0 &&
@@ -227,8 +255,10 @@
               event.results[0].results.length > 0
             ) {
               var result = event.results[0].results[0];
+              console.log("VF Page - Found result:", result);
               handleSearchResult(result);
             } else {
+              console.log("VF Page - No results found");
               sendToLWC({
                 name: "searchResult",
                 error: "No results found for this address"
@@ -290,7 +320,15 @@
           // Hide loading when view is ready
           view.when(function () {
             document.getElementById("loadingIcon").style.display = "none";
-            sendToLWC({ name: "pageLoaded" });
+
+            // Apply initial mode from URL parameter
+            console.log(
+              "VF Page - Map ready, applying initial mode:",
+              currentMode
+            );
+            applyMode(currentMode);
+
+            sendToLWC({ name: "pageLoaded", currentMode: currentMode });
           });
 
           /**
@@ -514,22 +552,37 @@
           }
 
           /**
-           * Handles mode change from LWC
+           * Applies mode settings to the map UI
+           * Called both on initial load (from URL param) and on modeChange messages
            */
-          function setMode(mode) {
+          function applyMode(mode) {
+            console.log("VF Page - applyMode called with:", mode);
             currentMode = mode;
 
             // Update UI based on mode
-            if (mode === "search") {
+            if (mode === "search" || mode === "discharge") {
+              // "discharge" mode (used by DischargePointSelector) behaves like "search"
+              console.log(
+                "VF Page - Setting search/discharge mode: cursor=default, search=visible"
+              );
               search.visible = true;
               view.cursor = "default";
             } else if (mode === "sitepoint") {
+              console.log(
+                "VF Page - Setting sitepoint mode: cursor=crosshair, search=hidden"
+              );
               search.visible = false;
               view.cursor = "crosshair";
             } else if (mode === "layers") {
+              console.log(
+                "VF Page - Setting layers mode: cursor=default, search=visible"
+              );
               search.visible = true;
               view.cursor = "default";
             } else if (mode === "readonly") {
+              console.log(
+                "VF Page - Setting readonly mode: cursor=default, search=hidden"
+              );
               // Read-only mode: hide search, disable map click
               search.visible = false;
               view.cursor = "default";
@@ -544,20 +597,37 @@
            * Sends message to parent LWC
            */
           function sendToLWC(data) {
+            console.log("VF Page - sendToLWC:", {
+              data: data,
+              communityUrl: communityUrl,
+              targetOrigin: communityUrl || "*"
+            });
             if (communityUrl) {
               parent.postMessage(data, communityUrl);
             } else {
               // Fallback for development
               parent.postMessage(data, "*");
             }
+            console.log("VF Page - Message posted to parent");
           }
 
           /**
            * Handles messages from parent LWC
            */
           window.addEventListener("message", function (event) {
+            console.log("VF Page - Received message:", {
+              origin: event.origin,
+              communityUrl: communityUrl,
+              data: event.data,
+              dataType: typeof event.data
+            });
+
             // Validate origin if communityUrl is set
             if (communityUrl && event.origin !== communityUrl) {
+              console.warn("VF Page - Message rejected, origin mismatch:", {
+                eventOrigin: event.origin,
+                expectedOrigin: communityUrl
+              });
               return;
             }
 
@@ -567,9 +637,16 @@
                   ? JSON.parse(event.data)
                   : event.data;
 
+              console.log("VF Page - Parsed message:", msg);
+
               switch (msg.title) {
                 case "search":
+                  console.log("VF Page - Processing search:", msg.detail);
                   if (msg.detail && msg.detail.query) {
+                    console.log(
+                      "VF Page - Calling ESRI search with query:",
+                      msg.detail.query
+                    );
                     search.search(msg.detail.query);
                   }
                   break;
@@ -579,8 +656,9 @@
                   break;
 
                 case "modeChange":
+                  console.log("VF Page - modeChange received:", msg.detail);
                   if (msg.detail && msg.detail.mode) {
-                    setMode(msg.detail.mode);
+                    applyMode(msg.detail.mode);
                   }
                   break;
 

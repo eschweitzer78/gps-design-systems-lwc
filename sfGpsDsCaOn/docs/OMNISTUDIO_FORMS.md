@@ -144,6 +144,27 @@ Some components support additional custom properties beyond the standard OmniScr
 
 > **Important:** Custom properties must be placed inside a **nested `propSetMap`** object. OmniStudio uses the outer `propSetMap` for standard properties (label, required, options), while custom properties for LWC overrides go inside the nested `propSetMap`.
 
+#### When to Use Nested vs. Flat propSetMap
+
+| Element Type                                                                         | Configuration                               | Nested Required?                                       |
+| ------------------------------------------------------------------------------------ | ------------------------------------------- | ------------------------------------------------------ |
+| **LWC Override** (e.g., Multi-select with `c-sf-gps-ds-ca-on-form-selectable-cards`) | Uses built-in element with custom rendering | **Yes** - Add custom properties in nested `propSetMap` |
+| **Custom LWC** (e.g., `c-sf-gps-ds-ca-on-form-site-selector-tool`)                   | Standalone custom element                   | **No** - Add properties directly to `propSetMap`       |
+
+**Example - Custom LWC (no nesting needed):**
+
+```json
+{
+  "type": "Custom LWC",
+  "lwcComponentOverride": "c-sf-gps-ds-ca-on-form-site-selector-tool",
+  "propSetMap": {
+    "label": "Site address",
+    "buttonLabel": "Site selector tool",
+    "modalTitle": "Site"
+  }
+}
+```
+
 #### Using Merge Fields for Dynamic Values
 
 Custom properties can reference OmniScript data using merge fields:
@@ -293,30 +314,40 @@ The `sfGpsDsCaOnFormSelectableCards` component provides a card-based multi-selec
 
 ### OmniScript Configuration
 
-**Element Type:** Multi-select (with Custom LWC override)
+This component can be used as either:
+
+- **LWC Override** of a Multi-select element
+- **Custom LWC** element
+
 **LWC Override:** `c-sf-gps-ds-ca-on-form-selectable-cards`
 
 **Standard Options:** Configure via OmniScript Multi-select options (Picklist)
 
-> **Important:** OmniScript picklist options only provide basic label/value pairs. To display descriptions, badges, links, and expandable content, you **must** configure the `optionsJson` Custom LWC Property.
+> **Important:** OmniScript picklist options only provide basic label/value pairs. To display descriptions, badges, links, and expandable content, you **must** configure the `optionsJson` property.
 
-### Configuring Extended Options (Step-by-Step)
+### Configuration Options
 
-Follow these steps to add descriptions, badges, and expanded content to selectable cards:
+This component supports **two configuration methods**:
 
-#### Step 1: Create the Multi-select Element
+#### Option 1: @api Properties (for Custom LWC)
 
-1. In OmniScript Designer, add a **Multiselect** element
-2. Set the **Custom LWC Override** to `c-sf-gps-ds-ca-on-form-selectable-cards`
-3. Configure the basic picklist options (these provide the values for data binding)
+For Custom LWC elements, properties are passed via `@api` properties with the `config*` prefix:
 
-#### Step 2: Add optionsJson via JSON Editor
+```json
+{
+  "type": "Custom LWC",
+  "lwcComponentOverride": "c-sf-gps-ds-ca-on-form-selectable-cards",
+  "propSetMap": {
+    "configRequired": true,
+    "configErrorMessage": "Please select at least one option",
+    "configOptionsJson": "[{\"value\":\"air-emissions\",\"label\":\"Air emissions\",\"description\":\"...\"}]"
+  }
+}
+```
 
-For OmniScript LWC overrides, custom properties are configured through the **JSON Editor**.
+#### Option 2: Nested propSetMap (for LWC Overrides)
 
-1. With the Multiselect element selected, click the **JSON Editor** button (curly braces icon `{}`) in the Properties panel
-2. In the JSON Editor, locate the `propSetMap` object
-3. Add a **nested `propSetMap`** object inside the existing `propSetMap` with your `optionsJson`:
+For LWC Overrides of Multi-select elements, add properties to a **nested `propSetMap`**:
 
 ```json
 {
@@ -340,7 +371,41 @@ For OmniScript LWC overrides, custom properties are configured through the **JSO
 }
 ```
 
-> **Important:** Custom properties must be placed inside a **nested `propSetMap`** object. OmniStudio uses the outer `propSetMap` for standard properties (label, required, options), while custom properties for LWC overrides go inside the inner `propSetMap`.
+### Available Properties
+
+| @api Property        | JSON Property  | Default | Description                                |
+| -------------------- | -------------- | ------- | ------------------------------------------ |
+| `configRequired`     | `required`     | false   | Whether at least one selection is required |
+| `configErrorMessage` | `errorMessage` | ""      | Message shown when validation fails        |
+| `configOptionsJson`  | `optionsJson`  | []      | JSON array of extended options             |
+
+> **Note:** The component checks `config*` properties first, then falls back to nested propSetMap properties.
+
+### Configuring Extended Options (Step-by-Step)
+
+Follow these steps to add descriptions, badges, and expanded content to selectable cards:
+
+#### Step 1: Create the Element
+
+**For Custom LWC:**
+
+1. In OmniScript Designer, add a **Custom LWC** element
+2. Set the **LWC Component** to `c-sf-gps-ds-ca-on-form-selectable-cards`
+3. Add `config*` properties in the JSON Editor
+
+**For LWC Override:**
+
+1. In OmniScript Designer, add a **Multiselect** element
+2. Set the **Custom LWC Override** to `c-sf-gps-ds-ca-on-form-selectable-cards`
+3. Configure the basic picklist options (these provide the values for data binding)
+
+#### Step 2: Add optionsJson
+
+**For Custom LWC** - use `configOptionsJson` directly in `propSetMap`
+
+**For LWC Override** - use nested `propSetMap.propSetMap.optionsJson`
+
+> **Important:** For LWC Overrides, custom properties must be placed inside a **nested `propSetMap`** object. OmniStudio uses the outer `propSetMap` for standard properties (label, required, options), while custom properties for LWC overrides go inside the inner `propSetMap`.
 
 #### Alternative: Using a Formula or Set Values Element
 
@@ -455,12 +520,41 @@ The `sfGpsDsCaOnFormNaicsCodePicker` provides a cascading 5-level dropdown for s
 
 ### OmniScript Configuration
 
-**Element Type:** Select (with Custom LWC override)
-**LWC Override:** `c-sf-gps-ds-ca-on-form-naics-code-picker`
+**Element Type:** Custom LWC
+**LWC Name:** `c-sf-gps-ds-ca-on-form-naics-code-picker`
 
-### Custom Properties (via JSON Editor)
+### Configuration Options
 
-Add custom properties to a **nested `propSetMap`** via the JSON Editor:
+This component supports **two configuration methods**:
+
+#### Option 1: @api Properties (Recommended for Custom LWC)
+
+For Custom LWC elements, properties are passed via `@api` properties with the `config*` prefix:
+
+```json
+{
+  "type": "Custom LWC",
+  "lwcComponentOverride": "c-sf-gps-ds-ca-on-form-naics-code-picker",
+  "propSetMap": {
+    "configLabel": "NAICS Code",
+    "configHelpText": "Select the industry code that best describes your operation.",
+    "configSectorLabel": "Sector",
+    "configSubSectorLabel": "Sub sector",
+    "configIndustryGroupLabel": "Industry group",
+    "configIndustryLabel": "Industry",
+    "configNationalIndustryLabel": "National industry",
+    "configSectorOptionsJson": "[...]",
+    "configSubSectorOptionsJson": "[...]",
+    "configIndustryGroupOptionsJson": "[...]",
+    "configIndustryOptionsJson": "[...]",
+    "configNationalIndustryOptionsJson": "[...]"
+  }
+}
+```
+
+#### Option 2: Nested propSetMap (for LWC Overrides)
+
+If using as an LWC override of a Select element, add properties to a **nested `propSetMap`**:
 
 ```json
 {
@@ -484,18 +578,24 @@ Add custom properties to a **nested `propSetMap`** via the JSON Editor:
 }
 ```
 
-| Property                      | Required | Description                             |
-| ----------------------------- | -------- | --------------------------------------- |
-| `sectorLabel`                 | No       | Label for sector dropdown               |
-| `subSectorLabel`              | No       | Label for sub-sector dropdown           |
-| `industryGroupLabel`          | No       | Label for industry group dropdown       |
-| `industryLabel`               | No       | Label for industry dropdown             |
-| `nationalIndustryLabel`       | No       | Label for national industry dropdown    |
-| `sectorOptionsJson`           | Yes      | JSON array of sector options            |
-| `subSectorOptionsJson`        | Yes      | JSON array of sub-sector options        |
-| `industryGroupOptionsJson`    | Yes      | JSON array of industry group options    |
-| `industryOptionsJson`         | Yes      | JSON array of industry options          |
-| `nationalIndustryOptionsJson` | Yes      | JSON array of national industry options |
+### Available Properties
+
+| @api Property                       | JSON Property                 | Default             | Description                             |
+| ----------------------------------- | ----------------------------- | ------------------- | --------------------------------------- |
+| `configLabel`                       | `label`                       | "Select NAICS code" | Field label                             |
+| `configHelpText`                    | `helpText`                    | (see default)       | Help text below label                   |
+| `configSectorLabel`                 | `sectorLabel`                 | "Sector"            | Sector dropdown label                   |
+| `configSubSectorLabel`              | `subSectorLabel`              | "Sub sector"        | Sub-sector dropdown label               |
+| `configIndustryGroupLabel`          | `industryGroupLabel`          | "Industry group"    | Industry group dropdown label           |
+| `configIndustryLabel`               | `industryLabel`               | "Industry"          | Industry dropdown label                 |
+| `configNationalIndustryLabel`       | `nationalIndustryLabel`       | "National industry" | National industry dropdown label        |
+| `configSectorOptionsJson`           | `sectorOptionsJson`           | []                  | JSON array of sector options            |
+| `configSubSectorOptionsJson`        | `subSectorOptionsJson`        | []                  | JSON array of sub-sector options        |
+| `configIndustryGroupOptionsJson`    | `industryGroupOptionsJson`    | []                  | JSON array of industry group options    |
+| `configIndustryOptionsJson`         | `industryOptionsJson`         | []                  | JSON array of industry options          |
+| `configNationalIndustryOptionsJson` | `nationalIndustryOptionsJson` | []                  | JSON array of national industry options |
+
+> **Note:** The component checks `config*` properties first, then falls back to nested/standard propSetMap properties.
 
 ### Cascading Levels
 
@@ -531,9 +631,34 @@ The `sfGpsDsCaOnFormSiteSelectorTool` provides ESRI-integrated address selection
 **Element Type:** Custom LWC
 **LWC Name:** `c-sf-gps-ds-ca-on-form-site-selector-tool`
 
-### Custom Properties (via JSON Editor)
+### Configuration Options
 
-Add custom properties to a **nested `propSetMap`** via the JSON Editor:
+This component supports **two configuration methods**:
+
+#### Option 1: @api Properties (Recommended for Custom LWC)
+
+For Custom LWC elements, properties are passed via `@api` properties with the `config*` prefix:
+
+```json
+{
+  "type": "Custom LWC",
+  "lwcComponentOverride": "c-sf-gps-ds-ca-on-form-site-selector-tool",
+  "propSetMap": {
+    "configLabel": "Site address",
+    "configHelpText": "Use the site selector tool to find the address.",
+    "configRequired": true,
+    "configButtonLabel": "Site selector tool",
+    "configModalTitle": "Site",
+    "configDefaultLatitude": "43.6532",
+    "configDefaultLongitude": "-79.3832",
+    "configVfPageUrl": ""
+  }
+}
+```
+
+#### Option 2: Standard Properties (JSON Editor)
+
+Alternatively, properties can be set without the `config*` prefix:
 
 ```json
 {
@@ -541,23 +666,26 @@ Add custom properties to a **nested `propSetMap`** via the JSON Editor:
     "label": "Site address",
     "helpText": "Use the site selector tool to find the address.",
     "required": true,
-    "propSetMap": {
-      "buttonLabel": "Site selector tool",
-      "modalTitle": "Site",
-      "vfPageUrl": "/apex/SiteSelectorVF"
-    }
+    "buttonLabel": "Site selector tool",
+    "modalTitle": "Site"
   }
 }
 ```
 
-| Property      | Required | Default              | Description                          |
-| ------------- | -------- | -------------------- | ------------------------------------ |
-| `label`       | No       | "Site address"       | Field label (outer propSetMap)       |
-| `helpText`    | No       | ""                   | Help text below label (outer)        |
-| `required`    | No       | false                | Makes field required (outer)         |
-| `buttonLabel` | No       | "Site selector tool" | Text on the launcher button (nested) |
-| `modalTitle`  | No       | "Site"               | Title of the modal dialog (nested)   |
-| `vfPageUrl`   | No       | ""                   | URL to the Visualforce page (nested) |
+### Available Properties
+
+| @api Property            | JSON Property      | Default              | Description                                 |
+| ------------------------ | ------------------ | -------------------- | ------------------------------------------- |
+| `configLabel`            | `label`            | "Site address"       | Field label                                 |
+| `configHelpText`         | `helpText`         | ""                   | Help text below label                       |
+| `configRequired`         | `required`         | false                | Makes field required                        |
+| `configButtonLabel`      | `buttonLabel`      | "Site selector tool" | Text on the launcher button                 |
+| `configModalTitle`       | `modalTitle`       | "Site"               | Title of the modal dialog                   |
+| `configDefaultLatitude`  | `defaultLatitude`  | 43.6532              | Default map center latitude                 |
+| `configDefaultLongitude` | `defaultLongitude` | -79.3832             | Default map center longitude                |
+| `configVfPageUrl`        | `vfPageUrl`        | ""                   | Full URL to VF page (auto-fetched if blank) |
+
+> **Note:** The component checks `config*` properties first, then falls back to JSON Editor properties.
 
 ### Output Fields
 
@@ -587,9 +715,34 @@ The `sfGpsDsCaOnFormDischargePointSelector` provides coordinate-based location e
 **Element Type:** Custom LWC
 **LWC Name:** `c-sf-gps-ds-ca-on-form-discharge-point-selector`
 
-### Custom Properties (via JSON Editor)
+### Configuration Options
 
-Add custom properties to a **nested `propSetMap`** via the JSON Editor:
+This component supports **two configuration methods**:
+
+#### Option 1: @api Properties (Recommended for Custom LWC)
+
+For Custom LWC elements, properties are passed via `@api` properties with the `config*` prefix:
+
+```json
+{
+  "type": "Custom LWC",
+  "lwcComponentOverride": "c-sf-gps-ds-ca-on-form-discharge-point-selector",
+  "propSetMap": {
+    "configLabel": "Discharge point location",
+    "configHelpText": "Enter the coordinates of the discharge point.",
+    "configRequired": true,
+    "configButtonLabel": "Add discharge point",
+    "configModalTitle": "Source",
+    "configDefaultLatitude": "43.6532",
+    "configDefaultLongitude": "-79.3832",
+    "configVfPageUrl": ""
+  }
+}
+```
+
+#### Option 2: Standard Properties (JSON Editor)
+
+Alternatively, properties can be set without the `config*` prefix:
 
 ```json
 {
@@ -597,27 +750,28 @@ Add custom properties to a **nested `propSetMap`** via the JSON Editor:
     "label": "Discharge point location",
     "helpText": "Enter the coordinates of the discharge point.",
     "required": true,
-    "propSetMap": {
-      "buttonLabel": "Add discharge point",
-      "modalTitle": "Source",
-      "defaultLatitude": 43.6532,
-      "defaultLongitude": -79.3832,
-      "vfPageUrl": "/apex/DischargePointVF"
-    }
+    "buttonLabel": "Add discharge point",
+    "modalTitle": "Source",
+    "defaultLatitude": 43.6532,
+    "defaultLongitude": -79.3832
   }
 }
 ```
 
-| Property           | Required | Default                    | Description                               |
-| ------------------ | -------- | -------------------------- | ----------------------------------------- |
-| `label`            | No       | "Discharge point location" | Field label (outer propSetMap)            |
-| `helpText`         | No       | ""                         | Help text below label (outer)             |
-| `required`         | No       | false                      | Makes field required (outer)              |
-| `buttonLabel`      | No       | "Add discharge point"      | Text on the launcher button (nested)      |
-| `modalTitle`       | No       | "Source"                   | Title of the modal dialog (nested)        |
-| `defaultLatitude`  | No       | 43.6532                    | Default latitude for map center (nested)  |
-| `defaultLongitude` | No       | -79.3832                   | Default longitude for map center (nested) |
-| `vfPageUrl`        | No       | ""                         | URL to the Visualforce page (nested)      |
+### Available Properties
+
+| @api Property            | JSON Property      | Default                    | Description                                 |
+| ------------------------ | ------------------ | -------------------------- | ------------------------------------------- |
+| `configLabel`            | `label`            | "Discharge point location" | Field label                                 |
+| `configHelpText`         | `helpText`         | ""                         | Help text below label                       |
+| `configRequired`         | `required`         | false                      | Makes field required                        |
+| `configButtonLabel`      | `buttonLabel`      | "Add discharge point"      | Text on the launcher button                 |
+| `configModalTitle`       | `modalTitle`       | "Source"                   | Title of the modal dialog                   |
+| `configDefaultLatitude`  | `defaultLatitude`  | 43.6532                    | Default map center latitude                 |
+| `configDefaultLongitude` | `defaultLongitude` | -79.3832                   | Default map center longitude                |
+| `configVfPageUrl`        | `vfPageUrl`        | ""                         | Full URL to VF page (auto-fetched if blank) |
+
+> **Note:** The component checks `config*` properties first, then falls back to JSON Editor properties.
 
 ### Coordinate Formats
 

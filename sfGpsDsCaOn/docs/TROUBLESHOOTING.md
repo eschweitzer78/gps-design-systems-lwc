@@ -133,6 +133,38 @@ log.debug("Options", this.options);
 
 3. **Check for async issues:** Ensure data loads before render.
 
+### Issue: Header Displays in Wrong Language
+
+**Symptoms:**
+
+- Header displays in French when English is configured
+- Language property setting in Experience Builder has no effect
+- `<ontario-header>` component ignores language attribute
+
+**Solution:**
+
+This issue was caused by a missing `computedLanguage` getter in the header component. The HTML template referenced `computedLanguage` but the getter wasn't defined, causing `undefined` to be passed to the Ontario header web component.
+
+**Fixed in version:** This bug has been fixed. If you're still experiencing this issue:
+
+1. **Pull the latest code** and redeploy the header components:
+
+   ```bash
+   sf project deploy start --source-dir sfGpsDsCaOn/main/default/lwc/sfGpsDsCaOnHeader
+   ```
+
+2. **Verify your configuration** in Experience Builder:
+   - Select the Header component
+   - Confirm **Language** is set to `en` (English) or `fr` (French)
+
+3. **Clear caches** and refresh the Experience Builder preview
+
+**Technical Details:**
+
+The header now correctly uses `computedLanguage` which returns the configured `language` property or defaults to `"en"` (English) if not set.
+
+---
+
 ### Issue: Accordion Not Expanding
 
 **Symptoms:**
@@ -333,14 +365,22 @@ const LAYER_CONFIG = {
 
 - Map receives no commands from LWC
 - Selection doesn't return to parent
+- Console shows "Message rejected, origin mismatch"
 
 **Solutions:**
 
 1. **Check origin matching:**
 
-```javascript
-// In Visualforce page
-window.parent.postMessage(data, "*");
+The Apex controller (`sfGpsDsCaOnSiteSelectorCtr`) returns the community URL origin for postMessage validation. Ensure it returns **only the origin** (protocol + hostname), not the full URL with path.
+
+```apex
+// CORRECT - returns origin only
+return urlObj.getProtocol() + '://' + urlObj.getHost();
+// Returns: https://yoursite.my.site.com
+
+// INCORRECT - returns full URL with path
+return details[0].SecureURL;
+// Returns: https://yoursite.my.site.com/EASRvforcesite
 ```
 
 2. **Verify event listener:**
@@ -361,6 +401,124 @@ disconnectedCallback() {
   title: "messageType",
   detail: { /* data */ }
 }
+```
+
+4. **Debug postMessage flow:**
+
+Enable debug mode to see detailed postMessage logging:
+
+```javascript
+// LWC logs
+("SiteSelectorTool - Posting message to iframe:", targetOrigin, message);
+
+// VF Page logs
+("VF Page - Received message:", { origin, communityUrl, data });
+("VF Page - Message rejected, origin mismatch:",
+  { eventOrigin, expectedOrigin });
+```
+
+### Issue: Site Point Tab Not Working
+
+**Symptoms:**
+
+- Cursor doesn't change to crosshair when Site Point tab is selected
+- Search widget stays visible in Site Point mode
+- Map doesn't respond to mode change
+
+**Solutions:**
+
+1. **Check VF page mode parameter:**
+
+The VF page reads the initial `mode` from the URL parameter. Verify the URL includes the mode:
+
+```
+/apex/sfGpsDsCaOnSiteSelectorPage?latitude=43.6532&longitude=-79.3832&mode=search
+```
+
+2. **Check valid modes in VF page:**
+
+The VF page validates the mode parameter. Valid modes are:
+
+- `search` - Address search mode (default)
+- `sitepoint` - Pin placement mode (crosshair cursor)
+- `layers` - Layer control mode
+- `readonly` - View-only mode
+- `discharge` - Discharge point selector mode (behaves like search)
+
+3. **Check tab reset on modal reopen:**
+
+The LWC must reset `_activeTab` **before** building the iframe URL:
+
+```javascript
+// CORRECT - reset tab first
+this._activeTab = "search";
+this._initialIframeUrl = this._buildVfPageUrl();
+
+// INCORRECT - builds URL with stale tab state
+this._initialIframeUrl = this._buildVfPageUrl();
+this._activeTab = "search";
+```
+
+4. **Verify postMessage modeChange is received:**
+
+When switching tabs, the LWC sends a `modeChange` message to the VF page:
+
+```javascript
+this.sendMessageToMap({ title: "modeChange", detail: { mode: "sitepoint" } });
+```
+
+Check console for:
+
+```
+"VF Page - modeChange received:", { mode: "sitepoint" }
+"VF Page - applyMode called with:", "sitepoint"
+```
+
+### Issue: Iframe Reloading When Searching
+
+**Symptoms:**
+
+- Map zooms to location then immediately resets
+- Double "pageLoaded" messages in console
+- Search results don't persist
+
+**Solutions:**
+
+1. **Check iframe URL is static:**
+
+The iframe `src` should not change after modal opens. Use a static URL:
+
+```javascript
+// In open() method - set URL once
+this._initialIframeUrl = this._buildVfPageUrl();
+
+// In getter - return static URL
+get computedVfPageUrl() {
+  return this._initialIframeUrl; // Not reactive!
+}
+```
+
+2. **Avoid reactive properties in URL:**
+
+Don't include `@track` properties like `_coordinates` in the iframe URL, as changes will cause reload:
+
+```javascript
+// INCORRECT - reactive, causes reload
+return `${this.vfPageUrl}?lat=${this._coordinates?.latitude}`;
+
+// CORRECT - use default values, update via postMessage
+return `${this.vfPageUrl}?lat=${this.defaultLatitude}&mode=${this._activeTab}`;
+```
+
+3. **Use postMessage for updates:**
+
+Instead of reloading the iframe, send navigation commands via postMessage:
+
+```javascript
+this.sendMessageToMap({
+  title: "goTo",
+  detail: { latitude: 43.65, longitude: -79.38, zoom: 17, placeMarker: true }
+});
 ```
 
 ---

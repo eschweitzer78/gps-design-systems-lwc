@@ -123,7 +123,22 @@ public with sharing class sfGpsDsCaOnSiteSelectorCtr {
         ];
 
         if (!details.isEmpty() && details[0].SecureURL != null) {
-          return details[0].SecureURL.removeEnd('/');
+          // Extract just the origin (protocol + hostname) from the URL
+          // event.origin in JavaScript only contains protocol://hostname, not the path
+          String secureUrl = details[0].SecureURL;
+          try {
+            URL urlObj = new URL(secureUrl);
+            // Return just protocol + host (origin)
+            return urlObj.getProtocol() + '://' + urlObj.getHost();
+          } catch (Exception urlEx) {
+            // If URL parsing fails, try to extract origin manually
+            // Find the third slash (after protocol://)
+            Integer thirdSlash = secureUrl.indexOf('/', 8);
+            if (thirdSlash > 0) {
+              return secureUrl.substring(0, thirdSlash);
+            }
+            return secureUrl.removeEnd('/');
+          }
         }
       }
     } catch (Exception e) {

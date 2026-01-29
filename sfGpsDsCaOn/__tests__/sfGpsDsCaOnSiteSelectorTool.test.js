@@ -183,6 +183,68 @@ describe("c-sf-gps-ds-ca-on-site-selector-tool", () => {
           expect(sitePointTab.getAttribute("aria-selected")).toBe("true");
         });
     });
+
+    it("should reset to Search tab when reopened after switching tabs", () => {
+      // This tests the fix for the tab reset order bug
+      // Previously, if you opened modal -> switched to Site Point -> closed -> reopened,
+      // the iframe URL would still have mode=sitepoint instead of mode=search
+      const element = createElement("c-sf-gps-ds-ca-on-site-selector-tool", {
+        is: SfGpsDsCaOnSiteSelectorTool
+      });
+      element.buttonLabel = "Site selector tool";
+      element.vfPageUrl = "/apex/sfGpsDsCaOnSiteSelectorPage";
+      document.body.appendChild(element);
+
+      return Promise.resolve()
+        .then(() => {
+          // Open modal
+          const button = element.querySelector(".sfgpsdscaon-site-selector__trigger");
+          button.click();
+        })
+        .then(() => {
+          // Switch to Site Point tab
+          const sitePointTab = element.querySelector('[data-tab="sitepoint"]');
+          sitePointTab.click();
+        })
+        .then(() => {
+          // Verify Site Point is active
+          const sitePointTab = element.querySelector('[data-tab="sitepoint"]');
+          expect(sitePointTab.getAttribute("aria-selected")).toBe("true");
+          
+          // Close modal
+          element.close();
+        })
+        .then(() => {
+          // Reopen modal
+          const button = element.querySelector(".sfgpsdscaon-site-selector__trigger");
+          button.click();
+        })
+        .then(() => {
+          // Search tab should be active again (reset on open)
+          const searchTab = element.querySelector('[data-tab="search"]');
+          expect(searchTab.getAttribute("aria-selected")).toBe("true");
+        });
+    });
+
+    it("should include mode=search in iframe URL on initial open", () => {
+      const element = createElement("c-sf-gps-ds-ca-on-site-selector-tool", {
+        is: SfGpsDsCaOnSiteSelectorTool
+      });
+      element.buttonLabel = "Site selector tool";
+      element.vfPageUrl = "/apex/sfGpsDsCaOnSiteSelectorPage";
+      document.body.appendChild(element);
+
+      return Promise.resolve()
+        .then(() => {
+          const button = element.querySelector(".sfgpsdscaon-site-selector__trigger");
+          button.click();
+        })
+        .then(() => {
+          const iframe = element.querySelector("iframe");
+          expect(iframe).not.toBeNull();
+          expect(iframe.src).toContain("mode=search");
+        });
+    });
   });
 
   // ============================================

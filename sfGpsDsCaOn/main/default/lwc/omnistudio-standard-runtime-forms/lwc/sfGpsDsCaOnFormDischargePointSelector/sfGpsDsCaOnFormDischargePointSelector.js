@@ -26,28 +26,67 @@ const CLASS_NAME = "SfGpsDsCaOnFormDischargePointSelector";
 export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBaseMixin(
   LightningElement
 ) {
+  /* ========================================
+   * PUBLIC @api PROPERTIES
+   * For Custom LWC elements, OmniStudio passes config via @api properties
+   * ======================================== */
+
+  /** @type {string} Field label - passed from OmniScript */
+  @api configLabel;
+
+  /** @type {string} Help text - passed from OmniScript */
+  @api configHelpText;
+
+  /** @type {boolean} Whether field is required - passed from OmniScript */
+  @api configRequired;
+
+  /** @type {string} Button label - passed from OmniScript */
+  @api configButtonLabel;
+
+  /** @type {string} Modal title - passed from OmniScript */
+  @api configModalTitle;
+
+  /** @type {number} Default latitude - passed from OmniScript */
+  @api configDefaultLatitude;
+
+  /** @type {number} Default longitude - passed from OmniScript */
+  @api configDefaultLongitude;
+
+  /** @type {string} VF page URL path - passed from OmniScript */
+  @api configVfPageUrl;
+
+  /* ========================================
+   * PRIVATE PROPERTIES
+   * ======================================== */
+
   @track _vfPageUrl = "";
   @track _coordinateData = null;
 
   /* ========================================
-   * COMPUTED PROPERTIES FROM OMNISCRIPT
+   * COMPUTED PROPERTIES - CONFIGURATION
+   * Checks @api props first, then jsonDef
    * ======================================== */
 
   get label() {
-    return this._propSetMap?.label || "Discharge point location";
+    return (
+      this.configLabel || this._propSetMap?.label || "Discharge point location"
+    );
   }
 
   get helpText() {
-    return this._propSetMap?.helpText || "";
+    return this.configHelpText || this._propSetMap?.helpText || "";
   }
 
   get isRequired() {
-    return this._propSetMap?.required || false;
+    if (this.configRequired !== undefined) {
+      return Boolean(this.configRequired);
+    }
+    return Boolean(this._propSetMap?.required);
   }
 
   get buttonLabel() {
-    // Check custom propSetMap first, then standard propSetMap
     return (
+      this.configButtonLabel ||
       this._customPropSetMap?.buttonLabel ||
       this._propSetMap?.buttonLabel ||
       "Add discharge point"
@@ -56,6 +95,7 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
 
   get modalTitle() {
     return (
+      this.configModalTitle ||
       this._customPropSetMap?.modalTitle ||
       this._propSetMap?.modalTitle ||
       "Source"
@@ -64,6 +104,7 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
 
   get defaultLatitude() {
     return (
+      this.configDefaultLatitude ||
       this._customPropSetMap?.defaultLatitude ||
       this._propSetMap?.defaultLatitude ||
       43.6532
@@ -72,6 +113,7 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
 
   get defaultLongitude() {
     return (
+      this.configDefaultLongitude ||
       this._customPropSetMap?.defaultLongitude ||
       this._propSetMap?.defaultLongitude ||
       -79.3832
@@ -79,6 +121,11 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
   }
 
   get vfPageUrl() {
+    // If full URL is provided via @api, use it directly
+    if (this.configVfPageUrl) {
+      return this.configVfPageUrl;
+    }
+    // Otherwise use fetched or configured URL
     return (
       this._vfPageUrl ||
       this._customPropSetMap?.vfPageUrl ||
@@ -186,7 +233,10 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
    */
   connectedCallback() {
     this.classList.add("caon-scope");
-    this.loadVfDomainUrl();
+    // Fetch VF domain URL (if not provided via @api)
+    if (!this.configVfPageUrl) {
+      this.loadVfDomainUrl();
+    }
     // Restore saved state from OmniScript JSON
     this.restoreSavedState();
 

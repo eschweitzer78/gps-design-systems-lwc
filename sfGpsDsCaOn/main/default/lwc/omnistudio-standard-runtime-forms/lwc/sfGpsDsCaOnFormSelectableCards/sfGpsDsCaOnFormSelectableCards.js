@@ -30,8 +30,8 @@ const CLASS_NAME = "SfGpsDsCaOnFormSelectableCards";
  * - Label: Card title (e.g., "Air emissions")
  * - For description and expanded content, use Custom LWC properties
  *
- * Extended Options Format (via Custom Properties):
- * Set "optionsJson" in Custom Properties with format:
+ * Extended Options Format (via Custom Properties or @api):
+ * Set "optionsJson" in Custom Properties or pass via configOptionsJson:
  * [
  *   {
  *     "value": "air-emissions",
@@ -54,6 +54,19 @@ const CLASS_NAME = "SfGpsDsCaOnFormSelectableCards";
  * - WCAG 2.1 AA: Proper fieldset/legend, keyboard navigation
  */
 export default class SfGpsDsCaOnFormSelectableCards extends SfGpsDsFormMultiselect {
+  /* ========================================
+   * PUBLIC @api PROPERTIES
+   * For Custom LWC elements, OmniStudio passes config via @api properties
+   * ======================================== */
+
+  /** @type {boolean} Whether at least one selection is required */
+  @api configRequired;
+
+  /** @type {string} Error message when validation fails */
+  @api configErrorMessage;
+
+  /** @type {string} JSON string for extended options with descriptions */
+  @api configOptionsJson;
   /**
    * Access custom properties from the OmniScript element definition.
    * We use a separate getter because _propSetMap is a base class property that can't be overridden.
@@ -174,11 +187,12 @@ export default class SfGpsDsCaOnFormSelectableCards extends SfGpsDsFormMultisele
       }
     }
 
-    // Check for extended options in Custom Properties
+    // Check for extended options - check @api first, then nested propSetMap
     // OmniStudio stores custom properties in a nested propSetMap when added via JSON Editor
     // Path: jsonDef.propSetMap.propSetMap.optionsJson
     const nestedPropSetMap = this.jsonDef?.propSetMap?.propSetMap;
-    const extendedOptionsJson = nestedPropSetMap?.optionsJson;
+    const extendedOptionsJson =
+      this.configOptionsJson || nestedPropSetMap?.optionsJson;
     let extendedOptions = {};
 
     if (DEBUG) {
@@ -313,10 +327,20 @@ export default class SfGpsDsCaOnFormSelectableCards extends SfGpsDsFormMultisele
   }
 
   /**
-   * Error message for display
+   * Error message for display - check @api first
    */
   get sfGpsDsErrorMessage() {
-    return this._propSetMap?.errorMessage || "";
+    return this.configErrorMessage || this._propSetMap?.errorMessage || "";
+  }
+
+  /**
+   * Whether selection is required - check @api first
+   */
+  get _isRequired() {
+    if (this.configRequired !== undefined) {
+      return Boolean(this.configRequired);
+    }
+    return Boolean(this._propSetMap?.required);
   }
 
   /* validation overrides - bypass childInput to avoid caching issues */
@@ -330,7 +354,7 @@ export default class SfGpsDsCaOnFormSelectableCards extends SfGpsDsFormMultisele
   @api checkValidity() {
     if (DEBUG) console.log(CLASS_NAME, "checkValidity override");
     if (
-      this._propSetMap?.required &&
+      this._isRequired &&
       (!this.elementValue || this.elementValue.length === 0)
     ) {
       return false;
