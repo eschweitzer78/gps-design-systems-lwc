@@ -81,8 +81,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  /* WCAG 2.5.5: Touch target minimum 44x44px */
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
   padding: 0;
   border: none;
   background: transparent;

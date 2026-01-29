@@ -135,7 +135,12 @@
 .ontario-search-autocomplete__suggestion-list__list-item:hover,
 .ontario-search-autocomplete__suggestion-list__list-item:focus {
   background-color: var(--ontario-color-grey-light, #f2f2f2);
-  outline: none;
+}
+
+.ontario-search-autocomplete__suggestion-list__list-item:focus {
+  /* ODS-compliant focus indicator */
+  outline: 4px solid transparent;
+  box-shadow: inset 0 0 0 4px var(--ontario-colour-focus, #009adb);
 }
 
 /* Selected/active suggestion */
@@ -144,8 +149,9 @@
 }
 
 .ontario-search-autocomplete__suggestion-list--selected:focus {
-  outline: 2px solid var(--ontario-colour-focus, #009adb);
-  outline-offset: -2px;
+  /* ODS-compliant focus indicator - 4px for visibility */
+  outline: 4px solid transparent;
+  box-shadow: inset 0 0 0 4px var(--ontario-colour-focus, #009adb);
 }
 
 /* Suggestion label */

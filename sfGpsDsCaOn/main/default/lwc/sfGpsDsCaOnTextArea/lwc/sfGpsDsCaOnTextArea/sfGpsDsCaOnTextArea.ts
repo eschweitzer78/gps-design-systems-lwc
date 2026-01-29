@@ -7,6 +7,8 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 export default class SfGpsDsCaOnTextArea extends SfGpsDsLwc {
   static renderMode = "light";
@@ -95,8 +97,8 @@ export default class SfGpsDsCaOnTextArea extends SfGpsDsLwc {
   }
 
   get flagText(): string {
-    if (this.required) return "required";
-    if (this.optional) return "optional";
+    if (this.required) return LABELS.Common.Required;
+    if (this.optional) return LABELS.Common.Optional;
     return "";
   }
 

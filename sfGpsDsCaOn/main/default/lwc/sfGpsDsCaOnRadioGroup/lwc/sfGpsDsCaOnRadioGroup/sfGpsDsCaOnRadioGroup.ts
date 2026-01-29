@@ -7,6 +7,8 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 /**
  * Minimum number of options before showing skip link.
@@ -90,8 +92,8 @@ export default class SfGpsDsCaOnRadioGroup extends SfGpsDsLwc {
   }
 
   get flagText(): string {
-    if (this.required) return "required";
-    if (this.optional) return "optional";
+    if (this.required) return LABELS.Common.Required;
+    if (this.optional) return LABELS.Common.Optional;
     return "";
   }
 

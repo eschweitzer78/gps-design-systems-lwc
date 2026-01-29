@@ -91,7 +91,9 @@
 }
 
 .sfgpsdscaon-modal__dialog:focus {
-  outline: none;
+  /* Use box-shadow for focus indicator on the dialog */
+  outline: 4px solid transparent;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
 }
 
 /* ========================================

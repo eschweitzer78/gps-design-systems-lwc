@@ -7,6 +7,8 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
@@ -135,8 +137,8 @@ export default class SfGpsDsCaOnDateInput extends SfGpsDsLwc {
   }
 
   get flagText(): string {
-    if (this._required.value) return "required";
-    if (this._optional.value) return "optional";
+    if (this._required.value) return LABELS.Common.Required;
+    if (this._optional.value) return LABELS.Common.Optional;
     return "";
   }
 

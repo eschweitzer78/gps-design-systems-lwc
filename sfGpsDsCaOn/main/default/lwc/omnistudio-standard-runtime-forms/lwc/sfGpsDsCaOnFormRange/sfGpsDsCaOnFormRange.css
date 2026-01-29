@@ -87,18 +87,18 @@
 }
 
 .ontario-range:focus-visible {
-  /* Fallback focus ring on the track for browsers that support focus-visible */
-  outline: 2px solid var(--ontario-colour-focus, #009ACD);
+  /* ODS-compliant focus ring on the track - 4px for visibility */
+  outline: 4px solid var(--ontario-colour-focus, #009adb);
   outline-offset: 2px;
 }
 
 .ontario-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009ACD);
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009acd);
   transform: scale(1.1);
 }
 
 .ontario-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009ACD);
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009acd);
   transform: scale(1.1);
 }
 

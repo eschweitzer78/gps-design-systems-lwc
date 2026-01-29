@@ -91,8 +91,8 @@ export default class SfGpsDsCaOnDropdown extends SfGpsDsLwc {
   }
 
   get flagText(): string {
-    if (this.required) return "required";
-    if (this.optional) return "optional";
+    if (this.required) return LABELS.Common.Required;
+    if (this.optional) return LABELS.Common.Optional;
     return "";
   }
 

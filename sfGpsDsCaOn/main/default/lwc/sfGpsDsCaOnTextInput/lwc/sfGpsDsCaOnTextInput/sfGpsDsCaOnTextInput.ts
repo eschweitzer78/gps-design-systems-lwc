@@ -7,6 +7,8 @@
 
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
+// @ts-ignore - LWC module import
+import { LABELS } from "c/sfGpsDsCaOnLabels";
 
 const CHAR_WIDTH_VALUES = ["2", "3", "4", "5", "7", "10", "20", "full"];
 
@@ -112,8 +114,8 @@ export default class SfGpsDsCaOnTextInput extends SfGpsDsLwc {
   }
 
   get flagText(): string {
-    if (this.required) return "required";
-    if (this.optional) return "optional";
+    if (this.required) return LABELS.Common.Required;
+    if (this.optional) return LABELS.Common.Optional;
     return "";
   }
 

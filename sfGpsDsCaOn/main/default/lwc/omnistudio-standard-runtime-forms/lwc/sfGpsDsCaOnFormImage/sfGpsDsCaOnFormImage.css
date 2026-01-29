@@ -6,8 +6,14 @@
 }
 
 .sfgpsdscaon-image__upload {
-  --slds-c-button-brand-color-background: var(--ontario-colour-primary, #1a1a1a);
-  --slds-c-button-brand-color-background-hover: var(--ontario-colour-grey-dark, #4d4d4d);
+  --slds-c-button-brand-color-background: var(
+    --ontario-colour-primary,
+    #1a1a1a
+  );
+  --slds-c-button-brand-color-background-hover: var(
+    --ontario-colour-grey-dark,
+    #4d4d4d
+  );
 }
 
 .sfgpsdscaon-image__disabled-message {
@@ -93,8 +99,11 @@
 /* Delete button */
 .sfgpsdscaon-image__delete {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+  /* WCAG 2.5.5: Touch target minimum 44x44px */
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,7 +120,7 @@
 }
 
 .sfgpsdscaon-image__delete:focus {
-  outline: 4px solid var(--ontario-colour-focus, #009ACD);
+  outline: 4px solid var(--ontario-colour-focus, #009acd);
   outline-offset: 0;
 }
 
