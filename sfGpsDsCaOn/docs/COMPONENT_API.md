@@ -20,6 +20,9 @@ This document provides the API reference for all Ontario Design System UI compon
    - [Card](#sfgpsdscaoncardcomm)
    - [Loading Indicator](#sfgpsdscaonloadingindicator)
    - [Step Indicator](#sfgpsdscaonstepindicator)
+   - [Summary List](#sfgpsdscaonsummarylist)
+   - [Task List](#sfgpsdscaontasklist)
+   - [Form Review](#sfgpsdscaonformreview)
    - [Feature Card](#sfgpsdscaonfeaturecard)
    - [Notification Card](#sfgpsdscaonnotificationcard)
    - [Link Card](#sfgpsdscaonlinkcard)
@@ -576,6 +579,276 @@ steps = [
 >
 </c-sf-gps-ds-ca-on-step-indicator>
 ```
+
+---
+
+### sfGpsDsCaOnSummaryList
+
+A summary list component for displaying key-value pairs, typically used on form review pages. Follows the Ontario Design System Summary List pattern.
+
+#### Properties
+
+| Property             | Type    | Default | Description                                               |
+| -------------------- | ------- | ------- | --------------------------------------------------------- |
+| `heading`            | String  | -       | Section heading displayed above the list                  |
+| `headingActionLabel` | String  | -       | Label for action link in heading (e.g., "Change")         |
+| `headingActionUrl`   | String  | -       | URL for action link in heading                            |
+| `items`              | Array   | `[]`    | Array of summary list items                               |
+| `ratio`              | String  | `"1-1"` | Key-value column ratio: `1-1`, `1-2`, `1-3`, `2-1`, `2-3` |
+| `fullWidth`          | Boolean | `false` | Extend to full container width (12 columns)               |
+| `compact`            | Boolean | `false` | Use compact row spacing                                   |
+| `className`          | String  | -       | Additional CSS classes                                    |
+
+#### Items Format
+
+```javascript
+items = [
+  {
+    key: "Email address",
+    value: "john.doe@example.com",
+    changeLabel: "Change",
+    changeUrl: "/edit/email"
+  },
+  {
+    key: "Phone number",
+    value: "(416) 555-1234",
+    changeLabel: "Change",
+    changeUrl: "/edit/phone"
+  },
+  { key: "Address", value: "123 Main St, Toronto, ON M5V 1K1" }
+];
+```
+
+#### Item Properties
+
+| Property      | Type   | Description                        |
+| ------------- | ------ | ---------------------------------- |
+| `key`         | String | The label/question (left column)   |
+| `value`       | String | The answer/response (right column) |
+| `changeLabel` | String | Optional action link label         |
+| `changeUrl`   | String | Optional action link URL           |
+
+#### Usage Example
+
+```html
+<c-sf-gps-ds-ca-on-summary-list-comm
+  heading="Contact Information"
+  heading-action-label="Change all"
+  heading-action-url="/edit/contact"
+  items-json='[
+    {"key": "Email", "value": "john@example.com", "changeLabel": "Change", "changeUrl": "/edit/email"},
+    {"key": "Phone", "value": "(416) 555-1234", "changeLabel": "Change", "changeUrl": "/edit/phone"}
+  ]'
+  ratio="1-2"
+></c-sf-gps-ds-ca-on-summary-list-comm>
+```
+
+#### Accessibility
+
+- Screen reader text is automatically added to action links (e.g., "Change your answer for: 'Email'")
+- Uses semantic `<dl>`, `<dt>`, `<dd>` elements for proper structure
+
+---
+
+### sfGpsDsCaOnTaskList
+
+A task list component for displaying a collection of tasks with status badges. Used to track progress through multi-step processes.
+
+#### Properties
+
+| Property    | Type   | Default | Description            |
+| ----------- | ------ | ------- | ---------------------- |
+| `tasks`     | Array  | `[]`    | Array of task objects  |
+| `className` | String | -       | Additional CSS classes |
+
+#### Tasks Format
+
+```javascript
+tasks = [
+  {
+    label: "Contact information",
+    hint: "How to contact you to discuss your application",
+    status: "complete",
+    url: "/form/contact"
+  },
+  {
+    label: "Project information",
+    status: "in-progress",
+    url: "/form/project"
+  },
+  {
+    label: "Impact and outcomes",
+    status: "not-started",
+    url: "/form/impact"
+  },
+  {
+    label: "Work plan",
+    status: "cannot-start-yet"
+  },
+  {
+    label: "Additional documents",
+    status: "optional",
+    url: "/form/documents"
+  }
+];
+```
+
+#### Task Properties
+
+| Property | Type   | Description                                            |
+| -------- | ------ | ------------------------------------------------------ |
+| `label`  | String | Task name/title                                        |
+| `hint`   | String | Optional description text                              |
+| `status` | String | Task status (see below)                                |
+| `url`    | String | URL to navigate to task (omit for non-navigable tasks) |
+
+#### Status Values
+
+| Status             | Badge Text       | Background Color | Use Case                          |
+| ------------------ | ---------------- | ---------------- | --------------------------------- |
+| `not-started`      | Not yet started  | Light blue       | Tasks ready to be started         |
+| `in-progress`      | In progress      | Blue             | Tasks that have been started      |
+| `complete`         | Completed        | White (bordered) | Completed tasks                   |
+| `cannot-start-yet` | Cannot yet start | Grey             | Tasks requiring other tasks first |
+| `optional`         | Optional         | Light grey       | Optional tasks                    |
+| `error`            | Error            | Red              | Tasks with validation errors      |
+
+#### Usage Example
+
+```html
+<c-sf-gps-ds-ca-on-task-list-comm
+  tasks-json='[
+    {"label": "Contact info", "status": "complete", "url": "/contact"},
+    {"label": "Project details", "status": "in-progress", "url": "/project"},
+    {"label": "Review", "status": "not-started", "url": "/review"}
+  ]'
+></c-sf-gps-ds-ca-on-task-list-comm>
+```
+
+#### Accessibility
+
+- Uses `<ul>` with `role="list"` for proper list semantics
+- Each task has `role="group"` with `aria-labelledby`
+- Status badges have `role="status"` for screen reader announcements
+- Focus-within outline for keyboard navigation
+
+---
+
+### sfGpsDsCaOnFormReview
+
+A form review component for displaying a summary of form responses before submission. Implements the Ontario Design System Form Review pattern using multiple Summary Lists with submit/cancel actions.
+
+#### Properties
+
+| Property               | Type    | Default                                         | Description                                |
+| ---------------------- | ------- | ----------------------------------------------- | ------------------------------------------ |
+| `heading`              | String  | -                                               | Page heading (e.g., "Review your answers") |
+| `subheading`           | String  | -                                               | Instructional text below heading           |
+| `sections`             | Array   | `[]`                                            | Array of section objects                   |
+| `submitLabel`          | String  | `"Submit"`                                      | Submit button label                        |
+| `cancelLabel`          | String  | `"Cancel"`                                      | Cancel button label                        |
+| `cancelUrl`            | String  | -                                               | URL for cancel navigation                  |
+| `showSubmitWarning`    | Boolean | `false`                                         | Show warning callout before submit         |
+| `submitWarningMessage` | String  | `"Once you submit, you will not be able to..."` | Warning message text                       |
+| `submitDisabled`       | Boolean | `false`                                         | Disable the submit button                  |
+| `className`            | String  | -                                               | Additional CSS classes                     |
+
+#### Sections Format
+
+```javascript
+sections = [
+  {
+    heading: "Contact Information",
+    headingActionLabel: "Change",
+    headingActionUrl: "/edit/contact",
+    items: [
+      { key: "Email", value: "john@example.com" },
+      { key: "Phone", value: "(416) 555-1234" }
+    ],
+    ratio: "1-2"
+  },
+  {
+    heading: "Project Details",
+    items: [
+      {
+        key: "Project name",
+        value: "Environmental Assessment",
+        changeLabel: "Change",
+        changeUrl: "/edit/project"
+      },
+      {
+        key: "Start date",
+        value: "2026-03-15",
+        changeLabel: "Change",
+        changeUrl: "/edit/dates"
+      }
+    ]
+  }
+];
+```
+
+#### Section Properties
+
+| Property             | Type   | Description                                    |
+| -------------------- | ------ | ---------------------------------------------- |
+| `heading`            | String | Section heading                                |
+| `headingActionLabel` | String | Action link label for entire section           |
+| `headingActionUrl`   | String | Action link URL for entire section             |
+| `items`              | Array  | Array of key-value items (same as SummaryList) |
+| `ratio`              | String | Column ratio for this section                  |
+
+#### Events
+
+| Event    | Detail          | Description                  |
+| -------- | --------------- | ---------------------------- |
+| `submit` | -               | Fired when submit is clicked |
+| `cancel` | `{ cancelUrl }` | Fired when cancel is clicked |
+
+#### Usage Example
+
+```html
+<c-sf-gps-ds-ca-on-form-review-comm
+  heading="Review your answers"
+  subheading="Please review your answers before submitting."
+  sections-json='[
+    {
+      "heading": "Personal Information",
+      "items": [
+        {"key": "Name", "value": "John Doe"},
+        {"key": "Email", "value": "john@example.com", "changeLabel": "Change", "changeUrl": "/edit/email"}
+      ]
+    },
+    {
+      "heading": "Application Details",
+      "headingActionLabel": "Change all",
+      "headingActionUrl": "/edit/application",
+      "items": [
+        {"key": "Type", "value": "New Registration"},
+        {"key": "Category", "value": "Industrial"}
+      ]
+    }
+  ]'
+  submit-label="Submit Application"
+  cancel-label="Cancel"
+  cancel-url="/dashboard"
+  show-submit-warning="true"
+  submit-warning-message="Once you submit, you cannot make changes to your application."
+></c-sf-gps-ds-ca-on-form-review-comm>
+```
+
+#### Form Review Pattern
+
+The Form Review implements the Ontario Design System pattern for reviewing form submissions:
+
+1. Display all sections with user responses
+2. Provide "Change" links to edit individual items or entire sections
+3. Include a submit warning when appropriate
+4. Left-align action buttons per ODS guidelines
+
+#### Related Documentation
+
+- [Ontario Design System - Form Review](https://designsystem.ontario.ca/components/detail/form-review.html)
+- [Summary List Component](#sfgpsdscaonsummarylist)
 
 ---
 

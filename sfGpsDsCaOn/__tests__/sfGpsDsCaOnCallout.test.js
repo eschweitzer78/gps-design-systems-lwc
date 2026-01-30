@@ -42,7 +42,8 @@ describe('sfGpsDsCaOnCallout', () => {
       
       await Promise.resolve();
       
-      const heading = element.querySelector('.ontario-callout__heading');
+      // The actual class is ontario-callout__title, not ontario-callout__heading
+      const heading = element.querySelector('.ontario-callout__title');
       expect(heading).not.toBeNull();
       expect(heading.textContent).toContain('Important Notice');
     });
@@ -128,6 +129,7 @@ describe('sfGpsDsCaOnCallout', () => {
   });
 
   describe('Highlight Colors (Default Type)', () => {
+    // Note: Callout uses ontario-border-highlight--{color} classes for default type
     const colors = ['blue', 'gold', 'green', 'teal', 'purple'];
 
     colors.forEach(color => {
@@ -139,7 +141,8 @@ describe('sfGpsDsCaOnCallout', () => {
         await Promise.resolve();
         
         const callout = element.querySelector('.ontario-callout');
-        expect(callout.classList.contains(`ontario-callout--${color}`)).toBe(true);
+        // The actual class is ontario-border-highlight--{color}
+        expect(callout.classList.contains(`ontario-border-highlight--${color}`)).toBe(true);
       });
     });
   });

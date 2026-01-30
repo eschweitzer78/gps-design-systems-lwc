@@ -1,0 +1,20 @@
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  ></c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-ca-on-form-review
+    lwc:else
+    heading={heading}
+    subheading={subheading}
+    sections={parsedSections}
+    submit-label={submitLabel}
+    cancel-label={cancelLabel}
+    cancel-url={cancelUrl}
+    show-submit-warning={showSubmitWarning}
+    submit-warning-message={submitWarningMessage}
+    submit-disabled={submitDisabled}
+    class-name={className}
+  ></c-sf-gps-ds-ca-on-form-review>
+</template>

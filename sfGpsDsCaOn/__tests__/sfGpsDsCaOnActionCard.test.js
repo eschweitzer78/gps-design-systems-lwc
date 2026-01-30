@@ -127,25 +127,26 @@ describe('sfGpsDsCaOnActionCard', () => {
   });
 
   describe('Heading Levels', () => {
-    it('should render h2 by default', async () => {
+    it('should render h3 by default', async () => {
       element.heading = 'Test';
+      document.body.appendChild(element);
+      
+      await Promise.resolve();
+      
+      // ActionCard defaults to h3 (not h2)
+      const h3 = element.querySelector('h3');
+      expect(h3).not.toBeNull();
+    });
+
+    it('should render h2 when headingLevel is h2', async () => {
+      element.heading = 'Test';
+      element.headingLevel = 'h2';
       document.body.appendChild(element);
       
       await Promise.resolve();
       
       const h2 = element.querySelector('h2');
       expect(h2).not.toBeNull();
-    });
-
-    it('should render h3 when headingLevel is h3', async () => {
-      element.heading = 'Test';
-      element.headingLevel = 'h3';
-      document.body.appendChild(element);
-      
-      await Promise.resolve();
-      
-      const h3 = element.querySelector('h3');
-      expect(h3).not.toBeNull();
     });
 
     it('should render h4 when headingLevel is h4', async () => {
@@ -189,12 +190,13 @@ describe('sfGpsDsCaOnActionCard', () => {
   });
 
   describe('Color Variants', () => {
+    // Note: Property uses British spelling 'headerColour'
     const colors = ['dark-blue', 'blue', 'teal', 'green', 'gold', 'purple'];
 
     colors.forEach(color => {
       it(`should apply ${color} header variant`, async () => {
         element.heading = 'Test';
-        element.headerColor = color;
+        element.headerColour = color; // British spelling
         document.body.appendChild(element);
         
         await Promise.resolve();
@@ -217,7 +219,12 @@ describe('sfGpsDsCaOnActionCard', () => {
       
       await Promise.resolve();
       
-      const results = await runAxe(element);
+      // Disable list-related rules since the li is standalone in test
+      const results = await runAxe(element, {
+        rules: {
+          'listitem': { enabled: false } // li outside list in test context
+        }
+      });
       expect(results.violations).toHaveLength(0);
     });
 
@@ -232,7 +239,12 @@ describe('sfGpsDsCaOnActionCard', () => {
       
       await Promise.resolve();
       
-      const results = await runAxe(element);
+      // Disable list-related rules since the li is standalone in test
+      const results = await runAxe(element, {
+        rules: {
+          'listitem': { enabled: false } // li outside list in test context
+        }
+      });
       expect(results.violations).toHaveLength(0);
     });
 
@@ -245,7 +257,12 @@ describe('sfGpsDsCaOnActionCard', () => {
       
       await Promise.resolve();
       
-      const results = await runAxe(element);
+      // Disable list-related rules since the li is standalone in test
+      const results = await runAxe(element, {
+        rules: {
+          'listitem': { enabled: false } // li outside list in test context
+        }
+      });
       expect(results.violations).toHaveLength(0);
     });
   });

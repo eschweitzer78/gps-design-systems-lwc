@@ -1,0 +1,73 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName}>
+    <!-- ARIA Live Region for Screen Reader Announcements -->
+    <div
+      class="ontario-show-for-sr"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+      data-status-region
+    >
+      {statusMessage}
+    </div>
+
+    <!-- Page Heading -->
+    <h1 lwc:if={hasHeading} class="ontario-h1">{heading}</h1>
+
+    <!-- Instructional Subheading -->
+    <p lwc:if={hasSubheading} class="ontario-lead">{subheading}</p>
+
+    <!-- Summary List Sections -->
+    <div lwc:if={hasSections} class="ontario-form-review__sections">
+      <template for:each={computedSections} for:item="section">
+        <div key={section._id} class="ontario-form-review__section">
+          <c-sf-gps-ds-ca-on-summary-list
+            heading={section.heading}
+            heading-action-label={section.headingActionLabel}
+            heading-action-url={section.headingActionUrl}
+            items={section.items}
+            ratio={section.ratio}
+          ></c-sf-gps-ds-ca-on-summary-list>
+        </div>
+      </template>
+    </div>
+
+    <!-- Submit Warning -->
+    <div
+      lwc:if={computedShowWarning}
+      class="ontario-form-review__warning"
+      id={warningId}
+      role="alert"
+    >
+      <c-sf-gps-ds-ca-on-callout type="warning">
+        <p>{computedWarningMessage}</p>
+      </c-sf-gps-ds-ca-on-callout>
+    </div>
+
+    <!-- Action Buttons -->
+    <div
+      class="ontario-form-review__actions"
+      role="group"
+      aria-label="Form actions"
+    >
+      <button
+        type="button"
+        class="ontario-button ontario-button--primary"
+        disabled={computedSubmitDisabled}
+        aria-describedby={submitAriaDescribedBy}
+        onclick={handleSubmit}
+      >
+        {computedSubmitLabel}
+      </button>
+
+      <!-- Cancel button - uses button with navigation instead of <a> for LWR compatibility -->
+      <button
+        type="button"
+        class="ontario-button ontario-button--tertiary"
+        onclick={handleCancel}
+      >
+        {computedCancelLabel}
+      </button>
+    </div>
+  </div>
+</template>

@@ -58,16 +58,23 @@ const LWSTests = {
    * @returns {Object} Test result
    */
   hasNoEval(sourceCode) {
-    const match = sourceCode.match(LWS_ANTIPATTERNS.EVAL);
-    // Exclude comments that mention "no eval"
-    const inComment = match && /\/\/.*eval|\/\*.*eval.*\*\//i.test(
-      sourceCode.substring(Math.max(0, match.index - 50), match.index + 50)
-    );
+    // Strip comments before checking for eval
+    const codeWithoutComments = sourceCode
+      // Remove single-line comments
+      .replace(/\/\/.*$/gm, '')
+      // Remove block comments (including JSDoc style)
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      // Remove string literals that might contain "eval"
+      .replace(/"(?:[^"\\]|\\.)*"/g, '""')
+      .replace(/'(?:[^'\\]|\\.)*'/g, "''")
+      .replace(/`(?:[^`\\]|\\.)*`/g, '``');
+    
+    const match = codeWithoutComments.match(LWS_ANTIPATTERNS.EVAL);
     
     return {
-      pass: !match || inComment,
-      message: match && !inComment
-        ? `Found eval() usage at position ${match.index}`
+      pass: !match,
+      message: match
+        ? `Found eval() usage in code`
         : 'No eval() usage found'
     };
   },

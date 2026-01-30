@@ -1,0 +1,90 @@
+/**
+ * Ontario Design System - Form Review Styles
+ * 
+ * AODA/LWR Compatibility Notes:
+ * - Uses rem units for consistent sizing across devices
+ * - Touch targets have minimum 8px (0.5rem) spacing
+ * - Screen reader text uses .ontario-show-for-sr pattern
+ */
+
+.ontario-form-review {
+  max-width: 48rem;
+}
+
+.ontario-form-review__sections {
+  margin-bottom: 2.5rem;
+}
+
+.ontario-form-review__section {
+  margin-bottom: 2rem;
+}
+
+.ontario-form-review__section:last-child {
+  margin-bottom: 0;
+}
+
+.ontario-form-review__warning {
+  margin-bottom: 2rem;
+}
+
+.ontario-form-review__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* 16px - exceeds AODA 8px touch target spacing requirement */
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+/* Button styling follows ODS guidelines - left-aligned */
+.ontario-form-review__actions .ontario-button {
+  margin: 0;
+  /* Ensure minimum touch target size of 44x44px for WCAG 2.1 */
+  min-height: 2.75rem; /* 44px */
+}
+
+/* Screen reader only text - visually hidden but accessible */
+.ontario-show-for-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mobile responsiveness - using rem for LWR compatibility */
+@media screen and (max-width: 40rem) {
+  .ontario-form-review__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ontario-form-review__actions .ontario-button {
+    width: 100%;
+    margin-bottom: 0.75rem; /* 12px - exceeds 8px touch target spacing */
+  }
+
+  .ontario-form-review__actions .ontario-button:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.ontario-button:focus-visible {
+  outline: 0.25rem solid #009adb;
+  outline-offset: 0.125rem;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .ontario-button {
+    border: 2px solid currentColor;
+  }
+
+  .ontario-button:focus-visible {
+    outline: 3px solid Highlight;
+  }
+}

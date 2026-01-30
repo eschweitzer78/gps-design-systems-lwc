@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Form Review</masterLabel>
+  <description
+  >Form review page component for displaying user responses before submission, following Ontario Design System guidelines.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="heading"
+        type="String"
+        label="Page Heading"
+        description="Main heading for the review page (e.g., Review your answers)"
+        default="Review your answers"
+      />
+      <property
+        name="subheading"
+        type="String"
+        label="Subheading"
+        description="Instructional text below the heading"
+        default="Please review your answers before submitting."
+      />
+      <property
+        name="sectionsJson"
+        type="String"
+        label="Sections (JSON)"
+        description="JSON array of sections. Each section has: heading, headingActionLabel, headingActionUrl, items (array of {key, value, changeUrl, changeLabel}), ratio"
+      />
+      <property
+        name="submitLabel"
+        type="String"
+        label="Submit Button Label"
+        description="Label for the submit button"
+        default="Submit"
+      />
+      <property
+        name="cancelLabel"
+        type="String"
+        label="Cancel Button Label"
+        description="Label for the cancel button"
+        default="Cancel"
+      />
+      <property
+        name="cancelUrl"
+        type="String"
+        label="Cancel URL"
+        description="URL to navigate to when cancel is clicked"
+      />
+      <property
+        name="showSubmitWarning"
+        type="Boolean"
+        label="Show Submit Warning"
+        description="Display a warning message before the submit button"
+        default="false"
+      />
+      <property
+        name="submitWarningMessage"
+        type="String"
+        label="Submit Warning Message"
+        description="Warning message to display when Show Submit Warning is enabled"
+        default="Once you submit, you will not be able to make changes."
+      />
+      <property
+        name="submitDisabled"
+        type="Boolean"
+        label="Disable Submit"
+        description="Disable the submit button"
+        default="false"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
