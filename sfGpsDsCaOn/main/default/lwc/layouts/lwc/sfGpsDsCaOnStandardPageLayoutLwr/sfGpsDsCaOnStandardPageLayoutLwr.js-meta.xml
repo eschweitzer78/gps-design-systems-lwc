@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle
+  xmlns="http://soap.sforce.com/2006/04/metadata"
+  fqn="sfGpsDsAuVic2StandardPageLayoutLwr"
+>
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS LWR Standard Page Layout</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page_Layout</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        label="Has above body"
+        name="hasAboveBody"
+        type="Boolean"
+        default="true"
+      />
+      <property
+        label="Above body class name"
+        name="aboveBodyClassName"
+        type="String"
+      />
+      <property label="Main class name" name="mainClassName" type="String" />
+      <property
+        label="Main Id"
+        name="mainId"
+        type="String"
+        default="main-content"
+      />
+      <property
+        label="Has below body"
+        name="hasBelowBody"
+        type="Boolean"
+        default="true"
+      />
+      <property
+        label="Below body class name"
+        name="belowBodyClassName"
+        type="String"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
