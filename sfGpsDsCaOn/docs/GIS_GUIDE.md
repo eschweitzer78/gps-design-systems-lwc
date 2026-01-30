@@ -18,6 +18,48 @@ All components use a shared architecture based on the **PSA-ESRI-MAPS-LWR-DEV** 
 
 ## Shared Architecture
 
+The GIS components use a shared mixin pattern to reduce code duplication and centralize common functionality.
+
+### MapSelectorMixin
+
+Both `SiteSelectorTool` and `DischargePointSelector` extend `MapSelectorMixin`, which provides:
+
+- **Modal management** - Open/close state handling
+- **Tab navigation** - Roving tabindex pattern (WCAG 2.1.1 compliant)
+- **PostMessage communication** - Secure iframe communication with Visualforce
+- **Origin validation** - LWS-compliant security for message handling
+- **Lifecycle management** - Window message listener setup/cleanup
+
+**Location:** `sfGpsDsCaOn/main/default/lwc/sfGpsDsCaOnMapSelectorMixin/`
+
+**Usage:**
+
+```javascript
+import { MapSelectorMixin } from "c/sfGpsDsCaOnMapSelectorMixin";
+
+export default class MyComponent extends MapSelectorMixin(LightningElement) {
+  // Override tab order
+  get tabOrder() {
+    return ["search", "sitepoint", "layers"];
+  }
+
+  // Handle component-specific messages
+  handleMapMessageData(data) {
+    // Handle searchResult, pinPlaced, error, etc.
+  }
+
+  connectedCallback() {
+    this.setupMessageListener();
+  }
+
+  disconnectedCallback() {
+    this.cleanupMessageListener();
+  }
+}
+```
+
+### Component Hierarchy
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ OmniStudio Wrapper (sfGpsDsCaOnForm*Selector)               │
@@ -28,6 +70,7 @@ All components use a shared architecture based on the **PSA-ESRI-MAPS-LWR-DEV** 
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ Main Selector Component                                      │
+│   - Extends MapSelectorMixin(LightningElement)              │
 │   ┌─────────────────────────────────────────────────────┐   │
 │   │ sfGpsDsCaOnModal (Ontario DS Modal)                 │   │
 │   │   ┌─────────────────┬───────────────────────────┐   │   │
@@ -51,6 +94,22 @@ All components use a shared architecture based on the **PSA-ESRI-MAPS-LWR-DEV** 
 │   - postMessage communication                               │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+### Shared vs Component-Specific Code
+
+| Feature           | MapSelectorMixin | SiteSelectorTool | DischargePointSelector |
+| ----------------- | ---------------- | ---------------- | ---------------------- |
+| Modal open/close  | ✅               |                  |                        |
+| Tab keyboard nav  | ✅               |                  |                        |
+| PostMessage       | ✅               |                  |                        |
+| Origin validation | ✅               |                  |                        |
+| Message listener  | ✅               |                  |                        |
+| Address search    |                  | ✅               |                        |
+| Read-only mode    |                  | ✅               |                        |
+| Coordinate input  |                  |                  | ✅                     |
+| UTM/DMS formats   |                  |                  | ✅                     |
+
+For more details on the mixin, see the [MapSelectorMixin README](../main/default/lwc/sfGpsDsCaOnMapSelectorMixin/README.md).
 
 ---
 

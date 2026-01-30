@@ -9,6 +9,7 @@ import { api, LightningElement, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 import { formatUserError, getMessage } from "c/sfGpsDsCaOnUserMessages";
 import { LABELS } from "c/sfGpsDsCaOnLabels";
+import { MapSelectorMixin } from "c/sfGpsDsCaOnMapSelectorMixin";
 
 /**
  * @slot SiteSelectorTool
@@ -27,13 +28,17 @@ import { LABELS } from "c/sfGpsDsCaOnLabels";
  * - Site point selection (manual pin)
  * - Map layers control
  * - Structured address data output
+ * - Read-only mode for back-office review
  *
  * ## Architecture
+ * - Extends MapSelectorMixin for shared modal/map functionality
  * - Main component contains modal and two-panel layout
  * - Left panel: search controls and address details
  * - Right panel: ESRI map in Visualforce iframe
  */
-export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
+export default class SfGpsDsCaOnSiteSelectorTool extends MapSelectorMixin(
+  LightningElement
+) {
   static renderMode = "light";
 
   /* ========================================
@@ -149,14 +154,8 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   ];
 
   /* ========================================
-   * PRIVATE PROPERTIES
+   * PRIVATE PROPERTIES (Component-specific)
    * ======================================== */
-
-  /** @type {boolean} Modal open state */
-  @track _isModalOpen = false;
-
-  /** @type {string} Current active tab */
-  @track _activeTab = "search";
 
   /** @type {string} Selected search parameter */
   @track _searchParameter = "address";
@@ -164,20 +163,11 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   /** @type {string} Search input value */
   @track _searchValue = "";
 
-  /** @type {boolean} Search in progress */
-  @track _isSearching = false;
-
   /** @type {Object} Found address details */
   @track _addressDetails = null;
 
   /** @type {Object} Current coordinates */
   @track _coordinates = null;
-
-  /** @type {string} Error message */
-  @track _errorMessage = "";
-
-  /** @type {boolean} Map loaded state */
-  @track _mapLoaded = false;
 
   /**
    * Initial iframe URL - set once when modal opens, doesn't update reactively
@@ -186,32 +176,37 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    */
   @track _initialIframeUrl = "";
 
-  /**
-   * Bound message handler for cleanup
-   * @type {Function}
-   * @private
-   */
-  _messageHandler = null;
+  /* ========================================
+   * MIXIN CONFIGURATION OVERRIDES
+   * ======================================== */
 
   /**
-   * Cached VF origin for postMessage security
-   * Extracted from vfPageUrl to validate message origins
-   * @type {string|null}
-   * @private
+   * Tab order for keyboard navigation
+   * @returns {string[]}
    */
-  _vfOrigin = null;
+  get tabOrder() {
+    return ["search", "sitepoint", "layers"];
+  }
+
+  /**
+   * CSS selector for the map iframe
+   * @returns {string}
+   */
+  get iframeSelector() {
+    return ".sfgpsdscaon-site-selector__map-iframe";
+  }
+
+  /**
+   * Component name for debug logging
+   * @returns {string}
+   */
+  get componentName() {
+    return "SiteSelectorTool";
+  }
 
   /* ========================================
    * COMPUTED PROPERTIES
    * ======================================== */
-
-  /**
-   * Whether the modal is open
-   * @returns {boolean}
-   */
-  get isModalOpen() {
-    return this._isModalOpen;
-  }
 
   /**
    * CSS class for the component container
@@ -378,7 +373,6 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
 
   /* ========================================
    * I18N LABEL GETTERS
-   * Labels are automatically translated based on user's language
    * ======================================== */
 
   /** @returns {string} Search button screen reader text */
@@ -444,18 +438,14 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   /**
    * Computed VF page URL with parameters.
    * Uses _initialIframeUrl which is set once when modal opens.
-   * This prevents iframe reload when coordinates change.
    * @returns {string}
    */
   get computedVfPageUrl() {
-    // Return the initial URL that was set when modal opened
-    // This prevents reactive updates from reloading the iframe
     return this._initialIframeUrl;
   }
 
   /**
    * Builds the VF page URL with current parameters
-   * Called once when modal opens to set initial URL
    * @returns {string}
    * @private
    */
@@ -551,11 +541,7 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    */
   @api
   open() {
-    this._isModalOpen = true;
-    this._errorMessage = "";
-
-    // IMPORTANT: Reset _activeTab BEFORE building URL to ensure consistent initial mode
-    // This prevents stale tab state from affecting the iframe URL
+    // Reset tab state BEFORE building URL
     if (this.isReadOnly) {
       this._activeTab = "layers";
     } else {
@@ -566,35 +552,33 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
     }
 
     // Set initial iframe URL once when modal opens
-    // This prevents iframe reload when coordinates change during search
     this._initialIframeUrl = this._buildVfPageUrl();
-    console.log(
-      "SiteSelectorTool - open() - initial iframe URL:",
-      this._initialIframeUrl
-    );
 
-    if (this.isReadOnly) {
-      // If we have coordinates, navigate map to that location after iframe loads
-      if (this._coordinates?.latitude && this._coordinates?.longitude) {
-        // Wait for modal and iframe to be ready, then navigate
-        // eslint-disable-next-line @lwc/lwc/no-async-operation
-        setTimeout(() => {
-          this.sendMessageToMap({
-            title: "goTo",
-            detail: {
-              latitude: this._coordinates.latitude,
-              longitude: this._coordinates.longitude,
-              zoom: 17,
-              placeMarker: true
-            }
-          });
-          // Set read-only mode on the map
-          this.sendMessageToMap({
-            title: "modeChange",
-            detail: { mode: "readonly" }
-          });
-        }, 1000);
-      }
+    // Use mixin's openModal
+    this.openModal();
+
+    if (
+      this.isReadOnly &&
+      this._coordinates?.latitude &&
+      this._coordinates?.longitude
+    ) {
+      // Wait for modal and iframe to be ready, then navigate
+      // eslint-disable-next-line @lwc/lwc/no-async-operation
+      setTimeout(() => {
+        this.sendMessageToMap({
+          title: "goTo",
+          detail: {
+            latitude: this._coordinates.latitude,
+            longitude: this._coordinates.longitude,
+            zoom: 17,
+            placeMarker: true
+          }
+        });
+        this.sendMessageToMap({
+          title: "modeChange",
+          detail: { mode: "readonly" }
+        });
+      }, 1000);
     }
   }
 
@@ -604,7 +588,7 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    */
   @api
   close() {
-    this._isModalOpen = false;
+    this.closeModal();
   }
 
   /**
@@ -634,80 +618,6 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   }
 
   /**
-   * Handles modal close event
-   */
-  handleModalClose() {
-    this._isModalOpen = false;
-  }
-
-  /**
-   * Handles tab selection
-   * @param {Event} event
-   */
-  handleTabClick(event) {
-    const tab = event.currentTarget.dataset.tab;
-    if (tab) {
-      this._activeTab = tab;
-      // Notify map of mode change
-      this.sendMessageToMap({ title: "modeChange", detail: { mode: tab } });
-    }
-  }
-
-  /**
-   * Handles keyboard navigation for tabs (arrow keys)
-   * WCAG 2.1.1 - Keyboard accessible
-   * @param {KeyboardEvent} event
-   */
-  handleTabKeyDown(event) {
-    const tabOrder = ["search", "sitepoint", "layers"];
-    const currentIndex = tabOrder.indexOf(this._activeTab);
-
-    let newIndex = currentIndex;
-    let shouldHandle = false;
-
-    switch (event.key) {
-      case "ArrowLeft":
-      case "ArrowUp":
-        newIndex = currentIndex === 0 ? tabOrder.length - 1 : currentIndex - 1;
-        shouldHandle = true;
-        break;
-      case "ArrowRight":
-      case "ArrowDown":
-        newIndex = currentIndex === tabOrder.length - 1 ? 0 : currentIndex + 1;
-        shouldHandle = true;
-        break;
-      case "Home":
-        newIndex = 0;
-        shouldHandle = true;
-        break;
-      case "End":
-        newIndex = tabOrder.length - 1;
-        shouldHandle = true;
-        break;
-      default:
-        break;
-    }
-
-    if (shouldHandle) {
-      event.preventDefault();
-      this._activeTab = tabOrder[newIndex];
-      this.sendMessageToMap({
-        title: "modeChange",
-        detail: { mode: this._activeTab }
-      });
-
-      // Focus the new active tab
-      // eslint-disable-next-line @lwc/lwc/no-async-operation
-      setTimeout(() => {
-        const newTab = this.querySelector(`[data-tab="${this._activeTab}"]`);
-        if (newTab) {
-          newTab.focus();
-        }
-      }, 0);
-    }
-  }
-
-  /**
    * Handles search parameter dropdown change
    * @param {Event} event
    */
@@ -729,14 +639,9 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    */
   handleSearchClick(event) {
     event.preventDefault();
-    console.log(
-      "SiteSelectorTool - Search button clicked, value:",
-      this._searchValue
-    );
     if (this._searchValue.trim()) {
       this._isSearching = true;
       this._errorMessage = "";
-      // Send search request to map
       const message = {
         title: "search",
         detail: {
@@ -744,10 +649,7 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
           type: this._searchParameter
         }
       };
-      console.log("SiteSelectorTool - Sending search message:", message);
       this.sendMessageToMap(message);
-    } else {
-      console.log("SiteSelectorTool - Search value is empty, not searching");
     }
   }
 
@@ -760,7 +662,6 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
     this._searchValue = "";
     this._addressDetails = null;
     this._coordinates = null;
-    // Clear map marker
     this.sendMessageToMap({ title: "clearMarker", detail: {} });
   }
 
@@ -771,9 +672,6 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   handleSaveClick(event) {
     event.preventDefault();
     if (this._addressDetails) {
-      // Dispatch event with address data
-      // Uses bubbles: true, composed: true to ensure event reaches OmniScript
-      // runtime even when component is nested in Shadow DOM contexts
       this.dispatchEvent(
         new CustomEvent("save", {
           detail: {
@@ -799,170 +697,41 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
   }
 
   /**
-   * Extracts and caches the origin from vfPageUrl for postMessage security.
-   * LWS Security: Used to validate message origins and target origins.
-   *
-   * @returns {string} The origin (protocol + host) or "*" as fallback
-   * @private
+   * Handles map message data (called by mixin)
+   * @param {Object} data - Message data from map
    */
-  getVfOrigin() {
-    // Return cached origin if available
-    if (this._vfOrigin) {
-      return this._vfOrigin;
-    }
-
-    // Extract origin from vfPageUrl
-    if (this.vfPageUrl) {
-      try {
-        const url = new URL(this.vfPageUrl);
-        this._vfOrigin = url.origin;
-        return this._vfOrigin;
-      } catch {
-        console.warn(
-          "SiteSelectorTool: Invalid vfPageUrl, cannot extract origin"
-        );
-      }
-    }
-
-    // Fallback to wildcard (less secure, but functional)
-    // This should rarely happen if vfPageUrl is properly configured
-    return "*";
-  }
-
-  /**
-   * Validates if a message event origin matches the expected VF origin.
-   * LWS Security: Prevents processing messages from untrusted origins.
-   *
-   * @param {string} eventOrigin - The origin from the MessageEvent
-   * @returns {boolean} True if origin is valid
-   * @private
-   */
-  isValidOrigin(eventOrigin) {
-    const expectedOrigin = this.getVfOrigin();
-
-    // If we couldn't determine the origin, accept all (fallback behavior)
-    if (expectedOrigin === "*") {
-      return true;
-    }
-
-    // Strict origin check
-    return eventOrigin === expectedOrigin;
-  }
-
-  /**
-   * Handles message from VF iframe (map)
-   * LWS Security: Validates message origin before processing.
-   *
-   * @param {MessageEvent} event
-   * @private
-   */
-  handleMapMessage(event) {
-    // DEBUG: Log all incoming messages
-    console.log("SiteSelectorTool - Incoming message:", {
-      origin: event.origin,
-      expectedOrigin: this.getVfOrigin(),
-      data: event.data,
-      dataType: typeof event.data
-    });
-
-    // LWS Security: Validate origin before processing message
-    if (!this.isValidOrigin(event.origin)) {
-      // DEBUG: Log rejected messages
-      console.warn("SiteSelectorTool - Message rejected, origin mismatch:", {
-        eventOrigin: event.origin,
-        expectedOrigin: this.getVfOrigin()
-      });
-      return;
-    }
-
-    try {
-      const data = event.data;
-      if (!data || typeof data !== "object") {
-        console.log("SiteSelectorTool - Message ignored, not an object:", data);
-        return;
-      }
-
-      console.log("SiteSelectorTool - Processing message:", data.name, data);
-
-      switch (data.name) {
-        case "pageLoaded":
-          console.log("SiteSelectorTool - Map page loaded");
-          this._mapLoaded = true;
-          break;
-
-        case "searchResult":
-          console.log("SiteSelectorTool - Search result received:", data);
-          this._isSearching = false;
-          if (data.address) {
-            this._addressDetails = data.address;
-            this._coordinates = data.coordinates;
-          } else if (data.error) {
-            // Use user-friendly error message for search failures
-            this._errorMessage = formatUserError(
-              data.error,
-              getMessage("LOCATION_NOT_FOUND").message
-            );
-          }
-          break;
-
-        case "pinPlaced":
-          // Reverse geocoding result from pin placement
-          if (data.address) {
-            this._addressDetails = data.address;
-            this._coordinates = data.coordinates;
-          }
-          break;
-
-        case "error":
-          // Use user-friendly error message based on error type
+  handleMapMessageData(data) {
+    switch (data.name) {
+      case "searchResult":
+        this._isSearching = false;
+        if (data.address) {
+          this._addressDetails = data.address;
+          this._coordinates = data.coordinates;
+        } else if (data.error) {
           this._errorMessage = formatUserError(
             data.error,
-            getMessage("MAP_LOAD_ERROR").message
+            getMessage("LOCATION_NOT_FOUND").message
           );
-          this._isSearching = false;
-          break;
+        }
+        break;
 
-        default:
-          break;
-      }
-    } catch {
-      // Ignore parsing errors from other sources
-    }
-  }
+      case "pinPlaced":
+        if (data.address) {
+          this._addressDetails = data.address;
+          this._coordinates = data.coordinates;
+        }
+        break;
 
-  /**
-   * Sends a postMessage to the VF iframe
-   * LWS Security: Uses specific targetOrigin instead of wildcard.
-   *
-   * @param {Object} message - Message object with title and detail
-   * @private
-   */
-  sendMessageToMap(message) {
-    const iframe = this.querySelector(".sfgpsdscaon-site-selector__map-iframe");
-    console.log("SiteSelectorTool - sendMessageToMap:", {
-      iframeFound: !!iframe,
-      hasContentWindow: !!(iframe && iframe.contentWindow),
-      message: message
-    });
-    if (iframe && iframe.contentWindow) {
-      try {
-        // LWS Security: Use specific origin instead of "*"
-        const targetOrigin = this.getVfOrigin();
-        console.log(
-          "SiteSelectorTool - Posting message to iframe:",
-          targetOrigin,
-          message
+      case "error":
+        this._errorMessage = formatUserError(
+          data.error,
+          getMessage("MAP_LOAD_ERROR").message
         );
-        iframe.contentWindow.postMessage(JSON.stringify(message), targetOrigin);
-        console.log("SiteSelectorTool - Message posted successfully");
-      } catch (e) {
-        // LWS may restrict postMessage in some cases
-        console.warn("Failed to send message to map:", e.message);
-      }
-    } else {
-      console.warn(
-        "SiteSelectorTool - Cannot send message, iframe not found or no contentWindow"
-      );
+        this._isSearching = false;
+        break;
+
+      default:
+        break;
     }
   }
 
@@ -975,21 +744,13 @@ export default class SfGpsDsCaOnSiteSelectorTool extends LightningElement {
    */
   connectedCallback() {
     this.classList.add("caon-scope");
-
-    // Set up message listener for VF iframe communication
-    // LWR/LWS compatible - uses bound function for cleanup
-    this._messageHandler = this.handleMapMessage.bind(this);
-    window.addEventListener("message", this._messageHandler);
+    this.setupMessageListener();
   }
 
   /**
    * Component disconnected from DOM
    */
   disconnectedCallback() {
-    // Clean up message listener
-    if (this._messageHandler) {
-      window.removeEventListener("message", this._messageHandler);
-      this._messageHandler = null;
-    }
+    this.cleanupMessageListener();
   }
 }

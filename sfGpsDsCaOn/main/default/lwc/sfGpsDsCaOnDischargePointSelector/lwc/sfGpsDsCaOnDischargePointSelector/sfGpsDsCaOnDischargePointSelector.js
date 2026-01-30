@@ -9,6 +9,7 @@ import { api, LightningElement, track } from "lwc";
 import { computeClass } from "c/sfGpsDsHelpers";
 import { formatUserError, getMessage } from "c/sfGpsDsCaOnUserMessages";
 import { LABELS } from "c/sfGpsDsCaOnLabels";
+import { MapSelectorMixin } from "c/sfGpsDsCaOnMapSelectorMixin";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsCaOnDischargePointSelector";
@@ -31,8 +32,16 @@ const CLASS_NAME = "SfGpsDsCaOnDischargePointSelector";
  * - No eval() or dynamic code execution
  * - ESRI map runs in Visualforce iframe
  * - postMessage for secure cross-origin communication
+ *
+ * ## Architecture
+ * - Extends MapSelectorMixin for shared modal/map functionality
+ * - Main component contains modal and two-panel layout
+ * - Left panel: coordinate/address input controls
+ * - Right panel: ESRI map in Visualforce iframe
  */
-export default class SfGpsDsCaOnDischargePointSelector extends LightningElement {
+export default class SfGpsDsCaOnDischargePointSelector extends MapSelectorMixin(
+  LightningElement
+) {
   static renderMode = "light";
 
   /* ========================================
@@ -116,37 +125,65 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
   ];
 
   /* ========================================
-   * PRIVATE PROPERTIES
+   * PRIVATE PROPERTIES (Component-specific)
    * ======================================== */
 
-  @track _isModalOpen = false;
-  @track _activeTab = "search";
   @track _searchMethod = "coordinates";
   @track _coordinateFormat = "dms";
   @track _addressSearchValue = "";
-  @track _isSearching = false;
   @track _coordinates = null;
-  @track _errorMessage = "";
-  @track _mapLoaded = false;
   @track _pointPlaced = false;
 
-  _messageHandler = null;
+  /* ========================================
+   * MIXIN CONFIGURATION OVERRIDES
+   * ======================================== */
 
   /**
-   * Cached VF origin for postMessage security
-   * Extracted from vfPageUrl to validate message origins
-   * @type {string|null}
-   * @private
+   * Tab order for keyboard navigation
+   * @returns {string[]}
    */
-  _vfOrigin = null;
+  get tabOrder() {
+    return ["search", "droppoint", "layers"];
+  }
+
+  /**
+   * CSS selector for the map iframe
+   * @returns {string}
+   */
+  get iframeSelector() {
+    return ".sfgpsdscaon-discharge-selector__map-iframe";
+  }
+
+  /**
+   * Debug mode flag
+   * @returns {boolean}
+   */
+  get debugMode() {
+    return DEBUG;
+  }
+
+  /**
+   * Component name for debug logging
+   * @returns {string}
+   */
+  get componentName() {
+    return CLASS_NAME;
+  }
+
+  /**
+   * Gets the map mode for a given tab.
+   * Maps "droppoint" tab to "sitepoint" mode for the map.
+   * @param {string} tabId - Tab identifier
+   * @returns {string} Map mode
+   * @protected
+   */
+  _getMapModeForTab(tabId) {
+    return tabId === "droppoint" ? "sitepoint" : tabId;
+  }
 
   /* ========================================
    * COMPUTED PROPERTIES
    * ======================================== */
-
-  get isModalOpen() {
-    return this._isModalOpen;
-  }
 
   get computedContainerClassName() {
     return computeClass({
@@ -257,7 +294,6 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
 
   /* ========================================
    * I18N LABEL GETTERS
-   * Labels are automatically translated based on user's language
    * ======================================== */
 
   /** @returns {string} Search button label */
@@ -307,7 +343,6 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
 
   /** @returns {string} Selected coordinates label */
   get labelSelectedCoordinates() {
-    // Use a static English string for now - add to labels if needed
     return "Selected coordinates:";
   }
 
@@ -330,12 +365,12 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
 
   @api
   open() {
-    this._isModalOpen = true;
+    this.openModal();
   }
 
   @api
   close() {
-    this._isModalOpen = false;
+    this.closeModal();
     this._resetState();
   }
 
@@ -366,74 +401,6 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
     this.open();
   }
 
-  handleModalClose() {
-    this.close();
-  }
-
-  handleTabClick(event) {
-    const tab = event.currentTarget.dataset.tab;
-    this._activeTab = tab;
-
-    // Send mode change to map
-    const mode = tab === "droppoint" ? "sitepoint" : tab;
-    this.sendMessageToMap({ title: "modeChange", detail: { mode: mode } });
-  }
-
-  /**
-   * Handles keyboard navigation for tabs (arrow keys)
-   * WCAG 2.1.1 - Keyboard accessible
-   * @param {KeyboardEvent} event
-   */
-  handleTabKeyDown(event) {
-    const tabOrder = ["search", "droppoint", "layers"];
-    const currentIndex = tabOrder.indexOf(this._activeTab);
-
-    let newIndex = currentIndex;
-    let shouldHandle = false;
-
-    switch (event.key) {
-      case "ArrowLeft":
-      case "ArrowUp":
-        newIndex = currentIndex === 0 ? tabOrder.length - 1 : currentIndex - 1;
-        shouldHandle = true;
-        break;
-      case "ArrowRight":
-      case "ArrowDown":
-        newIndex = currentIndex === tabOrder.length - 1 ? 0 : currentIndex + 1;
-        shouldHandle = true;
-        break;
-      case "Home":
-        newIndex = 0;
-        shouldHandle = true;
-        break;
-      case "End":
-        newIndex = tabOrder.length - 1;
-        shouldHandle = true;
-        break;
-      default:
-        break;
-    }
-
-    if (shouldHandle) {
-      event.preventDefault();
-      this._activeTab = tabOrder[newIndex];
-
-      // Send mode change to map
-      const mode =
-        this._activeTab === "droppoint" ? "sitepoint" : this._activeTab;
-      this.sendMessageToMap({ title: "modeChange", detail: { mode: mode } });
-
-      // Focus the new active tab
-      // eslint-disable-next-line @lwc/lwc/no-async-operation
-      setTimeout(() => {
-        const newTab = this.querySelector(`[data-tab="${this._activeTab}"]`);
-        if (newTab) {
-          newTab.focus();
-        }
-      }, 0);
-    }
-  }
-
   handleSearchMethodChange(event) {
     this._searchMethod = event.detail.value || event.target.value;
     this._errorMessage = "";
@@ -449,7 +416,6 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
 
     if (DEBUG) console.log(CLASS_NAME, "handleCoordinateChange", decimal);
 
-    // Store the coordinates
     this._coordinates = decimal;
   }
 
@@ -474,7 +440,6 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
         const decimal = coordInput.toDecimal();
 
         if (decimal.requiresConversion) {
-          // UTM requires server-side conversion
           this._errorMessage = this.labelUTMConversionError;
           return;
         }
@@ -512,7 +477,6 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
   handleContinueClick() {
     if (!this._coordinates) return;
 
-    // Dispatch event with coordinate data
     this.dispatchEvent(
       new CustomEvent("continue", {
         detail: {
@@ -527,145 +491,52 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
   }
 
   /**
-   * Extracts and caches the origin from vfPageUrl for postMessage security.
-   * LWS Security: Used to validate message origins and target origins.
-   *
-   * @returns {string} The origin (protocol + host) or "*" as fallback
-   * @private
+   * Handles map message data (called by mixin)
+   * @param {Object} data - Message data from map
    */
-  getVfOrigin() {
-    // Return cached origin if available
-    if (this._vfOrigin) {
-      return this._vfOrigin;
-    }
+  handleMapMessageData(data) {
+    if (DEBUG) console.log(CLASS_NAME, "handleMapMessageData", data);
 
-    // Extract origin from vfPageUrl
-    if (this.vfPageUrl) {
-      try {
-        const url = new URL(this.vfPageUrl);
-        this._vfOrigin = url.origin;
-        return this._vfOrigin;
-      } catch {
-        console.warn(
-          "DischargePointSelector: Invalid vfPageUrl, cannot extract origin"
-        );
-      }
-    }
-
-    // Fallback to wildcard (less secure, but functional)
-    return "*";
-  }
-
-  /**
-   * Validates if a message event origin matches the expected VF origin.
-   * LWS Security: Prevents processing messages from untrusted origins.
-   *
-   * @param {string} eventOrigin - The origin from the MessageEvent
-   * @returns {boolean} True if origin is valid
-   * @private
-   */
-  isValidOrigin(eventOrigin) {
-    const expectedOrigin = this.getVfOrigin();
-
-    // If we couldn't determine the origin, accept all (fallback behavior)
-    if (expectedOrigin === "*") {
-      return true;
-    }
-
-    // Strict origin check
-    return eventOrigin === expectedOrigin;
-  }
-
-  /**
-   * Handles message from VF iframe (map)
-   * LWS Security: Validates message origin before processing.
-   *
-   * @param {MessageEvent} event
-   * @private
-   */
-  handleMapMessage(event) {
-    // LWS Security: Validate origin before processing message
-    if (!this.isValidOrigin(event.origin)) {
-      // Silently ignore messages from unexpected origins
-      return;
-    }
-
-    try {
-      const data =
-        typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-
-      if (DEBUG) console.log(CLASS_NAME, "handleMapMessage", data);
-
-      switch (data.name) {
-        case "pageLoaded":
-          this._mapLoaded = true;
-          this._isSearching = false;
-          break;
-
-        case "searchResult":
-          this._isSearching = false;
-          if (data.error) {
-            // Use user-friendly error message for search failures
-            this._errorMessage = formatUserError(
-              data.error,
-              getMessage("LOCATION_NOT_FOUND").message
-            );
-          } else if (data.coordinates) {
-            this._coordinates = {
-              latitude: data.coordinates.latitude,
-              longitude: data.coordinates.longitude
-            };
-            this._pointPlaced = true;
-            this._errorMessage = "";
-          }
-          break;
-
-        case "pinPlaced":
-          this._isSearching = false;
-          if (data.coordinates) {
-            this._coordinates = {
-              latitude: data.coordinates.latitude,
-              longitude: data.coordinates.longitude
-            };
-            this._pointPlaced = true;
-            this._errorMessage = "";
-          }
-          break;
-
-        case "error":
-          this._isSearching = false;
-          // Use user-friendly error message based on error type
+    switch (data.name) {
+      case "searchResult":
+        this._isSearching = false;
+        if (data.error) {
           this._errorMessage = formatUserError(
             data.error,
-            getMessage("MAP_LOAD_ERROR").message
+            getMessage("LOCATION_NOT_FOUND").message
           );
-          break;
+        } else if (data.coordinates) {
+          this._coordinates = {
+            latitude: data.coordinates.latitude,
+            longitude: data.coordinates.longitude
+          };
+          this._pointPlaced = true;
+          this._errorMessage = "";
+        }
+        break;
 
-        default:
-          break;
-      }
-    } catch (e) {
-      if (DEBUG) console.error(CLASS_NAME, "handleMapMessage error", e);
-    }
-  }
+      case "pinPlaced":
+        this._isSearching = false;
+        if (data.coordinates) {
+          this._coordinates = {
+            latitude: data.coordinates.latitude,
+            longitude: data.coordinates.longitude
+          };
+          this._pointPlaced = true;
+          this._errorMessage = "";
+        }
+        break;
 
-  /**
-   * Sends a postMessage to the VF iframe
-   * LWS Security: Uses specific targetOrigin instead of wildcard.
-   *
-   * @param {Object} message - Message object with title and detail
-   * @private
-   */
-  sendMessageToMap(message) {
-    // Light DOM component - use this.querySelector() directly
-    const iframe = this.querySelector(
-      ".sfgpsdscaon-discharge-selector__map-iframe"
-    );
+      case "error":
+        this._isSearching = false;
+        this._errorMessage = formatUserError(
+          data.error,
+          getMessage("MAP_LOAD_ERROR").message
+        );
+        break;
 
-    if (iframe && iframe.contentWindow) {
-      // LWS Security: Use specific origin instead of "*"
-      const targetOrigin = this.getVfOrigin();
-      iframe.contentWindow.postMessage(JSON.stringify(message), targetOrigin);
+      default:
+        break;
     }
   }
 
@@ -675,18 +546,12 @@ export default class SfGpsDsCaOnDischargePointSelector extends LightningElement 
 
   connectedCallback() {
     this.classList.add("caon-scope");
-
-    // Set up message listener
-    this._messageHandler = this.handleMapMessage.bind(this);
-    window.addEventListener("message", this._messageHandler);
+    this.setupMessageListener();
 
     if (DEBUG) console.log(CLASS_NAME, "connectedCallback");
   }
 
   disconnectedCallback() {
-    if (this._messageHandler) {
-      window.removeEventListener("message", this._messageHandler);
-      this._messageHandler = null;
-    }
+    this.cleanupMessageListener();
   }
 }

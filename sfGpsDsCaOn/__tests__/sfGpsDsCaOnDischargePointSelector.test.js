@@ -520,4 +520,98 @@ describe("c-sf-gps-ds-ca-on-discharge-point-selector", () => {
         });
     });
   });
+
+  // ============================================
+  // MIXIN INTEGRATION TESTS
+  // ============================================
+
+  describe("MapSelectorMixin Integration", () => {
+    it("should have open() public method from mixin", () => {
+      const element = createElement("c-sf-gps-ds-ca-on-discharge-point-selector", {
+        is: SfGpsDsCaOnDischargePointSelector
+      });
+      document.body.appendChild(element);
+
+      expect(typeof element.open).toBe("function");
+    });
+
+    it("should have close() public method from mixin", () => {
+      const element = createElement("c-sf-gps-ds-ca-on-discharge-point-selector", {
+        is: SfGpsDsCaOnDischargePointSelector
+      });
+      document.body.appendChild(element);
+
+      expect(typeof element.close).toBe("function");
+    });
+
+    it("should have getCoordinateData() public method", () => {
+      const element = createElement("c-sf-gps-ds-ca-on-discharge-point-selector", {
+        is: SfGpsDsCaOnDischargePointSelector
+      });
+      document.body.appendChild(element);
+
+      expect(typeof element.getCoordinateData).toBe("function");
+    });
+
+    it("should inherit tab navigation from mixin", () => {
+      const element = createElement("c-sf-gps-ds-ca-on-discharge-point-selector", {
+        is: SfGpsDsCaOnDischargePointSelector
+      });
+      document.body.appendChild(element);
+
+      return Promise.resolve()
+        .then(() => {
+          element.open();
+        })
+        .then(() => {
+          const tabs = element.querySelectorAll('[role="tab"]');
+          expect(tabs.length).toBe(3);
+          
+          // Verify correct tab order for DischargePointSelector
+          expect(tabs[0].dataset.tab).toBe("search");
+          expect(tabs[1].dataset.tab).toBe("droppoint");
+          expect(tabs[2].dataset.tab).toBe("layers");
+        });
+    });
+
+    it("should use component-specific iframe selector", () => {
+      const element = createElement("c-sf-gps-ds-ca-on-discharge-point-selector", {
+        is: SfGpsDsCaOnDischargePointSelector
+      });
+      element.vfPageUrl = "/apex/sfGpsDsCaOnSiteSelectorPage";
+      document.body.appendChild(element);
+
+      return Promise.resolve()
+        .then(() => {
+          element.open();
+        })
+        .then(() => {
+          // DischargePointSelector uses .sfgpsdscaon-discharge-selector__map-iframe
+          const iframe = element.querySelector(".sfgpsdscaon-discharge-selector__map-iframe");
+          expect(iframe).not.toBeNull();
+        });
+    });
+
+    it("should map droppoint tab to sitepoint mode for map", () => {
+      const element = createElement("c-sf-gps-ds-ca-on-discharge-point-selector", {
+        is: SfGpsDsCaOnDischargePointSelector
+      });
+      document.body.appendChild(element);
+
+      return Promise.resolve()
+        .then(() => {
+          element.open();
+        })
+        .then(() => {
+          // Click on droppoint tab
+          const dropPointTab = element.querySelector('[data-tab="droppoint"]');
+          dropPointTab.click();
+        })
+        .then(() => {
+          // Verify droppoint tab is active
+          const activeTab = element.querySelector('[aria-selected="true"]');
+          expect(activeTab.dataset.tab).toBe("droppoint");
+        });
+    });
+  });
 });

@@ -1649,6 +1649,68 @@ For comprehensive documentation on GIS-integrated components, see **[GIS_GUIDE.m
 | `sfGpsDsCaOnDischargePointSelector` | Coordinate entry with ESRI map   | `sfGpsDsCaOnFormDischargePointSelector` |
 | `sfGpsDsCaOnCoordinateInput`        | UTM/DMS/Decimal coordinate input | -                                       |
 | `sfGpsDsCaOnModal`                  | Ontario DS modal dialog          | -                                       |
+| `sfGpsDsCaOnMapSelectorMixin`       | Shared mixin for map selectors   | -                                       |
+
+### sfGpsDsCaOnMapSelectorMixin
+
+A shared mixin module that provides common functionality for map-based selector components. Both `SiteSelectorTool` and `DischargePointSelector` extend this mixin.
+
+#### Features Provided
+
+- Modal management (open/close state)
+- Tab navigation with roving tabindex (WCAG 2.1.1)
+- PostMessage communication with Visualforce iframe
+- Message origin validation (LWS Security)
+- Window message listener lifecycle
+
+#### Configuration Properties (Override in Subclass)
+
+| Property         | Type       | Default                                   | Description                             |
+| ---------------- | ---------- | ----------------------------------------- | --------------------------------------- |
+| `tabOrder`       | `string[]` | `["search", "sitepoint", "layers"]`       | Tab identifiers for keyboard navigation |
+| `iframeSelector` | `string`   | `".sfgpsdscaon-map-selector__map-iframe"` | CSS selector for the map iframe         |
+| `debugMode`      | `boolean`  | `false`                                   | Enable verbose console logging          |
+| `componentName`  | `string`   | `"MapSelectorMixin"`                      | Name used in debug logs                 |
+
+#### Inherited Methods
+
+| Method                      | Description                                 |
+| --------------------------- | ------------------------------------------- |
+| `openModal()`               | Opens the modal, clears error message       |
+| `closeModal()`              | Closes the modal                            |
+| `handleTabClick(event)`     | Handles tab click, sends mode change to map |
+| `handleTabKeyDown(event)`   | Keyboard navigation (Arrow keys, Home/End)  |
+| `sendMessageToMap(message)` | Sends postMessage to VF iframe              |
+| `setupMessageListener()`    | Adds window message listener                |
+| `cleanupMessageListener()`  | Removes window message listener             |
+
+#### Usage Example
+
+```javascript
+import { MapSelectorMixin } from "c/sfGpsDsCaOnMapSelectorMixin";
+
+export default class MyComponent extends MapSelectorMixin(LightningElement) {
+  @api vfPageUrl;
+
+  get tabOrder() {
+    return ["search", "droppoint", "layers"];
+  }
+
+  handleMapMessageData(data) {
+    // Handle component-specific messages
+  }
+
+  connectedCallback() {
+    this.setupMessageListener();
+  }
+
+  disconnectedCallback() {
+    this.cleanupMessageListener();
+  }
+}
+```
+
+For detailed documentation, see the [MapSelectorMixin README](../main/default/lwc/sfGpsDsCaOnMapSelectorMixin/README.md).
 
 ---
 

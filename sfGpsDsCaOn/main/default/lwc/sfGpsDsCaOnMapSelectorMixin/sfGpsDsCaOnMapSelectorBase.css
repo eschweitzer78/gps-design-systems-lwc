@@ -1,0 +1,353 @@
+/**
+ * Ontario Design System - Map Selector Base Styles
+ *
+ * Shared styles for map-based selector components:
+ * - SiteSelectorTool
+ * - DischargePointSelector
+ *
+ * These styles define the common two-panel layout, trigger button,
+ * tab bar, and map iframe patterns.
+ *
+ * Components should import these styles and can override as needed.
+ */
+
+/* ========================================
+ * TRIGGER BUTTON
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sfgpsdscaon-map-selector__trigger-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+/* ========================================
+ * MODAL CONTENT
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__content {
+  height: 100%;
+  min-height: 600px;
+}
+
+/* ========================================
+ * TWO PANEL LAYOUT
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__panels {
+  display: flex;
+  height: 100%;
+  min-height: 600px;
+}
+
+/* Left Panel */
+.sfgpsdscaon-map-selector__left-panel {
+  display: flex;
+  flex-direction: column;
+  width: 25rem; /* 400px at default font size, scales with zoom */
+  min-width: 20rem; /* Allows shrinking for better reflow */
+  max-width: 100%; /* Ensures reflow at small viewports */
+  padding: 1.5rem;
+  background-color: var(--ontario-colour-white, #ffffff);
+  border-right: 1px solid var(--ontario-greyscale-20, #cccccc);
+  overflow-y: auto;
+}
+
+/* Right Panel (Map) */
+.sfgpsdscaon-map-selector__right-panel {
+  flex: 1;
+  position: relative;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+}
+
+/* ========================================
+ * FORM FIELDS
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__field {
+  margin-bottom: 1.5rem;
+}
+
+.sfgpsdscaon-map-selector__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.sfgpsdscaon-map-selector__select {
+  width: 100%;
+}
+
+/* ========================================
+ * SEARCH INPUT ROW
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__search-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sfgpsdscaon-map-selector__search-input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+.sfgpsdscaon-map-selector__search-input {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.sfgpsdscaon-map-selector__clear-btn {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* WCAG 2.5.5: Touch target minimum 44x44px */
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--ontario-greyscale-40, #666666);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.sfgpsdscaon-map-selector__clear-btn:hover {
+  background-color: var(--ontario-greyscale-5, #f0f0f0);
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+.sfgpsdscaon-map-selector__clear-btn:focus {
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
+}
+
+.sfgpsdscaon-map-selector__clear-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.sfgpsdscaon-map-selector__search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: auto;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+.sfgpsdscaon-map-selector__search-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* ========================================
+ * ERROR MESSAGE
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__error {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: var(--ontario-colour-error-light, #fce4e4);
+  border-left: 4px solid var(--ontario-colour-error, #cd0000);
+  color: var(--ontario-colour-error, #cd0000);
+  font-size: 0.875rem;
+}
+
+/* ========================================
+ * DETAILS DISPLAY (Address/Coordinates)
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__details {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  border-left: 4px solid var(--ontario-colour-link, #0066cc);
+}
+
+.sfgpsdscaon-map-selector__details-heading {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+.sfgpsdscaon-map-selector__details-line {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+.sfgpsdscaon-map-selector__details-line:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================================
+ * ACTION BUTTONS
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__action-btn {
+  margin-bottom: 1.5rem;
+}
+
+/* ========================================
+ * TAB BAR
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__tabs {
+  display: flex;
+  margin-top: auto;
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
+  padding-top: 1rem;
+}
+
+.sfgpsdscaon-map-selector__tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 0.75rem 0.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-family: inherit;
+  color: var(--ontario-greyscale-40, #666666);
+  cursor: pointer;
+  transition:
+    color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+.sfgpsdscaon-map-selector__tab:hover {
+  color: var(--ontario-colour-link, #0066cc);
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+}
+
+.sfgpsdscaon-map-selector__tab:focus {
+  box-shadow: inset 0 0 0 4px var(--ontario-colour-focus, #009adb);
+  outline: 4px solid transparent;
+}
+
+.sfgpsdscaon-map-selector__tab--active {
+  color: var(--ontario-colour-link, #0066cc);
+  border-bottom-color: var(--ontario-colour-link, #0066cc);
+  font-weight: 700;
+}
+
+.sfgpsdscaon-map-selector__tab-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 0.25rem;
+  fill: currentColor;
+}
+
+/* ========================================
+ * MAP IFRAME
+ * ======================================== */
+
+.sfgpsdscaon-map-selector__map-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.sfgpsdscaon-map-selector__map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--ontario-greyscale-40, #666666);
+}
+
+.sfgpsdscaon-map-selector__map-placeholder-hint {
+  font-size: 0.875rem;
+  color: var(--ontario-greyscale-40, #666666);
+  margin-top: 0.5rem;
+}
+
+/* ========================================
+ * RESPONSIVE - WCAG 1.4.10 Reflow Support
+ *
+ * At 200% zoom on 1280px viewport = 640px effective
+ * At 200% zoom on 1024px viewport = 512px effective
+ * At 400% zoom on 1280px viewport = 320px effective
+ * ======================================== */
+
+@media screen and (max-width: 768px) {
+  .sfgpsdscaon-map-selector__panels {
+    flex-direction: column;
+  }
+
+  .sfgpsdscaon-map-selector__left-panel {
+    width: 100%;
+    min-width: auto;
+    max-height: 50%;
+    border-right: none;
+    border-bottom: 1px solid var(--ontario-greyscale-20, #cccccc);
+  }
+
+  .sfgpsdscaon-map-selector__right-panel {
+    min-height: 300px;
+  }
+
+  .sfgpsdscaon-map-selector__tabs {
+    flex-wrap: nowrap;
+  }
+
+  .sfgpsdscaon-map-selector__tab {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.25rem;
+  }
+
+  .sfgpsdscaon-map-selector__tab-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+/* Extra small screens / high zoom (WCAG 1.4.10) */
+@media screen and (max-width: 480px) {
+  .sfgpsdscaon-map-selector__content {
+    min-height: auto;
+  }
+
+  .sfgpsdscaon-map-selector__left-panel {
+    max-height: none;
+    padding: 1rem;
+  }
+
+  .sfgpsdscaon-map-selector__field {
+    margin-bottom: 1rem;
+  }
+
+  .sfgpsdscaon-map-selector__tabs {
+    gap: 0.25rem;
+  }
+
+  .sfgpsdscaon-map-selector__tab {
+    font-size: 0.6875rem;
+    padding: 0.375rem 0.25rem;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+}
