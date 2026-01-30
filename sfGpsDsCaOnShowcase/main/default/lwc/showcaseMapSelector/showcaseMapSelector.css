@@ -1,0 +1,35 @@
+.showcase-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.showcase-section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.showcase-section:last-child {
+  border-bottom: none;
+}
+
+.ontario-summary-list {
+  background-color: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+.ontario-summary-list dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+}
+
+.ontario-summary-list dt {
+  font-weight: 600;
+}
+
+.ontario-summary-list dd {
+  margin: 0;
+}

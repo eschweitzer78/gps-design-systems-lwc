@@ -1,0 +1,102 @@
+.showcase-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.showcase-section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.showcase-section:last-child {
+  border-bottom: none;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.status-message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+/* Accordion Styles */
+.ontario-accordion {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.ontario-accordion__item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ontario-accordion__item:last-child {
+  border-bottom: none;
+}
+
+.ontario-accordion__heading {
+  margin: 0;
+}
+
+.ontario-accordion__button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  transition: background-color 0.2s;
+}
+
+.ontario-accordion__button:hover,
+.ontario-accordion__button:focus {
+  background-color: #f5f5f5;
+}
+
+.ontario-accordion__button:focus {
+  outline: 3px solid #1a1a1a;
+  outline-offset: -3px;
+}
+
+.ontario-accordion__button[aria-expanded="true"] {
+  background-color: #f0f0f0;
+}
+
+.ontario-accordion__icon {
+  font-size: 1.5rem;
+  font-weight: normal;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.ontario-accordion__content {
+  padding: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.ontario-accordion__content[hidden] {
+  display: none;
+}
+
+/* Keyboard hint styling */
+kbd {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0.125rem 0.5rem;
+  font-family: monospace;
+  font-size: 0.875rem;
+}

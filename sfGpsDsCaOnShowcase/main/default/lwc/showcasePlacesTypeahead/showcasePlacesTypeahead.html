@@ -1,0 +1,131 @@
+<template>
+  <div class="showcase-container" data-testid="places-typeahead-showcase">
+    <h1 class="ontario-h1">{pageTitle}</h1>
+
+    <div class="ontario-callout">
+      <p>
+        This page demonstrates the Google Places Typeahead component for address
+        autocomplete with Ontario-focused results.
+      </p>
+    </div>
+
+    <!-- Basic Places Typeahead -->
+    <section class="showcase-section" data-testid="basic-typeahead-section">
+      <h2 class="ontario-h2">Address Autocomplete</h2>
+
+      <c-sf-gps-ds-ca-on-form-places-typeahead
+        data-testid="places-typeahead"
+        label="Enter your address"
+        hint-text="Start typing to search for addresses in Canada"
+        country-restriction={countryRestriction}
+        onplaceselected={handlePlaceSelected}
+      >
+      </c-sf-gps-ds-ca-on-form-places-typeahead>
+
+      <!-- Live region for screen reader announcements -->
+      <div
+        class="ontario-visually-hidden"
+        aria-live="polite"
+        data-testid="places-live-region"
+      >
+        <template if:true={hasSelection}>
+          Address selected: {selectedAddress}
+        </template>
+      </div>
+    </section>
+
+    <!-- Selected Address Display -->
+    <template if:true={hasSelection}>
+      <section class="showcase-section" data-testid="address-details-section">
+        <h2 class="ontario-h2">Selected Address Details</h2>
+
+        <div class="ontario-summary-list">
+          <dl>
+            <dt>Full Address</dt>
+            <dd data-testid="full-address">{selectedAddress}</dd>
+
+            <dt>Street Address</dt>
+            <dd data-testid="street-address">{fullStreetAddress}</dd>
+
+            <dt>City</dt>
+            <dd data-testid="city">{city}</dd>
+
+            <dt>Province</dt>
+            <dd data-testid="province">{province}</dd>
+
+            <dt>Postal Code</dt>
+            <dd data-testid="postal-code">{postalCode}</dd>
+
+            <dt>Country</dt>
+            <dd data-testid="country">{country}</dd>
+
+            <template if:true={coordinates}>
+              <dt>Coordinates</dt>
+              <dd data-testid="coordinates">{formattedCoordinates}</dd>
+            </template>
+          </dl>
+        </div>
+
+        <button
+          class="ontario-button ontario-button--secondary"
+          onclick={handleClear}
+          data-testid="clear-address-button"
+        >
+          Clear Address
+        </button>
+      </section>
+    </template>
+
+    <!-- Form Integration Example -->
+    <section class="showcase-section" data-testid="form-integration-section">
+      <h2 class="ontario-h2">Form Integration Example</h2>
+
+      <p class="ontario-lead-statement">
+        The Places Typeahead can be used within forms to collect structured
+        address data.
+      </p>
+
+      <div class="form-example">
+        <c-sf-gps-ds-ca-on-form-places-typeahead
+          data-testid="form-places-typeahead"
+          label="Business Address"
+          hint-text="Enter the primary address of your business"
+          required="true"
+          error-message="Please enter a valid address"
+          country-restriction={countryRestriction}
+          onplaceselected={handlePlaceSelected}
+        >
+        </c-sf-gps-ds-ca-on-form-places-typeahead>
+
+        <!-- Pre-filled address fields (read-only after selection) -->
+        <template if:true={hasSelection}>
+          <div class="address-breakdown" data-testid="address-breakdown">
+            <c-sf-gps-ds-ca-on-text-input
+              data-testid="street-input"
+              label="Street Address"
+              value={fullStreetAddress}
+              readonly="true"
+            >
+            </c-sf-gps-ds-ca-on-text-input>
+
+            <c-sf-gps-ds-ca-on-text-input
+              data-testid="city-input"
+              label="City"
+              value={city}
+              readonly="true"
+            >
+            </c-sf-gps-ds-ca-on-text-input>
+
+            <c-sf-gps-ds-ca-on-text-input
+              data-testid="postal-code-input"
+              label="Postal Code"
+              value={postalCode}
+              readonly="true"
+            >
+            </c-sf-gps-ds-ca-on-text-input>
+          </div>
+        </template>
+      </div>
+    </section>
+  </div>
+</template>

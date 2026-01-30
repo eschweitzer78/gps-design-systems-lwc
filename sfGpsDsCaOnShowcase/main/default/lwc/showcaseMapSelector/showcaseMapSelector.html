@@ -1,0 +1,72 @@
+<template>
+  <div class="showcase-container" data-testid="map-selector-showcase">
+    <h1 class="ontario-h1">{pageTitle}</h1>
+
+    <div class="ontario-callout">
+      <p>
+        This page demonstrates the Site Selector Tool and Discharge Point
+        Selector components with ESRI ArcGIS map integration.
+      </p>
+    </div>
+
+    <!-- Map Selector Component -->
+    <section class="showcase-section" data-testid="map-selector-section">
+      <h2 class="ontario-h2">Site Selector Tool</h2>
+
+      <c-sf-gps-ds-ca-on-site-selector-tool
+        data-testid="site-selector"
+        onlocationselected={handleLocationSelected}
+      >
+      </c-sf-gps-ds-ca-on-site-selector-tool>
+    </section>
+
+    <!-- Coordinate Format Selection -->
+    <section class="showcase-section" data-testid="coordinate-format-section">
+      <h2 class="ontario-h2">Coordinate Format</h2>
+
+      <c-sf-gps-ds-ca-on-dropdown
+        data-testid="coordinate-format-dropdown"
+        label="Select coordinate format"
+        options={coordinateFormats}
+        value={selectedFormat}
+        onchange={handleFormatChange}
+      >
+      </c-sf-gps-ds-ca-on-dropdown>
+    </section>
+
+    <!-- Selected Location Display -->
+    <section class="showcase-section" data-testid="selection-display-section">
+      <h2 class="ontario-h2">Selected Location</h2>
+
+      <template if:true={hasSelection}>
+        <div class="ontario-summary-list">
+          <dl>
+            <dt>Address / Location</dt>
+            <dd data-testid="selected-address">{selectedLocation}</dd>
+
+            <dt>Coordinates</dt>
+            <dd data-testid="selected-coordinates">{formattedCoordinates}</dd>
+          </dl>
+        </div>
+      </template>
+
+      <template if:false={hasSelection}>
+        <p class="ontario-hint" data-testid="no-selection-message">
+          No location selected. Use the map or address search to select a
+          location.
+        </p>
+      </template>
+    </section>
+
+    <!-- Discharge Point Selector -->
+    <section class="showcase-section" data-testid="discharge-point-section">
+      <h2 class="ontario-h2">Discharge Point Selector</h2>
+
+      <c-sf-gps-ds-ca-on-discharge-point-selector
+        data-testid="discharge-point-selector"
+        onlocationselected={handleLocationSelected}
+      >
+      </c-sf-gps-ds-ca-on-discharge-point-selector>
+    </section>
+  </div>
+</template>

@@ -1,0 +1,260 @@
+<template>
+  <div class="showcase-container" data-testid="modal-showcase">
+    <h1 class="ontario-h1">{pageTitle}</h1>
+
+    <div class="ontario-callout">
+      <p>
+        This page demonstrates Modal components with focus trap, keyboard
+        navigation, and scroll lock behavior.
+      </p>
+    </div>
+
+    <!-- Trigger Buttons Section -->
+    <section class="showcase-section" data-testid="modal-triggers-section">
+      <h2 class="ontario-h2">Modal Triggers</h2>
+
+      <div class="button-group">
+        <button
+          class="ontario-button ontario-button--primary"
+          onclick={openBasicModal}
+          data-testid="open-basic-modal"
+        >
+          Open Basic Modal
+        </button>
+
+        <button
+          class="ontario-button ontario-button--secondary"
+          onclick={openFormModal}
+          data-testid="open-form-modal"
+        >
+          Open Form Modal
+        </button>
+
+        <button
+          class="ontario-button ontario-button--tertiary"
+          onclick={openConfirmModal}
+          data-testid="open-confirm-modal"
+        >
+          Open Confirm Modal
+        </button>
+      </div>
+
+      <!-- Last action display -->
+      <template if:true={hasLastAction}>
+        <div
+          class="ontario-alert ontario-alert--success"
+          data-testid="last-action-display"
+        >
+          <div class="ontario-alert__content">
+            <p>Last action: <strong>{lastAction}</strong></p>
+          </div>
+        </div>
+      </template>
+    </section>
+
+    <!-- Basic Modal -->
+    <template if:true={isBasicModalOpen}>
+      <div
+        class="ontario-modal-overlay"
+        data-testid="basic-modal-overlay"
+        onclick={closeBasicModal}
+      >
+        <div
+          class="ontario-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="basic-modal-title"
+          data-testid="basic-modal"
+          onclick={stopPropagation}
+        >
+          <div class="ontario-modal__header">
+            <h2 id="basic-modal-title" class="ontario-h3">Basic Modal</h2>
+            <button
+              class="ontario-modal__close"
+              aria-label="Close modal"
+              onclick={closeBasicModal}
+              data-testid="basic-modal-close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="ontario-modal__content">
+            <p>This is a basic modal with informational content.</p>
+            <p>
+              Try pressing <kbd>Tab</kbd> to verify focus is trapped within the
+              modal.
+            </p>
+            <p>Press <kbd>Escape</kbd> to close the modal.</p>
+
+            <a href="#" data-testid="modal-link">Sample link</a>
+          </div>
+          <div class="ontario-modal__footer">
+            <button
+              class="ontario-button ontario-button--primary"
+              onclick={closeBasicModal}
+              data-testid="basic-modal-ok"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Form Modal -->
+    <template if:true={isFormModalOpen}>
+      <div
+        class="ontario-modal-overlay"
+        data-testid="form-modal-overlay"
+        onclick={closeFormModal}
+      >
+        <div
+          class="ontario-modal ontario-modal--large"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="form-modal-title"
+          data-testid="form-modal"
+          onclick={stopPropagation}
+        >
+          <div class="ontario-modal__header">
+            <h2 id="form-modal-title" class="ontario-h3">Contact Form</h2>
+            <button
+              class="ontario-modal__close"
+              aria-label="Close modal"
+              onclick={closeFormModal}
+              data-testid="form-modal-close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form onsubmit={handleFormSubmit}>
+            <div class="ontario-modal__content">
+              <c-sf-gps-ds-ca-on-text-input
+                data-testid="modal-form-name"
+                label="Full Name"
+                required="true"
+              >
+              </c-sf-gps-ds-ca-on-text-input>
+
+              <c-sf-gps-ds-ca-on-text-input
+                data-testid="modal-form-email"
+                label="Email Address"
+                type="email"
+                required="true"
+              >
+              </c-sf-gps-ds-ca-on-text-input>
+
+              <c-sf-gps-ds-ca-on-text-area
+                data-testid="modal-form-message"
+                label="Message"
+                rows="4"
+              >
+              </c-sf-gps-ds-ca-on-text-area>
+            </div>
+            <div class="ontario-modal__footer">
+              <button
+                type="button"
+                class="ontario-button ontario-button--secondary"
+                onclick={closeFormModal}
+                data-testid="form-modal-cancel"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="ontario-button ontario-button--primary"
+                data-testid="form-modal-submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </template>
+
+    <!-- Confirm Modal -->
+    <template if:true={isConfirmModalOpen}>
+      <div
+        class="ontario-modal-overlay"
+        data-testid="confirm-modal-overlay"
+        onclick={closeConfirmModal}
+      >
+        <div
+          class="ontario-modal ontario-modal--small"
+          role="alertdialog"
+          aria-modal="true"
+          aria-labelledby="confirm-modal-title"
+          aria-describedby="confirm-modal-desc"
+          data-testid="confirm-modal"
+          onclick={stopPropagation}
+        >
+          <div class="ontario-modal__header">
+            <h2 id="confirm-modal-title" class="ontario-h3">Confirm Action</h2>
+          </div>
+          <div class="ontario-modal__content">
+            <p id="confirm-modal-desc">
+              Are you sure you want to proceed with this action? This cannot be
+              undone.
+            </p>
+          </div>
+          <div class="ontario-modal__footer">
+            <button
+              class="ontario-button ontario-button--secondary"
+              onclick={handleCancel}
+              data-testid="confirm-modal-cancel"
+            >
+              Cancel
+            </button>
+            <button
+              class="ontario-button ontario-button--primary"
+              onclick={handleConfirm}
+              data-testid="confirm-modal-confirm"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Focus Trap Testing Info -->
+    <section class="showcase-section" data-testid="focus-trap-section">
+      <h2 class="ontario-h2">Focus Trap Testing</h2>
+
+      <p>When a modal is open:</p>
+      <ul>
+        <li>Focus should be trapped within the modal</li>
+        <li>Tab should cycle through focusable elements</li>
+        <li>Shift+Tab should cycle backwards</li>
+        <li>First focusable element should receive initial focus</li>
+        <li>Escape should close the modal</li>
+        <li>Focus should return to the trigger button on close</li>
+      </ul>
+
+      <div class="focus-trap-test">
+        <button
+          class="ontario-button ontario-button--tertiary"
+          data-testid="before-modal-button"
+        >
+          Button Before Modal
+        </button>
+
+        <button
+          class="ontario-button ontario-button--primary"
+          onclick={openBasicModal}
+          data-testid="open-modal-for-trap-test"
+        >
+          Open Modal for Focus Test
+        </button>
+
+        <button
+          class="ontario-button ontario-button--tertiary"
+          data-testid="after-modal-button"
+        >
+          Button After Modal
+        </button>
+      </div>
+    </section>
+  </div>
+</template>

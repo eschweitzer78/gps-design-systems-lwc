@@ -276,6 +276,30 @@ If you've set a default org, you can omit the `--target-org` flag:
 sf project deploy start --source-dir sfGpsDs --source-dir sfGpsDsCaOn --wait 60
 ```
 
+### Deploy with Experience Site (ExperienceBundle)
+
+To deploy the showcase Experience Cloud site along with the components, you need to first enable ExperienceBundle Metadata API in your org. See [EXPERIENCEBUNDLE_SETUP.md](./EXPERIENCEBUNDLE_SETUP.md) for detailed instructions.
+
+Once enabled, deploy with the showcase site:
+
+```bash
+sf project deploy start \
+  --source-dir sfGpsDs \
+  --source-dir sfGpsDsCaOn \
+  --source-dir sfGpsDsCaOnShowcase \
+  --target-org YOUR_ORG_ALIAS \
+  --wait 60
+```
+
+**What this additionally deploys:**
+
+- `sfGpsDsCaOnShowcase`: Experience Cloud site configuration, CSP trusted sites, and showcase LWC components
+
+**Prerequisites for ExperienceBundle deployment:**
+
+1. Enable ExperienceBundle Metadata API in your org (Setup → Digital Experiences → Settings)
+2. An existing Experience Cloud site or create one during deployment
+
 ---
 
 ## Verify Deployment

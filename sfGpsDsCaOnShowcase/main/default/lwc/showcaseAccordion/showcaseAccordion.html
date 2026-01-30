@@ -1,0 +1,158 @@
+<template>
+  <div class="showcase-container" data-testid="accordion-showcase">
+    <h1 class="ontario-h1">{pageTitle}</h1>
+
+    <div class="ontario-callout">
+      <p>
+        This page demonstrates Accordion components with expand/collapse
+        functionality, ARIA states, and keyboard navigation.
+      </p>
+    </div>
+
+    <!-- Expand/Collapse All Controls -->
+    <section class="showcase-section" data-testid="accordion-controls-section">
+      <h2 class="ontario-h2">Accordion Controls</h2>
+
+      <div class="button-group">
+        <button
+          class="ontario-button ontario-button--secondary"
+          onclick={expandAll}
+          disabled={allExpanded}
+          data-testid="expand-all-button"
+        >
+          Expand All
+        </button>
+
+        <button
+          class="ontario-button ontario-button--secondary"
+          onclick={collapseAll}
+          disabled={allCollapsed}
+          data-testid="collapse-all-button"
+        >
+          Collapse All
+        </button>
+      </div>
+
+      <template if:true={hasExpandedSection}>
+        <p class="status-message" data-testid="expanded-status">
+          Currently expanded: <strong>{lastExpandedSection}</strong>
+        </p>
+      </template>
+    </section>
+
+    <!-- Basic Accordion (Multiple Open) -->
+    <section class="showcase-section" data-testid="basic-accordion-section">
+      <h2 class="ontario-h2">
+        Basic Accordion (Multiple Sections Can Be Open)
+      </h2>
+
+      <div class="ontario-accordion" data-testid="basic-accordion">
+        <template for:each={basicSections} for:item="section">
+          <div
+            key={section.id}
+            class="ontario-accordion__item"
+            data-testid="accordion-item"
+          >
+            <h3 class="ontario-accordion__heading">
+              <button
+                class="ontario-accordion__button"
+                data-id={section.id}
+                onclick={handleToggle}
+                aria-expanded={section.expanded}
+                aria-controls={section.id}
+                data-testid="accordion-button"
+              >
+                <span class="ontario-accordion__button-text"
+                  >{section.heading}</span
+                >
+                <span class="ontario-accordion__icon" aria-hidden="true">
+                  {section.icon}
+                </span>
+              </button>
+            </h3>
+            <template lwc:if={section.expanded}>
+              <div
+                id={section.id}
+                class="ontario-accordion__content"
+                data-testid="accordion-content"
+              >
+                <p>{section.content}</p>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </section>
+
+    <!-- Single Open Accordion -->
+    <section class="showcase-section" data-testid="single-open-section">
+      <h2 class="ontario-h2">Single Open Accordion (Only One Section Open)</h2>
+
+      <div
+        class="ontario-accordion ontario-accordion--single"
+        data-testid="single-open-accordion"
+      >
+        <template for:each={singleOpenSections} for:item="section">
+          <div
+            key={section.id}
+            class="ontario-accordion__item"
+            data-testid="accordion-item-single"
+          >
+            <h3 class="ontario-accordion__heading">
+              <button
+                class="ontario-accordion__button"
+                data-id={section.id}
+                onclick={handleSingleOpenToggle}
+                aria-expanded={section.expanded}
+                aria-controls={section.id}
+                data-testid="accordion-button-single"
+              >
+                <span class="ontario-accordion__button-text"
+                  >{section.heading}</span
+                >
+                <span class="ontario-accordion__icon" aria-hidden="true">
+                  {section.icon}
+                </span>
+              </button>
+            </h3>
+            <template lwc:if={section.expanded}>
+              <div
+                id={section.id}
+                class="ontario-accordion__content"
+                data-testid="accordion-content-single"
+              >
+                <p>{section.content}</p>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </section>
+
+    <!-- Ontario DS Accordion Component - Requires sfGpsDsCaOn package -->
+    <section
+      class="showcase-section"
+      data-testid="ontario-ds-accordion-section"
+    >
+      <h2 class="ontario-h2">Ontario DS Accordion Component</h2>
+      <p class="ontario-hint">
+        The Ontario DS Accordion component requires the sfGpsDsCaOn package to
+        be deployed. Deploy that package first to see the native accordion
+        component here.
+      </p>
+    </section>
+
+    <!-- Keyboard Navigation Info -->
+    <section class="showcase-section" data-testid="keyboard-nav-section">
+      <h2 class="ontario-h2">Keyboard Navigation</h2>
+
+      <ul>
+        <li><kbd>Enter</kbd> or <kbd>Space</kbd>: Toggle accordion section</li>
+        <li><kbd>Tab</kbd>: Move to next focusable element</li>
+        <li><kbd>Shift+Tab</kbd>: Move to previous focusable element</li>
+        <li><kbd>Home</kbd>: Move to first accordion button (optional)</li>
+        <li><kbd>End</kbd>: Move to last accordion button (optional)</li>
+      </ul>
+    </section>
+  </div>
+</template>

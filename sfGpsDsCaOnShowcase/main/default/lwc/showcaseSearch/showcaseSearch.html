@@ -1,0 +1,138 @@
+<template>
+  <div class="showcase-container" data-testid="search-showcase">
+    <h1 class="ontario-h1">{pageTitle}</h1>
+
+    <div class="ontario-callout">
+      <p>
+        This page demonstrates the Search component with autocomplete, debounce
+        behavior, and keyboard navigation.
+      </p>
+    </div>
+
+    <!-- Basic Search -->
+    <section class="showcase-section" data-testid="basic-search-section">
+      <h2 class="ontario-h2">Basic Search</h2>
+
+      <c-sf-gps-ds-ca-on-search
+        data-testid="basic-search"
+        label="Search Ontario.ca"
+        placeholder="Search for services, programs, or information"
+        min-chars={minSearchChars}
+        debounce-ms={debounceTimeout}
+        value={searchQuery}
+        oninput={handleSearchInput}
+        onsearch={handleSearch}
+      >
+      </c-sf-gps-ds-ca-on-search>
+
+      <!-- Live region for screen readers -->
+      <div
+        class="ontario-visually-hidden"
+        aria-live="polite"
+        aria-atomic="true"
+        data-testid="search-live-region"
+      >
+        <template if:true={isSearching}>Searching...</template>
+        <template if:true={hasResults}>{resultCountMessage}</template>
+        <template if:true={noResults}
+          >No results found for "{searchQuery}"</template
+        >
+      </div>
+    </section>
+
+    <!-- Search Results -->
+    <section class="showcase-section" data-testid="search-results-section">
+      <h2 class="ontario-h2">Search Results</h2>
+
+      <template if:true={isSearching}>
+        <div class="ontario-loading" data-testid="search-loading">
+          <span class="ontario-loading__spinner" aria-hidden="true"></span>
+          <span>Searching...</span>
+        </div>
+      </template>
+
+      <template if:true={hasResults}>
+        <p class="ontario-lead-statement" data-testid="result-count">
+          {resultCountMessage}
+        </p>
+
+        <ul
+          class="ontario-search-results"
+          data-testid="results-list"
+          role="listbox"
+        >
+          <template for:each={searchResults} for:item="result">
+            <li
+              key={result.id}
+              class="ontario-search-result"
+              data-testid="search-result"
+              data-id={result.id}
+              role="option"
+              onclick={handleResultSelect}
+            >
+              <h3 class="ontario-h4">{result.title}</h3>
+              <span class="ontario-badge">{result.category}</span>
+              <p>{result.description}</p>
+            </li>
+          </template>
+        </ul>
+      </template>
+
+      <template if:true={noResults}>
+        <div
+          class="ontario-alert ontario-alert--informational"
+          data-testid="no-results-message"
+        >
+          <div class="ontario-alert__content">
+            <p>
+              No results found for "<strong>{searchQuery}</strong>". Try
+              different keywords.
+            </p>
+          </div>
+        </div>
+      </template>
+    </section>
+
+    <!-- Selected Result Display -->
+    <template if:true={selectedResult}>
+      <section class="showcase-section" data-testid="selected-result-section">
+        <h2 class="ontario-h2">Selected Result</h2>
+
+        <div class="ontario-summary-list">
+          <dl>
+            <dt>Title</dt>
+            <dd data-testid="selected-title">{selectedResult.title}</dd>
+
+            <dt>Category</dt>
+            <dd data-testid="selected-category">{selectedResult.category}</dd>
+
+            <dt>Description</dt>
+            <dd data-testid="selected-description">
+              {selectedResult.description}
+            </dd>
+          </dl>
+        </div>
+
+        <button
+          class="ontario-button ontario-button--secondary"
+          onclick={handleClear}
+          data-testid="clear-selection-button"
+        >
+          Clear Selection
+        </button>
+      </section>
+    </template>
+
+    <!-- Community Search Component -->
+    <section class="showcase-section" data-testid="community-search-section">
+      <h2 class="ontario-h2">Community Search (Einstein Search)</h2>
+
+      <c-sf-gps-ds-ca-on-search-comm
+        data-testid="community-search"
+        label="Search this site"
+        placeholder="Search community content"
+      >
+      </c-sf-gps-ds-ca-on-search-comm>
+    </section>
+  </div>
+</template>

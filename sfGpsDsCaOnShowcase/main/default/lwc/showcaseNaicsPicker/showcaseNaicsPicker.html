@@ -1,0 +1,143 @@
+<template>
+  <div class="showcase-container" data-testid="naics-picker-showcase">
+    <h1 class="ontario-h1">{pageTitle}</h1>
+
+    <div class="ontario-callout">
+      <p>
+        This page demonstrates the NAICS Code Picker component with 5-level
+        cascading dropdowns and dependent filtering.
+      </p>
+    </div>
+
+    <!-- Basic NAICS Picker -->
+    <section class="showcase-section" data-testid="basic-naics-section">
+      <h2 class="ontario-h2">NAICS Code Picker</h2>
+
+      <c-sf-gps-ds-ca-on-naics-code-picker
+        data-testid="naics-picker"
+        onchange={handleCodeChange}
+      >
+      </c-sf-gps-ds-ca-on-naics-code-picker>
+    </section>
+
+    <!-- Current Selection Display -->
+    <section class="showcase-section" data-testid="selection-display-section">
+      <h2 class="ontario-h2">Current Selection</h2>
+
+      <template if:true={hasSelection}>
+        <div class="ontario-summary-list">
+          <dl>
+            <dt>Selected Code</dt>
+            <dd data-testid="selected-code">{selectedCode}</dd>
+
+            <dt>Description</dt>
+            <dd data-testid="selected-description">{selectedDescription}</dd>
+          </dl>
+        </div>
+
+        <button
+          class="ontario-button ontario-button--secondary"
+          onclick={clearSelection}
+          data-testid="clear-selection-button"
+        >
+          Clear Selection
+        </button>
+      </template>
+
+      <template if:false={hasSelection}>
+        <p class="ontario-hint" data-testid="no-selection-message">
+          No NAICS code selected. Use the dropdowns above to select a code.
+        </p>
+      </template>
+    </section>
+
+    <!-- Cascading Dropdown Demo -->
+    <section class="showcase-section" data-testid="cascading-demo-section">
+      <h2 class="ontario-h2">Cascading Dropdown Behavior</h2>
+
+      <p>Select from each level to see dependent filtering in action:</p>
+
+      <div class="cascade-demo">
+        <div class="cascade-level" data-testid="sector-level">
+          <span class="level-label">Level 1: Sector (2 digits)</span>
+          <span class="level-value">{sectorValue}</span>
+          <span class="level-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="cascade-level" data-testid="subsector-level">
+          <span class="level-label">Level 2: Sub-sector (3 digits)</span>
+          <span class="level-value">{subSectorValue}</span>
+          <span class="level-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="cascade-level" data-testid="industrygroup-level">
+          <span class="level-label">Level 3: Industry Group (4 digits)</span>
+          <span class="level-value">{industryGroupValue}</span>
+          <span class="level-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="cascade-level" data-testid="industry-level">
+          <span class="level-label">Level 4: Industry (5 digits)</span>
+          <span class="level-value">{industryValue}</span>
+          <span class="level-arrow" aria-hidden="true">→</span>
+        </div>
+
+        <div class="cascade-level" data-testid="nationalindustry-level">
+          <span class="level-label">Level 5: National Industry (6 digits)</span>
+          <span class="level-value">{nationalIndustryValue}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Selection History -->
+    <section class="showcase-section" data-testid="history-section">
+      <h2 class="ontario-h2">Selection History</h2>
+
+      <template if:true={hasHistory}>
+        <table class="ontario-table" data-testid="history-table">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Description</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template for:each={selectionHistory} for:item="entry">
+              <tr key={entry.id} data-testid="history-row">
+                <td>{entry.code}</td>
+                <td>{entry.description}</td>
+                <td>{entry.timestamp}</td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+
+        <button
+          class="ontario-button ontario-button--tertiary"
+          onclick={clearHistory}
+          data-testid="clear-history-button"
+        >
+          Clear History
+        </button>
+      </template>
+
+      <template if:false={hasHistory}>
+        <p class="ontario-hint">No selections made yet.</p>
+      </template>
+    </section>
+
+    <!-- Keyboard Navigation Info -->
+    <section class="showcase-section" data-testid="keyboard-section">
+      <h2 class="ontario-h2">Keyboard Navigation</h2>
+
+      <ul>
+        <li><kbd>Tab</kbd>: Move between dropdown levels</li>
+        <li><kbd>Enter</kbd> or <kbd>Space</kbd>: Open dropdown</li>
+        <li><kbd>Arrow Up/Down</kbd>: Navigate options</li>
+        <li><kbd>Enter</kbd>: Select option and enable next level</li>
+        <li><kbd>Escape</kbd>: Close dropdown without selecting</li>
+      </ul>
+    </section>
+  </div>
+</template>
