@@ -21,7 +21,7 @@
   <template lwc:if={jsonDef.bAccordionActive}>
     <div class="sfgpsdscaon-step" role="region" aria-label={stepAriaLabel}>
       <!-- Skip link for keyboard users - AODA requirement -->
-      <a 
+      <a
         href="#step-navigation"
         class="sfgpsdscaon-step__skip-link ontario-show-for-sr"
         onfocus={handleSkipLinkFocus}
@@ -41,9 +41,9 @@
       </h2>
 
       <!-- Screen reader announcement for step change -->
-      <div 
-        class="ontario-show-for-sr" 
-        aria-live="polite" 
+      <div
+        class="ontario-show-for-sr"
+        aria-live="polite"
         aria-atomic="true"
         role="status"
       >
@@ -53,7 +53,7 @@
       <hr class="sfgpsdscaon-step__separator" aria-hidden="true" />
 
       <!-- Error summary region - appears when validation errors exist -->
-      <div 
+      <div
         lwc:if={hasValidationErrors}
         class="sfgpsdscaon-step__error-summary ontario-callout ontario-callout--error"
         role="alert"
@@ -63,7 +63,9 @@
         <h3 class="ontario-callout__title ontario-h5">
           There are errors on this page
         </h3>
-        <p>Please review and correct the highlighted fields before continuing.</p>
+        <p>
+          Please review and correct the highlighted fields before continuing.
+        </p>
       </div>
 
       <!-- Step content (slot for child elements) -->
@@ -72,8 +74,8 @@
       </div>
 
       <!-- Navigation buttons - skip link target -->
-      <nav 
-        lwc:if={computedShowSep} 
+      <nav
+        lwc:if={computedShowSep}
         id="step-navigation"
         class="sfgpsdscaon-step__actions"
         aria-label="Step navigation"
@@ -92,28 +94,26 @@
         <!-- Primary actions -->
         <div class="sfgpsdscaon-step__primary-actions">
           <!-- Save for later button -->
-          <ontario-button
+          <button
             lwc:if={showSave}
-            lwc:external
-            type="secondary"
-            label={mergedSaveLabel}
-            html-type="button"
+            type="button"
+            class="ontario-button ontario-button--secondary"
             disabled={disabledButtons}
             onclick={handleSave}
           >
-          </ontario-button>
+            {mergedSaveLabel}
+          </button>
 
           <!-- Next/Continue button -->
-          <ontario-button
+          <button
             lwc:if={showNext}
-            lwc:external
-            type="primary"
-            label={mergedNextLabel}
-            html-type="button"
+            type="button"
+            class="ontario-button ontario-button--primary"
             disabled={disabledButtons}
             onclick={handleNext}
           >
-          </ontario-button>
+            {mergedNextLabel}
+          </button>
         </div>
       </nav>
     </div>

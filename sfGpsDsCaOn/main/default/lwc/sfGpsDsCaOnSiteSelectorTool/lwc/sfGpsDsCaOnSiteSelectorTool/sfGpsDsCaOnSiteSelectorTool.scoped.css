@@ -44,8 +44,8 @@
 .sfgpsdscaon-site-selector__left-panel {
   display: flex;
   flex-direction: column;
-  width: 20rem; /* 320px at default font size, scales with zoom */
-  min-width: 16rem; /* Allows shrinking for better reflow */
+  width: 25rem; /* 400px at default font size, scales with zoom */
+  min-width: 20rem; /* Allows shrinking for better reflow */
   max-width: 100%; /* Ensures reflow at small viewports */
   padding: 1.5rem;
   background-color: var(--ontario-colour-white, #ffffff);

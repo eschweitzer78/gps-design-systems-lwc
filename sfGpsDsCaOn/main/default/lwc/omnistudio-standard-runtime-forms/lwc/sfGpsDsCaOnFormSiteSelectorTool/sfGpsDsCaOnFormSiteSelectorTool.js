@@ -80,6 +80,9 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
   /** @type {Object} Current address data */
   @track _addressData = null;
 
+  /** @type {boolean} Whether to show validation error */
+  @track showValidation = false;
+
   /* ========================================
    * COMPUTED PROPERTIES - CONFIGURATION
    * For Custom LWC elements, check @api props first, then jsonDef
@@ -265,6 +268,9 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
     // Store locally
     this._addressData = { address, coordinates };
 
+    // Clear validation error when address is selected
+    this.showValidation = false;
+
     // Update OmniScript data with flattened fields
     this.omniUpdateDataJson({
       streetAddress: address?.streetAddress,
@@ -390,7 +396,7 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
     if (!this.isRequired) {
       return true;
     }
-    // If required, must have address data
+    // If required, must have address data with a full address
     return (
       this._addressData !== null &&
       Boolean(this._addressData?.address?.fullAddress)

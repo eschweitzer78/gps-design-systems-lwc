@@ -94,11 +94,7 @@ This Integration Procedure retrieves comprehensive location data including MECP 
 }
 ```
 
-**Response JSON Path:**
-
-```
-$.features[0].attributes
-```
+> **Note:** Leave the Response JSON Path empty. Data transformation is handled by the consuming OmniScript or LWC component.
 
 ---
 
@@ -141,11 +137,7 @@ $.features[0].attributes
 }
 ```
 
-**Response JSON Path:**
-
-```
-$.features[*].attributes
-```
+> **Note:** Leave the Response JSON Path empty. Data transformation is handled by the consuming OmniScript or LWC component.
 
 ---
 
@@ -214,34 +206,19 @@ $.features[*].attributes
 
 ---
 
-### Element 5: Response Action - Format Output
+### Element 5: Response Action - Return Full Data
 
 **Type:** Response Action
-**Name:** FormatResponse
+**Name:** Response
 
-**Send JSON Path:**
+**Configuration:**
 
-```json
-{
-  "mecpDistrict": {
-    "districtName": "%GetMECPDistrict:MECP_DISTRICT%",
-    "areaName": "%GetMECPDistrict:MECP_AREA%",
-    "regionName": "%GetMECPDistrict:MECP_REGION%",
-    "districtOfficeName": "%GetMECPDistrict:DISTRICT_OFFICE_NAME_EN%",
-    "districtPhone": "%GetMECPDistrict:DISTRICT_OFFICE_PHONENUMBER%",
-    "districtTollFree": "%GetMECPDistrict:DISTRICT_OFFICE_TOLLFREENUMBER%",
-    "districtAddress": "%GetMECPDistrict:DISTRICT_OFFICE_STREETNAME_EN%",
-    "districtCity": "%GetMECPDistrict:DISTRICT_OFFICE_CITY%",
-    "districtPostalCode": "%GetMECPDistrict:DISTRICT_OFFICE_POSTAL_CODE%",
-    "areaOfficeName": "%GetMECPDistrict:AREA_OFFICE_NAME_EN%",
-    "areaPhone": "%GetMECPDistrict:AREA_OFFICE_PHONENUMBER%",
-    "areaTollFree": "%GetMECPDistrict:AREA_OFFICE_TOLLFREENUMBER_EN%"
-  },
-  "nearbyEASR": "%GetNearbyEASR%",
-  "nearbyECAs": "%GetNearbyECAs%",
-  "nearbyWaterPermits": "%GetNearbyWaterPermits%"
-}
-```
+| Field                | Value         |
+| -------------------- | ------------- |
+| Return Full DataJSON | true          |
+| Send JSON Path       | (leave empty) |
+
+> **Important:** Due to OmniStudio limitations with accessing nested array elements via merge fields, use `returnFullDataJSON: true` and transform the data in the consuming OmniScript or LWC component. This returns the complete ArcGIS response for each HTTP Action, which can then be processed using JavaScript.
 
 ---
 
@@ -300,6 +277,7 @@ In your OmniScript, add an **Integration Procedure Action** element:
 
 | Property              | Value                   |
 | --------------------- | ----------------------- |
+| Name                  | GetLocationDetails      |
 | Integration Procedure | EASR_GetLocationDetails |
 | Extra Payload         | See below               |
 
@@ -313,34 +291,107 @@ In your OmniScript, add an **Integration Procedure Action** element:
 }
 ```
 
-### Step 2: Display MECP District in Callout
+### Step 2: Transform Data in Custom LWC Component
 
-Add a **Set Values** element to format the callout content:
+Since the Integration Procedure returns the full ArcGIS response, transform the data in your LWC component:
 
-```json
-{
-  "mecpCalloutContent": "**%IPResult:mecpDistrict:districtOfficeName%**\n\nPhone: %IPResult:mecpDistrict:districtPhone%\nToll-free: %IPResult:mecpDistrict:districtTollFree%\n\n%IPResult:mecpDistrict:districtAddress%\n%IPResult:mecpDistrict:districtCity%, ON %IPResult:mecpDistrict:districtPostalCode%"
+```javascript
+// In your custom LWC component
+
+/**
+ * Extract MECP District information from the IP result
+ */
+get mecpDistrict() {
+  const ipResult = this.omniJsonData?.GetLocationDetails;
+  const attributes = ipResult?.GetMECPDistrict?.features?.[0]?.attributes;
+
+  if (!attributes) return null;
+
+  return {
+    districtName: attributes.MECP_DISTRICT,
+    areaName: attributes.MECP_AREA,
+    regionName: attributes.MECP_REGION,
+    districtOfficeName: attributes.DISTRICT_OFFICE_NAME_EN,
+    districtPhone: attributes.DISTRICT_OFFICE_PHONENUMBER,
+    districtTollFree: attributes.DISTRICT_OFFICE_TOLLFREENUMBER,
+    districtAddress: attributes.DISTRICT_OFFICE_STREETNAME_EN,
+    districtCity: attributes.DISTRICT_OFFICE_CITY,
+    districtPostalCode: attributes.DISTRICT_OFFICE_POSTAL_CODE,
+    areaOfficeName: attributes.AREA_OFFICE_NAME_EN,
+    areaPhone: attributes.AREA_OFFICE_PHONENUMBER,
+    areaTollFree: attributes.AREA_OFFICE_TOLLFREENUMBER_EN
+  };
+}
+
+/**
+ * Extract nearby EASR registrations from the IP result
+ */
+get nearbyEASR() {
+  const ipResult = this.omniJsonData?.GetLocationDetails;
+  const features = ipResult?.GetNearbyEASR?.features || [];
+  return features.map(f => f.attributes);
+}
+
+/**
+ * Extract nearby ECAs from the IP result
+ */
+get nearbyECAs() {
+  const ipResult = this.omniJsonData?.GetLocationDetails;
+  const features = ipResult?.GetNearbyECAs?.features || [];
+  return features.map(f => f.attributes);
+}
+
+/**
+ * Extract nearby water permits from the IP result
+ */
+get nearbyWaterPermits() {
+  const ipResult = this.omniJsonData?.GetLocationDetails;
+  const features = ipResult?.GetNearbyWaterPermits?.features || [];
+  return features.map(f => f.attributes);
 }
 ```
 
-Then add a **Text Block** element configured as a callout:
+### Step 3: Display MECP District in Callout
 
-| Property           | Value                     |
-| ------------------ | ------------------------- |
-| Component Override | sfGpsDsCaOnFormTextBlock  |
-| calloutType        | highlight                 |
-| calloutHeading     | MECP district/Area office |
-| text               | %mecpCalloutContent%      |
+Use the transformed data to display information:
 
-### Step 3: Display Nearby EASR Registrations
+```html
+<template lwc:if="{mecpDistrict}">
+  <c-sf-gps-ds-ca-on-callout
+    type="highlight"
+    heading="MECP District/Area Office"
+  >
+    <p><strong>{mecpDistrict.districtOfficeName}</strong></p>
+    <p>Phone: {mecpDistrict.districtPhone}</p>
+    <p>Toll-free: {mecpDistrict.districtTollFree}</p>
+    <p>{mecpDistrict.districtAddress}</p>
+    <p>{mecpDistrict.districtCity}, ON {mecpDistrict.districtPostalCode}</p>
+  </c-sf-gps-ds-ca-on-callout>
+</template>
+```
 
-For displaying nearby registrations, use an **Edit Block** or custom component:
+### Step 4: Display Nearby EASR Registrations
+
+```html
+<template lwc:if="{hasNearbyEASR}">
+  <h3>Nearby EASR Registrations</h3>
+  <ul>
+    <template for:each="{nearbyEASR}" for:item="registration">
+      <li key="{registration.APPROVAL_NUMBER}">
+        <strong>{registration.BUSINESS_NAME}</strong> -
+        {registration.APPROVAL_NUMBER}
+        <br />
+        {registration.ADDRESS}, {registration.MUNICIPALITY}
+      </li>
+    </template>
+  </ul>
+</template>
+```
 
 ```javascript
-// In a custom LWC, access the IP result:
-const nearbyEASR = this.omniJsonData?.IPResult?.nearbyEASR || [];
-
-// Render as a list or table
+get hasNearbyEASR() {
+  return this.nearbyEASR && this.nearbyEASR.length > 0;
+}
 ```
 
 ---
@@ -362,41 +413,72 @@ const nearbyEASR = this.omniJsonData?.IPResult?.nearbyEASR || [];
 4. Click **Execute**
 5. Verify the response contains MECP district and nearby registrations
 
-### Sample Response
+### Sample Response (with returnFullDataJSON: true)
+
+The Integration Procedure returns the full ArcGIS response for each HTTP Action:
 
 ```json
 {
-  "mecpDistrict": {
-    "districtName": "Toronto",
-    "areaName": "Toronto and Area",
-    "regionName": "Central Region",
-    "districtOfficeName": "Toronto District Office",
-    "districtPhone": "416-326-6700",
-    "districtTollFree": "1-800-387-7109",
-    "districtAddress": "5775 Yonge Street, 8th Floor",
-    "districtCity": "Toronto",
-    "districtPostalCode": "M2M 4J1",
-    "areaOfficeName": "Toronto Area Office",
-    "areaPhone": "416-326-6700",
-    "areaTollFree": "1-800-387-7109"
+  "GetMECPDistrict": {
+    "displayFieldName": "MECP_DISTRICT",
+    "fieldAliases": { ... },
+    "fields": [ ... ],
+    "features": [
+      {
+        "attributes": {
+          "MECP_DISTRICT": "Toronto",
+          "MECP_AREA": "Toronto",
+          "MECP_REGION": "Central",
+          "DISTRICT_OFFICE_NAME_EN": "Toronto MECP District",
+          "DISTRICT_OFFICE_PHONENUMBER": "(416) 326-6700",
+          "DISTRICT_OFFICE_TOLLFREENUMBER": "1-800-810-8048",
+          "DISTRICT_OFFICE_STREETNAME_EN": "8th floor, 5775 Yonge St.",
+          "DISTRICT_OFFICE_CITY": "North York ON",
+          "DISTRICT_OFFICE_POSTAL_CODE": "M2M 4J1",
+          "AREA_OFFICE_NAME_EN": null,
+          "AREA_OFFICE_PHONENUMBER": null,
+          "AREA_OFFICE_TOLLFREENUMBER_EN": null
+        }
+      }
+    ]
   },
-  "nearbyEASR": [
-    {
-      "APPROVAL_NUMBER": "EASR-2024-001234",
-      "BUSINESS_NAME": "ABC Construction Ltd",
-      "ADDRESS": "100 King Street West",
-      "MUNICIPALITY": "Toronto",
-      "APPROVAL_DATE": "2024-06-15",
-      "APPROVAL_TYPE": "Stormwater Management Works",
-      "PROJECT_TYPE": "New",
-      "STATUS": "Active",
-      "MOE_DISTRICT": "Toronto District Office"
-    }
-  ],
-  "nearbyECAs": [],
-  "nearbyWaterPermits": []
+  "GetNearbyEASR": {
+    "displayFieldName": "BUSINESS_NAME",
+    "fieldAliases": { ... },
+    "fields": [ ... ],
+    "features": [
+      {
+        "attributes": {
+          "APPROVAL_NUMBER": "R-010-3118251465",
+          "BUSINESS_NAME": "UNIVERSITY HEALTH NETWORK",
+          "ADDRESS": "101 College ST",
+          "MUNICIPALITY": "Toronto",
+          "APPROVAL_DATE": 1767996055000,
+          "APPROVAL_TYPE": "EASR-Air Emissions",
+          "PROJECT_TYPE": "Air Emissions",
+          "STATUS": "REGISTERED",
+          "MOE_DISTRICT": "Toronto",
+          "LATITUDE": 43.65972222,
+          "LONGITUDE": -79.38861111
+        }
+      }
+    ]
+  },
+  "GetNearbyECAs": { ... },
+  "GetNearbyWaterPermits": { ... },
+  "GetMECPDistrictStatus": true,
+  "GetNearbyEASRStatus": true,
+  "GetNearbyECAsStatus": true,
+  "GetNearbyWaterPermitsStatus": true
 }
 ```
+
+> **Note:** The `APPROVAL_DATE` field is returned as a Unix timestamp in milliseconds. Convert it to a readable date format in your component:
+>
+> ```javascript
+> const date = new Date(attributes.APPROVAL_DATE);
+> const formattedDate = date.toLocaleDateString("en-CA"); // "2024-06-15"
+> ```
 
 ---
 
@@ -479,6 +561,36 @@ Add a **Condition** element after each HTTP Action:
 ```
 
 Then branch to handle errors appropriately.
+
+---
+
+## Known Limitations
+
+### OmniStudio Merge Field Syntax
+
+OmniStudio Integration Procedures have limited support for accessing nested array elements via merge fields. The following syntaxes do **not** work reliably for extracting data from ArcGIS responses:
+
+```
+# These do NOT work in Response Action sendJSONPath:
+%ElementName:features:0:attributes:FIELD_NAME%
+%ElementName:features[0]:attributes:FIELD_NAME%
+%ElementName.features.0.attributes.FIELD_NAME%
+%ElementName|features|0|attributes|FIELD_NAME%
+```
+
+Similarly, the Response JSON Path field on HTTP Actions may not correctly parse JSONPath expressions like `$.features[0].attributes`.
+
+**Recommended Approach:** Use `returnFullDataJSON: true` in the Response Action and transform the data in your consuming OmniScript or LWC component using JavaScript.
+
+### Date Field Format
+
+ArcGIS REST API returns date fields as Unix timestamps in milliseconds (not seconds). For example, `APPROVAL_DATE: 1767996055000` represents a date in 2026.
+
+Convert to a JavaScript Date object:
+
+```javascript
+const date = new Date(attributes.APPROVAL_DATE);
+```
 
 ---
 

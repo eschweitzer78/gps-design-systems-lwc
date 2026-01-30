@@ -13,12 +13,12 @@ import tmpl from "./sfGpsDsCaOnFormStep.html";
  * @description Ontario Design System Step component for OmniStudio forms.
  * Provides step container with navigation buttons (Previous, Next, Save).
  * Uses Ontario DS button styling.
- * 
+ *
  * Compliance:
  * - LWR: Uses slot for step content
  * - LWS: No eval(), proper namespace imports
  * - Ontario DS: Uses Ontario button styling
- * - WCAG 2.1 AA / AODA: 
+ * - WCAG 2.1 AA / AODA:
  *   - Skip link for keyboard users to bypass form content
  *   - Step heading with focus management on step change
  *   - Screen reader announcement for step changes
@@ -79,13 +79,15 @@ export default class SfGpsDsCaOnFormStep extends SfGpsDsFormStep {
     try {
       const childElements = this.querySelectorAll("[data-omni-input]");
       for (const el of childElements) {
-        if (el.classList?.contains("slds-has-error") || 
-            el.classList?.contains("nds-has-error") ||
-            el.getAttribute("aria-invalid") === "true") {
+        if (
+          el.classList?.contains("slds-has-error") ||
+          el.classList?.contains("nds-has-error") ||
+          el.getAttribute("aria-invalid") === "true"
+        ) {
           return true;
         }
       }
-    } catch (e) {
+    } catch {
       // Fail silently - validation check is a progressive enhancement
     }
     return false;
@@ -94,6 +96,74 @@ export default class SfGpsDsCaOnFormStep extends SfGpsDsFormStep {
   /* ========================================
    * EVENT HANDLERS
    * ======================================== */
+
+  /**
+   * Handles Next button click.
+   * Uses dispatchOmniEventUtil for proper OmniScript event handling in LWR.
+   * @param {Event} e - Click event
+   */
+  handleNext(e) {
+    e.stopPropagation();
+
+    this.disabledButtons = true;
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    setTimeout(() => {
+      this.disabledButtons = false;
+    }, 1000);
+
+    // Use dispatchOmniEventUtil for proper OmniScript integration
+    if (typeof this.dispatchOmniEventUtil === "function") {
+      this.dispatchOmniEventUtil(
+        this,
+        { moveToStep: "next" },
+        "omniautoadvance"
+      );
+    } else {
+      // Fallback for non-OmniScript contexts
+      this.dispatchEvent(
+        new CustomEvent("omniautoadvance", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: { moveToStep: "next" }
+        })
+      );
+    }
+  }
+
+  /**
+   * Handles Back button click.
+   * Uses dispatchOmniEventUtil for proper OmniScript event handling in LWR.
+   * @param {Event} e - Click event
+   */
+  handleBack(e) {
+    e.stopPropagation();
+
+    this.disabledButtons = true;
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    setTimeout(() => {
+      this.disabledButtons = false;
+    }, 1000);
+
+    // Use dispatchOmniEventUtil for proper OmniScript integration
+    if (typeof this.dispatchOmniEventUtil === "function") {
+      this.dispatchOmniEventUtil(
+        this,
+        { moveToStep: "previous" },
+        "omniautoadvance"
+      );
+    } else {
+      // Fallback for non-OmniScript contexts
+      this.dispatchEvent(
+        new CustomEvent("omniautoadvance", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: { moveToStep: "previous" }
+        })
+      );
+    }
+  }
 
   /**
    * Handles skip link focus - makes it visible.
@@ -141,6 +211,7 @@ export default class SfGpsDsCaOnFormStep extends SfGpsDsFormStep {
   announceStepChange(message) {
     this._stepAnnouncement = message;
     // Clear announcement after a delay to allow re-announcement
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
     setTimeout(() => {
       this._stepAnnouncement = "";
     }, 1000);
@@ -180,6 +251,7 @@ export default class SfGpsDsCaOnFormStep extends SfGpsDsFormStep {
     const heading = this.querySelector(".sfgpsdscaon-step__heading");
     if (heading && !this._headingFocused) {
       // Use setTimeout to ensure DOM is ready
+      // eslint-disable-next-line @lwc/lwc/no-async-operation
       setTimeout(() => {
         heading.focus();
       }, 100);
