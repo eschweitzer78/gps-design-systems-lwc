@@ -3,7 +3,7 @@
  * Provides ESRI API key, community URL, and default coordinates.
  * LWR/LWS compatible via postMessage origin validation.
  *
- * @author Shannon Schupbach, Jeremy Blankenship
+ * @author Shannon Schupbach
  * @since 2026
  */
 public with sharing class sfGpsDsCaOnSiteSelectorCtr {
