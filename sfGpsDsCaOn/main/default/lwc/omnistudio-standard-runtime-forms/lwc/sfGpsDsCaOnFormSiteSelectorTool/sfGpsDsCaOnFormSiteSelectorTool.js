@@ -271,6 +271,10 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
     // Clear validation error when address is selected
     this.showValidation = false;
 
+    // Set elementValue so OmniScript knows the field has a value
+    // OmniScript checks this property for required field validation
+    this.elementValue = address?.fullAddress;
+
     // Update OmniScript data with flattened fields
     this.omniUpdateDataJson({
       streetAddress: address?.streetAddress,
@@ -282,6 +286,15 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
       latitude: coordinates?.latitude,
       longitude: coordinates?.longitude
     });
+
+    // Force OmniScript to re-validate and clear any cached validation state
+    // Use setTimeout to ensure this runs after the current event loop
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    setTimeout(() => {
+      if (typeof this.omniValidate === "function") {
+        this.omniValidate(false); // false = don't show error messages
+      }
+    }, 0);
   }
 
   /**
@@ -291,6 +304,9 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
   handleClear(event) {
     event.preventDefault();
     this._addressData = null;
+
+    // Clear elementValue so OmniScript knows the field is empty
+    this.elementValue = null;
 
     // Clear OmniScript data
     this.omniUpdateDataJson({
@@ -315,6 +331,9 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
    */
   connectedCallback() {
     this.classList.add("caon-scope");
+    // Add data-omni-input to the HOST element so OmniScript can find and validate it
+    // This ensures OmniScript calls our @api checkValidity() directly
+    this.setAttribute("data-omni-input", "");
     // Fetch VF domain URL (if not provided via @api)
     if (!this.configVfPageUrl) {
       this.loadVfDomainUrl();
@@ -363,6 +382,8 @@ export default class SfGpsDsCaOnFormSiteSelectorTool extends OmniscriptBaseMixin
             longitude: savedData.longitude
           }
         };
+        // Restore elementValue so OmniScript knows the field has a value
+        this.elementValue = savedData.fullAddress || "";
       }
     } catch {
       // Fail silently - state restoration is best-effort
