@@ -197,6 +197,10 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
 
     this._coordinateData = coordinates;
 
+    // Set elementValue so OmniScript knows the field has a value
+    // OmniScript checks this property for required field validation
+    this.elementValue = `${coordinates.latitude}, ${coordinates.longitude}`;
+
     // Update OmniScript data
     this.omniUpdateDataJson({
       latitude: coordinates.latitude,
@@ -205,6 +209,14 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
       utmEast: coordinates.utmEast || null,
       utmNorth: coordinates.utmNorth || null
     });
+
+    // Force OmniScript to re-validate and clear any cached validation state
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
+    setTimeout(() => {
+      if (typeof this.omniValidate === "function") {
+        this.omniValidate(false);
+      }
+    }, 0);
   }
 
   handleClear(event) {
@@ -212,6 +224,9 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
     event.stopPropagation();
 
     this._coordinateData = null;
+
+    // Clear elementValue so OmniScript knows the field is empty
+    this.elementValue = null;
 
     // Clear OmniScript data
     this.omniUpdateDataJson({
@@ -233,6 +248,9 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
    */
   connectedCallback() {
     this.classList.add("caon-scope");
+    // Add data-omni-input to the HOST element so OmniScript can find and validate it
+    // This ensures OmniScript calls our @api checkValidity() directly
+    this.setAttribute("data-omni-input", "");
     // Fetch VF domain URL (if not provided via @api)
     if (!this.configVfPageUrl) {
       this.loadVfDomainUrl();
@@ -279,6 +297,8 @@ export default class SfGpsDsCaOnFormDischargePointSelector extends OmniscriptBas
           utmEast: savedData.utmEast || null,
           utmNorth: savedData.utmNorth || null
         };
+        // Restore elementValue so OmniScript knows the field has a value
+        this.elementValue = `${savedData.latitude}, ${savedData.longitude}`;
 
         if (DEBUG)
           console.log(CLASS_NAME, "restoreSavedState", this._coordinateData);
