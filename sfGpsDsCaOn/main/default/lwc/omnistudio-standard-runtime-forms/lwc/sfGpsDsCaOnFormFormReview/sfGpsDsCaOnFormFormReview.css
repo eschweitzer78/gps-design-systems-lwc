@@ -1,0 +1,106 @@
+/**
+ * OmniStudio Form Review Component Styles
+ * 
+ * Follows Ontario Design System patterns.
+ * Uses scoped CSS for OmniScript compatibility.
+ */
+
+/* Container */
+.sfgpsdscaon-form-review {
+  padding: 0;
+}
+
+/* Section spacing */
+.ontario-form-review__section {
+  margin-bottom: 2rem;
+}
+
+.ontario-form-review__section:last-child {
+  margin-bottom: 1.5rem;
+}
+
+/* AODA: Subsection styling for cognitive grouping (Edit Blocks, nested structures) */
+.ontario-form-review__subsection {
+  margin: 1rem 0 1.5rem 1rem;
+  padding: 0 0 0 1rem;
+  border: none;
+  border-left: 3px solid #1a5a96;
+}
+
+.ontario-form-review__subsection:last-child {
+  margin-bottom: 1rem;
+}
+
+/* Remove default fieldset styling */
+.ontario-form-review__subsection legend {
+  display: none; /* Hidden visually, aria-label provides context */
+}
+
+/* Subsection heading styling (h4 level) */
+.ontario-form-review__subsection .ontario-summary-list__heading {
+  font-size: 1.125rem;
+  margin-top: 0;
+}
+
+/* Warning section */
+.ontario-form-review__warning {
+  margin-bottom: 1.5rem;
+}
+
+/* Actions container */
+.ontario-form-review__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ccc;
+}
+
+/* Button sizing for touch targets (44px min per AODA) */
+.ontario-form-review__actions .ontario-button {
+  min-height: 2.75rem;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 40rem) {
+  .ontario-form-review__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ontario-form-review__actions .ontario-button {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  .ontario-form-review__actions .ontario-button:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Screen reader only class */
+.ontario-show-for-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus visible for keyboard navigation */
+.ontario-button:focus-visible {
+  outline: 3px solid #1a5a96;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .ontario-button:focus-visible {
+    outline: 3px solid CanvasText;
+  }
+}

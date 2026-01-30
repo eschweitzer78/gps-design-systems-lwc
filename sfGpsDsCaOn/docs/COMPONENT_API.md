@@ -852,6 +852,155 @@ The Form Review implements the Ontario Design System pattern for reviewing form 
 
 ---
 
+### sfGpsDsCaOnFormFormReview (OmniScript)
+
+An OmniStudio-integrated Form Review component that automatically generates a summary of all OmniScript responses for user review before submission. Use this component in the final step of an OmniScript.
+
+#### Key Features
+
+- **Auto-generates sections** from OmniScript data (`omniJsonData`)
+- **Change navigation** - clicking "Change" navigates back to the relevant step
+- **Field mapping** - custom labels for field display
+- **Step/field exclusion** - exclude internal steps or fields from review
+- **OmniScript events** - dispatches `omnisave` for submit, `omniautoadvance` for navigation
+
+#### OmniScript Configuration
+
+| Property               | Type    | Default                               | Description                                       |
+| ---------------------- | ------- | ------------------------------------- | ------------------------------------------------- |
+| `heading`              | String  | `"Review your answers"`               | Page heading                                      |
+| `subheading`           | String  | `"Please check your answers..."`      | Instructional text                                |
+| `submitLabel`          | String  | `"Submit"`                            | Submit button label                               |
+| `cancelLabel`          | String  | `"Save for later"`                    | Cancel button label                               |
+| `showSubmitWarning`    | Boolean | `false`                               | Show warning callout before submit                |
+| `submitWarningMessage` | String  | `"You cannot change your answers..."` | Warning message text                              |
+| `autoGenerate`         | Boolean | `true`                                | Auto-generate sections from OmniScript data       |
+| `excludeSteps`         | String  | -                                     | Comma-separated list of step names to exclude     |
+| `excludeFields`        | String  | -                                     | Comma-separated list of field paths to exclude    |
+| `fieldMapping`         | String  | -                                     | JSON object mapping field paths to display labels |
+| `labelSchema`          | String  | -                                     | JSON object mapping raw values to display labels  |
+| `sectionsJson`         | String  | -                                     | Manual sections JSON (overrides auto-generate)    |
+
+#### Known Risks Addressed
+
+The component addresses common "JSON Walker" review component risks:
+
+| Risk                       | Severity | Solution                                                                                                              |
+| -------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
+| **LWS Proxy Stripping**    | CRITICAL | Uses `computeShallowHash()` with `Object.keys()` instead of `JSON.stringify()` - maintains reactive proxy connections |
+| **Definition Blob Perf**   | HIGH     | Caches element definitions once in `connectedCallback()`, depth-limited indexing (max 10), prevents mobile freeze     |
+| **Repeatable Block Index** | HIGH     | Filters `null` gaps from Edit Block arrays, preserves original indices in `changeUrl` for correct navigation          |
+| **Ghost Data**             | HIGH     | Cross-references `omniJsonData` against active step visibility (`bHidden`, `bShow`, `show` flags)                     |
+| **AODA Cognitive Group**   | MEDIUM   | Preserves Block structure with `subsections`, uses `<fieldset>` with `aria-label` for grouping                        |
+| **Label vs. Value**        | MEDIUM   | Supports `labelSchema` for option value lookup; fallback property paths (`label`, `caption`, `text`, `name`)          |
+| **Security Leakage**       | MEDIUM   | Comprehensive blocklist with O(1) lookup for internal/sensitive fields                                                |
+| **File Display**           | LOW      | Multiple filename fallback properties (`fileName`, `FileName`, `name`, `Name`, `Title`, `PathOnClient`)               |
+| **Edit Navigation**        | LOW      | Uses step NAME for navigation (not index), safer for conditional steps                                                |
+
+#### Architectural Risks Mitigated
+
+The component specifically addresses OmniScript "JSON Walker" architectural risks:
+
+1. **LWS Proxy Safety**: Avoids `JSON.stringify()` on `omniJsonData` which can strip LWS Proxy reactive connections and cause stale data issues when users return from editing.
+
+2. **Definition Blob Performance**: Does NOT traverse `omniScriptDef` (which can be megabytes). Uses only `omniScriptHeaderDef` with depth-limited caching to prevent mobile Long Task violations.
+
+3. **Edit Block Array Gaps**: When users add 5 items and delete items 2 and 4, the array becomes `[A, null, C, null, E]`. The component filters null gaps and preserves original indices for navigation.
+
+4. **WCAG 1.3.1 Compliance**: Nested structures (Edit Blocks, Blocks) are rendered as subsections with semantic `<fieldset>` elements, preserving the cognitive grouping users expect.
+
+5. **API Volatility**: Uses fallback property paths (`label || caption || text || name`) to handle Salesforce property name changes between releases.
+
+#### Field Mapping Example
+
+Map OmniScript field paths to user-friendly display labels:
+
+```json
+{
+  "PersonalInfo:firstName": "First Name",
+  "PersonalInfo:lastName": "Last Name",
+  "ContactInfo:email": "Email Address",
+  "SiteAddress:fullAddress": "Site Location"
+}
+```
+
+#### Label Schema Example
+
+Map raw option values to human-readable labels (solves "Label vs. Value" issue):
+
+```json
+{
+  "ShippingInfo:shippingMethod": {
+    "ovn_ship": "Overnight Shipping (+$20)",
+    "std_ship": "Standard Shipping (Free)",
+    "exp_ship": "Express Shipping (+$10)"
+  },
+  "PersonalInfo:maritalStatus": {
+    "single": "Single",
+    "married": "Married",
+    "divorced": "Divorced"
+  }
+}
+```
+
+#### OmniScript Designer Setup
+
+1. Add a new Step at the end of your OmniScript
+2. Add a Custom LWC element to the step
+3. Set the LWC Name to `sfGpsDsCaOnFormFormReview`
+4. Configure properties in the JSON Editor:
+
+```json
+{
+  "propSetMap": {
+    "propSetMap": {
+      "heading": "Review Your Application",
+      "subheading": "Please review all your answers before submitting.",
+      "submitLabel": "Submit Application",
+      "showSubmitWarning": true,
+      "excludeSteps": "ReviewStep,ConfirmationStep",
+      "excludeFields": "internalId,tempData",
+      "fieldMapping": "{\"PersonalInfo:fullName\": \"Full Name\", \"SiteInfo:address\": \"Site Address\"}"
+    }
+  }
+}
+```
+
+#### Auto-Generated Sections
+
+When `autoGenerate` is `true` (default), the component:
+
+1. Reads all steps from `omniJsonData`
+2. Creates a section for each step with fields
+3. Excludes internal OmniScript fields (`vlc*`, `_*`, `omni*`, etc.)
+4. Formats field names as display labels (camelCase → "Camel Case")
+5. Formats values (booleans → "Yes/No", dates → localized, arrays → comma-separated)
+
+#### Events
+
+| Event             | Detail               | Description                         |
+| ----------------- | -------------------- | ----------------------------------- |
+| `omnisave`        | -                    | Fired when submit is clicked        |
+| `omniautoadvance` | `{ moveToStep: n }`  | Fired when "Change" is clicked      |
+| `change`          | `{ changeUrl, ... }` | Fired when a change link is clicked |
+
+#### Usage in OmniScript
+
+The component automatically integrates with OmniScript:
+
+- **Submit**: Calls `dispatchOmniEventUtil(this, {}, 'omnisave')` to submit the OmniScript
+- **Cancel/Save for Later**: Calls `dispatchOmniEventUtil(this, { saveForLater: true }, 'omnisave')`
+- **Change Navigation**: Calls `dispatchOmniEventUtil(this, { moveToStep: index }, 'omniautoadvance')` to navigate back
+
+#### Accessibility (AODA)
+
+- Screen reader announcements via `aria-live` region
+- Keyboard-accessible change links
+- Proper heading hierarchy (h1 for page, h3 for sections)
+- Focus management on navigation
+
+---
+
 ### sfGpsDsCaOnFeatureCard
 
 A horizontal card with image, heading, and description for service navigation on home pages.

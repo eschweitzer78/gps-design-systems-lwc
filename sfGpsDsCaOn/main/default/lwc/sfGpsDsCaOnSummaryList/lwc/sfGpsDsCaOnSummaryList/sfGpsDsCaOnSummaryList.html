@@ -2,26 +2,40 @@
   <div class={computedClassName}>
     <div lwc:if={heading} class="ontario-summary-list-heading__container">
       <h3 class="ontario-summary-list__heading">{heading}</h3>
-      <div lwc:if={hasHeadingAction} class="ontario-summary-list-heading__buttons">
-        <a class="ontario-summary-list-change__button" href={headingActionUrl}>
+      <div
+        lwc:if={hasHeadingAction}
+        class="ontario-summary-list-heading__buttons"
+      >
+        <a
+          class="ontario-summary-list-change__button"
+          href={headingActionUrl}
+          onclick={handleHeadingActionClick}
+        >
           {headingActionLabel}
-          <span class="ontario-show-for-sr">your answer for: <q>{heading}</q></span>
+          <span class="ontario-show-for-sr"
+            >your answer for: <q>{heading}</q></span
+          >
         </a>
       </div>
     </div>
     <dl class={computedContainerClassName}>
       <template for:each={computedItems} for:item="item">
         <div key={item.id} class={computedRowClassName}>
-          <dt class="ontario-summary-list__key">
-            {item.key}
-          </dt>
-          <dd class="ontario-summary-list__value">
-            {item.value}
-          </dd>
-          <dd lwc:if={item.hasAction} class="ontario-summary-list-button__container">
-            <a class="ontario-summary-list-change__button" href={item.changeUrl}>
+          <dt class="ontario-summary-list__key">{item.key}</dt>
+          <dd class="ontario-summary-list__value">{item.value}</dd>
+          <dd
+            lwc:if={item.hasAction}
+            class="ontario-summary-list-button__container"
+          >
+            <a
+              class="ontario-summary-list-change__button"
+              href={item.changeUrl}
+              data-change-url={item.changeUrl}
+              data-item-key={item.key}
+              aria-label={item.computedAriaLabel}
+              onclick={handleItemActionClick}
+            >
               {item.changeLabel}
-              <span class="ontario-show-for-sr">your answer for: <q>{item.key}</q></span>
             </a>
           </dd>
         </div>

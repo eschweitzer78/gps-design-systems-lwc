@@ -20,6 +20,8 @@ export interface SummaryListItem {
   value: string;
   changeUrl?: string;
   changeLabel?: string;
+  /** Custom ARIA label for the change button (improves screen reader experience) */
+  ariaLabel?: string;
 }
 
 export default class SfGpsDsCaOnSummaryList extends SfGpsDsLwc {
@@ -65,7 +67,7 @@ export default class SfGpsDsCaOnSummaryList extends SfGpsDsLwc {
 
   /* getters */
 
-  get computedItems(): Array<SummaryListItem & { id: string; hasAction: boolean }> {
+  get computedItems(): Array<SummaryListItem & { id: string; hasAction: boolean; computedAriaLabel: string }> {
     if (!this.items) return [];
 
     let parsedItems: SummaryListItem[];
@@ -82,7 +84,9 @@ export default class SfGpsDsCaOnSummaryList extends SfGpsDsLwc {
     return parsedItems.map((item, index) => ({
       ...item,
       id: `summary-item-${index}`,
-      hasAction: Boolean(item.changeUrl)
+      hasAction: Boolean(item.changeUrl),
+      // AODA: Generate descriptive ARIA label if not provided
+      computedAriaLabel: item.ariaLabel || `${item.changeLabel || 'Change'} your answer for ${item.key}`
     }));
   }
 
@@ -115,6 +119,58 @@ export default class SfGpsDsCaOnSummaryList extends SfGpsDsLwc {
       classes.push("compact");
     }
     return classes.join(" ");
+  }
+
+  /* event handlers */
+
+  /**
+   * Handle heading action click - dispatch event for parent to handle
+   * @param event - Click event
+   */
+  handleHeadingActionClick(event: Event): void {
+    // Dispatch change event with heading action URL
+    const changeEvent = new CustomEvent("change", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        type: "heading",
+        changeUrl: this.headingActionUrl,
+        heading: this.heading
+      }
+    });
+    this.dispatchEvent(changeEvent);
+
+    // If the event was prevented, stop the default navigation
+    if (changeEvent.defaultPrevented) {
+      event.preventDefault();
+    }
+  }
+
+  /**
+   * Handle item action click - dispatch event for parent to handle
+   * @param event - Click event
+   */
+  handleItemActionClick(event: Event): void {
+    const target = event.currentTarget as HTMLElement;
+    const changeUrl = target.getAttribute("data-change-url");
+    const itemKey = target.getAttribute("data-item-key");
+
+    // Dispatch change event with item details
+    const changeEvent = new CustomEvent("change", {
+      bubbles: true,
+      composed: true,
+      detail: {
+        type: "item",
+        changeUrl: changeUrl,
+        itemKey: itemKey
+      }
+    });
+    this.dispatchEvent(changeEvent);
+
+    // If the event was prevented, stop the default navigation
+    if (changeEvent.defaultPrevented) {
+      event.preventDefault();
+    }
   }
 
   /* lifecycle */

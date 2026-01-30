@@ -1,0 +1,107 @@
+<!--
+  OmniStudio Form Review Component
+  
+  Displays collected OmniScript answers in Summary List format for user review.
+  Auto-generates sections from omniJsonData or accepts manual configuration.
+  
+  Accessibility:
+  - aria-live region for status announcements
+  - Proper heading hierarchy
+  - Keyboard accessible change links
+-->
+<template>
+  <div class="ontario-form-review sfgpsdscaon-form-review">
+    <!-- Screen reader status announcements -->
+    <div
+      class="ontario-show-for-sr"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {_statusMessage}
+    </div>
+
+    <!-- Page heading -->
+    <h1 class="ontario-h1">{heading}</h1>
+
+    <!-- Instructions -->
+    <p class="ontario-lead">{subheading}</p>
+
+    <!-- Sections -->
+    <template if:true={hasSections}>
+      <template for:each={sections} for:item="section">
+        <div key={section.heading} class="ontario-form-review__section">
+          <!-- Main section -->
+          <c-sf-gps-ds-ca-on-summary-list
+            heading={section.heading}
+            heading-action-label={section.headingActionLabel}
+            heading-action-url={section.headingActionUrl}
+            items={section.items}
+            ratio={section.ratio}
+            onchange={handleChangeClick}
+          ></c-sf-gps-ds-ca-on-summary-list>
+
+          <!-- AODA: Subsections for cognitive grouping (Edit Blocks, nested structures) -->
+          <template if:true={section.subsections}>
+            <template for:each={section.subsections} for:item="subsection">
+              <fieldset
+                key={subsection.heading}
+                class="ontario-form-review__subsection"
+                aria-label={subsection.heading}
+              >
+                <c-sf-gps-ds-ca-on-summary-list
+                  heading={subsection.heading}
+                  heading-action-label={subsection.headingActionLabel}
+                  heading-action-url={subsection.headingActionUrl}
+                  items={subsection.items}
+                  ratio={subsection.ratio}
+                  compact="true"
+                  onchange={handleChangeClick}
+                ></c-sf-gps-ds-ca-on-summary-list>
+              </fieldset>
+            </template>
+          </template>
+        </div>
+      </template>
+    </template>
+
+    <!-- No sections message -->
+    <template if:false={hasSections}>
+      <div class="ontario-callout">
+        <p>No answers to review. Please complete the previous steps first.</p>
+      </div>
+    </template>
+
+    <!-- Submit warning -->
+    <template if:true={showSubmitWarning}>
+      <div class="ontario-form-review__warning" role="alert">
+        <c-sf-gps-ds-ca-on-callout type="warning" heading="Important">
+          {submitWarningMessage}
+        </c-sf-gps-ds-ca-on-callout>
+      </div>
+    </template>
+
+    <!-- Actions -->
+    <div
+      class="ontario-form-review__actions"
+      role="group"
+      aria-label="Form actions"
+    >
+      <button
+        type="button"
+        class="ontario-button ontario-button--primary"
+        onclick={handleSubmit}
+      >
+        {submitLabel}
+      </button>
+
+      <button
+        type="button"
+        class="ontario-button ontario-button--tertiary"
+        onclick={handleCancel}
+      >
+        {cancelLabel}
+      </button>
+    </div>
+  </div>
+</template>

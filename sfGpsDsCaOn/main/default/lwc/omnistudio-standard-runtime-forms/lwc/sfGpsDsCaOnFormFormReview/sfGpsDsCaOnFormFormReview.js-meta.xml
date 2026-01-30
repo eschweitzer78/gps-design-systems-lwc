@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>62.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario Form Review (OmniScript)</masterLabel>
+  <description
+  >OmniStudio Form Review component that displays collected answers for user review. Auto-generates Summary List sections from OmniScript data. Configure properties via OmniScript Designer JSON Editor.</description>
+  <targets>
+    <target>lightning__FlowScreen</target>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+</LightningComponentBundle>
