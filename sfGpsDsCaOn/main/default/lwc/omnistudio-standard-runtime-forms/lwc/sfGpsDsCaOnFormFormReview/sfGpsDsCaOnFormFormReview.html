@@ -103,5 +103,14 @@
         {cancelLabel}
       </button>
     </div>
+
+    <!-- Diagnostic Panel (Admin/Debug only) -->
+    <template lwc:if={debugPanel}>
+      <c-sf-gps-ds-ca-on-form-form-review-diagnostics
+        diagnostic-data={diagnostics}
+        onclearlogs={handleClearLogs}
+        onclose={handleCloseDebugPanel}
+      ></c-sf-gps-ds-ca-on-form-form-review-diagnostics>
+    </template>
   </div>
 </template>

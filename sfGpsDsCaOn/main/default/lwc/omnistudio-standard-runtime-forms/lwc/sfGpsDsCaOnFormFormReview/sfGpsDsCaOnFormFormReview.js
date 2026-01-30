@@ -7,6 +7,15 @@
 
 import { api, LightningElement, track } from "lwc";
 import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
+import {
+  FormReviewLogger,
+  LOG_EVENTS
+} from "./sfGpsDsCaOnFormFormReviewLogger";
+import {
+  FormReviewSchemaValidator,
+  LABEL_PROPERTY_PATHS,
+  FILENAME_PROPERTY_PATHS
+} from "./sfGpsDsCaOnFormFormReviewSchema";
 
 /**
  * Maximum recursion depth for nested object extraction
@@ -150,6 +159,9 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
   /** @type {string} Status message for screen readers */
   @track _statusMessage = "";
 
+  /** @type {Object} Diagnostic data for debug panel */
+  @track _diagnosticData = null;
+
   /** @type {boolean} Whether component has been initialized */
   _initialized = false;
 
@@ -167,6 +179,18 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
 
   /** @type {boolean} Whether element definitions have been indexed */
   _definitionsIndexed = false;
+
+  /** @type {FormReviewLogger} Logger instance */
+  _logger = new FormReviewLogger();
+
+  /** @type {FormReviewSchemaValidator} Schema validator instance */
+  _schemaValidator = new FormReviewSchemaValidator();
+
+  /** @type {Object} Schema validation result */
+  _schemaValidationResult = null;
+
+  /** @type {string} Detected OmniStudio version */
+  _detectedVersion = "unknown";
 
   /* ========================================
    * COMPUTED PROPERTIES - CONFIGURATION
@@ -352,6 +376,66 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
     } catch {
       return null;
     }
+  }
+
+  /* ========================================
+   * OBSERVABILITY PROPERTIES
+   * ======================================== */
+
+  /**
+   * Whether debug mode is enabled
+   * Set via JSON Editor: debugMode: true
+   * @returns {boolean}
+   */
+  get debugMode() {
+    return Boolean(
+      this._customPropSetMap?.debugMode || this._propSetMap?.debugMode
+    );
+  }
+
+  /**
+   * Whether debug panel should be shown
+   * Set via JSON Editor: debugPanel: true
+   * @returns {boolean}
+   */
+  get debugPanel() {
+    // Also check URL parameter
+    const urlParams = new URLSearchParams(window?.location?.search || "");
+    const urlDebug = urlParams.get("formReviewDebug") === "true";
+    return Boolean(
+      this._customPropSetMap?.debugPanel ||
+      this._propSetMap?.debugPanel ||
+      urlDebug
+    );
+  }
+
+  /**
+   * Log level setting
+   * @returns {string}
+   */
+  get logLevel() {
+    return (
+      this._customPropSetMap?.logLevel || this._propSetMap?.logLevel || "warn"
+    );
+  }
+
+  /**
+   * Whether strict mode is enabled (throw errors instead of fallbacks)
+   * @returns {boolean}
+   */
+  get strictMode() {
+    return Boolean(
+      this._customPropSetMap?.strictMode || this._propSetMap?.strictMode
+    );
+  }
+
+  /**
+   * Get diagnostic data for debug panel
+   * @returns {Object|null}
+   */
+  get diagnostics() {
+    if (!this.debugPanel) return null;
+    return this._diagnosticData;
   }
 
   /* ========================================
@@ -578,26 +662,32 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
    * ======================================== */
 
   /**
-   * Get display label from element definition
+   * Get display label from element definition with fallback chain and audit logging
    * Risk 2 Fix: Use fallback property paths (label || caption || text || name)
    * @param {Object} def - Element definition
+   * @param {string} elementPath - Element path for logging
    * @returns {string|null}
    * @private
    */
-  getElementLabel(def) {
+  getElementLabel(def, elementPath = "") {
     if (!def) return null;
-    const propSetMap = def.propSetMap || {};
 
-    // Fallback property paths - Salesforce may change these between releases
-    return (
-      propSetMap.label ||
-      propSetMap.caption ||
-      propSetMap.text ||
-      propSetMap.title ||
-      def.label ||
-      def.name ||
-      null
+    // Use schema validator's fallback chain
+    const result = this._schemaValidator.getPropertyWithFallback(
+      def,
+      LABEL_PROPERTY_PATHS,
+      (primary, fallback) => {
+        this._logger.logFallback(
+          "label",
+          primary,
+          fallback,
+          elementPath,
+          "Consider adding explicit label in labelSchema configuration"
+        );
+      }
     );
+
+    return result.value || null;
   }
 
   /**
@@ -664,6 +754,11 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
     // Risk 1 Fix: Use shallow hash instead of JSON.stringify (LWS proxy-safe)
     const dataHash = this.computeShallowHash(this.omniJsonData);
     if (dataHash === this._lastDataHash) {
+      this._logger.debug(
+        LOG_EVENTS.REGENERATION_SKIPPED,
+        "Data unchanged, skipping regeneration",
+        {}
+      );
       return; // No change, skip regeneration
     }
     this._lastDataHash = dataHash;
@@ -677,25 +772,52 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
     const sections = [];
     const stepDefs = this.getStepDefinitions();
 
+    this._logger.debug(
+      LOG_EVENTS.STEP_PROCESSED,
+      `Processing ${Object.keys(this.omniJsonData).length} data keys`,
+      { stepCount: Object.keys(this.omniJsonData).length }
+    );
+
     // Process each step
     for (const [stepName, stepData] of Object.entries(this.omniJsonData)) {
       // Skip excluded steps
-      if (this.excludeSteps.has(stepName)) continue;
+      if (this.excludeSteps.has(stepName)) {
+        this._logger.debug(
+          LOG_EVENTS.STEP_SKIPPED,
+          `Step excluded by configuration: ${stepName}`,
+          { stepName, reason: "excludeSteps" }
+        );
+        continue;
+      }
 
       // Skip internal OmniScript fields
-      if (this.isInternalField(stepName)) continue;
+      if (this.isInternalField(stepName)) {
+        this._logger.debug(
+          LOG_EVENTS.STEP_SKIPPED,
+          `Internal field skipped: ${stepName}`,
+          { stepName, reason: "internal" }
+        );
+        continue;
+      }
 
       // Skip non-object values (primitive step data is unusual)
       if (!stepData || typeof stepData !== "object") continue;
 
       // GHOST DATA CHECK: Skip steps that are not active/visible
-      if (!this.isStepDataActive(stepName)) continue;
+      if (!this.isStepDataActive(stepName)) {
+        this._logger.info(
+          LOG_EVENTS.STEP_SKIPPED,
+          `Ghost data detected: ${stepName} (step not active)`,
+          { stepName, reason: "ghostData" }
+        );
+        continue;
+      }
 
       // Get step label from definitions or format step name
       const stepDef = stepDefs[stepName];
       // Risk 2 Fix: Use fallback property paths
       const stepLabel =
-        this.getElementLabel(stepDef) || this.formatLabel(stepName);
+        this.getElementLabel(stepDef, stepName) || this.formatLabel(stepName);
 
       // Risk 4 Fix: Extract fields preserving Block structure
       const { items, subsections } = this.extractFieldsWithStructure(
@@ -714,10 +836,37 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
           subsections: subsections,
           ratio: "1-2"
         });
+
+        this._logger.incrementSectionsGenerated();
+        this._logger.debug(
+          LOG_EVENTS.STEP_PROCESSED,
+          `Section created: ${stepLabel}`,
+          {
+            stepName,
+            itemCount: items.length,
+            subsectionCount: subsections.length
+          }
+        );
       }
     }
 
     this._generatedSections = sections;
+
+    // Update diagnostics after regeneration
+    this._updateDiagnosticData();
+
+    this._logger.info(
+      LOG_EVENTS.STEP_PROCESSED,
+      `Render complete: ${sections.length} sections`,
+      {
+        sectionCount: sections.length,
+        totalItems: sections.reduce((sum, s) => sum + s.items.length, 0),
+        totalSubsections: sections.reduce(
+          (sum, s) => sum + (s.subsections?.length || 0),
+          0
+        )
+      }
+    );
   }
 
   /**
@@ -759,8 +908,10 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
   extractFieldsWithStructure(stepName, stepData, depth = 0) {
     // PERFORMANCE: Prevent deep recursion that causes mobile freezes
     if (depth >= MAX_RECURSION_DEPTH) {
-      console.warn(
-        `FormReview: Max recursion depth (${MAX_RECURSION_DEPTH}) reached at ${stepName}`
+      this._logger.warn(
+        LOG_EVENTS.DEPTH_LIMIT_REACHED,
+        `Max recursion depth (${MAX_RECURSION_DEPTH}) reached at ${stepName}`,
+        { stepName, depth: MAX_RECURSION_DEPTH }
       );
       return { items: [], subsections: [] };
     }
@@ -796,6 +947,12 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
           fieldValue[0] !== null
         ) {
           // This is likely an Edit Block - create subsection
+          this._logger.info(
+            LOG_EVENTS.EDIT_BLOCK_DETECTED,
+            `Edit Block detected: ${fieldPath}`,
+            { fieldPath, itemCount: fieldValue.length }
+          );
+
           const editBlockItems = this.extractEditBlockItems(
             fieldPath,
             fieldValue
@@ -803,7 +960,8 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
           if (editBlockItems.length > 0) {
             const blockDef = this._elementDefsByPath.get(fieldPath);
             const blockLabel =
-              this.getElementLabel(blockDef) || this.formatLabel(fieldName);
+              this.getElementLabel(blockDef, fieldPath) ||
+              this.formatLabel(fieldName);
             subsections.push({
               heading: blockLabel,
               headingActionLabel: "Change",
@@ -811,6 +969,12 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
               items: editBlockItems,
               ratio: "1-2"
             });
+
+            this._logger.debug(
+              LOG_EVENTS.SUBSECTION_CREATED,
+              `Subsection created: ${blockLabel}`,
+              { fieldPath, itemCount: editBlockItems.length }
+            );
           }
           continue;
         }
@@ -846,7 +1010,8 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
           if (blockItems.length > 0 || nestedSubs.length > 0) {
             const blockDef = this._elementDefsByPath.get(fieldPath);
             const blockLabel =
-              this.getElementLabel(blockDef) || this.formatLabel(fieldName);
+              this.getElementLabel(blockDef, fieldPath) ||
+              this.formatLabel(fieldName);
             subsections.push({
               heading: blockLabel,
               headingActionLabel: "Change",
@@ -855,6 +1020,16 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
               subsections: nestedSubs,
               ratio: "1-2"
             });
+
+            this._logger.debug(
+              LOG_EVENTS.SUBSECTION_CREATED,
+              `Block subsection created: ${blockLabel}`,
+              {
+                fieldPath,
+                itemCount: blockItems.length,
+                nestedSubsections: nestedSubs.length
+              }
+            );
           }
           continue;
         }
@@ -887,6 +1062,13 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
         // Enhanced ARIA label for screen readers
         ariaLabel: `Change your answer for ${displayLabel}`
       });
+
+      this._logger.incrementFieldsProcessed();
+      this._logger.debug(
+        LOG_EVENTS.FIELD_EXTRACTED,
+        `Field extracted: ${displayLabel}`,
+        { fieldPath, hasValue: Boolean(displayValue) }
+      );
     }
 
     return { items, subsections };
@@ -905,7 +1087,10 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
     // Filter out null gaps and track original indices
     arrayData.forEach((item, originalIndex) => {
       // Risk 3 Fix: Skip null/undefined gaps from deleted items
-      if (item === null || item === undefined) return;
+      if (item === null || item === undefined) {
+        this._logger.logNullGapFiltered(fieldPath, originalIndex);
+        return;
+      }
 
       if (typeof item === "object") {
         // For each field in the Edit Block row
@@ -1058,22 +1243,26 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
       return `${value.name} (${sizeKB} KB)`;
     }
 
-    // ContentVersion reference - Risk 5 Fix: Multiple filename fallbacks
+    // ContentVersion reference - Risk 5 Fix: Multiple filename fallbacks with audit
     if (
       typeof value === "object" &&
       (value.ContentVersionId || value.ContentDocumentId)
     ) {
-      // Try multiple properties where filename might be stored
-      const fileName =
-        value.fileName ||
-        value.FileName ||
-        value.name ||
-        value.Name ||
-        value.Title ||
-        value.title ||
-        value.PathOnClient ||
-        "Uploaded file";
-      return fileName;
+      // Use fallback chain with logging
+      const result = this._schemaValidator.getPropertyWithFallback(
+        value,
+        FILENAME_PROPERTY_PATHS,
+        (primary, fallback) => {
+          this._logger.logFallback(
+            "fileName",
+            primary,
+            fallback,
+            fieldPath,
+            "File upload may need explicit fileName property"
+          );
+        }
+      );
+      return result.value || "Uploaded file";
     }
 
     // String value - check for label lookup
@@ -1213,20 +1402,35 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
    * @private
    */
   navigateToStepByName(stepName) {
+    this._logger.debug(
+      LOG_EVENTS.NAVIGATION_REQUESTED,
+      `Navigation requested to step: ${stepName}`,
+      { stepName }
+    );
+
     const stepDefs = this.getStepDefinitions();
     const stepDef = stepDefs[stepName];
 
     if (stepDef) {
       // Risk 2 Fix: Use fallback property paths
-      const stepLabel = this.getElementLabel(stepDef) || stepName;
+      const stepLabel = this.getElementLabel(stepDef, stepName) || stepName;
       this.announceStatus(`Navigating to ${stepLabel}...`);
 
       // Navigate using the step's index
       if (stepDef.indexInParent !== undefined) {
+        this._logger.info(
+          LOG_EVENTS.NAVIGATION_RESOLVED,
+          `Navigating to step index ${stepDef.indexInParent}`,
+          { stepName, stepIndex: stepDef.indexInParent, stepLabel }
+        );
         this.navigateToStep(stepDef.indexInParent);
       }
     } else {
-      console.warn(`FormReview: Step "${stepName}" not found in definitions`);
+      this._logger.warn(
+        LOG_EVENTS.NAVIGATION_REQUESTED,
+        `Step "${stepName}" not found in definitions`,
+        { stepName, availableSteps: Object.keys(stepDefs) }
+      );
     }
   }
 
@@ -1264,6 +1468,23 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
     setTimeout(() => {
       this._statusMessage = message;
     }, 100);
+  }
+
+  /**
+   * Handle clear logs from diagnostic panel
+   */
+  handleClearLogs() {
+    this._logger.clearHistory();
+    this._updateDiagnosticData();
+  }
+
+  /**
+   * Handle close debug panel
+   * Note: This just hides the panel for this session; to permanently disable,
+   * remove debugPanel from configuration
+   */
+  handleCloseDebugPanel() {
+    this._diagnosticData = null;
   }
 
   /* ========================================
@@ -1305,12 +1526,35 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
   connectedCallback() {
     this.classList.add("caon-scope");
 
+    // Configure logger
+    this._logger.configure({
+      debugMode: this.debugMode,
+      logLevel: this.logLevel
+    });
+
+    this._logger.info(LOG_EVENTS.INIT_START, "FormReview initializing", {
+      debugMode: this.debugMode,
+      debugPanel: this.debugPanel,
+      autoGenerate: this.autoGenerate
+    });
+
+    // Run schema validation
+    this._runSchemaValidation();
+
     // Risk 2 Fix: Index definitions once at startup
     this.indexElementDefinitionsOnce();
 
     // Generate sections on initial load
     this.generateSectionsFromOmniData();
     this._initialized = true;
+
+    // Update diagnostic data
+    this._updateDiagnosticData();
+
+    this._logger.info(LOG_EVENTS.INIT_COMPLETE, "FormReview initialized", {
+      sectionsGenerated: this._generatedSections.length,
+      detectedVersion: this._detectedVersion
+    });
   }
 
   renderedCallback() {
@@ -1325,5 +1569,179 @@ export default class SfGpsDsCaOnFormFormReview extends OmniscriptBaseMixin(
     if (this._regenerateTimer) {
       clearTimeout(this._regenerateTimer);
     }
+  }
+
+  /* ========================================
+   * OBSERVABILITY METHODS
+   * ======================================== */
+
+  /**
+   * Run schema validation on OmniScript data structures
+   * @private
+   */
+  _runSchemaValidation() {
+    // Validate omniJsonData
+    const dataResult = this._schemaValidator.validateOmniJsonData(
+      this.omniJsonData
+    );
+
+    // Validate header definition
+    const headerResult = this._schemaValidator.validateHeaderDef(
+      this.omniScriptHeaderDef
+    );
+
+    // Combine results
+    this._schemaValidationResult = {
+      isValid: dataResult.isValid && headerResult.isValid,
+      warnings: [...dataResult.warnings, ...headerResult.warnings],
+      errors: [...dataResult.errors, ...headerResult.errors],
+      detectedVersion: headerResult.detectedVersion
+    };
+
+    this._detectedVersion = headerResult.detectedVersion;
+
+    // Log validation results
+    if (this._schemaValidationResult.isValid) {
+      this._logger.info(
+        LOG_EVENTS.SCHEMA_VALIDATE,
+        `Schema validation passed (${this._schemaValidationResult.warnings.length} warnings)`,
+        {
+          version: this._detectedVersion,
+          warningCount: this._schemaValidationResult.warnings.length
+        }
+      );
+    } else {
+      this._logger.error(LOG_EVENTS.SCHEMA_ERROR, "Schema validation failed", {
+        errors: this._schemaValidationResult.errors
+      });
+    }
+
+    // Log warnings
+    for (const warning of this._schemaValidationResult.warnings) {
+      this._logger.warn(
+        LOG_EVENTS.SCHEMA_WARNING,
+        warning.message,
+        warning.context
+      );
+    }
+
+    // Version detection logging
+    if (this._detectedVersion !== "unknown") {
+      this._logger.info(
+        LOG_EVENTS.VERSION_DETECTED,
+        `OmniStudio version detected: ${this._detectedVersion}`,
+        { version: this._detectedVersion }
+      );
+    } else {
+      this._logger.warn(
+        LOG_EVENTS.VERSION_UNKNOWN,
+        "Could not detect OmniStudio version - using fallback mode",
+        {}
+      );
+    }
+  }
+
+  /**
+   * Update diagnostic data for debug panel
+   * @private
+   */
+  _updateDiagnosticData() {
+    if (!this.debugPanel) return;
+
+    const logSummary = this._logger.getSummary();
+
+    this._diagnosticData = {
+      version: this._detectedVersion,
+      schemaStatus: this._schemaValidationResult?.isValid ? "Valid" : "Invalid",
+      warnings: this._schemaValidationResult?.warnings || [],
+      errors: this._schemaValidationResult?.errors || [],
+      stats: logSummary.stats,
+      dataStructure: this._buildDataStructureSummary(),
+      recentLogs: logSummary.recentLogs,
+      fallbacksUsed: logSummary.stats.fallbacksUsed
+    };
+  }
+
+  /**
+   * Build a summary of the data structure for diagnostic display
+   * @returns {Array}
+   * @private
+   */
+  _buildDataStructureSummary() {
+    if (!this.omniJsonData) return [];
+
+    const summary = [];
+
+    try {
+      for (const [stepName, stepData] of Object.entries(this.omniJsonData)) {
+        if (this.isInternalField(stepName)) continue;
+
+        const fieldCount =
+          stepData && typeof stepData === "object"
+            ? Object.keys(stepData).filter((k) => !this.isInternalField(k))
+                .length
+            : 0;
+
+        const isActive = this.isStepDataActive(stepName);
+
+        // Count null gaps in arrays
+        let nullGaps = 0;
+        if (stepData && typeof stepData === "object") {
+          for (const value of Object.values(stepData)) {
+            if (Array.isArray(value)) {
+              nullGaps += value.filter((v) => v === null).length;
+            }
+          }
+        }
+
+        summary.push({
+          name: stepName,
+          fieldCount,
+          isActive,
+          nullGaps,
+          hasSubsections:
+            this._generatedSections.find(
+              (s) =>
+                s.heading === stepName || s.headingActionUrl?.includes(stepName)
+            )?.subsections?.length > 0
+        });
+      }
+    } catch (e) {
+      this._logger.error(
+        LOG_EVENTS.SCHEMA_ERROR,
+        "Failed to build data structure summary",
+        { error: e.message }
+      );
+    }
+
+    return summary;
+  }
+
+  /**
+   * Get diagnostic summary for external access
+   * @returns {Object}
+   */
+  @api
+  getDiagnostics() {
+    this._updateDiagnosticData();
+    return this._diagnosticData;
+  }
+
+  /**
+   * Get logger instance for external access
+   * @returns {FormReviewLogger}
+   */
+  @api
+  getLogger() {
+    return this._logger;
+  }
+
+  /**
+   * Clear log history
+   */
+  @api
+  clearLogs() {
+    this._logger.clearHistory();
+    this._updateDiagnosticData();
   }
 }

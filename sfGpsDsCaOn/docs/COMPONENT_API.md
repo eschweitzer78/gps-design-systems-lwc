@@ -999,6 +999,97 @@ The component automatically integrates with OmniScript:
 - Proper heading hierarchy (h1 for page, h3 for sections)
 - Focus management on navigation
 
+#### Debug Mode and Observability
+
+The component includes comprehensive debugging and troubleshooting capabilities.
+
+##### Debug Configuration
+
+| Property     | Type    | Default  | Description                                 |
+| ------------ | ------- | -------- | ------------------------------------------- |
+| `debugMode`  | Boolean | `false`  | Enable verbose console logging              |
+| `debugPanel` | Boolean | `false`  | Show visual diagnostic panel                |
+| `logLevel`   | String  | `"warn"` | Log level: `error`, `warn`, `info`, `debug` |
+| `strictMode` | Boolean | `false`  | Throw errors instead of using fallbacks     |
+
+##### Enabling Debug Mode
+
+**Method 1: Configuration Properties**
+
+```json
+{
+  "propSetMap": {
+    "propSetMap": {
+      "debugMode": true,
+      "debugPanel": true,
+      "logLevel": "debug"
+    }
+  }
+}
+```
+
+**Method 2: URL Parameter**
+
+Add `?formReviewDebug=true` to the page URL to enable the diagnostic panel without changing configuration.
+
+##### Diagnostic Panel
+
+When `debugPanel` is enabled, a visual diagnostic panel appears showing:
+
+- **Version Detection**: Detected OmniStudio version signature
+- **Schema Status**: Validation results (Valid/Invalid)
+- **Warnings**: List of warnings with codes and context
+- **Statistics**: Sections generated, fields processed, null gaps filtered
+- **Data Structure**: Step-by-step breakdown with ghost data detection
+- **Recent Logs**: Last 10 log entries with expandable context
+
+##### Console Logging
+
+When `debugMode` is enabled, structured log entries appear in the browser console:
+
+```
+[FormReview] INFO: Initializing with 4 steps detected
+[FormReview] DEBUG: Schema validation passed (2 warnings)
+[FormReview] WARN: propSetMap.label not found for Step1, using caption fallback
+[FormReview] INFO: Render complete: 4 sections, 12 items, 1 subsection
+```
+
+##### Key Log Events
+
+| Event                    | Description                                  |
+| ------------------------ | -------------------------------------------- |
+| `INIT_START/COMPLETE`    | Component initialization lifecycle           |
+| `SCHEMA_VALIDATE`        | Schema validation result                     |
+| `VERSION_DETECTED`       | OmniStudio version fingerprint               |
+| `STEP_PROCESSED/SKIPPED` | Step processing or filtering                 |
+| `FALLBACK_USED`          | Primary property path failed, using fallback |
+| `EDIT_BLOCK_DETECTED`    | Repeatable Edit Block found                  |
+| `NULL_GAP_FILTERED`      | Null array item filtered                     |
+| `NAVIGATION_RESOLVED`    | Navigation target calculated                 |
+
+##### Programmatic Access
+
+```javascript
+// Get diagnostic data
+const diagnostics = component.getDiagnostics();
+
+// Get logger instance
+const logger = component.getLogger();
+
+// Clear log history
+component.clearLogs();
+```
+
+##### Troubleshooting Guide
+
+See [FORMREVIEW_TROUBLESHOOTING_GUIDE.md](./FORMREVIEW_TROUBLESHOOTING_GUIDE.md) for comprehensive troubleshooting documentation including:
+
+- Common issues and solutions
+- Debug panel usage
+- Schema compatibility across OmniStudio versions
+- Performance optimization
+- Self-healing mechanisms
+
 ---
 
 ### sfGpsDsCaOnFeatureCard

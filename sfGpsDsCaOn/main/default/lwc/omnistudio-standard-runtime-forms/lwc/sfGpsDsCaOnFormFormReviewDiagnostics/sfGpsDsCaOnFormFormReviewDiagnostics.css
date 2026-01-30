@@ -1,0 +1,408 @@
+/*
+ * Copyright (c) 2026, Shannon Schupbach, Jeremy Blankenship and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ */
+
+/**
+ * FormReview Diagnostic Panel Styles
+ * Debug/admin panel for troubleshooting FormReview component issues
+ */
+
+.ontario-form-review-diagnostics {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  max-width: 32rem;
+  max-height: 80vh;
+  background-color: #1a1a2e;
+  color: #e0e0e0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+  font-size: 0.75rem;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Header */
+.diagnostics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: #16213e;
+  border-bottom: 1px solid #0f3460;
+}
+
+.diagnostics-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.diagnostics-toggle:hover {
+  color: #ffffff;
+}
+
+.toggle-icon {
+  font-size: 0.625rem;
+}
+
+.diagnostics-title {
+  color: #00d9ff;
+}
+
+.diagnostics-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.diagnostics-action-btn {
+  background-color: #0f3460;
+  border: 1px solid #1a4a7a;
+  border-radius: 0.25rem;
+  color: #e0e0e0;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.6875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.diagnostics-action-btn:hover {
+  background-color: #1a4a7a;
+}
+
+.diagnostics-action-btn:focus-visible {
+  outline: 2px solid #00d9ff;
+  outline-offset: 2px;
+}
+
+/* Content */
+.diagnostics-content {
+  padding: 0.75rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Status Bar */
+.diagnostics-status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.5rem;
+  background-color: #0f3460;
+  border-radius: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.status-item {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.status-label {
+  color: #808080;
+}
+
+.status-value {
+  color: #e0e0e0;
+}
+
+.status-valid {
+  color: #00ff88;
+  font-weight: 600;
+}
+
+.status-invalid {
+  color: #ff4444;
+  font-weight: 600;
+}
+
+.status-unknown {
+  color: #ffaa00;
+}
+
+/* Statistics */
+.diagnostics-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.5rem;
+  background-color: rgba(0, 217, 255, 0.1);
+  border-radius: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.stat-item {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.stat-label {
+  color: #808080;
+}
+
+.stat-value {
+  color: #00d9ff;
+  font-weight: 600;
+}
+
+/* Sections */
+.diagnostics-section {
+  margin-bottom: 0.5rem;
+  border: 1px solid #0f3460;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.diagnostics-section--errors {
+  border-color: #ff4444;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #16213e;
+  border: none;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-size: 0.75rem;
+  text-align: left;
+}
+
+.section-header:hover {
+  background-color: #1a2a4a;
+}
+
+.section-header--errors {
+  background-color: rgba(255, 68, 68, 0.2);
+  cursor: default;
+}
+
+.section-icon {
+  font-size: 0.5rem;
+}
+
+.section-title {
+  font-weight: 600;
+}
+
+.section-content {
+  padding: 0.5rem;
+  background-color: #1a1a2e;
+}
+
+/* Lists */
+.warning-list,
+.error-list,
+.structure-list,
+.log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.warning-item,
+.error-item,
+.structure-item,
+.log-item {
+  padding: 0.375rem 0;
+  border-bottom: 1px solid #0f3460;
+  line-height: 1.4;
+}
+
+.warning-item:last-child,
+.error-item:last-child,
+.structure-item:last-child,
+.log-item:last-child {
+  border-bottom: none;
+}
+
+/* Warning/Error styles */
+.warning-code,
+.error-code {
+  color: #ffaa00;
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+.error-code {
+  color: #ff4444;
+}
+
+.warning-message,
+.error-message {
+  color: #e0e0e0;
+}
+
+.warning-context,
+.error-context,
+.log-context {
+  margin: 0.25rem 0 0 0;
+  padding: 0.25rem;
+  background-color: #0f0f1a;
+  border-radius: 0.25rem;
+  font-size: 0.625rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Structure list */
+.step-active {
+  color: #00ff88;
+  font-size: 0.625rem;
+  padding: 0.125rem 0.25rem;
+  background-color: rgba(0, 255, 136, 0.2);
+  border-radius: 0.125rem;
+  margin-right: 0.5rem;
+}
+
+.step-inactive {
+  color: #ff8800;
+  font-size: 0.625rem;
+  padding: 0.125rem 0.25rem;
+  background-color: rgba(255, 136, 0, 0.2);
+  border-radius: 0.125rem;
+  margin-right: 0.5rem;
+}
+
+.step-name {
+  font-weight: 600;
+  color: #e0e0e0;
+}
+
+.step-info {
+  color: #808080;
+  font-size: 0.6875rem;
+}
+
+/* Log styles */
+.log-DEBUG {
+  color: #808080;
+}
+
+.log-INFO,
+.log-info {
+  color: #00d9ff;
+}
+
+.log-WARN,
+.log-warn {
+  color: #ffaa00;
+}
+
+.log-ERROR,
+.log-error {
+  color: #ff4444;
+}
+
+.log-event {
+  color: #a0a0a0;
+  margin-right: 0.25rem;
+}
+
+.log-message {
+  color: #e0e0e0;
+}
+
+.log-details {
+  margin-top: 0.25rem;
+}
+
+.log-details summary {
+  cursor: pointer;
+  color: #808080;
+  font-size: 0.625rem;
+}
+
+.log-details summary:hover {
+  color: #a0a0a0;
+}
+
+.clear-logs-btn {
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: #0f3460;
+  border: 1px solid #1a4a7a;
+  border-radius: 0.25rem;
+  color: #e0e0e0;
+  font-size: 0.625rem;
+  cursor: pointer;
+}
+
+.clear-logs-btn:hover {
+  background-color: #1a4a7a;
+}
+
+/* Scrollbar styling */
+.diagnostics-content::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.diagnostics-content::-webkit-scrollbar-track {
+  background-color: #1a1a2e;
+}
+
+.diagnostics-content::-webkit-scrollbar-thumb {
+  background-color: #0f3460;
+  border-radius: 0.25rem;
+}
+
+.diagnostics-content::-webkit-scrollbar-thumb:hover {
+  background-color: #1a4a7a;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .ontario-form-review-diagnostics {
+    border: 2px solid #ffffff;
+  }
+
+  .diagnostics-header {
+    border-bottom: 2px solid #ffffff;
+  }
+
+  .status-valid {
+    text-decoration: underline;
+  }
+
+  .status-invalid {
+    text-decoration: underline;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .diagnostics-action-btn,
+  .section-header {
+    transition: none;
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .ontario-form-review-diagnostics {
+    bottom: 0;
+    right: 0;
+    left: 0;
+    max-width: none;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .diagnostics-status-bar {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

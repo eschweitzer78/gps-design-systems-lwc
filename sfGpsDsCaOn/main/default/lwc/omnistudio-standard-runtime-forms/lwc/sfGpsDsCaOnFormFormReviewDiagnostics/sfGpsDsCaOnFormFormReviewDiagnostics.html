@@ -1,0 +1,210 @@
+<template lwc:render-mode="light">
+  <div class="ontario-form-review-diagnostics">
+    <!-- Panel Header -->
+    <div class="diagnostics-header">
+      <button
+        type="button"
+        class="diagnostics-toggle"
+        onclick={handleTogglePanel}
+        aria-expanded={_isExpanded}
+      >
+        <span class="toggle-icon">{expandCollapseIcon}</span>
+        <span class="diagnostics-title">{panelTitle}</span>
+      </button>
+      <div class="diagnostics-actions">
+        <button
+          type="button"
+          class="diagnostics-action-btn"
+          onclick={handleCopyDiagnostics}
+          title="Copy diagnostics to clipboard"
+        >
+          Copy
+        </button>
+        <button
+          type="button"
+          class="diagnostics-action-btn"
+          onclick={handleClose}
+          title="Close diagnostic panel"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Panel Content -->
+    <template lwc:if={_isExpanded}>
+      <div class="diagnostics-content">
+        <!-- Status Bar -->
+        <div class="diagnostics-status-bar">
+          <div class="status-item">
+            <span class="status-label">Version:</span>
+            <span class="status-value">{versionDisplay}</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Schema:</span>
+            <span class={schemaStatusClass}>{schemaStatus}</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Warnings:</span>
+            <span class="status-value">{warningCount}</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Fallbacks:</span>
+            <span class="status-value">{fallbacksUsed}</span>
+          </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="diagnostics-stats">
+          <span class="stat-item">
+            <span class="stat-label">Sections:</span>
+            <span class="stat-value">{stats.sectionsGenerated}</span>
+          </span>
+          <span class="stat-item">
+            <span class="stat-label">Fields:</span>
+            <span class="stat-value">{stats.fieldsProcessed}</span>
+          </span>
+          <span class="stat-item">
+            <span class="stat-label">Null Gaps:</span>
+            <span class="stat-value">{stats.nullGapsFiltered}</span>
+          </span>
+        </div>
+
+        <!-- Warnings Section -->
+        <template lwc:if={hasWarnings}>
+          <div class="diagnostics-section">
+            <button
+              type="button"
+              class="section-header"
+              data-section="warnings"
+              onclick={handleSectionToggle}
+              aria-expanded={isWarningsExpanded}
+            >
+              <span class="section-icon">{warningsSectionIcon}</span>
+              <span class="section-title">Warnings ({warningCount})</span>
+            </button>
+            <template lwc:if={isWarningsExpanded}>
+              <div class="section-content">
+                <ul class="warning-list">
+                  <template for:each={warnings} for:item="warning">
+                    <li key={warning.id} class="warning-item">
+                      <span class="warning-code">[{warning.code}]</span>
+                      <span class="warning-message">{warning.message}</span>
+                      <template lwc:if={warning.contextDisplay}>
+                        <pre class="warning-context">
+{warning.contextDisplay}</pre
+                        >
+                      </template>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+          </div>
+        </template>
+
+        <!-- Errors Section -->
+        <template lwc:if={hasErrors}>
+          <div class="diagnostics-section diagnostics-section--errors">
+            <div class="section-header section-header--errors">
+              <span class="section-title">Errors</span>
+            </div>
+            <div class="section-content">
+              <ul class="error-list">
+                <template for:each={errors} for:item="error">
+                  <li key={error.id} class="error-item">
+                    <span class="error-code">[{error.code}]</span>
+                    <span class="error-message">{error.message}</span>
+                    <template lwc:if={error.contextDisplay}>
+                      <pre class="error-context">{error.contextDisplay}</pre>
+                    </template>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </div>
+        </template>
+
+        <!-- Data Structure Section -->
+        <template lwc:if={hasDataStructure}>
+          <div class="diagnostics-section">
+            <button
+              type="button"
+              class="section-header"
+              data-section="dataStructure"
+              onclick={handleSectionToggle}
+              aria-expanded={isDataStructureExpanded}
+            >
+              <span class="section-icon">{dataStructureSectionIcon}</span>
+              <span class="section-title">Data Structure</span>
+            </button>
+            <template lwc:if={isDataStructureExpanded}>
+              <div class="section-content">
+                <ul class="structure-list">
+                  <template for:each={dataStructure} for:item="step">
+                    <li key={step.id} class="structure-item">
+                      <span class={step.statusClass}>{step.statusLabel}</span>
+                      <span class="step-name">{step.name}</span>
+                      <span class="step-info">
+                        ({step.fieldCount} fields
+                        <template lwc:if={step.nullGaps}>
+                          , {step.nullGaps} null gaps
+                        </template>
+                        <template lwc:if={step.hasSubsections}>
+                          , has subsections
+                        </template>
+                        )
+                      </span>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+          </div>
+        </template>
+
+        <!-- Recent Logs Section -->
+        <template lwc:if={hasLogs}>
+          <div class="diagnostics-section">
+            <button
+              type="button"
+              class="section-header"
+              data-section="logs"
+              onclick={handleSectionToggle}
+              aria-expanded={isLogsExpanded}
+            >
+              <span class="section-icon">{logsSectionIcon}</span>
+              <span class="section-title">Recent Logs</span>
+            </button>
+            <template lwc:if={isLogsExpanded}>
+              <div class="section-content">
+                <button
+                  type="button"
+                  class="clear-logs-btn"
+                  onclick={handleClearLogs}
+                >
+                  Clear Logs
+                </button>
+                <ul class="log-list">
+                  <template for:each={recentLogs} for:item="log">
+                    <li key={log.id} class="log-item">
+                      <span class={log.levelClass}>[{log.level}]</span>
+                      <span class="log-event">{log.event}</span>
+                      <span class="log-message">{log.message}</span>
+                      <template lwc:if={log.contextDisplay}>
+                        <details class="log-details">
+                          <summary>Context</summary>
+                          <pre class="log-context">{log.contextDisplay}</pre>
+                        </details>
+                      </template>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</template>
