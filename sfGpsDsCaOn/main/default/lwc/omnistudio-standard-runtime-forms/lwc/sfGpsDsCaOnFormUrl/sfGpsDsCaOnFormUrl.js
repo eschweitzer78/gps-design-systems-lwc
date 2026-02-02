@@ -13,7 +13,7 @@ import tmpl from "./sfGpsDsCaOnFormUrl.html";
  * @description Ontario Design System URL input for OmniStudio forms.
  * Extends the base form URL class with Ontario DS styling.
  * Includes enhanced URL pattern validation.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

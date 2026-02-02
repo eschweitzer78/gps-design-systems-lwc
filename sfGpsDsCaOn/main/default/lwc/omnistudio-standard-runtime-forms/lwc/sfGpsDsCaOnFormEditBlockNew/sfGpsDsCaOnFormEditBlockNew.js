@@ -12,7 +12,7 @@ import tmpl from "./sfGpsDsCaOnFormEditBlockNew.html";
  * @slot EditBlockNew
  * @description Ontario Design System EditBlock New button for OmniStudio forms.
  * Provides the "Add new" button for creating new EditBlock entries.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

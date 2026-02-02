@@ -24,129 +24,129 @@ const NOTIFICATION_TYPE_DEFAULT = "action";
  * Automatically fetches notification counts from Salesforce based on notification type.
  */
 export default class SfGpsDsCaOnNotificationCardData extends SfGpsDsLwc {
-    static renderMode = "light";
+  static renderMode = "light";
 
-    // @ts-ignore
-    @api
-    notificationType;
-    
-    _notificationType = this.defineStringProperty("notificationType", {
-        defaultValue: NOTIFICATION_TYPE_DEFAULT,
-        validValues: NOTIFICATION_TYPE_VALUES
-    });
+  // @ts-ignore
+  @api
+  notificationType;
 
-    // Override properties - if set, these override the values from Apex
-    // @ts-ignore
-    @api
-    headingOverride;
-    
-    // @ts-ignore
-    @api
-    descriptionOverride;
-    
-    // @ts-ignore
-    @api
-    urlOverride;
+  _notificationType = this.defineStringProperty("notificationType", {
+    defaultValue: NOTIFICATION_TYPE_DEFAULT,
+    validValues: NOTIFICATION_TYPE_VALUES
+  });
 
-    // @ts-ignore
-    @api
-    className;
+  // Override properties - if set, these override the values from Apex
+  // @ts-ignore
+  @api
+  headingOverride;
 
-    _notificationData = null;
-    _error = null;
-    _isLoading = true;
-    _wiredResult = null;
+  // @ts-ignore
+  @api
+  descriptionOverride;
 
-    /* Wire to fetch notification data */
-    // @ts-ignore - LWC wire decorator
-    @wire(getNotificationsByType, {
-        notificationType: "$_notificationType.value"
-    })
-    wiredNotifications(result) {
-        this._wiredResult = result;
-        this._isLoading = false;
-        
-        if (result.data) {
-            this._notificationData = result.data;
-            this._error = null;
-        } else if (result.error) {
-            this._error = result.error.message || "Error loading notifications";
-            this._notificationData = null;
-        }
+  // @ts-ignore
+  @api
+  urlOverride;
+
+  // @ts-ignore
+  @api
+  className;
+
+  _notificationData = null;
+  _error = null;
+  _isLoading = true;
+  _wiredResult = null;
+
+  /* Wire to fetch notification data */
+  // @ts-ignore - LWC wire decorator
+  @wire(getNotificationsByType, {
+    notificationType: "$_notificationType.value"
+  })
+  wiredNotifications(result) {
+    this._wiredResult = result;
+    this._isLoading = false;
+
+    if (result.data) {
+      this._notificationData = result.data;
+      this._error = null;
+    } else if (result.error) {
+      this._error = result.error.message || "Error loading notifications";
+      this._notificationData = null;
     }
+  }
 
-    /* Computed Properties */
-    get hasError() {
-        return Boolean(this._error);
-    }
+  /* Computed Properties */
+  get hasError() {
+    return Boolean(this._error);
+  }
 
-    get hasData() {
-        return Boolean(this._notificationData);
-    }
+  get hasData() {
+    return Boolean(this._notificationData);
+  }
 
-    get computedHeading() {
-        if (this.headingOverride) {
-            return this.headingOverride;
-        }
-        return this._notificationData?.heading || this.getDefaultHeading();
+  get computedHeading() {
+    if (this.headingOverride) {
+      return this.headingOverride;
     }
+    return this._notificationData?.heading || this.getDefaultHeading();
+  }
 
-    get computedDescription() {
-        if (this.descriptionOverride) {
-            return this.descriptionOverride;
-        }
-        return this._notificationData?.description || this.getDefaultDescription();
+  get computedDescription() {
+    if (this.descriptionOverride) {
+      return this.descriptionOverride;
     }
+    return this._notificationData?.description || this.getDefaultDescription();
+  }
 
-    get computedUrl() {
-        if (this.urlOverride) {
-            return this.urlOverride;
-        }
-        return this._notificationData?.url || '#';
+  get computedUrl() {
+    if (this.urlOverride) {
+      return this.urlOverride;
     }
+    return this._notificationData?.url || "#";
+  }
 
-    get computedUnreadCount() {
-        return this._notificationData?.unreadCount || 0;
-    }
+  get computedUnreadCount() {
+    return this._notificationData?.unreadCount || 0;
+  }
 
-    get computedNotificationType() {
-        return this._notificationType.value;
-    }
+  get computedNotificationType() {
+    return this._notificationType.value;
+  }
 
-    /* Helper methods for defaults */
-    getDefaultHeading() {
-        const type = this._notificationType.value;
-        const headings = {
-            action: 'Action required',
-            reminder: 'Reminders',
-            status: 'Status updates'
-        };
-        return headings[type] || 'Notifications';
-    }
+  /* Helper methods for defaults */
+  getDefaultHeading() {
+    const type = this._notificationType.value;
+    const headings = {
+      action: "Action required",
+      reminder: "Reminders",
+      status: "Status updates"
+    };
+    return headings[type] || "Notifications";
+  }
 
-    getDefaultDescription() {
-        const type = this._notificationType.value;
-        const descriptions = {
-            action: 'Check messages that need your attention.',
-            reminder: 'View reminder notices for upcoming actions.',
-            status: 'View messages about status updates.'
-        };
-        return descriptions[type] || 'View your notifications.';
-    }
+  getDefaultDescription() {
+    const type = this._notificationType.value;
+    const descriptions = {
+      action: "Check messages that need your attention.",
+      reminder: "View reminder notices for upcoming actions.",
+      status: "View messages about status updates."
+    };
+    return descriptions[type] || "View your notifications.";
+  }
 
-    /* Public methods */
-    // @ts-ignore
-    @api
-    refresh() {
-        if (this._wiredResult) {
-            return refreshApex(this._wiredResult);
-        }
-        return Promise.resolve();
+  /* Public methods */
+  // @ts-ignore
+  @api
+  refresh() {
+    if (this._wiredResult) {
+      return refreshApex(this._wiredResult);
     }
+    return Promise.resolve();
+  }
 
-    /* Lifecycle */
-    connectedCallback() {
-        super.connectedCallback?.();
-        this.classList.add("caon-scope");
-    }
+  /* Lifecycle */
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.classList.add("caon-scope");
+  }
 }

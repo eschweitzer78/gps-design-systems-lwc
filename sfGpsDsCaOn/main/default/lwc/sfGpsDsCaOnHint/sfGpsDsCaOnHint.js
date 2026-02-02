@@ -7,21 +7,21 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 export default class SfGpsDsCaOnHint extends SfGpsDsLwc {
-    static renderMode = "light";
-    // @ts-ignore
-    @api
-    hintId;
-    // @ts-ignore
-    @api
-    hintText;
-    // @ts-ignore
-    @api
-    className;
-    get computedClassName() {
-        return `ontario-hint ${this.className || ""}`.trim();
-    }
-    connectedCallback() {
-        super.connectedCallback?.();
-        this.classList.add("caon-scope");
-    }
+  static renderMode = "light";
+  // @ts-ignore
+  @api
+  hintId;
+  // @ts-ignore
+  @api
+  hintText;
+  // @ts-ignore
+  @api
+  className;
+  get computedClassName() {
+    return `ontario-hint ${this.className || ""}`.trim();
+  }
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.classList.add("caon-scope");
+  }
 }

@@ -7,32 +7,30 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 export default class SfGpsDsCaOnError extends SfGpsDsLwc {
-    static renderMode = "light";
-    // @ts-ignore
-    @api
-    errorId;
-    // @ts-ignore
-    @api
-    message;
-    // @ts-ignore
-    @api
-    isHidden;
-    // @ts-ignore
-    @api
-    className;
-    get computedClassName() {
-        let classes = "ontario-error-messaging";
-        if (this.isHidden)
-            classes += " ontario-error__hidden";
-        if (this.className)
-            classes += ` ${this.className}`;
-        return classes;
-    }
-    get showError() {
-        return !!this.message && !this.isHidden;
-    }
-    connectedCallback() {
-        super.connectedCallback?.();
-        this.classList.add("caon-scope");
-    }
+  static renderMode = "light";
+  // @ts-ignore
+  @api
+  errorId;
+  // @ts-ignore
+  @api
+  message;
+  // @ts-ignore
+  @api
+  isHidden;
+  // @ts-ignore
+  @api
+  className;
+  get computedClassName() {
+    let classes = "ontario-error-messaging";
+    if (this.isHidden) classes += " ontario-error__hidden";
+    if (this.className) classes += ` ${this.className}`;
+    return classes;
+  }
+  get showError() {
+    return !!this.message && !this.isHidden;
+  }
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.classList.add("caon-scope");
+  }
 }

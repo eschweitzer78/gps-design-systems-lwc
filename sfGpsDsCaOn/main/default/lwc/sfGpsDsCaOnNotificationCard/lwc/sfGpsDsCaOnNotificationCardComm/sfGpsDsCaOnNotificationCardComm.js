@@ -10,28 +10,28 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
  * Experience Builder wrapper for Ontario DS Notification Card.
  */
 export default class SfGpsDsCaOnNotificationCardComm extends SfGpsDsLwc {
-    static renderMode = "light";
-    // @ts-ignore
-    @api
-    heading;
-    // @ts-ignore
-    @api
-    description;
-    // @ts-ignore
-    @api
-    url;
-    // @ts-ignore
-    @api
-    notificationType;
-    // @ts-ignore
-    @api
-    unreadCount;
-    // @ts-ignore
-    @api
-    className;
-    /* Lifecycle */
-    connectedCallback() {
-        super.connectedCallback?.();
-        this.classList.add("caon-scope");
-    }
+  static renderMode = "light";
+  // @ts-ignore
+  @api
+  heading;
+  // @ts-ignore
+  @api
+  description;
+  // @ts-ignore
+  @api
+  url;
+  // @ts-ignore
+  @api
+  notificationType;
+  // @ts-ignore
+  @api
+  unreadCount;
+  // @ts-ignore
+  @api
+  className;
+  /* Lifecycle */
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.classList.add("caon-scope");
+  }
 }

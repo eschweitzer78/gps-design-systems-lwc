@@ -12,7 +12,7 @@ import tmpl from "./sfGpsDsCaOnFormCurrency.html";
  * @slot Currency
  * @description Ontario Design System Currency input for OmniStudio forms.
  * Uses number input with CAD currency formatting.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

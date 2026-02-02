@@ -128,8 +128,8 @@ Execute these tests on TextInput. If all pass, the pattern is validated for all 
 
 ### Pattern Validation Result
 
-**Date**: ********\_********
-**Tester**: ********\_********
+**Date**: **\*\*\*\***\_**\*\*\*\***
+**Tester**: **\*\*\*\***\_**\*\*\*\***
 
 | Category      | Tests  | Passed | Failed |
 | ------------- | ------ | ------ | ------ |
@@ -219,8 +219,8 @@ All components ending in `Comm`:
 
 ### Pattern Validation Result
 
-**Date**: ********\_********
-**Tester**: ********\_********
+**Date**: **\*\*\*\***\_**\*\*\*\***
+**Tester**: **\*\*\*\***\_**\*\*\*\***
 
 | Tests | Passed | Failed |
 | ----- | ------ | ------ |
@@ -287,8 +287,8 @@ All components in `omnistudio-standard-runtime-forms/lwc/`:
 
 ### Pattern Validation Result
 
-**Date**: ********\_********
-**Tester**: ********\_********
+**Date**: **\*\*\*\***\_**\*\*\*\***
+**Tester**: **\*\*\*\***\_**\*\*\*\***
 
 | Tests | Passed | Failed |
 | ----- | ------ | ------ |
@@ -351,8 +351,8 @@ All components in `omnistudio-standard-runtime-forms/lwc/`:
 
 ### Pattern Validation Result
 
-**Date**: ********\_********
-**Tester**: ********\_********
+**Date**: **\*\*\*\***\_**\*\*\*\***
+**Tester**: **\*\*\*\***\_**\*\*\*\***
 
 | Tests | Passed | Failed |
 | ----- | ------ | ------ |
@@ -406,8 +406,8 @@ All components in `omnistudio-standard-runtime-forms/lwc/`:
 
 ### Pattern Validation Result
 
-**Date**: ********\_********
-**Tester**: ********\_********
+**Date**: **\*\*\*\***\_**\*\*\*\***
+**Tester**: **\*\*\*\***\_**\*\*\*\***
 
 | Tests | Passed | Failed |
 | ----- | ------ | ------ |

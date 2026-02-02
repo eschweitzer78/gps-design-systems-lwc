@@ -3,7 +3,8 @@
   <apiVersion>65.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Table</masterLabel>
-  <description>Displays a responsive data table with Ontario Design System styling.</description>
+  <description
+  >Displays a responsive data table with Ontario Design System styling.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>

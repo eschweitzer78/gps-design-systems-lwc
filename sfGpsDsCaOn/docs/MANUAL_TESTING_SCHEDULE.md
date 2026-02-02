@@ -342,11 +342,11 @@ See [COMPONENT_TEST_CHECKLIST.md](./COMPONENT_TEST_CHECKLIST.md) for detailed te
 
 ## Testing Log Template
 
-### Component: ********\_********
+### Component: **\*\*\*\***\_**\*\*\*\***
 
-**Date**: ********\_********
-**Tester**: ********\_********
-**Environment**: ********\_********
+**Date**: **\*\*\*\***\_**\*\*\*\***
+**Tester**: **\*\*\*\***\_**\*\*\*\***
+**Environment**: **\*\*\*\***\_**\*\*\*\***
 
 | Test Area | Pass/Fail | Notes |
 | --------- | --------- | ----- |

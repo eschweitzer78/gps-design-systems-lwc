@@ -3,7 +3,8 @@
   <apiVersion>65.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Task List (Salesforce)</masterLabel>
-  <description>Displays Salesforce Tasks assigned to the current user or related to a record, styled with Ontario Design System guidelines.</description>
+  <description
+  >Displays Salesforce Tasks assigned to the current user or related to a record, styled with Ontario Design System guidelines.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>

@@ -1,7 +1,10 @@
 <template lwc:render-mode="light">
   <div class="ontario-form-group">
     <!-- Main Label -->
-    <fieldset class="ontario-fieldset" aria-describedby={computedAriaDescribedBy}>
+    <fieldset
+      class="ontario-fieldset"
+      aria-describedby={computedAriaDescribedBy}
+    >
       <legend class="ontario-fieldset__legend">
         {label}
         <span lwc:if={showFlag} class="ontario-label__flag">
@@ -10,9 +13,7 @@
       </legend>
 
       <!-- Hint Text -->
-      <p lwc:if={hintText} id={_hintId} class="ontario-hint">
-        {hintText}
-      </p>
+      <p lwc:if={hintText} id={_hintId} class="ontario-hint">{hintText}</p>
 
       <!-- Error Message -->
       <div
@@ -31,7 +32,9 @@
             viewBox="0 0 24 24"
             preserveAspectRatio="xMidYMid meet"
           >
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+            />
           </svg>
         </span>
         <span class="ontario-error-messaging__content">

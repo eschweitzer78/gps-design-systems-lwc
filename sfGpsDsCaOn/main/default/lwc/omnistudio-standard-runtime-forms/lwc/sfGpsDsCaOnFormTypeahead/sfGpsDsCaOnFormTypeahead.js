@@ -34,25 +34,25 @@ const THEME_HAS_FOCUS_CLASSNAME = "sfgpsdscaon-has-focus";
  * @slot Typeahead
  * @description Ontario Design System Typeahead for OmniStudio forms.
  * Provides autocomplete functionality with remote data source support.
- * 
+ *
  * ## Key Inherited Properties (from OmniscriptTypeahead via SfGpsDsFormTypeahead)
  * - `options` {Array} - Available options from remote source
  * - `elementValue` {string} - Current input value
  * - `_isEditMode` {boolean} - Whether in edit mode (shows child elements)
  * - `errorMessage` {string} - Error message from remote call
- * 
+ *
  * ## Key Inherited Methods (from OmniscriptTypeahead)
  * - `handleTypeahead(event)` - Debounced handler for keyup, triggers remote search
  * - `handleSelect(event)` - Handles option selection from dropdown
  * - `handleBlur(event)` - Handles blur, triggers validation
  * - `toggleEditMode()` - Toggles edit mode for child elements
- * 
+ *
  * ## Compliance
  * - **LWR**: Uses Light DOM parent component
  * - **LWS**: No eval(), proper namespace imports
  * - **Ontario DS**: Uses Ontario form field styling
  * - **WCAG 2.1 AA**: Proper ARIA combobox pattern, keyboard navigation
- * 
+ *
  * @see {@link sfGpsDsCaOnFormLookup} Similar component for static lookups
  */
 export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
@@ -82,7 +82,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
   /**
    * Returns true if the field has a validation error.
    * Checks both standard validation and custom validation from SetErrors.
-   * 
+   *
    * @returns {boolean} True if field is invalid
    * @template-binding: aria-invalid={sfGpsDsIsError}
    */
@@ -104,7 +104,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Returns the error message to display.
-   * 
+   *
    * @returns {string|null} Error message or null
    * @template-binding: {sfGpsDsErrorMessage}
    */
@@ -125,7 +125,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Computes CSS classes for the label element.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    * @template-binding: <label class={computedLabelClassName}>
    */
@@ -138,7 +138,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Computes CSS classes for the input element.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    * @template-binding: <input class={computedInputClassName}>
    */
@@ -152,7 +152,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Determines if required/optional flag should display.
-   * 
+   *
    * @returns {boolean} True if flag should show
    * @template-binding: <span lwc:if={showFlag}>
    */
@@ -162,7 +162,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Returns the flag text ("required" or "optional").
-   * 
+   *
    * @returns {string} Flag text
    * @template-binding: ({flagText})
    */
@@ -174,7 +174,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Computes aria-describedby for accessibility.
-   * 
+   *
    * @returns {string|null} Space-separated element IDs
    * @template-binding: aria-describedby={computedAriaDescribedBy}
    */
@@ -188,12 +188,16 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
   /**
    * Computes aria-activedescendant for the currently highlighted option.
    * AODA/WCAG 4.1.2: Announces active option to screen readers during keyboard navigation.
-   * 
+   *
    * @returns {string|null} ID of highlighted option or null
    * @template-binding: aria-activedescendant={computedAriaActiveDescendant}
    */
   get computedAriaActiveDescendant() {
-    if (this._showOptions && this._highlightIndex >= 0 && this._highlightIndex < (this.options?.length || 0)) {
+    if (
+      this._showOptions &&
+      this._highlightIndex >= 0 &&
+      this._highlightIndex < (this.options?.length || 0)
+    ) {
       return `typeahead-option-${this._highlightIndex}`;
     }
     return null;
@@ -201,7 +205,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Returns the number of available options for screen reader announcement.
-   * 
+   *
    * @returns {number} Number of options
    * @template-binding: Used in live region
    */
@@ -212,7 +216,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
   /**
    * Returns announcement text for screen readers when results are available.
    * AODA/WCAG: Provides dynamic result count for assistive technology.
-   * 
+   *
    * @returns {string} Announcement text
    * @template-binding: Used in aria-live region
    */
@@ -229,7 +233,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Computes CSS classes for the dropdown container.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    * @template-binding: <div class={computedDropdownClassName}>
    */
@@ -242,7 +246,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Returns true if options array has items.
-   * 
+   *
    * @returns {boolean} True if options exist
    * @template-binding: <div lwc:if={hasOptions}>
    */
@@ -253,7 +257,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
   /**
    * Transforms options for template rendering.
    * OmniStudio typeahead uses `name` for display, we map it to `label` for consistency.
-   * 
+   *
    * @returns {Array} Decorated options with key, id, and label
    * @template-binding: Used in for:each iteration
    */
@@ -307,31 +311,34 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
   /**
    * Handles option selection from the dropdown.
    * Delegates to parent's handleSelect for proper OmniScript integration.
-   * 
+   *
    * @param {Event} event - Click or keydown event on option
    */
   handleOptionSelect(event) {
     log.enter("handleOptionSelect", { type: event.type, key: event.key });
-    
+
     // Only handle click or Enter key
     if (event.type === "keydown" && event.key !== "Enter") {
       log.exit("handleOptionSelect", "ignored - not Enter key");
       return;
     }
-    
+
     event.preventDefault();
-    
-    const index = parseInt(event.currentTarget.getAttribute("data-option-index"), 10);
+
+    const index = parseInt(
+      event.currentTarget.getAttribute("data-option-index"),
+      10
+    );
     const option = this.options[index];
-    
+
     log.debug("Option selected", { index, option });
-    
+
     if (option) {
       // Get the value to apply - OmniStudio uses `name` for the value
       const value = typeof option === "string" ? option : option.name;
-      
+
       log.debug("Applying value to OmniScript", { value });
-      
+
       // Update OmniScript data through parent's applyCallResp
       try {
         this.applyCallResp(value);
@@ -339,42 +346,48 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
       } catch (error) {
         log.error("Failed to apply value", error);
       }
-      
+
       // Clear options to close dropdown
       this.options = [];
     }
-    
+
     this.hideOptions();
     log.exit("handleOptionSelect");
   }
 
   /**
    * Handles mouse hover on options for visual focus.
-   * 
+   *
    * @param {Event} event - Mouseover event
    */
   handleOptionFocus(event) {
     const options = this.template.querySelectorAll('[role="option"]');
     options.forEach((opt) => opt.classList.remove(THEME_HAS_FOCUS_CLASSNAME));
-    
+
     event.currentTarget.classList.add(THEME_HAS_FOCUS_CLASSNAME);
-    this._highlightIndex = parseInt(event.currentTarget.getAttribute("data-option-index"), 10);
+    this._highlightIndex = parseInt(
+      event.currentTarget.getAttribute("data-option-index"),
+      10
+    );
   }
 
   /**
    * Handles keyboard navigation in dropdown.
-   * 
+   *
    * @param {KeyboardEvent} event - Keydown event on input
    */
   handleInputKeyDown(event) {
-    log.trace("handleInputKeyDown", { key: event.key, showOptions: this._showOptions });
-    
+    log.trace("handleInputKeyDown", {
+      key: event.key,
+      showOptions: this._showOptions
+    });
+
     switch (event.key) {
       case "Escape":
         log.debug("Keyboard: Escape - closing dropdown");
         this.hideOptions();
         break;
-        
+
       case "ArrowDown":
         event.preventDefault();
         if (!this._showOptions && this.hasOptions) {
@@ -385,10 +398,14 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
           this._highlightIndex + 1,
           this.options.length - 1
         );
-        log.stateChange("_highlightIndex", this._highlightIndex - 1, this._highlightIndex);
+        log.stateChange(
+          "_highlightIndex",
+          this._highlightIndex - 1,
+          this._highlightIndex
+        );
         this.updateHighlight();
         break;
-        
+
       case "ArrowUp":
         event.preventDefault();
         const prevIndex = this._highlightIndex;
@@ -396,12 +413,15 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
         log.stateChange("_highlightIndex", prevIndex, this._highlightIndex);
         this.updateHighlight();
         break;
-        
+
       case "Enter":
         if (this._showOptions && this._highlightIndex >= 0) {
           event.preventDefault();
           const option = this.options[this._highlightIndex];
-          log.debug("Keyboard: Enter - selecting option", { index: this._highlightIndex, option });
+          log.debug("Keyboard: Enter - selecting option", {
+            index: this._highlightIndex,
+            option
+          });
           if (option) {
             const value = typeof option === "string" ? option : option.name;
             try {
@@ -414,7 +434,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
           this.hideOptions();
         }
         break;
-        
+
       default:
         // Let other keys pass through
         break;
@@ -439,7 +459,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
   /**
    * Handles input changes and triggers remote search.
    * Delegates to parent's handleTypeahead for debounced remote calls.
-   * 
+   *
    * @param {Event} event - Input or focus event
    */
   handleInputChange(event) {
@@ -456,7 +476,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Returns the Ontario DS template.
-   * 
+   *
    * @returns {Object} Template to render
    * @override
    */
@@ -466,13 +486,13 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
 
   /**
    * Initializes component with Ontario DS classes.
-   * 
+   *
    * @override
    */
   connectedCallback() {
     log.enter("connectedCallback");
     log.timeStart("initialization");
-    
+
     if (super.connectedCallback) {
       super.connectedCallback();
     }
@@ -481,25 +501,25 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
     this._showOptions = false;
     this._highlightIndex = -1;
     this.classList.add("caon-scope");
-    
+
     log.debug("Component initialized", {
       label: this._propSetMap?.label,
       required: this._propSetMap?.required,
       dataJson: this._propSetMap?.dataJson ? "configured" : "none"
     });
-    
+
     log.timeEnd("initialization");
     log.exit("connectedCallback");
   }
 
   /**
    * Cleanup when component is removed.
-   * 
+   *
    * @override
    */
   disconnectedCallback() {
     log.debug("Component disconnecting");
-    
+
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

@@ -40,41 +40,41 @@ const THEME_HAS_FOCUS_CLASSNAME = "sfgpsdscaon-has-focus";
 /**
  * @slot Lookup
  * @description Ontario Design System Lookup for OmniStudio forms.
- * 
+ *
  * Lookup provides a searchable dropdown with autocomplete functionality.
  * It fetches options from a DataRaptor or Integration Procedure and allows
  * users to search and select from the results.
- * 
+ *
  * ## Key Inherited Properties (from SfGpsDsFormLookup)
  * - `options` {Array} - Available options to display
  * - `show` {boolean} - Whether dropdown is visible
  * - `selectedIndex` {number} - Currently selected option index
  * - `highlightIndex` {number} - Currently highlighted option index
  * - `_inputRef` {HTMLElement} - Reference to the input element
- * 
+ *
  * ## Key Inherited Methods (from SfGpsDsFormLookup)
  * - `showOptions()` - Opens the dropdown
  * - `hideOptions()` - Closes the dropdown
  * - `selectOption(event)` - Handles option selection
  * - `ariaFocus(index)` - Manages ARIA focus for accessibility
- * 
+ *
  * ## ARIA Combobox Pattern
  * This component implements the WAI-ARIA combobox pattern:
  * - Input has role="combobox" with aria-expanded
  * - Listbox has role="listbox"
  * - Options have role="option" with aria-selected
  * - Active descendant tracked via aria-activedescendant
- * 
+ *
  * ## Compliance
  * - **LWR**: Uses Light DOM parent component
  * - **LWS**: No eval(), proper namespace imports
  * - **Ontario DS**: Uses Ontario form field styling
  * - **WCAG 2.1 AA**: Full keyboard navigation, screen reader support
- * 
+ *
  * @example
  * // Configured in OmniScript as "Lookup" element type
  * // Requires DataRaptor or Integration Procedure for options
- * 
+ *
  * @see {@link sfGpsDsCaOnFormTypeahead} Similar component for typeahead
  * @see {@link sfGpsDsCaOnFormSelect} Simpler dropdown without search
  */
@@ -87,7 +87,7 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Computes CSS classes for the label element.
    * Adds required modifier when field is required.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    * @template-binding: <label class={computedLabelClassName}>
    */
@@ -101,7 +101,7 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Computes CSS classes for the input element.
    * Adds error styling when validation fails.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    * @template-binding: <input class={computedInputClassName}>
    */
@@ -116,14 +116,14 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Computes aria-describedby attribute for accessibility.
    * Links input to helper text and error message elements.
-   * 
+   *
    * @returns {string|null} Space-separated IDs or null
    * @template-binding: aria-describedby={computedAriaDescribedBy}
    */
   /**
    * Computes aria-describedby attribute for accessibility.
    * Links input to helper text and error message elements.
-   * 
+   *
    * @returns {string|null} Space-separated IDs or null
    * @template-binding: aria-describedby={computedAriaDescribedBy}
    */
@@ -137,7 +137,7 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Computes CSS classes for the dropdown container.
    * Controls visibility via open modifier.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    * @template-binding: <div class={computedDropdownClassName}>
    */
@@ -155,7 +155,7 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
 
   /**
    * Determines if required/optional flag should display.
-   * 
+   *
    * @returns {boolean} True if required or optional is set
    * @template-binding: <span lwc:if={showFlag}>
    */
@@ -166,7 +166,7 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Returns announcement text for screen readers when results are available.
    * AODA/WCAG: Provides dynamic result count for assistive technology.
-   * 
+   *
    * @returns {string} Announcement text
    * @template-binding: Used in aria-live region
    */
@@ -183,7 +183,7 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
 
   /**
    * Returns the flag text ("required" or "optional").
-   * 
+   *
    * @returns {string} Flag text for display
    * @template-binding: ({flagText})
    */
@@ -196,10 +196,10 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Transforms options for template rendering.
    * Marks clear option and adds href for each option.
-   * 
+   *
    * The "--" value is a special OmniStudio convention for "clear selection".
    * This getter transforms it to a user-friendly label.
-   * 
+   *
    * @returns {Array} Decorated options with isClear and href properties
    * @template-binding: Used in option iteration (for:each)
    * @override
@@ -229,12 +229,12 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Opens the dropdown and applies Ontario open state class.
    * Resets selection if clearValue is enabled.
-   * 
+   *
    * @override
    */
   showOptions() {
     log.enter("showOptions");
-    
+
     // Apply open class to trigger container
     const triggerEl = this.template.querySelector(".sfgpsdscaon-combobox");
     if (triggerEl) {
@@ -246,19 +246,23 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
 
     // Reset selection state if clear is enabled
     if (this.selectedIndex === -1 || this._propSetMap.clearValue) {
-      log.debug("Resetting selection state", { clearValue: this._propSetMap.clearValue });
+      log.debug("Resetting selection state", {
+        clearValue: this._propSetMap.clearValue
+      });
       this.selectedIndex = -1;
       this.highlightIndex = -1;
       this.ariaFocus(null);
     }
-    
-    log.debug("Dropdown opened", { optionCount: this.computedOptions?.length || 0 });
+
+    log.debug("Dropdown opened", {
+      optionCount: this.computedOptions?.length || 0
+    });
     log.exit("showOptions");
   }
 
   /**
    * Closes the dropdown and removes Ontario open state class.
-   * 
+   *
    * @override
    */
   hideOptions() {
@@ -275,11 +279,11 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Manages visual focus indicator on options.
    * Implements ARIA activedescendant pattern for screen readers.
-   * 
+   *
    * This is critical for WCAG compliance - screen readers need to
    * know which option is currently focused even though DOM focus
    * remains on the input.
-   * 
+   *
    * @param {number|null} newIndex - Index of option to focus, or null to clear
    * @param {boolean} [isHover=false] - True if triggered by mouse hover
    * @override
@@ -294,10 +298,10 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
 
     if (newIndex != null && options[newIndex]) {
       const option = options[newIndex];
-      
+
       // Apply focus styling
       option.classList.add(THEME_HAS_FOCUS_CLASSNAME);
-      
+
       // Update ARIA activedescendant for screen readers
       this._inputRef.setAttribute("aria-activedescendant", option.id);
 
@@ -321,19 +325,19 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Handles option selection from the dropdown.
    * Prevents default anchor behavior before calling parent handler.
-   * 
+   *
    * @param {Event} event - Click event from option element
    * @override
    */
   selectOption(event) {
     log.enter("selectOption");
-    
+
     // Prevent anchor navigation
     event.preventDefault();
-    
+
     const optionIndex = event.currentTarget?.dataset?.index;
     log.debug("Option selected", { index: optionIndex });
-    
+
     try {
       // Call parent to update value and close dropdown
       super.selectOption(event);
@@ -341,7 +345,7 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
     } catch (error) {
       log.error("Failed to apply selection", error);
     }
-    
+
     log.exit("selectOption");
   }
 
@@ -352,7 +356,7 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
 
   /**
    * Returns the Ontario DS template for this component.
-   * 
+   *
    * @returns {Object} The template to render
    * @override
    */
@@ -363,41 +367,41 @@ export default class SfGpsDsCaOnFormLookup extends SfGpsDsFormLookup {
   /**
    * Initializes component with Ontario DS classes.
    * Sets up CSS scoping and read-only styling class.
-   * 
+   *
    * @override
    */
   connectedCallback() {
     log.enter("connectedCallback");
     log.timeStart("initialization");
-    
+
     if (super.connectedCallback) {
       super.connectedCallback();
     }
 
     // Class used for read-only styling
     this._readOnlyClass = "sfgpsdscaon-read-only";
-    
+
     // CSS scoping class for Ontario DS styles
     this.classList.add("caon-scope");
-    
+
     log.debug("Component initialized", {
       label: this._propSetMap?.label,
       required: this._propSetMap?.required,
       optionsSource: this._propSetMap?.optionSource?.type || "none"
     });
-    
+
     log.timeEnd("initialization");
     log.exit("connectedCallback");
   }
 
   /**
    * Cleanup when component is removed.
-   * 
+   *
    * @override
    */
   disconnectedCallback() {
     log.debug("Component disconnecting");
-    
+
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

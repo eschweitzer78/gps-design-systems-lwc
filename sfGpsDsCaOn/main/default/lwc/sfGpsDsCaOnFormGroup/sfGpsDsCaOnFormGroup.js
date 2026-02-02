@@ -7,15 +7,15 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 export default class SfGpsDsCaOnFormGroup extends SfGpsDsLwc {
-    static renderMode = "light";
-    // @ts-ignore
-    @api
-    className;
-    get computedClassName() {
-        return `ontario-form-group ${this.className || ""}`.trim();
-    }
-    connectedCallback() {
-        super.connectedCallback?.();
-        this.classList.add("caon-scope");
-    }
+  static renderMode = "light";
+  // @ts-ignore
+  @api
+  className;
+  get computedClassName() {
+    return `ontario-form-group ${this.className || ""}`.trim();
+  }
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.classList.add("caon-scope");
+  }
 }

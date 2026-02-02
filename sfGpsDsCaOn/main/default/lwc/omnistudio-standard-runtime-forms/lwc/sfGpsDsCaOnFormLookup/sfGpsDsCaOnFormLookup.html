@@ -18,7 +18,11 @@
   <div class="ontario-form-group sfgpsdscaon-lookup">
     <!-- Label -->
     <div data-label="true">
-      <label class={computedLabelClassName} aria-label={mergedLabel} for="lookupId">
+      <label
+        class={computedLabelClassName}
+        aria-label={mergedLabel}
+        for="lookupId"
+      >
         {mergedLabel}
         <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
         <span lwc:if={_propSetMap.required} class="ontario-show-for-sr">
@@ -33,9 +37,9 @@
     </p>
 
     <!-- Screen reader announcements for results (AODA) -->
-    <div 
-      class="ontario-show-for-sr" 
-      aria-live="polite" 
+    <div
+      class="ontario-show-for-sr"
+      aria-live="polite"
       aria-atomic="true"
       role="status"
     >
@@ -75,18 +79,20 @@
           <!-- Loading indicator -->
           <template lwc:if={isPageLoading}>
             <div class="sfgpsdscaon-combobox__loader">
-              <c-sf-gps-ds-ca-on-loading-indicator size="small"></c-sf-gps-ds-ca-on-loading-indicator>
+              <c-sf-gps-ds-ca-on-loading-indicator
+                size="small"
+              ></c-sf-gps-ds-ca-on-loading-indicator>
             </div>
           </template>
 
           <!-- Dropdown arrow -->
-          <svg 
-            class="sfgpsdscaon-combobox__icon" 
-            aria-hidden="true" 
-            focusable="false" 
+          <svg
+            class="sfgpsdscaon-combobox__icon"
+            aria-hidden="true"
+            focusable="false"
             viewBox="0 0 24 24"
           >
-            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
           </svg>
         </div>
 
@@ -100,7 +106,11 @@
           onmouseup={handleKeyDown}
         >
           <ul class="sfgpsdscaon-listbox" role="presentation">
-            <template for:each={computedOptions} for:item="optionItem" for:index="optionIndex">
+            <template
+              for:each={computedOptions}
+              for:item="optionItem"
+              for:index="optionIndex"
+            >
               <li
                 key={optionItem.key}
                 class="sfgpsdscaon-listbox__item"
@@ -116,7 +126,10 @@
                   role="option"
                   aria-selected={optionItem.selected}
                 >
-                  <span class="sfgpsdscaon-listbox__option-text" title={optionItem.value}>
+                  <span
+                    class="sfgpsdscaon-listbox__option-text"
+                    title={optionItem.value}
+                  >
                     {optionItem.value}
                   </span>
                 </div>
@@ -146,10 +159,19 @@
       role="alert"
       id="errorMessageBlock"
     >
-      <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
       </svg>
-      <span class="ontario-error-messaging__content">{sfGpsDsErrorMessage}</span>
+      <span class="ontario-error-messaging__content"
+        >{sfGpsDsErrorMessage}</span
+      >
     </div>
   </div>
 </template>

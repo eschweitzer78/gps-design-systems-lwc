@@ -2,7 +2,7 @@
 
 /* Apply Ontario DS typography to text block content */
 .ontario-text-block {
-  font-family: var(--ontario-font-family, 'Open Sans', sans-serif);
+  font-family: var(--ontario-font-family, "Open Sans", sans-serif);
   font-size: var(--ontario-font-size-body, 1rem);
   line-height: var(--ontario-line-height-body, 1.6);
   color: var(--ontario-colour-black, #1a1a1a);
@@ -15,7 +15,7 @@
 .ontario-text-block h4,
 .ontario-text-block h5,
 .ontario-text-block h6 {
-  font-family: var(--ontario-font-family-heading, 'Raleway', sans-serif);
+  font-family: var(--ontario-font-family-heading, "Raleway", sans-serif);
   font-weight: 700;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
@@ -53,7 +53,7 @@
 }
 
 .ontario-text-block a:focus {
-  outline: 4px solid var(--ontario-colour-focus, #009ACD);
+  outline: 4px solid var(--ontario-colour-focus, #009acd);
   outline-offset: 2px;
 }
 

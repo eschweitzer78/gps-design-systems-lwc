@@ -3,7 +3,8 @@
   <apiVersion>65.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Back Button</masterLabel>
-  <description>Navigation back button using tertiary button styling following Ontario Design System guidelines.</description>
+  <description
+  >Navigation back button using tertiary button styling following Ontario Design System guidelines.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>

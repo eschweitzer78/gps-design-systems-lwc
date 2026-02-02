@@ -70,7 +70,7 @@
 
 /* Focus indicator for keyboard navigation */
 .sfgpsdscaon-dropdown__item:focus {
-  outline: 3px solid var(--ontario-colour-focus, #009ACD);
+  outline: 3px solid var(--ontario-colour-focus, #009acd);
   outline-offset: -3px;
   background-color: var(--ontario-colour-grey-light, #f2f2f2);
 }

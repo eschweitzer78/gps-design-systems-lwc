@@ -12,7 +12,7 @@ import tmpl from "./sfGpsDsCaOnFormTime.html";
  * @slot Time
  * @description Ontario Design System Time input for OmniStudio forms.
  * Uses HTML5 time input with Ontario DS styling.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

@@ -1,8 +1,11 @@
 <template lwc:render-mode="light">
   <div class="ontario-accordions__container">
     <h2 lwc:if={name}>{name}</h2>
-    
-    <div lwc:if={computedShowExpandCollapse} class="ontario-accordion__controls">
+
+    <div
+      lwc:if={computedShowExpandCollapse}
+      class="ontario-accordion__controls"
+    >
       <button
         class="ontario-accordion__button--expand-all"
         onclick={handleExpandCollapseAll}

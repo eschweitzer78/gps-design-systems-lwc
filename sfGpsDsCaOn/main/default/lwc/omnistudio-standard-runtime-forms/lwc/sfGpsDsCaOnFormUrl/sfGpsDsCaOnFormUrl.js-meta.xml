@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>65.0</apiVersion>
   <isExposed>false</isExposed>
-  <description>Ontario Design System URL input for OmniStudio standard runtime forms. LWR and LWS compatible. WCAG 2.1 AA compliant.</description>
+  <description
+  >Ontario Design System URL input for OmniStudio standard runtime forms. LWR and LWS compatible. WCAG 2.1 AA compliant.</description>
 </LightningComponentBundle>

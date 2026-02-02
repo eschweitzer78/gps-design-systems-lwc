@@ -12,7 +12,7 @@ import tmpl from "./sfGpsDsCaOnFormBlock.html";
  * @slot Block
  * @description Ontario Design System Block (accordion) for OmniStudio forms.
  * Uses Ontario accordion pattern for collapsible content sections.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

@@ -63,7 +63,12 @@
 
         <!-- Message when upload is disabled (single mode with image) -->
         <!-- WCAG 4.1.3: Status message announced to screen readers -->
-        <p lwc:if={isUploadDisabled} class="sfgpsdscaon-image__disabled-message" role="status" aria-live="polite">
+        <p
+          lwc:if={isUploadDisabled}
+          class="sfgpsdscaon-image__disabled-message"
+          role="status"
+          aria-live="polite"
+        >
           Remove the current image to upload a new one.
         </p>
       </div>
@@ -76,8 +81,15 @@
         role="alert"
         id="errorMessageBlock"
       >
-        <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+        <svg
+          class="ontario-icon"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
         </svg>
         <span class="ontario-error-messaging__content">{errorMessage}</span>
       </div>
@@ -95,27 +107,33 @@
         <div key={item.key} class="sfgpsdscaon-image__item">
           <!-- Image preview -->
           <div class="sfgpsdscaon-image__preview">
-            <img 
+            <img
               lwc:if={item.previewUrl}
-              src={item.previewUrl} 
+              src={item.previewUrl}
               alt={item.altText}
               class="sfgpsdscaon-image__thumbnail"
               loading="lazy"
             />
             <!-- Placeholder if no preview URL -->
             <div lwc:else class="sfgpsdscaon-image__placeholder">
-              <svg class="sfgpsdscaon-image__placeholder-icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
+              <svg
+                class="sfgpsdscaon-image__placeholder-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                />
               </svg>
             </div>
           </div>
-          
+
           <!-- Image info and delete -->
           <div class="sfgpsdscaon-image__info">
             <span class="sfgpsdscaon-image__filename" title={item.filename}>
               {item.filename}
             </span>
-            
+
             <button
               type="button"
               class="sfgpsdscaon-image__delete"
@@ -125,13 +143,15 @@
               data-id={item.data}
               onclick={deleteFile}
             >
-              <svg 
-                class="sfgpsdscaon-image__delete-icon" 
-                aria-hidden="true" 
-                focusable="false" 
+              <svg
+                class="sfgpsdscaon-image__delete-icon"
+                aria-hidden="true"
+                focusable="false"
                 viewBox="0 0 24 24"
               >
-                <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                <path
+                  d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                />
               </svg>
             </button>
           </div>

@@ -6,7 +6,11 @@
     overlay="false"
   ></c-sf-gps-ds-ca-on-loading-indicator>
 
-  <div lwc:elseif={hasError} class="ontario-alert ontario-alert--error" role="alert">
+  <div
+    lwc:elseif={hasError}
+    class="ontario-alert ontario-alert--error"
+    role="alert"
+  >
     <p><strong>Error:</strong> {_error}</p>
   </div>
 

@@ -13,7 +13,7 @@ import tmpl from "./sfGpsDsCaOnFormPassword.html";
  * @description Ontario Design System Password input for OmniStudio forms.
  * Extends the base form password class with Ontario DS styling.
  * Uses type="password" for secure input masking.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

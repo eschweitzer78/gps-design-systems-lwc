@@ -378,11 +378,11 @@ This checklist provides specific test cases for each sfGpsDsCaOn component. Use 
 
 ## Test Execution Log
 
-### Component: ******\_\_\_******
+### Component: **\*\***\_\_\_**\*\***
 
-### Date: ******\_\_\_******
+### Date: **\*\***\_\_\_**\*\***
 
-### Tester: ******\_\_\_******
+### Tester: **\*\***\_\_\_**\*\***
 
 | Test ID | Result | Notes |
 | ------- | ------ | ----- |

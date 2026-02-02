@@ -34,38 +34,38 @@ const THEME_HAS_FOCUS_CLASSNAME = "sfgpsdscaon-has-focus";
  * @slot PlacesTypeahead
  * @description Ontario Design System Places Typeahead for OmniStudio forms.
  * Provides Google Maps address autocomplete functionality with Ontario DS styling.
- * 
+ *
  * ## Google Maps API Requirements
  * - Requires Google Maps API key configured in OmniScript element properties
  * - Uses Google Places Autocomplete API
  * - Supports address component mapping via googleTransformation property
- * 
+ *
  * ## Key Inherited Properties (from OmniscriptPlacesTypeahead)
  * - `selectedPlace` {Array} - Currently selected place for lightning-map
  * - `_placesService` {GooglePlacesService} - Service instance for API calls
  * - `_sessionToken` {string} - Google billing session token
  * - `_googleAttribution` {string} - Required Google branding image
  * - `zoomLevel` {number} - Map zoom level
- * 
+ *
  * ## Key Inherited Methods (from OmniscriptPlacesTypeahead)
  * - `placeAutocomplete()` - Searches Google Places API
  * - `placeDetails()` - Gets full address details
  * - `applySelection()` - Applies selected place to OmniScript data
  * - `transformResult()` - Maps address components to OmniScript fields
- * 
+ *
  * ## Configuration Properties (set in OmniScript Designer)
  * - `googleMapsAPIKey` - Your Google Maps API key
  * - `googleAddressCountry` - Country bias for search results
  * - `googleAddressTypes` - Types of places to search (e.g., "address")
  * - `googleTransformation` - Mapping of address components to OmniScript fields
  * - `hideMap` - Whether to hide the embedded map
- * 
+ *
  * ## Compliance
  * - **LWR**: Uses Light DOM parent component
  * - **LWS**: No eval(), proper namespace imports, try/catch for window APIs
  * - **Ontario DS**: Uses Ontario form field styling
  * - **WCAG 2.1 AA**: Proper ARIA combobox pattern, keyboard navigation
- * 
+ *
  * @see {@link sfGpsDsCaOnFormTypeahead} For non-Google typeahead
  */
 export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTypeahead {
@@ -93,7 +93,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Returns true if the field has a validation error.
-   * 
+   *
    * @returns {boolean} True if field is invalid
    */
   get sfGpsDsIsError() {
@@ -111,7 +111,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Returns the error message to display.
-   * 
+   *
    * @returns {string|null} Error message or null
    */
   get sfGpsDsErrorMessage() {
@@ -130,7 +130,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Computes CSS classes for the label element.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    */
   get computedLabelClassName() {
@@ -142,7 +142,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Computes CSS classes for the input element.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    */
   get computedInputClassName() {
@@ -155,7 +155,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Determines if required/optional flag should display.
-   * 
+   *
    * @returns {boolean} True if flag should show
    */
   get showFlag() {
@@ -164,7 +164,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Returns the flag text ("required" or "optional").
-   * 
+   *
    * @returns {string} Flag text
    */
   get flagText() {
@@ -175,7 +175,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Computes aria-describedby for accessibility.
-   * 
+   *
    * @returns {string|null} Space-separated element IDs
    */
   get computedAriaDescribedBy() {
@@ -187,11 +187,15 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Computes aria-activedescendant for the currently highlighted option.
-   * 
+   *
    * @returns {string|null} ID of highlighted option or null
    */
   get computedAriaActiveDescendant() {
-    if (this._showOptions && this._highlightIndex >= 0 && this._highlightIndex < (this.options?.length || 0)) {
+    if (
+      this._showOptions &&
+      this._highlightIndex >= 0 &&
+      this._highlightIndex < (this.options?.length || 0)
+    ) {
       return `places-option-${this._highlightIndex}`;
     }
     return null;
@@ -199,7 +203,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Returns the number of available options.
-   * 
+   *
    * @returns {number} Number of options
    */
   get optionCount() {
@@ -208,7 +212,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Returns announcement text for screen readers.
-   * 
+   *
    * @returns {string} Announcement text
    */
   get resultsAnnouncement() {
@@ -224,7 +228,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Computes CSS classes for the dropdown container.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    */
   get computedDropdownClassName() {
@@ -236,7 +240,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Returns true if options array has items.
-   * 
+   *
    * @returns {boolean} True if options exist
    */
   get hasOptions() {
@@ -246,7 +250,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
   /**
    * Transforms options for template rendering.
    * Google Places returns predictions with `description` for display.
-   * 
+   *
    * @returns {Array} Decorated options with key, id, and label
    */
   get decoratedOptions() {
@@ -264,16 +268,20 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Returns true if the map should be rendered.
-   * 
+   *
    * @returns {boolean} True to show map
    */
   get showMap() {
-    return !this._propSetMap.hideMap && this.selectedPlace && this.selectedPlace.length > 0;
+    return (
+      !this._propSetMap.hideMap &&
+      this.selectedPlace &&
+      this.selectedPlace.length > 0
+    );
   }
 
   /**
    * Computes CSS classes for the map container.
-   * 
+   *
    * @returns {string} Space-separated CSS classes
    */
   get computedMapClassName() {
@@ -292,7 +300,9 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
    */
   showOptionsDropdown() {
     this._showOptions = true;
-    const triggerEl = this.template.querySelector(".sfgpsdscaon-places-typeahead");
+    const triggerEl = this.template.querySelector(
+      ".sfgpsdscaon-places-typeahead"
+    );
     if (triggerEl) {
       triggerEl.classList.add(THEME_IS_OPEN_CLASSNAME);
     }
@@ -304,7 +314,9 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
   hideOptionsDropdown() {
     this._showOptions = false;
     this._highlightIndex = -1;
-    const triggerEl = this.template.querySelector(".sfgpsdscaon-places-typeahead");
+    const triggerEl = this.template.querySelector(
+      ".sfgpsdscaon-places-typeahead"
+    );
     if (triggerEl) {
       triggerEl.classList.remove(THEME_IS_OPEN_CLASSNAME);
     }
@@ -317,28 +329,31 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
   /**
    * Handles option selection from the dropdown.
    * Creates a synthetic event for the parent's handleSelect method.
-   * 
+   *
    * @param {Event} event - Click or keydown event on option
    */
   handleOptionSelect(event) {
     log.enter("handleOptionSelect", { type: event.type, key: event.key });
-    
+
     if (event.type === "keydown" && event.key !== "Enter") {
       log.exit("handleOptionSelect", "ignored - not Enter key");
       return;
     }
-    
+
     event.preventDefault();
-    
-    const index = parseInt(event.currentTarget.getAttribute("data-option-index"), 10);
+
+    const index = parseInt(
+      event.currentTarget.getAttribute("data-option-index"),
+      10
+    );
     const option = this.options[index];
-    
-    log.debug("Place selected", { 
-      index, 
+
+    log.debug("Place selected", {
+      index,
       placeId: option?.place_id,
-      description: option?.description 
+      description: option?.description
     });
-    
+
     if (option) {
       // Create a synthetic event matching what the parent's handleSelect expects
       const syntheticEvent = {
@@ -347,7 +362,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
         },
         stopPropagation: () => {}
       };
-      
+
       // Call parent's handleSelect which handles Google Places details retrieval
       try {
         log.timeStart("placeDetailsRetrieval");
@@ -359,27 +374,30 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
         log.error("Failed to retrieve place details", error);
       }
     }
-    
+
     this.hideOptionsDropdown();
     log.exit("handleOptionSelect");
   }
 
   /**
    * Handles mouse hover on options.
-   * 
+   *
    * @param {Event} event - Mouseover event
    */
   handleOptionFocus(event) {
     const options = this.template.querySelectorAll('[role="option"]');
     options.forEach((opt) => opt.classList.remove(THEME_HAS_FOCUS_CLASSNAME));
-    
+
     event.currentTarget.classList.add(THEME_HAS_FOCUS_CLASSNAME);
-    this._highlightIndex = parseInt(event.currentTarget.getAttribute("data-option-index"), 10);
+    this._highlightIndex = parseInt(
+      event.currentTarget.getAttribute("data-option-index"),
+      10
+    );
   }
 
   /**
    * Handles keyboard navigation.
-   * 
+   *
    * @param {KeyboardEvent} event - Keydown event on input
    */
   handleInputKeyDown(event) {
@@ -387,7 +405,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
       case "Escape":
         this.hideOptionsDropdown();
         break;
-        
+
       case "ArrowDown":
         event.preventDefault();
         if (!this._showOptions && this.hasOptions) {
@@ -399,13 +417,13 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
         );
         this.updateHighlight();
         break;
-        
+
       case "ArrowUp":
         event.preventDefault();
         this._highlightIndex = Math.max(this._highlightIndex - 1, 0);
         this.updateHighlight();
         break;
-        
+
       case "Enter":
         if (this._showOptions && this._highlightIndex >= 0) {
           event.preventDefault();
@@ -422,7 +440,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
           this.hideOptionsDropdown();
         }
         break;
-        
+
       default:
         break;
     }
@@ -445,7 +463,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Handles input changes and triggers Google Places search.
-   * 
+   *
    * @param {Event} event - Input event
    */
   handleInputChange(event) {
@@ -460,7 +478,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Returns the Ontario DS template.
-   * 
+   *
    * @returns {Object} Template to render
    * @override
    */
@@ -470,13 +488,13 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
 
   /**
    * Initializes component.
-   * 
+   *
    * @override
    */
   connectedCallback() {
     log.enter("connectedCallback");
     log.timeStart("initialization");
-    
+
     if (super.connectedCallback) {
       super.connectedCallback();
     }
@@ -485,26 +503,28 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
     this._showOptions = false;
     this._highlightIndex = -1;
     this.classList.add("caon-scope");
-    
+
     log.debug("Component initialized", {
       label: this._propSetMap?.label,
       required: this._propSetMap?.required,
-      googleMapsAPIKey: this._propSetMap?.googleMapsAPIKey ? "configured" : "missing",
+      googleMapsAPIKey: this._propSetMap?.googleMapsAPIKey
+        ? "configured"
+        : "missing",
       googleAddressCountry: this._propSetMap?.googleAddressCountry || "none"
     });
-    
+
     log.timeEnd("initialization");
     log.exit("connectedCallback");
   }
 
   /**
    * Cleanup when component is removed.
-   * 
+   *
    * @override
    */
   disconnectedCallback() {
     log.debug("Component disconnecting");
-    
+
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }

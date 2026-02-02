@@ -13,7 +13,7 @@ import tmpl from "./sfGpsDsCaOnFormFormula.html";
  * @description Ontario Design System Formula display for OmniStudio forms.
  * Read-only display of calculated values.
  * Extends the base form formula class with Ontario DS styling.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

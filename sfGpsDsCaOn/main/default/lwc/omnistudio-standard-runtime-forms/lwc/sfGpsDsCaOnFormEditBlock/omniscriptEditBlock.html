@@ -23,7 +23,9 @@
           {col.label}
         </div>
       </template>
-      <div class="sfgpsdscaon-edit-block__table-cell sfgpsdscaon-edit-block__table-actions-header">
+      <div
+        class="sfgpsdscaon-edit-block__table-cell sfgpsdscaon-edit-block__table-actions-header"
+      >
         Actions
       </div>
     </div>
@@ -69,16 +71,21 @@
             role="cell"
           >
             <template lwc:if={col.isCheckbox}>
-              <input type="checkbox" checked={col.value} disabled aria-label={col.label} />
+              <input
+                type="checkbox"
+                checked={col.value}
+                disabled
+                aria-label={col.label}
+              />
             </template>
-            <template lwc:else>
-              {col.value}
-            </template>
+            <template lwc:else> {col.value} </template>
           </div>
         </template>
-        
+
         <!-- Actions -->
-        <div class="sfgpsdscaon-edit-block__table-cell sfgpsdscaon-edit-block__table-actions">
+        <div
+          class="sfgpsdscaon-edit-block__table-cell sfgpsdscaon-edit-block__table-actions"
+        >
           <button
             lwc:if={_allowEdit}
             type="button"

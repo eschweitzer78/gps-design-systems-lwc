@@ -14,37 +14,37 @@ import tmpl from "./sfGpsDsCaOnFormTextBlock.html";
  * @slot Text Block
  * @description Ontario Design System Text Block for OmniStudio forms.
  * Displays rich text/HTML content with merge field support and Ontario DS typography.
- * 
+ *
  * This component overrides the standard OmniScript Text Block element to provide
  * Ontario Design System styling while maintaining full merge field functionality.
- * 
+ *
  * ## Architecture
  * - Extends: SfGpsDsFormTextBlock (base form text block)
  * - Renders: HTML content with merge fields replaced
  * - Styling: Ontario DS typography via caon-scope class
- * 
+ *
  * ## OmniScript Configuration
  * In OmniScript Designer, configure the Text Block:
  * - Text: HTML content with optional merge fields (e.g., %FirstName%)
  * - Supports all standard HTML tags and inline styles
  * - Merge fields are replaced at runtime with data values
- * 
+ *
  * ## Merge Field Examples
  * - %FirstName% - Simple field reference
  * - %Address:Street% - Nested field reference
  * - %Items[0]:Name% - Array element reference
- * 
+ *
  * ## OmniScript Registration
  * Register in your OmniScript LWC override:
  * ```javascript
  * import sfGpsDsCaOnFormTextBlock from "c/sfGpsDsCaOnFormTextBlock";
- * 
+ *
  * static elementTypeToLwcConstructorMap = {
  *   ...OmniscriptBaseOsrt.elementTypeToLwcConstructorMap,
  *   "Text Block": sfGpsDsCaOnFormTextBlock,
  * };
  * ```
- * 
+ *
  * Compliance:
  * - LWR: Uses lwc:dom="manual" for dynamic HTML injection
  * - LWS: Uses replaceInnerHtml helper for safe HTML insertion
@@ -55,7 +55,7 @@ export default class SfGpsDsCaOnFormTextBlock extends SfGpsDsFormTextBlock {
   /* ========================================
    * CONSTANTS
    * ======================================== */
-  
+
   /**
    * CSS selector for the merge field container element.
    * @type {string}

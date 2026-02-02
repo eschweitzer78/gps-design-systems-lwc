@@ -20,29 +20,41 @@
     <!-- Label -->
     <label lwc:if={mergedLabel} class="ontario-label">
       {mergedLabel}
-      <span lwc:if={_propSetMap.required} class="ontario-label__flag">(required)</span>
+      <span lwc:if={_propSetMap.required} class="ontario-label__flag"
+        >(required)</span
+      >
     </label>
 
     <!-- Disclosure content -->
-    <div id={_disclosureId} class="ontario-callout sfgpsdscaon-disclosure__content">
-      <c-sf-gps-ds-osrt-omniscript-formatted-rich-text
-        value={_dText}
-      >
+    <div
+      id={_disclosureId}
+      class="ontario-callout sfgpsdscaon-disclosure__content"
+    >
+      <c-sf-gps-ds-osrt-omniscript-formatted-rich-text value={_dText}>
       </c-sf-gps-ds-osrt-omniscript-formatted-rich-text>
     </div>
 
     <!-- Error message -->
-    <div 
+    <div
       lwc:if={hasError}
       id={_errorId}
       class="ontario-error-messaging"
       role="alert"
       aria-live="assertive"
     >
-      <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
       </svg>
-      <span class="ontario-error-messaging__content">{sfGpsDsErrorMessage}</span>
+      <span class="ontario-error-messaging__content"
+        >{sfGpsDsErrorMessage}</span
+      >
     </div>
 
     <!-- Consent checkbox -->

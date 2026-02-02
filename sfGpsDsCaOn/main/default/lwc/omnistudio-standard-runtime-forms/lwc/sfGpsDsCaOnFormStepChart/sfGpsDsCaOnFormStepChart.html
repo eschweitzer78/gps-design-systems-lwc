@@ -15,15 +15,15 @@
     - Progress percentage announced on step change
 -->
 <template>
-  <div 
+  <div
     class="sfgpsdscaon-step-chart"
     role="region"
     aria-label="Form progress indicator"
   >
     <!-- Screen reader announcement for step progress - AODA -->
-    <div 
-      class="ontario-show-for-sr" 
-      aria-live="polite" 
+    <div
+      class="ontario-show-for-sr"
+      aria-live="polite"
       aria-atomic="true"
       role="status"
     >
@@ -41,8 +41,6 @@
     ></ontario-step-indicator>
 
     <!-- Accessible progress description -->
-    <p class="ontario-show-for-sr">
-      {accessibleProgressDescription}
-    </p>
+    <p class="ontario-show-for-sr">{accessibleProgressDescription}</p>
   </div>
 </template>

@@ -3,7 +3,8 @@
   <apiVersion>65.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Back to Top</masterLabel>
-  <description>Fixed position button that scrolls to the top of the page following Ontario Design System guidelines.</description>
+  <description
+  >Fixed position button that scrolls to the top of the page following Ontario Design System guidelines.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>

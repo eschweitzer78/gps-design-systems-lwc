@@ -14,39 +14,39 @@ import tmpl from "./sfGpsDsCaOnFormRange.html";
  * @slot Range
  * @description Ontario Design System Range/Slider input for OmniStudio forms.
  * Extends the base OmniScript Range with Ontario DS styling and validation.
- * 
+ *
  * This component overrides the standard OmniScript Range element to provide
  * Ontario Design System styling while maintaining full slider functionality.
- * 
+ *
  * ## Architecture
  * - Extends: SfGpsDsOmniHasValidationMixin(OmniscriptRange)
  * - Input Type: HTML range input styled with Ontario DS
  * - Validation: Min/max range bounds, step validation
- * 
+ *
  * ## OmniScript Configuration
  * In OmniScript Designer, configure the Range:
  * - Range Low: Minimum value
  * - Range High: Maximum value
  * - Step: Increment step size
  * - Default Value: Initial slider position
- * 
+ *
  * ## Inherited Properties (from OmniScript)
  * - _propSetMap.rangeLow: Minimum value
  * - _propSetMap.rangeHigh: Maximum value
  * - _propSetMap.step: Step increment
  * - elementValue: Current slider value
- * 
+ *
  * ## OmniScript Registration
  * Register in your OmniScript LWC override:
  * ```javascript
  * import sfGpsDsCaOnFormRange from "c/sfGpsDsCaOnFormRange";
- * 
+ *
  * static elementTypeToLwcConstructorMap = {
  *   ...OmniscriptBaseOsrt.elementTypeToLwcConstructorMap,
  *   "Range": sfGpsDsCaOnFormRange,
  * };
  * ```
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

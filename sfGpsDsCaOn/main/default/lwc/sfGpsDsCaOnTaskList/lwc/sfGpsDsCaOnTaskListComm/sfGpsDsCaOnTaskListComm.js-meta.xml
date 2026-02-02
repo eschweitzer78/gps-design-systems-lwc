@@ -3,7 +3,8 @@
   <apiVersion>65.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Task List</masterLabel>
-  <description>Displays a multi-step task tracker with status badges following Ontario Design System guidelines.</description>
+  <description
+  >Displays a multi-step task tracker with status badges following Ontario Design System guidelines.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>

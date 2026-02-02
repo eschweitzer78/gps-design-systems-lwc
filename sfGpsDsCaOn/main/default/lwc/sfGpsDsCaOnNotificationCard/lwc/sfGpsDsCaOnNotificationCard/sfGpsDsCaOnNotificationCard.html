@@ -4,12 +4,27 @@
       <h3 class="sfgpsdscaon-notification-card__title">{heading}</h3>
     </div>
     <div class="sfgpsdscaon-notification-card__body">
-      <p lwc:if={description} class="sfgpsdscaon-notification-card__description">{description}</p>
-      <a lwc:if={computedUrl} href={computedUrl} class="sfgpsdscaon-notification-card__link">
-        <span lwc:if={hasUnread} class="sfgpsdscaon-notification-card__badge" aria-label={badgeAriaLabel}>
+      <p
+        lwc:if={description}
+        class="sfgpsdscaon-notification-card__description"
+      >
+        {description}
+      </p>
+      <a
+        lwc:if={computedUrl}
+        href={computedUrl}
+        class="sfgpsdscaon-notification-card__link"
+      >
+        <span
+          lwc:if={hasUnread}
+          class="sfgpsdscaon-notification-card__badge"
+          aria-label={badgeAriaLabel}
+        >
           {computedUnreadCount} unread
         </span>
-        <span lwc:else class="sfgpsdscaon-notification-card__view-all">View all</span>
+        <span lwc:else class="sfgpsdscaon-notification-card__view-all"
+          >View all</span
+        >
       </a>
     </div>
   </div>

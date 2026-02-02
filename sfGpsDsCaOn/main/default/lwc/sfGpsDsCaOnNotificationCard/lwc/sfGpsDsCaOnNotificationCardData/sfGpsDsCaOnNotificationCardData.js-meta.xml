@@ -3,7 +3,8 @@
   <apiVersion>64.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Notification Card (Data Connected)</masterLabel>
-  <description>Data-connected notification card that automatically fetches notification counts from Salesforce based on notification type.</description>
+  <description
+  >Data-connected notification card that automatically fetches notification counts from Salesforce based on notification type.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>

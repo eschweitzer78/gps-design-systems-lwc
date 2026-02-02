@@ -2,5 +2,6 @@
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
   <apiVersion>65.0</apiVersion>
   <isExposed>false</isExposed>
-  <description>Ontario Design System Date Input - Base component with day/month/year fields</description>
+  <description
+  >Ontario Design System Date Input - Base component with day/month/year fields</description>
 </LightningComponentBundle>

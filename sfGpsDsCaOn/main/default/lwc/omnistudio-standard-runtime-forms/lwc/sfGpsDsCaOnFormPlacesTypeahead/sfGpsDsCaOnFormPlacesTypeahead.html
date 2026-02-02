@@ -16,14 +16,9 @@
 <template>
   <div class="ontario-form-group sfgpsdscaon-places-typeahead">
     <!-- Label -->
-    <label 
-      class={computedLabelClassName} 
-      for="places-input"
-    >
+    <label class={computedLabelClassName} for="places-input">
       {mergedLabel}
-      <span lwc:if={showFlag} class="ontario-label__flag">
-        ({flagText})
-      </span>
+      <span lwc:if={showFlag} class="ontario-label__flag"> ({flagText}) </span>
     </label>
 
     <!-- Help Text / Hint -->
@@ -32,10 +27,10 @@
     </span>
 
     <!-- Error Message -->
-    <div 
-      lwc:if={sfGpsDsIsError} 
-      id="errorMessageBlock" 
-      class="ontario-error-messaging" 
+    <div
+      lwc:if={sfGpsDsIsError}
+      id="errorMessageBlock"
+      class="ontario-error-messaging"
       role="alert"
       aria-live="assertive"
     >
@@ -83,23 +78,25 @@
 
       <!-- Search Icon -->
       <span class="sfgpsdscaon-typeahead__icon" aria-hidden="true">
-        <svg 
-          viewBox="0 0 24 24" 
-          width="24" 
-          height="24"
-          focusable="false"
-        >
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        <svg viewBox="0 0 24 24" width="24" height="24" focusable="false">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+          />
         </svg>
       </span>
 
       <!-- Screen Reader Announcement -->
-      <div class="ontario-show-for-sr" aria-live="polite" aria-atomic="true" role="status">
+      <div
+        class="ontario-show-for-sr"
+        aria-live="polite"
+        aria-atomic="true"
+        role="status"
+      >
         <span lwc:if={_showOptions}>{resultsAnnouncement}</span>
       </div>
 
       <!-- Options Dropdown -->
-      <div 
+      <div
         lwc:if={hasOptions}
         id="places-listbox"
         class={computedDropdownClassName}
@@ -125,7 +122,7 @@
               </span>
             </li>
           </template>
-          
+
           <!-- Google Attribution - Required by API Terms -->
           <li class="sfgpsdscaon-dropdown__attribution" aria-hidden="true">
             <img
@@ -140,8 +137,8 @@
 
     <!-- Map Display -->
     <div lwc:if={showMap} class={computedMapClassName}>
-      <lightning-map 
-        map-markers={selectedPlace} 
+      <lightning-map
+        map-markers={selectedPlace}
         zoom-level={zoomLevel}
       ></lightning-map>
     </div>

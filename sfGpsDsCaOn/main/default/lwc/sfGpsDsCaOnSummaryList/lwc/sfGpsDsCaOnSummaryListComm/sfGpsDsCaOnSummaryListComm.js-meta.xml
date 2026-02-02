@@ -3,7 +3,8 @@
   <apiVersion>65.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Summary List</masterLabel>
-  <description>Displays a key-value pair list for form review and confirmation pages following Ontario Design System guidelines.</description>
+  <description
+  >Displays a key-value pair list for form review and confirmation pages following Ontario Design System guidelines.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>

@@ -13,12 +13,12 @@ import tmpl from "./sfGpsDsCaOnFormStepChart.html";
  * @description Ontario Design System Step Chart component for OmniStudio forms.
  * Displays visual progress indicator for multi-step forms.
  * Uses Ontario DS step indicator web component.
- * 
+ *
  * Compliance:
  * - LWR: Uses Ontario DS web component with lwc:external
  * - LWS: No eval(), proper namespace imports
  * - Ontario DS: Uses ontario-step-indicator web component
- * - WCAG 2.1 AA / AODA: 
+ * - WCAG 2.1 AA / AODA:
  *   - Progress information accessible to screen readers via live region
  *   - Current step clearly indicated visually and programmatically
  *   - Progress percentage announced on step change
@@ -73,7 +73,7 @@ export default class SfGpsDsCaOnFormStepChart extends SfGpsDsFormStepChart {
     const currentStep = this.sfGpsDsStepNumber || 1;
     const totalSteps = this.sfGpsDsStepCount || 1;
     const percentage = Math.round(this.computedPercentage);
-    
+
     return `Step ${currentStep} of ${totalSteps}. ${percentage}% complete.`;
   }
 
@@ -90,8 +90,7 @@ export default class SfGpsDsCaOnFormStepChart extends SfGpsDsFormStepChart {
     const totalSteps = this.sfGpsDsStepCount || 1;
     const percentage = Math.round(this.computedPercentage);
 
-    this._progressAnnouncement = 
-      `Progress: Step ${currentStep} of ${totalSteps}, ${percentage}% complete`;
+    this._progressAnnouncement = `Progress: Step ${currentStep} of ${totalSteps}, ${percentage}% complete`;
 
     // Clear announcement after delay to allow re-announcement on next change
     setTimeout(() => {

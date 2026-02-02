@@ -13,7 +13,7 @@ import tmpl from "./sfGpsDsCaOnFormDisclosure.html";
  * @description Ontario Design System Disclosure component for OmniStudio forms.
  * Displays disclosure content with a required acceptance checkbox.
  * Used for terms and conditions, privacy policies, etc.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM pattern
  * - LWS: No eval(), proper namespace imports

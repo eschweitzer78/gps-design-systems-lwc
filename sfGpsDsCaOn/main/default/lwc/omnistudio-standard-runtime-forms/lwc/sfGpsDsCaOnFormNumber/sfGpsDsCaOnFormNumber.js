@@ -13,7 +13,7 @@ import tmpl from "./sfGpsDsCaOnFormNumber.html";
  * @description Ontario Design System Number input for OmniStudio forms.
  * Extends the base form number class with Ontario DS styling.
  * Uses inputmode="decimal" for proper mobile keyboard.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

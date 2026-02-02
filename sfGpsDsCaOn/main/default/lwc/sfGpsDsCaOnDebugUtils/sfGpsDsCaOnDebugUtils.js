@@ -7,29 +7,29 @@
 
 /**
  * Debug and Logging Utilities for sfGpsDsCaOn Components
- * 
+ *
  * Provides consistent logging, tracing, and debugging capabilities
  * for Ontario Design System LWC components.
- * 
+ *
  * ## Usage
  * ```javascript
  * import { Logger, debugMode, trace, measurePerformance } from 'c/sfGpsDsCaOnDebugUtils';
- * 
+ *
  * // Create a logger for your component
  * const log = new Logger('SfGpsDsCaOnTextInput');
- * 
+ *
  * // Use in your component
  * log.debug('Initializing component', { value: this.value });
  * log.info('User selected option', option);
  * log.warn('Deprecated property used', 'oldProp');
  * log.error('Failed to load data', error);
  * ```
- * 
+ *
  * ## Enabling Debug Mode
  * - Set `window.sfGpsDsCaOnDebug = true` in browser console
  * - Or add `?debug=true` to URL
  * - Or set `localStorage.setItem('sfGpsDsCaOnDebug', 'true')`
- * 
+ *
  * @module sfGpsDsCaOnDebugUtils
  */
 
@@ -68,7 +68,7 @@ const instanceCounters = new Map();
 /**
  * Checks if debug mode is enabled via various mechanisms.
  * Safe for LWS - uses try/catch for restricted APIs.
- * 
+ *
  * @returns {boolean} True if debug mode is enabled
  */
 export function isDebugEnabled() {
@@ -77,15 +77,18 @@ export function isDebugEnabled() {
     if (typeof window !== "undefined" && window.sfGpsDsCaOnDebug === true) {
       return true;
     }
-    
+
     // Check URL parameter
     if (typeof window !== "undefined" && window.location) {
       const params = new URLSearchParams(window.location.search);
-      if (params.get("debug") === "true" || params.get("sfGpsDsCaOnDebug") === "true") {
+      if (
+        params.get("debug") === "true" ||
+        params.get("sfGpsDsCaOnDebug") === "true"
+      ) {
         return true;
       }
     }
-    
+
     // Check localStorage
     if (typeof localStorage !== "undefined") {
       if (localStorage.getItem("sfGpsDsCaOnDebug") === "true") {
@@ -95,13 +98,13 @@ export function isDebugEnabled() {
   } catch (e) {
     // LWS may restrict these - fail silently
   }
-  
+
   return false;
 }
 
 /**
  * Sets the current log level.
- * 
+ *
  * @param {number} level - LogLevel value
  */
 export function setLogLevel(level) {
@@ -112,7 +115,7 @@ export function setLogLevel(level) {
 
 /**
  * Gets the current log level.
- * 
+ *
  * @returns {number} Current LogLevel
  */
 export function getLogLevel() {
@@ -150,7 +153,7 @@ export function disableDebug() {
 /**
  * Generates a unique instance ID for a component.
  * Useful for tracing multiple instances of the same component.
- * 
+ *
  * @param {string} componentName - Name of the component class
  * @returns {string} Unique instance identifier (e.g., "SfGpsDsCaOnTextInput#3")
  */
@@ -162,7 +165,7 @@ export function generateInstanceId(componentName) {
 
 /**
  * Logger class for consistent component logging.
- * 
+ *
  * @example
  * const log = new Logger('SfGpsDsCaOnDropdown');
  * log.debug('Options loaded', { count: options.length });
@@ -170,7 +173,7 @@ export function generateInstanceId(componentName) {
 export class Logger {
   /**
    * Creates a new Logger instance.
-   * 
+   *
    * @param {string} componentName - Name of the component (used as prefix)
    * @param {Object} [options] - Logger options
    * @param {boolean} [options.includeTimestamp=false] - Include timestamp in logs
@@ -180,10 +183,10 @@ export class Logger {
     this.componentName = componentName;
     this.includeTimestamp = options.includeTimestamp || false;
     this.includeInstanceId = options.includeInstanceId || false;
-    this.instanceId = options.includeInstanceId 
-      ? generateInstanceId(componentName) 
+    this.instanceId = options.includeInstanceId
+      ? generateInstanceId(componentName)
       : null;
-    
+
     // Check debug mode on creation
     if (isDebugEnabled() && currentLogLevel < LogLevel.DEBUG) {
       currentLogLevel = LogLevel.DEBUG;
@@ -192,25 +195,25 @@ export class Logger {
 
   /**
    * Formats the log prefix with component name, timestamp, etc.
-   * 
+   *
    * @returns {string} Formatted prefix
    * @private
    */
   _formatPrefix() {
     const parts = [];
-    
+
     if (this.includeTimestamp) {
       parts.push(new Date().toISOString());
     }
-    
+
     parts.push(`[${this.instanceId || this.componentName}]`);
-    
+
     return parts.join(" ");
   }
 
   /**
    * Logs a trace-level message (most verbose).
-   * 
+   *
    * @param {string} method - Method name or context
    * @param {...any} args - Additional arguments to log
    */
@@ -222,7 +225,7 @@ export class Logger {
 
   /**
    * Logs a debug-level message.
-   * 
+   *
    * @param {string} message - Log message
    * @param {...any} args - Additional arguments to log
    */
@@ -234,7 +237,7 @@ export class Logger {
 
   /**
    * Logs an info-level message.
-   * 
+   *
    * @param {string} message - Log message
    * @param {...any} args - Additional arguments to log
    */
@@ -246,7 +249,7 @@ export class Logger {
 
   /**
    * Logs a warning-level message.
-   * 
+   *
    * @param {string} message - Log message
    * @param {...any} args - Additional arguments to log
    */
@@ -258,20 +261,24 @@ export class Logger {
 
   /**
    * Logs an error-level message.
-   * 
+   *
    * @param {string} message - Log message
    * @param {Error|any} [error] - Error object or additional data
    * @param {...any} args - Additional arguments to log
    */
   error(message, error, ...args) {
     if (currentLogLevel >= LogLevel.ERROR) {
-      console.error(`${this._formatPrefix()} ERROR: ${message}`, error, ...args);
+      console.error(
+        `${this._formatPrefix()} ERROR: ${message}`,
+        error,
+        ...args
+      );
     }
   }
 
   /**
    * Logs method entry (for tracing execution flow).
-   * 
+   *
    * @param {string} methodName - Name of the method
    * @param {Object} [params] - Method parameters
    */
@@ -283,47 +290,53 @@ export class Logger {
 
   /**
    * Logs method exit (for tracing execution flow).
-   * 
+   *
    * @param {string} methodName - Name of the method
    * @param {any} [result] - Return value
    */
   exit(methodName, result) {
     if (currentLogLevel >= LogLevel.TRACE) {
-      console.log(`${this._formatPrefix()} < ${methodName}`, result !== undefined ? result : "");
+      console.log(
+        `${this._formatPrefix()} < ${methodName}`,
+        result !== undefined ? result : ""
+      );
     }
   }
 
   /**
    * Logs a state change.
-   * 
+   *
    * @param {string} property - Property that changed
    * @param {any} oldValue - Previous value
    * @param {any} newValue - New value
    */
   stateChange(property, oldValue, newValue) {
     if (currentLogLevel >= LogLevel.DEBUG) {
-      console.debug(
-        `${this._formatPrefix()} State: ${property}`,
-        { from: oldValue, to: newValue }
-      );
+      console.debug(`${this._formatPrefix()} State: ${property}`, {
+        from: oldValue,
+        to: newValue
+      });
     }
   }
 
   /**
    * Logs an event dispatch.
-   * 
+   *
    * @param {string} eventName - Name of the event
    * @param {any} [detail] - Event detail
    */
   eventDispatch(eventName, detail) {
     if (currentLogLevel >= LogLevel.DEBUG) {
-      console.debug(`${this._formatPrefix()} Event: ${eventName}`, detail || "");
+      console.debug(
+        `${this._formatPrefix()} Event: ${eventName}`,
+        detail || ""
+      );
     }
   }
 
   /**
    * Logs an event received.
-   * 
+   *
    * @param {string} eventName - Name of the event
    * @param {Event} event - The event object
    */
@@ -338,13 +351,13 @@ export class Logger {
 
   /**
    * Starts a performance measurement.
-   * 
+   *
    * @param {string} label - Unique label for the measurement
    */
   timeStart(label) {
     const key = `${this.componentName}:${label}`;
     performanceMarks.set(key, performance.now());
-    
+
     if (currentLogLevel >= LogLevel.DEBUG) {
       console.debug(`${this._formatPrefix()} Timer started: ${label}`);
     }
@@ -352,32 +365,34 @@ export class Logger {
 
   /**
    * Ends a performance measurement and logs the duration.
-   * 
+   *
    * @param {string} label - Label used in timeStart
    * @returns {number} Duration in milliseconds
    */
   timeEnd(label) {
     const key = `${this.componentName}:${label}`;
     const startTime = performanceMarks.get(key);
-    
+
     if (startTime === undefined) {
       this.warn(`Timer "${label}" was not started`);
       return 0;
     }
-    
+
     const duration = performance.now() - startTime;
     performanceMarks.delete(key);
-    
+
     if (currentLogLevel >= LogLevel.DEBUG) {
-      console.debug(`${this._formatPrefix()} Timer ${label}: ${duration.toFixed(2)}ms`);
+      console.debug(
+        `${this._formatPrefix()} Timer ${label}: ${duration.toFixed(2)}ms`
+      );
     }
-    
+
     return duration;
   }
 
   /**
    * Creates a child logger with additional context.
-   * 
+   *
    * @param {string} context - Additional context (e.g., method name)
    * @returns {Logger} New logger with combined context
    */
@@ -391,23 +406,23 @@ export class Logger {
 
 /**
  * Decorator-style function for tracing method execution.
- * 
+ *
  * @param {string} componentName - Component name
  * @param {string} methodName - Method name
  * @param {Function} fn - Function to trace
  * @returns {Function} Wrapped function with tracing
- * 
+ *
  * @example
  * this.handleClick = trace('MyComponent', 'handleClick', this.handleClick.bind(this));
  */
 export function trace(componentName, methodName, fn) {
   const log = new Logger(componentName);
-  
-  return function(...args) {
+
+  return function (...args) {
     log.enter(methodName, args.length > 0 ? args : undefined);
     try {
       const result = fn.apply(this, args);
-      
+
       // Handle promises
       if (result && typeof result.then === "function") {
         return result.then(
@@ -421,7 +436,7 @@ export function trace(componentName, methodName, fn) {
           }
         );
       }
-      
+
       log.exit(methodName, result);
       return result;
     } catch (error) {
@@ -433,11 +448,11 @@ export function trace(componentName, methodName, fn) {
 
 /**
  * Measures the execution time of a function.
- * 
+ *
  * @param {string} label - Label for the measurement
  * @param {Function} fn - Function to measure
  * @returns {any} Result of the function
- * 
+ *
  * @example
  * const result = measurePerformance('loadData', () => this.fetchData());
  */
@@ -445,7 +460,7 @@ export function measurePerformance(label, fn) {
   const start = performance.now();
   try {
     const result = fn();
-    
+
     // Handle promises
     if (result && typeof result.then === "function") {
       return result.finally(() => {
@@ -455,16 +470,19 @@ export function measurePerformance(label, fn) {
         }
       });
     }
-    
+
     const duration = performance.now() - start;
     if (currentLogLevel >= LogLevel.DEBUG) {
       console.debug(`[Performance] ${label}: ${duration.toFixed(2)}ms`);
     }
-    
+
     return result;
   } catch (error) {
     const duration = performance.now() - start;
-    console.error(`[Performance] ${label} failed after ${duration.toFixed(2)}ms`, error);
+    console.error(
+      `[Performance] ${label} failed after ${duration.toFixed(2)}ms`,
+      error
+    );
     throw error;
   }
 }
@@ -472,7 +490,7 @@ export function measurePerformance(label, fn) {
 /**
  * Assertion helper for debugging.
  * Only executes in debug mode.
- * 
+ *
  * @param {boolean} condition - Condition that should be true
  * @param {string} message - Message if assertion fails
  */
@@ -486,7 +504,7 @@ export function debugAssert(condition, message) {
 
 /**
  * Dumps component state to console (debug mode only).
- * 
+ *
  * @param {string} componentName - Component name
  * @param {Object} state - State object to dump
  */

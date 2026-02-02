@@ -62,8 +62,15 @@
         role="alert"
         id="errorMessageBlock"
       >
-        <svg class="ontario-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+        <svg
+          class="ontario-icon"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
         </svg>
         <span class="ontario-error-messaging__content">{errorMessage}</span>
       </div>
@@ -83,20 +90,22 @@
           <li key={item.key} class="sfgpsdscaon-file__item">
             <div class="sfgpsdscaon-file__item-content">
               <!-- File icon -->
-              <svg 
-                class="sfgpsdscaon-file__item-icon" 
-                aria-hidden="true" 
-                focusable="false" 
+              <svg
+                class="sfgpsdscaon-file__item-icon"
+                aria-hidden="true"
+                focusable="false"
                 viewBox="0 0 24 24"
               >
-                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                <path
+                  d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
+                />
               </svg>
-              
+
               <!-- File name -->
               <span class="sfgpsdscaon-file__item-name" title={item.filename}>
                 {item.filename}
               </span>
-              
+
               <!-- Delete button -->
               <button
                 type="button"
@@ -107,13 +116,15 @@
                 data-id={item.data}
                 onclick={deleteFile}
               >
-                <svg 
-                  class="sfgpsdscaon-file__delete-icon" 
-                  aria-hidden="true" 
-                  focusable="false" 
+                <svg
+                  class="sfgpsdscaon-file__delete-icon"
+                  aria-hidden="true"
+                  focusable="false"
                   viewBox="0 0 24 24"
                 >
-                  <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                  <path
+                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                  />
                 </svg>
               </button>
             </div>

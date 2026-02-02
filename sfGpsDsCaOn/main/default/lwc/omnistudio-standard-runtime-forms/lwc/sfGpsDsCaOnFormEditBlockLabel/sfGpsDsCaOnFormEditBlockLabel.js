@@ -12,7 +12,7 @@ import tmpl from "./sfGpsDsCaOnFormEditBlockLabel.html";
  * @slot EditBlockLabel
  * @description Ontario Design System EditBlock Label for OmniStudio forms.
  * Displays the heading and global actions for an EditBlock.
- * 
+ *
  * Compliance:
  * - LWR: Uses Light DOM parent component
  * - LWS: No eval(), proper namespace imports

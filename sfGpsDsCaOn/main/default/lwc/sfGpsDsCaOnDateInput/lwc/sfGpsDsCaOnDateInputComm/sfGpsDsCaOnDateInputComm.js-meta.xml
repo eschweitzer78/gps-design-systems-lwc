@@ -3,7 +3,8 @@
   <apiVersion>65.0</apiVersion>
   <isExposed>true</isExposed>
   <masterLabel>Ontario DS Date Input</masterLabel>
-  <description>Ontario Design System Date Input with separate day, month, and year fields for accessible date entry.</description>
+  <description
+  >Ontario Design System Date Input with separate day, month, and year fields for accessible date entry.</description>
   <targets>
     <target>lightningCommunity__Page</target>
     <target>lightningCommunity__Default</target>
