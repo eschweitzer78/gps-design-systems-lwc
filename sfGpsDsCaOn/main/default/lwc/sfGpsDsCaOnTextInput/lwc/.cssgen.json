@@ -1,8 +1,3 @@
 {
-  "files": [
-    {
-      "source": "sfGpsDsCaOnTextInput/ontario-text-input.scss",
-      "target": "sfGpsDsCaOnTextInput/sfGpsDsCaOnTextInput.css"
-    }
-  ]
+  "sfGpsDsCaOnTextInput/ontario-text-input": []
 }

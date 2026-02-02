@@ -1,8 +1,3 @@
 {
-  "files": [
-    {
-      "source": "sfGpsDsCaOnDateInput/ontario-date-input.scss",
-      "target": "sfGpsDsCaOnDateInput/sfGpsDsCaOnDateInput.css"
-    }
-  ]
+  "sfGpsDsCaOnDateInput/ontario-date-input": []
 }
