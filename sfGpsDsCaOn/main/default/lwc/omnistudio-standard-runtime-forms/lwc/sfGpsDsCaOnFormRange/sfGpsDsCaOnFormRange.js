@@ -134,7 +134,6 @@ export default class SfGpsDsCaOnFormRange extends SfGpsDsOmniHasValidationMixin(
    */
   get computedAriaValueText() {
     const value = this.displayValue;
-    const min = this.minValue;
     const max = this.maxValue;
     return `${value} out of ${max}`;
   }

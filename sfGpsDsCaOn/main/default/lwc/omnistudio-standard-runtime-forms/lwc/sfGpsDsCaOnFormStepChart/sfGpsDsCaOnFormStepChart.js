@@ -93,6 +93,7 @@ export default class SfGpsDsCaOnFormStepChart extends SfGpsDsFormStepChart {
     this._progressAnnouncement = `Progress: Step ${currentStep} of ${totalSteps}, ${percentage}% complete`;
 
     // Clear announcement after delay to allow re-announcement on next change
+    // eslint-disable-next-line @lwc/lwc/no-async-operation
     setTimeout(() => {
       this._progressAnnouncement = "";
     }, 1000);

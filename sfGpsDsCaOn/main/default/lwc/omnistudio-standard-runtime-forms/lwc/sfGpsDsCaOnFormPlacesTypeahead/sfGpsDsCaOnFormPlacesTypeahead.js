@@ -466,7 +466,7 @@ export default class SfGpsDsCaOnFormPlacesTypeahead extends SfGpsDsFormPlacesTyp
    *
    * @param {Event} event - Input event
    */
-  handleInputChange(event) {
+  handleInputChange() {
     if (this.hasOptions) {
       this.showOptionsDropdown();
     }

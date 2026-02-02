@@ -406,13 +406,14 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
         this.updateHighlight();
         break;
 
-      case "ArrowUp":
+      case "ArrowUp": {
         event.preventDefault();
         const prevIndex = this._highlightIndex;
         this._highlightIndex = Math.max(this._highlightIndex - 1, 0);
         log.stateChange("_highlightIndex", prevIndex, this._highlightIndex);
         this.updateHighlight();
         break;
+      }
 
       case "Enter":
         if (this._showOptions && this._highlightIndex >= 0) {
@@ -462,7 +463,7 @@ export default class SfGpsDsCaOnFormTypeahead extends SfGpsDsFormTypeahead {
    *
    * @param {Event} event - Input or focus event
    */
-  handleInputChange(event) {
+  handleInputChange() {
     // Parent's handleTypeahead is bound to keyup and handles debounced search
     // We call it via the event system
     if (this.hasOptions) {

@@ -95,7 +95,7 @@ export function isDebugEnabled() {
         return true;
       }
     }
-  } catch (e) {
+  } catch {
     // LWS may restrict these - fail silently
   }
 
@@ -131,7 +131,7 @@ export function enableDebug() {
     if (typeof window !== "undefined") {
       window.sfGpsDsCaOnDebug = true;
     }
-  } catch (e) {
+  } catch {
     // LWS restriction - ignore
   }
 }
@@ -145,7 +145,7 @@ export function disableDebug() {
     if (typeof window !== "undefined") {
       window.sfGpsDsCaOnDebug = false;
     }
-  } catch (e) {
+  } catch {
     // LWS restriction - ignore
   }
 }
