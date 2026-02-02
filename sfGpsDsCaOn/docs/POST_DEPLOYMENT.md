@@ -241,11 +241,82 @@ If components are not rendering:
 
 ---
 
-## Step 7: Publish Your Site
+## Step 7: Configure ESRI Map for Guest Users (If Using GIS Components)
+
+If your site uses the Site Selector Tool or Discharge Point Selector with ESRI maps, guest users need special configuration to access the Visualforce map page.
+
+> **Why**: LWR Experience Cloud sites cannot serve Visualforce pages directly. The VF domain (`--c.vf.force.com`) requires authentication. A Salesforce Site is needed to serve the VF page to guests.
+
+### Create a Salesforce Site for VF Pages
+
+1. **Setup → Sites** (User Interface section, NOT Digital Experiences)
+2. Click **New** Site:
+
+| Field                              | Value                         |
+| ---------------------------------- | ----------------------------- |
+| Site Label                         | `ESRI Map`                    |
+| Site Name                          | `esrimap`                     |
+| Active Site Home Page              | `sfGpsDsCaOnSiteSelectorPage` |
+| Active                             | ☑️ Checked                    |
+| Require Secure Connections (HTTPS) | ☑️ Checked                    |
+
+3. Click **Save**
+
+### Configure Guest User Access
+
+1. Click on the **Site Label** ("ESRI Map")
+2. Click **Public Access Settings**
+3. Add to **Enabled Visualforce Page Access**:
+   - `sfGpsDsCaOnSiteSelectorPage`
+4. Add to **Enabled Apex Class Access**:
+   - `sfGpsDsCaOnSiteSelectorCtr`
+5. Save
+
+### Activate and Note the URL
+
+1. Click **Activate** on the Site
+2. Copy the **Site URL** (e.g., `https://yourorg.my.salesforce-sites.com/esrimap`)
+
+### Configure Custom Metadata
+
+**Setup → Custom Metadata Types → `utils` → Manage Records**
+
+Create or update these records:
+
+| Developer Name | Value                                                 | Required                         |
+| -------------- | ----------------------------------------------------- | -------------------------------- |
+| `VF_Site_URL`  | `https://yourorg.my.salesforce-sites.com/esrimap`     | **Yes** for guest access         |
+| `ESRI_API_Key` | Your ESRI ArcGIS API key                              | **Yes** for map display          |
+| `SiteName`     | Your Experience Cloud site name (e.g., `sfGpsDsCaOn`) | **Yes** for postMessage security |
+
+### Update Experience Builder CSP
+
+In **Experience Builder → Settings → Security**, add to frame-src:
+
+```
+https://yourorg.my.salesforce-sites.com
+```
+
+### Verify Guest Access
+
+Open an incognito browser and navigate to:
+
+```
+https://yourorg.my.salesforce-sites.com/esrimap/apex/sfGpsDsCaOnSiteSelectorPage?mode=search
+```
+
+You should see the map loading. If you see a login page, the Site or guest access is not configured correctly.
+
+For complete GIS configuration details, see [GIS_GUIDE.md](./GIS_GUIDE.md).
+
+---
+
+## Step 8: Publish Your Site
 
 1. In Experience Builder, click **Publish**
 2. Confirm the publish action
 3. Access your site URL to verify the styling is applied
+4. Test with an incognito browser to verify guest user experience
 
 ---
 

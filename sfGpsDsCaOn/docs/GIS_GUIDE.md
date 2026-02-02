@@ -624,6 +624,88 @@ iframe.contentWindow.postMessage(
 
 ---
 
+## Guest User Access Configuration
+
+> **CRITICAL**: For the ESRI map to work for unauthenticated (guest) users in Experience Cloud, you must configure a Salesforce Site to serve the Visualforce page. The default VF domain (`--c.vf.force.com`) requires authentication.
+
+### Why Guest Access Requires Special Configuration
+
+LWR (Lightning Web Runtime) Experience Cloud sites have limitations:
+
+- They cannot serve Visualforce pages at `/apex/` paths (you'll get "Invalid Page")
+- The direct VF domain (`https://yourorg--c.vf.force.com`) requires login
+- The map iframe must be accessible without authentication for guest users
+
+### Solution: Create a Salesforce Site for the VF Page
+
+#### Step 1: Create the Salesforce Site
+
+1. **Setup → Sites** (User Interface section, NOT Digital Experiences)
+2. If you don't have a Sites domain, register one first
+3. Click **New** Site with these settings:
+
+| Field                              | Value                         |
+| ---------------------------------- | ----------------------------- |
+| Site Label                         | `ESRI Map`                    |
+| Site Name                          | `esrimap`                     |
+| Active Site Home Page              | `sfGpsDsCaOnSiteSelectorPage` |
+| Active                             | ☑️ Checked                    |
+| Require Secure Connections (HTTPS) | ☑️ Checked                    |
+
+4. Click **Save**
+
+#### Step 2: Configure Guest User Access
+
+1. Click on the **Site Label** ("ESRI Map")
+2. Click **Public Access Settings**
+3. **Enabled Visualforce Page Access** → Edit → Add:
+   - `sfGpsDsCaOnSiteSelectorPage`
+4. **Enabled Apex Class Access** → Edit → Add:
+   - `sfGpsDsCaOnSiteSelectorCtr`
+5. Save both changes
+
+#### Step 3: Activate the Site
+
+1. Return to the Site detail page
+2. Click **Activate**
+3. Note the **Site URL** (e.g., `https://yourorg.my.salesforce-sites.com/esrimap`)
+
+#### Step 4: Configure Custom Metadata
+
+Add a `utils__mdt` record so the LWC component uses the Site URL:
+
+**Setup → Custom Metadata Types → `utils` → Manage Records → New**
+
+| Field          | Value                                             |
+| -------------- | ------------------------------------------------- |
+| Label          | VF Site URL                                       |
+| Developer Name | `VF_Site_URL`                                     |
+| Value\_\_c     | `https://yourorg.my.salesforce-sites.com/esrimap` |
+
+> **Important**: Use your actual Site URL from Step 3. The LWC will append `/apex/sfGpsDsCaOnSiteSelectorPage` automatically.
+
+#### Step 5: Verify Guest Access
+
+Open an **incognito/private browser** and navigate to:
+
+```
+https://yourorg.my.salesforce-sites.com/esrimap/apex/sfGpsDsCaOnSiteSelectorPage?mode=search
+```
+
+You should see the map loading (or an API key error if the ESRI key isn't configured yet).
+
+### Custom Metadata Summary for GIS Components
+
+| Developer Name      | Example Value                                     | Description                                           |
+| ------------------- | ------------------------------------------------- | ----------------------------------------------------- |
+| `ESRI_API_Key`      | `AAPK...`                                         | ESRI ArcGIS API key for map services                  |
+| `VF_Site_URL`       | `https://yourorg.my.salesforce-sites.com/esrimap` | Salesforce Site URL for guest VF access               |
+| `SiteName`          | `sfGpsDsCaOn`                                     | Experience Cloud site name for postMessage validation |
+| `Default_Latitude`  | `43.6532`                                         | Default map center latitude (Toronto)                 |
+| `Default_Longitude` | `-79.3832`                                        | Default map center longitude (Toronto)                |
+
+---
+
 ## CSP and Trusted Sites Configuration
 
 > **CRITICAL**: Without proper CSP configuration, the ESRI map will not display, Visualforce iframes will be blocked, and Ontario LIO layers will fail to load.
@@ -673,10 +755,13 @@ In your Experience Cloud site, add these to the Content Security Policy:
 **Frame Sources (frame-src)**
 
 ```
+https://<your-org>.my.salesforce-sites.com
 https://<your-org>--c.vf.force.com
 https://<your-org>.my.salesforce.com
 https://<your-org>.lightning.force.com
 ```
+
+> **Note for Guest Users**: The `.my.salesforce-sites.com` domain is required when using a Salesforce Site for guest VF access.
 
 **Script/Style/Font Sources**
 

@@ -1,0 +1,197 @@
+name: E2E Tests
+
+on:
+  push:
+    branches: [main, develop, "feature/**"]
+    paths:
+      - "sfGpsDsCaOn/**"
+      - "sfGpsDsCaOnShowcase/**"
+      - ".github/workflows/e2e-tests.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "sfGpsDsCaOn/**"
+      - "sfGpsDsCaOnShowcase/**"
+  workflow_dispatch:
+    inputs:
+      skip_org_creation:
+        description: "Skip scratch org creation (use existing)"
+        required: false
+        default: "false"
+        type: boolean
+
+env:
+  SFDX_AUTH_URL: ${{ secrets.SFDX_AUTH_URL }}
+  ESRI_API_KEY: ${{ secrets.ESRI_API_KEY }}
+  GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+
+jobs:
+  e2e-tests:
+    name: Run E2E Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Salesforce CLI
+        run: npm install -g @salesforce/cli
+
+      - name: Install project dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+        working-directory: sfGpsDsCaOn/__e2e__
+
+      - name: Install Playwright dependencies
+        run: npm install
+        working-directory: sfGpsDsCaOn/__e2e__
+
+      - name: Authenticate to DevHub
+        run: |
+          echo "${{ secrets.SFDX_AUTH_URL }}" > authfile.txt
+          sf org login sfdx-url --sfdx-url-file authfile.txt --set-default-dev-hub --alias devhub
+          rm authfile.txt
+
+      - name: Create Scratch Org
+        if: ${{ github.event.inputs.skip_org_creation != 'true' }}
+        run: |
+          sf org create scratch \
+            --definition-file config/project-scratch-def.json \
+            --alias e2e-scratch \
+            --set-default \
+            --duration-days 1 \
+            --wait 15
+
+      - name: Install Dependencies in Scratch Org
+        run: |
+          sf package install \
+            --package "omnistudio 258.4" \
+            --target-org e2e-scratch \
+            --wait 20 \
+            --no-prompt
+
+      - name: Deploy Base Package
+        run: |
+          sf project deploy start \
+            --source-dir sfGpsDs \
+            --target-org e2e-scratch \
+            --wait 30
+
+      - name: Deploy Ontario DS Package
+        run: |
+          sf project deploy start \
+            --source-dir sfGpsDsCaOn \
+            --target-org e2e-scratch \
+            --wait 30
+
+      - name: Deploy Showcase Package
+        run: |
+          sf project deploy start \
+            --source-dir sfGpsDsCaOnShowcase \
+            --target-org e2e-scratch \
+            --wait 30
+
+      - name: Publish Experience Site
+        run: |
+          sf community publish \
+            --name "sfGpsDsCaOn" \
+            --target-org e2e-scratch
+
+      - name: Get Site URL
+        id: site-url
+        run: |
+          SITE_URL=$(sf org open \
+            --target-org e2e-scratch \
+            --path "/sfGpsDsCaOn" \
+            --url-only)
+          echo "url=$SITE_URL" >> $GITHUB_OUTPUT
+          echo "BASE_URL=$SITE_URL" >> $GITHUB_ENV
+
+      - name: Wait for Site to be Available
+        run: |
+          echo "Waiting for site to be available..."
+          for i in {1..30}; do
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$BASE_URL" || echo "000")
+            if [ "$HTTP_STATUS" = "200" ]; then
+              echo "Site is available!"
+              break
+            fi
+            echo "Attempt $i: Status $HTTP_STATUS, waiting..."
+            sleep 10
+          done
+
+      - name: Run Playwright E2E Tests
+        run: npx playwright test
+        working-directory: sfGpsDsCaOn/__e2e__
+        env:
+          BASE_URL: ${{ env.BASE_URL }}
+          CI: true
+
+      - name: Upload Playwright Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: sfGpsDsCaOn/__e2e__/playwright-report/
+          retention-days: 30
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: sfGpsDsCaOn/__e2e__/test-results/
+          retention-days: 30
+
+      - name: Delete Scratch Org
+        if: always()
+        run: |
+          sf org delete scratch \
+            --target-org e2e-scratch \
+            --no-prompt || true
+
+  accessibility-audit:
+    name: Accessibility Audit
+    runs-on: ubuntu-latest
+    needs: e2e-tests
+    if: always() && needs.e2e-tests.result == 'success'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download Test Results
+        uses: actions/download-artifact@v4
+        with:
+          name: test-results
+          path: sfGpsDsCaOn/__e2e__/test-results/
+
+      - name: Generate Accessibility Report
+        run: |
+          echo "# Accessibility Audit Results" > accessibility-report.md
+          echo "" >> accessibility-report.md
+          echo "Generated from E2E test run on $(date)" >> accessibility-report.md
+          echo "" >> accessibility-report.md
+
+          if [ -f "sfGpsDsCaOn/__e2e__/test-results.json" ]; then
+            echo "## Summary" >> accessibility-report.md
+            cat sfGpsDsCaOn/__e2e__/test-results.json | jq -r '.suites[] | select(.title | contains("Accessibility")) | "- \(.title): \(.specs | length) tests"' >> accessibility-report.md
+          else
+            echo "No test results file found" >> accessibility-report.md
+          fi
+
+      - name: Upload Accessibility Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-report
+          path: accessibility-report.md
+          retention-days: 30

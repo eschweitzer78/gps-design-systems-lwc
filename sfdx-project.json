@@ -133,6 +133,10 @@
     {
       "path": "sfGpsDsCaOn",
       "default": false
+    },
+    {
+      "path": "sfGpsDsCaOnShowcase",
+      "default": false
     }
   ],
   "name": "au-design-systems-lwc",

@@ -1,0 +1,2797 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-eval' https://service.force.com/embeddedservice/ https://cdn.content.aws-dev2-uswest2.aws.sfdc.cl/ https://cdn.content.aws-prod1-useast1.aws.sfdc.cl/ https://payments.salesforce.com/ https://js.stripe.com/ https://www.paypal.com/sdk/js https://checkoutshopper-live.adyen.com/ https://checkoutshopper-test.adyen.com/ https://pal-test.adyen.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://pay.google.com import: blob: https://uip.canary.lwc.dev https://js.arcgis.com https://static.arcgis.com/ https://services.arcgis.com https://basemaps.arcgis.com/ https://dfn00000c2gpmeaf.lightning.force.com https://dfn00000c2gpmeaf.my.salesforce-sites.com 'sha256-+ENwUbNFcKNWfHDr5ea3+Xq++0+pZ+JdCOhEffi0hCs=' 'sha256-+n4LCEXJICvQSyzevjP2UjIQHHrrkkW42kvjA4XOGW0=' 'sha256-/J6FNSBiuT91hXHo5uJczyGrwWR1Zu4pxo2KkqRL4xA=' 'sha256-0Z9MrNG30kig6RfQYN31xBuJuN+oNdBHiex+blPvH34=' 'sha256-134O3h0yXzYmYbgHbjtw0UaekHCG+MzY58F85WfDjCo=' 'sha256-2Ds/qr04k2ZAGDSuGicCFiHsl2tYDisrNOgujsrqZ+c=' 'sha256-35QHi4x9PsP8YxSJZnHsnfn5RMHOxwYl8K5azI2aV5I=' 'sha256-4ctXOhCSJYLR34ca4ttTwurB/qBaQdSqwRWGSRyOhVA=' 'sha256-6/W2G0JymQ3hxOQghAII4U65HA3AhFezsPDM41XeSVA=' 'sha256-6LqG1hGVEMvoC4T+6Bq7NIAJGlMNziRTdyYHebHDL2k=' 'sha256-843yjYOnlf+5ByGC0rK2v+bYh1ysmfP5lOHYxyARPpk=' 'sha256-AC38RFYaZ2Wzzb1lXwR6cBlbLhxCT0HNeXLLvm33vQQ=' 'sha256-EAearLdtz+2U1Ckb4rdLuqdnnMBc0KqMANJrQ+VKSlo=' 'sha256-EJ0K1BX6kFufT5NtONc7ztfrCNo57dIuXuEeIUFKwDQ=' 'sha256-EJxyB5G9diHtqi2BpsEOpQwm3yU+LskLO2tslz2Vd8E=' 'sha256-F/2HHbDsuh8Oa3XgxiUhtaIw1fFLqKXaPFVzapVMSdI=' 'sha256-Kpyf9FO1hi8gkOwxCoS8kk23jO+Ho6hvwRnvDxdURdM=' 'sha256-NzAsMNa7+tTZLH5NAB3C8LBaOpAA1wJYZXLWnqMqMT8=' 'sha256-OrjxEKCJyBuW7xpSIj1m9WD8EXcMj+l2w26i0bFxvkw=' 'sha256-QNxiK9PLKLcdISxwj0xxJ98sEufgp71JHe9cKLoFfBI=' 'sha256-QO/FGbe6U/xCVHGZezOV6cpQ7l0JkxB9WXCMWQaGz8M=' 'sha256-Qg+eMtVyUgIinHexN53G+ZPqEI5ekYoF+uamAI6VUhk=' 'sha256-R9Ckux5LLsr88MeCbaIi9jZYmotvr38VrraEgds38sM=' 'sha256-T7kskaXZJWl72KrhnfvxyXbTUyX7gJVAhDrshTAAqsM=' 'sha256-UToHSHN/ZKRUBgSAkET52nNfuefhgi3wKX9PJFYPg24=' 'sha256-Y0ga6fCJJCF9gGEQQMLEdJltOFmfOtxhExPkjs5SD9I=' 'sha256-YU6V9LsdLBnL/FB+G38ZwOW5hBmIeS4i2jMSqa4mnQ0=' 'sha256-Z4G6CLuak03fAr+P9yrBDqMCT2CTg2yJ7e1OKVDoxao=' 'sha256-Zf1PF5tlDiFO4gnwq5Nc5YhjwKMcoCRGCw5zDmekHA8=' 'sha256-akZRKId7o0VshY97czbqAJxEWDrGAAj7E1mRigDqzo0=' 'sha256-dAesODum6jYoGAXkiqX+tCqm3fqAEPQ41IejTWKc/zI=' 'sha256-dMH8B7mbf/vadfPMiY0zTbG6chlvS1SmfYe97xiHTzY=' 'sha256-hvZguXK7DHjfCmI1Bl6QVCkNFNf0PjYO+WuD6ECBhBc=' 'sha256-jW0E16/3TCoxiHYfiplEUL/fOopYPwwWyt3tNGZBLxk=' 'sha256-lsSEkUBja81Zh64wAyUjj/LG6kScmI2MRH0TaE/zqUo=' 'sha256-mVNXQzCNTUl5xMK8BviBsuoO+gsBnjAoCrG/LeyAtx8=' 'sha256-mZRB3b3oQ3sAfWxsSo16Qd1cbexyDjm3Lum11xvTTXo=' 'sha256-oFX5mP5AGKg6elCpFE1Rbrs8d3StnKfbwDGvmUB5T5U=' 'sha256-t7afVd2ccj7ZoiftvKklrl85IpsbNBvKh/EyvbRp8GA=' 'sha256-v+nuhfRKn7GStVOFhfaupQC7txxA8ye6Ja6c0KgT2pU=' 'sha256-xQOLE3oNI5FLFKwqY/ReDrviKrkYW6OmVDFpYAnRJ/s=' 'sha256-xqk8KCGNQ2gpHwk+g2erjJRJOTBz2YRjLk8CD3MWffo=' 'sha256-ymgIrYoa3mRv6Ax4boR4beyeSJZ66rouhKrVn+DSqis=' 'sha256-RVa7XzcPHyas/c1szj9OEDbMS4M1uQj0gi90PBWfq4E='; object-src 'self' www.google.com; style-src 'self' 'unsafe-inline' https://service.force.com/embeddedservice/ https://fonts.googleapis.com/css2 https://fonts.googleapis.com/css https://checkoutshopper-live.adyen.com/ https://checkoutshopper-test.adyen.com/ blob: https://*.arcgis.com https://static.arcgis.com https://js.arcgis.com https://services.arcgis.com https://dfn00000c2gpmeaf.lightning.force.com https://*.force.com https://*.salesforce-sites.com https://services.arcgisonline.com https://www.lioapplications.lrc.gov.on.ca https://tiles.arcgis.com https://basemaps.arcgis.com https://ws.lioservices.lrc.gov.on.ca https://dfn00000c2gpmeaf.my.salesforce-sites.com; img-src 'self' data: blob: https://dfn00000c2gpmeaf.my.salesforce.com https://dfn00000c2gpmeaf.file.force.com https://img.youtube.com https://i.ytimg.com https://i.vimeocdn.com https://login.salesforce.com/icons/ https://payments.salesforce.com/icons/ https://cdn.content.aws-prod1-useast1.aws.sfdc.cl/icons/ https://cdn.content.aws-dev2-uswest2.aws.sfdc.cl/icons/ https://*.adyen.com https://www.sandbox.paypal.com https://www.paypal.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://www.gstatic.com https://usa1052.sfdc-8tgtt5.salesforce.com/icons/ https://*.arcgis.com https://static.arcgis.com https://js.arcgis.com https://dfn00000c2gpmeaf--c.vf.force.com https://services.arcgis.com https://dfn00000c2gpmeaf.lightning.force.com https://*.force.com https://*.salesforce-sites.com https://services.arcgisonline.com https://www.lioapplications.lrc.gov.on.ca https://tiles.arcgis.com https://basemaps.arcgis.com https://ws.lioservices.lrc.gov.on.ca https://maps.googleapis.com https://dfn00000c2gpmeaf.my.salesforce-sites.com; media-src 'self' https://*.arcgis.com https://static.arcgis.com https://js.arcgis.com https://services.arcgis.com https://dfn00000c2gpmeaf.lightning.force.com https://services.arcgisonline.com https://www.lioapplications.lrc.gov.on.ca https://tiles.arcgis.com https://basemaps.arcgis.com https://ws.lioservices.lrc.gov.on.ca https://dfn00000c2gpmeaf.my.salesforce-sites.com;  frame-src 'self' https://service.force.com/embeddedservice/ https://usa1052.sfdc-8tgtt5.salesforce.com https://sfdc-link-preview-staging.sfdc.sh https://sfdc-link-preview.hk.salesforce.com https://cdn.embedly.com https://www.youtube.com https://player.vimeo.com https://play.vidyard.com https://player.cloudinary.com https://fast.wistia.net https://players.brightcove.net https://s1.adis.ws https://scormanywhere.secure.force.com https://appiniummastertrial.secure.force.com https://js.stripe.com/ https://www.paypal.com https://www.sandbox.paypal.com https://checkoutshopper-live.adyen.com/ https://checkoutshopper-test.adyen.com/ https://pal-test.adyen.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/ https://pay.google.com https://*.a.forceusercontent.com/lightningmaps/ https://*.a.forceusercontent.com https://location.force.com https://dfn00000c2gpmeaf.file.force.com https://*.arcgis.com https://static.arcgis.com https://js.arcgis.com https://dfn00000c2gpmeaf--c.vf.force.com https://dfn00000c2gpmeaf.my.salesforce.com https://services.arcgis.com https://dfn00000c2gpmeaf.lightning.force.com https://services.arcgisonline.com https://www.lioapplications.lrc.gov.on.ca https://tiles.arcgis.com https://basemaps.arcgis.com https://ws.lioservices.lrc.gov.on.ca https://maps.googleapis.com https://dfn00000c2gpmeaf.my.salesforce-sites.com; font-src 'self' data: https://fonts.gstatic.com/ https://*.arcgis.com https://static.arcgis.com https://js.arcgis.com https://services.arcgis.com https://dfn00000c2gpmeaf.lightning.force.com https://*.force.com https://*.salesforce-sites.com https://services.arcgisonline.com https://www.lioapplications.lrc.gov.on.ca https://tiles.arcgis.com https://basemaps.arcgis.com https://ws.lioservices.lrc.gov.on.ca https://dfn00000c2gpmeaf.my.salesforce-sites.com; connect-src 'self' https://www.paypal.com https://www.sandbox.paypal.com https://dfn00000c2gpmeaf.my.salesforce-scrt.com https://fonts.googleapis.com/css2 https://payments.salesforce.com/ https://cdn.content.aws-dev2-uswest2.aws.sfdc.cl/ https://checkoutshopper-live.adyen.com/ https://checkoutshopper-test.adyen.com/ https://js.stripe.com/ https://www.google.com/recaptcha/ https://*.api.salesforce.com https://o11y.sfproxy-core1.sfdc-8tgtt5.svc.sfdcfc.net/ui-telemetry https://*.arcgis.com https://static.arcgis.com https://js.arcgis.com https://services.arcgis.com https://dfn00000c2gpmeaf.lightning.force.com https://services.arcgisonline.com https://www.lioapplications.lrc.gov.on.ca https://tiles.arcgis.com https://basemaps.arcgis.com https://ws.lioservices.lrc.gov.on.ca https://maps.googleapis.com https://dfn00000c2gpmeaf.my.salesforce-sites.com; "
+    />
+    <meta name="basePath" content="/sfGpsDsCaOn" />
+    <meta name="deployTarget" content="CORE" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript">
+      function launchModal(_ref) {
+        var id = _ref.id,
+          titleLabel = _ref.titleLabel,
+          contentLabel = _ref.contentLabel,
+          buttonLabel = _ref.buttonLabel,
+          callback = _ref.callback;
+        var modalTemplate = '<div id="'
+          .concat(
+            id,
+            '">\n          <section\n          role="alertdialog"\n          tabindex="-1"\n          aria-labelledby="prompt-heading-id"\n          aria-describedby="prompt-message-wrapper"\n          class="slds-modal slds-fade-in-open slds-modal_prompt"\n          aria-modal="true"\n          style="color: rgb(62, 62, 60)"\n          >\n              <div class="slds-modal__container">\n                  <header class="slds-modal__header slds-theme_info slds-theme_alert-texture">\n                      <h2 class="slds-text-heading_medium">'
+          )
+          .concat(
+            titleLabel,
+            '</h2>\n                  </header>\n                  <div class="slds-modal__content slds-p-around_medium">\n                      <p id="prompt-message-id">'
+          )
+          .concat(
+            contentLabel,
+            '</p>\n                  </div>\n                  <footer class="slds-modal__footer slds-theme_default">\n                      <button class="slds-button slds-button_neutral js-button">'
+          )
+          .concat(
+            buttonLabel,
+            '</button>\n                  </footer>\n              </div>\n          </section>\n          <div class="slds-backdrop slds-backdrop_open"></div>\n      </div>'
+          );
+        var div = document.createElement("div");
+        div.innerHTML = modalTemplate;
+        div.querySelector(".js-button").addEventListener("click", callback);
+        if (!document.body) {
+          document.body = document.createElement("body");
+        }
+        document.body.appendChild(div.querySelector("#".concat(id)));
+      }
+      window.onload = function () {
+        if (!window.isBrowserSupportedByWebruntime) {
+          var WEBRUNTIME_UNSUPPORTED_BROWSER_MODAL_ID =
+            "webruntime-browser-not-supported-message";
+          launchModal({
+            id: WEBRUNTIME_UNSUPPORTED_BROWSER_MODAL_ID,
+            titleLabel: "Your browser isn't supported",
+            contentLabel:
+              "Your browser doesn\u2019t support some features on this site. For the best experience, update your browser to the latest version, or switch to another browser.",
+            buttonLabel: "Got It",
+            callback: function callback() {
+              var modal = document.querySelector(
+                "#".concat(WEBRUNTIME_UNSUPPORTED_BROWSER_MODAL_ID)
+              );
+              document.body.removeChild(modal);
+            }
+          });
+        }
+      };
+      window.document.addEventListener("client-error", function (error) {
+        if (error.detail.type === "FAILED_TO_LOAD_RESOURCE") {
+          launchModal({
+            id: "webruntime-client-error-failed-to-load-resource",
+            titleLabel: "Oops!",
+            contentLabel: "Something went wrong. Please try refreshing the app",
+            buttonLabel: "Refresh",
+            callback: function callback() {
+              var url = new URL(window.location);
+              url.searchParams.set("lwr.cachebust", new Date().getTime());
+              window.location = url.href;
+            }
+          });
+        } else if (error.detail.type === "TOO_MANY_REQUESTS") {
+          window.document.cookie = "TooManyRequests=true;max-age=30;";
+          window.location.reload();
+        }
+      });
+    </script>
+
+    <script type="text/javascript">
+      !(function () {
+        "use strict";
+        const e = `/webruntime${"/log/errors"}`;
+        const n = "UNKNOWN_ERROR";
+        function t() {
+          return (
+            (e = "basePath"),
+            document
+              ?.querySelector(`meta[name="${e}"]`)
+              ?.getAttribute("content") || ""
+          );
+          var e;
+        }
+        const { window: o } = globalThis;
+        function r({ subject: r, error: s = {}, extra: a }) {
+          let i, c, d;
+          s
+            ? ((i = s.message), (c = s.stack), (d = s.wcstack))
+            : a && (i = a.message);
+          const { pathname: u, hostname: l } = o.location,
+            m = {
+              subject: r,
+              message: i,
+              stack: c,
+              wcstack: d,
+              extra: a,
+              location: { pathname: u, hostname: l }
+            },
+            v = t();
+          (!(function (e) {
+            document.dispatchEvent(
+              new CustomEvent("client-error", { detail: { error: e, type: n } })
+            );
+          })(m),
+            (function (e, n) {
+              const t = JSON.stringify(n);
+              if (
+                !(
+                  window &&
+                  window.navigator &&
+                  window.navigator.sendBeacon &&
+                  window.navigator.sendBeacon(e, t)
+                )
+              ) {
+                const n = new XMLHttpRequest();
+                (n.open("POST", e, !0),
+                  n.setRequestHeader(
+                    "Content-Type",
+                    "text/plain;charset=UTF-8"
+                  ),
+                  n.send(t));
+              }
+            })(globalThis.location.origin + v + e, m));
+        }
+        const s = (e = {}) => {
+          const { reason: n = {} } = e;
+          r({ subject: "unhandledrejection", error: n });
+        };
+        function a(e = {}, n = {}) {
+          const { message: t, filename: o, lineno: s, colno: a, error: i } = e;
+          r({
+            subject: "window error",
+            error: i,
+            extra: { message: t, filename: o, lineno: s, colno: a },
+            ...n
+          });
+        }
+        (o?.addEventListener("error", a),
+          o?.addEventListener("unhandledrejection", s),
+          o?.addEventListener("removeErrorReporting", function () {
+            (o?.removeEventListener("unhandledrejection", s),
+              o?.removeEventListener("error", a),
+              o?.removeEventListener("removeErrorReporting", this));
+          }));
+      })();
+    </script>
+    <script type="text/javascript">
+      !(function () {
+        "use strict";
+        const e = "webruntime";
+        function t(t) {
+          return `/${e}${t}`;
+        }
+        const o = t("/log/metrics"),
+          n = t("/log/errors");
+        function r(e, t) {
+          const o = JSON.stringify(t);
+          if (
+            !(
+              window &&
+              window.navigator &&
+              window.navigator.sendBeacon &&
+              window.navigator.sendBeacon(e, o)
+            )
+          ) {
+            const t = new XMLHttpRequest();
+            (t.open("POST", e, !0),
+              t.setRequestHeader("Content-Type", "text/plain;charset=UTF-8"),
+              t.send(o));
+          }
+        }
+        function a(e) {
+          return (
+            document
+              ?.querySelector(`meta[name="${e}"]`)
+              ?.getAttribute("content") || ""
+          );
+        }
+        function s() {
+          return a("basePath");
+        }
+        function i() {
+          return a("deployTarget") || "CORE";
+        }
+        const c = `${e}-app-bootstrap`;
+        function l(e) {
+          (!(function (e) {
+            const t = e?.detail || {};
+            ((t.name = t.name || ""),
+              (t.duration = t.duration || ""),
+              c === t.name &&
+                ((t.deployTarget = i()),
+                r(s() + o, {
+                  webruntimeBootstrap: t,
+                  info: "lwr.bootstrap.end"
+                })));
+          })(e),
+            globalThis?.removeEventListener("bootstrapLoaded", this));
+        }
+        (globalThis?.addEventListener("bootstrapLoaded", l),
+          (globalThis.LWR = globalThis.LWR || {}),
+          globalThis.LWR &&
+            Object.isExtensible(globalThis.LWR) &&
+            (globalThis.LWR.onError = (e) => {
+              (!(function (e) {
+                const { message: t, stack: o, wcstack: a } = e,
+                  { pathname: c, hostname: l } = globalThis.location;
+                let d = [];
+                try {
+                  globalThis.performance &&
+                    globalThis.performance.getEntriesByType &&
+                    (d = globalThis.performance
+                      .getEntriesByType("resource")
+                      .map((e) => ({
+                        name: e.name,
+                        entryType: e.entryType,
+                        startTime: e.startTime,
+                        duration: e.duration,
+                        fetchStart: e.fetchStart,
+                        domainLookupStart: e.domainLookupStart,
+                        domainLookupEnd: e.domainLookupEnd,
+                        connectStart: e.connectStart,
+                        connectEnd: e.connectEnd,
+                        requestStart: e.requestStart,
+                        responseStart: e.responseStart,
+                        responseEnd: e.responseEnd,
+                        responseStatus: e.responseStatus,
+                        transferSize: e.transferSize,
+                        encodedBodySize: e.encodedBodySize,
+                        decodedBodySize: e.decodedBodySize,
+                        initiatorType: e.initiatorType,
+                        nextHopProtocol: e.nextHopProtocol,
+                        failed: e.failed || !1
+                      })));
+                } catch (e) {
+                  globalThis.console &&
+                    globalThis.console.error &&
+                    globalThis.console.error(
+                      "Error collecting resource performance data",
+                      e
+                    );
+                }
+                r(s() + n, {
+                  subject: "bootstrap error",
+                  webruntimeBootstrap: {
+                    deployTarget: i(),
+                    resources: d,
+                    resourceCount: d.length
+                  },
+                  message: t,
+                  stack: o,
+                  wcstack: a,
+                  location: { pathname: c, hostname: l }
+                });
+              })(e),
+                globalThis.launchModal &&
+                  launchModal({
+                    id: "webruntime-client-bootstrap-error-failed-to-load-lwr",
+                    titleLabel: "Oops!",
+                    contentLabel:
+                      "Something went wrong. Please try refreshing the app",
+                    buttonLabel: "Refresh",
+                    callback: function () {
+                      var e = new URL(window.location);
+                      (e.searchParams.set(
+                        "lwr.cachebust",
+                        new Date().getTime()
+                      ),
+                        (window.location = e.href));
+                    }
+                  }),
+                globalThis?.removeEventListener("bootstrapLoaded", l),
+                globalThis?.dispatchEvent(
+                  new CustomEvent("removeErrorReporting")
+                ),
+                delete globalThis.LWR.onError);
+            }));
+      })();
+    </script>
+    <script type="text/javascript">
+      ({})?.a?.a;
+      window.supportsOptionalChaining = true;
+    </script>
+    <script type="text/javascript">
+      !(function () {
+        const e = {
+          documentCreateElement: Document.prototype.createElement,
+          elementSetAttribute: Element.prototype.setAttribute,
+          elementAttachShadow: Element.prototype.attachShadow,
+          elementAppendChild: Element.prototype.appendChild,
+          htmlelementAddEventListener: Element.prototype.addEventListener,
+          iframeContentDocumentGet: Object.getOwnPropertyDescriptor(
+            HTMLIFrameElement.prototype,
+            "contentDocument"
+          ).get,
+          iframeContentWindowGet: Object.getOwnPropertyDescriptor(
+            HTMLIFrameElement.prototype,
+            "contentWindow"
+          ).get
+        };
+        (Object.freeze(e),
+          Object.defineProperty(window, "originalDomApis", {
+            writable: !1,
+            value: e
+          }));
+        const t = window.frames;
+        Object.defineProperty(window, "frames", {
+          get: function () {
+            const e = [];
+            for (let n = 0; n < t.length; n++)
+              try {
+                t[n].frameElement.getRootNode().nodeType ===
+                  Node.DOCUMENT_FRAGMENT_NODE || e.push(t[n]);
+              } catch (o) {
+                e.push(t[n]);
+              }
+            return e.length === t.length ? t : e;
+          }
+        });
+      })();
+    </script>
+    <script type="text/javascript">
+      !(function () {
+        "use strict";
+        window.isBrowserSupportedByWebruntime = (function () {
+          const n = "performance" in window && "mark" in window.performance,
+            i = "customElements" in window;
+          return n && i && void 0 !== window.supportsOptionalChaining;
+        })();
+      })();
+    </script>
+    <script type="text/javascript">
+      globalThis.lwcRuntimeFlags = globalThis.lwcRuntimeFlags || {};
+      globalThis.lwcRuntimeFlags = {
+        ...globalThis.lwcRuntimeFlags,
+        ...{
+          ENABLE_LEGACY_SCOPE_TOKENS: false,
+          ENABLE_FORCE_SHADOW_MIGRATE_MODE: false,
+          ENABLE_MIXED_SHADOW_MODE: false,
+          LEGACY_LOCKER_ENABLED: false,
+          ENABLE_LEGACY_SIGNAL_CONTEXT_VALIDATION: false,
+          DISABLE_LEGACY_VALIDATION: false,
+          ENABLE_EXPERIMENTAL_SIGNALS: false,
+          DISABLE_SYNTHETIC_SHADOW: false,
+          DISABLE_SCOPE_TOKEN_VALIDATION: false,
+          DISABLE_LIGHT_DOM_UNSCOPED_CSS: false,
+          ENABLE_LEGACY_CONTEXT_CONNECTION: false,
+          ENABLE_SLOT_FORWARDING_FIX: true,
+          DISABLE_NATIVE_CUSTOM_ELEMENT_LIFECYCLE: true,
+          DISABLE_TEMPORARY_V5_COMPILER_SUPPORT: true
+        }
+      };
+      globalThis.LWR = globalThis.LWR || {};
+      globalThis.LWR.initDeferDOM = true;
+      globalThis.LWR.customInit = (lwr) => {
+        LWR.define("@app/apexApiBasePath", [], function () {
+          return "/sfGpsDsCaOn/webruntime/api";
+        });
+        LWR.define("@app/apiBasePath", [], function () {
+          return "/sfGpsDsCaOn";
+        });
+        LWR.define("@app/basePath", [], function () {
+          return "/sfGpsDsCaOn";
+        });
+        LWR.define("@app/deployTarget", [], function () {
+          return "CORE";
+        });
+        LWR.define("@app/guestUuidCookieName", [], function () {
+          return null;
+        });
+        LWR.define("@app/isDesignMode", [], function () {
+          return false;
+        });
+        LWR.define("@app/isPreviewMode", [], function () {
+          return false;
+        });
+        LWR.define("@app/isSsrCodeTypeEnabled", [], function () {
+          return false;
+        });
+        LWR.define("@app/routes", [], function () {
+          return [
+            {
+              devName: "naics_picker__c",
+              label: "naics-picker",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "296d0d6e-cf58-41f8-a8b8-1f2044e2dafa",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "3286a553-f943-42d2-b701-98c3da42a104",
+              path: "/naics-picker",
+              view: "naics_picker",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "naics_picker__c" }
+              }
+            },
+            {
+              devName: "places_typeahead__c",
+              label: "places typeahead",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "12943c7b-00a7-4ec4-b5d8-1171bdc8e40e",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "3ea77c79-e916-4391-a38e-915bf6252488",
+              path: "/places-typeahead",
+              view: "places_typeahead",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "places_typeahead__c" }
+              }
+            },
+            {
+              devName: "search__c",
+              label: "search",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "092d7361-f40c-4aba-a67e-61d94346d5f3",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "1e2ea687-f29d-401b-b709-af8b5e25204b",
+              path: "/search",
+              view: "search",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "search__c" }
+              }
+            },
+            {
+              devName: "Check_Password",
+              label: "Check Password",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "eaa2a66d-fae0-4c43-970e-13a91369e1d6",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "f9f3618f-54de-4484-bd2f-e62ec1d75d73",
+              path: "/CheckPasswordResetEmail",
+              view: "checkPasswordResetEmail",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "Check_Password" }
+              }
+            },
+            {
+              devName: "Map_Selector__c",
+              label: "Map Selector",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "5cb68502-bf5c-4ec1-8062-aa7b800bc193",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "38d62437-e91a-4f71-a9f2-fd1fb65d83f0",
+              path: "/map-selector",
+              view: "map_Selector",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "Map_Selector__c" }
+              }
+            },
+            {
+              devName: "modal__c",
+              label: "modal",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "07820ec8-99db-4761-8f3f-d7e7e9dead22",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "97644a60-6b85-4c85-b532-b1926e4aa263",
+              path: "/modal",
+              view: "modal",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "modal__c" }
+              }
+            },
+            {
+              devName: "Error",
+              label: "Error",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "ba2b12fe-a25f-4e16-b4d2-3e2715bd9700",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "4156a93f-89bc-4f2f-81ca-cf94d34d02e7",
+              path: "/error",
+              view: "error",
+              isRoot: false,
+              isDefault: true,
+              page: { type: "comm__namedPage", attributes: { name: "Error" } }
+            },
+            {
+              devName: "Login",
+              label: "Login",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "b9dc7154-23cc-4957-b71b-2d4fcd454daa",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "59226091-3645-426b-9978-74476440e8d7",
+              path: "/login",
+              view: "login",
+              isRoot: false,
+              isDefault: false,
+              page: { type: "comm__namedPage", attributes: { name: "Login" } }
+            },
+            {
+              devName: "Register",
+              label: "Register",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "0812bb37-e2f2-42ce-86dc-285aed1b8435",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "56db4061-fbd8-4300-9a93-67f7d32c87dc",
+              path: "/SelfRegister",
+              view: "register",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "Register" }
+              }
+            },
+            {
+              devName: "News_Detail__c",
+              label: "News Detail",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "8a0494f1-3805-43e9-8764-11d4660c4bca",
+              hasVanityURL: true,
+              patternMap: { urlAlias: "([^\\/\\s]+)" },
+              id: "b6387cdf-006a-4576-80c5-b69ff2815476",
+              path: "/news/:urlAlias",
+              view: "newsDetail",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "standard__managedContentPage",
+                attributes: { contentTypeName: "sfdc_cms__news" }
+              }
+            },
+            {
+              devName: "Home",
+              label: "Home",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "673f54aa-4236-40de-8c2a-4f2d9fbb9568",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "f5f0acd7-f530-46ad-af8b-8a1fc9c37edb",
+              path: "/",
+              view: "home",
+              isRoot: true,
+              isDefault: false,
+              page: { type: "comm__namedPage", attributes: { name: "Home" } }
+            },
+            {
+              devName: "Forgot_Password",
+              label: "Forgot Password",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "8b8b0fbb-70ce-478f-9f93-b961bcef9c30",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "6dfa368a-b253-49d9-88f3-b16572b714e0",
+              path: "/ForgotPassword",
+              view: "forgotPassword",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "Forgot_Password" }
+              }
+            },
+            {
+              devName: "accordion__c",
+              label: "accordion",
+              createdOnVersion: null,
+              isPublic: true,
+              viewId: "b0d26c49-1fbd-4fe6-bbf8-698b2141df70",
+              hasVanityURL: false,
+              patternMap: {},
+              id: "13c0954f-6f51-4ae8-a6ef-3684ed158895",
+              path: "/accordion",
+              view: "accordion",
+              isRoot: false,
+              isDefault: false,
+              page: {
+                type: "comm__namedPage",
+                attributes: { name: "accordion__c" }
+              }
+            }
+          ];
+        });
+        LWR.define("@app/templateDevName", [], function () {
+          return "talon-template-byo";
+        });
+        LWR.define("@app/uiBasePath", [], function () {
+          return "/sfGpsDsCaOn";
+        });
+        LWR.define("@app/versionKey", [], function () {
+          return "ed76c1cefc";
+        });
+        LWR.define("@app/viewToThemeLayoutMap", [], function () {
+          return {
+            places_typeahead: "scopedHeaderAndFooter",
+            accordion: "scopedHeaderAndFooter",
+            error: "scopedHeaderAndFooter",
+            login: "scopedHeaderAndFooter",
+            home: "scopedHeaderAndFooter",
+            checkPasswordResetEmail: "scopedHeaderAndFooter",
+            map_Selector: "scopedHeaderAndFooter",
+            newsDetail: "scopedHeaderAndFooter",
+            search: "scopedHeaderAndFooter",
+            forgotPassword: "scopedHeaderAndFooter",
+            naics_picker: "scopedHeaderAndFooter",
+            modal: "scopedHeaderAndFooter",
+            register: "scopedHeaderAndFooter"
+          };
+        });
+        LWR.define("@app/webruntimeFrameworkVersion", [], function () {
+          return "258.95";
+        });
+        LWR.define("@salesforce/community/Id", [], function () {
+          return "0DBfn000000VROwGAO";
+        });
+        LWR.define("@salesforce/community/basePath", [], function () {
+          return "/sfGpsDsCaOn";
+        });
+        LWR.define("@salesforce/i18n/lang", [], function () {
+          return "en-US";
+        });
+        LWR.define("@salesforce/site/Id", [], function () {
+          return "0DMfn000000WkFsGAK";
+        });
+        LWR.define("@salesforce/site/activeLanguages", [], function () {
+          return [{ label: "English (US)", code: "en-US", default: true }];
+        });
+        LWR.define("@salesforce/webstore/Id", [], function () {
+          return null;
+        });
+        lwr.define("webruntime/dispatcher", [], function () {
+          return function o11yDipatcherInit(dispatcher) {
+            typeof lwr !== "undefined" && lwr.attachDispatcher(dispatcher);
+          };
+        });
+        LWR.define("@salesforce/user/Id", ["@app/user"], function (m) {
+          return (m && typeof m === "object" && "default" in m ? m.default : m)[
+            "id"
+          ];
+        });
+        LWR.define("@salesforce/user/isGuest", ["@app/user"], function (m) {
+          return (m && typeof m === "object" && "default" in m ? m.default : m)[
+            "isGuest"
+          ];
+        });
+        lwr.initializeApp();
+        globalThis.process = { env: { NODE_ENV: "dev" } };
+      };
+    </script>
+    <script type="text/javascript">
+      globalThis.CLWR = globalThis.CLWR || {};
+      globalThis.CLWR.gates = { enableLwrRouteValidation: false };
+    </script>
+    <script type="text/javascript">
+      globalThis.LWR = globalThis.LWR || {};
+      Object.assign(globalThis.LWR, {
+        bootstrapModule:
+          "@lwrjs/app-service/communities_app/module/amd/v/0_19_7",
+        autoBoot: false,
+        rootComponents: ["webruntime/app/v/1_66_1086-258_0"],
+        requiredModules: [
+          "lwc/v/8_20_6",
+          "@lwrjs/app-service/communities_app/module/amd/v/0_19_7"
+        ],
+        importMappings: {
+          default: "/sfGpsDsCaOn/webruntime/component/latest/prod/en-US/",
+          imports: {
+            "/webruntime/component/latest/prod/en-US/lwc":
+              "/sfGpsDsCaOn/webruntime/framework/868578dbfa/prod/lwr_lwc",
+            "@app/csrfToken": "/sfGpsDsCaOn/webruntime/module/@app/csrfToken",
+            "@app/loginPath": "/sfGpsDsCaOn/webruntime/module/@app/loginPath",
+            "@app/user": "/sfGpsDsCaOn/webruntime/module/@app/user",
+            "@perm/": "/sfGpsDsCaOn/webruntime/perm/",
+            "@salesforce/client/formFactor":
+              "/sfGpsDsCaOn/webruntime/module/@salesforce/client/formFactor",
+            "@salesforce/customPermission/":
+              "/sfGpsDsCaOn/webruntime/perm/custom/",
+            "@salesforce/featureFlag/":
+              "/sfGpsDsCaOn/webruntime/module/@salesforce/featureFlag/",
+            "@salesforce/user/Id":
+              "/sfGpsDsCaOn/webruntime/module/@salesforce/user/Id",
+            "@salesforce/user/isGuest":
+              "/sfGpsDsCaOn/webruntime/module/@salesforce/user/isGuest",
+            "@salesforce/userPermission/": "/sfGpsDsCaOn/webruntime/perm/",
+            "@udd/": "/sfGpsDsCaOn/webruntime/module/@udd/",
+            "@view/accordion":
+              "/sfGpsDsCaOn/webruntime/view/75106fc585b48e49057ebab20177c0b4/prod/en-US/accordion_view",
+            "@view/checkPasswordResetEmail":
+              "/sfGpsDsCaOn/webruntime/view/dcf7d03e82f572821110dd9941f8d450/prod/en-US/checkPasswordResetEmail_view",
+            "@view/error":
+              "/sfGpsDsCaOn/webruntime/view/84800668b522a3dfb8d4419ac1185e6c/prod/en-US/error_view",
+            "@view/forgotPassword":
+              "/sfGpsDsCaOn/webruntime/view/71ddaaaa6f107cb0c7375e8bf3a25e90/prod/en-US/forgotPassword_view",
+            "@view/home":
+              "/sfGpsDsCaOn/webruntime/view/44a13a6379abe3f5cf54aca57e0d2f74/prod/en-US/home_view",
+            "@view/login":
+              "/sfGpsDsCaOn/webruntime/view/a003e1c966a469dea4c3d2dc2bb3d15a/prod/en-US/login_view",
+            "@view/map_Selector":
+              "/sfGpsDsCaOn/webruntime/view/508752d8eb408769ac86e7c23183e595/prod/en-US/map_Selector_view",
+            "@view/modal":
+              "/sfGpsDsCaOn/webruntime/view/164ff2b07a426b848d14d024dfcce181/prod/en-US/modal_view",
+            "@view/naics_picker":
+              "/sfGpsDsCaOn/webruntime/view/5139181e85db7ebefa4087f1e80a8711/prod/en-US/naics_picker_view",
+            "@view/newsDetail":
+              "/sfGpsDsCaOn/webruntime/view/f293925b670924566a4af2f33dea9b86/prod/en-US/newsDetail_view",
+            "@view/places_typeahead":
+              "/sfGpsDsCaOn/webruntime/view/1ec26b0362c1216e20c18fbf0a5c0ef9/prod/en-US/places_typeahead_view",
+            "@view/register":
+              "/sfGpsDsCaOn/webruntime/view/3d50611ddc3cde3bd31f52be1414993b/prod/en-US/register_view",
+            "@view/scopedHeaderAndFooter":
+              "/sfGpsDsCaOn/webruntime/view/b3c637b9afc213f97bcd0d455655decc/prod/en-US/scopedHeaderAndFooter_view",
+            "@view/search":
+              "/sfGpsDsCaOn/webruntime/view/d8cf79e3b074617eb1248faf397bc16d/prod/en-US/search_view",
+            "force/ldsEngineWebruntime":
+              "/sfGpsDsCaOn/webruntime/component/11fb0589057dc9303ba445f05bbe807b/prod/en-US/force/ldsEngineWebruntime_cmp",
+            "force/luvioLwcBindings":
+              "/sfGpsDsCaOn/webruntime/component/259a789b5905e4a3e65c0942cc97421d/prod/en-US/force/luvioLwcBindings_cmp",
+            "force/luvioRuntimeWebruntime":
+              "/sfGpsDsCaOn/webruntime/component/da6467b90bc1eda0c5728f07f2d9928c/prod/en-US/force/luvioRuntimeWebruntime_cmp",
+            "lightning/iconSvgTemplatesAction":
+              "/sfGpsDsCaOn/webruntime/component/2983e924bf96da943baa561dd1680be6/prod/en-US/lightning/iconSvgTemplatesAction_cmp",
+            "lightning/iconSvgTemplatesActionRtl":
+              "/sfGpsDsCaOn/webruntime/component/3e6351c53d862e7436c422914f3f6ea8/prod/en-US/lightning/iconSvgTemplatesActionRtl_cmp",
+            "lightning/iconSvgTemplatesCustom":
+              "/sfGpsDsCaOn/webruntime/component/cc7b2dbb18ff06b65c5c16b72a3d1004/prod/en-US/lightning/iconSvgTemplatesCustom_cmp",
+            "lightning/iconSvgTemplatesCustomRtl":
+              "/sfGpsDsCaOn/webruntime/component/c23bf7b16d651f1e0edaa6638a6fd6a3/prod/en-US/lightning/iconSvgTemplatesCustomRtl_cmp",
+            "lightning/iconSvgTemplatesDoctype":
+              "/sfGpsDsCaOn/webruntime/component/72c1436b91043ae320e3341eaa1a915e/prod/en-US/lightning/iconSvgTemplatesDoctype_cmp",
+            "lightning/iconSvgTemplatesDoctypeRtl":
+              "/sfGpsDsCaOn/webruntime/component/50158de45d23301703009993d6c6db29/prod/en-US/lightning/iconSvgTemplatesDoctypeRtl_cmp",
+            "lightning/iconSvgTemplatesStandard":
+              "/sfGpsDsCaOn/webruntime/component/1dd95bd0a0a01a0f726a0f7a8738a00c/prod/en-US/lightning/iconSvgTemplatesStandard_cmp",
+            "lightning/iconSvgTemplatesStandardRtl":
+              "/sfGpsDsCaOn/webruntime/component/00a065ff7d99a2171709068d06b55796/prod/en-US/lightning/iconSvgTemplatesStandardRtl_cmp",
+            "lightning/iconSvgTemplatesUtility":
+              "/sfGpsDsCaOn/webruntime/component/e215f20523714d8492da4d3a0e2bb218/prod/en-US/lightning/iconSvgTemplatesUtility_cmp",
+            "lightning/iconSvgTemplatesUtilityRtl":
+              "/sfGpsDsCaOn/webruntime/component/3ab05e3bf671b493e2f19e6c5610ef1c/prod/en-US/lightning/iconSvgTemplatesUtilityRtl_cmp",
+            "mobileruntime/hybridAppManager":
+              "/sfGpsDsCaOn/webruntime/framework/c5c680c63c/prod/lwr_mobile",
+            "o11y/collectors":
+              "/sfGpsDsCaOn/webruntime/component/41d6697a2d1c1bcec25962da1d57ab0b/prod/en-US/o11y/collectors_cmp",
+            "o11y/simple_collector":
+              "/sfGpsDsCaOn/webruntime/component/d2d3dad50024cc791370280919f1c897/prod/en-US/o11y/simple_collector_cmp"
+          }
+        }
+      });
+    </script>
+    <script src="/sfGpsDsCaOn/webruntime/framework/f005680334/prod/lwr_loader"></script>
+    <script type="text/javascript">
+      /**
+       * Copyright (c) 2021, salesforce.com, inc.
+       * All rights reserved.
+       * SPDX-License-Identifier: MIT
+       * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+       */
+      /* LWR Error Shim v0.19.7 */
+      !(function () {
+        "use strict";
+        const o = globalThis;
+        if (!(o.LWR && o.LWR.define)) {
+          const r = new Error("The LWR application failed to bootstrap");
+          if (!o.LWR || !o.LWR.onError) throw r;
+          o.LWR.onError(r);
+        }
+      })();
+    </script>
+    <script src="/sfGpsDsCaOn/webruntime/framework/073e4a987f/prod/lwr_bootstrap_locker"></script>
+    <script type="text/javascript">
+      LWR.define(
+        "webruntime/handlebarsEngine/v/1_66_1086-258_0",
+        [],
+        function () {
+          return;
+        }
+      );
+      LWR.define(
+        "webruntime/handlebarsEngine",
+        ["exports", "webruntime/handlebarsEngine/v/1_66_1086-258_0"],
+        function (e, m) {
+          if (m && typeof m === "object" && "default" in m) {
+            Object.keys(m).forEach((key) => {
+              e[key] = m[key];
+            });
+          } else {
+            return m;
+          }
+        }
+      );
+    </script>
+    <script src="/sfGpsDsCaOn/webruntime/framework/36604ed22b/prod/lwr_app_bootstrap_hook"></script>
+    <script src="/sfGpsDsCaOn/webruntime/framework/868578dbfa/prod/lwr_lwc"></script>
+    <script src="/sfGpsDsCaOn/webruntime/framework/a4b2fdf4d8/prod/lwr_app"></script>
+    <script type="text/javascript">
+      LWR.define("lwc", ["lwc/v/8_20_6"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/authenticationCookieName", [], function () {
+        return "__Secure-has-sid";
+      });
+      LWR.define("@app/extraRouteParams", [], function () {
+        return {};
+      });
+      LWR.define("@app/imageOpt", [], function () {
+        return "none";
+      });
+      LWR.define("@app/isMobileAppMode", [], function () {
+        return false;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/apexApiBasePath/v/1",
+        ["@app/apexApiBasePath"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/apiBasePath/v/1", ["@app/apiBasePath"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/authenticationCookieName/v/1",
+        ["@app/authenticationCookieName"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/basePath/v/1", ["@app/basePath"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/csrfToken/v/1", ["@app/csrfToken"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/deployTarget/v/1", ["@app/deployTarget"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/extraRouteParams/v/1",
+        ["@app/extraRouteParams"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/guestUuidCookieName/v/1",
+        ["@app/guestUuidCookieName"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/imageOpt/v/1", ["@app/imageOpt"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/isDesignMode/v/1", ["@app/isDesignMode"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/isMobileAppMode/v/1",
+        ["@app/isMobileAppMode"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/isPreviewMode/v/1",
+        ["@app/isPreviewMode"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/isSsrCodeTypeEnabled/v/1",
+        ["@app/isSsrCodeTypeEnabled"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/o11yApiEndpoint/v/1",
+        ["@app/o11yApiEndpoint"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/o11yConfiguration/v/1",
+        ["@app/o11yConfiguration"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/o11yFalconEnabled/v/1",
+        ["@app/o11yFalconEnabled"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/o11yGuestToken/v/1",
+        ["@app/o11yGuestToken"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/o11ySamplingRate/v/1",
+        ["@app/o11ySamplingRate"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/routes/v/1", ["@app/routes"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/templateDevName/v/1",
+        ["@app/templateDevName"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/uiBasePath/v/1", ["@app/uiBasePath"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/user/v/1", ["@app/user"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define("@app/versionKey/v/1", ["@app/versionKey"], function (m) {
+        return m && typeof m === "object" && "default" in m ? m.default : m;
+      });
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/viewToThemeLayoutMap/v/1",
+        ["@app/viewToThemeLayoutMap"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@app/webruntimeFrameworkVersion/v/1",
+        ["@app/webruntimeFrameworkVersion"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@salesforce/community/Id/v/1",
+        ["@salesforce/community/Id"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@salesforce/i18n/lang/v/1",
+        ["@salesforce/i18n/lang"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@salesforce/site/activeLanguages/v/1",
+        ["@salesforce/site/activeLanguages"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@salesforce/site/Id/v/1",
+        ["@salesforce/site/Id"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "@salesforce/webstore/Id/v/1",
+        ["@salesforce/webstore/Id"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <script type="text/javascript">
+      LWR.define(
+        "webruntime/dispatcher/v/1",
+        ["webruntime/dispatcher"],
+        function (m) {
+          return m && typeof m === "object" && "default" in m ? m.default : m;
+        }
+      );
+    </script>
+    <link
+      rel="preload"
+      href="/sfGpsDsCaOn/webruntime/view/75106fc585b48e49057ebab20177c0b4/prod/en-US/accordion_view"
+      as="script"
+      crossorigin=""
+    />
+    <link
+      rel="preload"
+      href="/sfGpsDsCaOn/webruntime/component/259a789b5905e4a3e65c0942cc97421d/prod/en-US/force/luvioLwcBindings_cmp"
+      as="script"
+      crossorigin=""
+    />
+    <link
+      rel="preload"
+      href="/sfGpsDsCaOn/webruntime/component/da6467b90bc1eda0c5728f07f2d9928c/prod/en-US/force/luvioRuntimeWebruntime_cmp"
+      as="script"
+      crossorigin=""
+    />
+    <link
+      rel="preload"
+      href="/sfGpsDsCaOn/webruntime/view/b3c637b9afc213f97bcd0d455655decc/prod/en-US/scopedHeaderAndFooter_view"
+      as="script"
+      crossorigin=""
+    />
+    <style type="text/css" id="webruntime-branding">
+      :root {
+        --dxp-g-brand: #005fb2;
+        --dxp-s-text-heading-medium-letter-spacing: 0em;
+        --dxp-s-form-element-text-font-family: var(--dxp-s-html-font-family);
+        --dxp-s-form-element-spacing-horizontal-start: 12px;
+        --dxp-s-text-heading-small-text-decoration: none;
+        --dxp-s-dropdown-text-color: var(--dxp-g-root-contrast);
+        --dxp-s-tertiary-button-text-color: var(--dxp-s-button-color);
+        --dxp-s-form-element-caption-text-font-family: var(
+          --dxp-s-html-font-family
+        );
+        --dxp-s-form-element-spacing-block-start: 0px;
+        --dxp-g-neutral-contrast-3: #ffffff;
+        --dxp-s-text-heading-medium-text-transform: none;
+        --dxp-g-neutral-contrast-2: #000000;
+        --dxp-g-neutral-contrast-1: #000000;
+        --dxp-s-button-color-focus-contrast: var(
+          --dxp-s-button-color-contrast-1
+        );
+        --dxp-s-tertiary-button-border-color-1: rgba(0, 0, 0, 0);
+        --dxp-s-button-border-color-active: var(
+          --dxp-s-button-border-color-focus
+        );
+        --dxp-s-link-text-color-1: var(--dxp-g-brand-1);
+        --dxp-s-form-element-label-font-style: normal;
+        --dxp-g-info: #16325c;
+        --dxp-g-root: #ffffff;
+        --dxp-s-tertiary-button-text-color-focus: var(
+          --dxp-s-tertiary-button-text-color-1
+        );
+        --dxp-s-form-element-text-text-decoration: none;
+        --dxp-s-form-element-caption-text-font-weight: 400;
+        --dxp-s-body-line-height: 1.5;
+        --dxp-s-text-heading-extra-small-font-style: normal;
+        --dxp-s-button-large-padding-block-end: 0rem;
+        --dxp-s-body-text-decoration: none;
+        --dxp-s-section-content-spacing-inline-end-mobile: 0.75rem;
+        --dxp-s-form-element-text-font-weight: 400;
+        --dxp-s-tertiary-button-color-1: rgba(0, 0, 0, 0);
+        --dxp-s-text-heading-medium-font-style: normal;
+        --dxp-s-form-checkbox-color-background-checked: var(
+          --dxp-s-form-checkbox-color-background
+        );
+        --dxp-s-secondary-button-color-focus: var(
+          --dxp-s-secondary-button-color-1
+        );
+        --dxp-s-text-heading-extra-extra-small-line-height: 1.25;
+        --dxp-g-warning-2: #e27d00;
+        --dxp-g-warning-3: #673900;
+        --dxp-s-form-element-color-border: var(--dxp-g-neutral-3);
+        --dxp-g-warning-1: #ffa534;
+        --dxp-s-header-content-max-width-mobile: none;
+        --dxp-s-secondary-button-color-hover: var(
+          --dxp-s-secondary-button-color-1
+        );
+        --dxp-s-text-heading-large-letter-spacing: 0em;
+        --dxp-s-button-padding-inline-end: 1rem;
+        --dxp-s-tertiary-button-border-color-hover: var(
+          --dxp-s-tertiary-button-border-color-1
+        );
+        --dxp-s-tertiary-button-border-color-focus: var(
+          --dxp-s-tertiary-button-border-color-1
+        );
+        --dxp-s-body-font-style: normal;
+        --dxp-g-warning-contrast: #000000;
+        --dxp-s-form-element-text-text-transform: none;
+        --dxp-s-button-large-padding-inline-start: 1.25rem;
+        --dxp-s-text-heading-medium-line-height: 1.25;
+        --dxp-s-column-spacer-size: 1rem;
+        --dxp-s-text-heading-large-text-transform: none;
+        --dxp-s-secondary-button-border-color: var(--dxp-s-button-color);
+        --dxp-s-text-heading-extra-large-letter-spacing: 0em;
+        --dxp-s-text-heading-large-font-size: 1.75rem;
+        --dxp-s-secondary-button-text-color: var(--dxp-s-button-color);
+        --dxp-s-form-element-text-font-style: normal;
+        --dxp-s-button-font-family: var(--dxp-s-html-font-family);
+        --dxp-s-form-element-placeholder-text-color: var(--dxp-g-neutral-3);
+        --dxp-s-form-element-color-background: var(--dxp-g-root);
+        --dxp-s-tertiary-button-border-color-active: var(
+          --dxp-s-tertiary-button-border-color-focus
+        );
+        --dxp-s-button-padding-block-start: 0rem;
+        --dxp-s-text-heading-extra-extra-small-font-style: normal;
+        --dxp-s-button-font-weight: 400;
+        --dxp-s-body-font-weight: 400;
+        --dxp-s-body-small-line-height: 1.25;
+        --dxp-s-html-font-family: var(--dxp-g-root-font-family);
+        --dxp-g-offline: #444444;
+        --dxp-s-button-small-font-size: 0.75rem;
+        --dxp-s-button-radius-border: 4px;
+        --dxp-s-button-small-padding-block-end: 0rem;
+        --dxp-s-component-wrapper-spacer-size-mobile: 1.5rem;
+        --dxp-s-form-element-label-font-size: 1rem;
+        --dxp-s-text-heading-extra-small-line-height: 1.25;
+        --dxp-s-text-heading-small-line-height: 1.25;
+        --dxp-s-section-content-spacing-block-end: 1rem;
+        --dxp-s-secondary-button-text-color-focus: var(
+          --dxp-s-secondary-button-text-color-1
+        );
+        --dxp-g-success-3: #07190f;
+        --dxp-g-warning: #ffb75d;
+        --dxp-g-success-2: #237747;
+        --dxp-g-success-1: #36b66c;
+        --dxp-s-button-small-padding-inline-end: 0.75rem;
+        --dxp-s-column-spacer-size-mobile: 0.75rem;
+        --dxp-s-text-heading-small-font-family: var(--dxp-s-html-font-family);
+        --dxp-s-text-heading-large-font-style: normal;
+        --dxp-g-info-contrast-3: #ffffff;
+        --dxp-s-form-checkbox-color-border-checked: var(
+          --dxp-s-form-checkbox-color-border
+        );
+        --dxp-s-button-color-active: var(--dxp-s-button-color-focus);
+        --dxp-s-section-content-spacing-inline-start-mobile: 0.75rem;
+        --dxp-s-section-content-spacing-block-end-mobile: 0.75rem;
+        --dxp-s-html-font-size: 1rem;
+        --dxp-s-body-font-family: var(--dxp-s-html-font-family);
+        --dxp-s-link-text-decoration-focus: underline;
+        --dxp-g-info-contrast-1: #ffffff;
+        --dxp-s-dropdown-text-color-hover: var(--dxp-g-neutral-contrast);
+        --dxp-g-info-contrast-2: #ffffff;
+        --dxp-s-text-heading-extra-large-font-family: var(
+          --dxp-s-html-font-family
+        );
+        --dxp-s-text-heading-medium-text-decoration: none;
+        --dxp-s-secondary-button-color-active: var(
+          --dxp-s-secondary-button-color-focus
+        );
+        --dxp-s-form-element-label-line-height: 1.5;
+        --dxp-s-text-heading-extra-extra-small-font-family: var(
+          --dxp-s-html-font-family
+        );
+        --dxp-s-text-heading-small-font-weight: 300;
+        --dxp-s-text-heading-large-font-weight: 300;
+        --dxp-s-form-element-text-color: var(--dxp-g-root-contrast);
+        --dxp-g-destructive-contrast: #ffffff;
+        --dxp-s-form-checkbox-radius-border: 4px;
+        --dxp-g-destructive-contrast-1: #ffffff;
+        --dxp-g-destructive-contrast-2: #ffffff;
+        --dxp-g-root-1: #ebebeb;
+        --dxp-g-destructive-contrast-3: #ffffff;
+        --dxp-g-root-2: #c2c2c2;
+        --dxp-s-section-content-spacing-inline-start: 1rem;
+        --dxp-g-root-3: #858585;
+        --dxp-s-button-color-1: var(--dxp-g-brand-1);
+        --dxp-s-form-element-color-background-active: var(
+          --dxp-s-form-element-color-background
+        );
+        --dxp-s-body-text-color: var(--dxp-g-root-contrast);
+        --dxp-s-footer-content-max-width-mobile: none;
+        --dxp-g-brand-contrast: #ffffff;
+        --dxp-s-button-border-color-hover: var(--dxp-s-button-color-hover);
+        --dxp-s-text-heading-extra-small-letter-spacing: 0em;
+        --dxp-s-form-element-width-border: 1px;
+        --dxp-s-body-small-text-color: var(--dxp-g-root-contrast);
+        --dxp-s-form-checkbox-width-border: 1px;
+        --dxp-s-button-color-active-contrast: var(
+          --dxp-s-button-color-focus-contrast
+        );
+        --dxp-s-button-line-height: 2;
+        --dxp-s-button-small-padding-inline-start: 0.75rem;
+        --dxp-s-text-heading-extra-extra-small-text-transform: none;
+        --dxp-s-form-element-color-border-focus: var(--dxp-g-brand);
+        --dxp-s-button-large-radius-border: 4px;
+        --dxp-s-text-heading-extra-extra-small-font-weight: 600;
+        --dxp-s-button-border-color: var(--dxp-s-button-color);
+        --dxp-s-secondary-button-color: var(--dxp-g-root);
+        --dxp-s-text-heading-extra-small-text-decoration: none;
+        --dxp-s-text-heading-extra-extra-small-color: var(
+          --dxp-g-root-contrast
+        );
+        --dxp-s-form-element-radius-border: 4px;
+        --dxp-s-form-element-text-color-focus: var(
+          --dxp-s-form-element-text-color
+        );
+        --dxp-s-tertiary-button-border-color: rgba(0, 0, 0, 0);
+        --dxp-g-destructive: #c23934;
+        --dxp-s-tertiary-button-color-active: var(
+          --dxp-s-tertiary-button-color-focus
+        );
+        --dxp-s-dropdown-color-border: var(--dxp-g-neutral);
+        --dxp-g-offline-contrast: #ffffff;
+        --dxp-s-text-heading-large-color: var(--dxp-g-root-contrast);
+        --dxp-s-button-large-padding-block-start: 0rem;
+        --dxp-s-link-text-decoration-hover: underline;
+        --dxp-s-button-color-focus: var(--dxp-s-button-color-1);
+        --dxp-s-form-element-text-line-height: 1.5;
+        --dxp-s-form-element-caption-text-line-height: 1.5;
+        --dxp-s-body-small-font-family: var(--dxp-s-html-font-family);
+        --dxp-s-body-small-letter-spacing: 0em;
+        --dxp-s-text-heading-extra-large-text-transform: none;
+        --dxp-s-form-element-label-text-transform: none;
+        --dxp-g-success: #4bca81;
+        --dxp-s-form-checkbox-color-background: var(
+          --dxp-s-form-element-color-background
+        );
+        --dxp-s-form-element-label-letter-spacing: 0;
+        --dxp-s-form-element-label-font-weight: 400;
+        --dxp-s-button-text-decoration: none;
+        --dxp-s-text-heading-extra-large-line-height: 1.25;
+        --dxp-s-button-border-color-focus: var(--dxp-s-button-color-focus);
+        --dxp-g-warning-contrast-3: #ffffff;
+        --dxp-s-button-large-font-size: 1.25rem;
+        --dxp-s-button-small-radius-border: 4px;
+        --dxp-s-body-font-size: 1rem;
+        --dxp-s-dropdown-color-background: var(--dxp-g-root);
+        --dxp-s-body-small-text-decoration: none;
+        --dxp-s-secondary-button-text-color-active: var(
+          --dxp-s-secondary-button-text-color-focus
+        );
+        --dxp-s-text-heading-large-line-height: 1.25;
+        --dxp-s-button-color-hover: var(--dxp-s-button-color-1);
+        --dxp-s-button-font-size: 1rem;
+        --dxp-s-button-letter-spacing: 0em;
+        --dxp-g-warning-contrast-2: #000000;
+        --dxp-g-warning-contrast-1: #000000;
+        --dxp-s-button-padding-inline-start: 1rem;
+        --dxp-g-root-contrast-1: #000000;
+        --dxp-g-root-contrast: #1a1b1e;
+        --dxp-g-root-contrast-2: #000000;
+        --dxp-g-root-contrast-3: #000000;
+        --dxp-s-header-content-max-width: 1800px;
+        --dxp-s-section-columns-max-width: 1800px;
+        --dxp-s-form-element-spacing-block-end: 0px;
+        --dxp-s-button-text-transform: none;
+        --dxp-s-body-text-transform: none;
+        --dxp-s-form-element-label-font-family: var(--dxp-s-html-font-family);
+        --dxp-s-form-checkbox-color-border: var(
+          --dxp-s-form-element-color-border
+        );
+        --dxp-s-form-element-caption-text-text-transform: none;
+        --dxp-s-body-letter-spacing: 0em;
+        --dxp-s-form-element-caption-text-letter-spacing: 0;
+        --dxp-s-tertiary-button-color: rgba(0, 0, 0, 0);
+        --dxp-s-body-small-font-style: normal;
+        --dxp-s-text-heading-small-font-style: normal;
+        --dxp-s-text-heading-extra-extra-small-font-size: 0.625rem;
+        --dxp-s-text-heading-small-color: var(--dxp-g-root-contrast);
+        --dxp-s-section-content-spacing-block-start: 1rem;
+        --dxp-s-html-font-size-mobile: 1rem;
+        --dxp-s-section-content-spacing-inline-end: 1rem;
+        --dxp-s-body-small-font-weight: 400;
+        --dxp-g-offline-3: #000000;
+        --dxp-g-offline-2: #070707;
+        --dxp-g-offline-1: #303030;
+        --dxp-s-button-color-contrast-1: var(--dxp-g-brand-contrast-1);
+        --dxp-s-secondary-button-border-color-active: var(
+          --dxp-s-secondary-button-border-color-focus
+        );
+        --dxp-s-text-heading-extra-extra-small-letter-spacing: 0em;
+        --dxp-s-text-heading-extra-large-text-decoration: none;
+        --dxp-g-success-contrast: #000000;
+        --dxp-s-text-heading-small-font-size: 1.125rem;
+        --dxp-s-button-font-style: normal;
+        --dxp-s-body-small-text-transform: none;
+        --dxp-g-brand-contrast-1: #ffffff;
+        --dxp-g-brand-contrast-3: #ffffff;
+        --dxp-s-button-color-hover-contrast: var(
+          --dxp-s-button-color-contrast-1
+        );
+        --dxp-g-brand-contrast-2: #ffffff;
+        --dxp-g-brand-1: #004989;
+        --dxp-g-brand-2: #001e38;
+        --dxp-g-brand-3: #000000;
+        --dxp-s-secondary-button-text-color-1: var(--dxp-s-button-color-1);
+        --dxp-s-link-text-color-hover: var(--dxp-s-link-text-color-1);
+        --dxp-g-offline-contrast-3: #ffffff;
+        --dxp-g-offline-contrast-2: #ffffff;
+        --dxp-s-button-small-padding-block-start: 0rem;
+        --dxp-s-tertiary-button-color-hover: var(
+          --dxp-s-tertiary-button-color-1
+        );
+        --dxp-s-text-heading-extra-small-font-family: var(
+          --dxp-s-html-font-family
+        );
+        --dxp-s-form-element-caption-text-text-decoration: none;
+        --dxp-s-body-small-font-size: 0.75rem;
+        --dxp-g-destructive-1: #a2302b;
+        --dxp-g-offline-contrast-1: #ffffff;
+        --dxp-s-text-heading-small-text-transform: none;
+        --dxp-s-tertiary-button-text-color-1: var(--dxp-s-button-color-1);
+        --dxp-g-info-contrast: #ffffff;
+        --dxp-s-link-text-color: var(--dxp-g-brand);
+        --dxp-s-text-heading-extra-extra-small-text-decoration: none;
+        --dxp-g-neutral: #ecebea;
+        --dxp-g-destructive-2: #611d1a;
+        --dxp-g-destructive-3: #010000;
+        --dxp-s-form-element-label-color: var(--dxp-g-root-contrast);
+        --dxp-s-text-heading-extra-large-font-weight: 300;
+        --dxp-s-text-heading-large-font-family: var(--dxp-s-html-font-family);
+        --dxp-s-text-heading-extra-large-font-style: normal;
+        --dxp-s-tertiary-button-text-color-active: var(
+          --dxp-s-tertiary-button-text-color-focus
+        );
+        --dxp-s-text-heading-extra-small-text-transform: none;
+        --dxp-s-text-heading-extra-small-font-weight: 600;
+        --dxp-s-form-element-text-font-size: 1rem;
+        --dxp-s-secondary-button-border-color-hover: var(
+          --dxp-s-secondary-button-border-color-1
+        );
+        --dxp-s-button-large-padding: 1.25rem;
+        --dxp-g-info-2: #000000;
+        --dxp-g-info-3: #000000;
+        --dxp-s-secondary-button-border-color-focus: var(
+          --dxp-s-secondary-button-border-color-1
+        );
+        --dxp-s-text-heading-medium-font-weight: 300;
+        --dxp-g-info-1: #0e203b;
+        --dxp-g-neutral-contrast: #000000;
+        --dxp-s-dropdown-color-background-hover: var(--dxp-g-neutral);
+        --dxp-s-button-color: var(--dxp-g-brand);
+        --dxp-g-neutral-3: #76716b;
+        --dxp-g-neutral-2: #b2aeaa;
+        --dxp-s-text-heading-extra-large-color: var(--dxp-g-root-contrast);
+        --dxp-g-neutral-1: #d9d7d5;
+        --dxp-s-secondary-button-color-1: var(--dxp-g-root-1);
+        --dxp-g-success-contrast-3: #ffffff;
+        --dxp-g-success-contrast-2: #ffffff;
+        --dxp-s-text-heading-extra-large-font-size: 2.5rem;
+        --dxp-s-secondary-button-border-color-1: var(--dxp-s-button-color-1);
+        --dxp-s-tertiary-button-color-focus: var(
+          --dxp-s-tertiary-button-color-1
+        );
+        --dxp-s-form-element-caption-text-font-size: 0.75rem;
+        --dxp-s-form-element-spacing-horizontal-end: 16px;
+        --dxp-g-success-contrast-1: #000000;
+        --dxp-s-component-wrapper-spacer-size: 1.5rem;
+        --dxp-s-button-large-padding-inline-end: 1.25rem;
+        --dxp-s-text-heading-extra-small-color: var(--dxp-g-root-contrast);
+        --dxp-s-tertiary-button-text-color-hover: var(
+          --dxp-s-tertiary-button-text-color-1
+        );
+        --dxp-s-link-text-decoration: none;
+        --dxp-s-text-heading-medium-font-size: 1.25rem;
+        --dxp-s-form-element-label-text-decoration: none;
+        --dxp-s-text-heading-extra-small-font-size: 0.8125rem;
+        --dxp-s-button-color-contrast: var(--dxp-g-brand-contrast);
+        --dxp-s-button-padding-block-end: 0rem;
+        --dxp-s-section-columns-max-width-mobile: none;
+        --dxp-s-text-heading-medium-color: var(--dxp-g-root-contrast);
+        --dxp-s-button-small-padding: 0.75rem;
+        --dxp-s-text-heading-large-text-decoration: none;
+        --dxp-s-form-element-caption-text-font-style: normal;
+        --dxp-s-button-padding: 1rem;
+        --dxp-s-secondary-button-text-color-hover: var(
+          --dxp-s-secondary-button-text-color-1
+        );
+        --dxp-s-text-heading-medium-font-family: var(--dxp-s-html-font-family);
+        --dxp-s-footer-content-max-width: 1800px;
+        --dxp-s-text-heading-small-letter-spacing: 0em;
+        --dxp-s-form-element-text-letter-spacing: 0;
+        --dxp-s-section-content-spacing-block-start-mobile: 0.75rem;
+        --dxp-g-brand-h: 208;
+        --dxp-g-brand-s: 100%;
+        --dxp-g-brand-l: 35%;
+        --dxp-g-brand-a: 1;
+        --dxp-g-info-h: 216;
+        --dxp-g-info-s: 61%;
+        --dxp-g-info-l: 22%;
+        --dxp-g-info-a: 1;
+        --dxp-g-root-h: 0;
+        --dxp-g-root-s: 0%;
+        --dxp-g-root-l: 100%;
+        --dxp-g-root-a: 1;
+        --dxp-g-warning-contrast-h: 0;
+        --dxp-g-warning-contrast-s: 0%;
+        --dxp-g-warning-contrast-l: 0%;
+        --dxp-g-warning-contrast-a: 1;
+        --dxp-g-offline-h: 0;
+        --dxp-g-offline-s: 0%;
+        --dxp-g-offline-l: 27%;
+        --dxp-g-offline-a: 1;
+        --dxp-g-warning-h: 33;
+        --dxp-g-warning-s: 100%;
+        --dxp-g-warning-l: 68%;
+        --dxp-g-warning-a: 1;
+        --dxp-g-destructive-contrast-h: 0;
+        --dxp-g-destructive-contrast-s: 0%;
+        --dxp-g-destructive-contrast-l: 100%;
+        --dxp-g-destructive-contrast-a: 1;
+        --dxp-g-brand-contrast-h: 0;
+        --dxp-g-brand-contrast-s: 0%;
+        --dxp-g-brand-contrast-l: 100%;
+        --dxp-g-brand-contrast-a: 1;
+        --dxp-s-tertiary-button-border-color-h: 0;
+        --dxp-s-tertiary-button-border-color-s: 0%;
+        --dxp-s-tertiary-button-border-color-l: 0%;
+        --dxp-s-tertiary-button-border-color-a: 0;
+        --dxp-g-destructive-h: 2;
+        --dxp-g-destructive-s: 58%;
+        --dxp-g-destructive-l: 48%;
+        --dxp-g-destructive-a: 1;
+        --dxp-g-offline-contrast-h: 0;
+        --dxp-g-offline-contrast-s: 0%;
+        --dxp-g-offline-contrast-l: 100%;
+        --dxp-g-offline-contrast-a: 1;
+        --dxp-g-success-h: 146;
+        --dxp-g-success-s: 55%;
+        --dxp-g-success-l: 54%;
+        --dxp-g-success-a: 1;
+        --dxp-g-root-contrast-h: 225;
+        --dxp-g-root-contrast-s: 7%;
+        --dxp-g-root-contrast-l: 11%;
+        --dxp-g-root-contrast-a: 1;
+        --dxp-s-tertiary-button-color-h: 0;
+        --dxp-s-tertiary-button-color-s: 0%;
+        --dxp-s-tertiary-button-color-l: 0%;
+        --dxp-s-tertiary-button-color-a: 0;
+        --dxp-g-success-contrast-h: 0;
+        --dxp-g-success-contrast-s: 0%;
+        --dxp-g-success-contrast-l: 0%;
+        --dxp-g-success-contrast-a: 1;
+        --dxp-g-info-contrast-h: 0;
+        --dxp-g-info-contrast-s: 0%;
+        --dxp-g-info-contrast-l: 100%;
+        --dxp-g-info-contrast-a: 1;
+        --dxp-g-neutral-h: 30;
+        --dxp-g-neutral-s: 5%;
+        --dxp-g-neutral-l: 92%;
+        --dxp-g-neutral-a: 1;
+        --dxp-g-neutral-contrast-h: 0;
+        --dxp-g-neutral-contrast-s: 0%;
+        --dxp-g-neutral-contrast-l: 0%;
+        --dxp-g-neutral-contrast-a: 1;
+      }
+    </style>
+    <title>accordion</title>
+
+    <!-- branding stylesheets -->
+
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/assets/styles/slds/salesforce-lightning-design-system-part1.css?ed76c1cefc"
+    />
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/assets/styles/slds/salesforce-lightning-design-system-part2.css?ed76c1cefc"
+    />
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/assets/styles/slds/salesforce-lightning-design-system-part3.css?ed76c1cefc"
+    />
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/assets/styles/slds/salesforce-lightning-design-system-part4.css?ed76c1cefc"
+    />
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/assets/styles/dxp-site-spacing-styling-hooks.min.css?ed76c1cefc"
+    />
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/assets/styles/dxp-styling-hooks.min.css?ed76c1cefc"
+    />
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/assets/styles/dxp-slds-extensions.min.css?ed76c1cefc"
+    />
+
+    <!-- branding stylesheets-->
+
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/sfsites/c/cms/delivery/media/MCT6JINSI6KNAIVJFT3X22SPYBN4?version=1.3&amp;preloadAs=style"
+    />
+    <link
+      rel="stylesheet"
+      href="/sfGpsDsCaOn/sfsites/c/cms/delivery/media/MCNSZLQKZ5E5HVDP5CSW5UGP2A5M?version=1.3&amp;preloadAs=style"
+      media="print"
+    />
+
+    <style type="text/css">
+      [data-f6-region].f6-highlight {
+        position: relative;
+      }
+      [data-f6-region].f6-highlight::after {
+        width: 100%;
+        height: 100%;
+        content: "";
+        outline: rgb(94, 158, 214) 3px solid;
+        outline-offset: -3px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+      }
+    </style>
+    <style type="text/css" data-rendered-by-lwc="">
+      span.router-title.lwc-7bis3qj4jjc {
+        position: absolute;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        text-transform: none;
+        white-space: nowrap;
+      }
+    </style>
+    <style type="text/css" data-rendered-by-lwc="">
+      .lwc-6raprfhcujs-host {
+        display: flex;
+        flex-flow: column;
+      }
+      .lwc-6raprfhcujs-host.full-height {
+        min-height: 100%;
+      }
+      .sticky-header.lwc-6raprfhcujs {
+        position: sticky;
+        top: 0;
+        z-index: 100001;
+      }
+      .community_byo-scoped-header-and-footer__header-content.lwc-6raprfhcujs {
+        background-color: rgb(239, 240, 242);
+        max-width: var(--dxp-c-header-content-max-width);
+        margin: 0 auto;
+      }
+      .community_byo-scoped-header-and-footer__main.lwc-6raprfhcujs {
+        flex: 1 0 auto;
+      }
+      .community_byo-scoped-header-and-footer__footer-content.lwc-6raprfhcujs {
+        background-color: rgb(239, 240, 242);
+        max-width: var(--dxp-c-footer-content-max-width);
+        margin: 0 auto;
+      }
+      .skip-to-main.lwc-6raprfhcujs {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 6px 12px;
+        color: var(--dxp-s-link-text-color, #3c3d3d);
+        background: var(--dxp-g-root);
+      }
+      .skip-to-main:focus.lwc-6raprfhcujs {
+        width: auto;
+        height: auto;
+        clip: auto;
+        z-index: 1000;
+      }
+    </style>
+    <style type="text/css" data-rendered-by-lwc="">
+      .lwc-6j9an5vbrcd-host.comm-section-container {
+        display: block;
+        position: relative;
+      }
+      .columns-content.lwc-6j9an5vbrcd {
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+      }
+      .background-image.lwc-6j9an5vbrcd,
+      .background-image-overlay.lwc-6j9an5vbrcd {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+      }
+      .background-image-overlay.lwc-6j9an5vbrcd {
+        background-color: var(--dxp-c-section-image-overlay-color);
+      }
+      @media only screen and (min-width: 64.0625em) {
+        .lwc-6j9an5vbrcd-host.comm-section-container {
+          padding: var(
+              --dxp-c-section-content-spacing-block-start,
+              var(
+                --dxp-style-c-padding-top,
+                var(--dxp-s-section-content-spacing-block-start)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-inline-end,
+              var(
+                --dxp-style-c-padding-right,
+                var(--dxp-s-section-content-spacing-inline-end)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-block-end,
+              var(
+                --dxp-style-c-padding-bottom,
+                var(--dxp-s-section-content-spacing-block-end)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-inline-start,
+              var(
+                --dxp-style-c-padding-left,
+                var(--dxp-s-section-content-spacing-inline-start)
+              )
+            );
+          min-height: var(
+            --dxp-c-section-min-height-desktop,
+            var(--dxp-c-l-section-min-height)
+          );
+        }
+        .columns-content.lwc-6j9an5vbrcd {
+          --dxp-c-region-wrapper-vertical-align: var(
+            --dxp-c-l-section-vertical-align,
+            var(--dxp-c-section-vertical-align)
+          );
+          flex-direction: row;
+          max-width: var(
+            --dxp-c-section-columns-max-width,
+            var(
+              --dxp-c-l-max-content-width,
+              var(
+                --dxp-c-max-content-width,
+                var(--dxp-s-section-columns-max-width)
+              )
+            )
+          );
+          min-height: var(
+            --dxp-c-section-columns-min-height-desktop,
+            var(--dxp-c-l-section-min-height)
+          );
+        }
+        .lwc-6j9an5vbrcd-host[data-layout-direction~="desktop-direction-row"]
+          .columns-content.lwc-6j9an5vbrcd {
+          flex-direction: row;
+        }
+        .lwc-6j9an5vbrcd-host[data-layout-direction~="desktop-direction-column"]
+          .columns-content.lwc-6j9an5vbrcd {
+          flex-direction: column;
+        }
+        .background-image.lwc-6j9an5vbrcd,
+        .background-image-overlay.lwc-6j9an5vbrcd {
+          min-height: var(
+            --dxp-c-section-min-height-desktop,
+            var(--dxp-c-l-section-min-height)
+          );
+        }
+        .background-image.lwc-6j9an5vbrcd {
+          background: var(--dxp-c-l-section-image-url)
+            var(--dxp-c-section-image-position)
+            var(--dxp-c-section-image-size-and-repeat);
+        }
+      }
+      @media only screen and (min-width: 48em) and (max-width: 64em) {
+        .lwc-6j9an5vbrcd-host.comm-section-container {
+          padding: var(
+              --dxp-c-section-content-spacing-block-start-tablet,
+              var(
+                --dxp-style-c-padding-top-m,
+                var(--dxp-s-section-content-spacing-block-start-mobile)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-inline-end-tablet,
+              var(
+                --dxp-style-c-padding-right-m,
+                var(--dxp-s-section-content-spacing-inline-end-mobile)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-block-end-tablet,
+              var(
+                --dxp-style-c-padding-bottom-m,
+                var(--dxp-s-section-content-spacing-block-end-mobile)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-inline-start-tablet,
+              var(
+                --dxp-style-c-padding-left-m,
+                var(--dxp-s-section-content-spacing-inline-start-mobile)
+              )
+            );
+          min-height: var(
+            --dxp-c-section-min-height-tablet,
+            var(--dxp-c-m-section-min-height)
+          );
+        }
+        .columns-content.lwc-6j9an5vbrcd {
+          --dxp-c-region-wrapper-vertical-align: var(
+            --dxp-c-m-section-vertical-align,
+            var(--dxp-c-section-vertical-align)
+          );
+          flex-direction: column;
+          max-width: var(
+            --dxp-c-section-columns-max-width-tablet,
+            var(
+              --dxp-c-m-max-content-width,
+              var(
+                --dxp-c-max-content-width,
+                var(--dxp-s-section-columns-max-width-mobile)
+              )
+            )
+          );
+          min-height: var(
+            --dxp-c-section-columns-min-height-tablet,
+            var(--dxp-c-m-section-min-height)
+          );
+        }
+        .lwc-6j9an5vbrcd-host[data-layout-direction~="tablet-direction-row"]
+          .columns-content.lwc-6j9an5vbrcd {
+          flex-direction: row;
+        }
+        .lwc-6j9an5vbrcd-host[data-layout-direction~="tablet-direction-column"]
+          .columns-content.lwc-6j9an5vbrcd {
+          flex-direction: column;
+        }
+        .background-image.lwc-6j9an5vbrcd,
+        .background-image-overlay.lwc-6j9an5vbrcd {
+          min-height: var(
+            --dxp-c-section-min-height-tablet,
+            var(--dxp-c-m-section-min-height)
+          );
+        }
+        .background-image.lwc-6j9an5vbrcd {
+          background: var(--dxp-c-m-section-image-url)
+            var(--dxp-c-section-image-position)
+            var(--dxp-c-section-image-size-and-repeat);
+        }
+      }
+      @media only screen and (max-width: 47.9375em) {
+        .lwc-6j9an5vbrcd-host.comm-section-container {
+          padding: var(
+              --dxp-c-section-content-spacing-block-start-mobile,
+              var(
+                --dxp-style-c-padding-top-s,
+                var(--dxp-s-section-content-spacing-block-start-mobile)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-inline-end-mobile,
+              var(
+                --dxp-style-c-padding-right-s,
+                var(--dxp-s-section-content-spacing-inline-end-mobile)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-block-end-mobile,
+              var(
+                --dxp-style-c-padding-bottom-s,
+                var(--dxp-s-section-content-spacing-block-end-mobile)
+              )
+            )
+            var(
+              --dxp-c-section-content-spacing-inline-start-mobile,
+              var(
+                --dxp-style-c-padding-left-s,
+                var(--dxp-s-section-content-spacing-inline-start-mobile)
+              )
+            );
+          min-height: var(
+            --dxp-c-section-min-height-mobile,
+            var(--dxp-c-s-section-min-height)
+          );
+        }
+        .columns-content.lwc-6j9an5vbrcd {
+          --dxp-c-region-wrapper-vertical-align: var(
+            --dxp-c-s-section-vertical-align,
+            var(--dxp-c-section-vertical-align)
+          );
+          flex-direction: column;
+          max-width: var(
+            --dxp-c-section-columns-max-width-mobile,
+            var(
+              --dxp-c-s-max-content-width,
+              var(
+                --dxp-c-max-content-width,
+                var(--dxp-s-section-columns-max-width-mobile)
+              )
+            )
+          );
+          min-height: var(
+            --dxp-c-section-columns-min-height-mobile,
+            var(--dxp-c-s-section-min-height)
+          );
+        }
+        .lwc-6j9an5vbrcd-host[data-layout-direction~="mobile-direction-row"]
+          .columns-content.lwc-6j9an5vbrcd {
+          flex-direction: row;
+        }
+        .lwc-6j9an5vbrcd-host[data-layout-direction~="mobile-direction-column"]
+          .columns-content.lwc-6j9an5vbrcd {
+          flex-direction: column;
+        }
+        .background-image.lwc-6j9an5vbrcd,
+        .background-image-overlay.lwc-6j9an5vbrcd {
+          min-height: var(
+            --dxp-c-section-min-height-mobile,
+            var(--dxp-c-s-section-min-height)
+          );
+        }
+        .background-image.lwc-6j9an5vbrcd {
+          background: var(--dxp-c-s-section-image-url)
+            var(--dxp-c-section-image-position)
+            var(--dxp-c-section-image-size-and-repeat);
+        }
+      }
+    </style>
+    <style type="text/css" data-rendered-by-lwc="">
+      .lwc-48aostf02bd-host {
+        display: flex;
+      }
+      .column-content.lwc-48aostf02bd {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-width: 0;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_1-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_1-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_1-of-12 {
+        flex-grow: 1;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_2-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_2-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_2-of-12 {
+        flex-grow: 2;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_3-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_3-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_3-of-12 {
+        flex-grow: 3;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_4-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_4-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_4-of-12 {
+        flex-grow: 4;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_5-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_5-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_5-of-12 {
+        flex-grow: 5;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_6-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_6-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_6-of-12 {
+        flex-grow: 6;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_7-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_7-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_7-of-12 {
+        flex-grow: 7;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_8-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_8-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_8-of-12 {
+        flex-grow: 8;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_9-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_9-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_9-of-12 {
+        flex-grow: 9;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_10-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_10-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_10-of-12 {
+        flex-grow: 10;
+      }
+      .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"].col-large-size_11-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"].col-large-size_11-of-12,
+      .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"].col-large-size_11-of-12 {
+        flex-grow: 11;
+      }
+      @media only screen and (min-width: 64.0625em) {
+        .lwc-48aostf02bd-host {
+          padding: var(--dxp-c-column-container-spacing-block-start)
+            var(--dxp-c-column-container-spacing-inline-end)
+            var(--dxp-c-column-container-spacing-block-end)
+            var(--dxp-c-column-container-spacing-inline-start);
+        }
+        .column-content.lwc-48aostf02bd {
+          padding: var(--dxp-c-column-content-spacing-block-start)
+            var(--dxp-c-column-content-spacing-inline-end)
+            var(--dxp-c-column-content-spacing-block-end)
+            var(--dxp-c-column-content-spacing-inline-start);
+          justify-content: var(
+            --dxp-c-l-section-vertical-align,
+            var(--dxp-c-section-vertical-align)
+          );
+        }
+        .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-row"] {
+          --sectionSpacerWidth: var(
+            --dxp-c-column-spacer-size,
+            var(
+              --dxp-c-l-section-column-gutter-width,
+              var(--dxp-s-column-spacer-size)
+            )
+          );
+          flex: 1;
+          min-width: 0;
+        }
+        .lwc-48aostf02bd-host[data-layout-direction~="desktop-direction-column"] {
+          --sectionSpacerHeight: var(
+            --dxp-c-column-spacer-size,
+            var(
+              --dxp-c-l-section-column-gutter-width,
+              var(--dxp-s-column-spacer-size)
+            )
+          );
+          flex: 0;
+          min-height: 0;
+        }
+      }
+      @media only screen and (min-width: 48em) and (max-width: 64em) {
+        .lwc-48aostf02bd-host {
+          padding: var(--dxp-c-column-container-spacing-block-start-mobile)
+            var(--dxp-c-column-container-spacing-inline-end-mobile)
+            var(--dxp-c-column-container-spacing-block-end-mobile)
+            var(--dxp-c-column-container-spacing-inline-start-mobile);
+        }
+        .column-content.lwc-48aostf02bd {
+          padding: var(--dxp-c-column-content-spacing-block-start-mobile)
+            var(--dxp-c-column-content-spacing-inline-end-mobile)
+            var(--dxp-c-column-content-spacing-block-end-mobile)
+            var(--dxp-c-column-content-spacing-inline-start-mobile);
+          justify-content: var(
+            --dxp-c-m-section-vertical-align,
+            var(--dxp-c-section-vertical-align)
+          );
+        }
+        .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-row"] {
+          --sectionSpacerWidth: var(
+            --dxp-c-column-spacer-size-tablet,
+            var(
+              --dxp-c-m-section-column-gutter-width,
+              var(--dxp-s-column-spacer-size-mobile)
+            )
+          );
+          flex: 1;
+          min-width: 0;
+        }
+        .lwc-48aostf02bd-host[data-layout-direction~="tablet-direction-column"] {
+          --sectionSpacerHeight: var(
+            --dxp-c-column-spacer-size-tablet,
+            var(
+              --dxp-c-m-section-column-gutter-width,
+              var(--dxp-s-column-spacer-size-mobile)
+            )
+          );
+          flex: 0;
+          min-height: 0;
+        }
+      }
+      @media only screen and (max-width: 47.9375em) {
+        .lwc-48aostf02bd-host {
+          padding: var(--dxp-c-column-container-spacing-block-start-mobile)
+            var(--dxp-c-column-container-spacing-inline-end-mobile)
+            var(--dxp-c-column-container-spacing-block-end-mobile)
+            var(--dxp-c-column-container-spacing-inline-start-mobile);
+        }
+        .column-content.lwc-48aostf02bd {
+          padding: var(--dxp-c-column-content-spacing-block-start-mobile)
+            var(--dxp-c-column-content-spacing-inline-end-mobile)
+            var(--dxp-c-column-content-spacing-block-end-mobile)
+            var(--dxp-c-column-content-spacing-inline-start-mobile);
+          justify-content: var(
+            --dxp-c-s-section-vertical-align,
+            var(--dxp-c-section-vertical-align)
+          );
+        }
+        .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-row"] {
+          --sectionSpacerWidth: var(
+            --dxp-c-column-spacer-size-mobile,
+            var(
+              --dxp-c-s-section-column-gutter-width,
+              var(--dxp-s-column-spacer-size-mobile)
+            )
+          );
+          flex: 1;
+          min-width: 0;
+        }
+        .lwc-48aostf02bd-host[data-layout-direction~="mobile-direction-column"] {
+          --sectionSpacerHeight: var(
+            --dxp-c-column-spacer-size-mobile,
+            var(
+              --dxp-c-s-section-column-gutter-width,
+              var(--dxp-s-column-spacer-size-mobile)
+            )
+          );
+          flex: 0;
+          min-height: 0;
+        }
+      }
+    </style>
+    <style type="text/css" data-rendered-by-lwc="">
+      .content-container.lwc-2b5a72ratvd {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+    <style type="text/css" data-rendered-by-lwc="">
+      .showcase-container[lwc-5jm0t85ko0n] {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      .showcase-section[lwc-5jm0t85ko0n] {
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #ccc;
+      }
+      .showcase-section:last-child[lwc-5jm0t85ko0n] {
+        border-bottom: none;
+      }
+      .button-group[lwc-5jm0t85ko0n] {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+      }
+      .status-message[lwc-5jm0t85ko0n] {
+        margin-top: 1rem;
+        padding: 0.75rem;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+      }
+      .ontario-accordion[lwc-5jm0t85ko0n] {
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+      }
+      .ontario-accordion__item[lwc-5jm0t85ko0n] {
+        border-bottom: 1px solid #e0e0e0;
+      }
+      .ontario-accordion__item:last-child[lwc-5jm0t85ko0n] {
+        border-bottom: none;
+      }
+      .ontario-accordion__heading[lwc-5jm0t85ko0n] {
+        margin: 0;
+      }
+      .ontario-accordion__button[lwc-5jm0t85ko0n] {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: white;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: left;
+        transition: background-color 0.2s;
+      }
+      .ontario-accordion__button:hover[lwc-5jm0t85ko0n],
+      .ontario-accordion__button:focus[lwc-5jm0t85ko0n] {
+        background-color: #f5f5f5;
+      }
+      .ontario-accordion__button:focus[lwc-5jm0t85ko0n] {
+        outline: 3px solid #1a1a1a;
+        outline-offset: -3px;
+      }
+      .ontario-accordion__button[aria-expanded="true"][lwc-5jm0t85ko0n] {
+        background-color: #f0f0f0;
+      }
+      .ontario-accordion__icon[lwc-5jm0t85ko0n] {
+        font-size: 1.5rem;
+        font-weight: normal;
+        flex-shrink: 0;
+        margin-left: 1rem;
+      }
+      .ontario-accordion__content[lwc-5jm0t85ko0n] {
+        padding: 1rem;
+        border-top: 1px solid #e0e0e0;
+      }
+      .ontario-accordion__content[hidden][lwc-5jm0t85ko0n] {
+        display: none;
+      }
+      kbd[lwc-5jm0t85ko0n] {
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 0.125rem 0.5rem;
+        font-family: monospace;
+        font-size: 0.875rem;
+      }
+    </style>
+    <style type="text/css" data-rendered-by-lwc="">
+      :host {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <webruntime-app
+      ><lwr-router-container class="lwc-7bis3qj4jjc-host"
+        ><!----><experience-data-layer-object
+          ><div hidden="">
+            <script type="application/json" data-provider-type="site">
+              {
+                "siteId": "0DMfn000000WkFsGAK",
+                "templateDevName": "talon-template-byo"
+              }
+            </script>
+          </div></experience-data-layer-object
+        ><webruntime-inner-app
+          ><dxp_data_provider-user-data-provider
+            ><experience-data-layer-object
+              ><div hidden="">
+                <script type="application/json" data-provider-type="user">
+                  { "attributes": { "isGuest": true } }
+                </script>
+              </div></experience-data-layer-object
+            ><!----><!----><dxp_data_provider-data-proxy
+              ><community_byo-scoped-header-and-footer
+                data-component-id="scopedHeaderAndFooter-ed0b"
+                class="full-height lwc-6raprfhcujs-host"
+                ><a
+                  href="javascript:void(0);"
+                  class="skip-to-main lwc-6raprfhcujs"
+                  aria-label="Skip to Main"
+                  >Skip to Main</a
+                >
+                <header class="lwc-6raprfhcujs" data-f6-region="">
+                  <div
+                    class="lwc-6raprfhcujs community_byo-scoped-header-and-footer__header-content"
+                  >
+                    <!----><community_layout-section
+                      data-layout-direction="desktop-direction-row tablet-direction-column mobile-direction-column"
+                      data-component-id="section-87c0"
+                      class="comm-section-container lwc-6j9an5vbrcd-host"
+                      style="
+                        --dxp-c-l-section-vertical-align: flex-start;
+                        --dxp-c-m-section-vertical-align: flex-start;
+                        --dxp-c-s-section-vertical-align: flex-start;
+                        --dxp-c-section-vertical-align: flex-start;
+                      "
+                      ><div class="background-image lwc-6j9an5vbrcd"></div>
+                      <div
+                        class="background-image-overlay lwc-6j9an5vbrcd"
+                      ></div>
+                      <div class="lwc-6j9an5vbrcd columns-content">
+                        <!----><community_layout-column
+                          data-layout-direction="desktop-direction-row tablet-direction-column mobile-direction-column"
+                          class="col-size_12-of-12 col-large-size_12-of-12 lwc-48aostf02bd-host"
+                          ><div class="lwc-48aostf02bd column-content">
+                            <!----><!---->
+                          </div></community_layout-column
+                        ><!---->
+                      </div></community_layout-section
+                    ><!---->
+                  </div>
+                </header>
+                <main
+                  class="lwc-6raprfhcujs community_byo-scoped-header-and-footer__main"
+                  id="main-content"
+                  tabindex="-1"
+                  data-f6-region=""
+                  role="main"
+                >
+                  <!----><webruntime-router-container
+                    ><dxp_data_provider-user-data-provider
+                      ><experience-data-layer-object
+                        ><div hidden="">
+                          <script
+                            type="application/json"
+                            data-provider-type="user"
+                          >
+                            { "attributes": { "isGuest": true } }
+                          </script>
+                        </div></experience-data-layer-object
+                      ><!----><!----><dxp_data_provider-data-proxy
+                        ><community_layout-slds-flexible-layout
+                          data-component-id="sldsFlexibleLayout-df70"
+                          class="lwc-2b5a72ratvd-host"
+                          ><div class="lwc-2b5a72ratvd content-container">
+                            <!----><community_layout-section
+                              data-layout-direction="desktop-direction-row tablet-direction-column mobile-direction-column"
+                              data-component-id="section-fc7a"
+                              class="comm-section-container lwc-6j9an5vbrcd-host"
+                              style="
+                                --dxp-c-l-section-vertical-align: flex-start;
+                                --dxp-c-m-section-vertical-align: flex-start;
+                                --dxp-c-s-section-vertical-align: flex-start;
+                                --dxp-c-section-vertical-align: flex-start;
+                              "
+                              ><div
+                                class="background-image lwc-6j9an5vbrcd"
+                              ></div>
+                              <div
+                                class="background-image-overlay lwc-6j9an5vbrcd"
+                              ></div>
+                              <div class="lwc-6j9an5vbrcd columns-content">
+                                <!----><community_layout-column
+                                  data-layout-direction="desktop-direction-row tablet-direction-column mobile-direction-column"
+                                  class="col-size_12-of-12 col-large-size_12-of-12 lwc-48aostf02bd-host"
+                                  ><div class="lwc-48aostf02bd column-content">
+                                    <!----><c-showcase-accordion
+                                      data-component-id="showcaseAccordion-01d8"
+                                      lwc-5jm0t85ko0n-host=""
+                                      ><div
+                                        lwc-5jm0t85ko0n=""
+                                        class="showcase-container"
+                                        data-testid="accordion-showcase"
+                                      >
+                                        <h1
+                                          class="ontario-h1"
+                                          lwc-5jm0t85ko0n=""
+                                        >
+                                          Accordion Showcase
+                                        </h1>
+                                        <div
+                                          class="ontario-callout"
+                                          lwc-5jm0t85ko0n=""
+                                        >
+                                          <p lwc-5jm0t85ko0n="">
+                                            This page demonstrates Accordion
+                                            components with expand/collapse
+                                            functionality, ARIA states, and
+                                            keyboard navigation.
+                                          </p>
+                                        </div>
+                                        <section
+                                          lwc-5jm0t85ko0n=""
+                                          class="showcase-section"
+                                          data-testid="accordion-controls-section"
+                                        >
+                                          <h2
+                                            class="ontario-h2"
+                                            lwc-5jm0t85ko0n=""
+                                          >
+                                            Accordion Controls
+                                          </h2>
+                                          <div
+                                            class="button-group"
+                                            lwc-5jm0t85ko0n=""
+                                          >
+                                            <button
+                                              class="ontario-button ontario-button--secondary"
+                                              data-testid="expand-all-button"
+                                              lwc-5jm0t85ko0n=""
+                                            >
+                                              Expand All</button
+                                            ><button
+                                              class="ontario-button ontario-button--secondary"
+                                              data-testid="collapse-all-button"
+                                              lwc-5jm0t85ko0n=""
+                                              disabled=""
+                                            >
+                                              Collapse All
+                                            </button>
+                                          </div>
+                                        </section>
+                                        <section
+                                          lwc-5jm0t85ko0n=""
+                                          class="showcase-section"
+                                          data-testid="basic-accordion-section"
+                                        >
+                                          <h2
+                                            class="ontario-h2"
+                                            lwc-5jm0t85ko0n=""
+                                          >
+                                            Basic Accordion (Multiple Sections
+                                            Can Be Open)
+                                          </h2>
+                                          <div
+                                            lwc-5jm0t85ko0n=""
+                                            class="ontario-accordion"
+                                            data-testid="basic-accordion"
+                                          >
+                                            <div
+                                              lwc-5jm0t85ko0n=""
+                                              class="ontario-accordion__item"
+                                              data-testid="accordion-item"
+                                            >
+                                              <h3
+                                                class="ontario-accordion__heading"
+                                                lwc-5jm0t85ko0n=""
+                                              >
+                                                <button
+                                                  class="ontario-accordion__button"
+                                                  data-testid="accordion-button"
+                                                  lwc-5jm0t85ko0n=""
+                                                  data-id="1"
+                                                  aria-expanded="false"
+                                                  aria-controls="1-19"
+                                                >
+                                                  <span
+                                                    class="ontario-accordion__button-text"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >Section 1: Getting
+                                                    Started</span
+                                                  ><span
+                                                    class="ontario-accordion__icon"
+                                                    aria-hidden="true"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >+</span
+                                                  >
+                                                </button>
+                                              </h3>
+                                            </div>
+                                            <div
+                                              lwc-5jm0t85ko0n=""
+                                              class="ontario-accordion__item"
+                                              data-testid="accordion-item"
+                                            >
+                                              <h3
+                                                class="ontario-accordion__heading"
+                                                lwc-5jm0t85ko0n=""
+                                              >
+                                                <button
+                                                  class="ontario-accordion__button"
+                                                  data-testid="accordion-button"
+                                                  lwc-5jm0t85ko0n=""
+                                                  data-id="2"
+                                                  aria-expanded="false"
+                                                  aria-controls="2-19"
+                                                >
+                                                  <span
+                                                    class="ontario-accordion__button-text"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >Section 2:
+                                                    Requirements</span
+                                                  ><span
+                                                    class="ontario-accordion__icon"
+                                                    aria-hidden="true"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >+</span
+                                                  >
+                                                </button>
+                                              </h3>
+                                            </div>
+                                            <div
+                                              lwc-5jm0t85ko0n=""
+                                              class="ontario-accordion__item"
+                                              data-testid="accordion-item"
+                                            >
+                                              <h3
+                                                class="ontario-accordion__heading"
+                                                lwc-5jm0t85ko0n=""
+                                              >
+                                                <button
+                                                  class="ontario-accordion__button"
+                                                  data-testid="accordion-button"
+                                                  lwc-5jm0t85ko0n=""
+                                                  data-id="3"
+                                                  aria-expanded="false"
+                                                  aria-controls="3-19"
+                                                >
+                                                  <span
+                                                    class="ontario-accordion__button-text"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >Section 3: How to
+                                                    Apply</span
+                                                  ><span
+                                                    class="ontario-accordion__icon"
+                                                    aria-hidden="true"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >+</span
+                                                  >
+                                                </button>
+                                              </h3>
+                                            </div>
+                                            <div
+                                              lwc-5jm0t85ko0n=""
+                                              class="ontario-accordion__item"
+                                              data-testid="accordion-item"
+                                            >
+                                              <h3
+                                                class="ontario-accordion__heading"
+                                                lwc-5jm0t85ko0n=""
+                                              >
+                                                <button
+                                                  class="ontario-accordion__button"
+                                                  data-testid="accordion-button"
+                                                  lwc-5jm0t85ko0n=""
+                                                  data-id="4"
+                                                  aria-expanded="false"
+                                                  aria-controls="4-19"
+                                                >
+                                                  <span
+                                                    class="ontario-accordion__button-text"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >Section 4: Contact
+                                                    Information</span
+                                                  ><span
+                                                    class="ontario-accordion__icon"
+                                                    aria-hidden="true"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >+</span
+                                                  >
+                                                </button>
+                                              </h3>
+                                            </div>
+                                          </div>
+                                        </section>
+                                        <section
+                                          lwc-5jm0t85ko0n=""
+                                          class="showcase-section"
+                                          data-testid="single-open-section"
+                                        >
+                                          <h2
+                                            class="ontario-h2"
+                                            lwc-5jm0t85ko0n=""
+                                          >
+                                            Single Open Accordion (Only One
+                                            Section Open)
+                                          </h2>
+                                          <div
+                                            lwc-5jm0t85ko0n=""
+                                            class="ontario-accordion ontario-accordion--single"
+                                            data-testid="single-open-accordion"
+                                          >
+                                            <div
+                                              lwc-5jm0t85ko0n=""
+                                              class="ontario-accordion__item"
+                                              data-testid="accordion-item-single"
+                                            >
+                                              <h3
+                                                class="ontario-accordion__heading"
+                                                lwc-5jm0t85ko0n=""
+                                              >
+                                                <button
+                                                  class="ontario-accordion__button"
+                                                  data-testid="accordion-button-single"
+                                                  lwc-5jm0t85ko0n=""
+                                                  data-id="s1"
+                                                  aria-expanded="true"
+                                                  aria-controls="s1-19"
+                                                >
+                                                  <span
+                                                    class="ontario-accordion__button-text"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >Payment Options</span
+                                                  ><span
+                                                    class="ontario-accordion__icon"
+                                                    aria-hidden="true"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >−</span
+                                                  >
+                                                </button>
+                                              </h3>
+                                              <!---->
+                                              <div
+                                                class="ontario-accordion__content"
+                                                data-testid="accordion-content-single"
+                                                lwc-5jm0t85ko0n=""
+                                                id="s1-19"
+                                              >
+                                                <p lwc-5jm0t85ko0n="">
+                                                  Content about payment options.
+                                                  Only one section can be open
+                                                  at a time.
+                                                </p>
+                                              </div>
+                                              <!---->
+                                            </div>
+                                            <div
+                                              lwc-5jm0t85ko0n=""
+                                              class="ontario-accordion__item"
+                                              data-testid="accordion-item-single"
+                                            >
+                                              <h3
+                                                class="ontario-accordion__heading"
+                                                lwc-5jm0t85ko0n=""
+                                              >
+                                                <button
+                                                  class="ontario-accordion__button"
+                                                  data-testid="accordion-button-single"
+                                                  lwc-5jm0t85ko0n=""
+                                                  data-id="s2"
+                                                  aria-expanded="false"
+                                                  aria-controls="s2-19"
+                                                >
+                                                  <span
+                                                    class="ontario-accordion__button-text"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >Refund Policy</span
+                                                  ><span
+                                                    class="ontario-accordion__icon"
+                                                    aria-hidden="true"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >+</span
+                                                  >
+                                                </button>
+                                              </h3>
+                                            </div>
+                                            <div
+                                              lwc-5jm0t85ko0n=""
+                                              class="ontario-accordion__item"
+                                              data-testid="accordion-item-single"
+                                            >
+                                              <h3
+                                                class="ontario-accordion__heading"
+                                                lwc-5jm0t85ko0n=""
+                                              >
+                                                <button
+                                                  class="ontario-accordion__button"
+                                                  data-testid="accordion-button-single"
+                                                  lwc-5jm0t85ko0n=""
+                                                  data-id="s3"
+                                                  aria-expanded="false"
+                                                  aria-controls="s3-19"
+                                                >
+                                                  <span
+                                                    class="ontario-accordion__button-text"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >Shipping Information</span
+                                                  ><span
+                                                    class="ontario-accordion__icon"
+                                                    aria-hidden="true"
+                                                    lwc-5jm0t85ko0n=""
+                                                    >+</span
+                                                  >
+                                                </button>
+                                              </h3>
+                                            </div>
+                                          </div>
+                                        </section>
+                                        <section
+                                          class="showcase-section"
+                                          data-testid="ontario-ds-accordion-section"
+                                          lwc-5jm0t85ko0n=""
+                                        >
+                                          <h2
+                                            class="ontario-h2"
+                                            lwc-5jm0t85ko0n=""
+                                          >
+                                            Ontario DS Accordion Component
+                                          </h2>
+                                          <p
+                                            class="ontario-hint"
+                                            lwc-5jm0t85ko0n=""
+                                          >
+                                            The Ontario DS Accordion component
+                                            requires the sfGpsDsCaOn package to
+                                            be deployed. Deploy that package
+                                            first to see the native accordion
+                                            component here.
+                                          </p>
+                                        </section>
+                                        <section
+                                          class="showcase-section"
+                                          data-testid="keyboard-nav-section"
+                                          lwc-5jm0t85ko0n=""
+                                        >
+                                          <h2
+                                            class="ontario-h2"
+                                            lwc-5jm0t85ko0n=""
+                                          >
+                                            Keyboard Navigation
+                                          </h2>
+                                          <ul lwc-5jm0t85ko0n="">
+                                            <li lwc-5jm0t85ko0n="">
+                                              <kbd lwc-5jm0t85ko0n=""
+                                                >Enter</kbd
+                                              >
+                                              or
+                                              <kbd lwc-5jm0t85ko0n="">Space</kbd
+                                              >: Toggle accordion section
+                                            </li>
+                                            <li lwc-5jm0t85ko0n="">
+                                              <kbd lwc-5jm0t85ko0n="">Tab</kbd>:
+                                              Move to next focusable element
+                                            </li>
+                                            <li lwc-5jm0t85ko0n="">
+                                              <kbd lwc-5jm0t85ko0n=""
+                                                >Shift+Tab</kbd
+                                              >: Move to previous focusable
+                                              element
+                                            </li>
+                                            <li lwc-5jm0t85ko0n="">
+                                              <kbd lwc-5jm0t85ko0n="">Home</kbd
+                                              >: Move to first accordion button
+                                              (optional)
+                                            </li>
+                                            <li lwc-5jm0t85ko0n="">
+                                              <kbd lwc-5jm0t85ko0n="">End</kbd>:
+                                              Move to last accordion button
+                                              (optional)
+                                            </li>
+                                          </ul>
+                                        </section>
+                                      </div></c-showcase-accordion
+                                    ><!---->
+                                  </div></community_layout-column
+                                ><!---->
+                              </div></community_layout-section
+                            ><!---->
+                          </div></community_layout-slds-flexible-layout
+                        ><community_layout-hidden-region
+                          ><!----><community_builder-seo-assistant
+                            class="component-wrapper-spacer"
+                            data-component-id="seoAssistant-fe8a"
+                          ></community_builder-seo-assistant
+                          ><webruntime-viewchange-notifier
+                            data-component-id="viewchangeNotifier-1dea"
+                            ><div
+                              hidden=""
+                              data-route="JTdCJTIybmFtZSUyMiUzQSUyMmFjY29yZGlvbl9fYyUyMiU3RA=="
+                            ></div></webruntime-viewchange-notifier
+                          ><webruntime-page-data-layer-object
+                            data-component-id="pageDataLayerObject-60d5"
+                            ><experience-data-layer-object
+                              ><div hidden="">
+                                <script
+                                  type="application/json"
+                                  data-provider-type="page"
+                                >
+                                  {
+                                    "type": "comm__namedPage",
+                                    "url": "https://dfn00000c2gpmeaf.my.site.com/sfGpsDsCaOn/accordion",
+                                    "urlReferrer": ""
+                                  }
+                                </script>
+                              </div></experience-data-layer-object
+                            ></webruntime-page-data-layer-object
+                          ><webruntime-session-validator
+                            data-component-id="sessionValidator-0b52"
+                          ></webruntime-session-validator
+                          ><!----></community_layout-hidden-region
+                        ></dxp_data_provider-data-proxy
+                      ><!----><!----></dxp_data_provider-user-data-provider
+                    ></webruntime-router-container
+                  ><!---->
+                </main>
+                <!---->
+                <footer class="lwc-6raprfhcujs" data-f6-region="">
+                  <div
+                    class="lwc-6raprfhcujs community_byo-scoped-header-and-footer__footer-content"
+                  >
+                    <!----><community_layout-section
+                      data-layout-direction="desktop-direction-row tablet-direction-column mobile-direction-column"
+                      data-component-id="section-7be1"
+                      class="comm-section-container lwc-6j9an5vbrcd-host"
+                      style="
+                        --dxp-c-l-section-vertical-align: flex-start;
+                        --dxp-c-m-section-vertical-align: flex-start;
+                        --dxp-c-s-section-vertical-align: flex-start;
+                        --dxp-c-section-vertical-align: flex-start;
+                      "
+                      ><div class="background-image lwc-6j9an5vbrcd"></div>
+                      <div
+                        class="background-image-overlay lwc-6j9an5vbrcd"
+                      ></div>
+                      <div class="lwc-6j9an5vbrcd columns-content">
+                        <!----><community_layout-column
+                          data-layout-direction="desktop-direction-row tablet-direction-column mobile-direction-column"
+                          class="col-size_12-of-12 col-large-size_12-of-12 lwc-48aostf02bd-host"
+                          ><div class="lwc-48aostf02bd column-content">
+                            <!----><!---->
+                          </div></community_layout-column
+                        ><!---->
+                      </div></community_layout-section
+                    ><!---->
+                  </div>
+                </footer>
+                <!----></community_byo-scoped-header-and-footer
+              ></dxp_data_provider-data-proxy
+            ><!----><!----></dxp_data_provider-user-data-provider
+          ></webruntime-inner-app
+        ><!----><span
+          class="router-title lwc-7bis3qj4jjc"
+          aria-live="polite"
+          aria-atomic="true"
+        ></span></lwr-router-container
+    ></webruntime-app>
+
+    <span
+      id="sf-aria-live"
+      aria-live="polite"
+      aria-atomic="true"
+      aria-hidden="true"
+      style="
+        position: absolute;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        text-transform: none;
+        white-space: nowrap;
+      "
+      >accordion</span
+    >
+  </body>
+</html>

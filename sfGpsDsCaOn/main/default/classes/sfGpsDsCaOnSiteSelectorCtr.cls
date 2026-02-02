@@ -151,11 +151,39 @@ public with sharing class sfGpsDsCaOnSiteSelectorCtr {
   }
 
   /**
-   * @description Fetches the Visualforce domain URL for postMessage origin
-   * @return The Visualforce domain URL
+   * @description Fetches the Visualforce Site URL for the map iframe.
+   *
+   * For guest user access, the VF page must be served through a Salesforce Site,
+   * not the direct VF domain (which requires authentication).
+   *
+   * Priority order:
+   * 1. VF_Site_URL from custom metadata (recommended for guest access)
+   * 2. Fallback to VF domain (requires authenticated user)
+   *
+   * @return The Visualforce Site URL or VF domain URL
    */
   @AuraEnabled(cacheable=true)
   public static String fetchVFDomainURL() {
+    // First, try to get the VF Site URL from custom metadata
+    // This is required for guest user access
+    try {
+      String query = 'SELECT Value__c FROM utils__mdt WHERE DeveloperName = \'VF_Site_URL\' LIMIT 1';
+      List<SObject> configs = Database.query(query);
+      if (!configs.isEmpty() && configs[0].get('Value__c') != null) {
+        String vfSiteUrl = (String) configs[0].get('Value__c');
+        if (String.isNotBlank(vfSiteUrl)) {
+          // Return the configured Site URL (e.g., https://myorg.my.salesforce-sites.com/esrimap)
+          return vfSiteUrl;
+        }
+      }
+    } catch (Exception e) {
+      System.debug(
+        LoggingLevel.WARN,
+        'Could not fetch VF_Site_URL from custom metadata: ' + e.getMessage()
+      );
+    }
+
+    // Fallback to VF domain (only works for authenticated users)
     return 'https://' + DomainCreator.getVisualforceHostname('');
   }
 

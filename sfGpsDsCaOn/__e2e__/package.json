@@ -1,0 +1,33 @@
+{
+  "name": "sfgpsdscaon-e2e-tests",
+  "version": "1.0.0",
+  "description": "E2E tests for sfGpsDsCaOn Ontario Design System components",
+  "scripts": {
+    "test": "playwright test",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project='Mobile Chrome' --project='Mobile Safari'",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:priority1": "playwright test tests/priority1/",
+    "test:priority2": "playwright test tests/priority2/",
+    "test:priority3": "playwright test tests/priority3/",
+    "test:accessibility": "playwright test tests/accessibility/",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "@axe-core/playwright": "^4.8.0",
+    "@types/node": "^20.10.0"
+  },
+  "keywords": [
+    "e2e",
+    "playwright",
+    "ontario",
+    "salesforce",
+    "lwc"
+  ]
+}
