@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 import {
   parseOptionsJson,
   decorateOptions,
@@ -17,14 +18,16 @@ const CLASS_NAME = "SfGpsDsCaOnNaicsCodePickerOmni";
 
 /**
  * NAICS Code Picker for OmniStudio Custom LWC
- * Simplified version without Light DOM for OmniStudio compatibility
+ * Uses OmniscriptBaseMixin for proper OmniScript data integration.
  *
  * OmniScript Integration:
  * - Set fieldName property to specify where value is stored in omniJsonData
- * - Component dispatches 'omniupdatedata' event to update OmniScript data
+ * - Uses omniUpdateDataJson() to update OmniScript data
  * - Supports both single field (NAICS code only) and full object output
  */
-export default class SfGpsDsCaOnNaicsCodePickerOmni extends LightningElement {
+export default class SfGpsDsCaOnNaicsCodePickerOmni extends OmniscriptBaseMixin(
+  LightningElement
+) {
   /* ========================================
    * PUBLIC @api PROPERTIES
    * ======================================== */
@@ -208,8 +211,7 @@ export default class SfGpsDsCaOnNaicsCodePickerOmni extends LightningElement {
 
   /**
    * Updates OmniScript JSON data with the current selection.
-   * Uses the omniupdatedata event that OmniScript listens for.
-   * @param {Object} detail - The selection details
+   * Uses omniUpdateDataJson() from OmniscriptBaseMixin for proper integration.
    */
   _updateOmniScriptData() {
     if (!this.fieldName) {
@@ -245,29 +247,10 @@ export default class SfGpsDsCaOnNaicsCodePickerOmni extends LightningElement {
       });
     }
 
-    // Dispatch omniupdatedata event for OmniScript integration
-    // This event format is recognized by OmniScript runtime
-    this.dispatchEvent(
-      new CustomEvent("omniupdatedata", {
-        detail: {
-          [this.fieldName]: dataValue
-        },
-        bubbles: true,
-        composed: true
-      })
-    );
-
-    // Also dispatch omnivaluechange for additional integration patterns
-    this.dispatchEvent(
-      new CustomEvent("omnivaluechange", {
-        detail: {
-          name: this.fieldName,
-          value: dataValue
-        },
-        bubbles: true,
-        composed: true
-      })
-    );
+    // Use OmniscriptBaseMixin method to update OmniScript data
+    this.omniUpdateDataJson({
+      [this.fieldName]: dataValue
+    });
   }
 
   /* ========================================

@@ -6,13 +6,14 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsCaOnTextAreaOmni";
 
 /**
  * Ontario Design System TextArea for OmniStudio Custom LWC
- * Shadow DOM version for OmniStudio compatibility
+ * Uses OmniscriptBaseMixin for proper OmniScript data integration.
  *
  * Usage in OmniScript:
  * - LWC Component Name: sfGpsDsCaOnTextAreaOmni
@@ -25,7 +26,9 @@ const CLASS_NAME = "SfGpsDsCaOnTextAreaOmni";
  *   - maxLength: Maximum character length
  *   - placeholder: Placeholder text
  */
-export default class SfGpsDsCaOnTextAreaOmni extends LightningElement {
+export default class SfGpsDsCaOnTextAreaOmni extends OmniscriptBaseMixin(
+  LightningElement
+) {
   /* ========================================
    * PUBLIC @api PROPERTIES
    * ======================================== */
@@ -171,13 +174,10 @@ export default class SfGpsDsCaOnTextAreaOmni extends LightningElement {
         this._value
       );
 
-    this.dispatchEvent(
-      new CustomEvent("omniupdatedata", {
-        detail: { [this.fieldName]: this._value },
-        bubbles: true,
-        composed: true
-      })
-    );
+    // Use OmniscriptBaseMixin method to update OmniScript data
+    this.omniUpdateDataJson({
+      [this.fieldName]: this._value
+    });
   }
 
   /* ========================================

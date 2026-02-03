@@ -6,13 +6,14 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsCaOnTextInputOmni";
 
 /**
  * Ontario Design System Text Input for OmniStudio Custom LWC
- * Shadow DOM version for OmniStudio compatibility
+ * Uses OmniscriptBaseMixin for proper OmniScript data integration.
  *
  * Usage in OmniScript:
  * - LWC Component Name: sfGpsDsCaOnTextInputOmni
@@ -22,7 +23,9 @@ const CLASS_NAME = "SfGpsDsCaOnTextInputOmni";
  *   - required: true/false
  *   - type: text, email, tel, password, etc.
  */
-export default class SfGpsDsCaOnTextInputOmni extends LightningElement {
+export default class SfGpsDsCaOnTextInputOmni extends OmniscriptBaseMixin(
+  LightningElement
+) {
   /* ========================================
    * PUBLIC @api PROPERTIES
    * ======================================== */
@@ -169,13 +172,10 @@ export default class SfGpsDsCaOnTextInputOmni extends LightningElement {
         this._value
       );
 
-    this.dispatchEvent(
-      new CustomEvent("omniupdatedata", {
-        detail: { [this.fieldName]: this._value },
-        bubbles: true,
-        composed: true
-      })
-    );
+    // Use OmniscriptBaseMixin method to update OmniScript data
+    this.omniUpdateDataJson({
+      [this.fieldName]: this._value
+    });
   }
 
   /* ========================================

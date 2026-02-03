@@ -244,25 +244,63 @@ These components may be used in both LWR/Experience Cloud sites AND within OmniS
 | Card      | `sfGpsDsCaOnCardOmni`      | Information card               |
 | Callout   | `sfGpsDsCaOnCalloutOmni`   | Highlighted callout box        |
 
-#### Utility Components
-
-| Component                  | Description                         |
-| -------------------------- | ----------------------------------- |
-| `sfGpsDsCaOnTestCustomLwc` | Simple test component for debugging |
-
 ### Creating New OmniStudio-Compatible Components
 
-To add OmniStudio Custom LWC support for other components:
+To add OmniStudio Custom LWC support for components that need to update OmniScript data:
 
 1. Create a new `*Omni` version (e.g., `sfGpsDsCaOnDropdownOmni`)
-2. Extend `LightningElement` directly (not `SfGpsDsLwc`)
-3. Do NOT use `static renderMode = "light"`
+2. **Import and use `OmniscriptBaseMixin`** - required for data updates
+3. Do NOT use `static renderMode = "light"` (Shadow DOM only)
 4. Include Ontario DS CSS inline or reference static resources
-5. Import shared utilities from `c/sfGpsDsCaOnFormUtils`
+5. Use `this.omniUpdateDataJson()` to update OmniScript data
+6. Add `fieldName` as an @api property
+
+### OmniscriptBaseMixin (Required for Data Updates)
+
+All form components that need to update OmniScript data **must** use the `OmniscriptBaseMixin`:
+
+```javascript
+import { LightningElement, api, track } from "lwc";
+import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
+
+export default class MyOmniComponent extends OmniscriptBaseMixin(
+  LightningElement
+) {
+  @api fieldName = "";
+
+  handleChange(event) {
+    const value = event.target.value;
+
+    // Update OmniScript data using mixin method
+    if (this.fieldName) {
+      this.omniUpdateDataJson({
+        [this.fieldName]: value
+      });
+    }
+  }
+}
+```
+
+**Important:** Custom events like `omniupdatedata` do NOT work for Custom LWC elements. You must use `OmniscriptBaseMixin` and call `this.omniUpdateDataJson()`.
+
+### Custom LWC Configuration
+
+When adding a Custom LWC element in OmniScript, always include `fieldName` in the custom attributes:
+
+```json
+{
+  "lwcName": "sfGpsDsCaOnTextInputOmni",
+  "customAttributes": [
+    { "name": "fieldName", "source": "MyFieldName" },
+    { "name": "label", "source": "Enter your name" },
+    { "name": "required", "source": "true" }
+  ]
+}
+```
 
 ### Shared Utilities Module
 
-The `sfGpsDsCaOnFormUtils` module contains shared logic used by both Comm and Omni component versions:
+The `sfGpsDsCaOnFormUtils` module contains shared logic for form components:
 
 ```javascript
 import {
@@ -274,14 +312,11 @@ import {
   getFlagText, // Required/optional labels
   decorateOptions, // Add selected state to options
   filterByParentValue, // Cascading dropdown filtering
-  createOmniUpdateEvent, // OmniScript data update event
   createChangeEvent, // Standard change event
   createBlurEvent, // Standard blur event
   createFocusEvent // Standard focus event
 } from "c/sfGpsDsCaOnFormUtils";
 ```
-
-This approach reduces code duplication by ~80% between Comm and Omni versions.
 
 ---
 

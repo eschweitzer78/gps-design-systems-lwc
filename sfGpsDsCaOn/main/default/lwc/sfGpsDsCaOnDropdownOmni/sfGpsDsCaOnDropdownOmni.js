@@ -6,6 +6,7 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 import {
   parseOptionsJson,
   generateId,
@@ -13,7 +14,6 @@ import {
   computeAriaDescribedBy,
   getFlagText,
   decorateOptions,
-  createOmniUpdateEvent,
   createChangeEvent,
   createBlurEvent,
   createFocusEvent
@@ -21,8 +21,8 @@ import {
 
 /**
  * Ontario Design System Dropdown for OmniStudio Custom LWC
- * Shadow DOM version for OmniStudio compatibility.
- * Uses shared mixin for logic, provides Shadow DOM rendering.
+ * Uses OmniscriptBaseMixin for proper OmniScript data integration.
+ * Uses shared utilities for logic, provides Shadow DOM rendering.
  *
  * Usage in OmniScript:
  * - LWC Component Name: sfGpsDsCaOnDropdownOmni
@@ -32,7 +32,9 @@ import {
  *   - label: Field label
  *   - required: true/false
  */
-export default class SfGpsDsCaOnDropdownOmni extends LightningElement {
+export default class SfGpsDsCaOnDropdownOmni extends OmniscriptBaseMixin(
+  LightningElement
+) {
   /* ========================================
    * PUBLIC @api PROPERTIES
    * ======================================== */
@@ -177,10 +179,11 @@ export default class SfGpsDsCaOnDropdownOmni extends LightningElement {
     // Dispatch change event
     this.dispatchEvent(createChangeEvent(this._value));
 
-    // Dispatch OmniScript update event
-    const omniEvent = createOmniUpdateEvent(this.fieldName, this._value);
-    if (omniEvent) {
-      this.dispatchEvent(omniEvent);
+    // Update OmniScript data using mixin method
+    if (this.fieldName) {
+      this.omniUpdateDataJson({
+        [this.fieldName]: this._value
+      });
     }
   }
 

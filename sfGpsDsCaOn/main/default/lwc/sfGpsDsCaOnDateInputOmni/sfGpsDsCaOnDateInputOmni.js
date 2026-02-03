@@ -6,13 +6,14 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsCaOnDateInputOmni";
 
 /**
  * Ontario Design System Date Input for OmniStudio Custom LWC
- * Shadow DOM version for OmniStudio compatibility
+ * Uses OmniscriptBaseMixin for proper OmniScript data integration.
  * Uses 3 separate inputs for day, month, and year
  *
  * Usage in OmniScript:
@@ -23,7 +24,9 @@ const CLASS_NAME = "SfGpsDsCaOnDateInputOmni";
  *   - required: true/false
  *   - min/max: Date range validation (ISO format YYYY-MM-DD)
  */
-export default class SfGpsDsCaOnDateInputOmni extends LightningElement {
+export default class SfGpsDsCaOnDateInputOmni extends OmniscriptBaseMixin(
+  LightningElement
+) {
   /* ========================================
    * PUBLIC @api PROPERTIES
    * ======================================== */
@@ -316,13 +319,10 @@ export default class SfGpsDsCaOnDateInputOmni extends LightningElement {
     if (DEBUG)
       console.log(CLASS_NAME, "_updateOmniScriptData", this.fieldName, isoDate);
 
-    this.dispatchEvent(
-      new CustomEvent("omniupdatedata", {
-        detail: { [this.fieldName]: isoDate },
-        bubbles: true,
-        composed: true
-      })
-    );
+    // Use OmniscriptBaseMixin method to update OmniScript data
+    this.omniUpdateDataJson({
+      [this.fieldName]: isoDate
+    });
   }
 
   _dispatchChange() {

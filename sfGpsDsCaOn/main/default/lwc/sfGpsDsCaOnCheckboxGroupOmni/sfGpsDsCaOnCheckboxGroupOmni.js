@@ -6,13 +6,14 @@
  */
 
 import { LightningElement, api, track } from "lwc";
+import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsCaOnCheckboxGroupOmni";
 
 /**
  * Ontario Design System CheckboxGroup for OmniStudio Custom LWC
- * Shadow DOM version for OmniStudio compatibility
+ * Uses OmniscriptBaseMixin for proper OmniScript data integration.
  *
  * Usage in OmniScript:
  * - LWC Component Name: sfGpsDsCaOnCheckboxGroupOmni
@@ -22,7 +23,9 @@ const CLASS_NAME = "SfGpsDsCaOnCheckboxGroupOmni";
  *   - legend: Group legend/label
  *   - required: true/false
  */
-export default class SfGpsDsCaOnCheckboxGroupOmni extends LightningElement {
+export default class SfGpsDsCaOnCheckboxGroupOmni extends OmniscriptBaseMixin(
+  LightningElement
+) {
   /* ========================================
    * PUBLIC @api PROPERTIES
    * ======================================== */
@@ -208,13 +211,10 @@ export default class SfGpsDsCaOnCheckboxGroupOmni extends LightningElement {
         this._value
       );
 
-    this.dispatchEvent(
-      new CustomEvent("omniupdatedata", {
-        detail: { [this.fieldName]: this._value },
-        bubbles: true,
-        composed: true
-      })
-    );
+    // Use OmniscriptBaseMixin method to update OmniScript data
+    this.omniUpdateDataJson({
+      [this.fieldName]: this._value
+    });
   }
 
   /* ========================================
