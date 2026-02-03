@@ -5,8 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { track } from "lwc";
 import SfGpsDsFormStep from "c/sfGpsDsFormStep";
 import tmpl from "./sfGpsDsCaOnFormStep.html";
+
+const DEBUG = false;
+const CLASS_NAME = "SfGpsDsCaOnFormStep";
 
 /**
  * @slot Step
@@ -30,6 +34,9 @@ export default class SfGpsDsCaOnFormStep extends SfGpsDsFormStep {
    * PRIVATE PROPERTIES
    * ======================================== */
 
+  /** @type {boolean} Tracked property to force re-render when active state changes */
+  @track _isActive = false;
+
   /** @type {boolean} Tracks if heading has been focused for this step */
   _headingFocused = false;
 
@@ -42,6 +49,37 @@ export default class SfGpsDsCaOnFormStep extends SfGpsDsFormStep {
   /* ========================================
    * COMPUTED PROPERTIES
    * ======================================== */
+
+  /**
+   * Safely checks if the step is active.
+   * Handles cases where jsonDef might not be set yet.
+   * @returns {boolean} True if step is active
+   */
+  get isStepActive() {
+    // Return the tracked property for proper reactivity
+    return this._isActive;
+  }
+
+  /**
+   * Updates the tracked _isActive property based on jsonDef.bAccordionActive.
+   * Called from renderedCallback to ensure reactivity.
+   */
+  _updateActiveState() {
+    const isActive = Boolean(this.jsonDef?.bAccordionActive);
+
+    if (this._isActive !== isActive) {
+      if (DEBUG) {
+        console.log(
+          CLASS_NAME,
+          "_updateActiveState CHANGE",
+          "from=" + this._isActive,
+          "to=" + isActive,
+          "jsonDef.name=" + this.jsonDef?.name
+        );
+      }
+      this._isActive = isActive;
+    }
+  }
 
   /**
    * Determines if navigation section should be shown.
@@ -226,15 +264,38 @@ export default class SfGpsDsCaOnFormStep extends SfGpsDsFormStep {
   }
 
   connectedCallback() {
+    if (DEBUG) {
+      console.log(
+        CLASS_NAME,
+        "connectedCallback START",
+        "hasJsonDef=" + Boolean(this.jsonDef),
+        "type=" + this.jsonDef?.type,
+        "name=" + this.jsonDef?.name,
+        "bAccordionActive=" + this.jsonDef?.bAccordionActive,
+        "label=" + this.jsonDef?.propSetMap?.label
+      );
+    }
+
     if (super.connectedCallback) {
       super.connectedCallback();
     }
 
     this.classList.add("caon-scope");
 
+    // Initialize active state
+    this._updateActiveState();
+
     // Announce step change for screen readers
-    if (this.mergedLabel) {
+    if (this.mergedLabel && this._isActive) {
       this.announceStepChange(`Now on step: ${this.mergedLabel}`);
+    }
+
+    if (DEBUG) {
+      console.log(
+        CLASS_NAME,
+        "connectedCallback END",
+        "_isActive=" + this._isActive
+      );
     }
   }
 
@@ -243,13 +304,26 @@ export default class SfGpsDsCaOnFormStep extends SfGpsDsFormStep {
    * AODA: Focus should move to new content when page/section changes.
    */
   renderedCallback() {
+    if (DEBUG) {
+      console.log(
+        CLASS_NAME,
+        "renderedCallback",
+        "name=" + this.jsonDef?.name,
+        "_isActive=" + this._isActive,
+        "bAccordionActive=" + this.jsonDef?.bAccordionActive
+      );
+    }
+
+    // Update active state first - this triggers reactivity
+    this._updateActiveState();
+
     if (super.renderedCallback) {
       super.renderedCallback();
     }
 
     // Focus step heading for screen reader announcement
     const heading = this.querySelector(".sfgpsdscaon-step__heading");
-    if (heading && !this._headingFocused) {
+    if (heading && !this._headingFocused && this._isActive) {
       // Use setTimeout to ensure DOM is ready
       // eslint-disable-next-line @lwc/lwc/no-async-operation
       setTimeout(() => {
