@@ -218,25 +218,26 @@ The following **38 Comm components** extend `SfGpsDsLwc` and use Light DOM - the
 
 #### Form Elements (Use Overrides - NOT Custom LWC)
 
-For standard form elements, use **OmniScript element overrides** instead of Custom LWC components. This provides better integration with OmniScript validation, data binding, and navigation.
+For **standard OmniScript form elements**, use **element overrides** instead of Custom LWC components. This provides better integration with OmniScript validation, data binding, and navigation.
 
-| OmniScript Element | Override Component               | Description                    |
-| ------------------ | -------------------------------- | ------------------------------ |
-| Select             | `sfGpsDsCaOnFormSelect`          | Ontario DS styled dropdown     |
-| Text               | `sfGpsDsCaOnFormText`            | Ontario DS styled text input   |
-| TextArea           | `sfGpsDsCaOnFormTextarea`        | Ontario DS styled textarea     |
-| Radio              | `sfGpsDsCaOnFormRadio`           | Ontario DS styled radio group  |
-| Checkbox           | `sfGpsDsCaOnFormCheckbox`        | Ontario DS styled checkbox     |
-| Date               | `sfGpsDsCaOnFormDate`            | Ontario DS styled date input   |
-| NAICS Code Picker  | `sfGpsDsCaOnFormNaicsCodePicker` | Cascading NAICS code dropdowns |
+| OmniScript Element | Override Component        | Description                   |
+| ------------------ | ------------------------- | ----------------------------- |
+| Select             | `sfGpsDsCaOnFormSelect`   | Ontario DS styled dropdown    |
+| Text               | `sfGpsDsCaOnFormText`     | Ontario DS styled text input  |
+| TextArea           | `sfGpsDsCaOnFormTextarea` | Ontario DS styled textarea    |
+| Radio              | `sfGpsDsCaOnFormRadio`    | Ontario DS styled radio group |
+| Checkbox           | `sfGpsDsCaOnFormCheckbox` | Ontario DS styled checkbox    |
+| Date               | `sfGpsDsCaOnFormDate`     | Ontario DS styled date input  |
 
 To enable overrides, set `lwcComponentOverride` in the OmniScript Setup properties.
 
 ---
 
-## NAICS Code Picker (Override)
+## NAICS Code Picker (Custom LWC)
 
-The `sfGpsDsCaOnFormNaicsCodePicker` override provides 5 cascading dropdowns for selecting NAICS (North American Industry Classification System) codes.
+The `sfGpsDsCaOnNaicsCodePickerOmni` component provides 5 cascading dropdowns for selecting NAICS (North American Industry Classification System) codes.
+
+> **Note:** This is a **Custom LWC** component, NOT an override. There is no standard OmniScript element type for NAICS Code Picker. Add it using the "Custom Lightning Web Component" element type in OmniScript Designer.
 
 ### Features
 
@@ -363,17 +364,18 @@ Each field is updated as soon as its dropdown value changes.
 
 ---
 
-#### Display Components (Custom LWC)
+#### Custom LWC Components
 
-These components can be used as Custom LWC elements in OmniScripts for display purposes:
+These components can be used as Custom LWC elements in OmniScripts. They have no equivalent standard OmniScript element type.
 
-| Component | OmniScript LWC Name        | Description                    |
-| --------- | -------------------------- | ------------------------------ |
-| Accordion | `sfGpsDsCaOnAccordionOmni` | Collapsible accordion sections |
-| Card      | `sfGpsDsCaOnCardOmni`      | Information card               |
-| Callout   | `sfGpsDsCaOnCalloutOmni`   | Highlighted callout box        |
+| Component         | OmniScript LWC Name              | Description                         |
+| ----------------- | -------------------------------- | ----------------------------------- |
+| NAICS Code Picker | `sfGpsDsCaOnNaicsCodePickerOmni` | 5-level cascading NAICS code picker |
+| Accordion         | `sfGpsDsCaOnAccordionOmni`       | Collapsible accordion sections      |
+| Card              | `sfGpsDsCaOnCardOmni`            | Information card                    |
+| Callout           | `sfGpsDsCaOnCalloutOmni`         | Highlighted callout box             |
 
-> **Note:** For form elements (Text, TextArea, Select, Radio, Checkbox, Date, NAICS Code Picker), use element **overrides** instead of Custom LWC. See "Form Elements (Use Overrides)" section above.
+> **Note:** For standard form elements (Text, TextArea, Select, Radio, Checkbox, Date), use element **overrides** instead of Custom LWC. See "Form Elements (Use Overrides)" section above.
 
 ---
 
