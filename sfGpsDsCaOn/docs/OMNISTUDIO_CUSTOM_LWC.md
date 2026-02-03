@@ -216,28 +216,27 @@ The following **38 Comm components** extend `SfGpsDsLwc` and use Light DOM - the
 
 ### OmniStudio-Compatible Components
 
-The following components are specifically designed for OmniStudio Custom LWC (Shadow DOM, no base class dependencies).
+#### Form Elements (Use Overrides - NOT Custom LWC)
 
-#### OmniScript-Only Form Components
+For standard form elements, use **OmniScript element overrides** instead of Custom LWC components. This provides better integration with OmniScript validation, data binding, and navigation.
 
-These form components are **exclusively used within OmniScripts** - no LWR/Experience Cloud version needed:
+| OmniScript Element | Override Component               | Description                    |
+| ------------------ | -------------------------------- | ------------------------------ |
+| Select             | `sfGpsDsCaOnFormSelect`          | Ontario DS styled dropdown     |
+| Text               | `sfGpsDsCaOnFormText`            | Ontario DS styled text input   |
+| TextArea           | `sfGpsDsCaOnFormTextarea`        | Ontario DS styled textarea     |
+| Radio              | `sfGpsDsCaOnFormRadio`           | Ontario DS styled radio group  |
+| Checkbox           | `sfGpsDsCaOnFormCheckbox`        | Ontario DS styled checkbox     |
+| Date               | `sfGpsDsCaOnFormDate`            | Ontario DS styled date input   |
+| NAICS Code Picker  | `sfGpsDsCaOnFormNaicsCodePicker` | Cascading NAICS code dropdowns |
 
-| Component         | OmniScript LWC Name              | Description                         |
-| ----------------- | -------------------------------- | ----------------------------------- |
-| NAICS Code Picker | `sfGpsDsCaOnNaicsCodePickerOmni` | Cascading dropdowns for NAICS codes |
-| Text Input        | `sfGpsDsCaOnTextInputOmni`       | Single-line text input              |
-| TextArea          | `sfGpsDsCaOnTextAreaOmni`        | Multi-line text input               |
-| Radio Group       | `sfGpsDsCaOnRadioGroupOmni`      | Single-select radio buttons         |
-| Checkbox Group    | `sfGpsDsCaOnCheckboxGroupOmni`   | Multi-select checkboxes             |
-| Date Input        | `sfGpsDsCaOnDateInputOmni`       | Day/Month/Year date picker          |
-
-> **Note:** The existing `*Comm` versions of these components (CheckboxGroup, DateInput, NaicsCodePicker, RadioGroup, TextArea, TextInput) in the nested LWR structure are **not used**. These form elements are designed specifically for OmniStudio Custom LWC use only.
+To enable overrides, set `lwcComponentOverride` in the OmniScript Setup properties.
 
 ---
 
-## NAICS Code Picker Component
+## NAICS Code Picker (Override)
 
-The `sfGpsDsCaOnNaicsCodePickerOmni` component provides 5 cascading dropdowns for selecting NAICS (North American Industry Classification System) codes.
+The `sfGpsDsCaOnFormNaicsCodePicker` override provides 5 cascading dropdowns for selecting NAICS (North American Industry Classification System) codes.
 
 ### Features
 
@@ -374,94 +373,7 @@ These components can be used as Custom LWC elements in OmniScripts for display p
 | Card      | `sfGpsDsCaOnCardOmni`      | Information card               |
 | Callout   | `sfGpsDsCaOnCalloutOmni`   | Highlighted callout box        |
 
-#### Form Elements (Use Overrides Instead)
-
-For standard form elements like **Dropdown/Select**, **Text**, **TextArea**, etc., use the OmniScript **element overrides** instead of Custom LWC components:
-
-| OmniScript Element | Override Component        | Description                   |
-| ------------------ | ------------------------- | ----------------------------- |
-| Select             | `sfGpsDsCaOnFormSelect`   | Ontario DS styled dropdown    |
-| Text               | `sfGpsDsCaOnFormText`     | Ontario DS styled text input  |
-| TextArea           | `sfGpsDsCaOnFormTextarea` | Ontario DS styled textarea    |
-| Radio              | `sfGpsDsCaOnFormRadio`    | Ontario DS styled radio group |
-| Checkbox           | `sfGpsDsCaOnFormCheckbox` | Ontario DS styled checkbox    |
-| Date               | `sfGpsDsCaOnFormDate`     | Ontario DS styled date input  |
-
-To enable overrides, set `lwcComponentOverride` in the OmniScript Setup properties.
-
-### Creating New OmniStudio-Compatible Components
-
-To add OmniStudio Custom LWC support for components that need to update OmniScript data:
-
-1. Create a new `*Omni` version (e.g., `sfGpsDsCaOnDropdownOmni`)
-2. **Import and use `OmniscriptBaseMixin`** - required for data updates
-3. Do NOT use `static renderMode = "light"` (Shadow DOM only)
-4. Include Ontario DS CSS inline or reference static resources
-5. Use `this.omniUpdateDataJson()` to update OmniScript data
-6. Add `fieldName` as an @api property
-
-### OmniscriptBaseMixin (Required for Data Updates)
-
-All form components that need to update OmniScript data **must** use the `OmniscriptBaseMixin`:
-
-```javascript
-import { LightningElement, api, track } from "lwc";
-import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
-
-export default class MyOmniComponent extends OmniscriptBaseMixin(
-  LightningElement
-) {
-  @api fieldName = "";
-
-  handleChange(event) {
-    const value = event.target.value;
-
-    // Update OmniScript data using mixin method
-    if (this.fieldName) {
-      this.omniUpdateDataJson({
-        [this.fieldName]: value
-      });
-    }
-  }
-}
-```
-
-**Important:** Custom events like `omniupdatedata` do NOT work for Custom LWC elements. You must use `OmniscriptBaseMixin` and call `this.omniUpdateDataJson()`.
-
-### Custom LWC Configuration
-
-When adding a Custom LWC element in OmniScript, always include `fieldName` in the custom attributes:
-
-```json
-{
-  "lwcName": "sfGpsDsCaOnTextInputOmni",
-  "customAttributes": [
-    { "name": "fieldName", "source": "MyFieldName" },
-    { "name": "label", "source": "Enter your name" },
-    { "name": "required", "source": "true" }
-  ]
-}
-```
-
-### Shared Utilities Module
-
-The `sfGpsDsCaOnFormUtils` module contains shared logic for form components:
-
-```javascript
-import {
-  parseOptionsJson, // Parse JSON (handles OmniStudio double-escaping)
-  generateId, // Generate unique accessibility IDs
-  computeSelectClassName, // CSS class for dropdowns
-  computeInputClassName, // CSS class for text inputs
-  computeAriaDescribedBy, // Accessibility attributes
-  getFlagText, // Required/optional labels
-  decorateOptions, // Add selected state to options
-  filterByParentValue, // Cascading dropdown filtering
-  createChangeEvent, // Standard change event
-  createBlurEvent, // Standard blur event
-  createFocusEvent // Standard focus event
-} from "c/sfGpsDsCaOnFormUtils";
-```
+> **Note:** For form elements (Text, TextArea, Select, Radio, Checkbox, Date, NAICS Code Picker), use element **overrides** instead of Custom LWC. See "Form Elements (Use Overrides)" section above.
 
 ---
 
