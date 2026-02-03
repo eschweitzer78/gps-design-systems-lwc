@@ -40,12 +40,21 @@ export default class SfGpsDsCaOnNaicsCodePickerOmni extends OmniscriptBaseMixin(
   @api optional = false;
   @api errorMessage;
 
-  // OmniScript integration
-  /** Field name for storing the selected NAICS code in omniJsonData */
+  // OmniScript integration - field names for each level
+  /** Field name for storing the selected NAICS code (national industry) */
   @api fieldName = "naicsCode";
 
-  /** If true, stores full object with all levels; if false, stores just the code */
-  @api storeFullObject = false;
+  /** Field name for Sector selection */
+  @api sectorFieldName = "";
+
+  /** Field name for Sub Sector selection */
+  @api subSectorFieldName = "";
+
+  /** Field name for Industry Group selection */
+  @api industryGroupFieldName = "";
+
+  /** Field name for Industry selection */
+  @api industryFieldName = "";
 
   @api sectorLabel = "Sector";
   @api subSectorLabel = "Sub sector";
@@ -212,45 +221,50 @@ export default class SfGpsDsCaOnNaicsCodePickerOmni extends OmniscriptBaseMixin(
   /**
    * Updates OmniScript JSON data with the current selection.
    * Uses omniUpdateDataJson() from OmniscriptBaseMixin for proper integration.
+   * Stores each level in its own field if field names are configured.
    */
   _updateOmniScriptData() {
-    if (!this.fieldName) {
+    // Build data object with all configured fields
+    const dataUpdate = {};
+
+    // Always store the main NAICS code (national industry) if fieldName is set
+    if (this.fieldName) {
+      dataUpdate[this.fieldName] = this._nationalIndustry || "";
+    }
+
+    // Store each level in its own field if configured
+    if (this.sectorFieldName) {
+      dataUpdate[this.sectorFieldName] = this._sector || "";
+    }
+
+    if (this.subSectorFieldName) {
+      dataUpdate[this.subSectorFieldName] = this._subSector || "";
+    }
+
+    if (this.industryGroupFieldName) {
+      dataUpdate[this.industryGroupFieldName] = this._industryGroup || "";
+    }
+
+    if (this.industryFieldName) {
+      dataUpdate[this.industryFieldName] = this._industry || "";
+    }
+
+    // Only update if we have at least one field configured
+    if (Object.keys(dataUpdate).length === 0) {
       if (DEBUG)
         console.log(
           CLASS_NAME,
-          "_updateOmniScriptData: no fieldName, skipping"
+          "_updateOmniScriptData: no field names configured, skipping"
         );
       return;
     }
 
-    // Determine what value to store
-    let dataValue;
-    if (this.storeFullObject) {
-      // Store full object with all levels
-      dataValue = {
-        naicsCode: this._nationalIndustry,
-        sector: this._sector,
-        subSector: this._subSector,
-        industryGroup: this._industryGroup,
-        industry: this._industry,
-        nationalIndustry: this._nationalIndustry
-      };
-    } else {
-      // Store just the NAICS code
-      dataValue = this._nationalIndustry || "";
-    }
-
     if (DEBUG) {
-      console.log(CLASS_NAME, "_updateOmniScriptData", {
-        fieldName: this.fieldName,
-        value: dataValue
-      });
+      console.log(CLASS_NAME, "_updateOmniScriptData", dataUpdate);
     }
 
     // Use OmniscriptBaseMixin method to update OmniScript data
-    this.omniUpdateDataJson({
-      [this.fieldName]: dataValue
-    });
+    this.omniUpdateDataJson(dataUpdate);
   }
 
   /* ========================================

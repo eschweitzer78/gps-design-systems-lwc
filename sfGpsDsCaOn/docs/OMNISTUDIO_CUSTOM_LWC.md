@@ -233,6 +233,137 @@ These form components are **exclusively used within OmniScripts** - no LWR/Exper
 
 > **Note:** The existing `*Comm` versions of these components (CheckboxGroup, DateInput, NaicsCodePicker, RadioGroup, TextArea, TextInput) in the nested LWR structure are **not used**. These form elements are designed specifically for OmniStudio Custom LWC use only.
 
+---
+
+## NAICS Code Picker Component
+
+The `sfGpsDsCaOnNaicsCodePickerOmni` component provides 5 cascading dropdowns for selecting NAICS (North American Industry Classification System) codes.
+
+### Features
+
+- 5 cascading dropdown levels: Sector → Sub Sector → Industry Group → Industry → National Industry
+- Each dropdown filters based on the previous selection
+- Ontario Design System styling
+- Stores each level in separate OmniScript data fields
+
+### OmniScript Configuration
+
+Add a Custom LWC element with the following configuration:
+
+```json
+{
+  "lwcName": "sfGpsDsCaOnNaicsCodePickerOmni",
+  "customAttributes": [
+    { "name": "label", "source": "Select your NAICS Code" },
+    { "name": "required", "source": "true" },
+
+    { "name": "fieldName", "source": "NaicsCode" },
+    { "name": "sectorFieldName", "source": "Sector" },
+    { "name": "subSectorFieldName", "source": "SubSector" },
+    { "name": "industryGroupFieldName", "source": "IndustryGroup" },
+    { "name": "industryFieldName", "source": "Industry" },
+
+    {
+      "name": "sectorOptionsJson",
+      "source": "[{\"value\":\"11\",\"label\":\"11 Agriculture\"}]"
+    },
+    {
+      "name": "subSectorOptionsJson",
+      "source": "[{\"value\":\"111\",\"label\":\"111 Crop production\",\"parentValue\":\"11\"}]"
+    },
+    {
+      "name": "industryGroupOptionsJson",
+      "source": "[{\"value\":\"1111\",\"label\":\"1111 Oilseed and Grain Farming\",\"parentValue\":\"111\"}]"
+    },
+    {
+      "name": "industryOptionsJson",
+      "source": "[{\"value\":\"11111\",\"label\":\"11111 Soybean Farming\",\"parentValue\":\"1111\"}]"
+    },
+    {
+      "name": "nationalIndustryOptionsJson",
+      "source": "[{\"value\":\"111110\",\"label\":\"111110 Soybean Farming\",\"parentValue\":\"11111\"}]"
+    }
+  ],
+  "bStandalone": false
+}
+```
+
+### Properties
+
+| Property       | Type    | Description                     |
+| -------------- | ------- | ------------------------------- |
+| `label`        | String  | Main label for the component    |
+| `required`     | Boolean | Whether a selection is required |
+| `helpText`     | String  | Help text displayed below label |
+| `disabled`     | Boolean | Disable all dropdowns           |
+| `errorMessage` | String  | Error message to display        |
+
+**Field Name Properties (for OmniScript data storage):**
+
+| Property                 | Type   | Description                                             |
+| ------------------------ | ------ | ------------------------------------------------------- |
+| `fieldName`              | String | Field name for the final NAICS code (National Industry) |
+| `sectorFieldName`        | String | Field name for Sector selection                         |
+| `subSectorFieldName`     | String | Field name for Sub Sector selection                     |
+| `industryGroupFieldName` | String | Field name for Industry Group selection                 |
+| `industryFieldName`      | String | Field name for Industry selection                       |
+
+**Options JSON Properties:**
+
+| Property                      | Type         | Description                                                |
+| ----------------------------- | ------------ | ---------------------------------------------------------- |
+| `sectorOptionsJson`           | String/Array | Sector options: `[{value, label}]`                         |
+| `subSectorOptionsJson`        | String/Array | Sub Sector options: `[{value, label, parentValue}]`        |
+| `industryGroupOptionsJson`    | String/Array | Industry Group options: `[{value, label, parentValue}]`    |
+| `industryOptionsJson`         | String/Array | Industry options: `[{value, label, parentValue}]`          |
+| `nationalIndustryOptionsJson` | String/Array | National Industry options: `[{value, label, parentValue}]` |
+
+**Label Properties:**
+
+| Property                | Default             | Description                          |
+| ----------------------- | ------------------- | ------------------------------------ |
+| `sectorLabel`           | "Sector"            | Label for Sector dropdown            |
+| `subSectorLabel`        | "Sub sector"        | Label for Sub Sector dropdown        |
+| `industryGroupLabel`    | "Industry group"    | Label for Industry Group dropdown    |
+| `industryLabel`         | "Industry"          | Label for Industry dropdown          |
+| `nationalIndustryLabel` | "National industry" | Label for National Industry dropdown |
+
+### Options JSON Format
+
+Each options array should contain objects with:
+
+- `value`: The NAICS code value
+- `label`: Display label (typically includes the code)
+- `parentValue`: (required for all except Sector) The value of the parent level
+
+**Example:**
+
+```json
+[
+  { "value": "111", "label": "111 Crop production", "parentValue": "11" },
+  { "value": "112", "label": "112 Animal production", "parentValue": "11" },
+  { "value": "211", "label": "211 Oil and gas extraction", "parentValue": "21" }
+]
+```
+
+### OmniScript Data Output
+
+When configured with field names, the component updates OmniScript data with each selection:
+
+```json
+{
+  "NaicsCode": "111110",
+  "Sector": "11",
+  "SubSector": "111",
+  "IndustryGroup": "1111",
+  "Industry": "11111"
+}
+```
+
+Each field is updated as soon as its dropdown value changes.
+
+---
+
 #### Components with Both LWR and OmniScript Versions
 
 These components may be used in both LWR/Experience Cloud sites AND within OmniScripts:
