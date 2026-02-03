@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Badge</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="Gives context to the badge."
+        default="Badge"
+      />
+      <property
+        name="ariaLabelText"
+        type="String"
+        label="Aria label text"
+        description="Gives context to the badge."
+      />
+      <property
+        name="colour"
+        type="String"
+        label="Colour"
+        description="Colour for the badge background."
+        datasource="black,dark-grey,green,grey,light-teal,red,teal,white,yellow"
+        default="teal"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

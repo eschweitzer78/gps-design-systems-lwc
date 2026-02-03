@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Action Card Collection</masterLabel>
+  <description
+  >Grid container for Action Cards. Automatically arranges cards in a responsive grid. Use for permission/service selection pages.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="cardsPerRow"
+        type="String"
+        label="Cards per row"
+        description="Number of cards to display per row on desktop. Automatically adjusts on smaller screens."
+        default="3"
+        datasource="1,2,3,4"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to apply to the collection container."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

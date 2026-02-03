@@ -1,0 +1,109 @@
+@use 'sass:color';
+@use './tokens.variables' as variables;
+
+/*
+*  Global colour variables
+*
+*  1 - Greyscale colours
+*  2 - System colours
+*  3 - Accent colours
+*    3.1 - Main
+*    3.2 - Light
+*    3.3 - Dark
+*    3.4 - Callout backgrounds
+*/
+
+/*** 1 - Greyscale colours ***/
+$ontario-colour-white: variables.$ontario-colour-greyscale-white;
+$ontario-greyscale-5: color.scale(variables.$ontario-colour-greyscale-white, $lightness: -5%); // #F2F2F2
+$ontario-greyscale-20: color.scale(variables.$ontario-colour-greyscale-white, $lightness: -20%); // #CCCCCC
+$ontario-greyscale-40: color.scale(variables.$ontario-colour-greyscale-white, $lightness: -40%); // #999999
+$ontario-greyscale-60: color.scale(variables.$ontario-colour-greyscale-white, $lightness: -60%); // #666666
+$ontario-greyscale-70: color.scale(variables.$ontario-colour-greyscale-white, $lightness: -70%); // #4d4d4d
+$ontario-colour-black: color.scale(variables.$ontario-colour-greyscale-white, $lightness: -90%); // #1A1A1A
+
+/*** 2 - System colours ***/
+// Link and primary button colours
+$ontario-colour-link: variables.$ontario-colour-system-link;
+$ontario-colour-link--hover: variables.$ontario-colour-system-link-hover;
+$ontario-colour-link--active: variables.$ontario-colour-system-link-active;
+$ontario-colour-link--visited: variables.$ontario-colour-system-link-visited;
+
+// Secondary and tertiary button colours
+$ontario-colour-button-secondary--hover: color.scale($ontario-colour-link, $lightness: 90%); // #E0F0FF
+$ontario-colour-button-secondary--active: color.scale($ontario-colour-link, $lightness: 80%); // #C2E0FF
+$ontario-colour-button-tertiary--hover: color.scale($ontario-colour-black, $lightness: 90%); // #E8E8E8
+$ontario-colour-button-tertiary--active: color.scale($ontario-colour-black, $lightness: 80%); // #D1D1D1
+
+// Alert colours
+$ontario-colour-alert: variables.$ontario-colour-system-alert;
+$ontario-colour-alert-light: variables.$ontario-colour-system-alert-light;
+$ontario-colour-warning: variables.$ontario-colour-system-warning;
+$ontario-colour-warning-light: variables.$ontario-colour-system-warning-light;
+$ontario-colour-success: variables.$ontario-colour-system-success;
+$ontario-colour-success-light: variables.$ontario-colour-system-success-light;
+$ontario-colour-information: variables.$ontario-colour-system-information;
+$ontario-colour-information-light: variables.$ontario-colour-system-information-light;
+
+// Focus colour
+$ontario-colour-focus: variables.$ontario-colour-system-focus;
+
+/*** 3 - Accent colours ***/
+/* Main */
+$ontario-colour-gold: variables.$ontario-colour-accent-main-gold;
+$ontario-colour-yellow: variables.$ontario-colour-accent-main-yellow;
+$ontario-colour-taupe: variables.$ontario-colour-accent-main-taupe;
+$ontario-colour-green: variables.$ontario-colour-accent-main-green;
+$ontario-colour-lime: variables.$ontario-colour-accent-main-lime;
+$ontario-colour-teal: variables.$ontario-colour-accent-main-teal;
+$ontario-colour-sky: variables.$ontario-colour-accent-main-sky;
+$ontario-colour-blue: variables.$ontario-colour-accent-main-blue;
+$ontario-colour-purple: variables.$ontario-colour-accent-main-purple;
+$ontario-colour-orange: variables.$ontario-colour-accent-main-orange;
+$ontario-colour-red: variables.$ontario-colour-accent-main-red;
+$ontario-colour-magenta: variables.$ontario-colour-accent-main-magenta;
+
+/* Light */
+$ontario-colour-light-gold: variables.$ontario-colour-accent-light-gold;
+$ontario-colour-light-yellow: variables.$ontario-colour-accent-light-yellow;
+$ontario-colour-light-taupe: variables.$ontario-colour-accent-light-taupe;
+$ontario-colour-light-green: variables.$ontario-colour-accent-light-green;
+$ontario-colour-light-lime: variables.$ontario-colour-accent-light-lime;
+$ontario-colour-light-teal: variables.$ontario-colour-accent-light-teal;
+$ontario-colour-light-sky: variables.$ontario-colour-accent-light-sky;
+$ontario-colour-light-blue: variables.$ontario-colour-accent-light-blue;
+$ontario-colour-light-purple: variables.$ontario-colour-accent-light-purple;
+$ontario-colour-light-orange: variables.$ontario-colour-accent-light-orange;
+$ontario-colour-light-red: variables.$ontario-colour-accent-light-red;
+$ontario-colour-light-magenta: variables.$ontario-colour-accent-light-magenta;
+
+/* Dark */
+$ontario-colour-dark-gold: variables.$ontario-colour-accent-dark-gold;
+$ontario-colour-dark-yellow: variables.$ontario-colour-accent-dark-yellow;
+$ontario-colour-dark-taupe: variables.$ontario-colour-accent-dark-taupe;
+$ontario-colour-dark-green: variables.$ontario-colour-accent-dark-green;
+$ontario-colour-dark-lime: variables.$ontario-colour-accent-dark-lime;
+$ontario-colour-dark-teal: variables.$ontario-colour-accent-dark-teal;
+$ontario-colour-dark-sky: variables.$ontario-colour-accent-dark-sky;
+$ontario-colour-dark-blue: variables.$ontario-colour-accent-dark-blue;
+$ontario-colour-dark-purple: variables.$ontario-colour-accent-dark-purple;
+$ontario-colour-dark-orange: variables.$ontario-colour-accent-dark-orange;
+$ontario-colour-dark-red: variables.$ontario-colour-accent-dark-red;
+$ontario-colour-dark-magenta: variables.$ontario-colour-accent-dark-magenta;
+
+/* callout backgrounds */
+$ontario-colour-lighter-red: variables.$ontario-colour-accent-callout-backgrounds-red;
+$ontario-colour-lighter-green: variables.$ontario-colour-accent-callout-backgrounds-green;
+$ontario-colour-lighter-yellow: variables.$ontario-colour-accent-callout-backgrounds-yellow;
+
+/* icon colours */
+$ontario-colour-icon-blue: variables.$ontario-colour-accent-icon-colours-blue;
+$ontario-colour-icon-grey: variables.$ontario-colour-accent-icon-colours-grey;
+$ontario-colour-icon-black: variables.$ontario-colour-accent-icon-colours-black;
+$ontario-colour-icon-white: variables.$ontario-colour-accent-icon-colours-white;
+
+/* service ontario header colours */
+$ontario-colour-service-ontario-header-brand: variables.$ontario-colour-accent-service-ontario-header-brand;
+$ontario-colour-service-ontario-header-focus: variables.$ontario-colour-accent-service-ontario-header-focus;
+$ontario-colour-service-ontario-header-hover: variables.$ontario-colour-accent-service-ontario-header-hover;
+$ontario-colour-service-ontario-header-active: variables.$ontario-colour-accent-service-ontario-header-active;

@@ -1,0 +1,130 @@
+@use '../1-variables/breakpoints.variables' as breakpoints;
+@use '../1-variables/global.variables' as globalVariables;
+
+/*
+* Visibility
+*
+* Helper classes to determine visibility of elements
+*/
+
+.ontario-hide {
+	display: none !important;
+}
+
+.ontario-invisible {
+	visibility: hidden !important;
+}
+
+@media screen and (max-width: (breakpoints.$small-breakpoint - globalVariables.$breakpoint-transition-value)) {
+	.ontario-hide-for-small-only {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 0em), screen and (min-width: breakpoints.$small-breakpoint) {
+	.ontario-show-for-small-only {
+		display: none !important;
+	}
+}
+
+@media print, screen and (min-width: breakpoints.$small-breakpoint) {
+	.ontario-hide-for-medium {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: (breakpoints.$small-breakpoint - globalVariables.$breakpoint-transition-value)) {
+	.ontario-show-for-medium {
+		display: none !important;
+	}
+}
+
+@media screen and (min-width: breakpoints.$small-breakpoint) and (max-width: (breakpoints.$medium-breakpoint - globalVariables.$breakpoint-transition-value)) {
+	.ontario-hide-for-medium-only {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: (breakpoints.$small-breakpoint - globalVariables.$breakpoint-transition-value)),
+	screen and (min-width: breakpoints.$medium-breakpoint) {
+	.ontario-show-for-medium-only {
+		display: none !important;
+	}
+}
+
+@media print, screen and (min-width: breakpoints.$medium-breakpoint) {
+	.ontario-hide-for-large {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: (breakpoints.$medium-breakpoint - globalVariables.$breakpoint-transition-value)) {
+	.ontario-show-for-large {
+		display: none !important;
+	}
+}
+
+@media screen and (min-width: breakpoints.$medium-breakpoint) and (max-width: (breakpoints.$large-breakpoint - globalVariables.$breakpoint-transition-value)) {
+	.ontario-hide-for-large-only {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: (breakpoints.$medium-breakpoint - globalVariables.$breakpoint-transition-value)),
+	screen and (min-width: breakpoints.$large-breakpoint) {
+	.ontario-show-for-large-only {
+		display: none !important;
+	}
+}
+
+.ontario-show-for-sr,
+.ontario-show-on-focus {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+}
+
+.ontario-show-on-focus:active,
+.ontario-show-on-focus:focus {
+	position: static;
+	width: auto;
+	height: auto;
+	overflow: visible;
+	clip: auto;
+}
+
+.ontario-show-for-landscape,
+.ontario-hide-for-portrait {
+	display: block !important;
+}
+@media screen and (orientation: landscape) {
+	.ontario-show-for-landscape,
+	.ontario-hide-for-portrait {
+		display: block !important;
+	}
+}
+@media screen and (orientation: portrait) {
+	.ontario-show-for-landscape,
+	.ontario-hide-for-portrait {
+		display: none !important;
+	}
+}
+
+.ontario-hide-for-landscape,
+.ontario-show-for-portrait {
+	display: none !important;
+}
+@media screen and (orientation: landscape) {
+	.ontario-hide-for-landscape,
+	.ontario-show-for-portrait {
+		display: none !important;
+	}
+}
+@media screen and (orientation: portrait) {
+	.ontario-hide-for-landscape,
+	.ontario-show-for-portrait {
+		display: block !important;
+	}
+}

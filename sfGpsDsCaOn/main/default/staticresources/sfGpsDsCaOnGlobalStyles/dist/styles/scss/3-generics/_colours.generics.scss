@@ -1,0 +1,148 @@
+@use '../1-variables/colours.variables' as colours;
+
+/*
+*  Colour classes
+*
+*  1 - Background colours
+*    1.1 - Greyscale background colours
+*    1.2 - Main accent background colours
+*    1.3 - Light accent background colours
+*    1.4 - Dark accent background colours
+*/
+
+/*** 1 - Greyscale background colours ***/
+.ontario-bg-white {
+	background-color: colours.$ontario-colour-white;
+}
+.ontario-bg-greyscale-5 {
+	background-color: colours.$ontario-greyscale-5;
+}
+.ontario-bg-greyscale-20 {
+	background-color: colours.$ontario-greyscale-20;
+}
+.ontario-bg-greyscale-40 {
+	background-color: colours.$ontario-greyscale-40;
+}
+.ontario-bg-greyscale-60 {
+	background-color: colours.$ontario-greyscale-60;
+}
+.ontario-bg-greyscale-70 {
+	background-color: colours.$ontario-greyscale-70;
+}
+.ontario-bg-black {
+	background-color: colours.$ontario-colour-black;
+}
+
+/*** 2 - Main accent background colours ***/
+.ontario-bg-gold {
+	background-color: colours.$ontario-colour-gold;
+}
+.ontario-bg-yellow {
+	background-color: colours.$ontario-colour-yellow;
+}
+.ontario-bg-taupe {
+	background-color: colours.$ontario-colour-taupe;
+}
+.ontario-bg-green {
+	background-color: colours.$ontario-colour-green;
+}
+.ontario-bg-lime {
+	background-color: colours.$ontario-colour-lime;
+}
+.ontario-bg-teal {
+	background-color: colours.$ontario-colour-teal;
+}
+.ontario-bg-sky {
+	background-color: colours.$ontario-colour-sky;
+}
+.ontario-bg-blue {
+	background-color: colours.$ontario-colour-blue;
+}
+.ontario-bg-purple {
+	background-color: colours.$ontario-colour-purple;
+}
+.ontario-bg-orange {
+	background-color: colours.$ontario-colour-orange;
+}
+.ontario-bg-red {
+	background-color: colours.$ontario-colour-red;
+}
+.ontario-bg-magenta {
+	background-color: colours.$ontario-colour-magenta;
+}
+
+/*** 1 - Light accent background colours ***/
+.ontario-bg-light-gold {
+	background-color: colours.$ontario-colour-light-gold;
+}
+.ontario-bg-light-yellow {
+	background-color: colours.$ontario-colour-light-yellow;
+}
+.ontario-bg-light-taupe {
+	background-color: colours.$ontario-colour-light-taupe;
+}
+.ontario-bg-light-green {
+	background-color: colours.$ontario-colour-light-green;
+}
+.ontario-bg-light-lime {
+	background-color: colours.$ontario-colour-light-lime;
+}
+.ontario-bg-light-teal {
+	background-color: colours.$ontario-colour-light-teal;
+}
+.ontario-bg-light-sky {
+	background-color: colours.$ontario-colour-light-sky;
+}
+.ontario-bg-light-blue {
+	background-color: colours.$ontario-colour-light-blue;
+}
+.ontario-bg-light-purple {
+	background-color: colours.$ontario-colour-light-purple;
+}
+.ontario-bg-light-orange {
+	background-color: colours.$ontario-colour-light-orange;
+}
+.ontario-bg-light-red {
+	background-color: colours.$ontario-colour-light-red;
+}
+.ontario-bg-light-magenta {
+	background-color: colours.$ontario-colour-light-magenta;
+}
+
+/*** 1 - Dark accent background colours ***/
+.ontario-bg-dark-gold {
+	background-color: colours.$ontario-colour-dark-gold;
+}
+.ontario-bg-dark-yellow {
+	background-color: colours.$ontario-colour-dark-yellow;
+}
+.ontario-bg-dark-taupe {
+	background-color: colours.$ontario-colour-dark-taupe;
+}
+.ontario-bg-dark-green {
+	background-color: colours.$ontario-colour-dark-green;
+}
+.ontario-bg-dark-lime {
+	background-color: colours.$ontario-colour-dark-lime;
+}
+.ontario-bg-dark-teal {
+	background-color: colours.$ontario-colour-dark-teal;
+}
+.ontario-bg-dark-sky {
+	background-color: colours.$ontario-colour-dark-sky;
+}
+.ontario-bg-dark-blue {
+	background-color: colours.$ontario-colour-dark-blue;
+}
+.ontario-bg-dark-purple {
+	background-color: colours.$ontario-colour-dark-purple;
+}
+.ontario-bg-dark-orange {
+	background-color: colours.$ontario-colour-dark-orange;
+}
+.ontario-bg-dark-red {
+	background-color: colours.$ontario-colour-dark-red;
+}
+.ontario-bg-dark-magenta {
+	background-color: colours.$ontario-colour-dark-magenta;
+}

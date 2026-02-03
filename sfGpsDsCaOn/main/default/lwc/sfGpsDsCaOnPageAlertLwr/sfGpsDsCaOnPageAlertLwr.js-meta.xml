@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Page Alert</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="The type of page alert to render."
+        default="informational"
+        datasource="error,informational,success,warning"
+      />
+      <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="The heading for the page alert."
+        default="Licence plates"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Content in Markdown format."
+        default="ServiceOntario centres may issue either a blue licence plate or a white embossed **Yours to Discover** licence plate depending on availability. [Learn more about replacing a licence plate](#)."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

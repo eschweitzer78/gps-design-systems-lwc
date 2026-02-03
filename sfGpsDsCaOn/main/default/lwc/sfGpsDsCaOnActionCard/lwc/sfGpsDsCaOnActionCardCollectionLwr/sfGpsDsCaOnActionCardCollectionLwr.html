@@ -1,0 +1,23 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Action Card Collection
+  
+  Grid container for Action Cards.
+  Automatically arranges cards in a responsive grid based on cardsPerRow setting.
+  
+  Usage in Experience Builder:
+  1. Add this component to the page
+  2. Add sfGpsDsCaOnActionCardComm components into the ActionCards slot
+  3. Configure cardsPerRow (default: 3)
+-->
+<template lwc:render-mode="light">
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <ul lwc:else class={computedClassName}>
+    <slot name="ActionCards"></slot>
+  </ul>
+</template>

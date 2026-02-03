@@ -1,0 +1,275 @@
+@use 'sass:math';
+@use 'sass:list';
+@use 'sass:string';
+@use '../../1-variables/grid.variables' as grid;
+@use '../../2-tools/functions/grid.functions' as gridFunctions;
+
+/*
+*  Grid mixins
+*
+*  1 - Exporting grid code
+*  2 - Clearfix
+*  3 - Grid row
+*  4 - Grid column
+*  5 - Grid HTML classes
+*/
+
+$modules: null;
+
+/*** 1 - Exporting grid code ***/
+/// Creates a global module.
+///
+/// @param {string} $name
+///   The name of the module.
+
+@mixin ontario-exports($name) {
+	// Import from global scope
+	$modules: $modules !global;
+
+	// Check if a module is already on the list
+	$module_index: list.index($modules, $name);
+	@if (($module_index == null) or ($module_index == false)) {
+		$modules: list.append($modules, $name) !global;
+		@content;
+	}
+}
+
+/*** 2 - Clearfix ***/
+@mixin ontario-clearfix {
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+/*** 3 - Grid row ***/
+/// For creating container, nested, and collapsed rows.
+///
+/// @param {string} $behaviour
+///   Any special behaviour for this row.
+///   Default: false
+///   Options: nest, collapse, nest-collapse, false
+
+@mixin ontario-grid-row($behaviour: false) {
+	// use @include ontario-grid-row(nest); to include a nested row
+	@if $behaviour == nest {
+		margin: 0 math.div(-(grid.$column-gutter), 2);
+		max-width: none;
+		width: auto;
+	}
+
+	// use @include ontario-grid-row(collapse); to collapsed a container row margins
+	@else if $behaviour == collapse {
+		margin: 0;
+		max-width: grid.$row-width;
+		width: 100%;
+	}
+
+	// use @include ontario-grid-row(nest-collapse); to collapse outer margins on a nested row
+	@else if $behaviour == nest-collapse {
+		margin: 0;
+		max-width: none;
+		width: auto;
+	}
+
+	// use @include ontario-grid-row; to use a container row
+	@else {
+		margin: 0 auto;
+		max-width: grid.$row-width;
+		width: 100%;
+	}
+
+	// ontario-clearfix for all rows
+	@include ontario-clearfix();
+}
+
+/*** 4 - Grid column ***/
+/// Creates a column, should be used inside of a media query to control layouts
+///
+/// @param {number} $columns
+///   The number of columns this should be
+/// @param {boolean} $last-column
+///   Is this the last column? Default: false.
+/// @param {boolean} $center
+///   Center these columns? Default: false.
+/// @param {number} $offset
+///   # of columns to offset. Default: false.
+/// @param {number or boolean} $push
+///   # of columns to push. Default: false.
+/// @param {number or boolean} $pull
+///   # of columns to pull. Default: false.
+/// @param {boolean} $collapse
+///   Get rid of gutter padding on column? Default: false.
+/// @param {boolean or string} $float
+///   Should this float? Default: true. Options: true, false, left, right.
+
+@mixin ontario-grid-column(
+	$columns: false,
+	$last-column: false,
+	$center: false,
+	$offset: false,
+	$push: false,
+	$pull: false,
+	$collapse: false,
+	$float: true,
+	$position: false
+) {
+	// If positioned for default .column, include relative position
+	// push and pull require position set
+	@if $position or $push or $pull {
+		position: relative;
+	}
+
+	// If collapsed, get rid of gutter padding
+	@if $collapse {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	// Gutter padding whenever a column isn't set to collapse
+	// (use $collapse:null to do nothing)
+	@else if $collapse == false {
+		padding-left: math.div(grid.$column-gutter, 2);
+		padding-right: math.div(grid.$column-gutter, 2);
+		box-sizing: border-box;
+	}
+
+	// If a column number is given, calculate width
+	@if $columns {
+		width: gridFunctions.ontario-grid-calc($columns, grid.$total-columns);
+
+		// If last column, float naturally instead of to the right
+		@if $last-column {
+			float: grid.$opposite-direction;
+		}
+	}
+
+	// Source Ordering, adds left/right depending on which you use.
+	@if $push {
+		#{grid.$default-float}: gridFunctions.ontario-grid-calc($push, grid.$total-columns);
+		#{grid.$opposite-direction}: auto;
+	}
+	@if $pull {
+		#{grid.$opposite-direction}: gridFunctions.ontario-grid-calc($pull, grid.$total-columns);
+		#{grid.$default-float}: auto;
+	}
+
+	@if $float and $last-column == false {
+		@if $float == left or $float == true {
+			float: grid.$default-float;
+		} @else if $float == right {
+			float: grid.$opposite-direction;
+		} @else {
+			float: none;
+		}
+	}
+
+	// If centered, get rid of float and add appropriate margins
+	@if $center {
+		margin-#{grid.$default-float}: auto;
+		margin-#{grid.$opposite-direction}: auto;
+		float: none;
+	}
+
+	// If offset, calculate appropriate margins
+	@if $offset {
+		margin-#{grid.$default-float}: gridFunctions.ontario-grid-calc($offset, grid.$total-columns) !important;
+	}
+}
+
+/*** 5 - Grid HTML classes ***/
+/// Create presentational classes for grid
+///
+/// @param {string} $size
+///   Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
+
+@mixin ontario-grid-html-classes($size) {
+	@for $i from 0 through grid.$total-columns - 1 {
+		.ontario-#{$size}-push-#{$i} {
+			@include ontario-grid-column($push: $i, $collapse: null, $float: false);
+		}
+
+		.ontario-#{$size}-pull-#{$i} {
+			@include ontario-grid-column($pull: $i, $collapse: null, $float: false);
+		}
+	}
+
+	.ontario-column,
+	.ontario-columns {
+		@include ontario-grid-column($columns: false, $position: true);
+	}
+
+	@for $i from 1 through grid.$total-columns {
+		.ontario-#{$size}-#{$i} {
+			@include ontario-grid-column($columns: $i, $collapse: null, $float: false);
+		}
+	}
+
+	@for $i from 0 through grid.$total-columns - 1 {
+		.ontario-#{$size}-offset-#{$i} {
+			@include ontario-grid-column($offset: $i, $collapse: null, $float: false);
+		}
+	}
+
+	.ontario-#{$size}-reset-order {
+		float: grid.$default-float;
+		left: auto;
+		margin-#{grid.$default-float}: 0;
+		margin-#{grid.$opposite-direction}: 0;
+		right: auto;
+	}
+
+	.ontario-column.ontario-#{$size}-centered,
+	.ontario-columns.ontario-#{$size}-centered {
+		@include ontario-grid-column($center: true, $collapse: null, $float: false);
+	}
+
+	.ontario-column.ontario-#{$size}-uncentered,
+	.ontario-columns.ontario-#{$size}-uncentered {
+		float: grid.$default-float;
+		margin-#{grid.$default-float}: 0;
+		margin-#{grid.$opposite-direction}: 0;
+	}
+
+	// Fighting [class*="ontario-column"] + [class*="ontario-column"]:last-child
+	.ontario-column.ontario-#{$size}-centered:last-child,
+	.ontario-columns.ontario-#{$size}-centered:last-child {
+		float: none;
+	}
+
+	// Fighting ontario-.column.<previous-size>-centered:last-child
+	.ontario-column.ontario-#{$size}-uncentered:last-child,
+	.ontario-columns.ontario-#{$size}-uncentered:last-child {
+		float: grid.$default-float;
+	}
+
+	.ontario-column.ontario-#{$size}-uncentered.ontario-opposite,
+	.ontario-columns.ontario-#{$size}-uncentered.ontario-opposite {
+		float: grid.$opposite-direction;
+	}
+
+	.ontario-row {
+		&.ontario-#{$size}-collapse {
+			> .ontario-column,
+			> .ontario-columns {
+				@include ontario-grid-column($collapse: true, $float: false);
+			}
+
+			.ontario-row {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+		&.ontario-#{$size}-uncollapse {
+			> .ontario-column,
+			> .ontario-columns {
+				@include ontario-grid-column;
+			}
+		}
+	}
+}

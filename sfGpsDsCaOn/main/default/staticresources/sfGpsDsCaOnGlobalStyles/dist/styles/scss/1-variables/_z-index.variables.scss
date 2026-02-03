@@ -1,0 +1,12 @@
+@use './tokens.variables' as variables;
+
+$ontario-z-index-auto: variables.$ontario-z-index-auto; // auto
+$ontario-z-index-inherit: variables.$ontario-z-index-inherit; // inherit
+$ontario-z-index-initial: variables.$ontario-z-index-initial; // initial
+$ontario-z-index-behind-low: variables.$ontario-z-index-behind-low; // -4
+$ontario-z-index-behind-medium: variables.$ontario-z-index-behind-medium; // -2
+$ontario-z-index-behind-high: variables.$ontario-z-index-behind-high; // -1
+$ontario-z-index-neutral: variables.$ontario-z-index-neutral; // 0
+$ontario-z-index-above-low: variables.$ontario-z-index-above-low; // 1
+$ontario-z-index-above-medium: variables.$ontario-z-index-above-medium; // 2
+$ontario-z-index-above-high: variables.$ontario-z-index-above-high; // 4

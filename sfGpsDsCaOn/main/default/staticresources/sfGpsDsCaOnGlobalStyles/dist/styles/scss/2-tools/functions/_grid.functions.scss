@@ -1,0 +1,42 @@
+@use 'sass:math';
+@use 'sass:list';
+@use '../../1-variables/tokens.variables' as designTokenVariables;
+
+/*
+*  Grid functions
+*
+*  1 - Lower-bound
+*  2 - Upper-bound
+*  3 - Grid calc
+*/
+
+/*** 1 - Lower-bound ***/
+// Used to define ranges for various things, like media queries.
+@function ontario-lower-bound($range) {
+	@if list.length($range) <= 0 {
+		@return 0;
+	}
+
+	@return list.nth($range, 1);
+}
+
+/*** 2 - Upper-bound ***/
+// Used to define ranges for various things, like media queries.
+@function ontario-upper-bound($range) {
+	@if list.length($range) < 2 {
+		@return designTokenVariables.$ontario-global-tokens-max-value;
+	}
+
+	@return list.nth($range, 2);
+}
+
+/*** 3 - Grid calc ***/
+// We use this function to turn n number of columns into a percentage of the whole width
+@function ontario-grid-calc($colNumber, $totalColumns) {
+	$result: math.percentage(math.div($colNumber, $totalColumns));
+	@if $result == 0% {
+		$result: 0;
+	}
+
+	@return $result;
+}

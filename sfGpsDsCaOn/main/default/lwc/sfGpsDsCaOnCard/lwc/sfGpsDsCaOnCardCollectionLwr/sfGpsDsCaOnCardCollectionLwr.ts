@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2025, Emmanuel Schweitzer, Jeremy Blankenship and salesforce.com, inc.
+* Copyright (c) 2025, Shannon Schupbach, salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -28,12 +28,18 @@ extends SfGpsDsLwc {
 
   /* getters */
 
-  get computedClassName(): any {
-    return {
-      "ontario-card-collection__container": true,
-      [`ontario-card-collection--cards-per-row-${this.cardsPerRow}`]: this.cardsPerRow !== "1",
-      [this.className || ""]: this.className
-    };
+  get computedClassName(): string {
+    const classes = ["ontario-card-collection__container"];
+    
+    if (this.cardsPerRow && this.cardsPerRow !== "1") {
+      classes.push(`ontario-card-collection--cards-per-row-${this.cardsPerRow}`);
+    }
+    
+    if (this.className) {
+      classes.push(this.className);
+    }
+    
+    return classes.join(" ");
   }
 
   /* lifecycle */

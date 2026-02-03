@@ -1,0 +1,28 @@
+<template lwc:render-mode="light">
+  <div class={computedClassName} role="article">
+    <!-- Image container - positioned on left (horizontal layout) -->
+    <div lwc:if={image} class="sfgpsdscaon-feature-card__image-container">
+      <img
+        class="sfgpsdscaon-feature-card__image"
+        src={image}
+        alt={computedImageAlt}
+        loading="lazy"
+      />
+    </div>
+    <!-- Text container with heading and description -->
+    <div class={computedTextContainerClass}>
+      <h2 lwc:if={isH2} class="sfgpsdscaon-feature-card__heading">
+        <a href={computedUrl} aria-label={computedAriaLabel}>{heading}</a>
+      </h2>
+      <h3 lwc:elseif={isH3} class="sfgpsdscaon-feature-card__heading">
+        <a href={computedUrl} aria-label={computedAriaLabel}>{heading}</a>
+      </h3>
+      <h4 lwc:elseif={isH4} class="sfgpsdscaon-feature-card__heading">
+        <a href={computedUrl} aria-label={computedAriaLabel}>{heading}</a>
+      </h4>
+      <div lwc:if={description} class="sfgpsdscaon-feature-card__description">
+        <p>{description}</p>
+      </div>
+    </div>
+  </div>
+</template>

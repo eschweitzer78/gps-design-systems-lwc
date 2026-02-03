@@ -1,0 +1,78 @@
+@use '../1-variables/font-weights.variables' as fontWeights;
+@use '../1-variables/fonts.variables' as fonts;
+@use '../1-variables/spacing.variables' as spacing;
+@use '../1-variables/colours.variables' as colours;
+@use '../1-variables/breakpoints.variables' as breakpoints;
+@use '../1-variables/global.variables' as globalVariables;
+@use '../1-variables/letter-spacing.variables' as letterSpacing;
+@use '../1-variables/line-heights.variables' as lineHeight;
+@use '../1-variables/typography.variables';
+
+//for general forms
+.ontario-form-group:last-of-type {
+	margin-bottom: 2.5rem;
+}
+
+.ontario-form-group:last-of-type {
+	margin-bottom: spacing.$spacing-8;
+}
+
+.ontario-fieldset__legend {
+	color: colours.$ontario-colour-black;
+	font-family: fonts.$ontario-font-raleway;
+	font-size: 1.1875rem;
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	margin: 0 0 spacing.$spacing-4 0;
+	line-height: globalVariables.$line-height-default;
+	max-width: globalVariables.$narrow-width;
+	white-space: normal;
+	width: globalVariables.$full-width;
+	hyphens: auto;
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		font-size: 1.125rem;
+		line-height: lineHeight.$ontario-line-height-8;
+	}
+}
+
+.ontario-fieldset__legend--large,
+.ontario-fieldset__legend--heading {
+	letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
+	line-height: lineHeight.$ontario-line-height-1;
+
+	h1 {
+		display: inline-block;
+		margin: spacing.$spacing-0;
+		@extend %h1-styles;
+	}
+
+	@media screen and (max-width: breakpoints.$small-breakpoint) {
+		font-size: 1.4375rem;
+		line-height: lineHeight.$ontario-line-height-5;
+	}
+}
+
+.ontario-fieldset__legend--large {
+	font-size: 1.75rem;
+}
+
+.ontario-fieldset__legend-required-flag,
+.ontario-fieldset__legend-optional-flag {
+	font-family: fonts.$ontario-font-open-sans;
+	font-size: 1rem;
+	font-weight: fontWeights.$ontario-font-weights-normal;
+
+	&:before {
+		content: '\a0';
+	}
+}
+
+.ontario-label__flag {
+	font-family: fonts.$ontario-font-open-sans;
+	font-size: 1rem;
+	font-weight: fontWeights.$ontario-font-weights-normal;
+
+	&:before {
+		content: '\a0';
+	}
+}

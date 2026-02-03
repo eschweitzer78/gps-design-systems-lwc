@@ -1,1 +1,8 @@
-dist
+# Generated CSS files (from SCSS)
+*.gen.scss
+*.gen.css
+
+# Keep compiled CSS files for deployment
+!global.css
+!byo_lwr.css
+!byo_lwr_omnistudio.css
