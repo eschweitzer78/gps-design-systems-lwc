@@ -1,0 +1,54 @@
+<template>
+  <div class="ontario-form-group">
+    <!-- Label -->
+    <label class="ontario-label" for={_inputId}>
+      {label}
+      <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+    </label>
+
+    <!-- Hint text -->
+    <p lwc:if={hintText} id={_hintId} class="ontario-hint">{hintText}</p>
+
+    <!-- Error message -->
+    <div
+      lwc:if={hasError}
+      id={_errorId}
+      class="ontario-error-messaging"
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <span class="ontario-error-messaging__content">{errorMessage}</span>
+    </div>
+
+    <!-- Text Input -->
+    <input
+      id={_inputId}
+      type={type}
+      name={name}
+      value={_value}
+      class={computedInputClassName}
+      placeholder={placeholder}
+      disabled={disabled}
+      required={required}
+      maxlength={computedMaxLength}
+      minlength={computedMinLength}
+      aria-required={required}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={computedAriaInvalid}
+      oninput={handleInput}
+      onchange={handleChange}
+      onblur={handleBlur}
+      onfocus={handleFocus}
+    />
+  </div>
+</template>

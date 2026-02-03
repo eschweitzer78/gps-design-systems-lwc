@@ -1,0 +1,321 @@
+/*
+ * Ontario Design System - Accordion (OmniStudio)
+ * Shadow DOM compatible styles
+ */
+
+/* ==========================================================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ========================================================================== */
+:host {
+  --ontario-colour-focus: #009adb;
+  --ontario-colour-link: #0066cc;
+  --ontario-colour-link-hover: #00478f;
+  --ontario-colour-link-active: #002142;
+  --ontario-colour-text: #1a1a1a;
+  --ontario-colour-border: #cccccc;
+  --ontario-colour-background: #ffffff;
+  --ontario-colour-background-hover: #f2f2f2;
+  --ontario-font-primary:
+    "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --ontario-font-heading:
+    "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ==========================================================================
+   FOCUS STYLES
+   ========================================================================== */
+.ontario-accordion__button--expand-all:focus,
+.ontario-accordion__button:focus {
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus);
+  outline: 4px solid transparent;
+  transition: box-shadow 0.1s ease-in-out;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+.ontario-accordion__button {
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: normal;
+  font-family: var(--ontario-font-heading);
+  font-size: 1.25rem;
+  letter-spacing: 0.03rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+  max-width: 48rem;
+}
+
+@media screen and (min-width: 40em) {
+  .ontario-accordion__button {
+    font-size: 1.5rem;
+    letter-spacing: 0.0313rem;
+    line-height: 1.5;
+  }
+}
+
+/* ==========================================================================
+   ACCORDION CONTAINER
+   ========================================================================== */
+.ontario-accordions__container {
+  max-width: 48rem;
+  width: 100%;
+  font-family: var(--ontario-font-primary);
+}
+
+/* ==========================================================================
+   ACCORDION ITEM
+   ========================================================================== */
+.ontario-accordion {
+  border-top: 2px solid var(--ontario-colour-border);
+}
+
+.ontario-accordion:last-of-type {
+  border-bottom: 2px solid var(--ontario-colour-border);
+}
+
+/* ==========================================================================
+   EXPAND/COLLAPSE ALL CONTROLS
+   ========================================================================== */
+.ontario-accordion__controls {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ontario-accordion__button,
+.ontario-accordion__button--expand-all {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.ontario-accordion__button--expand-all {
+  font-size: 1rem;
+  font-family: var(--ontario-font-primary);
+  margin-bottom: 0.5rem;
+  color: var(--ontario-colour-link);
+  cursor: pointer;
+}
+
+.ontario-accordion__button--expand-all:focus,
+.ontario-accordion__button--expand-all:hover {
+  color: var(--ontario-colour-link-hover);
+  text-decoration: underline;
+}
+
+.ontario-accordion__button--expand-all:active {
+  color: var(--ontario-colour-link-active);
+  text-decoration: underline;
+}
+
+.ontario-accordion--expand-close-all {
+  display: none;
+}
+
+.ontario-accordion__controls--active .ontario-accordion--expand-close-all {
+  display: block;
+}
+
+.ontario-accordion__controls--active .ontario-accordion--expand-open-all {
+  display: none;
+}
+
+/* ==========================================================================
+   ACCORDION BUTTON
+   ========================================================================== */
+.ontario-accordion__button {
+  display: flex;
+  align-items: flex-start;
+  color: var(--ontario-colour-link);
+  cursor: pointer;
+  padding: 0.75rem 0.5rem;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.ontario-accordion__button .ontario-accordion__button-icon--close,
+.ontario-accordion__button .ontario-accordion__button-icon--open {
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.ontario-accordion__button .ontario-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
+}
+
+.ontario-accordion__button:focus,
+.ontario-accordion__button:hover {
+  background-color: var(--ontario-colour-background-hover);
+  color: var(--ontario-colour-link-hover);
+}
+
+.ontario-accordion__button:focus {
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus) inset;
+}
+
+.ontario-accordion__button:active {
+  color: var(--ontario-colour-link-active);
+}
+
+.ontario-accordion__button-text {
+  flex: 1;
+}
+
+/* ==========================================================================
+   ACCORDION HEADING
+   ========================================================================== */
+.ontario-accordion__heading {
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   ACCORDION CONTENT
+   ========================================================================== */
+.ontario-accordion__content {
+  display: none;
+  padding: 0.75rem 0.75rem 2rem 0.75rem;
+  margin-left: 0;
+  color: var(--ontario-colour-text);
+  font-family: var(--ontario-font-primary);
+}
+
+@media screen and (min-width: 40em) {
+  .ontario-accordion__content {
+    margin-left: 2rem;
+  }
+}
+
+.ontario-accordion__content * {
+  margin-top: 0;
+  max-width: 48rem;
+  width: 100%;
+}
+
+.ontario-accordion__content ul,
+.ontario-accordion__content ol {
+  max-width: calc(100% - 3rem);
+}
+
+.ontario-accordion__content > :last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   ICON VISIBILITY STATES
+   ========================================================================== */
+.ontario-accordion__button-icon--close,
+.ontario-expander--active .ontario-accordion__button-icon--open {
+  display: none;
+}
+
+.ontario-expander--active ~ .ontario-accordion__content,
+.ontario-expander--active .ontario-accordion__button-icon--close {
+  display: block;
+}
+
+/* ==========================================================================
+   CONTENT OPEN/CLOSED STATES
+   ========================================================================== */
+.ontario-accordion__content--opened {
+  display: block;
+}
+
+.ontario-accordion__content--closed {
+  display: none;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY RESET FOR NESTED ELEMENTS
+   ========================================================================== */
+.ontario-accordions__container .ontario-h1,
+.ontario-accordions__container .ontario-h2,
+.ontario-accordions__container .ontario-h3,
+.ontario-accordions__container .ontario-h4,
+.ontario-accordions__container .ontario-h5,
+.ontario-accordions__container p,
+.ontario-accordions__container h1,
+.ontario-accordions__container h2,
+.ontario-accordions__container h3,
+.ontario-accordions__container h4,
+.ontario-accordions__container h5,
+.ontario-accordions__container h6 {
+  margin: 0;
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .ontario-accordion {
+    border-color: CanvasText;
+  }
+
+  .ontario-accordion__button {
+    color: LinkText;
+    background-color: Canvas;
+  }
+
+  .ontario-accordion__button:hover,
+  .ontario-accordion__button:focus {
+    background-color: Canvas;
+    color: LinkText;
+  }
+
+  .ontario-accordion__button:focus {
+    outline: 3px solid Highlight;
+    outline-offset: -3px;
+    box-shadow: none;
+  }
+
+  .ontario-accordion__button--expand-all {
+    color: LinkText;
+  }
+
+  .ontario-accordion__button--expand-all:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .ontario-accordion__content {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .ontario-accordion__button .ontario-icon {
+    fill: LinkText;
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .ontario-accordion {
+    border-color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-accordion__button {
+    color: LinkText;
+    forced-color-adjust: none;
+  }
+
+  .ontario-accordion__button:focus {
+    outline: 3px solid Highlight;
+    outline-offset: -3px;
+  }
+
+  .ontario-accordion__button--expand-all:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .ontario-accordion__button .ontario-icon {
+    fill: LinkText;
+  }
+}

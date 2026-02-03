@@ -1,0 +1,61 @@
+<template>
+  <fieldset
+    class={computedFieldsetClassName}
+    aria-describedby={computedAriaDescribedBy}
+    aria-required={required}
+    aria-invalid={computedAriaInvalid}
+  >
+    <!-- Legend -->
+    <legend class="ontario-fieldset__legend">
+      {computedLegend}
+      <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+    </legend>
+
+    <!-- Hint text -->
+    <p lwc:if={hintText} id={_hintId} class="ontario-hint">{hintText}</p>
+
+    <!-- Error message -->
+    <div
+      lwc:if={hasError}
+      id={_errorId}
+      class="ontario-error-messaging"
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <span class="ontario-error-messaging__content">{errorMessage}</span>
+    </div>
+
+    <!-- Radio buttons container -->
+    <div class="ontario-radios">
+      <template for:each={decoratedOptions} for:item="opt">
+        <div class="ontario-radios__item" key={opt.value}>
+          <input
+            type="radio"
+            class={opt.inputClassName}
+            id={opt.id}
+            name={computedName}
+            value={opt.value}
+            checked={opt.checked}
+            disabled={disabled}
+            onchange={handleChange}
+            onblur={handleBlur}
+            onfocus={handleFocus}
+          />
+          <label class="ontario-radios__label" for={opt.id}>
+            {opt.label}
+          </label>
+        </div>
+      </template>
+    </div>
+  </fieldset>
+</template>

@@ -1,0 +1,161 @@
+/*
+ * Ontario Design System - Date Input (OmniStudio)
+ * Shadow DOM compatible styles
+ * Uses 3 separate inputs for day, month, and year
+ */
+
+/* Form Group Container */
+.ontario-form-group {
+  margin-bottom: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Fieldset Styling */
+.ontario-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ontario-fieldset__legend {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+/* Label flag (required/optional) */
+.ontario-label__flag {
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Hint text */
+.ontario-hint {
+  font-size: 1rem;
+  color: #666666;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  line-height: 1.5;
+}
+
+/* Error styling */
+.ontario-error-messaging {
+  display: flex;
+  align-items: flex-start;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: #fce4e4;
+  border-left: 4px solid #cd0000;
+  color: #cd0000;
+}
+
+.ontario-error-messaging__icon {
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+}
+
+.ontario-error-messaging__icon .ontario-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: currentColor;
+}
+
+.ontario-error-messaging__content {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Date Group Container */
+.ontario-date__group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+/* Individual Date Input Wrapper */
+.ontario-date__group-input {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.5rem;
+}
+
+.ontario-date__group-input:last-child {
+  margin-right: 0;
+}
+
+/* Small label for date fields */
+.ontario-label--small {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #1a1a1a;
+}
+
+/* Base Input Styles */
+.ontario-input {
+  height: 48px;
+  padding: 0 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  background-color: #fff;
+  box-sizing: border-box;
+  margin-top: 0.25rem;
+}
+
+.ontario-input:focus {
+  outline: 4px solid #009ade;
+  outline-offset: 2px;
+  border-color: #1a1a1a;
+}
+
+.ontario-input:disabled {
+  background-color: #e0e0e0;
+  border-color: #666666;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+/* Input width variants for date fields */
+.ontario-input--3-char-width {
+  width: 4rem;
+  min-width: 4rem;
+}
+
+.ontario-input--5-char-width {
+  width: 6rem;
+  min-width: 6rem;
+}
+
+/* Error State */
+.ontario-input__error {
+  border-color: #cd0000;
+}
+
+.ontario-input__error:focus {
+  outline: 4px solid #009ade;
+  outline-offset: 2px;
+  border-color: #cd0000;
+}
+
+/* Error state for date group */
+.ontario-date--error .ontario-input {
+  border-color: #cd0000;
+}
+
+.ontario-date--error .ontario-input:focus {
+  outline: 4px solid #009ade;
+  outline-offset: 2px;
+  border-color: #cd0000;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 40em) {
+  .ontario-date__group-input {
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+}

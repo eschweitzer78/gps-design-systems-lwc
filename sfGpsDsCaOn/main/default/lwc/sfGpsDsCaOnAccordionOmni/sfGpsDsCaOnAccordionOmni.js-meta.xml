@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Accordion (OmniStudio)</masterLabel>
+  <description
+  >Ontario Design System Accordion component for OmniStudio Custom LWC elements. Shadow DOM compatible with expand/collapse functionality.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Accordion title (for single accordion mode)"
+      />
+      <property
+        name="isOpen"
+        type="Boolean"
+        label="Start Open"
+        description="Whether the accordion starts in open state"
+        default="false"
+      />
+      <property
+        name="itemsJson"
+        type="String"
+        label="Items JSON"
+        description="JSON array of accordion items: [{title, content, isOpen}]"
+      />
+      <property
+        name="className"
+        type="String"
+        label="CSS Class"
+        description="Additional CSS classes"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Card (OmniStudio)</masterLabel>
+  <description
+  >Ontario Design System Card component for OmniStudio Custom LWC elements. Shadow DOM compatible.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Card title/heading"
+      />
+      <property
+        name="description"
+        type="String"
+        label="Description"
+        description="Card description text"
+      />
+      <property
+        name="imageUrl"
+        type="String"
+        label="Image URL"
+        description="URL to card image"
+      />
+      <property
+        name="ctaLabel"
+        type="String"
+        label="CTA Label"
+        description="Call-to-action button label"
+      />
+      <property
+        name="ctaUrl"
+        type="String"
+        label="CTA URL"
+        description="Call-to-action button URL"
+      />
+      <property
+        name="className"
+        type="String"
+        label="CSS Class"
+        description="Additional CSS classes"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
