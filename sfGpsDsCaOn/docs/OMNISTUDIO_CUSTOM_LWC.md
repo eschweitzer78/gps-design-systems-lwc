@@ -364,16 +364,30 @@ Each field is updated as soon as its dropdown value changes.
 
 ---
 
-#### Components with Both LWR and OmniScript Versions
+#### Display Components (Custom LWC)
 
-These components may be used in both LWR/Experience Cloud sites AND within OmniScripts:
+These components can be used as Custom LWC elements in OmniScripts for display purposes:
 
 | Component | OmniScript LWC Name        | Description                    |
 | --------- | -------------------------- | ------------------------------ |
-| Dropdown  | `sfGpsDsCaOnDropdownOmni`  | Select dropdown                |
 | Accordion | `sfGpsDsCaOnAccordionOmni` | Collapsible accordion sections |
 | Card      | `sfGpsDsCaOnCardOmni`      | Information card               |
 | Callout   | `sfGpsDsCaOnCalloutOmni`   | Highlighted callout box        |
+
+#### Form Elements (Use Overrides Instead)
+
+For standard form elements like **Dropdown/Select**, **Text**, **TextArea**, etc., use the OmniScript **element overrides** instead of Custom LWC components:
+
+| OmniScript Element | Override Component        | Description                   |
+| ------------------ | ------------------------- | ----------------------------- |
+| Select             | `sfGpsDsCaOnFormSelect`   | Ontario DS styled dropdown    |
+| Text               | `sfGpsDsCaOnFormText`     | Ontario DS styled text input  |
+| TextArea           | `sfGpsDsCaOnFormTextarea` | Ontario DS styled textarea    |
+| Radio              | `sfGpsDsCaOnFormRadio`    | Ontario DS styled radio group |
+| Checkbox           | `sfGpsDsCaOnFormCheckbox` | Ontario DS styled checkbox    |
+| Date               | `sfGpsDsCaOnFormDate`     | Ontario DS styled date input  |
+
+To enable overrides, set `lwcComponentOverride` in the OmniScript Setup properties.
 
 ### Creating New OmniStudio-Compatible Components
 
