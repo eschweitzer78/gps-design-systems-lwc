@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>false</isExposed>
+  <description
+  >Ontario DS Messaging for OmniStudio. Alert messages with Markdown and hyperlink support. For success, warning, and hard stop messages.</description>
+</LightningComponentBundle>

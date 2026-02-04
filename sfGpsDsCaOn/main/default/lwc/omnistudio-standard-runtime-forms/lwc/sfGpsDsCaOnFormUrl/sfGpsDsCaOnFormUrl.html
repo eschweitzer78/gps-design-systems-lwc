@@ -1,0 +1,60 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="ontario-form-group">
+    <label class="ontario-label" for={inputId}>
+      {mergedLabel}
+      <span lwc:if={showRequiredFlag} class="ontario-label__flag"
+        >(required)</span
+      >
+      <span lwc:if={showOptionalFlag} class="ontario-label__flag"
+        >(optional)</span
+      >
+    </label>
+
+    <p lwc:if={mergedHelpText} id={hintId} class="ontario-hint">
+      {mergedHelpText}
+    </p>
+
+    <div
+      lwc:if={sfGpsDsIsError}
+      id={errorId}
+      class="ontario-error-messaging"
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <span class="ontario-error-messaging__content"
+        >{sfGpsDsErrorMessage}</span
+      >
+    </div>
+
+    <input
+      type="url"
+      id={inputId}
+      name={_name}
+      class={computedInputClassName}
+      value={elementValue}
+      placeholder={mergedPlaceholder}
+      disabled={_propSetMap.disabled}
+      readonly={_propSetMap.readOnly}
+      required={_propSetMap.required}
+      aria-required={computedAriaRequired}
+      autocomplete={_autocomplete}
+      aria-describedby={computedAriaDescribedBy}
+      aria-invalid={computedAriaInvalid}
+      data-omni-input
+      oninput={handleInput}
+      onchange={handleChange}
+      onblur={handleBlur}
+    />
+  </div>
+</template>

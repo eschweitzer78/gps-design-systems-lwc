@@ -1,0 +1,46 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Step Chart Component for OmniStudio
+  
+  Displays visual progress indicator for multi-step forms.
+  Uses Ontario DS step indicator web component.
+  
+  Compliance:
+  - LWR: Compatible (uses Ontario DS web component with lwc:external)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Uses ontario-step-indicator component
+  - WCAG 2.1 AA / AODA: 
+    - Progress accessible to screen readers via aria-label and live region
+    - Current step clearly indicated visually and programmatically
+    - Progress percentage announced on step change
+-->
+<template>
+  <div
+    class="sfgpsdscaon-step-chart"
+    role="region"
+    aria-label="Form progress indicator"
+  >
+    <!-- Screen reader announcement for step progress - AODA -->
+    <div
+      class="ontario-show-for-sr"
+      aria-live="polite"
+      aria-atomic="true"
+      role="status"
+    >
+      <span lwc:if={progressAnnouncement}>{progressAnnouncement}</span>
+    </div>
+
+    <!-- Visual progress indicator -->
+    <ontario-step-indicator
+      lwc:external
+      current-step={sfGpsDsStepNumber}
+      number-of-steps={sfGpsDsStepCount}
+      percentage-complete={computedPercentage}
+      show-back-button="false"
+      aria-hidden="true"
+    ></ontario-step-indicator>
+
+    <!-- Accessible progress description -->
+    <p class="ontario-show-for-sr">{accessibleProgressDescription}</p>
+  </div>
+</template>

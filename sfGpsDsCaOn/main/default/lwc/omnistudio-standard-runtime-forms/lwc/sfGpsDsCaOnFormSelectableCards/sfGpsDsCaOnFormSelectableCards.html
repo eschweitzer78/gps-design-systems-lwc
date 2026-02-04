@@ -1,0 +1,130 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <fieldset
+    class={computedFieldsetClassName}
+    aria-describedby={computedAriaDescribedBy}
+    aria-invalid={computedAriaInvalid}
+    aria-required={computedAriaRequired}
+  >
+    <legend class="ontario-fieldset__legend">
+      {mergedLabel}
+      <span lwc:if={showRequiredFlag} class="ontario-label__flag"
+        >(required)</span
+      >
+      <span lwc:if={showOptionalFlag} class="ontario-label__flag"
+        >(optional)</span
+      >
+    </legend>
+
+    <p lwc:if={mergedHelpText} id={hintId} class="ontario-hint">
+      {mergedHelpText}
+    </p>
+
+    <div
+      lwc:if={sfGpsDsIsError}
+      id={errorId}
+      class="ontario-error-messaging"
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <span class="ontario-error-messaging__content"
+        >{sfGpsDsErrorMessage}</span
+      >
+    </div>
+
+    <div class="sfgpsdscaon-selectable-card-group__cards">
+      <template for:each={inlineDecoratedOptions} for:item="opt">
+        <div key={opt.key} class={opt.cardClassName}>
+          <!-- Checkbox and Label -->
+          <div class="sfgpsdscaon-selectable-card__header">
+            <input
+              type="checkbox"
+              class="sfgpsdscaon-selectable-card__checkbox"
+              id={opt.id}
+              name={_name}
+              value={opt.value}
+              checked={opt.checked}
+              disabled={_propSetMap.readOnly}
+              data-omni-input
+              data-index={opt.index}
+              onchange={handleCardCheckboxChange}
+              onblur={handleBlur}
+            />
+            <label class="sfgpsdscaon-selectable-card__label" for={opt.id}>
+              <span class="sfgpsdscaon-selectable-card__title-wrapper">
+                <span class="sfgpsdscaon-selectable-card__title"
+                  >{opt.label}</span
+                >
+                <span lwc:if={opt.badge} class={opt.badgeClassName}
+                  >{opt.badge}</span
+                >
+              </span>
+            </label>
+          </div>
+
+          <!-- Description -->
+          <div
+            lwc:if={opt.description}
+            class="sfgpsdscaon-selectable-card__description"
+          >
+            {opt.description}
+          </div>
+
+          <!-- Optional Link -->
+          <a
+            lwc:if={opt.linkLabel}
+            href={opt.linkUrl}
+            class="sfgpsdscaon-selectable-card__link"
+          >
+            {opt.linkLabel}
+          </a>
+
+          <!-- View More Button -->
+          <button
+            lwc:if={opt.expandedContent}
+            type="button"
+            class="sfgpsdscaon-selectable-card__expand-btn"
+            aria-expanded={opt.isExpanded}
+            data-index={opt.index}
+            onclick={handleExpandClick}
+          >
+            <svg
+              class="sfgpsdscaon-selectable-card__expand-icon"
+              aria-hidden="true"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                lwc:if={opt.isExpanded}
+                d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"
+              ></path>
+              <path
+                lwc:else
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              ></path>
+            </svg>
+            {opt.expandButtonLabel}
+          </button>
+
+          <!-- Expanded Content -->
+          <div
+            lwc:if={opt.isExpanded}
+            class="sfgpsdscaon-selectable-card__expanded-content"
+          >
+            {opt.expandedContent}
+          </div>
+        </div>
+      </template>
+    </div>
+  </fieldset>
+</template>

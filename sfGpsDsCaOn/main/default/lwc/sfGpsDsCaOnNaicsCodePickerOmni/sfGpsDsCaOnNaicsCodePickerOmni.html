@@ -1,0 +1,198 @@
+<template>
+  <div class="sfgpsdscaon-naics-picker">
+    <fieldset class="ontario-fieldset">
+      <legend class="ontario-fieldset__legend">
+        <span class="ontario-label">{label}</span>
+        <template lwc:if={required}>
+          <span class="ontario-label__flag">(required)</span>
+        </template>
+        <template lwc:if={optional}>
+          <span class="ontario-label__flag">(optional)</span>
+        </template>
+      </legend>
+
+      <p lwc:if={helpText} class="ontario-hint">{helpText}</p>
+
+      <!-- Error message -->
+      <div
+        lwc:if={hasError}
+        class="ontario-error-messaging"
+        role="alert"
+        aria-live="assertive"
+      >
+        <svg
+          class="ontario-icon"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+        <span class="ontario-error-messaging__content">{errorMessage}</span>
+      </div>
+
+      <!-- Sector Dropdown -->
+      <div class="ontario-form-group">
+        <label class="ontario-label" for="sector-select">{sectorLabel}</label>
+        <div class="ontario-dropdown__container">
+          <select
+            id="sector-select"
+            class="ontario-dropdown"
+            disabled={disabled}
+            onchange={handleSectorChange}
+          >
+            <option value="">Select</option>
+            <template for:each={sectorOptionsWithSelected} for:item="opt">
+              <option key={opt.value} value={opt.value} selected={opt.selected}>
+                {opt.label}
+              </option>
+            </template>
+          </select>
+          <svg
+            class="ontario-dropdown__icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Sub Sector Dropdown -->
+      <div class="ontario-form-group">
+        <label class="ontario-label" for="subsector-select"
+          >{subSectorLabel}</label
+        >
+        <div class="ontario-dropdown__container">
+          <select
+            id="subsector-select"
+            class="ontario-dropdown"
+            disabled={isSubSectorDisabled}
+            onchange={handleSubSectorChange}
+          >
+            <option value="">Select</option>
+            <template for:each={subSectorOptionsWithSelected} for:item="opt">
+              <option key={opt.value} value={opt.value} selected={opt.selected}>
+                {opt.label}
+              </option>
+            </template>
+          </select>
+          <svg
+            class="ontario-dropdown__icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Industry Group Dropdown -->
+      <div class="ontario-form-group">
+        <label class="ontario-label" for="industrygroup-select"
+          >{industryGroupLabel}</label
+        >
+        <div class="ontario-dropdown__container">
+          <select
+            id="industrygroup-select"
+            class="ontario-dropdown"
+            disabled={isIndustryGroupDisabled}
+            onchange={handleIndustryGroupChange}
+          >
+            <option value="">Select</option>
+            <template
+              for:each={industryGroupOptionsWithSelected}
+              for:item="opt"
+            >
+              <option key={opt.value} value={opt.value} selected={opt.selected}>
+                {opt.label}
+              </option>
+            </template>
+          </select>
+          <svg
+            class="ontario-dropdown__icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Industry Dropdown -->
+      <div class="ontario-form-group">
+        <label class="ontario-label" for="industry-select"
+          >{industryLabel}</label
+        >
+        <div class="ontario-dropdown__container">
+          <select
+            id="industry-select"
+            class="ontario-dropdown"
+            disabled={isIndustryDisabled}
+            onchange={handleIndustryChange}
+          >
+            <option value="">Select</option>
+            <template for:each={industryOptionsWithSelected} for:item="opt">
+              <option key={opt.value} value={opt.value} selected={opt.selected}>
+                {opt.label}
+              </option>
+            </template>
+          </select>
+          <svg
+            class="ontario-dropdown__icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- National Industry Dropdown -->
+      <div class="ontario-form-group">
+        <label class="ontario-label" for="nationalindustry-select"
+          >{nationalIndustryLabel}</label
+        >
+        <div class="ontario-dropdown__container">
+          <select
+            id="nationalindustry-select"
+            class="ontario-dropdown"
+            disabled={isNationalIndustryDisabled}
+            onchange={handleNationalIndustryChange}
+          >
+            <option value="">Select</option>
+            <template
+              for:each={nationalIndustryOptionsWithSelected}
+              for:item="opt"
+            >
+              <option key={opt.value} value={opt.value} selected={opt.selected}>
+                {opt.label}
+              </option>
+            </template>
+          </select>
+          <svg
+            class="ontario-dropdown__icon"
+            aria-hidden="true"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Selected value display -->
+      <div lwc:if={hasValue} class="sfgpsdscaon-naics-picker__selection">
+        <p class="ontario-hint">
+          <strong>Selected NAICS Code:</strong> {value}
+        </p>
+      </div>
+    </fieldset>
+  </div>
+</template>

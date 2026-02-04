@@ -1,0 +1,176 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Image Upload for OmniStudio
+  
+  Extends file upload with image preview functionality.
+  
+  Compliance:
+  - LWR: Uses lightning-file-upload (LWR compatible)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Ontario form field structure with image grid
+  - WCAG 2.1 AA: 
+    - Proper labeling
+    - Alt text for image previews
+    - Error messages with role="alert"
+    - Keyboard accessible
+    - Screen reader announcements
+-->
+<template>
+  <!-- Loading indicator (inline) -->
+  <template lwc:if={isPageLoading}>
+    <div
+      class="ontario-loading-indicator ontario-loading-indicator--inline"
+      role="alert"
+      aria-live="assertive"
+      aria-busy="true"
+    >
+      <svg
+        class="ontario-loading-indicator__spinner"
+        viewBox="25 25 50 50"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="50" cy="50" r="20" fill="none" stroke-width="4" />
+      </svg>
+      <p>Loading...</p>
+    </div>
+  </template>
+
+  <div class={_containerClasses} aria-labelledby="imageUploadLabel">
+    <div class="ontario-form-group sfgpsdscaon-image">
+      <!-- Label -->
+      <label id="imageUploadLabel" class={computedLabelClassName}>
+        {mergedLabel}
+        <span lwc:if={showFlag} class="ontario-label__flag">({flagText})</span>
+        <span lwc:if={_propSetMap.required} class="ontario-show-for-sr">
+          ({allCustomLabelsUtil.OmniRequired})
+        </span>
+      </label>
+
+      <!-- Hint text -->
+      <p lwc:if={mergedHelpText} id="helper" class="ontario-hint">
+        {mergedHelpText}
+      </p>
+
+      <!-- Accepted formats hint -->
+      <p id="formats-hint" class="ontario-hint ontario-hint--small">
+        Accepted formats: JPG, PNG, GIF, WebP
+      </p>
+
+      <!-- Image upload component -->
+      <div class="sfgpsdscaon-image__upload-container">
+        <lightning-file-upload
+          lwc:if={isUploadEnabled}
+          class="sfgpsdscaon-image__upload"
+          label={uploadButtonLabel}
+          name={jsonDef.lwcId}
+          accept={acceptedFormats}
+          multiple={isMultiple}
+          record-id={parentRecordId}
+          aria-invalid={_showValidation}
+          aria-describedby={computedAriaDescribedBy}
+          data-omni-input
+          onuploadfinished={handleUploadFinished}
+          onfocusout={handleFocusOut}
+        >
+        </lightning-file-upload>
+
+        <!-- Message when upload is disabled (single mode with image) -->
+        <!-- WCAG 4.1.3: Status message announced to screen readers -->
+        <p
+          lwc:if={isUploadDisabled}
+          class="sfgpsdscaon-image__disabled-message"
+          role="status"
+          aria-live="polite"
+        >
+          Remove the current image to upload a new one.
+        </p>
+      </div>
+
+      <!-- Error message -->
+      <div
+        lwc:if={_showValidation}
+        class="ontario-error-messaging"
+        aria-live="assertive"
+        role="alert"
+        id="errorMessageBlock"
+      >
+        <svg
+          class="ontario-icon"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+        <span class="ontario-error-messaging__content">{errorMessage}</span>
+      </div>
+    </div>
+
+    <!-- Image preview grid -->
+    <div lwc:if={hasImages} class="sfgpsdscaon-image__grid">
+      <!-- Screen reader status -->
+      <span class="ontario-show-for-sr" aria-live="polite">
+        {ariaLiveStatusText}
+      </span>
+
+      <!-- Image items -->
+      <template for:each={decoratedImages} for:item="item">
+        <div key={item.key} class="sfgpsdscaon-image__item">
+          <!-- Image preview -->
+          <div class="sfgpsdscaon-image__preview">
+            <img
+              lwc:if={item.previewUrl}
+              src={item.previewUrl}
+              alt={item.altText}
+              class="sfgpsdscaon-image__thumbnail"
+              loading="lazy"
+            />
+            <!-- Placeholder if no preview URL -->
+            <div lwc:else class="sfgpsdscaon-image__placeholder">
+              <svg
+                class="sfgpsdscaon-image__placeholder-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Image info and delete -->
+          <div class="sfgpsdscaon-image__info">
+            <span class="sfgpsdscaon-image__filename" title={item.filename}>
+              {item.filename}
+            </span>
+
+            <button
+              type="button"
+              class="sfgpsdscaon-image__delete"
+              title={item.deleteAriaLabel}
+              aria-label={item.deleteAriaLabel}
+              data-index={item.index}
+              data-id={item.data}
+              onclick={deleteFile}
+            >
+              <svg
+                class="sfgpsdscaon-image__delete-icon"
+                aria-hidden="true"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

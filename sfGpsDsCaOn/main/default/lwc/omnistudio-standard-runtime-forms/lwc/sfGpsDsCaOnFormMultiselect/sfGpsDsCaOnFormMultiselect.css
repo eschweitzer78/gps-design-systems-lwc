@@ -1,0 +1,119 @@
+.ontario-fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  min-width: 0;
+}
+.ontario-fieldset__legend {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  padding: 0;
+  display: block;
+}
+.ontario-label__flag {
+  font-weight: 400;
+}
+.ontario-hint {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4d4d4d;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+.ontario-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.ontario-checkboxes__item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+.ontario-checkboxes__input {
+  position: absolute;
+  opacity: 0;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.ontario-checkboxes__label {
+  display: block;
+  padding-left: 2.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  cursor: pointer;
+  position: relative;
+}
+.ontario-checkboxes__label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+  background: #fff;
+}
+.ontario-checkboxes__input:checked + .ontario-checkboxes__label::before {
+  background: #1a1a1a;
+}
+.ontario-checkboxes__input:checked + .ontario-checkboxes__label::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.25rem;
+  width: 0.75rem;
+  height: 1.25rem;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.ontario-checkboxes__input:focus + .ontario-checkboxes__label::before {
+  outline: 4px solid #009ade;
+  outline-offset: 0;
+  box-shadow: 0 0 0 4px #009ade;
+}
+.ontario-checkboxes__input:disabled + .ontario-checkboxes__label {
+  color: #666;
+  cursor: not-allowed;
+}
+.ontario-checkboxes__input:disabled + .ontario-checkboxes__label::before {
+  border-color: #666;
+  background: #e6e6e6;
+}
+.ontario-error-messaging {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #cd0000;
+  margin-bottom: 0.5rem;
+}
+.ontario-error-messaging .ontario-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  fill: #cd0000;
+}
+.ontario-error-messaging__content {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Visually hidden input for validation - still participates in Constraint Validation */
+.sfgpsdscaon-validation-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

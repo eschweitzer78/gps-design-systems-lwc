@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Callout (OmniStudio)</masterLabel>
+  <description
+  >Ontario Design System Callout component for OmniStudio Custom LWC elements. Shadow DOM compatible.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        description="Callout heading text"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Callout body content"
+      />
+      <property
+        name="variant"
+        type="String"
+        label="Variant"
+        description="Callout style: info (default), warning, error, success"
+        default="info"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,34 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Text Block for OmniStudio
+  
+  This template renders rich text/HTML content with Ontario DS typography styling.
+  Uses lwc:dom="manual" to allow dynamic HTML injection via replaceInnerHtml.
+  
+  Compliance:
+  - LWR: Compatible (lwc:dom="manual" for dynamic content)
+  - LWS: Compatible (uses replaceInnerHtml helper)
+  - Ontario DS: Applies ontario-text-block class for typography
+  - WCAG 2.1 AA: 
+    - Semantic HTML preserved from source content
+    - Proper heading hierarchy supported
+    - Links and interactive elements remain accessible
+
+  Template Notes:
+  - The sfGpsDsCaOnMerge class is used as a selector for content injection
+  - ontario-text-block applies Ontario DS typography (font, line-height, spacing)
+  - lwc:dom="manual" is required for dynamic HTML content
+-->
+<template>
+  <!-- 
+    WCAG 1.3.1: Content region for text block.
+    role="region" with aria-label provides landmark for screen reader navigation.
+    This allows users to skip to or past text blocks when navigating by landmarks.
+  -->
+  <div
+    class="ontario-text-block sfGpsDsCaOnMerge"
+    role="region"
+    aria-label="Information content"
+    lwc:dom="manual"
+  ></div>
+</template>

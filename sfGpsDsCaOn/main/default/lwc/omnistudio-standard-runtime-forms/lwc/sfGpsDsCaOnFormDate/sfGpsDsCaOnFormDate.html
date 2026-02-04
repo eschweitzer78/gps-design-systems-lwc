@@ -1,0 +1,114 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="ontario-form-group">
+    <fieldset
+      class="ontario-fieldset"
+      aria-describedby={computedAriaDescribedBy}
+    >
+      <legend class="ontario-fieldset__legend">
+        {mergedLabel}
+        <span lwc:if={showRequiredFlag} class="ontario-label__flag"
+          >(required)</span
+        >
+        <span lwc:if={showOptionalFlag} class="ontario-label__flag"
+          >(optional)</span
+        >
+      </legend>
+
+      <p lwc:if={mergedHelpText} id={hintId} class="ontario-hint">
+        {mergedHelpText}
+      </p>
+
+      <div
+        lwc:if={hasError}
+        id={errorId}
+        class="ontario-error-messaging"
+        role="alert"
+        aria-live="assertive"
+      >
+        <svg
+          class="ontario-icon"
+          aria-hidden="true"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+        <span class="ontario-error-messaging__content"
+          >{displayErrorMessage}</span
+        >
+      </div>
+
+      <div id={groupId} class={computedGroupClassName}>
+        <!-- Day Input -->
+        <div class="ontario-date__group-input">
+          <label for={dayId} class="ontario-label ontario-label--small"
+            >Day</label
+          >
+          <input
+            id={dayId}
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            class={computedDayMonthInputClassName}
+            value={_dayValue}
+            disabled={_propSetMap.disabled}
+            aria-required={computedAriaRequired}
+            aria-invalid={computedAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
+            data-omni-input
+            oninput={handleDayInput}
+            onblur={handleDateBlur}
+            onkeydown={handleKeydown}
+          />
+        </div>
+
+        <!-- Month Input -->
+        <div class="ontario-date__group-input">
+          <label for={monthId} class="ontario-label ontario-label--small"
+            >Month</label
+          >
+          <input
+            id={monthId}
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            class={computedDayMonthInputClassName}
+            value={_monthValue}
+            disabled={_propSetMap.disabled}
+            aria-required={computedAriaRequired}
+            aria-invalid={computedAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
+            oninput={handleMonthInput}
+            onblur={handleDateBlur}
+            onkeydown={handleKeydown}
+          />
+        </div>
+
+        <!-- Year Input -->
+        <div class="ontario-date__group-input">
+          <label for={yearId} class="ontario-label ontario-label--small"
+            >Year</label
+          >
+          <input
+            id={yearId}
+            type="text"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            class={computedYearInputClassName}
+            value={_yearValue}
+            disabled={_propSetMap.disabled}
+            aria-required={computedAriaRequired}
+            aria-invalid={computedAriaInvalid}
+            aria-describedby={computedAriaDescribedBy}
+            oninput={handleYearInput}
+            onblur={handleDateBlur}
+            onkeydown={handleKeydown}
+          />
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</template>

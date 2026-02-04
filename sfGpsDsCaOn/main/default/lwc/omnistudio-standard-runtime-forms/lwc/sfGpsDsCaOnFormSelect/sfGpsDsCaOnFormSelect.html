@@ -1,0 +1,95 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System Select/Dropdown for OmniStudio forms.
+  Renders inline (Shadow DOM) without Light DOM child components.
+  
+  Compliance:
+  - LWR: Shadow DOM compatible (uses lwc:dom="manual" for dynamic HTML)
+  - LWS: Compatible (uses replaceInnerHtml helper)
+  - Ontario DS: Uses ontario-dropdown styling
+  - WCAG 2.1 AA / AODA: Focus management, aria attributes, aria-describedby links hint to input
+  
+  HTML Hint Support:
+  - The hint text area supports rich HTML content (lists, links, etc.)
+  - Content is injected via lwc:dom="manual" in renderedCallback
+  - Merge fields in help text are resolved before rendering
+-->
+<template>
+  <div class="ontario-form-group">
+    <!-- Label -->
+    <label class="ontario-label" for={inputId}>
+      {mergedLabel}
+      <span lwc:if={showRequiredFlag} class="ontario-label__flag"
+        >(required)</span
+      >
+      <span lwc:if={showOptionalFlag} class="ontario-label__flag"
+        >(optional)</span
+      >
+    </label>
+
+    <!-- Hint text (supports HTML content via lwc:dom="manual") -->
+    <div
+      lwc:if={mergedHelpText}
+      id={hintId}
+      class="ontario-hint sfGpsDsCaOnHint"
+      lwc:dom="manual"
+    ></div>
+
+    <!-- Error message -->
+    <div
+      lwc:if={sfGpsDsIsError}
+      id={errorId}
+      class="ontario-error-messaging"
+      role="alert"
+      aria-live="assertive"
+    >
+      <svg
+        class="ontario-icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+        />
+      </svg>
+      <span class="ontario-error-messaging__content"
+        >{sfGpsDsErrorMessage}</span
+      >
+    </div>
+
+    <!-- Dropdown container -->
+    <div class="ontario-dropdown__container">
+      <select
+        id={inputId}
+        name={_name}
+        class={computedSelectClassName}
+        disabled={_propSetMap.disabled}
+        required={_propSetMap.required}
+        aria-required={computedAriaRequired}
+        aria-describedby={computedAriaDescribedBy}
+        aria-invalid={computedAriaInvalid}
+        data-omni-input
+        onchange={handleChange}
+        onblur={handleBlur}
+      >
+        <option value="">{defaultOptionLabel}</option>
+        <template for:each={decoratedOptions} for:item="opt">
+          <option key={opt.value} value={opt.value} selected={opt.selected}>
+            {opt.label}
+          </option>
+        </template>
+      </select>
+
+      <!-- Dropdown arrow icon -->
+      <svg
+        class="ontario-dropdown__icon"
+        aria-hidden="true"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+      </svg>
+    </div>
+  </div>
+</template>

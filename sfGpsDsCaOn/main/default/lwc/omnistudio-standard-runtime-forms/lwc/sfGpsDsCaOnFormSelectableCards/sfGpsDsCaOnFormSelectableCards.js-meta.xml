@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Form Selectable Cards</masterLabel>
+  <description
+  >Ontario DS Selectable Cards for OmniStudio. Cards with checkbox, title, description, expandable content. For service/activity selection.</description>
+  <targets>
+    <target>lightning__FlowScreen</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightning__FlowScreen">
+      <property
+        name="configRequired"
+        type="Boolean"
+        label="Required"
+        description="Whether at least one selection is required"
+        default="false"
+      />
+      <property
+        name="configErrorMessage"
+        type="String"
+        label="Error Message"
+        description="Message shown when validation fails"
+      />
+      <property
+        name="configOptionsJson"
+        type="String"
+        label="Options JSON"
+        description="JSON array of options with value, label, description, badge, expandedContent"
+      />
+    </targetConfig>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="configRequired"
+        type="Boolean"
+        label="Required"
+        description="Whether at least one selection is required"
+        default="false"
+      />
+      <property
+        name="configErrorMessage"
+        type="String"
+        label="Error Message"
+        description="Message shown when validation fails"
+      />
+      <property
+        name="configOptionsJson"
+        type="String"
+        label="Options JSON"
+        description="JSON array of options with value, label, description, badge, expandedContent"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

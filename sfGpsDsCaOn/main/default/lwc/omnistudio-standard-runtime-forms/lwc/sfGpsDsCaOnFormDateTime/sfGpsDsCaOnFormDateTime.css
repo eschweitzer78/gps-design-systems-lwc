@@ -1,0 +1,11 @@
+/*
+ * Ontario Design System - DateTime Component Styles
+ */
+
+.sfgpsdscaon-datetime__input {
+  max-width: 280px;
+}
+
+.sfgpsdscaon-datetime__input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}

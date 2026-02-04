@@ -1,0 +1,111 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Range/Slider Input for OmniStudio
+  
+  This template renders a range slider with Ontario DS styling.
+  
+  Compliance:
+  - LWR: Compatible (uses Light DOM parent)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Custom slider styling with Ontario colors
+  - WCAG 2.1 AA: 
+    - Label associated with input via for/id
+    - Hint text via aria-describedby
+    - Error messages with role="alert"
+    - Keyboard accessible (arrow keys, tab)
+    - Current value announced to screen readers
+
+  Template Bindings:
+  - inputId: Unique ID for the input element
+  - mergedLabel: From getter (supports merge fields)
+  - required/disabled: From _propSetMap configuration
+  - min/max/step: From _propSetMap range configuration
+  - value: From elementValue (current slider value)
+  - displayValue: Formatted display of current value
+  - minValue/maxValue: Range bounds for display
+  
+  Event Handlers:
+  - onchange: handleRangeChange - Updates OmniScript data model
+  - oninput: handleRangeInput - Real-time value display update
+-->
+<template>
+  <div class="ontario-form-group">
+    <!-- Label -->
+    <label class="ontario-label" for={inputId}>
+      {mergedLabel}
+      <span lwc:if={_propSetMap.required} class="ontario-label__flag"
+        >(required)</span
+      >
+      <span lwc:if={_propSetMap.optional} class="ontario-label__flag"
+        >(optional)</span
+      >
+    </label>
+
+    <!-- Hint text -->
+    <p lwc:if={mergedHelpText} class="ontario-hint" id="hint-{inputId}">
+      {mergedHelpText}
+    </p>
+
+    <!-- Error message -->
+    <div
+      lwc:if={sfGpsDsIsError}
+      class="ontario-error-messaging"
+      id="error-{inputId}"
+      role="alert"
+    >
+      <span class="ontario-error-messaging__icon">
+        <svg class="ontario-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
+          />
+        </svg>
+      </span>
+      <span class="ontario-error-messaging__content"
+        >{sfGpsDsErrorMessage}</span
+      >
+    </div>
+
+    <!-- Range slider container -->
+    <div class="ontario-range-container">
+      <!-- Min value label -->
+      <span class="ontario-range__min-label" aria-hidden="true"
+        >{minValue}</span
+      >
+
+      <!-- Range input -->
+      <!-- WCAG: aria-valuenow/min/max for screen readers, aria-required for required fields -->
+      <input
+        type="range"
+        id={inputId}
+        class="ontario-range"
+        name={_name}
+        value={displayValue}
+        min={minValue}
+        max={maxValue}
+        step={stepValue}
+        disabled={_propSetMap.disabled}
+        aria-required={_propSetMap.required}
+        aria-describedby={computedAriaDescribedBy}
+        aria-valuenow={displayValue}
+        aria-valuemin={minValue}
+        aria-valuemax={maxValue}
+        aria-valuetext={computedAriaValueText}
+        data-omni-input
+        onchange={handleRangeChange}
+        oninput={handleRangeInput}
+      />
+
+      <!-- Max value label -->
+      <span class="ontario-range__max-label" aria-hidden="true"
+        >{maxValue}</span
+      >
+    </div>
+
+    <!-- Current value display -->
+    <div class="ontario-range__value-display" aria-live="polite">
+      <span class="ontario-range__current-value"
+        >Current value: <strong>{displayValue}</strong></span
+      >
+    </div>
+  </div>
+</template>

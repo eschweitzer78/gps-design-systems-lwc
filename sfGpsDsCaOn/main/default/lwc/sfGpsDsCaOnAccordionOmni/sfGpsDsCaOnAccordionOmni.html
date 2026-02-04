@@ -1,0 +1,123 @@
+<template>
+  <div class={computedContainerClassName}>
+    <!-- Single Accordion Mode (when title is provided without items) -->
+    <template lwc:if={hasSingleItem}>
+      <div class={computedSingleClassName}>
+        <h3 class={computedSingleHeadingClassName}>
+          <button
+            class="ontario-accordion__button"
+            id={singleButtonId}
+            aria-expanded={computedAriaExpanded}
+            aria-controls={singleContentId}
+            data-toggle="ontario-collapse"
+            onclick={handleSingleToggle}
+          >
+            <span class="ontario-accordion__button-icon--close">
+              <svg
+                class="ontario-icon"
+                aria-hidden="true"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+              </svg>
+            </span>
+            <span class="ontario-accordion__button-icon--open">
+              <svg
+                class="ontario-icon"
+                aria-hidden="true"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+              </svg>
+            </span>
+            <span class="ontario-accordion__button-text">{title}</span>
+          </button>
+        </h3>
+        <section
+          id={singleContentId}
+          class={computedSingleContentClassName}
+          aria-labelledby={singleButtonId}
+          aria-hidden={computedAriaHidden}
+          data-toggle="ontario-expander-content"
+        >
+          <slot></slot>
+        </section>
+      </div>
+    </template>
+
+    <!-- Multiple Accordion Items Mode (when itemsJson is provided) -->
+    <template lwc:if={hasItems}>
+      <!-- Expand/Collapse All Controls -->
+      <div class="ontario-accordion__controls">
+        <button
+          lwc:if={showExpandAll}
+          class="ontario-accordion__button--expand-all"
+          onclick={handleExpandAll}
+        >
+          <span class="ontario-accordion--expand-open-all">+ Expand all</span>
+        </button>
+        <button
+          lwc:if={showCollapseAll}
+          class="ontario-accordion__button--expand-all"
+          onclick={handleCollapseAll}
+        >
+          <span class="ontario-accordion--expand-close-all"
+            >- Collapse all</span
+          >
+        </button>
+      </div>
+
+      <!-- Accordion Items -->
+      <template for:each={decoratedItems} for:item="item">
+        <div key={item._id} class={item.computedClassName}>
+          <h3 class={item.computedHeadingClassName}>
+            <button
+              class="ontario-accordion__button"
+              id={item._buttonId}
+              aria-expanded={item.computedAriaExpanded}
+              aria-controls={item._contentId}
+              data-toggle="ontario-collapse"
+              data-index={item._index}
+              onclick={handleItemToggle}
+            >
+              <span class="ontario-accordion__button-icon--close">
+                <svg
+                  class="ontario-icon"
+                  aria-hidden="true"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+                </svg>
+              </span>
+              <span class="ontario-accordion__button-icon--open">
+                <svg
+                  class="ontario-icon"
+                  aria-hidden="true"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z" />
+                </svg>
+              </span>
+              <span class="ontario-accordion__button-text">{item.title}</span>
+            </button>
+          </h3>
+          <section
+            id={item._contentId}
+            class={item.computedContentClassName}
+            aria-labelledby={item._buttonId}
+            aria-hidden={item.computedAriaHidden}
+            data-toggle="ontario-expander-content"
+          >
+            <lightning-formatted-rich-text
+              value={item.content}
+            ></lightning-formatted-rich-text>
+          </section>
+        </div>
+      </template>
+    </template>
+  </div>
+</template>
