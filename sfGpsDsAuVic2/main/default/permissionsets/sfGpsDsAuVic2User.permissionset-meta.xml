@@ -45,5 +45,5 @@
     <enabled>true</enabled>
   </classAccesses>
   <hasActivationRequired>false</hasActivationRequired>
-    <label>sfGpsDsAuVic2 User</label>
+  <label>sfGpsDsAuVic2 User</label>
 </PermissionSet>
