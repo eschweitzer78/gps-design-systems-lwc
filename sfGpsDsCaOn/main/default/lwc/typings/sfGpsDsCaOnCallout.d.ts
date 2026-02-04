@@ -12,7 +12,7 @@ declare module "c/sfGpsDsCaOnCallout" {
     "lime" | 
     "teal" | 
     "sky" | 
-    "purple" ;
+    "purple";
 
   export type HeadingLevel = 
     "h2" | 
