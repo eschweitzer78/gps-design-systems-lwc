@@ -5,16 +5,17 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { api } from "lwc";
-import SfGpsDsLwc from "c/sfGpsDsLwc";
-const HEADINGLEVEL_VALUES = ["h2", "h3", "h4"];
+import SfGpsDsElement from "c/sfGpsDsElement";
+const HEADINGLEVEL_VALUES = ["h2", "h3", "h4", "h5", "h6"];
 const HEADINGLEVEL_DEFAULT = "h2";
+const ISEXTERNAL_DEFAULT = false;
 /**
  * Link Card component for Ontario Design System.
  * Based on official Ontario DS Basic Card (accent header / light variant).
  * Displays a card with grey header background, heading, and description.
  * @see https://designsystem.ontario.ca/components/detail/cards.html
  */
-export default class SfGpsDsCaOnLinkCard extends SfGpsDsLwc {
+export default class SfGpsDsCaOnLinkCard extends SfGpsDsElement {
   static renderMode = "light";
   // @ts-ignore
   @api
@@ -28,46 +29,49 @@ export default class SfGpsDsCaOnLinkCard extends SfGpsDsLwc {
   // @ts-ignore
   @api
   isExternal;
+  _isExternal = this.defineBooleanProperty("isExternal", {
+    defaultValue: ISEXTERNAL_DEFAULT
+  });
   // @ts-ignore
   @api
   headingLevel;
+  _headingLevel = this.defineEnumProperty("headingLevel", {
+    validValues: HEADINGLEVEL_VALUES,
+    defaultValue: HEADINGLEVEL_DEFAULT
+  });
   // @ts-ignore
   @api
   className;
   /* Computed Properties */
-  get normalizedHeadingLevel() {
-    if (this.headingLevel && HEADINGLEVEL_VALUES.includes(this.headingLevel)) {
-      return this.headingLevel;
-    }
-    return HEADINGLEVEL_DEFAULT;
-  }
   get isH2() {
-    return this.normalizedHeadingLevel === "h2";
+    return this._headingLevel.value === "h2";
   }
   get isH3() {
-    return this.normalizedHeadingLevel === "h3";
+    return this._headingLevel.value === "h3";
   }
   get isH4() {
-    return this.normalizedHeadingLevel === "h4";
+    return this._headingLevel.value === "h4";
+  }
+  get isH5() {
+    return this._headingLevel.value === "h5";
+  }
+  get isH6() {
+    return this._headingLevel.value === "h6";
   }
   get computedClassName() {
-    const classes = ["sfgpsdscaon-link-card"];
-    if (this.className) {
-      classes.push(this.className);
-    }
-    return classes.join(" ");
+    return {
+      "sfgpsdscaon-link-card": true,
+      [this.className || ""]: !!this.className
+    };
   }
   get computedUrl() {
     return this.url || "#";
   }
-  get computedIsExternal() {
-    return this.isExternal === true;
+  get computedLinkTarget() {
+    return this._isExternal.value ? "_blank" : "_self";
   }
-  get linkTarget() {
-    return this.computedIsExternal ? "_blank" : "_self";
-  }
-  get linkRel() {
-    return this.computedIsExternal ? "noopener noreferrer" : undefined;
+  get computedLinkRel() {
+    return this._isExternal.value ? "noopener noreferrer" : undefined;
   }
   /* Lifecycle */
   connectedCallback() {

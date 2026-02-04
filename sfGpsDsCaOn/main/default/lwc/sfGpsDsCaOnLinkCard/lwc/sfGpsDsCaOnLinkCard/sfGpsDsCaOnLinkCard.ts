@@ -6,12 +6,15 @@
  */
 
 import { api } from "lwc";
-import SfGpsDsLwc from "c/sfGpsDsLwc";
+import SfGpsDsElement from "c/sfGpsDsElement";
+import type { HeadingLevel } from "c/sfGpsDsCaOnLinkCard";
 
-type HeadingLevel = "h2" | "h3" | "h4";
-
-const HEADINGLEVEL_VALUES: HeadingLevel[] = ["h2", "h3", "h4"];
+const HEADINGLEVEL_VALUES: HeadingLevel[] = [
+  "h2", "h3", "h4", "h5", "h6"
+];
 const HEADINGLEVEL_DEFAULT: HeadingLevel = "h2";
+
+const ISEXTERNAL_DEFAULT = false;
 
 /**
  * Link Card component for Ontario Design System.
@@ -19,7 +22,9 @@ const HEADINGLEVEL_DEFAULT: HeadingLevel = "h2";
  * Displays a card with grey header background, heading, and description.
  * @see https://designsystem.ontario.ca/components/detail/cards.html
  */
-export default class SfGpsDsCaOnLinkCard extends SfGpsDsLwc {
+export default 
+class SfGpsDsCaOnLinkCard 
+extends SfGpsDsElement {
   static renderMode = "light";
 
   // @ts-ignore
@@ -37,10 +42,17 @@ export default class SfGpsDsCaOnLinkCard extends SfGpsDsLwc {
   // @ts-ignore
   @api
   isExternal?: boolean;
+  _isExternal = this.defineBooleanProperty("isExternal", {
+    defaultValue: ISEXTERNAL_DEFAULT
+  })
 
   // @ts-ignore
   @api
   headingLevel?: string;
+  _headingLevel = this.defineEnumProperty<HeadingLevel>("headingLevel", {
+    validValues: HEADINGLEVEL_VALUES,
+    defaultValue: HEADINGLEVEL_DEFAULT
+  });
 
   // @ts-ignore
   @api
@@ -48,50 +60,43 @@ export default class SfGpsDsCaOnLinkCard extends SfGpsDsLwc {
 
   /* Computed Properties */
 
-  get normalizedHeadingLevel(): HeadingLevel {
-    if (
-      this.headingLevel &&
-      HEADINGLEVEL_VALUES.includes(this.headingLevel as HeadingLevel)
-    ) {
-      return this.headingLevel as HeadingLevel;
+  get isH2() {
+    return this._headingLevel.value === "h2";
+  }
+
+  get isH3() {
+    return this._headingLevel.value === "h3";
+  }
+
+  get isH4() {
+    return this._headingLevel.value === "h4";
+  }
+
+  get isH5() {
+    return this._headingLevel.value === "h5";
+  }
+
+  get isH6() {
+    return this._headingLevel.value === "h6";
+  }
+
+  get computedClassName(): any {
+    return {
+      "sfgpsdscaon-link-card": true,
+      [this.className || ""]: !!this.className
     }
-    return HEADINGLEVEL_DEFAULT;
-  }
-
-  get isH2(): boolean {
-    return this.normalizedHeadingLevel === "h2";
-  }
-
-  get isH3(): boolean {
-    return this.normalizedHeadingLevel === "h3";
-  }
-
-  get isH4(): boolean {
-    return this.normalizedHeadingLevel === "h4";
-  }
-
-  get computedClassName(): string {
-    const classes = ["sfgpsdscaon-link-card"];
-    if (this.className) {
-      classes.push(this.className);
-    }
-    return classes.join(" ");
   }
 
   get computedUrl(): string {
     return this.url || "#";
   }
 
-  get computedIsExternal(): boolean {
-    return this.isExternal === true;
+  get computedLinkTarget(): string {
+    return this._isExternal.value ? "_blank" : "_self";
   }
 
-  get linkTarget(): string {
-    return this.computedIsExternal ? "_blank" : "_self";
-  }
-
-  get linkRel(): string | undefined {
-    return this.computedIsExternal ? "noopener noreferrer" : undefined;
+  get computedLinkRel(): string | undefined {
+    return this._isExternal.value ? "noopener noreferrer" : undefined;
   }
 
   /* Lifecycle */
