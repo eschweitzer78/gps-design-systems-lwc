@@ -1,6 +1,8 @@
+import "./sfGpsDsCaOnAccordionGroupLwr";
 import "./sfGpsDsCaOnAside";
 import "./sfGpsDsCaOnAsideComm";
 import "./sfGpsDsCaOnBadgeComm";
+import "./sfGpsDsCaOnButtonComm";
 import "./sfGpsDsCaOnCallout";
 import "./sfGpsDsCaOnCalloutComm";
 import "./sfGpsDsCaOnCard";
@@ -8,3 +10,5 @@ import "./sfGpsDsCaOnCardCollectionLwr";
 import "./sfGpsDsCaOnCardComm";
 import "./sfGpsDsCaOnCriticalAlertComm";
 import "./sfGpsDsCaOnPageAlertComm";
+import "./sfGpsDsCaOnLinkCard";
+import "./sfGpsDsCaOnLinkCardComm";
