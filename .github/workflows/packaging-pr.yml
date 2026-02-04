@@ -94,7 +94,7 @@ jobs:
       # Create package version and extract its id
       - name: "Create package version sfGpsDs"
         id: createPackageVersion-sfGpsDs
-        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           json=$(sf package version create --path=sfGpsDs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
@@ -122,7 +122,7 @@ jobs:
 
       - name: "Create package version sfGpsDsAuNsw"
         id: createPackageVersion-sfGpsDsAuNsw
-        if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           npm run aunsw-copy
@@ -151,7 +151,7 @@ jobs:
 
       - name: "Create package version sfGpsDsAuNswS"
         id: createPackageVersion-sfGpsDsAuNswS
-        if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNswS == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           npm run aunsws-copy
@@ -180,7 +180,7 @@ jobs:
 
       - name: "Create package version sfGpsDsAuQld"
         id: createPackageVersion-sfGpsDsAuQld
-        if: ${{ github.event.client_payload.sfGpsDsAuQld == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           npm run auqld-copy
@@ -209,7 +209,7 @@ jobs:
 
       - name: "Create package version sfGpsDsAuVic2"
         id: createPackageVersion-sfGpsDsAuVic2
-        if: ${{ github.event.client_payload.sfGpsDsAuVic2 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           npm run auvic2-copy
@@ -238,7 +238,7 @@ jobs:
 
       - name: "Create package version sfGpsDsFrGov"
         id: createPackageVersion-sfGpsDsFrGov
-        if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsFrGov == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           npm run frgov-copy
@@ -267,7 +267,7 @@ jobs:
 
       - name: "Create package version sfGpsDsUkGov"
         id: createPackageVersion-sfGpsDsUkGov
-        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsUkGov == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           npm run ukgov-copy
@@ -296,7 +296,7 @@ jobs:
 
       - name: "Create package version sfGpsDsCaOn"
         id: createPackageVersion-sfGpsDsCaOn
-        if: ${{ github.event.client_payload.sfGpsDsCaOn == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsCaOn == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           npm run caon-copy
@@ -345,56 +345,56 @@ jobs:
 
       # Install new sfGpsDs package in scratch org
       - name: "Install new sfGpsDs package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuNsw package in scratch org
       - name: "Install new sfGpsDsAuNsw package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuNsw == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuNswS package in scratch org
       - name: "Install new sfGpsDsAuNswS package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuNswS == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNswS == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuQld package in scratch org
       - name: "Install new sfGpsDsAuQld package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuQld == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsAuVic2 package in scratch org
       - name: "Install new sfGpsDsAuVic2 package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsAuVic2 == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsFrGov package in scratch org
       - name: "Install new sfGpsDsFrGov package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsFrGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsFrGov == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsUkGov package in scratch org
       - name: "Install new sfGpsDsUkGov package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsUkGov == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsUkGov == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Install new sfGpsDsCaOn package in scratch org
       - name: "Install new sfGpsDsCaOn package version in scratch org"
-        if: ${{ github.event.client_payload.sfGpsDsCaOn == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        if: ${{ github.event.client_payload.changes.sfGpsDsCaOn == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
