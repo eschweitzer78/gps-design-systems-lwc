@@ -1,0 +1,44 @@
+<template>
+  <slot>
+    <div
+      class="nds-omniscript_stepform nds-size_1-of-1 nds-small-size_1-of-1 nds-medium-size_8-of-12 nds-large-size_6-of-12 nds-align_absolute-center nds-grid nds-m-top_x-large nds-m-bottom_x-large"
+    >
+      <div class="nds-size_1-of-1">
+        <div class="nds-progress">
+          <ol
+            class="nds-progress__list"
+            aria-label={_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
+          >
+            <template for:each={stepDef} for:item="step" for:index="index">
+              <li key={step.name}>
+                <c-sf-gps-ds-osrt-omniscript-step-chart-items
+                  json-def={step}
+                  theme={_theme}
+                  json-data={jsonDef.response}
+                  current-index={currentIndex}
+                  current-step-index={index}
+                  script-header-def={scriptHeaderDef}
+                >
+                </c-sf-gps-ds-osrt-omniscript-step-chart-items>
+              </li>
+            </template>
+          </ol>
+          <div
+            class="nds-progress-bar nds-progress-bar_x-small"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow={stepProgressValue}
+            aria-label={_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
+            role="progressbar"
+          >
+            <span class="nds-progress-bar__value" style={progressBarStyle}>
+              <span class="nds-assistive-text"
+                >Progress: {stepProgressValue}%</span
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </slot>
+</template>

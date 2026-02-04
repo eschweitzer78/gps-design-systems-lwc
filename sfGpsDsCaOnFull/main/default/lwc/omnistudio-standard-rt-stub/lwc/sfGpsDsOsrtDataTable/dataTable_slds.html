@@ -1,0 +1,693 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-osrt-layout
+    extraclass="slds-gutters"
+    data-loading-table={updatingTable}
+  >
+    <template if:true={issearchavailable}>
+      <c-sf-gps-ds-osrt-layout-item class="slds-m-bottom_medium">
+        <c-sf-gps-ds-osrt-input
+          placeholder={translatedLabels.cmpSearch}
+          type="text"
+          onkeyup={searchKeyChangeHandler}
+          class="slds-search-input"
+          value={searchInput}
+          theme={theme}
+          icon-name-left="utility:search"
+          size="xx-small"
+        ></c-sf-gps-ds-osrt-input>
+      </c-sf-gps-ds-osrt-layout-item>
+    </template>
+
+    <c-sf-gps-ds-osrt-layout-item size="1" if:true={_userSelectableColumn}>
+      <c-sf-gps-ds-osrt-menu
+        theme={theme}
+        icon-url={iconUrl}
+        position="right"
+        icon-name="utility:down"
+        checked="multiple"
+        class="slds-float_right"
+      >
+        <template for:each={selectableObj} for:item="col">
+          <c-sf-gps-ds-osrt-menu-item
+            key={col.id}
+            theme={theme}
+            record={col}
+            icon-url={iconUrl}
+            checked={col.checked}
+            name={col.menuItemName}
+            onupdate={handleSelectableCol}
+          >
+          </c-sf-gps-ds-osrt-menu-item>
+        </template>
+      </c-sf-gps-ds-osrt-menu>
+    </c-sf-gps-ds-osrt-layout-item>
+  </c-sf-gps-ds-osrt-layout>
+  <div class="slds-is-relative slds-scrollable_x" aria-live="polite">
+    <div if:false={isLoaded}>
+      <c-sf-gps-ds-osrt-spinner
+        variant="brand"
+        size="medium"
+        alternative-text={translatedLabels.cmpLoading}
+      ></c-sf-gps-ds-osrt-spinner>
+    </div>
+
+    <div
+      role="grid"
+      class={tableClass}
+      style="border-collapse: collapse; width: 100%"
+      aria-label={tablename}
+      aria-live="polite"
+    >
+      <div
+        role="rowgroup"
+        if:false={hideTableHeader}
+        class="slds-data-table-head"
+      >
+        <div role="row" class="slds-line-height_reset slds-data-table-row">
+          <div
+            role="columnheader"
+            if:true={showFirstColumn}
+            class="slds-data-table-head-cell slds-icon-width"
+          >
+            <div
+              if:true={_userSelectableRow}
+              class="slds-float_right slds-p-right_x-small"
+            >
+              <label
+                class="slds-checkbox"
+                title={translatedLabels.selectAllAriaLabel}
+                aria-label={translatedLabels.selectAllAriaLabel}
+              >
+                <input
+                  type="checkbox"
+                  onchange={handleSelectAllRow}
+                  checked={selectAllRow}
+                />
+                <span class="slds-checkbox--faux"></span>
+              </label>
+            </div>
+          </div>
+          <template if:false={isGrouped}>
+            <div
+              role="columnheader"
+              if:true={draggable}
+              class="slds-data-table-head-cell slds-icon-width"
+            ></div>
+            <div
+              role="columnheader"
+              if:true={_userSelectableRow}
+              class="slds-data-table-head-cell"
+            >
+              <label
+                class="slds-checkbox slds-p-left_x-small"
+                title={translatedLabels.selectAllAriaLabel}
+                aria-label={translatedLabels.selectAllAriaLabel}
+              >
+                <input
+                  type="checkbox"
+                  onchange={handleSelectAllRow}
+                  checked={selectAllRow}
+                />
+                <span class="slds-checkbox--faux"></span>
+              </label>
+            </div>
+          </template>
+          <template for:each={dataColumns} for:item="item" for:index="index">
+            <div
+              role="columnheader"
+              if:true={item.visible}
+              data-label={item.label}
+              key={item.id}
+              class={tableHeaderClass}
+              aria-sort={item.ariaSort}
+              onfocusin={handleTableHeaderFocusIn}
+              onfocusout={handleTableHeaderFocusOut}
+            >
+              <span
+                if:true={item.showUserSelectableColumn}
+                style="float: left; padding: 0.25rem 0.7rem"
+              >
+                <label
+                  class="slds-checkbox"
+                  title={translatedLabels.selectAllAriaLabel}
+                  aria-label={translatedLabels.selectAllAriaLabel}
+                >
+                  <input
+                    type="checkbox"
+                    onchange={handleSelectAllRow}
+                    checked={selectAllRow}
+                  />
+                  <span class="slds-checkbox--faux"></span>
+                </label>
+              </span>
+              <template if:true={issortavailable}>
+                <a
+                  onmouseenter={mouseoverHead}
+                  onmouseleave={mouseoutHead}
+                  if:true={item.sortable}
+                  class="slds-th__action slds-text-link_reset"
+                  data-reverse="false"
+                  data-field={item.fieldName}
+                  onclick={sortByField}
+                  onkeypress={handleEnterPress}
+                  data-sortable={item.sortable}
+                  role="button"
+                  tabindex="0"
+                >
+                  <span
+                    if:false={item.sortingEnabled}
+                    class="slds-assistive-text"
+                    >{translatedLabels.cmpSortBy}:
+                  </span>
+                  <span
+                    if:true={item.sortingEnabled}
+                    class="slds-assistive-text"
+                    >{translatedLabels.cmpSorted}: {sortingObj.order}
+                  </span>
+                  <span class={columnHeaderClass} title={item.label}
+                    >{item.label}</span
+                  >
+                  <div class="slds-icon_container">
+                    <span class="" data-field="sorticon" aria-hidden="true">
+                      <c-sf-gps-ds-osrt-icon
+                        class="sorted-icon sort-direction"
+                        if:true={item.sortingEnabled}
+                        icon-name={sortingIcon}
+                        baseurl={iconUrl}
+                        size="x-small"
+                        theme={theme}
+                      >
+                      </c-sf-gps-ds-osrt-icon>
+                      <c-sf-gps-ds-osrt-icon
+                        class="hover-icon slds-transition-hide"
+                        icon-name="utility:arrowdown"
+                        baseurl={iconUrl}
+                        size="x-small"
+                        theme={theme}
+                      ></c-sf-gps-ds-osrt-icon>
+                    </span>
+                  </div>
+                </a>
+                <div if:false={item.sortable} class="slds-th__action">
+                  <span class={columnHeaderClass} title={item.label}
+                    >{item.label}</span
+                  >
+                </div>
+              </template>
+              <div if:false={issortavailable} class="slds-th__action">
+                <span class={columnHeaderClass} title={item.label}
+                  >{item.label}</span
+                >
+              </div>
+            </div>
+          </template>
+          <div
+            role="columnheader"
+            if:true={showRowLevelEdit}
+            class="slds-data-table-head-cell slds-icon-width"
+          ></div>
+          <div
+            role="columnheader"
+            if:true={rowDelete}
+            class="slds-data-table-head-cell slds-icon-width"
+          ></div>
+        </div>
+      </div>
+      <div role="rowgroup" ondrop={onDrop} class="slds-data-table-body">
+        <!-- Ungrouped Table -->
+        <template
+          if:true={tablePageData.length}
+          for:each={tablePageData}
+          for:item="row"
+          for:index="rowIndex"
+          if:false={isGrouped}
+        >
+          <div
+            role="row"
+            style={row.hide}
+            onmouseenter={mouseoverField}
+            onmouseleave={mouseoutField}
+            key={row.id}
+            data-index={row.originalItemIndex}
+            data-rowindex={rowIndex}
+            onclick={saveDataRow}
+            draggable={draggable}
+            ondragstart={onDragStart}
+            ondragenter={onDragEnter}
+            ondragleave={onDragLeave}
+            ondragover={onDragOver}
+            data-type="row"
+            class={row.displayClass}
+          >
+            <div
+              role="gridcell"
+              if:true={draggable}
+              class="slds-data-table-row-cell slds-icon-width"
+            >
+              <c-sf-gps-ds-osrt-icon
+                class="slds-draggable-icon"
+                icon-name="utility:drag_and_drop"
+                baseurl={iconUrl}
+                size="x-small"
+                data-index={row.originalItemIndex}
+                theme={theme}
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </div>
+            <div
+              role="gridcell"
+              if:true={_userSelectableRow}
+              class="slds-data-table-row-cell slds-icon-width"
+            >
+              <label
+                class="slds-checkbox"
+                title={row.ariaLabel}
+                aria-label={row.ariaLabel}
+              >
+                <input
+                  type="checkbox"
+                  data-index={row.originalItemIndex}
+                  onchange={handleSelectRow}
+                  checked={row.selectRow}
+                  class="selectableRow"
+                  aria-label={row.ariaLabel}
+                />
+                <span class="slds-checkbox--faux"></span>
+              </label>
+            </div>
+            <template if:false={baseVersion}>
+              <slot></slot>
+            </template>
+            <template
+              for:each={row.columns}
+              for:item="cell"
+              for:index="colIndex"
+              if:true={baseVersion}
+            >
+              <div
+                role="gridcell"
+                key={cell.id}
+                class="slds-data-table-row-cell flex-datatable-cell"
+                data-label={cell.fieldName}
+              >
+                <c-sf-gps-ds-osrt-data-table-cell
+                  data-field-name={cell.fieldName}
+                  data-index={row.originalItemIndex}
+                  column-data={cell}
+                  cell-data={cell.data}
+                  icon-url={iconUrl}
+                  onedit={handleFieldEdit}
+                  onclick={handleFieldClick}
+                  theme={theme}
+                  class="dataTableCell"
+                  is-custom-ui=""
+                  date-format={cell.dateFormat}
+                >
+                </c-sf-gps-ds-osrt-data-table-cell>
+              </div>
+            </template>
+            <div
+              role="gridcell"
+              if:true={showEditIcon}
+              class="slds-data-table-row-cell slds-icon-width"
+            >
+              <c-sf-gps-ds-osrt-icon
+                if:true={showRowLevelEdit}
+                class="hover-icon rowLevelEdit slds-transition-hide"
+                icon-name="utility:edit"
+                baseurl={iconUrl}
+                size="x-small"
+                data-index={row.originalItemIndex}
+                theme={theme}
+                onclick={editDataRow}
+              >
+              </c-sf-gps-ds-osrt-icon>
+              <c-sf-gps-ds-osrt-button
+                if:true={showRowLevelEdit}
+                class="slds-button slds-hide rowLevelCheck"
+                icon-name="utility:check"
+                icon-url={iconUrl}
+                data-index={row.originalItemIndex}
+                icon-size="x-small"
+                theme={theme}
+              ></c-sf-gps-ds-osrt-button>
+              <c-sf-gps-ds-osrt-button
+                if:true={rowDelete}
+                icon-name="utility:delete"
+                aria-label={translatedLabels.cmpDelete}
+                title={translatedLabels.cmpDelete}
+                extraclass="slds-line-height--reset"
+                icon-variant="default"
+                size="none"
+                icon-url={iconUrl}
+                icon-size="x-small"
+                data-index={row.originalItemIndex}
+                theme={theme}
+                onclick={openDeleteConfirm}
+                data-disable={row.isDeleteActive}
+                disabled={row.isDeleteActive}
+              >
+              </c-sf-gps-ds-osrt-button>
+            </div>
+          </div>
+        </template>
+
+        <!-- Grouped Table -->
+        <template
+          for:each={tablePageGroupData}
+          for:item="group"
+          for:index="groupIndex"
+          if:true={isGrouped}
+        >
+          <div
+            role="row"
+            key={group.id}
+            id={group.id}
+            class={group.displayClass}
+            data-group="header"
+          >
+            <div role="gridcell" class="slds-data-table-row-cell">
+              <button
+                data-index={groupIndex}
+                onclick={toggleGroupedRow}
+                class="slds-data-table-group-button"
+                aria-expanded={group.isOpen}
+                aria-controls={group.groupAriaControls}
+              >
+                <c-sf-gps-ds-osrt-icon
+                  class="slds-m-right_xx-small"
+                  theme={theme}
+                  data-index={groupIndex}
+                  baseurl={iconUrl}
+                  icon-name={group.iconName}
+                  size="xx-small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+                <span class={getGroupedHeaderClass}>{group.groupName}</span>
+              </button>
+            </div>
+            <template
+              for:each={group.columns}
+              for:item="cell"
+              for:index="colIndex"
+            >
+              <div
+                role="gridcell"
+                key={cell.id}
+                class="slds-data-table-row-cell"
+                if:false={cell.showUserSelectableColumn}
+                data-label={cell.fieldName}
+              >
+                <c-sf-gps-ds-osrt-data-table-cell
+                  data-field-name={cell.fieldName}
+                  column-data={cell}
+                  cell-data={cell.data}
+                  icon-url={iconUrl}
+                  theme={theme}
+                  date-format={cell.dateFormat}
+                >
+                </c-sf-gps-ds-osrt-data-table-cell>
+              </div>
+            </template>
+            <div
+              role="gridcell"
+              if:true={rowDelete}
+              title={translatedLabels.cmpDelete}
+              class="slds-data-table-row-cell slds-icon-width"
+            ></div>
+          </div>
+          <template
+            for:each={group.groupItems}
+            for:item="row"
+            for:index="rowIndex"
+          >
+            <div
+              role="row"
+              onmouseenter={mouseoverField}
+              onmouseleave={mouseoutField}
+              key={row.id}
+              id={row.id}
+              class={group.class}
+              onclick={saveDataRow}
+              data-index={row.originalItemIndex}
+              data-groupindex={groupIndex}
+              data-rowindex={rowIndex}
+              draggable={draggable}
+              ondragstart={onDragStart}
+              ondragenter={onDragEnter}
+              ondragleave={onDragLeave}
+              ondragover={onDragOver}
+              data-group="row"
+            >
+              <div
+                role="gridcell"
+                if:false={_hideExtraColumn}
+                key={row.id}
+                class={row.displayClass}
+              >
+                <div if:true={draggable} class="slds-show_inline-block">
+                  <c-sf-gps-ds-osrt-icon
+                    class="slds-draggable-icon"
+                    icon-name="utility:drag_and_drop"
+                    baseurl={iconUrl}
+                    size="x-small"
+                    data-index={row.originalItemIndex}
+                    theme={theme}
+                  >
+                  </c-sf-gps-ds-osrt-icon>
+                </div>
+                <span
+                  if:false={showRowLevelEdit}
+                  data-row-position={row.position}
+                ></span>
+                <div if:true={_userSelectableRow} class="slds-float_right">
+                  <label
+                    class="slds-checkbox"
+                    title={row.ariaLabel}
+                    aria-label={row.ariaLabel}
+                  >
+                    <input
+                      type="checkbox"
+                      data-index={row.originalItemIndex}
+                      data-groupindex={groupIndex}
+                      onchange={handleSelectRow}
+                      checked={row.selectRow}
+                      class="selectableRow"
+                    />
+                    <span class="slds-checkbox--faux"></span>
+                  </label>
+                </div>
+              </div>
+              <template
+                for:each={row.columns}
+                for:item="cell"
+                for:index="colIndex"
+              >
+                <div
+                  role="gridcell"
+                  if:false={cell.showUserSelectableColumn}
+                  key={cell.id}
+                  class={row.displayClass}
+                  data-label={cell.fieldName}
+                >
+                  <c-sf-gps-ds-osrt-data-table-cell
+                    data-field-name={cell.fieldName}
+                    column-data={cell}
+                    cell-data={cell.data}
+                    icon-url={iconUrl}
+                    onedit={handleFieldEdit}
+                    theme={theme}
+                    class="dataTableCell"
+                    date-format={cell.dateFormat}
+                  >
+                  </c-sf-gps-ds-osrt-data-table-cell>
+                </div>
+                <div
+                  role="gridcell"
+                  if:true={cell.showUserSelectableColumn}
+                  key={cell.id}
+                  class={row.displayClass}
+                  data-label={cell.fieldName}
+                >
+                  <span
+                    class="slds-p-left_medium slds-p-right_medium"
+                    style="float: left"
+                  >
+                    <label
+                      class="slds-checkbox"
+                      title={row.ariaLabel}
+                      aria-label={row.ariaLabel}
+                    >
+                      <input
+                        type="checkbox"
+                        data-index={row.originalItemIndex}
+                        onchange={handleSelectRow}
+                        checked={row.selectRow}
+                        class="selectableRow"
+                      />
+                      <span class="slds-checkbox--faux"></span>
+                    </label>
+                  </span>
+                  <c-sf-gps-ds-osrt-data-table-cell
+                    data-field-name={cell.fieldName}
+                    column-data={cell}
+                    cell-data={cell.data}
+                    icon-url={iconUrl}
+                    onedit={handleFieldEdit}
+                    class="dataTableCell"
+                    theme={theme}
+                    date-format={cell.dateFormat}
+                  >
+                  </c-sf-gps-ds-osrt-data-table-cell>
+                </div>
+              </template>
+              <div
+                role="gridcell"
+                if:true={rowDelete}
+                title={translatedLabels.cmpDelete}
+                class={row.displayClass}
+              >
+                <span class="slds-icon-width">
+                  <c-sf-gps-ds-osrt-icon
+                    class="hover-icon rowLevelEdit slds-transition-hide"
+                    icon-name="utility:edit"
+                    baseurl={iconUrl}
+                    size="x-small"
+                    data-row-position={row.position}
+                    data-index={row.originalItemIndex}
+                    if:true={showRowLevelEdit}
+                    theme={theme}
+                    onclick={editGroupDataRow}
+                  >
+                  </c-sf-gps-ds-osrt-icon>
+                  <c-sf-gps-ds-osrt-button
+                    class="slds-button slds-hide rowLevelCheck"
+                    icon-name="utility:check"
+                    icon-url={iconUrl}
+                    icon-size="x-small"
+                    theme={theme}
+                    data-index={row.originalItemIndex}
+                    if:true={showRowLevelEdit}
+                  >
+                  </c-sf-gps-ds-osrt-button>
+                  <c-sf-gps-ds-osrt-button
+                    if:true={rowDelete}
+                    extraclass="slds-line-height--reset"
+                    size="none"
+                    icon-name="utility:delete"
+                    aria-label={translatedLabels.cmpDelete}
+                    title={translatedLabels.cmpDelete}
+                    icon-variant="default"
+                    icon-url={iconUrl}
+                    icon-size="x-small"
+                    data-index={row.originalItemIndex}
+                    theme={theme}
+                    onclick={openDeleteConfirm}
+                    data-disable={row.isDeleteActive}
+                    disabled={row.isDeleteActive}
+                  >
+                  </c-sf-gps-ds-osrt-button>
+                </span>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
+    </div>
+    <div
+      class="slds-text-align_center slds-m-top_medium slds-text-title--caps"
+      if:false={rowsAvailable}
+    >
+      <b>{translatedLabels.cmpNoRecordsToDisplay}</b>
+    </div>
+  </div>
+  <div
+    if:true={isValidPagesize}
+    class="slds-grid slds-m-around_x-small slds-grid_align-end"
+  >
+    <div class="slds-col">
+      <div
+        class="slds-form-element slds-button-group pull-right"
+        role="navigation"
+        aria-label={tablename}
+      >
+        <c-sf-gps-ds-osrt-button
+          if:true={range.length}
+          class="slds-button"
+          data-index="prev"
+          title={translatedLabels.cmpPrevious}
+          aria-label={translatedLabels.cmpPrevious}
+          onclick={goToPage}
+          disabled={prevDisabled}
+          icon-name="utility:chevronleft"
+          icon-url={iconUrl}
+          icon-size="small"
+          theme={theme}
+        ></c-sf-gps-ds-osrt-button>
+        <template for:each={range} for:item="item" for:index="index">
+          <button
+            key={item}
+            class={pageButtonClass}
+            data-index={item}
+            onclick={goToPage}
+            aria-current={ariaCurrentValue}
+            aria-label={ariaLabelValue}
+          >
+            {pageIndex}{item}
+          </button>
+        </template>
+        <c-sf-gps-ds-osrt-button
+          if:true={range.length}
+          class="slds-button"
+          data-index="next"
+          title={translatedLabels.cmpNext}
+          aria-label={translatedLabels.cmpNext}
+          onclick={goToPage}
+          disabled={nextDisabled}
+          icon-name="utility:chevronright"
+          icon-url={iconUrl}
+          icon-size="small"
+          theme={theme}
+        >
+        </c-sf-gps-ds-osrt-button>
+      </div>
+    </div>
+  </div>
+  <div if:true={showDeleteConfirmation}>
+    <section
+      role="alertdialog"
+      tabindex="0"
+      class="slds-modal slds-fade-in-open slds-modal_prompt"
+      aria-modal="true"
+    >
+      <div class="slds-modal__container">
+        <header
+          class="slds-modal__header slds-theme_error slds-theme_alert-texture"
+        >
+          <h2 class="slds-text-heading_medium">{translatedLabels.cmpDelete}</h2>
+        </header>
+        <div
+          class="slds-modal__content slds-text-align_center slds-text-heading_small slds-p-around_medium"
+        >
+          <p>{translatedLabels.cmpDeleteConfirmationPrompt}</p>
+        </div>
+        <footer class="slds-modal__footer slds-theme_default">
+          <button
+            class="slds-button slds-button_neutral"
+            onclick={deleteRowConfirm}
+          >
+            {translatedLabels.cmpDelete}
+          </button>
+          <button
+            class="slds-button slds-button_neutral"
+            onclick={deleteRowCancel}
+          >
+            {translatedLabels.cmpCancel}
+          </button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </div>
+</template>

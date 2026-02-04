@@ -1,0 +1,30 @@
+/* Ontario Design System Back Button Styles */
+/* Using CSS Custom Properties with fallbacks for theming */
+
+@forward "@ongov/ontario-design-system-global-styles/dist/styles/scss/1-variables/colours.variables";
+@import "@ongov/ontario-design-system-component-library/dist/collection/components/ontario-button/ontario-button";
+
+$ontario-icon-size: 24px;
+
+.ontario-back-button {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.75rem 0 1rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  min-width: 2rem;
+  text-decoration: none;
+  cursor: pointer;
+
+  @media screen and (max-width: 40em) {
+    width: unset;
+  }
+
+  .ontario-icon {
+    margin: 0 0.375rem 0 0;
+    padding: 0;
+    min-width: $ontario-icon-size;
+    min-height: $ontario-icon-size;
+    fill: currentColor;
+  }
+}

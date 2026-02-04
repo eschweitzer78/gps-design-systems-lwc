@@ -1,0 +1,95 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="slds-accordion">
+    <div class="slds-accordion__list-item">
+      <section class={blockClasses}>
+        <div class="slds-accordion__summary">
+          <div
+            class="slds-accordion__summary-heading"
+            role="heading"
+            aria-level={blockHeadingLevel}
+          >
+            <template if:true={_propSetMap.repeat}>
+              <button
+                if:true={blockLabel}
+                aria-controls="content"
+                tabindex="0"
+                aria-expanded={expandContent}
+                class="slds-button slds-button_reset slds-accordion__summary-action"
+                onclick={toggleContent}
+              >
+                <c-sf-gps-ds-osrt-icon
+                  extraclass="slds-accordion__summary-action-icon slds-m-right_x-small"
+                  iconposition="left"
+                  icon-name="utility:switch"
+                  size="x-small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+                <h3 class="slds-truncate" aria-live="polite">{blockLabel}</h3>
+              </button>
+            </template>
+            <template if:false={_propSetMap.repeat}>
+              <button
+                if:true={blockLabel}
+                aria-controls="content"
+                tabindex="0"
+                aria-expanded={expandContent}
+                class="slds-button slds-button_reset slds-accordion__summary-action"
+                onclick={toggleContent}
+              >
+                <c-sf-gps-ds-osrt-icon
+                  extraclass="slds-accordion__summary-action-icon slds-m-right_x-small"
+                  iconposition="left"
+                  icon-name="utility:switch"
+                  size="x-small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+                <h3 class="slds-truncate" aria-live="polite">{blockLabel}</h3>
+              </button>
+            </template>
+          </div>
+          <template if:true={_propSetMap.repeat}>
+            <div class="slds-button-group slds-p-right_large" role="group">
+              <c-sf-gps-ds-osrt-button
+                if:true={canRepeat}
+                variant="base"
+                onclick={handleAdd}
+                label={allCustomLabelsUtil.OmniAdd}
+                aria-label={_addAriaLabel}
+              >
+              </c-sf-gps-ds-osrt-button>
+              <c-sf-gps-ds-osrt-button
+                if:true={canRemove}
+                variant="base"
+                onclick={handleRemove}
+                label={allCustomLabelsUtil.OmniDelete}
+                class="slds-m-left_x-small"
+                aria-label={_removeAriaLabel}
+              >
+              </c-sf-gps-ds-osrt-button>
+            </div>
+          </template>
+        </div>
+        <div if:true={showValidation} class="slds-has-error">
+          <div class="slds-form-element__help">
+            <span
+              class="slds-text-link_faux"
+              onclick={toggleContent}
+              role="alert"
+            >
+              {allCustomLabelsUtil.OmniBlockError}
+            </span>
+          </div>
+        </div>
+        <fieldset
+          id="content"
+          aria-hidden={ariaHiddenValue}
+          class={_blockContentContainer}
+        >
+          <legend></legend>
+          <slot></slot>
+        </fieldset>
+      </section>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,51 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="modal-container" style="display: none">
+    <section class={getModalClasses}>
+      <div
+        role="dialog"
+        tabindex="0"
+        aria-modal="true"
+        aria-label={flyoutAriaLabel}
+        class="modal-dialog slds-modal__container"
+        onkeydown={handleModalKeyDown}
+      >
+        <button
+          if:false={hideclosebutton}
+          title="Close"
+          class="modal-close-btn slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+          onkeydown={trapFocus}
+          onclick={closeModal}
+        >
+          <c-sf-gps-ds-osrt-icon
+            icon-name="utility:close"
+            baseurl={iconUrl}
+            size="small"
+            variant="inverse"
+            theme={theme}
+          ></c-sf-gps-ds-osrt-icon>
+        </button>
+        <header class={headerClasses}>
+          <template if:false={hideheader}>
+            <h2 class="slds-text-heading_medium slds-hyphenate">{title}</h2>
+            <slot name="header"></slot>
+          </template>
+        </header>
+        <div class="slds-modal__content slds-p-around_medium">
+          <slot name="content"></slot>
+        </div>
+        <template if:false={hidefooter}>
+          <footer class={footerClasses}>
+            <slot name="footer"></slot>
+          </footer>
+        </template>
+        <span
+          class="last-focusable-element"
+          tabindex="0"
+          onfocus={trapFocus}
+        ></span>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </div>
+</template>

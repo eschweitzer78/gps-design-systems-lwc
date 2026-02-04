@@ -1,0 +1,199 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:true={_isFirstIndex}>
+    <!-- Header/Label -->
+    <h2
+      aria-label={_propSetMap.label}
+      class="slds-form-element__label slds-m-bottom_medium slds-section-title"
+      aria-live="polite"
+    >
+      {_propSetMap.label}
+    </h2>
+
+    <!-- Global Actions -->
+    <div if:true={_propSetMap.gActions} class="slds-grid slds-wrap">
+      <template
+        for:each={_gActions}
+        for:item="gActionItem"
+        for:index="gActionIndex"
+      >
+        <template if:true={gActionItem.hasIcon}>
+          <div
+            key={gActionItem.lwcId}
+            class="slds-m-bottom_xx-small slds-m-right_xx-small"
+          >
+            <c-sf-gps-ds-osrt-icon
+              extraclass="slds-input__icon"
+              icon-name={gActionItem.icon}
+              theme="slds"
+              alternative-text={gActionItem.label}
+              size="small"
+              style="cursor: pointer"
+              tabindex="0"
+              role="button"
+              onclick={gActionItem.handleClick}
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </div>
+        </template>
+        <template if:false={gActionItem.hasIcon}>
+          <div key={gActionItem.lwcId} class={gActionItem.cls}>
+            <div class="slds-m-bottom_x-small slds-m-right_xx-small">
+              <button
+                class="slds-button slds-button_neutral slds-button_brand slds-size_1-of-1"
+                onclick={gActionItem.handleClick}
+              >
+                {gActionItem.label}
+              </button>
+            </div>
+          </div>
+        </template>
+      </template>
+    </div>
+  </template>
+
+  <div class="slds-grid slds-wrap">
+    <!-- Inline Visual -->
+    <div class={visualClass} style="cursor: pointer">
+      <div
+        class="slds-box slds-grid slds-size_1-of-1 slds-m-bottom_medium slds-is-relative"
+      >
+        <div
+          class="slds-col slds-size_11-of-12 slds-grid"
+          onclick={edit}
+          data-edit-action="default"
+          role="button"
+          tabindex="0"
+          onkeydown={handleKeyboardEdit}
+          aria-invalid={isInvalid}
+          aria-describedby="inline-text-error"
+          aria-labelledby="inline-text"
+        >
+          <span
+            if:true={isInvalid}
+            style="left: 0; top: 0"
+            class="slds-required slds-m-around_none slds-p-left_xx-small slds-is-absolute"
+          >
+            *
+          </span>
+          <span id="inline-text-error">
+            <span if:true={isInvalid} class="slds-assistive-text">
+              {allCustomLabelsUtil.OmniEditBlockError}
+            </span>
+          </span>
+          <!-- Customizable SVG Icon -->
+          <c-sf-gps-ds-osrt-icon
+            class="slds-grid slds-grid_vertical-align-center"
+            extraclass="slds-input__icon"
+            icon-name={svgMapIcon}
+            theme="slds"
+            aria-hidden="true"
+            color="#747474"
+            size="large"
+          >
+          </c-sf-gps-ds-osrt-icon>
+          <!-- Display Text -->
+          <div
+            class="slds-max-small-size_5-of-12 slds-small-size_8-of-12 slds-grid slds-grid_vertical slds-grid_align-center slds-grid_vertical-align"
+            id="inline-text"
+          >
+            <template
+              for:each={_displayValues}
+              for:item="dvItem"
+              for:index="dvIndex"
+            >
+              <div
+                key={dvItem.lwcId}
+                class="slds-size_12-of-12 slds-p-left_x-small slds-form-element__label slds-truncate"
+              >
+                {dvItem.value}
+              </div>
+            </template>
+          </div>
+        </div>
+        <div
+          class="slds-col slds-size_1-of-12 slds-grid slds-grid_align-center slds-grid_vertical-align-center slds-col_bump-left"
+        >
+          <template if:true={_allowDelete}>
+            <c-sf-gps-ds-osrt-icon
+              extraclass="slds-input__icon"
+              icon-name="utility:close"
+              theme="slds"
+              alternative-text={allCustomLabelsUtil.OmniDelete}
+              size="small"
+              onclick={remove}
+              tabindex="0"
+              role="button"
+              data-remove-button
+              onkeydown={handleKeyboardRemove}
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline Editing -->
+    <div class={editClass}>
+      <article class="slds-box slds-m-bottom_medium">
+        <fieldset>
+          <legend class="slds-m-bottom_small">{_propSetMap.label}</legend>
+          <slot class="slds-grid slds-wrap"></slot>
+          <div
+            class="slds-grid slds-wrap slds-grid_align-end slds-m-top_medium"
+          >
+            <button
+              onclick={cancel}
+              class="slds-button slds-button_neutral slds-size_2-of-12 slds-text-align_center"
+            >
+              {allCustomLabelsUtil.OmnicancelLabel}
+            </button>
+            <button
+              onclick={save}
+              disabled={isPageLoading}
+              class="slds-button slds-button_neutral slds-size_2-of-12 slds-text-align_center"
+            >
+              {allCustomLabelsUtil.OmniConfigProdModalOk}
+            </button>
+          </div>
+        </fieldset>
+      </article>
+    </div>
+
+    <!-- Inline Add Button -->
+    <div
+      if:true={showAdd}
+      class="slds-box slds-grid slds-m-bottom_medium slds-size_1-of-1"
+      onclick={handleAdd}
+      style="cursor: pointer"
+      role="button"
+      tabindex="0"
+      onkeydown={handleKeyboardAdd}
+    >
+      <c-sf-gps-ds-osrt-icon
+        extraclass="slds-input__icon"
+        icon-name="utility:add"
+        theme="slds"
+        alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextAdd}
+        size="large"
+      >
+      </c-sf-gps-ds-osrt-icon>
+      <span
+        class="slds-grid slds-grid_align-center slds-grid_vertical-align-center slds-p-left_x-small slds-form-element__label"
+      >
+        {_newLabel}
+      </span>
+    </div>
+  </div>
+
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSavingAccessibleLabel}
+      theme={_theme}
+      size="medium"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

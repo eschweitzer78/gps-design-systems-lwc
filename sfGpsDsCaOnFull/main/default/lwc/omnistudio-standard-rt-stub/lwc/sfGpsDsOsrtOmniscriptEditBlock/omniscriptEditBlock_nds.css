@@ -1,0 +1,23 @@
+.omni-editblock-table-row {
+  cursor: pointer;
+  border-top: 1px solid rgba(255, 255, 255, 0);
+  border-bottom: 1px solid rgb(255, 255, 255, 0);
+}
+
+.omni-editblock-table-row[data-is-selected="true"],
+.omni-editblock-table-row:hover {
+  background-color: #f4f6f9;
+  border-color: #dddbda;
+  border-color: #dddbda;
+}
+
+.nds-editblock_add-button {
+  box-shadow: unset;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #00396b;
+  max-width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

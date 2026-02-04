@@ -1,0 +1,28 @@
+<template>
+  <lightning-modal-body>
+    <h1 class="sfgpsds-markup-editor-title">{title}</h1>
+    <div class="sfgpsds-markup-editor-tips">{tips}</div>
+    <div class="sfgpsds-markup-editor-contents">
+      <div class="sfgpsds-markup-editor-container" lwc:ref="container">
+        <div lwc:ref="textarea" lwc:dom="manual"></div>
+      </div>
+    </div>
+  </lightning-modal-body>
+
+  <lightning-modal-footer>
+    <lightning-button
+      class="slds-button"
+      variant="neutral"
+      label="Cancel"
+      onclick={handleCancel}
+    >
+    </lightning-button>
+    <lightning-button
+      class="slds-button slds-m-left_x-small"
+      variant="brand"
+      label="Save"
+      onclick={handleSave}
+    >
+    </lightning-button>
+  </lightning-modal-footer>
+</template>

@@ -1,0 +1,45 @@
+<template>
+  <!-- Short Card Add Button-->
+  <template if:true={_allowNew}>
+    <template if:true={_isCards}>
+      <div class="nds-p-horizontal_small">
+        <div
+          class="nds-box nds-box_x-small nds-grid nds-grid_vertical nds-grid_vertical-align-center nds-edit-block_cards-add-card nds-edit-block_shortcards editblock-new"
+          onclick={handleAdd}
+          role="button"
+          tabindex="0"
+          onkeydown={handleKeyboardAdd}
+        >
+          <div class="nds-m-top_x-large nds-edit-block_shortcards-circle">
+            <!-- Add Button Icon -->
+            <span class="nds-icon_container nds-icon_container_circle">
+              <c-sf-gps-ds-osrt-icon
+                class=""
+                extraclass="nds-input__icon"
+                icon-name={_svgIcon}
+                theme="nds"
+                alternative-text={scriptHeaderDef.allCustomLabels.OmniEditBlockIconTextUser}
+                size="large"
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </span>
+          </div>
+
+          <div
+            class="nds-m-top_x-small nds-size_1-of-1 nds-text-align_center nds-edit-block_shortcards-add-icon"
+          >
+            <c-sf-gps-ds-osrt-icon
+              extraclass="nds-input__icon nds-button__icon nds-button__icon_small"
+              icon-name="utility:add"
+              theme="nds"
+              alternative-text={scriptHeaderDef.allCustomLabels.OmniEditBlockIconTextAdd}
+              size="x-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+            <span> {_newLabel} </span>
+          </div>
+        </div>
+      </div>
+    </template>
+  </template>
+</template>

@@ -1,0 +1,10 @@
+<template>
+  <template if:false={useHref}>
+    <slot onclick={navigate}></slot>
+  </template>
+  <template if:true={useHref}>
+    <a href={url} onclick={navigate}>
+      <slot></slot>
+    </a>
+  </template>
+</template>

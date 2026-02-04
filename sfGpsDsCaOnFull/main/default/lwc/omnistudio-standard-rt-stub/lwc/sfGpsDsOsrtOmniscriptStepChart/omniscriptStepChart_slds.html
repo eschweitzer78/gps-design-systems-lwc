@@ -1,0 +1,95 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <slot>
+    <div
+      if:false={isVertical}
+      class="slds-omniscript_stepform slds-size_1-of-1 slds-small-size_1-of-1 slds-large-size_8-of-12 slds-align_absolute-center slds-grid slds-m-top_xx-large slds-m-bottom_x-large"
+    >
+      <div class="slds-size_1-of-1">
+        <div class="slds-progress slds-size_1-of-1">
+          <ol
+            class="slds-progress__list"
+            aria-label={_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
+          >
+            <template for:each={stepDef} for:item="step" for:index="index">
+              <li key={step.name}>
+                <c-sf-gps-ds-osrt-omniscript-step-chart-items
+                  json-def={step}
+                  is-vertical={isVertical}
+                  json-data={jsonDef.response}
+                  current-index={currentIndex}
+                  current-step-index={index}
+                  script-header-def={scriptHeaderDef}
+                >
+                </c-sf-gps-ds-osrt-omniscript-step-chart-items>
+              </li>
+            </template>
+          </ol>
+          <div
+            class="slds-progress-bar slds-progress-bar_x-small progress-bar_color"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow={stepProgressValue}
+            aria-label={_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
+            role="progressbar"
+          >
+            <span class="slds-progress-bar__value" style={progressBarStyle}>
+              <span class="slds-assistive-text">
+                Progress: {stepProgressValue}%
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      if:true={isVertical}
+      class="slds-m-top_medium slds-p-left_large slds-progress-not-touched"
+    >
+      <c-sf-gps-ds-osrt-omniscript-formatted-rich-text
+        class="slds-text-longform slds-path__guidance-content"
+        value={stepInstruction}
+        tabindex="0"
+      >
+      </c-sf-gps-ds-osrt-omniscript-formatted-rich-text>
+      <h2 class="slds-page-header__title slds-truncate omni-stepchart-heading">
+        {_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
+      </h2>
+      <div class="slds-progress slds-progress_vertical slds-p-vertical_medium">
+        <ol
+          class="slds-progress__list"
+          aria-label={_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
+        >
+          <template for:each={stepDef} for:item="step" for:index="index">
+            <li key={step.name} class="slds-progress__item">
+              <c-sf-gps-ds-osrt-omniscript-step-chart-items
+                json-def={step}
+                is-vertical={isVertical}
+                json-data={jsonDef.response}
+                class="slds-progress__item"
+                last-step-index={lastStepIndex}
+                last-executed-step-index={_lastExecutedStepIndex}
+                first-visible-step-index={firstVisibleStepIndex}
+                current-index={currentIndex}
+                current-step-index={index}
+                script-header-def={scriptHeaderDef}
+              >
+              </c-sf-gps-ds-osrt-omniscript-step-chart-items>
+            </li>
+          </template>
+        </ol>
+        <div
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow={stepProgressValue}
+          aria-label={_scriptHeaderDef.allCustomLabels.OmniStepChartLabel}
+          role="progressbar"
+        >
+          <span class="slds-assistive-text">
+            Progress: {stepProgressValue}%
+          </span>
+        </div>
+      </div>
+    </div>
+  </slot>
+</template>

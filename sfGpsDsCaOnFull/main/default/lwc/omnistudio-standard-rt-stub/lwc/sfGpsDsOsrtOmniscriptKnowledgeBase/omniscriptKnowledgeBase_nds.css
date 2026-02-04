@@ -1,0 +1,35 @@
+.nds-col.nds-knowledge-block {
+  z-index: 1;
+}
+
+.nds-knowledge-block
+  .nds-lookup.nds-knowledge-component
+  .nds-knowledge-item
+  .nds-item
+  .nds-knowledge-list-item
+  a.nds-knowledge-item_popup
+  .vlc-slds-button_exp:hover
+  + small {
+  display: inline;
+}
+
+.nds-modal__container {
+  width: 90%;
+  max-width: none;
+  min-width: 40rem;
+  height: 100%;
+}
+
+.nds-modal__header {
+  border-bottom: 2px;
+  solid: #dddbda;
+}
+
+.nds-modal__footer {
+  border-top: 2px;
+  solid: #dddbda;
+}
+
+.nds-modal__footer div {
+  float: right;
+}

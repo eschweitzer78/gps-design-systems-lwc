@@ -1,0 +1,172 @@
+<template>
+  <div class="nds-form-element nds-form-container">
+    <div class={showProgress}>
+      <c-sf-gps-ds-osrt-progress-bar
+        if:true={remoteSource}
+        theme={theme}
+        size="xx-small"
+        data-progress-bar
+      ></c-sf-gps-ds-osrt-progress-bar>
+    </div>
+    <div class={errorClass}>
+      <div class="nds-form-element__control">
+        <div class="nds-combobox_container">
+          <div class={typeaheadFormElementClass} role="none">
+            <span
+              if:true={isLeftIcon}
+              class="nds-icon_container nds-input__icon nds-input__icon_left"
+            >
+              <slot name="iconLeft">
+                <c-sf-gps-ds-osrt-icon
+                  icon-name={iconNameLeft}
+                  size={iconSize}
+                  baseurl={iconUrl}
+                  theme={theme}
+                  alternative-text={_editLabel}
+                ></c-sf-gps-ds-osrt-icon>
+              </slot>
+            </span>
+            <input
+              id="inputId"
+              class="nds-input nds-input_mask nds-listbox__option-text_entity"
+              disabled={disabled}
+              onblur={focusChange}
+              onfocus={focusChange}
+              oninput={updateValue}
+              onkeyup={searchOptions}
+              onkeydown={handleKeydown}
+              placeholder={placeholder}
+              readonly={_readOnly}
+              aria-readonly={_readOnly}
+              required={required}
+              tabindex={tabIndex}
+              type={type}
+              value={_value}
+              maxlength={maxLength}
+              autocomplete="off"
+              aria-activedescendant={activeDescendant}
+              aria-autocomplete="list"
+              aria-describedby="errorMessageBlock"
+              role="combobox"
+              aria-controls="listboxId"
+              aria-haspopup="listbox"
+            />
+            <div
+              class="nds-form-element__label nds-align-middle nds-animated-label__ease-out"
+            >
+              <label
+                if:false={isLabelHidden}
+                if:true={label}
+                id="typeaheadLabelId"
+                for="inputId"
+              >
+                {label}
+                <abbr
+                  if:true={required}
+                  class="nds-required nds-p-left_xx-small"
+                  title={requiredLabel}
+                  >*</abbr
+                >
+              </label>
+              <c-sf-gps-ds-osrt-tooltip
+                class="nds-tooltip__container"
+                if:true={fieldLevelHelp}
+                icon-url={iconUrl}
+                content={fieldLevelHelp}
+                associated-component-label={label}
+                theme="nds"
+                arrowposition={fieldLevelHelpPosition}
+                data-field-level-help
+              ></c-sf-gps-ds-osrt-tooltip>
+            </div>
+            <span
+              if:true={isRightIcon}
+              class="nds-icon_container nds-input__icon nds-input__icon_right"
+            >
+              <slot name="iconRight">
+                <c-sf-gps-ds-osrt-icon
+                  if:false={hasSlotIconRight}
+                  icon-name={iconNameRight}
+                  size={iconSize}
+                  baseurl={iconUrl}
+                  theme={theme}
+                  alternative-text={_editLabel}
+                ></c-sf-gps-ds-osrt-icon>
+              </slot>
+            </span>
+          </div>
+        </div>
+        <div class="nds-form-element">
+          <div
+            id="listboxId"
+            aria-labelledby="typeaheadLabelId"
+            class={getDropdownClasses}
+            role="listbox"
+            if:true={isLookupVisible}
+            onmousedown={handleScrollClick}
+          >
+            <div aria-live="assertive" class="nds-assistive-text"></div>
+            <ul class="nds-listbox nds-listbox_vertical" role="presentation">
+              <template
+                for:each={internaldata}
+                for:item="item"
+                for:index="index"
+              >
+                <li
+                  key={item.itrKey}
+                  role="presentation"
+                  data-itrkey={item.itrKey}
+                  class={item.itemClass}
+                >
+                  <div
+                    class="nds-media nds-listbox__option nds-listbox__option_entity nds-listbox__option_has-meta"
+                    aria-selected={item.selected}
+                    id={item.itrKey}
+                    onclick={selectOption}
+                    role="option"
+                    data-index={index}
+                  >
+                    <span class="nds-media__body">
+                      <span
+                        class="nds-listbox__option-text nds-listbox__option-text_entity"
+                        >{item.name}</span
+                      >
+                    </span>
+                  </div>
+                </li>
+              </template>
+              <li class={lastItemClass}>
+                <div
+                  class="nds-media nds-listbox__option nds-listbox__option_entity nds-listbox__option_has-meta"
+                  onclick={selectOption}
+                  role="option"
+                  data-index="last-item"
+                >
+                  <span class="nds-media__body">
+                    <span
+                      class="nds-listbox__option-text nds-listbox__option-text_entity"
+                    >
+                      <slot
+                        name="lastItem"
+                        onslotchange={lastItemChange}
+                      ></slot>
+                    </span>
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          if:true={isError}
+          id="errorMessageBlock"
+          aria-live="assertive"
+          class="nds-form-element__help nds-form-element__help_text-transform__none"
+          role="alert"
+        >
+          {errorMessage}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

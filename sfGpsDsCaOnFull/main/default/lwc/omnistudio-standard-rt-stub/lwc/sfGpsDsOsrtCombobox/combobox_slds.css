@@ -1,0 +1,68 @@
+.slds-input {
+  cursor: pointer;
+}
+
+.slds-listbox__option-text_entity {
+  max-width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  margin-bottom: 0.125rem;
+  overflow: hidden;
+}
+
+label.slds-form-element__label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.slds-dropdown_fluid {
+  min-width: auto;
+  position: absolute;
+  z-index: 9999;
+}
+
+.slds-listbox_selection-group {
+  height: auto;
+}
+
+.dropdown-container {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.slds-listbox__flex {
+  display: flex;
+}
+
+.slds-listbox__flex .slds-listbox-item {
+  overflow: hidden;
+}
+
+.slds-listbox__flex .slds-pill__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  label.slds-form-element__label {
+    max-width: 100%;
+  }
+}
+
+input[readonly][role="combobox"],
+.slds-input[readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  background-color: #f3f3f3;
+  border-color: #939393;
+}
+
+input[readonly][role="combobox"]:focus,
+.slds-input[readonly]:focus {
+  border-color: #939393;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}

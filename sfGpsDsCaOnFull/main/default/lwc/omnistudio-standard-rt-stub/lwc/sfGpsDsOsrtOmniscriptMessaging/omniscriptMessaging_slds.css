@@ -1,0 +1,24 @@
+.slds-scoped-notification.slds-scoped-notification_form {
+  border-radius: 0.25rem;
+}
+
+.slds-scoped-notification.slds-scoped-notification_form:focus {
+  outline: none;
+  background-clip: padding-box;
+}
+
+.slds-scoped-notification.slds-scoped-notification_light.slds-scoped-notification--warning {
+  background-color: #fff5e8;
+}
+
+.slds-scoped-notification.slds-scoped-notification_light.slds-scoped-notification--success {
+  background-color: #dff1e4;
+}
+
+.slds-scoped-notification.slds-scoped-notification_light.slds-scoped-notification--error {
+  background-color: #f5e2e1;
+}
+
+.slds-scoped-notification.slds-scoped-notification_form.slds-scoped-notification--error:focus {
+  box-shadow: var(--lwc-colorBorderError) 0 0 0 2px inset;
+}

@@ -1,0 +1,32 @@
+<template>
+  <div class="slds-form-element vlc-flex vlc-disclosure">
+    <div class="slds-form-element__control">
+      <div class="slds-box vlc-slds-box__no-border">
+        <div class="slds-box">
+          {_propSetMap.label }
+          <span class="vlc-asterix icon-v-asterix"> </span>
+        </div>
+        <div class="slds-box">
+          <c-sf-gps-ds-osrt-omniscript-formatted-rich-text
+            value={_dText}
+          ></c-sf-gps-ds-osrt-omniscript-formatted-rich-text>
+        </div>
+        <div class="slds-box">
+          <c-sf-gps-ds-osrt-input
+            type="checkbox"
+            label={_propSetMap.checkLabel}
+            required={_propSetMap.required}
+            required-label={allCustomLabelsUtil.OmniRequired}
+            theme={_theme}
+            onchange={handleChange}
+            checked={elementValue}
+            message-when-value-missing={_messageWhenValueMissing}
+            tab-index={tabIndex}
+            data-omni-input
+          >
+          </c-sf-gps-ds-osrt-input>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

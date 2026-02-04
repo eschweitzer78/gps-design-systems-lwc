@@ -1,0 +1,318 @@
+<template>
+  <div class={toggleContClass}>
+    <fieldset if:true={Type.isCheckbox} class="slds-form-element">
+      <span class={labelClass}>
+        <abbr if:true={required} title={requiredLabel} class="slds-required"
+          >*</abbr
+        ><span class="slds-m-right_x-small" style={labelStyle}>{label}</span>
+        <span style="white-space: nowrap">
+          <c-sf-gps-ds-osrt-tooltip
+            if:true={fieldLevelHelp}
+            theme="slds"
+            content={fieldLevelHelp}
+            icon-name="utility:info"
+            extrabuttonclass="slds-p-right_x-small slds-m-bottom_xxx-small "
+          >
+          </c-sf-gps-ds-osrt-tooltip>
+          <slot name="label"></slot>
+        </span>
+      </span>
+      <div class="slds-form-element__control">
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <span key={option.id} class="slds-checkbox">
+            <input
+              type="checkbox"
+              onfocus={handleFocus}
+              onchange={onchangevalue}
+              checked={option.selected}
+              required={required}
+              disabled={disabled}
+              id={option.id}
+              data-index={index}
+              tabindex={tabIndex}
+              name={name}
+              value={option.value}
+            />
+            <label
+              class="checkbox-group slds-checkbox__label"
+              data-index={index}
+              for={option.id}
+            >
+              <span class="slds-checkbox_faux"></span>
+              <span class="slds-form-element__label slds-p-top_none"
+                >{option.label}</span
+              >
+            </label>
+          </span>
+        </template>
+      </div>
+    </fieldset>
+    <fieldset if:true={Type.isButton} class="slds-form-element">
+      <label class={labelClass}>
+        <abbr if:true={required} title={requiredLabel} class="slds-required"
+          >*</abbr
+        ><span style={labelStyle}>{label}</span>
+        <c-sf-gps-ds-osrt-tooltip
+          if:true={fieldLevelHelp}
+          theme="slds"
+          content={fieldLevelHelp}
+          icon-name="utility:info"
+          extrabuttonclass="slds-m-left_x-small slds-p-right_x-small"
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+      </label>
+
+      <div class="slds-form-element__control">
+        <div class="slds-checkbox_button-group">
+          <template for:each={internalOpts} for:item="option" for:index="index">
+            <span key={option.id} class="slds-button slds-checkbox_button">
+              <input
+                type="checkbox"
+                onfocus={handleFocus}
+                onchange={onchangevalue}
+                checked={option.selected}
+                required={required}
+                disabled={disabled}
+                id={option.id}
+                data-index={index}
+                name={name}
+                tabindex={tabIndex}
+                value={option.value}
+              />
+              <label
+                class="checkbox-group slds-checkbox_button__label"
+                data-index={index}
+                for={option.id}
+              >
+                <span class="slds-checkbox_faux">{option.label}</span>
+                <div class="slds-checkbox-overlay"></div>
+              </label>
+            </span>
+          </template>
+        </div>
+      </div>
+    </fieldset>
+    <fieldset if:true={Type.isIcon} class="slds-form-element">
+      <label if:true={label} class={labelClass}>
+        <abbr if:true={required} title={requiredLabel} class="slds-required"
+          >*</abbr
+        ><span style={labelStyle}>{label}</span>
+      </label>
+      <c-sf-gps-ds-osrt-tooltip
+        if:true={fieldLevelHelp}
+        theme="slds"
+        content={fieldLevelHelp}
+        icon-name="utility:info"
+      >
+      </c-sf-gps-ds-osrt-tooltip>
+      <div
+        class="slds-checkbox_button-group slds-button slds-button_icon slds-button_icon-border"
+      >
+        <span
+          class="slds-button slds-checkbox_button vloc-checkbox-button_span"
+        >
+          <input
+            id={checkboxId}
+            onfocus={handleFocus}
+            onchange={onchangevalue}
+            checked={isChecked}
+            name={name}
+            disabled={disabled}
+            type="checkbox"
+            tabindex={tabIndex}
+            value={value}
+            aria-label={ariaLabel}
+          />
+          <label
+            class="slds-checkbox_button__label vloc-checkbox-button_label"
+            for={checkboxId}
+          >
+            <c-sf-gps-ds-osrt-icon
+              if:false={isChecked}
+              variant="inverse"
+              theme={theme}
+              baseurl={iconUrl}
+              icon-name={uncheckedIconName}
+              iconposition=""
+              parenttype="button"
+              alternative-text=""
+              size=""
+            ></c-sf-gps-ds-osrt-icon>
+            <c-sf-gps-ds-osrt-icon
+              if:true={isChecked}
+              variant="inverse"
+              theme={theme}
+              baseurl={iconUrl}
+              icon-name={checkedIconName}
+              iconposition=""
+              parenttype="button"
+              alternative-text=""
+              size=""
+            ></c-sf-gps-ds-osrt-icon>
+          </label>
+        </span>
+      </div>
+    </fieldset>
+    <template if:true={Type.isToggle}>
+      <div class="slds-form-element">
+        <label class="slds-checkbox_toggle slds-grid" style={toggleTypeStyle}>
+          <abbr if:true={required} title={requiredLabel} class="slds-required"
+            >*</abbr
+          >
+          <span
+            class="slds-form-element__label slds-m-bottom_none"
+            style={labelStyle}
+            >{label}</span
+          >
+          <input
+            type="checkbox"
+            onfocus={handleFocus}
+            onchange={onchangevalue}
+            name={name}
+            checked={checked}
+            tabindex={tabIndex}
+            aria-describedby={checked}
+            disabled={disabled}
+            required={required}
+            aria-label={ariaLabel}
+          />
+          <span class="slds-checkbox_faux_container" aria-live="assertive">
+            <span class="slds-checkbox_faux"></span>
+            <span class="slds-checkbox_on">{toggleEnabledLabel}</span>
+            <span class="slds-checkbox_off">{toggleDisabledLabel}</span>
+          </span>
+          <c-sf-gps-ds-osrt-tooltip
+            if:true={fieldLevelHelp}
+            theme="slds"
+            content={fieldLevelHelp}
+            icon-name="utility:info"
+            extrabuttonclass="slds-m-left_x-small slds-p-right_x-small"
+          >
+          </c-sf-gps-ds-osrt-tooltip>
+        </label>
+      </div>
+    </template>
+    <template if:true={Type.isStatefulIcon}>
+      <button
+        class="slds-button slds-button_icon slds-button_icon-border-filled"
+        onclick={changeStatus}
+        data-checked={isChecked}
+        disabled={disabled}
+        tabindex={tabIndex}
+        name={name}
+        aria-pressed="false"
+        title={alternativeText}
+      >
+        <c-sf-gps-ds-osrt-icon
+          theme="slds"
+          baseurl={iconUrl}
+          icon-name={iconName}
+          parenttype="button"
+          alternative-text={alternativeText}
+        >
+        </c-sf-gps-ds-osrt-icon>
+        <span class="slds-assistive-text">{alternativeText}</span>
+      </button>
+      <c-sf-gps-ds-osrt-tooltip
+        if:true={fieldLevelHelp}
+        theme="slds"
+        content={fieldLevelHelp}
+        icon-name="utility:info"
+        extrabuttonclass="slds-m-left_x-small slds-p-right_x-small"
+      >
+      </c-sf-gps-ds-osrt-tooltip>
+    </template>
+    <template if:true={Type.isStatefulBtn}>
+      <button
+        class={buttonIconClass}
+        onfocus={handleFocus}
+        onblur={removeFocus}
+        onclick={changeStatus}
+        data-checked={isChecked}
+        disabled={disabled}
+        tabindex={tabIndex}
+        name={name}
+        aria-live="assertive"
+      >
+        <span class="slds-text-not-selected">
+          <c-sf-gps-ds-osrt-icon
+            variant="inverse"
+            theme={theme}
+            baseurl={iconUrl}
+            icon-name={uncheckedIconName}
+            iconposition="left"
+            parenttype="button"
+            alternative-text={uncheckedLabel}
+            size="small"
+          ></c-sf-gps-ds-osrt-icon>
+          <span style={uncheckedLabelStyle}>{uncheckedLabel}</span>
+        </span>
+        <span class="slds-text-selected">
+          <c-sf-gps-ds-osrt-icon
+            variant="inverse"
+            theme={theme}
+            baseurl={iconUrl}
+            icon-name={checkedIconName}
+            iconposition="left"
+            parenttype="button"
+            alternative-text={checkedLabel}
+            size="small"
+          ></c-sf-gps-ds-osrt-icon>
+          <span style={checkedLabelStyle}>{checkedLabel}</span>
+        </span>
+        <span class="slds-text-selected-focus">
+          <c-sf-gps-ds-osrt-icon
+            variant="inverse"
+            theme={theme}
+            baseurl={iconUrl}
+            icon-name={iconOnFocus}
+            iconposition="left"
+            parenttype="button"
+            alternative-text={checkedLabel}
+            size="small"
+          ></c-sf-gps-ds-osrt-icon>
+          <span style={labelOnHoverStyle}>{labelOnFocus}</span>
+        </span>
+      </button>
+    </template>
+    <template if:true={Type.isDualStatefulBtn}>
+      <button
+        class="slds-button slds-button_neutral slds-button_dual-stateful"
+        onclick={changeStatus}
+        data-checked={isChecked}
+        disabled={disabled}
+        tabindex={tabIndex}
+        name={name}
+        aria-live="assertive"
+      >
+        <span class="slds-text-not-pressed">
+          <c-sf-gps-ds-osrt-icon
+            variant="inverse"
+            theme={theme}
+            baseurl={iconUrl}
+            icon-name={uncheckedIconName}
+            iconposition="left"
+            parenttype="button"
+            alternative-text={uncheckedLabel}
+            size="small"
+          ></c-sf-gps-ds-osrt-icon>
+          <span style={uncheckedLabelStyle}>{uncheckedLabel}</span>
+        </span>
+        <span class="slds-text-pressed">
+          <c-sf-gps-ds-osrt-icon
+            variant="inverse"
+            theme={theme}
+            baseurl={iconUrl}
+            icon-name={checkedIconName}
+            iconposition="left"
+            parenttype="button"
+            alternative-text={checkedLabel}
+            size="small"
+          ></c-sf-gps-ds-osrt-icon>
+          <span style={checkedLabelStyle}>{checkedLabel}</span>
+        </span>
+      </button>
+    </template>
+    <div if:true={isError} class="slds-form-element__help">{errorMessage}</div>
+  </div>
+</template>

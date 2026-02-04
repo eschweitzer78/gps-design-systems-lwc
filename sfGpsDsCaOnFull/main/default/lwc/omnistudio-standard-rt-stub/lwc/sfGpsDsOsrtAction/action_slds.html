@@ -1,0 +1,261 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:true={definition}>
+    <slot name="action"></slot>
+    <div
+      class="slds-section slds-is-open"
+      if:true={_debug}
+      onmousedown={toggleSection}
+    >
+      <h3 class="slds-section__title">
+        <c-sf-gps-ds-osrt-button
+          class="slds-button slds-button_icon slds-section__title-action"
+          icon-name="utility:down"
+          icon-url={iconUrl}
+          icon-size="small"
+          label="Debug"
+          extraclass="slds-section__title-action"
+        ></c-sf-gps-ds-osrt-button>
+      </h3>
+      <div
+        aria-hidden="false"
+        class="slds-section__content"
+        id="expando-unique-id"
+        if:true={isOpen}
+      >
+        <div class="slds-card">
+          <div class="slds-text-heading_x-small">
+            Total Execution time : {timeTaken}
+          </div>
+          <div class="slds-text-heading_x-small">
+            Request JSON : {definition}
+          </div>
+          <pre data-value={value}>{debugData}</pre>
+          <template if:true={error}> {errormessage} </template>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template if:true={isVlocityAction}>
+    <template if:true={actionDetails}>
+      <template if:true={selectableAction}>
+        <div class={actionContainerClass}>
+          <template if:false={isBaseVersion}>
+            <slot></slot>
+          </template>
+          <template if:true={isBaseVersion}>
+            <div class={actionItemClass}>
+              <c-sf-gps-ds-osrt-input
+                label={actionDetails.displayName}
+                theme="slds"
+                name="selectableAction"
+                type="checkbox"
+                checked={selectableActionVal}
+                onchange={fireSelectCard}
+                styles={getCheckboxStyles}
+              >
+              </c-sf-gps-ds-osrt-input>
+            </div>
+          </template>
+        </div>
+      </template>
+      <template if:false={selectableAction}>
+        <div class={actionContainerClass} onclick={performAction}>
+          <template if:false={isBaseVersion}>
+            <slot></slot>
+          </template>
+          <template if:true={isBaseVersion}>
+            <!-- Link Type Action -->
+            <a
+              href="javascript:void(0)"
+              data-action-focus
+              if:false={_displayAsButton}
+              class={actionItemClass}
+            >
+              <span
+                if:true={isIconRight}
+                class={actionTextClass}
+                style={labelStyle}
+                ><span if:false={_iconOnly}>{actionDetails.displayName}</span>
+              </span>
+              <div if:true={showIcon} class={iconDivClass}>
+                <span if:false={_iconOnly}>
+                  <c-sf-gps-ds-osrt-icon
+                    if:false={actionDetails.imageRef}
+                    color={iconColor}
+                    extraclass={iconClass}
+                    size={iconSizeDef}
+                    alternative-text={actionDetails.displayName}
+                    icon-name={actionDetails.iconName}
+                    theme="slds"
+                    baseurl={iconurl}
+                  >
+                  </c-sf-gps-ds-osrt-icon>
+                </span>
+
+                <span if:true={_iconOnly}>
+                  <c-sf-gps-ds-osrt-tooltip
+                    if:false={actionDetails.imageRef}
+                    theme="slds"
+                    icon-size={iconSizeDef}
+                    icon-fill={iconColor}
+                    icon-url={iconUrl}
+                    content={actionDetails.displayName}
+                    arrowposition="bottom-left"
+                    icon-name={actionDetails.iconName}
+                    disable-tab="true"
+                  >
+                  </c-sf-gps-ds-osrt-tooltip>
+                </span>
+                <span
+                  if:true={actionDetails.imageRef}
+                  class={iconImgWrapperclass}
+                >
+                  <img
+                    class={iconClass}
+                    src={actionDetails.imageRef}
+                    alt={actionDetails.displayName}
+                  />
+                </span>
+              </div>
+              <span
+                if:false={isIconRight}
+                class={actionTextClass}
+                style={labelStyle}
+                ><span if:false={_iconOnly}>{actionDetails.displayName}</span>
+              </span>
+            </a>
+            <!-- Button Type Action -->
+            <span if:true={_displayAsButton}>
+              <template if:true={showIcon}>
+                <template if:true={isPopoverFlyout}>
+                  <c-sf-gps-ds-osrt-button
+                    if:false={_iconOnly}
+                    theme="slds"
+                    variant={buttonVariant}
+                    label={actionDetails.displayName}
+                    styles={styles}
+                    icon-name={actionDetails.iconName}
+                    icon-size={iconSizeDef}
+                    icon-position="left"
+                    icon-fill={iconColor}
+                    aria-controls="popover-id"
+                    aria-expanded={isFlyoutOpen}
+                    data-action-focus
+                  >
+                  </c-sf-gps-ds-osrt-button>
+                </template>
+                <template if:false={isPopoverFlyout}>
+                  <c-sf-gps-ds-osrt-button
+                    if:false={_iconOnly}
+                    theme="slds"
+                    variant={buttonVariant}
+                    label={actionDetails.displayName}
+                    styles={styles}
+                    icon-name={actionDetails.iconName}
+                    icon-size={iconSizeDef}
+                    icon-position="left"
+                    icon-fill={iconColor}
+                    data-action-focus
+                  >
+                  </c-sf-gps-ds-osrt-button>
+                </template>
+                <c-sf-gps-ds-osrt-tooltip
+                  if:true={_iconOnly}
+                  theme="slds"
+                  icon-size={iconSizeDef}
+                  icon-fill={iconColor}
+                  arrowposition="bottom-left"
+                  variant={buttonVariant}
+                  content={actionDetails.displayName}
+                  icon-name={actionDetails.iconName}
+                ></c-sf-gps-ds-osrt-tooltip>
+              </template>
+              <template if:false={showIcon}>
+                <c-sf-gps-ds-osrt-button
+                  if:true={isPopoverFlyout}
+                  theme="slds"
+                  variant={buttonVariant}
+                  label={actionDetails.displayName}
+                  styles={styles}
+                  icon-size={iconSizeDef}
+                  icon-position="left"
+                  icon-fill={iconColor}
+                  aria-controls="popover-id"
+                  aria-expanded={isFlyoutOpen}
+                  data-action-focus
+                >
+                </c-sf-gps-ds-osrt-button>
+                <c-sf-gps-ds-osrt-button
+                  if:false={isPopoverFlyout}
+                  theme="slds"
+                  variant={buttonVariant}
+                  label={actionDetails.displayName}
+                  styles={styles}
+                  icon-size={iconSizeDef}
+                  icon-position="left"
+                  icon-fill={iconColor}
+                  data-action-focus
+                ></c-sf-gps-ds-osrt-button>
+              </template>
+            </span>
+          </template>
+        </div>
+
+        <div if:true={isPopoverFlyout}>
+          <c-sf-gps-ds-osrt-popover
+            class="popover-flyout"
+            title="Test"
+            theme="slds"
+            icon-url={iconUrl}
+            style="position: relative; top: 0rem; left: 0rem; right: 0rem"
+            nubbinposition="top-left"
+            size="full-width"
+            id="popover-id"
+            channel-name={channelName}
+            onclose={closePopOver}
+          >
+            <div if:true={renderFlyout} slot="content">
+              <template if:true={preloadFlyout}>
+                <slot name="flyout"></slot>
+              </template>
+            </div>
+          </c-sf-gps-ds-osrt-popover>
+        </div>
+        <template if:true={isModalFlyout}>
+          <c-sf-gps-ds-osrt-modal
+            size="medium"
+            onclose={onCloseModal}
+            onopen={onOpenModal}
+            class="actionFlyout"
+            title={actionDetails.displayName}
+            hideheader="true"
+            hidefooter="true"
+            channel-name={channelName}
+          >
+            <div if:true={renderFlyout} slot="content" class="slds-is-relative">
+              <template if:true={preloadFlyout}>
+                <slot name="flyout"></slot>
+              </template>
+            </div>
+          </c-sf-gps-ds-osrt-modal>
+        </template>
+
+        <c-sf-gps-ds-osrt-navigate-action
+          class="navigate-action"
+          open-target-in={actionDetails.openUrl}
+          target-params={actionDetails.targetParams}
+          target-type={actionDetails.targetType}
+          target-action={actionDetails.targetAction}
+          target-id={actionDetails.targetId}
+          data-name={actionDetails.displayName}
+          replace={actionDetails.replace}
+          target-relationship={actionDetails.targetRelationship}
+          target-name={actionDetails.targetName}
+          target-article-type={actionDetails.targetArticleType}
+        >
+        </c-sf-gps-ds-osrt-navigate-action>
+      </template>
+    </template>
+  </template>
+</template>

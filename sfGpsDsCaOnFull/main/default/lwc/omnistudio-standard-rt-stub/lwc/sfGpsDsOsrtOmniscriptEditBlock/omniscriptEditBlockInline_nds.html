@@ -1,0 +1,223 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div
+    class="nds-element_text-font nds-editblock_inline nds-grid nds-grid_vertical nds-p-horizontal_small"
+  >
+    <template if:true={_isFirstIndex}>
+      <!-- Header/Label -->
+      <div class="nds-m-bottom_x-small">
+        <h2 aria-label={_propSetMap.label} aria-live="polite">
+          {_propSetMap.label}
+        </h2>
+      </div>
+
+      <!-- Global Actions -->
+      <div if:true={_propSetMap.gActions} class="nds-grid nds-wrap">
+        <template
+          for:each={_gActions}
+          for:item="gActionItem"
+          for:index="gActionIndex"
+        >
+          <template if:true={gActionItem.hasIcon}>
+            <div
+              key={gActionItem.lwcId}
+              class="nds-m-bottom_x-small nds-m-right_xx-small"
+            >
+              <c-sf-gps-ds-osrt-icon
+                extraclass="nds-input__icon"
+                icon-name={gActionItem.icon}
+                theme="nds"
+                alternative-text={gActionItem.label}
+                size="small"
+                style="cursor: pointer"
+                role="button"
+                onclick={gActionItem.handleClick}
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </div>
+          </template>
+          <template if:false={gActionItem.hasIcon}>
+            <div key={gActionItem.lwcId} class={gActionItem.cls}>
+              <div class="nds-m-bottom_xx-small nds-m-right_xx-small">
+                <button
+                  class="nds-button nds-button_neutral nds-button_brand nds-size_1-of-1"
+                  onclick={gActionItem.handleClick}
+                >
+                  {gActionItem.label}
+                </button>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
+    </template>
+
+    <!-- Inline Visual -->
+    <div class={visualClass}>
+      <div class="nds-grid nds-edit-block_longcards nds-m-bottom_medium">
+        <form
+          class="nds-col nds-size_11-of-12 nds-grid nds-cont-wrapper"
+          onclick={edit}
+          data-edit-action="edit"
+          role="button"
+          tabindex="0"
+          onkeydown={handleKeyboardEdit}
+          aria-invalid={isInvalid}
+          aria-describedby="inline-text-error"
+          aria-labelledby="inline-text"
+        >
+          <span
+            if:true={isInvalid}
+            style="left: 0; top: 0"
+            class="nds-required nds-m-around_none nds-p-left_xx-small nds-is-absolute"
+          >
+            *
+          </span>
+          <span id="inline-text-error">
+            <span if:true={isInvalid} class="nds-assistive-text">
+              {allCustomLabelsUtil.OmniEditBlockError}
+            </span>
+          </span>
+          <!-- Customizable SVG Icon -->
+          <span class="nds-edit-block_longcards-circle">
+            <span class="nds-icon_container nds-icon_container_circle">
+              <c-sf-gps-ds-osrt-icon
+                extraclass="nds-input__icon"
+                icon-name={svgMapIcon}
+                theme="nds"
+                size="large"
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </span>
+          </span>
+          <div
+            class="nds-edit-block_longcards-controls-container"
+            id="inline-text"
+          >
+            <template
+              for:each={_displayValues}
+              for:item="dvItem"
+              for:index="dvIndex"
+            >
+              <div key={dvItem.lwcId} class="nds-p-left_x-small">
+                {dvItem.value}
+              </div>
+            </template>
+          </div>
+        </form>
+        <div
+          class="nds-col nds-size_1-of-12 nds-grid nds-grid_align-center nds-grid_vertical-align-center"
+        >
+          <template if:true={_allowDelete}>
+            <c-sf-gps-ds-osrt-icon
+              extraclass="nds-input__icon nds-editblock_delete"
+              icon-name="utility:close"
+              theme="nds"
+              alternative-text={allCustomLabelsUtil.OmniDelete}
+              size="small"
+              onclick={remove}
+              tabindex="0"
+              role="button"
+              data-remove-button
+              onkeydown={handleKeyboardRemove}
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline Editing -->
+    <div class={editClass}>
+      <div
+        class="nds-edit-block-edit__container nds-m-bottom_medium"
+        style="z-index: 1"
+      >
+        <div class="nds-cont-wrapper">
+          <header class="nds-size_1-of-1">
+            <h2 class="nds-text-heading_small nds-step_label nds-m-left_small">
+              {_propSetMap.label}
+            </h2>
+          </header>
+          <slot class="nds-grid nds-wrap"></slot>
+          <c-sf-gps-ds-osrt-icon
+            onclick={cancel}
+            extraclass="nds-input__icon nds-editblock_close nds-m-right_x-small"
+            icon-name="utility:close"
+            theme="nds"
+            alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextCancel}
+            size="small"
+            role="button"
+            tabindex="0"
+            onkeydown={handleKeyboardCancel}
+          >
+          </c-sf-gps-ds-osrt-icon>
+          <div
+            class="nds-grid nds-wrap nds-grid_align-center nds-p-horizontal_medium nds-m-top_medium"
+          >
+            <button
+              if:true={_isEditing}
+              onclick={save}
+              disabled={isPageLoading}
+              class="nds-button nds-button_neutral nds-button_brand nds-custom_button"
+            >
+              {allCustomLabelsUtil.OmniConfigProdModalOk}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Button -->
+    <template if:true={showAdd}>
+      <div
+        class="nds-edit-block_longcards nds-edit-block_cards-add-card nds-grid nds-m-bottom_medium"
+        role="button"
+        tabindex="0"
+        onclick={handleAdd}
+        onkeydown={handleKeyboardAdd}
+      >
+        <div class="nds-grid nds-cont-wrapper">
+          <!-- Add Button Icon -->
+          <span class="nds-edit-block_longcards-circle">
+            <span class="nds-icon_container nds-icon_container_circle">
+              <c-sf-gps-ds-osrt-icon
+                extraclass="nds-input__icon"
+                icon-name={_svgIcon}
+                theme="nds"
+                alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextUser}
+                size="large"
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </span>
+          </span>
+          <div
+            class="nds-edit-block_longcards-add-icon nds-grid nds-has-flexi-truncate nds-align_absolute-center"
+          >
+            <c-sf-gps-ds-osrt-icon
+              class="nds-align_absolute-center"
+              extraclass="nds-button__icon"
+              icon-name="utility:add"
+              theme="nds"
+              alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextAdd}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+            <span> {_newLabel} </span>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSavingAccessibleLabel}
+      theme={_theme}
+      size="medium"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

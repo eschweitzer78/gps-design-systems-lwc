@@ -1,0 +1,35 @@
+.cmp-pointer-disabled {
+  pointer-events: none;
+}
+
+[data-progress-bar] {
+  position: absolute;
+  top: 3.2rem;
+  left: 0.9rem;
+  right: 1rem;
+  width: auto;
+  z-index: 100;
+}
+
+.vloc-reset-minwidth {
+  min-width: 100%;
+}
+
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  label.slds-form-element__label {
+    max-width: 100%;
+  }
+}
+
+input[readonly],
+.slds-input[role="combobox"][readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  border-color: #939393;
+  background-color: #f3f3f3;
+}
+
+input[readonly]:focus .slds-input[readonly][role="combobox"]:focus {
+  border-color: #939393;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}

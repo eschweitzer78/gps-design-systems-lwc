@@ -1,0 +1,19 @@
+<template>
+  <div class={spinnerClass}>
+    <div
+      class="nds-grid nds-grid_align-center nds-media_center nds-spinner_content_container"
+    >
+      <div
+        class="nds-spinner_brand nds-spinner nds-is-absolute"
+        aria-hidden="false"
+        role="alert"
+      >
+        <span class="nds-assistive-text">{alternativeText}</span>
+        <div class="nds-dot-leading"></div>
+        <div class="nds-dot-middle"></div>
+        <div class="nds-dot-last"></div>
+      </div>
+      <div class={msgClass}>{message}</div>
+    </div>
+  </div>
+</template>

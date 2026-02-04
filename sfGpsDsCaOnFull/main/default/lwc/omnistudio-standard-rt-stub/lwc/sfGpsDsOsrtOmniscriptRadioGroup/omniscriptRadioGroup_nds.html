@@ -1,0 +1,106 @@
+<template>
+  <slot>
+    <fieldset class="nds-form-element nds-form-container nds-m-top_small">
+      <label
+        class="nds-form-element__legend nds-form-element__label nds-form-element__control-help nds-radio-relative-tooltip"
+      >
+        <span>{_propSetMap.label}</span>
+        <abbr
+          if:true={_propSetMap.required}
+          title={allCustomLabelsUtil.OmniRequired}
+          class="nds-required"
+          >*</abbr
+        >
+        <c-sf-gps-ds-osrt-tooltip
+          if:true={_propSetMap.help}
+          theme="nds"
+          class="nds-tooltip__container"
+          content={_handleHelpText}
+          arrowposition={_propSetMap.helpTextPos}
+          icon-name="utility:info"
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+      </label>
+      <div
+        class="nds-grid nds-grid_vertical nds-form-element"
+        data-sval={_selectedValues}
+      >
+        <div class="nds-grid">
+          <div class={_labelClass}>
+            <!-- blank area -->
+          </div>
+          <div class={_optionClass}>
+            <template
+              for:each={_propSetMap.options}
+              for:item="radioButton"
+              for:index="radioButtonIndex"
+            >
+              <label
+                class="nds-form-element__label vlc-setall__label"
+                key={radioButton.name}
+              >
+                <strong>
+                  <span
+                    class="nds-listbox__option"
+                    data-col={radioButtonIndex}
+                    if:true={radioButton.setAll}
+                    onclick={setAll}
+                  >
+                    {radioGroupSetAll}
+                  </span>
+                </strong>
+              </label>
+            </template>
+          </div>
+        </div>
+        <template
+          for:each={_radioGroup}
+          for:item="radioGroupLabel"
+          for:index="radioGroupLabelIndex"
+        >
+          <div class="nds-grid nds-p-bottom_small" key={radioGroupLabel.name}>
+            <div class={_labelClass}>
+              <span role="radio" tabindex="0"> {radioGroupLabel.value} </span>
+            </div>
+            <div class={_optionClass}>
+              <template
+                for:each={radioGroupLabel.options}
+                for:item="radioButton"
+                for:index="radioButtonIndex"
+              >
+                <label
+                  class="nds-radio vlc-radiogroup__button"
+                  key={radioButton.name}
+                >
+                  <input
+                    type="radio"
+                    data-row={radioGroupLabelIndex}
+                    data-col={radioButtonIndex}
+                    name={radioGroupLabel.id}
+                    value={radioButton.name}
+                    onchange={handleChange}
+                    checked={radioButton.checked}
+                    disabled={_propSetMap.readOnly}
+                    data-omni-input
+                  />
+                  <span class="nds-radio--faux"></span>
+                  <span class="nds-form-element__label">
+                    {radioButton.value}
+                  </span>
+                </label>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class="nds-has-error nds-m-top_none">
+        <div
+          if:true={hasError}
+          class="nds-form-element__help nds-form-element__help_text-transform__none"
+        >
+          {errorMessage}
+        </div>
+      </div>
+    </fieldset>
+  </slot>
+</template>

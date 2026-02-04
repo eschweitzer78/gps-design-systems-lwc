@@ -1,0 +1,177 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div if:false={isCustomLwc} class={errorClass}>
+    <div class="slds-grid">
+      <label
+        if:true={labelVisible}
+        class="slds-form-element__label slds-show--inline"
+        for={inputId}
+      >
+        <abbr if:true={required} class="slds-required" title={requiredLabel}
+          >*</abbr
+        >
+        <span style={styleProperties.label.styles}>{label}</span>
+      </label>
+      <c-sf-gps-ds-osrt-tooltip
+        class="slds-tooltip_container slds-p-right_x-small slds-p-top_xx-small"
+        if:true={fieldLevelHelp}
+        icon-url={iconUrl}
+        content={fieldLevelHelp}
+        associated-component-label={label}
+        extrabuttonclass="slds-m-bottom_xx-small"
+        arrowposition={fieldLevelHelpPosition}
+        data-field-level-help
+      >
+      </c-sf-gps-ds-osrt-tooltip>
+      <slot name="label"></slot>
+    </div>
+    <div if:true={_isFormula}>
+      <div class="slds-grid">
+        <label class="slds-form-element__label slds-show--inline" for={inputId}>
+          <span style={styleProperties.label.styles}>{label}</span>
+        </label>
+      </div>
+      <input
+        type="text"
+        class="slds-input"
+        readonly
+        disabled
+        value={maskedValue}
+        id={inputId}
+      />
+    </div>
+
+    <div if:false={static} class={pretextClass}>
+      <span if:true={pretext} class="slds-form-element__addon">{pretext}</span>
+
+      <span
+        if:true={isIconLeft}
+        class="slds-icon_container slds-input__icon_left"
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name={iconNameLeft}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+          extraclass="slds-input__icon"
+        >
+        </c-sf-gps-ds-osrt-icon>
+      </span>
+
+      <template if:true={isCurrencySFlocale}>
+        <input
+          id={inputId}
+          if:true={isInput}
+          tabindex={tabIndex}
+          accesskey={accessKey}
+          step={step}
+          min={min}
+          max={max}
+          maxlength={maxLength}
+          minlength={minLength}
+          class="vlocity-input slds-input"
+          type={type}
+          inputmode={inputmode}
+          disabled={disabled}
+          required={required}
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          placeholder={placeholder}
+          style={styleProperties.value.styles}
+          onfocus={handleFocus}
+          onblur={handleBlur}
+          oninput={handleInput}
+          onkeyup={handleKeyup}
+          onchange={handleChange}
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={ariaDescribedBy}
+          aria-label={ariaLabel}
+          value={_currencyVal}
+          aria-invalid={isError}
+        />
+      </template>
+      <template if:false={isCurrencySFlocale}>
+        <input
+          class="hiddenNumber slds-hide"
+          required={required}
+          if:true={isNumber}
+          min={min}
+          max={max}
+          step={step}
+          type="number"
+          value={value}
+        />
+
+        <input
+          id={inputId}
+          if:true={isInput}
+          tabindex={tabIndex}
+          accesskey={accessKey}
+          step={step}
+          min={min}
+          max={max}
+          maxlength={maxLength}
+          minlength={minLength}
+          class="vlocity-input slds-input"
+          type={inputType}
+          inputmode={inputmode}
+          disabled={disabled}
+          required={required}
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          placeholder={placeholder}
+          style={styleProperties.value.styles}
+          onfocus={handleFocus}
+          onblur={handleBlur}
+          oninput={handleInput}
+          onkeyup={handleKeyup}
+          onchange={handleChange}
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={ariaDescribedBy}
+          aria-label={ariaLabel}
+          autocomplete={autocomplete}
+          name={name}
+          aria-invalid={isError}
+        />
+      </template>
+      <span
+        if:true={isIconRight}
+        class="slds-icon_container slds-input__icon_right"
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name={iconNameRight}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+          extraclass="slds-input__icon"
+        >
+        </c-sf-gps-ds-osrt-icon>
+      </span>
+
+      <span if:true={posttext} class="slds-form-element__addon"
+        >{posttext}</span
+      >
+      <div
+        if:true={isError}
+        id="errorMessageBlock"
+        aria-live="polite"
+        class="slds-form-element__help"
+        role="alert"
+      >
+        {errorMessage}
+      </div>
+    </div>
+
+    <div class="slds-grid">
+      <div if:true={static} class="slds-form-element__static">
+        {maskedValue}
+      </div>
+    </div>
+
+    <span if:true={inlineHelp} class="slds-form-element__static"
+      >{inlineHelp}</span
+    >
+  </div>
+</template>

@@ -1,0 +1,122 @@
+<template>
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      theme={_theme}
+      size="medium"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+  <div class="nds-file-custom-selector nds-form-container">
+    <div class="nds-file-selector__dropzone">
+      <div class="nds-form-element nds-p-around--small">
+        <slot>
+          <div class={_containerClasses} aria-labelledby="imageUpload">
+            <div>
+              <label
+                id="imageUpload"
+                class="nds-form-element__label omni-input-label"
+              >
+                <span class="nds-m-right_xx-small">{_propSetMap.label}</span>
+                <abbr
+                  if:true={_propSetMap.required}
+                  class="nds-required"
+                  title={allCustomLabelsUtil.OmniRequired}
+                  >*</abbr
+                >
+              </label>
+              <c-sf-gps-ds-osrt-tooltip
+                if:true={_propSetMap.help}
+                class="nds-tooltip_container"
+                theme={_theme}
+                content={_propSetMap.helpText}
+                arrowposition={_propSetMap.helpTextPos}
+              >
+              </c-sf-gps-ds-osrt-tooltip>
+            </div>
+            <div class="nds-grid omni-file-input">
+              <lightning-file-upload
+                label={_propSetMap.label}
+                name={jsonDef.lwcId}
+                onuploadfinished={handleUploadFinished}
+                multiple={multiple}
+                accept={accepts}
+                disabled={disabled}
+                data-omni-input
+                onfocusout={handleFocusOut}
+                record-id={parentRecordId}
+                aria-invalid={_showValidation}
+                aria-describedby="image_upload_error_message"
+                class="nds-has-dividers_around-space omni-file nds-m-bottom_xx-small nds-size_12-of-12 nds-medium-size_12-of-12"
+              >
+              </lightning-file-upload>
+            </div>
+          </div>
+        </slot>
+      </div>
+    </div>
+    <slot name="files">
+      <span id="upload-status" class="nds-assistive-text"
+        >{ariaLiveStatusText}</span
+      >
+      <div aria-labelledby="upload-status" aria-live={ariaLiveStatus}></div>
+      <div class="nds-grid">
+        <ul
+          class="nds-has-dividers_around-space omni-file nds-m-bottom_xx-small nds-size_12-of-12 nds-medium-size_12-of-12"
+        >
+          <template for:each={images} for:item="item" for:index="index">
+            <li key={item.data} class="omni-image">
+              <div class="nds-m-bottom--small">
+                <img src={item.url} alt={item.filename} />
+              </div>
+              <div class="nds-box nds-grid omni-image-details">
+                <span
+                  class="nds-m-bottom_xx-small nds-size_11-of-12 nds-medium-size_11-of-12 nds-truncate"
+                  aria-hidden="true"
+                >
+                  {item.filename}
+                </span>
+                <span
+                  class="remove-file-icon nds-m-bottom_xx-small nds-size_1-of-12 nds-medium-size_1-of-12 nds-text-align_right"
+                >
+                  <button
+                    class="nds-button nds-button_icon"
+                    title={item.deleteLabel}
+                    onclick={deleteFile}
+                    data-index={index}
+                    data-id={item.data}
+                  >
+                    <c-sf-gps-ds-osrt-icon
+                      theme={_theme}
+                      extraclass="nds-button__icon"
+                      iconposition="left"
+                      icon-name="action:delete"
+                      color="brand"
+                      alternative-text={item.deleteLabel}
+                      size="x-small"
+                      data-index={index}
+                      data-id={item.data}
+                    ></c-sf-gps-ds-osrt-icon>
+                  </button>
+                </span>
+              </div>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </slot>
+    <div
+      if:true={_showValidation}
+      id="image_upload_error_message"
+      aria-live="polite"
+      class="nds-has-error"
+      role="alert"
+    >
+      <span class="nds-form-element__help omni-file-required">
+        {errorMessage}
+      </span>
+    </div>
+  </div>
+</template>

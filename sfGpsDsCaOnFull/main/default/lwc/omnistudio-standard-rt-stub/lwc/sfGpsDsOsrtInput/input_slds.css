@@ -1,0 +1,108 @@
+.slds-form-container.slds-relative-tooltip {
+  display: flex;
+}
+
+.slds-form-container.slds-relative-tooltip .slds-tooltip_container {
+  order: 2;
+}
+
+.slds-form-element__control .slds-pill {
+  display: block;
+}
+
+.slds-file-selector__files li {
+  border-bottom: none;
+  border-radius: 0;
+  margin: 0;
+}
+
+.slds-file-selector__files li .slds-file-selector__remove-file-icon {
+  float: right;
+}
+
+.slds-file-selector__files li:first-of-type {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.slds-file-selector__files li:last-of-type {
+  border-bottom: 1px solid rgb(221, 219, 218);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.slds-file-selector__body,
+.slds-file-selector__remove-file-icon {
+  cursor: pointer;
+}
+
+label.slds-form-element__label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.slds-input__clickable-icon-right {
+  right: 0.75em;
+  position: absolute;
+  top: 25%;
+  cursor: pointer;
+}
+
+.slds-input__input-clickable-icon-right {
+  padding-right: 2em;
+}
+
+.slds-input__clickable-icon-left {
+  left: 0.75em;
+  position: absolute;
+  top: 25%;
+  cursor: pointer;
+}
+
+.slds-input__input-clickable-icon-left {
+  padding-left: 2em;
+}
+
+input[readonly],
+input[role="combobox"][role="textbox"][readonly],
+.slds-input[type="email"][type="text"][readonly],
+.slds-combobox__input[readonly],
+.slds-input[readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  background-color: #f3f3f3;
+  border-color: #939393;
+}
+
+/* Styles for readonly input elements */
+input[readonly]:focus,
+input[role="combobox"][role="textbox"][readonly]:focus,
+.slds-input[type="email"][type="text"][readonly]:focus,
+.slds-combobox__input[readonly]:focus,
+.slds-input[readonly]:focus {
+  border-color: #939393;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}
+
+/* Styles for readonly input elements */
+input[readonly]:focus,
+input[role="combobox"][role="textbox"][readonly]:focus,
+.slds-input[type="email"][type="text"][readonly]:focus,
+.slds-combobox__input[readonly]:focus,
+.slds-input[readonly]:focus {
+  border: 1px solid transparent;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}
+
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  label.slds-form-element__label {
+    max-width: 100%;
+  }
+}
+
+.slds-text_warning {
+  color: var(--slds-g-color-warning-base-60, #dd7a01);
+}

@@ -1,0 +1,46 @@
+<template>
+  <slot>
+    <template if:true={_isBtn}>
+      <div class="nds-is-relative nds-p-around_x-small nds-m-bottom_x-small">
+        <c-sf-gps-ds-osrt-button
+          type="button"
+          variant="brand"
+          onclick={execute}
+          theme={_theme}
+          label={_propSetMap.label}
+          extraclass={extraclass}
+        >
+        </c-sf-gps-ds-osrt-button>
+        <template if:true={isBtnLoading}>
+          <c-sf-gps-ds-osrt-spinner
+            variant="brand"
+            alternative-text={spinnerAlternativeMessage}
+            theme={_theme}
+            size="small"
+          >
+          </c-sf-gps-ds-osrt-spinner>
+        </template>
+      </div>
+      <template if:true={_isDesignMode}>
+        <template if:true={_isActionBlock}>
+          <p>{allCustomLabelsUtil.ODCActionBlockDrop4ElementsBelow}</p>
+          <div
+            class="nds-m-top_small nds-p-around_small omni-designer-action-container"
+          >
+            <slot name="actionBlockDesignTimeChildren"></slot>
+          </div>
+        </template>
+      </template>
+    </template>
+    <template if:true={isPageLoading}>
+      <c-sf-gps-ds-osrt-spinner
+        variant="brand"
+        alternative-text={spinnerAlternativeMessage}
+        theme={_theme}
+        message={spinnerActionMessage}
+        size="medium"
+      >
+      </c-sf-gps-ds-osrt-spinner>
+    </template>
+  </slot>
+</template>

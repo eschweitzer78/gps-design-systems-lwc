@@ -1,0 +1,32 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class={componentClasses} if:false={dismissed} role="alert">
+    <span class="nds-assistive-text">{variation}</span>
+    <span class="nds-icon_container nds-icon-utility nds-m-right_x-small">
+      <c-sf-gps-ds-osrt-icon
+        if:true={icon}
+        baseurl={iconUrl}
+        icon-name={icon}
+        theme={theme}
+        variant="alert"
+        size="small"
+      ></c-sf-gps-ds-osrt-icon>
+    </span>
+    <h2>
+      <slot>{message}</slot>
+    </h2>
+    <button
+      if:true={dismissible}
+      class="nds-button nds-button_icon nds-notify__close nds-button_icon-inverse"
+      title={translatedLabels.closeLabel}
+    >
+      <c-sf-gps-ds-osrt-icon
+        icon-name="utility:close"
+        size="x-small"
+        variant="alert"
+        theme={theme}
+      ></c-sf-gps-ds-osrt-icon>
+      <span class="nds-assistive-text">{translatedLabels.closeLabel}</span>
+    </button>
+  </div>
+</template>

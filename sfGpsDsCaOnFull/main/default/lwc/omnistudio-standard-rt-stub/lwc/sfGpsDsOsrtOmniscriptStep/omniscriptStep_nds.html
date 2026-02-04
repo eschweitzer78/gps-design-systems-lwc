@@ -1,0 +1,18 @@
+<template>
+  <template if:true={jsonDef.bAccordionActive}>
+    <h1
+      class="nds-page-header__title nds-align_absolute-center nds-text-align_center nds-medium-size_8-of-12 nds-p-vertical_large nds-step_label"
+      aria-live="polite"
+      tabindex="0"
+    >
+      {_propSetMap.label}
+    </h1>
+    <div class="nds-medium-size_8-of-12 nds-align_absolute-center">
+      <div
+        class="nds-grid nds-wrap nds-col_padded nds-size_1-of-1 omniscript-step__body-nds"
+      >
+        <slot> </slot>
+      </div>
+    </div>
+  </template>
+</template>

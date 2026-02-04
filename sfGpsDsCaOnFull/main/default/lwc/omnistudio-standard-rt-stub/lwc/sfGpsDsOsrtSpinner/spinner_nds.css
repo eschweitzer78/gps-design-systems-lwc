@@ -1,0 +1,110 @@
+.nds-spinner_container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: visible;
+  opacity: 1;
+  transition:
+    opacity 0.2s ease,
+    visibility 0s;
+  transition-delay: 0s, 0.3s;
+  background-color: #fff;
+}
+
+.nds-spinner {
+  width: 4.5rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.nds-spinner svg circle {
+  fill: #ff6d00;
+  r: 12.5%;
+}
+
+.nds-spinner svg circle:nth-child(1) {
+  cx: 12.5%;
+}
+
+.nds-spinner svg circle:nth-child(2) {
+  cx: 50%;
+}
+
+.nds-spinner svg circle:nth-child(3) {
+  cx: 87.5%;
+}
+
+/* 
+ * This is a copy from the .nds-assistive-text class from NDS.
+ * This is to prevent assistive text from loading on the UI for situations where
+ * NDS is not yet fully loaded on the page prior to the spinner.
+ */
+.nds-assistive-text {
+  position: absolute !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+@media only screen and (max-width: 30em) {
+  .nds-spinner {
+    left: 40%;
+    top: 40%;
+  }
+}
+
+.nds-spinner_brand svg circle {
+  stroke: none;
+}
+
+.nds-spinner_content_container {
+  display: flex;
+  height: 100%;
+}
+
+.nds-spinner_container .nds-grid .nds-spinner_brand {
+  text-align: center;
+  width: 5.5rem;
+}
+
+.nds-spinner_brand > div {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  background-color: #ff6d00;
+  border-radius: 100%;
+  display: inline-block;
+  animation: nds-bounce 1.4s infinite ease-in-out both;
+}
+
+.nds-spinner_brand .nds-dot-leading {
+  animation-delay: -0.32s;
+}
+
+.nds-spinner_brand .nds-dot-middle {
+  animation-delay: -0.16s;
+}
+
+@keyframes nds-bounce {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}

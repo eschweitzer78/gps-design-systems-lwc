@@ -1,0 +1,172 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <slot>
+    <!-- Vertical Mode -->
+    <c-sf-gps-ds-osrt-radio-group
+      if:true={_isVerticalMode}
+      key={jsonDef.name}
+      name={jsonDef.name}
+      label={_propSetMap.label}
+      options={_realtimeOptions}
+      value={elementValue}
+      onchange={handleChange}
+      onfocus={handleFocus}
+      onblur={handleBlur}
+      tab-index={tabIndex}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      field-level-help={_handleHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
+      theme={_theme}
+      type="radio"
+      data-refresh={refresh}
+      alignment={_horizontalMode}
+      message-when-value-missing={_messageWhenValueMissing}
+      data-omni-input
+    >
+      <template if:true={_propSetMap.repeat}>
+        <span slot="label" class={_styleClasses.repeatContainer} role="group">
+          <button
+            if:true={canRepeat}
+            class={_styleClasses.repeatAdd}
+            onclick={handleAdd}
+          >
+            <c-sf-gps-ds-osrt-icon
+              icon-name="utility:add"
+              alternative-text="Repeat Radio"
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </button>
+          <button
+            if:true={canRemove}
+            class={_styleClasses.repeatRemove}
+            onclick={handleRemove}
+          >
+            <c-sf-gps-ds-osrt-icon
+              icon-name="utility:close"
+              alternative-text="Remove Radio"
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </button>
+        </span>
+      </template>
+    </c-sf-gps-ds-osrt-radio-group>
+
+    <!-- Image Mode -->
+    <c-sf-gps-ds-osrt-radio-image-group
+      if:true={_isImageMode}
+      type="radio"
+      name={jsonDef.name}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      is-image="true"
+      value={elementValue}
+      options={_realtimeOptions}
+      label={_propSetMap.label}
+      onfocus={handleFocus}
+      onblur={handleBlur}
+      enabled-caption={_propSetMap.enableCaption}
+      control-width={_propSetMap.optionWidth}
+      control-height={_propSetMap.optionHeight}
+      image-count-in-row={_propSetMap.imageCountInRow}
+      onchange={handleChange}
+      field-level-help={_handleHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
+      tab-index={tabIndex}
+      theme={_theme}
+      data-refresh={refresh}
+      is-image-display={_isImageDisplay}
+      message-when-value-missing={_messageWhenValueMissing}
+      data-omni-input
+    >
+      <template if:true={_propSetMap.repeat}>
+        <span slot="label" class={_styleClasses.repeatContainer} role="group">
+          <button
+            if:true={canRepeat}
+            class={_styleClasses.repeatAdd}
+            onclick={handleAdd}
+          >
+            <c-sf-gps-ds-osrt-icon
+              icon-name="utility:add"
+              alternative-text="Repeat Radio"
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </button>
+          <button
+            if:true={canRemove}
+            class={_styleClasses.repeatRemove}
+            onclick={handleRemove}
+          >
+            <c-sf-gps-ds-osrt-icon
+              icon-name="utility:close"
+              alternative-text="Remove Radio"
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </button>
+        </span>
+      </template>
+    </c-sf-gps-ds-osrt-radio-image-group>
+
+    <!-- Display Wide Mode -->
+    <c-sf-gps-ds-osrt-radio-group
+      if:true={_isDisplayWide}
+      type="button"
+      name={jsonDef.name}
+      required={_propSetMap.required}
+      required-label={allCustomLabelsUtil.OmniRequired}
+      value={elementValue}
+      label={_propSetMap.label}
+      options={_realtimeOptions}
+      onchange={handleChange}
+      onfocus={handleFocus}
+      onblur={handleBlur}
+      field-level-help={_handleHelpText}
+      field-level-help-position={_propSetMap.helpTextPos}
+      tab-index={tabIndex}
+      theme={_theme}
+      data-refresh={refresh}
+      alignment={_horizontalMode}
+      message-when-value-missing={_messageWhenValueMissing}
+      data-omni-input
+    >
+      <template if:true={_propSetMap.repeat}>
+        <span slot="label" class={_styleClasses.repeatContainer} role="group">
+          <button
+            if:true={canRepeat}
+            class={_styleClasses.repeatAdd}
+            onclick={handleAdd}
+          >
+            <c-sf-gps-ds-osrt-icon
+              icon-name="utility:add"
+              alternative-text="Repeat Radio"
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </button>
+          <button
+            if:true={canRemove}
+            class={_styleClasses.repeatRemove}
+            onclick={handleRemove}
+          >
+            <c-sf-gps-ds-osrt-icon
+              icon-name="utility:close"
+              alternative-text="Remove Radio"
+              extraclass={_styleClasses.repeatIcons}
+              size="xx-small"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </button>
+        </span>
+      </template>
+    </c-sf-gps-ds-osrt-radio-group>
+  </slot>
+</template>

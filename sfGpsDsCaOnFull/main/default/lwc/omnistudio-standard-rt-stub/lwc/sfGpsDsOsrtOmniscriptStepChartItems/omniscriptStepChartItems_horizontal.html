@@ -1,0 +1,141 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:true={completed}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="slds-progress__item slds-is-relative slds-is-completed omni-hz-stepchart-list-item omni-hz-stepchart-completed"
+    >
+      <button
+        class="slds-button slds-button_icon slds-button_icon slds-progress__marker slds-progress__marker_icon"
+        aria-describedby={jsonDef.name}
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+      >
+        <svg
+          class="slds-button__icon omni-hz-stepchart-completed-icon"
+          data-index={jsonDef.indexInParent}
+          aria-hidden="true"
+        >
+          <use
+            data-index={jsonDef.indexInParent}
+            xlink:href={stepChartIconUrl}
+          ></use>
+        </svg>
+        <span class="slds-assistive-text">{_labelCompleted}</span>
+      </button>
+      <div
+        id={jsonDef.name}
+        role="tooltip"
+        class="slds-is-absolute"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+        aria-label={stepLabel}
+      >
+        <span class="omni-hz-stepchart-popover-container">
+          <div
+            class="slds-popover slds-popover_tooltip slds-nubbin_bottom omni-hz-stepchart-popover"
+            aria-hidden="true"
+          >
+            <div class="slds-popover__body slds-truncate">{stepLabel}</div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </template>
+
+  <template if:true={inProgress}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="slds-progress__item slds-is-active omni-hz-stepchart-list-item"
+    >
+      <button
+        class="slds-button slds-progress__marker"
+        aria-describedby={jsonDef.name}
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+      >
+        <span class="slds-assistive-text">{_labelInProgress}</span>
+      </button>
+      <div class="slds-is-absolute">
+        <div
+          class="slds-m-top_medium slds-is-relative slds-progress__step-label omni-hz-stepchart-label slds-p-top_medium"
+          data-index={jsonDef.indexInParent}
+          aria-describedby={jsonDef.name}
+          onclick={handleStepClick}
+          title={stepLabel}
+        >
+          {stepLabel}
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template if:true={pristine}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="slds-progress__item omni-hz-stepchart-list-item"
+    >
+      <button
+        class="slds-button slds-progress__marker omni-stepchart-button-pristine"
+        aria-describedby={jsonDef.name}
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+        disabled
+      >
+        <span class="slds-assistive-text">{_labelUntouched}</span>
+      </button>
+      <div
+        id={jsonDef.name}
+        role="tooltip"
+        class="slds-is-absolute"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+        aria-label={stepLabel}
+      >
+        <span class="omni-hz-stepchart-popover-container">
+          <div
+            class="slds-popover slds-popover_tooltip slds-nubbin_bottom omni-hz-stepchart-popover"
+            aria-hidden="true"
+          >
+            <div class="slds-popover__body slds-truncate">{stepLabel}</div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </template>
+
+  <template if:true={nonpristine}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="slds-progress__item omni-hz-stepchart-list-item"
+    >
+      <button
+        class="slds-button slds-progress__marker"
+        style="background: rgb(21, 137, 238); border-color: #fff"
+        aria-describedby={jsonDef.name}
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+        disabled
+      >
+        <span class="slds-assistive-text">{_labelIncomplete}</span>
+      </button>
+      <div
+        id={jsonDef.name}
+        role="tooltip"
+        class="slds-is-absolute"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+        aria-label={stepLabel}
+      >
+        <span class="omni-hz-stepchart-popover-container">
+          <div
+            class="slds-popover slds-popover_tooltip slds-nubbin_bottom omni-hz-stepchart-popover"
+            aria-hidden="true"
+          >
+            <div class="slds-popover__body slds-truncate">{stepLabel}</div>
+          </div>
+        </span>
+      </div>
+    </div>
+  </template>
+</template>

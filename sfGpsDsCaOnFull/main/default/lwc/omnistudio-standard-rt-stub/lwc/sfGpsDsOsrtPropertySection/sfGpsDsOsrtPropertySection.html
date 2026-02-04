@@ -1,0 +1,49 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="section-container slds-border_bottom">
+    <div
+      class="slds-grid slds-wrap section-header slds-border_bottom slds-p-around_x-small"
+    >
+      <div class="slds-size_9-of-12">
+        <h3>{title}<template if:true={showCount}>{countDisplay}</template></h3>
+      </div>
+      <!--expand button-->
+      <div class="slds-size_3-of-12">
+        <button
+          if:true={showExpandButton}
+          title="expand"
+          class="slds-button slds-button_icon slds-float_right slds-m-top_xx-small"
+          onclick={expandSection}
+        >
+          <c-sf-gps-ds-osrt-icon
+            icon-name="utility:chevrondown"
+            size="xx-small"
+          ></c-sf-gps-ds-osrt-icon>
+        </button>
+
+        <!--collapse button-->
+        <button
+          if:true={showCollapseButton}
+          title="collapse"
+          class="slds-button slds-button_icon slds-float_right slds-m-top_xx-small"
+          onclick={collapseSection}
+        >
+          <c-sf-gps-ds-osrt-icon
+            icon-name="utility:chevronup"
+            size="xx-small"
+          ></c-sf-gps-ds-osrt-icon>
+        </button>
+
+        <!--Title action buttons-->
+        <span class="slds-float_right">
+          <slot name="title-actions"></slot>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!--section content-->
+  <div class="section-content-container">
+    <slot> </slot>
+  </div>
+</template>

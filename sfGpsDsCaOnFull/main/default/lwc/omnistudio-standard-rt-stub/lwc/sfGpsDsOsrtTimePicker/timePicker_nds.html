@@ -1,0 +1,134 @@
+<template>
+  <div class={errorClass}>
+    <div class="nds-form-element__control">
+      <div class="nds-combobox_container">
+        <div
+          class="nds-combobox nds-dropdown-trigger nds-dropdown-trigger_click nds-combobox-picklist nds-timepicker"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          role="combobox"
+        >
+          <div
+            class="nds-combobox__form-element nds-input-has-icon nds-input-has-icon_right nds-form-element__control nds-form-element__control-animated-label"
+            role="none"
+            onblur={handleComponentLosesFocus}
+          >
+            <input
+              class="nds-input nds-input_mask nds-combobox__input nds-combobox__input-value"
+              autocomplete="off"
+              id="time-input"
+              role="textbox"
+              type="text"
+              name={name}
+              disabled={disabled}
+              required={required}
+              onblur={showLookup}
+              onchange={onInputChange}
+              onkeydown={handleKeyboardEvent}
+              onkeyup={handleKeyUp}
+              onmousedown={showLookup}
+              readonly={readOnly}
+              aria-readonly={readOnly}
+              value={_displayValue}
+              tabindex={tabIndex}
+              placeholder={placeholder}
+              aria-autocomplete="both"
+              style={styleProperties.value.styles}
+              aria-describedby="errorMessageblock"
+            />
+            <div
+              class="nds-form-element__label nds-align-middle nds-animated-label__ease-out"
+              data-label="true"
+            >
+              <label
+                if:true={label}
+                for="time-input"
+                style={styleProperties.label.styles}
+              >
+                {label}
+                <abbr
+                  if:true={required}
+                  class="nds-required nds-p-left_xx-small"
+                  title={requiredLabel}
+                  ><span if:false={hideAsterisk}>*</span></abbr
+                >
+              </label>
+              <c-sf-gps-ds-osrt-tooltip
+                if:true={fieldLevelHelp}
+                icon-url={iconUrl}
+                theme={theme}
+                class="nds-tooltip__container"
+                content={fieldLevelHelp}
+                associated-component-label={label}
+                arrowposition={fieldLevelHelpPosition}
+                data-field-level-help
+              ></c-sf-gps-ds-osrt-tooltip>
+              <slot name="label"></slot>
+            </div>
+            <span
+              if:false={hideIconVal}
+              class="nds-icon_container nds-icon-utility-clock nds-input__icon nds-input__icon_right"
+            >
+              <c-sf-gps-ds-osrt-icon
+                icon-name="utility:clock"
+                size="x-small"
+                baseurl={iconUrl}
+                theme={theme}
+                alternative-text={clockIconLabel}
+              ></c-sf-gps-ds-osrt-icon>
+            </span>
+          </div>
+          <ul
+            id="time_picker_ul"
+            class="nds-listbox nds-listbox_vertical nds-dropdown nds-dropdown_fluid nds-dropdown_length-5"
+            role="listbox"
+            if:true={_isOpen}
+            onmousedown={scrollerClickOnList}
+          >
+            <template for:each={options} for:item="item" for:index="index">
+              <li
+                onmousedown={selectOption}
+                id={item.id}
+                data-index={index}
+                data-selected={item.selected}
+                data-val={item.value}
+                data-timepicker-option
+                key={item.id}
+                class="nds-media nds-listbox__option nds-listbox__option_plain nds-media_small nds-media_center"
+                role="option"
+                tabindex="-1"
+                aria-selected={item.selected}
+                style="height: 37px"
+              >
+                <span class="nds-media__figure">
+                  <c-sf-gps-ds-osrt-icon
+                    icon-name="utility:check"
+                    extraclass="nds-listbox__icon-selected"
+                    size="x-small"
+                    baseurl={iconUrl}
+                    theme={theme}
+                  ></c-sf-gps-ds-osrt-icon>
+                </span>
+                <span class="nds-media__body">
+                  <span class="nds-truncate" title={item.value}>
+                    {item.value}</span
+                  >
+                </span>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div
+      if:true={isError}
+      data-timepicker-error-block
+      class="nds-form-element__help nds-form-element__help_text-transform__none"
+      aria-live="assertive"
+      id="errorMessageBlock"
+      role="alert"
+    >
+      {errorMessage}
+    </div>
+  </div>
+</template>

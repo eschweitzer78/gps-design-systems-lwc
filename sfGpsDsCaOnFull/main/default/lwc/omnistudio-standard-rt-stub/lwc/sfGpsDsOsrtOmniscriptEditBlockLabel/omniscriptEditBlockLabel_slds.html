@@ -1,0 +1,63 @@
+<template>
+  <!-- Cards and LongCards -->
+  <template if:true={_showLabel}>
+    <!-- Header/Label -->
+    <h2
+      aria-label={_jsonDef.propSetMap.label}
+      class="slds-m-bottom_x-small slds-text-heading_small slds-text"
+      aria-live="polite"
+    >
+      {_propSetMap.label}
+    </h2>
+
+    <!-- Global Actions -->
+    <div if:true={_jsonDef.propSetMap.gActions} class="slds-grid slds-wrap">
+      <template
+        for:each={_gActions}
+        for:item="gActionItem"
+        for:index="gActionIndex"
+      >
+        <template if:true={gActionItem.hasIcon}>
+          <div
+            key={gActionItem.lwcId}
+            class="slds-m-bottom_xx-small slds-m-right_xx-small"
+          >
+            <c-sf-gps-ds-osrt-icon
+              extraclass="slds-input__icon"
+              icon-name={gActionItem.icon}
+              theme="slds"
+              alternative-text="icon"
+              size="small"
+              style="cursor: pointer"
+              onclick={gActionItem.handleClick}
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </div>
+        </template>
+        <template if:false={gActionItem.hasIcon}>
+          <div key={gActionItem.lwcId} class={gActionItem.cls}>
+            <div class="slds-m-bottom_x-small slds-m-right_xx-small">
+              <button
+                class="slds-button slds-button_neutral slds-button_brand slds-size_1-of-1"
+                onclick={gActionItem.handleClick}
+              >
+                {gActionItem.label}
+              </button>
+            </div>
+          </div>
+        </template>
+      </template>
+    </div>
+  </template>
+
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={scriptHeaderDef.allCustomLabels.OmniSpinnerTextLoading}
+      theme={_theme}
+      size="medium"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

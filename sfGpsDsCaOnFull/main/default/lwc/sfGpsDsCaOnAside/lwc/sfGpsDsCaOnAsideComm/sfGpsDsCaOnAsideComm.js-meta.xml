@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Aside</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="headingLevel"
+        type="String"
+        label="Heading level"
+        description="The heading level of the aside title."
+        default="default"
+        datasource="default,h2,h3,h4,h5,h6"
+      />
+      <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="Overview of the aside in Markdown format. Refrain from using multiple lines if possible."
+        default="Aside"
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="highlightColour"
+        type="String"
+        label="Highlight colour"
+        description="Border colour of the callout."
+        default="default"
+        datasource="default,blue,gold,green,lime,purple,sky,taupe,teal,yellow"
+      />
+      <property
+        name="content"
+        type="String"
+        label="Content"
+        description="Aside message in Markdown format."
+        default="Asides are text excerpts, used as a *visual* cue to draw attention to the text. They're used to help direct users toward an **important** piece of information that is not directly related to the content of the page."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

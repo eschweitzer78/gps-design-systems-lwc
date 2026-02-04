@@ -1,0 +1,7 @@
+<template>
+  <img if:true={imgsrc} src={imgsrc} class={getClasses} />
+  <svg if:false={imgsrc} class={getClasses} aria-hidden="true">
+    <use xlink:href={getUrl}></use>
+  </svg>
+  <span class="nds-assistive-text">{alternativeText}</span>
+</template>

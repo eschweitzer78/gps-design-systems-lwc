@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+  <labels>
+    <fullName>sfGpsDsAuthUsernameFieldLabel</fullName>
+    <categories>sfGpsDsAuth,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the username field.</shortDescription>
+    <value>Username</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthPasswordFieldLabel</fullName>
+    <categories>sfGpsDsAuth,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the password field.</shortDescription>
+    <value>Password</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthFieldRequiredLabel</fullName>
+    <categories>sfGpsDsAuth,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel label when a required field is empty.</shortDescription>
+    <value>This field is required.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthAuthDisabledTitle</fullName>
+    <categories>sfGpsDsAuth,Error,Title</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel title when authentication is disabled.</shortDescription>
+    <value>This site is unauthenticated</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthAuthDisabledLabel</fullName>
+    <categories>sfGpsDsAuth,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel title when authentication is disabled.</shortDescription>
+    <value>This site is unauthenticated and you cannot log in or reset a password.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthAuthConfigErrorTitle</fullName>
+    <categories>sfGpsDsAuth,Error,Title</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel label when authentication configuration data cannot be loaded.</shortDescription>
+    <value>We hit a snag</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthAuthConfigErrorLabel</fullName>
+    <categories>sfGpsDsAuth,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel label when authentication configuration data cannot be loaded.</shortDescription>
+    <value>The registration configuration data could not be read. Please try again later and contact us for more information if the issue persists.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthFirstNameFieldLabel</fullName>
+    <categories>sfGpsDsAuth,Registration,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the first name field in Self Registration.</shortDescription>
+    <value>First name</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLastNameFieldLabel</fullName>
+    <categories>sfGpsDsAuth,Registration,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the last name field in Self Registration.</shortDescription>
+    <value>Last name</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthConfirmPasswordFieldLabel</fullName>
+    <categories>sfGpsDsAuth,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the confirm password field in Self Registration.</shortDescription>
+    <value>Confirm password</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthRegisterButtonLabel</fullName>
+    <categories>sfGpsDsAuth,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the register button in Self Registration.</shortDescription>
+    <value>Sign up</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthRegisterWaitLabel</fullName>
+    <categories>sfGpsDsAuth,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the register wait alternative text in Self Registration.</shortDescription>
+    <value>Signing you up, please wait.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthAlreadyRegisteredButtonLabel</fullName>
+    <categories>sfGpsDsAuth,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the already registered button in Self Registration.</shortDescription>
+    <value>Already have an account?</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthRegistrationErrorTitle</fullName>
+    <categories>sfGpsDsAuth,Registration,Error,Title</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel title in Self Registration.</shortDescription>
+    <value>There was an issue while signing you up</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthRegistrationErrorDefaultLabel</fullName>
+    <categories>sfGpsDsAuth,Registration,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Default error panel label in Self Registration.</shortDescription>
+    <value>We cannot sign you up at this time. Please try again later and contact us if the issue persists.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthRegistrationPasswordMismatchLabel</fullName>
+    <categories>sfGpsDsAuth,Registration,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel label when passwords do not match in Self Registration.</shortDescription>
+    <value>Your passwords do not match.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthRegistrationDisabledTitle</fullName>
+    <categories>sfGpsDsAuth,Registration,Error,Title</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel title when registration is disabled in Self Registration.</shortDescription>
+    <value>Registration is currently disabled</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthRegistrationDisabledLabel</fullName>
+    <categories>sfGpsDsAuth,Registration,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel label when registration is disabled in Self Registration.</shortDescription>
+    <value>This portal is not accepting new self-registrations at this time. Please contact us for more information.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLoginButtonLabel</fullName>
+    <categories>sfGpsDsAuth,Login,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label of the login button across the board, including in Login.</shortDescription>
+    <value>Log in</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLogoutButtonLabel</fullName>
+    <categories>sfGpsDsAuth,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label of the logout button across the board.</shortDescription>
+    <value>Log out</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLoginRegisterButtonLabel</fullName>
+    <categories>sfGpsDsAuth,Login,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label of the register button in Login.</shortDescription>
+    <value>Register a new account</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLoginForgotPasswordButtonLabel</fullName>
+    <categories>sfGpsDsAuth,Login,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label of the forgot password button in Login.</shortDescription>
+    <value>Forgot your password?</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLoginErrorTitle</fullName>
+    <categories>sfGpsDsAuth,Login,Error,Title</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel title in Login.</shortDescription>
+    <value>There was an issue while logging you in</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLoginErrorDefaultLabel</fullName>
+    <categories>sfGpsDsAuth,Login,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Default error panel label in Login.</shortDescription>
+    <value>We cannot log you in at this time. Please try again later and contact us if the issue persists.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLoginWaitLabel</fullName>
+    <categories>sfGpsDsAuth,Login,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the login wait alternative text in Login.</shortDescription>
+    <value>Logging you in, please wait.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthLoginInvalidDefaultLabel</fullName>
+    <categories>sfGpsDsAuth,Login,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the default error when unsuccessful in Login.</shortDescription>
+    <value>Invalid username or password.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthCheckPasswordBackToLoginButtonLabel</fullName>
+    <categories>sfGpsDsAuth,CheckPassword,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label of the back to login button in Check Password.</shortDescription>
+    <value>Back to login</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthForgotPasswordResetButtonLabel</fullName>
+    <categories>sfGpsDsAuth,ForgotPassword,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label of the reset button in Forgot Password.</shortDescription>
+    <value>Reset password</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthForgotPasswordCancelButtonLabel</fullName>
+    <categories>sfGpsDsAuth,ForgotPassword,Button</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label of the cancel button in Forgot Password.</shortDescription>
+    <value>Cancel</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthForgotPasswordWaitLabel</fullName>
+    <categories>sfGpsDsAuth,ForgotPassword,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Label for the reset password wait alternative text in Forgot Password.</shortDescription>
+    <value>Resetting your password, please wait.</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthForgotPasswordErrorTitle</fullName>
+    <categories>sfGpsDsAuth,ForgotPassword,Error,Title</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Error panel title in Check Password.</shortDescription>
+    <value>There was an issue while resetting your password</value>
+  </labels>
+  <labels>
+    <fullName>sfGpsDsAuthForgotPasswordErrorDefaultLabel</fullName>
+    <categories>sfGpsDsAuth,ForgotPassword,Error,Label</categories>
+    <language>en_US</language>
+    <protected>false</protected>
+    <shortDescription>Default error panel label in Check Password.</shortDescription>
+    <value>We cannot reset your password at this time. Please try again later and contact us if the issue persists.</value>
+  </labels>
+</CustomLabels>

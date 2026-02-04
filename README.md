@@ -49,7 +49,7 @@ While installing, expand the advanced options to pick the `Compile only the Apex
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcmUIAS" title="sfGpsDsUkGovFull">this link</a> to install the `sfGpsDsUkGov` unlocked package in your org (with `sfGpsDs included`).
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t000000000000000" title="sfGpsDsCaOnFull">this link</a> to install the `sfGpsDsCaOn` unlocked package in your org (with `sfGpsDs included`).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcmtIAC" title="sfGpsDsCaOnFull">this link</a> to install the `sfGpsDsCaOn` unlocked package in your org (with `sfGpsDs included`).
 
 ## Installing the production versions using Unlocked Packages
 

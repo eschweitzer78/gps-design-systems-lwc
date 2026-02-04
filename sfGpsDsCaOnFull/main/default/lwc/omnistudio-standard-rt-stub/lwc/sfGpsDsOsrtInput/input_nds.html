@@ -1,0 +1,471 @@
+<template>
+  <div if:false={isCustomLwc} class={errorClass}>
+    <div if:true={pretext}>
+      <span if:true={isCheckbox} class="slds-form-element__addon"
+        >{pretext}</span
+      >
+    </div>
+    <div if:true={isCheckbox} class="nds-form-element__control">
+      <div class="nds-checkbox">
+        <input
+          onchange={triggerInputEvent}
+          onfocus={triggerEvent}
+          class="vlocity-input nds-input_mask"
+          checked={checked}
+          onblur={validateError}
+          required={required}
+          aria-invalid={isAriaInvalid}
+          aria-describedby="errorMessageblock"
+          disabled={disabled}
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          type={type}
+          name={name}
+          id={inputId}
+          aria-label={ariaLabel}
+          value={_value}
+          tabindex={tabIndex}
+        />
+        <label class="nds-checkbox__label" data-label="true" for={inputId}>
+          <span class="nds-checkbox_faux"></span>
+          <c-sf-gps-ds-osrt-icon
+            if:true={checkboxLabelIconName}
+            theme={theme}
+            color={iconColor}
+            iconposition="left"
+            icon-name={checkboxLabelIconName}
+            size="x-small"
+            variant="inverse"
+            extraclass="slds-m-right_xx-small"
+          ></c-sf-gps-ds-osrt-icon>
+          <abbr if:true={required} title={requiredLabel} class="nds-required"
+            >*</abbr
+          >
+          <span
+            class="nds-form-element__label nds-form-element__control-help nds-checkbox-span"
+            >{label}</span
+          >
+        </label>
+        <c-sf-gps-ds-osrt-tooltip
+          class="nds-tooltip__container"
+          if:true={fieldLevelHelp}
+          icon-url={iconUrl}
+          icon-name={iconName}
+          content={fieldLevelHelp}
+          associated-component-label={label}
+          theme="nds"
+          arrowposition={fieldLevelHelpPosition}
+          data-field-level-help
+        ></c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </div>
+    </div>
+
+    <div if:true={_isFormula}>
+      <label class="nds-form-element__label" for={inputId}>{label}</label>
+      <input
+        type="text"
+        class="nds-input"
+        value={inputValue}
+        readonly
+        disabled
+        onchange={triggerEvent}
+        onfocus={triggerEvent}
+        onblur={triggerEvent}
+        onkeydown={triggerKeyEvents}
+        onkeyup={triggerKeyEvents}
+        aria-describedby="errorMessageblock"
+      />
+    </div>
+
+    <div if:true={isRadio} class="nds-form-element__control">
+      <div class="nds-radio">
+        <input
+          onchange={triggerInputEvent}
+          onblur={closeTooltip}
+          onfocus={triggerEvent}
+          class="vlocity-input nds-input_mask"
+          checked={checked}
+          type={type}
+          required={required}
+          aria-invalid={isAriaInvalid}
+          aria-describedby="errorMessageblock"
+          disabled={disabled}
+          readonly={readOnly}
+          aria-readonly={readOnly}
+          name={name}
+          id={inputId}
+          value={_value}
+        />
+        <label class="nds-radio__label" for={inputId}>
+          <span class="nds-radio_faux"></span>
+          <span class="nds-form-element__label">{label}</span>
+        </label>
+      </div>
+    </div>
+
+    <label
+      if:true={isToggle}
+      class="nds-checkbox_toggle nds-grid"
+      for={inputId}
+    >
+      <span class="nds-form-element__label nds-m-bottom_none">{label}</span>
+      <input
+        onchange={triggerInputEvent}
+        onblur={closeTooltip}
+        onfocus={triggerEvent}
+        class="vlocity-input nds-input_mask"
+        name={name}
+        checked={checked}
+        disabled={disabled}
+        readonly={readOnly}
+        aria-readonly={readOnly}
+        type="checkbox"
+        aria-describedby={inputId}
+        value={_value}
+        tabindex={tabIndex}
+        id={inputId}
+      />
+      <span class="nds-checkbox_faux_container" aria-live="assertive">
+        <span class="nds-checkbox_faux"></span>
+        <span class="nds-checkbox_on">{toggleOnLabel}</span>
+        <span class="nds-checkbox_off">{toggleOffLabel}</span>
+      </span>
+    </label>
+
+    <div if:false={static} class={pretextClass}>
+      <div if:true={isFile} class="nds-form-element__control">
+        <div class="nds-file-selector-container">
+          <input
+            id={inputId}
+            class="vlocity-input nds-input nds-file-selector_input"
+            multiple={multiple}
+            tabindex={tabIndex}
+            accesskey={accessKey}
+            onblur={validateError}
+            onchange={triggerInputEvent}
+            type={type}
+            disabled={disabled}
+            required={required}
+            aria-invalid={isAriaInvalid}
+            aria-describedby="errorMessageblock"
+            readonly={readOnly}
+            aria-readonly={readOnly}
+            aria-labelledby="file-selector-primary-label file-selector-secondary-label"
+            accept={accept}
+            onfocus={triggerEvent}
+          />
+          <label class="nds-file-selector_label" for={inputId}> {label} </label>
+          <span class="nds-file-selector_icon">
+            <c-sf-gps-ds-osrt-icon
+              theme="nds"
+              baseurl={iconUrl}
+              color={iconColor}
+              parenttype="button"
+              iconposition="left"
+              icon-name="utility:upload"
+              alternative-text={translatedLabels.cmpUpload}
+              size="x-small"
+              variant="inverse"
+            ></c-sf-gps-ds-osrt-icon>
+          </span>
+        </div>
+        <ul
+          class="nds-size--1-of-1 nds-p-vertical_small nds-file-selector__files"
+        >
+          <template for:each={_value} for:item="item" for:index="index">
+            <li
+              key={item.id}
+              class="nds-pill nds-p-around_xx-small nds-m-right_x-small"
+            >
+              <span>{item.filename} ( <i>{item.size}</i> )</span>
+              <span class="nds-file-selector__remove-file-icon">
+                <c-sf-gps-ds-osrt-icon
+                  theme={theme}
+                  baseurl={iconUrl}
+                  iconposition="left"
+                  onclick={deleteFile}
+                  icon-name="action:delete"
+                  color={iconColor}
+                  alternative-text={translatedLabels.cmpDelete}
+                  data-index={index}
+                  size="x-small"
+                ></c-sf-gps-ds-osrt-icon>
+              </span>
+            </li>
+          </template>
+        </ul>
+      </div>
+
+      <span if:true={showPretext} class="nds-form-element__addon"
+        >{pretext}</span
+      >
+      <span
+        if:true={isIconLeftClickable}
+        class="nds-icon_container nds-input__icon nds-input__icon_left nds-input__clickable-icon-left"
+        onclick={iconClickCallback}
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name={iconNameLeft}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+        ></c-sf-gps-ds-osrt-icon>
+      </span>
+      <span
+        if:true={isIconLeft}
+        class="nds-icon_container nds-input__icon nds-input__icon_left"
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name={iconNameLeft}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+        ></c-sf-gps-ds-osrt-icon>
+      </span>
+      <input
+        id={inputId}
+        if:true={isInput}
+        tabindex={tabIndex}
+        value={inputValue}
+        accesskey={accessKey}
+        pattern={pattern}
+        step={step}
+        min={min}
+        max={max}
+        maxlength={maxLength}
+        minlength={minLength}
+        class={resolvedInputClass}
+        onfocus={handleFocus}
+        onblur={validateError}
+        type={type}
+        data-isnumber={isNumber}
+        disabled={disabled}
+        required={required}
+        aria-invalid={isAriaInvalid}
+        aria-describedby="errorMessageblock"
+        readonly={readOnly}
+        aria-readonly={readOnly}
+        placeholder={placeholder}
+        oninput={triggerInputEvent}
+        aria-labelledby={ariaLabelledBy}
+        aria-label={ariaLabel}
+        style={styleProperties.value.styles}
+        autocomplete={autocomplete}
+        onchange={triggerEvent}
+        onkeydown={triggerKeyEvents}
+        onkeyup={triggerKeyEvents}
+        name={name}
+      />
+
+      <input
+        class="hiddenNumber nds-hide"
+        required={required}
+        aria-invalid={isAriaInvalid}
+        if:true={isNumber}
+        min={min}
+        max={max}
+        step={step}
+        type="number"
+        value={_value}
+        style={styleProperties.value.styles}
+        aria-describedby="errorMessageblock"
+      />
+      <span
+        if:true={isIconRightClickable}
+        class="nds-icon_container nds-input__icon nds-input__icon_right nds-input__clickable-icon-right"
+        onclick={iconClickCallback}
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name={iconNameRight}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+        ></c-sf-gps-ds-osrt-icon>
+      </span>
+      <span
+        if:true={isIconRight}
+        class="nds-icon_container nds-input__icon nds-input__icon_right"
+      >
+        <c-sf-gps-ds-osrt-icon
+          icon-name={iconNameRight}
+          color={iconColor}
+          theme={theme}
+          size={size}
+          baseurl={iconUrl}
+        ></c-sf-gps-ds-osrt-icon>
+      </span>
+      <span if:true={posttext} class="nds-form-element__addon">{posttext}</span>
+      <div
+        class="nds-form-element__label nds-align-middle nds-animated-label__ease-out"
+        if:false={isCheckbox}
+      >
+        <label
+          if:true={labelVisible}
+          for={inputId}
+          data-label="true"
+          style={styleProperties.label.styles}
+          >{label}
+          <abbr
+            if:true={required}
+            class="nds-required nds-p-left_xx-small"
+            title={requiredLabel}
+            >*</abbr
+          >
+        </label>
+        <c-sf-gps-ds-osrt-tooltip
+          class="nds-tooltip__container"
+          if:true={fieldLevelHelp}
+          icon-url={iconUrl}
+          icon-name={iconName}
+          content={fieldLevelHelp}
+          associated-component-label={label}
+          theme="nds"
+          arrowposition={fieldLevelHelpPosition}
+          data-field-level-help
+        ></c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </div>
+    </div>
+    <div
+      if:true={isError}
+      class="nds-form-element__help nds-size_1-of-1"
+      id="errorMessageBlock"
+      role="alert"
+    >
+      {errorMessage}
+    </div>
+    <div
+      if:true={warningFlag}
+      class="nds-form-element__help nds-size_1-of-1 nds-text_warning"
+      aria-live="polite"
+      role="alert"
+    >
+      {warningMessage}
+    </div>
+    <div class="nds-grid" if:true={static}>
+      <div class="nds-form-element__static">{inputValue}</div>
+    </div>
+    <span if:true={inlineHelp} class="nds-form-element__static"
+      >{inlineHelp}</span
+    >
+  </div>
+
+  <c-sf-gps-ds-osrt-date-picker
+    field-level-help={fieldLevelHelp}
+    field-level-help-position={fieldLevelHelpPosition}
+    mask={mask}
+    if:true={isDate}
+    placeholder={placeholder}
+    theme={theme}
+    label={label}
+    name={name}
+    icon-url={iconUrl}
+    min={min}
+    max={max}
+    tab-index={tabIndex}
+    output-format={outputFormat}
+    format={format}
+    value={inputValue}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    disabled={disabled}
+    required={required}
+    read-only={readOnly}
+    size={size}
+    position={position}
+    output-type={outputType}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    message-when-value-missing={messageWhenValueMissing}
+    message-when-bad-input={messageWhenBadInput}
+    select-date-label={selectDateLabel}
+    prev-month-label={prevMonthLabel}
+    next-month-label={nextMonthLabel}
+    pick-year-label={pickYearLabel}
+    today-label={todayLabel}
+    required-label={requiredLabel}
+    styles={styles}
+  >
+    <slot slot="label" name="label"></slot>
+  </c-sf-gps-ds-osrt-date-picker>
+
+  <c-sf-gps-ds-osrt-time-picker
+    if:true={isTime}
+    placeholder={placeholder}
+    theme={theme}
+    label={label}
+    name={name}
+    icon-url={iconUrl}
+    min={min}
+    max={max}
+    value={inputValue}
+    tab-index={tabIndex}
+    read-only={readOnly}
+    format={format}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    disabled={disabled}
+    required={required}
+    required-label={requiredLabel}
+    field-level-help={fieldLevelHelp}
+    field-level-help-position={fieldLevelHelpPosition}
+    output-format={outputFormat}
+    output-type={outputType}
+    message-when-value-missing={messageWhenValueMissing}
+    interval={interval}
+    message-when-bad-input={messageWhenBadInput}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    styles={styles}
+  >
+    <slot slot="label" name="label"></slot>
+  </c-sf-gps-ds-osrt-time-picker>
+
+  <c-sf-gps-ds-osrt-datetime-picker
+    if:true={isDateTime}
+    name={name}
+    label={label}
+    theme={theme}
+    icon-url={iconUrl}
+    min={min}
+    max={max}
+    value={inputValue}
+    tab-index={tabIndex}
+    read-only={readOnly}
+    disabled={disabled}
+    required={required}
+    message-when-value-missing={messageWhenValueMissing}
+    interval={interval}
+    field-level-help={fieldLevelHelp}
+    field-level-help-position={fieldLevelHelpPosition}
+    output-format={outputFormat}
+    output-type={outputType}
+    message-when-bad-input={messageWhenBadInput}
+    date-label={dateLabel}
+    date-name={dateName}
+    date-placeholder={datePlaceholder}
+    time-label={timeLabel}
+    time-name={timeName}
+    time-placeholder={timePlaceholder}
+    date-format={dateFormat}
+    time-format={timeFormat}
+    timezone={timezone}
+    locale-format={dateTimeLocaleFormat}
+    locale-format-invalid-error={localeFormatInvalidError}
+    select-date-label={selectDateLabel}
+    prev-month-label={prevMonthLabel}
+    next-month-label={nextMonthLabel}
+    pick-year-label={pickYearLabel}
+    today-label={todayLabel}
+    required-label={requiredLabel}
+    message-when-range-overflow={messageWhenRangeOverflow}
+    message-when-range-underflow={messageWhenRangeUnderflow}
+    styles={styles}
+  >
+    <slot slot="label" name="label"></slot>
+  </c-sf-gps-ds-osrt-datetime-picker>
+</template>

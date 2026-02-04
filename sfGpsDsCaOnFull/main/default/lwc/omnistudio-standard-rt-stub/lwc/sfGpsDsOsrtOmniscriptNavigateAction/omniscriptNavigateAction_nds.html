@@ -1,0 +1,86 @@
+<template>
+  <slot>
+    <template if:true={isActionValid}>
+      <template if:false={_useNavigateAction}>
+        <div
+          class="nds-is-relative nds-p-around_x-small nds-m-bottom_x-small"
+          if:true={_isBtn}
+        >
+          <c-sf-gps-ds-osrt-button
+            theme={_theme}
+            onclick={execute}
+            extraclass={extraclass}
+            label={_propSetMap.label}
+            title={_propSetMap.buttonTitle}
+            icon-position={_propSetMap.iconPosition}
+            icon-name={_propSetMap.iconName}
+            variant={_propSetMap.variant}
+          ></c-sf-gps-ds-osrt-button>
+        </div>
+      </template>
+
+      <c-sf-gps-ds-osrt-navigate-action
+        data-navigate-action
+        if:true={_useNavigateAction}
+        target-type={targetType}
+        target-name={targetName}
+        target-id={targetId}
+        target-article-type={_propSetMap.targetArticleType}
+        target-relationship={_propSetMap.targetRelationshipName}
+        target-params={targetParams}
+        target-action={targetAction}
+        use-href={_isLink}
+        replace={_propSetMap.replace}
+      >
+        <div
+          class="nds-is-relative nds-p-around_x-small nds-m-bottom_x-small"
+          if:true={_isBtn}
+        >
+          <c-sf-gps-ds-osrt-button
+            if:false={_isLink}
+            theme={_theme}
+            extraclass={extraclass}
+            label={_propSetMap.label}
+            title={_propSetMap.buttonTitle}
+            icon-position={_propSetMap.iconPosition}
+            icon-name={_propSetMap.iconName}
+            variant={_propSetMap.variant}
+          ></c-sf-gps-ds-osrt-button>
+
+          <template if:true={_isLink}> {_propSetMap.label} </template>
+        </div>
+      </c-sf-gps-ds-osrt-navigate-action>
+    </template>
+
+    <template if:false={isActionValid}>
+      <div
+        class="nds-is-relative nds-p-around_x-small nds-m-bottom_x-small"
+        if:true={_isBtn}
+      >
+        <c-sf-gps-ds-osrt-button
+          if:false={_isLink}
+          onclick={showErrorModal}
+          theme={_theme}
+          extraclass={extraclass}
+          label={_propSetMap.label}
+          title={_propSetMap.buttonTitle}
+          icon-position={_propSetMap.iconPosition}
+          icon-name={_propSetMap.iconName}
+          variant={_propSetMap.variant}
+        ></c-sf-gps-ds-osrt-button>
+
+        <template if:true={_isLink}> {_propSetMap.label} </template>
+      </div>
+    </template>
+
+    <template if:true={isPageLoading}>
+      <c-sf-gps-ds-osrt-spinner
+        variant="brand"
+        alternative-text="Loading..."
+        theme={_theme}
+        size="medium"
+      >
+      </c-sf-gps-ds-osrt-spinner>
+    </template>
+  </slot>
+</template>

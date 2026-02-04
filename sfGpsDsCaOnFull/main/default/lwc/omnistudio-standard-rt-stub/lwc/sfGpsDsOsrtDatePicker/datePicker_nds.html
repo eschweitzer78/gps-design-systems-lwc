@@ -1,0 +1,247 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class={getHeight}>
+    <div class="nds-form nds-form_compound">
+      <fieldset class="nds-form-element nds-form-container">
+        <div class="nds-grid nds-gutters nds-size_1-of-1 nds-m-around_none">
+          <div class="nds-col nds-p-around_none">
+            <div class={errorClass}>
+              <div
+                class="nds-datepicker nds-form-element__control nds-input-has-icon nds-input-has-icon_right nds-form-element__control-animated-label"
+              >
+                <input
+                  type={type}
+                  tabindex={tabIndex}
+                  readonly={readOnly}
+                  aria-readonly={readOnly}
+                  required={required}
+                  placeholder={placeholder}
+                  disabled={disabled}
+                  aria-label={_ariaLabel}
+                  name={name}
+                  id="date-input"
+                  data-id="date-picker-nds-input"
+                  class="nds-input nds-input_mask"
+                  value={_displayValue}
+                  onkeyup={maskInput}
+                  onblur={handleBlur}
+                  onkeypress={shiftFocus}
+                  onmousedown={toggleDatePicker}
+                  autocomplete="off"
+                  style={styleProperties.value.styles}
+                  aria-invalid={ariaInvalid}
+                  aria-describedby="errorMessageBlock"
+                />
+                <div
+                  class="nds-form-element__label nds-align-middle nds-animated-label__ease-out nds-date-label"
+                  data-label="true"
+                >
+                  <label
+                    if:true={label}
+                    for="date-input"
+                    style={styleProperties.value.styles}
+                    >{label}
+                    <abbr
+                      if:true={required}
+                      class="nds-required nds-p-left_xx-small"
+                      title={requiredLabel}
+                      >*</abbr
+                    >
+                  </label>
+                  <c-sf-gps-ds-osrt-tooltip
+                    class="nds-tooltip__container"
+                    if:true={fieldLevelHelp}
+                    icon-url={iconUrl}
+                    content={fieldLevelHelp}
+                    associated-component-label={label}
+                    arrowposition={fieldLevelHelpPosition}
+                    theme="nds"
+                    data-field-level-help
+                  ></c-sf-gps-ds-osrt-tooltip>
+                  <slot name="label"></slot>
+                </div>
+                <button
+                  data-id="datePickerBtn"
+                  class="nds-button nds-button_icon nds-input__icon nds-input__icon_right Date"
+                  data-type="icon"
+                  disabled={buttonDisabled}
+                  onkeypress={shiftFocus}
+                  onmousedown={toggleDatePicker}
+                  tabindex={tabIndex}
+                  title={selectDateLabel}
+                  type="button"
+                >
+                  <c-sf-gps-ds-osrt-icon
+                    if:false={hideIconVal}
+                    icon-name="utility:event"
+                    theme={theme}
+                    size="xx-small"
+                    class="Date"
+                    baseurl={iconUrl}
+                  >
+                  </c-sf-gps-ds-osrt-icon>
+                </button>
+              </div>
+
+              <div
+                role="dialog"
+                aria-hidden="false"
+                aria-label="Date picker"
+                data-id="date-picker-div"
+                class={getPos}
+                if:true={built}
+              >
+                <div class="nds-datepicker__filter nds-grid">
+                  <div
+                    class="nds-datepicker__filter_month nds-grid nds-grid_align-spread nds-grow"
+                  >
+                    <div class="nds-align-middle">
+                      <button
+                        class="nds-button nds-button_icon nds-button_icon-container prevMonth"
+                        data-id="prevMonthBtnId"
+                        onmousedown={switchMonth}
+                        onkeydown={shiftFocus}
+                        tabindex="0"
+                        title={prevMonthLabel}
+                        type="button"
+                      >
+                        <c-sf-gps-ds-osrt-icon
+                          theme={theme}
+                          icon-name="utility:left"
+                          class="prevMonth"
+                          size="x-small"
+                          baseurl={iconUrl}
+                        >
+                        </c-sf-gps-ds-osrt-icon>
+                        <span class="nds-assistive-text">{prevMonthLabel}</span>
+                      </button>
+                    </div>
+                    <h2
+                      class="nds-align-middle"
+                      data-id="selected_month"
+                      aria-live="assertive"
+                      aria-atomic="true"
+                      id="month"
+                    >
+                      {selectedMonth}
+                    </h2>
+                    <div class="nds-align-middle">
+                      <button
+                        class="nds-button nds-button_icon nds-button_icon-container nextMonth"
+                        data-id="nextMonthBtnId"
+                        onmousedown={switchMonth}
+                        onkeydown={shiftFocus}
+                        tabindex="0"
+                        title={nextMonthLabel}
+                        type="button"
+                      >
+                        <c-sf-gps-ds-osrt-icon
+                          theme={theme}
+                          icon-name="utility:right"
+                          class="nextMonth"
+                          size="x-small"
+                          baseurl={iconUrl}
+                        >
+                        </c-sf-gps-ds-osrt-icon>
+                        <span class="nds-assistive-text">{nextMonthLabel}</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="nds-shrink-none">
+                    <label class="nds-assistive-text" for="select-01"
+                      >{pickYearLabel}</label
+                    >
+                    <div class="nds-select_container">
+                      <select
+                        onchange={yearSelected}
+                        tabindex="0"
+                        class="nds-select"
+                        data-id="select-01"
+                        id="select-01"
+                        onkeydown={shiftFocus}
+                      >
+                        <template for:each={years} for:item="year">
+                          <option key={year.value}>
+                            <span>{year.value}</span>
+                          </option>
+                        </template>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <table
+                  aria-multiselectable="true"
+                  class="nds-datepicker__month"
+                  role="grid"
+                  aria-labelledby="month"
+                >
+                  <thead>
+                    <tr data-id="weekdays">
+                      <template for:each={daysTitle} for:item="day">
+                        <th
+                          key={day.name}
+                          data-id={day.name}
+                          class="nds-disabled-text"
+                          tabindex="-1"
+                          id={day.name}
+                          scope="col"
+                        >
+                          <abbr title={day.name}>{day.name}</abbr>
+                        </th>
+                      </template>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template for:each={DayArray} for:item="days">
+                      <tr key={days.id}>
+                        <template for:each={days} for:item="day">
+                          <td
+                            key={day.id}
+                            data-id={day.id}
+                            id={day.id}
+                            data-type="date"
+                            onkeydown={shiftFocus}
+                            onmousedown={selectDate}
+                            aria-selected="false"
+                            tabindex="0"
+                            class={day.class}
+                            role="gridcell"
+                            aria-disabled={day.disabled}
+                          >
+                            <span class="nds-day" aria-label={day.ariaLabel}
+                              >{day.value}</span
+                            >
+                          </td>
+                        </template>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+                <button
+                  class="nds-button nds-align_absolute-center nds-text-link currentDate"
+                  data-id="current-date"
+                  onkeydown={shiftFocus}
+                  tabindex="0"
+                  onmousedown={currentDate}
+                  type="button"
+                >
+                  {todayLabel}
+                </button>
+              </div>
+            </div>
+
+            <div if:true={isError} class="nds-has-error">
+              <span
+                class="nds-form-element__help nds-form-element__help_text-transform__none"
+                aria-live="assertive"
+                id="errorMessageBlock"
+                role="alert"
+                >{errorMessage}</span
+              >
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</template>

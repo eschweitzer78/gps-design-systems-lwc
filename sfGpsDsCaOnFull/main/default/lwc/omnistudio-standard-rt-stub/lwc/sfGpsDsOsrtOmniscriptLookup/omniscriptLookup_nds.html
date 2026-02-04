@@ -1,0 +1,176 @@
+<template>
+  <slot>
+    <div class={_styleClasses.container}>
+      <fieldset class={errorClass}>
+        <div class="nds-combobox_container">
+          <div
+            class="nds-combobox nds-dropdown-trigger nds-dropdown-trigger_click"
+            aria-expanded={show}
+            aria-haspopup="listbox"
+            role="combobox"
+          >
+            <div
+              class="nds-combobox__form-element nds-input-has-icon nds-input-has-icon_right nds-form-element__control nds-form-element__control-animated-label"
+              role="none"
+            >
+              <input
+                type="text"
+                value={lookupDisplay}
+                aria-readonly={_readOnly}
+                aria-disabled={_readOnly}
+                required={_propSetMap.required}
+                readonly={_readOnly}
+                onblur={hideOptions}
+                onkeydown={handleKeyDown}
+                onkeyup={handleKeyUp}
+                onmouseup={showLookup}
+                class={inputClass}
+                aria-controls="lookup"
+                id="lookupId"
+                placeholder={_propSetMap.placeholder}
+                data-omni-input
+                aria-invalid={hasError}
+              />
+              <div
+                class="nds-form-element__label nds-align-middle nds-animated-label__ease-out"
+              >
+                <label
+                  aria-label={_propSetMap.label}
+                  class={_labelClass}
+                  for="lookupId"
+                >
+                  {_propSetMap.label}
+                  <abbr
+                    if:true={_propSetMap.required}
+                    title={allCustomLabelsUtil.OmniRequired}
+                    class="nds-required nds-p-left_xx-small"
+                    >*</abbr
+                  >
+                </label>
+                <c-sf-gps-ds-osrt-tooltip
+                  if:true={_propSetMap.help}
+                  theme="nds"
+                  class="nds-tooltip__container"
+                  content={_handleHelpText}
+                  associated-component-label={_propSetMap.label}
+                  arrowposition={_propSetMap.helpTextPos}
+                  icon-name="utility:info"
+                >
+                </c-sf-gps-ds-osrt-tooltip>
+                <template if:true={_propSetMap.repeat}>
+                  <div
+                    class={_styleClasses.repeatContainer}
+                    style="float: right; right: 17px; top: 3px"
+                    role="group"
+                  >
+                    <button
+                      if:true={canRepeat}
+                      class={_styleClasses.repeatAdd}
+                      onclick={handleAdd}
+                    >
+                      <c-sf-gps-ds-osrt-icon
+                        icon-name="utility:add"
+                        alternative-text="Repeat Lookup"
+                        extraclass={_styleClasses.repeatIcons}
+                        size="xx-small"
+                      >
+                      </c-sf-gps-ds-osrt-icon>
+                    </button>
+                    <button
+                      if:true={canRemove}
+                      class={_styleClasses.repeatRemove}
+                      onclick={handleRemove}
+                    >
+                      <c-sf-gps-ds-osrt-icon
+                        icon-name="utility:close"
+                        alternative-text="Remove Lookup"
+                        extraclass={_styleClasses.repeatIcons}
+                        size="xx-small"
+                      >
+                      </c-sf-gps-ds-osrt-icon>
+                    </button>
+                  </div>
+                </template>
+              </div>
+              <span class="nds-icon_container nds-input__icon_right">
+                <c-sf-gps-ds-osrt-icon
+                  extraclass="nds-input__icon"
+                  iconposition="right"
+                  icon-name="utility:search"
+                  theme="nds"
+                  alternative-text="lookup"
+                  size="small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+              </span>
+              <div
+                class="nds-dropdown nds-dropdown_fluid"
+                role="listbox"
+                id="lookup"
+                onmousedown={handleKeyDown}
+                onmouseleave={handleKeyDown}
+                onmouseup={handleKeyDown}
+              >
+                <ul
+                  class="nds-listbox nds-listbox_vertical"
+                  role="presentation"
+                >
+                  <template
+                    for:each={options}
+                    for:item="optionItem"
+                    for:index="optionIndex"
+                  >
+                    <li
+                      key={optionItem.key}
+                      role="presentation"
+                      onmouseup={selectOption}
+                      onmouseover={mouseOverFocus}
+                      class="nds-listbox__item"
+                    >
+                      <div
+                        class="nds-media nds-listbox__option nds-listbox__option_entity nds-listbox__option_has-meta"
+                        id={optionItem.id}
+                        role="option"
+                        data-option-index={optionIndex}
+                        aria-selected={optionItem.selected}
+                      >
+                        <span
+                          class="nds-media__body"
+                          data-option-index={optionIndex}
+                        >
+                          <span
+                            class="nds-listbox__option-text nds-listbox__option-text_entity"
+                            data-option-index={optionIndex}
+                            >{optionItem.value}</span
+                          >
+                        </span>
+                      </div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+            </div>
+            <div class="nds-has-error nds-m-top_none">
+              <div
+                if:true={hasError}
+                class="nds-form-element__help nds-form-element__help_text-transform__none"
+                role="alert"
+              >
+                {errorMessage}
+              </div>
+            </div>
+          </div>
+        </div>
+        <template if:true={isPageLoading}>
+          <c-sf-gps-ds-osrt-spinner
+            variant="brand"
+            alternative-text="Loading..."
+            theme={_theme}
+            size="medium"
+          >
+          </c-sf-gps-ds-osrt-spinner>
+        </template>
+      </fieldset>
+    </div>
+  </slot>
+</template>

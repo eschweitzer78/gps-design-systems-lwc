@@ -1,0 +1,18 @@
+.omni-image {
+  margin-top: 0.75rem;
+}
+
+.omni-image-preview {
+  border: 6px dashed #d8dde6;
+  border-width: thick;
+}
+
+.omni-image-details {
+  font-style: italic;
+  padding: 5px;
+  color: #49739c;
+}
+
+.omni-file-required {
+  line-height: 1em;
+}
