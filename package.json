@@ -1,7 +1,7 @@
 {
   "name": "gps-design-systems-lwc",
   "private": false,
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
     "build-caon": "npx tsc --project sfGpsDsCaOn/main/default/lwc",
@@ -25,7 +25,7 @@
     "prep-frgov": "mkdir -p sfGpsDsFrGovFull",
     "prep-ukgov": "mkdir -p sfGpsDsUkGovFull",
     "prep-sggov": "cp -a node_modules/@govtechsg/sgds/css/sgds.css sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; mkdir -p sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; cp -a node_modules/bootstrap-icons/font/bootstrap-icons.css sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov; mkdir -p sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov/fonts; cp -a node_modules/bootstrap-icons/font/fonts/* sfGpsDsSgGov/main/default/staticresources/sfGpsDsSgGov/fonts; mkdir -p sfGpsDsSgGovFull",
-    "prep-caon": "rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; mkdir -p sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; cp -a node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist/ontario-design-system-components/fonts; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/dist; cp -a node_modules/@ongov/ontario-design-system-global-styles/dist sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles; mkdir -p sfGpsDsCaOnFull",
+    "prep-caon": "rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; mkdir -p sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; cp -a node_modules/@ongov/ontario-design-system-component-library/dist/ontario-design-system-components sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnComponents/dist/ontario-design-system-components/fonts; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/dist; cp -a node_modules/@ongov/ontario-design-system-global-styles/dist sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles; ; rm -rf sfGpsDsCaOn/main/default/staticresources/sfGpsDsCaOnGlobalStyles/dist/styles/scss; mkdir -p sfGpsDsCaOnFull",
     "prep": "npm run prep-nsw; npm run prep-nsws; npm run prep-qld; npm run prep-vic2; npm run prep-frgov; npm run prep-ukgov;npm run prep-sggov; npm run prep-caon",
     "aunsw-copy": "rm -rf sfGpsDsAuNswFull;mkdir -p sfGpsDsAuNswFull;cp -a sfGpsDs/. sfGpsDsAuNswFull;cp -a sfGpsDsAuNsw/. sfGpsDsAuNswFull",
     "aunsws-copy": "rm -rf sfGpsDsAuNswSFull;mkdir -p sfGpsDsAuNswSFull;cp -a sfGpsDs/. sfGpsDsAuNswSFull;cp -a sfGpsDsAuNswS/. sfGpsDsAuNswSFull",
