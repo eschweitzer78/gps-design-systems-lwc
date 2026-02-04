@@ -1,0 +1,16 @@
+@use './tokens.variables' as variables;
+
+/*** 1 - Breakpoint sizes for media queries ***/
+// Note: much of this is based on Foundation 5's 12 column grid system, with breakpoints tweaked.
+
+$xsmall-breakpoint: variables.$ontario-breakpoints-xsmall !default; // used only in media query for styles in header, not for grid functionality
+$small-breakpoint: variables.$ontario-breakpoints-small !default;
+$medium-breakpoint: variables.$ontario-breakpoints-medium !default;
+$large-breakpoint: variables.$ontario-breakpoints-large !default;
+$xlarge-breakpoint: variables.$ontario-breakpoints-xlarge !default;
+
+$small-range: (0, $small-breakpoint) !default;
+$medium-range: ($small-breakpoint + 0.063em, $medium-breakpoint) !default;
+$large-range: ($medium-breakpoint + 0.063em, $large-breakpoint) !default;
+$xlarge-range: ($large-breakpoint + 0.063em, $xlarge-breakpoint) !default;
+$xxlarge-range: ($xlarge-breakpoint + 0.063em, variables.$ontario-global-tokens-max-value + em) !default;

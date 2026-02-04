@@ -1,0 +1,143 @@
+// Ontario Design System - CSS Custom Properties with SCSS Fallbacks
+// These variables define the Ontario Design System color palette
+// and provide CSS custom property references with fallback values.
+
+// =============================================================================
+// Core Colors (SCSS Variables for fallbacks)
+// =============================================================================
+
+$ontario-color-black: #1a1a1a !default;
+$ontario-color-white: #ffffff !default;
+
+// Grey Scale
+$ontario-color-grey-darker: #4d4d4d !default;
+$ontario-color-grey-dark: #6b6b6b !default;
+$ontario-color-grey: #cccccc !default;
+$ontario-color-grey-light: #e5e5e5 !default;
+$ontario-color-grey-lighter: #f5f5f5 !default;
+
+// Brand Colors
+$ontario-color-focus: #009adb !default;
+$ontario-color-link: #0066cc !default;
+$ontario-color-link-visited: #551a8b !default;
+
+// Semantic Colors
+$ontario-color-error: #d81a21 !default;
+$ontario-color-error-light: #fcf2f2 !default;
+$ontario-color-success: #118847 !default;
+$ontario-color-success-light: #e8f4ed !default;
+$ontario-color-warning: #ffd440 !default;
+$ontario-color-warning-light: #fef6dc !default;
+$ontario-color-info: #1080a6 !default;
+$ontario-color-info-light: #e8f4f7 !default;
+
+// =============================================================================
+// Ontario Greyscale Palette (for backwards compatibility)
+// =============================================================================
+$ontario-greyscale-5: #f5f5f5 !default;
+$ontario-greyscale-10: #e6e6e6 !default;
+$ontario-greyscale-20: #cccccc !default;
+$ontario-greyscale-60: #6b6b6b !default;
+$ontario-greyscale-70: #4d4d4d !default;
+
+// Link states
+$ontario-color-link-hover: #00478f !default;
+$ontario-color-link-active: #002d5c !default;
+
+// Information colors
+$ontario-color-information: #1080a6 !default;
+$ontario-color-information-light: #e8f4f7 !default;
+
+// =============================================================================
+// CSS Custom Property Functions
+// These functions output CSS custom properties with SCSS variable fallbacks
+// =============================================================================
+
+// Text Colors
+@function ontario-color-text() {
+  @return var(--ontario-color-black, #{$ontario-color-black});
+}
+
+@function ontario-color-text-secondary() {
+  @return var(--ontario-color-grey-darker, #{$ontario-color-grey-darker});
+}
+
+@function ontario-color-text-muted() {
+  @return var(--ontario-color-grey-dark, #{$ontario-color-grey-dark});
+}
+
+// Background Colors
+@function ontario-color-bg() {
+  @return var(--ontario-color-white, #{$ontario-color-white});
+}
+
+@function ontario-color-bg-light() {
+  @return var(--ontario-color-grey-lighter, #{$ontario-color-grey-lighter});
+}
+
+@function ontario-color-bg-disabled() {
+  @return var(--ontario-color-grey-light, #{$ontario-color-grey-light});
+}
+
+// Border Colors
+@function ontario-color-border() {
+  @return var(--ontario-color-black, #{$ontario-color-black});
+}
+
+@function ontario-color-border-light() {
+  @return var(--ontario-color-grey, #{$ontario-color-grey});
+}
+
+@function ontario-color-border-disabled() {
+  @return var(--ontario-color-grey-dark, #{$ontario-color-grey-dark});
+}
+
+// Interactive Colors
+@function ontario-color-focus() {
+  @return var(--ontario-color-focus, #{$ontario-color-focus});
+}
+
+@function ontario-color-link() {
+  @return var(--ontario-color-link, #{$ontario-color-link});
+}
+
+// Semantic Colors
+@function ontario-color-error() {
+  @return var(--ontario-color-error, #{$ontario-color-error});
+}
+
+@function ontario-color-error-bg() {
+  @return var(--ontario-color-error-light, #{$ontario-color-error-light});
+}
+
+@function ontario-color-success() {
+  @return var(--ontario-color-success, #{$ontario-color-success});
+}
+
+@function ontario-color-warning() {
+  @return var(--ontario-color-warning, #{$ontario-color-warning});
+}
+
+@function ontario-color-info() {
+  @return var(--ontario-color-info, #{$ontario-color-info});
+}
+
+// =============================================================================
+// Common Mixins
+// =============================================================================
+
+@mixin ontario-focus-ring {
+  outline: 4px solid ontario-color-focus();
+  outline-offset: 0;
+}
+
+@mixin ontario-error-state {
+  border-color: ontario-color-error();
+}
+
+@mixin ontario-disabled-state {
+  background-color: ontario-color-bg-disabled();
+  border-color: ontario-color-border-disabled();
+  color: ontario-color-text-secondary();
+  cursor: not-allowed;
+}

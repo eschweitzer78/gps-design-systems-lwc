@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Back to Top</masterLabel>
+  <description
+  >Fixed position button that scrolls to the top of the page following Ontario Design System guidelines.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="Button text"
+        default="Top"
+      />
+      <property
+        name="scrollThreshold"
+        type="Integer"
+        label="Scroll Threshold"
+        description="Pixels scrolled before button appears"
+        default="300"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Classes"
+        description="Additional CSS classes to apply"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

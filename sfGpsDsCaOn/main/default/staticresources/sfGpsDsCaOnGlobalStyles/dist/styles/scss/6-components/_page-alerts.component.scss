@@ -1,0 +1,43 @@
+@use '../1-variables/spacing.variables' as spacing;
+@use '../1-variables/colours.variables' as colours;
+
+ontario-page-alert {
+	p {
+		margin-top: spacing.$spacing-0;
+
+		&:last-of-type {
+			margin-bottom: spacing.$spacing-2;
+		}
+
+		&:last-of-type + ul {
+			margin-top: spacing.$spacing-4;
+		}
+	}
+
+	ul:last-of-type {
+		margin-bottom: spacing.$spacing-2;
+	}
+}
+
+ontario-page-alert[type='error'] {
+	ul {
+		margin-left: (spacing.$spacing-2 + spacing.$spacing-4);
+
+		&:last-of-type {
+			margin-bottom: spacing.$spacing-2;
+		}
+	}
+
+	a {
+		color: colours.$ontario-colour-alert;
+
+		&:hover,
+		&:focus {
+			color: #6b0000;
+		}
+
+		&:active {
+			color: #280000;
+		}
+	}
+}

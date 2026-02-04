@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <rect fill="#1a5a96" width="120" height="120" rx="8"/>
+  <text x="60" y="18" fill="#ffffff" font-size="9" text-anchor="middle" font-family="Arial">LWR Accordion</text>
+  <rect fill="#ffffff" x="15" y="25" width="90" height="14" rx="2"/>
+  <path fill="#1a5a96" d="M92 32 L97 37 L102 32" stroke="#1a5a96" stroke-width="2"/>
+  <rect fill="#ffffff" opacity="0.7" x="15" y="43" width="90" height="20" rx="2" stroke="#ffffff" stroke-dasharray="4"/>
+  <text x="60" y="56" fill="#1a5a96" font-size="8" text-anchor="middle" font-family="Arial">Slot: Accordions</text>
+  <rect fill="#ffffff" x="15" y="68" width="90" height="14" rx="2"/>
+  <path fill="#1a5a96" d="M92 75 L97 80 L102 75" stroke="#1a5a96" stroke-width="2"/>
+  <rect fill="#ffffff" x="15" y="88" width="90" height="14" rx="2"/>
+  <path fill="#1a5a96" d="M92 95 L97 100 L102 95" stroke="#1a5a96" stroke-width="2"/>
+</svg>

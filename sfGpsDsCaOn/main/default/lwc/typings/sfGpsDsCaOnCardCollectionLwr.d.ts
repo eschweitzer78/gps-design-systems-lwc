@@ -1,4 +1,4 @@
-declare module "c/sfGpsDsCaOnCardLwr" {
+declare module "c/sfGpsDsCaOnCardCollectionLwr" {
   import type SfGpsDsLwc from "c/sfGpsDsLwc";  
 
   export default 

@@ -1,0 +1,298 @@
+{
+	"accessibility": {
+		"checkboxHintExpander": {
+			"en": "is available after the last checkbox item.",
+			"fr": "suivront à la dernière case à cocher."
+		},
+		"moreInfo": {
+			"en": "More information on",
+			"fr": "Des renseignements supplémentaires sur"
+		},
+		"singleHintExpander": {
+			"en": "field is available in the next element.",
+			"fr": "suivront au prochain élément."
+		}
+	},
+	"accessibilityLink": {
+		"link": {
+			"en": "https://www.ontario.ca/page/accessibility",
+			"fr": "https://www.ontario.ca/fr/page/accessibilite"
+		},
+		"text": {
+			"en": "Accessibility",
+			"fr": "Accessibilité"
+		}
+	},
+	"termsOfUse": {
+		"link": {
+			"en": "https://www.ontario.ca/page/terms-use",
+			"fr": "https://www.ontario.ca/fr/page/conditions-dutilisation"
+		},
+		"text": {
+			"en": "Terms of Use",
+			"fr": "Conditions d’utilisation"
+		}
+	},
+	"accordion": {
+		"collapse": {
+			"en": "Collapse all",
+			"fr": "Réduire tout"
+		},
+		"expand": {
+			"en": "Expand all",
+			"fr": "Agrandir tout"
+		},
+		"expandCollapseAriaLabel": {
+			"en": "Expand or collapse the accordion",
+			"fr": "Agrandissez ou réduisez l'accordéon"
+		}
+	},
+	"backToTop": {
+		"ariaLabel": {
+			"en": "Scroll back to the top",
+			"fr": "Retour en haut de la page"
+		},
+		"top": {
+			"en": "Top",
+			"fr": "Haut"
+		}
+	},
+	"contactUs": {
+		"en": "Contact us",
+		"fr": "Contactez-nous"
+	},
+	"dateInput": {
+		"caption": {
+			"en": "Exact date",
+			"fr": "Dates exactes"
+		},
+		"day": {
+			"accessibility": {
+				"en": "4 digits",
+				"fr": "4 chiffres"
+			},
+			"label": {
+				"en": "Day",
+				"fr": "Jour"
+			}
+		},
+		"error": {
+			"en": {
+				"emptyDay": "Enter the day.",
+				"emptyDayAndMonth": "Enter the month and day.",
+				"emptyDayAndYear": "Enter the year and day.",
+				"emptyMonth": "Enter the month.",
+				"emptyMonthAndYear": "Enter the year and month.",
+				"emptyYear": "Enter the year.",
+				"invalidDate": "Enter a valid date.",
+				"invalidDay": "Enter a valid day.",
+				"invalidMonth": "Enter a valid month.",
+				"invalidYear": "Enter a valid year."
+			},
+			"fr": {
+				"emptyDay": "Saisissez le jour.",
+				"emptyDayAndMonth": "Saisissez le mois et le jour.",
+				"emptyDayAndYear": "Saisissez l’année et le jour.",
+				"emptyMonth": "Saisissez le mois.",
+				"emptyMonthAndYear": "Saisissez l’année et le mois.",
+				"emptyYear": "Saisissez l’année.",
+				"invalidDate": "Saisissez une date valide.",
+				"invalidDay": "Saisissez un jour valide.",
+				"invalidMonth": "Saisissez un mois valide.",
+				"invalidYear": "Saisissez une année valide."
+			}
+		},
+		"month": {
+			"accessibility": {
+				"en": "1 or 2 digits",
+				"fr": "1 ou 2 chiffres"
+			},
+			"label": {
+				"en": "Month",
+				"fr": "Mois"
+			}
+		},
+		"year": {
+			"accessibility": {
+				"en": "1 or 2 digits",
+				"fr": "1 ou 2 chiffres"
+			},
+			"label": {
+				"en": "Year",
+				"fr": "Année"
+			}
+		}
+	},
+	"dropdownList": {
+		"select": {
+			"en": "Select",
+			"fr": "Sélectionner"
+		}
+	},
+	"header": {
+		"clearSearchField": {
+			"en": "Clear field",
+			"fr": "Vider le champ"
+		},
+		"close": {
+			"en": "close",
+			"fr": "fermer"
+		},
+		"closeMenu": {
+			"en": "Hide navigation menu",
+			"fr": "Fermer le menu de navigation"
+		},
+		"closeSearch": {
+			"en": "Close search bar",
+			"fr": "Fermer la barre de recherche"
+		},
+		"logoAltText": {
+			"en": "Ontario.ca homepage",
+			"fr": "Page d’accueil Ontario.ca"
+		},
+		"logoLink": {
+			"en": "https://www.ontario.ca/page/government-ontario",
+			"fr": "https://www.ontario.ca/fr/page/gouvernement-de-lontario"
+		},
+		"ontarioSearchURL": {
+			"en": "https://www.ontario.ca/search/search-results?query=",
+			"fr": "https://www.ontario.ca/fr/recherche/resultats-de-recherche/?query="
+		},
+		"openMenu": {
+			"en": "Show navigation menu",
+			"fr": "Ouvrir le menu de navigation"
+		},
+		"search": {
+			"en": "Search",
+			"fr": "Rechercher"
+		},
+		"serviceOntario": {
+			"en": "ServiceOntario",
+			"fr": "ServiceOntario"
+		},
+		"submit": {
+			"en": "Submit",
+			"fr": "Soumission"
+		}
+	},
+	"input": {
+		"requiredFieldError": {
+			"en": "This is a required field.",
+			"fr": "Ce champ est obligatoire."
+		}
+	},
+	"languageToggle": {
+		"ariaLabel": {
+			"en": "Click to switch the language to English",
+			"fr": "Cliquez pour changer la langue en français"
+		}
+	},
+	"loading": {
+		"en": "Loading",
+		"fr": "Chargement"
+	},
+	"optional": {
+		"en": "optional",
+		"fr": "facultative"
+	},
+	"printerLink": {
+		"link": {
+			"en": "https://www.ontario.ca/page/copyright-information",
+			"fr": "https://www.ontario.ca/fr/page/droits-dauteur"
+		},
+		"text": {
+			"en": "King's Printer for Ontario,",
+			"fr": "Imprimeur du Roi pour l’Ontario,"
+		}
+	},
+	"privacyLink": {
+		"link": {
+			"en": "https://www.ontario.ca/page/privacy-statement",
+			"fr": "https://www.ontario.ca/fr/page/declaration-concernant-la-protection-de-la-vie-privee"
+		},
+		"text": {
+			"en": "Privacy",
+			"fr": "Confidentialité"
+		}
+	},
+	"stepIndicator": {
+		"back": {
+			"en": "Back",
+			"fr": "Retour"
+		},
+		"complete": {
+			"en": "complete",
+			"fr": "complet"
+		},
+		"of": {
+			"en": "of",
+			"fr": "sur"
+		},
+		"step": {
+			"en": "Step",
+			"fr": "Étape"
+		}
+	},
+	"siteLanguage": {
+		"fullWord": {
+			"en": "English",
+			"fr": "Français"
+		},
+		"abbreviation": {
+			"en": "en",
+			"fr": "fr"
+		}
+	},
+	"taskGroup": {
+		"completed": {
+			"en": "You have completed",
+			"fr": "Vous avez complété"
+		},
+		"outOf": {
+			"en": "out of",
+			"fr": "sur"
+		},
+		"tasks": {
+			"en": "tasks.",
+			"fr": "tâches."
+		}
+	},
+	"taskStatus": {
+		"taskStatus": {
+			"en": "Task Status:",
+			"fr": "Statut de la tâche:"
+		},
+		"notStarted": {
+			"en": "Not Started",
+			"fr": "Pas commencé"
+		},
+		"inProgress": {
+			"en": "In Progress",
+			"fr": "En cours"
+		},
+		"completed": {
+			"en": "Completed",
+			"fr": "Terminé"
+		},
+		"cannotStartYet": {
+			"en": "Cannot Start Yet",
+			"fr": "Peux pas encore commencer"
+		},
+		"error": {
+			"en": "Error",
+			"fr": "Erreur"
+		},
+		"optional": {
+			"en": "Optional",
+			"fr": "Facultatif"
+		}
+	},
+	"newWindow": {
+		"en": "opens in a new window",
+		"fr": "s'ouvre dans une nouvelle fenêtre"
+	},
+	"required": {
+		"en": "required",
+		"fr": "obligatoire"
+	}
+}

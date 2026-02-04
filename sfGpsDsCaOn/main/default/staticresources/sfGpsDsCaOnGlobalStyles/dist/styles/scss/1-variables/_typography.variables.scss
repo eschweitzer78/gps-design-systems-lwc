@@ -1,0 +1,123 @@
+@use './fonts.variables' as fonts;
+@use './font-weights.variables' as fontWeights;
+@use './spacing.variables' as spacing;
+@use './breakpoints.variables' as breakpoints;
+@use './letter-spacing.variables' as letterSpacing;
+@use '../2-tools/functions/global.functions' as globalFunctions;
+@use '../1-variables/line-heights.variables' as lineHeight;
+
+/* -------------------------------
+    Global typography variables
+--------------------------------- */
+
+$ontario-max-width-large: 70rem;
+$ontario-max-width-standard: 48rem;
+
+%ontario-header-styles {
+	font-style: normal;
+	font-weight: fontWeights.$ontario-font-weights-bold;
+	text-rendering: optimizeLegibility;
+	margin-bottom: spacing.$spacing-4;
+	font-feature-settings: normal;
+	font-family: fonts.$ontario-font-raleway;
+}
+
+%h1-styles {
+	@extend %ontario-header-styles;
+	font-size: globalFunctions.px-to-rem(32);
+	letter-spacing: letterSpacing.$ontario-letter-spacing-xlarge;
+	line-height: lineHeight.$ontario-line-height-2;
+	margin: spacing.$spacing-7 spacing.$spacing-0 spacing.$spacing-5 spacing.$spacing-0;
+	max-width: $ontario-max-width-large;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		font-size: globalFunctions.px-to-rem(40);
+		letter-spacing: letterSpacing.$ontario-letter-spacing-xlarge;
+		line-height: lineHeight.$ontario-line-height-1;
+	}
+}
+
+%h2-styles {
+	@extend %ontario-header-styles;
+	font-size: globalFunctions.px-to-rem(27);
+	letter-spacing: letterSpacing.$ontario-letter-spacing-medium;
+	line-height: lineHeight.$ontario-line-height-4;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	max-width: $ontario-max-width-standard;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		font-size: globalFunctions.px-to-rem(33);
+		letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
+		line-height: lineHeight.$ontario-line-height-3;
+	}
+}
+
+%h3-styles {
+	@extend %ontario-header-styles;
+	font-size: globalFunctions.px-to-rem(23);
+	letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
+	line-height: lineHeight.$ontario-line-height-5;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	max-width: $ontario-max-width-standard;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		font-size: globalFunctions.px-to-rem(28);
+		letter-spacing: letterSpacing.$ontario-letter-spacing-xsmall;
+		line-height: lineHeight.$ontario-line-height-6;
+	}
+}
+
+%h4-styles {
+	@extend %ontario-header-styles;
+	font-size: globalFunctions.px-to-rem(20);
+	letter-spacing: letterSpacing.$ontario-letter-spacing-medium;
+	line-height: lineHeight.$ontario-line-height-7;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	max-width: $ontario-max-width-standard;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		font-size: globalFunctions.px-to-rem(24);
+		letter-spacing: letterSpacing.$ontario-letter-spacing-large;
+		line-height: lineHeight.$ontario-line-height-7;
+	}
+}
+
+%h5-styles {
+	@extend %ontario-header-styles;
+	font-size: globalFunctions.px-to-rem(18);
+	letter-spacing: letterSpacing.$ontario-letter-spacing-medium;
+	line-height: lineHeight.$ontario-line-height-8;
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	max-width: $ontario-max-width-standard;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		font-size: globalFunctions.px-to-rem(19);
+		letter-spacing: letterSpacing.$ontario-letter-spacing-small;
+		line-height: lineHeight.$ontario-line-height-7;
+	}
+}
+
+%h6-styles {
+	@extend %ontario-header-styles;
+	font-size: globalFunctions.px-to-rem(16);
+	line-height: lineHeight.$ontario-line-height-8;
+	letter-spacing: letterSpacing.$ontario-letter-spacing-medium;
+	max-width: $ontario-max-width-standard;
+
+	margin: spacing.$spacing-0 spacing.$spacing-0 spacing.$spacing-3 spacing.$spacing-0;
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		font-size: globalFunctions.px-to-rem(16);
+		letter-spacing: letterSpacing.$ontario-letter-spacing-small;
+		line-height: lineHeight.$ontario-line-height-7;
+	}
+}
+
+%lead-statement {
+	font-size: globalFunctions.px-to-rem(20);
+	line-height: 1.6;
+	max-width: $ontario-max-width-large;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		font-size: globalFunctions.px-to-rem(22);
+	}
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>59.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Feature Card</masterLabel>
+  <description
+  >A horizontal card with image on left, heading and description on right. Based on official Ontario Design System horizontal card component.</description>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="heading"
+        type="String"
+        label="Heading"
+        description="The title of the feature card"
+        required="true"
+        default="Feature Card"
+      />
+      <property
+        name="description"
+        type="String"
+        label="Description"
+        description="Description text below the heading"
+        default=""
+      />
+      <property
+        name="url"
+        type="String"
+        label="URL"
+        description="URL to navigate to when the card is clicked"
+        required="true"
+        default="#"
+      />
+      <property
+        name="image"
+        type="String"
+        label="Image URL"
+        description="Image URL to display on the left side of the card"
+      />
+      <property
+        name="imageAltText"
+        type="String"
+        label="Image Alt Text"
+        description="Alternative text for the image (for accessibility)"
+      />
+      <property
+        name="imageSize"
+        type="String"
+        label="Image Size"
+        description="Size of the image: large (1/3 of card width) or small (1/4 of card width)"
+        default="large"
+        datasource="large,small"
+      />
+      <property
+        name="headingLevel"
+        type="String"
+        label="Heading Level"
+        description="The heading level for accessibility"
+        default="h2"
+        datasource="h2,h3,h4"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Additional CSS Class"
+        description="Additional CSS class to apply to the card"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

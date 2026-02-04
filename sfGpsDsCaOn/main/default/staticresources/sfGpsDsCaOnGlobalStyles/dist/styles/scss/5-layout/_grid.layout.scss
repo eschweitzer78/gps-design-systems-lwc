@@ -1,0 +1,71 @@
+@use '../1-variables/grid.variables' as gridVariables;
+@use '../2-tools/mixins/grid.mixins' as gridMixins;
+
+@include gridMixins.ontario-exports('grid') {
+	.ontario-row {
+		@include gridMixins.ontario-grid-row;
+
+		&.ontario-row--collapse {
+			> .ontario-column,
+			> .ontario-columns {
+				@include gridMixins.ontario-grid-column($collapse: true, $float: false);
+			}
+
+			.ontario-row {
+				margin-left: 0;
+				margin-right: 0;
+			}
+		}
+
+		.ontario-row {
+			@include gridMixins.ontario-grid-row($behaviour: nest);
+
+			&.ontario-row--collapse {
+				@include gridMixins.ontario-grid-row($behaviour: nest-collapse);
+			}
+		}
+	}
+
+	.ontario-column,
+	.ontario-columns {
+		@include gridMixins.ontario-grid-column($columns: gridVariables.$total-columns);
+
+		& + &:last-child {
+			float: gridVariables.$last-child-float;
+		}
+
+		& + &.ontario-end {
+			float: gridVariables.$default-float;
+		}
+	}
+
+	@media #{gridVariables.$small-up} {
+		@include gridMixins.ontario-grid-html-classes($size: small);
+	}
+
+	@media #{gridVariables.$medium-up} {
+		@include gridMixins.ontario-grid-html-classes($size: medium);
+	}
+
+	@media #{gridVariables.$large-up} {
+		@include gridMixins.ontario-grid-html-classes($size: large);
+
+		@for $i from 0 through gridVariables.$total-columns - 1 {
+			.ontario-push-#{$i} {
+				@include gridMixins.ontario-grid-column($push: $i, $collapse: null, $float: false);
+			}
+
+			.ontario-pull-#{$i} {
+				@include gridMixins.ontario-grid-column($pull: $i, $collapse: null, $float: false);
+			}
+		}
+	}
+
+	@media #{gridVariables.$xlarge-up} {
+		@include gridMixins.ontario-grid-html-classes($size: xlarge);
+	}
+
+	@media #{gridVariables.$xxlarge-up} {
+		@include gridMixins.ontario-grid-html-classes($size: xxlarge);
+	}
+}

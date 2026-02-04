@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Pesticide: Spray bottle icon -->
+  <path d="M3 3h3v5H3z"/>
+  <path d="M6 8h3l2 3v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V11l2-3"/>
+  <path d="M6 3v5"/>
+  <path d="M11 11l4-4"/>
+  <path d="M15 7l3 3"/>
+  <path d="M18 10l-3 3"/>
+  <path d="M12 14l3-3"/>
+</svg>

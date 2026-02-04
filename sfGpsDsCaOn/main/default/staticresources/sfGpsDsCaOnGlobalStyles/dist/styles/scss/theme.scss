@@ -1,0 +1,57 @@
+/* -----------------------------------------------------------------------------
+
+    Please see /standards/architecture.md for standards on how to write CSS for
+    this project.
+
+----------------------------------------------------------------------------- */
+
+/*** 0 - Tools - Functions ***/
+// Note these fall under layer 2 but are dependencies that must be loaded before
+// other partials that depend on them.  This allows us to use @use and @forward
+// with `with` to configure our library. For more information, see
+// https://sass-lang.com/documentation/at-rules/forward#configuring-modules
+@forward './2-tools/functions/grid.functions';
+@forward './2-tools/functions/global.functions';
+@forward './2-tools/functions/asset-helper.functions';
+
+/*** 1 - Variables ***/
+@forward './1-variables/breakpoints.variables';
+@forward './1-variables/colours.variables';
+@forward './1-variables/font-sizes.variables';
+@forward './1-variables/font-weights.variables';
+@forward './1-variables/fonts.variables';
+@forward './1-variables/global.variables';
+@forward './1-variables/grid.variables';
+@forward './1-variables/letter-spacing.variables';
+@forward './1-variables/line-heights.variables';
+@forward './1-variables/spacing.variables';
+@forward './1-variables/typography.variables';
+@forward './1-variables/z-index.variables';
+
+/*** 2 - Tools - Mixins and placeholders ***/
+@forward './2-tools/mixins/global.mixins';
+@forward './2-tools/mixins/grid.mixins';
+
+@forward './2-tools/placeholder/focus.placeholders';
+
+/*** 3 - Generics ***/
+@forward './3-generics/colours.generics';
+@forward './3-generics/typography.generics';
+
+/*** 4 - Elements ***/
+@forward './4-elements/global.elements';
+
+/*** 5 - Layout ***/
+@forward './5-layout/grid.layout';
+
+/*** 6 - Components ***/
+@forward './6-components/form.component';
+@forward './6-components/labels.component';
+@forward './6-components/text-inputs.component';
+@forward './6-components/callouts-asides';
+@forward './6-components/page-alerts.component';
+@forward './6-components/all.component';
+
+/*** 7 - Overrides ***/
+@forward './7-overrides/spacing.overrides';
+@forward './7-overrides/visibility.overrides';

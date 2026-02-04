@@ -1,0 +1,11 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <ontario-critical-alert lwc:else lwc:external class={className}>
+    <span lwc:if={content} lwc:ref="content" lwc:dom="manual"></span>
+  </ontario-critical-alert>
+</template>

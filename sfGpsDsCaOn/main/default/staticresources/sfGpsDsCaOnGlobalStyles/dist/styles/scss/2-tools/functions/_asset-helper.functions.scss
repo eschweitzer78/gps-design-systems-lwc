@@ -1,0 +1,56 @@
+/// Base path for assets (fonts, images...),
+/// should not include trailing slash
+$asset-base-path: '../../..' !default;
+
+/* Asset URL builder */
+/// Creates URL for assets.
+///
+/// @param {string} $type
+///   Asset type, matching folder name
+/// @param {string} $file
+///   Asset file name, including extension
+/// @return {url}
+///   A `url()` function leading to the asset
+
+@function generateAssetUrl($type, $file) {
+	@return url($asset-base-path + '/' + $type + '/' + $file);
+}
+
+/* Image asset helper */
+/// Creates image asset.
+///
+/// @param {string} $file
+///   Asset file name, including extension
+/// @return {url}
+///   A `url()` function leading to the image
+/// @require {function} asset
+
+@function getImageUrl($file) {
+	@return generateAssetUrl('images', $file);
+}
+
+/* Font asset helper */
+/// Creates font asset.
+///
+/// @param {string} $file
+///   Asset file name, including extension
+/// @return {url}
+///   A `url()` function leading to the font
+/// @require {function} asset
+
+@function getFontUrl($file) {
+	@return generateAssetUrl('fonts', $file);
+}
+
+/* Icon asset helper */
+/// Creates icon asset.
+///
+/// @param {string} $file
+///   Asset file name, including extension
+/// @return {url}
+///   A `url()` function leading to the font
+/// @require {function} asset
+
+@function getIconUrl($file) {
+	@return generateAssetUrl('icons', $file);
+}

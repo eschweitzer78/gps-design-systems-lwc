@@ -1,1 +1,2 @@
-dist
+# Keep dist folder for deployment
+# (previously ignored, now tracked)

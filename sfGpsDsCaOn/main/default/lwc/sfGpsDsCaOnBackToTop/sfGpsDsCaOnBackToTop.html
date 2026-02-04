@@ -1,0 +1,20 @@
+<template lwc:render-mode="light">
+  <button
+    type="button"
+    class={computedClassName}
+    onclick={handleClick}
+    aria-label="Scroll back to top of page"
+  >
+    <svg
+      class="ontario-icon"
+      alt=""
+      aria-hidden="true"
+      focusable="false"
+      viewBox="0 0 24 24"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <path d="M12 4l-8 8h5v8h6v-8h5z" />
+    </svg>
+    {computedLabel}
+  </button>
+</template>

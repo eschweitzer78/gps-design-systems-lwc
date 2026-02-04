@@ -1,0 +1,44 @@
+@use '../../1-variables/tokens.variables' as variables;
+@use '../../1-variables/spacing.variables' as spacing;
+@use '../../1-variables/breakpoints.variables' as breakpoints;
+@forward '../../7-overrides/spacing.overrides';
+
+/*
+*  Global mixins
+*  Used across multiple components
+*/
+
+@mixin ontario-word-wrap() {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
+
+@mixin ontario-two-column-lists() {
+	column-count: variables.$ontario-grid-columns-column-count1;
+	display: block;
+
+	@media screen and (min-width: breakpoints.$small-breakpoint) {
+		column-count: variables.$ontario-grid-columns-column-count2;
+
+		li:last-child {
+			padding: 0 0 spacing.$spacing-3 0;
+		}
+	}
+}
+
+/**
+ * Mixin that adds spacing to a position and mark it as important
+ * $type is the type of spacing to use and can be either padding or margin
+ * $position is the direction to which the spacing is applied; can be top, right, bottom or left
+ * $size is the amount of px to be used as the spacing; can be 0, 4, 8, 12, 16, 24, 32, 40, 48 or 64
+ */
+@mixin ontario-spacing-important($type: padding, $position: right, $size: 16) {
+	@extend .ontario-#{$type}-#{$position}-#{$size}-\! !optional;
+}
