@@ -3,15 +3,15 @@
 <title>Ontario.ca</title>
 
 <!-- Favicons -->
-<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon.ico" sizes="48x48" />
-<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon-192x192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon-512x512.png" />
+<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/favicon.ico" sizes="48x48" />
+<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/favicon-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/favicon-512x512.png" />
 
 <!-- Ontario Design System Global Styles -->
-<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/global.css" />
-<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/ds-theme.css" />
+<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/dist/css/compiled/ontario-theme.css" />
+<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/byo_lwr_omnistudio.css" />
 
 <!-- Ontario Design System Component Library (Web Components) -->
 <!-- Required for: ontario-button, ontario-badge, ontario-blockquote, ontario-page-alert, ontario-critical-alert -->
@@ -19,7 +19,7 @@
 <script nomodule src="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.js"></script>
 
 <!-- Ontario Design System Component Library Styles -->
-<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.css" />
+<!--<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.css" />-->
 
 <!-- LWR Site Default Styles -->
 <link rel="stylesheet" href="{ styles/styles.css }" />
