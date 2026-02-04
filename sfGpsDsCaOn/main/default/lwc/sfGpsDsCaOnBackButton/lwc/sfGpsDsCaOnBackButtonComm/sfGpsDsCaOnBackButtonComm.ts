@@ -11,11 +11,11 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 // eslint-disable-next-line no-unused-vars
 const DEBUG = false;
 // eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "SfGpsDsCaOnBackButtonLwr";
+const CLASS_NAME = "SfGpsDsCaOnBackButtonComm";
 
-export default class SfGpsDsCaOnBackButtonLwr extends SfGpsDsLwc {
-  static renderMode = "light";
-
+export default 
+class SfGpsDsCaOnBackButtonComm
+extends SfGpsDsLwc {
   // @ts-ignore
   @api
   label?: string;

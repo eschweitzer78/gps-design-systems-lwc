@@ -13,7 +13,9 @@ const DEBUG = false;
 // eslint-disable-next-line no-unused-vars
 const CLASS_NAME = "SfGpsDsCaOnBackButton";
 
-export default class SfGpsDsCaOnBackButton extends SfGpsDsLwc {
+export default 
+class SfGpsDsCaOnBackButton 
+extends SfGpsDsLwc {
   static renderMode = "light";
 
   // @ts-ignore
@@ -34,16 +36,14 @@ export default class SfGpsDsCaOnBackButton extends SfGpsDsLwc {
     return this.label || "Back";
   }
 
-  get computedClassName(): string {
+  get computedClassName(): any {
     const classes = ["ontario-button", "ontario-button--tertiary", "ontario-back-button"];
-    if (this.className) {
-      classes.push(this.className);
+    return {
+      "ontario-button": true, 
+      "ontario-button--tertiary": true,
+      "ontario-back-button": true,
+      [this.className || ""]: !!this.className
     }
-    return classes.join(" ");
-  }
-
-  get hasUrl(): boolean {
-    return Boolean(this.url);
   }
 
   /* handlers */
@@ -68,12 +68,5 @@ export default class SfGpsDsCaOnBackButton extends SfGpsDsLwc {
       }
     }
     // If url is provided, the anchor tag handles navigation
-  }
-
-  /* lifecycle */
-
-  connectedCallback() {
-    super.connectedCallback?.();
-    this.classList.add("caon-scope");
   }
 }
