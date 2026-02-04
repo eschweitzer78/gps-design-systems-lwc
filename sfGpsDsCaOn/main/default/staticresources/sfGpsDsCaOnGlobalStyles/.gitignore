@@ -2,3 +2,5 @@ dist
 # Generated CSS files (from SCSS)
 *.gen.scss
 *.gen.css
+byo_lwr_omnistudio.css
+byo_lwr.css

@@ -1,0 +1,33 @@
+<template lwc:render-mode="light">
+  <a lwc:if={url} href={url} class={computedClassName}>
+    <svg
+      class="ontario-icon"
+      alt="back"
+      aria-hidden="true"
+      focusable="false"
+      viewBox="0 0 24 24"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+    </svg>
+    {computedLabel}
+  </a>
+  <button
+    lwc:else
+    type="button"
+    class={computedClassName}
+    onclick={handleClick}
+  >
+    <svg
+      class="ontario-icon"
+      alt="back"
+      aria-hidden="true"
+      focusable="false"
+      viewBox="0 0 24 24"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+    </svg>
+    {computedLabel}
+  </button>
+</template>

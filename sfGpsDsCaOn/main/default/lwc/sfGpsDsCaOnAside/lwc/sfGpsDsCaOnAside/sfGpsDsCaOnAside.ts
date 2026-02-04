@@ -8,7 +8,7 @@
 import { 
   api 
 } from "lwc";
-import SfGpsDsLwc from "c/sfGpsDsLwc";
+import SfGpsDsElement from "c/sfGpsDsElement";
 
 import type { 
   HeadingColour, 
@@ -42,7 +42,7 @@ const HEADINGLEVEL_DEFAULT: HeadingLevel = "h2";
 
 export default 
 class SfGpsDsCaOnAside
-extends SfGpsDsLwc {
+extends SfGpsDsElement {
   static renderMode = "light";
 
   // @ts-ignore

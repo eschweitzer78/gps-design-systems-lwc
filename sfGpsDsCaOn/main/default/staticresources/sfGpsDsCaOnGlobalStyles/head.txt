@@ -3,15 +3,15 @@
 <title>Ontario.ca</title>
 
 <!-- Favicons -->
-<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon.ico" sizes="48x48" />
-<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon.svg" type="image/svg+xml" />
-<link rel="apple-touch-icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon-192x192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/assets/favicons/favicon-512x512.png" />
+<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/favicon.ico" sizes="48x48" />
+<link rel="icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/favicon-192x192.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnAssets/favicons/favicon-512x512.png" />
 
 <!-- Ontario Design System Global Styles -->
-<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/global.css" />
-<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/ds-theme.css" />
+<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/dist/css/compiled/ontario-theme.css" />
+<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnGlobalStyles/byo_lwr_omnistudio.css" />
 
 <!-- Ontario Design System Component Library (Web Components) -->
 <!-- Required for: ontario-button, ontario-badge, ontario-blockquote, ontario-page-alert, ontario-critical-alert -->
@@ -19,16 +19,65 @@
 <script nomodule src="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.js"></script>
 
 <!-- Ontario Design System Component Library Styles -->
-<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.css" />
+<!--<link rel="stylesheet" href="{ basePath }/sfsites/c/resource/sfGpsDsCaOnComponents/dist/ontario-design-system-components/ontario-design-system-components.css" />-->
 
 <!-- LWR Site Default Styles -->
 <link rel="stylesheet" href="{ styles/styles.css }" />
 <link rel="stylesheet" href="{ styles/print.css }" media="print" />
 
-<!-- Base Font Size -->
 <style>
-  body {
-    font-size: 1rem;
+  .row {
+      margin: 0 auto;
+      max-width: 72rem;
+      width: 100%;
+  }
+      
+  .row:after,.row:before {
+      content: "";
+      display: table
+  }
+
+  .row:after {
+      clear: both
+  }
+      
+  .row.row--collapse .row {
+      margin-left: 0;
+      margin-right: 0
+  }
+
+  .row .row {
+      margin: 0 -1rem;
+      max-width: none;
+      width: auto
+  }
+
+  .row .row:after,.row .row:before {
+      content: "";
+      display: table
+  }
+
+  .row .row:after {
+      clear: both
+  }
+
+  .row .row.row--collapse {
+      margin: 0;
+      max-width: none;
+      width: auto
+  }
+
+  .row .row.row--collapse:after,.row .row.row--collapse:before {
+      content: "";
+      display: table
+  }
+
+  .row .row.row--collapse:after {
+      clear: both
+  }
+
+  .main-content {
+    margin: 0 auto .5rem
   }
 </style>
 

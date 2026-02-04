@@ -56,8 +56,8 @@
     {
       "path": "sfGpsDsAuVic2Full",
       "package": "Salesforce Global Public Sector AU VIC2 Design System",
-      "versionName": "2026.01.20.1200",
-      "versionNumber": "0.8.3.NEXT",
+      "versionName": "2026.02.04.1200",
+      "versionNumber": "0.8.4.NEXT",
       "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
@@ -133,6 +133,20 @@
     {
       "path": "sfGpsDsCaOn",
       "default": false
+    },
+    {
+      "path": "sfGpsDsCaOnFull",
+      "package": "Salesforce Global Public Sector CA Ontario Design System (Full)",
+      "versionName": "2026.02.04.1200",
+      "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": "Salesforce Global Public Sector CA Ontario Design System (Full)",
+      "definitionFile": "config/project-deployment-def.json",
+      "dependencies": [
+        {
+          "package": "omnistudio 258.4"
+        }
+      ]
     }
   ],
   "name": "au-design-systems-lwc",
@@ -793,6 +807,7 @@
     "Salesforce Global Public Sector AU VIC2 Design System@0.8.3-10": "04tJ4000000PcmKIAS",
     "Salesforce Global Public Sector GOUV.FR Design System (Full)@0.8.3-14": "04tJ4000000PcmPIAS",
     "Salesforce Global Public Sector GOV.UK Design System (Full)@1.7.3-14": "04tJ4000000PcmUIAS",
-    "Salesforce Global Public Sector AU NSW Design System@3.5.3-2": "04tJ4000000PcmZIAS"
+    "Salesforce Global Public Sector AU NSW Design System@3.5.3-2": "04tJ4000000PcmZIAS",
+    "Salesforce Global Public Sector CA Ontario Design System (Full)": "0HoJ4000000002gKAA"
   }
 }
