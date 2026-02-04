@@ -65,6 +65,10 @@ export default class SfGpsDsCaOnAccordionGroupLwr extends SfGpsDsLwc {
 
   /* lifecycle */
 
+  constructor() {
+    super(true); // isLwrOnly
+  }
+  
   connectedCallback() {
     super.connectedCallback?.();
     this.classList.add("caon-scope");
