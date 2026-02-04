@@ -33,7 +33,7 @@
     "auvic2-copy": "rm -rf sfGpsDsAuVic2Full;mkdir -p sfGpsDsAuVic2Full;cp -a sfGpsDs/. sfGpsDsAuVic2Full;cp -a sfGpsDsAuVic2/. sfGpsDsAuVic2Full",
     "frgov-copy": "rm -rf sfGpsDsFrGovFull;mkdir -p sfGpsDsFrGovFull;cp -a sfGpsDs/. sfGpsDsFrGovFull;cp -a sfGpsDsFrGov/. sfGpsDsFrGovFull",
     "ukgov-copy": "rm -rf sfGpsDsUkGovFull;mkdir -p sfGpsDsUkGovFull;cp -a sfGpsDs/. sfGpsDsUkGovFull;cp -a sfGpsDsUkGov/. sfGpsDsUkGovFull",
-    "caon-copy": "rm -rf sfGpsDsOnCaFull;mkdir -p sfGpsDsOnCaFull;cp -a sfGpsDs/. sfGpsDsOnCaFull;cp -a sfGpsDsOnCa/. sfGpsDsOnCaFull",
+    "caon-copy": "rm -rf sfGpsDsCaOnFull;mkdir -p sfGpsDsCaOnFull;cp -a sfGpsDs/. sfGpsDsCaOnFull;cp -a sfGpsDsCaOn/. sfGpsDsCaOnFull",
     "synclabs": "export SDIR=../gps-design-systems-lwc;export TDIR=../gps-design-systems-lwcx;rm -rf $TDIR;cp -a . $TDIR;cp -a $SDIR/.git $TDIR;rm -rf $TDIR/.github"
   },
   "lint-staged": {
