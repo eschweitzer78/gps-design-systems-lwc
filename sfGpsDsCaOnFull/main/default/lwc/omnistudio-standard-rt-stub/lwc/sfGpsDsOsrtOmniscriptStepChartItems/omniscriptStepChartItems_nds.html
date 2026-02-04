@@ -1,0 +1,120 @@
+<template>
+  <template if:true={completed}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="nds-progress__item nds-is-relative nds-is-completed"
+    >
+      <button
+        class="nds-button nds-button_icon nds-button_icon nds-progress__marker nds-progress__marker_icon"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+      >
+        <svg
+          class="nds-button__icon"
+          data-index={jsonDef.indexInParent}
+          aria-hidden="true"
+        >
+          <use
+            data-index={jsonDef.indexInParent}
+            xlink:href={stepChartIconUrl}
+          ></use>
+        </svg>
+        <span class="nds-assistive-text"> {_labelCompleted} </span>
+      </button>
+      <div
+        class="nds-is-absolute"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+      >
+        <div
+          class="nds-popover nds-popover_tooltip nds-nubbin_bottom"
+          role="tooltip"
+          aria-label={stepLabel}
+        >
+          <div class="nds-popover__body">{stepLabel}</div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template if:true={inProgress}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="nds-progress__item nds-is-active"
+      style="cursor: default; padding-bottom: 4px"
+    >
+      <button
+        class="nds-button nds-progress__marker"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+      >
+        <span class="nds-assistive-text"> {_labelInProgress} </span>
+      </button>
+      <div class="nds-is-absolute">
+        <div
+          class="nds-m-top_medium nds-is-relative nds-progress__step-label nds-p-top_xx-small"
+          data-index={jsonDef.indexInParent}
+          onclick={handleStepClick}
+          title={stepLabel}
+        >
+          {stepLabel}
+        </div>
+      </div>
+    </div>
+  </template>
+  <template if:true={pristine}>
+    <div
+      class="nds-progress__item"
+      style="cursor: default; padding-bottom: 4px"
+    >
+      <button
+        class="nds-button nds-progress__marker"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+        disabled
+      >
+        <span class="nds-assistive-text"> {_labelUntouched} </span>
+      </button>
+      <div
+        class="nds-is-absolute"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+      >
+        <div
+          class="nds-popover nds-popover_tooltip nds-nubbin_bottom"
+          role="tooltip"
+          aria-label={stepLabel}
+        >
+          <div class="nds-popover__body">{stepLabel}</div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template if:true={nonpristine}>
+    <div
+      class="nds-progress__item nds-is-nonpristine"
+      style="cursor: default; padding-bottom: 4px"
+    >
+      <button
+        class="nds-button nds-progress__marker"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+        disabled
+      >
+        <span class="nds-assistive-text"> {_labelIncomplete} </span>
+      </button>
+      <div
+        class="nds-is-absolute"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+      >
+        <div
+          class="nds-popover nds-popover_tooltip nds-nubbin_bottom"
+          role="tooltip"
+          aria-label={stepLabel}
+        >
+          <div class="nds-popover__body">{stepLabel}</div>
+        </div>
+      </div>
+    </div>
+  </template>
+</template>

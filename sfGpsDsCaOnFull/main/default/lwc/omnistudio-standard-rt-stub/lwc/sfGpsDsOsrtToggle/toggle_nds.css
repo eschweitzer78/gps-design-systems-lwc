@@ -1,0 +1,21 @@
+.vloc-checkbox-button_span,
+.vloc-checkbox-button_span
+  label.vloc-checkbox-button_label.nds-checkbox_button__label {
+  width: 100%;
+  text-align: center;
+  border-radius: 3px !important;
+  margin: 0;
+  line-height: 1.875rem;
+}
+
+.checkbox-group {
+  display: block;
+  line-height: 2.5;
+  margin: 0;
+  color: inherit;
+}
+
+.nds-form-element__control span.nds-checkbox {
+  padding-left: 1.5rem;
+  text-indent: -1.5rem;
+}

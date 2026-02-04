@@ -1,0 +1,239 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div
+    class="slds-element_text-font slds-editblock_inline slds-grid slds-grid_vertical"
+  >
+    <!-- Header/Label -->
+    <template if:true={_isFirstIndex}>
+      <div class="slds-m-bottom_x-small slds-grid">
+        <h2
+          aria-label={_propSetMap.label}
+          class="slds-text-heading_small slds-text"
+          aria-live="polite"
+        >
+          {_propSetMap.label}
+        </h2>
+        <div if:true={_hasSumElement} class="slds-col--bump-left">
+          {sumElement}
+        </div>
+      </div>
+
+      <!-- Global Actions -->
+      <div if:true={_propSetMap.gActions} class="slds-grid slds-wrap">
+        <template
+          for:each={_gActions}
+          for:item="gActionItem"
+          for:index="gActionIndex"
+        >
+          <template if:true={gActionItem.hasIcon}>
+            <div
+              key={gActionItem.lwcId}
+              class="slds-m-bottom_xx-small slds-m-right_xx-small"
+            >
+              <c-sf-gps-ds-osrt-icon
+                extraclass="slds-input__icon"
+                icon-name={gActionItem.icon}
+                theme="slds"
+                alternative-text="icon"
+                size="small"
+                style="cursor: pointer"
+                onclick={gActionItem.handleClick}
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </div>
+          </template>
+          <template if:false={gActionItem.hasIcon}>
+            <div key={gActionItem.lwcId} class={gActionItem.cls}>
+              <div class="slds-m-bottom_x-small slds-m-right_xx-small">
+                <button
+                  class="slds-button slds-button_neutral slds-button_brand slds-size_1-of-1"
+                  onclick={gActionItem.handleClick}
+                >
+                  {gActionItem.label}
+                </button>
+              </div>
+            </div>
+          </template>
+        </template>
+      </div>
+    </template>
+
+    <template if:true={_isFirstIndex}>
+      <div
+        class="slds-border_bottom slds-border_top slds-grid slds-m-bottom_small"
+      >
+        <div class="slds-size_11-of-12 slds-grid slds-wrap">
+          <template
+            for:each={_tableLabels}
+            for:item="dvItem"
+            for:index="dvIndex"
+          >
+            <div key={dvItem.lwcId} class={dvItem.cls}>
+              <strong> {dvItem.label} </strong>
+            </div>
+          </template>
+        </div>
+        <div class="slds-size_1-of-12">&nbsp;</div>
+      </div>
+    </template>
+    <!-- Table is always visible -->
+    <template if:true={_hasChildren}>
+      <form
+        if:false={_isEditing}
+        class="slds-grid slds-cont-wrapper omni-edit-block-fs-row"
+        onclick={edit}
+        aria-invalid={isInvalid}
+      >
+        <div class="slds-size_12-of-12 slds-grid">
+          <span id="fs-text-error">
+            <span if:true={isInvalid} class="slds-assistive-text">
+              {allCustomLabelsUtil.OmniEditBlockRowError}
+            </span>
+          </span>
+          <div
+            class="slds-size_11-of-12 slds-grid slds-wrap"
+            style="cursor: pointer"
+            role="button"
+            tabindex="0"
+            onkeydown={handleKeyboardEdit}
+            aria-describedby="fs-text-error"
+          >
+            <span
+              if:true={isInvalid}
+              aria-hidden="true"
+              class="slds-required slds-m-around_none slds-p-left_xx-small slds-is-absolute"
+            >
+              *
+            </span>
+            <template
+              for:each={_displayValues}
+              for:item="dvItem"
+              for:index="dvIndex"
+            >
+              <div key={dvItem.lwcId} class={dvItem.cls}>
+                <template if:false={dvItem.isCheckbox}>
+                  {dvItem.value}
+                </template>
+                <template if:true={dvItem.isCheckbox}>
+                  <div class="slds-checkbox" style="padding-top: 0px">
+                    <input
+                      type="checkbox"
+                      checked={dvItem.value}
+                      class="slds-input_mask"
+                    />
+                    <label class="slds-checkbox__label">
+                      <span class="slds-checkbox_faux"> </span>
+                    </label>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+          <div class="slds-size_1-of-12">
+            <div
+              if:true={_allowDelete}
+              class="slds-edit-block_inline-action-container slds-p-around_small slds-grid slds-grid_align-center"
+              onclick={remove}
+            >
+              <c-sf-gps-ds-osrt-icon
+                extraclass="slds-input__icon slds-editblock_delete"
+                icon-name="utility:dash"
+                theme="slds"
+                alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextDelete}
+                style="cursor: pointer"
+                size="x-small"
+                role="button"
+                tabindex="0"
+                data-remove-button
+                onkeydown={handleKeyboardRemove}
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </div>
+          </div>
+        </div>
+      </form>
+    </template>
+
+    <!-- Inline Editing -->
+
+    <div class={editClass}>
+      <div class="slds-grid">
+        <div class="slds-size_11-of-12 slds-grid slds-wrap">
+          <slot class="slds-m-bottom_medium"></slot>
+        </div>
+        <div
+          class="slds-size_1-of-12 slds-m-top_medium slds-grid slds-grid_align-center"
+        >
+          <!-- save (check icon) -->
+          <template if:true={_isEditing}>
+            <c-sf-gps-ds-osrt-icon
+              extraclass="slds-button__icon"
+              icon-name="utility:check"
+              theme="slds"
+              alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextSave}
+              size="xx-small"
+              style="cursor: pointer"
+              onclick={save}
+              role="button"
+              tabindex="0"
+              onkeydown={handleKeyboardSave}
+            >
+            </c-sf-gps-ds-osrt-icon>
+            <!-- cancel (close icon) -->
+            <c-sf-gps-ds-osrt-icon
+              class="slds-m-left_medium"
+              extraclass="slds-button__icon"
+              icon-name="utility:close"
+              theme="slds"
+              alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextCancel}
+              size="xx-small"
+              style="cursor: pointer"
+              onclick={cancel}
+              role="button"
+              tabindex="0"
+              onkeydown={handleKeyboardCancel}
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </template>
+        </div>
+      </div>
+    </div>
+    <template if:true={showAdd}>
+      <template if:true={_hasChildren}>
+        <div
+          class="slds-border_bottom slds-p-top_small slds-size_12-of-12"
+        ></div>
+      </template>
+      <div class="slds-grid">
+        <div class="slds-size_11-of-12 slds-grid">&nbsp;</div>
+        <div class="slds-size_1-of-12 slds-grid slds-grid_align-center">
+          <c-sf-gps-ds-osrt-icon
+            class="slds-m-top_large"
+            extraclass="slds-button__icon"
+            icon-name="utility:add"
+            theme="slds"
+            alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextAdd}
+            size="xx-small"
+            style="cursor: pointer"
+            onclick={handleAdd}
+            role="button"
+            tabindex="0"
+            onkeydown={handleKeyboardAdd}
+          >
+          </c-sf-gps-ds-osrt-icon>
+        </div>
+      </div>
+    </template>
+  </div>
+
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      theme={_theme}
+      size="medium"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

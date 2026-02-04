@@ -1,0 +1,16 @@
+<template>
+  <div class="omni-block_children">
+    <slot></slot>
+
+    <div if:true={showValidation} class="slds-has-error nds-has-error">
+      <span class="slds-form-element__help nds-form-element__help">
+        <span
+          class="slds-text-link_faux nds-text-link_faux"
+          onclick={enterEditMode}
+        >
+          {allCustomLabelsUtil.OmniBlockError}
+        </span>
+      </span>
+    </div>
+  </div>
+</template>

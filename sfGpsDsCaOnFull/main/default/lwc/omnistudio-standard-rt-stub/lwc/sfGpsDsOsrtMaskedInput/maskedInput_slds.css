@@ -1,0 +1,33 @@
+label.slds-form-element__label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+input.slds-input[disabled] {
+  color: var(--slds-g-color-neutral-base-50, #444);
+  background-color: var(--slds-g-color-neutral-base-95, #f3f3f3);
+}
+
+input[readonly],
+.slds-input[type="tel"][type="number"][type="currency"][readonly],
+.slds-input[readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  border-color: #939393;
+  background-color: #f3f3f3;
+}
+
+input[readonly]:focus,
+.slds-input[type="tel"][type="number"][type="currency"][readonly]:focus,
+.slds-input[readonly]:focus {
+  border-color: #939393;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}
+
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  label.slds-form-element__label {
+    max-width: 100%;
+  }
+}

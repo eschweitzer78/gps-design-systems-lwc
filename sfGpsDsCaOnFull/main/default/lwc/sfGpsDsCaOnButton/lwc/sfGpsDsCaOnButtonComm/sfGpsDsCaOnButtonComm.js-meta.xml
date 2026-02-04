@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Button</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="ariaLabelText"
+        type="String"
+        label="Aria label text"
+        description="Provides more context as to what the button interaction is doing."
+      />
+      <property
+        name="elementId"
+        type="String"
+        label="Element Id"
+        description="The unique identifier of the button. This is optional - if no ID is passed, one will be generated."
+      />
+      <property
+        name="htmlType"
+        type="String"
+        label="HTML type"
+        description="The native HTML button type the button should use. If no htmlType is passed, it will default to 'button'."
+        default="button"
+        datasource="button,reset,submit"
+      />
+      <property
+        name="label"
+        type="String"
+        label="Label"
+        description="Text to be displayed within the button."
+        default="Button"
+      />
+      <property
+        name="url"
+        type="String"
+        label="Target URL"
+        description="URL the button will take the user to when clicked."
+        default="#"
+      />
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        default="primary"
+        datasource="internalThemeDark,primary,secondary,tertiary"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

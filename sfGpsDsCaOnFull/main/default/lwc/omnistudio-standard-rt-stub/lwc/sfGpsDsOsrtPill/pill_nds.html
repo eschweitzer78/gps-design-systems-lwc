@@ -1,0 +1,121 @@
+<template>
+  <div class={pillClass}>
+    <div
+      class="nds-combobox__form-element nds-input-has-icon nds-input-has-icon_right"
+      role="none"
+    >
+      <template if:true={label}>
+        <label
+          id="pill-label"
+          class="nds-form-element__label nds-show"
+          style={styleProperties.label.styles}
+          for="pill-1"
+          >{label}</label
+        >
+        <label class="nds-form-element__label nds-show" for="pill-1">
+          <abbr if:true={required} class="nds-required" title="required"
+            >*</abbr
+          >
+          <span style={styleProperties.label.styles}>{label}</span>
+        </label>
+      </template>
+      <div class="nds-form-element__control">
+        <div class="nds-combobox_container" if:false={viewonly}>
+          <div
+            class="nds-combobox nds-dropdown-trigger nds-dropdown-trigger_click nds-is-open"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            role="combobox"
+          >
+            <div
+              class="nds-combobox__form-element nds-input-has-icon nds-input-has-icon_right"
+              role="none"
+            >
+              <input
+                id="pill-1"
+                type="typeahead"
+                name={name}
+                class="nds-input nds-combobox__input"
+                value={inputValue}
+                data-value={pillValue}
+                aria-autocomplete="list"
+                aria-controls="pilllist"
+                autocomplete="off"
+                role="combobox"
+                placeholder={placeholder}
+                disabled={disabled}
+                oninput={filterOptions}
+                onblur={toggleLookup}
+                onfocus={toggleLookup}
+                onkeydown={handleKeyDown}
+              />
+            </div>
+            <div
+              if:true={islistvisible}
+              class="nds-dropdown nds-dropdown_length-with-icon-7 nds-dropdown_fluid"
+              aria-labelledby="pill-label"
+              role="listbox"
+            >
+              <ul class="nds-listbox nds-listbox_vertical" role="presentation">
+                <template
+                  for:each={filteredOptions}
+                  for:item="item"
+                  for:index="index"
+                >
+                  <li key={item.id} class={item.class} role="presentation">
+                    <div
+                      class="nds-media nds-listbox__option nds-listbox__option_entity nds-listbox__option_has-meta"
+                      data-field={item.label}
+                      onmousedown={selectOption}
+                      role="option"
+                      tabindex="0"
+                      aria-label={item.label}
+                    >
+                      <span class="nds-media__body">
+                        <span
+                          class="nds-listbox__option-text nds-listbox__option-text_entity"
+                          >{item.label}</span
+                        >
+                      </span>
+                    </div>
+                  </li>
+                </template>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class={itemTagClass} role="listbox" aria-labelledby="pill-label">
+          <template for:each={valueMap} for:item="item" for:index="index">
+            <span
+              key={item.id}
+              class="nds-pill nds-p-horizontal_x-small"
+              role="option"
+              tabindex="0"
+              aria-selected="true"
+              aria-label={item.label}
+              style={styleProperties.value.styles}
+            >
+              <span class="nds-pill__label">{item.label}</span>
+              <c-sf-gps-ds-osrt-button
+                theme="nds"
+                icon-only
+                class="nds-icon_container nds-pill__remove"
+                if:false={viewonly}
+                title={translatedLabels.cmpRemove}
+                data-field={item.label}
+                tabindex="0"
+                icon-name="utility:close"
+                icon-size="x-small"
+                icon-parent-type="default"
+                icon-variant="default"
+                icon-url={iconUrl}
+                aria-label={translatedLabels.cmpRemove}
+                onclick={removeValue}
+              ></c-sf-gps-ds-osrt-button>
+            </span>
+          </template>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

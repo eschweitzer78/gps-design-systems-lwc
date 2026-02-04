@@ -1,0 +1,255 @@
+<template>
+  <div class={getHeight}>
+    <div class="slds-form">
+      <fieldset class="slds-form-element">
+        <div class="slds-form-element__group">
+          <div class="slds-form-element__row">
+            <div class="slds-gutters slds-size_full slds-m-around_none">
+              <div class="slds-col slds-p-around_none">
+                <div class={errorClass}>
+                  <div class="slds-grid" data-label="true">
+                    <label
+                      if:true={label}
+                      class="slds-form-element__label slds-show--inline slds-truncate"
+                      for="date-input"
+                      style={styleProperties.label.styles}
+                      ><abbr
+                        if:true={required}
+                        class="slds-required"
+                        title={requiredLabel}
+                        ><span if:false={hideAsterisk}>*</span></abbr
+                      >{label}
+                    </label>
+                    <c-sf-gps-ds-osrt-tooltip
+                      icon-url={iconUrl}
+                      if:true={fieldLevelHelp}
+                      content={fieldLevelHelp}
+                      associated-component-label={label}
+                      arrowposition={fieldLevelHelpPosition}
+                      extrabuttonclass="slds-m-bottom_xx-small"
+                      class="slds-tooltip_container slds-p-right_x-small"
+                      data-field-level-help
+                    >
+                    </c-sf-gps-ds-osrt-tooltip>
+                    <slot name="label"></slot>
+                  </div>
+                  <div
+                    class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right datepicker_input__container"
+                  >
+                    <input
+                      type={type}
+                      id="date-input"
+                      aria-label={_ariaLabel}
+                      tabindex={tabIndex}
+                      readonly={readOnly}
+                      aria-readonly={readOnly}
+                      required={required}
+                      placeholder={placeholder}
+                      disabled={disabled}
+                      data-id="date-picker-slds-input"
+                      name={name}
+                      class="slds-input"
+                      value={_displayValue}
+                      onkeypress={shiftFocus}
+                      onkeyup={maskInput}
+                      onblur={handleBlur}
+                      onmousedown={toggleDatePicker}
+                      autocomplete="off"
+                      style={styleProperties.value.styles}
+                      aria-invalid={ariaInvalid}
+                      aria-describedby="errorMessageBlock"
+                    />
+                    <button
+                      data-id="datePickerBtn"
+                      class="slds-button slds-button_icon slds-input__icon slds-input__icon_right Date"
+                      data-type="icon"
+                      disabled={buttonDisabled}
+                      tabindex={tabIndex}
+                      onkeypress={shiftFocus}
+                      onmousedown={toggleDatePicker}
+                      title={selectDateLabel}
+                      type="button"
+                    >
+                      <c-sf-gps-ds-osrt-icon
+                        if:false={hideIconVal}
+                        icon-name="utility:event"
+                        size="xx-small"
+                        class="Date"
+                        baseurl={iconUrl}
+                        theme={theme}
+                        aria-hidden="true"
+                      >
+                      </c-sf-gps-ds-osrt-icon>
+                    </button>
+                  </div>
+
+                  <div
+                    data-id="date-picker-div"
+                    class={getPos}
+                    if:true={built}
+                    role="dialog"
+                    aria-hidden="false"
+                    aria-label="Date picker"
+                  >
+                    <div class="slds-datepicker__filter slds-grid">
+                      <div
+                        class="slds-datepicker__filter_month slds-grid slds-grid_align-spread slds-grow"
+                      >
+                        <div class="slds-align-middle">
+                          <button
+                            class="slds-button slds-button_icon slds-button_icon-container prevMonth"
+                            data-id="prevMonthBtnId"
+                            onmousedown={switchMonth}
+                            onkeydown={shiftFocus}
+                            tabindex="0"
+                            title={prevMonthLabel}
+                            type="button"
+                          >
+                            <c-sf-gps-ds-osrt-icon
+                              icon-name="utility:left"
+                              class="prevMonth"
+                              size="x-small"
+                              baseurl={iconUrl}
+                              theme={theme}
+                            >
+                            </c-sf-gps-ds-osrt-icon>
+                            <span class="slds-assistive-text"
+                              >{prevMonthLabel}</span
+                            >
+                          </button>
+                        </div>
+                        <h2
+                          class="slds-align-middle"
+                          data-id="selected_month"
+                          aria-live="assertive"
+                          aria-atomic="true"
+                          id="month"
+                        >
+                          {selectedMonth}
+                        </h2>
+                        <div class="slds-align-middle">
+                          <button
+                            class="slds-button slds-button_icon slds-button_icon-container nextMonth"
+                            data-id="nextMonthBtnId"
+                            onmousedown={switchMonth}
+                            onkeydown={shiftFocus}
+                            tabindex="0"
+                            title={nextMonthLabel}
+                            type="button"
+                          >
+                            <c-sf-gps-ds-osrt-icon
+                              icon-name="utility:right"
+                              class="nextMonth"
+                              size="x-small"
+                              baseurl={iconUrl}
+                              theme={theme}
+                            >
+                            </c-sf-gps-ds-osrt-icon>
+                            <span class="slds-assistive-text"
+                              >{nextMonthLabel}</span
+                            >
+                          </button>
+                        </div>
+                      </div>
+                      <div class="slds-shrink-none">
+                        <label class="slds-assistive-text" for="select-01"
+                          >{pickYearLabel}</label
+                        >
+                        <div class="slds-select_container">
+                          <select
+                            onchange={yearSelected}
+                            tabindex="0"
+                            class="slds-select"
+                            data-id="select-01"
+                            id="select-01"
+                            onkeydown={shiftFocus}
+                          >
+                            <template for:each={years} for:item="year">
+                              <option key={year.value}>
+                                <span>{year.value}</span>
+                              </option>
+                            </template>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <table
+                      aria-multiselectable="true"
+                      class="slds-datepicker__month"
+                      role="grid"
+                      aria-labelledby="month"
+                    >
+                      <thead>
+                        <tr data-id="weekdays">
+                          <template for:each={daysTitle} for:item="day">
+                            <th
+                              key={day.name}
+                              data-id={day.name}
+                              class="slds-disabled-text"
+                              tabindex="-1"
+                              id={day.name}
+                              scope="col"
+                            >
+                              <abbr title={day.name}>{day.name}</abbr>
+                            </th>
+                          </template>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <template for:each={DayArray} for:item="days">
+                          <tr key={days.id}>
+                            <template for:each={days} for:item="day">
+                              <td
+                                key={day.id}
+                                data-id={day.id}
+                                id={day.id}
+                                data-type="date"
+                                onkeydown={shiftFocus}
+                                onmousedown={selectDate}
+                                aria-selected="false"
+                                tabindex="0"
+                                class={day.class}
+                                role="gridcell"
+                                aria-disabled={day.disabled}
+                              >
+                                <span
+                                  class="slds-day"
+                                  aria-label={day.ariaLabel}
+                                  >{day.value}</span
+                                >
+                              </td>
+                            </template>
+                          </tr>
+                        </template>
+                      </tbody>
+                    </table>
+                    <button
+                      class="slds-button slds-align_absolute-center slds-text-link currentDate"
+                      data-id="current-date"
+                      onkeydown={shiftFocus}
+                      tabindex="0"
+                      onmousedown={currentDate}
+                      type="button"
+                    >
+                      {todayLabel}
+                    </button>
+                  </div>
+                </div>
+
+                <div if:true={isError} class="slds-has-error">
+                  <span
+                    class="slds-form-element__help"
+                    aria-live="assertive"
+                    id="errorMessageBlock"
+                    role="alert"
+                    >{errorMessage}</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</template>

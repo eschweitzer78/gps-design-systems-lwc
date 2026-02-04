@@ -1,0 +1,45 @@
+<template>
+  <div class="via-slds">
+    <div
+      class={getMainContainerClass}
+      onupdatevalue={updateValue}
+      data-index={activeTabValue}
+    >
+      <ul class={getTabNavClass} role="tablist" if:false={hideTabNav}>
+        <template for:each={_tabs} for:item="tab" for:index="index">
+          <li
+            if:true={tab.displayTab}
+            class={getTabItemClass}
+            title={tab.title}
+            role="presentation"
+            key={tab.id}
+            onkeydown={handleKeyEvent}
+          >
+            <a
+              class={getTabLinkClass}
+              onclick={handleChangeTab}
+              data-value={tab.label}
+              data-selected-index={index}
+              data-selected-tab={tab.tabId}
+              role="tab"
+              tabindex={tab.tabIndex}
+              aria-selected="false"
+            >
+              <c-sf-gps-ds-osrt-icon
+                theme={theme}
+                if:true={tab.isIcon}
+                baseurl={tab.iconUrl}
+                icon-name={tab.iconName}
+                alternative-text={tab.iconText}
+                size="small"
+              >
+              </c-sf-gps-ds-osrt-icon>
+              <span class={getTabHeaderClass}>{tab.label}</span>
+            </a>
+          </li>
+        </template>
+      </ul>
+      <slot class="slds-col slds-grid_vertical-stretch"></slot>
+    </div>
+  </div>
+</template>

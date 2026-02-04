@@ -1,0 +1,7 @@
+.omni-edit-block-fs-row {
+  margin-top: calc(-1 * var(--lwc-borderWidthThin, 1px));
+}
+
+.omni-edit-block-fs-row[aria-invalid="true"] .slds-grid[role="button"] {
+  border: 2px solid var(--lwc-colorBorderError, rgb(194, 57, 52));
+}

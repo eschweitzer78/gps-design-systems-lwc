@@ -1,0 +1,9 @@
+<template>
+  <slot>
+    <div class={_themeClass} style={_ctrlPropertyPadding}>
+      <span if:true={_isDesignMode} class="slds-text-font_monospace">
+        &lt;{_elementId} /&gt;</span
+      >
+    </div>
+  </slot>
+</template>

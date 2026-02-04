@@ -1,0 +1,50 @@
+<template>
+  <div if:false={isHidden} class="via-slds">
+    <div class={extraclassSelection}>
+      <div class={stateClassSelection} role="alert">
+        <span class="slds-assistive-text">{type}</span>
+
+        <span
+          class="slds-icon_container slds-m-right_small slds-align-top"
+          title={message}
+        >
+          <c-sf-gps-ds-osrt-icon
+            baseurl={iconUrl}
+            variant="toast"
+            if:true={icon}
+            icon-name={icon}
+            theme="slds"
+            size="small"
+          ></c-sf-gps-ds-osrt-icon>
+        </span>
+        <div class="slds-notify__content vloc-full_width">
+          <div class="slds-grid slds-grid_align-spread">
+            <div class="slds-col">
+              <h2 if:true={title} class="slds-text-heading_small">{title}</h2>
+              <p if:true={message}>{message}</p>
+            </div>
+            <div class="slds-col">
+              <div class="slds-p-left_small">
+                <slot></slot>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-notify__close">
+          <c-sf-gps-ds-osrt-button
+            theme=""
+            variant="base"
+            label=""
+            extraclass="slds-button_icon slds-button_icon-inverse"
+            onclick={close}
+            icon-url={iconUrl}
+            icon-name="utility:close"
+            icon-size="small"
+            icon-position="right"
+          >
+          </c-sf-gps-ds-osrt-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

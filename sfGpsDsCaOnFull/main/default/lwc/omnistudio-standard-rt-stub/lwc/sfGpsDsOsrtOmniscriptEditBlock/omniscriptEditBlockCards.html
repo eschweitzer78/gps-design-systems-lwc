@@ -1,0 +1,377 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="slds-grid slds-wrap">
+    <!-- Modal Visual (Cards) -->
+    <template if:true={_isCards}>
+      <div class={visualClass} onclick={handleCheckbox}>
+        <div
+          class="slds-box slds-box_x-small slds-grid slds-grid_vertical slds-grid_vertical-align-center slds-size_12-of-12 slds-m-right_medium slds-m-bottom_medium slds-is-relative omni-edit-block-card omni-edit-block-short-cards"
+          tabindex="0"
+          onkeydown={handleKeyboardCheckbox}
+          aria-invalid={isInvalid}
+          aria-describedby="card-text-error"
+          aria-labelledby="card-text"
+        >
+          <span
+            if:true={isInvalid}
+            style="left: 0; top: 0"
+            class="slds-required slds-m-around_none slds-p-left_xx-small slds-is-absolute"
+          >
+            *
+          </span>
+          <span id="card-text-error">
+            <span if:true={isInvalid} class="slds-assistive-text">
+              {allCustomLabelsUtil.OmniEditBlockError}
+            </span>
+          </span>
+
+          <!-- Customizable SVG Icon -->
+          <div class="slds-m-top_large">
+            <span
+              class="slds-icon_container slds-icon_container--circle omni-icon-circle"
+            >
+              <c-sf-gps-ds-osrt-icon
+                class=""
+                extraclass="slds-input__icon"
+                variant=" "
+                icon-name={svgMapIcon}
+                theme="slds"
+                size="large"
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </span>
+          </div>
+          <!-- Display Text -->
+          <div
+            class="slds-grid slds-grid_vertical slds-grid_vertical-align-center slds-m-top_x-small slds-size_1-of-1"
+            id="card-text"
+          >
+            <template
+              for:each={_displayValues}
+              for:item="dvItem"
+              for:index="dvIndex"
+            >
+              <div
+                key={dvItem.lwcId}
+                class="slds-form-element__label slds-truncate"
+              >
+                {dvItem.value}
+              </div>
+            </template>
+          </div>
+          <!-- Menu Action Icon -->
+          <template if:true={_useActionMenu}>
+            <div class="slds-is-absolute slds-grid omni-action-menu-container">
+              <button
+                type="button"
+                class="slds-button slds-button--icon-border-filled slds-col_bump-left"
+                aria-haspopup="true"
+                aria-expanded={_menuExpanded}
+                data-action-button-menu
+                onclick={toggleActionMenu}
+                onkeydown={handleKeyboardActionMenu}
+              >
+                <c-sf-gps-ds-osrt-icon
+                  extraclass="slds-input__icon"
+                  icon-name="utility:down"
+                  theme="slds"
+                  alternative-text={_actionMenuText}
+                  size="x-small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+              </button>
+
+              <!-- Action Menu List -->
+              <div
+                if:true={_bShowActionMenu}
+                class="slds-dropdown slds-dropdown_right"
+                style="top: 100%"
+              >
+                <ul class="slds-dropdown__list" role="menu">
+                  <template
+                    for:each={_actionMenuList}
+                    for:item="actionMenuItem"
+                    for:index="actionMenuIndex"
+                  >
+                    <li
+                      key={actionMenuItem.lwcId}
+                      class="slds-dropdown__item"
+                      role="presentation"
+                      onclick={actionMenuItem.handleClick}
+                      onkeydown={actionMenuItem.handleKeyboardClick}
+                    >
+                      <a
+                        href="javascript:void(0);"
+                        role="menuitem"
+                        tabindex="0"
+                      >
+                        <span class="slds-truncate">
+                          {actionMenuItem.label}
+                        </span>
+                      </a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <!-- Click anywhere else will hide action menu list-->
+              <div
+                if:true={_bShowActionMenu}
+                onclick={hideActionMenu}
+                class="slds-is-absolute"
+                style="width: 1000vh; height: 1000vh; left: -200vw; top: -200vh"
+              ></div>
+            </div>
+          </template>
+
+          <!-- Checkbox Icon -->
+          <template if:true={_showCheckbox}>
+            <span
+              class="omni-editblock-checkbox-indicator slds-is-absolute slds-icon_container slds-icon_container--circle"
+            >
+              <c-sf-gps-ds-osrt-icon
+                class=""
+                extraclass="slds-input__icon"
+                variant=" "
+                icon-name="action:approval"
+                theme="slds"
+                alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextApproval}
+                size="small"
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </span>
+          </template>
+        </div>
+      </div>
+    </template>
+
+    <!-- Modal Visual (Long Cards)-->
+    <template if:true={_isLongCards}>
+      <div class={visualClass} onclick={handleCheckbox}>
+        <div
+          class="slds-box slds-grid slds-grid_vertical-align-center slds-size_12-of-12 slds-m-right_medium slds-m-bottom_medium slds-is-relative omni-edit-block-card"
+          tabindex="0"
+          onkeydown={handleKeyboardCheckbox}
+          aria-invalid={isInvalid}
+          aria-describedby="longcard-text-error"
+          aria-labelledby="longcard-text"
+        >
+          <span
+            if:true={isInvalid}
+            style="left: 0; top: 0"
+            class="slds-required slds-m-around_none slds-p-left_xx-small slds-is-absolute"
+          >
+            *
+          </span>
+          <span id="longcard-text-error">
+            <span if:true={isInvalid} class="slds-assistive-text">
+              {allCustomLabelsUtil.OmniEditBlockError}
+            </span>
+          </span>
+          <!-- Customizable SVG Icon -->
+          <span
+            class="slds-icon_container slds-icon_container--circle omni-icon-circle"
+          >
+            <c-sf-gps-ds-osrt-icon
+              class=""
+              extraclass="slds-input__icon"
+              variant=" "
+              icon-name={svgMapIcon}
+              theme="slds"
+              size="large"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </span>
+          <!-- Display Text -->
+          <div
+            class="slds-grid slds-grid_vertical slds-grid_align-center slds-p-left_small slds-max-small-size_5-of-12 slds-small-size_8-of-12"
+            style="height: 4rem"
+            id="longcard-text"
+          >
+            <template
+              for:each={_displayValues}
+              for:item="dvItem"
+              for:index="dvIndex"
+            >
+              <div
+                key={dvItem.lwcId}
+                class="slds-form-element__label slds-truncate"
+              >
+                {dvItem.value}
+              </div>
+            </template>
+          </div>
+
+          <!-- Menu Action Icon -->
+          <template if:true={_useActionMenu}>
+            <div class="slds-grid slds-col_bump-left slds-is-relative">
+              <button
+                type="button"
+                class="slds-button slds-button--icon-border-filled"
+                aria-haspopup="true"
+                aria-expanded={_menuExpanded}
+                data-action-button-menu
+                onclick={toggleActionMenu}
+                onkeydown={handleKeyboardActionMenu}
+              >
+                <c-sf-gps-ds-osrt-icon
+                  extraclass="slds-input__icon"
+                  icon-name="utility:down"
+                  theme="slds"
+                  alternative-text={_actionMenuText}
+                  size="x-small"
+                >
+                </c-sf-gps-ds-osrt-icon>
+              </button>
+
+              <!-- Action Menu List -->
+              <div
+                if:true={_bShowActionMenu}
+                class="slds-dropdown slds-dropdown_right"
+                style="top: 100%"
+              >
+                <ul class="slds-dropdown__list" role="menu">
+                  <template
+                    for:each={_actionMenuList}
+                    for:item="actionMenuItem"
+                    for:index="actionMenuIndex"
+                  >
+                    <li
+                      key={actionMenuItem.lwcId}
+                      class="slds-dropdown__item"
+                      role="presentation"
+                      onclick={actionMenuItem.handleClick}
+                      onkeydown={actionMenuItem.handleKeyboardClick}
+                    >
+                      <a
+                        href="javascript:void(0);"
+                        role="menuitem"
+                        tabindex="0"
+                      >
+                        <span class="slds-truncate">
+                          {actionMenuItem.label}
+                        </span>
+                      </a>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+              <!-- Click anywhere else will hide action menu list-->
+              <div
+                if:true={_bShowActionMenu}
+                onclick={hideActionMenu}
+                class="slds-is-absolute"
+                style="width: 1000vh; height: 1000vh; left: -200vw; top: -200vh"
+              ></div>
+            </div>
+          </template>
+
+          <!-- Checkbox Icon -->
+          <template if:true={_showCheckbox}>
+            <span
+              class="omni-editblock-checkbox-indicator slds-is-absolute slds-icon_container slds-icon_container--circle"
+            >
+              <c-sf-gps-ds-osrt-icon
+                class=""
+                extraclass="slds-input__icon"
+                variant=" "
+                icon-name="action:approval"
+                theme="slds"
+                alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextApproval}
+                size="small"
+              >
+              </c-sf-gps-ds-osrt-icon>
+            </span>
+          </template>
+        </div>
+      </div>
+    </template>
+
+    <!-- Modal Editing -->
+    <div class={editClass}>
+      <section
+        role="dialog"
+        tabindex="-1"
+        class="slds-modal slds-fade-in-open slds-modal_large"
+        aria-modal="true"
+        aria-label={_propSetMap.label}
+      >
+        <div class="slds-modal__container">
+          <header class="slds-modal__header">
+            <h2 class="slds-modal__title slds-hyphenate">
+              {_propSetMap.label}
+            </h2>
+          </header>
+          <div
+            class="slds-modal__content slds-p-around_medium omni-editblock-modal__content"
+          >
+            <slot
+              class="slds-grid slds-wrap slds-grid_pull-padded slds-p-left_small"
+            ></slot>
+          </div>
+          <div class="slds-modal__footer">
+            <div
+              class="slds-grid slds-wrap slds-grid_align-end slds-m-top_medium"
+            >
+              <button
+                type="button"
+                onclick={cancel}
+                class="slds-button slds-button_neutral slds-size_2-of-12 slds-text-align_center"
+              >
+                {allCustomLabelsUtil.OmnicancelLabel}
+              </button>
+              <button
+                type="button"
+                onclick={save}
+                disabled={isPageLoading}
+                class="slds-button slds-button_neutral slds-size_2-of-12 slds-text-align_center"
+              >
+                {allCustomLabelsUtil.OmniConfigProdModalOk}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+
+    <!-- LongCards Add Button-->
+    <template if:true={_isLongCards}>
+      <template if:true={showAdd}>
+        <div
+          class="slds-box slds-box_x-small slds-grid slds-grid_vertical-align-center slds-m-right_medium slds-m-bottom_medium slds-size_12-of-12 omni-edit-block-card editblock-new"
+          onclick={handleAdd}
+          role="button"
+          tabindex="0"
+          onkeydown={handleKeyboardAdd}
+        >
+          <!-- Add Button Icon -->
+          <span class="slds-icon_container slds-icon_container--circle">
+            <c-sf-gps-ds-osrt-icon
+              class=""
+              extraclass="slds-input__icon"
+              icon-name="utility:add"
+              theme="slds"
+              alternative-text={allCustomLabelsUtil.OmniEditBlockIconTextAdd}
+              size="large"
+            >
+            </c-sf-gps-ds-osrt-icon>
+          </span>
+
+          <div class="slds-text-align_center omni-new-card">
+            <span class="slds-m-horizontal_xx-small"> {_newLabel} </span>
+          </div>
+        </div>
+      </template>
+    </template>
+  </div>
+  <!-- Spinner -->
+  <template if:true={isPageLoading}>
+    <c-sf-gps-ds-osrt-spinner
+      variant="brand"
+      alternative-text={allCustomLabelsUtil.OmniSpinnerTextLoading}
+      theme={_theme}
+      size="medium"
+    >
+    </c-sf-gps-ds-osrt-spinner>
+  </template>
+</template>

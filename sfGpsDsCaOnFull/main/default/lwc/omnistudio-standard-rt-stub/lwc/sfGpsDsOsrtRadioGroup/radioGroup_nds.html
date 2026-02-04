@@ -1,0 +1,125 @@
+<template>
+  <div class={errorClass}>
+    <fieldset if:false={isbutton}>
+      <legend
+        if:true={label}
+        class="nds-form-element__label nds-form-element__label_empty nds-form-element__legend nds-form-element__control-help nds-radio-relative-tooltip nds-show nds-float_left"
+        style={styleProperties.label.styles}
+      >
+        <span class="nds-m-right_x-small" style={styleProperties.label.styles}
+          >{label}</span
+        >
+        <abbr if:true={required} title={requiredLabel} class="nds-required"
+          >*</abbr
+        >
+      </legend>
+      <div class="nds-clearfix nds-m-top_xx-small">
+        <c-sf-gps-ds-osrt-tooltip
+          if:true={fieldLevelHelp}
+          theme="nds"
+          content={fieldLevelHelp}
+          arrowposition={fieldLevelHelpPosition}
+          icon-name="utility:info"
+          class="nds-m-top_xxx-small nds-p-right_small"
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </div>
+      <div class="nds-form-element__control">
+        <template for:each={internalOpts} for:item="option" for:index="index">
+          <span key={option.id} class="nds-radio">
+            <input
+              type="radio"
+              value={option.value}
+              tabindex={tabIndex}
+              onchange={onchangevalue}
+              onfocus={handleFocus}
+              onblur={handleBlur}
+              checked={option.selected}
+              onkeydown={handleKeyDownEvent}
+              disabled={disabled}
+              id={option.id}
+              data-index={index}
+              name={option.name}
+              aria-invalid={isError}
+              aria-describedby="errorMessageblock"
+            />
+            <label class="nds-radio__label" data-index={index} for={option.id}>
+              <span class="nds-radio_faux"></span>
+              <span
+                class="nds-form-element__label"
+                style={styleProperties.value.styles}
+                >{option.label}</span
+              >
+            </label>
+          </span>
+        </template>
+      </div>
+    </fieldset>
+    <fieldset if:true={isbutton}>
+      <legend
+        if:true={label}
+        class="nds-form-element__legend nds-form-element__control-help nds-radio-relative-tooltip nds-show nds-float_left"
+        style={styleProperties.label.styles}
+      >
+        <span class="nds-m-right_x-small" style={styleProperties.label.styles}
+          >{label}</span
+        >
+        <abbr if:true={required} title="required" class="nds-required">*</abbr>
+      </legend>
+      <div class="nds-clearfix nds-m-top_xx-small">
+        <c-sf-gps-ds-osrt-tooltip
+          if:true={fieldLevelHelp}
+          theme="nds"
+          content={fieldLevelHelp}
+          arrowposition={fieldLevelHelpPosition}
+          icon-name="utility:info"
+          class="nds-m-top_xxx-small nds-p-right_small"
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+        <slot name="label"></slot>
+      </div>
+
+      <div class="nds-form-element__control">
+        <div class="nds-radio_button-group">
+          <template for:each={internalOpts} for:item="option" for:index="index">
+            <span key={option.id} class="nds-button nds-radio_button">
+              <input
+                type="radio"
+                value={option.value}
+                tabindex={tabIndex}
+                onchange={onchangevalue}
+                onfocus={handleFocus}
+                onblur={handleBlur}
+                checked={option.selected}
+                onkeydown={handleKeyDownEvent}
+                disabled={disabled}
+                id={option.id}
+                data-index={index}
+                name={option.name}
+                aria-invalid={isError}
+                aria-describedby="errorMessageblock"
+              />
+              <label
+                class="nds-radio_button__label"
+                data-index={index}
+                for={option.id}
+              >
+                <span class="nds-radio_faux">{option.label}</span>
+                <div class="nds-radio-overlay"></div>
+              </label>
+            </span>
+          </template>
+        </div>
+      </div>
+    </fieldset>
+    <div
+      if:true={isError}
+      class="nds-form-element__help nds-form-element__help_text-transform__none"
+      role="alert"
+      id="errorMessageblock"
+    >
+      {errorMessage}
+    </div>
+  </div>
+</template>

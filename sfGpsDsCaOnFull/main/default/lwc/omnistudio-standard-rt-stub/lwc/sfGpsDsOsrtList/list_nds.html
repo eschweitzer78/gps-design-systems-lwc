@@ -1,0 +1,57 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class="nds-card nds-p-around_x-small">
+    <template if:true={isSearchAvailable}>
+      <c-sf-gps-ds-osrt-input
+        class="searchInput"
+        placeholder={translatedLabels.cmpSearchKey}
+        type="text"
+        onkeyup={searchKeyChangeHandler}
+        theme={theme}
+      ></c-sf-gps-ds-osrt-input>
+    </template>
+    <template if:true={showSortIcon}>
+      <button
+        class="nds-button nds-button_neutral nds-m-top_x-small"
+        onmouseenter={toggleIcon}
+        onmouseleave={toggleIcon}
+        onclick={sortList}
+      >
+        {fieldName}
+        <template if:true={showIcon}>
+          <c-sf-gps-ds-osrt-icon
+            theme={theme}
+            size="xx-small"
+            baseurl={iconUrl}
+            icon-name={sortIconName}
+          ></c-sf-gps-ds-osrt-icon>
+        </template>
+      </button>
+    </template>
+    <div
+      class="content nds-scrollable_y nds-m-top_x-small"
+      data-value={filteredData}
+    >
+      <template if:false={isBaseVersion}>
+        <slot></slot>
+      </template>
+      <ul
+        if:true={isBaseVersion}
+        class="nds-has-dividers_around nds-has-block-links_space"
+      >
+        <template for:each={filteredData} for:item="item">
+          <li key={item.id} class="nds-item">
+            <a href="javascript:void(0);">{item.Name}</a>
+          </li>
+        </template>
+      </ul>
+      <template if:true={showLoadMore}>
+        <div class="nds-p-vertical_small">
+          <a href="javascript:void(0)" onclick={loadMore}
+            >{_loadMoreBtnLabel}</a
+          >
+        </div>
+      </template>
+    </div>
+  </div>
+</template>

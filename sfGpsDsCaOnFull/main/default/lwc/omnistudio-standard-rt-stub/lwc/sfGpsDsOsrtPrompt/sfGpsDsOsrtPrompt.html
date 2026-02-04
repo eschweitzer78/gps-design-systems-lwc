@@ -1,0 +1,26 @@
+<template>
+  <div class={themeClass}>
+    <c-sf-gps-ds-osrt-modal
+      class={promptClass}
+      extra-header-class={headerClass}
+      extra-footer-class={footerClass}
+      size="large"
+      theme={theme}
+    >
+      <div slot="header">
+        <h1 class={headerTxtClass} id="prompt-heading-id">{title}</h1>
+      </div>
+      <div slot="content">
+        <p>{message}</p>
+      </div>
+      <div slot="footer">
+        <c-sf-gps-ds-osrt-button
+          theme={theme}
+          variant="neutral"
+          onclick={closePrompt}
+          label="Okay"
+        ></c-sf-gps-ds-osrt-button>
+      </div>
+    </c-sf-gps-ds-osrt-modal>
+  </div>
+</template>

@@ -1,0 +1,21 @@
+.no-break {
+  white-space: nowrap;
+}
+
+.slds-slider-label__label {
+  display: inline-block;
+}
+
+input[readonly],
+.slds-slider__range[readonly] {
+  padding-left: var(--lwc-spacingSmall, 0.75rem);
+  border-color: #939393;
+  background-color: #f3f3f3;
+}
+
+input[readonly]:focus,
+.slds-slider__range[readonly]:focus {
+  border-color: #939393;
+  transition: var(--slds-g-color-brand-base-60, #0176d3) 0.3s;
+  background: #f3f3f3;
+}

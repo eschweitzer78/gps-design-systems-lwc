@@ -1,0 +1,4 @@
+.slds-box[aria-invalid="true"] {
+  border-width: 2px;
+  border-color: var(--lwc-colorBorderError, rgb(194, 57, 52));
+}

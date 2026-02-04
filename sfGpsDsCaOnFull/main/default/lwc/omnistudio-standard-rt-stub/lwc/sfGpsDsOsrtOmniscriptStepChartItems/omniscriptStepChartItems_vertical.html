@@ -1,0 +1,97 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:true={completed}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="slds-progress__item slds-is-completed"
+    >
+      <button
+        class="slds-button slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success omni-stepchart-button"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+      >
+        <svg
+          class="slds-icon slds-icon slds-icon_xx-small"
+          data-index={jsonDef.indexInParent}
+          aria-hidden="true"
+        >
+          <use
+            data-index={jsonDef.indexInParent}
+            xlink:href={stepChartIconUrl}
+          ></use>
+        </svg>
+        <span class="slds-assistive-text">{_labelCompleted}</span>
+      </button>
+      <div
+        class="slds-progress__item_content slds-grid slds-grid_align-spread"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+      >
+        {stepLabel}
+      </div>
+    </div>
+  </template>
+  <template if:true={inProgress}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="slds-progress__item slds-is-active"
+    >
+      <button
+        class="slds-button slds-progress__marker"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+      >
+        <span class="slds-assistive-text">{_labelInProgress}</span>
+      </button>
+      <div
+        class="slds-progress__item_content slds-grid slds-grid_align-spread omni-stepchart-content slds-text-title_bold"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+      >
+        {stepLabel}
+      </div>
+    </div>
+  </template>
+  <template if:true={pristine}>
+    <div class="slds-progress__item">
+      <button
+        class="slds-button slds-progress__marker omni-stepchart-button-pristine"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+        disabled
+      >
+        <span class="slds-assistive-text">{_labelUntouched}</span>
+      </button>
+      <div
+        class="slds-progress__item_content slds-grid slds-grid_align-spread omni-stepchart-content"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+      >
+        {stepLabel}
+      </div>
+    </div>
+  </template>
+  <template if:true={nonpristine}>
+    <div
+      data-index={jsonDef.indexInParent}
+      class="slds-progress__item slds-is-completed"
+    >
+      <button
+        class="slds-button slds-progress__marker"
+        style="background: rgb(21, 137, 238); border-color: #fff"
+        onclick={handleStepClick}
+        data-index={jsonDef.indexInParent}
+        disabled
+      >
+        <span class="slds-assistive-text">{_labelIncomplete}</span>
+      </button>
+      <div
+        class="slds-progress__item_content slds-grid slds-grid_align-spread omni-stepchart-content"
+        data-index={jsonDef.indexInParent}
+        onclick={handleStepClick}
+      >
+        {stepLabel}
+      </div>
+    </div>
+  </template>
+</template>

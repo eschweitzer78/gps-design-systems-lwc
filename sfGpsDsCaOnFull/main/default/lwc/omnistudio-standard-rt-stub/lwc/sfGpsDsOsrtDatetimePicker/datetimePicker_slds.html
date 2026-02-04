@@ -1,0 +1,100 @@
+<template>
+  <div class={errorClass}>
+    <div class="slds-grid" data-label="true">
+      <label
+        if:true={label}
+        class="slds-form-element__label slds-show--inline slds-truncate"
+        style={styleProperties.dateTimeLabel.styles}
+      >
+        <abbr if:true={required} class="slds-required" title={requiredLabel}
+          >*</abbr
+        >
+        {label}
+      </label>
+      <c-sf-gps-ds-osrt-tooltip
+        if:true={fieldLevelHelp}
+        icon-url={iconUrl}
+        theme={theme}
+        content={fieldLevelHelp}
+        associated-component-label={label}
+        arrowposition={fieldLevelHelpPosition}
+        class="slds-tooltip_container slds-p-right_x-small"
+        extrabuttonclass="slds-m-bottom_xx-small"
+      >
+      </c-sf-gps-ds-osrt-tooltip>
+      <slot name="label"></slot>
+    </div>
+    <div class="slds-grid slds-gutters slds-wrap">
+      <div
+        class="slds-col slds-size_1-of-1 slds-medium-size_7-of-12 slds-large-size_1-of-2"
+      >
+        <c-sf-gps-ds-osrt-date-picker
+          onchange={setTime}
+          hide-asterisk
+          placeholder={datePlaceholder}
+          theme={theme}
+          label={dateLabel}
+          aria-label={dateAriaLabel}
+          format={dateFormat}
+          locale-format={localeFormat}
+          locale-format-invalid-error={localeFormatInvalidError}
+          name={dateName}
+          icon-url={iconUrl}
+          read-only={readOnly}
+          message-when-value-missing={messageWhenValueMissing}
+          min={dateMin}
+          max={dateMax}
+          value={_timeDateObj}
+          tab-index={tabIndex}
+          disabled={disabled}
+          required={required}
+          output-type="date"
+          message-when-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-overflow={messageWhenRangeOverflow}
+          message-when-bad-input={messageWhenBadInput}
+          prev-month-label={prevMonthLabel}
+          next-month-label={nextMonthLabel}
+          pick-year-label={pickYearLabel}
+          today-label={todayLabel}
+          required-label={requiredLabel}
+          hide-icon={hideIcon}
+          styles={styles}
+          select-date-label={selectDateLabel}
+        >
+        </c-sf-gps-ds-osrt-date-picker>
+      </div>
+      <div
+        class="slds-col slds-size_1-of-1 slds-medium-size_5-of-12 slds-large-size_1-of-2"
+      >
+        <c-sf-gps-ds-osrt-time-picker
+          hide-asterisk
+          placeholder={timePlaceholder}
+          theme={theme}
+          label={timeLabel}
+          aria-label={timeAriaLabel}
+          name={timeName}
+          icon-url={iconUrl}
+          format={timeFormat}
+          locale-format={localeFormat}
+          locale-format-invalid-error={localeFormatInvalidError}
+          min={timeMin}
+          max={timeMax}
+          value={_timeDateObj}
+          tab-index={tabIndex}
+          read-only={readOnly}
+          disabled={disabled}
+          required={required}
+          required-label={requiredLabel}
+          message-when-value-missing={messageWhenValueMissing}
+          interval={interval}
+          output-type="date"
+          message-when-bad-input={messageWhenBadInput}
+          message-when-range-underflow={messageWhenRangeUnderflow}
+          message-when-range-overflow={messageWhenRangeOverflow}
+          hide-icon={hideIcon}
+          styles={styles}
+        ></c-sf-gps-ds-osrt-time-picker>
+      </div>
+    </div>
+  </div>
+</template>

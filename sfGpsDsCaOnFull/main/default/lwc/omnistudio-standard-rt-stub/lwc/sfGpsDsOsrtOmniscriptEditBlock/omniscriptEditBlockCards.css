@@ -1,0 +1,62 @@
+.omni-edit-block-card {
+  box-shadow: 0 1px 4px #000;
+  cursor: pointer;
+}
+
+.omni-edit-block-card.omni-edit-block-short-cards {
+  height: 12.5rem;
+}
+
+.omni-new-card {
+  position: relative;
+  text-align: center;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4rem;
+  margin: 1.55rem 0;
+}
+
+.omni-add-circle {
+  background: #54698d;
+}
+
+.omni-icon-circle {
+  background: #05a6df;
+}
+
+.omni-action-menu-container {
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.slds-button.omni-action-menu-button,
+.slds-button + .slds-button.omni-action-menu-button {
+  border-radius: 0;
+  margin: 0;
+}
+
+.nds-button.omni-action-menu-button,
+.nds-button + .nds-button.omni-action-menu-button {
+  border-radius: 0;
+  margin: 0;
+}
+
+.omni-edit-block-card[aria-invalid="true"] {
+  border-width: 2px;
+  border-color: var(--lwc-colorBorderError, rgb(194, 57, 52));
+  box-shadow: 0 1px 4px var(--lwc-colorBorderError, rgb(194, 57, 52));
+}
+
+/*
+ * W-13551215 : Updated height of edit block modal content for slds to match nds
+ */
+.omni-editblock-modal__content {
+  height: 78vh;
+}
+
+.omni-editblock-checkbox-indicator {
+  top: -1rem;
+  right: -1rem;
+  background: var(--slds-g-color-palette-teal-60, rgb(6, 165, 154));
+}

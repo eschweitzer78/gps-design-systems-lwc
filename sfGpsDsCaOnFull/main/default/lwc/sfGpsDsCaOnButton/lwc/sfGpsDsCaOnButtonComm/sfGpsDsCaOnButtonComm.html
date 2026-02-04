@@ -1,0 +1,20 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <ontario-button
+    lwc:else
+    lwc:external
+    aria-label-text={ariaLabelText}
+    element-id={elementId}
+    html-type={htmlType}
+    label={label}
+    type={type}
+    class-name={className}
+    onclick={handleClick}
+  >
+  </ontario-button>
+</template>

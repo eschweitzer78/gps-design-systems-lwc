@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>65.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>Ontario DS Blockquote</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="quote"
+        type="String"
+        label="Quote"
+        description="Quote text in Markdown format."
+        default="In the past few years, Ontario has gained a high level of respect for its visionary work in early education. The changes have been profound, and thoughtfully introduced. The views that guide the work are articulated clearly, and express great respect for children, families, and educators. We now have a solid foundation upon which to build a more coherent system."
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="attribution"
+        type="String"
+        label="Title"
+        description="Gives more context about the author."
+        default="Academic partners"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="byline"
+        type="String"
+        label="Byline"
+        description="Gives more context about the publication or source."
+        default="Ontario's Pedagogy for the Early Years"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

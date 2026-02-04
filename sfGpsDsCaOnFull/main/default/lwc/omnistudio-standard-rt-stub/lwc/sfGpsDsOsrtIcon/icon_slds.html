@@ -1,0 +1,7 @@
+<template>
+  <img if:true={imgsrc} src={imgsrc} class={getClasses} />
+  <svg if:false={imgsrc} class={getClasses} aria-hidden="true">
+    <use xlink:href={iconUrl}></use>
+  </svg>
+  <span class="slds-assistive-text">{alternativeText}</span>
+</template>

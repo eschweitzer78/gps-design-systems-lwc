@@ -1,0 +1,50 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <div class={_extraClass}>
+    <div if:true={_label} class={labelAlign}>
+      <label class={labelClass} style={labelStyle}
+        >{_label}
+        <c-sf-gps-ds-osrt-tooltip
+          if:true={fieldLevelHelp}
+          class="slds-p-left_x-small"
+          content={interpolatedHelpText}
+          theme={theme}
+          data-field-level-help
+        >
+        </c-sf-gps-ds-osrt-tooltip>
+      </label>
+    </div>
+    <template if:false={isMergeField}>
+      <div if:true={fieldValue} class={valueAlign}>
+        <template if:true={isTypeUrl}>
+          <a
+            class={fieldValueClass}
+            href={urlHref}
+            title={title}
+            target="_self"
+            style={valueStyle}
+            aria-label={fieldValue}
+            >{fieldValue}</a
+          >
+        </template>
+        <template if:false={isTypeUrl}>
+          <span
+            class={fieldValueClass}
+            title={title}
+            style={valueStyle}
+            aria-label={fieldValue}
+            >{fieldValue}</span
+          >
+        </template>
+      </div>
+    </template>
+    <template if:true={isMergeField}>
+      <lightning-formatted-rich-text
+        value={fieldValue}
+      ></lightning-formatted-rich-text>
+    </template>
+    <span class={fieldValueClass} if:false={fieldValue}>
+      {placeholderValue}
+    </span>
+  </div>
+</template>

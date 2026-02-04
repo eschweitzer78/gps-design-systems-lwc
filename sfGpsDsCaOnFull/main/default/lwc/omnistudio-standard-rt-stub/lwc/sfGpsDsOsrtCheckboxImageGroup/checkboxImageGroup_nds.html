@@ -1,0 +1,159 @@
+<template>
+  <div class={errorClass}>
+    <template if:true={isDisplayCheckbox}>
+      <div class="nds-form-element__control">
+        <div class="nds-checkbox">
+          <fieldset>
+            <legend
+              class="nds-form-element__legend nds-form-element__control-help nds-radio-relative-tooltip nds-show nds-float_left"
+              style={styleProperties.label.styles}
+            >
+              <span
+                class="nds-m-right_x-small"
+                style={styleProperties.label.styles}
+                >{label}</span
+              ><abbr if:true={required} title="required" class="nds-required"
+                >*</abbr
+              >
+            </legend>
+            <span class="nds-clearfix">
+              <c-sf-gps-ds-osrt-tooltip
+                if:true={fieldLevelHelp}
+                theme={theme}
+                content={fieldLevelHelp}
+                arrowposition={fieldLevelHelpPosition}
+                icon-name="utility:info"
+                class="nds-show_inline-block nds-m-top_xx-small nds-p-top_xxx-small nds-p-right_medium"
+                extrabuttonclass="nds-m-bottom_xxx-small"
+              >
+              </c-sf-gps-ds-osrt-tooltip>
+              <span>
+                <slot name="label"></slot>
+              </span>
+            </span>
+            <input
+              type={type}
+              onfocus={handleFocus}
+              onchange={onchangevalue}
+              checked={checked}
+              required={required}
+              disabled={isDisabled}
+              name={name}
+              id={checkboxId}
+              value={value}
+              tabindex={tabIndex}
+              aria-invalid={isError}
+            />
+            <label
+              class="nds-checkbox__label"
+              for={checkboxId}
+              disabled={isDisabled}
+            >
+              <span class="nds-checkbox_faux"></span>
+              <span
+                if:true={label}
+                class="nds-form-element__label"
+                style={styleProperties.value.styles}
+                >{label}</span
+              >
+            </label>
+          </fieldset>
+        </div>
+      </div>
+    </template>
+    <template if:true={isImage}>
+      <div class="nds-form-element__control">
+        <fieldset>
+          <legend
+            if:true={label}
+            class="nds-form-element__legend nds-form-element__control-help nds-radio-relative-tooltip nds-show nds-float_left"
+          >
+            <span
+              class="nds-m-right_x-small"
+              style={styleProperties.label.styles}
+              >{label}</span
+            >
+            <abbr if:true={required} title="required" class="nds-required"
+              >*</abbr
+            >
+          </legend>
+          <div class="nds-clearfix nds-m-top_xx-small nds-p-top_xxx-small">
+            <c-sf-gps-ds-osrt-tooltip
+              if:true={fieldLevelHelp}
+              theme={theme}
+              content={fieldLevelHelp}
+              arrowposition={fieldLevelHelpPosition}
+              icon-name="utility:info"
+              class="nds-p-right_medium"
+              extrabuttonclass="nds-m-bottom_xxx-small"
+            >
+            </c-sf-gps-ds-osrt-tooltip>
+            <span>
+              <slot name="label"></slot>
+            </span>
+          </div>
+          <div>
+            <template
+              for:each={internalOpts}
+              for:item="item"
+              for:index="radioIndex"
+            >
+              <div class={wrapperClass} key={item.id}>
+                <input
+                  onfocus={handleFocus}
+                  tabindex={tabIndex}
+                  onchange={onchangevalue}
+                  checked={item.selected}
+                  onkeydown={handleKeyDownEvent}
+                  type={type}
+                  required={required}
+                  disabled={isDisabled}
+                  name={name}
+                  id={item.id}
+                  value={item.value}
+                  aria-invalid={isError}
+                />
+                <label class={imageClass} for={item.id} disabled={isDisabled}>
+                  <div class="nds-img-item_select-container">
+                    <template if:true={isImageDisplay}>
+                      <img
+                        if:true={item.imgId}
+                        class="nds-img-item"
+                        src={item.imgId}
+                        alt={item.label}
+                        title={item.label}
+                      />
+                    </template>
+                    <span
+                      class="nds-img-item-caption"
+                      if:false={item.imgId}
+                      style={styleProperties.value.styles}
+                      >{item.label}</span
+                    >
+                  </div>
+                  <template if:true={enabledCaption}>
+                    <template if:true={item.imgId}>
+                      <div class="nds-caption-out_cont nds-p-top_none">
+                        <span
+                          class="captionOut nds-form-element__label"
+                          style={styleProperties.value.styles}
+                          >{item.label}</span
+                        >
+                      </div>
+                    </template>
+                  </template>
+                </label>
+              </div>
+            </template>
+          </div>
+        </fieldset>
+      </div>
+    </template>
+    <div
+      if:true={isError}
+      class="nds-form-element__help nds-form-element__help_text-transform__none"
+    >
+      {errorMessage}
+    </div>
+  </div>
+</template>

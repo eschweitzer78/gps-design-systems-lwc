@@ -1,0 +1,25 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <c-sf-gps-ds-ca-on-callout
+    lwc:else
+    heading-level={headingLevel}
+    highlight-colour={highlightColour}
+    class-name={className}
+  >
+    <span lwc:if={heading} lwc:ref="heading" lwc:dom="manual" slot="heading">
+    </span>
+    <template lwc:else>
+      <slot slot="heading" name="Callout-Heading"></slot>
+    </template>
+
+    <div lwc:if={content} lwc:ref="content"></div>
+    <template lwc:else>
+      <slot name="Callout-Content"></slot>
+    </template>
+  </c-sf-gps-ds-ca-on-callout>
+</template>

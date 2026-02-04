@@ -1,0 +1,13 @@
+{
+  "sfGpsDsCaOnCard/ontario-card": [],
+  "sfGpsDsCaOnCardCollectionLwr/ontario-card-collection": [
+    {
+      "from": "::slotted\\(ontario-card\\)",
+      "to": ".ontario-card"
+    },
+    {
+      "from": "card-collecton",
+      "to": "card-collection"
+    }
+  ]
+}

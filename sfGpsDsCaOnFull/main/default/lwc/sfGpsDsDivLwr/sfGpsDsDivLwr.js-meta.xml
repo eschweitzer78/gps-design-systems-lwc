@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>SfGpsDs LWR Div</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="nItems"
+        type="Integer"
+        label="Number of items"
+        min="1"
+        max="12"
+        default="12"
+      />
+      <property
+        name="type"
+        type="String"
+        label="Type"
+        description="No div will not wrap the slots in a div, so neither CSS classes nor ids will be applied."
+        datasource="default,no div"
+        default="default"
+      />
+      <property
+        name="id"
+        type="String"
+        label="Id"
+        description="Id to be set on this element, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="CSS classes to be applied to the div."
+      />
+      <property
+        name="item1ClassName"
+        type="String"
+        label="Item 1 class name"
+        description="CSS classes to be applied to the 1st child div."
+      />
+      <property
+        name="item1Id"
+        type="String"
+        label="Item 1 id"
+        description="Id to be set on 1st child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item2ClassName"
+        type="String"
+        label="Item 2 class name"
+        description="CSS classes to be applied to the 2nd child div."
+      />
+      <property
+        name="item2Id"
+        type="String"
+        label="Item 2 id"
+        description="Id to be set on 2nd child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item3ClassName"
+        type="String"
+        label="Item 3 class name"
+        description="CSS classes to be applied to the 3rd child div."
+      />
+      <property
+        name="item3Id"
+        type="String"
+        label="Item 3 id"
+        description="Id to be set on 3rd child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item4ClassName"
+        type="String"
+        label="Item 4 class name"
+        description="CSS classes to be applied to the 4th child div."
+      />
+      <property
+        name="item4Id"
+        type="String"
+        label="Item 4 id"
+        description="Id to be set on 4th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item5ClassName"
+        type="String"
+        label="Item 5 class name"
+        description="CSS classes to be applied to the 5th child div."
+      />
+      <property
+        name="item5Id"
+        type="String"
+        label="Item 5 id"
+        description="Id to be set on 5th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item6ClassName"
+        type="String"
+        label="Item 6 class name"
+        description="CSS classes to be applied to the 6th child div."
+      />
+      <property
+        name="item6Id"
+        type="String"
+        label="Item 6 id"
+        description="Id to be set on 6th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item7ClassName"
+        type="String"
+        label="Item 7 class name"
+        description="CSS classes to be applied to the 7th child div."
+      />
+      <property
+        name="item7Id"
+        type="String"
+        label="Item 7 id"
+        description="Id to be set on 7th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item8ClassName"
+        type="String"
+        label="Item 8 class name"
+        description="CSS classes to be applied to the 8th child div."
+      />
+      <property
+        name="item8Id"
+        type="String"
+        label="Item 8 id"
+        description="Id to be set on 8th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item9ClassName"
+        type="String"
+        label="Item 9 class name"
+        description="CSS classes to be applied to the 9th child div."
+      />
+      <property
+        name="item9Id"
+        type="String"
+        label="Item 9 id"
+        description="Id to be set on 9th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item10ClassName"
+        type="String"
+        label="Item 10 class name"
+        description="CSS classes to be applied to the 10th child div."
+      />
+      <property
+        name="item10Id"
+        type="String"
+        label="Item 10 id"
+        description="Id to be set on 10th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item11ClassName"
+        type="String"
+        label="Item 11 class name"
+        description="CSS classes to be applied to the 11th child div."
+      />
+      <property
+        name="item11Id"
+        type="String"
+        label="Item 11 id"
+        description="Id to be set on 11th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+      <property
+        name="item12ClassName"
+        type="String"
+        label="Item 12 class name"
+        description="CSS classes to be applied to the 12th child div."
+      />
+      <property
+        name="item12Id"
+        type="String"
+        label="Item 12 id"
+        description="Id to be set on 12th child div, leave empty to drop the id. Make sure it's unique across the page."
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
