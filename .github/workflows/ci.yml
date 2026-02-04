@@ -53,6 +53,10 @@ jobs:
       - name: "Lint Lightning Web Components / Aura Components"
         run: npm run lint
 
+      # Prep
+      - name: "Prepare repo"
+        run: npm run prep
+
       # Generate css from scss
       - name: "Automatically generate css"
         run: npm run cssgen

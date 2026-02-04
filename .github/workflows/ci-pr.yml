@@ -69,6 +69,10 @@ jobs:
       - name: "Lint Lightning Web Components / Aura Components"
         run: npm run lint
 
+      # Prep
+      - name: "Prepare repo"
+        run: npm run prep
+
       # Generate css from scss
       - name: "Automatically generate css"
         run: npm run cssgen
@@ -149,14 +153,14 @@ jobs:
             npm-${{ env.cache-name }}-
             npm-
 
-      # Prep
-      - name: "Prepare repo"
-        run: npm run prep
-
       # Install npm dependencies for Prettier and Jest
       - name: "Install npm dependencies"
         if: steps.cache-npm.outputs.cache-hit != 'true'
         run: npm ci --force
+
+      # Prep
+      - name: "Prepare repo"
+        run: npm run prep
 
       # Run PMD scan
       - name: "Run PMD scan for sfGpsDs"
