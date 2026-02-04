@@ -294,6 +294,35 @@ jobs:
           fi
           exit $status2
 
+      - name: "Create package version sfGpsDsCaOn"
+        id: createPackageVersion-sfGpsDsCaOn
+        if: ${{ github.event.client_payload.sfGpsDsCaOn == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run caon-copy
+          json=$(sf package version create --path=sfGpsDsCaOnFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
       # Wait for package replication
       - name: "Wait for package replication"
         uses: maddox/actions/sleep@master
@@ -356,6 +385,13 @@ jobs:
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Install new sfGpsDsCaOn package in scratch org
+      - name: "Install new sfGpsDsCaOn package version in scratch org"
+        if: ${{ github.event.client_payload.sfGpsDsCaOn == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Update sfGpsDs force:force:package:install link in readme
       - name: "Update package sfGpsDs install link in readme"
@@ -489,6 +525,25 @@ jobs:
           name: "sfGpsDsUkGov ${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.versionNumber }}"
           prerelease: "true"
           tag: "sfGpsDsUkGov-${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.versionNumber }}"
+
+      # Update sfGpsDsCaOn force:force:package:install link in readme
+      - name: "Update package sfGpsDsCaOn install link in readme"
+        if: ${{ github.event.client_payload.sfGpsDsCaOn == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsCaOnFull\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsCaOnFull\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsCaOn GH release
+      - name: "Release package sfGpsDsCaOn"
+        if: ${{ github.event.client_payload.sfGpsDsCaOn == 'true' || github.event.client_payload.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }})"
+          name: "sfGpsDsCaOn ${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsCaOn-${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.versionNumber }}"
 
       # run prettier as sfdx-package.json gets overwritten in a non-prettier way
       - name: "Run prettier"

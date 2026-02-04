@@ -256,6 +256,20 @@ jobs:
         if: steps.pmd-sf-gps-ds-uk-gov.outputs.violations != 0
         run: exit 1
 
+      # Run PMD scan
+      - name: "Run PMD scan for sfGpsDsCaOn"
+        uses: pmd/pmd-github-action@v2.0.0
+        id: pmd-sf-gps-ds-ca-on
+        with:
+          sourcePath: "sfGpsDsCaOn"
+          rulesets: "ruleset.xml"
+          uploadSarifReport: "false"
+
+      # Check for PMD violations
+      - name: "Check for PMD violations"
+        if: steps.pmd-sf-gps-ds-ca-on.outputs.violations != 0
+        run: exit 1
+
       # Install Salesforce CLI
       - name: "Install Salesforce CLI latest"
         run: |
@@ -319,6 +333,7 @@ jobs:
           sf project deploy start --source-dir sfGpsDsAuVic2 --target-org=scratch-org
           sf project deploy start --source-dir sfGpsDsUkGov --target-org=scratch-org
           sf project deploy start --source-dir sfGpsDsFrGov --target-org=scratch-org
+          sf project deploy start --source-dir sfGpsDsCaOn --target-org=scratch-org
 
       # Assign permissionset
       # - name: 'Assign permissionset to default user'
@@ -371,6 +386,7 @@ jobs:
           hasChangesSfGpsDsAuVic2='false'
           hasChangesSfGpsDsFrGov='false'
           hasChangesSfGpsDsUkGov='false'
+          hasChangesSfGpsDsCaOn='false'
           if [ $(echo "$changedPaths" | grep -c '^sfGpsDs$') == 1 ]; then
               hasChanges='true'
               hasChangesSfGpsDs='true'
@@ -399,6 +415,10 @@ jobs:
               hasChanges='true'
               hasChangesSfGpsDsUkGov='true'
           fi
+          if [ $(echo "$changedPaths" | grep -c '^sfGpsDsCaOn$') == 1 ]; then
+              hasChanges='true'
+              hasChangesSfGpsDsCaOn='true'
+          fi
           echo "hasChanges=$hasChanges" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDs=$hasChangesSfGpsDs" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsAuNsw=$hasChangesSfGpsDsAuNsw" >> $GITHUB_OUTPUT
@@ -407,6 +427,7 @@ jobs:
           echo "hasChangesSfGpsDsAuVic2=$hasChangesSfGpsDsAuVic2" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsFrGov=$hasChangesSfGpsDsFrGov" >> $GITHUB_OUTPUT
           echo "hasChangesSfGpsDsUkGov=$hasChangesSfGpsDsUkGov" >> $GITHUB_OUTPUT
+          echo "hasChangesSfGpsDsCaOn=$hasChangesSfGpsDsCaOn" >> $GITHUB_OUTPUT
 
       # Trigger packaging PR workflow if needed
       - name: "Trigger packaging PR workflow if needed"
@@ -415,4 +436,4 @@ jobs:
         with:
           token: ${{ secrets.BOT_ACCESS_TOKEN }}
           event-type: start-packaging-pr
-          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "isPrelease": "${{ env.IS_PRERELEASE }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuQld": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuQld }}", "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsFrGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsFrGov }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}" }'
+          client-payload: '{ "ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "isPrelease": "${{ env.IS_PRERELEASE }}", "sfGpsDs": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDs }}", "sfGpsDsAuNsw": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNsw }}", "sfGpsDsAuNswS": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuNswS }}", "sfGpsDsAuQld": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuQld }}", "sfGpsDsAuVic2": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsAuVic2 }}", "sfGpsDsFrGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsFrGov }}", "sfGpsDsUkGov": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsUkGov }}", "sfGpsDsCaOn": "${{ steps.checkForChanges.outputs.hasChangesSfGpsDsCaOn }}" }'
