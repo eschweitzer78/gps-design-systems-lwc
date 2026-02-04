@@ -130,6 +130,7 @@ extends SfGpsDsElement {
     
     return {
       "ontario-card": true,
+      "ontario-card--no-image": !this.image,
       "ontario-card__description-false": !this._hasDescription.value,
       [this._layoutDirection.value || ""]: this.layoutDirection,
       [this._horizontalImageSize.value || ""]: isHI && this.horizontalImageSize,
