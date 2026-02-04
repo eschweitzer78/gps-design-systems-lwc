@@ -1,0 +1,35 @@
+<template>
+  <article class={computedCardClassName} onclick={handleCardClick}>
+    <!-- Card Image -->
+    <div lwc:if={hasImage} class="ontario-card__image-container">
+      <img class="ontario-card__image" src={imageUrl} alt="" loading="lazy" />
+    </div>
+
+    <!-- Card Content -->
+    <div class="ontario-card__text-container">
+      <!-- Card Title -->
+      <h3 class="ontario-card__heading ontario-card__title">
+        <template lwc:if={hasCta}>
+          <a href={ctaUrl} class="ontario-card__link">{title}</a>
+        </template>
+        <template lwc:else> {title} </template>
+      </h3>
+
+      <!-- Card Description -->
+      <div lwc:if={hasDescription} class="ontario-card__description">
+        <p>{description}</p>
+      </div>
+
+      <!-- Call-to-Action Button -->
+      <div lwc:if={hasCtaButton} class="ontario-card__cta">
+        <a
+          href={ctaUrl}
+          class="ontario-button ontario-button--primary"
+          onclick={handleCtaClick}
+        >
+          {ctaLabel}
+        </a>
+      </div>
+    </div>
+  </article>
+</template>

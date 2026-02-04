@@ -1,0 +1,101 @@
+<!--
+  Ontario Design System Form Review - OmniStudio Custom LWC Version
+  
+  Renders collected OmniScript answers for user review.
+  Uses inline rendering (no Light DOM child dependencies).
+  
+  Accessibility:
+  - aria-live region for status announcements
+  - Proper heading hierarchy
+  - Keyboard accessible change links
+-->
+<template>
+  <div class="sfgpsdscaon-form-review">
+    <!-- Screen reader status announcements -->
+    <div
+      class="ontario-show-for-sr"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {_statusMessage}
+    </div>
+
+    <!-- Page heading -->
+    <h1 class="ontario-h1">{heading}</h1>
+
+    <!-- Instructions -->
+    <p class="ontario-lead">{subheading}</p>
+
+    <!-- Sections -->
+    <template lwc:if={hasSections}>
+      <template for:each={sections} for:item="section">
+        <div key={section.id} class="sfgpsdscaon-form-review__section">
+          <!-- Section header with Change link -->
+          <div class="sfgpsdscaon-summary-list__header">
+            <h2 class="ontario-h4">{section.heading}</h2>
+            <a
+              href="#"
+              class="ontario-link sfgpsdscaon-summary-list__change-link"
+              data-step={section.stepName}
+              onclick={handleChangeClick}
+              aria-label={section.heading}
+            >
+              Change<span class="ontario-show-for-sr"> {section.heading}</span>
+            </a>
+          </div>
+
+          <!-- Summary list items -->
+          <dl class="sfgpsdscaon-summary-list ontario-summary-list">
+            <template for:each={section.items} for:item="item">
+              <div key={item.id} class="sfgpsdscaon-summary-list__row">
+                <dt class="sfgpsdscaon-summary-list__key">{item.key}</dt>
+                <dd class="sfgpsdscaon-summary-list__value">{item.value}</dd>
+              </div>
+            </template>
+          </dl>
+        </div>
+      </template>
+    </template>
+
+    <!-- No sections message -->
+    <template lwc:if={noSections}>
+      <div class="ontario-callout">
+        <p>No answers to review. Please complete the previous steps first.</p>
+      </div>
+    </template>
+
+    <!-- Submit warning -->
+    <template lwc:if={computedShowSubmitWarning}>
+      <div class="sfgpsdscaon-form-review__warning" role="alert">
+        <div class="ontario-callout ontario-callout--warning">
+          <h3 class="ontario-callout__title ontario-h5">Important</h3>
+          <p class="ontario-callout__content">{submitWarningMessage}</p>
+        </div>
+      </div>
+    </template>
+
+    <!-- Actions -->
+    <div
+      class="sfgpsdscaon-form-review__actions"
+      role="group"
+      aria-label="Form actions"
+    >
+      <button
+        type="button"
+        class="ontario-button ontario-button--primary"
+        onclick={handleSubmit}
+      >
+        {submitLabel}
+      </button>
+
+      <button
+        type="button"
+        class="ontario-button ontario-button--tertiary"
+        onclick={handleCancel}
+      >
+        {cancelLabel}
+      </button>
+    </div>
+  </div>
+</template>

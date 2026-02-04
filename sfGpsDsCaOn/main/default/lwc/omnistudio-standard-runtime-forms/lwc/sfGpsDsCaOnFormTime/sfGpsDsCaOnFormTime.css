@@ -1,0 +1,64 @@
+.ontario-form-group {
+  margin-bottom: 1.5rem;
+}
+.ontario-label {
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+.ontario-label__flag {
+  font-weight: 400;
+}
+.ontario-hint {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4d4d4d;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+.ontario-input {
+  display: block;
+  width: auto;
+  max-width: 48rem;
+  padding: 0.625rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background-color: #fff;
+  border: 2px solid #1a1a1a;
+  border-radius: 4px;
+}
+.ontario-input:focus {
+  outline: 4px solid #009ade;
+  outline-offset: 0;
+  box-shadow: 0 0 0 4px #009ade;
+}
+.ontario-input:disabled {
+  background-color: #e6e6e6;
+  border-color: #666;
+  color: #666;
+  cursor: not-allowed;
+}
+.ontario-input__error {
+  border-color: #cd0000;
+}
+.ontario-error-messaging {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #cd0000;
+  margin-bottom: 0.5rem;
+}
+.ontario-error-messaging .ontario-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  fill: #cd0000;
+}
+.ontario-error-messaging__content {
+  font-size: 1rem;
+  line-height: 1.5;
+}

@@ -1,0 +1,116 @@
+/* Ontario Form Review - OmniStudio Custom LWC Styles */
+
+.sfgpsdscaon-form-review {
+  padding: 1rem 0;
+}
+
+.sfgpsdscaon-form-review__section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.sfgpsdscaon-form-review__section:last-child {
+  border-bottom: none;
+}
+
+/* Summary list header with heading and change link */
+.sfgpsdscaon-summary-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.sfgpsdscaon-summary-list__header h2 {
+  margin: 0;
+}
+
+.sfgpsdscaon-summary-list__change-link {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Summary list - key/value pairs */
+.sfgpsdscaon-summary-list {
+  margin: 0;
+  padding: 0;
+}
+
+.sfgpsdscaon-summary-list__row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sfgpsdscaon-summary-list__row:last-child {
+  border-bottom: none;
+}
+
+.sfgpsdscaon-summary-list__key {
+  flex: 0 0 33.33%;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  padding-right: 1rem;
+}
+
+.sfgpsdscaon-summary-list__value {
+  flex: 0 0 66.67%;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+  .sfgpsdscaon-summary-list__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .sfgpsdscaon-summary-list__row {
+    flex-direction: column;
+  }
+
+  .sfgpsdscaon-summary-list__key,
+  .sfgpsdscaon-summary-list__value {
+    flex: 0 0 100%;
+    padding-right: 0;
+  }
+
+  .sfgpsdscaon-summary-list__key {
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Warning callout */
+.sfgpsdscaon-form-review__warning {
+  margin: 1.5rem 0;
+}
+
+/* Actions */
+.sfgpsdscaon-form-review__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ccc;
+}
+
+/* Screen reader only utility */
+.ontario-show-for-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

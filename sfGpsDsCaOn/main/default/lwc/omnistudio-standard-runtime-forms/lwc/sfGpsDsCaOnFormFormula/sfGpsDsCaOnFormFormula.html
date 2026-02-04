@@ -1,0 +1,29 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  Ontario Design System - Formula Display for OmniStudio
+  
+  Read-only display of calculated/formula values.
+  Uses Ontario DS form group styling for consistency.
+  
+  Compliance:
+  - LWR: Compatible (uses Light DOM parent)
+  - LWS: Compatible (no restricted APIs)
+  - Ontario DS: Follows form field structure
+  - WCAG 2.1 AA: 
+    - Label associated with value
+    - Read-only content properly structured
+-->
+<template>
+  <div class="ontario-form-group">
+    <!-- Label -->
+    <label class="ontario-label"> {mergedLabel} </label>
+
+    <!-- Hint text -->
+    <p lwc:if={mergedHelpText} class="ontario-hint">{mergedHelpText}</p>
+
+    <!-- Formula value (read-only display) -->
+    <div class="ontario-input sfgpsdscaon-formula-value" data-omni-input>
+      {renderedValue}
+    </div>
+  </div>
+</template>
