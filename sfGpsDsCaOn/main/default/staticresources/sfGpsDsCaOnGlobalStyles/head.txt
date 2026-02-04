@@ -25,10 +25,59 @@
 <link rel="stylesheet" href="{ styles/styles.css }" />
 <link rel="stylesheet" href="{ styles/print.css }" media="print" />
 
-<!-- Base Font Size -->
 <style>
-  body {
-    font-size: 1rem;
+  .row {
+      margin: 0 auto;
+      max-width: 72rem;
+      width: 100%;
+  }
+      
+  .row:after,.row:before {
+      content: "";
+      display: table
+  }
+
+  .row:after {
+      clear: both
+  }
+      
+  .row.row--collapse .row {
+      margin-left: 0;
+      margin-right: 0
+  }
+
+  .row .row {
+      margin: 0 -1rem;
+      max-width: none;
+      width: auto
+  }
+
+  .row .row:after,.row .row:before {
+      content: "";
+      display: table
+  }
+
+  .row .row:after {
+      clear: both
+  }
+
+  .row .row.row--collapse {
+      margin: 0;
+      max-width: none;
+      width: auto
+  }
+
+  .row .row.row--collapse:after,.row .row.row--collapse:before {
+      content: "";
+      display: table
+  }
+
+  .row .row.row--collapse:after {
+      clear: both
+  }
+
+  .main-content {
+    margin: 0 auto .5rem
   }
 </style>
 
