@@ -21,6 +21,7 @@ Please submit issues on our [development repo](https://github.com/eschweitzer78/
 - `sfGpsDsAuVic2` is the folder for code and assets to the Design System of Victoria v2, Australia aka Ripple v2 (pilot, no production without prior consultation); check the [documentation website](https://vic2.dsforce.dev)
 - `sfGpsDsFrGov` is the folder for code and assets to the Design System of France (alpha, sandbox only); check the [documentation page](docs/DSFR_README.md)
 - `sfGpsDsUkGov` is the folder for code and assets to the Design System of the United Kingdom (pilot, no production without prior consultation); check the [documentation website](https://uk.dsforce.dev)
+- `sfGpsDsCaOn` is the folder for code and assets to the Design System of Ontario, Canada (alpha).
 
 ## Installing beta versions using Unlocked Packages
 
@@ -47,6 +48,8 @@ While installing, expand the advanced options to pick the `Compile only the Apex
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcmPIAS" title="sfGpsDsFrGovFull">this link</a> to install the `sfGpsDsFrGov` unlocked package in your org (with `sfGpsDs` included).
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcmUIAS" title="sfGpsDsUkGovFull">this link</a> to install the `sfGpsDsUkGov` unlocked package in your org (with `sfGpsDs included`).
+
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t000000000000000" title="sfGpsDsCaOnFull">this link</a> to install the `sfGpsDsCaOn` unlocked package in your org (with `sfGpsDs included`).
 
 ## Installing the production versions using Unlocked Packages
 
