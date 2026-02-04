@@ -135,7 +135,7 @@
       "default": false
     },
     {
-      "path": "sfGpsDsAuCaOnFull",
+      "path": "sfGpsDsCaOnFull",
       "package": "Salesforce Global Public Sector CA Ontario Design System (Full)",
       "versionName": "2026.02.04.1200",
       "versionNumber": "0.1.0.NEXT",
