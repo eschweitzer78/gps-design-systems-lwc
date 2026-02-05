@@ -75,6 +75,7 @@
                 <template lwc:if={field.isPassword}>
                   <span
                     lwc:if={authConfig.registrationPasswordPolicy}
+                    id={field.helpId}
                     class="qld__hint-text"
                   >
                     {authConfig.registrationPasswordPolicy}
@@ -104,6 +105,7 @@
                   name={field.name}
                   value={field.value}
                   class="qld__text-input qld__text-input--block qld__text-input--error"
+                  aria-describedby={field.helpId}
                   aria-required={field.required}
                   required={field.required}
                   autocomplete={field.autocomplete}
@@ -118,6 +120,7 @@
                   name={field.name}
                   value={field.value}
                   class="qld__text-input qld__text-input--block"
+                  aria-describedby={field.helpId}
                   aria-required={field.required}
                   required={field.required}
                   autocomplete={field.autocomplete}

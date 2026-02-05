@@ -63,7 +63,7 @@
                   class="nsw-form__label nsw-form__required"
                 >
                   {field.label}
-                  <span class="sr-only"> (i18n.required)</span>
+                  <span class="sr-only"> ({i18n.required})</span>
                 </label>
                 <label lwc:else for={field.name} class="nsw-form__label">
                   {field.label}
@@ -72,6 +72,7 @@
                 <template lwc:if={field.isPassword}>
                   <span
                     lwc:if={authConfig.registrationPasswordPolicy}
+                    id={field.helpId}
                     class="nsw-form__helper"
                   >
                     {authConfig.registrationPasswordPolicy}
@@ -87,6 +88,7 @@
                   class="nsw-form__input"
                   aria-required={field.required}
                   aria-invalid="true"
+                  aria-describedby={field.helpId}
                   required={field.required}
                   autocomplete={field.autocomplete}
                   onkeyup={handleChange}
@@ -101,6 +103,7 @@
                   value={field.value}
                   class="nsw-form__input"
                   aria-required={field.required}
+                  aria-describedby={field.helpId}
                   required={field.required}
                   autocomplete={field.autocomplete}
                   onkeyup={handleChange}
@@ -138,7 +141,7 @@
                   class="nsw-form__label nsw-form__required"
                 >
                   {field.label}
-                  <span class="sr-only"> (i18n.required)</span>
+                  <span class="sr-only"> ({i18n.required})</span>
                 </label>
                 <label lwc:else for={field.name} class="nsw-form__label">
                   {field.label}

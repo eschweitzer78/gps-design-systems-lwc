@@ -11,7 +11,7 @@ import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
 const DEBUG = false;
-const CLASS_NAME = "SfGpsDsAuNswRegisterComm";
+const CLASS_NAME = "SfGpsDsAuVic2RegisterComm";
 
 /**
  * @slot terms
@@ -19,7 +19,7 @@ const CLASS_NAME = "SfGpsDsAuNswRegisterComm";
 export default class extends SfGpsDsAuthRegister {
   @api title;
   @api iconName;
-  @api iconStyle;
+  @api iconPosition;
   @api className;
 
   /* api: includePasswordField */
@@ -82,6 +82,22 @@ export default class extends SfGpsDsAuthRegister {
 
   /* getters */
 
+  get computedAuthConfigErrorMessage() {
+    const i18n = this.i18n;
+    return i18n.authConfigErrorTitle + ": " + i18n.authConfigErrorLabel;
+  }
+
+  get computedRegistrationDisabledMessage() {
+    const i18n = this.i18n;
+    return (
+      i18n.registrationDisabledTitle + ": " + i18n.registrationDisabledLabel
+    );
+  }
+
+  get computedErrorMessage() {
+    return this.i18n.errorTitle + ": " + this.errorMessage;
+  }
+
   get i18n() {
     const parentI18N = super.i18n;
     const rv = {
@@ -95,7 +111,6 @@ export default class extends SfGpsDsAuthRegister {
 
   get computedClassName() {
     return {
-      "nsw-layout": true,
       [this.className]: this.className
     };
   }

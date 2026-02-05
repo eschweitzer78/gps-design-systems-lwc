@@ -6,18 +6,18 @@
  */
 
 import { api } from "lwc";
-import SfGpsDsAuthForgotPassword from "c/sfGpsDsAuthForgotPassword";
+import SfGpsDsAuthCheckPassword from "c/sfGpsDsAuthCheckPassword";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
-import tmpl from "./sfGpsDsAuNswForgotPasswordComm.html";
+import tmpl from "./sfGpsDsAuVic2CheckPasswordComm.html";
 
 const DEBUG = false;
-const CLASS_NAME = "SfGpsDsAuNswForgotPasswordComm";
+const CLASS_NAME = "SfGpsDsAuVic2CheckPasswordComm";
 
 /**
  * @slot description
  */
-export default class extends SfGpsDsAuthForgotPassword {
+export default class extends SfGpsDsAuthCheckPassword {
   @api title;
   @api className;
 
@@ -52,6 +52,11 @@ export default class extends SfGpsDsAuthForgotPassword {
     };
   }
 
+  get computedAuthConfigErrorMessage() {
+    const i18n = this.i18n;
+    return i18n.authConfigErrorTitle + ": " + i18n.authConfigErrorLabel;
+  }
+
   get i18n() {
     return {
       ...super.i18n,
@@ -66,7 +71,7 @@ export default class extends SfGpsDsAuthForgotPassword {
   }
 
   renderedCallback() {
-    if (super.renderedCallback) super.renderedCallback();
+    super.renderedCallback?.();
 
     const description = this.refs.description;
 

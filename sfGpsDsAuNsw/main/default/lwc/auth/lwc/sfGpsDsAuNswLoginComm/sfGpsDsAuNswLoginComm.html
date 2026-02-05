@@ -59,7 +59,7 @@
               <c-sf-gps-ds-au-nsw-alert
                 lwc:if={errorMessage}
                 type="error"
-                heading={i18n.errorHeading}
+                heading={i18n.errorTitle}
               >
                 <p>{errorMessage}</p>
               </c-sf-gps-ds-au-nsw-alert>
@@ -68,7 +68,7 @@
             <div class="nsw-form__group">
               <label for="username" class="nsw-form__label nsw-form__required">
                 {i18n.usernameFieldLabel}
-                <span class="sr-only"> (i18n.required)</span>
+                <span class="sr-only"> ({i18n.required})</span>
               </label>
               <input
                 type="text"
@@ -87,7 +87,7 @@
             <div class="nsw-form__group">
               <label for="password" class="nsw-form__label nsw-form__required">
                 {i18n.passwordFieldLabel}
-                <span class="sr-only"> (i18n.required)</span>
+                <span class="sr-only"> ({i18n.required})</span>
               </label>
 
               <input

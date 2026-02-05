@@ -1,0 +1,175 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:elseif={isAuthConfigLoading}>
+    <div class={computedClassName}>
+      <div class="rpl-content sf-gps-ds-au-vic2-login-container">
+        <c-sf-gps-ds-au-vic2-spinner> </c-sf-gps-ds-au-vic2-spinner>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedHasAuthConfigIssue}>
+    <div class={computedClassName}>
+      <div class="rpl-content sf-gps-ds-au-vic-login-container">
+        <h2 lwc:if={title}>{title}</h2>
+
+        <div class="rpl-u-margin-t-2">
+          <c-sf-gps-ds-au-vic2-alert
+            variant="error"
+            message={computedAuthConfigErrorMessage}
+            is-dismissible="false"
+          >
+          </c-sf-gps-ds-au-vic2-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedLoginDisabled}>
+    <div class={computedClassName}>
+      <div class="rpl-content sf-gps-ds-au-vic2-login-container">
+        <h2 lwc:if={title}>{title}</h2>
+
+        <div class="rpl-u-margin-t-2">
+          <c-sf-gps-ds-au-vic2-alert
+            variant="error"
+            message={computedLoginDisabledMessage}
+            is-dismissible="false"
+          >
+          </c-sf-gps-ds-au-vic2-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:else>
+    <div class={computedClassName}>
+      <div class="rpl-content sf-gps-ds-au-vic2-login-container">
+        <form class="rpl-form__form rpl-form">
+          <div>
+            <h2 lwc:if={title}>{title}</h2>
+
+            <div class="rpl-u-margin-t-2">
+              <c-sf-gps-ds-au-vic2-alert
+                lwc:if={errorMessage}
+                variant="error"
+                message={computedErrorMessage}
+                is-dismissible="false"
+              >
+              </c-sf-gps-ds-au-vic2-alert>
+            </div>
+
+            <div class="rpl-form__outer">
+              <label for="username" class="rpl-form-label">
+                {i18n.usernameFieldLabel}
+                <span class="rpl-form-label__required rpl-type-label-small">
+                  ({i18n.required})
+                </span>
+              </label>
+              <div class="rpl-form__inner">
+                <div
+                  class="rpl-form__input rpl-form__input--default rpl-form__input--type-password"
+                >
+                  <div class="rpl-form__input-wrap">
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      value={username}
+                      class="rpl-u-focusable-outline"
+                      aria-required="true"
+                      required
+                      autocomplete="username"
+                      onkeyup={handleChange}
+                      onchange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rpl-form__outer">
+              <label for="password" class="rpl-form-label">
+                {i18n.passwordFieldLabel}
+                <span class="rpl-form-label__required rpl-type-label-small">
+                  ({i18n.required})</span
+                >
+              </label>
+
+              <div class="rpl-form__inner">
+                <div
+                  class="rpl-form__input rpl-form__input--default rpl-form__input--type-text"
+                >
+                  <div class="rpl-form__input-wrap">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      value={password}
+                      class="rpl-u-focusable-outline"
+                      aria-required="true"
+                      required
+                      autocomplete="current-password"
+                      onkeyup={handleChange}
+                      onchange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions rpl-u-margin-t-2">
+              <c-sf-gps-ds-au-vic2-button
+                el="button"
+                label={i18n.loginButtonLabel}
+                icon-name={iconName}
+                icon-position={iconPosition}
+                disabled={computedIsLoginButtonDisabled}
+                onclick={handleLogin}
+              >
+              </c-sf-gps-ds-au-vic2-button>
+              <c-sf-gps-ds-au-vic2-spinner
+                lwc:if={isLoggingIn}
+                size="m"
+                label={i18n.loginWaitLabel}
+              >
+              </c-sf-gps-ds-au-vic2-spinner>
+            </div>
+          </div>
+        </form>
+
+        <hr lwc:if={terms} />
+
+        <div lwc:if={terms} lwc:ref="terms" lwc:dom="manual"></div>
+        <template lwc:else>
+          <slot name="terms"></slot>
+        </template>
+
+        <hr lwc:if={computedHasFooter} />
+
+        <p lwc:if={computedForgotPasswordUrl}>
+          <c-sf-gps-ds-au-vic2-text-link
+            text={i18n.forgotPasswordLabel}
+            url={computedForgotPasswordUrl}
+            target="_self"
+          >
+          </c-sf-gps-ds-au-vic2-text-link>
+        </p>
+        <p lwc:if={computedRegistrationUrl}>
+          <c-sf-gps-ds-au-vic2-text-link
+            text={i18n.registerUserLabel}
+            url={computedRegistrationUrl}
+            target="_self"
+          >
+          </c-sf-gps-ds-au-vic2-text-link>
+        </p>
+      </div>
+    </div>
+  </template>
+</template>

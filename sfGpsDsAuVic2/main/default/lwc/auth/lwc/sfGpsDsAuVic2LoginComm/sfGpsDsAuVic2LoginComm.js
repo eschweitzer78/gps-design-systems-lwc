@@ -9,10 +9,10 @@ import { api } from "lwc";
 import SfGpsDsAuthLogin from "c/sfGpsDsAuthLogin";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
-import tmpl from "./sfGpsDsAuNswLoginComm.html";
+import tmpl from "./sfGpsDsAuVic2LoginComm.html";
 
 const DEBUG = false;
-const CLASS_NAME = "SfGpsDsAuNswLoginComm";
+const CLASS_NAME = "SfGpsDsAuVic2LoginComm";
 
 /**
  * @slot terms
@@ -50,6 +50,20 @@ export default class extends SfGpsDsAuthLogin {
       "nsw-layout": true,
       [this.className]: this.className
     };
+  }
+
+  get computedAuthConfigErrorMessage() {
+    const i18n = this.i18n;
+    return i18n.authConfigErrorTitle + ": " + i18n.authConfigErrorLabel;
+  }
+
+  get computedLoginDisabledMessage() {
+    const i18n = this.i18n;
+    return i18n.loginDisabledTitle + ": " + i18n.loginDisabledLabel;
+  }
+
+  get computedErrorMessage() {
+    return this.i18n.errorTitle + ": " + this.errorMessage;
   }
 
   get i18n() {

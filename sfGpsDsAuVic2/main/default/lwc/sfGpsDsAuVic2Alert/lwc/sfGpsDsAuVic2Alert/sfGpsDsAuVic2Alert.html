@@ -35,7 +35,7 @@
       </div>
 
       <button
-        lwc:if={_isDismissible}
+        lwc:if={_isDismissible.value}
         class="rpl-alert__btn-close rpl-u-focusable-inline rpl-u-focusable--alt-colour"
         aria-label={i18n.closeLabel}
         onclick={handleClose}

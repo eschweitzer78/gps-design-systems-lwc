@@ -1,0 +1,235 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <template lwc:elseif={isAuthConfigLoading}>
+    <div class={computedClassName}>
+      <div class="rpl-content sf-gps-ds-au-vic2-login-container">
+        <c-sf-gps-ds-au-vic2-spinner> </c-sf-gps-ds-au-vic2-spinner>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedHasAuthConfigIssue}>
+    <div class={computedClassName}>
+      <div class="rpl-content sf-gps-ds-au-vic2-login-container">
+        <h2 lwc:if={title}>{title}</h2>
+
+        <div class="rpl-u-margin-t-2">
+          <c-sf-gps-ds-au-vic2-alert
+            variant="error"
+            message={computedAuthConfigErrorMessage}
+            is-dismissible="false"
+          >
+          </c-sf-gps-ds-au-vic2-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:elseif={computedRegistrationDisabled}>
+    <div class={computedClassName}>
+      <div class="rpl-content sf-gps-ds-au-vic2-login-container">
+        <h2 lwc:if={title}>{title}</h2>
+
+        <div class="rpl-u-margin-t-2">
+          <c-sf-gps-ds-au-vic2-alert
+            variant="error"
+            message={computedRegistrationDisabledMessage}
+            is-dismissible="false"
+          >
+          </c-sf-gps-ds-au-vic2-alert>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template lwc:else>
+    <div class={computedClassName}>
+      <div class="rpl-content sf-gps-ds-au-vic2-login-container">
+        <form class="rpl-form__form rpl-form">
+          <div>
+            <h2 lwc:if={title}>{title}</h2>
+
+            <template for:each={fieldsArray} for:item="field">
+              <div key={field.name} class="rpl-form__outer">
+                <div class="rpl-form__wrapper">
+                  <label for={field.name} class="rpl-form-label">
+                    {field.label}
+                    <span
+                      lwc:if={field.required}
+                      class="rpl-form-label__required rpl-type-label-small"
+                    >
+                      ({i18n.required})
+                    </span>
+                  </label>
+
+                  <template lwc:if={field.isPassword}>
+                    <div
+                      lwc:if={authConfig.registrationPasswordPolicy}
+                      id={field.helpId}
+                      class="rpl-content rpl-form-help"
+                    >
+                      {authConfig.registrationPasswordPolicy}
+                    </div>
+                  </template>
+
+                  <div class="rpl-form__inner">
+                    <div
+                      class="rpl-form__input rpl-form__input--default rpl-form__input--type-password"
+                    >
+                      <div class="rpl-form__input-wrap">
+                        <input
+                          lwc:if={field.anyError}
+                          type={field.inputType}
+                          id={field.name}
+                          name={field.name}
+                          value={field.value}
+                          class="rpl-u-focusable-outline"
+                          aria-describedby={field.helpId}
+                          aria-invalid="true"
+                          aria-required={field.required}
+                          required={field.required}
+                          autocomplete={field.autocomplete}
+                          onkeyup={handleChange}
+                          onchange={handleChange}
+                          onblur={handleBlur}
+                        />
+                        <input
+                          lwc:else
+                          type={field.inputType}
+                          id={field.name}
+                          name={field.name}
+                          value={field.value}
+                          class="rpl-u-focusable-outline"
+                          aria-describedby={field.helpId}
+                          aria-required={field.required}
+                          required={field.required}
+                          autocomplete={field.autocomplete}
+                          onkeyup={handleChange}
+                          onchange={handleChange}
+                          onblur={handleBlur}
+                        />
+
+                        <span
+                          lwc:if={field.anyError}
+                          class="nsw-form__helper nsw-form__helper--error"
+                        >
+                          <template lwc:if={field.requiredError}>
+                            {i18n.fieldRequiredLabel}
+                          </template>
+                          <template lwc:elseif={field.mismatchError}>
+                            {i18n.passwordMismatchLabel}
+                          </template>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+
+            <c-sf-gps-ds-au-vic2-spinner lwc:if={isExtraFieldsLoading} size="l">
+            </c-sf-gps-ds-au-vic2-spinner>
+
+            <template for:each={extraFieldsArray} for:item="field">
+              <div key={field.name} class="nsw-form__group">
+                <label
+                  lwc:if={field.required}
+                  for={field.name}
+                  class="nsw-form__label nsw-form__required"
+                >
+                  {field.label}
+                  <span class="sr-only"> ({i18n.required})</span>
+                </label>
+                <label lwc:else for={field.name} class="nsw-form__label">
+                  {field.label}
+                </label>
+
+                <input
+                  type="text"
+                  id={field.name}
+                  name={field.name}
+                  value={field.value}
+                  class="nsw-form__input qld__text-input--error"
+                  aria-required={field.required}
+                  aria-invalid={field.requiredError}
+                  required={field.required}
+                  onkeyup={handleExtraFieldsChange}
+                  onchange={handleExtraFieldsChange}
+                  onblur={handleExtraFieldsBlur}
+                />
+
+                <span
+                  lwc:if={field.requiredError}
+                  class="nsw-form__helper nsw-form__helper--error"
+                >
+                  <span
+                    class="material-icons nsw-material-icons"
+                    aria-hidden="true"
+                  >
+                    cancel
+                  </span>
+                  {i18n.fieldRequiredLabel}
+                </span>
+              </div>
+            </template>
+
+            <div class="form-actions rpl-u-margin-t-2">
+              <c-sf-gps-ds-au-vic2-button
+                el="button"
+                label={i18n.registerButtonLabel}
+                icon-name={iconName}
+                icon-position={iconPosition}
+                disabled={computedIsRegisterButtonDisabled}
+                onclick={handleClick}
+              >
+              </c-sf-gps-ds-au-vic2-button>
+              <c-sf-gps-ds-au-vic2-spinner
+                lwc:if={isRegistering}
+                size="s"
+                label={i18n.registerWaitLabel}
+              >
+              </c-sf-gps-ds-au-vic2-spinner>
+            </div>
+          </div>
+        </form>
+
+        <c-sf-gps-ds-au-vic2-alert
+          lwc:if={errorMessage}
+          variant="error"
+          message={computedErrorMessage}
+          is-dismissible="false"
+          class="rpl-u-margin-t-2"
+        >
+          {errorMessage}
+        </c-sf-gps-ds-au-vic2-alert>
+        <div lwc:else class="rpl-u-margin-t-2"></div>
+
+        <hr lwc:if={terms} />
+
+        <div lwc:if={terms} lwc:ref="terms" lwc:dom="manual"></div>
+        <template lwc:else>
+          <slot name="terms"></slot>
+        </template>
+
+        <template lwc:if={targetLoginUrl}>
+          <hr />
+
+          <p>
+            <c-sf-gps-ds-au-vic2-text-link
+              text={i18n.alreadyRegisteredLabel}
+              url={targetLoginUrl}
+              target="_self"
+            >
+            </c-sf-gps-ds-au-vic2-text-link>
+          </p>
+        </template>
+      </div>
+    </div>
+  </template>
+</template>

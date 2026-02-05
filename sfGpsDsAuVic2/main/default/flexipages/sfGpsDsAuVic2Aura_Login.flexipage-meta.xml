@@ -1,87 +1,110 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+  <masterLabel>Login</masterLabel>
+  <type>CommLoginPage</type>
+  <template>
+    <name>siteforce:dynamicLayout</name>
+  </template>
   <flexiPageRegions>
-    <appendable>enabled</appendable>
-    <itemInstances>
-      <componentInstance>
-        <componentName>salesforceIdentity:communityLogo2</componentName>
-        <identifier>salesforceIdentity_communityLogo2</identifier>
-      </componentInstance>
-    </itemInstances>
-    <itemInstances>
-      <componentInstance>
-        <componentInstanceProperties>
-          <name>forgotPasswordLabel</name>
-          <value>Forgot your password?</value>
-        </componentInstanceProperties>
-        <componentInstanceProperties>
-          <name>forgotPasswordUrl</name>
-          <value>/ForgotPassword</value>
-        </componentInstanceProperties>
-        <componentInstanceProperties>
-          <name>loginButtonLabel</name>
-          <value>Log in</value>
-        </componentInstanceProperties>
-        <componentInstanceProperties>
-          <name>passwordLabel</name>
-          <value>Password</value>
-        </componentInstanceProperties>
-        <componentInstanceProperties>
-          <name>selfRegisterLabel</name>
-          <value>Not a member?</value>
-        </componentInstanceProperties>
-        <componentInstanceProperties>
-          <name>selfRegisterUrl</name>
-          <value>/SelfRegister</value>
-        </componentInstanceProperties>
-        <componentInstanceProperties>
-          <name>startUrl</name>
-        </componentInstanceProperties>
-        <componentInstanceProperties>
-          <name>usernameLabel</name>
-          <value>Username</value>
-        </componentInstanceProperties>
-        <componentName>salesforceIdentity:loginForm2</componentName>
-        <identifier>salesforceIdentity_loginForm2</identifier>
-      </componentInstance>
-    </itemInstances>
-    <itemInstances>
-      <componentInstance>
-        <componentInstanceProperties>
-          <name>headerText</name>
-        </componentInstanceProperties>
-        <componentInstanceProperties>
-          <name>showHeader</name>
-          <value>false</value>
-        </componentInstanceProperties>
-        <componentName>salesforceIdentity:socialLogin2</componentName>
-        <identifier>salesforceIdentity_socialLogin2</identifier>
-      </componentInstance>
-    </itemInstances>
-    <itemInstances>
-      <componentInstance>
-        <componentInstanceProperties>
-          <name>employeeLoginLinkLabel</name>
-          <value>Are you an employee? Log in here</value>
-        </componentInstanceProperties>
-        <componentName>salesforceIdentity:employeeLoginLink2</componentName>
-        <identifier>salesforceIdentity_employeeLoginLink2</identifier>
-      </componentInstance>
-    </itemInstances>
-    <name>content</name>
+    <name>facet-indirection-be4b78c5-0ab2-4938-94c2-96fd84a96968</name>
+    <type>Facet</type>
     <prependable>enabled</prependable>
     <replaceable>enabled</replaceable>
-    <type>Region</type>
-  </flexiPageRegions>
-  <flexiPageRegions>
     <appendable>enabled</appendable>
     <itemInstances>
       <componentInstance>
         <componentInstanceProperties>
-          <name>description</name>
+          <name>body</name>
+          <value>dc596245-1f10-4900-b4ae-7bc789672b2d</value>
         </componentInstanceProperties>
         <componentInstanceProperties>
-          <name>metaTags</name>
+          <name>title</name>
+          <value>1</value>
+        </componentInstanceProperties>
+        <componentName>flexipage:tab</componentName>
+        <identifier>customTab</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+  <flexiPageRegions>
+    <name>dc596245-1f10-4900-b4ae-7bc789672b2d</name>
+    <type>Facet</type>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <appendable>enabled</appendable>
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>className</name>
+          <value>rpl-u-margin-t-12 rpl-u-margin-b-12</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>iconStyle</name>
+          <value>none</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>terms</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>title</name>
+          <value>Log in using your existing account</value>
+        </componentInstanceProperties>
+        <componentName>sfGpsDsAuVic2LoginComm</componentName>
+        <identifier>sfGpsDsAuVic2LoginComm</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+  <flexiPageRegions>
+    <name>content</name>
+    <type>Region</type>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <appendable>enabled</appendable>
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>background</name>
+          <value>background: rgba(0,0,0,0)</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>backgroundOverlay</name>
+          <value>rgba(0,0,0,0.5)</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>contentAreaWidth</name>
+          <value>100</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>regions</name>
+          <value>facet-indirection-be4b78c5-0ab2-4938-94c2-96fd84a96968</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>sectionConfig</name>
+          <value
+          >{&quot;UUID&quot;:&quot;be4b78c5-0ab2-4938-94c2-96fd84a96968&quot;,&quot;columns&quot;:[{&quot;UUID&quot;:&quot;dc596245-1f10-4900-b4ae-7bc789672b2d&quot;,&quot;columnName&quot;:&quot;Column 1&quot;,&quot;columnKey&quot;:&quot;1&quot;,&quot;columnWidth&quot;:&quot;12&quot;,&quot;seedComponents&quot;:[]}]}</value>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>sectionHeight</name>
+          <value>300</value>
+        </componentInstanceProperties>
+        <componentName>forceCommunity:section</componentName>
+        <identifier>forceCommunity_section</identifier>
+      </componentInstance>
+    </itemInstances>
+  </flexiPageRegions>
+  <flexiPageRegions>
+    <name>sfdcHiddenRegion</name>
+    <type>Region</type>
+    <prependable>enabled</prependable>
+    <replaceable>enabled</replaceable>
+    <appendable>enabled</appendable>
+    <itemInstances>
+      <componentInstance>
+        <componentInstanceProperties>
+          <name>customHeadTags</name>
+        </componentInstanceProperties>
+        <componentInstanceProperties>
+          <name>description</name>
         </componentInstanceProperties>
         <componentInstanceProperties>
           <name>title</name>
@@ -91,14 +114,5 @@
         <identifier>forceCommunity_seoAssistant</identifier>
       </componentInstance>
     </itemInstances>
-    <name>sfdcHiddenRegion</name>
-    <prependable>enabled</prependable>
-    <replaceable>enabled</replaceable>
-    <type>Region</type>
   </flexiPageRegions>
-  <masterLabel>Login</masterLabel>
-  <template>
-    <name>siteforce:sldsOneColLayout</name>
-  </template>
-  <type>CommLoginPage</type>
 </FlexiPage>

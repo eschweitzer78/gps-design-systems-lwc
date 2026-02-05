@@ -4,7 +4,7 @@
   description="VIC DS v2 Theme Layout"
 >
   <ltng:require
-    styles="{! join(',', $Resource.sfGpsDsAuVic2 + '/global.css', $Resource.sfGpsDsAuVic2 + '/style.css', $Resource.sfGpsDsAuVic2 + '/byo-aura_layout.css')}"
+    styles="{! join(',', $Resource.sfGpsDsAuVic2 + '/byo_aura_all.css')}"
   />
 
   <aura:attribute

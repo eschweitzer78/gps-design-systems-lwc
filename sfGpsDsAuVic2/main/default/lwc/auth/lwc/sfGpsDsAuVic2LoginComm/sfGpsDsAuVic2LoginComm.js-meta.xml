@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Auth Login</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        default="Log in using your existing account"
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="iconName"
+        type="String"
+        label="Icon name"
+        description="Name of the icon in the Google Material collection."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="iconStyle"
+        type="String"
+        label="Icon style"
+        description="Indicates whether there is an icon and where."
+        datasource="none,before,after"
+        default="none"
+      />
+      <property
+        name="terms"
+        type="String"
+        label="Terms"
+        description="Insert the terms of usage or a link to the terms page."
+        default=""
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>

@@ -9,10 +9,10 @@ import { api } from "lwc";
 import SfGpsDsAuthForgotPassword from "c/sfGpsDsAuthForgotPassword";
 import mdEngine from "c/sfGpsDsMarkdown";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
-import tmpl from "./sfGpsDsAuNswForgotPasswordComm.html";
+import tmpl from "./sfGpsDsAuVic2ForgotPasswordComm.html";
 
 const DEBUG = false;
-const CLASS_NAME = "SfGpsDsAuNswForgotPasswordComm";
+const CLASS_NAME = "SfGpsDsAuVic2ForgotPasswordComm";
 
 /**
  * @slot description
@@ -47,7 +47,6 @@ export default class extends SfGpsDsAuthForgotPassword {
 
   get computedClassName() {
     return {
-      "nsw-layout": true,
       [this.className]: this.className
     };
   }
