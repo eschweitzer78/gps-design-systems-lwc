@@ -8,7 +8,7 @@
 import SfGpsDsFormTypeahead from "c/sfGpsDsFormTypeahead";
 import { computeClass } from "c/sfGpsDsHelpers";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpers";
-import { Logger } from "c/sfGpsDsCaOnDebugUtils";
+//import { Logger } from "c/sfGpsDsCaOnDebugUtils";
 import tmpl from "./sfGpsDsCaOnFormTypeahead.html";
 
 /**
@@ -16,7 +16,19 @@ import tmpl from "./sfGpsDsCaOnFormTypeahead.html";
  * Enable debug output by setting window.sfGpsDsCaOnDebug = true in console.
  * @type {Logger}
  */
-const log = new Logger("SfGpsDsCaOnFormTypeahead");
+/* temporary fix */
+const DEBUG = true;
+const log = {
+  enter: (x, y) => {
+    if (DEBUG)
+      console.debug("SfGpsDsCaOnFormTypeahead", `> ${x}`, JSON.stringify(y));
+  },
+  exit: (x, y) => {
+    if (DEBUG)
+      console.debug("SfGpsDsCaOnFormTypeahead", `> ${x}`, JSON.stringify(y));
+  }
+};
+//new Logger("SfGpsDsCaOnFormTypeahead");
 
 /**
  * CSS class applied when dropdown is open.
