@@ -1,0 +1,89 @@
+/**
+ * Ontario Design System - Coordinate Input Styles
+ */
+
+/* Container */
+.sfgpsdscaon-coordinate-input {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Field groups */
+.sfgpsdscaon-coordinate-input__utm,
+.sfgpsdscaon-coordinate-input__dms,
+.sfgpsdscaon-coordinate-input__decimal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual field */
+.sfgpsdscaon-coordinate-input__field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Coordinate group (lat/lng) */
+.sfgpsdscaon-coordinate-input__coordinate-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+/* DMS fields container */
+.sfgpsdscaon-coordinate-input__dms-fields {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+/* Individual DMS field with symbol */
+.sfgpsdscaon-coordinate-input__dms-field {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* DMS input - smaller width */
+.sfgpsdscaon-coordinate-input__dms-field .ontario-input {
+  width: 5rem;
+  text-align: center;
+}
+
+/* DMS symbol (°, ', ") */
+.sfgpsdscaon-coordinate-input__dms-symbol {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ontario-colour-black, #1a1a1a);
+  min-width: 0.75rem;
+  text-align: center;
+}
+
+/* Small input variant */
+.ontario-input--small {
+  max-width: 6rem;
+}
+
+/* Error state */
+.sfgpsdscaon-coordinate-input--error .ontario-input {
+  border-color: var(--ontario-colour-error, #cd0000);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .sfgpsdscaon-coordinate-input__dms-fields {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .sfgpsdscaon-coordinate-input__dms-field {
+    width: 100%;
+  }
+
+  .sfgpsdscaon-coordinate-input__dms-field .ontario-input {
+    width: 100%;
+    max-width: none;
+  }
+}

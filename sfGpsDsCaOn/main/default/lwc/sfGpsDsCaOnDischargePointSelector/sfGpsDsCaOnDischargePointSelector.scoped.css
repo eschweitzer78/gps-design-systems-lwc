@@ -1,0 +1,208 @@
+/**
+ * Ontario Design System - Discharge Point Selector Styles
+ */
+
+/* Trigger Button */
+.sfgpsdscaon-discharge-selector__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sfgpsdscaon-discharge-selector__trigger-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Modal Content */
+.sfgpsdscaon-discharge-selector__content {
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+/* Two-Panel Layout */
+.sfgpsdscaon-discharge-selector__panels {
+  display: flex;
+  height: 100%;
+}
+
+/* Left Panel */
+.sfgpsdscaon-discharge-selector__left-panel {
+  width: 22rem; /* 350px at default font size, scales with zoom */
+  min-width: 16rem; /* Allows shrinking for better reflow */
+  max-width: 100%; /* Ensures reflow at small viewports */
+  padding: 1.5rem;
+  background-color: var(--ontario-colour-white, #ffffff);
+  border-right: 1px solid var(--ontario-greyscale-20, #cccccc);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+/* Right Panel (Map) */
+.sfgpsdscaon-discharge-selector__right-panel {
+  flex: 1;
+  position: relative;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+}
+
+/* Form Fields */
+.sfgpsdscaon-discharge-selector__field {
+  margin-bottom: 1rem;
+}
+
+/* Search Input with Button */
+.sfgpsdscaon-discharge-selector__search-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.sfgpsdscaon-discharge-selector__search-input .ontario-input {
+  flex: 1;
+}
+
+.sfgpsdscaon-discharge-selector__search-btn {
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sfgpsdscaon-discharge-selector__search-btn .ontario-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Action Button */
+.sfgpsdscaon-discharge-selector__action-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+/* Error Message */
+.sfgpsdscaon-discharge-selector__error {
+  margin-top: 1rem;
+}
+
+/* Coordinates Display */
+.sfgpsdscaon-discharge-selector__coordinates-display {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  border-left: 4px solid var(--ontario-colour-link, #0066cc);
+}
+
+.sfgpsdscaon-discharge-selector__coordinates-label {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+.sfgpsdscaon-discharge-selector__coordinates-value {
+  font-family: monospace;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
+}
+
+/* Continue Button */
+.sfgpsdscaon-discharge-selector__continue-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* Tab Bar */
+.sfgpsdscaon-discharge-selector__tabs {
+  display: flex;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
+}
+
+.sfgpsdscaon-discharge-selector__tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0.5rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
+  font-size: 0.875rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.sfgpsdscaon-discharge-selector__tab:hover {
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  color: var(--ontario-colour-black, #1a1a1a);
+}
+
+.sfgpsdscaon-discharge-selector__tab--active {
+  color: var(--ontario-colour-link, #0066cc);
+  border-bottom-color: var(--ontario-colour-link, #0066cc);
+}
+
+.sfgpsdscaon-discharge-selector__tab .ontario-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Map Iframe */
+.sfgpsdscaon-discharge-selector__map-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Map Placeholder */
+.sfgpsdscaon-discharge-selector__map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--ontario-colour-grey-7, #4d4d4d);
+}
+
+.sfgpsdscaon-discharge-selector__map-placeholder-hint {
+  font-size: 0.875rem;
+  color: var(--ontario-greyscale-40, #666666);
+  margin-top: 0.5rem;
+}
+
+/* Responsive - WCAG 1.4.10 Reflow Support */
+@media (max-width: 768px) {
+  .sfgpsdscaon-discharge-selector__panels {
+    flex-direction: column;
+  }
+
+  .sfgpsdscaon-discharge-selector__left-panel {
+    width: 100%;
+    min-width: unset;
+    max-height: 50%;
+    border-right: none;
+    border-bottom: 1px solid var(--ontario-greyscale-20, #cccccc);
+  }
+
+  .sfgpsdscaon-discharge-selector__right-panel {
+    min-height: 300px;
+  }
+}
+
+/* Extra small screens / high zoom (WCAG 1.4.10) */
+@media (max-width: 480px) {
+  .sfgpsdscaon-discharge-selector__content {
+    height: auto;
+  }
+
+  .sfgpsdscaon-discharge-selector__left-panel {
+    max-height: none;
+    padding: 1rem;
+  }
+
+  .sfgpsdscaon-discharge-selector__field {
+    margin-bottom: 0.75rem;
+  }
+}
