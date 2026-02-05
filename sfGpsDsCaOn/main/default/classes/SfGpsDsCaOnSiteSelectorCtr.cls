@@ -25,7 +25,7 @@ public with sharing class SfGpsDsCaOnSiteSelectorCtr {
   /**
    * @description Constructor - initializes configuration from custom metadata
    */
-  public sfGpsDsCaOnSiteSelectorCtr() {
+  public SfGpsDsCaOnSiteSelectorCtr() {
     // Get ESRI API key from custom metadata
     // Uses the same pattern as PSA-ESRI-MAPS-LWR-DEV
     apiKey = getCustomMetadataValue('ESRI_API_Key');

@@ -1,5 +1,5 @@
 /**
- * @description Test class for sfGpsDsCaOnSiteSelectorCtr
+ * @description Test class for SfGpsDsCaOnSiteSelectorCtr
  * Tests the Site Selector Visualforce controller functionality.
  *
  * @author Shannon Schupbach
@@ -16,7 +16,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
     Test.setCurrentPage(Page.sfGpsDsCaOnSiteSelectorPage);
 
     Test.startTest();
-    sfGpsDsCaOnSiteSelectorCtr controller = new sfGpsDsCaOnSiteSelectorCtr();
+    SfGpsDsCaOnSiteSelectorCtr controller = new SfGpsDsCaOnSiteSelectorCtr();
     Test.stopTest();
 
     // Verify defaults are set (either from custom metadata or hardcoded defaults)
@@ -70,7 +70,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
     Test.setCurrentPage(pageRef);
 
     Test.startTest();
-    sfGpsDsCaOnSiteSelectorCtr controller = new sfGpsDsCaOnSiteSelectorCtr();
+    SfGpsDsCaOnSiteSelectorCtr controller = new SfGpsDsCaOnSiteSelectorCtr();
     Test.stopTest();
 
     // Verify URL parameters override defaults
@@ -98,7 +98,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
     Test.setCurrentPage(pageRef);
 
     Test.startTest();
-    sfGpsDsCaOnSiteSelectorCtr controller = new sfGpsDsCaOnSiteSelectorCtr();
+    SfGpsDsCaOnSiteSelectorCtr controller = new SfGpsDsCaOnSiteSelectorCtr();
     Test.stopTest();
 
     // Verify latitude from URL
@@ -126,7 +126,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
   @IsTest
   static void testFetchCommunityURL() {
     Test.startTest();
-    String communityUrl = sfGpsDsCaOnSiteSelectorCtr.fetchCommunityURL();
+    String communityUrl = SfGpsDsCaOnSiteSelectorCtr.fetchCommunityURL();
     Test.stopTest();
 
     // In test context without a real Site, this should return empty or handle gracefully
@@ -144,7 +144,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
   @IsTest
   static void testFetchVFDomainURL() {
     Test.startTest();
-    String vfDomain = sfGpsDsCaOnSiteSelectorCtr.fetchVFDomainURL();
+    String vfDomain = SfGpsDsCaOnSiteSelectorCtr.fetchVFDomainURL();
     Test.stopTest();
 
     // Verify VF domain is returned
@@ -167,7 +167,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
     Test.setCurrentPage(Page.sfGpsDsCaOnSiteSelectorPage);
 
     Test.startTest();
-    sfGpsDsCaOnSiteSelectorCtr controller = new sfGpsDsCaOnSiteSelectorCtr();
+    SfGpsDsCaOnSiteSelectorCtr controller = new SfGpsDsCaOnSiteSelectorCtr();
     String apiKey = controller.apiKey;
     Test.stopTest();
 
@@ -188,7 +188,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
     Test.setCurrentPage(Page.sfGpsDsCaOnSiteSelectorPage);
 
     Test.startTest();
-    sfGpsDsCaOnSiteSelectorCtr controller = new sfGpsDsCaOnSiteSelectorCtr();
+    SfGpsDsCaOnSiteSelectorCtr controller = new SfGpsDsCaOnSiteSelectorCtr();
     String communityUrl = controller.communityUrl;
     Test.stopTest();
 
@@ -208,7 +208,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
     Test.setCurrentPage(Page.sfGpsDsCaOnSiteSelectorPage);
 
     Test.startTest();
-    sfGpsDsCaOnSiteSelectorCtr controller = new sfGpsDsCaOnSiteSelectorCtr();
+    SfGpsDsCaOnSiteSelectorCtr controller = new SfGpsDsCaOnSiteSelectorCtr();
     Boolean hasResource = controller.hasLoadingResource;
     Test.stopTest();
 
@@ -229,7 +229,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
 
     Test.startTest();
     // This should not throw an exception even without custom metadata
-    sfGpsDsCaOnSiteSelectorCtr controller = new sfGpsDsCaOnSiteSelectorCtr();
+    SfGpsDsCaOnSiteSelectorCtr controller = new SfGpsDsCaOnSiteSelectorCtr();
     Test.stopTest();
 
     // Verify controller initialized successfully with defaults
@@ -261,7 +261,7 @@ private class SfGpsDsCaOnSiteSelectorCtrTest {
     Test.setCurrentPage(pageRef);
 
     Test.startTest();
-    sfGpsDsCaOnSiteSelectorCtr controller = new sfGpsDsCaOnSiteSelectorCtr();
+    SfGpsDsCaOnSiteSelectorCtr controller = new SfGpsDsCaOnSiteSelectorCtr();
     Test.stopTest();
 
     // Empty strings should fall back to defaults (from custom metadata or hardcoded)

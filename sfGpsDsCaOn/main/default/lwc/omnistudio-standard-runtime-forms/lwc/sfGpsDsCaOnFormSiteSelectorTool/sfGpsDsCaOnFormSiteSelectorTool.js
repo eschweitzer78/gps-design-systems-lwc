@@ -8,7 +8,7 @@
 import { api, LightningElement, track } from "lwc";
 import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
 import { computeClass } from "c/sfGpsDsHelpers";
-import fetchVFDomainURL from "@salesforce/apex/sfGpsDsCaOnSiteSelectorCtr.fetchVFDomainURL";
+import fetchVFDomainURL from "@salesforce/apex/SfGpsDsCaOnSiteSelectorCtr.fetchVFDomainURL";
 
 /**
  * @slot FormSiteSelectorTool
