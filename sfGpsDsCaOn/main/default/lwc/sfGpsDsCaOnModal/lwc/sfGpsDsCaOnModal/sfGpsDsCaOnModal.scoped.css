@@ -1,0 +1,357 @@
+/**
+ * Ontario Design System - Modal/Dialog Styles
+ *
+ * Provides modal overlay with Ontario DS styling:
+ * - Dark blue header (matching Ontario branding)
+ * - Accessible focus indicators
+ * - Responsive sizing
+ * - Smooth transitions
+ */
+
+/* ========================================
+ * BACKDROP
+ * ======================================== */
+
+.sfgpsdscaon-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out;
+}
+
+.sfgpsdscaon-modal__backdrop--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ========================================
+ * MODAL CONTAINER
+ * ======================================== */
+
+.sfgpsdscaon-modal {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  max-width: 90vw;
+  background-color: var(--ontario-colour-white, #ffffff);
+  border-radius: 0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(-20px);
+  opacity: 0;
+  transition:
+    transform 0.2s ease-out,
+    opacity 0.2s ease-out;
+}
+
+.sfgpsdscaon-modal--open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Size variants */
+.sfgpsdscaon-modal--small {
+  width: 400px;
+}
+
+.sfgpsdscaon-modal--medium {
+  width: 600px;
+}
+
+.sfgpsdscaon-modal--large {
+  width: 900px;
+}
+
+.sfgpsdscaon-modal--full {
+  width: 95vw;
+  height: 95vh;
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+/* ========================================
+ * DIALOG
+ * ======================================== */
+
+.sfgpsdscaon-modal__dialog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sfgpsdscaon-modal__dialog:focus {
+  /* Use box-shadow for focus indicator on the dialog */
+  outline: 4px solid transparent;
+  box-shadow: 0 0 0 4px var(--ontario-colour-focus, #009adb);
+}
+
+/* ========================================
+ * HEADER
+ * ======================================== */
+
+.sfgpsdscaon-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: var(
+    --ontario-colour-black,
+    #1a1a1a
+  ); /* Ontario dark - matching screenshot */
+  color: var(--ontario-colour-white, #ffffff);
+  flex-shrink: 0;
+}
+
+.sfgpsdscaon-modal__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  font-family:
+    "Raleway Modified", "Open Sans", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  color: var(--ontario-colour-white, #ffffff);
+}
+
+/* ========================================
+ * CLOSE BUTTON
+ * ======================================== */
+
+.sfgpsdscaon-modal__close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* WCAG 2.5.5: Touch target minimum 44x44px */
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  margin: 0;
+  margin-left: 1rem;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--ontario-colour-white, #ffffff);
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+.sfgpsdscaon-modal__close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sfgpsdscaon-modal__close-btn:focus {
+  outline: none;
+  border-color: var(--ontario-colour-white, #ffffff);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.sfgpsdscaon-modal__close-btn:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sfgpsdscaon-modal__close-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: currentColor;
+}
+
+/* ========================================
+ * CONTENT
+ * ======================================== */
+
+.sfgpsdscaon-modal__content {
+  flex: 1;
+  overflow: auto;
+  padding: 0;
+  background-color: var(--ontario-colour-white, #ffffff);
+}
+
+/* For modals that need internal padding */
+.sfgpsdscaon-modal__content--padded {
+  padding: 1.5rem;
+}
+
+/* ========================================
+ * FOOTER
+ * ======================================== */
+
+.sfgpsdscaon-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--ontario-greyscale-5, #f5f5f5);
+  border-top: 1px solid var(--ontario-greyscale-20, #cccccc);
+  flex-shrink: 0;
+}
+
+/* ========================================
+ * RESPONSIVE ADJUSTMENTS
+ * ======================================== */
+
+@media screen and (max-width: 768px) {
+  .sfgpsdscaon-modal {
+    max-width: 95vw;
+    max-height: 95vh;
+  }
+
+  .sfgpsdscaon-modal--small,
+  .sfgpsdscaon-modal--medium,
+  .sfgpsdscaon-modal--large {
+    width: 95vw;
+  }
+
+  .sfgpsdscaon-modal__header {
+    padding: 0.75rem 1rem;
+  }
+
+  .sfgpsdscaon-modal__title {
+    font-size: 1.125rem;
+  }
+
+  .sfgpsdscaon-modal__footer {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* ========================================
+ * BODY SCROLL LOCK
+ * ======================================== */
+
+/* Applied to body when modal is open */
+:global(.sfgpsdscaon-modal-is-open) {
+  overflow: hidden;
+}
+
+/* ========================================
+ * PRINT STYLES
+ * ======================================== */
+
+@media print {
+  .sfgpsdscaon-modal__backdrop {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   WCAG 1.4.11: Non-text Contrast
+   Ensures focus indicators and UI boundaries are visible in high contrast mode
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .sfgpsdscaon-modal {
+    border: 3px solid CanvasText;
+    background-color: Canvas;
+  }
+
+  .sfgpsdscaon-modal__header {
+    background-color: CanvasText;
+    color: Canvas;
+    border-bottom: 2px solid CanvasText;
+  }
+
+  .sfgpsdscaon-modal__title {
+    color: Canvas;
+  }
+
+  .sfgpsdscaon-modal__close-btn {
+    color: Canvas;
+    border: 2px solid Canvas;
+  }
+
+  .sfgpsdscaon-modal__close-btn:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    border-color: Canvas;
+    box-shadow: none;
+  }
+
+  .sfgpsdscaon-modal__close-btn:hover {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-modal__dialog:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .sfgpsdscaon-modal__content {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-modal__footer {
+    background-color: Canvas;
+    border-top: 2px solid CanvasText;
+  }
+
+  .sfgpsdscaon-modal__backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Forced colors mode (Windows High Contrast) */
+@media (forced-colors: active) {
+  .sfgpsdscaon-modal {
+    border: 3px solid ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .sfgpsdscaon-modal__header {
+    background-color: Highlight;
+    color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .sfgpsdscaon-modal__title {
+    color: HighlightText;
+  }
+
+  .sfgpsdscaon-modal__close-btn {
+    color: HighlightText;
+    border-color: HighlightText;
+    forced-color-adjust: none;
+  }
+
+  .sfgpsdscaon-modal__close-btn:focus {
+    outline: 3px solid ButtonText;
+    outline-offset: 2px;
+  }
+
+  .sfgpsdscaon-modal__close-btn:hover {
+    background-color: HighlightText;
+    color: Highlight;
+  }
+
+  .sfgpsdscaon-modal__dialog:focus {
+    outline: 3px solid Highlight;
+    outline-offset: 2px;
+  }
+
+  .sfgpsdscaon-modal__content {
+    background-color: Canvas;
+    color: CanvasText;
+  }
+
+  .sfgpsdscaon-modal__footer {
+    border-color: ButtonText;
+  }
+}
