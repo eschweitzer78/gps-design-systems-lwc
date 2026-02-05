@@ -1,5 +1,23 @@
 ## Change log
 
+### 5 February 2026
+
+#### ON DS: Alpha support for the Ontario Design System (Canada)
+
+Our North American contributors have added a very early stage support for some of the design elements of the Government of Ontario in Canada. More should be added over the next few months.
+
+#### VIC2 DS: Support for login, self-registration, forgot password and check email pages
+
+We added components to support login, self-registration, forgot password and check email pages for authentication. Pre-configured pages have been added to the Aura Template as well.
+
+Refer to [`sfGpsDsAuVic2/main/default/lwc/auth/lwc`](sfGpsDAuVic2/main/default/lwc/auth/lwc).
+
+### 13 January 2026
+
+##### NSW DS: Support for all modes of the Omnistudio Edit Block
+
+We have added support for the Card and Finance Statement modes of the Edit Block, both for Managed Package Runtime and Standard Runtime.
+
 ### 6 January 2026
 
 #### NSW DS: Cookie Consent element
