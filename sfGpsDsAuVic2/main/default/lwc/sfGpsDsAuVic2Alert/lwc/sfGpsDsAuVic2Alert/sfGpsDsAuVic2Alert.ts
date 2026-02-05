@@ -45,6 +45,7 @@ extends ResizeHeightMixin<SfGpsDsElement>(
   // @ts-ignore
   @api 
   dismissed = false;
+  
   // @ts-ignore
   @api 
   alertId?: string;

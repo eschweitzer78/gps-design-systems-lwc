@@ -260,7 +260,10 @@ export default class extends SfGpsDsLwc {
         this.fields[fieldName].inputType !== "password" ||
         this.includePasswordField
     );
-    const rv = fieldNames.map((fieldName) => this.fields[fieldName]);
+    const rv = fieldNames.map((fieldName) => ({
+      ...this.fields[fieldName],
+      helpId: this.fields[fieldName].isPassword ? `${fieldName}-help` : null
+    }));
 
     if (DEBUG) {
       console.debug(

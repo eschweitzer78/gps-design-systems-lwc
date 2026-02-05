@@ -2,7 +2,6 @@
 <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
   <masterLabel>VIC DS v2 Default Layout</masterLabel>
   <type>CommThemeLayoutPage</type>
-
   <template>
     <name>sfGpsDsAuVic2ThemeLayout</name>
     <properties>
@@ -14,7 +13,6 @@
       <value>true</value>
     </properties>
   </template>
-
   <flexiPageRegions>
     <name>alertContainer</name>
     <type>Region</type>
@@ -22,14 +20,12 @@
     <prependable>enabled</prependable>
     <replaceable>enabled</replaceable>
   </flexiPageRegions>
-
   <flexiPageRegions>
     <name>header</name>
     <type>Region</type>
     <appendable>enabled</appendable>
     <prependable>enabled</prependable>
     <replaceable>enabled</replaceable>
-
     <itemInstances>
       <componentInstance>
         <componentName>sfGpsDsAuVic2PrimaryNavComm</componentName>
@@ -41,15 +37,12 @@
       </componentInstance>
     </itemInstances>
   </flexiPageRegions>
-
   <flexiPageRegions>
     <name>footer</name>
     <type>Region</type>
-
     <appendable>enabled</appendable>
     <prependable>enabled</prependable>
     <replaceable>enabled</replaceable>
-
     <itemInstances>
       <componentInstance>
         <componentName>sfGpsDsAuVic2FooterComm</componentName>
@@ -65,17 +58,8 @@
       </componentInstance>
     </itemInstances>
   </flexiPageRegions>
-
   <flexiPageRegions>
     <name>themeHeader</name>
-    <type>Region</type>
-    <appendable>enabled</appendable>
-    <prependable>enabled</prependable>
-    <replaceable>enabled</replaceable>
-  </flexiPageRegions>
-
-  <flexiPageRegions>
-    <name>sidebar</name>
     <type>Region</type>
     <appendable>enabled</appendable>
     <prependable>enabled</prependable>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+  <apiVersion>64.0</apiVersion>
+  <isExposed>true</isExposed>
+  <masterLabel>VIC2 DS Auth Register</masterLabel>
+  <targets>
+    <target>lightningCommunity__Page</target>
+    <target>lightningCommunity__Default</target>
+  </targets>
+  <targetConfigs>
+    <targetConfig targets="lightningCommunity__Default">
+      <property
+        name="title"
+        type="String"
+        label="Title"
+        default="Register a new account"
+        description="Text used as a header."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="iconName"
+        type="String"
+        label="Icon name"
+        description="Name of the icon."
+        editor="c/sfGpsDsAuVic2IconCpe"
+      />
+      <property
+        name="iconPosition"
+        type="String"
+        label="Icon position"
+        description="Indicates whether there is an icon and where."
+        datasource="none,before,after"
+        default="none"
+      />
+      <property
+        name="terms"
+        type="String"
+        label="Terms"
+        description="Insert the terms of usage or a link to the terms page."
+        default=""
+        editor="c/sfGpsDsMarkdownCpe"
+      />
+      <property
+        name="includePasswordField"
+        type="Boolean"
+        label="Include password field"
+        description="Indicates that the user can provide their own password. Uncheck for a password to be generated and sent by email."
+        default="true"
+      />
+      <property
+        name="extraFieldsFieldset"
+        type="String"
+        label="Extra fields Fieldset"
+        description="The API name of a fieldset on the User object to capture additional details."
+        editor="c/sfGpsDsStringCpe"
+      />
+      <property
+        name="className"
+        type="String"
+        label="Class name"
+        description="Additional CSS class to be applied."
+        editor="c/sfGpsDsStringCpe"
+      />
+    </targetConfig>
+  </targetConfigs>
+</LightningComponentBundle>
