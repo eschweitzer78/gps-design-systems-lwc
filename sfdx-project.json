@@ -15,6 +15,10 @@
       "versionDescription": "Salesforce Global Public Sector Design Systems"
     },
     {
+      "path": "sfGpsDsOs",
+      "default": false
+    },
+    {
       "path": "sfGpsDsSr",
       "versionName": "2026.02.18.1600",
       "versionNumber": "3.5.2.NEXT",

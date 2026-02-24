@@ -54,6 +54,7 @@ $RECYCLE.BIN/
 sfGpsTemp/*
 
 # non repo *Full
+sfGpsDsOs/*
 sfGpsDsSr/*
 sfGpsDsAuNswFull/*
 sfGpsDsAuNswSr/*

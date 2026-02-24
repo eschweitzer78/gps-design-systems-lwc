@@ -2,14 +2,15 @@
 
 [![CI Workflow](https://github.com/eschweitzer78/gps-design-systems-lwc/workflows/CI/badge.svg)](https://github.com/eschweitzer78/gps-design-systems-lwc/actions?query=workflow%3ACI) [![Packaging Workflow](https://github.com/eschweitzer78/gps-design-systems-lwc/workflows/Packaging/badge.svg)](https://github.com/eschweitzer78/gps-design-systems-lwc/actions?query=workflow%3A%22Packaging%22) [![codecov](https://codecov.io/gh/eschweitzer78/gps-design-systems-lwc/branch/main/graph/badge.svg)](https://codecov.io/gh/eschweitzer78/gps-design-systems-lwc)
 
-A collection of Salesforce Lightning Web Components (LWCs) for selected Governments' Design Systems. The collection
-covers Salesforce Experience Cloud as well as Salesforce Communities for Public Sector Solutions (Omnistudio), and may be extended in the future to help with Salesforce Flows provided they're surfaced via an Experience Cloud community.
+This repository is a collection of Accelerators to support the use of selected Governments' Design Systems on the Salesforce platform. They mostly comprise of Lightning Web Components (LWCs) for use in Salesforce Experience Cloud or Salesforce Communities for Public Sector Solutions but also of Experience Cloud templates, Apex business logic, static resources etc. It is mandatory that target orgs have the Omnistudio capabilities.
 
-Note that at this stage there is a dependency on Omnistudio Managed Package **258.5 (at the minimum)**, which is the version we built and tested against, when running with the Omnistudio Managed Package Runtime. We recommend staying on the Omnistudio Managed Package runtime as the standard runtime is not quite on parity yet when it comes to overrides, which we do leverage quite a bit.
+Most Design System Accelerators will work both with the Omnistudio Managed Package Runtime and Standard Runtime and will be distributed as two distinct packages. There is a dependency on the Omnistudio Managed Package for use with the Omnistudio Managed Package Runtime.
 
-We however do offer Standard Runtime versions without the dependency on Omnistudio Managed Package for preview purposes. There are known challenges with the Typeahead and File components though due to lack of parity. **Note**: DO NOT install these Standard Runtime packages if you have the Managed Package Runtime packages installed. We will need to release a specific version of the Omnistudio Managed Package Runtime package removing all components so they can be safely deprecated and superseded by their equivalent in the Standard Runtime package version.
+While we strongly recommend staying on the Omnistudio Managed Package Runtime for now, the Standard Runtime versions can be tested for preview purposes. Note that there are currently known challenges with the Typeahead and File Omnistudio form elements in Standard Runtime.
 
-Do read our [change log](./CHANGELOG.md) if you plan on updating already installed packages in order to check for changes in behaviour or configuration changes.
+**Note for existing users**: DO NOT install Standard Runtime packages if you already have the Managed Package Runtime packages. We will provide further guidance on that migration in due time -- but contact us for further details prior if required. Also note that multiple Accelerators from this collection cannot be installed as packages in the same org; consider source code deployment in that setup.
+
+Do read our [change log](./CHANGELOG.md) if you plan on updating an already installed package in order to check for changes in behaviour or configuration changes.
 
 Please submit issues on our [development repo](https://github.com/eschweitzer78/gps-design-systems-lwc) if you are currently on the @SalesforceLabs GitHub.
 
