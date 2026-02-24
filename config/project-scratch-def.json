@@ -23,6 +23,9 @@
     },
     "emailAdministrationSettings": {
       "enableEnhancedEmailEnabled": true
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": true
     }
   }
 }
