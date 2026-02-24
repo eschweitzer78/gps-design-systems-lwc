@@ -26,9 +26,9 @@
 
         <template for:each={_records} for:item="record">
           <c-sf-gps-ds-au-nsw-list-view-item
-            key={record.Id}
+            key={record.columns.Id.value}
             class="item"
-            record-id={record.Id}
+            record-id={record.columns.Id.value}
             display-columns={_displayColumns}
             label-column={labelColumn}
             title-column={titleColumn}
@@ -36,6 +36,7 @@
             tags-column={tagsColumn}
             image-column={imageColumn}
             image-alt-column={imageAltColumn}
+            content-markdown={contentMarkdown}
             record={record}
             onnavigate={handleItemNavigate}
           >

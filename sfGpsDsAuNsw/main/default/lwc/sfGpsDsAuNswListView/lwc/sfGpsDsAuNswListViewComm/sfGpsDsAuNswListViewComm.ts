@@ -71,6 +71,10 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api
+  contentMarkdown?: string;
+
+  // @ts-ignore
+  @api
   className?: string;
 
   // @ts-ignore
