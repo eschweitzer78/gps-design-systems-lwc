@@ -1,518 +1,518 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Translations xmlns="http://soap.sforce.com/2006/04/metadata">
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Search</label>
-        <translation>Rechercher</translation>
+        <name>sfGpsDsCaOn_Common_Search</name>
+        <label>Rechercher</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Select</label>
-        <translation>Sélectionner</translation>
+        <name>sfGpsDsCaOn_Common_Select</name>
+        <label>Sélectionner</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Loading</label>
-        <translation>Chargement</translation>
+        <name>sfGpsDsCaOn_Common_Loading</name>
+        <label>Chargement</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Save</label>
-        <translation>Enregistrer</translation>
+        <name>sfGpsDsCaOn_Common_Save</name>
+        <label>Enregistrer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Cancel</label>
-        <translation>Annuler</translation>
+        <name>sfGpsDsCaOn_Common_Cancel</name>
+        <label>Annuler</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Close</label>
-        <translation>Fermer</translation>
+        <name>sfGpsDsCaOn_Common_Close</name>
+        <label>Fermer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Continue</label>
-        <translation>Continuer</translation>
+        <name>sfGpsDsCaOn_Common_Continue</name>
+        <label>Continuer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Back</label>
-        <translation>Retour</translation>
+        <name>sfGpsDsCaOn_Common_Back</name>
+        <label>Retour</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Next</label>
-        <translation>Suivant</translation>
+        <name>sfGpsDsCaOn_Common_Next</name>
+        <label>Suivant</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Previous</label>
-        <translation>Précédent</translation>
+        <name>sfGpsDsCaOn_Common_Previous</name>
+        <label>Précédent</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Required</label>
-        <translation>obligatoire</translation>
+        <name>sfGpsDsCaOn_Common_Required</name>
+        <label>obligatoire</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Optional</label>
-        <translation>facultatif</translation>
+        <name>sfGpsDsCaOn_Common_Optional</name>
+        <label>facultatif</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Clear</label>
-        <translation>Effacer</translation>
+        <name>sfGpsDsCaOn_Common_Clear</name>
+        <label>Effacer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Edit</label>
-        <translation>Modifier</translation>
+        <name>sfGpsDsCaOn_Common_Edit</name>
+        <label>Modifier</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Delete</label>
-        <translation>Supprimer</translation>
+        <name>sfGpsDsCaOn_Common_Delete</name>
+        <label>Supprimer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Add</label>
-        <translation>Ajouter</translation>
+        <name>sfGpsDsCaOn_Common_Add</name>
+        <label>Ajouter</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_Remove</label>
-        <translation>Retirer</translation>
+        <name>sfGpsDsCaOn_Common_Remove</name>
+        <label>Retirer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_ShowDetails</label>
-        <translation>Afficher les détails</translation>
+        <name>sfGpsDsCaOn_Common_ShowDetails</name>
+        <label>Afficher les détails</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_HideDetails</label>
-        <translation>Masquer les détails</translation>
+        <name>sfGpsDsCaOn_Common_HideDetails</name>
+        <label>Masquer les détails</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_ExpandAll</label>
-        <translation>Tout développer</translation>
+        <name>sfGpsDsCaOn_Common_ExpandAll</name>
+        <label>Tout développer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_CollapseAll</label>
-        <translation>Tout réduire</translation>
+        <name>sfGpsDsCaOn_Common_CollapseAll</name>
+        <label>Tout réduire</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_BackToTop</label>
-        <translation>Retour en haut</translation>
+        <name>sfGpsDsCaOn_Common_BackToTop</name>
+        <label>Retour en haut</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_SkipToContent</label>
-        <translation>Passer au contenu principal</translation>
+        <name>sfGpsDsCaOn_Common_SkipToContent</name>
+        <label>Passer au contenu principal</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Common_SkipOptions</label>
-        <translation>Passer les options</translation>
+        <name>sfGpsDsCaOn_Common_SkipOptions</name>
+        <label>Passer les options</label>
     </customLabels>
     
     <!-- SITE SELECTOR TOOL -->
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_SearchByParameters</label>
-        <translation>Rechercher par autres paramètres</translation>
+        <name>sfGpsDsCaOn_SiteSelector_SearchByParameters</name>
+        <label>Rechercher par autres paramètres</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_ClearSearch</label>
-        <translation>Effacer la recherche</translation>
+        <name>sfGpsDsCaOn_SiteSelector_ClearSearch</name>
+        <label>Effacer la recherche</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_SubmittedLocation</label>
-        <translation>Emplacement soumis</translation>
+        <name>sfGpsDsCaOn_SiteSelector_SubmittedLocation</name>
+        <label>Emplacement soumis</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_SubmittedHint</label>
+        <name>sfGpsDsCaOn_SiteSelector_SubmittedHint</name>
         <translation
-    >Cet emplacement a été capturé lors de la soumission de la demande.</translation>
+    >Cet emplacement a été capturé lors de la soumission de la demande.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_LocationDetails</label>
-        <translation>Détails de l'emplacement du site</translation>
+        <name>sfGpsDsCaOn_SiteSelector_LocationDetails</name>
+        <label>Détails de l'emplacement du site</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_SaveInstructions</label>
+        <name>sfGpsDsCaOn_SiteSelector_SaveInstructions</name>
         <translation
-    >Une fois que vous avez finalisé l'emplacement du site, sélectionnez « Enregistrer l'adresse du site ».</translation>
+    >Une fois que vous avez finalisé l'emplacement du site, sélectionnez « Enregistrer l'adresse du site ».</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_SaveSiteAddress</label>
-        <translation>Enregistrer l'adresse du site</translation>
+        <name>sfGpsDsCaOn_SiteSelector_SaveSiteAddress</name>
+        <label>Enregistrer l'adresse du site</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_TabSearch</label>
-        <translation>Rechercher</translation>
+        <name>sfGpsDsCaOn_SiteSelector_TabSearch</name>
+        <label>Rechercher</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_TabSitePoint</label>
-        <translation>Point du site</translation>
+        <name>sfGpsDsCaOn_SiteSelector_TabSitePoint</name>
+        <label>Point du site</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_TabLayers</label>
-        <translation>Couches de carte</translation>
+        <name>sfGpsDsCaOn_SiteSelector_TabLayers</name>
+        <label>Couches de carte</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_Address</label>
-        <translation>Adresse</translation>
+        <name>sfGpsDsCaOn_SiteSelector_Address</name>
+        <label>Adresse</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_Coordinates</label>
-        <translation>Coordonnées</translation>
+        <name>sfGpsDsCaOn_SiteSelector_Coordinates</name>
+        <label>Coordonnées</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_SiteSelector_LotConcession</label>
-        <translation>Lot/Concession</translation>
+        <name>sfGpsDsCaOn_SiteSelector_LotConcession</name>
+        <label>Lot/Concession</label>
     </customLabels>
     
     <!-- DISCHARGE POINT SELECTOR -->
     <customLabels>
-        <label>sfGpsDsCaOn_DischargePoint_SearchMethod</label>
-        <translation>Méthode de recherche</translation>
+        <name>sfGpsDsCaOn_DischargePoint_SearchMethod</name>
+        <label>Méthode de recherche</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_DischargePoint_LatLong</label>
-        <translation>Lat/Long</translation>
+        <name>sfGpsDsCaOn_DischargePoint_LatLong</name>
+        <label>Lat/Long</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_DischargePoint_UTM</label>
-        <translation>UTM</translation>
+        <name>sfGpsDsCaOn_DischargePoint_UTM</name>
+        <label>UTM</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_DischargePoint_DecimalDegrees</label>
-        <translation>Degrés décimaux</translation>
+        <name>sfGpsDsCaOn_DischargePoint_DecimalDegrees</name>
+        <label>Degrés décimaux</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_DischargePoint_DMS</label>
-        <translation>Degrés/Minutes/Secondes</translation>
+        <name>sfGpsDsCaOn_DischargePoint_DMS</name>
+        <label>Degrés/Minutes/Secondes</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_DischargePoint_UTMConversionError</label>
+        <name>sfGpsDsCaOn_DischargePoint_UTMConversionError</name>
         <translation
-    >La conversion UTM nécessite un traitement serveur. Veuillez utiliser la carte ou entrer des coordonnées décimales.</translation>
+    >La conversion UTM nécessite un traitement serveur. Veuillez utiliser la carte ou entrer des coordonnées décimales.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_DischargePoint_TabPinDrop</label>
-        <translation>Placer un repère</translation>
+        <name>sfGpsDsCaOn_DischargePoint_TabPinDrop</name>
+        <label>Placer un repère</label>
     </customLabels>
     
     <!-- TASK LIST -->
     <customLabels>
-        <label>sfGpsDsCaOn_Task_NotStarted</label>
-        <translation>Non commencé</translation>
+        <name>sfGpsDsCaOn_Task_NotStarted</name>
+        <label>Non commencé</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Task_InProgress</label>
-        <translation>En cours</translation>
+        <name>sfGpsDsCaOn_Task_InProgress</name>
+        <label>En cours</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Task_Completed</label>
-        <translation>Terminé</translation>
+        <name>sfGpsDsCaOn_Task_Completed</name>
+        <label>Terminé</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Task_CannotStart</label>
-        <translation>Impossible de commencer</translation>
+        <name>sfGpsDsCaOn_Task_CannotStart</name>
+        <label>Impossible de commencer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Task_Error</label>
-        <translation>Erreur</translation>
+        <name>sfGpsDsCaOn_Task_Error</name>
+        <label>Erreur</label>
     </customLabels>
     
     <!-- ERROR MESSAGES - NETWORK/CONNECTION -->
     <customLabels>
-        <label>sfGpsDsCaOn_Error_NetworkTitle</label>
-        <translation>Problème de connexion</translation>
+        <name>sfGpsDsCaOn_Error_NetworkTitle</name>
+        <label>Problème de connexion</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_NetworkMessage</label>
+        <name>sfGpsDsCaOn_Error_NetworkMessage</name>
         <translation
-    >Nous n'avons pas pu nous connecter au serveur. Veuillez vérifier votre connexion Internet et réessayer.</translation>
+    >Nous n'avons pas pu nous connecter au serveur. Veuillez vérifier votre connexion Internet et réessayer.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_TimeoutTitle</label>
-        <translation>Délai d'attente dépassé</translation>
+        <name>sfGpsDsCaOn_Error_TimeoutTitle</name>
+        <label>Délai d'attente dépassé</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_TimeoutMessage</label>
+        <name>sfGpsDsCaOn_Error_TimeoutMessage</name>
         <translation
-    >La demande prend plus de temps que prévu. Veuillez réessayer dans quelques instants.</translation>
+    >La demande prend plus de temps que prévu. Veuillez réessayer dans quelques instants.</label>
     </customLabels>
     
     <!-- ERROR MESSAGES - LOCATION/SEARCH -->
     <customLabels>
-        <label>sfGpsDsCaOn_Error_LocationNotFoundTitle</label>
-        <translation>Emplacement introuvable</translation>
+        <name>sfGpsDsCaOn_Error_LocationNotFoundTitle</name>
+        <label>Emplacement introuvable</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_LocationNotFoundMessage</label>
+        <name>sfGpsDsCaOn_Error_LocationNotFoundMessage</name>
         <translation
-    >Nous n'avons pas pu trouver cette adresse ou cet emplacement. Veuillez vérifier l'orthographe ou essayer une recherche différente.</translation>
+    >Nous n'avons pas pu trouver cette adresse ou cet emplacement. Veuillez vérifier l'orthographe ou essayer une recherche différente.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_LocationOutsideOntarioTitle</label>
-        <translation>Emplacement hors de l'Ontario</translation>
+        <name>sfGpsDsCaOn_Error_LocationOutsideOntarioTitle</name>
+        <label>Emplacement hors de l'Ontario</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_LocationOutsideOntarioMessage</label>
+        <name>sfGpsDsCaOn_Error_LocationOutsideOntarioMessage</name>
         <translation
-    >L'emplacement sélectionné est situé à l'extérieur de l'Ontario. Ce service n'est disponible que pour les emplacements en Ontario.</translation>
+    >L'emplacement sélectionné est situé à l'extérieur de l'Ontario. Ce service n'est disponible que pour les emplacements en Ontario.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_SearchNoResultsTitle</label>
-        <translation>Aucun résultat trouvé</translation>
+        <name>sfGpsDsCaOn_Error_SearchNoResultsTitle</name>
+        <label>Aucun résultat trouvé</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_SearchNoResultsMessage</label>
+        <name>sfGpsDsCaOn_Error_SearchNoResultsMessage</name>
         <translation
-    >Nous n'avons trouvé aucun résultat pour votre recherche. Essayez d'utiliser des mots-clés différents ou vérifiez l'orthographe.</translation>
+    >Nous n'avons trouvé aucun résultat pour votre recherche. Essayez d'utiliser des mots-clés différents ou vérifiez l'orthographe.</label>
     </customLabels>
     
     <!-- ERROR MESSAGES - MAP -->
     <customLabels>
-        <label>sfGpsDsCaOn_Error_MapLoadTitle</label>
-        <translation>Carte non disponible</translation>
+        <name>sfGpsDsCaOn_Error_MapLoadTitle</name>
+        <label>Carte non disponible</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_MapLoadMessage</label>
+        <name>sfGpsDsCaOn_Error_MapLoadMessage</name>
         <translation
-    >Nous avons des difficultés à charger la carte. Vous pouvez toujours entrer votre emplacement en utilisant le champ de recherche.</translation>
+    >Nous avons des difficultés à charger la carte. Vous pouvez toujours entrer votre emplacement en utilisant le champ de recherche.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_MapLayerTitle</label>
-        <translation>Couche de carte non disponible</translation>
+        <name>sfGpsDsCaOn_Error_MapLayerTitle</name>
+        <label>Couche de carte non disponible</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_MapLayerMessage</label>
+        <name>sfGpsDsCaOn_Error_MapLayerMessage</name>
         <translation
-    >Certaines informations de la carte n'ont pas pu être chargées. La carte de base est toujours disponible.</translation>
+    >Certaines informations de la carte n'ont pas pu être chargées. La carte de base est toujours disponible.</label>
     </customLabels>
     
     <!-- ERROR MESSAGES - SERVICE/API -->
     <customLabels>
-        <label>sfGpsDsCaOn_Error_ServiceUnavailableTitle</label>
-        <translation>Service temporairement indisponible</translation>
+        <name>sfGpsDsCaOn_Error_ServiceUnavailableTitle</name>
+        <label>Service temporairement indisponible</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_ServiceUnavailableMessage</label>
+        <name>sfGpsDsCaOn_Error_ServiceUnavailableMessage</name>
         <translation
-    >Ce service est temporairement indisponible. Veuillez réessayer plus tard ou contacter le soutien technique si le problème persiste.</translation>
+    >Ce service est temporairement indisponible. Veuillez réessayer plus tard ou contacter le soutien technique si le problème persiste.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_EligibilityCheckTitle</label>
-        <translation>Impossible de vérifier l'admissibilité</translation>
+        <name>sfGpsDsCaOn_Error_EligibilityCheckTitle</name>
+        <label>Impossible de vérifier l'admissibilité</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_EligibilityCheckMessage</label>
+        <name>sfGpsDsCaOn_Error_EligibilityCheckMessage</name>
         <translation
-    >Nous n'avons pas pu effectuer la vérification d'admissibilité pour le moment. Veuillez réessayer ou contacter le soutien technique pour obtenir de l'aide.</translation>
+    >Nous n'avons pas pu effectuer la vérification d'admissibilité pour le moment. Veuillez réessayer ou contacter le soutien technique pour obtenir de l'aide.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_DataLoadTitle</label>
-        <translation>Impossible de charger les données</translation>
+        <name>sfGpsDsCaOn_Error_DataLoadTitle</name>
+        <label>Impossible de charger les données</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_DataLoadMessage</label>
+        <name>sfGpsDsCaOn_Error_DataLoadMessage</name>
         <translation
-    >Nous n'avons pas pu charger les informations requises. Veuillez actualiser la page et réessayer.</translation>
+    >Nous n'avons pas pu charger les informations requises. Veuillez actualiser la page et réessayer.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_SaveTitle</label>
-        <translation>Impossible d'enregistrer</translation>
+        <name>sfGpsDsCaOn_Error_SaveTitle</name>
+        <label>Impossible d'enregistrer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_SaveMessage</label>
+        <name>sfGpsDsCaOn_Error_SaveMessage</name>
         <translation
-    >Nous n'avons pas pu enregistrer vos informations. Veuillez vérifier votre connexion et réessayer.</translation>
+    >Nous n'avons pas pu enregistrer vos informations. Veuillez vérifier votre connexion et réessayer.</label>
     </customLabels>
     
     <!-- ERROR MESSAGES - VALIDATION -->
     <customLabels>
-        <label>sfGpsDsCaOn_Error_RequiredFieldTitle</label>
-        <translation>Informations requises manquantes</translation>
+        <name>sfGpsDsCaOn_Error_RequiredFieldTitle</name>
+        <label>Informations requises manquantes</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_RequiredFieldMessage</label>
+        <name>sfGpsDsCaOn_Error_RequiredFieldMessage</name>
         <translation
-    >Veuillez fournir les informations requises pour continuer.</translation>
+    >Veuillez fournir les informations requises pour continuer.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_InvalidFormatTitle</label>
-        <translation>Format invalide</translation>
+        <name>sfGpsDsCaOn_Error_InvalidFormatTitle</name>
+        <label>Format invalide</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_InvalidFormatMessage</label>
+        <name>sfGpsDsCaOn_Error_InvalidFormatMessage</name>
         <translation
-    >Les informations que vous avez entrées ne sont pas dans le bon format. Veuillez vérifier et réessayer.</translation>
+    >Les informations que vous avez entrées ne sont pas dans le bon format. Veuillez vérifier et réessayer.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_InvalidEmailMessage</label>
+        <name>sfGpsDsCaOn_Error_InvalidEmailMessage</name>
         <translation
-    >Veuillez entrer une adresse courriel valide (ex. : nom@exemple.com).</translation>
+    >Veuillez entrer une adresse courriel valide (ex. : nom@exemple.com).</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_InvalidPhoneMessage</label>
+        <name>sfGpsDsCaOn_Error_InvalidPhoneMessage</name>
         <translation
-    >Veuillez entrer un numéro de téléphone valide (ex. : 416-555-1234).</translation>
+    >Veuillez entrer un numéro de téléphone valide (ex. : 416-555-1234).</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_InvalidPostalCodeMessage</label>
+        <name>sfGpsDsCaOn_Error_InvalidPostalCodeMessage</name>
         <translation
-    >Veuillez entrer un code postal canadien valide (ex. : M5V 3A8).</translation>
+    >Veuillez entrer un code postal canadien valide (ex. : M5V 3A8).</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_InvalidDateMessage</label>
+        <name>sfGpsDsCaOn_Error_InvalidDateMessage</name>
         <translation
-    >Veuillez entrer une date valide au format JJ/MM/AAAA.</translation>
+    >Veuillez entrer une date valide au format JJ/MM/AAAA.</label>
     </customLabels>
     
     <!-- ERROR MESSAGES - AUTH/SESSION -->
     <customLabels>
-        <label>sfGpsDsCaOn_Error_SessionExpiredTitle</label>
-        <translation>Session expirée</translation>
+        <name>sfGpsDsCaOn_Error_SessionExpiredTitle</name>
+        <label>Session expirée</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_SessionExpiredMessage</label>
+        <name>sfGpsDsCaOn_Error_SessionExpiredMessage</name>
         <translation
-    >Votre session a expiré pour des raisons de sécurité. Veuillez vous reconnecter pour continuer.</translation>
+    >Votre session a expiré pour des raisons de sécurité. Veuillez vous reconnecter pour continuer.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_AccessDeniedTitle</label>
-        <translation>Accès refusé</translation>
+        <name>sfGpsDsCaOn_Error_AccessDeniedTitle</name>
+        <label>Accès refusé</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_AccessDeniedMessage</label>
+        <name>sfGpsDsCaOn_Error_AccessDeniedMessage</name>
         <translation
-    >Vous n'avez pas la permission d'accéder à cette fonctionnalité. Veuillez contacter votre administrateur si vous pensez qu'il s'agit d'une erreur.</translation>
+    >Vous n'avez pas la permission d'accéder à cette fonctionnalité. Veuillez contacter votre administrateur si vous pensez qu'il s'agit d'une erreur.</label>
     </customLabels>
     
     <!-- ERROR MESSAGES - GENERIC -->
     <customLabels>
-        <label>sfGpsDsCaOn_Error_GenericTitle</label>
-        <translation>Une erreur s'est produite</translation>
+        <name>sfGpsDsCaOn_Error_GenericTitle</name>
+        <label>Une erreur s'est produite</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_GenericMessage</label>
+        <name>sfGpsDsCaOn_Error_GenericMessage</name>
         <translation
-    >Nous avons rencontré un problème inattendu. Veuillez réessayer ou contacter le soutien technique si le problème persiste.</translation>
+    >Nous avons rencontré un problème inattendu. Veuillez réessayer ou contacter le soutien technique si le problème persiste.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_ConfigurationTitle</label>
-        <translation>Problème de configuration</translation>
+        <name>sfGpsDsCaOn_Error_ConfigurationTitle</name>
+        <label>Problème de configuration</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_ConfigurationMessage</label>
+        <name>sfGpsDsCaOn_Error_ConfigurationMessage</name>
         <translation
-    >Il y a un problème de configuration avec cette application. Veuillez contacter le soutien technique pour obtenir de l'aide.</translation>
+    >Il y a un problème de configuration avec cette application. Veuillez contacter le soutien technique pour obtenir de l'aide.</label>
     </customLabels>
     
     <!-- ERROR ACTIONS -->
     <customLabels>
-        <label>sfGpsDsCaOn_Error_ActionTryAgain</label>
-        <translation>Réessayer</translation>
+        <name>sfGpsDsCaOn_Error_ActionTryAgain</name>
+        <label>Réessayer</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_ActionRefreshPage</label>
-        <translation>Actualiser la page</translation>
+        <name>sfGpsDsCaOn_Error_ActionRefreshPage</name>
+        <label>Actualiser la page</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_ActionContactSupport</label>
-        <translation>Contacter le soutien technique</translation>
+        <name>sfGpsDsCaOn_Error_ActionContactSupport</name>
+        <label>Contacter le soutien technique</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Error_ActionSignIn</label>
-        <translation>Se connecter</translation>
+        <name>sfGpsDsCaOn_Error_ActionSignIn</name>
+        <label>Se connecter</label>
     </customLabels>
     
     <!-- ACCESSIBILITY ANNOUNCEMENTS -->
     <customLabels>
-        <label>sfGpsDsCaOn_A11y_AddressSelected</label>
-        <translation>Adresse sélectionnée : {0}</translation>
+        <name>sfGpsDsCaOn_A11y_AddressSelected</name>
+        <label>Adresse sélectionnée : {0}</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_A11y_LocationUpdated</label>
-        <translation>Emplacement mis à jour</translation>
+        <name>sfGpsDsCaOn_A11y_LocationUpdated</name>
+        <label>Emplacement mis à jour</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_A11y_SearchResults</label>
-        <translation>{0} résultats trouvés</translation>
+        <name>sfGpsDsCaOn_A11y_SearchResults</name>
+        <label>{0} résultats trouvés</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_A11y_NoResults</label>
-        <translation>Aucun résultat trouvé</translation>
+        <name>sfGpsDsCaOn_A11y_NoResults</name>
+        <label>Aucun résultat trouvé</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_A11y_LoadingComplete</label>
-        <translation>Chargement terminé</translation>
+        <name>sfGpsDsCaOn_A11y_LoadingComplete</name>
+        <label>Chargement terminé</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_A11y_FormError</label>
+        <name>sfGpsDsCaOn_A11y_FormError</name>
         <translation
-    >Il y a une erreur dans le formulaire. Veuillez vérifier les champs en surbrillance.</translation>
+    >Il y a une erreur dans le formulaire. Veuillez vérifier les champs en surbrillance.</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_A11y_StepOf</label>
-        <translation>Étape {0} de {1}</translation>
+        <name>sfGpsDsCaOn_A11y_StepOf</name>
+        <label>Étape {0} de {1}</label>
     </customLabels>
     
     <!-- NAVIGATION / MENU LABELS -->
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Home</label>
-        <translation>Accueil</translation>
+        <name>sfGpsDsCaOn_Nav_Home</name>
+        <label>Accueil</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_About</label>
-        <translation>À propos</translation>
+        <name>sfGpsDsCaOn_Nav_About</name>
+        <label>À propos</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Services</label>
-        <translation>Services</translation>
+        <name>sfGpsDsCaOn_Nav_Services</name>
+        <label>Services</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Contact</label>
-        <translation>Contact</translation>
+        <name>sfGpsDsCaOn_Nav_Contact</name>
+        <label>Contact</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Help</label>
-        <translation>Aide</translation>
+        <name>sfGpsDsCaOn_Nav_Help</name>
+        <label>Aide</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_FAQ</label>
-        <translation>Foire aux questions</translation>
+        <name>sfGpsDsCaOn_Nav_FAQ</name>
+        <label>Foire aux questions</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Apply</label>
-        <translation>Soumettre une demande</translation>
+        <name>sfGpsDsCaOn_Nav_Apply</name>
+        <label>Soumettre une demande</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_MyAccount</label>
-        <translation>Mon compte</translation>
+        <name>sfGpsDsCaOn_Nav_MyAccount</name>
+        <label>Mon compte</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_SignIn</label>
-        <translation>Connexion</translation>
+        <name>sfGpsDsCaOn_Nav_SignIn</name>
+        <label>Connexion</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_SignOut</label>
-        <translation>Déconnexion</translation>
+        <name>sfGpsDsCaOn_Nav_SignOut</name>
+        <label>Déconnexion</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Dashboard</label>
-        <translation>Tableau de bord</translation>
+        <name>sfGpsDsCaOn_Nav_Dashboard</name>
+        <label>Tableau de bord</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Applications</label>
-        <translation>Demandes</translation>
+        <name>sfGpsDsCaOn_Nav_Applications</name>
+        <label>Demandes</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Permits</label>
-        <translation>Permis</translation>
+        <name>sfGpsDsCaOn_Nav_Permits</name>
+        <label>Permis</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Licenses</label>
-        <translation>Licences</translation>
+        <name>sfGpsDsCaOn_Nav_Licenses</name>
+        <label>Licences</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Reports</label>
-        <translation>Rapports</translation>
+        <name>sfGpsDsCaOn_Nav_Reports</name>
+        <label>Rapports</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Settings</label>
-        <translation>Paramètres</translation>
+        <name>sfGpsDsCaOn_Nav_Settings</name>
+        <label>Paramètres</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Profile</label>
-        <translation>Profil</translation>
+        <name>sfGpsDsCaOn_Nav_Profile</name>
+        <label>Profil</label>
     </customLabels>
     <customLabels>
-        <label>sfGpsDsCaOn_Nav_Notifications</label>
-        <translation>Notifications</translation>
+        <name>sfGpsDsCaOn_Nav_Notifications</name>
+        <label>Notifications</label>
     </customLabels>
 </Translations>
