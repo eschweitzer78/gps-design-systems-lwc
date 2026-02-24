@@ -1,7 +1,6 @@
-
-
 declare module "c/sfGpsDsAuNswListViewItem" {
   import type SfGpsDsElement from "c/sfGpsDsElement";
+  import { PropertyAccessor } from "c/sfGpsDsElement";
   import type { Link } from "c/sfGpsDsMarkdown";
   import type { 
     sObject, 
@@ -52,8 +51,12 @@ declare module "c/sfGpsDsAuNswListViewItem" {
     imageColumn?: string;
     imageAltColumn?: string;
     link?: string;
+    contentMarkdown?: string;
 
     // private
+
+    _mergedContentMarkdown?: string;
+    _contentMarkdown: PropertyAccessor<string>;
 
     _displayColumns?: ColumnDetails[];
     _record?: sObject;

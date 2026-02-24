@@ -91,13 +91,43 @@ jobs:
       - name: "Remove auth file"
         run: rm -f ./DEVHUB_SFDX_URL.txt
 
-      # Create package version and extract its id
+      # Create package version sfGpsDs and extract its id
       - name: "Create package version sfGpsDs"
         id: createPackageVersion-sfGpsDs
         if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           json=$(sf package version create --path=sfGpsDs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
+      # Create package version sfGpsDs (SR) and extract its id
+      - name: "Create package version sfGpsDs (Standard Runtime)"
+        id: createPackageVersion-sfGpsDsSr
+        if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run base-copy
+          json=$(sf package version create --path=sfGpsDsSr --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -127,6 +157,35 @@ jobs:
           set +e
           npm run aunsw-copy
           json=$(sf package version create --path=sfGpsDsAuNswFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
+      - name: "Create package version sfGpsDsAuNsw (Standard Runtime)"
+        id: createPackageVersion-sfGpsDsAuNswSr
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run aunsw-copy
+          json=$(sf package version create --path=sfGpsDsAuNswSr --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -207,6 +266,35 @@ jobs:
           fi
           exit $status2
 
+      - name: "Create package version sfGpsDsAuQld (Standard Runtime)"
+        id: createPackageVersion-sfGpsDsAuQldSr
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run auqld-copy
+          json=$(sf package version create --path=sfGpsDsAuQldSr --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
       - name: "Create package version sfGpsDsAuVic2"
         id: createPackageVersion-sfGpsDsAuVic2
         if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
@@ -214,6 +302,35 @@ jobs:
           set +e
           npm run auvic2-copy
           json=$(sf package version create --path=sfGpsDsAuVic2Full --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
+      - name: "Create package version sfGpsDsAuVic2 (Standard Runtime)"
+        id: createPackageVersion-sfGpsDsAuVic2Sr
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run auvic2-copy
+          json=$(sf package version create --path=sfGpsDsAuVic2Sr --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -338,6 +455,34 @@ jobs:
       - name: "Create scratch org"
         if: ${{ !env.IS_PRERELEASE }}
         run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --no-track-source
+
+      # Install new sfGpsDs SR package in scratch org
+      - name: "Install new sfGpsDs (Standard Runtime) package version in scratch org"
+        if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Install new sfGpsDsAuNsw SR package in scratch org
+      - name: "Install new sfGpsDsAuNsw (Standard Runtime) package version in scratch org"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Install new sfGpsDsAuQld SR package in scratch org
+      - name: "Install new sfGpsDsAuQld (Standard Runtime) package version in scratch org"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Install new sfGpsDsAuVic2 SR package in scratch org
+      - name: "Install new sfGpsDsAuVic2 (Standard Runtime) package version in scratch org"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"

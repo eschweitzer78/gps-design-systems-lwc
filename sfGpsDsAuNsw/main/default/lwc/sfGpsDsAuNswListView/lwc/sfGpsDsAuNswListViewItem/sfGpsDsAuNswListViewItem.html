@@ -10,7 +10,13 @@
     prevent-click-default="true"
     onnavigate={handleNavigate}
   >
-    <div class="list-view__field-list">
+    <div
+      lwc:if={contentMarkdown}
+      class="nsw-list-item__copy"
+      lwc:ref="markdown"
+      lwc:dom="manual"
+    ></div>
+    <div lwc:else class="list-view__field-list">
       <template for:each={_filteredRecord} for:item="column">
         <span
           key={column.fieldApiName}

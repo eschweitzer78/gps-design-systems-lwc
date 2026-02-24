@@ -2,7 +2,7 @@ import {
   api, 
   track 
 } from "lwc";
-import SfGpsDsElement from "c/sfGpsDsElement";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 import type { 
   ColumnDetails, 
@@ -16,13 +16,16 @@ import type {
 import type { 
   Link 
 } from "c/sfGpsDsMarkdown";
+import { 
+  replaceInnerHtml 
+} from "c/sfGpsDsHelpers";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuNswListViewItem";
 
 export default 
 class SfGpsDsAuNswListViewItem 
-extends SfGpsDsElement {
+extends SfGpsDsLwc {
   _displayColumns?: ColumnDetails[];
 
   // @ts-ignore
@@ -82,6 +85,18 @@ extends SfGpsDsElement {
   // @ts-ignore
   @api 
   link?: string;
+
+  // @ts-ignore
+  @api 
+  contentMarkdown?: string;
+  _mergedContentMarkdown?: string;
+  _contentMarkdown = this.defineMarkdownContentProperty("contentMarkdown", {
+    errorCode: "IT-MD",
+    errorText: "Issue when parsing content markdown",
+    watcher: () => {
+      this.reconcile();
+    }
+  });
 
   // @ts-ignore
   @track 
@@ -149,6 +164,16 @@ extends SfGpsDsElement {
 
           default:
             break;
+        }
+
+        if (this.contentMarkdown) {
+          this._mergedContentMarkdown = this._contentMarkdown.value?.replace(
+            /\[!Item\.[a-zA-Z0-9_\.]*\]/g, 
+            (match) => { 
+              const columnName = match.slice(7, -1);
+              return this.getColumnDetails(columnName)?.displayValue;
+            }
+          );
         }
 
         return rv;
@@ -225,7 +250,15 @@ extends SfGpsDsElement {
   getColumnDetails(
     fieldApiName: string
   ): Partial<sObjectColumn> {
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "> getColumnDetails", fieldApiName);
+    }
+
     if (!fieldApiName || !this._record) {
+      if (DEBUG) {
+        console.debug(CLASS_NAME, "< getColumnDetails empty");
+      }
+
       return {
         displayValue: undefined,
         value: null,
@@ -235,14 +268,20 @@ extends SfGpsDsElement {
       };
     }
 
-    let field = this._record.columns[fieldApiName];
-    return {
+    const field = this._record.columns[fieldApiName];
+    const rv = {
       displayValue: field?.displayValue || field?.value,
       value: field?.value,
       dataType: field?.dataType,
       relationshipObjectApiName: field?.relationshipObjectApiName,
       relationshipId: field?.relationshipId
     };
+
+    if (DEBUG) {
+      console.debug(CLASS_NAME, "< getColumnDetails", JSON.stringify(rv));
+    }
+
+    return rv;
   }
 
   handleRelationshipNavigate(
@@ -275,5 +314,12 @@ extends SfGpsDsElement {
         }
       })
     );
+  }
+
+  renderedCallback() {
+    super.renderedCallback?.();
+    if (this.refs.markdown) {
+      replaceInnerHtml(this.refs.markdown, this._mergedContentMarkdown);
+    }
   }
 }
