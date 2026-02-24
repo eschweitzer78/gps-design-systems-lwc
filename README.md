@@ -5,7 +5,9 @@
 A collection of Salesforce Lightning Web Components (LWCs) for selected Governments' Design Systems. The collection
 covers Salesforce Experience Cloud as well as Salesforce Communities for Public Sector Solutions (Omnistudio), and may be extended in the future to help with Salesforce Flows provided they're surfaced via an Experience Cloud community.
 
-Note that at this stage there is a dependency on Omnistudio **258.5 (at the minimum)**, which is the version we built and tested against. You also need to stay on the Omnistudio Managed Package runtime as the standard runtime is not quite on parity yet when it comes to overrides, which we do leverage quite a bit.
+Note that at this stage there is a dependency on Omnistudio Managed Package **258.5 (at the minimum)**, which is the version we built and tested against, when running with the Omnistudio Managed Package Runtime. We recommend staying on the Omnistudio Managed Package runtime as the standard runtime is not quite on parity yet when it comes to overrides, which we do leverage quite a bit.
+
+We however do offer Standard Runtime versions without the dependency on Omnistudio Managed Package for preview purposes. There are known challenges with the Typeahead and File components though due to lack of parity. **Note**: DO NOT install these Standard Runtime packages if you have the Managed Package Runtime packages installed. We will need to release a specific version of the Omnistudio Managed Package Runtime package removing all components so they can be safely deprecated and superseded by their equivalent in the Standard Runtime package version.
 
 Do read our [change log](./CHANGELOG.md) if you plan on updating already installed packages in order to check for changes in behaviour or configuration changes.
 
@@ -33,23 +35,31 @@ While installing, expand the advanced options to pick the `Compile only the Apex
 
 1. Log in to your org
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnSIAS" title="sfGpsDs">this link</a> to install the `sfGpsDs` unlocked package in your org (only when developing your own design system or as a dependency for a third-party).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnSIAS" title="sfGpsDs">this link</a> to install the `sfGpsDs` unlocked package in your org (only when developing your own design system or as a dependency for a third-party) for Omnistudio Managed Package Runtime.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnXIAS" title="sfGpsDsAuNswFull">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included). **Note**: Former users (pre-3.4), you may need to upgrade with deprecate only if you have been actively using `sfGpsDsAuNswHeaderComm` which is now superseded by `sfGpsDsAuNswHeaderV2Comm`.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=0t0000000000000000" title="sfGpsDsSr">this link</a> to install the `sfGpsDs` unlocked package in your org (only when developing your own design system or as a dependency for a third-party) for Omnistudio Standard Runtime.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcncIAC" title="sfGpsDsAuNswSFull">this link</a> to install the `sfGpsDsAuNswS` unlocked package in your org (with `sfGpsDs` included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnXIAS" title="sfGpsDsAuNswFull">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime. **Note**: Former users (pre-3.4), you may need to upgrade with deprecate only if you have been actively using `sfGpsDsAuNswHeaderComm` which is now superseded by `sfGpsDsAuNswHeaderV2Comm`.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnhIAC" title="sfGpsDsAuQldFull">this link</a> to install the `sfGpsDsAuQld` unlocked package in your org (with `sfGpsDs` included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t000000000000000" title="sfGpsDsAuNswSr">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Standard Runtime.**Note**: DO NOT install this if you have the Managed Package Runtime package installed. We will need to release a specific version of the Omnistudio Managed Package Runtime package removing all components so they can be safely deprecated and superseded by their equivalent in the Standard Runtime package version.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc7kIAC" title="sfGpsDsAuVic1Full">this link</a> to install the `sfGpsDsAuVic` unlocked package in your org (with `sfGpsDs` included). **Note**: this library is now deprecated.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcncIAC" title="sfGpsDsAuNswSFull">this link</a> to install the `sfGpsDsAuNswS` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnmIAC" title="sfGpsDsAuVic2Full">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnhIAC" title="sfGpsDsAuQldFull">this link</a> to install the `sfGpsDsAuQld` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnrIAC" title="sfGpsDsFrGovFull">this link</a> to install the `sfGpsDsFrGov` unlocked package in your org (with `sfGpsDs` included).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t000000000000000" title="sfGpsDsAuQldSr">this link</a> to install the `sfGpsDsAuQld` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Standard Runtime.**Note**: DO NOT install this if you have the Managed Package Runtime package installed. We will need to release a specific version of the Omnistudio Managed Package Runtime package removing all components so they can be safely deprecated and superseded by their equivalent in the Standard Runtime package version.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnwIAC" title="sfGpsDsUkGovFull">this link</a> to install the `sfGpsDsUkGov` unlocked package in your org (with `sfGpsDs included`).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc7kIAC" title="sfGpsDsAuVic1Full">this link</a> to install the `sfGpsDsAuVic` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime. **Note**: this library is now deprecated.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pco1IAC" title="sfGpsDsCaOnFull">this link</a> to install the `sfGpsDsCaOn` unlocked package in your org (with `sfGpsDs included`).
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnmIAC" title="sfGpsDsAuVic2Full">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime.
+
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04t000000000000000" title="sfGpsDsAuVic2Sr">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Standard Runtime.**Note**: DO NOT install this if you have the Managed Package Runtime package installed. We will need to release a specific version of the Omnistudio Managed Package Runtime package removing all components so they can be safely deprecated and superseded by their equivalent in the Standard Runtime package version.
+
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnrIAC" title="sfGpsDsFrGovFull">this link</a> to install the `sfGpsDsFrGov` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime.
+
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcnwIAC" title="sfGpsDsUkGovFull">this link</a> to install the `sfGpsDsUkGov` unlocked package in your org (with `sfGpsDs included`) for Omnistudio Managed Package Runtime.
+
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pco1IAC" title="sfGpsDsCaOnFull">this link</a> to install the `sfGpsDsCaOn` unlocked package in your org (with `sfGpsDs included`) for Omnistudio Standard Runtime.
 
 ## Installing the production versions using Unlocked Packages
 
@@ -61,11 +71,11 @@ While installing, you can expand the advanced options to pick the `Compile only 
 
 1. Log in to your org
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc9qIAC">this link</a> to install the `sfGpsDs` unlocked package in your production org (v2.8.0.4 released on 28/04/2025 -- only when using your own design system or a dependent third-party's).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc9qIAC">this link</a> to install the `sfGpsDs` unlocked package for Omnistudio Managed Package Runtime in your production org (v2.8.0.4 released on 28/04/2025 -- only when using your own design system or a dependent third-party's).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pcd3IAC">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your production org (v3.4.0.1 released on 08/12/2025).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pcd3IAC">this link</a> to install the `sfGpsDsAuNsw` unlocked package for Omnistudio Managed Package Runtime in your production org (v3.4.0.1 released on 08/12/2025).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcA0IAK">this link</a> to install the `sfGpsDsAuNswS` unlocked package in your production org (v2.8.0.4 released on 28/04/2025).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcA0IAK">this link</a> to install the `sfGpsDsAuNswS` unlocked package for Omnistudio Managed Package Runtime in your production org (v2.8.0.4 released on 28/04/2025).
 
 1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuQld` unlocked package in a production org. We would like to collect feedback and may be able to provide early adopter support.
 
@@ -73,7 +83,7 @@ While installing, you can expand the advanced options to pick the `Compile only 
 
 1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsFrGov` unlocked package in a production org. We would like to collect feedback and may be able to provide early adopter support.
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcAKIA0">this link</a> to install the `sfGpsDsUkGov` unlocked package in your production org (v1.4.0.4 released on 12/02/2025). Please [do let us know](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcAKIA0">this link</a> to install the `sfGpsDsUkGov` unlocked package for Omnistudio Managed Package Runtime in your production org (v1.4.0.4 released on 12/02/2025). Please [do let us know](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) when doing so for non-educational use as we aim at supporting early adopters and gathering feedback.
 
 ## Support, security, contributions and code of conduct
 

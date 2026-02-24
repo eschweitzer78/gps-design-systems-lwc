@@ -91,13 +91,43 @@ jobs:
       - name: "Remove auth file"
         run: rm -f ./DEVHUB_SFDX_URL.txt
 
-      # Create package version and extract its id
+      # Create package version sfGpsDs and extract its id
       - name: "Create package version sfGpsDs"
         id: createPackageVersion-sfGpsDs
         if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
           json=$(sf package version create --path=sfGpsDs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
+      # Create package version sfGpsDs (SR) and extract its id
+      - name: "Create package version sfGpsDs (Standard Runtime)"
+        id: createPackageVersion-sfGpsDsSr
+        if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run base-copy
+          json=$(sf package version create --path=sfGpsDsSr --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -127,6 +157,35 @@ jobs:
           set +e
           npm run aunsw-copy
           json=$(sf package version create --path=sfGpsDsAuNswFull --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
+      - name: "Create package version sfGpsDsAuNsw (Standard Runtime)"
+        id: createPackageVersion-sfGpsDsAuNswSr
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run aunsw-copy
+          json=$(sf package version create --path=sfGpsDsAuNswSr --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -207,6 +266,35 @@ jobs:
           fi
           exit $status2
 
+      - name: "Create package version sfGpsDsAuQld (Standard Runtime)"
+        id: createPackageVersion-sfGpsDsAuQldSr
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run auqld-copy
+          json=$(sf package version create --path=sfGpsDsAuQldSr --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
       - name: "Create package version sfGpsDsAuVic2"
         id: createPackageVersion-sfGpsDsAuVic2
         if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
@@ -214,6 +302,35 @@ jobs:
           set +e
           npm run auvic2-copy
           json=$(sf package version create --path=sfGpsDsAuVic2Full --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          echo "package version create output:"
+          echo $json
+          echo "----"
+          status=$(echo $json | jq '.status')
+          if [ $status == "0" ]; then
+              packageVersionId=$(echo $json | jq -r '.result.SubscriberPackageVersionId')
+              echo "packageVersionId=$packageVersionId" >> $GITHUB_OUTPUT
+          else
+              echo "sf package version create failed"
+              exit $status
+          fi
+
+          json2=$(sf package version report --package $packageVersionId --json)
+          status2=$(echo $json2 | jq '.status')
+          if [ $status2 == "0" ]; then
+            versionNumber=$(echo $json2 | jq -r '.result.Version')
+            echo "versionNumber=$versionNumber" >> $GITHUB_OUTPUT
+          else
+            echo "sf package version report failed"
+          fi
+          exit $status2
+
+      - name: "Create package version sfGpsDsAuVic2 (Standard Runtime)"
+        id: createPackageVersion-sfGpsDsAuVic2Sr
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          set +e
+          npm run auvic2-copy
+          json=$(sf package version create --path=sfGpsDsAuVic2Sr --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
@@ -333,6 +450,34 @@ jobs:
       - name: "Create scratch org"
         run: sf org create scratch -f config/project-scratch-def.json --alias=scratch-org --set-default --duration-days=1 --no-track-source
 
+      # Install new sfGpsDs SR package in scratch org
+      - name: "Install new sfGpsDs (Standard Runtime) package version in scratch org"
+        if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Install new sfGpsDsAuNsw SR package in scratch org
+      - name: "Install new sfGpsDsAuNsw (Standard Runtime) package version in scratch org"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Install new sfGpsDsAuQld SR package in scratch org
+      - name: "Install new sfGpsDsAuQld (Standard Runtime) package version in scratch org"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
+      # Install new sfGpsDsAuVic2 SR package in scratch org
+      - name: "Install new sfGpsDsAuVic2 (Standard Runtime) package version in scratch org"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
         run: sf package install --package=${{ vars.OMNISTUDIO_PACKAGEID }} --target-org=scratch-org --wait=20 --no-prompt --security-type=AllUsers
@@ -393,7 +538,7 @@ jobs:
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
 
-      # Update sfGpsDs force:force:package:install link in readme
+      # Update sfGpsDs package install link in readme
       - name: "Update package sfGpsDs install link in readme"
         if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
@@ -412,7 +557,26 @@ jobs:
           prerelease: "true"
           tag: "sfGpsDs-${{ steps.createPackageVersion-sfGpsDs.outputs.versionNumber }}"
 
-      # Update sfGpsDsAuNsw force:force:package:install link in readme
+      # Update sfGpsDs SR package install link in readme
+      - name: "Update package sfGpsDsSr install link in readme"
+        if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsSr.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsSr\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsSr\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsSr GH release
+      - name: "Release package sfGpsDsSr"
+        if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsSr.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsSr.outputs.packageVersionId }})"
+          name: "sfGpsDsSr ${{ steps.createPackageVersion-sfGpsDsSr.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsSr-${{ steps.createPackageVersion-sfGpsDsSr.outputs.versionNumber }}"
+
+      # Update sfGpsDsAuNsw package install link in readme
       - name: "Update package sfGpsDsAuNsw install link in readme"
         if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
@@ -431,7 +595,26 @@ jobs:
           prerelease: "true"
           tag: "sfGpsDsAuNsw-${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.versionNumber }}"
 
-      # Update sfGpsDsAuNswS force:force:package:install link in readme
+      # Update sfGpsDsAuNswSr package install link in readme
+      - name: "Update package sfGpsDsAuNswSr install link in readme"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswSr\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswSr\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsAuNswSr GH release
+      - name: "Release package sfGpsDsAuNswSr"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }})"
+          name: "sfGpsDsAuNswSr ${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsAuNswSr-${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.versionNumber }}"
+
+      # Update sfGpsDsAuNswS package install link in readme
       - name: "Update package sfGpsDsAuNswS install link in readme"
         if: ${{ github.event.client_payload.changes.sfGpsDsAuNswS == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
@@ -450,7 +633,7 @@ jobs:
           prerelease: "true"
           tag: "sfGpsDsAuNswS-${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.versionNumber }}"
 
-      # Update sfGpsDsAuQld force:force:package:install link in readme
+      # Update sfGpsDsAuQld package install link in readme
       - name: "Update package sfGpsDsAuQld install link in readme"
         if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
@@ -469,7 +652,26 @@ jobs:
           prerelease: "true"
           tag: "sfGpsDsAuQld-${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.versionNumber }}"
 
-      # Update sfGpsDsAuVic2 force:force:package:install link in readme
+      # Update sfGpsDsAuQldSr package install link in readme
+      - name: "Update package sfGpsDsAuQldSr install link in readme"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuQldSr\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuQldSr\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsAuQldSr GH release
+      - name: "Release package sfGpsDsAuQldSr"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuQld == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.packageVersionId }})"
+          name: "sfGpsDsAuQldSr ${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsAuQldSr-${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.versionNumber }}"
+
+      # Update sfGpsDsAuVic2 package install link in readme
       - name: "Update package sfGpsDsAuVic2 install link in readme"
         if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
@@ -487,6 +689,25 @@ jobs:
           name: "sfGpsDsAuVic2 ${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.versionNumber }}"
           prerelease: "true"
           tag: "sfGpsDsAuVic2-${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.versionNumber }}"
+
+      # Update sfGpsDsAuVic2Sr package install link in readme
+      - name: "Update package sfGpsDsAuVic2Sr install link in readme"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        run: |
+          packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }}"
+          packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuVic2Sr\""
+          newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuVic2Sr\""
+          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+
+      # Create sfGpsDsAuVic2Sr GH release
+      - name: "Release package sfGpsDsAuVic2Sr"
+        if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          body: "Sandbox unmanaged package: [https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }}](https://test.salesforce.com/packaging/installPackage.apexp?p0=${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }})"
+          name: "sfGpsDsAuVic2Sr ${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.versionNumber }}"
+          prerelease: "true"
+          tag: "sfGpsDsAuVic2Sr-${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.versionNumber }}"
 
       # Update sfGpsDsFrGov force:force:package:install link in readme
       - name: "Update package sfGpsDsFrGov install link in readme"
@@ -526,7 +747,7 @@ jobs:
           prerelease: "true"
           tag: "sfGpsDsUkGov-${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.versionNumber }}"
 
-      # Update sfGpsDsCaOn force:force:package:install link in readme
+      # Update sfGpsDsCaOn package install link in readme
       - name: "Update package sfGpsDsCaOn install link in readme"
         if: ${{ github.event.client_payload.changes.sfGpsDsCaOn == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
