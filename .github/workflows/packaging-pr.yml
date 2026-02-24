@@ -97,7 +97,8 @@ jobs:
         if: ${{ github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           set +e
-          json=$(sf package version create --path=sfGpsDs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
+          npm run base-copy
+          json=$(sf package version create --path=sfGpsDsOs --installation-key-bypass --wait=20 --definition-file=config/project-scratch-def.json --code-coverage --json)
           echo "package version create output:"
           echo $json
           echo "----"
