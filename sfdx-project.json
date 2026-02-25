@@ -2,10 +2,14 @@
   "packageDirectories": [
     {
       "path": "sfGpsDs",
+      "default": false
+    },
+    {
+      "path": "sfGpsDsOs",
+      "default": false,
       "package": "Salesforce Global Public Sector Design Systems",
       "versionName": "2026.02.18.1600",
       "versionNumber": "3.5.2.NEXT",
-      "default": false,
       "definitionFile": "config/project-deployment-def.json",
       "dependencies": [
         {
@@ -13,10 +17,6 @@
         }
       ],
       "versionDescription": "Salesforce Global Public Sector Design Systems"
-    },
-    {
-      "path": "sfGpsDsOs",
-      "default": false
     },
     {
       "path": "sfGpsDsSr",
