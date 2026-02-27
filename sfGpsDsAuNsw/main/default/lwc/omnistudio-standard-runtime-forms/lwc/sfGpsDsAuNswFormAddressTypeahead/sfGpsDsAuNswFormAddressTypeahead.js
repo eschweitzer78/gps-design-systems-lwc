@@ -8,7 +8,7 @@
 import { api, track } from "lwc";
 import SfGpsDsFormTypeahead from "c/sfGpsDsFormTypeahead";
 import SfGpsDsAuNswStatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixin";
-import { debounce } from "omnistudio/utility";
+import { debounce } from "c/sfGpsDsOsrtUtility";
 import { isArray } from "c/sfGpsDsHelpers";
 import { omniGetMergedField } from "c/sfGpsDsOmniHelpers";
 
