@@ -26,6 +26,8 @@ declare module "c/sfGpsDsAuNswTable" {
 
   export interface ContentItemObject {
     value: ContentItemLiteral;
+    recordId?: string;
+    objectApiName?: string;
     type: ContentDisplayType;
     className?: string;
   }
@@ -39,13 +41,14 @@ declare module "c/sfGpsDsAuNswTable" {
 
   export interface TableItem {
     _key: string,
-    value?: ContentItemLiteral,
+    value?: ContentItemLiteral|ContentItemObject,
     type?: ContentDisplayType
     _isMarkdown?: boolean,
     _isString?: boolean,
     _isNumber?: boolean,
     _isBoolean?: boolean,
     _isReference?: boolean,
+    _url?: string,
     className?: string
   }
 
