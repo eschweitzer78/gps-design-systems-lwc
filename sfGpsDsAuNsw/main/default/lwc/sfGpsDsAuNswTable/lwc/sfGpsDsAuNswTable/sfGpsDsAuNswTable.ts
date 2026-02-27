@@ -26,6 +26,7 @@ import type {
   ContentDisplayType,
   ContentItemLiteral
 } from "c/sfGpsDsAuNswTable";
+import SfGpsDsNavigationService from "c/SfGpsDsNavigationService";
 
 const CAPTIONLOCATION_TOP: CaptionLocation = "top";
 const CAPTIONLOCATION_BOTTOM: CaptionLocation = "bottom";
@@ -129,13 +130,14 @@ extends SfGpsDsElement {
                 const cio = col as ContentItemObject;
                 const cioType = cio.type;
                 nRow._items[colName] = {
-                  ...cio,
+                  value: cio,
                   _key: colName,
                   _isMarkdown: cioType === "markdown",
                   _isString: cioType === "string",
                   _isNumber: cioType === "number",
                   _isBoolean: cioType === "boolean",
-                  _isReference: cioType === "reference"
+                  _isReference: cioType === "reference",
+                  _url: null
                 };
               } else if ([
                 "string", 
@@ -211,9 +213,11 @@ extends SfGpsDsElement {
 
     return content.map((row: TableRow, index: number) => ({
       _key: `row-${index + 1}`,
-      _cols: headers.map((header) => row._items[header.name] || { 
-        _key: `col-empty-${index + 1}-${header.name}`
-      })
+      _cols: headers.map((header) => 
+        row._items[header.name] || { 
+          _key: `col-empty-${index + 1}-${header.name}`
+        }
+      )
     }));
   }
 
@@ -229,5 +233,31 @@ extends SfGpsDsElement {
 
   get computedShowCaption(): boolean {
     return this._captionLocation.value !== CAPTIONLOCATION_NONE;
+  }
+
+  get navSvc(): SfGpsDsNavigationService {
+    return this.refs.navsvc as unknown as SfGpsDsNavigationService
+  }
+
+  // lifecycle
+
+  renderedCallback() {
+    const references = this.template.querySelectorAll("a[data-record-id]");
+    const navsvc = this.navSvc;
+
+    for (let i = 0; i < references.length; i++) {
+      const elt = references[i] as HTMLAnchorElement;
+      const recordId = elt.dataset.recordId;
+      const objectApiName = elt.dataset.objectApiName;
+
+      navsvc.generateUrl("standard__recordPage", {
+        objectApiName,
+        recordId,
+        actionName: "view"
+      })
+      .then((url) => {
+        elt.href = url;
+      });
+    }
   }
 }

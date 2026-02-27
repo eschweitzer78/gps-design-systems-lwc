@@ -37,6 +37,19 @@
                 <template lwc:if={cell.value}> Yes </template>
                 <template lwc:else> No </template>
               </td>
+              <td
+                lwc:elseif={cell._isReference}
+                key={cell._key}
+                class={cell.className}
+              >
+                <a
+                  href="#"
+                  data-object-api-name={cell.value.objectApiName}
+                  data-record-id={cell.value.recordId}
+                >
+                  {cell.value.label}
+                </a>
+              </td>
               <td lwc:else key={cell.key} class={cell.className}>
                 {cell.value}
               </td>
@@ -46,4 +59,7 @@
       </tbody>
     </table>
   </div>
+
+  <c-sf-gps-ds-navigation-service lwc:ref="navsvc">
+  </c-sf-gps-ds-navigation-service>
 </template>
