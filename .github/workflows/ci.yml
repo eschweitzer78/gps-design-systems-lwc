@@ -17,7 +17,7 @@ on:
 # Jobs to be executed
 jobs:
   format-lint-lwc-tests:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       # Checkout the source code
       - name: "Checkout source code"
@@ -77,7 +77,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
   scratch-org-test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: format-lint-lwc-tests
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
@@ -308,7 +308,7 @@ jobs:
         run: sf org delete scratch --no-prompt --target-org=scratch-org
 
   trigger-packaging:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     permissions:
       contents: write
     needs: scratch-org-test

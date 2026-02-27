@@ -16,7 +16,7 @@ env:
 # Jobs to be executed
 jobs:
   packaging:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       # Checkout the source code
       - name: "Checkout source code"

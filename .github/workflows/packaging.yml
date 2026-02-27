@@ -14,7 +14,7 @@ permissions:
 # Jobs to be executed
 jobs:
   release-package-version:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       # Checkout the source code
       - name: "Checkout source code"

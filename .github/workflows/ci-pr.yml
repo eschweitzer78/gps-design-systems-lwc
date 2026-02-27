@@ -25,7 +25,7 @@ jobs:
   # Dummy job used to skip CI run on automated PRs
   skip-ci:
     if: "github.actor == 'eschweitzer78-bot'"
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Noop
         run: |
@@ -33,7 +33,7 @@ jobs:
 
   format-lint-lwc-tests:
     if: "github.actor != 'eschweitzer78-bot'"
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       # Checkout the source code
       - name: "Checkout source code"
@@ -98,7 +98,7 @@ jobs:
   dependabot-auto-merge:
     # Only run for Dependabot PRs
     if: github.actor == 'dependabot[bot]'
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: format-lint-lwc-tests
     permissions:
       pull-requests: write
@@ -130,7 +130,7 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
 
   scratch-org-test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: format-lint-lwc-tests
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
@@ -368,7 +368,7 @@ jobs:
         run: sf org delete scratch --no-prompt --target-org=scratch-org
 
   trigger-packaging:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: scratch-org-test
     steps:
       # Checkout the source code

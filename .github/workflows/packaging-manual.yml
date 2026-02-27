@@ -10,7 +10,7 @@ on:
 # Jobs to be executed
 jobs:
   trigger-packaging:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       # Check for package changes using git diff
       - name: "Check for package changes"
