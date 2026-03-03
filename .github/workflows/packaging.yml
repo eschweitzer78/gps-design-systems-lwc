@@ -544,7 +544,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDs.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDs\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDs\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDs GH release
       - name: "Release package sfGpsDs"
@@ -563,7 +563,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsSr.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsSr\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsSr\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsSr GH release
       - name: "Release package sfGpsDsSr"
@@ -582,7 +582,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNsw.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswFull\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswFull\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsAuNsw GH release
       - name: "Release package sfGpsDsAuNsw"
@@ -601,7 +601,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswSr\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswSr\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsAuNswSr GH release
       - name: "Release package sfGpsDsAuNswSr"
@@ -620,7 +620,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuNswS.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuNswSFull\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuNswSFull\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsAuNswS GH release
       - name: "Release package sfGpsDsAuNswS"
@@ -639,7 +639,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuQld.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuQldFull\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuQldFull\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsAuQld GH release
       - name: "Release package sfGpsDsAuQld"
@@ -658,7 +658,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuQldSr.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuQldSr\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuQldSr\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsAuQldSr GH release
       - name: "Release package sfGpsDsAuQldSr"
@@ -677,7 +677,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuVic2.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuVic2Full\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuVic2Full\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsAuVic2 GH release
       - name: "Release package sfGpsDsAuVic2"
@@ -696,7 +696,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsAuVic2Sr\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsAuVic2Sr\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsAuVic2Sr GH release
       - name: "Release package sfGpsDsAuVic2Sr"
@@ -715,7 +715,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsFrGov.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsFrGovFull\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsFrGovFull\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsFrGov GH release
       - name: "Release package sfGpsDsFrGov"
@@ -734,7 +734,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsUkGov.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsUkGovFull\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsUkGovFull\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsUkGov GH release
       - name: "Release package sfGpsDsUkGov"
@@ -753,7 +753,7 @@ jobs:
           packageVersionId="${{ steps.createPackageVersion-sfGpsDsCaOn.outputs.packageVersionId }}"
           packageLinkRegex="https:\/\/test\.salesforce\.com\/packaging\/installPackage\.apexp\?p0=[a-zA-ZA-ZA-Z0-9]{18}\" title=\"sfGpsDsCaOnFull\""
           newPackageLink="https://test.salesforce.com/packaging/installPackage.apexp?p0=${packageVersionId}\" title=\"sfGpsDsCaOnFull\""
-          sed -E -i "s,${packageLinkRegex},${newPackageLink}," README.md
+          sed -E -i '' "s,${packageLinkRegex},${newPackageLink}," README.md
 
       # Create sfGpsDsCaOn GH release
       - name: "Release package sfGpsDsCaOn"
