@@ -443,9 +443,7 @@ jobs:
 
       # Wait for package replication
       - name: "Wait for package replication"
-        uses: maddox/actions/sleep@master
-        with:
-          args: 360
+        run: sleep 6m
 
       # Create scratch org
       - name: "Create scratch org"
