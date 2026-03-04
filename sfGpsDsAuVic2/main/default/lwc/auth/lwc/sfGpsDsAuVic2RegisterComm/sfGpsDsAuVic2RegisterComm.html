@@ -52,11 +52,16 @@
     <div class={computedClassName}>
       <div class="rpl-content sf-gps-ds-au-vic2-login-container">
         <form class="rpl-form__form rpl-form">
-          <div>
+          <fieldset>
             <h2 lwc:if={title}>{title}</h2>
+            <div class="rpl-u-margin-t-8"></div>
 
             <template for:each={fieldsArray} for:item="field">
-              <div key={field.name} class="rpl-form__outer">
+              <div
+                key={field.name}
+                class="rpl-form__outer"
+                data-invalid={field.anyError}
+              >
                 <div class="rpl-form__wrapper">
                   <label for={field.name} class="rpl-form-label">
                     {field.label}
@@ -64,8 +69,8 @@
                       lwc:if={field.required}
                       class="rpl-form-label__required rpl-type-label-small"
                     >
-                      ({i18n.required})
-                    </span>
+                      ({i18n.required})</span
+                    >
                   </label>
 
                   <template lwc:if={field.isPassword}>
@@ -78,20 +83,40 @@
                     </div>
                   </template>
 
+                  <span
+                    lwc:if={field.anyError}
+                    class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+                    aria-live="assertive"
+                    role="alert"
+                    id={field.errorId}
+                  >
+                    <c-sf-gps-ds-au-vic2-icon
+                      size="s"
+                      name="icon-exclamation-circle-filled"
+                    >
+                    </c-sf-gps-ds-au-vic2-icon>
+                    <template lwc:if={field.requiredError}>
+                      {i18n.fieldRequiredLabel}
+                    </template>
+                    <template lwc:elseif={field.mismatchError}>
+                      {i18n.passwordMismatchLabel}
+                    </template>
+                  </span>
+
                   <div class="rpl-form__inner">
                     <div
+                      lwc:if={field.isPassword}
                       class="rpl-form__input rpl-form__input--default rpl-form__input--type-password"
                     >
                       <div class="rpl-form__input-wrap">
                         <input
-                          lwc:if={field.anyError}
                           type={field.inputType}
                           id={field.name}
                           name={field.name}
                           value={field.value}
                           class="rpl-u-focusable-outline"
-                          aria-describedby={field.helpId}
-                          aria-invalid="true"
+                          aria-describedby={field.describedbyId}
+                          aria-invalid={field.anyError}
                           aria-required={field.required}
                           required={field.required}
                           autocomplete={field.autocomplete}
@@ -99,14 +124,21 @@
                           onchange={handleChange}
                           onblur={handleBlur}
                         />
+                      </div>
+                    </div>
+                    <div
+                      lwc:else
+                      class="rpl-form__input rpl-form__input--default rpl-form__input--type-text"
+                    >
+                      <div class="rpl-form__input-wrap">
                         <input
-                          lwc:else
                           type={field.inputType}
                           id={field.name}
                           name={field.name}
                           value={field.value}
                           class="rpl-u-focusable-outline"
-                          aria-describedby={field.helpId}
+                          aria-describedby={field.describedbyId}
+                          aria-invalid={field.anyError}
                           aria-required={field.required}
                           required={field.required}
                           autocomplete={field.autocomplete}
@@ -114,18 +146,6 @@
                           onchange={handleChange}
                           onblur={handleBlur}
                         />
-
-                        <span
-                          lwc:if={field.anyError}
-                          class="nsw-form__helper nsw-form__helper--error"
-                        >
-                          <template lwc:if={field.requiredError}>
-                            {i18n.fieldRequiredLabel}
-                          </template>
-                          <template lwc:elseif={field.mismatchError}>
-                            {i18n.passwordMismatchLabel}
-                          </template>
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -137,45 +157,64 @@
             </c-sf-gps-ds-au-vic2-spinner>
 
             <template for:each={extraFieldsArray} for:item="field">
-              <div key={field.name} class="nsw-form__group">
-                <label
-                  lwc:if={field.required}
-                  for={field.name}
-                  class="nsw-form__label nsw-form__required"
-                >
-                  {field.label}
-                  <span class="sr-only"> ({i18n.required})</span>
-                </label>
-                <label lwc:else for={field.name} class="nsw-form__label">
-                  {field.label}
-                </label>
-
-                <input
-                  type="text"
-                  id={field.name}
-                  name={field.name}
-                  value={field.value}
-                  class="nsw-form__input qld__text-input--error"
-                  aria-required={field.required}
-                  aria-invalid={field.requiredError}
-                  required={field.required}
-                  onkeyup={handleExtraFieldsChange}
-                  onchange={handleExtraFieldsChange}
-                  onblur={handleExtraFieldsBlur}
-                />
-
-                <span
-                  lwc:if={field.requiredError}
-                  class="nsw-form__helper nsw-form__helper--error"
-                >
-                  <span
-                    class="material-icons nsw-material-icons"
-                    aria-hidden="true"
+              <div
+                key={field.name}
+                class="rpl-form__outer"
+                data-invalid={field.requiredError}
+              >
+                <div class="rpl-form__wrapper">
+                  <label
+                    lwc:if={field.required}
+                    for={field.name}
+                    class="rpl-form-label"
                   >
-                    cancel
+                    {field.label}
+                    <span class="rpl-form-label__required rpl-type-label-small">
+                      ({i18n.required})</span
+                    >
+                  </label>
+                  <label lwc:else for={field.name} class="rpl-form-label">
+                    {field.label}
+                  </label>
+
+                  <span
+                    lwc:if={field.requiredError}
+                    class="rpl-form-validation-error rpl-type-p rpl-type-weight-bold"
+                    aria-live="assertive"
+                    role="alert"
+                    id={field.errorId}
+                  >
+                    <c-sf-gps-ds-au-vic2-icon
+                      size="s"
+                      name="icon-exclamation-circle-filled"
+                    >
+                    </c-sf-gps-ds-au-vic2-icon>
+                    <span>{i18n.fieldRequiredLabel}</span>
                   </span>
-                  {i18n.fieldRequiredLabel}
-                </span>
+
+                  <div class="rpl-form__inner">
+                    <div
+                      class="rpl-form__input rpl-form__input--default rpl-form__input--type-text"
+                    >
+                      <div class="rpl-form__input-wrap">
+                        <input
+                          type="text"
+                          id={field.name}
+                          name={field.name}
+                          value={field.value}
+                          class="rpl-u-focusable-outline"
+                          aria-describedby={field.describedbyId}
+                          aria-invalid={field.requiredError}
+                          aria-required={field.required}
+                          required={field.required}
+                          onkeyup={handleExtraFieldsChange}
+                          onchange={handleExtraFieldsChange}
+                          onblur={handleExtraFieldsBlur}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </template>
 
@@ -196,7 +235,7 @@
               >
               </c-sf-gps-ds-au-vic2-spinner>
             </div>
-          </div>
+          </fieldset>
         </form>
 
         <c-sf-gps-ds-au-vic2-alert

@@ -47,7 +47,6 @@ export default class extends SfGpsDsAuthCheckPassword {
 
   get computedClassName() {
     return {
-      "nsw-layout": true,
       [this.className]: this.className
     };
   }

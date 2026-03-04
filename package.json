@@ -1,7 +1,7 @@
 {
   "name": "gps-design-systems-lwc",
   "private": false,
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "LWC implementations of a collection of Public Sector Design Systems",
   "scripts": {
     "build-caon": "npx tsc --project sfGpsDsCaOn/main/default/lwc",
