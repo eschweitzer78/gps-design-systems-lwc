@@ -80,30 +80,14 @@
                 </template>
 
                 <input
-                  lwc:if={field.anyError}
                   type={field.inputType}
                   id={field.name}
                   name={field.name}
                   value={field.value}
                   class="nsw-form__input"
                   aria-required={field.required}
-                  aria-invalid="true"
-                  aria-describedby={field.helpId}
-                  required={field.required}
-                  autocomplete={field.autocomplete}
-                  onkeyup={handleChange}
-                  onchange={handleChange}
-                  onblur={handleBlur}
-                />
-                <input
-                  lwc:else
-                  type={field.inputType}
-                  id={field.name}
-                  name={field.name}
-                  value={field.value}
-                  class="nsw-form__input"
-                  aria-required={field.required}
-                  aria-describedby={field.helpId}
+                  aria-invalid={field.anyError}
+                  aria-describedby={field.describedbyId}
                   required={field.required}
                   autocomplete={field.autocomplete}
                   onkeyup={handleChange}
@@ -152,9 +136,10 @@
                   id={field.name}
                   name={field.name}
                   value={field.value}
-                  class="nsw-form__input qld__text-input--error"
+                  class="nsw-form__input"
                   aria-required={field.required}
                   aria-invalid={field.requiredError}
+                  aria-describedby={field.describedbyId}
                   required={field.required}
                   onkeyup={handleExtraFieldsChange}
                   onchange={handleExtraFieldsChange}

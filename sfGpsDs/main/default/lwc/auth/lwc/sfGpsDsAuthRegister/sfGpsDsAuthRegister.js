@@ -260,10 +260,20 @@ export default class extends SfGpsDsLwc {
         this.fields[fieldName].inputType !== "password" ||
         this.includePasswordField
     );
-    const rv = fieldNames.map((fieldName) => ({
-      ...this.fields[fieldName],
-      helpId: this.fields[fieldName].isPassword ? `${fieldName}-help` : null
-    }));
+    const rv = fieldNames.map((fieldName) => {
+      let field = {
+        ...this.fields[fieldName],
+        helpId: this.fields[fieldName].isPassword ? `${fieldName}-help` : null,
+        errorId: this.fields[fieldName].anyError ? `${fieldName}-error` : null
+      };
+
+      field.describedbyId =
+        (field.helpId || "") +
+        (field.helpId && field.errorId ? " " : "") +
+        (field.errorId || "");
+
+      return field;
+    });
 
     if (DEBUG) {
       console.debug(
@@ -287,7 +297,14 @@ export default class extends SfGpsDsLwc {
     }
 
     const fieldNames = Object.keys(this.extraFields);
-    const rv = fieldNames.map((fieldName) => this.extraFields[fieldName]);
+    const rv = fieldNames.map((fieldName) => {
+      const extraField = this.extraFields[fieldName];
+
+      return {
+        ...extraField,
+        describedbyId: extraField.anyError ? extraField.errorId : null
+      };
+    });
 
     if (DEBUG) {
       console.debug(
@@ -395,6 +412,7 @@ export default class extends SfGpsDsLwc {
             inputType: INPUT_TYPES[originalType],
             anyError: false,
             requiredError: false,
+            errorId: `${fieldName}-error`,
             value: DEFAULT_VALUES[originalType] || ""
           };
         }

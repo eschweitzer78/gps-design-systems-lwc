@@ -105,7 +105,7 @@
                   name={field.name}
                   value={field.value}
                   class="qld__text-input qld__text-input--block qld__text-input--error"
-                  aria-describedby={field.helpId}
+                  aria-describedby={field.describedbyId}
                   aria-required={field.required}
                   required={field.required}
                   autocomplete={field.autocomplete}
@@ -120,7 +120,7 @@
                   name={field.name}
                   value={field.value}
                   class="qld__text-input qld__text-input--block"
-                  aria-describedby={field.helpId}
+                  aria-describedby={field.describedbyId}
                   aria-required={field.required}
                   required={field.required}
                   autocomplete={field.autocomplete}
@@ -166,6 +166,8 @@
                   value={field.value}
                   class="qld__text-input qld__text-input--block qld__text-input--error"
                   aria-required={field.required}
+                  aria-invalid={field.requiredError}
+                  aria-describedby={field.describedbyId}
                   required={field.required}
                   onkeyup={handleExtraFieldsChange}
                   onchange={handleExtraFieldsChange}
@@ -179,6 +181,7 @@
                   value={field.value}
                   class="qld__text-input qld__text-input--block"
                   aria-required={field.required}
+                  aria-describedby={field.describedbyId}
                   required={field.required}
                   onkeyup={handleExtraFieldsChange}
                   onchange={handleExtraFieldsChange}

@@ -55,15 +55,16 @@
           <div>
             <h2 lwc:if={title}>{title}</h2>
 
-            <div class="rpl-u-margin-t-2">
+            <div lwc:if={errorMessage} class="rpl-u-margin-t-2">
               <c-sf-gps-ds-au-vic2-alert
-                lwc:if={errorMessage}
                 variant="error"
                 message={computedErrorMessage}
                 is-dismissible="false"
               >
               </c-sf-gps-ds-au-vic2-alert>
             </div>
+
+            <div class="rpl-u-margin-t-8"></div>
 
             <div class="rpl-form__outer">
               <label for="username" class="rpl-form-label">
@@ -98,8 +99,8 @@
               <label for="password" class="rpl-form-label">
                 {i18n.passwordFieldLabel}
                 <span class="rpl-form-label__required rpl-type-label-small">
-                  ({i18n.required})</span
-                >
+                  ({i18n.required})
+                </span>
               </label>
 
               <div class="rpl-form__inner">
