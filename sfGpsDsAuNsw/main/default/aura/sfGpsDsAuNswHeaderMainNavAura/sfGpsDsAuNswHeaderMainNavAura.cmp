@@ -1,3 +1,5 @@
+<!-- eslint-disable -->
+<!-- prettier-disable -->
 <aura:component
   implements="forceCommunity:availableForAllPageTypes"
   access="global"

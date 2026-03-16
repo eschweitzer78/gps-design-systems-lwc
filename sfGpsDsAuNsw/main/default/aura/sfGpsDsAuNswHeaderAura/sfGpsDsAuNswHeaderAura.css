@@ -242,6 +242,7 @@
   color: var(--nsw-brand-dark);
   display: flex;
   align-items: center;
+  text-wrap: balance;
 }
 .THIS .nsw-header__title {
   font-size: var(--nsw-font-size-lg-mobile);
@@ -263,6 +264,7 @@
 }
 .THIS .nsw-header__description {
   color: var(--nsw-brand-dark);
+  text-wrap: balance;
 }
 .THIS .nsw-header__description {
   font-size: var(--nsw-font-size-xs-mobile);

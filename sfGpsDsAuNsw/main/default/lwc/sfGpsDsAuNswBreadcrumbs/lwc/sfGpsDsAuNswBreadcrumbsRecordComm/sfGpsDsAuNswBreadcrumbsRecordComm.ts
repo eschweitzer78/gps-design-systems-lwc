@@ -72,7 +72,7 @@ extends SfGpsDsLwc {
             {
               index: 1,
               text: data[0] || "Object",
-              url: `../recordlist/${data[1] || "object"}/Default`
+              url: `../${data[1] || "object"}/Default`
             },
             { index: 2, text: data[2] || "This record", url: "" }
           ];

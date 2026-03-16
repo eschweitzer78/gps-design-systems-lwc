@@ -318,6 +318,7 @@ extends SfGpsDsLwc {
 
   renderedCallback() {
     super.renderedCallback?.();
+
     if (this.refs.markdown) {
       replaceInnerHtml(this.refs.markdown, this._mergedContentMarkdown);
     }

@@ -8,8 +8,8 @@ const collapseAllLabel = "Collapse all";
 const simpleContent = "# Accordion\n\nHow are you?";
 const compositeContent =
   "# Accordion\n\nHow are you?\n\n# Accordion2\n\nVery well thank you!";
-const enabledBtnSelect = "button:not([disabled])";
-const disabledBtnSelect = "button:disabled";
+const enabledBtnSelect = "button[aria-disabled=\"false\"]";
+const disabledBtnSelect = "button[aria-disabled=\"true\"]";
 const toggleClassSelect = ".nsw-accordion__toggle";
 
 describe("c-sf-gps-ds-au-nsw-accordion-group-comm", () => {

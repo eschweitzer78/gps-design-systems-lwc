@@ -10,6 +10,9 @@ import StatusHelperMixin from "c/sfGpsDsAuNswStatusHelperMixinOsN";
 import { computeClass } from "c/sfGpsDsHelpersOs";
 import tmpl from "./sfGpsDsAuNswTypeaheadOsN.html";
 
+const CLASS_NAME = "SfGpsDsAuNswTypeaheadOsN";
+const DEBUG = false;
+
 const I18N = {
   noResultFound: "-- No result found --"
 };
@@ -80,11 +83,41 @@ export default class extends StatusHelperMixin(OmnistudioTypeahead) {
   /* event management */
 
   selectOption(event, selectedItemIndex, selectedItemName) {
+    if (DEBUG)
+      console.debug(
+        CLASS_NAME,
+        "> selectOption",
+        "target=",
+        event.target,
+        "currentTarget=",
+        event.currentTarget
+      );
+
+    let transientEvent = event;
+
     if (event) {
       event.preventDefault(); // prevents following the href
+
+      /* we need to massage the event as super.selectOption uses target.innerText */
+      transientEvent = {
+        ...event,
+        target: event.currentTarget,
+        currentTarget: event.currentTarget
+      };
+
+      if (DEBUG)
+        console.debug(
+          CLASS_NAME,
+          "= selectOption",
+          "target=",
+          transientEvent.target,
+          "currentTarget=",
+          transientEvent.currentTarget
+        );
     }
 
-    super.selectOption(event, selectedItemIndex, selectedItemName);
+    super.selectOption(transientEvent, selectedItemIndex, selectedItemName);
+    if (DEBUG) console.debug(CLASS_NAME, "< selectOption");
   }
 
   handleClearOption() {

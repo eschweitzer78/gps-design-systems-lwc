@@ -42,7 +42,11 @@ const I18N = {
   monthLabel: "Month",
   yearLabel: "Year",
   pickerCancelLabel: "Cancel",
-  pickerAcceptLabel: "OK"
+  pickerAcceptLabel: "OK",
+  previousYear: "Previous year",
+  nextYear: "Next year",
+  previousMonth: "Previous month",
+  nextMonth: "Next month"
 };
 
 const DEFAULT_OUTPUT_FORMAT = "DD-MM-YYYY";

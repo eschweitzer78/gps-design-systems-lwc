@@ -24,7 +24,7 @@ export default class extends OmniscriptEditBlockNew {
     this.classList.remove(`${this._theme}-p-right_small`);
 
     this.classList.add(
-      "nsw-col-sm-12",
+      "nsw-col-xs-12",
       "nsw-col-md-6",
       "nsw-col-lg-3",
       "nsw-m-right-sm",

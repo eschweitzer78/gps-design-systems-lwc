@@ -12,7 +12,9 @@ import SfGpsDsElement from "c/sfGpsDsElement";
 
 const I18N = {
   expandAll: "Expand all",
-  collapseAll: "Collapse all"
+  collapseAll: "Collapse all",
+  allExpanded: "All sections expanded",
+  allCollapsed: "All sections collapsed"
 };
 
 const DEBUG = false;
@@ -74,6 +76,15 @@ extends SfGpsDsElement {
 
   get i18n(): Record<string, string> {
     return I18N;
+  }
+
+  get computedStatus(): string {
+    if (this._isFullyCollapsed.value) {
+      return I18N.allCollapsed;
+    } else if (this._isFullyExpanded.value) {
+      return I18N.allExpanded;
+    } else
+      return "";
   }
 
   /* event management */

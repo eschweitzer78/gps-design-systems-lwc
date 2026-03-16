@@ -37,8 +37,11 @@ export default class extends SfGpsDsOmniInputMixinOsN(OmnistudioTypeahead) {
   }
 
   selectOption(event, selectedItemIndex, selectedItemName) {
-    if (DEBUG) console.debug(CLASS_NAME, "selectOption");
+    if (DEBUG) console.debug(CLASS_NAME, "> selectOption");
     this.sfGpsDsClearCustomValidation(false);
+
     super.selectOption(event, selectedItemIndex, selectedItemName);
+
+    if (DEBUG) console.debug(CLASS_NAME, "< selectOption");
   }
 }

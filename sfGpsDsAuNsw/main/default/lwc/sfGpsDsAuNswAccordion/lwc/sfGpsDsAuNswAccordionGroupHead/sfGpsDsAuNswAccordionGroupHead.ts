@@ -9,6 +9,7 @@ import {
   api 
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const SHOWBUTTONS_DEFAULT = false;
 const ISFULLYEXPANDED_DEFAULT = false;
@@ -51,19 +52,45 @@ extends SfGpsDsElement {
     defaultValue: ISFULLYCOLLAPSED_DEFAULT
   });
 
+  // @ts-ignore
+  @api
+  status?: string;
+
+  /* computed */
+
+  get computedExpandAllClassName(): string | null {
+    return this._isFullyExpanded.value ? "disabled" : null;
+  }
+
+  get computedCollapseAllClassName(): string | null{
+    return this._isFullyCollapsed.value ? "disabled" : null;
+  }
+
   /* event management */
 
-  // eslint-disable-next-line no-unused-vars
-  handleExpandAll(_event: MouseEvent): void {
-    if (DEBUG) console.debug(CLASS_NAME, "> handleExpandAll");
+  handleExpandAll(event: MouseEvent): void {
+    const isDisabled = normaliseBoolean((event.target as HTMLButtonElement).ariaDisabled, {
+      acceptString: true
+    });
+
+    if (DEBUG) console.debug(CLASS_NAME, "> handleExpandAll", (event.target as HTMLButtonElement).ariaDisabled, isDisabled);
+
+    if (isDisabled) return;
     this.dispatchEvent(new CustomEvent("expandall"));
+  
     if (DEBUG) console.debug(CLASS_NAME, "< handleExpandAll");
   }
 
-  // eslint-disable-next-line no-unused-vars
-  handleCollapseAll(_event: MouseEvent): void {
-    if (DEBUG) console.debug(CLASS_NAME, "> handleCollapseAll");
+  handleCollapseAll(event: MouseEvent): void {
+    const isDisabled = normaliseBoolean((event.target as HTMLButtonElement).ariaDisabled, {
+      acceptString: true
+    });
+
+    if (DEBUG) console.debug(CLASS_NAME, "> handleCollapseAll", (event.target as HTMLButtonElement).ariaDisabled, isDisabled);
+  
+    if (isDisabled) return;
     this.dispatchEvent(new CustomEvent("collapseall"));
+  
     if (DEBUG) console.debug(CLASS_NAME, "< handleCollapseAll");
   }
 }
