@@ -12,6 +12,7 @@ jsconfig.json
 sfdx-project.json
 
 **/staticresources/**
+**/aura/**
 **/lwc/**/*.gen.css
 **/aura/**/*.gen.css
 **/__tests__/**
