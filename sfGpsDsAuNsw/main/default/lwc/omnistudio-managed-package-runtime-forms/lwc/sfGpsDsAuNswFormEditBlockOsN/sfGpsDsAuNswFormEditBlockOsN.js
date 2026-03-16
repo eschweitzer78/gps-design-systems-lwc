@@ -205,7 +205,7 @@ export default class extends OmniscriptEditBlock {
     return {
       "nsw-col": true,
       "nsw-hide": this._isEditing || !this._hasChildren,
-      "nsw-col-sm-12": this._isLongCards || this._isCards
+      "nsw-col-xs-12": this._isLongCards || this._isCards
     };
   }
 
@@ -236,9 +236,9 @@ export default class extends OmniscriptEditBlock {
     if (this._isCards) {
       this.classList.remove(this._theme + "-large-size_3-of-12");
       this.classList.remove(this._theme + "-medium-size_6-of-12");
-      this.classList.add("nsw-col-lg-3", "nsw-col-md-6");
+      this.classList.add("nsw-col-lg-3", "nsw-col-md-6", "nsw-col-xs-12");
     } else {
-      this.classList.add("nsw-col-sm-12");
+      this.classList.add("nsw-col-xs-12");
     }
   }
 
