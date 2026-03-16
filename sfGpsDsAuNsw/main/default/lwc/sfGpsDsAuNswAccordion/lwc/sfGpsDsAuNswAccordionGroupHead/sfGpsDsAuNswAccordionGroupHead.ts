@@ -9,6 +9,7 @@ import {
   api 
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
+import { normaliseBoolean } from "c/sfGpsDsHelpers";
 
 const SHOWBUTTONS_DEFAULT = false;
 const ISFULLYEXPANDED_DEFAULT = false;
@@ -68,9 +69,11 @@ extends SfGpsDsElement {
   /* event management */
 
   handleExpandAll(event: MouseEvent): void {
-    const isDisabled = Boolean((event.target as HTMLButtonElement).ariaDisabled);
+    const isDisabled = normaliseBoolean((event.target as HTMLButtonElement).ariaDisabled, {
+      acceptString: true
+    });
 
-    if (DEBUG) console.debug(CLASS_NAME, "> handleExpandAll", isDisabled);
+    if (DEBUG) console.debug(CLASS_NAME, "> handleExpandAll", (event.target as HTMLButtonElement).ariaDisabled, isDisabled);
 
     if (isDisabled) return;
     this.dispatchEvent(new CustomEvent("expandall"));
@@ -79,9 +82,11 @@ extends SfGpsDsElement {
   }
 
   handleCollapseAll(event: MouseEvent): void {
-    const isDisabled = Boolean((event.target as HTMLButtonElement).ariaDisabled);
+    const isDisabled = normaliseBoolean((event.target as HTMLButtonElement).ariaDisabled, {
+      acceptString: true
+    });
 
-    if (DEBUG) console.debug(CLASS_NAME, "> handleCollapseAll", isDisabled);
+    if (DEBUG) console.debug(CLASS_NAME, "> handleCollapseAll", (event.target as HTMLButtonElement).ariaDisabled, isDisabled);
   
     if (isDisabled) return;
     this.dispatchEvent(new CustomEvent("collapseall"));
