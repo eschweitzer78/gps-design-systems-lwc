@@ -1,7 +1,8 @@
 import "./SfGpsDsListViewController.getCount";
+import "./SfGpsDsListViewController.getDefaultListViewNameForObject";
+import "./SfGpsDsListViewController.getEnhancedRecords";
 import "./SfGpsDsListViewController.getListViewNameById";
 import "./SfGpsDsListViewController.getRecords";
-import "./SfGpsDsListViewController.getEnhancedRecords";
 import "./SfGpsDsIntegrationProcController.runIntegrationProcedure";
 import "./sfGpsDsApex";
 import "./sfGpsDsCheckboxGroup";

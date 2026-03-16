@@ -25,6 +25,31 @@ public with sharing class SfGpsDsListViewController {
     }
   }
 
+  @AuraEnabled
+  public static String getDefaultListViewNameForObject(String objectApiName) {
+    try {
+      List<ListView> lvList = [
+        SELECT Id, NamespacePrefix, DeveloperName
+        FROM ListView
+        WHERE SobjectType = :objectApiName
+        WITH USER_MODE
+        ORDER BY LastViewedDate DESC
+        LIMIT 1
+      ];
+
+      if (lvList.size() > 0) {
+        String ns = lvList[0].NamespacePrefix;
+
+        return ((ns != null && ns.length() > 0) ? (ns + '__') : '') +
+          lvList[0].DeveloperName;
+      }
+
+      return null;
+    } catch (Exception e) {
+      throw new AuraHandledException(e.getMessage());
+    }
+  }
+
   @AuraEnabled(cacheable=true)
   public static Integer getCount(
     String objectApiName,

@@ -67,8 +67,9 @@
         name="contentMarkdown"
         type="String"
         label="Content Markdown"
-        description="Markdown for the content of the list items with merge fields. Keep empty to have all fields in a sequence."
-        default="Owner: [!Item.Owner]"
+        description="Markdown for the content of the list items with merge fields. A merge field will be [!Item.Fieldname] with Fieldname the API name of the target field in the list view. Keep empty to have all fields in a sequence."
+        default=""
+        editor="c/sfGpsDsMarkdownCpe"
       />
       <property
         name="titleClassName"

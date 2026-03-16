@@ -8,6 +8,7 @@ import {
   getListInfoByName
 } from "lightning/uiListsApi";
 import getListViewNameById from "@salesforce/apex/SfGpsDsListViewController.getListViewNameById";
+import getDefaultListViewNameForObject from "@salesforce/apex/SfGpsDsListViewController.getDefaultListViewNameForObject";
 import getCount from "@salesforce/apex/SfGpsDsListViewController.getCount";
 import getRecords from "@salesforce/apex/SfGpsDsListViewController.getEnhancedRecords";
 
@@ -112,6 +113,19 @@ extends SfGpsDsLwc {
             console.debug("CO-LV", JSON.stringify(error));
           }
         });
+    } else if (value === "Default") {
+      getDefaultListViewNameForObject({ objectApiName: this.objectApiName })
+        .then((result) => {
+          this._filterName = result
+        })
+        .catch((error) => {
+          this.addError("CO-DL", "Error while getting default list view name.");
+          this._filterName = undefined;
+
+          if (DEBUG) {
+            console.debug("CO-DL", JSON.stringify(error));
+          }
+        })
     } else {
       this._filterName = value;
     }
