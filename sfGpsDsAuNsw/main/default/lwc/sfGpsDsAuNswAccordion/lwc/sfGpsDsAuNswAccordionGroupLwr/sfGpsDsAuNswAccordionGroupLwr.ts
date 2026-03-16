@@ -15,6 +15,13 @@ import type {
   AccordionGroupItem 
 } from "c/sfGpsDsAuNswAccordionGroupLwr";
 
+const I18N = {
+  expandAll: "Expand all",
+  collapseAll: "Collapse all",
+  allExpanded: "All sections expanded",
+  allCollapsed: "All sections collapsed"
+};
+
 /**
  * @slot Accordion1
  * @slot Accordion2
@@ -258,6 +265,10 @@ extends SfGpsDsLwc {
 
   /* computed */
 
+  get i18n(): Record<string, string> {
+    return I18N;
+  }
+  
   get computedIsFullyExpanded(): boolean {
     return !this._items.some((item) => item.closed);
   }
@@ -272,6 +283,15 @@ extends SfGpsDsLwc {
       ready: true,
       [this.className || ""]: !!this.className
     };
+  }
+
+  get computedStatus(): string {
+    if (this.computedIsFullyCollapsed) {
+      return I18N.allCollapsed;
+    } else if (this.computedIsFullyExpanded) {
+      return I18N.allExpanded;
+    } else
+      return "";
   }
 
   /* event management */

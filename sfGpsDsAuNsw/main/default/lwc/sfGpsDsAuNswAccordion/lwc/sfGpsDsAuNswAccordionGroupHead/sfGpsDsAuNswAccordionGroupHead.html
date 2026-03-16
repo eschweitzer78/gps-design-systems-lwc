@@ -3,17 +3,22 @@
   <div lwc:if={_showButtons.value} class="nsw-accordion__toggle">
     <button
       type="button"
-      disabled={_isFullyExpanded.value}
+      aria-disabled={_isFullyExpanded.value}
+      aria-label="Expand all sections"
       onclick={handleExpandAll}
     >
       {expandAllLabel}
     </button>
     <button
       type="button"
-      disabled={_isFullyCollapsed.value}
+      aria-disabled={_isFullyCollapsed.value}
+      aria-label="Collapse all sections"
       onclick={handleCollapseAll}
     >
       {collapseAllLabel}
     </button>
+    <span class="sr-only" role="status" aria-live="polite" aria-atomic="true"
+      >{status}</span
+    >
   </div>
 </template>

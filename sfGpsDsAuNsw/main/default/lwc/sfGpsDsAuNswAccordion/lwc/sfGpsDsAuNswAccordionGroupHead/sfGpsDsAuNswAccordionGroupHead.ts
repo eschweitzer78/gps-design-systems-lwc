@@ -51,18 +51,22 @@ extends SfGpsDsElement {
     defaultValue: ISFULLYCOLLAPSED_DEFAULT
   });
 
+  // @ts-ignore
+  @api
+  status?: string;
+
   /* event management */
 
-  // eslint-disable-next-line no-unused-vars
-  handleExpandAll(_event: MouseEvent): void {
+  handleExpandAll(event: MouseEvent): void {
     if (DEBUG) console.debug(CLASS_NAME, "> handleExpandAll");
+    if ((event.target as HTMLButtonElement).ariaDisabled) return;
     this.dispatchEvent(new CustomEvent("expandall"));
     if (DEBUG) console.debug(CLASS_NAME, "< handleExpandAll");
   }
 
-  // eslint-disable-next-line no-unused-vars
-  handleCollapseAll(_event: MouseEvent): void {
+  handleCollapseAll(event: MouseEvent): void {
     if (DEBUG) console.debug(CLASS_NAME, "> handleCollapseAll");
+    if ((event.target as HTMLButtonElement).ariaDisabled) return;
     this.dispatchEvent(new CustomEvent("collapseall"));
     if (DEBUG) console.debug(CLASS_NAME, "< handleCollapseAll");
   }

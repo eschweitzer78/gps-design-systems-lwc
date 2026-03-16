@@ -88,18 +88,26 @@
                     <button
                       class="nsw-icon-button nsw-date-picker__title-nav-btn"
                       type="button"
+                      aria-label={i18n.previousYear}
                       onclick={showPrevYear}
                     >
-                      <span class="material-icons nsw-material-icons">
+                      <span
+                        class="material-icons nsw-material-icons"
+                        aria-hidden="true"
+                      >
                         keyboard_double_arrow_left
                       </span>
                     </button>
                     <button
                       class="nsw-icon-button nsw-date-picker__title-nav-btn"
                       type="button"
+                      aria-label={i18n.previousMonth}
                       onclick={showPrevMonth}
                     >
-                      <span class="material-icons nsw-material-icons">
+                      <span
+                        class="material-icons nsw-material-icons"
+                        aria-hidden="true"
+                      >
                         chevron_left
                       </span>
                     </button>
@@ -109,18 +117,24 @@
                     <button
                       class="nsw-icon-button nsw-date-picker__title-nav-btn"
                       type="button"
+                      aria-label={i18n.nextMonth}
                       onclick={showNextMonth}
                     >
-                      <span class="material-icons nsw-material-icons"
+                      <span
+                        class="material-icons nsw-material-icons"
+                        aria-hidden="true"
                         >chevron_right</span
                       >
                     </button>
                     <button
                       class="nsw-icon-button nsw-date-picker__title-nav-btn"
                       type="button"
+                      aria-label={i18n.nextYear}
                       onclick={showNextYear}
                     >
-                      <span class="material-icons nsw-material-icons"
+                      <span
+                        class="material-icons nsw-material-icons"
+                        aria-hidden="true"
                         >keyboard_double_arrow_right</span
                       >
                     </button>
