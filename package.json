@@ -85,7 +85,7 @@
     "jest-extended": "^4.0.2",
     "lint-staged": "^16.2.7",
     "node-sass-magic-importer": "^5.3.3",
-    "nsw-design-system": "3.24.0",
+    "nsw-design-system": "3.24.5",
     "postcss": "^8.4.38",
     "postcss-custom-media": "^10.0.4",
     "prettier": "^3.7.3",
