@@ -1,3 +1,4 @@
+<!-- eslint-disable -->
 <aura:component
   implements="forceCommunity:availableForAllPageTypes"
   controller="SfGpsDsUserController"
