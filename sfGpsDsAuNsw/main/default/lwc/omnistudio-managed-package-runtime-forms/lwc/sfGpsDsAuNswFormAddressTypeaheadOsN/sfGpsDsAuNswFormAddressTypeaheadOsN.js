@@ -402,11 +402,14 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
           /* Doing promise resolution twice to let events propagate */
           Promise.resolve().then(() => {
             Promise.resolve().then(() => {
-              console.debug(
-                CLASS_NAME,
-                "= performTypeahead getOptions",
-                this.jsonDataStr
-              );
+              if (DEBUG) {
+                console.debug(
+                  CLASS_NAME,
+                  "= performTypeahead getOptions",
+                  this.jsonDataStr
+                );
+              }
+
               this.getOptions(this._propSetMap.taAction);
             });
           });
