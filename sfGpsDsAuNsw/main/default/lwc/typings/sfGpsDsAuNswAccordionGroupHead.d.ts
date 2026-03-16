@@ -10,11 +10,15 @@ declare module "c/sfGpsDsAuNswAccordionGroupHead" {
     showButtons?: boolean;
     isFullyExpanded?: boolean;
     isFullyCollapsed?: boolean;
+    status?: string;
 
     // private
     _showButtons: PropertyAccessor<boolean>;
     _isFullyExpanded: PropertyAccessor<boolean>;
     _isFullyCollapsed: PropertyAccessor<boolean>;
+
+    get computedExpandAllClassName(): string | null;
+    get computedCollapseAllClassName(): string | null
 
     handleExpandAll(event: MouseEvent): void;
     handleCollapsAll(event: MouseEvent): void;

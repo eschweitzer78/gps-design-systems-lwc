@@ -55,19 +55,37 @@ extends SfGpsDsElement {
   @api
   status?: string;
 
+  /* computed */
+
+  get computedExpandAllClassName(): string | null {
+    return this._isFullyExpanded.value ? "disabled" : null;
+  }
+
+  get computedCollapseAllClassName(): string | null{
+    return this._isFullyCollapsed.value ? "disabled" : null;
+  }
+
   /* event management */
 
   handleExpandAll(event: MouseEvent): void {
-    if (DEBUG) console.debug(CLASS_NAME, "> handleExpandAll");
-    if ((event.target as HTMLButtonElement).ariaDisabled) return;
+    const isDisabled = Boolean((event.target as HTMLButtonElement).ariaDisabled);
+
+    if (DEBUG) console.debug(CLASS_NAME, "> handleExpandAll", isDisabled);
+
+    if (isDisabled) return;
     this.dispatchEvent(new CustomEvent("expandall"));
+  
     if (DEBUG) console.debug(CLASS_NAME, "< handleExpandAll");
   }
 
   handleCollapseAll(event: MouseEvent): void {
-    if (DEBUG) console.debug(CLASS_NAME, "> handleCollapseAll");
-    if ((event.target as HTMLButtonElement).ariaDisabled) return;
+    const isDisabled = Boolean((event.target as HTMLButtonElement).ariaDisabled);
+
+    if (DEBUG) console.debug(CLASS_NAME, "> handleCollapseAll", isDisabled);
+  
+    if (isDisabled) return;
     this.dispatchEvent(new CustomEvent("collapseall"));
+  
     if (DEBUG) console.debug(CLASS_NAME, "< handleCollapseAll");
   }
 }

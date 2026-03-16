@@ -5,6 +5,7 @@
       type="button"
       aria-disabled={_isFullyExpanded.value}
       aria-label="Expand all sections"
+      class={computedExpandAllClassName}
       onclick={handleExpandAll}
     >
       {expandAllLabel}
@@ -13,6 +14,7 @@
       type="button"
       aria-disabled={_isFullyCollapsed.value}
       aria-label="Collapse all sections"
+      class={computedCollapseAllClassName}
       onclick={handleCollapseAll}
     >
       {collapseAllLabel}
