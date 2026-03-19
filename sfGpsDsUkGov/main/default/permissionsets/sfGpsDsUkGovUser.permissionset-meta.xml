@@ -12,6 +12,10 @@
     <apexClass>SfGpsDsIntegrationProcController</apexClass>
     <enabled>true</enabled>
   </classAccesses>
+  <classAccesses>
+    <apexClass>omnistudio__IntegrationProcedureService</apexClass>
+    <enabled>true</enabled>
+  </classAccesses>
   <hasActivationRequired>false</hasActivationRequired>
   <label>sfGpsDsUkGov User</label>
 </PermissionSet>
