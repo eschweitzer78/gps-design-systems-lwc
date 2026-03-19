@@ -44,6 +44,7 @@
     <apexClass>SfGpsDsCommunitiesController</apexClass>
     <enabled>true</enabled>
   </classAccesses>
+  <!-- omnistudio__IPS -->
   <hasActivationRequired>false</hasActivationRequired>
   <label>sfGpsDsAuVic2 User</label>
 </PermissionSet>
