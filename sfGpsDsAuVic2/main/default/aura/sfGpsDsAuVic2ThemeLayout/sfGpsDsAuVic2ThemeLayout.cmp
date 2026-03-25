@@ -41,7 +41,7 @@
 
     <div
       aria-label="Alert container"
-      class="{! 'rpl-layout' + (v.altSections ? ' rpl-layout--alt' : '')}"
+      class="{! 'sfgpsds-content rpl-layout' + (v.altSections ? ' rpl-layout--alt' : '')}"
     >
       <div class="rpl-alert-container">{! v.alertContainer }</div>
 

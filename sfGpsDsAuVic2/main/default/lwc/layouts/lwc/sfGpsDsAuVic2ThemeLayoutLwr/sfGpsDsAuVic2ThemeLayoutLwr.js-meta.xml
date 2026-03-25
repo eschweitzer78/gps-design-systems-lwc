@@ -17,6 +17,7 @@
         label="Container class name"
         name="containerClassName"
         type="String"
+        default="sfgpsds-content"
       />
       <property
         label="Container background colour"

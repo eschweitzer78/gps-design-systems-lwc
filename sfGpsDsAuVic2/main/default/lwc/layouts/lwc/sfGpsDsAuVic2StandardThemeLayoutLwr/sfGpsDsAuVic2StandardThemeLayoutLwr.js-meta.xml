@@ -39,7 +39,12 @@
         type="String"
         default="Skip to main content"
       />
-      <property label="Theme class name" name="themeClassName" type="String" />
+      <property
+        label="Theme class name"
+        name="themeClassName"
+        type="String"
+        default="sfgpsds-content"
+      />
       <property
         label="Above header class name"
         name="aboveHeaderClassName"
