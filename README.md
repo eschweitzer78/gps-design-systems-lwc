@@ -52,9 +52,9 @@ While installing, expand the advanced options to pick the `Compile only the Apex
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc7kIAC" title="sfGpsDsAuVic1Full">this link</a> to install the `sfGpsDsAuVic` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime. **Note**: this library is now deprecated.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pd6aIAC" title="sfGpsDsAuVic2Full">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pd7JIAS" title="sfGpsDsAuVic2Full">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pd6kIAC" title="sfGpsDsAuVic2Sr">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Standard Runtime. **Note**: DO NOT install this if you have the Managed Package Runtime package above installed. We will need to release a specific version of the Omnistudio Managed Package Runtime package removing all components so they can be safely deprecated and superseded by their equivalent in the Standard Runtime package version.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pd7OIAS" title="sfGpsDsAuVic2Sr">this link</a> to install the `sfGpsDsAuVic2` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Standard Runtime. **Note**: DO NOT install this if you have the Managed Package Runtime package above installed. We will need to release a specific version of the Omnistudio Managed Package Runtime package removing all components so they can be safely deprecated and superseded by their equivalent in the Standard Runtime package version.
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pd6uIAC" title="sfGpsDsFrGovFull">this link</a> to install the `sfGpsDsFrGov` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime.
 
