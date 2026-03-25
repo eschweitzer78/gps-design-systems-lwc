@@ -25,9 +25,7 @@
       <form class="rpl-form__form rpl-form" onsubmit={handleSubmit}>
         <fieldset class="rpl-form__fieldset">
           <div class="rpl-grid rpl-grid--no-row-gap">
-            <div class="rpl-col-12">
-              <slot aria-live="polite"> </slot>
-            </div>
+            <slot aria-live="polite"> </slot>
 
             <div
               lwc:if={computedHasButtons}
