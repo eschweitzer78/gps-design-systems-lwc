@@ -13,7 +13,12 @@
 
   <targetConfigs>
     <targetConfig targets="lightningCommunity__Default">
-      <property label="Theme class name" name="themeClassName" type="String" />
+      <property
+        label="Theme class name"
+        name="themeClassName"
+        type="String"
+        default="sfgpsds-content"
+      />
       <property
         label="Header class name"
         name="headerClassName"

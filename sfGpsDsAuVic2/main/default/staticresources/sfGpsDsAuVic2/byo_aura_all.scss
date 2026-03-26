@@ -8,6 +8,7 @@
 @import "RplProgress";
 
 @import "omnistudio-file-upload";
+@import "omnistudio-custom-lwc";
 @import "ripple2-fixes";
 
 @import "byo_aura_layout";
@@ -15,4 +16,10 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.sfgpsds-content {
+  font-size: var(--rpl-type-size-2);
+  line-height: var(--rpl-type-lh-4);
+  letter-spacing: var(--rpl-type-ls-1);
 }

@@ -1,0 +1,10 @@
+.rpl-grid runtime_omnistudio_omniscript-omniscript-custom-lwc,
+.rpl-grid omnistudio-omniscript-custom-lwc {
+  /* to deal with grid layout on slds as custom lwc has slds grid styling baked in */
+  --local-grid-cols: 12;
+  grid-column-end: span 12;
+  /* equivalent of rpl-content */
+  font-size: var(--rpl-type-size-2);
+  line-height: var(--rpl-type-lh-4);
+  letter-spacing: var(--rpl-type-ls-1);
+}
