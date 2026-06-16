@@ -15,16 +15,18 @@ const FIRSTCHILD_DEFAULT = false;
 /**
  * @slot Block
  */
-export default class extends SfGpsDsLwc {
+export default 
+class SfGpsDsAuNswBlockLwr 
+extends SfGpsDsLwc {
   static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 
   className?: string;
 
+  /* firstChild is required for styling purposes */
   // @ts-ignore
   @api 
-  // @ts-ignore
   firstChild?: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT

@@ -139,6 +139,8 @@ extends ExpandableStateMixin<SfGpsDsElement>(
   handleToggleItem(event: MouseEvent): void {
     const currentTarget = event.currentTarget as HTMLElement;
     const index = Number(currentTarget.dataset.idx);
-    this.toggleItemByIndex(index);
+
+    if (!Number.isNaN(index))
+      this.toggleItemByIndex(index);
   }
 }

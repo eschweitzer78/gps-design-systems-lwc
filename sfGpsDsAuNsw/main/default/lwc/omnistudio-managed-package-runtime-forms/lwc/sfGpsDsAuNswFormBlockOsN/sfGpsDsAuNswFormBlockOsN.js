@@ -18,8 +18,9 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     return {
       "nsw-accordion": true,
       ready: true,
-      "non-collapsible": this._propSetMap.nonCollapsible,
-      [this._propSetMap.className]: this._propSetMap.className
+      "non-collapsible": this._propSetMap?.nonCollapsible,
+      "non-indented": !this.computedIndentable,
+      [this._propSetMap?.className]: this._propSetMap?.className
     };
   }
 
@@ -32,13 +33,17 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
 
   get computedContentClassName() {
     return {
-      "nsw-accordion__content": true,
-      [this._propSetMap.contentClassName]: this._propSetMap.contentClassName
+      "nsw-accordion__content": this.computedIndentable,
+      [this._propSetMap?.contentClassName]: this._propSetMap?.contentClassName
     };
   }
 
   get computedCollapsible() {
-    return this._propSetMap.nonCollapsible ? false : true;
+    return this._propSetMap?.nonCollapsible ? false : true;
+  }
+
+  get computedIndentable() {
+    return !this._propSetMap?.nonIndented || this.blockLabel;
   }
 
   /* methods */
@@ -62,9 +67,24 @@ export default class extends SfGpsDsAuNswStatusHelperMixin(
     }
   }
 
+  /* methods */
+
+  handleIndentation() {
+    if (this.computedIndentable) {
+      this.classList.add("slds-p-right_small");
+    } else {
+      this.classList.remove("slds-p-right_small");
+    }
+  }
+
   /* lifecycle */
 
   render() {
     return tmpl;
+  }
+
+  connectedCallback() {
+    super.connectedCallback?.();
+    this.handleIndentation();
   }
 }

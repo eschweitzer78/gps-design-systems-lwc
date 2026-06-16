@@ -6,6 +6,7 @@
   </c-sf-gps-ds-configuration-error>
 
   <template lwc:else>
+    <!-- empty span ensures the div is never the :first-child when firstChild=false -->
     <span if:false={_firstChild.value}></span>
     <div class={computedClassName}>
       <slot name="Block"></slot>

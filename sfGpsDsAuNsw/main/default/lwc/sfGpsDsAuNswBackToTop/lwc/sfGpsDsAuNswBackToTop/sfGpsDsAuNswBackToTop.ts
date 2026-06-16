@@ -27,7 +27,7 @@ extends SfGpsDsElement {
   @api 
   className?: string;
 
-  _show?: boolean;
+  _show: boolean = false;
   _width?: number;
   _height?: number;
   _scrollPosition = 0;
@@ -44,14 +44,14 @@ extends SfGpsDsElement {
 
   checkBackToTop(): void {
     const windowTop = window.scrollY || document.documentElement.scrollTop;
-    const scroll = this._scrollPosition;
+    const prevScrollPosition = this._scrollPosition;
 
     this._scrollPosition = window.scrollY;
 
-    if (this.scrollOffset && this.scrollOffset > 0) {
+    if (this.scrollOffset > 0) {
       this._show = windowTop >= this.scrollOffset;
     } else {
-      this._show = scroll > this._scrollPosition && this._scrollPosition > 200;
+      this._show = prevScrollPosition > this._scrollPosition && this._scrollPosition > 200;
     }
   }
 
@@ -78,15 +78,17 @@ extends SfGpsDsElement {
     })
   }
 
-  _listenForScroll: any;
-  _listenForResize: any;
+  _listenForScroll?: EventListener;
+  _listenForResize?: EventListener;
 
   connectedCallback() {
     this._listenForScroll = debounce(this.checkBackToTop.bind(this), DEBOUNCE_DELAY);
-    window.addEventListener("scroll", this._listenForScroll);
+    if (this._listenForScroll)
+      window.addEventListener("scroll", this._listenForScroll);
 
     this._listenForResize = debounce(this.resize.bind(this), DEBOUNCE_DELAY);
-    window.addEventListener("resize", this._listenForResize);
+    if (this._listenForResize)
+      window.addEventListener("resize", this._listenForResize);
   }
 
   disconnectedCallback() {

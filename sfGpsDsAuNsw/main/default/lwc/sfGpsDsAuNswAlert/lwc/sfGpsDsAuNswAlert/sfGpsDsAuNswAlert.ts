@@ -81,11 +81,12 @@ extends SfGpsDsElement {
     };
   }
 
-  get computedIconName(): string {
+  get computedIconName(): string | undefined {
     return this._as.value?.iconName;
   }
 
   get space() {
+    /* useful for LWC template whitespace trimming */
     return " ";
   }
 }

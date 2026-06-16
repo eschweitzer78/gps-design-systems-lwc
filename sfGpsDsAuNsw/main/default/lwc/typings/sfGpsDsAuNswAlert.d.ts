@@ -30,7 +30,7 @@ declare module "c/sfGpsDsAuNswAlert" {
     _compact: PropertyAccessor<boolean>;
 
     get computedClassName(): any;
-    get computedIconName(): string;
+    get computedIconName(): string | undefined;
     get space(): string;
   }
 }
