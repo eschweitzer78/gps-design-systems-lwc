@@ -10,7 +10,7 @@ declare module "c/sfGpsDsAuNswBackToTop" {
 
     // private
 
-    _show?: boolean;
+    _show: boolean;
     _width?: number;
     _height?: number;
     _scrollPosition: number;   
@@ -20,7 +20,7 @@ declare module "c/sfGpsDsAuNswBackToTop" {
     checkBackToTop(): void;
     resize(): void;
 
-    _listenForScroll: any;
-    _listenForResize: any;
+    _listenForScroll?: EventListener;
+    _listenForResize?: EventListener;
   }
 }
