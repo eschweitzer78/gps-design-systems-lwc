@@ -123,6 +123,10 @@ export default class extends FocusMixin(
     return !!this._items?.length;
   }
 
+  get computedMobileToggleAriaLabel() {
+    return `${this.isMegaNavActive ? "Close" : "Open"} ${I18N.mobileToggleLabel}`;
+  }
+
   /* methods */
 
   itemsMapper(items) {
