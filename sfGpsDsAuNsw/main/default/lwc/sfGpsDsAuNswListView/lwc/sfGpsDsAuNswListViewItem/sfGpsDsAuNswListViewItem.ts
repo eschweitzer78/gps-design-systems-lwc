@@ -1,6 +1,13 @@
-import { 
-  api, 
-  track 
+/*
+ * Copyright (c) 2023-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+import {
+  api,
+  track
 } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
@@ -20,10 +27,7 @@ import {
   replaceInnerHtml 
 } from "c/sfGpsDsHelpers";
 
-const DEBUG = false;
-const CLASS_NAME = "SfGpsDsAuNswListViewItem";
-
-export default 
+export default
 class SfGpsDsAuNswListViewItem 
 extends SfGpsDsLwc {
   _displayColumns?: ColumnDetails[];
@@ -39,7 +43,6 @@ extends SfGpsDsLwc {
     this.reconcile();
   }
 
-
   _record?: sObject;
 
   // @ts-ignore
@@ -53,9 +56,8 @@ extends SfGpsDsLwc {
     this.reconcile();
   }
 
-
   // @ts-ignore
-  @api 
+  @api
   recordId?: string;
 
   // @ts-ignore
@@ -104,12 +106,16 @@ extends SfGpsDsLwc {
 
   reconcile(): void {
     if (this._record && this._displayColumns) {
-      if (DEBUG)
-        console.debug(CLASS_NAME, "> reconcile",
-          JSON.stringify(this._displayColumns),
-          JSON.stringify(this._record)
+      if (this.contentMarkdown) {
+        this._mergedContentMarkdown = this._contentMarkdown.value?.replace(
+          /\[!Item\.[a-zA-Z0-9_\.]*\]/g,
+          (match) => {
+            const columnName = match.slice(7, -1);
+            return this.getColumnDetails(columnName)?.displayValue || "undefined";
+          }
         );
-        
+      }
+
       this._reconciledRecord = this._displayColumns.map((column) => {
         let {
           value,
@@ -164,16 +170,6 @@ extends SfGpsDsLwc {
 
           default:
             break;
-        }
-
-        if (this.contentMarkdown) {
-          this._mergedContentMarkdown = this._contentMarkdown.value?.replace(
-            /\[!Item\.[a-zA-Z0-9_\.]*\]/g, 
-            (match) => { 
-              const columnName = match.slice(7, -1);
-              return this.getColumnDetails(columnName)?.displayValue;
-            }
-          );
         }
 
         return rv;
@@ -250,15 +246,7 @@ extends SfGpsDsLwc {
   getColumnDetails(
     fieldApiName: string
   ): Partial<sObjectColumn> {
-    if (DEBUG) {
-      console.debug(CLASS_NAME, "> getColumnDetails", fieldApiName);
-    }
-
     if (!fieldApiName || !this._record) {
-      if (DEBUG) {
-        console.debug(CLASS_NAME, "< getColumnDetails empty");
-      }
-
       return {
         displayValue: undefined,
         value: null,
@@ -269,19 +257,14 @@ extends SfGpsDsLwc {
     }
 
     const field = this._record.columns[fieldApiName];
-    const rv = {
+
+    return {
       displayValue: field?.displayValue || field?.value,
       value: field?.value,
       dataType: field?.dataType,
       relationshipObjectApiName: field?.relationshipObjectApiName,
       relationshipId: field?.relationshipId
     };
-
-    if (DEBUG) {
-      console.debug(CLASS_NAME, "< getColumnDetails", JSON.stringify(rv));
-    }
-
-    return rv;
   }
 
   handleRelationshipNavigate(
@@ -320,7 +303,7 @@ extends SfGpsDsLwc {
     super.renderedCallback?.();
 
     if (this.refs.markdown) {
-      replaceInnerHtml(this.refs.markdown, this._mergedContentMarkdown);
+      replaceInnerHtml(this.refs.markdown, this._mergedContentMarkdown ?? "");
     }
   }
 }

@@ -35,7 +35,7 @@ const LISTVIEW_SETTINGS = "*#$LISTVIEW_SETTINGS";
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuNswListViewComm";
 
-export default 
+export default
 class SfGpsDsAuNswListViewComm
 extends SfGpsDsLwc {
   // @ts-ignore
@@ -82,8 +82,6 @@ extends SfGpsDsLwc {
   @api
   titleClassName?: string;
 
-  // @ts-ignore
-  @track 
   _isLoading = false;
 
   /* api: filterName */
@@ -144,8 +142,6 @@ extends SfGpsDsLwc {
       this._listInfo = data;
       this._isLoading = true;
 
-      if (this._listInfo == null) return;
-
       getCount({
         objectApiName: this._listInfo.listReference.objectApiName,
         filterLogicString: this._listInfo.filterLogicString,
@@ -200,40 +196,14 @@ extends SfGpsDsLwc {
 
   _records!: sObject[] | null;
 
-  // @ts-ignore
-  @track
   _name?: string;
-
-  // @ts-ignore
-  @track
   _itemsTotal?: number;
-
-  // @ts-ignore
-  @track 
   _pageSize: number = 10;
-
-  // @ts-ignore
-  @track
   _lastPage?: number;
-
-  // @ts-ignore
-  @track 
   _itemsFrom: number = 1;
-
-  // @ts-ignore
-  @track
   _itemsTo?: number;
-
-  // @ts-ignore
-  @track 
   _activePage: number = 1;
-
-  // @ts-ignore
-  @track
   _sortValue?: string;
-
-  // @ts-ignore
-  @track 
   _sortOptions?: SortOption[];
 
   // @ts-ignore
@@ -363,8 +333,6 @@ extends SfGpsDsLwc {
     super.connectedCallback?.();
     this.classList.add("nsw-scope");
   }
-
-  _rendered = false;
 
   renderedCallback() {
     super.renderedCallback?.();
