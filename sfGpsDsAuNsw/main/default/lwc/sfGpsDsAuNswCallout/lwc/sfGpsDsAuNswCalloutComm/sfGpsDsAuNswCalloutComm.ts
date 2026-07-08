@@ -13,13 +13,8 @@ import {
   replaceInnerHtml 
 } from "c/sfGpsDsHelpers";
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswCalloutComm";
-
-export default 
-class SfGpsDsAuNswCalloutComm 
+export default
+class SfGpsDsAuNswCalloutComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -62,7 +57,7 @@ extends SfGpsDsLwc {
      */
 
     if (this.refs.markdown) {
-      const markup = (this.title ? "<span></span>" : "") + this._contentHtml.value;
+      const markup = (this.title ? "<span></span>" : "") + (this._contentHtml.value ?? "");
 
       replaceInnerHtml(this.refs.markdown, markup);
     }
