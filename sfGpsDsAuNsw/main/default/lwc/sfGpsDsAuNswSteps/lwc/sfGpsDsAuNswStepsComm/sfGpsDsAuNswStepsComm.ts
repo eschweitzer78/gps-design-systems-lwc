@@ -17,13 +17,13 @@ import mdEngine from "c/sfGpsDsMarkdown";
 import type { CStyle } from "c/sfGpsDsAuNswSteps";
 import type { Header } from "c/sfGpsDsMarkdown";
 
-const CONTENT_DEFAULT: Header[]= [];
+const CONTENT_DEFAULT: Header[] = [];
 
 const DEBUG = false;
 const CLASS_NAME = "sfGpsDsAuNswStepsComm";
 
-export default 
-class sfGpsDsAuNswStepsComm
+export default
+class SfGpsDsAuNswStepsComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
