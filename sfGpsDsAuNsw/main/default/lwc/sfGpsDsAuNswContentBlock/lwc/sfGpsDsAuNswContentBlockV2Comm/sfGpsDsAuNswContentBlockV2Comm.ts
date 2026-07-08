@@ -26,13 +26,8 @@ import {
   replaceInnerHtml 
 } from "c/sfGpsDsHelpers";
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswContentBlockV2Comm";
-
-export default 
-class SfGpsDsAuNswContentBlockV2Comm 
+export default
+class SfGpsDsAuNswContentBlockV2Comm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -94,8 +89,8 @@ extends SfGpsDsLwc {
   renderedCallback() {
     super.renderedCallback?.();
 
-    if (this._copyHtml.value && this.refs.markdown) {
-      replaceInnerHtml(this.refs.markdown, this._copyHtml.value);
+    if (this.refs.markdown) {
+      replaceInnerHtml(this.refs.markdown, this._copyHtml.value ?? "");
     }
   }
 }
