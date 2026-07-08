@@ -81,8 +81,8 @@ extends SfGpsDsElement {
 
   // @ts-ignore
   @api
-  position?: CStyle;
-  _position = this.defineEnumObjectProperty<string, CStyle>("position", {
+  position?: Position;
+  _position = this.defineEnumObjectProperty<string, Position>("position", {
     validValues: POSITION_VALUES,
     defaultValue: POSITION_DEFAULT
   });
