@@ -20,8 +20,8 @@ import type {
   DecoratedLink
 } from "c/sfGpsDsAuNswBreadcrumbs";
 
-export default 
-class sfGpsDsAuNswBreadcrumbs
+export default
+class SfGpsDsAuNswBreadcrumbs
 extends SfGpsDsElement {
   static renderMode: "light" | "shadow" = "light";
 

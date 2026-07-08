@@ -16,13 +16,8 @@ import type {
 
 const ITEMS_DEFAULT: Link[] = [];
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswBreadcrumbsComm";
-
-export default 
-class sfGpsDsAuNswBreadcrumbsComm 
+export default
+class SfGpsDsAuNswBreadcrumbsComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
