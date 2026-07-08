@@ -49,14 +49,14 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-in-page-nav": true,
-      [this.className || ""]: this.className
+      [this.className || ""]: !!this.className
     };
   }
 
   _labelledById?: string;
 
   get computedAriaLabelledById(): string {
-    if (this._labelledById === undefined) {
+    if (!this._labelledById) {
       this._labelledById = uniqueId(ID_BASE);
     }
 
