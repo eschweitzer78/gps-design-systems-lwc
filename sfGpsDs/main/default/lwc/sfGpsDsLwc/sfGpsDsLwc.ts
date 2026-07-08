@@ -61,18 +61,15 @@ extends SfGpsDsElement {
   _sfGpsDsErrors?: LwcError[];
 
   addError(
-    code: string, 
+    code: string,
     description: string
   ): void {
-    let errors = this._sfGpsDsErrors || [];
-    this._sfGpsDsErrors = [
-      ...errors,
-      {
-        index: errors.length,
-        code: code,
-        description: description
-      }
-    ];
+    if (!this._sfGpsDsErrors) this._sfGpsDsErrors = [];
+    this._sfGpsDsErrors.push({
+      index: this._sfGpsDsErrors.length,
+      code,
+      description
+    });
   }
 
   clearErrors(): void {
@@ -100,7 +97,7 @@ extends SfGpsDsElement {
         transform: (markdown) => {
           try {
             if (safeOptions.parseFunction) {
-              return markdown ? safeOptions.parseFunction(markdown) : 0
+              return markdown ? safeOptions.parseFunction(markdown) : ""
             }
             return markdown ? mdEngine.renderEscaped(markdown) : "";
           // eslint-disable-next-line no-unused-vars
@@ -171,7 +168,7 @@ extends SfGpsDsElement {
         ...options,
         transform: (markdown) => {
           try {
-            return markdown ? mdEngine.extractLinks(markdown) : (safeOptions.defaultValue || "");
+            return markdown ? mdEngine.extractLinks(markdown) : (safeOptions.defaultValue ?? []);
           // eslint-disable-next-line no-unused-vars
           } catch (e) {
             this.addError(safeOptions.errorCode || "MD-CO", safeOptions.errorText || `Issue when parsing ${propertyName} markdown.`);
