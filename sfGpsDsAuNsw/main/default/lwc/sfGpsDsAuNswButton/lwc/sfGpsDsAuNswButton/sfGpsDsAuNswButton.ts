@@ -43,8 +43,8 @@ const RENDERING_DEFAULT = RENDERING_BUTTON;
 const DISABLED_DEFAULT = false;
 const MOBILEFULLWIDTH_DEFAULT = false;
 
-export default 
-class SfGpsDsAuNswbutton 
+export default
+class SfGpsDsAuNswButton
 extends SfGpsDsElement {
   static renderMode: "light" | "shadow" = "light";
 
@@ -119,13 +119,12 @@ extends SfGpsDsElement {
   /* computed */
 
   get computedClassName(): any {
-    const rv = {
+    return {
       "nsw-button": true,
       [`nsw-button--${this._cstyle.value}`]: this._cstyle.value,
       "nsw-button--full-width": this._mobileFullWidth.value,
       [this.className || ""]: !!this.className
     };
-    return rv;
   }
 
   get computedIsAnchor(): boolean {

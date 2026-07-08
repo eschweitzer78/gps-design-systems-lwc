@@ -28,11 +28,8 @@ const LINK_DEFAULT: Link = {
   url: undefined 
 };
 
-const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuNswButtonComm";
-
-export default 
-class SfGpsDsAuNswButtonComm 
+export default
+class SfGpsDsAuNswButtonComm
 extends NavigationMixin<SfGpsDsLwc>(SfGpsDsLwc) {
   // @ts-ignore
   @api 
