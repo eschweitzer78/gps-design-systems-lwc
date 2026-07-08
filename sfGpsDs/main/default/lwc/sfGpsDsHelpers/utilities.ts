@@ -15,16 +15,9 @@ export function isIPadPro(): boolean {
   // No good way to tell iPad Pro, this may well not work after years.
   // https://stackoverflow.com/a/58017456/1212791
   // TODO revisit
-  if (
-    navigator.userAgent.match(/Mac/) &&
-    navigator.maxTouchPoints &&
-    navigator.maxTouchPoints > 2
-  ) {
-    return true;
-  }
-  return false;
+  return navigator.userAgent.includes("Mac") && navigator.maxTouchPoints > 2;
 };
 
 export function isMacPlatform(): boolean {
-  return !!navigator.userAgent.match(/Mac/);
+  return navigator.userAgent.includes("Mac");
 };

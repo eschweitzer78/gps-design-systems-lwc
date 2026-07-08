@@ -42,7 +42,7 @@ export function replaceInnerHtml(
  */
 
 export function htmlDecode(
-  markup:  | undefined | null
+  markup: string | undefined | null
 ): string | null {
   if (!markup) {
     return null;
@@ -91,18 +91,10 @@ export function computeClass(
 
 export function uniqueClassesFromString(
   classNames = ""
-) {
-  const classes = classNames
-    .split(" ")
-    .map((c) => c.trim())
-    .filter((c) => !!c);
-  const unique = [];
-
-  classes.forEach((c) => {
-    if (unique.indexOf(c) < 0) unique.push(c);
-  });
-
-  return unique.join(" ");
+): string {
+  return [
+    ...new Set(classNames.split(" ").map(c => c.trim()).filter(Boolean))
+  ].join(" ");
 }
 
 export function isRTL(): boolean {
@@ -357,18 +349,6 @@ class HtmlSanitizerClass {
       : ""; //resultElement;
   };
 
-  startsWithAny(
-    str: string, 
-    substrings: string[]
-  ): boolean {
-    for (let i = 0; i < substrings.length; i++) {
-      if (str.indexOf(substrings[i]) === 0) {
-        return true;
-      }
-    }
-
-    return false;
-  }
 
   makeSanitizedCopy(
     doc: Document, 
@@ -415,7 +395,7 @@ class HtmlSanitizerClass {
               //if this is a "uri" attribute, that can have "javascript:" or something
               if (
                 attr.value.indexOf(":") > -1 &&
-                !this.startsWithAny(attr.value, _schemaWhiteList)
+                !_schemaWhiteList.some(schema => attr.value.startsWith(schema))
               )
                 continue;
             }

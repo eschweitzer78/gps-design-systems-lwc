@@ -10,7 +10,7 @@ declare module "c/sfGpsDsHelpers" {
     obj: any)
     : boolean;
   export function parseIso8601(
-    date: string
+    date: string | null
   ): Date;
   export function formatDate(
     date: Date, 
@@ -114,7 +114,7 @@ declare module "c/sfGpsDsHelpers" {
     fn: (value: void) => void | PromiseLike<void>
   ): Promise<void>;
 
-  export function styleToString(styleObj: object | string[]): string;
+  export function styleToString(styleObj: {[index: string]: any} | string[]): string;
   
   export function normaliseBoolean(
     value: any, 
@@ -184,7 +184,7 @@ declare module "c/sfGpsDsHelpers" {
   export const isPromise: (val: any) => boolean;
   export const def: (obj: any, key: any, value: any, writable?: boolean) => any;
   export function toNumber(val: any): number;
-  export function toArray<T = any>(value: T): T[];
+  export function toArray<T = any>(value: T | T[]): T[];
 
   export function isRelativeUrl(
     url: string
