@@ -38,7 +38,7 @@
       <div class="nsw-card__footer" lwc:ref="footer" lwc:dom="manual"></div>
     </template>
     <div lwc:else class={computedFooterClassName}>
-      <hr lwc:if={footerSlotted} class="nsw-card__divider" />
+      <hr lwc:if={_footerSlotted} class="nsw-card__divider" />
       <slot name="Card-Footer" onslotchange={handleSlotChange}></slot>
     </div>
   </c-sf-gps-ds-au-nsw-card-v2>

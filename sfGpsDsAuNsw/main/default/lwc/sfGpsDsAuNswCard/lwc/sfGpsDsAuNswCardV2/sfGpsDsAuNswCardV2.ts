@@ -55,8 +55,8 @@ const HEADLINE_DEFAULT = false;
 const BORDER_DEFAULT = false;
 const PREVENTDEFAULT_DEFAULT = false;
 
-export default 
-class sfGpsDsAuNswCardV2
+export default
+class SfGpsDsAuNswCardV2
 extends SfGpsDsElement {
   static renderMode: "light" | "shadow" = "light";
 
@@ -169,7 +169,7 @@ extends SfGpsDsElement {
     return this._date
       ? formatDate(
           this._date,
-          this._dateStyle.value as DateStyle || DATE_STYLE_DEFAULT,
+          this._dateStyle.value as DateStyle,
           this._userLocale
         )
       : undefined;

@@ -21,7 +21,7 @@ import type {
 } from "c/sfGpsDsAuNswCardV2";
 
 const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuNswCardV2Comm";
+const CLASS_NAME = "SfGpsDsAuNswCardV2Comm";
 
 /**
  * @slot Card-Copy
@@ -129,9 +129,9 @@ extends SfGpsDsLwc {
       : undefined;
   }
 
-  get computedFooterClassName(): string | undefined{
-    return this._copySlotted 
-      ? "nsw-card__footer" 
+  get computedFooterClassName(): string | undefined {
+    return this._footerSlotted
+      ? "nsw-card__footer"
       : undefined;
   }
 
