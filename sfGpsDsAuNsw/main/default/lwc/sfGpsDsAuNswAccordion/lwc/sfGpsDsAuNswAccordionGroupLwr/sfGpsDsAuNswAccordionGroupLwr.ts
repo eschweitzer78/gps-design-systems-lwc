@@ -15,6 +15,8 @@ import type {
   AccordionGroupItem 
 } from "c/sfGpsDsAuNswAccordionGroupLwr";
 
+const SHOWBUTTONS_DEFAULT = false;
+
 const I18N = {
   expandAll: "Expand all",
   collapseAll: "Collapse all",
@@ -64,11 +66,14 @@ extends SfGpsDsLwc {
   firstChild?: boolean;
 
   // @ts-ignore
-  @api 
+  @api
   showButtons?: boolean;
-  
+  _showButtons = this.defineBooleanProperty("showButtons", {
+    defaultValue: SHOWBUTTONS_DEFAULT
+  });
+
   // @ts-ignore
-  @api 
+  @api
   className?: string;
 
   /* api: item1title */
@@ -274,7 +279,7 @@ extends SfGpsDsLwc {
   }
 
   get computedIsFullyCollapsed(): boolean {
-    return this._numberOpen === 0;
+    return !this._items.some((item) => !item.closed);
   }
 
   get computedClassName(): any {

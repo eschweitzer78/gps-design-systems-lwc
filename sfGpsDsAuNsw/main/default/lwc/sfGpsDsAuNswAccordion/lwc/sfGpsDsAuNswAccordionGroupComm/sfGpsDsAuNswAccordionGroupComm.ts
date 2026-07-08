@@ -5,8 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { 
-  api 
+import {
+  api,
+  track
 } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import mdEngine from "c/sfGpsDsMarkdown";
@@ -25,18 +26,20 @@ const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuNswAccordionGroupComm"
 
 export default
-class SfGpsDsAuNswAccordioGroupComm
+class SfGpsDsAuNswAccordionGroupComm
 extends SfGpsDsLwc {
   // @ts-ignore
-  @api 
+  @api
   showButtons?: boolean;
 
   // @ts-ignore
-  @api 
+  @api
   className?: string;
 
   /* api: content */
 
+  // @ts-ignore
+  @track
   _content: ContentItem[] = CONTENT_DEFAULT;
   _contentOriginal = "";
   _numberOpen = 0;
@@ -55,6 +58,7 @@ extends SfGpsDsLwc {
       this._content = mdEngine
         .extractH1s(markdown.replaceAll("\\n", "\n"))
         .map((h1) => ({ ...h1, closed: true } as ContentItem));
+      this._numberOpen = 0;
       // eslint-disable-next-line no-unused-vars
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
