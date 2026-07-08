@@ -15,7 +15,7 @@
       <div lwc:ref="wrapper" class="nsw-carousel__wrapper js-carousel__wrapper">
         <ol
           lwc:ref="list"
-          id="nsw-carousel__list"
+          id={computedListId}
           class={computedListClassName}
           style={computedListStyle}
           ontransitionend={handleListTransitionEnd}
@@ -57,12 +57,12 @@
           <i class="js-carousel__counter">{computedCounter}</i> /
           <i class="js-carousel__counter-tot">{computedCounterTotal}</i>
         </p>
-        <nav>
+        <nav aria-label={i18n.controlNavAriaLabel}>
           <ul>
             <li>
               <button
                 lwc:ref="control-prev"
-                aria-controls="nsw-carousel__list"
+                aria-controls={computedListId}
                 aria-label={i18n.showPreviousItems}
                 disabled={computedControlPrevDisabled}
                 tabindex="0"
@@ -85,7 +85,7 @@
             <li>
               <button
                 lwc:ref="control-next"
-                aria-controls="nsw-carousel__list"
+                aria-controls={computedListId}
                 aria-label={i18n.showNextItems}
                 disabled={computedControlNextDisabled}
                 tabindex="0"
@@ -119,7 +119,7 @@
               <li>
                 <button
                   lwc:ref="control-prev"
-                  aria-controls="nsw-carousel__list"
+                  aria-controls={computedListId}
                   aria-label={i18n.showPreviousItems}
                   disabled={computedControlPrevDisabled}
                   tabindex="0"
@@ -142,7 +142,7 @@
               <li>
                 <button
                   lwc:ref="control-next"
-                  aria-controls="nsw-carousel__list"
+                  aria-controls={computedListId}
                   aria-label={i18n.showNextItems}
                   disabled={computedControlNextDisabled}
                   tabindex="0"
@@ -170,7 +170,7 @@
             <li>
               <button
                 lwc:ref="control-prev"
-                aria-controls="nsw-carousel__list"
+                aria-controls={computedListId}
                 aria-label={i18n.showPreviousItems}
                 disabled={computedControlPrevDisabled}
                 tabindex="0"
@@ -193,7 +193,7 @@
             <li>
               <button
                 lwc:ref="control-next"
-                aria-controls="nsw-carousel__list"
+                aria-controls={computedListId}
                 aria-label={i18n.showNextItems}
                 disabled={computedControlNextDisabled}
                 tabindex="0"
