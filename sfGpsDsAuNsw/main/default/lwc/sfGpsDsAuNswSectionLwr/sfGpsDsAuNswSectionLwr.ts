@@ -80,22 +80,22 @@ extends SfGpsDsLwc {
   });
 
   // @ts-ignore
-  @api 
-  withContainer?: ColorStyle;
+  @api
+  withContainer?: boolean;
   _withContainer = this.defineBooleanProperty("withContainer", {
     defaultValue: WITHCONTAINER_DEFAULT
   });
 
   // @ts-ignore
-  @api 
-  withBox?: ColorStyle;
+  @api
+  withBox?: boolean;
   _withBox = this.defineBooleanProperty("withBox", {
     defaultValue: WITHBOX_DEFAULT
   });
 
   // @ts-ignore
-  @api 
-  withInvert?: ColorStyle;
+  @api
+  withInvert?: boolean;
   _withInvert = this.defineBooleanProperty("withInvert", {
     defaultValue: WITHINVERT_DEFAULT
   });

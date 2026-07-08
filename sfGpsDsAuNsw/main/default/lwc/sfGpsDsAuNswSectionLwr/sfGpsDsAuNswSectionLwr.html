@@ -7,7 +7,7 @@
 
   <template lwc:else>
     <section class={computedClassName} style={computedStyle}>
-      <template lwc:if={_withContainer}>
+      <template lwc:if={_withContainer.value}>
         <div class={computedContainerClassName}>
           <slot name="Section"></slot>
         </div>
