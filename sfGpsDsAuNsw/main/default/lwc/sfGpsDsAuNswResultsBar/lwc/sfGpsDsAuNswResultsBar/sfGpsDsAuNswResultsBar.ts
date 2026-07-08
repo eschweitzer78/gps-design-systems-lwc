@@ -1,21 +1,28 @@
-import { 
-  api 
+/*
+ * Copyright (c) 2022-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+import {
+  api
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
-import { 
-  uniqueId, 
-  isArray, 
-  formatTemplate 
+import {
+  uniqueId,
+  isArray,
+  formatTemplate
 } from "c/sfGpsDsHelpers";
+
+import type {
+  SortOption
+} from "c/sfGpsDsAuNswResultBar";
 
 const FROM_DEFAULT = 0;
 const TO_DEFAULT = 0;
 const TOTAL_DEFAULT = 0;
 const VALUE_DEFAULT = null;
-
-import type { 
-  SortOption 
-} from "c/sfGpsDsAuNswResultBar";
 
 export default 
 class SfGpsDsAuNswResultsBar
@@ -91,10 +98,7 @@ extends SfGpsDsElement {
       this.value = undefined;
     } else if (isArray(value)) {
       this._sortOptions = (value as SortOption[]).map((option) => ({
-        ...option,
-        label: option.label,
-        value: option.value,
-        selected: option.selected
+        ...option
       }));
     } else {
       this._sortOptions = [value as SortOption];
@@ -115,7 +119,7 @@ extends SfGpsDsElement {
   _selectId?: string;
 
   get computedSelectId(): string {
-    if (this._selectId === undefined) {
+    if (!this._selectId) {
       this._selectId = uniqueId("sf-gps-ds-au-nsw-results-bar-select");
     }
 
@@ -141,6 +145,7 @@ extends SfGpsDsElement {
     }
 
     if (this._value.value == null && this._sortOptions[0]) {
+      // eslint-disable-next-line @lwc/lwc/no-api-reassignments
       this.value = this._sortOptions[0].value;
     }
 
