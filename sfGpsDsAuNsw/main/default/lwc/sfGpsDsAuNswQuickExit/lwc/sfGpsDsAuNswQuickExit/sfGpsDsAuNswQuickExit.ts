@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2022-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
 import { api } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 import { uniqueId } from "c/sfGpsDsHelpers";
@@ -13,10 +20,13 @@ const ENABLEESC_DEFAULT = false;
 const ENABLECLOAK_DEFAULT = false;
 const FOCUSFIRST_DEFAULT = false;
 
+let _firstTabHandlerBound: ((event: KeyboardEvent) => void) | undefined;
+let _firstTabHandled = false;
+
 export default 
 class SfGpsDsAuNswQuickExit 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api
@@ -119,18 +129,18 @@ extends SfGpsDsElement {
     return rv;
   }
 
-  _handleKeydown?: EventListener;
+  _handleKeydown?: (event: KeyboardEvent) => void;
 
-  bindDoubleEsc(callback: Function): void {
+  bindDoubleEsc(callback: () => void): void {
     if (DEBUG) {
       console.debug(CLASS_NAME, "> bindDoubleEsc");
     }
 
     let pressCount = 0;
-    let timerId = null;
+    let timerId: ReturnType<typeof setTimeout> | undefined;
     const TIME_WINDOW = 1000;
 
-    const isEscapeKey = ({ key, keyCode }) => (
+    const isEscapeKey = ({ key, keyCode }: { key: string, keyCode: number }) => (
       key === "Escape" || key === "Esc" || keyCode === 27
     )
 
@@ -159,11 +169,11 @@ extends SfGpsDsElement {
 
         callback();
         pressCount = 0;
-        timerId = null;
+        timerId = undefined;
       } else {
         timerId = setTimeout(() => {
-          pressCount = 0
-          timerId = null
+          pressCount = 0;
+          timerId = undefined;
         }, TIME_WINDOW)
       }
     }
@@ -185,7 +195,7 @@ extends SfGpsDsElement {
     }
 
     if (this._handleKeydown) {
-      document.addEventListener("keydown", this._handleKeydown);
+      document.removeEventListener("keydown", this._handleKeydown, true);
     }
 
     if (DEBUG) {
@@ -194,8 +204,6 @@ extends SfGpsDsElement {
   }
 
   _firstTabTarget?: HTMLElement;
-  static _firstTabHandlerBound?: EventListener;
-  static _firstTabHandled: boolean = false;
 
   setFocusFirst(): void {
     if (DEBUG) {
@@ -203,7 +211,7 @@ extends SfGpsDsElement {
     }
 
     if (
-      SfGpsDsAuNswQuickExit._firstTabHandlerBound || 
+      _firstTabHandlerBound || 
       !this._firstTabTarget
     ) {
       console.debug(CLASS_NAME, "> setFocusFirst not applicable");
@@ -220,7 +228,7 @@ extends SfGpsDsElement {
       const isTab = key === "Tab" || keyCode === 9;
 
       if (!isTab ||
-        SfGpsDsAuNswQuickExit._firstTabHandled ||
+        _firstTabHandled ||
         defaultPrevented ||
         !this._firstTabTarget ||
         this.isEditable(target as HTMLElement) || 
@@ -233,7 +241,7 @@ extends SfGpsDsElement {
         return;
       }
 
-      SfGpsDsAuNswQuickExit._firstTabHandled = true
+      _firstTabHandled = true
 
       event.preventDefault()
 
@@ -248,8 +256,8 @@ extends SfGpsDsElement {
       }
     }
 
-    SfGpsDsAuNswQuickExit._firstTabHandlerBound = handleKeydown.bind(this);
-    document.addEventListener("keydown", handleKeydown, true);
+    _firstTabHandlerBound = handleKeydown.bind(this);
+    document.addEventListener("keydown", _firstTabHandlerBound, true);
 
     if (DEBUG) {
       console.debug(CLASS_NAME, "< setFocusFirst");
@@ -257,7 +265,11 @@ extends SfGpsDsElement {
   }
 
   unsetFocusFirst(): void {
-    document.removeEventListener("keydown", SfGpsDsAuNswQuickExit._firstTabHandlerBound);
+    if (_firstTabHandlerBound) {
+      document.removeEventListener("keydown", _firstTabHandlerBound, true);
+      _firstTabHandlerBound = undefined;
+      _firstTabHandled = false;
+    }
   }
   
   /* event management */
