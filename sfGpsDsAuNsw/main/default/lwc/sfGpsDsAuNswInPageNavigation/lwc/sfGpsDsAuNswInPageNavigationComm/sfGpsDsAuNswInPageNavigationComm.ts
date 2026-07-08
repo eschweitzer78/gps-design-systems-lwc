@@ -10,10 +10,6 @@ import {
 } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswInPageNavigationComm";
 
 export default 
 class SfGpsDsAuNswInPageNavigationComm
@@ -23,14 +19,12 @@ extends SfGpsDsLwc {
   title = "";
 
   // @ts-ignore
-  @api 
-  // @ts-ignore
+  @api
   firstChild?: boolean;
-  
-  // @ts-ignore
-  @api 
-  className?: string;
 
+  // @ts-ignore
+  @api
+  className?: string;
 
   // @ts-ignore
   @api

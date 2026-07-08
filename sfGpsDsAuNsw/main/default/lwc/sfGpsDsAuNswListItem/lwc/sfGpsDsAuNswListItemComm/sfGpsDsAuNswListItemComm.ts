@@ -20,12 +20,7 @@ import type {
 
 const DATE_STYLE_DEFAULT = "medium";
 
-/* eslint-disable-lint no-unused-var */
-const DEBUG = false;
-/* eslint-disable-lint no-unused-var */
-const CLASS_NAME = "sfGpsDsAuNswListItemComm";
-
-export default 
+export default
 class SfGpsDsAuNswListItemComm
 extends SfGpsDsLwc {
   // @ts-ignore
@@ -104,9 +99,8 @@ extends SfGpsDsLwc {
     errorText: "Issue when parsing Copy markdown"
   });
 
-
   // @ts-ignore
-  @api 
+  @api
   tags?: string;
   _tags = this.defineMarkdownLinksProperty("tags", {
     errorCode: "TA-MD",
@@ -123,8 +117,8 @@ extends SfGpsDsLwc {
   renderedCallback() {
     super.renderedCallback?.();
     
-    if (this._copyHtml.value && this.refs.copy) {
-      replaceInnerHtml(this.refs.copy, this._copyHtml.value);
+    if (this.refs.copy) {
+      replaceInnerHtml(this.refs.copy, this._copyHtml.value ?? "");
     }
   }
 }

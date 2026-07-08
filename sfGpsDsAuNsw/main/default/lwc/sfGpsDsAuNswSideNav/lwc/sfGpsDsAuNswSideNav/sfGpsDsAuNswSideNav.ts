@@ -5,9 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { 
-  api,
-  track 
+import {
+  api
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 import { 
@@ -17,11 +16,10 @@ import {
 import type { 
   AdaptedNavigationMenuItem 
 } from "c/sfGpsDsNavigation";
-import type { 
+import type {
   SideNavMenuItem,
   SideNavMenuItemMap
  } from "c/sfGpsDsAuNswSideNav";
-
 
 export default 
 class SfGpsDsAuNswSideNav
@@ -62,8 +60,6 @@ extends SfGpsDsElement {
 
   /* track: isOpen */
 
-  // @ts-ignore
-  @track
   _isOpen = false;
 
   /* computed */
@@ -88,7 +84,7 @@ extends SfGpsDsElement {
 
   _controlsId?: string;
 
-  get computedAriaControlsId() {
+  get computedAriaControlsId(): string {
     if (!this._controlsId) {
       this._controlsId = uniqueId("nsw-side-nav__content");
     }

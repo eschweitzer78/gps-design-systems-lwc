@@ -63,7 +63,7 @@ extends SfGpsDsElement {
 
   get computedSteps(): StepInfo[] {
     const isCumulative = this._mode.value === MODE_CUMULATIVE;
-    let arr = [];
+    const arr: StepInfo[] = [];
     const step = this._step.value;
 
     for (let i = 1; i <= this._of.value; i++) {

@@ -27,18 +27,9 @@ export function getAnchorLinkName(str: string): string {
     .replace(/\s+/gm, "-");
 }
 
-function _isTelOrEmailUrl(url: string) {
-  const types = ["tel:", "mailto:", "sms:"];
-
-  for (let type of types) {
-    if (url !== undefined && url !== null) {
-      if (url.startsWith(type)) {
-        return true;
-      }
-    }
-  }
-
-  return false;
+function _isTelOrEmailUrl(url: string): boolean {
+  if (url == null) return false;
+  return ["tel:", "mailto:", "sms:"].some(prefix => url.startsWith(prefix));
 }
 
 export function decodeSpecialCharacters(html: string): string | null {

@@ -1,8 +1,12 @@
-import { api } from 'lwc';
-import SfGpsDsLwc from "c/sfGpsDsLwc";
+/*
+ * Copyright (c) 2023-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
 
-const DEBUG = false;
-const CLASS_NAME = "SfGpsDsAuNswStickyContainerLwr";
+import { api } from "lwc";
+import SfGpsDsLwc from "c/sfGpsDsLwc";
 
 /**
  * @slot StickyContent
@@ -10,8 +14,8 @@ const CLASS_NAME = "SfGpsDsAuNswStickyContainerLwr";
 export default 
 class SfGpsDsAuNswStickyContainerLwr
 extends SfGpsDsLwc {
-  static renderMode = "light";
-  
+  static renderMode: "light" | "shadow" = "light";
+
   // @ts-ignore
   @api
   className?: string;

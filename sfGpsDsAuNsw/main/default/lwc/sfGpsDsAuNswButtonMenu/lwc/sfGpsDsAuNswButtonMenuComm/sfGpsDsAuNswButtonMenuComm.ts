@@ -10,13 +10,8 @@ import {
 } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswButtonMenuComm";
-
 export default
-class SfGpsDsAuNswButtonMenuComm 
+class SfGpsDsAuNswButtonMenuComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 

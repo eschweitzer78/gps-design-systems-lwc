@@ -5,9 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { 
-  api, 
-  track 
+import {
+  api
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 import { 
@@ -29,7 +28,7 @@ const SEARCH_DEFAULT = false;
 const PROFILE_DEFAULT = false;
 
 export default 
-class SfGpsDsNswHeader
+class SfGpsDsAuNswHeader
 extends SfGpsDsElement {
   static renderMode: "light" | "shadow" = "light";
 
@@ -94,8 +93,6 @@ extends SfGpsDsElement {
   @api 
   mainNavIsOpen: boolean = false;
 
-  // @ts-ignore
-  @track 
   searchIsOpen: boolean = false;
 
   // @ts-ignore
@@ -151,7 +148,7 @@ extends SfGpsDsElement {
 
   get computedHeaderInputId(): string {
     if (this._headerInputId == null) {
-      this._headerInputId = uniqueId("sf-gps-ds-au-nsw-header-search");
+      this._headerInputId = uniqueId("sf-gps-ds-au-nsw-header-input");
     }
 
     return this._headerInputId;

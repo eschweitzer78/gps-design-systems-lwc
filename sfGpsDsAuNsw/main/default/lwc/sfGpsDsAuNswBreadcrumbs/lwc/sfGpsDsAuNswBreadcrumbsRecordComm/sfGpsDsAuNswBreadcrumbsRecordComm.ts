@@ -16,8 +16,8 @@ import type {
   Link 
 } from "c/sfGpsDsMarkdown"
 
-export default 
-class sfGpsDsAuNswBreadcrumbsRecordComm 
+export default
+class SfGpsDsAuNswBreadcrumbsRecordComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -64,6 +64,8 @@ extends SfGpsDsLwc {
   _items: Link[] = [];
 
   updateBreadcrumbs(): void {
+    this.clearErrors();
+
     if (this._recordId.value) {
       getRecordSummary({ recordId: this._recordId.value })
         .then((data) => {

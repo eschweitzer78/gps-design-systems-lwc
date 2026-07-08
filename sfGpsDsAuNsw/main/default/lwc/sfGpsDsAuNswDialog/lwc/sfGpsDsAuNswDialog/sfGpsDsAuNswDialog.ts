@@ -96,7 +96,7 @@ extends SfGpsDsElement {
   _labelledById?: string;
 
   get computedAriaLabelledById(): string {
-    if (this._labelledById === undefined) {
+    if (!this._labelledById) {
       this._labelledById = uniqueId("sf-gps-ds-au-nsw-dialog");
     }
 

@@ -90,8 +90,8 @@ extends SfGpsDsElement {
   @api
   cstyle?: CStyle;
   _cstyle = this.defineEnumObjectProperty<CStyleValue, CStyle>("cstyle", {
-      validValues: CSTYLE_VALUES,
-      defaultValue: CSTYLE_DEFAULT
+    validValues: CSTYLE_VALUES,
+    defaultValue: CSTYLE_DEFAULT
   });
 
   // @ts-ignore
@@ -172,7 +172,7 @@ extends SfGpsDsElement {
   }
 
   get computedHasLinks(): boolean {
-    return this._links?.length > 1;
+    return this._links?.length > 0;
   }
 
   /* event management */

@@ -7,7 +7,7 @@ declare module "c/sfGpsDsAuNswStepsItem" {
   export default 
   class SfGpsDsAuNswStepsItem
   extends SfGpsDsElement {
-    //title: string;
+    title: string;
     content?: string;
     className?: string;
 

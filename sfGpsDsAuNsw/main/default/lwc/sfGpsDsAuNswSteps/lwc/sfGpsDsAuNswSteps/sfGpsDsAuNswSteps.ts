@@ -30,7 +30,7 @@ const SIZE_VALUES: SizeValues = {
   large: "",
   medium: "nsw-steps--medium",
   small: "nsw-steps--small"
-}
+};
 const SIZE_DEFAULT: Size = "large";
 
 const FIRSTCHILD_DEFAULT = false;
@@ -57,16 +57,16 @@ extends SfGpsDsElement {
   });
 
   // @ts-ignore
-  @api 
-  cstyle?: boolean;
+  @api
+  cstyle?: CStyle;
   _cstyle = this.defineEnumObjectProperty<string, CStyle>("cstyle", {
     validValues: CSTYLE_VALUES,
     defaultValue: CSTYLE_DEFAULT
   });
 
   // @ts-ignore
-  @api 
-  size?: boolean;
+  @api
+  size?: Size;
   _size = this.defineEnumObjectProperty<string, Size>("size", {
     validValues: SIZE_VALUES,
     defaultValue: SIZE_DEFAULT

@@ -97,7 +97,7 @@ extends SfGpsDsElement {
 
   get computedHasDepartments(): boolean {
     return !!this.departments &&
-      this.departments?.length > 0;
+      this.departments.length > 0;
   }
 
   get computedHasSupportLogos(): boolean {

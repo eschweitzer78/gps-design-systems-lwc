@@ -73,18 +73,15 @@ extends LightningElement {
   callHook(
     type: HookType
   ): void {
-    const hookSymbol = HookTypes[type];
-
     if (DEBUG) {
       console.debug(
         CLASS_NAME, "> callHook",
         "type=", type,
-        "cbList=", hookSymbol ? this[hookSymbol] : "N/A"
+        "cbList=", this[HookTypes[type]]
       );
     }
 
-    const hook = hookSymbol ? this[hookSymbol] : undefined;
-    callWithAsyncErrorHandling(hook, type);
+    callWithAsyncErrorHandling(this[HookTypes[type]], type);
 
     if (DEBUG) {
       console.debug(CLASS_NAME, "< callHook");
@@ -112,7 +109,7 @@ extends LightningElement {
         CLASS_NAME, "> injectHook",
         "type=", type,
         "hook=", hook,
-        "preprend=", prepend
+        "prepend=", prepend
       );
     }
 
@@ -146,15 +143,17 @@ extends LightningElement {
   ): void {
     this.callHook(HookType.BEFORE_UPDATE);
 
-    if (isFunction(fn)) {
-      (fn as Function)();
-    } else if (isArray(fn)) {
-      for (let i = 0; i < fn.length; i++) {
-        (fn as Function[])[i]();
+    try {
+      if (isFunction(fn)) {
+        (fn as Function)();
+      } else if (isArray(fn)) {
+        for (let i = 0; i < fn.length; i++) {
+          (fn as Function[])[i]();
+        }
       }
+    } finally {
+      this.callHook(HookType.UPDATED);
     }
-
-    this.callHook(HookType.UPDATED);
   }
 
   // methods: external - hooks, for testing purposes only
@@ -260,6 +259,10 @@ extends LightningElement {
     // @ts-ignore
     this[propertyName] = defaultValue;
 
+    const watchers = (
+      watcher == null ? [] : Array.isArray(watcher) ? watcher : [watcher]
+    ).filter((w: any) => typeof w === "function");
+
     Object.defineProperty(this, propertyName, {
       set: (value) => {
         this[propOriginal] = value;
@@ -267,10 +270,8 @@ extends LightningElement {
         const newValue: any = this[prop] = transform(value);
         if (oldValue !== newValue) this.__dirty++; // force render
 
-        for (const watcherFunction of Array.isArray(watcher) ? watcher : [watcher]) {
-          if (typeof watcherFunction === "function") {
-            watcherFunction(propertyName, oldValue, newValue);
-          }
+        for (const watcherFunction of watchers) {
+          watcherFunction(propertyName, oldValue, newValue);
         }
       },
       get: () => {

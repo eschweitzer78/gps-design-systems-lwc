@@ -31,8 +31,8 @@ extends SfGpsDsElement {
   icon?: string;
 
   // @ts-ignore
-  @api 
-  mainLink?: string;
+  @api
+  mainLink?: Link;
 
   // @ts-ignore
   @api 

@@ -5,9 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { 
-  api, 
-  track 
+import {
+  api
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 
@@ -67,8 +66,6 @@ extends SfGpsDsElement {
   @api 
   className?: string;
 
-  // @ts-ignore
-  @track 
   _isClosed?: boolean;
 
   // @ts-ignore
@@ -103,7 +100,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-global-alert": true,
-      [this._as.value.main]: this._as.value,
+      [this._as.value.main]: !!this._as.value.main,
       [this.className || ""]: !!this.className
     };
   }

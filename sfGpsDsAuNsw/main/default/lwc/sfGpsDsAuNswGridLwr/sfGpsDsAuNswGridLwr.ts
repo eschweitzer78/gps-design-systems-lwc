@@ -39,7 +39,7 @@ const TYPE_DEFAULT: GridType = "default";
  * @slot Column-12
  */
 export default 
-class sfGpsDsAuNswGridLwr
+class SfGpsDsAuNswGridLwr
 extends SfGpsDsElement {
   // @ts-ignore
   @api 
@@ -80,8 +80,9 @@ extends SfGpsDsElement {
   // @ts-ignore
   @api 
   col10ClassName?: string;
+
   // @ts-ignore
-  @api 
+  @api
   col11ClassName?: string;
 
   // @ts-ignore
@@ -105,7 +106,7 @@ extends SfGpsDsElement {
   get computedClassName(): any {
     return {
       "nsw-grid": true,
-      [this._type.value]: this._type.value,
+      [this._type.value]: !!this._type.value,
       [this.className || ""]: !!this.className
     };
   }

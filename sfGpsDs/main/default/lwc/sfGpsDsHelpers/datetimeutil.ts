@@ -16,7 +16,7 @@ export const ISO8601_PATTERN =
 export function isDate(value: any): boolean {
   return (
     value instanceof Date ||
-    ((typeof value === "undefined" ? "undefined" : typeof value) === "object" &&
+    (typeof value === "object" &&
       Object.prototype.toString.call(value) === "[object Date]")
   );
 }
@@ -25,7 +25,7 @@ export function isValidDate(obj: any): boolean {
   return isDate(obj) && !Number.isNaN(obj.getTime());
 }
 
-export function parseIso8601(date: string): Date {
+export function parseIso8601(date: string): Date | null {
   /*
    * © 2011 Colin Snover <http://zetafleet.com>
    * Released under MIT license.
@@ -187,14 +187,12 @@ export function getMonthNames(
   userLocale: string = "en-AU", 
   format: MonthFormat = "long"
 ): string[] {
-  let date = new Date();
   let months = [];
 
-  date.setDate(1);
-
   for (let month = 0; month < 12; month++) {
-    date.setMonth(month);
-    months.push(date.toLocaleDateString(userLocale, { month: format }));
+    months.push(
+      new Date(2000, month, 1).toLocaleDateString(userLocale, { month: format })
+    );
   }
 
   return months;
@@ -246,8 +244,8 @@ export function getUserLocales(
   return uniqDefined(languageList).map(normalizeLocale);
 }
 
-function uniqDefined(arr: any[]) {
-  return arr.filter((el, index) => el && arr.indexOf(el) === index);
+function uniqDefined(arr: string[]) {
+  return [...new Set(arr.filter(Boolean))];
 }
 
 function isAllLowerCase(el: string) {

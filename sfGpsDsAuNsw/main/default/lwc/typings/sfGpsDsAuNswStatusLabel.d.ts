@@ -3,11 +3,12 @@ declare module "c/sfGpsDsAuNswStatusLabel" {
   import type { PropertyAccessor } from "c/sfGpsDsElement";
 
   export type Status = 
+    "neutral" |
     "info" |
     "success" |
     "warning" |
     "error";
-  
+
   export default 
   class SfGpsDsAuNswStatusLabel 
   extends SfGpsDsElement {
@@ -19,6 +20,5 @@ declare module "c/sfGpsDsAuNswStatusLabel" {
     _status: PropertyAccessor<string>;
 
     get computedClassName(): any;
-
   }
 }

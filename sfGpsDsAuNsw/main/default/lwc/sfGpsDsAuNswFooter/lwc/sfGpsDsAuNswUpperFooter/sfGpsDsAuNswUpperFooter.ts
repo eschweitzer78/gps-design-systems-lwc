@@ -78,7 +78,6 @@ extends SfGpsDsElement {
       let result: AdaptedNavigationMenuItem = {
         ...item,
         index: item.index || `${parentIndex}-${index++}`,
-        //level: parentLevel + 1,
         subNav: []
       };
 

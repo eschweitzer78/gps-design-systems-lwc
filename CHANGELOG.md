@@ -1,5 +1,23 @@
 ## Change log
 
+### 8 July 2026
+
+#### NSW DS: Support for the NSW Point API v3
+
+We added an integration procedure, named credentials and a trusted site to support NSW Point API v3.
+The sfGpsDsAuNswUser permission was modified to allow use of the named credentials. The IP keeps the
+previous version's signature in terms of input and output.
+
+Refer to [`sfGpsDsAuNsw/main/default/omniIntegrationProcedures/sfGpsDsAuNsw_PointAPIV3AddressTypeahead_Procedure_1.oip-meta.xml`](sfGpsDsAuNsw/main/default/omniIntegrationProcedures/sfGpsDsAuNsw_PointAPIV3AddressTypeahead_Procedure_1.oip-meta.xml)
+
+### 16 June 2026
+
+Addition of technical documentation in the docs folder.
+
+### 23 February 2026
+
+Added support for standard runtime with Omnistudio. There are still a few attention areas with e.g. what we believe to be an Omnistudio product issue preventing the use of File Upload and Typeahead elements in their Standard Runtime version. A known workaround is to use the Managed Packaged version of the override instead.
+
 ### 5 February 2026
 
 #### ON DS: Alpha support for the Ontario Design System (Canada)

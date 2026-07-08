@@ -1,6 +1,13 @@
-import { api } from 'lwc';
+/*
+ * Copyright (c) 2023-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+import { api } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
-import { uniqueId } from 'c/sfGpsDsHelpers';
+import { uniqueId } from "c/sfGpsDsHelpers";
 
 const DEBUG = false;
 const CLASS_NAME = "SfGpsDsAuNswStickyContainer";
@@ -8,7 +15,7 @@ const CLASS_NAME = "SfGpsDsAuNswStickyContainer";
 export default 
 class SfGpsDsAuNswStickyContainer 
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api
@@ -24,8 +31,6 @@ extends SfGpsDsElement {
     }
   }
 
-  /* getters */
-
   _scId?: string;
 
   get computedId(): string {
@@ -35,7 +40,7 @@ extends SfGpsDsElement {
 
     return this._scId;
   }
-  
+
   /* methods */
 
   // @ts-ignore
@@ -63,10 +68,10 @@ extends SfGpsDsElement {
       console.debug(CLASS_NAME, "= updateStickyBodyPadding", JSON.stringify(rect));
     }
 
-    const h = Math.max(0, Math.round(rect.height || 0))
+    const h = Math.max(0, Math.round(rect.height || 0));
 
-    document.body.style.setProperty('--nsw-sticky-height', `${h}px`)
-    document.body.style.paddingBottom = `${h}px`
+    document.body.style.setProperty("--nsw-sticky-height", `${h}px`);
+    document.body.style.paddingBottom = `${h}px`;
 
     if (DEBUG) {
       console.debug(CLASS_NAME, "< updateStickyBodyPadding", h);

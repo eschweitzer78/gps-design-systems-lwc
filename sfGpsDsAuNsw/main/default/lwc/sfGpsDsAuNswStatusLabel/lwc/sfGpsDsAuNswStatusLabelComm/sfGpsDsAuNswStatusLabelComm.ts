@@ -15,9 +15,9 @@ extends LightningElement {
   label?: string;
 
   // @ts-ignore
-  @api 
+  @api
   status?: Status;
-  
+
   // @ts-ignore
   @api 
   className?: string;

@@ -5,26 +5,28 @@ declare module "c/sfGpsDsAuNswLinkList" {
 
   export type Link = BaseLink;
   export interface DecoratedLink extends Link {
-    _isExternal?: boolean
-  } 
+    _isExternalUrl?: boolean;
+    _describedById?: string;
+  }
 
-  export default 
-  class SfGpsDsAuNswLinkList 
+  export default
+  class SfGpsDsAuNswLinkList
   extends SfGpsDsElement {
     // title: string;
     links?: Link[];
     className?: string;
-    hightlightExternal?: boolean;
+    highlightExternal?: boolean;
     firstChild?: boolean;
 
     // private
 
-    _hightlightExternal: PropertyAccessor<boolean>;
+    _highlightExternal: PropertyAccessor<boolean>;
     _firstChild: PropertyAccessor<boolean>;
-    _describedById?: string;
+    _uid?: string;
 
+    get uid(): string;
     get computedClassName(): any;
-    get computedAriaDescribedById(): string;
+    get decoratedList(): DecoratedLink[];
     get i18n(): Record<string, string>;
   }
 }

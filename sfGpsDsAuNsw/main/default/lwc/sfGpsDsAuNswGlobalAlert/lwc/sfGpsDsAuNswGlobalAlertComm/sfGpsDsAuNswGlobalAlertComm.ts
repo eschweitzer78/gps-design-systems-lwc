@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
@@ -15,10 +15,6 @@ import type {
   CtaStyle 
 } from "c/sfGpsDsAuNswGlobalAlert";
 
-const CTA_DEFAULT = {};
-
-const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuNswGlobalAlertComm";
 
 export default 
 class SfGpsDsAuNswGlobalAlertComm
@@ -48,7 +44,7 @@ extends SfGpsDsLwc {
   cta?: string;
   _cta = this.defineMarkdownFirstLinkProperty("cta", {
     errorCode: "CT-MD",
-    errorText: "Error while parsin Call to action markdown."
+    errorText: "Error while parsing Call to action markdown."
   });
 
   /* lifecycle */

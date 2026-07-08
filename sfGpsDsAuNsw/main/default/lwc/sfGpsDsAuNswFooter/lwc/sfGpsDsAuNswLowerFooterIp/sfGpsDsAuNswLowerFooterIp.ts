@@ -125,7 +125,7 @@ extends SfGpsDsNavigation {
   }
 
   set inputJSON(value) {
-  // @ts-ignore
+    // @ts-ignore
     super.inputJSON = value;
   }
 
@@ -181,18 +181,12 @@ extends SfGpsDsNavigation {
   renderedCallback() {
     super.renderedCallback?.();
     
-    if (
-      this.refs.copyright &&
-      this.copyrightMention
-    ) {
-      replaceInnerHtml(this.refs.copyright, this._copyrightMentionHtml.value);
+    if (this.refs.copyright) {
+      replaceInnerHtml(this.refs.copyright, this._copyrightMentionHtml.value ?? "");
     }
 
-    if (
-      this.refs.built &&
-      this.builtMention
-    ) {
-      replaceInnerHtml(this.refs.built, this._builtMentionHtml.value);
+    if (this.refs.built) {
+      replaceInnerHtml(this.refs.built, this._builtMentionHtml.value ?? "");
     }
   }
 }

@@ -10,11 +10,6 @@ import {
 } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswLinkListComm";
-
 export default
 class SfGpsDsAuNswLinkListComm 
 extends SfGpsDsLwc {

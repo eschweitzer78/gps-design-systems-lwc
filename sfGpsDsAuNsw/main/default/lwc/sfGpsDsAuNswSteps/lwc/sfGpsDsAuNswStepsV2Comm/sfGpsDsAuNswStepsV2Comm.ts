@@ -14,26 +14,24 @@ import {
 } from "c/sfGpsDsHelpers";
 import mdEngine from "c/sfGpsDsMarkdown";
 
-import type { 
-  CStyle 
+import type {
+  CStyle,
+  Size
 } from "c/sfGpsDsAuNswSteps";
-import type { 
-  HeadingLevel 
+import type {
+  HeadingLevel
 } from "c/sfGpsDsAuNswStepsItem";
-import type { 
-  Header 
+import type {
+  Header
 } from "c/sfGpsDsMarkdown";
-
 
 const CONTENT_DEFAULT: Header[] = [];
 
 const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuNswStepsComm";
+const CLASS_NAME = "sfGpsDsAuNswStepsV2Comm";
 
-import type { Size } from "c/sfGpsDsAuNswSteps";
-
-export default 
-class sfGpsDsAuNswStepsCommV2
+export default
+class SfGpsDsAuNswStepsV2Comm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -71,7 +69,7 @@ extends SfGpsDsLwc {
     try {
       this._contentOriginal = markdown;
       this._content = mdEngine
-        .extractH1s(markdown.replaceAll("\\n", "\n"))
+        .extractH1s(markdown.replaceAll("\\n", "\n"));
     } catch (e) {
       this.addError("CO-MD", "Issue when parsing Content markdown");
       this._content = CONTENT_DEFAULT;

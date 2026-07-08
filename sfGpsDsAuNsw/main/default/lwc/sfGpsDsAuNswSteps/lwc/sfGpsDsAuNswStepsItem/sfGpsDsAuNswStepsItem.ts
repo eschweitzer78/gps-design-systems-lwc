@@ -27,12 +27,11 @@ extends SfGpsDsElement {
   content?: string;
 
   // @ts-ignore
-  @api 
+  @api
   className?: string;
 
-  
   // @ts-ignore
-  @api 
+  @api
   headingLevel?: HeadingLevel;
   _headingLevel = this.defineIntegerProperty<HeadingLevel>("headingLevel", {
     minValue: 2,

@@ -5,8 +5,8 @@
     <div id={computedAriaLabelledById} class="nsw-in-page-nav__title">
       {title}
     </div>
-    <ul>
-      <template lwc:if={items} for:each={items} for:item="item">
+    <ul lwc:if={items}>
+      <template for:each={items} for:item="item">
         <li key={item.index}>
           <a href={item.url}>{item.text}</a>
         </li>

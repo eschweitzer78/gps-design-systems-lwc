@@ -86,9 +86,8 @@ extends SfGpsDsElement {
     defaultValue: ISREVERSED_DEFAULT
   });
 
-
   // @ts-ignore
-  @api 
+  @api
   showLink?: boolean;
   _showLink = this.defineBooleanProperty("showLink", {
     defaultValue: SHOWLINK_DEFAULT
@@ -171,7 +170,7 @@ extends SfGpsDsElement {
   handleClick(
     event: MouseEvent
   ): void {
-    if (this._preventDefault) {
+    if (this._preventDefault.value) {
       event.preventDefault();
     }
 

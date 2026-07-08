@@ -1,5 +1,5 @@
-export const EMPTY_OBJ = {};
-export const EMPTY_ARR = [];
+export const EMPTY_OBJ = Object.freeze({}) as Record<string, never>;
+export const EMPTY_ARR = Object.freeze([]) as never[];
 export const NOOP = () => {};
 
 const hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -43,6 +43,6 @@ export function toNumber(val: any): number {
   return parseFloat(val);
 }
 
-export function toArray<T = any>(value: T): T[] {
-  return isArray(value) ? value : [value]
+export function toArray<T = any>(value: T | T[]): T[] {
+  return isArray(value) ? (value as T[]) : [value as T];
 };

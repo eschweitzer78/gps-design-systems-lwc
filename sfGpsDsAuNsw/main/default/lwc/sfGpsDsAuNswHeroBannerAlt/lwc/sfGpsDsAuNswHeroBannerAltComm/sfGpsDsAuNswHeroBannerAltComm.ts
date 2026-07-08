@@ -2,8 +2,6 @@ import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 
-const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuNswHeroBannerAltComm";
 
 export default 
 class SfGpsDsAuNswHeroBannerAltComm 
@@ -56,7 +54,7 @@ extends SfGpsDsLwc {
   renderedCallback() {
     super.renderedCallback?.();
 
-    if (this._contentHtml.value && this.refs.content) {
+    if (this.refs.content) {
       /*
        * We have to add an empty span if there is a title to trigger the appropriate css for *+p and similar
        * as the react component would have one for the title in the same scope,

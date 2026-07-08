@@ -54,7 +54,7 @@ export function truncateText(
 ): string {
   if (text && typeof text === "string" && stop > 0) {
     if (text.length > stop) {
-      return text.slice(0, stop) + (stop < text.length ? clamp || "..." : "");
+      return text.slice(0, stop) + (clamp ?? "...");
     }
     return text;
   }
@@ -65,7 +65,7 @@ const cacheStringFunction = (fn: (str: string) => string) => {
   const cache: Record<string, string> = Object.create(null);
   return (str: string): string => {
     const hit = cache[str];
-    return hit || (cache[str] = fn(str));
+    return hit !== undefined ? hit : (cache[str] = fn(str));
   };
 };
 

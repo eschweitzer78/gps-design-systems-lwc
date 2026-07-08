@@ -23,8 +23,8 @@ const MODE_DEFAULT = "default";
 /**
  * @slot Container
  */
-export default 
-class sfGpsDsAuNswContainerLwr
+export default
+class SfGpsDsAuNswContainerLwr
 extends SfGpsDsLwc {
   static renderMode: "light" | "shadow" = "light";
 

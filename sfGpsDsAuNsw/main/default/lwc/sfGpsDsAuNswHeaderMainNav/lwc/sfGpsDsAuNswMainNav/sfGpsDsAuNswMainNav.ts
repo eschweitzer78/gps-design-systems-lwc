@@ -1,14 +1,14 @@
 /*
- * Copyright (c) 2022, Emmanuel Schweitzer and salesforce.com, inc.
+ * Copyright (c) 2022-2025, Emmanuel Schweitzer and salesforce.com, inc.
  * All rights reserved.
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { 
-  api, 
-  track, 
-  wire 
+import {
+  api,
+  track,
+  wire
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 import { 
@@ -90,7 +90,7 @@ extends SfGpsDsElement {
   /* api: navItems, array of navigation item objects{ url, text, subNav: ... } */
 
   // @ts-ignore
-  @track 
+  @track
   _navItems?: MainNavItem[];
   _navItemsOriginal?: AdaptedNavigationMenuItem[];
 
@@ -151,7 +151,8 @@ extends SfGpsDsElement {
   _navItemId: string = uniqueId("sf-gps-ds-au-nsw-main-nav-item");
 
   // @ts-ignore
-  @track _mapItems: MainNavItemMap;
+  @track
+  _mapItems: MainNavItemMap = {};
 
   navItemsMapping(): void {
     let map: MainNavItemMap = {};
@@ -183,15 +184,15 @@ extends SfGpsDsElement {
         index: item.index || `${parentIndex}-${index}`,
         level: parentLevel + 1,
         isActive: isActive,
-        className: isActive && !this._megaMenu ? "active" : "",
-        anchorClassName: isActive && this._megaMenu ? "active" : "",
+        className: isActive && !this._megaMenu.value ? "active" : "",
+        anchorClassName: isActive && this._megaMenu.value ? "active" : "",
         subNavAriaLabel: `${item.text} Submenu`,
         subNavClassName: "nsw-main-nav__sub-nav"
       };
 
       index++;
 
-      if (!this._megaMenu) {
+      if (!this._megaMenu.value) {
         delete result.subNav;
       } else if (item.subNav) {
         result.subNav = this.mapItems(
@@ -302,8 +303,8 @@ extends SfGpsDsElement {
         item.isActive = false;
       }
 
-      item.className = item.isActive && !this._megaMenu ? "active" : "";
-      item.anchorClassName = item.isActive && this._megaMenu ? "active" : "";
+      item.className = item.isActive && !this._megaMenu.value ? "active" : "";
+      item.anchorClassName = item.isActive && this._megaMenu.value ? "active" : "";
       item.subNavClassName = item.isActive
         ? "nsw-main-nav__sub-nav active"
         : "nsw-main-nav__sub-nav";
@@ -342,7 +343,7 @@ extends SfGpsDsElement {
   handleKeydown(
     event: KeyboardEvent
   ): void {
-    if (this._megaMenu && event.key === "Escape") {
+    if (this._megaMenu.value && event.key === "Escape") {
       const navItem = this.getLatestSubNav();
 
       if (navItem && navItem.isActive) {
@@ -370,7 +371,7 @@ extends SfGpsDsElement {
     super();
 
     this.handleMounted(() => {
-      this.breakpoint = window.matchMedia("(min-width: 62em");
+      this.breakpoint = window.matchMedia("(min-width: 62em)");
 
       this._handleResponsiveCheck = this.handleResponsiveCheck.bind(this);
       this.breakpoint?.addEventListener("change", this._handleResponsiveCheck);

@@ -10,13 +10,8 @@ import SfGpsDsLwc from "c/sfGpsDsLwc";
 import { replaceInnerHtml } from "c/sfGpsDsHelpers";
 import type { BannerImage, CStyle } from "c/sfGpsDsAuNswHeroBanner";
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswHeroBannerComm";
-
-export default 
-class sfGpsDsAuNswHeroBannerComm
+export default
+class SfGpsDsAuNswHeroBannerComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -99,11 +94,8 @@ extends SfGpsDsLwc {
   renderedCallback() {
     super.renderedCallback?.();
 
-    if (
-      this._introHtml.value && 
-      this.refs.markdown
-    ) {
-      replaceInnerHtml(this.refs.markdown, this._introHtml.value);
+    if (this.refs.markdown) {
+      replaceInnerHtml(this.refs.markdown, this._introHtml.value ?? "");
     }
   }
 }

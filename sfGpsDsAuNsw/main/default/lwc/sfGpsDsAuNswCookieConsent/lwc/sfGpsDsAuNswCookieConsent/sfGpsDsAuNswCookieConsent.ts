@@ -73,19 +73,8 @@ extends SfGpsDsElement {
   @api
   dialogTab3Title?: string;
 
-  // @ts-ignore
-  @api
-  isBannerRendered?: boolean = ISBANNERRENDERED_DEFAULT;
-  _isBannerRendered = this.defineBooleanProperty("isBannerRendered", {
-    defaultValue: ISBANNERRENDERED_DEFAULT
-  });
-
-  // @ts-ignore
-  @api
-  isDialogRendered?: boolean = ISDIALOGRENDERED_DEFAULT;
-  _isDialogRendered = this.defineBooleanProperty("isDialogRendered", {
-    defaultValue: ISDIALOGRENDERED_DEFAULT
-  });
+  _isBannerRendered = ISBANNERRENDERED_DEFAULT;
+  _isDialogRendered = ISDIALOGRENDERED_DEFAULT;
 
   // @ts-ignore
   @api
@@ -169,6 +158,10 @@ extends SfGpsDsElement {
     return this._uid;
   }
 
+  get computedBannerTitleId(): string {
+    return this.uid + "-title";
+  }
+
   get computedClassName(): any {
     return {
       "nsw-cookie-banner": true,
@@ -189,15 +182,15 @@ extends SfGpsDsElement {
   // @ts-ignore
   @api 
   showBanner(): void {
-    this.isBannerRendered = true;
+    this._isBannerRendered = true;
     this._isDialogOpen = false;
   }
 
-  // @ts-ignore 
-  @api 
+  // @ts-ignore
+  @api
   showDialog(): void {
     this.requestRefresh();
-    this.isDialogRendered = true;
+    this._isDialogRendered = true;
     this._isDialogOpen = true;
   }
 
@@ -228,13 +221,13 @@ extends SfGpsDsElement {
     switch (role) {
       case "open-dialog":
         this.requestRefresh();
-        this.isDialogRendered = true;
+        this._isDialogRendered = true;
         this._isDialogOpen = true;
         break;
 
       case "close":
-        this.isBannerRendered = false;
-        this.isDialogRendered = false;
+        this._isBannerRendered = false;
+        this._isDialogRendered = false;
         break;
 
       default:

@@ -4,11 +4,10 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "experimentalDecorators": false,
-    "baseUrl": ".",
     "paths": {
-      "c/*": ["*"]
+      "c/*": ["./*"]
     }
   }
 }

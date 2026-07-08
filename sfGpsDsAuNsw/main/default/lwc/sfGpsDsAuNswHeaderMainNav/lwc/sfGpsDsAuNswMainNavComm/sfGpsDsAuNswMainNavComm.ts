@@ -94,7 +94,7 @@ extends SfGpsDsNavigation {
   }
 
   set ipName(value) {
-  // @ts-ignore
+    // @ts-ignore
     super.ipName = value;
   }
 

@@ -18,16 +18,11 @@ import type {
   Position 
 } from "c/sfGpsDsAuNswMedia";
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswMediaComm";
-
 /**
  * @slot Caption
  */
-export default 
-class sfGpsDsAuNswMediaComm
+export default
+class SfGpsDsAuNswMediaComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -75,8 +70,8 @@ extends SfGpsDsLwc {
   renderedCallback() {
     super.renderedCallback?.();
 
-    if (this._captionHtml.value && this.refs.caption) {
-      replaceInnerHtml(this.refs.caption, this._captionHtml.value);
+    if (this.refs.caption) {
+      replaceInnerHtml(this.refs.caption, this._captionHtml.value ?? "");
     }
   }
 }

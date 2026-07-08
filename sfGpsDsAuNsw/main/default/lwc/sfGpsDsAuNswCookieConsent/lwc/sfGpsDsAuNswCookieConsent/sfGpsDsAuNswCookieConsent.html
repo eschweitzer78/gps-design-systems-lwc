@@ -1,16 +1,16 @@
 <!-- sldsValidatorIgnore -->
 <template>
   <div
-    lwc:if={isBannerRendered}
+    lwc:if={_isBannerRendered}
     class={computedClassName}
     role="alert"
     tabindex="-1"
-    aria-labelledby="cookie-banner-title"
+    aria-labelledby={computedBannerTitleId}
     aria-live="assertive"
     hidden={_isDialogOpen}
   >
     <div class="nsw-cookie-banner__wrapper">
-      <div id="cookie-banner-title" class="nsw-cookie-banner__title">
+      <div id={computedBannerTitleId} class="nsw-cookie-banner__title">
         {title}
       </div>
       <span class="nsw-cookie-banner__description" hidden={isConfirmed}>
@@ -74,7 +74,7 @@
   </div>
 
   <c-sf-gps-ds-au-nsw-dialog
-    lwc:if={isDialogRendered}
+    lwc:if={_isDialogRendered}
     title={dialogTitle}
     has-custom-footer="true"
     is-open={_isDialogOpen}
@@ -95,7 +95,7 @@
           >
           </c-sf-gps-ds-au-nsw-loader>
 
-          <c-sf-gps-ds-empty lwc:elseif={_isEmpty.value} title={i18.empty}>
+          <c-sf-gps-ds-empty lwc:elseif={_isEmpty.value} title={i18n.empty}>
           </c-sf-gps-ds-empty>
 
           <ul lwc:elseif={_sections} class="nsw-cookie-dialog__list">

@@ -18,7 +18,6 @@ declare module "c/sfGpsDsAuNswSteps" {
   extends SfGpsDsElement {
     type?: string;
     className?: string;
-    // @ts-ignore
     firstChild?: boolean;
     cstyle?: CStyle;
     size?: Size;

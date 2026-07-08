@@ -13,7 +13,8 @@ import SfGpsDsElement from "c/sfGpsDsElement";
 import {
   computeClass,
   styleToString,
-  formatTemplate
+  formatTemplate,
+  uniqueId
 } from "c/sfGpsDsHelpers";
 import OnWindowResize from "c/sfGpsDsOnWindowResize";
 import SwipeContent from "./swipe-content";
@@ -187,6 +188,12 @@ extends SfGpsDsElement {
   dragStart: number | boolean = false;
 
   selectedDotIndex?: number;
+
+  _listId?: string;
+  get computedListId(): string {
+    if (!this._listId) this._listId = uniqueId("sfgpsdsnsw-carousel-list");
+    return this._listId;
+  }
 
   // @ts-ignore
   @track 
@@ -429,7 +436,7 @@ extends SfGpsDsElement {
 
   get computedListStyle(): string {
     const translate = this.translateX;
-    return `transform:${translate};ms-transform:${translate}`;
+    return `transform:${translate};-ms-transform:${translate}`;
   }
 
   get translateX(): string {
@@ -481,7 +488,7 @@ extends SfGpsDsElement {
         break;
 
       case "click":
-        translate = this.selectedDotIndex as number * this.translateContainer;
+        translate = (this.selectedDotIndex ?? 0) * this.translateContainer;
         break;
 
       default:
@@ -518,7 +525,7 @@ extends SfGpsDsElement {
         break;
 
       case "click":
-        translate = this.selectedDotIndex as number * this.translateContainer;
+        translate = (this.selectedDotIndex ?? 0) * this.translateContainer;
         break;
 
       default:
@@ -752,10 +759,15 @@ extends SfGpsDsElement {
   /* lifecycle */
   /* --------- */
 
+  _initialRender = true;
+  _itemMargin: number = 0;
+
   _onWindowResize?: OnWindowResize;
   _swipeContent?: SwipeContent;
 
   connectedCallback() {
+    super.connectedCallback?.();
+
     this.flexSupported = CSS.supports("align-items", "stretch");
     this.transitionSupported = CSS.supports("transition", "transform");
     this.cssPropertiesSupported = CSS.supports("color", "var(--color-var");
@@ -773,9 +785,6 @@ extends SfGpsDsElement {
   disconnectedCallback() {
     this._onWindowResize?.unbind();
   }
-
-  _initialRender = true;
-  _itemMargin: number = 0;
 
   renderedCallback() {
     if (this._initialRender) {

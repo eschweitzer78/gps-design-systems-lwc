@@ -17,8 +17,6 @@ import type {
   BStyle 
 } from "c/sfGpsDsAuNswDialog";
 
-const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuNswDialogComm";
 
 export default 
 class SfGpsDsAuNswDialogComm 
@@ -89,8 +87,8 @@ extends SfGpsDsLwc {
   renderedCallback() {
     super.renderedCallback?.();
 
-    if (this._contentHtml.value && this.refs.markdown) {
-      replaceInnerHtml(this.refs.markdown, this._contentHtml.value);
+    if (this.refs.markdown) {
+      replaceInnerHtml(this.refs.markdown, this._contentHtml.value ?? "");
     }
   }
 }

@@ -136,13 +136,12 @@ extends SfGpsDsIpLwc {
       data = [data];
     }
 
-    const rv = data.map((block: any, index: number) => ({
+    return data.map((block: any, index: number) => ({
       ...block,
       title: block.title || block.headline,
       copy: block.copy ? htmlDecode(block.copy) : null,
       index: block.index || `block-${index + 1}`
     }));
-    return rv;
   }
 
   /* lifecycle */

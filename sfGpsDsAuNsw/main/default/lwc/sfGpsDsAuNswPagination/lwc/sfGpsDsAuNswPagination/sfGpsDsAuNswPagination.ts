@@ -1,5 +1,12 @@
-import { 
-  api 
+/*
+ * Copyright (c) 2022-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+import {
+  api
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 
@@ -28,8 +35,7 @@ extends SfGpsDsElement {
   srOnlyPrevious = "Previous";
 
   // @ts-ignore
-
-  @api 
+  @api
   srOnlyNext = "Next";
 
   // @ts-ignore
@@ -64,7 +70,7 @@ extends SfGpsDsElement {
     return this._activePage.value + 1;
   }
 
-  get computedShowPrevious(): boolean {
+  get computedShowPrevPage(): boolean {
     return this._activePage.value > 1;
   }
 
@@ -76,16 +82,8 @@ extends SfGpsDsElement {
     return this._activePage.value > 3;
   }
 
-  get computedShowPrevPage(): boolean {
-    return this._activePage.value > 1;
-  }
-
   get computedShowActivePage(): boolean {
     return this._lastPage.value > 0;
-  }
-
-  get computedShowNextPage(): boolean {
-    return this._activePage.value < this._lastPage.value;
   }
 
   get computedShowNextEllipsis(): boolean {
@@ -96,7 +94,7 @@ extends SfGpsDsElement {
     return this._activePage.value < this._lastPage.value - 1;
   }
 
-  get computedShowNext(): boolean {
+  get computedShowNextPage(): boolean {
     return this._activePage.value < this._lastPage.value;
   }
 
@@ -108,7 +106,7 @@ extends SfGpsDsElement {
   }
 
   get computedPreviousDisabled(): boolean {
-    return !this.computedShowPrevious;
+    return !this.computedShowPrevPage;
   }
 
   get computedPrevPageClassName(): any {
@@ -119,7 +117,7 @@ extends SfGpsDsElement {
   }
 
   get computedNextDisabled(): boolean {
-    return !this.computedShowNext;
+    return !this.computedShowNextPage;
   }
 
   get computedNextPageClassName(): any {

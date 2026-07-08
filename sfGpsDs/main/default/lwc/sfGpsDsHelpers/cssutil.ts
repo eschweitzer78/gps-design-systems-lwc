@@ -8,7 +8,7 @@ const parser = (string: string) =>
  * @returns {string}
  */
 
-export function styleToString(styleObj: {[index: string]: any} | string[]): string {
+export function styleToString(styleObj: Record<string, any>): string {
   if (!styleObj || typeof styleObj !== "object" || Array.isArray(styleObj)) {
     throw new TypeError(
       `expected an argument of type object, but got ${typeof styleObj}`
