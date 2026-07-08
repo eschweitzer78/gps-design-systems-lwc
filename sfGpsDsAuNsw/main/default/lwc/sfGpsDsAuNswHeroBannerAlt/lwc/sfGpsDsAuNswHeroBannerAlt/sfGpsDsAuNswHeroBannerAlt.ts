@@ -1,12 +1,19 @@
-import { 
-  api 
+/*
+ * Copyright (c) 2022-2025, Emmanuel Schweitzer and salesforce.com, inc.
+ * All rights reserved.
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+import {
+  api
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
 
 const TITLEPREVENTDEFAULT_DEFAULT = false;
 
 export default 
-class sfGpsDsAuNswHeroBannerAlt
+class SfGpsDsAuNswHeroBannerAlt
 extends SfGpsDsElement {
   static renderMode: "light" | "shadow" = "light";
 
@@ -27,9 +34,12 @@ extends SfGpsDsElement {
   imageAlt?: string;
   
   // @ts-ignore
-  @api 
-  className?: string;
+  @api
+  wrapperClassName?: string;
 
+  // @ts-ignore
+  @api
+  className?: string;
 
   // @ts-ignore
   @api
