@@ -38,49 +38,48 @@
           >
             {navItem.text}
           </a>
-          <ul>
-            <template
-              lwc:if={navItem.subNav}
-              for:each={navItem.subNav}
-              for:item="subNavItem"
-            >
-              <!-- level 3-->
-              <li key={subNavItem.index} class={subNavItem.className}>
-                <a
-                  href={subNavItem.url}
-                  data-ndx={subNavItem.index}
-                  class={subNavItem.anchorClassName}
-                  aria-current={subNavItem.ariaCurrent}
-                  onclick={handleClick}
-                >
-                  {subNavItem.text}
-                </a>
-                <ul>
-                  <template
-                    lwc:if={subNavItem.subNav}
-                    for:each={subNavItem.subNav}
-                    for:item="subSubNavItem"
+          <template lwc:if={navItem.subNav}>
+            <ul>
+              <template for:each={navItem.subNav} for:item="subNavItem">
+                <!-- level 3-->
+                <li key={subNavItem.index} class={subNavItem.className}>
+                  <a
+                    href={subNavItem.url}
+                    data-ndx={subNavItem.index}
+                    class={subNavItem.anchorClassName}
+                    aria-current={subNavItem.ariaCurrent}
+                    onclick={handleClick}
                   >
-                    <!-- level 4 -->
-                    <li
-                      key={subSubNavItem.index}
-                      class={subSubNavItem.className}
-                    >
-                      <a
-                        href={subSubNavItem.url}
-                        data-ndx={subSubNavItem.index}
-                        class={subSubNavItem.anchorClassName}
-                        aria-current={subNavNavItem.ariaCurrent}
-                        onclick={handleClick}
+                    {subNavItem.text}
+                  </a>
+                  <template lwc:if={subNavItem.subNav}>
+                    <ul>
+                      <template
+                        for:each={subNavItem.subNav}
+                        for:item="subSubNavItem"
                       >
-                        {subSubNavItem.text}
-                      </a>
-                    </li>
+                        <!-- level 4 -->
+                        <li
+                          key={subSubNavItem.index}
+                          class={subSubNavItem.className}
+                        >
+                          <a
+                            href={subSubNavItem.url}
+                            data-ndx={subSubNavItem.index}
+                            class={subSubNavItem.anchorClassName}
+                            aria-current={subSubNavItem.ariaCurrent}
+                            onclick={handleClick}
+                          >
+                            {subSubNavItem.text}
+                          </a>
+                        </li>
+                      </template>
+                    </ul>
                   </template>
-                </ul>
-              </li>
-            </template>
-          </ul>
+                </li>
+              </template>
+            </ul>
+          </template>
         </li>
       </template>
     </ul>

@@ -11,13 +11,8 @@ import {
 import SfGpsDsNavigation from "c/sfGpsDsNavigation";
 import SfGpsDsNavigationService from "c/SfGpsDsNavigationService";
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswSideNavComm";
-
-export default 
-class sfGpsDsAuNswSideNavComm
+export default
+class SfGpsDsAuNswSideNavComm
 extends SfGpsDsNavigation {
   // @ts-ignore
   @api 
@@ -131,6 +126,7 @@ extends SfGpsDsNavigation {
       this.navSvc.navigateNavMenu(this._map[event.detail]);
     }
   }
+
   /* lifecycle */
 
   connectedCallback() {
