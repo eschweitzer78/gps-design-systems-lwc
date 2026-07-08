@@ -7,14 +7,14 @@
           <h1>{title}</h1>
           <p class="nsw-intro">{intro}</p>
           <form role="search" class="hero-search__form">
-            <label class={computedLabelClassName} for="form-input-group"
+            <label class={computedLabelClassName} for={computedInputId}
               >{searchLabel}</label
             >
             <div class={computedInputGroupClassName}>
               <input
                 class="nsw-form__input"
                 type="text"
-                id="form-input-group"
+                id={computedInputId}
                 name="form-input-group"
                 value={value}
                 onchange={handleChange}

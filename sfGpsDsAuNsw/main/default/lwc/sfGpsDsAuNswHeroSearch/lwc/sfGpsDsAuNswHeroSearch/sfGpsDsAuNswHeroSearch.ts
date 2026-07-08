@@ -5,10 +5,13 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { 
-  api 
+import {
+  api
 } from "lwc";
 import SfGpsDsElement from "c/sfGpsDsElement";
+import {
+  uniqueId
+} from "c/sfGpsDsHelpers";
 import type { 
   ButtonStyle 
 } from "c/sfGpsDsAuNswHeroSearch";
@@ -41,8 +44,8 @@ extends SfGpsDsElement {
   links?: Link[];
 
   // @ts-ignore
-  @api 
-  value?: string = ""; // ADJUSTED: added value public attribute
+  @api
+  value?: string = "";
 
   // @ts-ignore
   @api 
@@ -74,6 +77,13 @@ extends SfGpsDsElement {
 
   /* computed */
 
+  _inputId?: string;
+
+  get computedInputId(): string {
+    if (!this._inputId) this._inputId = uniqueId("sf-gps-ds-au-nsw-hero-search");
+    return this._inputId;
+  }
+
   get computedClassName(): any {
     return {
       "hero-search": true,
@@ -84,7 +94,7 @@ extends SfGpsDsElement {
   get computedLabelClassName(): any {
     return {
       "nsw-form__label": true,
-      "sr-only": !this.label
+      "sr-only": !this._label.value
     };
   }
 
@@ -116,7 +126,7 @@ extends SfGpsDsElement {
     event: KeyboardEvent
   ): void {
     event.preventDefault(); // avoid submitting
-    if (event.key === "enter") {
+    if (event.key === "Enter") {
       this.dispatchEvent(new CustomEvent("search"));
     }
   }
