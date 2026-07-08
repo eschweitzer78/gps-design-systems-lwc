@@ -25,7 +25,7 @@ const CSTYLE_VALUES: CStyleValues = {
 const CSTYLE_DEFAULT: CStyle = "default";
 
 export default 
-class SfGpsDsAuNswFooterCoom 
+class SfGpsDsAuNswFooterComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -70,9 +70,9 @@ extends SfGpsDsLwc {
   // @ts-ignore
   @api 
   optionsJSON?: string;
+
   // @ts-ignore
-  
-  @api 
+  @api
   statement?: string;
 
   // @ts-ignore
@@ -110,6 +110,17 @@ extends SfGpsDsLwc {
     validValues: CSTYLE_VALUES,
     defaultValue: CSTYLE_DEFAULT
   });
+
+  // For compatibility due to a past typo
+  // @ts-ignore
+  @api
+  set optionsJSONN(value) {
+    this.optionsJSON = value;
+  }
+
+  get optionsJSONN() {
+    return this.optionsJSON;
+  }
 
   /* computed */
 
