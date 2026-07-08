@@ -56,11 +56,10 @@ extends SfGpsDsElement {
   _as = this.defineEnumObjectProperty<AsValue, AlertType>("as", {
     validValues: AS_VALUES,
     defaultValue: AS_DEFAULT
-  });  
-
+  });
 
   // @ts-ignore
-  @api 
+  @api
   compact?: boolean;
   _compact = this.defineBooleanProperty("compact", {
     defaultValue: COMPACT_DEFAULT

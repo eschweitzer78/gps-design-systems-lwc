@@ -66,6 +66,8 @@ extends SfGpsDsLwc {
         this._contentHtml = this._compact.value
           ? mdEngine.renderEscapedUnpackFirstP(this._contentOriginal)
           : mdEngine.renderEscaped(this._contentOriginal);
+      } else {
+        this._contentHtml = undefined;
       }
     } catch (e: any) {
       console.debug(e.toString());
@@ -92,7 +94,7 @@ extends SfGpsDsLwc {
     if (this.refs.markdown) {
       replaceInnerHtml(
         this.refs.markdown,
-        (this.title && !this._compact.value ? `<span></span>` : "") + this._contentHtml
+        (this.title && !this._compact.value ? `<span></span>` : "") + (this._contentHtml ?? "")
       );
     }
   }
