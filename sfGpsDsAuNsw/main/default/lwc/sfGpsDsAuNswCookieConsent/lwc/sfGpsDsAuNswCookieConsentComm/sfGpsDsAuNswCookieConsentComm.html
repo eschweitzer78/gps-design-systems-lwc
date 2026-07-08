@@ -7,7 +7,7 @@
   </c-sf-gps-ds-configuration-error>
 
   <c-sf-gps-ds-au-nsw-cookie-consent
-    lwc:elseif={isOpen}
+    lwc:elseif={_isOpen}
     title={title}
     sections={_sections}
     accept-all-btn={acceptAllBtn}
@@ -21,7 +21,7 @@
     dialog-tab2-title={tab2Title}
     dialog-tab3-title={tab3Title}
     is-loading={_isLoading}
-    is-empty={isEmpty}
+    is-empty={_isEmpty}
     is-confirmed={_isConfirmed}
     onconfirm={handleConfirmed}
     onrequestrefresh={handleRefresh}

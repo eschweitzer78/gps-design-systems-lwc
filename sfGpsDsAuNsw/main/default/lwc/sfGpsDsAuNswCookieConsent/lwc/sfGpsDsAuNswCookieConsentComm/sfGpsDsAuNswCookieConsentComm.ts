@@ -1,7 +1,8 @@
 import { api } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
 import {
-  replaceInnerHtml 
+  replaceInnerHtml,
+  isObject
 } from "c/sfGpsDsHelpers";
 import { 
   CookieConsentSection
@@ -105,21 +106,29 @@ extends SfGpsDsLwc {
     return this._configOriginal;
   }
 
-  set config(value: string) {
+  set config(value: string | undefined) {
     this._configOriginal = value;
+    this.clearErrors();
 
-    let targetValue: UserConfig;
-    try {
-      targetValue = JSON.parse(value);
-    } catch(e) {
-      targetValue = {};
-      this.addError("CO-JS", "Error while parsing the Configuration JSON.");
-      console.debug(e);
-    }
+    let targetValue: UserConfig = {};
 
-    const keys = Object.keys(targetValue.categories || {});
-    for (let i = 0; i < keys.length; i++) {
-      targetValue.categories[keys[i]].enabled = true;
+    if (value) {
+      try {
+        targetValue = JSON.parse(value);
+      } catch(e) {
+        targetValue = {};
+        this.addError("CO-JS", "Error while parsing the Configuration JSON.");
+        console.debug(e);
+      }
+
+      if (targetValue.categories == undefined || !isObject(targetValue.categories)) {
+        targetValue.categories = {}
+      }
+
+      const keys = Object.keys(targetValue.categories || {});
+      for (let i = 0; i < keys.length; i++) {
+        targetValue.categories[keys[i]].enabled = true;
+      }
     }
 
     this._config = targetValue;
@@ -146,20 +155,23 @@ extends SfGpsDsLwc {
   _isClosed = false;
   _isConfirmed = false;
   _isCCAPIInitialised = false;
-  _sections: CookieConsentSection[];
+  _sections: CookieConsentSection[] = [];
 
   /* getters */
 
-  get isEmpty(): boolean {
+  get _isEmpty(): boolean {
     return false;
   }
 
-  get isOpen(): boolean {
+  get _isLoading(): boolean {
+    return false;
+  }
+
+  get _isOpen(): boolean {
     return !this._isClosed;
   }
 
   /* methods */
-
 
   async initCCAPI(): Promise<boolean | void> {
     if (!this._isCCAPIInitialised) {
@@ -264,27 +276,25 @@ extends SfGpsDsLwc {
     if (preferences.acceptedCategories?.length > 0) {
       this._isClosed = true;
     }
-
-
   }
 
   renderedCallback() {
     super.renderedCallback?.();
 
-    if (this._descriptionHtml.value && this.refs.description) {
-      replaceInnerHtml(this.refs.description, this._descriptionHtml.value);
+    if (this.refs.description) {
+      replaceInnerHtml(this.refs.description, this._descriptionHtml.value ?? "");
     }
 
-    if (this._confirmationMessageHtml.value && this.refs.confirmationMessage) {
-      replaceInnerHtml(this.refs.confirmationMessage, this._confirmationMessageHtml.value);
+    if (this.refs.confirmationMessage) {
+      replaceInnerHtml(this.refs.confirmationMessage, this._confirmationMessageHtml.value ?? "");
     }
 
-    if (this._tab2ContentHtml.value && this.refs.tab2Content) {
-      replaceInnerHtml(this.refs.tab2Content, this._tab2ContentHtml.value);
+    if (this.refs.tab2Content) {
+      replaceInnerHtml(this.refs.tab2Content, this._tab2ContentHtml.value ?? "");
     }
 
-    if (this._tab3ContentHtml.value && this.refs.tab3Content) {
-      replaceInnerHtml(this.refs.tab3Content, this._tab3ContentHtml.value);
+    if (this.refs.tab3Content) {
+      replaceInnerHtml(this.refs.tab3Content, this._tab3ContentHtml.value ?? "");
     }
   }
 }
