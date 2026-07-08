@@ -5,25 +5,22 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { 
-  api 
+import {
+  api
 } from "lwc";
 import SfGpsDsLwc from "c/sfGpsDsLwc";
-import { 
-  replaceInnerHtml 
+import {
+  replaceInnerHtml
 } from "c/sfGpsDsHelpers";
+
+import type {
+  CStyle
+} from "c/sfGpsDsAuNswMasthead";
 
 const MASTHEADLABEL_DEFAULT = "A NSW Government website";
 
-const DEBUG = false;
-const CLASS_NAME = "sfGpsDsAuNswMastheadComm";
-
-import type { 
-  CStyle 
-} from "c/sfGpsDsAuNswMasthead";
-
-export default 
-class sfGpsDsAuNswMastheadComm
+export default
+class SfGpsDsAuNswMastheadComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -55,7 +52,7 @@ extends SfGpsDsLwc {
 
   // @ts-ignore
   @api
-  mastheadLabel?: string;
+  mastheadLabel: string = MASTHEADLABEL_DEFAULT;
   _mastheadLabelHtml = this.defineMarkdownContentProperty("mastheadLabel", {
     errorCode: "ML-MD",
     errorText: "Issue when parsing Masthead label markdown"
@@ -73,8 +70,8 @@ extends SfGpsDsLwc {
 
     const md = this.refs.markdown;
     
-    if (this._mastheadLabelHtml.value && md) {
-      replaceInnerHtml(md, this._mastheadLabelHtml.value);
+    if (md) {
+      replaceInnerHtml(md, this._mastheadLabelHtml.value ?? "");
     }
   }
 }
