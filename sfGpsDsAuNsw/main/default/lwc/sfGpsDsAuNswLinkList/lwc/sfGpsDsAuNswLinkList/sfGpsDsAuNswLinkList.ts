@@ -43,18 +43,24 @@ extends SfGpsDsElement {
   });  
 
   // @ts-ignore
-  @api 
+  @api
   className?: string;
 
-
   // @ts-ignore
-  @api 
+  @api
   firstChild?: boolean;
   _firstChild = this.defineBooleanProperty("firstChild", {
     defaultValue: FIRSTCHILD_DEFAULT
   });
 
   /* computed */
+
+  _uid?: string;
+
+  get uid(): string {
+    if (!this._uid) this._uid = uniqueId("sf-gps-ds-au-nsw-link-list");
+    return this._uid;
+  }
 
   get computedClassName(): any {
     return {
@@ -65,21 +71,13 @@ extends SfGpsDsElement {
 
   get decoratedList(): DecoratedLink[] {
     const highlightExternal = this._highlightExternal.value;
+    const uid = this.uid;
 
-    return this.links.map((item) => ({
+    return (this.links ?? []).map((item, index) => ({
       ...item,
-      _isExternalUrl: highlightExternal && isExternalUrl(item.url)
+      _isExternalUrl: highlightExternal && isExternalUrl(item.url || ""),
+      _describedById: `${uid}-desc-${index}`
     }));
-  }
-
-  _describedById?: string;
-
-  get computedAriaDescribedById(): string {
-    if (this._describedById === undefined) {
-      this._describedById = uniqueId("sf-gps-ds-au-nsw-link__description");
-    }
-
-    return this._describedById;
   }
 
   get i18n(): Record<string, string> {

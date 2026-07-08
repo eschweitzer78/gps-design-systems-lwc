@@ -13,7 +13,7 @@
                 href={item.url}
                 target="_blank"
                 rel="noopener"
-                aria-describedby={computedAriaDescribedById}
+                aria-describedby={item._describedById}
               >
                 <span
                   >{item.text}
@@ -32,7 +32,7 @@
                   east
                 </span>
               </a>
-              <span id={computedAriaDescribedById} class="sr-only"
+              <span id={item._describedById} class="sr-only"
                 >({i18n.opensInNewWindow})</span
               >
             </template>
