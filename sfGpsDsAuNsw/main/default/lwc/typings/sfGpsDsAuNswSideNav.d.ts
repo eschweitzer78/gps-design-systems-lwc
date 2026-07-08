@@ -19,7 +19,7 @@ declare module "c/sfGpsDsAuNswSideNav" {
   class SfGpsDsAuNswSideNav
   extends SfGpsDsElement {
     parentText?: string;
-    //title: string;
+    title: string;
     url?: string;
     className?: string;
 
@@ -28,7 +28,7 @@ declare module "c/sfGpsDsAuNswSideNav" {
 
     // private
 
-    _navItems?: AdaptedNavigationMenuItem[];
+    _navItems?: SideNavMenuItem[];
     _navItemsOriginal?: AdaptedNavigationMenuItem[];
 
     _isOpen: boolean;

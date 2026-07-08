@@ -45,6 +45,7 @@ declare module "c/sfGpsDsAuNswSectionLwr" {
     _withBox: PropertyAccessor<boolean>;
     _withInvert: PropertyAccessor<boolean>;
 
+    get computedStyle(): string | null;
     get computedClassName(): any;
     get computedContainerClassName(): any;
   }

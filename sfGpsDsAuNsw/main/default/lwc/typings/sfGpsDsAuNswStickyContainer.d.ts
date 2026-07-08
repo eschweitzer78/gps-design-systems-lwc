@@ -1,9 +1,8 @@
 declare module "c/sfGpsDsAuNswStickyContainer" {
   import type SfGpsDsElement from "c/sfGpsDsElement";
-  import type OnWindowResize from "c/sfGpsDsOnWindowResize";
-  
-  export default 
-  class SfGpsDsAuNswStickyContainer 
+
+  export default
+  class SfGpsDsAuNswStickyContainer
   extends SfGpsDsElement {
     className?: string;
 
@@ -11,10 +10,10 @@ declare module "c/sfGpsDsAuNswStickyContainer" {
 
     // private
 
-    _onWindowResize: OnWindowResize;
+    _scId?: string;
+    get computedId(): string;
     get computedClassName(): any;
 
-    handleSlotChange(_event: Event): void;
-
+    _onResizeObserver?: ResizeObserver;
   }
 }
