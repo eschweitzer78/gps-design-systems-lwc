@@ -18,6 +18,7 @@ type StatusValues = Record<Status, string>;
 
 const STATUS_DEFAULT: Status = "info";
 const STATUS_VALUES: StatusValues = {
+  neutral: "",
   info: "nsw-status-label--info",
   success: "nsw-status-label--success",
   warning: "nsw-status-label--warning",
