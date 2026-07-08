@@ -9,7 +9,7 @@ import { api } from "lwc";
 
 import SfGpsDsElement from "c/sfGpsDsElement";
 import OnClickOutside from "c/sfGpsDsOnClickOutside";
-import { nextTick } from "c/sfGpsDsHelpers";
+import { nextTick, uniqueId } from "c/sfGpsDsHelpers";
 
 import type {
   MenuPosition,
@@ -25,7 +25,7 @@ const DEBUG = false;
 
 const MENUPOSITION_LEFT = "left";
 const MENUPOSITION_RIGHT = "right";
-const MENUPOSITON_VALUES = [ MENUPOSITION_LEFT, MENUPOSITION_RIGHT ];
+const MENUPOSITION_VALUES = [ MENUPOSITION_LEFT, MENUPOSITION_RIGHT ];
 const MENUPOSITION_DEFAULT = MENUPOSITION_LEFT;
 
 const VARIANT_PADDED = "padded";
@@ -36,10 +36,10 @@ const VARIANT_DEFAULT = VARIANT_PADDED;
 const PREVENTDEFAULT_DEFAULT = false;
 const BUTTON_ARIALABEL_DEFAULT = "Open menu";
 
-export default 
-class SfGpsDsNswButtonMenu
+export default
+class SfGpsDsAuNswButtonMenu
 extends SfGpsDsElement {
-  static renderMode = "light";
+  static renderMode: "light" | "shadow" = "light";
 
   // @ts-ignore
   @api 
@@ -65,7 +65,7 @@ extends SfGpsDsElement {
   @api
   menuPosition?: MenuPosition;
   _menuPosition = this.defineEnumProperty("menuPosition", {
-    validValues: MENUPOSITON_VALUES,
+    validValues: MENUPOSITION_VALUES,
     defaultValue: MENUPOSITION_DEFAULT
   });
 
@@ -83,6 +83,12 @@ extends SfGpsDsElement {
   _preventDefault = this.defineBooleanProperty("preventDefault", {
     defaultValue: PREVENTDEFAULT_DEFAULT
   })
+
+  _menuId?: string;
+  get computedMenuId(): string {
+    if (!this._menuId) this._menuId = uniqueId("sfgpsdsnsw-button-menu");
+    return this._menuId;
+  }
 
   _isOpen = false;
 
@@ -130,7 +136,7 @@ extends SfGpsDsElement {
   }
 
   get nItems(): number {
-    return (this.items || []).length || 0;
+    return (this.items || []).length;
   }
 
   /* methods */

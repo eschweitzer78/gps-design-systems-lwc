@@ -3,8 +3,8 @@
   <div class={computedClassName} lwc:ref="containerRef">
     <button
       lwc:ref="buttonRef"
-      aria-haspopup="true"
-      aria-controls="menu"
+      aria-haspopup="menu"
+      aria-controls={computedMenuId}
       aria-expanded={_isOpen}
       aria-label={computedButtonAriaLabel}
       class={computedButtonClassName}
@@ -32,7 +32,7 @@
 
     <c-sf-gps-ds-focus-trap>
       <ul
-        id="menu"
+        id={computedMenuId}
         role="menu"
         aria-hidden={computedIsClosed}
         tabindex="-1"
