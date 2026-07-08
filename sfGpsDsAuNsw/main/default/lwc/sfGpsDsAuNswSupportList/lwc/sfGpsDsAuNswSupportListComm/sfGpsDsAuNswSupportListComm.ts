@@ -20,13 +20,8 @@ import type {
 const DEPARTMENTS_DEFAULT: Link[] = [];
 const SUPPORTLOGOS_DEFAULT: Link[] = [];
 
-// eslint-disable-next-line no-unused-vars
-const DEBUG = false;
-// eslint-disable-next-line no-unused-vars
-const CLASS_NAME = "sfGpsDsAuNswSupportListComm";
-
-export default 
-class sfGpsDsAuNswSupportListComm
+export default
+class SfGpsDsAuNswSupportListComm
 extends SfGpsDsLwc {
   // @ts-ignore
   @api 
@@ -54,7 +49,7 @@ extends SfGpsDsLwc {
   supportLogos?: string;
   _supportLogos = this.defineMarkdownLinksProperty("supportLogos", {
     errorCode: "LI-MD",
-    errorText: "Issue when parsing Departments markdown",
+    errorText: "Issue when parsing Support Logos markdown",
     defaultValue: SUPPORTLOGOS_DEFAULT
   });
 

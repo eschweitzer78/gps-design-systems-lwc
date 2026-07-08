@@ -11,7 +11,7 @@ declare module "c/sfGpsDsAuNswSupportList" {
   export default 
   class SfGpsDsAuNswSupportList 
   extends SfGpsDsElement {
-    header?: string;
+    header: string;
     departments?: Link[];
     supportLogos?: Link[];
     className?: string;
