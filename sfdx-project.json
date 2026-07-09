@@ -931,6 +931,8 @@
     "Salesforce Global Public Sector AU VIC2 Design System (Standard Runtime)@0.8.8-1": "04tId000000t2lqIAA",
     "Salesforce Global Public Sector GOUV.FR Design System (Full)@0.8.4-1": "04tId000000t2lvIAA",
     "Salesforce Global Public Sector GOV.UK Design System (Full)@1.7.4-1": "04tId000000t2m0IAA",
-    "Salesforce Global Public Sector CA Ontario Design System (Full)@0.1.0-13": "04tId000000t2m5IAA"
+    "Salesforce Global Public Sector CA Ontario Design System (Full)@0.1.0-13": "04tId000000t2m5IAA",
+    "Salesforce Global Public Sector AU NSW Design System@3.6.0-1": "04tId000000t2vOIAQ",
+    "Salesforce Global Public Sector AU NSW Design System (Standard Runtime)@3.6.0-1": "04tId000000t2vTIAQ"
   }
 }
