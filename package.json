@@ -97,10 +97,10 @@
     "lwc": "8.25.1"
   },
   "engines": {
-    "node": "^20"
+    "node": "^24"
   },
   "volta": {
-    "node": "20.19.2"
+    "node": "24.18.0"
   },
   "type": "commonjs"
 }
