@@ -20,16 +20,16 @@ jobs:
     steps:
       # Checkout the source code
       - name: "Checkout source code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # Install Volta to enforce proper node and package manager versions
       - name: "Install Volta"
-        uses: volta-cli/action@v4
+        uses: volta-cli/action@v5
 
       # Cache node_modules to speed up the process
       - name: "Restore node_modules cache"
         id: cache-npm
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: node_modules
           key: npm-${{ hashFiles('**/package-lock.json') }}
@@ -85,7 +85,7 @@ jobs:
 
       # Authenticate dev hub
       - name: "Authenticate Dev Hub"
-        run: sf auth:sfdxurl:store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
+        run: sf auth sfdxurl store -f ./DEVHUB_SFDX_URL.txt -a devhub -d
 
       # Remove auth file
       - name: "Remove auth file"
