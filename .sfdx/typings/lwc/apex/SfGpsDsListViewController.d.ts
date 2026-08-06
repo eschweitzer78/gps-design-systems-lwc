@@ -1,6 +1,9 @@
 declare module "@salesforce/apex/SfGpsDsListViewController.getListViewNameById" {
   export default function getListViewNameById(param: {id: any}): Promise<any>;
 }
+declare module "@salesforce/apex/SfGpsDsListViewController.getDefaultListViewNameForObject" {
+  export default function getDefaultListViewNameForObject(param: {objectApiName: any}): Promise<any>;
+}
 declare module "@salesforce/apex/SfGpsDsListViewController.getCount" {
   export default function getCount(param: {objectApiName: any, filterLogicString: any, filteredByInfo: any}): Promise<any>;
 }
