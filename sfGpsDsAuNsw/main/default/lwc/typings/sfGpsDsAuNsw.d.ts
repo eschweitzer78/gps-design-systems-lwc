@@ -34,6 +34,7 @@ import "./sfGpsDsAuNswDialog";
 import "./sfGpsDsAuNswFooterComm";
 import "./sfGpsDsAuNswGlobalAlert";
 import "./sfGpsDsAuNswGlobalAlertComm";
+import "./sfGpsDsAuNswGlobalAlertContainerComm";
 import "./sfGpsDsAuNswGridLwr";
 import "./sfGpsDsAuNswHeader";
 import "./sfGpsDsAuNswHeaderV2Comm";
@@ -92,7 +93,7 @@ import "./sfGpsDsAuNswTabContainerLwr"
 import "./sfGpsDsAuNswTabLwr";
 import "./sfGpsDsAuNswTabSetLwr";
 import "./sfGpsDsAuNswTags";
-import "./sfGpsDsAuNswComm";
+import "./sfGpsDsAuNswTagsComm";
 import "./sfGpsDsAuNswTagsOsN";
 import "./sfGpsDsAuNswThemeLayoutLwr";
 import "./sfGpsDsAuNswToggletip";
