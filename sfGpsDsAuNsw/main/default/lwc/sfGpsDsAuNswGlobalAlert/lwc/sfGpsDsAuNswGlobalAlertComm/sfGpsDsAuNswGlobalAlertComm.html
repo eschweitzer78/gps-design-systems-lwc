@@ -6,7 +6,7 @@
   </c-sf-gps-ds-configuration-error>
 
   <c-sf-gps-ds-au-nsw-global-alert
-    lwc:else
+    lwc:elseif={isOpen}
     as={as}
     title={title}
     copy={copy}
@@ -14,6 +14,7 @@
     cta-text={_cta.value.text}
     cta-href={_cta.value.url}
     class-name={className}
+    onclose={handleClose}
   >
   </c-sf-gps-ds-au-nsw-global-alert>
 </template>
