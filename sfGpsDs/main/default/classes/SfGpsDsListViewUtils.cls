@@ -50,7 +50,7 @@ public class SfGpsDsListViewUtils {
               fieldApiName +
                 opNameToOpMap.get(this.operator) +
                 '\'' +
-                label +
+                String.escapeSingleQuotes(label) +
                 '\''
             );
           }

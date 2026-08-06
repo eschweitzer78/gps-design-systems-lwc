@@ -97,7 +97,6 @@ describe("c-sf-gps-ds-au-nsw-side-nav", () => {
     await Promise.resolve();
 
     const navOpen2 = element.querySelector(".nsw-side-nav.open");
-    console.debug(navOpen2);
 
     expect(navOpen2).not.toBeNull();
     expect(toggle.getAttribute("aria-expanded")).toBe("true");

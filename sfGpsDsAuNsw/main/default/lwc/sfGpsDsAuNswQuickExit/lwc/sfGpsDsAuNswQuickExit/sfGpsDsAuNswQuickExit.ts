@@ -83,8 +83,17 @@ extends SfGpsDsElement {
   }
 
   get isModalOpen(): boolean {
-    return (document.querySelector(`dialog[open]`)) != null || 
-      (document.querySelector(`[role="dialog"][aria-modal="true"]`) != null);
+    // eslint-disable-next-line @lwc/lwc/no-document-query
+    if ((document.querySelector("dialog[open]")) != null) {
+      return true;
+    }
+
+    // eslint-disable-next-line @lwc/lwc/no-document-query
+    const ariaModal = document.querySelector(`[role="dialog"][aria-modal="true"]`);
+    // eslint-disable-next-line @lwc/lwc/no-document-query
+    const auraError = document.querySelector("#auraError");
+
+    return ariaModal != auraError;
   }
 
   _describedById?: string;

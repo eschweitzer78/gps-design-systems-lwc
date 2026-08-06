@@ -1,6 +1,6 @@
 <template lwc:render-mode="light">
   <div class={computedClassName}>
-    <template lwc:if={total}>
+    <template lwc:if={_total.value}>
       <div class="nsw-results-bar__info">{computedResultsText}</div>
       <div lwc:if={sortOptions} class="nsw-results-bar__sorting">
         <label class="nsw-form__label" for={computedSelectId}>Sort by:</label>

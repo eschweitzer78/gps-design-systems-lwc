@@ -1,0 +1,28 @@
+<template>
+  <c-sf-gps-ds-configuration-error
+    lwc:if={_sfGpsDsErrors}
+    errors={_sfGpsDsErrors}
+  >
+  </c-sf-gps-ds-configuration-error>
+
+  <div lwc:else class={className} aria-live="polite">
+    <template lwc:if={isEmpty}>
+      <slot name="Alerts"></slot>
+    </template>
+    <template lwc:else>
+      <template for:each={_items} for:item="alert">
+        <c-sf-gps-ds-au-nsw-global-alert-comm
+          key={alert.alertId}
+          alert-id={alert.alertId}
+          title={alert.title}
+          copy={alert.copy}
+          as={alert.as}
+          cta-style={alert.ctaStyle}
+          cta={alert.cta}
+          closed-cookie={alert.cookie}
+        >
+        </c-sf-gps-ds-au-nsw-global-alert-comm>
+      </template>
+    </template>
+  </div>
+</template>

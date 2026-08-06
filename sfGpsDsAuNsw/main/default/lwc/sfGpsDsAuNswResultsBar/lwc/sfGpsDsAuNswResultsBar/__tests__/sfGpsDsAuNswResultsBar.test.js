@@ -53,6 +53,7 @@ describe("c-sf-gps-ds-au-nsw-results-bar", () => {
     // Assert
     const info = element.querySelector(infoSelector);
     expect(info).not.toBeNull();
+    console.log('info.textContent', info.textContent);
     expect(info.textContent).toMatch("Showing results 1 - 20 of 42 results");
 
     const sorting = element.querySelector(sortingSelector);
@@ -73,6 +74,34 @@ describe("c-sf-gps-ds-au-nsw-results-bar", () => {
       expect(handler).toHaveBeenCalledTimes(1);
       expect(handler.mock.calls[0][0].detail).toEqual(sorting.value);
     });
+  });
+
+  it("has the right position text when deferring arguments", async () => {
+    // Arrange
+    const element = createElement(tag, {
+      is: SfGpsDsAuNswResultsBar
+    });
+
+    // Act
+
+    document.body.appendChild(element);
+
+    element.from = 1;
+    element.to = 20;
+    element.total = 42;
+    element.sortOptions = [
+      { label: "Label A", value: "Value A" },
+      { label: "Label B", value: "Value B" }
+    ];
+    element.value = "Value B";
+
+    await Promise.resolve();
+
+    // Assert
+    const info = element.querySelector(infoSelector);
+    expect(info).not.toBeNull();
+    console.log('info.textContent', info.textContent);
+    expect(info.textContent).toMatch("Showing results 1 - 20 of 42 results");
   });
 
   it("is accessible", async () => {
