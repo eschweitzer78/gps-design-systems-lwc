@@ -475,7 +475,7 @@ jobs:
         if: ${{ github.event.client_payload.changes.sfGpsDsAuVic2 == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
-          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org
+          sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuVic2Sr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --json
 
       # Deploy omnistudio to scratch org
       - name: "Deploy Omnistudio"
