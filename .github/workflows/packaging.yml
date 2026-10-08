@@ -459,6 +459,8 @@ jobs:
       # Install new sfGpsDsAuNsw SR package in scratch org
       - name: "Install new sfGpsDsAuNsw (Standard Runtime) package version in scratch org"
         if: ${{ github.event.client_payload.changes.sfGpsDsAuNsw == 'true' || github.event.client_payload.changes.sfGpsDs == 'true' }}
+        env:
+          DEBUG: "*"
         run: |
           sf package install --package ${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org --no-prompt
           sf package uninstall --package ${{ steps.createPackageVersion-sfGpsDsAuNswSr.outputs.packageVersionId }} --wait=20 --target-org=scratch-org

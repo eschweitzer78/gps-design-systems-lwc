@@ -40,7 +40,7 @@ const DEFAULT_OUTPUT_FORMAT = "DD-MM-YYYY";
 const DEFAULT_OUTPUT_TYPE = "string";
 
 const CLASS_NAME = "sfGpsDsAuVic2DatePicker";
-const DEBUG = false;
+const DEBUG = true;
 
 const dateFormat = shortDateFormat
   ? shortDateFormat.toUpperCase()
