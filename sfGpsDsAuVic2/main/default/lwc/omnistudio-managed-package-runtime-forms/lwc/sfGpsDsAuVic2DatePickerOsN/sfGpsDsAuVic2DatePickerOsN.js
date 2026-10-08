@@ -419,6 +419,14 @@ export default class extends LightningElement {
       // Do not change the value of the individual fields
     }
 
+    // Issue 654
+    /* here we actually have to make sure those last few changes make it to the DOM prior to a validation occurring */
+    if (this.refs?.dateInput) this.refs.dateInput.value = this._displayDayValue;
+    if (this.refs?.monthInput)
+      this.refs.monthInput.value = this._displayMonthValue;
+    if (this.refs?.yearInput)
+      this.refs.yearInput.value = this._displayYearValue;
+
     if (DEBUG)
       console.debug(CLASS_NAME, "< updateDisplayValue", this._displayValue);
   }

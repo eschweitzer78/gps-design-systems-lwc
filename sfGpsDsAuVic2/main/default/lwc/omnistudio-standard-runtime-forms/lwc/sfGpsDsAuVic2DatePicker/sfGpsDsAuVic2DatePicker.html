@@ -4,10 +4,9 @@
     class="rpl-form__fieldset"
     aria-describedby={computedAriaDescribedBy}
   >
-    <label
+    <legend
       lwc:if={label}
       class="rpl-form-label rpl-type-h4-fixed"
-      for="textareaId"
       data-label="true"
     >
       <span class="rpl-form-label__inner">{label}</span>
@@ -17,7 +16,7 @@
         >({requiredLabel})</span
       >
       <slot name="label"> </slot>
-    </label>
+    </legend>
 
     <div lwc:if={fieldLevelHelp} id="helper" class="rpl-content rpl-form-help">
       {fieldLevelHelp}
