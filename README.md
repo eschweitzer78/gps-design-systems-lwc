@@ -40,7 +40,7 @@ While installing, expand the advanced options to pick the `Compile only the Apex
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tId000000t2xZIAQ" title="sfGpsDsSr">this link</a> to install the `sfGpsDs` unlocked package in your org (only when developing your own design system or as a dependency for a third-party) for Omnistudio Standard Runtime.
 
-1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tId000000t2xjIAA" title="sfGpsDsAuNswFull">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime. **Note**: Former users (pre-3.4), you may need to upgrade with deprecate only if you have been actively using `sfGpsDsAuNswHeaderComm` which is now superseded by `sfGpsDsAuNswHeaderV2Comm`.
+1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tId000000t3AaIAI" title="sfGpsDsAuNswFull">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Managed Package Runtime. **Note**: Former users (pre-3.4), you may need to upgrade with deprecate only if you have been actively using `sfGpsDsAuNswHeaderComm` which is now superseded by `sfGpsDsAuNswHeaderV2Comm`.
 
 1. Click <a href="https://test.salesforce.com/packaging/installPackage.apexp?p0=04tId000000t2xtIAA" title="sfGpsDsAuNswSr">this link</a> to install the `sfGpsDsAuNsw` unlocked package in your org (with `sfGpsDs` included) for Omnistudio Standard Runtime. **Note**: DO NOT install this if you have the Managed Package Runtime package above installed. We will need to release a specific version of the Omnistudio Managed Package Runtime package removing all components so they can be safely deprecated and superseded by their equivalent in the Standard Runtime package version.
 
@@ -74,7 +74,7 @@ While installing, you can expand the advanced options to pick the `Compile only 
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc9qIAC">this link</a> to install the `sfGpsDs` unlocked package for Omnistudio Managed Package Runtime in your production org (v2.8.0.4 released on 28/04/2025 -- only when using your own design system or a dependent third-party's).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pcd3IAC">this link</a> to install the `sfGpsDsAuNsw` unlocked package for Omnistudio Managed Package Runtime in your production org (v3.4.0.1 released on 08/12/2025).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tId000000t3AaIAI">this link</a> to install the `sfGpsDsAuNsw` unlocked package for Omnistudio Managed Package Runtime in your production org (v3.6.0.11 released on 08/07/2026).
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcA0IAK">this link</a> to install the `sfGpsDsAuNswS` unlocked package for Omnistudio Managed Package Runtime in your production org (v2.8.0.4 released on 28/04/2025).
 
