@@ -74,17 +74,17 @@ While installing, you can expand the advanced options to pick the `Compile only 
 
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000Pc9qIAC">this link</a> to install the `sfGpsDs` unlocked package for Omnistudio Managed Package Runtime in your production org (v2.8.0.4 released on 28/04/2025 -- only when using your own design system or a dependent third-party's).
 
-1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tId000000t3AaIAI">this link</a> to install the `sfGpsDsAuNsw` unlocked package for Omnistudio Managed Package Runtime in your production org (v3.6.0.11 released on 08/07/2026).
+1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tId000000t3AaIAI">this link</a> to install the `sfGpsDsAuNsw` unlocked package for *Omnistudio Managed Package Runtime* in your production org (v3.6.0.11 released on 08/07/2026).
 
-1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuNswSr` unlocked package for Omnistudio Standard Runtime in a production org. We would like to collect feedback and may be able to provide early adopter support.
+1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuNsw` unlocked package for *Omnistudio Standard Runtime* in a production org. We would like to collect feedback and may be able to provide early adopter support.
    
 1. Click <a href="https://login.salesforce.com/packaging/installPackage.apexp?p0=04tJ4000000PcA0IAK">this link</a> to install the `sfGpsDsAuNswS` unlocked package for Omnistudio Managed Package Runtime in your production org (v2.8.0.4 released on 28/04/2025).
 
 1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuQld` unlocked package for Omnistudio Managed Package Runtime in a production org. We would like to collect feedback and may be able to provide early adopter support.
 
-1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuVic2` unlocked package for Omnistudio Managed Package Runtime in a production org. We would like to collect feedback and may be able to provide early adopter support.
+1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuVic2` unlocked package for *Omnistudio Managed Package Runtime* in a production org. We would like to collect feedback and may be able to provide early adopter support.
    
-1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuVic2Sr` unlocked package for Omnistudio Standard Runtime in a production org. We would like to collect feedback and may be able to provide early adopter support.
+1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsAuVic2` unlocked package for *Omnistudio Standard Runtime* in a production org. We would like to collect feedback and may be able to provide early adopter support.
 
 1. Please [reach out](https://github.com/eschweitzer78/gps-design-systems-lwc/discussions/categories/access-to-limited-prod-releases) if you would like to install the `sfGpsDsFrGov` unlocked package in a production org. We would like to collect feedback and may be able to provide early adopter support.
 
